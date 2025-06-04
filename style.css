@@ -7,7 +7,7 @@
     --canvas-color-glass: rgba(248, 247, 242, 0.3);
     --text-color: #222222;
     --yellow-accent: #FDB813;
-    --yellow-accent-rgb: 253, 184, 19; /* RGB for alpha blending */
+    --yellow-accent-rgb: 255, 235, 59; /* RGB for alpha blending */
     --blue-accent: #00A8E8;
     --border-width: 2px;
     --grid-gap: 2px;
@@ -45,9 +45,15 @@ body::before {
     transform: translate(-50%, -50%) scale(0.05); /* near‑pinpoint start */
     width: 40vmax;
     height: 40vmax;
-    background: radial-gradient(circle, rgba(var(--yellow-accent-rgb), 1.0) 0%, rgba(var(--yellow-accent-rgb), 0.0) 70%);
+    background: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 1) 0%,              /* White center */
+        rgba(var(--yellow-accent-rgb), 1) 8%,   /* Fades to our vibrant yellow */
+        rgba(var(--yellow-accent-rgb), 0) 70%   /* Fades out to transparent */
+    );
+
     border-radius: 50%;
-    animation: pulseGlow 45s infinite ease-in-out;
+    animation: pulseGlow 15s infinite ease-in-out;
     pointer-events: none;
     z-index: -1; /* Always behind everything else */
 }
