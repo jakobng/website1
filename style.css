@@ -62,6 +62,44 @@ body::before {
 /* === LAYOUT & COMPONENT STYLES (UNCHANGED BELOW) === */
 /* ================================================== */
 
+/* --- Mobile Navigation Elements --- */
+.mobile-nav-toggle {
+    display: none; /* Hidden on desktop */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    background: var(--canvas-color-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: var(--border-width) solid var(--text-color);
+    color: var(--text-color);
+    font-size: 24px;
+    line-height: 1;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.mobile-nav-close {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    font-size: 36px;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0;
+}
+
+
 /* --- Sidebar --- */
 .sidebar {
     width: 180px;
@@ -252,8 +290,43 @@ body::before {
 
 /* --- Responsive Adjustments --- */
 @media (max-width:1024px) {
-    .main-content    { margin-left:0; width:100%; padding:10px; }
-    .sidebar         { display:none; }
+    .main-content    { margin-left:0; width:100%; padding:20px; box-sizing: border-box; }
+    
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 240px;
+        height: 100%; /* Use 100% instead of 100vh for better mobile browser support */
+        background-color: var(--canvas-color-solid);
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        display: block; /* Ensure sidebar is a block element */
+        box-sizing: border-box;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .sidebar h1 {
+        font-size: 1.8em;
+        margin: 0;
+        text-shadow: none;
+    }
+    
+    .sidebar nav ul li a {
+        text-shadow: none;
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Show the hamburger icon */
+    }
+    
+    .mobile-nav-close {
+        display: block; /* Show the close button inside the sidebar */
+    }
     
     /* All grids become 1 column on small screens */
     .homepage-grid,
