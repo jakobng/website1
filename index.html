@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
     <div class="sidebar">
-        <h1>Leo Nelki</h1>
+        <div class="sidebar-header">
+            <h1>Leo Nelki</h1>
+            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -23,7 +26,6 @@
     <div class="main-content">
         <div class="connected-grid homepage-grid">
 
-            <!-- Mulika -->
             <a href="mulika-film-page.html" class="grid-item film-item-link">
                 <img src="images/Mulika_withlaurels.png" alt="Still from Mulika">
                 <div class="grid-item-info">
@@ -33,7 +35,6 @@
                 </div>
             </a>
 
-            <!-- Spaceman in Kongo -->
             <a href="sik-film-page.html" class="grid-item film-item-link">
                 <img src="images/SIK_withlaurels.png" alt="Still from Spaceman in Kongo">
                 <div class="grid-item-info">
@@ -43,7 +44,6 @@
                 </div>
             </a>
 
-            <!-- Sunday in Japan -->
             <a href="film3-page.html" class="grid-item film-item-link">
                 <img src="images/sij_withlaurels.png" alt="Still from Sunday in Japan">
                 <div class="grid-item-info">
@@ -53,7 +53,6 @@
                 </div>
             </a>
 
-            <!-- Arakawa Cats -->
             <a href="arakawacats-film-page.html" class="grid-item film-item-link">
                 <img src="images/arakawacats_still.jpg" alt="Still from Arakawa Cats">
                 <div class="grid-item-info">
@@ -65,6 +64,20 @@
 
         </div>
     </div>
+    <script>
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const mobileNavClose = document.querySelector('.mobile-nav-close');
+      const sidebar = document.querySelector('.sidebar');
 
+      if (mobileNavToggle && sidebar && mobileNavClose) {
+        mobileNavToggle.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      }
+    </script>
 </body>
 </html>
