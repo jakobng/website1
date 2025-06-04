@@ -1,0 +1,281 @@
+/* --- Font Import for Simplicity & Clarity --- */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+
+/* --- CSS Variables for the Connected Grid Theme --- */
+:root {
+    --canvas-color-solid: #F8F7F2;
+    --canvas-color-glass: rgba(248, 247, 242, 0.3);
+    --text-color: #222222;
+    --yellow-accent: #FDB813;
+    --yellow-accent-rgb: 253, 184, 19; /* RGB for alpha blending */
+    --blue-accent: #00A8E8;
+    --border-width: 2px;
+    --grid-gap: 2px;
+    --gap-color: rgba(248, 247, 242, 0.3);
+    --primary-font: 'Manrope', sans-serif;
+}
+
+/* ================================================== */
+/* === GLOBAL BODY WITH IMPROVED, FULL‑WIDTH PULSE === */
+/* ================================================== */
+body {
+    font-family: var(--primary-font);
+    margin: 0;
+    display: flex;
+    color: var(--text-color);
+    font-size: 18px;
+    line-height: 1.6;
+    background-color: var(--canvas-color-solid); /* Plain background; pulse handled by ::before */
+    position: relative;           /* Stacking context for ::before */
+    overflow-x: hidden;           /* Prevent horizontal scrollbar if pulse overshoots */
+}
+
+/* -------------------------------------------------- */
+/* Animated glowing sphere via ::before pseudo‑elem  */
+/* • z-index -1 keeps it always behind content
+    • Starts almost imperceptible (scale 0.05)
+    • Expands to cover entire viewport (scale 5)
+*/
+/* -------------------------------------------------- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.05); /* near‑pinpoint start */
+    width: 40vmax;
+    height: 40vmax;
+    background: radial-gradient(circle, rgba(var(--yellow-accent-rgb), 1.0) 0%, rgba(var(--yellow-accent-rgb), 0.0) 70%);
+    border-radius: 50%;
+    animation: pulseGlow 45s infinite ease-in-out;
+    pointer-events: none;
+    z-index: -1; /* Always behind everything else */
+}
+
+@keyframes pulseGlow {
+    0%   { transform: translate(-50%, -50%) scale(0.05); opacity: 1; }
+    60%  { opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(5);   opacity: 0; }
+}
+
+/* ================================================== */
+/* === LAYOUT & COMPONENT STYLES (UNCHANGED BELOW) === */
+/* ================================================== */
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 180px;
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+    padding: 30px;
+    background-color: transparent;
+    border-right: var(--border-width) solid var(--text-color);
+}
+
+.sidebar h1 {
+    font-weight: 700;
+    font-size: 2em;
+    margin: 0 0 40px 0;
+    text-shadow: 0px 1px 3px var(--canvas-color-solid);
+}
+
+.sidebar nav ul { list-style: none; padding: 0; }
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    padding: 10px 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    text-shadow: 0px 1px 3px var(--canvas-color-solid);
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+    color: var(--yellow-accent);
+    padding-left: 10px;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+    margin-left: 240px;
+    padding: 40px;
+    width: calc(100% - 280px);
+    position: relative; /* Ensures hero images stack naturally above pulse */
+}
+
+/* ================================ */
+/* === CONNECTED GRID STYLES     === */
+/* ================================ */
+
+/* Base grid for all connected grids */
+.connected-grid {
+    display: grid;
+    background-color: var(--gap-color);
+    gap: var(--grid-gap);
+    border: var(--grid-gap) solid var(--gap-color);
+    margin-bottom: 40px; /* Add some space between different grid sections */
+}
+
+/* Homepage default grid */
+.homepage-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Feature Film Grid (2 per row) */
+.feature-film-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Short Film Grid (3 per row) */
+.short-film-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-item {
+    padding: 15px;
+    background-color: var(--canvas-color-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.film-item-link {
+    display: block;
+    text-decoration:none;
+    color: var(--text-color);
+    border: var(--border-width) solid transparent;
+    transition: all 0.3s ease;
+}
+.film-item-link:hover { border-color: var(--yellow-accent); }
+
+/* --- Image Aspect Ratio (16:9) and Object Fit --- */
+.film-item-link img {
+    width: 100%;
+    display: block;
+    /* For 16:9 aspect ratio (height is 9/16 = 56.25% of width) */
+    aspect-ratio: 16 / 9; /* Modern approach for aspect ratio */
+    object-fit: cover; /* Ensures image covers the area, cropping if necessary */
+}
+
+.grid-item-info { padding: 20px; background: transparent; }
+
+/* Adjusted margins for h3 and h4 inside grid items */
+.grid-item-info h3 {
+    font-size: 2em;
+    margin: 0 0 0px 0; /* Reduced bottom margin for h3 */
+    font-weight:700;
+}
+
+.grid-item-info h4 {
+    font-size: 0.9em; /* Slightly smaller than default p text */
+    margin: 0; /* Remove default top and bottom margins */
+    font-weight: 600; /* Lighter font weight */
+    opacity: 1.0; /* Make it slightly less prominent than the title */
+}
+
+.grid-item-info p { font-size:1em; margin:0; opacity:0.7; }
+
+
+/* --- Film Page Grid Layout --- */
+.film-page-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+}
+
+.hero-image-item {
+    grid-column: 1 / span 4;
+    height: 60vh;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    position: relative; /* Elevates it over background pulse */
+    z-index: 1;
+}
+#mulika-hero-image  { background-image:url('images/mulika_still.jpg'); }
+#arakawa-hero-image { background-image:url('images/arakawacats_still.jpg'); }
+#sik-hero-image     { background-image:url('images/sik_still.png'); }
+#sij-hero-image          { background-image:url('images/sij_still.jpg'); }
+#mouthful-hero-image     { background-image:url('images/mouthful_still.jpg'); }
+#broadlistening-hero-image{ background-image:url('images/broadlistening_still.jpg'); }
+#wagma-hero-image        { background-image:url('images/wagma_still.jpg'); }
+
+.film-page-grid .hero-image-item {
+    background-color: var(--canvas-color-solid);
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+}
+
+.title-item { grid-column:1 / span 4; text-align:center; position:relative; z-index:1; }
+.title-item h1 { font-size:6vw; font-weight:700; line-height:1; margin:0; }
+.logline-item { grid-column:1 / span 4; text-align:center; font-size:1.2em; font-style:italic; padding-top:0; position:relative; z-index:1; }
+
+.about-item   { grid-column:1 / span 2; }
+.specs-item   { grid-column:3 / span 2; }
+.about-item h2, .specs-item h2 {
+    font-weight:700;
+    font-size:1.2em;
+    border-bottom: var(--border-width) solid var(--text-color);
+    padding-bottom:10px;
+    margin:0 0 20px 0;
+}
+.specs-list { list-style:none; padding:0; }
+.specs-list li { display:flex; justify-content:space-between; padding:5px 0; font-size:1em; }
+.specs-list li span:first-child { opacity:0.6; margin-right:10px; }
+.specs-list li span:last-child  { text-align:right; }
+
+/* --- Director Credit --- */
+.director-credit-item { grid-column:1 / span 4; text-align:center; position:relative; z-index:1; }
+.director-credit-item h2 { font-size:1.5em; font-weight:700; margin:0; border-bottom:none; }
+
+/* --- Video Embed --- */
+.video-embed-container { grid-column:1 / span 4; overflow:hidden; position:relative; z-index:1; }
+.video-responsive { position:relative; overflow:hidden; padding-top:56.25%; height:0; width:100%; background:#333; }
+.video-responsive iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+
+/* --- Subtle Subheading Style --- */
+.main-content h2.subtle-heading {
+    font-size: 1.8em; /* Slightly smaller than h1, but distinct */
+    font-weight: 700;
+    margin: 40px 0 20px 0; /* Add top margin for separation, and bottom margin */
+    padding-bottom: 5px; /* A little padding below the text */
+    border-bottom: 2px solid var(--text-color); /* Subtle underline */
+    display: block; /* Ensures it takes its own line */
+    text-align: left; /* Align to the left */
+    grid-column: 1 / -1; /* Ensures it spans across all columns of its parent grid */
+    background-color: transparent; /* No background */
+    backdrop-filter: none; /* No blur */
+    -webkit-backdrop-filter: none;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width:1024px) {
+    .main-content    { margin-left:0; width:100%; padding:10px; }
+    .sidebar         { display:none; }
+    
+    /* All grids become 1 column on small screens */
+    .homepage-grid,
+    .feature-film-grid,
+    .short-film-grid,
+    .film-page-grid  {
+        grid-template-columns:1fr;
+    }
+
+    .hero-image-item,
+    .title-item,
+    .logline-item,
+    .about-item,
+    .specs-item,
+    .director-credit-item,
+    .video-embed-container,
+    .main-content h2.subtle-heading { /* Ensure subtle heading also spans full width on mobile */
+        grid-column:1 / span 1;
+    }
+
+    .title-item h1   { font-size:10vw; }
+
+    .specs-list li { flex-direction:column; align-items:flex-start; }
+    .specs-list li span:last-child { text-align:left; }
+}
