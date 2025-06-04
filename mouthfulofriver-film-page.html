@@ -3,35 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mouthful of River - </title>
+    <title>Mouthful of River - Leo Nelki</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      /* Styles for the embedded dependency graph */
-      .graph-section {
-        font-family: "Inter", sans-serif;
+      /* Styles for the new lens selection section */
+      .lens-section {
+        font-family: "Manrope", sans-serif; /* Using Manrope from your existing style.css */
         text-align: center;
         padding: 2rem 1rem;
-	background: rgba(248, 247, 242, 0.7);
+        background: rgba(248, 247, 242, 0.7); /* Consistent with old graph section */
         margin-top: 2rem;
         border-radius: 12px;
       }
-      .graph-section h1 {
-        margin: 0 0 0.25rem 0;
+      .lens-section h2 { /* Changed from h1 to h2 for better semantic structure */
+        margin: 0 0 1.5rem 0; /* Increased bottom margin */
+        font-size: 2em; /* Larger font size for the title */
+        font-weight: 700;
+        color: var(--text-color);
       }
-      .graph-section p {
-         margin:0 0 1.5rem 0; 
-         font-size:0.9rem;
+      .lens-options {
+        display: flex;
+        flex-direction: column; /* Stack options vertically on small screens */
+        gap: 1.5rem; /* Increased gap between options */
+        align-items: center;
+        justify-content: center;
       }
-      #graph {
-        width: 100%;
-        height: 90vh;
-        border: 0;
+      .lens-option a {
+        display: inline-block;
+        padding: 1rem 2rem; /* Increased padding for a larger click area */
+        background-color: var(--yellow-accent);
+        color: var(--text-color);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1.2em; /* Larger font size for options */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        border: 2px solid var(--text-color);
+        min-width: 250px; /* Minimum width for options */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
-       @media (max-width:600px){
-        .graph-section h1 {
-          font-size:1.25rem
+      .lens-option a:hover {
+        background-color: #FDB813; /* Darken yellow on hover, or choose another color */
+        color: #000000;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+      }
+
+      /* Responsive adjustments for lens options */
+      @media (min-width: 768px) { /* Apply for tablets and larger screens */
+        .lens-options {
+          flex-direction: row; /* Options side-by-side */
+          justify-content: space-around; /* Distribute space around options */
+        }
+        .lens-option a {
+            min-width: 200px; /* Adjust min-width if needed */
         }
       }
+
+       @media (max-width:600px){
+        .lens-section h2 { /* Changed from h1 */
+          font-size:1.5rem; /* Adjusted font size */
+        }
+        .lens-option a {
+            font-size: 1em;
+            padding: 0.8rem 1.5rem;
+            min-width: 200px;
+        }
+      }
+      /* Ensure other styles from style.css are not conflicting unexpectedly */
+      .button-link { /* Style for the existing "View related blog posts" link */
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--blue-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 10px; /* Add some margin if needed */
+      }
+      .button-link:hover {
+            background-color: #007BA7; /* A darker shade of blue */
+      }
+
     </style>
 </head>
 <body>
@@ -61,13 +115,13 @@
             </div>
 
             <div class="grid-item logline-item">
-                <p>As AI provides new ways to give voice to the river, its water-hungry infrastructure poses a threat to the same entity 		it helps us hear. To better understand the river may mean reconnecting with older ways of listening - through science, 			ceremony and art.</p>
+                <p>As AI provides new ways to give voice to the river, its water-hungry infrastructure poses a threat to the same entity it helps us hear. To better understand the river may mean reconnecting with older ways of listening - through science, ceremony and art.</p>
             </div>
 
             <div class="grid-item about-item">
                 <h2>About This Film</h2>
-                <p>We will be writing about this film as we're am making it. Any thoughts or collaborators are welcome. You can find more of my thoughts here:</p>
-                <p><a href="thoughts-and-graph.html" class="button-link">View related blog posts</a></p>
+                <p>We will be writing about this film as we're am making it. Any thoughts or collaborators are welcome. If you want to read my thoughts about the film, look below ↓ </p>
+                
             </div>
 
             <div class="grid-item specs-item">
@@ -81,15 +135,27 @@
        
         </div>
 
-        <div class="graph-section">
-          <h1>Mouthful of River</h1>
-          <p>Click a concept/ project to open the related page.</p>
-          <div id="graph"></div>
+        <!-- New Lens Selection Section -->
+        <div class="lens-section">
+          <h2>Choose Your Lens</h2>
+          <div class="lens-options">
+            <div class="lens-option">
+              <a href="blog/democracy-lens.html">Democracy</a>
+            </div>
+            <div class="lens-option">
+              <a href="blog/environmentalism-lens.html">Environmentalism</a>
+            </div>
+            <div class="lens-option">
+              <a href="blog/ai-alignment-lens.html">AI Alignment</a>
+            </div>
+          </div>
         </div>
+        <!-- End of New Lens Selection Section -->
         
     </div>
     
     <script>
+      // Standard mobile navigation script
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
       const mobileNavClose = document.querySelector('.mobile-nav-close');
       const sidebar = document.querySelector('.sidebar');
@@ -104,100 +170,6 @@
         });
       }
     </script>
-    <script src="https://unpkg.com/vis-network@9.1.2/dist/vis-network.min.js"></script>
-    <script>
-      /*========== Nodes ==========*/
-      const nodes = new vis.DataSet([
-        // Central source
-        { id:0,label:'Mouthful of River',shape:'dot',size:30,color:{background:'#ffe082',border:'#ffca28'},font:{size:22,bold:true},url:'/blog/mouthful-of-river'},
-
-        // First ring – main projects
-        { id:1,label:'Indigenous Listening',shape:'dot',size:22,color:'#2ecc71',url:'/blog/tayal-listening'},
-        { id:2,label:'Data‑centre Activism',shape:'dot',size:22,color:'#e74c3c',url:'/blog/data-centre-activism'},
-        { id:3,label:'Rights of Nature',shape:'dot',size:22,color:'#3498db',url:'/blog/uk-river-rights'},
-        { id:4,label:'Artistic Listening',shape:'dot',size:22,color:'#9b59b6',url:'/blog/artistic-listening'},
-        { id:5,label:'Scientific Listening',shape:'dot',size:22,color:'#f1c40f',url:'/blog/scientific-listening'},
-
-        // Tayal details
-        { id:11,label:'Tayal Song of Interdependence',shape:'dot',size:14,color:'#27ae60',url:'/blog/tayal-song'},
-        { id:12,label:'Tayal Water Governance',shape:'dot',size:14,color:'#27ae60',url:'/blog/tayal-water-governance'},
-        { id:13,label:'Tsou River Chatbot',shape:'dot',size:14,color:'#27ae60',url:'/blog/tsou-river-chatbot'},
-
-        // Data‑centre details
-        { id:21,label:'Tu Nube Seca Mi Río',shape:'dot',size:14,color:'#c0392b',url:'/blog/tu-nube-seca'},
-        { id:22,label:'Le Nuage était…',shape:'dot',size:14,color:'#c0392b',url:'/blog/le-nuage'},
-        { id:23,label:'WaterWatch Oregon',shape:'dot',size:14,color:'#c0392b',url:'/blog/waterwatch-oregon'},
-
-        // UK river rights details
-        { id:31,label:'River Ouse Legal Rights',shape:'dot',size:14,color:'#2980b9',url:'/blog/river-ouse-rights'},
-        { id:32,label:'River Don Chatbot',shape:'dot',size:14,color:'#2980b9',url:'/blog/river-don-chatbot'},
-        { id:33,label:'Living Stewardship Agreement',shape:'dot',size:14,color:'#2980b9',url:'/blog/living-stewardship'},
-
-        // Artistic details
-        { id:41,label:'CLAMS Sculpture',shape:'dot',size:14,color:'#8e44ad',url:'/blog/clams-sculpture'},
-        { id:42,label:'Amor Núñez – CORPUS AQUAE',shape:'dot',size:14,color:'#8e44ad',url:'/blog/corpus-aquae'},
-        { id:43,label:'Generative River Score',shape:'dot',size:14,color:'#8e44ad',url:'/blog/generative-score'},
-
-        // Scientific details
-        { id:51,label:'Dr Atakan Aral Networks',shape:'dot',size:14,color:'#d4ac0d',url:'/blog/atakan-aral'},
-        { id:52,label:'Hydrophones Expedition',shape:'dot',size:14,color:'#d4ac0d',url:'/blog/hydrophones-taiwan'},
-      ]);
-
-      /*========== Edges ==========*/
-      const edges = new vis.DataSet([
-        {from:0,to:1,width:2},{from:0,to:2,width:2},{from:0,to:3,width:2},{from:0,to:4,width:2},{from:0,to:5,width:2},
-        // Tayal tributaries
-        {from:1,to:11,width:1},{from:1,to:12,width:1},{from:1,to:13,width:1},
-        // Data‑centre tributaries
-        {from:2,to:21,width:1},{from:2,to:22,width:1},{from:2,to:23,width:1},
-        // UK river rights
-        {from:3,to:31,width:1},{from:3,to:32,width:1},{from:3,to:33,width:1},
-        // Artistic listening
-        {from:4,to:41,width:1},{from:4,to:42,width:1},{from:4,to:43,width:1},
-        // Scientific listening
-        {from:5,to:51,width:1},{from:5,to:52,width:1}
-      ]);
-
-      /*========== Layout & Options ==========*/
-      const container=document.getElementById('graph');
-      const data={nodes,edges};
-      const options={
-        interaction:{
-            hover:true,
-            dragView:true,
-            zoomView: false
-        },
-        physics: {
-          enabled: true,
-          forceAtlas2Based: {
-            gravitationalConstant: -100, // Pushes nodes away from each other
-            centralGravity: 0.005,        // Attracts nodes to the center
-            springLength: 120,            // Ideal length of an edge
-            springConstant: 0.1,
-            avoidOverlap: 0.5             // Reduces node overlap
-          },
-          minVelocity: 0.75,
-          solver: "forceAtlas2Based",
-          stabilization: {
-            iterations: 250
-          }
-        },
-        edges:{
-            color:{color:'#0e385b'},
-            smooth: {
-                type: 'dynamic'
-            }
-        },
-        nodes:{
-            borderWidth:0,
-            font:{color:'#0e385b'}
-        }
-      };
-      const network=new vis.Network(container,data,options);
-
-      /*========== Click opens URL ==========*/
-      network.on('click',p=>{if(p.nodes.length){const n=nodes.get(p.nodes[0]);if(n.url)window.open(n.url,'_blank');}});
-
-    </script>
+    <!-- Removed vis-network.min.js script as it's no longer needed -->
 </body>
 </html>
