@@ -239,6 +239,7 @@ body::before {
 #mouthful-hero-image     { background-image:url('images/mouthful_still.jpg'); }
 #broadlistening-hero-image{ background-image:url('images/broadlistening_still.jpg'); }
 #wagma-hero-image        { background-image:url('images/wagma_still.jpg'); }
+#sij-hero-image { background-image:url('images/sij_withlaurels.png'); }
 
 .film-page-grid .hero-image-item {
     background-color: var(--canvas-color-solid);
