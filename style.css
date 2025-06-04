@@ -231,7 +231,8 @@ body::before {
     position: relative; /* Elevates it over background pulse */
     z-index: 1;
 }
-#mulika-hero-image  { background-image:url('images/Mulika_withlaurels.png'); }
+#mulika-hero-image  { background-image:url('images/Mulika_withlaurels.png');
+                    background-position: center 25%; /* This shifts the image up */; }
 #arakawa-hero-image { background-image:url('images/arakawacats_still.jpg'); }
 #sik-hero-image     { background-image:url('images/sik_still.png'); }
 #sij-hero-image          { background-image:url('images/sij_still.jpg'); }
