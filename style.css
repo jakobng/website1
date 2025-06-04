@@ -243,6 +243,7 @@ body::before {
 #apa-hero-image { background-image:url('images/apa_still.png'); }
 #wagma-hero-image { background-image:url('images/wagmi_still.png'); }
 #lobiekosimba-hero-image { background-image:url('images/lobiekosimba_still.png'); }
+#hausu2020-hero-image { background-image:url('images/hausu2020_still.jpg'); }
 
 .film-page-grid .hero-image-item {
     background-color: var(--canvas-color-solid);

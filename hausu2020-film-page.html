@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hausu 2020 - </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Leo Nelki</h1>
+            <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="completed.html">Completed Films</a></li>
+                <li><a href="wip.html">Works in Progress</a></li>
+                <li><a href="writing.html">Writing</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="connected-grid film-page-grid">
+
+            <div class="grid-item hero-image-item" id="hausu2020-hero-image"></div>
+            
+            <div class="grid-item title-item">
+                <h1>Hausu 2020: Locked Down with My Friends in My Parents’ Empty House during the First Wave of Covid-19</h1>
+            </div>
+
+            <div class="grid-item logline-item">
+                <p>This is a film about the strangely idyllic time we had during the first UK lockdown, and the media we consumed.</p>
+            </div>
+            
+            <div class="grid-item about-item">
+                <h2>Watch The Film</h2>
+                <p><a href="https://www.youtube.com/watch?v=s2wG9QIJXNI" target="_blank" rel="noopener noreferrer" class="button-link">Watch on YouTube</a></p>
+            </div>
+
+           <div class="grid-item specs-item">
+                 <h2>Details</h2>
+                <ul class="specs-list">
+                    <li><span>Director</span><span>Leo Nelki</span></li>
+                    <li><span>Type</span><span>Short Film</span></li>
+                    <li><span>Runtime</span><span>40 mins</span></li>
+                    <li><span>Year</span><span>2020</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <script>
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const mobileNavClose = document.querySelector('.mobile-nav-close');
+      const sidebar = document.querySelector('.sidebar');
+
+      if (mobileNavToggle && sidebar && mobileNavClose) {
+        mobileNavToggle.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      }
+    </script>
+</body>
+</html>
