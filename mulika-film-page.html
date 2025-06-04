@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
     <div class="sidebar">
-        <h1>Leo Nelki</h1>
+        <div class="sidebar-header">
+            <h1>Leo Nelki</h1>
+            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -128,6 +131,20 @@
 
         </div>
     </div>
+    <script>
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const mobileNavClose = document.querySelector('.mobile-nav-close');
+      const sidebar = document.querySelector('.sidebar');
 
+      if (mobileNavToggle && sidebar && mobileNavClose) {
+        mobileNavToggle.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      }
+    </script>
 </body>
 </html>
