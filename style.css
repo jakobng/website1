@@ -240,6 +240,9 @@ body::before {
 #broadlistening-hero-image{ background-image:url('images/broadlistening_still.jpg'); }
 #wagma-hero-image        { background-image:url('images/wagma_still.jpg'); }
 #sij-hero-image { background-image:url('images/sij_withlaurels.png'); }
+#apa-hero-image { background-image:url('images/apa_still.png'); }
+#wagma-hero-image { background-image:url('images/wagmi_still.png'); }
+#lobiekosimba-hero-image { background-image:url('images/lobiekosimba_still.png'); }
 
 .film-page-grid .hero-image-item {
     background-color: var(--canvas-color-solid);
@@ -251,8 +254,11 @@ body::before {
 .title-item h1 { font-size:6vw; font-weight:700; line-height:1; margin:0; }
 .logline-item { grid-column:1 / span 4; text-align:center; font-size:1.2em; font-style:italic; padding-top:0; position:relative; z-index:1; }
 
-.about-item   { grid-column:1 / span 2; }
-.specs-item   { grid-column:3 / span 2; }
+.about-item,
+.specs-item,
+.festivals-item {
+    grid-column: span 2;
+}
 .about-item h2, .specs-item h2 {
     font-weight:700;
     font-size:1.2em;

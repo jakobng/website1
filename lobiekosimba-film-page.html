@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobi Ekosimba - </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Leo Nelki</h1>
+            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="completed.html">Completed Films</a></li>
+                <li><a href="wip.html">Works in Progress</a></li>
+                <li><a href="writing.html">Writing</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="connected-grid film-page-grid">
+
+            <div class="grid-item hero-image-item" id="lobiekosimba-hero-image"></div>
+            
+            <div class="grid-item title-item">
+                <h1>Lobi Ekosimba</h1>
+            </div>
+
+            <div class="grid-item logline-item">
+                <p>Beyond the headlines of war in Goma, resilience lives in the quiet rhythm of daily life.</p>
+            </div>
+
+           <div class="grid-item specs-item">
+                <h2>Details</h2>
+                <ul class="specs-list">
+                    <li><span>Director</span><span>Eli Maene</span></li>
+                    <li><span>Director of Photography</span><span>Eli Maene</span></li>
+                    <li><span>Producers</span><span>Danny Amisi, Eli Maene</span></li>
+                    <li><span>Co-Producers</span><span>Leo Nelki, Maisha Maene</span></li>
+                    <li><span>Editors</span><span>John Kibwe, Leo Nelki</span></li>
+                    <li><span>Type</span><span>Short Film</span></li>
+                    <li><span>Year</span><span>2024</span></li>
+                </ul>
+            </div>
+
+     
+            <div class="grid-item festivals-item">
+                  <h2>Awards</h2>
+                  <ul class="festivals-list">
+                    <li>Special Jury Prize, Khouribga International African Film Festival (Morocco, 2024)</li>
+                    <li>Special Mention of the Jury, Africlap (France, 2024)
+</ul>
+</li>
+<h2>Festival Screenings</h2>
+<ul class="festivals-list">
+                    <li>FESPACO (Burkina Faso, 2025)</li>
+                    <li>Dresden Short Film Festival (Germany, 2024)</li>
+                    <li>Encounters South African International Documentary Festival (South Africa, 2024)</li>
+                    <li>Afrika Film Festival Leuven (Belgium, 2024)</li>
+                    <li>Views of Africa Film Festival (Montreal, Canada, 2024)</li>
+                    <li>Luxor African Film Festival (Egypt, 2024)</li>
+                    <li>Écrans Noirs Festival (Cameroon, 2024)</li>
+                    <li>Dakhla International Film Festival (Morocco, 2024)</li>
+                    <li>Khouribga International African Film Festival (Morocco, 2024)</li>
+                    <li>Saint Louis Doc (Senegal, 2024)</li>
+                    <li>Cinema Sous Les Etoiles (Quebec, Canada, 2024)</li>
+                    <li>Africlap (France, 2024)</li>
+                    <li>Cinemas d'Afrique Lausanne (Switzerland)</li>
+                    <li>Gibara International Film Festival (Cuba)</li>
+                    <li>Le Kef Short Film Festival (Tunisia, 2023)</li>
+                    <li>Tamil Nadu Film Festival (India, 2024)</li>
+                    <li>European Film Festival (DRC)</li>
+                    <li>Lubum Fest Doc (Lubumbashi, DRC, 2024)</li>
+                    <li>Kidogo Kidogo Festival (Lubumbashi, DRC, 2024)</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <script>
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const mobileNavClose = document.querySelector('.mobile-nav-close');
+      const sidebar = document.querySelector('.sidebar');
+
+      if (mobileNavToggle && sidebar && mobileNavClose) {
+        mobileNavToggle.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      }
+    </script>
+</body>
+</html>
