@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Alignment Lens - Writing - Leo Nelki</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Leo Nelki</h1>
+            <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../completed.html">Completed Films</a></li>
+                <li><a href="../wip.html">Works in Progress</a></li>
+                <li><a href="../writing.html" class="active">Writing</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="connected-grid">
+            <div class="grid-item text-content-item">
+                <h2>AI Alignment Lens</h2>
+                <p>Thoughts and writings on this topic are coming soon. Please check back later!</p>
+                <p><a href="../mouthfulofriver-film-page.html" class="button-link">Back to 'Mouthful of River'</a></p>
+                <p><a href="../writing.html" class="button-link">Back to Writing Index</a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const mobileNavClose = document.querySelector('.mobile-nav-close');
+      const sidebar = document.querySelector('.sidebar');
+
+      if (mobileNavToggle && sidebar && mobileNavClose) {
+        mobileNavToggle.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      }
+    </script>
+</body>
+</html>
