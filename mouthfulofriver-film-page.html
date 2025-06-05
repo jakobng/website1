@@ -6,87 +6,92 @@
     <title>Mouthful of River - Leo Nelki</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      /* Styles for the new lens selection section */
-      .lens-section {
-        font-family: "Manrope", sans-serif; /* Using Manrope from your existing style.css */
-        text-align: center;
-        padding: 2rem 1rem;
-        background: rgba(248, 247, 242, 0.7); /* Consistent with old graph section */
-        margin-top: 2rem;
-        border-radius: 12px;
-      }
-      .lens-section h2 { /* Changed from h1 to h2 for better semantic structure */
-        margin: 0 0 1.5rem 0; /* Increased bottom margin */
-        font-size: 2em; /* Larger font size for the title */
-        font-weight: 700;
-        color: var(--text-color);
-      }
-      .lens-options {
-        display: flex;
-        flex-direction: column; /* Stack options vertically on small screens */
-        gap: 1.5rem; /* Increased gap between options */
-        align-items: center;
-        justify-content: center;
-      }
-      .lens-option a {
+  /* Styles for the lens selection section */
+  .lens-section {
+    font-family: "Manrope", sans-serif;
+    text-align: center;
+    padding: 2rem 1rem; /* Adjusted padding */
+    background: rgba(248, 247, 242, 0.7); /* Consistent with page background */
+    margin-top: 2rem; /* Standard margin */
+    border-radius: 12px;
+  }
+  .lens-section h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.6em; /* Maintained reduced size for subtlety */
+    font-weight: 700;
+    color: var(--text-color);
+  }
+  .lens-options {
+    display: flex;
+    flex-direction: column; /* Stack options vertically on small screens */
+    gap: 1.5rem; /* Standard gap */
+    align-items: center;
+    justify-content: center;
+  }
+  .lens-option {
+    /* .lens-option can be used for sizing if needed, but direct styling on <a> is fine for this */
+  }
+  .lens-option a {
+    display: inline-block; /* Classic button behavior */
+    padding: 1rem 2rem;
+    background-color: var(--yellow-accent); /* Yellow buttons as requested */
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 8px; /* Simpler, less rounded than highly stylized versions */
+    font-weight: 700;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid var(--text-color); /* Clear border */
+    min-width: 220px; /* Adjusted min-width for a balanced look */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
+    text-align: center;
+  }
+
+  .lens-option a:hover {
+    background-color: #eab00e; /* A slightly darker shade of --yellow-accent (#FDB813) */
+    color: var(--text-color);
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+  }
+
+  /* Responsive adjustments for lens options */
+  @media (min-width: 768px) { /* Apply for tablets and larger screens */
+    .lens-options {
+      flex-direction: row; /* Options side-by-side */
+      justify-content: space-around; /* Distribute space around options */
+    }
+    .lens-option a {
+        min-width: 200px; /* Adjust min-width if needed for row layout */
+    }
+  }
+
+   @media (max-width:600px){
+    .lens-section h2 {
+      font-size:1.5rem; /* Adjusted font size for smaller screens */
+    }
+    .lens-option a {
+        font-size: 1em;
+        padding: 0.8rem 1.5rem;
+        min-width: 180px; /* Adjusted for smaller screens */
+    }
+  }
+
+  /* Style for the existing "View related blog posts" link (from original file) */
+  .button-link {
         display: inline-block;
-        padding: 1rem 2rem; /* Increased padding for a larger click area */
-        background-color: var(--yellow-accent);
-        color: var(--text-color);
+        padding: 10px 20px;
+        background-color: var(--blue-accent);
+        color: white;
         text-decoration: none;
-        border-radius: 8px;
-        font-weight: 700;
-        font-size: 1.2em; /* Larger font size for options */
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        border: 2px solid var(--text-color);
-        min-width: 250px; /* Minimum width for options */
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-      .lens-option a:hover {
-        background-color: #FDB813; /* Darken yellow on hover, or choose another color */
-        color: #000000;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-      }
-
-      /* Responsive adjustments for lens options */
-      @media (min-width: 768px) { /* Apply for tablets and larger screens */
-        .lens-options {
-          flex-direction: row; /* Options side-by-side */
-          justify-content: space-around; /* Distribute space around options */
-        }
-        .lens-option a {
-            min-width: 200px; /* Adjust min-width if needed */
-        }
-      }
-
-       @media (max-width:600px){
-        .lens-section h2 { /* Changed from h1 */
-          font-size:1.5rem; /* Adjusted font size */
-        }
-        .lens-option a {
-            font-size: 1em;
-            padding: 0.8rem 1.5rem;
-            min-width: 200px;
-        }
-      }
-      /* Ensure other styles from style.css are not conflicting unexpectedly */
-      .button-link { /* Style for the existing "View related blog posts" link */
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--blue-accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            margin-top: 10px; /* Add some margin if needed */
-      }
-      .button-link:hover {
-            background-color: #007BA7; /* A darker shade of blue */
-      }
-
-    </style>
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+  }
+  .button-link:hover {
+        background-color: #007BA7; /* A darker shade of blue */
+  }
+</style>
 </head>
 <body>
     <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
