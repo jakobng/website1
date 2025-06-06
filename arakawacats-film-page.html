@@ -7,12 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+
     <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>Leo Nelki</h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-        </div>
+        <h1>Leo Nelki</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -41,6 +38,7 @@
                 <ul class="specs-list">
                     <li><span>Director</span><span>Leo Nelki</span></li>
                     <li><span>Cast</span><span>Ruben Torosyan</span></li>
+		    <li><span>Music</span><span>Katey Moss Catwalk by David Teie</span></li>
                     <li><span>Year</span><span>2024</span></li>
                     <li><span>Thanks</span><span>Moeka Iida, Felix Idle, Alfred Oyaka, Ruben Torosyan</span></li>
                 </ul>
@@ -48,20 +46,6 @@
 
         </div>
     </div>
-    <script>
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
 
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
-
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
-      }
-    </script>
 </body>
 </html>
