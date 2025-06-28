@@ -3,36 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tokyo Independent Cinema Showtimes - Sleek Edition</title>
+    <title>Leo Nelki - Tokyo Cinema Showtimes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
 <style>
+        /* --- CSS Variables from the Connected Grid Theme --- */
         :root {
-            --primary-yellow: #FFC300;
-            --light-bg: #f4f4f4;
-            --content-bg: #ffffff;
-            --dark-text: #333333;
-            --medium-text: #555555;
-            --light-text-on-dark: #f0f0f0;
-            --border-color: #e0e0e0;
-            --shadow-color: rgba(0, 0, 0, 0.1);
+            --canvas-color-solid: #F8F7F2;
+            --canvas-color-glass: rgba(248, 247, 242, 0.4); /* Slightly less transparent for readability */
+            --text-color: #222222;
+            --yellow-accent: #FDB813;
+            --yellow-accent-rgb: 253, 184, 19; /* RGB for alpha blending */
+            --blue-accent: #00A8E8;
+            --border-width: 2px;
+            --border-color: rgba(34, 34, 34, 0.3);
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --medium-text: rgba(34, 34, 34, 0.7);
+            --primary-font: 'Manrope', sans-serif;
         }
+        
+        /* --- Global Body with Full-Width Pulse --- */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            margin: 0; padding: 20px; background-color: var(--light-bg);
-            color: var(--dark-text); line-height: 1.6; font-size: 16px;
+            font-family: var(--primary-font);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: var(--canvas-color-solid);
+            position: relative;
+            overflow-x: hidden;
         }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.05);
+            width: 40vmax; height: 40vmax;
+            background: radial-gradient(
+                circle, 
+                rgba(255, 255, 255, 1) 0%,
+                rgba(var(--yellow-accent-rgb), 1) 8%,
+                rgba(var(--yellow-accent-rgb), 0) 70%
+            );
+            border-radius: 50%;
+            animation: pulseGlow 15s infinite ease-in-out;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes pulseGlow {
+            0%   { transform: translate(-50%, -50%) scale(0.05); opacity: 1; }
+            60%  { opacity: 0.9; }
+            100% { transform: translate(-50%, -50%) scale(5);   opacity: 0; }
+        }
+
+        /* --- Home Link in Top-Left Corner --- */
+        .home-link {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            font-weight: 700;
+            font-size: 2em;
+            text-decoration: none;
+            color: var(--text-color);
+            text-shadow: 0px 1px 3px var(--canvas-color-solid);
+        }
+
+        /* --- Cinema Page Specific Styles (Adapted to New Theme) --- */
         .container {
-            max-width: 950px; margin: 30px auto; background-color: var(--content-bg);
-            padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px var(--shadow-color);
+            max-width: 950px; margin: 30px auto;
+            background-color: var(--canvas-color-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px; border-radius: 12px;
+            border: var(--border-width) solid var(--border-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
         header h1 {
-            font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            color: var(--dark-text); text-align: center; font-size: 3.2em;
-            margin-bottom: 40px; text-transform: uppercase;
-            letter-spacing: 1px; text-shadow: none;
+            font-family: 'Manrope', sans-serif; /* Matched font */
+            font-weight: 700;
+            color: var(--text-color); text-align: center; font-size: 2.8em;
+            margin-bottom: 40px; text-transform: none; /* Removed uppercase */
+            letter-spacing: 0px; text-shadow: none;
         }
         header h1::after {
             content: ''; display: block; width: 80px; height: 4px;
-            background-color: var(--primary-yellow); margin: 15px auto 0;
+            background-color: var(--yellow-accent); margin: 15px auto 0;
         }
         #cinema-selection-grid-container {
             margin-bottom: 40px;
@@ -42,12 +102,12 @@
         }
         .category-block h3 {
             font-size: 1.4em;
-            color: var(--dark-text);
+            color: var(--text-color);
             margin-top: 15px;
             margin-bottom: 20px;
             padding-bottom: 8px;
-            border-bottom: 2px solid var(--primary-yellow);
-            font-weight: 600;
+            border-bottom: var(--border-width) solid var(--yellow-accent);
+            font-weight: 700;
             letter-spacing: 0.2px;
         }
         .cinema-card-container {
@@ -56,29 +116,33 @@
             gap: 20px;
         }
         .cinema-card {
-            background-color: var(--content-bg); color: var(--dark-text);
+            background-color: var(--canvas-color-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: var(--text-color);
             padding: 18px;
             border-radius: 8px; text-align: center;
             font-size: 1.05em; font-weight: 600; cursor: pointer;
             transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
-            border: 1px solid var(--border-color); box-shadow: 0 2px 5px var(--shadow-color);
+            border: var(--border-width) solid var(--border-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
             display: flex;
             flex-direction: column;
             justify-content: center;
             min-height: 90px;
         }
         .cinema-card:hover {
-            border-color: var(--primary-yellow);
+            border-color: var(--yellow-accent);
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
         .cinema-japanese-name {
             display: block;
-            color: var(--dark-text);
+            color: var(--text-color);
             font-weight: 600;
         }
         .cinema-card:hover .cinema-japanese-name {
-            color: var(--primary-yellow);
+            color: var(--yellow-accent);
         }
         .cinema-english-name-card {
             font-size: 0.8em;
@@ -91,14 +155,14 @@
         .cinema-location-card {
             font-size: 0.7em;
             font-weight: 400;
-            color: #6c757d;
+            color: var(--medium-text);
             display: block;
             margin-top: 3px;
             line-height: 1.1;
         }
         .cinema-section h2 {
-            font-size: 2em; color: var(--dark-text); font-weight: 600;
-            margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid var(--primary-yellow);
+            font-size: 2em; color: var(--text-color); font-weight: 700;
+            margin-top: 0; margin-bottom: 15px; border-bottom: var(--border-width) solid var(--yellow-accent);
             padding-bottom: 10px; line-height: 1.3;
         }
         .cinema-english-name-header {
@@ -109,61 +173,55 @@
             margin-top: 2px;
             line-height: 1.2;
         }
-        .cinema-location-header {
-            font-size: 0.5em;
-            font-weight: 400;
-            color: #6c757d;
-            display: block;
-            margin-top: 1px;
-            line-height: 1.1;
-        }
         .action-button {
             display: inline-block; margin-bottom: 15px; margin-right: 10px; padding: 10px 20px;
-            background-color: var(--primary-yellow); color: var(--dark-text);
+            background-color: var(--yellow-accent); color: var(--text-color);
             text-decoration: none; border: none; border-radius: 6px;
-            font-size: 0.95em; font-weight: 600;
+            font-size: 0.95em; font-weight: 700;
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.08); cursor: pointer;
         }
         .action-button:hover {
-            background-color: #FFB300; color: #000;
+            background-color: #FFD700; /* A slightly brighter yellow on hover */
             transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.12);
         }
-        #back-to-cinemas-btn { background-color: #6c757d; color: white; }
-        #back-to-cinemas-btn:hover { background-color: #5a6268; color: white; }
+        #back-to-cinemas-btn { background-color: var(--medium-text); color: var(--canvas-color-solid); }
+        #back-to-cinemas-btn:hover { background-color: var(--text-color); }
         .date-section h3 {
-            font-size: 1.2em; color: var(--medium-text); font-weight: 600;
+            font-size: 1.2em; color: var(--medium-text); font-weight: 700;
             margin-bottom: 15px; border-bottom: 1px solid var(--border-color);
             padding-bottom: 8px;
         }
         .showtimes-list li {
             margin-bottom: 8px; padding: 12px 18px; border-radius: 6px;
-            background-color: var(--content-bg); border: 1px solid var(--border-color);
-            border-left: 4px solid var(--primary-yellow);
+            background-color: transparent;
+            border: var(--border-width) solid transparent;
+            border-left: 4px solid var(--yellow-accent);
             display: flex; align-items: center;
-            transition: box-shadow 0.2s ease;
+            transition: box-shadow 0.2s ease, background-color 0.2s ease;
             justify-content: space-between;
         }
-        .showtimes-list li:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .showtimes-list li:hover { 
+            box-shadow: 0 2px 8px var(--shadow-color); 
+            background-color: rgba(255,255,255,0.2);
+        }
         .showtime-time {
-            font-weight: 700; color: var(--dark-text); margin-right: 18px;
+            font-weight: 700; color: var(--text-color); margin-right: 18px;
             min-width: 50px; flex-shrink: 0; font-size: 1.05em;
         }
         .showtime-title-container { flex-grow: 1; line-height: 1.4; }
-        .showtime-title { font-weight: 600; color: var(--dark-text); }
-        .tmdb-english-title, .gemini-english-title, .lb-english-title {
+        .showtime-title { font-weight: 600; color: var(--text-color); }
+        .gemini-english-title {
             font-style: normal; color: var(--medium-text); margin-left: 8px;
             opacity: 1; font-size: 0.9em; font-weight: 400;
         }
         .hidden { display: none !important; }
-        #loading-message-text {
-            color: var(--dark-text); font-weight: 500; text-align: center;
-            padding: 30px; font-size: 1.1em;
-        }
-         .error-message {
-            color: #721c24; background-color: #f8d7da; padding: 15px;
-            border-radius: 6px; border: 1px solid #f5c6cb;
+        #loading-message-text, .error-message {
+            color: var(--text-color); background-color: var(--canvas-color-glass); padding: 15px;
+            border-radius: 6px; border: var(--border-width) solid var(--border-color);
             font-weight: 500; text-align: center; font-size: 1.1em; margin: 20px 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .showtime-links {
             display: flex;
@@ -175,7 +233,7 @@
             display: inline-block;
             padding: 5px 12px;
             font-size: 0.8em;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
             border-radius: 5px;
             transition: all 0.2s ease;
@@ -192,43 +250,48 @@
             transform: translateY(-1px);
         }
         .showtime-link-btn.details {
-            background-color: #e9ecef;
-            color: #333;
-            border-color: #ced4da;
+            background-color: var(--canvas-color-glass);
+            color: var(--text-color);
+            border-color: var(--border-color);
         }
         .showtime-link-btn.details:hover {
-            background-color: #ced4da;
+            background-color: var(--canvas-color-solid);
+            border-color: var(--text-color);
             transform: translateY(-1px);
         }
 
         /* MOBILE RESPONSIVENESS STYLES */
         @media (max-width: 600px) {
+            .home-link {
+                position: absolute; /* Change to absolute so it scrolls with content */
+                top: 20px;
+                left: 20px;
+                font-size: 1.5em;
+            }
+            .container {
+                margin-top: 80px; /* Add space for the home link */
+            }
             .showtimes-list li {
-                flex-wrap: wrap; /* Allow items to wrap to the next line */
+                flex-wrap: wrap;
                 padding-top: 15px;
                 padding-bottom: 15px;
-                /* Use a simple row gap to space the wrapped items */
                 row-gap: 12px;
             }
-
             .showtime-title-container {
-                /* Let the title container grow but also allow shrinking */
                 flex-grow: 1;
                 flex-shrink: 1;
-                /* Remove fixed width to allow wrapping */
                 width: auto;
             }
-
             .showtime-links {
-                /* Force the links block to take the full width on a new line */
                 flex-basis: 100%;
                 margin-left: 0;
-                justify-content: flex-end; /* Align buttons to the right */
+                justify-content: flex-end;
             }
         }
 </style>
 </head>
 <body>
+    <a href="index.html" class="home-link">Leo Nelki</a>
     <div class="container">
         <header> <h1 id="main-header">Tokyo Independent Cinema Showtimes</h1> </header>
         <button id="back-to-cinemas-btn" class="action-button hidden">&laquo; Back to Cinemas</button>
@@ -285,7 +348,7 @@
                 "YEBISU GARDEN CINEMA": "恵比寿ガーデンシネマ",
                 "K2 Cinema": "K2シネマ",
                 "Theater Bacchus": "シアターバッカス高円寺",
-                "Bunkamura ル・シネマ 渋谷宮下": "ル・シネマ 渋谷宮下",
+                "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura ル・シネマ",
                 "CINEMA Chupki TABATA": "チュプキ・タバタ",
             };
             const cinemaEnglishNames = {
@@ -664,3 +727,5 @@
     </script>
 </body>
 </html>
+}
+what do you think of this?
