@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo Nelki - Other Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Leo Nelki</h1>
+            <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="completed.html">Completed Films</a></li>
+                <li><a href="wip.html">Works in Progress</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="other-projects.html" class="active">Other Projects</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="connected-grid">
+            <div class="grid-item text-content-item" style="--grid-column-span: 4;">
+                 <h2>Independent Cinema Showtimes</h2>
+                 <p>A live feed of listings for independent cinemas in Merseyside and Manchester. This page is updated automatically. Last update: {{ last_updated }}</p>
+                 <hr>
+                 {% for cinema in cinemas %}
+                 <h3>{{ cinema.name }}</h3>
+                 <ul>
+                     {% for film in cinema.films %}
+                     <li><b>{{ film.title }}</b>: {{ film.times }}</li>
+                     {% endfor %}
+                 </ul>
+                 {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const mobileNavClose = document.querySelector('.mobile-nav-close');
+      const sidebar = document.querySelector('.sidebar');
+
+      if (mobileNavToggle && sidebar && mobileNavClose) {
+        mobileNavToggle.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      }
+    </script>
+</body>
+</html>
