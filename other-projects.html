@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo Nelki - Other Projects</title>
+    <title>Other Projects - Leo Nelki</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,21 +25,16 @@
     </div>
 
     <div class="main-content">
+        <h2 class="subtle-heading">Other Projects</h2>
         <div class="connected-grid">
-            <div class="grid-item text-content-item" style="--grid-column-span: 4;">
-                 <h2>Independent Cinema Showtimes</h2>
-                 <p>A live feed of listings for independent cinemas in Merseyside and Manchester. This page is updated automatically. Last update: {{ last_updated }}</p>
-                 <hr>
-                 {% for cinema in cinemas %}
-                 <h3>{{ cinema.name }}</h3>
-                 <ul>
-                     {% for film in cinema.films %}
-                     <li><b>{{ film.title }}</b>: {{ film.times }}</li>
-                     {% endfor %}
-                 </ul>
-                 {% endfor %}
+            <a href="cinema.html" class="grid-item film-item-link">
+                <div class="grid-item-info">
+                    <h3>Independent Cinema Showtimes</h3>
+                    <p>A live, automatically updated feed of film listings for independent cinemas in Merseyside and Manchester. Click to view.</p>
+                </div>
+            </a>
+            
             </div>
-        </div>
     </div>
     <script>
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
