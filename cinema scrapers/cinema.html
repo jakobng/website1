@@ -11,10 +11,11 @@
         /* --- CSS Variables from the Connected Grid Theme --- */
         :root {
             --canvas-color-solid: #F8F7F2;
-            --canvas-color-glass: rgba(248, 247, 242, 0.4); /* Slightly less transparent for readability */
+            --canvas-color-glass: rgba(248, 247, 242, 0.4);
             --text-color: #222222;
             --yellow-accent: #FDB813;
-            --yellow-accent-rgb: 253, 184, 19; /* RGB for alpha blending */
+            /* CORRECTED: Matched the RGB value from style.css */
+            --yellow-accent-rgb: 255, 235, 59; 
             --blue-accent: #00A8E8;
             --border-width: 2px;
             --border-color: rgba(34, 34, 34, 0.3);
@@ -84,10 +85,10 @@
             box-shadow: 0 4px 15px var(--shadow-color);
         }
         header h1 {
-            font-family: 'Manrope', sans-serif; /* Matched font */
+            font-family: 'Manrope', sans-serif;
             font-weight: 700;
             color: var(--text-color); text-align: center; font-size: 2.8em;
-            margin-bottom: 40px; text-transform: none; /* Removed uppercase */
+            margin-bottom: 40px; text-transform: none;
             letter-spacing: 0px; text-shadow: none;
         }
         header h1::after {
@@ -182,7 +183,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.08); cursor: pointer;
         }
         .action-button:hover {
-            background-color: #FFD700; /* A slightly brighter yellow on hover */
+            background-color: #FFD700;
             transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.12);
         }
         #back-to-cinemas-btn { background-color: var(--medium-text); color: var(--canvas-color-solid); }
@@ -260,16 +261,15 @@
             transform: translateY(-1px);
         }
 
-        /* MOBILE RESPONSIVENESS STYLES */
         @media (max-width: 600px) {
             .home-link {
-                position: absolute; /* Change to absolute so it scrolls with content */
+                position: absolute;
                 top: 20px;
                 left: 20px;
                 font-size: 1.5em;
             }
             .container {
-                margin-top: 80px; /* Add space for the home link */
+                margin-top: 80px;
             }
             .showtimes-list li {
                 flex-wrap: wrap;
@@ -291,7 +291,7 @@
 </style>
 </head>
 <body>
-    <a href="index.html" class="home-link">Leo Nelki</a>
+    <a href="/" class="home-link">Leo Nelki</a>
     <div class="container">
         <header> <h1 id="main-header">Tokyo Independent Cinema Showtimes</h1> </header>
         <button id="back-to-cinemas-btn" class="action-button hidden">&laquo; Back to Cinemas</button>
@@ -403,6 +403,8 @@
                 { name: "SHIBUYA-KU 渋谷区", cinemas: [ "シアターギルド代官山", "YEBISU GARDEN CINEMA", "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント" ] }
             ];
 
+            // --- The rest of the Javascript is unchanged ---
+            
             function isProbablyNotJapanese(text) {
                 if (!text) return false;
                 if (!/[a-zA-Z]/.test(text)) return false;
@@ -727,5 +729,3 @@
     </script>
 </body>
 </html>
-}
-what do you think of this?
