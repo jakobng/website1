@@ -1,18 +1,23 @@
 name: Scrape Movie Showtimes (TMDB/Letterboxd Focused)
 
 on:
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
   schedule:
-    # Runs every day at 00:05 UTC (09:05 JST next day)
     - cron: '5 0 * * *'
 
 jobs:
   scrape_and_commit:
     runs-on: ubuntu-latest
+    
+    # <<< ADD THIS PERMISSIONS BLOCK
+    permissions:
+      contents: write
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      # ... the rest of your steps remain exactly the same ...
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,7 +31,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade google-generativeai
-          # <<< CHANGE: Path quoted to handle the space in the folder name
           pip install -r 'cinema scrapers/requirements.txt'
 
       - name: Install Playwright Browsers
@@ -35,14 +39,12 @@ jobs:
       - name: Cache TMDB data
         uses: actions/cache@v4
         with:
-          # <<< CHANGE: Path updated to the correct folder
           path: 'cinema scrapers/tmdb_cache.json'
           key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('**/main_scraper.py') }}
           restore-keys: |
             ${{ runner.os }}-tmdb-cache-
 
       - name: Run scraper script
-        # <<< CHANGE: Working directory updated and quoted
         working-directory: './cinema scrapers'
         run: python main_scraper.py
         env:
@@ -53,16 +55,12 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # <<< CHANGE: Paths quoted to handle the space in the folder name
           git add 'cinema scrapers/showtimes.json' 
           git add 'cinema scrapers/tmdb_cache.json' 
-
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-
           git commit -m "Automated update of showtimes and cache files"
           git pull origin main --rebase
           git push
