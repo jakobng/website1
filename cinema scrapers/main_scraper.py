@@ -337,6 +337,7 @@ def get_alternative_title_with_gemini(cleaned_film_title, original_title_for_con
         traceback.print_exc(file=sys.stderr)
         return None
 
+# --- Main Enrichment Function (REVISED) ---
 def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_key, gemini_is_enabled):
     if not all_listings:
         return []
@@ -351,13 +352,19 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
         if not cleaned_title:
             continue
 
-        year = listing.get('year') or (re.search(r'\b(19[7-9]\d|20[0-2]\d|203\d)\b', original_title) or [''])[0]
+        # Handle year extraction more robustly
+        year_from_listing = str(listing.get('year', '')).strip()
+        if not year_from_listing or year_from_listing.upper() == 'N/A':
+            year = 'N/A'
+        else:
+            year = (re.search(r'\b(19[7-9]\d|20[0-2]\d|203\d)\b', year_from_listing) or ['N/A'])[0]
+
         film_key = (cleaned_title, year)
         
         if film_key not in unique_films:
             unique_films[film_key] = {
                 "original_title": original_title,
-                "english_title": listing.get("movie_title_en"), # Capture English title
+                "english_title": listing.get("movie_title_en"),
                 "director": listing.get("director"),
                 "country": listing.get("country"),
             }
@@ -367,53 +374,55 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
     enrichment_map = {}
     for film_key, film_info in unique_films.items():
         cleaned_title, year = film_key
-        cache_key = f"{cleaned_title}|{year or ''}|{film_info.get('director') or ''}"
+        # Use a more robust cache key
+        cache_key = f"{cleaned_title}|{year if year != 'N/A' else ''}|{film_info.get('director') or ''}"
         
         if cache_key in cache_data and cache_data[cache_key].get("id"):
             enrichment_map[film_key] = cache_data[cache_key]
             continue
         
-        print(f"--- Processing Unique Film: '{cleaned_title}' (Year: {year or 'Any'}) ---")
+        print(f"--- Processing Unique Film: '{cleaned_title}' (Year: {year}) ---")
         
-        tmdb_result = {} # Initialize as empty
+        tmdb_result = {}
         
-        # STEP 1: Attempt search with pre-scraped English title (language-neutral)
+        # Use 'year' for search only if it's not 'N/A'
+        search_year = year if year != 'N/A' else None
+
+        # STEP 1: Attempt search with pre-scraped English title
         english_title_from_scrape = film_info.get("english_title")
         if tmdb_api_key and english_title_from_scrape:
             tmdb_result = get_tmdb_film_details(
-                english_title_from_scrape, tmdb_api_key, session, year, language_code=None
+                english_title_from_scrape, tmdb_api_key, session, search_year, language_code=None
             )
 
-        # STEP 2: Fallback to Japanese title search if the first attempt failed
+        # STEP 2: Fallback to Japanese title search
         if tmdb_api_key and (not tmdb_result or not tmdb_result.get("id")):
             if english_title_from_scrape:
                 print("Language-neutral search failed. Falling back to Japanese title search.")
-            
             tmdb_result = get_tmdb_film_details(
-                cleaned_title, tmdb_api_key, session, year, language_code='ja-JP'
+                cleaned_title, tmdb_api_key, session, search_year, language_code='ja-JP'
             )
             
-        # STEP 3: Fallback to Gemini if both TMDb searches fail
+        # STEP 3: Fallback to Gemini
         if gemini_is_enabled and (not tmdb_result or not tmdb_result.get("id")):
             print(f"TMDb search failed for '{cleaned_title}'. Attempting Gemini fallback.")
             alt_title = get_alternative_title_with_gemini(
                 cleaned_title, film_info["original_title"], session,
-                year=year, director=film_info["director"], country=film_info["country"]
+                year=search_year, director=film_info["director"], country=film_info["country"]
             )
             time.sleep(GEMINI_DELAY)
             
             if alt_title and "NO_TITLE_FOUND" not in alt_title:
                 print(f"Retrying TMDB with alternative title from Gemini: '{alt_title}'")
-                # IMPORTANT: We now pass the original 'year' to the fallback search
                 tmdb_result_from_alt = get_tmdb_film_details(
-                    alt_title, tmdb_api_key, session, year=year, language_code=None
+                    alt_title, tmdb_api_key, session, year=search_year, language_code=None
                 )
                 if tmdb_result_from_alt and tmdb_result_from_alt.get("id"):
                     tmdb_result = tmdb_result_from_alt
 
-        # --- NEW VALIDATION LOGIC ---
-        # After any successful lookup, cross-reference the year before accepting the result.
-        if year and tmdb_result.get("id"):
+        # --- REVISED VALIDATION LOGIC ---
+        # Only validate the year if the scraped year was not 'N/A'
+        if year != 'N/A' and tmdb_result.get("id"):
             details_url = f"{TMDB_API_BASE_URL}/movie/{tmdb_result['id']}?api_key={tmdb_api_key}"
             try:
                 details_response = session.get(details_url, headers=REQUEST_HEADERS, timeout=10)
@@ -429,10 +438,8 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
                         tmdb_result = {} # Invalidate the result
                 else:
                     print(f"⚠️ Could not verify release year for TMDB ID {tmdb_result['id']}. Accepting cautiously.")
-
             except Exception as e:
                 print(f"Error fetching details for year validation: {e}", file=sys.stderr)
-                # Decide if you want to invalidate on error. For now, we'll let it pass.
 
         current_enrichment_data = {}
         if tmdb_result and tmdb_result.get("id"):
@@ -451,7 +458,13 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
     for listing in all_listings:
         original_title = (listing.get('movie_title') or listing.get('title') or "").strip()
         cleaned_title = clean_title_for_search(original_title)
-        year = listing.get('year') or (re.search(r'\b(19[7-9]\d|20[0-2]\d|203\d)\b', original_title) or [''])[0]
+        
+        year_from_listing = str(listing.get('year', '')).strip()
+        if not year_from_listing or year_from_listing.upper() == 'N/A':
+            year = 'N/A'
+        else:
+            year = (re.search(r'\b(19[7-9]\d|20[0-2]\d|203\d)\b', year_from_listing) or ['N/A'])[0]
+            
         film_key = (cleaned_title, year)
 
         enriched_data = enrichment_map.get(film_key, {})
