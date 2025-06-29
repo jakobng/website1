@@ -192,15 +192,23 @@ def get_tmdb_film_details(search_title, api_key, session, year=None, language_co
             score += 50
         
         release_date = result.get('release_date', '')
+        year_match_found = False
         if year and release_date:
             try:
                 release_year = int(release_date.split('-')[0])
                 if release_year == int(year):
                     score += 200
-                elif abs(release_year - int(year)) == 1:
-                    score += 50
+                    year_match_found = True
+                else:
+                    # If the scraper provided a year and it doesn't match,
+                    # this is the wrong film. Disqualify it.
+                    score = -999 # Setting a negative score ensures it won't be picked
             except (ValueError, IndexError):
                 pass
+        
+        # If the score is negative, skip to the next result immediately
+        if score < 0:
+            continue
 
         score += result.get('popularity', 0) / 100
 
