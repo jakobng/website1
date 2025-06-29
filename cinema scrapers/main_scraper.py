@@ -14,6 +14,30 @@ from bs4 import BeautifulSoup
 # --- All cinema scraper modules ---
 # NOTE: This list now includes all modules you have provided code for.
 import bunkamura_module
+import bluestudio_module
+import cine_switch_ginza_module
+import eurospace_module
+import human_shibuya_module
+import human_yurakucho_module
+import image_forum_module
+import ks_cinema_module
+import laputa_asagaya_module
+import meguro_cinema_module
+import musashino_kan_module
+import nfaj_calendar_module as nfaj_module  # Using the alias as requested
+import polepole_module
+import shin_bungeiza_module
+import shimotakaido_module
+import stranger_module
+import theatre_shinjuku_module
+import waseda_shochiku_module
+import cinemart_shinjuku_module
+import cinema_qualite_module
+import cine_quinto_module
+import yebisu_garden_module
+import k2_cinema_module
+import cinema_rosa_module
+import chupki_module
 
 # --- Google Gemini API Import ---
 try:
@@ -471,6 +495,29 @@ def run_all_scrapers():
     all_listings = []
     
     all_listings += _run_scraper("Bunkamura", bunkamura_module.scrape_bunkamura)
+    all_listings += _run_scraper("K's Cinema", ks_cinema_module.scrape_ks_cinema)Add commentMore actions
+    all_listings += _run_scraper("Shin-Bungeiza", shin_bungeiza_module.scrape_shin_bungeiza)
+    all_listings += _run_scraper("Shimotakaido Cinema", shimotakaido_module.scrape_shimotakaido)
+    all_listings += _run_scraper("Stranger", stranger_module.scrape_stranger)
+    all_listings += _run_scraper("Meguro Cinema", meguro_cinema_module.scrape_meguro_cinema)
+    all_listings += _run_scraper("Image Forum", image_forum_module.scrape)
+    all_listings += _run_scraper("Theatre Shinjuku", theatre_shinjuku_module.scrape_theatre_shinjuku)
+    all_listings += _run_scraper("Pole Pole Higashi-Nakano", polepole_module.scrape_polepole)
+    all_listings += _run_scraper("Cinema Blue Studio", bluestudio_module.scrape_bluestudio)
+    all_listings += _run_scraper("Human Trust Cinema Shibuya", human_shibuya_module.scrape_human_shibuya)
+    all_listings += _run_scraper("Human Trust Cinema Yurakucho", human_yurakucho_module.scrape_human_yurakucho)
+    all_listings += _run_scraper("Laputa Asagaya", laputa_asagaya_module.scrape_laputa_asagaya)
+    all_listings += _run_scraper("Shinjuku Musashino-kan", musashino_kan_module.scrape_musashino_kan)
+    all_listings += _run_scraper("Waseda Shochiku", waseda_shochiku_module.scrape_waseda_shochiku)
+    all_listings += _run_scraper("National Film Archive", nfaj_module.scrape_nfaj_calendar)
+    all_listings += _run_scraper("Eurospace", eurospace_module.scrape, normalize_func=_normalize_eurospace_schema)
+    all_listings += _run_scraper("Cinemart Shinjuku", cinemart_shinjuku_module.scrape_cinemart_shinjuku)
+    all_listings += _run_scraper("Cinema Qualite", cinema_qualite_module.scrape_cinema_qualite)
+    all_listings += _run_scraper("Cine Quinto", cine_quinto_module.scrape_cine_quinto)
+    all_listings += _run_scraper("Yebisu Garden Cinema", yebisu_garden_module.scrape_yebisu_garden_cinema)
+    all_listings += _run_scraper("K2 Cinema", k2_cinema_module.scrape_k2_cinema)
+    all_listings += _run_scraper("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa)
+    all_listings += _run_scraper("Chupki", chupki_module.scrape_chupki)
 
     print(f"\nCollected a total of {len(all_listings)} showings from regular scrapers.")
     return all_listings
