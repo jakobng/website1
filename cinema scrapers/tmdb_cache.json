@@ -156,10 +156,20 @@
   },
   "2本目割プロフェッショナル|": {},
   "2本目割アマチュア|": {},
-  "2本目割吸血鬼|": {},
+  "2本目割吸血鬼|": {
+    "id": 741636,
+    "tmdb_title": "Bloodthirsty",
+    "tmdb_original_title": "Bloodthirsty",
+    "letterboxd_english_title": "Bloodthirsty (2020)"
+  },
   "3本セットトーク付グレンダイザー50周年まんがまつり|": {},
   "2本セットトーク付押井守映画祭2025《うる星やつら 編》|": {},
-  "オールナイト20世紀末のトーキョーナイト|": {},
+  "オールナイト20世紀末のトーキョーナイト|": {
+    "id": 150164,
+    "tmdb_title": "All Night Long 2",
+    "tmdb_original_title": "オールナイトロング2",
+    "letterboxd_english_title": "All Night Long 2 (1995)"
+  },
   "2本セットThat'sカンニング！ 史上最大の作戦？ + 友子の場合|": {},
   "愛の新世界|": {
     "id": 108433,
@@ -466,7 +476,12 @@
     "tmdb_original_title": "くまをまつ",
     "letterboxd_english_title": "The Bear Wait (2024)"
   },
-  "私は何度も私になる 字幕版|2021": {},
+  "私は何度も私になる 字幕版|2021": {
+    "id": 796151,
+    "tmdb_title": "Barbarian Invasion",
+    "tmdb_original_title": "野蛮人入侵",
+    "letterboxd_english_title": "Barbarian Invasion (2021)"
+  },
   "怒る西行|2009": {},
   "WHO IS THAT MAN!?あの男は誰だ！？|2013": {},
   "ピアニストを待ちながら|2024": {
@@ -614,7 +629,12 @@
     "tmdb_original_title": "中山教頭の人生テスト",
     "letterboxd_english_title": "PRINCIPAL EXAMINATION (2025)"
   },
-  "テルマがゆく! 93歳のやさしいリベンジ|": {},
+  "テルマがゆく! 93歳のやさしいリベンジ|": {
+    "id": 846864,
+    "tmdb_title": "Rose",
+    "tmdb_original_title": "Rose",
+    "letterboxd_english_title": "Rose (2021)"
+  },
   "突然、君がいなくなって|": {},
   "無名の人生|": {
     "id": 1441453,
@@ -872,7 +892,12 @@
     "tmdb_original_title": "儀式",
     "letterboxd_english_title": "The Ceremony (1971)"
   },
-  "『うぉっしゅ』|": {},
+  "『うぉっしゅ』|": {
+    "id": 979715,
+    "tmdb_title": "Wash",
+    "tmdb_original_title": "Wash",
+    "letterboxd_english_title": "Wash (1999)"
+  },
   "『シーナ＆ロケッツ 鮎川誠 ～ロックと家族の絆～』|": {},
   "『コロッサル・ユース』|": {
     "id": 82404,
@@ -969,5 +994,30 @@
     "tmdb_title": "Dog on Trial",
     "tmdb_original_title": "Le Procès du Chien",
     "letterboxd_english_title": "Dog on Trial (2024)"
-  }
+  },
+  "マリア・モンテッソーリ|2023": {
+    "id": 959395,
+    "tmdb_title": "Maria Montessori",
+    "tmdb_original_title": "La nouvelle femme",
+    "letterboxd_english_title": "Maria Montessori (2023)"
+  },
+  "JOIKA|2023": {
+    "id": 714675,
+    "tmdb_title": "The American",
+    "tmdb_original_title": "The American",
+    "letterboxd_english_title": "The American (2023)"
+  },
+  "ファーストキス 1ST KISS|2025": {
+    "id": 1328862,
+    "tmdb_title": "1st Kiss",
+    "tmdb_original_title": "ファーストキス 1ST KISS",
+    "letterboxd_english_title": "1st Kiss (2025)"
+  },
+  "東京公園|2011": {
+    "id": 202885,
+    "tmdb_title": "Tokyo Park",
+    "tmdb_original_title": "東京公園",
+    "letterboxd_english_title": "Tokyo Park (2011)"
+  },
+  "『朝の火』/『BAUS|": {}
 }
