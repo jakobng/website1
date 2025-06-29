@@ -1024,7 +1024,12 @@
     "letterboxd_english_title": "Bobby's Girl (1985)"
   },
   "オールナイト吉田大八の技巧 虚構と現実の狭間で||": {},
-  "トーク付夢一族 ザ・らいばる||": {},
+  "トーク付夢一族 ザ・らいばる||": {
+    "id": 116609,
+    "tmdb_title": "The Rival",
+    "tmdb_original_title": "The Rival",
+    "letterboxd_english_title": "The Rival (2006)"
+  },
   "ライティング上映劇場版 少女☆歌劇 レヴュースタァライト||": {},
   "3本セット「ロード・オブ・ザ・リング 三部作 SEE」||": {
     "id": 123,
@@ -1084,7 +1089,12 @@
     "tmdb_original_title": "黒部の太陽",
     "letterboxd_english_title": "The Sands of Kurobe (1968)"
   },
-  "2本目割ゲアトルーズ||": {},
+  "2本目割ゲアトルーズ||": {
+    "id": 1126809,
+    "tmdb_title": "Gertrude and Yvan Party Hard",
+    "tmdb_original_title": "Gertrude et Yvan Party Hard",
+    "letterboxd_english_title": "Gertrude and Yvan Party Hard (2022)"
+  },
   "2本目割奇跡||": {},
   "2本目割裁かるゝジャンヌ||": {
     "id": 10047,
@@ -1142,7 +1152,12 @@
     "tmdb_original_title": "愛の新世界",
     "letterboxd_english_title": "A New Love in Tokyo (1994)"
   },
-  "2本目割八甲田山||": {},
+  "2本目割八甲田山||": {
+    "id": 129380,
+    "tmdb_title": "Mount Hakkoda",
+    "tmdb_original_title": "八甲田山",
+    "letterboxd_english_title": "Mount Hakkoda (1977)"
+  },
   "2本目割異端者の家||": {},
   "2本目割FEMME フェム||": {
     "id": 976581,
@@ -1229,7 +1244,12 @@
     "tmdb_original_title": "Piece by Piece",
     "letterboxd_english_title": "Piece By Piece (2024)"
   },
-  "『朝の火』/『BAUS||": {},
+  "『朝の火』/『BAUS||": {
+    "id": 1373801,
+    "tmdb_title": "BAUS: The Ship's Voyage Continues",
+    "tmdb_original_title": "BAUS 映画から船出した映画館",
+    "letterboxd_english_title": "BAUS: The Ship's Voyage Continues (2025)"
+  },
   "アメリカ黒人映画傑作選||": {},
   "Flow|2024|": {
     "id": 823219,
@@ -1406,7 +1426,12 @@
   },
   "私は何度も私になる 字幕版|2021|タン・チュイムイ出演：タン・チュイムイピート・テオブロント・パララエジェームス・リーニー・ウーイ": {},
   "怒る西行|2009|": {},
-  "WHO IS THAT MAN!?あの男は誰だ！？|2013|沖島勲出演：蒲田哲内木英二黒澤正義石塚義高恒松敦巳外波山文明愛奏中原翔子岡村多加江井上カオリほたる古川真司": {},
+  "WHO IS THAT MAN!?あの男は誰だ！？|2013|沖島勲出演：蒲田哲内木英二黒澤正義石塚義高恒松敦巳外波山文明愛奏中原翔子岡村多加江井上カオリほたる古川真司": {
+    "id": 145247,
+    "tmdb_title": "The 100 Year-Old Man Who Climbed Out the Window and Disappeared",
+    "tmdb_original_title": "Hundraåringen som klev ut genom fönstret och försvann",
+    "letterboxd_english_title": "The 100 Year-Old Man Who Climbed Out the Window and Disappeared (2013)"
+  },
   "ピアニストを待ちながら|2024|七里圭出演：井之脇海木竜麻生大友一生澁谷麻美斉藤陽一郎": {
     "id": 1370520,
     "tmdb_title": "Waiting for the Pianist",
@@ -1875,5 +1900,24 @@
     "tmdb_title": "When the Light Breaks",
     "tmdb_original_title": "Ljósbrot",
     "letterboxd_english_title": "When the Light Breaks (2024)"
+  },
+  "JUNK WORLD||": {
+    "id": 1170215,
+    "tmdb_title": "JUNK WORLD",
+    "tmdb_original_title": "JUNK WORLD",
+    "letterboxd_english_title": "JUNK WORLD (2025)"
+  },
+  "エノケンの譽れの土俵入||中川信夫": {},
+  "かあちゃん||中川信夫": {
+    "id": 435936,
+    "tmdb_title": "Kah-chan",
+    "tmdb_original_title": "かあちゃん",
+    "letterboxd_english_title": "Kah-chan (2001)"
+  },
+  "怪談 蛇女||": {
+    "id": 107413,
+    "tmdb_title": "Snake Woman's Curse",
+    "tmdb_original_title": "怪談 蛇女",
+    "letterboxd_english_title": "Snake Woman's Curse (1968)"
   }
 }
