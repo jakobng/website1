@@ -47,14 +47,25 @@ TIMEOUT        = 20
 _TIME_RE       = re.compile(r"(\d{1,2}:\d{2})")
 _YEAR_RE       = re.compile(r"(19\d{2}|20\d{2})")
 _RUNTIME_RE    = re.compile(r"(\d+)\s*分")
+# Regex to clean title suffixes like " 4K", " ４Kレストア", etc.
+_TITLE_SUFFIX_RE = re.compile(r'\s*(?:[24２４]K|レストア).*$', re.IGNORECASE)
 
 # ---------------------------------------------------------------------------
 #  HTTP helpers
 # ---------------------------------------------------------------------------
 
 def _fetch(url: str, *, binary: bool = False) -> str | bytes:
+    """
+    Fetches content from a URL.
+    This version has been fixed to explicitly set the text encoding to UTF-8
+    to prevent character garbling in the output.
+    """
     resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     resp.raise_for_status()
+    if not binary:
+        # Force the encoding to UTF-8. The server sometimes fails to specify
+        # this in the response headers, causing `requests` to guess incorrectly.
+        resp.encoding = "utf-8"
     return resp.content if binary else resp.text
 
 
@@ -69,7 +80,7 @@ def _parse_detail_page(url: str) -> Dict[str, str]:
     """
     Return dict with director / year / country / runtime / synopsis by
     parsing the structured <dl class="information"> list on the detail page.
-    This version also cleans the movie title.
+    This version has been improved for more robust parsing.
     """
     out = {
         "director": "",
@@ -89,38 +100,44 @@ def _parse_detail_page(url: str) -> Dict[str, str]:
 
     # --- Title Extraction and Cleaning ---
     if title_tag := soup.select_one("h2 > span.ttl"):
-        # Clean title by splitting on the full-width space to remove "4K" etc.
-        out["movie_title"] = title_tag.get_text(" ", strip=True).split('　')[0]
+        title_text = title_tag.get_text(" ", strip=True)
+        # Robustly clean title by removing "4K" and other suffixes from the end
+        out["movie_title"] = _TITLE_SUFFIX_RE.sub('', title_text).strip()
 
     if en_title_tag := soup.select_one("h2 > span.en"):
         out["movie_title_en"] = en_title_tag.get_text(" ", strip=True)
 
-    # --- Information DL Parsing ---
+    # --- Information DL Parsing (Robust Method) ---
     if info_dl := soup.select_one("dl.information"):
-        # Create a dictionary of all DT:DD pairs for easy lookup
-        labels = [dt.get_text(" ", strip=True) for dt in info_dl.select("dt")]
-        values = [dd.get_text(" ", strip=True) for dd in info_dl.select("dd")]
-        info_dict = dict(zip(labels, values))
+        # Iterate through definition terms to find the right data robustly
+        for dt in info_dl.select("dt"):
+            dt_text = dt.get_text(strip=True)
+            dd_tag = dt.find_next_sibling("dd")
+            if not dd_tag:
+                continue
 
-        # --- Director ---
-        out["director"] = info_dict.get("監督", "").strip()
+            dd_text = dd_tag.get_text(" ", strip=True)
 
-        # --- "作品情報" (Work Info) Parsing ---
-        if work_info := info_dict.get("作品情報"):
-            # Example: "2001年／イギリス、アメリカ／97分／PG12"
-            parts = work_info.split('／')
-            if len(parts) >= 3:
-                # Year (from first part)
-                if m := _YEAR_RE.search(parts[0]):
+            if "監督" in dt_text:
+                out["director"] = dd_text
+            
+            elif "作品情報" in dt_text:
+                # Use regex to find year and runtime wherever they appear
+                if m := _YEAR_RE.search(dd_text):
                     out["year"] = m.group(1)
-                # Country (from second part)
-                out["country"] = parts[1].strip()
-                # Runtime (from third part)
-                if m := _RUNTIME_RE.search(parts[2]):
+                if m := _RUNTIME_RE.search(dd_text):
                     out["runtime_min"] = m.group(1)
+                
+                # Heuristic for country: remove known patterns and clean up
+                country_str = dd_text
+                country_str = re.sub(r'\d{4}年?', '', country_str)
+                country_str = re.sub(r'\d+\s*分', '', country_str)
+                country_str = re.sub(r'PG12|G|R15\+|R18\+', '', country_str)
+                # Clean up leftover separators (／) and whitespace
+                country_str = re.sub(r'^[／\s]+|[／\s]+$', '', country_str).strip()
+                out["country"] = country_str
 
     # --- Synopsis ---
-    # Targets the first paragraph in the main text block
     if syn_p := soup.select_one("div.text > p:first-of-type"):
         out["synopsis"] = syn_p.get_text("\n", strip=True)
 
