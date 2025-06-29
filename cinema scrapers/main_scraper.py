@@ -495,7 +495,7 @@ def run_all_scrapers():
     all_listings = []
     
     all_listings += _run_scraper("Bunkamura", bunkamura_module.scrape_bunkamura)
-    all_listings += _run_scraper("K's Cinema", ks_cinema_module.scrape_ks_cinema)Add commentMore actions
+    all_listings += _run_scraper("K's Cinema", ks_cinema_module.scrape_ks_cinema)
     all_listings += _run_scraper("Shin-Bungeiza", shin_bungeiza_module.scrape_shin_bungeiza)
     all_listings += _run_scraper("Shimotakaido Cinema", shimotakaido_module.scrape_shimotakaido)
     all_listings += _run_scraper("Stranger", stranger_module.scrape_stranger)
