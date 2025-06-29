@@ -337,7 +337,6 @@ def get_alternative_title_with_gemini(cleaned_film_title, original_title_for_con
         traceback.print_exc(file=sys.stderr)
         return None
 
-# --- Main Enrichment Function (MODIFIED) ---
 def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_key, gemini_is_enabled):
     if not all_listings:
         return []
@@ -368,7 +367,7 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
     enrichment_map = {}
     for film_key, film_info in unique_films.items():
         cleaned_title, year = film_key
-        cache_key = f"{cleaned_title}|{year or ''}"
+        cache_key = f"{cleaned_title}|{year or ''}|{film_info.get('director') or ''}"
         
         if cache_key in cache_data and cache_data[cache_key].get("id"):
             enrichment_map[film_key] = cache_data[cache_key]
@@ -405,12 +404,36 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
             
             if alt_title and "NO_TITLE_FOUND" not in alt_title:
                 print(f"Retrying TMDB with alternative title from Gemini: '{alt_title}'")
+                # IMPORTANT: We now pass the original 'year' to the fallback search
                 tmdb_result_from_alt = get_tmdb_film_details(
-                    alt_title, tmdb_api_key, session, year=None, language_code=None # Use neutral search for Gemini title
+                    alt_title, tmdb_api_key, session, year=year, language_code=None
                 )
                 if tmdb_result_from_alt and tmdb_result_from_alt.get("id"):
                     tmdb_result = tmdb_result_from_alt
-        
+
+        # --- NEW VALIDATION LOGIC ---
+        # After any successful lookup, cross-reference the year before accepting the result.
+        if year and tmdb_result.get("id"):
+            details_url = f"{TMDB_API_BASE_URL}/movie/{tmdb_result['id']}?api_key={tmdb_api_key}"
+            try:
+                details_response = session.get(details_url, headers=REQUEST_HEADERS, timeout=10)
+                time.sleep(TMDB_DETAILS_DELAY)
+                details_response.raise_for_status()
+                details_data = details_response.json()
+                release_date = details_data.get('release_date', '')
+                
+                if release_date:
+                    release_year = release_date.split('-')[0]
+                    if release_year != year:
+                        print(f"⚠️ YEAR MISMATCH: Scraped year is {year}, but TMDB result is {release_year}. Discarding result.")
+                        tmdb_result = {} # Invalidate the result
+                else:
+                    print(f"⚠️ Could not verify release year for TMDB ID {tmdb_result['id']}. Accepting cautiously.")
+
+            except Exception as e:
+                print(f"Error fetching details for year validation: {e}", file=sys.stderr)
+                # Decide if you want to invalidate on error. For now, we'll let it pass.
+
         current_enrichment_data = {}
         if tmdb_result and tmdb_result.get("id"):
             current_enrichment_data.update(tmdb_result)
