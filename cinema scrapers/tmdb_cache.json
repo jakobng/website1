@@ -1037,7 +1037,12 @@
     "tmdb_original_title": "The Lord of the Rings",
     "letterboxd_english_title": "The Lord of the Rings (1978)"
   },
-  "2本目割初恋（ファースト・ラブ）||": {},
+  "2本目割初恋（ファースト・ラブ）||": {
+    "id": 81803,
+    "tmdb_title": "First Love",
+    "tmdb_original_title": "Primo amore",
+    "letterboxd_english_title": "First Love (1978)"
+  },
   "2本目割探偵＜スルース＞||": {
     "id": 4520,
     "tmdb_title": "Sleuth",
@@ -1145,7 +1150,12 @@
   "3本セットトーク付グレンダイザー50周年まんがまつり||": {},
   "2本セットトーク付押井守映画祭2025《うる星やつら 編》||": {},
   "オールナイト20世紀末のトーキョーナイト||": {},
-  "2本セットThat'sカンニング！ 史上最大の作戦？ + 友子の場合||": {},
+  "2本セットThat'sカンニング！ 史上最大の作戦？ + 友子の場合||": {
+    "id": 80303,
+    "tmdb_title": "That's Cunning! Shijo Saidai no Sakusen?",
+    "tmdb_original_title": "That's カンニング! 史上最大の作戦?",
+    "letterboxd_english_title": "That's Cunning! Shijo Saidai no Sakusen? (1996)"
+  },
   "愛の新世界||": {
     "id": 108433,
     "tmdb_title": "A New Love in Tokyo",
@@ -1288,7 +1298,12 @@
     "tmdb_original_title": "The Running Man",
     "letterboxd_english_title": "The Running Man (1987)"
   },
-  "ボイジャー 4Kレストア|1991|": {},
+  "ボイジャー 4Kレストア|1991|": {
+    "id": 10171,
+    "tmdb_title": "Voyager",
+    "tmdb_original_title": "Homo Faber",
+    "letterboxd_english_title": "Voyager (1991)"
+  },
   "中山教頭の人生テスト|2025|": {
     "id": 1475029,
     "tmdb_title": "PRINCIPAL EXAMINATION",
@@ -1783,7 +1798,12 @@
     "tmdb_original_title": "THE KILLER GOLDFISH",
     "letterboxd_english_title": "The Killer Goldfish (2024)"
   },
-  "『東京予報』||": {},
+  "『東京予報』||": {
+    "id": 1482087,
+    "tmdb_title": "Tokyo Forecast",
+    "tmdb_original_title": "東京予報 ― 映画監督外山文治短編作品集 ―",
+    "letterboxd_english_title": "Tokyo Forecast (2025)"
+  },
   "『〇〇式』||": {},
   "『うぉっしゅ』||": {
     "id": 979715,
