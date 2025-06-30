@@ -600,7 +600,14 @@
                     cinemaBlock.className = 'pick-cinema-block';
 
                     const cinemaHeader = document.createElement('h4');
-                    cinemaHeader.textContent = cinemaName;
+                    let primaryCinemaName = preferredJapaneseDisplayNames[cinemaName] || cinemaName;
+                    let englishCinemaName = cinemaEnglishNames[cinemaName] || null;
+
+                    let cinemaNameHtml = primaryCinemaName;
+                    if (englishCinemaName && englishCinemaName.toLowerCase() !== primaryCinemaName.toLowerCase()) {
+                        cinemaNameHtml += ` <span class="cinema-english-name-card" style="display:inline; font-size: 0.9em;">(${englishCinemaName})</span>`;
+                    }
+                    cinemaHeader.innerHTML = cinemaNameHtml;
                     cinemaBlock.appendChild(cinemaHeader);
 
                     const showtimesList = document.createElement('ul');
@@ -954,3 +961,4 @@
     </script>
 </body>
 </html>
+
