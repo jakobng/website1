@@ -1037,12 +1037,7 @@
     "tmdb_original_title": "The Lord of the Rings",
     "letterboxd_english_title": "The Lord of the Rings (1978)"
   },
-  "2本目割初恋（ファースト・ラブ）||": {
-    "id": 81803,
-    "tmdb_title": "First Love",
-    "tmdb_original_title": "Primo amore",
-    "letterboxd_english_title": "First Love (1978)"
-  },
+  "2本目割初恋（ファースト・ラブ）||": {},
   "2本目割探偵＜スルース＞||": {
     "id": 4520,
     "tmdb_title": "Sleuth",
@@ -1150,12 +1145,7 @@
   "3本セットトーク付グレンダイザー50周年まんがまつり||": {},
   "2本セットトーク付押井守映画祭2025《うる星やつら 編》||": {},
   "オールナイト20世紀末のトーキョーナイト||": {},
-  "2本セットThat'sカンニング！ 史上最大の作戦？ + 友子の場合||": {
-    "id": 80303,
-    "tmdb_title": "That's Cunning! Shijo Saidai no Sakusen?",
-    "tmdb_original_title": "That's カンニング! 史上最大の作戦?",
-    "letterboxd_english_title": "That's Cunning! Shijo Saidai no Sakusen? (1996)"
-  },
+  "2本セットThat'sカンニング！ 史上最大の作戦？ + 友子の場合||": {},
   "愛の新世界||": {
     "id": 108433,
     "tmdb_title": "A New Love in Tokyo",
@@ -1298,12 +1288,7 @@
     "tmdb_original_title": "The Running Man",
     "letterboxd_english_title": "The Running Man (1987)"
   },
-  "ボイジャー 4Kレストア|1991|": {
-    "id": 10171,
-    "tmdb_title": "Voyager",
-    "tmdb_original_title": "Homo Faber",
-    "letterboxd_english_title": "Voyager (1991)"
-  },
+  "ボイジャー 4Kレストア|1991|": {},
   "中山教頭の人生テスト|2025|": {
     "id": 1475029,
     "tmdb_title": "PRINCIPAL EXAMINATION",
@@ -1939,5 +1924,75 @@
     "tmdb_title": "Snake Woman's Curse",
     "tmdb_original_title": "怪談 蛇女",
     "letterboxd_english_title": "Snake Woman's Curse (1968)"
+  },
+  "「ロード・オブ・ザ・リング 三部作 SEE」||": {},
+  "初恋（ファースト・ラブ）||": {
+    "id": 669179,
+    "tmdb_title": "First Love",
+    "tmdb_original_title": "시호",
+    "letterboxd_english_title": "First Love (2020)"
+  },
+  "探偵＜スルース＞||": {
+    "id": 4520,
+    "tmdb_title": "Sleuth",
+    "tmdb_original_title": "Sleuth",
+    "letterboxd_english_title": "Sleuth (2007)"
+  },
+  "怪獣ゴルゴ||ユージン・ローリー": {
+    "id": 40804,
+    "tmdb_title": "Gorgo",
+    "tmdb_original_title": "Gorgo",
+    "letterboxd_english_title": "Gorgo (1961)"
+  },
+  "トラック野郎 御意見無用||": {},
+  "トラック野郎 爆走一番星||": {},
+  "暗戦 デッドエンド|1999|ジョニー・トー": {
+    "id": 2463,
+    "tmdb_title": "Running Out of Time",
+    "tmdb_original_title": "暗戰",
+    "letterboxd_english_title": "Running Out of Time (1999)"
+  },
+  "デッドエンド 暗戦リターンズ||": {
+    "id": 45303,
+    "tmdb_title": "Running Out of Time 2",
+    "tmdb_original_title": "暗戰 2",
+    "letterboxd_english_title": "Running Out of Time 2 (2001)"
+  },
+  "トラック野郎 度胸一番星＋トラック野郎 爆走一番星||": {},
+  "トラック野郎 男一匹桃次郎＋トラック野郎 御意見無用||": {},
+  "トラック野郎 御意見無用|1975|鈴木則文": {
+    "id": 163340,
+    "tmdb_title": "Truck Rascals: No One Can Stop Me",
+    "tmdb_original_title": "トラック野郎　御意見無用",
+    "letterboxd_english_title": "Truck Rascals: No One Can Stop Me (1975)"
+  },
+  "トラック野郎 望郷一番星||": {},
+  "トラック野郎 度胸一番星||": {},
+  "トラック野郎 男一匹桃次郎||": {},
+  "最新！！性風俗ドキュメント|1994|深町章": {},
+  "稲妻峠の決斗||": {
+    "id": 491502,
+    "tmdb_title": "Showdown at Lightning Pass",
+    "tmdb_original_title": "稲妻峠の決斗",
+    "letterboxd_english_title": "Showdown at Lightning Pass (1962)"
+  },
+  "金語樓のむすめ物語||中川信夫": {},
+  "悲しみはいつも母に||中川信夫": {
+    "id": 365400,
+    "tmdb_title": "Kanashimi wa itsumo haha ni",
+    "tmdb_original_title": "悲しみはいつも母に",
+    "letterboxd_english_title": "Kanashimi wa itsumo haha ni (1962)"
+  },
+  "中山教頭の人生テスト||": {
+    "id": 1475029,
+    "tmdb_title": "PRINCIPAL EXAMINATION",
+    "tmdb_original_title": "中山教頭の人生テスト",
+    "letterboxd_english_title": "PRINCIPAL EXAMINATION (2025)"
+  },
+  "『THE KILLER GOLDFISH』（英語字幕付き）||": {
+    "id": 1339485,
+    "tmdb_title": "The Killer Goldfish",
+    "tmdb_original_title": "THE KILLER GOLDFISH",
+    "letterboxd_english_title": "The Killer Goldfish (2024)"
   }
 }
