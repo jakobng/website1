@@ -1288,7 +1288,12 @@
     "tmdb_original_title": "The Running Man",
     "letterboxd_english_title": "The Running Man (1987)"
   },
-  "ボイジャー 4Kレストア|1991|": {},
+  "ボイジャー 4Kレストア|1991|": {
+    "id": 10171,
+    "tmdb_title": "Voyager",
+    "tmdb_original_title": "Homo Faber",
+    "letterboxd_english_title": "Voyager (1991)"
+  },
   "中山教頭の人生テスト|2025|": {
     "id": 1475029,
     "tmdb_title": "PRINCIPAL EXAMINATION",
@@ -1382,7 +1387,12 @@
     "letterboxd_english_title": "Forced Migration of Butterflies (2023)"
   },
   "ゴンドラ|2023|": {},
-  "摩文仁|2025|新田義貴": {},
+  "摩文仁|2025|新田義貴": {
+    "id": 1506731,
+    "tmdb_title": "Mabuni",
+    "tmdb_original_title": "摩文仁 mabuni",
+    "letterboxd_english_title": "Mabuni (2025)"
+  },
   "灰となっても|2023|アラン・ラウ": {
     "id": 1133013,
     "tmdb_title": "Dust To Dust",
@@ -1424,7 +1434,12 @@
     "tmdb_original_title": "くまをまつ",
     "letterboxd_english_title": "The Bear Wait (2024)"
   },
-  "私は何度も私になる 字幕版|2021|タン・チュイムイ出演：タン・チュイムイピート・テオブロント・パララエジェームス・リーニー・ウーイ": {},
+  "私は何度も私になる 字幕版|2021|タン・チュイムイ出演：タン・チュイムイピート・テオブロント・パララエジェームス・リーニー・ウーイ": {
+    "id": 1228232,
+    "tmdb_title": "Tomorrow is a Long Time",
+    "tmdb_original_title": "Tomorrow is a Long Time",
+    "letterboxd_english_title": "Tomorrow is a Long Time (2021)"
+  },
   "怒る西行|2009|": {},
   "WHO IS THAT MAN!?あの男は誰だ！？|2013|沖島勲出演：蒲田哲内木英二黒澤正義石塚義高恒松敦巳外波山文明愛奏中原翔子岡村多加江井上カオリほたる古川真司": {
     "id": 145247,
@@ -1615,7 +1630,12 @@
     "letterboxd_english_title": "Okatsu the Fugitive (1969)"
   },
   "日本一の岡っ引／伊太八縞||中川信夫": {},
-  "俠艶小判鮫／続 俠艶小判鮫||中川信夫": {},
+  "俠艶小判鮫／続 俠艶小判鮫||中川信夫": {
+    "id": 399548,
+    "tmdb_title": "Kyōen Kobanzame",
+    "tmdb_original_title": "侠艶小判鮫",
+    "letterboxd_english_title": "Kyōen Kobanzame (1958)"
+  },
   "犬姫様||中川信夫": {},
   "雪解けのあと|2024|ルオ・イシャン(羅苡珊)": {
     "id": 1255586,
@@ -1783,12 +1803,7 @@
     "tmdb_original_title": "THE KILLER GOLDFISH",
     "letterboxd_english_title": "The Killer Goldfish (2024)"
   },
-  "『東京予報』||": {
-    "id": 1482087,
-    "tmdb_title": "Tokyo Forecast",
-    "tmdb_original_title": "東京予報 ― 映画監督外山文治短編作品集 ―",
-    "letterboxd_english_title": "Tokyo Forecast (2025)"
-  },
+  "『東京予報』||": {},
   "『〇〇式』||": {},
   "『うぉっしゅ』||": {
     "id": 979715,
@@ -1925,7 +1940,6 @@
     "tmdb_original_title": "怪談 蛇女",
     "letterboxd_english_title": "Snake Woman's Curse (1968)"
   },
-  "「ロード・オブ・ザ・リング 三部作 SEE」||": {},
   "初恋（ファースト・ラブ）||": {
     "id": 669179,
     "tmdb_title": "First Love",
@@ -1944,7 +1958,12 @@
     "tmdb_original_title": "Gorgo",
     "letterboxd_english_title": "Gorgo (1961)"
   },
-  "トラック野郎 御意見無用||": {},
+  "トラック野郎 御意見無用||": {
+    "id": 473698,
+    "tmdb_title": "Truck Rascals: Another Odyssey of Momojiro",
+    "tmdb_original_title": "トラック野郎　突撃一番星",
+    "letterboxd_english_title": "Truck Rascals: Another Odyssey of Momojiro (1978)"
+  },
   "トラック野郎 爆走一番星||": {},
   "暗戦 デッドエンド|1999|ジョニー・トー": {
     "id": 2463,
@@ -1969,7 +1988,77 @@
   "トラック野郎 望郷一番星||": {},
   "トラック野郎 度胸一番星||": {},
   "トラック野郎 男一匹桃次郎||": {},
+  "〇〇式||": {},
+  "海がきこえる|1993|": {
+    "id": 21057,
+    "tmdb_title": "Ocean Waves",
+    "tmdb_original_title": "海がきこえる",
+    "letterboxd_english_title": "Ocean Waves (1993)"
+  },
+  "バッドランズ|1973|": {},
+  "天国の日々|1978|": {
+    "id": 16642,
+    "tmdb_title": "Days of Heaven",
+    "tmdb_original_title": "Days of Heaven",
+    "letterboxd_english_title": "Days of Heaven (1978)"
+  },
+  "夏の砂の上|2025|玉田真也": {
+    "id": 1446033,
+    "tmdb_title": "On Summer Sand",
+    "tmdb_original_title": "夏の砂の上",
+    "letterboxd_english_title": "On Summer Sand (2025)"
+  },
+  "消防士 2001年、闘いの真実|2024|クァク・キョンテク『友へ チング』": {
+    "id": 645985,
+    "tmdb_title": "Firefighters",
+    "tmdb_original_title": "소방관",
+    "letterboxd_english_title": "Firefighters (2024)"
+  },
+  "V/H/Sビヨンド||": {
+    "id": 1190868,
+    "tmdb_title": "V/H/S/Beyond",
+    "tmdb_original_title": "V/H/S/Beyond",
+    "letterboxd_english_title": "V/H/S/Beyond (2024)"
+  },
+  "恋するリベラーチェ|2024|スティーヴン・ソダーバーグ": {},
+  "おばあちゃんと僕［しゃべれば］||": {},
+  "クリムト & THE KISS -アート・オン・スクリーン特別編-||アリ・レイ": {
+    "id": 1185135,
+    "tmdb_title": "Klimt & The Kiss",
+    "tmdb_original_title": "Klimt & The Kiss",
+    "letterboxd_english_title": "Klimt & The Kiss (2023)"
+  },
+  "メガロポリス|2024|フランシス・フォード・コッポラ": {
+    "id": 592831,
+    "tmdb_title": "Megalopolis",
+    "tmdb_original_title": "Megalopolis",
+    "letterboxd_english_title": "Megalopolis (2024)"
+  },
   "最新！！性風俗ドキュメント|1994|深町章": {},
+  "遊び|1971|増村保造": {
+    "id": 224161,
+    "tmdb_title": "Games",
+    "tmdb_original_title": "遊び",
+    "letterboxd_english_title": "Games (1971)"
+  },
+  "「桐島です」|2025|": {
+    "id": 1442021,
+    "tmdb_title": "I Am Kirishima",
+    "tmdb_original_title": "桐島です",
+    "letterboxd_english_title": "I Am Kirishima (2025)"
+  },
+  "恋するリベラーチェ||": {
+    "id": 119675,
+    "tmdb_title": "Behind the Candelabra",
+    "tmdb_original_title": "Behind the Candelabra",
+    "letterboxd_english_title": "Behind the Candelabra (2013)"
+  },
+  "ROPE|2024|": {
+    "id": 1316400,
+    "tmdb_title": "Hanging on the Same Rope",
+    "tmdb_original_title": "Aynı İpte Asılı",
+    "letterboxd_english_title": "Hanging on the Same Rope (2024)"
+  },
   "稲妻峠の決斗||": {
     "id": 491502,
     "tmdb_title": "Showdown at Lightning Pass",
@@ -1983,13 +2072,105 @@
     "tmdb_original_title": "悲しみはいつも母に",
     "letterboxd_english_title": "Kanashimi wa itsumo haha ni (1962)"
   },
-  "中山教頭の人生テスト||": {
-    "id": 1475029,
-    "tmdb_title": "PRINCIPAL EXAMINATION",
-    "tmdb_original_title": "中山教頭の人生テスト",
-    "letterboxd_english_title": "PRINCIPAL EXAMINATION (2025)"
+  "金さん捕物帖 謎の人形師||中川信夫": {},
+  "地獄||": {
+    "id": 50173,
+    "tmdb_title": "Jigoku",
+    "tmdb_original_title": "地獄",
+    "letterboxd_english_title": "Jigoku (1960)"
   },
-  "『THE KILLER GOLDFISH』（英語字幕付き）||": {
+  "片思い世界||土井裕泰": {
+    "id": 1101179,
+    "tmdb_title": "Unreachable",
+    "tmdb_original_title": "片思い世界",
+    "letterboxd_english_title": "Unreachable (2025)"
+  },
+  "オルエットの方へ||ジャック・ロジエ": {
+    "id": 133467,
+    "tmdb_title": "Near Orouët",
+    "tmdb_original_title": "Du côté d'Orouët",
+    "letterboxd_english_title": "Near Orouët (1971)"
+  },
+  "アデュー・フィリピーヌ||": {
+    "id": 63880,
+    "tmdb_title": "Adieu Philippine",
+    "tmdb_original_title": "Adieu Philippine",
+    "letterboxd_english_title": "Adieu Philippine (1962)"
+  },
+  "ジャック・ロジエ監督特集||": {},
+  "トルテュ島の遭難者たち||": {},
+  "フィフィ・マルタンガル||": {
+    "id": 522612,
+    "tmdb_title": "Fifi Martingale",
+    "tmdb_original_title": "Fifi Martingale",
+    "letterboxd_english_title": "Fifi Martingale (2001)"
+  },
+  "彼女は夢で踊る|2019|脚本・編集：時川英之": {},
+  "消防士 2001年、闘いの真実||クァク・キョンテク": {},
+  "V/H/S ビヨンド||": {
+    "id": 1032948,
+    "tmdb_title": "V/H/S/85",
+    "tmdb_original_title": "V/H/S/85",
+    "letterboxd_english_title": "V/H/S/85 (2023)"
+  },
+  "彼女は夢で踊る||": {
+    "id": 759299,
+    "tmdb_title": "Dancing in her Dreams",
+    "tmdb_original_title": "彼女は夢で踊る",
+    "letterboxd_english_title": "Dancing in her Dreams (2020)"
+  },
+  "ギャスパーナイト！|2020|": {},
+  "天外者 七夕上映会||": {},
+  "ハイポ|2022|": {
+    "id": 915982,
+    "tmdb_title": "Hypochondriac",
+    "tmdb_original_title": "Hypochondriac",
+    "letterboxd_english_title": "Hypochondriac (2022)"
+  },
+  "愛されなくても別に||": {},
+  "#真相をお話しします||": {
+    "id": 1423008,
+    "tmdb_title": "#Iwilltellyouthetruth",
+    "tmdb_original_title": "#真相をお話しします",
+    "letterboxd_english_title": "#Iwilltellyouthetruth (2025)"
+  },
+  "スターレットトークイベント付|2012|ショーン・ベイカー": {
+    "id": 91679,
+    "tmdb_title": "Starlet",
+    "tmdb_original_title": "Starlet",
+    "letterboxd_english_title": "Starlet (2012)"
+  },
+  "テイクアウト||ショーン・ベイカー": {
+    "id": 37736,
+    "tmdb_title": "Take Out",
+    "tmdb_original_title": "Take Out",
+    "letterboxd_english_title": "Take Out (2004)"
+  },
+  "クリムト & THE KISS-アート・オン・スクリーン特別編-||アリ・レイ": {
+    "id": 1185135,
+    "tmdb_title": "Klimt & The Kiss",
+    "tmdb_original_title": "Klimt & The Kiss",
+    "letterboxd_english_title": "Klimt & The Kiss (2023)"
+  },
+  "プリンス・オブ・ブロードウェイ||ショーン・ベイカー": {
+    "id": 87081,
+    "tmdb_title": "Prince of Broadway",
+    "tmdb_original_title": "Prince of Broadway",
+    "letterboxd_english_title": "Prince of Broadway (2008)"
+  },
+  "スターレット|2012|ショーン・ベイカー": {
+    "id": 91679,
+    "tmdb_title": "Starlet",
+    "tmdb_original_title": "Starlet",
+    "letterboxd_english_title": "Starlet (2012)"
+  },
+  "フォー・レター・ワーズ||ショーン・ベイカー": {
+    "id": 253106,
+    "tmdb_title": "Four Letter Words",
+    "tmdb_original_title": "Four Letter Words",
+    "letterboxd_english_title": "Four Letter Words (2000)"
+  },
+  "『THE KILLER GOLDFISH』（with English subtitles）||": {
     "id": 1339485,
     "tmdb_title": "The Killer Goldfish",
     "tmdb_original_title": "THE KILLER GOLDFISH",
