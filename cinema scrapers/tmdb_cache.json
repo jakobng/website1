@@ -1288,12 +1288,7 @@
     "tmdb_original_title": "The Running Man",
     "letterboxd_english_title": "The Running Man (1987)"
   },
-  "ボイジャー 4Kレストア|1991|": {
-    "id": 10171,
-    "tmdb_title": "Voyager",
-    "tmdb_original_title": "Homo Faber",
-    "letterboxd_english_title": "Voyager (1991)"
-  },
+  "ボイジャー 4Kレストア|1991|": {},
   "中山教頭の人生テスト|2025|": {
     "id": 1475029,
     "tmdb_title": "PRINCIPAL EXAMINATION",
@@ -1434,12 +1429,7 @@
     "tmdb_original_title": "くまをまつ",
     "letterboxd_english_title": "The Bear Wait (2024)"
   },
-  "私は何度も私になる 字幕版|2021|タン・チュイムイ出演：タン・チュイムイピート・テオブロント・パララエジェームス・リーニー・ウーイ": {
-    "id": 1228232,
-    "tmdb_title": "Tomorrow is a Long Time",
-    "tmdb_original_title": "Tomorrow is a Long Time",
-    "letterboxd_english_title": "Tomorrow is a Long Time (2021)"
-  },
+  "私は何度も私になる 字幕版|2021|タン・チュイムイ出演：タン・チュイムイピート・テオブロント・パララエジェームス・リーニー・ウーイ": {},
   "怒る西行|2009|": {},
   "WHO IS THAT MAN!?あの男は誰だ！？|2013|沖島勲出演：蒲田哲内木英二黒澤正義石塚義高恒松敦巳外波山文明愛奏中原翔子岡村多加江井上カオリほたる古川真司": {
     "id": 145247,
@@ -1630,12 +1620,7 @@
     "letterboxd_english_title": "Okatsu the Fugitive (1969)"
   },
   "日本一の岡っ引／伊太八縞||中川信夫": {},
-  "俠艶小判鮫／続 俠艶小判鮫||中川信夫": {
-    "id": 399548,
-    "tmdb_title": "Kyōen Kobanzame",
-    "tmdb_original_title": "侠艶小判鮫",
-    "letterboxd_english_title": "Kyōen Kobanzame (1958)"
-  },
+  "俠艶小判鮫／続 俠艶小判鮫||中川信夫": {},
   "犬姫様||中川信夫": {},
   "雪解けのあと|2024|ルオ・イシャン(羅苡珊)": {
     "id": 1255586,
@@ -1803,8 +1788,18 @@
     "tmdb_original_title": "THE KILLER GOLDFISH",
     "letterboxd_english_title": "The Killer Goldfish (2024)"
   },
-  "『東京予報』||": {},
-  "『〇〇式』||": {},
+  "『東京予報』||": {
+    "id": 1482087,
+    "tmdb_title": "Tokyo Forecast",
+    "tmdb_original_title": "東京予報 ― 映画監督外山文治短編作品集 ―",
+    "letterboxd_english_title": "Tokyo Forecast (2025)"
+  },
+  "『〇〇式』||": {
+    "id": 581723,
+    "tmdb_title": "Kamen Rider Drive: Type ZERO! Episode 0 - Countdown to Global Freeze",
+    "tmdb_original_title": "type ZERO 第0話 カウントダウンtoグローバルフリーズ",
+    "letterboxd_english_title": "Kamen Rider Drive: Type ZERO! Episode 0 - Countdown to Global Freeze (2014)"
+  },
   "『うぉっしゅ』||": {
     "id": 979715,
     "tmdb_title": "Wash",
@@ -1940,17 +1935,17 @@
     "tmdb_original_title": "怪談 蛇女",
     "letterboxd_english_title": "Snake Woman's Curse (1968)"
   },
-  "初恋（ファースト・ラブ）||": {
-    "id": 669179,
-    "tmdb_title": "First Love",
-    "tmdb_original_title": "시호",
-    "letterboxd_english_title": "First Love (2020)"
-  },
   "探偵＜スルース＞||": {
     "id": 4520,
     "tmdb_title": "Sleuth",
     "tmdb_original_title": "Sleuth",
     "letterboxd_english_title": "Sleuth (2007)"
+  },
+  "初恋（ファースト・ラブ）||": {
+    "id": 669179,
+    "tmdb_title": "First Love",
+    "tmdb_original_title": "시호",
+    "letterboxd_english_title": "First Love (2020)"
   },
   "怪獣ゴルゴ||ユージン・ローリー": {
     "id": 40804,
@@ -1959,10 +1954,10 @@
     "letterboxd_english_title": "Gorgo (1961)"
   },
   "トラック野郎 御意見無用||": {
-    "id": 473698,
-    "tmdb_title": "Truck Rascals: Another Odyssey of Momojiro",
-    "tmdb_original_title": "トラック野郎　突撃一番星",
-    "letterboxd_english_title": "Truck Rascals: Another Odyssey of Momojiro (1978)"
+    "id": 163340,
+    "tmdb_title": "Truck Rascals: No One Can Stop Me",
+    "tmdb_original_title": "トラック野郎　御意見無用",
+    "letterboxd_english_title": "Truck Rascals: No One Can Stop Me (1975)"
   },
   "トラック野郎 爆走一番星||": {},
   "暗戦 デッドエンド|1999|ジョニー・トー": {
@@ -2008,6 +2003,14 @@
     "tmdb_original_title": "夏の砂の上",
     "letterboxd_english_title": "On Summer Sand (2025)"
   },
+  "かづゑ的|2023|熊谷博子": {},
+  "どうすればよかったか？ 字幕版|2024|藤野知明": {},
+  "青の稲妻|2002|ジャ・ジャンクー": {
+    "id": 80243,
+    "tmdb_title": "Unknown Pleasures",
+    "tmdb_original_title": "任逍遥",
+    "letterboxd_english_title": "Unknown Pleasures (2002)"
+  },
   "消防士 2001年、闘いの真実|2024|クァク・キョンテク『友へ チング』": {
     "id": 645985,
     "tmdb_title": "Firefighters",
@@ -2015,10 +2018,10 @@
     "letterboxd_english_title": "Firefighters (2024)"
   },
   "V/H/Sビヨンド||": {
-    "id": 1190868,
-    "tmdb_title": "V/H/S/Beyond",
-    "tmdb_original_title": "V/H/S/Beyond",
-    "letterboxd_english_title": "V/H/S/Beyond (2024)"
+    "id": 1032948,
+    "tmdb_title": "V/H/S/85",
+    "tmdb_original_title": "V/H/S/85",
+    "letterboxd_english_title": "V/H/S/85 (2023)"
   },
   "恋するリベラーチェ|2024|スティーヴン・ソダーバーグ": {},
   "おばあちゃんと僕［しゃべれば］||": {},
@@ -2105,6 +2108,12 @@
     "tmdb_original_title": "Fifi Martingale",
     "letterboxd_english_title": "Fifi Martingale (2001)"
   },
+  "メーヌ・オセアン||": {
+    "id": 63663,
+    "tmdb_title": "Maine-Ocean Express",
+    "tmdb_original_title": "Maine Océan",
+    "letterboxd_english_title": "Maine-Ocean Express (1986)"
+  },
   "彼女は夢で踊る|2019|脚本・編集：時川英之": {},
   "消防士 2001年、闘いの真実||クァク・キョンテク": {},
   "V/H/S ビヨンド||": {
@@ -2170,10 +2179,5 @@
     "tmdb_original_title": "Four Letter Words",
     "letterboxd_english_title": "Four Letter Words (2000)"
   },
-  "『THE KILLER GOLDFISH』（with English subtitles）||": {
-    "id": 1339485,
-    "tmdb_title": "The Killer Goldfish",
-    "tmdb_original_title": "THE KILLER GOLDFISH",
-    "letterboxd_english_title": "The Killer Goldfish (2024)"
-  }
+  "『THE KILLER GOLDFISH』（with English subtitles）||": {}
 }
