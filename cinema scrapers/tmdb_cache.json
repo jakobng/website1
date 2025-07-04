@@ -1288,7 +1288,12 @@
     "tmdb_original_title": "The Running Man",
     "letterboxd_english_title": "The Running Man (1987)"
   },
-  "ボイジャー 4Kレストア|1991|": {},
+  "ボイジャー 4Kレストア|1991|": {
+    "id": 10171,
+    "tmdb_title": "Voyager",
+    "tmdb_original_title": "Homo Faber",
+    "letterboxd_english_title": "Voyager (1991)"
+  },
   "中山教頭の人生テスト|2025|": {
     "id": 1475029,
     "tmdb_title": "PRINCIPAL EXAMINATION",
@@ -1788,18 +1793,8 @@
     "tmdb_original_title": "THE KILLER GOLDFISH",
     "letterboxd_english_title": "The Killer Goldfish (2024)"
   },
-  "『東京予報』||": {
-    "id": 1482087,
-    "tmdb_title": "Tokyo Forecast",
-    "tmdb_original_title": "東京予報 ― 映画監督外山文治短編作品集 ―",
-    "letterboxd_english_title": "Tokyo Forecast (2025)"
-  },
-  "『〇〇式』||": {
-    "id": 581723,
-    "tmdb_title": "Kamen Rider Drive: Type ZERO! Episode 0 - Countdown to Global Freeze",
-    "tmdb_original_title": "type ZERO 第0話 カウントダウンtoグローバルフリーズ",
-    "letterboxd_english_title": "Kamen Rider Drive: Type ZERO! Episode 0 - Countdown to Global Freeze (2014)"
-  },
+  "『東京予報』||": {},
+  "『〇〇式』||": {},
   "『うぉっしゅ』||": {
     "id": 979715,
     "tmdb_title": "Wash",
@@ -1935,17 +1930,11 @@
     "tmdb_original_title": "怪談 蛇女",
     "letterboxd_english_title": "Snake Woman's Curse (1968)"
   },
-  "探偵＜スルース＞||": {
-    "id": 4520,
-    "tmdb_title": "Sleuth",
-    "tmdb_original_title": "Sleuth",
-    "letterboxd_english_title": "Sleuth (2007)"
-  },
   "初恋（ファースト・ラブ）||": {
-    "id": 669179,
+    "id": 81803,
     "tmdb_title": "First Love",
-    "tmdb_original_title": "시호",
-    "letterboxd_english_title": "First Love (2020)"
+    "tmdb_original_title": "Primo amore",
+    "letterboxd_english_title": "First Love (1978)"
   },
   "怪獣ゴルゴ||ユージン・ローリー": {
     "id": 40804,
@@ -1953,12 +1942,13 @@
     "tmdb_original_title": "Gorgo",
     "letterboxd_english_title": "Gorgo (1961)"
   },
-  "トラック野郎 御意見無用||": {
-    "id": 163340,
-    "tmdb_title": "Truck Rascals: No One Can Stop Me",
-    "tmdb_original_title": "トラック野郎　御意見無用",
-    "letterboxd_english_title": "Truck Rascals: No One Can Stop Me (1975)"
+  "探偵＜スルース＞||": {
+    "id": 4520,
+    "tmdb_title": "Sleuth",
+    "tmdb_original_title": "Sleuth",
+    "letterboxd_english_title": "Sleuth (2007)"
   },
+  "トラック野郎 御意見無用||": {},
   "トラック野郎 爆走一番星||": {},
   "暗戦 デッドエンド|1999|ジョニー・トー": {
     "id": 2463,
@@ -1972,7 +1962,12 @@
     "tmdb_original_title": "暗戰 2",
     "letterboxd_english_title": "Running Out of Time 2 (2001)"
   },
-  "トラック野郎 度胸一番星＋トラック野郎 爆走一番星||": {},
+  "トラック野郎 度胸一番星＋トラック野郎 爆走一番星||": {
+    "id": 163340,
+    "tmdb_title": "Truck Rascals: No One Can Stop Me",
+    "tmdb_original_title": "トラック野郎　御意見無用",
+    "letterboxd_english_title": "Truck Rascals: No One Can Stop Me (1975)"
+  },
   "トラック野郎 男一匹桃次郎＋トラック野郎 御意見無用||": {},
   "トラック野郎 御意見無用|1975|鈴木則文": {
     "id": 163340,
@@ -1983,19 +1978,55 @@
   "トラック野郎 望郷一番星||": {},
   "トラック野郎 度胸一番星||": {},
   "トラック野郎 男一匹桃次郎||": {},
-  "〇〇式||": {},
+  "密告の砦 リストア版||ヤンチョー・ミクローシュ": {
+    "id": 484126,
+    "tmdb_title": "The Confrontation",
+    "tmdb_original_title": "Очная ставка",
+    "letterboxd_english_title": "The Confrontation (1986)"
+  },
   "海がきこえる|1993|": {
     "id": 21057,
     "tmdb_title": "Ocean Waves",
     "tmdb_original_title": "海がきこえる",
     "letterboxd_english_title": "Ocean Waves (1993)"
   },
+  "〇〇式||": {},
   "バッドランズ|1973|": {},
   "天国の日々|1978|": {
     "id": 16642,
     "tmdb_title": "Days of Heaven",
     "tmdb_original_title": "Days of Heaven",
     "letterboxd_english_title": "Days of Heaven (1978)"
+  },
+  "アークエンジェル|1990|": {
+    "id": 85559,
+    "tmdb_title": "Archangel",
+    "tmdb_original_title": "Archangel",
+    "letterboxd_english_title": "Archangel (1990)"
+  },
+  "ギムリ・ホスピタル|1988|": {
+    "id": 41967,
+    "tmdb_title": "Tales from the Gimli Hospital",
+    "tmdb_original_title": "Tales from the Gimli Hospital",
+    "letterboxd_english_title": "Tales from the Gimli Hospital (1988)"
+  },
+  "セッション デジタルリマスター|2014|": {
+    "id": 244786,
+    "tmdb_title": "Whiplash",
+    "tmdb_original_title": "Whiplash",
+    "letterboxd_english_title": "Whiplash (2014)"
+  },
+  "愛の悪魔/フランシス・ベイコンの歪んだ肖像|1998|": {
+    "id": 4975,
+    "tmdb_title": "Love Is the Devil: Study for a Portrait of Francis Bacon",
+    "tmdb_original_title": "Love Is the Devil: Study for a Portrait of Francis Bacon",
+    "letterboxd_english_title": "Love Is the Devil: Study for a Portrait of Francis Bacon (1998)"
+  },
+  "Mommy／マミー|2014|": {
+    "id": 265177,
+    "tmdb_title": "Mommy",
+    "tmdb_original_title": "Mommy",
+    "letterboxd_english_title": "Mommy (2014)"
   },
   "夏の砂の上|2025|玉田真也": {
     "id": 1446033,
@@ -2115,7 +2146,12 @@
     "letterboxd_english_title": "Maine-Ocean Express (1986)"
   },
   "彼女は夢で踊る|2019|脚本・編集：時川英之": {},
-  "消防士 2001年、闘いの真実||クァク・キョンテク": {},
+  "消防士 2001年、闘いの真実||クァク・キョンテク": {
+    "id": 529540,
+    "tmdb_title": "Firefighter",
+    "tmdb_original_title": "Firefighter",
+    "letterboxd_english_title": "Firefighter (1986)"
+  },
   "V/H/S ビヨンド||": {
     "id": 1032948,
     "tmdb_title": "V/H/S/85",
@@ -2136,8 +2172,8 @@
     "tmdb_original_title": "Hypochondriac",
     "letterboxd_english_title": "Hypochondriac (2022)"
   },
-  "愛されなくても別に||": {},
-  "#真相をお話しします||": {
+  "愛されなくても別に|2025|井樫彩": {},
+  "#真相をお話しします|2025|豊島圭介": {
     "id": 1423008,
     "tmdb_title": "#Iwilltellyouthetruth",
     "tmdb_original_title": "#真相をお話しします",
@@ -2179,5 +2215,16 @@
     "tmdb_original_title": "Four Letter Words",
     "letterboxd_english_title": "Four Letter Words (2000)"
   },
-  "『THE KILLER GOLDFISH』（with English subtitles）||": {}
+  "『ラ・コシーナ||": {
+    "id": 966238,
+    "tmdb_title": "La Cocina",
+    "tmdb_original_title": "La Cocina",
+    "letterboxd_english_title": "La Cocina (2024)"
+  },
+  "『THE KILLER GOLDFISH』（with English subtitles）||": {
+    "id": 1339485,
+    "tmdb_title": "The Killer Goldfish",
+    "tmdb_original_title": "THE KILLER GOLDFISH",
+    "letterboxd_english_title": "The Killer Goldfish (2024)"
+  }
 }
