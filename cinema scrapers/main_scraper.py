@@ -377,7 +377,7 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
         # Use a more robust cache key
         cache_key = f"{cleaned_title}|{year if year != 'N/A' else ''}|{film_info.get('director') or ''}"
         
-        if cache_key in cache_data and cache_data[cache_key].get("id"):
+        if cache_key in cache_data:
             enrichment_map[film_key] = cache_data[cache_key]
             continue
         
