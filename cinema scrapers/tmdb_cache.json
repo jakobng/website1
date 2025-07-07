@@ -970,12 +970,7 @@
     "tmdb_original_title": "Le Procès du Chien",
     "letterboxd_english_title": "Dog on Trial (2024)"
   },
-  "それでも私は Though I’m His Daughter|2025|長塚洋": {
-    "id": 1425354,
-    "tmdb_title": "Even So",
-    "tmdb_original_title": "Phir Bhi",
-    "letterboxd_english_title": "Even So (2025)"
-  },
+  "それでも私は Though I’m His Daughter|2025|長塚洋": {},
   "星より静かに|2024|君塚匠": {},
   "未完成の映画|2024|ロウ・イエ(婁燁)": {
     "id": 878607,
@@ -1280,7 +1275,12 @@
     "tmdb_original_title": "あの娘は知らない",
     "letterboxd_english_title": "Leave in Summer (2022)"
   },
-  "明日になれば他人||": {},
+  "明日になれば他人||": {
+    "id": 824117,
+    "tmdb_title": "Strangers When We Meet",
+    "tmdb_original_title": "朝云暮雨",
+    "letterboxd_english_title": "Strangers When We Meet (2024)"
+  },
   "蜘蛛の巣||": {
     "id": 446807,
     "tmdb_title": "The Girl in the Spider's Web",
@@ -1293,7 +1293,12 @@
     "tmdb_original_title": "The Running Man",
     "letterboxd_english_title": "The Running Man (1987)"
   },
-  "ボイジャー 4Kレストア|1991|": {},
+  "ボイジャー 4Kレストア|1991|": {
+    "id": 10171,
+    "tmdb_title": "Voyager",
+    "tmdb_original_title": "Homo Faber",
+    "letterboxd_english_title": "Voyager (1991)"
+  },
   "中山教頭の人生テスト|2025|": {
     "id": 1475029,
     "tmdb_title": "PRINCIPAL EXAMINATION",
@@ -1434,12 +1439,7 @@
     "tmdb_original_title": "くまをまつ",
     "letterboxd_english_title": "The Bear Wait (2024)"
   },
-  "私は何度も私になる 字幕版|2021|タン・チュイムイ出演：タン・チュイムイピート・テオブロント・パララエジェームス・リーニー・ウーイ": {
-    "id": 1300600,
-    "tmdb_title": "Just a moment",
-    "tmdb_original_title": "Juste un moment",
-    "letterboxd_english_title": "Just a moment (2021)"
-  },
+  "私は何度も私になる 字幕版|2021|タン・チュイムイ出演：タン・チュイムイピート・テオブロント・パララエジェームス・リーニー・ウーイ": {},
   "怒る西行|2009|": {},
   "WHO IS THAT MAN!?あの男は誰だ！？|2013|沖島勲出演：蒲田哲内木英二黒澤正義石塚義高恒松敦巳外波山文明愛奏中原翔子岡村多加江井上カオリほたる古川真司": {
     "id": 145247,
@@ -1559,7 +1559,12 @@
     "tmdb_original_title": "Ljósbrot",
     "letterboxd_english_title": "When the Light Breaks (2024)"
   },
-  "無名の人生|2024|": {},
+  "無名の人生|2024|": {
+    "id": 1366159,
+    "tmdb_title": "Anonymous confession",
+    "tmdb_original_title": "Confesión Anónima",
+    "letterboxd_english_title": "Anonymous confession (2024)"
+  },
   "YOUNG&FINE|2025|": {
     "id": 1447947,
     "tmdb_title": "Young & Fine",
@@ -1798,13 +1803,13 @@
     "tmdb_original_title": "THE KILLER GOLDFISH",
     "letterboxd_english_title": "The Killer Goldfish (2024)"
   },
-  "『東京予報』||": {},
-  "『〇〇式』||": {
-    "id": 42095,
-    "tmdb_title": "The Funeral",
-    "tmdb_original_title": "お葬式",
-    "letterboxd_english_title": "The Funeral (1984)"
+  "『東京予報』||": {
+    "id": 1482087,
+    "tmdb_title": "Tokyo Forecast",
+    "tmdb_original_title": "東京予報 ― 映画監督外山文治短編作品集 ―",
+    "letterboxd_english_title": "Tokyo Forecast (2025)"
   },
+  "『〇〇式』||": {},
   "『うぉっしゅ』||": {
     "id": 979715,
     "tmdb_title": "Wash",
@@ -1946,7 +1951,12 @@
     "tmdb_original_title": "ピノキオ√964",
     "letterboxd_english_title": "964 Pinocchio (1991)"
   },
-  "トラック野郎 御意見無用||": {},
+  "トラック野郎 御意見無用||": {
+    "id": 473699,
+    "tmdb_title": "The Truck Rascals Go to The North",
+    "tmdb_original_title": "トラック野郎　一番星北へ帰る",
+    "letterboxd_english_title": "The Truck Rascals Go to The North (1978)"
+  },
   "トラック野郎 爆走一番星||": {},
   "怪獣ゴルゴ||ユージン・ローリー": {
     "id": 40804,
@@ -1961,10 +1971,10 @@
     "letterboxd_english_title": "Sleuth (2007)"
   },
   "初恋（ファースト・ラブ）||": {
-    "id": 834742,
+    "id": 669179,
     "tmdb_title": "First Love",
-    "tmdb_original_title": "First Love",
-    "letterboxd_english_title": "First Love (2022)"
+    "tmdb_original_title": "시호",
+    "letterboxd_english_title": "First Love (2020)"
   },
   "暗戦 デッドエンド|1999|ジョニー・トー": {
     "id": 2463,
@@ -1978,7 +1988,6 @@
     "tmdb_original_title": "暗戰 2",
     "letterboxd_english_title": "Running Out of Time 2 (2001)"
   },
-  "トラック野郎 男一匹桃次郎＋トラック野郎 御意見無用||": {},
   "トラック野郎 御意見無用|1975|鈴木則文": {
     "id": 163340,
     "tmdb_title": "Truck Rascals: No One Can Stop Me",
@@ -2001,10 +2010,10 @@
     "letterboxd_english_title": "Muthu (1995)"
   },
   "密告の砦 リストア版||ヤンチョー・ミクローシュ": {
-    "id": 157964,
-    "tmdb_title": "The Confrontation",
-    "tmdb_original_title": "Fényes szelek",
-    "letterboxd_english_title": "The Confrontation (1969)"
+    "id": 94663,
+    "tmdb_title": "The Round-Up",
+    "tmdb_original_title": "Szegénylegények",
+    "letterboxd_english_title": "The Round-Up (1966)"
   },
   "黒い家|1999|森田芳光": {
     "id": 57238,
@@ -2019,15 +2028,39 @@
     "letterboxd_english_title": "Southbound (2015)"
   },
   "アキ・カウリスマキ 敗者三部作＋1||": {},
-  "ハッピー☆エンド|2025|": {},
+  "黒部の太陽||熊井啓": {
+    "id": 148084,
+    "tmdb_title": "The Sands of Kurobe",
+    "tmdb_original_title": "黒部の太陽",
+    "letterboxd_english_title": "The Sands of Kurobe (1968)"
+  },
+  "ゲアトルーズ||": {
+    "id": 34181,
+    "tmdb_title": "Gertrud",
+    "tmdb_original_title": "Gertrud",
+    "letterboxd_english_title": "Gertrud (1964)"
+  },
+  "奇跡||": {
+    "id": 79382,
+    "tmdb_title": "I Wish",
+    "tmdb_original_title": "奇跡",
+    "letterboxd_english_title": "I Wish (2011)"
+  },
+  "裁かるゝジャンヌ||": {
+    "id": 780,
+    "tmdb_title": "The Passion of Joan of Arc",
+    "tmdb_original_title": "La Passion de Jeanne d'Arc",
+    "letterboxd_english_title": "The Passion of Joan of Arc (1928)"
+  },
+  "ハッピー☆エンド|2025|": {
+    "id": 1339333,
+    "tmdb_title": "Happy Ending",
+    "tmdb_original_title": "Happy Ending",
+    "letterboxd_english_title": "Happy Ending (2025)"
+  },
   "けものがいる|2023|": {},
   "アラン・ギロディ監督特集||": {},
-  "〇〇式||": {
-    "id": 41235,
-    "tmdb_title": "Ritual",
-    "tmdb_original_title": "Ritual",
-    "letterboxd_english_title": "Ritual (2002)"
-  },
+  "〇〇式||": {},
   "海がきこえる|1993|": {
     "id": 21057,
     "tmdb_title": "Ocean Waves",
@@ -2163,27 +2196,19 @@
     "tmdb_original_title": "Aynı İpte Asılı",
     "letterboxd_english_title": "Hanging on the Same Rope (2024)"
   },
-  "金さん捕物帖 謎の人形師||中川信夫": {},
-  "地獄||": {
-    "id": 50173,
-    "tmdb_title": "Jigoku",
-    "tmdb_original_title": "地獄",
-    "letterboxd_english_title": "Jigoku (1960)"
-  },
   "片思い世界||土井裕泰": {
     "id": 1101179,
     "tmdb_title": "Unreachable",
     "tmdb_original_title": "片思い世界",
     "letterboxd_english_title": "Unreachable (2025)"
   },
+  "トルテュ島の遭難者たち||": {},
   "オルエットの方へ||ジャック・ロジエ": {
     "id": 133467,
     "tmdb_title": "Near Orouët",
     "tmdb_original_title": "Du côté d'Orouët",
     "letterboxd_english_title": "Near Orouët (1971)"
   },
-  "ジャック・ロジエ監督特集||": {},
-  "トルテュ島の遭難者たち||": {},
   "フィフィ・マルタンガル||": {
     "id": 522612,
     "tmdb_title": "Fifi Martingale",
@@ -2202,15 +2227,16 @@
     "tmdb_original_title": "Maine Océan",
     "letterboxd_english_title": "Maine-Ocean Express (1986)"
   },
+  "ジャック・ロジエ監督特集||": {},
   "消防士 2001年、闘いの真実||クァク・キョンテク": {},
+  "天外者 七夕上映会||": {},
   "V/H/S ビヨンド||": {
-    "id": 1032948,
-    "tmdb_title": "V/H/S/85",
-    "tmdb_original_title": "V/H/S/85",
-    "letterboxd_english_title": "V/H/S/85 (2023)"
+    "id": 1005776,
+    "tmdb_title": "V/H/S/99",
+    "tmdb_original_title": "V/H/S/99",
+    "letterboxd_english_title": "V/H/S/99 (2022)"
   },
   "彼女は夢で踊る|2019|脚本・編集：時川英之": {},
-  "天外者 七夕上映会||": {},
   "ハイポ|2022|": {
     "id": 915982,
     "tmdb_title": "Hypochondriac",
@@ -2230,23 +2256,17 @@
     "tmdb_original_title": "Starlet",
     "letterboxd_english_title": "Starlet (2012)"
   },
-  "フォー・レター・ワーズ||ショーン・ベイカー": {
-    "id": 253106,
-    "tmdb_title": "Four Letter Words",
-    "tmdb_original_title": "Four Letter Words",
-    "letterboxd_english_title": "Four Letter Words (2000)"
+  "プリンス・オブ・ブロードウェイ||ショーン・ベイカー": {
+    "id": 87081,
+    "tmdb_title": "Prince of Broadway",
+    "tmdb_original_title": "Prince of Broadway",
+    "letterboxd_english_title": "Prince of Broadway (2008)"
   },
   "クリムト & THE KISS-アート・オン・スクリーン特別編-||アリ・レイ": {
     "id": 1185135,
     "tmdb_title": "Klimt & The Kiss",
     "tmdb_original_title": "Klimt & The Kiss",
     "letterboxd_english_title": "Klimt & The Kiss (2023)"
-  },
-  "プリンス・オブ・ブロードウェイ||ショーン・ベイカー": {
-    "id": 87081,
-    "tmdb_title": "Prince of Broadway",
-    "tmdb_original_title": "Prince of Broadway",
-    "letterboxd_english_title": "Prince of Broadway (2008)"
   },
   "テイクアウト||ショーン・ベイカー": {
     "id": 37736,
