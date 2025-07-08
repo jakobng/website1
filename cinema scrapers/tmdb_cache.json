@@ -2278,5 +2278,37 @@
     "tmdb_original_title": "لا أرض أخرى",
     "letterboxd_english_title": "No Other Land (2024)"
   },
-  "囁きの河||大木一史": {}
+  "囁きの河||大木一史": {},
+  "栄光への5000キロ||": {},
+  "吸血鬼||": {
+    "id": 1174476,
+    "tmdb_title": "The Vampire",
+    "tmdb_original_title": "吸血鬼",
+    "letterboxd_english_title": "The Vampire (1950)"
+  },
+  "怒りの日||": {
+    "id": 41391,
+    "tmdb_title": "Day of Wrath",
+    "tmdb_original_title": "Vredens dag",
+    "letterboxd_english_title": "Day of Wrath (1943)"
+  },
+  "飯場で感じる女の性|2000|荒木太郎": {},
+  "痴漢電車いやらしい行為|1993|幡寿一": {
+    "id": 370478,
+    "tmdb_title": "Chikan densha: Iyarashii kôi",
+    "tmdb_original_title": "痴漢電車　いやらしい行為",
+    "letterboxd_english_title": "Chikan densha: Iyarashii kôi (1993)"
+  },
+  "はじまりのうた||": {
+    "id": 198277,
+    "tmdb_title": "Begin Again",
+    "tmdb_original_title": "Begin Again",
+    "letterboxd_english_title": "Begin Again (2013)"
+  },
+  "スターレット|2012|ショーン・ベイカー": {
+    "id": 91679,
+    "tmdb_title": "Starlet",
+    "tmdb_original_title": "Starlet",
+    "letterboxd_english_title": "Starlet (2012)"
+  }
 }
