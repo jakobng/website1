@@ -2280,6 +2280,12 @@
   },
   "囁きの河||大木一史": {},
   "栄光への5000キロ||": {},
+  "太平洋ひとりぼっち||": {
+    "id": 58504,
+    "tmdb_title": "Alone Across the Pacific",
+    "tmdb_original_title": "太平洋ひとりぼっち",
+    "letterboxd_english_title": "Alone Across the Pacific (1963)"
+  },
   "吸血鬼||": {
     "id": 1174476,
     "tmdb_title": "The Vampire",
@@ -2292,6 +2298,75 @@
     "tmdb_original_title": "Vredens dag",
     "letterboxd_english_title": "Day of Wrath (1943)"
   },
+  "ミカエル||": {
+    "id": 45444,
+    "tmdb_title": "Arch Angels",
+    "tmdb_original_title": "笑う大天使（ミカエル)",
+    "letterboxd_english_title": "Arch Angels (2006)"
+  },
+  "あるじ||": {
+    "id": 68722,
+    "tmdb_title": "The Master",
+    "tmdb_original_title": "The Master",
+    "letterboxd_english_title": "The Master (2012)"
+  },
+  "『タイムズ・スクエア 4Kレストア』|1981|": {
+    "id": 1097458,
+    "tmdb_title": "Fifty Miles from Times Square",
+    "tmdb_original_title": "Fifty Miles from Times Square",
+    "letterboxd_english_title": "Fifty Miles from Times Square (1981)"
+  },
+  "『テイクアウト』|2004|": {},
+  "『プリンス・オブ・ブロードウェイ』|2008|": {},
+  "ストップモーション|2023|": {
+    "id": 1126360,
+    "tmdb_title": "StopMotion GAMERA 2 ガメラ vs レギオン　海洋堂フィギュアで名作『ガメラ2 レギオン襲来』完全再現！",
+    "tmdb_original_title": "StopMotion GAMERA 2 ガメラ vs レギオン　海洋堂フィギュアで名作『ガメラ2 レギオン襲来』完全再現！",
+    "letterboxd_english_title": "StopMotion GAMERA 2 ガメラ vs レギオン　海洋堂フィギュアで名作『ガメラ2 レギオン襲来』完全再現！ (2023)"
+  },
+  "『フォー・レター・ワーズ』|2000|": {
+    "id": 253106,
+    "tmdb_title": "Four Letter Words",
+    "tmdb_original_title": "Four Letter Words",
+    "letterboxd_english_title": "Four Letter Words (2000)"
+  },
+  "『スターレット』|2012|": {
+    "id": 91679,
+    "tmdb_title": "Starlet",
+    "tmdb_original_title": "Starlet",
+    "letterboxd_english_title": "Starlet (2012)"
+  },
+  "砂時計サナトリウム|2024|ブラザーズ・クエイ": {},
+  "ヴァージン・パンク Clockwork Girl||梅津泰臣": {
+    "id": 1360829,
+    "tmdb_title": "Virgin Punk: Clockwork Girl",
+    "tmdb_original_title": "ヴァージン・パンク Clockwork Girl",
+    "letterboxd_english_title": "Virgin Punk: Clockwork Girl (2025)"
+  },
+  "逆火|2025|内田英治": {
+    "id": 1465954,
+    "tmdb_title": "Gyakka",
+    "tmdb_original_title": "逆火",
+    "letterboxd_english_title": "Gyakka (2025)"
+  },
+  "スーパーマン|2025|ジェームズ・ガン （『ガーディアンズ・オブ・ギャラクシー』シリーズ）": {
+    "id": 1061474,
+    "tmdb_title": "Superman",
+    "tmdb_original_title": "Superman",
+    "letterboxd_english_title": "Superman (2025)"
+  },
+  "ストレンジ・ダーリン|2024|JT・モルナー": {
+    "id": 1029281,
+    "tmdb_title": "Strange Darling",
+    "tmdb_original_title": "Strange Darling",
+    "letterboxd_english_title": "Strange Darling (2023)"
+  },
+  "V/H/S ビヨンド|2024|ジェイ・チール、ジョーダン・ダウニー、ヴィラット・パル、ジャスティン・マルティネス、ジャスティン・ロング、ケイト・シーゲル": {
+    "id": 1190868,
+    "tmdb_title": "V/H/S/Beyond",
+    "tmdb_original_title": "V/H/S/Beyond",
+    "letterboxd_english_title": "V/H/S/Beyond (2024)"
+  },
   "飯場で感じる女の性|2000|荒木太郎": {},
   "痴漢電車いやらしい行為|1993|幡寿一": {
     "id": 370478,
@@ -2299,16 +2374,109 @@
     "tmdb_original_title": "痴漢電車　いやらしい行為",
     "letterboxd_english_title": "Chikan densha: Iyarashii kôi (1993)"
   },
-  "はじまりのうた||": {
-    "id": 198277,
-    "tmdb_title": "Begin Again",
-    "tmdb_original_title": "Begin Again",
-    "letterboxd_english_title": "Begin Again (2013)"
+  "成熟|1971|湯浅憲明": {
+    "id": 593287,
+    "tmdb_title": "The Awakening",
+    "tmdb_original_title": "成熟",
+    "letterboxd_english_title": "The Awakening (1971)"
+  },
+  "本番実技裂けちゃう|1993|池島ゆたか": {
+    "id": 1488083,
+    "tmdb_title": "Honban jitsugi: Sakechau",
+    "tmdb_original_title": "本番実技　－　裂けちゃう　－",
+    "letterboxd_english_title": "Honban jitsugi: Sakechau (1993)"
+  },
+  "はらむひとびと|2025|": {
+    "id": 1379934,
+    "tmdb_title": "Conceiving",
+    "tmdb_original_title": "はらむひとびと",
+    "letterboxd_english_title": "Conceiving (2025)"
+  },
+  "ユミの細胞たち|2024|": {
+    "id": 1252371,
+    "tmdb_title": "Yumi's Cells: The Movie",
+    "tmdb_original_title": "유미의 세포들 더 무비",
+    "letterboxd_english_title": "Yumi's Cells: The Movie (2024)"
+  },
+  "黒川の女たち|2025|松原文枝": {},
+  "タイムズ･スクエア 4Ｋレストア【4K上映】||": {
+    "id": 76411,
+    "tmdb_title": "Times Square",
+    "tmdb_original_title": "Times Square",
+    "letterboxd_english_title": "Times Square (1980)"
+  },
+  "ロスト・チルドレン|1996|ジャン＝ピエール・ジュネ、マルク・キャロ": {},
+  "恐怖の報酬【オリジナル完全版】||ウィリアム・フリードキン": {
+    "id": 38985,
+    "tmdb_title": "Sorcerer",
+    "tmdb_original_title": "Sorcerer",
+    "letterboxd_english_title": "Sorcerer (1977)"
+  },
+  "タイムズ・スクエア 4Ｋレストア版||": {
+    "id": 76411,
+    "tmdb_title": "Times Square",
+    "tmdb_original_title": "Times Square",
+    "letterboxd_english_title": "Times Square (1980)"
+  },
+  "チーチ＆チョン/スモーキング作戦||": {
+    "id": 11455,
+    "tmdb_title": "Up in Smoke",
+    "tmdb_original_title": "Up in Smoke",
+    "letterboxd_english_title": "Up in Smoke (1978)"
+  },
+  "フリードキン・アンカット||": {
+    "id": 533658,
+    "tmdb_title": "Friedkin Uncut",
+    "tmdb_original_title": "Friedkin Uncut",
+    "letterboxd_english_title": "Friedkin Uncut (2018)"
+  },
+  "「ご注文はうさぎですか？」TVシリーズ第1期オールナイト上映||": {},
+  "クルージング||ウィリアム・フリードキン": {
+    "id": 27958,
+    "tmdb_title": "Cruising",
+    "tmdb_original_title": "Cruising",
+    "letterboxd_english_title": "Cruising (1980)"
+  },
+  "おばあちゃんと僕の約束|2024|": {
+    "id": 1103621,
+    "tmdb_title": "How to Make Millions Before Grandma Dies",
+    "tmdb_original_title": "หลานม่า",
+    "letterboxd_english_title": "How to Make Millions Before Grandma Dies (2024)"
+  },
+  "岸辺露伴は動かない 懺悔室||": {
+    "id": 1424752,
+    "tmdb_title": "Thus Spoke Kishibe Rohan: At a Confessional",
+    "tmdb_original_title": "岸辺露伴は動かない 懺悔室",
+    "letterboxd_english_title": "Thus Spoke Kishibe Rohan: At a Confessional (2025)"
+  },
+  "ONCE ダブリンの街角で||": {
+    "id": 5723,
+    "tmdb_title": "Once",
+    "tmdb_original_title": "Once",
+    "letterboxd_english_title": "Once (2007)"
+  },
+  "フロントライン||": {
+    "id": 1406357,
+    "tmdb_title": "Frontline - Yokohama Bay",
+    "tmdb_original_title": "フロントライン",
+    "letterboxd_english_title": "Frontline - Yokohama Bay (2025)"
   },
   "スターレット|2012|ショーン・ベイカー": {
     "id": 91679,
     "tmdb_title": "Starlet",
     "tmdb_original_title": "Starlet",
     "letterboxd_english_title": "Starlet (2012)"
+  },
+  "秋が来るとき|2024|フランソワ・オゾン": {
+    "id": 1171634,
+    "tmdb_title": "When Fall Is Coming",
+    "tmdb_original_title": "Quand vient l'automne",
+    "letterboxd_english_title": "When Fall Is Coming (2024)"
+  },
+  "フォー・レター・ワーズ||ショーン・ベイカー": {
+    "id": 253106,
+    "tmdb_title": "Four Letter Words",
+    "tmdb_original_title": "Four Letter Words",
+    "letterboxd_english_title": "Four Letter Words (2000)"
   }
 }
