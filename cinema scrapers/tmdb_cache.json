@@ -2286,6 +2286,12 @@
     "tmdb_original_title": "また逢いましょう",
     "letterboxd_english_title": "See You Again (2025)"
   },
+  "ザ・フェイス||": {
+    "id": 5894,
+    "tmdb_title": "Blue in the Face",
+    "tmdb_original_title": "Blue in the Face",
+    "letterboxd_english_title": "Blue in the Face (1995)"
+  },
   "エレクトラ、わが愛 リストア版||": {
     "id": 46772,
     "tmdb_title": "Electra, My Love",
@@ -2359,7 +2365,18 @@
     "tmdb_original_title": "12人の優しい日本人",
     "letterboxd_english_title": "The Gentle 12 (1991)"
   },
-  "来し方 行く末|2023|リウ・ジアイン 出演：フー・ゴー、ウー・レイ": {},
+  "機動戦士ガンダムTHE ORIGIN（movie edition）全三章||": {
+    "id": 475935,
+    "tmdb_title": "Mobile Suit Gundam: The Origin VI – Rise of the Red Comet",
+    "tmdb_original_title": "機動戦士ガンダム THE ORIGIN VI 誕生 赤い彗星",
+    "letterboxd_english_title": "Mobile Suit Gundam: The Origin VI – Rise of the Red Comet (2018)"
+  },
+  "来し方 行く末|2023|リウ・ジアイン 出演：フー・ゴー、ウー・レイ": {
+    "id": 1298658,
+    "tmdb_title": "Be Here Now: A Journey to the Grand Teton",
+    "tmdb_original_title": "Be Here Now: A Journey to the Grand Teton",
+    "letterboxd_english_title": "Be Here Now: A Journey to the Grand Teton (2023)"
+  },
   "片思い世界|2025|土井裕泰 脚本：坂元裕二『花束みたいな恋をした』 出演：広瀬すず、杉咲花、清原果耶、横浜流星、小野花梨": {
     "id": 1101179,
     "tmdb_title": "Unreachable",
@@ -2367,12 +2384,6 @@
     "letterboxd_english_title": "Unreachable (2025)"
   },
   "配給7社presents||": {},
-  "『タイムズ・スクエア 4Kレストア』|1981|": {
-    "id": 1097458,
-    "tmdb_title": "Fifty Miles from Times Square",
-    "tmdb_original_title": "Fifty Miles from Times Square",
-    "letterboxd_english_title": "Fifty Miles from Times Square (1981)"
-  },
   "『フォー・レター・ワーズ』|2000|": {
     "id": 253106,
     "tmdb_title": "Four Letter Words",
@@ -2380,6 +2391,12 @@
     "letterboxd_english_title": "Four Letter Words (2000)"
   },
   "『テイクアウト』|2004|": {},
+  "『タイムズ・スクエア 4Kレストア』|1981|": {
+    "id": 1097458,
+    "tmdb_title": "Fifty Miles from Times Square",
+    "tmdb_original_title": "Fifty Miles from Times Square",
+    "letterboxd_english_title": "Fifty Miles from Times Square (1981)"
+  },
   "『プリンス・オブ・ブロードウェイ』|2008|": {},
   "ネムルバカ|2025|": {
     "id": 1357797,
@@ -2440,10 +2457,10 @@
   },
   "ジェーン・バーキン没後3年追悼上映会『ジェーンとシャルロット』|2021|シャルロット・ゲンズブール": {},
   "［ｲﾍﾞﾝﾄ①］クリムト&THE KISS||": {
-    "id": 1185135,
-    "tmdb_title": "Klimt & The Kiss",
-    "tmdb_original_title": "Klimt & The Kiss",
-    "letterboxd_english_title": "Klimt & The Kiss (2023)"
+    "id": 29291,
+    "tmdb_title": "Klimt",
+    "tmdb_original_title": "Klimt",
+    "letterboxd_english_title": "Klimt (2006)"
   },
   "痴漢電車いやらしい行為|1993|幡寿一": {
     "id": 370478,
@@ -2462,6 +2479,12 @@
     "tmdb_title": "Honban jitsugi: Sakechau",
     "tmdb_original_title": "本番実技　－　裂けちゃう　－",
     "letterboxd_english_title": "Honban jitsugi: Sakechau (1993)"
+  },
+  "ヴァージン・スナイパー美少女妖魔伝|1997|渡邊元嗣": {
+    "id": 391364,
+    "tmdb_title": "Virgin Sniper",
+    "tmdb_original_title": "好色くノ一忍法帖 ヴァージン・スナイパー 美少女妖魔伝",
+    "letterboxd_english_title": "Virgin Sniper (1997)"
   },
   "はらむひとびと|2025|": {
     "id": 1379934,
@@ -2492,6 +2515,8 @@
   },
   "エノケンの頑張り戰術||中川信夫": {},
   "心の太陽||深田修造": {},
+  "無明有明 ［後篇］||松田定次": {},
+  "征戦愛馬譜 暁に祈る||佐々木康": {},
   "黒川の女たち|2025|松原文枝": {},
   "タイムズ･スクエア 4Ｋレストア【4K上映】||": {
     "id": 76411,
@@ -2506,17 +2531,17 @@
     "letterboxd_english_title": "Sorcerer (1977)"
   },
   "ロスト・チルドレン|1996|ジャン＝ピエール・ジュネ、マルク・キャロ": {},
-  "チーチ＆チョン/スモーキング作戦||": {
-    "id": 11455,
-    "tmdb_title": "Up in Smoke",
-    "tmdb_original_title": "Up in Smoke",
-    "letterboxd_english_title": "Up in Smoke (1978)"
-  },
   "タイムズ・スクエア 4Ｋレストア版||": {
     "id": 76411,
     "tmdb_title": "Times Square",
     "tmdb_original_title": "Times Square",
     "letterboxd_english_title": "Times Square (1980)"
+  },
+  "チーチ＆チョン/スモーキング作戦||": {
+    "id": 11455,
+    "tmdb_title": "Up in Smoke",
+    "tmdb_original_title": "Up in Smoke",
+    "letterboxd_english_title": "Up in Smoke (1978)"
   },
   "クルージング||ウィリアム・フリードキン": {
     "id": 27958,
@@ -2542,5 +2567,28 @@
     "tmdb_original_title": "フロントライン",
     "letterboxd_english_title": "Frontline - Yokohama Bay (2025)"
   },
-  "ﾘﾗｲﾄ||": {}
+  "ﾘﾗｲﾄ||": {
+    "id": 1397790,
+    "tmdb_title": "Rewrite",
+    "tmdb_original_title": "リライト",
+    "letterboxd_english_title": "Rewrite (2025)"
+  },
+  "スターレット|2012|ショーン・ベイカー": {
+    "id": 91679,
+    "tmdb_title": "Starlet",
+    "tmdb_original_title": "Starlet",
+    "letterboxd_english_title": "Starlet (2012)"
+  },
+  "秋が来るとき|2024|フランソワ・オゾン": {
+    "id": 1171634,
+    "tmdb_title": "When Fall Is Coming",
+    "tmdb_original_title": "Quand vient l'automne",
+    "letterboxd_english_title": "When Fall Is Coming (2024)"
+  },
+  "フォー・レター・ワーズ||ショーン・ベイカー": {
+    "id": 253106,
+    "tmdb_title": "Four Letter Words",
+    "tmdb_original_title": "Four Letter Words",
+    "letterboxd_english_title": "Four Letter Words (2000)"
+  }
 }
