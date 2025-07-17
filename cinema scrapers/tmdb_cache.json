@@ -2299,31 +2299,36 @@
     "tmdb_original_title": "Szerelmem, Elektra",
     "letterboxd_english_title": "Electra, My Love (1974)"
   },
+  "栄光への5000キロ||": {},
   "太平洋ひとりぼっち||": {
     "id": 58504,
     "tmdb_title": "Alone Across the Pacific",
     "tmdb_original_title": "太平洋ひとりぼっち",
     "letterboxd_english_title": "Alone Across the Pacific (1963)"
   },
-  "栄光への5000キロ||": {},
   "ミカエル||": {
     "id": 45444,
     "tmdb_title": "Arch Angels",
     "tmdb_original_title": "笑う大天使（ミカエル)",
     "letterboxd_english_title": "Arch Angels (2006)"
   },
-  "あるじ||": {},
-  "怒りの日||": {
-    "id": 41391,
-    "tmdb_title": "Day of Wrath",
-    "tmdb_original_title": "Vredens dag",
-    "letterboxd_english_title": "Day of Wrath (1943)"
+  "あるじ||": {
+    "id": 68722,
+    "tmdb_title": "The Master",
+    "tmdb_original_title": "The Master",
+    "letterboxd_english_title": "The Master (2012)"
   },
   "吸血鬼||": {
     "id": 1174476,
     "tmdb_title": "The Vampire",
     "tmdb_original_title": "吸血鬼",
     "letterboxd_english_title": "The Vampire (1950)"
+  },
+  "怒りの日||": {
+    "id": 41391,
+    "tmdb_title": "Day of Wrath",
+    "tmdb_original_title": "Vredens dag",
+    "letterboxd_english_title": "Day of Wrath (1943)"
   },
   "ボサノヴァ 撃たれたピアニスト|2023|フェルナンド・トルエバ、ハビエル・マリスカル": {
     "id": 646265,
@@ -2368,10 +2373,10 @@
     "letterboxd_english_title": "Mobile Suit Gundam: The Origin I - Blue-Eyed Casval (2015)"
   },
   "来し方 行く末|2023|リウ・ジアイン 出演：フー・ゴー、ウー・レイ": {
-    "id": 1211973,
-    "tmdb_title": "Past and Future",
-    "tmdb_original_title": "Passado e Futuro",
-    "letterboxd_english_title": "Past and Future (2023)"
+    "id": 1259271,
+    "tmdb_title": "Departure",
+    "tmdb_original_title": "Departure",
+    "letterboxd_english_title": "Departure (2023)"
   },
   "片思い世界|2025|土井裕泰 脚本：坂元裕二『花束みたいな恋をした』 出演：広瀬すず、杉咲花、清原果耶、横浜流星、小野花梨": {
     "id": 1101179,
@@ -2380,7 +2385,6 @@
     "letterboxd_english_title": "Unreachable (2025)"
   },
   "配給7社presents||": {},
-  "『テイクアウト』|2004|": {},
   "花束||": {
     "id": 1414209,
     "tmdb_title": "Hanataba",
@@ -2399,12 +2403,14 @@
     "tmdb_original_title": "Four Letter Words",
     "letterboxd_english_title": "Four Letter Words (2000)"
   },
+  "『テイクアウト』|2004|": {},
   "『スターレット』|2012|": {
     "id": 91679,
     "tmdb_title": "Starlet",
     "tmdb_original_title": "Starlet",
     "letterboxd_english_title": "Starlet (2012)"
   },
+  "『プリンス・オブ・ブロードウェイ』|2008|": {},
   "Ryuichi Sakamoto | Playing the Orchestra 2014|2024|": {},
   "Ryuichi Sakamoto | Opus|2023|": {
     "id": 1156189,
@@ -2440,12 +2446,7 @@
     "letterboxd_english_title": "ミッシェル・ガン・エレファント \"THEE MOVIE\" -LAST HEAVEN 031011- (2009)"
   },
   "Blankey Jet City／VANISHING POINT|2013|": {},
-  "kocorono|2010|": {
-    "id": 89825,
-    "tmdb_title": "Heart and Yummie",
-    "tmdb_original_title": "おまえうまそうだな",
-    "letterboxd_english_title": "Heart and Yummie (2010)"
-  },
+  "kocorono|2010|": {},
   "NEVER MIND DA 渋さ知らズ 番外地篇|2022|": {},
   "音響ハウス Melody-Go-Round|2019|": {},
   "大丈夫であるように Cocco 終らない旅|2008|": {
@@ -2492,12 +2493,7 @@
     "letterboxd_english_title": "Maria Montessori (2023)"
   },
   "ドマーニ！ 愛のことづて|2023|": {},
-  "小学校〜それは小さな社会〜|2023|": {
-    "id": 1272976,
-    "tmdb_title": "A Crazy Little Thing Called Society",
-    "tmdb_original_title": "A Crazy Little Thing Called Society",
-    "letterboxd_english_title": "A Crazy Little Thing Called Society (2023)"
-  },
+  "小学校〜それは小さな社会〜|2023|": {},
   "Playground／校庭|2021|": {
     "id": 785209,
     "tmdb_title": "Playground",
@@ -2536,10 +2532,33 @@
     "tmdb_original_title": "ヴァージン・パンク Clockwork Girl",
     "letterboxd_english_title": "Virgin Punk: Clockwork Girl (2025)"
   },
-  "螟上�ｮ遐ゅ�ｮ荳骸0719繝�繧｣繝ｼ繝√う繝ｳ繧､繝吶Φ繝�]||": {},
+  "螟上�ｮ遐ゅ�ｮ荳骸0719繝�繧｣繝ｼ繝√う繝ｳ繧､繝吶Φ繝�]||": {
+    "id": 43226,
+    "tmdb_title": "The Mysterians",
+    "tmdb_original_title": "地球防衛軍",
+    "letterboxd_english_title": "The Mysterians (1957)"
+  },
   "odessa Midnight Movies vol.29 弁セレ後夜祭||": {},
-  "螟上�ｮ遐ゅ�ｮ荳骸0720繝�繧｣繝ｼ繝√う繝ｳ繧､繝吶Φ繝�]||": {},
+  "螟上�ｮ遐ゅ�ｮ荳骸0720繝�繧｣繝ｼ繝√う繝ｳ繧､繝吶Φ繝�]||": {
+    "id": 662708,
+    "tmdb_title": "Pokémon the Movie: Secrets of the Jungle",
+    "tmdb_original_title": "劇場版ポケットモンスター ココ",
+    "letterboxd_english_title": "Pokémon the Movie: Secrets of the Jungle (2020)"
+  },
   "螟上�ｮ遐ゅ�ｮ荳骸譌･譛ｬ隱槫ｭ怜ｹ穂ｻ倥″荳頑丐]||": {},
+  "炎はつなぐ|2025|大西暢夫": {},
+  "ユリシーズ（2024） 字幕版|2024|宇和川輝出演：アレフティーナ・ティクホノーヴァディミトリ・ティクホノーヴエナイツ・スライカ石井泉原和子宇和川輝": {
+    "id": 1301252,
+    "tmdb_title": "Ulysses",
+    "tmdb_original_title": "ユリシーズ",
+    "letterboxd_english_title": "Ulysses (2024)"
+  },
+  "世界|2004|ジャ・ジャンクー": {
+    "id": 41292,
+    "tmdb_title": "The World",
+    "tmdb_original_title": "世界",
+    "letterboxd_english_title": "The World (2004)"
+  },
   "スーパーマン|2025|ジェームズ・ガン （『ガーディアンズ・オブ・ギャラクシー』シリーズ）": {
     "id": 1061474,
     "tmdb_title": "Superman",
@@ -2584,9 +2603,18 @@
     "tmdb_original_title": "히든페이스",
     "letterboxd_english_title": "Hidden Face (2024)"
   },
-  "ジェーン・バーキン没後3年追悼上映会『ジェーンとシャルロット』|2021|シャルロット・ゲンズブール": {},
-  "［ｲﾍﾞﾝﾄ①］クリムト&THE KISS||": {},
-  "［ｲﾍﾞﾝﾄ②］クリムト&THE KISS||": {},
+  "［ｲﾍﾞﾝﾄ①］クリムト&THE KISS||": {
+    "id": 1185135,
+    "tmdb_title": "Klimt & The Kiss",
+    "tmdb_original_title": "Klimt & The Kiss",
+    "letterboxd_english_title": "Klimt & The Kiss (2023)"
+  },
+  "［ｲﾍﾞﾝﾄ②］クリムト&THE KISS||": {
+    "id": 1185135,
+    "tmdb_title": "Klimt & The Kiss",
+    "tmdb_original_title": "Klimt & The Kiss",
+    "letterboxd_english_title": "Klimt & The Kiss (2023)"
+  },
   "成熟|1971|湯浅憲明": {
     "id": 593287,
     "tmdb_title": "The Awakening",
@@ -2611,11 +2639,23 @@
     "tmdb_original_title": "朝やけの詩",
     "letterboxd_english_title": "Rise, Fair Sun (1973)"
   },
+  "女痴漢捜査官お尻で勝負！|1998|渡邊元嗣": {
+    "id": 391309,
+    "tmdb_title": "Sexy S.W.A.T. Team",
+    "tmdb_original_title": "女痴漢捜査官　お尻で勝負！",
+    "letterboxd_english_title": "Sexy S.W.A.T. Team (1998)"
+  },
   "はらむひとびと|2025|": {
     "id": 1379934,
     "tmdb_title": "Conceiving",
     "tmdb_original_title": "はらむひとびと",
     "letterboxd_english_title": "Conceiving (2025)"
+  },
+  "中山教頭の人生テスト||": {
+    "id": 1475029,
+    "tmdb_title": "PRINCIPAL EXAMINATION",
+    "tmdb_original_title": "中山教頭の人生テスト",
+    "letterboxd_english_title": "PRINCIPAL EXAMINATION (2025)"
   },
   "ユミの細胞たち|2024|": {
     "id": 1252371,
@@ -2628,13 +2668,6 @@
     "tmdb_title": "Mickey 17",
     "tmdb_original_title": "Mickey 17",
     "letterboxd_english_title": "Mickey 17 (2025)"
-  },
-  "相馬の金さん||稲葉蚊兒": {},
-  "怪奇 江戸川乱山||": {
-    "id": 975704,
-    "tmdb_title": "The Mysterious Edogawa Ranzan",
-    "tmdb_original_title": "怪奇 江戸川乱山",
-    "letterboxd_english_title": "The Mysterious Edogawa Ranzan (1937)"
   },
   "エノケンの頑張り戰術||中川信夫": {},
   "心の太陽||深田修造": {},
@@ -2651,32 +2684,9 @@
   "美女桜［暴風篇・黎明篇］||大曽根辰夫": {},
   "二本松少年隊||秋山耕作": {},
   "黒川の女たち|2025|松原文枝": {},
-  "光年のかなた 4K レストア||": {
-    "id": 42237,
-    "tmdb_title": "Jonah Who Will Be 25 in the Year 2000",
-    "tmdb_original_title": "Jonas qui aura 25 ans en l'an 2000",
-    "letterboxd_english_title": "Jonah Who Will Be 25 in the Year 2000 (1976)"
-  },
-  "白い町で 4K レストア||": {
-    "id": 33802,
-    "tmdb_title": "In the White City",
-    "tmdb_original_title": "Dans la ville blanche",
-    "letterboxd_english_title": "In the White City (1983)"
-  },
+  "光年のかなた 4K レストア||": {},
+  "白い町で 4K レストア||": {},
   "タイムズ･スクエア 4Ｋレストア【4K上映】||": {
-    "id": 76411,
-    "tmdb_title": "Times Square",
-    "tmdb_original_title": "Times Square",
-    "letterboxd_english_title": "Times Square (1980)"
-  },
-  "ロスト・チルドレン|1996|ジャン＝ピエール・ジュネ、マルク・キャロ": {},
-  "恐怖の報酬【オリジナル完全版】||ウィリアム・フリードキン": {
-    "id": 38985,
-    "tmdb_title": "Sorcerer",
-    "tmdb_original_title": "Sorcerer",
-    "letterboxd_english_title": "Sorcerer (1977)"
-  },
-  "タイムズ・スクエア 4Ｋレストア版||": {
     "id": 76411,
     "tmdb_title": "Times Square",
     "tmdb_original_title": "Times Square",
@@ -2693,6 +2703,12 @@
     "tmdb_title": "Cruising",
     "tmdb_original_title": "Cruising",
     "letterboxd_english_title": "Cruising (1980)"
+  },
+  "タイムズ・スクエア 4Ｋレストア版||": {
+    "id": 76411,
+    "tmdb_title": "Times Square",
+    "tmdb_original_title": "Times Square",
+    "letterboxd_english_title": "Times Square (1980)"
   },
   "秘顔-ひがん-(R18+)||キム・デウ": {},
   "盲山||プロデューサー／脚本：リー・ヤン": {
@@ -2715,6 +2731,12 @@
   },
   "タイムズ・スクエア 上映後||": {},
   "鯨が消えた入り江||エンジェル・テン": {},
+  "NEW RELIGION 【ブーストサウンド上映】||KEISHI KONDO": {
+    "id": 1004171,
+    "tmdb_title": "New Religion",
+    "tmdb_original_title": "ニューレリジョン",
+    "letterboxd_english_title": "New Religion (2022)"
+  },
   "おばあちゃんと僕の約束|2024|": {
     "id": 1103621,
     "tmdb_title": "How to Make Millions Before Grandma Dies",
@@ -2742,6 +2764,12 @@
   "ﾁｬｰｼﾞﾏﾝ研！ﾌﾟﾛｸﾞﾗﾑE(38～46話）||": {},
   "チャージマン研！ﾌﾟﾛｸﾞﾗﾑG(56～65話)||": {},
   "チャージマン研！ﾌﾟﾛｸﾞﾗﾑE(38～46話)||": {},
+  "KNEECAP/ニーキャップ||": {
+    "id": 1180629,
+    "tmdb_title": "Kneecap",
+    "tmdb_original_title": "Kneecap",
+    "letterboxd_english_title": "Kneecap (2024)"
+  },
   "ONCE ダブリンの街角で|2006|ジョン・カーニー": {
     "id": 25937,
     "tmdb_title": "Once in a Summer",
@@ -2754,7 +2782,12 @@
     "tmdb_original_title": "フロントライン",
     "letterboxd_english_title": "Frontline - Yokohama Bay (2025)"
   },
-  "ﾘﾗｲﾄ||": {},
+  "ﾘﾗｲﾄ||": {
+    "id": 1397790,
+    "tmdb_title": "Rewrite",
+    "tmdb_original_title": "リライト",
+    "letterboxd_english_title": "Rewrite (2025)"
+  },
   "君がトクベツ||": {
     "id": 1469230,
     "tmdb_title": "My Special One",
@@ -2767,24 +2800,17 @@
     "tmdb_original_title": "Once",
     "letterboxd_english_title": "Once (2007)"
   },
-  "スターレット|2012|ショーン・ベイカー": {
-    "id": 91679,
-    "tmdb_title": "Starlet",
-    "tmdb_original_title": "Starlet",
-    "letterboxd_english_title": "Starlet (2012)"
-  },
-  "クリムト & THE KISS-アート・オン・スクリーン特別編-||": {
-    "id": 1185135,
-    "tmdb_title": "Klimt & The Kiss",
-    "tmdb_original_title": "Klimt & The Kiss",
-    "letterboxd_english_title": "Klimt & The Kiss (2023)"
-  },
-  "秋が来るとき|2024|フランソワ・オゾン": {},
   "フォー・レター・ワーズ||ショーン・ベイカー": {
     "id": 253106,
     "tmdb_title": "Four Letter Words",
     "tmdb_original_title": "Four Letter Words",
     "letterboxd_english_title": "Four Letter Words (2000)"
+  },
+  "秋が来るとき||": {
+    "id": 1113060,
+    "tmdb_title": "When Autumn Comes",
+    "tmdb_original_title": "When Autumn Comes",
+    "letterboxd_english_title": "When Autumn Comes"
   },
   "『海がきこえる』リバイバル上映|1993|望月智充": {
     "id": 21057,
@@ -2792,8 +2818,19 @@
     "tmdb_original_title": "海がきこえる",
     "letterboxd_english_title": "Ocean Waves (1993)"
   },
+  "スターレット|2012|ショーン・ベイカー": {
+    "id": 91679,
+    "tmdb_title": "Starlet",
+    "tmdb_original_title": "Starlet",
+    "letterboxd_english_title": "Starlet (2012)"
+  },
   "生田斗真、中村倫也出演作 ゲキ×シネ『バサラオ』||": {},
-  "『わたしの頭はいつもうるさい』||": {},
+  "『わたしの頭はいつもうるさい』||": {
+    "id": 1449997,
+    "tmdb_title": "My Head Is Always Noisy",
+    "tmdb_original_title": "わたしの頭はいつもうるさい",
+    "letterboxd_english_title": "My Head Is Always Noisy (2024)"
+  },
   "小学校～それは小さな社会～||": {
     "id": 1186850,
     "tmdb_title": "The Making of a Japanese",
