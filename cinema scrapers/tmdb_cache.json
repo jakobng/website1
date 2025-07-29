@@ -2291,13 +2291,6 @@
     "tmdb_original_title": "八甲田山",
     "letterboxd_english_title": "Mount Hakkoda (1977)"
   },
-  "プロフェッショナル|2025|ロバート・ロレンツ": {},
-  "アマチュア||": {
-    "id": 1087891,
-    "tmdb_title": "The Amateur",
-    "tmdb_original_title": "The Amateur",
-    "letterboxd_english_title": "The Amateur (2025)"
-  },
   "異端者の家||": {
     "id": 1138194,
     "tmdb_title": "Heretic",
@@ -2309,6 +2302,13 @@
     "tmdb_title": "Femme",
     "tmdb_original_title": "Femme",
     "letterboxd_english_title": "Femme (2023)"
+  },
+  "プロフェッショナル|2025|ロバート・ロレンツ": {},
+  "アマチュア||": {
+    "id": 1087891,
+    "tmdb_title": "The Amateur",
+    "tmdb_original_title": "The Amateur",
+    "letterboxd_english_title": "The Amateur (2025)"
   },
   "二百三高地||": {
     "id": 315559,
@@ -2340,6 +2340,12 @@
     "tmdb_original_title": "軍旗はためく下に",
     "letterboxd_english_title": "Under the Flag of the Rising Sun (1972)"
   },
+  "ビルマの竪琴 4Kデジタル復元版||": {
+    "id": 33319,
+    "tmdb_title": "The Burmese Harp",
+    "tmdb_original_title": "ビルマの竪琴",
+    "letterboxd_english_title": "The Burmese Harp (1956)"
+  },
   "異端者の家|2024|スコット・ベック、ブライアン・ウッズ": {
     "id": 1138194,
     "tmdb_title": "Heretic",
@@ -2347,10 +2353,10 @@
     "letterboxd_english_title": "Heretic (2024)"
   },
   "激戦地||ウンベルト・レンツィ": {
-    "id": 279874,
-    "tmdb_title": "Battle of the Commandos",
-    "tmdb_original_title": "La legione dei dannati",
-    "letterboxd_english_title": "Battle of the Commandos (1969)"
+    "id": 100193,
+    "tmdb_title": "Terror Squad",
+    "tmdb_original_title": "Terror Squad",
+    "letterboxd_english_title": "Terror Squad (1988)"
   },
   "海がきこえる|1993|望月智充": {
     "id": 21057,
@@ -2380,6 +2386,13 @@
     "tmdb_original_title": "ラブライブ！The School Idol Movie",
     "letterboxd_english_title": "Love Live! The School Idol Movie (2015)"
   },
+  "レオン＆コシーニャの驚異のダークワールドを極上音響で！ 【A】骨+オオカミの家||": {
+    "id": 499537,
+    "tmdb_title": "The Wolf House",
+    "tmdb_original_title": "La casa lobo",
+    "letterboxd_english_title": "The Wolf House (2018)"
+  },
+  "レオン＆コシーニャの驚異のダークワールドを極上音響で！ 【B】名前のノート+ハイパーボリア人||": {},
   "ひろしま||関川秀雄 原作：長田新 出演：岡田英次": {
     "id": 273433,
     "tmdb_title": "Hiroshima",
@@ -2388,12 +2401,7 @@
   },
   "ゴッドマザー コシノアヤコの生涯|2025|": {},
   "来し方 行く末|2023|リウ・ジアイン 出演：フー・ゴー、ウー・レイ": {},
-  "ゲッベルス|2024|": {
-    "id": 1219576,
-    "tmdb_title": "Führer and Seducer",
-    "tmdb_original_title": "Führer und Verführer",
-    "letterboxd_english_title": "Führer and Seducer (2024)"
-  },
+  "ゲッベルス|2024|": {},
   "教皇選挙|2024|エドワード・ベルガー 出演：レイフ・ファインズ、スタンリー・トゥッチ、イザベラ・ロッセリーニ": {
     "id": 974576,
     "tmdb_title": "Conclave",
@@ -2433,23 +2441,11 @@
   },
   "オリヴェイラ2025||": {},
   "配給7社presents||": {},
-  "『タイムズ・スクエア 4Kレストア』|1981|": {
-    "id": 1097458,
-    "tmdb_title": "Fifty Miles from Times Square",
-    "tmdb_original_title": "Fifty Miles from Times Square",
-    "letterboxd_english_title": "Fifty Miles from Times Square (1981)"
-  },
   "愛されなくても別に|2025|": {
     "id": 1511352,
     "tmdb_title": "I Don’t Really Care if I’m Not Loved",
     "tmdb_original_title": "愛されなくても別に",
     "letterboxd_english_title": "I Don’t Really Care if I’m Not Loved (2025)"
-  },
-  "たべっ子どうぶつ|2025|": {
-    "id": 1329578,
-    "tmdb_title": "Tabekko Doubutsu: THE MOVIE",
-    "tmdb_original_title": "たべっ子どうぶつ THE MOVIE",
-    "letterboxd_english_title": "Tabekko Doubutsu: THE MOVIE (2025)"
   },
   "『スターレット』|2012|": {
     "id": 91679,
@@ -2457,26 +2453,31 @@
     "tmdb_original_title": "Starlet",
     "letterboxd_english_title": "Starlet (2012)"
   },
+  "『プリンス・オブ・ブロードウェイ』|2008|": {},
+  "たべっ子どうぶつ|2025|": {
+    "id": 1329578,
+    "tmdb_title": "Tabekko Doubutsu: THE MOVIE",
+    "tmdb_original_title": "たべっ子どうぶつ THE MOVIE",
+    "letterboxd_english_title": "Tabekko Doubutsu: THE MOVIE (2025)"
+  },
+  "『タイムズ・スクエア 4Kレストア』|1981|": {
+    "id": 1097458,
+    "tmdb_title": "Fifty Miles from Times Square",
+    "tmdb_original_title": "Fifty Miles from Times Square",
+    "letterboxd_english_title": "Fifty Miles from Times Square (1981)"
+  },
   "Love Letter【4K リマスター】||": {
     "id": 47002,
     "tmdb_title": "Love Letter",
     "tmdb_original_title": "ラブレター",
     "letterboxd_english_title": "Love Letter (1995)"
   },
-  "『プリンス・オブ・ブロードウェイ』|2008|": {},
-  "『テイクアウト』|2004|": {},
+  "サマーフィルムにのって|2020|": {},
   "ネムルバカ|2025|": {
     "id": 1357797,
     "tmdb_title": "Nemurubaka: Hypnic Jerks",
     "tmdb_original_title": "ネムルバカ",
     "letterboxd_english_title": "Nemurubaka: Hypnic Jerks (2025)"
-  },
-  "サマーフィルムにのって|2020|": {},
-  "劇場総集編ぼっち・ざ・ろっく！ Re:|2024|": {
-    "id": 1129610,
-    "tmdb_title": "BOCCHI THE ROCK! Recap Part 1",
-    "tmdb_original_title": "劇場総集編ぼっち・ざ・ろっく！Re:",
-    "letterboxd_english_title": "BOCCHI THE ROCK! Recap Part 1 (2024)"
   },
   "映画 けいおん！|2011|": {
     "id": 120811,
@@ -2484,8 +2485,19 @@
     "tmdb_original_title": "映画 けいおん！",
     "letterboxd_english_title": "K-On! The Movie (2011)"
   },
+  "劇場総集編ぼっち・ざ・ろっく！ Re:|2024|": {
+    "id": 1129610,
+    "tmdb_title": "BOCCHI THE ROCK! Recap Part 1",
+    "tmdb_original_title": "劇場総集編ぼっち・ざ・ろっく！Re:",
+    "letterboxd_english_title": "BOCCHI THE ROCK! Recap Part 1 (2024)"
+  },
   "マリア・モンテッソーリ 愛と創造のメソッド|2023|": {},
-  "ドマーニ！ 愛のことづて|2023|": {},
+  "ドマーニ！ 愛のことづて|2023|": {
+    "id": 1026227,
+    "tmdb_title": "There's Still Tomorrow",
+    "tmdb_original_title": "C'è ancora domani",
+    "letterboxd_english_title": "There's Still Tomorrow (2023)"
+  },
   "小学校〜それは小さな社会〜|2023|": {},
   "Playground／校庭|2021|": {
     "id": 785209,
@@ -2574,7 +2586,13 @@
     "tmdb_original_title": "逆火",
     "letterboxd_english_title": "Gyakka (2025)"
   },
-  "ジンジャー・ボーイ［カンヌ映画祭ラ・シネフ部門第3位入賞記念上映］||": {},
+  "ジンジャー・ボーイ［カンヌ映画祭ラ・シネフ部門第3位入賞記念上映］||": {
+    "id": 1471409,
+    "tmdb_title": "Ginger Boy",
+    "tmdb_original_title": "ジンジャーボーイ",
+    "letterboxd_english_title": "Ginger Boy (2025)"
+  },
+  "終戦80年上映『この世界の片隅に』|2019|片渕須直": {},
   "炎はつなぐ|2025|大西暢夫": {},
   "ユリシーズ（2024） 字幕版|2024|宇和川輝出演：アレフティーナ・ティクホノーヴァディミトリ・ティクホノーヴエナイツ・スライカ石井泉原和子宇和川輝": {
     "id": 1301252,
@@ -2582,6 +2600,7 @@
     "tmdb_original_title": "ユリシーズ",
     "letterboxd_english_title": "Ulysses (2024)"
   },
+  "一月の声に歓びを刻め 字幕版|2023|三島有紀子出演：前田敦子カルーセル麻紀哀川翔坂東龍汰片岡礼子宇野祥平原田龍二松本妃代長田詩音とよた真帆": {},
   "世界|2004|ジャ・ジャンクー": {
     "id": 41292,
     "tmdb_title": "The World",
@@ -2621,11 +2640,11 @@
     "tmdb_original_title": "Elevation",
     "letterboxd_english_title": "Elevation (2024)"
   },
-  "フォレスト・ガンプ/一期一会||ロバート・ゼメキス": {
-    "id": 13,
-    "tmdb_title": "Forrest Gump",
-    "tmdb_original_title": "Forrest Gump",
-    "letterboxd_english_title": "Forrest Gump (1994)"
+  "コミック雑誌なんかいらない！||滝田洋二郎": {
+    "id": 85015,
+    "tmdb_title": "No More Comics!",
+    "tmdb_original_title": "コミック雑誌なんかいらない！",
+    "letterboxd_english_title": "No More Comics! (1986)"
   },
   "IMMACULATE 聖なる胎動|2024|マイケル・モーハン": {
     "id": 1041613,
@@ -2633,11 +2652,30 @@
     "tmdb_original_title": "Immaculate",
     "letterboxd_english_title": "Immaculate (2024)"
   },
-  "コミック雑誌なんかいらない！||滝田洋二郎": {
-    "id": 85015,
-    "tmdb_title": "No More Comics!",
-    "tmdb_original_title": "コミック雑誌なんかいらない！",
-    "letterboxd_english_title": "No More Comics! (1986)"
+  "フォレスト・ガンプ/一期一会||ロバート・ゼメキス": {
+    "id": 13,
+    "tmdb_title": "Forrest Gump",
+    "tmdb_original_title": "Forrest Gump",
+    "letterboxd_english_title": "Forrest Gump (1994)"
+  },
+  "KNEECAP/ニーキャップ||": {
+    "id": 1180629,
+    "tmdb_title": "Kneecap",
+    "tmdb_original_title": "Kneecap",
+    "letterboxd_english_title": "Kneecap (2024)"
+  },
+  "入国審査||": {},
+  "ギルバート・グレイプ||ラッセ・ハルストレム": {
+    "id": 1587,
+    "tmdb_title": "What's Eating Gilbert Grape",
+    "tmdb_original_title": "What's Eating Gilbert Grape",
+    "letterboxd_english_title": "What's Eating Gilbert Grape (1993)"
+  },
+  "KNEECAP／ニーキャップ||リッチ・ペピアット": {
+    "id": 1180629,
+    "tmdb_title": "Kneecap",
+    "tmdb_original_title": "Kneecap",
+    "letterboxd_english_title": "Kneecap (2024)"
   },
   "私たちが光と想うすべて||パヤル・カパーリヤー": {
     "id": 927547,
@@ -2651,17 +2689,17 @@
     "tmdb_original_title": "Het smelt",
     "letterboxd_english_title": "When It Melts (2023)"
   },
+  "無名【ワン・イーボー誕生日 特別記念上映】||チェン・アル": {
+    "id": 855483,
+    "tmdb_title": "Hidden Blade",
+    "tmdb_original_title": "无名",
+    "letterboxd_english_title": "Hidden Blade (2023)"
+  },
   "朝やけの詩|1973|熊井啓": {
     "id": 264563,
     "tmdb_title": "Rise, Fair Sun",
     "tmdb_original_title": "朝やけの詩",
     "letterboxd_english_title": "Rise, Fair Sun (1973)"
-  },
-  "女痴漢捜査官お尻で勝負！|1998|渡邊元嗣": {
-    "id": 391309,
-    "tmdb_title": "Sexy S.W.A.T. Team",
-    "tmdb_original_title": "女痴漢捜査官　お尻で勝負！",
-    "letterboxd_english_title": "Sexy S.W.A.T. Team (1998)"
   },
   "痴漢電車感じるイボイボ|1996|今岡信治": {
     "id": 454261,
@@ -2726,7 +2764,12 @@
     "letterboxd_english_title": "Goju no to (1944)"
   },
   "野戰軍樂隊||マキノ正博": {},
-  "召集令／進軍の歌||佐々木康": {},
+  "召集令／進軍の歌||佐々木康": {
+    "id": 1401556,
+    "tmdb_title": "Summons",
+    "tmdb_original_title": "Summons",
+    "letterboxd_english_title": "Summons"
+  },
   "相馬の金さん||稲葉蚊兒": {},
   "心の太陽||深田修造": {},
   "家に三男二女あり||瑞穂春海": {
@@ -2735,6 +2778,19 @@
     "tmdb_original_title": "家に三男二女あり",
     "letterboxd_english_title": "Three Sons And Two Daughters At Home (1943)"
   },
+  "怪奇 江戸川乱山||": {
+    "id": 975704,
+    "tmdb_title": "The Mysterious Edogawa Ranzan",
+    "tmdb_original_title": "怪奇 江戸川乱山",
+    "letterboxd_english_title": "The Mysterious Edogawa Ranzan (1937)"
+  },
+  "征戦愛馬譜 暁に祈る||佐々木康": {
+    "id": 57212,
+    "tmdb_title": "War Horse",
+    "tmdb_original_title": "War Horse",
+    "letterboxd_english_title": "War Horse (2011)"
+  },
+  "無明有明 ［後篇］||松田定次": {},
   "黒川の女たち|2025|松原文枝": {
     "id": 1518269,
     "tmdb_title": "In Their Own Words: The Women of Kurokawa",
@@ -2742,10 +2798,10 @@
     "letterboxd_english_title": "In Their Own Words: The Women of Kurokawa (2025)"
   },
   "光年のかなた 4K レストア||": {
-    "id": 33802,
-    "tmdb_title": "In the White City",
-    "tmdb_original_title": "Dans la ville blanche",
-    "letterboxd_english_title": "In the White City (1983)"
+    "id": 76816,
+    "tmdb_title": "The Age of the Earth",
+    "tmdb_original_title": "A Idade da Terra",
+    "letterboxd_english_title": "The Age of the Earth (1980)"
   },
   "白い町で 4K レストア||": {
     "id": 33802,
@@ -2760,11 +2816,11 @@
     "letterboxd_english_title": "In This Corner of the World (2016)"
   },
   "三日葬/サミルチャン||": {},
-  "盲山||プロデューサー／脚本：リー・ヤン": {
-    "id": 51520,
-    "tmdb_title": "Blind Mountain",
-    "tmdb_original_title": "盲山",
-    "letterboxd_english_title": "Blind Mountain (2007)"
+  "エレベーション 絶滅ライン||ジョージ・ノルフィ": {
+    "id": 1035048,
+    "tmdb_title": "Elevation",
+    "tmdb_original_title": "Elevation",
+    "letterboxd_english_title": "Elevation (2024)"
   },
   "タイムズ・スクエア 4Ｋレストア版||": {
     "id": 76411,
@@ -2785,11 +2841,11 @@
     "tmdb_original_title": "Hardcore",
     "letterboxd_english_title": "Hardcore (1979)"
   },
-  "エレベーション 絶滅ライン||ジョージ・ノルフィ": {
-    "id": 1035048,
-    "tmdb_title": "Elevation",
-    "tmdb_original_title": "Elevation",
-    "letterboxd_english_title": "Elevation (2024)"
+  "盲山||プロデューサー／脚本：リー・ヤン": {
+    "id": 51520,
+    "tmdb_title": "Blind Mountain",
+    "tmdb_original_title": "盲山",
+    "letterboxd_english_title": "Blind Mountain (2007)"
   },
   "見える子ちゃん||中村義洋": {
     "id": 1425714,
@@ -2798,7 +2854,7 @@
     "letterboxd_english_title": "Mieruko-chan (2025)"
   },
   "水の中で深呼吸|2024|": {},
-  "トレインスポッティング 【３５ｍｍフィルム上映】||": {
+  "トレインスポッティング 【DCP上映】||": {
     "id": 627,
     "tmdb_title": "Trainspotting",
     "tmdb_original_title": "Trainspotting",
@@ -2816,7 +2872,7 @@
     "tmdb_original_title": "Fremont",
     "letterboxd_english_title": "Fremont (2023)"
   },
-  "トレインスポッティング 【DCP上映】||": {
+  "トレインスポッティング 【３５ｍｍフィルム上映】||": {
     "id": 627,
     "tmdb_title": "Trainspotting",
     "tmdb_original_title": "Trainspotting",
@@ -2852,33 +2908,25 @@
     "tmdb_original_title": "フロントライン",
     "letterboxd_english_title": "Frontline - Yokohama Bay (2025)"
   },
-  "熊川哲也 Kバレエ トウキョウ創立25周年記念期間限定特別上映「ロミオとジュリエット in Cinema」||": {},
-  "『海がきこえる』リバイバル上映|1993|望月智充": {
-    "id": 21057,
-    "tmdb_title": "Ocean Waves",
-    "tmdb_original_title": "海がきこえる",
-    "letterboxd_english_title": "Ocean Waves (1993)"
-  },
-  "熊川哲也 Kバレエ トウキョウ創立25周年記念期間限定特別上映「カルメン in Cinema」||": {},
-  "熊川哲也 Kバレエ トウキョウ創立25周年記念特別上映「熊川版眠れる森の美女 in Cinema」||": {
-    "id": 333349,
-    "tmdb_title": "The Sleeping Beauty",
-    "tmdb_original_title": "El Bello Durmiente",
-    "letterboxd_english_title": "The Sleeping Beauty (1952)"
-  },
-  "熊川哲也 Kバレエ トウキョウ創立25周年記念期間限定特別上映「クレオパトラ in Cinema」||": {
-    "id": 8095,
-    "tmdb_title": "Cleopatra",
-    "tmdb_original_title": "Cleopatra",
-    "letterboxd_english_title": "Cleopatra (1963)"
-  },
   "『選挙と鬱』||": {},
   "生田斗真、中村倫也出演作 ゲキ×シネ『バサラオ』 （＊インターミッション無し）||": {},
-  "『わたしの頭はいつもうるさい』||": {},
+  "『わたしの頭はいつもうるさい』||": {
+    "id": 1449997,
+    "tmdb_title": "My Head Is Always Noisy",
+    "tmdb_original_title": "わたしの頭はいつもうるさい",
+    "letterboxd_english_title": "My Head Is Always Noisy (2024)"
+  },
   "中村倫也主演作 ゲキ×シネ『狐晴明九尾狩』||": {},
   "『ひみつきちのつくりかた』||": {},
   "『ただいまを返す旅』||": {},
   "『夏の砂の上』||": {},
+  "生田斗真主演作 ゲキ×シネ『偽義経冥界歌』||": {},
+  "『メイデン』||": {
+    "id": 393498,
+    "tmdb_title": "The Maiden",
+    "tmdb_original_title": "The Maiden",
+    "letterboxd_english_title": "The Maiden (2016)"
+  },
   "小学校～それは小さな社会～||": {
     "id": 1186850,
     "tmdb_title": "The Making of a Japanese",
@@ -2903,5 +2951,11 @@
     "tmdb_title": "The Apprentice",
     "tmdb_original_title": "The Apprentice",
     "letterboxd_english_title": "The Apprentice (2024)"
+  },
+  "美しい夏||ラウラ・ルケッティ": {
+    "id": 108087,
+    "tmdb_title": "A Boy's Summer in 1945",
+    "tmdb_original_title": "美しい夏キリシマ",
+    "letterboxd_english_title": "A Boy's Summer in 1945 (2002)"
   }
 }
