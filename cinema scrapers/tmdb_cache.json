@@ -3690,12 +3690,17 @@
     "letterboxd_english_title": "Seaside Serendipity (2025)"
   },
   "ロジャー・ムーア／冒険野郎〈完全版〉||": {
-    "id": 19664,
-    "tmdb_title": "The Sea Wolves",
-    "tmdb_original_title": "The Sea Wolves",
-    "letterboxd_english_title": "The Sea Wolves (1980)"
+    "id": 959828,
+    "tmdb_title": "The Persuaders!",
+    "tmdb_original_title": "The Persuaders!",
+    "letterboxd_english_title": "The Persuaders! (1973)"
   },
-  "秘顔-ひがん-|2024|キム・デウ": {},
+  "秘顔-ひがん-|2024|キム・デウ": {
+    "id": 1326897,
+    "tmdb_title": "So Surreal: Behind the Masks",
+    "tmdb_original_title": "So Surreal: Behind the Masks",
+    "letterboxd_english_title": "So Surreal: Behind the Masks (2024)"
+  },
   "ガール・ウィズ・ニードル||": {
     "id": 1232827,
     "tmdb_title": "The Girl with the Needle",
@@ -3714,22 +3719,58 @@
     "tmdb_original_title": "Le Fabuleux Destin d'Amélie Poulain",
     "letterboxd_english_title": "Amélie (2001)"
   },
-  "秘顔-ひがん-||": {
-    "id": 365294,
-    "tmdb_title": "Higan",
-    "tmdb_original_title": "彼岸",
-    "letterboxd_english_title": "Higan (2002)"
+  "ロスト・チルドレン||": {
+    "id": 902,
+    "tmdb_title": "The City of Lost Children",
+    "tmdb_original_title": "La Cité des Enfants Perdus",
+    "letterboxd_english_title": "The City of Lost Children (1995)"
   },
+  "秘顔-ひがん-||": {},
   "デリカテッセン|1991|ジャン＝ピエール・ジュネ、マルク・キャロ": {
     "id": 892,
     "tmdb_title": "Delicatessen",
     "tmdb_original_title": "Delicatessen",
     "letterboxd_english_title": "Delicatessen (1991)"
   },
-  "あの夏、僕たちが好きだったソナへ||": {
-    "id": 477917,
-    "tmdb_title": "Our Summer",
-    "tmdb_original_title": "Meän kesä",
-    "letterboxd_english_title": "Our Summer (2004)"
-  }
+  "縺ｼ縺上�ｮ縺頑律縺輔∪�ｼｻ0829�ｾ��ｽｰ�ｽｸ�ｽｲ�ｾ搾ｾ橸ｾ晢ｾ��ｼｽ||": {},
+  "天使の集まる島|2025|堀井綾香": {
+    "id": 1454955,
+    "tmdb_title": "The Angel Island",
+    "tmdb_original_title": "天使の集まる島",
+    "letterboxd_english_title": "The Angel Island (2025)"
+  },
+  "飛べない天使|2023|堀井綾香": {},
+  "グラン・ブルー完全版|1988|リュック・ベッソン": {
+    "id": 175,
+    "tmdb_title": "The Big Blue",
+    "tmdb_original_title": "Le Grand Bleu",
+    "letterboxd_english_title": "The Big Blue (1988)"
+  },
+  "メイソウ家族||YUI・UMI　熊切 和嘉　MONOS　金田 敬": {
+    "id": 566367,
+    "tmdb_title": "Midnight Family",
+    "tmdb_original_title": "Midnight Family",
+    "letterboxd_english_title": "Midnight Family (2019)"
+  },
+  "ユニバーサル・ランゲージ|2024|マシュー・ランキン": {
+    "id": 988397,
+    "tmdb_title": "Universal Language",
+    "tmdb_original_title": "Une langue universelle",
+    "letterboxd_english_title": "Universal Language (2024)"
+  },
+  "『パンダコパンダ』＆『パンダコパンダ 雨ふりサーカスの巻』||": {},
+  "海辺へ行く道[0901ｲﾍﾞﾝﾄ]||": {},
+  "パトリックとクジラ 6000日の絆||マーク・フレッチャー": {
+    "id": 1016208,
+    "tmdb_title": "Patrick and the Whale",
+    "tmdb_original_title": "Patrick and the Whale",
+    "letterboxd_english_title": "Patrick and the Whale (2022)"
+  },
+  "『シナリオ』||": {
+    "id": 1220338,
+    "tmdb_title": "Scénarios",
+    "tmdb_original_title": "Scénarios",
+    "letterboxd_english_title": "Scénarios (2024)"
+  },
+  "『これらが全てFantasyだったあの頃。』||": {}
 }
