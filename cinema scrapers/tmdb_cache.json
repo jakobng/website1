@@ -3690,17 +3690,18 @@
     "letterboxd_english_title": "Seaside Serendipity (2025)"
   },
   "ロジャー・ムーア／冒険野郎〈完全版〉||": {
-    "id": 959828,
-    "tmdb_title": "The Persuaders!",
-    "tmdb_original_title": "The Persuaders!",
-    "letterboxd_english_title": "The Persuaders! (1973)"
+    "id": 4910,
+    "tmdb_title": "The Man Who Haunted Himself",
+    "tmdb_original_title": "The Man Who Haunted Himself",
+    "letterboxd_english_title": "The Man Who Haunted Himself (1970)"
   },
-  "秘顔-ひがん-|2024|キム・デウ": {
-    "id": 1326897,
-    "tmdb_title": "So Surreal: Behind the Masks",
-    "tmdb_original_title": "So Surreal: Behind the Masks",
-    "letterboxd_english_title": "So Surreal: Behind the Masks (2024)"
+  "戦うパンチョ・ビラ||バズ・キューリック": {
+    "id": 48564,
+    "tmdb_title": "Villa Rides",
+    "tmdb_original_title": "Villa Rides",
+    "letterboxd_english_title": "Villa Rides (1968)"
   },
+  "秘顔-ひがん-|2024|キム・デウ": {},
   "ガール・ウィズ・ニードル||": {
     "id": 1232827,
     "tmdb_title": "The Girl with the Needle",
@@ -3725,12 +3726,36 @@
     "tmdb_original_title": "La Cité des Enfants Perdus",
     "letterboxd_english_title": "The City of Lost Children (1995)"
   },
-  "秘顔-ひがん-||": {},
+  "秘顔-ひがん-||": {
+    "id": 203975,
+    "tmdb_title": "The Secret Face",
+    "tmdb_original_title": "Gizli Yüz",
+    "letterboxd_english_title": "The Secret Face (1991)"
+  },
   "デリカテッセン|1991|ジャン＝ピエール・ジュネ、マルク・キャロ": {
     "id": 892,
     "tmdb_title": "Delicatessen",
     "tmdb_original_title": "Delicatessen",
     "letterboxd_english_title": "Delicatessen (1991)"
+  },
+  "パトリックとクジラ 6000日の絆|2022|": {},
+  "ユリシーズ||": {
+    "id": 43194,
+    "tmdb_title": "Ulysses",
+    "tmdb_original_title": "Ulisse",
+    "letterboxd_english_title": "Ulysses (1954)"
+  },
+  "ユリシーズ|2024|": {
+    "id": 1301252,
+    "tmdb_title": "Ulysses",
+    "tmdb_original_title": "ユリシーズ",
+    "letterboxd_english_title": "Ulysses (2024)"
+  },
+  "〈特集上映〉 アンドレア・アーノルド監督セレクション|2011|エミリー・ブロンテ「嵐が丘」": {
+    "id": 9364,
+    "tmdb_title": "Wuthering Heights",
+    "tmdb_original_title": "Wuthering Heights",
+    "letterboxd_english_title": "Wuthering Heights (2011)"
   },
   "縺ｼ縺上�ｮ縺頑律縺輔∪�ｼｻ0829�ｾ��ｽｰ�ｽｸ�ｽｲ�ｾ搾ｾ橸ｾ晢ｾ��ｼｽ||": {},
   "天使の集まる島|2025|堀井綾香": {
@@ -3747,10 +3772,10 @@
     "letterboxd_english_title": "The Big Blue (1988)"
   },
   "メイソウ家族||YUI・UMI　熊切 和嘉　MONOS　金田 敬": {
-    "id": 566367,
-    "tmdb_title": "Midnight Family",
-    "tmdb_original_title": "Midnight Family",
-    "letterboxd_english_title": "Midnight Family (2019)"
+    "id": 609859,
+    "tmdb_title": "A Family",
+    "tmdb_original_title": "A Family",
+    "letterboxd_english_title": "A Family (2019)"
   },
   "ユニバーサル・ランゲージ|2024|マシュー・ランキン": {
     "id": 988397,
@@ -3765,6 +3790,55 @@
     "tmdb_title": "Patrick and the Whale",
     "tmdb_original_title": "Patrick and the Whale",
     "letterboxd_english_title": "Patrick and the Whale (2022)"
+  },
+  "流し雛||大槻義一": {
+    "id": 1105629,
+    "tmdb_title": "Dolls floating down the river",
+    "tmdb_original_title": "流し雛",
+    "letterboxd_english_title": "Dolls floating down the river (1962)"
+  },
+  "嬉々な生活|2024|": {
+    "id": 1306457,
+    "tmdb_title": "Happy Life",
+    "tmdb_original_title": "嬉々な生活",
+    "letterboxd_english_title": "Happy Life (2024)"
+  },
+  "ひとり〜||": {},
+  "壁の外側と内側 パレスチナ・イスラエル取材記||川上 泰徳": {},
+  "僕の中に咲く花火|2025|": {},
+  "ホース・マネー||監督:ペドロ·コスタ": {
+    "id": 285697,
+    "tmdb_title": "Horse Money",
+    "tmdb_original_title": "Cavalo Dinheiro",
+    "letterboxd_english_title": "Horse Money (2014)"
+  },
+  "ヴィターリー・カネフスキー トリロジー||": {},
+  "グラン・ブルー完全版 4K上映||": {
+    "id": 175,
+    "tmdb_title": "The Big Blue",
+    "tmdb_original_title": "Le Grand Bleu",
+    "letterboxd_english_title": "The Big Blue (1988)"
+  },
+  "スタントマン 武替道||アルバート・レオン＆ハーバート・レオン": {
+    "id": 1095805,
+    "tmdb_title": "Stuntman",
+    "tmdb_original_title": "武替道",
+    "letterboxd_english_title": "Stuntman (2024)"
+  },
+  "エレファント||ガス・ヴァン・サント": {
+    "id": 1807,
+    "tmdb_title": "Elephant",
+    "tmdb_original_title": "Elephant",
+    "letterboxd_english_title": "Elephant (2003)"
+  },
+  "ドラゴンファイアヒーローズナイト！||": {},
+  "ザ・フー ライヴ・アット・キルバーン1977☆上映前トーク付き||": {},
+  "ザ・フー ライヴ・アット・キルバーン１９７７|2007|": {},
+  "ﾘﾝﾀﾞﾘﾝﾀﾞﾘﾝﾀﾞ||": {
+    "id": 27337,
+    "tmdb_title": "Linda Linda Linda",
+    "tmdb_original_title": "リンダ リンダ リンダ",
+    "letterboxd_english_title": "Linda Linda Linda (2005)"
   },
   "『シナリオ』||": {
     "id": 1220338,
