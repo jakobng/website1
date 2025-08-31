@@ -3690,10 +3690,10 @@
     "letterboxd_english_title": "Seaside Serendipity (2025)"
   },
   "ロジャー・ムーア／冒険野郎〈完全版〉||": {
-    "id": 463906,
-    "tmdb_title": "The Saint",
-    "tmdb_original_title": "The Saint",
-    "letterboxd_english_title": "The Saint (2017)"
+    "id": 959828,
+    "tmdb_title": "The Persuaders!",
+    "tmdb_original_title": "The Persuaders!",
+    "letterboxd_english_title": "The Persuaders! (1973)"
   },
   "戦うパンチョ・ビラ||バズ・キューリック": {
     "id": 48564,
@@ -3705,7 +3705,8 @@
   "ガール・ウィズ・ニードル||": {
     "id": 1232827,
     "tmdb_title": "The Girl with the Needle",
-    "tmdb_original_title": "Pigen med nålen"
+    "tmdb_original_title": "Pigen med nålen",
+    "letterboxd_english_title": "The Girl with the Needle (2024)"
   },
   "デリカテッセン||": {
     "id": 892,
@@ -3725,12 +3726,7 @@
     "tmdb_original_title": "La Cité des Enfants Perdus",
     "letterboxd_english_title": "The City of Lost Children (1995)"
   },
-  "秘顔-ひがん-||": {
-    "id": 365294,
-    "tmdb_title": "Higan",
-    "tmdb_original_title": "彼岸",
-    "letterboxd_english_title": "Higan (2002)"
-  },
+  "秘顔-ひがん-||": {},
   "デリカテッセン|1991|ジャン＝ピエール・ジュネ、マルク・キャロ": {
     "id": 892,
     "tmdb_title": "Delicatessen",
@@ -3761,18 +3757,104 @@
     "tmdb_original_title": "龍虎門",
     "letterboxd_english_title": "Dragon Tiger Gate (2006)"
   },
+  "ドラゴン×マッハ！||": {},
+  "イップ・マン外伝 マスターZ||": {
+    "id": 450001,
+    "tmdb_title": "Master Z: Ip Man Legacy",
+    "tmdb_original_title": "葉問外傳：張天志",
+    "letterboxd_english_title": "Master Z: Ip Man Legacy (2018)"
+  },
+  "ら・かんぱねら|2025|": {
+    "id": 1474275,
+    "tmdb_title": "La Campanella",
+    "tmdb_original_title": "ら・かんぱねら",
+    "letterboxd_english_title": "La Campanella (2025)"
+  },
+  "ウィキッド ふたりの魔女|2024|ジョン・M・チュウ『イン・ザ・ハイツ』『クレイジー・リッチ！』 出演：シンシア・エリヴォ、アリアナ・グランデ、ジョナサン・ベイリー": {
+    "id": 402431,
+    "tmdb_title": "Wicked",
+    "tmdb_original_title": "Wicked",
+    "letterboxd_english_title": "Wicked (2024)"
+  },
+  "新世紀ロマンティクス|2024|ジャ・ジャンクー『長江哀歌』『帰れない二人』 出演：チャオ・タオ": {
+    "id": 1136837,
+    "tmdb_title": "Caught by the Tides",
+    "tmdb_original_title": "风流一代",
+    "letterboxd_english_title": "Caught by the Tides (2024)"
+  },
+  "海がきこえる|1993|望月智充 原作：氷室冴子 脚本：中村香 声の出演：飛田展男、坂本洋子、関俊彦": {
+    "id": 21057,
+    "tmdb_title": "Ocean Waves",
+    "tmdb_original_title": "海がきこえる",
+    "letterboxd_english_title": "Ocean Waves (1993)"
+  },
+  "選挙と鬱|2025|": {},
+  "突然、君がいなくなって|2024|ルーナ・ルーナソン 音楽：ヨハン・ヨハンソン 撮影：ソフィア・オルソン 出演：エリーン・ハットル、ミカエル・コーバー": {},
   "パトリックとクジラ 6000日の絆|2022|": {},
+  "ユリシーズ||": {
+    "id": 43194,
+    "tmdb_title": "Ulysses",
+    "tmdb_original_title": "Ulisse",
+    "letterboxd_english_title": "Ulysses (1954)"
+  },
   "ユリシーズ|2024|": {
     "id": 1301252,
     "tmdb_title": "Ulysses",
     "tmdb_original_title": "ユリシーズ",
     "letterboxd_english_title": "Ulysses (2024)"
   },
-  "ユリシーズ||": {
-    "id": 43194,
-    "tmdb_title": "Ulysses",
-    "tmdb_original_title": "Ulisse",
-    "letterboxd_english_title": "Ulysses (1954)"
+  "コルチャック先生|1990|": {
+    "id": 47430,
+    "tmdb_title": "Korczak",
+    "tmdb_original_title": "Korczak",
+    "letterboxd_english_title": "Korczak (1990)"
+  },
+  "リー・ミラー 彼女の瞳が映す世界|2023|": {
+    "id": 1153137,
+    "tmdb_title": "An All-Star Salute to Lee Greenwood",
+    "tmdb_original_title": "An All-Star Salute to Lee Greenwood",
+    "letterboxd_english_title": "An All-Star Salute to Lee Greenwood (2023)"
+  },
+  "IT'S NOT ME イッツ・ノット・ミー|2024|": {
+    "id": 1136987,
+    "tmdb_title": "It's Not Me",
+    "tmdb_original_title": "C'est pas moi",
+    "letterboxd_english_title": "It's Not Me (2024)"
+  },
+  "訪問、あるいは記憶、そして告白|1982|": {},
+  "カニバイシュ|1988|": {
+    "id": 198450,
+    "tmdb_title": "The Cannibals",
+    "tmdb_original_title": "Os Canibais",
+    "letterboxd_english_title": "The Cannibals (1988)"
+  },
+  "アブラハム渓谷 完全版|1993|": {
+    "id": 107693,
+    "tmdb_title": "Abraham's Valley",
+    "tmdb_original_title": "Vale Abraão",
+    "letterboxd_english_title": "Abraham's Valley (1993)"
+  },
+  "ここではないどこかで|1982|": {
+    "id": 2623,
+    "tmdb_title": "An Officer and a Gentleman",
+    "tmdb_original_title": "An Officer and a Gentleman",
+    "letterboxd_english_title": "An Officer and a Gentleman (1982)"
+  },
+  "セルロイド・クローゼット デジタル・リマスター版|1995|": {},
+  "絶望の日|1992|": {},
+  "夜顔|2006|": {
+    "id": 17367,
+    "tmdb_title": "Belle Toujours",
+    "tmdb_original_title": "Belle Toujours",
+    "letterboxd_english_title": "Belle Toujours (2006)"
+  },
+  "ジャック・ケルアック キング・オブ・ザ・ビート|1983|": {},
+  "バロウズ|1983|": {},
+  "小さな心に祝福を|1984|": {
+    "id": 42087,
+    "tmdb_title": "Country",
+    "tmdb_original_title": "Country",
+    "letterboxd_english_title": "Country (1984)"
   },
   "〈特集上映〉 アンドレア・アーノルド監督セレクション|2011|エミリー・ブロンテ「嵐が丘」": {
     "id": 9364,
@@ -3788,16 +3870,17 @@
   },
   "飛べない天使|2023|堀井綾香": {},
   "縺ｵ縺､縺�縺ｮ蟄舌←繧�[0906闊槫床謖ｨ諡ｶ�ｼｽ||": {},
-  "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #4「遼太郎のひまわり」|2025|中村育子出演：内田也哉子坂本美雨": {},
-  "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #1「無言館・レクイエムから明日へ」|2025|中村育子出演：内田也哉子森山直太朗": {},
   "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #5「78年目の和解」|2025|中村育子出演：内田也哉子岸本聡子": {},
   "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #2「少年たちは戦場へ送られた」|2025|中村育子出演：内田也哉子YOU": {},
   "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #6「いのちと向き合う」|2025|中村育子出演：内田也哉子佐喜眞道夫": {},
   "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #3「再会～平壌への遠い道～」|2025|中村育子出演：内田也哉子青木理": {},
+  "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #4「遼太郎のひまわり」|2025|中村育子出演：内田也哉子坂本美雨": {},
+  "戦後80年 内田也哉子 ドキュメンタリーの旅「戦争と対話」 #1「無言館・レクイエムから明日へ」|2025|中村育子出演：内田也哉子森山直太朗": {},
   "幸福 〜しあわせ〜||アニエス・ヴァルダ": {
-    "id": 53023,
+    "id": 10683,
     "tmdb_title": "Happiness",
-    "tmdb_original_title": "Le Bonheur"
+    "tmdb_original_title": "Happiness",
+    "letterboxd_english_title": "Happiness (1998)"
   },
   "グラン・ブルー完全版|1988|リュック・ベッソン": {
     "id": 175,
@@ -3805,12 +3888,7 @@
     "tmdb_original_title": "Le Grand Bleu",
     "letterboxd_english_title": "The Big Blue (1988)"
   },
-  "メイソウ家族||YUI・UMI　熊切 和嘉　MONOS　金田 敬": {
-    "id": 50152,
-    "tmdb_title": "Traces of a Dragon: Jackie Chan & His Lost Family",
-    "tmdb_original_title": "Traces of a Dragon: Jackie Chan & His Lost Family",
-    "letterboxd_english_title": "Traces of a Dragon: Jackie Chan & His Lost Family (2003)"
-  },
+  "メイソウ家族||YUI・UMI　熊切 和嘉　MONOS　金田 敬": {},
   "ユニバーサル・ランゲージ|2024|マシュー・ランキン": {
     "id": 988397,
     "tmdb_title": "Universal Language",
@@ -3818,12 +3896,7 @@
     "letterboxd_english_title": "Universal Language (2024)"
   },
   "『パンダコパンダ』＆『パンダコパンダ 雨ふりサーカスの巻』||": {},
-  "海辺へ行く道[0901ｲﾍﾞﾝﾄ]||": {
-    "id": 570309,
-    "tmdb_title": "Road to the Sea",
-    "tmdb_original_title": "Дорога к морю",
-    "letterboxd_english_title": "Road to the Sea (1966)"
-  },
+  "海辺へ行く道[0901ｲﾍﾞﾝﾄ]||": {},
   "パトリックとクジラ 6000日の絆||マーク・フレッチャー": {
     "id": 1016208,
     "tmdb_title": "Patrick and the Whale",
@@ -3855,17 +3928,17 @@
     "letterboxd_english_title": "Out in the Wall (2025)"
   },
   "僕の中に咲く花火|2025|": {},
-  "ひとり〜||": {
-    "id": 505674,
-    "tmdb_title": "Hitori",
-    "tmdb_original_title": "Hitori",
-    "letterboxd_english_title": "Hitori (2014)"
-  },
   "ホース・マネー||監督:ペドロ·コスタ": {
     "id": 285697,
     "tmdb_title": "Horse Money",
     "tmdb_original_title": "Cavalo Dinheiro",
     "letterboxd_english_title": "Horse Money (2014)"
+  },
+  "ひとり〜||": {
+    "id": 505674,
+    "tmdb_title": "Hitori",
+    "tmdb_original_title": "Hitori",
+    "letterboxd_english_title": "Hitori (2014)"
   },
   "ヴィターリー・カネフスキー トリロジー||": {},
   "グラン・ブルー完全版 4K上映||": {
@@ -3886,7 +3959,6 @@
     "tmdb_original_title": "Elephant",
     "letterboxd_english_title": "Elephant (2003)"
   },
-  "ドラゴンファイアヒーローズナイト！||": {},
   "グラン・ブルー完全版||": {
     "id": 175,
     "tmdb_title": "The Big Blue",
@@ -3901,27 +3973,18 @@
     "tmdb_original_title": "Mute Witness",
     "letterboxd_english_title": "Mute Witness (1995)"
   },
-  "ﾘﾝﾀﾞﾘﾝﾀﾞﾘﾝﾀﾞ||": {
-    "id": 27337,
-    "tmdb_title": "Linda Linda Linda",
-    "tmdb_original_title": "リンダ リンダ リンダ",
-    "letterboxd_english_title": "Linda Linda Linda (2005)"
-  },
-  "ザ・フー ライヴ・アット・キルバーン1977|2007|ジェフ・スタイン": {},
-  "ライフ・イズ・ビューティフル|2025|ロベルト・ベニーニ": {},
-  "美しい夏||": {
-    "id": 108087,
-    "tmdb_title": "A Boy's Summer in 1945",
-    "tmdb_original_title": "美しい夏キリシマ",
-    "letterboxd_english_title": "A Boy's Summer in 1945 (2002)"
-  },
   "『シナリオ』||": {
     "id": 1220338,
     "tmdb_title": "Scénarios",
     "tmdb_original_title": "Scénarios",
     "letterboxd_english_title": "Scénarios (2024)"
   },
-  "『これらが全てFantasyだったあの頃。』||": {},
+  "『これらが全てFantasyだったあの頃。』||": {
+    "id": 407795,
+    "tmdb_title": "What a Wonderful World",
+    "tmdb_original_title": "奇異旅程之真心愛生命",
+    "letterboxd_english_title": "What a Wonderful World (1996)"
+  },
   "ふつうの子ども||呉美保": {
     "id": 1476988,
     "tmdb_title": "How Dare You?",
