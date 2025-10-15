@@ -3701,38 +3701,38 @@
     "tmdb_original_title": "見はらし世代",
     "letterboxd_english_title": "Brand New Landscape (2025)"
   },
-  "実録三億円事件 時効成立||": {
-    "id": 503640,
-    "tmdb_title": "300 Million Thief: Statute of Limitations",
-    "tmdb_original_title": "実録三億円事件 時効成立",
-    "letterboxd_english_title": "300 Million Thief: Statute of Limitations (1975)"
-  },
   "顔||": {
-    "id": 73138,
-    "tmdb_title": "Face",
+    "id": 537678,
+    "tmdb_title": "Faces",
     "tmdb_original_title": "顔",
-    "letterboxd_english_title": "Face (2000)"
+    "letterboxd_english_title": "Faces (2016)"
   },
-  "実録・連合赤軍 あさま山荘への道程（みち）||": {},
   "クライマーズ・ハイ||": {
     "id": 41533,
     "tmdb_title": "Climber's High",
     "tmdb_original_title": "クライマーズ・ハイ",
     "letterboxd_english_title": "Climber's High (2008)"
   },
+  "実録三億円事件 時効成立||": {
+    "id": 503640,
+    "tmdb_title": "300 Million Thief: Statute of Limitations",
+    "tmdb_original_title": "実録三億円事件 時効成立",
+    "letterboxd_english_title": "300 Million Thief: Statute of Limitations (1975)"
+  },
+  "実録・連合赤軍 あさま山荘への道程（みち）||": {},
   "祈り||": {
     "id": 1068462,
     "tmdb_title": "a pray",
     "tmdb_original_title": "祈り",
     "letterboxd_english_title": "a pray (2011)"
   },
-  "名探偵コナン 迷宮の十字路（クロスロード）||": {},
   "名探偵コナン ハロウィンの花嫁||": {
     "id": 903939,
     "tmdb_title": "Detective Conan: The Bride of Halloween",
     "tmdb_original_title": "名探偵コナン ハロウィンの花嫁",
     "letterboxd_english_title": "Detective Conan: The Bride of Halloween (2022)"
   },
+  "名探偵コナン 迷宮の十字路（クロスロード）||": {},
   "名探偵コナン 時計じかけの摩天楼|1997|こだま兼嗣": {
     "id": 21422,
     "tmdb_title": "Detective Conan: The Time Bombed Skyscraper",
@@ -3767,6 +3767,12 @@
     "letterboxd_english_title": "Birth of the Dragon (2016)"
   },
   "テオレマ 4Kスキャン版||ピエル・パオロ・パゾリーニ": {},
+  "オアシス:スーパーソニック|2016|マット・ホワイトクロス": {
+    "id": 412924,
+    "tmdb_title": "Supersonic",
+    "tmdb_original_title": "Supersonic",
+    "letterboxd_english_title": "Supersonic (2016)"
+  },
   "おばあちゃんと僕の約束|2024|パット・ブーンニティパット 出演：プッティポン・アッサラッタナクン、ウサー・セームカム": {
     "id": 1103621,
     "tmdb_title": "How to Make Millions Before Grandma Dies",
@@ -3816,11 +3822,11 @@
   "《ニュー・ジャーマン・シネマから||": {},
   "タイムズ・スクエア 4Kレストア|1981|アラン・モイル 出演：トリニ・アルヴァラード、ロビン・ジョンソン": {},
   "ハウス・オブ・ダイナマイト|2025|": {},
-  "リンダ リンダ リンダ||": {
-    "id": 27337,
-    "tmdb_title": "Linda Linda Linda",
-    "tmdb_original_title": "リンダ リンダ リンダ",
-    "letterboxd_english_title": "Linda Linda Linda (2005)"
+  "Dear Stranger／ディア・ストレンジャー|2025|": {
+    "id": 1469141,
+    "tmdb_title": "Dear Stranger",
+    "tmdb_original_title": "Dear Stranger／ディア・ストレンジャー",
+    "letterboxd_english_title": "Dear Stranger (2025)"
   },
   "かたつむりのメモワール|2024|": {
     "id": 1064486,
@@ -3828,30 +3834,56 @@
     "tmdb_original_title": "Memoir of a Snail",
     "letterboxd_english_title": "Memoir of a Snail (2024)"
   },
-  "機動警察パトレイバー 劇場版〈4K版〉||": {},
   "ラブ・イン・ザ・ビッグシティ|2024|": {
     "id": 1154154,
     "tmdb_title": "Love in the Big City",
     "tmdb_original_title": "대도시의 사랑법",
     "letterboxd_english_title": "Love in the Big City (2024)"
   },
+  "リンダ リンダ リンダ||": {
+    "id": 27337,
+    "tmdb_title": "Linda Linda Linda",
+    "tmdb_original_title": "リンダ リンダ リンダ",
+    "letterboxd_english_title": "Linda Linda Linda (2005)"
+  },
+  "リアム・ギャラガー in ロックフィールド オアシス復活の序章|2022|": {
+    "id": 978797,
+    "tmdb_title": "Liam Gallagher: 48 Hours at Rockfield",
+    "tmdb_original_title": "Liam Gallagher: 48 Hours at Rockfield",
+    "letterboxd_english_title": "Liam Gallagher: 48 Hours at Rockfield (2022)"
+  },
+  "KIDS／キッズ|1995|": {
+    "id": 9344,
+    "tmdb_title": "Kids",
+    "tmdb_original_title": "Kids",
+    "letterboxd_english_title": "Kids (1995)"
+  },
+  "機動警察パトレイバー2 the Movie〈4K版〉||": {},
   "ルージュ|1987|": {
     "id": 68883,
     "tmdb_title": "Rouge",
     "tmdb_original_title": "胭脂扣",
     "letterboxd_english_title": "Rouge (1987)"
   },
-  "Dear Stranger／ディア・ストレンジャー|2025|": {
-    "id": 1469141,
-    "tmdb_title": "Dear Stranger",
-    "tmdb_original_title": "Dear Stranger／ディア・ストレンジャー",
-    "letterboxd_english_title": "Dear Stranger (2025)"
-  },
-  "モスクワ・エレジー タルコフスキーに捧ぐ|1986|": {},
+  "機動警察パトレイバー 劇場版〈4K版〉||": {},
   "ローラーとバイオリン||": {
     "id": 38311,
     "tmdb_title": "The Steamroller and the Violin",
-    "tmdb_original_title": "Каток и скрипка"
+    "tmdb_original_title": "Каток и скрипка",
+    "letterboxd_english_title": "The Steamroller and the Violin (1961)"
+  },
+  "モスクワ・エレジー タルコフスキーに捧ぐ|1986|": {},
+  "マザー、サン|1997|": {
+    "id": 44361,
+    "tmdb_title": "Mother and Son",
+    "tmdb_original_title": "Мать и сын",
+    "letterboxd_english_title": "Mother and Son (1997)"
+  },
+  "惑星ソラリス|1972|": {
+    "id": 593,
+    "tmdb_title": "Solaris",
+    "tmdb_original_title": "Солярис",
+    "letterboxd_english_title": "Solaris (1972)"
   },
   "日陽はしづかに発酵し…|1988|": {},
   "ストーカー|1979|": {
@@ -3859,17 +3891,6 @@
     "tmdb_title": "Stalker",
     "tmdb_original_title": "Сталкер",
     "letterboxd_english_title": "Stalker (1979)"
-  },
-  "マザー、サン|1997|": {
-    "id": 44361,
-    "tmdb_title": "Mother and Son",
-    "tmdb_original_title": "Мать и сын"
-  },
-  "惑星ソラリス|1972|": {
-    "id": 593,
-    "tmdb_title": "Solaris",
-    "tmdb_original_title": "Солярис",
-    "letterboxd_english_title": "Solaris (1972)"
   },
   "アンドレイ・ルブリョフ||": {
     "id": 895,
@@ -3933,6 +3954,7 @@
     "letterboxd_english_title": "Take Me Somewhere Nice (2019)"
   },
   "〈特集上映〉 アンドレア・アーノルド監督セレクション（アンコール上映）|2011|エミリー・ブロンテ「嵐が丘」": {},
+  "〈特集上映〉クラスナホルカイ･ラースロー × タル･ベーラ||タル・ベーラ": {},
   "ふつうの子ども||呉美保": {
     "id": 1476988,
     "tmdb_title": "How Dare You?",
@@ -3945,10 +3967,12 @@
     "tmdb_original_title": "アフター・ザ・クエイク",
     "letterboxd_english_title": "After the Quake (2025)"
   },
-  "霓阪ｒ雜翫∴縺ｦ繧�縺措1014�ｾ��ｽｰ�ｽｸ�ｽｲ�ｾ搾ｾ橸ｾ晢ｾЬ||": {},
   "霓阪ｒ雜翫∴縺ｦ繧�縺措1015�ｾ��ｽｰ�ｽｸ�ｽｲ�ｾ搾ｾ橸ｾ晢ｾЬ||": {},
   "霓阪ｒ雜翫∴縺ｦ繧�縺措1016�ｾ��ｽｰ�ｽｸ�ｽｲ�ｾ搾ｾ橸ｾ晢ｾЬ||": {},
   "裸の銃弾『やわ肌無宿 男殺し女殺し』||": {},
+  "縲蝉ｸ牙ｮ�蜚ｱ逶｣逹｣迚ｹ髮�縲代″縺ｿ縺ｮ魑･縺ｯ縺�縺溘∴繧�||": {},
+  "縲蝉ｸ牙ｮ�蜚ｱ逶｣逹｣迚ｹ髮�縲大ｯ�菴ｿ縺ｨ逡ｪ莠ｺ||": {},
+  "縲蝉ｸ牙ｮ�蜚ｱ逶｣逹｣迚ｹ髮�縲代Ρ繧､繝ｫ繝峨ヤ繧｢繝ｼ||": {},
   "非常戒厳前夜 字幕版|2025|キム・ヨンジン出演：ユン・ソンニョルキム・ヨンジンハン・サンジンポン・ジウク": {},
   "揺さぶられる正義|2025|上田大輔": {},
   "A KING with a cold smile -王様は笑わない-|2025|川端潤": {},
@@ -3957,12 +3981,6 @@
     "tmdb_title": "So Beautiful, Wonderful and Lovely",
     "tmdb_original_title": "素敵すぎて素敵すぎて素敵すぎる",
     "letterboxd_english_title": "So Beautiful, Wonderful and Lovely (2025)"
-  },
-  "火の馬||セルゲイ・パラジャーノフ": {
-    "id": 57212,
-    "tmdb_title": "War Horse",
-    "tmdb_original_title": "War Horse",
-    "letterboxd_english_title": "War Horse (2011)"
   },
   "テレビの中に入りたい|2023|ジェーン・シェーンブルン": {},
   "ワン・バトル・アフター・アナザー|2025|ポール・トーマス・アンダーソン": {
@@ -4003,6 +4021,19 @@
     "tmdb_original_title": "A House of Dynamite",
     "letterboxd_english_title": "A House of Dynamite (2025)"
   },
+  "さよならはスローボールで||カーソン・ランド": {
+    "id": 1226777,
+    "tmdb_title": "Eephus",
+    "tmdb_original_title": "Eephus",
+    "letterboxd_english_title": "Eephus (2024)"
+  },
+  "HIGE DAN||": {},
+  "OFFICIAL HIGE DANDISM LIVE AT STADIUM 2025||": {},
+  "ﾘｱﾑ ﾛｯｸﾌｨｰﾙﾄﾞ||": {},
+  "さよならはｽﾛｰﾎﾞｰ［しゃべれば］||": {},
+  "ﾘｱﾑ ﾈﾌﾞﾜｰｽ2022||": {},
+  "ｵｱｼｽ ﾈﾌﾞﾜｰｽDAY2||": {},
+  "ﾘｱﾑ･ｷﾞｬﾗｶﾞｰin||": {},
   "ミシェル・ルグラン 世界を変えた映画音楽家||デヴィッド・ヘルツォーク・デシテス": {
     "id": 1280476,
     "tmdb_title": "Once Upon a Time Michel Legrand",
@@ -4021,6 +4052,7 @@
     "tmdb_original_title": "Život k sežrání",
     "letterboxd_english_title": "Living Large (2024)"
   },
+  "ソーゾク|2025|藤村 磨実也　企画：兼田仁　藤村 磨実也": {},
   "寝る映画||": {},
   "海抜０米||川頭義郎": {},
   "暴力団再武装|1971|": {
@@ -4062,11 +4094,11 @@
     "tmdb_original_title": "Il était une fois Michel Legrand",
     "letterboxd_english_title": "Once Upon a Time Michel Legrand (2024)"
   },
-  "シェルブールの雨傘||": {
-    "id": 5967,
-    "tmdb_title": "The Umbrellas of Cherbourg",
-    "tmdb_original_title": "Les Parapluies de Cherbourg",
-    "letterboxd_english_title": "The Umbrellas of Cherbourg (1964)"
+  "ロシュフォールの恋人たち||": {
+    "id": 2433,
+    "tmdb_title": "The Young Girls of Rochefort",
+    "tmdb_original_title": "Les Demoiselles de Rochefort",
+    "letterboxd_english_title": "The Young Girls of Rochefort (1967)"
   },
   "ターミネーター|1984|": {
     "id": 218,
@@ -4081,12 +4113,20 @@
     "letterboxd_english_title": "Linda Linda Linda (2005)"
   },
   "音楽 ブラッシュアップ版|2025|": {},
-  "ロシュフォールの恋人たち||": {
-    "id": 2433,
-    "tmdb_title": "The Young Girls of Rochefort",
-    "tmdb_original_title": "Les Demoiselles de Rochefort",
-    "letterboxd_english_title": "The Young Girls of Rochefort (1967)"
+  "シェルブールの雨傘||": {
+    "id": 5967,
+    "tmdb_title": "The Umbrellas of Cherbourg",
+    "tmdb_original_title": "Les Parapluies de Cherbourg",
+    "letterboxd_english_title": "The Umbrellas of Cherbourg (1964)"
   },
+  "ナイトコール|2025|": {},
+  "ロバと王女||": {
+    "id": 5590,
+    "tmdb_title": "Donkey Skin",
+    "tmdb_original_title": "Peau d'âne",
+    "letterboxd_english_title": "Donkey Skin (1970)"
+  },
+  "消滅世界||": {},
   "エレファント|2003|ガス・ヴァン・サント": {
     "id": 1807,
     "tmdb_title": "Elephant",
@@ -4105,18 +4145,6 @@
     "tmdb_title": "Queer",
     "tmdb_original_title": "Queer",
     "letterboxd_english_title": "Queer (2024)"
-  },
-  "の・ようなもの||": {
-    "id": 129383,
-    "tmdb_title": "Something Like It",
-    "tmdb_original_title": "の・ようなもの",
-    "letterboxd_english_title": "Something Like It (1981)"
-  },
-  "シブがき隊 ボーイズ&ガールズ|1982|": {
-    "id": 451147,
-    "tmdb_title": "Come On Girls!",
-    "tmdb_original_title": "シブがき隊　ボーイズ＆ガールズ",
-    "letterboxd_english_title": "Come On Girls! (1982)"
   },
   "メイン・テーマ|1984|": {
     "id": 328083,
@@ -4167,17 +4195,30 @@
     "tmdb_original_title": "家族ゲーム",
     "letterboxd_english_title": "The Family Game (1983)"
   },
+  "椿三十郎|2007|森田芳光": {
+    "id": 288509,
+    "tmdb_title": "Tsubaki Sanjuro",
+    "tmdb_original_title": "椿三十郎",
+    "letterboxd_english_title": "Tsubaki Sanjuro (2007)"
+  },
+  "ときめきに死す||": {
+    "id": 487849,
+    "tmdb_title": "Deaths in Tokimeki",
+    "tmdb_original_title": "ときめきに死す",
+    "letterboxd_english_title": "Deaths in Tokimeki (1984)"
+  },
   "サターン・ボウリング||パトリシア・マズィ": {},
+  "風花||相米慎二": {
+    "id": 169401,
+    "tmdb_title": "The Snow Flurry",
+    "tmdb_original_title": "風花",
+    "letterboxd_english_title": "The Snow Flurry (1959)"
+  },
   "ションベン・ライダー||相米慎二": {
     "id": 115780,
     "tmdb_title": "P. P. Rider",
     "tmdb_original_title": "ションベン・ライダー",
     "letterboxd_english_title": "P. P. Rider (1983)"
-  },
-  "風花||相米慎二": {
-    "id": 115799,
-    "tmdb_title": "Kaza-hana",
-    "tmdb_original_title": "風花"
   },
   "風のマジム||": {
     "id": 1495175,
@@ -4194,8 +4235,20 @@
     "letterboxd_english_title": "Transcending Dimensions (2025)"
   },
   "動くな!〜||": {},
-  "牙狼<GARO> TAIGA||": {},
-  "山形ドキュメンタリー道場in東京2025 秋篇||": {},
+  "劇場版 牙狼<GARO> TAIGA||": {},
+  "むらのはづれで||": {},
+  "星||": {
+    "id": 1022787,
+    "tmdb_title": "Elio",
+    "tmdb_original_title": "Elio",
+    "letterboxd_english_title": "Elio (2025)"
+  },
+  "ソロシンガー||": {},
+  "ママ、僕は生きてるよ||": {},
+  "僕は19歳だった||": {},
+  "競技場の裸の男||": {},
+  "引き裂かれた空||": {},
+  "太陽を探す人々||": {},
   "君の声を聴かせて||チョ・ソンホ": {
     "id": 1160981,
     "tmdb_title": "Hear Me: Our Summer",
@@ -4213,6 +4266,29 @@
   "刺殺小説家2【日本語字幕無し】||ルー・ヤン【路陽】": {},
   "ブロークン 復讐者の夜||": {},
   "３つのグノシエンヌ||": {},
+  "ルージュ 4K【4K上映】||スタンリー・クワン": {},
+  "ジェイコブス・ラダー【4K上映】||": {},
+  "蟲||": {
+    "id": 1540640,
+    "tmdb_title": "Insect",
+    "tmdb_original_title": "蟲",
+    "letterboxd_english_title": "Insect (2025)"
+  },
+  "機動警察パトレイバー劇場版【4K】||": {},
+  "蟲 上映前舞台挨拶||": {},
+  "機動警察パトレイバー劇場版||": {},
+  "ジェイコブス・ラダー||": {
+    "id": 2291,
+    "tmdb_title": "Jacob's Ladder",
+    "tmdb_original_title": "Jacob's Ladder",
+    "letterboxd_english_title": "Jacob's Ladder (1990)"
+  },
+  "ルージュ||": {
+    "id": 68883,
+    "tmdb_title": "Rouge",
+    "tmdb_original_title": "胭脂扣",
+    "letterboxd_english_title": "Rouge (1987)"
+  },
   "爽子の衝動|2025|「市子」の戸田彬弘": {},
   "ジュリーは沈黙したままで|2024|": {
     "id": 1187308,
@@ -4238,6 +4314,12 @@
     "tmdb_original_title": "Black dog",
     "letterboxd_english_title": "Black Dog (2024)"
   },
+  "KIDS キッズ|1995|": {
+    "id": 9344,
+    "tmdb_title": "Kids",
+    "tmdb_original_title": "Kids",
+    "letterboxd_english_title": "Kids (1995)"
+  },
   "ホウセンカ|2025|木下麦": {
     "id": 1294972,
     "tmdb_title": "The Last Blossom",
@@ -4257,6 +4339,7 @@
     "tmdb_original_title": "ひゃくえむ。",
     "letterboxd_english_title": "100 METERS (2025)"
   },
+  "機動警察パトレイバー 2 the Movie(4K)||": {},
   "『シナリオ』||": {
     "id": 1220338,
     "tmdb_title": "Scénarios",
@@ -4271,10 +4354,10 @@
   },
   "『バレンと小刀 時代をつなぐ浮世絵物語』||": {},
   "『KNEECAP||": {},
-  "『うってつけの⽇』||": {},
   "『サラバ、さらんへ、サラバ』（with English subtitles）||": {},
-  "『これらが全てFantasyだったあの頃。』||": {},
   "『⽯とシャーデンフロイデ』||": {},
+  "『これらが全てFantasyだったあの頃。』||": {},
+  "『うってつけの⽇』||": {},
   "『ムガリッツ』||": {},
   "『リンダ リンダ リンダ 4K』||": {},
   "『遠い山なみの光』||": {},
