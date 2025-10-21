@@ -1,51 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arakawa Cats - </title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arakawa Cats - </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="/arakawacats-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/arakawacats-film-page.html">
 </head>
 <body>
 
-    <div class="sidebar">
-        <h1>Leo Nelki</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html">Writing</a></li>
-            </ul>
-        </nav>
+  <div class="sidebar">
+    <h1>Leo Nelki</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html">Writing</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
+
+      <div class="grid-item hero-image-item" id="arakawa-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>Arakawa Cats</h1>
+      </div>
+
+      <div class="grid-item logline-item">
+        <p>Finding redemption on the banks of Tokyo’s Arakawa river.</p>
+      </div>
+
+      <div class="grid-item specs-item">
+        <h2>Details</h2>
+        <ul class="specs-list">
+          <li><span>Director</span><span>Leo Nelki</span></li>
+          <li><span>Cast</span><span>Ruben Torosyan</span></li>
+          <li><span>Music</span><span>Katey Moss Catwalk by David Teie</span></li>
+          <li><span>Year</span><span>2024</span></li>
+          <li><span>Thanks</span><span>Moeka Iida, Felix Idle, Alfred Oyaka, Ruben Torosyan</span></li>
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <div class="main-content">
-        <div class="connected-grid film-page-grid">
+  <!-- Language toggle -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;         /* slightly higher */
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;   /* slightly larger font */
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
 
-            <div class="grid-item hero-image-item" id="arakawa-hero-image"></div>
-            
-            <div class="grid-item title-item">
-                <h1>Arakawa Cats</h1>
-            </div>
+  <script>
+    (function(){
+      function toggleLang(){
+        var p = location.pathname;
+        var file = p.split('/').filter(Boolean).pop() || 'index.html';
 
-            <div class="grid-item logline-item">
-                <p>Finding redemption on the banks of Tokyo’s Arakawa river</p>
-            </div>
+        if (p.startsWith('/jp/')) {
+          var en = file.replace(/-jp(?=\.html$)/, '');
+          location.href = '/' + en;
+        } else {
+          var jp = file.replace(/\.html$/, '-jp.html');
+          location.href = '/jp/' + jp;
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
 
-                       <div class="grid-item specs-item">
-                 <h2>Details</h2>
-                <ul class="specs-list">
-                    <li><span>Director</span><span>Leo Nelki</span></li>
-                    <li><span>Cast</span><span>Ruben Torosyan</span></li>
-		    <li><span>Music</span><span>Katey Moss Catwalk by David Teie</span></li>
-                    <li><span>Year</span><span>2024</span></li>
-                    <li><span>Thanks</span><span>Moeka Iida, Felix Idle, Alfred Oyaka, Ruben Torosyan</span></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
 
 </body>
 </html>
