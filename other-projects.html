@@ -1,54 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other Projects - Leo Nelki</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other Projects - Leo Nelki</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="/other-projects.html">
+  <link rel="alternate" hreflang="ja" href="/jp/other-projects.html">
 </head>
 <body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>Leo Nelki</h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">×</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html">Writing</a></li>
-                <li><a href="other-projects.html" class="active">Other Projects</a></li>
-            </ul>
-        </nav>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Leo Nelki</h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
     </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="other-projects.html" class="active">Other Projects</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <div class="main-content">
-        <h2 class="subtle-heading">Other Projects</h2>
-        <div class="connected-grid">
-            <a href="cinema%20scrapers/cinema.html" class="grid-item film-item-link">
-                <div class="grid-item-info">
-                    <h3>Tokyo Independent Cinema Showtimes</h3>
-                    <p>I made a website to gather all the independent cinema showtimes in tokyo, hope its useful.</p>
-                </div>
-            </a>
+  <div class="main-content">
+    <h2 class="subtle-heading">Other Projects</h2>
+    <div class="connected-grid">
+      <a href="cinema%20scrapers/cinema.html" class="grid-item film-item-link">
+        <div class="grid-item-info">
+          <h3>Tokyo Independent Cinema Showtimes</h3>
+          <p>I made a website to gather all the independent cinema showtimes in Tokyo — hope it’s useful.</p>
         </div>
+      </a>
     </div>
-    <script>
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
+  </div>
 
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
-
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
+  <!-- Language toggle (slightly larger, higher position) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'other-projects.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
       }
-    </script>
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
 </body>
 </html>
