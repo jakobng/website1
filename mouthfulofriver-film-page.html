@@ -1,180 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mouthful of River - Leo Nelki</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-  /* Styles for the lens selection section */
-  .lens-section {
-    font-family: "Manrope", sans-serif;
-    text-align: center;
-    padding: 2rem 1rem; /* Adjusted padding */
-    background: rgba(248, 247, 242, 0.7); /* Consistent with page background */
-    margin-top: 2rem; /* Standard margin */
-    border-radius: 12px;
-  }
-  .lens-section h2 {
-    margin: 0 0 1.5rem 0;
-    font-size: 1.6em; /* Maintained reduced size for subtlety */
-    font-weight: 700;
-    color: var(--text-color);
-  }
-  .lens-options {
-    display: flex;
-    flex-direction: column; /* Stack options vertically on small screens */
-    gap: 1.5rem; /* Standard gap */
-    align-items: center;
-    justify-content: center;
-  }
-  .lens-option {
-    /* .lens-option can be used for sizing if needed, but direct styling on <a> is fine for this */
-  }
-  .lens-option a {
-    display: inline-block; /* Classic button behavior */
-    padding: 1rem 2rem;
-    background-color: var(--yellow-accent); /* Yellow buttons as requested */
-    color: var(--text-color);
-    text-decoration: none;
-    border-radius: 8px; /* Simpler, less rounded than highly stylized versions */
-    font-weight: 700;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    border: 2px solid var(--text-color); /* Clear border */
-    min-width: 220px; /* Adjusted min-width for a balanced look */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
-    text-align: center;
-  }
-
-  .lens-option a:hover {
-    background-color: #eab00e; /* A slightly darker shade of --yellow-accent (#FDB813) */
-    color: var(--text-color);
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 6px 8px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
-  }
-
-  /* Responsive adjustments for lens options */
-  @media (min-width: 768px) { /* Apply for tablets and larger screens */
-    .lens-options {
-      flex-direction: row; /* Options side-by-side */
-      justify-content: space-around; /* Distribute space around options */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouthful of River - Leo Nelki</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="/mouthfulofriver-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/mouthfulofriver-film-page.html">
+  <style>
+    /* Styles for the lens selection section */
+    .lens-section {
+      font-family: "Manrope", sans-serif;
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(248, 247, 242, 0.7);
+      margin-top: 2rem;
+      border-radius: 12px;
     }
-    .lens-option a {
-        min-width: 200px; /* Adjust min-width if needed for row layout */
-    }
-  }
-
-   @media (max-width:600px){
     .lens-section h2 {
-      font-size:1.5rem; /* Adjusted font size for smaller screens */
+      margin: 0 0 1.5rem 0;
+      font-size: 1.6em;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    .lens-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
     }
     .lens-option a {
-        font-size: 1em;
-        padding: 0.8rem 1.5rem;
-        min-width: 180px; /* Adjusted for smaller screens */
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--yellow-accent);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      border: 2px solid var(--text-color);
+      min-width: 220px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
     }
-  }
-
-  /* Style for the existing "View related blog posts" link (from original file) */
-  .button-link {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: var(--blue-accent);
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-        margin-top: 10px;
-  }
-  .button-link:hover {
-        background-color: #007BA7; /* A darker shade of blue */
-  }
-</style>
+    .lens-option a:hover {
+      background-color: #eab00e;
+      color: var(--text-color);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+    @media (min-width: 768px) {
+      .lens-options { flex-direction: row; justify-content: space-around; }
+      .lens-option a { min-width: 200px; }
+    }
+    @media (max-width:600px){
+      .lens-section h2 { font-size:1.5rem; }
+      .lens-option a { font-size: 1em; padding: 0.8rem 1.5rem; min-width: 180px; }
+    }
+    .button-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--blue-accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    .button-link:hover { background-color: #007BA7; }
+  </style>
 </head>
 <body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>Leo Nelki</h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html">Writing</a></li>
-            </ul>
-        </nav>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Leo Nelki</h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html">Writing</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
+
+      <div class="grid-item hero-image-item" style="background-image:url('images/mouthful_still.jpg');"></div>
+      
+      <div class="grid-item title-item">
+        <h1>Mouthful of River</h1>
+      </div>
+
+      <div class="grid-item logline-item">
+        <p>As AI provides new ways to give voice to the river, its water-hungry infrastructure poses a threat to the same entity it helps us hear. To better understand the river may mean reconnecting with older ways of listening - through science, ceremony and art.</p>
+      </div>
+
+      <div class="grid-item about-item">
+        <h2>About This Film</h2>
+        <p>We will be writing about this film as we are making it. Any thoughts or collaborators are welcome. If you want to read my thoughts about the film, look below ↓</p>
+      </div>
+
+      <div class="grid-item specs-item">
+        <h2>Details</h2>
+        <ul class="specs-list">
+          <li><span>Directors</span><span>Leo Nelki and Patricia Escheverria Liras</span></li>
+          <li><span>Type</span><span>Feature Documentary</span></li>
+          <li><span>Status</span><span>In Development</span></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="main-content">
-        <div class="connected-grid film-page-grid">
-
-            <div class="grid-item hero-image-item" style="background-image:url('images/mouthful_still.jpg');"></div>
-            
-            <div class="grid-item title-item">
-                <h1>Mouthful of River</h1>
-            </div>
-
-            <div class="grid-item logline-item">
-                <p>As AI provides new ways to give voice to the river, its water-hungry infrastructure poses a threat to the same entity it helps us hear. To better understand the river may mean reconnecting with older ways of listening - through science, ceremony and art.</p>
-            </div>
-
-            <div class="grid-item about-item">
-                <h2>About This Film</h2>
-                <p>We will be writing about this film as we're am making it. Any thoughts or collaborators are welcome. If you want to read my thoughts about the film, look below ↓ </p>
-                
-            </div>
-
-            <div class="grid-item specs-item">
-                <h2>Details</h2>
-                <ul class="specs-list">
-                    <li><span>Directors</span><span>Leo Nelki and Patricia Escheverria Liras</span></li>
-                    <li><span>Type</span><span>Feature Documentary</span></li>
-                    <li><span>Status</span><span>In Development</span></li>
-                </ul>
-            </div>
-       
-        </div>
-
-        <!-- New Lens Selection Section -->
-        <div class="lens-section">
-          <h2>Choose Your Lens</h2>
-          <div class="lens-options">
-            <div class="lens-option">
-              <a href="blog/democracy-lens.html">Democracy</a>
-            </div>
-            <div class="lens-option">
-              <a href="blog/environmentalism-lens.html">Environmentalism</a>
-            </div>
-            <div class="lens-option">
-              <a href="blog/ai-alignment-lens.html">AI Alignment</a>
-            </div>
-          </div>
-        </div>
-        <!-- End of New Lens Selection Section -->
-        
+    <!-- Lens Selection Section -->
+    <div class="lens-section">
+      <h2>Choose Your Lens</h2>
+      <div class="lens-options">
+        <div class="lens-option"><a href="blog/democracy-lens.html">Democracy</a></div>
+        <div class="lens-option"><a href="blog/environmentalism-lens.html">Environmentalism</a></div>
+        <div class="lens-option"><a href="blog/ai-alignment-lens.html">AI Alignment</a></div>
+      </div>
     </div>
-    
-    <script>
-      // Standard mobile navigation script
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
+    <!-- End Lens Section -->
 
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
+  </div>
 
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'mouthfulofriver-film-page.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
       }
-    </script>
-    <!-- Removed vis-network.min.js script as it's no longer needed -->
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
+
+  <script>
+    // Standard mobile navigation script
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
 </body>
 </html>
