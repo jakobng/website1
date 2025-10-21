@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lobi Ekosimba - 短編映画</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="alternate" hreflang="en" href="/lobiekosimba-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/lobiekosimba-film-page.html">
+</head>
+<body>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1 style="font-size: 1.6em; line-height: 1.2em;">
+        ネルキ・リオ<br>
+        <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
+      </h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/jp/index.html">ホーム</a></li>
+        <li><a href="/jp/completed.html">完成作品</a></li>
+        <li><a href="/jp/wip.html">制作中</a></li>
+        <li><a href="/jp/writing.html">文章</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
+
+      <div class="grid-item hero-image-item" id="lobiekosimba-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>Lobi Ekosimba</h1>
+      </div>
+
+      <div class="grid-item logline-item">
+        <p>戦禍の見出しの向こう側にあるのは、ゴマの人びとの日常の静かな律動と、しなやかな生の力だ。</p>
+      </div>
+
+      <div class="grid-item specs-item">
+        <h2>詳細</h2>
+        <ul class="specs-list">
+          <li><span>監督</span><span>Eli Maene</span></li>
+          <li><span>撮影監督</span><span>Eli Maene</span></li>
+          <li><span>プロデューサー</span><span>Danny Amisi, Eli Maene</span></li>
+          <li><span>共同プロデューサー</span><span>ネルキ・リオ (Leo Nelki), Maisha Maene</span></li>
+          <li><span>編集</span><span>John Kibwe, ネルキ・リオ (Leo Nelki)</span></li>
+          <li><span>作品タイプ</span><span>短編映画</span></li>
+          <li><span>制作年</span><span>2024年</span></li>
+        </ul>
+      </div>
+
+      <div class="grid-item festivals-item">
+        <h2>受賞</h2>
+        <ul class="festivals-list">
+          <li>審査員特別賞（Khouribga International African Film Festival／モロッコ, 2024）</li>
+          <li>審査員特別メンション（Africlap／フランス, 2024）</li>
+        </ul>
+
+        <h2>上映</h2>
+        <ul class="festivals-list">
+          <li>FESPACO（ブルキナファソ, 2025）</li>
+          <li>Dresden Short Film Festival（ドイツ, 2024）</li>
+          <li>Encounters South African International Documentary Festival（南アフリカ, 2024）</li>
+          <li>Afrika Film Festival Leuven（ベルギー, 2024）</li>
+          <li>Views of Africa Film Festival（カナダ・モントリオール, 2024）</li>
+          <li>Luxor African Film Festival（エジプト, 2024）</li>
+          <li>Écrans Noirs Festival（カメルーン, 2024）</li>
+          <li>Dakhla International Film Festival（モロッコ, 2024）</li>
+          <li>Khouribga International African Film Festival（モロッコ, 2024）</li>
+          <li>Saint Louis Doc（セネガル, 2024）</li>
+          <li>Cinema Sous Les Etoiles（カナダ・ケベック, 2024）</li>
+          <li>Africlap（フランス, 2024）</li>
+          <li>Cinémas d'Afrique Lausanne（スイス）</li>
+          <li>Gibara International Film Festival（キューバ）</li>
+          <li>Le Kef Short Film Festival（チュニジア, 2023）</li>
+          <li>Tamil Nadu Film Festival（インド, 2024）</li>
+          <li>European Film Festival（コンゴ民主共和国）</li>
+          <li>Lubum Fest Doc（コンゴ民主共和国・ルブンバシ, 2024）</li>
+          <li>Kidogo Kidogo Festival（コンゴ民主共和国・ルブンバシ, 2024）</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'lobiekosimba-film-page.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
+</body>
+</html>
