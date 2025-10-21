@@ -1,72 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>We're All Gonna Make It - </title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We're All Gonna Make It - </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="/wereallgonnamakeit-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/wereallgonnamakeit-film-page.html">
 </head>
 <body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>Leo Nelki</h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html">Writing</a></li>
-            </ul>
-        </nav>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Leo Nelki</h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
     </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html">Writing</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <div class="main-content">
-        <div class="connected-grid film-page-grid">
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
 
-            <div class="grid-item hero-image-item" id="wagma-hero-image"></div>
-            
-            <div class="grid-item title-item">
-                <h1>We're All Gonna Make It</h1>
-            </div>
+      <!-- Keep id to match your existing CSS/JS if any -->
+      <div class="grid-item hero-image-item" id="wagma-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>We're All Gonna Make It</h1>
+      </div>
 
-            <div class="grid-item logline-item">
-                <p>The fallen angels of YouTube are dead, but their aesthetic gospel lives on. </p>
-            </div>
+      <div class="grid-item logline-item">
+        <p>The fallen angels of YouTube are dead, but their aesthetic gospel lives on.</p>
+      </div>
 
-           <div class="grid-item about-item">
-                <h2>About This Film</h2>
-                <p>Set partly inside a working gym housed in a derelict church in Merseyside, the film explores how the pursuit of physical perfection has evolved into a kind of religion, one built on viral sermons, fallen angels, and the promise of salvation through discipline.</p>
-            </div>
+      <div class="grid-item about-item">
+        <h2>About This Film</h2>
+        <p>Set partly inside a working gym housed in a derelict church in Merseyside, the film explores how the pursuit of physical perfection has evolved into a kind of religion, one built on viral sermons, fallen angels, and the promise of salvation through discipline.</p>
+      </div>
 
-           <div class="grid-item specs-item">
-                 <h2>Details</h2>
-                <ul class="specs-list">
-                    <li><span>Director</span><span>Galen Bullivant</span></li>
-                    <li><span>Producer</span><span>Leo Nelki</span></li>
-                    <li><span>Type</span><span>Short Creative Documentary</span></li>
-                    <li><span>Status</span><span>In Development</span></li>
-                </ul>
-            </div>
+      <div class="grid-item specs-item">
+        <h2>Details</h2>
+        <ul class="specs-list">
+          <li><span>Director</span><span>Galen Bullivant</span></li>
+          <li><span>Producer</span><span>Leo Nelki</span></li>
+          <li><span>Type</span><span>Short Creative Documentary</span></li>
+          <li><span>Status</span><span>In Development</span></li>
+        </ul>
+      </div>
 
-        </div>
     </div>
-    <script>
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
+  </div>
 
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
-
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'wereallgonnamakeit-film-page.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
       }
-    </script>
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
 </body>
 </html>
