@@ -1,74 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broad Listening - </title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broad Listening - </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="/broadlistening-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/broadlistening-film-page.html">
 </head>
 <body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>Leo Nelki</h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html">Writing</a></li>
-            </ul>
-        </nav>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Leo Nelki</h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
     </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html">Writing</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <div class="main-content">
-        <div class="connected-grid film-page-grid">
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
 
-            <div class="grid-item hero-image-item" id="broadlistening-hero-image"></div>
-            
-            <div class="grid-item title-item">
-                <h1>Broad Listening</h1>
-            </div>
+      <div class="grid-item hero-image-item" id="broadlistening-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>Broad Listening</h1>
+      </div>
 
-            <div class="grid-item logline-item">
-                <p>Sci-fi author and AI engineer Anno Takahiro launches a new political party focused on digital democracy. Faced with Japan's aging population, indifferent youth, and a stagnant political system, Anno and his team of young software engineers strive to embody the 'broad listening' that defines their campaign.</p>
-            </div>
+      <div class="grid-item logline-item">
+        <p>Sci-fi author and AI engineer Anno Takahiro launches a new political party focused on digital democracy. Faced with Japan's aging population, indifferent youth, and a stagnant political system, Anno and his team of young software engineers strive to embody the 'broad listening' that defines their campaign.</p>
+      </div>
 
-           <div class="grid-item about-item">
-                <h2>About This Film</h2>
-                <p>As an AI engineer and sci-fi author, Anno is not the most obvious politician. Until last year, he had no experience in politics. Following a surprising 2.5% vote share in the 2024 Tokyo Gubernatorial Election, Anno sets his sights on a greater challenge - winning a parliamentary seat. His campaign represents a bold attempt to shake up Japan’s political landscape, confronting a system that has been dominated by a single party for over six decades. Anno’s challenge is twofold. He must overcome the inertia of a political establishment resistant to change, while simultaneously embodying the “broad listening” approach that forms the core of his platform. This will mean engaging with all facets of Japanese society. On one hand, an aging population, deeply rooted in tradition, views his tech-driven solutions with skepticism. On the other, a younger generation remain largely apathetic, their attention fragmented and captured by the very technology Anno seeks to harness for democratic purposes.
-            </div>
+      <div class="grid-item about-item">
+        <h2>About This Film</h2>
+        <p>As an AI engineer and sci-fi author, Anno is not the most obvious politician. Until last year, he had no experience in politics. Following a surprising 2.5% vote share in the 2024 Tokyo Gubernatorial Election, Anno sets his sights on a greater challenge - winning a parliamentary seat. His campaign represents a bold attempt to shake up Japan’s political landscape, confronting a system that has been dominated by a single party for over six decades. Anno’s challenge is twofold. He must overcome the inertia of a political establishment resistant to change, while simultaneously embodying the “broad listening” approach that forms the core of his platform. This will mean engaging with all facets of Japanese society. On one hand, an aging population, deeply rooted in tradition, views his tech-driven solutions with skepticism. On the other, a younger generation remain largely apathetic, their attention fragmented and captured by the very technology Anno seeks to harness for democratic purposes.</p>
+      </div>
 
-           <div class="grid-item specs-item">
-                 <h2>Details</h2>
-                <ul class="specs-list">
-                    <li><span>Director</span><span>Leo Nelki</span></li>
-                    <li><span>Writer</span><span>Leo Nelki</span></li>
-                    <li><span>Type</span><span>Creative Documentary </span></li>
-                    <li><span>Year</span><span>2026</span></li>
-                    <li><span>Duration</span><span>35 mins</span></li>
-                    <li><span>Status</span><span>In Production</span></li>
-                </ul>
-            </div>
-
-        </div>
+      <div class="grid-item specs-item">
+        <h2>Details</h2>
+        <ul class="specs-list">
+          <li><span>Director</span><span>Leo Nelki</span></li>
+          <li><span>Writer</span><span>Leo Nelki</span></li>
+          <li><span>Type</span><span>Creative Documentary</span></li>
+          <li><span>Year</span><span>2026</span></li>
+          <li><span>Duration</span><span>35 mins</span></li>
+          <li><span>Status</span><span>In Production</span></li>
+        </ul>
+      </div>
     </div>
-    <script>
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
+  </div>
 
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
+  <!-- Language toggle -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
 
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
+  <script>
+    (function(){
+      function toggleLang(){
+        var p = location.pathname;
+        var file = p.split('/').filter(Boolean).pop() || 'index.html';
+
+        if (p.startsWith('/jp/')) {
+          var en = file;
+          location.href = '/' + en;
+        } else {
+          location.href = '/jp/' + file;
+        }
       }
-    </script>
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
 </body>
 </html>
