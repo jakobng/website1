@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サンデー・イン・ジャパン - </title>
+    <link rel="stylesheet" href="../style.css">
+    <!-- hreflang alternates -->
+    <link rel="alternate" hreflang="en" href="/" />
+    <link rel="alternate" hreflang="ja" href="/jp/" />
+    <style>
+      /* minimal styles for the top-right language toggle */
+      .lang-toggle {
+        position: fixed;
+        top: 10px;           /* slightly higher position */
+        right: 16px;
+        font-size: 19px;     /* ~19px */
+        font-weight: 700;    /* bold */
+        text-decoration: none;
+        background: none;    /* no bubble background */
+        border: none;
+        padding: 0;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .sidebar-header .jp-name { display:block; }
+      .sidebar-header .en-name { display:block; font-size:0.8em; opacity:0.85; }
+    </style>
+</head>
+<body>
+    <!-- Language toggle -->
+    <a class="lang-toggle" href="/">EN</a>
+
+    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>
+              <span class="jp-name">ネルキ・リオ</span>
+              <span class="en-name">Leo Nelki</span>
+            </h1>
+            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/jp/index.html">ホーム</a></li>
+                <li><a href="/jp/completed.html">完成作品</a></li>
+                <li><a href="/jp/wip.html">制作中</a></li>
+                <li><a href="/jp/writing.html">文章</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="connected-grid film-page-grid">
+
+            <div class="grid-item hero-image-item" id="sij-hero-image"></div>
+            
+            <div class="grid-item title-item">
+                <h1>サンデー・イン・ジャパン</h1>
+            </div>
+
+            <div class="grid-item logline-item">
+                <p>“ウガンダのジャッキー・チェン”ことサンデーが、東京で庇護申請者として生きてきた自身の経験からアクションシーンを生み出していく。</p>
+            </div>
+
+           <div class="grid-item about-item">
+                <h2>この作品について</h2>
+                <p>サンデーは50代のウガンダ人男性で、日本で約15年間、難民申請を続けてきました。ウガンダ発のアクション映画スタイル「ワカリウッド」から着想を得て、地域の日本人コミュニティとともに、サンデーの日本での体験から生まれたシーンを撮影し始めます。収容や送還の絶え間ない不安にさらされ、就労や移動も許可されないなか、当初サンデーは、10年以上にわたり彼が耐えてきた過酷な現実を反映するアイデアを提示します。</p>
+                <p>しかし監督という新たな立場に慣れるにつれ、恐れに触発された場面から離れ、日本での未来を想像して描き始めます。</p>
+            </div>
+
+           <div class="grid-item specs-item">
+                 <h2>詳細</h2>
+                <ul class="specs-list">
+                    <li><span>監督</span><span>Leo Nelki</span></li>
+                    <li><span>プロデューサー</span><span>Moon Road Media, Elda Productions</span></li>
+                    <li><span>ステータス</span><span>制作中</span></li>
+                </ul>
+
+                <h4>助成</h4>
+                <ul>
+                    <li>Creative Europe Media</li>
+                    <li>Docs Up Fund</li>
+                </ul>
+
+                <h4>選出</h4>
+                <ul>
+                    <li>Sheffield Doc Fest Meetmarket</li>
+                    <li>TokyoDocs</li>
+                    <li>FipaDoc</li>
+                    <li>DocsBarcelona</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <script>
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const mobileNavClose = document.querySelector('.mobile-nav-close');
+      const sidebar = document.querySelector('.sidebar');
+
+      if (mobileNavToggle && sidebar && mobileNavClose) {
+        mobileNavToggle.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      }
+    </script>
+</body>
+</html>
