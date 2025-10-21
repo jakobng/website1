@@ -6,7 +6,7 @@
   <title>APA - 短編実験映画</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="alternate" hreflang="en" href="/apa-film-page.html">
-  <link rel="alternate" hreflang="ja" href="/jp/apa-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/apa-film-page-jp.html">
 </head>
 <body>
   <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
@@ -27,7 +27,6 @@
 
   <div class="main-content">
     <div class="connected-grid film-page-grid">
-
       <div class="grid-item hero-image-item" id="apa-hero-image"></div>
       
       <div class="grid-item title-item">
@@ -57,7 +56,6 @@
           <li>ヴィデオグラマ映画祭</li>
         </ul>
       </div>
-
     </div>
   </div>
 
@@ -70,7 +68,6 @@
       mobileNavToggle.addEventListener('click', () => {
         sidebar.classList.add('open');
       });
-
       mobileNavClose.addEventListener('click', () => {
         sidebar.classList.remove('open');
       });
@@ -81,39 +78,36 @@
   <style>
     .lang-toggle {
       position: fixed;
-      top: 14px;
-      right: 16px;
+      top: 16px;
+      right: 20px;
       z-index: 9999;
-      padding: 6px 10px;
-      border: 1px solid rgba(0,0,0,.15);
-      border-radius: 999px;
-      background: rgba(255,255,255,.6);
-      backdrop-filter: blur(6px);
+      font-size: 17px;
+      font-weight: 700;
+      background: none;
+      border: none;
       cursor: pointer;
-      font-size: 14px;
     }
-    @media (prefers-color-scheme: dark) {
-      .lang-toggle {
-        background: rgba(20,20,20,.6);
-        color: #eee;
-        border-color: rgba(255,255,255,.2);
-      }
-    }
+    .lang-toggle:hover { text-decoration: underline; }
   </style>
+
   <script>
     (function(){
       function toggleLang(){
         var p = location.pathname;
+        var file = p.split('/').filter(Boolean).pop() || 'index.html';
+
         if (p.startsWith('/jp/')) {
-          location.href = p.replace('/jp/','/');
+          var en = file.replace(/-jp(?=\.html$)/, '');
+          location.href = '/' + en;
         } else {
-          var file = p.split('/').filter(Boolean).pop() || 'index.html';
-          location.href = '/jp/' + file;
+          var jp = file.replace(/\.html$/, '-jp.html');
+          location.href = '/jp/' + jp;
         }
       }
       window.__toggleLang = toggleLang;
     })();
   </script>
-  <button class="lang-toggle" onclick="__toggleLang()" aria-label="Switch language">EN / 日本語</button>
+
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
 </body>
 </html>
