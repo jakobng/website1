@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>完成作品</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="alternate" hreflang="en" href="/completed.html">
+  <link rel="alternate" hreflang="ja" href="/jp/completed.html">
+</head>
+<body>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1 style="font-size: 1.6em; line-height: 1.2em;">
+        ネルキ・リオ<br>
+        <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
+      </h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/jp/index.html">ホーム</a></li>
+        <li><a href="/jp/completed.html" class="active">完成作品</a></li>
+        <li><a href="/jp/wip.html">制作中</a></li>
+        <li><a href="/jp/writing.html">文章</a></li>
+        <li><a href="/jp/other-projects.html">その他のプロジェクト</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <h2 class="subtle-heading">長編映画</h2>
+    <div class="connected-grid feature-film-grid"></div>
+
+    <h2 class="subtle-heading">短編映画</h2>
+    <div class="connected-grid short-film-grid">
+
+      <a href="/jp/arakawacats-film-page.html" class="grid-item film-item-link">
+        <img src="../images/arakawacats_still.jpg" alt="『荒川キャッツ』スチル">
+        <div class="grid-item-info">
+          <h3>荒川キャッツ</h3>
+          <p>監督</p>
+          <p>2024年 · 完成 · 7分</p>
+        </div>
+      </a>
+
+      <a href="/jp/lobiekosimba-film-page.html" class="grid-item film-item-link">
+        <img src="../images/lobiekosimba_still.png" alt="『Lobi Ekosimba』スチル">
+        <div class="grid-item-info">
+          <h3>Lobi Ekosimba</h3>
+          <h4>監督：Eli Maene</h4>
+          <p>共同プロデューサー／編集</p>
+          <p>2024年 · 完成 · 15分</p>
+        </div>
+      </a>
+
+      <a href="/jp/mulika-film-page.html" class="grid-item film-item-link">
+        <img src="../images/Mulika_withlaurels.png" alt="『Mulika』スチル">
+        <div class="grid-item-info">
+          <h3>Mulika</h3>
+          <h4>監督：Maisha Maene</h4>
+          <p>プロデューサー、編集</p>
+          <p>2022年 · 完成 · 14分</p>
+        </div>
+      </a>
+
+      <a href="/jp/apa-film-page.html" class="grid-item film-item-link">
+        <img src="../images/apa_still.png" alt="『APA』スチル">
+        <div class="grid-item-info">
+          <h3>APA</h3>
+          <h4>マイシャ・マエネと共同監督</h4>
+          <p>監督、脚本</p>
+          <p>2021年 · 完成 · 3分</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var p = location.pathname;
+        var file = p.split('/').filter(Boolean).pop() || 'index.html';
+        if (p.startsWith('/jp/')) {
+          location.href = '/' + file;
+        } else {
+          location.href = '/jp/' + file;
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
+</body>
+</html>
