@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouthful of River - ネルキ・リオ</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="alternate" hreflang="en" href="/mouthfulofriver-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/mouthfulofriver-film-page.html">
+  <style>
+    /* レンズ選択セクション */
+    .lens-section {
+      font-family: "Manrope", "Noto Sans JP", "Hiragino Sans", Meiryo, system-ui, sans-serif;
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(248, 247, 242, 0.7);
+      margin-top: 2rem;
+      border-radius: 12px;
+    }
+    .lens-section h2 {
+      margin: 0 0 1.5rem 0;
+      font-size: 1.6em;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    .lens-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .lens-option a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--yellow-accent);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      border: 2px solid var(--text-color);
+      min-width: 220px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .lens-option a:hover {
+      background-color: #eab00e;
+      color: var(--text-color);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+    @media (min-width: 768px) {
+      .lens-options { flex-direction: row; justify-content: space-around; }
+      .lens-option a { min-width: 200px; }
+    }
+    @media (max-width:600px){
+      .lens-section h2 { font-size:1.5rem; }
+      .lens-option a { font-size: 1em; padding: 0.8rem 1.5rem; min-width: 180px; }
+    }
+    .button-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--blue-accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    .button-link:hover { background-color: #007BA7; }
+  </style>
+</head>
+<body>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1 style="font-size: 1.6em; line-height: 1.2em;">
+        ネルキ・リオ<br>
+        <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
+      </h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/jp/index.html">ホーム</a></li>
+        <li><a href="/jp/completed.html">完成作品</a></li>
+        <li><a href="/jp/wip.html">制作中</a></li>
+        <li><a href="/jp/writing.html">文章</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
+
+      <div class="grid-item hero-image-item" style="background-image:url('../images/mouthful_still.jpg');"></div>
+      
+      <div class="grid-item title-item">
+        <h1>Mouthful of River</h1>
+      </div>
+
+      <div class="grid-item logline-item">
+        <p>AIは川の声を拾う新たな手段を与えてくれる一方で、そのための水を求めるインフラは、まさにその川を脅かしかねない。川をより深く理解することは、科学・儀礼・芸術を通じて、失われつつある「聞く」営みにもう一度つながることなのかもしれない。</p>
+      </div>
+
+      <div class="grid-item about-item">
+        <h2>作品について</h2>
+        <p>この作品については、制作の過程とともに文章を綴っていきます。ご意見やコラボレーションは大歓迎です。関連する考えは下のリンクからご覧ください。↓</p>
+      </div>
+
+      <div class="grid-item specs-item">
+        <h2>詳細</h2>
+        <ul class="specs-list">
+          <li><span>監督</span><span>ネルキ・リオ（Leo Nelki）、パトリシア・エスチェベリア・リラス</span></li>
+          <li><span>作品タイプ</span><span>長編ドキュメンタリー</span></li>
+          <li><span>ステータス</span><span>開発中</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- レンズ選択セクション -->
+    <div class="lens-section">
+      <h2>視点を選ぶ</h2>
+      <div class="lens-options">
+        <div class="lens-option"><a href="/jp/blog/democracy-lens.html">デモクラシー</a></div>
+        <div class="lens-option"><a href="/jp/blog/environmentalism-lens.html">環境主義</a></div>
+        <div class="lens-option"><a href="/jp/blog/ai-alignment-lens.html">AIアラインメント</a></div>
+      </div>
+    </div>
+    <!-- セクション終了 -->
+
+  </div>
+
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'mouthfulofriver-film-page.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+
+  <script>
+    // Standard mobile navigation script
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
+</body>
+</html>
