@@ -65,16 +65,12 @@
     const sidebar = document.querySelector('.sidebar');
 
     if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => {
-        sidebar.classList.add('open');
-      });
-      mobileNavClose.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-      });
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
     }
   </script>
 
-  <!-- Language toggle -->
+  <!-- Clean, text-only language toggle -->
   <style>
     .lang-toggle {
       position: fixed;
@@ -85,6 +81,7 @@
       font-weight: 700;
       background: none;
       border: none;
+      color: inherit;
       cursor: pointer;
     }
     .lang-toggle:hover { text-decoration: underline; }
