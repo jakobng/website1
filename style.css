@@ -365,5 +365,74 @@ body::before {
     .title-item h1   { font-size:10vw; }
 
     .specs-list li { flex-direction:column; align-items:flex-start; }
-    .specs-list li span:last-child { text-align:left; }
+    .specs-list li span:last-child { text-align:left; }/* ============================= */
+/* Shared language toggle button */
+/* ============================= */
+.lang-toggle{
+  position: fixed;
+  top: 10px;        /* slightly higher, as requested */
+  right: 20px;
+  z-index: 9999;
+  font-size: 19px;  /* slightly larger */
+  font-weight: 700;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  letter-spacing: 0.02em;
 }
+.lang-toggle:hover { text-decoration: underline; }
+.lang-toggle:focus-visible {
+  outline: 2px dashed currentColor;
+  outline-offset: 3px;
+}
+
+/* Better default font fallback for Japanese pages */
+:root { --jp-font: "Noto Sans JP", "Hiragino Sans", "Meiryo", system-ui, sans-serif; }
+html:lang(ja) body { font-family: var(--primary-font), var(--jp-font); }
+
+/* Sidebar name size helper (use by adding class="jp-stacked-name" to the JP <h1>) */
+.sidebar h1.jp-stacked-name {
+  font-size: 1.6em;
+  line-height: 1.2em;
+}
+.sidebar h1.jp-stacked-name span {
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+/* Respect reduced motion (soften/disable the background pulse) */
+@media (prefers-reduced-motion: reduce){
+  body::before { animation: none; opacity: 0.25; transform: translate(-50%, -50%) scale(2); }
+}
+
+/* Keyboard focus for sidebar links */
+.sidebar nav a:focus-visible {
+  outline: 2px dashed currentColor;
+  outline-offset: 3px;
+}
+
+/* --- Small tidy-ups: make sure film card meta spacing is consistent --- */
+.grid-item-info p { margin-top: 0.25rem; }
+
+/* ============================= */
+/* De-duplicate hero image rules */
+/* (keep *one* version of each)  */
+/* ============================= */
+
+/* Keep ONE of these for SIJ (choose the image you want) */
+#sij-hero-image { background-image:url('images/sij_withlaurels.png'); }
+/* If you prefer the still instead, replace the line above with:
+#sij-hero-image { background-image:url('images/sij_still.jpg'); }
+*/
+
+/* Keep ONE of these for WAGMI (ID is #wagma-hero-image in your HTML) */
+#wagma-hero-image { background-image:url('images/wagmi_still.png'); }
+/* If you prefer the JPG instead, replace with:
+#wagma-hero-image { background-image:url('images/wagma_still.jpg'); }
+*/
+
+}
+
+
+
