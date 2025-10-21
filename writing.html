@@ -1,78 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing - Leo Nelki</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .writing-links ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .writing-links li {
-            margin-bottom: 10px;
-        }
-        .writing-links a {
-            text-decoration: none;
-            color: var(--blue-accent);
-            font-weight: bold;
-        }
-        .writing-links a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing - Leo Nelki</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="/writing.html">
+  <link rel="alternate" hreflang="ja" href="/jp/writing.html">
+  <style>
+    .writing-links ul { list-style: none; padding-left: 0; }
+    .writing-links li { margin-bottom: 10px; }
+    .writing-links a { text-decoration: none; color: var(--blue-accent); font-weight: bold; }
+    .writing-links a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>Leo Nelki</h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">×</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html" class="active">Writing</a></li>
-                <li><a href="other-projects.html">Other Projects</a></li>
-            </ul>
-        </nav>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Leo Nelki</h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
     </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html" class="active">Writing</a></li>
+        <li><a href="other-projects.html">Other Projects</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <div class="main-content">
-        <div class="connected-grid">
-            <div class="grid-item text-content-item">
-                <h2>Thoughts & Process</h2>
-                <p>I will be writing thoughts on my films and creative process here.</p>
-              
-             
-                <div class="writing-links">
-                    <h3>Thematic Explorations for 'Mouthful of River':</h3>
-                    <ul>
-                        <li><a href="blog/democracy-lens.html">Democracy Lens (Coming Soon)</a></li>
-                        <li><a href="blog/environmentalism-lens.html">Environmentalism Lens (Coming Soon)</a></li>
-                        <li><a href="blog/ai-alignment-lens.html">AI Alignment Lens (Coming Soon)</a></li>
-                    </ul>
-                </div>
-            </div>
+  <div class="main-content">
+    <div class="connected-grid">
+      <div class="grid-item text-content-item">
+        <h2>Thoughts &amp; Process</h2>
+        <p>I will be writing thoughts on my films and creative process here.</p>
+
+        <div class="writing-links">
+          <h3>Thematic Explorations for <em>Mouthful of River</em>:</h3>
+          <ul>
+            <li><a href="blog/democracy-lens.html">Democracy Lens (Coming Soon)</a></li>
+            <li><a href="blog/environmentalism-lens.html">Environmentalism Lens (Coming Soon)</a></li>
+            <li><a href="blog/ai-alignment-lens.html">AI Alignment Lens (Coming Soon)</a></li>
+          </ul>
         </div>
+      </div>
     </div>
-    <script>
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
+  </div>
 
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
-
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'writing.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;    // jp -> en
+        } else {
+          location.href = '/jp/' + file; // en -> jp
+        }
       }
-    </script>
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
 </body>
 </html>
