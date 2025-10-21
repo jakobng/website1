@@ -3703,24 +3703,24 @@
   },
   "ミスター・パーフェクト||": {},
   "SAAHO／サーホー||": {},
+  "柔道龍虎房 4Kリマスター版|2004|ジョニー・トー": {},
   "七人樂隊||": {
     "id": 537761,
     "tmdb_title": "Septet: The Story of Hong Kong",
     "tmdb_original_title": "七人樂隊",
     "letterboxd_english_title": "Septet: The Story of Hong Kong (2020)"
   },
-  "ホワイト・ストーム||": {
-    "id": 512731,
-    "tmdb_title": "The White Storm 2: Drug Lords",
-    "tmdb_original_title": "掃毒2 天地對決",
-    "letterboxd_english_title": "The White Storm 2: Drug Lords (2019)"
-  },
-  "柔道龍虎房 4Kリマスター版|2004|ジョニー・トー": {},
   "バース・オブ・ザ・ドラゴン||": {
     "id": 408266,
     "tmdb_title": "Birth of the Dragon",
     "tmdb_original_title": "Birth of the Dragon",
     "letterboxd_english_title": "Birth of the Dragon (2016)"
+  },
+  "ホワイト・ストーム||": {
+    "id": 512731,
+    "tmdb_title": "The White Storm 2: Drug Lords",
+    "tmdb_original_title": "掃毒2 天地對決",
+    "letterboxd_english_title": "The White Storm 2: Drug Lords (2019)"
   },
   "テオレマ 4Kスキャン版||ピエル・パオロ・パゾリーニ": {},
   "オアシス:スーパーソニック|2016|マット・ホワイトクロス": {
@@ -3757,6 +3757,18 @@
   "blur: Live At Wembley Stadium ブラー:ライヴ・アット・ウェンブリー・スタジアム||": {},
   "本年度過激No.1決定戦!? エクストリーム最前線ナイト||": {},
   "blur: Live At Wembley Stadium ブラー:ライヴ・アット・ウェンブリー・スタジアム|2024|トビー・L": {},
+  "サブスタンス||コラリー・ファルジャ": {
+    "id": 933260,
+    "tmdb_title": "The Substance",
+    "tmdb_original_title": "The Substance",
+    "letterboxd_english_title": "The Substance (2024)"
+  },
+  "顔を捨てた男||": {
+    "id": 989662,
+    "tmdb_title": "A Different Man",
+    "tmdb_original_title": "A Different Man",
+    "letterboxd_english_title": "A Different Man (2024)"
+  },
   "舟に乗って逝く|2023|": {},
   "おかあさんの被爆ピアノ|2020|五藤利弘 出演：佐野史郎、武藤十夢、森口瑤子": {
     "id": 739285,
@@ -3805,13 +3817,6 @@
   "《ニュー・ジャーマン・シネマから||": {},
   "タイムズ・スクエア 4Kレストア|1981|アラン・モイル 出演：トリニ・アルヴァラード、ロビン・ジョンソン": {},
   "サタジット・レイ||": {},
-  "機動警察パトレイバー2 the Movie〈4K版〉||": {},
-  "KIDS／キッズ|1995|": {
-    "id": 9344,
-    "tmdb_title": "Kids",
-    "tmdb_original_title": "Kids",
-    "letterboxd_english_title": "Kids (1995)"
-  },
   "リアム・ギャラガー in ロックフィールド オアシス復活の序章|2022|": {
     "id": 978797,
     "tmdb_title": "Liam Gallagher: 48 Hours at Rockfield",
@@ -3819,29 +3824,36 @@
     "letterboxd_english_title": "Liam Gallagher: 48 Hours at Rockfield (2022)"
   },
   "ハウス・オブ・ダイナマイト|2025|": {},
-  "Dear Stranger／ディア・ストレンジャー|2025|": {
-    "id": 1469141,
-    "tmdb_title": "Dear Stranger",
-    "tmdb_original_title": "Dear Stranger／ディア・ストレンジャー",
-    "letterboxd_english_title": "Dear Stranger (2025)"
-  },
   "リンダ リンダ リンダ||": {
     "id": 27337,
     "tmdb_title": "Linda Linda Linda",
     "tmdb_original_title": "リンダ リンダ リンダ",
     "letterboxd_english_title": "Linda Linda Linda (2005)"
   },
-  "メーヌ・オセアン|1985|": {},
+  "KIDS／キッズ|1995|": {
+    "id": 9344,
+    "tmdb_title": "Kids",
+    "tmdb_original_title": "Kids",
+    "letterboxd_english_title": "Kids (1995)"
+  },
+  "機動警察パトレイバー2 the Movie〈4K版〉||": {},
+  "Dear Stranger／ディア・ストレンジャー|2025|": {
+    "id": 1469141,
+    "tmdb_title": "Dear Stranger",
+    "tmdb_original_title": "Dear Stranger／ディア・ストレンジャー",
+    "letterboxd_english_title": "Dear Stranger (2025)"
+  },
+  "フィフィ・マルタンガル デジタルレストア版|2001|": {},
+  "短篇集 2Kレストア版||": {},
+  "アデュー・フィリピーヌ 2Kレストア版||": {},
+  "オルエットの方へ|1971|": {},
   "トルテュ島の遭難者たち|1976|": {
     "id": 64564,
     "tmdb_title": "The Castaways of Turtle Island",
     "tmdb_original_title": "Les Naufragés de l'ile de la Tortue",
     "letterboxd_english_title": "The Castaways of Turtle Island (1976)"
   },
-  "フィフィ・マルタンガル デジタルレストア版|2001|": {},
-  "短篇集 2Kレストア版||": {},
-  "アデュー・フィリピーヌ 2Kレストア版||": {},
-  "オルエットの方へ|1971|": {},
+  "メーヌ・オセアン|1985|": {},
   "12人の優しい日本人|1991|": {
     "id": 378180,
     "tmdb_title": "The Gentle 12",
@@ -3920,9 +3932,10 @@
     "tmdb_original_title": "アフター・ザ・クエイク",
     "letterboxd_english_title": "After the Quake (2025)"
   },
-  "縲蝉ｸ牙ｮ�蜚ｱ逶｣逹｣迚ｹ髮�縲代Ρ繧､繝ｫ繝峨ヤ繧｢繝ｼ||": {},
   "縲蝉ｸ牙ｮ�蜚ｱ逶｣逹｣迚ｹ髮�縲代″縺ｿ縺ｮ魑･縺ｯ縺�縺溘∴繧�||": {},
   "縲蝉ｸ牙ｮ�蜚ｱ逶｣逹｣迚ｹ髮�縲大ｯ�菴ｿ縺ｨ逡ｪ莠ｺ||": {},
+  "縲蝉ｸ牙ｮ�蜚ｱ逶｣逹｣迚ｹ髮�縲代Ρ繧､繝ｫ繝峨ヤ繧｢繝ｼ||": {},
+  "フジコ・ヘミング 永遠の音色|2025|小松莊一良": {},
   "非常戒厳前夜 字幕版|2025|キム・ヨンジン出演：ユン・ソンニョルキム・ヨンジンハン・サンジンポン・ジウク": {},
   "揺さぶられる正義|2025|上田大輔": {},
   "A KING with a cold smile -王様は笑わない-|2025|川端潤": {},
@@ -4022,11 +4035,11 @@
   },
   "スノードロップ|2024|": {},
   "ナイトコール|2025|": {},
-  "ロシュフォールの恋人たち||": {
-    "id": 2433,
-    "tmdb_title": "The Young Girls of Rochefort",
-    "tmdb_original_title": "Les Demoiselles de Rochefort",
-    "letterboxd_english_title": "The Young Girls of Rochefort (1967)"
+  "ロバと王女||": {
+    "id": 5590,
+    "tmdb_title": "Donkey Skin",
+    "tmdb_original_title": "Peau d'âne",
+    "letterboxd_english_title": "Donkey Skin (1970)"
   },
   "層間騒音||": {},
   "リビング・ラージ!|2024|": {
@@ -4041,31 +4054,24 @@
     "tmdb_original_title": "リンダ リンダ リンダ",
     "letterboxd_english_title": "Linda Linda Linda (2005)"
   },
-  "消滅世界||": {},
   "音楽 ブラッシュアップ版|2025|": {},
-  "ロバと王女||": {
-    "id": 5590,
-    "tmdb_title": "Donkey Skin",
-    "tmdb_original_title": "Peau d'âne",
-    "letterboxd_english_title": "Donkey Skin (1970)"
-  },
   "シェルブールの雨傘||": {
     "id": 5967,
     "tmdb_title": "The Umbrellas of Cherbourg",
     "tmdb_original_title": "Les Parapluies de Cherbourg",
     "letterboxd_english_title": "The Umbrellas of Cherbourg (1964)"
   },
-  "君の名前で僕を呼んで|2017|ルカ・グァダニーノ": {
-    "id": 398818,
-    "tmdb_title": "Call Me by Your Name",
-    "tmdb_original_title": "Call Me by Your Name",
-    "letterboxd_english_title": "Call Me by Your Name (2017)"
-  },
   "クィア／QUEER|2024|ルカ・グァダニーノ": {
     "id": 1059128,
     "tmdb_title": "Queer",
     "tmdb_original_title": "Queer",
     "letterboxd_english_title": "Queer (2024)"
+  },
+  "君の名前で僕を呼んで|2017|ルカ・グァダニーノ": {
+    "id": 398818,
+    "tmdb_title": "Call Me by Your Name",
+    "tmdb_original_title": "Call Me by Your Name",
+    "letterboxd_english_title": "Call Me by Your Name (2017)"
   },
   "失楽園|1997|森田芳光": {
     "id": 68606,
@@ -4115,11 +4121,23 @@
     "tmdb_original_title": "僕達急行 A列車で行こう",
     "letterboxd_english_title": "Train Brain Express (2012)"
   },
-  "風花||相米慎二": {
-    "id": 115799,
-    "tmdb_title": "Kaza-hana",
-    "tmdb_original_title": "風花",
-    "letterboxd_english_title": "Kaza-hana (2000)"
+  "の・ようなもの||": {
+    "id": 129383,
+    "tmdb_title": "Something Like It",
+    "tmdb_original_title": "の・ようなもの",
+    "letterboxd_english_title": "Something Like It (1981)"
+  },
+  "そろばんずく|1986|": {
+    "id": 226854,
+    "tmdb_title": "For Business",
+    "tmdb_original_title": "そろばんずく",
+    "letterboxd_english_title": "For Business (1986)"
+  },
+  "ションベン・ライダー||相米慎二": {
+    "id": 115780,
+    "tmdb_title": "P. P. Rider",
+    "tmdb_original_title": "ションベン・ライダー",
+    "letterboxd_english_title": "P. P. Rider (1983)"
   },
   "風のマジム||": {
     "id": 1495175,
@@ -4135,18 +4153,24 @@
   },
   "サターン・ボウリング||パトリシア・マズィ": {},
   "そういうものに、わたしはなりたい。||監督・脚本 豊田利晃": {},
-  "競技場の裸の男||": {},
-  "引き裂かれた空||": {},
-  "劇場版 牙狼<GARO> TAIGA||": {},
-  "ションベン・ライダー||相米慎二": {
-    "id": 115780,
-    "tmdb_title": "P. P. Rider",
-    "tmdb_original_title": "ションベン・ライダー",
-    "letterboxd_english_title": "P. P. Rider (1983)"
-  },
   "太陽を探す人々||": {},
+  "競技場の裸の男||": {},
+  "劇場版 牙狼<GARO> TAIGA||": {},
+  "風花||相米慎二": {
+    "id": 115799,
+    "tmdb_title": "Kaza-hana",
+    "tmdb_original_title": "風花",
+    "letterboxd_english_title": "Kaza-hana (2000)"
+  },
+  "引き裂かれた空||": {},
   "ママ、僕は生きてるよ||": {},
   "ソロシンガー||": {},
+  "ミーツ・ザ・ワールド||松居大悟": {
+    "id": 1417790,
+    "tmdb_title": "Meets the World",
+    "tmdb_original_title": "ミーツ・ザ・ワールド",
+    "letterboxd_english_title": "Meets the World (2025)"
+  },
   "僕は19歳だった||": {},
   "星||": {
     "id": 1022787,
@@ -4154,18 +4178,13 @@
     "tmdb_original_title": "Elio",
     "letterboxd_english_title": "Elio (2025)"
   },
-  "ルージュ||": {
-    "id": 68883,
-    "tmdb_title": "Rouge",
-    "tmdb_original_title": "胭脂扣",
-    "letterboxd_english_title": "Rouge (1987)"
-  },
   "ブライアン・エプスタイン 世界最高のバンドを育てた男||ジョー・スティーヴンソン": {
     "id": 819277,
     "tmdb_title": "Midas Man",
     "tmdb_original_title": "Midas Man",
     "letterboxd_english_title": "Midas Man (2024)"
   },
+  "ルージュ 4K【4K上映】||スタンリー・クワン": {},
   "ジェイコブス・ラダー【4K上映】||": {},
   "ﾌﾚｲﾑﾕﾆｵﾝ 最強殺し屋伝説国岡 私闘編||": {},
   "刺殺小説家2【日本語字幕無し】||ルー・ヤン【路陽】": {},
@@ -4176,7 +4195,12 @@
     "tmdb_original_title": "蟲",
     "letterboxd_english_title": "Insect (2025)"
   },
-  "ルージュ 4K【4K上映】||スタンリー・クワン": {},
+  "ルージュ||": {
+    "id": 68883,
+    "tmdb_title": "Rouge",
+    "tmdb_original_title": "胭脂扣",
+    "letterboxd_english_title": "Rouge (1987)"
+  },
   "機動警察パトレイバー劇場版||": {},
   "KIDS キッズ|1995|": {
     "id": 9344,
@@ -4235,7 +4259,7 @@
     "letterboxd_english_title": "100 METERS (2025)"
   },
   "コーヒー＆シガレッツ|2003|ジム・ジャームッシュ": {},
-  "モロカイ・バウンド||": {},
+  "モロカイ・バウンド|2024|アリカ・テンガン": {},
   "国宝|2025|李相日": {
     "id": 1379266,
     "tmdb_title": "Kokuho",
@@ -4311,5 +4335,18 @@
     "letterboxd_english_title": "After the Quake (2025)"
   },
   "オオムタアツシの青春||瀬木直貴": {},
-  "ムガリッツ||パコ・プラサ": {}
+  "ムガリッツ||パコ・プラサ": {},
+  "ハード・トゥルース 母の日に願うこと||マイク・リー": {
+    "id": 1013154,
+    "tmdb_title": "Hard Truths",
+    "tmdb_original_title": "Hard Truths",
+    "letterboxd_english_title": "Hard Truths (2024)"
+  },
+  "ヒポクラテスの盲点||大西隼": {},
+  "富士山と、コーヒーと、しあわせの数式||中西健二": {
+    "id": 1563792,
+    "tmdb_title": "Mount Fuji, Coffee, and the Formula for Happiness",
+    "tmdb_original_title": "富士山と、コーヒーと、しあわせの数式",
+    "letterboxd_english_title": "Mount Fuji, Coffee, and the Formula for Happiness (2025)"
+  }
 }
