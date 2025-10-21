@@ -72,19 +72,20 @@
 
   <!-- Clean, text-only language toggle -->
   <style>
-    .lang-toggle {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 17px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
+   .lang-toggle {
+    position: fixed;
+    top: 10px;            /* moved up slightly (was 16px) */
+    right: 20px;
+    z-index: 9999;
+    font-size: 19px;      /* slightly larger */
+    font-weight: 700;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+  .lang-toggle:hover { text-decoration: underline; }
   </style>
 
   <script>
@@ -108,3 +109,4 @@
   <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
 </body>
 </html>
+
