@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>制作中の作品</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="alternate" hreflang="en" href="/wip.html">
+  <link rel="alternate" hreflang="ja" href="/jp/wip.html">
+</head>
+<body>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1 style="font-size: 1.6em; line-height: 1.2em;">
+        ネルキ・リオ<br>
+        <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
+      </h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/jp/index.html">ホーム</a></li>
+        <li><a href="/jp/completed.html">完成作品</a></li>
+        <li><a href="/jp/wip.html" class="active">制作中の作品</a></li>
+        <li><a href="/jp/writing.html">文章</a></li>
+        <li><a href="/jp/other-projects.html">その他のプロジェクト</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+
+    <h2 class="subtle-heading">長編映画</h2>
+    <div class="connected-grid feature-film-grid">
+      
+      <a href="/jp/sik-film-page.html" class="grid-item film-item-link">
+        <img src="../images/SIK_withlaurels.png" alt="『Spaceman in Kongo』スチル">
+        <div class="grid-item-info">
+          <h3>Spaceman in Kongo</h3>
+          <h4>監督：Maisha Maene</h4>
+          <p>プロデューサー、脚本</p>
+          <p>2026年 · 開発中 · 90分</p>
+        </div>
+      </a>
+
+      <a href="/jp/sij-film-page.html" class="grid-item film-item-link">
+        <img src="../images/sij_withlaurels.png" alt="『Sunday in Japan』スチル">
+        <div class="grid-item-info">
+          <h3>Sunday in Japan</h3>
+          <p>監督、脚本</p>
+          <p>2025年 · 制作中 · 85分</p>
+        </div>
+      </a>
+      
+      <a href="/jp/mouthfulofriver-film-page.html" class="grid-item film-item-link">
+        <img src="../images/mouthful_still.jpg" alt="『Mouthful of River』スチル">
+        <div class="grid-item-info">
+          <h3>Mouthful of River</h3>
+          <h4>パトリシア・エチェベリア・リラスと共同監督</h4>
+          <p>監督、脚本</p>
+          <p>2027年 · 開発中 · 85分</p>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="subtle-heading">短編映画</h2>
+    <div class="connected-grid short-film-grid">
+      
+      <a href="/jp/broadlistening-film-page.html" class="grid-item film-item-link">
+        <img src="../images/broadlistening_still.jpg" alt="『ブロード・リスニング』スチル">
+        <div class="grid-item-info">
+          <h3>ブロード・リスニング</h3>
+          <p>監督、脚本</p>
+          <p>2026年 · 制作中 · 35分</p>
+        </div>
+      </a>
+      
+      <a href="/jp/wereallgonnamakeit-film-page.html" class="grid-item film-item-link">
+        <img src="../images/wagmi_still.png" alt="『We're All Gonna Make It』スチル">
+        <div class="grid-item-info">
+          <h3>We're All Gonna Make It</h3>
+          <h4>監督：Galen Bullivant</h4>
+          <p>プロデューサー</p>
+          <p>2026年 · 開発中 · 15分</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'wip.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
+</body>
+</html>
