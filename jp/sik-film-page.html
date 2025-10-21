@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaceman in Kongo - 長編ドキュメンタリー</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="alternate" hreflang="en" href="/sik-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/sik-film-page.html">
+</head>
+<body>
+
+  <div class="sidebar">
+    <h1 style="font-size: 1.6em; line-height: 1.2em;">
+      ネルキ・リオ<br>
+      <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="/jp/index.html">ホーム</a></li>
+        <li><a href="/jp/completed.html">完成作品</a></li>
+        <li><a href="/jp/wip.html">制作中</a></li>
+        <li><a href="/jp/writing.html">文章</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
+
+      <div class="grid-item hero-image-item" id="sik-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>Spaceman in Kongo</h1>
+      </div>
+
+      <div class="grid-item logline-item">
+        <p>若きロケット技術者ネスターとアイザックは、かつてのアフリカの夢想家たちの記憶と祖国への揺るぎない信念を原動力に、初のコンゴ宇宙計画の立ち上げに挑む。</p>
+      </div>
+
+      <div class="grid-item specs-item">
+        <h2>詳細</h2>
+        <ul class="specs-list">
+          <li><span>監督</span><span>Maisha Maene</span></li>
+          <li><span>プロデューサー</span><span>ネルキ・リオ (Leo Nelki), Josune Hahnheiser, Maisha Maene</span></li>
+          <li><span>脚本</span><span>Maisha Maene, ネルキ・リオ (Leo Nelki)</span></li>
+          <li><span>上映時間</span><span>90分</span></li>
+          <li><span>ステータス</span><span>開発中</span></li>
+        </ul>
+      </div>
+
+      <div class="grid-item about-item">
+        <h4>支援</h4>
+        <ul>
+          <li>Sundance Sandbox Fund</li>
+          <li>Hot Docs Blue Ice Fund</li>
+          <li>IDFA Bertha Fund</li>
+          <li>Ford Foundation</li>
+        </ul>
+
+        <h4>選出</h4>
+        <ul>
+          <li>Berlinale Talents Doc Station</li>
+          <li>CPH:FORUM</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Language toggle: clean text, slightly larger & higher -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'sik-film-page.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+
+</body>
+</html>
