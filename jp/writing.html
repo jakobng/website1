@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章 - ネルキ・リオ</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="alternate" hreflang="en" href="/writing.html">
+  <link rel="alternate" hreflang="ja" href="/jp/writing.html">
+  <style>
+    .writing-links ul { list-style: none; padding-left: 0; }
+    .writing-links li { margin-bottom: 10px; }
+    .writing-links a { text-decoration: none; color: var(--blue-accent); font-weight: bold; }
+    .writing-links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1 style="font-size: 1.6em; line-height: 1.2em;">
+        ネルキ・リオ<br>
+        <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
+      </h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/jp/index.html">ホーム</a></li>
+        <li><a href="/jp/completed.html">完成作品</a></li>
+        <li><a href="/jp/wip.html">制作中の作品</a></li>
+        <li><a href="/jp/writing.html" class="active">文章</a></li>
+        <li><a href="/jp/other-projects.html">その他のプロジェクト</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid">
+      <div class="grid-item text-content-item">
+        <h2>考えごとと制作プロセス</h2>
+        <p>ここでは、作品や制作プロセスについての考えを綴っていきます。</p>
+
+        <div class="writing-links">
+          <h3><em>Mouthful of River</em> のテーマ探索：</h3>
+          <ul>
+            <li><a href="/jp/blog/democracy-lens.html">デモクラシーの視点（近日公開）</a></li>
+            <li><a href="/jp/blog/environmentalism-lens.html">環境主義の視点（近日公開）</a></li>
+            <li><a href="/jp/blog/ai-alignment-lens.html">AIアラインメントの視点（近日公開）</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'writing.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;    // jp -> en
+        } else {
+          location.href = '/jp/' + file; // en -> jp
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+  </script>
+</body>
+</html>
