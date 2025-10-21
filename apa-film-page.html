@@ -1,96 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APA - </title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APA - </title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>Leo Nelki</h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html">Writing</a></li>
-            </ul>
-        </nav>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Leo Nelki</h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
     </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html">Writing</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <div class="main-content">
-        <div class="connected-grid film-page-grid">
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
 
-            <div class="grid-item hero-image-item" id="apa-hero-image"></div>
-            
-            <div class="grid-item title-item">
-                <h1>APA</h1>
-            </div>
+      <div class="grid-item hero-image-item" id="apa-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>APA</h1>
+      </div>
 
-            <div class="grid-item logline-item">
-                <p>Maisha Maene and Leo Nelki lay bare the volatility of eastern Congo in a sensory essay that evokes images of environmental threat, military aggression, and a young generation raised in conflict.</p>
-            </div>
+      <div class="grid-item logline-item">
+        <p>Maisha Maene and Leo Nelki lay bare the volatility of eastern Congo in a sensory essay that evokes images of environmental threat, military aggression, and a young generation raised in conflict.</p>
+      </div>
 
+      <div class="grid-item specs-item">
+        <h2>Details</h2>
+        <ul class="specs-list">
+          <li><span>Type</span><span>Short Experimental Film</span></li>
+          <li><span>Year</span><span>2021</span></li>
+          <li><span>By</span><span>Maisha Maene & Leo Nelki</span></li>
+          <li><span>Music</span><span>Patricia Taxxon</span></li>
+          <li><span>Runtime</span><span>3 mins</span></li>
+        </ul>
+      </div>
 
-   <div class="grid-item specs-item">
-                <h2>Details</h2>
-                <ul class="specs-list">
-                    <li><span>Type</span><span>Short Experimental Film</span></li>
-                    <li><span>Year</span><span>2021</span></li>
-                    <li><span>By</span><span>Maisha Maene & Leo Nelki</span></li>
-		    <li><span>Music</span><span>Patricia Taxxon</span></li>
-                    <li><span>Runtime</span><span>3 mins</span></li>
-                </ul>
-            </div>
-     <div class="grid-item about-item">
-                 <h2>Screenings</h2>
-                <ul>
-                    <li>Congo in Harlem Film Festival</li>
-                    <li>Afrika Filmfestival Leuven</li>
-                    <li>Videograma Festival</li>
-                </ul>
-            </div>
+      <div class="grid-item about-item">
+        <h2>Screenings</h2>
+        <ul>
+          <li>Congo in Harlem Film Festival</li>
+          <li>Afrika Filmfestival Leuven</li>
+          <li>Videograma Festival</li>
+        </ul>
+      </div>
 
-        </div>
     </div>
-    <script>
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
+  </div>
 
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
 
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
-      }
-    </script>
-	<style>
-  .lang-toggle{position:fixed;top:14px;right:16px;z-index:9999;padding:6px 10px;border:1px solid rgba(0,0,0,.15);border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(6px);cursor:pointer;font-size:14px}
-  @media (prefers-color-scheme: dark){.lang-toggle{background:rgba(20,20,20,.6);color:#eee;border-color:rgba(255,255,255,.2)}}
-</style>
-<script>
-  (function(){
-    function toggleLang(){
-      var p = location.pathname;
-      if (p.startsWith('/jp/')) { location.href = p.replace('/jp/','/'); }
-      else {
-        var file = p.split('/').filter(Boolean).pop() || 'index.html';
-        location.href = '/jp/' + file;
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => {
+        sidebar.classList.add('open');
+      });
+
+      mobileNavClose.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+      });
+    }
+  </script>
+
+  <!-- Language toggle -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 14px;
+      right: 16px;
+      z-index: 9999;
+      padding: 6px 10px;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 999px;
+      background: rgba(255,255,255,.6);
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+      font-size: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .lang-toggle {
+        background: rgba(20,20,20,.6);
+        color: #eee;
+        border-color: rgba(255,255,255,.2);
       }
     }
-    window.__toggleLang = toggleLang;
-  })();
-</script>
-<button class="lang-toggle" onclick="__toggleLang()" aria-label="Switch language">EN / 日本語</button>
-</body>
-
-</html>
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var
