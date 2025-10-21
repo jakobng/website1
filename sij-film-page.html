@@ -5,8 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunday in Japan - </title>
     <link rel="stylesheet" href="style.css">
+    <!-- hreflang alternates -->
+    <link rel="alternate" hreflang="en" href="/" />
+    <link rel="alternate" hreflang="ja" href="/jp/" />
+    <style>
+      /* minimal styles for the top-right language toggle */
+      .lang-toggle {
+        position: fixed;
+        top: 10px;           /* slightly higher position */
+        right: 16px;
+        font-size: 19px;     /* ~19px */
+        font-weight: 700;    /* bold */
+        text-decoration: none;
+        background: none;    /* no bubble background */
+        border: none;
+        padding: 0;
+        line-height: 1;
+        cursor: pointer;
+      }
+    </style>
 </head>
 <body>
+    <!-- Language toggle -->
+    <a class="lang-toggle" href="/jp/">日本語</a>
+
     <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
     <div class="sidebar">
         <div class="sidebar-header">
