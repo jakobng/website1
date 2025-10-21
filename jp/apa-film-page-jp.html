@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APA - 短編実験映画</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="alternate" hreflang="en" href="/apa-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/apa-film-page.html">
+</head>
+<body>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>レオ・ネルキ</h1>
+      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/jp/index.html">ホーム</a></li>
+        <li><a href="/jp/completed.html">完成作品</a></li>
+        <li><a href="/jp/wip.html">制作中</a></li>
+        <li><a href="/jp/writing.html">文章</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
+
+      <div class="grid-item hero-image-item" id="apa-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>APA</h1>
+      </div>
+
+      <div class="grid-item logline-item">
+        <p>マイシャ・マエネとレオ・ネルキが、東コンゴの不安定な現実を描き出す。環境の脅威、軍事的緊張、そして紛争下で育った若い世代の感覚を、映像と音のリズムで表現する感覚的エッセイ。</p>
+      </div>
+
+      <div class="grid-item specs-item">
+        <h2>詳細</h2>
+        <ul class="specs-list">
+          <li><span>作品タイプ</span><span>短編実験映画</span></li>
+          <li><span>制作年</span><span>2021年</span></li>
+          <li><span>監督</span><span>マイシャ・マエネ & レオ・ネルキ</span></li>
+          <li><span>音楽</span><span>パトリシア・タクソン</span></li>
+          <li><span>上映時間</span><span>3分</span></li>
+        </ul>
+      </div>
+
+      <div class="grid-item about-item">
+        <h2>上映</h2>
+        <ul>
+          <li>コンゴ・イン・ハーレム映画祭</li>
+          <li>アフリカ映画祭ルーヴェン</li>
+          <li>ヴィデオグラマ映画祭</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.addEventListener('click', () => {
+        sidebar.classList.add('open');
+      });
+
+      mobileNavClose.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+      });
+    }
+  </script>
+
+  <!-- Language toggle -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 14px;
+      right: 16px;
+      z-index: 9999;
+      padding: 6px 10px;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 999px;
+      background: rgba(255,255,255,.6);
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+      font-size: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .lang-toggle {
+        background: rgba(20,20,20,.6);
+        color: #eee;
+        border-color: rgba(255,255,255,.2);
+      }
+    }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var p = location.pathname;
+        if (p.startsWith('/jp/')) {
+          location.href = p.replace('/jp/','/');
+        } else {
+          var file = p.split('/').filter(Boolean).pop() || 'index.html';
+          location.href = '/jp/' + file;
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <button class="lang-toggle" onclick="__toggleLang()" aria-label="Switch language">EN / 日本語</button>
+</body>
+</html>
