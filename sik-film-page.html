@@ -1,65 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spaceman in Kongo - </title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaceman in Kongo - </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="/sik-film-page.html">
+  <link rel="alternate" hreflang="ja" href="/jp/sik-film-page.html">
 </head>
 <body>
 
-    <div class="sidebar">
-        <h1>Leo Nelki</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="completed.html">Completed Films</a></li>
-                <li><a href="wip.html">Works in Progress</a></li>
-                <li><a href="writing.html">Writing</a></li>
-            </ul>
-        </nav>
+  <div class="sidebar">
+    <h1>Leo Nelki</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="completed.html">Completed Films</a></li>
+        <li><a href="wip.html">Works in Progress</a></li>
+        <li><a href="writing.html">Writing</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="connected-grid film-page-grid">
+
+      <div class="grid-item hero-image-item" id="sik-hero-image"></div>
+      
+      <div class="grid-item title-item">
+        <h1>Spaceman in Kongo</h1>
+      </div>
+
+      <div class="grid-item logline-item">
+        <p>Two young rocket engineers, Nestor and Isaac, propelled by the memory of former African dreamers and a resilient belief in their country, work on building the first Congolese Space Program.</p>
+      </div>
+
+      <div class="grid-item specs-item">
+        <h2>Details</h2>
+        <ul class="specs-list">
+          <li><span>Director</span><span>Maisha Maene</span></li>
+          <li><span>Producers</span><span>Leo Nelki, Josune Hahnheiser, Maisha Maene</span></li>
+          <li><span>Writers</span><span>Maisha Maene, Leo Nelki</span></li>
+          <li><span>Runtime</span><span>90 mins</span></li>
+          <li><span>Status</span><span>In Development</span></li>
+        </ul>
+      </div>
+
+      <div class="grid-item about-item">
+        <h4>Supported by</h4>
+        <ul>
+          <li>Sundance Sandbox Fund</li>
+          <li>Hot Docs Blue Ice Fund</li>
+          <li>IDFA Bertha Fund</li>
+          <li>Ford Foundation</li>
+        </ul>
+
+        <h4>Selected for</h4>
+        <ul>
+          <li>Berlinale Talents Doc Station</li>
+          <li>CPH:FORUM</li>
+        </ul>
+      </div>
+
     </div>
+  </div>
 
-    <div class="main-content">
-        <div class="connected-grid film-page-grid">
-
-            <div class="grid-item hero-image-item" id="sik-hero-image"></div>
-            
-            <div class="grid-item title-item">
-                <h1>Spaceman in Kongo</h1>
-            </div>
-
-            <div class="grid-item logline-item">
-                <p>Two young rocket engineers, Nestor and Isaac, propelled by the memory of former African dreamers and a resilient belief in their country, work on building the first Congolese Space Program. </p>
-            </div>
-   <div class="grid-item specs-item">
-                 <h2>Details</h2>
-                <ul class="specs-list">
-                    <li><span>Director</span><span>Maisha Maene</span></li>
-                    <li><span>Producers</span><span>Leo Nelki, Josune Hahnheiser, Maisha Maene</span></li>
-                    <li><span>Writers</span><span>Maisha Maene, Leo Nelki</span></li>
-                    <li><span>Runtime</span><span>90 mins</span></li>
-                    <li><span>Status</span><span>In Development</span></li>
-                </ul>
-            </div>
-           <div class="grid-item about-item">
-                <h4>Supported by</h4>
-                <ul>
-                    <li>Sundance Sandbox Fund</li>
-                    <li>Hot Docs Blue Ice Fund</li>
-                    <li>IDFA Bertha Fund</li>
-                    <li>Ford Foundation</li>
-                </ul>
-
-                <h4>Selected for</h4>
-                <ul>
-                    <li>Berlinale Talents Doc Station</li>
-                    <li>CPH:FORUM</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
+  <!-- Language toggle: clean text, slightly larger & higher -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = location.pathname.split('/').filter(Boolean).pop() || 'sik-film-page.html';
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
 
 </body>
 </html>
