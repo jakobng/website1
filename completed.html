@@ -9,8 +9,8 @@
   <link rel="alternate" hreflang="ja" href="/jp/completed.html">
 </head>
 <body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation" aria-controls="site-navigation" aria-expanded="false">☰</button>
-  <div class="sidebar" id="site-navigation">
+  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+  <div class="sidebar">
     <div class="sidebar-header">
       <h1>Leo Nelki</h1>
       <button class="mobile-nav-close" aria-label="Close navigation">×</button>
@@ -75,6 +75,23 @@
     </div>
   </div>
 
+  <!-- Language toggle: clean text, slightly larger & higher -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
   <script>
     (function(){
       function toggleLang(){
@@ -96,47 +113,8 @@
     const sidebar = document.querySelector('.sidebar');
 
     if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.setAttribute('aria-expanded', 'false');
-
-      const openNav = () => {
-        sidebar.classList.add('open');
-        mobileNavToggle.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('nav-open');
-      };
-
-      const closeNav = () => {
-        sidebar.classList.remove('open');
-        mobileNavToggle.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('nav-open');
-      };
-
-      const toggleNav = () => {
-        if (sidebar.classList.contains('open')) {
-          closeNav();
-        } else {
-          openNav();
-        }
-      };
-
-      mobileNavToggle.addEventListener('click', toggleNav);
-      mobileNavClose.addEventListener('click', closeNav);
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && sidebar.classList.contains('open')) {
-          closeNav();
-          mobileNavToggle.focus();
-        }
-      });
-
-      document.addEventListener('click', (event) => {
-        if (
-          sidebar.classList.contains('open') &&
-          !sidebar.contains(event.target) &&
-          !mobileNavToggle.contains(event.target)
-        ) {
-          closeNav();
-        }
-      });
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
     }
   </script>
 </body>
