@@ -212,16 +212,9 @@ body::before {
     background-color: rgba(0, 0, 0, 0.08);
 }
 
-/* Alias retained for older markup while the site migrates */
-.status-in-progress,
-.status-in-production {
+.status-in-progress {
     background-color: rgba(255, 183, 77, 0.22);
     color: #9C5300;
-}
-
-.status-in-development {
-    background-color: rgba(144, 202, 249, 0.22);
-    color: #1565C0;
 }
 
 .status-completed {
@@ -378,17 +371,13 @@ body::before {
         display: block; /* Show the close button inside the sidebar */
     }
     
-    /* Default collapse for most grids */
+    /* All grids become 1 column on small screens */
     .homepage-grid,
+    .film-highlight-grid,
     .feature-film-grid,
     .short-film-grid,
     .film-page-grid  {
         grid-template-columns:1fr;
-    }
-
-    /* Keep highlight grids denser on tablets */
-    .film-highlight-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero-image-item,
