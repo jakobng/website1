@@ -401,10 +401,10 @@ body::before {
   pointer-events: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .lang-toggle {
-    top: 72px;
-    right: 20px;
+    top: 18px !important;   /* Pull up beside the hamburger toggle */
+    right: 72px !important; /* Leave breathing room so the buttons don't overlap */
   }
 }
 
