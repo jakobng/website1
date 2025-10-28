@@ -156,52 +156,101 @@ def _build_details_cache() -> Dict[str, Dict]:
 def scrape_cinemart_shinjuku(max_days: int = 7) -> List[Dict]:
     """Main function to scrape Cinemart Shinjuku."""
     details_cache = _build_details_cache()
-    all_showings = []
-    driver = _init_driver()
+    all_showings: List[Dict] = []
+    driver: Optional[webdriver.Chrome] = None
 
     try:
+        driver = _init_driver()
         print(f"INFO: [{CINEMA_NAME}] Navigating to schedule page...", file=sys.stderr)
         driver.get(SCHEDULE_URL)
         wait = WebDriverWait(driver, 25)
-        date_tabs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[id^='dateSlider']")))
-        
-        for i in range(min(len(date_tabs), max_days)):
-            current_tab = driver.find_elements(By.CSS_SELECTOR, "div[id^='dateSlider']")[i]
+        wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[id^='dateSlider']")))
+
+        for i in range(max_days):
+            tabs = driver.find_elements(By.CSS_SELECTOR, "div[id^='dateSlider']")
+            if i >= len(tabs):
+                break
+
+            current_tab = tabs[i]
             date_id = current_tab.get_attribute("id").replace("dateSlider", "")
             date_iso = f"{date_id[:4]}-{date_id[4:6]}-{date_id[6:]}"
 
             print(f"  -> Processing date: {date_iso}", file=sys.stderr)
+
+            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", current_tab)
             if i > 0:
                 driver.execute_script("arguments[0].click();", current_tab)
-                wait.until(EC.visibility_of_element_located((By.ID, f"dateJouei{date_id}")))
-            time.sleep(1.5)
+                try:
+                    wait.until(
+                        EC.presence_of_element_located(
+                            (By.CSS_SELECTOR, f"#dateJouei{date_id} .movie-panel")
+                        )
+                    )
+                except TimeoutException:
+                    print(
+                        f"WARN: [{CINEMA_NAME}] Timed out waiting for schedule for {date_iso}.",
+                        file=sys.stderr,
+                    )
+                    continue
+            else:
+                try:
+                    wait.until(
+                        EC.presence_of_element_located(
+                            (By.CSS_SELECTOR, f"#dateJouei{date_id} .movie-panel")
+                        )
+                    )
+                except TimeoutException:
+                    print(
+                        f"WARN: [{CINEMA_NAME}] No schedule blocks found for {date_iso}.",
+                        file=sys.stderr,
+                    )
+                    continue
+
+            time.sleep(0.75)
 
             page_soup = BeautifulSoup(driver.page_source, "html.parser")
             schedule_container = page_soup.find("div", id=f"dateJouei{date_id}")
-            if not schedule_container: continue
+            if not schedule_container:
+                print(
+                    f"WARN: [{CINEMA_NAME}] Missing schedule container for {date_iso}.",
+                    file=sys.stderr,
+                )
+                continue
 
             for panel in schedule_container.select("div.movie-panel"):
                 title_jp_tag = panel.select_one(".title-jp")
-                if not title_jp_tag: continue
-                
+                if not title_jp_tag:
+                    continue
+
                 raw_title = _clean_text(title_jp_tag.text)
+                if not raw_title:
+                    continue
+
                 title_key = _get_title_key(raw_title)
                 details = details_cache.get(title_key, {})
 
                 for schedule in panel.select("div.movie-schedule"):
-                    showtime = _clean_text(schedule.select_one(".movie-schedule-begin").text)
-                    screen = _clean_text(schedule.select_one(".screen-name").text)
-                    all_showings.append({
-                        "cinema_name": CINEMA_NAME, "movie_title": raw_title,
-                        "date_text": date_iso, "showtime": showtime,
-                        "screen_name": screen, **details
-                    })
+                    begin_tag = schedule.select_one(".movie-schedule-begin")
+                    screen_tag = schedule.select_one(".screen-name")
+                    showtime = _clean_text(begin_tag.text if begin_tag else "")
+                    screen = _clean_text(screen_tag.text if screen_tag else "")
+
+                    all_showings.append(
+                        {
+                            "cinema_name": CINEMA_NAME,
+                            "movie_title": raw_title,
+                            "date_text": date_iso,
+                            "showtime": showtime,
+                            "screen_name": screen,
+                            **details,
+                        }
+                    )
     except TimeoutException:
         print(f"ERROR: [{CINEMA_NAME}] A timeout occurred.", file=sys.stderr)
     except Exception as e:
         print(f"ERROR: [{CINEMA_NAME}] An unexpected error occurred: {e}", file=sys.stderr)
     finally:
-        if driver:
+        if driver is not None:
             driver.quit()
 
     unique = {(s["date_text"], s["movie_title"], s["showtime"]): s for s in all_showings}
@@ -220,3 +269,4 @@ if __name__ == '__main__':
         print(f"\nINFO: Successfully created '{output_filename}' with {len(showings)} records.", file=sys.stderr)
     else:
         print(f"\nNo showings found for {CINEMA_NAME}.")
+
