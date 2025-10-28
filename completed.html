@@ -9,8 +9,8 @@
   <link rel="alternate" hreflang="ja" href="/jp/completed.html">
 </head>
 <body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-  <div class="sidebar">
+  <button class="mobile-nav-toggle" aria-label="Open navigation" aria-controls="site-navigation" aria-expanded="false">☰</button>
+  <div class="sidebar" id="site-navigation">
     <div class="sidebar-header">
       <h1>Leo Nelki</h1>
       <button class="mobile-nav-close" aria-label="Close navigation">×</button>
@@ -43,4 +43,101 @@
       </a>
 
       <a href="lobiekosimba-film-page.html" class="grid-item film-item-link">
-        <img s
+        <img src="images/lobiekosimba_still.png" alt="Still from Lobi Ekosimba">
+        <div class="grid-item-info">
+          <h3>Lobi Ekosimba</h3>
+          <h4>Directed by Eli Maene</h4>
+          <p>Co-Producer, Editor</p>
+          <p>2024 · Completed · 15 mins</p>
+        </div>
+      </a>
+
+      <a href="mulika-film-page.html" class="grid-item film-item-link">
+        <img src="images/Mulika_withlaurels.png" alt="Still from Mulika">
+        <div class="grid-item-info">
+          <h3>Mulika</h3>
+          <h4>Directed by Maisha Maene</h4>
+          <p>Producer, Editor</p>
+          <p>2022 · Completed · 14 mins</p>
+        </div>
+      </a>
+
+      <a href="apa-film-page.html" class="grid-item film-item-link">
+        <img src="images/apa_still.png" alt="Still from APA">
+        <div class="grid-item-info">
+          <h3>APA</h3>
+          <h4>Co-directed with Maisha Maene</h4>
+          <p>Director, Writer</p>
+          <p>2021 · Completed · 3 mins</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      function toggleLang(){
+        var file = (location.pathname.split('/').filter(Boolean).pop() || 'completed.html');
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // jp -> en
+        } else {
+          location.href = '/jp/' + file;     // en -> jp
+        }
+      }
+      window.__toggleLang = toggleLang;
+    })();
+  </script>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (mobileNavToggle && sidebar && mobileNavClose) {
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+
+      const openNav = () => {
+        sidebar.classList.add('open');
+        mobileNavToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('nav-open');
+      };
+
+      const closeNav = () => {
+        sidebar.classList.remove('open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      };
+
+      const toggleNav = () => {
+        if (sidebar.classList.contains('open')) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      };
+
+      mobileNavToggle.addEventListener('click', toggleNav);
+      mobileNavClose.addEventListener('click', closeNav);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+          closeNav();
+          mobileNavToggle.focus();
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        if (
+          sidebar.classList.contains('open') &&
+          !sidebar.contains(event.target) &&
+          !mobileNavToggle.contains(event.target)
+        ) {
+          closeNav();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
