@@ -371,17 +371,13 @@ body::before {
         display: block; /* Show the close button inside the sidebar */
     }
     
-    /* Default collapse for most grids */
+    /* All grids become 1 column on small screens */
     .homepage-grid,
+    .film-highlight-grid,
     .feature-film-grid,
     .short-film-grid,
     .film-page-grid  {
         grid-template-columns:1fr;
-    }
-
-    /* Keep highlight grids denser on tablets */
-    .film-highlight-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero-image-item,
