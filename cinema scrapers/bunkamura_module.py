@@ -24,10 +24,8 @@ from datetime import date, timedelta
 from typing import Dict, List
 from urllib.parse import urljoin
 
+import requests
 from bs4 import BeautifulSoup
-from requests import HTTPError
-
-from cinema_scrapers.utils import clean_title, extract_runtime, extract_year, get_default_client
 
 # ---------------------------------------------------------------------------
 #  Config
@@ -36,25 +34,39 @@ from cinema_scrapers.utils import clean_title, extract_runtime, extract_year, ge
 BASE           = "https://www.bunkamura.co.jp"
 CINEMA_NAME    = "Bunkamura ル・シネマ 渋谷宮下"
 JSON_FEED      = f"{BASE}/data/json/pickup/movie.json"
-CLIENT = get_default_client(
-    headers={
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/125.0 Safari/537.36"
-        )
-    }
-)
+HEADERS        = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/125.0 Safari/537.36"
+    )
+}
+TIMEOUT        = 20
 
 # regex helpers -------------------------------------------------------------
 _TIME_RE       = re.compile(r"(\d{1,2}:\d{2})")
+_YEAR_RE       = re.compile(r"(19\d{2}|20\d{2})")
+_RUNTIME_RE    = re.compile(r"(\d+)\s*分")
+# Regex to clean title suffixes like " 4K", " ４Kレストア", etc.
+_TITLE_SUFFIX_RE = re.compile(r'\s*(?:[24２４]K|レストア).*$', re.IGNORECASE)
 
 # ---------------------------------------------------------------------------
 #  HTTP helpers
 # ---------------------------------------------------------------------------
 
 def _fetch(url: str, *, binary: bool = False) -> str | bytes:
-    return CLIENT.get(url, binary=binary)
+    """
+    Fetches content from a URL.
+    This version has been fixed to explicitly set the text encoding to UTF-8
+    to prevent character garbling in the output.
+    """
+    resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
+    resp.raise_for_status()
+    if not binary:
+        # Force the encoding to UTF-8. The server sometimes fails to specify
+        # this in the response headers, causing `requests` to guess incorrectly.
+        resp.encoding = "utf-8"
+    return resp.content if binary else resp.text
 
 
 def _soup(html: str | bytes) -> BeautifulSoup:
@@ -90,7 +102,7 @@ def _parse_detail_page(url: str) -> Dict[str, str]:
     if title_tag := soup.select_one("h2 > span.ttl"):
         title_text = title_tag.get_text(" ", strip=True)
         # Robustly clean title by removing "4K" and other suffixes from the end
-        out["movie_title"] = clean_title(title_text)
+        out["movie_title"] = _TITLE_SUFFIX_RE.sub('', title_text).strip()
 
     if en_title_tag := soup.select_one("h2 > span.en"):
         out["movie_title_en"] = en_title_tag.get_text(" ", strip=True)
@@ -111,10 +123,10 @@ def _parse_detail_page(url: str) -> Dict[str, str]:
             
             elif "作品情報" in dt_text:
                 # Use regex to find year and runtime wherever they appear
-                if m := extract_year(dd_text):
-                    out["year"] = m
-                if m := extract_runtime(dd_text):
-                    out["runtime_min"] = m
+                if m := _YEAR_RE.search(dd_text):
+                    out["year"] = m.group(1)
+                if m := _RUNTIME_RE.search(dd_text):
+                    out["runtime_min"] = m.group(1)
                 
                 # Heuristic for country: remove known patterns and clean up
                 country_str = dd_text
@@ -141,7 +153,7 @@ def _grab_times(snippet_rel: str) -> List[str]:
     url = urljoin(BASE, snippet_rel)
     try:
         html = _fetch(url)
-    except HTTPError as exc:
+    except requests.HTTPError as exc:
         if exc.response.status_code == 404:
             return []  # snippet not yet published
         raise
