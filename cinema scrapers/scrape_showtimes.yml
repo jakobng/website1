@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade google-generativeai
-          pip install -r "cinema scrapers/requirements.txt"
+          pip install -r requirements.txt
 
       # This step installs the browser and system dependencies for Playwright
       - name: Install Playwright Browsers
@@ -36,13 +36,13 @@ jobs:
       - name: Cache TMDB data
         uses: actions/cache@v4
         with:
-          path: cinema_scrapers/data/tmdb_cache.json
-          key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('cinema_scrapers/**/*.py') }}
+          path: tmdb_cache.json
+          key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('**/main_scraper.py') }}
           restore-keys: |
             ${{ runner.os }}-tmdb-cache-
 
       - name: Run scraper script
-        run: python -m cinema_scrapers --output cinema_scrapers/data/showtimes.json --tmdb-cache cinema_scrapers/data/tmdb_cache.json
+        run: python main_scraper.py
         env:
           # IMPORTANT: Your TMDB_API_KEY and GEMINI_API_KEY must be configured as secrets
           # in your repository's Settings > Secrets and variables > Actions
@@ -55,8 +55,8 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
           # Stage the generated files
-          git add cinema_scrapers/data/showtimes.json
-          git add cinema_scrapers/data/tmdb_cache.json
+          git add showtimes.json 
+          git add tmdb_cache.json 
 
           # Check if there are any staged changes
           if git diff --staged --quiet; then
