@@ -226,6 +226,28 @@ body::before {
 
 .grid-item-info p { font-size:1em; margin:0; opacity:0.7; }
 
+.film-status {
+    margin-top: 10px;
+    font-weight: 700;
+    opacity: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.film-status::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.status-wip { color: var(--yellow-accent); }
+.status-complete { color: #2a9d8f; }
+.status-development { color: var(--blue-accent); }
+
 
 /* --- Film Page Grid Layout --- */
 .film-page-grid {
