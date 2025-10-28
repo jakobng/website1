@@ -173,6 +173,10 @@ body::before {
     grid-template-columns: repeat(2, 1fr);
 }
 
+.film-highlight-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 /* Feature Film Grid (2 per row) */
 .feature-film-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -198,6 +202,32 @@ body::before {
     transition: all 0.3s ease;
 }
 .film-item-link:hover { border-color: var(--yellow-accent); }
+
+/* --- Film status chips (subtle colour coding) --- */
+.status {
+    display: inline-block;
+    padding: 0.1em 0.55em;
+    border-radius: 999px;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Alias retained for older markup while the site migrates */
+.status-in-progress,
+.status-in-production {
+    background-color: rgba(255, 183, 77, 0.22);
+    color: #9C5300;
+}
+
+.status-in-development {
+    background-color: rgba(144, 202, 249, 0.22);
+    color: #1565C0;
+}
+
+.status-completed {
+    background-color: rgba(129, 199, 132, 0.22);
+    color: #2E7D32;
+}
 
 /* --- Image Aspect Ratio (16:9) and Object Fit --- */
 .film-item-link img {
@@ -348,12 +378,17 @@ body::before {
         display: block; /* Show the close button inside the sidebar */
     }
     
-    /* All grids become 1 column on small screens */
+    /* Default collapse for most grids */
     .homepage-grid,
     .feature-film-grid,
     .short-film-grid,
     .film-page-grid  {
         grid-template-columns:1fr;
+    }
+
+    /* Keep highlight grids denser on tablets */
+    .film-highlight-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero-image-item,
@@ -405,6 +440,10 @@ body::before {
   .lang-toggle {
     top: 18px !important;   /* Pull up beside the hamburger toggle */
     right: 72px !important; /* Leave breathing room so the buttons don't overlap */
+  }
+
+  .film-highlight-grid {
+    grid-template-columns: 1fr;
   }
 }
 
