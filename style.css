@@ -430,6 +430,10 @@ body::before {
     top: 18px !important;   /* Pull up beside the hamburger toggle */
     right: 72px !important; /* Leave breathing room so the buttons don't overlap */
   }
+
+  .film-highlight-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 body.nav-open {
