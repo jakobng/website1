@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+
+# Scraper artifacts
+cinema_scrapers/data/showtimes.json
+cinema_scrapers/data/tmdb_cache.json
