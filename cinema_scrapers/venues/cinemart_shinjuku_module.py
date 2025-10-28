@@ -7,20 +7,20 @@ import json
 import re
 import sys
 import time
-from typing import Dict, List, Optional, Set
+from pathlib import Path
+from typing import Dict, List, Optional
 from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
 
 from selenium import webdriver
-from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.remote.webelement import WebElement
 from webdriver_manager.chrome import ChromeDriverManager
 
 # --- Constants ---
@@ -153,205 +153,55 @@ def _build_details_cache() -> Dict[str, Dict]:
     print(f"INFO: [{CINEMA_NAME}] Built cache for {len(cache)} movies.", file=sys.stderr)
     return cache
 
-def _collect_tabs(driver: webdriver.Chrome) -> List[WebElement]:
-    """Return the current set of day tabs shown in the slider."""
-    return driver.find_elements(By.CSS_SELECTOR, "div[id^='dateSlider']")
-
-
-def _activate_tab(
-    driver: webdriver.Chrome,
-    tab: WebElement,
-    wait: WebDriverWait,
-) -> Optional[str]:
-    """Ensure a tab is active and ready for scraping, returning its YYYYMMDD id."""
-
-    try:
-        date_id = tab.get_attribute("id").replace("dateSlider", "")
-    except StaleElementReferenceException:
-        return None
-
-    if not date_id or len(date_id) != 8:
-        return None
-
-    driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", tab)
-
-    classes = tab.get_attribute("class") or ""
-    if "slick-current" not in classes and "is-current" not in classes:
-        driver.execute_script("arguments[0].click();", tab)
-
-    try:
-        wait.until(
-            EC.presence_of_element_located(
-                (By.CSS_SELECTOR, f"#dateJouei{date_id} .movie-panel")
-            )
-        )
-    except TimeoutException:
-        print(
-            f"WARN: [{CINEMA_NAME}] Timed out waiting for schedule for {date_id}.",
-            file=sys.stderr,
-        )
-        return None
-
-    return date_id
-
-
-def _advance_slider(
-    driver: webdriver.Chrome,
-    wait: WebDriverWait,
-    seen: Set[str],
-) -> bool:
-    """Attempt to move the slick slider forward so new tabs become available."""
-
-    prior_ids = {tab.get_attribute("id") for tab in _collect_tabs(driver)}
-
-    # Try native clickable buttons first.
-    for selector in (".slick-next", "button.slick-next", "button[aria-label='Next']"):
-        buttons = [btn for btn in driver.find_elements(By.CSS_SELECTOR, selector) if btn.is_displayed()]
-        if not buttons:
-            continue
-        for btn in buttons:
-            try:
-                btn.click()
-            except Exception:
-                driver.execute_script("arguments[0].click();", btn)
-
-            try:
-                wait.until(
-                    lambda d: any(
-                        (el_id := el.get_attribute("id"))
-                        and el_id not in prior_ids
-                        and el_id.replace("dateSlider", "") not in seen
-                        for el in _collect_tabs(d)
-                    )
-                )
-                return True
-            except TimeoutException:
-                continue
-
-    # Fall back to executing slick's next command via JavaScript if buttons are hidden.
-    driver.execute_script(
-        "const slider = document.querySelector('#dateSliderWrap .slick-slider');"
-        "if (slider && slider.slick) { slider.slick('slickNext'); }"
-        "else { const next = document.querySelector('.slick-next'); if (next) next.click(); }"
-    )
-
-    try:
-        wait.until(
-            lambda d: any(
-                (el_id := el.get_attribute("id"))
-                and el_id not in prior_ids
-                and el_id.replace("dateSlider", "") not in seen
-                for el in _collect_tabs(d)
-            )
-        )
-        return True
-    except TimeoutException:
-        return False
-
-
 def scrape_cinemart_shinjuku(max_days: int = 7) -> List[Dict]:
     """Main function to scrape Cinemart Shinjuku."""
     details_cache = _build_details_cache()
-    all_showings: List[Dict] = []
-    driver: Optional[webdriver.Chrome] = None
+    all_showings = []
+    driver = _init_driver()
 
     try:
-        driver = _init_driver()
         print(f"INFO: [{CINEMA_NAME}] Navigating to schedule page...", file=sys.stderr)
         driver.get(SCHEDULE_URL)
         wait = WebDriverWait(driver, 25)
-        wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[id^='dateSlider']")))
+        date_tabs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[id^='dateSlider']")))
+        
+        for i in range(min(len(date_tabs), max_days)):
+            current_tab = driver.find_elements(By.CSS_SELECTOR, "div[id^='dateSlider']")[i]
+            date_id = current_tab.get_attribute("id").replace("dateSlider", "")
+            date_iso = f"{date_id[:4]}-{date_id[4:6]}-{date_id[6:]}"
 
-        processed_dates: Set[str] = set()
-        idle_loops = 0
+            print(f"  -> Processing date: {date_iso}", file=sys.stderr)
+            if i > 0:
+                driver.execute_script("arguments[0].click();", current_tab)
+                wait.until(EC.visibility_of_element_located((By.ID, f"dateJouei{date_id}")))
+            time.sleep(1.5)
 
-        while len(processed_dates) < max_days and idle_loops < max_days * 2:
-            tabs = _collect_tabs(driver)
-            new_date_found = False
+            page_soup = BeautifulSoup(driver.page_source, "html.parser")
+            schedule_container = page_soup.find("div", id=f"dateJouei{date_id}")
+            if not schedule_container: continue
 
-            for tab in tabs:
-                try:
-                    date_id = tab.get_attribute("id").replace("dateSlider", "")
-                except StaleElementReferenceException:
-                    continue
+            for panel in schedule_container.select("div.movie-panel"):
+                title_jp_tag = panel.select_one(".title-jp")
+                if not title_jp_tag: continue
+                
+                raw_title = _clean_text(title_jp_tag.text)
+                title_key = _get_title_key(raw_title)
+                details = details_cache.get(title_key, {})
 
-                if not date_id or date_id in processed_dates:
-                    continue
-
-                date_iso = f"{date_id[:4]}-{date_id[4:6]}-{date_id[6:]}"
-
-                activated_id = _activate_tab(driver, tab, wait)
-                if not activated_id:
-                    processed_dates.add(date_id)
-                    continue
-
-                date_iso = f"{activated_id[:4]}-{activated_id[4:6]}-{activated_id[6:]}"
-                print(f"  -> Processing date: {date_iso}", file=sys.stderr)
-
-                time.sleep(0.5)
-
-                page_soup = BeautifulSoup(driver.page_source, "html.parser")
-                schedule_container = page_soup.find("div", id=f"dateJouei{activated_id}")
-                if not schedule_container:
-                    print(
-                        f"WARN: [{CINEMA_NAME}] Missing schedule container for {date_iso}.",
-                        file=sys.stderr,
-                    )
-                    processed_dates.add(activated_id)
-                    continue
-
-                for panel in schedule_container.select("div.movie-panel"):
-                    title_jp_tag = panel.select_one(".title-jp")
-                    if not title_jp_tag:
-                        continue
-
-                    raw_title = _clean_text(title_jp_tag.text)
-                    if not raw_title:
-                        continue
-
-                    title_key = _get_title_key(raw_title)
-                    details = details_cache.get(title_key, {})
-
-                    for schedule in panel.select("div.movie-schedule"):
-                        begin_tag = schedule.select_one(".movie-schedule-begin")
-                        screen_tag = schedule.select_one(".screen-name")
-                        showtime = _clean_text(begin_tag.text if begin_tag else "")
-                        screen = _clean_text(screen_tag.text if screen_tag else "")
-
-                        all_showings.append(
-                            {
-                                "cinema_name": CINEMA_NAME,
-                                "movie_title": raw_title,
-                                "date_text": date_iso,
-                                "showtime": showtime,
-                                "screen_name": screen,
-                                **details,
-                            }
-                        )
-
-                processed_dates.add(activated_id)
-                new_date_found = True
-
-                if len(processed_dates) >= max_days:
-                    break
-
-            if len(processed_dates) >= max_days:
-                break
-
-            if not new_date_found:
-                idle_loops += 1
-            else:
-                idle_loops = 0
-
-            if len(processed_dates) < max_days:
-                if not _advance_slider(driver, wait, processed_dates):
-                    break
+                for schedule in panel.select("div.movie-schedule"):
+                    showtime = _clean_text(schedule.select_one(".movie-schedule-begin").text)
+                    screen = _clean_text(schedule.select_one(".screen-name").text)
+                    all_showings.append({
+                        "cinema_name": CINEMA_NAME, "movie_title": raw_title,
+                        "date_text": date_iso, "showtime": showtime,
+                        "screen_name": screen, **details
+                    })
     except TimeoutException:
         print(f"ERROR: [{CINEMA_NAME}] A timeout occurred.", file=sys.stderr)
     except Exception as e:
         print(f"ERROR: [{CINEMA_NAME}] An unexpected error occurred: {e}", file=sys.stderr)
     finally:
-        if driver is not None:
+        if driver:
             driver.quit()
 
     unique = {(s["date_text"], s["movie_title"], s["showtime"]): s for s in all_showings}
@@ -370,4 +220,3 @@ if __name__ == '__main__':
         print(f"\nINFO: Successfully created '{output_filename}' with {len(showings)} records.", file=sys.stderr)
     else:
         print(f"\nNo showings found for {CINEMA_NAME}.")
-
