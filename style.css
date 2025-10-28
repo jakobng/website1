@@ -403,8 +403,9 @@ body::before {
 
 @media (max-width: 720px) {
   .lang-toggle {
-    top: 18px !important;   /* Pull up beside the hamburger toggle */
-    right: 72px !important; /* Leave breathing room so the buttons don't overlap */
+    top: 74px !important;   /* Drop below the hamburger toggle so they never overlap */
+    right: 20px !important; /* Align with the screen edge for a consistent gutter */
+    left: auto !important;  /* Ensure we don't inherit any left positioning */
   }
 }
 
