@@ -177,6 +177,10 @@ body::before {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.film-highlight-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 /* Feature Film Grid (2 per row) */
 .feature-film-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -202,6 +206,22 @@ body::before {
     transition: all 0.3s ease;
 }
 .film-item-link:hover { border-color: var(--yellow-accent); }
+
+/* --- Film status text (simple treatment) --- */
+.status,
+.status-in-progress,
+.status-in-production,
+.status-in-development,
+.status-completed {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none;
+    color: inherit;
+    border: 0;
+    border-radius: 0;
+    font-weight: inherit;
+}
 
 /* --- Film status chips (subtle colour coding) --- */
 .status {
