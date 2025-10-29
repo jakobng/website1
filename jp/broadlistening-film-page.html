@@ -28,13 +28,6 @@
   <div class="main-content">
     <div class="connected-grid film-page-grid">
 
-      <div class="grid-item collaborator-item">
-        <h2>制作メンバー募集：日本在住のコラボレーターを求めています</h2>
-        <p>現在制作中のクリエイティブ・ドキュメンタリー『ブロード・リスニング』では、制作チームに参加してくださる、日本語を話す熱意あるコラボレーターを探しています。監督であるネルキ・リオ（Leo Nelki）は日本語でのコミュニケーションがまだ十分ではないため、この物語に命を吹き込む手助けをしてくださる<strong>共同監督、プロデューサー、撮影スタッフ</strong>を募集しています。</p>
-        <p>主な役割は、現場での制作進行、インタビューのサポート、そして撮影対象との円滑なコミュニケーションの確保です。テクノロジー、政治、そしてドキュメンタリー映画制作の交差点に興味をお持ちの方からのご連絡を心よりお待ちしております。</p>
-        <p>ご興味のある方は、簡単な自己紹介とご関心のある役割を添えて、<strong>hello@leonelki.com</strong> までご連絡ください。日本語、英語、どちらでのご連絡も歓迎いたします。</p>
-      </div>
-
       <div class="grid-item hero-image-item" id="broadlistening-hero-image"></div>
 
       <div class="grid-item title-item">
@@ -63,7 +56,14 @@
         </ul>
       </div>
 
-      <div class="grid-item context-item">
+      <div class="grid-item callout-block topic-summary-item collaborator-item">
+        <h2>制作メンバー募集：日本在住のコラボレーターを求めています</h2>
+        <p>現在制作中のクリエイティブ・ドキュメンタリー『ブロード・リスニング』では、制作チームに参加してくださる、日本語を話す熱意あるコラボレーターを探しています。監督であるネルキ・リオ（Leo Nelki）は日本語でのコミュニケーションがまだ十分ではないため、この物語に命を吹き込む手助けをしてくださる<strong>共同監督、プロデューサー、撮影スタッフ</strong>を募集しています。</p>
+        <p>主な役割は、現場での制作進行、インタビューのサポート、そして撮影対象との円滑なコミュニケーションの確保です。テクノロジー、政治、そしてドキュメンタリー映画制作の交差点に興味をお持ちの方からのご連絡を心よりお待ちしております。</p>
+        <p>ご興味のある方は、簡単な自己紹介とご関心のある役割を添えて、<strong>hello@leonelki.com</strong> までご連絡ください。日本語、英語、どちらでのご連絡も歓迎いたします。</p>
+      </div>
+
+      <div class="grid-item topic-summary-item context-item">
         <h2>より詳しい背景：世界のデジタル民主主義ムーブメント</h2>
         <p>安野貴博の活動は、テクノロジーを用いて民主主義のプロセスを再発明しようとする、世界的に広がるムーブメントの一部です。過去数十年間、ソーシャルメディアのようなデジタルツールは社会の分断を増幅させることが少なくありませんでした。この「シビックテック」の新しい波は、その逆を目指します。すなわち、合意形成と協調のために設計されたシステムを構築することです。</p>
         <p>このムーブメントの核心的な哲学的指針となっているのが、台湾の初代デジタル大臣オードリー・タンと経済学者グレン・ワイルが共著した書籍<strong>『Plurality』</strong>です。本書は、社会的な差異を乗り越え、多様性を進歩のための力として活用するテクノロジーの設計を提唱しています。</p>
@@ -102,9 +102,7 @@
     (function(){
       function toggleLang(){
         var p = location.pathname;
-        var file = p.split('/').filter(Boolean).pop() |
-
-| 'index.html';
+        var file = p.split('/').filter(Boolean).pop() || 'index.html';
 
         if (p.startsWith('/jp/')) {
           var en = file;
