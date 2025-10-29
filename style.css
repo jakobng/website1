@@ -345,7 +345,7 @@ body::before {
     grid-column: span 2;
 }
 .topic-summary-item {
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 4;
 }
 .about-item h2, .specs-item h2 {
     font-weight:700;
