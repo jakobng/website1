@@ -223,23 +223,33 @@ body::before {
     font-weight: inherit;
 }
 
-/* --- Film status chips (subtle colour coding) --- */
+/* --- Film status chips (sharper silhouette + colour coding) --- */
 .status {
     display: inline-block;
-    padding: 0.1em 0.55em;
-    border-radius: 999px;
-    font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.08);
+    padding: 0.12em 0.5em;
+    border-radius: 0;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.025);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.status-in-progress {
-    background-color: rgba(255, 183, 77, 0.22);
-    color: #9C5300;
+.status-in-progress,
+.status-in-production {
+    background-color: rgba(var(--yellow-accent-rgb), 0.12);
+    border-color: rgba(var(--yellow-accent-rgb), 0.5);
+    color: #7F5314;
+}
+
+.status-in-development {
+    background-color: rgba(var(--yellow-accent-rgb), 0.12);
+    border-color: rgba(var(--yellow-accent-rgb), 0.5);
+    color: #7F5314;
 }
 
 .status-completed {
-    background-color: rgba(129, 199, 132, 0.22);
-    color: #2E7D32;
+    background-color: rgba(129, 199, 132, 0.16);
+    border-color: rgba(46, 125, 50, 0.45);
+    color: #2E7032;
 }
 
 /* --- Image Aspect Ratio (16:9) and Object Fit --- */
