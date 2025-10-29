@@ -241,9 +241,9 @@ body::before {
 }
 
 .status-in-development {
-    background-color: rgba(var(--yellow-accent-rgb), 0.12);
-    border-color: rgba(var(--yellow-accent-rgb), 0.5);
-    color: #7F5314;
+    background-color: rgba(0, 168, 232, 0.1);
+    border-color: rgba(0, 168, 232, 0.4);
+    color: #0A4B60;
 }
 
 .status-completed {
