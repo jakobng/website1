@@ -318,11 +318,34 @@ body::before {
 .title-item { grid-column:1 / span 4; text-align:center; position:relative; z-index:1; }
 .title-item h1 { font-size:6vw; font-weight:700; line-height:1; margin:0; }
 .logline-item { grid-column:1 / span 4; text-align:center; font-size:1.2em; font-style:italic; padding-top:0; position:relative; z-index:1; }
+.callout-block {
+    text-align: left;
+    font-style: normal;
+    font-size: 1.05em;
+    border-left: 6px solid var(--yellow-accent);
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+.callout-block h2 {
+    margin: 0 0 12px 0;
+    font-size: 1.4em;
+    text-transform: none;
+}
+.callout-block p {
+    margin: 0 0 12px 0;
+    font-style: normal;
+}
+.callout-block p:last-child {
+    margin-bottom: 0;
+}
 
 .about-item,
 .specs-item,
 .festivals-item {
     grid-column: span 2;
+}
+.topic-summary-item {
+    grid-column: 1 / span 2;
 }
 .about-item h2, .specs-item h2 {
     font-weight:700;
@@ -414,6 +437,7 @@ body::before {
     .title-item,
     .logline-item,
     .about-item,
+    .topic-summary-item,
     .specs-item,
     .director-credit-item,
     .video-embed-container,
