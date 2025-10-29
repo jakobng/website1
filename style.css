@@ -177,6 +177,10 @@ body::before {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.film-highlight-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 /* Feature Film Grid (2 per row) */
 .feature-film-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -217,6 +221,25 @@ body::before {
     border: 0;
     border-radius: 0;
     font-weight: inherit;
+}
+
+/* --- Film status chips (subtle colour coding) --- */
+.status {
+    display: inline-block;
+    padding: 0.1em 0.55em;
+    border-radius: 999px;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.status-in-progress {
+    background-color: rgba(255, 183, 77, 0.22);
+    color: #9C5300;
+}
+
+.status-completed {
+    background-color: rgba(129, 199, 132, 0.22);
+    color: #2E7D32;
 }
 
 /* --- Image Aspect Ratio (16:9) and Object Fit --- */
@@ -368,17 +391,13 @@ body::before {
         display: block; /* Show the close button inside the sidebar */
     }
     
-    /* Default collapse for most grids */
+    /* All grids become 1 column on small screens */
     .homepage-grid,
+    .film-highlight-grid,
     .feature-film-grid,
     .short-film-grid,
     .film-page-grid  {
         grid-template-columns:1fr;
-    }
-
-    /* Keep highlight grids denser on tablets */
-    .film-highlight-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero-image-item,
