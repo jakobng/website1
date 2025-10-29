@@ -345,11 +345,7 @@ body::before {
     grid-column: span 2;
 }
 .topic-summary-item {
-    grid-column: 1 / span 2;
-}
-.film-page-grid .specs-item.broadlistening-details {
-    grid-column: 3 / span 2;
-    align-self: start;
+    grid-column: 1 / span 4;
 }
 .about-item h2, .specs-item h2 {
     font-weight:700;
@@ -447,10 +443,6 @@ body::before {
     .video-embed-container,
     .main-content h2.subtle-heading { /* Ensure subtle heading also spans full width on mobile */
         grid-column:1 / span 1;
-    }
-
-    .film-page-grid .specs-item.broadlistening-details {
-        grid-column: 1 / span 1;
     }
 
     .title-item h1   { font-size:10vw; }
