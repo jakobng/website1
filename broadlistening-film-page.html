@@ -28,13 +28,6 @@
   <div class="main-content">
     <div class="connected-grid film-page-grid">
 
-      <div class="grid-item collaborator-item">
-        <h2>Join Our Team: Call for Japan-Based Collaborators</h2>
-        <p>The creative documentary <em>Broad Listening</em> is currently in production, and we are looking for passionate, Japanese-speaking collaborators to join our team. As the director, Leo Nelki, is not yet fluent in Japanese, we are seeking a <strong>Co-Director, Producer, and Camera Crew</strong> to help bring this story to life.</p>
-        <p>Your role would be crucial in facilitating on-the-ground production, assisting with interviews, and ensuring smooth communication with our subjects. If you are interested in the intersection of technology, politics, and documentary filmmaking, we would love to hear from you.</p>
-        <p>Please contact us at <strong>hello@leonelki.com</strong> with a brief introduction and your role of interest. Communication in either Japanese or English is welcome.</p>
-      </div>
-
       <div class="grid-item hero-image-item" id="broadlistening-hero-image"></div>
 
       <div class="grid-item title-item">
@@ -63,7 +56,14 @@
         </ul>
       </div>
 
-      <div class="grid-item context-item">
+      <div class="grid-item callout-block topic-summary-item collaborator-item">
+        <h2>Join Our Team: Call for Japan-Based Collaborators</h2>
+        <p>The creative documentary <em>Broad Listening</em> is currently in production, and we are looking for passionate, Japanese-speaking collaborators to join our team. As the director, Leo Nelki, is not yet fluent in Japanese, we are seeking a <strong>Co-Director, Producer, and Camera Crew</strong> to help bring this story to life.</p>
+        <p>Your role would be crucial in facilitating on-the-ground production, assisting with interviews, and ensuring smooth communication with our subjects. If you are interested in the intersection of technology, politics, and documentary filmmaking, we would love to hear from you.</p>
+        <p>Please contact us at <strong>hello@leonelki.com</strong> with a brief introduction and your role of interest. Communication in either Japanese or English is welcome.</p>
+      </div>
+
+      <div class="grid-item topic-summary-item context-item">
         <h2>Further Context: The Global Digital Democracy Movement</h2>
         <p>Takahiro Anno's work is part of a growing global movement using technology to reinvent democratic processes. For decades, digital tools like social media have often amplified polarization. This new wave of "civic tech" aims to do the opposite: build systems designed for consensus and collaboration.</p>
         <p>A core philosophical guide for this movement is the book <strong><em>Plurality</em></strong>, co-authored by Taiwan's first Digital Minister, Audrey Tang, and economist Glen Weyl. It argues for designing technology that bridges social differences and harnesses diversity as a strength for progress.</p>
@@ -102,9 +102,7 @@
     (function(){
       function toggleLang(){
         var p = location.pathname;
-        var file = p.split('/').filter(Boolean).pop() |
-
-| 'index.html';
+        var file = p.split('/').filter(Boolean).pop() || 'index.html';
 
         if (p.startsWith('/jp/')) {
           var en = file;
