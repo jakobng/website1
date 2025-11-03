@@ -299,13 +299,11 @@ body::before {
                     background-position: center 25%; /* This shifts the image up */; }
 #arakawa-hero-image { background-image:url('images/arakawacats_still.jpg'); }
 #sik-hero-image     { background-image:url('images/sik_still.png'); }
-#sij-hero-image          { background-image:url('images/sij_still.jpg'); }
+#sij-hero-image          { background-image:url('images/sij_withlaurels.png'); }
 #mouthful-hero-image     { background-image:url('images/mouthful_still.jpg'); }
 #broadlistening-hero-image{ background-image:url('images/broadlistening_still.jpg'); }
-#wagma-hero-image        { background-image:url('images/wagma_still.jpg'); }
-#sij-hero-image { background-image:url('images/sij_withlaurels.png'); }
+#wagma-hero-image        { background-image:url('images/wagmi_still.png'); }
 #apa-hero-image { background-image:url('images/apa_still.png'); }
-#wagma-hero-image { background-image:url('images/wagmi_still.png'); }
 #lobiekosimba-hero-image { background-image:url('images/lobiekosimba_still.png'); }
 #hausu2020-hero-image { background-image:url('images/hausu2020_still.jpg'); }
 
@@ -527,16 +525,9 @@ html:lang(ja) body { font-family: var(--primary-font), var(--jp-font); }
 /* (keep *one* version of each)  */
 /* ============================= */
 
-/* Keep ONE of these for SIJ (choose the image you want) */
-#sij-hero-image { background-image:url('images/sij_withlaurels.png'); }
-/* If you prefer the still instead, replace the line above with:
-#sij-hero-image { background-image:url('images/sij_still.jpg'); }
-*/
-
-/* Keep ONE of these for WAGMI (ID is #wagma-hero-image in your HTML) */
-#wagma-hero-image { background-image:url('images/wagmi_still.png'); }
-/* If you prefer the JPG instead, replace with:
-#wagma-hero-image { background-image:url('images/wagma_still.jpg'); }
+/* Optional helper class for alternate hero art
+   (add "sij-hero--still" to the hero div if you prefer the plain still)
+.sij-hero--still { background-image:url('images/sij_still.png'); }
 */
 
 
