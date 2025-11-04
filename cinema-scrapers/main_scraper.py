@@ -56,7 +56,7 @@ if sys.platform == "win32":
             except Exception: pass
 
 # --- Configuration ---
-TMDB_API_KEY = 'da2b1bc852355f12a86dd5e7ec48a1ee' # Replace with your actual key if needed
+TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 TMDB_API_BASE_URL = 'https://api.themoviedb.org/3'
 TMDB_CACHE_FILE = "tmdb_cache.json"
 LETTERBOXD_TMDB_BASE_URL = "https://letterboxd.com/tmdb/"
@@ -546,8 +546,11 @@ if __name__ == "__main__":
     
     tmdb_key = TMDB_API_KEY
     if not tmdb_key or 'YOUR_TMDB_API_KEY' in tmdb_key:
-        print("--- WARNING: TMDB API KEY is missing or a placeholder. TMDB functions will be disabled. ---")
-        tmdb_key = None
+        print(
+            "ERROR: TMDB API key not found. Set the TMDB_API_KEY environment variable before running the scraper.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     try:
         print("\nRunning Cine Switch Ginza module standalone to generate its JSON...")
