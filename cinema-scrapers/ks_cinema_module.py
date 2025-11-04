@@ -4,16 +4,19 @@ import json
 import re
 import sys
 from datetime import date, datetime, timedelta
-from typing import Dict, List, Optional
+from pathlib import Path
+from typing import Dict, Iterable, List, Optional
 from urllib.parse import urljoin
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 # --- Constants ---
 CINEMA_NAME_KC = "K's Cinema (ケイズシネマ)"
 BASE_URL = "https://www.ks-cinema.com/"
 IFRAME_SRC_URL_KC = urljoin(BASE_URL, "/calendar/index.html")
+SAMPLE_DATA_DIR = Path(__file__).with_name("sample_data")
+SAMPLE_CALENDAR_PATH = SAMPLE_DATA_DIR / "ks_cinema_calendar_sample.html"
 
 # --- Helper Functions ---
 
@@ -28,7 +31,7 @@ def _clean_text(element_or_string) -> str:
     return ' '.join(raw_text.strip().split())
 
 
-def _fetch_soup(url: str) -> Optional[BeautifulSoup]:
+def _fetch_soup(url: str, *, for_calendar: bool = False) -> Optional[BeautifulSoup]:
     """Fetches a URL and returns a BeautifulSoup object."""
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -37,7 +40,36 @@ def _fetch_soup(url: str) -> Optional[BeautifulSoup]:
         return BeautifulSoup(response.content, 'html.parser', from_encoding='shift_jis')
     except requests.RequestException as e:
         print(f"ERROR: [{CINEMA_NAME_KC}] Could not fetch {url}: {e}", file=sys.stderr)
+        if for_calendar and SAMPLE_CALENDAR_PATH.exists():
+            try:
+                print(f"INFO: [{CINEMA_NAME_KC}] Falling back to local sample calendar HTML.", file=sys.stderr)
+                html = SAMPLE_CALENDAR_PATH.read_text(encoding="utf-8")
+                return BeautifulSoup(html, 'html.parser')
+            except Exception as read_err:
+                print(f"ERROR: [{CINEMA_NAME_KC}] Could not read fallback calendar: {read_err}", file=sys.stderr)
         return None
+
+
+def _select_title_candidates(cell: Tag) -> Iterable[Tag]:
+    """Yield potential title nodes from a calendar cell."""
+    selectors = [
+        'span.title_s',
+        '[class*="title"]',
+        '.program-title',
+        '.movie-title',
+        '.title',
+        'a'
+    ]
+    seen = set()
+    for selector in selectors:
+        for node in cell.select(selector):
+            if not isinstance(node, Tag):
+                continue
+            key = id(node)
+            if key in seen:
+                continue
+            seen.add(key)
+            yield node
 
 
 # --- Detail Page Parsing ---
@@ -93,14 +125,53 @@ def _parse_detail_page(soup: BeautifulSoup) -> Dict[str, str]:
 
 
 # --- Main Scraping Logic ---
+def _extract_times_from_elements(elements: Iterable[Tag]) -> List[str]:
+    times: List[str] = []
+    time_pattern = re.compile(r"\b\d{1,2}:\d{2}\b")
+    for el in elements:
+        text = el.get_text(separator=' ', strip=True)
+        for match in time_pattern.findall(text):
+            if match not in times:
+                times.append(match)
+    return times
+
+
+def _extract_showtimes_from_cell(cell: Tag) -> List[str]:
+    """Find showtime strings within a calendar cell."""
+    time_nodes = list(cell.select('[class*="time"], [class*="schedule"], li, p'))
+    if time_nodes:
+        extracted = _extract_times_from_elements(time_nodes)
+        if extracted:
+            return extracted
+    return _extract_times_from_elements([cell])
+
+
+def _resolve_detail_url(cell: Tag) -> str:
+    link = cell.select_one("a[href*='/movie/']")
+    if link and link.has_attr('href'):
+        return urljoin(BASE_URL, link['href'])
+    data_link = cell.get('data-url') or cell.get('data-href')
+    if data_link:
+        return urljoin(BASE_URL, data_link)
+    return ""
+
+
 def scrape_ks_cinema(max_days: int = 7) -> List[Dict]:
     print(f"INFO: [{CINEMA_NAME_KC}] Fetching calendar iframe: {IFRAME_SRC_URL_KC}")
-    iframe_soup = _fetch_soup(IFRAME_SRC_URL_KC)
+    iframe_soup = _fetch_soup(IFRAME_SRC_URL_KC, for_calendar=True)
     if not iframe_soup:
         return []
 
     details_cache: Dict[str, Dict[str, str]] = {}
-    unique_detail_urls = {urljoin(BASE_URL, a['href']) for a in iframe_soup.select("td a[href*='/movie/']")}
+    unique_detail_urls = {
+        urljoin(BASE_URL, a['href'])
+        for a in iframe_soup.select("td a[href*='/movie/']")
+        if a.has_attr('href')
+    }
+    for cell in iframe_soup.select("td[data-url], td[data-href]"):
+        data_link = cell.get('data-url') or cell.get('data-href')
+        if data_link:
+            unique_detail_urls.add(urljoin(BASE_URL, data_link))
     
     print(f"INFO: [{CINEMA_NAME_KC}] Found {len(unique_detail_urls)} unique detail pages to scrape.")
     for url in unique_detail_urls:
@@ -114,7 +185,11 @@ def scrape_ks_cinema(max_days: int = 7) -> List[Dict]:
     today = date.today()
     end_date = today + timedelta(days=max_days - 1)
     
-    for table in iframe_soup.select("div.slide > table"):
+    tables = iframe_soup.select("div.slide > table, div.swiper-slide table, table.calendar-table")
+    if not tables:
+        tables = iframe_soup.select("table")
+
+    for table in tables:
         month_row = table.find('tr', class_='month')
         day_header_row = table.find('tr', class_='day')
         if not month_row or not day_header_row:
@@ -146,20 +221,31 @@ def scrape_ks_cinema(max_days: int = 7) -> List[Dict]:
                         pass
             current_col_index += colspan
         
-        for row in table.select('tr.movie'):
+        row_candidates = table.select('tr.movie, tr[data-movie-id]')
+        if not row_candidates:
+            continue
+        for row in row_candidates:
             current_cell_idx = 0
             for cell in row.find_all('td'):
-                colspan = int(cell.get('colspan', 1))
-                title_span = cell.select_one('span.title_s')
-                if not title_span:
+                colspan = int(cell.get('colspan') or cell.get('data-colspan') or 1)
+                title = ""
+                for title_candidate in _select_title_candidates(cell):
+                    title = _clean_text(title_candidate)
+                    if title:
+                        break
+                if not title:
                     current_cell_idx += colspan
                     continue
 
-                title = _clean_text(title_span)
-                link = cell.select_one("a[href*='/movie/']")
-                detail_url = urljoin(BASE_URL, link['href']) if link else ""
+                detail_url = _resolve_detail_url(cell)
+                if detail_url and detail_url not in details_cache:
+                    detail_soup = _fetch_soup(detail_url)
+                    if detail_soup:
+                        details_cache[detail_url] = _parse_detail_page(detail_soup)
+                    else:
+                        details_cache[detail_url] = {}
                 details = details_cache.get(detail_url, {})
-                showtimes = re.findall(r"\d{1,2}:\d{2}", cell.get_text())
+                showtimes = _extract_showtimes_from_cell(cell)
 
                 for day_offset in range(colspan):
                     col_idx = current_cell_idx + day_offset
