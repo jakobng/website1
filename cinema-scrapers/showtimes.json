@@ -1,3 +1,4 @@
+[
   {
     "cinema_name": "K's Cinema (ケイズシネマ)",
     "movie_title": "サンプル映画C",
@@ -183,4 +184,5 @@
     "runtime_min": null,
     "synopsis": null,
     "detail_page_url": null
-  },
+  }
+]
