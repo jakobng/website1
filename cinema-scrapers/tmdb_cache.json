@@ -4360,14 +4360,70 @@
   "深夜特集||": {},
   "オリヴェイラ2025 アンコール||": {},
   "タイラー・タオルミーナ監督特集||": {},
+  "グランドツアー||": {},
+  "やくたたず （併映:1999）||": {},
+  "乱暴と待機|2010|": {
+    "id": 136070,
+    "tmdb_title": "Vengeance Can Wait",
+    "tmdb_original_title": "乱暴と待機",
+    "letterboxd_english_title": "Vengeance Can Wait (2010)"
+  },
+  "ネタニヤフ調書 汚職と戦争|2024|アレックス・ギブニー": {
+    "id": 1353263,
+    "tmdb_title": "The Bibi Files",
+    "tmdb_original_title": "The Bibi Files",
+    "letterboxd_english_title": "The Bibi Files (2024)"
+  },
+  "ぼくらの居場所|2021|シャシャ･ナカイ": {},
   "アカルイミライ|2002|黒沢清": {},
-  "ボンヘッファー ヒトラーを暗殺しようとした牧師|2024|": {},
+  "ボンヘッファー ヒトラーを暗殺しようとした牧師|2024|トッド・コマーキニ": {
+    "id": 1079244,
+    "tmdb_title": "Bonhoeffer: Pastor. Spy. Assassin",
+    "tmdb_original_title": "Bonhoeffer: Pastor. Spy. Assassin",
+    "letterboxd_english_title": "Bonhoeffer: Pastor. Spy. Assassin (2024)"
+  },
+  "旅と日々||": {
+    "id": 1462735,
+    "tmdb_title": "Two Seasons, Two Strangers",
+    "tmdb_original_title": "旅と日々",
+    "letterboxd_english_title": "Two Seasons, Two Strangers (2025)"
+  },
+  "ネバーランド・ナイトメア|2025|スコット・チェンバース": {
+    "id": 1020414,
+    "tmdb_title": "Peter Pan's Neverland Nightmare",
+    "tmdb_original_title": "Peter Pan's Neverland Nightmare",
+    "letterboxd_english_title": "Peter Pan's Neverland Nightmare (2025)"
+  },
+  "ﾌｼﾞｺ･ﾍﾐﾝｸﾞ 永遠の音色||": {},
+  "第38回TIFF特別追加上映『MISHIMA』||": {},
   "ロボット・ドリームズ||": {
     "id": 838240,
     "tmdb_title": "Robot Dreams",
     "tmdb_original_title": "Robot Dreams",
     "letterboxd_english_title": "Robot Dreams (2023)"
   },
+  "未来の想い出 Last Christmas|1992|": {
+    "id": 501657,
+    "tmdb_title": "Future Memories: Last Christmas",
+    "tmdb_original_title": "未来の想い出",
+    "letterboxd_english_title": "Future Memories: Last Christmas (1992)"
+  },
+  "メイン・テーマ|1984|": {
+    "id": 328083,
+    "tmdb_title": "Main Theme",
+    "tmdb_original_title": "メイン・テーマ",
+    "letterboxd_english_title": "Main Theme (1984)"
+  },
+  "オレンダ||": {},
+  "100リットル〜||": {},
+  "リンゴ泥棒||": {},
+  "バタフライ||": {
+    "id": 1954,
+    "tmdb_title": "The Butterfly Effect",
+    "tmdb_original_title": "The Butterfly Effect",
+    "letterboxd_english_title": "The Butterfly Effect (2004)"
+  },
+  "消えない光||": {},
   "視える||ダミアン・マッカーシー": {},
   "ジェイコブス・ラダー||": {
     "id": 2291,
@@ -4385,10 +4441,16 @@
   "NOT BEER 上映後||中川寛崇": {},
   "「ご注文はうさぎですか？」第3期全羽オールナイト||": {},
   "操作された都市 リバイバル上映||": {},
-  "国宝||": {
-    "id": 1379266,
-    "tmdb_title": "Kokuho",
-    "tmdb_original_title": "国宝",
-    "letterboxd_english_title": "Kokuho (2025)"
+  "ひゃくえむ。||": {
+    "id": 1295026,
+    "tmdb_title": "100 METERS",
+    "tmdb_original_title": "ひゃくえむ。",
+    "letterboxd_english_title": "100 METERS (2025)"
+  },
+  "トリツカレ男||": {
+    "id": 1484833,
+    "tmdb_title": "The Obsessed",
+    "tmdb_original_title": "トリツカレ男",
+    "letterboxd_english_title": "The Obsessed (2025)"
   }
 }
