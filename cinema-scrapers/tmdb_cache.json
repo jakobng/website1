@@ -4360,6 +4360,12 @@
   "深夜特集||": {},
   "オリヴェイラ2025 アンコール||": {},
   "タイラー・タオルミーナ監督特集||": {},
+  "影の車||": {
+    "id": 175086,
+    "tmdb_title": "The Shadow Within",
+    "tmdb_original_title": "影の車",
+    "letterboxd_english_title": "The Shadow Within (1970)"
+  },
   "グランドツアー||": {},
   "やくたたず （併映:1999）||": {},
   "乱暴と待機|2010|": {
@@ -4368,6 +4374,11 @@
     "tmdb_original_title": "乱暴と待機",
     "letterboxd_english_title": "Vengeance Can Wait (2010)"
   },
+  "スムース・トーク|1985|": {},
+  "タイムズ・スクエア 4Kレストア|1981|": {},
+  "パーティーガール 4Kレストア|1995|": {},
+  "赤い糸 輪廻のひみつ|2021|": {},
+  "ブリキの太鼓〈劇場公開版〉|1979|": {},
   "ネタニヤフ調書 汚職と戦争|2024|アレックス・ギブニー": {
     "id": 1353263,
     "tmdb_title": "The Bibi Files",
@@ -4375,7 +4386,14 @@
     "letterboxd_english_title": "The Bibi Files (2024)"
   },
   "ぼくらの居場所|2021|シャシャ･ナカイ": {},
+  "じぶん、まる！ いっぽのはなし|2023|崟利子出演：田中一歩": {},
   "アカルイミライ|2002|黒沢清": {},
+  "ＵＮloved|2001|万田邦敏": {
+    "id": 85404,
+    "tmdb_title": "Unloved",
+    "tmdb_original_title": "UNloved",
+    "letterboxd_english_title": "Unloved (2001)"
+  },
   "ボンヘッファー ヒトラーを暗殺しようとした牧師|2024|トッド・コマーキニ": {
     "id": 1079244,
     "tmdb_title": "Bonhoeffer: Pastor. Spy. Assassin",
@@ -4395,7 +4413,12 @@
     "letterboxd_english_title": "Peter Pan's Neverland Nightmare (2025)"
   },
   "ﾌｼﾞｺ･ﾍﾐﾝｸﾞ 永遠の音色||": {},
-  "第38回TIFF特別追加上映『MISHIMA』||": {},
+  "アワモリ君乾杯||古澤憲吾": {
+    "id": 524283,
+    "tmdb_title": "Awamori-kun kanpai!",
+    "tmdb_original_title": "アワモリ君乾杯！",
+    "letterboxd_english_title": "Awamori-kun kanpai! (1961)"
+  },
   "ロボット・ドリームズ||": {
     "id": 838240,
     "tmdb_title": "Robot Dreams",
