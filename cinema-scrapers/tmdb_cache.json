@@ -4366,13 +4366,32 @@
     "tmdb_original_title": "影の車",
     "letterboxd_english_title": "The Shadow Within (1970)"
   },
-  "グランドツアー||": {},
+  "バーラ先生の特別授業||": {},
+  "イノセンス|2004|": {
+    "id": 12140,
+    "tmdb_title": "Ghost in the Shell 2: Innocence",
+    "tmdb_original_title": "イノセンス",
+    "letterboxd_english_title": "Ghost in the Shell 2: Innocence (2004)"
+  },
   "やくたたず （併映:1999）||": {},
+  "グランドツアー||": {},
   "乱暴と待機|2010|": {
     "id": 136070,
     "tmdb_title": "Vengeance Can Wait",
     "tmdb_original_title": "乱暴と待機",
     "letterboxd_english_title": "Vengeance Can Wait (2010)"
+  },
+  "劇場版マクロスF〜イツワリノウタヒメ〜|2009|": {
+    "id": 48625,
+    "tmdb_title": "Macross Frontier: The False Songstress",
+    "tmdb_original_title": "劇場版 マクロスF 虚空歌姫 ~イツワリノウタヒメ~",
+    "letterboxd_english_title": "Macross Frontier: The False Songstress (2009)"
+  },
+  "劇場版マクロスF〜サヨナラノツバサ〜|2011|": {
+    "id": 60964,
+    "tmdb_title": "Macross Frontier: The Wings of Farewell",
+    "tmdb_original_title": "劇場版 マクロスF 恋離飛翼 ～サヨナラノツバサ～",
+    "letterboxd_english_title": "Macross Frontier: The Wings of Farewell (2011)"
   },
   "スムース・トーク|1985|": {},
   "タイムズ・スクエア 4Kレストア|1981|": {},
@@ -4464,13 +4483,7 @@
   "NOT BEER 上映後||中川寛崇": {},
   "「ご注文はうさぎですか？」第3期全羽オールナイト||": {},
   "操作された都市 リバイバル上映||": {},
-  "ひゃくえむ。||": {
-    "id": 1295026,
-    "tmdb_title": "100 METERS",
-    "tmdb_original_title": "ひゃくえむ。",
-    "letterboxd_english_title": "100 METERS (2025)"
-  },
-  "トリツカレ男||": {
+  "トリツカレ男|2025|髙橋渉": {
     "id": 1484833,
     "tmdb_title": "The Obsessed",
     "tmdb_original_title": "トリツカレ男",
