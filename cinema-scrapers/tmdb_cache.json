@@ -4373,6 +4373,13 @@
     "tmdb_original_title": "イノセンス",
     "letterboxd_english_title": "Ghost in the Shell 2: Innocence (2004)"
   },
+  "イノセンス＋スカイ・クロラ The Sky Crawlers||": {},
+  "劇場版 少女☆歌劇 レヴュースタァライト|2021|古川知宏": {
+    "id": 645440,
+    "tmdb_title": "Revue Starlight: The Movie",
+    "tmdb_original_title": "劇場版 少女☆歌劇 レヴュースタァライト",
+    "letterboxd_english_title": "Revue Starlight: The Movie (2021)"
+  },
   "やくたたず （併映:1999）||": {},
   "グランドツアー||": {},
   "乱暴と待機|2010|": {
@@ -4432,6 +4439,13 @@
     "letterboxd_english_title": "Peter Pan's Neverland Nightmare (2025)"
   },
   "ﾌｼﾞｺ･ﾍﾐﾝｸﾞ 永遠の音色||": {},
+  "第38回TIFF特別追加上映『MISHIMA』|1985|ポール・シュレイダー": {
+    "id": 27064,
+    "tmdb_title": "Mishima: A Life in Four Chapters",
+    "tmdb_original_title": "Mishima: A Life in Four Chapters",
+    "letterboxd_english_title": "Mishima: A Life in Four Chapters (1985)"
+  },
+  "ザ・システム レストア||": {},
   "アワモリ君乾杯||古澤憲吾": {
     "id": 524283,
     "tmdb_title": "Awamori-kun kanpai!",
@@ -4443,6 +4457,12 @@
     "tmdb_title": "Robot Dreams",
     "tmdb_original_title": "Robot Dreams",
     "letterboxd_english_title": "Robot Dreams (2023)"
+  },
+  "スーパーマン|2025|ジェームズ・ガン": {
+    "id": 1061474,
+    "tmdb_title": "Superman",
+    "tmdb_original_title": "Superman",
+    "letterboxd_english_title": "Superman (2025)"
   },
   "未来の想い出 Last Christmas|1992|": {
     "id": 501657,
@@ -4460,33 +4480,33 @@
   "100リットル〜||": {},
   "リンゴ泥棒||": {},
   "バタフライ||": {
-    "id": 1954,
-    "tmdb_title": "The Butterfly Effect",
-    "tmdb_original_title": "The Butterfly Effect",
-    "letterboxd_english_title": "The Butterfly Effect (2004)"
+    "id": 1413,
+    "tmdb_title": "M. Butterfly",
+    "tmdb_original_title": "M. Butterfly",
+    "letterboxd_english_title": "M. Butterfly (1993)"
   },
   "消えない光||": {},
   "視える||ダミアン・マッカーシー": {},
+  "NOT BEER 上映後||中川寛崇": {},
+  "「ご注文はうさぎですか？」第3期全羽オールナイト||": {},
+  "操作された都市 リバイバル上映||": {},
   "ジェイコブス・ラダー||": {
     "id": 2291,
     "tmdb_title": "Jacob's Ladder",
     "tmdb_original_title": "Jacob's Ladder",
     "letterboxd_english_title": "Jacob's Ladder (1990)"
   },
-  "視える 上映後トークイベント||": {},
   "NOT BEER||中川寛崇": {
     "id": 1137219,
     "tmdb_title": "NOT BEER",
     "tmdb_original_title": "NOT BEER",
     "letterboxd_english_title": "NOT BEER (2022)"
   },
-  "NOT BEER 上映後||中川寛崇": {},
-  "「ご注文はうさぎですか？」第3期全羽オールナイト||": {},
-  "操作された都市 リバイバル上映||": {},
   "トリツカレ男|2025|髙橋渉": {
     "id": 1484833,
     "tmdb_title": "The Obsessed",
     "tmdb_original_title": "トリツカレ男",
     "letterboxd_english_title": "The Obsessed (2025)"
-  }
+  },
+  "わたしたちに祝福を ★一週間限定上映||": {}
 }
