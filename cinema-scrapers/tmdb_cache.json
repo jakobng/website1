@@ -4367,6 +4367,7 @@
     "letterboxd_english_title": "The Shadow Within (1970)"
   },
   "バーラ先生の特別授業||": {},
+  "無職の大卒||": {},
   "イノセンス|2004|": {
     "id": 12140,
     "tmdb_title": "Ghost in the Shell 2: Innocence",
@@ -4380,6 +4381,20 @@
     "tmdb_original_title": "劇場版 少女☆歌劇 レヴュースタァライト",
     "letterboxd_english_title": "Revue Starlight: The Movie (2021)"
   },
+  "木の上の軍隊|2025|平一紘 出演：堤真一、山田裕貴、津波竜斗、玉代勢圭司、尚玄": {
+    "id": 1496183,
+    "tmdb_title": "Army on the Tree",
+    "tmdb_original_title": "木の上の軍隊",
+    "letterboxd_english_title": "Army on the Tree (2025)"
+  },
+  "ふつうの子ども|2025|呉美保『ぼくが生きてる、ふたつの世界』 脚本：高田亮『そこのみにて光輝く』『きみはいい子』 出演：嶋田鉄太、瑠璃、味元耀大、蒼井優、瀧内公美": {
+    "id": 1476988,
+    "tmdb_title": "How Dare You?",
+    "tmdb_original_title": "ふつうの子ども",
+    "letterboxd_english_title": "How Dare You? (2025)"
+  },
+  "ジョン・バージャーと4つの季節|2015|コリン・マッケイブ、バルテク・ヅィアドーシュ、クリストファー・ロス 出演：ジョン・バージャー": {},
+  "ヴィターリー・カネフスキートリロジー||": {},
   "やくたたず （併映:1999）||": {},
   "グランドツアー||": {},
   "乱暴と待機|2010|": {
@@ -4400,6 +4415,8 @@
     "tmdb_original_title": "劇場版 マクロスF 恋離飛翼 ～サヨナラノツバサ～",
     "letterboxd_english_title": "Macross Frontier: The Wings of Farewell (2011)"
   },
+  "ほんとうのうた〜朗読劇「銀河鉄道の夜」を追って〜|2014|": {},
+  "うたのはじまり《絵字幕版》|2020|": {},
   "スムース・トーク|1985|": {},
   "タイムズ・スクエア 4Kレストア|1981|": {},
   "パーティーガール 4Kレストア|1995|": {},
@@ -4438,7 +4455,6 @@
     "tmdb_original_title": "Peter Pan's Neverland Nightmare",
     "letterboxd_english_title": "Peter Pan's Neverland Nightmare (2025)"
   },
-  "ﾌｼﾞｺ･ﾍﾐﾝｸﾞ 永遠の音色||": {},
   "第38回TIFF特別追加上映『MISHIMA』|1985|ポール・シュレイダー": {
     "id": 27064,
     "tmdb_title": "Mishima: A Life in Four Chapters",
@@ -4446,6 +4462,7 @@
     "letterboxd_english_title": "Mishima: A Life in Four Chapters (1985)"
   },
   "ザ・システム レストア||": {},
+  "愛殺 レストア版||": {},
   "アワモリ君乾杯||古澤憲吾": {
     "id": 524283,
     "tmdb_title": "Awamori-kun kanpai!",
@@ -4476,8 +4493,18 @@
     "tmdb_original_title": "メイン・テーマ",
     "letterboxd_english_title": "Main Theme (1984)"
   },
-  "オレンダ||": {},
-  "100リットル〜||": {},
+  "サウスバウンド|2007|": {
+    "id": 130221,
+    "tmdb_title": "South Bound",
+    "tmdb_original_title": "サウスバウンド",
+    "letterboxd_english_title": "South Bound (2007)"
+  },
+  "家族ゲーム|1983|": {
+    "id": 117129,
+    "tmdb_title": "The Family Game",
+    "tmdb_original_title": "家族ゲーム",
+    "letterboxd_english_title": "The Family Game (1983)"
+  },
   "リンゴ泥棒||": {},
   "バタフライ||": {
     "id": 1413,
@@ -4485,11 +4512,11 @@
     "tmdb_original_title": "M. Butterfly",
     "letterboxd_english_title": "M. Butterfly (1993)"
   },
+  "100リットル〜||": {},
+  "オレンダ||": {},
   "消えない光||": {},
-  "視える||ダミアン・マッカーシー": {},
-  "NOT BEER 上映後||中川寛崇": {},
-  "「ご注文はうさぎですか？」第3期全羽オールナイト||": {},
   "操作された都市 リバイバル上映||": {},
+  "視える||ダミアン・マッカーシー": {},
   "ジェイコブス・ラダー||": {
     "id": 2291,
     "tmdb_title": "Jacob's Ladder",
