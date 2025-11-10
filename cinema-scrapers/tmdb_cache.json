@@ -4360,6 +4360,18 @@
   "深夜特集||": {},
   "オリヴェイラ2025 アンコール||": {},
   "タイラー・タオルミーナ監督特集||": {},
+  "ドールハウス||": {
+    "id": 1404791,
+    "tmdb_title": "Dollhouse",
+    "tmdb_original_title": "ドールハウス",
+    "letterboxd_english_title": "Dollhouse (2025)"
+  },
+  "スウィングガールズ||": {
+    "id": 36592,
+    "tmdb_title": "Swing Girls",
+    "tmdb_original_title": "スウィングガールズ",
+    "letterboxd_english_title": "Swing Girls (2004)"
+  },
   "影の車||": {
     "id": 175086,
     "tmdb_title": "The Shadow Within",
@@ -4380,6 +4392,18 @@
     "tmdb_title": "Revue Starlight: The Movie",
     "tmdb_original_title": "劇場版 少女☆歌劇 レヴュースタァライト",
     "letterboxd_english_title": "Revue Starlight: The Movie (2021)"
+  },
+  "スーパーの女||": {
+    "id": 81296,
+    "tmdb_title": "Supermarket Woman",
+    "tmdb_original_title": "スーパーの女",
+    "letterboxd_english_title": "Supermarket Woman (1996)"
+  },
+  "マルタイの女||": {
+    "id": 164207,
+    "tmdb_title": "Woman in Witness Protection",
+    "tmdb_original_title": "マルタイの女",
+    "letterboxd_english_title": "Woman in Witness Protection (1997)"
   },
   "木の上の軍隊|2025|平一紘 出演：堤真一、山田裕貴、津波竜斗、玉代勢圭司、尚玄": {
     "id": 1496183,
@@ -4455,14 +4479,14 @@
     "tmdb_original_title": "Peter Pan's Neverland Nightmare",
     "letterboxd_english_title": "Peter Pan's Neverland Nightmare (2025)"
   },
-  "第38回TIFF特別追加上映『MISHIMA』|1985|ポール・シュレイダー": {
-    "id": 27064,
-    "tmdb_title": "Mishima: A Life in Four Chapters",
-    "tmdb_original_title": "Mishima: A Life in Four Chapters",
-    "letterboxd_english_title": "Mishima: A Life in Four Chapters (1985)"
-  },
   "ザ・システム レストア||": {},
   "愛殺 レストア版||": {},
+  "董夫人||": {
+    "id": 157243,
+    "tmdb_title": "The Arch",
+    "tmdb_original_title": "董夫人",
+    "letterboxd_english_title": "The Arch (1968)"
+  },
   "アワモリ君乾杯||古澤憲吾": {
     "id": 524283,
     "tmdb_title": "Awamori-kun kanpai!",
@@ -4481,18 +4505,6 @@
     "tmdb_original_title": "Superman",
     "letterboxd_english_title": "Superman (2025)"
   },
-  "未来の想い出 Last Christmas|1992|": {
-    "id": 501657,
-    "tmdb_title": "Future Memories: Last Christmas",
-    "tmdb_original_title": "未来の想い出",
-    "letterboxd_english_title": "Future Memories: Last Christmas (1992)"
-  },
-  "メイン・テーマ|1984|": {
-    "id": 328083,
-    "tmdb_title": "Main Theme",
-    "tmdb_original_title": "メイン・テーマ",
-    "letterboxd_english_title": "Main Theme (1984)"
-  },
   "サウスバウンド|2007|": {
     "id": 130221,
     "tmdb_title": "South Bound",
@@ -4505,7 +4517,18 @@
     "tmdb_original_title": "家族ゲーム",
     "letterboxd_english_title": "The Family Game (1983)"
   },
-  "リンゴ泥棒||": {},
+  "海猫 umineko|2004|森田芳光": {
+    "id": 526098,
+    "tmdb_title": "Umineko - Inseparable",
+    "tmdb_original_title": "海猫/Umineko / Sea Cat",
+    "letterboxd_english_title": "Umineko - Inseparable (2004)"
+  },
+  "失楽園|1997|森田芳光": {
+    "id": 68606,
+    "tmdb_title": "Lost Paradise",
+    "tmdb_original_title": "失楽園",
+    "letterboxd_english_title": "Lost Paradise (1997)"
+  },
   "バタフライ||": {
     "id": 1413,
     "tmdb_title": "M. Butterfly",
@@ -4515,14 +4538,14 @@
   "100リットル〜||": {},
   "オレンダ||": {},
   "消えない光||": {},
-  "操作された都市 リバイバル上映||": {},
-  "視える||ダミアン・マッカーシー": {},
+  "リンゴ泥棒||": {},
   "ジェイコブス・ラダー||": {
     "id": 2291,
     "tmdb_title": "Jacob's Ladder",
     "tmdb_original_title": "Jacob's Ladder",
     "letterboxd_english_title": "Jacob's Ladder (1990)"
   },
+  "視える||ダミアン・マッカーシー": {},
   "NOT BEER||中川寛崇": {
     "id": 1137219,
     "tmdb_title": "NOT BEER",
