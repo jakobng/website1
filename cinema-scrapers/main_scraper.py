@@ -38,7 +38,7 @@ import yebisu_garden_module
 import k2_cinema_module
 import cinema_rosa_module
 import chupki_module
-import uplink_kichijoji_module.py
+import uplink_kichijoji_module
 
 # --- Google Gemini API Import ---
 try:
@@ -586,4 +586,5 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
 
