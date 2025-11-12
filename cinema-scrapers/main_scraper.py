@@ -38,6 +38,7 @@ import yebisu_garden_module
 import k2_cinema_module
 import cinema_rosa_module
 import chupki_module
+import uplink_kichijoji_module.py
 
 # --- Google Gemini API Import ---
 try:
@@ -518,6 +519,7 @@ def run_all_scrapers():
     all_listings += _run_scraper("K2 Cinema", k2_cinema_module.scrape_k2_cinema)
     all_listings += _run_scraper("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa)
     all_listings += _run_scraper("Chupki", chupki_module.scrape_chupki)
+    all_listings += _run_scraper("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji)
 
     print(f"\nCollected a total of {len(all_listings)} showings from regular scrapers.")
     return all_listings
@@ -584,3 +586,4 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
