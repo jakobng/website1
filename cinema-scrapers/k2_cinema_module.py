@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import re
 import sys
-from datetime import date
+from datetime import date, timedelta
 from typing import Dict, List, Optional
 from urllib.parse import urljoin
 
@@ -72,6 +72,25 @@ def _parse_detail_page(soup: BeautifulSoup) -> Dict:
         if match := re.search(r'監督(?:\s*・\s*脚本)?:?\s*(.*)', info_text): details["director"] = match.group(1).strip()
             
     return details
+
+# --- Showtime Helpers ---
+
+def _adjust_showtime_to_tokyo(show_date: date, showtime_text: str) -> tuple[date, str]:
+    """K2's site renders showtimes in UTC. Convert them to Japan time."""
+    if not showtime_text:
+        return show_date, showtime_text
+
+    match = re.search(r"^(\d{1,2}):(\d{2})$", showtime_text.strip())
+    if not match:
+        return show_date, showtime_text
+
+    hour, minute = map(int, match.groups())
+    adjusted_hour = hour + 9  # Convert from UTC to JST (+09:00)
+    day_offset, new_hour = divmod(adjusted_hour, 24)
+
+    adjusted_date = show_date + timedelta(days=day_offset)
+    adjusted_time = f"{new_hour:02d}:{minute:02d}"
+    return adjusted_date, adjusted_time
 
 # --- Main Scraper ---
 
@@ -152,9 +171,11 @@ def scrape_k2_cinema() -> List[Dict]:
                 title_jp = _clean_title(raw_title).split('／')[0].strip()
                 details = details_cache.get(title_jp, {})
                 
+                adjusted_date, adjusted_time = _adjust_showtime_to_tokyo(show_date, _clean_text(time_tag))
+
                 all_showings.append({
                     "cinema_name": CINEMA_NAME, "movie_title": title_jp,
-                    "date_text": show_date.isoformat(), "showtime": _clean_text(time_tag),
+                    "date_text": adjusted_date.isoformat(), "showtime": adjusted_time,
                     "movie_title_en": details.get("movie_title_en"),
                     "director": details.get("director"), "year": details.get("year"),
                     "country": details.get("country"), "runtime_min": details.get("runtime_min"),
