@@ -548,13 +548,15 @@
                     handleLocationChange(); 
                 } catch (error) {
                     console.error("Fetch/parse error:", error);
-                    if (loadingMessageTextEl) loadingMessageTextEl.textContent = "Showtimes currently unavailable. " + error.message;
-                    if(initialLoadingMessageContainer) {
-                        initialLoadingMessageContainer.classList.remove('hidden');
+                    if (loadingMessageTextEl) {
+                        loadingMessageTextEl.textContent = "Showtimes currently unavailable. Please try again later.";
                         loadingMessageTextEl.classList.add('error-message');
                     }
-                    dataLoaded = true; 
-                    handleLocationChange(); 
+                    if(initialLoadingMessageContainer) {
+                        initialLoadingMessageContainer.classList.remove('hidden');
+                    }
+                    dataLoaded = true;
+                    handleLocationChange();
                 }
             }
 
