@@ -4868,7 +4868,54 @@
     "tmdb_original_title": "導火線",
     "letterboxd_english_title": "Flash Point (2007)"
   },
+  "グレイフォックス|1983|フィリップ・ボーソス": {},
+  "真夜中の人間交差点。心と言葉で紡ぐ夜||": {},
+  "大阪物語|1999|": {
+    "id": 307038,
+    "tmdb_title": "Osaka Story",
+    "tmdb_original_title": "大阪物語",
+    "letterboxd_english_title": "Osaka Story (1999)"
+  },
+  "キューポラのある街||": {
+    "id": 49570,
+    "tmdb_title": "Foundry Town",
+    "tmdb_original_title": "キューポラのある街",
+    "letterboxd_english_title": "Foundry Town (1962)"
+  },
+  "漂流姫|1986|": {
+    "id": 493057,
+    "tmdb_title": "Hyo-Ryu-Ki",
+    "tmdb_original_title": "漂流姫",
+    "letterboxd_english_title": "Hyo-Ryu-Ki (1986)"
+  },
+  "雪の断章 -情熱-|1985|": {
+    "id": 115794,
+    "tmdb_title": "Lost Chapter of Snow: Passion",
+    "tmdb_original_title": "雪の断章－情熱－",
+    "letterboxd_english_title": "Lost Chapter of Snow: Passion (1985)"
+  },
+  "ウホッホ探検隊|1986|": {},
+  "クレープ|1993|": {
+    "id": 530587,
+    "tmdb_title": "Crepe",
+    "tmdb_original_title": "クレープ",
+    "letterboxd_english_title": "Crepe (1993)"
+  },
+  "ノーライフキング|1989|": {
+    "id": 127645,
+    "tmdb_title": "No Life King",
+    "tmdb_original_title": "ノーライフキング",
+    "letterboxd_english_title": "No Life King (1989)"
+  },
+  "櫻の園|1990|": {
+    "id": 101976,
+    "tmdb_title": "The Cherry Orchard",
+    "tmdb_original_title": "櫻の園",
+    "letterboxd_english_title": "The Cherry Orchard (1990)"
+  },
   "はだしのゲンはまだ怒っている|2025|込山正徳": {},
+  "そこにきみはいて[1130舞台挨拶]||": {},
+  "沼地という名の町||": {},
   "実録私設銀座警察|1973|": {
     "id": 498951,
     "tmdb_title": "A True Story of the Private Ginza Police",
@@ -4880,6 +4927,12 @@
     "tmdb_title": "Keep Your Chin Up",
     "tmdb_original_title": "上を向いて歩こう",
     "letterboxd_english_title": "Keep Your Chin Up (1962)"
+  },
+  "実録安藤組襲撃篇|1973|": {
+    "id": 499145,
+    "tmdb_title": "The Ando Gang Documentary Film",
+    "tmdb_original_title": "実録安藤組　襲撃篇",
+    "letterboxd_english_title": "The Ando Gang Documentary Film (1973)"
   },
   "シブがき隊 ボーイズ&ガールズ|1982|": {
     "id": 451147,
@@ -4893,7 +4946,36 @@
     "tmdb_original_title": "39 刑法第三十九条",
     "letterboxd_english_title": "Keiho (1999)"
   },
-  "SPIRIT WORLD スピリットワールド||": {},
+  "そろばんずく|1986|": {
+    "id": 226854,
+    "tmdb_title": "For Business",
+    "tmdb_original_title": "そろばんずく",
+    "letterboxd_english_title": "For Business (1986)"
+  },
   "ショパン、ショパン！||ミハウ・クフィェチンスキ": {},
-  "サラゴサの写本||ヴォイチェフ・イエジー・ハス": {}
+  "サラゴサの写本||ヴォイチェフ・イエジー・ハス": {},
+  "砂時計||ヴォイチェフ・イエジー・ハス": {
+    "id": 277619,
+    "tmdb_title": "Sand Chronicles",
+    "tmdb_original_title": "砂時計",
+    "letterboxd_english_title": "Sand Chronicles (2008)"
+  },
+  "ら・かんぱねら|2025|": {
+    "id": 1474275,
+    "tmdb_title": "La Campanella",
+    "tmdb_original_title": "ら・かんぱねら",
+    "letterboxd_english_title": "La Campanella (2025)"
+  },
+  "わたのはらぞこ|2025|": {
+    "id": 1537114,
+    "tmdb_title": "The Sea Unseen",
+    "tmdb_original_title": "わたのはらぞこ",
+    "letterboxd_english_title": "The Sea Unseen (2025)"
+  },
+  "私たちが光と想うすべて|2024|": {
+    "id": 927547,
+    "tmdb_title": "All We Imagine as Light",
+    "tmdb_original_title": "പ്രഭയായ് നിനച്ചതെല്ലാം",
+    "letterboxd_english_title": "All We Imagine as Light (2024)"
+  }
 }
