@@ -4870,6 +4870,16 @@
   },
   "グレイフォックス|1983|フィリップ・ボーソス": {},
   "真夜中の人間交差点。心と言葉で紡ぐ夜||": {},
+  "六つの顔|2025|犬童一心 ナレーション：オダギリジョー 題字・アニメーション：山村浩二 監修・出演：野村万作、野村萬斎": {},
+  "よみがえる声|2025|朴壽南、朴麻衣": {},
+  "海辺へ行く道|2025|横浜聡子『いとみち』 出演：原田琥之佑、麻生久美子、高良健吾、唐田えりか、坂井真紀": {
+    "id": 1381159,
+    "tmdb_title": "Seaside Serendipity",
+    "tmdb_original_title": "海辺へ行く道",
+    "letterboxd_english_title": "Seaside Serendipity (2025)"
+  },
+  "入国審査|2023|アレハンドロ・ロハス、フアン・セバスチャン・バスケス 出演：アルベルト・アンマン": {},
+  "ウカマウ集団60年の全軌跡||": {},
   "大阪物語|1999|": {
     "id": 307038,
     "tmdb_title": "Osaka Story",
@@ -4913,9 +4923,42 @@
     "tmdb_original_title": "櫻の園",
     "letterboxd_english_title": "The Cherry Orchard (1990)"
   },
+  "チャルラータ デジタルリマスター||": {},
+  "ビッグ・シティ デジタルリマスター||": {},
+  "音楽サロン デジタルリマスター||": {},
+  "ファンタスティック・プラネット|1973|": {
+    "id": 16306,
+    "tmdb_title": "Fantastic Planet",
+    "tmdb_original_title": "La Planète sauvage",
+    "letterboxd_english_title": "Fantastic Planet (1973)"
+  },
+  "狂い咲きサンダーロード|1980|": {
+    "id": 83297,
+    "tmdb_title": "Crazy Thunder Road",
+    "tmdb_original_title": "狂い咲きサンダーロード",
+    "letterboxd_english_title": "Crazy Thunder Road (1980)"
+  },
+  "臆病者 デジタルリマスター||": {},
+  "聖者 デジタルリマスター||": {},
+  "主人公 デジタルリマスター||": {},
+  "エレファント・ゴッド デジタルリマスター|1979|": {},
+  "ロビンソンの庭|1987|": {
+    "id": 104328,
+    "tmdb_title": "Robinson's Garden",
+    "tmdb_original_title": "ロビンソンの庭",
+    "letterboxd_english_title": "Robinson's Garden (1987)"
+  },
+  "ユニバーサル・ランゲージ|2024|": {
+    "id": 988397,
+    "tmdb_title": "Universal Language",
+    "tmdb_original_title": "Une langue universelle",
+    "letterboxd_english_title": "Universal Language (2024)"
+  },
+  "マルティネス|2023|": {},
   "はだしのゲンはまだ怒っている|2025|込山正徳": {},
   "そこにきみはいて[1130舞台挨拶]||": {},
   "沼地という名の町||": {},
+  "ストレンジ・リトル・キャッ||": {},
   "実録私設銀座警察|1973|": {
     "id": 498951,
     "tmdb_title": "A True Story of the Private Ginza Police",
@@ -4952,6 +4995,18 @@
     "tmdb_original_title": "そろばんずく",
     "letterboxd_english_title": "For Business (1986)"
   },
+  "阿修羅のごとく|2003|森田芳光": {
+    "id": 110852,
+    "tmdb_title": "Like Asura",
+    "tmdb_original_title": "阿修羅のごとく",
+    "letterboxd_english_title": "Like Asura (2003)"
+  },
+  "の・ようなもの||": {
+    "id": 129383,
+    "tmdb_title": "Something Like It",
+    "tmdb_original_title": "の・ようなもの",
+    "letterboxd_english_title": "Something Like It (1981)"
+  },
   "ショパン、ショパン！||ミハウ・クフィェチンスキ": {},
   "サラゴサの写本||ヴォイチェフ・イエジー・ハス": {},
   "砂時計||ヴォイチェフ・イエジー・ハス": {
@@ -4960,6 +5015,7 @@
     "tmdb_original_title": "砂時計",
     "letterboxd_english_title": "Sand Chronicles (2008)"
   },
+  "バルタザール・コベルの驚くべき旅||ヴォイチェフ・イエジー・ハス": {},
   "ら・かんぱねら|2025|": {
     "id": 1474275,
     "tmdb_title": "La Campanella",
