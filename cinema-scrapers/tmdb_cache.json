@@ -4868,6 +4868,13 @@
     "tmdb_original_title": "導火線",
     "letterboxd_english_title": "Flash Point (2007)"
   },
+  "追龍||": {
+    "id": 449927,
+    "tmdb_title": "Chasing the Dragon",
+    "tmdb_original_title": "追龍",
+    "letterboxd_english_title": "Chasing the Dragon (2017)"
+  },
+  "映画 真・三國無双||": {},
   "グレイフォックス|1983|フィリップ・ボーソス": {},
   "真夜中の人間交差点。心と言葉で紡ぐ夜||": {},
   "六つの顔|2025|犬童一心 ナレーション：オダギリジョー 題字・アニメーション：山村浩二 監修・出演：野村万作、野村萬斎": {},
@@ -4959,6 +4966,7 @@
   "そこにきみはいて[1130舞台挨拶]||": {},
   "沼地という名の町||": {},
   "ストレンジ・リトル・キャッ||": {},
+  "ガール・アンド・スパイダー||": {},
   "実録私設銀座警察|1973|": {
     "id": 498951,
     "tmdb_title": "A True Story of the Private Ginza Police",
@@ -5007,15 +5015,18 @@
     "tmdb_original_title": "の・ようなもの",
     "letterboxd_english_title": "Something Like It (1981)"
   },
-  "ショパン、ショパン！||ミハウ・クフィェチンスキ": {},
-  "サラゴサの写本||ヴォイチェフ・イエジー・ハス": {},
-  "砂時計||ヴォイチェフ・イエジー・ハス": {
-    "id": 277619,
-    "tmdb_title": "Sand Chronicles",
-    "tmdb_original_title": "砂時計",
-    "letterboxd_english_title": "Sand Chronicles (2008)"
+  "武士の家計簿|2010|森田芳光": {
+    "id": 114801,
+    "tmdb_title": "Abacus and Sword",
+    "tmdb_original_title": "武士の家計簿",
+    "letterboxd_english_title": "Abacus and Sword (2010)"
   },
-  "バルタザール・コベルの驚くべき旅||ヴォイチェフ・イエジー・ハス": {},
+  "椿三十郎|2007|森田芳光": {
+    "id": 288509,
+    "tmdb_title": "Tsubaki Sanjuro",
+    "tmdb_original_title": "椿三十郎",
+    "letterboxd_english_title": "Tsubaki Sanjuro (2007)"
+  },
   "ら・かんぱねら|2025|": {
     "id": 1474275,
     "tmdb_title": "La Campanella",
