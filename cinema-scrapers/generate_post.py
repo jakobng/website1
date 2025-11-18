@@ -1,11 +1,11 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 7 (FINAL LIVE):
-- Removes local test data (uses actual current date).
-- Smart cinema selection (min 3 films).
-- Bilingual titles and addresses.
-- Optimized layout and font sizes.
+VERSION 8 (FINAL):
+- Adds English Cinema Names to the image and caption.
+- Includes "Smart Selection" (min 3 films).
+- Full bilingual support (Titles, Addresses, Dates, Footer).
+- Live Mode (uses current date).
 """
 from __future__ import annotations
 
@@ -47,7 +47,7 @@ TITLE_WRAP_WIDTH = 30
 BLACK = (0, 0, 0)
 GRAY = (70, 70, 70)
 
-# --- Bilingual Cinema Address Database ---
+# --- Bilingual Cinema Data ---
 CINEMA_ADDRESSES = {
     "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F\n6F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
     "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F\n3F, 3-35-13 Shinjuku, Shinjuku-ku, Tokyo",
@@ -76,75 +76,75 @@ CINEMA_ADDRESSES = {
     "シネクイント": "東京都渋谷区宇田川町20-11 8F\n8F, 20-11 Udagawacho, Shibuya-ku, Tokyo",
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F\n4F, 1-5-1 Kichijoji Honcho, Musashino-shi, Tokyo",
 }
-# --- End of Address Database ---
+
+CINEMA_ENGLISH_NAMES = {
+    "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
+    "K's Cinema (ケイズシネマ)": "K's Cinema",
+    "シネマート新宿": "Cinemart Shinjuku",
+    "新宿シネマカリテ": "Shinjuku Cinema Qualite",
+    "新宿武蔵野館": "Shinjuku Musashino-kan",
+    "テアトル新宿": "Theatre Shinjuku",
+    "早稲田松竹": "Waseda Shochiku",
+    "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
+    "シアター・イメージフォーラム": "Theatre Image Forum",
+    "ユーロスペース": "Eurospace",
+    "ヒューマントラストシネマ渋谷": "Human Trust Cinema Shibuya",
+    "Stranger (ストレンジャー)": "Stranger",
+    "新文芸坐": "Shin-Bungeiza",
+    "目黒シネマ": "Meguro Cinema",
+    "ポレポレ東中野": "Pole Pole Higashi-Nakano",
+    "K2 Cinema": "K2 Cinema",
+    "ヒューマントラストシネマ有楽町": "Human Trust Cinema Yurakucho",
+    "ラピュタ阿佐ヶ谷": "Laputa Asagaya",
+    "下高井戸シネマ": "Shimotakaido Cinema",
+    "国立映画アーカイブ": "National Film Archive of Japan",
+    "池袋シネマ・ロサ": "Ikebukuro Cinema Rosa",
+    "シネスイッチ銀座": "Cine Switch Ginza",
+    "シネマブルースタジオ": "Cinema Blue Studio",
+    "CINEMA Chupki TABATA": "Cinema Chupki Tabata",
+    "シネクイント": "Cine Quinto Shibuya",
+    "アップリンク吉祥寺": "Uplink Kichijoji",
+}
+# --- End of Database ---
 
 def is_probably_not_japanese(text: str | None) -> bool:
-    """Helper to check if a title is likely English, etc."""
-    if not text:
-        return False
-    if not re.search(r'[a-zA-Z]', text):
-        return False
+    if not text: return False
+    if not re.search(r'[a-zA-Z]', text): return False
     japanese_chars = re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]', text)
     latin_chars = re.findall(r'[a-zA-Z]', text)
-    
-    if not japanese_chars:
-        return True
-    
+    if not japanese_chars: return True
     if latin_chars:
-        if len(latin_chars) > len(japanese_chars) * 2:
-            return True
-        if len(japanese_chars) <= 2 and len(latin_chars) > len(japanese_chars):
-            return True
-            
+        if len(latin_chars) > len(japanese_chars) * 2: return True
+        if len(japanese_chars) <= 2 and len(latin_chars) > len(japanese_chars): return True
     return False
 
 def find_best_english_title(showing: Dict) -> str | None:
-    """Finds the best available English title from the showing data."""
     jp_title = showing.get('movie_title', '').lower()
     
     def get_clean_title(title_key: str) -> str | None:
-        """Gets, cleans, and validates a potential English title."""
         title = showing.get(title_key)
-        if not is_probably_not_japanese(title):
-            return None
-        
-        # Clean the title
+        if not is_probably_not_japanese(title): return None
         cleaned_title = title.split(' (')[0].strip()
-        
-        # Check for redundancy
-        if cleaned_title.lower() in jp_title:
-            return None
-            
+        if cleaned_title.lower() in jp_title: return None
         return cleaned_title
 
-    # Check in order of priority
-    if en_title := get_clean_title('letterboxd_english_title'):
-        return en_title
-    if en_title := get_clean_title('tmdb_display_title'):
-        return en_title
-    if en_title := get_clean_title('movie_title_en'):
-        return en_title
+    if en_title := get_clean_title('letterboxd_english_title'): return en_title
+    if en_title := get_clean_title('tmdb_display_title'): return en_title
+    if en_title := get_clean_title('movie_title_en'): return en_title
 
-    # Final check for tmdb_original_title
     tmdb_orig_title = showing.get('tmdb_original_title')
     if is_probably_not_japanese(tmdb_orig_title) and tmdb_orig_title.lower() != jp_title:
         return tmdb_orig_title.split(' (')[0].strip()
 
     return None
 
-
 def today_in_tokyo() -> datetime:
-    """Return the current datetime in the Asia/Tokyo timezone if available."""
     if ZoneInfo is not None:
-        try:
-            return datetime.now(ZoneInfo("Asia/Tokyo"))
-        except Exception:
-            return datetime.now()
+        try: return datetime.now(ZoneInfo("Asia/Tokyo"))
+        except Exception: return datetime.now()
     return datetime.now()
 
-
 def load_showtimes(today_str: str) -> List[Dict]:
-    """Load today's showtimes from the JSON file."""
     try:
         with SHOWTIMES_PATH.open("r", encoding="utf-8") as handle:
             all_showings = json.load(handle)
@@ -154,24 +154,16 @@ def load_showtimes(today_str: str) -> List[Dict]:
     except json.JSONDecodeError as exc:
         print("Unable to decode showtimes.json")
         raise exc
-
     todays_showings = [show for show in all_showings if show.get("date_text") == today_str]
     return todays_showings
 
-
 def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
-    """
-    Group showings and pick a random cinema from a "good" pool.
-    A "good" cinema has >= MINIMUM_FILM_THRESHOLD unique films.
-    """
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in showings:
         cinema_name = show.get("cinema_name")
-        if cinema_name:
-            grouped[cinema_name].append(show)
+        if cinema_name: grouped[cinema_name].append(show)
 
-    if not grouped:
-        return "", []
+    if not grouped: return "", []
 
     candidates = []
     for cinema_name, cinema_showings in grouped.items():
@@ -179,29 +171,22 @@ def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
         candidates.append((cinema_name, len(unique_titles)))
 
     good_pool = [c[0] for c in candidates if c[1] >= MINIMUM_FILM_THRESHOLD]
-
     if not good_pool:
         print(f"No cinemas meet threshold of {MINIMUM_FILM_THRESHOLD}. Trying 2...")
         good_pool = [c[0] for c in candidates if c[1] >= 2]
-    
     if not good_pool:
         print("No cinemas meet threshold of 2. Using any cinema with > 0 films...")
         good_pool = [c[0] for c in candidates if c[1] >= 1]
-
     if not good_pool:
         print("No cinemas found with any films.")
         return "", []
 
     chosen_cinema_name = random.choice(good_pool)
     print(f"Pool of {len(good_pool)} cinemas. Randomly selected: {chosen_cinema_name}")
-
     return chosen_cinema_name, grouped[chosen_cinema_name]
 
-
 def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
-    """Format the showings into a sorted list of movie title/time strings."""
     movies: Dict[Tuple[str, str | None], List[str]] = defaultdict(list)
-    
     title_map: Dict[str, str | None] = {}
     for show in showings:
         title = show.get("movie_title") or "タイトル未定"
@@ -212,24 +197,16 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         title = show.get("movie_title") or "タイトル未定"
         en_title = title_map[title]
         time_str = show.get("showtime") or ""
-        if time_str:
-            movies[(title, en_title)].append(time_str)
+        if time_str: movies[(title, en_title)].append(time_str)
 
     formatted = []
     for (title, en_title) in sorted(movies.keys(), key=lambda k: k[0]):
         times_sorted = sorted(movies[(title, en_title)], key=lambda t: t)
         times_text = ", ".join(times_sorted)
-        formatted.append({
-            "title": title,
-            "en_title": en_title,
-            "times": times_text
-        })
-
+        formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
-
-def draw_image(cinema_name: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
-    """Create the Instagram image using the provided template and fonts."""
+def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
     try:
         template = Image.open(TEMPLATE_PATH).convert("RGBA")
     except FileNotFoundError:
@@ -237,38 +214,44 @@ def draw_image(cinema_name: str, address_lines: list, bilingual_date: str, listi
         raise
 
     try:
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
+        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
+        title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)
         address_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 26)
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
         regular_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
-        en_title_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
         small_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
     except FileNotFoundError as exc:
         print("Font file missing:", exc)
         raise
-    except OSError as exc:
-        print("Unable to load font:", exc)
-        raise
 
     draw = ImageDraw.Draw(template)
-
     y_pos = TOP_MARGIN
-    draw.text((LEFT_MARGIN, y_pos), cinema_name, font=title_font, fill=BLACK)
-    y_pos += 70
 
+    # 1. Draw Cinema Names
+    draw.text((LEFT_MARGIN, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
+    y_pos += 65
+    if cinema_name_en:
+        draw.text((LEFT_MARGIN, y_pos), cinema_name_en, font=title_en_font, fill=BLACK)
+        y_pos += 50
+    else:
+        y_pos += 10
+
+    # 2. Draw Address
     if address_lines:
         draw.text((LEFT_MARGIN, y_pos), address_lines[0], font=address_font, fill=GRAY)
         y_pos += 32
         if len(address_lines) > 1:
             draw.text((LEFT_MARGIN, y_pos), address_lines[1], font=address_font, fill=GRAY)
             y_pos += 32
-    
-    y_pos += 25 
-    
+    y_pos += 20
+
+    # 3. Draw Date
     draw.text((LEFT_MARGIN, y_pos), bilingual_date, font=date_font, fill=GRAY)
     y_pos += 60
 
+    # 4. Draw Listings
     for listing in listings:
         if y_pos > MAX_DRAW_Y:
             draw.text((LEFT_MARGIN, y_pos), "...", font=regular_font, fill=GRAY)
@@ -278,37 +261,35 @@ def draw_image(cinema_name: str, address_lines: list, bilingual_date: str, listi
         for idx, line in enumerate(wrapped_title):
             if y_pos > MAX_DRAW_Y: break
             draw.text((LEFT_MARGIN, y_pos), line, font=regular_font, fill=BLACK)
-            y_pos += 44 
+            y_pos += 44
         
         if listing["en_title"]:
             if y_pos > MAX_DRAW_Y: break
             wrapped_en_title = textwrap.wrap(f"({listing['en_title']})", width=45)
             for line in wrapped_en_title:
                 if y_pos > MAX_DRAW_Y: break
-                draw.text((LEFT_MARGIN + 5, y_pos), line, font=en_title_font, fill=GRAY)
+                draw.text((LEFT_MARGIN + 5, y_pos), line, font=en_movie_font, fill=GRAY)
                 y_pos += 34
         
         y_pos += 8
         draw.text((LEFT_MARGIN + 30, y_pos), listing["times"], font=small_font, fill=GRAY)
-        y_pos += 50 
+        y_pos += 50
 
+    # 5. Draw Footer
     footer_text = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((LEFT_MARGIN, FOOTER_Y), footer_text, font=footer_font, fill=GRAY)
     template.save(OUTPUT_IMAGE_PATH)
 
-
 def build_hashtag(cinema_name: str) -> str:
-    """Create a hashtag-friendly token from the cinema name."""
     cleaned = "".join(ch for ch in cinema_name if ch.isalnum() or "\u3040" <= ch <= "\u30ff" or "\u4e00" <= ch <= "\u9fff")
     return cleaned or "cinema"
 
-
-def write_caption(cinema_name: str, address: str, date_jp: str, listings: List[Dict[str, str | None]]) -> None:
-    """Write the Instagram caption to a UTF-8 text file."""
-    lines = [
-        f"【{cinema_name}】",
-    ]
+def write_caption(cinema_name: str, cinema_name_en: str, address: str, date_jp: str, listings: List[Dict[str, str | None]]) -> None:
+    header = f"【{cinema_name}】"
+    if cinema_name_en:
+        header += f"\n{cinema_name_en}"
     
+    lines = [header]
     if address:
         lines.append(f"📍 {address.replace(chr(10), ' / ')}")
 
@@ -319,7 +300,7 @@ def write_caption(cinema_name: str, address: str, date_jp: str, listings: List[D
         if listing['en_title']:
             lines.append(f"  ({listing['en_title']})")
         lines.append(f"  {listing['times']}")
-        lines.append("") 
+        lines.append("")
 
     hashtag = build_hashtag(cinema_name)
     lines.extend(
@@ -333,7 +314,6 @@ def write_caption(cinema_name: str, address: str, date_jp: str, listings: List[D
 
     caption = "\n".join(lines).strip() + "\n"
     OUTPUT_CAPTION_PATH.write_text(caption, encoding="utf-8")
-
 
 def main() -> None:
     today = today_in_tokyo().date()
@@ -361,11 +341,11 @@ def main() -> None:
     
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     address_lines = address.split("\n")
+    cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
 
-    draw_image(cinema_name, address_lines, bilingual_date_str, listings)
-    write_caption(cinema_name, address, date_jp, listings)
+    draw_image(cinema_name, cinema_name_en, address_lines, bilingual_date_str, listings)
+    write_caption(cinema_name, cinema_name_en, address, bilingual_date_str, listings)
     print(f"Generated post for {cinema_name} on {today_str}.")
-
 
 if __name__ == "__main__":
     main()
