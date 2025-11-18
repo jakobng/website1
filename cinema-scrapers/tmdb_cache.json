@@ -4893,11 +4893,24 @@
   },
   "入国審査|2023|アレハンドロ・ロハス、フアン・セバスチャン・バスケス 出演：アルベルト・アンマン": {},
   "ウカマウ集団60年の全軌跡||": {},
+  "『鬼才の道』|2024|": {
+    "id": 1006724,
+    "tmdb_title": "Dead Talents Society",
+    "tmdb_original_title": "鬼才之道",
+    "letterboxd_english_title": "Dead Talents Society (2024)"
+  },
   "大長編 タローマン 万博大爆発|2025|": {
     "id": 1469864,
     "tmdb_title": "Taroman Expo Explosion",
     "tmdb_original_title": "大長編　タローマン　万博大爆発",
     "letterboxd_english_title": "Taroman Expo Explosion (2025)"
+  },
+  "Netflix 映画『ジェイ・ケリー』|2025|": {},
+  "PERFECT BLUE|1998|": {
+    "id": 10494,
+    "tmdb_title": "Perfect Blue",
+    "tmdb_original_title": "PERFECT BLUE",
+    "letterboxd_english_title": "Perfect Blue (1997)"
   },
   "大阪物語|1999|": {
     "id": 307038,
@@ -4974,10 +4987,13 @@
     "letterboxd_english_title": "Universal Language (2024)"
   },
   "マルティネス|2023|": {},
+  "Lilypop|2022|青石太郎": {},
+  "〈特別上映〉Rock Bottom Riserファーン・シルヴァ来日記念上映 Rock Bottom Riser: Night with Fern Silva|2010|ファーン・シルヴァ Fern Silva": {},
   "縺輔≠繧�縺ｨ縺薙�ｯ繧� 譛邨らｫ[�ｽｲ�ｾ搾ｾ橸ｾ晢ｾЬ||": {},
   "縺薙�ｮ諱九�ｯ諡｡蠑ｵ迴ｾ螳滂ｼ歇�ｽｲ�ｾ搾ｾ橸ｾ晢ｾЬ||": {},
   "譌･險倡ｮｱ縺ｮ諱擬�ｽｲ�ｾ搾ｾ橸ｾ晢ｾЬ||": {},
   "縲唇P+25縲第ｷ｡縺�縺ｬ縺上ｂ繧�||": {},
+  "逕ｷ陬�繧ｫ繝包ｽｪ縺ｧ騾｢縺�縺ｾ縺励ｇ縺�[�ｽｲ�ｾ搾ｾ橸ｾ晢ｾЬ||": {},
   "はだしのゲンはまだ怒っている|2025|込山正徳": {},
   "ジェイ・ケリー||ノア・バームバック": {
     "id": 1069905,
@@ -5000,6 +5016,15 @@
     "tmdb_original_title": "東京市街戦",
     "letterboxd_english_title": "The Aftermath of War (1967)"
   },
+  "グラン・シエル||": {},
+  "猫を放つ||": {
+    "id": 1535944,
+    "tmdb_title": "Leave the Cat Alone",
+    "tmdb_original_title": "猫を放つ",
+    "letterboxd_english_title": "Leave the Cat Alone (2025)"
+  },
+  "［しゃべれば］【ﾏｯﾂ】ﾒﾝ&ﾁｷﾝ||": {},
+  "The World of Love||": {},
   "実録私設銀座警察|1973|": {
     "id": 498951,
     "tmdb_title": "A True Story of the Private Ginza Police",
@@ -5022,18 +5047,6 @@
   "アダムズ・アップル【還暦前夜祭】||": {},
   "フレッシュ・デリ【還暦前夜祭】||": {},
   "アダムズ・アップル【マッツ・ミケルセン祭】||": {},
-  "シブがき隊 ボーイズ&ガールズ|1982|": {
-    "id": 451147,
-    "tmdb_title": "Come On Girls!",
-    "tmdb_original_title": "シブがき隊　ボーイズ＆ガールズ",
-    "letterboxd_english_title": "Come On Girls! (1982)"
-  },
-  "39 刑法第三十九条||": {
-    "id": 325459,
-    "tmdb_title": "Keiho",
-    "tmdb_original_title": "39 刑法第三十九条",
-    "letterboxd_english_title": "Keiho (1999)"
-  },
   "そろばんずく|1986|": {
     "id": 226854,
     "tmdb_title": "For Business",
@@ -5070,7 +5083,34 @@
     "tmdb_original_title": "間宮兄弟",
     "letterboxd_english_title": "The Mamiya Brothers (2006)"
   },
+  "僕達急行 A列車で行こう|2012|": {
+    "id": 257046,
+    "tmdb_title": "Train Brain Express",
+    "tmdb_original_title": "僕達急行 A列車で行こう",
+    "letterboxd_english_title": "Train Brain Express (2012)"
+  },
+  "医の倫理と戦争||山本草介": {},
+  "遠くへいきたいわ||団塚唯我": {
+    "id": 1111282,
+    "tmdb_title": "Far, Far Away",
+    "tmdb_original_title": "遠くへいきたいわ",
+    "letterboxd_english_title": "Far, Far Away (2022)"
+  },
+  "サイレントナイト|2025|藤原健一": {},
+  "満江紅/マンジャンホン||": {},
+  "笑む窓のある家 【4K上映】||": {},
+  "フィフィ大空をゆく||": {},
+  "笑む窓のある家 【4K上映】 上映後||": {},
+  "素晴らしい風船旅行||": {},
+  "ゼダー/死霊の復活祭||": {},
+  "小さなロバ、ビム||": {},
   "天使のたまご 4Kリマスター||": {},
+  "天使のたまご||": {
+    "id": 15916,
+    "tmdb_title": "Angel's Egg",
+    "tmdb_original_title": "天使のたまご",
+    "letterboxd_english_title": "Angel's Egg (1985)"
+  },
   "サラゴサの写本||ヴォイチェフ・イエジー・ハス": {},
   "砂時計||ヴォイチェフ・イエジー・ハス": {
     "id": 277619,
@@ -5080,6 +5120,7 @@
   },
   "バルタザール・コベルの驚くべき旅||ヴォイチェフ・イエジー・ハス": {},
   "ショパン、ショパン！||ミハウ・クフィェチンスキ": {},
+  "『レッツ・ゲット・ロスト』4K レストア|1988|ブルース・ウェバー": {},
   "『ジェイコブス・ラダー<４Kレストア＞』||": {
     "id": 2291,
     "tmdb_title": "Jacob's Ladder",
@@ -5105,5 +5146,51 @@
     "tmdb_title": "All We Imagine as Light",
     "tmdb_original_title": "പ്രഭയായ് നിനച്ചതെല്ലാം",
     "letterboxd_english_title": "All We Imagine as Light (2024)"
+  },
+  "PERFECT BLUE 4Kリマスター版|1998|今 敏": {},
+  "TOKYOタクシー|2025|山田洋次": {
+    "id": 1422404,
+    "tmdb_title": "TOKYO Taxi",
+    "tmdb_original_title": "TOKYOタクシー",
+    "letterboxd_english_title": "TOKYO Taxi (2025)"
+  },
+  "第2部:クーデター||": {},
+  "ジェイ・ケリー|2025|ノア・バームバック": {
+    "id": 1069905,
+    "tmdb_title": "Jay Kelly",
+    "tmdb_original_title": "Jay Kelly",
+    "letterboxd_english_title": "Jay Kelly (2025)"
+  },
+  "レッツ・ゲット・ロスト 4Kレストア||ブルース・ウェバー": {
+    "id": 37640,
+    "tmdb_title": "Let's Get Lost",
+    "tmdb_original_title": "Let's Get Lost",
+    "letterboxd_english_title": "Let's Get Lost (1988)"
+  },
+  "天使のたまご 4Kリマスター|1985|押井守": {
+    "id": 15916,
+    "tmdb_title": "Angel's Egg",
+    "tmdb_original_title": "天使のたまご",
+    "letterboxd_english_title": "Angel's Egg (1985)"
+  },
+  "金髪|2025|坂下雄一郎": {
+    "id": 1541169,
+    "tmdb_title": "Blonde",
+    "tmdb_original_title": "金髪",
+    "letterboxd_english_title": "Blonde (2025)"
+  },
+  "Eno|2024|ギャリー・ハストウィット": {
+    "id": 1267888,
+    "tmdb_title": "Queer Enough",
+    "tmdb_original_title": "Queer Enough",
+    "letterboxd_english_title": "Queer Enough (2024)"
+  },
+  "第1部:ブルジョワジーの叛乱||": {},
+  "第3部:民衆の力||": {},
+  "アオショー！||山口喬司": {
+    "id": 1547424,
+    "tmdb_title": "AOSHO! Voices in Bloom",
+    "tmdb_original_title": "アオショー！",
+    "letterboxd_english_title": "AOSHO! Voices in Bloom (2025)"
   }
 }
