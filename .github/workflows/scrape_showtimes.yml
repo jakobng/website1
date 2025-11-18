@@ -1,57 +1,4 @@
-name: Scrape Movie Showtimes (TMDB/Letterboxd Focused)
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '5 0 * * *'
-
-jobs:
-  scrape_and_commit:
-    runs-on: ubuntu-latest
-    
-    permissions:
-      contents: write
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Set up Chrome for Selenium
-        uses: browser-actions/setup-chrome@v1
-
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install --upgrade google-generativeai
-          # Make sure Pillow and tzdata are in your requirements.txt!
-          pip install -r 'cinema-scrapers/requirements.txt'
-
-      - name: Install Playwright Browsers
-        run: playwright install --with-deps chromium
-
-      - name: Cache TMDB data
-        uses: actions/cache@v4
-        with:
-          path: 'cinema-scrapers/tmdb_cache.json'
-          key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('**/main_scraper.py') }}
-          restore-keys: |
-            ${{ runner.os }}-tmdb-cache-
-
-      - name: Run scraper script
-        working-directory: './cinema-scrapers'
-        run: python main_scraper.py
-        env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
-      - name: Generate Instagram post assets
-        working-directory: './cinema-scrapers'
-        run: python generate_post.py
+# ... (previous steps are the same) ...
 
       - name: Commit and push generated files
         id: commit_push
@@ -63,7 +10,6 @@ jobs:
           git add 'cinema-scrapers/post_image.png'
           git add 'cinema-scrapers/post_caption.txt'
           
-          # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit."
             echo "pushed=false" >> $GITHUB_OUTPUT
@@ -73,17 +19,16 @@ jobs:
           git commit -m "Automated update of showtimes and cache files"
           git pull origin main --rebase
           git push
-          
-          # Set output so the next step knows we pushed successfully
           echo "pushed=true" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Trigger Make.com Instagram Post
-        # Only run this if the previous step actually pushed new files
+      # --- NEW STEP: Upload to Instagram ---
+      - name: Upload to Instagram
+        # Only run if we successfully pushed new files
         if: steps.commit_push.outputs.pushed == 'true'
-        run: |
-          echo "New files pushed. Sending ping to Make.com..."
-          curl -X POST "${{ secrets.MAKE_WEBHOOK_URL }}"
+        working-directory: './cinema-scrapers'
+        run: python upload_to_instagram.py
         env:
-          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
