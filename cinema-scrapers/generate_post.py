@@ -1,10 +1,11 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 9.1 (FIXED):
-- Added missing 'import re' to fix NameError.
-- Includes Generative Art background.
-- Full bilingual support and smart cinema selection.
+VERSION 10 (DEEP YELLOW & DYNAMIC PATTERNS):
+- Theme: Deep Yellow background with White geometric lines.
+- Dynamic: Randomly varies the grid size (density) of the pattern each run
+  to ensure every post looks unique.
+- Fixes: Ensures 'import re' is present and logic is robust.
 """
 from __future__ import annotations
 
@@ -27,7 +28,6 @@ except ImportError:  # pragma: no cover - fallback for older versions
 
 BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
-# TEMPLATE_PATH is no longer needed! We generate it.
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 OUTPUT_IMAGE_PATH = BASE_DIR / "post_image.png"
@@ -35,23 +35,22 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
-GRID_SIZE = 135  # Size of each tile (1080 must be divisible by this roughly)
-STROKE_WIDTH = 15 # Thickness of the pattern lines
+STROKE_WIDTH = 15 
 
-# Colors
-BG_COLOR = (245, 245, 240) # Off-white background
-PATTERN_COLOR = (0, 168, 232) # Cyan/Blue accent for the maze lines
-TEXT_BG_COLOR = (255, 255, 255, 230) # Semi-transparent white for text box
+# Colors (Deep Yellow Theme)
+BG_COLOR = (255, 195, 0)       # Deep Sunflower Yellow
+PATTERN_COLOR = (255, 255, 255) # White lines
+TEXT_BG_COLOR = (255, 255, 255, 230) # Semi-transparent white box
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
 # Layout
 CANVAS_SIZE = 1080
 MARGIN = 60
-TEXT_BOX_MARGIN = 40 # Padding inside the white text box
-TITLE_WRAP_WIDTH = 28 # Wrap width for movie titles
+TEXT_BOX_MARGIN = 40
+TITLE_WRAP_WIDTH = 30
 
-# --- Bilingual Cinema Address Database ---
+# --- Bilingual Cinema Data ---
 CINEMA_ADDRESSES = {
     "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F\n6F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
     "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F\n3F, 3-35-13 Shinjuku, Shinjuku-ku, Tokyo",
@@ -173,6 +172,7 @@ def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
         unique_titles = set(s.get('movie_title') for s in cinema_showings)
         candidates.append((cinema_name, len(unique_titles)))
 
+    # Smart Selection: Filter by threshold, then shuffle, then pick.
     good_pool = [c[0] for c in candidates if c[1] >= MINIMUM_FILM_THRESHOLD]
     if not good_pool: good_pool = [c[0] for c in candidates if c[1] >= 2]
     if not good_pool: good_pool = [c[0] for c in candidates if c[1] >= 1]
@@ -181,8 +181,10 @@ def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
         print("No cinemas found with any films.")
         return "", []
 
+    # Shuffle to ensure true randomness across runs
+    random.shuffle(good_pool)
     chosen_cinema_name = random.choice(good_pool)
-    print(f"Pool of {len(good_pool)} cinemas. Randomly selected: {chosen_cinema_name}")
+    print(f"Pool of {len(good_pool)} cinemas. Selected: {chosen_cinema_name}")
     return chosen_cinema_name, grouped[chosen_cinema_name]
 
 def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
@@ -207,25 +209,32 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
     return formatted
 
 def generate_art_background() -> Image.Image:
-    """Generates a procedural Truchet (Smith Tile) pattern."""
+    """
+    Generates a procedural Truchet (Smith Tile) pattern.
+    Uses a random grid size each time to create varying pattern densities.
+    """
     img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), BG_COLOR)
     draw = ImageDraw.Draw(img)
     
-    cols = CANVAS_SIZE // GRID_SIZE + 1
-    rows = CANVAS_SIZE // GRID_SIZE + 1
+    # Randomly select a grid size to vary the density of the pattern
+    # 1080 is divisible by 108, 135, 216, 270
+    current_grid_size = random.choice([108, 135, 216])
+    
+    cols = CANVAS_SIZE // current_grid_size + 1
+    rows = CANVAS_SIZE // current_grid_size + 1
     
     for c in range(cols):
         for r in range(rows):
-            x = c * GRID_SIZE
-            y = r * GRID_SIZE
+            x = c * current_grid_size
+            y = r * current_grid_size
             tile_type = random.choice([0, 1])
             
             if tile_type == 0:
-                draw.arc([x - GRID_SIZE/2, y - GRID_SIZE/2, x + GRID_SIZE/2, y + GRID_SIZE/2], start=0, end=90, fill=PATTERN_COLOR, width=STROKE_WIDTH)
-                draw.arc([x + GRID_SIZE/2, y + GRID_SIZE/2, x + 1.5*GRID_SIZE, y + 1.5*GRID_SIZE], start=180, end=270, fill=PATTERN_COLOR, width=STROKE_WIDTH)
+                draw.arc([x - current_grid_size/2, y - current_grid_size/2, x + current_grid_size/2, y + current_grid_size/2], start=0, end=90, fill=PATTERN_COLOR, width=STROKE_WIDTH)
+                draw.arc([x + current_grid_size/2, y + current_grid_size/2, x + 1.5*current_grid_size, y + 1.5*current_grid_size], start=180, end=270, fill=PATTERN_COLOR, width=STROKE_WIDTH)
             else:
-                draw.arc([x + GRID_SIZE/2, y - GRID_SIZE/2, x + 1.5*GRID_SIZE, y + GRID_SIZE/2], start=90, end=180, fill=PATTERN_COLOR, width=STROKE_WIDTH)
-                draw.arc([x - GRID_SIZE/2, y + GRID_SIZE/2, x + GRID_SIZE/2, y + 1.5*GRID_SIZE], start=270, end=360, fill=PATTERN_COLOR, width=STROKE_WIDTH)
+                draw.arc([x + current_grid_size/2, y - current_grid_size/2, x + 1.5*current_grid_size, y + current_grid_size/2], start=90, end=180, fill=PATTERN_COLOR, width=STROKE_WIDTH)
+                draw.arc([x - current_grid_size/2, y + current_grid_size/2, x + current_grid_size/2, y + 1.5*current_grid_size], start=270, end=360, fill=PATTERN_COLOR, width=STROKE_WIDTH)
     return img
 
 def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
@@ -233,7 +242,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         img = generate_art_background()
     except Exception as e:
         print(f"Error generating background: {e}")
-        img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (255, 255, 255))
+        img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), BG_COLOR)
 
     try:
         title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
@@ -314,7 +323,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         y_pos += 50
 
     # Footer
-    footer_y_pos = CANVAS_SIZE - MARGIN - TEXT_BOX_MARGIN - 10
+    footer_y_pos = CANVAS_SIZE - MARGIN - TEXT_BOX_MARGIN - 30
     footer_text = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((content_left, footer_y_pos), footer_text, font=footer_font, fill=GRAY)
 
