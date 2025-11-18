@@ -1,15 +1,17 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 11 (CONCENTRIC OPTICAL ILLUSION):
-- Theme: Deep Yellow background with White concentric geometric lines.
-- Generative Art: Uses "Concentric Truchet Tiles" to create a complex,
-  fingerprint-like optical illusion pattern that flows seamlessly.
-- Includes full bilingual support, smart selection, and live mode.
+VERSION 12 (DRIFTING WAVES):
+- Replaces random noise with Trigonometric Pattern Generation.
+- The pattern evolves based on the Day of the Year.
+- Creates "rivers" of patterns that slowly drift across the image day by day.
+- Maintains the Deep Yellow Optical Illusion theme.
+- Full bilingual support + Smart selection.
 """
 from __future__ import annotations
 
 import json
+import math
 import random
 import re
 import textwrap
@@ -42,18 +44,18 @@ MARGIN = 60
 TEXT_BOX_MARGIN = 40
 TITLE_WRAP_WIDTH = 30
 
-# --- THEME: DEEP YELLOW OPTICAL ILLUSION ---
+# --- THEME: DEEP YELLOW WAVE ---
 BG_COLOR = (255, 195, 11)       # Vibrant Deep Yellow
 PATTERN_COLOR = (255, 255, 255) # White lines
-TEXT_BG_COLOR = (255, 255, 255, 235) # Stronger white overlay for readability
+TEXT_BG_COLOR = (255, 255, 255, 235) # Stronger white overlay
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
-# Pattern Settings
-GRID_SIZE = 135         # Size of the tile
-STROKE_WIDTH = 4        # Thinner lines for the illusion effect
-NUM_RINGS = 6           # Number of concentric rings per tile (The "Illusion" factor)
-RING_SPACING = 18       # Space between rings
+# Pattern Settings (The "Optical Illusion" setup)
+GRID_SIZE = 135         
+STROKE_WIDTH = 4        
+NUM_RINGS = 6           
+RING_SPACING = 18       
 
 # --- Bilingual Cinema Address Database ---
 CINEMA_ADDRESSES = {
@@ -212,11 +214,15 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
 
 def generate_art_background() -> Image.Image:
     """
-    Generates a procedural Concentric Truchet pattern.
-    This creates the 'optical illusion' maze background.
+    Generates a procedural Concentric Truchet pattern based on the Date.
+    This creates evolving "rivers" of patterns that drift day by day.
     """
     img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), BG_COLOR)
     draw = ImageDraw.Draw(img)
+    
+    # Get the day of the year to drive the evolution
+    # This ensures the pattern changes slowly every day
+    day_of_year = datetime.now().timetuple().tm_yday
     
     cols = CANVAS_SIZE // GRID_SIZE + 1
     rows = CANVAS_SIZE // GRID_SIZE + 1
@@ -225,37 +231,47 @@ def generate_art_background() -> Image.Image:
         for r in range(rows):
             x = c * GRID_SIZE
             y = r * GRID_SIZE
-            tile_type = random.choice([0, 1])
             
-            # Draw multiple concentric rings for the optical effect
+            # --- THE WAVE MATH ---
+            # Instead of random, we use Sine/Cosine based on position (c, r) AND time (day_of_year).
+            # The division factors (4.0, 10.0) control the "zoom" and "speed" of the wave.
+            wave_val = math.sin((c / 4.0) + (day_of_year / 15.0)) + math.cos((r / 4.0) + (day_of_year / 20.0))
+            
+            # Determine orientation based on the wave height
+            tile_type = 0 if wave_val > 0 else 1
+            
+            # Draw concentric rings
             for i in range(NUM_RINGS):
                 offset = i * RING_SPACING
                 size_offset = GRID_SIZE - (offset * 2)
-                
-                # Don't draw if too small
                 if size_offset <= 0: continue
 
                 if tile_type == 0:
                     # Top-Left Arc
-                    bbox_tl = [x - GRID_SIZE/2 + offset, y - GRID_SIZE/2 + offset, 
-                               x + GRID_SIZE/2 - offset, y + GRID_SIZE/2 - offset]
-                    draw.arc(bbox_tl, start=0, end=90, fill=PATTERN_COLOR, width=STROKE_WIDTH)
-                    
+                    draw.arc(
+                        [x - GRID_SIZE/2 + offset, y - GRID_SIZE/2 + offset, 
+                         x + GRID_SIZE/2 - offset, y + GRID_SIZE/2 - offset],
+                        start=0, end=90, fill=PATTERN_COLOR, width=STROKE_WIDTH
+                    )
                     # Bottom-Right Arc
-                    bbox_br = [x + GRID_SIZE/2 + offset, y + GRID_SIZE/2 + offset, 
-                               x + 1.5*GRID_SIZE - offset, y + 1.5*GRID_SIZE - offset]
-                    draw.arc(bbox_br, start=180, end=270, fill=PATTERN_COLOR, width=STROKE_WIDTH)
-                    
+                    draw.arc(
+                        [x + GRID_SIZE/2 + offset, y + GRID_SIZE/2 + offset, 
+                         x + 1.5*GRID_SIZE - offset, y + 1.5*GRID_SIZE - offset],
+                        start=180, end=270, fill=PATTERN_COLOR, width=STROKE_WIDTH
+                    )
                 else:
                     # Top-Right Arc
-                    bbox_tr = [x + GRID_SIZE/2 + offset, y - GRID_SIZE/2 + offset, 
-                               x + 1.5*GRID_SIZE - offset, y + GRID_SIZE/2 - offset]
-                    draw.arc(bbox_tr, start=90, end=180, fill=PATTERN_COLOR, width=STROKE_WIDTH)
-                    
+                    draw.arc(
+                        [x + GRID_SIZE/2 + offset, y - GRID_SIZE/2 + offset, 
+                         x + 1.5*GRID_SIZE - offset, y + GRID_SIZE/2 - offset],
+                        start=90, end=180, fill=PATTERN_COLOR, width=STROKE_WIDTH
+                    )
                     # Bottom-Left Arc
-                    bbox_bl = [x - GRID_SIZE/2 + offset, y + GRID_SIZE/2 + offset, 
-                               x + GRID_SIZE/2 - offset, y + 1.5*GRID_SIZE - offset]
-                    draw.arc(bbox_bl, start=270, end=360, fill=PATTERN_COLOR, width=STROKE_WIDTH)
+                    draw.arc(
+                        [x - GRID_SIZE/2 + offset, y + GRID_SIZE/2 + offset, 
+                         x + GRID_SIZE/2 - offset, y + 1.5*GRID_SIZE - offset],
+                        start=270, end=360, fill=PATTERN_COLOR, width=STROKE_WIDTH
+                    )
     return img
 
 def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
