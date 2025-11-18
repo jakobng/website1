@@ -1,10 +1,11 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 6:
-- Fixes redundant English titles (e.g., "KIDS キッズ" will no longer
-  also show "(Kids)").
-- Retains smart selection, addresses, bilingual text, and local test fixes.
+VERSION 7 (FINAL LIVE):
+- Removes local test data (uses actual current date).
+- Smart cinema selection (min 3 films).
+- Bilingual titles and addresses.
+- Optimized layout and font sizes.
 """
 from __future__ import annotations
 
@@ -110,11 +111,9 @@ def find_best_english_title(showing: Dict) -> str | None:
         # Clean the title
         cleaned_title = title.split(' (')[0].strip()
         
-        # --- NEW LOGIC ---
-        # Check for redundancy. If "Kids" is in "KIDS キッズ", don't return it.
+        # Check for redundancy
         if cleaned_title.lower() in jp_title:
             return None
-        # --- END NEW LOGIC ---
             
         return cleaned_title
 
@@ -126,7 +125,7 @@ def find_best_english_title(showing: Dict) -> str | None:
     if en_title := get_clean_title('movie_title_en'):
         return en_title
 
-    # Final check for tmdb_original_title, which might be non-English but also non-Japanese
+    # Final check for tmdb_original_title
     tmdb_orig_title = showing.get('tmdb_original_title')
     if is_probably_not_japanese(tmdb_orig_title) and tmdb_orig_title.lower() != jp_title:
         return tmdb_orig_title.split(' (')[0].strip()
@@ -140,7 +139,6 @@ def today_in_tokyo() -> datetime:
         try:
             return datetime.now(ZoneInfo("Asia/Tokyo"))
         except Exception:
-            # Fallback if tzdata is missing
             return datetime.now()
     return datetime.now()
 
@@ -341,19 +339,10 @@ def main() -> None:
     today = today_in_tokyo().date()
     today_str = today.isoformat()
     
-    # --- TEMPORARY TEST CHANGES FOR LOCAL WINDOWS ---
-    # 1. Force a date that you know exists in your showtimes.json
-    today_str = "2025-11-04"
-    # 2. Use simple strings for the date to avoid Windows encoding errors
-    date_jp = "2025年11月04日" # This is for the caption
-    bilingual_date_str = f"{today_str} / Nov 04, 2025" # This is for the image
-    # --- END OF TEST CHANGES ---
-
-    # --- These are the "live" lines. Keep them commented out for local testing. ---
-    # date_jp = today.strftime("%Y年%m月%d日")
-    # date_en = today.strftime("%b %d, %Y")
-    # bilingual_date_str = f"{date_jp} / {date_en}"
-    # ---
+    # --- LIVE MODE ---
+    date_jp = today.strftime("%Y年%m月%d日")
+    date_en = today.strftime("%b %d, %Y")
+    bilingual_date_str = f"{date_jp} / {date_en}"
 
     todays_showings = load_showtimes(today_str)
     if not todays_showings:
@@ -370,12 +359,11 @@ def main() -> None:
         print("Selected cinema has no valid listings. Exiting.")
         return
     
-    # Get the address for the chosen cinema
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     address_lines = address.split("\n")
 
     draw_image(cinema_name, address_lines, bilingual_date_str, listings)
-    write_caption(cinema_name, address, date_jp, listings) # Using date_jp for the caption
+    write_caption(cinema_name, address, date_jp, listings)
     print(f"Generated post for {cinema_name} on {today_str}.")
 
 
