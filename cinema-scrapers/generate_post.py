@@ -1,11 +1,11 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 16 (SYNTAX FIX):
-- Fixes the unterminated string literal error.
-- Retains "Living Gradient" theme (Yellow/White).
-- Retains Dynamic Random Pulse for unique daily images.
-- Full bilingual support & Smart cinema selection.
+VERSION 17 (THE INFINITE GRADIENT):
+- Creates a linear gradient that connects seamlessly with the previous day's post.
+- Grid Logic: [Today: C->B] [Yesterday: B->A]. The edges match perfectly.
+- Colors: Randomly selected daily from a vibrant palette + neutrals (White/Black).
+- Layout: Portrait 4:5 with Grid Safe Zone.
 """
 from __future__ import annotations
 
@@ -14,6 +14,7 @@ import math
 import random
 import re
 import textwrap
+import colorsys
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -41,20 +42,14 @@ MINIMUM_FILM_THRESHOLD = 3
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
 
-# "Safe Zone" Logic (Center 1080x1080 square)
+# "Safe Zone" Logic
 GRID_CROP_HEIGHT = (CANVAS_HEIGHT - CANVAS_WIDTH) // 2 
 MARGIN = 60 
 TEXT_BOX_MARGIN = 40
 TITLE_WRAP_WIDTH = 30
 
-# --- THEME COLORS ---
-# Center Color (Deep Sunflower Yellow)
-COLOR_CENTER = (255, 195, 11)
-# Edge Color (Warm Off-White)
-COLOR_EDGE = (255, 255, 250)
-
 # Text & UI
-TEXT_BG_COLOR = (255, 255, 255, 220) # Slightly opaque for readability
+TEXT_BG_COLOR = (255, 255, 255, 230) 
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
@@ -188,13 +183,11 @@ def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
         print("No cinemas found with any films.")
         return "", []
 
-    # Shuffle and pick
     random.shuffle(good_pool)
     chosen_cinema_name = random.choice(good_pool)
     
     print(f"Candidate Pool ({len(good_pool)}): {good_pool}")
     print(f"Selected Cinema: {chosen_cinema_name}")
-    
     return chosen_cinema_name, grouped[chosen_cinema_name]
 
 def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
@@ -218,34 +211,68 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
+# --- COLOR GENERATION ---
+def get_day_color(day_idx: int) -> Tuple[int, int, int]:
+    """
+    Returns a unique RGB color for a given day index.
+    Mixes vibrant colors with occasional neutrals (White/Black).
+    """
+    # Seed random with the specific day index so it's deterministic but random-looking
+    r = random.Random(day_idx)
+    
+    # 10% chance of being a neutral "reset" color (White/Off-White/Dark)
+    if r.random() < 0.1:
+        val = r.randint(230, 255)
+        return (val, val, val) # Shades of White
+    
+    # Otherwise, generate a vibrant color
+    hue = r.random() # 0.0 to 1.0
+    saturation = r.uniform(0.6, 1.0)
+    value = r.uniform(0.8, 1.0)
+    
+    rgb = colorsys.hsv_to_rgb(hue, saturation, value)
+    return (int(rgb[0]*255), int(rgb[1]*255), int(rgb[2]*255))
+
 def generate_gradient_background() -> Image.Image:
-    """Generates a radial gradient with random offset."""
+    """
+    Generates a linear Left-to-Right gradient.
+    Left Color: Color(Tomorrow) -> This connects to the PREVIOUS post's Right side?
+    WAIT. Instagram Grid is: [New] [Old].
+    To match visually:
+    [New Right] must match [Old Left].
+    
+    Old Post (Day N-1): Left=C(N)  | Right=C(N-1)
+    New Post (Day N):   Left=C(N+1)| Right=C(N)
+    
+    So Gradient Direction must be: Left -> Right.
+    Start Color (Left): C(N+1)
+    End Color (Right):  C(N)
+    """
     width, height = CANVAS_WIDTH, CANVAS_HEIGHT
-    img = Image.new("RGB", (width, height), COLOR_EDGE)
+    img = Image.new("RGB", (width, height))
     draw = ImageDraw.Draw(img)
 
-    day_of_year = datetime.now().timetuple().tm_yday
-    base_pulse = (math.sin(day_of_year / 10.0) + 1) / 2 
-    random_offset = random.uniform(-0.5, 0.5)
-    final_pulse = max(0.0, min(1.0, base_pulse + random_offset))
+    # Get current day index (simple incrementing number)
+    # We use unix timestamp / 86400 to get a stable "Day Number" that increments forever
+    day_number = int(datetime.now().timestamp() // 86400)
     
-    cx, cy = width // 2, height // 2
-    max_dist = math.sqrt(cx**2 + cy**2)
+    # Color N (Today's "Anchor") - matches Yesterday's Left
+    color_right = get_day_color(day_number) 
     
-    spread_factor = 3.5 - (final_pulse * 2.0) 
-    print(f"Generating Gradient with Spread Factor: {spread_factor:.2f}")
+    # Color N+1 (Tomorrow's "Anchor") - matches Tomorrow's Right
+    color_left = get_day_color(day_number + 1)
+    
+    print(f"Generating Gradient: Left {color_left} -> Right {color_right}")
 
-    for r in range(int(max_dist), 0, -2):
-        dist_norm = r / max_dist
-        t = dist_norm ** spread_factor
-        t = max(0, min(1, t))
+    # Draw Linear Gradient
+    for x in range(width):
+        t = x / width
+        r = int(color_left[0] * (1-t) + color_right[0] * t)
+        g = int(color_left[1] * (1-t) + color_right[1] * t)
+        b = int(color_left[2] * (1-t) + color_right[2] * t)
         
-        r_val = int(COLOR_CENTER[0] * (1-t) + COLOR_EDGE[0] * t)
-        g_val = int(COLOR_CENTER[1] * (1-t) + COLOR_EDGE[1] * t)
-        b_val = int(COLOR_CENTER[2] * (1-t) + COLOR_EDGE[2] * t)
-        
-        color = (r_val, g_val, b_val)
-        draw.ellipse([cx - r, cy - r, cx + r, cy + r], fill=color, outline=color)
+        # Draw vertical line
+        draw.line([(x, 0), (x, height)], fill=(r, g, b))
         
     return img
 
@@ -324,7 +351,6 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         
         if listing["en_title"]:
             if y_pos > max_text_y: break
-            # This was the line causing the syntax error. Fixed now.
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=45)
             for line in wrapped_en:
                 if y_pos > max_text_y: break
