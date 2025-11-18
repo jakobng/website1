@@ -1,12 +1,12 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 12 (DRIFTING WAVES):
-- Replaces random noise with Trigonometric Pattern Generation.
-- The pattern evolves based on the Day of the Year.
-- Creates "rivers" of patterns that slowly drift across the image day by day.
-- Maintains the Deep Yellow Optical Illusion theme.
-- Full bilingual support + Smart selection.
+VERSION 14 (LIVING GRADIENT):
+- Theme: "Yellow Pulsing Centre - White Theme".
+- Generates a smooth radial gradient that "breathes" (expands/contracts)
+  over a 60-day cycle based on the date.
+- Canvas: 1080x1350 (Portrait) with Grid Safe Zone.
+- Full bilingual support and smart cinema selection.
 """
 from __future__ import annotations
 
@@ -38,24 +38,27 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
 
-# Layout
-CANVAS_SIZE = 1080
-MARGIN = 60
+# Layout (4:5 Portrait)
+CANVAS_WIDTH = 1080
+CANVAS_HEIGHT = 1350
+
+# "Safe Zone" Logic (Center 1080x1080 square)
+GRID_CROP_HEIGHT = (CANVAS_HEIGHT - CANVAS_WIDTH) // 2 
+MARGIN = 60 
 TEXT_BOX_MARGIN = 40
 TITLE_WRAP_WIDTH = 30
 
-# --- THEME: DEEP YELLOW WAVE ---
-BG_COLOR = (255, 195, 11)       # Vibrant Deep Yellow
-PATTERN_COLOR = (255, 255, 255) # White lines
-TEXT_BG_COLOR = (255, 255, 255, 235) # Stronger white overlay
+# --- THEME COLORS ---
+# Center Color (Deep Sunflower Yellow)
+COLOR_CENTER = (255, 195, 11)
+# Edge Color (Warm Off-White)
+COLOR_EDGE = (255, 255, 250)
+
+# Text & UI
+TEXT_BG_COLOR = (255, 255, 255, 210) # Slightly more transparent to let gradient show
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
-# Pattern Settings (The "Optical Illusion" setup)
-GRID_SIZE = 135         
-STROKE_WIDTH = 4        
-NUM_RINGS = 6           
-RING_SPACING = 18       
 
 # --- Bilingual Cinema Address Database ---
 CINEMA_ADDRESSES = {
@@ -212,74 +215,61 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
-def generate_art_background() -> Image.Image:
+def generate_gradient_background() -> Image.Image:
     """
-    Generates a procedural Concentric Truchet pattern based on the Date.
-    This creates evolving "rivers" of patterns that drift day by day.
+    Generates a radial gradient that 'breathes' based on the day of the year.
+    Yellow Center -> White Edge.
     """
-    img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), BG_COLOR)
+    width, height = CANVAS_WIDTH, CANVAS_HEIGHT
+    img = Image.new("RGB", (width, height), COLOR_EDGE)
     draw = ImageDraw.Draw(img)
-    
-    # Get the day of the year to drive the evolution
-    # This ensures the pattern changes slowly every day
-    day_of_year = datetime.now().timetuple().tm_yday
-    
-    cols = CANVAS_SIZE // GRID_SIZE + 1
-    rows = CANVAS_SIZE // GRID_SIZE + 1
-    
-    for c in range(cols):
-        for r in range(rows):
-            x = c * GRID_SIZE
-            y = r * GRID_SIZE
-            
-            # --- THE WAVE MATH ---
-            # Instead of random, we use Sine/Cosine based on position (c, r) AND time (day_of_year).
-            # The division factors (4.0, 10.0) control the "zoom" and "speed" of the wave.
-            wave_val = math.sin((c / 4.0) + (day_of_year / 15.0)) + math.cos((r / 4.0) + (day_of_year / 20.0))
-            
-            # Determine orientation based on the wave height
-            tile_type = 0 if wave_val > 0 else 1
-            
-            # Draw concentric rings
-            for i in range(NUM_RINGS):
-                offset = i * RING_SPACING
-                size_offset = GRID_SIZE - (offset * 2)
-                if size_offset <= 0: continue
 
-                if tile_type == 0:
-                    # Top-Left Arc
-                    draw.arc(
-                        [x - GRID_SIZE/2 + offset, y - GRID_SIZE/2 + offset, 
-                         x + GRID_SIZE/2 - offset, y + GRID_SIZE/2 - offset],
-                        start=0, end=90, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                    )
-                    # Bottom-Right Arc
-                    draw.arc(
-                        [x + GRID_SIZE/2 + offset, y + GRID_SIZE/2 + offset, 
-                         x + 1.5*GRID_SIZE - offset, y + 1.5*GRID_SIZE - offset],
-                        start=180, end=270, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                    )
-                else:
-                    # Top-Right Arc
-                    draw.arc(
-                        [x + GRID_SIZE/2 + offset, y - GRID_SIZE/2 + offset, 
-                         x + 1.5*GRID_SIZE - offset, y + GRID_SIZE/2 - offset],
-                        start=90, end=180, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                    )
-                    # Bottom-Left Arc
-                    draw.arc(
-                        [x - GRID_SIZE/2 + offset, y + GRID_SIZE/2 + offset, 
-                         x + GRID_SIZE/2 - offset, y + 1.5*GRID_SIZE - offset],
-                        start=270, end=360, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                    )
+    # Time-based pulse (0.0 to 1.0) over a ~60 day cycle
+    day_of_year = datetime.now().timetuple().tm_yday
+    pulse = (math.sin(day_of_year / 10.0) + 1) / 2 
+    
+    # Center of the gradient
+    cx, cy = width // 2, height // 2
+    
+    # Max radius (distance to corner)
+    max_dist = math.sqrt(cx**2 + cy**2)
+    
+    # The 'spread' controls how tight the yellow center is.
+    # Pulse 0 = Tighter yellow (more white)
+    # Pulse 1 = Wider yellow (less white)
+    spread_factor = 3.0 - (pulse * 1.5) # Oscillates between 1.5 (Wide) and 3.0 (Tight)
+    
+    # Draw concentric circles for the gradient
+    # Step size 2 for efficiency
+    for r in range(int(max_dist), 0, -2):
+        # Normalized distance (0 at center, 1 at corner)
+        dist_norm = r / max_dist
+        
+        # Apply spread curve
+        t = dist_norm ** spread_factor
+        t = max(0, min(1, t))
+        
+        # Interpolate color
+        r_val = int(COLOR_CENTER[0] * (1-t) + COLOR_EDGE[0] * t)
+        g_val = int(COLOR_CENTER[1] * (1-t) + COLOR_EDGE[1] * t)
+        b_val = int(COLOR_CENTER[2] * (1-t) + COLOR_EDGE[2] * t)
+        
+        color = (r_val, g_val, b_val)
+        
+        draw.ellipse(
+            [cx - r, cy - r, cx + r, cy + r],
+            fill=color, outline=color
+        )
+        
     return img
 
 def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
     try:
-        img = generate_art_background()
+        # Generate the living gradient
+        img = generate_gradient_background().convert("RGBA")
     except Exception as e:
         print(f"Error generating background: {e}")
-        img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (255, 255, 255))
+        img = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
 
     try:
         title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
@@ -294,22 +284,23 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         print("Error loading fonts.")
         raise
 
-    # Draw semi-transparent overlay
-    overlay = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (0,0,0,0))
+    # Semi-transparent box - vertically centered in the safe zone
+    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
+    # Center Square Safe Zone
     box_x0 = MARGIN
-    box_y0 = MARGIN
-    box_x1 = CANVAS_SIZE - MARGIN
-    box_y1 = CANVAS_SIZE - MARGIN
+    box_y0 = GRID_CROP_HEIGHT + MARGIN
+    box_x1 = CANVAS_WIDTH - MARGIN
+    box_y1 = CANVAS_HEIGHT - GRID_CROP_HEIGHT - MARGIN
     
     draw_ov.rectangle([box_x0, box_y0, box_x1, box_y1], fill=TEXT_BG_COLOR)
     img = Image.alpha_composite(img, overlay)
     draw = ImageDraw.Draw(img)
 
-    # Text Drawing
+    # Text Drawing - Offset all Y positions by the top hidden area (GRID_CROP_HEIGHT)
     content_left = MARGIN + TEXT_BOX_MARGIN
-    y_pos = MARGIN + TEXT_BOX_MARGIN + 10
+    y_pos = GRID_CROP_HEIGHT + MARGIN + TEXT_BOX_MARGIN + 10
     
     # Cinema Names
     draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
@@ -334,7 +325,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
     y_pos += 60
 
     # Listings
-    max_text_y = CANVAS_SIZE - MARGIN - TEXT_BOX_MARGIN - 60
+    max_text_y = CANVAS_HEIGHT - GRID_CROP_HEIGHT - MARGIN - TEXT_BOX_MARGIN - 60
     
     for listing in listings:
         if y_pos > max_text_y:
@@ -360,7 +351,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         y_pos += 50
 
     # Footer
-    footer_y_pos = CANVAS_SIZE - MARGIN - TEXT_BOX_MARGIN - 30
+    footer_y_pos = CANVAS_HEIGHT - GRID_CROP_HEIGHT - MARGIN - TEXT_BOX_MARGIN - 30
     footer_text = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((content_left, footer_y_pos), footer_text, font=footer_font, fill=GRAY)
 
