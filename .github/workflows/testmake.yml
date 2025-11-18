@@ -1,0 +1,64 @@
+name: Test Instagram Delivery (Fast)
+
+on:
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  test_generate_and_send:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # We manually install these to be safe, in case requirements.txt isn't updated yet
+          pip install Pillow tzdata
+          # Attempt to install other requirements if they exist
+          if [ -f cinema-scrapers/requirements.txt ]; then pip install -r cinema-scrapers/requirements.txt; fi
+
+      - name: Run Generator Script (Uses existing JSON)
+        working-directory: './cinema-scrapers'
+        run: python generate_post.py
+
+      - name: Force Commit and Push
+        id: commit_push
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # We force add these specific files
+          git add 'cinema-scrapers/post_image.png'
+          git add 'cinema-scrapers/post_caption.txt'
+          
+          # Check if there are changes. If your JSON is old, the image might not change.
+          # We print a message but DON'T exit, so we can still test the webhook.
+          if git diff --staged --quiet; then
+            echo "No changes detected (probably mostly because showtimes.json hasn't changed)."
+            echo "pushed=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "TEST RUN: Updated Instagram assets"
+            git pull origin main --rebase
+            git push
+            echo "pushed=true" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Test Make.com Webhook
+        # We removed the 'if' condition so this ALWAYS runs for the test
+        run: |
+          echo "Sending TEST ping to Make.com..."
+          curl -X POST "${{ secrets.MAKE_WEBHOOK_URL }}"
+        env:
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
