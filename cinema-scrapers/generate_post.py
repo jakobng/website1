@@ -1,16 +1,16 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 9 (GENERATIVE ART):
-- Replaces static template with Generative Truchet Tiling (Smith Tiles).
-- Creates a unique, "optical illusion" maze background for every post.
-- Adds a semi-transparent overlay to ensure text readability.
+VERSION 9.1 (FIXED):
+- Added missing 'import re' to fix NameError.
+- Includes Generative Art background.
 - Full bilingual support and smart cinema selection.
 """
 from __future__ import annotations
 
 import json
 import random
+import re
 import textwrap
 from collections import defaultdict
 from datetime import datetime
@@ -49,6 +49,7 @@ GRAY = (80, 80, 80)
 CANVAS_SIZE = 1080
 MARGIN = 60
 TEXT_BOX_MARGIN = 40 # Padding inside the white text box
+TITLE_WRAP_WIDTH = 28 # Wrap width for movie titles
 
 # --- Bilingual Cinema Address Database ---
 CINEMA_ADDRESSES = {
@@ -206,16 +207,9 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
     return formatted
 
 def generate_art_background() -> Image.Image:
-    """
-    Generates a procedural Truchet (Smith Tile) pattern.
-    This creates a unique 'optical illusion' maze background every time.
-    """
+    """Generates a procedural Truchet (Smith Tile) pattern."""
     img = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), BG_COLOR)
     draw = ImageDraw.Draw(img)
-    
-    # Seed random with today's date to ensure the same pattern for the same day if run twice
-    # (Optional: Remove this line if you want it to be truly random every run)
-    # random.seed(datetime.now().strftime("%Y%m%d")) 
     
     cols = CANVAS_SIZE // GRID_SIZE + 1
     rows = CANVAS_SIZE // GRID_SIZE + 1
@@ -224,36 +218,18 @@ def generate_art_background() -> Image.Image:
         for r in range(rows):
             x = c * GRID_SIZE
             y = r * GRID_SIZE
-            
-            # Randomly choose orientation: 0 or 1
             tile_type = random.choice([0, 1])
             
             if tile_type == 0:
-                # Draw two arcs: Top-Left and Bottom-Right
-                draw.arc(
-                    [x - GRID_SIZE/2, y - GRID_SIZE/2, x + GRID_SIZE/2, y + GRID_SIZE/2],
-                    start=0, end=90, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                )
-                draw.arc(
-                    [x + GRID_SIZE/2, y + GRID_SIZE/2, x + 1.5*GRID_SIZE, y + 1.5*GRID_SIZE],
-                    start=180, end=270, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                )
+                draw.arc([x - GRID_SIZE/2, y - GRID_SIZE/2, x + GRID_SIZE/2, y + GRID_SIZE/2], start=0, end=90, fill=PATTERN_COLOR, width=STROKE_WIDTH)
+                draw.arc([x + GRID_SIZE/2, y + GRID_SIZE/2, x + 1.5*GRID_SIZE, y + 1.5*GRID_SIZE], start=180, end=270, fill=PATTERN_COLOR, width=STROKE_WIDTH)
             else:
-                # Draw two arcs: Top-Right and Bottom-Left
-                draw.arc(
-                    [x + GRID_SIZE/2, y - GRID_SIZE/2, x + 1.5*GRID_SIZE, y + GRID_SIZE/2],
-                    start=90, end=180, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                )
-                draw.arc(
-                    [x - GRID_SIZE/2, y + GRID_SIZE/2, x + GRID_SIZE/2, y + 1.5*GRID_SIZE],
-                    start=270, end=360, fill=PATTERN_COLOR, width=STROKE_WIDTH
-                )
-                
+                draw.arc([x + GRID_SIZE/2, y - GRID_SIZE/2, x + 1.5*GRID_SIZE, y + GRID_SIZE/2], start=90, end=180, fill=PATTERN_COLOR, width=STROKE_WIDTH)
+                draw.arc([x - GRID_SIZE/2, y + GRID_SIZE/2, x + GRID_SIZE/2, y + 1.5*GRID_SIZE], start=270, end=360, fill=PATTERN_COLOR, width=STROKE_WIDTH)
     return img
 
 def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
     try:
-        # 1. Generate the background art
         img = generate_art_background()
     except Exception as e:
         print(f"Error generating background: {e}")
@@ -272,23 +248,20 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         print("Error loading fonts.")
         raise
 
-    # 2. Draw a semi-transparent white box for text readability
+    # Draw semi-transparent overlay
     overlay = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
-    # Box dimensions: centered, with margins
     box_x0 = MARGIN
     box_y0 = MARGIN
     box_x1 = CANVAS_SIZE - MARGIN
     box_y1 = CANVAS_SIZE - MARGIN
     
     draw_ov.rectangle([box_x0, box_y0, box_x1, box_y1], fill=TEXT_BG_COLOR)
-    
-    # Composite the box onto the background
     img = Image.alpha_composite(img, overlay)
     draw = ImageDraw.Draw(img)
 
-    # 3. Text Drawing Logic (offset by TEXT_BOX_MARGIN inside the box)
+    # Text Drawing
     content_left = MARGIN + TEXT_BOX_MARGIN
     y_pos = MARGIN + TEXT_BOX_MARGIN + 10
     
@@ -315,7 +288,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
     y_pos += 60
 
     # Listings
-    max_text_y = CANVAS_SIZE - MARGIN - TEXT_BOX_MARGIN - 60 # Leave room for footer
+    max_text_y = CANVAS_SIZE - MARGIN - TEXT_BOX_MARGIN - 60
     
     for listing in listings:
         if y_pos > max_text_y:
@@ -340,7 +313,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         draw.text((content_left + 30, y_pos), listing["times"], font=small_font, fill=GRAY)
         y_pos += 50
 
-    # Footer (pinned to bottom of the white box)
+    # Footer
     footer_y_pos = CANVAS_SIZE - MARGIN - TEXT_BOX_MARGIN - 10
     footer_text = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((content_left, footer_y_pos), footer_text, font=footer_font, fill=GRAY)
