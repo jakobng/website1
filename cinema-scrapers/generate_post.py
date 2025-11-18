@@ -1,12 +1,11 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 14 (LIVING GRADIENT):
-- Theme: "Yellow Pulsing Centre - White Theme".
-- Generates a smooth radial gradient that "breathes" (expands/contracts)
-  over a 60-day cycle based on the date.
-- Canvas: 1080x1350 (Portrait) with Grid Safe Zone.
-- Full bilingual support and smart cinema selection.
+VERSION 15 (FULLY DYNAMIC):
+- Gradient: Adds a RANDOM OFFSET to the pulse logic. Every run produces
+  a unique variation of the "Yellow Center / White Edge" theme.
+- Logic: Keeps the "Smart Selection" (min 3 films) and bilingual support.
+- Output: 4:5 Portrait (1080x1350) with grid-safe centering.
 """
 from __future__ import annotations
 
@@ -55,10 +54,9 @@ COLOR_CENTER = (255, 195, 11)
 COLOR_EDGE = (255, 255, 250)
 
 # Text & UI
-TEXT_BG_COLOR = (255, 255, 255, 210) # Slightly more transparent to let gradient show
+TEXT_BG_COLOR = (255, 255, 255, 220) # Slightly opaque for readability
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
-
 
 # --- Bilingual Cinema Address Database ---
 CINEMA_ADDRESSES = {
@@ -190,8 +188,13 @@ def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
         print("No cinemas found with any films.")
         return "", []
 
+    # Shuffle and pick
+    random.shuffle(good_pool)
     chosen_cinema_name = random.choice(good_pool)
-    print(f"Pool of {len(good_pool)} cinemas. Randomly selected: {chosen_cinema_name}")
+    
+    print(f"Candidate Pool ({len(good_pool)}): {good_pool}")
+    print(f"Selected Cinema: {chosen_cinema_name}")
+    
     return chosen_cinema_name, grouped[chosen_cinema_name]
 
 def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
@@ -217,55 +220,49 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
 
 def generate_gradient_background() -> Image.Image:
     """
-    Generates a radial gradient that 'breathes' based on the day of the year.
-    Yellow Center -> White Edge.
+    Generates a radial gradient with a RANDOMIZED OFFSET.
+    This ensures the image is unique every time it runs, while keeping the theme.
     """
     width, height = CANVAS_WIDTH, CANVAS_HEIGHT
     img = Image.new("RGB", (width, height), COLOR_EDGE)
     draw = ImageDraw.Draw(img)
 
-    # Time-based pulse (0.0 to 1.0) over a ~60 day cycle
+    # Base pulse on day of year (slow evolution)
     day_of_year = datetime.now().timetuple().tm_yday
-    pulse = (math.sin(day_of_year / 10.0) + 1) / 2 
+    base_pulse = (math.sin(day_of_year / 10.0) + 1) / 2 
     
-    # Center of the gradient
+    # Add a RANDOM offset (fast variation)
+    # This makes every single generation distinct
+    random_offset = random.uniform(-0.5, 0.5)
+    
+    # Combine them (clamped 0.0 to 1.0)
+    final_pulse = max(0.0, min(1.0, base_pulse + random_offset))
+    
+    # Center
     cx, cy = width // 2, height // 2
-    
-    # Max radius (distance to corner)
     max_dist = math.sqrt(cx**2 + cy**2)
     
-    # The 'spread' controls how tight the yellow center is.
-    # Pulse 0 = Tighter yellow (more white)
-    # Pulse 1 = Wider yellow (less white)
-    spread_factor = 3.0 - (pulse * 1.5) # Oscillates between 1.5 (Wide) and 3.0 (Tight)
+    # Calculate spread based on the randomized pulse
+    spread_factor = 3.5 - (final_pulse * 2.0) # Varies between 1.5 (Wide) and 3.5 (Tight)
     
-    # Draw concentric circles for the gradient
-    # Step size 2 for efficiency
+    print(f"Generating Gradient with Spread Factor: {spread_factor:.2f}")
+
     for r in range(int(max_dist), 0, -2):
-        # Normalized distance (0 at center, 1 at corner)
         dist_norm = r / max_dist
-        
-        # Apply spread curve
         t = dist_norm ** spread_factor
         t = max(0, min(1, t))
         
-        # Interpolate color
         r_val = int(COLOR_CENTER[0] * (1-t) + COLOR_EDGE[0] * t)
         g_val = int(COLOR_CENTER[1] * (1-t) + COLOR_EDGE[1] * t)
         b_val = int(COLOR_CENTER[2] * (1-t) + COLOR_EDGE[2] * t)
         
         color = (r_val, g_val, b_val)
-        
-        draw.ellipse(
-            [cx - r, cy - r, cx + r, cy + r],
-            fill=color, outline=color
-        )
+        draw.ellipse([cx - r, cy - r, cx + r, cy + r], fill=color, outline=color)
         
     return img
 
 def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
     try:
-        # Generate the living gradient
         img = generate_gradient_background().convert("RGBA")
     except Exception as e:
         print(f"Error generating background: {e}")
@@ -284,11 +281,10 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         print("Error loading fonts.")
         raise
 
-    # Semi-transparent box - vertically centered in the safe zone
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
-    # Center Square Safe Zone
+    # Safe Zone Box
     box_x0 = MARGIN
     box_y0 = GRID_CROP_HEIGHT + MARGIN
     box_x1 = CANVAS_WIDTH - MARGIN
@@ -298,7 +294,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
     img = Image.alpha_composite(img, overlay)
     draw = ImageDraw.Draw(img)
 
-    # Text Drawing - Offset all Y positions by the top hidden area (GRID_CROP_HEIGHT)
+    # Text Content
     content_left = MARGIN + TEXT_BOX_MARGIN
     y_pos = GRID_CROP_HEIGHT + MARGIN + TEXT_BOX_MARGIN + 10
     
@@ -340,78 +336,4 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
         
         if listing["en_title"]:
             if y_pos > max_text_y: break
-            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=45)
-            for line in wrapped_en:
-                if y_pos > max_text_y: break
-                draw.text((content_left + 5, y_pos), line, font=en_movie_font, fill=GRAY)
-                y_pos += 34
-        
-        y_pos += 8
-        draw.text((content_left + 30, y_pos), listing["times"], font=small_font, fill=GRAY)
-        y_pos += 50
-
-    # Footer
-    footer_y_pos = CANVAS_HEIGHT - GRID_CROP_HEIGHT - MARGIN - TEXT_BOX_MARGIN - 30
-    footer_text = "詳細は web / Details online: leonelki.com/cinemas"
-    draw.text((content_left, footer_y_pos), footer_text, font=footer_font, fill=GRAY)
-
-    img.save(OUTPUT_IMAGE_PATH)
-
-def write_caption(cinema_name: str, cinema_name_en: str, address: str, date_jp: str, listings: List[Dict[str, str | None]]) -> None:
-    header = f"【{cinema_name}】"
-    if cinema_name_en: header += f"\n{cinema_name_en}"
-    
-    lines = [header]
-    if address: lines.append(f"📍 {address.replace(chr(10), ' / ')}")
-
-    lines.append(f"\n🗓️ 本日の上映情報 / Today's Showings ({date_jp})\n")
-
-    for listing in listings:
-        lines.append(f"■ {listing['title']}")
-        if listing['en_title']: lines.append(f"  ({listing['en_title']})")
-        lines.append(f"  {listing['times']}")
-        lines.append("")
-
-    hashtag = "".join(ch for ch in cinema_name if ch.isalnum() or "\u3040" <= ch <= "\u30ff" or "\u4e00" <= ch <= "\u9fff")
-    lines.extend([
-        "詳細はプロフィールのリンクから！ / Details in bio link!",
-        "leonelki.com/cinemas",
-        f"\n#東京 #ミニシアター #映画 #映画館 #上映情報 #{hashtag}",
-        "#tokyocinema #tokyomovie #arthousecinema"
-    ])
-    OUTPUT_CAPTION_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
-
-def main() -> None:
-    today = today_in_tokyo().date()
-    today_str = today.isoformat()
-    
-    # --- LIVE MODE ---
-    date_jp = today.strftime("%Y年%m月%d日")
-    date_en = today.strftime("%b %d, %Y")
-    bilingual_date_str = f"{date_jp} / {date_en}"
-
-    todays_showings = load_showtimes(today_str)
-    if not todays_showings:
-        print(f"No showings for today ({today_str}). Exiting.")
-        return
-
-    cinema_name, cinema_showings = choose_cinema(todays_showings)
-    if not cinema_showings:
-        print("No cinemas with showings today. Exiting.")
-        return
-
-    listings = format_listings(cinema_showings)
-    if not listings:
-        print("Selected cinema has no valid listings. Exiting.")
-        return
-    
-    address = CINEMA_ADDRESSES.get(cinema_name, "")
-    address_lines = address.split("\n")
-    cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
-
-    draw_image(cinema_name, cinema_name_en, address_lines, bilingual_date_str, listings)
-    write_caption(cinema_name, cinema_name_en, address, bilingual_date_str, listings)
-    print(f"Generated post for {cinema_name} on {today_str}.")
-
-if __name__ == "__main__":
-    main()
+            wrapped_en = textwrap.wrap(f"({listing['
