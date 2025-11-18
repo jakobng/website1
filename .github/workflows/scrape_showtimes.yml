@@ -72,3 +72,11 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # This is the new, final step
+  - name: Trigger Make.com Instagram Post
+    run: |
+      echo "Sending ping to Make.com to trigger post..."
+      curl -X POST "${{ secrets.MAKE_WEBHOOK_URL }}"
+    env:
+      MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
