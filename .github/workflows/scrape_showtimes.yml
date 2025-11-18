@@ -73,10 +73,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          # This is the new, final step
-  - name: Trigger Make.com Instagram Post
+      - name: Trigger Make.com Instagram Post
+    # This line ensures we only ping Make.com if new files were actually committed
+    if: steps.commit_push.outputs.pushed == 'true' 
     run: |
-      echo "Sending ping to Make.com to trigger post..."
+      echo "New files pushed. Triggering Make.com webhook..."
       curl -X POST "${{ secrets.MAKE_WEBHOOK_URL }}"
     env:
       MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
