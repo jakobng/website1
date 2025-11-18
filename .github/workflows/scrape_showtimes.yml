@@ -51,12 +51,18 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
+      - name: Generate Instagram post assets
+        working-directory: './cinema-scrapers'
+        run: python generate_post.py
+
       - name: Commit and push generated files
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add 'cinema-scrapers/showtimes.json'
           git add 'cinema-scrapers/tmdb_cache.json'
+          git add 'cinema-scrapers/post_image.png'
+          git add 'cinema-scrapers/post_caption.txt'
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0
