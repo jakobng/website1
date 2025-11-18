@@ -428,7 +428,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const jsonUrl = 'showtimes.json';
+            // Fetch the JSON from its original location so the HTML can live elsewhere
+            const jsonUrl = '/cinema-scrapers/showtimes.json';
             const cinemaSelectionGridContainerEl = document.getElementById('cinema-selection-grid-container');
             const selectedCinemaShowtimesContainer = document.getElementById('selected-cinema-showtimes');
             const initialLoadingMessageContainer = document.getElementById('initial-loading-message-container');
