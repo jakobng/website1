@@ -1,4 +1,5 @@
-"""Generate Instagram-ready image and caption for today's cinema showings.
+"""
+Generate Instagram-ready image and caption for today's cinema showings.
 
 This script reads ``showtimes.json`` produced by ``main_scraper.py`` and creates
 ``post_image.png`` and ``post_caption.txt`` using a provided template image and
@@ -11,7 +12,7 @@ import json
 import random
 import textwrap
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, date  # Import date directly
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -44,7 +45,11 @@ GRAY = (96, 96, 96)
 def today_in_tokyo() -> datetime:
     """Return the current datetime in the Asia/Tokyo timezone if available."""
     if ZoneInfo is not None:
-        return datetime.now(ZoneInfo("Asia/Tokyo"))
+        try:
+            return datetime.now(ZoneInfo("Asia/Tokyo"))
+        except Exception:
+            # Fallback if tzdata is missing
+            return datetime.now()
     return datetime.now()
 
 
@@ -120,7 +125,9 @@ def draw_image(cinema_name: str, date_jp: str, listings: List[Dict[str, str]]) -
 
     y_pos = TOP_MARGIN
     draw.text((LEFT_MARGIN, y_pos), cinema_name, font=title_font, fill=BLACK)
-    draw.text((LEFT_MARGIN, y_pos + 80), date_jp, font=small_font, fill=GRAY)
+    
+    # Use the simple date string for the image
+    draw.text((LEFT_MARGIN, y_pos + 80), f"Showings for {date_jp}", font=small_font, fill=GRAY)
     y_pos += 150
 
     for listing in listings:
@@ -134,7 +141,7 @@ def draw_image(cinema_name: str, date_jp: str, listings: List[Dict[str, str]]) -
         draw.text((LEFT_MARGIN + 30, y_pos), listing["times"], font=small_font, fill=GRAY)
         y_pos += 60
 
-    draw.text((LEFT_MARGIN, FOOTER_Y), "詳細は leonelki.com/cinema-scrapers/ で", font=small_font, fill=GRAY)
+    draw.text((LEFT_MARGIN, FOOTER_Y), "Details at leonelki.com/cinema-scrapers/", font=small_font, fill=GRAY)
     template.save(OUTPUT_IMAGE_PATH)
 
 
@@ -148,20 +155,20 @@ def write_caption(cinema_name: str, date_jp: str, listings: List[Dict[str, str]]
     """Write the Instagram caption to a UTF-8 text file."""
     lines = [
         f"【{cinema_name}】",
-        f"本日（{date_jp}）の上映情報です。",
-        "",
+        # Use the simple date string for the caption
+        f"Showings for {date_jp}\n"
     ]
 
     for listing in listings:
         lines.append(f"■ {listing['title']}")
-        lines.append(listing["times"])
+        lines.append(f"  {listing['times']}")
         lines.append("")
 
     hashtag = build_hashtag(cinema_name)
     lines.extend(
         [
-            "詳細はプロフィールのリンクから！ leonelki.com/cinema-scrapers/",
-            "#東京 #ミニシアター #映画 #映画館 #上映情報 #" + hashtag,
+            "Full listings at leonelki.com/cinema-scrapers/",
+            "#Tokyo #MiniTheatre #Cinema #MovieShowtimes #" + hashtag,
         ]
     )
 
@@ -172,11 +179,20 @@ def write_caption(cinema_name: str, date_jp: str, listings: List[Dict[str, str]]
 def main() -> None:
     today = today_in_tokyo().date()
     today_str = today.isoformat()
-    date_jp = today.strftime("%Y年%m月%d日")
+    
+    # --- TEMPORARY TEST CHANGES ---
+    # 1. Force a date that you know exists in your showtimes.json
+    today_str = "2025-11-04"
+    # 2. Use this simple string for the image/caption to avoid Windows encoding errors
+    date_jp = "2025-11-04"
+    # --- END OF TEST CHANGES ---
+
+    # This is the original line, now replaced by the test lines above:
+    # date_jp = today.strftime("%Y年%m月%d日")
 
     todays_showings = load_showtimes(today_str)
     if not todays_showings:
-        print("No showings for today.")
+        print(f"No showings for today ({today_str}). Check your test date.")
         return
 
     cinema_name, cinema_showings = choose_cinema(todays_showings)
@@ -197,7 +213,11 @@ def main() -> None:
 if __name__ == "__main__":
     try:
         main()
-    except FileNotFoundError:
-        pass
-    except json.JSONDecodeError:
-        pass
+    except FileNotFoundError as e:
+        print(f"FATAL ERROR: A required file was not found.")
+        print(f"{e}")
+    except json.JSONDecodeError as e:
+        print(f"FATAL ERROR: Could not read {SHOWTIMES_PATH}.")
+        print(f"{e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
