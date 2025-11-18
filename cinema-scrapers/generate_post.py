@@ -1,11 +1,12 @@
 """
 Generate Instagram-ready image and caption for today's cinema showings.
 
-VERSION 17 (THE INFINITE GRADIENT):
-- Creates a linear gradient that connects seamlessly with the previous day's post.
-- Grid Logic: [Today: C->B] [Yesterday: B->A]. The edges match perfectly.
-- Colors: Randomly selected daily from a vibrant palette + neutrals (White/Black).
-- Layout: Portrait 4:5 with Grid Safe Zone.
+VERSION 18 (THE INFINITE RIBBON):
+- Design: A continuous White Line flowing across a Deep Yellow background.
+- Grid Logic: The line's exit point (Right) on today's post perfectly matches
+  the entry point (Left) of yesterday's post.
+- Tech: Uses deterministic random seeding based on the Date to ensure continuity.
+- Layout: 4:5 Portrait (1080x1350) with grid-safe text.
 """
 from __future__ import annotations
 
@@ -14,7 +15,6 @@ import math
 import random
 import re
 import textwrap
-import colorsys
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -42,16 +42,23 @@ MINIMUM_FILM_THRESHOLD = 3
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
 
-# "Safe Zone" Logic
+# "Safe Zone" Logic (Center 1080x1080 square)
 GRID_CROP_HEIGHT = (CANVAS_HEIGHT - CANVAS_WIDTH) // 2 
 MARGIN = 60 
 TEXT_BOX_MARGIN = 40
 TITLE_WRAP_WIDTH = 30
 
-# Text & UI
+# --- THEME COLORS ---
+BG_COLOR = (255, 195, 11)       # Deep Yellow
+LINE_COLOR = (255, 255, 255)    # White Ribbon
 TEXT_BG_COLOR = (255, 255, 255, 230) 
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
+
+# Ribbon Settings
+LINE_THICKNESS = 40  # Bold line
+AMPLITUDE_MIN = 0.2  # Min height (20% from top)
+AMPLITUDE_MAX = 0.8  # Max height (80% from top)
 
 # --- Bilingual Cinema Address Database ---
 CINEMA_ADDRESSES = {
@@ -183,11 +190,13 @@ def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
         print("No cinemas found with any films.")
         return "", []
 
+    # Shuffle and pick
     random.shuffle(good_pool)
     chosen_cinema_name = random.choice(good_pool)
     
     print(f"Candidate Pool ({len(good_pool)}): {good_pool}")
     print(f"Selected Cinema: {chosen_cinema_name}")
+    
     return chosen_cinema_name, grouped[chosen_cinema_name]
 
 def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
@@ -211,77 +220,70 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
-# --- COLOR GENERATION ---
-def get_day_color(day_idx: int) -> Tuple[int, int, int]:
+# --- CONTINUOUS RIBBON LOGIC ---
+def get_ribbon_y_at_day_boundary(day_number: int) -> float:
     """
-    Returns a unique RGB color for a given day index.
-    Mixes vibrant colors with occasional neutrals (White/Black).
+    Returns a deterministic Y-coordinate (normalized 0.0 to 1.0)
+    for the boundary between two days.
+    Seed ensures Right(N) == Left(N-1).
     """
-    # Seed random with the specific day index so it's deterministic but random-looking
-    r = random.Random(day_idx)
-    
-    # 10% chance of being a neutral "reset" color (White/Off-White/Dark)
-    if r.random() < 0.1:
-        val = r.randint(230, 255)
-        return (val, val, val) # Shades of White
-    
-    # Otherwise, generate a vibrant color
-    hue = r.random() # 0.0 to 1.0
-    saturation = r.uniform(0.6, 1.0)
-    value = r.uniform(0.8, 1.0)
-    
-    rgb = colorsys.hsv_to_rgb(hue, saturation, value)
-    return (int(rgb[0]*255), int(rgb[1]*255), int(rgb[2]*255))
+    r = random.Random(day_number)
+    # Keep it somewhat centered so it doesn't go off screen
+    return r.uniform(AMPLITUDE_MIN, AMPLITUDE_MAX)
 
-def generate_gradient_background() -> Image.Image:
-    """
-    Generates a linear Left-to-Right gradient.
-    Left Color: Color(Tomorrow) -> This connects to the PREVIOUS post's Right side?
-    WAIT. Instagram Grid is: [New] [Old].
-    To match visually:
-    [New Right] must match [Old Left].
-    
-    Old Post (Day N-1): Left=C(N)  | Right=C(N-1)
-    New Post (Day N):   Left=C(N+1)| Right=C(N)
-    
-    So Gradient Direction must be: Left -> Right.
-    Start Color (Left): C(N+1)
-    End Color (Right):  C(N)
-    """
-    width, height = CANVAS_WIDTH, CANVAS_HEIGHT
-    img = Image.new("RGB", (width, height))
+def generate_ribbon_background() -> Image.Image:
+    """Generates the flowing ribbon background."""
+    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), BG_COLOR)
     draw = ImageDraw.Draw(img)
-
-    # Get current day index (simple incrementing number)
-    # We use unix timestamp / 86400 to get a stable "Day Number" that increments forever
+    
+    # Day Number (Integer) determines the nodes
+    # Today is Post N. Yesterday was Post N-1.
+    # Instagram Grid Layout: [N] [N-1] [N-2]
+    # So, the Right side of N must match the Left side of N-1.
+    
+    # Use timestamp to get consistent day integer
     day_number = int(datetime.now().timestamp() // 86400)
     
-    # Color N (Today's "Anchor") - matches Yesterday's Left
-    color_right = get_day_color(day_number) 
+    # Left Height (Start of Today) -> Connects to Tomorrow (N+1)
+    y_left_norm = get_ribbon_y_at_day_boundary(day_number + 1)
     
-    # Color N+1 (Tomorrow's "Anchor") - matches Tomorrow's Right
-    color_left = get_day_color(day_number + 1)
+    # Right Height (End of Today) -> Connects to Yesterday (N)
+    y_right_norm = get_ribbon_y_at_day_boundary(day_number)
     
-    print(f"Generating Gradient: Left {color_left} -> Right {color_right}")
+    y_left = int(y_left_norm * CANVAS_HEIGHT)
+    y_right = int(y_right_norm * CANVAS_HEIGHT)
+    
+    print(f"Ribbon Points: Left({y_left}) -> Right({y_right})")
 
-    # Draw Linear Gradient
-    for x in range(width):
-        t = x / width
-        r = int(color_left[0] * (1-t) + color_right[0] * t)
-        g = int(color_left[1] * (1-t) + color_right[1] * t)
-        b = int(color_left[2] * (1-t) + color_right[2] * t)
+    # Draw smoothed curve
+    # We use a simple sine-interpolation or cubic bezier for smoothness
+    points = []
+    steps = 100
+    for i in range(steps + 1):
+        t = i / steps # 0.0 to 1.0
         
-        # Draw vertical line
-        draw.line([(x, 0), (x, height)], fill=(r, g, b))
+        # Sigmoid interpolation for smooth ease-in/ease-out
+        # 3t^2 - 2t^3 is a standard smoothstep function
+        smooth_t = (3 * t**2) - (2 * t**3)
+        
+        x = int(t * CANVAS_WIDTH)
+        y = int(y_left * (1 - smooth_t) + y_right * smooth_t)
+        points.append((x, y))
+    
+    # Draw the thick line
+    draw.line(points, fill=LINE_COLOR, width=LINE_THICKNESS)
+    
+    # Draw a second, thinner line for style (optional)
+    # draw.line(points, fill=BLACK, width=2)
         
     return img
 
 def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
     try:
-        img = generate_gradient_background().convert("RGBA")
+        img = generate_ribbon_background().convert("RGBA")
     except Exception as e:
         print(f"Error generating background: {e}")
-        img = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
+        img = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), BG_COLOR)
 
     try:
         title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
@@ -299,7 +301,7 @@ def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilin
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
-    # Safe Zone Box
+    # Safe Zone Box (Centered Square)
     box_x0 = MARGIN
     box_y0 = GRID_CROP_HEIGHT + MARGIN
     box_x1 = CANVAS_WIDTH - MARGIN
