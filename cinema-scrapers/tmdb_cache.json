@@ -4893,12 +4893,6 @@
   },
   "入国審査|2023|アレハンドロ・ロハス、フアン・セバスチャン・バスケス 出演：アルベルト・アンマン": {},
   "ウカマウ集団60年の全軌跡||": {},
-  "『鬼才の道』|2024|": {
-    "id": 1006724,
-    "tmdb_title": "Dead Talents Society",
-    "tmdb_original_title": "鬼才之道",
-    "letterboxd_english_title": "Dead Talents Society (2024)"
-  },
   "大長編 タローマン 万博大爆発|2025|": {
     "id": 1469864,
     "tmdb_title": "Taroman Expo Explosion",
@@ -4906,12 +4900,13 @@
     "letterboxd_english_title": "Taroman Expo Explosion (2025)"
   },
   "Netflix 映画『ジェイ・ケリー』|2025|": {},
-  "PERFECT BLUE|1998|": {
-    "id": 10494,
-    "tmdb_title": "Perfect Blue",
-    "tmdb_original_title": "PERFECT BLUE",
-    "letterboxd_english_title": "Perfect Blue (1997)"
+  "『鬼才の道』|2024|": {
+    "id": 1006724,
+    "tmdb_title": "Dead Talents Society",
+    "tmdb_original_title": "鬼才之道",
+    "letterboxd_english_title": "Dead Talents Society (2024)"
   },
+  "PERFECT BLUE〈4Kリマスター版〉||": {},
   "大阪物語|1999|": {
     "id": 307038,
     "tmdb_title": "Osaka Story",
@@ -5111,7 +5106,6 @@
     "tmdb_original_title": "天使のたまご",
     "letterboxd_english_title": "Angel's Egg (1985)"
   },
-  "サラゴサの写本||ヴォイチェフ・イエジー・ハス": {},
   "砂時計||ヴォイチェフ・イエジー・ハス": {
     "id": 277619,
     "tmdb_title": "Sand Chronicles",
@@ -5180,10 +5174,10 @@
     "letterboxd_english_title": "Blonde (2025)"
   },
   "Eno|2024|ギャリー・ハストウィット": {
-    "id": 1267888,
-    "tmdb_title": "Queer Enough",
-    "tmdb_original_title": "Queer Enough",
-    "letterboxd_english_title": "Queer Enough (2024)"
+    "id": 1369312,
+    "tmdb_title": "Man Enough",
+    "tmdb_original_title": "Man Enough",
+    "letterboxd_english_title": "Man Enough (2024)"
   },
   "第1部:ブルジョワジーの叛乱||": {},
   "第3部:民衆の力||": {},
