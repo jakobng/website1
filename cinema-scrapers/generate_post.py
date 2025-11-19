@@ -1,9 +1,11 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 25 (SOLAR BURST GRADIENT):
+VERSION 26 (INFINITE SOLAR BURST):
 - Design: Central radial gradient fading to white edges.
-- Color Logic: Center color shifts every 3 days (Yellow -> Orange -> Red).
+- Color Logic: Mathematically cycles through the full color spectrum.
+  - Changes every 3 days.
+  - Shifts slightly (12 degrees) to create a smooth evolution over weeks.
 - Layout: Clean typography, floating on the gradient, no slide numbers.
 """
 from __future__ import annotations
@@ -13,6 +15,7 @@ import math
 import random
 import re
 import textwrap
+import colorsys # New import for color math
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -37,7 +40,7 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
-MAX_LISTINGS_VERTICAL_SPACE = 840 
+MAX_LISTINGS_VERTICAL_SPACE = 800 # Conservative limit to prevent footer crowding
 
 # Layout (4:5 Portrait)
 CANVAS_WIDTH = 1080
@@ -46,16 +49,8 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-# 1. HERO GRADIENT PALETTE (Cycle every 3 days)
-HERO_COLORS = [
-    (255, 200, 0),   # 1. Deep Sunflower Yellow
-    (255, 165, 0),   # 2. Orangey Yellow
-    (255, 110, 0),   # 3. Deep Orange
-    (255, 70, 30)    # 4. Reddy Orange
-]
-
-# 2. Content Slide Colors
-CONTENT_BG_COLOR = (255, 255, 255) # Pure White for clean contrast against the gradient hero
+# Content Slide Colors
+CONTENT_BG_COLOR = (255, 255, 255) # Pure White for clean contrast
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
@@ -124,7 +119,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
     if not text: return False
     if not re.search(r'[a-zA-Z]', text): return False 
     japanese_chars = re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]', text)
-    latin_chars = re.findall(r'[a-zA-Z]', text)
+    latin_chars = re.findall(r'[a-zA-Z]', text) 
     if not japanese_chars: return True
     if latin_chars:
         if len(latin_chars) > len(japanese_chars) * 2: return True
@@ -219,40 +214,40 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
 
     return SEGMENTED_LISTS
 
-# --- HERO DESIGN: SOLAR BURST GRADIENT ---
+# --- HERO DESIGN: INFINITE SOLAR BURST ---
 
 def generate_burst_background(day_number: int) -> Image.Image:
-    """Generates a radial gradient bursting from the center to white edges."""
+    """Generates a radial gradient bursting from a dynamic center color to white edges."""
     
-    # 1. Determine Central Color (Cycles every 3 days)
-    # (day // 3) ensures color stays same for 3 days, then moves to next in list
-    seq_idx = (day_number // 3) % len(HERO_COLORS)
-    center_color = HERO_COLORS[seq_idx]
+    # 1. Calculate Dynamic Center Color
+    # Logic: Cycle through the 360 degree color wheel.
+    # 'day_number // 3' means the color holds for 3 days.
+    # '* 12' means we shift 12 degrees on the color wheel every 3 days.
+    # Starting at 45 (Yellow-Orange) for brand consistency.
+    hue_degrees = (45 + (day_number // 3) * 12) % 360
+    hue_norm = hue_degrees / 360.0
+    
+    # High saturation and value for a deep, vibrant burst
+    saturation = 1.0 
+    value = 1.0
+    
+    r_float, g_float, b_float = colorsys.hsv_to_rgb(hue_norm, saturation, value)
+    center_color = (int(r_float*255), int(g_float*255), int(b_float*255))
     
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
     draw = ImageDraw.Draw(img)
     
     center_x, center_y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
-    
-    # Calculate diagonal distance to corner to ensure gradient covers/fades appropriately
     max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
     
-    # Draw concentric circles from outside in
-    # To achieve "Edges always white", we fade from White (at Edge) to Color (at Center)
-    # or we draw Color circles that get smaller and more opaque?
-    # Actually, simpler: Draw full circles from max_radius down to 0.
-    # At r=max_radius, color is White. At r=0, color is CenterColor.
-    
-    # Step size of 2 pixels is a good balance of speed and smoothness
+    # 2. Draw Radial Gradient
+    # Draw concentric circles from outside (White) to inside (Color)
     for r in range(max_radius, 0, -2):
-        # t goes from 0.0 (center) to 1.0 (edge)
         t = r / max_radius
+        # t^0.6 pushes the color outward for a "burst" feel rather than a linear fade
+        t_adj = t ** 0.6
         
-        # Non-linear interpolation for a "burst" effect (pushes color outward)
-        # t^0.5 makes the color spread further out before turning white
-        t_adj = t ** 0.7 
-        
-        # Interpolate between CenterColor and White (255, 255, 255)
+        # Interpolate between CenterColor and White (255,255,255)
         red = int(center_color[0] * (1 - t_adj) + 255 * t_adj)
         green = int(center_color[1] * (1 - t_adj) + 255 * t_adj)
         blue = int(center_color[2] * (1 - t_adj) + 255 * t_adj)
@@ -273,7 +268,6 @@ def draw_hero_slide(bilingual_date: str) -> Image.Image:
     draw_ov = ImageDraw.Draw(overlay)
     
     try:
-        # Slightly larger title fonts for the "simple" look
         title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 120)
         subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 60)
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
@@ -281,15 +275,14 @@ def draw_hero_slide(bilingual_date: str) -> Image.Image:
     except Exception:
         raise
 
-    # --- Text (Floating directly on gradient, no box) ---
-    # We add a very subtle shadow behind text to ensure readability on yellow/orange
+    # --- Text (Floating directly on gradient) ---
     text_center_x = CANVAS_WIDTH // 2
     center_y = CANVAS_HEIGHT // 2
     
+    # Helper for shadow text
     def draw_shadowed_text(x, y, text, font, main_color=BLACK):
-        # Shadow
-        draw_ov.text((x+2, y+2), text, font=font, fill=(255, 255, 255, 100), anchor="mm")
-        # Main
+        # Soft White Shadow for readability against deep colors
+        draw_ov.text((x+3, y+3), text, font=font, fill=(255, 255, 255, 140), anchor="mm")
         draw_ov.text((x, y), text, font=font, fill=main_color, anchor="mm")
 
     draw_shadowed_text(text_center_x, center_y - 120, "TOKYO", title_font)
@@ -298,7 +291,6 @@ def draw_hero_slide(bilingual_date: str) -> Image.Image:
     draw_shadowed_text(text_center_x, center_y + 160, "本日の上映情報", subtitle_font, GRAY)
     draw_shadowed_text(text_center_x, center_y + 240, bilingual_date, date_font, GRAY)
 
-    # Footer
     draw_shadowed_text(text_center_x, CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S BEST PICKS →", footer_font)
 
     img = Image.alpha_composite(img, overlay)
