@@ -1,12 +1,13 @@
 """
-Generate Instagram-ready image and caption for today's cinema showings.
+Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 18 (THE INFINITE RIBBON):
-- Design: A continuous White Line flowing across a Deep Yellow background.
-- Grid Logic: The line's exit point (Right) on today's post perfectly matches
-  the entry point (Left) of yesterday's post.
-- Tech: Uses deterministic random seeding based on the Date to ensure continuity.
-- Layout: 4:5 Portrait (1080x1350) with grid-safe text.
+VERSION 19 (THE WIDE RIBBON):
+- Design: A continuous White Line flowing across a Deep Yellow background (Hero Slide). 
+- Carousel Logic: The post features a Title Slide followed by a dedicated slide for 
+  each of the top N cinemas showing films today.
+- Grid Logic: The ribbon's exit point (Right) on yesterday's post should match 
+  the entry point (Left) of today's Title Slide.
+- Layout: 4:5 Portrait (1080x1350) per slide with grid-safe text.
 """
 from __future__ import annotations
 
@@ -32,11 +33,12 @@ BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
-OUTPUT_IMAGE_PATH = BASE_DIR / "post_image.png"
+OUTPUT_IMAGE_PATH = BASE_DIR / "post_image.png" # This is a placeholder now, slides are numbered
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
+MAX_CAROUSEL_SLIDES = 5
 
 # Layout (4:5 Portrait)
 CANVAS_WIDTH = 1080
@@ -52,6 +54,7 @@ TITLE_WRAP_WIDTH = 30
 BG_COLOR = (255, 195, 11)       # Deep Yellow
 LINE_COLOR = (255, 255, 255)    # White Ribbon
 TEXT_BG_COLOR = (255, 255, 255, 230) 
+SOLID_SLIDE_COLOR = (255, 255, 255) # White for inner slides
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
@@ -132,7 +135,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
     return False
 
 def find_best_english_title(showing: Dict) -> str | None:
-    jp_title = showing.get('movie_title', '').lower()
+    jp_title = (showing.get('movie_title') or '').lower()
     
     def get_clean_title(title_key: str) -> str | None:
         title = showing.get(title_key)
@@ -162,42 +165,50 @@ def load_showtimes(today_str: str) -> List[Dict]:
             all_showings = json.load(handle)
     except FileNotFoundError:
         print(f"showtimes.json not found at {SHOWTIMES_PATH}")
-        raise
+        # Return empty list instead of raising to allow graceful failure
+        return []
     except json.JSONDecodeError as exc:
         print("Unable to decode showtimes.json")
         raise exc
     todays_showings = [show for show in all_showings if show.get("date_text") == today_str]
     return todays_showings
 
-def choose_cinema(showings: List[Dict]) -> Tuple[str, List[Dict]]:
+# --- MODIFIED SELECTION LOGIC FOR CAROUSEL ---
+def choose_multiple_cinemas(showings: List[Dict], max_cinemas: int = MAX_CAROUSEL_SLIDES) -> List[Tuple[str, List[Dict]]]:
+    """
+    Selects the top N cinemas based on the number of unique films showing.
+    
+    Returns: List[(cinema_name: str, showings: List[Dict])]
+    """
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in showings:
         cinema_name = show.get("cinema_name")
-        if cinema_name: grouped[cinema_name].append(show)
+        if cinema_name: 
+            grouped[cinema_name].append(show)
 
-    if not grouped: return "", []
+    if not grouped:
+        return []
 
     candidates = []
     for cinema_name, cinema_showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in cinema_showings)
-        candidates.append((cinema_name, len(unique_titles)))
+        # Filter: Only include cinemas meeting the minimum threshold
+        if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
+            candidates.append((cinema_name, len(unique_titles), cinema_showings))
 
-    good_pool = [c[0] for c in candidates if c[1] >= MINIMUM_FILM_THRESHOLD]
-    if not good_pool: good_pool = [c[0] for c in candidates if c[1] >= 2]
-    if not good_pool: good_pool = [c[0] for c in candidates if c[1] >= 1]
+    # Sort by the number of unique titles (descending) and then by name (ascending)
+    candidates.sort(key=lambda x: (-x[1], x[0]))
     
-    if not good_pool:
-        print("No cinemas found with any films.")
-        return "", []
+    selected_cinemas = []
+    print(f"Candidate Pool ({len(candidates)}): {[c[0] for c in candidates]}")
+    
+    # Select the top N
+    for i in range(min(max_cinemas, len(candidates))):
+        name, _, showings_list = candidates[i]
+        selected_cinemas.append((name, showings_list))
+        print(f"Selected Cinema #{i+1}: {name}")
 
-    # Shuffle and pick
-    random.shuffle(good_pool)
-    chosen_cinema_name = random.choice(good_pool)
-    
-    print(f"Candidate Pool ({len(good_pool)}): {good_pool}")
-    print(f"Selected Cinema: {chosen_cinema_name}")
-    
-    return chosen_cinema_name, grouped[chosen_cinema_name]
+    return selected_cinemas
 
 def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
     movies: Dict[Tuple[str, str | None], List[str]] = defaultdict(list)
@@ -220,7 +231,8 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
-# --- CONTINUOUS RIBBON LOGIC ---
+# --- IMAGE GENERATION FUNCTIONS FOR CAROUSEL SLIDES ---
+
 def get_ribbon_y_at_day_boundary(day_number: int) -> float:
     """
     Returns a deterministic Y-coordinate (normalized 0.0 to 1.0)
@@ -231,38 +243,26 @@ def get_ribbon_y_at_day_boundary(day_number: int) -> float:
     # Keep it somewhat centered so it doesn't go off screen
     return r.uniform(AMPLITUDE_MIN, AMPLITUDE_MAX)
 
-def generate_ribbon_background() -> Image.Image:
+def generate_ribbon_background(seed_day: int) -> Image.Image:
     """Generates the flowing ribbon background."""
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), BG_COLOR)
     draw = ImageDraw.Draw(img)
     
-    # Day Number (Integer) determines the nodes
-    # Today is Post N. Yesterday was Post N-1.
-    # Instagram Grid Layout: [N] [N-1] [N-2]
-    # So, the Right side of N must match the Left side of N-1.
-    
-    # Use timestamp to get consistent day integer
-    day_number = int(datetime.now().timestamp() // 86400)
-    
     # Left Height (Start of Today) -> Connects to Tomorrow (N+1)
-    y_left_norm = get_ribbon_y_at_day_boundary(day_number + 1)
+    y_left_norm = get_ribbon_y_at_day_boundary(seed_day + 1)
     
     # Right Height (End of Today) -> Connects to Yesterday (N)
-    y_right_norm = get_ribbon_y_at_day_boundary(day_number)
+    y_right_norm = get_ribbon_y_at_day_boundary(seed_day)
     
     y_left = int(y_left_norm * CANVAS_HEIGHT)
     y_right = int(y_right_norm * CANVAS_HEIGHT)
     
-    print(f"Ribbon Points: Left({y_left}) -> Right({y_right})")
-
-    # Draw smoothed curve
-    # We use a simple sine-interpolation or cubic bezier for smoothness
+    # Draw smoothed curve (using fixed points for simplicity in image generation)
     points = []
     steps = 100
     for i in range(steps + 1):
         t = i / steps # 0.0 to 1.0
         
-        # Sigmoid interpolation for smooth ease-in/ease-out
         # 3t^2 - 2t^3 is a standard smoothstep function
         smooth_t = (3 * t**2) - (2 * t**3)
         
@@ -270,135 +270,180 @@ def generate_ribbon_background() -> Image.Image:
         y = int(y_left * (1 - smooth_t) + y_right * smooth_t)
         points.append((x, y))
     
-    # Draw the thick line
     draw.line(points, fill=LINE_COLOR, width=LINE_THICKNESS)
-    
-    # Draw a second, thinner line for style (optional)
-    # draw.line(points, fill=BLACK, width=2)
-        
     return img
 
-def draw_image(cinema_name: str, cinema_name_en: str, address_lines: list, bilingual_date: str, listings: List[Dict[str, str | None]]) -> None:
+def draw_hero_slide(bilingual_date: str) -> Image.Image:
+    """Generates the main title slide with the Yellow Ribbon aesthetic."""
+    day_number = int(datetime.now().timestamp() // 86400)
     try:
-        img = generate_ribbon_background().convert("RGBA")
+        img = generate_ribbon_background(day_number).convert("RGBA")
     except Exception as e:
         print(f"Error generating background: {e}")
         img = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), BG_COLOR)
 
-    try:
-        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
-        title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)
-        address_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 26)
-        date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
-        regular_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
-        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
-        small_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
-        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
-    except Exception:
-        print("Error loading fonts.")
-        raise
-
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
-    # Safe Zone Box (Centered Square)
-    box_x0 = MARGIN
-    box_y0 = GRID_CROP_HEIGHT + MARGIN
-    box_x1 = CANVAS_WIDTH - MARGIN
-    box_y1 = CANVAS_HEIGHT - GRID_CROP_HEIGHT - MARGIN
-    
-    draw_ov.rectangle([box_x0, box_y0, box_x1, box_y1], fill=TEXT_BG_COLOR)
+    # Use a transparent box for contrast in the center
+    box_w = 900
+    box_h = 400
+    box_x = (CANVAS_WIDTH - box_w) // 2
+    box_y = (CANVAS_HEIGHT - box_h) // 2
+    # Slight shadow/transparency to let ribbon show
+    draw_ov.rectangle([box_x, box_y, box_x + box_w, box_y + box_h], fill=(255, 255, 255, 200))
     img = Image.alpha_composite(img, overlay)
     draw = ImageDraw.Draw(img)
 
-    # Text Content
-    content_left = MARGIN + TEXT_BOX_MARGIN
-    y_pos = GRID_CROP_HEIGHT + MARGIN + TEXT_BOX_MARGIN + 10
+    # --- Load Fonts ---
+    try:
+        main_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 80)
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
+        small_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+    except Exception:
+        raise
+
+    # --- Text on Hero Slide ---
     
-    # Cinema Names
+    # Title
+    title_text = "東京ミニシアター"
+    draw.text((CANVAS_WIDTH // 2, box_y + 50), title_text, font=main_title_font, fill=BLACK, anchor="mm")
+    title_text_en = "Tokyo Indie Cinema"
+    draw.text((CANVAS_WIDTH // 2, box_y + 140), title_text_en, font=date_font, fill=GRAY, anchor="mm")
+    
+    # Subtitle
+    subtitle = "本日の上映情報 Pick Up"
+    draw.text((CANVAS_WIDTH // 2, box_y + 240), subtitle, font=date_font, fill=BLACK, anchor="mm")
+    
+    # Date
+    draw.text((CANVAS_WIDTH // 2, box_y + 320), bilingual_date, font=small_font, fill=GRAY, anchor="mm")
+    
+    # Footer
+    footer_text = "→ SWIPE FOR TODAY'S BEST PICKS →"
+    footer_font_small = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+    draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text, font=footer_font_small, fill=BLACK, anchor="mm")
+
+
+    return img.convert("RGB") # Convert to RGB for saving PNG without alpha layer for simpler IG upload
+
+def draw_cinema_slide(slide_index: int, total_slides: int, cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
+    """Generates a single solid-white slide for a specific cinema's listings."""
+    
+    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), SOLID_SLIDE_COLOR)
+    draw = ImageDraw.Draw(img)
+
+    # Fonts
+    try:
+        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 50)
+        title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 30)
+        regular_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 34)
+        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
+        small_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
+        page_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
+    except Exception:
+        raise
+
+    # Text Content Area
+    content_left = MARGIN + 20
+    y_pos = MARGIN + 20 
+    
+    # --- Paging Indicator ---
+    page_text = f"Slide {slide_index}/{total_slides}"
+    draw.text((CANVAS_WIDTH - MARGIN - 20, MARGIN + 10), page_text, font=page_font, fill=GRAY, anchor="ra")
+    
+    # --- Cinema Name & Address ---
     draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
-    y_pos += 65
+    y_pos += 60
+    
+    cinema_name_to_use = cinema_name_en or cinema_name
+    
     if cinema_name_en:
-        draw.text((content_left, y_pos), cinema_name_en, font=title_en_font, fill=BLACK)
-        y_pos += 50
+        draw.text((content_left, y_pos), cinema_name_en, font=title_en_font, fill=GRAY)
+        y_pos += 45
     else:
         y_pos += 10
-
-    # Address
+        
+    address = CINEMA_ADDRESSES.get(cinema_name, "")
+    address_lines = address.split("\n")
     if address_lines:
-        draw.text((content_left, y_pos), address_lines[0], font=address_font, fill=GRAY)
+        draw.text((content_left, y_pos), address_lines[0], font=small_font, fill=GRAY)
         y_pos += 32
         if len(address_lines) > 1:
-            draw.text((content_left, y_pos), address_lines[1], font=address_font, fill=GRAY)
+            draw.text((content_left, y_pos), address_lines[1], font=small_font, fill=GRAY)
             y_pos += 32
-    y_pos += 20
+    y_pos += 30
 
-    # Date
-    draw.text((content_left, y_pos), bilingual_date, font=date_font, fill=GRAY)
-    y_pos += 60
-
-    # Listings
-    max_text_y = CANVAS_HEIGHT - GRID_CROP_HEIGHT - MARGIN - TEXT_BOX_MARGIN - 60
+    # --- Listings ---
+    max_text_y = CANVAS_HEIGHT - MARGIN - 40 # Stop well before the bottom
     
     for listing in listings:
         if y_pos > max_text_y:
-            draw.text((content_left, y_pos), "...", font=regular_font, fill=GRAY)
+            draw.text((content_left, y_pos), "...", font=regular_font, fill=BLACK)
             break
 
-        wrapped_title = textwrap.wrap(listing["title"], width=TITLE_WRAP_WIDTH) or [listing["title"]]
+        # Draw Movie Title
+        wrapped_title = textwrap.wrap(f"■ {listing['title']}", width=TITLE_WRAP_WIDTH) or [f"■ {listing['title']}"]
         for line in wrapped_title:
             if y_pos > max_text_y: break
             draw.text((content_left, y_pos), line, font=regular_font, fill=BLACK)
-            y_pos += 44
+            y_pos += 40
         
+        # Draw English Title (smaller, indented)
         if listing["en_title"]:
             if y_pos > max_text_y: break
-            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=45)
+            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=35)
             for line in wrapped_en:
                 if y_pos > max_text_y: break
-                draw.text((content_left + 5, y_pos), line, font=en_movie_font, fill=GRAY)
-                y_pos += 34
+                draw.text((content_left + 10, y_pos), line, font=en_movie_font, fill=GRAY)
+                y_pos += 30
         
-        y_pos += 8
-        draw.text((content_left + 30, y_pos), listing["times"], font=small_font, fill=GRAY)
-        y_pos += 50
-
-    # Footer
-    footer_y_pos = CANVAS_HEIGHT - GRID_CROP_HEIGHT - MARGIN - TEXT_BOX_MARGIN - 30
-    footer_text = "詳細は web / Details online: leonelki.com/cinemas"
-    draw.text((content_left, footer_y_pos), footer_text, font=footer_font, fill=GRAY)
-
-    img.save(OUTPUT_IMAGE_PATH)
-
-def write_caption(cinema_name: str, cinema_name_en: str, address: str, date_jp: str, listings: List[Dict[str, str | None]]) -> None:
-    header = f"【{cinema_name}】"
-    if cinema_name_en: header += f"\n{cinema_name_en}"
+        # Draw Showtimes (indented)
+        if listing['times']:
+            if y_pos > max_text_y: break
+            draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=GRAY)
+            y_pos += 50
     
+    # Footer
+    footer_text = "詳細は web / Details online: leonelki.com/cinemas"
+    draw.text((content_left, CANVAS_HEIGHT - MARGIN - 20), footer_text, font=page_font, fill=GRAY)
+
+    return img.convert("RGB")
+
+
+def write_caption_for_multiple_cinemas(date_str: str, featured_cinemas: List[Dict]) -> None:
+    header = f"🗓️ 本日の東京ミニシアター上映情報 / Today's Featured Showtimes ({date_str})\n"
     lines = [header]
-    if address: lines.append(f"📍 {address.replace(chr(10), ' / ')}")
 
-    lines.append(f"\n🗓️ 本日の上映情報 / Today's Showings ({date_jp})\n")
-
-    for listing in listings:
-        lines.append(f"■ {listing['title']}")
-        if listing['en_title']: lines.append(f"  ({listing['en_title']})")
-        lines.append(f"  {listing['times']}")
-        lines.append("")
-
-    hashtag = "".join(ch for ch in cinema_name if ch.isalnum() or "\u3040" <= ch <= "\u30ff" or "\u4e00" <= ch <= "\u9fff")
+    for item in featured_cinemas:
+        cinema_name = item['cinema_name']
+        address = CINEMA_ADDRESSES.get(cinema_name, "")
+        
+        lines.append(f"\n--- 【{cinema_name}】 ---")
+        if address:
+            # Use only the Japanese address part for conciseness in the caption body
+            jp_address = address.split(chr(10))[0]
+            lines.append(f"📍 {jp_address}") 
+        
+        # Group listings for the caption
+        for listing in item['listings']:
+            title = listing['title']
+            times = listing['times']
+            lines.append(f"• {title}")
+            # lines.append(f"  {times}") # Keep times concise/grouped
+        
     lines.extend([
-        "詳細はプロフィールのリンクから！ / Details in bio link!",
+        "\n詳細はウェブサイトでご確認いただけます / Full details online!",
         "leonelki.com/cinemas",
-        f"\n#東京 #ミニシアター #映画 #映画館 #上映情報 #{hashtag}",
-        "#tokyocinema #tokyomovie #arthousecinema"
+        "\n#東京ミニシアター #映画 #映画館 #上映情報 #tokyocinema #arthousecinema"
     ])
     OUTPUT_CAPTION_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
+
 
 def main() -> None:
     today = today_in_tokyo().date()
     today_str = today.isoformat()
     
-    # --- LIVE MODE ---
+    # --- LIVE MODE DATE FORMATTING ---
     date_jp = today.strftime("%Y年%m月%d日")
     date_en = today.strftime("%b %d, %Y")
     bilingual_date_str = f"{date_jp} / {date_en}"
@@ -408,23 +453,55 @@ def main() -> None:
         print(f"No showings for today ({today_str}). Exiting.")
         return
 
-    cinema_name, cinema_showings = choose_cinema(todays_showings)
-    if not cinema_showings:
-        print("No cinemas with showings today. Exiting.")
-        return
-
-    listings = format_listings(cinema_showings)
-    if not listings:
-        print("Selected cinema has no valid listings. Exiting.")
-        return
+    # --- STEP 1: Select Multiple Cinemas ---
+    selected_cinemas = choose_multiple_cinemas(todays_showings, max_cinemas=MAX_CAROUSEL_SLIDES - 1) # -1 for the hero slide
     
-    address = CINEMA_ADDRESSES.get(cinema_name, "")
-    address_lines = address.split("\n")
-    cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+    if not selected_cinemas:
+        print("No cinemas with sufficient unique listings found today. Exiting.")
+        return
 
-    draw_image(cinema_name, cinema_name_en, address_lines, bilingual_date_str, listings)
-    write_caption(cinema_name, cinema_name_en, address, bilingual_date_str, listings)
-    print(f"Generated post for {cinema_name} on {today_str}.")
+    # --- STEP 2: Generate Slides ---
+    
+    # 0. Hero/Title Slide
+    hero_slide = draw_hero_slide(bilingual_date_str)
+    hero_slide.save(BASE_DIR / f"post_image_00.png") # Start with index 00
+    print(f"Saved hero slide to post_image_00.png")
+    
+    # 1. Subsequent Slides: Cinema Listings
+    all_listings_for_caption = []
+    
+    for i, (cinema_name, cinema_showings) in enumerate(selected_cinemas):
+        # The index is i+1 because the hero slide is index 0
+        slide_index = i + 1
+        total_slides = len(selected_cinemas) + 1
+        
+        listings = format_listings(cinema_showings)
+        
+        # Collect all data for the final caption
+        all_listings_for_caption.append({
+            "cinema_name": cinema_name,
+            "listings": listings
+        })
+        
+        cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+        
+        slide_img = draw_cinema_slide(
+            slide_index=slide_index,
+            total_slides=total_slides,
+            cinema_name=cinema_name,
+            cinema_name_en=cinema_name_en,
+            listings=listings
+        )
+        
+        # Save each slide with a two-digit number suffix (01, 02, etc.)
+        slide_path = BASE_DIR / f"post_image_{slide_index:02}.png"
+        slide_img.save(slide_path)
+        print(f"Saved slide to {slide_path}")
+
+    # --- STEP 3: Generate Caption for Multiple Cinemas ---
+    write_caption_for_multiple_cinemas(today_str, all_listings_for_caption)
+    
+    print(f"Generated {len(selected_cinemas) + 1} slides and caption for {len(selected_cinemas)} featured cinemas.")
 
 if __name__ == "__main__":
     main()
