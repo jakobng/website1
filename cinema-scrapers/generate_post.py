@@ -2,11 +2,10 @@
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
 VERSION 19 (THE WIDE RIBBON):
-- Design: A continuous White Line flowing across a Deep Yellow background (Hero Slide). 
-- Carousel Logic: The post features a Title Slide followed by a dedicated slide for 
-  each of the top N cinemas showing films today.
-- Grid Logic: The ribbon's exit point (Right) on yesterday's post should match 
-  the entry point (Left) of today's Title Slide.
+- Design: A continuous White Line flowing across a Deep Yellow gradient background (Hero Slide). 
+- Carousel Logic: The post features a Title Slide followed by a dedicated slide(s) for 
+  each of the top N cinemas, dynamically splitting listings if overflow occurs.
+- Grid Logic: The ribbon's aesthetic position on the Hero Slide maintains grid continuity.
 - Layout: 4:5 Portrait (1080x1350) per slide with grid-safe text.
 """
 from __future__ import annotations
@@ -22,9 +21,9 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
+import glob  # <-- CORRECTED: Added the missing glob import
 
-# Attempt to import zoneinfo for Python 3.9+ for accurate Tokyo time
-try:  
+try:  # Python 3.9+
     from zoneinfo import ZoneInfo
 except ImportError:
     ZoneInfo = None  # type: ignore
@@ -39,7 +38,7 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
 MAX_CAROUSEL_SLIDES = 6 # Max Instagram allows is 10. Max here is 1 (Hero) + 5 (Cinemas)
-MAX_LISTINGS_VERTICAL_SPACE = 850 # Max height for movie listings area in pixels
+MAX_LISTINGS_VERTICAL_SPACE = 900 # Max height for movie listings area in pixels on inner slides
 
 # Layout (4:5 Portrait)
 CANVAS_WIDTH = 1080
@@ -48,18 +47,16 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-GRADIENT_TOP_COLOR = (255, 210, 100)  # Lighter Yellow/Orange for the top half
-GRADIENT_BOTTOM_COLOR = (255, 195, 11)  # Deep Yellow/Your existing BG_COLOR
-SOLID_SLIDE_COLOR = (255, 255, 255) # White for inner slides
+GRADIENT_TOP_COLOR = (255, 210, 100)  
+GRADIENT_BOTTOM_COLOR = (255, 195, 11)
+SOLID_SLIDE_COLOR = (255, 255, 255) 
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
-
-# Ribbon Settings (for Hero Slide continuity)
 LINE_THICKNESS = 40
 AMPLITUDE_MIN = 0.2
 AMPLITUDE_MAX = 0.8
 
-# --- Database (Keeping this here for completeness) ---
+# --- Database (Included for completeness and functionality) ---
 CINEMA_ADDRESSES = {
     "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F\n6F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
     "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F\n3F, 3-35-13 Shinjuku, Shinjuku-ku, Tokyo",
@@ -118,6 +115,8 @@ CINEMA_ENGLISH_NAMES = {
     "アップリンク吉祥寺": "Uplink Kichijoji",
 }
 # --- End of Database ---
+
+# --- Utility Functions (Left largely untouched) ---
 
 def is_probably_not_japanese(text: str | None) -> bool:
     if not text: return False
@@ -189,7 +188,6 @@ def choose_multiple_cinemas(showings: List[Dict], max_cinemas: int = MAX_CAROUSE
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
             candidates.append((cinema_name, len(unique_titles), cinema_showings))
 
-    # Sort by the number of unique titles (descending) and then by name (ascending)
     candidates.sort(key=lambda x: (-x[1], x[0]))
     
     selected_cinemas = []
@@ -223,14 +221,14 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
+# --- IMAGE GENERATION FUNCTIONS (Updated for Aesthetics and Splitting) ---
+
 def get_ribbon_y_at_day_boundary(day_number: int) -> float:
     """
     Returns a deterministic Y-coordinate (normalized 0.0 to 1.0)
-    for the ribbon cut-off point.
+    for the ribbon cut-off point, ensuring grid continuity.
     """
-    # Use timestamp (day_number) as seed for deterministic yet changing position
     r = random.Random(day_number)
-    # Ensure position stays within the safe zone (not top/bottom extreme)
     return r.uniform(AMPLITUDE_MIN, AMPLITUDE_MAX)
 
 def generate_ribbon_background(seed_day: int) -> Image.Image:
@@ -248,9 +246,7 @@ def generate_ribbon_background(seed_day: int) -> Image.Image:
     # 2. RENDER CONTINUOUS WHITE LINE (RIBBON)
     day_number = int(today_in_tokyo().timestamp() // 86400)
     
-    # Left Height (Start of Today) -> Connects to Tomorrow (N+1)
     y_left_norm = get_ribbon_y_at_day_boundary(day_number + 1)
-    # Right Height (End of Today) -> Connects to Yesterday (N)
     y_right_norm = get_ribbon_y_at_day_boundary(day_number)
     
     y_left = int(y_left_norm * CANVAS_HEIGHT)
@@ -331,7 +327,7 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     content_left = MARGIN + 20
     y_pos = MARGIN + 20 
     
-    # --- Paging Indicator (Re-added) ---
+    # --- Paging Indicator ---
     draw.text((CANVAS_WIDTH - MARGIN - 20, MARGIN + 10), slide_page_text, font=page_font, fill=GRAY, anchor="ra")
     
     # --- Cinema Name & Address ---
@@ -384,52 +380,32 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
 def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) -> List[List[Dict]]:
     """Segments a full list of movie listings into multiple lists (one for each slide)."""
     
-    # Estimate height per listing based on font sizes and wraps for a typical layout
-    # JP Title line + Spacing: 40 + 8 = 48px
-    # EN Title line + Spacing: 30 + 8 = 38px
-    # Times line + Spacing: 34 + 5 = 39px
-    
-    # Using a rough average of ~130px per listing (assuming one English line)
-    
     SEGMENTED_LISTS = []
     current_segment = []
     current_height = 0
     
-    # Max vertical space for listings area (CALIBRATED)
-    MAX_LISTINGS_HEIGHT = 900 
+    MAX_LISTINGS_HEIGHT = MAX_LISTINGS_VERTICAL_SPACE 
     
-    # Height required by each element
+    # Estimated height per content line/block (based on font sizing in draw_cinema_slide)
     JP_LINE_HEIGHT = 40
     EN_LINE_HEIGHT = 30
     TIMES_LINE_HEIGHT = 38
     
-    for i, listing in enumerate(listings):
+    for listing in listings:
         # Calculate height required for this specific listing
-        required_height = 0 
-        
-        # JP Title lines (Assuming single line wrap for estimation simplicity)
-        required_height += JP_LINE_HEIGHT
-        
-        if listing['en_title']:
+        required_height = JP_LINE_HEIGHT + TIMES_LINE_HEIGHT
+        if listing.get('en_title'):
              required_height += EN_LINE_HEIGHT
         
-        required_height += TIMES_LINE_HEIGHT
-        
-        # Check if adding this listing exceeds the max height
         if current_height + required_height > MAX_LISTINGS_HEIGHT:
-            # Check if this is the first item on an empty slide or if there's space for a "more" message
-            if not current_segment and required_height < MAX_LISTINGS_HEIGHT:
-                 # This single item can fit, so start the segment now
-                 current_segment.append(listing)
-                 current_height = required_height
-            elif current_segment:
+            if current_segment:
                 # Add the current segment, and start a new one with the current listing
                 SEGMENTED_LISTS.append(current_segment)
                 current_segment = [listing]
                 current_height = required_height
             else:
-                 # The listing itself is too tall for one slide, which shouldn't happen 
-                 # with current configuration, but if it does, add it alone.
+                 # Should not happen: The listing itself is too large for the max height.
+                 # Add it alone and reset.
                  SEGMENTED_LISTS.append([listing])
                  current_height = 0
                  
@@ -443,7 +419,7 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
         SEGMENTED_LISTS.append(current_segment)
 
     if len(SEGMENTED_LISTS) > 1:
-        print(f"   Note: {cinema_name} listings split into {len(SEGMENTED_LISTS)} slides.")
+        print(f"   Note: {cinema_name} listings split into {len(SEGMENTED_LISTS)} slide(s).")
         
     return SEGMENTED_LISTS
 
@@ -458,17 +434,14 @@ def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List
         
         lines.append(f"\n--- 【{cinema_name}】 ---")
         if address:
-            # Use only the Japanese address part for conciseness in the caption body
             jp_address = address.split("\n")[0]
             lines.append(f"📍 {jp_address}") 
         
-        # Group listings for the caption
         for listing in item['listings']:
             title = listing['title']
             times = listing['times']
             lines.append(f"• {title}: {times}")
         
-    # Generate dynamic hashtag from first featured cinema
     if all_featured_cinemas:
         first_cinema_name = all_featured_cinemas[0]['cinema_name']
         dynamic_hashtag = "".join(ch for ch in first_cinema_name if ch.isalnum() or "\u3040" <= ch <= "\u30ff" or "\u4e00" <= ch <= "\u9fff")
@@ -498,7 +471,6 @@ def main() -> None:
         return
 
     # --- 1. Select Multiple Cinemas ---
-    # Max is 5 cinema slides, plus 1 Hero slide = MAX_CAROUSEL_SLIDES
     selected_cinemas = choose_multiple_cinemas(todays_showings, max_cinemas=MAX_CAROUSEL_SLIDES - 1) 
     
     if not selected_cinemas:
@@ -538,14 +510,12 @@ def main() -> None:
             
             cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
             
-            # The slide page text reflects the index within the entire carousel (00 is the Hero slide)
-            slide_page_text = f"Slide {slide_counter}/{len(selected_cinemas) + slide_counter}"
-            
             slide_img = draw_cinema_slide(
                 cinema_name=cinema_name,
                 cinema_name_en=cinema_name_en,
                 listings=segment,
-                slide_page_text=f"Slide {slide_counter}/{len(segmented_listings)}" # Use per-cinema slide numbering for clarity
+                # Dynamic slide numbering relative to the number of segments for this cinema
+                slide_page_text=f"Slide {segment_index + 1}/{len(segmented_listings)}" 
             )
             
             # Save slide with two-digit number suffix (01, 02, 03, etc.)
