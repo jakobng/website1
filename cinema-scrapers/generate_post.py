@@ -1,15 +1,14 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 24 (TOTAL STYLE RESET):
-- Visual language rebuilt around "Neon Night Atlas" aesthetic.
-- Hero: dreamlike aurora gradient, orbital discs, vertical date strap.
-- Content slides: split dark layout with cinema info column + luminous listing capsules.
+VERSION 26 (LINKED RIBBON LOOP):
+- Softer canvas paired with broad diagonal ribbons that shift slightly each day so adjacent IG posts line up.
+- Edge bands now carry circular cutouts whose position cycles daily, creating a visible chain across the grid.
+- Hero + cinema slides keep the minimal card layout but lean into the calmer palette and anchors.
 """
 from __future__ import annotations
 
 import json
-import math
 import random
 import re
 import textwrap
@@ -46,23 +45,26 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-# Hero Gradient + accents
-HERO_GRADIENT_TOP = (24, 14, 50)
-HERO_GRADIENT_BOTTOM = (22, 82, 132)
-ACCENT_ELECTRIC = (0, 255, 196)
-ACCENT_CORAL = (255, 103, 140)
-ACCENT_SUN = (255, 213, 92)
+CANVAS_BASE = (248, 245, 238)
+CARD_FILL = (255, 253, 247)
+CARD_STROKE = (224, 214, 196)
+INK_DARK = (32, 33, 41)
+INK_MUTED = (114, 118, 128)
+INK_ACCENT = (81, 104, 171)
+PATTERN_LIGHT = (236, 230, 217)
+PATTERN_DARK = (219, 208, 188)
 
-# Content slide palette
-CANVAS_NIGHT = (7, 8, 24)
-CONTENT_PANEL_DARK = (20, 24, 62)
-LISTING_BG = (31, 36, 78)
-LISTING_BG_ALT = (44, 48, 98)
-TEXT_LIGHT = (236, 241, 255)
-TEXT_MUTED = (173, 183, 214)
+EDGE_COLORS = [
+    (232, 137, 113),
+    (243, 189, 91),
+    (109, 147, 210),
+    (65, 163, 150),
+]
 
-BLACK = (10, 10, 18)
-GRAY = (120, 126, 154)
+LINK_POSITIONS = [0.24, 0.52, 0.78]
+
+TEXT_LIGHT = CARD_FILL
+TEXT_MUTED = INK_MUTED
 
 # --- Database ---
 CINEMA_ADDRESSES = {
@@ -236,189 +238,272 @@ def _lerp_color(color_a: Tuple[int, int, int], color_b: Tuple[int, int, int], t:
     return tuple(int(color_a[i] + (color_b[i] - color_a[i]) * t) for i in range(3))
 
 
-def generate_neon_background(day_number: int) -> Image.Image:
-    """Create a dreamlike aurora gradient with floating neon discs."""
-
-    random.seed(day_number)
-    base = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), HERO_GRADIENT_BOTTOM)
-    draw = ImageDraw.Draw(base)
-
-    for y in range(CANVAS_HEIGHT):
-        t = y / max(1, CANVAS_HEIGHT - 1)
-        draw.line([(0, y), (CANVAS_WIDTH, y)], fill=_lerp_color(HERO_GRADIENT_TOP, HERO_GRADIENT_BOTTOM, t))
-
-    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0, 0))
-    overlay_draw = ImageDraw.Draw(overlay)
-
-    for _ in range(4):
-        radius = random.randint(350, 620)
-        cx = random.randint(-200, CANVAS_WIDTH)
-        cy = random.randint(-200, CANVAS_HEIGHT)
-        color = random.choice([ACCENT_ELECTRIC, ACCENT_CORAL, ACCENT_SUN])
-        alpha = random.randint(70, 140)
-        overlay_draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=color + (alpha,))
-
-    for idx in range(12):
-        y = idx * (CANVAS_HEIGHT // 11)
-        offset = random.randint(-120, 120)
-        overlay_draw.line([(-200, y + offset), (CANVAS_WIDTH + 200, y + offset + random.randint(-80, 80))], fill=(255, 255, 255, 26), width=3)
-
-    img = Image.alpha_composite(base.convert("RGBA"), overlay)
-    img_draw = ImageDraw.Draw(img)
-    for _ in range(160):
-        x = random.randint(0, CANVAS_WIDTH - 1)
-        y = random.randint(0, CANVAS_HEIGHT - 1)
-        size = random.randint(1, 2)
-        brightness = random.randint(170, 255)
-        img_draw.ellipse((x - size, y - size, x + size, y + size), fill=(brightness, brightness, brightness, 200))
-
-    return img.convert("RGB")
+def _link_anchor_for_day(day_seed: int, edge_offset: int) -> float:
+    idx = (day_seed + edge_offset) % len(LINK_POSITIONS)
+    return LINK_POSITIONS[idx]
 
 
-def draw_hero_slide(bilingual_date: str) -> Image.Image:
-    """Generate the new dreamwave-inspired hero slide."""
+def draw_edge_bands(draw: ImageDraw.ImageDraw, day_seed: int) -> None:
+    strip_width = 118
+    circle_radius = 210
 
-    day_number = int(today_in_tokyo().timestamp() // 86400)
-    img = generate_neon_background(day_number).convert("RGBA")
+    left_color = EDGE_COLORS[day_seed % len(EDGE_COLORS)]
+    right_color = EDGE_COLORS[(day_seed + 1) % len(EDGE_COLORS)]
+
+    draw.rectangle((0, 0, strip_width, CANVAS_HEIGHT), fill=left_color)
+    draw.rectangle((CANVAS_WIDTH - strip_width, 0, CANVAS_WIDTH, CANVAS_HEIGHT), fill=right_color)
+
+    for edge, color, offset in (
+        ("left", left_color, 0),
+        ("right", right_color, 1),
+    ):
+        anchor = _link_anchor_for_day(day_seed, offset)
+        center_y = CANVAS_HEIGHT * anchor
+        if edge == "left":
+            circle_center_x = strip_width
+            bbox = (
+                circle_center_x - circle_radius,
+                center_y - circle_radius,
+                circle_center_x + circle_radius,
+                center_y + circle_radius,
+            )
+        else:
+            circle_center_x = CANVAS_WIDTH - strip_width
+            bbox = (
+                circle_center_x - circle_radius,
+                center_y - circle_radius,
+                circle_center_x + circle_radius,
+                center_y + circle_radius,
+            )
+        draw.ellipse(bbox, fill=color)
+        inner_radius = circle_radius - 28
+        inner_bbox = (
+            bbox[0] + (circle_radius - inner_radius),
+            bbox[1] + (circle_radius - inner_radius),
+            bbox[2] - (circle_radius - inner_radius),
+            bbox[3] - (circle_radius - inner_radius),
+        )
+        draw.ellipse(inner_bbox, fill=CANVAS_BASE)
+        # subtle guide dot to show linking position
+        dot_radius = 10
+        dot_center_x = circle_center_x if edge == "left" else circle_center_x
+        draw.ellipse(
+            (
+                dot_center_x - dot_radius,
+                center_y - dot_radius,
+                dot_center_x + dot_radius,
+                center_y + dot_radius,
+            ),
+            fill=_lerp_color(color, CANVAS_BASE, 0.25),
+        )
+
+
+def generate_ribbon_background(day_seed: int, variant: int = 0) -> Image.Image:
+    """Create simple diagonal ribbons that offset each day for grid continuity."""
+
+    random.seed(day_seed * 29 + variant * 31)
+    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), CANVAS_BASE)
+    draw = ImageDraw.Draw(img)
+
+    ribbon_width = 240
+    offset = (day_seed * 90 + variant * 45) % ribbon_width
+
+    for idx in range(-6, 10):
+        base_x = idx * ribbon_width + offset
+        shift = 180
+        color = _lerp_color(PATTERN_LIGHT, PATTERN_DARK, (idx % 4) / 3)
+        polygon = [
+            (base_x - shift, -80),
+            (base_x + ribbon_width - shift, -80),
+            (base_x + ribbon_width + shift, CANVAS_HEIGHT + 80),
+            (base_x + shift, CANVAS_HEIGHT + 80),
+        ]
+        draw.polygon(polygon, fill=color)
+
+    # accent pebbles that echo the link anchors
+    for anchor in LINK_POSITIONS:
+        y = CANVAS_HEIGHT * anchor
+        random.seed(int(day_seed * 7 + anchor * 1000 + variant))
+        x = CANVAS_WIDTH / 2 + random.randint(-160, 160)
+        draw.ellipse(
+            (
+                x - 20,
+                y - 20,
+                x + 20,
+                y + 20,
+            ),
+            fill=_lerp_color(INK_ACCENT, CANVAS_BASE, 0.65),
+        )
+
+    return img
+
+
+def draw_hero_slide(bilingual_date: str, day_seed: int) -> Image.Image:
+    """Hero slide with offset ribbons + circular edge anchors."""
+
+    img = generate_ribbon_background(day_seed).convert("RGBA")
 
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0, 0))
     draw_ov = ImageDraw.Draw(overlay)
-
-    try:
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 120)
-        secondary_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
-        accent_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
-        date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 34)
-    except Exception:
-        raise
-
-    # Orbital glow
-    orb_radius = 430
-    orb_box = (CANVAS_WIDTH // 2 - orb_radius, 140, CANVAS_WIDTH // 2 + orb_radius, 140 + orb_radius * 2)
-    draw_ov.ellipse(orb_box, fill=ACCENT_ELECTRIC + (90,))
-    inner_box = (CANVAS_WIDTH // 2 - 280, 260, CANVAS_WIDTH // 2 + 280, 900)
-    draw_ov.ellipse(inner_box, outline=ACCENT_CORAL + (255,), width=10)
-
-    # Vertical strap for the date
-    strap_width = 220
-    strap_x0 = CANVAS_WIDTH - strap_width - MARGIN // 2
-    strap_y0 = MARGIN
-    strap_y1 = CANVAS_HEIGHT - MARGIN
-    draw_ov.rectangle((strap_x0, strap_y0, strap_x0 + strap_width, strap_y1), fill=ACCENT_SUN + (230,))
+    draw_edge_bands(draw_ov, day_seed)
 
     img = Image.alpha_composite(img, overlay)
     draw = ImageDraw.Draw(img)
 
-    strap_text = bilingual_date.upper()
-    draw.text((strap_x0 + strap_width / 2, (strap_y0 + strap_y1) / 2), strap_text, font=date_font, fill=BLACK, anchor="mm", spacing=6)
-
-    title_left = MARGIN + 40
-    draw.text((title_left, CANVAS_HEIGHT / 2 - 160), "TOKYO", font=title_font, fill=TEXT_LIGHT, anchor="lm")
-    draw.text((title_left, CANVAS_HEIGHT / 2), "MICRO CINEMA", font=title_font, fill=TEXT_LIGHT, anchor="lm")
-    draw.text((title_left, CANVAS_HEIGHT / 2 + 150), "本日の上映情報", font=secondary_font, fill=ACCENT_ELECTRIC, anchor="lm")
-
-    body_lines = [
-        "Night Atlas for independent houses.",
-        "Curated showtimes, bilingual listings.",
-    ]
-    body_y = CANVAS_HEIGHT / 2 + 240
-    for line in body_lines:
-        draw.text((title_left, body_y), line, font=accent_font, fill=TEXT_MUTED, anchor="lm")
-        body_y += 56
-
-    return img.convert("RGB")
-
-def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
-    """Create the split dark layout for each cinema."""
-
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), CANVAS_NIGHT)
-    draw = ImageDraw.Draw(img)
-
     try:
-        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 68)
-        label_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
-        title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 34)
-        listing_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 44)
-        listing_en_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
-        listing_time_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)
-        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 26)
+        hero_label_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 46)
+        hero_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
+        hero_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 72)
+        detail_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 48)
     except Exception:
         raise
 
-    left_column_width = 340
-    draw.rectangle((0, 0, left_column_width, CANVAS_HEIGHT), fill=CONTENT_PANEL_DARK)
+    # top-left label
+    draw.text((MARGIN + 10, MARGIN + 10), "TOKYO MICRO CINEMA", font=hero_label_font, fill=INK_MUTED, anchor="la")
+    draw.line(
+        (
+            MARGIN + 10,
+            MARGIN + 68,
+            CANVAS_WIDTH - MARGIN - 10,
+            MARGIN + 68,
+        ),
+        fill=_lerp_color(PATTERN_LIGHT, PATTERN_DARK, 0.4),
+        width=4,
+    )
 
-    left_x = left_column_width // 2
-    y_pos = MARGIN
-    draw.text((left_x, y_pos), "FEATURED HOUSE", font=label_font, fill=TEXT_MUTED, anchor="ma")
-    y_pos += 80
-    draw.text((left_x, y_pos), cinema_name, font=title_jp_font, fill=TEXT_LIGHT, anchor="ma", spacing=6)
-    y_pos += 120
+    center_x = CANVAS_WIDTH / 2
+    draw.text((center_x, CANVAS_HEIGHT / 2 - 90), "本日の上映情報", font=hero_jp_font, fill=INK_DARK, anchor="mm")
+    draw.text((center_x, CANVAS_HEIGHT / 2 + 10), "TODAY'S MINI THEATRES", font=hero_title_font, fill=INK_DARK, anchor="mm")
+
+    bullet_lines = [
+        "bilingual listings / curated daily",
+        "indie + repertory houses only",
+    ]
+    bullet_y = CANVAS_HEIGHT / 2 + 160
+    for text in bullet_lines:
+        draw.text((center_x, bullet_y), text, font=detail_font, fill=INK_MUTED, anchor="mm")
+        bullet_y += 56
+
+    # floating date card on the right
+    card_width = 320
+    card_height = 320
+    card_x0 = CANVAS_WIDTH - card_width - MARGIN - 30
+    card_y0 = MARGIN + 120
+    card_x1 = card_x0 + card_width
+    card_y1 = card_y0 + card_height
+    draw.rounded_rectangle((card_x0, card_y0, card_x1, card_y1), radius=40, fill=CARD_FILL, outline=CARD_STROKE, width=6)
+    draw.text(
+        ((card_x0 + card_x1) / 2, card_y0 + 60),
+        "TODAY",
+        font=hero_label_font,
+        fill=INK_ACCENT,
+        anchor="mm",
+    )
+    wrapped_date = textwrap.wrap(bilingual_date, width=16)
+    text_y = card_y0 + 130
+    for line in wrapped_date:
+        draw.text(((card_x0 + card_x1) / 2, text_y), line.upper(), font=date_font, fill=INK_DARK, anchor="mm")
+        text_y += 64
+
+    return img.convert("RGB")
+
+def draw_cinema_slide(
+    cinema_name: str,
+    cinema_name_en: str,
+    listings: List[Dict[str, str | None]],
+    day_seed: int,
+    variant: int,
+) -> Image.Image:
+    """Create the calm card layout for each cinema."""
+
+    img = generate_ribbon_background(day_seed, variant).convert("RGBA")
+    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0, 0))
+    overlay_draw = ImageDraw.Draw(overlay)
+    draw_edge_bands(overlay_draw, day_seed)
+    img = Image.alpha_composite(img, overlay)
+    draw = ImageDraw.Draw(img)
+
+    try:
+        label_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 32)
+        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 64)
+        title_en_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 38)
+        listing_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 42)
+        listing_en_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 32)
+        listing_time_font = ImageFont.truetype(str(BOLD_FONT_PATH), 34)
+        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
+    except Exception:
+        raise
+
+    card_inset = 70
+    card_x0 = card_inset + 40
+    card_x1 = CANVAS_WIDTH - card_inset - 40
+    card_y0 = MARGIN + 30
+    card_y1 = CANVAS_HEIGHT - MARGIN - 30
+
+    draw.rounded_rectangle((card_x0, card_y0, card_x1, card_y1), radius=46, fill=CARD_FILL, outline=CARD_STROKE, width=6)
+
+    text_x = card_x0 + 60
+    y_cursor = card_y0 + 60
+    draw.text((text_x, y_cursor), "FEATURED HOUSE", font=label_font, fill=INK_MUTED, anchor="la")
+    y_cursor += 56
+    draw.text((text_x, y_cursor), cinema_name, font=title_jp_font, fill=INK_DARK, anchor="la", spacing=4)
+    y_cursor += 88
 
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
-        draw.text((left_x, y_pos), cinema_name_to_use, font=title_en_font, fill=ACCENT_ELECTRIC, anchor="ma")
-        y_pos += 70
+        draw.text((text_x, y_cursor), cinema_name_to_use, font=title_en_font, fill=INK_ACCENT, anchor="la")
+        y_cursor += 54
 
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     if address:
         jp_addr = address.split("\n")[0]
-        wrapped_addr = textwrap.wrap(jp_addr, width=9)
+        wrapped_addr = textwrap.wrap(jp_addr, width=18)
         for line in wrapped_addr:
-            draw.text((left_x, y_pos), line, font=label_font, fill=TEXT_MUTED, anchor="ma")
-            y_pos += 38
+            draw.text((text_x, y_cursor), line, font=label_font, fill=INK_MUTED, anchor="la")
+            y_cursor += 38
+        y_cursor += 10
 
-    draw.line((left_column_width - 5, MARGIN, left_column_width - 5, CANVAS_HEIGHT - MARGIN), fill=ACCENT_CORAL, width=4)
+    draw.line((text_x, y_cursor, card_x1 - 60, y_cursor), fill=CARD_STROKE, width=4)
+    y_cursor += 40
 
-    right_x = left_column_width + 50
-    usable_width = CANVAS_WIDTH - right_x - MARGIN
-    y_cursor = MARGIN
+    def render_listing_block(listing: Dict[str, str | None], y_start: float) -> float:
+        inner_x = text_x
+        current_y = y_start
 
-    def render_listing_block(listing: Dict[str, str | None], index: int, y_start: float) -> float:
-        block_padding = 30
         lines_jp = textwrap.wrap(listing['title'], width=22) or [listing['title']]
-        lines_en = textwrap.wrap(listing['en_title'] or "", width=26) if listing['en_title'] else []
-        lines_times = textwrap.wrap(listing['times'] or "", width=32) if listing['times'] else []
+        lines_en = textwrap.wrap(listing['en_title'] or "", width=28) if listing['en_title'] else []
+        times_text = listing['times'] or ""
 
-        line_count = len(lines_jp) + len(lines_en) + (1 if lines_times else 0)
-        block_height = block_padding * 2 + line_count * 46
-
-        bg_color = LISTING_BG if index % 2 == 0 else LISTING_BG_ALT
-        draw.rounded_rectangle((right_x, y_start, right_x + usable_width, y_start + block_height), radius=38, fill=bg_color)
-
-        text_y = y_start + block_padding
-        for line in lines_jp:
-            draw.text((right_x + 40, text_y), f"◎ {line}", font=listing_title_font, fill=TEXT_LIGHT)
-            text_y += 46
+        for idx, line in enumerate(lines_jp):
+            bullet = "● " if idx == 0 else "   "
+            draw.text((inner_x, current_y), f"{bullet}{line}", font=listing_title_font, fill=INK_DARK, anchor="la")
+            current_y += 46
 
         for line in lines_en:
-            draw.text((right_x + 70, text_y), line, font=listing_en_font, fill=TEXT_MUTED)
-            text_y += 40
+            draw.text((inner_x + 34, current_y), line, font=listing_en_font, fill=INK_MUTED, anchor="la")
+            current_y += 38
 
-        if lines_times:
-            pill_text = " / ".join(lines_times)
-            text_bbox = draw.textbbox((0, 0), pill_text, font=listing_time_font)
-            pill_width = text_bbox[2] - text_bbox[0] + 40
-            pill_height = text_bbox[3] - text_bbox[1] + 18
-            pill_x = right_x + usable_width - pill_width - 40
-            pill_y = y_start + block_height - pill_height - 20
-            draw.rounded_rectangle((pill_x, pill_y, pill_x + pill_width, pill_y + pill_height), radius=pill_height // 2, fill=ACCENT_ELECTRIC)
-            draw.text((pill_x + pill_width / 2, pill_y + pill_height / 2), pill_text, font=listing_time_font, fill=BLACK, anchor="mm")
+        if times_text:
+            draw.text((inner_x + 34, current_y), times_text, font=listing_time_font, fill=INK_ACCENT, anchor="la")
+            current_y += 48
 
-        return block_height + 26
+        draw.line((inner_x, current_y, card_x1 - 60, current_y), fill=_lerp_color(CARD_STROKE, CANVAS_BASE, 0.5), width=3)
+        return current_y + 32
 
-    for idx, listing in enumerate(listings):
-        block_height = render_listing_block(listing, idx, y_cursor)
-        y_cursor += block_height
+    for listing in listings:
+        y_cursor = render_listing_block(listing, y_cursor)
 
     footer_text = "詳細 / Full details: leonelki.com/cinemas"
-    draw.text((CANVAS_WIDTH - MARGIN, CANVAS_HEIGHT - MARGIN - 10), footer_text, font=footer_font, fill=TEXT_MUTED, anchor="rd")
+    draw.text((card_x1 - 60, card_y1 - 50), footer_text, font=footer_font, fill=INK_MUTED, anchor="ra")
 
     return img.convert("RGB")
 
 def main() -> None:
-    today = today_in_tokyo().date()
+    now_tokyo = today_in_tokyo()
+    today = now_tokyo.date()
     today_str = today.isoformat()
+    day_seed = int(now_tokyo.timestamp() // 86400)
     
     date_jp = today.strftime("%Y年%m月%d日")
     date_en = today.strftime("%b %d, %Y")
@@ -480,12 +565,13 @@ def main() -> None:
         os.remove(old_file) 
         
     # 0. Hero Slide
-    hero_slide = draw_hero_slide(bilingual_date_str)
+    hero_slide = draw_hero_slide(bilingual_date_str, day_seed)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
     print(f"Saved hero slide to post_image_00.png")
 
     # Content Slides
     slide_counter = 0
+    variant_counter = 1
     all_featured_cinemas = []
     
     for item in final_selection:
@@ -500,8 +586,11 @@ def main() -> None:
             slide_img = draw_cinema_slide(
                 cinema_name=cinema_name,
                 cinema_name_en=cinema_name_en,
-                listings=segment
+                listings=segment,
+                day_seed=day_seed,
+                variant=variant_counter,
             )
+            variant_counter += 1
             
             slide_path = BASE_DIR / f"post_image_{slide_counter:02}.png"
             slide_img.save(slide_path)
