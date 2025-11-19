@@ -1,12 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 26 (INFINITE SOLAR BURST):
-- Design: Central radial gradient fading to white edges.
-- Color Logic: Mathematically cycles through the full color spectrum.
-  - Changes every 3 days.
-  - Shifts slightly (12 degrees) to create a smooth evolution over weeks.
-- Layout: Clean typography, floating on the gradient, no slide numbers.
+VERSION 27 (TEXT UPDATE):
+- Design: Infinite Solar Burst Gradient.
+- Text: "TOKYO MINI THEATER" + "SWIPE FOR TODAY'S SELECTION".
+- Logic: Smart slide limits, dynamic splitting, no numbering.
 """
 from __future__ import annotations
 
@@ -15,7 +13,7 @@ import math
 import random
 import re
 import textwrap
-import colorsys # New import for color math
+import colorsys
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -40,7 +38,7 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
-MAX_LISTINGS_VERTICAL_SPACE = 800 # Conservative limit to prevent footer crowding
+MAX_LISTINGS_VERTICAL_SPACE = 800 
 
 # Layout (4:5 Portrait)
 CANVAS_WIDTH = 1080
@@ -49,8 +47,7 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-# Content Slide Colors
-CONTENT_BG_COLOR = (255, 255, 255) # Pure White for clean contrast
+CONTENT_BG_COLOR = (255, 255, 255) 
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
@@ -119,7 +116,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
     if not text: return False
     if not re.search(r'[a-zA-Z]', text): return False 
     japanese_chars = re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]', text)
-    latin_chars = re.findall(r'[a-zA-Z]', text) 
+    latin_chars = re.findall(r'[a-zA-Z]', text)
     if not japanese_chars: return True
     if latin_chars:
         if len(latin_chars) > len(japanese_chars) * 2: return True
@@ -220,14 +217,9 @@ def generate_burst_background(day_number: int) -> Image.Image:
     """Generates a radial gradient bursting from a dynamic center color to white edges."""
     
     # 1. Calculate Dynamic Center Color
-    # Logic: Cycle through the 360 degree color wheel.
-    # 'day_number // 3' means the color holds for 3 days.
-    # '* 12' means we shift 12 degrees on the color wheel every 3 days.
-    # Starting at 45 (Yellow-Orange) for brand consistency.
     hue_degrees = (45 + (day_number // 3) * 12) % 360
     hue_norm = hue_degrees / 360.0
     
-    # High saturation and value for a deep, vibrant burst
     saturation = 1.0 
     value = 1.0
     
@@ -241,10 +233,9 @@ def generate_burst_background(day_number: int) -> Image.Image:
     max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
     
     # 2. Draw Radial Gradient
-    # Draw concentric circles from outside (White) to inside (Color)
     for r in range(max_radius, 0, -2):
         t = r / max_radius
-        # t^0.6 pushes the color outward for a "burst" feel rather than a linear fade
+        # t^0.6 pushes the color outward for a "burst" feel
         t_adj = t ** 0.6
         
         # Interpolate between CenterColor and White (255,255,255)
@@ -286,12 +277,12 @@ def draw_hero_slide(bilingual_date: str) -> Image.Image:
         draw_ov.text((x, y), text, font=font, fill=main_color, anchor="mm")
 
     draw_shadowed_text(text_center_x, center_y - 120, "TOKYO", title_font)
-    draw_shadowed_text(text_center_x, center_y + 20, "INDIE CINEMA", title_font)
+    draw_shadowed_text(text_center_x, center_y + 20, "MINI THEATER", title_font) # CHANGED TEXT
     
     draw_shadowed_text(text_center_x, center_y + 160, "本日の上映情報", subtitle_font, GRAY)
     draw_shadowed_text(text_center_x, center_y + 240, bilingual_date, date_font, GRAY)
 
-    draw_shadowed_text(text_center_x, CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S BEST PICKS →", footer_font)
+    draw_shadowed_text(text_center_x, CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font) # CHANGED TEXT
 
     img = Image.alpha_composite(img, overlay)
     return img.convert("RGB")
