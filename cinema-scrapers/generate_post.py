@@ -1,10 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 24 (KUSAMA MODE):
-- Design: Yayoi Kusama-inspired Polka Dots on Deep Yellow.
-- Colors: Warm Cream background for content slides.
-- Logic: Smart slide limits (max 10), dynamic splitting, no slide numbers.
+VERSION 25 (SOLAR BURST GRADIENT):
+- Design: Central radial gradient fading to white edges.
+- Color Logic: Center color shifts every 3 days (Yellow -> Orange -> Red).
+- Layout: Clean typography, floating on the gradient, no slide numbers.
 """
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
-MAX_LISTINGS_VERTICAL_SPACE = 820 # Reduced slightly to ensure footer breathing room
+MAX_LISTINGS_VERTICAL_SPACE = 840 
 
 # Layout (4:5 Portrait)
 CANVAS_WIDTH = 1080
@@ -45,13 +45,17 @@ CANVAS_HEIGHT = 1350
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
-# --- THEME COLORS (KUSAMA PALETTE) ---
-# Hero: Deep Yellow & Black
-HERO_BG_COLOR = (255, 200, 0)    # Kusama Yellow
-DOT_COLOR = (20, 20, 20)         # Soft Black
+# --- THEME COLORS ---
+# 1. HERO GRADIENT PALETTE (Cycle every 3 days)
+HERO_COLORS = [
+    (255, 200, 0),   # 1. Deep Sunflower Yellow
+    (255, 165, 0),   # 2. Orangey Yellow
+    (255, 110, 0),   # 3. Deep Orange
+    (255, 70, 30)    # 4. Reddy Orange
+]
 
-# Content: Warm Cream & Dark Grey
-CONTENT_BG_COLOR = (255, 252, 235) # Pale Warm Cream
+# 2. Content Slide Colors
+CONTENT_BG_COLOR = (255, 255, 255) # Pure White for clean contrast against the gradient hero
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 
@@ -139,7 +143,6 @@ def find_best_english_title(showing: Dict) -> str | None:
     if en_title := get_clean_title('letterboxd_english_title'): return en_title
     if en_title := get_clean_title('tmdb_display_title'): return en_title
     if en_title := get_clean_title('movie_title_en'): return en_title
-
     tmdb_orig_title = showing.get('tmdb_original_title')
     if is_probably_not_japanese(tmdb_orig_title) and tmdb_orig_title.lower() != jp_title:
         return tmdb_orig_title.split(' (')[0].strip()
@@ -184,16 +187,12 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
     return formatted
 
 def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) -> List[List[Dict]]:
-    """
-    Segments a full list of movie listings into multiple lists (one for each slide).
-    Uses conservative height check to prevent crowding.
-    """
+    """Segments a full list of movie listings into multiple lists."""
     SEGMENTED_LISTS = []
     current_segment = []
     current_height = 0
     MAX_LISTINGS_HEIGHT = MAX_LISTINGS_VERTICAL_SPACE 
     
-    # Estimated height constants 
     JP_LINE_HEIGHT = 40
     EN_LINE_HEIGHT = 30
     TIMES_LINE_HEIGHT = 55 
@@ -220,102 +219,93 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
 
     return SEGMENTED_LISTS
 
-# --- KUSAMA AESTHETIC HERO ---
+# --- HERO DESIGN: SOLAR BURST GRADIENT ---
 
-def generate_kusama_background(day_number: int) -> Image.Image:
-    """Generates a background inspired by Yayoi Kusama (Polka Dots on Yellow)."""
+def generate_burst_background(day_number: int) -> Image.Image:
+    """Generates a radial gradient bursting from the center to white edges."""
     
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), HERO_BG_COLOR)
+    # 1. Determine Central Color (Cycles every 3 days)
+    # (day // 3) ensures color stays same for 3 days, then moves to next in list
+    seq_idx = (day_number // 3) % len(HERO_COLORS)
+    center_color = HERO_COLORS[seq_idx]
+    
+    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
     draw = ImageDraw.Draw(img)
-
-    random.seed(day_number)
     
-    # Draw organic polka dots
-    # Kusama's style is repetitive but varied.
+    center_x, center_y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
     
-    grid_cols = 8
-    grid_rows = 10
-    step_x = CANVAS_WIDTH // grid_cols
-    step_y = CANVAS_HEIGHT // grid_rows
+    # Calculate diagonal distance to corner to ensure gradient covers/fades appropriately
+    max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
     
-    for i in range(grid_cols + 1):
-        for j in range(grid_rows + 1):
-            # Center of the dot area
-            base_x = i * step_x
-            base_y = j * step_y
-            
-            # Jitter the position slightly for organic feel
-            offset_x = random.randint(-15, 15)
-            offset_y = random.randint(-15, 15)
-            
-            # Vary the size
-            # Kusama often has larger dots in the center or waves, let's random mix
-            radius = random.randint(20, 55)
-            
-            # Draw Dot
-            x1 = base_x + offset_x - radius
-            y1 = base_y + offset_y - radius
-            x2 = base_x + offset_x + radius
-            y2 = base_y + offset_y + radius
-            
-            draw.ellipse([x1, y1, x2, y2], fill=DOT_COLOR)
-
+    # Draw concentric circles from outside in
+    # To achieve "Edges always white", we fade from White (at Edge) to Color (at Center)
+    # or we draw Color circles that get smaller and more opaque?
+    # Actually, simpler: Draw full circles from max_radius down to 0.
+    # At r=max_radius, color is White. At r=0, color is CenterColor.
+    
+    # Step size of 2 pixels is a good balance of speed and smoothness
+    for r in range(max_radius, 0, -2):
+        # t goes from 0.0 (center) to 1.0 (edge)
+        t = r / max_radius
+        
+        # Non-linear interpolation for a "burst" effect (pushes color outward)
+        # t^0.5 makes the color spread further out before turning white
+        t_adj = t ** 0.7 
+        
+        # Interpolate between CenterColor and White (255, 255, 255)
+        red = int(center_color[0] * (1 - t_adj) + 255 * t_adj)
+        green = int(center_color[1] * (1 - t_adj) + 255 * t_adj)
+        blue = int(center_color[2] * (1 - t_adj) + 255 * t_adj)
+        
+        draw.ellipse(
+            [center_x - r, center_y - r, center_x + r, center_y + r],
+            fill=(red, green, blue)
+        )
+         
     return img
 
 def draw_hero_slide(bilingual_date: str) -> Image.Image:
-    """Generates the main title slide with Kusama style."""
+    """Generates the main title slide."""
     day_number = int(today_in_tokyo().timestamp() // 86400)
-    img = generate_kusama_background(day_number).convert("RGBA")
+    img = generate_burst_background(day_number).convert("RGBA")
 
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
-    # Fonts
     try:
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
-        subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
+        # Slightly larger title fonts for the "simple" look
+        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 120)
+        subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 60)
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
     except Exception:
         raise
 
-    # Solid White Card in Center (Maximalist Contrast)
-    box_w = 900
-    box_h = 550
-    box_x = (CANVAS_WIDTH - box_w) // 2
-    box_y = (CANVAS_HEIGHT - box_h) // 2
-    
-    # Deep Black Shadow for the box (Pop Art style)
-    shadow_offset = 25
-    draw_ov.rectangle([box_x + shadow_offset, box_y + shadow_offset, box_x + box_w + shadow_offset, box_y + box_h + shadow_offset], fill=BLACK)
-    draw_ov.rectangle([box_x, box_y, box_x + box_w, box_y + box_h], fill=(255, 255, 255, 255))
-    
-    img = Image.alpha_composite(img, overlay)
-    draw = ImageDraw.Draw(img)
-
-    # --- Text ---
+    # --- Text (Floating directly on gradient, no box) ---
+    # We add a very subtle shadow behind text to ensure readability on yellow/orange
     text_center_x = CANVAS_WIDTH // 2
-    center_y = box_y + (box_h // 2)
+    center_y = CANVAS_HEIGHT // 2
     
-    # Main Title
-    draw.text((text_center_x, center_y - 100), "TOKYO", font=title_font, fill=BLACK, anchor="mm")
-    draw.text((text_center_x, center_y + 20), "INDIE CINEMA", font=title_font, fill=BLACK, anchor="mm")
+    def draw_shadowed_text(x, y, text, font, main_color=BLACK):
+        # Shadow
+        draw_ov.text((x+2, y+2), text, font=font, fill=(255, 255, 255, 100), anchor="mm")
+        # Main
+        draw_ov.text((x, y), text, font=font, fill=main_color, anchor="mm")
+
+    draw_shadowed_text(text_center_x, center_y - 120, "TOKYO", title_font)
+    draw_shadowed_text(text_center_x, center_y + 20, "INDIE CINEMA", title_font)
     
-    # Sub info
-    draw.text((text_center_x, center_y + 140), "本日の上映情報", font=subtitle_font, fill=GRAY, anchor="mm")
-    draw.text((text_center_x, center_y + 210), bilingual_date, font=date_font, fill=GRAY, anchor="mm")
+    draw_shadowed_text(text_center_x, center_y + 160, "本日の上映情報", subtitle_font, GRAY)
+    draw_shadowed_text(text_center_x, center_y + 240, bilingual_date, date_font, GRAY)
 
     # Footer
-    draw.text((text_center_x, CANVAS_HEIGHT - MARGIN - 40), "→ SWIPE FOR TODAY'S BEST PICKS →", font=footer_font, fill=BLACK, anchor="mm")
-    
-    # Add a background for footer readability
-    draw.rectangle([text_center_x - 300, CANVAS_HEIGHT - MARGIN - 65, text_center_x + 300, CANVAS_HEIGHT - MARGIN - 15], fill=(255, 255, 255), outline=BLACK, width=2)
-    draw.text((text_center_x, CANVAS_HEIGHT - MARGIN - 40), "→ SWIPE FOR TODAY'S BEST PICKS →", font=footer_font, fill=BLACK, anchor="mm")
+    draw_shadowed_text(text_center_x, CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S BEST PICKS →", footer_font)
 
+    img = Image.alpha_composite(img, overlay)
     return img.convert("RGB")
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
-    """Generates a content slide with warm cream background."""
+    """Generates a content slide with clean white background."""
     
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), CONTENT_BG_COLOR)
     draw = ImageDraw.Draw(img)
@@ -344,7 +334,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     else:
         y_pos += 20
         
-    # Address Line
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     if address:
         jp_addr = address.split("\n")[0]
@@ -354,7 +343,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
         y_pos += 30
 
     # --- Listings ---
-    # Draw a divider line
     draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=BLACK, width=3)
     y_pos += 40
     
@@ -374,7 +362,7 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
             draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=GRAY)
             y_pos += 55
     
-    # Footer (No page number)
+    # Footer
     footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
 
@@ -394,7 +382,6 @@ def main() -> None:
         return
 
     # --- 1. Select & Segment Candidates ---
-    # First, group all valid cinemas and calculate their required slides
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in todays_showings:
         if show.get("cinema_name"):
@@ -404,7 +391,6 @@ def main() -> None:
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings)
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
-            # Pre-calculate segments to know size
             listings = format_listings(showings)
             segments = segment_listings(listings, cinema_name)
             candidates.append({
@@ -414,11 +400,9 @@ def main() -> None:
                 "unique_count": len(unique_titles)
             })
 
-    # Sort by popularity (number of films)
     candidates.sort(key=lambda x: (-x['unique_count'], x['name']))
     
     # --- 2. Fill Carousel up to Limit ---
-    # We have 1 Hero Slide, so we can add up to 9 Content Slides (Total 10)
     MAX_CONTENT_SLIDES = INSTAGRAM_SLIDE_LIMIT - 1 
     
     final_selection = []
@@ -438,12 +422,10 @@ def main() -> None:
         return
 
     # --- 3. Generate Images ---
-    
-    # Clean up
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
         os.remove(old_file) 
         
-    # 0. Hero Slide
+    # Hero Slide
     hero_slide = draw_hero_slide(bilingual_date_str)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
     print(f"Saved hero slide to post_image_00.png")
@@ -460,7 +442,6 @@ def main() -> None:
             slide_counter += 1
             cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
             
-            # Removed slide numbering argument
             slide_img = draw_cinema_slide(
                 cinema_name=cinema_name,
                 cinema_name_en=cinema_name_en,
