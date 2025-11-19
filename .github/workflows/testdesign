@@ -1,0 +1,62 @@
+name: Test Instagram Design (No Upload)
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  test_design_only:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Only need Pillow/tzdata for generation; requests is not needed for this test but harmless
+          pip install requests Pillow tzdata
+
+      - name: Run Generator (Kusama Mode)
+        working-directory: './cinema-scrapers'
+        run: python generate_post.py
+
+      - name: Commit Generated Images for Inspection
+        id: commit_push
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Add all generated carousel slides
+          git add 'cinema-scrapers/post_image_*.png'
+          git add 'cinema-scrapers/post_caption.txt'
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No design changes detected."
+            echo "pushed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          git commit -m "DESIGN TEST: Generated Kusama-style carousel slides"
+          git pull origin main --rebase
+          git push
+          echo "pushed=true" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # --- UPLOAD STEP DISABLED FOR RATE LIMIT SAFETY ---
+      # - name: Run Upload Script
+      #   working-directory: './cinema-scrapers'
+      #   run: python upload_to_instagram.py
+      #   env:
+      #     IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      #     IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
