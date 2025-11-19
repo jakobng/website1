@@ -1,7 +1,7 @@
 """
 Generate Instagram-ready image (Single Hero Only).
 
-VERSION: SINGLE HERO TEST
+VERSION: SINGLE HERO TEST (FIXED)
 - Hero Design: Fetches a high-res movie backdrop from TMDB.
 - Logic: Stops immediately after generating the first slide.
 """
@@ -16,6 +16,7 @@ import requests
 import glob
 import time
 import colorsys
+from datetime import datetime # <--- Added missing import
 from io import BytesIO
 from pathlib import Path
 from typing import Dict, List, Tuple
@@ -117,7 +118,7 @@ def draw_hero_slide(todays_titles: List[str]) -> Image.Image:
     draw.text((CANVAS_WIDTH//2, CANVAS_HEIGHT//2 + 100), date_str, font=date_font, fill=(220,220,220), anchor="mm")
     
     if credit_title:
-        draw.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 20), f"Image: {credit_title}", font=date_font, fill=(150,150,150), anchor="rb", font_size=24)
+        draw.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 20), f"Image: {credit_title}", font=date_font, fill=(150,150,150), anchor="rb")
 
     return Image.alpha_composite(bg_image.convert("RGBA"), overlay).convert("RGB")
 
