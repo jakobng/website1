@@ -21,9 +21,11 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
-import glob  # <-- CORRECTED: Added the missing glob import
+import glob
+import os # <-- 修正点: osモジュールをインポート
 
-try:  # Python 3.9+
+# Attempt to import zoneinfo for Python 3.9+ for accurate Tokyo time
+try:  
     from zoneinfo import ZoneInfo
 except ImportError:
     ZoneInfo = None  # type: ignore
@@ -83,7 +85,7 @@ CINEMA_ADDRESSES = {
     "シネマブルースタジオ": "東京都足立区千住3-92 2F\n2F, 3-92 Senju, Adachi-ku, Tokyo",
     "CINEMA Chupki TABATA": "東京都北区東田端2-14-4\n2-14-4 Higashitabata, Kita-ku, Tokyo",
     "シネクイント": "東京都渋谷区宇田川町20-11 8F\n8F, 20-11 Udagawacho, Shibuya-ku, Tokyo",
-    "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F\n4F, 1-5-1 Kichijoji Honcho, Musashino-shi, Tokyo",
+    "アップリンク吉祥寺": "Uplink Kichijoji",
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -116,7 +118,7 @@ CINEMA_ENGLISH_NAMES = {
 }
 # --- End of Database ---
 
-# --- Utility Functions (Left largely untouched) ---
+# --- Utility Functions ---
 
 def is_probably_not_japanese(text: str | None) -> bool:
     if not text: return False
@@ -378,7 +380,10 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     return img.convert("RGB")
 
 def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) -> List[List[Dict]]:
-    """Segments a full list of movie listings into multiple lists (one for each slide)."""
+    """
+    Segments a full list of movie listings into multiple lists (one for each slide).
+    Ensures no single listing is split across slides.
+    """
     
     SEGMENTED_LISTS = []
     current_segment = []
@@ -386,7 +391,7 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
     
     MAX_LISTINGS_HEIGHT = MAX_LISTINGS_VERTICAL_SPACE 
     
-    # Estimated height per content line/block (based on font sizing in draw_cinema_slide)
+    # Estimated height constants (needs to match draw_cinema_slide font sizes/spacing)
     JP_LINE_HEIGHT = 40
     EN_LINE_HEIGHT = 30
     TIMES_LINE_HEIGHT = 38
@@ -404,8 +409,8 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
                 current_segment = [listing]
                 current_height = required_height
             else:
-                 # Should not happen: The listing itself is too large for the max height.
-                 # Add it alone and reset.
+                 # Should only happen if one item exceeds MAX_LISTINGS_HEIGHT, 
+                 # in which case it still goes on its own slide.
                  SEGMENTED_LISTS.append([listing])
                  current_height = 0
                  
@@ -510,12 +515,14 @@ def main() -> None:
             
             cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
             
+            # Dynamic slide numbering relative to the number of segments for this cinema
+            slide_page_text=f"Slide {segment_index + 1}/{len(segmented_listings)}"
+            
             slide_img = draw_cinema_slide(
                 cinema_name=cinema_name,
                 cinema_name_en=cinema_name_en,
                 listings=segment,
-                # Dynamic slide numbering relative to the number of segments for this cinema
-                slide_page_text=f"Slide {segment_index + 1}/{len(segmented_listings)}" 
+                slide_page_text=slide_page_text
             )
             
             # Save slide with two-digit number suffix (01, 02, 03, etc.)
