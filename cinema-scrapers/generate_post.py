@@ -1,10 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 22 (MAXIMALIST TILED & SMART LIMITS):
+VERSION 23 (BUG FIX & FINAL POLISH):
+- Fixed: TypeError regarding 'slide_page_text'.
 - Design: Maximalist Tiled Hero Slide + Cream-colored Content Slides.
-- Logic: Pre-calculates total slides to STRICTLY enforce Instagram's 10-slide limit.
-- Layout: Dynamic splitting of long listings, no slide numbering.
+- Logic: Dynamic splitting, smart limits (max 10 slides), no slide numbering.
 """
 from __future__ import annotations
 
@@ -47,9 +47,9 @@ TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
 # Hero Gradient Colors
-GRADIENT_COLOR_1 = (255, 195, 11)  # Your Brand Deep Yellow
+GRADIENT_COLOR_1 = (255, 195, 11)  # Deep Yellow
 GRADIENT_COLOR_2 = (255, 230, 80)  # Lighter/Brighter Yellow for contrast
-# Content Slide Background (Subtle Cream, not stark white)
+# Content Slide Background (Subtle Cream)
 CONTENT_BG_COLOR = (253, 251, 247) 
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
@@ -121,8 +121,10 @@ CINEMA_ENGLISH_NAMES = {
 def is_probably_not_japanese(text: str | None) -> bool:
     if not text: return False
     if not re.search(r'[a-zA-Z]', text): return False 
+    
     japanese_chars = re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]', text)
-    latin_chars = re.findall(r'[a-zA-Z]', text) 
+    latin_chars = re.findall(r'[a-zA-Z]', text)
+    
     if not japanese_chars: return True
     if latin_chars:
         if len(latin_chars) > len(japanese_chars) * 2: return True
@@ -131,6 +133,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
 
 def find_best_english_title(showing: Dict) -> str | None:
     jp_title = showing.get('movie_title', '').lower()
+    
     def get_clean_title(title_key: str) -> str | None:
         title = showing.get(title_key)
         if not is_probably_not_japanese(title): return None
@@ -141,6 +144,7 @@ def find_best_english_title(showing: Dict) -> str | None:
     if en_title := get_clean_title('letterboxd_english_title'): return en_title
     if en_title := get_clean_title('tmdb_display_title'): return en_title
     if en_title := get_clean_title('movie_title_en'): return en_title
+
     tmdb_orig_title = showing.get('tmdb_original_title')
     if is_probably_not_japanese(tmdb_orig_title) and tmdb_orig_title.lower() != jp_title:
         return tmdb_orig_title.split(' (')[0].strip()
@@ -444,12 +448,11 @@ def main() -> None:
             slide_counter += 1
             cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
             
-            # No slide numbering passed to drawing function for cleaner look
+            # CORRECTED: Removed the 'slide_page_text' argument from the call
             slide_img = draw_cinema_slide(
                 cinema_name=cinema_name,
                 cinema_name_en=cinema_name_en,
-                listings=segment,
-                slide_page_text="" 
+                listings=segment
             )
             
             slide_path = BASE_DIR / f"post_image_{slide_counter:02}.png"
