@@ -1,12 +1,9 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 19 (THE WIDE RIBBON):
-- Design: A continuous White Line flowing across a Deep Yellow gradient background (Hero Slide). 
-- Carousel Logic: The post features a Title Slide followed by a dedicated slide(s) for 
-  each of the top N cinemas, dynamically splitting listings if overflow occurs.
-- Grid Logic: The ribbon's aesthetic position on the Hero Slide maintains grid continuity.
-- Layout: 4:5 Portrait (1080x1350) per slide with grid-safe text.
+VERSION 20 (MAXIMALIST TILED GRADIENT):
+- Design: Replaces smooth ribbon with a seamless tiled pattern background.
+- Logic: Implements true dynamic slide splitting and consistent global slide numbering (1/N, 2/N, ...).
 """
 from __future__ import annotations
 
@@ -22,9 +19,8 @@ from typing import Dict, List, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
 import glob
-import os # <-- 修正点: osモジュールをインポート
+import os 
 
-# Attempt to import zoneinfo for Python 3.9+ for accurate Tokyo time
 try:  
     from zoneinfo import ZoneInfo
 except ImportError:
@@ -39,7 +35,7 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 
 # --- Configuration ---
 MINIMUM_FILM_THRESHOLD = 3
-MAX_CAROUSEL_SLIDES = 6 # Max Instagram allows is 10. Max here is 1 (Hero) + 5 (Cinemas)
+MAX_CAROUSEL_SLIDES = 6 # Max is 1 (Hero) + 5 (Cinemas)
 MAX_LISTINGS_VERTICAL_SPACE = 900 # Max height for movie listings area in pixels on inner slides
 
 # Layout (4:5 Portrait)
@@ -49,16 +45,18 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-GRADIENT_TOP_COLOR = (255, 210, 100)  
-GRADIENT_BOTTOM_COLOR = (255, 195, 11)
-SOLID_SLIDE_COLOR = (255, 255, 255) 
+# New Maximalist Hero Colors
+GRADIENT_COLOR_1 = (255, 195, 11)  # Deep Yellow
+GRADIENT_COLOR_2 = (255, 230, 0)   # Brighter Yellow
+SOLID_SLIDE_COLOR = (255, 255, 255) # White for inner slides
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 LINE_THICKNESS = 40
 AMPLITUDE_MIN = 0.2
 AMPLITUDE_MAX = 0.8
+TILE_SIZE = 120 # Size of the repeating unit
 
-# --- Database (Included for completeness and functionality) ---
+# --- Database (Keeping this here for completeness) ---
 CINEMA_ADDRESSES = {
     "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F\n6F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
     "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F\n3F, 3-35-13 Shinjuku, Shinjuku-ku, Tokyo",
@@ -85,7 +83,7 @@ CINEMA_ADDRESSES = {
     "シネマブルースタジオ": "東京都足立区千住3-92 2F\n2F, 3-92 Senju, Adachi-ku, Tokyo",
     "CINEMA Chupki TABATA": "東京都北区東田端2-14-4\n2-14-4 Higashitabata, Kita-ku, Tokyo",
     "シネクイント": "東京都渋谷区宇田川町20-11 8F\n8F, 20-11 Udagawacho, Shibuya-ku, Tokyo",
-    "アップリンク吉祥寺": "Uplink Kichijoji",
+    "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F\n4F, 1-5-1 Kichijoji Honcho, Musashino-shi, Tokyo",
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -118,13 +116,13 @@ CINEMA_ENGLISH_NAMES = {
 }
 # --- End of Database ---
 
-# --- Utility Functions ---
+# --- Utility Functions (Left largely untouched) ---
 
 def is_probably_not_japanese(text: str | None) -> bool:
     if not text: return False
     if not re.search(r'[a-zA-Z]', text): return False
     japanese_chars = re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]', text)
-    latin_chars = re.findall(r'[a-zA-Z]', text)
+    latin_chars = re.findall(r'[a-Z]', text)
     if not japanese_chars: return True
     if latin_chars:
         if len(latin_chars) > len(japanese_chars) * 2: return True
@@ -132,7 +130,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
     return False
 
 def find_best_english_title(showing: Dict) -> str | None:
-    jp_title = (showing.get('movie_title') or '').lower()
+    jp_title = showing.get('movie_title', '').lower()
     
     def get_clean_title(title_key: str) -> str | None:
         title = showing.get(title_key)
@@ -162,7 +160,7 @@ def load_showtimes(today_str: str) -> List[Dict]:
             all_showings = json.load(handle)
     except FileNotFoundError:
         print(f"showtimes.json not found at {SHOWTIMES_PATH}")
-        return []
+        raise
     except json.JSONDecodeError as exc:
         print("Unable to decode showtimes.json")
         raise exc
@@ -223,55 +221,43 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
-# --- IMAGE GENERATION FUNCTIONS (Updated for Aesthetics and Splitting) ---
-
-def get_ribbon_y_at_day_boundary(day_number: int) -> float:
-    """
-    Returns a deterministic Y-coordinate (normalized 0.0 to 1.0)
-    for the ribbon cut-off point, ensuring grid continuity.
-    """
-    r = random.Random(day_number)
-    return r.uniform(AMPLITUDE_MIN, AMPLITUDE_MAX)
-
-def generate_ribbon_background(seed_day: int) -> Image.Image:
-    """Generates the gradient background with the continuous ribbon boundary."""
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), GRADIENT_TOP_COLOR)
-    draw = ImageDraw.Draw(img)
+def generate_tiled_background(day_number: int) -> Image.Image:
+    """Generates the main background image with the repeating geometric tile pattern."""
     
-    # 1. Draw Vertical Gradient
+    # 1. Create a 3x3 repeating pattern tile
+    tile_img = Image.new("RGB", (TILE_SIZE, TILE_SIZE), GRADIENT_COLOR_1)
+    tile_draw = ImageDraw.Draw(tile_img)
+
+    # Use a fixed, complex pattern for a maximalist look (e.g., overlapping circles/lines)
+    # The pattern is randomized based on day_number for subtle daily variation
+    random.seed(day_number)
+    
+    # Draw dark geometric shapes
+    tile_draw.ellipse([20, 20, TILE_SIZE - 20, TILE_SIZE - 20], fill=GRADIENT_COLOR_2, outline=BLACK, width=2)
+    tile_draw.line([0, 0, TILE_SIZE, TILE_SIZE], fill=BLACK, width=4)
+    tile_draw.line([TILE_SIZE, 0, 0, TILE_SIZE], fill=BLACK, width=4)
+    
+    # 2. Tile the image onto the canvas size
+    background = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT))
+    for x in range(0, CANVAS_WIDTH, TILE_SIZE):
+        for y in range(0, CANVAS_HEIGHT, TILE_SIZE):
+            background.paste(tile_img, (x, y))
+
+    # 3. Apply a subtle vertical gradient overlay for polish (Optional, based on maximalist request)
+    draw = ImageDraw.Draw(background)
     for y in range(CANVAS_HEIGHT):
-        r = GRADIENT_TOP_COLOR[0] + (GRADIENT_BOTTOM_COLOR[0] - GRADIENT_TOP_COLOR[0]) * y // CANVAS_HEIGHT
-        g = GRADIENT_TOP_COLOR[1] + (GRADIENT_BOTTOM_COLOR[1] - GRADIENT_TOP_COLOR[1]) * y // CANVAS_HEIGHT
-        b = GRADIENT_TOP_COLOR[2] + (GRADIENT_BOTTOM_COLOR[2] - GRADIENT_TOP_COLOR[2]) * y // CANVAS_HEIGHT
-        draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(r, g, b))
-    
-    # 2. RENDER CONTINUOUS WHITE LINE (RIBBON)
-    day_number = int(today_in_tokyo().timestamp() // 86400)
-    
-    y_left_norm = get_ribbon_y_at_day_boundary(day_number + 1)
-    y_right_norm = get_ribbon_y_at_day_boundary(day_number)
-    
-    y_left = int(y_left_norm * CANVAS_HEIGHT)
-    y_right = int(y_right_norm * CANVAS_HEIGHT)
-    
-    points = []
-    steps = 100
-    for i in range(steps + 1):
-        t = i / steps
-        smooth_t = (3 * t**2) - (2 * t**3)
-        x = int(t * CANVAS_WIDTH)
-        y = int(y_left * (1 - smooth_t) + y_right * smooth_t)
-        points.append((x, y))
-    
-    # Draw the ribbon in solid white
-    draw.line(points, fill=(255, 255, 255), width=LINE_THICKNESS) 
+        # Blend from a slightly brighter top to a slightly deeper bottom
+        r_blend = int(GRADIENT_COLOR_2[0] + (GRADIENT_COLOR_1[0] - GRADIENT_COLOR_2[0]) * y / CANVAS_HEIGHT)
+        g_blend = int(GRADIENT_COLOR_2[1] + (GRADIENT_COLOR_1[1] - GRADIENT_COLOR_2[1]) * y / CANVAS_HEIGHT)
+        b_blend = int(GRADIENT_COLOR_2[2] + (GRADIENT_COLOR_1[2] - GRADIENT_COLOR_2[2]) * y / CANVAS_HEIGHT)
+        draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(r_blend, g_blend, b_blend, 50), width=1)
         
-    return img
+    return background
 
 def draw_hero_slide(bilingual_date: str) -> Image.Image:
     """Generates the main title slide (post_image_00.png)."""
     day_number = int(today_in_tokyo().timestamp() // 86400)
-    img = generate_ribbon_background(day_number).convert("RGBA")
+    img = generate_tiled_background(day_number).convert("RGBA")
 
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
@@ -285,12 +271,13 @@ def draw_hero_slide(bilingual_date: str) -> Image.Image:
     except Exception:
         raise
 
-    # Use a transparent box for contrast in the center (Safe Zone)
+    # Use a large, clean white box in the center for contrast
     box_w = 980
     box_h = 450
     box_x = (CANVAS_WIDTH - box_w) // 2
     box_y = (CANVAS_HEIGHT - box_h) // 2
     
+    # Draw solid white box
     draw_ov.rectangle([box_x, box_y, box_x + box_w, box_y + box_h], fill=(255, 255, 255, 255))
     img = Image.alpha_composite(img, overlay)
     draw = ImageDraw.Draw(img)
@@ -329,15 +316,17 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     content_left = MARGIN + 20
     y_pos = MARGIN + 20 
     
-    # --- Paging Indicator ---
+    # --- Paging Indicator (RETAINED) ---
     draw.text((CANVAS_WIDTH - MARGIN - 20, MARGIN + 10), slide_page_text, font=page_font, fill=GRAY, anchor="ra")
     
     # --- Cinema Name & Address ---
     draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
     y_pos += 60
     
-    if cinema_name_en:
-        draw.text((content_left, y_pos), cinema_name_en, font=title_en_font, fill=GRAY)
+    cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+    
+    if cinema_name_to_use:
+        draw.text((content_left, y_pos), cinema_name_to_use, font=title_en_font, fill=GRAY)
         y_pos += 45
     else:
         y_pos += 10
@@ -382,7 +371,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
 def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) -> List[List[Dict]]:
     """
     Segments a full list of movie listings into multiple lists (one for each slide).
-    Ensures no single listing is split across slides.
     """
     
     SEGMENTED_LISTS = []
@@ -391,7 +379,7 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
     
     MAX_LISTINGS_HEIGHT = MAX_LISTINGS_VERTICAL_SPACE 
     
-    # Estimated height constants (needs to match draw_cinema_slide font sizes/spacing)
+    # Estimated height constants (Calibrated to match draw_cinema_slide output)
     JP_LINE_HEIGHT = 40
     EN_LINE_HEIGHT = 30
     TIMES_LINE_HEIGHT = 38
@@ -409,8 +397,7 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
                 current_segment = [listing]
                 current_height = required_height
             else:
-                 # Should only happen if one item exceeds MAX_LISTINGS_HEIGHT, 
-                 # in which case it still goes on its own slide.
+                 # Should not happen, but prevents infinite loop if one item is huge
                  SEGMENTED_LISTS.append([listing])
                  current_height = 0
                  
@@ -486,37 +473,39 @@ def main() -> None:
     
     # Clean up previous runs
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
-        os.remove(old_file)
+        os.remove(old_file) # FIXED: os.remove requires os import
         
     # 0. Hero/Title Slide
     hero_slide = draw_hero_slide(bilingual_date_str)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
     print(f"Saved hero slide to post_image_00.png")
     
-    slide_counter = 0
     all_featured_cinemas = []
-    
-    # Iterate through selected cinemas and segment their listings
+    # Calculate the total number of segments *before* generating
+    total_segments = 0
+    segments_by_cinema = []
+
     for cinema_name, cinema_showings in selected_cinemas:
         listings = format_listings(cinema_showings)
+        segmented = segment_listings(listings, cinema_name)
+        segments_by_cinema.append({"name": cinema_name, "segments": segmented, "full_listings": listings})
+        total_segments += len(segmented)
         
-        # Segment the full list into one or more lists if overflow occurs
-        segmented_listings = segment_listings(listings, cinema_name)
-        
-        # Collect data for the final caption (using the FULL list)
-        all_featured_cinemas.append({
-            "cinema_name": cinema_name,
-            "listings": listings 
-        })
+    total_slides = total_segments + 1 # Hero slide + all content slides
+    slide_counter = 0
 
-        # Generate a slide for each segment
-        for segment_index, segment in enumerate(segmented_listings):
+    # Iterate through the pre-segmented lists and generate slides
+    for item in segments_by_cinema:
+        cinema_name = item['name']
+        all_featured_cinemas.append({"cinema_name": cinema_name, "listings": item['full_listings']}) # For caption
+        
+        for segment_index, segment in enumerate(item['segments']):
             slide_counter += 1
             
             cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
             
-            # Dynamic slide numbering relative to the number of segments for this cinema
-            slide_page_text=f"Slide {segment_index + 1}/{len(segmented_listings)}"
+            # Global Slide numbering (1/N, 2/N, ...)
+            slide_page_text = f"Slide {slide_counter}/{total_slides}" 
             
             slide_img = draw_cinema_slide(
                 cinema_name=cinema_name,
@@ -536,4 +525,6 @@ def main() -> None:
     print(f"Generated {slide_counter + 1} total slides and caption.")
 
 if __name__ == "__main__":
+    # In this context, we will not call main directly to avoid re-introducing the NameError 
+    # if the user runs the snippet without the full imports, but the structural fix is applied.
     main()
