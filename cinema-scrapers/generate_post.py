@@ -1,10 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 27 (TEXT UPDATE):
-- Design: Infinite Solar Burst Gradient.
-- Text: "TOKYO MINI THEATER" + "SWIPE FOR TODAY'S SELECTION".
-- Logic: Smart slide limits, dynamic splitting, no numbering.
+VERSION 32 (CINEMATIC STILLS):
+- Hero Design: Fetches a high-res movie backdrop from TMDB for a film playing today.
+- Style: "Cinematic Dark Mode" with a subtle vignette and blur to make text pop.
+- Content: Warm Cream slides for listings (easy reading).
 """
 from __future__ import annotations
 
@@ -13,29 +13,29 @@ import math
 import random
 import re
 import textwrap
-import colorsys
+import os
+import requests
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Tuple
+from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont
-import glob
-import os
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 try:  
     from zoneinfo import ZoneInfo
 except ImportError:
     ZoneInfo = None  # type: ignore
 
-
+# --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 
-# --- Configuration ---
+TMDB_API_KEY = os.environ.get("TMDB_API_KEY") # NOW REQUIRED
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
 MAX_LISTINGS_VERTICAL_SPACE = 800 
@@ -50,8 +50,9 @@ TITLE_WRAP_WIDTH = 30
 CONTENT_BG_COLOR = (255, 255, 255) 
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
+WHITE = (255, 255, 255)
 
-# --- Database ---
+# --- Database (Cinemas) ---
 CINEMA_ADDRESSES = {
     "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F\n6F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
     "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F\n3F, 3-35-13 Shinjuku, Shinjuku-ku, Tokyo",
@@ -179,7 +180,6 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
     return formatted
 
 def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) -> List[List[Dict]]:
-    """Segments a full list of movie listings into multiple lists."""
     SEGMENTED_LISTS = []
     current_segment = []
     current_height = 0
@@ -211,85 +211,148 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
 
     return SEGMENTED_LISTS
 
-# --- HERO DESIGN: INFINITE SOLAR BURST ---
+# --- TMDB IMAGE LOGIC ---
 
-def generate_burst_background(day_number: int) -> Image.Image:
-    """Generates a radial gradient bursting from a dynamic center color to white edges."""
-    
-    # 1. Calculate Dynamic Center Color
-    hue_degrees = (45 + (day_number // 3) * 12) % 360
-    hue_norm = hue_degrees / 360.0
-    
-    saturation = 1.0 
-    value = 1.0
-    
-    r_float, g_float, b_float = colorsys.hsv_to_rgb(hue_norm, saturation, value)
-    center_color = (int(r_float*255), int(g_float*255), int(b_float*255))
-    
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
-    draw = ImageDraw.Draw(img)
-    
-    center_x, center_y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
-    max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
-    
-    # 2. Draw Radial Gradient
-    for r in range(max_radius, 0, -2):
-        t = r / max_radius
-        # t^0.6 pushes the color outward for a "burst" feel
-        t_adj = t ** 0.6
-        
-        # Interpolate between CenterColor and White (255,255,255)
-        red = int(center_color[0] * (1 - t_adj) + 255 * t_adj)
-        green = int(center_color[1] * (1 - t_adj) + 255 * t_adj)
-        blue = int(center_color[2] * (1 - t_adj) + 255 * t_adj)
-        
-        draw.ellipse(
-            [center_x - r, center_y - r, center_x + r, center_y + r],
-            fill=(red, green, blue)
-        )
-         
-    return img
+def fetch_tmdb_backdrop(movie_title: str) -> Image.Image | None:
+    """Searches TMDB for a movie and returns its backdrop image."""
+    if not TMDB_API_KEY:
+        print("Warning: No TMDB_API_KEY found.")
+        return None
 
-def draw_hero_slide(bilingual_date: str) -> Image.Image:
-    """Generates the main title slide."""
-    day_number = int(today_in_tokyo().timestamp() // 86400)
-    img = generate_burst_background(day_number).convert("RGBA")
+    try:
+        # 1. Search for the movie
+        search_url = f"https://api.themoviedb.org/3/search/movie"
+        params = {
+            "api_key": TMDB_API_KEY,
+            "query": movie_title,
+            "language": "ja-JP" # Prefer JP results but it searches titles well
+        }
+        response = requests.get(search_url, params=params)
+        data = response.json()
+        
+        if not data.get("results"):
+            return None
+            
+        # Get the first result with a backdrop
+        movie = None
+        for res in data["results"]:
+            if res.get("backdrop_path"):
+                movie = res
+                break
+        
+        if not movie:
+            return None
+            
+        # 2. Download Image (w1280 is a good size for quality)
+        image_url = f"https://image.tmdb.org/t/p/w1280{movie['backdrop_path']}"
+        print(f"   Found backdrop for '{movie_title}': {image_url}")
+        
+        img_response = requests.get(image_url)
+        img = Image.open(BytesIO(img_response.content)).convert("RGB")
+        
+        # 3. Crop/Resize to Portrait (Center crop)
+        # We need 1080x1350. The image is usually landscape.
+        target_ratio = CANVAS_WIDTH / CANVAS_HEIGHT
+        img_ratio = img.width / img.height
+        
+        if img_ratio > target_ratio:
+            # Too wide, crop width
+            new_width = int(img.height * target_ratio)
+            left = (img.width - new_width) // 2
+            img = img.crop((left, 0, left + new_width, img.height))
+        else:
+            # Too tall (unlikely for backdrop), crop height
+            new_height = int(img.width / target_ratio)
+            top = (img.height - new_height) // 2
+            img = img.crop((0, top, img.width, top + new_height))
+            
+        return img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+
+    except Exception as e:
+        print(f"   TMDB Fetch Error: {e}")
+        return None
+
+def generate_cinematic_background(todays_titles: List[str]) -> Image.Image:
+    """Tries to fetch a backdrop for a random movie from today's list."""
+    
+    # Shuffle titles to try random ones
+    random.shuffle(todays_titles)
+    
+    bg_image = None
+    # Try up to 5 movies
+    for title in todays_titles[:5]:
+        bg_image = fetch_tmdb_backdrop(title)
+        if bg_image:
+            break
+            
+    if not bg_image:
+        print("   No backdrops found. Using fallback gradient.")
+        bg_image = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (20, 20, 30))
+        # Simple gradient fallback could go here if desired
+        
+    return bg_image
+
+def apply_cinematic_overlay(img: Image.Image) -> Image.Image:
+    """Applies a dark gradient overlay to make text readable."""
+    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
+    draw = ImageDraw.Draw(overlay)
+    
+    # Top Gradient (Darker for Title)
+    for y in range(600):
+        alpha = int(200 * (1 - (y / 600))) # 200 -> 0
+        draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(0, 0, 0, alpha))
+        
+    # Bottom Gradient (Darker for Footer)
+    for y in range(CANVAS_HEIGHT - 500, CANVAS_HEIGHT):
+        alpha = int(200 * ((y - (CANVAS_HEIGHT - 500)) / 500)) # 0 -> 200
+        draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(0, 0, 0, alpha))
+
+    # Global subtle dim
+    draw.rectangle([0, 0, CANVAS_WIDTH, CANVAS_HEIGHT], fill=(0, 0, 0, 80))
+
+    img = img.convert("RGBA")
+    return Image.alpha_composite(img, overlay).convert("RGB")
+
+def draw_hero_slide(bilingual_date: str, todays_titles: List[str]) -> Image.Image:
+    """Generates the main title slide using a movie still."""
+    
+    # 1. Get Background
+    raw_bg = generate_cinematic_background(todays_titles)
+    
+    # 2. Apply Dark Overlay
+    img = apply_cinematic_overlay(raw_bg)
 
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
     try:
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 120)
-        subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 60)
+        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
+        subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
     except Exception:
         raise
 
-    # --- Text (Floating directly on gradient) ---
     text_center_x = CANVAS_WIDTH // 2
     center_y = CANVAS_HEIGHT // 2
     
-    # Helper for shadow text
-    def draw_shadowed_text(x, y, text, font, main_color=BLACK):
-        # Soft White Shadow for readability against deep colors
-        draw_ov.text((x+3, y+3), text, font=font, fill=(255, 255, 255, 140), anchor="mm")
-        draw_ov.text((x, y), text, font=font, fill=main_color, anchor="mm")
+    # White Text for Dark Background
+    def draw_centered_text(y, text, font, color=WHITE):
+        draw_ov.text((text_center_x, y), text, font=font, fill=color, anchor="mm")
 
-    draw_shadowed_text(text_center_x, center_y - 120, "TOKYO", title_font)
-    draw_shadowed_text(text_center_x, center_y + 20, "MINI THEATER", title_font) # CHANGED TEXT
+    draw_centered_text(center_y - 120, "TOKYO", title_font)
+    draw_centered_text(center_y + 20, "MINI THEATER", title_font)
     
-    draw_shadowed_text(text_center_x, center_y + 160, "本日の上映情報", subtitle_font, GRAY)
-    draw_shadowed_text(text_center_x, center_y + 240, bilingual_date, date_font, GRAY)
+    draw_centered_text(center_y + 160, "本日の上映情報", subtitle_font, (220, 220, 220))
+    draw_centered_text(center_y + 240, bilingual_date, date_font, (220, 220, 220))
 
-    draw_shadowed_text(text_center_x, CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font) # CHANGED TEXT
+    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) # Yellow accent
 
-    img = Image.alpha_composite(img, overlay)
-    return img.convert("RGB")
+    img = img.convert("RGBA")
+    return Image.alpha_composite(img, overlay).convert("RGB")
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
-    """Generates a content slide with clean white background."""
-    
+    """Generates a content slide with clean white background (unchanged)."""
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), CONTENT_BG_COLOR)
     draw = ImageDraw.Draw(img)
 
@@ -306,7 +369,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     content_left = MARGIN + 20
     y_pos = MARGIN + 40
     
-    # --- Cinema Name Header ---
     draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
     y_pos += 70
     
@@ -325,7 +387,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     else:
         y_pos += 30
 
-    # --- Listings ---
     draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=BLACK, width=3)
     y_pos += 40
     
@@ -345,7 +406,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
             draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=GRAY)
             y_pos += 55
     
-    # Footer
     footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
 
@@ -364,7 +424,9 @@ def main() -> None:
         print(f"No showings for today ({today_str}). Exiting.")
         return
 
-    # --- 1. Select & Segment Candidates ---
+    # Collect all movie titles for the hero slide search
+    all_titles = list(set(s.get('movie_title') for s in todays_showings if s.get('movie_title')))
+    
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in todays_showings:
         if show.get("cinema_name"):
@@ -385,9 +447,7 @@ def main() -> None:
 
     candidates.sort(key=lambda x: (-x['unique_count'], x['name']))
     
-    # --- 2. Fill Carousel up to Limit ---
     MAX_CONTENT_SLIDES = INSTAGRAM_SLIDE_LIMIT - 1 
-    
     final_selection = []
     current_slide_count = 0
     
@@ -404,16 +464,14 @@ def main() -> None:
         print("No cinemas selected. Exiting.")
         return
 
-    # --- 3. Generate Images ---
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
         os.remove(old_file) 
         
-    # Hero Slide
-    hero_slide = draw_hero_slide(bilingual_date_str)
+    # 0. Hero Slide (Cinematic)
+    hero_slide = draw_hero_slide(bilingual_date_str, all_titles)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
-    print(f"Saved hero slide to post_image_00.png")
+    print(f"Saved cinematic hero slide to post_image_00.png")
 
-    # Content Slides
     slide_counter = 0
     all_featured_cinemas = []
     
@@ -435,7 +493,6 @@ def main() -> None:
             slide_img.save(slide_path)
             print(f"Saved slide to {slide_path}")
             
-    # --- 4. Caption ---
     write_caption_for_multiple_cinemas(today_str, all_featured_cinemas)
     print(f"Generated {slide_counter + 1} total slides.")
 
