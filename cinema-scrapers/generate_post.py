@@ -1,7 +1,7 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION 32 (CINEMATIC STILLS):
+VERSION: CINEMATIC STILLS (TMDB)
 - Hero Design: Fetches a high-res movie backdrop from TMDB for a film playing today.
 - Style: "Cinematic Dark Mode" with a subtle vignette and blur to make text pop.
 - Content: Warm Cream slides for listings (easy reading).
@@ -15,6 +15,7 @@ import re
 import textwrap
 import os
 import requests
+import glob
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -35,7 +36,7 @@ BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 
-TMDB_API_KEY = os.environ.get("TMDB_API_KEY") # NOW REQUIRED
+TMDB_API_KEY = os.environ.get("TMDB_API_KEY") # REQUIRED FOR HERO IMAGE
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
 MAX_LISTINGS_VERTICAL_SPACE = 800 
@@ -47,7 +48,7 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-CONTENT_BG_COLOR = (255, 255, 255) 
+CONTENT_BG_COLOR = (255, 253, 245) # Warm Cream
 BLACK = (20, 20, 20)
 GRAY = (80, 80, 80)
 WHITE = (255, 255, 255)
@@ -331,7 +332,11 @@ def draw_hero_slide(bilingual_date: str, todays_titles: List[str]) -> Image.Imag
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
     except Exception:
-        raise
+        print("Fonts not found, using defaults.")
+        title_font = ImageFont.load_default()
+        subtitle_font = ImageFont.load_default()
+        date_font = ImageFont.load_default()
+        footer_font = ImageFont.load_default()
 
     text_center_x = CANVAS_WIDTH // 2
     center_y = CANVAS_HEIGHT // 2
@@ -352,7 +357,7 @@ def draw_hero_slide(bilingual_date: str, todays_titles: List[str]) -> Image.Imag
     return Image.alpha_composite(img, overlay).convert("RGB")
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
-    """Generates a content slide with clean white background (unchanged)."""
+    """Generates a content slide with clean warm background."""
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), CONTENT_BG_COLOR)
     draw = ImageDraw.Draw(img)
 
@@ -467,7 +472,7 @@ def main() -> None:
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
         os.remove(old_file) 
         
-    # 0. Hero Slide (Cinematic)
+    # 0. Hero Slide (Cinematic Stills)
     hero_slide = draw_hero_slide(bilingual_date_str, all_titles)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
     print(f"Saved cinematic hero slide to post_image_00.png")
