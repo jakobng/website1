@@ -1,10 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption for today's cinema showings.
 
-VERSION: CINEMATIC STILLS (TMDB)
-- Hero Design: Fetches a high-res movie backdrop from TMDB for a film playing today.
-- Style: "Cinematic Dark Mode" with a subtle vignette and blur to make text pop.
-- Content: Warm Cream slides for listings (easy reading).
+VERSION: CINEMATIC STILLS (WITH CREDITS)
+- Hero Design: Fetches a high-res movie backdrop from TMDB.
+- New Feature: Credits the film used for the background in the bottom corner.
+- Style: "Cinematic Dark Mode" with a subtle vignette.
 """
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ import glob
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional
 from io import BytesIO
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -214,8 +214,11 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
 
 # --- TMDB IMAGE LOGIC ---
 
-def fetch_tmdb_backdrop(movie_title: str) -> Image.Image | None:
-    """Searches TMDB for a movie and returns its backdrop image."""
+def fetch_tmdb_backdrop(movie_title: str) -> Tuple[Image.Image, str] | None:
+    """
+    Searches TMDB for a movie and returns (Image, MovieTitle).
+    Returns None if no backdrop found.
+    """
     if not TMDB_API_KEY:
         print("Warning: No TMDB_API_KEY found.")
         return None
@@ -226,7 +229,7 @@ def fetch_tmdb_backdrop(movie_title: str) -> Image.Image | None:
         params = {
             "api_key": TMDB_API_KEY,
             "query": movie_title,
-            "language": "ja-JP" # Prefer JP results but it searches titles well
+            "language": "ja-JP" 
         }
         response = requests.get(search_url, params=params)
         data = response.json()
@@ -267,31 +270,39 @@ def fetch_tmdb_backdrop(movie_title: str) -> Image.Image | None:
             top = (img.height - new_height) // 2
             img = img.crop((0, top, img.width, top + new_height))
             
-        return img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+        resized_img = img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+        
+        # Return image AND the title found (prefer original title if Japanese is empty, or use what we found)
+        found_title = movie.get('title') or movie.get('original_title') or movie_title
+        return resized_img, found_title
 
     except Exception as e:
         print(f"   TMDB Fetch Error: {e}")
         return None
 
-def generate_cinematic_background(todays_titles: List[str]) -> Image.Image:
-    """Tries to fetch a backdrop for a random movie from today's list."""
+def generate_cinematic_background(todays_titles: List[str]) -> Tuple[Image.Image, str]:
+    """
+    Tries to fetch a backdrop for a random movie from today's list.
+    Returns (Image, TitleString).
+    """
     
     # Shuffle titles to try random ones
     random.shuffle(todays_titles)
     
-    bg_image = None
+    result = None
     # Try up to 5 movies
     for title in todays_titles[:5]:
-        bg_image = fetch_tmdb_backdrop(title)
-        if bg_image:
+        result = fetch_tmdb_backdrop(title)
+        if result:
             break
             
-    if not bg_image:
+    if not result:
         print("   No backdrops found. Using fallback gradient.")
+        # Simple gradient fallback
         bg_image = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (20, 20, 30))
-        # Simple gradient fallback could go here if desired
+        return bg_image, ""
         
-    return bg_image
+    return result
 
 def apply_cinematic_overlay(img: Image.Image) -> Image.Image:
     """Applies a dark gradient overlay to make text readable."""
@@ -317,8 +328,8 @@ def apply_cinematic_overlay(img: Image.Image) -> Image.Image:
 def draw_hero_slide(bilingual_date: str, todays_titles: List[str]) -> Image.Image:
     """Generates the main title slide using a movie still."""
     
-    # 1. Get Background
-    raw_bg = generate_cinematic_background(todays_titles)
+    # 1. Get Background & Title
+    raw_bg, bg_movie_title = generate_cinematic_background(todays_titles)
     
     # 2. Apply Dark Overlay
     img = apply_cinematic_overlay(raw_bg)
@@ -331,12 +342,14 @@ def draw_hero_slide(bilingual_date: str, todays_titles: List[str]) -> Image.Imag
         subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+        credit_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24) # Small credit font
     except Exception:
         print("Fonts not found, using defaults.")
         title_font = ImageFont.load_default()
         subtitle_font = ImageFont.load_default()
         date_font = ImageFont.load_default()
         footer_font = ImageFont.load_default()
+        credit_font = ImageFont.load_default()
 
     text_center_x = CANVAS_WIDTH // 2
     center_y = CANVAS_HEIGHT // 2
@@ -351,7 +364,14 @@ def draw_hero_slide(bilingual_date: str, todays_titles: List[str]) -> Image.Imag
     draw_centered_text(center_y + 160, "本日の上映情報", subtitle_font, (220, 220, 220))
     draw_centered_text(center_y + 240, bilingual_date, date_font, (220, 220, 220))
 
-    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) # Yellow accent
+    # Footer "Swipe"
+    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) 
+    
+    # Image Credit (Bottom Right)
+    if bg_movie_title:
+        credit_text = f"Image: {bg_movie_title}"
+        # Anchor 'rb' means Right Bottom
+        draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), credit_text, font=credit_font, fill=(180, 180, 180), anchor="rb")
 
     img = img.convert("RGBA")
     return Image.alpha_composite(img, overlay).convert("RGB")
@@ -472,7 +492,7 @@ def main() -> None:
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
         os.remove(old_file) 
         
-    # 0. Hero Slide (Cinematic Stills)
+    # 0. Hero Slide (Cinematic Stills with Credits)
     hero_slide = draw_hero_slide(bilingual_date_str, all_titles)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
     print(f"Saved cinematic hero slide to post_image_00.png")
