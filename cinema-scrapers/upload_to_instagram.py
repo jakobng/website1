@@ -11,8 +11,10 @@ IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN")
 
 # 2. IMPORTANT: Update this to your actual GitHub Pages URL
 # This is required because Instagram API needs a public URL to download the images from.
-# Format: "https://[your-github-username].github.io/[your-repo-name]/"
-GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/cinema-scrapers/"
+# Format: "https://[your-github-username].github.io/[your-repo-name]/[subfolder]/"
+# Based on your repo (jakobng/website1), this should be:
+GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/cinema-scrapers/" 
+# <--- ENSURE THIS URL IS CORRECT AND PUBLICLY ACCESSIBLE
 
 API_VERSION = "v21.0"
 GRAPH_URL = f"https://graph.facebook.com/{API_VERSION}"
@@ -72,6 +74,42 @@ def create_carousel_parent_container(children_ids, caption):
     print(f"✅ Created Parent Carousel Container ID: {result['id']}")
     return result["id"]
 
+# --- NEW ASYNCHRONOUS CHECK FUNCTION ---
+def check_media_status(creation_id):
+    """Polls the API to check if the media is ready for publishing."""
+    url = f"{GRAPH_URL}/{creation_id}"
+    params = {
+        "fields": "status_code,status,id",  # Requesting status fields
+        "access_token": IG_ACCESS_TOKEN
+    }
+
+    # Poll status every 5 seconds for up to 60 seconds (12 checks)
+    max_checks = 12
+    delay = 5  # seconds
+
+    print(f"   Waiting for media ID {creation_id} to finish processing...")
+
+    for i in range(max_checks):
+        response = requests.get(url, params=params).json()
+        status_code = response.get("status_code")
+        
+        # Check 1: Final success status
+        if status_code == "FINISHED":
+            print(f"   Media status: FINISHED. Ready to publish.")
+            return True
+        
+        # Check 2: Fatal error status
+        if status_code in ("ERROR", "ERROR_RESOURCE_DOWNLOAD"):
+            print(f"❌ Media processing FAILED: {response}")
+            return False
+
+        # If still processing, wait and check again
+        print(f"   Processing status: {status_code}. Waiting {delay}s...")
+        time.sleep(delay)
+
+    print("❌ Timed out waiting for media processing.")
+    return False
+
 def publish_media(creation_id):
     """Publishes the container (single or carousel) to the feed."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media_publish"
@@ -96,6 +134,8 @@ def main():
 
     # 1. Read Caption
     try:
+        # Note: The script arguments are no longer used for mode switching.
+        # We rely on file detection.
         with open("post_caption.txt", "r", encoding="utf-8") as f:
             caption = f.read()
     except FileNotFoundError:
@@ -106,7 +146,7 @@ def main():
     # Look for files matching pattern 'post_image_*.png' (e.g., post_image_00.png, post_image_01.png)
     image_files = sorted(glob.glob("post_image_*.png"))
     
-    # Fallback for legacy single file name
+    # Fallback for legacy single file name (post_image.png)
     if not image_files and os.path.exists("post_image.png"):
         image_files = ["post_image.png"]
 
@@ -147,10 +187,14 @@ def main():
         creation_id = create_carousel_parent_container(children_ids, caption)
 
     # --- PUBLISH ---
-    # Step 3: Publish the container (applies to both Single and Carousel)
+    # Step 3: Check status before publishing
     if creation_id:
-        print("   Publishing...")
-        publish_media(creation_id)
+        if check_media_status(creation_id):
+            # Step 4: Publish
+            publish_media(creation_id)
+        else:
+            print("❌ Publication aborted due to media processing error or timeout.")
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()
