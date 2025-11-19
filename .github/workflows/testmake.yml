@@ -35,7 +35,8 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          git add 'cinema-scrapers/post_image.png'
+          # UPDATED: Use wildcard to grab all generated slides (e.g., post_image_00.png, post_image_01.png, etc.)
+          git add 'cinema-scrapers/post_image_*.png'
           git add 'cinema-scrapers/post_caption.txt'
           
           # Force a commit even if nothing changed (using --allow-empty is safer for testing)
@@ -54,7 +55,8 @@ jobs:
 
       - name: Run Upload Script
         working-directory: './cinema-scrapers'
-        run: python upload_to_instagram.py
+        # Pass the first slide's name and the total number of slides for the carousel
+        run: python upload_to_instagram.py --is_carousel
         env:
           # This pulls your new tokens from the secrets
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
