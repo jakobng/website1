@@ -19,6 +19,8 @@ GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/cinema-scrapers/"
 API_VERSION = "v21.0"
 GRAPH_URL = f"https://graph.facebook.com/{API_VERSION}"
 
+# --- API Helper Functions ---
+
 def upload_single_image_container(image_url, caption):
     """Creates a media container for a single image post."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
@@ -56,7 +58,7 @@ def upload_carousel_child_container(image_url):
     return result["id"]
 
 def create_carousel_parent_container(children_ids, caption):
-    """Creates the parent carousel container linking all children."""
+    """Creates the parent carousel container linking all children (Step 2)."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
     payload = {
         "media_type": "CAROUSEL",
@@ -74,12 +76,12 @@ def create_carousel_parent_container(children_ids, caption):
     print(f"✅ Created Parent Carousel Container ID: {result['id']}")
     return result["id"]
 
-# --- NEW ASYNCHRONOUS CHECK FUNCTION ---
+# --- ASYNCHRONOUS STATUS CHECK ---
 def check_media_status(creation_id):
-    """Polls the API to check if the media is ready for publishing."""
+    """Polls the API to check if the media is ready for publishing (Step 3)."""
     url = f"{GRAPH_URL}/{creation_id}"
     params = {
-        "fields": "status_code,status,id",  # Requesting status fields
+        "fields": "status_code,status,id",
         "access_token": IG_ACCESS_TOKEN
     }
 
@@ -111,7 +113,7 @@ def check_media_status(creation_id):
     return False
 
 def publish_media(creation_id):
-    """Publishes the container (single or carousel) to the feed."""
+    """Publishes the container (Step 4)."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media_publish"
     payload = {
         "creation_id": creation_id,
@@ -134,8 +136,6 @@ def main():
 
     # 1. Read Caption
     try:
-        # Note: The script arguments are no longer used for mode switching.
-        # We rely on file detection.
         with open("post_caption.txt", "r", encoding="utf-8") as f:
             caption = f.read()
     except FileNotFoundError:
@@ -143,13 +143,8 @@ def main():
         sys.exit(1)
 
     # 2. Find Image Files
-    # Look for files matching pattern 'post_image_*.png' (e.g., post_image_00.png, post_image_01.png)
     image_files = sorted(glob.glob("post_image_*.png"))
     
-    # Fallback for legacy single file name (post_image.png)
-    if not image_files and os.path.exists("post_image.png"):
-        image_files = ["post_image.png"]
-
     if not image_files:
         print("❌ No image files found to upload.")
         sys.exit(1)
@@ -162,7 +157,6 @@ def main():
     if len(image_files) == 1:
         print("🔹 Detected Single Image Mode")
         filename = image_files[0]
-        # Construct public URL
         image_url = f"{GITHUB_PAGES_BASE_URL}{filename}"
         print(f"   Public URL: {image_url}")
         
@@ -179,16 +173,15 @@ def main():
             print(f"   Processing Child: {filename} -> {image_url}")
             child_id = upload_carousel_child_container(image_url)
             children_ids.append(child_id)
-            # Small delay to be nice to the API
-            time.sleep(1) 
+            time.sleep(1) # Small delay between child container creation
         
         # Step 2: Create the parent container linking them
         print("   Linking children to parent container...")
         creation_id = create_carousel_parent_container(children_ids, caption)
 
     # --- PUBLISH ---
-    # Step 3: Check status before publishing
     if creation_id:
+        # Step 3: Check status before publishing (Resolves timing error)
         if check_media_status(creation_id):
             # Step 4: Publish
             publish_media(creation_id)
