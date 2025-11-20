@@ -71,6 +71,24 @@ def create_carousel_parent_container(children_ids, caption):
     print(f"✅ Created Parent Carousel Container ID: {result['id']}")
     return result["id"]
 
+def upload_story_container(image_url):
+    """Creates a media container specifically for STORIES."""
+    url = f"{GRAPH_URL}/{IG_USER_ID}/media"
+    payload = {
+        "image_url": image_url,
+        "media_type": "STORIES", # CRITICAL: Identifies this as a Story
+        "access_token": IG_ACCESS_TOKEN
+    }
+    response = requests.post(url, data=payload)
+    result = response.json()
+    
+    if "id" not in result:
+        print(f"❌ Error creating Story container: {result}")
+        return None
+        
+    print(f"   Created Story Container: {result['id']}")
+    return result["id"]
+
 # --- ASYNCHRONOUS STATUS CHECK ---
 def check_media_status(creation_id):
     """Polls the API to check if the media is ready for publishing (Step 3)."""
@@ -154,8 +172,6 @@ def publish_media(creation_id):
     print(f"   Message: {error_msg}")
 
     # Specific handling for "Limit Reached" / "Action Blocked" false positives
-    # Code 4 = Application request limit reached
-    # Subcode 2207051 = Action is blocked
     if error_code == 4 or error_subcode == 2207051:
         print("   ⚠️ This error often occurs even if the post succeeded (False Positive).")
         print("   ⏳ Waiting 15 seconds to verify actual post status...")
@@ -167,8 +183,9 @@ def publish_media(creation_id):
         else:
             print("   ❌ VERIFIED: The post actually failed.")
 
-    # If we get here, it's a hard failure
-    sys.exit(1)
+    # If we get here, it's a hard failure.
+    # For Feed/Carousel, we exit. For Stories, we might just return None so the loop continues.
+    return None
 
 def main():
     if not IG_USER_ID or not IG_ACCESS_TOKEN:
@@ -183,27 +200,27 @@ def main():
         print("❌ post_caption.txt not found.")
         sys.exit(1)
 
-    # 2. Find Image Files
+    # 2. Find Image Files (Feed)
     image_files = sorted(glob.glob("post_image_*.png"))
     
     if not image_files:
         print("❌ No image files found to upload.")
         sys.exit(1)
 
-    print(f"📸 Found {len(image_files)} images: {image_files}")
+    print(f"📸 Found {len(image_files)} FEED images: {image_files}")
 
     creation_id = None
 
-    # --- SINGLE IMAGE MODE ---
+    # --- SINGLE IMAGE MODE (Feed) ---
     if len(image_files) == 1:
-        print("🔹 Detected Single Image Mode")
+        print("🔹 Detected Single Image Mode (Feed)")
         filename = image_files[0]
         image_url = f"{GITHUB_PAGES_BASE_URL}{filename}"
         print(f"   Public URL: {image_url}")
         
         creation_id = upload_single_image_container(image_url, caption)
 
-    # --- CAROUSEL MODE ---
+    # --- CAROUSEL MODE (Feed) ---
     else:
         print(f"🔹 Detected Carousel Mode ({len(image_files)} slides)")
         
@@ -220,15 +237,47 @@ def main():
         print("   Linking children to parent container...")
         creation_id = create_carousel_parent_container(children_ids, caption)
 
-    # --- PUBLISH ---
+    # --- PUBLISH FEED ---
     if creation_id:
-        # Step 3: Check status before publishing (Resolves timing error)
         if check_media_status(creation_id):
-            # Step 4: Publish
             publish_media(creation_id)
         else:
-            print("❌ Publication aborted due to media processing error or timeout.")
-            sys.exit(1)
+            print("❌ Feed Publication aborted due to media processing error or timeout.")
+            # We do NOT exit here, because we still want to try Stories if Feed fails.
+
+    # --- STORY MODE ---
+    print("\n--- CHECKING FOR STORIES ---")
+    story_files = sorted(glob.glob("story_image_*.png"))
+    
+    if story_files:
+        print(f"🔹 Detected {len(story_files)} Story Images. Starting sequence upload...")
+        
+        for i, filename in enumerate(story_files):
+            image_url = f"{GITHUB_PAGES_BASE_URL}{filename}"
+            print(f"\n   Story {i+1}/{len(story_files)}: {filename}")
+            
+            # 1. Create Container
+            container_id = upload_story_container(image_url)
+            
+            if container_id:
+                # 2. Check Status (Crucial for Stories as they process individually)
+                if check_media_status(container_id):
+                    # 3. Publish Immediately
+                    result = publish_media(container_id)
+                    
+                    if result:
+                        print(f"   ✅ Story {i+1} published.")
+                        # 4. Nap (Rate Limit Protection)
+                        # Spacing out story uploads helps avoid the "Spam" filter
+                        print("   ⏳ Sleeping 10s to be gentle on API...")
+                        time.sleep(10)
+                    else:
+                        print(f"   ❌ Story {i+1} failed to publish.")
+            else:
+                print(f"   Skipping Story {filename} due to container error.")
+                
+    else:
+        print("ℹ️ No story images found. Skipping Story sequence.")
 
 if __name__ == "__main__":
     main()
