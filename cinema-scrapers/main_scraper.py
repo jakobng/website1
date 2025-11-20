@@ -39,7 +39,7 @@ import cinema_rosa_module
 import chupki_module
 import uplink_kichijoji_module
 import morc_asagaya_module
-import kimbocho_theatre_module
+import jimbocho_theatre_module
 
 # --- Google Gemini API Import ---
 try:
@@ -519,5 +519,6 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
 
 
