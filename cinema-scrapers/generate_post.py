@@ -1,11 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 41: DECOUPLED PAGINATION
-- Fix: 'segment_listings' now accepts a max_height parameter.
-- Feature: Feed images use strict height limits (800px).
-- Feature: Story images use relaxed height limits (1350px) to fit more films per slide.
-- Result: Consolidates multi-slide cinemas into single story slides where possible.
+VERSION 42: FIXED STORY PAGINATION & TITLES
+- Fix: 'draw_story_slide' now renders English titles.
+- Fix: 'segment_listings' now accepts specific line-height metrics to prevent overflow.
+- Fix: Adjusted vertical spacing constants to ensure footer isn't overwritten.
 """
 from __future__ import annotations
 
@@ -42,9 +41,10 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
-# Vertical space limits (Pixels)
-MAX_FEED_VERTICAL_SPACE = 800 
-MAX_STORY_VERTICAL_SPACE = 1350 # Much taller for 9:16 stories
+
+# Vertical space limits (Pixels) - Reduced slightly to be safe
+MAX_FEED_VERTICAL_SPACE = 750 
+MAX_STORY_VERTICAL_SPACE = 1150 # Reduced from 1350 to prevent footer collision
 
 # Layout
 CANVAS_WIDTH = 1080
@@ -194,20 +194,21 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
-def segment_listings(listings: List[Dict[str, str | None]], max_height: int) -> List[List[Dict]]:
-    """Segments listings based on a dynamic vertical height limit."""
+def segment_listings(listings: List[Dict[str, str | None]], max_height: int, spacing: Dict[str, int]) -> List[List[Dict]]:
+    """
+    Segments listings based on a dynamic vertical height limit.
+    'spacing' dict must contain: 'jp_line', 'en_line', 'time_line' heights.
+    """
     SEGMENTED_LISTS = []
     current_segment = []
     current_height = 0
     
-    JP_LINE_HEIGHT = 40
-    EN_LINE_HEIGHT = 30
-    TIMES_LINE_HEIGHT = 55 
-
     for listing in listings:
-        required_height = JP_LINE_HEIGHT + TIMES_LINE_HEIGHT
+        # Calculate height using the EXACT metrics provided
+        required_height = spacing['jp_line'] + spacing['time_line']
+        
         if listing.get('en_title'):
-             required_height += EN_LINE_HEIGHT
+             required_height += spacing['en_line']
         
         if current_height + required_height > max_height:
             if current_segment:
@@ -416,12 +417,14 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
         header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
         subhead_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
         movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
+        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30) # Added En Font
         time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
     except Exception:
         header_font = ImageFont.load_default()
         subhead_font = ImageFont.load_default()
         movie_font = ImageFont.load_default()
+        en_movie_font = ImageFont.load_default()
         time_font = ImageFont.load_default()
         footer_font = ImageFont.load_default()
 
@@ -442,14 +445,23 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
     y_pos += 80
 
     for listing in listings:
+        # Japanese Title
         wrapped_title = textwrap.wrap(listing['title'], width=24)
         for line in wrapped_title:
             draw.text((center_x, y_pos), line, font=movie_font, fill=BLACK, anchor="mm")
             y_pos += 55
         
+        # NEW: English Title
+        if listing["en_title"]:
+            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=40)
+            for line in wrapped_en:
+                draw.text((center_x, y_pos), line, font=en_movie_font, fill=GRAY, anchor="mm")
+                y_pos += 45
+
+        # Showtimes
         if listing['times']:
             draw.text((center_x, y_pos), listing["times"], font=time_font, fill=GRAY, anchor="mm")
-            y_pos += 80
+            y_pos += 80 # Gap between films
         else:
             y_pos += 40
 
@@ -514,6 +526,9 @@ def main() -> None:
             grouped[show.get("cinema_name")].append(show)
 
     all_candidates_raw = []
+    # Define strict metrics to use for initial filtering (closest to Feed)
+    FEED_METRICS = {'jp_line': 40, 'en_line': 30, 'time_line': 55}
+    
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings if s.get('movie_title'))
         
@@ -534,7 +549,7 @@ def main() -> None:
             listings = format_listings(showings)
             
             # PRE-CALCULATE SEGMENTS FOR FEED ONLY (Used for Selection Logic)
-            feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE)
+            feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
 
             all_candidates_raw.append({
                 "name": cinema_name,
@@ -640,7 +655,7 @@ def main() -> None:
         hero_image = generate_fallback_burst()
         hero_title = ""
 
-    # 9. DRAW SLIDES (Decoupled Loops)
+    # 9. DRAW SLIDES (Decoupled Loops with Specific Metrics)
     
     # --- A. HERO SLIDES ---
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
@@ -649,7 +664,7 @@ def main() -> None:
     story_hero.save(BASE_DIR / f"story_image_00.png")
     print("Saved Hero Slides.")
 
-    # --- B. FEED SLIDES (Strict 800px Limit) ---
+    # --- B. FEED SLIDES (Strict 750px Limit, Small Fonts) ---
     print("Generatinng Feed Images (Strict Height)...")
     feed_counter = 0
     all_featured_for_caption = []
@@ -661,8 +676,8 @@ def main() -> None:
         
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
 
-        # Calculate segments specifically for Feed
-        feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE)
+        # Metrics MATCH 'draw_cinema_slide' constants
+        feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
         
         for segment in feed_segments:
             feed_counter += 1
@@ -670,18 +685,18 @@ def main() -> None:
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
             print(f"   Saved Feed Slide {feed_counter} ({cinema_name})")
 
-    # --- C. STORY SLIDES (Relaxed 1350px Limit) ---
+    # --- C. STORY SLIDES (Relaxed 1150px Limit, Large Fonts) ---
     print("Generatinng Story Images (Relaxed Height)...")
     story_counter = 0
+    STORY_METRICS = {'jp_line': 55, 'en_line': 45, 'time_line': 80} # Matches draw_story_slide
     
     for item in final_selection:
         cinema_name = item['name']
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         listings = item['listings']
 
-        # Calculate segments specifically for Stories
-        # This allows Yebisu Garden Cinema (2 Feed slides) to fit on 1 Story slide
-        story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE)
+        # Metrics MATCH 'draw_story_slide' constants
+        story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, STORY_METRICS)
         
         for segment in story_segments:
             story_counter += 1
