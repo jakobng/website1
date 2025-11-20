@@ -210,9 +210,7 @@ def scrape_ks_cinema(max_days: int = 7) -> List[Dict]:
                 current_year += 1
             last_month = month
             
-            raw_colspan = str(month_th.get('colspan', '1'))
-            clean_colspan = ''.join(filter(str.isdigit, raw_colspan))
-            colspan = int(clean_colspan) if clean_colspan else 1
+            colspan = int(month_th.get('colspan', 1))
             for i in range(colspan):
                 day_index = current_col_index + i
                 if day_index < len(day_ths):
