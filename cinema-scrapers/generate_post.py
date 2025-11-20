@@ -1,11 +1,11 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 40: ADDS STORY GENERATION (9:16)
-- Fix: Now reads 'tmdb_backdrop_path' directly from showtimes.json
-- Feature: Bypasses API search if the scraper already found the image
-- Feature: "Rotation" ensures cinemas change day-to-day.
-- Feature: Generates vertical Story assets.
+VERSION 41: DECOUPLED PAGINATION
+- Fix: 'segment_listings' now accepts a max_height parameter.
+- Feature: Feed images use strict height limits (800px).
+- Feature: Story images use relaxed height limits (1350px) to fit more films per slide.
+- Result: Consolidates multi-slide cinemas into single story slides where possible.
 """
 from __future__ import annotations
 
@@ -42,12 +42,14 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
-MAX_LISTINGS_VERTICAL_SPACE = 800 
+# Vertical space limits (Pixels)
+MAX_FEED_VERTICAL_SPACE = 800 
+MAX_STORY_VERTICAL_SPACE = 1350 # Much taller for 9:16 stories
 
 # Layout
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
-STORY_CANVAS_HEIGHT = 1920  # New 9:16 Height
+STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
@@ -192,19 +194,22 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
         formatted.append({"title": title, "en_title": en_title, "times": times_text})
     return formatted
 
-def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) -> List[List[Dict]]:
+def segment_listings(listings: List[Dict[str, str | None]], max_height: int) -> List[List[Dict]]:
+    """Segments listings based on a dynamic vertical height limit."""
     SEGMENTED_LISTS = []
     current_segment = []
     current_height = 0
-    MAX_LISTINGS_HEIGHT = MAX_LISTINGS_VERTICAL_SPACE 
+    
     JP_LINE_HEIGHT = 40
     EN_LINE_HEIGHT = 30
     TIMES_LINE_HEIGHT = 55 
+
     for listing in listings:
         required_height = JP_LINE_HEIGHT + TIMES_LINE_HEIGHT
         if listing.get('en_title'):
              required_height += EN_LINE_HEIGHT
-        if current_height + required_height > MAX_LISTINGS_HEIGHT:
+        
+        if current_height + required_height > max_height:
             if current_segment:
                 SEGMENTED_LISTS.append(current_segment)
                 current_segment = [listing]
@@ -215,6 +220,7 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
         else:
             current_segment.append(listing)
             current_height += required_height
+    
     if current_segment:
         SEGMENTED_LISTS.append(current_segment)
     return SEGMENTED_LISTS
@@ -268,7 +274,6 @@ def process_image_bytes(img_content: bytes) -> Image.Image:
 def fetch_direct_backdrop(backdrop_path: str) -> Image.Image | None:
     """Fetches image directly using the path found by the scraper."""
     try:
-        # Using w1280 width for high quality
         url = f"https://image.tmdb.org/t/p/w1280{backdrop_path}"
         print(f"   [DIRECT] Fetching pre-found image: {url}")
         response = requests.get(url, timeout=10)
@@ -279,7 +284,6 @@ def fetch_direct_backdrop(backdrop_path: str) -> Image.Image | None:
     return None
 
 def fetch_tmdb_backdrop_fallback(movie_title: str) -> Tuple[Image.Image, str] | None:
-    """Fallback: Search API if no path was saved (Legacy method)."""
     if not TMDB_API_KEY: return None
     try:
         search_url = f"https://api.themoviedb.org/3/search/movie"
@@ -403,7 +407,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
     return img.convert("RGB")
 
-# --- NEW STORY FUNCTIONS ---
 def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
     """Generates a 9:16 vertical Story slide."""
     img = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), CONTENT_BG_COLOR)
@@ -495,10 +498,7 @@ def main() -> None:
     date_en = today.strftime("%b %d, %Y")
     bilingual_date_str = f"{date_jp} / {date_en}"
 
-    # 2. Read Previous Post's Caption to determine Rotation
-    recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
-    
-    # Clean up BOTH Feed and Story images
+    # 2. Cleanup
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")): os.remove(old_file) 
     for old_file in glob.glob(str(BASE_DIR / "story_image_*.png")): os.remove(old_file)
 
@@ -507,7 +507,7 @@ def main() -> None:
         print(f"No showings for today ({today_str}). Exiting.")
         return
 
-    # 3. Group Cinemas and Prepare Candidates
+    # 3. Group Cinemas
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in todays_showings:
         if show.get("cinema_name"):
@@ -532,17 +532,21 @@ def main() -> None:
 
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
             listings = format_listings(showings)
-            segments = segment_listings(listings, cinema_name)
+            
+            # PRE-CALCULATE SEGMENTS FOR FEED ONLY (Used for Selection Logic)
+            feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE)
+
             all_candidates_raw.append({
                 "name": cinema_name,
                 "listings": listings,
-                "segments": segments,
+                "feed_segments": feed_segments, # Only used for checking slide counts
                 "unique_count": len(unique_titles),
                 "titles": list(set(all_searchable_titles)),
                 "backdrops": list(set(known_backdrops))
             })
 
-    # 4. Rotation & Randomization Logic
+    # 4. Rotation & Randomization
+    recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
     fresh_candidates = []
     recent_candidates = []
     for cand in all_candidates_raw:
@@ -553,25 +557,26 @@ def main() -> None:
     random.shuffle(fresh_candidates)
     random.shuffle(recent_candidates)
     all_candidates = fresh_candidates + recent_candidates
-    print(f"   [ROTATION] Fresh count: {len(fresh_candidates)}, Recent count: {len(recent_candidates)}")
     
-    # 5. Initial Selection (Standard Fit)
+    # 5. Selection Logic (Based on FEED Constraints)
     MAX_CONTENT_SLIDES = INSTAGRAM_SLIDE_LIMIT - 1 
     final_selection = []
     current_slide_count = 0
     remaining_candidates = []
+    
     for cand in all_candidates:
-        needed = len(cand['segments'])
+        needed = len(cand['feed_segments']) # We use Feed segments to determine "fit"
         if current_slide_count + needed <= MAX_CONTENT_SLIDES:
             final_selection.append(cand)
             current_slide_count += needed
         else:
             remaining_candidates.append(cand)
+
     if not final_selection:
         print("No cinemas selected. Exiting.")
         return
 
-    # 6. HERO IMAGE SEARCH (RANDOMIZED)
+    # 6. HERO IMAGE SEARCH
     print("--- Phase 1: Searching Standard Candidates for Hero Image ---")
     hero_image = None
     hero_title = ""
@@ -595,12 +600,11 @@ def main() -> None:
                 break 
     
     if valid_hero_options:
-        print(f"   [SUCCESS] Found {len(valid_hero_options)} valid Hero candidates. Picking one randomly...")
         hero_image, hero_title = random.choice(valid_hero_options)
     else:
         print("   [WARNING] No Hero images found in standard selection.")
 
-    # 7. RESCUE PROTOCOL (RANDOMIZED)
+    # 7. RESCUE PROTOCOL
     if not hero_image:
         print("--- Phase 2: RESCUE PROTOCOL - Searching Remaining Cinemas ---")
         rescue_candidates = []
@@ -624,48 +628,66 @@ def main() -> None:
             winner = random.choice(rescue_candidates)
             rescue_cand = winner["candidate"]
             hero_image, hero_title = winner["image_data"]
-            print(f"   [SWAP] Swapping {rescue_cand['name']} into the lineup (Rescue successful)...")
-            rescue_needed = len(rescue_cand['segments'])
+            
+            rescue_needed = len(rescue_cand['feed_segments'])
             while final_selection and (current_slide_count + rescue_needed > MAX_CONTENT_SLIDES):
                 removed = final_selection.pop()
-                current_slide_count -= len(removed['segments'])
-                print(f"   [DROP] Removed {removed['name']} to make room.")
+                current_slide_count -= len(removed['feed_segments'])
             final_selection.append(rescue_cand)
 
-    # 8. Fallback (Phase 3)
+    # 8. Fallback
     if not hero_image:
-        print("   [FAIL] No images found in ENTIRE city. Using Solar Burst.")
         hero_image = generate_fallback_burst()
         hero_title = ""
 
-    # 9. Draw Slides (Both Feed and Story)
-    print("   Generating Feed (4:5) and Story (9:16) images...")
+    # 9. DRAW SLIDES (Decoupled Loops)
     
+    # --- A. HERO SLIDES ---
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
-
     story_hero = draw_hero_story(bilingual_date_str, hero_image, hero_title)
     story_hero.save(BASE_DIR / f"story_image_00.png")
-    print(f"Saved Hero Slides.")
+    print("Saved Hero Slides.")
 
-    slide_counter = 0
+    # --- B. FEED SLIDES (Strict 800px Limit) ---
+    print("Generatinng Feed Images (Strict Height)...")
+    feed_counter = 0
     all_featured_for_caption = []
+    
     for item in final_selection:
         cinema_name = item['name']
-        all_featured_for_caption.append({"cinema_name": cinema_name, "listings": item['listings']})
-        for i, segment in enumerate(item['segments']):
-            slide_counter += 1
-            cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
-            
-            # Feed
+        cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+        listings = item['listings']
+        
+        all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
+
+        # Calculate segments specifically for Feed
+        feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE)
+        
+        for segment in feed_segments:
+            feed_counter += 1
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment)
-            slide_img.save(BASE_DIR / f"post_image_{slide_counter:02}.png")
-            
-            # Story
-            story_img = draw_story_slide(cinema_name, cinema_name_en, segment)
-            story_img.save(BASE_DIR / f"story_image_{slide_counter:02}.png")
-            
-            print(f"Saved slide {slide_counter} ({cinema_name})")
+            slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
+            print(f"   Saved Feed Slide {feed_counter} ({cinema_name})")
+
+    # --- C. STORY SLIDES (Relaxed 1350px Limit) ---
+    print("Generatinng Story Images (Relaxed Height)...")
+    story_counter = 0
+    
+    for item in final_selection:
+        cinema_name = item['name']
+        cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+        listings = item['listings']
+
+        # Calculate segments specifically for Stories
+        # This allows Yebisu Garden Cinema (2 Feed slides) to fit on 1 Story slide
+        story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE)
+        
+        for segment in story_segments:
+            story_counter += 1
+            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment)
+            slide_img.save(BASE_DIR / f"story_image_{story_counter:02}.png")
+            print(f"   Saved Story Slide {story_counter} ({cinema_name})")
 
     # 10. Caption
     write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
