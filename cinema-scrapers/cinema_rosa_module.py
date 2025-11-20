@@ -263,8 +263,9 @@ def scrape_cinema_rosa() -> List[Dict[str, str]]:
             try:
                 date_element = driver.find_elements(By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)[i]
                 
-                date_p = date_element.find_element(By.CSS_SELECTOR, "p.date")
-                date_str = _clean_text(date_p.text)
+            date_p = date_element.find_element(By.CSS_SELECTOR, "p.date")
+            raw_date_text = date_p.text.strip() or date_p.get_attribute("textContent").strip()
+            date_str = _clean_text(raw_date_text)
                 parsed_date = _parse_date_from_eigaland(date_str, dt.date.today().year)
                 
                 if not parsed_date:
@@ -351,3 +352,4 @@ if __name__ == '__main__':
         pprint(showings[0])
     else:
         print(f"\nNo showings found for {CINEMA_NAME}.")
+
