@@ -1,10 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 42: FIXED STORY PAGINATION & TITLES
-- Fix: 'draw_story_slide' now renders English titles.
-- Fix: 'segment_listings' now accepts specific line-height metrics to prevent overflow.
-- Fix: Adjusted vertical spacing constants to ensure footer isn't overwritten.
+VERSION 43: AESTHETIC OVERHAUL (DEEP YELLOW THEME)
+- Design: Content background changed to Deep Yellow (255, 210, 0).
+- Design: Hero slides updated with new Bilingual Header hierarchy.
+- Fix: Gray text darkened to ensure contrast against yellow background.
 """
 from __future__ import annotations
 
@@ -42,9 +42,9 @@ TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
 
-# Vertical space limits (Pixels) - Reduced slightly to be safe
+# Vertical space limits (Pixels)
 MAX_FEED_VERTICAL_SPACE = 750 
-MAX_STORY_VERTICAL_SPACE = 1150 # Reduced from 1350 to prevent footer collision
+MAX_STORY_VERTICAL_SPACE = 1150
 
 # Layout
 CANVAS_WIDTH = 1080
@@ -54,9 +54,12 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-CONTENT_BG_COLOR = (255, 253, 245) # Warm Cream
+# UPDATED: Deep Yellow Background
+CONTENT_BG_COLOR = (255, 210, 0) 
+
 BLACK = (20, 20, 20)
-GRAY = (80, 80, 80)
+# UPDATED: Darker Gray for better contrast on Yellow
+GRAY = (30, 30, 30) 
 WHITE = (255, 255, 255)
 
 # --- Database (Cinemas) ---
@@ -204,9 +207,7 @@ def segment_listings(listings: List[Dict[str, str | None]], max_height: int, spa
     current_height = 0
     
     for listing in listings:
-        # Calculate height using the EXACT metrics provided
         required_height = spacing['jp_line'] + spacing['time_line']
-        
         if listing.get('en_title'):
              required_height += spacing['en_line']
         
@@ -273,7 +274,6 @@ def process_image_bytes(img_content: bytes) -> Image.Image:
     return img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
 
 def fetch_direct_backdrop(backdrop_path: str) -> Image.Image | None:
-    """Fetches image directly using the path found by the scraper."""
     try:
         url = f"https://image.tmdb.org/t/p/w1280{backdrop_path}"
         print(f"   [DIRECT] Fetching pre-found image: {url}")
@@ -333,14 +333,17 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     try:
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
-        subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
+        # UPDATED FONTS
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 80)
+        jp_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 100)
+        en_subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
         credit_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24) 
     except Exception:
-        title_font = ImageFont.load_default()
-        subtitle_font = ImageFont.load_default()
+        header_font = ImageFont.load_default()
+        jp_title_font = ImageFont.load_default()
+        en_subtitle_font = ImageFont.load_default()
         date_font = ImageFont.load_default()
         footer_font = ImageFont.load_default()
         credit_font = ImageFont.load_default()
@@ -350,11 +353,14 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     def draw_centered_text(y, text, font, color=WHITE):
         draw_ov.text((text_center_x, y), text, font=font, fill=color, anchor="mm")
 
-    draw_centered_text(center_y - 120, "TOKYO", title_font)
-    draw_centered_text(center_y + 20, "MINI THEATER", title_font)
-    draw_centered_text(center_y + 160, "本日の上映情報", subtitle_font, (220, 220, 220))
-    draw_centered_text(center_y + 240, bilingual_date, date_font, (220, 220, 220))
+    # UPDATED LAYOUT
+    draw_centered_text(center_y - 140, "TOKYO MINI THEATER", header_font)
+    draw_centered_text(center_y - 20, "本日の上映情報", jp_title_font) # Large JP
+    draw_centered_text(center_y + 80, "Today's Showtimes", en_subtitle_font) # Small EN
+    draw_centered_text(center_y + 160, bilingual_date, date_font, (220, 220, 220))
+    
     draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) 
+    
     if movie_title:
         draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), f"Image: {movie_title}", font=credit_font, fill=(180, 180, 180), anchor="rb")
     img = img.convert("RGBA")
@@ -417,7 +423,7 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
         header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
         subhead_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
         movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
-        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30) # Added En Font
+        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
         time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
     except Exception:
@@ -451,7 +457,7 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
             draw.text((center_x, y_pos), line, font=movie_font, fill=BLACK, anchor="mm")
             y_pos += 55
         
-        # NEW: English Title
+        # English Title
         if listing["en_title"]:
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=40)
             for line in wrapped_en:
@@ -487,16 +493,23 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
     draw.rectangle([0, 0, CANVAS_WIDTH, STORY_CANVAS_HEIGHT], fill=(0, 0, 0, 100))
     
     try:
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 120)
-        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 60)
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 85) # Slightly larger for Story
+        jp_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
+        en_subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 50)
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
     except:
-        title_font = ImageFont.load_default()
+        header_font = ImageFont.load_default()
+        jp_title_font = ImageFont.load_default()
+        en_subtitle_font = ImageFont.load_default()
         date_font = ImageFont.load_default()
 
     center_x = CANVAS_WIDTH // 2
     center_y = STORY_CANVAS_HEIGHT // 2
 
-    draw.text((center_x, center_y - 100), "TOKYO\nINDIE\nGUIDE", font=title_font, fill=WHITE, anchor="mm", align="center")
+    # UPDATED LAYOUT (Vertical)
+    draw.text((center_x, center_y - 200), "TOKYO MINI THEATER", font=header_font, fill=WHITE, anchor="mm")
+    draw.text((center_x, center_y - 60), "本日の上映情報", font=jp_title_font, fill=WHITE, anchor="mm")
+    draw.text((center_x, center_y + 60), "Today's Showtimes", font=en_subtitle_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=(255, 210, 0), anchor="mm")
 
     hero_crop = hero_crop.convert("RGBA")
@@ -526,7 +539,6 @@ def main() -> None:
             grouped[show.get("cinema_name")].append(show)
 
     all_candidates_raw = []
-    # Define strict metrics to use for initial filtering (closest to Feed)
     FEED_METRICS = {'jp_line': 40, 'en_line': 30, 'time_line': 55}
     
     for cinema_name, showings in grouped.items():
