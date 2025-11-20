@@ -1,10 +1,10 @@
 import requests
+import json
+import re
 from bs4 import BeautifulSoup, NavigableString
 from urllib.parse import urljoin
-from datetime import date, timedelta
-import re
+from datetime import date, timedelta, datetime
 from typing import List, Dict, Optional, Tuple
-
 
 BASE_URL = "https://www.morc-asagaya.com"
 LIST_URL = f"{BASE_URL}/film_date/film_now/"
@@ -17,7 +17,6 @@ HEADERS = {
     )
 }
 
-
 def fetch_soup(url: str) -> Optional[BeautifulSoup]:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=15)
@@ -27,277 +26,223 @@ def fetch_soup(url: str) -> Optional[BeautifulSoup]:
         print(f"[Morc阿佐ヶ谷] Error fetching {url}: {e}")
         return None
 
-
-def fetch_film_listing() -> List[Dict[str, str]]:
+def clean_title(text: str) -> str:
     """
-    Get all film entries from /film_date/film_now/ (both '上映中' and '近日上映予定').
+    Removes event prefixes like 〈第4回クロアチア映画祭〉
+    """
+    # Remove text inside angle brackets <...> or 〈...〉
+    text = re.sub(r'[〈<].*?[〉>]', '', text)
+    return text.strip()
+
+def parse_meta_from_text(text: str) -> Tuple[Optional[str], Optional[int], Optional[str], Optional[str]]:
+    """
+    Extracts Year, Runtime, Country, Director from a blob of text.
+    """
+    year, runtime, country, director = None, None, None, None
+
+    # 1. Year / Runtime / Country pattern: "2025年／61分／日本"
+    m_specs = re.search(r"(\d{4})年\s*[／/]\s*(\d+)分\s*[／/]\s*([^\n]+)", text)
+    if m_specs:
+        year = m_specs.group(1)
+        runtime = int(m_specs.group(2))
+        # Clean country (stop at newlines or block chars)
+        c_raw = m_specs.group(3)
+        country = re.split(r'[■◼︎\n]', c_raw)[0].strip()
+
+    # 2. Director pattern: "■監督：Name" or just "監督：Name"
+    m_dir = re.search(r"[■◼︎]?\s*監督[：:]\s*([^\n■◼︎]+)", text)
+    if m_dir:
+        director = m_dir.group(1).strip()
+
+    return year, runtime, country, director
+
+def expand_date_text(text: str) -> List[date]:
+    """
+    Parses complex date strings found in Morc text.
+    Examples: "11/17(月)〜11/20(木)", "11/25(火)、11/26(水)"
+    """
+    today = date.today()
+    current_year = today.year
+    dates = []
+
+    # Normalize separators
+    text = text.replace("～", "〜").replace("-", "〜")
+    
+    date_pattern = re.compile(r"(\d{1,2})/(\d{1,2})")
+
+    def make_date(m, d):
+        y = current_year
+        # Handle year boundaries
+        if today.month >= 10 and m <= 3:
+            y += 1
+        elif today.month <= 3 and m >= 10:
+            y -= 1
+        return date(y, m, d)
+
+    # Split by commas first
+    parts = re.split(r'[、,]', text)
+
+    for part in parts:
+        part = part.strip()
+        if not part: continue
+
+        if "〜" in part:
+            range_sides = part.split("〜")
+            start_match = date_pattern.search(range_sides[0])
+            if start_match:
+                start_m, start_d = map(int, start_match.groups())
+                start_date = make_date(start_m, start_d)
+                
+                end_match = date_pattern.search(range_sides[1]) if len(range_sides) > 1 else None
+                
+                if end_match:
+                    end_m, end_d = map(int, end_match.groups())
+                    end_date = make_date(end_m, end_d)
+                else:
+                    # If "End TBD", assume 1 week
+                    end_date = start_date + timedelta(days=7)
+                
+                # Fill range
+                curr = start_date
+                while curr <= end_date:
+                    dates.append(curr)
+                    curr += timedelta(days=1)
+        else:
+            match = date_pattern.search(part)
+            if match:
+                m, d = map(int, match.groups())
+                dates.append(make_date(m, d))
+
+    return sorted(list(set(dates)))
+
+def parse_schedule_from_detail_soup(soup: BeautifulSoup) -> List[Tuple[date, str]]:
+    """
+    Scans the detail page text to pair Dates with Times.
+    """
+    showings = []
+    
+    # Find the header "上映日時"
+    header = soup.find(lambda tag: tag.name in ['h2', 'h3', 'h4', 'p'] and '上映日時' in tag.get_text())
+    
+    if not header:
+        text_source = soup.get_text("\n")
+    else:
+        lines = []
+        for sibling in header.next_siblings:
+            s_text = sibling.get_text()
+            if "料金" in s_text or "Ticket" in s_text or "TICKET" in s_text:
+                break
+            lines.append(s_text)
+        text_source = "\n".join(lines)
+
+    raw_lines = [l.strip() for l in text_source.split('\n') if l.strip()]
+    active_dates = []
+    
+    for line in raw_lines:
+        # 1. Extract potential dates from this line
+        line_dates = expand_date_text(line)
+        
+        # 2. Extract potential times from this line
+        time_matches = re.findall(r"(\d{1,2}:\d{2})", line)
+        
+        if line_dates and time_matches:
+            # Date and Time on same line
+            for d in line_dates:
+                for t in time_matches:
+                    showings.append((d, t))
+            active_dates = line_dates
+            
+        elif line_dates and not time_matches:
+            # Just dates, set context for next lines
+            active_dates = line_dates
+            
+        elif time_matches and not line_dates:
+            # Just times, apply to active dates
+            if active_dates:
+                for d in active_dates:
+                    for t in time_matches:
+                        showings.append((d, t))
+
+    return showings
+
+def fetch_morc_asagaya_showings() -> List[Dict]:
+    """
+    Main scraper function.
     """
     soup = fetch_soup(LIST_URL)
     if not soup:
         return []
 
-    films: List[Dict[str, str]] = []
+    all_showings = []
+    today = date.today()
+    end_date = today + timedelta(days=7) # Today + 7 days
 
-    # section id="tp_flim" contains both tabs (pg_film_now and pg_film_plan)
-    section = soup.find("section", id="tp_flim")
-    if not section:
-        print("[Morc阿佐ヶ谷] Could not find film listing section #tp_flim")
-        return films
+    # Parse list
+    film_blocks = soup.select("#pg_film_now li.tpf_list")
+    print(f"[Morc阿佐ヶ谷] Found {len(film_blocks)} films in listing.")
 
-    for film_block in section.find_all("div", class_="tpf_main"):
-        for li in film_block.select("li.tpf_list"):
-            a = li.find("a", href=True)
-            if not a:
+    for li in film_blocks:
+        a_tag = li.find("a")
+        if not a_tag: continue
+        
+        href = a_tag.get("href")
+        full_url = urljoin(BASE_URL, href)
+        
+        # Extract Title
+        h2 = li.find("h2")
+        raw_title = h2.get_text(strip=True) if h2 else ""
+        title = clean_title(raw_title)
+        
+        # Fetch Detail Page
+        detail_soup = fetch_soup(full_url)
+        if not detail_soup: continue
+        
+        # Parse Meta & Schedule
+        page_text = detail_soup.get_text("\n")
+        year, runtime, country, director = parse_meta_from_text(page_text)
+        scraped_showings = parse_schedule_from_detail_soup(detail_soup)
+        
+        for d, t_str in scraped_showings:
+            # --- DATE FILTERING ---
+            if not (today <= d <= end_date):
                 continue
-            href = a["href"]
-            film_url = urljoin(BASE_URL, href)
-            h2 = a.find("h2")
-            title = h2.get_text(strip=True) if h2 else a.get_text(strip=True)
-            films.append(
-                {
-                    "title": title,
-                    "url": film_url,
-                }
-            )
 
-    # Deduplicate by URL in case of overlap
-    seen = set()
-    unique_films: List[Dict[str, str]] = []
-    for f in films:
-        if f["url"] not in seen:
-            seen.add(f["url"])
-            unique_films.append(f)
-
-    return unique_films
-
-
-def parse_year_runtime_country(soup: BeautifulSoup) -> Tuple[Optional[str], Optional[int], Optional[str]]:
-    """
-    Parse '2025年／61分／日本' style line.
-    """
-    text = soup.get_text("\n", strip=True)
-    m = re.search(r"(\d{4})年／(\d+)分／([^\n]+)", text)
-    if not m:
-        return None, None, None
-    year_str = m.group(1)
-    runtime_str = m.group(2)
-    country_str = m.group(3).strip()
-    try:
-        runtime_min = int(runtime_str)
-    except ValueError:
-        runtime_min = None
-    return year_str, runtime_min, country_str
-
-
-def parse_director(soup: BeautifulSoup) -> Optional[str]:
-    """
-    Parse director from something like:
-    '■監督：ガクカワサキ ■出演：...'
-    """
-    text = soup.get_text("\n", strip=True)
-    m = re.search(r"監督：([^■\n]+)", text)
-    if not m:
-        return None
-    director = m.group(1).strip()
-    return director or None
-
-
-def parse_date_range(text: str, year: int) -> Optional[Tuple[date, date]]:
-    """
-    Parse strings like:
-    - '11/21(金)〜12/4(木)'
-    - '11/27(木)'
-    - '9/19(金)〜終了日未定'
-    Return (start_date, end_date) inclusive.
-    For '終了日未定', we expand to start_date + 13 days (2 weeks total).
-    """
-    # Find all month/day pairs
-    pairs = re.findall(r"(\d{1,2})/(\d{1,2})", text)
-    if not pairs:
-        return None
-
-    if len(pairs) == 1:
-        m1, d1 = map(int, pairs[0])
-        start = date(year, m1, d1)
-
-        # '〜終了日未定' case
-        if "終了日未定" in text and "〜" in text:
-            end = start + timedelta(days=13)
-        else:
-            end = start
-        return start, end
-
-    # Two explicit dates
-    (m1, d1), (m2, d2) = map(lambda x: (int(x[0]), int(x[1])), pairs[:2])
-    start = date(year, m1, d1)
-    end_year = year
-
-    # Handle year rollover if necessary (e.g. 12/28〜1/5)
-    if m2 < m1:
-        end_year = year + 1
-    end = date(end_year, m2, d2)
-
-    return start, end
-
-
-def parse_schedule_block(soup: BeautifulSoup, year_str: Optional[str]) -> List[Tuple[date, str]]:
-    """
-    Parse schedule from the '上映日時' section on a film detail page.
-    Returns list of (date_obj, 'HH:MM').
-    """
-    showings: List[Tuple[date, str]] = []
-    if not year_str:
-        return showings
-
-    try:
-        base_year = int(year_str)
-    except ValueError:
-        return showings
-
-    # Find heading with '上映日時'
-    heading = None
-    for tag in soup.find_all(["h2", "h3", "h4"]):
-        if "上映日時" in tag.get_text():
-            heading = tag
-            break
-
-    if not heading:
-        return showings
-
-    # Collect text lines between '上映日時' heading and next heading containing 'Ticket'
-    lines: List[str] = []
-    for sibling in heading.next_siblings:
-        if isinstance(sibling, NavigableString):
-            text = str(sibling).strip()
-            if text:
-                for part in re.split(r"[\r\n]+", text):
-                    pt = part.strip()
-                    if pt:
-                        lines.append(pt)
-            continue
-
-        if getattr(sibling, "name", None) in ["h2", "h3", "h4"]:
-            if "Ticket" in sibling.get_text():
-                break
-
-        text = sibling.get_text("\n", strip=True)
-        if text:
-            for part in re.split(r"[\r\n]+", text):
-                pt = part.strip()
-                if pt:
-                    lines.append(pt)
-
-    if not lines:
-        return showings
-
-    # Classify lines as date-only, time-only, or combined.
-    date_only_lines: List[str] = []
-    time_only_lines: List[str] = []
-
-    for line in lines:
-        has_date = bool(re.search(r"\d{1,2}/\d{1,2}", line))
-        has_time = bool(re.search(r"\d{1,2}:\d{2}", line))
-
-        if has_date and has_time:
-            # Handle lines that already contain both date and time (not common on Morc but possible).
-            # Example hypothetical: "11/21(金) 19:30-21:20"
-            date_match = re.search(r"(\d{1,2}/\d{1,2})", line)
-            time_match = re.search(r"(\d{1,2}:\d{2})", line)
-            if date_match and time_match:
-                dr = parse_date_range(date_match.group(1), base_year)
-                if dr:
-                    start, end = dr
-                    current = start
-                    while current <= end:
-                        showings.append((current, time_match.group(1)))
-                        current += timedelta(days=1)
-        elif has_date:
-            date_only_lines.append(line)
-        elif has_time:
-            time_only_lines.append(line)
-        else:
-            # Ignore purely descriptive lines
-            continue
-
-    # If number of date-only lines matches time-only lines, pair by index.
-    # This matches the current Morc pattern: [range_line], [time_line].
-    n_pairs = min(len(date_only_lines), len(time_only_lines))
-    for i in range(n_pairs):
-        dline = date_only_lines[i]
-        tline = time_only_lines[i]
-
-        dr = parse_date_range(dline, base_year)
-        if not dr:
-            continue
-        start, end = dr
-
-        tmatch = re.search(r"(\d{1,2}:\d{2})", tline)
-        if not tmatch:
-            continue
-        time_str = tmatch.group(1)
-
-        current = start
-        while current <= end:
-            showings.append((current, time_str))
-            current += timedelta(days=1)
-
-    return showings
-
-
-def fetch_showings_for_film(film: Dict[str, str]) -> List[Dict]:
-    """
-    Given {'title': ..., 'url': ...}, fetch the detail page and build showing dicts.
-    """
-    url = film["url"]
-    title = film["title"]
-
-    soup = fetch_soup(url)
-    if not soup:
-        return []
-
-    year_str, runtime_min, country = parse_year_runtime_country(soup)
-    director = parse_director(soup)
-    schedule = parse_schedule_block(soup, year_str)
-
-    results: List[Dict] = []
-    for d, time_str in schedule:
-        results.append(
-            {
+            all_showings.append({
                 "cinema_name": "Morc阿佐ヶ谷",
                 "movie_title": title,
-                "movie_title_en": None,
+                "movie_title_en": None, 
                 "director": director,
-                "year": year_str,
+                "year": year,
                 "country": country,
-                "runtime_min": runtime_min,
-                "date_text": d.isoformat(),  # 'YYYY-MM-DD'
-                "showtime": time_str,
-                "detail_page_url": url,
-                "program_title": None,
-                "purchase_url": None,
-            }
-        )
+                "runtime_min": runtime,
+                "date_text": d.isoformat(),
+                "showtime": t_str,
+                "detail_page_url": full_url,
+                "purchase_url": None
+            })
 
-    return results
+    # --- DEDUPLICATION ---
+    # Sometimes the parser captures the same showtime twice if text layout is messy.
+    unique_showings = {}
+    for s in all_showings:
+        # Key: Date + Title + Time
+        key = (s['date_text'], s['movie_title'], s['showtime'])
+        unique_showings[key] = s
 
-
-def fetch_morc_asagaya_showings() -> List[Dict]:
-    """
-    High-level entry point: fetch all films from listing and expand to showings.
-    """
-    films = fetch_film_listing()
-    all_showings: List[Dict] = []
-
-    for film in films:
-        film_showings = fetch_showings_for_film(film)
-        all_showings.extend(film_showings)
-
-    return all_showings
-
+    # Convert back to list and sort
+    final_list = list(unique_showings.values())
+    final_list.sort(key=lambda x: (x['date_text'], x['showtime']))
+    
+    return final_list
 
 if __name__ == "__main__":
-    showings = fetch_morc_asagaya_showings()
-    film_titles = {s["movie_title"] for s in showings}
-    print(f"{len(showings)} showings found across {len(film_titles)} films")
-    for s in showings[:50]:  # avoid flooding stdout
-        print(s)
+    # Run scraper
+    data = fetch_morc_asagaya_showings()
+    
+    # Save to JSON
+    filename = "morc_asagaya_showtimes.json"
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    
+    print(f"\nSuccess! Scraped {len(data)} unique showings.")
+    print(f"Results saved to: {filename}")
