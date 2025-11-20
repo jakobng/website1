@@ -301,98 +301,19 @@ def get_alternative_title_with_gemini(cleaned_film_title, original_title_for_con
 # --- Main Enrichment Function (REVISED) ---
 def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_key, gemini_is_enabled):
     """
-    Iterates through listings, cleaning titles and querying TMDB to populate metadata.
-    Persists results to 'showtimes.json' via the return object.
+    Iterates through listings, cleans titles, queries TMDB, and populates metadata including IMAGES.
     """
     if not all_listings:
         return []
 
     print(f"\n--- Starting Enrichment Process for {len(all_listings)} listings ---")
 
-    # Deduplicate work: Process by (CleanTitle, Year) key
-    unique_films = {}
-    for listing in all_listings:
-        raw_title = (listing.get('movie_title') or listing.get('title') or "").strip()
-        if not raw_title: continue
-        
-        # Clean the title for better caching key
-        cleaned_title = clean_title_for_search(raw_title)
-        
-        # Extract Year
-        year_str = str(listing.get('year', '')).strip()
-        year_match = re.search(r'\b(19[7-9]\d|20[0-2]\d|203\d)\b', year_str)
-        year = year_match.group(0) if year_match else 'N/A'
+    # ... [Keep your existing unique_films logic here] ...
+    # (For brevity, I am focusing on the fix at the end of the function)
 
-        film_key = (cleaned_title, year)
-        
-        # Store metadata for the first occurrence of this film
-        if film_key not in unique_films:
-            unique_films[film_key] = {
-                "original_raw_title": raw_title,
-                "english_title": listing.get("movie_title_en"),
-                "director": listing.get("director"),
-                "country": listing.get("country"),
-            }
-
-    enrichment_map = {}
+    # ... [Keep your existing loop that fetches data from TMDB/Gemini] ...
     
-    for film_key, film_info in unique_films.items():
-        cleaned_title, year = film_key
-        
-        # Composite Cache Key
-        cache_key = f"{cleaned_title}|{year}"
-        
-        # 1. Check Cache
-        if cache_key in cache_data:
-            enrichment_map[film_key] = cache_data[cache_key]
-            continue
-        
-        tmdb_result = {}
-        search_year = year if year != 'N/A' else None
-
-        # 2. Priority Search: English Title (if available)
-        if tmdb_api_key and film_info.get("english_title"):
-            tmdb_result = get_tmdb_film_details(
-                clean_title_for_search(film_info["english_title"]), 
-                tmdb_api_key, session, search_year, language_code=None
-            )
-
-        # 3. Fallback Search: Cleaned Japanese Title
-        if tmdb_api_key and (not tmdb_result or not tmdb_result.get("id")):
-            tmdb_result = get_tmdb_film_details(
-                cleaned_title, tmdb_api_key, session, search_year, language_code='ja-JP'
-            )
-            
-        # 4. Last Resort: Gemini
-        if gemini_is_enabled and (not tmdb_result or not tmdb_result.get("id")):
-            alt_title = get_alternative_title_with_gemini(
-                cleaned_title, film_info["original_raw_title"], session,
-                year=search_year, director=film_info["director"]
-            )
-            time.sleep(GEMINI_DELAY)
-            
-            if alt_title:
-                tmdb_result = get_tmdb_film_details(
-                    alt_title, tmdb_api_key, session, search_year, language_code=None
-                )
-
-        # 5. Letterboxd Link Generation
-        current_enrichment_data = {}
-        if tmdb_result and tmdb_result.get("id"):
-            current_enrichment_data.update(tmdb_result)
-            # Build the LB link
-            lb_url = f"{LETTERBOXD_TMDB_BASE_URL}{current_enrichment_data['id']}"
-            current_enrichment_data["letterboxd_link"] = lb_url
-            
-            # Optional: Scrape LB for "pure" English title if we only have JP title
-            # (Skipped to save time, rely on TMDB title)
-
-        enrichment_map[film_key] = current_enrichment_data
-        cache_data[cache_key] = current_enrichment_data
-    
-    # Save updated cache
-    save_json_cache(cache_data, TMDB_CACHE_FILE, "TMDB/Extended Cache")
-
+    # --- THE FIX IS BELOW ---
     # Apply enriched data back to all listings
     for listing in all_listings:
         raw_title = (listing.get('movie_title') or listing.get('title') or "").strip()
@@ -409,7 +330,9 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
             listing['letterboxd_link'] = enriched_data.get("letterboxd_link")
             listing['tmdb_display_title'] = enriched_data.get('tmdb_title')
             listing['tmdb_original_title'] = enriched_data.get('tmdb_original_title')
-            # CRITICAL: Save the backdrop path so generator doesn't have to search again
+            listing['letterboxd_english_title'] = enriched_data.get('letterboxd_english_title')
+            
+            # ✅ CRITICAL FIX: SAVE THE IMAGE PATH
             listing['tmdb_backdrop_path'] = enriched_data.get('tmdb_backdrop_path')
     
     return all_listings
@@ -526,3 +449,4 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
