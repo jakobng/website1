@@ -74,6 +74,7 @@ jobs:
           
           # ✅ CRITICAL FIX: Use wildcard for Carousel Images
           git add 'post_image_*.png'
+          git add 'story_image_*.png'
           git add 'post_caption.txt'
           
           # Check if anything actually changed
