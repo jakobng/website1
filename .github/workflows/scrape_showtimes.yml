@@ -61,17 +61,19 @@ jobs:
       - name: Generate Instagram post assets
         run: python generate_post.py
 
-      # --- STEP 3: COMMIT & PUSH ---
+     # --- STEP 3: COMMIT & PUSH ---
       - name: Commit and push generated files
         id: commit_push
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Add all files (Data + Assets)
+          # Add Data Files
           git add 'showtimes.json'
           git add 'tmdb_cache.json'
-          git add 'post_image.png'
+          
+          # ✅ CRITICAL FIX: Use wildcard for Carousel Images
+          git add 'post_image_*.png'
           git add 'post_caption.txt'
           
           # Check if anything actually changed
@@ -82,7 +84,9 @@ jobs:
           fi
           
           git commit -m "Automated update of showtimes and IG post"
-          git pull origin main --rebase
+          
+          # ✅ CRITICAL FIX: Use autostash to prevent "Unstaged changes" error
+          git pull origin main --rebase --autostash
           git push
           
           echo "pushed=true" >> $GITHUB_OUTPUT
