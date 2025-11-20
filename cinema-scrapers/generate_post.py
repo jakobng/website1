@@ -1,10 +1,11 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 39: USE PRE-FOUND BACKDROPS
+VERSION 40: ADDS STORY GENERATION (9:16)
 - Fix: Now reads 'tmdb_backdrop_path' directly from showtimes.json
 - Feature: Bypasses API search if the scraper already found the image
 - Feature: "Rotation" ensures cinemas change day-to-day.
+- Feature: Generates vertical Story assets.
 """
 from __future__ import annotations
 
@@ -46,6 +47,7 @@ MAX_LISTINGS_VERTICAL_SPACE = 800
 # Layout
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
+STORY_CANVAS_HEIGHT = 1920  # New 9:16 Height
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
@@ -401,6 +403,90 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
     return img.convert("RGB")
 
+# --- NEW STORY FUNCTIONS ---
+def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
+    """Generates a 9:16 vertical Story slide."""
+    img = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), CONTENT_BG_COLOR)
+    draw = ImageDraw.Draw(img)
+    
+    try:
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
+        subhead_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
+        movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
+        time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
+        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+    except Exception:
+        header_font = ImageFont.load_default()
+        subhead_font = ImageFont.load_default()
+        movie_font = ImageFont.load_default()
+        time_font = ImageFont.load_default()
+        footer_font = ImageFont.load_default()
+
+    center_x = CANVAS_WIDTH // 2
+    y_pos = 150 
+
+    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=BLACK, anchor="mm")
+    y_pos += 80
+    
+    cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+    if cinema_name_to_use:
+        draw.text((center_x, y_pos), cinema_name_to_use, font=subhead_font, fill=GRAY, anchor="mm")
+        y_pos += 100
+    else:
+        y_pos += 60
+
+    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=BLACK, width=4)
+    y_pos += 80
+
+    for listing in listings:
+        wrapped_title = textwrap.wrap(listing['title'], width=24)
+        for line in wrapped_title:
+            draw.text((center_x, y_pos), line, font=movie_font, fill=BLACK, anchor="mm")
+            y_pos += 55
+        
+        if listing['times']:
+            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=GRAY, anchor="mm")
+            y_pos += 80
+        else:
+            y_pos += 40
+
+    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=BLACK, anchor="mm")
+    return img
+
+def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: str) -> Image.Image:
+    """Creates a 9:16 version of the Hero Image."""
+    img_ratio = hero_image.width / hero_image.height
+    target_ratio = CANVAS_WIDTH / STORY_CANVAS_HEIGHT
+    
+    if img_ratio > target_ratio:
+        new_width = int(hero_image.height * target_ratio)
+        left = (hero_image.width - new_width) // 2
+        hero_crop = hero_image.crop((left, 0, left + new_width, hero_image.height))
+    else:
+        hero_crop = hero_image
+        
+    hero_crop = hero_crop.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+    
+    overlay = Image.new("RGBA", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), (0,0,0,0))
+    draw = ImageDraw.Draw(overlay)
+    draw.rectangle([0, 0, CANVAS_WIDTH, STORY_CANVAS_HEIGHT], fill=(0, 0, 0, 100))
+    
+    try:
+        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 120)
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 60)
+    except:
+        title_font = ImageFont.load_default()
+        date_font = ImageFont.load_default()
+
+    center_x = CANVAS_WIDTH // 2
+    center_y = STORY_CANVAS_HEIGHT // 2
+
+    draw.text((center_x, center_y - 100), "TOKYO\nINDIE\nGUIDE", font=title_font, fill=WHITE, anchor="mm", align="center")
+    draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=(255, 210, 0), anchor="mm")
+
+    hero_crop = hero_crop.convert("RGBA")
+    return Image.alpha_composite(hero_crop, overlay).convert("RGB")
+
 def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
@@ -411,8 +497,10 @@ def main() -> None:
 
     # 2. Read Previous Post's Caption to determine Rotation
     recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
-    for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
-        os.remove(old_file) 
+    
+    # Clean up BOTH Feed and Story images
+    for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")): os.remove(old_file) 
+    for old_file in glob.glob(str(BASE_DIR / "story_image_*.png")): os.remove(old_file)
 
     todays_showings = load_showtimes(today_str)
     if not todays_showings:
@@ -429,17 +517,14 @@ def main() -> None:
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings if s.get('movie_title'))
         
-        # --- NEW: Collect pre-found backdrops & Fallback titles ---
-        known_backdrops = [] # Stores tuples of (path, title)
+        known_backdrops = []
         all_searchable_titles = []
         
         for s in showings:
-            # If Scraper found an image, save it here!
             if s.get('tmdb_backdrop_path'):
                 display_title = s.get('tmdb_display_title') or s.get('tmdb_original_title') or s.get('movie_title')
                 known_backdrops.append((s.get('tmdb_backdrop_path'), display_title))
 
-            # Fallback titles (same as before)
             if s.get('tmdb_original_title'): all_searchable_titles.append(s.get('tmdb_original_title'))
             if s.get('tmdb_display_title'): all_searchable_titles.append(s.get('tmdb_display_title'))
             if s.get('movie_title'): all_searchable_titles.append(clean_search_title(s.get('movie_title')))
@@ -454,7 +539,7 @@ def main() -> None:
                 "segments": segments,
                 "unique_count": len(unique_titles),
                 "titles": list(set(all_searchable_titles)),
-                "backdrops": list(set(known_backdrops)) # <--- STORED HERE
+                "backdrops": list(set(known_backdrops))
             })
 
     # 4. Rotation & Randomization Logic
@@ -493,20 +578,16 @@ def main() -> None:
     valid_hero_options = []
 
     for cand in final_selection:
-        # STRATEGY A: Use Pre-found Backdrops (FAST & RELIABLE)
         if cand['backdrops']:
-            # Pick one random known image from this cinema
             path, title = random.choice(cand['backdrops'])
             img = fetch_direct_backdrop(path)
             if img:
                 valid_hero_options.append((img, title))
-                continue # Found one for this cinema, move to next
+                continue
         
-        # STRATEGY B: Fallback API Search (SLOW)
-        # Only runs if scraper failed to find images for ALL films in this cinema
         titles_to_check = cand['titles']
         random.shuffle(titles_to_check)
-        for title in titles_to_check[:3]: # Limit checks to save time
+        for title in titles_to_check[:3]:
             if not title: continue
             res = fetch_tmdb_backdrop_fallback(title)
             if res:
@@ -524,7 +605,6 @@ def main() -> None:
         print("--- Phase 2: RESCUE PROTOCOL - Searching Remaining Cinemas ---")
         rescue_candidates = []
         for cand in remaining_candidates:
-            # Check backdrops first!
             if cand['backdrops']:
                 path, title = random.choice(cand['backdrops'])
                 img = fetch_direct_backdrop(path)
@@ -532,7 +612,6 @@ def main() -> None:
                     rescue_candidates.append({"candidate": cand, "image_data": (img, title)})
                     continue
 
-            # Fallback Search
             titles_to_check = cand['titles']
             random.shuffle(titles_to_check)
             for title in titles_to_check[:3]:
@@ -559,10 +638,15 @@ def main() -> None:
         hero_image = generate_fallback_burst()
         hero_title = ""
 
-    # 9. Draw Slides
+    # 9. Draw Slides (Both Feed and Story)
+    print("   Generating Feed (4:5) and Story (9:16) images...")
+    
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
-    print(f"Saved Hero Slide.")
+
+    story_hero = draw_hero_story(bilingual_date_str, hero_image, hero_title)
+    story_hero.save(BASE_DIR / f"story_image_00.png")
+    print(f"Saved Hero Slides.")
 
     slide_counter = 0
     all_featured_for_caption = []
@@ -572,8 +656,15 @@ def main() -> None:
         for i, segment in enumerate(item['segments']):
             slide_counter += 1
             cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+            
+            # Feed
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment)
             slide_img.save(BASE_DIR / f"post_image_{slide_counter:02}.png")
+            
+            # Story
+            story_img = draw_story_slide(cinema_name, cinema_name_en, segment)
+            story_img.save(BASE_DIR / f"story_image_{slide_counter:02}.png")
+            
             print(f"Saved slide {slide_counter} ({cinema_name})")
 
     # 10. Caption
