@@ -209,8 +209,9 @@ def scrape_ks_cinema(max_days: int = 7) -> List[Dict]:
             if last_month > 0 and month < last_month:
                 current_year += 1
             last_month = month
-            
-            colspan = int(month_th.get('colspan', 1))
+            raw_colspan = str(month_th.get('colspan', '1'))
+            clean_colspan = ''.join(filter(str.isdigit, raw_colspan))
+            colspan = int(clean_colspan) if clean_colspan else 1
             for i in range(colspan):
                 day_index = current_col_index + i
                 if day_index < len(day_ths):
@@ -297,4 +298,5 @@ if __name__ == '__main__':
         pprint(showings[0])
     else:
         print(f"\nNo showings found by {CINEMA_NAME_KC} scraper.")
+
 
