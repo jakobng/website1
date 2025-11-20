@@ -1,11 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 38: RANDOMIZED HERO + ROTATION + SMART SEARCH
+VERSION 39: USE PRE-FOUND BACKDROPS
+- Fix: Now reads 'tmdb_backdrop_path' directly from showtimes.json
+- Feature: Bypasses API search if the scraper already found the image
 - Feature: "Rotation" ensures cinemas change day-to-day.
-- Feature: "Smart Search" cleans titles to find more TMDB images.
-- Feature: "Randomized Hero" picks a random valid backdrop from ALL selected cinemas,
-  preventing the "first cinema with an image" from always dominating the cover.
 """
 from __future__ import annotations
 
@@ -128,24 +127,12 @@ def is_probably_not_japanese(text: str | None) -> bool:
     return False
 
 def clean_search_title(title: str) -> str:
-    """Removes common noise words to improve TMDB search hit rate."""
     if not title: return ""
-    
-    # 1. Remove text in parentheses/brackets e.g. (2024), [4K]
     title = re.sub(r'[\(（].*?[\)）]', '', title)
     title = re.sub(r'[\[【].*?[\]】]', '', title)
-    
-    # 2. Remove common technical/marketing keywords
-    keywords = [
-        "4K", "2K", "3D", "IMAX", "Dolby", "Atmos", 
-        "レストア", "デジタル", "リマスター", "完全版", 
-        "ディレクターズカット", "劇場版", "特別上映", "特集",
-        "上映後トーク", "舞台挨拶"
-    ]
+    keywords = ["4K", "2K", "3D", "IMAX", "Dolby", "Atmos", "レストア", "デジタル", "リマスター", "完全版", "ディレクターズカット", "劇場版", "特別上映", "特集", "上映後トーク", "舞台挨拶"]
     for kw in keywords:
         title = title.replace(kw, "")
-        
-    # 3. Trim whitespace
     return title.strip()
 
 def find_best_english_title(showing: Dict) -> str | None:
@@ -208,16 +195,13 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
     current_segment = []
     current_height = 0
     MAX_LISTINGS_HEIGHT = MAX_LISTINGS_VERTICAL_SPACE 
-    
     JP_LINE_HEIGHT = 40
     EN_LINE_HEIGHT = 30
     TIMES_LINE_HEIGHT = 55 
-    
     for listing in listings:
         required_height = JP_LINE_HEIGHT + TIMES_LINE_HEIGHT
         if listing.get('en_title'):
              required_height += EN_LINE_HEIGHT
-        
         if current_height + required_height > MAX_LISTINGS_HEIGHT:
             if current_segment:
                 SEGMENTED_LISTS.append(current_segment)
@@ -229,16 +213,12 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
         else:
             current_segment.append(listing)
             current_height += required_height
-
     if current_segment:
         SEGMENTED_LISTS.append(current_segment)
-
     return SEGMENTED_LISTS
 
 def get_recently_featured(caption_path: Path) -> List[str]:
-    """Extracts cinema names from the previous post's caption to ensure rotation."""
-    if not caption_path.exists():
-        return []
+    if not caption_path.exists(): return []
     try:
         content = caption_path.read_text(encoding="utf-8")
         names = re.findall(r"--- 【(.*?)】 ---", content)
@@ -250,18 +230,15 @@ def get_recently_featured(caption_path: Path) -> List[str]:
 # --- IMAGE GENERATORS ---
 
 def generate_fallback_burst() -> Image.Image:
-    """Generates a Solar Burst gradient as a fallback."""
     day_number = int(datetime.now().timestamp() // 86400)
     hue_degrees = (45 + (day_number // 3) * 12) % 360
     hue_norm = hue_degrees / 360.0
     r, g, b = colorsys.hsv_to_rgb(hue_norm, 1.0, 1.0)
     center_color = (int(r*255), int(g*255), int(b*255))
-    
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
     draw = ImageDraw.Draw(img)
     center_x, center_y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
     max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
-    
     for r in range(max_radius, 0, -2):
         t = r / max_radius
         t_adj = t ** 0.6
@@ -271,73 +248,75 @@ def generate_fallback_burst() -> Image.Image:
         draw.ellipse([center_x - r, center_y - r, center_x + r, center_y + r], fill=(red, green, blue))
     return img
 
-def fetch_tmdb_backdrop(movie_title: str) -> Tuple[Image.Image, str] | None:
-    if not TMDB_API_KEY: return None
+def process_image_bytes(img_content: bytes) -> Image.Image:
+    """Helper to resize and crop image to canvas."""
+    img = Image.open(BytesIO(img_content)).convert("RGB")
+    target_ratio = CANVAS_WIDTH / CANVAS_HEIGHT
+    img_ratio = img.width / img.height
+    if img_ratio > target_ratio:
+        new_width = int(img.height * target_ratio)
+        left = (img.width - new_width) // 2
+        img = img.crop((left, 0, left + new_width, img.height))
+    else:
+        new_height = int(img.width / target_ratio)
+        top = (img.height - new_height) // 2
+        img = img.crop((0, top, img.width, top + new_height))
+    return img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
 
+def fetch_direct_backdrop(backdrop_path: str) -> Image.Image | None:
+    """Fetches image directly using the path found by the scraper."""
+    try:
+        # Using w1280 width for high quality
+        url = f"https://image.tmdb.org/t/p/w1280{backdrop_path}"
+        print(f"   [DIRECT] Fetching pre-found image: {url}")
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            return process_image_bytes(response.content)
+    except Exception as e:
+        print(f"   [WARN] Failed to fetch direct image: {e}")
+    return None
+
+def fetch_tmdb_backdrop_fallback(movie_title: str) -> Tuple[Image.Image, str] | None:
+    """Fallback: Search API if no path was saved (Legacy method)."""
+    if not TMDB_API_KEY: return None
     try:
         search_url = f"https://api.themoviedb.org/3/search/movie"
         params = {"api_key": TMDB_API_KEY, "query": movie_title, "language": "ja-JP"}
         time.sleep(0.1) 
-        
         response = requests.get(search_url, params=params)
-        if response.status_code != 200: return None
-
         data = response.json()
-        
-        # Try without language if Japanese fails
         if not data.get("results"):
              params.pop("language")
              response = requests.get(search_url, params=params)
              data = response.json()
-
         if not data.get("results"): return None
-            
+        
         movie = None
-        # Prefer a result with a backdrop
         for res in data["results"]:
             if res.get("backdrop_path"):
                 movie = res
                 break
-        
         if not movie: return None
             
         image_url = f"https://image.tmdb.org/t/p/w1280{movie['backdrop_path']}"
-        print(f"   [TMDB] Found Image for: {movie_title}")
-        
+        print(f"   [API SEARCH] Found Image for: {movie_title}")
         img_response = requests.get(image_url)
-        img = Image.open(BytesIO(img_response.content)).convert("RGB")
+        resized_img = process_image_bytes(img_response.content)
         
-        target_ratio = CANVAS_WIDTH / CANVAS_HEIGHT
-        img_ratio = img.width / img.height
-        
-        if img_ratio > target_ratio:
-            new_width = int(img.height * target_ratio)
-            left = (img.width - new_width) // 2
-            img = img.crop((left, 0, left + new_width, img.height))
-        else:
-            new_height = int(img.width / target_ratio)
-            top = (img.height - new_height) // 2
-            img = img.crop((0, top, img.width, top + new_height))
-            
-        resized_img = img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
         found_title = movie.get('title') or movie.get('original_title') or movie_title
         return resized_img, found_title
-
     except Exception:
         return None
 
 def apply_cinematic_overlay(img: Image.Image) -> Image.Image:
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
-    
     for y in range(600):
         alpha = int(200 * (1 - (y / 600))) 
         draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(0, 0, 0, alpha))
-        
     for y in range(CANVAS_HEIGHT - 500, CANVAS_HEIGHT):
         alpha = int(200 * ((y - (CANVAS_HEIGHT - 500)) / 500))
         draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(0, 0, 0, alpha))
-
     draw.rectangle([0, 0, CANVAS_WIDTH, CANVAS_HEIGHT], fill=(0, 0, 0, 80))
     img = img.convert("RGBA")
     return Image.alpha_composite(img, overlay).convert("RGB")
@@ -346,7 +325,6 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     img = apply_cinematic_overlay(hero_image)
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
-    
     try:
         title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
         subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
@@ -362,7 +340,6 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
 
     text_center_x = CANVAS_WIDTH // 2
     center_y = CANVAS_HEIGHT // 2
-    
     def draw_centered_text(y, text, font, color=WHITE):
         draw_ov.text((text_center_x, y), text, font=font, fill=color, anchor="mm")
 
@@ -371,17 +348,14 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     draw_centered_text(center_y + 160, "本日の上映情報", subtitle_font, (220, 220, 220))
     draw_centered_text(center_y + 240, bilingual_date, date_font, (220, 220, 220))
     draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) 
-    
     if movie_title:
         draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), f"Image: {movie_title}", font=credit_font, fill=(180, 180, 180), anchor="rb")
-
     img = img.convert("RGBA")
     return Image.alpha_composite(img, overlay).convert("RGB")
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), CONTENT_BG_COLOR)
     draw = ImageDraw.Draw(img)
-
     try:
         title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
         title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)
@@ -391,20 +365,16 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
     except Exception:
         raise
-
     content_left = MARGIN + 20
     y_pos = MARGIN + 40
-    
     draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
     y_pos += 70
-    
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
         draw.text((content_left, y_pos), cinema_name_to_use, font=title_en_font, fill=GRAY)
         y_pos += 50
     else:
         y_pos += 20
-        
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     if address:
         jp_addr = address.split("\n")[0]
@@ -412,44 +382,35 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
         y_pos += 60
     else:
         y_pos += 30
-
     draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=BLACK, width=3)
     y_pos += 40
-    
     for listing in listings:
         wrapped_title = textwrap.wrap(f"■ {listing['title']}", width=TITLE_WRAP_WIDTH) or [f"■ {listing['title']}"]
         for line in wrapped_title:
             draw.text((content_left, y_pos), line, font=regular_font, fill=BLACK)
             y_pos += 40
-        
         if listing["en_title"]:
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=35)
             for line in wrapped_en:
                 draw.text((content_left + 10, y_pos), line, font=en_movie_font, fill=GRAY)
                 y_pos += 30
-        
         if listing['times']:
             draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=GRAY)
             y_pos += 55
-    
     footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
-
     return img.convert("RGB")
 
 def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
     today_str = today.isoformat()
-    
     date_jp = today.strftime("%Y年%m月%d日")
     date_en = today.strftime("%b %d, %Y")
     bilingual_date_str = f"{date_jp} / {date_en}"
 
     # 2. Read Previous Post's Caption to determine Rotation
     recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
-    
-    # Clean up old images
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
         os.remove(old_file) 
 
@@ -468,19 +429,21 @@ def main() -> None:
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings if s.get('movie_title'))
         
-        # SMART TITLE COLLECTION
+        # --- NEW: Collect pre-found backdrops & Fallback titles ---
+        known_backdrops = [] # Stores tuples of (path, title)
         all_searchable_titles = []
+        
         for s in showings:
-             # Prioritize clean data if available from enriched JSON
-             if s.get('tmdb_original_title'):
-                 all_searchable_titles.append(s.get('tmdb_original_title'))
-             if s.get('tmdb_display_title'):
-                 all_searchable_titles.append(s.get('tmdb_display_title'))
-             # Fallback to cleaned raw titles
-             if s.get('movie_title'):
-                 all_searchable_titles.append(clean_search_title(s.get('movie_title')))
-             if s.get('movie_title_en'):
-                 all_searchable_titles.append(clean_search_title(s.get('movie_title_en')))
+            # If Scraper found an image, save it here!
+            if s.get('tmdb_backdrop_path'):
+                display_title = s.get('tmdb_display_title') or s.get('tmdb_original_title') or s.get('movie_title')
+                known_backdrops.append((s.get('tmdb_backdrop_path'), display_title))
+
+            # Fallback titles (same as before)
+            if s.get('tmdb_original_title'): all_searchable_titles.append(s.get('tmdb_original_title'))
+            if s.get('tmdb_display_title'): all_searchable_titles.append(s.get('tmdb_display_title'))
+            if s.get('movie_title'): all_searchable_titles.append(clean_search_title(s.get('movie_title')))
+            if s.get('movie_title_en'): all_searchable_titles.append(clean_search_title(s.get('movie_title_en')))
 
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
             listings = format_listings(showings)
@@ -490,24 +453,21 @@ def main() -> None:
                 "listings": listings,
                 "segments": segments,
                 "unique_count": len(unique_titles),
-                "titles": list(set(all_searchable_titles)) 
+                "titles": list(set(all_searchable_titles)),
+                "backdrops": list(set(known_backdrops)) # <--- STORED HERE
             })
 
     # 4. Rotation & Randomization Logic
     fresh_candidates = []
     recent_candidates = []
-    
     for cand in all_candidates_raw:
         if cand['name'] in recent_cinemas:
             recent_candidates.append(cand)
         else:
             fresh_candidates.append(cand)
-
     random.shuffle(fresh_candidates)
     random.shuffle(recent_candidates)
-    
     all_candidates = fresh_candidates + recent_candidates
-    
     print(f"   [ROTATION] Fresh count: {len(fresh_candidates)}, Recent count: {len(recent_candidates)}")
     
     # 5. Initial Selection (Standard Fit)
@@ -515,7 +475,6 @@ def main() -> None:
     final_selection = []
     current_slide_count = 0
     remaining_candidates = []
-
     for cand in all_candidates:
         needed = len(cand['segments'])
         if current_slide_count + needed <= MAX_CONTENT_SLIDES:
@@ -523,7 +482,6 @@ def main() -> None:
             current_slide_count += needed
         else:
             remaining_candidates.append(cand)
-
     if not final_selection:
         print("No cinemas selected. Exiting.")
         return
@@ -532,26 +490,29 @@ def main() -> None:
     print("--- Phase 1: Searching Standard Candidates for Hero Image ---")
     hero_image = None
     hero_title = ""
-    
-    # COLLECT ALL POSSIBLE HEROES FIRST
     valid_hero_options = []
 
     for cand in final_selection:
-        # Shuffle title check order to avoid bias within the cinema
+        # STRATEGY A: Use Pre-found Backdrops (FAST & RELIABLE)
+        if cand['backdrops']:
+            # Pick one random known image from this cinema
+            path, title = random.choice(cand['backdrops'])
+            img = fetch_direct_backdrop(path)
+            if img:
+                valid_hero_options.append((img, title))
+                continue # Found one for this cinema, move to next
+        
+        # STRATEGY B: Fallback API Search (SLOW)
+        # Only runs if scraper failed to find images for ALL films in this cinema
         titles_to_check = cand['titles']
         random.shuffle(titles_to_check)
-        
-        for title in titles_to_check:
+        for title in titles_to_check[:3]: # Limit checks to save time
             if not title: continue
-            res = fetch_tmdb_backdrop(title)
+            res = fetch_tmdb_backdrop_fallback(title)
             if res:
-                # Store this as a valid option: (Image object, Title)
                 valid_hero_options.append(res)
-                # Found one for this cinema? Move to next cinema 
-                # (so one cinema doesn't dominate the lottery with 10 valid movies)
                 break 
     
-    # PICK ONE RANDOMLY
     if valid_hero_options:
         print(f"   [SUCCESS] Found {len(valid_hero_options)} valid Hero candidates. Picking one randomly...")
         hero_image, hero_title = random.choice(valid_hero_options)
@@ -561,40 +522,35 @@ def main() -> None:
     # 7. RESCUE PROTOCOL (RANDOMIZED)
     if not hero_image:
         print("--- Phase 2: RESCUE PROTOCOL - Searching Remaining Cinemas ---")
-        
         rescue_candidates = []
-
-        # Collect ALL valid rescue candidates from the cinemas we didn't pick
         for cand in remaining_candidates:
+            # Check backdrops first!
+            if cand['backdrops']:
+                path, title = random.choice(cand['backdrops'])
+                img = fetch_direct_backdrop(path)
+                if img:
+                    rescue_candidates.append({"candidate": cand, "image_data": (img, title)})
+                    continue
+
+            # Fallback Search
             titles_to_check = cand['titles']
             random.shuffle(titles_to_check)
-            
-            for title in titles_to_check:
-                if not title: continue
-                res = fetch_tmdb_backdrop(title)
+            for title in titles_to_check[:3]:
+                res = fetch_tmdb_backdrop_fallback(title)
                 if res:
-                    # Found a valid rescue!
-                    rescue_candidates.append({
-                        "candidate": cand,
-                        "image_data": res
-                    })
+                    rescue_candidates.append({"candidate": cand, "image_data": res})
                     break 
         
         if rescue_candidates:
-            # Pick a random rescue cinema
             winner = random.choice(rescue_candidates)
             rescue_cand = winner["candidate"]
             hero_image, hero_title = winner["image_data"]
-            
             print(f"   [SWAP] Swapping {rescue_cand['name']} into the lineup (Rescue successful)...")
-            
-            # Make room in the slide deck
             rescue_needed = len(rescue_cand['segments'])
             while final_selection and (current_slide_count + rescue_needed > MAX_CONTENT_SLIDES):
                 removed = final_selection.pop()
                 current_slide_count -= len(removed['segments'])
                 print(f"   [DROP] Removed {removed['name']} to make room.")
-            
             final_selection.append(rescue_cand)
 
     # 8. Fallback (Phase 3)
@@ -604,19 +560,15 @@ def main() -> None:
         hero_title = ""
 
     # 9. Draw Slides
-    # Hero
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
     print(f"Saved Hero Slide.")
 
-    # Content
     slide_counter = 0
     all_featured_for_caption = []
-    
     for item in final_selection:
         cinema_name = item['name']
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": item['listings']})
-        
         for i, segment in enumerate(item['segments']):
             slide_counter += 1
             cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
@@ -630,7 +582,6 @@ def main() -> None:
 def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List[Dict]) -> None:
     header = f"🗓️ 本日の東京ミニシアター上映情報 / Today's Featured Showtimes ({date_str})\n"
     lines = [header]
-
     for item in all_featured_cinemas:
         cinema_name = item['cinema_name']
         address = CINEMA_ADDRESSES.get(cinema_name, "")
@@ -638,7 +589,6 @@ def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List
         if address:
             jp_address = address.split("\n")[0]
             lines.append(f"📍 {jp_address}") 
-        
         for listing in item['listings']:
             lines.append(f"• {listing['title']}")
     
