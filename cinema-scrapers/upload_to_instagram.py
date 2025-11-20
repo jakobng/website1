@@ -107,6 +107,28 @@ def check_media_status(creation_id):
     print("❌ Timed out waiting for media processing.")
     return False
 
+def verify_published_status(creation_id):
+    """
+    Double-checks if the container was actually published.
+    Used when the API returns a False Positive error.
+    """
+    url = f"{GRAPH_URL}/{creation_id}"
+    params = {
+        "fields": "status_code",
+        "access_token": IG_ACCESS_TOKEN
+    }
+    try:
+        response = requests.get(url, params=params).json()
+        status = response.get("status_code")
+        print(f"   🔍 Verification Check - Container Status: {status}")
+        
+        if status == "PUBLISHED":
+            return True
+    except Exception as e:
+        print(f"   Verification API call failed: {e}")
+    
+    return False
+
 def publish_media(creation_id):
     """Publishes the container (Step 4)."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media_publish"
@@ -117,12 +139,36 @@ def publish_media(creation_id):
     response = requests.post(url, data=payload)
     result = response.json()
     
-    if "id" not in result:
-        print(f"❌ Error publishing media: {result}")
-        sys.exit(1)
-        
-    print(f"🚀 SUCCESS! Published to Instagram. Post ID: {result['id']}")
-    return result["id"]
+    # Success Case
+    if "id" in result:
+        print(f"🚀 SUCCESS! Published to Instagram. Post ID: {result['id']}")
+        return result["id"]
+    
+    # --- Error Handling Logic ---
+    error_data = result.get("error", {})
+    error_code = error_data.get("code")
+    error_subcode = error_data.get("error_subcode")
+    error_msg = error_data.get("message", "")
+
+    print(f"⚠️ Publish API returned error: Code {error_code} / Subcode {error_subcode}")
+    print(f"   Message: {error_msg}")
+
+    # Specific handling for "Limit Reached" / "Action Blocked" false positives
+    # Code 4 = Application request limit reached
+    # Subcode 2207051 = Action is blocked
+    if error_code == 4 or error_subcode == 2207051:
+        print("   ⚠️ This error often occurs even if the post succeeded (False Positive).")
+        print("   ⏳ Waiting 15 seconds to verify actual post status...")
+        time.sleep(15) # Give Instagram database time to update
+
+        if verify_published_status(creation_id):
+            print("   ✅ VERIFIED: The post was actually published successfully! Ignoring API error.")
+            return "verified_id"
+        else:
+            print("   ❌ VERIFIED: The post actually failed.")
+
+    # If we get here, it's a hard failure
+    sys.exit(1)
 
 def main():
     if not IG_USER_ID or not IG_ACCESS_TOKEN:
