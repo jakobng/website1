@@ -36,8 +36,8 @@ jobs:
       - name: Cache TMDB data
         uses: actions/cache@v4
         with:
-          path: tmdb_cache.json
-          key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('**/main_scraper.py') }}
+          path: cinema-scrapers/tmdb_cache.json
+          key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('cinema-scrapers/main_scraper.py') }}
           restore-keys: |
             ${{ runner.os }}-tmdb-cache-
 
@@ -53,10 +53,9 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
+
           # Stage the generated files
-          git add showtimes.json 
-          git add tmdb_cache.json 
+          git add cinema-scrapers/showtimes.json cinema-scrapers/tmdb_cache.json
 
           # Check if there are any staged changes
           if git diff --staged --quiet; then
