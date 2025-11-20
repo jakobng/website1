@@ -9,6 +9,10 @@ on:
 jobs:
   scrape_and_commit:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: cinema-scrapers
     
     # IMPORTANT: This permission allows the Action to push changes back to the repo
     permissions:
@@ -33,7 +37,7 @@ jobs:
           # Install all required libraries for Scraper + Generator + Uploader
           pip install --upgrade google-generativeai requests Pillow tzdata
           # Install specific requirements if the file exists
-          if [ -f cinema-scrapers/requirements.txt ]; then pip install -r cinema-scrapers/requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Install Playwright Browsers
         run: playwright install --with-deps chromium
@@ -48,7 +52,6 @@ jobs:
 
       # --- STEP 1: SCRAPE DATA ---
       - name: Run scraper script
-        working-directory: './cinema-scrapers'
         run: python main_scraper.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
@@ -56,7 +59,6 @@ jobs:
 
       # --- STEP 2: GENERATE IMAGE & CAPTION ---
       - name: Generate Instagram post assets
-        working-directory: './cinema-scrapers'
         run: python generate_post.py
 
       # --- STEP 3: COMMIT & PUSH ---
@@ -65,12 +67,12 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
+
           # Add all files (Data + Assets)
-          git add 'cinema-scrapers/showtimes.json'
-          git add 'cinema-scrapers/tmdb_cache.json'
-          git add 'cinema-scrapers/post_image.png'
-          git add 'cinema-scrapers/post_caption.txt'
+          git add 'showtimes.json'
+          git add 'tmdb_cache.json'
+          git add 'post_image.png'
+          git add 'post_caption.txt'
           
           # Check if anything actually changed
           if git diff --staged --quiet; then
@@ -97,7 +99,6 @@ jobs:
       - name: Upload to Instagram
         # Only run this step if we actually pushed new data
         if: steps.commit_push.outputs.pushed == 'true'
-        working-directory: './cinema-scrapers'
         run: python upload_to_instagram.py
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
