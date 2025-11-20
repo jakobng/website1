@@ -378,7 +378,7 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     def draw_centered_text(y, text, font, color=WHITE):
         draw_ov.text((text_center_x, y), text, font=font, fill=color, anchor="mm")
 
-    draw_centered_text(center_y - 140, "TOKYO MINI THEATER", header_font)
+    draw_centered_text(center_y - 140, "TOKYO MINI THEATERS", header_font)
     draw_centered_text(center_y - 20, "本日の上映情報", jp_title_font)
     draw_centered_text(center_y + 80, "Today's Showtimes", en_subtitle_font)
     draw_centered_text(center_y + 160, bilingual_date, date_font, (220, 220, 220))
@@ -532,7 +532,7 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
     center_x = CANVAS_WIDTH // 2
     center_y = STORY_CANVAS_HEIGHT // 2
 
-    draw.text((center_x, center_y - 200), "TOKYO MINI THEATER", font=header_font, fill=WHITE, anchor="mm")
+    draw.text((center_x, center_y - 200), "TOKYO MINI THEATERS", font=header_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y - 60), "本日の上映情報", font=jp_title_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y + 60), "Today's Showtimes", font=en_subtitle_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=(255, 210, 0), anchor="mm")
