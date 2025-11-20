@@ -1,12 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 35: NO-FAIL HERO (RESCUE PROTOCOL)
-- Priority 1: Build standard carousel from top cinemas.
-- Priority 2: Find Hero Image from standard cinemas.
-- RESCUE: If no image found, search ALL other cinemas. 
-  If a "Rescue Cinema" with an image is found, SWAP it into the carousel 
-  (replacing lower-ranked cinemas) to ensure the Hero Image matches the content.
+VERSION 36: ROTATION SHUFFLE + RESCUE PROTOCOL
+- Priority 1: Rotation. Prioritize cinemas NOT featured in the previous post.
+- Priority 2: Randomness. Shuffle the order so it's not always "most screenings first".
+- Priority 3: Hero Image (Rescue). Ensure at least one cinema has a backdrop.
 """
 from __future__ import annotations
 
@@ -215,6 +213,20 @@ def segment_listings(listings: List[Dict[str, str | None]], cinema_name: str) ->
 
     return SEGMENTED_LISTS
 
+def get_recently_featured(caption_path: Path) -> List[str]:
+    """Extracts cinema names from the previous post's caption to ensure rotation."""
+    if not caption_path.exists():
+        return []
+    try:
+        content = caption_path.read_text(encoding="utf-8")
+        # Look for lines like: --- 【Cinema Name】 ---
+        names = re.findall(r"--- 【(.*?)】 ---", content)
+        print(f"   [INFO] Found previously featured cinemas: {names}")
+        return names
+    except Exception as e:
+        print(f"   [WARN] Could not read previous caption: {e}")
+        return []
+
 # --- IMAGE GENERATORS ---
 
 def generate_fallback_burst() -> Image.Image:
@@ -406,6 +418,11 @@ def main() -> None:
     date_en = today.strftime("%b %d, %Y")
     bilingual_date_str = f"{date_jp} / {date_en}"
 
+    # 2. Read Previous Post's Caption to determine Rotation
+    # Note: OUTPUT_CAPTION_PATH currently holds the *previous* run's text
+    recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
+    
+    # Clean up old images
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")):
         os.remove(old_file) 
 
@@ -414,16 +431,16 @@ def main() -> None:
         print(f"No showings for today ({today_str}). Exiting.")
         return
 
-    # 2. Group Cinemas and Prepare Candidates
+    # 3. Group Cinemas and Prepare Candidates
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in todays_showings:
         if show.get("cinema_name"):
             grouped[show.get("cinema_name")].append(show)
 
-    all_candidates = []
+    all_candidates_raw = []
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings if s.get('movie_title'))
-        # Collect ALL titles (including en) for searching
+        
         all_searchable_titles = []
         for s in showings:
              if s.get('movie_title'): all_searchable_titles.append(s.get('movie_title'))
@@ -432,18 +449,35 @@ def main() -> None:
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
             listings = format_listings(showings)
             segments = segment_listings(listings, cinema_name)
-            all_candidates.append({
+            all_candidates_raw.append({
                 "name": cinema_name,
                 "listings": listings,
                 "segments": segments,
                 "unique_count": len(unique_titles),
-                "titles": list(set(all_searchable_titles)) # For Hero Search
+                "titles": list(set(all_searchable_titles)) 
             })
 
-    # Sort by film count (descending)
-    all_candidates.sort(key=lambda x: (-x['unique_count'], x['name']))
+    # 4. Rotation & Randomization Logic
+    # Split into 'Fresh' (not shown yesterday) and 'Recent' (shown yesterday)
+    fresh_candidates = []
+    recent_candidates = []
     
-    # 3. Initial Selection (Standard Fit)
+    for cand in all_candidates_raw:
+        if cand['name'] in recent_cinemas:
+            recent_candidates.append(cand)
+        else:
+            fresh_candidates.append(cand)
+
+    # Shuffle both lists independently to randomize order
+    random.shuffle(fresh_candidates)
+    random.shuffle(recent_candidates)
+    
+    # Combine: Fresh first, then Recent as backup
+    all_candidates = fresh_candidates + recent_candidates
+    
+    print(f"   [ROTATION] Fresh count: {len(fresh_candidates)}, Recent count: {len(recent_candidates)}")
+    
+    # 5. Initial Selection (Standard Fit)
     MAX_CONTENT_SLIDES = INSTAGRAM_SLIDE_LIMIT - 1 
     final_selection = []
     current_slide_count = 0
@@ -461,7 +495,7 @@ def main() -> None:
         print("No cinemas selected. Exiting.")
         return
 
-    # 4. HERO IMAGE SEARCH (PHASE 1: Standard)
+    # 6. HERO IMAGE SEARCH (PHASE 1: Standard)
     print("--- Phase 1: Searching Standard Candidates for Hero Image ---")
     hero_image = None
     hero_title = ""
@@ -479,7 +513,7 @@ def main() -> None:
             print(f"   [SUCCESS] Found Hero Image from selected cinema!")
             break
 
-    # 5. RESCUE PROTOCOL (PHASE 2: Swap Logic)
+    # 7. RESCUE PROTOCOL (PHASE 2: Swap Logic)
     if not hero_image:
         print("--- Phase 2: RESCUE PROTOCOL - Searching Remaining Cinemas ---")
         
@@ -502,11 +536,7 @@ def main() -> None:
                 break
         
         if rescue_found:
-            # SWAP LOGIC:
-            # We must add `rescue_found` to `final_selection`.
-            # But we might exceed slides. We must pop from the end of `final_selection` until it fits.
             print(f"   [SWAP] Swapping {rescue_found['name']} into the lineup...")
-            
             rescue_needed = len(rescue_found['segments'])
             
             # Pop cinemas until we have room
@@ -518,13 +548,13 @@ def main() -> None:
             final_selection.append(rescue_found)
             print(f"   [FINAL] Rescue successful. New selection count: {len(final_selection)}")
 
-    # 6. Fallback (Phase 3)
+    # 8. Fallback (Phase 3)
     if not hero_image:
         print("   [FAIL] No images found in ENTIRE city. Using Solar Burst.")
         hero_image = generate_fallback_burst()
         hero_title = ""
 
-    # 7. Draw Slides
+    # 9. Draw Slides
     # Hero
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
     hero_slide.save(BASE_DIR / f"post_image_00.png")
@@ -545,7 +575,7 @@ def main() -> None:
             slide_img.save(BASE_DIR / f"post_image_{slide_counter:02}.png")
             print(f"Saved slide {slide_counter} ({cinema_name})")
 
-    # 8. Caption
+    # 10. Caption
     write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
 
 def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List[Dict]) -> None:
