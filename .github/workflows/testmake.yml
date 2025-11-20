@@ -22,7 +22,6 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # We need requests for the API and Pillow/tzdata for generation
           pip install requests Pillow tzdata
 
       - name: Run Generator (Force Update)
@@ -35,12 +34,17 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # UPDATED: Use wildcard to grab all generated slides (e.g., post_image_00.png, post_image_01.png, etc.)
-          git add 'cinema-scrapers/post_image_*.png'
+          # FIXED: Changed to wildcard pattern for all carousel slides
+          git add 'cinema-scrapers/post_image_*.png' 
           git add 'cinema-scrapers/post_caption.txt'
           
-          # Force a commit even if nothing changed (using --allow-empty is safer for testing)
-          git commit --allow-empty -m "TEST RUN: Triggering Instagram Upload"
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            echo "pushed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          git commit -m "TEST RUN: Triggering Instagram Carousel Upload"
           git pull origin main --rebase
           git push
           echo "pushed=true" >> $GITHUB_OUTPUT
@@ -55,9 +59,8 @@ jobs:
 
       - name: Run Upload Script
         working-directory: './cinema-scrapers'
-        # Pass the first slide's name and the total number of slides for the carousel
-        run: python upload_to_instagram.py --is_carousel
+        # The script now automatically detects the carousel mode
+        run: python upload_to_instagram.py 
         env:
-          # This pulls your new tokens from the secrets
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
