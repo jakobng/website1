@@ -1,10 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 43: AESTHETIC OVERHAUL (DEEP YELLOW THEME)
-- Design: Content background changed to Deep Yellow (255, 210, 0).
-- Design: Hero slides updated with new Bilingual Header hierarchy.
-- Fix: Gray text darkened to ensure contrast against yellow background.
+VERSION 44: SUNBURST GRADIENT BACKGROUND
+- Design: Replaced solid yellow background with a radial "Sunburst" gradient.
+- Tech: Added 'create_sunburst_background' helper using interpolated concentric circles.
+- Opt: Generates background templates once and reuses them to save processing time.
 """
 from __future__ import annotations
 
@@ -54,11 +54,12 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-# UPDATED: Deep Yellow Background
-CONTENT_BG_COLOR = (255, 210, 0) 
+# Sunburst Center (Deep Yellow)
+SUNBURST_CENTER = (255, 210, 0) 
+# Sunburst Outer (White)
+SUNBURST_OUTER = (255, 255, 255)
 
 BLACK = (20, 20, 20)
-# UPDATED: Darker Gray for better contrast on Yellow
 GRAY = (30, 30, 30) 
 WHITE = (255, 255, 255)
 
@@ -198,14 +199,9 @@ def format_listings(showings: List[Dict]) -> List[Dict[str, str | None]]:
     return formatted
 
 def segment_listings(listings: List[Dict[str, str | None]], max_height: int, spacing: Dict[str, int]) -> List[List[Dict]]:
-    """
-    Segments listings based on a dynamic vertical height limit.
-    'spacing' dict must contain: 'jp_line', 'en_line', 'time_line' heights.
-    """
     SEGMENTED_LISTS = []
     current_segment = []
     current_height = 0
-    
     for listing in listings:
         required_height = spacing['jp_line'] + spacing['time_line']
         if listing.get('en_title'):
@@ -239,7 +235,38 @@ def get_recently_featured(caption_path: Path) -> List[str]:
 
 # --- IMAGE GENERATORS ---
 
+def create_sunburst_background(width: int, height: int) -> Image.Image:
+    """Generates a radial gradient background (Sunburst)."""
+    # 1. Create a smaller base image for faster processing, then resize
+    base_size = 512
+    img = Image.new("RGB", (base_size, base_size), SUNBURST_OUTER)
+    draw = ImageDraw.Draw(img)
+
+    center_color = SUNBURST_CENTER
+    outer_color = SUNBURST_OUTER
+    
+    # Radius covers most of the square
+    max_radius = int(base_size * 0.7) 
+    center = base_size // 2
+
+    # Draw concentric circles to simulate gradient
+    for r in range(max_radius, 0, -2):
+        ratio = r / max_radius
+        # Linear Interpolation
+        red = int(outer_color[0] * ratio + center_color[0] * (1 - ratio))
+        green = int(outer_color[1] * ratio + center_color[1] * (1 - ratio))
+        blue = int(outer_color[2] * ratio + center_color[2] * (1 - ratio))
+        
+        draw.ellipse(
+            [center - r, center - r, center + r, center + r],
+            fill=(red, green, blue)
+        )
+
+    # Resize to target dimensions (LANCZOS smooths the concentric circles)
+    return img.resize((width, height), Image.Resampling.LANCZOS)
+
 def generate_fallback_burst() -> Image.Image:
+    # Simple Solar Burst for "No Image Found" scenarios
     day_number = int(datetime.now().timestamp() // 86400)
     hue_degrees = (45 + (day_number // 3) * 12) % 360
     hue_norm = hue_degrees / 360.0
@@ -259,7 +286,6 @@ def generate_fallback_burst() -> Image.Image:
     return img
 
 def process_image_bytes(img_content: bytes) -> Image.Image:
-    """Helper to resize and crop image to canvas."""
     img = Image.open(BytesIO(img_content)).convert("RGB")
     target_ratio = CANVAS_WIDTH / CANVAS_HEIGHT
     img_ratio = img.width / img.height
@@ -333,7 +359,6 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     try:
-        # UPDATED FONTS
         header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 80)
         jp_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 100)
         en_subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
@@ -353,10 +378,9 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     def draw_centered_text(y, text, font, color=WHITE):
         draw_ov.text((text_center_x, y), text, font=font, fill=color, anchor="mm")
 
-    # UPDATED LAYOUT
     draw_centered_text(center_y - 140, "TOKYO MINI THEATER", header_font)
-    draw_centered_text(center_y - 20, "本日の上映情報", jp_title_font) # Large JP
-    draw_centered_text(center_y + 80, "Today's Showtimes", en_subtitle_font) # Small EN
+    draw_centered_text(center_y - 20, "本日の上映情報", jp_title_font)
+    draw_centered_text(center_y + 80, "Today's Showtimes", en_subtitle_font)
     draw_centered_text(center_y + 160, bilingual_date, date_font, (220, 220, 220))
     
     draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) 
@@ -366,8 +390,9 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     img = img.convert("RGBA")
     return Image.alpha_composite(img, overlay).convert("RGB")
 
-def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), CONTENT_BG_COLOR)
+def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
+    # Use the passed Background Template
+    img = bg_template.copy()
     draw = ImageDraw.Draw(img)
     try:
         title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
@@ -414,9 +439,10 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
     return img.convert("RGB")
 
-def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]]) -> Image.Image:
+def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
     """Generates a 9:16 vertical Story slide."""
-    img = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), CONTENT_BG_COLOR)
+    # Use the passed Background Template
+    img = bg_template.copy()
     draw = ImageDraw.Draw(img)
     
     try:
@@ -493,7 +519,7 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
     draw.rectangle([0, 0, CANVAS_WIDTH, STORY_CANVAS_HEIGHT], fill=(0, 0, 0, 100))
     
     try:
-        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 85) # Slightly larger for Story
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 85)
         jp_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
         en_subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 50)
         date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
@@ -506,7 +532,6 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
     center_x = CANVAS_WIDTH // 2
     center_y = STORY_CANVAS_HEIGHT // 2
 
-    # UPDATED LAYOUT (Vertical)
     draw.text((center_x, center_y - 200), "TOKYO MINI THEATER", font=header_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y - 60), "本日の上映情報", font=jp_title_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y + 60), "Today's Showtimes", font=en_subtitle_font, fill=WHITE, anchor="mm")
@@ -531,8 +556,13 @@ def main() -> None:
     if not todays_showings:
         print(f"No showings for today ({today_str}). Exiting.")
         return
+    
+    # --- 3. PRE-GENERATE BACKGROUNDS (Efficiency) ---
+    print("Generating Sunburst Backgrounds...")
+    feed_bg_template = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
+    story_bg_template = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
 
-    # 3. Group Cinemas
+    # 4. Group Cinemas
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in todays_showings:
         if show.get("cinema_name"):
@@ -559,8 +589,6 @@ def main() -> None:
 
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
             listings = format_listings(showings)
-            
-            # PRE-CALCULATE SEGMENTS FOR FEED ONLY (Used for Selection Logic)
             feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
 
             all_candidates_raw.append({
@@ -572,7 +600,7 @@ def main() -> None:
                 "backdrops": list(set(known_backdrops))
             })
 
-    # 4. Rotation & Randomization
+    # 5. Rotation & Randomization
     recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
     fresh_candidates = []
     recent_candidates = []
@@ -585,14 +613,14 @@ def main() -> None:
     random.shuffle(recent_candidates)
     all_candidates = fresh_candidates + recent_candidates
     
-    # 5. Selection Logic (Based on FEED Constraints)
+    # 6. Selection Logic
     MAX_CONTENT_SLIDES = INSTAGRAM_SLIDE_LIMIT - 1 
     final_selection = []
     current_slide_count = 0
     remaining_candidates = []
     
     for cand in all_candidates:
-        needed = len(cand['feed_segments']) # We use Feed segments to determine "fit"
+        needed = len(cand['feed_segments'])
         if current_slide_count + needed <= MAX_CONTENT_SLIDES:
             final_selection.append(cand)
             current_slide_count += needed
@@ -603,7 +631,7 @@ def main() -> None:
         print("No cinemas selected. Exiting.")
         return
 
-    # 6. HERO IMAGE SEARCH
+    # 7. HERO IMAGE SEARCH
     print("--- Phase 1: Searching Standard Candidates for Hero Image ---")
     hero_image = None
     hero_title = ""
@@ -631,7 +659,7 @@ def main() -> None:
     else:
         print("   [WARNING] No Hero images found in standard selection.")
 
-    # 7. RESCUE PROTOCOL
+    # 8. RESCUE PROTOCOL
     if not hero_image:
         print("--- Phase 2: RESCUE PROTOCOL - Searching Remaining Cinemas ---")
         rescue_candidates = []
@@ -662,12 +690,12 @@ def main() -> None:
                 current_slide_count -= len(removed['feed_segments'])
             final_selection.append(rescue_cand)
 
-    # 8. Fallback
+    # 9. Fallback
     if not hero_image:
         hero_image = generate_fallback_burst()
         hero_title = ""
 
-    # 9. DRAW SLIDES (Decoupled Loops with Specific Metrics)
+    # 10. DRAW SLIDES (Using Sunburst Backgrounds)
     
     # --- A. HERO SLIDES ---
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
@@ -676,8 +704,8 @@ def main() -> None:
     story_hero.save(BASE_DIR / f"story_image_00.png")
     print("Saved Hero Slides.")
 
-    # --- B. FEED SLIDES (Strict 750px Limit, Small Fonts) ---
-    print("Generatinng Feed Images (Strict Height)...")
+    # --- B. FEED SLIDES ---
+    print("Generatinng Feed Images...")
     feed_counter = 0
     all_featured_for_caption = []
     
@@ -688,35 +716,35 @@ def main() -> None:
         
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
 
-        # Metrics MATCH 'draw_cinema_slide' constants
         feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
         
         for segment in feed_segments:
             feed_counter += 1
-            slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment)
+            # Pass the Sunburst Template
+            slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_template)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
             print(f"   Saved Feed Slide {feed_counter} ({cinema_name})")
 
-    # --- C. STORY SLIDES (Relaxed 1150px Limit, Large Fonts) ---
-    print("Generatinng Story Images (Relaxed Height)...")
+    # --- C. STORY SLIDES ---
+    print("Generatinng Story Images...")
     story_counter = 0
-    STORY_METRICS = {'jp_line': 55, 'en_line': 45, 'time_line': 80} # Matches draw_story_slide
+    STORY_METRICS = {'jp_line': 55, 'en_line': 45, 'time_line': 80} 
     
     for item in final_selection:
         cinema_name = item['name']
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         listings = item['listings']
 
-        # Metrics MATCH 'draw_story_slide' constants
         story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, STORY_METRICS)
         
         for segment in story_segments:
             story_counter += 1
-            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment)
+            # Pass the Sunburst Template
+            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_template)
             slide_img.save(BASE_DIR / f"story_image_{story_counter:02}.png")
             print(f"   Saved Story Slide {story_counter} ({cinema_name})")
 
-    # 10. Caption
+    # 11. Caption
     write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
 
 def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List[Dict]) -> None:
