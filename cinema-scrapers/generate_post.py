@@ -1,10 +1,11 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 36: ROTATION SHUFFLE + RESCUE PROTOCOL
-- Priority 1: Rotation. Prioritize cinemas NOT featured in the previous post.
-- Priority 2: Randomness. Shuffle the order so it's not always "most screenings first".
-- Priority 3: Hero Image (Rescue). Ensure at least one cinema has a backdrop.
+VERSION 38: RANDOMIZED HERO + ROTATION + SMART SEARCH
+- Feature: "Rotation" ensures cinemas change day-to-day.
+- Feature: "Smart Search" cleans titles to find more TMDB images.
+- Feature: "Randomized Hero" picks a random valid backdrop from ALL selected cinemas,
+  preventing the "first cinema with an image" from always dominating the cover.
 """
 from __future__ import annotations
 
@@ -126,6 +127,27 @@ def is_probably_not_japanese(text: str | None) -> bool:
         if len(japanese_chars) <= 2 and len(latin_chars) > len(japanese_chars): return True
     return False
 
+def clean_search_title(title: str) -> str:
+    """Removes common noise words to improve TMDB search hit rate."""
+    if not title: return ""
+    
+    # 1. Remove text in parentheses/brackets e.g. (2024), [4K]
+    title = re.sub(r'[\(（].*?[\)）]', '', title)
+    title = re.sub(r'[\[【].*?[\]】]', '', title)
+    
+    # 2. Remove common technical/marketing keywords
+    keywords = [
+        "4K", "2K", "3D", "IMAX", "Dolby", "Atmos", 
+        "レストア", "デジタル", "リマスター", "完全版", 
+        "ディレクターズカット", "劇場版", "特別上映", "特集",
+        "上映後トーク", "舞台挨拶"
+    ]
+    for kw in keywords:
+        title = title.replace(kw, "")
+        
+    # 3. Trim whitespace
+    return title.strip()
+
 def find_best_english_title(showing: Dict) -> str | None:
     jp_title = showing.get('movie_title', '').lower()
     def get_clean_title(title_key: str) -> str | None:
@@ -219,9 +241,7 @@ def get_recently_featured(caption_path: Path) -> List[str]:
         return []
     try:
         content = caption_path.read_text(encoding="utf-8")
-        # Look for lines like: --- 【Cinema Name】 ---
         names = re.findall(r"--- 【(.*?)】 ---", content)
-        print(f"   [INFO] Found previously featured cinemas: {names}")
         return names
     except Exception as e:
         print(f"   [WARN] Could not read previous caption: {e}")
@@ -230,7 +250,7 @@ def get_recently_featured(caption_path: Path) -> List[str]:
 # --- IMAGE GENERATORS ---
 
 def generate_fallback_burst() -> Image.Image:
-    """Generates a Solar Burst gradient as a fallback if no TMDB image is found."""
+    """Generates a Solar Burst gradient as a fallback."""
     day_number = int(datetime.now().timestamp() // 86400)
     hue_degrees = (45 + (day_number // 3) * 12) % 360
     hue_norm = hue_degrees / 360.0
@@ -257,15 +277,23 @@ def fetch_tmdb_backdrop(movie_title: str) -> Tuple[Image.Image, str] | None:
     try:
         search_url = f"https://api.themoviedb.org/3/search/movie"
         params = {"api_key": TMDB_API_KEY, "query": movie_title, "language": "ja-JP"}
-        time.sleep(0.1) # Rate limit safety
+        time.sleep(0.1) 
         
         response = requests.get(search_url, params=params)
         if response.status_code != 200: return None
 
         data = response.json()
+        
+        # Try without language if Japanese fails
+        if not data.get("results"):
+             params.pop("language")
+             response = requests.get(search_url, params=params)
+             data = response.json()
+
         if not data.get("results"): return None
             
         movie = None
+        # Prefer a result with a backdrop
         for res in data["results"]:
             if res.get("backdrop_path"):
                 movie = res
@@ -274,7 +302,7 @@ def fetch_tmdb_backdrop(movie_title: str) -> Tuple[Image.Image, str] | None:
         if not movie: return None
             
         image_url = f"https://image.tmdb.org/t/p/w1280{movie['backdrop_path']}"
-        print(f"   [TMDB] Found: {movie_title}")
+        print(f"   [TMDB] Found Image for: {movie_title}")
         
         img_response = requests.get(image_url)
         img = Image.open(BytesIO(img_response.content)).convert("RGB")
@@ -419,7 +447,6 @@ def main() -> None:
     bilingual_date_str = f"{date_jp} / {date_en}"
 
     # 2. Read Previous Post's Caption to determine Rotation
-    # Note: OUTPUT_CAPTION_PATH currently holds the *previous* run's text
     recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
     
     # Clean up old images
@@ -441,10 +468,19 @@ def main() -> None:
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings if s.get('movie_title'))
         
+        # SMART TITLE COLLECTION
         all_searchable_titles = []
         for s in showings:
-             if s.get('movie_title'): all_searchable_titles.append(s.get('movie_title'))
-             if s.get('movie_title_en'): all_searchable_titles.append(s.get('movie_title_en'))
+             # Prioritize clean data if available from enriched JSON
+             if s.get('tmdb_original_title'):
+                 all_searchable_titles.append(s.get('tmdb_original_title'))
+             if s.get('tmdb_display_title'):
+                 all_searchable_titles.append(s.get('tmdb_display_title'))
+             # Fallback to cleaned raw titles
+             if s.get('movie_title'):
+                 all_searchable_titles.append(clean_search_title(s.get('movie_title')))
+             if s.get('movie_title_en'):
+                 all_searchable_titles.append(clean_search_title(s.get('movie_title_en')))
 
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
             listings = format_listings(showings)
@@ -458,7 +494,6 @@ def main() -> None:
             })
 
     # 4. Rotation & Randomization Logic
-    # Split into 'Fresh' (not shown yesterday) and 'Recent' (shown yesterday)
     fresh_candidates = []
     recent_candidates = []
     
@@ -468,11 +503,9 @@ def main() -> None:
         else:
             fresh_candidates.append(cand)
 
-    # Shuffle both lists independently to randomize order
     random.shuffle(fresh_candidates)
     random.shuffle(recent_candidates)
     
-    # Combine: Fresh first, then Recent as backup
     all_candidates = fresh_candidates + recent_candidates
     
     print(f"   [ROTATION] Fresh count: {len(fresh_candidates)}, Recent count: {len(recent_candidates)}")
@@ -495,58 +528,74 @@ def main() -> None:
         print("No cinemas selected. Exiting.")
         return
 
-    # 6. HERO IMAGE SEARCH (PHASE 1: Standard)
+    # 6. HERO IMAGE SEARCH (RANDOMIZED)
     print("--- Phase 1: Searching Standard Candidates for Hero Image ---")
     hero_image = None
     hero_title = ""
     
-    # Flatten titles from final_selection
-    primary_titles = []
-    for cand in final_selection:
-        primary_titles.extend(cand['titles'])
-    
-    random.shuffle(primary_titles)
-    for title in primary_titles:
-        res = fetch_tmdb_backdrop(title)
-        if res:
-            hero_image, hero_title = res
-            print(f"   [SUCCESS] Found Hero Image from selected cinema!")
-            break
+    # COLLECT ALL POSSIBLE HEROES FIRST
+    valid_hero_options = []
 
-    # 7. RESCUE PROTOCOL (PHASE 2: Swap Logic)
+    for cand in final_selection:
+        # Shuffle title check order to avoid bias within the cinema
+        titles_to_check = cand['titles']
+        random.shuffle(titles_to_check)
+        
+        for title in titles_to_check:
+            if not title: continue
+            res = fetch_tmdb_backdrop(title)
+            if res:
+                # Store this as a valid option: (Image object, Title)
+                valid_hero_options.append(res)
+                # Found one for this cinema? Move to next cinema 
+                # (so one cinema doesn't dominate the lottery with 10 valid movies)
+                break 
+    
+    # PICK ONE RANDOMLY
+    if valid_hero_options:
+        print(f"   [SUCCESS] Found {len(valid_hero_options)} valid Hero candidates. Picking one randomly...")
+        hero_image, hero_title = random.choice(valid_hero_options)
+    else:
+        print("   [WARNING] No Hero images found in standard selection.")
+
+    # 7. RESCUE PROTOCOL (RANDOMIZED)
     if not hero_image:
         print("--- Phase 2: RESCUE PROTOCOL - Searching Remaining Cinemas ---")
         
-        rescue_found = None
-        
-        # Iterate through ALL other cinemas to find ONE image
+        rescue_candidates = []
+
+        # Collect ALL valid rescue candidates from the cinemas we didn't pick
         for cand in remaining_candidates:
-            print(f"   Checking {cand['name']} for rescue image...")
-            cand_titles = cand['titles']
-            random.shuffle(cand_titles)
+            titles_to_check = cand['titles']
+            random.shuffle(titles_to_check)
             
-            for title in cand_titles:
+            for title in titles_to_check:
+                if not title: continue
                 res = fetch_tmdb_backdrop(title)
                 if res:
-                    hero_image, hero_title = res
-                    rescue_found = cand
-                    print(f"   [RESCUE] Found Hero Image in {cand['name']}!")
-                    break
-            if rescue_found:
-                break
+                    # Found a valid rescue!
+                    rescue_candidates.append({
+                        "candidate": cand,
+                        "image_data": res
+                    })
+                    break 
         
-        if rescue_found:
-            print(f"   [SWAP] Swapping {rescue_found['name']} into the lineup...")
-            rescue_needed = len(rescue_found['segments'])
+        if rescue_candidates:
+            # Pick a random rescue cinema
+            winner = random.choice(rescue_candidates)
+            rescue_cand = winner["candidate"]
+            hero_image, hero_title = winner["image_data"]
             
-            # Pop cinemas until we have room
+            print(f"   [SWAP] Swapping {rescue_cand['name']} into the lineup (Rescue successful)...")
+            
+            # Make room in the slide deck
+            rescue_needed = len(rescue_cand['segments'])
             while final_selection and (current_slide_count + rescue_needed > MAX_CONTENT_SLIDES):
                 removed = final_selection.pop()
                 current_slide_count -= len(removed['segments'])
                 print(f"   [DROP] Removed {removed['name']} to make room.")
             
-            final_selection.append(rescue_found)
-            print(f"   [FINAL] Rescue successful. New selection count: {len(final_selection)}")
+            final_selection.append(rescue_cand)
 
     # 8. Fallback (Phase 3)
     if not hero_image:
