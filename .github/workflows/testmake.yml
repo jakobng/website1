@@ -27,6 +27,8 @@ jobs:
       - name: Run Generator (Force Update)
         working-directory: './cinema-scrapers'
         run: python generate_post.py
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }} # Don't forget this if testing generation!
 
       - name: Commit and Push Test Assets
         id: commit_push
@@ -34,8 +36,8 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # FIXED: Changed to wildcard pattern for all carousel slides
           git add 'cinema-scrapers/post_image_*.png' 
+          git add 'cinema-scrapers/story_image_*.png' # <--- NEW LINE ADDED
           git add 'cinema-scrapers/post_caption.txt'
           
           if git diff --staged --quiet; then
