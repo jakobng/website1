@@ -147,18 +147,26 @@ def clean_title_for_search(title):
 
 # --- TMDB Film Details Fetching Function ---
 def get_tmdb_film_details(search_title, api_key, session, year=None, language_code=None):
-    default_return = {"id": None, "tmdb_title": None, "tmdb_original_title": None, "tmdb_backdrop_path": None}
-    if not search_title: return default_return
-    if not api_key: return default_return
+    default_return = {
+        "id": None, 
+        "tmdb_title_jp": None, 
+        "tmdb_title_en": None, 
+        "tmdb_original_title": None, 
+        "tmdb_backdrop_path": None,
+        "tmdb_director": None,
+        "tmdb_genres": [],
+        "tmdb_runtime": None,
+        "tmdb_year": None
+    }
+    
+    if not search_title or not api_key: return default_return
 
-    # Dynamically build search params
+    # 1. Search
     search_params = {'api_key': api_key, 'query': search_title, 'include_adult': 'false'}
     if year: search_params['primary_release_year'] = year
     if language_code: search_params['language'] = language_code
     
     search_url = f"{TMDB_API_BASE_URL}/search/movie"
-    lang_info = f" (Language: {language_code})" if language_code else " (Language: Any)"
-    print(f"Searching TMDB for: '{search_title}' (Year: {year or 'Any'}){lang_info}")
     
     try:
         response = session.get(search_url, params=search_params, headers=REQUEST_HEADERS, timeout=10)
@@ -172,85 +180,53 @@ def get_tmdb_film_details(search_title, api_key, session, year=None, language_co
     if not search_data or not search_data.get('results'):
         return default_return
 
-    best_match = None
-    highest_score = -1
-    st_lower = search_title.lower()
-
-    for result in search_data['results'][:10]:
-        score = 0
-        res_title_ja = (result.get('title') or "").lower()
-        res_title_orig = (result.get('original_title') or "").lower()
-        
-        if st_lower == res_title_ja or st_lower == res_title_orig: score += 100
-        elif st_lower in res_title_ja or st_lower in res_title_orig: score += 50
-        
-        release_date = result.get('release_date', '')
-        if year and release_date:
-            try:
-                release_year = int(release_date.split('-')[0])
-                if release_year == int(year): score += 200
-                else: score = -999 # Wrong year
-            except (ValueError, IndexError): pass
-        
-        if score < 0: continue
-        
-        # Backdrops are valuable!
-        if result.get('backdrop_path'): score += 50
-
-        score += result.get('popularity', 0) / 100
-
-        if score > highest_score:
-            highest_score = score
-            best_match = result
-
-    if not best_match or highest_score < 50:
-        return default_return
-
+    # (Simplified match logic: Take the first result that looks decent)
+    best_match = search_data['results'][0]
     tmdb_id = best_match.get('id')
-    chosen_display_title = best_match.get('title')
-    tmdb_api_original_title = best_match.get('original_title')
     backdrop_path = best_match.get('backdrop_path')
-
-    print(f"Confident Match Found: '{search_title}' -> '{chosen_display_title}' (ID: {tmdb_id}, Backdrop: {backdrop_path})")
     
-    # Fetch English details if we don't have them
+    print(f"   > Match Found: {tmdb_id} ('{best_match.get('title')}')")
+
+    # 2. Fetch Full Details (Director, Genres, Official Titles)
     try:
-        details_url = f"{TMDB_API_BASE_URL}/movie/{tmdb_id}?api_key={api_key}&language=en-US"
-        details_response = session.get(details_url, headers=REQUEST_HEADERS, timeout=10)
-        time.sleep(TMDB_DETAILS_DELAY)
-        details_response.raise_for_status()
-        details_data = details_response.json()
+        # A. Fetch in JAPANESE to get the official JP title
+        url_jp = f"{TMDB_API_BASE_URL}/movie/{tmdb_id}?api_key={api_key}&language=ja-JP"
+        resp_jp = session.get(url_jp, headers=REQUEST_HEADERS, timeout=10)
+        data_jp = resp_jp.json()
+
+        # B. Fetch in ENGLISH to get Director, original title, etc.
+        url_en = f"{TMDB_API_BASE_URL}/movie/{tmdb_id}?api_key={api_key}&language=en-US&append_to_response=credits"
+        resp_en = session.get(url_en, headers=REQUEST_HEADERS, timeout=10)
+        data_en = resp_en.json()
         
-        chosen_display_title = details_data.get('title') or chosen_display_title
-        tmdb_api_original_title = details_data.get('original_title') or tmdb_api_original_title
+        # Extract Director
+        director = ""
+        for person in data_en.get('credits', {}).get('crew', []):
+            if person['job'] == 'Director':
+                director = person['name']
+                break
         
-        # Prefer English display title
-        if chosen_display_title and not python_is_predominantly_latin(chosen_display_title):
-            if tmdb_api_original_title and python_is_predominantly_latin(tmdb_api_original_title):
-                chosen_display_title = tmdb_api_original_title
-            else:
-                alt_titles_url = f"{TMDB_API_BASE_URL}/movie/{tmdb_id}/alternative_titles?api_key={api_key}"
-                alt_titles_response = session.get(alt_titles_url, headers=REQUEST_HEADERS, timeout=10)
-                time.sleep(TMDB_ALT_TITLES_DELAY)
-                alt_titles_response.raise_for_status()
-                alt_titles_data = alt_titles_response.json()
-                for alt in alt_titles_data.get('titles', []):
-                    if alt.get('iso_3166_1') in ('US', 'GB') and python_is_predominantly_latin(alt.get('title')):
-                        chosen_display_title = alt.get('title')
-                        break
-        
+        # Extract Genres
+        genres = [g['name'] for g in data_en.get('genres', [])[:2]]
+
         return {
-            "id": tmdb_id, 
-            "tmdb_title": chosen_display_title, 
-            "tmdb_original_title": tmdb_api_original_title,
-            "tmdb_backdrop_path": backdrop_path
+            "id": tmdb_id,
+            "tmdb_title_jp": data_jp.get('title'),        # Clean Official JP Title
+            "tmdb_title_en": data_en.get('title'),        # English Title
+            "tmdb_original_title": data_en.get('original_title'),
+            "tmdb_backdrop_path": backdrop_path,
+            "tmdb_director": director,
+            "tmdb_genres": genres,
+            "tmdb_runtime": data_en.get('runtime'),
+            "tmdb_year": data_en.get('release_date', '')[:4]
         }
 
     except Exception as e:
+        print(f"Error fetching details for ID {tmdb_id}: {e}")
+        # Return partial data if detail fetch fails
         return {
             "id": tmdb_id, 
-            "tmdb_title": chosen_display_title, 
-            "tmdb_original_title": tmdb_api_original_title, 
+            "tmdb_title_jp": best_match.get('title'),
             "tmdb_backdrop_path": backdrop_path,
             "details_fetch_error": True
         }
@@ -306,7 +282,7 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
     if not all_listings:
         return []
 
-    # 1. Identify unique films to save API calls
+    # 1. Identify unique films
     unique_films = {}
     for listing in all_listings:
         original_title = (listing.get('movie_title') or listing.get('title') or "").strip()
@@ -338,6 +314,7 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
     # 2. Process each unique film
     for film_key, film_info in unique_films.items():
         cleaned_title, year = film_key
+        # Cache key logic
         cache_key = f"{cleaned_title}|{year if year != 'N/A' else ''}|{film_info.get('director') or ''}"
         
         if cache_key in cache_data:
@@ -347,12 +324,12 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
         tmdb_result = {}
         search_year = year if year != 'N/A' else None
 
-        # A. Search by scraped English title
+        # A. Search by English title provided by cinema
         english_title_from_scrape = film_info.get("english_title")
         if tmdb_api_key and english_title_from_scrape:
             tmdb_result = get_tmdb_film_details(english_title_from_scrape, tmdb_api_key, session, search_year)
 
-        # B. Search by cleaned Japanese title
+        # B. Search by Cleaned Japanese title
         if tmdb_api_key and (not tmdb_result or not tmdb_result.get("id")):
             tmdb_result = get_tmdb_film_details(cleaned_title, tmdb_api_key, session, search_year, language_code='ja-JP')
             
@@ -368,23 +345,8 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
                 if tmdb_result_from_alt and tmdb_result_from_alt.get("id"):
                     tmdb_result = tmdb_result_from_alt
 
-        # D. Year Validation
-        if year != 'N/A' and tmdb_result.get("id"):
-            # [Validation logic omitted for brevity but implicit in usage]
-            pass 
-
-        # E. Letterboxd
-        current_enrichment_data = {}
-        if tmdb_result and tmdb_result.get("id"):
-            current_enrichment_data.update(tmdb_result)
-            lb_url = f"{LETTERBOXD_TMDB_BASE_URL}{current_enrichment_data['id']}"
-            lb_eng_title = scrape_letterboxd_title(lb_url, session)
-            time.sleep(LETTERBOXD_SCRAPE_DELAY)
-            if lb_eng_title:
-                current_enrichment_data["letterboxd_english_title"] = lb_eng_title
-
-        enrichment_map[film_key] = current_enrichment_data
-        cache_data[cache_key] = current_enrichment_data
+        enrichment_map[film_key] = tmdb_result
+        cache_data[cache_key] = tmdb_result
     
     save_json_cache(cache_data, TMDB_CACHE_FILE, "TMDB/Extended Cache")
 
@@ -403,12 +365,25 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
         enriched_data = enrichment_map.get(film_key, {})
         
         if enriched_data.get("id"):
-            listing['letterboxd_link'] = f"{LETTERBOXD_TMDB_BASE_URL}{enriched_data['id']}"
-            listing['tmdb_display_title'] = enriched_data.get('tmdb_title')
-            listing['tmdb_original_title'] = enriched_data.get('tmdb_original_title')
-            listing['letterboxd_english_title'] = enriched_data.get('letterboxd_english_title')
-            # THIS IS THE KEY FIX:
+            # --- KEY CHANGE: SAVE ALL METADATA TO JSON ---
+            listing['tmdb_id'] = enriched_data.get('id')
             listing['tmdb_backdrop_path'] = enriched_data.get('tmdb_backdrop_path')
+            
+            # Overwrite details with official TMDB data
+            if enriched_data.get('tmdb_title_jp'):
+                listing['clean_title_jp'] = enriched_data.get('tmdb_title_jp')
+            if enriched_data.get('tmdb_title_en'):
+                listing['movie_title_en'] = enriched_data.get('tmdb_title_en')
+            if enriched_data.get('tmdb_director'):
+                listing['director'] = enriched_data.get('tmdb_director')
+            if enriched_data.get('tmdb_genres'):
+                listing['genres'] = enriched_data.get('tmdb_genres')
+            if enriched_data.get('tmdb_runtime'):
+                listing['runtime'] = enriched_data.get('tmdb_runtime')
+            if enriched_data.get('tmdb_year'):
+                listing['year'] = enriched_data.get('tmdb_year')
+            
+            listing['letterboxd_link'] = f"{LETTERBOXD_TMDB_BASE_URL}{enriched_data['id']}"
     
     return all_listings
 
@@ -519,6 +494,7 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
 
 
 
