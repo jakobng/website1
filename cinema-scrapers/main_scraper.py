@@ -38,7 +38,7 @@ import k2_cinema_module
 import cinema_rosa_module
 import chupki_module
 import uplink_kichijoji_module
-import scrape_tollywood
+import tollywood_module
 import morc_asagaya_module
 
 # --- Google Gemini API Import ---
