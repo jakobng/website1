@@ -5328,5 +5328,165 @@
   "現在、すべてのオペレーターが対応中です|2025|Dalibor Baric": {},
   "短編作品集（黙ってはいられなかった男／スライス・オブ・ライフ／ワンスアポニア）|2024|Nebojsa Slijepcevic": {},
   "バルカニカ|2025|Marin Mamuza": {},
-  "シャルシャ|2024|Drazen Zarkovic": {}
+  "シャルシャ|2024|Drazen Zarkovic": {},
+  "沼地という名の町||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "ストレンジ・リトル・キャッ||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "ガール・アンド・スパイダー||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "市街戦||": {
+    "id": 993416,
+    "tmdb_title_jp": "東京市街戦",
+    "tmdb_title_en": "The Aftermath of War",
+    "tmdb_original_title": "東京市街戦",
+    "tmdb_backdrop_path": "/rHexejQgGI0BmUPhSnHHNPAfY3E.jpg",
+    "tmdb_director": "Shōgorō Nishimura",
+    "tmdb_genres": [
+      "Drama",
+      "Crime"
+    ],
+    "tmdb_runtime": 89,
+    "tmdb_year": "1967"
+  },
+  "グラン・シエル||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "猫を放つ||": {
+    "id": 1535944,
+    "tmdb_title_jp": "猫を放つ",
+    "tmdb_title_en": "Leave the Cat Alone",
+    "tmdb_original_title": "猫を放つ",
+    "tmdb_backdrop_path": "/e9frQsF6KycN2DuBuX3FRyzXpKS.jpg",
+    "tmdb_director": "Daisuke Shigaya",
+    "tmdb_genres": [
+      "Drama"
+    ],
+    "tmdb_runtime": 102,
+    "tmdb_year": "2025"
+  },
+  "The World of Love||": {
+    "id": 549511,
+    "tmdb_title_jp": "The Last Two Lovers at the End of the World",
+    "tmdb_title_en": "The Last Two Lovers at the End of the World",
+    "tmdb_original_title": "The Last Two Lovers at the End of the World",
+    "tmdb_backdrop_path": "/2ZemyJ7gmkemsLHsVkjwZjPD8dg.jpg",
+    "tmdb_director": "Nefertite Nguvu",
+    "tmdb_genres": [
+      "Drama",
+      "Romance"
+    ],
+    "tmdb_runtime": 20,
+    "tmdb_year": "2017"
+  },
+  "Yes||": {
+    "id": 25312,
+    "tmdb_title_jp": "Yes",
+    "tmdb_title_en": "Yes",
+    "tmdb_original_title": "Yes",
+    "tmdb_backdrop_path": "/eZiWpNvSb3qOTnYp6bxl9hkAHe.jpg",
+    "tmdb_director": "Sally Potter",
+    "tmdb_genres": [
+      "Drama",
+      "Romance"
+    ],
+    "tmdb_runtime": 100,
+    "tmdb_year": "2005"
+  },
+  "東北短編集:||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "アミールの胸の内||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "サボテンの実||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "女の子||": {
+    "id": 810674,
+    "tmdb_title_jp": "うみべの女の子",
+    "tmdb_title_en": "A Girl on the Shore",
+    "tmdb_original_title": "うみべの女の子",
+    "tmdb_backdrop_path": "/upaBFRSzTSVN5EyI2ot6mimy3h7.jpg",
+    "tmdb_director": "Atsushi Ueda",
+    "tmdb_genres": [
+      "Drama",
+      "Romance"
+    ],
+    "tmdb_runtime": 108,
+    "tmdb_year": "2021"
+  },
+  "アメーバ||": {
+    "id": 601191,
+    "tmdb_title_jp": "プラネット・オブ・アメーバ",
+    "tmdb_title_en": "Planet of Amoebas",
+    "tmdb_original_title": "プラネット・オブ・アメーバ",
+    "tmdb_backdrop_path": "/9hrYyE27l6hVgWYK9VKNlRL6GI2.jpg",
+    "tmdb_director": "Yasushi Koshizaka",
+    "tmdb_genres": [
+      "Science Fiction",
+      "Thriller"
+    ],
+    "tmdb_runtime": 78,
+    "tmdb_year": "2018"
+  }
 }
