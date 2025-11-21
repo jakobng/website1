@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Generator (Cinematic Mode)
         working-directory: './cinema-scrapers'
-        run: python generate_post.py
+        run: python generate_post2.py
         # IMPORTANT: Pass the API Key here!
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
