@@ -5514,6 +5514,20 @@
     "tmdb_runtime": null,
     "tmdb_year": null
   },
+  "小林さんちのメイドラゴン さみしがりやの竜||": {
+    "id": 1359607,
+    "tmdb_title_jp": "小林さんちのメイドラゴン さみしがりやの竜",
+    "tmdb_title_en": "Miss Kobayashi's Dragon Maid: A lonely dragon wants to be loved",
+    "tmdb_original_title": "小林さんちのメイドラゴン さみしがりやの竜",
+    "tmdb_backdrop_path": "/nBKrBDxNx10SuAKPLRtBXoRku5y.jpg",
+    "tmdb_director": "Tatsuya Ishihara",
+    "tmdb_genres": [
+      "Animation",
+      "Comedy"
+    ],
+    "tmdb_runtime": 105,
+    "tmdb_year": "2025"
+  },
   "家へ||": {
     "id": 1056519,
     "tmdb_title_jp": "ようこそ、わが家へ",
@@ -5553,6 +5567,17 @@
     "tmdb_runtime": null,
     "tmdb_year": null
   },
+  "ヒューマン・リソース||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
   "明け行く空||": {
     "id": 128705,
     "tmdb_title_jp": "明け行く空",
@@ -5568,6 +5593,17 @@
     "tmdb_year": "1929"
   },
   "除夜の悲劇［デジタル復元・最長版］Sylvester – Tragödie einer Nacht||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "燈台守Gardiens de phare||": {
     "id": null,
     "tmdb_title_jp": null,
     "tmdb_title_en": null,
