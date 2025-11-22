@@ -120,6 +120,42 @@ def parse_schedule_from_detail_soup(soup: BeautifulSoup) -> List[Tuple[date, str
     Scans the detail page text to pair Dates with Times.
     """
     showings = []
+
+    def extract_showtimes_from_line(line: str) -> List[str]:
+        """Return start times while ignoring end/door times.
+
+        The site sometimes lists ranges like "19:00〜20:30" or door-open
+        times such as "開場18:00/開映18:30". When a start and end time are
+        present, we only keep the first (start) time. We also drop times
+        labelled as door open to avoid treating them as screenings.
+        """
+
+        # Collapse whitespace for simpler regex checks
+        normalized = re.sub(r"\s+", "", line)
+
+        # If the line explicitly shows a start-end range, only keep the start.
+        range_match = re.search(r"(\d{1,2}:\d{2})[〜～-](\d{1,2}:\d{2})", normalized)
+        if range_match:
+            return [range_match.group(1)]
+
+        times = []
+        for match in re.finditer(r"(\d{1,2}:\d{2})", normalized):
+            time_str = match.group(1)
+
+            # Skip door-open style times (開場/オープン/Open) to avoid
+            # interpreting them as showtimes.
+            pre_context = normalized[max(0, match.start() - 4):match.start()]
+            if re.search(r"開場|open", pre_context, re.IGNORECASE):
+                continue
+
+            # Skip times immediately followed by an end marker.
+            post_context = normalized[match.end():match.end() + 2]
+            if re.search(r"終", post_context):
+                continue
+
+            times.append(time_str)
+
+        return times
     
     # Find the header "上映日時"
     header = soup.find(lambda tag: tag.name in ['h2', 'h3', 'h4', 'p'] and '上映日時' in tag.get_text())
@@ -141,9 +177,9 @@ def parse_schedule_from_detail_soup(soup: BeautifulSoup) -> List[Tuple[date, str
     for line in raw_lines:
         # 1. Extract potential dates from this line
         line_dates = expand_date_text(line)
-        
-        # 2. Extract potential times from this line
-        time_matches = re.findall(r"(\d{1,2}:\d{2})", line)
+
+        # 2. Extract potential times from this line (ignore end/door times)
+        time_matches = extract_showtimes_from_line(line)
         
         if line_dates and time_matches:
             # Date and Time on same line
