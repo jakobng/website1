@@ -5488,5 +5488,94 @@
     ],
     "tmdb_runtime": 78,
     "tmdb_year": "2018"
+  },
+  "スカイ・クロラ The Sky Crawlers||": {
+    "id": 15877,
+    "tmdb_title_jp": "スカイ・クロラ",
+    "tmdb_title_en": "The Sky Crawlers",
+    "tmdb_original_title": "スカイ・クロラ",
+    "tmdb_backdrop_path": "/obDHA3z3M6IbacldHvdsrcQjn4o.jpg",
+    "tmdb_director": "Mamoru Oshii",
+    "tmdb_genres": [
+      "Animation",
+      "Action"
+    ],
+    "tmdb_runtime": 121,
+    "tmdb_year": "2008"
+  },
+  "“教授”と呼ばれた男 4Kレストア 完全版|1986|ジュゼッペ・トルナトーレ": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "家へ||": {
+    "id": 1056519,
+    "tmdb_title_jp": "ようこそ、わが家へ",
+    "tmdb_title_en": "Welcome to Our Home",
+    "tmdb_original_title": "ようこそ、わが家へ",
+    "tmdb_backdrop_path": null,
+    "tmdb_director": "Isamu Nakae",
+    "tmdb_genres": [
+      "Drama",
+      "Mystery"
+    ],
+    "tmdb_runtime": 0,
+    "tmdb_year": "2015"
+  },
+  "サマ||": {
+    "id": 1484453,
+    "tmdb_title_jp": "スヌーピー プレゼンツ：サマー・ミュージカル",
+    "tmdb_title_en": "Snoopy Presents: A Summer Musical",
+    "tmdb_original_title": "Snoopy Presents: A Summer Musical",
+    "tmdb_backdrop_path": "/1Bavnm3tr5zJMAhBKKmGHVjbPZN.jpg",
+    "tmdb_director": "Erik Wiese",
+    "tmdb_genres": [
+      "Animation",
+      "Family"
+    ],
+    "tmdb_runtime": 40,
+    "tmdb_year": "2025"
+  },
+  "太陽は我らの上に||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
+  },
+  "明け行く空||": {
+    "id": 128705,
+    "tmdb_title_jp": "明け行く空",
+    "tmdb_title_en": "The Dawning Sky",
+    "tmdb_original_title": "明け行く空",
+    "tmdb_backdrop_path": null,
+    "tmdb_director": "Torajirō Saitō",
+    "tmdb_genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "tmdb_runtime": 72,
+    "tmdb_year": "1929"
+  },
+  "除夜の悲劇［デジタル復元・最長版］Sylvester – Tragödie einer Nacht||": {
+    "id": null,
+    "tmdb_title_jp": null,
+    "tmdb_title_en": null,
+    "tmdb_original_title": null,
+    "tmdb_backdrop_path": null,
+    "tmdb_director": null,
+    "tmdb_genres": [],
+    "tmdb_runtime": null,
+    "tmdb_year": null
   }
 }
