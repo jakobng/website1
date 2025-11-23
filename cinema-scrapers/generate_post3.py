@@ -1,8 +1,9 @@
 """
-Generate Instagram-ready image carousel (V27 - Gemini Taglines).
+Generate Instagram-ready image carousel (V30 - Gemini 2.5 Flash + Search).
 
 - Visuals: Faithful Colors, Texture Engine, Film Grain.
-- Content: Uses Gemini API to generate short taglines (JP/EN) from synopsis.
+- Content: Uses Gemini 2.5 Flash with Google Search Grounding.
+- Note: Uses the new `googleSearch` tool (not legacy retrieval) for 2.5 models.
 """
 from __future__ import annotations
 
@@ -13,7 +14,6 @@ import os
 import time
 import requests
 import colorsys
-import re
 import math
 from datetime import datetime
 from pathlib import Path
@@ -31,7 +31,6 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_v2_caption.txt"
 # Layout Dimensions
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
-MARGIN = 80
 
 # --- Cinema Name Mapping (JP -> EN) ---
 CINEMA_ENGLISH_NAMES = {
@@ -65,10 +64,10 @@ CINEMA_ENGLISH_NAMES = {
     "Tollywood": "Tollywood"
 }
 
-# --- Gemini API Helper ---
+# --- Gemini API Helper (2.5 Flash + Search) ---
 def generate_gemini_taglines(film_data):
     """
-    Calls Gemini API to generate short taglines from the synopsis.
+    Calls Gemini 2.5 Flash API with Google Search Grounding.
     Returns (tagline_jp, tagline_en).
     """
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -79,40 +78,62 @@ def generate_gemini_taglines(film_data):
     title = film_data.get('movie_title', '')
     title_en = film_data.get('movie_title_en', '')
     synopsis = film_data.get('synopsis', '') or film_data.get('tmdb_overview_jp', '')
-
-    if not synopsis:
-        return "", ""
-
-    # Construct the prompt
+    
+    # Prompt updated to encourage using Search
     prompt = f"""
-    Task: Create catchy movie taglines (loglines) based on the information below.
+    Task: Write a movie poster tagline (logline) for the following film.
     
-    Movie: {title} ({title_en})
-    Synopsis: {synopsis}
+    Movie Info:
+    - Title (JP): {title}
+    - Title (EN): {title_en}
+    - Known Synopsis: {synopsis}
     
-    Requirements:
-    1. Japanese Tagline: Emotional, poetic, or catchy. Max 35 characters.
-    2. English Tagline: Cool, punchy. Max 15 words.
+    Directives:
+    1. USE GOOGLE SEARCH if the synopsis is missing or vague. Find the real plot.
+    2. Japanese Tagline: Emotional, poetic, or intriguing. Max 30 characters. No spoilers.
+    3. English Tagline: Cool, witty, or dramatic. Max 10-12 words.
     
-    Output Format: JSON with keys "jp" and "en".
+    Output Format (JSON only):
+    {{
+      "jp": "...",
+      "en": "..."
+    }}
     """
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+    # Using Gemini 2.5 Flash
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
     headers = {'Content-Type': 'application/json'}
+    
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
+        # NEW: Use 'googleSearch' tool for Gemini 2.5+ (replaces googleSearchRetrieval)
+        "tools": [
+            {"googleSearch": {}} 
+        ],
         "generationConfig": {"response_mime_type": "application/json"}
     }
 
     try:
-        # Rate limit pause (15 RPM = 1 req per 4 sec)
-        time.sleep(4) 
+        # Rate limit safety
+        print("  ...Waiting 5s for API rate limit...")
+        time.sleep(5) 
         
-        response = requests.post(url, headers=headers, json=payload, timeout=30)
+        response = requests.post(url, headers=headers, json=payload, timeout=60)
         if response.status_code == 200:
             result = response.json()
-            # Extract text from JSON response
-            raw_json = result['candidates'][0]['content']['parts'][0]['text']
+            
+            if 'candidates' not in result or not result['candidates']:
+                print(f"❌ No candidates returned for '{title}'.")
+                return "", ""
+
+            # Extract text
+            candidate = result['candidates'][0]
+            
+            # (Optional) Log if grounding was used
+            # if 'groundingMetadata' in candidate:
+            #    print(f"   [Grounding] Search queries used: {candidate['groundingMetadata'].get('webSearchQueries', [])}")
+
+            raw_json = candidate['content']['parts'][0]['text']
             data = json.loads(raw_json)
             return data.get('jp', ''), data.get('en', '')
         else:
@@ -130,7 +151,6 @@ def get_bilingual_date():
 
 def download_image(path: str) -> Image.Image | None:
     if not path: return None
-    # Handle both full URLs and TMDB paths
     if path.startswith("http"):
         url = path
     else:
@@ -155,7 +175,7 @@ def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
         r, g, b = rgb_tuple
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
         if is_accent:
-            new_v = max(v, 0.4)
+            new_v = max(v, 0.5) 
             new_s = s 
         else:
             new_v = 0.22 
@@ -200,7 +220,7 @@ def draw_centered_text(draw, y, text, font, fill):
     length = draw.textlength(text, font=font)
     x = (CANVAS_WIDTH - length) // 2
     draw.text((x, y), text, font=font, fill=fill)
-    return y + font.size + 10
+    return y + font.size + 12
 
 # --- Slide Generators ---
 
@@ -230,7 +250,7 @@ def draw_poster_slide(film, img_obj, fonts):
     tagline_en = film.get('gen_tagline_en', '')
     has_tagline = bool(tagline_jp or tagline_en)
     
-    # 3. Layout
+    # 3. Layout Dimensions
     target_w = 900
     if has_tagline:
         img_y = 120
@@ -254,7 +274,7 @@ def draw_poster_slide(film, img_obj, fonts):
         top = (new_h - target_h) // 2
         img_cropped = img_resized.crop((0, top, target_w, top + target_h))
         
-    # Shadow & Paste
+    # Shadow
     shadow = Image.new("RGB", (target_w + 20, target_h + 20), (0,0,0))
     canvas.paste(shadow, ((CANVAS_WIDTH - target_w)//2 + 10, img_y + 10))
     canvas.paste(img_cropped, ((CANVAS_WIDTH - target_w)//2, img_y))
@@ -275,14 +295,12 @@ def draw_poster_slide(film, img_obj, fonts):
     available_h = CANVAS_HEIGHT - cursor_y - 350
     if has_tagline and available_h > 50:
         if tagline_jp:
-            # Japanese tagline (wrap if needed, though we asked for short)
             wrapper_jp = textwrap.TextWrapper(width=26) 
             for line in wrapper_jp.wrap(tagline_jp):
                 cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (230, 230, 230))
-            cursor_y += 10
+            cursor_y += 8
             
         if tagline_en:
-            # English tagline
             wrapper_en = textwrap.TextWrapper(width=50)
             for line in wrapper_en.wrap(tagline_en):
                 cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
@@ -330,10 +348,15 @@ def draw_poster_slide(film, img_obj, fonts):
 
 # --- Main Execution ---
 if __name__ == "__main__":
-    print("Starting V27 (Gemini Taglines)...")
+    print("Starting V30 (Gemini 2.5 Flash + Search)...")
     
-    with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    # Load Data
+    try:
+        with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("❌ Error: showtimes.json not found.")
+        exit(1)
         
     # Group by movie
     movies = {}
@@ -343,7 +366,6 @@ if __name__ == "__main__":
             movies[title] = show.copy()
             movies[title]['showings'] = {}
             
-        # Aggregate showtimes
         cin = show['cinema_name']
         time_str = show['showtime']
         if cin not in movies[title]['showings']:
@@ -352,16 +374,17 @@ if __name__ == "__main__":
             movies[title]['showings'][cin].append(time_str)
             
     selected = list(movies.values())
-    # You can filter 'selected' here if you only want specific 9 films
+    
+    # Filter for testing (optional)
     # selected = selected[:9] 
     
-    # Fonts
+    # Load Fonts
     try:
         fonts = {
             'cover_main': ImageFont.truetype(str(BOLD_FONT_PATH), 120),
             'cover_sub': ImageFont.truetype(str(REGULAR_FONT_PATH), 40),
             'title': ImageFont.truetype(str(BOLD_FONT_PATH), 50),
-            'logline': ImageFont.truetype(str(REGULAR_FONT_PATH), 30), # Font for taglines
+            'logline': ImageFont.truetype(str(REGULAR_FONT_PATH), 30),
             'cinema': ImageFont.truetype(str(BOLD_FONT_PATH), 28),
             'time': ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
         }
@@ -372,17 +395,18 @@ if __name__ == "__main__":
     all_images = []
     slide_data = []
     
-    for film in selected:
+    print(f"Found {len(selected)} films to process.")
+    
+    for i, film in enumerate(selected):
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
-        print(f"Processing: {t_jp}")
+        print(f"[{i+1}/{len(selected)}] Processing: {t_jp}")
         
         # 1. Download Image
         img_path = film.get('tmdb_backdrop_path')
         img = download_image(img_path)
         
         if img:
-            # 2. Generate Taglines via Gemini
-            print(f"  ...Generating tagline for {t_jp}")
+            # 2. Generate Taglines via Gemini 2.5 Flash (with Search)
             tag_jp, tag_en = generate_gemini_taglines(film)
             film['gen_tagline_jp'] = tag_jp
             film['gen_tagline_en'] = tag_en
@@ -390,13 +414,13 @@ if __name__ == "__main__":
             all_images.append(img)
             slide_data.append({"film": film, "img": img})
         else:
-            print(f"  ...No image found for {t_jp}, skipping.")
+            print(f"  ...Skipping {t_jp} (No image)")
             
     if all_images:
         d_str, day_str = get_bilingual_date()
         cover = draw_cover_slide(all_images, fonts, d_str, day_str)
         cover.save(BASE_DIR / "post_v2_image_00.png")
-        print("Saved cover slide.")
+        print("✅ Saved cover slide.")
         
     caption_lines = [f"🗓️ {get_bilingual_date()[0]} Tokyo Cinema Selection\n"]
     
@@ -413,17 +437,13 @@ if __name__ == "__main__":
         caption_lines.append(f"{t_jp}") 
         if film.get('movie_title_en'): 
             caption_lines.append(f"{film['movie_title_en']}")
-        
-        # Add generated taglines to caption too? (Optional)
-        # if film.get('gen_tagline_jp'):
-        #     caption_lines.append(f"―{film['gen_tagline_jp']}")
             
         for cin, t in film['showings'].items():
             t.sort()
             caption_lines.append(f"{cin}: {', '.join(t)}")
-        caption_lines.append("") # Empty line
+        caption_lines.append("") 
         
     with open(OUTPUT_CAPTION_PATH, 'w', encoding='utf-8') as f:
         f.write("\n".join(caption_lines))
         
-    print("Done!")
+    print("🎉 Done! Images and caption generated.")
