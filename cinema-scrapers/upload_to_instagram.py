@@ -3,6 +3,7 @@ import requests
 import glob
 import time
 import sys
+import argparse
 
 # --- Configuration ---
 # 1. Get secrets from GitHub Actions environment
@@ -188,23 +189,41 @@ def publish_media(creation_id):
     return None
 
 def main():
+    # --- 0. Argument Parsing & Setup ---
+    parser = argparse.ArgumentParser(description="Upload images to Instagram.")
+    parser.add_argument("--type", choices=["cinema", "movie"], default="cinema",
+                        help="Type of content to upload: 'cinema' (V1) or 'movie' (V2).")
+    args = parser.parse_args()
+
+    # Define file patterns based on type
+    if args.type == "movie":
+        print("🎬 STARTING UPLOAD: V2 (Movie Mode)")
+        CAPTION_FILENAME = "post_v2_caption.txt"
+        IMAGE_PATTERN = "post_v2_image_*.png"
+        STORY_PATTERN = "story_v2_image_*.png" # Ensure your V2 generator makes these!
+    else:
+        print("🏙️ STARTING UPLOAD: V1 (Cinema Mode)")
+        CAPTION_FILENAME = "post_caption.txt"
+        IMAGE_PATTERN = "post_image_*.png"
+        STORY_PATTERN = "story_image_*.png"
+
     if not IG_USER_ID or not IG_ACCESS_TOKEN:
         print("❌ Missing IG_USER_ID or IG_ACCESS_TOKEN environment variables.")
         sys.exit(1)
 
     # 1. Read Caption
     try:
-        with open("post_caption.txt", "r", encoding="utf-8") as f:
+        with open(CAPTION_FILENAME, "r", encoding="utf-8") as f:
             caption = f.read()
     except FileNotFoundError:
-        print("❌ post_caption.txt not found.")
+        print(f"❌ Caption file '{CAPTION_FILENAME}' not found.")
         sys.exit(1)
 
     # 2. Find Image Files (Feed)
-    image_files = sorted(glob.glob("post_image_*.png"))
+    image_files = sorted(glob.glob(IMAGE_PATTERN))
     
     if not image_files:
-        print("❌ No image files found to upload.")
+        print(f"❌ No feed image files found matching '{IMAGE_PATTERN}'.")
         sys.exit(1)
 
     print(f"📸 Found {len(image_files)} FEED images: {image_files}")
@@ -247,10 +266,10 @@ def main():
 
     # --- STORY MODE ---
     print("\n--- CHECKING FOR STORIES ---")
-    story_files = sorted(glob.glob("story_image_*.png"))
+    story_files = sorted(glob.glob(STORY_PATTERN))
     
     if story_files:
-        print(f"🔹 Detected {len(story_files)} Story Images. Starting sequence upload...")
+        print(f"🔹 Detected {len(story_files)} Story Images matching '{STORY_PATTERN}'. Starting sequence upload...")
         
         for i, filename in enumerate(story_files):
             image_url = f"{GITHUB_PAGES_BASE_URL}{filename}"
@@ -277,7 +296,7 @@ def main():
                 print(f"   Skipping Story {filename} due to container error.")
                 
     else:
-        print("ℹ️ No story images found. Skipping Story sequence.")
+        print(f"ℹ️ No story images found matching '{STORY_PATTERN}'. Skipping Story sequence.")
 
 if __name__ == "__main__":
     main()
