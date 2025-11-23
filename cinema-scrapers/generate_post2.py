@@ -1,11 +1,11 @@
 """
-Generate Instagram-ready image carousel (V24 - Light Leak / Atmospheric).
+Generate Instagram-ready image carousel (V25 - High Contrast / True Light Leaks).
 
-- Base: V23 (Layout is frozen).
-- Visual Overhaul:
-  1. "Light Leak" Engine: Uses Screen Blending for glowing streaks.
-  2. Higher Contrast: Accent colors are forced brighter.
-  3. Visible Texture: Reduced blur so streaks have definition.
+- Base: V24 (Light Leak Atmospheric).
+- Improvements:
+  1. Color Separation: Maximizes Hue Distance between Base and Accent.
+  2. Contrast Force: Accents are forced Bright/Luminous.
+  3. Monochrome Fallback: Artificially shifts hue if image is too single-colored.
 """
 from __future__ import annotations
 
@@ -97,7 +97,7 @@ def download_image(path: str) -> Image.Image | None:
 
 def get_dual_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     """
-    Extracts a Dark Base and a Bright/Glowing Accent.
+    Extracts a Dark Base and a High-Contrast Bright Accent.
     """
     small = pil_img.resize((150, 150))
     result = small.quantize(colors=10, method=2)
@@ -109,51 +109,60 @@ def get_dual_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
         candidates.append({'r':r, 'g':g, 'b':b, 'h':h, 's':s, 'v':v})
 
-    # 1. Find BASE Color (Rich, Deep)
+    # 1. Find BASE Color (Rich, Deep, Saturated)
     base_color = None
     max_base_score = -1
     for c in candidates:
-        score = c['s'] * 2.0 + c['v']
-        if c['v'] < 0.15: score -= 1.0 
+        # Preference: High Saturation, Mid-Dark Value (not black)
+        score = c['s'] * 2.5 + c['v']
+        if c['v'] < 0.15: score -= 2.0 
         if score > max_base_score:
             max_base_score = score
             base_color = c
     if not base_color: base_color = candidates[0]
 
-    # 2. Find ACCENT Color (Distinct Hue OR High Brightness)
+    # 2. Find ACCENT Color (Maximum Distance)
     accent_color = None
-    max_accent_score = -1
+    max_dist = -1
+    
     for c in candidates:
-        hue_diff = abs(c['h'] - base_color['h'])
-        if hue_diff > 0.5: hue_diff = 1.0 - hue_diff
+        # Hue Distance (0.0 - 0.5)
+        h_dist = abs(c['h'] - base_color['h'])
+        if h_dist > 0.5: h_dist = 1.0 - h_dist
         
-        # We want something that contrasts with the base
-        score = (hue_diff * 4.0) + c['v'] + (c['s'] * 0.5)
-        if score > max_accent_score:
-            max_accent_score = score
+        # We prioritize Hue Difference above all
+        # Then Brightness (Accent should be brighter)
+        score = (h_dist * 5.0) + (c['v'] * 2.0) + c['s']
+        
+        if score > max_dist:
+            max_dist = score
             accent_color = c
             
-    # Fallback: If monochrome, make accent a bright white/tint
-    if not accent_color or max_accent_score < 0.5:
-        accent_color = base_color.copy()
-        accent_color['v'] = 0.9 # Bright
-        accent_color['s'] = max(0.0, accent_color['s'] - 0.4) # Desaturate
-
-    # --- Format Base (Mid-Dark for text) ---
+    # Check if the "best" accent is actually different enough?
+    # If hue distance is very low (< 0.05), it's a monochrome image.
+    h_dist_final = abs(accent_color['h'] - base_color['h'])
+    if h_dist_final > 0.5: h_dist_final = 1.0 - h_dist_final
+    
+    # --- Adjust Base (Mid-Dark for text) ---
     bh, bs, bv = base_color['h'], base_color['s'], base_color['v']
-    # Ensure it's not pitch black, but dark enough for white text
-    n_bv = 0.25 
-    # Keep saturation high for richness
-    n_bs = min(max(bs, 0.6), 0.9)
+    n_bv = 0.25 # Standard background darkness
+    n_bs = min(max(bs, 0.5), 0.95) # Keep saturation high
     
     rb, gb, bb = colorsys.hsv_to_rgb(bh, n_bs, n_bv)
     final_base = (int(rb*255), int(gb*255), int(bb*255))
 
-    # --- Format Accent (Bright & Glowing) ---
+    # --- Adjust Accent (Bright & Glowing) ---
     ah, as_, av = accent_color['h'], accent_color['s'], accent_color['v']
-    # Brightness is key for the Screen blend to work
-    n_av = max(av, 0.8) 
-    n_as = min(as_, 0.8) 
+    
+    # MONOCHROME FIX: If hues are too close, shift accent hue artificially
+    if h_dist_final < 0.1 and n_bs > 0.1: # Only if base has some color
+        # Shift hue by 30 degrees (0.08)
+        ah = (ah + 0.08) % 1.0
+        
+    # Force high brightness for light leak effect
+    n_av = 0.95 
+    # Slightly lower saturation so it looks like "light"
+    n_as = min(as_, 0.6) 
     
     ra, ga, ba = colorsys.hsv_to_rgb(ah, n_as, n_av)
     final_accent = (int(ra*255), int(ga*255), int(ba*255))
@@ -171,25 +180,19 @@ def create_light_leaks(base_color, accent_color, width, height):
     leak_layer = Image.new("RGB", (width, height), "black")
     draw = ImageDraw.Draw(leak_layer)
     
-    # Draw 2-3 large soft beams
-    for _ in range(3):
-        # Geometry
+    # Draw 2 large soft beams
+    for _ in range(2):
         x = random.randint(-width//2, width + width//2)
         y = random.randint(-height//2, height + height//2)
-        r_x = random.randint(400, 900)
-        r_y = random.randint(400, 900)
-        
-        # Draw Ellipse
-        # We use the accent color directly. Screen blend will handle the "glow".
+        r_x = random.randint(500, 1000)
+        r_y = random.randint(500, 1000)
         bbox = [x - r_x, y - r_y, x + r_x, y + r_y]
         draw.ellipse(bbox, fill=accent_color)
         
-    # 3. Blur the Leaks (Moderate blur to keep shape but soften edges)
-    leak_layer = leak_layer.filter(ImageFilter.GaussianBlur(radius=80))
+    # 3. Blur
+    leak_layer = leak_layer.filter(ImageFilter.GaussianBlur(radius=90))
     
     # 4. Composite using Screen (Adds light)
-    # Screen formula: 1 - (1 - a) * (1 - b)
-    # This makes the accent color 'add' to the base without washing it out completely
     final_bg = ImageChops.screen(base, leak_layer)
     
     return final_bg
@@ -200,7 +203,6 @@ def apply_film_grain(img, intensity=0.08):
     noise_img = Image.frombytes('L', (width, height), noise_data)
     if img.mode != 'RGBA': img = img.convert('RGBA')
     noise_img = noise_img.convert('RGBA')
-    # Overlay blend for better texture interaction
     return Image.blend(img, noise_img, alpha=0.06).convert("RGB")
 
 def get_fonts():
@@ -235,7 +237,7 @@ def draw_cover_slide(images, fonts, date_str, day_str):
     
     draw.text((cx, cy - 80), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + 40), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
+    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(200,200,200), anchor="mm")
     
     return bg
 
@@ -383,7 +385,7 @@ def draw_poster_slide(film, img_obj, fonts):
     return canvas
 
 def main():
-    print("--- Starting V24 (Light Leak / Atmospheric) ---")
+    print("--- Starting V25 (High Contrast / True Light Leaks) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -453,7 +455,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V24 Generated.")
+    print("Done. V25 Generated.")
 
 if __name__ == "__main__":
     main()
