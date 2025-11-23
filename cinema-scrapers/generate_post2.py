@@ -1,9 +1,10 @@
 """
-Generate Instagram-ready image carousel (V13 - Clean Block Color).
+Generate Instagram-ready image carousel (V15 - Swiss Poster + Metadata).
 
-- Design: Solid Vibrant Backgrounds (Jewel Tones).
-- Palette: White text/accents on Color. NO YELLOW.
-- Layout: 55% Image / 45% Info Block.
+- Design: Asymmetrical "Print" Layout.
+- Typography: Massive Left-Aligned Titles.
+- Metadata: Integrated as a typographic row (Year / Genre / Runtime).
+- Visual: Floating Image with Hard Shadow on Vibrant Background.
 """
 from __future__ import annotations
 
@@ -19,7 +20,7 @@ from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter, ImageOps
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -31,8 +32,7 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_v2_caption.txt"
 # Layout Dimensions
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
-IMAGE_AREA_HEIGHT = int(CANVAS_HEIGHT * 0.55) 
-MARGIN = 60 
+MARGIN = 70 
 
 # --- Helpers ---
 
@@ -41,7 +41,7 @@ def get_today_str():
 
 def get_bilingual_date():
     today = datetime.now()
-    return today.strftime("%Y.%m.%d"), today.strftime("%a")
+    return today.strftime("%Y.%m.%d"), today.strftime("%A").upper()
 
 def download_image(path: str) -> Image.Image | None:
     if not path: return None
@@ -55,29 +55,26 @@ def download_image(path: str) -> Image.Image | None:
     return None
 
 def get_vibrant_bg(pil_img: Image.Image) -> tuple[int, int, int]:
-    """
-    Extracts dominant color and boosts saturation for a clean block look.
-    """
+    """Extracts a deep, rich dominant color."""
     small = pil_img.resize((150, 150))
-    result = small.quantize(colors=10, method=2)
+    result = small.quantize(colors=5, method=2)
     dominant_color = result.getpalette()[:3]
     
     r, g, b = dominant_color
     h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
     
-    # Force "Jewel Tone" logic
-    new_s = 0.85 # High saturation
-    new_v = 0.25 # Dark enough for white text
+    # Logic: Dark and Rich (Good for White Text)
+    new_s = 0.80 
+    new_v = 0.20 
     
-    # If image is B&W/Grey, use a dark charcoal grey
-    if s < 0.1: 
-        new_s, new_v = 0.0, 0.15 
+    if s < 0.1: # Grayscale images get a slate grey
+        new_s, new_v = 0.1, 0.15
         
     nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
     return (int(nr*255), int(ng*255), int(nb*255))
 
 def create_3x3_grid(images: list[Image.Image]) -> Image.Image:
-    canvas = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (20, 20, 20))
+    canvas = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (15, 15, 15))
     cols, rows = 3, 3
     cell_w = CANVAS_WIDTH // cols
     cell_h = CANVAS_HEIGHT // rows
@@ -89,54 +86,55 @@ def create_3x3_grid(images: list[Image.Image]) -> Image.Image:
     for i in range(9):
         img = pool[i]
         col, row = i % 3, i // 3
-        x_pos, y_pos = col * cell_w, row * cell_h
+        x, y = col * cell_w, row * cell_h
         
-        # Crop Center
         img_ratio = img.width / img.height
         cell_ratio = cell_w / cell_h
         
         if img_ratio > cell_ratio:
-            new_h = cell_h
-            new_w = int(new_h * img_ratio)
+            nh = cell_h
+            nw = int(nh * img_ratio)
+            img = img.resize((nw, nh), Image.Resampling.LANCZOS)
+            left = (nw - cell_w) // 2
+            img = img.crop((left, 0, left + cell_w, nh))
         else:
-            new_w = cell_w
-            new_h = int(new_w / img_ratio)
+            nw = cell_w
+            nh = int(nw / img_ratio)
+            img = img.resize((nw, nh), Image.Resampling.LANCZOS)
+            top = (nh - cell_h) // 2
+            img = img.crop((0, top, nw, top + cell_h))
             
-        img_resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-        cx, cy = img_resized.width // 2, img_resized.height // 2
-        left, top = cx - (cell_w // 2), cy - (cell_h // 2)
+        # Desaturate significantly
+        enhancer = ImageEnhance.Color(img)
+        img = enhancer.enhance(0.0) # Black and White cover
+        enhancer = ImageEnhance.Brightness(img)
+        img = enhancer.enhance(0.4) # Dark
         
-        cell_img = img_resized.crop((left, top, left + cell_w, top + cell_h))
-        
-        # Desaturate slightly for the cover so text pops
-        enhancer = ImageEnhance.Color(cell_img)
-        cell_img = enhancer.enhance(0.5)
-        # Darken
-        enhancer = ImageEnhance.Brightness(cell_img)
-        cell_img = enhancer.enhance(0.6)
-        
-        canvas.paste(cell_img, (x_pos, y_pos))
+        canvas.paste(img, (x, y))
     return canvas
 
-def resize_hero(pil_img: Image.Image) -> Image.Image:
-    """Resizes image to fill the top 55% area."""
-    img_ratio = pil_img.width / pil_img.height
-    target_ratio = CANVAS_WIDTH / IMAGE_AREA_HEIGHT
+def add_drop_shadow(img, offset=(15, 15), background_color=(0,0,0,0), shadow_color=(0,0,0,180), border_width=0):
+    """Adds a hard shadow to an image (Paper cutout effect)."""
+    width, height = img.size
+    total_width = width + abs(offset[0])
+    total_height = height + abs(offset[1])
     
-    if img_ratio > target_ratio:
-        new_height = IMAGE_AREA_HEIGHT
-        new_width = int(new_height * img_ratio)
-    else:
-        new_width = CANVAS_WIDTH
-        new_height = int(new_width / img_ratio)
-        
-    pil_img = pil_img.resize((new_width, new_height), Image.Resampling.LANCZOS)
-    left = (pil_img.width - CANVAS_WIDTH) // 2
-    top = (pil_img.height - IMAGE_AREA_HEIGHT) // 2
-    return pil_img.crop((left, top, left + CANVAS_WIDTH, top + IMAGE_AREA_HEIGHT))
+    back = Image.new("RGBA", (total_width, total_height), background_color)
+    
+    # Draw Shadow
+    shadow = Image.new("RGBA", (width, height), shadow_color)
+    shadow_left = max(offset[0], 0)
+    shadow_top = max(offset[1], 0)
+    back.paste(shadow, (shadow_left, shadow_top), shadow)
+    
+    # Paste Image
+    img_left = min(offset[0], 0) * -1
+    img_top = min(offset[1], 0) * -1
+    back.paste(img, (img_left, img_top))
+    
+    return back
 
-def fit_text_to_width(draw, text, font_path, max_width, max_font_size, min_font_size=30):
-    """Shrinks text until it fits within max_width."""
+def fit_text_to_width(draw, text, font_path, max_width, max_font_size, min_font_size=40):
     size = max_font_size
     font = ImageFont.truetype(str(font_path), size)
     while size > min_font_size:
@@ -144,132 +142,144 @@ def fit_text_to_width(draw, text, font_path, max_width, max_font_size, min_font_
         width = bbox[2] - bbox[0]
         if width <= max_width:
             return font, bbox[3] - bbox[1] 
-        size -= 2
+        size -= 5
         font = ImageFont.truetype(str(font_path), size)
     return font, size
 
 def get_fonts():
     try:
         return {
-            "cover_main": ImageFont.truetype(str(BOLD_FONT_PATH), 110),
-            "cover_sub": ImageFont.truetype(str(BOLD_FONT_PATH), 45),
-            "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
-            "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 30),
-            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 30),
-            "synopsis": ImageFont.truetype(str(REGULAR_FONT_PATH), 26),
+            "cover_main": ImageFont.truetype(str(BOLD_FONT_PATH), 130),
+            "cover_sub": ImageFont.truetype(str(REGULAR_FONT_PATH), 40),
+            "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 100),
+            "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 45),
+            "meta_bold": ImageFont.truetype(str(BOLD_FONT_PATH), 32), # For Metadata
+            "cinema_bold": ImageFont.truetype(str(BOLD_FONT_PATH), 34),
+            "times_reg": ImageFont.truetype(str(REGULAR_FONT_PATH), 34),
+            "desc": ImageFont.truetype(str(REGULAR_FONT_PATH), 30),
         }
     except:
-        return {k: ImageFont.load_default() for k in ["cover_main", "cover_sub", "meta", "cinema", "times", "synopsis"]}
+        return {k: ImageFont.load_default() for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta_bold", "cinema_bold", "times_reg", "desc"]}
 
 def draw_cover_slide(images, fonts, date_str, day_str):
     bg = create_3x3_grid(images)
     draw = ImageDraw.Draw(bg)
+    
+    # Massive Typography in Center
     cx, cy = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
     
-    # White framed box
-    box_w, box_h = 800, 550
-    box_x1, box_y1 = cx - box_w // 2, cy - box_h // 2
-    box_x2, box_y2 = cx + box_w // 2, cy + box_h // 2
+    # "TOKYO"
+    draw.text((cx, cy - 120), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    # "CINEMA"
+    draw.text((cx, cy + 20), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     
-    # Draw simple white rectangle border
-    draw.rectangle([(box_x1, box_y1), (box_x2, box_y2)], outline=(255, 255, 255), width=8)
-    # Fill slightly dark
-    draw.rectangle([(box_x1, box_y1), (box_x2, box_y2)], fill=(0, 0, 0, 150))
-    
-    draw.text((cx, cy - 80), "TOKYO\nCINEMA", font=fonts['cover_main'], fill=(255,255,255), align="center", anchor="mm", spacing=20)
-    draw.text((cx, cy + 120), f"{date_str} [{day_str}]", font=fonts['cover_sub'], fill=(200, 200, 200), anchor="mm")
+    # Date Pill
+    draw.rectangle([(cx - 200, cy + 120), (cx + 200, cy + 180)], fill=(255, 210, 0))
+    draw.text((cx, cy + 150), f"{date_str}", font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
     
     return bg
 
-def draw_film_slide(film, img_obj, fonts):
-    # 1. Background Color
+def draw_poster_slide(film, img_obj, fonts):
+    # 1. Background
     bg_color = get_vibrant_bg(img_obj)
     canvas = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), bg_color)
     draw = ImageDraw.Draw(canvas)
     
-    # 2. Hero Image
-    hero = resize_hero(img_obj)
-    canvas.paste(hero, (0,0))
+    # 2. The Image (Floating Card Style)
+    target_w = CANVAS_WIDTH - (MARGIN * 2)
+    target_h = int(target_w * 0.65) # Landscape aspect ratio
     
-    # 3. Content Block
-    cursor_y = IMAGE_AREA_HEIGHT + 50 
-    left_x = MARGIN
-    content_width = CANVAS_WIDTH - (MARGIN * 2)
+    img_ratio = img_obj.width / img_obj.height
+    crop_ratio = target_w / target_h
     
-    # White Accent Line (Replaces Yellow)
-    draw.rectangle([(left_x, cursor_y + 10), (left_x + 6, cursor_y + 130)], fill=(255, 255, 255))
-    text_indent = 35
+    if img_ratio > crop_ratio:
+        new_h = target_h
+        new_w = int(new_h * img_ratio)
+        img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - target_w) // 2
+        img_final = img_resized.crop((left, 0, left+target_w, target_h))
+    else:
+        new_w = target_w
+        new_h = int(new_w / img_ratio)
+        img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - target_h) // 2
+        img_final = img_resized.crop((0, top, target_w, top+target_h))
     
-    # --- METADATA ROW ---
-    meta_parts = []
-    if film.get('year') and film['year'] != 'N/A': meta_parts.append(str(film['year']))
-    if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']} min")
+    # Add Hard Shadow
+    img_with_shadow = add_drop_shadow(img_final, offset=(20, 20), shadow_color=(0,0,0,100))
+    canvas.paste(img_with_shadow, (MARGIN, 150), img_with_shadow)
     
-    # Genres (Up to 2)
-    if film.get('genres') and isinstance(film['genres'], list):
-        meta_parts.append("・".join(film['genres'][:2]))
-        
-    meta_text = "  |  ".join(meta_parts)
-    draw.text((left_x + text_indent, cursor_y), meta_text, font=fonts['meta'], fill=(220, 220, 220))
-    cursor_y += 45
+    cursor_y = 150 + target_h + 60
     
-    # --- JAPANESE TITLE ---
-    jp_title = film.get('clean_title_jp') or film.get('movie_title', 'No Title')
-    jp_font, jp_height = fit_text_to_width(draw, jp_title, BOLD_FONT_PATH, content_width - text_indent, 80)
-    draw.text((left_x + text_indent, cursor_y), jp_title, font=jp_font, fill=(255, 255, 255))
-    cursor_y += jp_height + 20
+    # 3. Typography (Left Aligned, No Icons)
     
-    # --- ENGLISH TITLE ---
+    # Japanese Title (Huge)
+    jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
+    jp_font, jp_h = fit_text_to_width(draw, jp_title, BOLD_FONT_PATH, CANVAS_WIDTH - (MARGIN*2), 110)
+    draw.text((MARGIN, cursor_y), jp_title, font=jp_font, fill=(255, 255, 255))
+    cursor_y += jp_h + 20
+    
+    # English Title (Small, Regular)
     if film.get('movie_title_en'):
         en_title = film.get('movie_title_en').upper()
-        en_font, en_height = fit_text_to_width(draw, en_title, BOLD_FONT_PATH, content_width - text_indent, 40)
-        draw.text((left_x + text_indent, cursor_y), en_title, font=en_font, fill=(255, 255, 255, 200))
-        cursor_y += en_height + 25
+        # Wrap if super long
+        if len(en_title) > 40: en_title = en_title[:40] + "..."
+        draw.text((MARGIN, cursor_y), en_title, font=fonts['title_en'], fill=(255, 255, 255, 180))
+        cursor_y += 70
     else:
-        cursor_y += 10
-        
-    # --- DIRECTOR ---
+        cursor_y += 20
+
+    # --- NEW: METADATA LINE (Typography Only) ---
+    # Format: 2024 / 112 MIN / DRAMA
+    meta_parts = []
+    if film.get('year'): 
+        meta_parts.append(str(film['year']))
+    if film.get('tmdb_runtime'): 
+        meta_parts.append(f"{film['tmdb_runtime']} MIN")
+    
+    # Add Genre if available
+    if film.get('genres') and isinstance(film['genres'], list) and len(film['genres']) > 0:
+         meta_parts.append(film['genres'][0].upper())
+
+    meta_str = "  /  ".join(meta_parts)
+    
+    if meta_str:
+        # Use Bold font to make it stand out from English title but same size
+        draw.text((MARGIN, cursor_y), meta_str, font=fonts['meta_bold'], fill=(255, 210, 0)) # Yellow accent for data? Or keep white?
+        # Let's keep it white for "No Yellow" rule, or maybe a subtle grey?
+        # User said "No Yellow" in V13, but standard text color is better.
+        draw.text((MARGIN, cursor_y), meta_str, font=fonts['meta_bold'], fill=(220, 220, 220)) 
+        cursor_y += 60
+
+    # Director (Text only)
     director = film.get('tmdb_director') or film.get('director')
     if director:
-        draw.text((left_x + text_indent, cursor_y), f"Dir. {director}", font=fonts['meta'], fill=(220, 220, 220))
-        cursor_y += 50
+        draw.text((MARGIN, cursor_y), f"DIRECTED BY {director.upper()}", font=fonts['title_en'], fill=(255, 255, 255, 150))
+        cursor_y += 60
+        
+    cursor_y += 30
     
-    # Divider (White)
-    cursor_y += 10
-    draw.line([(left_x, cursor_y), (CANVAS_WIDTH - MARGIN, cursor_y)], fill=(255,255,255, 100), width=1)
-    cursor_y += 35
-    
-    # --- LOGLINE (Optional) ---
-    synopsis = film.get('tmdb_overview_jp')
-    if synopsis and len(synopsis) > 5:
-        # Only show if we have vertical space
-        remaining_h = CANVAS_HEIGHT - cursor_y - 200 
-        if remaining_h > 100:
-            wrapper = textwrap.TextWrapper(width=38)
-            lines = wrapper.wrap(text=synopsis)
-            for line in lines[:3]: # Max 3 lines
-                draw.text((left_x, cursor_y), line, font=fonts['synopsis'], fill=(200, 200, 200))
-                cursor_y += 38
-            cursor_y += 30
-
-    # --- SHOWTIMES ---
+    # 4. Showtimes (Grid Layout)
     sorted_cinemas = sorted(film['showings'].keys())
     for cinema in sorted_cinemas:
-        if cursor_y > CANVAS_HEIGHT - 60: break
+        if cursor_y > CANVAS_HEIGHT - 50: break
         
         times = sorted(film['showings'][cinema])
-        times_str = " / ".join(times)
+        times_str = "  ".join(times) 
         
-        # Cinema (White)
-        draw.text((left_x, cursor_y), f"📍 {cinema}", font=fonts['cinema'], fill=(255, 255, 255))
-        # Times (Slightly gray)
-        draw.text((left_x + 30, cursor_y + 40), times_str, font=fonts['times'], fill=(220, 220, 220))
-        cursor_y += 90
+        # Cinema Name (Bold White)
+        draw.text((MARGIN, cursor_y), cinema, font=fonts['cinema_bold'], fill=(255, 255, 255))
+        
+        # Times on next line
+        cursor_y += 45
+        draw.text((MARGIN, cursor_y), times_str, font=fonts['times_reg'], fill=(200, 200, 200))
+        
+        cursor_y += 80 # Gap
 
     return canvas
 
 def main():
-    print("--- Starting V13 (Clean Block Color) ---")
+    print("--- Starting V15 (Swiss Poster + Metadata) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -281,7 +291,6 @@ def main():
     with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
         
-    # Filter & Group
     films_map = {}
     for item in raw_data:
         if item.get('date_text') != date_str: continue
@@ -324,17 +333,17 @@ def main():
     for i, item in enumerate(slide_data):
         film = item['film']
         img = item['img']
-        slide = draw_film_slide(film, img, fonts)
+        slide = draw_poster_slide(film, img, fonts)
         slide.save(BASE_DIR / f"post_v2_image_{i+1:02}.png")
         
-        # Caption
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
-        caption_lines.append(f"🎬 {t_jp}")
+        caption_lines.append(f"{t_jp}") 
         if film.get('movie_title_en'): 
-            caption_lines.append(f"({film['movie_title_en']})")
+            caption_lines.append(f"{film['movie_title_en']}")
+            
         for cin, t in film['showings'].items():
             t.sort()
-            caption_lines.append(f"📍 {cin}: {', '.join(t)}")
+            caption_lines.append(f"{cin}: {', '.join(t)}")
         caption_lines.append("")
         
     caption_lines.append("\nLink in Bio for Full Schedule")
@@ -343,7 +352,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V13 Generated.")
+    print("Done. V15 Generated.")
 
 if __name__ == "__main__":
     main()
