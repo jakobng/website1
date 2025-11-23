@@ -1,10 +1,10 @@
-name: Test Instagram Delivery (Fast)
+name: Full Instagram Delivery (Cinema & Movies)
 
 on:
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch: # Manual trigger
 
 jobs:
-  test_instagram_api:
+  generate_and_post:
     runs-on: ubuntu-latest
     
     permissions:
@@ -24,21 +24,39 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests Pillow tzdata
 
-      - name: Run Generator (Force Update)
+      # --- GENERATION PHASE ---
+
+      - name: Run Generator V1 (Cinemas / Sunburst)
         working-directory: './cinema-scrapers'
         run: python generate_post.py
         env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }} # Don't forget this if testing generation!
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
-      - name: Commit and Push Test Assets
+      - name: Run Generator V2 (Movies / Cinematic)
+        working-directory: './cinema-scrapers'
+        run: python generate_post2.py
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+
+      # --- COMMIT PHASE ---
+
+      - name: Commit and Push All Assets
         id: commit_push
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
+          # Add V1 Assets (Cinemas)
           git add 'cinema-scrapers/post_image_*.png' 
-          git add 'cinema-scrapers/story_image_*.png' # <--- NEW LINE ADDED
+          git add 'cinema-scrapers/story_image_*.png'
           git add 'cinema-scrapers/post_caption.txt'
+          
+          # Add V2 Assets (Movies)
+          git add 'cinema-scrapers/post_v2_image_*.png'
+          # Note: Ensure generate_post2.py actually creates stories with this name
+          # If it doesn't exist yet, git might warn, but we use the wildcard to be safe.
+          git add 'cinema-scrapers/story_v2_image_*.png' 
+          git add 'cinema-scrapers/post_v2_caption.txt'
           
           if git diff --staged --quiet; then
             echo "No changes to commit."
@@ -46,23 +64,37 @@ jobs:
             exit 0
           fi
           
-          git commit -m "TEST RUN: Triggering Instagram Carousel Upload"
+          git commit -m "AUTO: Generated V1 (Cinema) and V2 (Movie) slides"
           git pull origin main --rebase
           git push
           echo "pushed=true" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Critical Step: Wait for GitHub Pages to build
+      # --- DEPLOYMENT PHASE ---
+
       - name: Wait for Pages to Deploy
+        if: steps.commit_push.outputs.pushed == 'true'
         run: |
-          echo "Waiting 60 seconds for the new files to go live on your website..."
+          echo "Waiting 60 seconds for GitHub Pages to host the new images..."
           sleep 60
 
-      - name: Run Upload Script
+      # --- UPLOAD PHASE ---
+
+      - name: Upload V1 (Cinemas)
+        if: steps.commit_push.outputs.pushed == 'true'
         working-directory: './cinema-scrapers'
-        # The script now automatically detects the carousel mode
-        run: python upload_to_instagram.py 
+        # Assumes your script can handle a flag or argument to distinguish content
+        run: python upload_to_instagram.py --type cinema
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+
+      - name: Upload V2 (Movies)
+        if: steps.commit_push.outputs.pushed == 'true'
+        working-directory: './cinema-scrapers'
+        # Assumes your script can handle a flag or argument to distinguish content
+        run: python upload_to_instagram.py --type movie
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
