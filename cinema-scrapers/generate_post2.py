@@ -1,11 +1,11 @@
 """
-Generate Instagram-ready image carousel (V27 - Ethereal Rays).
+Generate Instagram-ready image carousel (V26 - Subtle Texture / Faithful Colors).
 
-- Base: V26 (Faithful Colors / Smart Layout).
-- Visual Upgrade:
-  1. Texture: Replaces thin scratches with medium-width "Light Rays".
-  2. "Glow" Logic: Uses Screen Blending + Blur to simulate light passing through.
-  3. Luminance: Forces accent color to be bright (Light needs to be bright).
+- Base: V22 (Smart-Fit Layout).
+- Visuals:
+  1. Faithful Colors: No artificial contrast boosting. Uses real image palette.
+  2. Texture Engine: Generates thin, diagonal scratches/streaks.
+  3. Subtlety: Low opacity, slight blur. "Paper grain" feel.
 """
 from __future__ import annotations
 
@@ -97,84 +97,82 @@ def download_image(path: str) -> Image.Image | None:
 
 def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     """
-    Extracts Base/Accent. Forces Accent to be BRIGHT (Light).
+    Extracts the two most dominant colors without artificial shifting.
+    Only adjusts Brightness (Value) to ensure text readability.
     """
     small = pil_img.resize((150, 150))
-    result = small.quantize(colors=5, method=2)
+    # Quantize to just 3 colors to find the absolute main vibes
+    result = small.quantize(colors=3, method=2)
     palette = result.getpalette()
     
     # Base = Most dominant
     c1 = (palette[0], palette[1], palette[2])
+    # Accent = Second most dominant
+    c2 = (palette[3], palette[4], palette[5])
     
-    # Find an accent that isn't identical to Base
-    c2 = None
-    for i in range(3, min(15, len(palette)), 3):
-        candidate = (palette[i], palette[i+1], palette[i+2])
-        # Simple diff check
-        diff = sum(abs(c1[j] - candidate[j]) for j in range(3))
-        if diff > 30: # Must be somewhat different
-            c2 = candidate
-            break
-    if not c2: c2 = c1 # Fallback
-    
-    def adjust_color(rgb_tuple, is_accent=False):
+    def adjust_for_bg(rgb_tuple, is_accent=False):
         r, g, b = rgb_tuple
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
         
         if is_accent:
-            # ACCENT: Force High Brightness (Light Leak Effect)
-            new_v = max(v, 0.85) # Make it glow
-            new_s = min(s, 0.7)  # Soften saturation so it's not neon
+            # Accent: Just needs to be visible against Base. 
+            # Slight boost to brightness if it's too dark.
+            new_v = max(v, 0.4)
+            new_s = s # Keep saturation faithful
         else:
-            # BASE: Mid-Tone for text readability
-            new_v = 0.25 
-            new_s = min(max(s, 0.4), 0.9) 
-            if s < 0.05: new_s, new_v = 0.02, 0.20
+            # Base: Needs to support white text.
+            # Darken if too bright, Brighten if pitch black.
+            new_v = 0.22 # Standard "Dark Mode" grey level
+            new_s = min(max(s, 0.4), 0.9) # Ensure some color remains
+            
+            # Special case: True B&W
+            if s < 0.05: 
+                new_s = 0.02
+                new_v = 0.20
         
         nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
         return (int(nr*255), int(ng*255), int(nb*255))
 
-    return adjust_color(c1), adjust_color(c2, is_accent=True)
+    return adjust_for_bg(c1), adjust_for_bg(c2, is_accent=True)
 
-def create_light_rays(base_color, accent_color, width, height):
+def create_textured_bg(base_color, accent_color, width, height):
     """
-    Creates a background with soft, diagonal light rays.
+    Creates a background with thin, subtle diagonal streaks.
     """
-    # 1. Solid Base
     img = Image.new("RGB", (width, height), base_color)
     
-    # 2. Ray Layer (Black for Screen Blend)
-    ray_layer = Image.new("RGB", (width, height), "black")
-    draw = ImageDraw.Draw(ray_layer)
+    # Texture Layer
+    texture = Image.new("RGBA", (width, height), (0,0,0,0))
+    draw = ImageDraw.Draw(texture)
     
-    num_rays = 12
+    # Draw many thin diagonal lines
+    # Low alpha for "barely there" look
+    line_color = (*accent_color, 25) # Alpha 25/255 (Very transparent)
     
-    for _ in range(num_rays):
-        # Random start/end points extended beyond canvas
+    num_lines = 40
+    
+    for _ in range(num_lines):
+        # Random geometry
         x1 = random.randint(-width, width * 2)
         y1 = random.randint(-height, height * 2)
         
-        length = random.randint(800, 2000)
-        angle = math.radians(45) # Diagonal light
+        length = random.randint(300, 1500)
+        angle = math.radians(45) # 45 degree streaks
         
         x2 = x1 + length * math.cos(angle)
         y2 = y1 + length * math.sin(angle)
         
-        # Variable width for natural feel (10px - 50px)
-        w = random.randint(10, 50)
+        # Thin width
+        w = random.randint(1, 4)
         
-        # Draw the line in the accent color
-        draw.line([(x1, y1), (x2, y2)], fill=accent_color, width=w)
+        draw.line([(x1, y1), (x2, y2)], fill=line_color, width=w)
         
-    # 3. Heavy Blur to turn lines into "Rays"
-    # Radius 20 gives definition but soft edges
-    ray_layer = ray_layer.filter(ImageFilter.GaussianBlur(radius=20))
+    # Slight blur to merge lines into a "texture" rather than vector art
+    texture = texture.filter(ImageFilter.GaussianBlur(radius=2))
     
-    # 4. Screen Blend (Adds the light to the base)
-    # Reduce intensity of rays slightly if needed? No, Screen handles it well.
-    final_bg = ImageChops.screen(img, ray_layer)
-    
-    return final_bg
+    # Composite
+    img.paste(texture, (0,0), texture)
+    return img
 
 def apply_film_grain(img, intensity=0.08):
     width, height = img.size
@@ -207,20 +205,20 @@ def draw_centered_text(draw, y, text, font, fill):
 
 def draw_cover_slide(images, fonts, date_str, day_str):
     c1, c2 = get_faithful_colors(images[0])
-    bg = create_light_rays(c1, c2, CANVAS_WIDTH, CANVAS_HEIGHT)
+    bg = create_textured_bg(c1, c2, CANVAS_WIDTH, CANVAS_HEIGHT)
     bg = apply_film_grain(bg)
     draw = ImageDraw.Draw(bg)
     
     cx, cy = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
     draw.text((cx, cy - 80), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + 40), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(200,200,200), anchor="mm")
+    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
     return bg
 
 def draw_poster_slide(film, img_obj, fonts):
     # 1. Textured Background
     c_base, c_accent = get_faithful_colors(img_obj)
-    bg = create_light_rays(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
+    bg = create_textured_bg(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
     
@@ -236,6 +234,7 @@ def draw_poster_slide(film, img_obj, fonts):
         img_y = 180
         target_h = 600
         
+    # Resize Image
     img_ratio = img_obj.width / img_obj.height
     if img_ratio > (target_w / target_h):
         new_h = target_h
@@ -305,7 +304,7 @@ def draw_poster_slide(film, img_obj, fonts):
             for line in lines[:3]: 
                 cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
     
-    # 5. Showtimes (Smart-Fit)
+    # 5. Showtimes (Smart-Fit V2)
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
     
@@ -359,7 +358,7 @@ def draw_poster_slide(film, img_obj, fonts):
     return canvas
 
 def main():
-    print("--- Starting V27 (Ethereal Rays) ---")
+    print("--- Starting V26 (Subtle Texture) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -429,7 +428,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V27 Generated.")
+    print("Done. V26 Generated.")
 
 if __name__ == "__main__":
     main()
