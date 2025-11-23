@@ -909,8 +909,8 @@
                             bestEnglishTitle = showing.letterboxd_english_title;
                         } else if (showing.tmdb_display_title && isProbablyNotJapanese(showing.tmdb_display_title)) {
                             bestEnglishTitle = showing.tmdb_display_title;
-                        } else if (showing.title_en && isProbablyNotJapanese(showing.title_en)) {
-                            bestEnglishTitle = showing.title_en.replace(/【.*?】/g, '').trim();
+                        } else if (showing.movie_title_en && isProbablyNotJapanese(showing.movie_title_en)) {
+                            bestEnglishTitle = showing.movie_title_en.replace(/【.*?】/g, '').trim();
                         } else if (showing.gemini_english_title && showing.gemini_english_title.toUpperCase() !== 'NO_TITLE_FOUND' && isProbablyNotJapanese(showing.gemini_english_title)) {
                             bestEnglishTitle = showing.gemini_english_title;
                         }
