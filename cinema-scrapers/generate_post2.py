@@ -1,11 +1,11 @@
 """
-Generate Instagram-ready image carousel (V23 - Atmospheric Streaks).
+Generate Instagram-ready image carousel (V24 - Light Leak / Atmospheric).
 
-- Base: V22 (Smart-Fit Minimalist).
-- Visual Upgrade: 
-  1. Extracts TWO colors (Base + Accent).
-  2. Generates "Motion Streak" background texture using the Accent color.
-  3. Adds depth/lighting while keeping the minimalist text layout.
+- Base: V23 (Layout is frozen).
+- Visual Overhaul:
+  1. "Light Leak" Engine: Uses Screen Blending for glowing streaks.
+  2. Higher Contrast: Accent colors are forced brighter.
+  3. Visible Texture: Reduced blur so streaks have definition.
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter, ImageChops
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -97,111 +97,102 @@ def download_image(path: str) -> Image.Image | None:
 
 def get_dual_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     """
-    Extracts a BASE color (Dark/Vibrant) and an ACCENT color (Bright/Distinct).
+    Extracts a Dark Base and a Bright/Glowing Accent.
     """
     small = pil_img.resize((150, 150))
     result = small.quantize(colors=10, method=2)
     palette = result.getpalette()
     
-    # 1. Parse Palette into HSV candidates
     candidates = []
     for i in range(0, min(30, len(palette)), 3):
         r, g, b = palette[i], palette[i+1], palette[i+2]
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
         candidates.append({'r':r, 'g':g, 'b':b, 'h':h, 's':s, 'v':v})
 
-    # 2. Find BASE Color (High Saturation, Mid-Dark Value)
+    # 1. Find BASE Color (Rich, Deep)
     base_color = None
     max_base_score = -1
-    
     for c in candidates:
-        # Score: Favor saturation, punish near-black
         score = c['s'] * 2.0 + c['v']
         if c['v'] < 0.15: score -= 1.0 
-        
         if score > max_base_score:
             max_base_score = score
             base_color = c
-
     if not base_color: base_color = candidates[0]
 
-    # 3. Find ACCENT Color (Distinct Hue from Base, High Brightness)
+    # 2. Find ACCENT Color (Distinct Hue OR High Brightness)
     accent_color = None
     max_accent_score = -1
-    
     for c in candidates:
-        # Distance in Hue
         hue_diff = abs(c['h'] - base_color['h'])
-        if hue_diff > 0.5: hue_diff = 1.0 - hue_diff # Wrap around circle
+        if hue_diff > 0.5: hue_diff = 1.0 - hue_diff
         
-        # Score: Favor distinct hue and high brightness
-        # We want streaks to look like light leaks
-        score = (hue_diff * 3.0) + c['v'] + (c['s'] * 0.5)
-        
+        # We want something that contrasts with the base
+        score = (hue_diff * 4.0) + c['v'] + (c['s'] * 0.5)
         if score > max_accent_score:
             max_accent_score = score
             accent_color = c
             
-    # Fallback if monochrome
+    # Fallback: If monochrome, make accent a bright white/tint
     if not accent_color or max_accent_score < 0.5:
-        # Just make a brighter version of base
         accent_color = base_color.copy()
-        accent_color['v'] = min(accent_color['v'] + 0.4, 1.0)
-        accent_color['s'] = max(accent_color['s'] - 0.2, 0.0)
+        accent_color['v'] = 0.9 # Bright
+        accent_color['s'] = max(0.0, accent_color['s'] - 0.4) # Desaturate
 
-    # --- Adjust Base for Text Readability ---
+    # --- Format Base (Mid-Dark for text) ---
     bh, bs, bv = base_color['h'], base_color['s'], base_color['v']
-    if bs < 0.1: # Grayscale
-        n_bs, n_bv = 0.05, 0.25
-    else:
-        n_bs = max(bs, 0.65); n_bs = min(n_bs, 0.95)
-        n_bv = 0.42 # Mid-tone for background
-        
+    # Ensure it's not pitch black, but dark enough for white text
+    n_bv = 0.25 
+    # Keep saturation high for richness
+    n_bs = min(max(bs, 0.6), 0.9)
+    
     rb, gb, bb = colorsys.hsv_to_rgb(bh, n_bs, n_bv)
     final_base = (int(rb*255), int(gb*255), int(bb*255))
 
-    # --- Adjust Accent for Streak Visibility ---
+    # --- Format Accent (Bright & Glowing) ---
     ah, as_, av = accent_color['h'], accent_color['s'], accent_color['v']
-    # Make accent bright and softer saturation (pastel/light)
-    n_as = min(as_, 0.7) 
-    n_av = max(av, 0.7) # Ensure it's bright
+    # Brightness is key for the Screen blend to work
+    n_av = max(av, 0.8) 
+    n_as = min(as_, 0.8) 
     
     ra, ga, ba = colorsys.hsv_to_rgb(ah, n_as, n_av)
     final_accent = (int(ra*255), int(ga*255), int(ba*255))
 
     return final_base, final_accent
 
-def create_motion_streaks(base_color, accent_color, width, height):
-    """Creates a background with soft, motion-blurred diagonal streaks."""
-    img = Image.new("RGB", (width, height), base_color)
+def create_light_leaks(base_color, accent_color, width, height):
+    """
+    Creates a background with glowing 'Light Leaks' using Screen Blend.
+    """
+    # 1. Base Layer
+    base = Image.new("RGB", (width, height), base_color)
     
-    # Draw Overlay Layer
-    overlay = Image.new("RGBA", (width, height), (0,0,0,0))
-    draw = ImageDraw.Draw(overlay)
+    # 2. Light Leak Layer (Black background for Screen blend)
+    leak_layer = Image.new("RGB", (width, height), "black")
+    draw = ImageDraw.Draw(leak_layer)
     
-    # Draw random diagonal beams
-    # We draw them much larger than canvas and blur
-    for _ in range(4):
-        # Random geometry
-        x1 = random.randint(-width, width)
-        y1 = random.randint(-height, height)
-        w_beam = random.randint(200, 600)
-        h_beam = random.randint(400, 1000)
+    # Draw 2-3 large soft beams
+    for _ in range(3):
+        # Geometry
+        x = random.randint(-width//2, width + width//2)
+        y = random.randint(-height//2, height + height//2)
+        r_x = random.randint(400, 900)
+        r_y = random.randint(400, 900)
         
-        # Color with low alpha for blending
-        fill_color = (*accent_color, 40) # Alpha 40/255
+        # Draw Ellipse
+        # We use the accent color directly. Screen blend will handle the "glow".
+        bbox = [x - r_x, y - r_y, x + r_x, y + r_y]
+        draw.ellipse(bbox, fill=accent_color)
         
-        # Draw rough shape
-        draw.ellipse((x1, y1, x1+w_beam, y1+h_beam), fill=fill_color)
-        
-    # Heavy Motion Blur simulation using multiple Gaussian Blurs + Directional Shift?
-    # Standard Gaussian is easier and looks like "out of focus" lights (Bokeh)
-    # For streaks, let's try a massive Gaussian Blur
-    overlay = overlay.filter(ImageFilter.GaussianBlur(radius=120))
+    # 3. Blur the Leaks (Moderate blur to keep shape but soften edges)
+    leak_layer = leak_layer.filter(ImageFilter.GaussianBlur(radius=80))
     
-    # Composite
-    img.paste(overlay, (0,0), overlay)
-    return img
+    # 4. Composite using Screen (Adds light)
+    # Screen formula: 1 - (1 - a) * (1 - b)
+    # This makes the accent color 'add' to the base without washing it out completely
+    final_bg = ImageChops.screen(base, leak_layer)
+    
+    return final_bg
 
 def apply_film_grain(img, intensity=0.08):
     width, height = img.size
@@ -209,37 +200,8 @@ def apply_film_grain(img, intensity=0.08):
     noise_img = Image.frombytes('L', (width, height), noise_data)
     if img.mode != 'RGBA': img = img.convert('RGBA')
     noise_img = noise_img.convert('RGBA')
-    return Image.blend(img, noise_img, alpha=0.04).convert("RGB")
-
-def create_hero_grid_with_streaks(images):
-    # Just grab colors from first image for consistency
-    c1, c2 = get_dual_colors(images[0])
-    bg = create_motion_streaks(c1, c2, CANVAS_WIDTH, CANVAS_HEIGHT)
-    
-    # Overlay the grid images with low opacity? 
-    # Actually, user liked the grid. Let's keep grid but add color wash on top.
-    
-    # 1. Create Grid
-    grid_canvas = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT))
-    cell_w = CANVAS_WIDTH // 3
-    cell_h = CANVAS_HEIGHT // 3
-    pool = images.copy()
-    while len(pool) < 9: pool += images
-    random.shuffle(pool)
-    
-    for i in range(9):
-        img = pool[i]
-        col, row = i % 3, i // 3
-        img = img.resize((cell_w, cell_h), Image.Resampling.LANCZOS) # Simple resize for speed
-        # Desaturate
-        img = ImageEnhance.Color(img).enhance(0.0)
-        grid_canvas.paste(img, (col*cell_w, row*cell_h))
-        
-    # 2. Blend with Streak BG (Multiply or Overlay)
-    # We want the color to define the look, grid to be texture
-    bg = Image.blend(bg, grid_canvas, alpha=0.15) 
-    
-    return bg
+    # Overlay blend for better texture interaction
+    return Image.blend(img, noise_img, alpha=0.06).convert("RGB")
 
 def get_fonts():
     try:
@@ -263,21 +225,24 @@ def draw_centered_text(draw, y, text, font, fill):
     return y + font.size + 10 
 
 def draw_cover_slide(images, fonts, date_str, day_str):
-    bg = create_hero_grid_with_streaks(images)
+    # Use first image for color theme
+    c1, c2 = get_dual_colors(images[0])
+    bg = create_light_leaks(c1, c2, CANVAS_WIDTH, CANVAS_HEIGHT)
     bg = apply_film_grain(bg)
     draw = ImageDraw.Draw(bg)
+    
     cx, cy = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
     
     draw.text((cx, cy - 80), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + 40), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(200,200,200), anchor="mm")
+    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
     
     return bg
 
 def draw_poster_slide(film, img_obj, fonts):
-    # 1. Background with Streaks
+    # 1. Background with Light Leaks
     c_base, c_accent = get_dual_colors(img_obj)
-    bg = create_motion_streaks(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
+    bg = create_light_leaks(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
     
@@ -380,6 +345,7 @@ def draw_poster_slide(film, img_obj, fonts):
         scale = max(scale, 0.45) 
         
     final_font_size = int(std_font_size * scale)
+    # Aggressive gap reduction
     gap_scale = scale if scale > 0.8 else scale * 0.6
     final_gap = int(std_gap * gap_scale)
     
@@ -417,7 +383,7 @@ def draw_poster_slide(film, img_obj, fonts):
     return canvas
 
 def main():
-    print("--- Starting V23 (Atmospheric Streaks) ---")
+    print("--- Starting V24 (Light Leak / Atmospheric) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -487,7 +453,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V23 Generated.")
+    print("Done. V24 Generated.")
 
 if __name__ == "__main__":
     main()
