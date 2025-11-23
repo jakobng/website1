@@ -1,11 +1,11 @@
 """
-Generate Instagram-ready image carousel (V25 - High Contrast / True Light Leaks).
+Generate Instagram-ready image carousel (V26 - Subtle Texture / Faithful Colors).
 
-- Base: V24 (Light Leak Atmospheric).
-- Improvements:
-  1. Color Separation: Maximizes Hue Distance between Base and Accent.
-  2. Contrast Force: Accents are forced Bright/Luminous.
-  3. Monochrome Fallback: Artificially shifts hue if image is too single-colored.
+- Base: V22 (Smart-Fit Layout).
+- Visuals:
+  1. Faithful Colors: No artificial contrast boosting. Uses real image palette.
+  2. Texture Engine: Generates thin, diagonal scratches/streaks.
+  3. Subtlety: Low opacity, slight blur. "Paper grain" feel.
 """
 from __future__ import annotations
 
@@ -95,107 +95,84 @@ def download_image(path: str) -> Image.Image | None:
         return None
     return None
 
-def get_dual_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
+def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     """
-    Extracts a Dark Base and a High-Contrast Bright Accent.
+    Extracts the two most dominant colors without artificial shifting.
+    Only adjusts Brightness (Value) to ensure text readability.
     """
     small = pil_img.resize((150, 150))
-    result = small.quantize(colors=10, method=2)
+    # Quantize to just 3 colors to find the absolute main vibes
+    result = small.quantize(colors=3, method=2)
     palette = result.getpalette()
     
-    candidates = []
-    for i in range(0, min(30, len(palette)), 3):
-        r, g, b = palette[i], palette[i+1], palette[i+2]
+    # Base = Most dominant
+    c1 = (palette[0], palette[1], palette[2])
+    # Accent = Second most dominant
+    c2 = (palette[3], palette[4], palette[5])
+    
+    def adjust_for_bg(rgb_tuple, is_accent=False):
+        r, g, b = rgb_tuple
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
-        candidates.append({'r':r, 'g':g, 'b':b, 'h':h, 's':s, 'v':v})
-
-    # 1. Find BASE Color (Rich, Deep, Saturated)
-    base_color = None
-    max_base_score = -1
-    for c in candidates:
-        # Preference: High Saturation, Mid-Dark Value (not black)
-        score = c['s'] * 2.5 + c['v']
-        if c['v'] < 0.15: score -= 2.0 
-        if score > max_base_score:
-            max_base_score = score
-            base_color = c
-    if not base_color: base_color = candidates[0]
-
-    # 2. Find ACCENT Color (Maximum Distance)
-    accent_color = None
-    max_dist = -1
-    
-    for c in candidates:
-        # Hue Distance (0.0 - 0.5)
-        h_dist = abs(c['h'] - base_color['h'])
-        if h_dist > 0.5: h_dist = 1.0 - h_dist
         
-        # We prioritize Hue Difference above all
-        # Then Brightness (Accent should be brighter)
-        score = (h_dist * 5.0) + (c['v'] * 2.0) + c['s']
-        
-        if score > max_dist:
-            max_dist = score
-            accent_color = c
+        if is_accent:
+            # Accent: Just needs to be visible against Base. 
+            # Slight boost to brightness if it's too dark.
+            new_v = max(v, 0.4)
+            new_s = s # Keep saturation faithful
+        else:
+            # Base: Needs to support white text.
+            # Darken if too bright, Brighten if pitch black.
+            new_v = 0.22 # Standard "Dark Mode" grey level
+            new_s = min(max(s, 0.4), 0.9) # Ensure some color remains
             
-    # Check if the "best" accent is actually different enough?
-    # If hue distance is very low (< 0.05), it's a monochrome image.
-    h_dist_final = abs(accent_color['h'] - base_color['h'])
-    if h_dist_final > 0.5: h_dist_final = 1.0 - h_dist_final
-    
-    # --- Adjust Base (Mid-Dark for text) ---
-    bh, bs, bv = base_color['h'], base_color['s'], base_color['v']
-    n_bv = 0.25 # Standard background darkness
-    n_bs = min(max(bs, 0.5), 0.95) # Keep saturation high
-    
-    rb, gb, bb = colorsys.hsv_to_rgb(bh, n_bs, n_bv)
-    final_base = (int(rb*255), int(gb*255), int(bb*255))
-
-    # --- Adjust Accent (Bright & Glowing) ---
-    ah, as_, av = accent_color['h'], accent_color['s'], accent_color['v']
-    
-    # MONOCHROME FIX: If hues are too close, shift accent hue artificially
-    if h_dist_final < 0.1 and n_bs > 0.1: # Only if base has some color
-        # Shift hue by 30 degrees (0.08)
-        ah = (ah + 0.08) % 1.0
+            # Special case: True B&W
+            if s < 0.05: 
+                new_s = 0.02
+                new_v = 0.20
         
-    # Force high brightness for light leak effect
-    n_av = 0.95 
-    # Slightly lower saturation so it looks like "light"
-    n_as = min(as_, 0.6) 
-    
-    ra, ga, ba = colorsys.hsv_to_rgb(ah, n_as, n_av)
-    final_accent = (int(ra*255), int(ga*255), int(ba*255))
+        nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
+        return (int(nr*255), int(ng*255), int(nb*255))
 
-    return final_base, final_accent
+    return adjust_for_bg(c1), adjust_for_bg(c2, is_accent=True)
 
-def create_light_leaks(base_color, accent_color, width, height):
+def create_textured_bg(base_color, accent_color, width, height):
     """
-    Creates a background with glowing 'Light Leaks' using Screen Blend.
+    Creates a background with thin, subtle diagonal streaks.
     """
-    # 1. Base Layer
-    base = Image.new("RGB", (width, height), base_color)
+    img = Image.new("RGB", (width, height), base_color)
     
-    # 2. Light Leak Layer (Black background for Screen blend)
-    leak_layer = Image.new("RGB", (width, height), "black")
-    draw = ImageDraw.Draw(leak_layer)
+    # Texture Layer
+    texture = Image.new("RGBA", (width, height), (0,0,0,0))
+    draw = ImageDraw.Draw(texture)
     
-    # Draw 2 large soft beams
-    for _ in range(2):
-        x = random.randint(-width//2, width + width//2)
-        y = random.randint(-height//2, height + height//2)
-        r_x = random.randint(500, 1000)
-        r_y = random.randint(500, 1000)
-        bbox = [x - r_x, y - r_y, x + r_x, y + r_y]
-        draw.ellipse(bbox, fill=accent_color)
+    # Draw many thin diagonal lines
+    # Low alpha for "barely there" look
+    line_color = (*accent_color, 25) # Alpha 25/255 (Very transparent)
+    
+    num_lines = 40
+    
+    for _ in range(num_lines):
+        # Random geometry
+        x1 = random.randint(-width, width * 2)
+        y1 = random.randint(-height, height * 2)
         
-    # 3. Blur
-    leak_layer = leak_layer.filter(ImageFilter.GaussianBlur(radius=90))
+        length = random.randint(300, 1500)
+        angle = math.radians(45) # 45 degree streaks
+        
+        x2 = x1 + length * math.cos(angle)
+        y2 = y1 + length * math.sin(angle)
+        
+        # Thin width
+        w = random.randint(1, 4)
+        
+        draw.line([(x1, y1), (x2, y2)], fill=line_color, width=w)
+        
+    # Slight blur to merge lines into a "texture" rather than vector art
+    texture = texture.filter(ImageFilter.GaussianBlur(radius=2))
     
-    # 4. Composite using Screen (Adds light)
-    final_bg = ImageChops.screen(base, leak_layer)
-    
-    return final_bg
+    # Composite
+    img.paste(texture, (0,0), texture)
+    return img
 
 def apply_film_grain(img, intensity=0.08):
     width, height = img.size
@@ -203,7 +180,7 @@ def apply_film_grain(img, intensity=0.08):
     noise_img = Image.frombytes('L', (width, height), noise_data)
     if img.mode != 'RGBA': img = img.convert('RGBA')
     noise_img = noise_img.convert('RGBA')
-    return Image.blend(img, noise_img, alpha=0.06).convert("RGB")
+    return Image.blend(img, noise_img, alpha=0.05).convert("RGB")
 
 def get_fonts():
     try:
@@ -227,24 +204,21 @@ def draw_centered_text(draw, y, text, font, fill):
     return y + font.size + 10 
 
 def draw_cover_slide(images, fonts, date_str, day_str):
-    # Use first image for color theme
-    c1, c2 = get_dual_colors(images[0])
-    bg = create_light_leaks(c1, c2, CANVAS_WIDTH, CANVAS_HEIGHT)
+    c1, c2 = get_faithful_colors(images[0])
+    bg = create_textured_bg(c1, c2, CANVAS_WIDTH, CANVAS_HEIGHT)
     bg = apply_film_grain(bg)
     draw = ImageDraw.Draw(bg)
     
     cx, cy = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
-    
     draw.text((cx, cy - 80), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + 40), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(200,200,200), anchor="mm")
-    
+    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
     return bg
 
 def draw_poster_slide(film, img_obj, fonts):
-    # 1. Background with Light Leaks
-    c_base, c_accent = get_dual_colors(img_obj)
-    bg = create_light_leaks(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
+    # 1. Textured Background
+    c_base, c_accent = get_faithful_colors(img_obj)
+    bg = create_textured_bg(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
     
@@ -347,7 +321,6 @@ def draw_poster_slide(film, img_obj, fonts):
         scale = max(scale, 0.45) 
         
     final_font_size = int(std_font_size * scale)
-    # Aggressive gap reduction
     gap_scale = scale if scale > 0.8 else scale * 0.6
     final_gap = int(std_gap * gap_scale)
     
@@ -385,7 +358,7 @@ def draw_poster_slide(film, img_obj, fonts):
     return canvas
 
 def main():
-    print("--- Starting V25 (High Contrast / True Light Leaks) ---")
+    print("--- Starting V26 (Subtle Texture) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -455,7 +428,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V25 Generated.")
+    print("Done. V26 Generated.")
 
 if __name__ == "__main__":
     main()
