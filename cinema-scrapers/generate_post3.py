@@ -1,9 +1,9 @@
 """
-Generate Instagram-ready image carousel (V32 - Limit 9 Items).
+Generate Instagram-ready image carousel (V34 - No AI Creativity).
 
-- Fixes: Stops processing once 9 valid slides are created.
+- Logic: STRICTLY uses Google Search to find official taglines OR extracts existing text.
+- User Requirement: "Not gemini writing its own tagline."
 - Model: Gemini 2.5 Flash + Google Search Grounding.
-- Visuals: Faithful Colors, Texture, Film Grain.
 """
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ import time
 import requests
 import colorsys
 import math
+import re
 from datetime import datetime
 from pathlib import Path
 from io import BytesIO
@@ -68,52 +69,51 @@ CINEMA_ENGLISH_NAMES = {
 def generate_gemini_taglines(film_data):
     """
     Calls Gemini 2.5 Flash API with Google Search Grounding.
-    Returns (tagline_jp, tagline_en).
+    Purpose: Find OFFICIAL taglines or EXTRACT text. No creative writing.
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        print("⚠️ GEMINI_API_KEY not found (Environment Variable missing). Skipping AI text generation.")
+        print("⚠️ GEMINI_API_KEY not found. Skipping AI text generation.")
         return "", ""
 
     title = film_data.get('movie_title', '')
     title_en = film_data.get('movie_title_en', '')
     synopsis = film_data.get('synopsis', '') or film_data.get('tmdb_overview_jp', '')
     
+    # Prompt: STICTLY prohibiting creative writing
     prompt = f"""
-    Task: Write a movie poster tagline (logline) for the following film.
+    Task: Identify the official tagline (catch copy) for the movie '{title}' ({title_en}).
     
-    Movie Info:
-    - Title (JP): {title}
-    - Title (EN): {title_en}
-    - Known Synopsis: {synopsis}
+    Provided Synopsis: {synopsis}
     
-    Directives:
-    1. USE GOOGLE SEARCH if the synopsis is missing or vague.
-    2. Japanese Tagline: Emotional, poetic, or intriguing. Max 30 characters. No spoilers.
-    3. English Tagline: Cool, witty, or dramatic. Max 10-12 words.
+    STRICT RULES:
+    1. USE GOOGLE SEARCH to find the official Japanese and English taglines used on posters.
+    2. If NO official tagline exists, EXTRACT a short, impactful sentence verbatim from the synopsis.
+    3. DO NOT write your own creative slogan. Use existing text only.
+    4. Translate the extracted text if necessary to provide both JP and EN versions.
     
-    Output Format (JSON only):
+    Constraints:
+    - Japanese: Max 30 characters.
+    - English: Max 12 words.
+    
+    Output Format (JSON Only):
     {{
       "jp": "...",
       "en": "..."
     }}
     """
 
-    # Using Gemini 2.5 Flash as per documentation
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
     headers = {'Content-Type': 'application/json'}
     
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
-        # Modern Tool definition for 2.5 models
         "tools": [
             {"googleSearch": {}} 
-        ],
-        "generationConfig": {"response_mime_type": "application/json"}
+        ]
     }
 
     try:
-        # Rate limit safety
         print("  ...Waiting 5s for API rate limit...")
         time.sleep(5) 
         
@@ -123,9 +123,17 @@ def generate_gemini_taglines(film_data):
             if 'candidates' not in result or not result['candidates']:
                 return "", ""
 
-            raw_json = result['candidates'][0]['content']['parts'][0]['text']
-            data = json.loads(raw_json)
-            return data.get('jp', ''), data.get('en', '')
+            raw_text = result['candidates'][0]['content']['parts'][0]['text']
+            
+            # Clean markdown if present
+            clean_text = re.sub(r"```json|```", "", raw_text).strip()
+            
+            try:
+                data = json.loads(clean_text)
+                return data.get('jp', ''), data.get('en', '')
+            except json.JSONDecodeError:
+                print(f"⚠️ Failed to parse JSON for '{title}'.")
+                return "", ""
         else:
             print(f"❌ Gemini API Error {response.status_code}: {response.text}")
     except Exception as e:
@@ -330,7 +338,7 @@ def draw_poster_slide(film, img_obj, fonts):
 
 # --- Main Execution ---
 if __name__ == "__main__":
-    print("Starting V32 (Limit 9 Items)...")
+    print("Starting V34 (No AI Creativity)...")
     
     try:
         with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
@@ -377,7 +385,6 @@ if __name__ == "__main__":
     print("Will stop after 9 successful slides.")
     
     for i, film in enumerate(selected_candidates):
-        # Stop if we already have 9 slides
         if len(slide_data) >= 9:
             print("🛑 Limit reached (9 items). Stopping.")
             break
@@ -385,12 +392,10 @@ if __name__ == "__main__":
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
         print(f"[{i+1}/{len(selected_candidates)}] Processing: {t_jp}")
         
-        # 1. Download Image
         img_path = film.get('tmdb_backdrop_path')
         img = download_image(img_path)
         
         if img:
-            # 2. Generate Taglines via Gemini 2.5 Flash
             tag_jp, tag_en = generate_gemini_taglines(film)
             film['gen_tagline_jp'] = tag_jp
             film['gen_tagline_en'] = tag_en
@@ -413,11 +418,9 @@ if __name__ == "__main__":
         film = item['film']
         img = item['img']
         
-        # Draw Slide
         slide = draw_poster_slide(film, img, fonts)
         slide.save(BASE_DIR / f"post_v2_image_{i+1:02}.png")
         
-        # Caption Generation
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
         caption_lines.append(f"{t_jp}") 
         if film.get('movie_title_en'): 
