@@ -1,9 +1,23 @@
 name: Scrape Movie Showtimes (TMDB/Letterboxd Focused)
 
 on:
-  workflow_dispatch: # Allows manual triggering for testing
+  workflow_dispatch: # Allows manual triggering
+    inputs:
+      post_type:
+        description: 'Which post to generate?'
+        required: true
+        default: 'cinema'
+        type: choice
+        options:
+        - cinema
+        - movie
   schedule:
-    - cron: '5 20 * * *'
+    # 1. Cinema Post: 08:00 JST (23:00 UTC previous day)
+    - cron: '0 23 * * *'
+    # 2. Movie Post 1: 09:00 JST (00:00 UTC)
+    - cron: '0 0 * * *'
+    # 3. Movie Post 2: 10:00 JST (01:00 UTC)
+    - cron: '0 1 * * *'
 
 jobs:
   scrape_and_commit:
@@ -13,7 +27,6 @@ jobs:
       run:
         working-directory: cinema-scrapers
     
-    # IMPORTANT: This permission allows the Action to push changes back to the repo
     permissions:
       contents: write
 
@@ -26,16 +39,13 @@ jobs:
         with:
           python-version: '3.10'
 
-      # Installs Chrome (needed for your Selenium scrapers)
       - name: Set up Chrome for Selenium
         uses: browser-actions/setup-chrome@v1
 
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          # Install all required libraries for Scraper + Generator + Uploader
           pip install --upgrade google-generativeai requests Pillow tzdata
-          # Install specific requirements if the file exists
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Install Playwright Browsers
@@ -49,6 +59,26 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-tmdb-cache-
 
+      # --- NEW STEP: DECIDE MODE ---
+      - name: Determine Post Type
+        id: decision
+        run: |
+          # If manual trigger, use input
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.post_type }}" >> $GITHUB_OUTPUT
+          else
+            # Automated: Check UTC hour
+            HOUR=$(date -u +%H)
+            
+            # 23:00 UTC = 08:00 JST -> Cinema Post
+            if [ "$HOUR" == "23" ]; then
+              echo "mode=cinema" >> $GITHUB_OUTPUT
+            else
+              # 00:00 UTC & 01:00 UTC -> Movie Post
+              echo "mode=movie" >> $GITHUB_OUTPUT
+            fi
+          fi
+
       # --- STEP 1: SCRAPE DATA ---
       - name: Run scraper script
         run: python main_scraper.py
@@ -56,9 +86,21 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      # --- STEP 2: GENERATE IMAGE & CAPTION ---
-      - name: Generate Instagram post assets
+      # --- STEP 2: GENERATE ASSETS (CONDITIONAL) ---
+      
+      # V1: Cinemas
+      - name: Generate Cinema Slides (V1)
+        if: steps.decision.outputs.mode == 'cinema'
         run: python generate_post.py
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+
+      # V2: Movies
+      - name: Generate Movie Slides (V2)
+        if: steps.decision.outputs.mode == 'movie'
+        run: python generate_post2.py
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
      # --- STEP 3: COMMIT & PUSH ---
       - name: Commit and push generated files
@@ -71,10 +113,15 @@ jobs:
           git add 'showtimes.json'
           git add 'tmdb_cache.json'
           
-          # ✅ CRITICAL FIX: Use wildcard for Carousel Images
-          git add 'post_image_*.png'
-          git add 'story_image_*.png'
-          git add 'post_caption.txt'
+          # Add V1 Assets (Cinemas)
+          git add 'post_image_*.png' || true
+          git add 'story_image_*.png' || true
+          git add 'post_caption.txt' || true
+          
+          # Add V2 Assets (Movies)
+          git add 'post_v2_image_*.png' || true
+          git add 'story_v2_image_*.png' || true
+          git add 'post_v2_caption.txt' || true
           
           # Check if anything actually changed
           if git diff --staged --quiet; then
@@ -83,9 +130,8 @@ jobs:
             exit 0
           fi
           
-          git commit -m "Automated update of showtimes and IG post"
+          git commit -m "Auto-Update: Generated ${{ steps.decision.outputs.mode }} slides"
           
-          # ✅ CRITICAL FIX: Use autostash to prevent "Unstaged changes" error
           git pull origin main --rebase --autostash
           git push
           
@@ -94,16 +140,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # --- STEP 4: WAIT FOR DEPLOY ---
-      # GitHub Pages needs a moment to update the live URL before Instagram grabs it
       - name: Wait for Pages Deployment
         if: steps.commit_push.outputs.pushed == 'true'
         run: sleep 60
 
       # --- STEP 5: UPLOAD TO INSTAGRAM ---
       - name: Upload to Instagram
-        # Only run this step if we actually pushed new data
         if: steps.commit_push.outputs.pushed == 'true'
-        run: python upload_to_instagram.py
+        # Pass the mode to the python script
+        run: python upload_to_instagram.py --type ${{ steps.decision.outputs.mode }}
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
