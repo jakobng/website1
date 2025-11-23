@@ -1,11 +1,9 @@
 """
-Generate Instagram-ready image carousel (V26 - Subtle Texture / Faithful Colors).
+Generate Instagram-ready image carousel (V27 - No Synopsis / Subtle Texture).
 
-- Base: V22 (Smart-Fit Layout).
-- Visuals:
-  1. Faithful Colors: No artificial contrast boosting. Uses real image palette.
-  2. Texture Engine: Generates thin, diagonal scratches/streaks.
-  3. Subtlety: Low opacity, slight blur. "Paper grain" feel.
+- Visuals: Faithful Colors, Texture Engine (Scratches/Grain).
+- Layout: Optimized for visual impact (Larger Image, No Logline).
+- Logic: Smart-Fit Showtimes automatically centers in remaining space.
 """
 from __future__ import annotations
 
@@ -190,12 +188,11 @@ def get_fonts():
             "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
             "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
-            "logline": ImageFont.truetype(str(REGULAR_FONT_PATH), 26),
             "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
             "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
         }
     except:
-        return {k: ImageFont.load_default() for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "logline", "cinema", "times"]}
+        return {k: ImageFont.load_default() for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "cinema", "times"]}
 
 def draw_centered_text(draw, y, text, font, fill):
     length = draw.textlength(text, font=font)
@@ -222,17 +219,11 @@ def draw_poster_slide(film, img_obj, fonts):
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
     
-    # 2. Layout Logic
-    synopsis = film.get('tmdb_overview_jp', '')
-    has_synopsis = len(synopsis) > 10
-    
-    target_w = 900 
-    if has_synopsis:
-        img_y = 120
-        target_h = 550
-    else:
-        img_y = 180
-        target_h = 600
+    # 2. Layout Logic (NO SYNOPSIS VERSION)
+    # We use a larger, more prominent image placement since we don't need space for the logline.
+    target_w = 900
+    target_h = 640 # Slightly taller than before to fill the void naturally
+    img_y = 140    # Standardized top margin
         
     # Resize Image
     img_ratio = img_obj.width / img_obj.height
@@ -252,7 +243,7 @@ def draw_poster_slide(film, img_obj, fonts):
     img_x = (CANVAS_WIDTH - target_w) // 2
     canvas.paste(img_final, (img_x, img_y))
     
-    cursor_y = img_y + target_h + 70
+    cursor_y = img_y + target_h + 60
     
     # 3. Typography
     
@@ -292,19 +283,13 @@ def draw_poster_slide(film, img_obj, fonts):
     if director:
         cursor_y += 15
         draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150))
-        cursor_y += 30
-
-    # 4. Logline
-    if has_synopsis:
-        cursor_y += 20
-        available_h = (CANVAS_HEIGHT - 200) - cursor_y 
-        if available_h > 80:
-            wrapper = textwrap.TextWrapper(width=40)
-            lines = wrapper.wrap(synopsis)
-            for line in lines[:3]: 
-                cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
+        cursor_y += 20 # Small padding after director
+        
+    # --- SYNOPSIS SECTION REMOVED ---
     
     # 5. Showtimes (Smart-Fit V2)
+    # The 'available_space' calculation will automatically expand/center 
+    # the showtimes into the area where the synopsis used to be.
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
     
@@ -335,6 +320,7 @@ def draw_poster_slide(film, img_obj, fonts):
     final_block_height = num_cinemas * unit_height
     
     if available_space > final_block_height:
+        # Centering logic handles the extra space naturally
         start_y = cursor_y + (available_space - final_block_height) // 2
     else:
         start_y = cursor_y + 20 
@@ -358,7 +344,7 @@ def draw_poster_slide(film, img_obj, fonts):
     return canvas
 
 def main():
-    print("--- Starting V26 (Subtle Texture) ---")
+    print("--- Starting V27 (No Synopsis) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -428,7 +414,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V26 Generated.")
+    print("Done. V27 Generated.")
 
 if __name__ == "__main__":
     main()
