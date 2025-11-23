@@ -1,11 +1,10 @@
 """
-Generate Instagram-ready image carousel (V20 - Smart-Fit Minimalist).
+Generate Instagram-ready image carousel (V21 - True Color Minimalist).
 
-- Base: V19 (Refined Minimalist).
-- Fixes:
-  1. "Smart-Fit" Engine: Dynamically shrinks showtime fonts/spacing to prevent cutoff.
-  2. Title Dedupe: Hides English title if identical to Japanese (saves space).
-  3. Layout: Robust vertical centering for variable content length.
+- Base: V20 (Smart-Fit Minimalist).
+- Improvements:
+  1. Color Logic: Significantly increased brightness (from 20% to 40%+) to match poster vibes.
+  2. Saturation: Relaxed clamping to allow "truer" colors.
 """
 from __future__ import annotations
 
@@ -80,7 +79,6 @@ def get_bilingual_date():
     return today.strftime("%Y.%m.%d"), today.strftime("%A").upper()
 
 def normalize_string(s):
-    """Simple normalization for string comparison."""
     if not s: return ""
     return re.sub(r'\W+', '', str(s)).lower()
 
@@ -96,7 +94,10 @@ def download_image(path: str) -> Image.Image | None:
     return None
 
 def get_vibrant_bg(pil_img: Image.Image) -> tuple[int, int, int]:
-    """Extracts color, prioritizing Saturation to avoid muddy greys."""
+    """
+    Extracts true vibrant color.
+    Previously clamped Value to 0.20 (Dark). Now allows 0.40+ (Bright/Mid-tone).
+    """
     small = pil_img.resize((150, 150))
     result = small.quantize(colors=10, method=2)
     palette = result.getpalette()
@@ -104,28 +105,34 @@ def get_vibrant_bg(pil_img: Image.Image) -> tuple[int, int, int]:
     best_color = None
     max_score = -1
     
-    # Iterate palette (flat list [r,g,b...])
+    # Iterate palette
     for i in range(0, min(30, len(palette)), 3):
         r, g, b = palette[i], palette[i+1], palette[i+2]
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
         
-        # Score = Saturation * Value
-        score = s * v
-        if v < 0.15: score -= 0.5 # Penalty for near-black
+        # Score prioritizes Saturation heavily to avoid grey/brown
+        score = s * 2.0 + v 
         
         if score > max_score:
             max_score = score
             best_color = (h, s, v)
             
-    if not best_color: return (20, 20, 20)
+    if not best_color: return (40, 40, 40)
         
     h, s, v = best_color
+    
+    # Logic: BRIGHTER & TRUER
     if s < 0.1: 
-        new_s, new_v = 0.0, 0.15
+        # If original is B&W, return a clean Slate Grey (lighter than before)
+        new_s, new_v = 0.05, 0.25 
     else:
-        new_s = max(s, 0.5) 
-        new_s = min(new_s, 0.85) 
-        new_v = 0.20 
+        # Saturation: Keep it real, just ensure it's not washed out
+        new_s = max(s, 0.65) 
+        new_s = min(new_s, 0.95) 
+        
+        # Value (Brightness): This is the key fix.
+        # Was 0.20. Now 0.42 ensures distinct color while keeping white text readable.
+        new_v = 0.42
         
     nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
     return (int(nr*255), int(ng*255), int(nb*255))
@@ -211,13 +218,13 @@ def draw_cover_slide(images, fonts, date_str, day_str):
     return bg
 
 def draw_poster_slide(film, img_obj, fonts):
-    # 1. Background with Grain
+    # 1. Background with Grain (Brighter Logic)
     bg_color = get_vibrant_bg(img_obj)
     base = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), bg_color)
     canvas = apply_film_grain(base)
     draw = ImageDraw.Draw(canvas)
     
-    # 2. Layout Logic (Has Logline?)
+    # 2. Layout Logic
     synopsis = film.get('tmdb_overview_jp', '')
     has_synopsis = len(synopsis) > 10
     
@@ -265,7 +272,7 @@ def draw_poster_slide(film, img_obj, fonts):
     jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
     en_title = film.get('movie_title_en')
     
-    # Deduplication: If En title is effectively same as JP (e.g. "Scarborough"), skip En
+    # Dedupe Titles
     if normalize_string(jp_title) == normalize_string(en_title):
         en_title = None
         
@@ -279,7 +286,7 @@ def draw_poster_slide(film, img_obj, fonts):
     
     cursor_y += 10
 
-    # English Title (if distinct)
+    # English Title
     if en_title:
         cursor_y = draw_centered_text(draw, cursor_y, en_title.upper(), fonts['title_en'], (200, 200, 200))
     
@@ -293,41 +300,32 @@ def draw_poster_slide(film, img_obj, fonts):
     # 4. Logline
     if has_synopsis:
         cursor_y += 20
-        available_h = (CANVAS_HEIGHT - 200) - cursor_y # Reserve 200px bottom
+        available_h = (CANVAS_HEIGHT - 200) - cursor_y 
         if available_h > 80:
             wrapper = textwrap.TextWrapper(width=40)
             lines = wrapper.wrap(synopsis)
             for line in lines[:3]: 
                 cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
     
-    # 5. Showtimes (Smart-Fit)
-    
+    # 5. Showtimes (Smart-Fit & Centered)
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
     
-    # Calculation: How much vertical space do we have left?
-    # Bottom margin 50px
     available_space = CANVAS_HEIGHT - cursor_y - 50
-    
-    # Standard sizing
     std_font_size = 28
     std_gap = 50
     
-    # Estimate needed height: per cinema (Font*2 + Gap)
-    # Line height approx size * 1.2
     block_unit = (std_font_size * 1.2 * 2) + std_gap 
     total_needed = num_cinemas * block_unit
     
-    # SCALING FACTOR
     scale = 1.0
     if total_needed > available_space:
         scale = available_space / total_needed
-        scale = max(scale, 0.65) # Don't shrink below 65% size
+        scale = max(scale, 0.65) 
         
     final_font_size = int(std_font_size * scale)
     final_gap = int(std_gap * scale)
     
-    # Dynamic Fonts
     try:
         dyn_font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
         dyn_font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
@@ -335,30 +333,23 @@ def draw_poster_slide(film, img_obj, fonts):
         dyn_font_cin = ImageFont.load_default()
         dyn_font_time = ImageFont.load_default()
         
-    # Recalculate exact block height to center it
     unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
     final_block_height = num_cinemas * unit_height
     
-    # Start Y Position (Center in remaining space)
     if available_space > final_block_height:
         start_y = cursor_y + (available_space - final_block_height) // 2
     else:
-        start_y = cursor_y + 20 # Tight fit at top
+        start_y = cursor_y + 20 
         
-    # Draw Loop
     for cinema in sorted_cinemas:
         times = sorted(film['showings'][cinema])
         times_str = " ".join(times)
-        
         cinema_en = CINEMA_ENGLISH_NAMES.get(cinema, cinema)
         
-        # Center Cinema
         len_c = draw.textlength(cinema_en, font=dyn_font_cin)
         x_c = (CANVAS_WIDTH - len_c) // 2
         draw.text((x_c, start_y), cinema_en, font=dyn_font_cin, fill=(255, 255, 255))
         
-        # Center Times
-        # Move down by font size roughly
         y_time = start_y + final_font_size + 10
         len_t = draw.textlength(times_str, font=dyn_font_time)
         x_t = (CANVAS_WIDTH - len_t) // 2
@@ -369,13 +360,12 @@ def draw_poster_slide(film, img_obj, fonts):
     return canvas
 
 def main():
-    print("--- Starting V20 (Smart-Fit Minimalist) ---")
+    print("--- Starting V21 (True Color Minimalist) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
     
     if not SHOWTIMES_PATH.exists(): return
-        
     with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
         
@@ -440,7 +430,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V20 Generated.")
+    print("Done. V21 Generated.")
 
 if __name__ == "__main__":
     main()
