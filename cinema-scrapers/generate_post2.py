@@ -1,12 +1,11 @@
 """
-Generate Instagram-ready image carousel (V19 - Refined Minimalist).
+Generate Instagram-ready image carousel (V20 - Smart-Fit Minimalist).
 
-- Base: V18 (A24 Style).
-- Improvements:
-  1. Layout: Dynamic image positioning (higher if synopsis exists).
-  2. Showtimes: Vertically centered in remaining whitespace.
-  3. Data: English Cinema Names used.
-  4. Color: Prioritizes vibrant colors over dominant greys.
+- Base: V19 (Refined Minimalist).
+- Fixes:
+  1. "Smart-Fit" Engine: Dynamically shrinks showtime fonts/spacing to prevent cutoff.
+  2. Title Dedupe: Hides English title if identical to Japanese (saves space).
+  3. Layout: Robust vertical centering for variable content length.
 """
 from __future__ import annotations
 
@@ -17,6 +16,7 @@ import os
 import glob
 import requests
 import colorsys
+import re
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -79,6 +79,11 @@ def get_bilingual_date():
     today = datetime.now()
     return today.strftime("%Y.%m.%d"), today.strftime("%A").upper()
 
+def normalize_string(s):
+    """Simple normalization for string comparison."""
+    if not s: return ""
+    return re.sub(r'\W+', '', str(s)).lower()
+
 def download_image(path: str) -> Image.Image | None:
     if not path: return None
     url = f"https://image.tmdb.org/t/p/w1280{path}"
@@ -91,62 +96,46 @@ def download_image(path: str) -> Image.Image | None:
     return None
 
 def get_vibrant_bg(pil_img: Image.Image) -> tuple[int, int, int]:
-    """
-    Extracts color, prioritizing Saturation to avoid muddy greys.
-    """
+    """Extracts color, prioritizing Saturation to avoid muddy greys."""
     small = pil_img.resize((150, 150))
-    # Quantize to more colors to find hidden gems
     result = small.quantize(colors=10, method=2)
     palette = result.getpalette()
     
     best_color = None
     max_score = -1
     
-    # Iterate through palette (up to 10 colors, 3 values each)
-    # Palette list is flat [r,g,b, r,g,b...]
+    # Iterate palette (flat list [r,g,b...])
     for i in range(0, min(30, len(palette)), 3):
         r, g, b = palette[i], palette[i+1], palette[i+2]
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
         
-        # Score = Saturation * Value (Balance of colorfulness and brightness)
+        # Score = Saturation * Value
         score = s * v
-        
-        # Penalty for very dark colors (muddy)
-        if v < 0.15: score -= 0.5
+        if v < 0.15: score -= 0.5 # Penalty for near-black
         
         if score > max_score:
             max_score = score
             best_color = (h, s, v)
             
-    if not best_color:
-        return (20, 20, 20) # Fallback dark grey
+    if not best_color: return (20, 20, 20)
         
     h, s, v = best_color
-    
-    # Logic: A24 Muted but Rich
-    # If original was very desaturated (B&W), keep it B&W
     if s < 0.1: 
         new_s, new_v = 0.0, 0.15
     else:
-        # Boost saturation if it's kinda colorful, but cap it for elegance
         new_s = max(s, 0.5) 
-        new_s = min(new_s, 0.85) # Don't go full neon
-        new_v = 0.20 # Keep background dark for text contrast
+        new_s = min(new_s, 0.85) 
+        new_v = 0.20 
         
     nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
     return (int(nr*255), int(ng*255), int(nb*255))
 
 def apply_film_grain(img, intensity=0.08):
-    """Adds subtle film grain."""
     width, height = img.size
     noise_data = os.urandom(width * height)
     noise_img = Image.frombytes('L', (width, height), noise_data)
-    
-    if img.mode != 'RGBA':
-        img = img.convert('RGBA')
+    if img.mode != 'RGBA': img = img.convert('RGBA')
     noise_img = noise_img.convert('RGBA')
-    
-    # Blend very subtly
     return Image.blend(img, noise_img, alpha=0.04).convert("RGB")
 
 def create_3x3_grid(images: list[Image.Image]) -> Image.Image:
@@ -204,24 +193,19 @@ def get_fonts():
         return {k: ImageFont.load_default() for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "logline", "cinema", "times"]}
 
 def draw_centered_text(draw, y, text, font, fill):
-    """Helper to center text horizontally."""
     length = draw.textlength(text, font=font)
     x = (CANVAS_WIDTH - length) // 2
     draw.text((x, y), text, font=font, fill=fill)
-    return y + font.size + 10 # Return next Y position
+    return y + font.size + 10 
 
 def draw_cover_slide(images, fonts, date_str, day_str):
     bg = create_3x3_grid(images)
     bg = apply_film_grain(bg)
     draw = ImageDraw.Draw(bg)
-    
     cx, cy = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
     
-    # Minimalist Cover
     draw.text((cx, cy - 80), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + 40), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    
-    # Small elegant date
     draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(200,200,200), anchor="mm")
     
     return bg
@@ -233,13 +217,11 @@ def draw_poster_slide(film, img_obj, fonts):
     canvas = apply_film_grain(base)
     draw = ImageDraw.Draw(canvas)
     
-    # 2. Determine Layout (Has Logline?)
+    # 2. Layout Logic (Has Logline?)
     synopsis = film.get('tmdb_overview_jp', '')
     has_synopsis = len(synopsis) > 10
     
-    # Image Config
     target_w = 900 
-    # If synopsis, shift up and shrink slightly
     if has_synopsis:
         img_y = 120
         target_h = 550
@@ -247,7 +229,7 @@ def draw_poster_slide(film, img_obj, fonts):
         img_y = 180
         target_h = 600
         
-    # Image Resize Logic
+    # Resize Image
     img_ratio = img_obj.width / img_obj.height
     if img_ratio > (target_w / target_h):
         new_h = target_h
@@ -262,13 +244,12 @@ def draw_poster_slide(film, img_obj, fonts):
         top = (new_h - target_h) // 2
         img_final = img_resized.crop((0, top, target_w, top+target_h))
     
-    # Paste Image
     img_x = (CANVAS_WIDTH - target_w) // 2
     canvas.paste(img_final, (img_x, img_y))
     
     cursor_y = img_y + target_h + 70
     
-    # 3. Typography (Strictly Centered)
+    # 3. Typography (Centered)
     
     # Metadata
     meta_parts = []
@@ -282,6 +263,12 @@ def draw_poster_slide(film, img_obj, fonts):
 
     # Japanese Title
     jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
+    en_title = film.get('movie_title_en')
+    
+    # Deduplication: If En title is effectively same as JP (e.g. "Scarborough"), skip En
+    if normalize_string(jp_title) == normalize_string(en_title):
+        en_title = None
+        
     if len(jp_title) > 15:
         wrapper = textwrap.TextWrapper(width=15)
         lines = wrapper.wrap(jp_title)
@@ -292,10 +279,9 @@ def draw_poster_slide(film, img_obj, fonts):
     
     cursor_y += 10
 
-    # English Title
-    if film.get('movie_title_en'):
-        en_title = film.get('movie_title_en').upper()
-        cursor_y = draw_centered_text(draw, cursor_y, en_title, fonts['title_en'], (200, 200, 200))
+    # English Title (if distinct)
+    if en_title:
+        cursor_y = draw_centered_text(draw, cursor_y, en_title.upper(), fonts['title_en'], (200, 200, 200))
     
     # Director
     director = film.get('tmdb_director') or film.get('director')
@@ -304,58 +290,86 @@ def draw_poster_slide(film, img_obj, fonts):
         draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150))
         cursor_y += 30
 
-    # 4. Logline (If exists)
+    # 4. Logline
     if has_synopsis:
         cursor_y += 20
-        # Wrap carefully
-        wrapper = textwrap.TextWrapper(width=40)
-        lines = wrapper.wrap(synopsis)
-        # Show max 3 lines
-        for line in lines[:3]: 
-            cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
+        available_h = (CANVAS_HEIGHT - 200) - cursor_y # Reserve 200px bottom
+        if available_h > 80:
+            wrapper = textwrap.TextWrapper(width=40)
+            lines = wrapper.wrap(synopsis)
+            for line in lines[:3]: 
+                cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
     
-    # 5. Showtimes (Vertically Centered in Remaining Space)
+    # 5. Showtimes (Smart-Fit)
     
-    # Calculate height needed for showtimes
     sorted_cinemas = sorted(film['showings'].keys())
-    total_cinemas = len(sorted_cinemas)
-    # Height = (Text line) + (Time line) + (Gap)
-    # Approx 50 + 40 + 20 = 110px per cinema
-    block_height = total_cinemas * 110
+    num_cinemas = len(sorted_cinemas)
     
-    # Available space
-    space_remaining = CANVAS_HEIGHT - cursor_y - 50 # 50px bottom padding
+    # Calculation: How much vertical space do we have left?
+    # Bottom margin 50px
+    available_space = CANVAS_HEIGHT - cursor_y - 50
     
-    # Start position: Center the block in the space
-    # If space is tight, just start 40px below cursor
-    if space_remaining > block_height:
-        start_y = cursor_y + (space_remaining - block_height) // 2
-    else:
-        start_y = cursor_y + 50
+    # Standard sizing
+    std_font_size = 28
+    std_gap = 50
+    
+    # Estimate needed height: per cinema (Font*2 + Gap)
+    # Line height approx size * 1.2
+    block_unit = (std_font_size * 1.2 * 2) + std_gap 
+    total_needed = num_cinemas * block_unit
+    
+    # SCALING FACTOR
+    scale = 1.0
+    if total_needed > available_space:
+        scale = available_space / total_needed
+        scale = max(scale, 0.65) # Don't shrink below 65% size
         
-    # Draw Showtimes
+    final_font_size = int(std_font_size * scale)
+    final_gap = int(std_gap * scale)
+    
+    # Dynamic Fonts
+    try:
+        dyn_font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
+        dyn_font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
+    except:
+        dyn_font_cin = ImageFont.load_default()
+        dyn_font_time = ImageFont.load_default()
+        
+    # Recalculate exact block height to center it
+    unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
+    final_block_height = num_cinemas * unit_height
+    
+    # Start Y Position (Center in remaining space)
+    if available_space > final_block_height:
+        start_y = cursor_y + (available_space - final_block_height) // 2
+    else:
+        start_y = cursor_y + 20 # Tight fit at top
+        
+    # Draw Loop
     for cinema in sorted_cinemas:
         times = sorted(film['showings'][cinema])
         times_str = " ".join(times)
         
-        # Map to English Name
-        cinema_en = CINEMA_ENGLISH_NAMES.get(cinema, cinema) # Fallback to JP if missing
+        cinema_en = CINEMA_ENGLISH_NAMES.get(cinema, cinema)
         
-        # Center Cinema Name
-        start_y = draw_centered_text(draw, start_y, cinema_en, fonts['cinema'], (255, 255, 255))
+        # Center Cinema
+        len_c = draw.textlength(cinema_en, font=dyn_font_cin)
+        x_c = (CANVAS_WIDTH - len_c) // 2
+        draw.text((x_c, start_y), cinema_en, font=dyn_font_cin, fill=(255, 255, 255))
         
-        # Center Times (lighter color)
-        # Manually center times since draw_centered_text adds padding
-        length = draw.textlength(times_str, font=fonts['times'])
-        x = (CANVAS_WIDTH - length) // 2
-        draw.text((x, start_y), times_str, font=fonts['times'], fill=(200, 200, 200))
+        # Center Times
+        # Move down by font size roughly
+        y_time = start_y + final_font_size + 10
+        len_t = draw.textlength(times_str, font=dyn_font_time)
+        x_t = (CANVAS_WIDTH - len_t) // 2
+        draw.text((x_t, y_time), times_str, font=dyn_font_time, fill=(200, 200, 200))
         
-        start_y += 70 # Gap to next cinema
+        start_y += unit_height
 
     return canvas
 
 def main():
-    print("--- Starting V19 (Refined Minimalist) ---")
+    print("--- Starting V20 (Smart-Fit Minimalist) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -417,7 +431,6 @@ def main():
             
         for cin, t in film['showings'].items():
             t.sort()
-            # Use English name in caption too? Optional. Keeping JP for locals.
             caption_lines.append(f"{cin}: {', '.join(t)}")
         caption_lines.append("")
         
@@ -427,7 +440,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V19 Generated.")
+    print("Done. V20 Generated.")
 
 if __name__ == "__main__":
     main()
