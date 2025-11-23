@@ -1,10 +1,9 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 44: SUNBURST GRADIENT BACKGROUND
-- Design: Replaced solid yellow background with a radial "Sunburst" gradient.
-- Tech: Added 'create_sunburst_background' helper using interpolated concentric circles.
-- Opt: Generates background templates once and reuses them to save processing time.
+VERSION 51: CUSTOM CINEMA PHOTOS
+- Design: Uses local photos for cinema backgrounds.
+- Map: Updated to match specific user filenames (V51).
 """
 from __future__ import annotations
 
@@ -29,7 +28,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 try:  
     from zoneinfo import ZoneInfo
 except ImportError:
-    ZoneInfo = None  # type: ignore
+    ZoneInfo = None 
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -37,6 +36,7 @@ SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
+ASSETS_DIR = BASE_DIR / "cinema_assets"
 
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 MINIMUM_FILM_THRESHOLD = 3
@@ -54,16 +54,43 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-# Sunburst Center (Deep Yellow)
-SUNBURST_CENTER = (255, 210, 0) 
-# Sunburst Outer (White)
-SUNBURST_OUTER = (255, 255, 255)
-
 BLACK = (20, 20, 20)
-GRAY = (30, 30, 30) 
+GRAY = (200, 200, 200)
 WHITE = (255, 255, 255)
+ACCENT_YELLOW = (255, 210, 0)
 
-# --- Database (Cinemas) ---
+# --- IMAGE MAPPING (UPDATED V51) ---
+CINEMA_IMAGE_MAP = {
+    "Bunkamura ル・シネマ 渋谷宮下": "bunkamura.jpg",
+    "K's Cinema (ケイズシネマ)": "ks_cinema.jpg",
+    "シネマート新宿": "cinemart_shinjuku.jpg",
+    "新宿シネマカリテ": "qualite.jpg", # Missing from your list? Keeping placeholder.
+    "新宿武蔵野館": "musashino_kan.jpg",
+    "テアトル新宿": "theatre_shinjuku.jpg",
+    "早稲田松竹": "waseda_shochiku.jpg",
+    "YEBISU GARDEN CINEMA": "yebisu_garden.jpg",
+    "シアター・イメージフォーラム": "image_forum.jpg",
+    "ユーロスペース": "eurospace.jpeg",
+    "ヒューマントラストシネマ渋谷": "human_shibuya.png",
+    "Stranger (ストレンジャー)": "stranger.jpg",
+    "新文芸坐": "shin_bungeiza.jpg",
+    "目黒シネマ": "meguro.jpeg",
+    "ポレポレ東中野": "polepole.jpg",
+    "K2 Cinema": "k2.jpg",
+    "ヒューマントラストシネマ有楽町": "human_yurakucho.png",
+    "ラピュタ阿佐ヶ谷": "laputa.jpg",
+    "下高井戸シネマ": "shimotakaido.jpg",
+    "国立映画アーカイブ": "nfaj.jpg",
+    "池袋シネマ・ロサ": "rosa.jpg",
+    "シネスイッチ銀座": "cine_switch.jpg",
+    "シネマブルースタジオ": "blue_studio.jpg",
+    "CINEMA Chupki TABATA": "chupki.jpg",
+    "シネクイント": "cine_quinto.jpg",
+    "アップリンク吉祥寺": "uplink.jpg",
+    "Morc阿佐ヶ谷": "morc.jpg",
+    "TULLYWOOD": "tollywood.jpg"
+}
+
 CINEMA_ADDRESSES = {
     "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F\n6F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
     "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F\n3F, 3-35-13 Shinjuku, Shinjuku-ku, Tokyo",
@@ -235,55 +262,56 @@ def get_recently_featured(caption_path: Path) -> List[str]:
 
 # --- IMAGE GENERATORS ---
 
-def create_sunburst_background(width: int, height: int) -> Image.Image:
-    """Generates a radial gradient background (Sunburst)."""
-    # 1. Create a smaller base image for faster processing, then resize
-    base_size = 512
-    img = Image.new("RGB", (base_size, base_size), SUNBURST_OUTER)
+def create_fallback_gradient(width: int, height: int) -> Image.Image:
+    """Generates a subtle dark gradient if no photo is found."""
+    img = Image.new("RGB", (width, height), (30, 30, 30))
     draw = ImageDraw.Draw(img)
-
-    center_color = SUNBURST_CENTER
-    outer_color = SUNBURST_OUTER
-    
-    # Radius covers most of the square
-    max_radius = int(base_size * 0.7) 
-    center = base_size // 2
-
-    # Draw concentric circles to simulate gradient
-    for r in range(max_radius, 0, -2):
-        ratio = r / max_radius
-        # Linear Interpolation
-        red = int(outer_color[0] * ratio + center_color[0] * (1 - ratio))
-        green = int(outer_color[1] * ratio + center_color[1] * (1 - ratio))
-        blue = int(outer_color[2] * ratio + center_color[2] * (1 - ratio))
-        
-        draw.ellipse(
-            [center - r, center - r, center + r, center + r],
-            fill=(red, green, blue)
-        )
-
-    # Resize to target dimensions (LANCZOS smooths the concentric circles)
-    return img.resize((width, height), Image.Resampling.LANCZOS)
-
-def generate_fallback_burst() -> Image.Image:
-    # Simple Solar Burst for "No Image Found" scenarios
-    day_number = int(datetime.now().timestamp() // 86400)
-    hue_degrees = (45 + (day_number // 3) * 12) % 360
-    hue_norm = hue_degrees / 360.0
-    r, g, b = colorsys.hsv_to_rgb(hue_norm, 1.0, 1.0)
-    center_color = (int(r*255), int(g*255), int(b*255))
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
-    draw = ImageDraw.Draw(img)
-    center_x, center_y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
-    max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
-    for r in range(max_radius, 0, -2):
-        t = r / max_radius
-        t_adj = t ** 0.6
-        red = int(center_color[0] * (1 - t_adj) + 255 * t_adj)
-        green = int(center_color[1] * (1 - t_adj) + 255 * t_adj)
-        blue = int(center_color[2] * (1 - t_adj) + 255 * t_adj)
-        draw.ellipse([center_x - r, center_y - r, center_x + r, center_y + r], fill=(red, green, blue))
+    # Simple top-down gradient
+    for y in range(height):
+        r = int(30 - (y / height) * 20)
+        g = int(30 - (y / height) * 20)
+        b = int(40 - (y / height) * 20)
+        draw.line([(0, y), (width, y)], fill=(r, g, b))
     return img
+
+def get_cinema_background(cinema_name: str, width: int, height: int) -> Image.Image:
+    """Loads a local photo for the cinema, crops it, and applies a dark overlay."""
+    filename = CINEMA_IMAGE_MAP.get(cinema_name)
+    
+    if filename:
+        full_path = ASSETS_DIR / filename
+        if full_path.exists():
+            try:
+                # 1. Load and convert
+                img = Image.open(full_path).convert("RGB")
+                
+                # 2. Aspect Fill Crop
+                target_ratio = width / height
+                img_ratio = img.width / img.height
+                
+                if img_ratio > target_ratio:
+                    new_width = int(img.height * target_ratio)
+                    left = (img.width - new_width) // 2
+                    img = img.crop((left, 0, left + new_width, img.height))
+                else:
+                    new_height = int(img.width / target_ratio)
+                    top = (img.height - new_height) // 2
+                    img = img.crop((0, top, img.width, top + new_height))
+                
+                img = img.resize((width, height), Image.Resampling.LANCZOS)
+                
+                # 3. Apply Dark Overlay (Opacity 70% Black)
+                overlay = Image.new("RGBA", (width, height), (0, 0, 0, 180)) # 180/255 alpha
+                img = img.convert("RGBA")
+                img = Image.alpha_composite(img, overlay).convert("RGB")
+                
+                return img
+            except Exception as e:
+                print(f"   [ERROR] Failed to process image for {cinema_name}: {e}")
+    
+    # Fallback if no file or error
+    print(f"   [INFO] Using fallback gradient for: {cinema_name}")
+    return create_fallback_gradient(width, height)
 
 def process_image_bytes(img_content: bytes) -> Image.Image:
     img = Image.open(BytesIO(img_content)).convert("RGB")
@@ -383,16 +411,16 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     draw_centered_text(center_y + 80, "Today's Showtimes", en_subtitle_font)
     draw_centered_text(center_y + 160, bilingual_date, date_font, (220, 220, 220))
     
-    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) 
+    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, ACCENT_YELLOW) 
     
     if movie_title:
         draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), f"Image: {movie_title}", font=credit_font, fill=(180, 180, 180), anchor="rb")
     img = img.convert("RGBA")
     return Image.alpha_composite(img, overlay).convert("RGB")
 
-def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    # Use the passed Background Template
-    img = bg_template.copy()
+def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_image: Image.Image) -> Image.Image:
+    # Use the passed Background Image
+    img = bg_image.copy()
     draw = ImageDraw.Draw(img)
     try:
         title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
@@ -405,7 +433,9 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
         raise
     content_left = MARGIN + 20
     y_pos = MARGIN + 40
-    draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
+    
+    # White text for dark photo background
+    draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=WHITE)
     y_pos += 70
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
@@ -420,12 +450,14 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
         y_pos += 60
     else:
         y_pos += 30
-    draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=BLACK, width=3)
+    
+    draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=ACCENT_YELLOW, width=3)
     y_pos += 40
+    
     for listing in listings:
         wrapped_title = textwrap.wrap(f"■ {listing['title']}", width=TITLE_WRAP_WIDTH) or [f"■ {listing['title']}"]
         for line in wrapped_title:
-            draw.text((content_left, y_pos), line, font=regular_font, fill=BLACK)
+            draw.text((content_left, y_pos), line, font=regular_font, fill=WHITE)
             y_pos += 40
         if listing["en_title"]:
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=35)
@@ -433,16 +465,16 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
                 draw.text((content_left + 10, y_pos), line, font=en_movie_font, fill=GRAY)
                 y_pos += 30
         if listing['times']:
-            draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=GRAY)
+            draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=ACCENT_YELLOW)
             y_pos += 55
+            
     footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
     return img.convert("RGB")
 
-def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
+def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_image: Image.Image) -> Image.Image:
     """Generates a 9:16 vertical Story slide."""
-    # Use the passed Background Template
-    img = bg_template.copy()
+    img = bg_image.copy()
     draw = ImageDraw.Draw(img)
     
     try:
@@ -463,7 +495,7 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
     center_x = CANVAS_WIDTH // 2
     y_pos = 150 
 
-    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=BLACK, anchor="mm")
+    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=WHITE, anchor="mm")
     y_pos += 80
     
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
@@ -473,14 +505,14 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
     else:
         y_pos += 60
 
-    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=BLACK, width=4)
+    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=ACCENT_YELLOW, width=4)
     y_pos += 80
 
     for listing in listings:
         # Japanese Title
         wrapped_title = textwrap.wrap(listing['title'], width=24)
         for line in wrapped_title:
-            draw.text((center_x, y_pos), line, font=movie_font, fill=BLACK, anchor="mm")
+            draw.text((center_x, y_pos), line, font=movie_font, fill=WHITE, anchor="mm")
             y_pos += 55
         
         # English Title
@@ -492,12 +524,12 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
 
         # Showtimes
         if listing['times']:
-            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=GRAY, anchor="mm")
+            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=ACCENT_YELLOW, anchor="mm")
             y_pos += 80 # Gap between films
         else:
             y_pos += 40
 
-    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=BLACK, anchor="mm")
+    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=WHITE, anchor="mm")
     return img
 
 def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: str) -> Image.Image:
@@ -535,7 +567,7 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
     draw.text((center_x, center_y - 200), "TOKYO MINI THEATERS", font=header_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y - 60), "本日の上映情報", font=jp_title_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y + 60), "Today's Showtimes", font=en_subtitle_font, fill=WHITE, anchor="mm")
-    draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=(255, 210, 0), anchor="mm")
+    draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=ACCENT_YELLOW, anchor="mm")
 
     hero_crop = hero_crop.convert("RGBA")
     return Image.alpha_composite(hero_crop, overlay).convert("RGB")
@@ -557,11 +589,6 @@ def main() -> None:
         print(f"No showings for today ({today_str}). Exiting.")
         return
     
-    # --- 3. PRE-GENERATE BACKGROUNDS (Efficiency) ---
-    print("Generating Sunburst Backgrounds...")
-    feed_bg_template = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
-    story_bg_template = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
-
     # 4. Group Cinemas
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in todays_showings:
@@ -594,7 +621,7 @@ def main() -> None:
             all_candidates_raw.append({
                 "name": cinema_name,
                 "listings": listings,
-                "feed_segments": feed_segments, # Only used for checking slide counts
+                "feed_segments": feed_segments, 
                 "unique_count": len(unique_titles),
                 "titles": list(set(all_searchable_titles)),
                 "backdrops": list(set(known_backdrops))
@@ -631,7 +658,7 @@ def main() -> None:
         print("No cinemas selected. Exiting.")
         return
 
-    # 7. HERO IMAGE SEARCH
+    # 7. HERO IMAGE SEARCH (Same as before)
     print("--- Phase 1: Searching Standard Candidates for Hero Image ---")
     hero_image = None
     hero_title = ""
@@ -690,12 +717,11 @@ def main() -> None:
                 current_slide_count -= len(removed['feed_segments'])
             final_selection.append(rescue_cand)
 
-    # 9. Fallback
     if not hero_image:
-        hero_image = generate_fallback_burst()
+        hero_image = create_fallback_gradient(CANVAS_WIDTH, CANVAS_HEIGHT)
         hero_title = ""
 
-    # 10. DRAW SLIDES (Using Sunburst Backgrounds)
+    # 10. DRAW SLIDES (Using Cinema Photos)
     
     # --- A. HERO SLIDES ---
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
@@ -718,10 +744,12 @@ def main() -> None:
 
         feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
         
+        # Load Cinema Photo BG (Feed Ratio)
+        bg_feed = get_cinema_background(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
+        
         for segment in feed_segments:
             feed_counter += 1
-            # Pass the Sunburst Template
-            slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_template)
+            slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, bg_feed)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
             print(f"   Saved Feed Slide {feed_counter} ({cinema_name})")
 
@@ -737,10 +765,12 @@ def main() -> None:
 
         story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, STORY_METRICS)
         
+        # Load Cinema Photo BG (Story Ratio)
+        bg_story = get_cinema_background(cinema_name, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+        
         for segment in story_segments:
             story_counter += 1
-            # Pass the Sunburst Template
-            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_template)
+            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, bg_story)
             slide_img.save(BASE_DIR / f"story_image_{story_counter:02}.png")
             print(f"   Saved Story Slide {story_counter} ({cinema_name})")
 
@@ -768,7 +798,7 @@ def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List
     lines.extend([
         "\n詳細はウェブサイトでご確認いただけます / Full details online:",
         "leonelki.com/cinemas",
-        f"\n#東京ミニシアター #映画 #映画館 #上映情報 #tokyo #{dynamic_hashtag}",
+        f"\n#東京ミニシアター #映画 #映画館 #上映情報 #tokyo #ミニシアター #{dynamic_hashtag}",
         "#tokyocinema #arthousecinema"
     ])
     OUTPUT_CAPTION_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
