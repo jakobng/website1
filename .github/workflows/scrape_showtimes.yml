@@ -12,9 +12,9 @@ on:
         - cinema
         - movie
   schedule:
-    # 1. Cinema Post: 08:00 JST (23:00 UTC previous day)
+    # 1. Cinema Post: 08:00 JST (23:00 UTC previous day) -> SCRAPES
     - cron: '0 23 * * *'
-    # 2. Movie Post 1: 09:00 JST (00:00 UTC)
+    # 2. Movie Post 1: 09:00 JST (00:00 UTC) -> NO SCRAPE
     - cron: '0 0 * * *'
 
 jobs:
@@ -57,43 +57,41 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-tmdb-cache-
 
-      # --- NEW STEP: DECIDE MODE ---
+      # --- DECIDE MODE ---
       - name: Determine Post Type
         id: decision
         run: |
-          # If manual trigger, use input
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "mode=${{ inputs.post_type }}" >> $GITHUB_OUTPUT
           else
-            # Automated: Check UTC hour
             HOUR=$(date -u +%H)
-            
-            # 23:00 UTC = 08:00 JST -> Cinema Post
+            # 23:00 UTC (08:00 JST) is the only time we run 'cinema' mode
             if [ "$HOUR" == "23" ]; then
               echo "mode=cinema" >> $GITHUB_OUTPUT
             else
-              # 00:00 UTC & 01:00 UTC -> Movie Post
               echo "mode=movie" >> $GITHUB_OUTPUT
             fi
           fi
 
-      # --- STEP 1: SCRAPE DATA ---
+      # --- STEP 1: SCRAPE DATA (CONDITIONAL) ---
       - name: Run scraper script
+        # ONLY scrape if we are in 'cinema' mode (the first run of the day)
+        if: steps.decision.outputs.mode == 'cinema'
         run: python main_scraper.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      # --- STEP 2: GENERATE ASSETS (CONDITIONAL) ---
+      # --- STEP 2: GENERATE ASSETS ---
       
-      # V1: Cinemas
+      # V1: Cinemas (08:00 JST)
       - name: Generate Cinema Slides (V1)
         if: steps.decision.outputs.mode == 'cinema'
         run: python generate_post.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
-      # V2: Movies
+      # V2: Movies (09:00 & 10:00 JST)
       - name: Generate Movie Slides (V2)
         if: steps.decision.outputs.mode == 'movie'
         run: python generate_post2.py
@@ -107,21 +105,21 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Add Data Files
+          # Add Data Files (These only change if the scraper ran)
           git add 'showtimes.json'
           git add 'tmdb_cache.json'
           
-          # Add V1 Assets (Cinemas)
+          # Add V1 Assets
           git add 'post_image_*.png' || true
           git add 'story_image_*.png' || true
           git add 'post_caption.txt' || true
           
-          # Add V2 Assets (Movies)
+          # Add V2 Assets
           git add 'post_v2_image_*.png' || true
           git add 'story_v2_image_*.png' || true
           git add 'post_v2_caption.txt' || true
           
-          # Check if anything actually changed
+          # Check for changes
           if git diff --staged --quiet; then
             echo "No changes to commit."
             echo "pushed=false" >> $GITHUB_OUTPUT
@@ -145,7 +143,6 @@ jobs:
       # --- STEP 5: UPLOAD TO INSTAGRAM ---
       - name: Upload to Instagram
         if: steps.commit_push.outputs.pushed == 'true'
-        # Pass the mode to the python script
         run: python upload_to_instagram.py --type ${{ steps.decision.outputs.mode }}
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
