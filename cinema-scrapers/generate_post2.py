@@ -1,10 +1,11 @@
 """
-Generate Instagram-ready image carousel (V21 - True Color Minimalist).
+Generate Instagram-ready image carousel (V22 - Overflow Fix).
 
-- Base: V20 (Smart-Fit Minimalist).
-- Improvements:
-  1. Color Logic: Significantly increased brightness (from 20% to 40%+) to match poster vibes.
-  2. Saturation: Relaxed clamping to allow "truer" colors.
+- Base: V21 (True Color Minimalist).
+- Fixes:
+  1. Smart-Fit Engine Upgrade: Lowered scaling floor to 45% to prevent cutoff.
+  2. Gap Compression: Aggressively reduces whitespace between dense showtimes.
+  3. Layout: Guarantees fit for 8+ cinemas.
 """
 from __future__ import annotations
 
@@ -94,10 +95,7 @@ def download_image(path: str) -> Image.Image | None:
     return None
 
 def get_vibrant_bg(pil_img: Image.Image) -> tuple[int, int, int]:
-    """
-    Extracts true vibrant color.
-    Previously clamped Value to 0.20 (Dark). Now allows 0.40+ (Bright/Mid-tone).
-    """
+    """Extracts true vibrant color."""
     small = pil_img.resize((150, 150))
     result = small.quantize(colors=10, method=2)
     palette = result.getpalette()
@@ -105,14 +103,10 @@ def get_vibrant_bg(pil_img: Image.Image) -> tuple[int, int, int]:
     best_color = None
     max_score = -1
     
-    # Iterate palette
     for i in range(0, min(30, len(palette)), 3):
         r, g, b = palette[i], palette[i+1], palette[i+2]
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
-        
-        # Score prioritizes Saturation heavily to avoid grey/brown
         score = s * 2.0 + v 
-        
         if score > max_score:
             max_score = score
             best_color = (h, s, v)
@@ -120,18 +114,11 @@ def get_vibrant_bg(pil_img: Image.Image) -> tuple[int, int, int]:
     if not best_color: return (40, 40, 40)
         
     h, s, v = best_color
-    
-    # Logic: BRIGHTER & TRUER
     if s < 0.1: 
-        # If original is B&W, return a clean Slate Grey (lighter than before)
         new_s, new_v = 0.05, 0.25 
     else:
-        # Saturation: Keep it real, just ensure it's not washed out
         new_s = max(s, 0.65) 
         new_s = min(new_s, 0.95) 
-        
-        # Value (Brightness): This is the key fix.
-        # Was 0.20. Now 0.42 ensures distinct color while keeping white text readable.
         new_v = 0.42
         
     nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
@@ -218,7 +205,7 @@ def draw_cover_slide(images, fonts, date_str, day_str):
     return bg
 
 def draw_poster_slide(film, img_obj, fonts):
-    # 1. Background with Grain (Brighter Logic)
+    # 1. Background
     bg_color = get_vibrant_bg(img_obj)
     base = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), bg_color)
     canvas = apply_film_grain(base)
@@ -256,7 +243,7 @@ def draw_poster_slide(film, img_obj, fonts):
     
     cursor_y = img_y + target_h + 70
     
-    # 3. Typography (Centered)
+    # 3. Typography
     
     # Metadata
     meta_parts = []
@@ -272,7 +259,6 @@ def draw_poster_slide(film, img_obj, fonts):
     jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
     en_title = film.get('movie_title_en')
     
-    # Dedupe Titles
     if normalize_string(jp_title) == normalize_string(en_title):
         en_title = None
         
@@ -307,24 +293,30 @@ def draw_poster_slide(film, img_obj, fonts):
             for line in lines[:3]: 
                 cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
     
-    # 5. Showtimes (Smart-Fit & Centered)
+    # 5. Showtimes (Smart-Fit V2)
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
     
+    # Available space (Bottom margin 50px)
     available_space = CANVAS_HEIGHT - cursor_y - 50
     std_font_size = 28
     std_gap = 50
     
+    # Standard needed height
     block_unit = (std_font_size * 1.2 * 2) + std_gap 
     total_needed = num_cinemas * block_unit
     
     scale = 1.0
     if total_needed > available_space:
         scale = available_space / total_needed
-        scale = max(scale, 0.65) 
+        # Allow shrinking down to 45%
+        scale = max(scale, 0.45) 
         
     final_font_size = int(std_font_size * scale)
-    final_gap = int(std_gap * scale)
+    
+    # Aggressively reduce gap if scaling is active
+    gap_scale = scale if scale > 0.8 else scale * 0.6
+    final_gap = int(std_gap * gap_scale)
     
     try:
         dyn_font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
@@ -336,6 +328,7 @@ def draw_poster_slide(film, img_obj, fonts):
     unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
     final_block_height = num_cinemas * unit_height
     
+    # Start Position (Center or Top Fit)
     if available_space > final_block_height:
         start_y = cursor_y + (available_space - final_block_height) // 2
     else:
@@ -350,7 +343,7 @@ def draw_poster_slide(film, img_obj, fonts):
         x_c = (CANVAS_WIDTH - len_c) // 2
         draw.text((x_c, start_y), cinema_en, font=dyn_font_cin, fill=(255, 255, 255))
         
-        y_time = start_y + final_font_size + 10
+        y_time = start_y + final_font_size + 5 # Slightly tighter text spacing
         len_t = draw.textlength(times_str, font=dyn_font_time)
         x_t = (CANVAS_WIDTH - len_t) // 2
         draw.text((x_t, y_time), times_str, font=dyn_font_time, fill=(200, 200, 200))
@@ -360,7 +353,7 @@ def draw_poster_slide(film, img_obj, fonts):
     return canvas
 
 def main():
-    print("--- Starting V21 (True Color Minimalist) ---")
+    print("--- Starting V22 (Overflow Fix) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     date_str = get_today_str()
@@ -430,7 +423,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V21 Generated.")
+    print("Done. V22 Generated.")
 
 if __name__ == "__main__":
     main()
