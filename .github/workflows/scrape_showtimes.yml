@@ -16,8 +16,6 @@ on:
     - cron: '0 23 * * *'
     # 2. Movie Post 1: 09:00 JST (00:00 UTC)
     - cron: '0 0 * * *'
-    # 3. Movie Post 2: 10:00 JST (01:00 UTC)
-    - cron: '0 1 * * *'
 
 jobs:
   scrape_and_commit:
