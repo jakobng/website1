@@ -127,11 +127,13 @@ def build_logline(film: dict, lang: str) -> str:
     return ""
 
 def normalize_string(s):
-    if not s: return ""
+    if not s:
+        return ""
     return re.sub(r'\W+', '', str(s)).lower()
 
 def download_image(path: str) -> Image.Image | None:
-    if not path: return None
+    if not path:
+        return None
     url = f"https://image.tmdb.org/t/p/w1280{path}"
     try:
         r = requests.get(url, timeout=10)
@@ -158,7 +160,7 @@ def get_faithful_colors(img: Image.Image):
     dominant = [c[1] for c in colors[:12]]
     
     def is_too_close(c1, c2, thresh=25):
-        return sum((a-b)**2 for a,b in zip(c1,c2)) ** 0.5 < thresh
+        return sum((a-b)**2 for a, b in zip(c1, c2)) ** 0.5 < thresh
     
     bg = dominant[0]
     accent = None
@@ -193,7 +195,7 @@ def get_faithful_colors(img: Image.Image):
             if s < 0.15:
                 s = 0.3
         
-        nr, ng, nb = colorsys.hsv_to_rgb(h, s, v)
+        nr, ng, nb = colorsys.hsv_to_hsv(h, s, v) if False else colorsys.hsv_to_rgb(h, s, v)
         return (int(nr*255), int(ng*255), int(nb*255))
 
     c1 = adjust_for_bg(bg, is_accent=False)
@@ -298,7 +300,8 @@ def apply_film_grain(img, intensity=0.08):
     width, height = img.size
     noise_data = os.urandom(width * height)
     noise_img = Image.frombytes('L', (width, height), noise_data)
-    if img.mode != 'RGBA': img = img.convert('RGBA')
+    if img.mode != 'RGBA':
+        img = img.convert('RGBA')
     noise_img = noise_img.convert('RGBA')
     return Image.blend(img, noise_img, alpha=0.05).convert("RGB")
 
@@ -314,13 +317,37 @@ def get_fonts():
             "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
             "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
         }
-    except:
-        return {k: ImageFont.load_default() for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "logline", "cinema", "times"]}
+    except Exception:
+        return {
+            k: ImageFont.load_default()
+            for k in [
+                "cover_main",
+                "cover_sub",
+                "title_jp",
+                "title_en",
+                "meta",
+                "logline",
+                "cinema",
+                "times",
+            ]
+        }
+
+def _measure_text(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont):
+    """
+    Pillow >=10 removed textsize; use textbbox instead.
+    Returns (width, height).
+    """
+    if not text:
+        return 0, 0
+    bbox = draw.textbbox((0, 0), text, font=font)
+    w = bbox[2] - bbox[0]
+    h = bbox[3] - bbox[1]
+    return w, h
 
 def draw_centered_text(draw, y, text, font, fill):
     if not text:
         return y
-    w, h = draw.textsize(text, font=font)
+    w, h = _measure_text(draw, text, font)
     x = (CANVAS_WIDTH - w) // 2
     draw.text((x, y), text, font=font, fill=fill)
     return y + int(h * 1.15)
@@ -330,21 +357,57 @@ def draw_cover_slide(images, fonts, date_str, day_str):
         bg = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (12, 12, 16))
         draw = ImageDraw.Draw(bg)
         cx, cy = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
-        draw.text((cx, cy - 80), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-        draw.text((cx, cy + 40), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-        draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
+        draw.text(
+            (cx, cy - 80),
+            "TOKYO",
+            font=fonts["cover_main"],
+            fill=(255, 255, 255),
+            anchor="mm",
+        )
+        draw.text(
+            (cx, cy + 40),
+            "CINEMA",
+            font=fonts["cover_main"],
+            fill=(255, 255, 255),
+            anchor="mm",
+        )
+        draw.text(
+            (cx, cy + 160),
+            f"{date_str} • {day_str}",
+            font=fonts["cover_sub"],
+            fill=(220, 220, 220),
+            anchor="mm",
+        )
         return bg
-    
+
     merged = images[0]
     c1, c2 = get_faithful_colors(merged)
     bg = create_textured_bg(c1, c2, CANVAS_WIDTH, CANVAS_HEIGHT)
     bg = apply_film_grain(bg)
     draw = ImageDraw.Draw(bg)
-    
+
     cx, cy = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
-    draw.text((cx, cy - 80), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 40), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 160), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
+    draw.text(
+        (cx, cy - 80),
+        "TOKYO",
+        font=fonts["cover_main"],
+        fill=(255, 255, 255),
+        anchor="mm",
+    )
+    draw.text(
+        (cx, cy + 40),
+        "CINEMA",
+        font=fonts["cover_main"],
+        fill=(255, 255, 255),
+        anchor="mm",
+    )
+    draw.text(
+        (cx, cy + 160),
+        f"{date_str} • {day_str}",
+        font=fonts["cover_sub"],
+        fill=(220, 220, 220),
+        anchor="mm",
+    )
     return bg
 
 def draw_poster_slide(film, img_obj, fonts):
@@ -353,12 +416,12 @@ def draw_poster_slide(film, img_obj, fonts):
     bg = create_textured_bg(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
-    
+
     # 2. Layout Logic
     logline_jp = (film.get("logline_jp") or "").strip()
     logline_en = (film.get("logline_en") or "").strip()
     has_logline = bool(logline_jp or logline_en)
-    
+
     target_w = 900
     if has_logline:
         img_y = 120
@@ -366,7 +429,7 @@ def draw_poster_slide(film, img_obj, fonts):
     else:
         img_y = 180
         target_h = 600
-    
+
     # Resize Image
     img_ratio = img_obj.width / img_obj.height
     if img_ratio > (target_w / target_h):
@@ -374,212 +437,4 @@ def draw_poster_slide(film, img_obj, fonts):
         new_w = int(new_h * img_ratio)
         img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
         left = (new_w - target_w) // 2
-        img_final = img_resized.crop((left, 0, left+target_w, target_h))
-    else:
-        new_w = target_w
-        new_h = int(new_w / img_ratio)
-        img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
-        top = (new_h - target_h) // 2
-        img_final = img_resized.crop((0, top, target_w, top+target_h))
-    
-    img_x = (CANVAS_WIDTH - target_w) // 2
-    canvas.paste(img_final, (img_x, img_y))
-    
-    cursor_y = img_y + target_h + 70
-    
-    # 3. Typography
-    
-    # Metadata
-    meta_parts = []
-    if film.get('year'): meta_parts.append(str(film['year']))
-    if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']}m")
-    if film.get('genres'): meta_parts.append(film['genres'][0].upper())
-    
-    meta_str = "  •  ".join(meta_parts)
-    cursor_y = draw_centered_text(draw, cursor_y, meta_str, fonts['meta'], (200, 200, 200))
-    cursor_y += 15
-
-    # Japanese Title
-    jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
-    en_title = film.get('movie_title_en')
-    
-    if normalize_string(jp_title) == normalize_string(en_title):
-        en_title = None
-        
-    if len(jp_title) > 15:
-        wrapper = textwrap.TextWrapper(width=15)
-        lines = wrapper.wrap(jp_title)
-        for line in lines:
-            cursor_y = draw_centered_text(draw, cursor_y, line, fonts['title_jp'], (255, 255, 255))
-    else:
-        cursor_y = draw_centered_text(draw, cursor_y, jp_title, fonts['title_jp'], (255, 255, 255))
-    
-    cursor_y += 10
-
-    # English Title
-    if en_title:
-        cursor_y = draw_centered_text(draw, cursor_y, en_title.upper(), fonts['title_en'], (200, 200, 200))
-    
-    # Director
-    director = film.get('tmdb_director') or film.get('director')
-    if director:
-        cursor_y += 15
-        draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150))
-        cursor_y += 30
-
-    # 4. Loglines (JP + EN)
-    if has_logline:
-        cursor_y += 20
-        available_h = (CANVAS_HEIGHT - 200) - cursor_y
-        if available_h > 80:
-            # Japanese logline
-            if logline_jp:
-                wrapper_jp = textwrap.TextWrapper(width=18)
-                jp_lines = wrapper_jp.wrap(logline_jp)[:2]
-                for line in jp_lines:
-                    cursor_y = draw_centered_text(
-                        draw, cursor_y, line, fonts['logline'], (190, 190, 190)
-                    )
-                cursor_y += 8
-            # English logline
-            if logline_en:
-                wrapper_en = textwrap.TextWrapper(width=32)
-                en_lines = wrapper_en.wrap(logline_en)[:2]
-                for line in en_lines:
-                    cursor_y = draw_centered_text(
-                        draw, cursor_y, line, fonts['logline'], (170, 170, 170)
-                    )
-                cursor_y += 10
-    
-    
-    # 5. Showtimes (Smart-Fit V2)
-    sorted_cinemas = sorted(film['showings'].keys())
-    num_cinemas = len(sorted_cinemas)
-    
-    available_space = CANVAS_HEIGHT - cursor_y - 50
-    std_font_size = 28
-    std_gap = 50
-    
-    block_unit = (std_font_size * 1.2 * 2) + std_gap 
-    total_needed = num_cinemas * block_unit
-    
-    scale = 1.0
-    if total_needed > available_space:
-        scale = available_space / total_needed
-        scale = max(scale, 0.45) 
-    
-    final_font_size = int(std_font_size * scale)
-    gap_scale = scale if scale > 0.8 else scale * 0.6
-    final_gap = int(std_gap * gap_scale)
-    
-    try:
-        dyn_font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
-        dyn_font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
-    except:
-        dyn_font_cin = ImageFont.load_default()
-        dyn_font_time = ImageFont.load_default()
-        
-    unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
-    final_block_height = num_cinemas * unit_height
-    
-    if available_space > final_block_height:
-        start_y = cursor_y + (available_space - final_block_height) // 2
-    else:
-        start_y = cursor_y + 20 
-    
-    for cin in sorted_cinemas:
-        times = sorted(film['showings'][cin])
-        clean_cin = CINEMA_NAME_MAPPING.get(cin, cin)
-        
-        w_cin, h_cin = draw.textsize(clean_cin, font=dyn_font_cin)
-        w_times, h_times = draw.textsize(", ".join(times), font=dyn_font_time)
-        
-        total_height = h_cin + h_times + int(final_gap * 0.6)
-        
-        x_cin = (CANVAS_WIDTH - w_cin) // 2
-        draw.text((x_cin, start_y), clean_cin, font=dyn_font_cin, fill=(255, 255, 255))
-        
-        x_times = (CANVAS_WIDTH - w_times) // 2
-        draw.text((x_times, start_y + h_cin + int(final_gap * 0.3)), ", ".join(times), font=dyn_font_time, fill=(220, 220, 220))
-        
-        start_y += unit_height
-    
-    return canvas
-
-def main():
-    print("--- Starting V26 (Subtle Texture) ---")
-    
-    for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
-    date_str = get_today_str()
-    
-    if not SHOWTIMES_PATH.exists(): return
-    with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
-        raw_data = json.load(f)
-        
-    films_map = {}
-    for item in raw_data:
-        if item.get('date_text') != date_str: continue
-        if not item.get('tmdb_backdrop_path'): continue
-        
-        key = item.get('tmdb_id') or item.get('movie_title')
-        if key not in films_map:
-            films_map[key] = item
-            films_map[key]['showings'] = defaultdict(list)
-        films_map[key]['showings'][item.get('cinema_name', '')].append(item.get('showtime', ''))
-
-    all_films = list(films_map.values())
-    random.shuffle(all_films)
-    selected = all_films[:9]
-    
-    if not selected:
-        print("No films found.")
-        return
-
-    print(f"Selected {len(selected)} films.")
-    
-    fonts = get_fonts()
-    slide_data = []
-    all_images = []
-    
-    for film in selected:
-        film["logline_en"] = build_logline(film, "en")
-        film["logline_jp"] = build_logline(film, "jp")
-        print(f"Processing: {film.get('clean_title_jp') or film.get('movie_title')}")
-        img = download_image(film.get('tmdb_backdrop_path'))
-        if img:
-            all_images.append(img)
-            slide_data.append({"film": film, "img": img})
-            
-    if all_images:
-        d_str, day_str = get_bilingual_date()
-        cover = draw_cover_slide(all_images, fonts, d_str, day_str)
-        cover.save(BASE_DIR / "post_v2_image_00.png")
-        
-    caption_lines = [f"🗓️ {date_str} Tokyo Cinema Selection\n"]
-    
-    for i, item in enumerate(slide_data):
-        film = item['film']
-        img = item['img']
-        slide = draw_poster_slide(film, img, fonts)
-        slide.save(BASE_DIR / f"post_v2_image_{i+1:02}.png")
-        
-        t_jp = film.get('clean_title_jp') or film.get('movie_title')
-        caption_lines.append(f"{t_jp}") 
-        if film.get('movie_title_en'): 
-            caption_lines.append(f"{film['movie_title_en']}")
-            
-        for cin, t in film['showings'].items():
-            t.sort()
-            caption_lines.append(f"{cin}: {', '.join(t)}")
-        caption_lines.append("")
-        
-    caption_lines.append("\nLink in Bio for Full Schedule")
-    caption_lines.append("#TokyoIndieCinema #MiniTheater #MovieLog")
-    
-    with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
-        f.write("\n".join(caption_lines))
-        
-    print("Done. V26 Generated.")
-
-if __name__ == "__main__":
-    main()
+        img_final = img_resized.crop((left, 0, left + target_w, target_h)
