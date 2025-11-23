@@ -53,17 +53,43 @@ def _clean_text(text: Optional[str]) -> str:
 
 def _get_title_key(raw_title: str) -> str:
     """Creates a consistent key from a movie title by cleaning it."""
-    if not raw_title: return ""
-    # Remove notes in brackets like 【4K上映】 or 【コケティッシュゾーンVol.2】
-    title = re.sub(r'[【《].*?[】》]', '', raw_title)
-    # Remove other common suffixes and markers
+    if not raw_title:
+        return ""
+
+    title = str(raw_title)
+
+    # Normalise some punctuation and whitespace
+    title = title.replace("／", "/")  # full-width slash → ASCII
+    title = title.replace("　", " ")  # full-width space → normal space
+
+    # Drop bracketed notes like 【4K上映】, 『…』, 《…》, （…）
+    # (The content itself is almost never part of the "base" film title.)
+    title = re.sub(r'[【《「『〈(（][^】》」』〉)）]*[】》」』〉)）]', '', title)
+
+    # Remove common suffix-style annotations (formats, events, etc.)
+    suffix_patterns = [
+        r"(4K|４Ｋ)[^/]*$",                       # any trailing 4K annotation
+        r"(デジタル・?リマスター版?)$",          # digital remaster / remastered
+        r"(レストア版)$",
+        r"(字幕版|吹替版|日本語吹替版)$",
+        r"(上映後トークショー.*)$",
+        r"(舞台挨拶.*)$",
+        r"(特別上映.*)$",
+        r"(先行上映.*)$",
+    ]
+    for pat in suffix_patterns:
+        title = re.sub(pat, "", title)
+
+    # Preserve your existing specific cleanups
     suffixes_to_remove = [
         "※HDリマスター版", "※HDリマスター版上映", "4Kレストア版",
         "/ポイント・ブランク", "上映後トークショー"
     ]
     for suffix in suffixes_to_remove:
-        title = title.replace(suffix, '')
+        title = title.replace(suffix, "")
+
     return _clean_text(title)
+
 
 def _fetch_soup(url: str) -> Optional[BeautifulSoup]:
     """Fetches a static URL and returns a BeautifulSoup object."""
@@ -80,51 +106,136 @@ def _fetch_soup(url: str) -> Optional[BeautifulSoup]:
 def _parse_detail_page(soup: BeautifulSoup) -> Dict[str, str | None]:
     """
     Parses a movie detail page from cinemart.co.jp.
-    --- v3 CHANGE: Added a third regex for pipe-separated data. ---
+    Extracts director, year, runtime, country, and synopsis.
     """
-    details = {"director": None, "year": None, "runtime_min": None, "country": None, "synopsis": None}
-    
+    details: Dict[str, Optional[str]] = {
+        "director": None,
+        "year": None,
+        "runtime_min": None,
+        "country": None,
+        "synopsis": None,
+    }
+
+    # -----------------------
+    # Synopsis
+    # -----------------------
     summary_div = soup.find("div", class_="movieSummary")
+    summary_text = None
     if summary_div:
+        summary_text = summary_div.get_text(separator=" ")
         details["synopsis"] = _clean_text(summary_div.get_text(separator="\n"))
 
+    # -----------------------
+    # Helper: parse compact metadata
+    # -----------------------
+    def _apply_compact_meta_patterns(full_text: str) -> None:
+        nonlocal details
+        if not full_text:
+            return
+
+        text = full_text
+
+        # ---- Pattern A ----
+        # 2024/98分/アイルランド/...
+        m = re.search(r"(\d{4})\s*/\s*(\d+)\s*分\s*/\s*([^/]+)", text)
+        if m:
+            year, runtime, country = m.groups()
+
+            if not details["year"]:
+                details["year"] = year
+
+            if not details["runtime_min"]:
+                details["runtime_min"] = runtime
+
+            if not details["country"]:
+                country_clean = country
+                for junk in ["カラー", "モノクロ", "白黒", "製作", "合作"]:
+                    country_clean = country_clean.replace(junk, "")
+                country_clean = re.sub(r"\s+", " ", country_clean)
+                country_clean = country_clean.strip(" /　|｜")
+                if country_clean:
+                    details["country"] = country_clean
+
+        # ---- Pattern B ----
+        # 1976年｜イタリア｜…｜111分
+        if not (details["year"] and details["runtime_min"] and details["country"]):
+            year_match = re.search(r"(\d{4})\s*年", text)
+
+            # Runtime detection with guard (ignore "4分" etc.)
+            runtime_match = None
+            for mm in re.finditer(r"(\d+)\s*分", text):
+                candidate = int(mm.group(1))
+                if candidate >= 40:     # prevents picking up "ラスト4分"
+                    runtime_match = mm
+
+            if year_match and not details["year"]:
+                details["year"] = year_match.group(1)
+
+            if runtime_match and not details["runtime_min"]:
+                details["runtime_min"] = runtime_match.group(1)
+
+            # Extract country only when year+runtime are localised
+            if year_match and runtime_match and not details["country"]:
+                span_start = year_match.end()
+                span_end = runtime_match.start()
+                between = text[span_start:span_end]
+
+                # Prevent grabbing entire paragraphs as country
+                if span_end - span_start < 120:
+                    between = (between
+                               .replace("／", "/")
+                               .replace("｜", "/")
+                               .replace("|", "/"))
+
+                    tokens = [t.strip() for t in between.split("/")
+                              if t.strip()]
+
+                    # Filter non-country tokens
+                    country_tokens = [
+                        t for t in tokens
+                        if not any(x in t for x in [
+                            "語", "モノクロ", "モノラル", "カラー",
+                            "ヴィスタ", "ビスタ", "DCP",
+                            "上映時間", "サイズ", "レストア"
+                        ])
+                    ]
+
+                    if country_tokens:
+                        details["country"] = "・".join(country_tokens[:2])
+
+    # -----------------------
+    # 1st pass: summary
+    # -----------------------
+    if summary_text:
+        _apply_compact_meta_patterns(summary_text)
+
+    # -----------------------
+    # 2nd pass: article blocks
+    # -----------------------
     for article in soup.find_all("article", class_="article"):
         title_tag = article.find("h3", class_="entryTitle2")
         data_tag = article.find("p", class_="movieData")
-        if not (title_tag and data_tag): continue
-        
-        title_text = _clean_text(title_tag.text)
-        data_text = _clean_text(data_tag.text)
-        
-        if "監督" in title_text:
-            details["director"] = data_text.split('『')[0].strip()
-        
-        if "スタッフ" in title_text:
-            staff_text = data_tag.get_text(separator=' ')
-            # Pattern 1: 1978年/アメリカ/カラー/109分
-            match = re.search(r"(\d{4})\s*年\s*/\s*([^/]+)\s*/.*?/(\d+)\s*分", staff_text)
-            if match:
-                details["year"] = match.group(1)
-                details["country"] = match.group(2).strip()
-                details["runtime_min"] = match.group(3)
-            else:
-                # Pattern 3 (New): 2023|韓国|124分...
-                match = re.search(r"(\d{4})\s*\|\s*([^|]+?)\s*\|\s*(\d+)\s*分", staff_text)
-                if match:
-                    details["year"] = match.group(1)
-                    details["country"] = match.group(2).strip()
-                    details["runtime_min"] = match.group(3)
+        if not (title_tag and data_tag):
+            continue
 
-    # Fallback search in the movieSummary div if details are still missing
-    if not details["year"] and summary_div:
-        summary_text = summary_div.get_text(separator=' ')
-        # Pattern 2: 1996 年／フランス・スペイン合作／113 分
-        match = re.search(r"(\d{4})\s*年\s*／\s*([^／]+)\s*／\s*(\d+)\s*分", summary_text)
-        if match:
-            details["year"] = match.group(1)
-            details["country"] = match.group(2).strip()
-            details["runtime_min"] = match.group(3)
-            
+        title_text = _clean_text(title_tag.get_text())
+        data_text = data_tag.get_text(separator=" ")
+
+        # Director
+        if "監督" in title_text and not details["director"]:
+            director = data_text.split("『")[0].strip()
+            details["director"] = _clean_text(director) if director else None
+
+        # Staff
+        if "スタッフ" in title_text:
+            _apply_compact_meta_patterns(data_text)
+
+    # -----------------------
+    # 3rd pass: fallback — summary again
+    # -----------------------
+    if summary_text:
+        _apply_compact_meta_patterns(summary_text)
+
     return details
 
 def _build_details_cache() -> Dict[str, Dict]:
