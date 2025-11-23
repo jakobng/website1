@@ -1,9 +1,9 @@
 """
-Generate Instagram-ready image carousel (V30 - Gemini 2.5 Flash + Search).
+Generate Instagram-ready image carousel (V32 - Limit 9 Items).
 
-- Visuals: Faithful Colors, Texture Engine, Film Grain.
-- Content: Uses Gemini 2.5 Flash with Google Search Grounding.
-- Note: Uses the new `googleSearch` tool (not legacy retrieval) for 2.5 models.
+- Fixes: Stops processing once 9 valid slides are created.
+- Model: Gemini 2.5 Flash + Google Search Grounding.
+- Visuals: Faithful Colors, Texture, Film Grain.
 """
 from __future__ import annotations
 
@@ -72,14 +72,13 @@ def generate_gemini_taglines(film_data):
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        print("⚠️ GEMINI_API_KEY not found. Skipping AI text generation.")
+        print("⚠️ GEMINI_API_KEY not found (Environment Variable missing). Skipping AI text generation.")
         return "", ""
 
     title = film_data.get('movie_title', '')
     title_en = film_data.get('movie_title_en', '')
     synopsis = film_data.get('synopsis', '') or film_data.get('tmdb_overview_jp', '')
     
-    # Prompt updated to encourage using Search
     prompt = f"""
     Task: Write a movie poster tagline (logline) for the following film.
     
@@ -89,7 +88,7 @@ def generate_gemini_taglines(film_data):
     - Known Synopsis: {synopsis}
     
     Directives:
-    1. USE GOOGLE SEARCH if the synopsis is missing or vague. Find the real plot.
+    1. USE GOOGLE SEARCH if the synopsis is missing or vague.
     2. Japanese Tagline: Emotional, poetic, or intriguing. Max 30 characters. No spoilers.
     3. English Tagline: Cool, witty, or dramatic. Max 10-12 words.
     
@@ -100,13 +99,13 @@ def generate_gemini_taglines(film_data):
     }}
     """
 
-    # Using Gemini 2.5 Flash
+    # Using Gemini 2.5 Flash as per documentation
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
     headers = {'Content-Type': 'application/json'}
     
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
-        # NEW: Use 'googleSearch' tool for Gemini 2.5+ (replaces googleSearchRetrieval)
+        # Modern Tool definition for 2.5 models
         "tools": [
             {"googleSearch": {}} 
         ],
@@ -121,19 +120,10 @@ def generate_gemini_taglines(film_data):
         response = requests.post(url, headers=headers, json=payload, timeout=60)
         if response.status_code == 200:
             result = response.json()
-            
             if 'candidates' not in result or not result['candidates']:
-                print(f"❌ No candidates returned for '{title}'.")
                 return "", ""
 
-            # Extract text
-            candidate = result['candidates'][0]
-            
-            # (Optional) Log if grounding was used
-            # if 'groundingMetadata' in candidate:
-            #    print(f"   [Grounding] Search queries used: {candidate['groundingMetadata'].get('webSearchQueries', [])}")
-
-            raw_json = candidate['content']['parts'][0]['text']
+            raw_json = result['candidates'][0]['content']['parts'][0]['text']
             data = json.loads(raw_json)
             return data.get('jp', ''), data.get('en', '')
         else:
@@ -239,18 +229,15 @@ def draw_cover_slide(images, fonts, date_str, day_str):
     return bg
 
 def draw_poster_slide(film, img_obj, fonts):
-    # 1. Background
     c_base, c_accent = get_faithful_colors(img_obj)
     bg = create_textured_bg(c_base, c_accent, CANVAS_WIDTH, CANVAS_HEIGHT)
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
     
-    # 2. Retrieve Generated Taglines
     tagline_jp = film.get('gen_tagline_jp', '')
     tagline_en = film.get('gen_tagline_en', '')
     has_tagline = bool(tagline_jp or tagline_en)
     
-    # 3. Layout Dimensions
     target_w = 900
     if has_tagline:
         img_y = 120
@@ -259,7 +246,6 @@ def draw_poster_slide(film, img_obj, fonts):
         img_y = 180
         target_h = 600
         
-    # Resize/Crop Image
     img_ratio = img_obj.width / img_obj.height
     if img_ratio > (target_w / target_h):
         new_h = target_h
@@ -274,14 +260,12 @@ def draw_poster_slide(film, img_obj, fonts):
         top = (new_h - target_h) // 2
         img_cropped = img_resized.crop((0, top, target_w, top + target_h))
         
-    # Shadow
     shadow = Image.new("RGB", (target_w + 20, target_h + 20), (0,0,0))
     canvas.paste(shadow, ((CANVAS_WIDTH - target_w)//2 + 10, img_y + 10))
     canvas.paste(img_cropped, ((CANVAS_WIDTH - target_w)//2, img_y))
     
     cursor_y = img_y + target_h + 40
     
-    # 4. Titles
     title_jp = film.get('clean_title_jp') or film.get('movie_title')
     title_en = film.get('movie_title_en')
     
@@ -291,7 +275,6 @@ def draw_poster_slide(film, img_obj, fonts):
     
     cursor_y += 20
 
-    # 5. Draw Taglines (Gemini Generated)
     available_h = CANVAS_HEIGHT - cursor_y - 350
     if has_tagline and available_h > 50:
         if tagline_jp:
@@ -305,7 +288,6 @@ def draw_poster_slide(film, img_obj, fonts):
             for line in wrapper_en.wrap(tagline_en):
                 cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
 
-    # 6. Showtimes (Smart-Fit)
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
     
@@ -348,9 +330,8 @@ def draw_poster_slide(film, img_obj, fonts):
 
 # --- Main Execution ---
 if __name__ == "__main__":
-    print("Starting V30 (Gemini 2.5 Flash + Search)...")
+    print("Starting V32 (Limit 9 Items)...")
     
-    # Load Data
     try:
         with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -373,10 +354,7 @@ if __name__ == "__main__":
         if time_str not in movies[title]['showings'][cin]:
             movies[title]['showings'][cin].append(time_str)
             
-    selected = list(movies.values())
-    
-    # Filter for testing (optional)
-    # selected = selected[:9] 
+    selected_candidates = list(movies.values())
     
     # Load Fonts
     try:
@@ -395,24 +373,31 @@ if __name__ == "__main__":
     all_images = []
     slide_data = []
     
-    print(f"Found {len(selected)} films to process.")
+    print(f"Candidates found: {len(selected_candidates)}")
+    print("Will stop after 9 successful slides.")
     
-    for i, film in enumerate(selected):
+    for i, film in enumerate(selected_candidates):
+        # Stop if we already have 9 slides
+        if len(slide_data) >= 9:
+            print("🛑 Limit reached (9 items). Stopping.")
+            break
+            
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
-        print(f"[{i+1}/{len(selected)}] Processing: {t_jp}")
+        print(f"[{i+1}/{len(selected_candidates)}] Processing: {t_jp}")
         
         # 1. Download Image
         img_path = film.get('tmdb_backdrop_path')
         img = download_image(img_path)
         
         if img:
-            # 2. Generate Taglines via Gemini 2.5 Flash (with Search)
+            # 2. Generate Taglines via Gemini 2.5 Flash
             tag_jp, tag_en = generate_gemini_taglines(film)
             film['gen_tagline_jp'] = tag_jp
             film['gen_tagline_en'] = tag_en
             
             all_images.append(img)
             slide_data.append({"film": film, "img": img})
+            print(f"  ✅ Added slide {len(slide_data)}/9")
         else:
             print(f"  ...Skipping {t_jp} (No image)")
             
