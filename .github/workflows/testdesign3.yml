@@ -27,7 +27,7 @@ jobs:
       - name: Run Generator (Cinematic Mode)
         working-directory: './cinema-scrapers'
         # UPDATED: Make sure this filename matches your actual python file (v2 vs v3)
-        run: python generate_post2.py
+        run: python generate_post3.py
         env:
           # MOVED: This is where the script looks for the key
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} 
