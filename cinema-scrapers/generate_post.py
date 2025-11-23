@@ -1,9 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 51: CUSTOM CINEMA PHOTOS
-- Design: Uses local photos for cinema backgrounds.
-- Map: Updated to match specific user filenames (V51).
+VERSION 52: "A24 VIBE" DESIGN
+- Design: Minimalist, Centered Typography.
+- Palette: Monochrome (White/Gray) on Dark Photos. No Yellow.
+- Backgrounds: Local cinema photos with dark overlay.
 """
 from __future__ import annotations
 
@@ -43,8 +44,8 @@ MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
 
 # Vertical space limits (Pixels)
-MAX_FEED_VERTICAL_SPACE = 750 
-MAX_STORY_VERTICAL_SPACE = 1150
+MAX_FEED_VERTICAL_SPACE = 800  # Increased slightly for centered layout
+MAX_STORY_VERTICAL_SPACE = 1200
 
 # Layout
 CANVAS_WIDTH = 1080
@@ -53,18 +54,19 @@ STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
-# --- THEME COLORS ---
-BLACK = (20, 20, 20)
-GRAY = (200, 200, 200)
+# --- THEME COLORS (Minimalist) ---
+BLACK = (10, 10, 10)
 WHITE = (255, 255, 255)
-ACCENT_YELLOW = (255, 210, 0)
+OFF_WHITE = (230, 230, 230)
+GRAY_TEXT = (180, 180, 180)
+SUBTLE_LINE = (255, 255, 255, 100) # White with low alpha
 
-# --- IMAGE MAPPING (UPDATED V51) ---
+# --- IMAGE MAPPING ---
 CINEMA_IMAGE_MAP = {
     "Bunkamura ル・シネマ 渋谷宮下": "bunkamura.jpg",
     "K's Cinema (ケイズシネマ)": "ks_cinema.jpg",
     "シネマート新宿": "cinemart_shinjuku.jpg",
-    "新宿シネマカリテ": "qualite.jpg", # Missing from your list? Keeping placeholder.
+    "新宿シネマカリテ": "qualite.jpg", 
     "新宿武蔵野館": "musashino_kan.jpg",
     "テアトル新宿": "theatre_shinjuku.jpg",
     "早稲田松竹": "waseda_shochiku.jpg",
@@ -230,7 +232,7 @@ def segment_listings(listings: List[Dict[str, str | None]], max_height: int, spa
     current_segment = []
     current_height = 0
     for listing in listings:
-        required_height = spacing['jp_line'] + spacing['time_line']
+        required_height = spacing['jp_line'] + spacing['time_line'] + 20 # Extra spacing for centered layout
         if listing.get('en_title'):
              required_height += spacing['en_line']
         
@@ -300,8 +302,8 @@ def get_cinema_background(cinema_name: str, width: int, height: int) -> Image.Im
                 
                 img = img.resize((width, height), Image.Resampling.LANCZOS)
                 
-                # 3. Apply Dark Overlay (Opacity 70% Black)
-                overlay = Image.new("RGBA", (width, height), (0, 0, 0, 180)) # 180/255 alpha
+                # 3. Apply Dark Overlay (Opacity 75% Black for better text contrast)
+                overlay = Image.new("RGBA", (width, height), (0, 0, 0, 195)) # Increased opacity for A24 text pop
                 img = img.convert("RGBA")
                 img = Image.alpha_composite(img, overlay).convert("RGB")
                 
@@ -309,7 +311,6 @@ def get_cinema_background(cinema_name: str, width: int, height: int) -> Image.Im
             except Exception as e:
                 print(f"   [ERROR] Failed to process image for {cinema_name}: {e}")
     
-    # Fallback if no file or error
     print(f"   [INFO] Using fallback gradient for: {cinema_name}")
     return create_fallback_gradient(width, height)
 
@@ -372,6 +373,7 @@ def fetch_tmdb_backdrop_fallback(movie_title: str) -> Tuple[Image.Image, str] | 
 def apply_cinematic_overlay(img: Image.Image) -> Image.Image:
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
+    # Standard vignette
     for y in range(600):
         alpha = int(200 * (1 - (y / 600))) 
         draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(0, 0, 0, alpha))
@@ -381,6 +383,13 @@ def apply_cinematic_overlay(img: Image.Image) -> Image.Image:
     draw.rectangle([0, 0, CANVAS_WIDTH, CANVAS_HEIGHT], fill=(0, 0, 0, 80))
     img = img.convert("RGBA")
     return Image.alpha_composite(img, overlay).convert("RGB")
+
+def draw_centered_text(draw, y, text, font, fill, width=CANVAS_WIDTH):
+    """Helper to draw text centered horizontally."""
+    length = draw.textlength(text, font=font)
+    x = (width - length) // 2
+    draw.text((x, y), text, font=font, fill=fill)
+    return y + font.size + 15
 
 def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: str) -> Image.Image:
     img = apply_cinematic_overlay(hero_image)
@@ -403,86 +412,103 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
 
     text_center_x = CANVAS_WIDTH // 2
     center_y = CANVAS_HEIGHT // 2
-    def draw_centered_text(y, text, font, color=WHITE):
+    
+    def draw_ct(y, text, font, color=WHITE):
         draw_ov.text((text_center_x, y), text, font=font, fill=color, anchor="mm")
 
-    draw_centered_text(center_y - 140, "TOKYO MINI THEATERS", header_font)
-    draw_centered_text(center_y - 20, "本日の上映情報", jp_title_font)
-    draw_centered_text(center_y + 80, "Today's Showtimes", en_subtitle_font)
-    draw_centered_text(center_y + 160, bilingual_date, date_font, (220, 220, 220))
+    draw_ct(center_y - 140, "TOKYO MINI THEATERS", header_font)
+    draw_ct(center_y - 20, "本日の上映情報", jp_title_font)
+    draw_ct(center_y + 80, "Today's Showtimes", en_subtitle_font)
+    draw_ct(center_y + 160, bilingual_date, date_font, OFF_WHITE)
     
-    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, ACCENT_YELLOW) 
+    # Clean footer, no color accent
+    draw_ct(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR SELECTION →", footer_font, OFF_WHITE) 
     
     if movie_title:
-        draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), f"Image: {movie_title}", font=credit_font, fill=(180, 180, 180), anchor="rb")
+        draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), f"Image: {movie_title}", font=credit_font, fill=GRAY_TEXT, anchor="rb")
     img = img.convert("RGBA")
     return Image.alpha_composite(img, overlay).convert("RGB")
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_image: Image.Image) -> Image.Image:
-    # Use the passed Background Image
     img = bg_image.copy()
     draw = ImageDraw.Draw(img)
+    
     try:
-        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
-        title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)
-        regular_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 34)
+        # A24 Style: Clean, slightly smaller but bolder headers, generous spacing
+        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 60)
+        title_en_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 32)
+        
+        movie_font = ImageFont.truetype(str(BOLD_FONT_PATH), 36)
         en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
-        small_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
+        time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+        
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
+        address_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 26)
     except Exception:
         raise
-    content_left = MARGIN + 20
-    y_pos = MARGIN + 40
+
+    # Center Alignment Logic
+    y_pos = 140
     
-    # White text for dark photo background
-    draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=WHITE)
-    y_pos += 70
+    # 1. Cinema Header (Centered)
+    y_pos = draw_centered_text(draw, y_pos, cinema_name, title_jp_font, WHITE)
+    
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
-        draw.text((content_left, y_pos), cinema_name_to_use, font=title_en_font, fill=GRAY)
-        y_pos += 50
-    else:
-        y_pos += 20
+        y_pos = draw_centered_text(draw, y_pos, cinema_name_to_use.upper(), title_en_font, OFF_WHITE)
+    
+    # Address (Centered, Small)
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     if address:
         jp_addr = address.split("\n")[0]
-        draw.text((content_left, y_pos), f"📍 {jp_addr}", font=small_font, fill=GRAY)
-        y_pos += 60
-    else:
-        y_pos += 30
+        y_pos += 10
+        y_pos = draw_centered_text(draw, y_pos, jp_addr, address_font, GRAY_TEXT)
     
-    draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=ACCENT_YELLOW, width=3)
-    y_pos += 40
+    # Minimal Separator (Thin Line)
+    y_pos += 30
+    line_w = 300
+    cx = CANVAS_WIDTH // 2
+    draw.line([(cx - line_w//2, y_pos), (cx + line_w//2, y_pos)], fill=SUBTLE_LINE, width=1)
+    y_pos += 50
     
+    # 2. Listings (Centered List)
     for listing in listings:
-        wrapped_title = textwrap.wrap(f"■ {listing['title']}", width=TITLE_WRAP_WIDTH) or [f"■ {listing['title']}"]
+        # Japanese Title (Bold, White)
+        wrapped_title = textwrap.wrap(listing['title'], width=TITLE_WRAP_WIDTH)
         for line in wrapped_title:
-            draw.text((content_left, y_pos), line, font=regular_font, fill=WHITE)
-            y_pos += 40
+            y_pos = draw_centered_text(draw, y_pos, line, movie_font, WHITE)
+        
+        # English Title (Regular, Gray)
         if listing["en_title"]:
-            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=35)
+            wrapped_en = textwrap.wrap(listing['en_title'], width=40)
             for line in wrapped_en:
-                draw.text((content_left + 10, y_pos), line, font=en_movie_font, fill=GRAY)
-                y_pos += 30
+                y_pos = draw_centered_text(draw, y_pos - 5, line, en_movie_font, GRAY_TEXT) # Tighter to title
+        
+        # Showtimes (Regular, White/OffWhite)
         if listing['times']:
-            draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=ACCENT_YELLOW)
-            y_pos += 55
+            y_pos = draw_centered_text(draw, y_pos, listing["times"], time_font, OFF_WHITE)
             
-    footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
-    draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
+        y_pos += 40 # Space between movies
+            
+    # Footer
+    footer_text = "leonelki.com/cinemas"
+    draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text, font=footer_font, fill=GRAY_TEXT, anchor="mm")
+    
     return img.convert("RGB")
 
 def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_image: Image.Image) -> Image.Image:
-    """Generates a 9:16 vertical Story slide."""
+    """Generates a 9:16 vertical Story slide with A24 vibes."""
     img = bg_image.copy()
     draw = ImageDraw.Draw(img)
     
     try:
-        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
-        subhead_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
-        movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
-        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 75)
+        subhead_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
+        
+        movie_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
+        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 32)
         time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
+        
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
     except Exception:
         header_font = ImageFont.load_default()
@@ -492,44 +518,38 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
         time_font = ImageFont.load_default()
         footer_font = ImageFont.load_default()
 
-    center_x = CANVAS_WIDTH // 2
-    y_pos = 150 
+    y_pos = 250 # Start lower for Stories
 
-    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=WHITE, anchor="mm")
-    y_pos += 80
+    # 1. Cinema Header
+    y_pos = draw_centered_text(draw, y_pos, cinema_name, header_font, WHITE)
     
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
-        draw.text((center_x, y_pos), cinema_name_to_use, font=subhead_font, fill=GRAY, anchor="mm")
-        y_pos += 100
-    else:
-        y_pos += 60
+        y_pos = draw_centered_text(draw, y_pos, cinema_name_to_use.upper(), subhead_font, OFF_WHITE)
 
-    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=ACCENT_YELLOW, width=4)
+    # Minimal Separator
+    y_pos += 40
+    line_w = 400
+    cx = CANVAS_WIDTH // 2
+    draw.line([(cx - line_w//2, y_pos), (cx + line_w//2, y_pos)], fill=SUBTLE_LINE, width=2)
     y_pos += 80
 
+    # 2. Listings
     for listing in listings:
-        # Japanese Title
         wrapped_title = textwrap.wrap(listing['title'], width=24)
         for line in wrapped_title:
-            draw.text((center_x, y_pos), line, font=movie_font, fill=WHITE, anchor="mm")
-            y_pos += 55
+            y_pos = draw_centered_text(draw, y_pos, line, movie_font, WHITE)
         
-        # English Title
         if listing["en_title"]:
-            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=40)
+            wrapped_en = textwrap.wrap(listing['en_title'], width=40)
             for line in wrapped_en:
-                draw.text((center_x, y_pos), line, font=en_movie_font, fill=GRAY, anchor="mm")
-                y_pos += 45
+                y_pos = draw_centered_text(draw, y_pos - 5, line, en_movie_font, GRAY_TEXT)
 
-        # Showtimes
         if listing['times']:
-            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=ACCENT_YELLOW, anchor="mm")
-            y_pos += 80 # Gap between films
-        else:
-            y_pos += 40
+            y_pos = draw_centered_text(draw, y_pos, listing["times"], time_font, OFF_WHITE)
+            y_pos += 60 # Gap between films
 
-    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=WHITE, anchor="mm")
+    draw.text((CANVAS_WIDTH // 2, STORY_CANVAS_HEIGHT - 150), "Link in Bio", font=footer_font, fill=WHITE, anchor="mm")
     return img
 
 def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: str) -> Image.Image:
@@ -567,7 +587,7 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
     draw.text((center_x, center_y - 200), "TOKYO MINI THEATERS", font=header_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y - 60), "本日の上映情報", font=jp_title_font, fill=WHITE, anchor="mm")
     draw.text((center_x, center_y + 60), "Today's Showtimes", font=en_subtitle_font, fill=WHITE, anchor="mm")
-    draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=ACCENT_YELLOW, anchor="mm")
+    draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=OFF_WHITE, anchor="mm")
 
     hero_crop = hero_crop.convert("RGBA")
     return Image.alpha_composite(hero_crop, overlay).convert("RGB")
@@ -596,7 +616,8 @@ def main() -> None:
             grouped[show.get("cinema_name")].append(show)
 
     all_candidates_raw = []
-    FEED_METRICS = {'jp_line': 40, 'en_line': 30, 'time_line': 55}
+    # Metrics adjusted for Center Layout
+    FEED_METRICS = {'jp_line': 45, 'en_line': 30, 'time_line': 45}
     
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings if s.get('movie_title'))
