@@ -1,4 +1,4 @@
-# yebisu_garden_module.py (Fixed Timeout)
+# yebisu_garden_module.py (Enhanced Title Cleaning)
 
 from __future__ import annotations
 
@@ -29,8 +29,43 @@ _SCREEN_RE = re.compile(r"(\d)screen")
 _YEAR_RE = re.compile(r"(\d{4})")
 # IMPROVEMENT: Regex to find year in synopsis as a fallback.
 _YEAR_IN_SYNOPSIS_RE = re.compile(r"(\d{4})年製作")
-_CLEAN_TITLE_RE = re.compile(r"\s*[（(].*?[)）]\s*")
 
+# ──────────────────────────────────────────────────────────────
+def _clean_title(text: str) -> str:
+    """
+    Cleans Yebisu titles by removing quotes, parentheses, and technical suffixes.
+    FIXED: Now removes suffixes FIRST so wrapping quotes can be detected.
+    """
+    if not text: return ""
+    
+    # 1. Strip Technical Suffixes (Aggressive) - ORDER CHANGED to First
+    # This ensures "『Title』 4K" becomes "『Title』" so step 4 catches it.
+    patterns = [
+        r"\s*4K.*$",               # Matches "4K", "4K レストア", "4K Restored"
+        r"\s*デジタル.?リマスター.*$", # Matches "デジタルリマスター", "デジタル・リマスター版"
+        r"\s*レストア.*$",           # Matches "レストア版"
+        r"\s*完全版.*$",
+        r"\s*ディレクターズ.?カット.*$"
+    ]
+    
+    for pat in patterns:
+        text = re.sub(pat, "", text, flags=re.IGNORECASE)
+    
+    # 2. Remove parentheses content (e.g. (字幕), (吹替))
+    text = re.sub(r"\s*[（(].*?[)）]\s*", "", text)
+    
+    # 3. Clean up whitespace
+    text = text.strip()
+    
+    # 4. Remove wrapping Japanese quotes
+    # Now that suffixes are gone, this will correctly match "『Title』"
+    if text.startswith("『") and text.endswith("』"):
+        text = text[1:-1]
+    
+    # Remove standard double quotes just in case
+    text = text.replace('"', '').strip()
+        
+    return text.strip()
 # ──────────────────────────────────────────────────────────────
 def _parse_film_details(html: str) -> Dict:
     soup = BeautifulSoup(html, "html.parser")
@@ -75,7 +110,8 @@ def _parse_daily_showtimes(html: str, date_obj: _dt.date) -> List[Dict]:
         if not link_tag: continue
 
         raw_title = link_tag.get_text(strip=True)
-        title = _CLEAN_TITLE_RE.sub("", raw_title).strip()
+        # Apply the new cleaning function
+        title = _clean_title(raw_title)
 
         detail_url = None
         if link_tag.has_attr("href"):

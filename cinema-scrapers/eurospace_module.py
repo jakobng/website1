@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-# eurospace_module.py — Rev-11 (2025-06-25)
+# eurospace_module.py — Rev-12 (2025-11-23)
 #
-#  • FINAL: Complete rewrite of the _scrape_detail function for robust,
-#    intelligent parsing.
-#  • It no longer assumes a fixed order for metadata. Instead, it inspects
-#    each piece of data to identify if it is a year, runtime, or country.
-#  • This fixes swapped/incorrect data for all previously failing films.
+#  • IMPROVED: Year extraction now falls back to searching the full text
+#    if not found in the slash-delimited line.
+#  • ADDED: Extraction of "Original Title" (原題) for movie_title_en.
+#  • REFINED: Director parsing handles more variations.
 # ---------------------------------------------------------------------
 
 from __future__ import annotations
@@ -38,7 +37,7 @@ WINDOW_DAYS = 7
 DATE_RE = re.compile(r"(\d{4})年(\d{1,2})月(\d{1,2})日")
 _SUB_TITLE_RE = re.compile(r"『(.+?)』")
 _RUNTIME_RE = re.compile(r"(\d+)\s*分")
-# More flexible year regex that doesn't require '年'
+# Robust year regex: 1900-2099, standalone
 _YEAR_RE = re.compile(r'\b(19\d{2}|20\d{2})\b')
 
 
@@ -60,14 +59,20 @@ def _parse_date(h3_tag: bs4.Tag) -> dt.date | None:
 
 def _scrape_detail(url: str) -> Dict[str, str | int | None]:
     """
-    Pull director, runtime, country, and year by intelligently parsing the
-    structured <p class="work-caption"> tag on the detail page.
+    Pull director, runtime, country, year, and clean English/Original titles.
     """
-    defaults = {"director": None, "runtime": None, "country": None, "year": None}
+    defaults = {
+        "director": None, 
+        "runtime": None, 
+        "country": None, 
+        "year": None,
+        "movie_title_en": None
+    }
+    
     try:
         resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
         resp.raise_for_status()
-        resp.encoding = 'utf-8' # Ensure correct encoding
+        resp.encoding = 'utf-8'
     except Exception:
         return defaults
 
@@ -76,43 +81,73 @@ def _scrape_detail(url: str) -> Dict[str, str | int | None]:
     if not caption_p:
         return defaults
 
-    lines = [line.strip() for line in caption_p.get_text(separator="\n").split("\n") if line.strip()]
+    full_text = caption_p.get_text(separator="\n")
+    lines = [line.strip() for line in full_text.split("\n") if line.strip()]
 
     meta = defaults.copy()
     
-    # Find and parse the slash-delimited line for most metadata
+    # 1. Parse Director
+    for line in lines:
+        if "監督" in line and ("：" in line or ":" in line):
+            parts = re.split(r'[:：]', line, 1)
+            if len(parts) > 1:
+                d_text = parts[1]
+                # Stop at slash or parentheses
+                d_text = d_text.split("/")[0].split("（")[0].split("(")[0]
+                meta["director"] = _clean(d_text)
+            break
+            
+    # 2. Parse English/Original Title (Prioritize English)
+    # We loop twice: first to find explicit English Title (英題), then fallback to Original (原題)
+    for target_label in ["英題", "原題"]:
+        if meta["movie_title_en"]: break # Stop if we found a better one already
+        
+        for line in lines:
+            if target_label in line and ("：" in line or ":" in line):
+                # Split specifically on the label (e.g. split on "英題：")
+                # This fixes lines like "原題: AAA / 英題: BBB"
+                parts = re.split(f'{target_label}[:：]', line, 1)
+                
+                if len(parts) > 1:
+                    raw_title = parts[1]
+                    # Cut at the next delimiter (slash, parens, or next label like 字幕)
+                    # We accept " " (space) as part of the title, but cut at " / "
+                    clean_title = re.split(r'[/／(（<＜]|字幕|配給|原題|英題', raw_title)[0]
+                    
+                    cleaned = _clean(clean_title)
+                    if cleaned:
+                        meta["movie_title_en"] = cleaned
+                        break
+
+    # 3. Parse Metadata Line (Slash delimited)
     for line in lines:
         if "／" in line:
             parts = [p.strip() for p in line.split("／")]
-            
-            # Intelligently identify each part instead of assuming order
             countries = []
             for part in parts:
                 runtime_match = _RUNTIME_RE.search(part)
                 year_match = _YEAR_RE.search(part)
 
-                if runtime_match:
+                if runtime_match and not meta["runtime"]:
                     meta["runtime"] = int(runtime_match.group(1))
-                elif year_match:
+                elif year_match and not meta["year"]:
                     meta["year"] = year_match.group(0)
                 else:
-                    # If it's not a year or runtime, assume it's a country.
-                    # Filter out common non-country noise.
-                    if not any(noise in part for noise in ["日本語", "カラー", "DCP", "分", "年"]):
+                    # Country heuristic
+                    noise_keywords = ["日本語", "カラー", "モノクロ", "DCP", "分", "年", "サイズ", "ヴィンテージ", "提供", "配給", "原題", "英題", "字幕", "ステレオ"]
+                    if not any(noise in part for noise in noise_keywords):
                         cleaned_part = _clean(part)
-                        if cleaned_part:
+                        if cleaned_part and len(cleaned_part) < 15: # Countries are usually short
                              countries.append(cleaned_part)
             
-            if countries:
+            if countries and not meta["country"]:
                 meta["country"] = ", ".join(countries)
-            break
-            
-    # Find the director on its own specific line
-    for line in lines:
-        if line.startswith("監督"):
-            director_text = line.split("：", 1)[-1]
-            meta["director"] = _clean(director_text.split("/")[0].split("、")[0])
-            break
+    
+    # 4. Fallback Year
+    if not meta["year"]:
+        fallback_match = _YEAR_RE.search(full_text)
+        if fallback_match:
+            meta["year"] = fallback_match.group(0)
 
     return meta
 

@@ -1,6 +1,7 @@
 """
 shimotakaido_module.py — scraper for Shimotakaido Cinema (下高井戸シネマ)
-- Adds date filtering to prevent showing dates too far in the future/past.
+- FIXED: Showtime extraction now strips "作品日替り" and other non-time text.
+- FIXED: Ensures strictly HH:MM format for compatibility.
 """
 
 from __future__ import annotations
@@ -40,6 +41,7 @@ def _fetch_soup(url: str) -> Optional[BeautifulSoup]:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
         resp.raise_for_status()
+        resp.encoding = resp.apparent_encoding # Ensure correct encoding for JP text
         return BeautifulSoup(resp.content, "html.parser")
     except requests.RequestException as e:
         print(f"ERROR [{CINEMA_NAME}]: Could not fetch {url}: {e}", file=sys.stderr)
@@ -105,8 +107,9 @@ def _parse_all_details(soup: BeautifulSoup) -> Dict[str, Dict]:
             details["detail_page_url"] = hp_link['href']
 
         details_cache[title] = details
+        # Fallback for partial matches (e.g. if schedule omits subtitle)
         if ' ' in title:
-            details_cache[title.split(' ')[-1]] = details
+            details_cache[title.split(' ')[0]] = details
 
     return details_cache
 
@@ -136,33 +139,64 @@ def scrape_shimotakaido(max_days: int = 14) -> List[Dict[str, str]]:
     year = today.year
     header_cells = rows[0].find_all("td", class_="sche-td-2")
     date_ranges = []
+    
+    # Parse Date Headers
     for cell in header_cells:
         text = cell.get_text(strip=True)
         m = re.search(r"(\d{1,2})/(\d{1,2}).*?[-–]\s*(\d{1,2})/(\d{1,2})", text)
         if not m: continue
 
         m1, d1, m2, d2 = map(int, m.groups())
-        start = date(year, m1, d1) if m1 >= today.month else date(year + 1, m1, d1)
+        # Handle year rollover (Dec -> Jan)
+        start = date(year, m1, d1)
+        if m1 < today.month and (today.month - m1) > 6:
+             start = date(year + 1, m1, d1)
+        elif m1 > today.month and (m1 - today.month) > 6:
+             start = date(year - 1, m1, d1)
+
         end_year = start.year if m2 >= m1 else start.year + 1
         end = date(end_year, m2, d2)
         date_ranges.append((start, end))
 
     all_showings: List[Dict] = []
+    
+    # Parse Schedule Rows
     for tr in rows[1:]:
         cells = tr.find_all("td", class_="sche-td")
-        for (start_date, end_date), cell in zip(date_ranges, cells):
+        # Ensure we match cells to headers safely
+        for idx, cell in enumerate(cells):
+            if idx >= len(date_ranges): break
+            start_date, end_date = date_ranges[idx]
+
             link = cell.find("a")
             if not link: continue
 
             text_parts = [s.strip() for s in link.stripped_strings]
             if len(text_parts) < 2: continue
 
-            title, showtime = text_parts[0], text_parts[-1]
-            if not title or not re.match(r"\d{1,2}:\d{2}", showtime): continue
+            # Robust Title/Time Extraction
+            # Shimotakaido often puts title first, then time at the end
+            # Time can be "10:00" or "18:25 作品日替り"
+            title = text_parts[0]
+            raw_time = text_parts[-1]
+            
+            # Extract pure HH:MM
+            time_match = re.search(r"(\d{1,2}[:：]\d{2})", raw_time)
+            if not time_match:
+                # Fallback: check other parts for time?
+                for part in reversed(text_parts):
+                     time_match = re.search(r"(\d{1,2}[:：]\d{2})", part)
+                     if time_match: break
+            
+            if not time_match: continue
+            
+            clean_time = time_match.group(1).replace("：", ":")
+            # Pad hour if needed (9:00 -> 09:00)
+            if len(clean_time) == 4: clean_time = "0" + clean_time
 
             details = {}
             for cache_title, detail_data in details_cache.items():
-                if title in cache_title:
+                if title in cache_title or cache_title in title:
                     details = detail_data
                     break
 
@@ -173,7 +207,7 @@ def scrape_shimotakaido(max_days: int = 14) -> List[Dict[str, str]]:
                     "movie_title":     title,
                     "movie_title_en":  "",
                     "date_text":       current_date.isoformat(),
-                    "showtime":        showtime,
+                    "showtime":        clean_time,
                     "director":        details.get("director", "") or "",
                     "year":            details.get("year", "") or "",
                     "country":         details.get("country", "") or "",
@@ -183,7 +217,7 @@ def scrape_shimotakaido(max_days: int = 14) -> List[Dict[str, str]]:
                 })
                 current_date += timedelta(days=1)
 
-    # --- FIX: Filter for the specified date window ---
+    # --- Filter for the specified date window ---
     cutoff_date = today + timedelta(days=max_days)
     future_showings = [
         s for s in all_showings
@@ -204,7 +238,7 @@ if __name__ == "__main__":
         except Exception: pass
 
     print(f"Testing {CINEMA_NAME} scraper…")
-    shows = scrape_shimotakaido(max_days=14) # Set a default window for testing
+    shows = scrape_shimotakaido(max_days=14) 
     if not shows:
         print("No showings found — check warnings above.")
         sys.exit(1)
@@ -216,7 +250,3 @@ if __name__ == "__main__":
     with open(output_filename, "w", encoding="utf-8") as f:
         json.dump(shows, f, ensure_ascii=False, indent=2)
     print(f"INFO: Successfully created {output_filename}.")
-
-    print("\n--- Sample of First Showing ---")
-    from pprint import pprint
-    pprint(shows[0])
