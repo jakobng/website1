@@ -68,7 +68,6 @@ CINEMA_ENGLISH_NAMES = {
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
     "Morc Asagaya": "Morc Asagaya",
-    "TULLYWOOD": "Tollywood",
     "Tollywood": "Tollywood"
 }
 
