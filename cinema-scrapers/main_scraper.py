@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# main_scraper.py (v2: Robust TMDB Matching & Expanded Metadata)
+# main_scraper.py (V4: Substring Matching, Deep Verification & Full Metadata)
 
 import json
 import sys
@@ -8,8 +8,7 @@ import re
 import requests
 import time
 import os
-import urllib.parse
-import difflib  # Required for fuzzy string matching
+import difflib
 from bs4 import BeautifulSoup
 
 # --- All cinema scraper modules ---
@@ -62,19 +61,25 @@ REQUEST_HEADERS = {
 }
 
 # --- Helper Functions ---
-def python_is_predominantly_latin(text):
-    if not text: return False
-    if not re.search(r'[a-zA-Z]', text): return False
-    japanese_chars = re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]', text)
-    latin_chars = re.findall(r'[a-zA-Z]', text)
-    if not japanese_chars: return True
-    if latin_chars:
-        if len(latin_chars) > len(japanese_chars) * 2: return True
-        if len(japanese_chars) <= 2 and len(latin_chars) > len(japanese_chars): return True
-        return False
-    return False
+def normalize_string(s):
+    if not s: return ""
+    # Remove punctuation and spaces for stricter comparison
+    return re.sub(r'\W+', '', str(s)).lower()
 
-# --- Schema Normalization for Eurospace ---
+def get_similarity(a, b):
+    """Returns a ratio (0.0-1.0) of how similar two strings are."""
+    if not a or not b: return 0.0
+    return difflib.SequenceMatcher(None, normalize_string(a), normalize_string(b)).ratio()
+
+def is_substring_match(full_text, short_text):
+    """Checks if short_text is contained in full_text (normalized)."""
+    if not full_text or not short_text: return False
+    norm_full = normalize_string(full_text)
+    norm_short = normalize_string(short_text)
+    if len(norm_short) < 3: return False # Too short to be meaningful
+    return norm_short in norm_full
+
+# --- Schema Normalization ---
 def _normalize_eurospace_schema(listings: list) -> list:
     normalized = []
     for show in listings:
@@ -97,23 +102,21 @@ def _normalize_eurospace_schema(listings: list) -> list:
 def load_json_cache(cache_file_path, cache_name="Cache"):
     if os.path.exists(cache_file_path):
         try:
-            with open(cache_file_path, "r", encoding="utf-8") as f: cache = json.load(f)
-            print(f"Loaded {len(cache)} items from {cache_name} ({cache_file_path}).")
-            return cache
-        except Exception as e: print(f"Error loading {cache_name}: {e}", file=sys.stderr)
+            with open(cache_file_path, "r", encoding="utf-8") as f: return json.load(f)
+        except Exception: pass
     return {}
 
 def save_json_cache(data, cache_file_path, cache_name="Cache"):
     try:
         with open(cache_file_path, "w", encoding="utf-8") as f: json.dump(data, f, ensure_ascii=False, indent=2)
-    except Exception as e: print(f"Error saving {cache_name}: {e}", file=sys.stderr)
+    except Exception: pass
 
 # --- Title Cleaning Function ---
 def clean_title_for_search(title):
     if not title: return ""
     cleaned_title = title
     
-    # 1. Aggressive Bracket Removal (New!)
+    # 1. Aggressive Bracket Removal
     # Removes 【...】, [...], (...), <...> and anything inside them
     cleaned_title = re.sub(r'【.*?】', '', cleaned_title)
     cleaned_title = re.sub(r'\[.*?\]', '', cleaned_title)
@@ -126,18 +129,16 @@ def clean_title_for_search(title):
     suffixes_to_remove = [
         r'\s*★トークショー付き', r'\s*35mmフィルム上映', 
         r'\s*4Kレストア5\.1chヴァージョン', r'\s*4Kデジタルリマスター版',
-        r'\s*4Kレストア版', r'\s*4Kリマスター版', # Added this specific one for Perfect Blue
-        r'\s*４Kレーザー上映', r'\s*４K版', r'\s*４K', r'\s*4K', 
+        r'\s*4Kレストア版', r'\s*4Kリマスター版', r'\s*４Kレーザー上映', r'\s*４K版', r'\s*４K', r'\s*4K', 
         r'\s*（字幕版）', r'\s*（字幕）', r'\s*（吹替版）', r'\s*（吹替）', 
         r'\s*THE MOVIE$', r'\s*\[受賞感謝上映］', r'\s*★上映後トーク付', 
         r'\s*トークイベント付き', r'\s*vol\.\s*\d+', 
         r'\s*ライブ音響上映', r'\s*特別音響上映', r'\s*字幕付き上映', 
-        r'\s*デジタルリマスター(?:版)?', r'\s*デジタルリマスター',
+        r'\s*デジタルリマスター(?:版)?', r'\s*デジタルリマスター', 
         r'\s*【完成披露試写会】', r'\s*Blu-ray発売記念上映',
         r'\s*公開記念舞台挨拶', r'\s*上映後舞台挨拶', r'\s*初日舞台挨拶', 
         r'\s*２日目舞台挨拶', r'\s*トークショー', r'\s*一挙上映',
-        r'\s*超覚醒', # Added for "KILL 超覚醒"
-        r'\s*完全版'
+        r'\s*超覚醒', r'\s*完全版', r'\s*【再上映】', r'\s*（再）', r'\s*再上映'
     ]
     
     for suffix_pattern in suffixes_to_remove:
@@ -151,56 +152,65 @@ def clean_title_for_search(title):
         
     return cleaned_title.strip()
 
-# --- Advanced TMDB Matching Logic ---
+# --- TMDB Fetching Logic ---
 
-def normalize_string(s):
-    """Lowercases and removes punctuation for comparison."""
-    if not s: return ""
-    return re.sub(r'\W+', '', str(s)).lower()
+def fetch_director_from_credits(tmdb_id, api_key, session):
+    """Fetches the director name (in Japanese) for a specific ID."""
+    url = f"{TMDB_API_BASE_URL}/movie/{tmdb_id}/credits?api_key={api_key}&language=ja-JP"
+    try:
+        resp = session.get(url, timeout=5)
+        data = resp.json()
+        for crew in data.get('crew', []):
+            if crew['job'] == 'Director':
+                return crew['name']
+    except: pass
+    return None
 
-def get_similarity(a, b):
-    """Returns a ratio (0.0-1.0) of how similar two strings are."""
-    if not a or not b: return 0.0
-    return difflib.SequenceMatcher(None, normalize_string(a), normalize_string(b)).ratio()
-
-def calculate_match_score(tmdb_candidate, target_year, target_director):
+def calculate_match_score(tmdb_candidate, target_year, target_director=None, deep_director_check=None):
     """
-    Scores a TMDB candidate against our known data.
-    Score range: 0 to 100.
+    Scores a TMDB candidate against known data. Score range: -100 to 100+.
     """
     score = 0
     
-    # 1. YEAR CHECK (Weighted High)
-    # If we have a target year, it must match closely.
-    candidate_date = tmdb_candidate.get('release_date', '')
-    candidate_year = int(candidate_date[:4]) if candidate_date and len(candidate_date) >= 4 else None
+    # 1. YEAR CHECK
+    cand_date = tmdb_candidate.get('release_date', '')
+    cand_year = int(cand_date[:4]) if cand_date and len(cand_date) >= 4 else None
     
     target_year_int = None
     if target_year and str(target_year).isdigit():
         target_year_int = int(target_year)
 
-    if target_year_int and candidate_year:
-        diff = abs(target_year_int - candidate_year)
+    if target_year_int and cand_year:
+        diff = abs(target_year_int - cand_year)
         if diff == 0: score += 40
-        elif diff == 1: score += 30
+        elif diff == 1: score += 30 # Allow +/- 1 year variance
         elif diff <= 2: score += 10
-        else: score -= 20 # Major penalty for wrong era
+        else: score -= 30 # Severe penalty for wrong era
     else:
-        # If no year provided, we can't verify, so we give a neutral small bump
+        # If year is missing, neutral score (reliant on title match)
         score += 10
 
-    # 2. POPULARITY BIAS
-    # If we have no other data, slightly prefer popular films (likely the original, not a remake)
-    pop = tmdb_candidate.get('popularity', 0)
-    if pop > 10: score += 5
+    # 2. DIRECTOR CHECK (Deep Verification)
+    # If we performed a 'deep check' (fetched credits), use it.
+    if deep_director_check and target_director:
+        tmdb_dir = deep_director_check
+        sim = get_similarity(target_director, tmdb_dir)
+        if sim > 0.6: 
+            score += 50 # Massive boost for confirmed director
+            print(f"      [Director Match] '{target_director}' == '{tmdb_dir}' (+50)")
+        # If we have a director and it DOESN'T match, small penalty?
+        # No, usually spelling differences are huge in JP.
 
-    return score, candidate_year
+    # 3. POPULARITY BIAS
+    if tmdb_candidate.get('popularity', 0) > 10: score += 5
+
+    return score
 
 def fetch_full_metadata(tmdb_id, api_key, session):
     """
-    Fetches the deep details: Loglines (JP/EN), Director, Runtime, Tagline, Genres, Countries.
+    Fetches the deep details: Loglines, Director, Runtime, Tagline, Genres, Countries, Vote.
     """
-    # 1. Fetch Japanese Data (Title, Overview, Poster)
+    # 1. Fetch Japanese Data
     url_jp = f"{TMDB_API_BASE_URL}/movie/{tmdb_id}?api_key={api_key}&language=ja-JP&append_to_response=credits,release_dates"
     try:
         resp_jp = session.get(url_jp, headers=REQUEST_HEADERS, timeout=10)
@@ -208,157 +218,136 @@ def fetch_full_metadata(tmdb_id, api_key, session):
         data_jp = resp_jp.json()
     except: return None
 
-    # 2. Fetch English Data (Original Title, English Overview)
+    # 2. Fetch English Data
     url_en = f"{TMDB_API_BASE_URL}/movie/{tmdb_id}?api_key={api_key}&language=en-US"
     try:
         resp_en = session.get(url_en, headers=REQUEST_HEADERS, timeout=10)
         data_en = resp_en.json() if resp_en.status_code == 200 else {}
     except: data_en = {}
 
-    # Extract Director
     director = "Unknown"
-    crew = data_jp.get('credits', {}).get('crew', [])
-    for person in crew:
+    for person in data_jp.get('credits', {}).get('crew', []):
         if person.get('job') == 'Director':
             director = person.get('name')
             break
     
-    # Extract Genres (List of strings, limit to top 3)
     genres = [g['name'] for g in data_jp.get('genres', [])[:3]]
-
-    # Extract Production Countries (List of codes e.g. 'US')
     countries = [c['iso_3166_1'] for c in data_jp.get('production_countries', [])[:2]]
 
     return {
         "id": tmdb_id,
-        # Titles
         "tmdb_title_jp": data_jp.get('title'),
         "tmdb_title_en": data_en.get('title'),
         "tmdb_original_title": data_en.get('original_title'),
-        
-        # Synopses & Taglines
         "tmdb_overview_jp": data_jp.get('overview'),
         "tmdb_overview_en": data_en.get('overview'),
         "tmdb_tagline_jp": data_jp.get('tagline'),
         "tmdb_tagline_en": data_en.get('tagline'),
-        
-        # Images
         "tmdb_poster_path": data_jp.get('poster_path'),
         "tmdb_backdrop_path": data_jp.get('backdrop_path'),
-        
-        # Metadata
         "tmdb_director": director,
         "tmdb_runtime": data_jp.get('runtime'),
         "tmdb_year": data_jp.get('release_date', '')[:4],
-        "tmdb_release_date": data_jp.get('release_date'),
         "tmdb_genres": genres,
         "tmdb_countries": countries,
         "tmdb_vote_average": data_jp.get('vote_average'),
-        "tmdb_vote_count": data_jp.get('vote_count')
     }
 
 def advanced_tmdb_search(listing, api_key, session):
     """
     Tries multiple search strategies and strictly validates the results.
     """
-    search_queries = []
+    raw_jp = listing.get('movie_title')
+    clean_jp = clean_title_for_search(raw_jp)
+    target_director = listing.get('director')
     
-    # Query 1: English Title (if exists) - Highest confidence usually
+    search_queries = []
+    # 1. English Title (Highest confidence)
     if listing.get('movie_title_en'):
         search_queries.append(listing['movie_title_en'])
         
-    # Query 2: Cleaned Japanese Title
-    raw_jp = listing.get('movie_title')
-    clean_jp = clean_title_for_search(raw_jp)
+    # 2. Cleaned Japanese Title
     if clean_jp:
         search_queries.append(clean_jp)
         
-    # Query 3: Split JP Title (sometimes "Title: Subtitle" fails, but "Title" works)
+    # 3. Split Title (If it looks like "JpTitle EnTitle" or "Title Subtitle")
     if clean_jp and (' ' in clean_jp or '　' in clean_jp):
-        # Split by space and take the first long part
         parts = re.split(r'[ 　:：]', clean_jp)
         longest_part = max(parts, key=len)
         if len(longest_part) > 1:
             search_queries.append(longest_part)
 
     # --- EXECUTE SEARCHES ---
-    candidates = {} # Map ID to candidate object to deduplicate
-    
+    candidates = {} 
     search_endpoint = f"{TMDB_API_BASE_URL}/search/movie"
     
     for query in search_queries:
         if not query: continue
         params = {'api_key': api_key, 'query': query, 'include_adult': 'false', 'language': 'ja-JP'}
         try:
-            # Sleep slightly to respect rate limits
             time.sleep(0.2)
             resp = session.get(search_endpoint, params=params, headers=REQUEST_HEADERS, timeout=10)
             if resp.status_code == 200:
                 results = resp.json().get('results', [])
-                for res in results[:5]: # Check top 5 results
+                for res in results[:5]: 
                     candidates[res['id']] = res
         except Exception as e:
             print(f"Search error for '{query}': {e}")
 
-    if not candidates:
-        return None
+    if not candidates: return None
 
     # --- VALIDATION & SCORING ---
     best_candidate = None
     highest_score = -100
     
     target_year = listing.get('year')
-    # Scraper sometimes returns "2023 (estimated)" or similar trash, clean it
     if target_year:
         target_year = re.sub(r'\D', '', str(target_year))
-        # If year is truncated or invalid, ignore it
         if len(target_year) != 4: target_year = None
-        
-    target_director = listing.get('director')
 
-    print(f"   🔍 Evaluating {len(candidates)} candidates for '{listing.get('movie_title')}' (Year: {target_year}, Dir: {target_director})")
-
-    for cand in candidates.values():
-        score, cand_year = calculate_match_score(cand, target_year, target_director)
-        
-        # Title Similarity Check
-        title_sim_jp = get_similarity(clean_jp, cand.get('title'))
-        title_sim_orig = get_similarity(listing.get('movie_title_en'), cand.get('original_title'))
-        
-        # Boost for strong title matches
-        if title_sim_jp > 0.8: score += 20
-        if title_sim_orig > 0.8: score += 20
+    # Check if we need DEEP verification (Short title or specific Director present)
+    needs_deep_check = False
+    if len(clean_jp) < 5: needs_deep_check = True 
+    
+    print(f"   🔍 Evaluating {len(candidates)} candidates for '{clean_jp}' (Year: {target_year}, Dir: {target_director})")
 
     for cand in candidates.values():
-        score, cand_year = calculate_match_score(cand, target_year, target_director)
+        # Base Score
+        score = calculate_match_score(cand, target_year)
         
-        # Title Similarity Check
-        title_sim_jp = get_similarity(clean_jp, cand.get('title'))
-        title_sim_orig = get_similarity(listing.get('movie_title_en'), cand.get('original_title'))
+        # --- STRING MATCHING (Updated for V4) ---
+        cand_title = cand.get('title', '')
+        cand_orig = cand.get('original_title', '')
         
-        # Boost for strong title matches
-        if title_sim_jp > 0.8: score += 20
-        if title_sim_orig > 0.8: score += 20
+        # 1. Fuzzy Similarity
+        sim_jp = get_similarity(clean_jp, cand_title)
+        sim_orig = get_similarity(listing.get('movie_title_en'), cand_orig)
         
-        # --- NEW LOGIC: The "Perfect Match" Rescue ---
-        # If title is effectively identical, force high score even if year is missing/wrong
-        if title_sim_jp >= 0.95 or title_sim_orig >= 0.95:
-            score += 30 # Huge boost for exact text match
+        # 2. Substring Matching (Fix for "Sky Crawlers")
+        # Checks if "Sky Crawlers" is inside "スカイ・クロラ The Sky Crawlers"
+        is_sub_jp = is_substring_match(clean_jp, cand_title) or is_substring_match(cand_title, clean_jp)
+        
+        # Boost Logic
+        if sim_jp > 0.9 or sim_orig > 0.9: 
+            score += 30 # Exact Fuzzy Match
+        elif is_sub_jp:
+            score += 30 # Substring Match (New Boost!)
             
-        if score > highest_score:
-            highest_score = score
-            best_candidate = cand       
+        # --- DEEP DIRECTOR VERIFICATION ---
+        # Only run if score is decent OR needs_deep_check, to save API calls
+        if target_director and (needs_deep_check or score > 10):
+             cand_director = fetch_director_from_credits(cand['id'], api_key, session)
+             score += calculate_match_score(cand, target_year, target_director, deep_director_check=cand_director)
+        
         if score > highest_score:
             highest_score = score
             best_candidate = cand
 
-    # THRESHOLD: If score is too low, reject it.
     if best_candidate:
         print(f"      Best Match: {best_candidate.get('title')} (Score: {highest_score})")
-    else:
-        print(f"      No viable match found.")
 
-    if best_candidate and highest_score >= 25: # 25 allows for slight year mismatch if title is perfect
+    # Threshold check
+    if best_candidate and highest_score >= 25:
         return fetch_full_metadata(best_candidate['id'], api_key, session)
     
     return None
@@ -366,16 +355,12 @@ def advanced_tmdb_search(listing, api_key, session):
 def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_key):
     if not all_listings: return []
 
-    # 1. Deduplicate work
     unique_films = {}
     for listing in all_listings:
         title = listing.get('movie_title')
         if not title: continue
-        
-        # Create a unique key based on Title + Cinema's declared Year
         year = listing.get('year')
         key = (title, year)
-        
         if key not in unique_films:
             unique_films[key] = listing
 
@@ -385,27 +370,22 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
     
     for key, listing in unique_films.items():
         clean_title = clean_title_for_search(listing.get('movie_title'))
-        # Check Cache
-        # We use a composite key for cache to handle the new 'year' sensitivity
         cache_key = f"{clean_title}|{key[1] if key[1] else ''}"
         
         if cache_key in cache_data:
             enrichment_map[key] = cache_data[cache_key]
             continue
 
-        # Perform Search
         result = advanced_tmdb_search(listing, tmdb_api_key, session)
         
         if result:
             enrichment_map[key] = result
             cache_data[cache_key] = result
         else:
-            # Cache the failure locally so we don't retry endlessly for this run
             enrichment_map[key] = {"not_found": True}
 
     save_json_cache(cache_data, TMDB_CACHE_FILE, "TMDB/Advanced Cache")
 
-    # Apply back to listings
     for listing in all_listings:
         title = listing.get('movie_title')
         year = listing.get('year')
@@ -413,17 +393,13 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
         
         data = enrichment_map.get(key)
         if data and not data.get('not_found'):
-            # Core ID
             listing['tmdb_id'] = data['id']
-            # Images
             listing['tmdb_backdrop_path'] = data.get('tmdb_backdrop_path')
             listing['tmdb_poster_path'] = data.get('tmdb_poster_path')
-            # Text Content
             listing['tmdb_overview_jp'] = data.get('tmdb_overview_jp')
             listing['tmdb_overview_en'] = data.get('tmdb_overview_en')
             listing['tmdb_tagline_jp'] = data.get('tmdb_tagline_jp')
             listing['tmdb_tagline_en'] = data.get('tmdb_tagline_en')
-            # Clean Metadata
             listing['clean_title_jp'] = data.get('tmdb_title_jp')
             listing['movie_title_en'] = data.get('tmdb_title_en')
             listing['director'] = data.get('tmdb_director')
@@ -432,7 +408,6 @@ def enrich_listings_with_tmdb_links(all_listings, cache_data, session, tmdb_api_
             listing['genres'] = data.get('tmdb_genres')
             listing['production_countries'] = data.get('tmdb_countries')
             listing['vote_average'] = data.get('tmdb_vote_average')
-            # Links
             listing['letterboxd_link'] = f"{LETTERBOXD_TMDB_BASE_URL}{data['id']}"
 
     return all_listings
@@ -519,7 +494,6 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Error loading cineswitch_showtimes.json: {e}", file=sys.stderr)
 
-    # Use the new enrichment logic without Gemini
     enriched_listings = enrich_listings_with_tmdb_links(
         listings, tmdb_cache, api_session, tmdb_key
     )
