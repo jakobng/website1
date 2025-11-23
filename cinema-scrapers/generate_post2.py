@@ -223,96 +223,102 @@ def draw_poster_slide(film, img_obj, fonts):
     draw = ImageDraw.Draw(canvas)
     
     # 2. Layout Logic
-    # --- MODIFIED: Use Taglines instead of Synopsis ---
-    tagline_jp = film.get('tmdb_tagline_jp', '')
-    tagline_en = film.get('tmdb_tagline_en', '')
-    has_tagline = bool(tagline_jp or tagline_en)
+    synopsis = film.get('tmdb_overview_jp', '')
+    has_synopsis = len(synopsis) > 10
     
-    target_w = 900
-    # If we have text to show, make the image slightly smaller to make room
-    if has_tagline:
+    target_w = 900 
+    if has_synopsis:
         img_y = 120
         target_h = 550
     else:
         img_y = 180
         target_h = 600
         
-    # Resize Image (Standard "Contain/Crop" logic)
+    # Resize Image
     img_ratio = img_obj.width / img_obj.height
     if img_ratio > (target_w / target_h):
-        # Image is wider than target
         new_h = target_h
         new_w = int(new_h * img_ratio)
-        img_resized = img_obj.resize((new_w, new_h), Image.LANCZOS)
+        img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
         left = (new_w - target_w) // 2
-        img_cropped = img_resized.crop((left, 0, left + target_w, target_h))
+        img_final = img_resized.crop((left, 0, left+target_w, target_h))
     else:
-        # Image is taller/narrower than target
         new_w = target_w
         new_h = int(new_w / img_ratio)
-        img_resized = img_obj.resize((new_w, new_h), Image.LANCZOS)
+        img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
         top = (new_h - target_h) // 2
-        img_cropped = img_resized.crop((0, top, target_w, top + target_h))
-        
-    # Draw Shadow and Image
-    shadow = Image.new("RGB", (target_w + 20, target_h + 20), (0,0,0))
-    canvas.paste(shadow, ((CANVAS_WIDTH - target_w)//2 + 10, img_y + 10))
-    canvas.paste(img_cropped, ((CANVAS_WIDTH - target_w)//2, img_y))
+        img_final = img_resized.crop((0, top, target_w, top+target_h))
     
-    cursor_y = img_y + target_h + 40
+    img_x = (CANVAS_WIDTH - target_w) // 2
+    canvas.paste(img_final, (img_x, img_y))
     
-    # 3. Title Info
-    title_jp = film.get('clean_title_jp') or film.get('movie_title')
-    title_en = film.get('movie_title_en')
+    cursor_y = img_y + target_h + 70
     
-    # Main Title (JP)
-    cursor_y = draw_centered_text(draw, cursor_y, title_jp, fonts['cover_main'], (255, 255, 255))
+    # 3. Typography
     
-    # Sub Title (EN)
-    if title_en:
-        cursor_y = draw_centered_text(draw, cursor_y, title_en, fonts['cover_sub'], (200, 200, 200))
-         
-    cursor_y += 20
+    # Metadata
+    meta_parts = []
+    if film.get('year'): meta_parts.append(str(film['year']))
+    if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']}m")
+    if film.get('genres'): meta_parts.append(film['genres'][0].upper())
     
-    # 4. Draw Taglines (Modified Section)
-    # Calculate available space for text
-    available_h = CANVAS_HEIGHT - cursor_y - 350 # Leave space for showtimes at bottom
-    
-    if has_tagline and available_h > 50:
-        # Draw Japanese Tagline
-        if tagline_jp:
-            wrapper_jp = textwrap.TextWrapper(width=30) # Wrap at 30 chars for JP
-            lines = wrapper_jp.wrap(tagline_jp)
-            for line in lines:
-                # Use 'logline' font (usually smaller/lighter than title)
-                cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (220, 220, 220))
-            cursor_y += 10 # Gap between JP and EN
-            
-        # Draw English Tagline
-        if tagline_en:
-            wrapper_en = textwrap.TextWrapper(width=50) # Wider wrap for English
-            lines = wrapper_en.wrap(tagline_en)
-            for line in lines:
-                # Use same font, maybe slightly darker color for contrast
-                cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
+    meta_str = "  •  ".join(meta_parts)
+    cursor_y = draw_centered_text(draw, cursor_y, meta_str, fonts['meta'], (200, 200, 200))
+    cursor_y += 15
 
+    # Japanese Title
+    jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
+    en_title = film.get('movie_title_en')
+    
+    if normalize_string(jp_title) == normalize_string(en_title):
+        en_title = None
+        
+    if len(jp_title) > 15:
+        wrapper = textwrap.TextWrapper(width=15)
+        lines = wrapper.wrap(jp_title)
+        for line in lines:
+            cursor_y = draw_centered_text(draw, cursor_y, line, fonts['title_jp'], (255, 255, 255))
+    else:
+        cursor_y = draw_centered_text(draw, cursor_y, jp_title, fonts['title_jp'], (255, 255, 255))
+    
+    cursor_y += 10
+
+    # English Title
+    if en_title:
+        cursor_y = draw_centered_text(draw, cursor_y, en_title.upper(), fonts['title_en'], (200, 200, 200))
+    
+    # Director
+    director = film.get('tmdb_director') or film.get('director')
+    if director:
+        cursor_y += 15
+        draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150))
+        cursor_y += 30
+
+    # 4. Logline
+    if has_synopsis:
+        cursor_y += 20
+        available_h = (CANVAS_HEIGHT - 200) - cursor_y 
+        if available_h > 80:
+            wrapper = textwrap.TextWrapper(width=40)
+            lines = wrapper.wrap(synopsis)
+            for line in lines[:3]: 
+                cursor_y = draw_centered_text(draw, cursor_y, line, fonts['logline'], (180, 180, 180))
+    
     # 5. Showtimes (Smart-Fit V2)
-    # (This part remains mostly the same, ensuring it fits in remaining space)
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
     
-    # Calculate space remaining for showtimes
     available_space = CANVAS_HEIGHT - cursor_y - 50
     std_font_size = 28
     std_gap = 50
-    block_unit = (std_font_size * 1.2 * 2) + std_gap
     
+    block_unit = (std_font_size * 1.2 * 2) + std_gap 
     total_needed = num_cinemas * block_unit
-    scale = 1.0
     
+    scale = 1.0
     if total_needed > available_space:
         scale = available_space / total_needed
-        scale = max(scale, 0.45) # Don't shrink too much
+        scale = max(scale, 0.45) 
         
     final_font_size = int(std_font_size * scale)
     gap_scale = scale if scale > 0.8 else scale * 0.6
@@ -322,22 +328,32 @@ def draw_poster_slide(film, img_obj, fonts):
         dyn_font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
         dyn_font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
     except:
-        dyn_font_cin = fonts['cover_sub']
-        dyn_font_time = fonts['cover_sub']
-
+        dyn_font_cin = ImageFont.load_default()
+        dyn_font_time = ImageFont.load_default()
+        
+    unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
+    final_block_height = num_cinemas * unit_height
+    
+    if available_space > final_block_height:
+        start_y = cursor_y + (available_space - final_block_height) // 2
+    else:
+        start_y = cursor_y + 20 
+        
     for cinema in sorted_cinemas:
-        times = film['showings'][cinema]
-        times.sort()
+        times = sorted(film['showings'][cinema])
+        times_str = " ".join(times)
+        cinema_en = CINEMA_ENGLISH_NAMES.get(cinema, cinema)
         
-        # Cinema Name
-        display_name = CINEMA_ENGLISH_NAMES.get(cinema, cinema)
-        draw_centered_text(draw, cursor_y, display_name, dyn_font_cin, (255, 215, 0))
-        cursor_y += final_font_size * 1.4
+        len_c = draw.textlength(cinema_en, font=dyn_font_cin)
+        x_c = (CANVAS_WIDTH - len_c) // 2
+        draw.text((x_c, start_y), cinema_en, font=dyn_font_cin, fill=(255, 255, 255))
         
-        # Times
-        time_str = " / ".join(times)
-        draw_centered_text(draw, cursor_y, time_str, dyn_font_time, (255, 255, 255))
-        cursor_y += final_font_size * 1.4 + final_gap
+        y_time = start_y + final_font_size + 5 
+        len_t = draw.textlength(times_str, font=dyn_font_time)
+        x_t = (CANVAS_WIDTH - len_t) // 2
+        draw.text((x_t, y_time), times_str, font=dyn_font_time, fill=(200, 200, 200))
+        
+        start_y += unit_height
 
     return canvas
 
