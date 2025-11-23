@@ -67,7 +67,6 @@ CINEMA_ENGLISH_NAMES = {
     "シネクイント": "Cine Quinto Shibuya",
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
-    "Morc Asagaya": "Morc Asagaya",
     "Tollywood": "Tollywood"
 }
 
