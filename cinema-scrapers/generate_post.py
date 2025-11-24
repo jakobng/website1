@@ -182,4 +182,457 @@ def pick_cinemas_for_today(grouped_showtimes: dict[str, list[dict]]) -> list[str
 def load_cinema_assets() -> dict[str, list[Path]]:
     assets = defaultdict(list)
     if not ASSETS_DIR.exists():
-        print(f"⚠️ Assets directory missing: {ASSETS_DIR}")_
+        print(f"⚠️ Assets directory missing: {ASSETS_DIR}")
+        return assets
+    for img_path in ASSETS_DIR.glob("*.jpg"):
+        name = img_path.stem
+        cinema_name = name.split("__")[0]
+        assets[cinema_name].append(img_path)
+    return assets
+
+def pick_assets_for_cover(cinemas_today: list[str], assets_by_cinema: dict[str, list[Path]]) -> list[Path]:
+    chosen_paths = []
+    used_cinemas = set()
+    for cname in cinemas_today:
+        if cname in assets_by_cinema and assets_by_cinema[cname]:
+            img_path = random.choice(assets_by_cinema[cname])
+            if img_path not in chosen_paths:
+                chosen_paths.append(img_path)
+                used_cinemas.add(cname)
+                if len(chosen_paths) >= 5:
+                    return chosen_paths
+    all_asset_paths = [p for paths in assets_by_cinema.values() for p in paths]
+    random.shuffle(all_asset_paths)
+    for p in all_asset_paths:
+        if p not in chosen_paths:
+            chosen_paths.append(p)
+            if len(chosen_paths) >= 5:
+                break
+    return chosen_paths[:5]
+
+def remove_bg_via_replicate(img: Image.Image) -> Image.Image:
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("   ⚠️ Replicate not available or token missing. Skipping BG removal.")
+        return img.convert("RGBA")
+
+    temp_path = BASE_DIR / "temp_input.png"
+    img.save(temp_path, format="PNG")
+
+    model = "lucataco/remove-bg"
+    input_data = {"image": open(temp_path, "rb")}
+    print("   ✂️  Removing background via Replicate...")
+    try:
+        output = replicate.run(model, input=input_data)
+        os.remove(temp_path)
+        if isinstance(output, str):
+            url = output
+        elif isinstance(output, list) and output:
+            url = output[0]
+        else:
+            return img.convert("RGBA")
+        resp = requests.get(url)
+        if resp.status_code == 200:
+            return Image.open(BytesIO(resp.content)).convert("RGBA")
+    except Exception as e:
+        print("   ⚠️ BG removal failed:", e)
+
+    return img.convert("RGBA")
+
+def center_crop_to_content(img: Image.Image, max_pad: int = 20) -> Image.Image:
+    if img.mode != "RGBA":
+        img = img.convert("RGBA")
+    bbox = img.getbbox()
+    if bbox is None:
+        return img
+    left, upper, right, lower = bbox
+    left = max(0, left - max_pad)
+    upper = max(0, upper - max_pad)
+    right = min(img.width, right + max_pad)
+    lower = min(img.height, lower + max_pad)
+    return img.crop((left, upper, right, lower))
+
+def create_layout_and_mask(asset_paths: list[Path]) -> tuple[Image.Image, Image.Image, Image.Image]:
+    print("🧩 Building chaotic layout from cutouts...")
+    layout_rgba = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0, 0))
+    layout_rgb = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0))
+    mask = Image.new("L", (CANVAS_WIDTH, CANVAS_HEIGHT), 255)
+
+    anchor_positions = [
+        (CANVAS_WIDTH * 0.25, CANVAS_HEIGHT * 0.25),
+        (CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.25),
+        (CANVAS_WIDTH * 0.25, CANVAS_HEIGHT * 0.55),
+        (CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.55),
+        (CANVAS_WIDTH * 0.5,  CANVAS_HEIGHT * 0.78),
+    ]
+    random.shuffle(anchor_positions)
+    processed_cutouts = []
+
+    for i, img_path in enumerate(asset_paths[:5]):
+        try:
+            print(f"   Loading asset: {img_path.name}")
+            base_img = Image.open(img_path).convert("RGB")
+        except Exception as e:
+            print(f"   ⚠️ Error loading {img_path}: {e}")
+            continue
+
+        rgba = remove_bg_via_replicate(base_img)
+        rgba = center_crop_to_content(rgba, max_pad=10)
+
+        max_dim = int(550 * random.uniform(0.7, 1.2))
+        w, h = rgba.size
+        if w >= h:
+            new_w = max_dim
+            new_h = int(h * max_dim / w)
+        else:
+            new_h = max_dim
+            new_w = int(w * max_dim / h)
+        rgba = rgba.resize((new_w, new_h), Image.Resampling.LANCZOS)
+
+        cx, cy = anchor_positions[i]
+        jitter_x = random.randint(-100, 100)
+        jitter_y = random.randint(-80, 80)
+        x = int(cx + jitter_x - new_w / 2)
+        y = int(cy + jitter_y - new_h / 2)
+
+        layout_rgba.alpha_composite(rgba, dest=(x, y))
+        base_tmp = Image.new("RGB", (new_w, new_h), (0, 0, 0))
+        base_tmp.paste(rgba, mask=rgba.split()[-1])
+        layout_rgb.paste(base_tmp, (x, y))
+
+        cutout_mask = Image.new("L", (new_w, new_h), 0)
+        cutout_mask.paste(rgba.split()[-1], (0, 0))
+        mask.paste(0, (x, y), cutout_mask)
+        processed_cutouts.append((rgba, (x, y)))
+
+    mask = mask.filter(ImageFilter.MaxFilter(11))
+    layout_rgb = layout_rgb.convert("RGB")
+    return layout_rgba, layout_rgb, mask
+
+def build_inpaint_prompt(mode: str) -> str:
+    """Builds text prompt for inpainting, with style modes."""
+    base_constraints = (
+        "no grid layout, no split screen, no frames, no borders, "
+        "no collage panels, no text, no logo, no watermark"
+    )
+
+    if mode == "surreal":
+        core = (
+            "surreal multiplex interior built from fragments of Tokyo cinemas, "
+            "floating awnings and marquees, overlapping balconies and corridors, "
+            "impossible architecture, double exposure, ambient haze, "
+            "light leaks, soft cinematic lighting, subtle film grain"
+        )
+    elif mode == "architectural":
+        core = (
+            "modern multi-screen cinema complex interior, unified architecture, "
+            "concrete, brushed metal and glass, integrated cinema signage, "
+            "wide atrium, escalators and skybridges, warm indirect lighting, "
+            "highly detailed, photorealistic, ultra wide angle"
+        )
+    else:
+        core = (
+            "cinematic architectural montage, single unified cinema structure, "
+            "fragments of Tokyo movie theaters assembled into one building, "
+            "dreamlike but believable, atmospheric lighting, subtle haze, "
+            "high detail, photo-real"
+        )
+
+    return f"{core}, {base_constraints}"
+
+
+def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
+    """Fill gaps between cinema cutouts using the selected inpaint model."""
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("   ⚠️ Replicate not available. Skipping Inpaint.")
+        return layout_img
+
+    prompt = build_inpaint_prompt(INPAINT_MODE)
+
+    print(f"   🎨 Inpainting gaps (backend={INPAINT_BACKEND}, mode={INPAINT_MODE})...")
+    # Save temporary files for Replicate
+    temp_img_path = BASE_DIR / "temp_inpaint_img.png"
+    temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
+    layout_img.save(temp_img_path, format="PNG")
+    mask_img.save(temp_mask_path, format="PNG")
+
+    try:
+        if INPAINT_BACKEND == "flux":
+            # FLUX.1 Fill [pro]
+            output = replicate.run(
+                "black-forest-labs/flux-fill-pro",
+                input={
+                    "image": open(temp_img_path, "rb"),
+                    "mask": open(temp_mask_path, "rb"),
+                    "prompt": prompt,
+                    "steps": 40,
+                    "guidance": 50,
+                    "output_format": "png",
+                    "safety_tolerance": 2,
+                    "prompt_upsampling": False,
+                },
+            )
+        else:
+            # Stability inpaint fallback (original behaviour)
+            output = replicate.run(
+                "stability-ai/stable-diffusion-inpainting:"
+                "c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
+                input={
+                    "image": open(temp_img_path, "rb"),
+                    "mask": open(temp_mask_path, "rb"),
+                    "prompt": prompt,
+                    "negative_prompt": (
+                        "grid, split screen, triptych, collage, frames, boundaries, "
+                        "borders, multiple panels, text, watermark, logo"
+                    ),
+                    "num_inference_steps": 30,
+                    "guidance_scale": 7.5,
+                    "strength": 0.85,
+                },
+            )
+
+        # Clean up temp files
+        if temp_img_path.exists():
+            os.remove(temp_img_path)
+        if temp_mask_path.exists():
+            os.remove(temp_mask_path)
+
+        if output:
+            url = output[0] if isinstance(output, list) else output
+            resp = requests.get(url)
+            if resp.status_code == 200:
+                img = Image.open(BytesIO(resp.content)).convert("RGB")
+                return img.resize(layout_img.size, Image.Resampling.LANCZOS)
+
+        print("   ⚠️ Inpaint returned no image. Using raw layout.")
+        return layout_img
+
+    except Exception as e:
+        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
+        return layout_img
+
+# --- IMAGE GENERATORS ---
+
+def create_sunburst_background(width: int, height: int) -> Image.Image:
+    center_x = width / 2
+    center_y = height * 0.25
+    num_rays = 40
+
+    base = Image.new("RGB", (width, height), SUNBURST_OUTER)
+    draw = ImageDraw.Draw(base)
+
+    for i in range(num_rays):
+        angle = (i / num_rays) * 2 * math.pi
+        ray_length = height
+        end_x = int(center_x + math.cos(angle) * ray_length)
+        end_y = int(center_y + math.sin(angle) * ray_length)
+        alpha = int(80 + 80 * math.sin(i / num_rays * math.pi))
+        ray_color = (SUNBURST_CENTER[0], SUNBURST_CENTER[1], SUNBURST_CENTER[2], alpha)
+
+        overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+        ray_draw = ImageDraw.Draw(overlay)
+        ray_draw.polygon(
+            [(center_x, center_y), (end_x, end_y), (center_x, center_y)],
+            fill=ray_color,
+        )
+        base = Image.alpha_composite(base.convert("RGBA"), overlay).convert("RGB")
+
+    vignette = Image.new("L", (width, height), 255)
+    vignette_draw = ImageDraw.Draw(vignette)
+    vignette_radius = min(width, height) * 0.9
+    vignette_draw.ellipse(
+        [
+            (center_x - vignette_radius, center_y - vignette_radius),
+            (center_x + vignette_radius, center_y + vignette_radius),
+        ],
+        fill=0,
+    )
+    vignette = vignette.filter(ImageFilter.GaussianBlur(80))
+
+    base = ImageChops.multiply(base, ImageOps.colorize(vignette, (0, 0, 0), (255, 255, 255)))
+    return base
+
+def composite_cover(inpainted_bg: Image.Image, layout_rgba: Image.Image, date_label: str) -> Image.Image:
+    print("🧱 Compositing final cover with paste-back and shadow...")
+    img = inpainted_bg.convert("RGBA")
+    shadow_offset = (10, 10)
+    shadow = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0, 0))
+    alpha = layout_rgba.split()[-1]
+    shadow_mask = alpha.filter(ImageFilter.GaussianBlur(15))
+    shadow.paste((0, 0, 0, 180), (shadow_offset[0], shadow_offset[1]), shadow_mask)
+    img = Image.alpha_composite(img, shadow)
+    img = Image.alpha_composite(img, layout_rgba)
+
+    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+    try:
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 46)
+    except Exception:
+        date_font = ImageFont.load_default()
+
+    pill_x, pill_y = 40, 40
+    pill_padding = 18
+    text_w, text_h = draw.textsize(date_label, font=date_font)
+    pill_w = text_w + pill_padding * 2
+    pill_h = text_h + pill_padding
+
+    draw.rectangle(
+        [pill_x, pill_y, pill_x + pill_w, pill_y + pill_h],
+        fill=(0, 0, 0, 230),
+        outline=None,
+    )
+    bilingual_date = date_label
+    draw.text((pill_x + pill_padding, pill_y + pill_padding / 2), bilingual_date, font=date_font, fill=(255, 255, 255))
+
+    return Image.alpha_composite(img, overlay).convert("RGB")
+
+# --- SLIDES (UNCHANGED) ---
+
+def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: list[dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
+    img = bg_template.copy()
+    draw = ImageDraw.Draw(img)
+    try:
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
+        subhead_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
+        movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
+        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+        time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 34)
+    except Exception:
+        header_font = subhead_font = movie_font = en_movie_font = time_font = ImageFont.load_default()
+
+    top_margin = 120
+    x = MARGIN
+    y = top_margin
+
+    draw.text((x, y), cinema_name, font=header_font, fill=BLACK)
+    y += header_font.getbbox(cinema_name)[3] + 10
+
+    if cinema_name_en:
+        draw.text((x, y), cinema_name_en, font=subhead_font, fill=BLACK)
+        y += subhead_font.getbbox(cinema_name_en)[3] + 40
+    else:
+        y += 20
+
+    max_lines = 9
+    line_count = 0
+
+    for listing in listings:
+        if line_count >= max_lines:
+            break
+
+        movie_title = listing.get("movie_title") or ""
+        en_title = best_english_title(listing) or ""
+
+        times = listing.get("all_showtimes") or listing.get("showtime") or ""
+        if isinstance(times, list):
+            times_str = ", ".join(times)
+        else:
+            times_str = times
+
+        wrapped = textwrap.wrap(movie_title, width=18)
+        for line in wrapped:
+            if line_count >= max_lines:
+                break
+            draw.text((x, y), line, font=movie_font, fill=BLACK)
+            y += movie_font.getbbox(line)[3] + 4
+            line_count += 1
+
+        if line_count >= max_lines:
+            break
+
+        if en_title:
+            draw.text((x + 10, y), en_title, font=en_movie_font, fill=(60, 60, 60))
+            y += en_movie_font.getbbox(en_title)[3] + 4
+            line_count += 1
+
+        if line_count >= max_lines:
+            break
+
+        time_label = f"🎬 {times_str}"
+        draw.text((x + 10, y), time_label, font=time_font, fill=(40, 40, 40))
+        y += time_font.getbbox(time_label)[3] + 18
+        line_count += 1
+
+    location = CINEMA_LOCATIONS.get(cinema_name)
+    if location:
+        y = img.height - 180
+        location_lines = location.split("\n")
+        loc_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30) if REGULAR_FONT_PATH.exists() else ImageFont.load_default()
+        for line in location_lines:
+            draw.text((x, y), line, font=loc_font, fill=(80, 80, 80))
+            y += loc_font.getbbox(line)[3] + 4
+
+    return img
+
+def create_story_bg() -> Image.Image:
+    bg = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), (245, 245, 245))
+    draw = ImageDraw.Draw(bg)
+    for i in range(0, STORY_CANVAS_HEIGHT, 40):
+        alpha = int(40 + 40 * math.sin(i / STORY_CANVAS_HEIGHT * math.pi))
+        line_color = (230, 230, 230)
+        draw.line([(0, i), (CANVAS_WIDTH, i)], fill=line_color, width=1)
+    return bg
+
+def build_caption(cinemas_today: list[str], grouped_showtimes: dict[str, list[dict]]) -> str:
+    yyyy_mm_dd, date_label = get_today_strs()
+    lines = []
+    lines.append("Tokyo Mini Theatre Showtimes 🎬")
+    lines.append(f"{date_label}")
+    lines.append("")
+    lines.append("Today's featured cinemas:")
+    for c in cinemas_today:
+        en = CINEMA_ENGLISH_NAMES.get(c, "")
+        if en:
+            lines.append(f"・{c} / {en}")
+        else:
+            lines.append(f"・{c}")
+    lines.append("")
+    lines.append("Full listings and tickets → link in bio")
+    return "\n".join(lines)
+
+def main():
+    if REPLICATE_API_TOKEN:
+        os.environ["REPLICATE_API_TOKEN"] = REPLICATE_API_TOKEN
+
+    showtimes = load_showtimes()
+    grouped = group_by_cinema(showtimes)
+    cinemas_today = pick_cinemas_for_today(grouped)
+    if not cinemas_today:
+        print("No cinemas meet the minimum film threshold for today.")
+        return
+
+    assets_by_cinema = load_cinema_assets()
+    cover_assets = pick_assets_for_cover(cinemas_today, assets_by_cinema)
+
+    layout_rgba, layout_rgb, mask = create_layout_and_mask(cover_assets)
+    inpainted_bg = inpaint_gaps(layout_rgb, mask)
+    _, date_label = get_today_strs()
+    cover_img = composite_cover(inpainted_bg, layout_rgba, date_label)
+    cover_img = cover_img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+    cover_img.save(BASE_DIR / "post_image_00.png", format="PNG")
+
+    story_bg = create_story_bg()
+    sorted_cinemas = cinemas_today[:INSTAGRAM_SLIDE_LIMIT]
+    slide_index = 1
+    for cinema_name in sorted_cinemas:
+        listings = grouped[cinema_name]
+        listings.sort(key=lambda s: (s.get("movie_title") or "", s.get("showtime") or ""))
+        cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+        story_img = draw_story_slide(cinema_name, cinema_name_en, listings, story_bg)
+        story_img = story_img.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+        fname = BASE_DIR / f"story_image_{slide_index:02d}.png"
+        story_img.save(fname, format="PNG")
+        slide_index += 1
+        if slide_index > INSTAGRAM_SLIDE_LIMIT:
+            break
+
+    caption_text = build_caption(cinemas_today, grouped)
+    with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
+        f.write(caption_text)
+
+    print("✅ Instagram assets generated:")
+    print(f" - Cover: post_image_00.png")
+    print(f" - Story slides: story_image_01.png ... story_image_{slide_index-1:02d}.png")
+    print(f" - Caption: {OUTPUT_CAPTION_PATH.name}")
+
+if __name__ == "__main__":
+    main()
