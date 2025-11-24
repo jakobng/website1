@@ -1,7 +1,7 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Organic Mashup").
-- Fix: Changed MaxFilter size to 21 (odd integer) to prevent Pillow crash.
-- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Unified Atmosphere) -> Paste Back.
+Generate Instagram-ready image carousel (V1 - "The Organic Mashup - Recognizable").
+- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Atmosphere) -> Paste Back with Shadow.
+- Tweak: Reduced mask erosion and added drop shadow to keep cinemas recognizable.
 """
 from __future__ import annotations
 
@@ -298,7 +298,6 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         
     random.shuffle(imgs_to_process)
     
-    # Anchors heavily randomized
     anchors = [
         (int(width * 0.3), int(height * 0.25)),
         (int(width * 0.7), int(height * 0.25)),
@@ -325,6 +324,7 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
             
+            # Paste
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
@@ -334,13 +334,14 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # FIXED: Using 21 (odd number) for MaxFilter size to avoid Pillow ValueError
-    mask = mask.filter(ImageFilter.MaxFilter(21)) 
+    # ADJUSTMENT: Less Mask Dilation (11px instead of 21px)
+    # This keeps the "Keep" area (Black) larger, protecting the image edges more
+    mask = mask.filter(ImageFilter.MaxFilter(11)) 
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to fill gaps. Unified prompt."""
+    """Uses Stability AI Inpaint to fill gaps."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
@@ -358,12 +359,11 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                # NEW PROMPT: Focuses on "Single Structure" to kill the grid
                 "prompt": "surreal architectural mashup, single unified dream structure, seamless wide angle shot, concrete texture, cinematic lighting, neutral tones, 8k",
                 "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
                 "num_inference_steps": 30,
                 "guidance_scale": 7.5,
-                "strength": 0.95
+                "strength": 0.85 # Reduced from 0.95 to keep more original context
             }
         )
         
@@ -383,6 +383,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
 # --- IMAGE GENERATORS ---
 
 def create_sunburst_background(width: int, height: int) -> Image.Image:
+    """Original Sunburst (Unchanged)."""
     base_size = 512
     img = Image.new("RGB", (base_size, base_size), SUNBURST_OUTER)
     draw = ImageDraw.Draw(img)
@@ -399,6 +400,7 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
+    """Adds ONLY the Date Pill."""
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
@@ -608,10 +610,20 @@ def main() -> None:
         # B. Inpaint the Gaps (Background only)
         inpainted_bg = inpaint_gaps(layout_rgb, mask_img)
         
-        # C. COMPOSITE: Paste original crisp cutouts back on top
-        # Using layout_rgba as mask ensures we only paste the cutouts
+        # C. COMPOSITE: Paste original crisp cutouts back on top + Drop Shadow
         print("   🔨 Compositing originals back onto Inpainted background...")
         final_composite = inpainted_bg.copy()
+        
+        # Create a Shadow Layer
+        shadow_layer = Image.new("RGBA", final_composite.size, (0,0,0,0))
+        shadow_draw = ImageDraw.Draw(shadow_layer)
+        # Use the Alpha channel of layout_rgba to draw a black shape
+        shadow_layer.paste((0,0,0,80), (10,10), mask=layout_rgba)
+        shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(15))
+        
+        # Paste Shadow first
+        final_composite.paste(shadow_layer, (0,0), mask=shadow_layer)
+        # Paste Original Cutouts on top
         final_composite.paste(layout_rgba, (0,0), mask=layout_rgba)
         
         # D. Text Overlay (Date Only)
