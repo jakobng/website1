@@ -32,25 +32,20 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
 
-      - name: Commit Generated Images for Inspection
-        id: commit_push
+      - name: Commit Generated Image for Inspection
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
+
           git add cinema-scrapers/post_v2_image_00.png
-          git commit -m "Add generated cinema collage" || echo "No changes to commit"
-          git push
-          
-          if git diff --staged --quiet; then
+
+          # If nothing is staged, exit without error
+          if git diff --cached --quiet; then
             echo "No design changes detected."
-            echo "pushed=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          
-          git commit -m "DESIGN TEST: Generated Hallucinated Assemblage slides"
-          git pull origin main --rebase
+
+          git commit -m "DESIGN TEST: Generated Hallucinated Assemblage cover"
           git push
-          echo "pushed=true" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
