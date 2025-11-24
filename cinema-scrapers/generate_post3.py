@@ -1,12 +1,11 @@
 """
-Generate Instagram-ready image carousel (V40 - Replicate / Flux.1).
+Generate Instagram-ready image carousel (V41 - Flux Ghost Blend).
 
-- API: Uses Replicate to run 'black-forest-labs/flux-1-dev'.
-- Benefit: Flux.1 is an open model and does NOT have the strict "Public Figure" 
-  blocking that Stability/DALL-E have. It handles celebrity likenesses fine.
-- Logic:
-  1. Creates a "Chaos Collage" (overlapping images).
-  2. Sends to Flux.1 via Replicate for Image-to-Image generation.
+- API: Replicate (Flux.1 Dev).
+- Input Method: "Ghost Blend" (Triple Exposure).
+- Why: Since Flux allows celebrity faces, we can blend them heavily (ghosting).
+  Flux's high intelligence will resolve this chaotic blending into a 
+  cohesive "Double/Triple Exposure" artistic poster.
 """
 from __future__ import annotations
 
@@ -179,31 +178,49 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- REPLICATE / FLUX PIPELINE ---
+# --- REPLICATE / FLUX PIPELINE (Ghost Mode) ---
 
-def create_chaos_collage(images, width=896, height=1152):
+def create_ghost_composite(images, width=896, height=1152):
     """
-    Overlaps images to give Flux a dense starting point.
+    Creates a 'Ghost' composite by creating a triple exposure.
+    Each image is resized to fill the WHOLE canvas and blended.
     """
     canvas = Image.new("RGB", (width, height), (0,0,0))
     if not images: return canvas
     
     source_imgs = images[:3]
     
-    for i, img in enumerate(source_imgs):
+    # Base Helper
+    def fill_canvas(img):
         img_ratio = img.width / img.height
-        target_w = width
-        target_h = int(target_w / img_ratio)
-        resized = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+        target_ratio = width / height
+        if img_ratio > target_ratio:
+            new_h = height
+            new_w = int(new_h * img_ratio)
+            resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+            left = (new_w - width) // 2
+            return resized.crop((left, 0, left + width, height))
+        else:
+            new_w = width
+            new_h = int(new_w / img_ratio)
+            resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+            top = (new_h - height) // 2
+            return resized.crop((0, top, width, top + height))
+
+    # 1. Base Layer
+    composite = fill_canvas(source_imgs[0])
+    
+    # 2. Blend Layer 2 (50% Opacity)
+    if len(source_imgs) > 1:
+        layer2 = fill_canvas(source_imgs[1])
+        composite = Image.blend(composite, layer2, alpha=0.5)
         
-        # Position Logic (Top, Center, Bottom)
-        if i == 0: y_pos = 0 
-        elif i == 1: y_pos = (height - resized.height) // 2 
-        else: y_pos = height - resized.height 
-            
-        canvas.paste(resized, (0, y_pos))
+    # 3. Blend Layer 3 (33% Opacity)
+    if len(source_imgs) > 2:
+        layer3 = fill_canvas(source_imgs[2])
+        composite = Image.blend(composite, layer3, alpha=0.33)
         
-    return canvas
+    return composite
 
 def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
     print("🎨 Preparing Flux.1 (Replicate) Mashup...")
@@ -217,22 +234,22 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
         return None
 
     try:
-        # 1. Create Chaos Input
-        init_img = create_chaos_collage(images, width=896, height=1152)
+        # 1. Create Ghost Input
+        init_img = create_ghost_composite(images, width=896, height=1152)
         
-        # Save to a temporary file because Replicate client needs a file path/handle
+        # Save temp file for Replicate
         temp_path = BASE_DIR / "temp_init_flux.png"
         init_img.save(temp_path, format="PNG")
         
-        # 2. Call Replicate (Flux.1 Dev)
-        # prompt_strength 0.8 means "Repaint 80% of this, keep 20% structure"
         print("🚀 Sending to Replicate (black-forest-labs/flux-1-dev)...")
         
+        # 2. Call Flux
+        # We ask for "Double Exposure" to match the ghost input.
         output = replicate.run(
             "black-forest-labs/flux-1-dev",
             input={
                 "image": open(temp_path, "rb"),
-                "prompt": "Cinematic movie poster mashup, double exposure montage of these characters, seamless blending, highly detailed, film grain, Tokyo noir style, masterpiece, 8k",
+                "prompt": "Cinematic movie poster mashup, double exposure of multiple characters, dreamlike blending, moody lighting, film grain, Tokyo noir style, masterpiece, 8k, textless",
                 "go_fast": True,
                 "guidance": 3.5,
                 "megapixels": "1",
@@ -240,16 +257,13 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
                 "aspect_ratio": "4:5",
                 "output_format": "png",
                 "output_quality": 90,
-                "prompt_strength": 0.80, # 0.8 is the sweet spot for Flux Img2Img
+                "prompt_strength": 0.75, # 0.75 preserves the 'ghosting' but cleans it up
                 "num_inference_steps": 28
             }
         )
         
-        # Clean up temp file
         if temp_path.exists(): os.remove(temp_path)
 
-        # 3. Handle Output
-        # Replicate returns a list of URLs (or File objects depending on version)
         if output:
             image_url = str(output[0])
             print(f"📥 Downloading result from: {image_url}")
@@ -441,7 +455,7 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V40 (Replicate / Flux.1 Uncensored) ---")
+    print("--- Starting V41 (Flux.1 Ghost Blend) ---")
     
     # 1. Clean
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
@@ -530,7 +544,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V40 Generated.")
+    print("Done. V41 Generated.")
 
 if __name__ == "__main__":
     main()
