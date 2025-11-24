@@ -1,10 +1,11 @@
 """
-Generate Instagram-ready image carousel (V33 - Stable Diffusion 3.5 Large).
+Generate Instagram-ready image carousel (V34 - High-Creativity Mashup).
 
+- Change: Increased AI 'strength' to 0.70 to force blending of images.
 - Logic: 
-  1. Python creates a rough vertical collage of the top 3 films.
-  2. Stability AI (SD 3.5) "repaints" the collage (Image-to-Image) to unify the style.
-  3. Python overlays the text "TOKYO CINEMA DAILY" on top.
+  1. Python creates a rough vertical collage.
+  2. Stability AI (SD 3.5) "hallucinates" over it to erase borders.
+  3. Python overlays text.
 """
 from __future__ import annotations
 
@@ -26,7 +27,6 @@ from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 # --- API Setup ---
-# Get key from: https://platform.stability.ai/
 STABILITY_API_KEY = os.environ.get("STABILITY_API_KEY")
 
 # --- Configuration ---
@@ -173,8 +173,7 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
 
 def create_rough_collage(images, width=896, height=1152):
     """
-    Stitches top 3 images into a vertical stack to serve as the 'Init Image'.
-    Using 896x1152 as it's a standard SDXL/SD3 aspect ratio close to 4:5.
+    Stitches top 3 images into a vertical stack.
     """
     canvas = Image.new("RGB", (width, height), (0,0,0))
     if not images: return canvas
@@ -220,7 +219,7 @@ def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
         init_bytes = buf.getvalue()
 
         # 2. Call Stability AI (V2beta - SD3)
-        # Using "sd3.5-large" which is the latest flagship.
+        # Strength: 0.70 means "Ignore 70% of the original borders, just use the colors"
         response = requests.post(
             "https://api.stability.ai/v2beta/stable-image/generate/sd3",
             headers={
@@ -231,9 +230,9 @@ def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
                 "image": init_bytes 
             },
             data={
-                "prompt": "Abstract cinematic movie poster mashup, double exposure style, highly detailed, 8k, unified lighting, film grain, moody, tokyo street style, masterpiece",
+                "prompt": "Seamlessly blended double exposure montage of multiple movie scenes, surrealist cinematic poster, no hard edges, dreamlike transitions, unified color palette, 8k masterpiece",
                 "mode": "image-to-image",
-                "strength": 0.35, # 0.35 = Keep 35% of original structure (re-paint heavily)
+                "strength": 0.70,  # INCREASED from 0.35 to 0.70 for maximum mashup
                 "model": "sd3.5-large",
                 "output_format": "png"
             }
@@ -243,9 +242,7 @@ def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
             print(f"⚠️ Stability API Error: {response.status_code} - {response.text}")
             return None
 
-        # 3. Decode Response
         data = response.json()
-        # SD3 endpoint returns 'image' as base64 string directly in JSON
         if "image" in data:
             return Image.open(BytesIO(base64.b64decode(data["image"])))
         else:
@@ -279,7 +276,7 @@ def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
             top = (new_h - height) // 2
             bg.paste(resized, (0, -top))
     
-    # Overlay for Text
+    # Darken for Text
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 100))
     bg.paste(overlay, (0, 0), overlay)
     
@@ -287,6 +284,7 @@ def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
     
+    # Typography
     draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     
@@ -300,12 +298,10 @@ def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
 
     return bg
 
-# --- Standard Slide Logic ---
-
+# --- Standard Slide Logic (Unchanged) ---
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    
     c_base, c_accent = get_faithful_colors(img_obj)
     bg = create_textured_bg(c_base, c_accent, width, height)
     canvas = apply_film_grain(bg)
@@ -370,7 +366,6 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
         
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
-    
     available_space = height - cursor_y - (150 if is_story else 50)
     std_font_size = 32 if is_story else 28
     std_gap = 60 if is_story else 50
@@ -381,7 +376,6 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     if total_needed > available_space:
         scale = available_space / total_needed
         scale = max(scale, 0.45) 
-    
     final_font_size = int(std_font_size * scale)
     gap_scale = scale if scale > 0.8 else scale * 0.6
     final_gap = int(std_gap * gap_scale)
@@ -395,7 +389,6 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
         
     unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
     final_block_height = num_cinemas * unit_height
-    
     if available_space > final_block_height:
         start_y = cursor_y + (available_space - final_block_height) // 2
     else:
@@ -419,15 +412,12 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
 def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    
     bg = create_rough_collage(images, width, height)
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
     bg.paste(overlay, (0, 0), overlay)
-    
     draw = ImageDraw.Draw(bg)
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
-    
     draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + 180 + offset), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
@@ -436,8 +426,9 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V33 (SD 3.5 Large) ---")
+    print("--- Starting V34 (High-Creativity Mashup) ---")
     
+    # 1. Clean
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
 
@@ -484,17 +475,17 @@ def main():
     # 2. GENERATE COVER (Stability AI)
     d_str, day_str = get_bilingual_date()
     
+    print("🎨 Contacting Stability AI with Strength=0.70...")
     ai_art = generate_stability_mashup(cover_images)
     
     if ai_art:
-        print("✅ SD 3.5 Mashup Successful!")
+        print("✅ AI Mashup Successful!")
         cover_feed = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=False)
         cover_story = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=True)
-        
         cover_feed.save(BASE_DIR / "post_v3_image_00.png")
         cover_story.save(BASE_DIR / "story_v3_image_00.png")
     else:
-        print("⚠️ Using Fallback (No AI).")
+        print("⚠️ AI Failed. Using Fallback.")
         fb_feed = draw_fallback_cover(cover_images, fonts, d_str, day_str, is_story=False)
         fb_feed.save(BASE_DIR / "post_v3_image_00.png")
         fb_story = draw_fallback_cover(cover_images, fonts, d_str, day_str, is_story=True)
@@ -506,7 +497,6 @@ def main():
     for i, item in enumerate(slide_data):
         film = item['film']
         img = item['img']
-        
         slide_feed = draw_poster_slide(film, img, fonts, is_story=False)
         slide_feed.save(BASE_DIR / f"post_v3_image_{i+1:02}.png")
         slide_story = draw_poster_slide(film, img, fonts, is_story=True)
@@ -526,7 +516,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V33 Generated.")
+    print("Done. V34 Generated.")
 
 if __name__ == "__main__":
     main()
