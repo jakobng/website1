@@ -182,23 +182,25 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
 # --- NEW: COLLAGE PIPELINE (Rembg -> Python -> Flux) ---
 
 def remove_background(pil_img: Image.Image) -> Image.Image | None:
-    """Uses Replicate (cjwbw/rembg-p) to isolate subjects."""
+    """Uses Replicate (lucataco/remove-bg) to isolate subjects."""
     print("✂️ Removing background...")
     try:
         # Save temp file for upload
         temp_path = BASE_DIR / "temp_rembg_in.png"
         pil_img.save(temp_path, format="PNG")
         
+        # FIX: Switched to 'lucataco/remove-bg' (Stable & Fast)
+        # Version: 95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1
         output = replicate.run(
-            "cjwbw/rembg-p:158e2397a695b2d201c107e33501a2c077d468131338d76814b7e7c4f1c1f202",
+            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
             input={"image": open(temp_path, "rb")}
         )
         
         if temp_path.exists(): os.remove(temp_path)
         
-        # Output is a URI
+        # Output is a URI string
         if output:
-            resp = requests.get(output)
+            resp = requests.get(str(output))
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGBA")
     except Exception as e:
