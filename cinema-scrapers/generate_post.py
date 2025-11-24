@@ -1,7 +1,7 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Balanced Dream Assemblage").
-- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Dream Architecture) -> Paste Back.
-- Update: Prompt tuned to balance realism with a "dreamlike cinematic atmosphere".
+Generate Instagram-ready image carousel (V1 - "The Organic Mashup - Recognizable").
+- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Atmosphere) -> Paste Back with Shadow.
+- Tweak: Reduced mask erosion and added drop shadow to keep cinemas recognizable.
 """
 from __future__ import annotations
 
@@ -334,18 +334,19 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # Mask Dilation (Odd number 11 for Pillow safety)
+    # ADJUSTMENT: Less Mask Dilation (11px instead of 21px)
+    # This keeps the "Keep" area (Black) larger, protecting the image edges more
     mask = mask.filter(ImageFilter.MaxFilter(11)) 
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint with a BALANCED DREAM/REALISM prompt."""
+    """Uses Stability AI Inpaint to fill gaps."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (Balanced Dream Architecture)...")
+    print("   🎨 Inpainting gaps (Unified Structure)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
@@ -358,13 +359,11 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                # NEW PROMPT: BALANCED DREAM & REALISM
-                "prompt": "a unified architectural collage of cinema building elements, dreamlike cinematic atmosphere, soft brutalist concrete texture, warm light leaks, wide angle architectural photography, highly detailed, 8k",
-                # Relaxed negative prompt (removed 'surreal', 'fantasy')
-                "negative_prompt": "sci-fi, spaceship, floating, distorted, cartoon, sketch, text, watermark, grid, split screen",
+                "prompt": "surreal architectural mashup, single unified dream structure, seamless wide angle shot, concrete texture, cinematic lighting, neutral tones, 8k",
+                "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
                 "num_inference_steps": 30,
                 "guidance_scale": 7.5,
-                "strength": 0.85
+                "strength": 0.85 # Reduced from 0.95 to keep more original context
             }
         )
         
