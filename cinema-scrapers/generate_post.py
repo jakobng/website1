@@ -1,11 +1,10 @@
 """
 Generate Instagram-ready image carousel and caption.
 
-VERSION 45: SPLIT-SCREEN HERO DESIGN
-- Design: Changed Hero/Cover slide to a "Split Screen" editorial look to differentiate
-  it from the "Collage" style of the Film Selection post.
-- Layout: Top 65% Movie Image, Bottom 35% Black Info Panel with Yellow Divider.
-- Typography: Emphasizes "THEATER LIST" to clarify content type.
+VERSION 46: MONOCHROME SPLIT-SCREEN
+- Design: Removed Yellow accents. adopted a stark Black & White editorial look.
+- Layout: Top 65% Movie Image, Bottom 35% Black Info Panel with WHITE Divider.
+- Background: Sunburst is now a subtle White-to-Gray gradient (Silver) to avoid color clashes.
 """
 from __future__ import annotations
 
@@ -55,10 +54,10 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-# Sunburst Center (Deep Yellow)
-SUNBURST_CENTER = (255, 210, 0) 
-# Sunburst Outer (White)
-SUNBURST_OUTER = (255, 255, 255)
+# Sunburst Center (White)
+SUNBURST_CENTER = (255, 255, 255) 
+# Sunburst Outer (Very Light Gray for subtle texture)
+SUNBURST_OUTER = (235, 235, 235)
 
 BLACK = (20, 20, 20)
 GRAY = (30, 30, 30) 
@@ -238,7 +237,7 @@ def get_recently_featured(caption_path: Path) -> List[str]:
 # --- IMAGE GENERATORS ---
 
 def create_sunburst_background(width: int, height: int) -> Image.Image:
-    """Generates a radial gradient background (Sunburst)."""
+    """Generates a radial gradient background (Silver/Monochrome)."""
     # 1. Create a smaller base image for faster processing, then resize
     base_size = 512
     img = Image.new("RGB", (base_size, base_size), SUNBURST_OUTER)
@@ -268,23 +267,16 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def generate_fallback_burst() -> Image.Image:
-    # Simple Solar Burst for "No Image Found" scenarios
-    day_number = int(datetime.now().timestamp() // 86400)
-    hue_degrees = (45 + (day_number // 3) * 12) % 360
-    hue_norm = hue_degrees / 360.0
-    r, g, b = colorsys.hsv_to_rgb(hue_norm, 1.0, 1.0)
-    center_color = (int(r*255), int(g*255), int(b*255))
+    # Simple Monochrome Burst for "No Image Found" scenarios
     img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
     draw = ImageDraw.Draw(img)
     center_x, center_y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
     max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
     for r in range(max_radius, 0, -2):
         t = r / max_radius
-        t_adj = t ** 0.6
-        red = int(center_color[0] * (1 - t_adj) + 255 * t_adj)
-        green = int(center_color[1] * (1 - t_adj) + 255 * t_adj)
-        blue = int(center_color[2] * (1 - t_adj) + 255 * t_adj)
-        draw.ellipse([center_x - r, center_y - r, center_x + r, center_y + r], fill=(red, green, blue))
+        val = int(220 + (35 * t)) # 220 to 255
+        color = (val, val, val)
+        draw.ellipse([center_x - r, center_y - r, center_x + r, center_y + r], fill=color)
     return img
 
 def process_image_bytes(img_content: bytes) -> Image.Image:
@@ -337,8 +329,7 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     """
     Creates a 'Split Screen' Editorial style cover.
     Top ~65%: Movie Image.
-    Bottom ~35%: Solid Black Info Panel with Yellow Divider.
-    Purpose: To look distinct from the 'Collage' style of the other post type.
+    Bottom ~35%: Solid Black Info Panel with WHITE Divider.
     """
     
     # 1. Setup Canvas (Black Background)
@@ -376,8 +367,8 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     # Paste the Image into the top section
     img.paste(hero_crop, (0, 0))
 
-    # 4. Draw The Divider (Theme Color Yellow)
-    draw.line([(0, SPLIT_Y), (CANVAS_WIDTH, SPLIT_Y)], fill=SUNBURST_CENTER, width=8)
+    # 4. Draw The Divider (Stark White)
+    draw.line([(0, SPLIT_Y), (CANVAS_WIDTH, SPLIT_Y)], fill=WHITE, width=8)
 
     # 5. Typography (The Info Panel)
     try:
@@ -408,7 +399,7 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
     # B. Main Titles (Centered in Footer)
     # Shifted slightly up to leave room for date
     draw.text((footer_center_x, footer_mid_y - 50), "THEATER LIST", font=header_en_font, fill=WHITE, anchor="mm")
-    draw.text((footer_center_x, footer_mid_y + 50), "本日の上映情報", font=header_jp_font, fill=SUNBURST_CENTER, anchor="mm")
+    draw.text((footer_center_x, footer_mid_y + 50), "本日の上映情報", font=header_jp_font, fill=WHITE, anchor="mm")
 
     # C. Date (Bottom Center)
     draw.text((footer_center_x, CANVAS_HEIGHT - 70), bilingual_date, font=date_font, fill=WHITE, anchor="mm")
@@ -559,8 +550,8 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
 
     img.paste(hero_crop, (0, 0))
 
-    # Divider
-    draw.line([(0, SPLIT_Y), (CANVAS_WIDTH, SPLIT_Y)], fill=SUNBURST_CENTER, width=8)
+    # Divider (White)
+    draw.line([(0, SPLIT_Y), (CANVAS_WIDTH, SPLIT_Y)], fill=WHITE, width=8)
 
     # Fonts
     try:
@@ -580,7 +571,7 @@ def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: s
 
     draw.text((MARGIN, SPLIT_Y + 40), "TOKYO MINI THEATERS", font=brand_font, fill=LIGHT_GRAY)
     draw.text((footer_center_x, footer_mid_y - 60), "THEATER LIST", font=header_font, fill=WHITE, anchor="mm")
-    draw.text((footer_center_x, footer_mid_y + 60), "本日の上映情報", font=jp_title_font, fill=SUNBURST_CENTER, anchor="mm")
+    draw.text((footer_center_x, footer_mid_y + 60), "本日の上映情報", font=jp_title_font, fill=WHITE, anchor="mm")
     draw.text((footer_center_x, STORY_CANVAS_HEIGHT - 100), bilingual_date, font=date_font, fill=WHITE, anchor="mm")
 
     return img
@@ -603,7 +594,7 @@ def main() -> None:
         return
     
     # --- 3. PRE-GENERATE BACKGROUNDS (Efficiency) ---
-    print("Generating Sunburst Backgrounds...")
+    print("Generating Silver Sunburst Backgrounds...")
     feed_bg_template = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
     story_bg_template = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
 
@@ -740,7 +731,7 @@ def main() -> None:
         hero_image = generate_fallback_burst()
         hero_title = ""
 
-    # 10. DRAW SLIDES (Using Sunburst Backgrounds)
+    # 10. DRAW SLIDES (Using Silver/White Backgrounds)
     
     # --- A. HERO SLIDES ---
     hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
@@ -765,7 +756,7 @@ def main() -> None:
         
         for segment in feed_segments:
             feed_counter += 1
-            # Pass the Sunburst Template
+            # Pass the Silver Template
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_template)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
             print(f"   Saved Feed Slide {feed_counter} ({cinema_name})")
@@ -784,7 +775,7 @@ def main() -> None:
         
         for segment in story_segments:
             story_counter += 1
-            # Pass the Sunburst Template
+            # Pass the Silver Template
             slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_template)
             slide_img.save(BASE_DIR / f"story_image_{story_counter:02}.png")
             print(f"   Saved Story Slide {story_counter} ({cinema_name})")
