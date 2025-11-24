@@ -1,11 +1,9 @@
 """
-Generate Instagram-ready image carousel (V34 - High-Creativity Mashup).
+Generate Instagram-ready image carousel (V35 - Ghost Blend Mashup).
 
-- Change: Increased AI 'strength' to 0.70 to force blending of images.
-- Logic: 
-  1. Python creates a rough vertical collage.
-  2. Stability AI (SD 3.5) "hallucinates" over it to erase borders.
-  3. Python overlays text.
+- MAJOR CHANGE: Instead of stacking images vertically, this script blends all 3
+  images on top of each other (Triple Exposure) before sending to AI.
+- Result: The AI receives a "Ghost" image and forces a true artistic mashup.
 """
 from __future__ import annotations
 
@@ -171,38 +169,50 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
 
 # --- STABILITY AI (IMG2IMG) PIPELINE ---
 
-def create_rough_collage(images, width=896, height=1152):
+def create_ghost_composite(images, width=896, height=1152):
     """
-    Stitches top 3 images into a vertical stack.
+    Creates a 'Ghost' composite by creating a triple exposure.
+    Each image is resized to fill the WHOLE canvas and blended.
+    This destroys the 'strip' layout completely.
     """
     canvas = Image.new("RGB", (width, height), (0,0,0))
     if not images: return canvas
     
+    # Use top 3 images
     source_imgs = images[:3]
-    slice_h = height // len(source_imgs)
     
-    for i, img in enumerate(source_imgs):
-        target_h = slice_h if i < len(source_imgs) - 1 else height - (slice_h * i)
-        
+    # 1. Base Layer (Image 1 - 100% Opacity)
+    def fill_canvas(img):
+        # Center crop to fill entire 896x1152 canvas
         img_ratio = img.width / img.height
-        target_ratio = width / target_h
-        
+        target_ratio = width / height
         if img_ratio > target_ratio:
-            new_h = target_h
+            new_h = height
             new_w = int(new_h * img_ratio)
             resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
             left = (new_w - width) // 2
-            crop = resized.crop((left, 0, left + width, target_h))
+            return resized.crop((left, 0, left + width, height))
         else:
             new_w = width
             new_h = int(new_w / img_ratio)
             resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            top = (new_h - target_h) // 2
-            crop = resized.crop((0, top, width, top + target_h))
-            
-        canvas.paste(crop, (0, i * slice_h))
+            top = (new_h - height) // 2
+            return resized.crop((0, top, width, top + height))
+
+    # Start with first image
+    composite = fill_canvas(source_imgs[0])
+    
+    # 2. Blend Layer 2 (50% Opacity)
+    if len(source_imgs) > 1:
+        layer2 = fill_canvas(source_imgs[1])
+        composite = Image.blend(composite, layer2, alpha=0.5)
         
-    return canvas
+    # 3. Blend Layer 3 (33% Opacity)
+    if len(source_imgs) > 2:
+        layer3 = fill_canvas(source_imgs[2])
+        composite = Image.blend(composite, layer3, alpha=0.33)
+        
+    return composite
 
 def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
     print("🎨 Preparing Stability AI (SD 3.5 Large) Mashup...")
@@ -212,14 +222,15 @@ def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
         return None
 
     try:
-        # 1. Create Init Image
-        init_img = create_rough_collage(images, width=896, height=1152)
+        # 1. Create Ghost Image (Triple Exposure)
+        init_img = create_ghost_composite(images, width=896, height=1152)
         buf = BytesIO()
         init_img.save(buf, format="PNG")
         init_bytes = buf.getvalue()
 
-        # 2. Call Stability AI (V2beta - SD3)
-        # Strength: 0.70 means "Ignore 70% of the original borders, just use the colors"
+        # 2. Call Stability AI
+        # We lower strength slightly (0.65) because the input is already a mashup.
+        # We just need the AI to make it look "good" instead of messy.
         response = requests.post(
             "https://api.stability.ai/v2beta/stable-image/generate/sd3",
             headers={
@@ -230,9 +241,9 @@ def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
                 "image": init_bytes 
             },
             data={
-                "prompt": "Seamlessly blended double exposure montage of multiple movie scenes, surrealist cinematic poster, no hard edges, dreamlike transitions, unified color palette, 8k masterpiece",
+                "prompt": "Abstract cinematic movie poster, double exposure masterpiece, multiple faces blending, surreal, dreamlike, film grain, Tokyo noir style, high contrast, 8k",
                 "mode": "image-to-image",
-                "strength": 0.70,  # INCREASED from 0.35 to 0.70 for maximum mashup
+                "strength": 0.65, 
                 "model": "sd3.5-large",
                 "output_format": "png"
             }
@@ -276,8 +287,8 @@ def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
             top = (new_h - height) // 2
             bg.paste(resized, (0, -top))
     
-    # Darken for Text
-    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 100))
+    # Darken for Text (Slightly heavier since mashups are busy)
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 120))
     bg.paste(overlay, (0, 0), overlay)
     
     draw = ImageDraw.Draw(bg)
@@ -412,7 +423,16 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
 def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    bg = create_rough_collage(images, width, height)
+    # Fallback to simple crop of first image if AI fails
+    if images:
+        bg = images[0].resize((width, int(width * images[0].height / images[0].width)))
+        if bg.height < height: bg = bg.resize((int(height * bg.width / bg.height), height))
+        left = (bg.width - width) // 2
+        top = (bg.height - height) // 2
+        bg = bg.crop((left, top, left + width, top + height))
+    else:
+        bg = Image.new("RGB", (width, height), (20,20,20))
+        
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
     bg.paste(overlay, (0, 0), overlay)
     draw = ImageDraw.Draw(bg)
@@ -426,7 +446,7 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V34 (High-Creativity Mashup) ---")
+    print("--- Starting V35 (Ghost Blend Mashup) ---")
     
     # 1. Clean
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
@@ -475,7 +495,7 @@ def main():
     # 2. GENERATE COVER (Stability AI)
     d_str, day_str = get_bilingual_date()
     
-    print("🎨 Contacting Stability AI with Strength=0.70...")
+    print("🎨 Contacting Stability AI (Triple Exposure Mode)...")
     ai_art = generate_stability_mashup(cover_images)
     
     if ai_art:
@@ -516,7 +536,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V34 Generated.")
+    print("Done. V35 Generated.")
 
 if __name__ == "__main__":
     main()
