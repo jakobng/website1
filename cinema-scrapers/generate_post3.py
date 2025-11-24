@@ -395,7 +395,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                "prompt": "Cinema Still",
+                "prompt": "Cinematic beautiful background scenery",
                 "negative_prompt": "",
                 "num_inference_steps": 30,
                 "guidance_scale": 7.5,
