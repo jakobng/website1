@@ -1,9 +1,10 @@
 """
-Generate Instagram-ready image carousel (V51 - Fix ImageChops).
+Generate Instagram-ready image carousel (V56 - The Gemini 2.5 Flash Art Director).
 
-- Fixes: Replaced invalid ImageOps.darker with ImageChops.darker.
-- Strategy: "Ensemble Cutout" with Feather & Fade.
-- AI: Flux.1 Dev (via Replicate) + lucataco/remove-bg.
+- Strategy: "Smart Collage" (Gemini 2.5 Selection + Replicate Cutouts).
+- Update V56: 
+  - Switched Model to 'gemini-2.5-flash' (Stable, June 2025 release).
+  - Uses modern 'google-genai' SDK.
 """
 from __future__ import annotations
 
@@ -22,7 +23,7 @@ from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-# FIX: Added ImageChops to imports
+# Essential Imports
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance, ImageChops
 
 # --- API Setup ---
@@ -33,7 +34,17 @@ except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
+# V56: Modern Google SDK
+try:
+    from google import genai
+    from google.genai import types
+    GEMINI_AVAILABLE = True
+except ImportError:
+    print("⚠️ Google GenAI library not found. Run: pip install google-genai")
+    GEMINI_AVAILABLE = False
+
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -97,7 +108,6 @@ def download_image(path: str) -> Image.Image | None:
         url = path
     else:
         url = f"https://image.tmdb.org/t/p/w1280{path}"
-        
     try:
         resp = requests.get(url, timeout=15)
         if resp.status_code == 200:
@@ -106,13 +116,243 @@ def download_image(path: str) -> Image.Image | None:
         return None
     return None
 
+def get_fonts():
+    try:
+        return {
+            "cover_main": ImageFont.truetype(str(BOLD_FONT_PATH), 120),
+            "cover_sub": ImageFont.truetype(str(REGULAR_FONT_PATH), 30),
+            "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
+            "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
+            "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
+            "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
+            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
+        }
+    except:
+        d = ImageFont.load_default()
+        return {k: d for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "cinema", "times"]}
+
+# --- V56: AI ART DIRECTOR LOGIC (Gemini 2.5 Flash) ---
+
+def ask_gemini_for_layout(images: list[Image.Image]):
+    """
+    Sends all images to Gemini 2.5 Flash using the 'google-genai' SDK.
+    Asks for the best background index and the best foreground indices.
+    """
+    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
+        print("⚠️ Gemini not configured. Falling back to simple logic.")
+        return 0, [1, 2, 3, 4] 
+
+    print("🧠 Consulting Gemini 2.5 Flash...")
+    try:
+        # Initialize Client
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        
+        prompt = """
+        You are an art director making a movie collage poster.
+        You have these image candidates (Index 0 onwards).
+        
+        1. Select ONE image to be the BACKGROUND. It should have good negative space, texture, or atmosphere.
+        2. Select 4 to 5 images to be FOREGROUND CUTOUTS. These should have clear human subjects.
+        
+        Return ONLY a raw JSON object:
+        {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
+        """
+        
+        # V56: Using the Stable 'gemini-2.5-flash' model
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=[prompt, *images]
+        )
+        
+        text = response.text
+        
+        # Parse JSON
+        clean_json = re.search(r'\{.*\}', text, re.DOTALL)
+        if clean_json:
+            data = json.loads(clean_json.group(0))
+            bg_idx = data.get("background_index", 0)
+            fg_idxs = data.get("foreground_indices", [1,2,3])
+            print(f"🤖 Gemini chose BG: {bg_idx}, FG: {fg_idxs}")
+            return bg_idx, fg_idxs
+            
+    except Exception as e:
+        print(f"⚠️ Gemini Analysis failed: {e}")
+        
+    return 0, [1, 2, 3, 4]
+
+def remove_background(pil_img: Image.Image) -> Image.Image | None:
+    """Uses Replicate (lucataco/remove-bg) to isolate subjects."""
+    print("✂️ Cutting out sticker...")
+    try:
+        temp_path = BASE_DIR / "temp_rembg_in.png"
+        pil_img.save(temp_path, format="PNG")
+        
+        output = replicate.run(
+            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
+            input={"image": open(temp_path, "rb")}
+        )
+        if temp_path.exists(): os.remove(temp_path)
+        if output:
+            resp = requests.get(str(output))
+            if resp.status_code == 200:
+                return Image.open(BytesIO(resp.content)).convert("RGBA")
+    except Exception as e:
+        print(f"⚠️ Cutout failed: {e}")
+        return None
+    return None
+
+def create_sticker_style(img: Image.Image) -> Image.Image:
+    """Adds a white paper border and a drop shadow."""
+    img = img.convert("RGBA")
+    alpha = img.split()[3]
+    
+    # White Border
+    border_mask = alpha.filter(ImageFilter.MaxFilter(9))
+    sticker_base = Image.new("RGBA", img.size, (255, 255, 255, 0))
+    sticker_base.paste((255, 255, 255, 255), (0,0), mask=border_mask)
+    sticker_base.paste(img, (0,0), mask=alpha)
+    
+    # Drop Shadow
+    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    shadow_mask = border_mask.filter(ImageFilter.GaussianBlur(10))
+    shadow_layer = Image.new("RGBA", img.size, (0,0,0,150))
+    shadow.paste(shadow_layer, (10, 20), mask=shadow_mask)
+    
+    final = Image.new("RGBA", img.size, (0,0,0,0))
+    final.paste(shadow, (0,0), mask=shadow)
+    final.paste(sticker_base, (0,0), mask=sticker_base)
+    return final
+
+def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) -> Image.Image:
+    """
+    V56 Engine: Gemini 2.5 Directed Collage.
+    """
+    canvas = Image.new("RGB", (width, height), (10,10,10))
+    if not images: return canvas
+
+    # 1. Ask Gemini to assign roles
+    bg_idx, fg_idxs = ask_gemini_for_layout(images)
+    
+    # Safety checks
+    if bg_idx >= len(images): bg_idx = 0
+    fg_idxs = [i for i in fg_idxs if i < len(images) and i != bg_idx]
+    
+    # 2. Setup Background
+    bg_img = images[bg_idx]
+    
+    # Fill Canvas Logic
+    bg_ratio = bg_img.width / bg_img.height
+    target_ratio = width / height
+    
+    if bg_ratio > target_ratio:
+        new_h = height
+        new_w = int(new_h * bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - width) // 2
+        bg_img = bg_img.crop((left, 0, left+width, height))
+    else:
+        new_w = width
+        new_h = int(new_w / bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - height) // 2
+        bg_img = bg_img.crop((0, top, width, top+height))
+    
+    # Slight darken (20%) just to make text pop
+    bg_img = ImageEnhance.Brightness(bg_img).enhance(0.8)
+    bg_img = bg_img.filter(ImageFilter.GaussianBlur(2)) 
+    canvas.paste(bg_img, (0,0))
+    
+    # 3. Process Stickers
+    stickers = []
+    print(f"🧩 Processing {len(fg_idxs)} stickers selected by Gemini...")
+    
+    for idx in fg_idxs:
+        raw = images[idx]
+        cutout = remove_background(raw)
+        if cutout:
+            bbox = cutout.getbbox()
+            if bbox:
+                cutout = cutout.crop(bbox)
+                sticker = create_sticker_style(cutout)
+                stickers.append(sticker)
+    
+    # 4. Chaotic Assembly
+    random.shuffle(stickers) 
+    
+    for i, sticker in enumerate(stickers):
+        scale = random.uniform(0.40, 0.80)
+        ratio = sticker.width / sticker.height
+        new_w = int(width * scale)
+        new_h = int(new_w / ratio)
+        
+        s_resized = sticker.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        
+        angle = random.randint(-15, 15)
+        s_rotated = s_resized.rotate(angle, resample=Image.Resampling.BICUBIC, expand=True)
+        
+        max_x = width - s_rotated.width + 50
+        max_y = height - s_rotated.height + 50
+        x = random.randint(-50, max_x)
+        y = random.randint(100, max_y - 100)
+        
+        canvas.paste(s_rotated, (x, y), s_rotated)
+
+    # 5. Texture Overlay
+    noise_data = os.urandom(width * height)
+    noise = Image.frombytes('L', (width, height), noise_data)
+    canvas = Image.blend(canvas, noise.convert("RGB"), alpha=0.06)
+    
+    return canvas
+
+def draw_final_cover(composite, fonts, date_str, day_str, is_story=False):
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    
+    bg = composite.copy()
+    bg_ratio = bg.width / bg.height
+    target_ratio = width / height
+    
+    if bg_ratio > target_ratio:
+        new_h = height
+        new_w = int(new_h * bg_ratio)
+        bg = bg.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - width) // 2
+        bg = bg.crop((left, 0, left+width, height))
+    else:
+        new_w = width
+        new_h = int(new_w / bg_ratio)
+        bg = bg.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - height) // 2
+        bg = bg.crop((0, top, width, top+height))
+        
+    draw = ImageDraw.Draw(bg)
+    cx, cy = width // 2, height // 2
+    offset = -80 if is_story else 0
+    
+    # Text Shadow (Hard)
+    s_off = 4
+    draw.text((cx+s_off, cy - 120 + offset+s_off), "TOKYO", font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    
+    draw.text((cx+s_off, cy + offset+s_off), "CINEMA", font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    
+    try:
+        daily_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
+    except:
+        daily_font = fonts['cover_sub']
+        
+    draw.text((cx, cy + 100 + offset), "DAILY", font=daily_font, fill=(255, 215, 0), anchor="mm")
+    draw.text((cx, cy + 200 + offset), f"{date_str} • {day_str}", font=fonts['meta'], fill=(220,220,220), anchor="mm")
+    return bg
+
+# --- Standard Slide Logic ---
 def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     small = pil_img.resize((150, 150))
     result = small.quantize(colors=3, method=2)
     palette = result.getpalette()
     c1 = (palette[0], palette[1], palette[2])
     c2 = (palette[3], palette[4], palette[5])
-    
     def adjust_for_bg(rgb_tuple, is_accent=False):
         r, g, b = rgb_tuple
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
@@ -127,7 +367,6 @@ def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
                 new_v = 0.20
         nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
         return (int(nr*255), int(ng*255), int(nb*255))
-
     return adjust_for_bg(c1), adjust_for_bg(c2, is_accent=True)
 
 def create_textured_bg(base_color, accent_color, width, height):
@@ -157,240 +396,12 @@ def apply_film_grain(img):
     noise_img = noise_img.convert('RGBA')
     return Image.blend(img, noise_img, alpha=0.05).convert("RGB")
 
-def get_fonts():
-    try:
-        return {
-            "cover_main": ImageFont.truetype(str(BOLD_FONT_PATH), 120),
-            "cover_sub": ImageFont.truetype(str(REGULAR_FONT_PATH), 30),
-            "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
-            "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
-            "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
-            "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
-            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
-        }
-    except:
-        d = ImageFont.load_default()
-        return {k: d for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "cinema", "times"]}
-
 def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     length = draw.textlength(text, font=font)
     x = (canvas_width - length) // 2
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- NEW: COLLAGE PIPELINE (V51 - ImageChops Fix) ---
-
-def remove_background(pil_img: Image.Image) -> Image.Image | None:
-    """Uses Replicate (lucataco/remove-bg) to isolate subjects."""
-    print("✂️ Removing background...")
-    try:
-        temp_path = BASE_DIR / "temp_rembg_in.png"
-        pil_img.save(temp_path, format="PNG")
-        
-        output = replicate.run(
-            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
-            input={"image": open(temp_path, "rb")}
-        )
-        
-        if temp_path.exists(): os.remove(temp_path)
-        
-        if output:
-            resp = requests.get(str(output))
-            if resp.status_code == 200:
-                return Image.open(BytesIO(resp.content)).convert("RGBA")
-    except Exception as e:
-        print(f"⚠️ Rembg failed: {e}")
-        return None
-    return None
-
-def process_cutout(img: Image.Image) -> Image.Image:
-    """
-    V51 Logic: Cleans up the 'Sticker' look.
-    1. Erodes edges (removes halos).
-    2. Feathers edges (soft blend).
-    3. Fades the bottom (removes hard crop lines) using ImageChops.
-    """
-    img = img.convert("RGBA")
-    alpha = img.split()[3]
-    
-    # Erode & Feather
-    alpha = alpha.filter(ImageFilter.MinFilter(3))
-    alpha = alpha.filter(ImageFilter.GaussianBlur(2))
-    
-    # Gradient Fade
-    w, h = alpha.size
-    gradient = Image.new('L', (w, h), 255)
-    g_draw = ImageDraw.Draw(gradient)
-    
-    fade_height = int(h * 0.20) # Bottom 20%
-    if fade_height > 0:
-        for y in range(h - fade_height, h):
-            opacity = int(255 * (1 - ((y - (h - fade_height)) / fade_height)))
-            g_draw.line([(0, y), (w, y)], fill=opacity)
-        
-    # FIX: Use ImageChops.darker to intersect the alpha mask and the gradient fade
-    final_alpha = ImageChops.darker(alpha, gradient)
-    img.putalpha(final_alpha)
-    return img
-
-def create_cutout_collage(images: list[Image.Image], width=896, height=1152) -> Image.Image:
-    """
-    V50/V51: Smart Collage with Feathering & Fading.
-    """
-    canvas = Image.new("RGB", (width, height), (10,10,10))
-    if not images: return canvas
-    
-    # 1. Background Layer
-    bg_img = images[0].copy()
-    bg_ratio = bg_img.width / bg_img.height
-    target_ratio = width / height
-    
-    if bg_ratio > target_ratio:
-        new_h = height
-        new_w = int(new_h * bg_ratio)
-        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-        left = (new_w - width) // 2
-        bg_img = bg_img.crop((left, 0, left+width, height))
-    else:
-        new_w = width
-        new_h = int(new_w / bg_ratio)
-        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-        top = (new_h - height) // 2
-        bg_img = bg_img.crop((0, top, width, top+height))
-    
-    bg_img = bg_img.filter(ImageFilter.GaussianBlur(8)) 
-    enhancer = ImageEnhance.Brightness(bg_img)
-    bg_img = enhancer.enhance(0.4) 
-    canvas.paste(bg_img, (0,0))
-    
-    # 2. Add Cutout Subjects
-    subjects_processed = 0
-    target_subjects = images[1:3] 
-    
-    positions = [
-        {"scale": 0.65, "pos": (int(width * -0.1), int(height * 0.2))}, 
-        {"scale": 0.85, "pos": (int(width * 0.3), int(height * 0.4))}   
-    ]
-    
-    for i, raw_img in enumerate(target_subjects):
-        cutout = remove_background(raw_img)
-        if cutout:
-            # Process edges
-            cutout = process_cutout(cutout)
-            
-            bbox = cutout.getbbox()
-            if bbox:
-                cutout = cutout.crop(bbox)
-                config = positions[i % len(positions)]
-                
-                # Scale
-                scale_factor = (width * config["scale"]) / cutout.width
-                new_w = int(cutout.width * scale_factor)
-                new_h = int(cutout.height * scale_factor)
-                cutout = cutout.resize((new_w, new_h), Image.Resampling.LANCZOS)
-                
-                # Position
-                x, y = config["pos"]
-                if i == 1:
-                    y = height - new_h + 80 
-                
-                canvas.paste(cutout, (x, y), cutout)
-                subjects_processed += 1
-                
-    if subjects_processed == 0:
-        print("⚠️ No subjects found, reverting to simple stack.")
-        return images[0].resize((width, height)) 
-        
-    return canvas
-
-def generate_flux_varnish(images: list[Image.Image]) -> Image.Image | None:
-    print("🎨 Preparing Flux Varnish (V51 Collage Mode)...")
-    
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("⚠️ Replicate Not Configured.")
-        return None
-
-    try:
-        collage_input = create_cutout_collage(images, width=896, height=1152)
-        
-        temp_path = BASE_DIR / "temp_init_flux.png"
-        collage_input.save(temp_path, format="PNG")
-        
-        print("🚀 Sending to Replicate (Flux Varnish)...")
-        
-        output = replicate.run(
-            "black-forest-labs/flux-dev",
-            input={
-                "image": open(temp_path, "rb"),
-                "prompt": "Cinematic movie poster collage, character ensemble, complex composition, multiple subjects, seamless integration, film grain, color grading, high quality, detailed.",
-                "go_fast": True,
-                "guidance": 3.0,
-                "megapixels": "1",
-                "num_outputs": 1,
-                "aspect_ratio": "4:5",
-                "output_format": "png",
-                "output_quality": 90,
-                "prompt_strength": 0.45, 
-                "num_inference_steps": 28
-            }
-        )
-        
-        if temp_path.exists(): os.remove(temp_path)
-
-        if output:
-            image_url = str(output[0])
-            print(f"📥 Downloading result: {image_url}")
-            resp = requests.get(image_url)
-            if resp.status_code == 200:
-                return Image.open(BytesIO(resp.content))
-            
-    except Exception as e:
-        print(f"⚠️ Replicate Pipeline failed: {e}")
-        return None
-    
-    return None
-
-def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
-    width = CANVAS_WIDTH
-    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    bg = Image.new("RGB", (width, height), (20,20,20))
-    
-    if ai_image:
-        img_ratio = ai_image.width / ai_image.height
-        target_ratio = width / height
-        if img_ratio > target_ratio:
-            new_h = height
-            new_w = int(new_h * img_ratio)
-            resized = ai_image.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            left = (new_w - width) // 2
-            bg.paste(resized, (-left, 0))
-        else:
-            new_w = width
-            new_h = int(new_w / img_ratio)
-            resized = ai_image.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            top = (new_h - height) // 2
-            bg.paste(resized, (0, -top))
-    
-    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 100))
-    bg.paste(overlay, (0, 0), overlay)
-    
-    draw = ImageDraw.Draw(bg)
-    cx, cy = width // 2, height // 2
-    offset = -80 if is_story else 0
-    
-    draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    
-    try:
-        daily_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
-    except:
-        daily_font = fonts['cover_sub']
-        
-    draw.text((cx, cy + 100 + offset), "DAILY", font=daily_font, fill=(255, 215, 0), anchor="mm")
-    draw.text((cx, cy + 200 + offset), f"{date_str} • {day_str}", font=fonts['meta'], fill=(220,220,220), anchor="mm")
-    return bg
-
-# --- Standard Slide Logic ---
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
@@ -501,31 +512,8 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
 
     return canvas
 
-def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
-    width = CANVAS_WIDTH
-    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    if images:
-        bg = images[0].resize((width, int(width * images[0].height / images[0].width)))
-        if bg.height < height: bg = bg.resize((int(height * bg.width / bg.height), height))
-        left = (bg.width - width) // 2
-        top = (bg.height - height) // 2
-        bg = bg.crop((left, top, left + width, top + height))
-    else:
-        bg = Image.new("RGB", (width, height), (20,20,20))
-    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
-    bg.paste(overlay, (0, 0), overlay)
-    draw = ImageDraw.Draw(bg)
-    cx, cy = width // 2, height // 2
-    offset = -80 if is_story else 0
-    draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 180 + offset), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
-    return bg
-
-# --- Main Execution ---
-
 def main():
-    print("--- Starting V51 (Ensemble Cutout Collage + Fixes) ---")
+    print("--- Starting V56 (Gemini 2.5 Flash + Replicate Collage) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
@@ -572,16 +560,17 @@ def main():
 
     d_str, day_str = get_bilingual_date()
     
-    ai_art = generate_flux_varnish(cover_images)
+    # Updated: V56 Engine
+    collage = create_chaotic_collage(cover_images)
     
-    if ai_art:
-        print("✅ Flux Collage Successful!")
-        cover_feed = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=False)
-        cover_story = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=True)
+    if collage:
+        print("✅ Collage Assembled!")
+        cover_feed = draw_final_cover(collage, fonts, d_str, day_str, is_story=False)
+        cover_story = draw_final_cover(collage, fonts, d_str, day_str, is_story=True)
         cover_feed.save(BASE_DIR / "post_v3_image_00.png")
         cover_story.save(BASE_DIR / "story_v3_image_00.png")
     else:
-        print("⚠️ AI Failed. Using Fallback.")
+        print("⚠️ Collage Failed. Using Fallback.")
         fb_feed = draw_fallback_cover(cover_images, fonts, d_str, day_str, is_story=False)
         fb_feed.save(BASE_DIR / "post_v3_image_00.png")
         fb_story = draw_fallback_cover(cover_images, fonts, d_str, day_str, is_story=True)
@@ -611,7 +600,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V51 Generated.")
+    print("Done. V56 Generated.")
 
 if __name__ == "__main__":
     main()
