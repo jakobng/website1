@@ -1,10 +1,9 @@
 """
-Generate Instagram-ready image carousel (V56 - The Gemini 2.5 Flash Art Director).
+Generate Instagram-ready image carousel (V57 - Bugfix & Stability).
 
+- Fix: Prevents 'ValueError: empty range' by constraining sticker height.
 - Strategy: "Smart Collage" (Gemini 2.5 Selection + Replicate Cutouts).
-- Update V56: 
-  - Switched Model to 'gemini-2.5-flash' (Stable, June 2025 release).
-  - Uses modern 'google-genai' SDK.
+- SDK: google-genai + Replicate.
 """
 from __future__ import annotations
 
@@ -34,7 +33,6 @@ except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
-# V56: Modern Google SDK
 try:
     from google import genai
     from google.genai import types
@@ -131,12 +129,11 @@ def get_fonts():
         d = ImageFont.load_default()
         return {k: d for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "cinema", "times"]}
 
-# --- V56: AI ART DIRECTOR LOGIC (Gemini 2.5 Flash) ---
+# --- V57: AI ART DIRECTOR LOGIC ---
 
 def ask_gemini_for_layout(images: list[Image.Image]):
     """
     Sends all images to Gemini 2.5 Flash using the 'google-genai' SDK.
-    Asks for the best background index and the best foreground indices.
     """
     if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
         print("⚠️ Gemini not configured. Falling back to simple logic.")
@@ -144,7 +141,6 @@ def ask_gemini_for_layout(images: list[Image.Image]):
 
     print("🧠 Consulting Gemini 2.5 Flash...")
     try:
-        # Initialize Client
         client = genai.Client(api_key=GEMINI_API_KEY)
         
         prompt = """
@@ -158,15 +154,12 @@ def ask_gemini_for_layout(images: list[Image.Image]):
         {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
         """
         
-        # V56: Using the Stable 'gemini-2.5-flash' model
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=[prompt, *images]
         )
         
         text = response.text
-        
-        # Parse JSON
         clean_json = re.search(r'\{.*\}', text, re.DOTALL)
         if clean_json:
             data = json.loads(clean_json.group(0))
@@ -225,22 +218,18 @@ def create_sticker_style(img: Image.Image) -> Image.Image:
 
 def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) -> Image.Image:
     """
-    V56 Engine: Gemini 2.5 Directed Collage.
+    V57 Engine: Gemini Directed Collage (With Size Safety).
     """
     canvas = Image.new("RGB", (width, height), (10,10,10))
     if not images: return canvas
 
-    # 1. Ask Gemini to assign roles
+    # 1. Ask Gemini
     bg_idx, fg_idxs = ask_gemini_for_layout(images)
-    
-    # Safety checks
     if bg_idx >= len(images): bg_idx = 0
     fg_idxs = [i for i in fg_idxs if i < len(images) and i != bg_idx]
     
     # 2. Setup Background
     bg_img = images[bg_idx]
-    
-    # Fill Canvas Logic
     bg_ratio = bg_img.width / bg_img.height
     target_ratio = width / height
     
@@ -257,7 +246,6 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
         top = (new_h - height) // 2
         bg_img = bg_img.crop((0, top, width, top+height))
     
-    # Slight darken (20%) just to make text pop
     bg_img = ImageEnhance.Brightness(bg_img).enhance(0.8)
     bg_img = bg_img.filter(ImageFilter.GaussianBlur(2)) 
     canvas.paste(bg_img, (0,0))
@@ -285,15 +273,31 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
         new_w = int(width * scale)
         new_h = int(new_w / ratio)
         
+        # FIX V57: Hard Cap Height at 85% of Canvas to prevent crash
+        if new_h > int(height * 0.85):
+            new_h = int(height * 0.85)
+            new_w = int(new_h * ratio)
+        
         s_resized = sticker.resize((new_w, new_h), Image.Resampling.LANCZOS)
         
         angle = random.randint(-15, 15)
         s_rotated = s_resized.rotate(angle, resample=Image.Resampling.BICUBIC, expand=True)
         
+        # Calculate Safe Bounds
+        min_x = -50
         max_x = width - s_rotated.width + 50
-        max_y = height - s_rotated.height + 50
-        x = random.randint(-50, max_x)
-        y = random.randint(100, max_y - 100)
+        if max_x < min_x: max_x = min_x # Safety
+        
+        x = random.randint(min_x, max_x)
+        
+        min_y = 100
+        max_y = height - s_rotated.height - 50
+        
+        # FIX V57: Handle massive images that exceed bounds
+        if max_y < min_y:
+            y = (height - s_rotated.height) // 2 # Center it
+        else:
+            y = random.randint(min_y, max_y)
         
         canvas.paste(s_rotated, (x, y), s_rotated)
 
@@ -329,7 +333,6 @@ def draw_final_cover(composite, fonts, date_str, day_str, is_story=False):
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
     
-    # Text Shadow (Hard)
     s_off = 4
     draw.text((cx+s_off, cy - 120 + offset+s_off), "TOKYO", font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
     draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
@@ -513,7 +516,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     return canvas
 
 def main():
-    print("--- Starting V56 (Gemini 2.5 Flash + Replicate Collage) ---")
+    print("--- Starting V57 (Gemini 2.5 Flash + Bugfixes) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
@@ -560,7 +563,6 @@ def main():
 
     d_str, day_str = get_bilingual_date()
     
-    # Updated: V56 Engine
     collage = create_chaotic_collage(cover_images)
     
     if collage:
@@ -600,7 +602,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V56 Generated.")
+    print("Done. V57 Generated.")
 
 if __name__ == "__main__":
     main()
