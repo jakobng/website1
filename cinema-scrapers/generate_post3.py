@@ -34,8 +34,8 @@ except ImportError:
     print("⚠️ 'google-genai' library not found. Install via: pip install google-genai")
     AI_AVAILABLE = False
 
-# !!! PASTE YOUR API KEY HERE !!!
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_API_KEY_HERE")
+# This line reads the key from your GitHub Secret (via the workflow 'env' block)
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -189,8 +189,8 @@ def generate_ai_mashup(images: list[Image.Image]) -> Image.Image | None:
         print("⚠️ library google-genai not installed.")
         return None
     
-    if not GEMINI_API_KEY or "YOUR_API_KEY" in GEMINI_API_KEY:
-        print("⚠️ No API Key configured.")
+    if not GEMINI_API_KEY:
+        print("⚠️ No GEMINI_API_KEY found in environment.")
         return None
 
     try:
@@ -236,7 +236,7 @@ def generate_ai_mashup(images: list[Image.Image]) -> Image.Image | None:
     
     return None
 
-# --- Standard Slide Logic (V28) ---
+# --- Standard Slide Logic ---
 
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
@@ -392,7 +392,10 @@ def main():
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
 
     date_str = get_today_str()
-    if not SHOWTIMES_PATH.exists(): return
+    if not SHOWTIMES_PATH.exists(): 
+        print(f"Showtimes file not found at {SHOWTIMES_PATH}")
+        return
+        
     with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
         
@@ -412,7 +415,7 @@ def main():
     selected = all_films[:9]
     
     if not selected:
-        print("No films found.")
+        print("No films found matching today's date.")
         return
 
     print(f"Selected {len(selected)} films.")
@@ -432,12 +435,14 @@ def main():
         return
 
     # 2. GENERATE COVER
-    print("🎨 Generating AI Cover...")
+    print("🎨 Generating Cover...")
     d_str, day_str = get_bilingual_date()
     
+    # Try AI generation first
     ai_cover = generate_ai_mashup(cover_images)
     
     if ai_cover:
+        print("✅ AI Cover Generated Successfully.")
         # Resize/Crop AI result
         # For Feed (4:5)
         cover_feed = ai_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * ai_cover.height / ai_cover.width)))
@@ -451,10 +456,8 @@ def main():
         feed_final.save(BASE_DIR / "post_v3_image_00.png")
 
         # For Story (9:16)
-        # We might need to stretch or re-crop specifically for vertical
         cover_story = ai_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * ai_cover.height / ai_cover.width)))
         story_bg = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), (0,0,0))
-        # Center in the tall canvas
         y_pos = (STORY_CANVAS_HEIGHT - cover_story.height) // 2
         story_bg.paste(cover_story, (0, y_pos))
         story_bg.save(BASE_DIR / "story_v3_image_00.png")
