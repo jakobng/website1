@@ -3,6 +3,7 @@ Generate Instagram-ready image carousel (V1 - "The Dream Montage").
 - Tech: 5 Cutouts -> Layout -> Mask Dilation (Edge Blending) -> Inpaint (Surreal Texture).
 - Style: Edges transition smoothly, no "wall", wild/blendy look.
 - Text: Date Pill Only.
+- Fixed: Restored missing CINEMA_ENGLISH_NAMES variable.
 """
 from __future__ import annotations
 
@@ -96,6 +97,38 @@ CINEMA_ADDRESSES = {
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F\n4F, 1-5-1 Kichijoji Honcho, Musashino-shi, Tokyo",
     "Tollywood": "東京都世田谷区代沢5-32-5 2F\n2F, 5-32-5 Daizawa, Setagaya-ku, Tokyo",
     "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F\nB1F, 2-12-19 Asagayakita, Suginami-ku, Tokyo"
+}
+
+# --- RESTORED ENGLISH NAMES DICTIONARY ---
+CINEMA_ENGLISH_NAMES = {
+    "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
+    "K's Cinema (ケイズシネマ)": "K's Cinema",
+    "シネマート新宿": "Cinemart Shinjuku",
+    "新宿シネマカリテ": "Shinjuku Cinema Qualite",
+    "新宿武蔵野館": "Shinjuku Musashino-kan",
+    "テアトル新宿": "Theatre Shinjuku",
+    "早稲田松竹": "Waseda Shochiku",
+    "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
+    "シアター・イメージフォーラム": "Theatre Image Forum",
+    "ユーロスペース": "Eurospace",
+    "ヒューマントラストシネマ渋谷": "Human Trust Cinema Shibuya",
+    "Stranger (ストレンジャー)": "Stranger",
+    "新文芸坐": "Shin-Bungeiza",
+    "目黒シネマ": "Meguro Cinema",
+    "ポレポレ東中野": "Pole Pole Higashi-Nakano",
+    "K2 Cinema": "K2 Cinema",
+    "ヒューマントラストシネマ有楽町": "Human Trust Cinema Yurakucho",
+    "ラピュタ阿佐ヶ谷": "Laputa Asagaya",
+    "下高井戸シネマ": "Shimotakaido Cinema",
+    "国立映画アーカイブ": "National Film Archive of Japan",
+    "池袋シネマ・ロサ": "Ikebukuro Cinema Rosa",
+    "シネスイッチ銀座": "Cine Switch Ginza",
+    "シネマブルースタジオ": "Cinema Blue Studio",
+    "CINEMA Chupki TABATA": "Cinema Chupki Tabata",
+    "シネクイント": "Cine Quinto Shibuya",
+    "アップリンク吉祥寺": "Uplink Kichijoji",
+    "Morc阿佐ヶ谷": "Morc Asagaya",
+    "Tollywood": "Tollywood"
 }
 
 # --- Utility Functions ---
@@ -315,7 +348,7 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
     # We want the Inpainter to touch the edges of the cutouts.
     # Currently, cutouts are 0 (Black). We want to shrink the Black area
     # so the White (Fill) area overlaps the edge of the photos.
-    # MaxFilter(15) expands the White pixels by ~15px into the Black pixels.
+    # MaxFilter(25) expands the White pixels by ~25px into the Black pixels.
     print("   💧 Dilating mask to force edge blending...")
     mask = mask.filter(ImageFilter.MaxFilter(25)) # 25px overlap for serious blending
 
@@ -381,7 +414,7 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """Adds ONLY the Date Pill."""
+    """Adds ONLY the Date Pill. Removes big title."""
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
