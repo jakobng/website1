@@ -1,5 +1,5 @@
 """
-generate_post2.py (Shortened Version)
+generate_post3.py (Shortened Version)
 -------------------------------------
 Creates ONE AI-inpainted collage cover made from today's movie stills.
 
@@ -57,16 +57,35 @@ def get_today_str():
 
 def pick_stills_for_today(showtimes):
     """
-    Exact same selection logic as your original:
-    Pick up to NUM_STILLS stills that exist in STILLS_DIR.
+    Select up to NUM_STILLS stills using the same logic
+    as your old generate_post2.py file.
     """
     candidates = []
+
     for s in showtimes:
-        still = s.get("still_path") or s.get("still")
+        # 1. First preference: local downloaded image path
+        local = s.get("image_local_path")
+        if local:
+            p = BASE_DIR / local
+            if p.exists():
+                candidates.append(p)
+                continue
+
+        # 2. Second: s.get("still") (older naming)
+        still = s.get("still")
         if still:
             p = STILLS_DIR / still
             if p.exists():
                 candidates.append(p)
+                continue
+
+        # 3. Third: s.get("still_path") (rare)
+        still2 = s.get("still_path")
+        if still2:
+            p = STILLS_DIR / still2
+            if p.exists():
+                candidates.append(p)
+                continue
 
     random.shuffle(candidates)
     return candidates[:NUM_STILLS]
