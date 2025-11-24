@@ -1,9 +1,11 @@
 """
-Generate Instagram-ready image carousel (V35 - Ghost Blend Mashup).
+Generate Instagram-ready image carousel (V36 - Squash & Mash).
 
-- MAJOR CHANGE: Instead of stacking images vertically, this script blends all 3
-  images on top of each other (Triple Exposure) before sending to AI.
-- Result: The AI receives a "Ghost" image and forces a true artistic mashup.
+- Logic:
+  1. Creates a "Side-by-Side" strip of 3 images.
+  2. "Squashes" that wide strip into the vertical 4:5 canvas (intentional distortion).
+  3. Sends this to Stability AI (Strength 0.75) to "repair" and mash them up.
+  4. Result: A vertical poster containing elements of all 3 films, blended organically.
 """
 from __future__ import annotations
 
@@ -169,50 +171,41 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
 
 # --- STABILITY AI (IMG2IMG) PIPELINE ---
 
-def create_ghost_composite(images, width=896, height=1152):
+def create_squashed_strip(images, target_w=896, target_h=1152):
     """
-    Creates a 'Ghost' composite by creating a triple exposure.
-    Each image is resized to fill the WHOLE canvas and blended.
-    This destroys the 'strip' layout completely.
+    1. Stitches images SIDE-BY-SIDE (creating a very wide image).
+    2. Resizes (Squashes) that wide image into the vertical target dimensions.
+    3. The AI will receive this distorted image and 'fix' it.
     """
-    canvas = Image.new("RGB", (width, height), (0,0,0))
-    if not images: return canvas
+    if not images: 
+        return Image.new("RGB", (target_w, target_h), (0,0,0))
     
-    # Use top 3 images
     source_imgs = images[:3]
     
-    # 1. Base Layer (Image 1 - 100% Opacity)
-    def fill_canvas(img):
-        # Center crop to fill entire 896x1152 canvas
-        img_ratio = img.width / img.height
-        target_ratio = width / height
-        if img_ratio > target_ratio:
-            new_h = height
-            new_w = int(new_h * img_ratio)
-            resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            left = (new_w - width) // 2
-            return resized.crop((left, 0, left + width, height))
-        else:
-            new_w = width
-            new_h = int(new_w / img_ratio)
-            resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            top = (new_h - height) // 2
-            return resized.crop((0, top, width, top + height))
-
-    # Start with first image
-    composite = fill_canvas(source_imgs[0])
+    # 1. Create the Wide Strip
+    # Assume base height of 800px
+    base_h = 800
+    total_w = 0
     
-    # 2. Blend Layer 2 (50% Opacity)
-    if len(source_imgs) > 1:
-        layer2 = fill_canvas(source_imgs[1])
-        composite = Image.blend(composite, layer2, alpha=0.5)
+    resized_sources = []
+    for img in source_imgs:
+        ratio = img.width / img.height
+        new_w = int(base_h * ratio)
+        resized = img.resize((new_w, base_h), Image.Resampling.LANCZOS)
+        resized_sources.append(resized)
+        total_w += new_w
         
-    # 3. Blend Layer 3 (33% Opacity)
-    if len(source_imgs) > 2:
-        layer3 = fill_canvas(source_imgs[2])
-        composite = Image.blend(composite, layer3, alpha=0.33)
+    strip = Image.new("RGB", (total_w, base_h), (0,0,0))
+    current_x = 0
+    for img in resized_sources:
+        strip.paste(img, (current_x, 0))
+        current_x += img.width
         
-    return composite
+    # 2. Squash it into the vertical target
+    # This will look vertically stretched/distorted. This is intentional.
+    squashed = strip.resize((target_w, target_h), Image.Resampling.LANCZOS)
+    
+    return squashed
 
 def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
     print("🎨 Preparing Stability AI (SD 3.5 Large) Mashup...")
@@ -222,15 +215,15 @@ def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
         return None
 
     try:
-        # 1. Create Ghost Image (Triple Exposure)
-        init_img = create_ghost_composite(images, width=896, height=1152)
+        # 1. Create 'Squashed' Init Image (896x1152 is SD3 native vertical)
+        init_img = create_squashed_strip(images, target_w=896, target_h=1152)
         buf = BytesIO()
         init_img.save(buf, format="PNG")
         init_bytes = buf.getvalue()
 
         # 2. Call Stability AI
-        # We lower strength slightly (0.65) because the input is already a mashup.
-        # We just need the AI to make it look "good" instead of messy.
+        # We use high strength (0.75) to allow the AI to "un-distort" the subjects
+        # while keeping the composition of the 3 merged scenes.
         response = requests.post(
             "https://api.stability.ai/v2beta/stable-image/generate/sd3",
             headers={
@@ -241,9 +234,10 @@ def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
                 "image": init_bytes 
             },
             data={
-                "prompt": "Abstract cinematic movie poster, double exposure masterpiece, multiple faces blending, surreal, dreamlike, film grain, Tokyo noir style, high contrast, 8k",
+                # Prompt instructs AI to normalize the proportions
+                "prompt": "Abstract cinematic movie poster, montage of three films, vertical composition, correct proportions, highly detailed, moody lighting, Tokyo street style, 8k masterpiece",
                 "mode": "image-to-image",
-                "strength": 0.65, 
+                "strength": 0.75, 
                 "model": "sd3.5-large",
                 "output_format": "png"
             }
@@ -287,8 +281,8 @@ def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
             top = (new_h - height) // 2
             bg.paste(resized, (0, -top))
     
-    # Darken for Text (Slightly heavier since mashups are busy)
-    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 120))
+    # Darken for Text
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 100))
     bg.paste(overlay, (0, 0), overlay)
     
     draw = ImageDraw.Draw(bg)
@@ -446,7 +440,7 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V35 (Ghost Blend Mashup) ---")
+    print("--- Starting V36 (Squash & Mash) ---")
     
     # 1. Clean
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
@@ -495,7 +489,7 @@ def main():
     # 2. GENERATE COVER (Stability AI)
     d_str, day_str = get_bilingual_date()
     
-    print("🎨 Contacting Stability AI (Triple Exposure Mode)...")
+    print("🎨 Contacting Stability AI (Squash & Repair Mode)...")
     ai_art = generate_stability_mashup(cover_images)
     
     if ai_art:
@@ -536,7 +530,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V35 Generated.")
+    print("Done. V36 Generated.")
 
 if __name__ == "__main__":
     main()
