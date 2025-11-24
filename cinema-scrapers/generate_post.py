@@ -1,6 +1,8 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Inpainted Assemblage").
-FIXED: replaced dead SDXL model ID with standard Stability AI Inpainting model.
+Generate Instagram-ready image carousel (V1 - "The Dream Montage").
+- Tech: 5 Cutouts -> Layout -> Mask Dilation (Edge Blending) -> Inpaint (Surreal Texture).
+- Style: Edges transition smoothly, no "wall", wild/blendy look.
+- Text: Date Pill Only.
 """
 from __future__ import annotations
 
@@ -94,37 +96,6 @@ CINEMA_ADDRESSES = {
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F\n4F, 1-5-1 Kichijoji Honcho, Musashino-shi, Tokyo",
     "Tollywood": "東京都世田谷区代沢5-32-5 2F\n2F, 5-32-5 Daizawa, Setagaya-ku, Tokyo",
     "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F\nB1F, 2-12-19 Asagayakita, Suginami-ku, Tokyo"
-}
-
-CINEMA_ENGLISH_NAMES = {
-    "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
-    "K's Cinema (ケイズシネマ)": "K's Cinema",
-    "シネマート新宿": "Cinemart Shinjuku",
-    "新宿シネマカリテ": "Shinjuku Cinema Qualite",
-    "新宿武蔵野館": "Shinjuku Musashino-kan",
-    "テアトル新宿": "Theatre Shinjuku",
-    "早稲田松竹": "Waseda Shochiku",
-    "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
-    "シアター・イメージフォーラム": "Theatre Image Forum",
-    "ユーロスペース": "Eurospace",
-    "ヒューマントラストシネマ渋谷": "Human Trust Cinema Shibuya",
-    "Stranger (ストレンジャー)": "Stranger",
-    "新文芸坐": "Shin-Bungeiza",
-    "目黒シネマ": "Meguro Cinema",
-    "ポレポレ東中野": "Pole Pole Higashi-Nakano",
-    "K2 Cinema": "K2 Cinema",
-    "ヒューマントラストシネマ有楽町": "Human Trust Cinema Yurakucho",
-    "ラピュタ阿佐ヶ谷": "Laputa Asagaya",
-    "下高井戸シネマ": "Shimotakaido Cinema",
-    "国立映画アーカイブ": "National Film Archive of Japan",
-    "池袋シネマ・ロサ": "Ikebukuro Cinema Rosa",
-    "シネスイッチ銀座": "Cine Switch Ginza",
-    "シネマブルースタジオ": "Cinema Blue Studio",
-    "CINEMA Chupki TABATA": "Cinema Chupki Tabata",
-    "シネクイント": "Cine Quinto Shibuya",
-    "アップリンク吉祥寺": "Uplink Kichijoji",
-    "Morc阿佐ヶ谷": "Morc Asagaya",
-    "Tollywood": "Tollywood"
 }
 
 # --- Utility Functions ---
@@ -282,8 +253,8 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
 
 def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image]:
     """
-    Arranges cutouts on a canvas AND creates a corresponding binary mask.
-    MASK LOGIC: White (255) = Area to fill. Black (0) = Area to keep (cutouts).
+    Arranges 5 cutouts. 
+    MASK LOGIC: Expands "Fill Area" into the image edges to force blending.
     """
     width = CANVAS_WIDTH
     height = CANVAS_HEIGHT
@@ -294,7 +265,7 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
     # Init Mask (Starts WHITE = "Fill Everything")
     mask = Image.new("L", (width, height), 255)
     
-    # Use up to 5 images
+    # Ensure up to 5 images
     imgs_to_process = cinemas[:5]
     if len(imgs_to_process) < 5:
         imgs_to_process = (imgs_to_process * 3)[:5]
@@ -317,12 +288,15 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
             
-            max_dim = 550
+            # Scale Variance
+            scale_variance = random.uniform(0.8, 1.2)
+            max_dim = int(500 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
             
             cx, cy = anchors[i]
-            cx += random.randint(-50, 50)
-            cy += random.randint(-50, 50)
+            # Jitter
+            cx += random.randint(-60, 60)
+            cy += random.randint(-60, 60)
             
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
@@ -337,18 +311,23 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # Ensure binary mask
-    mask = mask.point(lambda p: 255 if p > 128 else 0)
-    
+    # --- CRITICAL CHANGE FOR "BLENDY/BLURRY" LOOK ---
+    # We want the Inpainter to touch the edges of the cutouts.
+    # Currently, cutouts are 0 (Black). We want to shrink the Black area
+    # so the White (Fill) area overlaps the edge of the photos.
+    # MaxFilter(15) expands the White pixels by ~15px into the Black pixels.
+    print("   💧 Dilating mask to force edge blending...")
+    mask = mask.filter(ImageFilter.MaxFilter(25)) # 25px overlap for serious blending
+
     return layout.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to fill white areas (Mask=255) with architecture."""
+    """Uses Stability AI Inpaint to create a dreamy, blendy montage."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps with Stable Diffusion Inpainting...")
+    print("   🎨 Inpainting gaps (Dreamy Montage)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
@@ -356,21 +335,20 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         layout_img.save(temp_img_path, format="PNG")
         mask_img.save(temp_mask_path, format="PNG")
         
-        # Using the standard Stability AI Inpainting model (Reliable/Public)
-        # Version: stability-ai/stable-diffusion-inpainting
         output = replicate.run(
             "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                "prompt": "abstract minimalist architectural geometry, concrete wall texture, connecting structures, bauhaus style, soft lighting, 8k, seamless blend",
-                "negative_prompt": "text, watermark, chaotic, messy, dark, distorted, low resolution",
-                "num_inference_steps": 25,
-                "guidance_scale": 7.5
+                # PROMPT: No walls. Just abstract cinematic texture and blending.
+                "prompt": "abstract cinematic montage, double exposure, film grain, light leaks, motion blur, surreal dreamscape, seamless blend of textures, neutral tones, 8k",
+                "negative_prompt": "text, watermark, concrete wall, solid background, sharp edges, cartoon, drawing",
+                "num_inference_steps": 30,
+                "guidance_scale": 8.0, 
+                "strength": 0.9 # High strength to force blending
             }
         )
         
-        # Cleanup
         if temp_img_path.exists(): os.remove(temp_img_path)
         if temp_mask_path.exists(): os.remove(temp_mask_path)
         
@@ -403,36 +381,21 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """Adds standard typography over the background."""
+    """Adds ONLY the Date Pill."""
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
     
     try:
-        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 90)
-        sub_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
-        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 30)
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 28)
     except:
-        header_font = ImageFont.load_default()
-        sub_font = ImageFont.load_default()
         date_font = ImageFont.load_default()
-        
-    start_x = 60
-    start_y = 60
     
-    # White box behind text to ensure readability over busy inpaint
-    draw.rectangle([start_x - 10, start_y - 10, start_x + 500, start_y + 400], fill=(255, 255, 255, 230))
-
-    draw.rectangle([start_x, start_y, start_x + 350, start_y + 50], fill=(20, 20, 20))
-    draw.text((start_x + 20, start_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
+    # Date Pill (Top Left)
+    pill_x, pill_y = 60, 60
+    draw.rectangle([pill_x, pill_y, pill_x + 320, pill_y + 50], fill=(20, 20, 20))
+    draw.text((pill_x + 20, pill_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
     
-    draw.text((start_x, start_y + 70), "TOKYO", font=header_font, fill=BLACK)
-    draw.text((start_x, start_y + 160), "CINEMA", font=header_font, fill=BLACK)
-    draw.text((start_x, start_y + 250), "INDEX", font=header_font, fill=BLACK)
-    
-    draw.line([(start_x, start_y + 360), (start_x + 200, start_y + 360)], fill=BLACK, width=4)
-    draw.text((start_x, start_y + 380), "Today's Showtimes", font=sub_font, fill=GRAY)
-
     return Image.alpha_composite(img, overlay).convert("RGB")
 
 # --- SLIDES (UNCHANGED) ---
@@ -596,38 +559,37 @@ def main() -> None:
             current_slide_count += needed
     if not final_selection: return
 
-    # --- 5. COVER GENERATION (Step 2: Inpainted Assemblage) ---
-    print("--- Generating V1 Cover (Inpainted Assemblage) ---")
+    # --- 5. COVER GENERATION (Dream Montage) ---
+    print("--- Generating V1 Cover (Dream Montage) ---")
     
-    # Select Assets (Use up to 5)
-    asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
+    # Select Assets (Try for 5 UNIQUE assets)
+    available_asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
+    random.shuffle(available_asset_candidates)
+    
     collage_inputs = []
-    if len(asset_candidates) >= 1:
-        random.shuffle(asset_candidates)
-        # Prioritize carousel cinemas
-        for c in asset_candidates[:5]:
-             collage_inputs.append((c, get_cinema_image_path(c)))
-        
-        # Fill rest with randoms if needed
-        if len(collage_inputs) < 5:
-            all_assets = list(ASSETS_DIR.glob("*.jpg"))
-            random.shuffle(all_assets)
-            for p in all_assets:
-                if len(collage_inputs) >= 5: break
-                if not any(x[1] == p for x in collage_inputs):
-                    collage_inputs.append(("Feature", p))
-    else:
-        # Fallback to randoms
+    
+    # 1. Add unique cinemas from today's list
+    for name in available_asset_candidates:
+        path = get_cinema_image_path(name)
+        if path and not any(c[1] == path for c in collage_inputs):
+            collage_inputs.append((name, path))
+        if len(collage_inputs) >= 5: break
+    
+    # 2. Fill rest
+    if len(collage_inputs) < 5:
         all_assets = list(ASSETS_DIR.glob("*.jpg"))
         random.shuffle(all_assets)
-        for p in all_assets[:5]: collage_inputs.append(("Cinema", p))
+        for p in all_assets:
+            if len(collage_inputs) >= 5: break
+            if not any(c[1] == p for c in collage_inputs):
+                 collage_inputs.append(("Feature", p))
 
     if collage_inputs:
-        # A. Create Layout + Mask
+        # A. Create Layout + DILATED Mask
         layout_img, mask_img = create_layout_and_mask(collage_inputs)
-        # B. Inpaint the Gaps (The Masked Area)
+        # B. Inpaint the Gaps (Dream Texture)
         inpainted_img = inpaint_gaps(layout_img, mask_img)
-        # C. Text Overlay
+        # C. Text Overlay (Date Only)
         final_cover = draw_cover_overlay(inpainted_img, bilingual_date_str)
         
         final_cover.save(BASE_DIR / f"post_image_00.png")
