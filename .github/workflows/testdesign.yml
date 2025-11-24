@@ -22,15 +22,15 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # Added 'requests' for TMDB fetching
-          pip install requests Pillow tzdata
+          # Added 'replicate' for AI processing
+          pip install requests Pillow tzdata replicate
 
-      - name: Run Generator (Cinematic Mode)
+      - name: Run Generator (Hallucinated Assemblage)
         working-directory: './cinema-scrapers'
         run: python generate_post.py
-        # IMPORTANT: Pass the API Key here!
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
 
       - name: Commit Generated Images for Inspection
         id: commit_push
@@ -39,7 +39,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
           git add 'cinema-scrapers/post_image_*.png'
-          git add 'cinema-scrapers/story_image_*.png'  # <--- NEW LINE ADDED
+          git add 'cinema-scrapers/story_image_*.png'
           git add 'cinema-scrapers/post_caption.txt'
           
           if git diff --staged --quiet; then
@@ -48,7 +48,7 @@ jobs:
             exit 0
           fi
           
-          git commit -m "DESIGN TEST: Generated Cinematic Backdrop slides"
+          git commit -m "DESIGN TEST: Generated Hallucinated Assemblage slides"
           git pull origin main --rebase
           git push
           echo "pushed=true" >> $GITHUB_OUTPUT
