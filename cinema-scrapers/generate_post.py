@@ -400,20 +400,49 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """Adds ONLY the Date Pill."""
+    """
+    Adds the Title and Date overlay.
+    Style: Top Left, Bold, Bilingual Title + Date.
+    Color: White text with Drop Shadow (No accent lines).
+    """
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
     
     try:
-        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 28)
-    except:
+        # Load fonts using the global BOLD_FONT_PATH
+        title_font_en = ImageFont.truetype(str(BOLD_FONT_PATH), 80) # Large English
+        title_font_jp = ImageFont.truetype(str(BOLD_FONT_PATH), 40) # Medium Japanese
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)     # Small Date
+    except Exception:
+        title_font_en = ImageFont.load_default()
+        title_font_jp = ImageFont.load_default()
         date_font = ImageFont.load_default()
     
-    # Date Pill (Top Left)
-    pill_x, pill_y = 60, 60
-    draw.rectangle([pill_x, pill_y, pill_x + 320, pill_y + 50], fill=(20, 20, 20))
-    draw.text((pill_x + 20, pill_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
+    # Text Content
+    title_en = "TOKYO CINEMA INDEX"
+    title_jp = "東京シネマインデックス"
+    
+    # Coordinates (Top Left with standard margin)
+    x = 60
+    y = 60
+    
+    # Vertical spacing
+    y_jp = y + 95   # Spacing for JP title below English
+    y_date = y + 160 # Spacing for Date below JP title
+    
+    # 1. Drop Shadows (Essential for legibility on chaotic backgrounds)
+    shadow_color = (20, 20, 20, 180) # Semi-transparent black
+    offset = 4
+    
+    draw.text((x + offset, y + offset), title_en, font=title_font_en, fill=shadow_color)
+    draw.text((x + offset, y_jp + offset), title_jp, font=title_font_jp, fill=shadow_color)
+    draw.text((x + offset, y_date + offset), bilingual_date, font=date_font, fill=shadow_color)
+    
+    # 2. Main Text (Pure White)
+    draw.text((x, y), title_en, font=title_font_en, fill=(255, 255, 255))
+    draw.text((x, y_jp), title_jp, font=title_font_jp, fill=(255, 255, 255))
+    draw.text((x, y_date), bilingual_date, font=date_font, fill=(255, 255, 255))
     
     return Image.alpha_composite(img, overlay).convert("RGB")
 
