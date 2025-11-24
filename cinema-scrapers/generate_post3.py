@@ -37,7 +37,7 @@ REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 # --- Paths / constants ---
 BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
-OUT_COVER_PATH = BASE_DIR / "cinema-scrapers" / "post_v2_image_00.png"
+OUT_COVER_PATH = BASE_DIR / "post_v2_image_00.png"
 
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
