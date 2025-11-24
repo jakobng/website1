@@ -1,9 +1,6 @@
 """
 Generate Instagram-ready image carousel (V1 - "The Inpainted Assemblage").
-- Step 1: 5 Cinema Cutouts (Replicate Rembg).
-- Step 2: Python Layout + Mask Generation (White = Empty Space).
-- Step 3: Replicate SDXL Inpaint (Fills the white space with architecture).
-- Step 4: Text Overlay.
+FIXED: replaced dead SDXL model ID with standard Stability AI Inpainting model.
 """
 from __future__ import annotations
 
@@ -291,23 +288,20 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
     width = CANVAS_WIDTH
     height = CANVAS_HEIGHT
     
-    # Init Canvas (White background for now, though it will be painted over)
+    # Init Canvas (White background)
     layout = Image.new("RGBA", (width, height), (255, 255, 255, 255))
     
     # Init Mask (Starts WHITE = "Fill Everything")
-    # We will draw BLACK where the images are to "Protect" them.
     mask = Image.new("L", (width, height), 255)
     
     # Use up to 5 images
     imgs_to_process = cinemas[:5]
     if len(imgs_to_process) < 5:
-        # If fewer than 5, repeat some to fill space
         imgs_to_process = (imgs_to_process * 3)[:5]
         
     random.shuffle(imgs_to_process)
     
-    # Define 5 Anchor zones (Methodical layout)
-    # TL, TR, Center, BL, BR
+    # Define 5 Anchor zones
     anchors = [
         (int(width * 0.25), int(height * 0.20)),
         (int(width * 0.75), int(height * 0.20)),
@@ -316,55 +310,45 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         (int(width * 0.75), int(height * 0.80)),
     ]
     
-    mask_draw = ImageDraw.Draw(mask)
-    
     for i, (name, path) in enumerate(imgs_to_process):
         try:
-            # 1. Get Cutout
             raw = Image.open(path).convert("RGBA")
             cutout = remove_background_replicate(raw)
-            
-            # 2. Trim
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
             
-            # 3. Resize (Make them decent size to leave some gaps)
             max_dim = 550
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
             
-            # 4. Position
             cx, cy = anchors[i]
-            # Add jitter
             cx += random.randint(-50, 50)
             cy += random.randint(-50, 50)
             
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
             
-            # 5. Paste Image onto Layout
+            # Paste Image
             layout.paste(cutout, (x, y), mask=cutout)
             
-            # 6. Draw on Mask
-            # Get the alpha channel of the cutout to use as a mask for the mask
+            # Mask Logic: BLACK (0) = Keep.
             alpha = cutout.split()[3]
-            # Paste BLACK (0) onto the Mask using the alpha channel
             mask.paste(0, (x, y), mask=alpha)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # Replicate SDXL Inpaint works best if the mask is strictly B&W
+    # Ensure binary mask
     mask = mask.point(lambda p: 255 if p > 128 else 0)
     
     return layout.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses SDXL Inpaint to fill the white areas (Mask=255) with architecture."""
+    """Uses Stability AI Inpaint to fill white areas (Mask=255) with architecture."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps with SDXL...")
+    print("   🎨 Inpainting gaps with Stable Diffusion Inpainting...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
@@ -372,16 +356,17 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         layout_img.save(temp_img_path, format="PNG")
         mask_img.save(temp_mask_path, format="PNG")
         
-        # Using stability-ai/sdxl-inpaint
+        # Using the standard Stability AI Inpainting model (Reliable/Public)
+        # Version: stability-ai/stable-diffusion-inpainting
         output = replicate.run(
-            "stability-ai/sdxl-inpaint:922cad7a359d34329f6336531393666d989f538350d3221e93c6628043687220",
+            "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
                 "prompt": "abstract minimalist architectural geometry, concrete wall texture, connecting structures, bauhaus style, soft lighting, 8k, seamless blend",
-                "negative_prompt": "text, watermark, chaotic, messy, dark, distorted",
-                "prompt_strength": 0.85, # High strength to fully fill the white voids
-                "num_inference_steps": 30
+                "negative_prompt": "text, watermark, chaotic, messy, dark, distorted, low resolution",
+                "num_inference_steps": 25,
+                "guidance_scale": 7.5
             }
         )
         
@@ -436,7 +421,7 @@ def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
     start_y = 60
     
     # White box behind text to ensure readability over busy inpaint
-    draw.rectangle([start_x - 10, start_y - 10, start_x + 500, start_y + 400], fill=(255, 255, 255, 200))
+    draw.rectangle([start_x - 10, start_y - 10, start_x + 500, start_y + 400], fill=(255, 255, 255, 230))
 
     draw.rectangle([start_x, start_y, start_x + 350, start_y + 50], fill=(20, 20, 20))
     draw.text((start_x + 20, start_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
