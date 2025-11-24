@@ -1,10 +1,9 @@
 """
-Generate Instagram-ready image carousel and caption.
-
-VERSION 44: SUNBURST GRADIENT BACKGROUND
-- Design: Replaced solid yellow background with a radial "Sunburst" gradient.
-- Tech: Added 'create_sunburst_background' helper using interpolated concentric circles.
-- Opt: Generates background templates once and reuses them to save processing time.
+Generate Instagram-ready image carousel (V1 - "The Cinema Reel" + Sunburst Slides).
+UPDATED: 
+- Cover Image: "Cinema Reel" Montage (Cinema photos stacked & glitched).
+- Tech: Gemini 2.5 (Crop composition) + Replicate (Upscaling/Enhancement).
+- Slides: Retained Sunburst Gradient style.
 """
 from __future__ import annotations
 
@@ -18,35 +17,52 @@ import requests
 import glob
 import time
 import colorsys
+import difflib
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
 from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageEnhance
 
 try:  
     from zoneinfo import ZoneInfo
 except ImportError:
-    ZoneInfo = None  # type: ignore
+    ZoneInfo = None
+
+# --- API Setup ---
+try:
+    import replicate
+    REPLICATE_AVAILABLE = True
+except ImportError:
+    print("⚠️ Replicate library not found. Run: pip install replicate")
+    REPLICATE_AVAILABLE = False
+
+try:
+    from google import genai
+    from google.genai import types
+    GEMINI_AVAILABLE = True
+except ImportError:
+    print("⚠️ Google GenAI library not found. Run: pip install google-genai")
+    GEMINI_AVAILABLE = False
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
+ASSETS_DIR = BASE_DIR / "cinema_assets"  # New folder for cinema JPGs
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 
+# Secrets
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
+REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
-
-# Vertical space limits (Pixels)
 MAX_FEED_VERTICAL_SPACE = 750 
 MAX_STORY_VERTICAL_SPACE = 1150
-
-# Layout
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350
 STORY_CANVAS_HEIGHT = 1920
@@ -54,11 +70,8 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- THEME COLORS ---
-# Sunburst Center (Deep Yellow)
 SUNBURST_CENTER = (255, 210, 0) 
-# Sunburst Outer (White)
 SUNBURST_OUTER = (255, 255, 255)
-
 BLACK = (20, 20, 20)
 GRAY = (30, 30, 30) 
 WHITE = (255, 255, 255)
@@ -91,6 +104,8 @@ CINEMA_ADDRESSES = {
     "CINEMA Chupki TABATA": "東京都北区東田端2-14-4\n2-14-4 Higashitabata, Kita-ku, Tokyo",
     "シネクイント": "東京都渋谷区宇田川町20-11 8F\n8F, 20-11 Udagawacho, Shibuya-ku, Tokyo",
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F\n4F, 1-5-1 Kichijoji Honcho, Musashino-shi, Tokyo",
+    "Tollywood": "東京都世田谷区代沢5-32-5 2F\n2F, 5-32-5 Daizawa, Setagaya-ku, Tokyo",
+    "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F\nB1F, 2-12-19 Asagayakita, Suginami-ku, Tokyo"
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -120,6 +135,8 @@ CINEMA_ENGLISH_NAMES = {
     "CINEMA Chupki TABATA": "Cinema Chupki Tabata",
     "シネクイント": "Cine Quinto Shibuya",
     "アップリンク吉祥寺": "Uplink Kichijoji",
+    "Morc阿佐ヶ谷": "Morc Asagaya",
+    "Tollywood": "Tollywood"
 }
 
 # --- Utility Functions ---
@@ -233,138 +250,216 @@ def get_recently_featured(caption_path: Path) -> List[str]:
         print(f"   [WARN] Could not read previous caption: {e}")
         return []
 
+# --- ASSET MANAGEMENT ---
+
+def get_cinema_image_path(cinema_name: str) -> Path | None:
+    """Finds a local image file matching the cinema name."""
+    if not ASSETS_DIR.exists(): return None
+    
+    # Simple normalization for matching
+    target = normalize_name(cinema_name)
+    
+    candidates = list(ASSETS_DIR.glob("*"))
+    best_match = None
+    highest_ratio = 0.0
+    
+    for f in candidates:
+        if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
+        f_name = normalize_name(f.stem)
+        
+        # Direct check
+        if f_name in target or target in f_name:
+            # Prefer exact containment
+            return f
+            
+        # Fuzzy check
+        ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
+        if ratio > highest_ratio:
+            highest_ratio = ratio
+            best_match = f
+            
+    if highest_ratio > 0.4: # Threshold
+        return best_match
+    return None
+
+def normalize_name(s):
+    s = str(s).lower()
+    return re.sub(r'[^a-z0-9]', '', s)
+
+def upscale_image_replicate(pil_img: Image.Image) -> Image.Image:
+    """Uses Replicate to upscale/fix low-quality cinema assets."""
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
+        return pil_img
+
+    print("   ✨ Enhancing cinema asset with Replicate...")
+    try:
+        # Save temp file
+        temp_in = BASE_DIR / "temp_upscale_in.png"
+        pil_img.save(temp_in, format="PNG")
+        
+        # Run Real-ESRGAN
+        output = replicate.run(
+            "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73ab41b2ee43ad40a7214",
+            input={"image": open(temp_in, "rb"), "scale": 2, "face_enhance": False}
+        )
+        
+        if temp_in.exists(): os.remove(temp_in)
+        
+        if output:
+            resp = requests.get(str(output))
+            if resp.status_code == 200:
+                return Image.open(BytesIO(resp.content)).convert("RGB")
+    except Exception as e:
+        print(f"   ⚠️ Upscale failed: {e}. Using original.")
+    return pil_img
+
+def ask_gemini_for_slice(pil_img: Image.Image) -> float:
+    """Asks Gemini where the most interesting vertical center (0.0-1.0) is."""
+    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
+        return 0.5
+
+    try:
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        prompt = """
+        Analyze this image of a cinema. I need to crop a horizontal strip from it.
+        Return ONLY a JSON object with a single key "center_y" (float between 0.0 and 1.0).
+        "center_y" should be the vertical center of the most interesting visual feature (e.g., a neon sign, the screen, the ticket counter, or a row of chairs).
+        Example: {"center_y": 0.3}
+        """
+        response = client.models.generate_content(
+            model='gemini-2.5-flash', contents=[prompt, pil_img]
+        )
+        match = re.search(r'\{.*\}', response.text, re.DOTALL)
+        if match:
+            data = json.loads(match.group(0))
+            return float(data.get("center_y", 0.5))
+    except Exception as e:
+        print(f"   ⚠️ Gemini Slice Analysis failed: {e}")
+    return 0.5
+
 # --- IMAGE GENERATORS ---
 
 def create_sunburst_background(width: int, height: int) -> Image.Image:
     """Generates a radial gradient background (Sunburst)."""
-    # 1. Create a smaller base image for faster processing, then resize
     base_size = 512
     img = Image.new("RGB", (base_size, base_size), SUNBURST_OUTER)
     draw = ImageDraw.Draw(img)
-
     center_color = SUNBURST_CENTER
     outer_color = SUNBURST_OUTER
-    
-    # Radius covers most of the square
     max_radius = int(base_size * 0.7) 
     center = base_size // 2
-
-    # Draw concentric circles to simulate gradient
     for r in range(max_radius, 0, -2):
         ratio = r / max_radius
-        # Linear Interpolation
         red = int(outer_color[0] * ratio + center_color[0] * (1 - ratio))
         green = int(outer_color[1] * ratio + center_color[1] * (1 - ratio))
         blue = int(outer_color[2] * ratio + center_color[2] * (1 - ratio))
-        
-        draw.ellipse(
-            [center - r, center - r, center + r, center + r],
-            fill=(red, green, blue)
-        )
-
-    # Resize to target dimensions (LANCZOS smooths the concentric circles)
+        draw.ellipse([center - r, center - r, center + r, center + r], fill=(red, green, blue))
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
-def generate_fallback_burst() -> Image.Image:
-    # Simple Solar Burst for "No Image Found" scenarios
-    day_number = int(datetime.now().timestamp() // 86400)
-    hue_degrees = (45 + (day_number // 3) * 12) % 360
-    hue_norm = hue_degrees / 360.0
-    r, g, b = colorsys.hsv_to_rgb(hue_norm, 1.0, 1.0)
-    center_color = (int(r*255), int(g*255), int(b*255))
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255))
-    draw = ImageDraw.Draw(img)
-    center_x, center_y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
-    max_radius = int(math.sqrt((CANVAS_WIDTH/2)**2 + (CANVAS_HEIGHT/2)**2))
-    for r in range(max_radius, 0, -2):
-        t = r / max_radius
-        t_adj = t ** 0.6
-        red = int(center_color[0] * (1 - t_adj) + 255 * t_adj)
-        green = int(center_color[1] * (1 - t_adj) + 255 * t_adj)
-        blue = int(center_color[2] * (1 - t_adj) + 255 * t_adj)
-        draw.ellipse([center_x - r, center_y - r, center_x + r, center_y + r], fill=(red, green, blue))
-    return img
-
-def process_image_bytes(img_content: bytes) -> Image.Image:
-    img = Image.open(BytesIO(img_content)).convert("RGB")
-    target_ratio = CANVAS_WIDTH / CANVAS_HEIGHT
-    img_ratio = img.width / img.height
-    if img_ratio > target_ratio:
-        new_width = int(img.height * target_ratio)
-        left = (img.width - new_width) // 2
-        img = img.crop((left, 0, left + new_width, img.height))
-    else:
-        new_height = int(img.width / target_ratio)
-        top = (img.height - new_height) // 2
-        img = img.crop((0, top, img.width, top + new_height))
-    return img.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
-
-def fetch_direct_backdrop(backdrop_path: str) -> Image.Image | None:
-    try:
-        url = f"https://image.tmdb.org/t/p/w1280{backdrop_path}"
-        print(f"   [DIRECT] Fetching pre-found image: {url}")
-        response = requests.get(url, timeout=10)
-        if response.status_code == 200:
-            return process_image_bytes(response.content)
-    except Exception as e:
-        print(f"   [WARN] Failed to fetch direct image: {e}")
-    return None
-
-def fetch_tmdb_backdrop_fallback(movie_title: str) -> Tuple[Image.Image, str] | None:
-    if not TMDB_API_KEY: return None
-    try:
-        search_url = f"https://api.themoviedb.org/3/search/movie"
-        params = {"api_key": TMDB_API_KEY, "query": movie_title, "language": "ja-JP"}
-        time.sleep(0.1) 
-        response = requests.get(search_url, params=params)
-        data = response.json()
-        if not data.get("results"):
-             params.pop("language")
-             response = requests.get(search_url, params=params)
-             data = response.json()
-        if not data.get("results"): return None
-        
-        movie = None
-        for res in data["results"]:
-            if res.get("backdrop_path"):
-                movie = res
-                break
-        if not movie: return None
+def create_cinema_collage(cinemas: List[Tuple[str, Path]]) -> Image.Image:
+    """
+    Creates a 'Cinema Reel' Collage.
+    - Takes 3 cinemas.
+    - Enhances them (Replicate).
+    - Finds best slice (Gemini).
+    - Stacks them vertically.
+    - Applies Glitch effect.
+    """
+    print(f"🎬 Creating Cinema Reel Collage with: {[c[0] for c in cinemas]}")
+    
+    num_slices = len(cinemas)
+    slice_height = CANVAS_HEIGHT // num_slices
+    canvas = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (10,10,10))
+    
+    for i, (name, path) in enumerate(cinemas):
+        try:
+            img = Image.open(path).convert("RGB")
             
-        image_url = f"https://image.tmdb.org/t/p/w1280{movie['backdrop_path']}"
-        print(f"   [API SEARCH] Found Image for: {movie_title}")
-        img_response = requests.get(image_url)
-        resized_img = process_image_bytes(img_response.content)
-        
-        found_title = movie.get('title') or movie.get('original_title') or movie_title
-        return resized_img, found_title
-    except Exception:
-        return None
+            # 1. Enhance
+            img = upscale_image_replicate(img)
+            
+            # 2. Analyze Crop
+            center_y_ratio = ask_gemini_for_slice(img)
+            
+            # 3. Calculate Crop Box
+            # We need an image that is CANVAS_WIDTH wide and slice_height high
+            target_ratio = CANVAS_WIDTH / slice_height
+            img_ratio = img.width / img.height
+            
+            if img_ratio > target_ratio:
+                # Image is wider than strip -> Scale to height, crop width
+                new_h = slice_height
+                new_w = int(new_h * img_ratio)
+                img_resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                left = (new_w - CANVAS_WIDTH) // 2
+                img_strip = img_resized.crop((left, 0, left + CANVAS_WIDTH, slice_height))
+            else:
+                # Image is taller than strip (Common) -> Scale to width, crop height based on Gemini
+                new_w = CANVAS_WIDTH
+                new_h = int(new_w / img_ratio)
+                img_resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                
+                # Use Gemini's center_y
+                center_px = int(new_h * center_y_ratio)
+                top = center_px - (slice_height // 2)
+                
+                # Clamp
+                if top < 0: top = 0
+                if top + slice_height > new_h: top = new_h - slice_height
+                
+                img_strip = img_resized.crop((0, top, CANVAS_WIDTH, top + slice_height))
 
-def apply_cinematic_overlay(img: Image.Image) -> Image.Image:
-    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
-    draw = ImageDraw.Draw(overlay)
-    for y in range(600):
-        alpha = int(200 * (1 - (y / 600))) 
-        draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(0, 0, 0, alpha))
-    for y in range(CANVAS_HEIGHT - 500, CANVAS_HEIGHT):
-        alpha = int(200 * ((y - (CANVAS_HEIGHT - 500)) / 500))
-        draw.line([(0, y), (CANVAS_WIDTH, y)], fill=(0, 0, 0, alpha))
-    draw.rectangle([0, 0, CANVAS_WIDTH, CANVAS_HEIGHT], fill=(0, 0, 0, 80))
-    img = img.convert("RGBA")
-    return Image.alpha_composite(img, overlay).convert("RGB")
-
-def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: str) -> Image.Image:
-    img = apply_cinematic_overlay(hero_image)
+            # 4. Paste
+            y_pos = i * slice_height
+            canvas.paste(img_strip, (0, y_pos))
+            
+            # 5. Add Separator Line
+            draw = ImageDraw.Draw(canvas)
+            if i > 0:
+                draw.line([(0, y_pos), (CANVAS_WIDTH, y_pos)], fill=(255, 210, 0), width=4)
+                
+        except Exception as e:
+            print(f"Error processing {name}: {e}")
+            
+    # --- POST PROCESSING: THE "PROJECTION" LOOK ---
+    # RGB Split (Chromatic Aberration)
+    r, g, b = canvas.split()
+    canvas = Image.merge("RGB", (
+        ImageChops.offset(r, 4, 0),
+        ImageChops.offset(g, 0, 0),
+        ImageChops.offset(b, -4, 0)
+    ))
+    
+    # Slight Noise
+    noise = Image.effect_noise((CANVAS_WIDTH, CANVAS_HEIGHT), 10).convert("RGB")
+    canvas = Image.blend(canvas, noise, 0.05)
+    
+    # Vignette
     overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
+    draw_ov.rectangle([0,0,CANVAS_WIDTH,CANVAS_HEIGHT], fill=(0,0,0,60)) # Darken overall
+    
+    # Gradient Edges
+    for i in range(150):
+        alpha = int(255 * (1 - (i/150)))
+        draw_ov.rectangle([i, i, CANVAS_WIDTH-i, CANVAS_HEIGHT-i], outline=(0,0,0,alpha))
+
+    canvas.paste(overlay, (0,0), mask=overlay)
+    return canvas
+
+def draw_hero_slide_v1(bilingual_date: str, collage_img: Image.Image, featured_names: List[str]) -> Image.Image:
+    """Draws the standard Text Overlay on the new Collage Background."""
+    img = collage_img.copy()
+    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
+    draw_ov = ImageDraw.Draw(overlay)
+    
     try:
         header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 80)
         jp_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 100)
         en_subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
         date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
-        credit_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24) 
+        credit_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 22) 
     except Exception:
         header_font = ImageFont.load_default()
         jp_title_font = ImageFont.load_default()
@@ -373,25 +468,90 @@ def draw_hero_slide(bilingual_date: str, hero_image: Image.Image, movie_title: s
         footer_font = ImageFont.load_default()
         credit_font = ImageFont.load_default()
 
-    text_center_x = CANVAS_WIDTH // 2
-    center_y = CANVAS_HEIGHT // 2
-    def draw_centered_text(y, text, font, color=WHITE):
-        draw_ov.text((text_center_x, y), text, font=font, fill=color, anchor="mm")
+    cx = CANVAS_WIDTH // 2
+    cy = CANVAS_HEIGHT // 2
+    
+    # Box behind text to ensure readability over messy collage
+    box_h = 500
+    box_w = 900
+    draw_ov.rectangle(
+        [cx - box_w//2, cy - box_h//2, cx + box_w//2, cy + box_h//2], 
+        fill=(0, 0, 0, 180)
+    )
+    draw_ov.rectangle(
+        [cx - box_w//2, cy - box_h//2, cx + box_w//2, cy + box_h//2], 
+        outline=(255, 255, 255, 100), width=3
+    )
 
-    draw_centered_text(center_y - 140, "TOKYO MINI THEATERS", header_font)
-    draw_centered_text(center_y - 20, "本日の上映情報", jp_title_font)
-    draw_centered_text(center_y + 80, "Today's Showtimes", en_subtitle_font)
-    draw_centered_text(center_y + 160, bilingual_date, date_font, (220, 220, 220))
+    def draw_centered_text(y, text, font, color=WHITE):
+        draw_ov.text((cx, y), text, font=font, fill=color, anchor="mm")
+
+    draw_centered_text(cy - 120, "TOKYO CINEMA INDEX", header_font)
+    draw_centered_text(cy, "本日の上映館", jp_title_font)
+    draw_centered_text(cy + 100, "Today's Theater Guide", en_subtitle_font)
+    draw_centered_text(cy + 180, bilingual_date, date_font, (220, 220, 220))
     
-    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR TODAY'S SELECTION →", footer_font, (255, 210, 0)) 
+    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR SCHEDULES →", footer_font, (255, 210, 0)) 
     
-    if movie_title:
-        draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), f"Image: {movie_title}", font=credit_font, fill=(180, 180, 180), anchor="rb")
-    img = img.convert("RGBA")
-    return Image.alpha_composite(img, overlay).convert("RGB")
+    # List featured cinemas at bottom right
+    if featured_names:
+        clean_names = [n.split(' ')[0] for n in featured_names] # Shorten
+        credit_text = "Featuring: " + " | ".join(clean_names)
+        draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), credit_text, font=credit_font, fill=(180, 180, 180), anchor="rb")
+
+    return Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+
+def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
+    """Generates a 9:16 vertical Story slide (Kept Sunburst)."""
+    img = bg_template.copy()
+    draw = ImageDraw.Draw(img)
+    try:
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
+        subhead_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
+        movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
+        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+        time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
+        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
+    except Exception:
+        header_font = ImageFont.load_default() # Fallbacks
+        subhead_font = ImageFont.load_default()
+        movie_font = ImageFont.load_default()
+        en_movie_font = ImageFont.load_default()
+        time_font = ImageFont.load_default()
+        footer_font = ImageFont.load_default()
+
+    center_x = CANVAS_WIDTH // 2
+    y_pos = 150 
+    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=BLACK, anchor="mm")
+    y_pos += 80
+    cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+    if cinema_name_to_use:
+        draw.text((center_x, y_pos), cinema_name_to_use, font=subhead_font, fill=GRAY, anchor="mm")
+        y_pos += 100
+    else:
+        y_pos += 60
+    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=BLACK, width=4)
+    y_pos += 80
+    for listing in listings:
+        wrapped_title = textwrap.wrap(listing['title'], width=24)
+        for line in wrapped_title:
+            draw.text((center_x, y_pos), line, font=movie_font, fill=BLACK, anchor="mm")
+            y_pos += 55
+        if listing["en_title"]:
+            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=40)
+            for line in wrapped_en:
+                draw.text((center_x, y_pos), line, font=en_movie_font, fill=GRAY, anchor="mm")
+                y_pos += 45
+        if listing['times']:
+            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=GRAY, anchor="mm")
+            y_pos += 80
+        else:
+            y_pos += 40
+    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=BLACK, anchor="mm")
+    return img
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    # Use the passed Background Template
+    """Generates standard feed slide (Kept Sunburst)."""
     img = bg_template.copy()
     draw = ImageDraw.Draw(img)
     try:
@@ -439,107 +599,6 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
     draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
     return img.convert("RGB")
 
-def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    """Generates a 9:16 vertical Story slide."""
-    # Use the passed Background Template
-    img = bg_template.copy()
-    draw = ImageDraw.Draw(img)
-    
-    try:
-        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 70)
-        subhead_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
-        movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 42)
-        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
-        time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
-        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
-    except Exception:
-        header_font = ImageFont.load_default()
-        subhead_font = ImageFont.load_default()
-        movie_font = ImageFont.load_default()
-        en_movie_font = ImageFont.load_default()
-        time_font = ImageFont.load_default()
-        footer_font = ImageFont.load_default()
-
-    center_x = CANVAS_WIDTH // 2
-    y_pos = 150 
-
-    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=BLACK, anchor="mm")
-    y_pos += 80
-    
-    cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
-    if cinema_name_to_use:
-        draw.text((center_x, y_pos), cinema_name_to_use, font=subhead_font, fill=GRAY, anchor="mm")
-        y_pos += 100
-    else:
-        y_pos += 60
-
-    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=BLACK, width=4)
-    y_pos += 80
-
-    for listing in listings:
-        # Japanese Title
-        wrapped_title = textwrap.wrap(listing['title'], width=24)
-        for line in wrapped_title:
-            draw.text((center_x, y_pos), line, font=movie_font, fill=BLACK, anchor="mm")
-            y_pos += 55
-        
-        # English Title
-        if listing["en_title"]:
-            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=40)
-            for line in wrapped_en:
-                draw.text((center_x, y_pos), line, font=en_movie_font, fill=GRAY, anchor="mm")
-                y_pos += 45
-
-        # Showtimes
-        if listing['times']:
-            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=GRAY, anchor="mm")
-            y_pos += 80 # Gap between films
-        else:
-            y_pos += 40
-
-    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=BLACK, anchor="mm")
-    return img
-
-def draw_hero_story(bilingual_date: str, hero_image: Image.Image, movie_title: str) -> Image.Image:
-    """Creates a 9:16 version of the Hero Image."""
-    img_ratio = hero_image.width / hero_image.height
-    target_ratio = CANVAS_WIDTH / STORY_CANVAS_HEIGHT
-    
-    if img_ratio > target_ratio:
-        new_width = int(hero_image.height * target_ratio)
-        left = (hero_image.width - new_width) // 2
-        hero_crop = hero_image.crop((left, 0, left + new_width, hero_image.height))
-    else:
-        hero_crop = hero_image
-        
-    hero_crop = hero_crop.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS)
-    
-    overlay = Image.new("RGBA", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), (0,0,0,0))
-    draw = ImageDraw.Draw(overlay)
-    draw.rectangle([0, 0, CANVAS_WIDTH, STORY_CANVAS_HEIGHT], fill=(0, 0, 0, 100))
-    
-    try:
-        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 85)
-        jp_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 110)
-        en_subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 50)
-        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
-    except:
-        header_font = ImageFont.load_default()
-        jp_title_font = ImageFont.load_default()
-        en_subtitle_font = ImageFont.load_default()
-        date_font = ImageFont.load_default()
-
-    center_x = CANVAS_WIDTH // 2
-    center_y = STORY_CANVAS_HEIGHT // 2
-
-    draw.text((center_x, center_y - 200), "TOKYO MINI THEATERS", font=header_font, fill=WHITE, anchor="mm")
-    draw.text((center_x, center_y - 60), "本日の上映情報", font=jp_title_font, fill=WHITE, anchor="mm")
-    draw.text((center_x, center_y + 60), "Today's Showtimes", font=en_subtitle_font, fill=WHITE, anchor="mm")
-    draw.text((center_x, center_y + 200), bilingual_date, font=date_font, fill=(255, 210, 0), anchor="mm")
-
-    hero_crop = hero_crop.convert("RGBA")
-    return Image.alpha_composite(hero_crop, overlay).convert("RGB")
-
 def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
@@ -548,21 +607,18 @@ def main() -> None:
     date_en = today.strftime("%b %d, %Y")
     bilingual_date_str = f"{date_jp} / {date_en}"
 
-    # 2. Cleanup
+    # Cleanup
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")): os.remove(old_file) 
     for old_file in glob.glob(str(BASE_DIR / "story_image_*.png")): os.remove(old_file)
 
     todays_showings = load_showtimes(today_str)
-    if not todays_showings:
-        print(f"No showings for today ({today_str}). Exiting.")
-        return
+    if not todays_showings: return
     
-    # --- 3. PRE-GENERATE BACKGROUNDS (Efficiency) ---
-    print("Generating Sunburst Backgrounds...")
+    # 2. Pre-generate Sunbursts for Slides (NOT Cover)
     feed_bg_template = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
     story_bg_template = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
 
-    # 4. Group Cinemas
+    # 3. Group Cinemas
     grouped: Dict[str, List[Dict]] = defaultdict(list)
     for show in todays_showings:
         if show.get("cinema_name"):
@@ -574,138 +630,93 @@ def main() -> None:
     for cinema_name, showings in grouped.items():
         unique_titles = set(s.get('movie_title') for s in showings if s.get('movie_title'))
         
-        known_backdrops = []
-        all_searchable_titles = []
-        
-        for s in showings:
-            if s.get('tmdb_backdrop_path'):
-                display_title = s.get('tmdb_display_title') or s.get('tmdb_original_title') or s.get('movie_title')
-                known_backdrops.append((s.get('tmdb_backdrop_path'), display_title))
-
-            if s.get('tmdb_original_title'): all_searchable_titles.append(s.get('tmdb_original_title'))
-            if s.get('tmdb_display_title'): all_searchable_titles.append(s.get('tmdb_display_title'))
-            if s.get('movie_title'): all_searchable_titles.append(clean_search_title(s.get('movie_title')))
-            if s.get('movie_title_en'): all_searchable_titles.append(clean_search_title(s.get('movie_title_en')))
+        # Check for asset availability
+        has_asset = get_cinema_image_path(cinema_name) is not None
 
         if len(unique_titles) >= MINIMUM_FILM_THRESHOLD:
             listings = format_listings(showings)
             feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
-
             all_candidates_raw.append({
                 "name": cinema_name,
                 "listings": listings,
-                "feed_segments": feed_segments, # Only used for checking slide counts
-                "unique_count": len(unique_titles),
-                "titles": list(set(all_searchable_titles)),
-                "backdrops": list(set(known_backdrops))
+                "feed_segments": feed_segments,
+                "has_asset": has_asset
             })
 
-    # 5. Rotation & Randomization
+    # 4. Selection Logic
     recent_cinemas = get_recently_featured(OUTPUT_CAPTION_PATH)
     fresh_candidates = []
     recent_candidates = []
     for cand in all_candidates_raw:
-        if cand['name'] in recent_cinemas:
-            recent_candidates.append(cand)
-        else:
-            fresh_candidates.append(cand)
+        if cand['name'] in recent_cinemas: recent_candidates.append(cand)
+        else: fresh_candidates.append(cand)
+    
     random.shuffle(fresh_candidates)
     random.shuffle(recent_candidates)
     all_candidates = fresh_candidates + recent_candidates
     
-    # 6. Selection Logic
     MAX_CONTENT_SLIDES = INSTAGRAM_SLIDE_LIMIT - 1 
     final_selection = []
     current_slide_count = 0
-    remaining_candidates = []
     
     for cand in all_candidates:
         needed = len(cand['feed_segments'])
         if current_slide_count + needed <= MAX_CONTENT_SLIDES:
             final_selection.append(cand)
             current_slide_count += needed
-        else:
-            remaining_candidates.append(cand)
 
-    if not final_selection:
-        print("No cinemas selected. Exiting.")
-        return
+    if not final_selection: return
 
-    # 7. HERO IMAGE SEARCH
-    print("--- Phase 1: Searching Standard Candidates for Hero Image ---")
-    hero_image = None
-    hero_title = ""
-    valid_hero_options = []
-
-    for cand in final_selection:
-        if cand['backdrops']:
-            path, title = random.choice(cand['backdrops'])
-            img = fetch_direct_backdrop(path)
-            if img:
-                valid_hero_options.append((img, title))
-                continue
-        
-        titles_to_check = cand['titles']
-        random.shuffle(titles_to_check)
-        for title in titles_to_check[:3]:
-            if not title: continue
-            res = fetch_tmdb_backdrop_fallback(title)
-            if res:
-                valid_hero_options.append(res)
-                break 
+    # --- 5. COVER GENERATION (NEW LOGIC) ---
+    print("--- Generating V1 Cover (Cinema Reel Style) ---")
     
-    if valid_hero_options:
-        hero_image, hero_title = random.choice(valid_hero_options)
-    else:
-        print("   [WARNING] No Hero images found in standard selection.")
-
-    # 8. RESCUE PROTOCOL
-    if not hero_image:
-        print("--- Phase 2: RESCUE PROTOCOL - Searching Remaining Cinemas ---")
-        rescue_candidates = []
-        for cand in remaining_candidates:
-            if cand['backdrops']:
-                path, title = random.choice(cand['backdrops'])
-                img = fetch_direct_backdrop(path)
-                if img:
-                    rescue_candidates.append({"candidate": cand, "image_data": (img, title)})
-                    continue
-
-            titles_to_check = cand['titles']
-            random.shuffle(titles_to_check)
-            for title in titles_to_check[:3]:
-                res = fetch_tmdb_backdrop_fallback(title)
-                if res:
-                    rescue_candidates.append({"candidate": cand, "image_data": res})
-                    break 
+    # Find cinemas with assets
+    asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
+    if len(asset_candidates) < 3:
+        # If not enough in selection, pick randoms from existing assets
+        print("   Not enough selected cinemas have assets. Filling with random assets.")
+        all_assets = list(ASSETS_DIR.glob("*.jpg"))
+        random.shuffle(all_assets)
+        collage_inputs = []
         
-        if rescue_candidates:
-            winner = random.choice(rescue_candidates)
-            rescue_cand = winner["candidate"]
-            hero_image, hero_title = winner["image_data"]
+        # Add selected ones first
+        for name in asset_candidates:
+            p = get_cinema_image_path(name)
+            if p: collage_inputs.append((name, p))
             
-            rescue_needed = len(rescue_cand['feed_segments'])
-            while final_selection and (current_slide_count + rescue_needed > MAX_CONTENT_SLIDES):
-                removed = final_selection.pop()
-                current_slide_count -= len(removed['feed_segments'])
-            final_selection.append(rescue_cand)
+        # Fill rest
+        for p in all_assets:
+            if len(collage_inputs) >= 3: break
+            name_guess = p.stem.replace('_', ' ').title()
+            # Avoid dupes
+            if not any(c[1] == p for c in collage_inputs):
+                 collage_inputs.append((name_guess, p))
+    else:
+        random.shuffle(asset_candidates)
+        picked = asset_candidates[:3]
+        collage_inputs = [(n, get_cinema_image_path(n)) for n in picked]
 
-    # 9. Fallback
-    if not hero_image:
-        hero_image = generate_fallback_burst()
-        hero_title = ""
+    if collage_inputs:
+        collage_bg = create_cinema_collage(collage_inputs)
+        hero_slide = draw_hero_slide_v1(bilingual_date_str, collage_bg, [x[0] for x in collage_inputs])
+        hero_slide.save(BASE_DIR / f"post_image_00.png")
+        
+        # Reuse for story (resize)
+        hero_story_bg = collage_bg.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+        hero_story = draw_hero_slide_v1(bilingual_date_str, hero_story_bg, [x[0] for x in collage_inputs])
+        hero_story.save(BASE_DIR / f"story_image_00.png")
+    else:
+        print("⚠️ No cinema assets found at all. Using Fallback Sunburst.")
+        fallback_bg = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
+        hero_slide = draw_hero_slide_v1(bilingual_date_str, fallback_bg, [])
+        hero_slide.save(BASE_DIR / "post_image_00.png")
+        # Story Fallback
+        fbs = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+        hs = draw_hero_slide_v1(bilingual_date_str, fbs, [])
+        hs.save(BASE_DIR / "story_image_00.png")
 
-    # 10. DRAW SLIDES (Using Sunburst Backgrounds)
-    
-    # --- A. HERO SLIDES ---
-    hero_slide = draw_hero_slide(bilingual_date_str, hero_image, hero_title)
-    hero_slide.save(BASE_DIR / f"post_image_00.png")
-    story_hero = draw_hero_story(bilingual_date_str, hero_image, hero_title)
-    story_hero.save(BASE_DIR / f"story_image_00.png")
-    print("Saved Hero Slides.")
-
-    # --- B. FEED SLIDES ---
-    print("Generatinng Feed Images...")
+    # --- 6. SLIDE GENERATION (Sunburst) ---
+    print("Generating Content Slides...")
     feed_counter = 0
     all_featured_for_caption = []
     
@@ -713,38 +724,28 @@ def main() -> None:
         cinema_name = item['name']
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         listings = item['listings']
-        
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
-
         feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
         
         for segment in feed_segments:
             feed_counter += 1
-            # Pass the Sunburst Template
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_template)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
-            print(f"   Saved Feed Slide {feed_counter} ({cinema_name})")
 
-    # --- C. STORY SLIDES ---
-    print("Generatinng Story Images...")
+    # Story Slides
     story_counter = 0
     STORY_METRICS = {'jp_line': 55, 'en_line': 45, 'time_line': 80} 
-    
     for item in final_selection:
         cinema_name = item['name']
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         listings = item['listings']
-
         story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, STORY_METRICS)
-        
         for segment in story_segments:
             story_counter += 1
-            # Pass the Sunburst Template
             slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_template)
             slide_img.save(BASE_DIR / f"story_image_{story_counter:02}.png")
-            print(f"   Saved Story Slide {story_counter} ({cinema_name})")
 
-    # 11. Caption
+    # 7. Caption
     write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
 
 def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List[Dict]) -> None:
@@ -759,16 +760,13 @@ def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List
             lines.append(f"📍 {jp_address}") 
         for listing in item['listings']:
             lines.append(f"• {listing['title']}")
-    
     dynamic_hashtag = "IndieCinema"
     if all_featured_cinemas:
          first_cinema_name = all_featured_cinemas[0]['cinema_name']
          dynamic_hashtag = "".join(ch for ch in first_cinema_name if ch.isalnum() or "\u3040" <= ch <= "\u30ff" or "\u4e00" <= ch <= "\u9fff")
-
     lines.extend([
-        "\n詳細はウェブサイトでご確認いただけます / Full details online:",
-        "leonelki.com/cinemas",
-        f"\n#東京ミニシアター #映画 #映画館 #上映情報 #tokyo #{dynamic_hashtag}",
+        "\ndetails: leonelki.com/cinemas",
+        f"\n#東京ミニシアター #映画 #映画館 #tokyo #{dynamic_hashtag}",
         "#tokyocinema #arthousecinema"
     ])
     OUTPUT_CAPTION_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
