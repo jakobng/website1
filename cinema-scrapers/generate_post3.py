@@ -1,9 +1,9 @@
 """
-Generate Instagram-ready image carousel (V44 - Flux 4-Way Fusion).
+Generate Instagram-ready image carousel (V46 - Flux Dev 4-Way Fusion).
 
-- Visuals: Creates a 2x2 Grid using the top 4 films.
-- AI: Replicate (Flux.1 Dev) looks at the grid and creates a new unified poster.
-- Auth: strict check for REPLICATE_API_TOKEN.
+- Model: black-forest-labs/flux-dev (Best for Img2Img / Mashups).
+- Method: 2x2 Grid Fusion.
+- Logic: Stitches top 4 films into a grid -> Flux ignores layout -> Creates unified poster.
 """
 from __future__ import annotations
 
@@ -13,6 +13,9 @@ import textwrap
 import os
 import glob
 import requests
+import colorsys
+import re
+import math # Fixed: Guaranteed import
 import time
 from collections import defaultdict
 from datetime import datetime
@@ -29,7 +32,6 @@ except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
-# We explicitly look for 'REPLICATE_API_TOKEN'
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 
 # --- Configuration ---
@@ -43,7 +45,7 @@ CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
 STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
 
-# --- Cinema Name Mapping (Truncated for brevity, assume full list exists) ---
+# --- Cinema Name Mapping ---
 CINEMA_ENGLISH_NAMES = {
     "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
     "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -103,7 +105,25 @@ def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     small = pil_img.resize((150, 150))
     result = small.quantize(colors=3, method=2)
     palette = result.getpalette()
-    return ((palette[0], palette[1], palette[2]), (palette[3], palette[4], palette[5]))
+    c1 = (palette[0], palette[1], palette[2])
+    c2 = (palette[3], palette[4], palette[5])
+    
+    def adjust_for_bg(rgb_tuple, is_accent=False):
+        r, g, b = rgb_tuple
+        h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
+        if is_accent:
+            new_v = max(v, 0.4)
+            new_s = s 
+        else:
+            new_v = 0.22 
+            new_s = min(max(s, 0.4), 0.9) 
+            if s < 0.05: 
+                new_s = 0.02
+                new_v = 0.20
+        nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
+        return (int(nr*255), int(ng*255), int(nb*255))
+
+    return adjust_for_bg(c1), adjust_for_bg(c2, is_accent=True)
 
 def create_textured_bg(base_color, accent_color, width, height):
     img = Image.new("RGB", (width, height), base_color)
@@ -183,22 +203,23 @@ def create_grid_composite(images, width=1024, height=1280):
             top = (new_h - h) // 2
             return resized.crop((0, top, w, top + h))
 
+    # Top Row
     canvas.paste(fill_cell(source_imgs[0], cell_w, cell_h), (0, 0))
     canvas.paste(fill_cell(source_imgs[1], cell_w, cell_h), (cell_w, 0))
+    # Bottom Row
     canvas.paste(fill_cell(source_imgs[2], cell_w, cell_h), (0, cell_h))
     canvas.paste(fill_cell(source_imgs[3], cell_w, cell_h), (cell_w, cell_h))
         
     return canvas
 
 def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
-    print("🎨 Preparing Flux.1 (Grid Fusion) Mashup...")
+    print("🎨 Preparing Flux Dev (Grid Fusion) Mashup...")
     
     if not REPLICATE_AVAILABLE:
         print("⚠️ library 'replicate' missing.")
         return None
         
     if not REPLICATE_API_TOKEN:
-        # DEBUG PRINT to prove what is missing
         print("⚠️ REPLICATE_API_TOKEN env var is Empty or None.")
         return None
 
@@ -207,12 +228,13 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
         temp_path = BASE_DIR / "temp_init_flux.png"
         init_img.save(temp_path, format="PNG")
         
-        print("🚀 Sending to Replicate (Flux.1 Dev)...")
+        print("🚀 Sending to Replicate (black-forest-labs/flux-dev)...")
         
         output = replicate.run(
-            "black-forest-labs/flux-1-dev",
+            "black-forest-labs/flux-dev",
             input={
                 "image": open(temp_path, "rb"),
+                # Prompt: Asks Flux to IGNORE the grid lines and create a cohesive scene
                 "prompt": "Look at the characters and scenes in these images. Create a NEW, SINGLE image that creatively combines elements of each into one cohesive movie poster. Seamlessly integrate the characters into a new shared environment. Do not produce a grid. Do not produce a collage. Cinematic lighting, unified composition, 8k masterpiece.",
                 "go_fast": True,
                 "guidance": 3.5,
@@ -221,7 +243,7 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
                 "aspect_ratio": "4:5",
                 "output_format": "png",
                 "output_quality": 90,
-                "prompt_strength": 0.85, 
+                "prompt_strength": 0.85, # High creativity to break the grid
                 "num_inference_steps": 28
             }
         )
@@ -281,7 +303,7 @@ def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
     draw.text((cx, cy + 200 + offset), f"{date_str} • {day_str}", font=fonts['meta'], fill=(220,220,220), anchor="mm")
     return bg
 
-# --- Standard Slide Logic (Keep V28 logic) ---
+# --- Standard Slide Logic ---
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
@@ -392,31 +414,8 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
 
     return canvas
 
-def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
-    width = CANVAS_WIDTH
-    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    if images:
-        bg = images[0].resize((width, int(width * images[0].height / images[0].width)))
-        if bg.height < height: bg = bg.resize((int(height * bg.width / bg.height), height))
-        left = (bg.width - width) // 2
-        top = (bg.height - height) // 2
-        bg = bg.crop((left, top, left + width, top + height))
-    else:
-        bg = Image.new("RGB", (width, height), (20,20,20))
-    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
-    bg.paste(overlay, (0, 0), overlay)
-    draw = ImageDraw.Draw(bg)
-    cx, cy = width // 2, height // 2
-    offset = -80 if is_story else 0
-    draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 180 + offset), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
-    return bg
-
-# --- Main Execution ---
-
 def main():
-    print("--- Starting V44 (Flux 4-Way Fusion) ---")
+    print("--- Starting V46 (Flux Dev / High Quality) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
@@ -501,7 +500,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V44 Generated.")
+    print("Done. V46 Generated.")
 
 if __name__ == "__main__":
     main()
