@@ -1,22 +1,24 @@
 """
-Generate Instagram-ready image carousel (V47 - Flux Soft Stack).
+Generate Instagram-ready image carousel (V48 - Flux Analog/Grit).
 
 - Layout: Python creates a "Soft Vertical Stack" of images with gradient overlaps.
-- AI: Flux.1 Dev (via Replicate) with Strength 0.65.
-- Goal: Preserves original actors/scenes but "heals" the blend lines.
-- Fixes: All imports (colorsys, textwrap, math) are restored.
+- AI: Flux.1 Dev (via Replicate).
+- Update V48: 
+  - Reduced Strength to 0.55 to prevent "cartoony" faces.
+  - Added 'Pre-Grain' to input to force texture retention.
+  - Changed prompt to '35mm film scan / raw' style.
 """
 from __future__ import annotations
 
 import json
 import random
-import textwrap  # Fixed: Restored
+import textwrap
 import os
 import glob
 import requests
 import math
-import colorsys  # Fixed: Restored
-import re        # Fixed: Restored
+import colorsys
+import re
 import time
 from collections import defaultdict
 from datetime import datetime
@@ -236,8 +238,23 @@ def create_soft_stack_composite(images, width=896, height=1152):
         
     return canvas
 
+def add_pre_grain(img: Image.Image) -> Image.Image:
+    """
+    V48 New: Adds slight noise to the input before AI to prevent 'plastic' smoothing.
+    Tricks Flux into thinking there is texture detail it must preserve.
+    """
+    img = img.convert("RGB")
+    width, height = img.size
+    
+    # Generate random noise pattern
+    noise_data = os.urandom(width * height)
+    noise_layer = Image.frombytes('L', (width, height), noise_data)
+    
+    # Blend it softly (8% opacity)
+    return Image.blend(img, noise_layer.convert("RGB"), alpha=0.08)
+
 def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
-    print("🎨 Preparing Flux Dev (Soft Stack) Mashup...")
+    print("🎨 Preparing Flux Dev (Analog/Grit Mode)...")
     
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("⚠️ Replicate Not Configured.")
@@ -245,26 +262,31 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
 
     try:
         # 1. Create Soft Stack Input
-        init_img = create_soft_stack_composite(images, width=896, height=1152)
+        raw_stack = create_soft_stack_composite(images, width=896, height=1152)
+        
+        # 2. V48 Fix: Add Grain BEFORE sending to AI
+        init_img = add_pre_grain(raw_stack)
+        
         temp_path = BASE_DIR / "temp_init_flux.png"
         init_img.save(temp_path, format="PNG")
         
         print("🚀 Sending to Replicate (black-forest-labs/flux-dev)...")
         
-        # 2. Call Flux
+        # 3. Call Flux with "Dirty" Prompt parameters
         output = replicate.run(
             "black-forest-labs/flux-dev",
             input={
                 "image": open(temp_path, "rb"),
-                "prompt": "Double exposure movie poster, seamless blending of characters, cinematic lighting, unified color palette, film grain, texture, moody, 8k masterpiece.",
+                # V48 Prompt: Removed "Masterpiece", added "35mm film scan, raw"
+                "prompt": "Double exposure movie poster, 35mm film scan, heavy film grain, noise, analog photography, raw style, high contrast, textured paper.",
                 "go_fast": True,
-                "guidance": 3.5,
+                "guidance": 3.0,       # Lowered from 3.5 to reduce "frying"
                 "megapixels": "1",
                 "num_outputs": 1,
                 "aspect_ratio": "4:5",
                 "output_format": "png",
                 "output_quality": 90,
-                "prompt_strength": 0.65, # Keeps original actors, fixes blend
+                "prompt_strength": 0.55, # Lowered from 0.65 to keep original likeness
                 "num_inference_steps": 28
             }
         )
@@ -459,7 +481,7 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V47 (Flux Soft Stack) ---")
+    print("--- Starting V48 (Flux Analog/Grit) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
@@ -544,7 +566,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V47 Generated.")
+    print("Done. V48 Generated.")
 
 if __name__ == "__main__":
     main()
