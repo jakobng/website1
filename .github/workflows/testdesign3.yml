@@ -32,9 +32,8 @@ jobs:
         env:
           # MOVED: This is where the script looks for the key
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} 
-          # You can keep these if you use them in other parts of the script, 
-          # but the V32 script I gave you only needs GEMINI_API_KEY.
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }} 
+          STABILITY_API_KEY: ${{ secrets.STABILITY_API_KEY }}
 
       - name: Commit Generated Images for Inspection
         id: commit_push
