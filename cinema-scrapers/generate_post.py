@@ -1,7 +1,7 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Architectural Assemblage").
-- Workflow: Cutouts -> Layout -> AI Inpaint (Background only) -> Paste Originals Back -> Text.
-- Fixes: Enforced Aspect Ratios, Content Fidelity (Paste-Back), Restored Dictionary.
+Generate Instagram-ready image carousel (V1 - "The Organic Mashup").
+- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Unified Atmosphere) -> Paste Back.
+- Fix: Removed "Montage" from prompt to prevent grid/split-screen generation.
 """
 from __future__ import annotations
 
@@ -283,21 +283,14 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
 
 def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image, Image.Image]:
     """
-    Returns:
-    1. Transparent Layout (RGBA) - The actual cutouts floating.
-    2. Flattened Layout (RGB) - Cutouts on White (for Context).
-    3. Mask (L) - White where gap is, Black where image is.
+    Arranges 5 cutouts in a CHAOTIC layout (Jitter+) to prevent grid look.
+    Returns: Transparent Layout, White-BG Layout, Mask
     """
     width = CANVAS_WIDTH
     height = CANVAS_HEIGHT
     
-    # 1. Transparent Layout (for Paste-Back)
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    
-    # 2. Context Layout (for AI Input)
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    
-    # 3. Mask (Starts White = Fill Everything)
     mask = Image.new("L", (width, height), 255)
     
     imgs_to_process = cinemas[:5]
@@ -306,13 +299,13 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         
     random.shuffle(imgs_to_process)
     
-    # Define 5 Anchor zones
+    # 5 Anchors, but heavily randomized to break the grid
     anchors = [
-        (int(width * 0.20), int(height * 0.20)),
-        (int(width * 0.80), int(height * 0.20)),
-        (int(width * 0.50), int(height * 0.50)),
-        (int(width * 0.20), int(height * 0.80)),
-        (int(width * 0.80), int(height * 0.80)),
+        (int(width * 0.3), int(height * 0.25)),
+        (int(width * 0.7), int(height * 0.25)),
+        (int(width * 0.5), int(height * 0.50)),
+        (int(width * 0.3), int(height * 0.75)),
+        (int(width * 0.7), int(height * 0.75)),
     ]
     
     for i, (name, path) in enumerate(imgs_to_process):
@@ -322,42 +315,40 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
             
-            scale_variance = random.uniform(0.7, 1.1)
-            max_dim = int(500 * scale_variance)
+            scale_variance = random.uniform(0.7, 1.2) # Varied sizes
+            max_dim = int(550 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
             
             cx, cy = anchors[i]
-            cx += random.randint(-60, 60)
-            cy += random.randint(-60, 60)
+            # HIGH JITTER to break lines
+            cx += random.randint(-100, 100)
+            cy += random.randint(-100, 100)
             
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
             
-            # Paste onto transparent layer
+            # Paste
             layout_rgba.paste(cutout, (x, y), mask=cutout)
-            
-            # Paste onto white context layer
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
-            # Update Mask (Black = Keep)
             alpha = cutout.split()[3]
             mask.paste(0, (x, y), mask=alpha)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # Expand mask slightly to allow slight bleed, but not too much
-    mask = mask.filter(ImageFilter.MaxFilter(15)) 
+    # Expand Mask (Dilation) to force edge blending
+    mask = mask.filter(ImageFilter.MaxFilter(20)) 
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to fill gaps."""
+    """Uses Stability AI Inpaint to fill gaps. PROMPT TUNED FOR UNITY."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (Dreamy Montage)...")
+    print("   🎨 Inpainting gaps (Unified Structure)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
@@ -370,10 +361,12 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                "prompt": "cinematic lighting, soft shadows, concrete texture, depth of field, architectural atmosphere, neutral colors, 8k",
-                "negative_prompt": "text, watermark, kaleidoscope, abstract, sci-fi, distorted, cartoon, flat, drawing, busy",
-                "num_inference_steps": 25,
-                "guidance_scale": 7.5
+                # NEW PROMPT: Focuses on "Single Structure" to kill the grid
+                "prompt": "surreal architectural mashup, single unified dream structure, seamless wide angle shot, concrete texture, cinematic lighting, neutral tones, 8k",
+                "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
+                "num_inference_steps": 30,
+                "guidance_scale": 7.5,
+                "strength": 0.95
             }
         )
         
@@ -385,7 +378,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             resp = requests.get(url)
             if resp.status_code == 200:
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
-                # FIX: FORCE RESIZE TO CORRECT DIMENSIONS IMMEDIATELY
+                # FORCE RESIZE to fix proportions
                 return img.resize(layout_img.size, Image.Resampling.LANCZOS)
     except Exception as e:
         print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
