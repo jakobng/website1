@@ -1,9 +1,7 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Dream Montage").
-- Tech: 5 Cutouts -> Layout -> Mask Dilation (Edge Blending) -> Inpaint (Surreal Texture).
-- Style: Edges transition smoothly, no "wall", wild/blendy look.
-- Text: Date Pill Only.
-- Fixed: Restored missing CINEMA_ENGLISH_NAMES variable.
+Generate Instagram-ready image carousel (V1 - "The Architectural Assemblage").
+- Workflow: Cutouts -> Layout -> AI Inpaint (Background only) -> Paste Originals Back -> Text.
+- Fixes: Enforced Aspect Ratios, Content Fidelity (Paste-Back), Restored Dictionary.
 """
 from __future__ import annotations
 
@@ -23,7 +21,7 @@ from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageOps
 
 try:  
     from zoneinfo import ZoneInfo
@@ -99,7 +97,6 @@ CINEMA_ADDRESSES = {
     "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F\nB1F, 2-12-19 Asagayakita, Suginami-ku, Tokyo"
 }
 
-# --- RESTORED ENGLISH NAMES DICTIONARY ---
 CINEMA_ENGLISH_NAMES = {
     "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
     "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -284,21 +281,25 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
         print(f"   ⚠️ Rembg failed: {e}. Using original.")
     return pil_img.convert("RGBA")
 
-def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image]:
+def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image, Image.Image]:
     """
-    Arranges 5 cutouts. 
-    MASK LOGIC: Expands "Fill Area" into the image edges to force blending.
+    Returns:
+    1. Transparent Layout (RGBA) - The actual cutouts floating.
+    2. Flattened Layout (RGB) - Cutouts on White (for Context).
+    3. Mask (L) - White where gap is, Black where image is.
     """
     width = CANVAS_WIDTH
     height = CANVAS_HEIGHT
     
-    # Init Canvas (White background)
-    layout = Image.new("RGBA", (width, height), (255, 255, 255, 255))
+    # 1. Transparent Layout (for Paste-Back)
+    layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     
-    # Init Mask (Starts WHITE = "Fill Everything")
+    # 2. Context Layout (for AI Input)
+    layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
+    
+    # 3. Mask (Starts White = Fill Everything)
     mask = Image.new("L", (width, height), 255)
     
-    # Ensure up to 5 images
     imgs_to_process = cinemas[:5]
     if len(imgs_to_process) < 5:
         imgs_to_process = (imgs_to_process * 3)[:5]
@@ -307,11 +308,11 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
     
     # Define 5 Anchor zones
     anchors = [
-        (int(width * 0.25), int(height * 0.20)),
-        (int(width * 0.75), int(height * 0.20)),
+        (int(width * 0.20), int(height * 0.20)),
+        (int(width * 0.80), int(height * 0.20)),
         (int(width * 0.50), int(height * 0.50)),
-        (int(width * 0.25), int(height * 0.80)),
-        (int(width * 0.75), int(height * 0.80)),
+        (int(width * 0.20), int(height * 0.80)),
+        (int(width * 0.80), int(height * 0.80)),
     ]
     
     for i, (name, path) in enumerate(imgs_to_process):
@@ -321,41 +322,37 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
             
-            # Scale Variance
-            scale_variance = random.uniform(0.8, 1.2)
+            scale_variance = random.uniform(0.7, 1.1)
             max_dim = int(500 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
             
             cx, cy = anchors[i]
-            # Jitter
             cx += random.randint(-60, 60)
             cy += random.randint(-60, 60)
             
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
             
-            # Paste Image
-            layout.paste(cutout, (x, y), mask=cutout)
+            # Paste onto transparent layer
+            layout_rgba.paste(cutout, (x, y), mask=cutout)
             
-            # Mask Logic: BLACK (0) = Keep.
+            # Paste onto white context layer
+            layout_rgb.paste(cutout, (x, y), mask=cutout)
+            
+            # Update Mask (Black = Keep)
             alpha = cutout.split()[3]
             mask.paste(0, (x, y), mask=alpha)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # --- CRITICAL CHANGE FOR "BLENDY/BLURRY" LOOK ---
-    # We want the Inpainter to touch the edges of the cutouts.
-    # Currently, cutouts are 0 (Black). We want to shrink the Black area
-    # so the White (Fill) area overlaps the edge of the photos.
-    # MaxFilter(25) expands the White pixels by ~25px into the Black pixels.
-    print("   💧 Dilating mask to force edge blending...")
-    mask = mask.filter(ImageFilter.MaxFilter(25)) # 25px overlap for serious blending
-
-    return layout.convert("RGB"), mask
+    # Expand mask slightly to allow slight bleed, but not too much
+    mask = mask.filter(ImageFilter.MaxFilter(15)) 
+    
+    return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to create a dreamy, blendy montage."""
+    """Uses Stability AI Inpaint to fill gaps."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
@@ -373,12 +370,10 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                # PROMPT: No walls. Just abstract cinematic texture and blending.
-                "prompt": "abstract cinematic montage, double exposure, film grain, light leaks, motion blur, surreal dreamscape, seamless blend of textures, neutral tones, 8k",
-                "negative_prompt": "text, watermark, concrete wall, solid background, sharp edges, cartoon, drawing",
-                "num_inference_steps": 30,
-                "guidance_scale": 8.0, 
-                "strength": 0.9 # High strength to force blending
+                "prompt": "cinematic lighting, soft shadows, concrete texture, depth of field, architectural atmosphere, neutral colors, 8k",
+                "negative_prompt": "text, watermark, kaleidoscope, abstract, sci-fi, distorted, cartoon, flat, drawing, busy",
+                "num_inference_steps": 25,
+                "guidance_scale": 7.5
             }
         )
         
@@ -389,7 +384,9 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             url = output[0] if isinstance(output, list) else output
             resp = requests.get(url)
             if resp.status_code == 200:
-                return Image.open(BytesIO(resp.content)).convert("RGB")
+                img = Image.open(BytesIO(resp.content)).convert("RGB")
+                # FIX: FORCE RESIZE TO CORRECT DIMENSIONS IMMEDIATELY
+                return img.resize(layout_img.size, Image.Resampling.LANCZOS)
     except Exception as e:
         print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
     return layout_img
@@ -414,7 +411,7 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """Adds ONLY the Date Pill. Removes big title."""
+    """Adds ONLY the Date Pill."""
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
@@ -592,8 +589,8 @@ def main() -> None:
             current_slide_count += needed
     if not final_selection: return
 
-    # --- 5. COVER GENERATION (Dream Montage) ---
-    print("--- Generating V1 Cover (Dream Montage) ---")
+    # --- 5. COVER GENERATION (Architecture Assemblage) ---
+    print("--- Generating V1 Cover (Architecture Assemblage) ---")
     
     # Select Assets (Try for 5 UNIQUE assets)
     available_asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
@@ -618,12 +615,20 @@ def main() -> None:
                  collage_inputs.append(("Feature", p))
 
     if collage_inputs:
-        # A. Create Layout + DILATED Mask
-        layout_img, mask_img = create_layout_and_mask(collage_inputs)
-        # B. Inpaint the Gaps (Dream Texture)
-        inpainted_img = inpaint_gaps(layout_img, mask_img)
-        # C. Text Overlay (Date Only)
-        final_cover = draw_cover_overlay(inpainted_img, bilingual_date_str)
+        # A. Create Layout (Transparent + White) + Mask
+        layout_rgba, layout_rgb, mask_img = create_layout_and_mask(collage_inputs)
+        
+        # B. Inpaint the Gaps (Background only)
+        inpainted_bg = inpaint_gaps(layout_rgb, mask_img)
+        
+        # C. COMPOSITE: Paste original crisp cutouts back on top
+        # Using layout_rgba as mask ensures we only paste the cutouts
+        print("   🔨 Compositing originals back onto Inpainted background...")
+        final_composite = inpainted_bg.copy()
+        final_composite.paste(layout_rgba, (0,0), mask=layout_rgba)
+        
+        # D. Text Overlay (Date Only)
+        final_cover = draw_cover_overlay(final_composite, bilingual_date_str)
         
         final_cover.save(BASE_DIR / f"post_image_00.png")
         
