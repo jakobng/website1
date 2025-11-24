@@ -377,7 +377,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
 
                 # Flux parameters
                 "steps": 60,
-                "guidance": 12,
+                "guidance": 40,
                 "output_format": "png",
                 "prompt_upsampling": False,
                 "safety_tolerance": 2
