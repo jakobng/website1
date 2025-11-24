@@ -35,8 +35,7 @@ except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
-# Get key from: https://replicate.com/account/api-tokens
-REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
+REPLICATE_API_KEY = os.environ.get("REPLICATE_API_KEY")
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
