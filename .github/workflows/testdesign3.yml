@@ -31,7 +31,7 @@ jobs:
         env:
           # The script needs this key to generate the mashup
           STABILITY_API_KEY: ${{ secrets.STABILITY_API_KEY }}
-          REPILICATE_API_KEY: ${{ secrets.REPLICATE_API_KEY }}
+          REPLICATE_API_KEY: ${{ secrets.REPLICATE_API_KEY }}
 
       - name: Commit Generated Images (V3)
         id: commit_push
