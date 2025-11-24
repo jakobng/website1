@@ -1,4 +1,4 @@
-name: Test V2 Design (Punk Zine / Gemini 2.5)
+name: Test Upload
 
 on:
   workflow_dispatch: # Manual trigger only
