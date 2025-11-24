@@ -1,11 +1,9 @@
 """
-Generate Instagram-ready image carousel (V41 - Flux Ghost Blend).
+Generate Instagram-ready image carousel (V44 - Flux 4-Way Fusion).
 
-- API: Replicate (Flux.1 Dev).
-- Input Method: "Ghost Blend" (Triple Exposure).
-- Why: Since Flux allows celebrity faces, we can blend them heavily (ghosting).
-  Flux's high intelligence will resolve this chaotic blending into a 
-  cohesive "Double/Triple Exposure" artistic poster.
+- Visuals: Creates a 2x2 Grid using the top 4 films.
+- AI: Replicate (Flux.1 Dev) looks at the grid and creates a new unified poster.
+- Auth: strict check for REPLICATE_API_TOKEN.
 """
 from __future__ import annotations
 
@@ -15,9 +13,6 @@ import textwrap
 import os
 import glob
 import requests
-import colorsys
-import re
-import math
 import time
 from collections import defaultdict
 from datetime import datetime
@@ -27,7 +22,6 @@ from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 # --- API Setup ---
-# pip install replicate
 try:
     import replicate
     REPLICATE_AVAILABLE = True
@@ -35,7 +29,8 @@ except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
-REPLICATE_API_KEY = os.environ.get("REPLICATE_API_KEY")
+# We explicitly look for 'REPLICATE_API_TOKEN'
+REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -44,12 +39,11 @@ BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_v3_caption.txt"
 
-# Layout Dimensions
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
 STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
 
-# --- Cinema Name Mapping ---
+# --- Cinema Name Mapping (Truncated for brevity, assume full list exists) ---
 CINEMA_ENGLISH_NAMES = {
     "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
     "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -109,25 +103,7 @@ def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     small = pil_img.resize((150, 150))
     result = small.quantize(colors=3, method=2)
     palette = result.getpalette()
-    c1 = (palette[0], palette[1], palette[2])
-    c2 = (palette[3], palette[4], palette[5])
-    
-    def adjust_for_bg(rgb_tuple, is_accent=False):
-        r, g, b = rgb_tuple
-        h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
-        if is_accent:
-            new_v = max(v, 0.4)
-            new_s = s 
-        else:
-            new_v = 0.22 
-            new_s = min(max(s, 0.4), 0.9) 
-            if s < 0.05: 
-                new_s = 0.02
-                new_v = 0.20
-        nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
-        return (int(nr*255), int(ng*255), int(nb*255))
-
-    return adjust_for_bg(c1), adjust_for_bg(c2, is_accent=True)
+    return ((palette[0], palette[1], palette[2]), (palette[3], palette[4], palette[5]))
 
 def create_textured_bg(base_color, accent_color, width, height):
     img = Image.new("RGB", (width, height), base_color)
@@ -177,78 +153,67 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- REPLICATE / FLUX PIPELINE (Ghost Mode) ---
+# --- REPLICATE / FLUX PIPELINE (Grid Mode) ---
 
-def create_ghost_composite(images, width=896, height=1152):
-    """
-    Creates a 'Ghost' composite by creating a triple exposure.
-    Each image is resized to fill the WHOLE canvas and blended.
-    """
+def create_grid_composite(images, width=1024, height=1280):
+    """Creates a 2x2 Grid using up to 4 images."""
     canvas = Image.new("RGB", (width, height), (0,0,0))
     if not images: return canvas
     
-    source_imgs = images[:3]
+    source_imgs = images[:4]
+    while len(source_imgs) < 4:
+        source_imgs.append(source_imgs[0])
     
-    # Base Helper
-    def fill_canvas(img):
-        img_ratio = img.width / img.height
-        target_ratio = width / height
-        if img_ratio > target_ratio:
-            new_h = height
-            new_w = int(new_h * img_ratio)
+    cell_w = width // 2
+    cell_h = height // 2
+    
+    def fill_cell(img, w, h):
+        ratio = img.width / img.height
+        target_r = w / h
+        if ratio > target_r:
+            new_h = h
+            new_w = int(h * ratio)
             resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            left = (new_w - width) // 2
-            return resized.crop((left, 0, left + width, height))
+            left = (new_w - w) // 2
+            return resized.crop((left, 0, left + w, h))
         else:
-            new_w = width
-            new_h = int(new_w / img_ratio)
+            new_w = w
+            new_h = int(w / ratio)
             resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            top = (new_h - height) // 2
-            return resized.crop((0, top, width, top + height))
+            top = (new_h - h) // 2
+            return resized.crop((0, top, w, top + h))
 
-    # 1. Base Layer
-    composite = fill_canvas(source_imgs[0])
-    
-    # 2. Blend Layer 2 (50% Opacity)
-    if len(source_imgs) > 1:
-        layer2 = fill_canvas(source_imgs[1])
-        composite = Image.blend(composite, layer2, alpha=0.5)
+    canvas.paste(fill_cell(source_imgs[0], cell_w, cell_h), (0, 0))
+    canvas.paste(fill_cell(source_imgs[1], cell_w, cell_h), (cell_w, 0))
+    canvas.paste(fill_cell(source_imgs[2], cell_w, cell_h), (0, cell_h))
+    canvas.paste(fill_cell(source_imgs[3], cell_w, cell_h), (cell_w, cell_h))
         
-    # 3. Blend Layer 3 (33% Opacity)
-    if len(source_imgs) > 2:
-        layer3 = fill_canvas(source_imgs[2])
-        composite = Image.blend(composite, layer3, alpha=0.33)
-        
-    return composite
+    return canvas
 
 def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
-    print("🎨 Preparing Flux.1 (Replicate) Mashup...")
+    print("🎨 Preparing Flux.1 (Grid Fusion) Mashup...")
     
     if not REPLICATE_AVAILABLE:
-        print("⚠️ library 'replicate' missing. Pip install it.")
+        print("⚠️ library 'replicate' missing.")
         return None
         
-    if not REPLICATE_API_KEY:
-        print("⚠️ No REPLICATE_API_KEY found.")
+    if not REPLICATE_API_TOKEN:
+        # DEBUG PRINT to prove what is missing
+        print("⚠️ REPLICATE_API_TOKEN env var is Empty or None.")
         return None
 
     try:
-        # 1. Create Ghost Input
-        init_img = create_ghost_composite(images, width=896, height=1152)
-        
-        # Save temp file for Replicate
+        init_img = create_grid_composite(images, width=1024, height=1280)
         temp_path = BASE_DIR / "temp_init_flux.png"
         init_img.save(temp_path, format="PNG")
         
-        print("🚀 Sending to Replicate (black-forest-labs/flux-1-dev)...")
+        print("🚀 Sending to Replicate (Flux.1 Dev)...")
         
-        # 2. Call Flux
-        # We ask for "Double Exposure" to match the ghost input.
         output = replicate.run(
             "black-forest-labs/flux-1-dev",
             input={
                 "image": open(temp_path, "rb"),
-                "prompt": "Cinematic movie poster mashup, double exposure of multiple characters, dreamlike blending, moody lighting, film grain, Tokyo noir style, masterpiece, 8k, textless",
+                "prompt": "Look at the characters and scenes in these images. Create a NEW, SINGLE image that creatively combines elements of each into one cohesive movie poster. Seamlessly integrate the characters into a new shared environment. Do not produce a grid. Do not produce a collage. Cinematic lighting, unified composition, 8k masterpiece.",
                 "go_fast": True,
                 "guidance": 3.5,
                 "megapixels": "1",
@@ -256,7 +221,7 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
                 "aspect_ratio": "4:5",
                 "output_format": "png",
                 "output_quality": 90,
-                "prompt_strength": 0.75, # 0.75 preserves the 'ghosting' but cleans it up
+                "prompt_strength": 0.85, 
                 "num_inference_steps": 28
             }
         )
@@ -265,7 +230,7 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
 
         if output:
             image_url = str(output[0])
-            print(f"📥 Downloading result from: {image_url}")
+            print(f"📥 Downloading result: {image_url}")
             resp = requests.get(image_url)
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content))
@@ -279,7 +244,6 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
 def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    
     bg = Image.new("RGB", (width, height), (20,20,20))
     
     if ai_image:
@@ -315,10 +279,9 @@ def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
         
     draw.text((cx, cy + 100 + offset), "DAILY", font=daily_font, fill=(255, 215, 0), anchor="mm")
     draw.text((cx, cy + 200 + offset), f"{date_str} • {day_str}", font=fonts['meta'], fill=(220,220,220), anchor="mm")
-
     return bg
 
-# --- Standard Slide Logic (Unchanged) ---
+# --- Standard Slide Logic (Keep V28 logic) ---
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
@@ -440,7 +403,6 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
         bg = bg.crop((left, top, left + width, top + height))
     else:
         bg = Image.new("RGB", (width, height), (20,20,20))
-        
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
     bg.paste(overlay, (0, 0), overlay)
     draw = ImageDraw.Draw(bg)
@@ -454,9 +416,8 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V41 (Flux.1 Ghost Blend) ---")
+    print("--- Starting V44 (Flux 4-Way Fusion) ---")
     
-    # 1. Clean
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
 
@@ -500,9 +461,7 @@ def main():
             
     if not slide_data: return
 
-    # 2. GENERATE COVER (Flux.1)
     d_str, day_str = get_bilingual_date()
-    
     ai_art = generate_flux_mashup(cover_images)
     
     if ai_art:
@@ -518,7 +477,6 @@ def main():
         fb_story = draw_fallback_cover(cover_images, fonts, d_str, day_str, is_story=True)
         fb_story.save(BASE_DIR / "story_v3_image_00.png")
 
-    # 3. GENERATE SLIDES
     caption_lines = [f"🗓️ {date_str} Tokyo Cinema Daily\n"]
     
     for i, item in enumerate(slide_data):
@@ -543,7 +501,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V41 Generated.")
+    print("Done. V44 Generated.")
 
 if __name__ == "__main__":
     main()
