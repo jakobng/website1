@@ -368,11 +368,12 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
 
                 # PROMPT: keeps close to original aesthetic
                 "prompt": (
-                    "surreal multiplex interior built from fragments of Tokyo cinemas, "
-                    "dreamlike unified architecture, floating awnings, escalators, "
-                    "concrete surfaces, soft cinematic haze, atmospheric lighting, "
-                    "no grid, no frames, no text, no borders, no collage panels"
-                ),
+                    "impossible cinema palace made of fragments of Tokyo theaters, "
+                    "hybrid brutalist-megastructure, merging geometrically, dreamlike volumetric fog, "
+                    "Escher-like walkways, monumental atrium, flowing architecture, "
+                    "film projectors melting into walls, surreal atmospheric lighting, "
+                    "hyper-detailed impossible architecture, no grids, no text, no frames, no collage panels"
+                    ),
 
                 # Flux parameters
                 "steps": 60,
