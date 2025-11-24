@@ -336,7 +336,7 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
 
     # ADJUSTMENT: Less Mask Dilation (11px instead of 21px)
     # This keeps the "Keep" area (Black) larger, protecting the image edges more
-    mask = mask.filter(ImageFilter.MaxFilter(11)) 
+    mask = mask.filter(ImageFilter.MaxFilter(35)) 
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
