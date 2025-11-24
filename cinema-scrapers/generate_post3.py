@@ -1,9 +1,10 @@
 """
-Generate Instagram-ready image carousel (V31 - Vision-to-Imagen Pipeline).
+Generate Instagram-ready image carousel (V32 - Stability AI Img2Img).
 
-- Step 1: Uses 'gemini-2.0-flash-exp' to LOOK at the top 3 movie posters and write a prompt.
-- Step 2: Uses 'imagen-3.0-generate-001' to GENERATE a new poster from that prompt.
-- Fallback: Texture Engine (V28) if AI fails.
+- Logic: 
+  1. Python creates a rough vertical collage of the top 3 films.
+  2. Stability AI (SDXL) "repaints" that collage to blend seams and unify the style.
+  3. Python overlays the text "TOKYO CINEMA DAILY" on top of the AI art.
 """
 from __future__ import annotations
 
@@ -16,25 +17,17 @@ import requests
 import colorsys
 import re
 import math
+import base64
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from io import BytesIO
-import time
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-# --- Google Gen AI Setup ---
-try:
-    from google import genai
-    from google.genai import types
-    AI_AVAILABLE = True
-except ImportError:
-    print("⚠️ 'google-genai' library not found. Install via: pip install google-genai")
-    AI_AVAILABLE = False
-
-# Reads the key from your GitHub Secret or Local Env
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+# --- API Setup ---
+# Get key from: https://platform.stability.ai/
+STABILITY_API_KEY = os.environ.get("STABILITY_API_KEY")
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -176,80 +169,157 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- AI GENERATION PIPELINE (Corrected) ---
+# --- STABILITY AI (IMG2IMG) PIPELINE ---
 
-def generate_ai_mashup(images: list[Image.Image]) -> Image.Image | None:
+def create_rough_collage(images, width=896, height=1152):
     """
-    Step 1: Use Gemini 2.0 Flash to 'see' the images and write a prompt.
-    Step 2: Use Imagen 3 to generate the image from that prompt.
+    Stitches top 3 images into a vertical stack to serve as the 'Init Image' for AI.
+    We use 896x1152 because it's a native SDXL resolution close to 4:5.
     """
-    print("🤖 AI Pipeline: Connecting...")
+    canvas = Image.new("RGB", (width, height), (0,0,0))
+    if not images: return canvas
     
-    if not AI_AVAILABLE:
-        print("⚠️ library google-genai not installed.")
-        return None
+    # Use top 3
+    source_imgs = images[:3]
+    slice_h = height // len(source_imgs)
     
-    if not GEMINI_API_KEY:
-        print("⚠️ No GEMINI_API_KEY found.")
+    for i, img in enumerate(source_imgs):
+        # Resize/Crop to fill slice
+        target_h = slice_h if i < len(source_imgs) - 1 else height - (slice_h * i)
+        
+        img_ratio = img.width / img.height
+        target_ratio = width / target_h
+        
+        if img_ratio > target_ratio:
+            new_h = target_h
+            new_w = int(new_h * img_ratio)
+            resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+            left = (new_w - width) // 2
+            crop = resized.crop((left, 0, left + width, target_h))
+        else:
+            new_w = width
+            new_h = int(new_w / img_ratio)
+            resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+            top = (new_h - target_h) // 2
+            crop = resized.crop((0, top, width, top + target_h))
+            
+        canvas.paste(crop, (0, i * slice_h))
+        
+    return canvas
+
+def generate_stability_mashup(images: list[Image.Image]) -> Image.Image | None:
+    print("🎨 Preparing Stability AI Mashup...")
+    
+    if not STABILITY_API_KEY:
+        print("⚠️ No STABILITY_API_KEY found. Skipping AI.")
         return None
 
     try:
-        client = genai.Client(api_key=GEMINI_API_KEY)
+        # 1. Create the rough collage (The "Init Image")
+        # SDXL works best with ~1024x1024 dimensions. 
+        # 896x1152 is a valid SDXL aspect ratio (closest to our 4:5 need).
+        init_img = create_rough_collage(images, width=896, height=1152)
         
-        # --- Step 1: Vision (Get Description) ---
-        print("👁️ Phase 1: Gemini 2.0 Flash is analyzing images...")
-        
-        input_images_data = []
-        for img in images[:3]: 
-            buf = BytesIO()
-            if img.mode != 'RGB': img = img.convert('RGB')
-            img.save(buf, format="JPEG")
-            input_images_data.append(buf.getvalue())
+        # Convert to bytes
+        buf = BytesIO()
+        init_img.save(buf, format="PNG")
+        init_bytes = buf.getvalue()
 
-        vision_prompt = (
-            "You are an expert art director. Look at these movie posters. "
-            "Write a single, highly detailed text prompt for an AI image generator (like Imagen) "
-            "to create a new 'Fusion Poster' that artistically combines the mood and elements of these three films. "
-            "IMPORTANT: The prompt must NOT be conversational. Just return the prompt text itself."
+        # 2. Call Stability AI (Image-to-Image)
+        # We don't describe the movie. We describe the STYLE.
+        # The AI sees the collage and applies this style.
+        response = requests.post(
+            "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/image-to-image",
+            headers={
+                "Accept": "application/json",
+                "Authorization": f"Bearer {STABILITY_API_KEY}"
+            },
+            data={
+                "init_image_mode": "IMAGE_STRENGTH",
+                "image_strength": 0.35, # 0.35 means "Change it significantly but keep composition"
+                "steps": 40,
+                "seed": 0,
+                "cfg_scale": 7,
+                "samples": 1,
+                "text_prompts[0][text]": "Abstract cinematic movie poster mashup, double exposure style, highly detailed, 8k, unified lighting, film grain, moody, tokyo street style, masterpiece",
+                "text_prompts[0][weight]": 1,
+                "text_prompts[1][text]": "text, watermark, blurry, ugly, messy, distorted", # Negative prompt
+                "text_prompts[1][weight]": -1,
+            },
+            files={
+                "init_image": init_bytes
+            }
         )
 
-        vision_resp = client.models.generate_content(
-            model='gemini-2.0-flash-exp', 
-            contents=[vision_prompt] + [
-                types.Part.from_bytes(data=d, mime_type="image/jpeg") for d in input_images_data
-            ]
-        )
-        
-        generated_prompt = vision_resp.text
-        print(f"📝 Prompt Generated: {generated_prompt[:60]}...")
+        if response.status_code != 200:
+            print(f"⚠️ Stability API Error: {response.status_code} - {response.text}")
+            return None
 
-        # --- Step 2: Generation (Imagen 3) ---
-        print("🎨 Phase 2: Imagen 3 is painting...")
-        
-        # We append the text requirement here to ensure it's in the final image
-        final_prompt = generated_prompt + " . The image must feature the text 'TOKYO CINEMA DAILY' in bold, stylish typography."
+        # 3. Decode Response
+        data = response.json()
+        for i, image in enumerate(data["artifacts"]):
+            return Image.open(BytesIO(base64.b64decode(image["base64"])))
 
-        image_resp = client.models.generate_images(
-            model='imagen-3.0-generate-001',
-            prompt=final_prompt,
-            config=types.GenerateImagesConfig(
-                number_of_images=1,
-                aspect_ratio="4:5", # 4:5 matches our feed
-            )
-        )
-        
-        # Extract Image Bytes
-        for img_entry in image_resp.generated_images:
-            return Image.open(BytesIO(img_entry.image.image_bytes))
-                
     except Exception as e:
-        print(f"⚠️ AI Pipeline failed: {e}")
+        print(f"⚠️ Stability Pipeline failed: {e}")
         return None
     
     return None
 
-# --- Standard Slide Logic (V28) ---
+def draw_final_cover(ai_image, fonts, date_str, day_str, is_story=False):
+    """
+    Takes the AI generated art and puts the Typography on top.
+    """
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    
+    bg = Image.new("RGB", (width, height), (20,20,20))
+    
+    # Fit AI image to canvas
+    if ai_image:
+        # Resize to fill
+        img_ratio = ai_image.width / ai_image.height
+        target_ratio = width / height
+        if img_ratio > target_ratio:
+            new_h = height
+            new_w = int(new_h * img_ratio)
+            resized = ai_image.resize((new_w, new_h), Image.Resampling.LANCZOS)
+            left = (new_w - width) // 2
+            bg.paste(resized, (-left, 0))
+        else:
+            new_w = width
+            new_h = int(new_w / img_ratio)
+            resized = ai_image.resize((new_w, new_h), Image.Resampling.LANCZOS)
+            top = (new_h - height) // 2
+            bg.paste(resized, (0, -top))
+    else:
+        # Should catch this before calling, but just in case
+        pass
 
+    # Add dark overlay for text readability
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 100))
+    bg.paste(overlay, (0, 0), overlay)
+    
+    draw = ImageDraw.Draw(bg)
+    cx, cy = width // 2, height // 2
+    offset = -80 if is_story else 0
+    
+    # Typography
+    draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    
+    # "DAILY" in Gold
+    try:
+        daily_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
+    except:
+        daily_font = fonts['cover_sub']
+        
+    draw.text((cx, cy + 100 + offset), "DAILY", font=daily_font, fill=(255, 215, 0), anchor="mm")
+    draw.text((cx, cy + 200 + offset), f"{date_str} • {day_str}", font=fonts['meta'], fill=(220,220,220), anchor="mm")
+
+    return bg
+
+# --- Standard Slide Logic (V28) ---
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
@@ -260,7 +330,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
     
-    # Layout Dimensions
+    # Layout
     if is_story:
         target_w = 950
         target_h = 850
@@ -287,7 +357,6 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     
     img_x = (width - target_w) // 2
     canvas.paste(img_final, (img_x, img_y))
-    
     cursor_y = img_y + target_h + (70 if is_story else 60)
     
     # Typography
@@ -295,16 +364,13 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     if film.get('year'): meta_parts.append(str(film['year']))
     if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']}m")
     if film.get('genres'): meta_parts.append(film['genres'][0].upper())
-    
     meta_str = "  •  ".join(meta_parts)
     cursor_y = draw_centered_text(draw, cursor_y, meta_str, fonts['meta'], (200, 200, 200), width)
     cursor_y += 15
 
     jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
     en_title = film.get('movie_title_en')
-    
-    if normalize_string(jp_title) == normalize_string(en_title):
-        en_title = None
+    if normalize_string(jp_title) == normalize_string(en_title): en_title = None
         
     if len(jp_title) > 15:
         wrapper = textwrap.TextWrapper(width=15)
@@ -313,7 +379,6 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
             cursor_y = draw_centered_text(draw, cursor_y, line, fonts['title_jp'], (255, 255, 255), width)
     else:
         cursor_y = draw_centered_text(draw, cursor_y, jp_title, fonts['title_jp'], (255, 255, 255), width)
-    
     cursor_y += 10
 
     if en_title:
@@ -332,7 +397,6 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     available_space = height - cursor_y - (150 if is_story else 50)
     std_font_size = 32 if is_story else 28
     std_gap = 60 if is_story else 50
-    
     block_unit = (std_font_size * 1.2 * 2) + std_gap 
     total_needed = num_cinemas * block_unit
     
@@ -340,7 +404,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     if total_needed > available_space:
         scale = available_space / total_needed
         scale = max(scale, 0.45) 
-        
+    
     final_font_size = int(std_font_size * scale)
     gap_scale = scale if scale > 0.8 else scale * 0.6
     final_gap = int(std_gap * gap_scale)
@@ -364,48 +428,48 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
         times = sorted(film['showings'][cinema])
         times_str = " ".join(times)
         cinema_en = CINEMA_ENGLISH_NAMES.get(cinema, cinema)
-        
         len_c = draw.textlength(cinema_en, font=dyn_font_cin)
         x_c = (width - len_c) // 2
         draw.text((x_c, start_y), cinema_en, font=dyn_font_cin, fill=(255, 255, 255))
-        
         y_time = start_y + final_font_size + 5 
         len_t = draw.textlength(times_str, font=dyn_font_time)
         x_t = (width - len_t) // 2
         draw.text((x_t, y_time), times_str, font=dyn_font_time, fill=(200, 200, 200))
-        
         start_y += unit_height
 
     return canvas
 
 def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
-    """Simple text fallback if AI fails"""
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    c1, c2 = get_faithful_colors(images[0]) if images else ((20,20,20), (50,50,50))
-    bg = create_textured_bg(c1, c2, width, height)
-    bg = apply_film_grain(bg)
+    
+    # If no AI, we use the "Collage" method from V29 but without the repainting
+    bg = create_rough_collage(images, width, height)
+    
+    # Darken heavily since it's messy
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
+    bg.paste(overlay, (0, 0), overlay)
+    
     draw = ImageDraw.Draw(bg)
     cx, cy = width // 2, height // 2
-    offset = -100 if is_story else 0
+    offset = -80 if is_story else 0
     
-    draw.text((cx, cy - 80 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 40 + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 160 + offset), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
+    draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + 180 + offset), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
     return bg
 
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V31 (Vision-to-Imagen Pipeline) ---")
+    print("--- Starting V32 (Stability AI Img2Img) ---")
     
-    # 1. Clean old files
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
 
     date_str = get_today_str()
     if not SHOWTIMES_PATH.exists(): 
-        print(f"Showtimes file not found at {SHOWTIMES_PATH}")
+        print("Showtimes file missing.")
         return
         
     with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
@@ -415,7 +479,6 @@ def main():
     for item in raw_data:
         if item.get('date_text') != date_str: continue
         if not item.get('tmdb_backdrop_path'): continue
-        
         key = item.get('tmdb_id') or item.get('movie_title')
         if key not in films_map:
             films_map[key] = item
@@ -427,7 +490,7 @@ def main():
     selected = all_films[:9]
     
     if not selected:
-        print("No films found matching today's date.")
+        print("No films found.")
         return
 
     print(f"Selected {len(selected)} films.")
@@ -442,39 +505,23 @@ def main():
             slide_data.append({"film": film, "img": img})
             cover_images.append(img)
             
-    if not slide_data:
-        print("No images downloaded.")
-        return
+    if not slide_data: return
 
-    # 2. GENERATE COVER
-    print("🎨 Generating Cover...")
+    # 2. GENERATE COVER (Stability AI)
     d_str, day_str = get_bilingual_date()
     
-    # Try AI pipeline
-    ai_cover = generate_ai_mashup(cover_images)
+    ai_art = generate_stability_mashup(cover_images)
     
-    if ai_cover:
-        print("✅ AI Cover Generated Successfully.")
+    if ai_art:
+        print("✅ AI Mashup Successful!")
+        # Draw Text on top of AI Art
+        cover_feed = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=False)
+        cover_story = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=True)
         
-        # Resize/Crop AI result for Feed (4:5)
-        cover_feed = ai_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * ai_cover.height / ai_cover.width)))
-        if cover_feed.height < CANVAS_HEIGHT:
-            cover_feed = cover_feed.resize((int(CANVAS_HEIGHT * cover_feed.width / cover_feed.height), CANVAS_HEIGHT))
-        
-        left = (cover_feed.width - CANVAS_WIDTH) // 2
-        top = (cover_feed.height - CANVAS_HEIGHT) // 2
-        feed_final = cover_feed.crop((left, top, left + CANVAS_WIDTH, top + CANVAS_HEIGHT))
-        feed_final.save(BASE_DIR / "post_v3_image_00.png")
-
-        # Resize/Crop for Story (9:16)
-        cover_story = ai_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * ai_cover.height / ai_cover.width)))
-        story_bg = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), (0,0,0))
-        y_pos = (STORY_CANVAS_HEIGHT - cover_story.height) // 2
-        story_bg.paste(cover_story, (0, y_pos))
-        story_bg.save(BASE_DIR / "story_v3_image_00.png")
-        
+        cover_feed.save(BASE_DIR / "post_v3_image_00.png")
+        cover_story.save(BASE_DIR / "story_v3_image_00.png")
     else:
-        print("⚠️ AI Generation failed or skipped. Using Fallback.")
+        print("⚠️ Using Fallback Collage (No AI).")
         fb_feed = draw_fallback_cover(cover_images, fonts, d_str, day_str, is_story=False)
         fb_feed.save(BASE_DIR / "post_v3_image_00.png")
         
@@ -490,16 +537,13 @@ def main():
         
         slide_feed = draw_poster_slide(film, img, fonts, is_story=False)
         slide_feed.save(BASE_DIR / f"post_v3_image_{i+1:02}.png")
-
         slide_story = draw_poster_slide(film, img, fonts, is_story=True)
         slide_story.save(BASE_DIR / f"story_v3_image_{i+1:02}.png")
         
         # Caption
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
         caption_lines.append(f"{t_jp}") 
-        if film.get('movie_title_en'): 
-            caption_lines.append(f"{film['movie_title_en']}")
-            
+        if film.get('movie_title_en'): caption_lines.append(f"{film['movie_title_en']}")
         for cin, t in film['showings'].items():
             t.sort()
             caption_lines.append(f"{cin}: {', '.join(t)}")
@@ -511,7 +555,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V31 Generated.")
+    print("Done. V32 Generated.")
 
 if __name__ == "__main__":
     main()
