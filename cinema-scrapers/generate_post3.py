@@ -1,9 +1,8 @@
 """
-Generate Instagram-ready image carousel (V61 - Function Scope Fix).
-
-- Fix: Restored missing 'draw_poster_slide' and helper functions.
-- Structure: All functions defined BEFORE main() execution.
-- Features: Gemini 2.5 Layout, Spaced Collage, Large Japanese Date.
+Generate Instagram-ready image carousel (V61 - "Punk Zine" Style).
+REPLACES V28.
+- Integration: Replaces standard V2 output filenames so the workflow picks them up.
+- Features: Gemini 2.5 Layout, Replicate Cutouts, Spaced Collage.
 """
 from __future__ import annotations
 
@@ -40,6 +39,8 @@ except ImportError:
     print("⚠️ Google GenAI library not found. Run: pip install google-genai")
     GEMINI_AVAILABLE = False
 
+# --- Secrets ---
+# The workflow must provide these via env variables
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
@@ -48,7 +49,9 @@ BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
-OUTPUT_CAPTION_PATH = BASE_DIR / "post_v3_caption.txt"
+
+# IMPORTANT: Output to "v2" filenames to match existing GitHub Action Git commands
+OUTPUT_CAPTION_PATH = BASE_DIR / "post_v2_caption.txt"
 
 CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
@@ -215,6 +218,10 @@ def ask_gemini_for_layout(images: list[Image.Image]):
 
 def remove_background(pil_img: Image.Image) -> Image.Image | None:
     print("✂️ Cutting out sticker...")
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("⚠️ Replicate not configured.")
+        return None
+        
     try:
         temp_path = BASE_DIR / "temp_rembg_in.png"
         pil_img.save(temp_path, format="PNG")
@@ -227,7 +234,8 @@ def remove_background(pil_img: Image.Image) -> Image.Image | None:
             resp = requests.get(str(output))
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGBA")
-    except:
+    except Exception as e:
+        print(f"Replicate Error: {e}")
         return None
     return None
 
@@ -510,10 +518,11 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     return canvas
 
 def main():
-    print("--- Starting V61 (Function Scope Fix) ---")
+    print("--- Starting V2 (Punk Zine Style) ---")
     
-    for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
-    for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
+    # Clean up ANY possible output files
+    for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
+    for f in glob.glob(str(BASE_DIR / "story_v2_*.png")): os.remove(f)
 
     date_str = get_today_str()
     if not SHOWTIMES_PATH.exists(): 
@@ -555,30 +564,40 @@ def main():
             
     if not slide_data: return
 
+    # --- COLLAGE GENERATION ---
     collage = create_chaotic_collage(cover_images)
     
     if collage:
         print("✅ Collage Assembled!")
+        # FEED COVER
         cover_feed = draw_final_cover(collage, fonts, is_story=False)
+        cover_feed.save(BASE_DIR / "post_v2_image_00.png")
+        
+        # STORY COVER
         cover_story = draw_final_cover(collage, fonts, is_story=True)
-        cover_feed.save(BASE_DIR / "post_v3_image_00.png")
-        cover_story.save(BASE_DIR / "story_v3_image_00.png")
+        cover_story.save(BASE_DIR / "story_v2_image_00.png")
     else:
         print("⚠️ Collage Failed. Using Fallback.")
         fb_feed = draw_fallback_cover(cover_images, fonts, is_story=False)
-        fb_feed.save(BASE_DIR / "post_v3_image_00.png")
+        fb_feed.save(BASE_DIR / "post_v2_image_00.png")
+        
         fb_story = draw_fallback_cover(cover_images, fonts, is_story=True)
-        fb_story.save(BASE_DIR / "story_v3_image_00.png")
+        fb_story.save(BASE_DIR / "story_v2_image_00.png")
 
+    # --- SLIDE GENERATION ---
     caption_lines = [f"🗓️ {date_str} Tokyo Cinema Daily\n"]
     
     for i, item in enumerate(slide_data):
         film = item['film']
         img = item['img']
+        
+        # Feed Slide
         slide_feed = draw_poster_slide(film, img, fonts, is_story=False)
-        slide_feed.save(BASE_DIR / f"post_v3_image_{i+1:02}.png")
+        slide_feed.save(BASE_DIR / f"post_v2_image_{i+1:02}.png")
+        
+        # Story Slide
         slide_story = draw_poster_slide(film, img, fonts, is_story=True)
-        slide_story.save(BASE_DIR / f"story_v3_image_{i+1:02}.png")
+        slide_story.save(BASE_DIR / f"story_v2_image_{i+1:02}.png")
         
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
         caption_lines.append(f"{t_jp}") 
@@ -594,7 +613,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V61 Generated.")
+    print("Done. V2 Generated (Punk Style).")
 
 if __name__ == "__main__":
     main()
