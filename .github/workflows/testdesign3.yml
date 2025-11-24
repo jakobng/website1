@@ -1,4 +1,4 @@
-name: Test Instagram Design3 API
+name: Test Instagram Design3 (Stability AI)
 
 on:
   workflow_dispatch: # Manual trigger
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write
+      contents: write # REQUIRED to push images back to repo
 
     steps:
       - name: Check out repository
@@ -26,21 +26,35 @@ jobs:
 
       - name: Run Generator (Stability AI Mode)
         working-directory: './cinema-scrapers'
-        # Runs your V33 script
         run: python generate_post3.py
         env:
-          # Passes the Stability Key to Python
-          STABILITY_API_KEY: ${{ secrets.STABILITY_API_KEY }} 
-          # Kept these just in case your specific version needs them
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }} 
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # The script needs this key to generate the mashup
+          STABILITY_API_KEY: ${{ secrets.STABILITY_API_KEY }}
 
-      # ▼▼▼ NEW SECTION: SAVES IMAGES AS A ZIP FILE ▼▼▼
-      - name: Upload Generated Images
-        uses: actions/upload-artifact@v4
-        with:
-          name: instagram-ready-posts
-          path: |
-            cinema-scrapers/post_v3_*.png
-            cinema-scrapers/story_v3_*.png
-            cinema-scrapers/post_v3_caption.txt
+      - name: Commit Generated Images (V3)
+        id: commit_push
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # 1. Add the new Feed Slides (v3)
+          git add cinema-scrapers/post_v3_image_*.png
+          
+          # 2. Add the new Story Slides (v3)
+          git add cinema-scrapers/story_v3_image_*.png
+          
+          # 3. Add the Caption text
+          git add cinema-scrapers/post_v3_caption.txt
+          
+          # Check if anything changed
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          
+          # 4. Commit and Push back to Main
+          git commit -m "DESIGN AUTO: Generated V3 Slides (Stability AI)"
+          git pull origin main --rebase
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
