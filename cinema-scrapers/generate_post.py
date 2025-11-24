@@ -1,7 +1,7 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Architectural Realism Assemblage").
-- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Real Building Context) -> Paste Back.
-- Update: Prompt changed to "Beautiful Cinema Building" to ground the AI generation.
+Generate Instagram-ready image carousel (V1 - "The Balanced Dream Assemblage").
+- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Dream Architecture) -> Paste Back.
+- Update: Prompt tuned to balance realism with a "dreamlike cinematic atmosphere".
 """
 from __future__ import annotations
 
@@ -340,12 +340,12 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint with an ARCHITECTURAL REALISM prompt."""
+    """Uses Stability AI Inpaint with a BALANCED DREAM/REALISM prompt."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (Architectural Realism)...")
+    print("   🎨 Inpainting gaps (Balanced Dream Architecture)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
@@ -358,9 +358,10 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                # NEW PROMPT: GROUNDED ARCHITECTURAL REALISM
-                "prompt": "a beautiful modern cinema building, interior architecture, high ceiling, concrete walls, warm lighting, photorealistic, architectural photography, 8k",
-                "negative_prompt": "surreal, fantasy, sci-fi, spaceship, floating, distorted, cartoon, sketch, text, watermark, grid, split screen",
+                # NEW PROMPT: BALANCED DREAM & REALISM
+                "prompt": "a unified architectural collage of cinema building elements, dreamlike cinematic atmosphere, soft brutalist concrete texture, warm light leaks, wide angle architectural photography, highly detailed, 8k",
+                # Relaxed negative prompt (removed 'surreal', 'fantasy')
+                "negative_prompt": "sci-fi, spaceship, floating, distorted, cartoon, sketch, text, watermark, grid, split screen",
                 "num_inference_steps": 30,
                 "guidance_scale": 7.5,
                 "strength": 0.85
