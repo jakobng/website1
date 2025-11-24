@@ -85,14 +85,7 @@ jobs:
 
       # --- UPLOAD PHASE ---
 
-      - name: Upload V1 (Cinemas)
-        if: steps.commit_push.outputs.pushed == 'true'
-        working-directory: './cinema-scrapers'
-        continue-on-error: true # Don't stop if V1 fails, we want to see V2
-        run: python upload_to_instagram.py --type cinema
-        env:
-          IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+
 
       - name: Upload V2 (Movies / Punk Zine)
         if: steps.commit_push.outputs.pushed == 'true'
