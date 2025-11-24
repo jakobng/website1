@@ -341,45 +341,65 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to fill gaps."""
+    """
+    NEW VERSION:
+    Performs AI inpainting using black-forest-labs / flux-fill-pro.
+    Only white areas in the mask are inpainted.
+    All black areas are preserved (cinema cutouts).
+    """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ⚠️ Replicate not available. Skipping Inpaint.")
+        print("   ⚠️ Replicate unavailable. Using layout as-is.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (Unified Structure)...")
+    print("   🎨 Inpainting gaps with FLUX-FILL-PRO (dream architecture mode) ...")
+
+    # Save temp files
+    temp_img_path = BASE_DIR / "temp_inpaint_img.png"
+    temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
+    layout_img.save(temp_img_path, format="PNG")
+    mask_img.save(temp_mask_path, format="PNG")
+
     try:
-        temp_img_path = BASE_DIR / "temp_inpaint_img.png"
-        temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
-        
-        layout_img.save(temp_img_path, format="PNG")
-        mask_img.save(temp_mask_path, format="PNG")
-        
         output = replicate.run(
-            "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
+            "black-forest-labs/flux-fill-pro",
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                "prompt": "surreal architectural mashup, single unified dream structure, seamless wide angle shot, concrete texture, cinematic lighting, neutral tones, 8k",
-                "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
-                "num_inference_steps": 30,
-                "guidance_scale": 7.5,
-                "strength": 0.85 # Reduced from 0.95 to keep more original context
-            }
+
+                # PROMPT: keeps close to original aesthetic
+                "prompt": (
+                    "surreal multiplex interior built from fragments of Tokyo cinemas, "
+                    "dreamlike unified architecture, floating awnings, escalators, "
+                    "concrete surfaces, soft cinematic haze, atmospheric lighting, "
+                    "no grid, no frames, no text, no borders, no collage panels"
+                ),
+
+                # Flux parameters
+                "steps": 40,
+                "guidance": 40,
+                "output_format": "png",
+                "prompt_upsampling": False,
+                "safety_tolerance": 2
+            },
         )
-        
-        if temp_img_path.exists(): os.remove(temp_img_path)
-        if temp_mask_path.exists(): os.remove(temp_mask_path)
-        
+
+        # Clean temp files
+        if temp_img_path.exists(): temp_img_path.unlink()
+        if temp_mask_path.exists(): temp_mask_path.unlink()
+
         if output:
             url = output[0] if isinstance(output, list) else output
             resp = requests.get(url)
             if resp.status_code == 200:
-                img = Image.open(BytesIO(resp.content)).convert("RGB")
-                return img.resize(layout_img.size, Image.Resampling.LANCZOS)
-    except Exception as e:
-        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
-    return layout_img
+                result = Image.open(BytesIO(resp.content)).convert("RGB")
+                return result.resize(layout_img.size, Image.Resampling.LANCZOS)
 
+        print("   ⚠️ Flux returned no image. Using layout.")
+        return layout_img
+
+    except Exception as e:
+        print(f"   ⚠️ Flux Inpainting error: {e}")
+        return layout_img
 # --- IMAGE GENERATORS ---
 
 def create_sunburst_background(width: int, height: int) -> Image.Image:
