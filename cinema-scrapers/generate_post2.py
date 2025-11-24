@@ -1,11 +1,9 @@
 """
-Generate Instagram-ready image carousel (V66 - "Gravity & Anchors").
-- Design: Punk Zine / Structured Chaos.
-- Logic:
-  1. Uses ALL 9 images (1 BG + 8 Cutouts).
-  2. Detects "Flat Edges" (cut-off bodies) via Gemini.
-  3. ANCHORS flat edges to the canvas bounds (Bottom/Left/Right).
-  4. Floats "complete" stickers in the empty space.
+Generate Instagram-ready image carousel (V62 - "A24 Style" + Spread Layout).
+REPLACES V28/V61.
+- Design: Minimalist typography ("Today's Film Selection"), no yellow accents.
+- Layout: "Explosive" collage (images spread to edges/bleed off canvas).
+- Tech: Gemini 2.5 Flash + Replicate + Pillow.
 """
 from __future__ import annotations
 
@@ -16,14 +14,15 @@ import os
 import glob
 import requests
 import math
+import colorsys
 import re
+import time
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-# --- Imports ---
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance, ImageChops
 
 # --- API Setup ---
 try:
@@ -50,11 +49,45 @@ BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
+
+# Output matches the V2 workflow expectations
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_v2_caption.txt"
 
 CANVAS_WIDTH = 1080
-CANVAS_HEIGHT = 1350       # 4:5 Feed
-STORY_CANVAS_HEIGHT = 1920 # 9:16 Story
+CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
+STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
+
+# --- Cinema Name Mapping ---
+CINEMA_ENGLISH_NAMES = {
+    "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
+    "K's Cinema (ケイズシネマ)": "K's Cinema",
+    "シネマート新宿": "Cinemart Shinjuku",
+    "新宿シネマカリテ": "Shinjuku Cinema Qualite",
+    "新宿武蔵野館": "Shinjuku Musashino-kan",
+    "テアトル新宿": "Theatre Shinjuku",
+    "早稲田松竹": "Waseda Shochiku",
+    "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
+    "シアター・イメージフォーラム": "Theatre Image Forum",
+    "ユーロスペース": "Eurospace",
+    "ヒューマントラストシネマ渋谷": "Human Trust Cinema Shibuya",
+    "Stranger (ストレンジャー)": "Stranger",
+    "新文芸坐": "Shin-Bungeiza",
+    "目黒シネマ": "Meguro Cinema",
+    "ポレポレ東中野": "Pole Pole Higashi-Nakano",
+    "K2 Cinema": "K2 Cinema",
+    "ヒューマントラストシネマ有楽町": "Human Trust Cinema Yurakucho",
+    "ラピュタ阿佐ヶ谷": "Laputa Asagaya",
+    "下高井戸シネマ": "Shimotakaido Cinema",
+    "国立映画アーカイブ": "National Film Archive of Japan",
+    "池袋シネマ・ロサ": "Ikebukuro Cinema Rosa",
+    "シネスイッチ銀座": "Cine Switch Ginza",
+    "シネマブルースタジオ": "Cinema Blue Studio",
+    "CINEMA Chupki TABATA": "Cinema Chupki Tabata",
+    "シネクイント": "Cine Quinto Shibuya",
+    "アップリンク吉祥寺": "Uplink Kichijoji",
+    "Morc阿佐ヶ谷": "Morc Asagaya",
+    "Tollywood": "Tollywood"
+}
 
 # --- Helpers ---
 
@@ -63,11 +96,21 @@ def get_today_str():
 
 def get_japanese_date_str():
     d = datetime.now()
+    weekdays = ["月", "火", "水", "木", "金", "土", "日"]
+    wd = weekdays[d.weekday()]
+    # Format: 2025.11.24 (Mon) - Cleaner, more modern look
     return f"{d.year}.{d.month:02}.{d.day:02}"
+
+def normalize_string(s):
+    if not s: return ""
+    return re.sub(r'\W+', '', str(s)).lower()
 
 def download_image(path: str) -> Image.Image | None:
     if not path: return None
-    url = path if path.startswith("http") else f"https://image.tmdb.org/t/p/w1280{path}"
+    if path.startswith("http"):
+        url = path
+    else:
+        url = f"https://image.tmdb.org/t/p/w1280{path}"
     try:
         resp = requests.get(url, timeout=15)
         if resp.status_code == 200:
@@ -79,9 +122,14 @@ def download_image(path: str) -> Image.Image | None:
 def get_fonts():
     try:
         return {
+            # NEW: Massive Japanese Title (Bold, 110px)
             "cover_main_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 110),
+            # NEW: Medium English Subtitle (Regular, 55px)
             "cover_sub_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 55),
+            # Date
             "cover_date": ImageFont.truetype(str(REGULAR_FONT_PATH), 40),
+            
+            # Slide fonts (Keep these the same)
             "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
             "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
@@ -91,9 +139,49 @@ def get_fonts():
     except:
         print("⚠️ Fonts not found, using default.")
         d = ImageFont.load_default()
+        # Ensure all keys exist to prevent crashes
         return {k: d for k in ["cover_main_jp", "cover_sub_en", "cover_date", "title_jp", "title_en", "meta", "cinema", "times"]}
 
-# --- Visual FX Helpers ---
+def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
+    small = pil_img.resize((150, 150))
+    result = small.quantize(colors=3, method=2)
+    palette = result.getpalette()
+    c1 = (palette[0], palette[1], palette[2])
+    c2 = (palette[3], palette[4], palette[5])
+    def adjust_for_bg(rgb_tuple, is_accent=False):
+        r, g, b = rgb_tuple
+        h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
+        if is_accent:
+            new_v = max(v, 0.4)
+            new_s = s 
+        else:
+            new_v = 0.22 
+            new_s = min(max(s, 0.4), 0.9) 
+            if s < 0.05: 
+                new_s = 0.02
+                new_v = 0.20
+        nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
+        return (int(nr*255), int(ng*255), int(nb*255))
+    return adjust_for_bg(c1), adjust_for_bg(c2, is_accent=True)
+
+def create_textured_bg(base_color, accent_color, width, height):
+    img = Image.new("RGB", (width, height), base_color)
+    texture = Image.new("RGBA", (width, height), (0,0,0,0))
+    draw = ImageDraw.Draw(texture)
+    line_color = (*accent_color, 25) 
+    num_lines = int(40 * (height / 1350))
+    for _ in range(num_lines):
+        x1 = random.randint(-width, width * 2)
+        y1 = random.randint(-height, height * 2)
+        length = random.randint(300, 1500)
+        angle = math.radians(45)
+        x2 = x1 + length * math.cos(angle)
+        y2 = y1 + length * math.sin(angle)
+        w = random.randint(1, 4)
+        draw.line([(x1, y1), (x2, y2)], fill=line_color, width=w)
+    texture = texture.filter(ImageFilter.GaussianBlur(radius=2))
+    img.paste(texture, (0,0), texture)
+    return img
 
 def apply_film_grain(img):
     width, height = img.size
@@ -101,54 +189,47 @@ def apply_film_grain(img):
     noise_img = Image.frombytes('L', (width, height), noise_data)
     if img.mode != 'RGBA': img = img.convert('RGBA')
     noise_img = noise_img.convert('RGBA')
-    return Image.blend(img, noise_img, alpha=0.07).convert("RGB")
+    return Image.blend(img, noise_img, alpha=0.05).convert("RGB")
 
-def create_sticker_style(img: Image.Image) -> Image.Image:
-    """Adds white border + drop shadow to a cutout."""
-    img = img.convert("RGBA")
-    alpha = img.split()[3]
-    # White Border
-    border_mask = alpha.filter(ImageFilter.MaxFilter(9))
-    sticker_base = Image.new("RGBA", img.size, (255, 255, 255, 0))
-    sticker_base.paste((255, 255, 255, 255), (0,0), mask=border_mask)
-    sticker_base.paste(img, (0,0), mask=alpha)
-    
-    # Shadow
-    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    shadow_mask = border_mask.filter(ImageFilter.GaussianBlur(10))
-    shadow_layer = Image.new("RGBA", img.size, (0,0,0,150))
-    shadow.paste(shadow_layer, (10, 20), mask=shadow_mask)
-    
-    final = Image.new("RGBA", img.size, (0,0,0,0))
-    final.paste(shadow, (0,0), mask=shadow)
-    final.paste(sticker_base, (0,0), mask=sticker_base)
-    return final
+def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
+    length = draw.textlength(text, font=font)
+    x = (canvas_width - length) // 2
+    draw.text((x, y), text, font=font, fill=fill)
+    return y + font.size + 10 
 
-def create_single_bg(img: Image.Image, width, height) -> Image.Image:
-    """Creates a simple, darkened, blurred background from 1 image."""
-    ratio = img.width / img.height
-    target_ratio = width / height
-    if ratio > target_ratio:
-        new_h = height
-        new_w = int(new_h * ratio)
-        img = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-        left = (new_w - width) // 2
-        img = img.crop((left, 0, left+width, height))
-    else:
-        new_w = width
-        new_h = int(new_w / ratio)
-        img = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-        top = (new_h - height) // 2
-        img = img.crop((0, top, width, top+height))
-        
-    img = img.filter(ImageFilter.GaussianBlur(8)) # Heavy blur
-    enhancer = ImageEnhance.Brightness(img)
-    img = enhancer.enhance(0.5) # Darken to 50%
-    return img
+# --- COLLAGE LOGIC ---
+
+def ask_gemini_for_layout(images: list[Image.Image]):
+    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
+        print("⚠️ Gemini not configured. Falling back.")
+        return 0, [1, 2, 3, 4] 
+
+    print("🧠 Consulting Gemini 2.5 Flash...")
+    try:
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        prompt = """
+        You are an art director making a movie collage poster.
+        1. Select ONE image to be the BACKGROUND (negative space/texture).
+        2. Select 4 to 5 images to be FOREGROUND CUTOUTS (clear humans).
+        Return JSON: {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
+        """
+        response = client.models.generate_content(
+            model='gemini-2.5-flash', contents=[prompt, *images]
+        )
+        clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
+        if clean_json:
+            data = json.loads(clean_json.group(0))
+            return data.get("background_index", 0), data.get("foreground_indices", [1,2,3])
+    except Exception as e:
+        print(f"⚠️ Gemini Analysis failed: {e}")
+    return 0, [1, 2, 3, 4]
 
 def remove_background(pil_img: Image.Image) -> Image.Image | None:
+    print("✂️ Cutting out sticker...")
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("⚠️ Replicate not configured.")
         return None
+        
     try:
         temp_path = BASE_DIR / "temp_rembg_in.png"
         pil_img.save(temp_path, format="PNG")
@@ -163,199 +244,138 @@ def remove_background(pil_img: Image.Image) -> Image.Image | None:
                 return Image.open(BytesIO(resp.content)).convert("RGBA")
     except Exception as e:
         print(f"Replicate Error: {e}")
+        return None
     return None
 
-# --- AI Logic ---
-
-def ask_gemini_for_selection(images: list[Image.Image]):
-    """Call 1: Pick 1 Background."""
-    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
-        return 0
-    print("🧠 (1/2) Gemini Selection...")
-    try:
-        client = genai.Client(api_key=GEMINI_API_KEY)
-        prompt = "Select ONE image index that is best for a blurred background (texture/landscape). Return JSON: {'bg_index': 0}"
-        response = client.models.generate_content(model='gemini-2.5-flash', contents=[prompt, *images])
-        clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
-        if clean_json:
-            data = json.loads(clean_json.group(0))
-            return data.get("bg_index", 0)
-    except:
-        pass
-    return 0
-
-def ask_gemini_to_anchor_stickers(stickers: list[Image.Image]):
-    """
-    Call 2: The Anchor Manager.
-    Analyzes stickers for flat edges (cut-offs).
-    """
-    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
-        # Fallback: Anchor 50% to bottom, float rest
-        return [{"sticker_index": i, "anchor": "bottom" if i%2==0 else "float", "scale_boost": 1.0} for i in range(len(stickers))]
-
-    print("🧠 (2/2) Gemini Anchor Manager...")
-    try:
-        client = genai.Client(api_key=GEMINI_API_KEY)
-        # Resize inputs to save tokens
-        small_stickers = [s.resize((256, int(256*s.height/s.width))) for s in stickers]
-        
-        prompt = """
-        Analyze these transparent stickers. Look at their EDGES.
-        
-        1. ANCHOR CHECK:
-           - If the person is cut off at the WAIST or KNEES (flat line at bottom) -> "bottom"
-           - If the image is cut off at the LEFT side -> "left"
-           - If the image is cut off at the RIGHT side -> "right"
-           - If the person/ object is cut off at the TOP (flat line at top) - > "top"
-           - If the person/object is complete (head and shoulders floating) -> "float"
-        
-        2. IMPORTANCE:
-           - If it looks like a main character face -> scale_boost: 1.3
-           - If it is small/background -> scale_boost: 0.8
-        
-        Return JSON: 
-        {
-          "layout": [
-            { "sticker_index": 0, "anchor": "bottom", "scale_boost": 1.2 },
-            { "sticker_index": 1, "anchor": "float", "scale_boost": 0.9 }
-          ]
-        }
-        """
-        response = client.models.generate_content(model='gemini-2.5-flash', contents=[prompt, *small_stickers])
-        clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
-        if clean_json:
-            data = json.loads(clean_json.group(0))
-            return data.get("layout", [])
-    except Exception as e:
-        print(f"⚠️ Gemini Anchor failed: {e}")
+def create_sticker_style(img: Image.Image) -> Image.Image:
+    img = img.convert("RGBA")
+    alpha = img.split()[3]
+    border_mask = alpha.filter(ImageFilter.MaxFilter(9))
+    sticker_base = Image.new("RGBA", img.size, (255, 255, 255, 0))
+    sticker_base.paste((255, 255, 255, 255), (0,0), mask=border_mask)
+    sticker_base.paste(img, (0,0), mask=alpha)
     
-    return []
+    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    shadow_mask = border_mask.filter(ImageFilter.GaussianBlur(10))
+    shadow_layer = Image.new("RGBA", img.size, (0,0,0,150))
+    shadow.paste(shadow_layer, (10, 20), mask=shadow_mask)
+    
+    final = Image.new("RGBA", img.size, (0,0,0,0))
+    final.paste(shadow, (0,0), mask=shadow)
+    final.paste(sticker_base, (0,0), mask=sticker_base)
+    return final
 
-# --- Collage Engine ---
+def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) -> Image.Image:
+    canvas = Image.new("RGB", (width, height), (10,10,10))
+    if not images: return canvas
 
-def create_chaotic_collage(images: list[Image.Image], width=1080, height=1350) -> Image.Image:
-    if not images: return Image.new("RGB", (width, height), (20,20,20))
-
-    # 1. Select BG
-    bg_idx = ask_gemini_for_selection(images)
+    bg_idx, fg_idxs = ask_gemini_for_layout(images)
+    if bg_idx >= len(images): bg_idx = 0
+    fg_idxs = [i for i in fg_idxs if i < len(images) and i != bg_idx]
+    
+    # Background
     bg_img = images[bg_idx]
+    bg_ratio = bg_img.width / bg_img.height
+    target_ratio = width / height
+    if bg_ratio > target_ratio:
+        new_h = height
+        new_w = int(new_h * bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - width) // 2
+        bg_img = bg_img.crop((left, 0, left+width, height))
+    else:
+        new_w = width
+        new_h = int(new_w / bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - height) // 2
+        bg_img = bg_img.crop((0, top, width, top+height))
     
-    # The rest are cutouts (Max 8 to keep it sane, but using "all available" logic)
-    fg_raw = [img for i, img in enumerate(images) if i != bg_idx]
+    # Darken background slightly to make white text pop
+    bg_img = ImageEnhance.Brightness(bg_img).enhance(0.7)
+    bg_img = bg_img.filter(ImageFilter.GaussianBlur(3)) 
+    canvas.paste(bg_img, (0,0))
     
-    # 2. Build Background
-    base_canvas = create_single_bg(bg_img, width, height)
-    
-    # 3. Cutouts (Process ALL)
-    print(f"✂️ Cutting out {len(fg_raw)} stickers...")
+    # Process Stickers
     stickers = []
-    for raw in fg_raw:
+    print(f"🧩 Processing {len(fg_idxs)} stickers...")
+    for idx in fg_idxs:
+        raw = images[idx]
         cutout = remove_background(raw)
         if cutout:
-            stickers.append(create_sticker_style(cutout))
-
-    if not stickers: return apply_film_grain(base_canvas)
-
-    # 4. AI Analysis
-    layout_plan = ask_gemini_to_anchor_stickers(stickers)
-    if not layout_plan:
-        layout_plan = [{"sticker_index": i, "anchor": "bottom", "scale_boost": 1.0} for i in range(len(stickers))]
-
-    # 5. Assembly (Gravity System)
-    print("🏗️ Assembling Scene (Gravity Mode)...")
+            bbox = cutout.getbbox()
+            if bbox:
+                cutout = cutout.crop(bbox)
+                sticker = create_sticker_style(cutout)
+                stickers.append(sticker)
     
-    # We want to draw "floaters" first (behind), then "anchors" (front)?
-    # Actually, anchors usually cover the bottom, so they should be front.
-    # Let's sort: Floaters first, then Anchors.
+    random.shuffle(stickers) 
     
-    def get_sort_key(item):
-        a = item.get("anchor", "float")
-        return 0 if a == "float" else 1
+    # --- UPDATED LAYOUT LOGIC (Spread Out) ---
+    # We push the anchor zones much closer to the edges
+    # TL, TR, BL, BR, Center
+    zones = [
+        (int(width * 0.10), int(height * 0.15)), # Top Left (closer to edge)
+        (int(width * 0.90), int(height * 0.15)), # Top Right (closer to edge)
+        (int(width * 0.10), int(height * 0.75)), # Bottom Left
+        (int(width * 0.90), int(height * 0.75)), # Bottom Right
+        (int(width * 0.50), int(height * 0.50))  # Center
+    ]
+    random.shuffle(zones)
     
-    layout_plan.sort(key=get_sort_key)
-    
-    occupied_zones = [] # Track roughly where we put things to avoid total overlap
-
-    for instruction in layout_plan:
-        idx = instruction.get("sticker_index")
-        if idx is None or idx >= len(stickers): continue
-        sticker = stickers[idx]
+    for i, sticker in enumerate(stickers):
+        scale = random.uniform(0.40, 0.70)
+        ratio = sticker.width / sticker.height
+        new_w = int(width * scale)
+        new_h = int(new_w / ratio)
         
-        anchor = instruction.get("anchor", "float")
-        boost = float(instruction.get("scale_boost", 1.0))
+        # Cap height just in case
+        if new_h > int(height * 0.60): 
+            new_h = int(height * 0.60)
+            new_w = int(new_h * ratio)
+            
+        s_resized = sticker.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        angle = random.randint(-15, 15)
+        s_rotated = s_resized.rotate(angle, resample=Image.Resampling.BICUBIC, expand=True)
         
-        # Base Scale (Bigger than before)
-        # We want them to take up ~45% of width by default
-        base_w = width * 0.45
-        target_w = int(base_w * boost)
+        if i < len(zones):
+            anchor_x, anchor_y = zones[i]
+        else:
+            anchor_x = random.randint(100, width-300)
+            anchor_y = random.randint(100, height-400)
+            
+        # Increased Jitter for chaos
+        jitter_x = random.randint(-200, 200)
+        jitter_y = random.randint(-150, 150)
+        x = anchor_x + jitter_x
+        y = anchor_y + jitter_y
         
-        ratio = sticker.height / sticker.width
-        target_h = int(target_w * ratio)
-        s_placed = sticker.resize((target_w, target_h), Image.Resampling.LANCZOS)
+        # --- RELAXED BOUNDARIES (Bleed Allowed) ---
+        # Allow stickers to go off the edge by ~20% of their width
+        # This prevents the "Squashed Center" effect
+        min_x = int(-s_rotated.width * 0.2)
+        max_x = width - int(s_rotated.width * 0.8)
+        min_y = int(-s_rotated.height * 0.2)
+        max_y = height - int(s_rotated.height * 0.8)
+
+        # Apply clamp with the new relaxed limits
+        x = max(min_x, min(x, max_x))
+        y = max(min_y, min(y, max_y))
         
-        # Position Logic
-        x, y = 0, 0
-        
-        if anchor == "bottom":
-            # Place at bottom, random X
-            y = height - s_placed.height + 20 # +20 to hide the jagged edge
-            x = random.randint(-50, width - s_placed.width + 50)
+        canvas.paste(s_rotated, (x, y), s_rotated)
 
-        elif anchor == "top":
-            # Place at top, random X
-            y = -20 
-            x = random.randint(-50, width - s_placed.width + 50)
-            
-        elif anchor == "left":
-            x = -20
-            y = random.randint(height//2, height - s_placed.height)
-            
-        elif anchor == "right":
-            x = width - s_placed.width + 20
-            y = random.randint(height//2, height - s_placed.height)
-            
-        else: # FLOAT
-            # Avoid the "Text Box" (Center 30-70%)
-            # We define safe zones: Top Band, or just random scatter
-            s_placed = s_placed.rotate(random.randint(-15, 15), expand=True)
-            
-            # Try to find a spot
-            attempts = 0
-            while attempts < 5:
-                # Weighted towards top half
-                test_x = random.randint(50, width - s_placed.width - 50)
-                test_y = random.randint(50, int(height * 0.6))
-                
-                # Check Center Collision (Simple Box)
-                center_box = (width*0.3, height*0.3, width*0.7, height*0.7)
-                sticker_center_x = test_x + s_placed.width//2
-                sticker_center_y = test_y + s_placed.height//2
-                
-                if not (center_box[0] < sticker_center_x < center_box[2] and 
-                        center_box[1] < sticker_center_y < center_box[3]):
-                    x, y = test_x, test_y
-                    break
-                attempts += 1
-            
-            if attempts == 5: # Force it somewhere top corners
-                x = random.choice([50, width - s_placed.width - 50])
-                y = random.randint(50, 300)
-
-        # Paste
-        base_canvas.paste(s_placed, (x, y), s_placed)
-
-    return apply_film_grain(base_canvas)
-
-# --- Text & Final Output ---
+    noise_data = os.urandom(width * height)
+    noise = Image.frombytes('L', (width, height), noise_data)
+    canvas = Image.blend(canvas, noise.convert("RGB"), alpha=0.06)
+    return canvas
 
 def draw_final_cover(composite, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
     bg = composite.copy()
-    
-    # Fill Crop
     bg_ratio = bg.width / bg.height
     target_ratio = width / height
+    
+    # Crop/Resize logic
     if bg_ratio > target_ratio:
         new_h = height
         new_w = int(new_h * bg_ratio)
@@ -373,35 +393,66 @@ def draw_final_cover(composite, fonts, is_story=False):
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
     
-    # Shadows for text
-    def draw_shadowed(text, font, y_pos, main_col=(255,255,255)):
-        draw.text((cx + 3, y_pos + 3), text, font=font, fill=(0,0,0), anchor="mm")
-        draw.text((cx, y_pos), text, font=font, fill=main_col, anchor="mm")
+    # --- TYPOGRAPHY UPDATE: Hierarchy Flip ---
+    
+    # 1. Main Title: Japanese (Big & Bold)
+    jp_text = "今日の上映作品"
+    # Strong shadow for legibility
+    draw.text((cx + 4, cy - 80 + offset + 4), jp_text, font=fonts['cover_main_jp'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 80 + offset), jp_text, font=fonts['cover_main_jp'], fill=(255,255,255), anchor="mm")
 
-    draw_shadowed("今日の上映作品", fonts['cover_main_jp'], cy - 80 + offset)
-    draw_shadowed("Today's Film Selection", fonts['cover_sub_en'], cy + 30 + offset, (230,230,230))
-    draw_shadowed(get_japanese_date_str(), fonts['cover_date'], cy + 110 + offset, (180,180,180))
+    # 2. Subtitle: English (Medium Size)
+    en_text = "Today's Film Selection"
+    draw.text((cx + 2, cy + 30 + offset + 2), en_text, font=fonts['cover_sub_en'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 30 + offset), en_text, font=fonts['cover_sub_en'], fill=(230,230,230), anchor="mm")
+
+    # 3. Date (Small, at bottom)
+    date_text = get_japanese_date_str()
+    draw.text((cx + 2, cy + 110 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 110 + offset), date_text, font=fonts['cover_date'], fill=(180,180,180), anchor="mm")
 
     return bg
 
-def draw_centered_text(draw, y, text, font, fill, canvas_width):
-    length = draw.textlength(text, font=font)
-    x = (canvas_width - length) // 2
-    draw.text((x, y), text, font=font, fill=fill)
-    return y + font.size + 10
+def draw_fallback_cover(images, fonts, is_story=False):
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    if images:
+        bg = images[0].resize((width, int(width * images[0].height / images[0].width)))
+        if bg.height < height: bg = bg.resize((int(height * bg.width / bg.height), height))
+        left = (bg.width - width) // 2
+        top = (bg.height - height) // 2
+        bg = bg.crop((left, top, left + width, top + height))
+    else:
+        bg = Image.new("RGB", (width, height), (20,20,20))
+    
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
+    bg.paste(overlay, (0, 0), overlay)
+    draw = ImageDraw.Draw(bg)
+    cx, cy = width // 2, height // 2
+    offset = -80 if is_story else 0
+    
+    # Fallback also updated to new style
+    draw.text((cx, cy + offset), "Today's Film Selection", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + 100 + offset), get_japanese_date_str(), font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
+    return bg
 
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
-    bg = Image.new("RGB", (width, height), (15,15,15))
-    bg = apply_film_grain(bg)
-    draw = ImageDraw.Draw(bg)
+    c_base, c_accent = get_faithful_colors(img_obj)
+    bg = create_textured_bg(c_base, c_accent, width, height)
+    canvas = apply_film_grain(bg)
+    draw = ImageDraw.Draw(canvas)
     
-    target_w = 950 if is_story else 900
-    target_h = 850 if is_story else 640
-    img_y = 180 if is_story else 140
-    
-    # Fit Image
+    if is_story:
+        target_w = 950
+        target_h = 850
+        img_y = 180
+    else:
+        target_w = 900
+        target_h = 640
+        img_y = 140
+        
     img_ratio = img_obj.width / img_obj.height
     if img_ratio > (target_w / target_h):
         new_h = target_h
@@ -415,26 +466,90 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
         img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
         top = (new_h - target_h) // 2
         img_final = img_resized.crop((0, top, target_w, top+target_h))
-        
-    bg.paste(img_final, ((width - target_w)//2, img_y))
     
-    cursor = img_y + target_h + 50
-    t_jp = film.get('clean_title_jp') or film.get('movie_title', '')
-    cursor = draw_centered_text(draw, cursor, t_jp, fonts['title_jp'], (255,255,255), width)
+    img_x = (width - target_w) // 2
+    canvas.paste(img_final, (img_x, img_y))
+    cursor_y = img_y + target_h + (70 if is_story else 60)
     
-    cursor += 20
-    for cin in film.get('showings', {}):
-        times = " ".join(sorted(film['showings'][cin]))
-        draw_centered_text(draw, cursor, f"{cin}: {times}", fonts['times'], (200,200,200), width)
-        cursor += 40
-        
-    return bg
+    meta_parts = []
+    if film.get('year'): meta_parts.append(str(film['year']))
+    if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']}m")
+    if film.get('genres'): meta_parts.append(film['genres'][0].upper())
+    meta_str = "  •  ".join(meta_parts)
+    cursor_y = draw_centered_text(draw, cursor_y, meta_str, fonts['meta'], (200, 200, 200), width)
+    cursor_y += 15
 
-# --- Main ---
+    jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
+    en_title = film.get('movie_title_en')
+    if normalize_string(jp_title) == normalize_string(en_title): en_title = None
+        
+    if len(jp_title) > 15:
+        wrapper = textwrap.TextWrapper(width=15)
+        lines = wrapper.wrap(jp_title)
+        for line in lines:
+            cursor_y = draw_centered_text(draw, cursor_y, line, fonts['title_jp'], (255, 255, 255), width)
+    else:
+        cursor_y = draw_centered_text(draw, cursor_y, jp_title, fonts['title_jp'], (255, 255, 255), width)
+    cursor_y += 10
+
+    if en_title:
+        cursor_y = draw_centered_text(draw, cursor_y, en_title.upper(), fonts['title_en'], (200, 200, 200), width)
+    
+    director = film.get('tmdb_director') or film.get('director')
+    if director:
+        cursor_y += 15
+        draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150), width)
+        cursor_y += 20
+        
+    sorted_cinemas = sorted(film['showings'].keys())
+    num_cinemas = len(sorted_cinemas)
+    available_space = height - cursor_y - (150 if is_story else 50)
+    std_font_size = 32 if is_story else 28
+    std_gap = 60 if is_story else 50
+    block_unit = (std_font_size * 1.2 * 2) + std_gap 
+    total_needed = num_cinemas * block_unit
+    
+    scale = 1.0
+    if total_needed > available_space:
+        scale = available_space / total_needed
+        scale = max(scale, 0.45) 
+    final_font_size = int(std_font_size * scale)
+    gap_scale = scale if scale > 0.8 else scale * 0.6
+    final_gap = int(std_gap * gap_scale)
+    
+    try:
+        dyn_font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
+        dyn_font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
+    except:
+        dyn_font_cin = ImageFont.load_default()
+        dyn_font_time = ImageFont.load_default()
+        
+    unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
+    final_block_height = num_cinemas * unit_height
+    if available_space > final_block_height:
+        start_y = cursor_y + (available_space - final_block_height) // 2
+    else:
+        start_y = cursor_y + 20 
+        
+    for cinema in sorted_cinemas:
+        times = sorted(film['showings'][cinema])
+        times_str = " ".join(times)
+        cinema_en = CINEMA_ENGLISH_NAMES.get(cinema, cinema)
+        len_c = draw.textlength(cinema_en, font=dyn_font_cin)
+        x_c = (width - len_c) // 2
+        draw.text((x_c, start_y), cinema_en, font=dyn_font_cin, fill=(255, 255, 255))
+        y_time = start_y + final_font_size + 5 
+        len_t = draw.textlength(times_str, font=dyn_font_time)
+        x_t = (width - len_t) // 2
+        draw.text((x_t, y_time), times_str, font=dyn_font_time, fill=(200, 200, 200))
+        start_y += unit_height
+
+    return canvas
 
 def main():
-    print("--- Starting V66 (Gravity & Anchors) ---")
+    print("--- Starting V2 (Punk Zine Style - A24 Edit) ---")
     
+    # Clean up ANY possible output files
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v2_*.png")): os.remove(f)
 
@@ -470,6 +585,7 @@ def main():
     cover_images = []
     
     for film in selected:
+        print(f"Processing: {film.get('clean_title_jp') or film.get('movie_title')}")
         img = download_image(film.get('tmdb_backdrop_path'))
         if img:
             slide_data.append({"film": film, "img": img})
@@ -477,29 +593,56 @@ def main():
             
     if not slide_data: return
 
-    # --- COVER ---
+    # --- COLLAGE GENERATION ---
     collage = create_chaotic_collage(cover_images)
     
     if collage:
-        draw_final_cover(collage, fonts, is_story=False).save(BASE_DIR / "post_v2_image_00.png")
-        draw_final_cover(collage, fonts, is_story=True).save(BASE_DIR / "story_v2_image_00.png")
+        print("✅ Collage Assembled!")
+        # FEED COVER
+        cover_feed = draw_final_cover(collage, fonts, is_story=False)
+        cover_feed.save(BASE_DIR / "post_v2_image_00.png")
+        
+        # STORY COVER
+        cover_story = draw_final_cover(collage, fonts, is_story=True)
+        cover_story.save(BASE_DIR / "story_v2_image_00.png")
     else:
-        Image.new("RGB",(CANVAS_WIDTH,CANVAS_HEIGHT),(50,50,50)).save(BASE_DIR / "post_v2_image_00.png")
+        print("⚠️ Collage Failed. Using Fallback.")
+        fb_feed = draw_fallback_cover(cover_images, fonts, is_story=False)
+        fb_feed.save(BASE_DIR / "post_v2_image_00.png")
+        
+        fb_story = draw_fallback_cover(cover_images, fonts, is_story=True)
+        fb_story.save(BASE_DIR / "story_v2_image_00.png")
 
-    # --- SLIDES ---
+    # --- SLIDE GENERATION ---
     caption_lines = [f"🗓️ {date_str} Tokyo Cinema Daily\n"]
+    
     for i, item in enumerate(slide_data):
-        slide_feed = draw_poster_slide(item['film'], item['img'], fonts, is_story=False)
+        film = item['film']
+        img = item['img']
+        
+        # Feed Slide
+        slide_feed = draw_poster_slide(film, img, fonts, is_story=False)
         slide_feed.save(BASE_DIR / f"post_v2_image_{i+1:02}.png")
-        slide_story = draw_poster_slide(item['film'], item['img'], fonts, is_story=True)
+        
+        # Story Slide
+        slide_story = draw_poster_slide(film, img, fonts, is_story=True)
         slide_story.save(BASE_DIR / f"story_v2_image_{i+1:02}.png")
-        caption_lines.append(f"{item['film'].get('movie_title')}")
-
-    caption_lines.append("\n#TokyoIndieCinema")
+        
+        t_jp = film.get('clean_title_jp') or film.get('movie_title')
+        caption_lines.append(f"{t_jp}") 
+        if film.get('movie_title_en'): caption_lines.append(f"{film['movie_title_en']}")
+        for cin, t in film['showings'].items():
+            t.sort()
+            caption_lines.append(f"{cin}: {', '.join(t)}")
+        caption_lines.append("")
+        
+    caption_lines.append("\nLink in Bio for Full Schedule")
+    caption_lines.append("#TokyoIndieCinema #MiniTheater #MovieLog")
+    
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("✅ V66 Complete.")
+    print("Done. V2 Generated (Punk Style).")
 
 if __name__ == "__main__":
     main()
