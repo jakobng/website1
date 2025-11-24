@@ -1,4 +1,4 @@
-name: Test Instagram Design3 (Flux Replicate)
+name: Test Instagram Design3 (V56 - Gemini 2.5 Flash)
 
 on:
   workflow_dispatch: # Manual trigger
@@ -6,8 +6,6 @@ on:
 jobs:
   test_design_only:
     runs-on: ubuntu-latest
-    
-    # PERMISSIONS: Required to save images back to the repo
     permissions:
       contents: write
 
@@ -18,47 +16,34 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # We install 'replicate' here so the script can import it
-          pip install requests Pillow replicate
+          # V56: 'google-genai' is the correct SDK for Gemini 2.5+
+          pip install requests Pillow replicate google-genai
 
-      - name: Run Generator (Flux Mode)
+      - name: Run Generator (V56)
         working-directory: './cinema-scrapers'
         run: python generate_post3.py
         env:
-          # ▼▼▼ THIS IS THE KEY FIX ▼▼▼
-          # This maps the Secret from GitHub to the Env Var the script reads
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
-          
-          # (Optional) Keep Stability if you ever want to switch back
-          STABILITY_API_KEY: ${{ secrets.STABILITY_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Commit Generated Images (V3)
+      - name: Commit Generated Images
         id: commit_push
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # 1. Add the new V3 images (Feed + Story)
-          # Note: The path must match where your python script lives
           git add cinema-scrapers/post_v3_*.png
           git add cinema-scrapers/story_v3_*.png
-          
-          # 2. Add the caption
           git add cinema-scrapers/post_v3_caption.txt
-          
-          # 3. Check if there are changes
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          
-          # 4. Commit and Push
-          git commit -m "DESIGN AUTO: Generated V3 Slides (Flux.1)"
+          git commit -m "DESIGN AUTO: Generated V56 (Gemini 2.5 Flash)"
           git pull origin main --rebase
           git push
         env:
