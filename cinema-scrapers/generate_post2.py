@@ -1,8 +1,9 @@
 """
-Generate Instagram-ready image carousel (V61 - "Punk Zine" Style).
-REPLACES V28.
-- Integration: Replaces standard V2 output filenames so the workflow picks them up.
-- Features: Gemini 2.5 Layout, Replicate Cutouts, Spaced Collage.
+Generate Instagram-ready image carousel (V62 - "A24 Style" + Spread Layout).
+REPLACES V28/V61.
+- Design: Minimalist typography ("Today's Film Selection"), no yellow accents.
+- Layout: "Explosive" collage (images spread to edges/bleed off canvas).
+- Tech: Gemini 2.5 Flash + Replicate + Pillow.
 """
 from __future__ import annotations
 
@@ -40,7 +41,6 @@ except ImportError:
     GEMINI_AVAILABLE = False
 
 # --- Secrets ---
-# The workflow must provide these via env variables
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
@@ -50,7 +50,7 @@ SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 
-# IMPORTANT: Output to "v2" filenames to match existing GitHub Action Git commands
+# Output matches the V2 workflow expectations
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_v2_caption.txt"
 
 CANVAS_WIDTH = 1080
@@ -98,7 +98,8 @@ def get_japanese_date_str():
     d = datetime.now()
     weekdays = ["月", "火", "水", "木", "金", "土", "日"]
     wd = weekdays[d.weekday()]
-    return f"{d.year}年{d.month}月{d.day}日 ({wd})"
+    # Format: 2025.11.24 (Mon) - Cleaner, more modern look
+    return f"{d.year}.{d.month:02}.{d.day:02}"
 
 def normalize_string(s):
     if not s: return ""
@@ -119,20 +120,22 @@ def download_image(path: str) -> Image.Image | None:
     return None
 
 def get_fonts():
+    # Attempt to load fonts
     try:
         return {
-            "cover_main": ImageFont.truetype(str(BOLD_FONT_PATH), 90),
-            "cover_sub": ImageFont.truetype(str(BOLD_FONT_PATH), 45),
+            # switched cover_main to REGULAR for that thin "A24" look
+            "cover_main": ImageFont.truetype(str(REGULAR_FONT_PATH), 80),
+            "cover_date": ImageFont.truetype(str(REGULAR_FONT_PATH), 40),
             "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
             "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
             "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
             "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
-            "date_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 55),
         }
     except:
+        print("⚠️ Fonts not found, using default.")
         d = ImageFont.load_default()
-        return {k: d for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "cinema", "times", "date_jp"]}
+        return {k: d for k in ["cover_main", "cover_date", "title_jp", "title_en", "meta", "cinema", "times"]}
 
 def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     small = pil_img.resize((150, 150))
@@ -282,6 +285,7 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
         top = (new_h - height) // 2
         bg_img = bg_img.crop((0, top, width, top+height))
     
+    # Darken background slightly to make white text pop
     bg_img = ImageEnhance.Brightness(bg_img).enhance(0.7)
     bg_img = bg_img.filter(ImageFilter.GaussianBlur(3)) 
     canvas.paste(bg_img, (0,0))
@@ -301,12 +305,15 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
     
     random.shuffle(stickers) 
     
+    # --- UPDATED LAYOUT LOGIC (Spread Out) ---
+    # We push the anchor zones much closer to the edges
+    # TL, TR, BL, BR, Center
     zones = [
-        (int(width * 0.15), int(height * 0.2)), 
-        (int(width * 0.65), int(height * 0.2)), 
-        (int(width * 0.15), int(height * 0.6)), 
-        (int(width * 0.65), int(height * 0.6)), 
-        (int(width * 0.40), int(height * 0.35)) 
+        (int(width * 0.10), int(height * 0.15)), # Top Left (closer to edge)
+        (int(width * 0.90), int(height * 0.15)), # Top Right (closer to edge)
+        (int(width * 0.10), int(height * 0.75)), # Bottom Left
+        (int(width * 0.90), int(height * 0.75)), # Bottom Right
+        (int(width * 0.50), int(height * 0.50))  # Center
     ]
     random.shuffle(zones)
     
@@ -316,6 +323,7 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
         new_w = int(width * scale)
         new_h = int(new_w / ratio)
         
+        # Cap height just in case
         if new_h > int(height * 0.60): 
             new_h = int(height * 0.60)
             new_w = int(new_h * ratio)
@@ -330,13 +338,23 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
             anchor_x = random.randint(100, width-300)
             anchor_y = random.randint(100, height-400)
             
-        jitter_x = random.randint(-100, 100)
-        jitter_y = random.randint(-100, 100)
+        # Increased Jitter for chaos
+        jitter_x = random.randint(-200, 200)
+        jitter_y = random.randint(-150, 150)
         x = anchor_x + jitter_x
         y = anchor_y + jitter_y
         
-        x = max(-50, min(x, width - s_rotated.width + 50))
-        y = max(50, min(y, height - s_rotated.height - 50))
+        # --- RELAXED BOUNDARIES (Bleed Allowed) ---
+        # Allow stickers to go off the edge by ~20% of their width
+        # This prevents the "Squashed Center" effect
+        min_x = int(-s_rotated.width * 0.2)
+        max_x = width - int(s_rotated.width * 0.8)
+        min_y = int(-s_rotated.height * 0.2)
+        max_y = height - int(s_rotated.height * 0.8)
+
+        # Apply clamp with the new relaxed limits
+        x = max(min_x, min(x, max_x))
+        y = max(min_y, min(y, max_y))
         
         canvas.paste(s_rotated, (x, y), s_rotated)
 
@@ -368,19 +386,23 @@ def draw_final_cover(composite, fonts, is_story=False):
     draw = ImageDraw.Draw(bg)
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
-    s_off = 5 
+    s_off = 3
     
-    title_text = "TODAY'S SCREENINGS"
-    draw.text((cx + s_off, cy - 80 + offset + s_off), title_text, font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy - 80 + offset), title_text, font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    # --- TYPOGRAPHY UPDATE: Minimalist A24 Style ---
+    # 1. New Text
+    title_text = "Today's Film Selection"
     
-    jp_text = "今日の上映作品"
-    draw.text((cx + s_off, cy + 20 + offset + s_off), jp_text, font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 20 + offset), jp_text, font=fonts['cover_sub'], fill=(255, 235, 59), anchor="mm") 
+    # 2. Draw Title (White, Centered, Slight Shadow for readability)
+    # Using 'cover_main' which is now REGULAR weight for sleekness
+    draw.text((cx + s_off, cy + offset + s_off), title_text, font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + offset), title_text, font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     
-    jp_date_text = get_japanese_date_str()
-    draw.text((cx + 3, cy + 140 + offset + 3), jp_date_text, font=fonts['date_jp'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 140 + offset), jp_date_text, font=fonts['date_jp'], fill=(255,255,255), anchor="mm")
+    # 3. Draw Date (Smaller, Clean, No Yellow)
+    date_text = get_japanese_date_str()
+    # Positioned lower down
+    draw.text((cx + 2, cy + 100 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 100 + offset), date_text, font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
+
     return bg
 
 def draw_fallback_cover(images, fonts, is_story=False):
@@ -401,10 +423,9 @@ def draw_fallback_cover(images, fonts, is_story=False):
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
     
-    draw.text((cx, cy - 80 + offset), "TODAY'S SCREENINGS", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 20 + offset), "今日の上映作品", font=fonts['cover_sub'], fill=(255, 235, 59), anchor="mm")
-    jp_date_text = get_japanese_date_str()
-    draw.text((cx, cy + 140 + offset), jp_date_text, font=fonts['date_jp'], fill=(255,255,255), anchor="mm")
+    # Fallback also updated to new style
+    draw.text((cx, cy + offset), "Today's Film Selection", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + 100 + offset), get_japanese_date_str(), font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
     return bg
 
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
@@ -518,7 +539,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     return canvas
 
 def main():
-    print("--- Starting V2 (Punk Zine Style) ---")
+    print("--- Starting V2 (Punk Zine Style - A24 Edit) ---")
     
     # Clean up ANY possible output files
     for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
