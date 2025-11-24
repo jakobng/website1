@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Generator (V2 Punk Mode)
         working-directory: './cinema-scrapers'
-        run: python generate_post2.py
+        run: python generate_post3.py
         env:
           # REQUIRED: The script will fail or fallback without these
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
