@@ -1,10 +1,10 @@
 """
-Generate Instagram-ready image carousel (V58 - Text Update).
+Generate Instagram-ready image carousel (V59 - Spaced Collage + JP Date).
 
 - Strategy: "Smart Collage" (Gemini 2.5 + Replicate).
-- Update V58: 
-  - Changed Text to "TODAY'S SCREENINGS" (JP/EN).
-  - Added Drop Shadow to text for readability.
+- Update V59:
+  - Layout: Uses "Anchor Zones" to ensure stickers are spaced out (no clumping).
+  - Typography: Date is now LARGE and purely in Japanese.
 """
 from __future__ import annotations
 
@@ -93,9 +93,12 @@ CINEMA_ENGLISH_NAMES = {
 def get_today_str():
     return datetime.now().strftime("%Y-%m-%d")
 
-def get_bilingual_date():
-    today = datetime.now()
-    return today.strftime("%Y.%m.%d"), today.strftime("%A").upper()
+def get_japanese_date_str():
+    """Returns date in format: 2025年11月24日 (月)"""
+    d = datetime.now()
+    weekdays = ["月", "火", "水", "木", "金", "土", "日"]
+    wd = weekdays[d.weekday()]
+    return f"{d.year}年{d.month}月{d.day}日 ({wd})"
 
 def normalize_string(s):
     if not s: return ""
@@ -118,7 +121,6 @@ def download_image(path: str) -> Image.Image | None:
 def get_fonts():
     try:
         return {
-            # Scaled down slightly for the longer text
             "cover_main": ImageFont.truetype(str(BOLD_FONT_PATH), 90),
             "cover_sub": ImageFont.truetype(str(BOLD_FONT_PATH), 45),
             "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
@@ -126,12 +128,14 @@ def get_fonts():
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
             "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
             "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
+            # New Font Size for Date
+            "date_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 55),
         }
     except:
         d = ImageFont.load_default()
-        return {k: d for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "cinema", "times"]}
+        return {k: d for k in ["cover_main", "cover_sub", "title_jp", "title_en", "meta", "cinema", "times", "date_jp"]}
 
-# --- V57/58: AI LOGIC ---
+# --- V59 Logic ---
 
 def ask_gemini_for_layout(images: list[Image.Image]):
     if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
@@ -219,11 +223,11 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
         top = (new_h - height) // 2
         bg_img = bg_img.crop((0, top, width, top+height))
     
-    bg_img = ImageEnhance.Brightness(bg_img).enhance(0.7) # Slightly darker for text
+    bg_img = ImageEnhance.Brightness(bg_img).enhance(0.7)
     bg_img = bg_img.filter(ImageFilter.GaussianBlur(3)) 
     canvas.paste(bg_img, (0,0))
     
-    # Stickers
+    # Process Stickers
     stickers = []
     print(f"🧩 Processing {len(fg_idxs)} stickers...")
     for idx in fg_idxs:
@@ -238,28 +242,53 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
     
     random.shuffle(stickers) 
     
+    # --- V59 SPACING LOGIC: Anchor Zones ---
+    # We define 5 zones to ensure spread, but add heavy jitter for chaos.
+    # Zones: Top-Left, Top-Right, Bottom-Left, Bottom-Right, Center-Top
+    
+    zones = [
+        (int(width * 0.15), int(height * 0.2)), # TL
+        (int(width * 0.65), int(height * 0.2)), # TR
+        (int(width * 0.15), int(height * 0.6)), # BL
+        (int(width * 0.65), int(height * 0.6)), # BR
+        (int(width * 0.40), int(height * 0.35)) # Center-High
+    ]
+    random.shuffle(zones) # Shuffle so different stickers go to different zones
+    
     for i, sticker in enumerate(stickers):
-        scale = random.uniform(0.40, 0.80)
+        # Scale
+        scale = random.uniform(0.40, 0.70)
         ratio = sticker.width / sticker.height
         new_w = int(width * scale)
         new_h = int(new_w / ratio)
         
-        # Height Cap (Safety)
-        if new_h > int(height * 0.85):
-            new_h = int(height * 0.85)
+        # Height Cap
+        if new_h > int(height * 0.60): # Reduced cap for spacing
+            new_h = int(height * 0.60)
             new_w = int(new_h * ratio)
             
         s_resized = sticker.resize((new_w, new_h), Image.Resampling.LANCZOS)
         angle = random.randint(-15, 15)
         s_rotated = s_resized.rotate(angle, resample=Image.Resampling.BICUBIC, expand=True)
         
-        # Safe placement
-        max_x = max(0, width - s_rotated.width + 50)
-        x = random.randint(-50, max_x)
+        # Position Logic (Anchor + Jitter)
+        if i < len(zones):
+            anchor_x, anchor_y = zones[i]
+        else:
+            # Fallback if more stickers than zones
+            anchor_x = random.randint(100, width-300)
+            anchor_y = random.randint(100, height-400)
+            
+        # Add Jitter (+/- 100px)
+        jitter_x = random.randint(-100, 100)
+        jitter_y = random.randint(-100, 100)
         
-        min_y, max_y = 100, height - s_rotated.height - 50
-        if max_y < min_y: y = (height - s_rotated.height) // 2
-        else: y = random.randint(min_y, max_y)
+        x = anchor_x + jitter_x
+        y = anchor_y + jitter_y
+        
+        # Boundary Checks
+        x = max(-50, min(x, width - s_rotated.width + 50))
+        y = max(50, min(y, height - s_rotated.height - 50))
         
         canvas.paste(s_rotated, (x, y), s_rotated)
 
@@ -294,28 +323,25 @@ def draw_final_cover(composite, fonts, date_str, day_str, is_story=False):
     draw = ImageDraw.Draw(bg)
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
+    s_off = 5 
     
-    # --- V58 TYPOGRAPHY UPDATE ---
-    
-    # 1. Main Title: "TODAY'S SCREENINGS"
-    # English Title
+    # 1. Main Title
     title_text = "TODAY'S SCREENINGS"
-    s_off = 5 # Shadow offset
-    
-    # Draw Shadow (Black)
     draw.text((cx + s_off, cy - 80 + offset + s_off), title_text, font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
-    # Draw Main (White)
     draw.text((cx, cy - 80 + offset), title_text, font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     
-    # 2. Japanese Subtitle: "今日の上映作品"
+    # 2. Subtitle
     jp_text = "今日の上映作品"
     draw.text((cx + s_off, cy + 20 + offset + s_off), jp_text, font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 20 + offset), jp_text, font=fonts['cover_sub'], fill=(255, 235, 59), anchor="mm") # Yellow
+    draw.text((cx, cy + 20 + offset), jp_text, font=fonts['cover_sub'], fill=(255, 235, 59), anchor="mm") 
     
-    # 3. Date & Footer
-    date_text = f"{date_str} • {day_str}"
-    draw.text((cx + 2, cy + 120 + offset + 2), date_text, font=fonts['meta'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 120 + offset), date_text, font=fonts['meta'], fill=(220,220,220), anchor="mm")
+    # 3. V59 DATE UPDATE: Japanese Only, Large
+    jp_date_text = get_japanese_date_str()
+    
+    # Draw Shadow
+    draw.text((cx + 3, cy + 140 + offset + 3), jp_date_text, font=fonts['date_jp'], fill=(0,0,0), anchor="mm")
+    # Draw Text (White)
+    draw.text((cx, cy + 140 + offset), jp_date_text, font=fonts['date_jp'], fill=(255,255,255), anchor="mm")
     
     return bg
 
@@ -486,7 +512,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     return canvas
 
 def main():
-    print("--- Starting V58 (Text Update) ---")
+    print("--- Starting V59 (Spaced Collage + JP Date) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
@@ -572,7 +598,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V58 Generated.")
+    print("Done. V59 Generated.")
 
 if __name__ == "__main__":
     main()
