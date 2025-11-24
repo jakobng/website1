@@ -388,21 +388,24 @@ def draw_final_cover(composite, fonts, is_story=False):
     offset = -80 if is_story else 0
     s_off = 3
     
-    # --- TYPOGRAPHY UPDATE: Minimalist A24 Style ---
-    # 1. New Text
+    # --- TYPOGRAPHY UPDATE: Minimalist A24 Style (With JP Title) ---
+    
+    # 1. English Title ("Today's Film Selection")
     title_text = "Today's Film Selection"
+    draw.text((cx + s_off, cy - 50 + offset + s_off), title_text, font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 50 + offset), title_text, font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
     
-    # 2. Draw Title (White, Centered, Slight Shadow for readability)
-    # Using 'cover_main' which is now REGULAR weight for sleekness
-    draw.text((cx + s_off, cy + offset + s_off), title_text, font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + offset), title_text, font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    
-    # 3. Draw Date (Smaller, Clean, No Yellow)
-    date_text = get_japanese_date_str()
-    # Positioned lower down
-    draw.text((cx + 2, cy + 100 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 100 + offset), date_text, font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
+    # 2. Japanese Title (Restored - Clean White)
+    jp_text = "今日の上映作品"
+    # We use 'cover_date' font (Regular 40px) to keep it sleek and minimal
+    draw.text((cx + 2, cy + 30 + offset + 2), jp_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 30 + offset), jp_text, font=fonts['cover_date'], fill=(230,230,230), anchor="mm")
 
+    # 3. Date
+    date_text = get_japanese_date_str()
+    draw.text((cx + 2, cy + 110 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 110 + offset), date_text, font=fonts['cover_date'], fill=(160,160,160), anchor="mm")
+    
     return bg
 
 def draw_fallback_cover(images, fonts, is_story=False):
