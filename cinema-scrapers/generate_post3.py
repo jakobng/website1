@@ -382,6 +382,51 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
+    print("   🎨 Inpainting gaps with 'Cinema Still' (no humans)...")
+    try:
+        temp_img_path = BASE_DIR / "temp_inpaint_img.png"
+        temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
+        
+        layout_img.save(temp_img_path, format="PNG")
+        mask_img.save(temp_mask_path, format="PNG")
+        
+        output = replicate.run(
+            "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
+            input={
+                "image": open(temp_img_path, "rb"),
+                "mask": open(temp_mask_path, "rb"),
+                "prompt": (
+                    "cinematic background scenery, "
+                    "beautiful atmospheric lighting, "
+                    "film still, painterly texture, "
+                    "soft color gradients, realistic lighting, "
+                    "no people, no faces, no human figures"
+                ),
+                "negative_prompt": (
+                    "people, person, human, man, woman, face, body, figure, portrait, "
+                    "character, humanoid, selfie, crowd"
+                ),
+                "num_inference_steps": 35,
+                "guidance_scale": 8.5,
+                "strength": 0.9
+            }
+        )
+        
+        if temp_img_path.exists():
+            os.remove(temp_img_path)
+        if temp_mask_path.exists():
+            os.remove(temp_mask_path)
+        
+        if output:
+            url = output[0] if isinstance(output, list) else output
+            resp = requests.get(url)
+            if resp.status_code == 200:
+                img = Image.open(BytesIO(resp.content)).convert("RGB")
+                return img.resize(layout_img.size, Image.Resampling.LANCZOS)
+    except Exception as e:
+        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
+    return layout_img
+
     print("   🎨 Inpainting gaps with 'Cinema Still'...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
