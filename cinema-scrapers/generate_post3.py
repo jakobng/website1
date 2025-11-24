@@ -228,8 +228,8 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
         print("⚠️ library 'replicate' missing. Pip install it.")
         return None
         
-    if not REPLICATE_API_TOKEN:
-        print("⚠️ No REPLICATE_API_TOKEN found.")
+    if not REPLICATE_API_KEY:
+        print("⚠️ No REPLICATE_API_KEY found.")
         return None
 
     try:
