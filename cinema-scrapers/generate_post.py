@@ -1,7 +1,7 @@
 """
 Generate Instagram-ready image carousel (V1 - "The Organic Mashup").
+- Fix: Changed MaxFilter size to 21 (odd integer) to prevent Pillow crash.
 - Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Unified Atmosphere) -> Paste Back.
-- Fix: Removed "Montage" from prompt to prevent grid/split-screen generation.
 """
 from __future__ import annotations
 
@@ -283,8 +283,7 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
 
 def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image, Image.Image]:
     """
-    Arranges 5 cutouts in a CHAOTIC layout (Jitter+) to prevent grid look.
-    Returns: Transparent Layout, White-BG Layout, Mask
+    Arranges 5 cutouts in a CHAOTIC layout.
     """
     width = CANVAS_WIDTH
     height = CANVAS_HEIGHT
@@ -299,7 +298,7 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         
     random.shuffle(imgs_to_process)
     
-    # 5 Anchors, but heavily randomized to break the grid
+    # Anchors heavily randomized
     anchors = [
         (int(width * 0.3), int(height * 0.25)),
         (int(width * 0.7), int(height * 0.25)),
@@ -315,19 +314,17 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
             
-            scale_variance = random.uniform(0.7, 1.2) # Varied sizes
+            scale_variance = random.uniform(0.7, 1.2)
             max_dim = int(550 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
             
             cx, cy = anchors[i]
-            # HIGH JITTER to break lines
             cx += random.randint(-100, 100)
             cy += random.randint(-100, 100)
             
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
             
-            # Paste
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
@@ -337,13 +334,13 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # Expand Mask (Dilation) to force edge blending
-    mask = mask.filter(ImageFilter.MaxFilter(20)) 
+    # FIXED: Using 21 (odd number) for MaxFilter size to avoid Pillow ValueError
+    mask = mask.filter(ImageFilter.MaxFilter(21)) 
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to fill gaps. PROMPT TUNED FOR UNITY."""
+    """Uses Stability AI Inpaint to fill gaps. Unified prompt."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
@@ -378,7 +375,6 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             resp = requests.get(url)
             if resp.status_code == 200:
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
-                # FORCE RESIZE to fix proportions
                 return img.resize(layout_img.size, Image.Resampling.LANCZOS)
     except Exception as e:
         print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
@@ -387,7 +383,6 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
 # --- IMAGE GENERATORS ---
 
 def create_sunburst_background(width: int, height: int) -> Image.Image:
-    """Original Sunburst (Unchanged)."""
     base_size = 512
     img = Image.new("RGB", (base_size, base_size), SUNBURST_OUTER)
     draw = ImageDraw.Draw(img)
@@ -404,7 +399,6 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """Adds ONLY the Date Pill."""
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
