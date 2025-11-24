@@ -1,9 +1,9 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Cinema Reel" + Sunburst Slides).
-UPDATED: 
-- Cover Image: "Cinema Reel" Montage (Cinema photos stacked & glitched).
-- Tech: Gemini 2.5 (Crop composition) + Replicate (Upscaling/Enhancement).
-- Slides: Retained Sunburst Gradient style.
+Generate Instagram-ready image carousel (V1 - "The Curator's Desk").
+UPDATED:
+- Cover Image: "Architectural Assemblage" (Clean cutouts, geometric layout, Swiss style).
+- Tech: Replicate (Background Removal) + Pillow (Compositing with hard shadows).
+- Slides: Sunburst Gradient (Unchanged).
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageOps
 
 try:  
     from zoneinfo import ZoneInfo
@@ -38,18 +38,10 @@ except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
-try:
-    from google import genai
-    from google.genai import types
-    GEMINI_AVAILABLE = True
-except ImportError:
-    print("⚠️ Google GenAI library not found. Run: pip install google-genai")
-    GEMINI_AVAILABLE = False
-
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
-ASSETS_DIR = BASE_DIR / "cinema_assets"  # New folder for cinema JPGs
+ASSETS_DIR = BASE_DIR / "cinema_assets"
 BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
 OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
@@ -57,7 +49,6 @@ OUTPUT_CAPTION_PATH = BASE_DIR / "post_caption.txt"
 # Secrets
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 10 
@@ -72,9 +63,8 @@ TITLE_WRAP_WIDTH = 30
 # --- THEME COLORS ---
 SUNBURST_CENTER = (255, 210, 0) 
 SUNBURST_OUTER = (255, 255, 255)
-BLACK = (20, 20, 20)
-GRAY = (30, 30, 30) 
-WHITE = (255, 255, 255)
+BG_COLOR = (240, 240, 235) # Off-white/Bone for the "Clean" look
+ACCENT_COLOR = (20, 20, 20) # Almost Black
 
 # --- Database (Cinemas) ---
 CINEMA_ADDRESSES = {
@@ -253,32 +243,21 @@ def get_recently_featured(caption_path: Path) -> List[str]:
 # --- ASSET MANAGEMENT ---
 
 def get_cinema_image_path(cinema_name: str) -> Path | None:
-    """Finds a local image file matching the cinema name."""
     if not ASSETS_DIR.exists(): return None
-    
-    # Simple normalization for matching
     target = normalize_name(cinema_name)
-    
     candidates = list(ASSETS_DIR.glob("*"))
     best_match = None
     highest_ratio = 0.0
-    
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
-        
-        # Direct check
         if f_name in target or target in f_name:
-            # Prefer exact containment
             return f
-            
-        # Fuzzy check
         ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
         if ratio > highest_ratio:
             highest_ratio = ratio
             best_match = f
-            
-    if highest_ratio > 0.4: # Threshold
+    if highest_ratio > 0.4:
         return best_match
     return None
 
@@ -286,21 +265,20 @@ def normalize_name(s):
     s = str(s).lower()
     return re.sub(r'[^a-z0-9]', '', s)
 
-def upscale_image_replicate(pil_img: Image.Image) -> Image.Image:
-    """Uses Replicate to upscale/fix low-quality cinema assets."""
+def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
+    """Uses Replicate to remove background (Rembg), returning RGBA."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
-        return pil_img
+        return pil_img.convert("RGBA")
 
-    print("   ✨ Enhancing cinema asset with Replicate...")
+    print("   ✂️ Cutting out object with Replicate...")
     try:
-        # Save temp file
-        temp_in = BASE_DIR / "temp_upscale_in.png"
+        temp_in = BASE_DIR / "temp_rembg_in.png"
         pil_img.save(temp_in, format="PNG")
         
-        # Run Real-ESRGAN
+        # Using lucataco/remove-bg for reliable object isolation
         output = replicate.run(
-            "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73ab41b2ee43ad40a7214",
-            input={"image": open(temp_in, "rb"), "scale": 2, "face_enhance": False}
+            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
+            input={"image": open(temp_in, "rb")}
         )
         
         if temp_in.exists(): os.remove(temp_in)
@@ -308,34 +286,31 @@ def upscale_image_replicate(pil_img: Image.Image) -> Image.Image:
         if output:
             resp = requests.get(str(output))
             if resp.status_code == 200:
-                return Image.open(BytesIO(resp.content)).convert("RGB")
+                img = Image.open(BytesIO(resp.content)).convert("RGBA")
+                # Safety check: if image is empty/fully transparent, return original
+                extrema = img.getextrema()
+                if extrema[3][1] == 0: 
+                    print("   ⚠️ Rembg returned empty image. Using original.")
+                    return pil_img.convert("RGBA")
+                return img
     except Exception as e:
-        print(f"   ⚠️ Upscale failed: {e}. Using original.")
-    return pil_img
+        print(f"   ⚠️ Rembg failed: {e}. Using original.")
+    return pil_img.convert("RGBA")
 
-def ask_gemini_for_slice(pil_img: Image.Image) -> float:
-    """Asks Gemini where the most interesting vertical center (0.0-1.0) is."""
-    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
-        return 0.5
-
-    try:
-        client = genai.Client(api_key=GEMINI_API_KEY)
-        prompt = """
-        Analyze this image of a cinema. I need to crop a horizontal strip from it.
-        Return ONLY a JSON object with a single key "center_y" (float between 0.0 and 1.0).
-        "center_y" should be the vertical center of the most interesting visual feature (e.g., a neon sign, the screen, the ticket counter, or a row of chairs).
-        Example: {"center_y": 0.3}
-        """
-        response = client.models.generate_content(
-            model='gemini-2.5-flash', contents=[prompt, pil_img]
-        )
-        match = re.search(r'\{.*\}', response.text, re.DOTALL)
-        if match:
-            data = json.loads(match.group(0))
-            return float(data.get("center_y", 0.5))
-    except Exception as e:
-        print(f"   ⚠️ Gemini Slice Analysis failed: {e}")
-    return 0.5
+def create_hard_shadow(img: Image.Image, offset=(15, 15), color=(0, 0, 0, 80)) -> Image.Image:
+    """Creates a hard, architectural drop shadow."""
+    if img.mode != 'RGBA': img = img.convert('RGBA')
+    alpha = img.split()[3]
+    
+    # Create shadow canvas
+    shadow = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    shadow_draw = ImageDraw.Draw(shadow)
+    
+    # Draw the shape in shadow color
+    shadow.paste(color, [0, 0, img.size[0], img.size[1]], mask=alpha)
+    
+    # Return just the shadow layer
+    return shadow
 
 # --- IMAGE GENERATORS ---
 
@@ -356,153 +331,137 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
         draw.ellipse([center - r, center - r, center + r, center + r], fill=(red, green, blue))
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
-def create_cinema_collage(cinemas: List[Tuple[str, Path]]) -> Image.Image:
+def create_architectural_cover(cinemas: List[Tuple[str, Path]], bilingual_date: str) -> Image.Image:
     """
-    Creates a 'Cinema Reel' Collage.
-    - Takes 3 cinemas.
-    - Enhances them (Replicate).
-    - Finds best slice (Gemini).
-    - Stacks them vertically.
-    - Applies Glitch effect.
+    Creates 'The Curator's Desk' Cover.
+    - Minimalist, grid-based background.
+    - 2-3 Cutout objects (Cinemas) placed methodically.
+    - Hard shadows.
     """
-    print(f"🎬 Creating Cinema Reel Collage with: {[c[0] for c in cinemas]}")
+    print(f"🏗️ Constructing Architectural Cover with: {[c[0] for c in cinemas]}")
     
-    num_slices = len(cinemas)
-    slice_height = CANVAS_HEIGHT // num_slices
-    canvas = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (10,10,10))
+    width = CANVAS_WIDTH
+    height = CANVAS_HEIGHT
     
-    for i, (name, path) in enumerate(cinemas):
+    # 1. Background: Clean Off-White with faint grid
+    canvas = Image.new("RGB", (width, height), BG_COLOR)
+    draw = ImageDraw.Draw(canvas)
+    
+    # Draw faint grid
+    grid_size = 100
+    for x in range(0, width, grid_size):
+        draw.line([(x, 0), (x, height)], fill=(220, 220, 215), width=1)
+    for y in range(0, height, grid_size):
+        draw.line([(0, y), (width, y)], fill=(220, 220, 215), width=1)
+
+    # 2. Geometric Anchor
+    # Draw a large circle or rectangle to ground the composition
+    shape_color = (255, 210, 0) # The signature Yellow
+    shape_size = 700
+    cx, cy = width // 2, height // 2
+    draw.ellipse(
+        [cx - shape_size//2, cy - shape_size//2, cx + shape_size//2, cy + shape_size//2], 
+        fill=None, outline=shape_color, width=3
+    )
+    
+    # 3. Process and Place Cutouts
+    # We want a "Primary" image (Top Center) and a "Secondary" image (Bottom Right overlap)
+    
+    imgs_to_process = cinemas[:2] # Limit to 2 for cleaner layout
+    
+    # Placement Configs (x_ratio, y_ratio, scale_factor)
+    placements = [
+        (0.5, 0.45, 0.8),  # Primary: Center, slightly high
+        (0.75, 0.75, 0.5)  # Secondary: Bottom Right, smaller
+    ]
+    
+    for i, (name, path) in enumerate(imgs_to_process):
         try:
-            img = Image.open(path).convert("RGB")
+            raw = Image.open(path).convert("RGBA")
             
-            # 1. Enhance
-            img = upscale_image_replicate(img)
+            # Remove BG
+            cutout = remove_background_replicate(raw)
             
-            # 2. Analyze Crop
-            center_y_ratio = ask_gemini_for_slice(img)
+            # Trim transparent edges
+            bbox = cutout.getbbox()
+            if bbox:
+                cutout = cutout.crop(bbox)
             
-            # 3. Calculate Crop Box
-            # We need an image that is CANVAS_WIDTH wide and slice_height high
-            target_ratio = CANVAS_WIDTH / slice_height
-            img_ratio = img.width / img.height
+            # Resize
+            target_scale = placements[i][2]
+            max_dim = int(width * target_scale)
+            cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
             
-            if img_ratio > target_ratio:
-                # Image is wider than strip -> Scale to height, crop width
-                new_h = slice_height
-                new_w = int(new_h * img_ratio)
-                img_resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-                left = (new_w - CANVAS_WIDTH) // 2
-                img_strip = img_resized.crop((left, 0, left + CANVAS_WIDTH, slice_height))
-            else:
-                # Image is taller than strip (Common) -> Scale to width, crop height based on Gemini
-                new_w = CANVAS_WIDTH
-                new_h = int(new_w / img_ratio)
-                img_resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-                
-                # Use Gemini's center_y
-                center_px = int(new_h * center_y_ratio)
-                top = center_px - (slice_height // 2)
-                
-                # Clamp
-                if top < 0: top = 0
-                if top + slice_height > new_h: top = new_h - slice_height
-                
-                img_strip = img_resized.crop((0, top, CANVAS_WIDTH, top + slice_height))
-
-            # 4. Paste
-            y_pos = i * slice_height
-            canvas.paste(img_strip, (0, y_pos))
+            # Generate Hard Shadow
+            shadow = create_hard_shadow(cutout, color=(0,0,0,60))
             
-            # 5. Add Separator Line
-            draw = ImageDraw.Draw(canvas)
-            if i > 0:
-                draw.line([(0, y_pos), (CANVAS_WIDTH, y_pos)], fill=(255, 210, 0), width=4)
-                
+            # Calculate Position (Center of object to target coord)
+            target_x = int(width * placements[i][0])
+            target_y = int(height * placements[i][1])
+            
+            pos_x = target_x - (cutout.width // 2)
+            pos_y = target_y - (cutout.height // 2)
+            
+            # Paste Shadow (Offset)
+            offset = 20
+            canvas.paste(shadow, (pos_x + offset, pos_y + offset), mask=shadow)
+            
+            # Paste Object
+            canvas.paste(cutout, (pos_x, pos_y), mask=cutout)
+            
         except Exception as e:
-            print(f"Error processing {name}: {e}")
-            
-    # --- POST PROCESSING: THE "PROJECTION" LOOK ---
-    # RGB Split (Chromatic Aberration)
-    r, g, b = canvas.split()
-    canvas = Image.merge("RGB", (
-        ImageChops.offset(r, 4, 0),
-        ImageChops.offset(g, 0, 0),
-        ImageChops.offset(b, -4, 0)
-    ))
-    
-    # Slight Noise
-    noise = Image.effect_noise((CANVAS_WIDTH, CANVAS_HEIGHT), 10).convert("RGB")
-    canvas = Image.blend(canvas, noise, 0.05)
-    
-    # Vignette
-    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
-    draw_ov = ImageDraw.Draw(overlay)
-    draw_ov.rectangle([0,0,CANVAS_WIDTH,CANVAS_HEIGHT], fill=(0,0,0,60)) # Darken overall
-    
-    # Gradient Edges
-    for i in range(150):
-        alpha = int(255 * (1 - (i/150)))
-        draw_ov.rectangle([i, i, CANVAS_WIDTH-i, CANVAS_HEIGHT-i], outline=(0,0,0,alpha))
+            print(f"Error processing cutout {name}: {e}")
 
-    canvas.paste(overlay, (0,0), mask=overlay)
-    return canvas
-
-def draw_hero_slide_v1(bilingual_date: str, collage_img: Image.Image, featured_names: List[str]) -> Image.Image:
-    """Draws the standard Text Overlay on the new Collage Background."""
-    img = collage_img.copy()
-    overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (0,0,0,0))
+    # 4. Typography (Swiss Style - Aligned Left/Grid)
+    # Overlay layer
+    overlay = Image.new("RGBA", (width, height), (0,0,0,0))
     draw_ov = ImageDraw.Draw(overlay)
     
     try:
-        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 80)
-        jp_title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 100)
-        en_subtitle_font = ImageFont.truetype(str(BOLD_FONT_PATH), 45)
-        date_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
-        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
-        credit_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 22) 
-    except Exception:
+        header_font = ImageFont.truetype(str(BOLD_FONT_PATH), 90)
+        sub_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 40)
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 30)
+        meta_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
+    except:
         header_font = ImageFont.load_default()
-        jp_title_font = ImageFont.load_default()
-        en_subtitle_font = ImageFont.load_default()
+        sub_font = ImageFont.load_default()
         date_font = ImageFont.load_default()
-        footer_font = ImageFont.load_default()
-        credit_font = ImageFont.load_default()
-
-    cx = CANVAS_WIDTH // 2
-    cy = CANVAS_HEIGHT // 2
+        meta_font = ImageFont.load_default()
+        
+    # Title Block (Top Left)
+    start_x = 60
+    start_y = 60
     
-    # Box behind text to ensure readability over messy collage
-    box_h = 500
-    box_w = 900
-    draw_ov.rectangle(
-        [cx - box_w//2, cy - box_h//2, cx + box_w//2, cy + box_h//2], 
-        fill=(0, 0, 0, 180)
-    )
-    draw_ov.rectangle(
-        [cx - box_w//2, cy - box_h//2, cx + box_w//2, cy + box_h//2], 
-        outline=(255, 255, 255, 100), width=3
-    )
-
-    def draw_centered_text(y, text, font, color=WHITE):
-        draw_ov.text((cx, y), text, font=font, fill=color, anchor="mm")
-
-    draw_centered_text(cy - 120, "TOKYO CINEMA INDEX", header_font)
-    draw_centered_text(cy, "本日の上映館", jp_title_font)
-    draw_centered_text(cy + 100, "Today's Theater Guide", en_subtitle_font)
-    draw_centered_text(cy + 180, bilingual_date, date_font, (220, 220, 220))
+    # "Badge" for Date
+    draw_ov.rectangle([start_x, start_y, start_x + 350, start_y + 50], fill=(20, 20, 20))
+    draw_ov.text((start_x + 20, start_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
     
-    draw_centered_text(CANVAS_HEIGHT - MARGIN - 40, "→ SWIPE FOR SCHEDULES →", footer_font, (255, 210, 0)) 
+    draw_ov.text((start_x, start_y + 70), "TOKYO", font=header_font, fill=ACCENT_COLOR)
+    draw_ov.text((start_x, start_y + 160), "CINEMA", font=header_font, fill=ACCENT_COLOR)
+    draw_ov.text((start_x, start_y + 250), "INDEX", font=header_font, fill=ACCENT_COLOR)
     
-    # List featured cinemas at bottom right
-    if featured_names:
-        clean_names = [n.split(' ')[0] for n in featured_names] # Shorten
-        credit_text = "Featuring: " + " | ".join(clean_names)
-        draw_ov.text((CANVAS_WIDTH - 20, CANVAS_HEIGHT - 15), credit_text, font=credit_font, fill=(180, 180, 180), anchor="rb")
+    draw_ov.line([(start_x, start_y + 360), (start_x + 200, start_y + 360)], fill=ACCENT_COLOR, width=4)
+    draw_ov.text((start_x, start_y + 380), "Today's Showtimes", font=sub_font, fill=(80, 80, 80))
 
-    return Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+    # Cinema List (Bottom Left)
+    list_y = height - 150
+    draw_ov.text((start_x, list_y - 40), "FEATURING:", font=meta_font, fill=(150, 150, 150))
+    
+    names = [c[0] for c in cinemas]
+    names_str = "  /  ".join(names[:3])
+    draw_ov.text((start_x, list_y), names_str, font=sub_font, fill=ACCENT_COLOR)
+
+    # Compose
+    final = Image.alpha_composite(canvas.convert("RGBA"), overlay)
+    
+    # 5. Final Noise (Texture)
+    noise = Image.effect_noise((width, height), 10).convert("RGBA")
+    final = Image.blend(final, noise, 0.03).convert("RGB")
+    
+    return final
 
 def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    """Generates a 9:16 vertical Story slide (Kept Sunburst)."""
+    """Generates a 9:16 vertical Story slide (Sunburst)."""
     img = bg_template.copy()
     draw = ImageDraw.Draw(img)
     try:
@@ -513,7 +472,7 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
         time_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 36)
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 30)
     except Exception:
-        header_font = ImageFont.load_default() # Fallbacks
+        header_font = ImageFont.load_default()
         subhead_font = ImageFont.load_default()
         movie_font = ImageFont.load_default()
         en_movie_font = ImageFont.load_default()
@@ -551,7 +510,7 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
     return img
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    """Generates standard feed slide (Kept Sunburst)."""
+    """Generates standard feed slide (Sunburst)."""
     img = bg_template.copy()
     draw = ImageDraw.Draw(img)
     try:
@@ -603,9 +562,9 @@ def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
     today_str = today.isoformat()
-    date_jp = today.strftime("%Y年%m月%d日")
-    date_en = today.strftime("%b %d, %Y")
-    bilingual_date_str = f"{date_jp} / {date_en}"
+    date_jp = today.strftime("%Y.%m.%d") # Changed to dots for Swiss style
+    date_en = today.strftime("%a")
+    bilingual_date_str = f"{date_jp} {date_en.upper()}"
 
     # Cleanup
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")): os.remove(old_file) 
@@ -614,7 +573,7 @@ def main() -> None:
     todays_showings = load_showtimes(today_str)
     if not todays_showings: return
     
-    # 2. Pre-generate Sunbursts for Slides (NOT Cover)
+    # 2. Pre-generate Sunbursts for Slides
     feed_bg_template = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
     story_bg_template = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
 
@@ -667,53 +626,54 @@ def main() -> None:
 
     if not final_selection: return
 
-    # --- 5. COVER GENERATION (NEW LOGIC) ---
-    print("--- Generating V1 Cover (Cinema Reel Style) ---")
+    # --- 5. COVER GENERATION (ARCHITECTURAL MASHUP) ---
+    print("--- Generating V1 Cover (Architectural Mashup) ---")
     
     # Find cinemas with assets
     asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
-    if len(asset_candidates) < 3:
-        # If not enough in selection, pick randoms from existing assets
-        print("   Not enough selected cinemas have assets. Filling with random assets.")
+    
+    # If not enough, borrow from others
+    collage_inputs = []
+    if len(asset_candidates) >= 1:
+        # Prioritize showing at least one cinema that is actually in the list
+        random.shuffle(asset_candidates)
+        primary = asset_candidates[0]
+        collage_inputs.append((primary, get_cinema_image_path(primary)))
+        
+        # Then fill with random others if needed
         all_assets = list(ASSETS_DIR.glob("*.jpg"))
         random.shuffle(all_assets)
-        collage_inputs = []
-        
-        # Add selected ones first
-        for name in asset_candidates:
-            p = get_cinema_image_path(name)
-            if p: collage_inputs.append((name, p))
-            
-        # Fill rest
         for p in all_assets:
-            if len(collage_inputs) >= 3: break
-            name_guess = p.stem.replace('_', ' ').title()
-            # Avoid dupes
-            if not any(c[1] == p for c in collage_inputs):
-                 collage_inputs.append((name_guess, p))
+            if len(collage_inputs) >= 2: break
+            # Don't add if already added
+            if p != collage_inputs[0][1]:
+                 collage_inputs.append(("Feature", p))
     else:
-        random.shuffle(asset_candidates)
-        picked = asset_candidates[:3]
-        collage_inputs = [(n, get_cinema_image_path(n)) for n in picked]
+        # Fallback: Just random assets
+        all_assets = list(ASSETS_DIR.glob("*.jpg"))
+        random.shuffle(all_assets)
+        for p in all_assets[:2]:
+            collage_inputs.append(("Cinema", p))
 
     if collage_inputs:
-        collage_bg = create_cinema_collage(collage_inputs)
-        hero_slide = draw_hero_slide_v1(bilingual_date_str, collage_bg, [x[0] for x in collage_inputs])
-        hero_slide.save(BASE_DIR / f"post_image_00.png")
+        cover_img = create_architectural_cover(collage_inputs, bilingual_date_str)
+        cover_img.save(BASE_DIR / f"post_image_00.png")
         
-        # Reuse for story (resize)
-        hero_story_bg = collage_bg.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS)
-        hero_story = draw_hero_slide_v1(bilingual_date_str, hero_story_bg, [x[0] for x in collage_inputs])
-        hero_story.save(BASE_DIR / f"story_image_00.png")
+        # Resize for Story (Simple center crop)
+        story_cover = cover_img.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * cover_img.height / cover_img.width)))
+        # Create canvas
+        story_canvas = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), BG_COLOR)
+        # Paste centered
+        y_off = (STORY_CANVAS_HEIGHT - story_cover.height) // 2
+        story_canvas.paste(story_cover, (0, y_off))
+        story_canvas.save(BASE_DIR / f"story_image_00.png")
     else:
-        print("⚠️ No cinema assets found at all. Using Fallback Sunburst.")
-        fallback_bg = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
-        hero_slide = draw_hero_slide_v1(bilingual_date_str, fallback_bg, [])
-        hero_slide.save(BASE_DIR / "post_image_00.png")
-        # Story Fallback
-        fbs = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
-        hs = draw_hero_slide_v1(bilingual_date_str, fbs, [])
-        hs.save(BASE_DIR / "story_image_00.png")
+        print("⚠️ No cinema assets found. Using Sunburst Fallback.")
+        # Fallback to simple title card
+        cover_img = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
+        draw = ImageDraw.Draw(cover_img)
+        draw.text((CANVAS_WIDTH//2, CANVAS_HEIGHT//2), "TOKYO CINEMA", font=ImageFont.load_default(), fill=(0,0,0))
+        cover_img.save(BASE_DIR / "post_image_00.png")
 
     # --- 6. SLIDE GENERATION (Sunburst) ---
     print("Generating Content Slides...")
