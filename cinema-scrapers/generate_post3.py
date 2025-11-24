@@ -1,10 +1,9 @@
 """
-Generate Instagram-ready image carousel (V30 - AI Mashup Edition).
+Generate Instagram-ready image carousel (V31 - Vision-to-Imagen Pipeline).
 
-- Cover Slide: Uses Google Gemini API to "fuse" the top 3 movie images into a single
-  cohesive, cinematic poster with the text "TOKYO CINEMA DAILY".
-- Individual Slides: Uses the V28 texture/grain engine for consistent branding.
-- Logic: Downloads images, generates AI cover, generates individual slides, writes caption.
+- Step 1: Uses 'gemini-2.0-flash-exp' to LOOK at the top 3 movie posters and write a prompt.
+- Step 2: Uses 'imagen-3.0-generate-001' to GENERATE a new poster from that prompt.
+- Fallback: Texture Engine (V28) if AI fails.
 """
 from __future__ import annotations
 
@@ -25,7 +24,7 @@ import time
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-# --- Google Gemini Setup ---
+# --- Google Gen AI Setup ---
 try:
     from google import genai
     from google.genai import types
@@ -34,7 +33,7 @@ except ImportError:
     print("⚠️ 'google-genai' library not found. Install via: pip install google-genai")
     AI_AVAILABLE = False
 
-# This line reads the key from your GitHub Secret (via the workflow 'env' block)
+# Reads the key from your GitHub Secret or Local Env
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # --- Configuration ---
@@ -49,7 +48,7 @@ CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
 STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
 
-# --- Cinema Name Mapping (JP -> EN) ---
+# --- Cinema Name Mapping ---
 CINEMA_ENGLISH_NAMES = {
     "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
     "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -177,78 +176,91 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- AI Generation Logic ---
+# --- AI GENERATION PIPELINE (Corrected) ---
 
 def generate_ai_mashup(images: list[Image.Image]) -> Image.Image | None:
     """
-    Sends the top 3 images to Gemini and asks for a 'Fusion' poster.
+    Step 1: Use Gemini 2.0 Flash to 'see' the images and write a prompt.
+    Step 2: Use Imagen 3 to generate the image from that prompt.
     """
-    print("🍌 Contacting Gemini for Image Fusion...")
+    print("🤖 AI Pipeline: Connecting...")
     
     if not AI_AVAILABLE:
         print("⚠️ library google-genai not installed.")
         return None
     
     if not GEMINI_API_KEY:
-        print("⚠️ No GEMINI_API_KEY found in environment.")
+        print("⚠️ No GEMINI_API_KEY found.")
         return None
 
     try:
         client = genai.Client(api_key=GEMINI_API_KEY)
         
-        # Prepare Inputs (Top 3 Images)
+        # --- Step 1: Vision (Get Description) ---
+        print("👁️ Phase 1: Gemini 2.0 Flash is analyzing images...")
+        
         input_images_data = []
         for img in images[:3]: 
             buf = BytesIO()
-            # Ensure RGB before saving as JPEG
-            if img.mode != 'RGB':
-                img = img.convert('RGB')
+            if img.mode != 'RGB': img = img.convert('RGB')
             img.save(buf, format="JPEG")
             input_images_data.append(buf.getvalue())
-            
-        # The Prompt
-        prompt = (
-            "Create a high-fashion, cinematic movie poster that artistically blends these movie scenes "
-            "into a single cohesive vertical composition. "
-            "Style: Gritty, film grain, Tokyo street photography aesthetic, moody lighting. "
-            "IMPORTANT: The image must include the text 'TOKYO CINEMA DAILY' in a bold, stylish typography in the center or top."
+
+        vision_prompt = (
+            "You are an expert art director. Look at these movie posters. "
+            "Write a single, highly detailed text prompt for an AI image generator (like Imagen) "
+            "to create a new 'Fusion Poster' that artistically combines the mood and elements of these three films. "
+            "IMPORTANT: The prompt must NOT be conversational. Just return the prompt text itself."
         )
 
-        # Call Gemini (using flash-exp or pro-vision depending on availability)
-        response = client.models.generate_content(
+        vision_resp = client.models.generate_content(
             model='gemini-2.0-flash-exp', 
-            contents=[prompt] + [
+            contents=[vision_prompt] + [
                 types.Part.from_bytes(data=d, mime_type="image/jpeg") for d in input_images_data
-            ],
-            config=types.GenerateContentConfig(
-                response_modalities=["IMAGE"]
+            ]
+        )
+        
+        generated_prompt = vision_resp.text
+        print(f"📝 Prompt Generated: {generated_prompt[:60]}...")
+
+        # --- Step 2: Generation (Imagen 3) ---
+        print("🎨 Phase 2: Imagen 3 is painting...")
+        
+        # We append the text requirement here to ensure it's in the final image
+        final_prompt = generated_prompt + " . The image must feature the text 'TOKYO CINEMA DAILY' in bold, stylish typography."
+
+        image_resp = client.models.generate_images(
+            model='imagen-3.0-generate-001',
+            prompt=final_prompt,
+            config=types.GenerateImagesConfig(
+                number_of_images=1,
+                aspect_ratio="4:5", # 4:5 matches our feed
             )
         )
         
-        # Extract Image
-        for part in response.candidates[0].content.parts:
-            if part.inline_data:
-                return Image.open(BytesIO(part.inline_data.data))
+        # Extract Image Bytes
+        for img_entry in image_resp.generated_images:
+            return Image.open(BytesIO(img_entry.image.image_bytes))
                 
     except Exception as e:
-        print(f"⚠️ AI Generation failed: {e}")
+        print(f"⚠️ AI Pipeline failed: {e}")
         return None
     
     return None
 
-# --- Standard Slide Logic ---
+# --- Standard Slide Logic (V28) ---
 
 def draw_poster_slide(film, img_obj, fonts, is_story=False):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
     
-    # 1. Textured Background
+    # Background
     c_base, c_accent = get_faithful_colors(img_obj)
     bg = create_textured_bg(c_base, c_accent, width, height)
     canvas = apply_film_grain(bg)
     draw = ImageDraw.Draw(canvas)
     
-    # 2. Layout Dimensions
+    # Layout Dimensions
     if is_story:
         target_w = 950
         target_h = 850
@@ -278,7 +290,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     
     cursor_y = img_y + target_h + (70 if is_story else 60)
     
-    # 3. Typography
+    # Typography
     meta_parts = []
     if film.get('year'): meta_parts.append(str(film['year']))
     if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']}m")
@@ -313,7 +325,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
         draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150), width)
         cursor_y += 20
         
-    # 4. Showtimes
+    # Showtimes
     sorted_cinemas = sorted(film['showings'].keys())
     num_cinemas = len(sorted_cinemas)
     
@@ -385,9 +397,9 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V30 (AI Mashup) ---")
+    print("--- Starting V31 (Vision-to-Imagen Pipeline) ---")
     
-    # 1. Setup & Clean
+    # 1. Clean old files
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
 
@@ -438,24 +450,23 @@ def main():
     print("🎨 Generating Cover...")
     d_str, day_str = get_bilingual_date()
     
-    # Try AI generation first
+    # Try AI pipeline
     ai_cover = generate_ai_mashup(cover_images)
     
     if ai_cover:
         print("✅ AI Cover Generated Successfully.")
-        # Resize/Crop AI result
-        # For Feed (4:5)
+        
+        # Resize/Crop AI result for Feed (4:5)
         cover_feed = ai_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * ai_cover.height / ai_cover.width)))
         if cover_feed.height < CANVAS_HEIGHT:
             cover_feed = cover_feed.resize((int(CANVAS_HEIGHT * cover_feed.width / cover_feed.height), CANVAS_HEIGHT))
         
-        # Crop center for feed
         left = (cover_feed.width - CANVAS_WIDTH) // 2
         top = (cover_feed.height - CANVAS_HEIGHT) // 2
         feed_final = cover_feed.crop((left, top, left + CANVAS_WIDTH, top + CANVAS_HEIGHT))
         feed_final.save(BASE_DIR / "post_v3_image_00.png")
 
-        # For Story (9:16)
+        # Resize/Crop for Story (9:16)
         cover_story = ai_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * ai_cover.height / ai_cover.width)))
         story_bg = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), (0,0,0))
         y_pos = (STORY_CANVAS_HEIGHT - cover_story.height) // 2
@@ -483,7 +494,7 @@ def main():
         slide_story = draw_poster_slide(film, img, fonts, is_story=True)
         slide_story.save(BASE_DIR / f"story_v3_image_{i+1:02}.png")
         
-        # Caption Builder
+        # Caption
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
         caption_lines.append(f"{t_jp}") 
         if film.get('movie_title_en'): 
@@ -500,7 +511,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V30 Generated.")
+    print("Done. V31 Generated.")
 
 if __name__ == "__main__":
     main()
