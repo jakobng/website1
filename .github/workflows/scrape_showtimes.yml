@@ -43,7 +43,8 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade google-generativeai requests Pillow tzdata
+          # Added replicate and google-genai for V2 Punk Zine generator
+          pip install --upgrade google-generativeai google-genai replicate requests Pillow tzdata
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Install Playwright Browsers
@@ -91,12 +92,15 @@ jobs:
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
-      # V2: Movies (09:00 & 10:00 JST)
-      - name: Generate Movie Slides (V2)
+      # V2: Movies (09:00 & 10:00 JST) - UPDATED FOR PUNK ZINE
+      - name: Generate Movie Slides (V2 - Punk Zine)
         if: steps.decision.outputs.mode == 'movie'
         run: python generate_post2.py
         env:
+          # V2 now needs Replicate and Gemini keys
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
      # --- STEP 3: COMMIT & PUSH ---
       - name: Commit and push generated files
@@ -105,9 +109,9 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Add Data Files (These only change if the scraper ran)
-          git add 'showtimes.json'
-          git add 'tmdb_cache.json'
+          # Add Data Files
+          git add 'showtimes.json' || true
+          git add 'tmdb_cache.json' || true
           
           # Add V1 Assets
           git add 'post_image_*.png' || true
