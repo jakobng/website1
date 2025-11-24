@@ -1,10 +1,9 @@
 """
-Generate Instagram-ready image carousel (V50 - The Feathered Ensemble).
+Generate Instagram-ready image carousel (V51 - Fix ImageChops).
 
-- Strategy: "Ensemble Cutout" with Feather & Fade
-- Step 1: Extract subjects using Replicate (lucataco/remove-bg).
-- Step 2: Python 'Feather & Fade' engine cleans edges and removes hard crop lines.
-- Step 3: Flux "Varnish" (Strength 0.45) binds the collage into a cohesive poster.
+- Fixes: Replaced invalid ImageOps.darker with ImageChops.darker.
+- Strategy: "Ensemble Cutout" with Feather & Fade.
+- AI: Flux.1 Dev (via Replicate) + lucataco/remove-bg.
 """
 from __future__ import annotations
 
@@ -23,7 +22,8 @@ from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance
+# FIX: Added ImageChops to imports
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance, ImageChops
 
 # --- API Setup ---
 try:
@@ -93,7 +93,6 @@ def normalize_string(s):
 
 def download_image(path: str) -> Image.Image | None:
     if not path: return None
-    # Support both TMDB paths and full URLs (from Replicate)
     if path.startswith("http"):
         url = path
     else:
@@ -179,17 +178,15 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- NEW: COLLAGE PIPELINE (V50 - Feather & Fade) ---
+# --- NEW: COLLAGE PIPELINE (V51 - ImageChops Fix) ---
 
 def remove_background(pil_img: Image.Image) -> Image.Image | None:
     """Uses Replicate (lucataco/remove-bg) to isolate subjects."""
     print("✂️ Removing background...")
     try:
-        # Save temp file for upload
         temp_path = BASE_DIR / "temp_rembg_in.png"
         pil_img.save(temp_path, format="PNG")
         
-        # V50 FIX: Using Stable 'lucataco/remove-bg' (v 95fcc2...)
         output = replicate.run(
             "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
             input={"image": open(temp_path, "rb")}
@@ -197,7 +194,6 @@ def remove_background(pil_img: Image.Image) -> Image.Image | None:
         
         if temp_path.exists(): os.remove(temp_path)
         
-        # Output is a URI
         if output:
             resp = requests.get(str(output))
             if resp.status_code == 200:
@@ -209,22 +205,19 @@ def remove_background(pil_img: Image.Image) -> Image.Image | None:
 
 def process_cutout(img: Image.Image) -> Image.Image:
     """
-    V50 Magic: Cleans up the 'Sticker' look.
+    V51 Logic: Cleans up the 'Sticker' look.
     1. Erodes edges (removes halos).
     2. Feathers edges (soft blend).
-    3. Fades the bottom (removes hard crop lines).
+    3. Fades the bottom (removes hard crop lines) using ImageChops.
     """
-    # 1. Handle Alpha
     img = img.convert("RGBA")
     alpha = img.split()[3]
     
-    # 2. Erode (Shrink) to remove messy borders
+    # Erode & Feather
     alpha = alpha.filter(ImageFilter.MinFilter(3))
-    
-    # 3. Feather (Blur) the edges
     alpha = alpha.filter(ImageFilter.GaussianBlur(2))
     
-    # 4. Gradient Fade at the Bottom
+    # Gradient Fade
     w, h = alpha.size
     gradient = Image.new('L', (w, h), 255)
     g_draw = ImageDraw.Draw(gradient)
@@ -232,28 +225,26 @@ def process_cutout(img: Image.Image) -> Image.Image:
     fade_height = int(h * 0.20) # Bottom 20%
     if fade_height > 0:
         for y in range(h - fade_height, h):
-            # Calculate opacity (0 to 255)
             opacity = int(255 * (1 - ((y - (h - fade_height)) / fade_height)))
             g_draw.line([(0, y), (w, y)], fill=opacity)
         
-    # Combine the eroded/blurred alpha with the gradient fade
-    final_alpha = ImageOps.darker(alpha, gradient)
+    # FIX: Use ImageChops.darker to intersect the alpha mask and the gradient fade
+    final_alpha = ImageChops.darker(alpha, gradient)
     img.putalpha(final_alpha)
     return img
 
 def create_cutout_collage(images: list[Image.Image], width=896, height=1152) -> Image.Image:
     """
-    V50: Smart Collage with Feathering & Fading.
+    V50/V51: Smart Collage with Feathering & Fading.
     """
     canvas = Image.new("RGB", (width, height), (10,10,10))
     if not images: return canvas
     
-    # 1. Background Layer (Darkened & Blurred)
+    # 1. Background Layer
     bg_img = images[0].copy()
     bg_ratio = bg_img.width / bg_img.height
     target_ratio = width / height
     
-    # Smart Crop to fill
     if bg_ratio > target_ratio:
         new_h = height
         new_w = int(new_h * bg_ratio)
@@ -267,19 +258,15 @@ def create_cutout_collage(images: list[Image.Image], width=896, height=1152) -> 
         top = (new_h - height) // 2
         bg_img = bg_img.crop((0, top, width, top+height))
     
-    # Depth effect
     bg_img = bg_img.filter(ImageFilter.GaussianBlur(8)) 
     enhancer = ImageEnhance.Brightness(bg_img)
-    bg_img = enhancer.enhance(0.4) # Darker background (40% brightness)
+    bg_img = enhancer.enhance(0.4) 
     canvas.paste(bg_img, (0,0))
     
     # 2. Add Cutout Subjects
     subjects_processed = 0
-    target_subjects = images[1:3] # Take next 2 images
+    target_subjects = images[1:3] 
     
-    # Layout Strategy:
-    # Subject 1: Top Left, slightly smaller, off-screen left
-    # Subject 2: Bottom Right, larger
     positions = [
         {"scale": 0.65, "pos": (int(width * -0.1), int(height * 0.2))}, 
         {"scale": 0.85, "pos": (int(width * 0.3), int(height * 0.4))}   
@@ -288,13 +275,12 @@ def create_cutout_collage(images: list[Image.Image], width=896, height=1152) -> 
     for i, raw_img in enumerate(target_subjects):
         cutout = remove_background(raw_img)
         if cutout:
-            # --- V50 PROCESSING ---
+            # Process edges
             cutout = process_cutout(cutout)
             
             bbox = cutout.getbbox()
             if bbox:
                 cutout = cutout.crop(bbox)
-                
                 config = positions[i % len(positions)]
                 
                 # Scale
@@ -305,16 +291,12 @@ def create_cutout_collage(images: list[Image.Image], width=896, height=1152) -> 
                 
                 # Position
                 x, y = config["pos"]
-                
-                # Auto-align bottom of 2nd image to bottom of canvas
                 if i == 1:
-                    y = height - new_h + 80 # Push down slightly
+                    y = height - new_h + 80 
                 
-                # Paste with Alpha
                 canvas.paste(cutout, (x, y), cutout)
                 subjects_processed += 1
                 
-    # If Rembg completely failed, fallback to simple resize
     if subjects_processed == 0:
         print("⚠️ No subjects found, reverting to simple stack.")
         return images[0].resize((width, height)) 
@@ -322,23 +304,20 @@ def create_cutout_collage(images: list[Image.Image], width=896, height=1152) -> 
     return canvas
 
 def generate_flux_varnish(images: list[Image.Image]) -> Image.Image | None:
-    print("🎨 Preparing Flux Varnish (V50 Collage Mode)...")
+    print("🎨 Preparing Flux Varnish (V51 Collage Mode)...")
     
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("⚠️ Replicate Not Configured.")
         return None
 
     try:
-        # 1. Create The Cutout Collage
         collage_input = create_cutout_collage(images, width=896, height=1152)
         
-        # Save temp
         temp_path = BASE_DIR / "temp_init_flux.png"
         collage_input.save(temp_path, format="PNG")
         
         print("🚀 Sending to Replicate (Flux Varnish)...")
         
-        # 2. Flux "Varnish" Step
         output = replicate.run(
             "black-forest-labs/flux-dev",
             input={
@@ -351,7 +330,6 @@ def generate_flux_varnish(images: list[Image.Image]) -> Image.Image | None:
                 "aspect_ratio": "4:5",
                 "output_format": "png",
                 "output_quality": 90,
-                # V50 Tweak: 0.45 strength for better blending
                 "prompt_strength": 0.45, 
                 "num_inference_steps": 28
             }
@@ -547,7 +525,7 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V50 (Ensemble Cutout Collage) ---")
+    print("--- Starting V51 (Ensemble Cutout Collage + Fixes) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
@@ -594,7 +572,6 @@ def main():
 
     d_str, day_str = get_bilingual_date()
     
-    # Updated: Uses new Varnish Logic
     ai_art = generate_flux_varnish(cover_images)
     
     if ai_art:
@@ -634,7 +611,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V50 Generated.")
+    print("Done. V51 Generated.")
 
 if __name__ == "__main__":
     main()
