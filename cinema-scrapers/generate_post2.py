@@ -120,12 +120,16 @@ def download_image(path: str) -> Image.Image | None:
     return None
 
 def get_fonts():
-    # Attempt to load fonts
     try:
         return {
-            # switched cover_main to REGULAR for that thin "A24" look
-            "cover_main": ImageFont.truetype(str(REGULAR_FONT_PATH), 80),
+            # NEW: Massive Japanese Title (Bold, 110px)
+            "cover_main_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 110),
+            # NEW: Medium English Subtitle (Regular, 55px)
+            "cover_sub_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 55),
+            # Date
             "cover_date": ImageFont.truetype(str(REGULAR_FONT_PATH), 40),
+            
+            # Slide fonts (Keep these the same)
             "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
             "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
@@ -135,7 +139,8 @@ def get_fonts():
     except:
         print("⚠️ Fonts not found, using default.")
         d = ImageFont.load_default()
-        return {k: d for k in ["cover_main", "cover_date", "title_jp", "title_en", "meta", "cinema", "times"]}
+        # Ensure all keys exist to prevent crashes
+        return {k: d for k in ["cover_main_jp", "cover_sub_en", "cover_date", "title_jp", "title_en", "meta", "cinema", "times"]}
 
 def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     small = pil_img.resize((150, 150))
@@ -370,6 +375,7 @@ def draw_final_cover(composite, fonts, is_story=False):
     bg_ratio = bg.width / bg.height
     target_ratio = width / height
     
+    # Crop/Resize logic
     if bg_ratio > target_ratio:
         new_h = height
         new_w = int(new_h * bg_ratio)
@@ -386,26 +392,25 @@ def draw_final_cover(composite, fonts, is_story=False):
     draw = ImageDraw.Draw(bg)
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
-    s_off = 3
     
-    # --- TYPOGRAPHY UPDATE: Minimalist A24 Style (With JP Title) ---
+    # --- TYPOGRAPHY UPDATE: Hierarchy Flip ---
     
-    # 1. English Title ("Today's Film Selection")
-    title_text = "Today's Film Selection"
-    draw.text((cx + s_off, cy - 50 + offset + s_off), title_text, font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy - 50 + offset), title_text, font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    
-    # 2. Japanese Title (Restored - Clean White)
+    # 1. Main Title: Japanese (Big & Bold)
     jp_text = "今日の上映作品"
-    # We use 'cover_date' font (Regular 40px) to keep it sleek and minimal
-    draw.text((cx + 2, cy + 30 + offset + 2), jp_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 30 + offset), jp_text, font=fonts['cover_date'], fill=(230,230,230), anchor="mm")
+    # Strong shadow for legibility
+    draw.text((cx + 4, cy - 80 + offset + 4), jp_text, font=fonts['cover_main_jp'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 80 + offset), jp_text, font=fonts['cover_main_jp'], fill=(255,255,255), anchor="mm")
 
-    # 3. Date
+    # 2. Subtitle: English (Medium Size)
+    en_text = "Today's Film Selection"
+    draw.text((cx + 2, cy + 30 + offset + 2), en_text, font=fonts['cover_sub_en'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 30 + offset), en_text, font=fonts['cover_sub_en'], fill=(230,230,230), anchor="mm")
+
+    # 3. Date (Small, at bottom)
     date_text = get_japanese_date_str()
     draw.text((cx + 2, cy + 110 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 110 + offset), date_text, font=fonts['cover_date'], fill=(160,160,160), anchor="mm")
-    
+    draw.text((cx, cy + 110 + offset), date_text, font=fonts['cover_date'], fill=(180,180,180), anchor="mm")
+
     return bg
 
 def draw_fallback_cover(images, fonts, is_story=False):
