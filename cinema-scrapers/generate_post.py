@@ -1,7 +1,9 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Hallucinated Assemblage").
-- Cover: Sparse Cutouts -> Replicate (Img2Img) to "dream" connections -> Typography Overlay.
-- Slides: EXACT ORIGINAL V44 Sunburst Style (Unchanged).
+Generate Instagram-ready image carousel (V1 - "The Inpainted Assemblage").
+- Step 1: 5 Cinema Cutouts (Replicate Rembg).
+- Step 2: Python Layout + Mask Generation (White = Empty Space).
+- Step 3: Replicate SDXL Inpaint (Fills the white space with architecture).
+- Step 4: Text Overlay.
 """
 from __future__ import annotations
 
@@ -58,7 +60,7 @@ STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
-# --- GLOBAL COLORS (Fixed NameError) ---
+# --- GLOBAL COLORS ---
 SUNBURST_CENTER = (255, 210, 0) 
 SUNBURST_OUTER = (255, 255, 255)
 BLACK = (20, 20, 20)
@@ -259,7 +261,7 @@ def normalize_name(s):
     return re.sub(r'[^a-z0-9]', '', s)
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
-    """Isolates the subject (cinema facade/interior) using Replicate."""
+    """Isolates the subject using Replicate (lucataco/remove-bg)."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
         return pil_img.convert("RGBA")
     try:
@@ -281,40 +283,120 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
         print(f"   ⚠️ Rembg failed: {e}. Using original.")
     return pil_img.convert("RGBA")
 
-def hallucinate_connection(layout_img: Image.Image) -> Image.Image:
-    """Sends the sparse layout to SDXL to 'fill in the gaps' creatively."""
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ⚠️ Replicate not available for hallucination. Skipping.")
-        return layout_img.convert("RGB")
-
-    print("   🧠 Dreaming up connections (SDXL Img2Img)...")
-    try:
-        temp_path = BASE_DIR / "temp_layout_for_sdxl.png"
-        layout_img.save(temp_path, format="PNG")
+def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image]:
+    """
+    Arranges cutouts on a canvas AND creates a corresponding binary mask.
+    MASK LOGIC: White (255) = Area to fill. Black (0) = Area to keep (cutouts).
+    """
+    width = CANVAS_WIDTH
+    height = CANVAS_HEIGHT
+    
+    # Init Canvas (White background for now, though it will be painted over)
+    layout = Image.new("RGBA", (width, height), (255, 255, 255, 255))
+    
+    # Init Mask (Starts WHITE = "Fill Everything")
+    # We will draw BLACK where the images are to "Protect" them.
+    mask = Image.new("L", (width, height), 255)
+    
+    # Use up to 5 images
+    imgs_to_process = cinemas[:5]
+    if len(imgs_to_process) < 5:
+        # If fewer than 5, repeat some to fill space
+        imgs_to_process = (imgs_to_process * 3)[:5]
         
-        # SDXL Refiner or Standard SDXL
+    random.shuffle(imgs_to_process)
+    
+    # Define 5 Anchor zones (Methodical layout)
+    # TL, TR, Center, BL, BR
+    anchors = [
+        (int(width * 0.25), int(height * 0.20)),
+        (int(width * 0.75), int(height * 0.20)),
+        (int(width * 0.50), int(height * 0.50)),
+        (int(width * 0.25), int(height * 0.80)),
+        (int(width * 0.75), int(height * 0.80)),
+    ]
+    
+    mask_draw = ImageDraw.Draw(mask)
+    
+    for i, (name, path) in enumerate(imgs_to_process):
+        try:
+            # 1. Get Cutout
+            raw = Image.open(path).convert("RGBA")
+            cutout = remove_background_replicate(raw)
+            
+            # 2. Trim
+            bbox = cutout.getbbox()
+            if bbox: cutout = cutout.crop(bbox)
+            
+            # 3. Resize (Make them decent size to leave some gaps)
+            max_dim = 550
+            cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
+            
+            # 4. Position
+            cx, cy = anchors[i]
+            # Add jitter
+            cx += random.randint(-50, 50)
+            cy += random.randint(-50, 50)
+            
+            x = cx - (cutout.width // 2)
+            y = cy - (cutout.height // 2)
+            
+            # 5. Paste Image onto Layout
+            layout.paste(cutout, (x, y), mask=cutout)
+            
+            # 6. Draw on Mask
+            # Get the alpha channel of the cutout to use as a mask for the mask
+            alpha = cutout.split()[3]
+            # Paste BLACK (0) onto the Mask using the alpha channel
+            mask.paste(0, (x, y), mask=alpha)
+            
+        except Exception as e:
+            print(f"Error processing cutout {name}: {e}")
+
+    # Replicate SDXL Inpaint works best if the mask is strictly B&W
+    mask = mask.point(lambda p: 255 if p > 128 else 0)
+    
+    return layout.convert("RGB"), mask
+
+def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
+    """Uses SDXL Inpaint to fill the white areas (Mask=255) with architecture."""
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("   ⚠️ Replicate not available. Skipping Inpaint.")
+        return layout_img
+
+    print("   🎨 Inpainting gaps with SDXL...")
+    try:
+        temp_img_path = BASE_DIR / "temp_inpaint_img.png"
+        temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
+        
+        layout_img.save(temp_img_path, format="PNG")
+        mask_img.save(temp_mask_path, format="PNG")
+        
+        # Using stability-ai/sdxl-inpaint
         output = replicate.run(
-            "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
+            "stability-ai/sdxl-inpaint:922cad7a359d34329f6336531393666d989f538350d3221e93c6628043687220",
             input={
-                "image": open(temp_path, "rb"),
-                "prompt": "A minimalist graphic design poster, abstract architectural geometry connecting floating elements, bauhaus style, white background, high design, 8k, award winning",
-                "negative_prompt": "text, watermark, messy, clutter, dark background, realistic city",
-                "prompt_strength": 0.65, # High enough to invent, low enough to keep cutouts roughly there
+                "image": open(temp_img_path, "rb"),
+                "mask": open(temp_mask_path, "rb"),
+                "prompt": "abstract minimalist architectural geometry, concrete wall texture, connecting structures, bauhaus style, soft lighting, 8k, seamless blend",
+                "negative_prompt": "text, watermark, chaotic, messy, dark, distorted",
+                "prompt_strength": 0.85, # High strength to fully fill the white voids
                 "num_inference_steps": 30
             }
         )
         
-        if temp_path.exists(): os.remove(temp_path)
+        # Cleanup
+        if temp_img_path.exists(): os.remove(temp_img_path)
+        if temp_mask_path.exists(): os.remove(temp_mask_path)
         
         if output:
-            # Output is usually a list of URLs
             url = output[0] if isinstance(output, list) else output
             resp = requests.get(url)
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGB")
     except Exception as e:
-        print(f"   ⚠️ Hallucination failed: {e}. Using layout.")
-    return layout_img.convert("RGB")
+        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
+    return layout_img
 
 # --- IMAGE GENERATORS ---
 
@@ -335,48 +417,8 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
         draw.ellipse([center - r, center - r, center + r, center + r], fill=(red, green, blue))
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
-def create_sparse_layout(cinemas: List[Tuple[str, Path]]) -> Image.Image:
-    """Creates a white canvas with 2 cutouts spaced apart."""
-    width = CANVAS_WIDTH
-    height = CANVAS_HEIGHT
-    canvas = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    
-    # We only take up to 2 for the cover to keep it sparse
-    imgs_to_process = cinemas[:2]
-    
-    # 1. Top Leftish
-    # 2. Bottom Rightish
-    positions = [
-        (int(width * 0.25), int(height * 0.25)),
-        (int(width * 0.75), int(height * 0.75))
-    ]
-    
-    for i, (name, path) in enumerate(imgs_to_process):
-        try:
-            raw = Image.open(path).convert("RGBA")
-            cutout = remove_background_replicate(raw)
-            
-            # Trim
-            bbox = cutout.getbbox()
-            if bbox: cutout = cutout.crop(bbox)
-            
-            # Resize (don't make them too huge, leave space for the AI to dream)
-            max_dim = 600
-            cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
-            
-            # Place centered on the anchor point
-            cx, cy = positions[i]
-            x = cx - (cutout.width // 2)
-            y = cy - (cutout.height // 2)
-            
-            canvas.paste(cutout, (x, y), mask=cutout)
-        except Exception as e:
-            print(f"Error processing cutout {name}: {e}")
-            
-    return canvas
-
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """Adds standard typography over the hallucinated background."""
+    """Adds standard typography over the background."""
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
@@ -393,13 +435,12 @@ def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
     start_x = 60
     start_y = 60
     
-    # Darken corner for text readability just in case
-    # draw.rectangle([0, 0, 500, 500], fill=(255,255,255, 150))
-    
+    # White box behind text to ensure readability over busy inpaint
+    draw.rectangle([start_x - 10, start_y - 10, start_x + 500, start_y + 400], fill=(255, 255, 255, 200))
+
     draw.rectangle([start_x, start_y, start_x + 350, start_y + 50], fill=(20, 20, 20))
     draw.text((start_x + 20, start_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
     
-    # Black text for the Swiss look
     draw.text((start_x, start_y + 70), "TOKYO", font=header_font, fill=BLACK)
     draw.text((start_x, start_y + 160), "CINEMA", font=header_font, fill=BLACK)
     draw.text((start_x, start_y + 250), "INDEX", font=header_font, fill=BLACK)
@@ -409,10 +450,9 @@ def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
 
     return Image.alpha_composite(img, overlay).convert("RGB")
 
-# --- SLIDE LOGIC (EXACT COPY FROM V44) ---
+# --- SLIDES (UNCHANGED) ---
 
 def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    """Generates a 9:16 vertical Story slide (Sunburst)."""
     img = bg_template.copy()
     draw = ImageDraw.Draw(img)
     try:
@@ -429,7 +469,6 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
         en_movie_font = ImageFont.load_default()
         time_font = ImageFont.load_default()
         footer_font = ImageFont.load_default()
-
     center_x = CANVAS_WIDTH // 2
     y_pos = 150 
     draw.text((center_x, y_pos), cinema_name, font=header_font, fill=BLACK, anchor="mm")
@@ -461,7 +500,6 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
     return img
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    """Generates standard feed slide (Sunburst)."""
     img = bg_template.copy()
     draw = ImageDraw.Draw(img)
     try:
@@ -526,7 +564,7 @@ def main() -> None:
     todays_showings = load_showtimes(today_str)
     if not todays_showings: return
     
-    # 2. Pre-generate Sunbursts for Slides (Constraint 1)
+    # 2. Pre-generate Sunbursts for Slides
     feed_bg_template = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
     story_bg_template = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
 
@@ -573,51 +611,55 @@ def main() -> None:
             current_slide_count += needed
     if not final_selection: return
 
-    # --- 5. COVER GENERATION (Constraint 2: Hallucinated Assemblage) ---
-    print("--- Generating V1 Cover (Hallucinated Assemblage) ---")
+    # --- 5. COVER GENERATION (Step 2: Inpainted Assemblage) ---
+    print("--- Generating V1 Cover (Inpainted Assemblage) ---")
     
-    # Asset Selection
+    # Select Assets (Use up to 5)
     asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
     collage_inputs = []
     if len(asset_candidates) >= 1:
         random.shuffle(asset_candidates)
-        primary = asset_candidates[0]
-        collage_inputs.append((primary, get_cinema_image_path(primary)))
-        # Fill second spot
-        all_assets = list(ASSETS_DIR.glob("*.jpg"))
-        random.shuffle(all_assets)
-        for p in all_assets:
-            if len(collage_inputs) >= 2: break
-            if p != collage_inputs[0][1]: collage_inputs.append(("Feature", p))
+        # Prioritize carousel cinemas
+        for c in asset_candidates[:5]:
+             collage_inputs.append((c, get_cinema_image_path(c)))
+        
+        # Fill rest with randoms if needed
+        if len(collage_inputs) < 5:
+            all_assets = list(ASSETS_DIR.glob("*.jpg"))
+            random.shuffle(all_assets)
+            for p in all_assets:
+                if len(collage_inputs) >= 5: break
+                if not any(x[1] == p for x in collage_inputs):
+                    collage_inputs.append(("Feature", p))
     else:
+        # Fallback to randoms
         all_assets = list(ASSETS_DIR.glob("*.jpg"))
         random.shuffle(all_assets)
-        for p in all_assets[:2]: collage_inputs.append(("Cinema", p))
+        for p in all_assets[:5]: collage_inputs.append(("Cinema", p))
 
     if collage_inputs:
-        # A. Create sparse layout (Cutouts on white)
-        layout_img = create_sparse_layout(collage_inputs)
-        # B. Hallucinate connections (Replicate)
-        dreamt_img = hallucinate_connection(layout_img)
+        # A. Create Layout + Mask
+        layout_img, mask_img = create_layout_and_mask(collage_inputs)
+        # B. Inpaint the Gaps (The Masked Area)
+        inpainted_img = inpaint_gaps(layout_img, mask_img)
         # C. Text Overlay
-        final_cover = draw_cover_overlay(dreamt_img, bilingual_date_str)
+        final_cover = draw_cover_overlay(inpainted_img, bilingual_date_str)
         
         final_cover.save(BASE_DIR / f"post_image_00.png")
         
-        # Simple Resize for Story
+        # Resize for Story
         story_cover = final_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * final_cover.height / final_cover.width)))
         s_c = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), WHITE)
         y_off = (STORY_CANVAS_HEIGHT - story_cover.height) // 2
         s_c.paste(story_cover, (0, y_off))
         s_c.save(BASE_DIR / f"story_image_00.png")
     else:
-        # Fallback (Sunburst Title)
         fb = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
         draw_cover_overlay(fb, bilingual_date_str).save(BASE_DIR / "post_image_00.png")
         fbs = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
         draw_cover_overlay(fbs, bilingual_date_str).save(BASE_DIR / "story_image_00.png")
 
-    # --- 6. SLIDE GENERATION (Constraint 1: UNCHANGED) ---
+    # --- 6. SLIDE GENERATION (Unchanged) ---
     print("Generating Content Slides (Sunburst Style)...")
     feed_counter = 0
     all_featured_for_caption = []
@@ -631,7 +673,6 @@ def main() -> None:
         
         for segment in feed_segments:
             feed_counter += 1
-            # Using the original draw_cinema_slide logic you liked
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_template)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
 
