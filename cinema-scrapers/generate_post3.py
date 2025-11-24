@@ -1,12 +1,10 @@
 """
-Generate Instagram-ready image carousel (V48 - Flux Analog/Grit).
+Generate Instagram-ready image carousel (V49 - The Cutout Collage).
 
-- Layout: Python creates a "Soft Vertical Stack" of images with gradient overlaps.
-- AI: Flux.1 Dev (via Replicate).
-- Update V48: 
-  - Reduced Strength to 0.55 to prevent "cartoony" faces.
-  - Added 'Pre-Grain' to input to force texture retention.
-  - Changed prompt to '35mm film scan / raw' style.
+- Strategy: "Ensemble Cutout"
+- Step 1: Extract subjects using Replicate (rembg).
+- Step 2: Python composites subjects onto a scenic background.
+- Step 3: Flux "Varnish" (Strength 0.40) to bind them without ruining faces.
 """
 from __future__ import annotations
 
@@ -95,9 +93,14 @@ def normalize_string(s):
 
 def download_image(path: str) -> Image.Image | None:
     if not path: return None
-    url = f"https://image.tmdb.org/t/p/w1280{path}"
+    # Support both TMDB paths and full URLs (from Replicate)
+    if path.startswith("http"):
+        url = path
+    else:
+        url = f"https://image.tmdb.org/t/p/w1280{path}"
+        
     try:
-        resp = requests.get(url, timeout=10)
+        resp = requests.get(url, timeout=15)
         if resp.status_code == 200:
             return Image.open(BytesIO(resp.content)).convert("RGB")
     except:
@@ -176,117 +179,143 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- REPLICATE / FLUX PIPELINE (Soft Stack) ---
+# --- NEW: COLLAGE PIPELINE (Rembg -> Python -> Flux) ---
 
-def create_soft_stack_composite(images, width=896, height=1152):
+def remove_background(pil_img: Image.Image) -> Image.Image | None:
+    """Uses Replicate (cjwbw/rembg-p) to isolate subjects."""
+    print("✂️ Removing background...")
+    try:
+        # Save temp file for upload
+        temp_path = BASE_DIR / "temp_rembg_in.png"
+        pil_img.save(temp_path, format="PNG")
+        
+        output = replicate.run(
+            "cjwbw/rembg-p:158e2397a695b2d201c107e33501a2c077d468131338d76814b7e7c4f1c1f202",
+            input={"image": open(temp_path, "rb")}
+        )
+        
+        if temp_path.exists(): os.remove(temp_path)
+        
+        # Output is a URI
+        if output:
+            resp = requests.get(output)
+            if resp.status_code == 200:
+                return Image.open(BytesIO(resp.content)).convert("RGBA")
+    except Exception as e:
+        print(f"⚠️ Rembg failed: {e}")
+        return None
+    return None
+
+def create_cutout_collage(images: list[Image.Image], width=896, height=1152) -> Image.Image:
     """
-    Stacks images vertically using gradient masks to blend them smoothly.
-    This removes the hard 'grid' lines BEFORE the AI sees it.
+    Creates a smart collage: 1 Background + 2 Cutout Subjects.
     """
-    canvas = Image.new("RGB", (width, height), (0,0,0))
+    canvas = Image.new("RGB", (width, height), (10,10,10))
     if not images: return canvas
     
-    # Use top 3 images
-    source_imgs = images[:3]
-    while len(source_imgs) < 3:
-        source_imgs.append(source_imgs[0])
+    # 1. Background Layer (Image 1 or 3)
+    # We blur it so the cutouts pop
+    bg_img = images[0].copy()
+    bg_ratio = bg_img.width / bg_img.height
+    target_ratio = width / height
     
-    # Helper to resize image to full width and specific height
-    def prepare_slice(img, w, h):
-        ratio = img.width / img.height
-        target_h = int(w / ratio)
-        if target_h < h:
-            scale = h / target_h
-            new_w = int(w * scale)
-            new_h = h
-            resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            left = (new_w - w) // 2
-            return resized.crop((left, 0, left+w, h))
-        else:
-            resized = img.resize((w, target_h), Image.Resampling.LANCZOS)
-            return resized.crop((0, 0, w, h))
-
-    # Layer 1: Full background (Img 3 blurred)
-    base = prepare_slice(source_imgs[2], width, height)
-    base = base.filter(ImageFilter.GaussianBlur(20)) 
-    canvas.paste(base, (0,0))
+    # Smart Crop to fill
+    if bg_ratio > target_ratio:
+        new_h = height
+        new_w = int(new_h * bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - width) // 2
+        bg_img = bg_img.crop((left, 0, left+width, height))
+    else:
+        new_w = width
+        new_h = int(new_w / bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - height) // 2
+        bg_img = bg_img.crop((0, top, width, top+height))
     
-    # Layer 2: Img 1 at Top (Gradient fade out at bottom)
-    img1 = prepare_slice(source_imgs[0], width, int(height*0.6))
-    mask1 = Image.new('L', (width, img1.height), 255)
-    draw1 = ImageDraw.Draw(mask1)
-    fade_start = int(img1.height * 0.6)
-    for y in range(fade_start, img1.height):
-        alpha = int(255 * (1 - (y - fade_start) / (img1.height - fade_start)))
-        draw1.line([(0, y), (width, y)], fill=alpha)
-    canvas.paste(img1, (0, 0), mask1)
+    # Darken and Blur Background
+    bg_img = bg_img.filter(ImageFilter.GaussianBlur(5))
+    enhancer = ImageEnhance.Brightness(bg_img)
+    bg_img = enhancer.enhance(0.5) # Darken to 50%
+    canvas.paste(bg_img, (0,0))
     
-    # Layer 3: Img 2 at Bottom (Gradient fade out at top)
-    img2 = prepare_slice(source_imgs[1], width, int(height*0.6))
-    mask2 = Image.new('L', (width, img2.height), 255)
-    draw2 = ImageDraw.Draw(mask2)
-    fade_end = int(img2.height * 0.4)
-    for y in range(fade_end):
-        alpha = int(255 * (y / fade_end))
-        draw2.line([(0, y), (width, y)], fill=alpha)
-    canvas.paste(img2, (0, height - img2.height), mask2)
+    # 2. Add Cutout Subjects
+    # We try to process up to 2 other images
+    subjects_processed = 0
+    target_subjects = images[1:3] # Take next 2 images
     
-    # Optional: Middle strip blend of Img 3?
-    img3_mid = prepare_slice(source_imgs[2], width, int(height*0.4))
-    mask3 = Image.new('L', (width, img3_mid.height), 80) # Low opacity
-    canvas.paste(img3_mid, (0, int(height*0.3)), mask3)
+    positions = [
+        (int(width * 0.05), int(height * 0.3)), # Top/Mid Left
+        (int(width * 0.35), int(height * 0.5))  # Bottom/Mid Right
+    ]
+    
+    for i, raw_img in enumerate(target_subjects):
+        cutout = remove_background(raw_img)
+        if cutout:
+            # Smart Crop the Cutout (Remove empty transparent space)
+            bbox = cutout.getbbox()
+            if bbox:
+                cutout = cutout.crop(bbox)
+                
+                # Scale logic: Make them roughly 70% of canvas width
+                scale_factor = (width * 0.75) / cutout.width
+                new_w = int(cutout.width * scale_factor)
+                new_h = int(cutout.height * scale_factor)
+                cutout = cutout.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                
+                # Position
+                x, y = positions[i % len(positions)]
+                
+                # Adjust Y to align bottom if it's the second image
+                if i == 1:
+                    y = height - new_h + 50 # Anchor to bottom
+                
+                # Paste with Alpha
+                canvas.paste(cutout, (x, y), cutout)
+                subjects_processed += 1
+                
+    # If Rembg completely failed, fallback to soft stack logic from V47
+    if subjects_processed == 0:
+        print("⚠️ No subjects found, reverting to simple stack.")
+        return images[0].resize((width, height)) # Fallback
         
     return canvas
 
-def add_pre_grain(img: Image.Image) -> Image.Image:
-    """
-    V48 New: Adds slight noise to the input before AI to prevent 'plastic' smoothing.
-    Tricks Flux into thinking there is texture detail it must preserve.
-    """
-    img = img.convert("RGB")
-    width, height = img.size
-    
-    # Generate random noise pattern
-    noise_data = os.urandom(width * height)
-    noise_layer = Image.frombytes('L', (width, height), noise_data)
-    
-    # Blend it softly (8% opacity)
-    return Image.blend(img, noise_layer.convert("RGB"), alpha=0.08)
-
-def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
-    print("🎨 Preparing Flux Dev (Analog/Grit Mode)...")
+def generate_flux_varnish(images: list[Image.Image]) -> Image.Image | None:
+    print("🎨 Preparing Flux Varnish (Collage Mode)...")
     
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("⚠️ Replicate Not Configured.")
         return None
 
     try:
-        # 1. Create Soft Stack Input
-        raw_stack = create_soft_stack_composite(images, width=896, height=1152)
+        # 1. Create The Cutout Collage
+        collage_input = create_cutout_collage(images, width=896, height=1152)
         
-        # 2. V48 Fix: Add Grain BEFORE sending to AI
-        init_img = add_pre_grain(raw_stack)
-        
+        # Save temp
         temp_path = BASE_DIR / "temp_init_flux.png"
-        init_img.save(temp_path, format="PNG")
+        collage_input.save(temp_path, format="PNG")
         
-        print("🚀 Sending to Replicate (black-forest-labs/flux-dev)...")
+        print("🚀 Sending to Replicate (Flux Varnish)...")
         
-        # 3. Call Flux with "Dirty" Prompt parameters
+        # 2. Flux "Varnish" Step
+        # Low strength = "Don't change the content, just unify the style"
         output = replicate.run(
             "black-forest-labs/flux-dev",
             input={
                 "image": open(temp_path, "rb"),
-                # V48 Prompt: Removed "Masterpiece", added "35mm film scan, raw"
-                "prompt": "Double exposure movie poster, 35mm film scan, heavy film grain, noise, analog photography, raw style, high contrast, textured paper.",
+                "prompt": "Cinematic movie poster collage, character ensemble, complex composition, multiple subjects, seamless integration, film grain, color grading, high quality, detailed.",
                 "go_fast": True,
-                "guidance": 3.0,       # Lowered from 3.5 to reduce "frying"
+                "guidance": 3.0,
                 "megapixels": "1",
                 "num_outputs": 1,
                 "aspect_ratio": "4:5",
                 "output_format": "png",
                 "output_quality": 90,
-                "prompt_strength": 0.55, # Lowered from 0.65 to keep original likeness
+                # V49 KEY: Strength 0.40
+                # High enough to fix the 'cutout' edges.
+                # Low enough to preserve faces exactly.
+                "prompt_strength": 0.40, 
                 "num_inference_steps": 28
             }
         )
@@ -481,7 +510,7 @@ def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
 # --- Main Execution ---
 
 def main():
-    print("--- Starting V48 (Flux Analog/Grit) ---")
+    print("--- Starting V49 (Ensemble Cutout Collage) ---")
     
     for f in glob.glob(str(BASE_DIR / "post_v3_*.png")): os.remove(f)
     for f in glob.glob(str(BASE_DIR / "story_v3_*.png")): os.remove(f)
@@ -527,10 +556,12 @@ def main():
     if not slide_data: return
 
     d_str, day_str = get_bilingual_date()
-    ai_art = generate_flux_mashup(cover_images)
+    
+    # Updated: Uses new Varnish Logic
+    ai_art = generate_flux_varnish(cover_images)
     
     if ai_art:
-        print("✅ Flux Mashup Successful!")
+        print("✅ Flux Collage Successful!")
         cover_feed = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=False)
         cover_story = draw_final_cover(ai_art, fonts, d_str, day_str, is_story=True)
         cover_feed.save(BASE_DIR / "post_v3_image_00.png")
@@ -566,7 +597,7 @@ def main():
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V48 Generated.")
+    print("Done. V49 Generated.")
 
 if __name__ == "__main__":
     main()
