@@ -1,32 +1,36 @@
 """
 Generate Instagram-ready image carousel (V47 - Flux Soft Stack).
 
-- Layout: Uses Python to creating a "Soft Vertical Stack" of images with 
-  gradient overlaps (standard movie poster composition).
-- AI: Flux.1 Dev with LOWER strength (0.65). 
-- Goal: Forces AI to keep the original actors/scenes but "heal" the blend lines.
+- Layout: Python creates a "Soft Vertical Stack" of images with gradient overlaps.
+- AI: Flux.1 Dev (via Replicate) with Strength 0.65.
+- Goal: Preserves original actors/scenes but "heals" the blend lines.
+- Fixes: All imports (colorsys, textwrap, math) are restored.
 """
 from __future__ import annotations
 
 import json
 import random
+import textwrap  # Fixed: Restored
 import os
 import glob
 import requests
 import math
+import colorsys  # Fixed: Restored
+import re        # Fixed: Restored
+import time
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance
 
 # --- API Setup ---
 try:
     import replicate
     REPLICATE_AVAILABLE = True
 except ImportError:
-    print("⚠️ Replicate library not found.")
+    print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
@@ -42,7 +46,7 @@ CANVAS_WIDTH = 1080
 CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
 STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
 
-# --- Cinema Name Mapping (Truncated) ---
+# --- Cinema Name Mapping ---
 CINEMA_ENGLISH_NAMES = {
     "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
     "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -170,7 +174,7 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
 
-# --- REPLICATE / FLUX PIPELINE (Soft Stack Mode) ---
+# --- REPLICATE / FLUX PIPELINE (Soft Stack) ---
 
 def create_soft_stack_composite(images, width=896, height=1152):
     """
@@ -180,71 +184,55 @@ def create_soft_stack_composite(images, width=896, height=1152):
     canvas = Image.new("RGB", (width, height), (0,0,0))
     if not images: return canvas
     
-    # Use top 3 images for a balanced stack
+    # Use top 3 images
     source_imgs = images[:3]
+    while len(source_imgs) < 3:
+        source_imgs.append(source_imgs[0])
     
     # Helper to resize image to full width and specific height
     def prepare_slice(img, w, h):
         ratio = img.width / img.height
-        # Resize to fill width
         target_h = int(w / ratio)
         if target_h < h:
-            # If too short, scale up
             scale = h / target_h
             new_w = int(w * scale)
             new_h = h
             resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            # Crop center width
             left = (new_w - w) // 2
             return resized.crop((left, 0, left+w, h))
         else:
-            # Too tall, just resize width and crop height
             resized = img.resize((w, target_h), Image.Resampling.LANCZOS)
             return resized.crop((0, 0, w, h))
 
-    # We want them to overlap. 
-    # Img 1: Top 40%
-    # Img 2: Middle 40% (Overlaps 1 and 3)
-    # Img 3: Bottom 40%
-    
-    slice_h = int(height * 0.45)
-    
-    # 1. Bottom Layer (Img 3) - Placed at bottom
-    img3 = prepare_slice(source_imgs[2] if len(source_imgs)>2 else source_imgs[0], width, slice_h)
-    canvas.paste(img3, (0, height - slice_h))
-    
-    # 2. Middle Layer (Img 2) - Placed in middle, masked
-    img2 = prepare_slice(source_imgs[1] if len(source_imgs)>1 else source_imgs[0], width, slice_h)
-    
-    # Create gradient mask for bottom of Img 2 so it fades into Img 3
-    # Actually, easier to just paste Img 2 at the top, then Img 3 at bottom, then Img 1...
-    
-    # Let's restart the layering strategy:
-    # Layer 1: Full background (Img 3 blurred/darkened)
-    base = prepare_slice(source_imgs[-1], width, height)
-    base = base.filter(ImageFilter.GaussianBlur(10)) # Abstract BG
+    # Layer 1: Full background (Img 3 blurred)
+    base = prepare_slice(source_imgs[2], width, height)
+    base = base.filter(ImageFilter.GaussianBlur(20)) 
     canvas.paste(base, (0,0))
     
-    # Layer 2: Img 1 at Top (Gradient fade to transparent at bottom)
+    # Layer 2: Img 1 at Top (Gradient fade out at bottom)
     img1 = prepare_slice(source_imgs[0], width, int(height*0.6))
     mask1 = Image.new('L', (width, img1.height), 255)
     draw1 = ImageDraw.Draw(mask1)
-    # Fade out the bottom 30% of this image
-    for y in range(int(img1.height * 0.7), img1.height):
-        alpha = int(255 * (1 - (y - img1.height * 0.7) / (img1.height * 0.3)))
+    fade_start = int(img1.height * 0.6)
+    for y in range(fade_start, img1.height):
+        alpha = int(255 * (1 - (y - fade_start) / (img1.height - fade_start)))
         draw1.line([(0, y), (width, y)], fill=alpha)
     canvas.paste(img1, (0, 0), mask1)
     
-    # Layer 3: Img 2 at Bottom (Gradient fade to transparent at top)
-    if len(source_imgs) > 1:
-        img2 = prepare_slice(source_imgs[1], width, int(height*0.6))
-        mask2 = Image.new('L', (width, img2.height), 255)
-        draw2 = ImageDraw.Draw(mask2)
-        # Fade out the top 30% of this image
-        for y in range(int(img2.height * 0.3)):
-            alpha = int(255 * (y / (img2.height * 0.3)))
-            draw2.line([(0, y), (width, y)], fill=alpha)
-        canvas.paste(img2, (0, height - img2.height), mask2)
+    # Layer 3: Img 2 at Bottom (Gradient fade out at top)
+    img2 = prepare_slice(source_imgs[1], width, int(height*0.6))
+    mask2 = Image.new('L', (width, img2.height), 255)
+    draw2 = ImageDraw.Draw(mask2)
+    fade_end = int(img2.height * 0.4)
+    for y in range(fade_end):
+        alpha = int(255 * (y / fade_end))
+        draw2.line([(0, y), (width, y)], fill=alpha)
+    canvas.paste(img2, (0, height - img2.height), mask2)
+    
+    # Optional: Middle strip blend of Img 3?
+    img3_mid = prepare_slice(source_imgs[2], width, int(height*0.4))
+    mask3 = Image.new('L', (width, img3_mid.height), 80) # Low opacity
+    canvas.paste(img3_mid, (0, int(height*0.3)), mask3)
         
     return canvas
 
@@ -256,7 +244,7 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
         return None
 
     try:
-        # 1. Create Soft Stack Input (Pre-blended)
+        # 1. Create Soft Stack Input
         init_img = create_soft_stack_composite(images, width=896, height=1152)
         temp_path = BASE_DIR / "temp_init_flux.png"
         init_img.save(temp_path, format="PNG")
@@ -264,13 +252,11 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
         print("🚀 Sending to Replicate (black-forest-labs/flux-dev)...")
         
         # 2. Call Flux
-        # LOWER STRENGTH (0.65) -> Preserves likeness, fixes blend only.
         output = replicate.run(
             "black-forest-labs/flux-dev",
             input={
                 "image": open(temp_path, "rb"),
-                # Prompt focuses on TEXTURE and MOOD, not "creating characters"
-                "prompt": "Double exposure movie poster, seamless blending of two scenes, cinematic lighting, unified color palette, film grain, texture, moody, 8k masterpiece.",
+                "prompt": "Double exposure movie poster, seamless blending of characters, cinematic lighting, unified color palette, film grain, texture, moody, 8k masterpiece.",
                 "go_fast": True,
                 "guidance": 3.5,
                 "megapixels": "1",
@@ -278,7 +264,7 @@ def generate_flux_mashup(images: list[Image.Image]) -> Image.Image | None:
                 "aspect_ratio": "4:5",
                 "output_format": "png",
                 "output_quality": 90,
-                "prompt_strength": 0.65, # CRITICAL: Lower strength preserves original actors
+                "prompt_strength": 0.65, # Keeps original actors, fixes blend
                 "num_inference_steps": 28
             }
         )
@@ -448,6 +434,29 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
         start_y += unit_height
 
     return canvas
+
+def draw_fallback_cover(images, fonts, date_str, day_str, is_story=False):
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    if images:
+        bg = images[0].resize((width, int(width * images[0].height / images[0].width)))
+        if bg.height < height: bg = bg.resize((int(height * bg.width / bg.height), height))
+        left = (bg.width - width) // 2
+        top = (bg.height - height) // 2
+        bg = bg.crop((left, top, left + width, top + height))
+    else:
+        bg = Image.new("RGB", (width, height), (20,20,20))
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
+    bg.paste(overlay, (0, 0), overlay)
+    draw = ImageDraw.Draw(bg)
+    cx, cy = width // 2, height // 2
+    offset = -80 if is_story else 0
+    draw.text((cx, cy - 120 + offset), "TOKYO", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + offset), "CINEMA", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + 180 + offset), f"{date_str} • {day_str}", font=fonts['cover_sub'], fill=(220,220,220), anchor="mm")
+    return bg
+
+# --- Main Execution ---
 
 def main():
     print("--- Starting V47 (Flux Soft Stack) ---")
