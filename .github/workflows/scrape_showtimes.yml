@@ -13,9 +13,9 @@ on:
         - movie
   schedule:
     # 1. Cinema Post: 08:00 JST (23:00 UTC previous day) -> SCRAPES
-    - cron: '0 23 * * *'
+    - cron: '0 22 * * *'
     # 2. Movie Post 1: 09:00 JST (00:00 UTC) -> NO SCRAPE
-    - cron: '0 0 * * *'
+    - cron: '0 23 * * *'
 
 jobs:
   scrape_and_commit:
