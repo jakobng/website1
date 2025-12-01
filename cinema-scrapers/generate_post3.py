@@ -181,8 +181,9 @@ def main():
     style = director.dream_scene(anchor['movie_title'], anchor.get('synopsis', ''))
     print(f"🎨 Theme: {style['visual_prompt']}")
     
-    # 3. CANVAS SETUP (IG Portrait)
-    W, H = 1080, 1350
+    # 3. CANVAS SETUP (IG Portrait - Fixed for SDXL)
+    # 1350 is not divisible by 8. Using 1352 instead.
+    W, H = 1080, 1352 
     canvas = Image.new("RGBA", (W, H), (0, 0, 0, 255))
     mask = Image.new("L", (W, H), 255) # White = Inpaint
     mask_draw = ImageDraw.Draw(mask)
@@ -200,15 +201,7 @@ def main():
         (exit_x, H)             # Straight out
     ]
     
-    # Draw logic:
-    # We want SDXL to generate the line, so we leave it White (Inpaint) on mask.
-    # However, to help SDXL, we can draw a very faint guide on the canvas?
-    # No, let's trust the mask. We ensure the line area is WHITE.
-    # But wait, the whole mask is White. 
-    # We need to protect the POSTERS (Black). The empty space (White) becomes the line + BG.
-    
-    # Let's save the line coordinates to draw a debug line if needed, 
-    # but primarily we rely on the prompt "A vertical object running through..."
+    # Draw faint guide? No, just rely on prompt + open mask space.
     print(f"🔗 Connector Path: {entry_x} -> {exit_x}")
 
     # 5. PLACE ANCHOR (Top Hero)
@@ -223,7 +216,7 @@ def main():
         anchor_cutout = get_cutout(temp_path)
         
         # Scale Anchor to be LARGE (Hero)
-        # Max width 90% of canvas, Max height 40% of canvas
+        # Max width 95% of canvas, Max height 45% of canvas
         max_w = W * 0.95
         max_h = H * 0.45
         
@@ -239,15 +232,14 @@ def main():
         canvas.paste(anchor_cutout, (x, y), anchor_cutout)
         
         # Mask: Protect Anchor (Black = 0)
-        # We take the alpha channel, invert it (Opaque->0, Transparent->255)
         alpha = anchor_cutout.split()[3]
         protection = ImageOps.invert(alpha)
         mask.paste(protection, (x, y), alpha)
 
     # 6. PLACE GUESTS (Bottom Grid)
-    # Grid area: Y=700 to 1300
+    # Grid area: Y=700 to near bottom
     grid_y_start = 700
-    grid_y_end = 1250
+    grid_y_end = H - 50
     row_h = (grid_y_end - grid_y_start) // 2
     col_w = W // 2
     
@@ -267,23 +259,25 @@ def main():
             
             # Target Size: smaller than cell
             target_h = int(row_h * 0.85)
-            scale = target_h / guest_cutout.height
-            new_size = (int(guest_cutout.width * scale), int(guest_cutout.height * scale))
-            guest_cutout = guest_cutout.resize(new_size, Image.Resampling.LANCZOS)
-            
-            # Center in cell
-            cell_x = col * col_w
-            cell_y = grid_y_start + (row * row_h)
-            
-            x = cell_x + (col_w - new_size[0]) // 2
-            y = cell_y + (row_h - new_size[1]) // 2
-            
-            canvas.paste(guest_cutout, (x, y), guest_cutout)
-            
-            # Mask: Protect
-            alpha = guest_cutout.split()[3]
-            protection = ImageOps.invert(alpha)
-            mask.paste(protection, (x, y), alpha)
+            # Safety check if cutout is None or empty (though get_cutout handles fallback)
+            if guest_cutout.height > 0:
+                scale = target_h / guest_cutout.height
+                new_size = (int(guest_cutout.width * scale), int(guest_cutout.height * scale))
+                guest_cutout = guest_cutout.resize(new_size, Image.Resampling.LANCZOS)
+                
+                # Center in cell
+                cell_x = col * col_w
+                cell_y = grid_y_start + (row * row_h)
+                
+                x = cell_x + (col_w - new_size[0]) // 2
+                y = cell_y + (row_h - new_size[1]) // 2
+                
+                canvas.paste(guest_cutout, (x, y), guest_cutout)
+                
+                # Mask: Protect
+                alpha = guest_cutout.split()[3]
+                protection = ImageOps.invert(alpha)
+                mask.paste(protection, (x, y), alpha)
 
     # 7. GENERATE BACKGROUND
     canvas.convert("RGB").save("input.png")
@@ -304,7 +298,7 @@ def main():
                 "negative_prompt": "text, watermark, ugly, distorted, cluttered, messy",
                 "image": open("input.png", "rb"),
                 "mask": open("mask.png", "rb"), # White = Inpaint
-                "prompt_strength": 0.85, # Lowered from 0.95 to preserve composition
+                "prompt_strength": 0.85, 
                 "width": W,
                 "height": H
             }
@@ -321,6 +315,6 @@ def main():
         
     except Exception as e:
         print(f"❌ Generation Error: {e}")
-
+        
 if __name__ == "__main__":
     main()
