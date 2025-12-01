@@ -208,7 +208,6 @@ def main():
         data = json.load(f)
     
     # Group showtimes by movie to find the "Anchor Film"
-    # We pick the first film that has a synopsis
     anchor_film = next((f for f in data if f.get('synopsis')), data[0])
     print(f"🎥 Anchor Film: {anchor_film['movie_title']}")
     
@@ -231,37 +230,41 @@ def main():
     canvas = Image.new("RGB", (W, H), (0, 0, 0)) # Black base
     mask = Image.new("L", (W, H), 255) # White (255) = Inpaint Area
     
-    # 5. Place Poster (The Cutout)
+    # 5. Place Asset (Using HORIZONTAL Backdrop)
     tmdb_id = anchor_film.get('tmdb_id')
+    # --- CHANGE: Use Backdrop Path instead of Poster ---
+    asset_suffix = anchor_film.get('tmdb_backdrop_path') 
+    
     poster_placed = False
     
-    if tmdb_id:
-        poster_path = download_poster(tmdb_id)
-        if poster_path:
-            poster_img = remove_background(poster_path)
+    if tmdb_id and asset_suffix:
+        # Reuse download function (it works for backdrops too)
+        asset_path = download_poster(tmdb_id, asset_suffix) 
+        if asset_path:
+            asset_img = remove_background(asset_path)
             
-            # Resize and Position Poster (Center-ish)
-            scale_factor = (W * 0.6) / poster_img.width
-            new_size = (int(poster_img.width * scale_factor), int(poster_img.height * scale_factor))
-            poster_img = poster_img.resize(new_size, Image.Resampling.LANCZOS)
+            # --- CHANGE: Wider Scaling for Horizontal Images ---
+            # 16:9 image needs to be wider to make an impact. 
+            # Let's use 95% of the canvas width.
+            scale_factor = (W * 0.95) / asset_img.width
+            new_size = (int(asset_img.width * scale_factor), int(asset_img.height * scale_factor))
+            asset_img = asset_img.resize(new_size, Image.Resampling.LANCZOS)
             
             pos_x = (W - new_size[0]) // 2
             pos_y = (H - new_size[1]) // 2
             
             # Paste onto Canvas
-            canvas.paste(poster_img, (pos_x, pos_y), poster_img)
+            canvas.paste(asset_img, (pos_x, pos_y), asset_img)
             
-            # Update Mask: Make the poster area BLACK (0) so it is preserved
-            # Use the alpha channel of the poster for precise masking
+            # Update Mask
             mask_draw = ImageDraw.Draw(mask)
-            poster_alpha = poster_img.split()[3]
-            # Invert alpha: 255 (opaque) -> 0 (protect), 0 (transparent) -> 255 (paint)
-            protection_mask = ImageOps.invert(poster_alpha)
-            mask.paste(protection_mask, (pos_x, pos_y), poster_alpha)
+            asset_alpha = asset_img.split()[3]
+            protection_mask = ImageOps.invert(asset_alpha)
+            mask.paste(protection_mask, (pos_x, pos_y), asset_alpha)
             poster_placed = True
             
     if not poster_placed:
-        print("⚠️ Proceeding without poster cutout.")
+        print("⚠️ Proceeding without asset cutout.")
 
     # 6. GENERATE (Inpainting)
     temp_canvas_path = "temp_canvas.png"
@@ -271,7 +274,6 @@ def main():
     
     print("🚀 Sending to Stability AI (SDXL)...")
     try:
-        # Using SDXL because it supports masking better than SD 3.5 Large (via API)
         output = replicate.run(
             "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
             input={
@@ -279,7 +281,7 @@ def main():
                 "negative_prompt": "text, watermark, low quality, distorted, ugly, blurry text",
                 "image": open(temp_canvas_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                "prompt_strength": 0.95, # High strength to fill the white space creatively
+                "prompt_strength": 0.95, 
                 "num_inference_steps": 40
             }
         )
