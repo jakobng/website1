@@ -2,6 +2,7 @@
 Generate Instagram-ready image carousel (V1 - "The Organic Mashup - Recognizable").
 - Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Atmosphere) -> Paste Back with Shadow.
 - Tweak: Reduced mask erosion and added drop shadow to keep cinemas recognizable.
+- Update: Reverted individual slides to use Cinema Photos + Dark Overlay (No Sunburst).
 """
 from __future__ import annotations
 
@@ -58,12 +59,18 @@ STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
-# --- GLOBAL COLORS ---
-SUNBURST_CENTER = (255, 210, 0) 
-SUNBURST_OUTER = (255, 255, 255)
-BLACK = (20, 20, 20)
-GRAY = (30, 30, 30) 
+# --- GLOBAL COLORS (Updated for Dark Mode) ---
+# Previous Sunburst colors commented out
+# SUNBURST_CENTER = (255, 210, 0) 
+# SUNBURST_OUTER = (255, 255, 255)
+# BLACK = (20, 20, 20)
+# GRAY = (30, 30, 30) 
+
+# New Dark Mode Colors
 WHITE = (255, 255, 255)
+OFF_WHITE = (240, 240, 240)
+LIGHT_GRAY = (200, 200, 200)
+DARK_GRAY = (30, 30, 30)
 
 # --- Database (Cinemas) ---
 CINEMA_ADDRESSES = {
@@ -235,6 +242,10 @@ def get_recently_featured(caption_path: Path) -> List[str]:
 
 # --- ASSET & REPLICATE LOGIC ---
 
+def normalize_name(s):
+    s = str(s).lower()
+    return re.sub(r'[^a-z0-9]', '', s)
+
 def get_cinema_image_path(cinema_name: str) -> Path | None:
     if not ASSETS_DIR.exists(): return None
     target = normalize_name(cinema_name)
@@ -253,10 +264,6 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     if highest_ratio > 0.4:
         return best_match
     return None
-
-def normalize_name(s):
-    s = str(s).lower()
-    return re.sub(r'[^a-z0-9]', '', s)
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
     """Isolates the subject using Replicate (lucataco/remove-bg)."""
@@ -401,15 +408,64 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
     except Exception as e:
         print(f"   ⚠️ Flux Inpainting error: {e}")
         return layout_img
+
 # --- IMAGE GENERATORS ---
 
-def create_sunburst_background(width: int, height: int) -> Image.Image:
-    """Original Sunburst (Unchanged)."""
-    base_size = 512
-    img = Image.new("RGB", (base_size, base_size), SUNBURST_OUTER)
+def create_fallback_gradient(width: int, height: int) -> Image.Image:
+    """Generates a subtle dark gradient if no photo is found."""
+    img = Image.new("RGB", (width, height), (30, 30, 30))
     draw = ImageDraw.Draw(img)
-    center_color = SUNBURST_CENTER
-    outer_color = SUNBURST_OUTER
+    # Simple top-down gradient
+    for y in range(height):
+        r = int(30 - (y / height) * 20)
+        g = int(30 - (y / height) * 20)
+        b = int(40 - (y / height) * 20)
+        draw.line([(0, y), (width, y)], fill=(r, g, b))
+    return img
+
+def get_cinema_background(cinema_name: str, width: int, height: int) -> Image.Image:
+    """Loads a local photo for the cinema, crops it, and applies a dark overlay."""
+    full_path = get_cinema_image_path(cinema_name)
+    
+    if full_path and full_path.exists():
+        try:
+            # 1. Load and convert
+            img = Image.open(full_path).convert("RGB")
+            
+            # 2. Aspect Fill Crop
+            target_ratio = width / height
+            img_ratio = img.width / img.height
+            
+            if img_ratio > target_ratio:
+                new_width = int(img.height * target_ratio)
+                left = (img.width - new_width) // 2
+                img = img.crop((left, 0, left + new_width, img.height))
+            else:
+                new_height = int(img.width / target_ratio)
+                top = (img.height - new_height) // 2
+                img = img.crop((0, top, img.width, top + new_height))
+            
+            img = img.resize((width, height), Image.Resampling.LANCZOS)
+            
+            # 3. Apply Dark Overlay (Opacity 75% Black for better text contrast)
+            overlay = Image.new("RGBA", (width, height), (0, 0, 0, 195)) 
+            img = img.convert("RGBA")
+            img = Image.alpha_composite(img, overlay).convert("RGB")
+            
+            return img
+        except Exception as e:
+            print(f"   [ERROR] Failed to process image for {cinema_name}: {e}")
+    
+    print(f"   [INFO] Using fallback gradient for: {cinema_name}")
+    return create_fallback_gradient(width, height)
+
+def create_sunburst_background(width: int, height: int) -> Image.Image:
+    """Kept for Cover page fallback, but not used for slides anymore."""
+    base_size = 512
+    img = Image.new("RGB", (base_size, base_size), (255, 255, 255))
+    draw = ImageDraw.Draw(img)
+    center_color = (255, 210, 0)
+    outer_color = (255, 255, 255)
     max_radius = int(base_size * 0.7) 
     center = base_size // 2
     for r in range(max_radius, 0, -2):
@@ -467,7 +523,7 @@ def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
     
     return Image.alpha_composite(img, overlay).convert("RGB")
 
-# --- SLIDES (UNCHANGED) ---
+# --- SLIDES (UPDATED for Dark Mode) ---
 
 def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
     img = bg_template.copy()
@@ -488,32 +544,36 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
         footer_font = ImageFont.load_default()
     center_x = CANVAS_WIDTH // 2
     y_pos = 150 
-    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=BLACK, anchor="mm")
+    
+    # Changed Colors to WHITE/LIGHT_GRAY for visibility on Dark Background
+    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=WHITE, anchor="mm")
     y_pos += 80
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
-        draw.text((center_x, y_pos), cinema_name_to_use, font=subhead_font, fill=GRAY, anchor="mm")
+        draw.text((center_x, y_pos), cinema_name_to_use, font=subhead_font, fill=LIGHT_GRAY, anchor="mm")
         y_pos += 100
     else:
         y_pos += 60
-    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=BLACK, width=4)
+    
+    # Line color white
+    draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=WHITE, width=4)
     y_pos += 80
     for listing in listings:
         wrapped_title = textwrap.wrap(listing['title'], width=24)
         for line in wrapped_title:
-            draw.text((center_x, y_pos), line, font=movie_font, fill=BLACK, anchor="mm")
+            draw.text((center_x, y_pos), line, font=movie_font, fill=WHITE, anchor="mm")
             y_pos += 55
         if listing["en_title"]:
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=40)
             for line in wrapped_en:
-                draw.text((center_x, y_pos), line, font=en_movie_font, fill=GRAY, anchor="mm")
+                draw.text((center_x, y_pos), line, font=en_movie_font, fill=LIGHT_GRAY, anchor="mm")
                 y_pos += 45
         if listing['times']:
-            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=GRAY, anchor="mm")
+            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=LIGHT_GRAY, anchor="mm")
             y_pos += 80
         else:
             y_pos += 40
-    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=BLACK, anchor="mm")
+    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=WHITE, anchor="mm")
     return img
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
@@ -530,38 +590,42 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
         raise
     content_left = MARGIN + 20
     y_pos = MARGIN + 40
-    draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=BLACK)
+    
+    # Changed Colors to WHITE/LIGHT_GRAY for visibility on Dark Background
+    draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=WHITE)
     y_pos += 70
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
-        draw.text((content_left, y_pos), cinema_name_to_use, font=title_en_font, fill=GRAY)
+        draw.text((content_left, y_pos), cinema_name_to_use, font=title_en_font, fill=LIGHT_GRAY)
         y_pos += 50
     else:
         y_pos += 20
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     if address:
         jp_addr = address.split("\n")[0]
-        draw.text((content_left, y_pos), f"📍 {jp_addr}", font=small_font, fill=GRAY)
+        draw.text((content_left, y_pos), f"📍 {jp_addr}", font=small_font, fill=LIGHT_GRAY)
         y_pos += 60
     else:
         y_pos += 30
-    draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=BLACK, width=3)
+    
+    # Line color white
+    draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=WHITE, width=3)
     y_pos += 40
     for listing in listings:
         wrapped_title = textwrap.wrap(f"■ {listing['title']}", width=TITLE_WRAP_WIDTH) or [f"■ {listing['title']}"]
         for line in wrapped_title:
-            draw.text((content_left, y_pos), line, font=regular_font, fill=BLACK)
+            draw.text((content_left, y_pos), line, font=regular_font, fill=WHITE)
             y_pos += 40
         if listing["en_title"]:
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=35)
             for line in wrapped_en:
-                draw.text((content_left + 10, y_pos), line, font=en_movie_font, fill=GRAY)
+                draw.text((content_left + 10, y_pos), line, font=en_movie_font, fill=LIGHT_GRAY)
                 y_pos += 30
         if listing['times']:
-            draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=GRAY)
+            draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=LIGHT_GRAY)
             y_pos += 55
     footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
-    draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=GRAY, anchor="mm")
+    draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=LIGHT_GRAY, anchor="mm")
     return img.convert("RGB")
 
 # --- MAIN ---
@@ -581,9 +645,7 @@ def main() -> None:
     todays_showings = load_showtimes(today_str)
     if not todays_showings: return
     
-    # 2. Pre-generate Sunbursts for Slides
-    feed_bg_template = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
-    story_bg_template = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+    # (Removed Pre-generated Sunbursts here)
 
     # 3. Group Cinemas
     grouped: Dict[str, List[Dict]] = defaultdict(list)
@@ -631,20 +693,17 @@ def main() -> None:
     # --- 5. COVER GENERATION (Architecture Assemblage) ---
     print("--- Generating V1 Cover (Architecture Assemblage) ---")
     
-    # Select Assets (Try for 5 UNIQUE assets)
     available_asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
     random.shuffle(available_asset_candidates)
     
     collage_inputs = []
     
-    # 1. Add unique cinemas from today's list
     for name in available_asset_candidates:
         path = get_cinema_image_path(name)
         if path and not any(c[1] == path for c in collage_inputs):
             collage_inputs.append((name, path))
         if len(collage_inputs) >= 5: break
     
-    # 2. Fill rest
     if len(collage_inputs) < 5:
         all_assets = list(ASSETS_DIR.glob("*.jpg"))
         random.shuffle(all_assets)
@@ -654,34 +713,22 @@ def main() -> None:
                  collage_inputs.append(("Feature", p))
 
     if collage_inputs:
-        # A. Create Layout (Transparent + White) + Mask
         layout_rgba, layout_rgb, mask_img = create_layout_and_mask(collage_inputs)
-        
-        # B. Inpaint the Gaps (Background only)
         inpainted_bg = inpaint_gaps(layout_rgb, mask_img)
-        
-        # C. COMPOSITE: Paste original crisp cutouts back on top + Drop Shadow
         print("   🔨 Compositing originals back onto Inpainted background...")
         final_composite = inpainted_bg.copy()
         
-        # Create a Shadow Layer
         shadow_layer = Image.new("RGBA", final_composite.size, (0,0,0,0))
-        shadow_draw = ImageDraw.Draw(shadow_layer)
         # Use the Alpha channel of layout_rgba to draw a black shape
         shadow_layer.paste((0,0,0,80), (10,10), mask=layout_rgba)
         shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(15))
         
-        # Paste Shadow first
         final_composite.paste(shadow_layer, (0,0), mask=shadow_layer)
-        # Paste Original Cutouts on top
         final_composite.paste(layout_rgba, (0,0), mask=layout_rgba)
         
-        # D. Text Overlay (Date Only)
         final_cover = draw_cover_overlay(final_composite, bilingual_date_str)
-        
         final_cover.save(BASE_DIR / f"post_image_00.png")
         
-        # Resize for Story
         story_cover = final_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * final_cover.height / final_cover.width)))
         s_c = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), WHITE)
         y_off = (STORY_CANVAS_HEIGHT - story_cover.height) // 2
@@ -693,8 +740,8 @@ def main() -> None:
         fbs = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
         draw_cover_overlay(fbs, bilingual_date_str).save(BASE_DIR / "story_image_00.png")
 
-    # --- 6. SLIDE GENERATION (Unchanged) ---
-    print("Generating Content Slides (Sunburst Style)...")
+    # --- 6. SLIDE GENERATION (UPDATED: Cinema Photo Backgrounds) ---
+    print("Generating Content Slides (Cinema Photo Style)...")
     feed_counter = 0
     all_featured_for_caption = []
     
@@ -705,9 +752,14 @@ def main() -> None:
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
         feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
         
+        # GENERATE CINEMA BACKGROUND HERE
+        # We generate a fresh background for this specific cinema
+        feed_bg_img = get_cinema_background(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
+        
         for segment in feed_segments:
             feed_counter += 1
-            slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_template)
+            # Pass the specific photo background
+            slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_img)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
 
     # Story Slides
@@ -718,9 +770,13 @@ def main() -> None:
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         listings = item['listings']
         story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, STORY_METRICS)
+        
+        # GENERATE CINEMA BACKGROUND HERE (Story Aspect Ratio)
+        story_bg_img = get_cinema_background(cinema_name, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+        
         for segment in story_segments:
             story_counter += 1
-            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_template)
+            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_img)
             slide_img.save(BASE_DIR / f"story_image_{story_counter:02}.png")
 
     # 7. Caption
