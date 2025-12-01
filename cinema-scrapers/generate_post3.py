@@ -64,35 +64,24 @@ class ArtDirector:
     def __init__(self, api_key: str):
         if not api_key:
             raise ValueError("⚠️ GEMINI_API_KEY is missing!")
-        # Initialize the new SDK Client
         self.client = genai.Client(api_key=api_key)
 
     def dream_scene(self, film_title: str, synopsis: str) -> Dict:
-        """
-        Asks Gemini to describe the visual world for this film.
-        """
         print(f"🧠 Art Director is reading script for: {film_title}...")
         
         prompt = f"""
         You are a Visual Futurist and Art Director for a high-end cinema magazine.
-        
         WE ARE DESIGNING A BACKGROUND FOR: "{film_title}"
         SYNOPSIS: "{synopsis}"
 
         Your goal: Describe a VISUAL BACKGROUND that represents the *mood* of this film.
-        It will be used by an AI Image Generator (SDXL) to "inpaint" the empty space around a movie poster.
-
         RULES:
-        1. OUTPUT A SINGLE JSON OBJECT ONLY. Do not output a list.
-        2. "visual_prompt": A descriptive prompt for SDXL. Include texture, lighting, and style keywords. 
-           (e.g. "Cyberpunk street, neon rain, wet asphalt, high contrast, 8k, photorealistic")
-        3. "connection_element": A specific object that forms a vertical line. 
-           (e.g. "A hanging electrical wire", "A beam of light", "A thick vine", "A crack in the concrete wall")
-        4. "color_palette": A short string describing colors (e.g. "Cyan and Magenta").
+        1. OUTPUT A SINGLE JSON OBJECT.
+        2. "visual_prompt": Descriptive prompt for SDXL (texture, lighting, style).
+        3. "connection_element": A specific object that forms a vertical line (wire, beam, vine).
         """
         
         try:
-            # Using the new SDK syntax
             response = self.client.models.generate_content(
                 model="gemini-2.0-flash",
                 contents=prompt,
@@ -100,33 +89,18 @@ class ArtDirector:
                     response_mime_type="application/json"
                 )
             )
-            
-            # Parse the response text
             data = json.loads(response.text)
             
-            # --- FIX: Handle List vs Dict output ---
-            # If Gemini returned a list (e.g. [{...}]), grab the first item.
+            # --- FIX: Handle List Output ---
             if isinstance(data, list):
-                if len(data) > 0:
-                    data = data[0]
-                else:
-                    # Fallback if empty list
-                    data = {}
-
-            # Fallback defaults if keys are missing
-            if "visual_prompt" not in data:
-                data["visual_prompt"] = "Cinematic atmosphere, soft dramatic lighting, photorealistic texture, 8k"
-            if "connection_element" not in data:
-                data["connection_element"] = "A steel wire"
+                data = data[0] if len(data) > 0 else {}
                 
             return data
-
         except Exception as e:
             print(f"❌ Art Director hallucination failed: {e}")
             return {
-                "visual_prompt": "Cinematic atmosphere, soft dramatic lighting, photorealistic texture, 8k",
-                "connection_element": "A steel wire",
-                "color_palette": "Monochrome"
+                "visual_prompt": "Cinematic atmosphere, soft dramatic lighting, photorealistic",
+                "connection_element": "A steel wire"
             }
 
 # --- CLASS 2: THE GRID MANAGER (MEMORY) ---
