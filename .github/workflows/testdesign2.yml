@@ -23,7 +23,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           # Added 'replicate' for AI processing
-          pip install requests Pillow tzdata replicate
+          pip install google-genai replicate requests Pillow tzdata
 
       - name: Run Generator (Hallucinated Assemblage)
         working-directory: './cinema-scrapers'
