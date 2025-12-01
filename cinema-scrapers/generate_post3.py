@@ -142,16 +142,30 @@ class GridManager:
 
 # --- HELPER FUNCTIONS ---
 
-def download_poster(tmdb_id: int) -> Path:
-    """Downloads poster from TMDB if not exists."""
+def download_poster(tmdb_id: int, poster_path_suffix: str = None) -> Path:
+    """Downloads poster from TMDB."""
     file_path = ASSETS_DIR / f"{tmdb_id}.jpg"
+    
     if file_path.exists():
         return file_path
+        
+    if not poster_path_suffix:
+        print(f"⚠️ No poster path provided for {tmdb_id}.")
+        return None
+
+    # TMDB High Res URL
+    url = f"https://image.tmdb.org/t/p/w780{poster_path_suffix}"
+    print(f"⬇️ Downloading poster: {url}")
     
-    # In a real run, we would fetch from TMDB API here.
-    # For now, we assume assets are pre-fetched or we skip.
-    print(f"⚠️ Poster {tmdb_id} not found locally.")
-    return None
+    try:
+        resp = requests.get(url)
+        resp.raise_for_status()
+        with open(file_path, 'wb') as f:
+            f.write(resp.content)
+        return file_path
+    except Exception as e:
+        print(f"❌ Poster download failed: {e}")
+        return None
 
 def remove_background(input_path: Path) -> Image.Image:
     """Uses Replicate (lucataco/remove-bg) to get a cutout."""
