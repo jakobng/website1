@@ -1,9 +1,8 @@
 """
-Generate Instagram-ready image carousel (V1 - "The Organic Mashup - Recognizable").
-- Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Atmosphere) -> Paste Back with Shadow.
-- Feature: Uses Stability AI for Inpainting (Unified Structure).
-- Feature: Cinema Slides use specific Cinema Photos with Dark Overlay.
-- Fix: Robust Asset Matching using English Names to handle Japanese keys.
+Generate Instagram-ready image carousel (V2 - "Vibrant Blur").
+- Cover: Stability AI Inpainting + Frosted Glass Title Block.
+- Slides: Full-Bleed Cinema Photo + Blur + Light Overlay (Modern iOS/Glass style).
+- Text: White text with Drop Shadows for maximum readability on vibrant backgrounds.
 """
 from __future__ import annotations
 
@@ -60,42 +59,42 @@ STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
-# --- GLOBAL COLORS (Dark Mode) ---
+# --- GLOBAL COLORS ---
 WHITE = (255, 255, 255)
-LIGHT_GRAY = (200, 200, 200)
-DARK_GRAY = (30, 30, 30)
-BLACK = (20, 20, 20) 
+OFF_WHITE = (240, 240, 240)
+LIGHT_GRAY = (230, 230, 230) # Brighter gray for better contrast
+ACCENT_COLOR = (255, 210, 0) # Gold accent
 
 # --- Database (Cinemas) ---
 CINEMA_ADDRESSES = {
-    "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F\n6F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
-    "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F\n3F, 3-35-13 Shinjuku, Shinjuku-ku, Tokyo",
-    "シネマート新宿": "東京都新宿区新宿3-13-3 6F\n6F, 3-13-3 Shinjuku, Shinjuku-ku, Tokyo",
-    "新宿シネマカリテ": "東京都新宿区新宿3-37-12 5F\n5F, 3-37-12 Shinjuku, Shinjuku-ku, Tokyo",
-    "新宿武蔵野館": "東京都新宿区新宿3-27-10 3F\n3F, 3-27-10 Shinjuku, Shinjuku-ku, Tokyo",
-    "テアトル新宿": "東京都新宿区新宿3-14-20 7F\n7F, 3-14-20 Shinjuku, Shinjuku-ku, Tokyo",
-    "早稲田松竹": "東京都新宿区高田馬場1-5-16\n1-5-16 Takadanobaba, Shinjuku-ku, Tokyo",
-    "YEBISU GARDEN CINEMA": "東京都渋谷区恵比寿4-20-2\n4-20-2 Ebisu, Shibuya-ku, Tokyo",
-    "シアター・イメージフォーラム": "東京都渋谷区渋谷2-10-2\n2-10-2 Shibuya, Shibuya-ku, Tokyo",
-    "ユーロスペース": "東京都渋谷区円山町1-5 3F\n3F, 1-5 Maruyamacho, Shibuya-ku, Tokyo",
-    "ヒューマントラストシネマ渋谷": "東京都渋谷区渋谷1-23-16 7F\n7F, 1-23-16 Shibuya, Shibuya-ku, Tokyo",
-    "Stranger (ストレンジャー)": "東京都墨田区菊川3-7-1 1F\n1F, 3-7-1 Kikukawa, Sumida-ku, Tokyo",
-    "新文芸坐": "東京都豊島区東池袋1-43-5 3F\n3F, 1-43-5 Higashi-Ikebukuro, Toshima-ku, Tokyo",
-    "目黒シネマ": "東京都品川区上大崎2-24-15\n2-24-15 Kamiosaki, Shinagawa-ku, Tokyo",
-    "ポレポレ東中野": "東京都中野区東中野4-4-1 1F\n1F, 4-4-1 Higashinakano, Nakano-ku, Tokyo",
-    "K2 Cinema": "東京都世田谷区北沢2-21-22 2F\n2F, 2-21-22 Kitazawa, Setagaya-ku, Tokyo",
-    "ヒューマントラストシネマ有楽町": "東京都千代田区有楽町2-7-1 8F\n8F, 2-7-1 Yurakucho, Chiyoda-ku, Tokyo",
-    "ラピュタ阿佐ヶ谷": "東京都杉並区阿佐ヶ谷北2-12-21\n2-12-21 Asagayakita, Suginami-ku, Tokyo",
-    "下高井戸シネマ": "東京都世田谷区松原3-30-15\n3-30-15 Matsubara, Setagaya-ku, Tokyo",
-    "国立映画アーカイブ": "東京都中央区京橋3-7-6\n3-7-6 Kyobashi, Chuo-ku, Tokyo",
-    "池袋シネマ・ロサ": "東京都豊島区西池袋1-37-12\n1-37-12 Nishi-Ikebukuro, Toshima-ku, Tokyo",
-    "シネスイッチ銀座": "東京都中央区銀座4-4-5 3F\n3F, 4-4-5 Ginza, Chuo-ku, Tokyo",
-    "シネマブルースタジオ": "東京都足立区千住3-92 2F\n2F, 3-92 Senju, Adachi-ku, Tokyo",
-    "CINEMA Chupki TABATA": "東京都北区東田端2-14-4\n2-14-4 Higashitabata, Kita-ku, Tokyo",
-    "シネクイント": "東京都渋谷区宇田川町20-11 8F\n8F, 20-11 Udagawacho, Shibuya-ku, Tokyo",
-    "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F\n4F, 1-5-1 Kichijoji Honcho, Musashino-shi, Tokyo",
-    "Tollywood": "東京都世田谷区代沢5-32-5 2F\n2F, 5-32-5 Daizawa, Setagaya-ku, Tokyo",
-    "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F\nB1F, 2-12-19 Asagayakita, Suginami-ku, Tokyo"
+    "Bunkamura ル・シネマ 渋谷宮下": "東京都渋谷区渋谷1-23-16 6F",
+    "K's Cinema (ケイズシネマ)": "東京都新宿区新宿3-35-13 3F",
+    "シネマート新宿": "東京都新宿区新宿3-13-3 6F",
+    "新宿シネマカリテ": "東京都新宿区新宿3-37-12 5F",
+    "新宿武蔵野館": "東京都新宿区新宿3-27-10 3F",
+    "テアトル新宿": "東京都新宿区新宿3-14-20 7F",
+    "早稲田松竹": "東京都新宿区高田馬場1-5-16",
+    "YEBISU GARDEN CINEMA": "東京都渋谷区恵比寿4-20-2",
+    "シアター・イメージフォーラム": "東京都渋谷区渋谷2-10-2",
+    "ユーロスペース": "東京都渋谷区円山町1-5 3F",
+    "ヒューマントラストシネマ渋谷": "東京都渋谷区渋谷1-23-16 7F",
+    "Stranger (ストレンジャー)": "東京都墨田区菊川3-7-1 1F",
+    "新文芸坐": "東京都豊島区東池袋1-43-5 3F",
+    "目黒シネマ": "東京都品川区上大崎2-24-15",
+    "ポレポレ東中野": "東京都中野区東中野4-4-1 1F",
+    "K2 Cinema": "東京都世田谷区北沢2-21-22 2F",
+    "ヒューマントラストシネマ有楽町": "東京都千代田区有楽町2-7-1 8F",
+    "ラピュタ阿佐ヶ谷": "東京都杉並区阿佐ヶ谷北2-12-21",
+    "下高井戸シネマ": "東京都世田谷区松原3-30-15",
+    "国立映画アーカイブ": "東京都中央区京橋3-7-6",
+    "池袋シネマ・ロサ": "東京都豊島区西池袋1-37-12",
+    "シネスイッチ銀座": "東京都中央区銀座4-4-5 3F",
+    "シネマブルースタジオ": "東京都足立区千住3-92 2F",
+    "CINEMA Chupki TABATA": "東京都北区東田端2-14-4",
+    "シネクイント": "東京都渋谷区宇田川町20-11 8F",
+    "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F",
+    "Tollywood": "東京都世田谷区代沢5-32-5 2F",
+    "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F"
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -129,9 +128,8 @@ CINEMA_ENGLISH_NAMES = {
     "Tollywood": "Tollywood"
 }
 
-# Explicit overrides for filenames that don't match the English name rules
 CINEMA_FILENAME_OVERRIDES = {
-    "国立映画アーカイブ": "nfaj", # Matches nfaj.jpg
+    "国立映画アーカイブ": "nfaj",
     "109シネマズプレミアム新宿": "109cinemaspremiumshinjuku",
     "TOHOシネマズ 新宿": "tohoshinjuku",
     "TOHOシネマズ 日比谷": "tohohibiya",
@@ -261,12 +259,9 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
         if english_name:
             target = normalize_name(english_name)
         else:
-            # 3. Fallback to normalized Original Name (likely empty for Japanese keys)
             target = normalize_name(cinema_name)
 
-    # If normalization resulted in empty string (and no override), we can't match safely.
-    if not target:
-        return None
+    if not target: return None
 
     candidates = list(ASSETS_DIR.glob("*"))
     best_match = None
@@ -275,12 +270,8 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
-        
-        # Exact substring match
         if f_name in target or target in f_name:
             return f
-            
-        # Fuzzy match
         ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
         if ratio > highest_ratio:
             highest_ratio = ratio
@@ -291,7 +282,6 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     return None
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
-    """Isolates the subject using Replicate (lucataco/remove-bg)."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
         return pil_img.convert("RGBA")
     try:
@@ -314,9 +304,6 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
     return pil_img.convert("RGBA")
 
 def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image, Image.Image]:
-    """
-    Arranges 5 cutouts in a CHAOTIC layout.
-    """
     width = CANVAS_WIDTH
     height = CANVAS_HEIGHT
     
@@ -356,7 +343,6 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
             
-            # Paste
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
@@ -366,19 +352,15 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # ADJUSTMENT: Less Mask Dilation (11px instead of 21px)
-    # This keeps the "Keep" area (Black) larger, protecting the image edges more
     mask = mask.filter(ImageFilter.MaxFilter(11)) 
-    
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to fill gaps (Restored from prompt)."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (Unified Structure / Stability AI)...")
+    print("   🎨 Inpainting gaps (Stability AI)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
@@ -412,92 +394,113 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
     return layout_img
 
-# --- IMAGE GENERATORS (Cinema Photo Support) ---
+# --- IMPROVED BACKGROUND GENERATION (BLURRED VIBRANCE) ---
 
-def create_fallback_gradient(width: int, height: int) -> Image.Image:
-    """Generates a subtle dark gradient if no photo is found."""
-    img = Image.new("RGB", (width, height), (30, 30, 30))
-    draw = ImageDraw.Draw(img)
-    # Simple top-down gradient
-    for y in range(height):
-        r = int(30 - (y / height) * 20)
-        g = int(30 - (y / height) * 20)
-        b = int(40 - (y / height) * 20)
-        draw.line([(0, y), (width, y)], fill=(r, g, b))
-    return img
-
-def get_cinema_background(cinema_name: str, width: int, height: int) -> Image.Image:
-    """Loads a local photo for the cinema, crops it, and applies a dark overlay."""
+def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
+    """
+    Creates a 'Vibrant Blur' background.
+    1. Full bleed image.
+    2. Gaussian Blur (Radius 8) to remove noise but keep color.
+    3. Moderate Dark Overlay (120/255 -> ~47% Opacity).
+    """
     full_path = get_cinema_image_path(cinema_name)
     
-    if full_path and full_path.exists():
-        try:
-            # 1. Load and convert
-            img = Image.open(full_path).convert("RGB")
-            
-            # 2. Aspect Fill Crop
-            target_ratio = width / height
-            img_ratio = img.width / img.height
-            
-            if img_ratio > target_ratio:
-                new_width = int(img.height * target_ratio)
-                left = (img.width - new_width) // 2
-                img = img.crop((left, 0, left + new_width, img.height))
-            else:
-                new_height = int(img.width / target_ratio)
-                top = (img.height - new_height) // 2
-                img = img.crop((0, top, img.width, top + new_height))
-            
-            img = img.resize((width, height), Image.Resampling.LANCZOS)
-            
-            # 3. Apply Dark Overlay (Opacity 75% Black for better text contrast)
-            overlay = Image.new("RGBA", (width, height), (0, 0, 0, 195)) 
-            img = img.convert("RGBA")
-            img = Image.alpha_composite(img, overlay).convert("RGB")
-            
-            return img
-        except Exception as e:
-            print(f"   [ERROR] Failed to process image for {cinema_name}: {e}")
+    # Fallback base
+    base = Image.new("RGB", (width, height), (30, 30, 30))
     
-    print(f"   [INFO] Using fallback gradient for: {cinema_name}")
-    return create_fallback_gradient(width, height)
+    if not full_path or not full_path.exists():
+        return base
 
-def create_sunburst_background(width: int, height: int) -> Image.Image:
-    """Kept for Cover page fallback, but not used for slides anymore."""
-    base_size = 512
-    img = Image.new("RGB", (base_size, base_size), (255, 255, 255))
-    draw = ImageDraw.Draw(img)
-    center_color = (255, 210, 0)
-    outer_color = (255, 255, 255)
-    max_radius = int(base_size * 0.7) 
-    center = base_size // 2
-    for r in range(max_radius, 0, -2):
-        ratio = r / max_radius
-        red = int(outer_color[0] * ratio + center_color[0] * (1 - ratio))
-        green = int(outer_color[1] * ratio + center_color[1] * (1 - ratio))
-        blue = int(outer_color[2] * ratio + center_color[2] * (1 - ratio))
-        draw.ellipse([center - r, center - r, center + r, center + r], fill=(red, green, blue))
-    return img.resize((width, height), Image.Resampling.LANCZOS)
+    try:
+        img = Image.open(full_path).convert("RGB")
+        
+        # Aspect Fill
+        target_ratio = width / height
+        img_ratio = img.width / img.height
+        
+        if img_ratio > target_ratio:
+            new_width = int(img.height * target_ratio)
+            left = (img.width - new_width) // 2
+            img = img.crop((left, 0, left + new_width, img.height))
+        else:
+            new_height = int(img.width / target_ratio)
+            top = (img.height - new_height) // 2
+            img = img.crop((0, top, img.width, top + new_height))
+        
+        img = img.resize((width, height), Image.Resampling.LANCZOS)
+        
+        # Apply Blur
+        img = img.filter(ImageFilter.GaussianBlur(8))
+        
+        # Apply Overlay
+        # (0,0,0, 120) is roughly 47% black. Brighter than the previous 75%.
+        overlay = Image.new("RGBA", (width, height), (0, 0, 0, 120))
+        img = img.convert("RGBA")
+        img = Image.alpha_composite(img, overlay).convert("RGB")
+        
+        return img
+
+    except Exception as e:
+        print(f"Error creating background for {cinema_name}: {e}")
+        return base
+
+def draw_text_with_shadow(draw, xy, text, font, fill, shadow_color=(0,0,0,200), offset=(2,2), anchor=None):
+    """Helper to draw text with a drop shadow."""
+    x, y = xy
+    # Shadow
+    draw.text((x + offset[0], y + offset[1]), text, font=font, fill=shadow_color, anchor=anchor)
+    # Main Text
+    draw.text((x, y), text, font=font, fill=fill, anchor=anchor)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """Adds ONLY the Date Pill."""
+    """
+    Frosted Glass Title Block.
+    """
     img = bg_img.convert("RGBA")
-    overlay = Image.new("RGBA", img.size, (0,0,0,0))
-    draw = ImageDraw.Draw(overlay)
+    
+    # Block Dimensions
+    block_w = int(img.width * 0.85)
+    block_h = 400
+    block_x = (img.width - block_w) // 2
+    block_y = 120
+    
+    overlay_box = Image.new("RGBA", img.size, (0,0,0,0))
+    draw_box = ImageDraw.Draw(overlay_box)
+    
+    # Frosted box
+    draw_box.rounded_rectangle(
+        [block_x, block_y, block_x + block_w, block_y + block_h],
+        radius=20,
+        fill=(20, 20, 20, 180),
+        outline=(255, 255, 255, 120),
+        width=3
+    )
+    
+    img = Image.alpha_composite(img, overlay_box)
+    draw = ImageDraw.Draw(img)
     
     try:
-        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 28)
+        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 90)
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
     except:
+        title_font = ImageFont.load_default()
         date_font = ImageFont.load_default()
+        
+    center_x = img.width // 2
     
-    # Date Pill (Top Left)
-    pill_x, pill_y = 60, 60
-    draw.rectangle([pill_x, pill_y, pill_x + 320, pill_y + 50], fill=(20, 20, 20))
-    draw.text((pill_x + 20, pill_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
+    # Text
+    draw.text((center_x, block_y + 80), "TOKYO", font=title_font, fill=WHITE, anchor="mm")
+    draw.text((center_x, block_y + 180), "CINEMA INDEX", font=title_font, fill=WHITE, anchor="mm")
     
-    return Image.alpha_composite(img, overlay).convert("RGB")
+    # Accent Line
+    draw.line([(center_x - 100, block_y + 240), (center_x + 100, block_y + 240)], fill=ACCENT_COLOR, width=6)
+    
+    # Date
+    draw.text((center_x, block_y + 300), bilingual_date, font=date_font, fill=LIGHT_GRAY, anchor="mm")
+    
+    return img.convert("RGB")
 
-# --- SLIDES (UPDATED for Dark Mode) ---
+# --- SLIDES (UPDATED) ---
 
 def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
     img = bg_template.copy()
@@ -516,38 +519,41 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
         en_movie_font = ImageFont.load_default()
         time_font = ImageFont.load_default()
         footer_font = ImageFont.load_default()
+        
     center_x = CANVAS_WIDTH // 2
     y_pos = 150 
     
-    # Changed Colors to WHITE/LIGHT_GRAY for visibility on Dark Background
-    draw.text((center_x, y_pos), cinema_name, font=header_font, fill=WHITE, anchor="mm")
+    # Draw with shadows for readability
+    draw_text_with_shadow(draw, (center_x, y_pos), cinema_name, header_font, WHITE, anchor="mm")
     y_pos += 80
+    
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
-        draw.text((center_x, y_pos), cinema_name_to_use, font=subhead_font, fill=LIGHT_GRAY, anchor="mm")
+        draw_text_with_shadow(draw, (center_x, y_pos), cinema_name_to_use, subhead_font, LIGHT_GRAY, anchor="mm")
         y_pos += 100
     else:
         y_pos += 60
     
-    # Line color white
     draw.line([(100, y_pos), (CANVAS_WIDTH - 100, y_pos)], fill=WHITE, width=4)
     y_pos += 80
+    
     for listing in listings:
         wrapped_title = textwrap.wrap(listing['title'], width=24)
         for line in wrapped_title:
-            draw.text((center_x, y_pos), line, font=movie_font, fill=WHITE, anchor="mm")
+            draw_text_with_shadow(draw, (center_x, y_pos), line, movie_font, WHITE, anchor="mm")
             y_pos += 55
         if listing["en_title"]:
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=40)
             for line in wrapped_en:
-                draw.text((center_x, y_pos), line, font=en_movie_font, fill=LIGHT_GRAY, anchor="mm")
+                draw_text_with_shadow(draw, (center_x, y_pos), line, en_movie_font, LIGHT_GRAY, anchor="mm")
                 y_pos += 45
         if listing['times']:
-            draw.text((center_x, y_pos), listing["times"], font=time_font, fill=LIGHT_GRAY, anchor="mm")
+            draw_text_with_shadow(draw, (center_x, y_pos), listing["times"], time_font, LIGHT_GRAY, anchor="mm")
             y_pos += 80
         else:
             y_pos += 40
-    draw.text((center_x, STORY_CANVAS_HEIGHT - 150), "Full Schedule Link in Bio", font=footer_font, fill=WHITE, anchor="mm")
+            
+    draw_text_with_shadow(draw, (center_x, STORY_CANVAS_HEIGHT - 100), "Full Schedule Link in Bio", footer_font, WHITE, anchor="mm")
     return img
 
 def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
@@ -562,44 +568,48 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict
         footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
     except Exception:
         raise
+        
     content_left = MARGIN + 20
     y_pos = MARGIN + 40
     
-    # Changed Colors to WHITE/LIGHT_GRAY for visibility on Dark Background
-    draw.text((content_left, y_pos), cinema_name, font=title_jp_font, fill=WHITE)
+    # Title Block
+    draw_text_with_shadow(draw, (content_left, y_pos), cinema_name, title_jp_font, WHITE)
     y_pos += 70
+    
     cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
     if cinema_name_to_use:
-        draw.text((content_left, y_pos), cinema_name_to_use, font=title_en_font, fill=LIGHT_GRAY)
+        draw_text_with_shadow(draw, (content_left, y_pos), cinema_name_to_use, title_en_font, LIGHT_GRAY)
         y_pos += 50
     else:
         y_pos += 20
+        
     address = CINEMA_ADDRESSES.get(cinema_name, "")
     if address:
         jp_addr = address.split("\n")[0]
-        draw.text((content_left, y_pos), f"📍 {jp_addr}", font=small_font, fill=LIGHT_GRAY)
+        draw_text_with_shadow(draw, (content_left, y_pos), f"📍 {jp_addr}", small_font, LIGHT_GRAY)
         y_pos += 60
     else:
         y_pos += 30
-    
-    # Line color white
+        
     draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=WHITE, width=3)
     y_pos += 40
+    
     for listing in listings:
         wrapped_title = textwrap.wrap(f"■ {listing['title']}", width=TITLE_WRAP_WIDTH) or [f"■ {listing['title']}"]
         for line in wrapped_title:
-            draw.text((content_left, y_pos), line, font=regular_font, fill=WHITE)
+            draw_text_with_shadow(draw, (content_left, y_pos), line, regular_font, WHITE)
             y_pos += 40
         if listing["en_title"]:
             wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=35)
             for line in wrapped_en:
-                draw.text((content_left + 10, y_pos), line, font=en_movie_font, fill=LIGHT_GRAY)
+                draw_text_with_shadow(draw, (content_left + 10, y_pos), line, en_movie_font, LIGHT_GRAY)
                 y_pos += 30
         if listing['times']:
-            draw.text((content_left + 40, y_pos), listing["times"], font=regular_font, fill=LIGHT_GRAY)
+            draw_text_with_shadow(draw, (content_left + 40, y_pos), listing["times"], regular_font, LIGHT_GRAY)
             y_pos += 55
+            
     footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
-    draw.text((CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, font=footer_font, fill=LIGHT_GRAY, anchor="mm")
+    draw_text_with_shadow(draw, (CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, footer_font, LIGHT_GRAY, anchor="mm")
     return img.convert("RGB")
 
 # --- MAIN ---
@@ -612,7 +622,6 @@ def main() -> None:
     date_en = today.strftime("%a")
     bilingual_date_str = f"{date_jp} {date_en.upper()}"
 
-    # Cleanup
     for old_file in glob.glob(str(BASE_DIR / "post_image_*.png")): os.remove(old_file) 
     for old_file in glob.glob(str(BASE_DIR / "story_image_*.png")): os.remove(old_file)
 
@@ -662,14 +671,13 @@ def main() -> None:
             current_slide_count += needed
     if not final_selection: return
 
-    # --- 5. COVER GENERATION (Architecture Assemblage) ---
-    print("--- Generating V1 Cover (Architecture Assemblage) ---")
+    # --- 5. COVER GENERATION ---
+    print("--- Generating Cover (V2 Vibrant) ---")
     
     available_asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
     random.shuffle(available_asset_candidates)
     
     collage_inputs = []
-    
     for name in available_asset_candidates:
         path = get_cinema_image_path(name)
         if path and not any(c[1] == path for c in collage_inputs):
@@ -691,13 +699,13 @@ def main() -> None:
         final_composite = inpainted_bg.copy()
         
         shadow_layer = Image.new("RGBA", final_composite.size, (0,0,0,0))
-        # Use the Alpha channel of layout_rgba to draw a black shape
         shadow_layer.paste((0,0,0,80), (10,10), mask=layout_rgba)
         shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(15))
         
         final_composite.paste(shadow_layer, (0,0), mask=shadow_layer)
         final_composite.paste(layout_rgba, (0,0), mask=layout_rgba)
         
+        # Frosted Title Block
         final_cover = draw_cover_overlay(final_composite, bilingual_date_str)
         final_cover.save(BASE_DIR / f"post_image_00.png")
         
@@ -707,13 +715,13 @@ def main() -> None:
         s_c.paste(story_cover, (0, y_off))
         s_c.save(BASE_DIR / f"story_image_00.png")
     else:
-        fb = create_sunburst_background(CANVAS_WIDTH, CANVAS_HEIGHT)
+        fb = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (30,30,30))
         draw_cover_overlay(fb, bilingual_date_str).save(BASE_DIR / "post_image_00.png")
-        fbs = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+        fbs = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), (30,30,30))
         draw_cover_overlay(fbs, bilingual_date_str).save(BASE_DIR / "story_image_00.png")
 
-    # --- 6. SLIDE GENERATION (UPDATED: Unique Cinema Photo per Slide) ---
-    print("Generating Content Slides (Cinema Photo Style)...")
+    # --- 6. SLIDE GENERATION ---
+    print("Generating Content Slides (Vibrant Blur)...")
     feed_counter = 0
     all_featured_for_caption = []
     
@@ -722,35 +730,33 @@ def main() -> None:
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         listings = item['listings']
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
-        feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
+        feed_segments = item['feed_segments']
         
-        # 1. Fetch Unique Background for this cinema
-        feed_bg_img = get_cinema_background(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
+        # Unique Blurry Background
+        feed_bg_img = create_blurred_cinema_bg(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
         
         for segment in feed_segments:
             feed_counter += 1
-            # 2. Pass it to the drawing function
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_img)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
 
     # Story Slides
     story_counter = 0
     STORY_METRICS = {'jp_line': 55, 'en_line': 45, 'time_line': 80} 
+    
     for item in final_selection:
         cinema_name = item['name']
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         listings = item['listings']
         story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, STORY_METRICS)
         
-        # 3. Fetch Unique Background for Story (9:16)
-        story_bg_img = get_cinema_background(cinema_name, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+        story_bg_img = create_blurred_cinema_bg(cinema_name, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
         
         for segment in story_segments:
             story_counter += 1
             slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_img)
             slide_img.save(BASE_DIR / f"story_image_{story_counter:02}.png")
 
-    # 7. Caption
     write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
 
 def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: List[Dict]) -> None:
