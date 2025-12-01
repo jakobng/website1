@@ -1,11 +1,12 @@
 """
 generate_post3.py
-The "Infinite Cinemascape" Protocol (V7 - Primed Canvas & Maximalist Layout).
+The "Infinite Cinemascape" Protocol (V8 - Unique Stills & Organic Stream).
 
-Key Changes:
-1. PRIMED CANVAS: Fills background with rough noise/color so SDXL doesn't see "black void".
-2. GUIDED CONNECTOR: Draws a physical line on the input to guide the AI's geometry.
-3. MAXIMALIST: Increased image scale and density. Overlap is encouraged.
+Fixes:
+1. DEDUPLICATION: Groups showtimes by title to ensure 6 DIFFERENT movies.
+2. BACKDROP FOCUS: Uses horizontal stills for everything.
+3. STREAM LAYOUT: Images flow down the page connected by the AI line.
+4. PRIMED CANVAS: No black voids.
 """
 
 import os
@@ -20,7 +21,7 @@ from io import BytesIO
 
 # --- LIBRARIES ---
 try:
-    from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageChops
+    from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
 except ImportError:
     print("❌ PIL (Pillow) not found. Run: pip install Pillow")
     sys.exit(1)
@@ -65,15 +66,15 @@ class ArtDirector:
         SYNOPSIS: "{synopsis}"
 
         1. Describe a BACKGROUND texture (e.g. concrete, neon mist, crumpled paper).
-        2. Pick a "BASE COLOR" (Hex code) for the mood.
+        2. Pick a "BASE COLOR" (Hex code).
         3. Invent a "CONNECTOR OBJECT" (vertical line: rusty chain, neon cable, vine, beam, crack).
         
         OUTPUT JSON ONLY:
         {{
-            "visual_prompt": "string (SDXL prompt for background texture)",
+            "visual_prompt": "string (SDXL prompt)",
             "base_color_hex": "string (e.g. #FF0055)",
-            "connector_object": "string (The vertical object name)",
-            "connector_adjective": "string (Adjective)"
+            "connector_object": "string",
+            "connector_adjective": "string"
         }}
         """
         try:
@@ -114,15 +115,12 @@ class GridManager:
 # --- HELPERS ---
 def generate_noise_layer(w, h, hex_color) -> Image.Image:
     """Creates a base layer so SDXL doesn't hallucinate from black void."""
-    # Create solid color
     try:
         color = ImageOps.colorize(Image.new("L", (w, h), 128), "black", hex_color)
     except:
         color = Image.new("RGB", (w, h), hex_color)
-        
-    # Add Noise
     noise = Image.effect_noise((w, h), 20).convert("RGB")
-    blend = Image.blend(color.convert("RGB"), noise, 0.2)
+    blend = Image.blend(color.convert("RGB"), noise, 0.15)
     return blend.convert("RGBA")
 
 def trim_transparent_borders(img: Image.Image) -> Image.Image:
@@ -162,22 +160,50 @@ def get_cutout(tmdb_id: int, suffix: str) -> Image.Image:
 
 # --- MAIN ---
 def main():
-    print("🎬 Starting Cinemascape V7 (Primed Canvas)...")
+    print("🎬 Starting Cinemascape V8 (Unique Stills)...")
     
     if not SHOWTIMES_PATH.exists(): return
-    with open(SHOWTIMES_PATH) as f: showtimes = json.load(f)
+    with open(SHOWTIMES_PATH) as f: raw_data = json.load(f)
 
-    # 1. FILMS
-    valid_films = [f for f in showtimes if f.get('tmdb_backdrop_path') or f.get('tmdb_poster_path')]
-    if not valid_films: return
+    # 1. DEDUPLICATE FILMS
+    # Create a dict keyed by title to ensure uniqueness
+    unique_movies = {}
+    for item in raw_data:
+        title = item['movie_title']
+        # Prioritize keeping the entry that has a backdrop
+        if title not in unique_movies:
+            unique_movies[title] = item
+        else:
+            if not unique_movies[title].get('tmdb_backdrop_path') and item.get('tmdb_backdrop_path'):
+                unique_movies[title] = item
+    
+    unique_list = list(unique_movies.values())
+    
+    # Filter for valid images (Backdrop OR Poster)
+    valid_films = [f for f in unique_list if f.get('tmdb_backdrop_path') or f.get('tmdb_poster_path')]
+    
+    if not valid_films:
+        print("❌ No valid films found.")
+        return
 
-    # Rotation
+    print(f"🎞️ Found {len(valid_films)} unique films.")
+
+    # Rotation Logic
     day_of_year = datetime.now().timetuple().tm_yday
     anchor_index = day_of_year % len(valid_films)
     anchor = valid_films[anchor_index]
-    guests = [valid_films[(anchor_index + i + 1) % len(valid_films)] for i in range(4)]
+    
+    # Select up to 5 unique guests (excluding anchor)
+    guests = []
+    potential_guests = [f for i, f in enumerate(valid_films) if i != anchor_index]
+    
+    # Shuffle or rotate guests to keep it fresh
+    random.seed(day_of_year) # Deterministic shuffle per day
+    random.shuffle(potential_guests)
+    guests = potential_guests[:5] # Take top 5
     
     print(f"📅 Anchor: {anchor['movie_title']}")
+    print(f"🎥 Guests: {[g['movie_title'] for g in guests]}")
 
     # 2. ART DIRECTION
     director = ArtDirector(GEMINI_API_KEY)
@@ -186,81 +212,72 @@ def main():
 
     # 3. PRIMED CANVAS
     W, H = 1080, 1352
-    # Instead of black, use a noisy colored base
     canvas = generate_noise_layer(W, H, style.get('base_color_hex', '#222222'))
     mask = Image.new("L", (W, H), 255) # White = Inpaint
     
-    # 4. DRAW CONNECTOR GUIDE (On Canvas + Mask)
+    # 4. DRAW CONNECTOR GUIDE
     grid = GridManager()
     entry_x = int(W * grid.get_entry())
     exit_x = int(W * random.uniform(0.3, 0.7))
-    
     print(f"🔗 Line: {entry_x} -> {exit_x}")
     
     draw_guide = ImageDraw.Draw(canvas)
-    
-    # We draw a BRIGHT line on the canvas. SDXL will see this and transform it.
-    # Using Cyan or Magenta usually triggers "glowing" effects well, or White.
     guide_color = (255, 255, 255, 128) 
-    line_width = 15
-    
-    points = [
-        (entry_x, 0),
-        (entry_x, H * 0.2),
-        (exit_x, H * 0.8),
-        (exit_x, H)
-    ]
-    draw_guide.line(points, fill=guide_color, width=line_width)
-    
-    # Note: We keep the mask WHITE here. We want SDXL to redraw the line area.
-    # By providing the guide pixels, we are doing "img2img" for the background.
+    points = [(entry_x, 0), (entry_x, H * 0.2), (exit_x, H * 0.8), (exit_x, H)]
+    draw_guide.line(points, fill=guide_color, width=15)
 
-    # 5. PLACE ANCHOR (Large)
+    # 5. PLACE ANCHOR (Top Hero)
     sfx = anchor.get('tmdb_backdrop_path') or anchor.get('tmdb_poster_path')
     hero = get_cutout(anchor['tmdb_id'], sfx)
     
     if hero:
-        # Scale: 95% Width (Bleed)
+        # Scale: 95% Width
         scale = (W * 0.95) / hero.width
         new_size = (int(hero.width * scale), int(hero.height * scale))
         hero = hero.resize(new_size, Image.Resampling.LANCZOS)
         x = (W - new_size[0]) // 2
-        y = 50
+        y = 60
         canvas.paste(hero, (x, y), hero)
-        
-        # Mask: Protect Hero (Black)
         mask.paste(ImageOps.invert(hero.split()[3]), (x, y), hero.split()[3])
 
-    # 6. PLACE GUESTS (Maximalist Scatter)
-    start_y = 550
+    # 6. PLACE GUESTS (Streaming Down)
+    start_y = 500
     end_y = 1250
-    step = (end_y - start_y) // len(guests)
+    step = (end_y - start_y) // max(1, len(guests))
     
     for i, g in enumerate(guests):
         sfx = g.get('tmdb_backdrop_path') or g.get('tmdb_poster_path')
         img = get_cutout(g['tmdb_id'], sfx)
         
         if img:
-            # Scale: 60-70% Width (Overlap encouraged)
-            scale_pct = random.uniform(0.6, 0.7)
+            # Scale: 50-70% Width
+            scale_pct = random.uniform(0.5, 0.7)
             scale = (W * scale_pct) / img.width
             new_size = (int(img.width * scale), int(img.height * scale))
             img = img.resize(new_size, Image.Resampling.LANCZOS)
             
-            # Rotate
-            img = img.rotate(random.uniform(-8, 8), expand=True, resample=Image.Resampling.BICUBIC)
+            # Rotate & Scatter
+            img = img.rotate(random.uniform(-5, 5), expand=True, resample=Image.Resampling.BICUBIC)
             
-            # Position
-            is_left = i % 2 == 0
-            if is_left:
-                x = int(random.uniform(-50, W//2 - 100))
+            # Zig-Zag Layout relative to connector line
+            # If line is moving Left->Right, we scatter around it
+            # Interpolate line X at this Y
+            curr_y = start_y + (i * step)
+            progress = (curr_y / H)
+            line_x_at_y = entry_x + (exit_x - entry_x) * progress
+            
+            # Alternate sides
+            offset = 150 # Distance from line
+            if i % 2 == 0:
+                x = int(line_x_at_y - new_size[0] + 50) # Left overlap
             else:
-                x = int(random.uniform(W//2 - 100, W - new_size[0] + 50))
-                
-            y = start_y + (i * step) + random.randint(-50, 50)
+                x = int(line_x_at_y - 50) # Right overlap
+            
+            # Clamp to canvas
+            x = max(-50, min(W - new_size[0] + 50, x))
+            y = curr_y + random.randint(-30, 30)
             
             canvas.paste(img, (x, y), img)
-            # Mask: Protect
             mask.paste(ImageOps.invert(img.split()[3]), (x, y), img.split()[3])
 
     # 7. GENERATE
@@ -268,10 +285,9 @@ def main():
     mask.save("mask.png")
     
     prompt = (
-        f"A rich, dense magazine collage. {style['visual_prompt']}. "
-        f"A {style['connector_adjective']} {style['connector_object']} transforming from the white line, "
-        f"running vertically through the composition. "
-        f"Maximalist, filling the space, high texture, 8k."
+        f"Artistic magazine layout. {style['visual_prompt']}. "
+        f"A {style['connector_adjective']} {style['connector_object']} weaving vertically through the floating images. "
+        f"Dense composition, collage style, 8k, highly detailed."
     )
     
     print("🚀 Sending to SDXL...")
@@ -280,10 +296,10 @@ def main():
             "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
             input={
                 "prompt": prompt,
-                "negative_prompt": "black background, empty space, minimalist, boring, text, watermark",
+                "negative_prompt": "text, watermark, ugly, distorted, empty space, black background",
                 "image": open("input.png", "rb"),
                 "mask": open("mask.png", "rb"),
-                "prompt_strength": 0.9, 
+                "prompt_strength": 0.85, 
                 "width": W,
                 "height": H
             }
