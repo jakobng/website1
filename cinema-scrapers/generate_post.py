@@ -1,8 +1,8 @@
 """
-Generate Instagram-ready image carousel (V2 - "Vibrant Blur").
-- Cover: Stability AI Inpainting + Frosted Glass Title Block.
+Generate Instagram-ready image carousel (V2.1 - "Minimalist Hero").
+- Cover: Stability AI Inpainting + Minimalist Typography (No boxes/accents).
 - Slides: Full-Bleed Cinema Photo + Blur + Light Overlay (Modern iOS/Glass style).
-- Text: White text with Drop Shadows for maximum readability on vibrant backgrounds.
+- Text: White text with Drop Shadows for maximum readability.
 """
 from __future__ import annotations
 
@@ -62,8 +62,8 @@ TITLE_WRAP_WIDTH = 30
 # --- GLOBAL COLORS ---
 WHITE = (255, 255, 255)
 OFF_WHITE = (240, 240, 240)
-LIGHT_GRAY = (230, 230, 230) # Brighter gray for better contrast
-ACCENT_COLOR = (255, 210, 0) # Gold accent
+LIGHT_GRAY = (230, 230, 230) 
+DARK_SHADOW = (0, 0, 0, 180) # Soft shadow color
 
 # --- Database (Cinemas) ---
 CINEMA_ADDRESSES = {
@@ -394,14 +394,11 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
     return layout_img
 
-# --- IMPROVED BACKGROUND GENERATION (BLURRED VIBRANCE) ---
+# --- BACKGROUND GENERATION (BLURRED VIBRANCE) ---
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
     """
     Creates a 'Vibrant Blur' background.
-    1. Full bleed image.
-    2. Gaussian Blur (Radius 8) to remove noise but keep color.
-    3. Moderate Dark Overlay (120/255 -> ~47% Opacity).
     """
     full_path = get_cinema_image_path(cinema_name)
     
@@ -432,8 +429,7 @@ def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image
         # Apply Blur
         img = img.filter(ImageFilter.GaussianBlur(8))
         
-        # Apply Overlay
-        # (0,0,0, 120) is roughly 47% black. Brighter than the previous 75%.
+        # Light Dark Overlay for Contrast (approx 45% black)
         overlay = Image.new("RGBA", (width, height), (0, 0, 0, 120))
         img = img.convert("RGBA")
         img = Image.alpha_composite(img, overlay).convert("RGB")
@@ -444,7 +440,7 @@ def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image
         print(f"Error creating background for {cinema_name}: {e}")
         return base
 
-def draw_text_with_shadow(draw, xy, text, font, fill, shadow_color=(0,0,0,200), offset=(2,2), anchor=None):
+def draw_text_with_shadow(draw, xy, text, font, fill, shadow_color=DARK_SHADOW, offset=(3,3), anchor=None):
     """Helper to draw text with a drop shadow."""
     x, y = xy
     # Shadow
@@ -454,49 +450,40 @@ def draw_text_with_shadow(draw, xy, text, font, fill, shadow_color=(0,0,0,200), 
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
     """
-    Frosted Glass Title Block.
+    MINIMALIST HERO OVERLAY.
+    No boxes, no yellow lines. Just clean, centered typography with drop shadows.
     """
     img = bg_img.convert("RGBA")
-    
-    # Block Dimensions
-    block_w = int(img.width * 0.85)
-    block_h = 400
-    block_x = (img.width - block_w) // 2
-    block_y = 120
-    
-    overlay_box = Image.new("RGBA", img.size, (0,0,0,0))
-    draw_box = ImageDraw.Draw(overlay_box)
-    
-    # Frosted box
-    draw_box.rounded_rectangle(
-        [block_x, block_y, block_x + block_w, block_y + block_h],
-        radius=20,
-        fill=(20, 20, 20, 180),
-        outline=(255, 255, 255, 120),
-        width=3
-    )
-    
-    img = Image.alpha_composite(img, overlay_box)
     draw = ImageDraw.Draw(img)
     
     try:
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 90)
-        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
+        # Bold for JP title
+        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 85)
+        # Bold for EN title (letter-spaced style)
+        title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
+        # Regular/Bold for Date
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 35)
     except:
-        title_font = ImageFont.load_default()
+        title_jp_font = ImageFont.load_default()
+        title_en_font = ImageFont.load_default()
         date_font = ImageFont.load_default()
         
     center_x = img.width // 2
+    # Vertically centered block
+    center_y = int(img.height * 0.45) 
     
-    # Text
-    draw.text((center_x, block_y + 80), "TOKYO", font=title_font, fill=WHITE, anchor="mm")
-    draw.text((center_x, block_y + 180), "CINEMA INDEX", font=title_font, fill=WHITE, anchor="mm")
+    # 1. Japanese Title: "本日の上映セレクション"
+    jp_text = "本日の上映セレクション"
+    draw_text_with_shadow(draw, (center_x, center_y), jp_text, title_jp_font, WHITE, anchor="mm")
     
-    # Accent Line
-    draw.line([(center_x - 100, block_y + 240), (center_x + 100, block_y + 240)], fill=ACCENT_COLOR, width=6)
+    # 2. English Title: "TODAY'S CINEMA SELECTION"
+    # To add letter spacing, we can manually draw character by character or just trust the font.
+    # For simplicity/robustness, we'll draw it normally but use a clear font.
+    en_text = "TODAY'S CINEMA SELECTION"
+    draw_text_with_shadow(draw, (center_x, center_y + 100), en_text, title_en_font, LIGHT_GRAY, anchor="mm")
     
-    # Date
-    draw.text((center_x, block_y + 300), bilingual_date, font=date_font, fill=LIGHT_GRAY, anchor="mm")
+    # 3. Date
+    draw_text_with_shadow(draw, (center_x, center_y + 180), bilingual_date, date_font, WHITE, anchor="mm")
     
     return img.convert("RGB")
 
@@ -523,7 +510,6 @@ def draw_story_slide(cinema_name: str, cinema_name_en: str, listings: List[Dict[
     center_x = CANVAS_WIDTH // 2
     y_pos = 150 
     
-    # Draw with shadows for readability
     draw_text_with_shadow(draw, (center_x, y_pos), cinema_name, header_font, WHITE, anchor="mm")
     y_pos += 80
     
@@ -672,7 +658,7 @@ def main() -> None:
     if not final_selection: return
 
     # --- 5. COVER GENERATION ---
-    print("--- Generating Cover (V2 Vibrant) ---")
+    print("--- Generating Cover (V2.1 Minimalist) ---")
     
     available_asset_candidates = [c['name'] for c in final_selection if c['has_asset']]
     random.shuffle(available_asset_candidates)
@@ -705,7 +691,7 @@ def main() -> None:
         final_composite.paste(shadow_layer, (0,0), mask=shadow_layer)
         final_composite.paste(layout_rgba, (0,0), mask=layout_rgba)
         
-        # Frosted Title Block
+        # New Minimalist Title
         final_cover = draw_cover_overlay(final_composite, bilingual_date_str)
         final_cover.save(BASE_DIR / f"post_image_00.png")
         
@@ -732,7 +718,6 @@ def main() -> None:
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
         feed_segments = item['feed_segments']
         
-        # Unique Blurry Background
         feed_bg_img = create_blurred_cinema_bg(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
         
         for segment in feed_segments:
