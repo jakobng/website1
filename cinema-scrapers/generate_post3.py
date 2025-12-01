@@ -3,7 +3,7 @@ generate_post3.py
 The "Infinite Cinemascape" Protocol (Single File Edition).
 
 Features:
-1. Art Director: Uses Gemini 2.5 Flash to hallucinate a visual theme based on the movie plot.
+1. Art Director: Uses Gemini 2.0 Flash to hallucinate a visual theme based on the movie plot.
 2. Grid Memory: Remembers where yesterday's visual "line" ended to ensure continuity.
 3. The Painter: Uses Stable Diffusion XL (SDXL) via Replicate to "inpaint" a world around the posters.
 4. Typography: Overlays clean, minimalist text for showtimes.
@@ -34,6 +34,7 @@ except ImportError:
     sys.exit(1)
 
 try:
+    # We use the NEW Google Gen AI SDK (v0.1+)
     from google import genai
     from google.genai import types
 except ImportError:
@@ -63,6 +64,7 @@ class ArtDirector:
     def __init__(self, api_key: str):
         if not api_key:
             raise ValueError("⚠️ GEMINI_API_KEY is missing!")
+        # Initialize the new SDK Client
         self.client = genai.Client(api_key=api_key)
 
     def dream_scene(self, film_title: str, synopsis: str) -> Dict:
@@ -90,6 +92,7 @@ class ArtDirector:
         """
         
         try:
+            # Using the new SDK syntax
             response = self.client.models.generate_content(
                 model="gemini-2.0-flash",
                 contents=prompt,
@@ -147,15 +150,13 @@ class GridManager:
 
 def download_poster(tmdb_id: int) -> Path:
     """Downloads poster from TMDB if not exists."""
-    # Note: In a real scenario, you'd query TMDB API here.
-    # For this script, we assume the asset might already exist or we use a placeholder.
-    # If you have the URL in showtimes.json, pass it here.
     file_path = ASSETS_DIR / f"{tmdb_id}.jpg"
     if file_path.exists():
         return file_path
     
-    # Placeholder logic if no URL provided (You can connect your TMDB logic here)
-    print(f"⚠️ Poster {tmdb_id} not found locally. (Download logic skipped in this snippet)")
+    # In a real run, we would fetch from TMDB API here.
+    # For now, we assume assets are pre-fetched or we skip.
+    print(f"⚠️ Poster {tmdb_id} not found locally.")
     return None
 
 def remove_background(input_path: Path) -> Image.Image:
@@ -179,6 +180,7 @@ def draw_text_overlay(base_img: Image.Image, film: Dict, showtimes: List[Dict]) 
     
     # Load Font
     try:
+        # Use a large size for title
         font_title = ImageFont.truetype(str(FONT_PATH), 60)
         font_info = ImageFont.truetype(str(FONT_PATH), 30)
     except:
@@ -237,13 +239,14 @@ def main():
     
     # 5. Place Poster (The Cutout)
     tmdb_id = anchor_film.get('tmdb_id')
+    poster_placed = False
+    
     if tmdb_id:
         poster_path = download_poster(tmdb_id)
         if poster_path:
             poster_img = remove_background(poster_path)
             
             # Resize and Position Poster (Center-ish)
-            # Scale to 60% of width
             scale_factor = (W * 0.6) / poster_img.width
             new_size = (int(poster_img.width * scale_factor), int(poster_img.height * scale_factor))
             poster_img = poster_img.resize(new_size, Image.Resampling.LANCZOS)
@@ -257,30 +260,24 @@ def main():
             # Update Mask: Make the poster area BLACK (0) so it is preserved
             # Use the alpha channel of the poster for precise masking
             mask_draw = ImageDraw.Draw(mask)
-            # We paste the alpha channel inverted onto the mask?
-            # Simpler: Create a temp mask for the poster and paste it
             poster_alpha = poster_img.split()[3]
             # Invert alpha: 255 (opaque) -> 0 (protect), 0 (transparent) -> 255 (paint)
             protection_mask = ImageOps.invert(poster_alpha)
             mask.paste(protection_mask, (pos_x, pos_y), poster_alpha)
+            poster_placed = True
+            
+    if not poster_placed:
+        print("⚠️ Proceeding without poster cutout.")
 
-    # 6. Draw The "Connection Line" Guide
-    # We want SDXL to draw a line, so we don't draw it on the canvas. 
-    # Instead, we rely on the prompt + implicit continuity.
-    # OPTION B: We draw a thin line on the canvas to "suggest" it to img2img?
-    # Let's trust the prompt "A vertical {element} running through..." 
-    # But to be safe, we can add the coordinates to the prompt if SDXL supported region prompting, which it doesn't easily via simple API.
-    # Let's just trust the Art Director's prompt.
-    
-    # 7. GENERATE (Inpainting)
+    # 6. GENERATE (Inpainting)
     temp_canvas_path = "temp_canvas.png"
     temp_mask_path = "temp_mask.png"
     canvas.save(temp_canvas_path)
     mask.save(temp_mask_path)
     
     print("🚀 Sending to Stability AI (SDXL)...")
-    # Using SDXL because it supports masking. SD3.5 Large on Replicate does not yet support 'mask' input.
     try:
+        # Using SDXL because it supports masking better than SD 3.5 Large (via API)
         output = replicate.run(
             "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
             input={
