@@ -3,6 +3,7 @@ Generate Instagram-ready image carousel (V1 - "The Organic Mashup - Recognizable
 - Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Atmosphere) -> Paste Back with Shadow.
 - Feature: Uses Stability AI for Inpainting (Unified Structure).
 - Feature: Cinema Slides use specific Cinema Photos with Dark Overlay.
+- Fix: Robust Asset Matching using English Names to handle Japanese keys.
 """
 from __future__ import annotations
 
@@ -63,7 +64,6 @@ TITLE_WRAP_WIDTH = 30
 WHITE = (255, 255, 255)
 LIGHT_GRAY = (200, 200, 200)
 DARK_GRAY = (30, 30, 30)
-# BLACK is kept for compatibility if needed, but we mostly use WHITE on Dark BG
 BLACK = (20, 20, 20) 
 
 # --- Database (Cinemas) ---
@@ -127,6 +127,15 @@ CINEMA_ENGLISH_NAMES = {
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
     "Tollywood": "Tollywood"
+}
+
+# Explicit overrides for filenames that don't match the English name rules
+CINEMA_FILENAME_OVERRIDES = {
+    "国立映画アーカイブ": "nfaj", # Matches nfaj.jpg
+    "109シネマズプレミアム新宿": "109cinemaspremiumshinjuku",
+    "TOHOシネマズ 新宿": "tohoshinjuku",
+    "TOHOシネマズ 日比谷": "tohohibiya",
+    "新宿ピカデリー": "shinjukupiccadilly"
 }
 
 # --- Utility Functions ---
@@ -242,19 +251,41 @@ def normalize_name(s):
 
 def get_cinema_image_path(cinema_name: str) -> Path | None:
     if not ASSETS_DIR.exists(): return None
-    target = normalize_name(cinema_name)
+    
+    # 1. Try explicit override first
+    if cinema_name in CINEMA_FILENAME_OVERRIDES:
+        target = CINEMA_FILENAME_OVERRIDES[cinema_name]
+    else:
+        # 2. Try normalized English Name
+        english_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+        if english_name:
+            target = normalize_name(english_name)
+        else:
+            # 3. Fallback to normalized Original Name (likely empty for Japanese keys)
+            target = normalize_name(cinema_name)
+
+    # If normalization resulted in empty string (and no override), we can't match safely.
+    if not target:
+        return None
+
     candidates = list(ASSETS_DIR.glob("*"))
     best_match = None
     highest_ratio = 0.0
+    
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
+        
+        # Exact substring match
         if f_name in target or target in f_name:
             return f
+            
+        # Fuzzy match
         ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
         if ratio > highest_ratio:
             highest_ratio = ratio
             best_match = f
+            
     if highest_ratio > 0.4:
         return best_match
     return None
@@ -587,8 +618,6 @@ def main() -> None:
 
     todays_showings = load_showtimes(today_str)
     if not todays_showings: return
-    
-    # (Removed Pre-generated Sunbursts here)
 
     # 3. Group Cinemas
     grouped: Dict[str, List[Dict]] = defaultdict(list)
@@ -683,7 +712,7 @@ def main() -> None:
         fbs = create_sunburst_background(CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
         draw_cover_overlay(fbs, bilingual_date_str).save(BASE_DIR / "story_image_00.png")
 
-    # --- 6. SLIDE GENERATION (UPDATED: Cinema Photo Backgrounds) ---
+    # --- 6. SLIDE GENERATION (UPDATED: Unique Cinema Photo per Slide) ---
     print("Generating Content Slides (Cinema Photo Style)...")
     feed_counter = 0
     all_featured_for_caption = []
@@ -695,13 +724,12 @@ def main() -> None:
         all_featured_for_caption.append({"cinema_name": cinema_name, "listings": listings})
         feed_segments = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, FEED_METRICS)
         
-        # GENERATE CINEMA BACKGROUND HERE
-        # We generate a fresh background for this specific cinema
+        # 1. Fetch Unique Background for this cinema
         feed_bg_img = get_cinema_background(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
         
         for segment in feed_segments:
             feed_counter += 1
-            # Pass the specific photo background
+            # 2. Pass it to the drawing function
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, feed_bg_img)
             slide_img.save(BASE_DIR / f"post_image_{feed_counter:02}.png")
 
@@ -714,7 +742,7 @@ def main() -> None:
         listings = item['listings']
         story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, STORY_METRICS)
         
-        # GENERATE CINEMA BACKGROUND HERE (Story Aspect Ratio)
+        # 3. Fetch Unique Background for Story (9:16)
         story_bg_img = get_cinema_background(cinema_name, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
         
         for segment in story_segments:
