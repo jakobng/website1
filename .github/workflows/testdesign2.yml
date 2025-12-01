@@ -1,4 +1,4 @@
-name: Test Instagram Design (No Upload)
+name: Test Instagram Design (Infinite Cinemascape)
 
 on:
   workflow_dispatch: # Manual trigger
@@ -22,14 +22,14 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # Added 'replicate' for AI processing
+          # Ensure we have the NEW google-genai and replicate
           pip install google-genai replicate requests Pillow tzdata
 
-      - name: Run Generator (Hallucinated Assemblage)
+      - name: Run Generator (Infinite Cinemascape)
         working-directory: './cinema-scrapers'
         run: python generate_post3.py
         env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          # We don't need TMDB Key if data is already in showtimes.json
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
@@ -38,7 +38,12 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          git add cinema-scrapers/post_v2_image_00.png
+          # --- FIX: Force add the V3 images and the State file ---
+          git add -f cinema-scrapers/post_v3_image_*.png
+          git add -f cinema-scrapers/cinemascape_state.json
+
+          # Debug: Show what is staged
+          git status
 
           # If nothing is staged, exit without error
           if git diff --cached --quiet; then
@@ -46,7 +51,8 @@ jobs:
             exit 0
           fi
 
-          git commit -m "DESIGN TEST: Generated Hallucinated Assemblage cover"
+          git commit -m "DESIGN TEST: Generated Infinite Cinemascape (V3)"
+          git pull origin main --rebase
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
