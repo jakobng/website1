@@ -1,16 +1,18 @@
 """
 generate_post3.py
-The "Infinite Cinemascape" Protocol (V4 - 1 Anchor + 4 Guests + AI Connector).
+The "Infinite Cinemascape" Protocol (Single File Edition).
 
-Changes:
-1. No Text Header (Pure Art).
-2. Layout: 1 Anchor (Top) + 4 Guests (Bottom Grid).
-3. Thematic Line: Uses masking to force AI to generate a specific object (vine, wire, beam) along a path.
+Features:
+1. Art Director: Uses Gemini 2.5 Flash to hallucinate a visual theme based on the movie plot.
+2. Grid Memory: Remembers where yesterday's visual "line" ended to ensure continuity.
+3. The Painter: Uses Stable Diffusion XL (SDXL) via Replicate to "inpaint" a world around the posters.
+4. Typography: Overlays clean, minimalist text for showtimes.
 """
 
 import os
 import sys
 import json
+import time
 import random
 import requests
 from pathlib import Path
@@ -32,6 +34,7 @@ except ImportError:
     sys.exit(1)
 
 try:
+    # We use the NEW Google Gen AI SDK (v0.1+)
     from google import genai
     from google.genai import types
 except ImportError:
@@ -44,246 +47,282 @@ ASSETS_DIR = BASE_DIR / "cinema_assets"
 OUTPUT_DIR = BASE_DIR
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 STATE_FILE = BASE_DIR / "cinemascape_state.json"
+FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf" # Ensure this font exists!
 
-# Secrets
+# SECRETS
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
-# Create dirs
+# Create dirs if missing
 ASSETS_DIR.mkdir(exist_ok=True)
 
-# --- CLASS 1: THE ART DIRECTOR ---
+# --- CLASS 1: THE ART DIRECTOR (GEMINI) ---
 class ArtDirector:
+    """
+    Acts as the creative lead. Reads the synopsis and dreams up a scene.
+    """
     def __init__(self, api_key: str):
-        if not api_key: raise ValueError("⚠️ GEMINI_API_KEY missing!")
+        if not api_key:
+            raise ValueError("⚠️ GEMINI_API_KEY is missing!")
         self.client = genai.Client(api_key=api_key)
 
     def dream_scene(self, film_title: str, synopsis: str) -> Dict:
-        print(f"🧠 Art Director reading: {film_title}...")
+        print(f"🧠 Art Director is reading script for: {film_title}...")
+        
         prompt = f"""
-        Act as a Visual Futurist.
-        FILM: "{film_title}"
+        You are a Visual Futurist and Art Director for a high-end cinema magazine.
+        WE ARE DESIGNING A BACKGROUND FOR: "{film_title}"
         SYNOPSIS: "{synopsis}"
 
-        1. Describe a BACKGROUND atmosphere for this film (texture, lighting).
-        2. Invent a "CONNECTOR OBJECT" that is long and vertical (e.g., a rusty chain, a fiber optic cable, a vine, a beam of light, a crack in reality).
-        
-        OUTPUT JSON ONLY:
-        {{
-            "visual_prompt": "string (SDXL prompt for background)",
-            "connector_object": "string (The vertical object to generate)",
-            "connector_adjective": "string (Adjective for the object, e.g. 'glowing', 'rusty')"
-        }}
+        Your goal: Describe a VISUAL BACKGROUND that represents the *mood* of this film.
+        RULES:
+        1. OUTPUT A SINGLE JSON OBJECT.
+        2. "visual_prompt": Descriptive prompt for SDXL (texture, lighting, style).
+        3. "connection_element": A specific object that forms a vertical line (wire, beam, vine).
         """
+        
         try:
-            resp = self.client.models.generate_content(
-                model="gemini-2.0-flash", contents=prompt,
-                config=types.GenerateContentConfig(response_mime_type="application/json")
+            response = self.client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json"
+                )
             )
-            data = json.loads(resp.text)
-            if isinstance(data, list): data = data[0] if data else {}
+            data = json.loads(response.text)
+            
+            # --- FIX: Handle List Output ---
+            if isinstance(data, list):
+                data = data[0] if len(data) > 0 else {}
+                
             return data
-        except:
+        except Exception as e:
+            print(f"❌ Art Director hallucination failed: {e}")
             return {
-                "visual_prompt": "Cinematic atmosphere, dark moody lighting",
-                "connector_object": "steel cable",
-                "connector_adjective": "industrial"
+                "visual_prompt": "Cinematic atmosphere, soft dramatic lighting, photorealistic",
+                "connection_element": "A steel wire"
             }
 
-# --- CLASS 2: GRID MEMORY ---
+# --- CLASS 2: THE GRID MANAGER (MEMORY) ---
 class GridManager:
+    """
+    Manages the 'Infinite Scroll' continuity.
+    """
     def __init__(self):
-        self.state = self._load()
-    
-    def _load(self):
+        self.state = self._load_state()
+
+    def _load_state(self) -> Dict:
         if STATE_FILE.exists():
-            try: return json.loads(STATE_FILE.read_text())
-            except: pass
-        return {"last_exit_x": 0.5} 
-    
-    def get_entry(self) -> float:
-        return self.state.get("last_exit_x", 0.5)
-    
-    def save(self, exit_x: float):
-        self.state["last_exit_x"] = exit_x
-        STATE_FILE.write_text(json.dumps(self.state))
+            try:
+                text = STATE_FILE.read_text()
+                if text.strip():
+                    return json.loads(text)
+            except:
+                pass
+        return {
+            "last_exit_x_percent": 0.5, 
+            "history": []
+        }
 
-# --- HELPERS ---
-def download_asset(tmdb_id: int, suffix: str) -> Image.Image:
-    if not suffix: return None
-    path = ASSETS_DIR / f"{tmdb_id}_{suffix.strip('/').replace('/','-')}" # Sanitize filename
-    
-    if not path.exists():
-        url = f"https://image.tmdb.org/t/p/w780{suffix}"
-        print(f"⬇️ Downloading: {url}")
-        try:
-            resp = requests.get(url)
-            resp.raise_for_status()
-            with open(path, 'wb') as f: f.write(resp.content)
-        except: return None
-            
-    try: return Image.open(path).convert("RGBA")
-    except: return None
+    def get_entry_point(self) -> float:
+        """Where should the line start at the TOP? (Matches yesterday's bottom)"""
+        return self.state.get("last_exit_x_percent", 0.5)
 
-def remove_bg_api(image_path: Path) -> Image.Image:
-    print(f"✂️ Removing Background: {image_path.name}...")
+    def save_state(self, exit_x_percent: float, film_title: str):
+        """Saves today's exit point for tomorrow."""
+        self.state["last_exit_x_percent"] = exit_x_percent
+        self.state["history"].append({
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "film": film_title,
+            "exit_x": exit_x_percent
+        })
+        if len(self.state["history"]) > 10:
+            self.state["history"].pop(0)
+        STATE_FILE.write_text(json.dumps(self.state, indent=2))
+
+# --- HELPER FUNCTIONS ---
+
+def download_poster(tmdb_id: int, poster_path_suffix: str = None) -> Path:
+    """Downloads poster from TMDB."""
+    file_path = ASSETS_DIR / f"{tmdb_id}.jpg"
+    
+    if file_path.exists():
+        return file_path
+        
+    if not poster_path_suffix:
+        print(f"⚠️ No poster path provided for {tmdb_id}.")
+        return None
+
+    # TMDB High Res URL
+    url = f"https://image.tmdb.org/t/p/w780{poster_path_suffix}"
+    print(f"⬇️ Downloading poster: {url}")
+    
+    try:
+        resp = requests.get(url)
+        resp.raise_for_status()
+        with open(file_path, 'wb') as f:
+            f.write(resp.content)
+        return file_path
+    except Exception as e:
+        print(f"❌ Poster download failed: {e}")
+        return None
+
+def remove_background(input_path: Path) -> Image.Image:
+    """Uses Replicate (lucataco/remove-bg) to get a cutout."""
+    print(f"✂️ Removing background for {input_path.name}...")
     try:
         output = replicate.run(
             "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
-            input={"image": open(image_path, "rb")}
+            input={"image": open(input_path, "rb")}
         )
-        return Image.open(BytesIO(requests.get(output).content)).convert("RGBA")
+        response = requests.get(output)
+        return Image.open(BytesIO(response.content)).convert("RGBA")
+    except Exception as e:
+        print(f"❌ BG Removal failed: {e}")
+        return Image.open(input_path).convert("RGBA") # Fallback
+
+def draw_text_overlay(base_img: Image.Image, film: Dict, showtimes: List[Dict]) -> Image.Image:
+    """Draws the minimalist showtime info on top of the art."""
+    draw = ImageDraw.Draw(base_img)
+    width, height = base_img.size
+    
+    # Load Font
+    try:
+        # Use a large size for title
+        font_title = ImageFont.truetype(str(FONT_PATH), 60)
+        font_info = ImageFont.truetype(str(FONT_PATH), 30)
     except:
-        print("⚠️ BG Removal failed, using raw.")
-        return Image.open(image_path).convert("RGBA")
+        font_title = ImageFont.load_default()
+        font_info = ImageFont.load_default()
 
-# --- MAIN LOGIC ---
+    # Draw Title (Bottom Left)
+    title = film.get('movie_title', 'Unknown Film')
+    draw.text((50, height - 200), title, font=font_title, fill="white", stroke_width=2, stroke_fill="black")
+    
+    # Draw Showtimes (Bottom Left, below title)
+    y_cursor = height - 130
+    for s in showtimes[:3]: # Limit to 3 lines
+        text = f"{s['cinema_name']}: {s['showtime']}"
+        draw.text((50, y_cursor), text, font=font_info, fill="white", stroke_width=1, stroke_fill="black")
+        y_cursor += 40
+
+    return base_img
+
+# --- MAIN GENERATOR LOGIC ---
+
 def main():
-    print("🎬 Starting Infinite Cinemascape V4 (1+4 Layout)...")
-    
-    if not SHOWTIMES_PATH.exists(): return
-    with open(SHOWTIMES_PATH) as f: showtimes = json.load(f)
+    print("🎬 Starting Infinite Cinemascape Generator (SDXL Edition)...")
 
-    # 1. SELECT FILMS (1 Anchor + 4 Guests)
-    valid_films = [f for f in showtimes if f.get('tmdb_poster_path')]
-    if len(valid_films) < 5:
-        print(f"⚠️ Only found {len(valid_films)} valid films. Using what we have.")
-    
-    anchor = valid_films[0]
-    guests = valid_films[1:5] # Up to 4 guests
-    
-    print(f"🎥 Anchor: {anchor['movie_title']}")
-    print(f"🎥 Guests: {len(guests)}")
+    # 1. Load Data
+    if not SHOWTIMES_PATH.exists():
+        print("❌ showtimes.json not found!")
+        return
 
-    # 2. ART DIRECT
+    with open(SHOWTIMES_PATH, 'r') as f:
+        data = json.load(f)
+    
+    # Group showtimes by movie to find the "Anchor Film"
+    anchor_film = next((f for f in data if f.get('synopsis')), data[0])
+    print(f"🎥 Anchor Film: {anchor_film['movie_title']}")
+    
+    # 2. Art Direction
     director = ArtDirector(GEMINI_API_KEY)
-    style = director.dream_scene(anchor['movie_title'], anchor.get('synopsis', ''))
-    print(f"🎨 Connector: {style['connector_adjective']} {style['connector_object']}")
-    
-    # 3. CANVAS SETUP
-    W, H = 864, 1080
-    canvas = Image.new("RGBA", (W, H), (0, 0, 0, 255))
-    mask = Image.new("L", (W, H), 255) # White = Inpaint, Black = Keep
-    mask_draw = ImageDraw.Draw(mask)
-    
-    # 4. THEMATIC CONNECTOR LINE
-    grid = GridManager()
-    entry_x = int(W * grid.get_entry())
-    exit_x = int(W * random.uniform(0.2, 0.8))
-    
-    # Line Points (Simple Curve via multi-segment line)
-    # We want the line to be "White" on the mask so SDXL regenerates it.
-    # We leave the canvas transparent so SDXL fills it.
-    points = [
-        (entry_x, 0),
-        (entry_x, H * 0.2), # Go straight down a bit
-        (exit_x, H * 0.8),  # Angle across
-        (exit_x, H)         # Straight out
-    ]
-    
-    # Draw THICK line on MASK (White = "Inpaint this area please")
-    # Note: Previously we protected (Black) the line. Now we WANT to generate it (White).
-    # But wait! The mask is initialized to White (255).
-    # We will Paste images as Black (0).
-    # So the background is White (Inpaint).
-    # To force a SPECIFIC object on the line, we just rely on the prompt + the fact it's empty space.
-    # Actually, to ensure the line is distinct from the background, we might want to guide it?
-    # No, simplest is: Just let the background generation handle it via prompt:
-    # "A {connector} running vertically..."
-    
-    print(f"🔗 Line Path: {entry_x} -> {exit_x}")
-
-    # 5. PLACE ANCHOR (Top Half)
-    # Prefer Backdrop
-    anchor_suffix = anchor.get('tmdb_backdrop_path') or anchor.get('tmdb_poster_path')
-    anchor_img = download_asset(anchor['tmdb_id'], anchor_suffix)
-    
-    if anchor_img:
-        temp = ASSETS_DIR / "temp_anchor.png"
-        anchor_img.save(temp)
-        anchor_cutout = remove_bg_api(temp)
-        
-        # Scale: ~85% Width
-        scale = (W * 0.85) / anchor_cutout.width
-        new_size = (int(anchor_cutout.width * scale), int(anchor_cutout.height * scale))
-        anchor_cutout = anchor_cutout.resize(new_size, Image.Resampling.LANCZOS)
-        
-        # Pos: Top Center
-        x = (W - new_size[0]) // 2
-        y = 50
-        
-        canvas.paste(anchor_cutout, (x, y), anchor_cutout)
-        # Mask: Protect this area (Black)
-        mask.paste(ImageOps.invert(anchor_cutout.split()[3]), (x, y), anchor_cutout.split()[3])
-
-    # 6. PLACE GUESTS (Bottom Half - 2x2 Grid)
-    # Available area starts around y=500
-    grid_start_y = 550
-    grid_h = H - grid_start_y - 50
-    cell_w = W // 2
-    cell_h = grid_h // 2
-    
-    for i, guest in enumerate(guests):
-        suffix = guest.get('tmdb_poster_path')
-        img = download_asset(guest['tmdb_id'], suffix)
-        if img:
-            # Grid Position
-            row = i // 2
-            col = i % 2
-            center_x = (col * cell_w) + (cell_w // 2)
-            center_y = grid_start_y + (row * cell_h) + (cell_h // 2)
-            
-            # Scale: Fit within cell (padded)
-            # Max width 200px?
-            scale = 180 / img.width
-            new_size = (int(img.width * scale), int(img.height * scale))
-            img = img.resize(new_size, Image.Resampling.LANCZOS)
-            
-            x = center_x - (new_size[0] // 2)
-            y = center_y - (new_size[1] // 2)
-            
-            canvas.paste(img, (x, y), img)
-            # Mask: Protect
-            mask.paste(ImageOps.invert(img.split()[3]), (x, y), img.split()[3])
-
-    # 7. GENERATE
-    canvas.convert("RGB").save("input.png")
-    mask.save("mask.png")
-    
-    # Prompt Engineering
-    # We explicitly ask for the Connector Line in the prompt
-    full_prompt = (
-        f"{style['visual_prompt']}. "
-        f"A {style['connector_adjective']} {style['connector_object']} runs vertically through the center of the image "
-        f"connecting the top to the bottom. "
-        f"Photorealistic, 8k, highly detailed."
+    vision = director.dream_scene(
+        anchor_film['movie_title'], 
+        anchor_film.get('synopsis', 'A film in Tokyo.')
     )
+    print(f"🎨 Visual Prompt: {vision['visual_prompt']}")
     
-    print("🚀 Sending to SDXL...")
+    # 3. Grid Calculation
+    grid = GridManager()
+    entry_x = grid.get_entry_point()
+    exit_x = random.uniform(0.2, 0.8)
+    print(f"🔗 Grid Line: Start {entry_x:.2f} -> End {exit_x:.2f}")
+
+    # 4. Prepare Canvas & Mask
+    W, H = 1080, 1350 # IG Portrait
+    canvas = Image.new("RGB", (W, H), (0, 0, 0)) # Black base
+    mask = Image.new("L", (W, H), 255) # White (255) = Inpaint Area
+    
+    # 5. Place Asset (Using HORIZONTAL Backdrop)
+    tmdb_id = anchor_film.get('tmdb_id')
+    # --- CHANGE: Use Backdrop Path instead of Poster ---
+    asset_suffix = anchor_film.get('tmdb_backdrop_path') 
+    
+    poster_placed = False
+    
+    if tmdb_id and asset_suffix:
+        # Reuse download function (it works for backdrops too)
+        asset_path = download_poster(tmdb_id, asset_suffix) 
+        if asset_path:
+            asset_img = remove_background(asset_path)
+            
+            # --- CHANGE: Wider Scaling for Horizontal Images ---
+            # 16:9 image needs to be wider to make an impact. 
+            # Let's use 95% of the canvas width.
+            scale_factor = (W * 0.95) / asset_img.width
+            new_size = (int(asset_img.width * scale_factor), int(asset_img.height * scale_factor))
+            asset_img = asset_img.resize(new_size, Image.Resampling.LANCZOS)
+            
+            pos_x = (W - new_size[0]) // 2
+            pos_y = (H - new_size[1]) // 2
+            
+            # Paste onto Canvas
+            canvas.paste(asset_img, (pos_x, pos_y), asset_img)
+            
+            # Update Mask
+            mask_draw = ImageDraw.Draw(mask)
+            asset_alpha = asset_img.split()[3]
+            protection_mask = ImageOps.invert(asset_alpha)
+            mask.paste(protection_mask, (pos_x, pos_y), asset_alpha)
+            poster_placed = True
+            
+    if not poster_placed:
+        print("⚠️ Proceeding without asset cutout.")
+
+    # 6. GENERATE (Inpainting)
+    temp_canvas_path = "temp_canvas.png"
+    temp_mask_path = "temp_mask.png"
+    canvas.save(temp_canvas_path)
+    mask.save(temp_mask_path)
+    
+    print("🚀 Sending to Stability AI (SDXL)...")
     try:
         output = replicate.run(
             "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
             input={
-                "prompt": full_prompt,
-                "negative_prompt": "text, watermark, ugly, distorted, low quality",
-                "image": open("input.png", "rb"),
-                "mask": open("mask.png", "rb"), # White areas = Generate
-                "prompt_strength": 0.95,
-                "width": W,
-                "height": H
+                "prompt": f"{vision['visual_prompt']}. A {vision['connection_element']} runs vertically through the composition from top to bottom. High quality, 8k.",
+                "negative_prompt": "text, watermark, low quality, distorted, ugly, blurry text",
+                "image": open(temp_canvas_path, "rb"),
+                "mask": open(temp_mask_path, "rb"),
+                "prompt_strength": 0.95, 
+                "num_inference_steps": 40
             }
         )
+        bg_url = output[0]
+        print(f"✨ Background Generated: {bg_url}")
         
-        # 8. SAVE
-        final_img = Image.open(BytesIO(requests.get(output[0]).content)).convert("RGB")
-        filename = "post_v3_image_01.png"
-        final_img.save(OUTPUT_DIR / filename)
-        print(f"💾 Saved: {filename}")
+        # Download Result
+        resp = requests.get(bg_url)
+        final_img = Image.open(BytesIO(resp.content)).convert("RGB")
         
-        grid.save(exit_x / W)
+        # 8. Text Overlay
+        final_img = draw_text_overlay(final_img, anchor_film, [anchor_film])
         
+        # 9. Save Output
+        output_filename = f"post_v3_image_01.png"
+        final_img.save(OUTPUT_DIR / output_filename)
+        print(f"💾 Saved final post to {output_filename}")
+        
+        # 10. Save Grid State
+        grid.save_state(exit_x, anchor_film['movie_title'])
+        print("✅ Grid State updated.")
+
     except Exception as e:
-        print(f"❌ Generation Error: {e}")
+        print(f"❌ Generation failed: {e}")
 
 if __name__ == "__main__":
-    main()
+    if not REPLICATE_API_TOKEN or not GEMINI_API_KEY:
+        print("⚠️ Please set REPLICATE_API_TOKEN and GEMINI_API_KEY environment variables.")
+    else:
+        main()
