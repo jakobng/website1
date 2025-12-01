@@ -1,8 +1,9 @@
 """
-Generate Instagram-ready image carousel (V2.1 - "Minimalist Hero").
-- Cover: Stability AI Inpainting + Minimalist Typography (No boxes/accents).
-- Slides: Full-Bleed Cinema Photo + Blur + Light Overlay (Modern iOS/Glass style).
-- Text: White text with Drop Shadows for maximum readability.
+Generate Instagram-ready image carousel (V2.2 - "Proportional Story Cover").
+- Cover (Feed): 4:5 collage with inpainting.
+- Cover (Story): Dedicated 9:16 collage with inpainting for correct proportions.
+- Slides: Full-Bleed Cinema Photo + Blur + Light Overlay.
+- Text: Minimalist white typography with drop shadows.
 """
 from __future__ import annotations
 
@@ -303,9 +304,12 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
         print(f"   ⚠️ Rembg failed: {e}. Using original.")
     return pil_img.convert("RGBA")
 
-def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image, Image.Image, Image.Image]:
-    width = CANVAS_WIDTH
-    height = CANVAS_HEIGHT
+def create_layout_and_mask(cinemas: List[Tuple[str, Path]], target_width: int, target_height: int) -> Tuple[Image.Image, Image.Image, Image.Image]:
+    """
+    Arranges 5 cutouts in a CHAOTIC layout for given dimensions.
+    """
+    width = target_width
+    height = target_height
     
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
@@ -457,11 +461,8 @@ def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
     draw = ImageDraw.Draw(img)
     
     try:
-        # Bold for JP title
         title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 85)
-        # Bold for EN title (letter-spaced style)
         title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 40)
-        # Regular/Bold for Date
         date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 35)
     except:
         title_jp_font = ImageFont.load_default()
@@ -469,16 +470,13 @@ def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
         date_font = ImageFont.load_default()
         
     center_x = img.width // 2
-    # Vertically centered block
     center_y = int(img.height * 0.45) 
     
-    # 1. Japanese Title: "本日の上映セレクション"
+    # 1. Japanese Title
     jp_text = "本日の上映セレクション"
     draw_text_with_shadow(draw, (center_x, center_y), jp_text, title_jp_font, WHITE, anchor="mm")
     
-    # 2. English Title: "TODAY'S CINEMA SELECTION"
-    # To add letter spacing, we can manually draw character by character or just trust the font.
-    # For simplicity/robustness, we'll draw it normally but use a clear font.
+    # 2. English Title
     en_text = "TODAY'S CINEMA SELECTION"
     draw_text_with_shadow(draw, (center_x, center_y + 100), en_text, title_en_font, LIGHT_GRAY, anchor="mm")
     
@@ -679,27 +677,41 @@ def main() -> None:
                  collage_inputs.append(("Feature", p))
 
     if collage_inputs:
-        layout_rgba, layout_rgb, mask_img = create_layout_and_mask(collage_inputs)
-        inpainted_bg = inpaint_gaps(layout_rgb, mask_img)
-        print("   🔨 Compositing originals back onto Inpainted background...")
-        final_composite = inpainted_bg.copy()
+        # Feed Cover (4:5)
+        layout_rgba_feed, layout_rgb_feed, mask_img_feed = create_layout_and_mask(
+            collage_inputs, CANVAS_WIDTH, CANVAS_HEIGHT
+        )
+        inpainted_bg_feed = inpaint_gaps(layout_rgb_feed, mask_img_feed)
         
-        shadow_layer = Image.new("RGBA", final_composite.size, (0,0,0,0))
-        shadow_layer.paste((0,0,0,80), (10,10), mask=layout_rgba)
-        shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(15))
+        final_composite_feed = inpainted_bg_feed.copy()
+        shadow_layer_feed = Image.new("RGBA", final_composite_feed.size, (0,0,0,0))
+        shadow_layer_feed.paste((0,0,0,80), (10,10), mask=layout_rgba_feed)
+        shadow_layer_feed = shadow_layer_feed.filter(ImageFilter.GaussianBlur(15))
         
-        final_composite.paste(shadow_layer, (0,0), mask=shadow_layer)
-        final_composite.paste(layout_rgba, (0,0), mask=layout_rgba)
+        final_composite_feed.paste(shadow_layer_feed, (0,0), mask=shadow_layer_feed)
+        final_composite_feed.paste(layout_rgba_feed, (0,0), mask=layout_rgba_feed)
         
-        # New Minimalist Title
-        final_cover = draw_cover_overlay(final_composite, bilingual_date_str)
-        final_cover.save(BASE_DIR / f"post_image_00.png")
+        final_cover_feed = draw_cover_overlay(final_composite_feed, bilingual_date_str)
+        final_cover_feed.save(BASE_DIR / f"post_image_00.png")
         
-        story_cover = final_cover.resize((CANVAS_WIDTH, int(CANVAS_WIDTH * final_cover.height / final_cover.width)))
-        s_c = Image.new("RGB", (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), WHITE)
-        y_off = (STORY_CANVAS_HEIGHT - story_cover.height) // 2
-        s_c.paste(story_cover, (0, y_off))
-        s_c.save(BASE_DIR / f"story_image_00.png")
+        # Story Cover (9:16)
+        random.shuffle(collage_inputs)
+        layout_rgba_story, layout_rgb_story, mask_img_story = create_layout_and_mask(
+            collage_inputs, CANVAS_WIDTH, STORY_CANVAS_HEIGHT
+        )
+        inpainted_bg_story = inpaint_gaps(layout_rgb_story, mask_img_story)
+        
+        final_composite_story = inpainted_bg_story.copy()
+        shadow_layer_story = Image.new("RGBA", final_composite_story.size, (0,0,0,0))
+        shadow_layer_story.paste((0,0,0,80), (10,10), mask=layout_rgba_story)
+        shadow_layer_story = shadow_layer_story.filter(ImageFilter.GaussianBlur(15))
+        
+        final_composite_story.paste(shadow_layer_story, (0,0), mask=shadow_layer_story)
+        final_composite_story.paste(layout_rgba_story, (0,0), mask=layout_rgba_story)
+        
+        final_cover_story = draw_cover_overlay(final_composite_story, bilingual_date_str)
+        final_cover_story.save(BASE_DIR / f"story_image_00.png")
+        
     else:
         fb = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (30,30,30))
         draw_cover_overlay(fb, bilingual_date_str).save(BASE_DIR / "post_image_00.png")
