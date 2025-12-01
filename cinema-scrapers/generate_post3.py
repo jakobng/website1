@@ -83,7 +83,7 @@ class ArtDirector:
         It will be used by an AI Image Generator (SDXL) to "inpaint" the empty space around a movie poster.
 
         RULES:
-        1. OUTPUT JSON ONLY.
+        1. OUTPUT A SINGLE JSON OBJECT ONLY. Do not output a list.
         2. "visual_prompt": A descriptive prompt for SDXL. Include texture, lighting, and style keywords. 
            (e.g. "Cyberpunk street, neon rain, wet asphalt, high contrast, 8k, photorealistic")
         3. "connection_element": A specific object that forms a vertical line. 
@@ -100,7 +100,27 @@ class ArtDirector:
                     response_mime_type="application/json"
                 )
             )
-            return json.loads(response.text)
+            
+            # Parse the response text
+            data = json.loads(response.text)
+            
+            # --- FIX: Handle List vs Dict output ---
+            # If Gemini returned a list (e.g. [{...}]), grab the first item.
+            if isinstance(data, list):
+                if len(data) > 0:
+                    data = data[0]
+                else:
+                    # Fallback if empty list
+                    data = {}
+
+            # Fallback defaults if keys are missing
+            if "visual_prompt" not in data:
+                data["visual_prompt"] = "Cinematic atmosphere, soft dramatic lighting, photorealistic texture, 8k"
+            if "connection_element" not in data:
+                data["connection_element"] = "A steel wire"
+                
+            return data
+
         except Exception as e:
             print(f"❌ Art Director hallucination failed: {e}")
             return {
