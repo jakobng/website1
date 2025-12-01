@@ -2,7 +2,8 @@
 Generate Instagram-ready image carousel (V1 - "The Organic Mashup - Recognizable").
 - Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Atmosphere) -> Paste Back with Shadow.
 - Tweak: Reduced mask erosion and added drop shadow to keep cinemas recognizable.
-- Update: Reverted individual slides to use Cinema Photos + Dark Overlay (No Sunburst).
+- Update 1: Reverted individual slides to use Cinema Photos + Dark Overlay (No Sunburst).
+- Update 2: Switched Inpainting model back to Stability AI (instead of Flux).
 """
 from __future__ import annotations
 
@@ -59,18 +60,12 @@ STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
-# --- GLOBAL COLORS (Updated for Dark Mode) ---
-# Previous Sunburst colors commented out
-# SUNBURST_CENTER = (255, 210, 0) 
-# SUNBURST_OUTER = (255, 255, 255)
-# BLACK = (20, 20, 20)
-# GRAY = (30, 30, 30) 
-
-# New Dark Mode Colors
+# --- GLOBAL COLORS (Dark Mode) ---
 WHITE = (255, 255, 255)
 OFF_WHITE = (240, 240, 240)
 LIGHT_GRAY = (200, 200, 200)
 DARK_GRAY = (30, 30, 30)
+# BLACK = (20, 20, 20) # Kept for compatibility if needed
 
 # --- Database (Cinemas) ---
 CINEMA_ADDRESSES = {
@@ -348,66 +343,44 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """
-    NEW VERSION:
-    Performs AI inpainting using black-forest-labs / flux-fill-pro.
-    Only white areas in the mask are inpainted.
-    All black areas are preserved (cinema cutouts).
-    """
+    """Uses Stability AI Inpaint to fill gaps."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ⚠️ Replicate unavailable. Using layout as-is.")
+        print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps with FLUX-FILL-PRO (dream architecture mode) ...")
-
-    # Save temp files
-    temp_img_path = BASE_DIR / "temp_inpaint_img.png"
-    temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
-    layout_img.save(temp_img_path, format="PNG")
-    mask_img.save(temp_mask_path, format="PNG")
-
+    print("   🎨 Inpainting gaps (Unified Structure / Stability AI)...")
     try:
+        temp_img_path = BASE_DIR / "temp_inpaint_img.png"
+        temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
+        
+        layout_img.save(temp_img_path, format="PNG")
+        mask_img.save(temp_mask_path, format="PNG")
+        
         output = replicate.run(
-            "black-forest-labs/flux-fill-pro",
+            "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-
-                # PROMPT: keeps close to original aesthetic
-                "prompt": (
-                    "impossible cinema palace made of fragments of Tokyo theaters, "
-                    "hybrid brutalist-megastructure, merging geometrically, dreamlike volumetric fog, "
-                    "Escher-like walkways, monumental atrium, flowing architecture, "
-                    "film projectors melting into walls, surreal atmospheric lighting, "
-                    "hyper-detailed impossible architecture, no grids, no text, no frames, no collage panels"
-                    ),
-
-                # Flux parameters
-                "steps": 40,
-                "guidance": 40,
-                "output_format": "png",
-                "prompt_upsampling": False,
-                "safety_tolerance": 2
-            },
+                "prompt": "surreal architectural mashup, single unified dream structure, seamless wide angle shot, concrete texture, cinematic lighting, neutral tones, 8k",
+                "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
+                "num_inference_steps": 30,
+                "guidance_scale": 7.5,
+                "strength": 0.85 # Reduced from 0.95 to keep more original context
+            }
         )
-
-        # Clean temp files
-        if temp_img_path.exists(): temp_img_path.unlink()
-        if temp_mask_path.exists(): temp_mask_path.unlink()
-
+        
+        if temp_img_path.exists(): os.remove(temp_img_path)
+        if temp_mask_path.exists(): os.remove(temp_mask_path)
+        
         if output:
             url = output[0] if isinstance(output, list) else output
             resp = requests.get(url)
             if resp.status_code == 200:
-                result = Image.open(BytesIO(resp.content)).convert("RGB")
-                return result.resize(layout_img.size, Image.Resampling.LANCZOS)
-
-        print("   ⚠️ Flux returned no image. Using layout.")
-        return layout_img
-
+                img = Image.open(BytesIO(resp.content)).convert("RGB")
+                return img.resize(layout_img.size, Image.Resampling.LANCZOS)
     except Exception as e:
-        print(f"   ⚠️ Flux Inpainting error: {e}")
-        return layout_img
+        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
+    return layout_img
 
 # --- IMAGE GENERATORS ---
 
