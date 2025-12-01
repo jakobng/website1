@@ -1,9 +1,8 @@
 """
 Generate Instagram-ready image carousel (V1 - "The Organic Mashup - Recognizable").
 - Logic: 5 Cutouts -> Chaotic Layout -> Inpaint (Atmosphere) -> Paste Back with Shadow.
-- Tweak: Reduced mask erosion and added drop shadow to keep cinemas recognizable.
-- Update 1: Reverted individual slides to use Cinema Photos + Dark Overlay (No Sunburst).
-- Update 2: Switched Inpainting model back to Stability AI (instead of Flux).
+- Feature: Uses Stability AI for Inpainting (Unified Structure).
+- Feature: Cinema Slides use specific Cinema Photos with Dark Overlay.
 """
 from __future__ import annotations
 
@@ -62,10 +61,10 @@ TITLE_WRAP_WIDTH = 30
 
 # --- GLOBAL COLORS (Dark Mode) ---
 WHITE = (255, 255, 255)
-OFF_WHITE = (240, 240, 240)
 LIGHT_GRAY = (200, 200, 200)
 DARK_GRAY = (30, 30, 30)
-# BLACK = (20, 20, 20) # Kept for compatibility if needed
+# BLACK is kept for compatibility if needed, but we mostly use WHITE on Dark BG
+BLACK = (20, 20, 20) 
 
 # --- Database (Cinemas) ---
 CINEMA_ADDRESSES = {
@@ -338,12 +337,12 @@ def create_layout_and_mask(cinemas: List[Tuple[str, Path]]) -> Tuple[Image.Image
 
     # ADJUSTMENT: Less Mask Dilation (11px instead of 21px)
     # This keeps the "Keep" area (Black) larger, protecting the image edges more
-    mask = mask.filter(ImageFilter.MaxFilter(35)) 
+    mask = mask.filter(ImageFilter.MaxFilter(11)) 
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    """Uses Stability AI Inpaint to fill gaps."""
+    """Uses Stability AI Inpaint to fill gaps (Restored from prompt)."""
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
@@ -365,7 +364,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
                 "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
                 "num_inference_steps": 30,
                 "guidance_scale": 7.5,
-                "strength": 0.85 # Reduced from 0.95 to keep more original context
+                "strength": 0.85 
             }
         )
         
@@ -382,7 +381,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
     return layout_img
 
-# --- IMAGE GENERATORS ---
+# --- IMAGE GENERATORS (Cinema Photo Support) ---
 
 def create_fallback_gradient(width: int, height: int) -> Image.Image:
     """Generates a subtle dark gradient if no photo is found."""
@@ -450,49 +449,20 @@ def create_sunburst_background(width: int, height: int) -> Image.Image:
     return img.resize((width, height), Image.Resampling.LANCZOS)
 
 def draw_cover_overlay(bg_img: Image.Image, bilingual_date: str) -> Image.Image:
-    """
-    Adds the Title and Date overlay.
-    Style: Top Left, Bold, Bilingual Title + Date.
-    Color: White text with Drop Shadow (No accent lines).
-    """
+    """Adds ONLY the Date Pill."""
     img = bg_img.convert("RGBA")
     overlay = Image.new("RGBA", img.size, (0,0,0,0))
     draw = ImageDraw.Draw(overlay)
     
     try:
-        # Load fonts using the global BOLD_FONT_PATH
-        title_font_en = ImageFont.truetype(str(BOLD_FONT_PATH), 80) # Large English
-        title_font_jp = ImageFont.truetype(str(BOLD_FONT_PATH), 40) # Medium Japanese
-        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)     # Small Date
-    except Exception:
-        title_font_en = ImageFont.load_default()
-        title_font_jp = ImageFont.load_default()
+        date_font = ImageFont.truetype(str(BOLD_FONT_PATH), 28)
+    except:
         date_font = ImageFont.load_default()
     
-    # Text Content
-    title_en = "TOKYO CINEMA INDEX"
-    title_jp = "東京シネマインデックス"
-    
-    # Coordinates (Top Left with standard margin)
-    x = 60
-    y = 60
-    
-    # Vertical spacing
-    y_jp = y + 95   # Spacing for JP title below English
-    y_date = y + 160 # Spacing for Date below JP title
-    
-    # 1. Drop Shadows (Essential for legibility on chaotic backgrounds)
-    shadow_color = (20, 20, 20, 180) # Semi-transparent black
-    offset = 4
-    
-    draw.text((x + offset, y + offset), title_en, font=title_font_en, fill=shadow_color)
-    draw.text((x + offset, y_jp + offset), title_jp, font=title_font_jp, fill=shadow_color)
-    draw.text((x + offset, y_date + offset), bilingual_date, font=date_font, fill=shadow_color)
-    
-    # 2. Main Text (Pure White)
-    draw.text((x, y), title_en, font=title_font_en, fill=(255, 255, 255))
-    draw.text((x, y_jp), title_jp, font=title_font_jp, fill=(255, 255, 255))
-    draw.text((x, y_date), bilingual_date, font=date_font, fill=(255, 255, 255))
+    # Date Pill (Top Left)
+    pill_x, pill_y = 60, 60
+    draw.rectangle([pill_x, pill_y, pill_x + 320, pill_y + 50], fill=(20, 20, 20))
+    draw.text((pill_x + 20, pill_y + 8), bilingual_date, font=date_font, fill=(255, 255, 255))
     
     return Image.alpha_composite(img, overlay).convert("RGB")
 
