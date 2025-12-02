@@ -81,10 +81,7 @@ jobs:
         run: python main_scraper.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           
-
       # --- STEP 2: GENERATE ASSETS ---
       
       # V1: Cinemas (08:00 JST)
@@ -93,6 +90,8 @@ jobs:
         run: python generate_post.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
 
       # V2: Movies (09:00 & 10:00 JST) - UPDATED FOR PUNK ZINE
       - name: Generate Movie Slides (V2 - Punk Zine)
@@ -103,7 +102,6 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
 
      # --- STEP 3: COMMIT & PUSH ---
       - name: Commit and push generated files
