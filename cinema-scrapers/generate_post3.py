@@ -1,7 +1,8 @@
 """
-Generate Post V3 (The Curator)
-- Workflow: Extract -> Curate (Gemini) -> Assemble -> Paint (Flux).
-- Outputs: post_v3_result.png (Final), post_v3_debug_*.png (Process).
+Generate Post V5: "The Visual Translator"
+- Workflow: Audition -> Curate -> Assemble -> Paint.
+- Upgrade: Gemini Prompting logic is rewritten to focus on visual texture, 
+  lighting, and cohesion rather than narrative lore.
 """
 
 import os
@@ -35,12 +36,11 @@ REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # --- Configuration ---
-# Ensure we save exactly where the script is located
 BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 TMDB_BASE_URL = "https://image.tmdb.org/t/p/original"
 
-# MATCHING FILENAMES (V3)
+# MATCHING FILENAMES (V3 Standard)
 OUTPUT_FILENAME = "post_v3_test.png"
 DEBUG_AUDITION_FILENAME = "post_v3_debug_audition.png"
 DEBUG_LAYOUT_FILENAME = "post_v3_debug_layout.png"
@@ -150,6 +150,10 @@ def create_contact_sheet(cutouts):
     return sheet
 
 def ask_gemini_selection(contact_sheet, candidates_info):
+    """
+    Step 1: The Director.
+    Looks at the options and picks the cast.
+    """
     print("\n🧠 --- GEMINI CASTING (Step 1) ---")
     if not GEMINI_API_KEY: return {"selected_ids": [0, 1, 2], "concept": "Fallback"}
     
@@ -160,23 +164,25 @@ def ask_gemini_selection(contact_sheet, candidates_info):
         simple_ctx.append({
             "id": c['id'],
             "title": c['title'],
+            "genres": c['genre'],
             "synopsis": c['synopsis']
         })
 
     prompt = f"""
-    You are a Film Curator. I have extracted characters from different movies (labeled 0-{len(candidates_info)-1}).
+    You are a Film Curator designing a surreal movie poster.
+    I have extracted character elements from {len(candidates_info)} different movies (labeled 0-{len(candidates_info)-1}).
     
     CONTEXT:
     {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
 
     TASK:
-    1. Select exactly 3 candidates that form a compelling narrative trio.
-    2. Imagine a scene they are starring in together.
+    1. Select exactly 3 candidates that have interesting visual contrast or thematic links.
+    2. Define a VISUAL CONCEPT that unifies them. (e.g. "Gritty urban noir," "Ethereal dreamscape," "Cyberpunk neon," "Vintage paper collage").
     
     OUTPUT JSON:
     {{
         "selected_ids": [0, 1, 2],
-        "concept": "The three characters are standing in..."
+        "concept": "A high-contrast noir scene with heavy shadows..."
     }}
     """
     
@@ -198,21 +204,35 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     return {"selected_ids": [0, 1, 2], "concept": "Cinematic Collage"}
 
 def ask_gemini_prompt(layout_image, concept_text):
-    print("\n🎨 --- GEMINI DIRECTION (Step 2) ---")
+    """
+    Step 2: The Prompt Engineer.
+    Translates the layout + concept into a technical prompt for Flux.
+    """
+    print("\n🎨 --- GEMINI VISUAL TRANSLATION (Step 2) ---")
     if not GEMINI_API_KEY: return "cinematic collage"
     
     client = genai.Client(api_key=GEMINI_API_KEY)
     preview = layout_image.resize((512, 640))
     
     prompt = f"""
-    You are a VFX Artist.
-    CONCEPT: "{concept_text}"
+    You are an expert AI Prompt Engineer for Flux Inpainting.
     
-    TASK:
-    Write a descriptive prompt for 'Flux Fill' (AI Inpainting) to turn this layout into a masterpiece.
-    - Describe the ENVIRONMENT and LIGHTING connecting them.
-    - Do NOT describe the characters.
-    - Return ONLY the prompt string.
+    INPUT:
+    1. A rough collage layout (attached image) with 3 character stickers on a grey background.
+    2. A target concept: "{concept_text}"
+    
+    YOUR GOAL:
+    Write a single, highly descriptive prompt that tells the AI how to FILL the grey space to make this look like one cohesive, finished image.
+    
+    CRITICAL RULES:
+    1. IGNORE FILM TITLES. The AI doesn't know them. Use visual descriptions instead.
+    2. DO NOT DESCRIBE THE CHARACTERS. They are already in the image. 
+    3. DESCRIBE THE GLUE. Describe the environment, the lighting, and the texture that surrounds them.
+    4. UNIFY THE STYLE. If the stickers look different (e.g. anime vs photo), instruct the AI to use a style that bridges them (e.g. "Mixed media collage style," "Double exposure," "Glitch art," "Dreamy bokeh").
+    
+    OUTPUT FORMAT:
+    Return ONLY the prompt string. 
+    Example structure: "[Environment description], [Lighting conditions], [Texture/Medium], [Color Palette], [High quality keywords]"
     """
     
     try:
@@ -229,6 +249,7 @@ def ask_gemini_prompt(layout_image, concept_text):
 def build_layout(selected_items):
     canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0,0,0,0))
     
+    # Define anchor points (Top/Mid/Low priority)
     anchors = [
         (CANVAS_W//2, CANVAS_H - 100),   
         (300, CANVAS_H - 300),           
@@ -240,22 +261,28 @@ def build_layout(selected_items):
         if i >= 3: break
         img = item['img']
         
+        # Determine scale
         target_w = random.randint(600, 850)
         ratio = target_w / img.width
         target_h = int(img.height * ratio)
         
+        # Max height cap
         if target_h > 1000:
             target_h = 1000
             target_w = int(target_h / ratio)
 
         img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
         
+        # Position
         ax, ay = anchors[i]
         x = ax - (img.width // 2)
         y = ay - img.height 
         
+        # Jitter
         x += random.randint(-50, 50)
         y += random.randint(-50, 50)
+        
+        # Boundary checks
         x = max(-200, min(x, CANVAS_W - 200))
         y = max(100, min(y, CANVAS_H - 200))
         
@@ -278,16 +305,18 @@ def add_typography(img):
         font = ImageFont.load_default()
         small_font = ImageFont.load_default()
 
+    # Title
     text = "TOKYO CINEMA"
     draw.text((60, 60), text, font=font, fill="white", stroke_width=4, stroke_fill="black")
     
+    # Date
     today = datetime.now().strftime("%Y.%m.%d")
     draw.text((65, 180), today, font=small_font, fill="#FDB813", stroke_width=2, stroke_fill="black")
     
     return img
 
 def main():
-    print("🚀 Starting V4 (The Curator)...")
+    print("🚀 Starting V5 (The Visual Translator)...")
     
     candidates = load_candidates()
     processed_roster = []
@@ -307,6 +336,7 @@ def main():
                 processed_roster.append({
                     "id": len(processed_roster), 
                     "title": clean_title(film['movie_title']),
+                    "genre": ", ".join(film.get('genres', [])),
                     "synopsis": film.get('tmdb_overview', '')[:100],
                     "img": cutout
                 })
@@ -321,6 +351,7 @@ def main():
         sheet.save(BASE_DIR / DEBUG_AUDITION_FILENAME)
         print(f"📸 Contact sheet saved: {BASE_DIR / DEBUG_AUDITION_FILENAME}")
     
+    # Step 1: Selection
     selection_data = ask_gemini_selection(sheet, processed_roster)
     selected_ids = selection_data.get('selected_ids', [])[:3]
     concept = selection_data.get('concept', 'Collage')
@@ -333,8 +364,10 @@ def main():
     layout.save(BASE_DIR / DEBUG_LAYOUT_FILENAME)
     print(f"📐 Layout saved: {BASE_DIR / DEBUG_LAYOUT_FILENAME}")
     
+    # Step 2: Prompt Translation
     viz_prompt = ask_gemini_prompt(layout, concept)
     
+    # Step 3: Inpainting
     print("🎨 Inpainting...")
     if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
         layout.save(BASE_DIR / "temp_src.png")
