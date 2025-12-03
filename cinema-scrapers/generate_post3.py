@@ -1,9 +1,10 @@
 """
-Generate Post V10.1: "Pure Python & AI Text"
-- Logic:
-  - No Numpy dependency (Easy install).
-  - Selection: Relies on Gemini "Strict Mode" to ignore garbage cutouts.
-  - Text: Asks Flux (via Gemini Prompt) to render typography in-scene.
+Generate Post V11: "The Transparent Logger"
+- Model: gemini-2.5-flash
+- Logic: 
+  - Detailed Logging: Prints exact Prompts and Responses to console.
+  - Strict Selection: Relies on Gemini to reject debris.
+  - AI Typography: Asks Flux to render text in-scene.
 """
 
 import os
@@ -93,7 +94,6 @@ def fetch_image(url):
 def remove_background(pil_img):
     """
     Sends full resolution image to Replicate.
-    No pixel analysis—we trust Gemini to reject bad results later.
     """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return pil_img
     
@@ -108,11 +108,7 @@ def remove_background(pil_img):
         if output:
             resp = requests.get(str(output))
             cutout = Image.open(BytesIO(resp.content)).convert("RGBA")
-            
-            # Basic sanity check: is it fully transparent?
-            if cutout.getextrema()[3][1] == 0: 
-                return None
-                
+            if cutout.getextrema()[3][1] == 0: return None
             return cutout
     except Exception as e:
         print(f"   ❌ Rembg error: {e}")
@@ -146,7 +142,7 @@ def create_contact_sheet(cutouts):
     return sheet
 
 def ask_gemini_selection(contact_sheet, candidates_info):
-    print("\n🧠 --- GEMINI CASTING (Strict Mode) ---")
+    print("\n🧠 --- GEMINI CASTING (Model: 2.5-flash) ---")
     if not GEMINI_API_KEY: return {"selected_ids": [0, 1, 2], "concept": "Fallback"}
     
     client = genai.Client(api_key=GEMINI_API_KEY)
@@ -167,12 +163,19 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "A brief description..." }}
     """
     
+    # --- LOGGING PROMPT ---
+    print(f"\n📤 PROMPT SENT TO GEMINI:\n{'-'*40}\n{prompt}\n{'-'*40}")
+    
     try:
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=[prompt, contact_sheet]
         )
         text = response.text.strip()
+        
+        # --- LOGGING RESPONSE ---
+        print(f"\n📥 GEMINI RESPONSE:\n{'-'*40}\n{text}\n{'-'*40}")
+        
         json_match = re.search(r'\{.*\}', text, re.DOTALL)
         if json_match:
             return json.loads(json_match.group(0))
@@ -182,7 +185,7 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     return {"selected_ids": [0, 1, 2], "concept": "Cinematic Collage"}
 
 def ask_gemini_prompt(layout_image, concept_text, date_str):
-    print("\n🎨 --- GEMINI TRANSLATION (AI Typography) ---")
+    print("\n🎨 --- GEMINI TRANSLATION (Model: 2.5-flash) ---")
     if not GEMINI_API_KEY: return "cinematic collage"
     
     client = genai.Client(api_key=GEMINI_API_KEY)
@@ -204,13 +207,21 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
 
     Return ONLY the prompt string.
     """
+
+    # --- LOGGING PROMPT ---
+    print(f"\n📤 PROMPT SENT TO GEMINI:\n{'-'*40}\n{prompt}\n{'-'*40}")
     
     try:
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=[prompt, preview]
         )
-        return response.text.strip().replace("Prompt:", "").replace('"', '').strip()
+        text = response.text.strip()
+        
+        # --- LOGGING RESPONSE ---
+        print(f"\n📥 GEMINI RESPONSE:\n{'-'*40}\n{text}\n{'-'*40}")
+        
+        return text.replace("Prompt:", "").replace('"', '').strip()
     except:
         return f"cinematic high quality collage, text 'TOKYO CINEMA {date_str}'"
 
@@ -265,7 +276,7 @@ def build_layout(selected_items):
     return flat, mask
 
 def main():
-    print("🚀 Starting V10.1 (No Numpy)...")
+    print("🚀 Starting V11 (Transparent Logger)...")
     
     candidates = load_candidates()
     processed_roster = []
