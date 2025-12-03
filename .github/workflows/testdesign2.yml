@@ -1,7 +1,7 @@
 name: Test generate_post3.py
 
 on:
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch: # Manual trigger only
 
 jobs:
   test_design_only:
@@ -17,41 +17,43 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Upgraded to 3.11 for better speed/compat
+          python-version: '3.11' 
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
+          # Installing specific libraries needed for the V3 prototype
           pip install google-genai replicate requests Pillow tzdata
 
       - name: Run Generator V3 (Prototype)
-        # ⚠️ IMPORTANT: Ensure this matches your folder structure. 
-        # If generate_post3.py is in the root, remove the working-directory line.
+        # ⚠️ Ensures the script finds showtimes.json in the same folder
         working-directory: './cinema-scrapers' 
         run: python generate_post3.py
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Commit Generated Image for Inspection
+      - name: Commit Generated Images for Inspection
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # --- FIX: Match the exact filename defined in generate_post3.py ---
-          # Assumes the script runs in ./cinema-scrapers and outputs there
+          # --- CRITICAL FIX ---
+          # We force add (-f) because these are new files not yet tracked by git.
+          # We add BOTH the final result and the debug layout to see the "Before & After".
           git add -f cinema-scrapers/post_v3_test.png
+          git add -f cinema-scrapers/post_v3_debug_layout.png
 
-          # Debug: Show what is staged
+          # Debug: Show us exactly what is staged to be committed
           git status
 
-          # If nothing is staged, exit without error
+          # If nothing changed (script failed to save), exit gracefully
           if git diff --cached --quiet; then
-            echo "No design changes detected (Image might not have saved)."
+            echo "⚠️ No image changes detected. The script might have failed to save the files."
             exit 0
           fi
 
-          git commit -m "DESIGN TEST: Generated V3 Collage Prototype"
+          git commit -m "DESIGN TEST: Generated V3 Collage (Result + Debug Layout)"
           git pull origin main --rebase
           git push
         env:
