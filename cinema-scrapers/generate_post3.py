@@ -1,10 +1,9 @@
 """
-Generate Post V17: "The Style Injector"
-- Fixes: "Boring Style" & "Bad Integration"
-- Strategy: 
-  1. Randomly selects from a list of aggressive Art Styles (Risograph, Acid, Noir, etc.).
-  2. Uses a "ControlNet-like" prompt logic: "Paint over this layout, do not move subjects."
-  3. Forces Native Text Rendering within that specific style.
+Generate Post V10.1: "Pure Python & AI Text"
+- Logic:
+  - No Numpy dependency (Easy install).
+  - Selection: Relies on Gemini "Strict Mode" to ignore garbage cutouts.
+  - Text: Asks Flux (via Gemini Prompt) to render typography in-scene.
 """
 
 import os
@@ -28,7 +27,6 @@ except ImportError:
 
 try:
     from google import genai
-    from google.genai import types
     GEMINI_AVAILABLE = True
 except ImportError:
     GEMINI_AVAILABLE = False
@@ -43,23 +41,12 @@ BASE_DIR = Path(__file__).resolve().parent
 SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
 TMDB_BASE_URL = "https://image.tmdb.org/t/p/original"
 
+# Filenames
 OUTPUT_FILENAME = "post_v3_test.png"
-CANVAS_W, CANVAS_H = 1080, 1350
+DEBUG_AUDITION_FILENAME = "post_v3_debug_audition.png"
+DEBUG_LAYOUT_FILENAME = "post_v3_debug_layout.png"
 
-# --- THE STYLE ROULETTE ---
-# We force these styles to prevent "Boring" output
-ART_STYLES = [
-    "Gritty Risograph Print: High contrast, dithering noise, vibrant neon ink overlays, rough paper texture.",
-    "Japanese Woodblock (Ukiyo-e) Fusion: Flat perspective, bold outlines, muted earthy colors mixed with modern streetwear aesthetics.",
-    "Acid Graphics / Y2K: Chrome textures, liquid metal forms, glitch effects, iridescent colors, high-tech HUD elements.",
-    "Vintage 70s Airbrush: Soft focus, grainy texture, psychedelic swirling mists, warm retro color palette.",
-    "Dark Fantasy Oil Painting: Thick impasto brushstrokes, dramatic chiaroscuro lighting, deep shadows, rich jewel tones.",
-    "Cyberpunk Collage: Halftone patterns, torn paper edges, xerox degradation, neon tape, gritty urban textures.",
-    "Bauhaus Minimalist: Geometric shapes, primary colors, clean lines, asymmetrical composition, stark contrast.",
-    "Film Noir Photography: High contrast black and white, heavy grain, volumetric fog, dramatic shadows, wet pavement.",
-    "Abstract Expressionist: Chaotic splatter, dripping paint, aggressive brushwork, emotional and textured.",
-    "Vaporwave / Surrealism: Greek statues, checkerboard floors, floating tropical plants, pink and teal gradients, nostalgic VHS static."
-]
+CANVAS_W, CANVAS_H = 1080, 1350
 
 def get_today_str():
     return datetime.now().strftime("%Y-%m-%d")
@@ -82,11 +69,15 @@ def load_candidates():
     seen = set()
     for film in data:
         if film.get('date_text') != today: continue
-        path = film.get('tmdb_backdrop_path') or film.get('tmdb_poster_path')
+        
+        path = film.get('tmdb_backdrop_path')
+        if not path: path = film.get('tmdb_poster_path')
         if not path: continue
+        
         t = film.get('movie_title')
         if t in seen: continue
         seen.add(t)
+        
         candidates.append({"film": film, "path": path})
         
     random.shuffle(candidates)
@@ -100,7 +91,10 @@ def fetch_image(url):
         return None
 
 def remove_background(pil_img):
-    """Replicate Cutout (High Quality)"""
+    """
+    Sends full resolution image to Replicate.
+    No pixel analysis—we trust Gemini to reject bad results later.
+    """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return pil_img
     
     temp_path = BASE_DIR / "temp_rembg_in.png"
@@ -114,7 +108,11 @@ def remove_background(pil_img):
         if output:
             resp = requests.get(str(output))
             cutout = Image.open(BytesIO(resp.content)).convert("RGBA")
-            if cutout.getextrema()[3][1] == 0: return None
+            
+            # Basic sanity check: is it fully transparent?
+            if cutout.getextrema()[3][1] == 0: 
+                return None
+                
             return cutout
     except Exception as e:
         print(f"   ❌ Rembg error: {e}")
@@ -126,8 +124,10 @@ def create_contact_sheet(cutouts):
     cols = 3
     rows = math.ceil(count / cols)
     cell_w, cell_h = 300, 300
+    
     sheet = Image.new("RGB", (cols * cell_w, rows * cell_h), (50, 50, 50))
     draw = ImageDraw.Draw(sheet)
+    
     try:
         font = ImageFont.truetype(str(BASE_DIR / "NotoSansJP-Bold.ttf"), 40)
     except:
@@ -146,22 +146,30 @@ def create_contact_sheet(cutouts):
     return sheet
 
 def ask_gemini_selection(contact_sheet, candidates_info):
-    print("\n🧠 --- GEMINI CASTING ---")
-    if not GEMINI_API_KEY: return {"selected_ids": [0, 1, 2]}
+    print("\n🧠 --- GEMINI CASTING (Strict Mode) ---")
+    if not GEMINI_API_KEY: return {"selected_ids": [0, 1, 2], "concept": "Fallback"}
     
     client = genai.Client(api_key=GEMINI_API_KEY)
-    simple_ctx = [{"id": c['id'], "title": c['title']} for c in candidates_info]
+    simple_ctx = [{"id": c['id'], "title": c['title'], "genres": c['genre']} for c in candidates_info]
 
     prompt = f"""
-    You are a Film Curator. Context: {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
+    You are a Film Curator. 
+    Context: {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
+    
+    Look at the contact sheet (labeled 0, 1, 2...).
+    
     TASK: Select exactly 3 candidates.
-    CRITICAL: Choose clear, visible subjects. Rejects blurry/empty ones.
-    Return JSON: {{ "selected_ids": [0, 1, 2] }}
+    CRITICAL:
+    1. Only choose candidates where the subject is CLEAR and VISIBLE.
+    2. Do NOT choose empty boxes or tiny debris.
+    3. If a box looks empty, IGNORE IT.
+    
+    Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "A brief description..." }}
     """
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[prompt, contact_sheet]
         )
         text = response.text.strip()
@@ -170,7 +178,41 @@ def ask_gemini_selection(contact_sheet, candidates_info):
             return json.loads(json_match.group(0))
     except Exception as e:
         print(f"⚠️ Gemini Selection Error: {e}")
-    return {"selected_ids": [0, 1, 2]}
+        
+    return {"selected_ids": [0, 1, 2], "concept": "Cinematic Collage"}
+
+def ask_gemini_prompt(layout_image, concept_text, date_str):
+    print("\n🎨 --- GEMINI TRANSLATION (AI Typography) ---")
+    if not GEMINI_API_KEY: return "cinematic collage"
+    
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    preview = layout_image.resize((512, 640))
+    
+    prompt = f"""
+    You are an AI Prompt Engineer for Flux.
+    
+    Goal: Create a cohesive movie poster from the attached layout.
+    Concept: "{concept_text}"
+    Required Text: "TOKYO CINEMA" and "{date_str}"
+    
+    Instructions for Flux:
+    1. UNIFY the characters with a strong environment (lighting, fog, texture).
+    2. INTEGRATE THE TEXT ("TOKYO CINEMA") into the scene naturally.
+       (e.g., Neon sign, graffiti, projected light, cinematic title card style).
+    3. Make the text LEGIBLE but STYLISH.
+    4. Do not describe the characters (they are locked).
+
+    Return ONLY the prompt string.
+    """
+    
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=[prompt, preview]
+        )
+        return response.text.strip().replace("Prompt:", "").replace('"', '').strip()
+    except:
+        return f"cinematic high quality collage, text 'TOKYO CINEMA {date_str}'"
 
 def build_layout(selected_items):
     canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0,0,0,0))
@@ -179,94 +221,51 @@ def build_layout(selected_items):
     rows = [0, 1, 2]
     random.shuffle(rows)
     
-    print("\n📐 Building Layout:")
     for i, item in enumerate(selected_items):
         if i >= 3: break
         img = item['img']
-        
-        target_w = random.randint(600, 850)
+        target_w = random.randint(550, 800)
         ratio = target_w / img.width
         target_h = int(img.height * ratio)
-        if target_h > CANVAS_H * 0.55:
-            target_h = int(CANVAS_H * 0.55)
+        if target_h > CANVAS_H * 0.6: 
+            target_h = int(CANVAS_H * 0.6)
             target_w = int(target_h / ratio)
             
         img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
         
         col = cols[i]
-        if col == 0: center_x = CANVAS_W * 0.2
+        if col == 0:   center_x = CANVAS_W * 0.2
         elif col == 1: center_x = CANVAS_W * 0.5
-        else: center_x = CANVAS_W * 0.8
-        x = int(center_x - (img.width / 2)) + random.randint(-50, 50)
+        else:          center_x = CANVAS_W * 0.8
+        
+        x = int(center_x - (img.width / 2))
+        x += random.randint(-50, 50)
         
         row = rows[i]
-        if row == 0: min_y, max_y = 200, int(CANVAS_H * 0.33)
-        elif row == 1: min_y, max_y = int(CANVAS_H * 0.33), int(CANVAS_H * 0.66)
-        else: min_y, max_y = int(CANVAS_H * 0.66), CANVAS_H - 200 - img.height
-        y = random.randint(min_y, max(min_y, max_y))
+        padding = 200 # Space for text
+        
+        if row == 0:   # Top
+            min_y, max_y = padding, int(CANVAS_H * 0.33)
+        elif row == 1: # Mid
+            min_y, max_y = int(CANVAS_H * 0.33), int(CANVAS_H * 0.66)
+        else:          # Bot
+            min_y, max_y = int(CANVAS_H * 0.66), CANVAS_H - padding - img.height
+            
+        max_y = max(min_y, max_y)
+        y = random.randint(min_y, max_y)
         
         canvas.paste(img, (x, y), img)
-        print(f"   Placed '{item['title']}' at ({x}, {y})")
+        print(f"   Placed Item {item['id']} at ({x}, {y}) [Col:{col}, Row:{row}]")
         
+    alpha = canvas.split()[3]
+    mask = ImageOps.invert(alpha)
     flat = Image.new("RGB", (CANVAS_W, CANVAS_H), (128, 128, 128))
     flat.paste(canvas, (0,0), canvas)
-    return flat
-
-def generate_with_nano_banana(layout_image, date_str):
-    print("\n🍌 --- GENERATING WITH GEMINI 3 PRO ---")
-    if not GEMINI_API_KEY: return None
     
-    # 1. PICK A RANDOM STYLE
-    chosen_style = random.choice(ART_STYLES)
-    print(f"🎨 INJECTED STYLE: {chosen_style}")
-    
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    
-    # 2. STRICT IMAGE-TO-IMAGE PROMPT
-    prompt = f"""
-    You are a master digital artist.
-    
-    INPUT IMAGE: A rough layout of 3 film characters on a grey background.
-    
-    YOUR TASK:
-    1. PAINT OVER this layout to create a finished, high-end movie poster.
-    2. STYLE: {chosen_style}
-    3. INTEGRATION: Do not move the characters. Keep them exactly where they are, but repainting them to match the style (e.g. if the style is oil painting, make the characters look like oil paintings).
-    4. BACKGROUND: Turn the grey background into a detailed environment fitting the style.
-    5. TEXT: Add the text "TOKYO CINEMA" and "{date_str}".
-       - The text MUST be rendered in the same artistic style (e.g. if Risograph, make the text look like ink print).
-    
-    CRITICAL: The final image must look like a cohesive piece of art, not 3 stickers on a background.
-    """
-    
-    print(f"📤 Sending to Gemini...")
-
-    try:
-        response = client.models.generate_content(
-            model="gemini-3-pro-image-preview",
-            contents=[prompt, layout_image],
-            config=types.GenerateContentConfig(
-                response_modalities=['IMAGE'],
-                image_config=types.ImageConfig(
-                    aspect_ratio="4:5",
-                    image_size="2K"
-                )
-            )
-        )
-        
-        for part in response.parts:
-            if part.inline_data:
-                print("   ✅ Image received!")
-                return Image.open(BytesIO(part.inline_data.data))
-            elif hasattr(part, 'as_image'):
-                 return part.as_image()
-
-    except Exception as e:
-        print(f"❌ Gemini Generation Error: {e}")
-        return None
+    return flat, mask
 
 def main():
-    print("🚀 Starting V17 (Style Injector)...")
+    print("🚀 Starting V10.1 (No Numpy)...")
     
     candidates = load_candidates()
     processed_roster = []
@@ -275,6 +274,8 @@ def main():
     for i, item in enumerate(candidates):
         if len(processed_roster) >= 6: break 
         url = TMDB_BASE_URL + item['path']
+        print(f"   Processing {i+1}: {clean_title(item['film']['movie_title'])}...")
+        
         src = fetch_image(url)
         if src:
             cutout = remove_background(src)
@@ -282,26 +283,51 @@ def main():
                 processed_roster.append({
                     "id": len(processed_roster), 
                     "title": clean_title(item['film']['movie_title']),
+                    "genre": ", ".join(item['film'].get('genres', [])),
                     "img": cutout
                 })
-                print(f"   ✅ {item['film']['movie_title']}")
-
-    if len(processed_roster) < 3: return
+                
+    if len(processed_roster) < 3:
+        print("❌ Not enough cutouts.")
+        return
 
     sheet = create_contact_sheet(processed_roster)
+    if sheet: sheet.save(BASE_DIR / DEBUG_AUDITION_FILENAME)
+    
     selection = ask_gemini_selection(sheet, processed_roster)
     ids = selection.get('selected_ids', [])[:3]
     final_cast = [c for c in processed_roster if c['id'] in ids]
     if len(final_cast) < 3: final_cast = processed_roster[:3]
 
-    layout = build_layout(final_cast)
+    layout, mask = build_layout(final_cast)
+    layout.save(BASE_DIR / DEBUG_LAYOUT_FILENAME)
+    print(f"📐 Layout Saved: {DEBUG_LAYOUT_FILENAME}")
     
     date_str = get_formatted_date()
-    final_art = generate_with_nano_banana(layout, date_str)
+    viz_prompt = ask_gemini_prompt(layout, selection.get('concept', 'Collage'), date_str)
     
-    if final_art:
-        final_art.save(BASE_DIR / OUTPUT_FILENAME)
-        print(f"✅ Success! Saved to {BASE_DIR / OUTPUT_FILENAME}")
+    print("🎨 Inpainting with AI Text...")
+    if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
+        layout.save(BASE_DIR / "temp_src.png")
+        mask.save(BASE_DIR / "temp_mask.png")
+        try:
+            output = replicate.run(
+                "black-forest-labs/flux-fill-dev",
+                input={
+                    "image": open(BASE_DIR / "temp_src.png", "rb"),
+                    "mask": open(BASE_DIR / "temp_mask.png", "rb"),
+                    "prompt": viz_prompt + ", legible text, high quality, 4k",
+                    "guidance": 40,
+                    "output_format": "png"
+                }
+            )
+            if output:
+                res = requests.get(str(output) if not isinstance(output, list) else output[0])
+                final = Image.open(BytesIO(res.content))
+                final.save(BASE_DIR / OUTPUT_FILENAME)
+                print(f"✅ Success! Saved to {BASE_DIR / OUTPUT_FILENAME}")
+        except Exception as e:
+            print(f"❌ Replicate Error: {e}")
 
 if __name__ == "__main__":
     main()
