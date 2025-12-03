@@ -159,7 +159,7 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[prompt, contact_sheet]
         )
         text = response.text.strip()
@@ -180,7 +180,7 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
     
     # REVISED PROMPT: Short, Direct, Bold Text.
     prompt = f"""
-    You are an AI Prompt Engineer for Flux.
+    You are an AI Prompt Engineer for Flux, working on an AI inpainting prompt. 
     
     Input: A collage of 3 film characters.
     Goal: A cohesive movie poster.
@@ -200,7 +200,7 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[prompt, preview]
         )
         text = response.text.strip().replace("Prompt:", "").replace('"', '').strip()
