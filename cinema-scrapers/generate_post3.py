@@ -182,16 +182,16 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
     prompt = f"""
     You are an AI Prompt Engineer for Flux, working on an AI inpainting prompt. 
     
-    Input: A collage of 3 film characters.
-    Goal: A cohesive movie poster.
+    Goal: Create a cohesive, high-art movie poster from the attached layout.
+    Concept: "{concept_text}"
+    Required Text: "TOKYO CINEMA" and "{date_str}"
     
-    REQUIRED TEXT: "Today's Film Selection" and "{date_str}"
-    
-    INSTRUCTIONS:
-    1. BACKGROUND: Describe a background texture/environment that connects these specific characters (e.g. fog, paper texture, concrete, noir lighting).
-    2. TEXT PLACEMENT: The text "{date_str}" should be huge and bold. "Today's Film Selection" can be smaller.
-    3. TEXT STYLE: The text must be CLEAR and LEGIBLE. It should feel like a headline. Do not hide it.
-    4. VIBE: You decide, based on the films and the collage as you see it. 
+    Instructions for Flux:
+    1. ANALYZE THE CONCEPT: Is it dark/gritty? Soft/romantic? Retro/Sci-fi? 
+    2. UNIFY THE CHARACTERS: Describe an environment and lighting that perfectly matches that specific mood.
+    3. INTEGRATE THE TEXT: The text "TOKYO CINEMA" must physically exist in this world. The text "{date_str}" should be huge and bold. "Today's Film Selection" can be smaller.
+    4. Make the text LEGIBLE but STYLISH. It should feel like a headline.
+    5. Do not describe the characters (they are locked).
 
     Return ONLY the prompt string.
     """
