@@ -189,9 +189,9 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
     
     INSTRUCTIONS:
     1. BACKGROUND: Describe a background texture/environment that connects these specific characters (e.g. fog, paper texture, concrete, noir lighting).
-    2. TEXT PLACEMENT: The text "{date_str}" should be huge and bold. "Today's Film Selection" can be smaller.
+    2. TEXT PLACEMENT: The text "{date_str}" should be clear. "Today's Film Selection" should also be clear. 
     3. TEXT STYLE: The text must be CLEAR and LEGIBLE. It should feel like a headline. Do not hide it.
-    4. VIBE: High-impact, artistic, poster aesthetics.
+    4. VIBE: You decide, based on the films and the collage as you see it. 
 
     Return ONLY the prompt string.
     """
