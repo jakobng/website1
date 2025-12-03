@@ -1,7 +1,7 @@
 """
 Generate Post V3 (Prototype): "The Dream Weaver"
 - Concept: Collage of cinema stills with AI-inpainted surroundings.
-- Update: Uses 'rembg' for true cutouts and saves debug layouts.
+- Update: Prioritizes POSTERS for better cutouts. Cleans titles.
 """
 
 import os
@@ -37,11 +37,14 @@ TMDB_BASE_URL = "https://image.tmdb.org/t/p/original"
 OUTPUT_FILENAME = "post_v3_test.png"
 DEBUG_FILENAME = "post_v3_debug_layout.png"
 
-# Canvas Settings (Instagram Portrait)
 CANVAS_W, CANVAS_H = 1080, 1350
 
 def get_today_str():
     return datetime.now().strftime("%Y-%m-%d")
+
+def clean_title(title):
+    # Removes [1201], (Sub), etc.
+    return re.sub(r'\[.*?\]|\(.*?\)', '', title).strip()
 
 def load_showtimes_for_today():
     if not SHOWTIMES_PATH.exists():
@@ -59,6 +62,7 @@ def load_showtimes_for_today():
     
     for film in data:
         if film.get('date_text') != today_str: continue
+        # Must have at least one image
         if not (film.get('tmdb_backdrop_path') or film.get('tmdb_poster_path')): continue
         
         title = film.get('movie_title')
@@ -68,8 +72,8 @@ def load_showtimes_for_today():
         valid_films.append(film)
 
     random.shuffle(valid_films)
-    carousel_films = valid_films[:9]
-    return carousel_films
+    # Pick Top 9
+    return valid_films[:9]
 
 def fetch_image(url):
     try:
@@ -86,10 +90,9 @@ def remove_background(pil_img):
     """
     print("   ✂️ Removing background (Replicate)...")
     if not REPLICATE_API_TOKEN:
-        print("   ⚠️ No API Token. Skipping cutout.")
         return pil_img
 
-    # Resize to speed up processing (we don't need 4k for a cutout)
+    # Downscale slightly for speed/reliability
     pil_img.thumbnail((1024, 1024)) 
     
     temp_path = BASE_DIR / "temp_rembg_in.png"
@@ -102,45 +105,52 @@ def remove_background(pil_img):
         )
         if output:
             resp = requests.get(str(output))
-            return Image.open(BytesIO(resp.content)).convert("RGBA")
+            cutout = Image.open(BytesIO(resp.content)).convert("RGBA")
+            # Validation: Did it actually cut anything?
+            # If the alpha channel is fully opaque (255), rembg likely failed to find a subject.
+            extrema = cutout.getextrema()
+            alpha_extrema = extrema[3] # (min, max) of alpha
+            if alpha_extrema[0] == 255:
+                print("   ⚠️ Warning: result is fully opaque (Rectangular).")
+            return cutout
     except Exception as e:
         print(f"   ❌ Cutout failed: {e}")
-        return pil_img # Fallback to original square
     
-    return pil_img
+    return pil_img 
 
 def build_collage(films):
-    """
-    Places cutouts on a transparent canvas.
-    Returns: (composite_rgb, mask, film_context_string)
-    """
-    # Create base canvas (Transparent)
     canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0, 0, 0, 0))
     context_lines = []
-
     placed_count = 0
+
     for film in films:
         if placed_count >= 3: break 
         
-        path = film.get("tmdb_backdrop_path") or film.get("tmdb_poster_path")
+        # KEY CHANGE: Prioritize Poster for Cutouts (Better subjects)
+        path = film.get("tmdb_poster_path") or film.get("tmdb_backdrop_path")
         if not path: continue
         
         full_url = TMDB_BASE_URL + path
-        print(f"🎨 Processing: {film.get('movie_title')}")
+        raw_title = film.get('movie_title', 'Unknown')
+        clean_t = clean_title(raw_title)
+        
+        print(f"🎨 Processing: {clean_t}")
         src_img = fetch_image(full_url)
         
         if src_img:
             # 1. Create Cutout
             cutout = remove_background(src_img)
             
-            # 2. Add Context
-            title = film.get('movie_title', 'Unknown Film')
-            synopsis = film.get('tmdb_overview', 'No synopsis available.')
+            # 2. Add Context (Use Clean Title if synopsis missing)
+            synopsis = film.get('tmdb_overview', '')
+            if not synopsis or synopsis == "No synopsis available.":
+                synopsis = f"A film titled '{clean_t}'."
+            
+            # Truncate
             synopsis = (synopsis[:150] + '..') if len(synopsis) > 150 else synopsis
-            context_lines.append(f"- Film: '{title}'. Context: {synopsis}")
+            context_lines.append(f"- Film: {clean_t} | Context: {synopsis}")
 
             # 3. Resize & Rotate
-            # Random scale relative to canvas
             target_w = random.randint(500, 800) 
             ratio = target_w / cutout.width
             target_h = int(cutout.height * ratio)
@@ -157,15 +167,13 @@ def build_collage(films):
             placed_count += 1
             
     if placed_count == 0:
-        print("❌ No images could be placed.")
         return None, None, None
 
-    # Create Mask (White = Fill, Black = Keep)
+    # Mask: White = Empty Space (Fill), Black = Sticker (Keep)
     alpha = canvas.split()[3]
     mask = ImageOps.invert(alpha)
     
-    # Create RGB Base (Grey background for valid parts)
-    # The grey background helps the model understand "this is empty space" vs "this is a black object"
+    # Base: Grey helps the AI understand neutrality
     flat_canvas = Image.new("RGB", (CANVAS_W, CANVAS_H), (128, 128, 128))
     flat_canvas.paste(canvas, (0, 0), canvas)
     
@@ -184,20 +192,20 @@ def ask_gemini_for_prompt(collage_image, film_context):
     preview = collage_image.resize((512, 640))
     
     prompt = f"""
-    You are an Art Director. I have placed cutout characters from 3 films on a grey canvas.
+    You are an Art Director. I have placed 3 film characters on a canvas.
     
-    Film Context:
+    Film Data:
     {film_context}
 
     Task:
-    Write a prompt for an AI Image Generator (Flux) to FILL the grey empty space.
-    The goal is to create a seamless, surreal poster where these characters exist in a unified world.
+    Write a 1-sentence prompt for an AI Image Generator (Flux) to FILL the empty grey space.
+    The goal is a cohesive, high-art poster. 
     
     Guidelines:
-    1. Do NOT describe the characters (they are already there).
-    2. Describe the ATMOSPHERE, TEXTURE, and LIGHTING that connects them.
-    3. Use keywords like: "thick fog," "neon rain," "crumpled paper texture," "double exposure," "cinematic grain."
-    4. Return ONLY the prompt string.
+    1. Do NOT describe the characters (they are locked).
+    2. Describe the SURROUNDINGS: smoke, neon lights, abstract paint strokes, torn paper, floral decay, city bokeh.
+    3. Make it surreal and textured.
+    4. Return ONLY the prompt.
     """
     
     try:
@@ -229,7 +237,7 @@ def run_inpainting(image, mask, prompt):
             input={
                 "image": open(img_path, "rb"),
                 "mask": open(mask_path, "rb"),
-                "prompt": prompt + ", masterpiece, high quality, 4k, seamless integration",
+                "prompt": prompt + ", masterpiece, high quality, 4k, seamless",
                 "guidance": 30,
                 "output_format": "png"
             }
@@ -266,33 +274,30 @@ def add_typography(img):
 def main():
     print("🚀 Starting Generate Post V3 (Sticker + Inpaint)...")
     
-    carousel_films = load_showtimes_for_today()
-    if not carousel_films:
-        print("No films found for today.")
+    films = load_showtimes_for_today()
+    if not films:
+        print("No films found.")
         return
 
-    cover_selection = random.sample(carousel_films, min(3, len(carousel_films)))
+    # Pick 3
+    selection = random.sample(films, min(3, len(films)))
     
-    # Build Layout
-    collage_base, mask, film_context = build_collage(cover_selection)
-    if not collage_base: return
+    # Layout
+    collage, mask, ctx = build_collage(selection)
+    if not collage: return
     
-    # SAVE DEBUG IMAGE
-    debug_path = BASE_DIR / DEBUG_FILENAME
-    collage_base.save(debug_path)
-    print(f"🐛 Saved debug layout to: {debug_path}")
+    # SAVE DEBUG
+    collage.save(BASE_DIR / DEBUG_FILENAME)
+    print(f"🐛 Saved debug layout to: {BASE_DIR / DEBUG_FILENAME}")
 
-    # Gemini
-    prompt = ask_gemini_for_prompt(collage_base, film_context)
+    # Gen
+    prompt = ask_gemini_for_prompt(collage, ctx)
+    final = run_inpainting(collage, mask, prompt)
     
-    # Inpaint
-    final_art = run_inpainting(collage_base, mask, prompt)
-    
-    # Finish
-    final_post = add_typography(final_art)
-    out_path = BASE_DIR / OUTPUT_FILENAME
-    final_post.save(out_path)
-    print(f"✅ Saved V3 test to: {out_path}")
+    # Save
+    final = add_typography(final)
+    final.save(BASE_DIR / OUTPUT_FILENAME)
+    print(f"✅ Saved V3 test to: {BASE_DIR / OUTPUT_FILENAME}")
 
 if __name__ == "__main__":
     main()
