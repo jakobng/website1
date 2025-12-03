@@ -1,10 +1,9 @@
 """
-Generate Post V11: "The Transparent Logger"
-- Model: gemini-2.5-flash
-- Logic: 
-  - Detailed Logging: Prints exact Prompts and Responses to console.
-  - Strict Selection: Relies on Gemini to reject debris.
-  - AI Typography: Asks Flux to render text in-scene.
+Generate Post V12: "The Unbiased Director"
+- Logic:
+  - Strict Gemini Selection (No garbage cutouts).
+  - Unbiased Prompting: Removed examples (neon/graffiti) to prevent style bias.
+  - Contextual Typography: Instructs Flux to derive text style solely from the scene's mood.
 """
 
 import os
@@ -152,19 +151,16 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     You are a Film Curator. 
     Context: {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
     
-    Look at the contact sheet (labeled 0, 1, 2...).
-    
+    Look at the contact sheet.
     TASK: Select exactly 3 candidates.
     CRITICAL:
     1. Only choose candidates where the subject is CLEAR and VISIBLE.
-    2. Do NOT choose empty boxes or tiny debris.
-    3. If a box looks empty, IGNORE IT.
+    2. Do NOT choose empty boxes, tiny debris, or blurry blobs.
     
-    Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "A brief description..." }}
+    Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "A brief description of the shared mood..." }}
     """
     
-    # --- LOGGING PROMPT ---
-    print(f"\n📤 PROMPT SENT TO GEMINI:\n{'-'*40}\n{prompt}\n{'-'*40}")
+    print(f"\n📤 SELECTION PROMPT:\n{'-'*40}\n{prompt}\n{'-'*40}")
     
     try:
         response = client.models.generate_content(
@@ -173,8 +169,7 @@ def ask_gemini_selection(contact_sheet, candidates_info):
         )
         text = response.text.strip()
         
-        # --- LOGGING RESPONSE ---
-        print(f"\n📥 GEMINI RESPONSE:\n{'-'*40}\n{text}\n{'-'*40}")
+        print(f"\n📥 GEMINI SELECTION:\n{'-'*40}\n{text}\n{'-'*40}")
         
         json_match = re.search(r'\{.*\}', text, re.DOTALL)
         if json_match:
@@ -191,25 +186,27 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
     client = genai.Client(api_key=GEMINI_API_KEY)
     preview = layout_image.resize((512, 640))
     
+    # REVISED PROMPT: No specific examples (e.g. Neon)
     prompt = f"""
     You are an AI Prompt Engineer for Flux.
     
-    Goal: Create a cohesive movie poster from the attached layout.
+    Goal: Create a cohesive, high-art movie poster from the attached layout.
     Concept: "{concept_text}"
     Required Text: "TOKYO CINEMA" and "{date_str}"
     
     Instructions for Flux:
-    1. UNIFY the characters with a strong environment (lighting, fog, texture).
-    2. INTEGRATE THE TEXT ("TOKYO CINEMA") into the scene naturally.
-       (e.g., Neon sign, graffiti, projected light, cinematic title card style).
-    3. Make the text LEGIBLE but STYLISH.
-    4. Do not describe the characters (they are locked).
+    1. ANALYZE THE CONCEPT: Is it dark/gritty? Soft/romantic? Retro/Sci-fi? 
+    2. UNIFY THE CHARACTERS: Describe an environment and lighting that perfectly matches that specific mood.
+    3. INTEGRATE THE TEXT: The text "TOKYO CINEMA" must physically exist in this world. 
+       - Determine the material of the text based on the mood (e.g., carved stone, floating clouds, bent metal, light beams, handwritten ink, broken glass).
+       - DO NOT default to neon unless the mood is specifically cyberpunk/nightlife.
+    4. Make the text LEGIBLE but STYLISH.
+    5. Do not describe the characters (they are locked).
 
     Return ONLY the prompt string.
     """
 
-    # --- LOGGING PROMPT ---
-    print(f"\n📤 PROMPT SENT TO GEMINI:\n{'-'*40}\n{prompt}\n{'-'*40}")
+    print(f"\n📤 TRANSLATION PROMPT:\n{'-'*40}\n{prompt}\n{'-'*40}")
     
     try:
         response = client.models.generate_content(
@@ -218,8 +215,7 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
         )
         text = response.text.strip()
         
-        # --- LOGGING RESPONSE ---
-        print(f"\n📥 GEMINI RESPONSE:\n{'-'*40}\n{text}\n{'-'*40}")
+        print(f"\n📥 GEMINI TRANSLATION:\n{'-'*40}\n{text}\n{'-'*40}")
         
         return text.replace("Prompt:", "").replace('"', '').strip()
     except:
@@ -276,7 +272,7 @@ def build_layout(selected_items):
     return flat, mask
 
 def main():
-    print("🚀 Starting V11 (Transparent Logger)...")
+    print("🚀 Starting V12 (Unbiased Director)...")
     
     candidates = load_candidates()
     processed_roster = []
