@@ -1,9 +1,10 @@
 """
-Generate Post V12: "The Unbiased Director"
+Generate Post V13: "The Headline Act"
+- Text: "Today's Film Selection" + Date.
 - Logic:
-  - Strict Gemini Selection (No garbage cutouts).
-  - Unbiased Prompting: Removed examples (neon/graffiti) to prevent style bias.
-  - Contextual Typography: Instructs Flux to derive text style solely from the scene's mood.
+  - Strict Gemini Selection (No garbage).
+  - Prompt: Concise, punchy, focuses on text legibility and cohesion.
+  - Output: Final image only (No debug files).
 """
 
 import os
@@ -43,8 +44,6 @@ TMDB_BASE_URL = "https://image.tmdb.org/t/p/original"
 
 # Filenames
 OUTPUT_FILENAME = "post_v3_test.png"
-DEBUG_AUDITION_FILENAME = "post_v3_debug_audition.png"
-DEBUG_LAYOUT_FILENAME = "post_v3_debug_layout.png"
 
 CANVAS_W, CANVAS_H = 1080, 1350
 
@@ -52,7 +51,8 @@ def get_today_str():
     return datetime.now().strftime("%Y-%m-%d")
 
 def get_formatted_date():
-    return datetime.now().strftime("%b %d, %Y").upper()
+    # e.g. "DEC 03"
+    return datetime.now().strftime("%b %d").upper()
 
 def clean_title(title):
     return re.sub(r'\[.*?\]|\(.*?\)', '', title).strip()
@@ -91,11 +91,9 @@ def fetch_image(url):
         return None
 
 def remove_background(pil_img):
-    """
-    Sends full resolution image to Replicate.
-    """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return pil_img
     
+    # Save temp file for API
     temp_path = BASE_DIR / "temp_rembg_in.png"
     pil_img.save(temp_path, format="PNG")
     
@@ -119,7 +117,6 @@ def create_contact_sheet(cutouts):
     cols = 3
     rows = math.ceil(count / cols)
     cell_w, cell_h = 300, 300
-    
     sheet = Image.new("RGB", (cols * cell_w, rows * cell_h), (50, 50, 50))
     draw = ImageDraw.Draw(sheet)
     
@@ -141,36 +138,31 @@ def create_contact_sheet(cutouts):
     return sheet
 
 def ask_gemini_selection(contact_sheet, candidates_info):
-    print("\n🧠 --- GEMINI CASTING (Model: 2.5-flash) ---")
+    print("\n🧠 --- GEMINI CASTING ---")
     if not GEMINI_API_KEY: return {"selected_ids": [0, 1, 2], "concept": "Fallback"}
     
     client = genai.Client(api_key=GEMINI_API_KEY)
-    simple_ctx = [{"id": c['id'], "title": c['title'], "genres": c['genre']} for c in candidates_info]
+    simple_ctx = [{"id": c['id'], "title": c['title']} for c in candidates_info]
 
     prompt = f"""
-    You are a Film Curator. 
+    You are a Film Curator.
     Context: {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
     
-    Look at the contact sheet.
-    TASK: Select exactly 3 candidates.
+    TASK: Select exactly 3 candidates from the image.
     CRITICAL:
-    1. Only choose candidates where the subject is CLEAR and VISIBLE.
-    2. Do NOT choose empty boxes, tiny debris, or blurry blobs.
+    1. Choose clear, visible subjects.
+    2. IGNORE messy, blurry, or empty cutouts.
+    3. The 3 selected images must look good together.
     
-    Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "A brief description of the shared mood..." }}
+    Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "Shared mood..." }}
     """
-    
-    print(f"\n📤 SELECTION PROMPT:\n{'-'*40}\n{prompt}\n{'-'*40}")
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-2.0-flash",
             contents=[prompt, contact_sheet]
         )
         text = response.text.strip()
-        
-        print(f"\n📥 GEMINI SELECTION:\n{'-'*40}\n{text}\n{'-'*40}")
-        
         json_match = re.search(r'\{.*\}', text, re.DOTALL)
         if json_match:
             return json.loads(json_match.group(0))
@@ -180,89 +172,75 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     return {"selected_ids": [0, 1, 2], "concept": "Cinematic Collage"}
 
 def ask_gemini_prompt(layout_image, concept_text, date_str):
-    print("\n🎨 --- GEMINI TRANSLATION (Model: 2.5-flash) ---")
+    print("\n🎨 --- GEMINI DIRECTION ---")
     if not GEMINI_API_KEY: return "cinematic collage"
     
     client = genai.Client(api_key=GEMINI_API_KEY)
     preview = layout_image.resize((512, 640))
     
-    # REVISED PROMPT: No specific examples (e.g. Neon)
+    # REVISED PROMPT: Short, Direct, Bold Text.
     prompt = f"""
     You are an AI Prompt Engineer for Flux.
     
-    Goal: Create a cohesive, high-art movie poster from the attached layout.
-    Concept: "{concept_text}"
-    Required Text: "TOKYO CINEMA" and "{date_str}"
+    Input: A collage of 3 film characters.
+    Goal: A cohesive movie poster.
     
-    Instructions for Flux:
-    1. ANALYZE THE CONCEPT: Is it dark/gritty? Soft/romantic? Retro/Sci-fi? 
-    2. UNIFY THE CHARACTERS: Describe an environment and lighting that perfectly matches that specific mood.
-    3. INTEGRATE THE TEXT: The text "TOKYO CINEMA" must physically exist in this world. 
-       - Determine the material of the text based on the mood (e.g., carved stone, floating clouds, bent metal, light beams, handwritten ink, broken glass).
-       - DO NOT default to neon unless the mood is specifically cyberpunk/nightlife.
-    4. Make the text LEGIBLE but STYLISH.
-    5. Do not describe the characters (they are locked).
+    REQUIRED TEXT: "Today's Film Selection" and "{date_str}"
+    
+    INSTRUCTIONS:
+    1. BACKGROUND: Describe a background texture/environment that connects these specific characters (e.g. fog, paper texture, concrete, noir lighting).
+    2. TEXT PLACEMENT: The text "{date_str}" should be huge and bold. "Today's Film Selection" can be smaller.
+    3. TEXT STYLE: The text must be CLEAR and LEGIBLE. It should feel like a headline. Do not hide it.
+    4. VIBE: High-impact, artistic, poster aesthetics.
 
     Return ONLY the prompt string.
     """
 
-    print(f"\n📤 TRANSLATION PROMPT:\n{'-'*40}\n{prompt}\n{'-'*40}")
+    print(f"\n📤 PROMPT:\n{prompt}")
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-2.0-flash",
             contents=[prompt, preview]
         )
-        text = response.text.strip()
-        
-        print(f"\n📥 GEMINI TRANSLATION:\n{'-'*40}\n{text}\n{'-'*40}")
-        
-        return text.replace("Prompt:", "").replace('"', '').strip()
+        text = response.text.strip().replace("Prompt:", "").replace('"', '').strip()
+        print(f"\n📥 RESPONSE:\n{text}")
+        return text
     except:
-        return f"cinematic high quality collage, text 'TOKYO CINEMA {date_str}'"
+        return f"cinematic high quality collage, bold text 'Today's Film Selection {date_str}'"
 
 def build_layout(selected_items):
     canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0,0,0,0))
+    
+    # Simple Spread Logic (3 Columns)
     cols = [0, 1, 2]
     random.shuffle(cols)
-    rows = [0, 1, 2]
-    random.shuffle(rows)
     
     for i, item in enumerate(selected_items):
         if i >= 3: break
         img = item['img']
-        target_w = random.randint(550, 800)
+        
+        # Resize
+        target_w = random.randint(600, 850)
         ratio = target_w / img.width
         target_h = int(img.height * ratio)
-        if target_h > CANVAS_H * 0.6: 
-            target_h = int(CANVAS_H * 0.6)
+        if target_h > CANVAS_H * 0.55:
+            target_h = int(CANVAS_H * 0.55)
             target_w = int(target_h / ratio)
             
         img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
         
+        # Position X
         col = cols[i]
-        if col == 0:   center_x = CANVAS_W * 0.2
+        if col == 0: center_x = CANVAS_W * 0.2
         elif col == 1: center_x = CANVAS_W * 0.5
-        else:          center_x = CANVAS_W * 0.8
+        else: center_x = CANVAS_W * 0.8
+        x = int(center_x - (img.width / 2)) + random.randint(-50, 50)
         
-        x = int(center_x - (img.width / 2))
-        x += random.randint(-50, 50)
-        
-        row = rows[i]
-        padding = 200 # Space for text
-        
-        if row == 0:   # Top
-            min_y, max_y = padding, int(CANVAS_H * 0.33)
-        elif row == 1: # Mid
-            min_y, max_y = int(CANVAS_H * 0.33), int(CANVAS_H * 0.66)
-        else:          # Bot
-            min_y, max_y = int(CANVAS_H * 0.66), CANVAS_H - padding - img.height
-            
-        max_y = max(min_y, max_y)
-        y = random.randint(min_y, max_y)
+        # Position Y (Random vertical spread)
+        y = random.randint(200, CANVAS_H - img.height - 100)
         
         canvas.paste(img, (x, y), img)
-        print(f"   Placed Item {item['id']} at ({x}, {y}) [Col:{col}, Row:{row}]")
         
     alpha = canvas.split()[3]
     mask = ImageOps.invert(alpha)
@@ -272,7 +250,7 @@ def build_layout(selected_items):
     return flat, mask
 
 def main():
-    print("🚀 Starting V12 (Unbiased Director)...")
+    print("🚀 Starting V13 (The Headline Act)...")
     
     candidates = load_candidates()
     processed_roster = []
@@ -280,9 +258,8 @@ def main():
     print("✂️  Auditioning...")
     for i, item in enumerate(candidates):
         if len(processed_roster) >= 6: break 
-        url = TMDB_BASE_URL + item['path']
-        print(f"   Processing {i+1}: {clean_title(item['film']['movie_title'])}...")
         
+        url = TMDB_BASE_URL + item['path']
         src = fetch_image(url)
         if src:
             cutout = remove_background(src)
@@ -290,30 +267,26 @@ def main():
                 processed_roster.append({
                     "id": len(processed_roster), 
                     "title": clean_title(item['film']['movie_title']),
-                    "genre": ", ".join(item['film'].get('genres', [])),
                     "img": cutout
                 })
-                
+                print(f"   ✅ {item['film']['movie_title']}")
+
     if len(processed_roster) < 3:
         print("❌ Not enough cutouts.")
         return
 
     sheet = create_contact_sheet(processed_roster)
-    if sheet: sheet.save(BASE_DIR / DEBUG_AUDITION_FILENAME)
-    
     selection = ask_gemini_selection(sheet, processed_roster)
     ids = selection.get('selected_ids', [])[:3]
     final_cast = [c for c in processed_roster if c['id'] in ids]
     if len(final_cast) < 3: final_cast = processed_roster[:3]
 
     layout, mask = build_layout(final_cast)
-    layout.save(BASE_DIR / DEBUG_LAYOUT_FILENAME)
-    print(f"📐 Layout Saved: {DEBUG_LAYOUT_FILENAME}")
     
     date_str = get_formatted_date()
     viz_prompt = ask_gemini_prompt(layout, selection.get('concept', 'Collage'), date_str)
     
-    print("🎨 Inpainting with AI Text...")
+    print("🎨 Inpainting...")
     if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
         layout.save(BASE_DIR / "temp_src.png")
         mask.save(BASE_DIR / "temp_mask.png")
@@ -323,7 +296,7 @@ def main():
                 input={
                     "image": open(BASE_DIR / "temp_src.png", "rb"),
                     "mask": open(BASE_DIR / "temp_mask.png", "rb"),
-                    "prompt": viz_prompt + ", legible text, high quality, 4k",
+                    "prompt": viz_prompt + ", legible text, high quality",
                     "guidance": 40,
                     "output_format": "png"
                 }
