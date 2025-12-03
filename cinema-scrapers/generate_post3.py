@@ -1,9 +1,9 @@
 """
-Generate Post V7: "The Soft Cloud"
+Generate Post V8: "High-Res Sharpness"
 - Logic:
-  - 3-Column x 3-Row grid system for maximum spread.
-  - "Feathering" algorithm to soften hard edges (no more snapping).
-  - Randomizes vertical placement to fill the canvas.
+  - Background Removal: REVERTED to V2 logic (Sends full-res image to Replicate).
+  - Edge Treatment: Hard/Sharp (No feathering).
+  - Layout: 3x3 Grid Spread (Left/Center/Right x Top/Mid/Low).
 """
 
 import os
@@ -15,7 +15,7 @@ import math
 from pathlib import Path
 from io import BytesIO
 from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 # --- API Setup ---
 try:
@@ -88,11 +88,17 @@ def fetch_image(url):
         return None
 
 def remove_background(pil_img):
+    """
+    V2 Logic: Send full resolution image to Replicate for maximum detail.
+    """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return pil_img
-    pil_img.thumbnail((1024, 1024))
+    
+    # REMOVED: pil_img.thumbnail((1024, 1024)) <-- This was causing the quality drop
+    
     temp_path = BASE_DIR / "temp_rembg_in.png"
     pil_img.save(temp_path, format="PNG")
     
+    print("   -> Sending Full-Res to Replicate...")
     try:
         output = replicate.run(
             "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
@@ -106,22 +112,6 @@ def remove_background(pil_img):
     except Exception as e:
         print(f"   ❌ Rembg error: {e}")
     return None
-
-def feather_image(img, radius=20):
-    """
-    Softens the edges of the image alpha channel.
-    Radius = Strength of the blur/feather.
-    """
-    # 1. Extract Alpha
-    alpha = img.split()[-1]
-    
-    # 2. Blur the Alpha Channel
-    # We blur slightly to soften hard pixel cuts from rembg
-    feathered_alpha = alpha.filter(ImageFilter.GaussianBlur(radius))
-    
-    # 3. Put it back
-    img.putalpha(feathered_alpha)
-    return img
 
 def create_contact_sheet(cutouts):
     count = len(cutouts)
@@ -188,7 +178,7 @@ def ask_gemini_prompt(layout_image, concept_text):
     prompt = f"""
     You are an AI Prompt Engineer for Flux.
     Concept: "{concept_text}"
-    Input: A layout of 3 feathered cutouts on grey.
+    Input: A layout of 3 cutouts on grey.
     Task: Write a prompt to FILL the grey space. 
     Rules: 
     1. Do NOT describe the characters.
@@ -209,15 +199,11 @@ def ask_gemini_prompt(layout_image, concept_text):
 def build_layout(selected_items):
     canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0,0,0,0))
     
-    # Grid System for Spreading
-    # Columns: Left (0), Center (1), Right (2)
-    # Rows: Top (0), Mid (1), Low (2)
-    
+    # 3x3 Grid Shuffle Logic
     cols = [0, 1, 2]
     random.shuffle(cols)
-    
     rows = [0, 1, 2]
-    random.shuffle(rows) # Randomize who gets to be high/low
+    random.shuffle(rows)
     
     for i, item in enumerate(selected_items):
         if i >= 3: break
@@ -227,44 +213,36 @@ def build_layout(selected_items):
         target_w = random.randint(550, 800)
         ratio = target_w / img.width
         target_h = int(img.height * ratio)
-        if target_h > CANVAS_H * 0.6: # Cap height a bit more strictly
+        if target_h > CANVAS_H * 0.6: 
             target_h = int(CANVAS_H * 0.6)
             target_w = int(target_h / ratio)
             
         img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
         
-        # 2. Feather Edges (Softening the cut)
-        img = feather_image(img, radius=15)
-        
-        # 3. Position X (Column-based)
+        # 2. Position X (Column-based)
         col = cols[i]
-        if col == 0:   # Left
-            center_x = CANVAS_W * 0.2
-        elif col == 1: # Center
-            center_x = CANVAS_W * 0.5
-        else:          # Right
-            center_x = CANVAS_W * 0.8
+        if col == 0:   center_x = CANVAS_W * 0.2
+        elif col == 1: center_x = CANVAS_W * 0.5
+        else:          center_x = CANVAS_W * 0.8
         
         x = int(center_x - (img.width / 2))
         x += random.randint(-50, 50)
         
-        # 4. Position Y (Row-based)
+        # 3. Position Y (Row-based)
         row = rows[i]
         padding = 150
         
-        if row == 0:   # Top Third
+        if row == 0:   # Top
             min_y, max_y = padding, int(CANVAS_H * 0.33)
-        elif row == 1: # Mid Third
+        elif row == 1: # Mid
             min_y, max_y = int(CANVAS_H * 0.33), int(CANVAS_H * 0.66)
-        else:          # Bottom Third
+        else:          # Bot
             min_y, max_y = int(CANVAS_H * 0.66), CANVAS_H - padding - img.height
             
-        # Safety clamp
         max_y = max(min_y, max_y)
-        
         y = random.randint(min_y, max_y)
         
-        # 5. Paste
+        # 4. Paste
         canvas.paste(img, (x, y), img)
         print(f"   Placed Item {item['id']} at ({x}, {y}) [Col:{col}, Row:{row}]")
         
@@ -290,7 +268,7 @@ def add_typography(img):
     return img
 
 def main():
-    print("🚀 Starting V7 (Feathered Spread)...")
+    print("🚀 Starting V8 (High-Res Sharpness)...")
     
     candidates = load_candidates()
     processed_roster = []
