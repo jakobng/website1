@@ -42,6 +42,7 @@ jobs:
           # We force add (-f) because these are new files not yet tracked by git.
           # We add BOTH the final result and the debug layout to see the "Before & After".
           git add -f cinema-scrapers/post_v3_test.png
+          git add -f cinema-scrapers/post_v3_debug_audition.png
           git add -f cinema-scrapers/post_v3_debug_layout.png
 
           # Debug: Show us exactly what is staged to be committed
