@@ -169,7 +169,7 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-pro",
+            model="gemini-2.5-flash",
             contents=[prompt, contact_sheet]
         )
         text = response.text.strip()
@@ -207,7 +207,7 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-pro",
+            model="gemini-2.5-flash",
             contents=[prompt, preview]
         )
         return response.text.strip().replace("Prompt:", "").replace('"', '').strip()
