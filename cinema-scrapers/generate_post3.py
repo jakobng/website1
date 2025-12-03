@@ -1,8 +1,9 @@
 """
-Generate Post V6.1: "The Smart Architect" (No-Numpy Version)
-- Model: gemini-2.5-pro
-- Logic: Analyzes cutouts for flat edges and snaps them to canvas borders.
-- Improvement: Removed 'numpy' dependency for easier deployment.
+Generate Post V7: "The Soft Cloud"
+- Logic:
+  - 3-Column x 3-Row grid system for maximum spread.
+  - "Feathering" algorithm to soften hard edges (no more snapping).
+  - Randomizes vertical placement to fill the canvas.
 """
 
 import os
@@ -14,7 +15,7 @@ import math
 from pathlib import Path
 from io import BytesIO
 from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageFilter
 
 # --- API Setup ---
 try:
@@ -66,7 +67,6 @@ def load_candidates():
     for film in data:
         if film.get('date_text') != today: continue
         
-        # Prioritize Backdrops for scene elements, Poster for chars
         path = film.get('tmdb_backdrop_path')
         if not path: path = film.get('tmdb_poster_path')
         if not path: continue
@@ -107,6 +107,22 @@ def remove_background(pil_img):
         print(f"   ❌ Rembg error: {e}")
     return None
 
+def feather_image(img, radius=20):
+    """
+    Softens the edges of the image alpha channel.
+    Radius = Strength of the blur/feather.
+    """
+    # 1. Extract Alpha
+    alpha = img.split()[-1]
+    
+    # 2. Blur the Alpha Channel
+    # We blur slightly to soften hard pixel cuts from rembg
+    feathered_alpha = alpha.filter(ImageFilter.GaussianBlur(radius))
+    
+    # 3. Put it back
+    img.putalpha(feathered_alpha)
+    return img
+
 def create_contact_sheet(cutouts):
     count = len(cutouts)
     if count == 0: return None
@@ -144,13 +160,13 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     prompt = f"""
     You are a Film Curator. 
     Context: {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
-    Task: Pick 3 candidates that create a visually interesting trio.
+    Task: Pick 3 candidates that form a compelling visual trio.
     Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "A brief description..." }}
     """
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash", # Fallback to flash if Pro is rate limited
+            model="gemini-2.5-pro",
             contents=[prompt, contact_sheet]
         )
         text = response.text.strip()
@@ -172,114 +188,85 @@ def ask_gemini_prompt(layout_image, concept_text):
     prompt = f"""
     You are an AI Prompt Engineer for Flux.
     Concept: "{concept_text}"
-    Input: A layout of 3 cutouts on grey.
+    Input: A layout of 3 feathered cutouts on grey.
     Task: Write a prompt to FILL the grey space. 
     Rules: 
     1. Do NOT describe the characters.
     2. Describe lighting, texture, and environment that UNIFIES them.
-    3. Use art keywords (e.g. "Mixed media," "Surrealism," "Cinematic lighting").
+    3. Use art keywords (e.g. "Mixed media," "Surrealism," "Cinematic lighting," "Ethereal fog").
     Return ONLY the prompt string.
     """
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash", 
+            model="gemini-2.5-pro",
             contents=[prompt, preview]
         )
         return response.text.strip().replace("Prompt:", "").replace('"', '').strip()
     except:
         return "cinematic high quality collage"
 
-def analyze_edges(pil_img):
-    """
-    Checks if any side of the image is 'flat' (hard straight cut).
-    Uses standard Pillow data access (No Numpy required).
-    """
-    w, h = 100, 100
-    thumb = pil_img.resize((w, h), Image.Resampling.NEAREST)
-    
-    # Get alpha channel as a flat list
-    alpha = list(thumb.getchannel('A').getdata()) 
-    
-    anchors = []
-    threshold = 0.40 * w # If >40% of the edge is opaque
-    
-    # Check Bottom Row (Indices from last row)
-    bottom_pixels = alpha[-(w):]
-    if sum(1 for p in bottom_pixels if p > 0) > threshold:
-        anchors.append('bottom')
-
-    # Check Top Row (Indices 0 to w)
-    top_pixels = alpha[:w]
-    if sum(1 for p in top_pixels if p > 0) > threshold:
-        anchors.append('top')
-
-    # Check Left Column (0, w, 2w...)
-    left_pixels = [alpha[i*w] for i in range(h)]
-    if sum(1 for p in left_pixels if p > 0) > threshold:
-        anchors.append('left')
-
-    # Check Right Column (w-1, 2w-1...)
-    right_pixels = [alpha[(i*w) + (w-1)] for i in range(h)]
-    if sum(1 for p in right_pixels if p > 0) > threshold:
-        anchors.append('right')
-        
-    return anchors
-
 def build_layout(selected_items):
     canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0,0,0,0))
     
-    # Divide canvas into 3 horizontal zones
-    zones = [0, 1, 2]
-    random.shuffle(zones)
+    # Grid System for Spreading
+    # Columns: Left (0), Center (1), Right (2)
+    # Rows: Top (0), Mid (1), Low (2)
+    
+    cols = [0, 1, 2]
+    random.shuffle(cols)
+    
+    rows = [0, 1, 2]
+    random.shuffle(rows) # Randomize who gets to be high/low
     
     for i, item in enumerate(selected_items):
         if i >= 3: break
         img = item['img']
-        zone = zones[i]
         
         # 1. Resize
-        target_w = random.randint(550, 850)
+        target_w = random.randint(550, 800)
         ratio = target_w / img.width
         target_h = int(img.height * ratio)
-        if target_h > CANVAS_H * 0.75:
-            target_h = int(CANVAS_H * 0.75)
+        if target_h > CANVAS_H * 0.6: # Cap height a bit more strictly
+            target_h = int(CANVAS_H * 0.6)
             target_w = int(target_h / ratio)
             
         img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
         
-        # 2. Analyze Anchors
-        anchors = analyze_edges(img)
-        print(f"   📐 Item {item['id']} Anchors: {anchors}")
+        # 2. Feather Edges (Softening the cut)
+        img = feather_image(img, radius=15)
         
-        # 3. Calculate X
-        if zone == 0: center_x = CANVAS_W * 0.25
-        elif zone == 1: center_x = CANVAS_W * 0.50
-        else: center_x = CANVAS_W * 0.75
-            
+        # 3. Position X (Column-based)
+        col = cols[i]
+        if col == 0:   # Left
+            center_x = CANVAS_W * 0.2
+        elif col == 1: # Center
+            center_x = CANVAS_W * 0.5
+        else:          # Right
+            center_x = CANVAS_W * 0.8
+        
         x = int(center_x - (img.width / 2))
         x += random.randint(-50, 50)
         
-        # 4. Calculate Y
-        y = random.randint(CANVAS_H - img.height - 200, CANVAS_H - img.height - 50)
+        # 4. Position Y (Row-based)
+        row = rows[i]
+        padding = 150
         
-        # 5. Snap Logic
-        if 'bottom' in anchors:
-            y = CANVAS_H - img.height # Snap to floor
-            print("   -> Snapped to Bottom")
-        elif 'top' in anchors:
-            y = 0 # Snap to ceiling
-            print("   -> Snapped to Top")
+        if row == 0:   # Top Third
+            min_y, max_y = padding, int(CANVAS_H * 0.33)
+        elif row == 1: # Mid Third
+            min_y, max_y = int(CANVAS_H * 0.33), int(CANVAS_H * 0.66)
+        else:          # Bottom Third
+            min_y, max_y = int(CANVAS_H * 0.66), CANVAS_H - padding - img.height
             
-        if 'left' in anchors:
-            x = 0 
-            print("   -> Snapped to Left")
-        elif 'right' in anchors:
-            x = CANVAS_W - img.width 
-            print("   -> Snapped to Right")
-            
-        # 6. Paste
+        # Safety clamp
+        max_y = max(min_y, max_y)
+        
+        y = random.randint(min_y, max_y)
+        
+        # 5. Paste
         canvas.paste(img, (x, y), img)
+        print(f"   Placed Item {item['id']} at ({x}, {y}) [Col:{col}, Row:{row}]")
         
     alpha = canvas.split()[3]
     mask = ImageOps.invert(alpha)
@@ -303,7 +290,7 @@ def add_typography(img):
     return img
 
 def main():
-    print("🚀 Starting V6.1 (Smart Architect - No Numpy)...")
+    print("🚀 Starting V7 (Feathered Spread)...")
     
     candidates = load_candidates()
     processed_roster = []
