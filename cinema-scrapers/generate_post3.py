@@ -1,7 +1,8 @@
 """
-Generate Post V3 (Prototype): "The Dream Weaver"
-- Concept: Collage of cinema stills with AI-inpainted surroundings.
-- Update: Prioritizes POSTERS for better cutouts. Cleans titles.
+Generate Post V3.2: "The Coherent Dream"
+- Visuals: Uses AI Background Removal (rembg) on ALL images to get clean subjects.
+- Logic: Places subjects on canvas, then asks Gemini to "unify" them.
+- Prompting: deeply descriptive, asking for interaction and cohesive lighting.
 """
 
 import os
@@ -12,19 +13,23 @@ import re
 from pathlib import Path
 from io import BytesIO
 from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageFilter
 
 # --- API Setup ---
 try:
     import replicate
+    REPLICATE_AVAILABLE = True
 except ImportError:
-    print("⚠️ Replicate library not found. Run: pip install replicate")
+    REPLICATE_AVAILABLE = False
+    print("⚠️ Replicate library not found.")
 
 try:
     from google import genai
     from google.genai import types
+    GEMINI_AVAILABLE = True
 except ImportError:
-    print("⚠️ Google GenAI library not found. Run: pip install google-genai")
+    GEMINI_AVAILABLE = False
+    print("⚠️ Google GenAI library not found.")
 
 # --- Secrets ---
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
@@ -43,7 +48,6 @@ def get_today_str():
     return datetime.now().strftime("%Y-%m-%d")
 
 def clean_title(title):
-    # Removes [1201], (Sub), etc.
     return re.sub(r'\[.*?\]|\(.*?\)', '', title).strip()
 
 def load_showtimes_for_today():
@@ -62,7 +66,6 @@ def load_showtimes_for_today():
     
     for film in data:
         if film.get('date_text') != today_str: continue
-        # Must have at least one image
         if not (film.get('tmdb_backdrop_path') or film.get('tmdb_poster_path')): continue
         
         title = film.get('movie_title')
@@ -72,7 +75,6 @@ def load_showtimes_for_today():
         valid_films.append(film)
 
     random.shuffle(valid_films)
-    # Pick Top 9
     return valid_films[:9]
 
 def fetch_image(url):
@@ -86,13 +88,13 @@ def fetch_image(url):
 
 def remove_background(pil_img):
     """
-    Uses Replicate to remove background, creating a true 'cutout'.
+    Uses Replicate to remove background.
     """
-    print("   ✂️ Removing background (Replicate)...")
-    if not REPLICATE_API_TOKEN:
+    print("   ✂️  Extracting subject (Replicate)...")
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         return pil_img
 
-    # Downscale slightly for speed/reliability
+    # Resize to speed up API and ensure focus
     pil_img.thumbnail((1024, 1024)) 
     
     temp_path = BASE_DIR / "temp_rembg_in.png"
@@ -106,12 +108,14 @@ def remove_background(pil_img):
         if output:
             resp = requests.get(str(output))
             cutout = Image.open(BytesIO(resp.content)).convert("RGBA")
-            # Validation: Did it actually cut anything?
-            # If the alpha channel is fully opaque (255), rembg likely failed to find a subject.
+            
+            # Check if it failed (returned empty or full block)
             extrema = cutout.getextrema()
-            alpha_extrema = extrema[3] # (min, max) of alpha
-            if alpha_extrema[0] == 255:
-                print("   ⚠️ Warning: result is fully opaque (Rectangular).")
+            alpha_extrema = extrema[3]
+            if alpha_extrema[1] == 0: 
+                print("   ⚠️ Warning: Subject extraction returned empty image.")
+                return pil_img # Fallback to original
+                
             return cutout
     except Exception as e:
         print(f"   ❌ Cutout failed: {e}")
@@ -126,42 +130,40 @@ def build_collage(films):
     for film in films:
         if placed_count >= 3: break 
         
-        # KEY CHANGE: Prioritize Poster for Cutouts (Better subjects)
+        # Try poster first for clearer subjects, then backdrop
         path = film.get("tmdb_poster_path") or film.get("tmdb_backdrop_path")
         if not path: continue
         
         full_url = TMDB_BASE_URL + path
-        raw_title = film.get('movie_title', 'Unknown')
-        clean_t = clean_title(raw_title)
+        clean_t = clean_title(film.get('movie_title', 'Unknown'))
         
         print(f"🎨 Processing: {clean_t}")
         src_img = fetch_image(full_url)
         
         if src_img:
-            # 1. Create Cutout
+            # 1. Extract Subject
             cutout = remove_background(src_img)
             
-            # 2. Add Context (Use Clean Title if synopsis missing)
-            synopsis = film.get('tmdb_overview', '')
-            if not synopsis or synopsis == "No synopsis available.":
-                synopsis = f"A film titled '{clean_t}'."
-            
-            # Truncate
-            synopsis = (synopsis[:150] + '..') if len(synopsis) > 150 else synopsis
-            context_lines.append(f"- Film: {clean_t} | Context: {synopsis}")
+            # 2. Context
+            genres = film.get('genres', [])
+            genre_str = ", ".join(genres) if genres else "General Cinema"
+            synopsis = film.get('tmdb_overview', 'No synopsis.')[:100]
+            context_lines.append(f"- Subject from '{clean_t}' ({genre_str}): {synopsis}")
 
-            # 3. Resize & Rotate
-            target_w = random.randint(500, 800) 
+            # 3. Resize & Position
+            # We want them large enough to interact
+            target_w = random.randint(550, 850)
             ratio = target_w / cutout.width
             target_h = int(cutout.height * ratio)
             cutout = cutout.resize((target_w, target_h), Image.Resampling.LANCZOS)
             
-            angle = random.uniform(-15, 15)
+            # Subtle rotation
+            angle = random.uniform(-5, 5)
             cutout = cutout.rotate(angle, expand=True, resample=Image.BICUBIC)
             
-            # 4. Position
-            x = random.randint(-100, CANVAS_W - cutout.width + 100)
-            y = random.randint(-100, CANVAS_H - cutout.height + 100)
+            # Scatter but keep somewhat central
+            x = random.randint(-50, CANVAS_W - cutout.width + 50)
+            y = random.randint(100, CANVAS_H - cutout.height - 100)
             
             canvas.paste(cutout, (x, y), cutout)
             placed_count += 1
@@ -169,11 +171,11 @@ def build_collage(films):
     if placed_count == 0:
         return None, None, None
 
-    # Mask: White = Empty Space (Fill), Black = Sticker (Keep)
+    # Create Mask
     alpha = canvas.split()[3]
-    mask = ImageOps.invert(alpha)
+    mask = ImageOps.invert(alpha) # White = Fill
     
-    # Base: Grey helps the AI understand neutrality
+    # Grey Base
     flat_canvas = Image.new("RGB", (CANVAS_W, CANVAS_H), (128, 128, 128))
     flat_canvas.paste(canvas, (0, 0), canvas)
     
@@ -181,31 +183,35 @@ def build_collage(films):
     return flat_canvas, mask, context_str
 
 def ask_gemini_for_prompt(collage_image, film_context):
-    print("\n✨ --- GEMINI BRIEFING ---")
+    print("\n✨ --- GEMINI DIRECTOR MODE ---")
     print(f"Context Sent:\n{film_context}")
     
     if not GEMINI_API_KEY:
-        print("❌ No GEMINI_API_KEY found.")
         return "surreal cinematic collage, atmospheric lighting"
 
     client = genai.Client(api_key=GEMINI_API_KEY)
     preview = collage_image.resize((512, 640))
     
     prompt = f"""
-    You are an Art Director. I have placed 3 film characters on a canvas.
+    You are an avant-garde Film Director. 
+    I have given you a visual collage containing {film_context.count('Subject')} extracted characters from different movies (Context below).
+    They are floating in grey space.
     
-    Film Data:
+    FILM CONTEXT:
     {film_context}
 
-    Task:
-    Write a 1-sentence prompt for an AI Image Generator (Flux) to FILL the empty grey space.
-    The goal is a cohesive, high-art poster. 
+    YOUR MISSION:
+    Write a prompt for an AI Image Generator (Flux) that turns this collage into ONE COHERENT SCENE.
     
-    Guidelines:
-    1. Do NOT describe the characters (they are locked).
-    2. Describe the SURROUNDINGS: smoke, neon lights, abstract paint strokes, torn paper, floral decay, city bokeh.
-    3. Make it surreal and textured.
-    4. Return ONLY the prompt.
+    INSTRUCTIONS:
+    1. ANALYZE THE IMAGE: Look at where the characters are standing.
+    2. CREATE A SCENARIO: Why are they together? (e.g. "Meeting in a foggy subway station," "Lost in a overgrown brutalist garden," "Standing in a neon-lit cyber bazaar").
+    3. INTEGRATION: Describe the lighting and atmosphere so it wraps around them.
+    4. FILL THE GAPS: Explicitly describe objects or textures to fill the grey space between them.
+    
+    OUTPUT FORMAT:
+    Return ONLY the prompt string. Use vivid, visual keywords.
+    Example: "A cinematic shot of three characters standing in a flooded cathedral, volumetric god rays, floating dust particles, water reflections connecting the figures, hyper-realistic 8k."
     """
     
     try:
@@ -215,16 +221,15 @@ def ask_gemini_for_prompt(collage_image, film_context):
         )
         suggestion = response.text.strip()
         suggestion = re.sub(r'^Prompt:\s*', '', suggestion, flags=re.IGNORECASE).strip('"')
-        print(f"🤖 Gemini's Prompt: '{suggestion}'")
-        print("---------------------------\n")
+        print(f"🤖 Gemini's Direction: '{suggestion}'")
         return suggestion
     except Exception as e:
         print(f"⚠️ Gemini Error: {e}")
-        return "cinematic atmosphere, high detail, 8k"
+        return "cinematic atmosphere, high detail, collage style"
 
 def run_inpainting(image, mask, prompt):
     print("🎨 Painting with Flux Fill (Replicate)...")
-    if not REPLICATE_API_TOKEN: return image
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return image
 
     img_path = BASE_DIR / "temp_src.png"
     mask_path = BASE_DIR / "temp_mask.png"
@@ -237,8 +242,8 @@ def run_inpainting(image, mask, prompt):
             input={
                 "image": open(img_path, "rb"),
                 "mask": open(mask_path, "rb"),
-                "prompt": prompt + ", masterpiece, high quality, 4k, seamless",
-                "guidance": 30,
+                "prompt": prompt + ", seamless blend, cinematic lighting, 8k, masterpiece",
+                "guidance": 30, # High adherence to prompt
                 "output_format": "png"
             }
         )
@@ -272,29 +277,24 @@ def add_typography(img):
     return img
 
 def main():
-    print("🚀 Starting Generate Post V3 (Sticker + Inpaint)...")
-    
+    print("🚀 Starting Generate Post V3.2 (Coherent Interaction)...")
     films = load_showtimes_for_today()
     if not films:
         print("No films found.")
         return
 
-    # Pick 3
     selection = random.sample(films, min(3, len(films)))
     
-    # Layout
     collage, mask, ctx = build_collage(selection)
     if not collage: return
     
-    # SAVE DEBUG
+    # Save Debug
     collage.save(BASE_DIR / DEBUG_FILENAME)
     print(f"🐛 Saved debug layout to: {BASE_DIR / DEBUG_FILENAME}")
 
-    # Gen
     prompt = ask_gemini_for_prompt(collage, ctx)
     final = run_inpainting(collage, mask, prompt)
     
-    # Save
     final = add_typography(final)
     final.save(BASE_DIR / OUTPUT_FILENAME)
     print(f"✅ Saved V3 test to: {BASE_DIR / OUTPUT_FILENAME}")
