@@ -1,4 +1,4 @@
-name: Test V2 Design (Punk Zine / Gemini 2.5)
+name: test generate_post2.py
 
 on:
   workflow_dispatch: # Manual trigger only
