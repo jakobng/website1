@@ -1,9 +1,9 @@
 """
-Generate Post V8: "High-Res Sharpness"
+Generate Post V9: "Quality Control"
 - Logic:
-  - Background Removal: REVERTED to V2 logic (Sends full-res image to Replicate).
-  - Edge Treatment: Hard/Sharp (No feathering).
-  - Layout: 3x3 Grid Spread (Left/Center/Right x Top/Mid/Low).
+  - Pre-Filter: Discards cutouts that are too small or mostly empty (debris).
+  - Gemini Prompt: Updated to prioritize LEGIBILITY and RECOGNIZABILITY.
+  - Layout: 3x3 Spread (No clumping).
 """
 
 import os
@@ -12,6 +12,7 @@ import random
 import requests
 import re
 import math
+import numpy as np
 from pathlib import Path
 from io import BytesIO
 from datetime import datetime
@@ -89,16 +90,13 @@ def fetch_image(url):
 
 def remove_background(pil_img):
     """
-    V2 Logic: Send full resolution image to Replicate for maximum detail.
+    V2 Logic: Send full resolution image to Replicate.
     """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return pil_img
-    
-    # REMOVED: pil_img.thumbnail((1024, 1024)) <-- This was causing the quality drop
     
     temp_path = BASE_DIR / "temp_rembg_in.png"
     pil_img.save(temp_path, format="PNG")
     
-    print("   -> Sending Full-Res to Replicate...")
     try:
         output = replicate.run(
             "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
@@ -107,7 +105,17 @@ def remove_background(pil_img):
         if output:
             resp = requests.get(str(output))
             cutout = Image.open(BytesIO(resp.content)).convert("RGBA")
-            if cutout.getextrema()[3][1] == 0: return None
+            
+            # --- QUALITY CHECK ---
+            # Calculate how much of the image is non-transparent
+            # If it's mostly empty (tiny debris), reject it.
+            alpha = np.array(cutout.resize((100, 100)).getchannel('A'))
+            fill_ratio = np.count_nonzero(alpha) / alpha.size
+            
+            if fill_ratio < 0.05: # Less than 5% pixels = Garbage
+                print(f"   ⚠️ Rejecting debris (Fill: {fill_ratio:.2f})")
+                return None
+            
             return cutout
     except Exception as e:
         print(f"   ❌ Rembg error: {e}")
@@ -141,7 +149,7 @@ def create_contact_sheet(cutouts):
     return sheet
 
 def ask_gemini_selection(contact_sheet, candidates_info):
-    print("\n🧠 --- GEMINI CASTING (Model: 2.5-pro) ---")
+    print("\n🧠 --- GEMINI CASTING (Strict Mode) ---")
     if not GEMINI_API_KEY: return {"selected_ids": [0, 1, 2], "concept": "Fallback"}
     
     client = genai.Client(api_key=GEMINI_API_KEY)
@@ -150,7 +158,16 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     prompt = f"""
     You are a Film Curator. 
     Context: {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
-    Task: Pick 3 candidates that form a compelling visual trio.
+    
+    Look at the contact sheet. Each image is labeled with an ID (0, 1, 2...).
+    
+    TASK: Select exactly 3 candidates.
+    
+    STRICT SELECTION CRITERIA:
+    1. **LEGIBILITY IS KEY**: Only choose images with CLEAR, RECOGNIZABLE subjects (Faces, People, Distinct Objects).
+    2. **REJECT GARBAGE**: Do NOT choose blurry blobs, tiny distant figures, or unidentifiable debris.
+    3. **COMPOSITION**: Choose 3 that look like they could belong in the same scene.
+    
     Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "A brief description..." }}
     """
     
@@ -169,7 +186,7 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     return {"selected_ids": [0, 1, 2], "concept": "Cinematic Collage"}
 
 def ask_gemini_prompt(layout_image, concept_text):
-    print("\n🎨 --- GEMINI TRANSLATION (Model: 2.5-pro) ---")
+    print("\n🎨 --- GEMINI TRANSLATION ---")
     if not GEMINI_API_KEY: return "cinematic collage"
     
     client = genai.Client(api_key=GEMINI_API_KEY)
@@ -268,7 +285,7 @@ def add_typography(img):
     return img
 
 def main():
-    print("🚀 Starting V8 (High-Res Sharpness)...")
+    print("🚀 Starting V9 (Quality Control)...")
     
     candidates = load_candidates()
     processed_roster = []
