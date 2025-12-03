@@ -191,7 +191,8 @@ def ask_gemini_prompt(layout_image, concept_text, date_str):
     2. UNIFY THE CHARACTERS: Describe an environment and lighting that perfectly matches that specific mood.
     3. INTEGRATE THE TEXT: The text "TOKYO CINEMA" must physically exist in this world. The text "{date_str}" should be huge and bold. "Today's Film Selection" can be smaller.
     4. Make the text LEGIBLE but STYLISH. It should feel like a headline.
-    5. Do not describe the characters (they are locked).
+    5. Do not describe the characters. 
+    6. Make sure the prompt is short, and the only the desired text is present in the final image. 
 
     Return ONLY the prompt string.
     """
