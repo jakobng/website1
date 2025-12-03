@@ -1,11 +1,8 @@
 """
-Generate Post V6: "The Smart Architect"
+Generate Post V6.1: "The Smart Architect" (No-Numpy Version)
 - Model: gemini-2.5-pro
-- Layout: 
-  - Analyzes cutouts for flat edges (crop lines).
-  - Snaps flat bottoms to canvas bottom.
-  - Snaps flat sides to canvas sides.
-  - Spreads items across 3 distinct X-zones to prevent bunching.
+- Logic: Analyzes cutouts for flat edges and snaps them to canvas borders.
+- Improvement: Removed 'numpy' dependency for easier deployment.
 """
 
 import os
@@ -14,7 +11,6 @@ import random
 import requests
 import re
 import math
-import numpy as np
 from pathlib import Path
 from io import BytesIO
 from datetime import datetime
@@ -70,7 +66,7 @@ def load_candidates():
     for film in data:
         if film.get('date_text') != today: continue
         
-        # Prioritize Backdrops for scene elements, Posters for characters
+        # Prioritize Backdrops for scene elements, Poster for chars
         path = film.get('tmdb_backdrop_path')
         if not path: path = film.get('tmdb_poster_path')
         if not path: continue
@@ -154,7 +150,7 @@ def ask_gemini_selection(contact_sheet, candidates_info):
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-pro", # UPGRADED
+            model="gemini-2.0-flash", # Fallback to flash if Pro is rate limited
             contents=[prompt, contact_sheet]
         )
         text = response.text.strip()
@@ -187,7 +183,7 @@ def ask_gemini_prompt(layout_image, concept_text):
     
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-pro", # UPGRADED
+            model="gemini-2.0-flash", 
             contents=[prompt, preview]
         )
         return response.text.strip().replace("Prompt:", "").replace('"', '').strip()
@@ -197,30 +193,35 @@ def ask_gemini_prompt(layout_image, concept_text):
 def analyze_edges(pil_img):
     """
     Checks if any side of the image is 'flat' (hard straight cut).
-    Returns a list of anchors: ['bottom', 'left', 'right', 'top']
+    Uses standard Pillow data access (No Numpy required).
     """
-    # Downscale for analysis to save cpu
     w, h = 100, 100
     thumb = pil_img.resize((w, h), Image.Resampling.NEAREST)
-    alpha = np.array(thumb.getchannel('A'))
+    
+    # Get alpha channel as a flat list
+    alpha = list(thumb.getchannel('A').getdata()) 
     
     anchors = []
-    threshold = 0.40 # If >40% of the edge pixels are opaque, consider it a hard cut
+    threshold = 0.40 * w # If >40% of the edge is opaque
     
-    # Check Bottom (last row)
-    if np.count_nonzero(alpha[h-1, :] > 0) > (w * threshold):
+    # Check Bottom Row (Indices from last row)
+    bottom_pixels = alpha[-(w):]
+    if sum(1 for p in bottom_pixels if p > 0) > threshold:
         anchors.append('bottom')
-        
-    # Check Top (first row) - Less common to anchor top, but possible
-    if np.count_nonzero(alpha[0, :] > 0) > (w * threshold):
+
+    # Check Top Row (Indices 0 to w)
+    top_pixels = alpha[:w]
+    if sum(1 for p in top_pixels if p > 0) > threshold:
         anchors.append('top')
-        
-    # Check Left (first col)
-    if np.count_nonzero(alpha[:, 0] > 0) > (h * threshold):
+
+    # Check Left Column (0, w, 2w...)
+    left_pixels = [alpha[i*w] for i in range(h)]
+    if sum(1 for p in left_pixels if p > 0) > threshold:
         anchors.append('left')
-        
-    # Check Right (last col)
-    if np.count_nonzero(alpha[:, w-1] > 0) > (h * threshold):
+
+    # Check Right Column (w-1, 2w-1...)
+    right_pixels = [alpha[(i*w) + (w-1)] for i in range(h)]
+    if sum(1 for p in right_pixels if p > 0) > threshold:
         anchors.append('right')
         
     return anchors
@@ -228,8 +229,7 @@ def analyze_edges(pil_img):
 def build_layout(selected_items):
     canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0,0,0,0))
     
-    # Divide canvas into 3 horizontal zones to ensure spreading
-    # Zone 0: Left, Zone 1: Center, Zone 2: Right
+    # Divide canvas into 3 horizontal zones
     zones = [0, 1, 2]
     random.shuffle(zones)
     
@@ -238,40 +238,32 @@ def build_layout(selected_items):
         img = item['img']
         zone = zones[i]
         
-        # 1. Resize (Randomized but sane)
+        # 1. Resize
         target_w = random.randint(550, 850)
         ratio = target_w / img.width
         target_h = int(img.height * ratio)
-        
-        # Cap height to prevent total domination
         if target_h > CANVAS_H * 0.75:
             target_h = int(CANVAS_H * 0.75)
             target_w = int(target_h / ratio)
             
         img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
         
-        # 2. Analyze Anchors (Flat Edges)
+        # 2. Analyze Anchors
         anchors = analyze_edges(img)
         print(f"   📐 Item {item['id']} Anchors: {anchors}")
         
-        # 3. Calculate X Position based on Zone
-        # Zone centers
-        if zone == 0:   # Left
-            center_x = CANVAS_W * 0.25
-        elif zone == 1: # Center
-            center_x = CANVAS_W * 0.50
-        else:           # Right
-            center_x = CANVAS_W * 0.75
+        # 3. Calculate X
+        if zone == 0: center_x = CANVAS_W * 0.25
+        elif zone == 1: center_x = CANVAS_W * 0.50
+        else: center_x = CANVAS_W * 0.75
             
         x = int(center_x - (img.width / 2))
-        x += random.randint(-50, 50) # Jitter
+        x += random.randint(-50, 50)
         
-        # 4. Calculate Y Position (Default: Floating somewhat low)
+        # 4. Calculate Y
         y = random.randint(CANVAS_H - img.height - 200, CANVAS_H - img.height - 50)
         
-        # 5. Apply Snap Logic
-        # Priority: Bottom > Sides
-        
+        # 5. Snap Logic
         if 'bottom' in anchors:
             y = CANVAS_H - img.height # Snap to floor
             print("   -> Snapped to Bottom")
@@ -280,10 +272,10 @@ def build_layout(selected_items):
             print("   -> Snapped to Top")
             
         if 'left' in anchors:
-            x = 0 # Snap to left wall
+            x = 0 
             print("   -> Snapped to Left")
         elif 'right' in anchors:
-            x = CANVAS_W - img.width # Snap to right wall
+            x = CANVAS_W - img.width 
             print("   -> Snapped to Right")
             
         # 6. Paste
@@ -311,7 +303,7 @@ def add_typography(img):
     return img
 
 def main():
-    print("🚀 Starting V6 (Smart Architect)...")
+    print("🚀 Starting V6.1 (Smart Architect - No Numpy)...")
     
     candidates = load_candidates()
     processed_roster = []
