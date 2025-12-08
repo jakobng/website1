@@ -54,8 +54,11 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Stage the generated files
+          # Stage the generated files (JSON Data)
           git add cinema-scrapers/showtimes.json cinema-scrapers/tmdb_cache.json
+          
+          # Stage the history file (New!)
+          git add cinema-scrapers/featured_history.json
 
           # Check if there are any staged changes
           if git diff --staged --quiet; then
@@ -64,7 +67,7 @@ jobs:
           fi
 
           # Commit the staged changes locally
-          git commit -m "Automated update of showtimes and cache files"
+          git commit -m "Automated update of showtimes, cache, and history files"
           
           # Pull latest changes from the remote before pushing
           git pull origin main --rebase
