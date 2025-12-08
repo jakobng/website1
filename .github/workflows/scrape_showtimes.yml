@@ -53,76 +53,55 @@ jobs:
       - name: Cache TMDB data
         uses: actions/cache@v4
         with:
-          path: 'cinema-scrapers/tmdb_cache.json'
-          key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('**/main_scraper.py') }}
+          # UPDATE: Cache is now inside data/
+          path: cinema-scrapers/data/tmdb_cache.json
+          key: ${{ runner.os }}-tmdb-cache-${{ hashFiles('cinema-scrapers/main_scraper.py') }}
           restore-keys: |
             ${{ runner.os }}-tmdb-cache-
 
-      # --- DECIDE MODE ---
-      - name: Determine Post Type
+      # --- DECISION LOGIC ---
+      - name: Determine Run Mode
         id: decision
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "mode=${{ inputs.post_type }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event.schedule }}" == "0 23 * * *" ]; then
+            echo "mode=movie" >> $GITHUB_OUTPUT
           else
-            HOUR=$(date -u +%H)
-            # 23:00 UTC (08:00 JST) is the only time we run 'cinema' mode
-            if [ "$HOUR" == "23" ]; then
-              echo "mode=cinema" >> $GITHUB_OUTPUT
-            else
-              echo "mode=movie" >> $GITHUB_OUTPUT
-            fi
+            echo "mode=cinema" >> $GITHUB_OUTPUT
           fi
 
-      # --- STEP 1: SCRAPE DATA (CONDITIONAL) ---
+      # --- STEP 1: SCRAPE (Only for Cinema Mode) ---
       - name: Run scraper script
-        # ONLY scrape if we are in 'cinema' mode (the first run of the day)
         if: steps.decision.outputs.mode == 'cinema'
         run: python main_scraper.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          
-      # --- STEP 2: GENERATE ASSETS ---
-      
-      # V1: Cinemas (08:00 JST)
-      - name: Generate Cinema Slides (V1)
-        if: steps.decision.outputs.mode == 'cinema'
-        run: python generate_post.py
-        env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
 
-      # V2: Movies (09:00 & 10:00 JST) - UPDATED FOR PUNK ZINE
-      - name: Generate Movie Slides (V2 - Punk Zine)
-        if: steps.decision.outputs.mode == 'movie'
+      # --- STEP 2: GENERATE ASSETS ---
+      - name: Generate Post Images (V2 Punk Zine)
+        if: steps.decision.outputs.mode == 'cinema'
         run: python generate_post2.py
         env:
-          # V2 now needs Replicate and Gemini keys
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-     # --- STEP 3: COMMIT & PUSH ---
+      # --- STEP 3: COMMIT & PUSH ---
       - name: Commit and push generated files
         id: commit_push
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Add Data Files
-          git add 'showtimes.json' || true
-          git add 'tmdb_cache.json' || true
+          # 1. Add Data Files (Updated Paths)
+          git add data/showtimes.json || true
+          git add data/tmdb_cache.json || true
+          git add data/featured_history.json || true
           
-          # Add V1 Assets
-          git add 'post_image_*.png' || true
-          git add 'story_image_*.png' || true
-          git add 'post_caption.txt' || true
-          
-          # Add V2 Assets
-          git add 'post_v2_image_*.png' || true
-          git add 'story_v2_image_*.png' || true
-          git add 'post_v2_caption.txt' || true
+          # 2. Add IG Assets (New Folder)
+          # We force add because git sometimes ignores new folders until files exist
+          git add -f ig_posts/
           
           # Check for changes
           if git diff --staged --quiet; then
