@@ -468,8 +468,18 @@ def save_to_json(data, filename="showtimes.json"):
     except Exception as e: print(f"⚠️ Failed to save {filename}: {e}", file=sys.stderr)
 
 if __name__ == "__main__":
-    tmdb_cache = load_json_cache(TMDB_CACHE_FILE, "TMDB/Advanced Cache")
-    api_session = requests.Session()
+    # Define Data Directory
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DATA_DIR = os.path.join(BASE_DIR, "data")
+    os.makedirs(DATA_DIR, exist_ok=True)
+    
+    # UPDATE: Save to DATA_DIR
+    with open(os.path.join(DATA_DIR, "showtimes.json"), "w", encoding="utf-8") as f:
+        json.dump(final_data, f, indent=2, ensure_ascii=False)
+        
+    # UPDATE: Save Cache to DATA_DIR
+    with open(os.path.join(DATA_DIR, "tmdb_cache.json"), "w", encoding="utf-8") as f:
+        json.dump(tmdb_cache, f, indent=2, ensure_ascii=False)
     
     tmdb_key = TMDB_API_KEY
     if not tmdb_key or 'YOUR_TMDB_API_KEY' in tmdb_key:
@@ -506,3 +516,4 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
