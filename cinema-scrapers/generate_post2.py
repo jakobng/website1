@@ -46,16 +46,21 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
-SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
-BOLD_FONT_PATH = BASE_DIR / "NotoSansJP-Bold.ttf"
-REGULAR_FONT_PATH = BASE_DIR / "NotoSansJP-Regular.ttf"
+DATA_DIR = BASE_DIR / "data"
+FONTS_DIR = BASE_DIR / "fonts"
+OUTPUT_DIR = BASE_DIR / "ig_posts"  # <--- NEW
 
-# Output matches the V2 workflow expectations
-OUTPUT_CAPTION_PATH = BASE_DIR / "post_v2_caption.txt"
+# Ensure output directory exists
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-CANVAS_WIDTH = 1080
-CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
-STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
+# Updated Paths
+SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
+HISTORY_PATH = DATA_DIR / "featured_history.json"
+OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v2_caption.txt" # Save caption in ig_posts too
+
+# Updated Font Paths
+BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
+REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
 
 # --- Cinema Name Mapping ---
 CINEMA_ENGLISH_NAMES = {
@@ -550,8 +555,8 @@ def main():
     print("--- Starting V2 (Punk Zine Style - A24 Edit) ---")
     
     # Clean up ANY possible output files
-    for f in glob.glob(str(BASE_DIR / "post_v2_*.png")): os.remove(f)
-    for f in glob.glob(str(BASE_DIR / "story_v2_*.png")): os.remove(f)
+    for f in OUTPUT_DIR.glob("post_v2_*.png"): os.remove(f)
+    for f in OUTPUT_DIR.glob("story_v2_*.png"): os.remove(f)
 
     date_str = get_today_str()
     if not SHOWTIMES_PATH.exists(): 
