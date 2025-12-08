@@ -23,8 +23,8 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # We install the specific libraries needed for the Punk Zine style
-          pip install requests Pillow replicate google-genai
+          # Added tzdata for JST support
+          pip install requests Pillow replicate google-genai tzdata
 
       - name: Run Generator (V2 Punk Mode)
         working-directory: './cinema-scrapers'
@@ -33,7 +33,7 @@ jobs:
           # REQUIRED: The script will fail or fallback without these
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }} # Needed if you download images via TMDB path
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }} 
 
       - name: Commit Generated V2 Images
         id: commit_push
@@ -41,13 +41,10 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # 1. Add the new V2 images (Feed + Story)
-          # The script generates 'post_v2_...' and 'story_v2_...'
-          git add cinema-scrapers/post_v2_*.png || true
-          git add cinema-scrapers/story_v2_*.png || true
-          
-          # 2. Add the caption
-          git add cinema-scrapers/post_v2_caption.txt || true
+          # UPDATE: Target the new ig_posts folder
+          git add -f cinema-scrapers/ig_posts/post_v2_*.png || true
+          git add -f cinema-scrapers/ig_posts/story_v2_*.png || true
+          git add -f cinema-scrapers/ig_posts/post_v2_caption.txt || true
           
           # 3. Check if there are changes
           if git diff --staged --quiet; then
