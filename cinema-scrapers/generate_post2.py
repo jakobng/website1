@@ -4,6 +4,7 @@ REPLACES V28/V61.
 - Design: Minimalist typography ("Today's Film Selection"), no yellow accents.
 - Layout: "Explosive" collage (images spread to edges/bleed off canvas).
 - Tech: Gemini 2.5 Flash + Replicate + Pillow.
+- Update: Enforces JST dates, 3-day film rotation history, and new folder structure.
 """
 from __future__ import annotations
 
@@ -17,8 +18,8 @@ import math
 import colorsys
 import re
 import time
-from collections import defaultdict
-from datetime import datetime
+from collections import defaultdict, deque
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from io import BytesIO
 
@@ -40,6 +41,14 @@ except ImportError:
     print("⚠️ Google GenAI library not found. Run: pip install google-genai")
     GEMINI_AVAILABLE = False
 
+# --- Timezone Setup (JST Enforcement) ---
+try:
+    from zoneinfo import ZoneInfo
+    JST = ZoneInfo("Asia/Tokyo")
+except ImportError:
+    # Fallback for older environments
+    JST = timezone(timedelta(hours=9))
+
 # --- Secrets ---
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -48,7 +57,7 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 FONTS_DIR = BASE_DIR / "fonts"
-OUTPUT_DIR = BASE_DIR / "ig_posts"  # <--- NEW
+OUTPUT_DIR = BASE_DIR / "ig_posts"
 
 # Ensure output directory exists
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -56,11 +65,16 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # Updated Paths
 SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
 HISTORY_PATH = DATA_DIR / "featured_history.json"
-OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v2_caption.txt" # Save caption in ig_posts too
+OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v2_caption.txt"
 
 # Updated Font Paths
 BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
+
+# --- RESTORED CONSTANTS ---
+CANVAS_WIDTH = 1080
+CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
+STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
 
 # --- Cinema Name Mapping ---
 CINEMA_ENGLISH_NAMES = {
@@ -96,14 +110,18 @@ CINEMA_ENGLISH_NAMES = {
 
 # --- Helpers ---
 
+def get_today_jst():
+    """Returns the current datetime in JST."""
+    return datetime.now(JST)
+
 def get_today_str():
-    return datetime.now().strftime("%Y-%m-%d")
+    """Returns YYYY-MM-DD in JST."""
+    return get_today_jst().strftime("%Y-%m-%d")
 
 def get_japanese_date_str():
-    d = datetime.now()
-    weekdays = ["月", "火", "水", "木", "金", "土", "日"]
-    wd = weekdays[d.weekday()]
-    # Format: 2025.11.24 (Mon) - Cleaner, more modern look
+    """Returns formatted date string for display (JST)."""
+    d = get_today_jst()
+    # Format: 2025.11.24 (Mon)
     return f"{d.year}.{d.month:02}.{d.day:02}"
 
 def normalize_string(s):
@@ -127,14 +145,9 @@ def download_image(path: str) -> Image.Image | None:
 def get_fonts():
     try:
         return {
-            # NEW: Massive Japanese Title (Bold, 110px)
             "cover_main_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 110),
-            # NEW: Medium English Subtitle (Regular, 55px)
             "cover_sub_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 55),
-            # Date
             "cover_date": ImageFont.truetype(str(REGULAR_FONT_PATH), 40),
-            
-            # Slide fonts (Keep these the same)
             "title_jp": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
             "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
@@ -144,7 +157,6 @@ def get_fonts():
     except:
         print("⚠️ Fonts not found, using default.")
         d = ImageFont.load_default()
-        # Ensure all keys exist to prevent crashes
         return {k: d for k in ["cover_main_jp", "cover_sub_en", "cover_date", "title_jp", "title_en", "meta", "cinema", "times"]}
 
 def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
@@ -201,6 +213,62 @@ def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
     x = (canvas_width - length) // 2
     draw.text((x, y), text, font=font, fill=fill)
     return y + font.size + 10 
+
+# --- HISTORY / COOLDOWN MANAGER ---
+
+class HistoryManager:
+    def __init__(self, filepath, retention_days=3):
+        self.filepath = filepath
+        self.retention_days = retention_days
+        self.history = self._load()
+
+    def _load(self):
+        if not self.filepath.exists():
+            return {}
+        try:
+            with open(self.filepath, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except:
+            return {}
+
+    def is_on_cooldown(self, film_id):
+        """Check if film_id was featured within the retention period."""
+        today = datetime.now(JST).date()
+        
+        # Check explicit history
+        last_seen_str = self.history.get(str(film_id))
+        if last_seen_str:
+            try:
+                last_seen_date = datetime.strptime(last_seen_str, "%Y-%m-%d").date()
+                days_diff = (today - last_seen_date).days
+                if days_diff < self.retention_days:
+                    return True # Still on cooldown
+            except ValueError:
+                pass # Bad date format, ignore
+        return False
+
+    def update(self, film_ids):
+        """Update history with today's picks."""
+        today_str = get_today_str()
+        for fid in film_ids:
+            self.history[str(fid)] = today_str
+            
+        self._save()
+
+    def _save(self):
+        # Prune old entries to keep file size small
+        today = datetime.now(JST).date()
+        clean_history = {}
+        for fid, date_str in self.history.items():
+            try:
+                entry_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+                if (today - entry_date).days < 14: # Keep 2 weeks of history just in case
+                    clean_history[fid] = date_str
+            except:
+                pass
+        
+        with open(self.filepath, 'w', encoding='utf-8') as f:
+            json.dump(clean_history, f, indent=2)
 
 # --- COLLAGE LOGIC ---
 
@@ -315,15 +383,12 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
     
     random.shuffle(stickers) 
     
-    # --- UPDATED LAYOUT LOGIC (Spread Out) ---
-    # We push the anchor zones much closer to the edges
-    # TL, TR, BL, BR, Center
     zones = [
-        (int(width * 0.10), int(height * 0.15)), # Top Left (closer to edge)
-        (int(width * 0.90), int(height * 0.15)), # Top Right (closer to edge)
-        (int(width * 0.10), int(height * 0.75)), # Bottom Left
-        (int(width * 0.90), int(height * 0.75)), # Bottom Right
-        (int(width * 0.50), int(height * 0.50))  # Center
+        (int(width * 0.10), int(height * 0.15)), 
+        (int(width * 0.90), int(height * 0.15)), 
+        (int(width * 0.10), int(height * 0.75)), 
+        (int(width * 0.90), int(height * 0.75)), 
+        (int(width * 0.50), int(height * 0.50)) 
     ]
     random.shuffle(zones)
     
@@ -333,7 +398,6 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
         new_w = int(width * scale)
         new_h = int(new_w / ratio)
         
-        # Cap height just in case
         if new_h > int(height * 0.60): 
             new_h = int(height * 0.60)
             new_w = int(new_h * ratio)
@@ -348,21 +412,16 @@ def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) ->
             anchor_x = random.randint(100, width-300)
             anchor_y = random.randint(100, height-400)
             
-        # Increased Jitter for chaos
         jitter_x = random.randint(-200, 200)
         jitter_y = random.randint(-150, 150)
         x = anchor_x + jitter_x
         y = anchor_y + jitter_y
         
-        # --- RELAXED BOUNDARIES (Bleed Allowed) ---
-        # Allow stickers to go off the edge by ~20% of their width
-        # This prevents the "Squashed Center" effect
         min_x = int(-s_rotated.width * 0.2)
         max_x = width - int(s_rotated.width * 0.8)
         min_y = int(-s_rotated.height * 0.2)
         max_y = height - int(s_rotated.height * 0.8)
 
-        # Apply clamp with the new relaxed limits
         x = max(min_x, min(x, max_x))
         y = max(min_y, min(y, max_y))
         
@@ -380,7 +439,6 @@ def draw_final_cover(composite, fonts, is_story=False):
     bg_ratio = bg.width / bg.height
     target_ratio = width / height
     
-    # Crop/Resize logic
     if bg_ratio > target_ratio:
         new_h = height
         new_w = int(new_h * bg_ratio)
@@ -398,20 +456,14 @@ def draw_final_cover(composite, fonts, is_story=False):
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
     
-    # --- TYPOGRAPHY UPDATE: Hierarchy Flip ---
-    
-    # 1. Main Title: Japanese (Big & Bold)
     jp_text = "今日の上映作品"
-    # Strong shadow for legibility
     draw.text((cx + 4, cy - 80 + offset + 4), jp_text, font=fonts['cover_main_jp'], fill=(0,0,0), anchor="mm")
     draw.text((cx, cy - 80 + offset), jp_text, font=fonts['cover_main_jp'], fill=(255,255,255), anchor="mm")
 
-    # 2. Subtitle: English (Medium Size)
     en_text = "Today's Film Selection"
     draw.text((cx + 2, cy + 30 + offset + 2), en_text, font=fonts['cover_sub_en'], fill=(0,0,0), anchor="mm")
     draw.text((cx, cy + 30 + offset), en_text, font=fonts['cover_sub_en'], fill=(230,230,230), anchor="mm")
 
-    # 3. Date (Small, at bottom)
     date_text = get_japanese_date_str()
     draw.text((cx + 2, cy + 110 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
     draw.text((cx, cy + 110 + offset), date_text, font=fonts['cover_date'], fill=(180,180,180), anchor="mm")
@@ -436,8 +488,7 @@ def draw_fallback_cover(images, fonts, is_story=False):
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
     
-    # Fallback also updated to new style
-    draw.text((cx, cy + offset), "Today's Film Selection", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
+    draw.text((cx, cy + offset), "Today's Film Selection", font=fonts['cover_main_jp'], fill=(255,255,255), anchor="mm")
     draw.text((cx, cy + 100 + offset), get_japanese_date_str(), font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
     return bg
 
@@ -554,37 +605,68 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
 def main():
     print("--- Starting V2 (Punk Zine Style - A24 Edit) ---")
     
-    # Clean up ANY possible output files
+    # Clean up output files in the new directory
     for f in OUTPUT_DIR.glob("post_v2_*.png"): os.remove(f)
     for f in OUTPUT_DIR.glob("story_v2_*.png"): os.remove(f)
 
+    # 1. FIX: Get JST Date
     date_str = get_today_str()
+    print(f"📅 Target Date (JST): {date_str}")
+    
     if not SHOWTIMES_PATH.exists(): 
-        print("Showtimes file missing.")
+        print(f"Showtimes file missing at: {SHOWTIMES_PATH}")
         return
         
     with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
-        
+    
+    # 2. FIX: Initialize History
+    history_manager = HistoryManager(HISTORY_PATH)
+    
     films_map = {}
     for item in raw_data:
         if item.get('date_text') != date_str: continue
         if not item.get('tmdb_backdrop_path'): continue
-        key = item.get('tmdb_id') or item.get('movie_title')
-        if key not in films_map:
-            films_map[key] = item
-            films_map[key]['showings'] = defaultdict(list)
-        films_map[key]['showings'][item.get('cinema_name', '')].append(item.get('showtime', ''))
+        
+        # Use TMDB ID as primary key, fallback to title
+        fid = item.get('tmdb_id')
+        if not fid:
+            fid = normalize_string(item.get('movie_title'))
+            
+        # 3. FIX: Filter out Cooldown Films
+        if history_manager.is_on_cooldown(fid):
+            continue
+            
+        # Store for processing
+        if fid not in films_map:
+            films_map[fid] = item
+            films_map[fid]['showings'] = defaultdict(list)
+            # Ensure we attach the ID for later reference
+            films_map[fid]['unique_id'] = fid
+            
+        films_map[fid]['showings'][item.get('cinema_name', '')].append(item.get('showtime', ''))
 
     all_films = list(films_map.values())
+    
+    if len(all_films) < 5:
+        print("⚠️ Warning: Low film count after cooldown filter. Loosening restrictions...")
+        # (Optional) You could re-fetch ignored films here if needed, 
+        # but for now we'll just proceed with what we have.
+        
     random.shuffle(all_films)
     selected = all_films[:9]
     
     if not selected:
-        print("No films found.")
+        print("No films found for this date (or all filtered).")
         return
 
     print(f"Selected {len(selected)} films.")
+    
+    # 4. FIX: Update History with chosen films
+    selected_ids = [f['unique_id'] for f in selected]
+    history_manager.update(selected_ids)
+    print("💾 History updated.")
+    
     fonts = get_fonts()
     slide_data = []
     cover_images = []
@@ -603,20 +685,18 @@ def main():
     
     if collage:
         print("✅ Collage Assembled!")
-        # FEED COVER
         cover_feed = draw_final_cover(collage, fonts, is_story=False)
-        cover_feed.save(BASE_DIR / "post_v2_image_00.png")
+        cover_feed.save(OUTPUT_DIR / "post_v2_image_00.png")
         
-        # STORY COVER
         cover_story = draw_final_cover(collage, fonts, is_story=True)
-        cover_story.save(BASE_DIR / "story_v2_image_00.png")
+        cover_story.save(OUTPUT_DIR / "story_v2_image_00.png")
     else:
         print("⚠️ Collage Failed. Using Fallback.")
         fb_feed = draw_fallback_cover(cover_images, fonts, is_story=False)
-        fb_feed.save(BASE_DIR / "post_v2_image_00.png")
+        fb_feed.save(OUTPUT_DIR / "post_v2_image_00.png")
         
         fb_story = draw_fallback_cover(cover_images, fonts, is_story=True)
-        fb_story.save(BASE_DIR / "story_v2_image_00.png")
+        fb_story.save(OUTPUT_DIR / "story_v2_image_00.png")
 
     # --- SLIDE GENERATION ---
     caption_lines = [f"🗓️ {date_str} Tokyo Cinema Daily\n"]
@@ -625,13 +705,11 @@ def main():
         film = item['film']
         img = item['img']
         
-        # Feed Slide
         slide_feed = draw_poster_slide(film, img, fonts, is_story=False)
-        slide_feed.save(BASE_DIR / f"post_v2_image_{i+1:02}.png")
+        slide_feed.save(OUTPUT_DIR / f"post_v2_image_{i+1:02}.png")
         
-        # Story Slide
         slide_story = draw_poster_slide(film, img, fonts, is_story=True)
-        slide_story.save(BASE_DIR / f"story_v2_image_{i+1:02}.png")
+        slide_story.save(OUTPUT_DIR / f"story_v2_image_{i+1:02}.png")
         
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
         caption_lines.append(f"{t_jp}") 
