@@ -3,17 +3,21 @@ import requests
 import glob
 import time
 import sys
-import argparse
 
 # --- Configuration ---
 # 1. Get secrets from GitHub Actions environment
 IG_USER_ID = os.environ.get("IG_USER_ID")
 IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN")
-GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/cinema-scrapers/" 
 
+# UPDATE: Point to the new folder in the URL so Instagram can download them
+GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/cinema-scrapers/ig_posts/" 
 
 API_VERSION = "v21.0"
 GRAPH_URL = f"https://graph.facebook.com/{API_VERSION}"
+
+# Define local paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
 
 # --- API Helper Functions ---
 
@@ -47,18 +51,18 @@ def upload_carousel_child_container(image_url):
     result = response.json()
     
     if "id" not in result:
-        print(f"❌ Error creating carousel child container for {image_url}: {result}")
-        sys.exit(1)
+        print(f"❌ Error creating child container: {result}")
+        return None
         
-    print(f"   ↳ Child Container Created: {result['id']}")
+    print(f"   - Child Container Created: {result['id']}")
     return result["id"]
 
-def create_carousel_parent_container(children_ids, caption):
-    """Creates the parent carousel container linking all children (Step 2)."""
+def upload_carousel_container(child_ids, caption):
+    """Creates the parent container for the carousel."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
     payload = {
         "media_type": "CAROUSEL",
-        "children": ",".join(children_ids), # Comma-separated list of IDs
+        "children": ",".join(child_ids),
         "caption": caption,
         "access_token": IG_ACCESS_TOKEN
     }
@@ -66,18 +70,18 @@ def create_carousel_parent_container(children_ids, caption):
     result = response.json()
     
     if "id" not in result:
-        print(f"❌ Error creating parent carousel container: {result}")
+        print(f"❌ Error creating parent container: {result}")
         sys.exit(1)
-
-    print(f"✅ Created Parent Carousel Container ID: {result['id']}")
+        
+    print(f"✅ Created Carousel Parent ID: {result['id']}")
     return result["id"]
 
 def upload_story_container(image_url):
-    """Creates a media container specifically for STORIES."""
+    """Creates a media container for a STORY."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
     payload = {
         "image_url": image_url,
-        "media_type": "STORIES", # CRITICAL: Identifies this as a Story
+        "media_type": "STORIES",
         "access_token": IG_ACCESS_TOKEN
     }
     response = requests.post(url, data=payload)
@@ -87,69 +91,11 @@ def upload_story_container(image_url):
         print(f"❌ Error creating Story container: {result}")
         return None
         
-    print(f"   Created Story Container: {result['id']}")
+    print(f"✅ Created Story Container ID: {result['id']}")
     return result["id"]
 
-# --- ASYNCHRONOUS STATUS CHECK ---
-def check_media_status(creation_id):
-    """Polls the API to check if the media is ready for publishing (Step 3)."""
-    url = f"{GRAPH_URL}/{creation_id}"
-    params = {
-        "fields": "status_code,status,id",
-        "access_token": IG_ACCESS_TOKEN
-    }
-
-    # Poll status every 5 seconds for up to 60 seconds (12 checks)
-    max_checks = 12
-    delay = 5  # seconds
-
-    print(f"   Waiting for media ID {creation_id} to finish processing...")
-
-    for i in range(max_checks):
-        response = requests.get(url, params=params).json()
-        status_code = response.get("status_code")
-        
-        # Check 1: Final success status
-        if status_code == "FINISHED":
-            print(f"   Media status: FINISHED. Ready to publish.")
-            return True
-        
-        # Check 2: Fatal error status
-        if status_code in ("ERROR", "ERROR_RESOURCE_DOWNLOAD"):
-            print(f"❌ Media processing FAILED: {response}")
-            return False
-
-        # If still processing, wait and check again
-        print(f"   Processing status: {status_code}. Waiting {delay}s...")
-        time.sleep(delay)
-
-    print("❌ Timed out waiting for media processing.")
-    return False
-
-def verify_published_status(creation_id):
-    """
-    Double-checks if the container was actually published.
-    Used when the API returns a False Positive error.
-    """
-    url = f"{GRAPH_URL}/{creation_id}"
-    params = {
-        "fields": "status_code",
-        "access_token": IG_ACCESS_TOKEN
-    }
-    try:
-        response = requests.get(url, params=params).json()
-        status = response.get("status_code")
-        print(f"   🔍 Verification Check - Container Status: {status}")
-        
-        if status == "PUBLISHED":
-            return True
-    except Exception as e:
-        print(f"   Verification API call failed: {e}")
-    
-    return False
-
 def publish_media(creation_id):
-    """Publishes the container (Step 4)."""
+    """Publishes a container (Feed or Story)."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media_publish"
     payload = {
         "creation_id": creation_id,
@@ -158,120 +104,126 @@ def publish_media(creation_id):
     response = requests.post(url, data=payload)
     result = response.json()
     
-    # Success Case
     if "id" in result:
-        print(f"🚀 SUCCESS! Published to Instagram. Post ID: {result['id']}")
-        return result["id"]
+        print(f"🚀 Published Successfully! Media ID: {result['id']}")
+        return True
+    else:
+        print(f"❌ Publish Failed: {result}")
+        return False
+
+def check_media_status(container_id):
+    """Checks if the container is ready to publish."""
+    url = f"{GRAPH_URL}/{container_id}"
+    params = {
+        "fields": "status_code,status",
+        "access_token": IG_ACCESS_TOKEN
+    }
     
-    # --- Error Handling Logic ---
-    error_data = result.get("error", {})
-    error_code = error_data.get("code")
-    error_subcode = error_data.get("error_subcode")
-    error_msg = error_data.get("message", "")
+    print("   ⏳ Checking processing status...", end="", flush=True)
+    for _ in range(5): # Try 5 times
+        response = requests.get(url, params=params)
+        data = response.json()
+        status = data.get("status_code")
+        
+        if status == "FINISHED":
+            print(" Ready!")
+            return True
+        elif status == "ERROR":
+            print(" Failed processing.")
+            return False
+        
+        print(".", end="", flush=True)
+        time.sleep(5)
+        
+    print(" Timeout.")
+    return False
 
-    print(f"⚠️ Publish API returned error: Code {error_code} / Subcode {error_subcode}")
-    print(f"   Message: {error_msg}")
-
-    # Specific handling for "Limit Reached" / "Action Blocked" false positives
-    if error_code == 4 or error_subcode == 2207051:
-        print("   ⚠️ This error often occurs even if the post succeeded (False Positive).")
-        print("   ⏳ Waiting 15 seconds to verify actual post status...")
-        time.sleep(15) # Give Instagram database time to update
-
-        if verify_published_status(creation_id):
-            print("   ✅ VERIFIED: The post was actually published successfully! Ignoring API error.")
-            return "verified_id"
-        else:
-            print("   ❌ VERIFIED: The post actually failed.")
-
-    # If we get here, it's a hard failure.
-    # For Feed/Carousel, we exit. For Stories, we might just return None so the loop continues.
-    return None
+# --- Main Logic ---
 
 def main():
-    # --- 0. Argument Parsing & Setup ---
-    parser = argparse.ArgumentParser(description="Upload images to Instagram.")
-    parser.add_argument("--type", choices=["cinema", "movie"], default="cinema",
-                        help="Type of content to upload: 'cinema' (V1) or 'movie' (V2).")
-    args = parser.parse_args()
-
-    # Define file patterns based on type
-    if args.type == "movie":
-        print("🎬 STARTING UPLOAD: V2 (Movie Mode)")
-        CAPTION_FILENAME = "post_v2_caption.txt"
-        IMAGE_PATTERN = "post_v2_image_*.png"
-        STORY_PATTERN = "story_v2_image_*.png" # Ensure your V2 generator makes these!
-    else:
-        print("🏙️ STARTING UPLOAD: V1 (Cinema Mode)")
-        CAPTION_FILENAME = "post_caption.txt"
-        IMAGE_PATTERN = "post_image_*.png"
-        STORY_PATTERN = "story_image_*.png"
-
     if not IG_USER_ID or not IG_ACCESS_TOKEN:
-        print("❌ Missing IG_USER_ID or IG_ACCESS_TOKEN environment variables.")
-        sys.exit(1)
+        print("⚠️ Missing Instagram credentials. Skipping upload.")
+        sys.exit(0)
 
-    # 1. Read Caption
-    try:
-        with open(CAPTION_FILENAME, "r", encoding="utf-8") as f:
-            caption = f.read()
-    except FileNotFoundError:
-        print(f"❌ Caption file '{CAPTION_FILENAME}' not found.")
-        sys.exit(1)
+    # Simple arg parsing to decide mode (cinema vs movie)
+    # Usage: python upload_to_instagram.py --type cinema
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--type", default="cinema", help="Post type: cinema or movie")
+    args = parser.parse_args()
+    POST_TYPE = args.type
 
-    # 2. Find Image Files (Feed)
-    image_files = sorted(glob.glob(IMAGE_PATTERN))
-    
-    if not image_files:
-        print(f"❌ No feed image files found matching '{IMAGE_PATTERN}'.")
-        sys.exit(1)
+    print(f"🔍 Mode: {POST_TYPE}")
+    print(f"📂 Looking for files in: {OUTPUT_DIR}")
 
-    print(f"📸 Found {len(image_files)} FEED images: {image_files}")
+    feed_files = []
+    story_files = []
+    caption_text = "No caption found."
 
-    creation_id = None
-
-    # --- SINGLE IMAGE MODE (Feed) ---
-    if len(image_files) == 1:
-        print("🔹 Detected Single Image Mode (Feed)")
-        filename = image_files[0]
-        image_url = f"{GITHUB_PAGES_BASE_URL}{filename}"
-        print(f"   Public URL: {image_url}")
+    if POST_TYPE == "cinema":
+        # Look for V2 files first (in ig_posts/)
+        feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_v2_image_*.png")))
+        story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_v2_image_*.png")))
         
-        creation_id = upload_single_image_container(image_url, caption)
+        # Fallback to V1 if V2 not found
+        if not feed_files:
+            feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_image_*.png")))
+            story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_image_*.png")))
+            
+        caption_path = os.path.join(OUTPUT_DIR, "post_v2_caption.txt")
+        if not os.path.exists(caption_path):
+             caption_path = os.path.join(OUTPUT_DIR, "post_caption.txt")
+             
+        if os.path.exists(caption_path):
+            with open(caption_path, "r", encoding="utf-8") as f:
+                caption_text = f.read()
 
-    # --- CAROUSEL MODE (Feed) ---
-    else:
-        print(f"🔹 Detected Carousel Mode ({len(image_files)} slides)")
+    elif POST_TYPE == "movie":
+        # Placeholder for your movie post logic
+        pass
+
+    # --- FEED MODE ---
+    if feed_files:
+        print(f"🔹 Detected {len(feed_files)} Feed Images.")
         
-        # Step 1: Create containers for each image (Children)
-        children_ids = []
-        for filename in image_files:
+        child_ids = []
+        for local_path in feed_files:
+            filename = os.path.basename(local_path)
+            # Use the NEW URL structure
             image_url = f"{GITHUB_PAGES_BASE_URL}{filename}"
-            print(f"   Processing Child: {filename} -> {image_url}")
-            child_id = upload_carousel_child_container(image_url)
-            children_ids.append(child_id)
-            time.sleep(1) # Small delay between child container creation
-        
-        # Step 2: Create the parent container linking them
-        print("   Linking children to parent container...")
-        creation_id = create_carousel_parent_container(children_ids, caption)
+            print(f"   Uploading: {filename} -> {image_url}")
+            
+            if len(feed_files) == 1:
+                # Single Image
+                c_id = upload_single_image_container(image_url, caption_text)
+                publish_media(c_id)
+                sys.exit(0) # Done
+            else:
+                # Carousel Item
+                c_id = upload_carousel_child_container(image_url)
+                if c_id:
+                    child_ids.append(c_id)
+                time.sleep(2) # Brief pause
 
-    # --- PUBLISH FEED ---
-    if creation_id:
-        if check_media_status(creation_id):
-            publish_media(creation_id)
-        else:
-            print("❌ Feed Publication aborted due to media processing error or timeout.")
-            # We do NOT exit here, because we still want to try Stories if Feed fails.
+        if child_ids:
+            print("🔹 Creating Carousel Parent...")
+            parent_id = upload_carousel_container(child_ids, caption_text)
+            
+            if check_media_status(parent_id):
+                publish_media(parent_id)
+
+    else:
+        print("ℹ️ No feed images found. Skipping Feed upload.")
 
     # --- STORY MODE ---
     print("\n--- CHECKING FOR STORIES ---")
-    story_files = sorted(glob.glob(STORY_PATTERN))
     
     if story_files:
-        print(f"🔹 Detected {len(story_files)} Story Images matching '{STORY_PATTERN}'. Starting sequence upload...")
+        print(f"🔹 Detected {len(story_files)} Story Images. Starting sequence upload...")
         
-        for i, filename in enumerate(story_files):
+        for i, local_path in enumerate(story_files):
+            filename = os.path.basename(local_path)
+            # Use the NEW URL structure
             image_url = f"{GITHUB_PAGES_BASE_URL}{filename}"
             print(f"\n   Story {i+1}/{len(story_files)}: {filename}")
             
@@ -279,7 +231,7 @@ def main():
             container_id = upload_story_container(image_url)
             
             if container_id:
-                # 2. Check Status (Crucial for Stories as they process individually)
+                # 2. Check Status
                 if check_media_status(container_id):
                     # 3. Publish Immediately
                     result = publish_media(container_id)
@@ -287,7 +239,6 @@ def main():
                     if result:
                         print(f"   ✅ Story {i+1} published.")
                         # 4. Nap (Rate Limit Protection)
-                        # Spacing out story uploads helps avoid the "Spam" filter
                         print("   ⏳ Sleeping 10s to be gentle on API...")
                         time.sleep(10)
                     else:
@@ -296,7 +247,7 @@ def main():
                 print(f"   Skipping Story {filename} due to container error.")
                 
     else:
-        print(f"ℹ️ No story images found matching '{STORY_PATTERN}'. Skipping Story sequence.")
+        print("ℹ️ No story images found. Skipping Story sequence.")
 
 if __name__ == "__main__":
     main()
