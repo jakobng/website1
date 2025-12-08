@@ -38,9 +38,10 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          git add 'cinema-scrapers/post_image_*.png'
-          git add 'cinema-scrapers/story_image_*.png'
-          git add 'cinema-scrapers/post_caption.txt'
+          # UPDATE: Target the new ig_posts folder
+          git add -f 'cinema-scrapers/ig_posts/post_image_*.png'
+          git add -f 'cinema-scrapers/ig_posts/story_image_*.png'
+          git add -f 'cinema-scrapers/ig_posts/post_caption.txt'
           
           if git diff --staged --quiet; then
             echo "No design changes detected."
