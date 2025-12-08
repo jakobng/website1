@@ -12,34 +12,36 @@ import difflib
 from bs4 import BeautifulSoup
 
 # --- All cinema scraper modules ---
-import bunkamura_module
-import bluestudio_module
-import cine_switch_ginza_module
-import eurospace_module
-import human_shibuya_module
-import human_yurakucho_module
-import image_forum_module
-import ks_cinema_module
-import laputa_asagaya_module
-import meguro_cinema_module
-import musashino_kan_module
-import nfaj_calendar_module as nfaj_module
-import polepole_module
-import shin_bungeiza_module
-import shimotakaido_module
-import stranger_module
-import theatre_shinjuku_module
-import waseda_shochiku_module
-import cinemart_shinjuku_module
-import cinema_qualite_module
-import cine_quinto_module
-import yebisu_garden_module
-import k2_cinema_module
-import cinema_rosa_module
-import chupki_module
-import uplink_kichijoji_module
-import tollywood_module
-import morc_asagaya_module
+from cinema_modules import (
+    bunkamura_module,
+    bluestudio_module,
+    cine_switch_ginza_module,
+    eurospace_module,
+    human_shibuya_module,
+    human_yurakucho_module,
+    image_forum_module,
+    ks_cinema_module,
+    laputa_asagaya_module,
+    meguro_cinema_module,
+    musashino_kan_module,
+    nfaj_calendar_module as nfaj_module,
+    polepole_module,
+    shin_bungeiza_module,
+    shimotakaido_module,
+    stranger_module,
+    theatre_shinjuku_module,
+    waseda_shochiku_module,
+    cinemart_shinjuku_module,
+    cinema_qualite_module,
+    cine_quinto_module,
+    yebisu_garden_module,
+    k2_cinema_module,
+    cinema_rosa_module,
+    chupki_module,
+    uplink_kichijoji_module,
+    tollywood_module,
+    morc_asagaya_module
+)
 
 # -----------------------------------------------------------------------------
 # UTF-8 Output
@@ -516,4 +518,5 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
 
