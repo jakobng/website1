@@ -65,7 +65,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # Updated Paths
 SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
 HISTORY_PATH = DATA_DIR / "featured_history.json"
-OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v2_caption.txt" # Save caption in ig_posts too
+OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v1_caption.txt" # Save caption in ig_posts too
 
 # Updated Font Paths
 BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
@@ -602,11 +602,11 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     return canvas
 
 def main():
-    print("--- Starting V2 (Punk Zine Style - A24 Edit) ---")
+    print("--- Starting V1")
     
     # Clean up output files
-    for f in OUTPUT_DIR.glob("post_v2_*.png"): os.remove(f)
-    for f in OUTPUT_DIR.glob("story_v2_*.png"): os.remove(f)
+    for f in OUTPUT_DIR.glob("post_v1_*.png"): os.remove(f)
+    for f in OUTPUT_DIR.glob("story_v1_*.png"): os.remove(f)
 
     # 1. FIX: Get JST Date
     date_str = get_today_str()
