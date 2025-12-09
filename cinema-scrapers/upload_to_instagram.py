@@ -3,6 +3,7 @@ import requests
 import glob
 import time
 import sys
+import argparse
 
 # --- Configuration ---
 # 1. Get secrets from GitHub Actions environment
@@ -145,9 +146,7 @@ def main():
         print("⚠️ Missing Instagram credentials. Skipping upload.")
         sys.exit(0)
 
-    # Simple arg parsing to decide mode (cinema vs movie)
     # Usage: python upload_to_instagram.py --type cinema
-    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", default="cinema", help="Post type: cinema or movie")
     args = parser.parse_args()
@@ -160,7 +159,8 @@ def main():
     story_files = []
     caption_text = "No caption found."
 
-    if POST_TYPE == "cinema":
+    # FIXED: "movie" and "cinema" modes now use the same logic
+    if POST_TYPE in ["cinema", "movie"]:
         # Look for V2 files first (in ig_posts/)
         feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_v2_image_*.png")))
         story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_v2_image_*.png")))
@@ -178,10 +178,6 @@ def main():
             with open(caption_path, "r", encoding="utf-8") as f:
                 caption_text = f.read()
 
-    elif POST_TYPE == "movie":
-        # Placeholder for your movie post logic
-        pass
-
     # --- FEED MODE ---
     if feed_files:
         print(f"🔹 Detected {len(feed_files)} Feed Images.")
@@ -197,7 +193,7 @@ def main():
                 # Single Image
                 c_id = upload_single_image_container(image_url, caption_text)
                 publish_media(c_id)
-                sys.exit(0) # Done
+                # Note: We don't exit here if there are stories to process
             else:
                 # Carousel Item
                 c_id = upload_carousel_child_container(image_url)
