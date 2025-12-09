@@ -262,82 +262,6 @@
             transform: translateY(-1px);
         }
 
-        /* --- Today's Pick Styles --- */
-        #todays-pick-section {
-            margin: -20px 0 40px 0;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px var(--shadow-color);
-            transition: all 0.3s ease-in-out;
-        }
-        #todays-pick-header {
-            padding: 15px 20px;
-            cursor: pointer;
-            background-color: rgba(0,0,0,0.02);
-            transition: background-color 0.2s ease;
-        }
-        #todays-pick-header:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
-        #todays-pick-header h3 {
-            margin: 0;
-            font-size: 1.2em;
-            font-weight: 700;
-            color: var(--text-color);
-            line-height: 1.4;
-        }
-        #todays-pick-title-jp {
-            font-weight: 700;
-        }
-        #todays-pick-title-en {
-            display: block;
-            font-size: 0.8em;
-            font-weight: 400;
-            color: var(--medium-text);
-        }
-        #todays-pick-details {
-            padding: 0 20px 20px 20px;
-            max-height: 40vh;
-            overflow-y: auto;
-            border-top: 1px solid var(--border-color);
-            margin-top: -1px; /* To overlap with header's bottom border */
-        }
-        .pick-cinema-block {
-            margin-top: 15px;
-        }
-        .pick-cinema-block h4 {
-            font-size: 1em;
-            font-weight: 700;
-            margin: 0 0 8px 0;
-            padding-bottom: 5px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .pick-showtimes-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .pick-showtimes-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            font-size: 0.9em;
-        }
-        .pick-showtime-time {
-            font-weight: 600;
-        }
-        .pick-showtime-links a {
-            margin-left: 8px;
-            font-size: 0.9em;
-            text-decoration: underline;
-            color: var(--blue-accent);
-        }
-        .pick-showtime-links a:hover {
-            color: var(--text-color);
-        }
-        
         /* --- Feedback Button Styles --- */
         .feedback-section {
             text-align: center;
@@ -405,16 +329,6 @@
     <div class="container">
         <header> <h1 id="main-header">Tokyo Mini-Theatre Showtimes <br> 東京のミニシアター </h1> </header>
         
-        <!-- Today's Pick Section -->
-        <div id="todays-pick-section" class="hidden">
-            <div id="todays-pick-header">
-                <h3><!-- Title will be populated by JS --></h3>
-            </div>
-            <div id="todays-pick-details" class="hidden">
-                <!-- Details will be populated by JS -->
-            </div>
-        </div>
-
         <button id="back-to-cinemas-btn" class="action-button hidden">&laquo; Back to Cinemas</button>
         <div id="cinema-selection-grid-container">
             </div>
@@ -428,19 +342,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Fetch the JSON from its original location so the HTML can live elsewhere
-            const jsonUrl = '/cinema-scrapers/showtimes.json';
+            // UPDATED PATH: Pointing to the new data/ folder
+            const jsonUrl = '/cinema-scrapers/data/showtimes.json';
+            
             const cinemaSelectionGridContainerEl = document.getElementById('cinema-selection-grid-container');
             const selectedCinemaShowtimesContainer = document.getElementById('selected-cinema-showtimes');
             const initialLoadingMessageContainer = document.getElementById('initial-loading-message-container');
             const loadingMessageTextEl = document.getElementById('loading-message-text');
             const backButton = document.getElementById('back-to-cinemas-btn');
             
-            // Today's Pick Elements
-            const todaysPickSection = document.getElementById('todays-pick-section');
-            const todaysPickHeader = document.getElementById('todays-pick-header');
-            const todaysPickDetailsEl = document.getElementById('todays-pick-details');
-
             let fullShowtimesData = [];
             let dataLoaded = false;
             
@@ -545,7 +455,7 @@
                     fullShowtimesData = await response.json();
                     dataLoaded = true; 
                     if (initialLoadingMessageContainer) initialLoadingMessageContainer.classList.add('hidden');
-                    setupTodaysPick(fullShowtimesData);
+                    // REMOVED Today's Pick setup
                     handleLocationChange(); 
                 } catch (error) {
                     console.error("Fetch/parse error:", error);
@@ -557,122 +467,6 @@
                     dataLoaded = true; 
                     handleLocationChange(); 
                 }
-            }
-
-            function setupTodaysPick(showings) {
-                if (!showings || showings.length === 0) return;
-
-                const today = new Date();
-                const yyyy = today.getFullYear();
-                const mm = String(today.getMonth() + 1).padStart(2, '0');
-                const dd = String(today.getDate()).padStart(2, '0');
-                const todayStr = `${yyyy}-${mm}-${dd}`;
-
-                const todaysShowings = showings.filter(s => s.date_text === todayStr);
-                if (todaysShowings.length === 0) {
-                    console.log("No showtimes available for today.");
-                    return; 
-                }
-
-                const eligibleFilms = todaysShowings.filter(s => s.year && s.letterboxd_link);
-                if (eligibleFilms.length === 0) {
-                    console.log("No eligible films for Today's Pick for today.");
-                    todaysPickSection.classList.add('hidden');
-                    return;
-                }
-
-                const uniqueFilmTitles = [...new Set(eligibleFilms.map(s => s.movie_title || s.title))];
-                const randomFilmTitle = uniqueFilmTitles[Math.floor(Math.random() * uniqueFilmTitles.length)];
-                const allShowingsForPick = todaysShowings.filter(s => (s.movie_title || s.title) === randomFilmTitle);
-                
-                if (allShowingsForPick.length === 0) return;
-
-                const representativeShowing = allShowingsForPick[0];
-                let bestEnglishTitleForPick = null;
-                if (representativeShowing.letterboxd_english_title && isProbablyNotJapanese(representativeShowing.letterboxd_english_title)) {
-                    bestEnglishTitleForPick = representativeShowing.letterboxd_english_title;
-                } else if (representativeShowing.tmdb_display_title && isProbablyNotJapanese(representativeShowing.tmdb_display_title)) {
-                    bestEnglishTitleForPick = representativeShowing.tmdb_display_title;
-                }
-
-                const headerH3 = todaysPickHeader.querySelector('h3');
-                let titleHtml = `Random Film: <span id="todays-pick-title-jp">${randomFilmTitle}</span>`;
-                if (bestEnglishTitleForPick) {
-                    titleHtml += `<span id="todays-pick-title-en">${bestEnglishTitleForPick}</span>`;
-                }
-                headerH3.innerHTML = titleHtml;
-
-                const showingsByCinema = allShowingsForPick.reduce((acc, showing) => {
-                    const cinemaName = showing.cinema_name || showing.cinema;
-                    if (!acc[cinemaName]) {
-                        acc[cinemaName] = [];
-                    }
-                    acc[cinemaName].push(showing);
-                    return acc;
-                }, {});
-
-                todaysPickDetailsEl.innerHTML = ''; 
-
-                for (const cinemaName in showingsByCinema) {
-                    const cinemaBlock = document.createElement('div');
-                    cinemaBlock.className = 'pick-cinema-block';
-
-                    const cinemaHeader = document.createElement('h4');
-                    let primaryCinemaName = preferredJapaneseDisplayNames[cinemaName] || cinemaName;
-                    let englishCinemaName = cinemaEnglishNames[cinemaName] || null;
-
-                    let cinemaNameHtml = primaryCinemaName;
-                    if (englishCinemaName && englishCinemaName.toLowerCase() !== primaryCinemaName.toLowerCase()) {
-                        cinemaNameHtml += ` <span class="cinema-english-name-card" style="display:inline; font-size: 0.9em;">(${englishCinemaName})</span>`;
-                    }
-                    cinemaHeader.innerHTML = cinemaNameHtml;
-                    cinemaBlock.appendChild(cinemaHeader);
-
-                    const showtimesList = document.createElement('ul');
-                    showtimesList.className = 'pick-showtimes-list';
-
-                    const sortedShowtimes = showingsByCinema[cinemaName].sort((a,b) => (a.showtime || '').localeCompare(b.showtime || ''));
-
-                    sortedShowtimes.forEach(showing => {
-                        const li = document.createElement('li');
-                        
-                        const timeSpan = document.createElement('span');
-                        timeSpan.className = 'pick-showtime-time';
-                        timeSpan.textContent = showing.showtime;
-                        
-                        const linksSpan = document.createElement('span');
-                        linksSpan.className = 'pick-showtime-links';
-
-                        if (showing.letterboxd_link) {
-                            const lbLink = document.createElement('a');
-                            lbLink.href = showing.letterboxd_link;
-                            lbLink.textContent = 'Letterboxd';
-                            lbLink.target = '_blank';
-                            lbLink.rel = 'noopener noreferrer';
-                            linksSpan.appendChild(lbLink);
-                        }
-                        if (showing.detail_page_url) {
-                            const detailLink = document.createElement('a');
-                            detailLink.href = showing.detail_page_url;
-                            detailLink.textContent = 'Details';
-                            detailLink.target = '_blank';
-                            detailLink.rel = 'noopener noreferrer';
-                            linksSpan.appendChild(detailLink);
-                        }
-                        
-                        li.appendChild(timeSpan);
-                        li.appendChild(linksSpan);
-                        showtimesList.appendChild(li);
-                    });
-
-                    cinemaBlock.appendChild(showtimesList);
-                    todaysPickDetailsEl.appendChild(cinemaBlock);
-                }
-
-                todaysPickSection.classList.remove('hidden');
-                todaysPickHeader.addEventListener('click', () => {
-                    todaysPickDetailsEl.classList.toggle('hidden');
-                });
             }
 
             function isProbablyNotJapanese(text) {
