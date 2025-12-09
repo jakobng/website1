@@ -1,5 +1,11 @@
-name: Scrape Movie Showtimes (TMDB/Letterboxd Focused)
-
+- name: Run Scraper
+        run: python main_scraper.py
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          # Email Secrets
+          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
 on:
   workflow_dispatch: # Allows manual triggering
     inputs:
