@@ -53,9 +53,15 @@ if sys.platform == "win32":
             except Exception: pass
 
 # --- Configuration ---
+# Define Directories
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+os.makedirs(DATA_DIR, exist_ok=True)
+
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 TMDB_API_BASE_URL = 'https://api.themoviedb.org/3'
-TMDB_CACHE_FILE = "tmdb_cache.json"
+# UPDATE: Point cache to data directory
+TMDB_CACHE_FILE = os.path.join(DATA_DIR, "tmdb_cache.json")
 LETTERBOXD_TMDB_BASE_URL = "https://letterboxd.com/tmdb/"
 
 REQUEST_HEADERS = {
@@ -518,5 +524,6 @@ if __name__ == "__main__":
 
     save_to_json(enriched_listings)
     print("\nEnrichment process complete.")
+
 
 
