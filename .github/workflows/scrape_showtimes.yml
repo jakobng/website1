@@ -33,6 +33,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      # VITAL: Set the Server Timezone to JST
+      # This ensures both scripts see "today" as the correct date.
+      - name: Set Timezone
+        run: sudo timedatectl set-timezone Asia/Tokyo
+
       - name: Install Dependencies
         run: |
           pip install requests beautifulsoup4 selenium pandas pillow pyyaml replicate pytz
@@ -49,15 +54,15 @@ jobs:
           
           # Check if triggered by Schedule or Manual
           if [ "${{ github.event_name }}" == "schedule" ]; then
-            current_hour=$(date -u +%H)
-            echo "Current UTC Hour: $current_hour"
+            current_hour=$(date +%H) # Uses the System Time (now JST due to step above)
+            echo "Current JST Hour: $current_hour"
             
-            # 22 UTC is 7 AM JST -> Run Scraper + Cinema Post
-            if [ "$current_hour" == "22" ]; then
+            # 7 AM JST -> Run Scraper + Cinema Post
+            if [ "$current_hour" == "07" ]; then
               TYPE="cinema"
               SCRAPE="true"
-            # 23 UTC is 8 AM JST -> Skip Scraper + Movie Post
-            elif [ "$current_hour" == "23" ]; then
+            # 8 AM JST -> Skip Scraper + Movie Post
+            elif [ "$current_hour" == "08" ]; then
               TYPE="movie"
               SCRAPE="false"
             fi
@@ -65,7 +70,6 @@ jobs:
           elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             TYPE="${{ inputs.post_type }}"
             # If manual 'movie' mode, skip scraper to save time. 
-            # If 'cinema' mode, run scraper to get fresh data.
             if [ "$TYPE" == "movie" ]; then
               SCRAPE="false"
             else
@@ -81,6 +85,7 @@ jobs:
           echo "run_scraper=$SCRAPE" >> $GITHUB_OUTPUT
 
       # --- STEP 1: SCRAPE (CONDITIONAL) ---
+      # Only runs if mode is 'cinema' or manual force
       - name: Run Scraper
         if: steps.mode.outputs.run_scraper == 'true'
         run: python main_scraper.py
@@ -90,9 +95,19 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
 
-      # --- STEP 2: GENERATE IMAGES ---
-      - name: Generate Content
-        run: python generate_post2.py --type ${{ steps.mode.outputs.post_type }}
+      # --- STEP 2: GENERATE CONTENT (SPLIT) ---
+      
+      # If CINEMA mode -> Use generate_post.py
+      - name: Generate Cinema Post (V1)
+        if: steps.mode.outputs.post_type == 'cinema'
+        run: python generate_post.py
+        env:
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+
+      # If MOVIE mode -> Use generate_post2.py
+      - name: Generate Movie Post (V2)
+        if: steps.mode.outputs.post_type == 'movie'
+        run: python generate_post2.py
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
 
@@ -102,7 +117,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Add JSON data and new Images
+          # Add JSON data and new Images (matches both _v2 and normal)
           git add data/*.json ig_posts/*.png ig_posts/*.txt
           
           # Commit if there are changes
@@ -111,6 +126,7 @@ jobs:
 
       # --- STEP 4: UPLOAD TO INSTAGRAM ---
       - name: Upload to Instagram
+        # Pass the type so the script knows which files to look for
         run: python upload_to_instagram.py --type ${{ steps.mode.outputs.post_type }}
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
