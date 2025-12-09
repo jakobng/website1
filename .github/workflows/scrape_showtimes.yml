@@ -1,11 +1,5 @@
-- name: Run Scraper
-        run: python main_scraper.py
-        env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          # Email Secrets
-          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
+name: Scrape Movie Showtimes
+
 on:
   workflow_dispatch: # Allows manual triggering
     inputs:
@@ -83,11 +77,14 @@ jobs:
         run: python main_scraper.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # Email Secrets
+          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
 
       # --- STEP 2: GENERATE ASSETS ---
       - name: Generate Post Images (V2 Punk Zine)
-        if: steps.decision.outputs.mode == 'cinema'
+        if: steps.decision.outputs.mode == 'movie'
         run: python generate_post2.py
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
