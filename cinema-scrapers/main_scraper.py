@@ -476,54 +476,77 @@ def save_to_json(data, filename="showtimes.json"):
     except Exception as e: print(f"⚠️ Failed to save {filename}: {e}", file=sys.stderr)
 
 if __name__ == "__main__":
-    # Define Data Directory
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DATA_DIR = os.path.join(BASE_DIR, "data")
-    os.makedirs(DATA_DIR, exist_ok=True)
-    
-    # UPDATE: Save to DATA_DIR
-    with open(os.path.join(DATA_DIR, "showtimes.json"), "w", encoding="utf-8") as f:
-        json.dump(final_data, f, indent=2, ensure_ascii=False)
-        
-    # UPDATE: Save Cache to DATA_DIR
-    with open(os.path.join(DATA_DIR, "tmdb_cache.json"), "w", encoding="utf-8") as f:
-        json.dump(tmdb_cache, f, indent=2, ensure_ascii=False)
-    
+    # 1. Setup & Keys
     tmdb_key = TMDB_API_KEY
     if not tmdb_key or 'YOUR_TMDB_API_KEY' in tmdb_key:
         print("ERROR: TMDB API key not found.", file=sys.stderr)
         sys.exit(1)
 
+    # 2. Initialize Session & Cache
+    api_session = requests.Session()
+    tmdb_cache = load_json_cache(TMDB_CACHE_FILE)
+
+    # 3. Run Cine Switch Ginza (Standalone Logic)
+    # Note: We check if the module outputted to root or data, handle both
     try:
-        print("\nRunning Cine Switch Ginza module standalone to generate its JSON...")
+        print("\nRunning Cine Switch Ginza module standalone...")
         cine_switch_ginza_module.run_full_scrape_and_save()
     except Exception as e:
         print(f"Error running cine_switch_ginza_module: {e}", file=sys.stderr)
 
+    # 4. Run All Other Scrapers
     listings = run_all_scrapers()
     
+    # 5. Merge Cine Switch Ginza Data
+    # The module likely saves to root as 'cineswitch_showtimes.json'
+    csg_filename = "cineswitch_showtimes.json"
+    csg_path = os.path.join(BASE_DIR, csg_filename)
+    
+    # Move it to data/ if it exists in root, to keep things clean
+    if os.path.exists(csg_path):
+        new_csg_path = os.path.join(DATA_DIR, csg_filename)
+        try:
+            os.rename(csg_path, new_csg_path)
+            csg_path = new_csg_path
+        except Exception: pass # If move fails, just read from root
+
+    # Now try to load it
+    if not os.path.exists(csg_path):
+        # Fallback: check if it was already in data/
+        csg_path = os.path.join(DATA_DIR, csg_filename)
+
     try:
-        with open("cineswitch_showtimes.json", "r", encoding="utf-8") as f:
+        with open(csg_path, "r", encoding="utf-8") as f:
             csg_showings = json.load(f)
-            print(f"→ {len(csg_showings)} showings from Cine Switch Ginza (loaded from JSON).")
+            print(f"→ {len(csg_showings)} showings from Cine Switch Ginza.")
             listings.extend(csg_showings)
     except FileNotFoundError:
         print("WARNING: cineswitch_showtimes.json not found, skipping.", file=sys.stderr)
     except Exception as e:
         print(f"Error loading cineswitch_showtimes.json: {e}", file=sys.stderr)
 
+    # 6. Enrichment (TMDB + Gemini)
     enriched_listings = enrich_listings_with_tmdb_links(
         listings, tmdb_cache, api_session, tmdb_key
     )
     
+    # 7. Sort
     try:
         enriched_listings.sort(key=lambda x: (
             x.get("cinema_name") or x.get("cinema", ""), x.get("date_text", ""), x.get("showtime", "")
         ))
-    except Exception as e: print(f"Warning: Could not sort listings: {e}", file=sys.stderr)
+    except Exception as e: 
+        print(f"Warning: Could not sort listings: {e}", file=sys.stderr)
 
-    save_to_json(enriched_listings)
-    print("\nEnrichment process complete.")
+    # 8. Save Final Output to DATA folder
+    final_output_path = os.path.join(DATA_DIR, "showtimes.json")
+    save_to_json(enriched_listings, final_output_path)
+    
+    # 9. Save Cache to DATA folder
+    save_json_cache(tmdb_cache, TMDB_CACHE_FILE)
+    
+    print("\nEnrichment process complete. Data saved to data/showtimes.json")
+
 
 
 
