@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # main_scraper.py
-# V5: Robust Monitoring, Email Alerts, and Smart Title Cleaning
+# V5.1: Robust Monitoring, Email Alerts, Smart Title Cleaning & Fixed Function Names
 
 import json
 import sys
@@ -56,6 +56,26 @@ TMDB_CACHE_FILE = os.path.join(DATA_DIR, "tmdb_cache.json")
 # Ensure data directory exists
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
+
+# --- Helper: Normalizers ---
+def _normalize_eurospace_schema(listings: list) -> list:
+    """Matches Eurospace module output to standard schema."""
+    normalized = []
+    for show in listings:
+        normalized.append({
+            "cinema_name": show.get("cinema"),
+            "movie_title": show.get("title"),
+            "date_text": show.get("date"),
+            "showtime": show.get("time"),
+            "detail_page_url": show.get("url"),
+            "director": show.get("director"),
+            "year": str(show["year"]) if show.get("year") else "",
+            "country": show.get("country"),
+            "runtime_min": str(show["runtime"]) if show.get("runtime") else "",
+            "synopsis": "",
+            "movie_title_en": "",
+        })
+    return normalized
 
 # --- Monitor & Alert System ---
 class ScrapeReport:
@@ -244,11 +264,9 @@ def fetch_tmdb_details(movie_title, session, api_key):
 
         if results:
             # Pick the most popular/relevant one
-            # Simple heuristic: exact title match or first result
             best = results[0] 
-            # We could do fuzzy matching here if needed, but usually top result is good
             
-            # Fetch full details for runtime, credits, etc.
+            # Fetch full details
             detail_url = f"https://api.themoviedb.org/3/movie/{best['id']}"
             d_params = {
                 "api_key": api_key,
@@ -325,14 +343,12 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
                 item["tmdb_backdrop_path"] = d["backdrop_path"]
                 item["tmdb_poster_path"] = d["poster_path"]
                 item["tmdb_overview_jp"] = d["overview"]
-                item["tmdb_tagline_jp"] = "" # Could add if fetched
-                item["tmdb_tagline_en"] = ""
                 item["clean_title_jp"] = d["tmdb_title_jp"]
                 item["runtime"] = d["runtime"]
                 item["genres"] = d["genres"]
                 item["vote_average"] = d["vote_average"]
                 
-                # If scraper didn't provide English title, use original_title (might be EN)
+                # If scraper didn't provide English title
                 if not item.get("movie_title_en"):
                     item["movie_title_en"] = d["tmdb_title_en"]
                 
@@ -351,7 +367,7 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
 
 # --- Scraper Runner Wrapper ---
 
-def _run_scraper(name, func, listings_list):
+def _run_scraper(name, func, listings_list, normalize_func=None):
     """
     Runs a scraper function with robust error handling and reporting.
     """
@@ -359,6 +375,10 @@ def _run_scraper(name, func, listings_list):
     try:
         # Run the scraper
         rows = func() or []
+        
+        # Apply normalization if needed (e.g. for Eurospace)
+        if normalize_func and rows:
+            rows = normalize_func(rows)
         
         count = len(rows)
         print(f"→ {count} showings from {name}.")
@@ -387,45 +407,69 @@ def main():
     listings = []
 
     # 1. DEFINE SCRAPERS TO RUN
-    # Note: Stranger is included but wrapped in safety block now.
+    # Format: (Display Name, Function Object, Optional Normalizer)
     scrapers_to_run = [
-        ("Bunkamura", bunkamura_module.scrape_bunkamura),
-        ("K's Cinema", ks_cinema_module.scrape_ks_cinema),
-        ("Shin-Bungeiza", shin_bungeiza_module.scrape_shin_bungeiza),
-        ("Shimotakaido Cinema", shimotakaido_module.scrape_shimotakaido),
-        ("Stranger", stranger_module.scrape_stranger),
-        ("Meguro Cinema", meguro_cinema_module.scrape_meguro_cinema),
-        ("Image Forum", image_forum_module.scrape_image_forum),
-        ("Theatre Shinjuku", theatre_shinjuku_module.scrape_ttcg_schedule),
-        ("Pole Pole Higashi-Nakano", polepole_module.scrape_pole2),
-        ("Cinema Blue Studio", bluestudio_module.scrape_blue_studio),
-        ("Human Trust Cinema Shibuya", human_shibuya_module.scrape_ttcg_human_shibuya),
-        ("Human Trust Cinema Yurakucho", human_yurakucho_module.scrape_ttcg_human_yurakucho),
-        ("Laputa Asagaya", laputa_asagaya_module.scrape_laputa),
-        ("Shinjuku Musashino-kan", musashino_kan_module.scrape_musashino_kan),
-        ("Waseda Shochiku", waseda_shochiku_module.scrape_waseda_shochiku),
-        ("National Film Archive", nfaj_module.scrape_nfaj_calendar),
-        ("Cinemart Shinjuku", cinemart_shinjuku_module.scrape_cinemart_shinjuku),
-        ("Cinema Qualite", cinema_qualite_module.scrape_cinema_qualite),
-        ("Cine Quinto", cine_quinto_module.scrape_cine_quinto),
-        ("Yebisu Garden Cinema", yebisu_garden_module.scrape_yebisu_garden),
-        ("K2 Cinema", k2_cinema_module.scrape_k2_cinema),
-        ("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa),
-        ("Chupki", chupki_module.scrape_chupki),
-        ("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji),
-        ("Tollywood", tollywood_module.scrape_tollywood),
-        ("Morc Asagaya", morc_asagaya_module.scrape_morc),
-        ("Eurospace", eurospace_module.scrape_eurospace),
+        ("Bunkamura", bunkamura_module.scrape_bunkamura, None),
+        ("K's Cinema", ks_cinema_module.scrape_ks_cinema, None),
+        ("Shin-Bungeiza", shin_bungeiza_module.scrape_shin_bungeiza, None),
+        ("Shimotakaido Cinema", shimotakaido_module.scrape_shimotakaido, None),
+        ("Stranger", stranger_module.scrape_stranger, None),
+        ("Meguro Cinema", meguro_cinema_module.scrape_meguro_cinema, None),
+        
+        # FIXED: Use 'scrape' instead of guessed name
+        ("Image Forum", image_forum_module.scrape, None),
+        
+        # FIXED: Use 'scrape_theatre_shinjuku'
+        ("Theatre Shinjuku", theatre_shinjuku_module.scrape_theatre_shinjuku, None),
+        
+        # FIXED: Use 'scrape_polepole'
+        ("Pole Pole Higashi-Nakano", polepole_module.scrape_polepole, None),
+        
+        # FIXED: Use 'scrape_bluestudio'
+        ("Cinema Blue Studio", bluestudio_module.scrape_bluestudio, None),
+        
+        # FIXED: Use 'scrape_human_shibuya'
+        ("Human Trust Cinema Shibuya", human_shibuya_module.scrape_human_shibuya, None),
+        ("Human Trust Cinema Yurakucho", human_yurakucho_module.scrape_human_yurakucho, None),
+        
+        # FIXED: Use 'scrape_laputa_asagaya'
+        ("Laputa Asagaya", laputa_asagaya_module.scrape_laputa_asagaya, None),
+        
+        ("Shinjuku Musashino-kan", musashino_kan_module.scrape_musashino_kan, None),
+        ("Waseda Shochiku", waseda_shochiku_module.scrape_waseda_shochiku, None),
+        ("National Film Archive", nfaj_module.scrape_nfaj_calendar, None),
+        ("Cinemart Shinjuku", cinemart_shinjuku_module.scrape_cinemart_shinjuku, None),
+        ("Cinema Qualite", cinema_qualite_module.scrape_cinema_qualite, None),
+        ("Cine Quinto", cine_quinto_module.scrape_cine_quinto, None),
+        
+        # FIXED: Use 'scrape_yebisu_garden_cinema'
+        ("Yebisu Garden Cinema", yebisu_garden_module.scrape_yebisu_garden_cinema, None),
+        
+        ("K2 Cinema", k2_cinema_module.scrape_k2_cinema, None),
+        ("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa, None),
+        ("Chupki", chupki_module.scrape_chupki, None),
+        ("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji, None),
+        ("Tollywood", tollywood_module.scrape_tollywood, None),
+        
+        # FIXED: Use 'fetch_morc_asagaya_showings'
+        ("Morc Asagaya", morc_asagaya_module.fetch_morc_asagaya_showings, None),
+        
+        # FIXED: Use 'scrape' AND added normalizer
+        ("Eurospace", eurospace_module.scrape, _normalize_eurospace_schema),
     ]
 
     print("Starting all scrapers…")
 
     # 2. RUN SCRAPERS
-    for name, func in scrapers_to_run:
-        _run_scraper(name, func, listings)
+    for item in scrapers_to_run:
+        # Unpack based on length (handled safely)
+        name = item[0]
+        func = item[1]
+        norm = item[2] if len(item) > 2 else None
+        
+        _run_scraper(name, func, listings, normalize_func=norm)
 
     # 3. SPECIAL HANDLING: CINE SWITCH GINZA (Standalone)
-    # This module often runs independently in the workflow, but we load its result here.
     print("\n--- [Cine Switch] Check for existing standalone output ---")
     csg_filename = "cineswitch_showtimes.json"
     
@@ -441,8 +485,6 @@ def main():
             print(f"Error loading cineswitch_showtimes.json: {e}")
             report.add("Cine Switch Ginza", "FAILURE", 0, error=e)
     else:
-        # It's not a failure if the file doesn't exist (maybe it wasn't run)
-        # But we can log a note
         print("No standalone Cine Switch file found.")
     
     # 4. ENRICHMENT
