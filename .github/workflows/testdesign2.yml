@@ -38,23 +38,26 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # --- CRITICAL FIX ---
-          # We force add (-f) because these are new files not yet tracked by git.
-          # We add BOTH the final result and the debug layout to see the "Before & After".
-          git add -f cinema-scrapers/post_v3_test.png
-          git add -f cinema-scrapers/post_v3_debug_audition.png
-          git add -f cinema-scrapers/post_v3_debug_layout.png
+          # --- FIX: Match the actual output folder and filenames ---
+          # The script saves to 'cinema-scrapers/ig_posts/', so we explicitly add that folder.
+          
+          # Force add all V3 images (Feed & Story)
+          git add -f cinema-scrapers/ig_posts/post_v3_*.png
+          git add -f cinema-scrapers/ig_posts/story_v3_*.png
+          
+          # Add the caption so you can read the AI's "Vibe Check"
+          git add -f cinema-scrapers/ig_posts/post_v3_caption.txt
 
-          # Debug: Show us exactly what is staged to be committed
+          # Debug: Show us what is staged
           git status
 
-          # If nothing changed (script failed to save), exit gracefully
+          # If nothing changed, exit gracefully
           if git diff --cached --quiet; then
-            echo "⚠️ No image changes detected. The script might have failed to save the files."
+            echo "⚠️ No image changes detected."
             exit 0
           fi
 
-          git commit -m "DESIGN TEST: Generated V3 Collage (Result + Debug Layout)"
+          git commit -m "DESIGN TEST: Generated V3 Cinema Mashup"
           git pull origin main --rebase
           git push
         env:
