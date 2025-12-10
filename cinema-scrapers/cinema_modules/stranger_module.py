@@ -15,9 +15,9 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.common.exceptions import TimeoutException, WebDriverException, StaleElementReferenceException
 
-# --- Start: Configure stdout and stderr for UTF-8 on Windows (for direct script prints) ---
+# --- Start: Configure stdout and stderr for UTF-8 on Windows ---
 if __name__ == "__main__" and sys.platform == "win32":
     try:
         if sys.stdout.encoding != 'utf-8':
@@ -33,204 +33,192 @@ URL_ST = "https://stranger.jp/"
 
 # Define timeouts
 INITIAL_LOAD_TIMEOUT = 30
-CLICK_WAIT_TIMEOUT = 10
-POST_CLICK_RENDER_PAUSE = 1.0 # Can be slightly shorter now with explicit waits
-SCHEDULE_RENDER_TIMEOUT = 5 # Timeout for waiting for schedule items to appear
 
-def _init_driver_stranger():
-    print(f"Debug ({CINEMA_NAME_ST}): Initializing WebDriver.", file=sys.stderr)
-    options = ChromeOptions()
-    options.add_argument("--headless=new")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--window-size=1920,1080")
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+def clean_text(text):
+    if not text:
+        return ""
+    # Replace weird spaces and non-breaking spaces
+    text = text.replace('\xa0', ' ').replace('\u3000', ' ')
+    return re.sub(r'\s+', ' ', text).strip()
 
-    is_github_actions = os.getenv('GITHUB_ACTIONS') == 'true'
-    if not is_github_actions and sys.platform == "win32":
-        brave_exe_path_local = r'C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe'
-        if os.path.exists(brave_exe_path_local):
-            options.binary_location = brave_exe_path_local
-            print(f"Debug ({CINEMA_NAME_ST}): Using Brave browser.", file=sys.stderr)
-        else:
-            print(f"Debug ({CINEMA_NAME_ST}): Brave not found. Using default Chrome.", file=sys.stderr)
+def parse_time_str(t_str):
+    """
+    Parses '09:30' -> matching strict format
+    """
+    t_str = clean_text(t_str).replace('～', '~').replace('〜', '~')
+    # Extract HH:MM
+    match = re.search(r'(\d{1,2})[:：](\d{2})', t_str)
+    if match:
+        return f"{int(match.group(1))}:{match.group(2)}"
+    return ""
 
-    try:
-        service = ChromeService()
-        driver = webdriver.Chrome(service=service, options=options)
-        print(f"Debug ({CINEMA_NAME_ST}): WebDriver initialized successfully.", file=sys.stderr)
-        driver.execute_cdp_cmd('Emulation.setTimezoneOverride', {'timezoneId': 'Asia/Tokyo'})
-    except Exception as e:
-        print(f"Error ({CINEMA_NAME_ST}): Failed to initialize WebDriver: {e}", file=sys.stderr)
-        raise
+def get_headless_driver():
+    chrome_options = ChromeOptions()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1280,800")
+    
+    # Random User-Agent
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36")
+
+    driver = webdriver.Chrome(options=chrome_options)
     return driver
 
-def clean_text_st(element_or_string):
-    if hasattr(element_or_string, 'get_text'):
-        text = ' '.join(element_or_string.get_text(strip=True).split())
-    elif isinstance(element_or_string, str):
-        text = ' '.join(element_or_string.strip().split())
-    else:
-        return ""
-    return text
-    
-def normalize_title(title):
-    if not title: return ""
-    return title.replace(" ", "").replace("　", "")
-
-def parse_date_st(date_str_raw, year):
-    processed_date_str = re.sub(r'^[一-龠々]+曜?\s*<br/?>?\s*|\s*\(?[月火水木金土日]\)?\s*<br/?>?\s*', '', date_str_raw.strip(), flags=re.IGNORECASE)
-    processed_date_str = ' '.join(processed_date_str.replace('<br>', ' ').split())
-    try:
-        month_day_match = re.match(r'(\d{1,2})/(\d{1,2})', processed_date_str)
-        if month_day_match:
-            month, day = map(int, month_day_match.groups())
-            return f"{year}-{month:02d}-{day:02d}"
-    except (ValueError, Exception):
-        pass
-    return processed_date_str or date_str_raw
-
-def _create_movie_cache(soup):
-    cache = {}
-    print(f"Debug ({CINEMA_NAME_ST}): Building movie metadata cache...", file=sys.stderr)
-    
-    featured_movies = soup.select('.p-top__movie .c-movie__list li')
-    for movie_item in featured_movies:
-        link_tag = movie_item.find('a', class_='c-contentBox', href=True)
-        if not link_tag: continue
-            
-        info_div = link_tag.find('div', class_='c-contentBox__info')
-        if not info_div: continue
-            
-        title = clean_text_st(info_div.find('h2'))
-        normalized_key = normalize_title(title)
-        if not normalized_key or normalized_key in cache: continue
-
-        detail_url = urljoin(URL_ST, link_tag['href'])
-        
-        year = "N/A"
-        meta_p = info_div.find('p')
-        if meta_p:
-            meta_text = meta_p.get_text(separator=" ")
-            # FIX: Make regex flexible to find year followed by '年' OR '／'
-            year_match = re.search(r'(\d{4})[年／]', clean_text_st(meta_text))
-            if year_match:
-                year = year_match.group(1)
-
-        cache[normalized_key] = {'year': year, 'detail_url': detail_url, 'original_title': title}
-        
-    print(f"Debug ({CINEMA_NAME_ST}): Cache built with {len(cache)} unique movies.", file=sys.stderr)
-    return cache
-
-def extract_showings_from_schedule(soup, date_for_showings):
-    showings = []
-    schedule_section = soup.find('div', id='block--screen')
-    if not schedule_section: return []
-    
-    movie_items = schedule_section.select('.c-screen__list ul li')
-
-    for item in movie_items:
-        title = clean_text_st(item.select_one('h2'))
-        if not title: continue
-
-        showtime = "N/A"
-        time_tag = item.select_one('time')
-        if time_tag:
-            time_match = re.search(r'(\d{1,2}:\d{2})', time_tag.get_text())
-            if time_match: showtime = time_match.group(1)
-        
-        showings.append({
-            "date_text": date_for_showings,
-            "title_from_schedule": title,
-            "showtime": showtime
-        })
-    print(f"Debug ({CINEMA_NAME_ST}): Scraped {len(showings)} showings from schedule for '{date_for_showings}'.", file=sys.stderr)
-    return showings
-
 def scrape_stranger():
-    final_showings = []
+    """
+    Scrapes Stranger Tokyo using the specific DOM structure (V6).
+    Structure: .movie-schedule-item -> Title (h2 span) -> Slots (.slot h2)
+    """
     driver = None
+    final_showings = []
     
+    print(f"Debug ({CINEMA_NAME_ST}): Initializing WebDriver.")
     try:
-        driver = _init_driver_stranger()
-        
-        print(f"\n--- Phase 1: Building Metadata Cache ---", file=sys.stderr)
+        driver = get_headless_driver()
+        print(f"Debug ({CINEMA_NAME_ST}): Loading {URL_ST}...")
         driver.get(URL_ST)
-        WebDriverWait(driver, INITIAL_LOAD_TIMEOUT).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".p-top__movie")))
-        initial_soup = BeautifulSoup(driver.page_source, 'html.parser')
-        movie_cache = _create_movie_cache(initial_soup)
         
-        print(f"\n--- Phase 2: Scraping Schedule ---", file=sys.stderr)
-        all_schedule_showings = []
-        date_tabs_locator = (By.CSS_SELECTOR, "div#block--screen div.c-screen__date ul > li")
-        schedule_item_locator = (By.CSS_SELECTOR, ".c-screen__list ul li")
-        num_tabs = min(len(driver.find_elements(*date_tabs_locator)), 7)
+        # 1. Wait for body
+        wait = WebDriverWait(driver, INITIAL_LOAD_TIMEOUT)
+        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
         
-        for i in range(num_tabs):
-            date_tabs = WebDriverWait(driver, CLICK_WAIT_TIMEOUT).until(EC.presence_of_all_elements_located(date_tabs_locator))
-            if i >= len(date_tabs): break
-            
-            date_tab = date_tabs[i]
-            date_text = parse_date_st(clean_text_st(date_tab.find_element(By.CSS_SELECTOR, "span").get_attribute("innerHTML")), date.today().year)
-            
-            if i > 0:
-                driver.execute_script("arguments[0].click();", date_tab)
-                time.sleep(POST_CLICK_RENDER_PAUSE)
-            
-            # FIX: Add a wait to ensure the schedule items for the clicked day have loaded
+        # Scroll down to ensure lazy elements load
+        driver.execute_script("window.scrollTo(0, 800);")
+        time.sleep(2)
+        
+        # 2. Find Date Tabs (Heuristic based on text)
+        print(f"Debug ({CINEMA_NAME_ST}): Scanning for date tabs...")
+        
+        potential_dates = driver.find_elements(By.XPATH, "//*[contains(text(), '/') or contains(text(), '月')]")
+        
+        date_map = {} 
+        today = date.today()
+        
+        for elem in potential_dates:
             try:
-                WebDriverWait(driver, SCHEDULE_RENDER_TIMEOUT).until(
-                    EC.presence_of_element_located(schedule_item_locator)
-                )
-            except TimeoutException:
-                print(f"Warning ({CINEMA_NAME_ST}): No schedule items found for {date_text} after waiting.", file=sys.stderr)
-                continue # Skip to the next day
-
-            soup = BeautifulSoup(driver.page_source, 'html.parser')
-            all_schedule_showings.extend(extract_showings_from_schedule(soup, date_text))
+                txt = elem.text.strip()
+                if len(txt) > 20: continue
+                
+                # Regex for 12/19 or 12月19日
+                match = re.search(r'(\d{1,2})[/\.](\d{1,2})', txt)
+                if not match:
+                    match = re.search(r'(\d{1,2})月(\d{1,2})日', txt)
+                
+                if match:
+                    m, d = int(match.group(1)), int(match.group(2))
+                    
+                    year = today.year
+                    # Handle year rollover
+                    if m < today.month and (today.month - m) > 6: year += 1
+                    elif m > today.month and (m - today.month) > 6: year -= 1
+                        
+                    date_obj = date(year, m, d)
+                    date_str = date_obj.strftime("%Y-%m-%d")
+                    
+                    if elem.is_displayed():
+                        if date_str not in date_map:
+                            date_map[date_str] = elem
+            except: continue
         
-        print(f"\n--- Phase 3: Combining all data ---", file=sys.stderr)
-        for showing in all_schedule_showings:
-            normalized_title = normalize_title(showing['title_from_schedule'])
-            matched_data = None
-            for key, data in movie_cache.items():
-                if normalized_title in key:
-                    matched_data = data
-                    break
-            
-            year = matched_data['year'] if matched_data else "N/A"
-            detail_url = matched_data['detail_url'] if matched_data else "N/A"
-            final_title = matched_data['original_title'] if matched_data else showing['title_from_schedule']
-            
-            final_showings.append({
-                "cinema_name": CINEMA_NAME_ST,
-                "date_text": showing['date_text'],
-                "movie_title": final_title,
-                "showtime": showing['showtime'],
-                "year": year,
-                "detail_page_url": detail_url
-            })
+        sorted_dates = sorted(date_map.keys())
+        print(f"Debug ({CINEMA_NAME_ST}): Found {len(sorted_dates)} potential dates: {sorted_dates}")
+        
+        if not sorted_dates:
+            print("⚠️ No date tabs found. Site layout might be radically different.")
+            return []
 
-        return [dict(t) for t in {tuple(d.items()) for d in final_showings}]
+        # 3. Iterate through dates
+        for date_text in sorted_dates:
+            print(f"   > Processing {date_text}...")
+            
+            try:
+                elem = date_map[date_text]
+                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", elem)
+                time.sleep(0.5)
+                driver.execute_script("arguments[0].click();", elem)
+                
+                # Wait for content to stabilize
+                time.sleep(1.5) 
+            except Exception as e:
+                print(f"     Error clicking date {date_text}: {e}")
+                continue
+            
+            # 4. Parse content using specific DOM classes
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            
+            # Find all movie blocks
+            movie_blocks = soup.find_all("div", class_="movie-schedule-item")
+            
+            for block in movie_blocks:
+                # --- A. Extract Title ---
+                # The title is typically in an h2 -> div -> span structure
+                title_span = block.select_one("h2 div span")
+                
+                if not title_span:
+                    # Fallback: Check just the h2 (sometimes structure varies)
+                    title_h2 = block.find("h2")
+                    if title_h2:
+                        # Clean "More" or other link text if present
+                        raw_t = title_h2.get_text()
+                        # Simple split to remove likely noise
+                        title_text = raw_t.split("もっと")[0].strip()
+                    else:
+                        continue
+                else:
+                    title_text = clean_text(title_span.get_text())
 
+                # Clean up title
+                title_text = re.sub(r'\s+', ' ', title_text)
+                
+                # --- B. Extract Showtimes ---
+                # Showtimes are in <td class="slot"> inside <h2> tags
+                slot_times = block.select(".slot h2")
+                
+                for time_el in slot_times:
+                    start_time = parse_time_str(time_el.get_text())
+                    if not start_time:
+                        continue
+
+                    # Append Data
+                    final_showings.append({
+                        "cinema_name": CINEMA_NAME_ST,
+                        "date_text": date_text,
+                        "movie_title": title_text,
+                        "showtime": start_time,
+                        "year": str(today.year),
+                        "detail_page_url": URL_ST
+                    })
+                
     except Exception as e:
         print(f"An unexpected error in scrape_stranger: {e}", file=sys.stderr)
         traceback.print_exc(file=sys.stderr)
         return []
     finally:
         if driver:
-            print(f"Debug ({CINEMA_NAME_ST}): Quitting WebDriver.", file=sys.stderr)
+            print(f"Debug ({CINEMA_NAME_ST}): Quitting WebDriver.")
             driver.quit()
 
+    # Deduplicate
+    unique_showings = []
+    seen = set()
+    for s in final_showings:
+        tup = (s['date_text'], s['movie_title'], s['showtime'])
+        if tup not in seen:
+            unique_showings.append(s)
+            seen.add(tup)
+
+    return unique_showings
+
 if __name__ == '__main__':
-    print(f"Testing {CINEMA_NAME_ST} scraper module (Selenium, headless)...")
+    print(f"Testing {CINEMA_NAME_ST} scraper module (Selenium, DOM-Class V6)...")
     showings_data = scrape_stranger()
     if showings_data:
         print(f"\nFound {len(showings_data)} unique showings for {CINEMA_NAME_ST}:")
-        showings_data.sort(key=lambda x: (x.get('date_text', ''), x.get('title', ''), x.get('showtime', '')))
+        # Sort
+        showings_data.sort(key=lambda x: (x.get('date_text', ''), x.get('showtime', '')))
         for showing in showings_data:
-            print(f"  {showing.get('date_text')} | {showing.get('showtime')} | Title: '{showing.get('title')}' ({showing.get('year')}) | URL: {showing.get('detail_url')}")
+            print(f"  {showing['date_text']} | {showing['showtime']} | {showing['movie_title']}")
     else:
-        print(f"\nNo showings found by {CINEMA_NAME_ST} scraper.")
+        print("No showings found.")
