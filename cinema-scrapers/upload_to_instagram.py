@@ -10,7 +10,7 @@ import argparse
 IG_USER_ID = os.environ.get("IG_USER_ID")
 IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN")
 
-# UPDATE: Point to the new folder in the URL so Instagram can download them
+# Point to the new folder in the URL so Instagram can download them
 GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/cinema-scrapers/ig_posts/" 
 
 API_VERSION = "v21.0"
@@ -159,21 +159,28 @@ def main():
     story_files = []
     caption_text = "No caption found."
 
-    # FIXED: "movie" and "cinema" modes now use the same logic
-    if POST_TYPE in ["cinema", "movie"]:
-        # Look for V2 files first (in ig_posts/)
+    # ---------------------------------------------------------
+    # STRICT FILE SELECTION LOGIC
+    # ---------------------------------------------------------
+    
+    if POST_TYPE == "cinema":
+        # Cinema Daily (V1) -> Looks for 'post_image_XX.png'
+        print("   -> Targeting V1 Files (Cinema Daily)")
+        feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_image_*.png")))
+        story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_image_*.png")))
+        
+        caption_path = os.path.join(OUTPUT_DIR, "post_caption.txt")
+        if os.path.exists(caption_path):
+            with open(caption_path, "r", encoding="utf-8") as f:
+                caption_text = f.read()
+
+    elif POST_TYPE == "movie":
+        # Movie Spotlight (V2) -> Looks for 'post_v2_image_XX.png'
+        print("   -> Targeting V2 Files (Movie Spotlight)")
         feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_v2_image_*.png")))
         story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_v2_image_*.png")))
         
-        # Fallback to V1 if V2 not found
-        if not feed_files:
-            feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_image_*.png")))
-            story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_image_*.png")))
-            
         caption_path = os.path.join(OUTPUT_DIR, "post_v2_caption.txt")
-        if not os.path.exists(caption_path):
-             caption_path = os.path.join(OUTPUT_DIR, "post_caption.txt")
-             
         if os.path.exists(caption_path):
             with open(caption_path, "r", encoding="utf-8") as f:
                 caption_text = f.read()
@@ -209,7 +216,7 @@ def main():
                 publish_media(parent_id)
 
     else:
-        print("ℹ️ No feed images found. Skipping Feed upload.")
+        print(f"ℹ️ No feed images found for mode '{POST_TYPE}'. Skipping Feed upload.")
 
     # --- STORY MODE ---
     print("\n--- CHECKING FOR STORIES ---")
@@ -243,7 +250,7 @@ def main():
                 print(f"   Skipping Story {filename} due to container error.")
                 
     else:
-        print("ℹ️ No story images found. Skipping Story sequence.")
+        print(f"ℹ️ No story images found for mode '{POST_TYPE}'. Skipping Story sequence.")
 
 if __name__ == "__main__":
     main()
