@@ -58,14 +58,15 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # --- FIX: Point to 'ig_posts' folder ---
-          
-          # Add V1 Assets (Cinemas)
+          # 1. Add DATA files (Critical Fix: includes featured_history.json)
+          git add 'cinema-scrapers/data/*.json' || true
+
+          # 2. Add V1 Assets (Cinemas)
           git add 'cinema-scrapers/ig_posts/post_image_*.png' || true
           git add 'cinema-scrapers/ig_posts/story_image_*.png' || true
           git add 'cinema-scrapers/ig_posts/post_caption.txt' || true
           
-          # Add V2 Assets (Movies - Punk Zine)
+          # 3. Add V2 Assets (Movies - Punk Zine)
           git add 'cinema-scrapers/ig_posts/post_v2_image_*.png' || true
           git add 'cinema-scrapers/ig_posts/story_v2_image_*.png' || true
           git add 'cinema-scrapers/ig_posts/post_v2_caption.txt' || true
