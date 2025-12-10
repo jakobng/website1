@@ -5,6 +5,7 @@ REPLACES V28/V61.
 - Layout: "Explosive" collage (images spread to edges/bleed off canvas).
 - Tech: Gemini 2.5 Flash + Replicate + Pillow.
 - Update: Enforces JST dates, 3-day film rotation history, and new folder structure.
+- Feature: Multi-day Showtime Aggregation (Today + Next 2 Days) ON IMAGE + Captions.
 """
 from __future__ import annotations
 
@@ -124,6 +125,23 @@ def get_japanese_date_str():
     # Format: 2025.11.24 (Mon)
     return f"{d.year}.{d.month:02}.{d.day:02}"
 
+def format_date_for_caption(date_str: str) -> str:
+    """Converts YYYY-MM-DD to MM/DD (Day)."""
+    try:
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        return dt.strftime("%m/%d (%a)")
+    except:
+        return date_str
+
+def format_date_short(date_str: str, is_today: bool) -> str:
+    """Short format for Image: 'Today' or 'Wed 12'"""
+    if is_today: return "TODAY"
+    try:
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        return dt.strftime("%a %d").upper()
+    except:
+        return date_str
+
 def normalize_string(s):
     if not s: return ""
     return re.sub(r'\W+', '', str(s)).lower()
@@ -152,12 +170,13 @@ def get_fonts():
             "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
             "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
-            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 28),
+            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 24), # Slightly smaller for multi-line
+            "date_label": ImageFont.truetype(str(BOLD_FONT_PATH), 20),
         }
     except:
         print("⚠️ Fonts not found, using default.")
         d = ImageFont.load_default()
-        return {k: d for k in ["cover_main_jp", "cover_sub_en", "cover_date", "title_jp", "title_en", "meta", "cinema", "times"]}
+        return {k: d for k in ["cover_main_jp", "cover_sub_en", "cover_date", "title_jp", "title_en", "meta", "cinema", "times", "date_label"]}
 
 def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
     small = pil_img.resize((150, 150))
@@ -492,7 +511,7 @@ def draw_fallback_cover(images, fonts, is_story=False):
     draw.text((cx, cy + 100 + offset), get_japanese_date_str(), font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
     return bg
 
-def draw_poster_slide(film, img_obj, fonts, is_story=False):
+def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
     c_base, c_accent = get_faithful_colors(img_obj)
@@ -525,16 +544,18 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
     
     img_x = (width - target_w) // 2
     canvas.paste(img_final, (img_x, img_y))
-    cursor_y = img_y + target_h + (70 if is_story else 60)
+    cursor_y = img_y + target_h + (70 if is_story else 50)
     
+    # --- Metadata (Year / Time / Genre) ---
     meta_parts = []
     if film.get('year'): meta_parts.append(str(film['year']))
     if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']}m")
     if film.get('genres'): meta_parts.append(film['genres'][0].upper())
     meta_str = "  •  ".join(meta_parts)
     cursor_y = draw_centered_text(draw, cursor_y, meta_str, fonts['meta'], (200, 200, 200), width)
-    cursor_y += 15
+    cursor_y += 10
 
+    # --- Titles ---
     jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
     en_title = film.get('movie_title_en')
     if normalize_string(jp_title) == normalize_string(en_title): en_title = None
@@ -546,59 +567,106 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False):
             cursor_y = draw_centered_text(draw, cursor_y, line, fonts['title_jp'], (255, 255, 255), width)
     else:
         cursor_y = draw_centered_text(draw, cursor_y, jp_title, fonts['title_jp'], (255, 255, 255), width)
-    cursor_y += 10
+    cursor_y += 5
 
     if en_title:
         cursor_y = draw_centered_text(draw, cursor_y, en_title.upper(), fonts['title_en'], (200, 200, 200), width)
     
+    # --- Director ---
     director = film.get('tmdb_director') or film.get('director')
     if director:
-        cursor_y += 15
+        cursor_y += 10
         draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150), width)
         cursor_y += 20
+    
+    # --- Multi-Day Schedule Block ---
+    # Strategy: Group by Cinema.
+    # Structure:
+    #   [Cinema Name]
+    #     TODAY: 10:00, 14:00
+    #     WED 12: 10:00
+    
+    # 1. Pivot Data: Cinema -> Date -> Times
+    # We need to look across all dates in multi_day_showings
+    schedule_map = defaultdict(lambda: defaultdict(list))
+    
+    # If primary_date is missing (fallback), assume today
+    if not primary_date: primary_date = get_today_str()
+    
+    all_dates = sorted(film['multi_day_showings'].keys())
+    
+    for d_key in all_dates:
+        for cin_name, times in film['multi_day_showings'][d_key].items():
+            schedule_map[cin_name][d_key] = sorted(times)
+            
+    sorted_cinemas = sorted(schedule_map.keys())
+    
+    # Dynamic Sizing Logic
+    available_space = height - cursor_y - (100 if is_story else 40)
+    
+    # Estimate content size to calculate scaling
+    total_lines = 0
+    for cin in sorted_cinemas:
+        total_lines += 1.2 # Cinema Header
+        total_lines += len(schedule_map[cin]) * 1.0 # One line per date
+        total_lines += 0.5 # Gap
         
-    sorted_cinemas = sorted(film['showings'].keys())
-    num_cinemas = len(sorted_cinemas)
-    available_space = height - cursor_y - (150 if is_story else 50)
-    std_font_size = 32 if is_story else 28
-    std_gap = 60 if is_story else 50
-    block_unit = (std_font_size * 1.2 * 2) + std_gap 
-    total_needed = num_cinemas * block_unit
+    base_line_height = 32 if is_story else 28
+    estimated_height = total_lines * base_line_height
     
     scale = 1.0
-    if total_needed > available_space:
-        scale = available_space / total_needed
-        scale = max(scale, 0.45) 
-    final_font_size = int(std_font_size * scale)
-    gap_scale = scale if scale > 0.8 else scale * 0.6
-    final_gap = int(std_gap * gap_scale)
+    if estimated_height > available_space:
+        scale = available_space / estimated_height
+        scale = max(scale, 0.6) # Don't shrink too small
+        
+    final_font_size = int(base_line_height * scale)
+    label_font_size = int(final_font_size * 0.75) # Smaller for "TODAY", "WED 12"
     
     try:
-        dyn_font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
-        dyn_font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
+        font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
+        font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
+        font_label = ImageFont.truetype(str(BOLD_FONT_PATH), label_font_size)
     except:
-        dyn_font_cin = ImageFont.load_default()
-        dyn_font_time = ImageFont.load_default()
+        font_cin = ImageFont.load_default()
+        font_time = ImageFont.load_default()
+        font_label = ImageFont.load_default()
         
-    unit_height = (final_font_size * 1.2) + (final_font_size * 1.2) + final_gap
-    final_block_height = num_cinemas * unit_height
-    if available_space > final_block_height:
-        start_y = cursor_y + (available_space - final_block_height) // 2
-    else:
-        start_y = cursor_y + 20 
-        
-    for cinema in sorted_cinemas:
-        times = sorted(film['showings'][cinema])
-        times_str = " ".join(times)
-        cinema_en = CINEMA_ENGLISH_NAMES.get(cinema, cinema)
-        len_c = draw.textlength(cinema_en, font=dyn_font_cin)
+    start_y = cursor_y + 10
+    
+    for cin in sorted_cinemas:
+        # Cinema Header
+        cin_en = CINEMA_ENGLISH_NAMES.get(cin, cin)
+        len_c = draw.textlength(cin_en, font=font_cin)
         x_c = (width - len_c) // 2
-        draw.text((x_c, start_y), cinema_en, font=dyn_font_cin, fill=(255, 255, 255))
-        y_time = start_y + final_font_size + 5 
-        len_t = draw.textlength(times_str, font=dyn_font_time)
-        x_t = (width - len_t) // 2
-        draw.text((x_t, y_time), times_str, font=dyn_font_time, fill=(200, 200, 200))
-        start_y += unit_height
+        draw.text((x_c, start_y), cin_en, font=font_cin, fill=(255, 255, 255))
+        start_y += (final_font_size * 1.2)
+        
+        # Date Rows
+        for d_key in sorted(schedule_map[cin].keys()):
+            times_str = ", ".join(schedule_map[cin][d_key])
+            is_today = (d_key == primary_date)
+            date_label = format_date_short(d_key, is_today)
+            
+            # Layout: [Label]  [Times]
+            full_line_text = f"{date_label}   {times_str}"
+            
+            # We want to center the whole block, but align label/times nicely if possible.
+            # Simple centering for now to be safe with varying widths.
+            len_line = draw.textlength(full_line_text, font=font_time) # approx width
+            x_line = (width - len_line) // 2
+            
+            # Draw Label (Accent color for Today?)
+            label_color = (255, 200, 100) if is_today else (180, 180, 180)
+            draw.text((x_line, start_y + (final_font_size - label_font_size)), date_label, font=font_label, fill=label_color)
+            
+            label_w = draw.textlength(date_label, font=font_label)
+            time_x = x_line + label_w + 15
+            
+            draw.text((time_x, start_y), times_str, font=font_time, fill=(230, 230, 230))
+            
+            start_y += (final_font_size * 1.1)
+            
+        start_y += (final_font_size * 0.6) # Gap between cinemas
 
     return canvas
 
@@ -609,9 +677,15 @@ def main():
     for f in OUTPUT_DIR.glob("post_v2_*.png"): os.remove(f)
     for f in OUTPUT_DIR.glob("story_v2_*.png"): os.remove(f)
 
-    # 1. FIX: Get JST Date
-    date_str = get_today_str()
-    print(f"📅 Target Date (JST): {date_str}")
+    # 1. FIX: Get JST Date Range (Today + 2 Days)
+    today_dt = get_today_jst().date()
+    date_strs = [
+        today_dt.strftime("%Y-%m-%d"),
+        (today_dt + timedelta(days=1)).strftime("%Y-%m-%d"),
+        (today_dt + timedelta(days=2)).strftime("%Y-%m-%d")
+    ]
+    primary_date = date_strs[0]
+    print(f"📅 Target Dates (JST): {date_strs}")
     
     if not SHOWTIMES_PATH.exists(): 
         print(f"Showtimes file missing at: {SHOWTIMES_PATH}")
@@ -620,38 +694,53 @@ def main():
     with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
     
-    # 2. FIX: Initialize History
     history_manager = HistoryManager(HISTORY_PATH)
     
-    films_map = {}
+    # 2. First Pass: Identify Candidates screenings TODAY
+    # A film must screen TODAY to be eligible.
+    candidates_today = set()
     for item in raw_data:
-        if item.get('date_text') != date_str: continue
-        if not item.get('tmdb_backdrop_path'): continue
+        if item.get('date_text') == primary_date:
+            if not item.get('tmdb_backdrop_path'): continue
+            fid = item.get('tmdb_id')
+            if not fid: fid = normalize_string(item.get('movie_title'))
+            candidates_today.add(fid)
+
+    # 3. Second Pass: Aggregate Showtimes for Candidates across 3 days
+    films_map = {}
+    
+    for item in raw_data:
+        d_text = item.get('date_text')
+        if d_text not in date_strs: continue
         
-        # Use TMDB ID as primary key, fallback to title
         fid = item.get('tmdb_id')
-        if not fid:
-            fid = normalize_string(item.get('movie_title'))
-            
-        # 3. FIX: Filter out Cooldown Films
-        if history_manager.is_on_cooldown(fid):
-            continue
-            
-        # Store for processing
+        if not fid: fid = normalize_string(item.get('movie_title'))
+        
+        # Only process if this film is a valid candidate (screens today)
+        if fid not in candidates_today: continue
+        
+        if history_manager.is_on_cooldown(fid): continue
+        
         if fid not in films_map:
             films_map[fid] = item
-            films_map[fid]['showings'] = defaultdict(list)
-            # Ensure we attach the ID for later reference
+            films_map[fid]['showings'] = defaultdict(list) # TODAY ONLY (Legacy, kept for ref)
+            films_map[fid]['multi_day_showings'] = defaultdict(lambda: defaultdict(list)) # 3-DAY (Primary)
             films_map[fid]['unique_id'] = fid
-            
-        films_map[fid]['showings'][item.get('cinema_name', '')].append(item.get('showtime', ''))
+        
+        cinema = item.get('cinema_name', '')
+        time_str = item.get('showtime', '')
+        
+        # Add to multi-day structure
+        films_map[fid]['multi_day_showings'][d_text][cinema].append(time_str)
+        
+        # Add to 'showings' ONLY if it is today
+        if d_text == primary_date:
+            films_map[fid]['showings'][cinema].append(time_str)
 
     all_films = list(films_map.values())
     
     if len(all_films) < 5:
-        print("⚠️ Warning: Low film count after cooldown filter. Loosening restrictions...")
-        # (Optional) You could re-fetch ignored films here if needed, 
-        # but for now we'll just proceed with what we have.
+        print("⚠️ Warning: Low film count after cooldown filter.")
         
     random.shuffle(all_films)
     selected = all_films[:9]
@@ -662,7 +751,6 @@ def main():
 
     print(f"Selected {len(selected)} films.")
     
-    # 4. FIX: Update History with chosen films
     selected_ids = [f['unique_id'] for f in selected]
     history_manager.update(selected_ids)
     print("💾 History updated.")
@@ -698,34 +786,47 @@ def main():
         fb_story = draw_fallback_cover(cover_images, fonts, is_story=True)
         fb_story.save(OUTPUT_DIR / "story_v2_image_00.png")
 
-    # --- SLIDE GENERATION ---
-    caption_lines = [f"🗓️ {date_str} Tokyo Cinema Daily\n"]
+    # --- SLIDE & CAPTION GENERATION ---
+    caption_lines = [f"🗓️ {primary_date} Tokyo Cinema Daily\n"]
     
     for i, item in enumerate(slide_data):
         film = item['film']
         img = item['img']
         
-        slide_feed = draw_poster_slide(film, img, fonts, is_story=False)
+        # Pass primary_date to draw function for highlighting 'TODAY'
+        slide_feed = draw_poster_slide(film, img, fonts, is_story=False, primary_date=primary_date)
         slide_feed.save(OUTPUT_DIR / f"post_v2_image_{i+1:02}.png")
         
-        slide_story = draw_poster_slide(film, img, fonts, is_story=True)
+        slide_story = draw_poster_slide(film, img, fonts, is_story=True, primary_date=primary_date)
         slide_story.save(OUTPUT_DIR / f"story_v2_image_{i+1:02}.png")
         
+        # Caption Generation (Uses Multi-Day Data)
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
-        caption_lines.append(f"{t_jp}") 
-        if film.get('movie_title_en'): caption_lines.append(f"{film['movie_title_en']}")
-        for cin, t in film['showings'].items():
-            t.sort()
-            caption_lines.append(f"{cin}: {', '.join(t)}")
-        caption_lines.append("")
+        caption_lines.append(f"🎬 {t_jp}") 
+        if film.get('movie_title_en'): caption_lines.append(f"({film['movie_title_en']})")
         
-    caption_lines.append("\nLink in Bio for Full Schedule")
+        sorted_dates = sorted(film['multi_day_showings'].keys())
+        for d_key in sorted_dates:
+            pretty_date = format_date_for_caption(d_key)
+            if d_key == primary_date:
+                caption_lines.append(f"\n🔻 {pretty_date} (Today)")
+            else:
+                caption_lines.append(f"\n🗓️ {pretty_date}")
+                
+            daily_shows = film['multi_day_showings'][d_key]
+            for cin, t_list in daily_shows.items():
+                t_list.sort()
+                caption_lines.append(f"📍 {cin}: {', '.join(t_list)}")
+                
+        caption_lines.append("\n" + "-"*15 + "\n")
+        
+    caption_lines.append("Link in Bio for Full Schedule / 詳細はリンクへ")
     caption_lines.append("#TokyoIndieCinema #MiniTheater #MovieLog")
     
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))
         
-    print("Done. V2 Generated (Punk Style).")
+    print("Done. V2 Generated (Punk Style) with Multi-Day On-Image Schedules.")
 
 if __name__ == "__main__":
     main()
