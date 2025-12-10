@@ -51,7 +51,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Path Updates
 SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
-ASSETS_DIR = BASE_DIR / "cinema_assets" # Assuming this folder is still at root
+ASSETS_DIR = BASE_DIR / "cinema_assets"
 OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_caption.txt"
 
 # Font Updates
@@ -61,9 +61,10 @@ REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
 # Secrets
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 
-# --- Constants (PRESERVED) ---
+# --- Constants ---
 MINIMUM_FILM_THRESHOLD = 3
-INSTAGRAM_SLIDE_LIMIT = 10 
+# FIX: Reduced limit to ensure we don't overflow with multi-slide cinemas
+INSTAGRAM_SLIDE_LIMIT = 8 
 MAX_FEED_VERTICAL_SPACE = 750 
 MAX_STORY_VERTICAL_SPACE = 1150
 CANVAS_WIDTH = 1080
@@ -603,7 +604,7 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: list[dict
             
     footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
     draw_text_with_shadow(draw, (CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, footer_font, LIGHT_GRAY, anchor="mm")
-    return img.convert("RGB")
+    return img
 
 # --- MAIN ---
 
@@ -669,6 +670,8 @@ def main() -> None:
         candidates = valid_cinemas
         
     random.shuffle(candidates)
+    
+    # FIX: Safety selection to 8 cinemas to allow room for split slides
     selected_cinemas = candidates[:INSTAGRAM_SLIDE_LIMIT]
     
     if not selected_cinemas:
@@ -690,11 +693,12 @@ def main() -> None:
         final_cover = draw_cover_overlay(cover_bg, bilingual_date_str)
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
         
+        # --- DISABLED FOR CINEMA MODE (FEED ONLY) ---
         # Story Cover (9:16)
-        s_layout_rgba, s_layout_rgb, s_mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
-        s_cover_bg = inpaint_gaps(s_layout_rgb, s_mask)
-        s_final_cover = draw_cover_overlay(s_cover_bg, bilingual_date_str)
-        s_final_cover.save(OUTPUT_DIR / "story_image_00.png")
+        # s_layout_rgba, s_layout_rgb, s_mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+        # s_cover_bg = inpaint_gaps(s_layout_rgb, s_mask)
+        # s_final_cover = draw_cover_overlay(s_cover_bg, bilingual_date_str)
+        # s_final_cover.save(OUTPUT_DIR / "story_image_00.png")
 
     # SLIDES
     slide_counter = 0
@@ -702,6 +706,11 @@ def main() -> None:
     all_featured_for_caption = []
     
     for cinema_name in selected_cinemas:
+        # FIX: Hard Stop if we have reached 9 slides (Cover + 9 Slides = 10 items)
+        if slide_counter >= 9:
+            print(f"⚠️ Reached max Instagram slides (9). Skipping remaining cinemas: {cinema_name}...")
+            break
+
         shows = grouped[cinema_name]
         listings = format_listings(shows)
         
@@ -710,7 +719,7 @@ def main() -> None:
         
         cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         bg_img = create_blurred_cinema_bg(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
-        story_bg_img = create_blurred_cinema_bg(cinema_name, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
+        # story_bg_img = create_blurred_cinema_bg(cinema_name, CANVAS_WIDTH, STORY_CANVAS_HEIGHT) # DISABLED
         
         # Record for caption
         all_featured_for_caption.append({
@@ -719,20 +728,25 @@ def main() -> None:
         })
 
         for segment in segmented:
+            # FIX: Double check inside the segment loop too
+            if slide_counter >= 9:
+                break
+                
             slide_counter += 1
             slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, bg_img)
             slide_img.save(OUTPUT_DIR / f"post_image_{slide_counter:02}.png")
             
-        # Story Slides
-        story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, spacing={'jp_line': 55, 'time_line': 80, 'en_line': 45})
-        
-        for segment in story_segments:
-            story_counter += 1
-            slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_img)
-            slide_img.save(OUTPUT_DIR / f"story_image_{story_counter:02}.png")
+        # Story Slides (Stories allow more slides, but let's keep it consistent or flexible)
+        # --- DISABLED FOR CINEMA MODE ---
+        # story_segments = segment_listings(listings, MAX_STORY_VERTICAL_SPACE, spacing={'jp_line': 55, 'time_line': 80, 'en_line': 45})
+        # 
+        # for segment in story_segments:
+        #     story_counter += 1
+        #     slide_img = draw_story_slide(cinema_name, cinema_name_en, segment, story_bg_img)
+        #     slide_img.save(OUTPUT_DIR / f"story_image_{story_counter:02}.png")
 
     write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
-    print("Done. Generated V1 posts.")
+    print("Done. Generated V1 posts (Feed Only).")
 
 if __name__ == "__main__":
     main()
