@@ -24,6 +24,11 @@ jobs:
   scrape-and-post:
     runs-on: ubuntu-latest
     
+    # 🚨 FIX: Run all steps inside the 'cinema-scrapers' folder
+    defaults:
+      run:
+        working-directory: ./cinema-scrapers
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -33,15 +38,13 @@ jobs:
         with:
           python-version: '3.11'
 
-      # VITAL: Set the Server Timezone to JST
-      # This ensures both scripts see "today" as the correct date.
+      # Set Timezone to JST so the scripts pick the correct "Today"
       - name: Set Timezone
         run: sudo timedatectl set-timezone Asia/Tokyo
 
       - name: Install Dependencies
         run: |
           pip install requests beautifulsoup4 selenium pandas pillow pyyaml replicate pytz
-          # Install Japanese fonts for the image generator
           sudo apt-get install -y fonts-noto-cjk
 
       # --- LOGIC: DETERMINE MODE & SCRAPER STATUS ---
@@ -54,7 +57,7 @@ jobs:
           
           # Check if triggered by Schedule or Manual
           if [ "${{ github.event_name }}" == "schedule" ]; then
-            current_hour=$(date +%H) # Uses the System Time (now JST due to step above)
+            current_hour=$(date +%H) # Uses JST from previous step
             echo "Current JST Hour: $current_hour"
             
             # 7 AM JST -> Run Scraper + Cinema Post
@@ -85,7 +88,6 @@ jobs:
           echo "run_scraper=$SCRAPE" >> $GITHUB_OUTPUT
 
       # --- STEP 1: SCRAPE (CONDITIONAL) ---
-      # Only runs if mode is 'cinema' or manual force
       - name: Run Scraper
         if: steps.mode.outputs.run_scraper == 'true'
         run: python main_scraper.py
@@ -117,16 +119,15 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Add JSON data and new Images (matches both _v2 and normal)
+          # Add JSON data and new Images (Paths are relative to 'cinema-scrapers' now)
           git add data/*.json ig_posts/*.png ig_posts/*.txt
           
-          # Commit if there are changes
+          # Commit
           git commit -m "Auto-Update: ${{ steps.mode.outputs.post_type }} content" || echo "No changes to commit"
           git push
 
       # --- STEP 4: UPLOAD TO INSTAGRAM ---
       - name: Upload to Instagram
-        # Pass the type so the script knows which files to look for
         run: python upload_to_instagram.py --type ${{ steps.mode.outputs.post_type }}
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
