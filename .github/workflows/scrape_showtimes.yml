@@ -24,7 +24,7 @@ jobs:
   scrape-and-post:
     runs-on: ubuntu-latest
     
-    # 🚨 FIX: Run all steps inside the 'cinema-scrapers' folder
+    # Run all steps inside the 'cinema-scrapers' folder
     defaults:
       run:
         working-directory: ./cinema-scrapers
@@ -38,13 +38,14 @@ jobs:
         with:
           python-version: '3.11'
 
-      # Set Timezone to JST so the scripts pick the correct "Today"
+      # Set Timezone to JST
       - name: Set Timezone
         run: sudo timedatectl set-timezone Asia/Tokyo
 
       - name: Install Dependencies
+        # FIXED: Added 'webdriver-manager' to the list
         run: |
-          pip install requests beautifulsoup4 selenium pandas pillow pyyaml replicate pytz
+          pip install requests beautifulsoup4 selenium pandas pillow pyyaml replicate pytz webdriver-manager
           sudo apt-get install -y fonts-noto-cjk
 
       # --- LOGIC: DETERMINE MODE & SCRAPER STATUS ---
@@ -57,7 +58,7 @@ jobs:
           
           # Check if triggered by Schedule or Manual
           if [ "${{ github.event_name }}" == "schedule" ]; then
-            current_hour=$(date +%H) # Uses JST from previous step
+            current_hour=$(date +%H)
             echo "Current JST Hour: $current_hour"
             
             # 7 AM JST -> Run Scraper + Cinema Post
@@ -119,7 +120,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Add JSON data and new Images (Paths are relative to 'cinema-scrapers' now)
+          # Add JSON data and new Images
           git add data/*.json ig_posts/*.png ig_posts/*.txt
           
           # Commit
