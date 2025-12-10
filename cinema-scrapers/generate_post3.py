@@ -1,313 +1,380 @@
 """
-Generate Post V13: "The Headline Act"
-- Text: "Today's Film Selection" + Date.
-- Logic:
-  - Strict Gemini Selection (No garbage).
-  - Prompt: Concise, punchy, focuses on text legibility and cohesion.
-  - Output: Final image only (No debug files).
+Generate Post 3: Cinema Mashup (V3).
+- Concept: "Surreal Street Photography"
+- Visuals: Cinema Facade populated by characters from the films screening there.
+- Layout: Cover (Mashup) + Grid Slides (4 films per page).
+- Tech: Gemini Search (Cinema Img) + Replicate (RemBG) + Pillow (Compositing).
 """
-
-import os
 import json
+import os
 import random
 import requests
-import re
+import textwrap
 import math
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from collections import defaultdict
 from io import BytesIO
-from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance, ImageOps
 
-# --- API Setup ---
-try:
-    import replicate
-    REPLICATE_AVAILABLE = True
-except ImportError:
-    REPLICATE_AVAILABLE = False
-    print("⚠️ Replicate library not found.")
+# --- Reuse Core Logic from V2 ---
+# We import these to ensure visual consistency
+from generate_post2 import (
+    get_fonts, get_faithful_colors, create_textured_bg, apply_film_grain,
+    draw_centered_text, download_image, remove_background, create_sticker_style,
+    JST, get_today_jst, clean_display_title,
+    CANVAS_WIDTH, CANVAS_HEIGHT, STORY_CANVAS_HEIGHT,
+    OUTPUT_DIR, DATA_DIR, SHOWTIMES_PATH, HISTORY_PATH
+)
 
+# --- Config ---
+CINEMA_ASSETS_DIR = Path(__file__).resolve().parent / "cinema_assets"
+CINEMA_ASSETS_DIR.mkdir(exist_ok=True)
+CINEMA_HISTORY_PATH = DATA_DIR / "cinema_history.json"
+OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v3_caption.txt"
+
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+
+# --- Gemini Setup ---
 try:
     from google import genai
+    from google.genai import types
     GEMINI_AVAILABLE = True
 except ImportError:
     GEMINI_AVAILABLE = False
-    print("⚠️ Google GenAI library not found.")
 
-# --- Secrets ---
-REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+# --- Helpers ---
 
-# --- Configuration ---
-BASE_DIR = Path(__file__).resolve().parent
-SHOWTIMES_PATH = BASE_DIR / "showtimes.json"
-TMDB_BASE_URL = "https://image.tmdb.org/t/p/original"
+def load_json(path):
+    if not path.exists(): return {}
+    with open(path, 'r', encoding='utf-8') as f:
+        return json.load(f)
 
-# Filenames
-OUTPUT_FILENAME = "post_v3_test.png"
+def save_json(path, data):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
-CANVAS_W, CANVAS_H = 1080, 1350
-
-def get_today_str():
-    return datetime.now().strftime("%Y-%m-%d")
-
-def get_formatted_date():
-    # e.g. "DEC 03"
-    return datetime.now().strftime("%b %d").upper()
-
-def clean_title(title):
-    return re.sub(r'\[.*?\]|\(.*?\)', '', title).strip()
-
-def load_candidates():
-    if not SHOWTIMES_PATH.exists(): return []
-    with open(SHOWTIMES_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+def get_cinema_photo(cinema_name):
+    """
+    Finds a photo of the cinema. Checks local cache first, then Gemini Search.
+    """
+    safe_name = "".join(x for x in cinema_name if x.isalnum())
+    local_path = CINEMA_ASSETS_DIR / f"{safe_name}.jpg"
     
-    today = get_today_str()
-    print(f"📅 Auditioning films for: {today}")
+    # 1. Local Check
+    if local_path.exists():
+        print(f"📂 Found local image for {cinema_name}")
+        return Image.open(local_path).convert("RGB")
     
-    candidates = []
-    seen = set()
-    for film in data:
-        if film.get('date_text') != today: continue
-        
-        path = film.get('tmdb_backdrop_path')
-        if not path: path = film.get('tmdb_poster_path')
-        if not path: continue
-        
-        t = film.get('movie_title')
-        if t in seen: continue
-        seen.add(t)
-        
-        candidates.append({"film": film, "path": path})
-        
-    random.shuffle(candidates)
-    return candidates[:9]
+    # 2. Gemini Search
+    print(f"🌐 Searching web for photo of: {cinema_name}...")
+    if not GEMINI_AVAILABLE: return None
 
-def fetch_image(url):
-    try:
-        resp = requests.get(url, timeout=10)
-        return Image.open(BytesIO(resp.content)).convert("RGBA")
-    except:
-        return None
-
-def remove_background(pil_img):
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return pil_img
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    tool = types.Tool(google_search=types.GoogleSearch())
     
-    # Save temp file for API
-    temp_path = BASE_DIR / "temp_rembg_in.png"
-    pil_img.save(temp_path, format="PNG")
+    prompt = f"""
+    Find a high-quality, aesthetic photo of the exterior (facade) or interior of the movie theater "{cinema_name}" in Tokyo.
+    Prioritize images that show the building clearly.
+    Return ONLY a valid JSON object: {{ "image_url": "..." }}
+    """
     
     try:
-        output = replicate.run(
-            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
-            input={"image": open(temp_path, "rb")}
+        resp = client.models.generate_content(
+            model='gemini-2.5-flash', contents=prompt,
+            config=types.GenerateContentConfig(tools=[tool], response_mime_type="application/json")
         )
-        if output:
-            resp = requests.get(str(output))
-            cutout = Image.open(BytesIO(resp.content)).convert("RGBA")
-            if cutout.getextrema()[3][1] == 0: return None
-            return cutout
+        url = json.loads(resp.text).get("image_url")
+        
+        if url:
+            print(f"⬇️  Downloading: {url}")
+            headers = {'User-Agent': 'Mozilla/5.0'} 
+            img_resp = requests.get(url, headers=headers, timeout=10)
+            if img_resp.status_code == 200:
+                img = Image.open(BytesIO(img_resp.content)).convert("RGB")
+                img.save(local_path)
+                return img
     except Exception as e:
-        print(f"   ❌ Rembg error: {e}")
+        print(f"⚠️ Image Search Failed: {e}")
+    
     return None
 
-def create_contact_sheet(cutouts):
-    count = len(cutouts)
-    if count == 0: return None
-    cols = 3
-    rows = math.ceil(count / cols)
-    cell_w, cell_h = 300, 300
-    sheet = Image.new("RGB", (cols * cell_w, rows * cell_h), (50, 50, 50))
-    draw = ImageDraw.Draw(sheet)
-    
-    try:
-        font = ImageFont.truetype(str(BASE_DIR / "NotoSansJP-Bold.ttf"), 40)
-    except:
-        font = ImageFont.load_default()
-
-    for i, item in enumerate(cutouts):
-        img = item['img']
-        thumb = img.copy()
-        thumb.thumbnail((280, 280))
-        c = i % cols
-        r = i // cols
-        x = c * cell_w + 10
-        y = r * cell_h + 10
-        sheet.paste(thumb, (x, y), thumb)
-        draw.text((x+10, y+10), str(item['id']), font=font, fill="#FDB813", stroke_width=2, stroke_fill="black")
-    return sheet
-
-def ask_gemini_selection(contact_sheet, candidates_info):
-    print("\n🧠 --- GEMINI CASTING ---")
-    if not GEMINI_API_KEY: return {"selected_ids": [0, 1, 2], "concept": "Fallback"}
+def analyze_lineup_vibe(cinema_name, films):
+    """Gemini writes the caption intro."""
+    print("🧠 Analyzing lineup vibe...")
+    titles = [f['title'] for f in films]
+    titles_text = ", ".join(titles[:15])
     
     client = genai.Client(api_key=GEMINI_API_KEY)
-    simple_ctx = [{"id": c['id'], "title": c['title']} for c in candidates_info]
-
     prompt = f"""
-    You are a Film Curator.
-    Context: {json.dumps(simple_ctx, indent=2, ensure_ascii=False)}
+    You are a Tokyo film critic.
+    The cinema "{cinema_name}" is showing these films this week: {titles_text}.
     
-    TASK: Select exactly 3 candidates from the image.
-    CRITICAL:
-    1. Choose clear, visible subjects.
-    2. IGNORE messy, blurry, or empty cutouts.
-    3. The 3 selected images must look good together.
-    
-    Return JSON: {{ "selected_ids": [0, 1, 2], "concept": "Shared mood..." }}
+    Write a SHORT, cool Instagram caption intro (2-3 sentences) analyzing this specific curation.
+    Is it focused on a specific director? Is it horror heavy? Is it classic cinema?
+    Capture the "vibe" of the theater this week.
+    Start with "Weekly Spotlight: {cinema_name}".
     """
-    
     try:
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=[prompt, contact_sheet]
-        )
-        text = response.text.strip()
-        json_match = re.search(r'\{.*\}', text, re.DOTALL)
-        if json_match:
-            return json.loads(json_match.group(0))
-    except Exception as e:
-        print(f"⚠️ Gemini Selection Error: {e}")
-        
-    return {"selected_ids": [0, 1, 2], "concept": "Cinematic Collage"}
-
-def ask_gemini_prompt(layout_image, concept_text, date_str):
-    print("\n🎨 --- GEMINI DIRECTION ---")
-    if not GEMINI_API_KEY: return "cinematic collage"
-    
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    preview = layout_image.resize((512, 640))
-    
-    # REVISED PROMPT: Short, Direct, Bold Text.
-    prompt = f"""
-    You are an AI Prompt Engineer for Flux.
-    
-    Input: A collage of 3 film characters.
-    Goal: A cohesive movie poster.
-    
-    REQUIRED TEXT: "Today's Film Selection" and "{date_str}"
-    
-    INSTRUCTIONS:
-    1. BACKGROUND: Describe a background texture/environment that connects these specific characters (e.g. fog, paper texture, concrete, noir lighting).
-    2. TEXT PLACEMENT: The text "{date_str}" should be huge and bold. "Today's Film Selection" can be smaller.
-    3. TEXT STYLE: The text must be CLEAR and LEGIBLE. It should feel like a headline. Do not hide it.
-    4. VIBE: High-impact, artistic, poster aesthetics.
-
-    Return ONLY the prompt string.
-    """
-
-    print(f"\n📤 PROMPT:\n{prompt}")
-    
-    try:
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=[prompt, preview]
-        )
-        text = response.text.strip().replace("Prompt:", "").replace('"', '').strip()
-        print(f"\n📥 RESPONSE:\n{text}")
-        return text
+        resp = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
+        return resp.text.strip()
     except:
-        return f"cinematic high quality collage, bold text 'Today's Film Selection {date_str}'"
+        return f"Weekly Spotlight: {cinema_name}\nChecking out the lineup for this week!"
 
-def build_layout(selected_items):
-    canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0,0,0,0))
+# --- MASHUP GENERATION ---
+
+def create_mashup_cover(cinema_img, film_imgs, fonts, cinema_name, is_story=False):
+    """
+    Composes Film Characters INTO the Cinema Scene.
+    """
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
     
-    # Simple Spread Logic (3 Columns)
-    cols = [0, 1, 2]
-    random.shuffle(cols)
+    # 1. Prepare Background (Cinema)
+    # Resize to fill canvas
+    bg = ImageOps.fit(cinema_img, (width, height), method=Image.Resampling.LANCZOS)
     
-    for i, item in enumerate(selected_items):
-        if i >= 3: break
-        img = item['img']
+    # Darken slightly to make text/stickers pop
+    bg = ImageEnhance.Brightness(bg).enhance(0.8)
+    # Add blur to background to give depth of field effect? No, let's keep it sharp for the "venue" feel.
+    
+    # 2. Process Stickers (Film Characters)
+    stickers = []
+    print(f"✂️  Processing {len(film_imgs)} film cutouts...")
+    for img in film_imgs:
+        cutout = remove_background(img)
+        if cutout:
+            # Add a white border (Sticker style) to separate from complex background
+            sticker = create_sticker_style(cutout)
+            stickers.append(sticker)
+            
+    # 3. Place Stickers (Random "Crowd" Logic)
+    # We want them at the bottom/mid, looking like they are hanging out.
+    random.shuffle(stickers)
+    
+    # Define "Placement Zones" (Bottom Left, Bottom Right, Mid Right)
+    # Avoiding the top center where the cinema sign usually is.
+    zones = [
+        (int(width * 0.2), int(height * 0.7)),
+        (int(width * 0.8), int(height * 0.7)),
+        (int(width * 0.8), int(height * 0.4)),
+        (int(width * 0.2), int(height * 0.4)),
+    ]
+    
+    for i, sticker in enumerate(stickers[:4]): # Max 4 stickers
+        # Randomize Scale
+        scale = random.uniform(0.35, 0.6)
         
         # Resize
-        target_w = random.randint(600, 850)
-        ratio = target_w / img.width
-        target_h = int(img.height * ratio)
-        if target_h > CANVAS_H * 0.55:
-            target_h = int(CANVAS_H * 0.55)
-            target_w = int(target_h / ratio)
+        ratio = sticker.width / sticker.height
+        new_w = int(width * scale)
+        new_h = int(new_w / ratio)
+        s_resized = sticker.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        
+        # Pick Zone
+        if i < len(zones):
+            zx, zy = zones[i]
+        else:
+            zx, zy = width//2, height//2
             
-        img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+        # Jitter
+        x = zx + random.randint(-100, 100) - (new_w // 2)
+        y = zy + random.randint(-50, 50) - (new_h // 2)
         
-        # Position X
-        col = cols[i]
-        if col == 0: center_x = CANVAS_W * 0.2
-        elif col == 1: center_x = CANVAS_W * 0.5
-        else: center_x = CANVAS_W * 0.8
-        x = int(center_x - (img.width / 2)) + random.randint(-50, 50)
+        # Clamp to canvas
+        x = max(-50, min(x, width - 50))
+        y = max(50, min(y, height - 50))
         
-        # Position Y (Random vertical spread)
-        y = random.randint(200, CANVAS_H - img.height - 100)
-        
-        canvas.paste(img, (x, y), img)
-        
-    alpha = canvas.split()[3]
-    mask = ImageOps.invert(alpha)
-    flat = Image.new("RGB", (CANVAS_W, CANVAS_H), (128, 128, 128))
-    flat.paste(canvas, (0,0), canvas)
+        bg.paste(s_resized, (x, y), s_resized)
+
+    # 4. Unify (Film Grain)
+    # This acts as the "Inpainting" glue to make them feel like they belong in the same photo
+    bg = apply_film_grain(bg)
     
-    return flat, mask
+    # 5. Overlay Text
+    draw = ImageDraw.Draw(bg)
+    
+    # "THIS WEEK AT"
+    draw_centered_text(draw, 120, "THIS WEEK AT", fonts['meta'], (255,255,255), width)
+    
+    # Cinema Name (Big)
+    wrapper = textwrap.TextWrapper(width=15)
+    lines = wrapper.wrap(cinema_name.upper())
+    y_text = 180
+    for line in lines:
+        y_text = draw_centered_text(draw, y_text, line, fonts['cover_main_jp'], (255,255,255), width)
+        
+    return bg
+
+# --- GRID SLIDE GENERATION ---
+
+def draw_grid_slide(films_batch, fonts, is_story=False):
+    """
+    Draws a 2x2 grid of films.
+    """
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    
+    bg = Image.new("RGB", (width, height), (20, 20, 20))
+    draw = ImageDraw.Draw(bg)
+    
+    # Grid config
+    margin = 40
+    col_gap = 30
+    row_gap = 60
+    header_height = 100
+    
+    # Available area
+    grid_w = width - (2 * margin)
+    cell_w = (grid_w - col_gap) // 2
+    
+    # 2x2 Layout
+    cells = [
+        (margin, header_height + margin), # Top Left
+        (margin + cell_w + col_gap, header_height + margin), # Top Right
+        (margin, header_height + margin + 550 + row_gap), # Bottom Left
+        (margin + cell_w + col_gap, header_height + margin + 550 + row_gap) # Bottom Right
+    ]
+    
+    # Header
+    draw.text((margin, 50), "NOW SHOWING", font=fonts['title_en'], fill=(200,200,200))
+    
+    for i, film in enumerate(films_batch):
+        if i >= 4: break
+        
+        x, y = cells[i]
+        
+        # 1. Poster
+        poster_h = 500
+        p_img = download_image(film['poster_path'])
+        
+        if p_img:
+            # Crop/Fit poster to cell width
+            p_ratio = p_img.width / p_img.height
+            target_ratio = cell_w / poster_h
+            
+            p_resized = ImageOps.fit(p_img, (cell_w, poster_h), method=Image.Resampling.LANCZOS)
+            bg.paste(p_resized, (x, y))
+        else:
+            # Fallback placeholder
+            draw.rectangle([x, y, x+cell_w, y+poster_h], fill=(40,40,40))
+            
+        # 2. Text Info
+        text_y = y + poster_h + 20
+        
+        # Title
+        title = clean_display_title(film['title'])
+        # Truncate if too long
+        if len(title) > 12: title = title[:11] + "…"
+        
+        draw.text((x, text_y), title, font=fonts['cinema'], fill=(255,255,255))
+        
+        # Time
+        time_str = film['time']
+        draw.text((x, text_y + 40), f"Start: {time_str}", font=fonts['meta'], fill=(180,180,180))
+
+    return bg
+
+# --- MAIN ---
 
 def main():
-    print("🚀 Starting V13 (The Headline Act)...")
+    print("--- Starting V3 (Cinema Mashup) ---")
     
-    candidates = load_candidates()
-    processed_roster = []
+    # 1. Load Data
+    raw_data = load_json(SHOWTIMES_PATH)
+    history = load_json(CINEMA_HISTORY_PATH)
     
-    print("✂️  Auditioning...")
-    for i, item in enumerate(candidates):
-        if len(processed_roster) >= 6: break 
-        
-        url = TMDB_BASE_URL + item['path']
-        src = fetch_image(url)
-        if src:
-            cutout = remove_background(src)
-            if cutout:
-                processed_roster.append({
-                    "id": len(processed_roster), 
-                    "title": clean_title(item['film']['movie_title']),
-                    "img": cutout
+    # 2. Pick Cinema (Round Robin)
+    today = get_today_jst().date()
+    # Look at next 5 days
+    target_dates = [(today + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(5)]
+    
+    active_cinemas = defaultdict(list)
+    for item in raw_data:
+        if item.get('date_text') in target_dates:
+            if item.get('tmdb_poster_path'):
+                active_cinemas[item['cinema_name']].append({
+                    "title": item['movie_title'],
+                    "poster_path": item['tmdb_poster_path'],
+                    "date": item['date_text'],
+                    "time": item['showtime']
                 })
-                print(f"   ✅ {item['film']['movie_title']}")
 
-    if len(processed_roster) < 3:
-        print("❌ Not enough cutouts.")
+    # Filter candidates
+    candidates = [c for c in active_cinemas.keys() if c not in history.values()]
+    if not candidates:
+        print("All cinemas featured recently. Resetting history.")
+        candidates = list(active_cinemas.keys())
+        history = {}
+
+    target_cinema = random.choice(candidates)
+    print(f"🎯 Selected Cinema: {target_cinema}")
+    
+    # Update history
+    history[str(datetime.now().timestamp())] = target_cinema
+    save_json(CINEMA_HISTORY_PATH, history)
+    
+    # 3. Get Assets
+    cinema_img = get_cinema_photo(target_cinema)
+    if not cinema_img:
+        print("❌ Could not find cinema image. Aborting.")
         return
 
-    sheet = create_contact_sheet(processed_roster)
-    selection = ask_gemini_selection(sheet, processed_roster)
-    ids = selection.get('selected_ids', [])[:3]
-    final_cast = [c for c in processed_roster if c['id'] in ids]
-    if len(final_cast) < 3: final_cast = processed_roster[:3]
+    # Gather films for stickers (Top 4 unique films)
+    unique_films_map = {f['title']: f for f in active_cinemas[target_cinema]}
+    unique_films = list(unique_films_map.values())
+    random.shuffle(unique_films)
+    
+    sticker_sources = []
+    print("📥 Downloading poster assets for mashup...")
+    for f in unique_films[:4]:
+        img = download_image(f['poster_path'])
+        if img: sticker_sources.append(img)
+        
+    fonts = get_fonts()
+    
+    # 4. Generate Cover (Mashup)
+    print("🎨 Generating Mashup Cover...")
+    cover = create_mashup_cover(cinema_img, sticker_sources, fonts, target_cinema, is_story=False)
+    cover.save(OUTPUT_DIR / "post_v3_00.png")
+    
+    cover_story = create_mashup_cover(cinema_img, sticker_sources, fonts, target_cinema, is_story=True)
+    cover_story.save(OUTPUT_DIR / "story_v3_00.png")
+    
+    # 5. Generate Grid Slides
+    print("🎞️  Generating Schedule Slides...")
+    # Group films into chunks of 4
+    chunk_size = 4
+    film_list = sorted(unique_films, key=lambda x: x['time'])
+    chunks = [film_list[i:i + chunk_size] for i in range(0, len(film_list), chunk_size)]
+    
+    for i, batch in enumerate(chunks):
+        # Stop after 3 schedule slides (12 films max) to avoid spam
+        if i >= 3: break 
+        slide = draw_grid_slide(batch, fonts, is_story=False)
+        slide.save(OUTPUT_DIR / f"post_v3_{i+1:02}.png")
+        
+        # Story version? (Re-use same layout or adapt)
+        # For simplicity, we stick to Feed slides for schedule, or adapt logic if needed.
+        # Let's save the same slide for story for now, maybe padded.
+        slide_story = ImageOps.pad(slide, (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), color=(20,20,20))
+        slide_story.save(OUTPUT_DIR / f"story_v3_{i+1:02}.png")
 
-    layout, mask = build_layout(final_cast)
+    # 6. Generate Caption
+    vibe_text = analyze_lineup_vibe(target_cinema, film_list)
     
-    date_str = get_formatted_date()
-    viz_prompt = ask_gemini_prompt(layout, selection.get('concept', 'Collage'), date_str)
+    schedule_text = f"{vibe_text}\n\n📍 {target_cinema} Schedule Highlights:\n"
     
-    print("🎨 Inpainting...")
-    if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
-        layout.save(BASE_DIR / "temp_src.png")
-        mask.save(BASE_DIR / "temp_mask.png")
-        try:
-            output = replicate.run(
-                "black-forest-labs/flux-fill-dev",
-                input={
-                    "image": open(BASE_DIR / "temp_src.png", "rb"),
-                    "mask": open(BASE_DIR / "temp_mask.png", "rb"),
-                    "prompt": viz_prompt + ", legible text, high quality",
-                    "guidance": 40,
-                    "output_format": "png"
-                }
-            )
-            if output:
-                res = requests.get(str(output) if not isinstance(output, list) else output[0])
-                final = Image.open(BytesIO(res.content))
-                final.save(BASE_DIR / OUTPUT_FILENAME)
-                print(f"✅ Success! Saved to {BASE_DIR / OUTPUT_FILENAME}")
-        except Exception as e:
-            print(f"❌ Replicate Error: {e}")
+    # Simple list for caption
+    for f in film_list[:10]:
+        schedule_text += f"• {f['time']} {f['title']}\n"
+            
+    schedule_text += "\n#TokyoIndieCinema #MiniTheater"
+    
+    with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
+        f.write(schedule_text)
+        
+    print(f"✅ V3 Mashup Generated for {target_cinema}!")
 
 if __name__ == "__main__":
     main()
