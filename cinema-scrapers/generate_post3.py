@@ -1,38 +1,35 @@
 """
-Generate Post 3: The "Creative Director" Engine.
-- Concept: AI-driven Curation. Gemini decides the layout based on the "Vibe" of the lineup.
-- Tech: Google GenAI (Search Grounding) + Replicate (RemBG) + Pillow (Advanced Compositing).
+Generate Post 3: The "Creative Director" Engine (Cinema Spotlight).
+- Logic: Round-Robin Cinema Selection -> AI "Creative Director" -> Asset Fetching -> Composition.
+- Features: 
+    - Cinema History Tracking (ensures rotation).
+    - Search Grounding for Context & Backup Images.
+    - Replicate (RemBG) for depth effects.
+    - "Pop-out" poster composition.
 """
 
 import os
 import json
 import random
 import requests
-import time
 import textwrap
-from io import BytesIO
+import time
+from datetime import datetime
 from pathlib import Path
-from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from typing import List, Dict, Any, Optional
-
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance
+from io import BytesIO
 
 # --- LIBRARIES ---
 try:
     from google import genai
     from google.genai import types
-    GEMINI_AVAILABLE = True
-except ImportError:
-    print("⚠️ Google GenAI not found. Run: pip install google-genai")
-    GEMINI_AVAILABLE = False
-
-try:
+    from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance
     import replicate
-    REPLICATE_AVAILABLE = True
-except ImportError:
-    print("⚠️ Replicate not found. Run: pip install replicate")
-    REPLICATE_AVAILABLE = False
+except ImportError as e:
+    print(f"⚠️ Missing dependencies: {e}")
+    print("pip install google-genai replicate requests Pillow tzdata")
+    exit(1)
 
 # --- CONFIGURATION ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -41,435 +38,444 @@ OUTPUT_DIR = BASE_DIR / "ig_posts"
 CINEMA_ASSETS_DIR = BASE_DIR / "cinema_assets"
 FONTS_DIR = BASE_DIR / "fonts"
 
+# FILES
+SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
+CINEMA_HISTORY_PATH = DATA_DIR / "cinema_history.json" # Tracks which CINEMA was last featured
+
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 CINEMA_ASSETS_DIR.mkdir(parents=True, exist_ok=True)
 
 JST = ZoneInfo("Asia/Tokyo")
-
-# API KEYS
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 
-# --- CLASS: THE CREATIVE DIRECTOR ---
+# --- 1. SELECTION ENGINE (ROUND ROBIN FOR CINEMAS) ---
+
+def load_cinema_history():
+    if CINEMA_HISTORY_PATH.exists():
+        with open(CINEMA_HISTORY_PATH, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+def save_cinema_history(history):
+    with open(CINEMA_HISTORY_PATH, 'w', encoding='utf-8') as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+
+def select_target_cinema(todays_showtimes: List[Dict]) -> str:
+    """
+    Selects a cinema that hasn't been featured recently.
+    """
+    history = load_cinema_history()
+    
+    # 1. Get all cinemas active today
+    active_cinemas = list(set(f['cinema_name'] for f in todays_showtimes))
+    
+    if not active_cinemas:
+        return None
+
+    # 2. Sort by last featured date (None/'0000' = never featured)
+    def get_last_date(name):
+        return history.get(name, "0000-00-00")
+
+    # Sort: Oldest date first (Ascending)
+    active_cinemas.sort(key=get_last_date)
+    
+    target = active_cinemas[0]
+    last_date = history.get(target, "Never")
+    
+    print(f"🎯 Selection Logic: Found {len(active_cinemas)} active cinemas.")
+    print(f"   Selected: {target} (Last Featured: {last_date})")
+    
+    # Update History IMMEDIATELY
+    history[target] = datetime.now(JST).strftime("%Y-%m-%d")
+    save_cinema_history(history)
+    
+    return target
+
+# --- 2. THE CREATIVE DIRECTOR (GEMINI AGENT) ---
 
 class CreativeDirector:
-    """
-    Uses Gemini 2.5 with Search Grounding to analyze the lineup and propose a visual plan.
-    """
     def __init__(self, api_key: str):
         self.client = genai.Client(api_key=api_key)
         self.model = "gemini-2.5-flash" 
 
-    def analyze_lineup_and_direct(self, cinema_name: str, films: List[Dict]) -> Dict:
+    def create_editorial_plan(self, cinema_name: str, films: List[Dict]) -> Dict:
         """
-        Returns a JSON 'Manifest' dictating the slide deck structure.
+        Analyzes the cinema's lineup and generates a bespoke slide plan.
         """
-        print(f"🧠 Director is analyzing lineup for {cinema_name}...")
+        print(f"🧠 Creative Director is analyzing {cinema_name}...")
         
-        # 1. Prepare Data for LLM
-        film_context = []
+        # 1. Summarize Assets for the AI
+        film_inventory = []
         for f in films:
-            film_context.append({
+            film_inventory.append({
                 "title": f.get('movie_title'),
+                "has_poster": bool(f.get('tmdb_poster_path')),
                 "director": f.get('director'),
-                "country": f.get('country'),
-                "has_image": bool(f.get('tmdb_poster_path'))
+                "showtime": f.get('showtime')
             })
-        
-        # 2. Define the Schema (The Shot List)
-        # We want Gemini to select from specific slide types.
+            
+        # 2. The Prompt
         prompt = f"""
-        You are the Art Director for a high-end cinema magazine. 
-        We are featuring the cinema "{cinema_name}" and today's lineup:
-        {json.dumps(film_context, ensure_ascii=False)}
+        You are the Creative Director for a Tokyo cinema Instagram account.
+        Today's Focus: {cinema_name}
+        Lineup:
+        {json.dumps(film_inventory, indent=2, ensure_ascii=False)}
 
-        Analyze the lineup. Is there a theme? (e.g. "French New Wave", "Mads Mikkelsen Season", "Horror Marathon", "Indie Mix").
-        If you don't know a film, use your Search tool to find its genre and vibe.
+        YOUR TASK:
+        1. Analyze the lineup. Detect a theme (e.g. "French New Wave", "Mads Mikkelsen Season", "Indie Mix").
+        2. Create a JSON SLIDE PLAN (Max 6 slides).
+        3. Decide visual style (fonts, colors).
 
-        Create a JSON plan for an Instagram Carousel (max 6 slides).
-        Available Slide Types:
-        1. "HERO_PORTAL": The cover. Must combine the cinema building with a film image.
-        2. "POPOUT_SPOTLIGHT": Focus on ONE film. Requires high visual impact. Only choose if 'has_image' is true.
-        3. "TIMELINE_STRIP": A visual schedule of the day. Good if there are many films.
-        4. "EDITORIAL_QUOTE": Large typography with a critic's quote or tagline. Use this if 'has_image' is false or for variety.
-        
-        Output valid JSON only:
+        CRITICAL RULES FOR IMAGES:
+        - If 'has_poster' is TRUE: You can use 'POPOUT_SPOTLIGHT' or 'HERO_PORTAL'.
+        - If 'has_poster' is FALSE: You MUST use 'TYPOGRAPHIC_QUOTE' (Text only) OR provide a 'search_query' for Gemini to find an image.
+        - Do not plan 6 posters in a row. Mix it up.
+
+        AVAILABLE SLIDE TYPES:
+        - "HERO_PORTAL": Cover slide. Blends cinema photo + film image.
+        - "POPOUT_SPOTLIGHT": Character cutout over text. Needs high-res image.
+        - "TYPOGRAPHIC_QUOTE": Big text, review, or tagline. No image needed. 
+        - "TIMELINE_STRIP": Visual schedule. Good for the last slide.
+
+        OUTPUT JSON ONLY:
         {{
-            "theme_title": "Short punchy title for the day (e.g. 'NEON NOIR')",
-            "visual_style": "Describe colors and font vibe (e.g. 'Gritty, high contrast, red accent')",
-            "accent_color_hex": "#RRGGBB",
+            "editorial_title": "Catchy Headline (e.g. 'MIDNIGHT IN SHINJUKU')",
+            "visual_vibe": "Description of colors/fonts",
+            "accent_color": "#HEXCODE",
             "slides": [
-                {{ "type": "HERO_PORTAL", "focus_film": "Film Title" }},
-                {{ "type": "POPOUT_SPOTLIGHT", "film": "Film Title", "reason": "Why this film?" }},
-                {{ "type": "EDITORIAL_QUOTE", "film": "Film Title", "search_query": "search query to find a quote for this film" }},
+                {{ "type": "HERO_PORTAL", "film_focus": "Film A" }},
+                {{ "type": "TYPOGRAPHIC_QUOTE", "film_focus": "Film B", "search_query": "search query to find a review for Film B" }},
                 {{ "type": "TIMELINE_STRIP" }}
             ]
         }}
         """
 
-        # 3. Configure Search Grounding
-        grounding_tool = types.Tool(google_search=types.GoogleSearch())
+        grounding = types.Tool(google_search=types.GoogleSearch())
         
         try:
-            response = self.client.models.generate_content(
+            resp = self.client.models.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(
-                    tools=[grounding_tool],
+                    tools=[grounding],
                     response_mime_type="application/json",
-                    temperature=0.4
+                    temperature=0.5
                 )
             )
-            
-            # Parse JSON
-            plan = json.loads(response.text)
-            
-            # Enrich with Search Data for Quotes if needed
-            # (Gemini usually does this in one pass if asked, but let's verify)
-            if response.candidates[0].grounding_metadata:
-                print("   🔍 Search Grounding was used to inform the direction.")
-                
-            return plan
-
+            return json.loads(resp.text)
         except Exception as e:
-            print(f"❌ Director failed: {e}")
-            # Fallback Plan
+            print(f"❌ Director Error: {e}")
             return {
-                "theme_title": f"{cinema_name} Daily",
-                "accent_color_hex": "#FDB813",
+                "editorial_title": f"Today at {cinema_name}",
+                "accent_color": "#FFFF00",
                 "slides": [{"type": "TIMELINE_STRIP"}]
             }
 
-    def fetch_quote(self, film_title: str) -> str:
-        """Helper to specifically find a quote if the plan requests it."""
+    def get_film_quote(self, film_title: str) -> str:
+        # Fetch text content if we have no images
         try:
-            prompt = f"Find a short, famous, one-sentence review or tagline for the film '{film_title}'. Return JUST the text."
+            prompt = f"Write a short, punchy, 1-sentence tagline or find a famous short review quote for the movie '{film_title}'. Return JUST the text."
+            # We don't necessarily need search for a tagline, but it helps for reviews
             grounding = types.Tool(google_search=types.GoogleSearch())
             resp = self.client.models.generate_content(
-                model=self.model, contents=prompt, config=types.GenerateContentConfig(tools=[grounding])
+                model=self.model, 
+                contents=prompt,
+                config=types.GenerateContentConfig(tools=[grounding])
             )
             return resp.text.strip().replace('"', '')
         except:
-            return f"Now Showing: {film_title}"
+            return film_title.upper()
 
-# --- HELPER FUNCTIONS ---
+# --- 3. ASSET & RENDER UTILS ---
 
-def download_asset(url: str) -> Image.Image:
+def download_asset(url: str) -> Optional[Image.Image]:
     if not url: return None
     try:
         resp = requests.get(url, timeout=10)
         img = Image.open(BytesIO(resp.content)).convert("RGBA")
         return img
-    except Exception:
+    except:
         return None
 
-def remove_background_rembg(image: Image.Image) -> Image.Image:
-    """Uses Replicate to remove background. Returns the CUTOUT."""
-    if not REPLICATE_API_TOKEN:
-        print("   ⚠️ No Replicate Token. Skipping RemBG.")
+def remove_bg(image: Image.Image) -> Image.Image:
+    """Uses Replicate's RemBG to get a cutout."""
+    if not REPLICATE_API_TOKEN: 
+        print("   ⚠️ No Replicate Token. Skipping Cutout.")
         return image
-    
-    print("   🎨 Sending to Replicate (RemBG)...")
     try:
-        # Save temp file
         buf = BytesIO()
         image.save(buf, format="PNG")
         buf.seek(0)
-        
         output = replicate.run(
             "cjwbw/rembg:fb8af171cfa1616ddcf1242c093f9c46bcada5ad4cf6f2fbe8b81b330ec5c003",
             input={"image": buf}
         )
-        # Output is a URL
         return download_asset(output)
     except Exception as e:
-        print(f"   ❌ RemBG failed: {e}")
+        print(f"   ⚠️ RemBG Failed: {e}")
         return image
 
-def get_cinema_photo(cinema_name: str) -> Image.Image:
-    # Basic mapping or fuzzy search in cinema_assets
-    # For prototype, look for exact match or first file
+def get_cinema_bg(cinema_name: str) -> Image.Image:
     safe_name = cinema_name.replace(" ", "_").lower()
     matches = list(CINEMA_ASSETS_DIR.glob(f"*{safe_name}*"))
     if not matches:
-        matches = list(CINEMA_ASSETS_DIR.glob("*.jpg")) # Fallback
+        matches = list(CINEMA_ASSETS_DIR.glob("*.jpg")) # Fallback to any cinema photo
     
     if matches:
         return Image.open(matches[0]).convert("RGBA")
-    return Image.new("RGBA", (1080, 1350), (20, 20, 20))
+    return Image.new("RGBA", (1080, 1350), (30,30,30))
 
-# --- THE COMPOSITOR (RENDER ENGINE) ---
+def load_fonts(d: Path):
+    def _load(name, size):
+        p = d / name
+        return ImageFont.truetype(str(p), size) if p.exists() else ImageFont.load_default()
+    
+    return {
+        "h1": _load("Manrope-Bold.ttf", 110),
+        "h2": _load("Manrope-Bold.ttf", 70),
+        "body": _load("Manrope-Regular.ttf", 45),
+        "big_quote": _load("Manrope-Bold.ttf", 85)
+    }
+
+# --- 4. RENDERER (The Compositor) ---
 
 class Compositor:
-    def __init__(self, fonts_dir: Path):
-        self.W = 1080
-        self.H = 1350
-        self.fonts = self._load_fonts(fonts_dir)
+    def __init__(self):
+        self.W, self.H = 1080, 1350
+        self.fonts = load_fonts(FONTS_DIR)
 
-    def _load_fonts(self, d: Path):
-        # Fallback to default if specific fonts missing
-        return {
-            "bold": ImageFont.truetype(str(d / "Manrope-Bold.ttf"), 120) if (d / "Manrope-Bold.ttf").exists() else ImageFont.load_default(),
-            "medium": ImageFont.truetype(str(d / "Manrope-Regular.ttf"), 60) if (d / "Manrope-Regular.ttf").exists() else ImageFont.load_default(),
-            "small": ImageFont.truetype(str(d / "Manrope-Regular.ttf"), 40) if (d / "Manrope-Regular.ttf").exists() else ImageFont.load_default(),
-        }
-
-    def render_hero_portal(self, cinema_img: Image.Image, film_img: Image.Image, title: str, accent_color: str) -> Image.Image:
-        """
-        Composites the film image INTO the cinema image (e.g. screen or door).
-        For this prototype, we use a 'Soft Light' blend over the whole building + text.
-        """
-        canvas = cinema_img.copy()
-        canvas = ImageOps.fit(canvas, (self.W, self.H))
+    def draw_hero(self, cinema_img, film_img, title, accent):
+        canvas = ImageOps.fit(cinema_img, (self.W, self.H))
         
-        if film_img:
-            film_layer = ImageOps.fit(film_img, (self.W, self.H))
-            # Create a gradient mask
-            mask = Image.new("L", (self.W, self.H), 0)
-            draw = ImageDraw.Draw(mask)
-            draw.rectangle([(0, self.H//2), (self.W, self.H)], fill=200) # Bottom half opaque
-            canvas = Image.composite(film_layer, canvas, mask)
-        
-        # Overlay
-        overlay = Image.new("RGBA", (self.W, self.H), (0,0,0,100))
+        # Darken Cinema Background
+        overlay = Image.new("RGBA", (self.W, self.H), (0,0,0,140))
         canvas = Image.alpha_composite(canvas, overlay)
         
+        # Blend Film Image (Dreamy Portal Effect)
+        if film_img:
+            # Resize film to width, but fade it out
+            film_layer = ImageOps.fit(film_img, (self.W, int(self.H * 0.6)))
+            
+            # Create Gradient Mask
+            mask = Image.new("L", (self.W, int(self.H * 0.6)), 0)
+            draw = ImageDraw.Draw(mask)
+            for y in range(int(self.H * 0.6)):
+                # Fade from opaque (255) to transparent (0)
+                alpha = int(255 * (1 - (y / (self.H * 0.6))**0.5)) 
+                draw.line([(0,y), (self.W,y)], fill=alpha)
+            
+            # Composite
+            canvas.paste(film_layer, (0, 100), mask)
+
         draw = ImageDraw.Draw(canvas)
         
-        # Theme Title
-        font_size = 100
-        font = self.fonts['bold'].font_variant(size=font_size)
-        
-        # Text Logic
+        # Big Typography
         margin = 60
-        y_pos = 100
-        
-        # Draw Title
-        draw.text((margin, y_pos), title.upper(), font=font, fill=accent_color)
-        draw.text((margin, y_pos + font_size + 20), datetime.now().strftime("%B %d").upper(), font=self.fonts['medium'], fill="white")
+        draw.text((margin, 850), title.upper(), font=self.fonts['h1'], fill=accent)
+        draw.text((margin, 980), datetime.now(JST).strftime("%B %d, %Y"), font=self.fonts['h2'], fill="white")
         
         return canvas
 
-    def render_popout_spotlight(self, film_data: Dict, accent: str) -> Image.Image:
-        """
-        1. Background: Original Poster (Blurred)
-        2. Text: Big Title (Behind character)
-        3. Foreground: Character Cutout
-        """
-        # Fetch high res
+    def draw_popout(self, film_data, accent):
+        # 1. Background (Blurred Poster)
         poster_url = f"https://image.tmdb.org/t/p/original{film_data['tmdb_poster_path']}"
-        full_poster = download_asset(poster_url)
+        poster = download_asset(poster_url)
         
-        if not full_poster:
+        if not poster: 
             return Image.new("RGB", (self.W, self.H), "black")
-
-        # 1. Background
-        bg = full_poster.copy()
+        
+        bg = poster.copy()
         bg = ImageOps.fit(bg, (self.W, self.H))
-        bg = bg.filter(ImageFilter.GaussianBlur(20))
-        bg = ImageEnhance.Brightness(bg).enhance(0.5)
-
-        # 2. Cutout
-        cutout = remove_background_rembg(full_poster)
-        cutout = ImageOps.contain(cutout, (int(self.W * 0.9), int(self.H * 0.8)))
+        bg = bg.filter(ImageFilter.GaussianBlur(30)) # Heavy Blur
+        bg = ImageEnhance.Brightness(bg).enhance(0.4) # Darken
         
-        # 3. Composition
-        # Draw Text FIRST (so it sits behind the cutout)
+        # 2. Big Text (Behind the subject)
         draw = ImageDraw.Draw(bg)
-        title = film_data.get('clean_title_jp') or film_data.get('movie_title')
+        title = film_data.get('clean_title_jp', film_data['movie_title'])
         
-        # Dynamic font scaling
-        font_size = 150
+        # Font Scaling
+        font_size = 130
         if len(title) > 8: font_size = 100
-        if len(title) > 15: font_size = 80
-        
-        title_font = self.fonts['bold'].font_variant(size=font_size)
-        
-        # Center text
-        bbox = draw.textbbox((0,0), title, font=title_font)
-        text_w = bbox[2] - bbox[0]
-        text_x = (self.W - text_w) // 2
-        text_y = self.H // 3
-        
-        draw.text((text_x, text_y), title, font=title_font, fill="white", stroke_width=2, stroke_fill="black")
-        
-        # Place Cutout centered bottom
-        cutout_x = (self.W - cutout.width) // 2
-        cutout_y = self.H - cutout.height
-        
-        bg.paste(cutout, (cutout_x, cutout_y), cutout)
-        
-        # Info Badge
-        draw.rectangle([(0, self.H - 150), (self.W, self.H)], fill=accent)
-        info_text = f"{film_data['showtime']} • {film_data.get('director', '')}"
-        draw.text((50, self.H - 110), info_text, font=self.fonts['medium'], fill="black")
+        if len(title) > 15: font_size = 70
+        t_font = self.fonts['h1'].font_variant(size=font_size)
 
+        # Draw Text Centered
+        bbox = draw.textbbox((0,0), title, font=t_font)
+        tx_w = bbox[2] - bbox[0]
+        draw.text( ((self.W - tx_w)//2, 300), title, font=t_font, fill="white" )
+
+        # 3. The Cutout (Foreground)
+        print(f"   ✂️  Generating Pop-out for: {title}")
+        cutout = remove_bg(poster)
+        cutout = ImageOps.contain(cutout, (int(self.W*0.95), int(self.H*0.75)))
+        
+        # Place at bottom center
+        bg.paste(cutout, ((self.W - cutout.width)//2, self.H - cutout.height), cutout)
+        
+        # 4. Info Badge
+        draw.rectangle([(0, self.H-120), (self.W, self.H)], fill=accent)
+        info = f"{film_data['showtime']} • {film_data.get('director','')}"
+        draw.text((50, self.H-90), info, font=self.fonts['body'], fill="black")
+        
         return bg
 
-    def render_timeline(self, films: List[Dict], cinema_name: str, accent: str) -> Image.Image:
-        """Visualizes time blocks."""
+    def draw_quote(self, text, film_title, accent):
+        # Swiss Design / Editorial Style
+        img = Image.new("RGB", (self.W, self.H), "#1a1a1a")
+        draw = ImageDraw.Draw(img)
+        
+        # Big Quotation Mark
+        draw.text((40, 100), "“", font=self.fonts['h1'].font_variant(size=300), fill=accent)
+        
+        # Wrapped Text
+        lines = textwrap.wrap(text, width=14)
+        y = 400
+        for line in lines:
+            draw.text((60, y), line.upper(), font=self.fonts['big_quote'], fill="white")
+            y += 100
+            
+        # Attribution
+        draw.rectangle([(60, y+50), (160, y+60)], fill=accent) # Decorative line
+        draw.text((60, y+80), film_title, font=self.fonts['h2'], fill="gray")
+        
+        return img
+
+    def draw_timeline(self, films, accent):
         img = Image.new("RGB", (self.W, self.H), "#F8F7F2")
         draw = ImageDraw.Draw(img)
         
-        # Header
-        draw.text((50, 50), "SCHEDULE", font=self.fonts['bold'], fill="black")
-        draw.text((50, 180), cinema_name, font=self.fonts['medium'], fill="black")
-
-        # Time Params (10:00 to 24:00)
-        start_hour = 9
-        end_hour = 24
-        total_pixels = 900 # Height for chart
-        px_per_hour = total_pixels / (end_hour - start_hour)
-        chart_top = 300
+        draw.text((50, 60), "TODAY'S SCHEDULE", font=self.fonts['h2'], fill="black")
         
-        # Draw Axis
-        draw.line([(150, chart_top), (150, chart_top + total_pixels)], fill="black", width=2)
-        
-        for film in films:
-            try:
-                # Parse Time "14:30"
-                t_str = film['showtime']
-                h, m = map(int, t_str.split(':'))
-                minutes_from_start = (h - start_hour) * 60 + m
-                duration = int(film.get('runtime_min', 90) or 90)
-                
-                y_start = chart_top + (minutes_from_start / 60 * px_per_hour)
-                height = (duration / 60 * px_per_hour)
-                
-                # Draw Block
-                draw.rectangle([(180, y_start), (self.W - 50, y_start + height)], fill=accent)
-                
-                # Label
-                title = film.get('clean_title_jp', film['movie_title'])
-                draw.text((200, y_start + 10), f"{t_str} {title}", font=self.fonts['small'], fill="black")
-            except:
-                continue
-                
-        return img
-
-    def render_editorial(self, quote: str, film_title: str) -> Image.Image:
-        """Text heavy slide."""
-        img = Image.new("RGB", (self.W, self.H), "#111111")
-        draw = ImageDraw.Draw(img)
-        
-        # Wrap text
-        font = self.fonts['bold'].font_variant(size=80)
-        lines = textwrap.wrap(quote, width=15)
-        
-        y = 300
-        for line in lines:
-            draw.text((50, y), line, font=font, fill="white")
-            y += 100
+        # Simple Gantt-chart style blocks
+        y = 250
+        for f in films[:7]: # Limit to fit
+            t_str = f['showtime']
+            title = f.get('clean_title_jp', f['movie_title'])
             
-        draw.text((50, self.H - 200), film_title, font=self.fonts['medium'], fill="gray")
+            # Time Box
+            draw.rectangle([(50, y), (230, y+80)], fill="black")
+            draw.text((75, y+20), t_str, font=self.fonts['body'], fill=accent)
+            
+            # Title Line
+            draw.text((260, y+20), title, font=self.fonts['body'], fill="black")
+            
+            # Divider
+            draw.line([(260, y+90), (900, y+90)], fill="#ddd", width=2)
+            y += 130
+            
         return img
 
-# --- MAIN EXECUTION FLOW ---
+# --- MAIN WORKFLOW ---
 
 def main():
-    print("🎬 Starting Creative Director Engine (V3)...")
+    print("🎬 Starting CinemaScraper Creative Engine v3.1")
     
     # 1. Load Data
     if not SHOWTIMES_PATH.exists():
         print("❌ No showtimes.json found.")
         return
-        
-    with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
-        all_showtimes = json.load(f)
 
-    # Filter for Today
-    today_str = datetime.now(JST).strftime("%Y-%m-%d")
-    todays_films = [f for f in all_showtimes if f.get('date_text') == today_str]
+    with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
+        data = json.load(f)
     
-    if not todays_films:
-        print(f"⚠️ No films found for {today_str}. Exiting.")
+    # Filter Today
+    today_str = datetime.now(JST).strftime("%Y-%m-%d")
+    todays_data = [x for x in data if x.get('date_text') == today_str]
+    
+    if not todays_data:
+        print(f"❌ No showtimes found for today ({today_str}).")
         return
 
-    # Select Random Cinema for Demo
-    unique_cinemas = list(set(f['cinema_name'] for f in todays_films))
-    target_cinema = random.choice(unique_cinemas)
-    cinema_films = [f for f in todays_films if f['cinema_name'] == target_cinema]
+    # 2. Select Cinema (Round Robin)
+    target_cinema = select_target_cinema(todays_data)
+    if not target_cinema:
+        print("❌ Could not select a target cinema.")
+        return
+
+    cinema_films = [x for x in todays_data if x['cinema_name'] == target_cinema]
+    print(f"📍 Target Locked: {target_cinema} ({len(cinema_films)} films)")
+
+    # 3. AI Creative Direction
+    director = CreativeDirector(GEMINI_API_KEY)
+    plan = director.create_editorial_plan(target_cinema, cinema_films)
     
-    print(f"📍 Selected Cinema: {target_cinema} ({len(cinema_films)} films)")
-
-    # 2. Initialize Agents
-    director = CreativeDirector(api_key=GEMINI_API_KEY)
-    compositor = Compositor(fonts_dir=FONTS_DIR)
-
-    # 3. Get the "Shot List" (Plan)
-    plan = director.analyze_lineup_and_direct(target_cinema, cinema_films)
-    print(f"\n📜 Director's Plan: {plan.get('theme_title')}")
-    print(json.dumps(plan, indent=2, ensure_ascii=False))
-
-    # 4. Execution Loop
-    accent_color = plan.get('accent_color_hex', "#FDB813")
-    slides_created = 0
+    print(f"\n🎨 Plan: {plan.get('editorial_title')}")
+    print(f"🎨 Vibe: {plan.get('visual_vibe')}")
     
-    caption_text = f"🎞️ {plan.get('theme_title')}\n🎨 Vibe: {plan.get('visual_style')}\n\n"
-
-    for i, slide_req in enumerate(plan.get('slides', [])):
-        print(f"\n🎨 Rendering Slide {i+1}: {slide_req['type']}")
+    # 4. Production (Rendering)
+    compositor = Compositor()
+    accent = plan.get('accent_color', '#FDB813')
+    
+    slide_count = 0
+    caption_text = f"🎞️ {plan.get('editorial_title')}\n📍 {target_cinema}\n\n"
+    
+    for i, slide in enumerate(plan.get('slides', [])):
+        print(f"   🔨 Rendering Slide {i+1}: {slide['type']}")
+        img = None
         
         try:
-            slide_img = None
-            
             # --- HERO PORTAL ---
-            if slide_req['type'] == 'HERO_PORTAL':
-                cinema_pic = get_cinema_photo(target_cinema)
-                # Find film image
-                film_title = slide_req.get('focus_film')
-                film_data = next((f for f in cinema_films if f['movie_title'] == film_title), cinema_films[0])
+            if slide['type'] == 'HERO_PORTAL':
+                cinema_img = get_cinema_bg(target_cinema)
+                # Find film
+                fname = slide.get('film_focus')
+                fdata = next((x for x in cinema_films if x['movie_title'] == fname), cinema_films[0])
                 
-                poster_url = f"https://image.tmdb.org/t/p/w780{film_data['tmdb_poster_path']}" if film_data.get('tmdb_poster_path') else None
-                film_pic = download_asset(poster_url)
+                poster_url = None
+                if fdata.get('tmdb_poster_path'):
+                     poster_url = f"https://image.tmdb.org/t/p/w780{fdata['tmdb_poster_path']}"
                 
-                slide_img = compositor.render_hero_portal(cinema_pic, film_pic, plan.get('theme_title'), accent_color)
+                poster = download_asset(poster_url)
+                img = compositor.draw_hero(cinema_img, poster, plan.get('editorial_title'), accent)
                 
             # --- POPOUT SPOTLIGHT ---
-            elif slide_req['type'] == 'POPOUT_SPOTLIGHT':
-                film_title = slide_req.get('film')
-                film_data = next((f for f in cinema_films if f['movie_title'] == film_title), None)
-                if film_data and film_data.get('tmdb_poster_path'):
-                    slide_img = compositor.render_popout_spotlight(film_data, accent_color)
-                else:
-                    print("   ⚠️ Missing image for Popout. Skipping.")
-            
-            # --- TIMELINE ---
-            elif slide_req['type'] == 'TIMELINE_STRIP':
-                slide_img = compositor.render_timeline(cinema_films, target_cinema, accent_color)
+            elif slide['type'] == 'POPOUT_SPOTLIGHT':
+                fname = slide.get('film_focus') or slide.get('film')
+                fdata = next((x for x in cinema_films if x['movie_title'] == fname), None)
                 
-            # --- EDITORIAL QUOTE ---
-            elif slide_req['type'] == 'EDITORIAL_QUOTE':
-                film_title = slide_req.get('film')
-                # Use Gemini to find quote if not provided
-                quote = director.fetch_quote(film_title)
-                slide_img = compositor.render_editorial(quote, film_title)
+                if fdata and fdata.get('tmdb_poster_path'):
+                    img = compositor.draw_popout(fdata, accent)
+                    caption_text += f"► {fname}\n"
+                else:
+                    print("     ⚠️ Missing poster for popout. Switching to Quote.")
+                    # Fallback to Quote if logic fails
+                    slide['type'] = 'TYPOGRAPHIC_QUOTE' 
+                    # ...continue to next elif block effectively (in real recursion, but here we just flow down if we restructured, 
+                    # for now let's just create the quote manually here to save the slide)
+                    text = director.get_film_quote(fname)
+                    img = compositor.draw_quote(text, fname, accent)
+                
+            # --- TIMELINE ---
+            elif slide['type'] == 'TIMELINE_STRIP':
+                img = compositor.draw_timeline(cinema_films, accent)
+                
+            # --- TYPOGRAPHIC QUOTE (Fallback or Choice) ---
+            elif slide['type'] == 'TYPOGRAPHIC_QUOTE':
+                fname = slide.get('film_focus')
+                text = director.get_film_quote(fname)
+                img = compositor.draw_quote(text, fname, accent)
 
             # SAVE
-            if slide_img:
+            if img:
                 filename = f"post_v3_{i:02}.png"
-                slide_img.save(OUTPUT_DIR / filename)
+                img.save(OUTPUT_DIR / filename)
                 
-                # Story Version (Simple padding for now)
+                # Story Version (Simple Center)
                 story_bg = Image.new("RGB", (1080, 1920), "#111")
-                story_bg.paste(slide_img, (0, (1920-1350)//2))
+                story_bg.paste(img, (0, (1920-1350)//2))
                 story_bg.save(OUTPUT_DIR / f"story_v3_{i:02}.png")
                 
-                slides_created += 1
-
+                slide_count += 1
+                
         except Exception as e:
-            print(f"   ❌ Error rendering slide: {e}")
-            import traceback
-            traceback.print_exc()
+            print(f"   ❌ Slide Failed: {e}")
 
-    # Save Caption
-    with open(OUTPUT_DIR / "post_v3_caption.txt", "w", encoding="utf-8") as f:
-        f.write(caption_text + f"\n📍 {target_cinema}\n#TokyoCinema #JapanFilm")
+    # 5. Write Caption
+    with open(OUTPUT_DIR / "post_v3_caption.txt", "w", encoding='utf-8') as f:
+        f.write(caption_text + "\n#TokyoCinema #FilmLife")
 
-    print(f"\n✅ Production Wrap. Generated {slides_created} slides.")
-
-# --- PATH SETUP & EXECUTE ---
-SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
+    print(f"\n✅ Done. {slide_count} slides generated.")
 
 if __name__ == "__main__":
     main()
