@@ -14,6 +14,7 @@ import random
 import requests
 import textwrap
 import time
+import re
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -99,6 +100,15 @@ class CreativeDirector:
         self.client = genai.Client(api_key=api_key)
         self.model = "gemini-2.5-flash" 
 
+    def _clean_json_text(self, text: str) -> str:
+        """Removes Markdown code blocks to extract pure JSON."""
+        # Remove ```json ... ``` or just ``` ... ```
+        pattern = r"```(?:json)?\s*(.*?)\s*```"
+        match = re.search(pattern, text, re.DOTALL)
+        if match:
+            return match.group(1)
+        return text.strip()
+
     def create_editorial_plan(self, cinema_name: str, films: List[Dict]) -> Dict:
         """
         Analyzes the cinema's lineup and generates a bespoke slide plan.
@@ -138,7 +148,9 @@ class CreativeDirector:
         - "TYPOGRAPHIC_QUOTE": Big text, review, or tagline. No image needed. 
         - "TIMELINE_STRIP": Visual schedule. Good for the last slide.
 
-        OUTPUT JSON ONLY:
+        OUTPUT:
+        Provide ONLY valid JSON. No conversational text.
+        Structure:
         {{
             "editorial_title": "Catchy Headline (e.g. 'MIDNIGHT IN SHINJUKU')",
             "visual_vibe": "Description of colors/fonts",
@@ -154,18 +166,25 @@ class CreativeDirector:
         grounding = types.Tool(google_search=types.GoogleSearch())
         
         try:
+            # FIX: Removed response_mime_type="application/json" to allow Tool Use
             resp = self.client.models.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     tools=[grounding],
-                    response_mime_type="application/json",
                     temperature=0.5
                 )
             )
-            return json.loads(resp.text)
+            
+            # Manual JSON Cleanup
+            clean_text = self._clean_json_text(resp.text)
+            return json.loads(clean_text)
+
         except Exception as e:
             print(f"❌ Director Error: {e}")
+            import traceback
+            traceback.print_exc()
+            
             return {
                 "editorial_title": f"Today at {cinema_name}",
                 "accent_color": "#FFFF00",
@@ -369,7 +388,7 @@ class Compositor:
 # --- MAIN WORKFLOW ---
 
 def main():
-    print("🎬 Starting CinemaScraper Creative Engine v3.1")
+    print("🎬 Starting CinemaScraper Creative Engine v3.2")
     
     # 1. Load Data
     if not SHOWTIMES_PATH.exists():
@@ -439,10 +458,8 @@ def main():
                     caption_text += f"► {fname}\n"
                 else:
                     print("     ⚠️ Missing poster for popout. Switching to Quote.")
-                    # Fallback to Quote if logic fails
+                    # Fallback to Quote
                     slide['type'] = 'TYPOGRAPHIC_QUOTE' 
-                    # ...continue to next elif block effectively (in real recursion, but here we just flow down if we restructured, 
-                    # for now let's just create the quote manually here to save the slide)
                     text = director.get_film_quote(fname)
                     img = compositor.draw_quote(text, fname, accent)
                 
@@ -470,6 +487,8 @@ def main():
                 
         except Exception as e:
             print(f"   ❌ Slide Failed: {e}")
+            import traceback
+            traceback.print_exc()
 
     # 5. Write Caption
     with open(OUTPUT_DIR / "post_v3_caption.txt", "w", encoding='utf-8') as f:
