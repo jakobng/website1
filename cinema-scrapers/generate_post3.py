@@ -1,9 +1,9 @@
 """
-Generate Post 3: Cinema Mashup (V3).
+Generate Post 3: Cinema Mashup (V3) - Local Assets Edition.
 - Concept: "Surreal Street Photography"
-- Visuals: Cinema Facade populated by characters from the films screening there.
+- Visuals: Cinema Facade (Local Asset) + Movie Characters (Mashup).
 - Layout: Cover (Mashup) + Grid Slides (4 films per page).
-- Tech: Gemini Search (Cinema Img) + Replicate (RemBG) + Pillow (Compositing).
+- Tech: Local File Lookup + Replicate (RemBG) + Pillow (Compositing).
 """
 import json
 import os
@@ -11,7 +11,8 @@ import random
 import requests
 import textwrap
 import math
-import re  # Added re import locally
+import re
+import difflib
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from collections import defaultdict
@@ -19,7 +20,6 @@ from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance, ImageOps
 
 # --- Reuse Core Logic from V2 ---
-# We still import visual utilities that are safe/stateless
 from generate_post2 import (
     get_fonts, get_faithful_colors, create_textured_bg, apply_film_grain,
     draw_centered_text, download_image, remove_background, create_sticker_style,
@@ -44,7 +44,39 @@ try:
 except ImportError:
     GEMINI_AVAILABLE = False
 
-# --- Local Helpers (Decoupled from V2) ---
+# --- Cinema Names Mapping (For File Lookup) ---
+CINEMA_ENGLISH_NAMES = {
+    "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
+    "K's Cinema (ケイズシネマ)": "K's Cinema",
+    "シネマート新宿": "Cinemart Shinjuku",
+    "新宿シネマカリテ": "Shinjuku Cinema Qualite",
+    "新宿武蔵野館": "Shinjuku Musashino-kan",
+    "テアトル新宿": "Theatre Shinjuku",
+    "早稲田松竹": "Waseda Shochiku",
+    "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
+    "シアター・イメージフォーラム": "Theatre Image Forum",
+    "ユーロスペース": "Eurospace",
+    "ヒューマントラストシネマ渋谷": "Human Trust Cinema Shibuya",
+    "Stranger (ストレンジャー)": "Stranger",
+    "新文芸坐": "Shin-Bungeiza",
+    "目黒シネマ": "Meguro Cinema",
+    "ポレポレ東中野": "Pole Pole Higashi-Nakano",
+    "K2 Cinema": "K2 Cinema",
+    "ヒューマントラストシネマ有楽町": "Human Trust Cinema Yurakucho",
+    "ラピュタ阿佐ヶ谷": "Laputa Asagaya",
+    "下高井戸シネマ": "Shimotakaido Cinema",
+    "国立映画アーカイブ": "National Film Archive of Japan",
+    "池袋シネマ・ロサ": "Ikebukuro Cinema Rosa",
+    "シネスイッチ銀座": "Cine Switch Ginza",
+    "シネマブルースタジオ": "Cinema Blue Studio",
+    "CINEMA Chupki TABATA": "Cinema Chupki Tabata",
+    "シネクイント": "Cine Quinto Shibuya",
+    "アップリンク吉祥寺": "Uplink Kichijoji",
+    "Morc阿佐ヶ谷": "Morc Asagaya",
+    "Tollywood": "Tollywood"
+}
+
+# --- Helpers ---
 
 def load_json(path):
     if not path.exists(): return {}
@@ -65,49 +97,57 @@ def clean_display_title(title: str) -> str:
         title = title.replace(word, "")
     return title.strip()
 
+def normalize_name(s):
+    s = str(s).lower()
+    return re.sub(r'[^a-z0-9]', '', s)
+
 def get_cinema_photo(cinema_name):
     """
-    Finds a photo of the cinema. Checks local cache first, then Gemini Search.
+    STRICTLY LOCAL LOOKUP.
+    Tries to find a matching image in 'cinema_assets' using fuzzy matching.
     """
-    safe_name = "".join(x for x in cinema_name if x.isalnum())
-    local_path = CINEMA_ASSETS_DIR / f"{safe_name}.jpg"
-    
-    # 1. Local Check
-    if local_path.exists():
-        print(f"📂 Found local image for {cinema_name}")
-        return Image.open(local_path).convert("RGB")
-    
-    # 2. Gemini Search
-    print(f"🌐 Searching web for photo of: {cinema_name}...")
-    if not GEMINI_AVAILABLE: return None
+    if not CINEMA_ASSETS_DIR.exists():
+        print(f"⚠️ Assets directory missing: {CINEMA_ASSETS_DIR}")
+        return None
 
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    tool = types.Tool(google_search=types.GoogleSearch())
+    # 1. Define Search Targets
+    targets = [normalize_name(cinema_name)]
     
-    prompt = f"""
-    Find a high-quality, aesthetic photo of the exterior (facade) or interior of the movie theater "{cinema_name}" in Tokyo.
-    Prioritize images that show the building clearly.
-    Return ONLY a valid JSON object: {{ "image_url": "..." }}
-    """
+    # Add English name if available
+    english_name = CINEMA_ENGLISH_NAMES.get(cinema_name)
+    if english_name:
+        targets.append(normalize_name(english_name))
+
+    print(f"📂 Looking for asset matching: {targets}")
+
+    # 2. Scan Directory
+    candidates = list(CINEMA_ASSETS_DIR.glob("*"))
+    best_match = None
+    highest_ratio = 0.0
     
-    try:
-        resp = client.models.generate_content(
-            model='gemini-2.5-flash', contents=prompt,
-            config=types.GenerateContentConfig(tools=[tool], response_mime_type="application/json")
-        )
-        url = json.loads(resp.text).get("image_url")
+    for f in candidates:
+        if f.suffix.lower() not in ['.jpg', '.jpeg', '.png', '.webp']: continue
+        f_name = normalize_name(f.stem)
         
-        if url:
-            print(f"⬇️  Downloading: {url}")
-            headers = {'User-Agent': 'Mozilla/5.0'} 
-            img_resp = requests.get(url, headers=headers, timeout=10)
-            if img_resp.status_code == 200:
-                img = Image.open(BytesIO(img_resp.content)).convert("RGB")
-                img.save(local_path)
-                return img
-    except Exception as e:
-        print(f"⚠️ Image Search Failed: {e}")
-    
+        # Exact substring match (high priority)
+        for t in targets:
+            if t in f_name or f_name in t:
+                print(f"   ✅ Found match: {f.name}")
+                return Image.open(f).convert("RGB")
+        
+        # Fuzzy match (fallback)
+        for t in targets:
+            ratio = difflib.SequenceMatcher(None, t, f_name).ratio()
+            if ratio > highest_ratio:
+                highest_ratio = ratio
+                best_match = f
+
+    # 3. Return Best Fuzzy Match if confident enough
+    if highest_ratio > 0.4:
+        print(f"   ✅ Fuzzy match ({highest_ratio:.2f}): {best_match.name}")
+        return Image.open(best_match).convert("RGB")
+
+    print(f"❌ No local asset found for {cinema_name}")
     return None
 
 def analyze_lineup_vibe(cinema_name, films):
@@ -116,6 +156,9 @@ def analyze_lineup_vibe(cinema_name, films):
     titles = [f['title'] for f in films]
     titles_text = ", ".join(titles[:15])
     
+    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
+        return f"Weekly Spotlight: {cinema_name}\nChecking out the lineup for this week!"
+
     client = genai.Client(api_key=GEMINI_API_KEY)
     prompt = f"""
     You are a Tokyo film critic.
@@ -135,17 +178,14 @@ def analyze_lineup_vibe(cinema_name, films):
 # --- MASHUP GENERATION ---
 
 def create_mashup_cover(cinema_img, film_imgs, fonts, cinema_name, is_story=False):
-    """
-    Composes Film Characters INTO the Cinema Scene.
-    """
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
     
-    # 1. Prepare Background (Cinema)
+    # 1. Background
     bg = ImageOps.fit(cinema_img, (width, height), method=Image.Resampling.LANCZOS)
-    bg = ImageEnhance.Brightness(bg).enhance(0.8)
+    bg = ImageEnhance.Brightness(bg).enhance(0.7) # Darker for contrast
     
-    # 2. Process Stickers (Film Characters)
+    # 2. Stickers
     stickers = []
     print(f"✂️  Processing {len(film_imgs)} film cutouts...")
     for img in film_imgs:
@@ -154,13 +194,14 @@ def create_mashup_cover(cinema_img, film_imgs, fonts, cinema_name, is_story=Fals
             sticker = create_sticker_style(cutout)
             stickers.append(sticker)
             
-    # 3. Place Stickers
     random.shuffle(stickers)
+    
+    # Placement Zones (Bottom half focus)
     zones = [
         (int(width * 0.2), int(height * 0.7)),
         (int(width * 0.8), int(height * 0.7)),
-        (int(width * 0.8), int(height * 0.4)),
-        (int(width * 0.2), int(height * 0.4)),
+        (int(width * 0.8), int(height * 0.45)),
+        (int(width * 0.2), int(height * 0.45)),
     ]
     
     for i, sticker in enumerate(stickers[:4]): 
@@ -175,17 +216,19 @@ def create_mashup_cover(cinema_img, film_imgs, fonts, cinema_name, is_story=Fals
         else:
             zx, zy = width//2, height//2
             
-        x = zx + random.randint(-100, 100) - (new_w // 2)
-        y = zy + random.randint(-50, 50) - (new_h // 2)
+        x = zx + random.randint(-80, 80) - (new_w // 2)
+        y = zy + random.randint(-40, 40) - (new_h // 2)
+        
+        # Clamp
         x = max(-50, min(x, width - 50))
         y = max(50, min(y, height - 50))
         
         bg.paste(s_resized, (x, y), s_resized)
 
-    # 4. Unify
+    # 3. Unify
     bg = apply_film_grain(bg)
     
-    # 5. Overlay Text
+    # 4. Text Overlay
     draw = ImageDraw.Draw(bg)
     draw_centered_text(draw, 120, "THIS WEEK AT", fonts['meta'], (255,255,255), width)
     
@@ -200,9 +243,6 @@ def create_mashup_cover(cinema_img, film_imgs, fonts, cinema_name, is_story=Fals
 # --- GRID SLIDE GENERATION ---
 
 def draw_grid_slide(films_batch, fonts, is_story=False):
-    """
-    Draws a 2x2 grid of films.
-    """
     width = CANVAS_WIDTH
     height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
     
@@ -236,8 +276,6 @@ def draw_grid_slide(films_batch, fonts, is_story=False):
         p_img = download_image(film['poster_path'])
         
         if p_img:
-            p_ratio = p_img.width / p_img.height
-            target_ratio = cell_w / poster_h
             p_resized = ImageOps.fit(p_img, (cell_w, poster_h), method=Image.Resampling.LANCZOS)
             bg.paste(p_resized, (x, y))
         else:
@@ -258,26 +296,34 @@ def draw_grid_slide(films_batch, fonts, is_story=False):
 # --- MAIN ---
 
 def main():
-    print("--- Starting V3 (Cinema Mashup) ---")
+    print("--- Starting V3 (Cinema Mashup - Local Assets) ---")
     
-    # 1. Load Data
     raw_data = load_json(SHOWTIMES_PATH)
     history = load_json(CINEMA_HISTORY_PATH)
     
-    # 2. Pick Cinema (Round Robin)
+    if not raw_data:
+        print("❌ showtimes.json is empty or missing.")
+        return
+
+    # 1. Filter Cinemas Active This Week
     today = get_today_jst().date()
     target_dates = [(today + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(5)]
     
     active_cinemas = defaultdict(list)
     for item in raw_data:
         if item.get('date_text') in target_dates:
-            if item.get('tmdb_poster_path'):
-                active_cinemas[item['cinema_name']].append({
-                    "title": item['movie_title'],
-                    "poster_path": item['tmdb_poster_path'],
-                    "date": item['date_text'],
-                    "time": item['showtime']
-                })
+            # We require a poster for at least some films to make the mashup work
+            poster = item.get('tmdb_poster_path')
+            active_cinemas[item['cinema_name']].append({
+                "title": item['movie_title'],
+                "poster_path": poster,
+                "date": item['date_text'],
+                "time": item['showtime']
+            })
+
+    if not active_cinemas:
+        print("⚠️ No active cinemas found.")
+        return
 
     candidates = [c for c in active_cinemas.keys() if c not in history.values()]
     if not candidates:
@@ -288,28 +334,35 @@ def main():
     target_cinema = random.choice(candidates)
     print(f"🎯 Selected Cinema: {target_cinema}")
     
+    # 2. Get Cinema Image (Local with Fallback)
+    cinema_img = get_cinema_photo(target_cinema)
+    
+    # --- PLACEHOLDER FALLBACK ---
+    if not cinema_img:
+        print(f"⚠️ Missing asset for {target_cinema}. Generating placeholder.")
+        cinema_img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), (40, 40, 50))
+        draw = ImageDraw.Draw(cinema_img)
+        draw.text((100, 500), f"MISSING ASSET:\n{target_cinema}", fill=(255, 100, 100))
+    # ----------------------------
+
     history[str(datetime.now().timestamp())] = target_cinema
     save_json(CINEMA_HISTORY_PATH, history)
-    
-    # 3. Get Assets
-    cinema_img = get_cinema_photo(target_cinema)
-    if not cinema_img:
-        print("❌ Could not find cinema image. Aborting.")
-        return
 
+    # 3. Get Film Assets
     unique_films_map = {f['title']: f for f in active_cinemas[target_cinema]}
     unique_films = list(unique_films_map.values())
     random.shuffle(unique_films)
     
     sticker_sources = []
-    print("📥 Downloading poster assets for mashup...")
+    print("📥 Downloading poster assets...")
     for f in unique_films[:4]:
-        img = download_image(f['poster_path'])
-        if img: sticker_sources.append(img)
-        
+        if f['poster_path']:
+            img = download_image(f['poster_path'])
+            if img: sticker_sources.append(img)
+            
     fonts = get_fonts()
     
-    # 4. Generate Cover
+    # 4. Generate Images
     print("🎨 Generating Mashup Cover...")
     cover = create_mashup_cover(cinema_img, sticker_sources, fonts, target_cinema, is_story=False)
     cover.save(OUTPUT_DIR / "post_v3_00.png")
@@ -317,12 +370,14 @@ def main():
     cover_story = create_mashup_cover(cinema_img, sticker_sources, fonts, target_cinema, is_story=True)
     cover_story.save(OUTPUT_DIR / "story_v3_00.png")
     
-    # 5. Generate Grid Slides
     print("🎞️  Generating Schedule Slides...")
     chunk_size = 4
     film_list = sorted(unique_films, key=lambda x: x['time'])
     chunks = [film_list[i:i + chunk_size] for i in range(0, len(film_list), chunk_size)]
     
+    if not chunks:
+        print("⚠️ No films found for grid. Skipping slides.")
+
     for i, batch in enumerate(chunks):
         if i >= 3: break 
         slide = draw_grid_slide(batch, fonts, is_story=False)
@@ -331,8 +386,12 @@ def main():
         slide_story = ImageOps.pad(slide, (CANVAS_WIDTH, STORY_CANVAS_HEIGHT), color=(20,20,20))
         slide_story.save(OUTPUT_DIR / f"story_v3_{i+1:02}.png")
 
-    # 6. Generate Caption
-    vibe_text = analyze_lineup_vibe(target_cinema, film_list)
+    # 5. Generate Caption
+    try:
+        vibe_text = analyze_lineup_vibe(target_cinema, film_list)
+    except Exception as e:
+        vibe_text = f"Weekly Spotlight: {target_cinema}"
+
     schedule_text = f"{vibe_text}\n\n📍 {target_cinema} Schedule Highlights:\n"
     for f in film_list[:10]:
         schedule_text += f"• {f['time']} {f['title']}\n"
