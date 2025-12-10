@@ -43,7 +43,7 @@ jobs:
         run: sudo timedatectl set-timezone Asia/Tokyo
 
       - name: Install Dependencies
-        # FIXED: Added 'playwright' and 'playwright install chromium'
+        # Includes all necessary libraries + Playwright + Webdriver Manager
         run: |
           pip install requests beautifulsoup4 selenium pandas pillow pyyaml replicate pytz webdriver-manager playwright
           playwright install chromium
@@ -124,8 +124,13 @@ jobs:
           # Add JSON data and new Images
           git add data/*.json ig_posts/*.png ig_posts/*.txt
           
-          # Commit
+          # Commit locally
           git commit -m "Auto-Update: ${{ steps.mode.outputs.post_type }} content" || echo "No changes to commit"
+          
+          # FIX: Rebase to handle race conditions (if repo updated while running)
+          git pull --rebase origin main
+          
+          # Push
           git push
 
       # --- STEP 4: UPLOAD TO INSTAGRAM ---
