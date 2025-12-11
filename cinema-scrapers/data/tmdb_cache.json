@@ -14367,5 +14367,148 @@
       "ドキュメンタリー"
     ],
     "vote_average": 6.7
-  }
+  },
+  "PERFECT BLUE": {
+    "tmdb_id": 10494,
+    "tmdb_title_jp": "PERFECT BLUE",
+    "tmdb_title_en": "PERFECT BLUE",
+    "overview": "アイドルグループのチャムに所属する霧越未麻は突如グループ脱退を宣言し、女優への転身を計る。ドラマ出演でレイプシーンを演じ、さらにはヘアヌードのオファーが来るなど、アイドル時代からは考えられなかったような仕事をこなしてゆく未麻。しかし、未麻は現状への不満を募らせ、アイドル時代の自分の幻影さえ見るようになる。そんな疑問を抱く中、未麻はストーカーに監視されていることに気づく。また、未麻の周辺で関係者が次々と殺される事件が発生する。",
+    "poster_path": "/79vujbsWEbX4dzffBV541QXN6sf.jpg",
+    "backdrop_path": "/1YRtgjLb5xxUb2rsNRnr54Oc0B2.jpg",
+    "release_date": "1998-02-28",
+    "director": "今敏",
+    "runtime": 82,
+    "genres": [
+      "アニメーション",
+      "スリラー"
+    ],
+    "vote_average": 8.298
+  },
+  "鯨が消えた入り江": {
+    "tmdb_id": 1214266,
+    "tmdb_title_jp": "我在這裡等你",
+    "tmdb_title_en": "我在這裡等你",
+    "overview": "",
+    "poster_path": "/j1x9RdHVaD4NYbev77SgilKuWrw.jpg",
+    "backdrop_path": "/70ueoLF3JzRqfy2IcTheaisNWQ9.jpg",
+    "release_date": "2024-05-10",
+    "director": "Teng I-Han",
+    "runtime": 100,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.176
+  },
+  "ラブ・イン・ザ・ビッグシティ【再上映】": {
+    "tmdb_id": 1154154,
+    "tmdb_title_jp": "ラブ・イン・ザ・ビッグシティ",
+    "tmdb_title_en": "대도시의 사랑법",
+    "overview": "周囲から非難されることも多いが、気高く自由奔放でエネルギッシュなジェヒと、ゲイであることを隠して生きる、繊細で寡黙なフンス。ある時、クラスメイトによってフンスの秘密が暴かれそうになったとき、手を差し伸べたのがジェヒだった。全く正反対の2人は、互いの違いを認め合い、ルームシェアをしながらかけがえのない学生生活を送っていく。世間のルールに縛られず、恋愛や夜遊びなども全力で楽しみながら生きるジェヒに刺激され、閉じこもっていたフンスも徐々に外の世界へと踏み出していく。そんな2人の関係は、大学を卒業してそれぞれの道に進んでも、変わらないはずだった。しかし、社会に出た2人に大きな転機が訪れ、思いがけないかたちで友情が試されることになる。",
+    "poster_path": "/xFG8nd1Hv5HDEr1pJLQHPcUmg8f.jpg",
+    "backdrop_path": "/rFLxECXOOvC4BmxdCdf4WCq4AyZ.jpg",
+    "release_date": "2024-10-01",
+    "director": "이언희",
+    "runtime": 118,
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "vote_average": 7.881
+  },
+  "ミシェル・ルグラン 世界を変えた音楽家": {
+    "tmdb_id": 1280476,
+    "tmdb_title_jp": "ミシェル・ルグラン 世界を変えた映画音楽家",
+    "tmdb_title_en": "Il était une fois Michel Legrand",
+    "overview": "フランスが生んだ偉大なジャズミュージシャンにして唯一無二の作曲家、ミシェル・ルグラン。2019年1月26日に他界するまでの75年の音楽人生のなかで、「シェルブールの雨傘」「ロシュフォールの恋人たち」といったジャック・ドゥミ監督とのコンビで名作を生み、「華麗なる賭け」などハリウッドでも活躍した。本作ではルグランの軌跡をたどるとともに、彼にとって人生最後の公演となった18年12月のフィルハーモニー・ド・パリでのコンサートの舞台裏に密着。晩年の姿を映し出すほか、スティングやクロード・ルルーシュら45名以上の音楽家や映画監督、ルグランの家族へのインタビューを交え、自他ともに一切の妥協を許さない厳格な姿勢、栄光の裏に隠された挫折と苦悩など、ルグランの知られざる素顔を余すことなく描き出す。",
+    "poster_path": "/ccVja8Jo6KkAxoUo1hLsCFa2pMJ.jpg",
+    "backdrop_path": "/5tsdin7ddHvYYXtrzicAzcWl5GJ.jpg",
+    "release_date": "2024-12-04",
+    "director": "David Hertzog Dessites",
+    "runtime": 120,
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "vote_average": 6.5
+  },
+  "ミミの誘惑": null,
+  "【カンヌ監督週間】国宝": {
+    "tmdb_id": 1379266,
+    "tmdb_title_jp": "国宝",
+    "tmdb_title_en": "国宝",
+    "overview": "後に国の宝となる男は、任侠の一門に生まれた。抗争で父を亡くした喜久雄（吉沢亮）は、上方歌舞伎の名門の当主・花井半二郎（渡辺謙）に引き取られ、歌舞伎の世界へ飛び込む。そこで、半二郎の実の息子として、生まれながらに将来を約束された御曹司・俊介（横浜流星）と出会う。正反対の血筋を受け継ぎ、生い立ちも才能も異なる2人は、ライバルとして互いに高め合い、芸に青春を捧げるが、多くの出会いと別れが運命の歯車を狂わせていく……。",
+    "poster_path": "/bPuH9nB995PE3P9j4sTanWsxfUW.jpg",
+    "backdrop_path": "/3C8yAIuXlH4BGCpTwEetIv0VBt8.jpg",
+    "release_date": "2025-06-06",
+    "director": "李相日",
+    "runtime": 174,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 8.6
+  },
+  "ヤクザと家族": {
+    "tmdb_id": 736146,
+    "tmdb_title_jp": "ヤクザと家族 The Family",
+    "tmdb_title_en": "ヤクザと家族 The Family",
+    "overview": "1999年、覚せい剤が原因で父親を亡くした山本賢治は、柴咲組組長の柴咲博の危機を救ったことからヤクザの世界に足を踏み入れる。2005年、ヤクザとして名を上げていく賢治は、自分と似た境遇で育った女性と出会い、家族を守るための決断をする。それから時は流れ、2019年、14年間の刑務所暮らしを終えた賢治だったが、柴咲組は暴力団対策法の影響で激変していた。",
+    "poster_path": "/oXOx1RgVLC5nY7veyaqPi8C3vmW.jpg",
+    "backdrop_path": "/56pQfNPTgGELk0LtvMbSo9AbO2q.jpg",
+    "release_date": "2021-01-29",
+    "director": "藤井道人",
+    "runtime": 136,
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 7.303
+  },
+  "ぼくら、20世紀の子供たち デジタルリマスター版": {
+    "tmdb_id": 461759,
+    "tmdb_title_jp": "ぼくら、20世紀の子供たち",
+    "tmdb_title_en": "Nous, les enfants du xxème siècle",
+    "overview": "カンヌ映画祭受賞を初めとして世界的に絶賛された「動くな、死ね、甦れ！」「ひとりで生きる」に続いて、ヴィターリー・カネフスキーが完成したドキュメンタリー。\r サント・ペテルブルクの荒廃した通りで生活する少年たちや、かつてカネフスキーの映画に出演した少年との監獄での再会などを映し出す。",
+    "poster_path": "/v0sMWsomfFxRFItEmdZZjRzJoAR.jpg",
+    "backdrop_path": null,
+    "release_date": "1994-06-14",
+    "director": "ヴィターリー・カネフスキー",
+    "runtime": 87,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.0
+  },
+  "同胞": {
+    "tmdb_id": 982202,
+    "tmdb_title_jp": "ステラ　ヒトラーにユダヤ人同胞を売った女",
+    "tmdb_title_en": "Stella. Ein Leben.",
+    "overview": "",
+    "poster_path": "/7i69GYHsKwTx1rZQrs3WLde2KSa.jpg",
+    "backdrop_path": "/Ar6XF42DU7rV4lAWD1ymN2jzXiF.jpg",
+    "release_date": "2024-01-17",
+    "director": "Kilian Riedhof",
+    "runtime": 121,
+    "genres": [
+      "ドラマ",
+      "戦争",
+      "履歴"
+    ],
+    "vote_average": 5.962
+  },
+  "笑えない世界でも": null,
+  "劇場版 米寿の伝言": null,
+  "いれずみ半太郎": {
+    "tmdb_id": 408835,
+    "tmdb_title_jp": "いれずみ半太郎",
+    "tmdb_title_en": "いれずみ半太郎",
+    "overview": "腕一本、サイコロ無宿の渡世人と宿場女郎のはかない恋を描いた股旅哀愁篇。長谷川伸原作『刺青奇偶』の映画化。博打打ちの半太郎は江戸へ向かう道中、身投げしようとしていた宿場女郎のお仲を救った。運命的な出合いと信じたお仲は半太郎との旅を始めるが、彼女を連れ戻そうとする嘉十一味が罠を張っていた。ようやくの思いで神奈川宿まで辿り着くも、お仲は病の床に倒れてしまう。半太郎はお仲のために、イカサマ博打で十両を手にするが…。",
+    "poster_path": "/uVZobP2ijf69FtbPmiAjPaLcP2R.jpg",
+    "backdrop_path": "/kJ8BVxr82Iecvx0EZscCca1KKfb.jpg",
+    "release_date": "1963-02-10",
+    "director": "マキノ雅弘",
+    "runtime": 91,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "MEMORIES　4Kデジタルリマスター版": null
 }
