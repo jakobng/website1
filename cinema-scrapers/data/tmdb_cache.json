@@ -14510,5 +14510,39 @@
     "genres": [],
     "vote_average": 0.0
   },
-  "MEMORIES　4Kデジタルリマスター版": null
+  "MEMORIES　4Kデジタルリマスター版": null,
+  "ジャパニーズスタイル Japanese Style": null,
+  "あなたならどうする？ 人生を決める 百万ドルのキス": null,
+  "ストリートダンサー": {
+    "tmdb_id": 644712,
+    "tmdb_title_jp": "Street Dancer 3D",
+    "tmdb_title_en": "Street Dancer 3D",
+    "overview": "",
+    "poster_path": "/mnsoKSS6EZNB7y2kEzXHdLm1U0E.jpg",
+    "backdrop_path": "/zmIcouKMZNpHvTev6TCZrDy7w9V.jpg",
+    "release_date": "2020-01-24",
+    "director": "Remo D'Souza",
+    "runtime": 146,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.8
+  },
+  "CONEXT THEATER": null,
+  "きつね": {
+    "tmdb_id": 1317452,
+    "tmdb_title_jp": "きつね",
+    "tmdb_title_en": "きつね",
+    "overview": "",
+    "poster_path": "/9PDelfY2ZffUxR5cFDDayK9ecEo.jpg",
+    "backdrop_path": null,
+    "release_date": "1983-06-04",
+    "director": "Shigeo Nakakura",
+    "runtime": 104,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "トワイライト・ウォリアーズ 決戦！九龍城砦（吹）": null
 }
