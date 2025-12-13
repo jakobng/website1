@@ -14544,5 +14544,101 @@
     ],
     "vote_average": 0.0
   },
-  "トワイライト・ウォリアーズ 決戦！九龍城砦（吹）": null
+  "トワイライト・ウォリアーズ 決戦！九龍城砦（吹）": null,
+  "少女はアンデスの星を見た": null,
+  "わたしの頭は〜": {
+    "tmdb_id": 1449997,
+    "tmdb_title_jp": "わたしの頭はいつもうるさい",
+    "tmdb_title_en": "わたしの頭はいつもうるさい",
+    "overview": "25歳のぞみは小説家を目指し上京したが泣かず飛ばず。\r そんな時に18歳のノゾミから問い詰められる。\r 「ちゃんとやったか？有言実行、東京でパァーっとひと花さかせたか？？」 18歳の自分と対峙していく中で25歳は向き合わなかった様々な事柄に気がついていく。  夢見たひとときをもつ全ての人に送るクォーターライフクライシスムービー。",
+    "poster_path": "/kBm14GOyPvfSoEfKPNgzZAB1eCj.jpg",
+    "backdrop_path": "/hgRfaoGx3OdHyLcfBXtXlVMTYXo.jpg",
+    "release_date": "2025-05-16",
+    "director": "Remi Miyamori",
+    "runtime": 80,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "君に幸あれよ": {
+    "tmdb_id": 1075373,
+    "tmdb_title_jp": "君に幸あれよ",
+    "tmdb_title_en": "君に幸あれよ",
+    "overview": "",
+    "poster_path": "/nXZPQG1SLhJe8APqmzHFhfvL8vg.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-02-04",
+    "director": "櫻井圭佑",
+    "runtime": 78,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "紅い眼鏡 4Kレストアヴァージョン【オリジナルモノラル版】": null,
+  "Winny": {
+    "tmdb_id": 1034220,
+    "tmdb_title_jp": "Winny",
+    "tmdb_title_en": "Winny",
+    "overview": "2002年、開発者・金子勇（東出昌大）は、簡単にファイルを共有できる革新的なソフト「Winny」を開発、試用版を「２ちゃんねる」に公開をする。彗星のごとく現れた「Winny」は、本人同士が直接データのやりとりができるシステムで、瞬く間にシェアを伸ばしていく。しかし、その裏で大量の映画やゲーム、音楽などが違法アップロードされ、ダウンロードする若者も続出、次第に社会問題へ発展していく。  次々に違法コピーした者たちが逮捕されていく中、開発者の金子も著作権法違反幇助の容疑をかけられ、2004年に逮捕されてしまう。サイバー犯罪に詳しい弁護士・壇俊光（三浦貴大）は、「開発者が逮捕されたら弁護します」と話していた矢先、開発者金子氏逮捕の報道を受けて、急遽弁護を引き受けることになり、弁護団を結成。金子と共に裁判で警察の逮捕の不当性を主張するも、第一審では有罪判決を下されてしまう…。しかし、運命の糸が交差し、世界をも揺るがす事件へと発展する——。  なぜ、一人の天才開発者が日本の国家組織に潰されてしまったのか。  本作は、開発者の未来と権利を守るために、権力やメディアと戦った男たちの真実を基にした物語である。",
+    "poster_path": "/AuUyrYiS5Ix3EZIvik4rGcDLxgo.jpg",
+    "backdrop_path": "/4vRDn06HflkrjzUsBPwkR2rJnjx.jpg",
+    "release_date": "2023-03-10",
+    "director": "松本優作",
+    "runtime": 127,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.4
+  },
+  "同棲時代－今日子と次郎－": {
+    "tmdb_id": 525764,
+    "tmdb_title_jp": "同棲時代－今日子と次郎－",
+    "tmdb_title_en": "同棲時代－今日子と次郎－",
+    "overview": "同級生だった21歳のOL・今日子とイラストレーター・次郎は街で偶然再会。一夜を過ごした2人は、そのまま次郎の部屋で一緒に暮らすことに。会社の社長のプロポーズを断り、次郎との同棲を選んだ今日子だったがある日、自分が妊娠していることがわかり...。",
+    "poster_path": "/lb0DftjOGDQeM2UqOoOMHUpc6iv.jpg",
+    "backdrop_path": null,
+    "release_date": "1973-04-14",
+    "director": "山根成之",
+    "runtime": 87,
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "導火線 FLASH POINT": {
+    "tmdb_id": 35854,
+    "tmdb_title_jp": "導火線 FLASH POINT",
+    "tmdb_title_en": "導火線",
+    "overview": "",
+    "poster_path": "/fUCVWdndDkVM0R5XL6n3ZC8GVyH.jpg",
+    "backdrop_path": "/wo9qgjGrgsF4UpDbah2uVPdDgFE.jpg",
+    "release_date": "2007-07-26",
+    "director": "葉偉信",
+    "runtime": 88,
+    "genres": [
+      "アクション"
+    ],
+    "vote_average": 6.899
+  },
+  "マザーズ": {
+    "tmdb_id": 101669,
+    "tmdb_title_jp": "マザーズデイ",
+    "tmdb_title_en": "Mother's Day",
+    "overview": "",
+    "poster_path": "/wjKmtce2WFoOyoiYGVx0nUSzGxT.jpg",
+    "backdrop_path": "/4xrt2SCSXmKiAuzCuYQVGkssvWS.jpg",
+    "release_date": "2010-09-23",
+    "director": "Darren Lynn Bousman",
+    "runtime": 112,
+    "genres": [
+      "犯罪",
+      "ホラー",
+      "スリラー"
+    ],
+    "vote_average": 6.49
+  }
 }
