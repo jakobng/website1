@@ -14674,5 +14674,53 @@
       "ドラマ"
     ],
     "vote_average": 7.1
+  },
+  "星と月は天の穴": {
+    "tmdb_id": 1543138,
+    "tmdb_title_jp": "星と月は天の穴",
+    "tmdb_title_en": "星と月は天の穴",
+    "overview": "小説家の矢添（綾野 剛）は、妻に逃げられ結婚に失敗して以来、独身のまま40代を迎えていた。心に空いた穴を埋めるように 娼婦・千枝子（田中麗奈）と時折り体を交え、捨てられた過去を引きずりながらやり過ごしていた。そして彼には恋愛に尻込みするもう一つの理由があった。それは、誰にも知られたくない自身の“秘密”にコンプレックスを抱えているからだ。そんな矢添は、自身が執筆する恋愛小説の主人公に自分自身を投影することで「精神的な愛の可能性」を自問するように探求するのが日課だった。ところがある日、画廊で偶然出会った大学生の瀬川紀子（咲耶）と彼女の粗相をきっかけに奇妙な情事へと至り、矢添の日常と心が揺れ始める。",
+    "poster_path": "/okIg9BoXmSyEZxQdN4xDctngqEY.jpg",
+    "backdrop_path": "/dvSTtiRmxXx1xlo9Eva6WH2baYl.jpg",
+    "release_date": "2025-12-19",
+    "director": "荒井晴彦",
+    "runtime": 0,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "Love Letter": {
+    "tmdb_id": 47002,
+    "tmdb_title_jp": "Love Letter",
+    "tmdb_title_en": "ラブレター",
+    "overview": "婚約者を亡くした渡辺博子は、忘れられない彼への思いから、彼が昔住んでいた小樽へと手紙を出した。すると、来るはずのない返事が返って来る。それをきっかけにして、彼と同姓同名で中学時代、彼と同級生だった女性と知り合うことになる。",
+    "poster_path": "/g1U70bJ3Ujmw3RMTYZCxZAKJfXj.jpg",
+    "backdrop_path": "/sglHi1esLqxACQYmEXHExJHzP6Z.jpg",
+    "release_date": "1995-03-25",
+    "director": "岩井俊二",
+    "runtime": 117,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.763
+  },
+  "世界一不運なお針子の人生最悪な1日": {
+    "tmdb_id": 1046758,
+    "tmdb_title_jp": "世界一不運なお針子の人生最悪な1日",
+    "tmdb_title_en": "Sew Torn",
+    "overview": "",
+    "poster_path": "/6N3bJq0VInPhifYml7cZ0TjRrXb.jpg",
+    "backdrop_path": "/qs7JANX6vjjWkZZIPRT7YD0Ej0j.jpg",
+    "release_date": "2025-09-11",
+    "director": "Freddy Macdonald",
+    "runtime": 100,
+    "genres": [
+      "スリラー",
+      "コメディ",
+      "犯罪"
+    ],
+    "vote_average": 7.6
   }
 }
