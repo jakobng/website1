@@ -403,11 +403,11 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     mask = mask.filter(ImageFilter.MaxFilter(11)) 
     return layout_rgba, layout_rgb.convert("RGB"), mask
     
-def refine_hero_with_ai(pil_image):
+def refine_hero_with_ai(pil_image, date_text):
     """
-    Refines the collage using 'Nano Banana Pro' (Gemini 3 Pro Image).
+    Refines the collage using Gemini 3 Pro (Nano Banana Pro).
+    Now asks the AI to RENDER the text directly into the image.
     """
-    # 1. Scope-Safe Import (Forces 'genai' to be defined locally)
     try:
         from google import genai
         from google.genai import types
@@ -415,10 +415,9 @@ def refine_hero_with_ai(pil_image):
         print("   ⚠️ Google GenAI lib missing. Skipping refinement.")
         return pil_image
 
-    print("   ✨ Refining Hero Collage (Nano Banana Pro / Gemini 3)...")
+    print("   ✨ Refining Hero Collage (Gemini 3 Pro + Text Rendering)...")
     
     try:
-        # 2. Get Key
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
             print("   ⚠️ GEMINI_API_KEY not found. Skipping.")
@@ -426,18 +425,17 @@ def refine_hero_with_ai(pil_image):
 
         client = genai.Client(api_key=api_key)
         
-        # 3. Define Prompt
+        # UPDATED PROMPT: Asks for text integration
         prompt_text = (
-            "Turn this rough collage into a single, cohesive, photorealistic image. "
-            "Keep the surreal, chaotic composition and all the elements, but unify the lighting, "
-            "textures, and shadows so it looks like a real wide-angle cinematic shot. "
-            "High fidelity, 8k, detailed, surrealist masterpiece."
+            f"Turn this rough collage into a single, cohesive, photorealistic movie poster. "
+            f"The image MUST include the title 'TODAY'S CINEMA SELECTION' and the date '{date_text}'. "
+            "Render the text legibly but artistically, integrated into the scene (e.g. as a neon sign, "
+            "cinematic typography, or painted on a wall). "
+            "Unify the lighting and textures into a high-fidelity 8k surrealist masterpiece."
         )
         
-        # 4. Call Gemini 3 Pro
-        # We use 'gemini-3-pro-image-preview' (Nano Banana Pro)
         response = client.models.generate_content(
-            model="gemini-3-pro-image-preview", 
+            model="gemini-3.0-pro-image-preview", # Nano Banana Pro
             contents=[prompt_text, pil_image],
             config=types.GenerateContentConfig(
                 response_modalities=["IMAGE"],
@@ -448,7 +446,6 @@ def refine_hero_with_ai(pil_image):
             )
         )
         
-        # 5. Extract Image
         for part in response.parts:
             if part.inline_data:
                 return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
