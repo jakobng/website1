@@ -429,8 +429,7 @@ def refine_hero_with_ai(pil_image, date_text):
         prompt_text = (
             f"Turn this rough collage into a single, cohesive, photorealistic movie poster. "
             f"The image MUST include the title 'TODAY'S CINEMA SELECTION' and the date '{date_text}'. "
-            "Render the text legibly but artistically, integrated into the scene (e.g. as a neon sign, "
-            "cinematic typography, or painted on a wall). "
+            "Render the text legibly and clearly, but integrated into the scene. "
             "Unify the lighting and textures into a high-fidelity 8k surrealist masterpiece."
         )
         
