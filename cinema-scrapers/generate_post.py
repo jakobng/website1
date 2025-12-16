@@ -779,14 +779,14 @@ def main() -> None:
         # 1. Create the chaotic base layout
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
         
-        # 2. Inpaint the gaps (Merging them into a dream structure)
+        # 2. Inpaint the gaps
         cover_bg = inpaint_gaps(layout_rgb, mask)
         
-        # 3. [NEW] Refine the result to fix "jankiness" and add realism
-        cover_bg = refine_hero_with_ai(cover_bg)
+        # 3. Refine AND Render Text with AI
+        # We pass 'bilingual_date_str' so the AI can write it
+        final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str)
         
-        # 4. Draw text overlay
-        final_cover = draw_cover_overlay(cover_bg, bilingual_date_str)
+        # 4. Save directly (We SKIP draw_cover_overlay because the AI did the text!)
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
         
         # --- DISABLED FOR CINEMA MODE (FEED ONLY) ---
