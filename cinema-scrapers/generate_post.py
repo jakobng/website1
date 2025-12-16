@@ -79,7 +79,7 @@ REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
 
 # Secrets
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
-GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # --- Constants ---
 MINIMUM_FILM_THRESHOLD = 3
