@@ -520,14 +520,13 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
     draw = ImageDraw.Draw(canvas)
     
     if is_story:
-        target_w = 950
-        target_h = 850
+        target_w, target_h = 950, 850
         img_y = 180
     else:
-        target_w = 900
-        target_h = 640
+        target_w, target_h = 900, 640
         img_y = 140
         
+    # Draw Image
     img_ratio = img_obj.width / img_obj.height
     if img_ratio > (target_w / target_h):
         new_h = target_h
@@ -542,11 +541,10 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
         top = (new_h - target_h) // 2
         img_final = img_resized.crop((0, top, target_w, top+target_h))
     
-    img_x = (width - target_w) // 2
-    canvas.paste(img_final, (img_x, img_y))
+    canvas.paste(img_final, ((width - target_w) // 2, img_y))
     cursor_y = img_y + target_h + (70 if is_story else 50)
     
-    # --- Metadata (Year / Time / Genre) ---
+    # Metadata
     meta_parts = []
     if film.get('year'): meta_parts.append(str(film['year']))
     if film.get('tmdb_runtime'): meta_parts.append(f"{film['tmdb_runtime']}m")
@@ -555,118 +553,139 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
     cursor_y = draw_centered_text(draw, cursor_y, meta_str, fonts['meta'], (200, 200, 200), width)
     cursor_y += 10
 
-    # --- Titles ---
+    # Titles (Dynamic Shrink)
     jp_title = film.get('clean_title_jp') or film.get('movie_title', '')
     en_title = film.get('movie_title_en')
     if normalize_string(jp_title) == normalize_string(en_title): en_title = None
-        
-    if len(jp_title) > 15:
-        wrapper = textwrap.TextWrapper(width=15)
+    
+    # Logic: If title is huge, use smaller font
+    use_small_title = len(jp_title) > 10
+    t_font = fonts['title_sm'] if use_small_title and 'title_sm' in fonts else fonts['title_jp']
+    
+    if len(jp_title) > 18:
+        wrapper = textwrap.TextWrapper(width=18)
         lines = wrapper.wrap(jp_title)
         for line in lines:
-            cursor_y = draw_centered_text(draw, cursor_y, line, fonts['title_jp'], (255, 255, 255), width)
+            cursor_y = draw_centered_text(draw, cursor_y, line, t_font, (255, 255, 255), width)
     else:
-        cursor_y = draw_centered_text(draw, cursor_y, jp_title, fonts['title_jp'], (255, 255, 255), width)
+        cursor_y = draw_centered_text(draw, cursor_y, jp_title, t_font, (255, 255, 255), width)
     cursor_y += 5
 
     if en_title:
         cursor_y = draw_centered_text(draw, cursor_y, en_title.upper(), fonts['title_en'], (200, 200, 200), width)
     
-    # --- Director ---
     director = film.get('tmdb_director') or film.get('director')
     if director:
         cursor_y += 10
         draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150), width)
         cursor_y += 20
     
-    # --- Multi-Day Schedule Block ---
-    # Strategy: Group by Cinema.
-    # Structure:
-    #   [Cinema Name]
-    #     TODAY: 10:00, 14:00
-    #     WED 12: 10:00
-    
-    # 1. Pivot Data: Cinema -> Date -> Times
-    # We need to look across all dates in multi_day_showings
+    # --- Showtimes Logic (1 vs 2 Columns) ---
     schedule_map = defaultdict(lambda: defaultdict(list))
-    
-    # If primary_date is missing (fallback), assume today
     if not primary_date: primary_date = get_today_str()
-    
     all_dates = sorted(film['multi_day_showings'].keys())
-    
     for d_key in all_dates:
         for cin_name, times in film['multi_day_showings'][d_key].items():
             schedule_map[cin_name][d_key] = sorted(times)
             
     sorted_cinemas = sorted(schedule_map.keys())
     
-    # Dynamic Sizing Logic
-    available_space = height - cursor_y - (100 if is_story else 40)
-    
-    # Estimate content size to calculate scaling
+    # Estimate total lines needed
     total_lines = 0
     for cin in sorted_cinemas:
-        total_lines += 1.2 # Cinema Header
-        total_lines += len(schedule_map[cin]) * 1.0 # One line per date
+        total_lines += 1.2 # Header
+        total_lines += len(schedule_map[cin]) # Lines
         total_lines += 0.5 # Gap
         
-    base_line_height = 32 if is_story else 28
-    estimated_height = total_lines * base_line_height
+    available_space = height - cursor_y - (100 if is_story else 40)
+    base_line_h = 32 if is_story else 28
     
-    scale = 1.0
-    if estimated_height > available_space:
-        scale = available_space / estimated_height
-        scale = max(scale, 0.6) # Don't shrink too small
-        
-    final_font_size = int(base_line_height * scale)
-    label_font_size = int(final_font_size * 0.75) # Smaller for "TODAY", "WED 12"
+    # Threshold for 2-column mode: If content > available height
+    needs_split = (total_lines * base_line_h) > available_space
     
-    try:
-        font_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_font_size)
-        font_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_font_size)
-        font_label = ImageFont.truetype(str(BOLD_FONT_PATH), label_font_size)
-    except:
-        font_cin = ImageFont.load_default()
-        font_time = ImageFont.load_default()
-        font_label = ImageFont.load_default()
+    if needs_split:
+        # --- TWO COLUMN MODE ---
+        col_w = (width - 100) // 2
+        col1_x = 50
+        col2_x = 50 + col_w + 20
         
-    start_y = cursor_y + 10
-    
-    for cin in sorted_cinemas:
-        # Cinema Header
-        cin_en = CINEMA_ENGLISH_NAMES.get(cin, cin)
-        len_c = draw.textlength(cin_en, font=font_cin)
-        x_c = (width - len_c) // 2
-        draw.text((x_c, start_y), cin_en, font=font_cin, fill=(255, 255, 255))
-        start_y += (final_font_size * 1.2)
+        # Compact fonts
+        compact_size = 24
+        try:
+            f_cin = ImageFont.truetype(str(BOLD_FONT_PATH), compact_size + 2)
+            f_time = ImageFont.truetype(str(REGULAR_FONT_PATH), compact_size)
+        except:
+             f_cin = fonts['cinema']
+             f_time = fonts['times']
         
-        # Date Rows
-        for d_key in sorted(schedule_map[cin].keys()):
-            times_str = ", ".join(schedule_map[cin][d_key])
-            is_today = (d_key == primary_date)
-            date_label = format_date_short(d_key, is_today)
+        curr_x, curr_y = col1_x, cursor_y + 10
+        
+        for i, cin in enumerate(sorted_cinemas):
+            # Move to col 2 if past half or out of space
+            remaining = height - curr_y - 50
+            if i > 0 and curr_x == col1_x and (i >= len(sorted_cinemas)/2 or remaining < 200):
+                curr_x = col2_x
+                curr_y = cursor_y + 10
+                
+            # Draw Cinema
+            draw.text((curr_x, curr_y), cin, font=f_cin, fill=(255,255,255))
+            curr_y += 35
             
-            # Layout: [Label]  [Times]
-            full_line_text = f"{date_label}   {times_str}"
+            for d_key in sorted(schedule_map[cin].keys()):
+                times_str = ", ".join(schedule_map[cin][d_key])
+                is_today = (d_key == primary_date)
+                date_label = format_date_short(d_key, is_today)
+                
+                # Draw Date Label (accent if today)
+                lbl_color = (255, 200, 100) if is_today else (180, 180, 180)
+                draw.text((curr_x, curr_y), date_label, font=f_time, fill=lbl_color)
+                
+                # Draw Time
+                lbl_w = draw.textlength(date_label, font=f_time)
+                draw.text((curr_x + lbl_w + 10, curr_y), times_str, font=f_time, fill=(230,230,230))
+                curr_y += 30
             
-            # We want to center the whole block, but align label/times nicely if possible.
-            # Simple centering for now to be safe with varying widths.
-            len_line = draw.textlength(full_line_text, font=font_time) # approx width
-            x_line = (width - len_line) // 2
+            curr_y += 15 # Gap
             
-            # Draw Label (Accent color for Today?)
-            label_color = (255, 200, 100) if is_today else (180, 180, 180)
-            draw.text((x_line, start_y + (final_font_size - label_font_size)), date_label, font=font_label, fill=label_color)
+    else:
+        # --- STANDARD CENTERED MODE ---
+        scale = 1.0
+        est_h = total_lines * base_line_h
+        if est_h > available_space:
+            scale = max(available_space / est_h, 0.8) # Limit shrinkage
             
-            label_w = draw.textlength(date_label, font=font_label)
-            time_x = x_line + label_w + 15
+        final_size = int(base_line_h * scale)
+        try:
+            f_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_size)
+            f_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_size)
+        except:
+            f_cin = fonts['cinema']
+            f_time = fonts['times']
+        
+        start_y = cursor_y + 10
+        for cin in sorted_cinemas:
+            cin_en = CINEMA_ENGLISH_NAMES.get(cin, cin)
+            len_c = draw.textlength(cin_en, font=f_cin)
+            draw.text(((width - len_c)//2, start_y), cin_en, font=f_cin, fill=(255,255,255))
+            start_y += (final_size * 1.2)
             
-            draw.text((time_x, start_y), times_str, font=font_time, fill=(230, 230, 230))
-            
-            start_y += (final_font_size * 1.1)
-            
-        start_y += (final_font_size * 0.6) # Gap between cinemas
+            for d_key in sorted(schedule_map[cin].keys()):
+                times_str = ", ".join(schedule_map[cin][d_key])
+                is_today = (d_key == primary_date)
+                date_label = format_date_short(d_key, is_today)
+                full_line = f"{date_label}   {times_str}"
+                
+                len_line = draw.textlength(full_line, font=f_time)
+                x_line = (width - len_line) // 2
+                
+                lbl_color = (255, 200, 100) if is_today else (180, 180, 180)
+                draw.text((x_line, start_y), date_label, font=f_time, fill=lbl_color)
+                
+                lbl_w = draw.textlength(date_label, font=f_time)
+                draw.text((x_line + lbl_w + 15, start_y), times_str, font=f_time, fill=(230,230,230))
+                start_y += (final_size * 1.1)
+                
+            start_y += (final_size * 0.6)
 
     return canvas
 
