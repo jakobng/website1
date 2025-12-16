@@ -380,44 +380,45 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     
 def refine_hero_with_ai(pil_image):
     """
-    Refines the collage using SDXL (Img2Img) with HIGHER freedom (0.65).
-    This allows the AI to hallucinate realistic textures and lighting 
-    to merge the 'janky' cutouts into a single cohesive surreal structure,
-    while maintaining the original layout and color palette.
+    Refines the collage using Google's Nano Banana Pro.
+    This model is SOTA for high-fidelity realism and semantic understanding,
+    great for turning a 'janky' collage into a cohesive, realistic photo.
     """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ℹ️ Refinement skipped (Token/Lib missing).")
         return pil_image
 
-    print("   ✨ Refining Hero Collage (High Freedom Re-imagining)...")
+    print("   ✨ Refining Hero Collage (Nano Banana Pro)...")
     
     buff = BytesIO()
     pil_image.save(buff, format="PNG")
     buff.seek(0)
     
     try:
+        # Using Google's Nano Banana Pro (Gemini 3 Pro Image)
         output = replicate.run(
-            "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
+            "google/nano-banana-pro",
             input={
                 "image": buff,
-                # Using the "Worldbuilding" prompt from the inpainting step
-                "prompt": "surreal architectural mashup, single unified dream structure, seamless wide angle shot, concrete texture, cinematic lighting, neutral tones, 8k, hyperrealistic, photorealistic",
-                "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark, blurry, illustration, painting, cartoon, rough edges, bad blending",
-                # 0.65 gives the AI significant freedom to fix seams and lighting
-                # while keeping the main shapes and colors.
-                "prompt_strength": 0.65, 
-                "num_inference_steps": 40,
-                "guidance_scale": 7.5
+                # It follows prompts very well, so we can be descriptive.
+                "prompt": "A photorealistic, highly detailed cinematic shot of a surreal architectural mashup. Single unified dream structure, seamless wide angle, concrete texture, cinematic lighting, neutral tones, 8k, hyperrealistic. Turn this collage into a cohesive physical object.",
+                "negative_prompt": "blurry, low quality, illustration, painting, cartoon, seams, collage borders, bad blending",
+                # Note: Nano Banana Pro doesn't typically use 'prompt_strength' like SDXL.
+                # It uses the image as a strong reference automatically.
+                "output_format": "png"
             }
         )
         
         if output:
+            # Replicate output for this model can sometimes be a list or single string
             image_url = output[0] if isinstance(output, list) else output
             resp = requests.get(image_url)
-            return Image.open(BytesIO(resp.content)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+            if resp.status_code == 200:
+                return Image.open(BytesIO(resp.content)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
             
     except Exception as e:
-        print(f"   ⚠️ Refinement Failed: {e}")
+        print(f"   ⚠️ Nano Banana Refinement Failed: {e}")
+        # Fallback: Return original if AI fails
         return pil_image
     
     return pil_image
