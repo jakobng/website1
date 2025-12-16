@@ -40,6 +40,12 @@ except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
 
+try:
+    from google import genai
+    from google.genai import types
+except ImportError:
+    print("⚠️ Warning: google-genai library not found. AI Refinement will be skipped.")
+
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
