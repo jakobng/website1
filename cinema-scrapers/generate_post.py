@@ -408,7 +408,6 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
     Refines the collage using Gemini 3 Pro (Nano Banana Pro).
     1. Unifies the 'janky' collage into a photorealistic shot.
     2. Renders the DATE and TITLE.
-    3. Renders the CINEMA NAMES into the scene (neon signs, graffiti, posters).
     """
     try:
         from google import genai
@@ -431,10 +430,9 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
         names_str = ", ".join(cinema_names[:6]) # Limit to top 6 to avoid clutter
         
         prompt_text = (
-            f"Turn this rough collage into a single image, in a style suitable to the input. "
+            f"Turn this rough collage into a single image, in a style suitable to the input, a dream architecture cinema exterior or interior"
             f"The image MUST include the title 'TODAY'S CINEMA SELECTION' and the date '{date_text}'. "
-            f"ALSO, subtly integrate these cinema names into the scene: {names_str}. "
-            "Unify the lighting and textures into a high-fidelity 8k surrealist masterpiece."
+            "Unify the lighting and textures."
         )
         
         response = client.models.generate_content(
