@@ -380,17 +380,17 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     
 def refine_hero_with_ai(pil_image):
     """
-    Refines the 'janky' collage by running it through SDXL (img2img)
-    with a low strength. This adds realism/texture/definition while 
-    keeping the original 'crazy' composition intact.
+    Refines the collage using SDXL (Img2Img) with HIGHER freedom (0.65).
+    This allows the AI to hallucinate realistic textures and lighting 
+    to merge the 'janky' cutouts into a single cohesive surreal structure,
+    while maintaining the original layout and color palette.
     """
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ℹ️ Refinement skipped (Token/Lib missing).")
         return pil_image
 
-    print("   ✨ Refining Hero Collage (Detail & Realism)...")
+    print("   ✨ Refining Hero Collage (High Freedom Re-imagining)...")
     
-    # Save PIL to buffer for upload
     buff = BytesIO()
     pil_image.save(buff, format="PNG")
     buff.seek(0)
@@ -400,11 +400,14 @@ def refine_hero_with_ai(pil_image):
             "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
             input={
                 "image": buff,
-                # Prompt designed to tighten up the image and add realism
-                "prompt": "photorealistic, 8k, highly detailed, sharp focus, cinematic lighting, raw photo, texture, film grain, hyperrealism",
-                "negative_prompt": "blurry, painting, illustration, drawing, low res, artifacting, smooth, cartoon, fuzzy",
-                "prompt_strength": 0.35, # ~35% AI influence: adds detail without changing the shape/composition
-                "num_inference_steps": 30
+                # Using the "Worldbuilding" prompt from the inpainting step
+                "prompt": "surreal architectural mashup, single unified dream structure, seamless wide angle shot, concrete texture, cinematic lighting, neutral tones, 8k, hyperrealistic, photorealistic",
+                "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark, blurry, illustration, painting, cartoon, rough edges, bad blending",
+                # 0.65 gives the AI significant freedom to fix seams and lighting
+                # while keeping the main shapes and colors.
+                "prompt_strength": 0.65, 
+                "num_inference_steps": 40,
+                "guidance_scale": 7.5
             }
         )
         
