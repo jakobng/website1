@@ -24,9 +24,24 @@ from pathlib import Path
 from io import BytesIO
 import sys
 import subprocess
-import importlib.util
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageOps
+
+try:
+    from google import genai
+    from google.genai import types
+except ImportError:
+    print("📦 Library 'google-genai' not found. Installing...")
+    try:
+        # Install quietly
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "google-genai"])
+        print("✅ Installed successfully. Retrying import...")
+        
+        # Now import it
+        from google import genai
+        from google.genai import types
+    except Exception as e:
+        print(f"⚠️ Critical: Failed to install 'google-genai'. Refinement will be skipped. Error: {e}")
 
 try:  
     from zoneinfo import ZoneInfo
@@ -35,15 +50,6 @@ except ImportError:
     ZoneInfo = None
     JST = timezone(timedelta(hours=9))
 
-# --- Auto-Install Google GenAI Library ---
-if importlib.util.find_spec("google.genai") is None:
-    print("📦 Installing missing google-genai library...")
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "google-genai"])
-        print("✅ Installation complete. Continuing...")
-    except Exception as e:
-        print(f"⚠️ Installation failed: {e}")
-        print("Please run: pip install google-genai")
 # --- API Setup ---
 try:
     import replicate
@@ -398,22 +404,26 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     
 def refine_hero_with_ai(pil_image):
     """
-    Refines the collage using Gemini 3 Pro (Nano Banana Pro).
-    It unifies the collage elements into a photorealistic, cohesive shot.
+    Refines the collage using Gemini 3 Pro (aka Nano Banana Pro).
     """
-    # Double-check imports inside function in case of weird load order
+    # Safety check for the library
     try:
         from google import genai
         from google.genai import types
     except ImportError:
-        print("   ⚠️ GenAI lib not found. Skipping refinement.")
+        print("   ⚠️ Google GenAI lib missing. Skipping refinement.")
         return pil_image
 
     print("   ✨ Refining Hero Collage (Gemini 3 Pro)...")
     
     try:
-        # Assumes GEMINI_API_KEY is set in environment variables
-        client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+        # Get Key
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not api_key:
+            print("   ⚠️ GEMINI_API_KEY not found in environment.")
+            return pil_image
+
+        client = genai.Client(api_key=api_key)
         
         prompt_text = (
             "Turn this rough collage into a single, cohesive, photorealistic image. "
@@ -424,11 +434,9 @@ def refine_hero_with_ai(pil_image):
         
         # Call Gemini 3 Pro (Image Preview)
         response = client.models.generate_content(
-            model="gemini-3.0-pro-image-preview", # Updated to standard versioning if unsure
+            model="gemini-3.0-pro-image-preview", 
             contents=[prompt_text, pil_image],
-            config=types.GenerateContentConfig(
-                response_modalities=["IMAGE"]
-            )
+            config=types.GenerateContentConfig(response_modalities=["IMAGE"])
         )
         
         for part in response.parts:
@@ -436,6 +444,24 @@ def refine_hero_with_ai(pil_image):
                 return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
                 
         print("   ⚠️ No image returned from Gemini.")
+        return pil_image
+
+    except Exception as e:
+        # Fallback to 2.5 Flash if 3.0 isn't available
+        if "404" in str(e) or "not found" in str(e).lower():
+            print("   ⚠️ Gemini 3.0 not found, trying 2.5 Flash...")
+            try:
+                response = client.models.generate_content(
+                    model="gemini-2.5-flash-image", 
+                    contents=[prompt_text, pil_image],
+                    config=types.GenerateContentConfig(response_modalities=["IMAGE"])
+                )
+                for part in response.parts:
+                    if part.inline_data:
+                        return Image.open(BytesIO(part.inline_data.data)).convert("RGB")
+            except: pass
+                
+        print(f"   ⚠️ Refinement Failed: {e}")
         return pil_image
 
     except Exception as e:
