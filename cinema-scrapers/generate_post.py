@@ -22,6 +22,9 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from io import BytesIO
+import sys
+import subprocess
+import importlib.util
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageOps
 
@@ -32,6 +35,15 @@ except ImportError:
     ZoneInfo = None
     JST = timezone(timedelta(hours=9))
 
+# --- Auto-Install Google GenAI Library ---
+if importlib.util.find_spec("google.genai") is None:
+    print("📦 Installing missing google-genai library...")
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "google-genai"])
+        print("✅ Installation complete. Continuing...")
+    except Exception as e:
+        print(f"⚠️ Installation failed: {e}")
+        print("Please run: pip install google-genai")
 # --- API Setup ---
 try:
     import replicate
