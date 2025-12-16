@@ -406,7 +406,7 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 def refine_hero_with_ai(pil_image, date_text):
     """
     Refines the collage using Gemini 3 Pro (Nano Banana Pro).
-    Now asks the AI to RENDER the text directly into the image.
+    Asks the AI to RENDER the text directly into the image.
     """
     try:
         from google import genai
@@ -425,7 +425,7 @@ def refine_hero_with_ai(pil_image, date_text):
 
         client = genai.Client(api_key=api_key)
         
-        # UPDATED PROMPT: Asks for text integration
+        # PROMPT: Includes date and title instructions
         prompt_text = (
             f"Turn this rough collage into a single, cohesive, photorealistic movie poster. "
             f"The image MUST include the title 'TODAY'S CINEMA SELECTION' and the date '{date_text}'. "
@@ -435,7 +435,7 @@ def refine_hero_with_ai(pil_image, date_text):
         )
         
         response = client.models.generate_content(
-            model="gemini-3.0-pro-image-preview", # Nano Banana Pro
+            model="gemini-3-pro-image-preview", # FIXED MODEL ID
             contents=[prompt_text, pil_image],
             config=types.GenerateContentConfig(
                 response_modalities=["IMAGE"],
@@ -456,6 +456,7 @@ def refine_hero_with_ai(pil_image, date_text):
     except Exception as e:
         print(f"   ⚠️ Gemini Refinement Failed: {e}")
         return pil_image
+
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
