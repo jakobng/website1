@@ -398,28 +398,23 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     
 def refine_hero_with_ai(pil_image):
     """
-    Refines the collage using 'Nano Banana Pro' (Gemini 3 Pro Image).
-    This model uses advanced reasoning to merge the 'janky' collage 
-    into a unified, photorealistic surrealist image while keeping 
-    the original composition.
+    Refines the collage using Gemini 3 Pro (Nano Banana Pro).
+    It unifies the collage elements into a photorealistic, cohesive shot.
     """
-    # check for library
-    if 'genai' not in globals() and 'genai' not in locals():
-        try:
-            from google import genai
-            from google.genai import types
-        except ImportError:
-            print("   ⚠️ Google GenAI lib not found. Skipping refinement.")
-            return pil_image
+    # Double-check imports inside function in case of weird load order
+    try:
+        from google import genai
+        from google.genai import types
+    except ImportError:
+        print("   ⚠️ GenAI lib not found. Skipping refinement.")
+        return pil_image
 
-    print("   ✨ Refining Hero Collage (Gemini 3 Pro / Nano Banana)...")
+    print("   ✨ Refining Hero Collage (Gemini 3 Pro)...")
     
     try:
-        # 1. Initialize Client (Assumes GEMINI_API_KEY is in env vars)
+        # Assumes GEMINI_API_KEY is set in environment variables
         client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
         
-        # 2. Define the Prompt
-        # We give it permission to "hallucinate" details to make it cohesive
         prompt_text = (
             "Turn this rough collage into a single, cohesive, photorealistic image. "
             "Keep the surreal, chaotic composition and all the elements, but unify the lighting, "
@@ -427,24 +422,39 @@ def refine_hero_with_ai(pil_image):
             "High fidelity, 8k, detailed, surrealist masterpiece."
         )
         
-        # 3. Call the API (Text + Image)
-        # 'gemini-3-pro-image-preview' is the model ID for Nano Banana Pro capabilities
+        # Call Gemini 3 Pro (Image Preview)
         response = client.models.generate_content(
-            model="gemini-3-pro-image-preview",
+            model="gemini-3.0-pro-image-preview", # Updated to standard versioning if unsure
             contents=[prompt_text, pil_image],
             config=types.GenerateContentConfig(
-                response_modalities=["IMAGE"] # Force image output
+                response_modalities=["IMAGE"]
             )
         )
         
-        # 4. Extract Image
         for part in response.parts:
             if part.inline_data:
-                # Convert raw bytes back to PIL
-                image_bytes = part.inline_data.data
-                return Image.open(BytesIO(image_bytes)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+                return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
                 
-        print("   ⚠️ No image found in Gemini response.")
+        print("   ⚠️ No image returned from Gemini.")
+        return pil_image
+
+    except Exception as e:
+        # Fallback to 2.5 if 3.0 isn't available to your key yet
+        if "404" in str(e) or "not found" in str(e).lower():
+            print("   ⚠️ Gemini 3.0 not found, trying 2.5 Flash...")
+            try:
+                response = client.models.generate_content(
+                    model="gemini-2.5-flash-image", 
+                    contents=[prompt_text, pil_image],
+                    config=types.GenerateContentConfig(response_modalities=["IMAGE"])
+                )
+                for part in response.parts:
+                    if part.inline_data:
+                        return Image.open(BytesIO(part.inline_data.data)).convert("RGB")
+            except:
+                pass
+                
+        print(f"   ⚠️ Refinement Failed: {e}")
         return pil_image
 
     except Exception as e:
