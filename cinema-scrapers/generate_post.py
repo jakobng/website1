@@ -380,48 +380,58 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     
 def refine_hero_with_ai(pil_image):
     """
-    Refines the collage using Google's Nano Banana Pro.
-    This model is SOTA for high-fidelity realism and semantic understanding,
-    great for turning a 'janky' collage into a cohesive, realistic photo.
+    Refines the collage using 'Nano Banana Pro' (Gemini 3 Pro Image).
+    This model uses advanced reasoning to merge the 'janky' collage 
+    into a unified, photorealistic surrealist image while keeping 
+    the original composition.
     """
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ℹ️ Refinement skipped (Token/Lib missing).")
-        return pil_image
+    # check for library
+    if 'genai' not in globals() and 'genai' not in locals():
+        try:
+            from google import genai
+            from google.genai import types
+        except ImportError:
+            print("   ⚠️ Google GenAI lib not found. Skipping refinement.")
+            return pil_image
 
-    print("   ✨ Refining Hero Collage (Nano Banana Pro)...")
-    
-    buff = BytesIO()
-    pil_image.save(buff, format="PNG")
-    buff.seek(0)
+    print("   ✨ Refining Hero Collage (Gemini 3 Pro / Nano Banana)...")
     
     try:
-        # Using Google's Nano Banana Pro (Gemini 3 Pro Image)
-        output = replicate.run(
-            "google/nano-banana-pro",
-            input={
-                "image": buff,
-                # It follows prompts very well, so we can be descriptive.
-                "prompt": "A photorealistic, highly detailed cinematic shot of a surreal architectural mashup. Single unified dream structure, seamless wide angle, concrete texture, cinematic lighting, neutral tones, 8k, hyperrealistic. Turn this collage into a cohesive physical object.",
-                "negative_prompt": "blurry, low quality, illustration, painting, cartoon, seams, collage borders, bad blending",
-                # Note: Nano Banana Pro doesn't typically use 'prompt_strength' like SDXL.
-                # It uses the image as a strong reference automatically.
-                "output_format": "png"
-            }
+        # 1. Initialize Client (Assumes GEMINI_API_KEY is in env vars)
+        client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+        
+        # 2. Define the Prompt
+        # We give it permission to "hallucinate" details to make it cohesive
+        prompt_text = (
+            "Turn this rough collage into a single, cohesive, photorealistic image. "
+            "Keep the surreal, chaotic composition and all the elements, but unify the lighting, "
+            "textures, and shadows so it looks like a real wide-angle cinematic shot. "
+            "High fidelity, 8k, detailed, surrealist masterpiece."
         )
         
-        if output:
-            # Replicate output for this model can sometimes be a list or single string
-            image_url = output[0] if isinstance(output, list) else output
-            resp = requests.get(image_url)
-            if resp.status_code == 200:
-                return Image.open(BytesIO(resp.content)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
-            
-    except Exception as e:
-        print(f"   ⚠️ Nano Banana Refinement Failed: {e}")
-        # Fallback: Return original if AI fails
+        # 3. Call the API (Text + Image)
+        # 'gemini-3-pro-image-preview' is the model ID for Nano Banana Pro capabilities
+        response = client.models.generate_content(
+            model="gemini-3-pro-image-preview",
+            contents=[prompt_text, pil_image],
+            config=types.GenerateContentConfig(
+                response_modalities=["IMAGE"] # Force image output
+            )
+        )
+        
+        # 4. Extract Image
+        for part in response.parts:
+            if part.inline_data:
+                # Convert raw bytes back to PIL
+                image_bytes = part.inline_data.data
+                return Image.open(BytesIO(image_bytes)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+                
+        print("   ⚠️ No image found in Gemini response.")
         return pil_image
-    
-    return pil_image
+
+    except Exception as e:
+        print(f"   ⚠️ Gemini Refinement Failed: {e}")
+        return pil_image
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
