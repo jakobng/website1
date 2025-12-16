@@ -438,7 +438,7 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
         )
         
         response = client.models.generate_content(
-            model="gemini-3.0-pro-image-preview", 
+            model="gemini-3-pro-image-preview", 
             contents=[prompt_text, pil_image],
             config=types.GenerateContentConfig(
                 response_modalities=["IMAGE"],
