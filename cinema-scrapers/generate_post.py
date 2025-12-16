@@ -403,10 +403,12 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     mask = mask.filter(ImageFilter.MaxFilter(11)) 
     return layout_rgba, layout_rgb.convert("RGB"), mask
     
-def refine_hero_with_ai(pil_image, date_text):
+def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
     """
     Refines the collage using Gemini 3 Pro (Nano Banana Pro).
-    Asks the AI to RENDER the text directly into the image.
+    1. Unifies the 'janky' collage into a photorealistic shot.
+    2. Renders the DATE and TITLE.
+    3. Renders the CINEMA NAMES into the scene (neon signs, graffiti, posters).
     """
     try:
         from google import genai
@@ -425,17 +427,18 @@ def refine_hero_with_ai(pil_image, date_text):
 
         client = genai.Client(api_key=api_key)
         
-        # PROMPT: Includes date and title instructions
+        # Prepare the list of names for the prompt
+        names_str = ", ".join(cinema_names[:6]) # Limit to top 6 to avoid clutter
+        
         prompt_text = (
-            f"Turn this rough collage into a single, cohesive, surrealistic mashup early-AI image "
+            f"Turn this rough collage into a single image, in a style suitable to the input. "
             f"The image MUST include the title 'TODAY'S CINEMA SELECTION' and the date '{date_text}'. "
-            f"\n3. Feature these Cinema Names in the artwork, in an integrated and subtle way: {names_str}"
-            "Render the text legibly and clearly, but integrated into the scene. "
+            f"ALSO, subtly integrate these cinema names into the scene: {names_str}. "
             "Unify the lighting and textures into a high-fidelity 8k surrealist masterpiece."
         )
         
         response = client.models.generate_content(
-            model="gemini-3-pro-image-preview", # FIXED MODEL ID
+            model="gemini-3.0-pro-image-preview", 
             contents=[prompt_text, pil_image],
             config=types.GenerateContentConfig(
                 response_modalities=["IMAGE"],
@@ -456,8 +459,7 @@ def refine_hero_with_ai(pil_image, date_text):
     except Exception as e:
         print(f"   ⚠️ Gemini Refinement Failed: {e}")
         return pil_image
-
-
+        
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
@@ -777,25 +779,22 @@ def main() -> None:
             cinema_images.append((c, path))
             
     if cinema_images:
-        # 1. Create the chaotic base layout
+        print("   🎨 Building Hero Collage (Legacy Layout + Stability Inpaint + Gemini Text)...")
+        
+        # 1. Create Layout (Your original/current method)
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
         
-        # 2. Inpaint the gaps
+        # 2. Inpaint Gaps (Stability AI)
         cover_bg = inpaint_gaps(layout_rgb, mask)
         
-        # 3. Refine AND Render Text with AI
-        # We pass 'bilingual_date_str' so the AI can write it
-        final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str)
+        # 3. Refine & Render Text (Gemini 3 Pro)
+        # We extract just the names from the list of tuples [('Cinema Name', Path), ...]
+        names_list = [c[0] for c in cinema_images]
         
-        # 4. Save directly (We SKIP draw_cover_overlay because the AI did the text!)
+        final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
+        
+        # 4. Save
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
-        
-        # --- DISABLED FOR CINEMA MODE (FEED ONLY) ---
-        # Story Cover (9:16)
-        # s_layout_rgba, s_layout_rgb, s_mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, STORY_CANVAS_HEIGHT)
-        # s_cover_bg = inpaint_gaps(s_layout_rgb, s_mask)
-        # s_final_cover = draw_cover_overlay(s_cover_bg, bilingual_date_str)
-        # s_final_cover.save(OUTPUT_DIR / "story_image_00.png")
 
     # SLIDES
     slide_counter = 0
