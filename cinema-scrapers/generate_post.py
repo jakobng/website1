@@ -27,6 +27,7 @@ import subprocess
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageOps
 
+# --- Robust Auto-Install for Google GenAI ---
 try:
     from google import genai
     from google.genai import types
@@ -57,12 +58,6 @@ try:
 except ImportError:
     print("⚠️ Replicate library not found. Run: pip install replicate")
     REPLICATE_AVAILABLE = False
-
-try:
-    from google import genai
-    from google.genai import types
-except ImportError:
-    print("⚠️ Warning: google-genai library not found. AI Refinement will be skipped.")
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -404,27 +399,31 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     
 def refine_hero_with_ai(pil_image):
     """
-    Refines the collage using Gemini 3 Pro (aka Nano Banana Pro).
+    Refines the collage using 'Nano Banana Pro' (Gemini 3 Pro Image).
+    We use the 'gemini-3-pro-image-preview' model which supports 
+    image-to-image reasoning to fix the 'jankiness' while keeping the soul.
     """
     # Safety check for the library
-    try:
-        from google import genai
-        from google.genai import types
-    except ImportError:
-        print("   ⚠️ Google GenAI lib missing. Skipping refinement.")
-        return pil_image
+    if 'genai' not in globals() and 'genai' not in locals():
+        try:
+            from google import genai
+            from google.genai import types
+        except ImportError:
+            print("   ⚠️ Google GenAI lib missing. Skipping refinement.")
+            return pil_image
 
-    print("   ✨ Refining Hero Collage (Gemini 3 Pro)...")
+    print("   ✨ Refining Hero Collage (Nano Banana Pro / Gemini 3)...")
     
     try:
-        # Get Key
+        # Assumes GEMINI_API_KEY is set in environment variables
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
-            print("   ⚠️ GEMINI_API_KEY not found in environment.")
+            print("   ⚠️ GEMINI_API_KEY not found. Skipping.")
             return pil_image
 
         client = genai.Client(api_key=api_key)
         
+        # The Prompt: Explicitly asks to unify the collage into a real photo
         prompt_text = (
             "Turn this rough collage into a single, cohesive, photorealistic image. "
             "Keep the surreal, chaotic composition and all the elements, but unify the lighting, "
@@ -432,18 +431,31 @@ def refine_hero_with_ai(pil_image):
             "High fidelity, 8k, detailed, surrealist masterpiece."
         )
         
-        # Call Gemini 3 Pro (Image Preview)
+        # Call Gemini 3 Pro (Nano Banana Pro)
+        # We request 4K resolution for the best possible detail
         response = client.models.generate_content(
-            model="gemini-3.0-pro-image-preview", 
+            model="gemini-3-pro-image-preview", 
             contents=[prompt_text, pil_image],
-            config=types.GenerateContentConfig(response_modalities=["IMAGE"])
+            config=types.GenerateContentConfig(
+                response_modalities=["IMAGE"],
+                image_config=types.ImageConfig(
+                    image_size="4K", # Requesting high res
+                    aspect_ratio="4:5" # Matches standard IG feed ratio
+                )
+            )
         )
         
+        # Extract the image
         for part in response.parts:
             if part.inline_data:
+                # Convert raw bytes back to PIL
                 return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
                 
         print("   ⚠️ No image returned from Gemini.")
+        return pil_image
+
+    except Exception as e:
+        print(f"   ⚠️ Gemini Refinement Failed: {e}")
         return pil_image
 
     except Exception as e:
