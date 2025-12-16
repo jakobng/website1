@@ -199,7 +199,7 @@ def load_showtimes(today_str: str) -> list[dict]:
         raise exc
     todays_showings = [show for show in all_showings if show.get("date_text") == today_str]
     return todays_showings
-
+    
 def format_listings(showings: list[dict]) -> list[dict[str, str | None]]:
     movies: defaultdict[tuple[str, str | None], list[str]] = defaultdict(list)
     title_map: dict[str, str | None] = {}
@@ -212,11 +212,20 @@ def format_listings(showings: list[dict]) -> list[dict[str, str | None]]:
         en_title = title_map[title]
         time_str = show.get("showtime") or ""
         if time_str: movies[(title, en_title)].append(time_str)
+    
     formatted = []
-    for (title, en_title) in sorted(movies.keys(), key=lambda k: k[0]):
-        times_sorted = sorted(movies[(title, en_title)], key=lambda t: t)
-        times_text = ", ".join(times_sorted)
-        formatted.append({"title": title, "en_title": en_title, "times": times_text})
+    # FIX: Sorting by Earliest Showtime
+    for (title, en_title), times in movies.items():
+        times.sort() # Sort times within the movie
+        formatted.append({
+            "title": title, 
+            "en_title": en_title, 
+            "times": ", ".join(times),
+            "first_showtime": times[0] if times else "23:59"
+        })
+    
+    # Sort the final list of movies based on their first showtime
+    formatted.sort(key=lambda x: x['first_showtime'])
     return formatted
 
 def segment_listings(listings: list[dict[str, str | None]], max_height: int, spacing: dict[str, int]) -> list[list[dict]]:
@@ -368,6 +377,47 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
     mask = mask.filter(ImageFilter.MaxFilter(11)) 
     return layout_rgba, layout_rgb.convert("RGB"), mask
+    
+def refine_hero_with_ai(pil_image):
+    """
+    Refines the 'janky' collage by running it through SDXL (img2img)
+    with a low strength. This adds realism/texture/definition while 
+    keeping the original 'crazy' composition intact.
+    """
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("   ℹ️ Refinement skipped (Token/Lib missing).")
+        return pil_image
+
+    print("   ✨ Refining Hero Collage (Detail & Realism)...")
+    
+    # Save PIL to buffer for upload
+    buff = BytesIO()
+    pil_image.save(buff, format="PNG")
+    buff.seek(0)
+    
+    try:
+        output = replicate.run(
+            "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
+            input={
+                "image": buff,
+                # Prompt designed to tighten up the image and add realism
+                "prompt": "photorealistic, 8k, highly detailed, sharp focus, cinematic lighting, raw photo, texture, film grain, hyperrealism",
+                "negative_prompt": "blurry, painting, illustration, drawing, low res, artifacting, smooth, cartoon, fuzzy",
+                "prompt_strength": 0.35, # ~35% AI influence: adds detail without changing the shape/composition
+                "num_inference_steps": 30
+            }
+        )
+        
+        if output:
+            image_url = output[0] if isinstance(output, list) else output
+            resp = requests.get(image_url)
+            return Image.open(BytesIO(resp.content)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+            
+    except Exception as e:
+        print(f"   ⚠️ Refinement Failed: {e}")
+        return pil_image
+    
+    return pil_image
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
@@ -688,8 +738,16 @@ def main() -> None:
             cinema_images.append((c, path))
             
     if cinema_images:
+        # 1. Create the chaotic base layout
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
+        
+        # 2. Inpaint the gaps (Merging them into a dream structure)
         cover_bg = inpaint_gaps(layout_rgb, mask)
+        
+        # 3. [NEW] Refine the result to fix "jankiness" and add realism
+        cover_bg = refine_hero_with_ai(cover_bg)
+        
+        # 4. Draw text overlay
         final_cover = draw_cover_overlay(cover_bg, bilingual_date_str)
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
         
