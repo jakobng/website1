@@ -474,7 +474,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
                 "prompt": "surreal architectural mashup, single unified dream structure, modern japanese architecture, classical cinema architecture, showa retro architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, 8k",
-                "negative_prompt": "grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
+                "negative_prompt": "car, grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
                 "num_inference_steps": 30,
                 "guidance_scale": 7.5,
                 "strength": 0.85 
