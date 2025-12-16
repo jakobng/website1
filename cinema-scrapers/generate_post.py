@@ -288,37 +288,42 @@ def normalize_name(s):
     return re.sub(r'[^a-z0-9]', '', s)
 
 def get_cinema_image_path(cinema_name: str) -> Path | None:
+    """
+    Finds a random matching image for the cinema.
+    Now supports multiple variants (e.g. morc.jpg, morc2.jpg, morc3.jpg).
+    """
     if not ASSETS_DIR.exists(): return None
     
-    # 1. Try explicit override first
+    # Determine the target search string
     if cinema_name in CINEMA_FILENAME_OVERRIDES:
         target = CINEMA_FILENAME_OVERRIDES[cinema_name]
     else:
-        # 2. Try normalized English Name
-        english_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
-        if english_name:
-            target = normalize_name(english_name)
-        else:
-            target = normalize_name(cinema_name)
+        # Normalize: "Morc Asagaya" -> "morc"
+        # We strip common suffixes to help matching
+        clean_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "") or cinema_name
+        target = normalize_name(clean_name).replace("cinema", "").replace("theatre", "").strip()
 
     if not target: return None
 
     candidates = list(ASSETS_DIR.glob("*"))
-    best_match = None
-    highest_ratio = 0.0
+    matches = []
     
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
-        if f_name in target or target in f_name:
-            return f
-        ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
-        if ratio > highest_ratio:
-            highest_ratio = ratio
-            best_match = f
+        
+        # Check if the filename contains the target (e.g. "morc2" contains "morc")
+        if target in f_name:
+            matches.append(f)
+        else:
+            # Fallback: Fuzzy match
+            ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
+            if ratio > 0.6: # Lowered threshold slightly
+                matches.append(f)
             
-    if highest_ratio > 0.4:
-        return best_match
+    if matches:
+        return random.choice(matches) # Pick a random one from the new set
+        
     return None
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
