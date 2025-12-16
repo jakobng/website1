@@ -401,22 +401,19 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 def refine_hero_with_ai(pil_image):
     """
     Refines the collage using 'Nano Banana Pro' (Gemini 3 Pro Image).
-    We use the 'gemini-3-pro-image-preview' model which supports 
-    image-to-image reasoning to fix the 'jankiness' while keeping the soul.
     """
-    # Safety check for the library
-    if 'genai' not in globals() and 'genai' not in locals():
-        try:
-            from google import genai
-            from google.genai import types
-        except ImportError:
-            print("   ⚠️ Google GenAI lib missing. Skipping refinement.")
-            return pil_image
+    # 1. Scope-Safe Import (Forces 'genai' to be defined locally)
+    try:
+        from google import genai
+        from google.genai import types
+    except ImportError:
+        print("   ⚠️ Google GenAI lib missing. Skipping refinement.")
+        return pil_image
 
     print("   ✨ Refining Hero Collage (Nano Banana Pro / Gemini 3)...")
     
     try:
-        # Assumes GEMINI_API_KEY is set in environment variables
+        # 2. Get Key
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
             print("   ⚠️ GEMINI_API_KEY not found. Skipping.")
@@ -424,7 +421,7 @@ def refine_hero_with_ai(pil_image):
 
         client = genai.Client(api_key=api_key)
         
-        # The Prompt: Explicitly asks to unify the collage into a real photo
+        # 3. Define Prompt
         prompt_text = (
             "Turn this rough collage into a single, cohesive, photorealistic image. "
             "Keep the surreal, chaotic composition and all the elements, but unify the lighting, "
@@ -432,68 +429,26 @@ def refine_hero_with_ai(pil_image):
             "High fidelity, 8k, detailed, surrealist masterpiece."
         )
         
-        # Call Gemini 3 Pro (Nano Banana Pro)
-        # We request 4K resolution for the best possible detail
+        # 4. Call Gemini 3 Pro
+        # We use 'gemini-3-pro-image-preview' (Nano Banana Pro)
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview", 
             contents=[prompt_text, pil_image],
             config=types.GenerateContentConfig(
                 response_modalities=["IMAGE"],
                 image_config=types.ImageConfig(
-                    image_size="4K", # Requesting high res
-                    aspect_ratio="4:5" # Matches standard IG feed ratio
+                    image_size="4K", 
+                    aspect_ratio="4:5"
                 )
             )
         )
         
-        # Extract the image
+        # 5. Extract Image
         for part in response.parts:
             if part.inline_data:
-                # Convert raw bytes back to PIL
                 return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
                 
         print("   ⚠️ No image returned from Gemini.")
-        return pil_image
-
-    except Exception as e:
-        print(f"   ⚠️ Gemini Refinement Failed: {e}")
-        return pil_image
-
-    except Exception as e:
-        # Fallback to 2.5 Flash if 3.0 isn't available
-        if "404" in str(e) or "not found" in str(e).lower():
-            print("   ⚠️ Gemini 3.0 not found, trying 2.5 Flash...")
-            try:
-                response = client.models.generate_content(
-                    model="gemini-2.5-flash-image", 
-                    contents=[prompt_text, pil_image],
-                    config=types.GenerateContentConfig(response_modalities=["IMAGE"])
-                )
-                for part in response.parts:
-                    if part.inline_data:
-                        return Image.open(BytesIO(part.inline_data.data)).convert("RGB")
-            except: pass
-                
-        print(f"   ⚠️ Refinement Failed: {e}")
-        return pil_image
-
-    except Exception as e:
-        # Fallback to 2.5 if 3.0 isn't available to your key yet
-        if "404" in str(e) or "not found" in str(e).lower():
-            print("   ⚠️ Gemini 3.0 not found, trying 2.5 Flash...")
-            try:
-                response = client.models.generate_content(
-                    model="gemini-2.5-flash-image", 
-                    contents=[prompt_text, pil_image],
-                    config=types.GenerateContentConfig(response_modalities=["IMAGE"])
-                )
-                for part in response.parts:
-                    if part.inline_data:
-                        return Image.open(BytesIO(part.inline_data.data)).convert("RGB")
-            except:
-                pass
-                
-        print(f"   ⚠️ Refinement Failed: {e}")
         return pil_image
 
     except Exception as e:
