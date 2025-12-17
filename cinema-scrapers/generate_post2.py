@@ -692,7 +692,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
 def main():
     print("--- Starting V2 (Punk Zine Style - A24 Edit) ---")
     
-# 🧹 TARGETED CLEANUP (V2 Only)
+    # 🧹 TARGETED CLEANUP (V2 Only)
     # Only delete V2 files so we don't touch V1 cinemas
     print("🧹 Cleaning old V2 images...")
     if OUTPUT_DIR.exists():
@@ -705,7 +705,9 @@ def main():
             except: pass
 
     # 1. FIX: Get JST Date Range (Today + 2 Days)
+    # We use the fixed 'get_today_jst()' helper here to ensure it's Tokyo time
     today_dt = get_today_jst().date()
+    
     date_strs = [
         today_dt.strftime("%Y-%m-%d"),
         (today_dt + timedelta(days=1)).strftime("%Y-%m-%d"),
