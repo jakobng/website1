@@ -727,13 +727,15 @@ def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
     today_str = today.isoformat()
-    date_jp = today.strftime("%Y.%m.%d")
-    date_en = today.strftime("%a")
-    bilingual_date_str = f"{date_jp} {date_en.upper()}"
-
-    # Clean up output in NEW folder
-    for old_file in OUTPUT_DIR.glob("post_image_*.png"): os.remove(old_file) 
-    for old_file in OUTPUT_DIR.glob("story_image_*.png"): os.remove(old_file)
+# 🧹 AGGRESSIVE CLEANUP
+    # Delete ALL png images (V1 and V2) to prevent "Stale File" bugs
+    print("🧹 Cleaning output directory...")
+    if OUTPUT_DIR.exists():
+        for f in OUTPUT_DIR.glob("*.png"):
+            try:
+                os.remove(f)
+            except Exception as e:
+                print(f"⚠️ Could not remove {f}: {e}")
 
     todays_showings = load_showtimes(today_str)
     if not todays_showings:
