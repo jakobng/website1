@@ -727,15 +727,17 @@ def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
     today_str = today.isoformat()
-# 🧹 AGGRESSIVE CLEANUP
-    # Delete ALL png images (V1 and V2) to prevent "Stale File" bugs
-    print("🧹 Cleaning output directory...")
+# 🧹 TARGETED CLEANUP (V1 Only)
+    # Only delete V1 files so we don't touch V2 movies
+    print("🧹 Cleaning old V1 images...")
     if OUTPUT_DIR.exists():
-        for f in OUTPUT_DIR.glob("*.png"):
-            try:
-                os.remove(f)
-            except Exception as e:
-                print(f"⚠️ Could not remove {f}: {e}")
+        # Delete only post_image_*.png and story_image_*.png
+        for f in OUTPUT_DIR.glob("post_image_*.png"):
+            try: os.remove(f)
+            except: pass
+        for f in OUTPUT_DIR.glob("story_image_*.png"):
+            try: os.remove(f)
+            except: pass
 
     todays_showings = load_showtimes(today_str)
     if not todays_showings:
