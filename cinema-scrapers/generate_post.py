@@ -727,11 +727,17 @@ def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
     today_str = today.isoformat()
-# 🧹 TARGETED CLEANUP (V1 Only)
-    # Only delete V1 files so we don't touch V2 movies
+    
+    # ---------------- MISSING LINES RESTORED ----------------
+    # These defines the date string needed for the cover image
+    date_jp = today.strftime("%Y.%m.%d")
+    date_en = today.strftime("%a")
+    bilingual_date_str = f"{date_jp} {date_en.upper()}"
+    # --------------------------------------------------------
+
+    # 🧹 TARGETED CLEANUP (V1 Only)
     print("🧹 Cleaning old V1 images...")
     if OUTPUT_DIR.exists():
-        # Delete only post_image_*.png and story_image_*.png
         for f in OUTPUT_DIR.glob("post_image_*.png"):
             try: os.remove(f)
             except: pass
@@ -739,9 +745,15 @@ def main() -> None:
             try: os.remove(f)
             except: pass
 
-    todays_showings = load_showtimes(today_str)
+    # Load Showtimes
+    try:
+        todays_showings = load_showtimes(today_str)
+    except Exception:
+        # If loading fails (e.g. file missing), treat as empty list
+        todays_showings = []
+        
     if not todays_showings:
-        print("No showings found for today.")
+        print(f"No showings found for today ({today_str}).")
         return
 
     # 3. Group Cinemas
