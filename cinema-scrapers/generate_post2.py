@@ -42,13 +42,23 @@ except ImportError:
     print("⚠️ Google GenAI library not found. Run: pip install google-genai")
     GEMINI_AVAILABLE = False
 
-# --- Timezone Setup (JST Enforcement) ---
-try:
-    from zoneinfo import ZoneInfo
-    JST = ZoneInfo("Asia/Tokyo")
-except ImportError:
-    # Fallback for older environments
-    JST = timezone(timedelta(hours=9))
+# --- ⚡ FIX: Force JST (UTC+9) explicitly ---
+# This ensures 'today' is Wednesday, even if the server thinks it's Tuesday (UTC).
+JST = timezone(timedelta(hours=9))
+
+def get_today_jst():
+    """Returns the current datetime in JST."""
+    return datetime.now(timezone.utc).astimezone(JST)
+
+def get_today_str():
+    """Returns YYYY-MM-DD in JST."""
+    return get_today_jst().strftime("%Y-%m-%d")
+
+def get_japanese_date_str():
+    """Returns formatted date string for display (JST)."""
+    d = get_today_jst()
+    # Format: 2025.11.24 (Mon)
+    return f"{d.year}.{d.month:02}.{d.day:02}"
 
 # --- Secrets ---
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
@@ -111,20 +121,6 @@ CINEMA_ENGLISH_NAMES = {
 
 # --- Helpers ---
 
-def get_today_jst():
-    """Returns the current datetime in JST."""
-    return datetime.now(JST)
-
-def get_today_str():
-    """Returns YYYY-MM-DD in JST."""
-    return get_today_jst().strftime("%Y-%m-%d")
-
-def get_japanese_date_str():
-    """Returns formatted date string for display (JST)."""
-    d = get_today_jst()
-    # Format: 2025.11.24 (Mon)
-    return f"{d.year}.{d.month:02}.{d.day:02}"
-
 def format_date_for_caption(date_str: str) -> str:
     """Converts YYYY-MM-DD to MM/DD (Day)."""
     try:
@@ -170,7 +166,7 @@ def get_fonts():
             "title_en": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
             "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
-            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 24), # Slightly smaller for multi-line
+            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 24), 
             "date_label": ImageFont.truetype(str(BOLD_FONT_PATH), 20),
         }
     except:
@@ -306,7 +302,8 @@ def ask_gemini_for_layout(images: list[Image.Image]):
         Return JSON: {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
         """
         response = client.models.generate_content(
-            model='gemini-2.5-flash', contents=[prompt, *images]
+            model='gemini-2.0-flash', 
+            contents=[prompt, *images]
         )
         clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
         if clean_json:
@@ -705,9 +702,7 @@ def main():
             except: pass
 
     # 1. FIX: Get JST Date Range (Today + 2 Days)
-    # We use the fixed 'get_today_jst()' helper here to ensure it's Tokyo time
     today_dt = get_today_jst().date()
-    
     date_strs = [
         today_dt.strftime("%Y-%m-%d"),
         (today_dt + timedelta(days=1)).strftime("%Y-%m-%d"),
