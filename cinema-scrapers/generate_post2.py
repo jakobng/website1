@@ -3,7 +3,7 @@ Generate Instagram-ready image carousel (V62 - "A24 Style" + Spread Layout).
 REPLACES V28/V61.
 - Design: Minimalist typography ("Today's Film Selection"), no yellow accents.
 - Layout: "Explosive" collage (images spread to edges/bleed off canvas).
-- Tech: Gemini 2.5 Flash + Replicate + Pillow.
+- Tech: gemini-3-pro-image-preview + Replicate + Pillow.
 - Update: Enforces JST dates, 3-day film rotation history, and new folder structure.
 - Feature: Multi-day Showtime Aggregation (Today + Next 2 Days) ON IMAGE + Captions.
 """
@@ -302,7 +302,7 @@ def ask_gemini_for_layout(images: list[Image.Image]):
         Return JSON: {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
         """
         response = client.models.generate_content(
-            model='gemini-2.0-flash', 
+            model='gemini-3-pro-image-preview', 
             contents=[prompt, *images]
         )
         clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
