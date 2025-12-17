@@ -108,6 +108,7 @@ jobs:
         run: python generate_post.py
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       # If MOVIE mode -> Use generate_post2.py
       - name: Generate Movie Post (V2)
@@ -115,6 +116,7 @@ jobs:
         run: python generate_post2.py
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       # --- STEP 3: SAVE DATA ---
       - name: Commit & Push Data
