@@ -15060,5 +15060,38 @@
     ],
     "vote_average": 7.995
   },
-  "ファリダ〜": null
+  "ファリダ〜": null,
+  "ラブ・アクチュアリー　4Kデジタルリマスター　クリスマス限定上映": null,
+  "苦い果実": null,
+  "脱出の最中": {
+    "tmdb_id": 1599751,
+    "tmdb_title_jp": "脱出の最中",
+    "tmdb_title_en": "脱出の最中",
+    "overview": "",
+    "poster_path": "/upKiRyDESePcCQV0Ff2qFS3Haze.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-29",
+    "director": "Yukinori Kurokawa",
+    "runtime": 0,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "ジェイ・ケリー": {
+    "tmdb_id": 1069905,
+    "tmdb_title_jp": "ジェイ・ケリー",
+    "tmdb_title_en": "Jay Kelly",
+    "overview": "映画スターのジェイ・ケリーは、献身的なマネージャーと共にヨーロッパを巡る旅に出て、現在と過去の自分に向き合うことになる。",
+    "poster_path": "/bKLm1xS9DsODWB4i1SxTEvLXab9.jpg",
+    "backdrop_path": "/wR9D9hQvCVBux16NauY4b7letdU.jpg",
+    "release_date": "2025-11-14",
+    "director": "ノア・バームバック",
+    "runtime": 132,
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "vote_average": 6.021
+  }
 }
