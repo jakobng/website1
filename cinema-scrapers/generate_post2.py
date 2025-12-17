@@ -692,15 +692,17 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
 def main():
     print("--- Starting V2 (Punk Zine Style - A24 Edit) ---")
     
-# 🧹 AGGRESSIVE CLEANUP
-    # Delete ALL png images (V1 and V2) to prevent "Stale File" bugs
-    print("🧹 Cleaning output directory...")
+# 🧹 TARGETED CLEANUP (V2 Only)
+    # Only delete V2 files so we don't touch V1 cinemas
+    print("🧹 Cleaning old V2 images...")
     if OUTPUT_DIR.exists():
-        for f in OUTPUT_DIR.glob("*.png"):
-            try:
-                os.remove(f)
-            except Exception as e:
-                print(f"⚠️ Could not remove {f}: {e}")
+        # Delete only post_v2_*.png and story_v2_*.png
+        for f in OUTPUT_DIR.glob("post_v2_*.png"):
+            try: os.remove(f)
+            except: pass
+        for f in OUTPUT_DIR.glob("story_v2_*.png"):
+            try: os.remove(f)
+            except: pass
 
     # 1. FIX: Get JST Date Range (Today + 2 Days)
     today_dt = get_today_jst().date()
