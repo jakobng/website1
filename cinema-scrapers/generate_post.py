@@ -722,18 +722,17 @@ Check Bio for Full Schedule / 詳細はリンクへ
     
     with OUTPUT_CAPTION_PATH.open("w", encoding="utf-8") as f:
         f.write("\n".join(lines))
-
 def main() -> None:
     # 1. Basic Setup
     today = today_in_tokyo().date()
     today_str = today.isoformat()
     
-    # ---------------- MISSING LINES RESTORED ----------------
-    # These defines the date string needed for the cover image
+    # ---------------- RESTORED LINES ----------------
+    # These were missing, causing the NameError
     date_jp = today.strftime("%Y.%m.%d")
     date_en = today.strftime("%a")
     bilingual_date_str = f"{date_jp} {date_en.upper()}"
-    # --------------------------------------------------------
+    # ------------------------------------------------
 
     # 🧹 TARGETED CLEANUP (V1 Only)
     print("🧹 Cleaning old V1 images...")
@@ -749,11 +748,10 @@ def main() -> None:
     try:
         todays_showings = load_showtimes(today_str)
     except Exception:
-        # If loading fails (e.g. file missing), treat as empty list
         todays_showings = []
         
     if not todays_showings:
-        print(f"No showings found for today ({today_str}).")
+        print(f"❌ No showings found for today ({today_str}).")
         return
 
     # 3. Group Cinemas
