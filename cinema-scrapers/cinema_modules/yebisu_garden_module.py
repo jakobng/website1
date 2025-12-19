@@ -1,4 +1,5 @@
-# yebisu_garden_module.py (Enhanced Title Cleaning)
+# yebisu_garden_module.py
+# Migrated from Selenium to Playwright for improved reliability.
 
 from __future__ import annotations
 
@@ -6,40 +7,37 @@ import datetime as _dt
 import json
 import re
 import sys
-import time
 from typing import Dict, List
 
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
-# ──────────────────────────────────────────────────────────────
+try:
+    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+except ImportError:
+    sys.exit(
+        "ERROR: Playwright not installed. Please run 'pip install playwright' and 'playwright install chromium'."
+    )
+
+# ----------------------------------------------------------------
 CINEMA_NAME = "YEBISU GARDEN CINEMA"
 BASE_URL = "https://www.unitedcinemas.jp/ygc"
 DAILY_URL = BASE_URL + "/daily.php?date={}"
 DAYS_AHEAD = 5
+PLAYWRIGHT_TIMEOUT = 30000  # 30 seconds
 
 _SCREEN_RE = re.compile(r"(\d)screen")
 _YEAR_RE = re.compile(r"(\d{4})")
-# IMPROVEMENT: Regex to find year in synopsis as a fallback.
+# Regex to find year in synopsis as a fallback.
 _YEAR_IN_SYNOPSIS_RE = re.compile(r"(\d{4})年製作")
 
-# ──────────────────────────────────────────────────────────────
+# ----------------------------------------------------------------
 def _clean_title(text: str) -> str:
     """
     Cleans Yebisu titles by removing quotes, parentheses, and technical suffixes.
-    FIXED: Now removes suffixes FIRST so wrapping quotes can be detected.
     """
     if not text: return ""
-    
-    # 1. Strip Technical Suffixes (Aggressive) - ORDER CHANGED to First
-    # This ensures "『Title』 4K" becomes "『Title』" so step 4 catches it.
+
+    # 1. Strip Technical Suffixes (Aggressive)
     patterns = [
         r"\s*4K.*$",               # Matches "4K", "4K レストア", "4K Restored"
         r"\s*デジタル.?リマスター.*$", # Matches "デジタルリマスター", "デジタル・リマスター版"
@@ -47,26 +45,26 @@ def _clean_title(text: str) -> str:
         r"\s*完全版.*$",
         r"\s*ディレクターズ.?カット.*$"
     ]
-    
+
     for pat in patterns:
         text = re.sub(pat, "", text, flags=re.IGNORECASE)
-    
+
     # 2. Remove parentheses content (e.g. (字幕), (吹替))
     text = re.sub(r"\s*[（(].*?[)）]\s*", "", text)
-    
+
     # 3. Clean up whitespace
     text = text.strip()
-    
+
     # 4. Remove wrapping Japanese quotes
-    # Now that suffixes are gone, this will correctly match "『Title』"
     if text.startswith("『") and text.endswith("』"):
         text = text[1:-1]
-    
+
     # Remove standard double quotes just in case
     text = text.replace('"', '').strip()
-        
+
     return text.strip()
-# ──────────────────────────────────────────────────────────────
+
+# ----------------------------------------------------------------
 def _parse_film_details(html: str) -> Dict:
     soup = BeautifulSoup(html, "html.parser")
     details = { "director": None, "synopsis": None, "year": None, "official_site": None }
@@ -100,7 +98,7 @@ def _parse_film_details(html: str) -> Dict:
 
     return details
 
-# ──────────────────────────────────────────────────────────────
+# ----------------------------------------------------------------
 def _parse_daily_showtimes(html: str, date_obj: _dt.date) -> List[Dict]:
     soup = BeautifulSoup(html, "html.parser")
     rows: List[Dict] = []
@@ -132,63 +130,50 @@ def _parse_daily_showtimes(html: str, date_obj: _dt.date) -> List[Dict]:
                 rows.append(dict(movie_title=title, date_text=str(date_obj), screen_name=screen, showtime=showtime, detail_page_url=detail_url))
     return rows
 
-# ───── Selenium helpers ───────────────────────────────────────
-def _init_driver() -> webdriver.Chrome:
-    opts = Options()
-    opts.add_argument("--headless=new")
-    opts.add_argument("--no-sandbox")
-    opts.add_argument("--disable-gpu")
-    opts.add_argument("--window-size=1400,900")
-    opts.add_argument("--disable-dev-shm-usage")
-    opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-
-    service = ChromeService(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=opts)
-    driver.set_page_load_timeout(40)
-    return driver
-
-def _wait_for_schedule(drv: webdriver.Chrome, timeout: int = 15) -> None:
-    sel = "ul#dailyList li.clearfix"
-    WebDriverWait(drv, timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, sel)))
-
-# ───── public API ─────────────────────────────────────────────
+# ----------------------------------------------------------------
 def scrape_yebisu_garden_cinema(days_ahead: int = DAYS_AHEAD) -> List[Dict]:
     all_showings: List[Dict] = []
     film_details_cache: Dict[str, Dict] = {}
     today = _dt.date.today()
-    driver = None
 
+    pw_instance = sync_playwright().start()
     try:
-        driver = _init_driver()
+        print(f"INFO: [{CINEMA_NAME}] Launching Playwright browser...", file=sys.stderr)
+        browser = pw_instance.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.set_default_timeout(PLAYWRIGHT_TIMEOUT)
+
         for offset in range(days_ahead):
             date_obj = today + _dt.timedelta(days=offset)
             url = DAILY_URL.format(date_obj.isoformat())
             print(f"INFO   : GET {url} for {CINEMA_NAME}")
 
             try:
-                driver.get(url)
-                _wait_for_schedule(driver)
-            except TimeoutException:
-                print(f"WARNING: Schedule not found or page timed out for {date_obj} at {CINEMA_NAME} – skipping day")
+                page.goto(url, wait_until="networkidle")
+                # Wait for schedule to load
+                page.wait_for_selector("ul#dailyList li.clearfix", timeout=PLAYWRIGHT_TIMEOUT)
+            except PlaywrightTimeout:
+                print(f"WARNING: Schedule not found or page timed out for {date_obj} at {CINEMA_NAME} - skipping day")
                 continue
 
-            daily_showings = _parse_daily_showtimes(driver.page_source, date_obj)
+            daily_showings = _parse_daily_showtimes(page.content(), date_obj)
 
             urls_to_scrape = {s['detail_page_url'] for s in daily_showings if s.get('detail_page_url') and s['detail_page_url'] not in film_details_cache}
 
             if urls_to_scrape:
                 print(f"INFO   : Found {len(urls_to_scrape)} new movie(s) to get details for.")
+
             for film_url in urls_to_scrape:
                 print(f"INFO   : Scraping details from: {film_url}")
                 try:
-                    driver.get(film_url)
-                    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.ID, "detailBox")))
-                    details = _parse_film_details(driver.page_source)
+                    page.goto(film_url, wait_until="networkidle")
+                    page.wait_for_selector("#detailBox", timeout=PLAYWRIGHT_TIMEOUT)
+                    details = _parse_film_details(page.content())
                     film_details_cache[film_url] = details
-                except TimeoutException:
+                except PlaywrightTimeout:
                     print(f"WARNING: Could not load detail page {film_url} in time.")
-                    film_details_cache[film_url] = {} # Cache failure to avoid retries
-                time.sleep(0.5)
+                    film_details_cache[film_url] = {}  # Cache failure to avoid retries
+                page.wait_for_timeout(500)
 
             for showing in daily_showings:
                 if showing.get('detail_page_url') in film_details_cache:
@@ -196,10 +181,16 @@ def scrape_yebisu_garden_cinema(days_ahead: int = DAYS_AHEAD) -> List[Dict]:
                 showing['cinema_name'] = CINEMA_NAME
 
             all_showings.extend(daily_showings)
-            time.sleep(0.7)
+            page.wait_for_timeout(700)
+
+        browser.close()
+
+    except Exception as e:
+        print(f"ERROR: [{CINEMA_NAME}] An error occurred: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
     finally:
-        if driver:
-            driver.quit()
+        pw_instance.stop()
 
     print(f"INFO   : Collected {len(all_showings)} showings total from {CINEMA_NAME}.")
     return all_showings

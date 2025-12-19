@@ -1,21 +1,20 @@
-import requests
-from bs4 import BeautifulSoup, NavigableString
+# stranger_module.py
+# Migrated from Selenium to Playwright for improved reliability.
+
 import re
 import sys
-from datetime import datetime, date, timedelta
-import os
-import time
 import traceback
-from urllib.parse import urljoin
+from datetime import date
+from typing import List, Dict
 
-# Selenium imports
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.chrome.options import Options as ChromeOptions
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, WebDriverException, StaleElementReferenceException
+from bs4 import BeautifulSoup
+
+try:
+    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+except ImportError:
+    sys.exit(
+        "ERROR: Playwright not installed. Please run 'pip install playwright' and 'playwright install chromium'."
+    )
 
 # --- Start: Configure stdout and stderr for UTF-8 on Windows ---
 if __name__ == "__main__" and sys.platform == "win32":
@@ -32,7 +31,7 @@ CINEMA_NAME_ST = "Stranger (ストレンジャー)"
 URL_ST = "https://stranger.jp/"
 
 # Define timeouts
-INITIAL_LOAD_TIMEOUT = 30
+PLAYWRIGHT_TIMEOUT = 30000  # 30 seconds
 
 def clean_text(text):
     if not text:
@@ -52,110 +51,106 @@ def parse_time_str(t_str):
         return f"{int(match.group(1))}:{match.group(2)}"
     return ""
 
-def get_headless_driver():
-    chrome_options = ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--window-size=1280,800")
-    
-    # Random User-Agent
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36")
-
-    driver = webdriver.Chrome(options=chrome_options)
-    return driver
-
-def scrape_stranger():
+def scrape_stranger() -> List[Dict]:
     """
-    Scrapes Stranger Tokyo using the specific DOM structure (V6).
+    Scrapes Stranger Tokyo using Playwright.
     Structure: .movie-schedule-item -> Title (h2 span) -> Slots (.slot h2)
     """
-    driver = None
     final_showings = []
-    
-    print(f"Debug ({CINEMA_NAME_ST}): Initializing WebDriver.")
+
+    print(f"Debug ({CINEMA_NAME_ST}): Initializing Playwright.")
+
+    pw_instance = sync_playwright().start()
     try:
-        driver = get_headless_driver()
+        print(f"Debug ({CINEMA_NAME_ST}): Launching browser...")
+        browser = pw_instance.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.set_default_timeout(PLAYWRIGHT_TIMEOUT)
+
         print(f"Debug ({CINEMA_NAME_ST}): Loading {URL_ST}...")
-        driver.get(URL_ST)
-        
-        # 1. Wait for body
-        wait = WebDriverWait(driver, INITIAL_LOAD_TIMEOUT)
-        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-        
+        page.goto(URL_ST, wait_until="networkidle")
+
+        # Wait for body to be present
+        page.wait_for_selector("body", timeout=PLAYWRIGHT_TIMEOUT)
+
         # Scroll down to ensure lazy elements load
-        driver.execute_script("window.scrollTo(0, 800);")
-        time.sleep(2)
-        
-        # 2. Find Date Tabs (Heuristic based on text)
+        page.evaluate("window.scrollTo(0, 800)")
+        page.wait_for_timeout(2000)
+
+        # Find Date Tabs (Heuristic based on text)
         print(f"Debug ({CINEMA_NAME_ST}): Scanning for date tabs...")
-        
-        potential_dates = driver.find_elements(By.XPATH, "//*[contains(text(), '/') or contains(text(), '月')]")
-        
-        date_map = {} 
+
+        # Get all potential date elements
+        potential_dates = page.query_selector_all("//*[contains(text(), '/') or contains(text(), '月')]")
+
+        date_map = {}
         today = date.today()
-        
+
         for elem in potential_dates:
             try:
-                txt = elem.text.strip()
-                if len(txt) > 20: continue
-                
+                txt = (elem.text_content() or "").strip()
+                if len(txt) > 20:
+                    continue
+
                 # Regex for 12/19 or 12月19日
                 match = re.search(r'(\d{1,2})[/\.](\d{1,2})', txt)
                 if not match:
                     match = re.search(r'(\d{1,2})月(\d{1,2})日', txt)
-                
+
                 if match:
                     m, d = int(match.group(1)), int(match.group(2))
-                    
+
                     year = today.year
                     # Handle year rollover
-                    if m < today.month and (today.month - m) > 6: year += 1
-                    elif m > today.month and (m - today.month) > 6: year -= 1
-                        
+                    if m < today.month and (today.month - m) > 6:
+                        year += 1
+                    elif m > today.month and (m - today.month) > 6:
+                        year -= 1
+
                     date_obj = date(year, m, d)
                     date_str = date_obj.strftime("%Y-%m-%d")
-                    
-                    if elem.is_displayed():
+
+                    if elem.is_visible():
                         if date_str not in date_map:
                             date_map[date_str] = elem
-            except: continue
-        
+            except Exception:
+                continue
+
         sorted_dates = sorted(date_map.keys())
         print(f"Debug ({CINEMA_NAME_ST}): Found {len(sorted_dates)} potential dates: {sorted_dates}")
-        
+
         if not sorted_dates:
-            print("⚠️ No date tabs found. Site layout might be radically different.")
+            print("Warning: No date tabs found. Site layout might be radically different.")
+            browser.close()
             return []
 
-        # 3. Iterate through dates
+        # Iterate through dates
         for date_text in sorted_dates:
             print(f"   > Processing {date_text}...")
-            
+
             try:
                 elem = date_map[date_text]
-                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", elem)
-                time.sleep(0.5)
-                driver.execute_script("arguments[0].click();", elem)
-                
+                elem.scroll_into_view_if_needed()
+                page.wait_for_timeout(500)
+                elem.click()
+
                 # Wait for content to stabilize
-                time.sleep(1.5) 
+                page.wait_for_timeout(1500)
             except Exception as e:
                 print(f"     Error clicking date {date_text}: {e}")
                 continue
-            
-            # 4. Parse content using specific DOM classes
-            soup = BeautifulSoup(driver.page_source, 'html.parser')
-            
+
+            # Parse content using specific DOM classes
+            soup = BeautifulSoup(page.content(), 'html.parser')
+
             # Find all movie blocks
             movie_blocks = soup.find_all("div", class_="movie-schedule-item")
-            
+
             for block in movie_blocks:
                 # --- A. Extract Title ---
                 # The title is typically in an h2 -> div -> span structure
                 title_span = block.select_one("h2 div span")
-                
+
                 if not title_span:
                     # Fallback: Check just the h2 (sometimes structure varies)
                     title_h2 = block.find("h2")
@@ -171,11 +166,11 @@ def scrape_stranger():
 
                 # Clean up title
                 title_text = re.sub(r'\s+', ' ', title_text)
-                
+
                 # --- B. Extract Showtimes ---
                 # Showtimes are in <td class="slot"> inside <h2> tags
                 slot_times = block.select(".slot h2")
-                
+
                 for time_el in slot_times:
                     start_time = parse_time_str(time_el.get_text())
                     if not start_time:
@@ -190,15 +185,15 @@ def scrape_stranger():
                         "year": str(today.year),
                         "detail_page_url": URL_ST
                     })
-                
+
+        browser.close()
+
     except Exception as e:
         print(f"An unexpected error in scrape_stranger: {e}", file=sys.stderr)
         traceback.print_exc(file=sys.stderr)
         return []
     finally:
-        if driver:
-            print(f"Debug ({CINEMA_NAME_ST}): Quitting WebDriver.")
-            driver.quit()
+        pw_instance.stop()
 
     # Deduplicate
     unique_showings = []
@@ -212,7 +207,7 @@ def scrape_stranger():
     return unique_showings
 
 if __name__ == '__main__':
-    print(f"Testing {CINEMA_NAME_ST} scraper module (Selenium, DOM-Class V6)...")
+    print(f"Testing {CINEMA_NAME_ST} scraper module (Playwright)...")
     showings_data = scrape_stranger()
     if showings_data:
         print(f"\nFound {len(showings_data)} unique showings for {CINEMA_NAME_ST}:")

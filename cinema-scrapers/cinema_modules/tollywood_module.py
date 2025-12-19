@@ -1,14 +1,16 @@
+# tollywood_module.py
+# Migrated from Selenium to Playwright for improved reliability.
+
 import sys
-import time
-from datetime import datetime, date
+from datetime import date
 from typing import Dict, List
 
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+try:
+    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+except ImportError:
+    sys.exit(
+        "ERROR: Playwright not installed. Please run 'pip install playwright' and 'playwright install chromium'."
+    )
 
 # -------------------------------------------------------------------
 # Basic config
@@ -17,11 +19,11 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 CINEMA_NAME = "下北沢トリウッド"
 TOLLYWOOD_SCHEDULE_URL = "https://tollywood.jp/"
 
-# How long to wait for elements to appear
-DEFAULT_SELENIUM_TIMEOUT = 15
+# How long to wait for elements to appear (in milliseconds)
+PLAYWRIGHT_TIMEOUT = 30000
 
-# How many “pages” of the calendar to scrape
-# (1 page = one row of dates before clicking the 「>」 button)
+# How many "pages" of the calendar to scrape
+# (1 page = one row of dates before clicking the ">" button)
 MAX_CALENDAR_PAGES = 3  # 3 * 7 = up to 21 days
 
 
@@ -52,19 +54,6 @@ NEXT_BUTTON_SELECTOR_CSS = ".calendar-head.component button.next"
 # Helpers
 # -------------------------------------------------------------------
 
-def _init_selenium_driver() -> webdriver.Chrome:
-    """Create a headless Chrome driver with sensible defaults."""
-    chrome_options = Options()
-    chrome_options.add_argument("--headless=new")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--window-size=1920,1080")
-
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.set_page_load_timeout(60)
-    return driver
-
-
 def _parse_date_label_mmdd(mmdd_text: str, last_date: date | None) -> date:
     """
     Convert an 'MM/DD' string from the calendar into a date object.
@@ -94,149 +83,151 @@ def _parse_date_label_mmdd(mmdd_text: str, last_date: date | None) -> date:
     return candidate
 
 
-def _wait_for_schedule_loaded(driver: webdriver.Chrome) -> None:
-    """Wait until the schedule widget is present."""
-    WebDriverWait(driver, DEFAULT_SELENIUM_TIMEOUT).until(
-        EC.presence_of_element_located(
-            (By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)
-        )
-    )
-    WebDriverWait(driver, DEFAULT_SELENIUM_TIMEOUT).until(
-        EC.presence_of_element_located(
-            (By.CSS_SELECTOR, MOVIE_ITEM_BLOCK_SELECTOR_CSS)
-        )
-    )
-
-
 # -------------------------------------------------------------------
 # Core scraping
 # -------------------------------------------------------------------
 
-def _scrape_active_day(
-    driver: webdriver.Chrome,
-    date_iso: str,
-) -> List[Dict]:
+def _scrape_active_day(page, date_iso: str) -> List[Dict]:
     """
     Scrape all movie blocks and showtimes for the currently active day
     in the schedule widget, and return a list of raw showtime dicts.
     """
     results: List[Dict] = []
 
-    movie_blocks = driver.find_elements(By.CSS_SELECTOR, MOVIE_ITEM_BLOCK_SELECTOR_CSS)
+    movie_blocks = page.query_selector_all(MOVIE_ITEM_BLOCK_SELECTOR_CSS)
     for block in movie_blocks:
         # Title
-        try:
-            title_el = block.find_element(By.CSS_SELECTOR, MOVIE_TITLE_IN_ITEM_BLOCK_SELECTOR_CSS)
-            movie_title = title_el.text.strip()
-        except NoSuchElementException:
-            # Skip weird blocks with no title
+        title_el = block.query_selector(MOVIE_TITLE_IN_ITEM_BLOCK_SELECTOR_CSS)
+        if not title_el:
             continue
+        movie_title = (title_el.text_content() or "").strip()
 
         # Optional detail link ("もっとみる")
         detail_page_url = None
-        try:
-            link_el = block.find_element(By.CSS_SELECTOR, "h2 a[href]")
+        link_el = block.query_selector("h2 a[href]")
+        if link_el:
             href = link_el.get_attribute("href")
             if href:
                 detail_page_url = href
-        except NoSuchElementException:
-            pass
 
         # Showtimes in the table
-        rows = block.find_elements(By.CSS_SELECTOR, SHOWTIME_TABLE_ROWS_SELECTOR_CSS)
+        rows = block.query_selector_all(SHOWTIME_TABLE_ROWS_SELECTOR_CSS)
         for row in rows:
-            slot_cells = row.find_elements(By.CSS_SELECTOR, SLOT_CELL_SELECTOR_CSS)
+            slot_cells = row.query_selector_all(SLOT_CELL_SELECTOR_CSS)
             for slot in slot_cells:
                 # Empty slots have no <h2>
-                try:
-                    start_el = slot.find_element(By.CSS_SELECTOR, START_TIME_IN_SLOT_SELECTOR_CSS)
-                except NoSuchElementException:
+                start_el = slot.query_selector(START_TIME_IN_SLOT_SELECTOR_CSS)
+                if not start_el:
                     continue
 
-                showtime = start_el.text.strip()
+                showtime = (start_el.text_content() or "").strip()
                 if not showtime:
                     continue
 
-                # We *could* also grab end time here if you ever want it:
-                # try:
-                #     end_el = slot.find_element(By.CSS_SELECTOR, END_TIME_IN_SLOT_SELECTOR_CSS)
-                #     end_time = end_el.text.strip()
-                # except NoSuchElementException:
-                #     end_time = None
-
-                results.append(
-                    {
-                        "movie_title_uncleaned": movie_title,
-                        "date_text": date_iso,     # YYYY-MM-DD
-                        "showtime": showtime,      # HH:MM
-                        "detail_page_url": detail_page_url,
-                    }
-                )
+                results.append({
+                    "movie_title_uncleaned": movie_title,
+                    "date_text": date_iso,     # YYYY-MM-DD
+                    "showtime": showtime,      # HH:MM
+                    "detail_page_url": detail_page_url,
+                })
 
     return results
 
 
 def scrape_tollywood_raw() -> List[Dict]:
     """
-    Drive the Tollywood schedule widget with Selenium and return
+    Drive the Tollywood schedule widget with Playwright and return
     raw showtime dicts with:
         movie_title_uncleaned, date_text, showtime, detail_page_url
     """
-    driver = _init_selenium_driver()
     all_results: List[Dict] = []
 
+    pw_instance = sync_playwright().start()
     try:
-        driver.get(TOLLYWOOD_SCHEDULE_URL)
-        _wait_for_schedule_loaded(driver)
+        print(f"INFO: [{CINEMA_NAME}] Launching Playwright browser...", file=sys.stderr)
+        browser = pw_instance.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.set_default_timeout(PLAYWRIGHT_TIMEOUT)
+
+        print(f"INFO: [{CINEMA_NAME}] Navigating to {TOLLYWOOD_SCHEDULE_URL}...", file=sys.stderr)
+        page.goto(TOLLYWOOD_SCHEDULE_URL, wait_until="networkidle")
+
+        # Wait for schedule to load
+        try:
+            page.wait_for_selector(DATE_ITEM_SELECTOR_CSS, timeout=PLAYWRIGHT_TIMEOUT)
+            page.wait_for_selector(MOVIE_ITEM_BLOCK_SELECTOR_CSS, timeout=PLAYWRIGHT_TIMEOUT)
+        except PlaywrightTimeout:
+            print(f"ERROR: [{CINEMA_NAME}] Schedule did not load within timeout.", file=sys.stderr)
+            browser.close()
+            return []
+
+        # Give Vue a moment to hydrate
+        page.wait_for_timeout(2000)
 
         last_date: date | None = None
 
         # Iterate over calendar pages
         for page_index in range(MAX_CALENDAR_PAGES):
             # Re-read date items for each page (they change when clicking "next")
-            date_items = driver.find_elements(By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)
+            date_items = page.query_selector_all(DATE_ITEM_SELECTOR_CSS)
             if not date_items:
                 break
 
             for idx in range(len(date_items)):
                 # Re-fetch in case the DOM changed after previous click
-                date_items = driver.find_elements(By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)
+                date_items = page.query_selector_all(DATE_ITEM_SELECTOR_CSS)
                 if idx >= len(date_items):
                     break
 
                 item = date_items[idx]
 
                 # Date label like "11/20"
-                try:
-                    date_label_el = item.find_element(By.CSS_SELECTOR, DATE_VALUE_IN_ITEM_SELECTOR_CSS)
-                    mmdd_text = date_label_el.text.strip()
-                except NoSuchElementException:
+                date_label_el = item.query_selector(DATE_VALUE_IN_ITEM_SELECTOR_CSS)
+                if not date_label_el:
                     continue
 
-                current_date = _parse_date_label_mmdd(mmdd_text, last_date)
+                mmdd_text = (date_label_el.text_content() or "").strip()
+                if not mmdd_text:
+                    continue
+
+                try:
+                    current_date = _parse_date_label_mmdd(mmdd_text, last_date)
+                except ValueError:
+                    continue
+
                 last_date = current_date
                 date_iso = current_date.isoformat()
 
-                # Click this day to make it active
-                driver.execute_script("arguments[0].click();", item)
-                time.sleep(1.0)  # small pause for repaint
+                print(f"  -> Processing date: {date_iso}", file=sys.stderr)
 
-                day_results = _scrape_active_day(driver, date_iso)
+                # Click this day to make it active
+                item.click()
+                page.wait_for_timeout(1000)  # small pause for repaint
+
+                day_results = _scrape_active_day(page, date_iso)
                 all_results.extend(day_results)
 
-            # Try to go to the next “page” of days
-            try:
-                next_btn = driver.find_element(By.CSS_SELECTOR, NEXT_BUTTON_SELECTOR_CSS)
-                # Some widgets disable the button instead of removing it
-                if not next_btn.is_enabled():
-                    break
-                driver.execute_script("arguments[0].click();", next_btn)
-                time.sleep(1.5)
-            except NoSuchElementException:
+            # Try to go to the next "page" of days
+            next_btn = page.query_selector(NEXT_BUTTON_SELECTOR_CSS)
+            if not next_btn:
                 break
 
+            # Some widgets disable the button instead of removing it
+            is_disabled = next_btn.get_attribute("disabled")
+            if is_disabled is not None:
+                break
+
+            next_btn.click()
+            page.wait_for_timeout(1500)
+
+        browser.close()
+
+    except Exception as e:
+        print(f"ERROR: [{CINEMA_NAME}] An error occurred: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
     finally:
-        driver.quit()
+        pw_instance.stop()
 
     return all_results
 
@@ -256,22 +247,20 @@ def scrape_tollywood() -> List[Dict]:
     result: List[Dict] = []
 
     for r in raw:
-        result.append(
-            {
-                "cinema_name": CINEMA_NAME,
-                "movie_title": r.get("movie_title_uncleaned", "").strip() or None,
-                "movie_title_en": None,
-                "director": None,
-                "year": None,
-                "country": None,
-                "runtime_min": None,
-                "date_text": r.get("date_text"),
-                "showtime": r.get("showtime"),
-                "detail_page_url": r.get("detail_page_url"),
-                "program_title": None,
-                "purchase_url": None,
-            }
-        )
+        result.append({
+            "cinema_name": CINEMA_NAME,
+            "movie_title": r.get("movie_title_uncleaned", "").strip() or None,
+            "movie_title_en": None,
+            "director": None,
+            "year": None,
+            "country": None,
+            "runtime_min": None,
+            "date_text": r.get("date_text"),
+            "showtime": r.get("showtime"),
+            "detail_page_url": r.get("detail_page_url"),
+            "program_title": None,
+            "purchase_url": None,
+        })
 
     return result
 

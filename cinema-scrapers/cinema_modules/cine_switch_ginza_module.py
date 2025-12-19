@@ -1,7 +1,6 @@
 """
-cine_switch_ginza_module.py - Final Corrected Scraper (Refactored for controlled execution)
-This version separates the scraping logic from the file saving, allowing it to be
-called from a master script without creating its own files. Contains all necessary helper functions.
+cine_switch_ginza_module.py - Playwright-based scraper
+Migrated from Selenium to Playwright for improved reliability and automatic browser management.
 """
 
 from __future__ import annotations
@@ -15,14 +14,13 @@ from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.chrome.options import Options as ChromeOptions
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+
+try:
+    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+except ImportError:
+    sys.exit(
+        "ERROR: Playwright not installed. Please run 'pip install playwright' and 'playwright install chromium'."
+    )
 
 # [FIX] Added to handle SSL handshake issues with the target server
 from urllib3.exceptions import InsecureRequestWarning
@@ -34,7 +32,7 @@ CSG_BASE_URL = "https://cineswitch.com"
 CSG_DETAIL_PAGES = [urljoin(CSG_BASE_URL, "/movie_now"), urljoin(CSG_BASE_URL, "/movie_soon")]
 EIGALAND_BASE_URL = "https://schedule.eigaland.com/schedule?webKey=5c896e66-aaf7-4003-b4ff-1d8c9bf9c0fc"
 CINEMA_NAME = "シネスイッチ銀座"
-DEFAULT_SELENIUM_TIMEOUT = 20
+PLAYWRIGHT_TIMEOUT = 30000  # 30 seconds in milliseconds
 DAYS_TO_SCRAPE = 7
 
 # --- Eigaland Selectors ---
@@ -49,7 +47,7 @@ SLOT_CELL_SELECTOR_CSS = "td.slot"
 START_TIME_IN_SLOT_SELECTOR_CSS = "h2"
 
 
-# --- Helper Functions (Previously omitted, now included) ---
+# --- Helper Functions ---
 
 def _clean_title_for_matching(title: str) -> str:
     """Cleans a movie title for reliable matching between different sources."""
@@ -100,7 +98,7 @@ def get_movie_details_from_cineswitch() -> Dict[str, Dict]:
                                 key, value = cells[0].text.strip(), cells[1].text.strip()
                                 if "監督" in key: details["director"] = value
                                 elif "制作国" in key: details["country"] = value
-                    
+
                     if screening_info_div := detail_soup.find("div", class_="screenig_info"):
                         for info in screening_info_div.find_all("div", class_="info"):
                             if info.find("span", string="上映時間"):
@@ -129,78 +127,98 @@ def _parse_date_from_eigaland(date_str: str, current_year: int) -> Optional[dt.d
             return None
     return None
 
-def _init_selenium_driver() -> webdriver.Chrome:
-    """Initializes and returns a Selenium Chrome WebDriver instance."""
-    chrome_options = ChromeOptions()
-    chrome_options.add_argument("--headless=new")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--window-size=1366,800")
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-    chrome_options.add_argument('--lang=ja-JP')
-    chrome_options.add_experimental_option('prefs', {'intl.accept_languages': 'ja,en-US,en'})
-    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
-    try:
-        service = ChromeService(ChromeDriverManager().install())
-        return webdriver.Chrome(service=service, options=chrome_options)
-    except Exception as e:
-        print(f"ERROR: Could not initialize WebDriver: {e}", file=sys.stderr)
-        raise
 
 def scrape_eigaland_schedule() -> List[Dict]:
-    """Scrapes movie showtimes from the Eigaland platform page."""
-    print("--- [Cine Switch] Fetching Showtimes from Eigaland ---", file=sys.stderr)
+    """Scrapes movie showtimes from the Eigaland platform page using Playwright."""
+    print("--- [Cine Switch] Fetching Showtimes from Eigaland (Playwright) ---", file=sys.stderr)
     showtimes: List[Dict] = []
     url = EIGALAND_BASE_URL
-    driver: Optional[webdriver.Chrome] = None
 
+    pw_instance = sync_playwright().start()
     try:
-        driver = _init_selenium_driver()
-        driver.get(url)
-        WebDriverWait(driver, DEFAULT_SELENIUM_TIMEOUT).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, DATE_CALENDAR_AREA_SELECTOR_CSS))
-        )
-        date_item_elements = driver.find_elements(By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)
+        print(f"INFO: [{CINEMA_NAME}] Launching Playwright browser...", file=sys.stderr)
+        browser = pw_instance.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.set_default_timeout(PLAYWRIGHT_TIMEOUT)
+
+        print(f"INFO: [{CINEMA_NAME}] Navigating to Eigaland schedule: {url}", file=sys.stderr)
+        page.goto(url, wait_until="networkidle")
+
+        # Wait for the calendar to be visible
+        print(f"INFO: [{CINEMA_NAME}] Waiting for calendar to load...", file=sys.stderr)
+        try:
+            page.wait_for_selector(DATE_CALENDAR_AREA_SELECTOR_CSS, timeout=PLAYWRIGHT_TIMEOUT)
+        except PlaywrightTimeout:
+            print(f"ERROR: [{CINEMA_NAME}] Calendar did not load within timeout.", file=sys.stderr)
+            browser.close()
+            return []
+
+        # Give Vue a moment to fully hydrate
+        page.wait_for_timeout(2000)
+
+        date_item_elements = page.query_selector_all(DATE_ITEM_SELECTOR_CSS)
         year_for_schedule = _get_current_year()
 
         for date_idx in range(min(len(date_item_elements), DAYS_TO_SCRAPE)):
-            # Re-fetch elements to avoid staleness
-            current_page_date_items = driver.find_elements(By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)
-            if date_idx >= len(current_page_date_items): break
+            # Re-fetch elements to avoid stale references
+            current_page_date_items = page.query_selector_all(DATE_ITEM_SELECTOR_CSS)
+            if date_idx >= len(current_page_date_items):
+                break
 
             date_element_to_click = current_page_date_items[date_idx]
             try:
-                date_str_mm_dd = date_element_to_click.find_element(By.CSS_SELECTOR, DATE_VALUE_IN_ITEM_SELECTOR_CSS).text.strip()
-                date_element_to_click.click()
-                WebDriverWait(driver, DEFAULT_SELENIUM_TIMEOUT).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, MOVIE_ITEM_BLOCK_SELECTOR_CSS))
-                )
-                parsed_date_obj = _parse_date_from_eigaland(date_str_mm_dd, year_for_schedule)
-                if not parsed_date_obj: continue
+                date_label = date_element_to_click.query_selector(DATE_VALUE_IN_ITEM_SELECTOR_CSS)
+                if not date_label:
+                    continue
+                date_str_mm_dd = (date_label.text_content() or "").strip()
 
-                movie_item_blocks = driver.find_elements(By.CSS_SELECTOR, MOVIE_ITEM_BLOCK_SELECTOR_CSS)
+                date_element_to_click.click()
+
+                # Wait for schedule content to update
+                page.wait_for_timeout(1500)
+                page.wait_for_selector(MOVIE_ITEM_BLOCK_SELECTOR_CSS, timeout=PLAYWRIGHT_TIMEOUT)
+
+                parsed_date_obj = _parse_date_from_eigaland(date_str_mm_dd, year_for_schedule)
+                if not parsed_date_obj:
+                    continue
+
+                print(f"INFO: [{CINEMA_NAME}] Processing date {parsed_date_obj.isoformat()}...", file=sys.stderr)
+
+                movie_item_blocks = page.query_selector_all(MOVIE_ITEM_BLOCK_SELECTOR_CSS)
                 for item_block in movie_item_blocks:
                     try:
-                        title_tag = item_block.find_element(By.CSS_SELECTOR, MOVIE_TITLE_IN_ITEM_BLOCK_SELECTOR_CSS)
-                        movie_title = title_tag.text.strip()
-                        table_rows = item_block.find_elements(By.CSS_SELECTOR, SHOWTIME_TABLE_ROWS_SELECTOR_CSS)
+                        title_tag = item_block.query_selector(MOVIE_TITLE_IN_ITEM_BLOCK_SELECTOR_CSS)
+                        if not title_tag:
+                            continue
+                        movie_title = (title_tag.text_content() or "").strip()
+
+                        table_rows = item_block.query_selector_all(SHOWTIME_TABLE_ROWS_SELECTOR_CSS)
                         for tr_element in table_rows:
-                            slot_cells = tr_element.find_elements(By.CSS_SELECTOR, SLOT_CELL_SELECTOR_CSS)
+                            slot_cells = tr_element.query_selector_all(SLOT_CELL_SELECTOR_CSS)
                             for slot_cell in slot_cells:
-                                try:
-                                    showtime_tag = slot_cell.find_element(By.CSS_SELECTOR, START_TIME_IN_SLOT_SELECTOR_CSS)
+                                showtime_tag = slot_cell.query_selector(START_TIME_IN_SLOT_SELECTOR_CSS)
+                                if not showtime_tag:
+                                    continue
+                                showtime_text = (showtime_tag.text_content() or "").strip()
+                                if showtime_text:
                                     showtimes.append({
                                         "movie_title_uncleaned": movie_title,
                                         "date_text": parsed_date_obj.isoformat(),
-                                        "showtime": showtime_tag.text.strip(),
+                                        "showtime": showtime_text,
                                     })
-                                except NoSuchElementException: continue
-                    except NoSuchElementException: continue
+                    except Exception:
+                        continue
             except Exception as e:
                 print(f"  ERROR [Cine Switch] processing date {date_idx}: {e}", file=sys.stderr)
+
+        browser.close()
+
+    except Exception as e:
+        print(f"FATAL: [{CINEMA_NAME}] An error occurred during Playwright browsing: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
     finally:
-        if driver: driver.quit()
+        pw_instance.stop()
 
     return showtimes
 
@@ -244,10 +262,10 @@ def scrape_cine_switch_ginza() -> List[Dict]:
             final_results.append(final_show)
         else:
             unmatched_titles.add(show["movie_title_uncleaned"])
-    
+
     if unmatched_titles:
         print(f"WARNING [Cine Switch]: Could not find details for: {', '.join(sorted(list(unmatched_titles)))}", file=sys.stderr)
-    
+
     final_results.sort(key=lambda x: (x["date_text"], x["movie_title"], x["showtime"]))
     return final_results
 

@@ -1,12 +1,11 @@
 # cinemart_shinjuku_module.py
-# v3: Added a third regex pattern to handle pipe-separated metadata (e.g., 2023|韓国|124分).
+# Migrated from Selenium to Playwright for improved reliability.
 
 from __future__ import annotations
 
 import json
 import re
 import sys
-import time
 from pathlib import Path
 from typing import Dict, List, Optional
 from urllib.parse import urljoin
@@ -14,37 +13,21 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.chrome.options import Options as ChromeOptions
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.chrome import ChromeDriverManager
+try:
+    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+except ImportError:
+    sys.exit(
+        "ERROR: Playwright not installed. Please run 'pip install playwright' and 'playwright install chromium'."
+    )
 
 # --- Constants ---
 CINEMA_NAME = "シネマート新宿"
 SCHEDULE_URL = "https://cinemart.cineticket.jp/theater/shinjuku/schedule"
 MOVIE_LIST_URL = "https://www.cinemart.co.jp/theater/shinjuku/movie/"
 BASE_DETAIL_URL = "https://www.cinemart.co.jp/theater/shinjuku/movie/"
+PLAYWRIGHT_TIMEOUT = 30000  # 30 seconds
 
 # --- Helper Functions ---
-
-def _init_driver() -> webdriver.Chrome:
-    """Initializes a headless Chrome WebDriver."""
-    chrome_options = ChromeOptions()
-    chrome_options.add_argument("--headless=new")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
-    try:
-        service = ChromeService(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service, options=chrome_options)
-    except Exception:
-        driver = webdriver.Chrome(options=chrome_options)
-    driver.set_page_load_timeout(40)
-    return driver
 
 def _clean_text(text: Optional[str]) -> str:
     """Normalizes whitespace for display text."""
@@ -59,11 +42,10 @@ def _get_title_key(raw_title: str) -> str:
     title = str(raw_title)
 
     # Normalise some punctuation and whitespace
-    title = title.replace("／", "/")  # full-width slash → ASCII
-    title = title.replace("　", " ")  # full-width space → normal space
+    title = title.replace("／", "/")  # full-width slash -> ASCII
+    title = title.replace("　", " ")  # full-width space -> normal space
 
-    # Drop bracketed notes like 【4K上映】, 『…』, 《…》, （…）
-    # (The content itself is almost never part of the "base" film title.)
+    # Drop bracketed notes like [...], [...], [...], (...)
     title = re.sub(r'[【《「『〈(（][^】》」』〉)）]*[】》」』〉)）]', '', title)
 
     # Remove common suffix-style annotations (formats, events, etc.)
@@ -157,7 +139,7 @@ def _parse_detail_page(soup: BeautifulSoup) -> Dict[str, str | None]:
                     details["country"] = country_clean
 
         # ---- Pattern B ----
-        # 1976年｜イタリア｜…｜111分
+        # 1976年｜イタリア｜...｜111分
         if not (details["year"] and details["runtime_min"] and details["country"]):
             year_match = re.search(r"(\d{4})\s*年", text)
 
@@ -249,7 +231,7 @@ def _build_details_cache() -> Dict[str, Dict]:
         title_tag = item.select_one("p.lineupPost03_title")
         link_tag = item.find("a")
         if not (title_tag and link_tag and link_tag.get("href")): continue
-        
+
         title_key = _get_title_key(title_tag.text)
         if not title_key or title_key in cache: continue
 
@@ -260,60 +242,105 @@ def _build_details_cache() -> Dict[str, Dict]:
             details = _parse_detail_page(detail_soup)
             details["detail_page_url"] = detail_url
             cache[title_key] = details
-    
+
     print(f"INFO: [{CINEMA_NAME}] Built cache for {len(cache)} movies.", file=sys.stderr)
     return cache
 
 def scrape_cinemart_shinjuku(max_days: int = 7) -> List[Dict]:
-    """Main function to scrape Cinemart Shinjuku."""
+    """Main function to scrape Cinemart Shinjuku using Playwright."""
     details_cache = _build_details_cache()
     all_showings = []
-    driver = _init_driver()
 
+    pw_instance = sync_playwright().start()
     try:
+        print(f"INFO: [{CINEMA_NAME}] Launching Playwright browser...", file=sys.stderr)
+        browser = pw_instance.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.set_default_timeout(PLAYWRIGHT_TIMEOUT)
+
         print(f"INFO: [{CINEMA_NAME}] Navigating to schedule page...", file=sys.stderr)
-        driver.get(SCHEDULE_URL)
-        wait = WebDriverWait(driver, 25)
-        date_tabs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[id^='dateSlider']")))
-        
+        page.goto(SCHEDULE_URL, wait_until="networkidle")
+
+        # Wait for date tabs to load
+        try:
+            page.wait_for_selector("div[id^='dateSlider']", timeout=PLAYWRIGHT_TIMEOUT)
+        except PlaywrightTimeout:
+            print(f"ERROR: [{CINEMA_NAME}] Schedule page did not load within timeout.", file=sys.stderr)
+            browser.close()
+            return []
+
+        # Give the page time to hydrate
+        page.wait_for_timeout(2000)
+
+        date_tabs = page.query_selector_all("div[id^='dateSlider']")
+
         for i in range(min(len(date_tabs), max_days)):
-            current_tab = driver.find_elements(By.CSS_SELECTOR, "div[id^='dateSlider']")[i]
-            date_id = current_tab.get_attribute("id").replace("dateSlider", "")
+            # Re-fetch tabs to avoid stale references
+            current_tabs = page.query_selector_all("div[id^='dateSlider']")
+            if i >= len(current_tabs):
+                break
+
+            current_tab = current_tabs[i]
+            tab_id = current_tab.get_attribute("id") or ""
+            date_id = tab_id.replace("dateSlider", "")
             date_iso = f"{date_id[:4]}-{date_id[4:6]}-{date_id[6:]}"
 
             print(f"  -> Processing date: {date_iso}", file=sys.stderr)
-            if i > 0:
-                driver.execute_script("arguments[0].click();", current_tab)
-                wait.until(EC.visibility_of_element_located((By.ID, f"dateJouei{date_id}")))
-            time.sleep(1.5)
 
-            page_soup = BeautifulSoup(driver.page_source, "html.parser")
+            if i > 0:
+                current_tab.click()
+                # Wait for the schedule panel to become visible
+                try:
+                    page.wait_for_selector(f"#dateJouei{date_id}", state="visible", timeout=PLAYWRIGHT_TIMEOUT)
+                except PlaywrightTimeout:
+                    print(f"WARN: [{CINEMA_NAME}] Could not load schedule for {date_iso}", file=sys.stderr)
+                    continue
+
+            page.wait_for_timeout(1500)
+
+            # Parse the page with BeautifulSoup
+            page_soup = BeautifulSoup(page.content(), "html.parser")
             schedule_container = page_soup.find("div", id=f"dateJouei{date_id}")
-            if not schedule_container: continue
+            if not schedule_container:
+                continue
 
             for panel in schedule_container.select("div.movie-panel"):
                 title_jp_tag = panel.select_one(".title-jp")
-                if not title_jp_tag: continue
-                
+                if not title_jp_tag:
+                    continue
+
                 raw_title = _clean_text(title_jp_tag.text)
                 title_key = _get_title_key(raw_title)
                 details = details_cache.get(title_key, {})
 
                 for schedule in panel.select("div.movie-schedule"):
-                    showtime = _clean_text(schedule.select_one(".movie-schedule-begin").text)
-                    screen = _clean_text(schedule.select_one(".screen-name").text)
+                    begin_tag = schedule.select_one(".movie-schedule-begin")
+                    screen_tag = schedule.select_one(".screen-name")
+                    if not begin_tag:
+                        continue
+
+                    showtime = _clean_text(begin_tag.text)
+                    screen = _clean_text(screen_tag.text) if screen_tag else ""
+
                     all_showings.append({
-                        "cinema_name": CINEMA_NAME, "movie_title": raw_title,
-                        "date_text": date_iso, "showtime": showtime,
-                        "screen_name": screen, **details
+                        "cinema_name": CINEMA_NAME,
+                        "movie_title": raw_title,
+                        "date_text": date_iso,
+                        "showtime": showtime,
+                        "screen_name": screen,
+                        **details
                     })
-    except TimeoutException:
+
+        browser.close()
+
+    except PlaywrightTimeout:
         print(f"ERROR: [{CINEMA_NAME}] A timeout occurred.", file=sys.stderr)
     except Exception as e:
         print(f"ERROR: [{CINEMA_NAME}] An unexpected error occurred: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
     finally:
-        if driver:
-            driver.quit()
+        pw_instance.stop()
 
     unique = {(s["date_text"], s["movie_title"], s["showtime"]): s for s in all_showings}
     return sorted(list(unique.values()), key=lambda r: (r.get("date_text", ""), r.get("showtime", "")))
@@ -321,8 +348,11 @@ def scrape_cinemart_shinjuku(max_days: int = 7) -> List[Dict]:
 # --- Main Execution ---
 if __name__ == '__main__':
     if sys.platform == "win32":
-        sys.stdout.reconfigure(encoding='utf-8')
-    
+        try:
+            sys.stdout.reconfigure(encoding='utf-8')
+        except Exception:
+            pass
+
     showings = scrape_cinemart_shinjuku()
     if showings:
         output_filename = "cinemart_shinjuku_showtimes.json"
