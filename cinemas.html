@@ -288,6 +288,97 @@
             box-shadow: 0 4px 8px var(--shadow-color);
         }
 
+        /* --- Search Bar Styles --- */
+        .search-container {
+            margin-bottom: 25px;
+        }
+        .search-input-wrapper {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            padding-left: 45px;
+            font-size: 1em;
+            font-family: var(--primary-font);
+            border: var(--border-width) solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--canvas-color-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: var(--text-color);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+        }
+        .search-input::placeholder {
+            color: var(--medium-text);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--yellow-accent);
+            box-shadow: 0 0 0 3px rgba(var(--yellow-accent-rgb), 0.2);
+        }
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--medium-text);
+            pointer-events: none;
+        }
+        .clear-search-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--medium-text);
+            cursor: pointer;
+            padding: 5px;
+            font-size: 1.2em;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+        .clear-search-btn:hover {
+            color: var(--text-color);
+        }
+        .search-results-info {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--medium-text);
+            font-size: 0.95em;
+        }
+        .no-results-message {
+            text-align: center;
+            padding: 30px;
+            color: var(--medium-text);
+            font-size: 1.1em;
+        }
+        .search-match-cinema {
+            margin-bottom: 30px;
+        }
+        .search-match-cinema h3 {
+            font-size: 1.3em;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: var(--border-width) solid var(--yellow-accent);
+            font-weight: 700;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .search-match-cinema h3:hover {
+            color: var(--yellow-accent);
+        }
+        .search-match-cinema h3 .cinema-english-name-small {
+            font-size: 0.75em;
+            font-weight: 500;
+            color: var(--medium-text);
+            margin-left: 8px;
+        }
 
         @media (max-width: 600px) {
             .home-link {
@@ -328,7 +419,19 @@
 
     <div class="container">
         <header> <h1 id="main-header">Tokyo Mini-Theatre Showtimes <br> 東京のミニシアター </h1> </header>
-        
+
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="film-search-input" class="search-input" placeholder="Search films... (映画を検索)">
+                <button id="clear-search-btn" class="clear-search-btn hidden" aria-label="Clear search">&times;</button>
+            </div>
+            <div id="search-results-info" class="search-results-info hidden"></div>
+        </div>
+
         <button id="back-to-cinemas-btn" class="action-button hidden">&laquo; Back to Cinemas</button>
         <div id="cinema-selection-grid-container">
             </div>
@@ -353,6 +456,11 @@
             
             let fullShowtimesData = [];
             let dataLoaded = false;
+            let currentSearchQuery = '';
+
+            const searchInput = document.getElementById('film-search-input');
+            const clearSearchBtn = document.getElementById('clear-search-btn');
+            const searchResultsInfo = document.getElementById('search-results-info');
             
             const cinemaWebsiteUrls = {
                 "K's Cinema (ケイズシネマ)": "https://www.ks-cinema.com/",
@@ -618,19 +726,245 @@
             }
 
             function handleCinemaClick(cinemaName, allData) {
+                clearSearch();
                 const newHash = `#cinema-${encodeURIComponent(cinemaName)}`;
                 if (window.location.hash !== newHash) {
                     history.pushState({ cinema: cinemaName }, cinemaName, newHash);
                 }
-                handleLocationChange(); 
+                handleLocationChange();
+            }
+
+            // --- Search Functionality ---
+            function getAllTitlesForShowing(showing) {
+                const titles = [];
+                // Primary titles
+                if (showing.title_ja) titles.push(showing.title_ja);
+                if (showing.movie_title) titles.push(showing.movie_title);
+                if (showing.title) titles.push(showing.title);
+                if (showing.title_en) titles.push(showing.title_en);
+                // English translations
+                if (showing.letterboxd_english_title) titles.push(showing.letterboxd_english_title);
+                if (showing.tmdb_display_title) titles.push(showing.tmdb_display_title);
+                if (showing.movie_title_en) titles.push(showing.movie_title_en.replace(/【.*?】/g, '').trim());
+                if (showing.gemini_english_title && showing.gemini_english_title.toUpperCase() !== 'NO_TITLE_FOUND') {
+                    titles.push(showing.gemini_english_title);
+                }
+                return titles;
+            }
+
+            function matchesSearch(showing, query) {
+                if (!query) return true;
+                const lowerQuery = query.toLowerCase();
+                const titles = getAllTitlesForShowing(showing);
+                return titles.some(title => title && title.toLowerCase().includes(lowerQuery));
+            }
+
+            function handleSearch() {
+                const query = searchInput.value.trim();
+                currentSearchQuery = query;
+
+                // Toggle clear button visibility
+                if (query) {
+                    clearSearchBtn.classList.remove('hidden');
+                } else {
+                    clearSearchBtn.classList.add('hidden');
+                }
+
+                // If viewing a specific cinema, filter within that cinema
+                const hash = window.location.hash;
+                if (hash && hash.startsWith('#cinema-')) {
+                    const cinemaName = decodeURIComponent(hash.substring('#cinema-'.length));
+                    const showings = fullShowtimesData.filter(s => (s.cinema_name || s.cinema) === cinemaName);
+                    const filteredShowings = showings.filter(s => matchesSearch(s, query));
+
+                    if (query) {
+                        searchResultsInfo.textContent = `Found ${filteredShowings.length} showtime${filteredShowings.length !== 1 ? 's' : ''} matching "${query}"`;
+                        searchResultsInfo.classList.remove('hidden');
+                    } else {
+                        searchResultsInfo.classList.add('hidden');
+                    }
+
+                    renderShowtimesForCinema(filteredShowings, cinemaName, query);
+                } else {
+                    // Global search across all cinemas
+                    if (query) {
+                        displayGlobalSearchResults(query);
+                    } else {
+                        searchResultsInfo.classList.add('hidden');
+                        displayCinemaSelection(fullShowtimesData);
+                    }
+                }
+            }
+
+            function displayGlobalSearchResults(query) {
+                const matchingShowings = fullShowtimesData.filter(s => matchesSearch(s, query));
+
+                cinemaSelectionGridContainerEl.classList.add('hidden');
+                selectedCinemaShowtimesContainer.innerHTML = '';
+                selectedCinemaShowtimesContainer.classList.remove('hidden');
+                backButton.classList.add('hidden');
+
+                if (matchingShowings.length === 0) {
+                    searchResultsInfo.classList.add('hidden');
+                    selectedCinemaShowtimesContainer.innerHTML = `
+                        <div class="no-results-message">
+                            No films found matching "${query}"<br>
+                            <small>Try searching in English or Japanese</small>
+                        </div>`;
+                    return;
+                }
+
+                // Group by cinema
+                const byCinema = matchingShowings.reduce((acc, showing) => {
+                    const cinemaName = showing.cinema_name || showing.cinema || 'Unknown Cinema';
+                    if (!acc[cinemaName]) acc[cinemaName] = [];
+                    acc[cinemaName].push(showing);
+                    return acc;
+                }, {});
+
+                const cinemaCount = Object.keys(byCinema).length;
+                searchResultsInfo.textContent = `Found ${matchingShowings.length} showtime${matchingShowings.length !== 1 ? 's' : ''} at ${cinemaCount} cinema${cinemaCount !== 1 ? 's' : ''}`;
+                searchResultsInfo.classList.remove('hidden');
+
+                // Render results grouped by cinema
+                const sortedCinemas = Object.keys(byCinema).sort((a, b) => {
+                    const nameA = preferredJapaneseDisplayNames[a] || a;
+                    const nameB = preferredJapaneseDisplayNames[b] || b;
+                    return nameA.localeCompare(nameB);
+                });
+
+                for (const cinemaName of sortedCinemas) {
+                    const cinemaDiv = document.createElement('div');
+                    cinemaDiv.className = 'search-match-cinema';
+
+                    const header = document.createElement('h3');
+                    let displayName = preferredJapaneseDisplayNames[cinemaName] || cinemaName;
+                    let englishName = cinemaEnglishNames[cinemaName];
+
+                    header.innerHTML = displayName;
+                    if (englishName && englishName.toLowerCase() !== displayName.toLowerCase()) {
+                        header.innerHTML += ` <span class="cinema-english-name-small">(${englishName})</span>`;
+                    }
+                    header.addEventListener('click', () => handleCinemaClick(cinemaName, fullShowtimesData));
+                    cinemaDiv.appendChild(header);
+
+                    // Group showings by date
+                    const byDate = byCinema[cinemaName].reduce((acc, showing) => {
+                        const dateKey = showing.date_text || 'Unknown Date';
+                        if (!acc[dateKey]) acc[dateKey] = [];
+                        acc[dateKey].push(showing);
+                        return acc;
+                    }, {});
+
+                    const sortedDates = Object.keys(byDate).sort((a, b) => {
+                        const dateA = parseDateToSort(a);
+                        const dateB = parseDateToSort(b);
+                        if (dateA && dateB) return dateA - dateB;
+                        return a.localeCompare(b);
+                    });
+
+                    for (const dateStr of sortedDates) {
+                        const dateDiv = document.createElement('div');
+                        dateDiv.className = 'date-section';
+                        const dateTitle = document.createElement('h3');
+                        dateTitle.textContent = formatDateForDisplay(dateStr);
+                        dateDiv.appendChild(dateTitle);
+
+                        const ul = document.createElement('ul');
+                        ul.className = 'showtimes-list';
+                        byDate[dateStr].sort((a, b) => (a.showtime || '').localeCompare(b.showtime || ''));
+
+                        byDate[dateStr].forEach(showing => {
+                            const li = createShowtimeListItem(showing, query);
+                            ul.appendChild(li);
+                        });
+
+                        dateDiv.appendChild(ul);
+                        cinemaDiv.appendChild(dateDiv);
+                    }
+
+                    selectedCinemaShowtimesContainer.appendChild(cinemaDiv);
+                }
+            }
+
+            function createShowtimeListItem(showing, highlightQuery) {
+                const li = document.createElement('li');
+                const originalScrapedTitle = showing.title_ja || showing.movie_title || showing.title || showing.title_en || 'Unknown Title';
+
+                let bestEnglishTitle = null;
+                if (showing.letterboxd_english_title && isProbablyNotJapanese(showing.letterboxd_english_title)) {
+                    bestEnglishTitle = showing.letterboxd_english_title;
+                } else if (showing.tmdb_display_title && isProbablyNotJapanese(showing.tmdb_display_title)) {
+                    bestEnglishTitle = showing.tmdb_display_title;
+                } else if (showing.movie_title_en && isProbablyNotJapanese(showing.movie_title_en)) {
+                    bestEnglishTitle = showing.movie_title_en.replace(/【.*?】/g, '').trim();
+                } else if (showing.gemini_english_title && showing.gemini_english_title.toUpperCase() !== 'NO_TITLE_FOUND' && isProbablyNotJapanese(showing.gemini_english_title)) {
+                    bestEnglishTitle = showing.gemini_english_title;
+                }
+
+                if (bestEnglishTitle && bestEnglishTitle.toLowerCase() === originalScrapedTitle.toLowerCase()) {
+                    bestEnglishTitle = null;
+                }
+
+                let titleDisplayHtml = `<span class="showtime-title">${originalScrapedTitle}</span>`;
+                if (bestEnglishTitle) {
+                    titleDisplayHtml += ` <span class="gemini-english-title">(${bestEnglishTitle})</span>`;
+                }
+
+                let linksHtml = '';
+                if (showing.letterboxd_link && showing.letterboxd_link.toUpperCase().indexOf('FAILED') === -1) {
+                    linksHtml += `<a href="${showing.letterboxd_link}" target="_blank" rel="noopener noreferrer" class="showtime-link-btn letterboxd" title="View on Letterboxd">Letterboxd</a>`;
+                }
+                if (showing.detail_page_url) {
+                    linksHtml += `<a href="${showing.detail_page_url}" target="_blank" rel="noopener noreferrer" class="showtime-link-btn details" title="View details on cinema's website">Details</a>`;
+                }
+
+                li.innerHTML = `
+                    <span class="showtime-time">${showing.showtime || 'N/A'}</span>
+                    <div class="showtime-title-container">${titleDisplayHtml}</div>
+                    <div class="showtime-links">${linksHtml}</div>
+                `;
+
+                return li;
+            }
+
+            function clearSearch() {
+                searchInput.value = '';
+                currentSearchQuery = '';
+                clearSearchBtn.classList.add('hidden');
+                searchResultsInfo.classList.add('hidden');
+                handleLocationChange();
+            }
+
+            // Search event listeners
+            searchInput.addEventListener('input', debounce(handleSearch, 200));
+            clearSearchBtn.addEventListener('click', clearSearch);
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    clearSearch();
+                    searchInput.blur();
+                }
+            });
+
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
             }
 
             backButton.addEventListener('click', () => {
+                clearSearch();
                 history.pushState({ cinema: null }, "", window.location.pathname + window.location.search);
-                handleLocationChange(); 
+                handleLocationChange();
             });
             
-            function renderShowtimesForCinema(showings, cinemaNameInJson) {
+            function renderShowtimesForCinema(showings, cinemaNameInJson, searchQuery = '') {
                 selectedCinemaShowtimesContainer.innerHTML = '';
                 const cinemaSectionDiv = document.createElement('div');
                 cinemaSectionDiv.className = 'cinema-section';
