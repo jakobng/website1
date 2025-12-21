@@ -4,16 +4,15 @@ import datetime as dt
 import json
 import re
 import sys
-import time
 import unicodedata
 from typing import Dict, List, Optional
 from urllib.parse import urljoin
 
 import requests
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 
 try:
-    from playwright.sync_api import sync_playwright, Page, Error, TimeoutError
+    from playwright.sync_api import sync_playwright, TimeoutError
 except ImportError:
     sys.exit(
         "ERROR: Playwright not installed. Please run 'pip install playwright' and 'playwright install chromium'."
@@ -26,12 +25,6 @@ DAYS_TO_SCRAPE = 7
 
 # Eigaland (for schedule)
 EIGALAND_URL = "https://schedule.eigaland.com/schedule?webKey=c34cee0e-5a5e-4b99-8978-f04879a82299"
-DATE_ITEM_SELECTOR_CSS = "div.calender-head-item"
-MOVIE_SCHEDULE_SELECTOR_CSS = "div.movie-schedule"
-MOVIE_TITLE_EIGALAND_CSS = "h2.text-center"
-SHOWTIME_BLOCK_CSS = ".movie-schedule-info.flex-row"
-SHOWTIME_TIME_CSS = ".time h2"
-SHOWTIME_SCREEN_CSS = ".room .name"
 
 # Cinema Rosa site (for details)
 ROSA_BASE_URL = "https://www.cinemarosa.net/"
@@ -172,114 +165,116 @@ def scrape_cinema_rosa() -> List[Dict[str, str]]:
         print(f"INFO: [{CINEMA_NAME}] Navigating to Eigaland schedule: {EIGALAND_URL}", file=sys.stderr)
         page.goto(EIGALAND_URL, wait_until="networkidle")
 
-        # Wait for the calendar to be visible
+        # Wait for the calendar to load
         print(f"INFO: [{CINEMA_NAME}] Waiting for calendar to load...", file=sys.stderr)
         try:
-            page.wait_for_selector(DATE_ITEM_SELECTOR_CSS, timeout=PLAYWRIGHT_TIMEOUT)
+            page.wait_for_selector("div.calender-head-item", timeout=PLAYWRIGHT_TIMEOUT)
         except TimeoutError:
             print(f"ERROR: [{CINEMA_NAME}] Calendar did not load within timeout.", file=sys.stderr)
             browser.close()
             return []
 
-        # Give Vue a moment to fully hydrate
         page.wait_for_timeout(2000)
 
-        # Get all date elements
-        date_elements = page.query_selector_all(DATE_ITEM_SELECTOR_CSS)
-        if not date_elements:
-            print(f"ERROR: [{CINEMA_NAME}] Could not find any date elements.", file=sys.stderr)
-            browser.close()
-            return []
+        # Get all date elements for clicking
+        date_elements = page.query_selector_all("div.calender-head-item")
+        num_dates = min(len(date_elements), DAYS_TO_SCRAPE)
 
-        num_dates_to_click = min(len(date_elements), DAYS_TO_SCRAPE)
-        print(f"INFO: [{CINEMA_NAME}] Found {len(date_elements)} date elements. Will process first {num_dates_to_click}.", file=sys.stderr)
+        print(f"INFO: [{CINEMA_NAME}] Found {len(date_elements)} dates. Will process {num_dates}.", file=sys.stderr)
 
-        for i in range(num_dates_to_click):
-            try:
-                # Refetch date elements to avoid stale references
-                date_elements = page.query_selector_all(DATE_ITEM_SELECTOR_CSS)
-                if i >= len(date_elements):
-                    break
+        # Click through each date and scrape
+        for date_idx in range(num_dates):
+            # Refetch date elements to avoid stale references
+            date_elements = page.query_selector_all("div.calender-head-item")
+            if date_idx >= len(date_elements):
+                break
 
-                date_element = date_elements[i]
+            date_elem = date_elements[date_idx]
 
-                # Get the date text
-                date_p = date_element.query_selector("p.date")
-                if not date_p:
-                    continue
-
-                date_str = _clean_text(date_p.text_content() or "")
-                parsed_date = _parse_date_from_eigaland(date_str, dt.date.today().year)
-
-                if not parsed_date:
-                    print(f"WARN: [{CINEMA_NAME}] Could not parse date from '{date_str}' at index {i}. Skipping.", file=sys.stderr)
-                    continue
-
-                # Skip past dates
-                if parsed_date < dt.date.today() - dt.timedelta(days=1):
-                    print(f"INFO: [{CINEMA_NAME}] Skipping past date {parsed_date.isoformat()}", file=sys.stderr)
-                    continue
-
-                print(f"INFO: [{CINEMA_NAME}] Clicking date {parsed_date.isoformat()} ({date_str})...", file=sys.stderr)
-                date_element.click()
-
-                # Wait for schedule to update
-                page.wait_for_timeout(2000)
-
-                # Parse the schedule blocks
-                schedule_blocks = page.query_selector_all(MOVIE_SCHEDULE_SELECTOR_CSS)
-
-                for item_block in schedule_blocks:
-                    try:
-                        raw_title_elem = item_block.query_selector(MOVIE_TITLE_EIGALAND_CSS)
-                        if not raw_title_elem:
-                            continue
-
-                        raw_title = _clean_text(raw_title_elem.text_content() or "")
-                        if not raw_title:
-                            continue
-
-                        title_key = _clean_title_for_matching(raw_title)
-                        details = details_cache.get(title_key, {})
-
-                        # Fuzzy match if exact match fails
-                        if not details:
-                            for cache_key, cache_details in details_cache.items():
-                                if cache_key in title_key or title_key in cache_key:
-                                    details = cache_details
-                                    break
-
-                        # Get all showtimes for this movie
-                        for schedule_info in item_block.query_selector_all(SHOWTIME_BLOCK_CSS):
-                            time_el = schedule_info.query_selector(SHOWTIME_TIME_CSS)
-                            screen_el = schedule_info.query_selector(SHOWTIME_SCREEN_CSS)
-
-                            if not time_el or not screen_el:
-                                continue
-
-                            showtime = _clean_text(time_el.text_content() or "")
-                            screen = _clean_text(screen_el.text_content() or "")
-
-                            # Look for purchase URL
-                            purchase_link = schedule_info.query_selector('a[href*="app.eigaland.com"]')
-                            purchase_url = purchase_link.get_attribute('href') if purchase_link else None
-
-                            showings.append({
-                                "cinema_name": CINEMA_NAME,
-                                "movie_title": raw_title,
-                                "date_text": parsed_date.isoformat(),
-                                "showtime": showtime,
-                                "screen_name": screen,
-                                **details,
-                                "purchase_url": purchase_url
-                            })
-                    except Exception as e:
-                        print(f"WARN: [{CINEMA_NAME}] Error parsing movie block: {e}", file=sys.stderr)
-                        continue
-
-            except Exception as e:
-                print(f"ERROR: [{CINEMA_NAME}] Unexpected error on date index {i}: {e}", file=sys.stderr)
+            # Get the date text
+            date_text_elem = date_elem.query_selector("p.date")
+            if not date_text_elem:
                 continue
+
+            date_str = _clean_text(date_text_elem.text_content() or "")
+            show_date = _parse_date_from_eigaland(date_str, dt.date.today().year)
+
+            if not show_date:
+                print(f"WARN: [{CINEMA_NAME}] Could not parse date '{date_str}'", file=sys.stderr)
+                continue
+
+            # Skip past dates
+            if show_date < dt.date.today() - dt.timedelta(days=1):
+                print(f"INFO: [{CINEMA_NAME}] Skipping past date {show_date.isoformat()}", file=sys.stderr)
+                continue
+
+            print(f"INFO: [{CINEMA_NAME}] Clicking date {show_date.isoformat()} ({date_str})...", file=sys.stderr)
+
+            # Click the date
+            date_elem.click()
+            page.wait_for_timeout(2000)
+
+            # Now scrape all movies for this date
+            movie_items = page.query_selector_all("div.movie-schedule-item")
+
+            for movie_item in movie_items:
+                # Get movie title
+                title_elem = movie_item.query_selector("span[style*='font-weight: 700']")
+                if not title_elem:
+                    continue
+
+                raw_title = _clean_text(title_elem.text_content() or "")
+                if not raw_title:
+                    continue
+
+                title_key = _clean_title_for_matching(raw_title)
+                details = details_cache.get(title_key, {})
+
+                # Fuzzy match if exact match fails
+                if not details:
+                    for cache_key, cache_details in details_cache.items():
+                        if cache_key in title_key or title_key in cache_key:
+                            details = cache_details
+                            break
+
+                # Get the schedule table
+                table = movie_item.query_selector("table.schedule-table")
+                if not table:
+                    continue
+
+                # Process each row
+                rows = table.query_selector_all("tbody tr")
+                for row in rows:
+                    # Get screen name
+                    place_cell = row.query_selector("td.place span.name")
+                    screen_name = _clean_text(place_cell.text_content() or "") if place_cell else ""
+
+                    # Get all non-empty time slots
+                    slots = row.query_selector_all("td.slot")
+
+                    for slot in slots:
+                        # Get the time from h2
+                        time_elem = slot.query_selector("h2")
+                        if not time_elem:
+                            continue
+
+                        showtime = _clean_text(time_elem.text_content() or "")
+                        if not showtime or not re.match(r'\d{1,2}:\d{2}', showtime):
+                            continue
+
+                        # Look for purchase URL
+                        purchase_link_elem = slot.query_selector('a[href*="eigaland.com"]')
+                        purchase_url = purchase_link_elem.get_attribute('href') if purchase_link_elem else None
+
+                        showings.append({
+                            "cinema_name": CINEMA_NAME,
+                            "movie_title": raw_title,
+                            "date_text": show_date.isoformat(),
+                            "showtime": showtime,
+                            "screen_name": screen_name,
+                            **details,
+                            "purchase_url": purchase_url
+                        })
 
         browser.close()
 
