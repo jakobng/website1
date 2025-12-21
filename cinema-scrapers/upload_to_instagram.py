@@ -32,11 +32,15 @@ def upload_single_image_container(image_url, caption):
     }
     response = requests.post(url, data=payload)
     result = response.json()
-    
+
     if "id" not in result:
-        print(f"❌ Error creating single container: {result}")
+        print(f"❌ Error creating single container:")
+        print(f"   HTTP Status: {response.status_code}")
+        print(f"   Response: {result}")
+        if "error" in result:
+            print(f"   Error Message: {result['error'].get('message', 'Unknown error')}")
         sys.exit(1)
-    
+
     print(f"✅ Created Single Container ID: {result['id']}")
     return result["id"]
 
@@ -50,11 +54,18 @@ def upload_carousel_child_container(image_url):
     }
     response = requests.post(url, data=payload)
     result = response.json()
-    
+
     if "id" not in result:
-        print(f"❌ Error creating child container: {result}")
-        return None
-        
+        print(f"❌ Error creating child container:")
+        print(f"   HTTP Status: {response.status_code}")
+        print(f"   Image URL: {image_url}")
+        print(f"   Response: {result}")
+        if "error" in result:
+            print(f"   Error Message: {result['error'].get('message', 'Unknown error')}")
+            print(f"   Error Type: {result['error'].get('type', 'Unknown type')}")
+        print(f"❌ FATAL: Carousel child container creation failed. Exiting.")
+        sys.exit(1)
+
     print(f"   - Child Container Created: {result['id']}")
     return result["id"]
 
@@ -69,11 +80,17 @@ def upload_carousel_container(child_ids, caption):
     }
     response = requests.post(url, data=payload)
     result = response.json()
-    
+
     if "id" not in result:
-        print(f"❌ Error creating parent container: {result}")
+        print(f"❌ Error creating parent container:")
+        print(f"   HTTP Status: {response.status_code}")
+        print(f"   Child IDs: {child_ids}")
+        print(f"   Response: {result}")
+        if "error" in result:
+            print(f"   Error Message: {result['error'].get('message', 'Unknown error')}")
+            print(f"   Error Type: {result['error'].get('type', 'Unknown type')}")
         sys.exit(1)
-        
+
     print(f"✅ Created Carousel Parent ID: {result['id']}")
     return result["id"]
 
@@ -104,12 +121,18 @@ def publish_media(creation_id):
     }
     response = requests.post(url, data=payload)
     result = response.json()
-    
+
     if "id" in result:
         print(f"🚀 Published Successfully! Media ID: {result['id']}")
         return True
     else:
-        print(f"❌ Publish Failed: {result}")
+        print(f"❌ Publish Failed:")
+        print(f"   HTTP Status: {response.status_code}")
+        print(f"   Container ID: {creation_id}")
+        print(f"   Response: {result}")
+        if "error" in result:
+            print(f"   Error Message: {result['error'].get('message', 'Unknown error')}")
+            print(f"   Error Type: {result['error'].get('type', 'Unknown type')}")
         return False
 
 def check_media_status(container_id):
@@ -119,24 +142,30 @@ def check_media_status(container_id):
         "fields": "status_code,status",
         "access_token": IG_ACCESS_TOKEN
     }
-    
+
     print("   ⏳ Checking processing status...", end="", flush=True)
-    for _ in range(5): # Try 5 times
+    for attempt in range(5): # Try 5 times
         response = requests.get(url, params=params)
         data = response.json()
         status = data.get("status_code")
-        
+
         if status == "FINISHED":
             print(" Ready!")
             return True
         elif status == "ERROR":
             print(" Failed processing.")
+            print(f"   Container ID: {container_id}")
+            print(f"   Status Response: {data}")
+            if "error" in data:
+                print(f"   Error: {data['error'].get('message', 'Unknown error')}")
             return False
-        
+
         print(".", end="", flush=True)
         time.sleep(5)
-        
+
     print(" Timeout.")
+    print(f"   Container ID: {container_id}")
+    print(f"   Last Status: {data}")
     return False
 
 # --- Main Logic ---
@@ -164,11 +193,12 @@ def main():
     # ---------------------------------------------------------
     
     if POST_TYPE == "cinema":
-        # Cinema Daily (V1) -> Looks for 'post_image_XX.png'
-        print("   -> Targeting V1 Files (Cinema Daily)")
+        # Cinema Daily (V1) -> Looks for 'post_image_XX.png' (Feed only, no stories)
+        print("   -> Targeting V1 Files (Cinema Daily - Feed Only)")
         feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_image_*.png")))
-        story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_image_*.png")))
-        
+        # Cinema mode does not use stories
+        story_files = []
+
         caption_path = os.path.join(OUTPUT_DIR, "post_caption.txt")
         if os.path.exists(caption_path):
             with open(caption_path, "r", encoding="utf-8") as f:
@@ -192,31 +222,46 @@ def main():
     # --- FEED MODE ---
     if feed_files:
         print(f"🔹 Detected {len(feed_files)} Feed Images.")
-        
-        child_ids = []
-        for local_path in feed_files:
-            filename = os.path.basename(local_path)
-            # FIX: Added ?v=... to URL
+
+        if len(feed_files) == 1:
+            # Single Image
+            filename = os.path.basename(feed_files[0])
             image_url = f"{GITHUB_PAGES_BASE_URL}{filename}?v={cache_buster}"
             print(f"   Uploading: {filename} -> {image_url}")
-            
-            if len(feed_files) == 1:
-                # Single Image
-                c_id = upload_single_image_container(image_url, caption_text)
-                publish_media(c_id)
-            else:
-                # Carousel Item
+
+            c_id = upload_single_image_container(image_url, caption_text)
+            if not publish_media(c_id):
+                print("❌ FATAL: Failed to publish single image post. Exiting.")
+                sys.exit(1)
+        else:
+            # Carousel
+            child_ids = []
+            for local_path in feed_files:
+                filename = os.path.basename(local_path)
+                image_url = f"{GITHUB_PAGES_BASE_URL}{filename}?v={cache_buster}"
+                print(f"   Uploading: {filename} -> {image_url}")
+
                 c_id = upload_carousel_child_container(image_url)
-                if c_id:
-                    child_ids.append(c_id)
+                child_ids.append(c_id)
                 time.sleep(2) # Brief pause
 
-        if child_ids:
-            print("🔹 Creating Carousel Parent...")
+            # Validate all children were created
+            if len(child_ids) != len(feed_files):
+                print(f"❌ FATAL: Expected {len(feed_files)} child containers, but only got {len(child_ids)}. Exiting.")
+                sys.exit(1)
+
+            print(f"🔹 Creating Carousel Parent with {len(child_ids)} children...")
             parent_id = upload_carousel_container(child_ids, caption_text)
-            
-            if check_media_status(parent_id):
-                publish_media(parent_id)
+
+            if not check_media_status(parent_id):
+                print("❌ FATAL: Carousel parent container failed status check. Exiting.")
+                sys.exit(1)
+
+            if not publish_media(parent_id):
+                print("❌ FATAL: Failed to publish carousel. Exiting.")
+                sys.exit(1)
+
+            print("✅ Feed carousel published successfully!")
 
     else:
         print(f"ℹ️ No feed images found for mode '{POST_TYPE}'. Skipping Feed upload.")
