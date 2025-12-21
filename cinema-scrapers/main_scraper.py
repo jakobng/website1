@@ -21,6 +21,7 @@ from cinema_modules import (
     bunkamura_module,
     bluestudio_module,
     cine_switch_ginza_module,
+    cinemalice_module,
     eurospace_module,
     human_shibuya_module,
     human_yurakucho_module,
@@ -450,12 +451,15 @@ def main():
         ("Chupki", chupki_module.scrape_chupki, None),
         ("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji, None),
         ("Tollywood", tollywood_module.scrape_tollywood, None),
-        
+
         # FIXED: Use 'fetch_morc_asagaya_showings'
         ("Morc Asagaya", morc_asagaya_module.fetch_morc_asagaya_showings, None),
-        
+
         # FIXED: Use 'scrape' AND added normalizer
         ("Eurospace", eurospace_module.scrape, _normalize_eurospace_schema),
+
+        # CineMalice - new mini-theater opened Dec 2025
+        ("CineMalice", cinemalice_module.scrape_cinemalice, None),
     ]
 
     print("Starting all scrapers…")
