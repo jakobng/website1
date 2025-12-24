@@ -15878,5 +15878,72 @@
       "ファンタジー"
     ],
     "vote_average": 0.0
-  }
+  },
+  "年またぎ≪陰鬱暴走・正面衝突≫": null,
+  "ブレイカウェイ": {
+    "tmdb_id": 10180,
+    "tmdb_title_jp": "ブレイカウェイ",
+    "tmdb_title_en": "Blinkende lygter",
+    "overview": "",
+    "poster_path": "/8drJTelBYElR5Xh1DwCWOTJIaBs.jpg",
+    "backdrop_path": "/oW8tmQwXbg45AwqLqKCRhbgV89P.jpg",
+    "release_date": "2000-11-03",
+    "director": "Anders Thomas Jensen",
+    "runtime": 109,
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪"
+    ],
+    "vote_average": 7.142
+  },
+  "眠る虫": {
+    "tmdb_id": 735631,
+    "tmdb_title_jp": "眠る虫",
+    "tmdb_title_en": "眠る虫",
+    "overview": "",
+    "poster_path": "/4luJkzSVrtpAJYYOZAcxbiZfFiy.jpg",
+    "backdrop_path": "/qdTRrEWVQP1jMtx8vLODWoDo4u4.jpg",
+    "release_date": "2020-09-05",
+    "director": "Yurina Kaneko",
+    "runtime": 60,
+    "genres": [
+      "サイエンスフィクション"
+    ],
+    "vote_average": 6.7
+  },
+  "君の名前で僕を呼んで": {
+    "tmdb_id": 398818,
+    "tmdb_title_jp": "君の名前で僕を呼んで",
+    "tmdb_title_en": "Call Me by Your Name",
+    "overview": "1983年夏、北イタリアの避暑地で家族と過ごす17歳のエリオは、大学教授の父が招待した年上の大学院生オリヴァーと出会う。一緒に自転車で散策したり泳いだり、読書したり音楽を聴いたりするうちに、エリオはオリヴァーに恋心を抱く。やがてその思いは通じるが、夏の終わりが近づくにつれてオリヴァーが避暑地を去る日が近くなる。",
+    "poster_path": "/cYBXXi9Esd8BuOcPrpa2uGYXfTC.jpg",
+    "backdrop_path": "/zvOJawrnmgK0sL293mOXOdLvTXQ.jpg",
+    "release_date": "2017-07-28",
+    "director": "ルカ・グァダニーノ",
+    "runtime": 132,
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "vote_average": 8.1
+  },
+  "殺しのドレス": {
+    "tmdb_id": 11033,
+    "tmdb_title_jp": "殺しのドレス",
+    "tmdb_title_en": "Dressed to Kill",
+    "overview": "夫婦生活に不満を抱えるケイトは精神分析医エリオットのもとへ通っていた。そんな彼女が美術館で出会った男性との情事のあと、剃刀を手にした女性に惨殺される。現場に偶然居合わせたコールガールのリズは、警察から疑いの目を向けられ、街中で危険な目に遭いながらも、ケイトの息子ピーターと組んで真犯人を追うことに…。",
+    "poster_path": "/aeaYwYQmSW3aYPy3INPpDpBcvQU.jpg",
+    "backdrop_path": "/8UZfEjAlFq1iUiAkHMkJViq4ZO0.jpg",
+    "release_date": "1980-07-25",
+    "director": "ブライアン・デ・パルマ",
+    "runtime": 105,
+    "genres": [
+      "スリラー",
+      "謎",
+      "ホラー"
+    ],
+    "vote_average": 6.96
+  },
+  "ゴッドファーザー 〈4Kリマスター版〉": null
 }
