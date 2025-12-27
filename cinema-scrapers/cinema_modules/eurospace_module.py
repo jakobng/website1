@@ -54,7 +54,10 @@ def _parse_date(h3_tag: bs4.Tag) -> dt.date | None:
     if not m:
         return None
     y, mth, d = map(int, m.groups())
-    return dt.date(y, mth, d)
+    try:
+        return dt.date(y, mth, d)
+    except ValueError:
+        return None
 
 
 def _scrape_detail(url: str) -> Dict[str, str | int | None]:
