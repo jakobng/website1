@@ -160,7 +160,14 @@ def scrape_waseda_shochiku(max_days: int = 21) -> List[Dict[str, str]]:
         if len(md_pairs) == 2:
             m1, d1 = map(int, md_pairs[0])
             m2, d2 = map(int, md_pairs[1])
+            # Validate month/day are in reasonable ranges
+            if not (1 <= m1 <= 12 and 1 <= d1 <= 31 and 1 <= m2 <= 12 and 1 <= d2 <= 31):
+                continue
             year_start = today.year
+            # Handle year boundary: if start month is before current month,
+            # the schedule is likely for next year (e.g., in Dec showing Jan dates)
+            if m1 < today.month and today.month >= 10:
+                year_start += 1
             try:
                 start_date = _dt.date(year_start, m1, d1)
                 end_date = _dt.date(year_start if m2 >= m1 else year_start + 1, m2, d2)

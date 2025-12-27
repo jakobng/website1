@@ -98,10 +98,21 @@ def scrape_nfaj_calendar() -> List[Dict]:
     for btn in soup.select("#calendar .tab_list button"):
         date_str_match = re.search(r'(\d{1,2}/\d{1,2})', _clean_text(btn))
         if not date_str_match: continue
-        
+
         month, day = map(int, date_str_match.group(1).split('/'))
-        year = today.year + 1 if month < today.month else today.year
-        
+        # Validate month/day are in reasonable ranges
+        if not (1 <= month <= 12) or not (1 <= day <= 31):
+            continue
+        # Handle year boundary: if month is earlier than current month,
+        # or if we're in late year (Oct-Dec) and month is early (Jan-Mar),
+        # assume it's next year
+        if month < today.month:
+            year = today.year + 1
+        elif today.month >= 10 and month <= 3:
+            year = today.year + 1
+        else:
+            year = today.year
+
         try:
             date_obj = datetime(year, month, day).date()
         except ValueError:

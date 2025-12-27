@@ -71,6 +71,10 @@ def expand_date_text(text: str) -> List[date]:
     date_pattern = re.compile(r"(\d{1,2})/(\d{1,2})")
 
     def make_date(m, d):
+        # Validate month is in valid range (1-12)
+        # This catches cases where regex matches year parts like "2025/1" -> m=25
+        if not (1 <= m <= 12) or not (1 <= d <= 31):
+            return None
         y = current_year
         # Handle year boundaries
         if today.month >= 10 and m <= 3:

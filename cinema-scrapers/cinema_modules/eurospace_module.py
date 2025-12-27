@@ -54,9 +54,14 @@ def _parse_date(h3_tag: bs4.Tag) -> dt.date | None:
     if not m:
         return None
     y, mth, d = map(int, m.groups())
+    # Validate month/day are in reasonable ranges
+    if not (1 <= mth <= 12) or not (1 <= d <= 31):
+        print(f"[Eurospace] Invalid date components: year={y}, month={mth}, day={d}", file=sys.stderr)
+        return None
     try:
         return dt.date(y, mth, d)
-    except ValueError:
+    except ValueError as e:
+        print(f"[Eurospace] Date construction failed: {y}-{mth}-{d}: {e}", file=sys.stderr)
         return None
 
 
