@@ -71,13 +71,20 @@ def expand_date_text(text: str) -> List[date]:
     date_pattern = re.compile(r"(\d{1,2})/(\d{1,2})")
 
     def make_date(m, d):
+        # Validate month is in valid range (1-12)
+        # This catches cases where regex matches year parts like "2025/1" -> m=25
+        if not (1 <= m <= 12) or not (1 <= d <= 31):
+            return None
         y = current_year
         # Handle year boundaries
         if today.month >= 10 and m <= 3:
             y += 1
         elif today.month <= 3 and m >= 10:
             y -= 1
-        return date(y, m, d)
+        try:
+            return date(y, m, d)
+        except ValueError:
+            return None
 
     # Split by commas first
     parts = re.split(r'[、,]', text)
@@ -92,16 +99,20 @@ def expand_date_text(text: str) -> List[date]:
             if start_match:
                 start_m, start_d = map(int, start_match.groups())
                 start_date = make_date(start_m, start_d)
-                
+                if start_date is None:
+                    continue
+
                 end_match = date_pattern.search(range_sides[1]) if len(range_sides) > 1 else None
-                
+
                 if end_match:
                     end_m, end_d = map(int, end_match.groups())
                     end_date = make_date(end_m, end_d)
+                    if end_date is None:
+                        continue
                 else:
                     # If "End TBD", assume 1 week
                     end_date = start_date + timedelta(days=7)
-                
+
                 # Fill range
                 curr = start_date
                 while curr <= end_date:
@@ -111,7 +122,9 @@ def expand_date_text(text: str) -> List[date]:
             match = date_pattern.search(part)
             if match:
                 m, d = map(int, match.groups())
-                dates.append(make_date(m, d))
+                parsed_date = make_date(m, d)
+                if parsed_date is not None:
+                    dates.append(parsed_date)
 
     return sorted(list(set(dates)))
 
