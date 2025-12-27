@@ -120,8 +120,9 @@ CINEMA_ADDRESSES = {
     "CINEMA Chupki TABATA": "東京都北区東田端2-14-4",
     "シネクイント": "東京都渋谷区宇田川町20-11 8F",
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F",
-    "Tollywood": "東京都世田谷区代沢5-32-5 2F",
-    "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F"
+    "下北沢トリウッド": "東京都世田谷区代沢5-32-5 2F",
+    "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F",
+    "シネマリス": "東京都新宿区新宿3-29-6"
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -152,7 +153,8 @@ CINEMA_ENGLISH_NAMES = {
     "シネクイント": "Cine Quinto Shibuya",
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
-    "Tollywood": "Tollywood"
+    "下北沢トリウッド": "Tollywood",
+    "シネマリス": "Cinema Lis"
 }
 
 CINEMA_FILENAME_OVERRIDES = {
@@ -574,12 +576,17 @@ def main() -> None:
 
     try:
         todays_showings = load_showtimes(today_str)
-    except Exception:
+    except Exception as e:
+        print(f"❌ Error loading showtimes: {e}")
         todays_showings = []
 
     if not todays_showings:
         print(f"❌ No showings found for date: {today_str}")
-        print("   (This likely means the Scraper didn't find any Wednesday data)")
+        print("   (This likely means the Scraper didn't find any data for today)")
+        print("\n   Troubleshooting:")
+        print("   1. Check if main_scraper.py ran successfully")
+        print("   2. Verify the scraper and generator are using the same date (check logs)")
+        print("   3. Cinema websites may not have updated their schedules yet")
         return
     else:
         print(f"✅ Found {len(todays_showings)} showings for {today_str}")

@@ -12,6 +12,7 @@ import os
 import difflib
 import smtplib
 import ssl
+from datetime import datetime, timezone, timedelta
 from email.message import EmailMessage
 from pathlib import Path
 from bs4 import BeautifulSoup
@@ -397,6 +398,20 @@ def _run_scraper(name, func, listings_list, normalize_func=None):
 # --- Main Execution ---
 
 def main():
+    # --- TIMEZONE SAFETY CHECK ---
+    # Ensure we're using JST explicitly to match generate_post.py
+    JST = timezone(timedelta(hours=9))
+    now_utc = datetime.now(timezone.utc)
+    now_jst = now_utc.astimezone(JST)
+    today_jst = now_jst.date()
+
+    print(f"🕒 Scraper Start Time:")
+    print(f"   UTC: {now_utc.strftime('%Y-%m-%d %H:%M:%S %Z')}")
+    print(f"   JST: {now_jst.strftime('%Y-%m-%d %H:%M:%S %Z')}")
+    print(f"   Today (JST): {today_jst.isoformat()}")
+    print(f"   System timezone: {time.tzname}")
+    print()
+
     tmdb_key = os.environ.get("TMDB_API_KEY")
     if not tmdb_key:
         print("⚠️ Warning: TMDB_API_KEY not found. Metadata enrichment will be skipped.")
@@ -499,6 +514,22 @@ def main():
     
     # 5. SAVE OUTPUT
     print(f"Saving to {OUTPUT_JSON}...")
+
+    # --- DATE VALIDATION ---
+    # Check if we have data for today (JST) to help diagnose date issues
+    today_count = sum(1 for item in listings if item.get("date_text") == today_jst.isoformat())
+    all_dates = set(item.get("date_text") for item in listings if item.get("date_text"))
+
+    print(f"\n📊 Data Summary:")
+    print(f"   Total listings: {len(listings)}")
+    print(f"   Listings for today ({today_jst.isoformat()}): {today_count}")
+    print(f"   Unique dates in data: {sorted(all_dates)[:10]}")
+
+    if today_count == 0 and listings:
+        print(f"\n⚠️  WARNING: No listings found for today ({today_jst.isoformat()})!")
+        print(f"   This may cause generate_post.py to fail or show old data.")
+        print(f"   Cinema websites may not have updated their schedules yet.")
+
     try:
         with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
             json.dump(listings, f, ensure_ascii=False, indent=2)
