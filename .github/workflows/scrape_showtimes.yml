@@ -101,7 +101,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       # --- STEP 2: GENERATE CONTENT (SPLIT) ---
-      
+
       # If CINEMA mode -> Use generate_post.py
       - name: Generate Cinema Post (V1)
         if: steps.mode.outputs.post_type == 'cinema'
