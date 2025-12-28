@@ -16370,5 +16370,20 @@
       "ドラマ"
     ],
     "vote_average": 7.12
+  },
+  "リトアニアへの旅の追憶": {
+    "tmdb_id": 148811,
+    "tmdb_title_jp": "リトアニアへの旅の追憶",
+    "tmdb_title_en": "Reminiscences of a Journey to Lithuania",
+    "overview": "",
+    "poster_path": "/zNWbeCXhavVkSWTUgr0nn299lWb.jpg",
+    "backdrop_path": "/2vclk5TTxXQk0hz3cY3Llbe10AU.jpg",
+    "release_date": "1996-08-30",
+    "director": "ジョナス・メカス",
+    "runtime": 81,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.0
   }
 }
