@@ -136,7 +136,14 @@ jobs:
           # Push
           git push
 
-      # --- STEP 4: UPLOAD TO INSTAGRAM ---
+      # --- STEP 4: WAIT FOR GITHUB PAGES TO DEPLOY ---
+      - name: Wait for GitHub Pages deployment
+        run: |
+          echo "⏳ Waiting 90 seconds for GitHub Pages to deploy new images..."
+          sleep 90
+          echo "✅ Wait complete. Proceeding with upload."
+
+      # --- STEP 5: UPLOAD TO INSTAGRAM ---
       - name: Upload to Instagram
         run: python upload_to_instagram.py --type ${{ steps.mode.outputs.post_type }}
         env:
