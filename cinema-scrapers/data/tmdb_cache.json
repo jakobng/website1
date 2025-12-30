@@ -16478,5 +16478,56 @@
     "runtime": 65,
     "genres": [],
     "vote_average": 8.5
-  }
+  },
+  "レオ：ブラッディ・スウィート": null,
+  "ナタ 魔童の大暴れ（日本語吹替版）": {
+    "tmdb_id": 980477,
+    "tmdb_title_jp": "ナタ 魔童の大暴れ",
+    "tmdb_title_en": "哪吒之魔童闹海",
+    "overview": "",
+    "poster_path": "/bTMf8M7rZ21fChGdtsZtJj4Dfqh.jpg",
+    "backdrop_path": "/8btfz81bOJ2lC7cujYBTw03wzg3.jpg",
+    "release_date": "2025-01-29",
+    "director": "饺子",
+    "runtime": 144,
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アドベンチャー",
+      "アクション"
+    ],
+    "vote_average": 8.099
+  },
+  "ダーティハンター": null,
+  "アフター・ウェディング": {
+    "tmdb_id": 3549,
+    "tmdb_title_jp": "アフター・ウェディング",
+    "tmdb_title_en": "Efter brylluppet",
+    "overview": "",
+    "poster_path": "/jUiB4jkt1fS7AVK8h9154xGQ4Qp.jpg",
+    "backdrop_path": "/c2nxaEE0yBcg9qeqrisbkvBxTNh.jpg",
+    "release_date": "2006-02-24",
+    "director": "Susanne Bier",
+    "runtime": 124,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.122
+  },
+  "ロッタちゃん【バムセ☆ナイト】": {
+    "tmdb_id": 27599,
+    "tmdb_title_jp": "ロッタちゃん はじめてのおつかい",
+    "tmdb_title_en": "Lotta 2 - Lotta flyttar hemifrån",
+    "overview": "ロッタちゃんは5歳、ニイマン家の次女。ある朝、おかあさんが出してくれたセーターがチクチクするといってハサミで切り刻んでしまった彼女は、なんだか気まずくなってお隣のベルイおばさんの家へ家出してしまう。おばさんの家の2階を借りて自分の部屋を作り、一人暮らしを宣言。だけどそんな彼女も夜になるとやっぱり心細い。お化けが出そうで泣き出しそうになったとき、ようやくパパが迎えに来る。",
+    "poster_path": "/y49qdDglTsNTI0sXvYgov0IS0Bz.jpg",
+    "backdrop_path": "/cYmvlIYdG6JNz30SngsfIVgXDeX.jpg",
+    "release_date": "1993-09-18",
+    "director": "Johanna Hald",
+    "runtime": 79,
+    "genres": [
+      "ファミリー"
+    ],
+    "vote_average": 5.8
+  },
+  "ダーティハンター 上映後トークショー": null
 }
