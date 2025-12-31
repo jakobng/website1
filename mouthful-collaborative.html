@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouthful of River - Open Source Documentary</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&display=swap');
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    * { box-sizing: border-box; }
+    textarea::placeholder { color: rgba(232, 244, 240, 0.25); }
+    textarea:focus { outline: none; border-color: rgba(125, 211, 192, 0.35); }
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const contributionModules = [
+      {
+        id: 'rnd',
+        phase: 'Research & Development',
+        phaseBudget: '25%',
+        phaseStatus: 'active',
+        color: '#7dd3c0',
+        description: 'Research, relationship-building, and early footage capture',
+        modules: [
+          {
+            id: 'taiwan-rnd',
+            title: 'Taiwan: Indigenous Water Relationships',
+            description: 'Build relationships with Paiwan and Tayal communities and capture research footage. Document watershed kinship traditions, Lmuhuw songs, and the Digital Ministry\'s "Say Hi to River" program. Secure written participation agreements from all contributors. Deliver research footage, images, and academic sources.',
+            stake: 5,
+            status: 'open',
+            type: 'Research + Footage',
+            deliverables: ['Research footage & images from Taiwan', 'Written participation agreements', 'Ethical protocols document', 'Contact list with confirmed collaborators', 'Digital Ministry program documentation'],
+          },
+          {
+            id: 'uk-rnd',
+            title: 'UK: River Rights & Technology',
+            description: 'Document the River Don Project and UK river rights movement. Capture research footage of hydrophone deployments, sensor installations, and early River Storyteller tests. Secure access and written agreements for filming council meetings and Superflux installations.',
+            stake: 5,
+            status: 'open',
+            type: 'Research + Footage',
+            deliverables: ['Research footage from Sheffield & River Roding', 'Written participation agreements', 'Council filming permissions', 'River Don Project documentation', 'Superflux collaboration agreement'],
+          },
+          {
+            id: 'spain-rnd',
+            title: 'Spain: Data Center Resistance',
+            description: 'Connect with Tu Nube Seca Mi Rio and document the European anti-data-center movement. Capture research footage of early activist meetings and data center sites. Map similar conflicts across Europe. Secure written agreements from Aurora Gomez and key activists.',
+            stake: 5,
+            status: 'open',
+            type: 'Research + Footage',
+            deliverables: ['Research footage from Talavera & activist meetings', 'Written participation agreements', 'European data center conflict map', 'Spanish water rights legal context'],
+          },
+          {
+            id: 'sound-rnd',
+            title: 'Sound Approach & Early Recording',
+            description: 'Define the sonic language of the film and begin capturing source material. Record initial hydrophone samples from multiple rivers. Research and select composer for generative score. Create a proof of concept demonstrating the generative soundtrack approach.',
+            stake: 4,
+            status: 'open',
+            type: 'Sound + Research',
+            deliverables: ['Proof of concept: generative soundtrack demo', 'Initial hydrophone recordings from multiple rivers', 'Composer agreement', 'Sound design concept document', 'Equipment & technique documentation'],
+          },
+          {
+            id: 'script-rnd',
+            title: 'Script & Structure Development',
+            description: 'Develop the film\'s narrative architecture and AI narrator voice. Create detailed scene breakdowns following the river metaphor (source → streams → confluence → delta). Write narrator drafts showing character arc from confident explainer to uncertain questioner. This is the creative backbone of the film.',
+            stake: 6,
+            status: 'open',
+            type: 'Writing',
+            deliverables: ['Scene-by-scene breakdown', 'AI narrator script drafts', 'Visual reference deck', 'Structure diagram', 'Treatment document'],
+          },
+        ]
+      },
+      {
+        id: 'production',
+        phase: 'Production',
+        phaseBudget: '30%',
+        phaseStatus: 'upcoming',
+        color: '#5fb8a8',
+        description: 'Principal photography across all locations',
+        modules: [
+          {
+            id: 'taiwan-prod',
+            title: 'Taiwan Principal Photography',
+            description: 'Capture all footage for the film\'s opening and Taiwan thread. Film Paiwan water pipe systems and stone-borrowing ceremonies (with community consent). Document Fang-Raye\'s learning journey. Capture landscape, rituals, and intimate moments establishing watershed as kinship.',
+            stake: 8,
+            status: 'locked',
+            type: 'Footage',
+            deliverables: ['Paiwan ceremony footage', 'Water pipe system documentation', 'Fang-Raye Taiwan sequences', 'Landscape and ambient footage'],
+            prerequisite: 'Taiwan R&D complete',
+          },
+          {
+            id: 'uk-prod',
+            title: 'UK Principal Photography',
+            description: 'Capture the UK thread: scientists with hydrophones in the River Don, the underwater acoustic world, Fang-Raye\'s council meetings as river representative, River Storyteller community testing. Document both institutional dynamics and intimate human moments.',
+            stake: 8,
+            status: 'locked',
+            type: 'Footage',
+            deliverables: ['River Don hydrophone sequences', 'Council meeting observational footage', 'River Storyteller testing', 'Fang-Raye character arc footage'],
+            prerequisite: 'UK R&D complete',
+          },
+          {
+            id: 'spain-prod',
+            title: 'Spain & Data Centers',
+            description: 'Capture the resistance: Tu Nube Seca Mi Rio meetings, Aurora Gomez coordinating across Europe, fish-head mask protests at data center gates. Film data center exteriors—intake pipes, cooling towers, scale against landscape. Interior access if secured.',
+            stake: 8,
+            status: 'locked',
+            type: 'Footage',
+            deliverables: ['Activist meeting footage', 'Aurora Gomez sequences', 'Protest documentation', 'Data center footage (exterior + interior if possible)'],
+            prerequisite: 'Spain R&D complete',
+          },
+          {
+            id: 'installations-prod',
+            title: 'Artistic Installations',
+            description: 'Document artistic installations translating river data into form: Superflux robotic creatures, Marco Barotti\'s CLAMS sculptures, water-drop poetry generators. Artists with existing high-quality footage can contribute directly rather than requiring new shoots.',
+            stake: 6,
+            status: 'locked',
+            type: 'Footage',
+            deliverables: ['Superflux installation documentation', 'CLAMS sculpture footage', 'Other relevant art installations'],
+            note: 'Artists can contribute existing footage',
+            prerequisite: 'Artist agreements in place',
+          },
+        ]
+      },
+      {
+        id: 'post',
+        phase: 'Post-Production',
+        phaseBudget: '30%',
+        phaseStatus: 'future',
+        color: '#3d9d8a',
+        description: 'Editing, sound, music, and visual finishing',
+        modules: [
+          {
+            id: 'edit',
+            title: 'Editorial',
+            description: 'Edit the film from assembly through fine cut. Shape the mosaic structure, weaving together Taiwan, UK, Spain, and artistic threads. Work with directors on pacing, narrator placement, and emotional arc. Deliver picture lock.',
+            stake: 10,
+            status: 'locked',
+            type: 'Edit',
+            deliverables: ['Assembly cut', 'Rough cut', 'Fine cut', 'Picture lock'],
+            prerequisite: 'Principal photography complete',
+          },
+          {
+            id: 'score',
+            title: 'Hydrophone Score',
+            description: 'Compose the film\'s evolving soundscape using hydrophone recordings as source material. Blend natural river sounds with processed, generative elements. Start in harmony, introduce discordant data center motifs, integrate into something new by the delta.',
+            stake: 8,
+            status: 'locked',
+            type: 'Sound',
+            deliverables: ['Full film score', 'Stems for sound mix', 'Source recording archive'],
+            prerequisite: 'Rough cut complete',
+          },
+          {
+            id: 'sound-post',
+            title: 'Sound Design & Mix',
+            description: 'Full sound design including data center hum, underwater ambience, environmental audio. Final mix for theatrical and broadcast delivery. Work with score composer on integration.',
+            stake: 6,
+            status: 'locked',
+            type: 'Sound',
+            deliverables: ['Sound design pass', 'Final mix (theatrical)', 'Final mix (broadcast)'],
+            prerequisite: 'Score complete',
+          },
+          {
+            id: 'visual-post',
+            title: 'Visual Finishing',
+            description: 'Color grade establishing visual continuity and aesthetic contrast between natural and industrial. Design and animate sensor data visualizations, spectrograms, AI processing sequences. Titles and credits.',
+            stake: 6,
+            status: 'locked',
+            type: 'Edit',
+            deliverables: ['Color grade', 'Data visualizations', 'Title sequence', 'End credits'],
+            prerequisite: 'Picture lock',
+          },
+        ]
+      },
+      {
+        id: 'distribution',
+        phase: 'Distribution',
+        phaseBudget: '15%',
+        phaseStatus: 'future',
+        color: '#c4a77d',
+        description: 'Festival strategy, impact campaign, and audience reach',
+        modules: [
+          {
+            id: 'festival',
+            title: 'Festival Strategy & Delivery',
+            description: 'Develop and execute festival strategy targeting environmental, technology, and documentary circuits. Prepare submission materials, coordinate premieres, manage festival relationships. Create DCP and required delivery formats.',
+            stake: 5,
+            status: 'locked',
+            type: 'Distribution',
+            deliverables: ['Festival strategy document', 'Submission materials', 'DCP', 'Premiere coordination'],
+            prerequisite: 'Final film complete',
+          },
+          {
+            id: 'impact',
+            title: 'Impact Campaign',
+            description: 'Design and execute impact campaign connecting the film to river rights movements, data center accountability efforts, and indigenous water sovereignty. Develop educational materials, organize community screenings, build activist partnerships.',
+            stake: 5,
+            status: 'locked',
+            type: 'Distribution',
+            deliverables: ['Impact strategy', 'Educational materials', 'Community screening toolkit', 'Partnership agreements'],
+            prerequisite: 'Festival premiere',
+          },
+          {
+            id: 'digital',
+            title: 'Digital Distribution',
+            description: 'Secure and manage digital distribution—streaming platforms, educational licensing, international sales. Coordinate with sales agents, negotiate deals, manage deliverables and metadata.',
+            stake: 5,
+            status: 'locked',
+            type: 'Distribution',
+            deliverables: ['Distribution agreements', 'Platform deliverables', 'International sales coordination'],
+            prerequisite: 'Festival run complete',
+          },
+        ]
+      },
+    ];
+
+    const contributors = [
+      { name: 'Leo Nelki', role: 'Co-Director', stake: 50, avatar: '🎬', contributions: [] },
+      { name: 'Patricia Escheverrias Liras', role: 'Co-Director', stake: 50, avatar: '🎥', contributions: [] },
+    ];
+
+    const proposedTasks = [];
+
+    const typeIcons = {
+      'Footage': '🎞️',
+      'Sound': '🎧',
+      'Research': '📚',
+      'Research + Footage': '🎞️',
+      'Sound + Research': '🎧',
+      'Interview': '🎤',
+      'Edit': '✂️',
+      'Writing': '✍️',
+      'Distribution': '📡',
+    };
+
+    const statusConfig = {
+      'open': { label: 'Open for contribution', color: '#7dd3c0', bg: 'rgba(125, 211, 192, 0.15)' },
+      'in-progress': { label: 'In progress', color: '#c4a77d', bg: 'rgba(196, 167, 125, 0.15)' },
+      'locked': { label: 'Waiting for prerequisites', color: '#666', bg: 'rgba(100, 100, 100, 0.1)' },
+      'complete': { label: 'Complete', color: '#4a9', bg: 'rgba(68, 170, 153, 0.15)' },
+    };
+
+    function RiverFilmCollaborative() {
+      const [view, setView] = React.useState('about');
+      const [selectedModule, setSelectedModule] = React.useState(null);
+      const [submissionStep, setSubmissionStep] = React.useState(0);
+      const [showSuccess, setShowSuccess] = React.useState(false);
+      const [expandedPhases, setExpandedPhases] = React.useState(['rnd']);
+
+      const togglePhase = (phaseId) => {
+        setExpandedPhases(prev =>
+          prev.includes(phaseId) ? prev.filter(id => id !== phaseId) : [...prev, phaseId]
+        );
+      };
+
+      const openModule = (module) => {
+        setSelectedModule(module);
+        setView('module-detail');
+      };
+
+      const startSubmission = () => {
+        setView('submit');
+        setSubmissionStep(0);
+      };
+
+      const nextStep = () => {
+        if (submissionStep < 3) {
+          setSubmissionStep(submissionStep + 1);
+        } else {
+          setShowSuccess(true);
+          setTimeout(() => {
+            setShowSuccess(false);
+            setView('contributors');
+          }, 2500);
+        }
+      };
+
+      const backTo = (targetView) => {
+        setView(targetView);
+        setSelectedModule(null);
+        setSubmissionStep(0);
+      };
+
+      const totalStake = contributors.reduce((sum, c) => sum + c.stake, 0);
+
+      return (
+        <div style={{
+          minHeight: '100vh',
+          background: 'linear-gradient(170deg, #080f1a 0%, #0c1929 50%, #0e1f35 100%)',
+          fontFamily: '"Source Serif 4", Georgia, serif',
+          color: '#e8f4f0',
+        }}>
+          {/* Ambient */}
+          <div style={{
+            position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+            background: 'radial-gradient(ellipse 100% 60% at 30% 100%, rgba(125, 211, 192, 0.04) 0%, transparent 60%)',
+            pointerEvents: 'none',
+          }} />
+
+          {/* Header */}
+          <header style={{
+            padding: '1.25rem 2rem',
+            borderBottom: '1px solid rgba(125, 211, 192, 0.1)',
+            position: 'sticky', top: 0,
+            background: 'rgba(8, 15, 26, 0.95)',
+            backdropFilter: 'blur(12px)',
+            zIndex: 50,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', maxWidth: '1000px', margin: '0 auto' }}>
+              <div style={{ cursor: 'pointer' }} onClick={() => setView('about')}>
+                <h1 style={{ fontSize: '1.35rem', fontWeight: 300, margin: 0, color: '#7dd3c0', letterSpacing: '0.01em' }}>
+                  Mouthful of River
+                </h1>
+                <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)', margin: '0.15rem 0 0 0' }}>
+                  Open-source documentary
+                </p>
+              </div>
+              <nav style={{ display: 'flex', gap: '1.25rem' }}>
+                {[
+                  { id: 'about', label: 'About' },
+                  { id: 'contribute', label: 'Contribute' },
+                  { id: 'contributors', label: 'Stakes' },
+                  { id: 'governance', label: 'Governance' },
+                ].map(v => (
+                  <button
+                    key={v.id}
+                    onClick={() => setView(v.id)}
+                    style={{
+                      background: 'none', border: 'none',
+                      color: view === v.id || (v.id === 'contribute' && (view === 'module-detail' || view === 'submit'))
+                        ? '#7dd3c0' : 'rgba(232, 244, 240, 0.5)',
+                      fontSize: '0.8rem', cursor: 'pointer',
+                      padding: '0.4rem 0',
+                      borderBottom: view === v.id || (v.id === 'contribute' && (view === 'module-detail' || view === 'submit'))
+                        ? '1.5px solid #7dd3c0' : '1.5px solid transparent',
+                    }}
+                  >
+                    {v.label}
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </header>
+
+          {/* Main */}
+          <main style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
+
+            {/* ABOUT */}
+            {view === 'about' && (
+              <div style={{ animation: 'fadeIn 0.5s ease' }}>
+                <div style={{ maxWidth: '680px' }}>
+                  <h2 style={{
+                    fontSize: '1.6rem', fontWeight: 300, color: '#7dd3c0',
+                    lineHeight: 1.35, marginBottom: '1.25rem',
+                  }}>
+                    AI gives rivers a voice—but the data centers powering that voice threaten to drain them dry.
+                  </h2>
+
+                  <p style={{ fontSize: '0.95rem', lineHeight: 1.8, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '1.25rem' }}>
+                    <em>Mouthful of River</em> is a mosaic documentary following scientists, indigenous communities,
+                    artists, and activists searching for ways to understand: what does the river truly want?
+                  </p>
+
+                  <p style={{ fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(232, 244, 240, 0.55)', marginBottom: '2rem' }}>
+                    From Paiwan communities in Taiwan who see watershed as kinship, to activists in Spain fighting
+                    data center water consumption, to scientists lowering hydrophones into Sheffield's River Don—the
+                    film weaves together diverse ways of listening to and speaking for rivers.
+                  </p>
+
+                  <div style={{
+                    background: 'rgba(125, 211, 192, 0.06)',
+                    border: '1px solid rgba(125, 211, 192, 0.15)',
+                    borderRadius: '10px',
+                    padding: '1.5rem',
+                    marginBottom: '2rem',
+                  }}>
+                    <h3 style={{ fontSize: '1rem', color: '#7dd3c0', marginBottom: '0.75rem', fontWeight: 500 }}>
+                      An open-source film
+                    </h3>
+                    <p style={{ fontSize: '0.88rem', lineHeight: 1.7, color: 'rgba(232, 244, 240, 0.6)', margin: '0 0 1rem 0' }}>
+                      This film is being made through a new collaborative model. Anyone can contribute—footage,
+                      research, sound, editing, distribution. If your contribution is approved, you earn both
+                      creative voting rights and a share of profits. The more you contribute, the more stake you hold.
+                    </p>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.45)', margin: 0 }}>
+                      All contributed material is licensed CC0—anyone can fork this project to create their own
+                      works, with credit to contributors.
+                    </p>
+                  </div>
+
+                  {/* Phase budget overview */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(4, 1fr)',
+                    gap: '0.5rem',
+                    marginBottom: '2rem',
+                  }}>
+                    {contributionModules.map(phase => (
+                      <div key={phase.id} style={{
+                        padding: '0.75rem',
+                        background: `${phase.color}10`,
+                        border: `1px solid ${phase.color}25`,
+                        borderRadius: '6px',
+                        textAlign: 'center',
+                      }}>
+                        <div style={{ fontSize: '1.25rem', fontWeight: 300, color: phase.color }}>{phase.phaseBudget}</div>
+                        <div style={{ fontSize: '0.65rem', color: 'rgba(232, 244, 240, 0.5)', marginTop: '0.2rem' }}>{phase.phase}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2rem' }}>
+                    <div style={{
+                      flex: 1, padding: '1rem',
+                      background: 'rgba(125, 211, 192, 0.04)',
+                      border: '1px solid rgba(125, 211, 192, 0.1)',
+                      borderRadius: '8px',
+                    }}>
+                      <span style={{ fontSize: '1.5rem' }}>🎬</span>
+                      <h4 style={{ fontSize: '0.85rem', color: '#e8f4f0', margin: '0.5rem 0 0.2rem 0', fontWeight: 500 }}>Leo Nelki</h4>
+                      <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)', margin: 0 }}>Co-Director</p>
+                    </div>
+                    <div style={{
+                      flex: 1, padding: '1rem',
+                      background: 'rgba(125, 211, 192, 0.04)',
+                      border: '1px solid rgba(125, 211, 192, 0.1)',
+                      borderRadius: '8px',
+                    }}>
+                      <span style={{ fontSize: '1.5rem' }}>🎥</span>
+                      <h4 style={{ fontSize: '0.85rem', color: '#e8f4f0', margin: '0.5rem 0 0.2rem 0', fontWeight: 500 }}>Patricia Escheverrias Liras</h4>
+                      <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)', margin: 0 }}>Co-Director</p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setView('contribute')}
+                    style={{
+                      padding: '0.9rem 1.75rem',
+                      background: 'linear-gradient(135deg, #7dd3c0 0%, #5fb8a8 100%)',
+                      border: 'none', borderRadius: '6px',
+                      color: '#080f1a', fontSize: '0.95rem', fontWeight: 500, cursor: 'pointer',
+                    }}
+                  >
+                    See open contributions →
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* CONTRIBUTE */}
+            {view === 'contribute' && (
+              <div style={{ animation: 'fadeIn 0.5s ease' }}>
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <h2 style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.4rem' }}>
+                    Contribution modules
+                  </h2>
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(232, 244, 240, 0.45)', maxWidth: '600px', lineHeight: 1.6 }}>
+                    Each module is a substantial piece of the film. Complete a module and earn your stake—voting rights and profit share.
+                  </p>
+                </div>
+
+                {contributionModules.map((phase) => (
+                  <div key={phase.id} style={{ marginBottom: '0.75rem' }}>
+                    <button
+                      onClick={() => togglePhase(phase.id)}
+                      style={{
+                        width: '100%', display: 'flex', alignItems: 'center', gap: '0.75rem',
+                        padding: '0.9rem 1rem',
+                        background: expandedPhases.includes(phase.id) ? 'rgba(125, 211, 192, 0.06)' : 'rgba(125, 211, 192, 0.02)',
+                        border: `1px solid ${phase.color}25`,
+                        borderRadius: expandedPhases.includes(phase.id) ? '8px 8px 0 0' : '8px',
+                        cursor: 'pointer', textAlign: 'left',
+                      }}
+                    >
+                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: phase.color, boxShadow: `0 0 8px ${phase.color}40` }} />
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <h3 style={{ fontSize: '0.95rem', fontWeight: 500, color: phase.color, margin: 0 }}>{phase.phase}</h3>
+                          <span style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)' }}>({phase.phaseBudget} of total stake)</span>
+                        </div>
+                        <p style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.4)', margin: '0.15rem 0 0 0' }}>{phase.description}</p>
+                      </div>
+                      <span style={{
+                        fontSize: '0.7rem', padding: '0.2rem 0.5rem', borderRadius: '10px',
+                        background: phase.phaseStatus === 'active' ? `${phase.color}20` : 'rgba(100,100,100,0.15)',
+                        color: phase.phaseStatus === 'active' ? phase.color : '#666',
+                        textTransform: 'uppercase', letterSpacing: '0.03em',
+                      }}>
+                        {phase.phaseStatus === 'active' ? 'Active' : phase.phaseStatus === 'upcoming' ? 'Upcoming' : 'Future'}
+                      </span>
+                      <span style={{ color: 'rgba(232, 244, 240, 0.3)', transform: expandedPhases.includes(phase.id) ? 'rotate(180deg)' : '', transition: '0.2s' }}>▼</span>
+                    </button>
+
+                    {expandedPhases.includes(phase.id) && (
+                      <div style={{
+                        border: `1px solid ${phase.color}25`, borderTop: 'none',
+                        borderRadius: '0 0 8px 8px', padding: '1rem',
+                        background: 'rgba(0,0,0,0.15)',
+                      }}>
+                        <div style={{ display: 'grid', gap: '0.75rem' }}>
+                          {phase.modules.map(module => (
+                            <div
+                              key={module.id}
+                              onClick={() => module.status !== 'locked' && openModule(module)}
+                              style={{
+                                display: 'flex', gap: '1rem', alignItems: 'flex-start',
+                                padding: '1rem 1.25rem',
+                                background: statusConfig[module.status].bg,
+                                border: `1px solid ${statusConfig[module.status].color}30`,
+                                borderRadius: '8px',
+                                cursor: module.status === 'locked' ? 'default' : 'pointer',
+                                opacity: module.status === 'locked' ? 0.5 : 1,
+                                transition: '0.2s',
+                              }}
+                              onMouseEnter={e => {
+                                if (module.status !== 'locked') {
+                                  e.currentTarget.style.background = statusConfig[module.status].color + '20';
+                                  e.currentTarget.style.transform = 'translateX(4px)';
+                                }
+                              }}
+                              onMouseLeave={e => {
+                                if (module.status !== 'locked') {
+                                  e.currentTarget.style.background = statusConfig[module.status].bg;
+                                  e.currentTarget.style.transform = 'translateX(0)';
+                                }
+                              }}
+                            >
+                              <span style={{ fontSize: '1.5rem', marginTop: '0.1rem' }}>{typeIcons[module.type]}</span>
+                              <div style={{ flex: 1 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
+                                  <h4 style={{ fontSize: '0.95rem', fontWeight: 500, color: '#e8f4f0', margin: 0 }}>{module.title}</h4>
+                                  {module.status === 'in-progress' && (
+                                    <span style={{ fontSize: '0.65rem', color: '#c4a77d' }}>— {module.claimedBy}</span>
+                                  )}
+                                </div>
+                                <p style={{ fontSize: '0.8rem', color: 'rgba(232, 244, 240, 0.5)', margin: 0, lineHeight: 1.5 }}>
+                                  {module.status === 'locked' && module.prerequisite
+                                    ? `Waiting for: ${module.prerequisite}`
+                                    : module.description.slice(0, 140) + '...'
+                                  }
+                                </p>
+                                {module.note && (
+                                  <p style={{ fontSize: '0.75rem', color: phase.color, margin: '0.4rem 0 0 0', fontStyle: 'italic' }}>
+                                    {module.note}
+                                  </p>
+                                )}
+                              </div>
+                              <div style={{ textAlign: 'right', minWidth: '60px' }}>
+                                <div style={{ fontSize: '1.25rem', fontWeight: 300, color: statusConfig[module.status].color }}>{module.stake}%</div>
+                                <div style={{ fontSize: '0.65rem', color: 'rgba(232, 244, 240, 0.35)' }}>stake</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* MODULE DETAIL */}
+            {view === 'module-detail' && selectedModule && (
+              <div style={{ animation: 'fadeIn 0.4s ease', maxWidth: '620px' }}>
+                <button onClick={() => backTo('contribute')} style={{ background: 'none', border: 'none', color: 'rgba(232, 244, 240, 0.5)', fontSize: '0.8rem', cursor: 'pointer', marginBottom: '1.25rem' }}>
+                  ← Back to modules
+                </button>
+
+                <div style={{
+                  background: 'rgba(125, 211, 192, 0.05)',
+                  border: '1px solid rgba(125, 211, 192, 0.15)',
+                  borderRadius: '10px', padding: '1.75rem',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                    <span style={{ fontSize: '2rem' }}>{typeIcons[selectedModule.type]}</span>
+                    <span style={{
+                      fontSize: '0.65rem', padding: '0.2rem 0.5rem', borderRadius: '10px',
+                      background: 'rgba(125, 211, 192, 0.2)', color: '#7dd3c0', textTransform: 'uppercase',
+                    }}>
+                      {selectedModule.type}
+                    </span>
+                  </div>
+
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 400, margin: '0 0 1rem 0', color: '#e8f4f0', lineHeight: 1.3 }}>
+                    {selectedModule.title}
+                  </h2>
+
+                  <p style={{ fontSize: '0.92rem', lineHeight: 1.75, color: 'rgba(232, 244, 240, 0.65)', marginBottom: '1.5rem' }}>
+                    {selectedModule.description}
+                  </p>
+
+                  {selectedModule.deliverables && (
+                    <div style={{ marginBottom: '1.5rem' }}>
+                      <h4 style={{ fontSize: '0.75rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                        Required deliverables
+                      </h4>
+                      <ul style={{ margin: 0, padding: '0 0 0 1.25rem', color: 'rgba(232, 244, 240, 0.55)', fontSize: '0.85rem', lineHeight: 1.7 }}>
+                        {selectedModule.deliverables.map((d, i) => <li key={i}>{d}</li>)}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div style={{
+                    background: 'rgba(125, 211, 192, 0.1)',
+                    borderRadius: '8px', padding: '1.25rem',
+                    marginBottom: '1.5rem',
+                  }}>
+                    <h4 style={{ fontSize: '0.72rem', color: '#7dd3c0', margin: '0 0 0.75rem 0', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      What you'll earn if approved
+                    </h4>
+                    <div style={{ display: 'flex', gap: '2rem' }}>
+                      <div>
+                        <div style={{ fontSize: '1.75rem', fontWeight: 300, color: '#7dd3c0' }}>{selectedModule.stake}%</div>
+                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.45)' }}>Voting stake</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '1.75rem', fontWeight: 300, color: '#7dd3c0' }}>{selectedModule.stake}%</div>
+                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.45)' }}>Profit share*</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '1.75rem', fontWeight: 300, color: '#7dd3c0' }}>✓</div>
+                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.45)' }}>Film credit</div>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.35)', margin: '0.75rem 0 0 0', fontStyle: 'italic' }}>
+                      *Of contributor pool, after any co-production agreements
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={startSubmission}
+                    style={{
+                      width: '100%', padding: '0.9rem',
+                      background: 'linear-gradient(135deg, #7dd3c0 0%, #5fb8a8 100%)',
+                      border: 'none', borderRadius: '6px',
+                      color: '#080f1a', fontSize: '0.95rem', fontWeight: 500, cursor: 'pointer',
+                    }}
+                  >
+                    Submit my contribution
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* SUBMISSION FLOW */}
+            {view === 'submit' && selectedModule && (
+              <div style={{ animation: 'fadeIn 0.4s ease', maxWidth: '520px' }}>
+                <button onClick={() => setView('module-detail')} style={{ background: 'none', border: 'none', color: 'rgba(232, 244, 240, 0.5)', fontSize: '0.8rem', cursor: 'pointer', marginBottom: '1.25rem' }}>
+                  ← Back
+                </button>
+
+                <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '1.75rem', justifyContent: 'center' }}>
+                  {[0, 1, 2, 3].map(step => (
+                    <div key={step} style={{
+                      width: step <= submissionStep ? '1.75rem' : '0.4rem',
+                      height: '0.4rem', borderRadius: '3px',
+                      background: step <= submissionStep ? '#7dd3c0' : 'rgba(125, 211, 192, 0.2)',
+                      transition: '0.3s',
+                    }} />
+                  ))}
+                </div>
+
+                <div style={{
+                  background: 'rgba(125, 211, 192, 0.05)',
+                  border: '1px solid rgba(125, 211, 192, 0.15)',
+                  borderRadius: '10px', padding: '1.75rem', minHeight: '280px',
+                }}>
+                  {submissionStep === 0 && (
+                    <div>
+                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Upload your files</h3>
+                      <p style={{ fontSize: '0.85rem', color: 'rgba(232, 244, 240, 0.55)', marginBottom: '1.25rem' }}>
+                        Upload all materials for "{selectedModule.title}"
+                      </p>
+                      <div style={{
+                        border: '2px dashed rgba(125, 211, 192, 0.25)',
+                        borderRadius: '8px', padding: '2.5rem', textAlign: 'center',
+                        background: 'rgba(125, 211, 192, 0.02)',
+                      }}>
+                        <div style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>📁</div>
+                        <div style={{ color: 'rgba(232, 244, 240, 0.45)', fontSize: '0.8rem' }}>your_contribution.zip</div>
+                        <div style={{ color: 'rgba(125, 211, 192, 0.55)', fontSize: '0.7rem', marginTop: '0.4rem' }}>2.4 GB uploaded</div>
+                      </div>
+                    </div>
+                  )}
+
+                  {submissionStep === 1 && (
+                    <div>
+                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Describe your contribution</h3>
+                      <p style={{ fontSize: '0.85rem', color: 'rgba(232, 244, 240, 0.55)', marginBottom: '1.25rem' }}>
+                        Help stakeholders understand what you've created and how it meets the requirements.
+                      </p>
+                      <textarea
+                        placeholder="Describe your work, how it fulfills the module requirements, and any context that would help evaluation..."
+                        style={{
+                          width: '100%', height: '140px',
+                          background: 'rgba(0,0,0,0.2)',
+                          border: '1px solid rgba(125, 211, 192, 0.15)',
+                          borderRadius: '6px', padding: '0.9rem',
+                          color: '#e8f4f0', fontSize: '0.85rem', fontFamily: 'inherit', resize: 'none',
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  {submissionStep === 2 && (
+                    <div>
+                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Confirm terms</h3>
+                      <div style={{ background: 'rgba(125, 211, 192, 0.08)', borderRadius: '6px', padding: '1.25rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.9rem' }}>
+                          <span style={{ color: 'rgba(232, 244, 240, 0.65)', fontSize: '0.85rem' }}>Stake if approved</span>
+                          <span style={{ color: '#7dd3c0', fontWeight: 500 }}>{selectedModule.stake}%</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.9rem' }}>
+                          <span style={{ color: 'rgba(232, 244, 240, 0.65)', fontSize: '0.85rem' }}>Your material licensed as</span>
+                          <span style={{ color: '#7dd3c0', fontWeight: 500 }}>CC0</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span style={{ color: 'rgba(232, 244, 240, 0.65)', fontSize: '0.85rem' }}>Credit in final film</span>
+                          <span style={{ color: '#7dd3c0', fontWeight: 500 }}>✓</span>
+                        </div>
+                      </div>
+                      <p style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.4)', marginTop: '1rem', lineHeight: 1.6 }}>
+                        By submitting, you agree that your contribution will be licensed CC0, allowing anyone to use, remix, or fork this material with credit.
+                      </p>
+                    </div>
+                  )}
+
+                  {submissionStep === 3 && (
+                    <div>
+                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Submit for approval</h3>
+                      <p style={{ fontSize: '0.85rem', color: 'rgba(232, 244, 240, 0.55)', marginBottom: '1.25rem' }}>
+                        Current stakeholders will vote on your submission. Approval requires majority stake.
+                      </p>
+                      <div style={{
+                        background: 'rgba(125, 211, 192, 0.05)',
+                        borderRadius: '6px', padding: '1rem',
+                        display: 'flex', gap: '0.75rem', alignItems: 'center',
+                      }}>
+                        <div style={{ display: 'flex' }}>
+                          {contributors.map((c, i) => (
+                            <div key={i} style={{
+                              width: '30px', height: '30px', borderRadius: '50%',
+                              background: 'rgba(125, 211, 192, 0.2)',
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                              marginLeft: i > 0 ? '-6px' : 0,
+                              border: '2px solid #080f1a', fontSize: '0.9rem',
+                            }}>{c.avatar}</div>
+                          ))}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.82rem', color: '#e8f4f0' }}>{contributors.length} current stakeholders</div>
+                          <div style={{ fontSize: '0.68rem', color: 'rgba(232, 244, 240, 0.4)' }}>Voting weighted by stake</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <button onClick={nextStep} style={{
+                    width: '100%', padding: '0.85rem', marginTop: '1.5rem',
+                    background: 'linear-gradient(135deg, #7dd3c0 0%, #5fb8a8 100%)',
+                    border: 'none', borderRadius: '6px',
+                    color: '#080f1a', fontSize: '0.92rem', fontWeight: 500, cursor: 'pointer',
+                  }}>
+                    {submissionStep === 3 ? 'Submit for review' : 'Continue'}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* SUCCESS */}
+            {showSuccess && (
+              <div style={{
+                position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+                background: 'rgba(8, 15, 26, 0.95)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                zIndex: 100, animation: 'fadeIn 0.3s ease',
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '3.5rem', marginBottom: '0.75rem', animation: 'pulse 1s ease infinite' }}>✨</div>
+                  <h2 style={{ fontSize: '1.35rem', color: '#7dd3c0', fontWeight: 400 }}>Submission received!</h2>
+                  <p style={{ color: 'rgba(232, 244, 240, 0.55)', marginTop: '0.4rem', fontSize: '0.9rem' }}>Stakeholders are reviewing...</p>
+                </div>
+              </div>
+            )}
+
+            {/* CONTRIBUTORS / STAKES */}
+            {view === 'contributors' && (
+              <div style={{ animation: 'fadeIn 0.5s ease' }}>
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <h2 style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.4rem' }}>
+                    Current stakes
+                  </h2>
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(232, 244, 240, 0.45)', maxWidth: '550px', lineHeight: 1.6 }}>
+                    Stake determines voting power and profit share. Earned through approved contributions.
+                  </p>
+                </div>
+
+                {/* Stake bar */}
+                <div style={{
+                  display: 'flex', height: '44px', borderRadius: '22px', overflow: 'hidden',
+                  marginBottom: '1.75rem', border: '1px solid rgba(125, 211, 192, 0.15)',
+                  maxWidth: '550px',
+                }}>
+                  {contributors.map((c, i) => (
+                    <div
+                      key={c.name}
+                      style={{
+                        width: `${(c.stake / totalStake) * 100}%`,
+                        background: i === 0 ? '#5fb8a8' : '#3d9d8a',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        borderRight: i < contributors.length - 1 ? '2px solid rgba(8, 15, 26, 0.5)' : 'none',
+                        fontSize: '0.95rem',
+                      }}
+                      title={`${c.name}: ${c.stake}%`}
+                    >
+                      {c.avatar}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Contributors list */}
+                <div style={{ display: 'grid', gap: '0.6rem', maxWidth: '550px' }}>
+                  {contributors.map((c) => (
+                    <div
+                      key={c.name}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: '0.9rem',
+                        padding: '0.8rem 1rem',
+                        background: 'rgba(125, 211, 192, 0.025)',
+                        border: '1px solid rgba(125, 211, 192, 0.08)',
+                        borderRadius: '8px',
+                      }}
+                    >
+                      <div style={{
+                        width: '38px', height: '38px', borderRadius: '50%',
+                        background: 'rgba(125, 211, 192, 0.12)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem',
+                      }}>
+                        {c.avatar}
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '0.88rem', color: '#e8f4f0' }}>
+                          {c.name}
+                        </div>
+                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.4)' }}>
+                          {c.role}
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontSize: '1.1rem', color: '#7dd3c0', fontWeight: 300 }}>{c.stake}%</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Available stake */}
+                <div style={{
+                  marginTop: '1.5rem', padding: '1rem 1.25rem',
+                  background: 'rgba(125, 211, 192, 0.08)',
+                  border: '1px solid rgba(125, 211, 192, 0.2)',
+                  borderRadius: '8px', maxWidth: '550px',
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <h4 style={{ fontSize: '0.85rem', color: '#7dd3c0', margin: 0, fontWeight: 500 }}>Available stake</h4>
+                      <p style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.45)', margin: '0.2rem 0 0 0' }}>
+                        Distributed as contributions are approved
+                      </p>
+                    </div>
+                    <div style={{ fontSize: '1.5rem', color: '#7dd3c0', fontWeight: 300 }}>0%</div>
+                  </div>
+                </div>
+
+                {/* Live contract note */}
+                <div style={{
+                  marginTop: '1rem', padding: '1rem 1.25rem',
+                  background: 'rgba(125, 211, 192, 0.04)',
+                  border: '1px solid rgba(125, 211, 192, 0.1)',
+                  borderRadius: '8px', maxWidth: '550px',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
+                    <span style={{ fontSize: '1rem' }}>📄</span>
+                    <h4 style={{ fontSize: '0.82rem', color: '#7dd3c0', margin: 0, fontWeight: 500 }}>Live contract</h4>
+                  </div>
+                  <p style={{ fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(232, 244, 240, 0.5)', margin: 0 }}>
+                    This stake distribution is automatically maintained. A legally signed version is generated quarterly for formal agreements and funding applications.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* GOVERNANCE */}
+            {view === 'governance' && (
+              <div style={{ animation: 'fadeIn 0.5s ease' }}>
+                <div style={{ marginBottom: '1.75rem' }}>
+                  <h2 style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.4rem' }}>
+                    How decisions are made
+                  </h2>
+                </div>
+
+                <div style={{ display: 'grid', gap: '1rem', maxWidth: '600px' }}>
+                  <div style={{
+                    padding: '1.25rem',
+                    background: 'rgba(125, 211, 192, 0.04)',
+                    border: '1px solid rgba(125, 211, 192, 0.12)',
+                    borderRadius: '8px',
+                  }}>
+                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
+                      Voting power
+                    </h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
+                      <strong style={{ color: '#e8f4f0' }}>Stake = voting share.</strong> If you hold 10% stake, your vote
+                      counts for 10% of the total. All governance decisions are weighted this way.
+                    </p>
+                  </div>
+
+                  <div style={{
+                    padding: '1.25rem',
+                    background: 'rgba(125, 211, 192, 0.04)',
+                    border: '1px solid rgba(125, 211, 192, 0.12)',
+                    borderRadius: '8px',
+                  }}>
+                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
+                      Approving contributions
+                    </h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
+                      When you submit a contribution, all current stakeholders vote. Approval requires
+                      <strong style={{ color: '#e8f4f0' }}> majority stake</strong>—if stakeholders holding more than 50%
+                      of stake approve, your contribution is accepted.
+                    </p>
+                  </div>
+
+                  <div style={{
+                    padding: '1.25rem',
+                    background: 'rgba(125, 211, 192, 0.04)',
+                    border: '1px solid rgba(125, 211, 192, 0.12)',
+                    borderRadius: '8px',
+                  }}>
+                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
+                      Adding new modules
+                    </h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
+                      Small modules (≤2% stake) can be added by <strong style={{ color: '#e8f4f0' }}>any stakeholder holding 10%+</strong>.
+                      Larger modules require a <strong style={{ color: '#e8f4f0' }}>vote from all stakeholders</strong>.
+                    </p>
+                  </div>
+
+                  <div style={{
+                    padding: '1.25rem',
+                    background: 'rgba(125, 211, 192, 0.04)',
+                    border: '1px solid rgba(125, 211, 192, 0.12)',
+                    borderRadius: '8px',
+                  }}>
+                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
+                      Licensing & forking
+                    </h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
+                      All contributed material is licensed <strong style={{ color: '#e8f4f0' }}>CC0</strong>. Anyone can fork
+                      this project to create derivative works—shorter films, remixes, educational content—with credit to contributors.
+                    </p>
+                  </div>
+
+                  <div style={{
+                    padding: '1.25rem',
+                    background: 'rgba(125, 211, 192, 0.04)',
+                    border: '1px solid rgba(125, 211, 192, 0.12)',
+                    borderRadius: '8px',
+                  }}>
+                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
+                      Profit distribution
+                    </h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
+                      Stake represents your share of the <strong style={{ color: '#e8f4f0' }}>contributor pool</strong>.
+                      Traditional co-production deals (if any) are honored first; remaining profits are distributed by stake.
+                    </p>
+                  </div>
+
+                  <div style={{
+                    padding: '1.25rem',
+                    background: 'rgba(125, 211, 192, 0.04)',
+                    border: '1px solid rgba(125, 211, 192, 0.12)',
+                    borderRadius: '8px',
+                  }}>
+                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
+                      Phase budgets
+                    </h4>
+                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: '0 0 0.75rem 0' }}>
+                      Total stake is allocated across phases:
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem' }}>
+                      {contributionModules.map(phase => (
+                        <div key={phase.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem' }}>
+                          <span style={{ color: 'rgba(232, 244, 240, 0.5)' }}>{phase.phase}</span>
+                          <span style={{ color: phase.color }}>{phase.phaseBudget}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Proposed tasks */}
+                {proposedTasks.length > 0 && (
+                  <div style={{ marginTop: '2rem', maxWidth: '600px' }}>
+                    <h3 style={{ fontSize: '0.95rem', fontWeight: 500, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.75rem' }}>
+                      Proposed new modules
+                    </h3>
+                    {proposedTasks.map(task => (
+                      <div
+                        key={task.id}
+                        style={{
+                          padding: '1.25rem',
+                          background: 'rgba(196, 167, 125, 0.06)',
+                          border: '1px solid rgba(196, 167, 125, 0.2)',
+                          borderRadius: '8px',
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+                          <h4 style={{ fontSize: '0.95rem', color: '#e8f4f0', margin: 0, fontWeight: 500 }}>{task.title}</h4>
+                          <span style={{ fontSize: '0.7rem', color: '#c4a77d' }}>{task.deadline}</span>
+                        </div>
+                        <p style={{ fontSize: '0.8rem', color: 'rgba(232, 244, 240, 0.5)', margin: '0 0 0.75rem 0' }}>
+                          {task.description}
+                        </p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                          <span style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.4)' }}>
+                            Proposed by {task.proposedBy} • {task.stake}% stake
+                          </span>
+                          <div style={{ flex: 1 }} />
+                          <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <button style={{
+                              padding: '0.4rem 0.9rem',
+                              background: 'rgba(125, 211, 192, 0.15)',
+                              border: '1px solid rgba(125, 211, 192, 0.3)',
+                              borderRadius: '4px',
+                              color: '#7dd3c0',
+                              fontSize: '0.75rem',
+                              cursor: 'pointer',
+                            }}>
+                              Approve ({task.votesFor}%)
+                            </button>
+                            <button style={{
+                              padding: '0.4rem 0.9rem',
+                              background: 'rgba(100, 100, 100, 0.1)',
+                              border: '1px solid rgba(100, 100, 100, 0.2)',
+                              borderRadius: '4px',
+                              color: 'rgba(232, 244, 240, 0.5)',
+                              fontSize: '0.75rem',
+                              cursor: 'pointer',
+                            }}>
+                              Reject
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </main>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<RiverFilmCollaborative />);
+  </script>
+</body>
+</html>
