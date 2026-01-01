@@ -16529,5 +16529,375 @@
     ],
     "vote_average": 5.8
   },
-  "ダーティハンター 上映後トークショー": null
+  "ダーティハンター 上映後トークショー": null,
+  "天使のはらわた 赤い閃光": {
+    "tmdb_id": 143685,
+    "tmdb_title_jp": "天使のはらわた 赤い閃光",
+    "tmdb_title_en": "天使のはらわた 赤い閃光",
+    "overview": "高校時代に見知らぬ男にレイプされた経験を持つカメラマンの土屋名美は、それが原因で極度の潔癖症となり、男と体を重ねると殴る蹴るの暴行を加えるようになっていた。忌まわしい過去を忘れるため酒を飲み過ぎた名美は酔いつぶれ、ラブホテルの回転ベッドで目を覚ました。かたわらには男の死体とビデオカメラがあり、名美はカメラからビデオテープを抜き取りホテルを後にしてしまう。その日から彼女のもとには脅迫電話がかかるようになり、編集者の村木に問題のビデオを見せようとするのだったが…。",
+    "poster_path": "/zeNq03FQI9sf5IIID8KHTrdg20o.jpg",
+    "backdrop_path": "/jUu8nCJelHlrL2GIuibrl39TPHd.jpg",
+    "release_date": "1994-09-10",
+    "director": "石井隆",
+    "runtime": 87,
+    "genres": [
+      "スリラー",
+      "ドラマ"
+    ],
+    "vote_average": 3.6
+  },
+  "名探偵ホームズ デジタルリマスター版": {
+    "tmdb_id": 332324,
+    "tmdb_title_jp": "名探偵ホームズ 青い紅玉の巻 海底の財宝の巻",
+    "tmdb_title_en": "名探偵ホームズ: 青い紅玉 / 海底の財宝",
+    "overview": "『青い紅玉の巻』 悪漢モリアーティ教授は、怪鳥メカ・プテラノドンでロンドンを混乱に陥れ、その隙に宝石店から青い紅玉を盗み出した。だが、その宝石を何も知らぬスリのポリィがスってしまったから、さぁ大変！  『海底の財宝の巻』 海軍の潜航艇を盗み出したモリアーティ教授。彼はそれを使って海軍のライサンダー司令官の兄・ライサンダー大佐が引き上げたナポレオンの財宝を奪う計画だった。それを見抜いたホームズはワトソンとエアシップで海へ向かう。",
+    "poster_path": "/n4sY5KkhPwW6IhvYXaS0ZPPexXK.jpg",
+    "backdrop_path": "/xtAT3ivZ4gCuR47JcwhgxhBqfUC.jpg",
+    "release_date": "1984-03-11",
+    "director": "宮崎駿",
+    "runtime": 46,
+    "genres": [
+      "アニメーション",
+      "謎",
+      "アドベンチャー",
+      "コメディ",
+      "テレビ映画"
+    ],
+    "vote_average": 6.6
+  },
+  "ネタニヤフ調書 汚職と戦争 字幕版": null,
+  "トワイライト・ウォリアーズ 決戦！九龍城砦": {
+    "tmdb_id": 923667,
+    "tmdb_title_jp": "トワイライト・ウォリアーズ 決戦！九龍城砦",
+    "tmdb_title_en": "九龍城寨之圍城",
+    "overview": "九龍城砦（きゅうりゅうじょうさい）――そこは、かつて無数の黒社会が野望を燃やし、覇権を争っていた。\r 1980年代、香港へ密入国した若者チャンは、黒社会のルールを拒み、己の道を選んだために組織に目を付けられる。追い詰められたチャンが命がけで逃げ込んだ先は、まさに運命が導いた九龍城砦だった。彼はここで3人の仲間と出会い、深い友情を育んでいく。しかし、九龍城砦を巻き込む抗争が激化する中、チャンたちはそれぞれの信念を胸に、命を賭けた戦いに挑むことになる――。",
+    "poster_path": "/lyQBx6JifBnXpBRl05kVMw4FOMY.jpg",
+    "backdrop_path": "/kK76jqpSI832Ucsx2qDEpxXNtXv.jpg",
+    "release_date": "2024-05-01",
+    "director": "鄭保瑞",
+    "runtime": 125,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 6.977
+  },
+  "ふつうの子ども": {
+    "tmdb_id": 1476988,
+    "tmdb_title_jp": "ふつうの子ども",
+    "tmdb_title_en": "ふつうの子ども",
+    "overview": "",
+    "poster_path": "/3rNTtnQGU8dq4YBNqdiXVE5fc9E.jpg",
+    "backdrop_path": "/jmllJISErGu9hDvT7myXeaLGDUb.jpg",
+    "release_date": "2025-09-05",
+    "director": "呉美保",
+    "runtime": 96,
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "vote_average": 2.5
+  },
+  "ションベン・ライダー": {
+    "tmdb_id": 115780,
+    "tmdb_title_jp": "ションベン・ライダー",
+    "tmdb_title_en": "ションベン・ライダー",
+    "overview": "ジョジョ、ブルース、辞書の中学生3人組は、ガキ大将のデブナガにいじめられてばかり。今日こそはデブナガに仕返しをしようと意気込む3人だったが、彼らの目の前でデブナガが誘拐されてしまう。そこから3人は覚醒剤絡みのヤクザ抗争に巻き込まれていき…。",
+    "poster_path": "/4nuf9nuFZVtkVPFBvKEuDwoUeQA.jpg",
+    "backdrop_path": "/s8wjlRiAbKqUY8h1nnx3l44g3OH.jpg",
+    "release_date": "1983-02-11",
+    "director": "相米慎二",
+    "runtime": 118,
+    "genres": [
+      "犯罪",
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 5.556
+  },
+  "ロイヤル・アフェア 愛と欲望の王宮": {
+    "tmdb_id": 88273,
+    "tmdb_title_jp": "ロイヤル・アフェア 愛と欲望の王宮",
+    "tmdb_title_en": "En kongelig affære",
+    "overview": "",
+    "poster_path": "/ccZftyf5wPfHxNi1pdRZ36zR2a.jpg",
+    "backdrop_path": "/mcoZV42CxmW07Ob8ynDuZ7wKZSr.jpg",
+    "release_date": "2012-03-29",
+    "director": "Nikolaj Arcel",
+    "runtime": 137,
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "ロマンス"
+    ],
+    "vote_average": 7.361
+  },
+  "風花": {
+    "tmdb_id": 115799,
+    "tmdb_title_jp": "風花",
+    "tmdb_title_en": "風花",
+    "overview": "風俗嬢で生計を立てる主人公ゆり子。彼女は北海道に娘をひとり、残してきていた。ある日、彼女は娘に会いに行く決心をする。東京という都会で暮らす女性の複雑な心境を、小泉今日子が熱演。",
+    "poster_path": "/iqTkFODQxApnc4Iurdyaq1riUjW.jpg",
+    "backdrop_path": "/9nf27pcLu6edN6g4MHIJ0LNVAoH.jpg",
+    "release_date": "2001-01-27",
+    "director": "相米慎二",
+    "runtime": 116,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.5
+  },
+  "her/世界でひとつの彼女": {
+    "tmdb_id": 152601,
+    "tmdb_title_jp": "her／世界でひとつの彼女",
+    "tmdb_title_en": "Her",
+    "overview": "近未来のロサンゼルスで、セオドアは相手に代わって思いのたけを手紙にしたためる代筆ライターをしていた。長きにわたり共に生活してきた妻キャサリンと別れ、悲嘆に暮れていた彼はある日、人工知能型OSサマンサと出会う。次第にセオドアは声だけで実態のない彼女の魅力のとりこになる。",
+    "poster_path": "/ke5EQQ6sANnusJM7eh4BlbwTgAf.jpg",
+    "backdrop_path": "/sPPsR9f4K0movWVQ99u4uMqFzEL.jpg",
+    "release_date": "2013-12-18",
+    "director": "Spike Jonze",
+    "runtime": 126,
+    "genres": [
+      "ロマンス",
+      "サイエンスフィクション",
+      "ドラマ"
+    ],
+    "vote_average": 7.844
+  },
+  "ワーキングマン": {
+    "tmdb_id": 1197306,
+    "tmdb_title_jp": "ワーキングマン",
+    "tmdb_title_en": "A Working Man",
+    "overview": "レヴォン・ケイドは、受勲もした軍歴を持つ極秘任務隊員だが、そのキャリアを封印し、建設業で質素な生活を送っていた。しかし、彼にとって家族同然である上司の娘が人身売買集団に連れ去られてしまう。彼女を連れ戻そうとするレヴォンは、捜索の過程で想像をはるかに上回る腐敗社会を目の当たりにするのだった。",
+    "poster_path": "/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg",
+    "backdrop_path": "/fTrQsdMS2MUw00RnzH0r3JWHhts.jpg",
+    "release_date": "2025-03-26",
+    "director": "David Ayer",
+    "runtime": 118,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 6.7
+  },
+  "JUNK HEAD": {
+    "tmdb_id": 464768,
+    "tmdb_title_jp": "JUNK HEAD",
+    "tmdb_title_en": "JUNK HEAD",
+    "overview": "環境破壊によって地上の汚染が進んだ世界。労働力として生み出された人工生命体マリガンは、人類に反旗を翻して地下世界を掌握する。それから1600年後。生殖能力を失い長命になった人類は、絶滅の危機に瀕し、独自に進化したマリガンの調査に乗り出す。そんな中、政府の募集に名乗り出て地下調査員となったとあるダンス講師は、マリガンたちとの出会いを通じて、人類再生の道を探り始める。",
+    "poster_path": "/8piaFzTGMKM8z3kwpYQFztTWDzQ.jpg",
+    "backdrop_path": "/aAdTgf8fAc8P0o6wLD51o2oYoRP.jpg",
+    "release_date": "2022-02-18",
+    "director": "堀貴秀",
+    "runtime": 100,
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "アクション",
+      "アドベンチャー"
+    ],
+    "vote_average": 6.6
+  },
+  "夜がまた来る": {
+    "tmdb_id": 143687,
+    "tmdb_title_jp": "夜がまた来る",
+    "tmdb_title_en": "夜がまた来る",
+    "overview": "愛する夫をやくざに殺されたことから、自らの体を、そして人生までも犠牲にしながら夫の復讐の機会をうかがう女・名美を夏川結衣が熱演。やくざに犯され、覚醒剤に溺れながらも、彼女を支えているのは夫への愛。皮肉な運命にもてあそばれるふたりに、明けることのない夜がまた来る…。",
+    "poster_path": "/hGd4Dgjo9j9QfRuy51m6CWNuRuo.jpg",
+    "backdrop_path": "/fs4kUYvlXsIw3vJV39nn7RwzL4p.jpg",
+    "release_date": "1994-10-22",
+    "director": "石井隆",
+    "runtime": 108,
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 5.75
+  },
+  "死んでもいい": {
+    "tmdb_id": 266628,
+    "tmdb_title_jp": "死んでもいい",
+    "tmdb_title_en": "死んでもいい",
+    "overview": "気まま旅を続ける信は、ある日、名美と出会いひと目ぼれする。そのまま名美の働く不動産屋を訪れ、アパートを借りる。信は名美にアパートに案内されたとき、初めて名美が社長の妻であることを知るが、すでに信の気持ちは抑えがたくなっていて…。",
+    "poster_path": "/pxv5fbZSiPfJP76S2SaDRzHUXdp.jpg",
+    "backdrop_path": "/j80HdLR3nagvqpnLolJi1LHenof.jpg",
+    "release_date": "1992-10-20",
+    "director": "石井隆",
+    "runtime": 117,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 4.7
+  },
+  "海辺へ行く道": {
+    "tmdb_id": 1381159,
+    "tmdb_title_jp": "海辺へ行く道",
+    "tmdb_title_en": "海辺へ行く道",
+    "overview": "瀬戸内海の海辺の町でのんきに暮らす14歳の美術部員・奏介。この町はアーティスト移住支援を掲げ、あやしげなアーティストたちが往来している。奏介とその仲間たちは、演劇部に依頼された絵を描いたり、新聞部の取材を手伝ったりと、忙しい夏休みを送っていた。そんな中、奏介たちにちょっと不思議な依頼が飛び込んでくる。",
+    "poster_path": "/8QcjuovnHrFnUpVEQyFIG3oY3yd.jpg",
+    "backdrop_path": "/uaqvBbLw1tTLJxhaatpLyVULFm0.jpg",
+    "release_date": "2025-08-29",
+    "director": "横浜聡子",
+    "runtime": 140,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "リアリズムの宿": {
+    "tmdb_id": 30518,
+    "tmdb_title_jp": "リアリズムの宿",
+    "tmdb_title_en": "リアリズムの宿",
+    "overview": "「ねじ式」「無能の人」の異才漫画家・つげの短編「リアリズムの宿」「会津の釣り宿」とその世界観を基に山下監督が映像化。\r ある冬の日。駆け出しの映画監督・木下と脚本家の坪井は、共通の知人である俳優・舟木に誘われ、東京を旅立って鳥取のとある駅へ。だが発起人の舟木は来ない。ほとんど面識のない木下と坪井は途方に暮れながら舟木を待ちつつ、当てもない旅を始める。その矢先、海岸を歩いていた2人の前に裸同然で走ってきた若い女性が倒れ込む。その女性・敦子は何を思ったか冬空の下で泳いでいたところ、服も荷物も海に流されてしまったという。",
+    "poster_path": "/1cb392E3oeFrYHfGckM4Sc7af6N.jpg",
+    "backdrop_path": "/hiZrclvE1xRKNSlD9gDTikdrWz4.jpg",
+    "release_date": "2003-09-10",
+    "director": "山下敦弘",
+    "runtime": 83,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.7
+  },
+  "Flow": {
+    "tmdb_id": 1281775,
+    "tmdb_title_jp": "Flow",
+    "tmdb_title_en": "Flow",
+    "overview": "",
+    "poster_path": "/f4SRtw6tgLaTGgvsrs1unh1WhpQ.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-02-01",
+    "director": "Gints Zilbalodis",
+    "runtime": 8,
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "ファミリー"
+    ],
+    "vote_average": 7.9
+  },
+  "JUNK WORLD": {
+    "tmdb_id": 1170215,
+    "tmdb_title_jp": "JUNK WORLD",
+    "tmdb_title_en": "JUNK WORLD",
+    "overview": "遥か昔、人類は地上の生息域減少により地下開発を進めた。  その労働力として人間に似せた人工生命体のマリガンを創造。しかしマリガンは自らのクローンを増やして勢力を広め人類に反乱。\r 第3次停戦協定から230年後の世界。人類は地上に留まり地球規模に広がった地下世界をマリガンが支配していた。",
+    "poster_path": "/596aPikSFPpv0fxePAcxwAdryj2.jpg",
+    "backdrop_path": "/fekFgNsU8JZDh0bvkn5LpS2TJra.jpg",
+    "release_date": "2025-06-13",
+    "director": "堀貴秀",
+    "runtime": 104,
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "アクション",
+      "アドベンチャー"
+    ],
+    "vote_average": 3.5
+  },
+  "NOPE／ノープ": {
+    "tmdb_id": 762504,
+    "tmdb_title_jp": "NOPE／ノープ",
+    "tmdb_title_en": "Nope",
+    "overview": "広大な田舎町の空に突如現れた不気味な飛行物体をめぐり、謎の解明のため動画撮影を試みる兄妹がたどる運命を描いた。 田舎町で広大な敷地の牧場を経営し、生計を立てている一家。ある日、一家の長男が、家業をサボって町に繰り出す妹にうんざりしていたところ、突然空から異物が降り注いでくる。その謎の現象が止んだかと思うと、直前まで会話していた父親が息絶えていた。長男は、父親の不可解な死の直前に、雲に覆われた巨大な飛行物体のようなものを目撃したことを妹に明かす。兄妹はその飛行物体の存在を収めた動画を撮影すればネットでバズるはずだと、飛行物体の撮影に挑むが、そんな彼らに想像を絶する事態が待ち受けていた。",
+    "poster_path": "/nZAq1443q08FZEGCl4atvnx4IFU.jpg",
+    "backdrop_path": "/yRutvYkM3OP8N9oqqfjSK1VC7fs.jpg",
+    "release_date": "2022-07-20",
+    "director": "ジョーダン・ピール",
+    "runtime": 130,
+    "genres": [
+      "ホラー",
+      "サイエンスフィクション",
+      "コメディ"
+    ],
+    "vote_average": 6.828
+  },
+  "ようこそ映画音響の世界へ": {
+    "tmdb_id": 595841,
+    "tmdb_title_jp": "ようこそ映画音響の世界へ",
+    "tmdb_title_en": "Making Waves: The Art of Cinematic Sound",
+    "overview": "伝説的なサウンドデザイナーと先見の明を持つ映画製作者が語る、映画音響の歴史。",
+    "poster_path": "/lKb361vj7njJyhWrS3K4IHzUPMo.jpg",
+    "backdrop_path": "/3mhqxlsfSYGIKXHqBI4tQf2iNfx.jpg",
+    "release_date": "2019-10-25",
+    "director": "Midge Costin",
+    "runtime": 95,
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "vote_average": 6.844
+  },
+  "ヌードの夜": {
+    "tmdb_id": 105125,
+    "tmdb_title_jp": "ヌードの夜",
+    "tmdb_title_en": "ヌードの夜",
+    "overview": "代行屋の紅次郎こと村木哲郎は古いビルを事務所兼自宅にしている。ある日、土屋名美が事務所を訪ねてきて東京の観光案内を依頼され引き受けたが、その夜、電話が掛かって来て急に帰ることになったのでホテルに預けた荷物を自宅に送るよう頼まれる。指定されたホテルの部屋に行ってみると、浴室に男の死体があった。村木は自分が嵌められたことに気付き、慌てて部屋を掃除し死体をスーツケースに詰めて自宅に運び、消息を絶った土屋名美を探し始める。",
+    "poster_path": "/AaGqanl3rDj4sqBcIJhHgqQs805.jpg",
+    "backdrop_path": "/cLhdwwQMzkxNPrn6v9F0QwKGEeB.jpg",
+    "release_date": "1993-12-18",
+    "director": "石井隆",
+    "runtime": 110,
+    "genres": [
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 5.7
+  },
+  "ウナイ 透明な闇 PFAS汚染に立ち向かう": null,
+  "『コードギアス 反逆のルルーシュⅠ 興道』【コードギアス20周年記念復刻上映会 Road to CODE GEASS 20th Year】": {
+    "tmdb_id": 477776,
+    "tmdb_title_jp": "コードギアス 反逆のルルーシュⅠ 興道",
+    "tmdb_title_en": "コードギアス 反逆のルルーシュⅠ 興道",
+    "overview": "母を何者かに殺され、父である神聖ブリタニア帝国皇帝に国を追われた忘却の皇子、ルルーシュ。彼は神聖ブリタニア帝国に占領された日本――エリア11でその正体を隠しながら暮らしていた。母を死に至らしめ、妹ナナリーの目と足の自由を奪った神聖ブリタニア帝国の打倒。謎の美少女C.C.から絶対遵守の力・ギアスを授けられた時、ルルーシュの野望が実現へと向けて動き出す――。",
+    "poster_path": "/vNYPfwcsJWFLiHL5StA9ynWFd7V.jpg",
+    "backdrop_path": "/cU9HXBinAA0Q67pWlsj0kpKfsG3.jpg",
+    "release_date": "2017-10-21",
+    "director": "谷口悟朗",
+    "runtime": 135,
+    "genres": [
+      "サイエンスフィクション",
+      "アニメーション",
+      "ドラマ",
+      "アクション"
+    ],
+    "vote_average": 7.118
+  },
+  "シネマ歌舞伎『歌舞伎ＮＥＸＴ 朧の森に棲む鬼』幸四郎版": null,
+  "鹿の国": {
+    "tmdb_id": 1438120,
+    "tmdb_title_jp": "鹿の国",
+    "tmdb_title_en": "鹿の国",
+    "overview": "",
+    "poster_path": "/dkiLEo6phekIP4Bnk0kLe0xETiO.jpg",
+    "backdrop_path": "/carBqITqoIWDtLcg4H5iOmx3sk1.jpg",
+    "release_date": "2025-01-02",
+    "director": "Riko Hiro",
+    "runtime": 98,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0
+  },
+  "ガザからの声 Episode1 「アハマドの物語」": {
+    "tmdb_id": 1607728,
+    "tmdb_title_jp": "ガザからの声 Episode1「アハマドの物語」",
+    "tmdb_title_en": "ガザからの声 Episode1「アハマドの物語」",
+    "overview": "",
+    "poster_path": "/3FuLNFcYP8Cu74HDkaWsCGWg0wG.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-22",
+    "director": "Muhammad Sawwaf",
+    "runtime": 48,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0
+  },
+  "ニッポンの、みせものやさん": null,
+  "医の倫理と戦争 字幕版": null,
+  "ロストランズ 闇を狩る者": null,
+  "八甲田山 4K": null
 }
