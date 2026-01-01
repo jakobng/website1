@@ -8,13 +8,17 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&display=swap');
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
     * { box-sizing: border-box; }
-    textarea::placeholder { color: rgba(232, 244, 240, 0.25); }
-    textarea:focus { outline: none; border-color: rgba(125, 211, 192, 0.35); }
-    body { margin: 0; padding: 0; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Manrope', sans-serif;
+      background: #F8F7F2;
+      color: #222;
+    }
+    a { color: #222; }
+    button { font-family: inherit; }
   </style>
 </head>
 <body>
@@ -245,6 +249,17 @@
       'complete': { label: 'Complete', color: '#4a9', bg: 'rgba(68, 170, 153, 0.15)' },
     };
 
+    // Simple color palette from main site
+    const colors = {
+      bg: '#F8F7F2',
+      text: '#222',
+      textLight: '#666',
+      accent: '#FDB813',
+      accentBlue: '#00A8E8',
+      border: '#222',
+      borderLight: '#ddd',
+    };
+
     function RiverFilmCollaborative() {
       const [view, setView] = React.useState('about');
       const [selectedModule, setSelectedModule] = React.useState(null);
@@ -289,38 +304,26 @@
       const totalStake = contributors.reduce((sum, c) => sum + c.stake, 0);
 
       return (
-        <div style={{
-          minHeight: '100vh',
-          background: 'linear-gradient(170deg, #080f1a 0%, #0c1929 50%, #0e1f35 100%)',
-          fontFamily: '"Source Serif 4", Georgia, serif',
-          color: '#e8f4f0',
-        }}>
-          {/* Ambient */}
-          <div style={{
-            position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-            background: 'radial-gradient(ellipse 100% 60% at 30% 100%, rgba(125, 211, 192, 0.04) 0%, transparent 60%)',
-            pointerEvents: 'none',
-          }} />
+        <div style={{ minHeight: '100vh', background: colors.bg, color: colors.text }}>
 
           {/* Header */}
           <header style={{
             padding: '1.25rem 2rem',
-            borderBottom: '1px solid rgba(125, 211, 192, 0.1)',
+            borderBottom: `2px solid ${colors.border}`,
             position: 'sticky', top: 0,
-            background: 'rgba(8, 15, 26, 0.95)',
-            backdropFilter: 'blur(12px)',
+            background: colors.bg,
             zIndex: 50,
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', maxWidth: '1000px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', maxWidth: '800px', margin: '0 auto' }}>
               <div style={{ cursor: 'pointer' }} onClick={() => setView('about')}>
-                <h1 style={{ fontSize: '1.35rem', fontWeight: 300, margin: 0, color: '#7dd3c0', letterSpacing: '0.01em' }}>
+                <h1 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>
                   Mouthful of River
                 </h1>
-                <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)', margin: '0.15rem 0 0 0' }}>
+                <p style={{ fontSize: '0.75rem', color: colors.textLight, margin: '0.1rem 0 0 0' }}>
                   Open-source documentary
                 </p>
               </div>
-              <nav style={{ display: 'flex', gap: '1.25rem' }}>
+              <nav style={{ display: 'flex', gap: '1.5rem' }}>
                 {[
                   { id: 'about', label: 'About' },
                   { id: 'contribute', label: 'Contribute' },
@@ -333,11 +336,13 @@
                     style={{
                       background: 'none', border: 'none',
                       color: view === v.id || (v.id === 'contribute' && (view === 'module-detail' || view === 'submit'))
-                        ? '#7dd3c0' : 'rgba(232, 244, 240, 0.5)',
-                      fontSize: '0.8rem', cursor: 'pointer',
+                        ? colors.text : colors.textLight,
+                      fontSize: '0.9rem', cursor: 'pointer',
                       padding: '0.4rem 0',
+                      fontWeight: view === v.id || (v.id === 'contribute' && (view === 'module-detail' || view === 'submit'))
+                        ? 700 : 400,
                       borderBottom: view === v.id || (v.id === 'contribute' && (view === 'module-detail' || view === 'submit'))
-                        ? '1.5px solid #7dd3c0' : '1.5px solid transparent',
+                        ? `2px solid ${colors.accent}` : '2px solid transparent',
                     }}
                   >
                     {v.label}
@@ -348,211 +353,160 @@
           </header>
 
           {/* Main */}
-          <main style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
+          <main style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
 
             {/* ABOUT */}
             {view === 'about' && (
-              <div style={{ animation: 'fadeIn 0.5s ease' }}>
-                <div style={{ maxWidth: '680px' }}>
-                  <h2 style={{
-                    fontSize: '1.6rem', fontWeight: 300, color: '#7dd3c0',
-                    lineHeight: 1.35, marginBottom: '1.25rem',
-                  }}>
-                    AI gives rivers a voice—but the data centers powering that voice threaten to drain them dry.
-                  </h2>
+              <div>
+                <h2 style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.4, marginBottom: '1rem' }}>
+                  AI gives rivers a voice—but the data centers powering that voice threaten to drain them dry.
+                </h2>
 
-                  <p style={{ fontSize: '0.95rem', lineHeight: 1.8, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '1.25rem' }}>
-                    <em>Mouthful of River</em> is a mosaic documentary following scientists, indigenous communities,
-                    artists, and activists searching for ways to understand: what does the river truly want?
+                <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                  <em>Mouthful of River</em> is a mosaic documentary following scientists, indigenous communities,
+                  artists, and activists searching for ways to understand: what does the river truly want?
+                </p>
+
+                <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: colors.textLight, marginBottom: '2rem' }}>
+                  From Paiwan communities in Taiwan who see watershed as kinship, to activists in Spain fighting
+                  data center water consumption, to scientists lowering hydrophones into Sheffield's River Don—the
+                  film weaves together diverse ways of listening to and speaking for rivers.
+                </p>
+
+                <div style={{
+                  borderLeft: `4px solid ${colors.accent}`,
+                  padding: '1rem 1.25rem',
+                  marginBottom: '2rem',
+                  background: 'rgba(253, 184, 19, 0.08)',
+                }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                    An open-source film
+                  </h3>
+                  <p style={{ fontSize: '0.9rem', lineHeight: 1.7, margin: '0 0 0.75rem 0' }}>
+                    This film is being made through a new collaborative model. Anyone can contribute—footage,
+                    research, sound, editing, distribution. If your contribution is approved, you earn both
+                    creative voting rights and a share of profits.
                   </p>
-
-                  <p style={{ fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(232, 244, 240, 0.55)', marginBottom: '2rem' }}>
-                    From Paiwan communities in Taiwan who see watershed as kinship, to activists in Spain fighting
-                    data center water consumption, to scientists lowering hydrophones into Sheffield's River Don—the
-                    film weaves together diverse ways of listening to and speaking for rivers.
+                  <p style={{ fontSize: '0.85rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                    All contributed material is licensed CC0—anyone can fork this project.
                   </p>
-
-                  <div style={{
-                    background: 'rgba(125, 211, 192, 0.06)',
-                    border: '1px solid rgba(125, 211, 192, 0.15)',
-                    borderRadius: '10px',
-                    padding: '1.5rem',
-                    marginBottom: '2rem',
-                  }}>
-                    <h3 style={{ fontSize: '1rem', color: '#7dd3c0', marginBottom: '0.75rem', fontWeight: 500 }}>
-                      An open-source film
-                    </h3>
-                    <p style={{ fontSize: '0.88rem', lineHeight: 1.7, color: 'rgba(232, 244, 240, 0.6)', margin: '0 0 1rem 0' }}>
-                      This film is being made through a new collaborative model. Anyone can contribute—footage,
-                      research, sound, editing, distribution. If your contribution is approved, you earn both
-                      creative voting rights and a share of profits. The more you contribute, the more stake you hold.
-                    </p>
-                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.45)', margin: 0 }}>
-                      All contributed material is licensed CC0—anyone can fork this project to create their own
-                      works, with credit to contributors.
-                    </p>
-                  </div>
-
-                  {/* Phase budget overview */}
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(4, 1fr)',
-                    gap: '0.5rem',
-                    marginBottom: '2rem',
-                  }}>
-                    {contributionModules.map(phase => (
-                      <div key={phase.id} style={{
-                        padding: '0.75rem',
-                        background: `${phase.color}10`,
-                        border: `1px solid ${phase.color}25`,
-                        borderRadius: '6px',
-                        textAlign: 'center',
-                      }}>
-                        <div style={{ fontSize: '1.25rem', fontWeight: 300, color: phase.color }}>{phase.phaseBudget}</div>
-                        <div style={{ fontSize: '0.65rem', color: 'rgba(232, 244, 240, 0.5)', marginTop: '0.2rem' }}>{phase.phase}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2rem' }}>
-                    <div style={{
-                      flex: 1, padding: '1rem',
-                      background: 'rgba(125, 211, 192, 0.04)',
-                      border: '1px solid rgba(125, 211, 192, 0.1)',
-                      borderRadius: '8px',
-                    }}>
-                      <span style={{ fontSize: '1.5rem' }}>🎬</span>
-                      <h4 style={{ fontSize: '0.85rem', color: '#e8f4f0', margin: '0.5rem 0 0.2rem 0', fontWeight: 500 }}>Leo Nelki</h4>
-                      <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)', margin: 0 }}>Co-Director</p>
-                    </div>
-                    <div style={{
-                      flex: 1, padding: '1rem',
-                      background: 'rgba(125, 211, 192, 0.04)',
-                      border: '1px solid rgba(125, 211, 192, 0.1)',
-                      borderRadius: '8px',
-                    }}>
-                      <span style={{ fontSize: '1.5rem' }}>🎥</span>
-                      <h4 style={{ fontSize: '0.85rem', color: '#e8f4f0', margin: '0.5rem 0 0.2rem 0', fontWeight: 500 }}>Patricia Escheverrias Liras</h4>
-                      <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)', margin: 0 }}>Co-Director</p>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => setView('contribute')}
-                    style={{
-                      padding: '0.9rem 1.75rem',
-                      background: 'linear-gradient(135deg, #7dd3c0 0%, #5fb8a8 100%)',
-                      border: 'none', borderRadius: '6px',
-                      color: '#080f1a', fontSize: '0.95rem', fontWeight: 500, cursor: 'pointer',
-                    }}
-                  >
-                    See open contributions →
-                  </button>
                 </div>
+
+                {/* Phase budget overview */}
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  gap: '2px',
+                  background: colors.border,
+                  marginBottom: '2rem',
+                }}>
+                  {contributionModules.map(phase => (
+                    <div key={phase.id} style={{
+                      padding: '0.75rem',
+                      background: colors.bg,
+                      textAlign: 'center',
+                    }}>
+                      <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{phase.phaseBudget}</div>
+                      <div style={{ fontSize: '0.7rem', color: colors.textLight }}>{phase.phase}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', gap: '2px', background: colors.border, marginBottom: '2rem' }}>
+                  <div style={{ flex: 1, padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.9rem', fontWeight: 700, margin: '0 0 0.2rem 0' }}>Leo Nelki</h4>
+                    <p style={{ fontSize: '0.8rem', color: colors.textLight, margin: 0 }}>Co-Director</p>
+                  </div>
+                  <div style={{ flex: 1, padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.9rem', fontWeight: 700, margin: '0 0 0.2rem 0' }}>Patricia Escheverrias Liras</h4>
+                    <p style={{ fontSize: '0.8rem', color: colors.textLight, margin: 0 }}>Co-Director</p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setView('contribute')}
+                  style={{
+                    padding: '0.75rem 1.5rem',
+                    background: colors.accent,
+                    border: 'none',
+                    color: colors.text,
+                    fontSize: '0.95rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                  }}
+                >
+                  See open contributions →
+                </button>
               </div>
             )}
 
             {/* CONTRIBUTE */}
             {view === 'contribute' && (
-              <div style={{ animation: 'fadeIn 0.5s ease' }}>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <h2 style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.4rem' }}>
-                    Contribution modules
-                  </h2>
-                  <p style={{ fontSize: '0.88rem', color: 'rgba(232, 244, 240, 0.45)', maxWidth: '600px', lineHeight: 1.6 }}>
-                    Each module is a substantial piece of the film. Complete a module and earn your stake—voting rights and profit share.
-                  </p>
-                </div>
+              <div>
+                <h2 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Contribution modules
+                </h2>
+                <p style={{ fontSize: '0.9rem', color: colors.textLight, marginBottom: '1.5rem', lineHeight: 1.6 }}>
+                  Each module is a substantial piece of the film. Complete a module and earn your stake.
+                </p>
 
                 {contributionModules.map((phase) => (
-                  <div key={phase.id} style={{ marginBottom: '0.75rem' }}>
+                  <div key={phase.id} style={{ marginBottom: '1rem' }}>
                     <button
                       onClick={() => togglePhase(phase.id)}
                       style={{
                         width: '100%', display: 'flex', alignItems: 'center', gap: '0.75rem',
-                        padding: '0.9rem 1rem',
-                        background: expandedPhases.includes(phase.id) ? 'rgba(125, 211, 192, 0.06)' : 'rgba(125, 211, 192, 0.02)',
-                        border: `1px solid ${phase.color}25`,
-                        borderRadius: expandedPhases.includes(phase.id) ? '8px 8px 0 0' : '8px',
+                        padding: '0.75rem 1rem',
+                        background: colors.bg,
+                        border: `2px solid ${colors.border}`,
                         cursor: 'pointer', textAlign: 'left',
                       }}
                     >
-                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: phase.color, boxShadow: `0 0 8px ${phase.color}40` }} />
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <h3 style={{ fontSize: '0.95rem', fontWeight: 500, color: phase.color, margin: 0 }}>{phase.phase}</h3>
-                          <span style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.4)' }}>({phase.phaseBudget} of total stake)</span>
+                          <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0 }}>{phase.phase}</h3>
+                          <span style={{ fontSize: '0.75rem', color: colors.textLight }}>({phase.phaseBudget})</span>
                         </div>
-                        <p style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.4)', margin: '0.15rem 0 0 0' }}>{phase.description}</p>
+                        <p style={{ fontSize: '0.8rem', color: colors.textLight, margin: '0.1rem 0 0 0' }}>{phase.description}</p>
                       </div>
                       <span style={{
-                        fontSize: '0.7rem', padding: '0.2rem 0.5rem', borderRadius: '10px',
-                        background: phase.phaseStatus === 'active' ? `${phase.color}20` : 'rgba(100,100,100,0.15)',
-                        color: phase.phaseStatus === 'active' ? phase.color : '#666',
-                        textTransform: 'uppercase', letterSpacing: '0.03em',
+                        fontSize: '0.7rem', padding: '0.15rem 0.4rem',
+                        background: phase.phaseStatus === 'active' ? colors.accent : '#eee',
+                        fontWeight: 700,
                       }}>
                         {phase.phaseStatus === 'active' ? 'Active' : phase.phaseStatus === 'upcoming' ? 'Upcoming' : 'Future'}
                       </span>
-                      <span style={{ color: 'rgba(232, 244, 240, 0.3)', transform: expandedPhases.includes(phase.id) ? 'rotate(180deg)' : '', transition: '0.2s' }}>▼</span>
+                      <span style={{ color: colors.textLight }}>{expandedPhases.includes(phase.id) ? '−' : '+'}</span>
                     </button>
 
                     {expandedPhases.includes(phase.id) && (
-                      <div style={{
-                        border: `1px solid ${phase.color}25`, borderTop: 'none',
-                        borderRadius: '0 0 8px 8px', padding: '1rem',
-                        background: 'rgba(0,0,0,0.15)',
-                      }}>
-                        <div style={{ display: 'grid', gap: '0.75rem' }}>
+                      <div style={{ border: `2px solid ${colors.border}`, borderTop: 'none', padding: '0.75rem' }}>
+                        <div style={{ display: 'grid', gap: '0.5rem' }}>
                           {phase.modules.map(module => (
                             <div
                               key={module.id}
                               onClick={() => module.status !== 'locked' && openModule(module)}
                               style={{
                                 display: 'flex', gap: '1rem', alignItems: 'flex-start',
-                                padding: '1rem 1.25rem',
-                                background: statusConfig[module.status].bg,
-                                border: `1px solid ${statusConfig[module.status].color}30`,
-                                borderRadius: '8px',
+                                padding: '0.75rem',
+                                background: module.status === 'locked' ? '#f0f0f0' : colors.bg,
+                                border: `1px solid ${colors.borderLight}`,
                                 cursor: module.status === 'locked' ? 'default' : 'pointer',
-                                opacity: module.status === 'locked' ? 0.5 : 1,
-                                transition: '0.2s',
-                              }}
-                              onMouseEnter={e => {
-                                if (module.status !== 'locked') {
-                                  e.currentTarget.style.background = statusConfig[module.status].color + '20';
-                                  e.currentTarget.style.transform = 'translateX(4px)';
-                                }
-                              }}
-                              onMouseLeave={e => {
-                                if (module.status !== 'locked') {
-                                  e.currentTarget.style.background = statusConfig[module.status].bg;
-                                  e.currentTarget.style.transform = 'translateX(0)';
-                                }
+                                opacity: module.status === 'locked' ? 0.6 : 1,
                               }}
                             >
-                              <span style={{ fontSize: '1.5rem', marginTop: '0.1rem' }}>{typeIcons[module.type]}</span>
                               <div style={{ flex: 1 }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
-                                  <h4 style={{ fontSize: '0.95rem', fontWeight: 500, color: '#e8f4f0', margin: 0 }}>{module.title}</h4>
-                                  {module.status === 'in-progress' && (
-                                    <span style={{ fontSize: '0.65rem', color: '#c4a77d' }}>— {module.claimedBy}</span>
-                                  )}
-                                </div>
-                                <p style={{ fontSize: '0.8rem', color: 'rgba(232, 244, 240, 0.5)', margin: 0, lineHeight: 1.5 }}>
+                                <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.25rem 0' }}>{module.title}</h4>
+                                <p style={{ fontSize: '0.8rem', color: colors.textLight, margin: 0, lineHeight: 1.5 }}>
                                   {module.status === 'locked' && module.prerequisite
                                     ? `Waiting for: ${module.prerequisite}`
-                                    : module.description.slice(0, 140) + '...'
+                                    : module.description.slice(0, 120) + '...'
                                   }
                                 </p>
-                                {module.note && (
-                                  <p style={{ fontSize: '0.75rem', color: phase.color, margin: '0.4rem 0 0 0', fontStyle: 'italic' }}>
-                                    {module.note}
-                                  </p>
-                                )}
                               </div>
-                              <div style={{ textAlign: 'right', minWidth: '60px' }}>
-                                <div style={{ fontSize: '1.25rem', fontWeight: 300, color: statusConfig[module.status].color }}>{module.stake}%</div>
-                                <div style={{ fontSize: '0.65rem', color: 'rgba(232, 244, 240, 0.35)' }}>stake</div>
+                              <div style={{ textAlign: 'right', minWidth: '50px' }}>
+                                <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>{module.stake}%</div>
+                                <div style={{ fontSize: '0.65rem', color: colors.textLight }}>stake</div>
                               </div>
                             </div>
                           ))}
@@ -566,79 +520,66 @@
 
             {/* MODULE DETAIL */}
             {view === 'module-detail' && selectedModule && (
-              <div style={{ animation: 'fadeIn 0.4s ease', maxWidth: '620px' }}>
-                <button onClick={() => backTo('contribute')} style={{ background: 'none', border: 'none', color: 'rgba(232, 244, 240, 0.5)', fontSize: '0.8rem', cursor: 'pointer', marginBottom: '1.25rem' }}>
+              <div>
+                <button onClick={() => backTo('contribute')} style={{ background: 'none', border: 'none', color: colors.textLight, fontSize: '0.85rem', cursor: 'pointer', marginBottom: '1rem', padding: 0 }}>
                   ← Back to modules
                 </button>
 
-                <div style={{
-                  background: 'rgba(125, 211, 192, 0.05)',
-                  border: '1px solid rgba(125, 211, 192, 0.15)',
-                  borderRadius: '10px', padding: '1.75rem',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                    <span style={{ fontSize: '2rem' }}>{typeIcons[selectedModule.type]}</span>
-                    <span style={{
-                      fontSize: '0.65rem', padding: '0.2rem 0.5rem', borderRadius: '10px',
-                      background: 'rgba(125, 211, 192, 0.2)', color: '#7dd3c0', textTransform: 'uppercase',
-                    }}>
-                      {selectedModule.type}
-                    </span>
+                <div style={{ border: `2px solid ${colors.border}`, padding: '1.5rem' }}>
+                  <div style={{ fontSize: '0.75rem', color: colors.textLight, marginBottom: '0.5rem' }}>
+                    {selectedModule.type}
                   </div>
 
-                  <h2 style={{ fontSize: '1.4rem', fontWeight: 400, margin: '0 0 1rem 0', color: '#e8f4f0', lineHeight: 1.3 }}>
+                  <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 1rem 0', lineHeight: 1.3 }}>
                     {selectedModule.title}
                   </h2>
 
-                  <p style={{ fontSize: '0.92rem', lineHeight: 1.75, color: 'rgba(232, 244, 240, 0.65)', marginBottom: '1.5rem' }}>
+                  <p style={{ fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                     {selectedModule.description}
                   </p>
 
                   {selectedModule.deliverables && (
                     <div style={{ marginBottom: '1.5rem' }}>
-                      <h4 style={{ fontSize: '0.75rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      <h4 style={{ fontSize: '0.8rem', fontWeight: 700, margin: '0 0 0.5rem 0' }}>
                         Required deliverables
                       </h4>
-                      <ul style={{ margin: 0, padding: '0 0 0 1.25rem', color: 'rgba(232, 244, 240, 0.55)', fontSize: '0.85rem', lineHeight: 1.7 }}>
+                      <ul style={{ margin: 0, padding: '0 0 0 1.25rem', fontSize: '0.9rem', lineHeight: 1.7 }}>
                         {selectedModule.deliverables.map((d, i) => <li key={i}>{d}</li>)}
                       </ul>
                     </div>
                   )}
 
                   <div style={{
-                    background: 'rgba(125, 211, 192, 0.1)',
-                    borderRadius: '8px', padding: '1.25rem',
+                    background: 'rgba(253, 184, 19, 0.1)',
+                    padding: '1rem',
                     marginBottom: '1.5rem',
                   }}>
-                    <h4 style={{ fontSize: '0.72rem', color: '#7dd3c0', margin: '0 0 0.75rem 0', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    <h4 style={{ fontSize: '0.75rem', fontWeight: 700, margin: '0 0 0.75rem 0' }}>
                       What you'll earn if approved
                     </h4>
                     <div style={{ display: 'flex', gap: '2rem' }}>
                       <div>
-                        <div style={{ fontSize: '1.75rem', fontWeight: 300, color: '#7dd3c0' }}>{selectedModule.stake}%</div>
-                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.45)' }}>Voting stake</div>
+                        <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{selectedModule.stake}%</div>
+                        <div style={{ fontSize: '0.75rem', color: colors.textLight }}>Voting stake</div>
                       </div>
                       <div>
-                        <div style={{ fontSize: '1.75rem', fontWeight: 300, color: '#7dd3c0' }}>{selectedModule.stake}%</div>
-                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.45)' }}>Profit share*</div>
+                        <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{selectedModule.stake}%</div>
+                        <div style={{ fontSize: '0.75rem', color: colors.textLight }}>Profit share</div>
                       </div>
                       <div>
-                        <div style={{ fontSize: '1.75rem', fontWeight: 300, color: '#7dd3c0' }}>✓</div>
-                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.45)' }}>Film credit</div>
+                        <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>✓</div>
+                        <div style={{ fontSize: '0.75rem', color: colors.textLight }}>Film credit</div>
                       </div>
                     </div>
-                    <p style={{ fontSize: '0.7rem', color: 'rgba(232, 244, 240, 0.35)', margin: '0.75rem 0 0 0', fontStyle: 'italic' }}>
-                      *Of contributor pool, after any co-production agreements
-                    </p>
                   </div>
 
                   <button
                     onClick={startSubmission}
                     style={{
-                      width: '100%', padding: '0.9rem',
-                      background: 'linear-gradient(135deg, #7dd3c0 0%, #5fb8a8 100%)',
-                      border: 'none', borderRadius: '6px',
-                      color: '#080f1a', fontSize: '0.95rem', fontWeight: 500, cursor: 'pointer',
+                      width: '100%', padding: '0.75rem',
+                      background: colors.accent,
+                      border: 'none',
+                      color: colors.text, fontSize: '0.95rem', fontWeight: 700, cursor: 'pointer',
                     }}
                   >
                     Submit my contribution
@@ -649,59 +590,52 @@
 
             {/* SUBMISSION FLOW */}
             {view === 'submit' && selectedModule && (
-              <div style={{ animation: 'fadeIn 0.4s ease', maxWidth: '520px' }}>
-                <button onClick={() => setView('module-detail')} style={{ background: 'none', border: 'none', color: 'rgba(232, 244, 240, 0.5)', fontSize: '0.8rem', cursor: 'pointer', marginBottom: '1.25rem' }}>
+              <div>
+                <button onClick={() => setView('module-detail')} style={{ background: 'none', border: 'none', color: colors.textLight, fontSize: '0.85rem', cursor: 'pointer', marginBottom: '1rem', padding: 0 }}>
                   ← Back
                 </button>
 
-                <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '1.75rem', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1.5rem' }}>
                   {[0, 1, 2, 3].map(step => (
                     <div key={step} style={{
-                      width: step <= submissionStep ? '1.75rem' : '0.4rem',
-                      height: '0.4rem', borderRadius: '3px',
-                      background: step <= submissionStep ? '#7dd3c0' : 'rgba(125, 211, 192, 0.2)',
-                      transition: '0.3s',
+                      flex: step <= submissionStep ? 2 : 1,
+                      height: '4px',
+                      background: step <= submissionStep ? colors.accent : '#ddd',
                     }} />
                   ))}
                 </div>
 
-                <div style={{
-                  background: 'rgba(125, 211, 192, 0.05)',
-                  border: '1px solid rgba(125, 211, 192, 0.15)',
-                  borderRadius: '10px', padding: '1.75rem', minHeight: '280px',
-                }}>
+                <div style={{ border: `2px solid ${colors.border}`, padding: '1.5rem', minHeight: '250px' }}>
                   {submissionStep === 0 && (
                     <div>
-                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Upload your files</h3>
-                      <p style={{ fontSize: '0.85rem', color: 'rgba(232, 244, 240, 0.55)', marginBottom: '1.25rem' }}>
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Upload your files</h3>
+                      <p style={{ fontSize: '0.9rem', color: colors.textLight, marginBottom: '1rem' }}>
                         Upload all materials for "{selectedModule.title}"
                       </p>
                       <div style={{
-                        border: '2px dashed rgba(125, 211, 192, 0.25)',
-                        borderRadius: '8px', padding: '2.5rem', textAlign: 'center',
-                        background: 'rgba(125, 211, 192, 0.02)',
+                        border: `2px dashed ${colors.borderLight}`,
+                        padding: '2rem', textAlign: 'center',
                       }}>
-                        <div style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>📁</div>
-                        <div style={{ color: 'rgba(232, 244, 240, 0.45)', fontSize: '0.8rem' }}>your_contribution.zip</div>
-                        <div style={{ color: 'rgba(125, 211, 192, 0.55)', fontSize: '0.7rem', marginTop: '0.4rem' }}>2.4 GB uploaded</div>
+                        <div style={{ fontSize: '0.9rem' }}>your_contribution.zip</div>
+                        <div style={{ fontSize: '0.8rem', color: colors.textLight, marginTop: '0.25rem' }}>2.4 GB uploaded</div>
                       </div>
                     </div>
                   )}
 
                   {submissionStep === 1 && (
                     <div>
-                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Describe your contribution</h3>
-                      <p style={{ fontSize: '0.85rem', color: 'rgba(232, 244, 240, 0.55)', marginBottom: '1.25rem' }}>
-                        Help stakeholders understand what you've created and how it meets the requirements.
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Describe your contribution</h3>
+                      <p style={{ fontSize: '0.9rem', color: colors.textLight, marginBottom: '1rem' }}>
+                        Help stakeholders understand what you've created.
                       </p>
                       <textarea
-                        placeholder="Describe your work, how it fulfills the module requirements, and any context that would help evaluation..."
+                        placeholder="Describe your work..."
                         style={{
-                          width: '100%', height: '140px',
-                          background: 'rgba(0,0,0,0.2)',
-                          border: '1px solid rgba(125, 211, 192, 0.15)',
-                          borderRadius: '6px', padding: '0.9rem',
-                          color: '#e8f4f0', fontSize: '0.85rem', fontFamily: 'inherit', resize: 'none',
+                          width: '100%', height: '120px',
+                          background: colors.bg,
+                          border: `1px solid ${colors.borderLight}`,
+                          padding: '0.75rem',
+                          color: colors.text, fontSize: '0.9rem', fontFamily: 'inherit', resize: 'none',
                         }}
                       />
                     </div>
@@ -709,62 +643,45 @@
 
                   {submissionStep === 2 && (
                     <div>
-                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Confirm terms</h3>
-                      <div style={{ background: 'rgba(125, 211, 192, 0.08)', borderRadius: '6px', padding: '1.25rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.9rem' }}>
-                          <span style={{ color: 'rgba(232, 244, 240, 0.65)', fontSize: '0.85rem' }}>Stake if approved</span>
-                          <span style={{ color: '#7dd3c0', fontWeight: 500 }}>{selectedModule.stake}%</span>
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.75rem' }}>Confirm terms</h3>
+                      <div style={{ background: 'rgba(253, 184, 19, 0.1)', padding: '1rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                          <span style={{ fontSize: '0.9rem' }}>Stake if approved</span>
+                          <span style={{ fontWeight: 700 }}>{selectedModule.stake}%</span>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.9rem' }}>
-                          <span style={{ color: 'rgba(232, 244, 240, 0.65)', fontSize: '0.85rem' }}>Your material licensed as</span>
-                          <span style={{ color: '#7dd3c0', fontWeight: 500 }}>CC0</span>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                          <span style={{ fontSize: '0.9rem' }}>License</span>
+                          <span style={{ fontWeight: 700 }}>CC0</span>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                          <span style={{ color: 'rgba(232, 244, 240, 0.65)', fontSize: '0.85rem' }}>Credit in final film</span>
-                          <span style={{ color: '#7dd3c0', fontWeight: 500 }}>✓</span>
+                          <span style={{ fontSize: '0.9rem' }}>Film credit</span>
+                          <span style={{ fontWeight: 700 }}>✓</span>
                         </div>
                       </div>
-                      <p style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.4)', marginTop: '1rem', lineHeight: 1.6 }}>
-                        By submitting, you agree that your contribution will be licensed CC0, allowing anyone to use, remix, or fork this material with credit.
+                      <p style={{ fontSize: '0.8rem', color: colors.textLight, marginTop: '0.75rem', lineHeight: 1.6 }}>
+                        By submitting, you agree to license your contribution CC0.
                       </p>
                     </div>
                   )}
 
                   {submissionStep === 3 && (
                     <div>
-                      <h3 style={{ fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: '#7dd3c0' }}>Submit for approval</h3>
-                      <p style={{ fontSize: '0.85rem', color: 'rgba(232, 244, 240, 0.55)', marginBottom: '1.25rem' }}>
-                        Current stakeholders will vote on your submission. Approval requires majority stake.
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Submit for approval</h3>
+                      <p style={{ fontSize: '0.9rem', color: colors.textLight, marginBottom: '1rem' }}>
+                        Current stakeholders will vote on your submission.
                       </p>
-                      <div style={{
-                        background: 'rgba(125, 211, 192, 0.05)',
-                        borderRadius: '6px', padding: '1rem',
-                        display: 'flex', gap: '0.75rem', alignItems: 'center',
-                      }}>
-                        <div style={{ display: 'flex' }}>
-                          {contributors.map((c, i) => (
-                            <div key={i} style={{
-                              width: '30px', height: '30px', borderRadius: '50%',
-                              background: 'rgba(125, 211, 192, 0.2)',
-                              display: 'flex', alignItems: 'center', justifyContent: 'center',
-                              marginLeft: i > 0 ? '-6px' : 0,
-                              border: '2px solid #080f1a', fontSize: '0.9rem',
-                            }}>{c.avatar}</div>
-                          ))}
-                        </div>
-                        <div>
-                          <div style={{ fontSize: '0.82rem', color: '#e8f4f0' }}>{contributors.length} current stakeholders</div>
-                          <div style={{ fontSize: '0.68rem', color: 'rgba(232, 244, 240, 0.4)' }}>Voting weighted by stake</div>
-                        </div>
+                      <div style={{ padding: '0.75rem', background: '#f5f5f5' }}>
+                        <div style={{ fontSize: '0.9rem' }}>{contributors.length} current stakeholders</div>
+                        <div style={{ fontSize: '0.8rem', color: colors.textLight }}>Voting weighted by stake</div>
                       </div>
                     </div>
                   )}
 
                   <button onClick={nextStep} style={{
-                    width: '100%', padding: '0.85rem', marginTop: '1.5rem',
-                    background: 'linear-gradient(135deg, #7dd3c0 0%, #5fb8a8 100%)',
-                    border: 'none', borderRadius: '6px',
-                    color: '#080f1a', fontSize: '0.92rem', fontWeight: 500, cursor: 'pointer',
+                    width: '100%', padding: '0.75rem', marginTop: '1.5rem',
+                    background: colors.accent,
+                    border: 'none',
+                    color: colors.text, fontSize: '0.95rem', fontWeight: 700, cursor: 'pointer',
                   }}>
                     {submissionStep === 3 ? 'Submit for review' : 'Continue'}
                   </button>
@@ -776,119 +693,91 @@
             {showSuccess && (
               <div style={{
                 position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-                background: 'rgba(8, 15, 26, 0.95)',
+                background: 'rgba(248, 247, 242, 0.98)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                zIndex: 100, animation: 'fadeIn 0.3s ease',
+                zIndex: 100,
               }}>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '3.5rem', marginBottom: '0.75rem', animation: 'pulse 1s ease infinite' }}>✨</div>
-                  <h2 style={{ fontSize: '1.35rem', color: '#7dd3c0', fontWeight: 400 }}>Submission received!</h2>
-                  <p style={{ color: 'rgba(232, 244, 240, 0.55)', marginTop: '0.4rem', fontSize: '0.9rem' }}>Stakeholders are reviewing...</p>
+                  <h2 style={{ fontSize: '1.3rem', fontWeight: 700 }}>Submission received!</h2>
+                  <p style={{ color: colors.textLight, marginTop: '0.25rem', fontSize: '0.9rem' }}>Stakeholders are reviewing...</p>
                 </div>
               </div>
             )}
 
             {/* CONTRIBUTORS / STAKES */}
             {view === 'contributors' && (
-              <div style={{ animation: 'fadeIn 0.5s ease' }}>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <h2 style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.4rem' }}>
-                    Current stakes
-                  </h2>
-                  <p style={{ fontSize: '0.88rem', color: 'rgba(232, 244, 240, 0.45)', maxWidth: '550px', lineHeight: 1.6 }}>
-                    Stake determines voting power and profit share. Earned through approved contributions.
-                  </p>
-                </div>
+              <div>
+                <h2 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Current stakes
+                </h2>
+                <p style={{ fontSize: '0.9rem', color: colors.textLight, marginBottom: '1.5rem', lineHeight: 1.6 }}>
+                  Stake determines voting power and profit share.
+                </p>
 
                 {/* Stake bar */}
                 <div style={{
-                  display: 'flex', height: '44px', borderRadius: '22px', overflow: 'hidden',
-                  marginBottom: '1.75rem', border: '1px solid rgba(125, 211, 192, 0.15)',
-                  maxWidth: '550px',
+                  display: 'flex', height: '32px', overflow: 'hidden',
+                  marginBottom: '1.5rem', border: `2px solid ${colors.border}`,
                 }}>
                   {contributors.map((c, i) => (
                     <div
                       key={c.name}
                       style={{
                         width: `${(c.stake / totalStake) * 100}%`,
-                        background: i === 0 ? '#5fb8a8' : '#3d9d8a',
+                        background: i === 0 ? colors.accent : '#e0c370',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        borderRight: i < contributors.length - 1 ? '2px solid rgba(8, 15, 26, 0.5)' : 'none',
-                        fontSize: '0.95rem',
+                        borderRight: i < contributors.length - 1 ? `2px solid ${colors.border}` : 'none',
+                        fontSize: '0.85rem',
+                        fontWeight: 700,
                       }}
                       title={`${c.name}: ${c.stake}%`}
                     >
-                      {c.avatar}
+                      {c.stake}%
                     </div>
                   ))}
                 </div>
 
                 {/* Contributors list */}
-                <div style={{ display: 'grid', gap: '0.6rem', maxWidth: '550px' }}>
+                <div style={{ display: 'grid', gap: '2px', background: colors.border }}>
                   {contributors.map((c) => (
                     <div
                       key={c.name}
                       style={{
-                        display: 'flex', alignItems: 'center', gap: '0.9rem',
-                        padding: '0.8rem 1rem',
-                        background: 'rgba(125, 211, 192, 0.025)',
-                        border: '1px solid rgba(125, 211, 192, 0.08)',
-                        borderRadius: '8px',
+                        display: 'flex', alignItems: 'center', gap: '1rem',
+                        padding: '0.75rem 1rem',
+                        background: colors.bg,
                       }}
                     >
-                      <div style={{
-                        width: '38px', height: '38px', borderRadius: '50%',
-                        background: 'rgba(125, 211, 192, 0.12)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem',
-                      }}>
-                        {c.avatar}
-                      </div>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: '0.88rem', color: '#e8f4f0' }}>
-                          {c.name}
-                        </div>
-                        <div style={{ fontSize: '0.72rem', color: 'rgba(232, 244, 240, 0.4)' }}>
-                          {c.role}
-                        </div>
+                        <div style={{ fontSize: '0.95rem', fontWeight: 700 }}>{c.name}</div>
+                        <div style={{ fontSize: '0.8rem', color: colors.textLight }}>{c.role}</div>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '1.1rem', color: '#7dd3c0', fontWeight: 300 }}>{c.stake}%</div>
-                      </div>
+                      <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>{c.stake}%</div>
                     </div>
                   ))}
                 </div>
 
                 {/* Available stake */}
                 <div style={{
-                  marginTop: '1.5rem', padding: '1rem 1.25rem',
-                  background: 'rgba(125, 211, 192, 0.08)',
-                  border: '1px solid rgba(125, 211, 192, 0.2)',
-                  borderRadius: '8px', maxWidth: '550px',
+                  marginTop: '1.5rem', padding: '1rem',
+                  background: 'rgba(253, 184, 19, 0.1)',
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                      <h4 style={{ fontSize: '0.85rem', color: '#7dd3c0', margin: 0, fontWeight: 500 }}>Available stake</h4>
-                      <p style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.45)', margin: '0.2rem 0 0 0' }}>
+                      <h4 style={{ fontSize: '0.9rem', fontWeight: 700, margin: 0 }}>Available stake</h4>
+                      <p style={{ fontSize: '0.8rem', color: colors.textLight, margin: '0.1rem 0 0 0' }}>
                         Distributed as contributions are approved
                       </p>
                     </div>
-                    <div style={{ fontSize: '1.5rem', color: '#7dd3c0', fontWeight: 300 }}>0%</div>
+                    <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>0%</div>
                   </div>
                 </div>
 
                 {/* Live contract note */}
-                <div style={{
-                  marginTop: '1rem', padding: '1rem 1.25rem',
-                  background: 'rgba(125, 211, 192, 0.04)',
-                  border: '1px solid rgba(125, 211, 192, 0.1)',
-                  borderRadius: '8px', maxWidth: '550px',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
-                    <span style={{ fontSize: '1rem' }}>📄</span>
-                    <h4 style={{ fontSize: '0.82rem', color: '#7dd3c0', margin: 0, fontWeight: 500 }}>Live contract</h4>
-                  </div>
-                  <p style={{ fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(232, 244, 240, 0.5)', margin: 0 }}>
-                    This stake distribution is automatically maintained. A legally signed version is generated quarterly for formal agreements and funding applications.
+                <div style={{ marginTop: '1rem', padding: '1rem', border: `1px solid ${colors.borderLight}` }}>
+                  <h4 style={{ fontSize: '0.85rem', fontWeight: 700, margin: '0 0 0.25rem 0' }}>Live contract</h4>
+                  <p style={{ fontSize: '0.85rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                    This stake distribution is automatically maintained. A legally signed version is generated quarterly.
                   </p>
                 </div>
               </div>
@@ -896,107 +785,54 @@
 
             {/* GOVERNANCE */}
             {view === 'governance' && (
-              <div style={{ animation: 'fadeIn 0.5s ease' }}>
-                <div style={{ marginBottom: '1.75rem' }}>
-                  <h2 style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.4rem' }}>
-                    How decisions are made
-                  </h2>
-                </div>
+              <div>
+                <h2 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.5rem' }}>
+                  How decisions are made
+                </h2>
 
-                <div style={{ display: 'grid', gap: '1rem', maxWidth: '600px' }}>
-                  <div style={{
-                    padding: '1.25rem',
-                    background: 'rgba(125, 211, 192, 0.04)',
-                    border: '1px solid rgba(125, 211, 192, 0.12)',
-                    borderRadius: '8px',
-                  }}>
-                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
-                      Voting power
-                    </h4>
-                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
-                      <strong style={{ color: '#e8f4f0' }}>Stake = voting share.</strong> If you hold 10% stake, your vote
-                      counts for 10% of the total. All governance decisions are weighted this way.
+                <div style={{ display: 'grid', gap: '2px', background: colors.border }}>
+                  <div style={{ padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.4rem 0' }}>Voting power</h4>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                      <strong style={{ color: colors.text }}>Stake = voting share.</strong> If you hold 10% stake, your vote counts for 10% of the total.
                     </p>
                   </div>
 
-                  <div style={{
-                    padding: '1.25rem',
-                    background: 'rgba(125, 211, 192, 0.04)',
-                    border: '1px solid rgba(125, 211, 192, 0.12)',
-                    borderRadius: '8px',
-                  }}>
-                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
-                      Approving contributions
-                    </h4>
-                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
-                      When you submit a contribution, all current stakeholders vote. Approval requires
-                      <strong style={{ color: '#e8f4f0' }}> majority stake</strong>—if stakeholders holding more than 50%
-                      of stake approve, your contribution is accepted.
+                  <div style={{ padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.4rem 0' }}>Approving contributions</h4>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                      When you submit a contribution, all current stakeholders vote. Approval requires <strong style={{ color: colors.text }}>majority stake</strong>.
                     </p>
                   </div>
 
-                  <div style={{
-                    padding: '1.25rem',
-                    background: 'rgba(125, 211, 192, 0.04)',
-                    border: '1px solid rgba(125, 211, 192, 0.12)',
-                    borderRadius: '8px',
-                  }}>
-                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
-                      Adding new modules
-                    </h4>
-                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
-                      Small modules (≤2% stake) can be added by <strong style={{ color: '#e8f4f0' }}>any stakeholder holding 10%+</strong>.
-                      Larger modules require a <strong style={{ color: '#e8f4f0' }}>vote from all stakeholders</strong>.
+                  <div style={{ padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.4rem 0' }}>Adding new modules</h4>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                      Small modules (≤2% stake) can be added by <strong style={{ color: colors.text }}>any stakeholder holding 10%+</strong>. Larger modules require a vote.
                     </p>
                   </div>
 
-                  <div style={{
-                    padding: '1.25rem',
-                    background: 'rgba(125, 211, 192, 0.04)',
-                    border: '1px solid rgba(125, 211, 192, 0.12)',
-                    borderRadius: '8px',
-                  }}>
-                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
-                      Licensing & forking
-                    </h4>
-                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
-                      All contributed material is licensed <strong style={{ color: '#e8f4f0' }}>CC0</strong>. Anyone can fork
-                      this project to create derivative works—shorter films, remixes, educational content—with credit to contributors.
+                  <div style={{ padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.4rem 0' }}>Licensing & forking</h4>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                      All contributed material is licensed <strong style={{ color: colors.text }}>CC0</strong>. Anyone can fork this project with credit.
                     </p>
                   </div>
 
-                  <div style={{
-                    padding: '1.25rem',
-                    background: 'rgba(125, 211, 192, 0.04)',
-                    border: '1px solid rgba(125, 211, 192, 0.12)',
-                    borderRadius: '8px',
-                  }}>
-                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
-                      Profit distribution
-                    </h4>
-                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: 0 }}>
-                      Stake represents your share of the <strong style={{ color: '#e8f4f0' }}>contributor pool</strong>.
-                      Traditional co-production deals (if any) are honored first; remaining profits are distributed by stake.
+                  <div style={{ padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.4rem 0' }}>Profit distribution</h4>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                      Stake represents your share of the <strong style={{ color: colors.text }}>contributor pool</strong>. Profits are distributed by stake.
                     </p>
                   </div>
 
-                  <div style={{
-                    padding: '1.25rem',
-                    background: 'rgba(125, 211, 192, 0.04)',
-                    border: '1px solid rgba(125, 211, 192, 0.12)',
-                    borderRadius: '8px',
-                  }}>
-                    <h4 style={{ fontSize: '0.9rem', color: '#7dd3c0', margin: '0 0 0.5rem 0', fontWeight: 500 }}>
-                      Phase budgets
-                    </h4>
-                    <p style={{ fontSize: '0.82rem', lineHeight: 1.65, color: 'rgba(232, 244, 240, 0.55)', margin: '0 0 0.75rem 0' }}>
-                      Total stake is allocated across phases:
-                    </p>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem' }}>
+                  <div style={{ padding: '1rem', background: colors.bg }}>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.4rem 0' }}>Phase budgets</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.25rem', marginTop: '0.5rem' }}>
                       {contributionModules.map(phase => (
-                        <div key={phase.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem' }}>
-                          <span style={{ color: 'rgba(232, 244, 240, 0.5)' }}>{phase.phase}</span>
-                          <span style={{ color: phase.color }}>{phase.phaseBudget}</span>
+                        <div key={phase.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+                          <span style={{ color: colors.textLight }}>{phase.phase}</span>
+                          <span style={{ fontWeight: 700 }}>{phase.phaseBudget}</span>
                         </div>
                       ))}
                     </div>
@@ -1005,56 +841,19 @@
 
                 {/* Proposed tasks */}
                 {proposedTasks.length > 0 && (
-                  <div style={{ marginTop: '2rem', maxWidth: '600px' }}>
-                    <h3 style={{ fontSize: '0.95rem', fontWeight: 500, color: 'rgba(232, 244, 240, 0.7)', marginBottom: '0.75rem' }}>
-                      Proposed new modules
-                    </h3>
+                  <div style={{ marginTop: '2rem' }}>
+                    <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.75rem' }}>Proposed new modules</h3>
                     {proposedTasks.map(task => (
-                      <div
-                        key={task.id}
-                        style={{
-                          padding: '1.25rem',
-                          background: 'rgba(196, 167, 125, 0.06)',
-                          border: '1px solid rgba(196, 167, 125, 0.2)',
-                          borderRadius: '8px',
-                        }}
-                      >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                          <h4 style={{ fontSize: '0.95rem', color: '#e8f4f0', margin: 0, fontWeight: 500 }}>{task.title}</h4>
-                          <span style={{ fontSize: '0.7rem', color: '#c4a77d' }}>{task.deadline}</span>
-                        </div>
-                        <p style={{ fontSize: '0.8rem', color: 'rgba(232, 244, 240, 0.5)', margin: '0 0 0.75rem 0' }}>
-                          {task.description}
-                        </p>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                          <span style={{ fontSize: '0.75rem', color: 'rgba(232, 244, 240, 0.4)' }}>
-                            Proposed by {task.proposedBy} • {task.stake}% stake
-                          </span>
-                          <div style={{ flex: 1 }} />
-                          <div style={{ display: 'flex', gap: '0.5rem' }}>
-                            <button style={{
-                              padding: '0.4rem 0.9rem',
-                              background: 'rgba(125, 211, 192, 0.15)',
-                              border: '1px solid rgba(125, 211, 192, 0.3)',
-                              borderRadius: '4px',
-                              color: '#7dd3c0',
-                              fontSize: '0.75rem',
-                              cursor: 'pointer',
-                            }}>
-                              Approve ({task.votesFor}%)
-                            </button>
-                            <button style={{
-                              padding: '0.4rem 0.9rem',
-                              background: 'rgba(100, 100, 100, 0.1)',
-                              border: '1px solid rgba(100, 100, 100, 0.2)',
-                              borderRadius: '4px',
-                              color: 'rgba(232, 244, 240, 0.5)',
-                              fontSize: '0.75rem',
-                              cursor: 'pointer',
-                            }}>
-                              Reject
-                            </button>
-                          </div>
+                      <div key={task.id} style={{ padding: '1rem', border: `1px solid ${colors.borderLight}`, marginBottom: '0.5rem' }}>
+                        <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.25rem 0' }}>{task.title}</h4>
+                        <p style={{ fontSize: '0.85rem', color: colors.textLight, margin: '0 0 0.5rem 0' }}>{task.description}</p>
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                          <button style={{ padding: '0.3rem 0.75rem', background: colors.accent, border: 'none', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer' }}>
+                            Approve ({task.votesFor}%)
+                          </button>
+                          <button style={{ padding: '0.3rem 0.75rem', background: '#eee', border: 'none', fontSize: '0.8rem', cursor: 'pointer' }}>
+                            Reject
+                          </button>
                         </div>
                       </div>
                     ))}
