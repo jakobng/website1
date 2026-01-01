@@ -106,6 +106,9 @@ def _iter_rowspan(table: Tag):
             colspan = int(colspan_match.group(0)) if colspan_match else 1
             rowspan_match = re.search(r'\d+', str(td.get("rowspan", "1")))
             rowspan = int(rowspan_match.group(0)) if rowspan_match else 1
+            # Clamp to reasonable bounds to prevent integer overflow errors
+            colspan = max(1, min(colspan, 100))
+            rowspan = max(1, min(rowspan, 100))
             cells_info.append((td, col, colspan, rowspan))
             for c in range(col, col + colspan): rowspans[c] = rowspan
             col += colspan
