@@ -176,11 +176,9 @@ def _scrape_active_day(
     return results
 
 
-def scrape_tollywood_raw() -> List[Dict]:
+def _scrape_tollywood_raw_once() -> List[Dict]:
     """
-    Drive the Tollywood schedule widget with Selenium and return
-    raw showtime dicts with:
-        movie_title_uncleaned, date_text, showtime, detail_page_url
+    Single attempt to scrape Tollywood. May raise exceptions.
     """
     driver = _init_selenium_driver()
     all_results: List[Dict] = []
@@ -224,7 +222,7 @@ def scrape_tollywood_raw() -> List[Dict]:
                 day_results = _scrape_active_day(driver, date_iso)
                 all_results.extend(day_results)
 
-            # Try to go to the next “page” of days
+            # Try to go to the next "page" of days
             try:
                 next_btn = driver.find_element(By.CSS_SELECTOR, NEXT_BUTTON_SELECTOR_CSS)
                 # Some widgets disable the button instead of removing it
@@ -239,6 +237,37 @@ def scrape_tollywood_raw() -> List[Dict]:
         driver.quit()
 
     return all_results
+
+
+# Maximum number of retry attempts for Selenium operations
+MAX_RETRIES = 3
+RETRY_DELAY_SECONDS = 5
+
+
+def scrape_tollywood_raw() -> List[Dict]:
+    """
+    Drive the Tollywood schedule widget with Selenium and return
+    raw showtime dicts with:
+        movie_title_uncleaned, date_text, showtime, detail_page_url
+
+    Includes retry logic to handle transient Selenium/Chrome crashes.
+    """
+    last_error = None
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            print(f"Tollywood scrape attempt {attempt}/{MAX_RETRIES}")
+            results = _scrape_tollywood_raw_once()
+            return results
+        except Exception as e:
+            last_error = e
+            print(f"Tollywood scrape attempt {attempt} failed: {e}")
+            if attempt < MAX_RETRIES:
+                print(f"Retrying in {RETRY_DELAY_SECONDS} seconds...")
+                time.sleep(RETRY_DELAY_SECONDS)
+
+    # All retries exhausted
+    raise last_error
 
 
 # -------------------------------------------------------------------

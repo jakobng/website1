@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-"""Laputa Asagaya programme scraper – **rev-M 2025-06-25**
+"""Laputa Asagaya programme scraper – **rev-N 2026-01-01**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-✅ Final bugfix for critical showtime assignment error.
-✅ Main grid parser now checks all cells in a row for a header, not just
-   the first one. This correctly handles headers that appear after a rowspan cell.
-✅ All known bugs should now be resolved.
+✅ Use html5lib parser to handle malformed HTML on Laputa website
+   (their HTML has broken tags like '</font<' missing closing '>').
+✅ Added bounds checking for colspan/rowspan to prevent overflow errors.
+✅ Main grid parser checks all cells in a row for headers.
 """
 
 import datetime as dt
@@ -45,7 +45,7 @@ def _fetch_soup(url: str) -> Optional[BeautifulSoup]:
     try:
         r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
         r.raise_for_status()
-        soup = BeautifulSoup(r.content, "html.parser")
+        soup = BeautifulSoup(r.content, "html5lib")
         _soup_cache[base_url] = soup
         return soup
     except requests.RequestException as exc:
@@ -106,6 +106,9 @@ def _iter_rowspan(table: Tag):
             colspan = int(colspan_match.group(0)) if colspan_match else 1
             rowspan_match = re.search(r'\d+', str(td.get("rowspan", "1")))
             rowspan = int(rowspan_match.group(0)) if rowspan_match else 1
+            # Clamp to reasonable bounds to prevent integer overflow errors
+            colspan = max(1, min(colspan, 100))
+            rowspan = max(1, min(rowspan, 100))
             cells_info.append((td, col, colspan, rowspan))
             for c in range(col, col + colspan): rowspans[c] = rowspan
             col += colspan
