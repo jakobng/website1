@@ -137,12 +137,26 @@ export default function App() {
     const closeDate = new Date();
     closeDate.setDate(closeDate.getDate() + 14);
 
+    // Parse file links into array of {label, url} objects
+    const parsedFileLinks = submissionData.fileLinks
+      .split('\n')
+      .filter(l => l.trim())
+      .map(line => {
+        const parts = line.split('|').map(p => p.trim());
+        if (parts.length >= 2) {
+          return { label: parts[0], url: parts.slice(1).join('|').trim() };
+        } else {
+          // No label provided, use URL as label
+          return { label: parts[0], url: parts[0] };
+        }
+      });
+
     const { error } = await supabase.from('submissions').insert({
       module_id: selectedModule.id,
       user_id: session.user.id,
       title: `Contribution: ${selectedModule.title}`,
       description: submissionData.description,
-      file_links: submissionData.fileLinks.split('\n').filter(l => l.trim()),
+      file_links: parsedFileLinks,
       voting_closes_at: closeDate.toISOString(),
       status: 'pending'
     });
@@ -377,11 +391,12 @@ export default function App() {
 
               {submissionStep === 0 && (
                 <div>
-                  <p>Paste links to your files (Google Drive, Dropbox, etc), one per line:</p>
+                  <p>Paste links to your files (Google Drive, Dropbox, etc), one per line. Format: <code>label | url</code></p>
                   <textarea
                     style={{width: '100%', height: '100px', padding: '0.5rem', fontFamily: 'inherit'}}
                     value={submissionData.fileLinks}
                     onChange={e => setSubmissionData({...submissionData, fileLinks: e.target.value})}
+                    placeholder="B-roll Taiwan wetlands | https://drive.google.com/...&#10;Interview audio Dr. Chen | https://dropbox.com/..."
                   />
                   <div style={{marginTop: '1rem'}}>
                     <button onClick={() => setSubmissionStep(1)} style={styles.btnPrimary}>Next</button>
@@ -438,14 +453,20 @@ export default function App() {
                     <div style={{fontSize: '0.8rem', color: colors.textLight, marginBottom: '0.5rem'}}>by {sub.user?.name || 'Contributor'}</div>
                     <p style={{background: '#f9f9f9', padding: '0.5rem', fontSize: '0.9rem'}}>{sub.description}</p>
 
-                    {/* Fixed: Only show View Files link if file_links exists and has items */}
+                    {/* Display file links as a vertical list with labels */}
                     {sub.file_links && sub.file_links.length > 0 && (
-                      <div style={{fontSize: '0.8rem', marginBottom: '1rem'}}>
-                        {sub.file_links.map((link, index) => (
-                          <a key={index} href={link} target="_blank" rel="noreferrer" style={{color: colors.accentBlue, marginRight: '1rem'}}>
-                            View File {sub.file_links.length > 1 ? index + 1 : ''}
-                          </a>
-                        ))}
+                      <div style={{fontSize: '0.85rem', marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '0.25rem'}}>
+                        {sub.file_links.map((link, index) => {
+                          // Handle both new format {label, url} and legacy format (plain string)
+                          const isObject = typeof link === 'object' && link !== null;
+                          const url = isObject ? link.url : link;
+                          const label = isObject && link.label ? link.label : (url.length > 40 ? url.substring(0, 40) + '...' : url);
+                          return (
+                            <a key={index} href={url} target="_blank" rel="noreferrer" style={{color: colors.accentBlue, textDecoration: 'none'}}>
+                              📁 {label}
+                            </a>
+                          );
+                        })}
                       </div>
                     )}
 
