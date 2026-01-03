@@ -43,9 +43,9 @@ jobs:
         run: sudo timedatectl set-timezone Asia/Tokyo
 
       - name: Install Dependencies
-        # Includes all necessary libraries + Playwright + Webdriver Manager
+        # Install from requirements.txt to ensure all dependencies are included
         run: |
-          pip install requests beautifulsoup4 selenium pandas pillow pyyaml replicate pytz webdriver-manager playwright
+          pip install -r requirements.txt
           playwright install chromium
           sudo apt-get install -y fonts-noto-cjk
 
