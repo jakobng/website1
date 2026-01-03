@@ -232,15 +232,61 @@ export default function App() {
             <h2 style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.4, marginBottom: '1rem' }}>
               AI gives rivers a voice—but the data centers powering that voice threaten to drain them dry.
             </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+            <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
               <em>Mouthful of River</em> is a mosaic documentary following scientists, indigenous communities, and activists searching for ways to understand: what does the river truly want?
             </p>
 
+            <div style={{ marginBottom: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.75rem' }}>The Story</h3>
+              <p style={{ fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                Across the world, rivers are under threat. In Taiwan, indigenous Atayal communities fight to protect sacred waterways from hydroelectric development. In the UK, researchers deploy AI sensors to monitor river health—powered by data centers that consume millions of gallons of water for cooling. In Spain, activists resist the expansion of data centers near drought-stricken rivers.
+              </p>
+              <p style={{ fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                This documentary weaves together these stories, exploring the paradox of using technology to understand nature while that same technology threatens to destroy it. Through interviews with hydrologists, indigenous elders, environmental activists, and AI researchers, we ask: Can we develop new ways of listening to what rivers need—before it's too late?
+              </p>
+            </div>
+
             <div style={{ borderLeft: `4px solid ${colors.accent}`, padding: '1rem 1.25rem', marginBottom: '2rem', background: 'rgba(253, 184, 19, 0.08)' }}>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>An open-source film</h3>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, margin: 0 }}>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1rem' }}>
                 Anyone can contribute. If your contribution is approved, you earn voting rights and a share of the profits. All material is licensed CC0.
               </p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                This project experiments with decentralized governance for collaborative filmmaking, inspired by the <a href="https://github.com/gov4git/gov4git" target="_blank" rel="noreferrer" style={{ color: colors.accentBlue }}>Gov4git</a> framework and the <a href="https://github.com/pluralitybook/plurality" target="_blank" rel="noreferrer" style={{ color: colors.accentBlue }}>Plurality Book</a> project.
+              </p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, margin: 0 }}>
+                The Plurality Book pioneered a model where hundreds of contributors across multiple countries collaboratively authored content—handling translation, research, fact-checking, and editing through transparent governance mechanisms. We're adapting this approach for filmmaking: contributors earn stake proportional to their contributions, and decisions about the film are made through stakeholder voting.
+              </p>
+            </div>
+
+            <div style={{ marginBottom: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.75rem' }}>How Open-Source Filmmaking Works</h3>
+              <div style={{ display: 'grid', gap: '1rem' }}>
+                <div style={{ padding: '1rem', border: `1px solid ${colors.borderLight}`, background: 'white' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.5rem 0' }}>1. Choose a module</h4>
+                  <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                    Browse open contribution modules—research tasks, footage needs, sound recording, interviews, or editing work. Each module has a defined stake percentage.
+                  </p>
+                </div>
+                <div style={{ padding: '1rem', border: `1px solid ${colors.borderLight}`, background: 'white' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.5rem 0' }}>2. Submit your contribution</h4>
+                  <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                    Upload your work (footage, research documents, audio files) and describe how it fulfills the module requirements. All submissions are licensed CC0.
+                  </p>
+                </div>
+                <div style={{ padding: '1rem', border: `1px solid ${colors.borderLight}`, background: 'white' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.5rem 0' }}>3. Community votes</h4>
+                  <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                    Current stakeholders vote on submissions. Voting power is proportional to stake—if you hold 10% stake, your vote counts for 10%. Approval requires majority stake.
+                  </p>
+                </div>
+                <div style={{ padding: '1rem', border: `1px solid ${colors.borderLight}`, background: 'white' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.5rem 0' }}>4. Earn stake & profits</h4>
+                  <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                    Approved contributions earn stake, which represents both voting power for future decisions and a share of any profits the film generates.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2px', background: colors.border, marginBottom: '2rem' }}>
@@ -431,6 +477,16 @@ export default function App() {
               How decisions are made
             </h2>
 
+            <div style={{ borderLeft: `4px solid ${colors.accentBlue}`, padding: '1rem 1.25rem', marginBottom: '2rem', background: 'rgba(0, 168, 232, 0.05)' }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Inspired by "Governance for Git"</h3>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                Our governance model draws from the <a href="https://github.com/gov4git/gov4git" target="_blank" rel="noreferrer" style={{ color: colors.accentBlue }}>Gov4git</a> framework—a decentralized governance system designed for open-source communities.
+              </p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, margin: 0 }}>
+                This approach was pioneered by the <a href="https://github.com/pluralitybook/plurality" target="_blank" rel="noreferrer" style={{ color: colors.accentBlue }}>Plurality Book</a> project, which crowdsourced a book on digital democracy across hundreds of contributors in multiple countries. The project demonstrated that governance can be transparent, decentralized, and fair—enabling strangers to collaborate on creative work without central authority.
+              </p>
+            </div>
+
             <div style={{ display: 'grid', gap: '2px', background: colors.border }}>
               <div style={{ padding: '1rem', background: colors.bg }}>
                 <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.4rem 0' }}>Voting power</h4>
@@ -478,6 +534,13 @@ export default function App() {
                   ))}
                 </div>
               </div>
+            </div>
+
+            <div style={{ marginTop: '2rem', padding: '1rem', background: '#f9f9f9', border: `1px solid ${colors.borderLight}` }}>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: '0 0 0.5rem 0' }}>Why this model?</h4>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: colors.textLight, margin: 0 }}>
+                Traditional filmmaking concentrates creative and financial power in producers and studios. Open-source filmmaking distributes both: contributors earn real ownership through their work, and the community collectively shapes the film's direction. This is an experiment in whether the principles that built open-source software can create great cinema.
+              </p>
             </div>
           </div>
         )}
