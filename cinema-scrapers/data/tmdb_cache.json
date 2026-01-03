@@ -17019,5 +17019,104 @@
       "コメディ"
     ],
     "vote_average": 7.866
-  }
+  },
+  "星野先生は今日も走る": {
+    "tmdb_id": 1537813,
+    "tmdb_title_jp": "星野先生は今日も走る",
+    "tmdb_title_en": "星野先生は今日も走る",
+    "overview": "",
+    "poster_path": "/hvNZknHdosyYb4soMLgy7gnVhEb.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-10",
+    "director": "Yuta Soma",
+    "runtime": 67,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "イップ・マン 継承": {
+    "tmdb_id": 365222,
+    "tmdb_title_jp": "イップ・マン 継承",
+    "tmdb_title_en": "葉問3",
+    "overview": "武術家イップ・マンが、イギリス人ボクサーと死闘を繰り広げてから9年。妻や息子と静かな毎日を送ってきた彼は、都市開発を進める悪徳不動産業者が息子の通う小学校の土地を狙っているのを知る。強引に土地買収を行う不動産王とその手下から、小学校を守ろうとするイップ・マン。暴力も辞さない手下たちをけ散らしていく彼だったが、妻が病に倒れてしまう。愛する家族を守るべきか、自分たちが暮らす町のために戦うべきか、そのはざまで思い悩む彼は……。\r ＜ブルース・リーの師匠でもある武術家イップ・マンを主人公に据えた人気アクションの第3弾。1950年代末の香港を舞台に、悪徳不動産業者に挑む彼の姿を、家族との絆を絡めて描く。監督にこれまでのシリーズ同様ウィルソン・イップ、キャストに『ローグ・ワン/スター・ウォーズ・ストーリー』などのドニー・イェンや、リン・ホンら前2作のメンバーが結集。ドニー・イェンが見せる立ち回りに加え、ボクシングの王者としてその名をとどろかせてきたマイク・タイソンの出演も見どころ。＞",
+    "poster_path": "/65dnKAHVfXlRQY4KCe2DAqtzaqQ.jpg",
+    "backdrop_path": "/19Shb0Xn0PeLXA4CkT2TIIvxaR6.jpg",
+    "release_date": "2015-12-24",
+    "director": "葉偉信",
+    "runtime": 105,
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "履歴"
+    ],
+    "vote_average": 7.027
+  },
+  "ベートーヴェン捏造": {
+    "tmdb_id": 1501465,
+    "tmdb_title_jp": "ベートーヴェン捏造",
+    "tmdb_title_en": "ベートーヴェン捏造",
+    "overview": "",
+    "poster_path": "/jT89KMf8yYPuRhWJSttiX7QyISC.jpg",
+    "backdrop_path": "/3EFckRlGJRlD48RXtuVfAufNygl.jpg",
+    "release_date": "2025-09-12",
+    "director": "関和亮",
+    "runtime": 115,
+    "genres": [
+      "音楽",
+      "ファンタジー"
+    ],
+    "vote_average": 8.0
+  },
+  "大統領暗殺裁判": null,
+  "ハイウェイの王様": {
+    "tmdb_id": 558451,
+    "tmdb_title_jp": "ハイウェイの王様",
+    "tmdb_title_en": "ハイウェイの王様",
+    "overview": "",
+    "poster_path": "/6E0leXPUn8ls5atpr8CLy4IRYaw.jpg",
+    "backdrop_path": null,
+    "release_date": "1965-12-18",
+    "director": "市村泰一",
+    "runtime": 89,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "イップ・マン外伝 マスターZ": {
+    "tmdb_id": 450001,
+    "tmdb_title_jp": "イップ・マン外伝 マスターZ",
+    "tmdb_title_en": "葉問外傳：張天志",
+    "overview": "ドニー・イェン主演「イップ・マン」シリーズに登場したチョン・ティンチを主人公にしたスピンオフ作品。イップ・マンとの詠春拳の正統争いに敗れ、武術の世界から身を引いたティンチは、小さな食料店を営みながら息子のフォンと穏やかな生活をスタートさせていた。そんな中、ティンチは町を仕切る長楽グループの反逆児キットたちから追われていたジュリアとナナの窮地を救ったことからキットの恨みを買い、店に放火されてしまう。そして、キットたちの策略により、命を落としてしまうナナたち。ティンチは封印していた武術を使い、キットたちのアジトへ単身乗り込んでいく…。マックス・チャンが「イップ・マン　継承」に引き続きティンチを演じるほか、デイブ・バウティスタ、ミシェル・ヨー、トニー・ジャーらが顔をそろえる。監督は香港アクション界の巨匠ユエン・ウーピン。",
+    "poster_path": "/WRTbbT6vRtwREuJHZ4Gark8IHw.jpg",
+    "backdrop_path": "/oEFTbg7xlg6eEq9wN5qhTLdDoax.jpg",
+    "release_date": "2018-12-20",
+    "director": "袁和平",
+    "runtime": 107,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 6.5
+  },
+  "イップ・マン 完結": {
+    "tmdb_id": 449924,
+    "tmdb_title_jp": "イップ・マン 完結",
+    "tmdb_title_en": "葉問4",
+    "overview": "1964年、愛する妻と死別したイップ・マン(ドニー・イェン)は、アメリカで暮らしているまな弟子のブルース・リーから招待され、息子と一緒にサンフランシスコに行く。イップ・マンは詠春拳の道場を開いたブルース・リーと再会するが、道場がチャイナタウンとアメリカ海軍の対立に巻き込まれてしまう。",
+    "poster_path": "/zZFSF1sUvhQQE796VV3jXDPDsYA.jpg",
+    "backdrop_path": "/jZDudPPIV4lSxEVgzfK9Z6nHdhi.jpg",
+    "release_date": "2019-12-19",
+    "director": "葉偉信",
+    "runtime": 105,
+    "genres": [
+      "アクション",
+      "履歴",
+      "ドラマ"
+    ],
+    "vote_average": 7.267
+  },
+  "ホーリー・カウ": null,
+  "“調子のいい奴”いたずらの天才": null,
+  "バード ここから羽ばたく": null
 }
