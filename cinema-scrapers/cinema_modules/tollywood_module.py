@@ -1,7 +1,11 @@
 import sys
 import time
+import re
 from datetime import datetime, date
-from typing import Dict, List
+from typing import Dict, List, Optional
+
+import requests
+from bs4 import BeautifulSoup
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -17,39 +21,115 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 CINEMA_NAME = "下北沢トリウッド"
 TOLLYWOOD_SCHEDULE_URL = "https://tollywood.jp/"
 
-# How long to wait for elements to appear
+# eiga.com URL for Tollywood (theater code: 3277)
+EIGA_COM_TOLLYWOOD_URL = "https://eiga.com/theater/13/130613/3277/"
+
+# How long to wait for elements to appear (Selenium)
 DEFAULT_SELENIUM_TIMEOUT = 15
 
-# How many “pages” of the calendar to scrape
-# (1 page = one row of dates before clicking the 「>」 button)
+# How many "pages" of the calendar to scrape (Selenium)
 MAX_CALENDAR_PAGES = 3  # 3 * 7 = up to 21 days
 
 
 # -------------------------------------------------------------------
-# CSS selectors (eigaland widget structure)
+# CSS selectors (eigaland widget structure for Selenium fallback)
 # -------------------------------------------------------------------
 
-# Calendar
 DATE_ITEM_SELECTOR_CSS = ".calendar-head.component .calender-head-item"
 DATE_VALUE_IN_ITEM_SELECTOR_CSS = ".date"
-
-# Movie blocks
 MOVIE_ITEM_BLOCK_SELECTOR_CSS = ".movie-schedule-body .movie-schedule-item"
 MOVIE_TITLE_IN_ITEM_BLOCK_SELECTOR_CSS = "h2 span"
-
-# Showtimes table inside each movie block
 SHOWTIME_TABLE_ROWS_SELECTOR_CSS = ".schedule-table tbody tr"
-PLACE_CELL_SELECTOR_CSS = "td.place"
 SLOT_CELL_SELECTOR_CSS = "td.slot"
-
-START_TIME_IN_SLOT_SELECTOR_CSS = "h2"        # e.g. <h2>14:50</h2>
-END_TIME_IN_SLOT_SELECTOR_CSS = "p"          # e.g. <p>16:36</p> (unused for now)
-
+START_TIME_IN_SLOT_SELECTOR_CSS = "h2"
 NEXT_BUTTON_SELECTOR_CSS = ".calendar-head.component button.next"
 
 
 # -------------------------------------------------------------------
-# Helpers
+# Primary scraping via eiga.com (requests-based, more reliable)
+# -------------------------------------------------------------------
+
+def _scrape_from_eiga_com() -> List[Dict]:
+    """
+    Scrape Tollywood schedule from eiga.com using requests.
+    This is faster and more reliable than Selenium-based scraping.
+    """
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'ja,en-US;q=0.9,en;q=0.8',
+    }
+
+    print(f"Tollywood: Fetching schedule from eiga.com...")
+    resp = requests.get(EIGA_COM_TOLLYWOOD_URL, headers=headers, timeout=30)
+    resp.raise_for_status()
+
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    results: List[Dict] = []
+    today = date.today()
+
+    # Find all theater-wrapper divs (each contains one movie's schedule)
+    wrappers = soup.select('.theater-wrapper')
+
+    for wrapper in wrappers:
+        # Get parent section which contains the movie title
+        section = wrapper.find_parent('section')
+        if not section:
+            continue
+
+        # Find movie title (h2 or h3 in section)
+        title_el = section.find(['h2', 'h3'])
+        if not title_el:
+            continue
+
+        movie_title = title_el.get_text(strip=True)
+        if not movie_title:
+            continue
+
+        # Find detail page link
+        detail_url: Optional[str] = None
+        movie_link = wrapper.select_one('.movie-image a[href*="/movie/"]')
+        if movie_link:
+            href = movie_link.get('href', '')
+            if href:
+                detail_url = 'https://eiga.com' + href
+
+        # Find schedule table
+        schedule = wrapper.select_one('.movie-schedule .weekly-schedule')
+        if not schedule:
+            continue
+
+        # Extract times from table cells
+        # Format: "1/7（水） 19:00"
+        cells = schedule.select('td, th')
+        for cell in cells:
+            text = cell.get_text(strip=True)
+            match = re.search(r'(\d{1,2})/(\d{1,2})[^0-9]+(\d{1,2}:\d{2})', text)
+            if match:
+                month, day, showtime = match.groups()
+                month = int(month)
+                day = int(day)
+
+                # Determine year (handle year rollover)
+                year = today.year
+                if month < today.month and today.month > 6:
+                    year += 1
+
+                date_str = f'{year}-{month:02d}-{day:02d}'
+
+                results.append({
+                    "movie_title_uncleaned": movie_title,
+                    "date_text": date_str,
+                    "showtime": showtime,
+                    "detail_page_url": detail_url,
+                })
+
+    print(f"Tollywood: Found {len(results)} showings from eiga.com")
+    return results
+
+
+# -------------------------------------------------------------------
+# Selenium-based fallback scraping (original approach)
 # -------------------------------------------------------------------
 
 def _init_selenium_driver() -> webdriver.Chrome:
@@ -58,14 +138,16 @@ def _init_selenium_driver() -> webdriver.Chrome:
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
     driver = webdriver.Chrome(options=chrome_options)
     driver.set_page_load_timeout(60)
     return driver
 
 
-def _parse_date_label_mmdd(mmdd_text: str, last_date: date | None) -> date:
+def _parse_date_label_mmdd(mmdd_text: str, last_date: Optional[date]) -> date:
     """
     Convert an 'MM/DD' string from the calendar into a date object.
     Handles year rollover (Dec -> Jan) using last_date as reference.
@@ -108,10 +190,6 @@ def _wait_for_schedule_loaded(driver: webdriver.Chrome) -> None:
     )
 
 
-# -------------------------------------------------------------------
-# Core scraping
-# -------------------------------------------------------------------
-
 def _scrape_active_day(
     driver: webdriver.Chrome,
     date_iso: str,
@@ -124,15 +202,12 @@ def _scrape_active_day(
 
     movie_blocks = driver.find_elements(By.CSS_SELECTOR, MOVIE_ITEM_BLOCK_SELECTOR_CSS)
     for block in movie_blocks:
-        # Title
         try:
             title_el = block.find_element(By.CSS_SELECTOR, MOVIE_TITLE_IN_ITEM_BLOCK_SELECTOR_CSS)
             movie_title = title_el.text.strip()
         except NoSuchElementException:
-            # Skip weird blocks with no title
             continue
 
-        # Optional detail link ("もっとみる")
         detail_page_url = None
         try:
             link_el = block.find_element(By.CSS_SELECTOR, "h2 a[href]")
@@ -142,12 +217,10 @@ def _scrape_active_day(
         except NoSuchElementException:
             pass
 
-        # Showtimes in the table
         rows = block.find_elements(By.CSS_SELECTOR, SHOWTIME_TABLE_ROWS_SELECTOR_CSS)
         for row in rows:
             slot_cells = row.find_elements(By.CSS_SELECTOR, SLOT_CELL_SELECTOR_CSS)
             for slot in slot_cells:
-                # Empty slots have no <h2>
                 try:
                     start_el = slot.find_element(By.CSS_SELECTOR, START_TIME_IN_SLOT_SELECTOR_CSS)
                 except NoSuchElementException:
@@ -157,18 +230,11 @@ def _scrape_active_day(
                 if not showtime:
                     continue
 
-                # We *could* also grab end time here if you ever want it:
-                # try:
-                #     end_el = slot.find_element(By.CSS_SELECTOR, END_TIME_IN_SLOT_SELECTOR_CSS)
-                #     end_time = end_el.text.strip()
-                # except NoSuchElementException:
-                #     end_time = None
-
                 results.append(
                     {
                         "movie_title_uncleaned": movie_title,
-                        "date_text": date_iso,     # YYYY-MM-DD
-                        "showtime": showtime,      # HH:MM
+                        "date_text": date_iso,
+                        "showtime": showtime,
                         "detail_page_url": detail_page_url,
                     }
                 )
@@ -176,9 +242,9 @@ def _scrape_active_day(
     return results
 
 
-def _scrape_tollywood_raw_once() -> List[Dict]:
+def _scrape_tollywood_selenium_once() -> List[Dict]:
     """
-    Single attempt to scrape Tollywood. May raise exceptions.
+    Single attempt to scrape Tollywood via Selenium. May raise exceptions.
     """
     driver = _init_selenium_driver()
     all_results: List[Dict] = []
@@ -187,24 +253,20 @@ def _scrape_tollywood_raw_once() -> List[Dict]:
         driver.get(TOLLYWOOD_SCHEDULE_URL)
         _wait_for_schedule_loaded(driver)
 
-        last_date: date | None = None
+        last_date: Optional[date] = None
 
-        # Iterate over calendar pages
         for page_index in range(MAX_CALENDAR_PAGES):
-            # Re-read date items for each page (they change when clicking "next")
             date_items = driver.find_elements(By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)
             if not date_items:
                 break
 
             for idx in range(len(date_items)):
-                # Re-fetch in case the DOM changed after previous click
                 date_items = driver.find_elements(By.CSS_SELECTOR, DATE_ITEM_SELECTOR_CSS)
                 if idx >= len(date_items):
                     break
 
                 item = date_items[idx]
 
-                # Date label like "11/20"
                 try:
                     date_label_el = item.find_element(By.CSS_SELECTOR, DATE_VALUE_IN_ITEM_SELECTOR_CSS)
                     mmdd_text = date_label_el.text.strip()
@@ -215,17 +277,14 @@ def _scrape_tollywood_raw_once() -> List[Dict]:
                 last_date = current_date
                 date_iso = current_date.isoformat()
 
-                # Click this day to make it active
                 driver.execute_script("arguments[0].click();", item)
-                time.sleep(1.0)  # small pause for repaint
+                time.sleep(1.0)
 
                 day_results = _scrape_active_day(driver, date_iso)
                 all_results.extend(day_results)
 
-            # Try to go to the next "page" of days
             try:
                 next_btn = driver.find_element(By.CSS_SELECTOR, NEXT_BUTTON_SELECTOR_CSS)
-                # Some widgets disable the button instead of removing it
                 if not next_btn.is_enabled():
                     break
                 driver.execute_script("arguments[0].click();", next_btn)
@@ -239,40 +298,59 @@ def _scrape_tollywood_raw_once() -> List[Dict]:
     return all_results
 
 
-# Maximum number of retry attempts for Selenium operations
+# Maximum number of retry attempts
 MAX_RETRIES = 3
 RETRY_DELAY_SECONDS = 5
 
 
-def scrape_tollywood_raw() -> List[Dict]:
+def _scrape_tollywood_selenium() -> List[Dict]:
     """
-    Drive the Tollywood schedule widget with Selenium and return
-    raw showtime dicts with:
-        movie_title_uncleaned, date_text, showtime, detail_page_url
-
+    Drive the Tollywood schedule widget with Selenium (fallback method).
     Includes retry logic to handle transient Selenium/Chrome crashes.
     """
     last_error = None
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            print(f"Tollywood scrape attempt {attempt}/{MAX_RETRIES}")
-            results = _scrape_tollywood_raw_once()
+            print(f"Tollywood Selenium scrape attempt {attempt}/{MAX_RETRIES}")
+            results = _scrape_tollywood_selenium_once()
             return results
         except Exception as e:
             last_error = e
-            print(f"Tollywood scrape attempt {attempt} failed: {e}")
+            print(f"Tollywood Selenium attempt {attempt} failed: {e}")
             if attempt < MAX_RETRIES:
                 print(f"Retrying in {RETRY_DELAY_SECONDS} seconds...")
                 time.sleep(RETRY_DELAY_SECONDS)
 
-    # All retries exhausted
-    raise last_error
+    raise last_error  # type: ignore
 
 
 # -------------------------------------------------------------------
-# Public API matching your other modules
+# Public API
 # -------------------------------------------------------------------
+
+def scrape_tollywood_raw() -> List[Dict]:
+    """
+    Scrape Tollywood schedule data using the best available method.
+
+    Primary: eiga.com (fast, reliable, uses requests)
+    Fallback: tollywood.jp via Selenium (if eiga.com fails)
+
+    Returns raw showtime dicts with:
+        movie_title_uncleaned, date_text, showtime, detail_page_url
+    """
+    # Try eiga.com first (primary method)
+    try:
+        results = _scrape_from_eiga_com()
+        if results:
+            return results
+        print("Tollywood: eiga.com returned no results, trying Selenium fallback...")
+    except Exception as e:
+        print(f"Tollywood: eiga.com scrape failed ({e}), trying Selenium fallback...")
+
+    # Fallback to Selenium-based scraping
+    return _scrape_tollywood_selenium()
+
 
 def scrape_tollywood() -> List[Dict]:
     """
@@ -310,10 +388,10 @@ def scrape_tollywood() -> List[Dict]:
 # -------------------------------------------------------------------
 
 if __name__ == "__main__":
-    # Make Windows console behave with Japanese output
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
 
     showtimes = scrape_tollywood()
+    print(f"\nFound {len(showtimes)} showings for {CINEMA_NAME}:")
     for row in showtimes:
-        print(row)
+        print(f"  {row['date_text']} {row['showtime']} - {row['movie_title']}")
