@@ -17518,5 +17518,67 @@
       "サイエンスフィクション"
     ],
     "vote_average": 7.081
+  },
+  "大英雄 / 射鵰英雄傳之東成西就": null,
+  "走れない人の走り方": {
+    "tmdb_id": 1240381,
+    "tmdb_title_jp": "走れない人の走り方",
+    "tmdb_title_en": "走れない人の走り方",
+    "overview": "",
+    "poster_path": "/vis9yBde9Yv0Wit46XO4lvdXu7M.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-03-17",
+    "director": "Yu-Chun Su",
+    "runtime": 83,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "うってつけの日": {
+    "tmdb_id": 1213646,
+    "tmdb_title_jp": "うってつけの日",
+    "tmdb_title_en": "うってつけの日",
+    "overview": "",
+    "poster_path": "/1K6ki48tJBKi538XTdr6WmFKlbu.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-11-20",
+    "director": "Kanshi Iwasaki",
+    "runtime": 69,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "コンパートメント No.6": {
+    "tmdb_id": 588182,
+    "tmdb_title_jp": "コンパートメントNo.6",
+    "tmdb_title_en": "Hytti nro 6",
+    "overview": "",
+    "poster_path": "/yhiVM45MGvvPHbstuvtQ7DMOgPC.jpg",
+    "backdrop_path": "/h0uGdJyZ5o74p0E600oKYyaoDhw.jpg",
+    "release_date": "2021-10-29",
+    "director": "Juho Kuosmanen",
+    "runtime": 106,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.949
+  },
+  "遠くへいきたいわ": {
+    "tmdb_id": 1111282,
+    "tmdb_title_jp": "遠くへいきたいわ",
+    "tmdb_title_en": "遠くへいきたいわ",
+    "overview": "",
+    "poster_path": "/zUNQsF7Qw9iAzgST97WDENUUUcR.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-03-02",
+    "director": "団塚唯我",
+    "runtime": 30,
+    "genres": [
+      "ファミリー",
+      "ドラマ"
+    ],
+    "vote_average": 7.0
   }
 }
