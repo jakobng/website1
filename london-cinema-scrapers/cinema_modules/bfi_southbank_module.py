@@ -7,9 +7,10 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import re
 import sys
-from typing import Dict, List, Optional
+from typing import Dict, Iterable, List, Optional
 from urllib.parse import urljoin
 
 import requests
@@ -29,6 +30,34 @@ TIMEOUT = 30
 
 TODAY = dt.date.today()
 WINDOW_DAYS = 7
+
+
+def _read_text_file(path: str) -> str:
+    with open(path, "r", encoding="utf-8") as handle:
+        return handle.read()
+
+
+def _load_html_override() -> Optional[str]:
+    path = os.getenv("BFI_HTML_PATH")
+    if path:
+        return _read_text_file(path)
+    return None
+
+
+def _load_json_ld_override() -> Optional[List[dict]]:
+    path = os.getenv("BFI_JSON_LD_PATH")
+    if not path:
+        return None
+    raw = _read_text_file(path)
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        return None
+    if isinstance(data, dict):
+        return [data]
+    if isinstance(data, list):
+        return [item for item in data if isinstance(item, dict)]
+    return None
 
 
 def _clean(text: str) -> str:
@@ -78,6 +107,61 @@ def _parse_time(time_str: str) -> Optional[str]:
     return None
 
 
+def _parse_iso_datetime(value: str) -> Optional[dt.datetime]:
+    """Parse ISO-ish datetime strings, normalizing Z offsets."""
+    if not value:
+        return None
+    cleaned = value.strip().replace("Z", "+00:00")
+    try:
+        return dt.datetime.fromisoformat(cleaned)
+    except ValueError:
+        return None
+
+
+def _iter_json_nodes(value: object) -> Iterable[dict]:
+    """Yield dict nodes from nested JSON structures."""
+    if isinstance(value, dict):
+        yield value
+        for item in value.values():
+            yield from _iter_json_nodes(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from _iter_json_nodes(item)
+
+
+def _extract_json_ld(soup: BeautifulSoup) -> List[dict]:
+    """Collect JSON-LD blocks from the page."""
+    blocks: List[dict] = []
+    for script in soup.select("script[type='application/ld+json']"):
+        raw = script.string or script.get_text(strip=True)
+        if not raw:
+            continue
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(data, dict):
+            blocks.append(data)
+        elif isinstance(data, list):
+            blocks.extend([item for item in data if isinstance(item, dict)])
+    return blocks
+
+
+def _collect_event_nodes(json_ld: List[dict]) -> List[dict]:
+    """Return JSON-LD nodes that represent events."""
+    events: List[dict] = []
+    for block in json_ld:
+        for node in _iter_json_nodes(block):
+            node_type = node.get("@type")
+            if isinstance(node_type, list):
+                is_event = any("Event" in t for t in node_type if isinstance(t, str))
+            else:
+                is_event = isinstance(node_type, str) and "Event" in node_type
+            if is_event:
+                events.append(node)
+    return events
+
+
 def scrape_bfi_southbank() -> List[Dict]:
     """
     Scrape BFI Southbank showtimes.
@@ -94,82 +178,140 @@ def scrape_bfi_southbank() -> List[Dict]:
     - runtime_min: str (optional)
     - synopsis: str (optional)
     - movie_title_en: str (optional, same as movie_title for UK)
+
+    Optional overrides for offline testing:
+    - BFI_HTML_PATH: path to a saved HTML file for the schedule page.
+    - BFI_JSON_LD_PATH: path to a JSON/JSON-LD blob to parse instead of the page.
     """
     shows = []
 
     try:
         # BFI's schedule page may require session handling or specific parameters
-        session = requests.Session()
+        html_override = _load_html_override()
+        soup = None
+        if html_override:
+            soup = BeautifulSoup(html_override, "html.parser")
+        else:
+            session = requests.Session()
+            session.trust_env = False
 
-        # First, try to get the main schedule page
-        resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
-        resp.raise_for_status()
+            # First, try to get the main schedule page
+            resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
+            resp.raise_for_status()
 
-        soup = BeautifulSoup(resp.text, "html.parser")
+            soup = BeautifulSoup(resp.text, "html.parser")
 
-        # TODO: The BFI website structure needs to be analyzed.
-        # They use a proprietary ASP.NET-based system.
-        # Common patterns to look for:
-        # - Calendar/date navigation
-        # - Film listing cards or table rows
-        # - Links to individual film pages
+        json_ld_blocks = _load_json_ld_override()
+        if json_ld_blocks is None and soup is not None:
+            json_ld_blocks = _extract_json_ld(soup)
+        if json_ld_blocks is None:
+            json_ld_blocks = []
+        event_nodes = _collect_event_nodes(json_ld_blocks)
 
-        # Look for film listings - these selectors need to be updated
-        # based on actual page structure
-
-        # Example structure parsing (placeholder):
-        listings = soup.select(".film-listing, .event-item, .showing")
-
-        for listing in listings:
-            # Extract title
-            title_elem = listing.select_one(".title, h3, h4, .film-title")
-            if not title_elem:
+        for event in event_nodes:
+            title = _clean(event.get("name", "")) or _clean(event.get("headline", ""))
+            if not title:
                 continue
 
-            title = _clean(title_elem.get_text())
+            event_url = event.get("url", "")
+            detail_url = urljoin(BASE_URL, event_url) if event_url else ""
 
-            # Extract date
-            date_elem = listing.select_one(".date, .showing-date, time")
-            date_str = date_elem.get_text() if date_elem else ""
-            show_date = _parse_date(date_str)
+            sub_events = event.get("subEvent") or event.get("eventSchedule") or []
+            if isinstance(sub_events, dict):
+                sub_events = [sub_events]
+            if not isinstance(sub_events, list):
+                sub_events = []
 
-            if not show_date:
-                continue
+            if sub_events:
+                for sub in sub_events:
+                    start_value = sub.get("startDate") or sub.get("startTime")
+                    parsed_dt = _parse_iso_datetime(start_value)
+                    if not parsed_dt:
+                        continue
+                    show_date = parsed_dt.date()
+                    if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
+                        continue
+                    shows.append({
+                        "cinema_name": CINEMA_NAME,
+                        "movie_title": title,
+                        "movie_title_en": title,
+                        "date_text": show_date.isoformat(),
+                        "showtime": parsed_dt.strftime("%H:%M"),
+                        "detail_page_url": detail_url,
+                        "director": "",
+                        "year": "",
+                        "country": "",
+                        "runtime_min": "",
+                        "synopsis": "",
+                    })
+            else:
+                start_value = event.get("startDate") or event.get("startTime")
+                parsed_dt = _parse_iso_datetime(start_value)
+                if not parsed_dt:
+                    continue
+                show_date = parsed_dt.date()
+                if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
+                    continue
+                shows.append({
+                    "cinema_name": CINEMA_NAME,
+                    "movie_title": title,
+                    "movie_title_en": title,
+                    "date_text": show_date.isoformat(),
+                    "showtime": parsed_dt.strftime("%H:%M"),
+                    "detail_page_url": detail_url,
+                    "director": "",
+                    "year": "",
+                    "country": "",
+                    "runtime_min": "",
+                    "synopsis": "",
+                })
 
-            # Only include dates within our window
-            if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
-                continue
+        if not shows and soup is not None:
+            listings = soup.select(".film-listing, .event-item, .showing, article")
 
-            # Extract time
-            time_elem = listing.select_one(".time, .showing-time")
-            time_str = time_elem.get_text() if time_elem else ""
-            show_time = _parse_time(time_str)
+            for listing in listings:
+                title_elem = listing.select_one(".title, h3, h4, .film-title")
+                if not title_elem:
+                    continue
 
-            if not show_time:
-                continue
+                title = _clean(title_elem.get_text())
+                if not title:
+                    continue
 
-            # Extract link to detail page
-            link_elem = listing.select_one("a[href]")
-            detail_url = ""
-            if link_elem and link_elem.get("href"):
-                detail_url = urljoin(BASE_URL, link_elem["href"])
+                date_elem = listing.select_one(".date, .showing-date, time")
+                date_str = date_elem.get_text() if date_elem else ""
+                show_date = _parse_date(date_str)
+                if not show_date:
+                    continue
 
-            shows.append({
-                "cinema_name": CINEMA_NAME,
-                "movie_title": title,
-                "movie_title_en": title,  # Same for UK cinema
-                "date_text": show_date.isoformat(),
-                "showtime": show_time,
-                "detail_page_url": detail_url,
-                "director": "",
-                "year": "",
-                "country": "",
-                "runtime_min": "",
-                "synopsis": "",
-            })
+                if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
+                    continue
 
-        # If no shows found with default selectors, the page structure
-        # likely differs - this is expected for first run
+                time_elem = listing.select_one(".time, .showing-time")
+                time_str = time_elem.get_text() if time_elem else ""
+                show_time = _parse_time(time_str)
+                if not show_time:
+                    continue
+
+                link_elem = listing.select_one("a[href]")
+                detail_url = ""
+                if link_elem and link_elem.get("href"):
+                    detail_url = urljoin(BASE_URL, link_elem["href"])
+
+                shows.append({
+                    "cinema_name": CINEMA_NAME,
+                    "movie_title": title,
+                    "movie_title_en": title,
+                    "date_text": show_date.isoformat(),
+                    "showtime": show_time,
+                    "detail_page_url": detail_url,
+                    "director": "",
+                    "year": "",
+                    "country": "",
+                    "runtime_min": "",
+                    "synopsis": "",
+                })
+
         if not shows:
             print(f"[{CINEMA_NAME}] Note: No shows found. Page structure may need analysis.", file=sys.stderr)
             print(f"[{CINEMA_NAME}] URL: {SCHEDULE_URL}", file=sys.stderr)
