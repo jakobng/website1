@@ -2,6 +2,9 @@
 # prince_charles_module.py
 # Scraper for Prince Charles Cinema, Leicester Square
 # https://princecharlescinema.com/
+#
+# Structure: WordPress site with jacro-plugin
+# Schedule page uses .jacro-event elements with nested date/time listings
 
 from __future__ import annotations
 
@@ -16,7 +19,7 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://princecharlescinema.com"
-SCHEDULE_URL = f"{BASE_URL}/next-7-days/"
+SCHEDULE_URL = f"{BASE_URL}/whats-on/"
 CINEMA_NAME = "Prince Charles Cinema"
 
 HEADERS = {
@@ -27,7 +30,7 @@ HEADERS = {
 TIMEOUT = 30
 
 TODAY = dt.date.today()
-WINDOW_DAYS = 7
+WINDOW_DAYS = 14  # PCC shows listings far in advance
 
 
 def _clean(text: str) -> str:
@@ -39,33 +42,41 @@ def _clean(text: str) -> str:
 
 def _parse_uk_date(date_str: str) -> Optional[dt.date]:
     """
-    Parse UK date formats commonly used on cinema websites.
-    Examples: "Wednesday 15 January", "15 Jan 2025", "15/01/2025"
+    Parse UK date formats like "Thursday 8th January", "Friday 9th January".
+    Returns date object or None if parsing fails.
     """
     date_str = date_str.strip()
 
-    # Remove day name if present
-    date_str = re.sub(r"^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s*", "", date_str, flags=re.IGNORECASE)
+    # Remove ordinal suffixes (1st, 2nd, 3rd, 4th, etc.)
+    date_str = re.sub(r"(\d+)(st|nd|rd|th)", r"\1", date_str)
 
-    # Try different formats
-    formats = [
-        "%d %B %Y",      # 15 January 2025
-        "%d %B",         # 15 January (assume current year)
-        "%d %b %Y",      # 15 Jan 2025
-        "%d %b",         # 15 Jan (assume current year)
-        "%Y-%m-%d",      # 2025-01-15
-        "%d/%m/%Y",      # 15/01/2025
-        "%d/%m",         # 15/01 (assume current year)
-    ]
+    # Remove day name if present
+    date_str = re.sub(
+        r"^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+",
+        "",
+        date_str,
+        flags=re.IGNORECASE
+    )
 
     current_year = dt.date.today().year
+
+    # Try formats
+    formats = [
+        "%d %B",       # 8 January (assume current/next year)
+        "%d %B %Y",    # 8 January 2025
+        "%d %b",       # 8 Jan
+        "%d %b %Y",    # 8 Jan 2025
+    ]
 
     for fmt in formats:
         try:
             parsed = dt.datetime.strptime(date_str.strip(), fmt)
-            # If year not in format, use current year
+            # If no year in format, determine year
             if "%Y" not in fmt:
+                # Assume current year, but if date is in the past, use next year
                 parsed = parsed.replace(year=current_year)
+                if parsed.date() < TODAY - dt.timedelta(days=30):
+                    parsed = parsed.replace(year=current_year + 1)
             return parsed.date()
         except ValueError:
             continue
@@ -73,27 +84,23 @@ def _parse_uk_date(date_str: str) -> Optional[dt.date]:
     return None
 
 
-def _parse_time(time_str: str) -> Optional[str]:
-    """Parse time and return in HH:MM format."""
-    time_str = time_str.strip().upper()
+def _parse_time_12h(time_str: str) -> Optional[str]:
+    """
+    Parse 12-hour time format like "12:00 pm", "8:30 am".
+    Returns 24-hour format string "HH:MM" or None.
+    """
+    time_str = time_str.strip().lower()
 
-    # Handle 24-hour format (18:30)
-    match_24 = re.match(r"(\d{1,2}):(\d{2})", time_str)
-    if match_24:
-        hour = int(match_24.group(1))
-        minute = int(match_24.group(2))
-        return f"{hour:02d}:{minute:02d}"
+    # Match patterns like "12:00 pm", "8:30am", "6:15 pm"
+    match = re.match(r"(\d{1,2}):(\d{2})\s*(am|pm)", time_str)
+    if match:
+        hour = int(match.group(1))
+        minute = int(match.group(2))
+        period = match.group(3)
 
-    # Handle 12-hour format with AM/PM (6:30pm, 6.30 PM)
-    match_12 = re.match(r"(\d{1,2})[:\.](\d{2})\s*(AM|PM)", time_str)
-    if match_12:
-        hour = int(match_12.group(1))
-        minute = int(match_12.group(2))
-        period = match_12.group(3)
-
-        if period == "PM" and hour != 12:
+        if period == "pm" and hour != 12:
             hour += 12
-        elif period == "AM" and hour == 12:
+        elif period == "am" and hour == 12:
             hour = 0
 
         return f"{hour:02d}:{minute:02d}"
@@ -104,11 +111,12 @@ def _parse_time(time_str: str) -> Optional[str]:
 def _extract_film_metadata(detail_url: str) -> Dict:
     """
     Fetch film detail page and extract metadata.
-    Returns dict with director, year, runtime_min, synopsis.
+    Returns dict with director, year, runtime_min, synopsis, country.
     """
     defaults = {
         "director": "",
         "year": "",
+        "country": "",
         "runtime_min": "",
         "synopsis": "",
     }
@@ -121,31 +129,31 @@ def _extract_film_metadata(detail_url: str) -> Dict:
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
 
-        # Look for common metadata patterns
-        # Director
-        director_match = soup.find(string=re.compile(r"Director", re.I))
-        if director_match:
-            parent = director_match.find_parent()
-            if parent:
-                text = parent.get_text()
-                match = re.search(r"Director[:\s]+([^,\n]+)", text, re.I)
-                if match:
-                    defaults["director"] = _clean(match.group(1))
+        # Look for description/synopsis
+        desc_elem = soup.select_one(".jacro-formatted-text p, .film-description, .synopsis")
+        if desc_elem:
+            defaults["synopsis"] = _clean(desc_elem.get_text())[:500]
 
-        # Year - look for 4-digit year in parens or metadata
-        year_match = re.search(r"\b(19\d{2}|20\d{2})\b", soup.get_text())
+        # Extract metadata from the page text
+        page_text = soup.get_text()
+
+        # Year - look for 4-digit year
+        year_match = re.search(r"\b(19\d{2}|20\d{2})\b", page_text)
         if year_match:
             defaults["year"] = year_match.group(1)
 
-        # Runtime - look for "X mins" or "X minutes"
-        runtime_match = re.search(r"(\d+)\s*(?:mins?|minutes?)", soup.get_text(), re.I)
+        # Runtime - look for "X mins" or "Xmin"
+        runtime_match = re.search(r"(\d+)\s*(?:mins?|minutes?)", page_text, re.I)
         if runtime_match:
             defaults["runtime_min"] = runtime_match.group(1)
 
-        # Synopsis - look for description/synopsis section
-        synopsis_elem = soup.select_one(".synopsis, .description, .film-description, [class*='synopsis']")
-        if synopsis_elem:
-            defaults["synopsis"] = _clean(synopsis_elem.get_text())[:500]
+        # Director - look for "Director:" or "Directed by"
+        director_match = re.search(
+            r"(?:Director|Directed by)[:\s]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)",
+            page_text
+        )
+        if director_match:
+            defaults["director"] = director_match.group(1)
 
     except Exception as e:
         print(f"[{CINEMA_NAME}] Error fetching detail page {detail_url}: {e}", file=sys.stderr)
@@ -155,9 +163,16 @@ def _extract_film_metadata(detail_url: str) -> Dict:
 
 def scrape_prince_charles() -> List[Dict]:
     """
-    Scrape Prince Charles Cinema showtimes.
+    Scrape Prince Charles Cinema showtimes from their What's On page.
 
-    Returns a list of showtime records with standard schema.
+    Returns a list of showtime records with standard schema:
+    - cinema_name: str
+    - movie_title: str
+    - date_text: str (YYYY-MM-DD)
+    - showtime: str (HH:MM)
+    - detail_page_url: str
+    - director, year, country, runtime_min, synopsis: str (optional)
+    - format_tags: list (optional) - e.g., ["35mm", "4K"]
     """
     shows = []
     meta_cache = {}
@@ -169,146 +184,119 @@ def scrape_prince_charles() -> List[Dict]:
 
         soup = BeautifulSoup(resp.text, "html.parser")
 
-        # Prince Charles Cinema "Next 7 Days" page structure
-        # Look for film/event listings grouped by date
+        # Find all film event blocks
+        events = soup.select(".jacro-event")
+        print(f"[{CINEMA_NAME}] Found {len(events)} film listings", file=sys.stderr)
 
-        # Try common listing patterns
-        # Pattern 1: Date headers with film listings underneath
-        date_sections = soup.select(".date-section, .day-listings, [class*='schedule']")
+        for event in events:
+            # Extract film title and detail URL
+            film_link = None
+            film_title = None
 
-        if date_sections:
-            for section in date_sections:
-                # Find date header
-                date_elem = section.select_one(".date, h2, h3, .day-header")
-                if not date_elem:
+            for link in event.find_all("a"):
+                href = link.get("href", "")
+                text = link.get_text(strip=True)
+                if "/film/" in href and text:
+                    film_link = href
+                    film_title = text
+                    break
+
+            if not film_title:
+                continue
+
+            # Get film metadata (cached)
+            if film_link and film_link not in meta_cache:
+                # Only fetch metadata for films showing within our window
+                # to avoid too many requests
+                meta_cache[film_link] = None  # Placeholder, fetch later if needed
+
+            # Parse performance list to extract date/time pairs
+            perf_list = event.select_one(".performance-list-items")
+            if not perf_list:
+                continue
+
+            current_date = None
+            current_date_str = None
+
+            # Iterate through children to match dates with times
+            for child in perf_list.children:
+                if not hasattr(child, "name"):
                     continue
 
-                section_date = _parse_uk_date(date_elem.get_text())
-                if not section_date:
-                    continue
+                # Date heading
+                if child.name == "div" and "heading" in child.get("class", []):
+                    date_text = child.get_text(strip=True)
+                    parsed_date = _parse_uk_date(date_text)
+                    if parsed_date:
+                        current_date = parsed_date
+                        current_date_str = date_text
 
-                if not (TODAY <= section_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
-                    continue
-
-                # Find film listings in this section
-                films = section.select(".film, .event, .showing, li")
-                for film in films:
-                    title_elem = film.select_one(".title, .film-title, h4, a")
-                    if not title_elem:
+                # Showtime entry
+                elif child.name == "li" and current_date:
+                    # Check if within our date window
+                    if not (TODAY <= current_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
                         continue
 
-                    title = _clean(title_elem.get_text())
-                    if not title or len(title) < 2:
+                    # Extract time
+                    time_elem = child.select_one(".time")
+                    if not time_elem:
                         continue
 
-                    # Get link
-                    link = film.select_one("a[href]")
-                    detail_url = ""
-                    if link and link.get("href"):
-                        detail_url = urljoin(BASE_URL, link["href"])
+                    time_str = time_elem.get_text(strip=True)
+                    parsed_time = _parse_time_12h(time_str)
+                    if not parsed_time:
+                        continue
 
-                    # Get showtimes
-                    time_elems = film.select(".time, .showtime, time")
-                    times = []
-                    for te in time_elems:
-                        parsed_time = _parse_time(te.get_text())
-                        if parsed_time:
-                            times.append(parsed_time)
+                    # Extract format tags (35mm, 4K, 70mm, etc.)
+                    format_tags = []
+                    tag_elems = child.select(".movietag .tag")
+                    for tag in tag_elems:
+                        tag_text = tag.get_text(strip=True)
+                        if tag_text:
+                            format_tags.append(tag_text)
 
-                    # If no specific time elements, look for time patterns in text
-                    if not times:
-                        text = film.get_text()
-                        time_matches = re.findall(r"\b(\d{1,2}[:\.]?\d{2}\s*(?:AM|PM)?)\b", text, re.I)
-                        for tm in time_matches:
-                            parsed = _parse_time(tm)
-                            if parsed:
-                                times.append(parsed)
+                    # Extract booking URL
+                    book_link = child.select_one("a.film_book_button")
+                    booking_url = book_link.get("href", "") if book_link else ""
 
-                    # Get metadata (cached by detail URL)
-                    if detail_url and detail_url not in meta_cache:
-                        meta_cache[detail_url] = _extract_film_metadata(detail_url)
-
-                    metadata = meta_cache.get(detail_url, {})
-
-                    # Create a showing entry for each time
-                    for show_time in times:
-                        shows.append({
-                            "cinema_name": CINEMA_NAME,
-                            "movie_title": title,
-                            "movie_title_en": title,
-                            "date_text": section_date.isoformat(),
-                            "showtime": show_time,
-                            "detail_page_url": detail_url,
-                            "director": metadata.get("director", ""),
-                            "year": metadata.get("year", ""),
-                            "country": "",
-                            "runtime_min": metadata.get("runtime_min", ""),
-                            "synopsis": metadata.get("synopsis", ""),
-                        })
-
-        # Pattern 2: Flat list of showings with embedded date/time
-        if not shows:
-            listings = soup.select(".film-listing, .screening, .event-item, article")
-
-            for listing in listings:
-                title_elem = listing.select_one(".title, h3, h4, .film-title, a")
-                if not title_elem:
-                    continue
-
-                title = _clean(title_elem.get_text())
-                if not title or len(title) < 2:
-                    continue
-
-                # Look for date and time in listing
-                text = listing.get_text()
-
-                # Extract date
-                date_match = re.search(
-                    r"(\d{1,2}(?:st|nd|rd|th)?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*(?:\s+\d{4})?)",
-                    text, re.I
-                )
-                show_date = None
-                if date_match:
-                    show_date = _parse_uk_date(date_match.group(1))
-
-                if not show_date:
-                    continue
-
-                if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
-                    continue
-
-                # Extract times
-                time_matches = re.findall(r"\b(\d{1,2}[:\.]?\d{2}\s*(?:AM|PM)?)\b", text, re.I)
-                times = [_parse_time(tm) for tm in time_matches]
-                times = [t for t in times if t]
-
-                if not times:
-                    continue
-
-                # Get link
-                link = listing.select_one("a[href]")
-                detail_url = ""
-                if link and link.get("href"):
-                    detail_url = urljoin(BASE_URL, link["href"])
-
-                for show_time in times:
+                    # Create showing record
                     shows.append({
                         "cinema_name": CINEMA_NAME,
-                        "movie_title": title,
-                        "movie_title_en": title,
-                        "date_text": show_date.isoformat(),
-                        "showtime": show_time,
-                        "detail_page_url": detail_url,
+                        "movie_title": film_title,
+                        "movie_title_en": film_title,
+                        "date_text": current_date.isoformat(),
+                        "showtime": parsed_time,
+                        "detail_page_url": film_link or "",
+                        "booking_url": booking_url,
                         "director": "",
                         "year": "",
                         "country": "",
                         "runtime_min": "",
                         "synopsis": "",
+                        "format_tags": format_tags,
                     })
 
-        if not shows:
-            print(f"[{CINEMA_NAME}] Note: No shows found. Page structure may need analysis.", file=sys.stderr)
-            print(f"[{CINEMA_NAME}] URL: {SCHEDULE_URL}", file=sys.stderr)
+        # Optionally fetch metadata for films we have showings for
+        # (limited to avoid too many requests)
+        unique_films = set(s["detail_page_url"] for s in shows if s["detail_page_url"])
+        print(f"[{CINEMA_NAME}] Fetching metadata for {len(unique_films)} unique films", file=sys.stderr)
+
+        for film_url in list(unique_films)[:20]:  # Limit to first 20 to be polite
+            if film_url not in meta_cache or meta_cache[film_url] is None:
+                meta_cache[film_url] = _extract_film_metadata(film_url)
+
+        # Apply metadata to shows
+        for show in shows:
+            url = show["detail_page_url"]
+            if url in meta_cache and meta_cache[url]:
+                meta = meta_cache[url]
+                show["director"] = meta.get("director", "")
+                show["year"] = meta.get("year", "")
+                show["country"] = meta.get("country", "")
+                show["runtime_min"] = meta.get("runtime_min", "")
+                show["synopsis"] = meta.get("synopsis", "")
+
+        print(f"[{CINEMA_NAME}] Found {len(shows)} showings", file=sys.stderr)
 
     except requests.RequestException as e:
         print(f"[{CINEMA_NAME}] HTTP Error: {e}", file=sys.stderr)
@@ -317,7 +305,7 @@ def scrape_prince_charles() -> List[Dict]:
         print(f"[{CINEMA_NAME}] Error: {e}", file=sys.stderr)
         raise
 
-    # Deduplicate
+    # Deduplicate (shouldn't happen but just in case)
     seen = set()
     unique_shows = []
     for s in shows:
@@ -332,4 +320,4 @@ def scrape_prince_charles() -> List[Dict]:
 if __name__ == "__main__":
     data = scrape_prince_charles()
     print(json.dumps(data, ensure_ascii=False, indent=2))
-    print(f"\nTotal: {len(data)} showings")
+    print(f"\n[INFO] Total: {len(data)} showings", file=sys.stderr)

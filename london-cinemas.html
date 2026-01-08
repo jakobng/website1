@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Independent Cinema Showtimes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --canvas-color-solid: #F8F7F2;
+        --canvas-color-glass: rgba(248, 247, 242, 0.4);
+        --text-color: #222222;
+        --accent-color: #E63946;
+        --accent-color-rgb: 230, 57, 70;
+        --blue-accent: #457B9D;
+        --border-width: 2px;
+        --border-color: rgba(34, 34, 34, 0.3);
+        --shadow-color: rgba(0, 0, 0, 0.08);
+        --medium-text: rgba(34, 34, 34, 0.7);
+        --primary-font: 'Manrope', sans-serif;
+    }
+
+    body {
+        font-family: var(--primary-font);
+        margin: 0;
+        padding: 20px;
+        color: var(--text-color);
+        font-size: 16px;
+        line-height: 1.6;
+        background-color: var(--canvas-color-solid);
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0.05);
+        width: 40vmax; height: 40vmax;
+        background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(var(--accent-color-rgb), 0.6) 8%,
+            rgba(var(--accent-color-rgb), 0) 70%
+        );
+        border-radius: 50%;
+        animation: pulseGlow 15s infinite ease-in-out;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    @keyframes pulseGlow {
+        0%   { transform: translate(-50%, -50%) scale(0.05); opacity: 1; }
+        60%  { opacity: 0.9; }
+        100% { transform: translate(-50%, -50%) scale(5);   opacity: 0; }
+    }
+
+    .home-link {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        z-index: 100;
+        font-weight: 700;
+        font-size: 2em;
+        text-decoration: none;
+        color: var(--text-color);
+        text-shadow: 0px 1px 3px var(--canvas-color-solid);
+    }
+
+    .container {
+        max-width: 950px; margin: 30px auto;
+        background-color: var(--canvas-color-glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 30px; border-radius: 12px;
+        border: var(--border-width) solid var(--border-color);
+        box-shadow: 0 4px 15px var(--shadow-color);
+    }
+
+    header h1 {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
+        color: var(--text-color); text-align: center; font-size: 2.8em;
+        margin-bottom: 20px;
+        text-transform: none;
+        letter-spacing: 0px; text-shadow: none;
+    }
+    header h1::after {
+        content: ''; display: block; width: 80px; height: 4px;
+        background-color: var(--accent-color); margin: 15px auto 0;
+    }
+
+    .category-block {
+        margin-bottom: 35px;
+    }
+    .category-block h3 {
+        font-size: 1.4em;
+        color: var(--text-color);
+        margin-top: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: var(--border-width) solid var(--accent-color);
+        font-weight: 700;
+        letter-spacing: 0.2px;
+    }
+
+    .cinema-card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+    .cinema-card {
+        background-color: var(--canvas-color-glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        color: var(--text-color);
+        padding: 18px;
+        border-radius: 8px; text-align: center;
+        font-size: 1.05em; font-weight: 600; cursor: pointer;
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+        border: var(--border-width) solid var(--border-color);
+        box-shadow: 0 2px 5px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 90px;
+    }
+    .cinema-card:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .cinema-name {
+        display: block;
+        color: var(--text-color);
+        font-weight: 600;
+    }
+    .cinema-card:hover .cinema-name {
+        color: var(--accent-color);
+    }
+    .cinema-area {
+        font-size: 0.8em;
+        color: var(--medium-text);
+        margin-top: 5px;
+    }
+
+    /* Showtimes section */
+    #selected-cinema-showtimes {
+        margin-top: 30px;
+    }
+    .cinema-header {
+        background-color: var(--canvas-color-glass);
+        backdrop-filter: blur(12px);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: var(--border-width) solid var(--border-color);
+    }
+    .cinema-header h2 {
+        margin: 0 0 10px 0;
+        color: var(--text-color);
+    }
+    .cinema-header .address {
+        color: var(--medium-text);
+        font-size: 0.9em;
+    }
+
+    .date-group {
+        margin-bottom: 25px;
+    }
+    .date-group h3 {
+        font-size: 1.2em;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .showing-card {
+        background-color: var(--canvas-color-glass);
+        backdrop-filter: blur(12px);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        border: var(--border-width) solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .showing-card:hover {
+        border-color: var(--accent-color);
+    }
+    .movie-title {
+        font-weight: 700;
+        font-size: 1.1em;
+    }
+    .movie-meta {
+        font-size: 0.85em;
+        color: var(--medium-text);
+    }
+    .showtime-badge {
+        background-color: var(--accent-color);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+    }
+    .format-tag {
+        display: inline-block;
+        background-color: var(--blue-accent);
+        color: white;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.75em;
+        margin-left: 8px;
+    }
+
+    .back-btn {
+        background: none;
+        border: var(--border-width) solid var(--border-color);
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: var(--primary-font);
+        font-weight: 600;
+        margin-bottom: 20px;
+        transition: all 0.2s;
+    }
+    .back-btn:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+    }
+
+    .loading {
+        text-align: center;
+        padding: 40px;
+        color: var(--medium-text);
+    }
+
+    .no-showings {
+        text-align: center;
+        padding: 30px;
+        color: var(--medium-text);
+        font-style: italic;
+    }
+</style>
+</head>
+<body>
+    <a href="/" class="home-link">←</a>
+
+    <div class="container">
+        <header>
+            <h1>London Cinema Showtimes</h1>
+        </header>
+
+        <div id="cinema-selection-grid-container">
+            <!-- Cinema cards will be populated here -->
+        </div>
+
+        <div id="selected-cinema-showtimes" style="display: none;">
+            <!-- Selected cinema showtimes will appear here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const jsonUrl = '/london-cinema-scrapers/data/showtimes.json';
+
+            const cinemaSelectionGridContainerEl = document.getElementById('cinema-selection-grid-container');
+            const selectedCinemaShowtimesContainer = document.getElementById('selected-cinema-showtimes');
+
+            let fullShowtimesData = [];
+            let dataLoaded = false;
+
+            // London cinema configuration
+            const cinemaAddresses = {
+                "Prince Charles Cinema": "7 Leicester Place, WC2H 7BY",
+                "BFI Southbank": "Belvedere Road, SE1 8XT",
+                "The Garden Cinema": "39 Parker Street, WC2B 5PQ",
+                "The Nickel": "117-119 Clerkenwell Road, EC1R 5BY",
+                "ICA Cinema": "The Mall, SW1Y 5AH",
+                "Barbican Cinema": "Silk Street, EC2Y 8DS",
+                "Genesis Cinema": "93-95 Mile End Road, E1 4UJ",
+                "Rio Cinema": "107 Kingsland High Street, E8 2PB",
+                "Curzon Soho": "99 Shaftesbury Avenue, W1D 5DY",
+                "Ciné Lumière": "17 Queensberry Place, SW7 2DT",
+                "Close-Up Film Centre": "97 Sclater Street, E1 6HR",
+                "Electric Cinema": "191 Portobello Road, W11 2ED"
+            };
+
+            const cinemaCategories = [
+                {
+                    name: "WEST END",
+                    cinemas: ["Prince Charles Cinema", "The Garden Cinema", "ICA Cinema", "Curzon Soho"]
+                },
+                {
+                    name: "SOUTH BANK",
+                    cinemas: ["BFI Southbank"]
+                },
+                {
+                    name: "CENTRAL & CITY",
+                    cinemas: ["Barbican Cinema", "The Nickel", "Ciné Lumière"]
+                },
+                {
+                    name: "EAST LONDON",
+                    cinemas: ["Genesis Cinema", "Rio Cinema", "Close-Up Film Centre"]
+                },
+                {
+                    name: "WEST LONDON",
+                    cinemas: ["Electric Cinema"]
+                }
+            ];
+
+            async function fetchShowtimes() {
+                try {
+                    const response = await fetch(jsonUrl + '?t=' + new Date().getTime());
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    fullShowtimesData = await response.json();
+                    dataLoaded = true;
+                    renderCinemaGrid();
+                    handleLocationChange();
+                } catch (error) {
+                    console.error('Error fetching showtimes:', error);
+                    cinemaSelectionGridContainerEl.innerHTML = '<p class="loading">Unable to load showtimes. Please try again later.</p>';
+                }
+            }
+
+            function renderCinemaGrid() {
+                cinemaSelectionGridContainerEl.innerHTML = '';
+
+                cinemaCategories.forEach(category => {
+                    const categoryBlock = document.createElement('div');
+                    categoryBlock.className = 'category-block';
+
+                    const categoryHeader = document.createElement('h3');
+                    categoryHeader.textContent = category.name;
+                    categoryBlock.appendChild(categoryHeader);
+
+                    const cardContainer = document.createElement('div');
+                    cardContainer.className = 'cinema-card-container';
+
+                    category.cinemas.forEach(cinemaName => {
+                        const card = document.createElement('div');
+                        card.className = 'cinema-card';
+                        card.onclick = () => selectCinema(cinemaName);
+
+                        const nameSpan = document.createElement('span');
+                        nameSpan.className = 'cinema-name';
+                        nameSpan.textContent = cinemaName;
+                        card.appendChild(nameSpan);
+
+                        if (cinemaAddresses[cinemaName]) {
+                            const areaSpan = document.createElement('span');
+                            areaSpan.className = 'cinema-area';
+                            // Extract postcode area
+                            const postcodeMatch = cinemaAddresses[cinemaName].match(/[A-Z]{1,2}\d/);
+                            areaSpan.textContent = postcodeMatch ? postcodeMatch[0] : '';
+                            card.appendChild(areaSpan);
+                        }
+
+                        // Show count of upcoming showings
+                        const count = fullShowtimesData.filter(s => s.cinema_name === cinemaName).length;
+                        if (count > 0) {
+                            const countSpan = document.createElement('span');
+                            countSpan.className = 'cinema-area';
+                            countSpan.textContent = `${count} showing${count !== 1 ? 's' : ''}`;
+                            card.appendChild(countSpan);
+                        }
+
+                        cardContainer.appendChild(card);
+                    });
+
+                    categoryBlock.appendChild(cardContainer);
+                    cinemaSelectionGridContainerEl.appendChild(categoryBlock);
+                });
+            }
+
+            function selectCinema(cinemaName) {
+                window.location.hash = encodeURIComponent(cinemaName);
+            }
+
+            function handleLocationChange() {
+                const hash = decodeURIComponent(window.location.hash.slice(1));
+
+                if (hash && dataLoaded) {
+                    showCinemaShowtimes(hash);
+                } else {
+                    cinemaSelectionGridContainerEl.style.display = 'block';
+                    selectedCinemaShowtimesContainer.style.display = 'none';
+                }
+            }
+
+            function showCinemaShowtimes(cinemaName) {
+                cinemaSelectionGridContainerEl.style.display = 'none';
+                selectedCinemaShowtimesContainer.style.display = 'block';
+                selectedCinemaShowtimesContainer.innerHTML = '';
+
+                // Back button
+                const backBtn = document.createElement('button');
+                backBtn.className = 'back-btn';
+                backBtn.textContent = '← Back to all cinemas';
+                backBtn.onclick = () => { window.location.hash = ''; };
+                selectedCinemaShowtimesContainer.appendChild(backBtn);
+
+                // Cinema header
+                const header = document.createElement('div');
+                header.className = 'cinema-header';
+                header.innerHTML = `
+                    <h2>${cinemaName}</h2>
+                    <div class="address">${cinemaAddresses[cinemaName] || ''}</div>
+                `;
+                selectedCinemaShowtimesContainer.appendChild(header);
+
+                // Filter and group showings
+                const cinemaShowings = fullShowtimesData
+                    .filter(s => s.cinema_name === cinemaName)
+                    .sort((a, b) => {
+                        if (a.date_text !== b.date_text) return a.date_text.localeCompare(b.date_text);
+                        return a.showtime.localeCompare(b.showtime);
+                    });
+
+                if (cinemaShowings.length === 0) {
+                    const noShowings = document.createElement('div');
+                    noShowings.className = 'no-showings';
+                    noShowings.textContent = 'No upcoming showings found for this cinema.';
+                    selectedCinemaShowtimesContainer.appendChild(noShowings);
+                    return;
+                }
+
+                // Group by date
+                const byDate = {};
+                cinemaShowings.forEach(s => {
+                    if (!byDate[s.date_text]) byDate[s.date_text] = [];
+                    byDate[s.date_text].push(s);
+                });
+
+                Object.keys(byDate).sort().forEach(dateStr => {
+                    const dateGroup = document.createElement('div');
+                    dateGroup.className = 'date-group';
+
+                    // Format date nicely
+                    const date = new Date(dateStr + 'T00:00:00');
+                    const options = { weekday: 'long', day: 'numeric', month: 'long' };
+                    const formattedDate = date.toLocaleDateString('en-GB', options);
+
+                    const dateHeader = document.createElement('h3');
+                    dateHeader.textContent = formattedDate;
+                    dateGroup.appendChild(dateHeader);
+
+                    byDate[dateStr].forEach(showing => {
+                        const card = document.createElement('div');
+                        card.className = 'showing-card';
+
+                        const infoDiv = document.createElement('div');
+
+                        const titleSpan = document.createElement('span');
+                        titleSpan.className = 'movie-title';
+                        titleSpan.textContent = showing.movie_title;
+
+                        // Add format tags
+                        if (showing.format_tags && showing.format_tags.length > 0) {
+                            showing.format_tags.forEach(tag => {
+                                const tagSpan = document.createElement('span');
+                                tagSpan.className = 'format-tag';
+                                tagSpan.textContent = tag;
+                                titleSpan.appendChild(tagSpan);
+                            });
+                        }
+
+                        infoDiv.appendChild(titleSpan);
+
+                        // Meta info
+                        const metaParts = [];
+                        if (showing.year) metaParts.push(showing.year);
+                        if (showing.director) metaParts.push(showing.director);
+                        if (showing.runtime_min) metaParts.push(showing.runtime_min + ' min');
+
+                        if (metaParts.length > 0) {
+                            const metaDiv = document.createElement('div');
+                            metaDiv.className = 'movie-meta';
+                            metaDiv.textContent = metaParts.join(' • ');
+                            infoDiv.appendChild(metaDiv);
+                        }
+
+                        card.appendChild(infoDiv);
+
+                        // Showtime badge (link to booking if available)
+                        if (showing.booking_url) {
+                            const timeLink = document.createElement('a');
+                            timeLink.href = showing.booking_url;
+                            timeLink.target = '_blank';
+                            timeLink.className = 'showtime-badge';
+                            timeLink.textContent = showing.showtime;
+                            timeLink.style.textDecoration = 'none';
+                            card.appendChild(timeLink);
+                        } else {
+                            const timeBadge = document.createElement('span');
+                            timeBadge.className = 'showtime-badge';
+                            timeBadge.textContent = showing.showtime;
+                            card.appendChild(timeBadge);
+                        }
+
+                        dateGroup.appendChild(card);
+                    });
+
+                    selectedCinemaShowtimesContainer.appendChild(dateGroup);
+                });
+            }
+
+            window.addEventListener('popstate', handleLocationChange);
+            window.addEventListener('hashchange', handleLocationChange);
+            fetchShowtimes();
+        });
+    </script>
+</body>
+</html>

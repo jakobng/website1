@@ -22,6 +22,8 @@ from bs4 import BeautifulSoup
 from cinema_modules import (
     bfi_southbank_module,
     prince_charles_module,
+    garden_cinema_module,
+    nickel_module,
     # ica_module,
     # barbican_module,
     # genesis_module,
@@ -385,6 +387,8 @@ def main():
     scrapers_to_run = [
         ("BFI Southbank", bfi_southbank_module.scrape_bfi_southbank, None),
         ("Prince Charles Cinema", prince_charles_module.scrape_prince_charles, None),
+        ("The Garden Cinema", garden_cinema_module.scrape_garden_cinema, None),
+        ("The Nickel", nickel_module.scrape_nickel, None),
         # ("ICA Cinema", ica_module.scrape_ica, None),
         # ("Barbican Cinema", barbican_module.scrape_barbican, None),
         # ("Genesis Cinema", genesis_module.scrape_genesis, None),

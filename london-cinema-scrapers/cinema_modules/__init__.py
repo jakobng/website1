@@ -3,6 +3,8 @@
 
 from . import bfi_southbank_module
 from . import prince_charles_module
+from . import garden_cinema_module
+from . import nickel_module
 # from . import ica_module
 # from . import barbican_module
 # from . import genesis_module
