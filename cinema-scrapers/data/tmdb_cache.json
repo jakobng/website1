@@ -17580,5 +17580,75 @@
       "ドラマ"
     ],
     "vote_average": 7.0
-  }
+  },
+  "その口紅が憎い": null,
+  "ヤンヤン 夏の想い出　4Kレストア版": null,
+  "ドミニク 孤高の反逆者": null,
+  "鯨が消えた入り江 / 我在這裡等你": {
+    "tmdb_id": 1214266,
+    "tmdb_title_jp": "我在這裡等你",
+    "tmdb_title_en": "我在這裡等你",
+    "overview": "",
+    "poster_path": "/j1x9RdHVaD4NYbev77SgilKuWrw.jpg",
+    "backdrop_path": "/70ueoLF3JzRqfy2IcTheaisNWQ9.jpg",
+    "release_date": "2024-05-10",
+    "director": "Teng I-Han",
+    "runtime": 100,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.3
+  },
+  "ブエノスアイレス / 春光乍洩": {
+    "tmdb_id": 18329,
+    "tmdb_title_jp": "ブエノスアイレス",
+    "tmdb_title_en": "春光乍洩",
+    "overview": "香港映画界の鬼才、ウォン・カーウァイ監督が男同士の切ない愛を描いた恋愛ドラマ。惹かれ合いながらも、傷つける事しかできない男と男の刹那的な愛を綴ってゆく。徹底的に突き放した視点で彼等を捉える事で、より深い感情の揺れ動きを捉える手腕は流石。またアルゼンチンの雄大な自然美や、アストル・ピアソラの切ないメロディが映画を効果的に彩る。トニー・レオン、レスリーチャン共演。南米アルゼンチンへとやってきた、ウィンとファイ。幾度となく別れを繰り返してきた2人は、ここでも些細な諍いを繰り返し別れてしまう。そして、ファイが働くタンゴ・バーで再会を果たすが...。",
+    "poster_path": "/ncQ1fjX1q54jQ3tiGUPl0ny6WpJ.jpg",
+    "backdrop_path": "/2Xkd3WeAx11cHxb4Lr3wnSNDWcd.jpg",
+    "release_date": "1997-05-30",
+    "director": "王家衛",
+    "runtime": 96,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.6
+  },
+  "ツイン・ピークス ローラ・パーマー最期の7日間": {
+    "tmdb_id": 1923,
+    "tmdb_title_jp": "ツイン・ピークス/ローラ・パーマー最期の7日間",
+    "tmdb_title_en": "Twin Peaks: Fire Walk with Me",
+    "overview": "FBI特別捜査官チェット・デズモンドは町のウエートレス、テレサ・バンクスの殺害事件を調査中に謎の失踪を遂げる。それから1年後、町全体に巣くった邪悪な者達は学園の女王であるローラ・パーマーを標的にし始めていた。時を同じくして、テレサ・バンクス殺害事件の捜査を引き継いだ特別捜査官デイル・クーパーは、彼に備わった特別な才能、鋭い第六感を生かして深い謎を解明しようと決意するのだった。",
+    "poster_path": "/hQFPxgUqNKJlsco6NJ6rLtds2zE.jpg",
+    "backdrop_path": "/amGU1FpELmenVvNmPShW58Orepy.jpg",
+    "release_date": "1992-06-03",
+    "director": "デヴィッド・リンチ",
+    "runtime": 135,
+    "genres": [
+      "ドラマ",
+      "謎",
+      "ホラー"
+    ],
+    "vote_average": 7.4
+  },
+  "マルホランド・ドライブ": {
+    "tmdb_id": 1018,
+    "tmdb_title_jp": "マルホランド・ドライブ",
+    "tmdb_title_en": "Mulholland Drive",
+    "overview": "ある真夜中、マルホランド・ドライブで車の衝突事故が発生。ただ独り助かった黒髪の女は、ハリウッドの街までなんとか辿り着き、留守宅へ忍び込む。すると、そこは有名女優ルースの家だった。そして、直後にやってきたルースの姪ベティに見つかってしまう。ベティは、とっさにリタと名乗ったこの女を叔母の友人と思い込むが、すぐに見知らぬ他人であることを知った。何も思い出せないと打ち明けるリタ。手掛かりは大金と謎の青い鍵が入った彼女のバッグ。ベティは同情と好奇心から、リタの記憶を取り戻す手助けを買って出るのだが…。",
+    "poster_path": "/2OAYHObh12cRuwoGMCqsGVEF8gQ.jpg",
+    "backdrop_path": "/y1giivdsGLyo1LCvlsL6mLKyTZ7.jpg",
+    "release_date": "2001-06-06",
+    "director": "デヴィッド・リンチ",
+    "runtime": 147,
+    "genres": [
+      "スリラー",
+      "ドラマ",
+      "謎"
+    ],
+    "vote_average": 7.805
+  },
+  "MIRRORLIAR FILMS［0115ｲﾍﾞﾝﾄ］": null,
+  "クルビ・ダ・エ［0115ｲﾍﾞﾝﾄ］": null
 }
