@@ -475,6 +475,9 @@ def main():
 
         # CineMalice - new mini-theater opened Dec 2025
         ("CineMalice", cinemalice_module.scrape_cinemalice, None),
+
+        # Cine Switch Ginza
+        ("Cine Switch Ginza", cine_switch_ginza_module.scrape_cine_switch_ginza, None),
     ]
 
     print("Starting all scrapers…")
@@ -488,31 +491,13 @@ def main():
         
         _run_scraper(name, func, listings, normalize_func=norm)
 
-    # 3. SPECIAL HANDLING: CINE SWITCH GINZA (Standalone)
-    print("\n--- [Cine Switch] Check for existing standalone output ---")
-    csg_filename = "cineswitch_showtimes.json"
-    
-    # Logic to find the file if it was just generated
-    if os.path.exists(csg_filename):
-        try:
-            with open(csg_filename, "r", encoding="utf-8") as f:
-                csg_showings = json.load(f)
-                print(f"→ {len(csg_showings)} showings from Cine Switch Ginza.")
-                listings.extend(csg_showings)
-                report.add("Cine Switch Ginza", "SUCCESS", len(csg_showings))
-        except Exception as e:
-            print(f"Error loading cineswitch_showtimes.json: {e}")
-            report.add("Cine Switch Ginza", "FAILURE", 0, error=e)
-    else:
-        print("No standalone Cine Switch file found.")
-    
-    # 4. ENRICHMENT
+    # 3. ENRICHMENT
     print(f"\nCollected a total of {len(listings)} showings.")
     
     if tmdb_key:
         listings = enrich_listings_with_tmdb_links(listings, tmdb_cache, api_session, tmdb_key)
     
-    # 5. SAVE OUTPUT
+    # 4. SAVE OUTPUT
     print(f"Saving to {OUTPUT_JSON}...")
 
     # --- DATE VALIDATION ---
@@ -538,7 +523,7 @@ def main():
         print(f"❌ Critical Error saving JSON: {e}")
         sys.exit(1)
 
-    # 6. REPORTING & ALERTS
+    # 5. REPORTING & ALERTS
     failures, warnings = report.print_summary()
     
     # Send email if configured
