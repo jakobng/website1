@@ -154,15 +154,17 @@ CINEMA_ENGLISH_NAMES = {
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
     "下北沢トリウッド": "Tollywood",
-    "シネマリス": "Cinema Lis"
+    "シネマリス": "CineMalice"
 }
 
 CINEMA_FILENAME_OVERRIDES = {
     "国立映画アーカイブ": "nfaj",
+    "シネマリス": "cinemalice",
     "109シネマズプレミアム新宿": "109cinemaspremiumshinjuku",
     "TOHOシネマズ 新宿": "tohoshinjuku",
     "TOHOシネマズ 日比谷": "tohohibiya",
-    "新宿ピカデリー": "shinjukupiccadilly"
+    "新宿ピカデリー": "shinjukupiccadilly",
+    "ポレポレ東中野": "polepole"
 }
 
 # --- Utility Functions ---
