@@ -27,6 +27,8 @@ from cinema_modules import (
     human_shibuya_module,
     human_yurakucho_module,
     image_forum_module,
+    jinbocho_theatre_module,
+    kineca_omori_module,
     ks_cinema_module,
     laputa_asagaya_module,
     meguro_cinema_module,
@@ -475,6 +477,12 @@ def main():
 
         # CineMalice - new mini-theater opened Dec 2025
         ("CineMalice", cinemalice_module.scrape_cinemalice, None),
+
+        # Jimbocho Theater - revival house in Chiyoda-ku
+        ("Jimbocho Theater", jinbocho_theatre_module.scrape_jinbocho, None),
+
+        # Kineca Omori - TTCG cinema in Shinagawa-ku, roadshow + revival
+        ("Kineca Omori", kineca_omori_module.scrape_kineca_omori, None),
     ]
 
     print("Starting all scrapers…")
