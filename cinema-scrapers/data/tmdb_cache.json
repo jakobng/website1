@@ -17650,5 +17650,52 @@
     "vote_average": 7.805
   },
   "MIRRORLIAR FILMS［0115ｲﾍﾞﾝﾄ］": null,
-  "クルビ・ダ・エ［0115ｲﾍﾞﾝﾄ］": null
+  "クルビ・ダ・エ［0115ｲﾍﾞﾝﾄ］": null,
+  "エミリア・ペレス": {
+    "tmdb_id": 974950,
+    "tmdb_title_jp": "エミリア・ペレス",
+    "tmdb_title_en": "Emilia Pérez",
+    "overview": "大手法律事務所に勤める過小評価された弁護士リタは、犯罪者を裁判にかけることよりも刑務所から釈放することに関心があるが、ある犯罪組織のリーダーに雇われる。",
+    "poster_path": "/7seqaCaaXDNUHOx4DqwpoOH8pPa.jpg",
+    "backdrop_path": "/u2eA9pqi1q3DvevT7RuDuJHxxBT.jpg",
+    "release_date": "2024-08-21",
+    "director": "ジャック・オーディアール",
+    "runtime": 132,
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 6.495
+  },
+  "MEMORIES": {
+    "tmdb_id": 128305,
+    "tmdb_title_jp": "Memories",
+    "tmdb_title_en": "Memories",
+    "overview": "",
+    "poster_path": "/53yFGTWmVzrcugAvojwEECEkksA.jpg",
+    "backdrop_path": null,
+    "release_date": "2007-08-01",
+    "director": "Harun Farocki",
+    "runtime": 102,
+    "genres": [],
+    "vote_average": 5.5
+  },
+  "日本映像ｸﾞﾗﾝﾌﾟﾘ 記念上映会": null,
+  "殺し屋１": {
+    "tmdb_id": 9696,
+    "tmdb_title_jp": "殺し屋1",
+    "tmdb_title_en": "殺し屋1",
+    "overview": "暴力、セックス、ドラッグ、殺しが蔓延る多国籍街・歌舞伎町。その一角にあるヤクザマンションと呼ばれるビルに事務所を構える安生組の組長が、組の資金3億円と共に姿を消した。若頭・垣原は組長捜しに乗り出すが、その時既に組長はヤクザ壊滅を企む謎の手配師・ジジイによってマインドコントロールされた、靴の踵に仕込んだ鉈を武器とする泣き虫の殺し屋・イチに殺されていた。そのことを突き止めた垣原は、組長の仇を討つべく手下の高山や会長・中沢、イチに過去の自分を投影する鉄砲玉の金子、双子のサド刑事・二郎と三郎、敵対する組の船鬼や鈴木ら周囲を巻き込んでイチ捜しを開始。だが、実は究極のマゾである彼の目的は、やがてイチの無情な殺戮方法に対する興味へと移行していく。そして、遂にイチを捜し出した垣原は、イチに痛めつけられる期待に胸を膨らませるのであったが、肝腎のイチは不甲斐なく彼の期待に応えてはくれなかった。そこで、絶望した垣原は自らの耳に針を刺し自分を痛めつけると、イチに倒される妄想を見ながら投身自殺するのであった。",
+    "poster_path": "/gtqkEgS7fhvgKmSCt9EqTdQt6t9.jpg",
+    "backdrop_path": "/aw0EeseSr10dVUuY6Aiv6HhP8UW.jpg",
+    "release_date": "2001-12-22",
+    "director": "三池崇史",
+    "runtime": 129,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ホラー"
+    ],
+    "vote_average": 7.0
+  }
 }
