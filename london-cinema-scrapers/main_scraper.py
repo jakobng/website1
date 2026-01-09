@@ -43,6 +43,7 @@ from cinema_modules import (
     cine_lumiere_module,
     # rio_cinema_module,
     # curzon_module,
+    rich_mix_module,
 )
 
 # --- Configuration ---
@@ -642,6 +643,7 @@ def main():
         ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere, None),
         # ("Rio Cinema", rio_cinema_module.scrape_rio, None),
         # ("Curzon", curzon_module.scrape_curzon, None),
+        ("Rich Mix", rich_mix_module.scrape_rich_mix, None),
     ]
 
     print("Starting all scrapers...")
