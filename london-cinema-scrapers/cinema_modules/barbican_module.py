@@ -75,6 +75,21 @@ def _parse_iso_datetime(value: str) -> Optional[dt.datetime]:
         return None
 
 
+def _parse_calendar_date(day_text: str, month_text: str) -> Optional[dt.date]:
+    if not day_text or not month_text:
+        return None
+    cleaned_day = re.sub(r"\D", "", day_text.strip())
+    if not cleaned_day:
+        return None
+    date_str = f"{cleaned_day} {month_text.strip()}"
+    for fmt in ["%d %b %Y", "%d %B %Y"]:
+        try:
+            return dt.datetime.strptime(date_str, fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
 def _parse_date_text(value: str) -> Optional[dt.date]:
     if not value:
         return None
@@ -274,6 +289,99 @@ def _extract_events_from_html(soup: BeautifulSoup) -> List[dict]:
     return events
 
 
+def _extract_event_links(soup: BeautifulSoup) -> List[str]:
+    links = []
+    for link in soup.select("h2.cinema-listing-card__title a[href]"):
+        href = link.get("href", "")
+        if href:
+            links.append(urljoin(BASE_URL, href))
+    if links:
+        return sorted(set(links))
+    for link in soup.select("a[href*='/whats-on/'][href*='/event/']"):
+        href = link.get("href", "")
+        if href:
+            links.append(urljoin(BASE_URL, href))
+    return sorted(set(links))
+
+
+def _extract_node_id(html: str, soup: BeautifulSoup) -> Optional[str]:
+    match = re.search(r"bookingButtonUrl\":\"node\\/(\\d+)\\/booking_button", html)
+    if match:
+        return match.group(1)
+    match = re.search(r"currentPath\":\"node\\/(\\d+)\"", html)
+    if match:
+        return match.group(1)
+    btn = soup.select_one("[data-saved-event-id]")
+    if btn:
+        return btn.get("data-saved-event-id")
+    return None
+
+
+def _extract_performance_shows(soup: BeautifulSoup, title: str, detail_url: str) -> List[Dict]:
+    shows: List[Dict] = []
+    for item in soup.select(".calendar-item"):
+        month_text = item.get("data-month", "")
+        day_elem = item.select_one(".instance-date__date")
+        day_text = day_elem.get_text(strip=True) if day_elem else ""
+        show_date = _parse_calendar_date(day_text, month_text)
+        if not show_date:
+            continue
+        if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
+            continue
+
+        for listing in item.select(".instance-listing"):
+            time_elem = listing.select_one("time[datetime]")
+            parsed_dt = _parse_iso_datetime(time_elem.get("datetime", "")) if time_elem else None
+            if not parsed_dt:
+                continue
+            booking_link = listing.select_one("a[href*='tickets.barbican.org.uk']")
+            booking_url = booking_link.get("href", "") if booking_link else ""
+
+            shows.append({
+                "cinema_name": CINEMA_NAME,
+                "movie_title": title,
+                "movie_title_en": title,
+                "date_text": show_date.isoformat(),
+                "showtime": parsed_dt.strftime("%H:%M"),
+                "detail_page_url": detail_url,
+                "booking_url": booking_url,
+                "director": "",
+                "year": "",
+                "country": "",
+                "runtime_min": "",
+                "synopsis": "",
+            })
+    return shows
+
+
+def _fetch_event_showtimes(session: requests.Session, detail_url: str, title_hint: str) -> List[Dict]:
+    try:
+        resp = session.get(detail_url, headers=HEADERS, timeout=TIMEOUT)
+        resp.raise_for_status()
+    except requests.RequestException as exc:
+        print(f"[{CINEMA_NAME}] Event fetch failed ({detail_url}): {exc}", file=sys.stderr)
+        return []
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    title_el = soup.select_one("h1")
+    title = _clean(title_el.get_text(" ", strip=True)) if title_el else ""
+    title = title or title_hint
+    node_id = _extract_node_id(resp.text, soup)
+    if not node_id:
+        return []
+
+    perf_url = f"{BASE_URL}/whats-on/event/{node_id}/performances"
+    try:
+        perf_resp = session.get(perf_url, headers=HEADERS, timeout=TIMEOUT)
+        perf_resp.raise_for_status()
+    except requests.RequestException as exc:
+        print(f"[{CINEMA_NAME}] Performance fetch failed ({perf_url}): {exc}", file=sys.stderr)
+        return []
+
+    perf_soup = BeautifulSoup(perf_resp.text, "html.parser")
+    return _extract_performance_shows(perf_soup, title, detail_url)
+
+
 def scrape_barbican() -> List[Dict]:
     """Scrape Barbican Cinema showtimes.
 
@@ -336,12 +444,23 @@ def scrape_barbican() -> List[Dict]:
                 "date_text": show_date.isoformat(),
                 "showtime": parsed_dt.strftime("%H:%M"),
                 "detail_page_url": detail_url,
+                "booking_url": "",
                 "director": "",
                 "year": "",
                 "country": "",
                 "runtime_min": "",
                 "synopsis": "",
             })
+
+        if soup is not None:
+            event_links = _extract_event_links(soup)
+            if event_links:
+                session = requests.Session()
+                for link in event_links:
+                    title_hint = ""
+                    link_shows = _fetch_event_showtimes(session, link, title_hint)
+                    if link_shows:
+                        shows.extend(link_shows)
 
         if not shows:
             print(f"[{CINEMA_NAME}] Note: No shows found. Page structure may need analysis.", file=sys.stderr)

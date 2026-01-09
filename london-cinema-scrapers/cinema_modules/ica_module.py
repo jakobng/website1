@@ -241,6 +241,13 @@ def _get_film_listings(session: requests.Session) -> List[dict]:
     Returns list of dicts with title, url, date_range.
     """
     films = []
+    skip_paths = {
+        "/films",
+        "/films/",
+        "/films/today",
+        "/films/tomorrow",
+        "/films/next-7-days",
+    }
 
     resp = session.get(FILMS_URL, headers=HEADERS, timeout=TIMEOUT)
     resp.raise_for_status()
@@ -258,7 +265,7 @@ def _get_film_listings(session: requests.Session) -> List[dict]:
             continue
 
         # Skip non-film links (like /films itself)
-        if href == "/films" or href == "/films/":
+        if href in skip_paths or re.fullmatch(r"/films/\d{4}", href):
             continue
 
         seen_urls.add(href)
@@ -286,7 +293,7 @@ def _get_film_listings(session: requests.Session) -> List[dict]:
     if not films:
         for item in soup.select("a[href*='/films/']"):
             href = item.get("href", "")
-            if not href or href in seen_urls or href in ["/films", "/films/"]:
+            if not href or href in seen_urls or href in skip_paths or re.fullmatch(r"/films/\d{4}", href):
                 continue
 
             seen_urls.add(href)
