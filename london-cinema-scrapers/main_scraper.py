@@ -30,6 +30,7 @@ from cinema_modules import (
     close_up_module,
     phoenix_cinema_module,
     castle_cinema_module,
+    electric_cinema_module,
     # rio_cinema_module,
     # curzon_module,
     # cine_lumiere_module,
@@ -398,11 +399,11 @@ def main():
         ("Close-Up Film Centre", close_up_module.scrape_close_up, None),
         ("Phoenix Cinema", phoenix_cinema_module.scrape_phoenix_cinema, None),
         ("The Castle Cinema", castle_cinema_module.scrape_castle_cinema, None),
+        ("Electric Cinema", electric_cinema_module.scrape_electric_cinema, None),
         # ("Genesis Cinema", genesis_module.scrape_genesis, None),
         # ("Rio Cinema", rio_cinema_module.scrape_rio, None),
         # ("Curzon", curzon_module.scrape_curzon, None),
         # ("Cine Lumiere", cine_lumiere_module.scrape_cine_lumiere, None),
-        # ("Electric Cinema", electric_cinema_module.scrape_electric, None),
     ]
 
     print("Starting all scrapers...")
