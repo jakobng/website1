@@ -104,6 +104,19 @@ def _parse_time_text(value: str) -> Optional[str]:
     return f"{hour:02d}:{minute:02d}"
 
 
+def _parse_full_date(value: str) -> Optional[dt.date]:
+    if not value:
+        return None
+    cleaned = re.sub(r"\s+", " ", value.strip())
+    formats = ["%A %d %B %Y", "%A %d %b %Y"]
+    for fmt in formats:
+        try:
+            return dt.datetime.strptime(cleaned, fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
 def _extract_event_id(href: str) -> Optional[str]:
     """Extract event ID from URL like '/event/105804'."""
     if not href:
@@ -118,6 +131,70 @@ def _extract_perf_code(href: str) -> Optional[str]:
         return None
     match = re.search(r"perfCode=(\d+)", href)
     return match.group(1) if match else None
+
+
+def _scrape_event_blocks(soup: BeautifulSoup) -> List[Dict]:
+    shows: List[Dict] = []
+    date_pattern = re.compile(
+        r"(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+\d{1,2}\s+[A-Za-z]+\s+\d{4}",
+        re.IGNORECASE,
+    )
+
+    for h1 in soup.find_all("h1"):
+        title_link = h1.find("a", href=re.compile(r"/event/\d+"))
+        if not title_link:
+            continue
+
+        movie_title = _clean(title_link.get_text())
+        if not movie_title:
+            continue
+
+        movie_href = title_link.get("href", "")
+        detail_url = urljoin(BASE_URL, movie_href) if movie_href else ""
+
+        container = h1.find_parent("div")
+        while container and not container.find("a", href=re.compile(r"perfCode=\d+")):
+            container = container.find_parent("div")
+        if not container:
+            continue
+
+        for date_block in container.find_all("div"):
+            text = date_block.get_text(" ", strip=True)
+            match = date_pattern.search(text)
+            if not match:
+                continue
+            show_date = _parse_full_date(match.group(0))
+            if not show_date:
+                continue
+            if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
+                continue
+
+            for time_link in date_block.find_all("a", href=re.compile(r"perfCode=\d+")):
+                time_text = _clean(time_link.get_text())
+                showtime = _parse_time_text(time_text)
+                if not showtime:
+                    continue
+
+                booking_url = time_link.get("href", "")
+                if booking_url and not booking_url.startswith("http"):
+                    booking_url = urljoin(BASE_URL, booking_url)
+
+                shows.append({
+                    "cinema_name": CINEMA_NAME,
+                    "movie_title": movie_title,
+                    "movie_title_en": movie_title,
+                    "date_text": show_date.isoformat(),
+                    "showtime": showtime,
+                    "detail_page_url": detail_url,
+                    "booking_url": booking_url,
+                    "director": "",
+                    "year": "",
+                    "country": "",
+                    "runtime_min": "",
+                    "synopsis": "",
+                })
+
+    return shows
 
 
 def scrape_genesis() -> List[Dict]:
@@ -263,6 +340,9 @@ def scrape_genesis() -> List[Dict]:
         if not shows:
             print(f"[{CINEMA_NAME}] Panel-based parsing found no shows, trying alternative approach...", file=sys.stderr)
             shows = _scrape_alternative(soup)
+
+        if not shows:
+            shows = _scrape_event_blocks(soup)
 
         if not shows:
             print(f"[{CINEMA_NAME}] Note: No shows found. Page structure may have changed.", file=sys.stderr)
