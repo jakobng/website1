@@ -15,3 +15,4 @@ from . import castle_cinema_module
 from . import cine_lumiere_module
 # from . import close_up_module
 from . import electric_cinema_module
+from . import dochouse_module
