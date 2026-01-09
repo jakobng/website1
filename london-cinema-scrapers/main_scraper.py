@@ -63,6 +63,8 @@ from cinema_modules import (
     sands_films_module,
     cine_lumiere_module,
     lexi_cinema_module,
+    arthouse_crouch_end_module,
+    jw3_module,
     peckhamplex_module,
     cinema_museum_module,
 
@@ -685,6 +687,8 @@ def main():
         ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere, None),
         ("Rio Cinema", rio_cinema_module.scrape_rio, None),
         ("The Lexi Cinema", lexi_cinema_module.scrape_lexi_cinema, None),
+        ("ArtHouse Crouch End", arthouse_crouch_end_module.scrape_arthouse_crouch_end, None),
+        ("JW3 Cinema", jw3_module.scrape_jw3, None),
         ("Peckhamplex", peckhamplex_module.scrape_peckhamplex, None),
         ("The Cinema Museum", cinema_museum_module.scrape_cinema_museum, None),
     ]
