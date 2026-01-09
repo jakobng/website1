@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import html as html_lib
 import json
 import os
 import re
@@ -77,7 +78,7 @@ def _clean(text: str) -> str:
     """Clean whitespace and normalize text."""
     if not text:
         return ""
-    return re.sub(r"\s+", " ", text.strip())
+    return re.sub(r"\s+", " ", html_lib.unescape(text).strip())
 
 
 def _parse_bfi_date(date_str: str) -> Optional[dt.date]:
@@ -119,18 +120,80 @@ def _parse_bfi_date(date_str: str) -> Optional[dt.date]:
 
 def _parse_time(time_str: str) -> Optional[str]:
     """Parse time and return in HH:MM format."""
-    time_str = time_str.strip().upper()
+    if not time_str:
+        return None
+    cleaned = _clean(time_str).upper()
 
-    # Find where the array starts
-    match = re.search(pattern, html, re.I)
-    if not match:
-        return []
+    match = re.search(r"(\d{1,2})[:\.](\d{2})\s*(AM|PM)?", cleaned)
+    if match:
+        hour = int(match.group(1))
+        minute = int(match.group(2))
+        period = match.group(3)
+        if period == "PM" and hour != 12:
+            hour += 12
+        elif period == "AM" and hour == 12:
+            hour = 0
+        return f"{hour:02d}:{minute:02d}"
 
-    start_pos = match.start()
+    match = re.search(r"\b(\d{1,2})\s*(AM|PM)\b", cleaned)
+    if match:
+        hour = int(match.group(1))
+        period = match.group(2)
+        if period == "PM" and hour != 12:
+            hour += 12
+        elif period == "AM" and hour == 12:
+            hour = 0
+        return f"{hour:02d}:00"
 
-    # Now we need to find where the array ends - count brackets
-    depth = 0
-    end_pos = start_pos
+    return None
+
+
+def _parse_date(date_str: str) -> Optional[dt.date]:
+    """Parse date text into a date."""
+    if not date_str:
+        return None
+    cleaned = _clean(date_str)
+    if not cleaned:
+        return None
+
+    iso_match = re.search(r"\d{4}-\d{2}-\d{2}", cleaned)
+    if iso_match:
+        try:
+            return dt.date.fromisoformat(iso_match.group())
+        except ValueError:
+            return None
+
+    parsed = _parse_bfi_date(cleaned)
+    if parsed:
+        return parsed
+
+    formats_with_year = [
+        "%A %d %B %Y",
+        "%a %d %B %Y",
+        "%d %B %Y",
+        "%d %b %Y",
+    ]
+    for fmt in formats_with_year:
+        try:
+            return dt.datetime.strptime(cleaned, fmt).date()
+        except ValueError:
+            continue
+
+    formats_without_year = [
+        "%A %d %B",
+        "%a %d %B",
+        "%d %B",
+        "%d %b",
+    ]
+    for fmt in formats_without_year:
+        try:
+            parsed_dt = dt.datetime.strptime(cleaned, fmt)
+            parsed_dt = parsed_dt.replace(year=TODAY.year)
+            if parsed_dt.date() < TODAY - dt.timedelta(days=30):
+                parsed_dt = parsed_dt.replace(year=TODAY.year + 1)
+            return parsed_dt.date()
+        except ValueError:
+            continue
 
     return None
 
@@ -175,6 +238,134 @@ def _extract_json_ld(soup: BeautifulSoup) -> List[dict]:
     return blocks
 
 
+def _extract_js_array_from_html(html: str, anchor: str) -> Optional[list]:
+    if not html:
+        return None
+    idx = html.find(anchor)
+    if idx == -1:
+        return None
+    start = html.find("[", idx)
+    if start == -1:
+        return None
+
+    depth = 0
+    in_string = False
+    escape = False
+
+    for i in range(start, len(html)):
+        ch = html[i]
+        if in_string:
+            if escape:
+                escape = False
+            elif ch == "\\":
+                escape = True
+            elif ch == "\"":
+                in_string = False
+        else:
+            if ch == "\"":
+                in_string = True
+            elif ch == "[":
+                depth += 1
+            elif ch == "]":
+                depth -= 1
+                if depth == 0:
+                    raw = html[start:i + 1]
+                    try:
+                        return json.loads(raw)
+                    except json.JSONDecodeError:
+                        return None
+    return None
+
+
+def _extract_article_context_events(html: str) -> List[dict]:
+    names = _extract_js_array_from_html(html, "searchNames")
+    results = _extract_js_array_from_html(html, "searchResults")
+    if not names or not results:
+        return []
+
+    name_index = {name: idx for idx, name in enumerate(names)}
+    events = []
+
+    def get_value(row: list, key: str) -> str:
+        idx = name_index.get(key)
+        if idx is None or idx >= len(row):
+            return ""
+        value = row[idx]
+        return value if isinstance(value, str) else ""
+
+    for row in results:
+        if not isinstance(row, list):
+            continue
+        item_type = get_value(row, "type")
+        if item_type and item_type != "BFI Southbank":
+            continue
+        category = _clean(get_value(row, "category"))
+        venue_name = _clean(get_value(row, "venue_name"))
+        venue_group = _clean(get_value(row, "venue_group"))
+        if category.lower() == "education":
+            continue
+        if "library" in venue_name.lower() or "education" in venue_name.lower():
+            continue
+        if "library" in venue_group.lower() or "education" in venue_group.lower():
+            continue
+        title = _clean(
+            get_value(row, "description")
+            or get_value(row, "short_description")
+            or get_value(row, "name")
+        )
+        if not title:
+            continue
+
+        start_date_text = get_value(row, "start_date")
+        start_time_text = get_value(row, "start_date_time")
+        show_date = _parse_date(start_date_text)
+        show_time = _parse_time(start_time_text) or _parse_time(start_date_text)
+        if not show_date or not show_time:
+            continue
+
+        detail_path = ""
+        for key in ("additional_info", "group", "options"):
+            candidate = get_value(row, key)
+            if "default.asp?doWork::WScontent::loadArticle" in candidate:
+                detail_path = candidate
+                break
+        if not detail_path:
+            detail_path = get_value(row, "additional_info")
+
+        events.append({
+            "name": title,
+            "startDate": f"{show_date.isoformat()}T{show_time}",
+            "url": detail_path,
+        })
+
+    return events
+
+
+def _looks_like_cloudflare_challenge(html: str) -> bool:
+    if not html:
+        return False
+    lowered = html.lower()
+    return "just a moment" in lowered or "cf-ray" in lowered or "cloudflare" in lowered
+
+
+def _fetch_schedule_html() -> str:
+    session = requests.Session()
+    session.trust_env = False
+    resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
+    if resp.status_code == 403 or _looks_like_cloudflare_challenge(resp.text):
+        try:
+            import cloudscraper
+        except Exception:
+            raise RuntimeError(
+                "BFI blocked the request (Cloudflare). Install cloudscraper or provide BFI_HTML_PATH."
+            ) from None
+
+        scraper = cloudscraper.create_scraper()
+        resp = scraper.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
+    resp.raise_for_status()
+    return resp.text
+
+
 def _collect_event_nodes(json_ld: List[dict]) -> List[dict]:
     """Return JSON-LD nodes that represent events."""
     events: List[dict] = []
@@ -216,25 +407,26 @@ def scrape_bfi_southbank() -> List[Dict]:
     try:
         # BFI's schedule page may require session handling or specific parameters
         html_override = _load_html_override()
+        html_text = ""
         soup = None
         if html_override:
+            html_text = html_override
             soup = BeautifulSoup(html_override, "html.parser")
         else:
-            session = requests.Session()
-            session.trust_env = False
+            html_text = _fetch_schedule_html()
+            soup = BeautifulSoup(html_text, "html.parser")
 
-            # First, try to get the main schedule page
-            resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
-            resp.raise_for_status()
-
-            soup = BeautifulSoup(resp.text, "html.parser")
+        if html_text:
+            event_nodes = _extract_article_context_events(html_text)
+        else:
+            event_nodes = []
 
         json_ld_blocks = _load_json_ld_override()
         if json_ld_blocks is None and soup is not None:
             json_ld_blocks = _extract_json_ld(soup)
         if json_ld_blocks is None:
             json_ld_blocks = []
-        event_nodes = _collect_event_nodes(json_ld_blocks)
+        event_nodes.extend(_collect_event_nodes(json_ld_blocks))
 
         for event in event_nodes:
             title = _clean(event.get("name", "")) or _clean(event.get("headline", ""))
