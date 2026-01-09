@@ -1,16 +1,16 @@
-name: London Cinema Scraper
+name: Scrape London Cinema Showtimes
 
 on:
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
   schedule:
-    # 07:00 UTC = 07:00 GMT / 08:00 BST (morning update)
-    - cron: '0 7 * * *'
+    # 06:00 UTC = 06:00 GMT / 07:00 BST
+    - cron: '0 6 * * *'
 
 permissions:
   contents: write
 
 jobs:
-  scrape-london:
+  scrape-london-showtimes:
     runs-on: ubuntu-latest
 
     defaults:
@@ -19,19 +19,20 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Set Timezone to London
+      - name: Set Timezone
         run: sudo timedatectl set-timezone Europe/London
 
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
+          playwright install chromium
 
       - name: Run London Scraper
         run: python main_scraper.py
@@ -46,14 +47,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Add JSON data
           git add data/*.json
-
-          # Commit locally
-          git commit -m "Auto-Update: London cinema showtimes $(date +%Y-%m-%d)" || echo "No changes to commit"
-
-          # Rebase to handle race conditions
+          git commit -m "Auto-Update: London showtimes" || echo "No changes to commit"
           git pull --rebase origin main
-
-          # Push
           git push
