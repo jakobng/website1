@@ -108,57 +108,9 @@ def _parse_time_12h(time_str: str) -> Optional[str]:
     return None
 
 
-def _extract_film_metadata(detail_url: str) -> Dict:
-    """
-    Fetch film detail page and extract metadata.
-    Returns dict with director, year, runtime_min, synopsis, country.
-    """
-    defaults = {
-        "director": "",
-        "year": "",
-        "country": "",
-        "runtime_min": "",
-        "synopsis": "",
-    }
-
-    if not detail_url:
-        return defaults
-
-    try:
-        resp = requests.get(detail_url, headers=HEADERS, timeout=TIMEOUT)
-        resp.raise_for_status()
-        soup = BeautifulSoup(resp.text, "html.parser")
-
-        # Look for description/synopsis
-        desc_elem = soup.select_one(".jacro-formatted-text p, .film-description, .synopsis")
-        if desc_elem:
-            defaults["synopsis"] = _clean(desc_elem.get_text())[:500]
-
-        # Extract metadata from the page text
-        page_text = soup.get_text()
-
-        # Year - look for 4-digit year
-        year_match = re.search(r"\b(19\d{2}|20\d{2})\b", page_text)
-        if year_match:
-            defaults["year"] = year_match.group(1)
-
-        # Runtime - look for "X mins" or "Xmin"
-        runtime_match = re.search(r"(\d+)\s*(?:mins?|minutes?)", page_text, re.I)
-        if runtime_match:
-            defaults["runtime_min"] = runtime_match.group(1)
-
-        # Director - look for "Director:" or "Directed by"
-        director_match = re.search(
-            r"(?:Director|Directed by)[:\s]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)",
-            page_text
-        )
-        if director_match:
-            defaults["director"] = director_match.group(1)
-
-    except Exception as e:
-        print(f"[{CINEMA_NAME}] Error fetching detail page {detail_url}: {e}", file=sys.stderr)
-
-    return defaults
+# Note: Metadata extraction from PCC detail pages is unreliable.
+# The main_scraper.py handles TMDB enrichment which provides better metadata.
+# Keeping this function as a stub for potential future use.
 
 
 def scrape_prince_charles() -> List[Dict]:
@@ -171,11 +123,11 @@ def scrape_prince_charles() -> List[Dict]:
     - date_text: str (YYYY-MM-DD)
     - showtime: str (HH:MM)
     - detail_page_url: str
-    - director, year, country, runtime_min, synopsis: str (optional)
     - format_tags: list (optional) - e.g., ["35mm", "4K"]
+
+    Note: Director, year, runtime etc. are populated by TMDB enrichment in main_scraper.py
     """
     shows = []
-    meta_cache = {}
 
     try:
         session = requests.Session()
@@ -204,19 +156,12 @@ def scrape_prince_charles() -> List[Dict]:
             if not film_title:
                 continue
 
-            # Get film metadata (cached)
-            if film_link and film_link not in meta_cache:
-                # Only fetch metadata for films showing within our window
-                # to avoid too many requests
-                meta_cache[film_link] = None  # Placeholder, fetch later if needed
-
             # Parse performance list to extract date/time pairs
             perf_list = event.select_one(".performance-list-items")
             if not perf_list:
                 continue
 
             current_date = None
-            current_date_str = None
 
             # Iterate through children to match dates with times
             for child in perf_list.children:
@@ -229,7 +174,6 @@ def scrape_prince_charles() -> List[Dict]:
                     parsed_date = _parse_uk_date(date_text)
                     if parsed_date:
                         current_date = parsed_date
-                        current_date_str = date_text
 
                 # Showtime entry
                 elif child.name == "li" and current_date:
@@ -275,26 +219,6 @@ def scrape_prince_charles() -> List[Dict]:
                         "synopsis": "",
                         "format_tags": format_tags,
                     })
-
-        # Optionally fetch metadata for films we have showings for
-        # (limited to avoid too many requests)
-        unique_films = set(s["detail_page_url"] for s in shows if s["detail_page_url"])
-        print(f"[{CINEMA_NAME}] Fetching metadata for {len(unique_films)} unique films", file=sys.stderr)
-
-        for film_url in list(unique_films)[:20]:  # Limit to first 20 to be polite
-            if film_url not in meta_cache or meta_cache[film_url] is None:
-                meta_cache[film_url] = _extract_film_metadata(film_url)
-
-        # Apply metadata to shows
-        for show in shows:
-            url = show["detail_page_url"]
-            if url in meta_cache and meta_cache[url]:
-                meta = meta_cache[url]
-                show["director"] = meta.get("director", "")
-                show["year"] = meta.get("year", "")
-                show["country"] = meta.get("country", "")
-                show["runtime_min"] = meta.get("runtime_min", "")
-                show["synopsis"] = meta.get("synopsis", "")
 
         print(f"[{CINEMA_NAME}] Found {len(shows)} showings", file=sys.stderr)
 
