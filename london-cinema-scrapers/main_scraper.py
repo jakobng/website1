@@ -35,6 +35,14 @@ from cinema_modules import (
     curzon_soho_module,
     # rio_cinema_module,
     # cine_lumiere_module,
+    dochouse_module,
+    # rio_cinema_module,
+    # curzon_module,
+    # cine_lumiere_module,
+    # electric_cinema_module,
+    cine_lumiere_module,
+    # rio_cinema_module,
+    # curzon_module,
 )
 
 # --- Configuration ---
@@ -626,6 +634,14 @@ def main():
         ("Curzon Soho", curzon_soho_module.scrape_curzon_soho, None),
         # ("Rio Cinema", rio_cinema_module.scrape_rio, None),
         # ("Cine Lumiere", cine_lumiere_module.scrape_cine_lumiere, None),
+        ("Bertha DocHouse", dochouse_module.scrape_dochouse, None),
+        # ("Genesis Cinema", genesis_module.scrape_genesis, None),
+        # ("Rio Cinema", rio_cinema_module.scrape_rio, None),
+        # ("Curzon", curzon_module.scrape_curzon, None),
+        # ("Cine Lumiere", cine_lumiere_module.scrape_cine_lumiere, None),
+        ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere, None),
+        # ("Rio Cinema", rio_cinema_module.scrape_rio, None),
+        # ("Curzon", curzon_module.scrape_curzon, None),
     ]
 
     print("Starting all scrapers...")
