@@ -114,6 +114,25 @@ def _parse_iso_datetime(iso_str: str) -> Optional[dt.datetime]:
         return None
 
 
+def _dismiss_yie_overlay(page) -> None:
+    """Hide Yieldify overlay/backdrop if present."""
+    try:
+        if not page.query_selector("[id^='yie-overlay-'], [id^='yie-backdrop-']"):
+            return
+        page.add_style_tag(
+            content="[id^='yie-overlay-'], [id^='yie-backdrop-'] { display: none !important; }"
+        )
+        page.evaluate(
+            "() => {"
+            "document.querySelectorAll('[id^=\"yie-overlay-\"], [id^=\"yie-backdrop-\"]')"
+            ".forEach(el => el.remove());"
+            "}"
+        )
+        page.wait_for_timeout(100)
+    except Exception as exc:
+        print(f"[{CINEMA_NAME}] Overlay dismissal failed: {exc}", file=sys.stderr)
+
+
 def scrape_curzon_soho() -> List[Dict]:
     """
     Scrape Curzon Soho showtimes using Playwright.
@@ -144,6 +163,8 @@ def scrape_curzon_soho() -> List[Dict]:
                 print(f"[{CINEMA_NAME}] Timeout waiting for film list", file=sys.stderr)
                 browser.close()
                 return []
+
+            _dismiss_yie_overlay(page)
 
             # Get all available dates from the date picker
             date_elements = page.query_selector_all(".v-date-picker-date")
@@ -179,6 +200,7 @@ def scrape_curzon_soho() -> List[Dict]:
                 # Click on date to load its showtimes
                 button = date_elem.query_selector(".v-date-picker-date__button")
                 if button:
+                    _dismiss_yie_overlay(page)
                     button.click()
                     # Wait for content to update
                     page.wait_for_timeout(1500)
