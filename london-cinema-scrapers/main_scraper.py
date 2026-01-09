@@ -33,17 +33,11 @@ from cinema_modules import (
     castle_cinema_module,
     electric_cinema_module,
     curzon_soho_module,
-    # rio_cinema_module,
-    # cine_lumiere_module,
+    rio_cinema_module
     dochouse_module,
     sands_films_module,
-    # rio_cinema_module,
-    # curzon_module,
-    # cine_lumiere_module,
-    # electric_cinema_module,
     cine_lumiere_module,
-    # rio_cinema_module,
-    # curzon_module,
+
 )
 
 # --- Configuration ---
@@ -694,3 +688,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
