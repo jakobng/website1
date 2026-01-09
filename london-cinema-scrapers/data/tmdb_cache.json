@@ -2632,6 +2632,37 @@
     ],
     "vote_average": 7.612
   },
+  "Duck, You Sucker! [aka Once Upon a Time...the Revolution]": {
+    "tmdb_id": 336,
+    "tmdb_title": "Duck, You Sucker",
+    "tmdb_original_title": "Giù la testa",
+    "overview": "At the beginning of the 1913 Mexican Revolution, greedy bandit Juan Miranda and idealist John H. Mallory, an Irish Republican Army explosives expert on the lam from the British, fall in with a band of revolutionaries plotting to strike a national bank. When it turns out that the government has been using the bank as a hiding place for illegally detained political prisoners -- who are freed by the blast -- Miranda becomes a revolutionary hero against his will.",
+    "poster_path": "/l91bdMjPYUXRLjOnBosxCGickKa.jpg",
+    "backdrop_path": "/2ZbYjD4j3RzUZ7PvPb8toKQeF4.jpg",
+    "release_date": "1971-10-29",
+    "director": "Sergio Leone",
+    "runtime": 157,
+    "genres": [
+      "Western"
+    ],
+    "vote_average": 7.7
+  },
+  "Black Water": {
+    "tmdb_id": 454615,
+    "tmdb_title": "Black Water",
+    "tmdb_original_title": "Black Water",
+    "overview": "A deep cover operative awakens to find himself imprisoned on a submarine. With the help of a fellow prisoner and an amateur agent, he must race against the clock to escape the vessel and expose who set him up.",
+    "poster_path": "/tIcZAB5AmRN8fIDXfDZ2aUok9qa.jpg",
+    "backdrop_path": "/noNMHp461qETqftTGRC4xJtJ8Pf.jpg",
+    "release_date": "2018-05-18",
+    "director": "Pasha Patriki",
+    "runtime": 105,
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "vote_average": 5.6
+  },
   "The Handmaiden [Theatrical Cut]": {
     "tmdb_id": 290098,
     "tmdb_title": "The Handmaiden",
@@ -2649,20 +2680,117 @@
     ],
     "vote_average": 8.2
   },
-  "Duck, You Sucker! [aka Once Upon a Time...the Revolution]": {
-    "tmdb_id": 336,
-    "tmdb_title": "Duck, You Sucker",
-    "tmdb_original_title": "Giù la testa",
-    "overview": "At the beginning of the 1913 Mexican Revolution, greedy bandit Juan Miranda and idealist John H. Mallory, an Irish Republican Army explosives expert on the lam from the British, fall in with a band of revolutionaries plotting to strike a national bank. When it turns out that the government has been using the bank as a hiding place for illegally detained political prisoners -- who are freed by the blast -- Miranda becomes a revolutionary hero against his will.",
-    "poster_path": "/l91bdMjPYUXRLjOnBosxCGickKa.jpg",
-    "backdrop_path": "/2ZbYjD4j3RzUZ7PvPb8toKQeF4.jpg",
-    "release_date": "1971-10-29",
-    "director": "Sergio Leone",
-    "runtime": 157,
+  "Iron Winter": {
+    "tmdb_id": 1439109,
+    "tmdb_title": "Iron Winter",
+    "tmdb_original_title": "Iron Winter",
+    "overview": "In Mongolia’s remote Tsakhir Valley, Batbold faces the greatest challenge of his young life: safeguarding 1,000 horses during the deadliest winter on record.",
+    "poster_path": "/2vZX1bJkE57oOPORHqskRIjJMkx.jpg",
+    "backdrop_path": "/o4ddWhd0GsILhrKZRaPC4L6MlWP.jpg",
+    "release_date": "2025-04-06",
+    "director": "Kasimir Burgess",
+    "runtime": 89,
     "genres": [
-      "Western"
+      "Documentary"
     ],
-    "vote_average": 7.7
+    "vote_average": 7.0
+  },
+  "Becoming Victoria Wood": {
+    "tmdb_id": 1551881,
+    "tmdb_title": "Becoming Victoria Wood",
+    "tmdb_original_title": "Becoming Victoria Wood",
+    "overview": "A feature length documentary celebrating the life of Britain’s beloved comedy icon Victoria Wood delving into the complex inner world of this national treasure nearly ten years after her passing. Victoria Wood remains one of Britain’s most cherished entertainers – a northern comic genius whose work reshaped the landscape of British humour. But behind the joyous persona – the singer, the satirist, the sharp-witted writer – lay a young woman navigating insecurity, anger, and self-doubt. Told in her own words and through the voices of those who knew her best, the film uncovers the formative experiences and personal battles that powered Victoria’s unmatched ability to make the nation laugh. The film will explore never-before-seen archive material and previously unheard audio recordings, to paint a vivid portrait of the woman behind the fame.",
+    "poster_path": "/doQ7aDUx7jAQGR1QlWjSwTBMTTV.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-08",
+    "director": "Catherine Abbott",
+    "runtime": 90,
+    "genres": [
+      "Documentary",
+      "Comedy"
+    ],
+    "vote_average": 0.0
+  },
+  "Your Name [Kimi no Na wa.]": {
+    "tmdb_id": 1399134,
+    "tmdb_title": "Your Name",
+    "tmdb_original_title": "Your Name",
+    "overview": "Brandon takes the chance in talking to the girl he is interested at a party, not knowing what the outcome could be.",
+    "poster_path": "/bXE0gPdWpQIfG5GbiqqYxt7MkZJ.jpg",
+    "backdrop_path": "/c5HCgho6F4dCzj32F7J09P9VGTZ.jpg",
+    "release_date": "2021-02-14",
+    "director": "Lucas Hicks",
+    "runtime": 6,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "The Track": {
+    "tmdb_id": 398277,
+    "tmdb_title": "The Track",
+    "tmdb_original_title": "The Track",
+    "overview": "When suburban mother, Caren (Missy Yager), meets a teenager working the streets of Las Vegas, Barbie (Mariah Kirstie), the result is a mother daughter relationship that may save both their lives.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2016-06-12",
+    "director": "Brett Levner",
+    "runtime": 90,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 0.0
+  },
+  "Peter Hujar’s Day": null,
+  "Palestine 36": {
+    "tmdb_id": 1432596,
+    "tmdb_title": "Palestine 36",
+    "tmdb_original_title": "فلسطين ٣٦",
+    "overview": "In 1936, as Palestinian villages revolt against British colonial rule, Yusuf navigates between Jerusalem and his rural home, amidst escalating unrest and a pivotal moment for the British Empire.",
+    "poster_path": "/ajeiriNRFPLESjGZ0vdp4MVardZ.jpg",
+    "backdrop_path": "/xLcPsJ7lZ4pVHJiAgMvDwmm4v0r.jpg",
+    "release_date": "2025-10-31",
+    "director": "Annemarie Jacir",
+    "runtime": 119,
+    "genres": [
+      "Drama",
+      "History",
+      "War"
+    ],
+    "vote_average": 8.0
+  },
+  "Monk in Pieces": {
+    "tmdb_id": 1418515,
+    "tmdb_title": "Monk in Pieces",
+    "tmdb_original_title": "Monk in Pieces",
+    "overview": "Visionary composer and performer Meredith Monk overcame hostile critics to become one of the great artists of her time. In her seventh decade of creativity, she ponders how her unique work can continue without her.",
+    "poster_path": "/rDD5MqFljMeWBu36riwFFtoEvQu.jpg",
+    "backdrop_path": "/tPFXjvkisHHSTfQI9o2wWhcDm46.jpg",
+    "release_date": "2025-07-25",
+    "director": "Billy Shebar",
+    "runtime": 94,
+    "genres": [
+      "Documentary",
+      "Music"
+    ],
+    "vote_average": 0.0
+  },
+  "Out of the Present": {
+    "tmdb_id": 295633,
+    "tmdb_title": "Out of the Present",
+    "tmdb_original_title": "Out of the Present",
+    "overview": "In May 1991 Soviet cosmonauts Anatoly Artsebarksy and Sergey Krikalev visit space station Mir in space mission Ozon. Artsebarski, the commander, returns to Earth according to plan 5 months later. Krikalev has to stay in space for ten months because of the chaotic political situation in his home country. He left the USSR to return to Russia. The 1991 coup ends an important era.",
+    "poster_path": "/rRDPB4PboXME6qVtcH5DGauyTHy.jpg",
+    "backdrop_path": null,
+    "release_date": "1997-01-06",
+    "director": "Andrei Ujică",
+    "runtime": 96,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 5.8
   },
   "Amadeus: Director's Cut": {
     "tmdb_id": 279,
@@ -2681,21 +2809,67 @@
     ],
     "vote_average": 8.023
   },
-  "Your Name [Kimi no Na wa.]": {
-    "tmdb_id": 1399134,
-    "tmdb_title": "Your Name",
-    "tmdb_original_title": "Your Name",
-    "overview": "Brandon takes the chance in talking to the girl he is interested at a party, not knowing what the outcome could be.",
-    "poster_path": "/bXE0gPdWpQIfG5GbiqqYxt7MkZJ.jpg",
-    "backdrop_path": "/c5HCgho6F4dCzj32F7J09P9VGTZ.jpg",
-    "release_date": "2021-02-14",
-    "director": "Lucas Hicks",
-    "runtime": 6,
+  "The Six Billion Dollar Man: Julian Assange and the Price of Truth": null,
+  "A Monkey in Winter": {
+    "tmdb_id": 33998,
+    "tmdb_title": "A Monkey in Winter",
+    "tmdb_original_title": "Un singe en hiver",
+    "overview": "During World War II, an innkeeper vows to abstain from alcohol for the sake of his family. Years later, as they thrive in Normandy, his resolve is tested by a charming advertising professional who loves to drink.",
+    "poster_path": "/mxp6FnCsblmjAkSrjWg4ATx72cC.jpg",
+    "backdrop_path": "/4KnKQPGJ95Ti2pEJbkVLXPtooOm.jpg",
+    "release_date": "1962-07-29",
+    "director": "Henri Verneuil",
+    "runtime": 105,
     "genres": [
-      "Romance",
-      "Drama"
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 7.584
+  },
+  "London Boys": {
+    "tmdb_id": 1494301,
+    "tmdb_title": "London Boys",
+    "tmdb_original_title": "London Boys",
+    "overview": "Behind the facade of the loud and intimidating motorcycles of The ‘Bangladeshi Bad Boys’ is a group of second-generation Bangladeshi men who find solace in their bikes and community around Shoreditch and Brick Lane. Co-directed by Arun Nangla and Laura Pavone, London Boys offers surprisingly vulnerable moments as it lifts a curtain on the racism faced by the Bangladeshi community in the UK, as well as the frustrations, hurt, and pain that come with it. With a loving lens of East London, the exploration of masculinity and Islamophobia is poignantly told by men facing an identity crisis at the intersection of the generational racism they’ve endured.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2025-06-04",
+    "director": "Arun Nangla",
+    "runtime": 88,
+    "genres": [
+      "Documentary"
     ],
     "vote_average": 0.0
+  },
+  "Ex Libris – The New York Public Library": {
+    "tmdb_id": 446173,
+    "tmdb_title": "Ex Libris: The New York Public Library",
+    "tmdb_original_title": "Ex Libris: The New York Public Library",
+    "overview": "A documentary about how a dominant cultural and demographic institution both sustains their traditional activities and adapts to the digital revolution.",
+    "poster_path": "/5UAtolZFuOFYqUpHcDYamsVKWvb.jpg",
+    "backdrop_path": "/fNefgkrnYuXkKVq2bCYnZLBbHS0.jpg",
+    "release_date": "2017-09-13",
+    "director": "Frederick Wiseman",
+    "runtime": 205,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 6.4
+  },
+  "Labyrinth - 40th Anniversary": {
+    "tmdb_id": 637265,
+    "tmdb_title": "Labyrinth",
+    "tmdb_original_title": "هزارتو",
+    "overview": "Negar and Amirali are going to immigrate, but at the very last moment, they face a critical situation: their son, Bardiya, goes missing. Now it is time to unfold all the family secrets…",
+    "poster_path": "/yFLRcJ0NRIcn0gjKDHhhlZ8u6Dp.jpg",
+    "backdrop_path": "/8jKmU536Y1QXy4A0LZOU6fwz1nF.jpg",
+    "release_date": "2019-09-23",
+    "director": "Amir Hossein Torabi",
+    "runtime": 86,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.3
   },
   "House [Hausu]": {
     "tmdb_id": 1176218,
@@ -2713,19 +2887,35 @@
     ],
     "vote_average": 6.0
   },
-  "Labyrinth - 40th Anniversary": {
-    "tmdb_id": 637265,
-    "tmdb_title": "Labyrinth",
-    "tmdb_original_title": "هزارتو",
-    "overview": "Negar and Amirali are going to immigrate, but at the very last moment, they face a critical situation: their son, Bardiya, goes missing. Now it is time to unfold all the family secrets…",
-    "poster_path": "/yFLRcJ0NRIcn0gjKDHhhlZ8u6Dp.jpg",
-    "backdrop_path": "/8jKmU536Y1QXy4A0LZOU6fwz1nF.jpg",
-    "release_date": "2019-09-23",
-    "director": "Amir Hossein Torabi",
+  "Coexistence, My Ass!": {
+    "tmdb_id": 1400791,
+    "tmdb_title": "Coexistence, My Ass!",
+    "tmdb_original_title": "Coexistence, My Ass!",
+    "overview": "Noam Shuster Eliassi grew up the literal poster child for the Israeli-Palestinian peace process before making a hard pivot to stand-up comedy and political satire. But as the region sinks deeper into devastating violence, she must meet the moment by challenging her audiences with hard truths that are no laughing matter.",
+    "poster_path": "/whxylF1d1GGxpLQG4vWFtfSCy5e.jpg",
+    "backdrop_path": "/3QTnvNnV4uYReCuhXS0BqlX9TfI.jpg",
+    "release_date": "2026-02-05",
+    "director": "Amber Fares",
+    "runtime": 95,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "Johatsu: Into Thin Air": {
+    "tmdb_id": 1249236,
+    "tmdb_title": "Johatsu - Into Thin Air",
+    "tmdb_original_title": "蒸発",
+    "overview": "In Japan, thousands of people disappear voluntarily every year. And there are companies ready to help those who want to disappear without a trace and start a new life somewhere else. Meet some of them in a film that soberly examines a modern phenomenon.",
+    "poster_path": "/zqpTW88dOfLUTNnqCkHM5c6Yamw.jpg",
+    "backdrop_path": "/8DSNpmLej632QTmVHrnQNKrwVQY.jpg",
+    "release_date": "2024-09-19",
+    "director": "Arata Mori",
     "runtime": 86,
     "genres": [
-      "Drama"
+      "Documentary"
     ],
-    "vote_average": 6.3
-  }
+    "vote_average": 6.909
+  },
+  "Menus-Plaisirs": null
 }
