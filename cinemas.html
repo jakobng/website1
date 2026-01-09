@@ -627,6 +627,7 @@
                     <div>
                         <div class="cinema-title-row">
                             <h2 class="cinema-title" id="cinema-title"></h2>
+                            <a class="film-link cinema-site-link is-hidden" id="cinema-site-link" href="#" target="_blank" rel="noopener">公式サイト (Website)</a>
                             <a class="film-link cinema-map-link" id="cinema-map-link" href="#" target="_blank" rel="noopener">地図 (Map)</a>
                         </div>
                         <div class="cinema-meta" id="cinema-meta"></div>
@@ -731,6 +732,7 @@
                 cinemaShowtimes: document.getElementById("cinema-showtimes"),
                 cinemaTitle: document.getElementById("cinema-title"),
                 cinemaMapLink: document.getElementById("cinema-map-link"),
+                cinemaSiteLink: document.getElementById("cinema-site-link"),
                 cinemaMeta: document.getElementById("cinema-meta"),
                 cinemaShowtimesList: document.getElementById("cinema-showtimes-list"),
                 backToCinemas: document.getElementById("back-to-cinemas"),
@@ -965,6 +967,71 @@
             function buildMapsUrl(cinemaName) {
                 const query = encodeURIComponent(getCinemaJapaneseName(cinemaName) + " 東京");
                 return "https://www.google.com/maps/search/?api=1&query=" + query;
+            }
+
+            const cinemaWebsiteOverrides = {
+                "下北沢トリウッド": "https://tollywood.jp/",
+                "下高井戸シネマ": "https://shimotakaidocinema.com/",
+                "ポレポレ東中野": "https://pole2.co.jp/"
+            };
+            const blockedHostSuffixes = [
+                "ticketsource.co.uk",
+                "admit-one.co.uk",
+                "eigaland.com",
+                "jorudan.co.jp",
+                "hellomovie.info",
+                "eiga.com"
+            ];
+            const blockedHosts = new Set([
+                "tickets.barbican.org.uk",
+                "bookings.thegardencinema.co.uk"
+            ]);
+
+            function isBlockedHost(host) {
+                if (blockedHosts.has(host)) return true;
+                return blockedHostSuffixes.some(function (suffix) {
+                    return host.endsWith(suffix);
+                });
+            }
+
+            function getCinemaWebsite(cinemaName, showings) {
+                if (cinemaWebsiteOverrides[cinemaName]) return cinemaWebsiteOverrides[cinemaName];
+                const counts = new Map();
+                const origins = new Map();
+
+                showings.forEach(function (showing) {
+                    [showing.bookingUrl, showing.detailUrl].forEach(function (url) {
+                        if (!url) return;
+                        let parsed;
+                        try {
+                            parsed = new URL(url);
+                        } catch (error) {
+                            return;
+                        }
+                        const host = parsed.hostname.toLowerCase();
+                        counts.set(host, (counts.get(host) || 0) + 1);
+                        if (!origins.has(host)) origins.set(host, parsed.origin);
+                    });
+                });
+
+                if (!counts.size) return "";
+
+                function pickHost(skipBlocked) {
+                    let bestHost = "";
+                    let bestCount = -1;
+                    counts.forEach(function (count, host) {
+                        if (skipBlocked && isBlockedHost(host)) return;
+                        if (count > bestCount) {
+                            bestHost = host;
+                            bestCount = count;
+                        }
+                    });
+                    return bestHost;
+                }
+
+                const preferredHost = pickHost(true) || pickHost(false);
+                if (!preferredHost) return "";
+                return origins.get(preferredHost) || ("https://" + preferredHost);
             }
 
             function getImageUrl(path, size) {
@@ -1232,6 +1299,17 @@
                 elements.cinemaShowtimesList.innerHTML = "";
                 elements.cinemaTitle.textContent = getCinemaDisplayName(state.selectedCinema);
                 elements.cinemaMapLink.href = buildMapsUrl(state.selectedCinema);
+                const allCinemaShowings = state.data.filter(function (showing) {
+                    return showing.cinema === state.selectedCinema;
+                });
+                const cinemaWebsite = getCinemaWebsite(state.selectedCinema, allCinemaShowings.length ? allCinemaShowings : showings);
+                if (cinemaWebsite) {
+                    elements.cinemaSiteLink.href = cinemaWebsite;
+                    elements.cinemaSiteLink.classList.remove("is-hidden");
+                } else {
+                    elements.cinemaSiteLink.classList.add("is-hidden");
+                    elements.cinemaSiteLink.removeAttribute("href");
+                }
 
                 const range = getDateRange(showings);
                 const metaParts = [];
