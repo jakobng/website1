@@ -18,3 +18,5 @@ from . import dochouse_module
 from . import sands_films_module
 from . import rio_cinema_module
 from . import lexi_cinema_module
+from . import arthouse_crouch_end_module
+from . import jw3_module
