@@ -522,20 +522,30 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
             # Merge fields if missing in scraper data
             if not item.get("tmdb_id"):
                 item["tmdb_id"] = d["tmdb_id"]
+            if not item.get("tmdb_title"):
+                item["tmdb_title"] = d["tmdb_title"]
+            if not item.get("tmdb_original_title"):
+                item["tmdb_original_title"] = d["tmdb_original_title"]
+            if not item.get("tmdb_backdrop_path"):
                 item["tmdb_backdrop_path"] = d["backdrop_path"]
+            if not item.get("tmdb_poster_path"):
                 item["tmdb_poster_path"] = d["poster_path"]
+            if not item.get("tmdb_overview"):
                 item["tmdb_overview"] = d["overview"]
+            if not item.get("runtime"):
                 item["runtime"] = d["runtime"]
+            if not item.get("genres"):
                 item["genres"] = d["genres"]
+            if not item.get("vote_average"):
                 item["vote_average"] = d["vote_average"]
 
-                # If scraper didn't provide Director
-                if not item.get("director"):
-                    item["director"] = d["director"]
+            # If scraper didn't provide Director
+            if not item.get("director"):
+                item["director"] = d["director"]
 
-                # If scraper didn't provide Year
-                if not item.get("year") and d["release_date"]:
-                    item["year"] = d["release_date"].split("-")[0]
+            # If scraper didn't provide Year
+            if not item.get("year") and d["release_date"]:
+                item["year"] = d["release_date"].split("-")[0]
 
     if updated_cache:
         save_tmdb_cache(cache)
