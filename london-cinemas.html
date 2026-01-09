@@ -15,6 +15,7 @@
             --muted: #5d564f;
             --accent: #f2c100;
             --accent-strong: #c79400;
+            --accent-rgb: 242, 193, 0;
             --card: #fcfbf8;
             --border: #1d1b19;
             --border-soft: #c8c1b7;
@@ -38,6 +39,34 @@
                 linear-gradient(90deg, var(--grid) 1px, transparent 1px);
             background-size: 140px 140px;
             padding: 24px 18px 60px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 40vmax;
+            height: 40vmax;
+            transform: translate(-50%, -50%) scale(0.05);
+            background: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0.95) 0%,
+                rgba(var(--accent-rgb), 0.9) 10%,
+                rgba(var(--accent-rgb), 0) 70%
+            );
+            border-radius: 50%;
+            animation: pulseGlow 15s infinite ease-in-out;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(-50%, -50%) scale(0.05); opacity: 1; }
+            60% { opacity: 0.85; }
+            100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
         }
 
         a {
@@ -79,14 +108,10 @@
             justify-content: flex-end;
         }
 
-        .home-link {
-            border: var(--border-width) solid var(--border);
-            padding: 8px 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.75rem;
-            background: #fff;
+        .site-credit {
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+            color: var(--muted);
         }
 
         h1 {
@@ -132,7 +157,7 @@
 
         .filter-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(5, minmax(0, 1fr));
             gap: 12px;
         }
 
@@ -531,6 +556,11 @@
             * {
                 transition: none !important;
             }
+            body::before {
+                animation: none;
+                opacity: 0.25;
+                transform: translate(-50%, -50%) scale(2);
+            }
         }
     </style>
 </head>
@@ -538,7 +568,7 @@
     <main class="page">
         <header class="page-header">
             <div class="header-left">
-                <a class="home-link" href="index.html">Home</a>
+                <div class="site-credit">Site made by Leo Nelki</div>
             </div>
             <div class="header-center">
                 <h1>London Cinema Showtimes</h1>
@@ -570,6 +600,10 @@
                         <option value="evening">Evening (17-21)</option>
                         <option value="late">Late (after 21)</option>
                     </select>
+                </div>
+                <div class="filter">
+                    <label for="region-select">Region</label>
+                    <select id="region-select"></select>
                 </div>
                 <div class="filter">
                     <label for="sort-select">Sort</label>
@@ -630,18 +664,14 @@
                 "Bertha DocHouse": "Central",
                 "Ciné Lumière": "West London",
                 "Close-Up Film Centre": "East London",
-                "Curzon Soho": "Central",
                 "Electric Cinema Portobello": "West London",
                 "Electric Cinema White City": "West London",
                 "Genesis Cinema": "East London",
                 "ICA Cinema": "Central",
                 "Phoenix Cinema": "North London",
                 "Prince Charles Cinema": "Central",
-                "Rio Cinema": "East London",
-                "Sands Films Cinema Club": "South London",
                 "The Castle Cinema": "East London",
                 "The Garden Cinema": "Central",
-                "The Lexi Cinema": "West London",
                 "The Nickel": "Central"
             };
 
@@ -657,6 +687,7 @@
                 searchInput: document.getElementById("search-input"),
                 dateSelect: document.getElementById("date-select"),
                 timeSelect: document.getElementById("time-select"),
+                regionSelect: document.getElementById("region-select"),
                 sortSelect: document.getElementById("sort-select"),
                 clearFilters: document.getElementById("clear-filters"),
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
@@ -683,7 +714,8 @@
                 filters: {
                     search: "",
                     date: "all",
-                    time: "any"
+                    time: "any",
+                    region: "all"
                 }
             };
 
@@ -706,6 +738,10 @@
                 late: "Late (after 21)"
             };
 
+            function getRegionForCinema(cinemaName) {
+                return cinemaRegions[cinemaName] || "Central";
+            }
+
             elements.searchInput.addEventListener("input", function (event) {
                 state.filters.search = event.target.value.trim().toLowerCase();
                 render();
@@ -721,6 +757,11 @@
                 render();
             });
 
+            elements.regionSelect.addEventListener("change", function (event) {
+                state.filters.region = event.target.value;
+                render();
+            });
+
             elements.sortSelect.addEventListener("change", function (event) {
                 state.sort = event.target.value;
                 render();
@@ -730,10 +771,12 @@
                 state.filters.search = "";
                 state.filters.date = getDefaultDateForView();
                 state.filters.time = "any";
+                state.filters.region = "all";
 
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
                 elements.timeSelect.value = "any";
+                elements.regionSelect.value = "all";
                 render();
             });
 
@@ -906,6 +949,28 @@
                 }
                 elements.dateSelect.value = state.filters.date || "all";
 
+                const regions = Array.from(new Set(showings.map(function (showing) {
+                    return showing.region;
+                }).filter(Boolean)));
+                const orderedRegions = regionOrder.filter(function (region) {
+                    return regions.includes(region);
+                });
+                regions.forEach(function (region) {
+                    if (!orderedRegions.includes(region)) orderedRegions.push(region);
+                });
+                elements.regionSelect.innerHTML = "";
+                const allRegionsOption = document.createElement("option");
+                allRegionsOption.value = "all";
+                allRegionsOption.textContent = "All regions";
+                elements.regionSelect.appendChild(allRegionsOption);
+                orderedRegions.forEach(function (region) {
+                    const option = document.createElement("option");
+                    option.value = region;
+                    option.textContent = region;
+                    elements.regionSelect.appendChild(option);
+                });
+                elements.regionSelect.value = state.filters.region || "all";
+
                 updateSortOptions();
             }
 
@@ -915,6 +980,8 @@
                     const tmdbId = item.tmdb_id ? String(item.tmdb_id) : "";
                     const dateText = item.date_text || "";
                     const showtime = item.showtime || "";
+                    const cinemaName = item.cinema_name || "Unknown cinema";
+                    const region = getRegionForCinema(cinemaName);
                     const runtimeRaw = item.runtime_min || item.runtime || "";
                     const runtime = parseInt(runtimeRaw, 10);
                     const genres = Array.isArray(item.genres) ? item.genres : [];
@@ -922,7 +989,8 @@
 
                     return {
                         id: index,
-                        cinema: item.cinema_name || "Unknown cinema",
+                        cinema: cinemaName,
+                        region: region,
                         title: title,
                         dateText: dateText,
                         showtime: showtime,
@@ -968,6 +1036,9 @@
                         if (state.filters.time === "afternoon" && (showing.timeMinutes < 12 * 60 || showing.timeMinutes >= 17 * 60)) return false;
                         if (state.filters.time === "evening" && (showing.timeMinutes < 17 * 60 || showing.timeMinutes >= 21 * 60)) return false;
                         if (state.filters.time === "late" && showing.timeMinutes < 21 * 60) return false;
+                    }
+                    if (state.filters.region !== "all" && showing.region !== state.filters.region) {
+                        return false;
                     }
                     return true;
                 });
@@ -1026,6 +1097,7 @@
                 if (state.filters.search) parts.push("Search: \"" + state.filters.search + "\"");
                 if (state.filters.date !== "all") parts.push("Date: " + formatDate(state.filters.date, true));
                 if (state.filters.time !== "any") parts.push("Time: " + timeBucketLabels[state.filters.time]);
+                if (state.filters.region !== "all") parts.push("Region: " + state.filters.region);
                 if (!parts.length) parts.push("No filters applied");
                 return parts.join(" | ");
             }
@@ -1047,7 +1119,7 @@
 
                 const regions = new Map();
                 cinemasMap.forEach(function (cinema) {
-                    const region = cinemaRegions[cinema.name] || "Central";
+                    const region = getRegionForCinema(cinema.name);
                     if (!regions.has(region)) {
                         regions.set(region, []);
                     }
