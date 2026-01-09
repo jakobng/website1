@@ -45,6 +45,26 @@ from cinema_modules import (
     # curzon_module,
     rich_mix_module,
 )
+from cinema_modules import (
+    bfi_southbank_module,
+    prince_charles_module,
+    garden_cinema_module,
+    nickel_module,
+    barbican_module,
+    genesis_module,
+    ica_module,
+    close_up_module,
+    phoenix_cinema_module,
+    castle_cinema_module,
+    electric_cinema_module,
+    curzon_soho_module,
+    rio_cinema_module,
+    dochouse_module,
+    sands_films_module,
+    cine_lumiere_module,
+    lexi_cinema_module,
+
+)
 
 # --- Configuration ---
 DATA_DIR = "data"
@@ -645,6 +665,25 @@ def main():
         # ("Curzon", curzon_module.scrape_curzon, None),
         ("Rich Mix", rich_mix_module.scrape_rich_mix, None),
     ]
+    scrapers_to_run = [
+        ("BFI Southbank", bfi_southbank_module.scrape_bfi_southbank, None),
+        ("Prince Charles Cinema", prince_charles_module.scrape_prince_charles, None),
+        ("The Garden Cinema", garden_cinema_module.scrape_garden_cinema, None),
+        ("The Nickel", nickel_module.scrape_nickel, None),
+        ("Barbican Cinema", barbican_module.scrape_barbican, None),
+        ("Genesis Cinema", genesis_module.scrape_genesis, None),
+        ("ICA Cinema", ica_module.scrape_ica, None),
+        ("Close-Up Film Centre", close_up_module.scrape_close_up, None),
+        ("Phoenix Cinema", phoenix_cinema_module.scrape_phoenix_cinema, None),
+        ("The Castle Cinema", castle_cinema_module.scrape_castle_cinema, None),
+        ("Electric Cinema", electric_cinema_module.scrape_electric_cinema, None),
+        ("Curzon Soho", curzon_soho_module.scrape_curzon_soho, None),
+        ("Bertha DocHouse", dochouse_module.scrape_dochouse, None),
+        ("Sands Films Cinema Club", sands_films_module.scrape_sands_films, None),
+        ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere, None),
+        ("Rio Cinema", rio_cinema_module.scrape_rio, None),
+        ("The Lexi Cinema", lexi_cinema_module.scrape_lexi_cinema, None),
+    ]
 
     print("Starting all scrapers...")
 
@@ -694,3 +733,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
