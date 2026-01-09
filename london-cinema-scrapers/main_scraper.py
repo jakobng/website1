@@ -13,6 +13,7 @@ import os
 import difflib
 import smtplib
 import ssl
+import unicodedata
 from datetime import datetime, timezone, timedelta
 from email.message import EmailMessage
 from pathlib import Path
@@ -167,6 +168,10 @@ def clean_title_for_tmdb(title: str) -> str:
         r"Special Edition",                 # Special Edition
         r"Remastered",                      # Remastered
         r"\d+th Anniversary.*",             # 50th Anniversary...
+        r"Double Bill.*",                   # Double Bill...
+        r"Double Feature.*",                # Double Feature...
+        r"\(\s*(U|PG|12A|12|15|18|R)\s*\)$", # UK/US rating suffixes
+        r"\(\s*\d{4}\s*\)$",                # (1990)
         r"\(.*?version\)",                  # (XXX version)
         r"\[.*?\]",                         # [XXX]
     ]
@@ -184,6 +189,183 @@ def clean_title_for_tmdb(title: str) -> str:
 
     return cleaned
 
+def normalize_title_for_match(title: str) -> str:
+    if not title:
+        return ""
+    normalized = unicodedata.normalize("NFKD", title)
+    normalized = normalized.encode("ascii", "ignore").decode("ascii")
+    normalized = normalized.lower()
+    normalized = re.sub(r"[^a-z0-9\s]", " ", normalized)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return normalized
+
+def parse_year_value(raw_year):
+    if not raw_year:
+        return None
+    try:
+        year = int(str(raw_year).strip())
+    except ValueError:
+        return None
+    current_year = datetime.now().year
+    if 1880 <= year <= current_year + 3:
+        return year
+    return None
+
+def extract_year_from_title(title: str):
+    if not title:
+        return None
+    for match in re.findall(r"\((\d{4})\)", title):
+        year = parse_year_value(match)
+        if year:
+            return year
+    return None
+
+def truncate_noisy_title(title: str) -> str:
+    if not title:
+        return ""
+    if len(title) < 80:
+        return title
+    for keyword in ["doors", "film", "certificate", "digital", "book here", "not for the easily"]:
+        match = re.search(re.escape(keyword), title, flags=re.IGNORECASE)
+        if match:
+            return title[:match.start()].strip()
+    return title
+
+def strip_event_prefix(title: str) -> str:
+    if not title or ":" not in title:
+        return title
+
+    prefix, rest = title.split(":", 1)
+    prefix_norm = normalize_title_for_match(prefix)
+    prefix_keywords = [
+        "presents",
+        "presented by",
+        "relaxed screening",
+        "senior free matinee",
+        "seniors free matinee",
+        "philosophical screens",
+        "deleted scenes",
+        "scanners inc",
+        "evolution of horror",
+        "narrow margin",
+        "pitchblack playback",
+        "film quiz",
+        "in conversation",
+    ]
+    if any(k in prefix_norm for k in prefix_keywords):
+        return rest.strip()
+    return title
+
+def strip_event_suffix(title: str) -> str:
+    if not title:
+        return ""
+    suffix_patterns = [
+        r"\s*\+\s*(intro|discussion|q\s*&\s*a|qa|panel|talk|shorts|live score|live music|director|presented by|hosted by).*$",
+        r"\s*-\s*.*(intro|discussion|q\s*&\s*a|qa|panel|talk|live|presented by|hosted by|with).*$",
+    ]
+    cleaned = title
+    for pat in suffix_patterns:
+        cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE).strip()
+    return cleaned
+
+def build_search_queries(title: str):
+    if not title:
+        return []
+
+    queries = []
+    base = truncate_noisy_title(title.strip())
+    base = strip_event_prefix(base)
+    base = strip_event_suffix(base)
+
+    bracket_alts = re.findall(r"\[([^\]]+)\]", base)
+    aka_alts = []
+    for alt in bracket_alts:
+        aka_match = re.search(r"\baka\s+(.*)", alt, flags=re.IGNORECASE)
+        aka_alts.append(aka_match.group(1).strip() if aka_match else alt.strip())
+
+    cleaned = clean_title_for_tmdb(base)
+    base = base.strip(" .,:;")
+    cleaned = cleaned.strip(" .,:;")
+
+    if base:
+        queries.append(base)
+    if cleaned and cleaned not in queries:
+        queries.append(cleaned)
+    for alt in aka_alts:
+        alt_clean = clean_title_for_tmdb(alt).strip(" .,:;")
+        if alt_clean and alt_clean not in queries:
+            queries.append(alt_clean)
+
+    if " + " in base or " & " in base:
+        parts = re.split(r"\s*(?:\+|&)\s*", base)
+        for part in parts:
+            part = strip_event_suffix(part.strip())
+            part = clean_title_for_tmdb(part).strip(" .,:;")
+            if part and part not in queries:
+                queries.append(part)
+
+    return queries
+
+def score_tmdb_result(query: str, result: dict, query_year=None) -> float:
+    query_norm = normalize_title_for_match(query)
+    if not query_norm:
+        return 0.0
+
+    title_norm = normalize_title_for_match(result.get("title", ""))
+    original_norm = normalize_title_for_match(result.get("original_title", ""))
+
+    ratios = []
+    if title_norm:
+        ratios.append(difflib.SequenceMatcher(None, query_norm, title_norm).ratio())
+    if original_norm and original_norm != title_norm:
+        ratios.append(difflib.SequenceMatcher(None, query_norm, original_norm).ratio())
+    if not ratios:
+        return 0.0
+
+    best_ratio = max(ratios)
+
+    query_tokens = set(query_norm.split())
+    title_tokens = set(title_norm.split()) if title_norm else set()
+    if not title_tokens and original_norm:
+        title_tokens = set(original_norm.split())
+    token_overlap = 0.0
+    if query_tokens and title_tokens:
+        token_overlap = len(query_tokens & title_tokens) / len(query_tokens | title_tokens)
+
+    score = (0.7 * best_ratio) + (0.3 * token_overlap)
+
+    result_year = None
+    release_date = result.get("release_date")
+    if release_date:
+        try:
+            result_year = int(release_date.split("-")[0])
+        except ValueError:
+            result_year = None
+
+    if query_year and result_year:
+        if result_year == query_year:
+            score += 0.1
+        elif abs(result_year - query_year) <= 1:
+            score += 0.05
+        else:
+            score -= 0.1
+
+    if len(query_norm.split()) <= 2 and best_ratio < 0.85:
+        score -= 0.05
+
+    return score
+
+def is_cache_match_ok(title: str, cached: dict, query_year=None) -> bool:
+    if not cached:
+        return False
+    pseudo_result = {
+        "title": cached.get("tmdb_title") or "",
+        "original_title": cached.get("tmdb_original_title") or "",
+        "release_date": cached.get("release_date") or "",
+    }
+    score = score_tmdb_result(title, pseudo_result, query_year=query_year)
+    return score >= 0.62
+
 def load_tmdb_cache():
     if os.path.exists(TMDB_CACHE_FILE):
         try:
@@ -197,7 +379,7 @@ def save_tmdb_cache(cache):
     with open(TMDB_CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
-def fetch_tmdb_details(movie_title, session, api_key):
+def fetch_tmdb_details(movie_title, session, api_key, movie_year=None):
     """
     Searches TMDB for movie_title.
     1. Tries exact English match.
@@ -205,33 +387,47 @@ def fetch_tmdb_details(movie_title, session, api_key):
     """
     search_url = "https://api.themoviedb.org/3/search/movie"
 
-    # 1. Primary Search (As Is)
-    params = {
-        "api_key": api_key,
-        "query": movie_title,
-        "language": "en-GB",
-        "include_adult": "false"
-    }
+    query_year = parse_year_value(movie_year) or extract_year_from_title(movie_title)
+    queries = build_search_queries(movie_title)
 
     try:
-        resp = session.get(search_url, params=params, timeout=5)
-        data = resp.json()
-        results = data.get("results", [])
+        best = None
+        best_score = 0.0
+        best_query = None
+        seen_ids = set()
 
-        # 2. Fallback: Clean Title Search
-        if not results:
-            clean_title = clean_title_for_tmdb(movie_title)
-            if clean_title != movie_title:
-                print(f"   Using cleaned title: '{clean_title}'")
-                params["query"] = clean_title
-                resp = session.get(search_url, params=params, timeout=5)
-                data = resp.json()
-                results = data.get("results", [])
+        for query in queries:
+            if query != movie_title:
+                print(f"   Using cleaned title: '{query}'")
+            params = {
+                "api_key": api_key,
+                "query": query,
+                "language": "en-GB",
+                "include_adult": "false"
+            }
+            if query_year:
+                params["year"] = query_year
 
-        if results:
-            # Pick the most popular/relevant one
-            best = results[0]
+            resp = session.get(search_url, params=params, timeout=5)
+            data = resp.json()
+            results = data.get("results", [])
 
+            for result in results:
+                result_id = result.get("id")
+                if not result_id or result_id in seen_ids:
+                    continue
+                seen_ids.add(result_id)
+
+                score = score_tmdb_result(query, result, query_year=query_year)
+                if score > best_score:
+                    best = result
+                    best_score = score
+                    best_query = query
+
+            if best_score >= 0.92:
+                break
+
+        if best and best_score >= 0.72:
             # Fetch full details
             detail_url = f"https://api.themoviedb.org/3/movie/{best['id']}"
             d_params = {
@@ -249,6 +445,9 @@ def fetch_tmdb_details(movie_title, session, api_key):
                 if c.get("job") == "Director":
                     director = c.get("name")
                     break
+
+            if best_query and best_query != movie_title:
+                print(f"   Best match via: '{best_query}' (score {best_score:.2f})")
 
             return {
                 "tmdb_id": best["id"],
@@ -278,15 +477,30 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
 
     # Group by movie title to avoid duplicate API calls
     unique_titles = list(set(item["movie_title"] for item in listings))
+    title_years = {}
+    for item in listings:
+        title = item.get("movie_title")
+        if not title:
+            continue
+        if title in title_years and title_years[title]:
+            continue
+        year = parse_year_value(item.get("year"))
+        title_years[title] = year
     print(f"   Unique films to process: {len(unique_titles)}")
 
     updated_cache = False
 
     for title in unique_titles:
+        cached = cache.get(title)
+        title_year = title_years.get(title)
+        if cached and not is_cache_match_ok(title, cached, query_year=title_year):
+            cached = None
+            cache.pop(title, None)
+
         if title not in cache:
             # If we haven't checked this title before
             print(f"   Searching TMDB for: {title}")
-            details = fetch_tmdb_details(title, session, api_key)
+            details = fetch_tmdb_details(title, session, api_key, movie_year=title_year)
 
             if details:
                 cache[title] = details
