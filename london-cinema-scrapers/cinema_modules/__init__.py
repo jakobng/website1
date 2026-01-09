@@ -9,6 +9,7 @@ from . import nickel_module
 from . import barbican_module
 from . import genesis_module
 from . import phoenix_cinema_module
+from . import castle_cinema_module
 # from . import rio_cinema_module
 # from . import curzon_module
 # from . import cine_lumiere_module
