@@ -26,11 +26,11 @@ from cinema_modules import (
     nickel_module,
     barbican_module,
     genesis_module,
-    # ica_module,
+    ica_module,
+    close_up_module,
     # rio_cinema_module,
     # curzon_module,
     # cine_lumiere_module,
-    # close_up_module,
     # electric_cinema_module,
 )
 
@@ -392,10 +392,12 @@ def main():
         ("Barbican Cinema", barbican_module.scrape_barbican, None),
         ("Genesis Cinema", genesis_module.scrape_genesis, None),
         # ("ICA Cinema", ica_module.scrape_ica, None),
+        ("ICA Cinema", ica_module.scrape_ica, None),
+        ("Close-Up Film Centre", close_up_module.scrape_close_up, None),
+        # ("Genesis Cinema", genesis_module.scrape_genesis, None),
         # ("Rio Cinema", rio_cinema_module.scrape_rio, None),
         # ("Curzon", curzon_module.scrape_curzon, None),
         # ("Cine Lumiere", cine_lumiere_module.scrape_cine_lumiere, None),
-        # ("Close-Up Film Centre", close_up_module.scrape_close_up, None),
         # ("Electric Cinema", electric_cinema_module.scrape_electric, None),
     ]
 

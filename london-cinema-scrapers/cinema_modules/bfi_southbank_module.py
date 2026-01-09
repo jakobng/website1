@@ -2,6 +2,9 @@
 # bfi_southbank_module.py
 # Scraper for BFI Southbank cinema
 # https://whatson.bfi.org.uk/
+#
+# Structure: BFI embeds showtime data as a JavaScript array in the page.
+# We extract this array and parse it to get film listings.
 
 from __future__ import annotations
 
@@ -16,15 +19,25 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-# BFI uses whatson.bfi.org.uk for their schedule
 BASE_URL = "https://whatson.bfi.org.uk"
 SCHEDULE_URL = f"{BASE_URL}/Online/default.asp"
 CINEMA_NAME = "BFI Southbank"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Language": "en-GB,en;q=0.9",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Accept-Language": "en-GB,en;q=0.9,en-US;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-User": "?1",
+    "Cache-Control": "max-age=0",
+    "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"Windows"',
 }
 TIMEOUT = 30
 
@@ -67,21 +80,39 @@ def _clean(text: str) -> str:
     return re.sub(r"\s+", " ", text.strip())
 
 
-def _parse_date(date_str: str) -> Optional[dt.date]:
-    """Parse various UK date formats."""
-    # Try different date formats
-    formats = [
-        "%d %B %Y",      # 15 January 2025
-        "%d %b %Y",      # 15 Jan 2025
-        "%Y-%m-%d",      # 2025-01-15
-        "%d/%m/%Y",      # 15/01/2025
-    ]
+def _parse_bfi_date(date_str: str) -> Optional[dt.date]:
+    """
+    Parse BFI date format like "Friday 09 January 2026 18:10".
+    Returns date object or None.
+    """
+    if not date_str:
+        return None
 
-    for fmt in formats:
-        try:
-            return dt.datetime.strptime(date_str.strip(), fmt).date()
-        except ValueError:
-            continue
+    # Remove day name and time
+    # Pattern: "DayName DD Month YYYY HH:MM"
+    match = re.match(
+        r"(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+(\d{1,2})\s+(\w+)\s+(\d{4})",
+        date_str,
+        re.I
+    )
+
+    if match:
+        day = int(match.group(1))
+        month_name = match.group(2)
+        year = int(match.group(3))
+
+        months = {
+            'january': 1, 'february': 2, 'march': 3, 'april': 4,
+            'may': 5, 'june': 6, 'july': 7, 'august': 8,
+            'september': 9, 'october': 10, 'november': 11, 'december': 12
+        }
+
+        month = months.get(month_name.lower())
+        if month:
+            try:
+                return dt.date(year, month, day)
+            except ValueError:
+                pass
 
     return None
 
@@ -90,19 +121,16 @@ def _parse_time(time_str: str) -> Optional[str]:
     """Parse time and return in HH:MM format."""
     time_str = time_str.strip().upper()
 
-    # Handle 12-hour format with AM/PM
-    match = re.match(r"(\d{1,2})[:\.]?(\d{2})?\s*(AM|PM)?", time_str)
-    if match:
-        hour = int(match.group(1))
-        minute = int(match.group(2)) if match.group(2) else 0
-        period = match.group(3)
+    # Find where the array starts
+    match = re.search(pattern, html, re.I)
+    if not match:
+        return []
 
-        if period == "PM" and hour != 12:
-            hour += 12
-        elif period == "AM" and hour == 12:
-            hour = 0
+    start_pos = match.start()
 
-        return f"{hour:02d}:{minute:02d}"
+    # Now we need to find where the array ends - count brackets
+    depth = 0
+    end_pos = start_pos
 
     return None
 
@@ -316,9 +344,6 @@ def scrape_bfi_southbank() -> List[Dict]:
             print(f"[{CINEMA_NAME}] Note: No shows found. Page structure may need analysis.", file=sys.stderr)
             print(f"[{CINEMA_NAME}] URL: {SCHEDULE_URL}", file=sys.stderr)
 
-    except requests.RequestException as e:
-        print(f"[{CINEMA_NAME}] HTTP Error: {e}", file=sys.stderr)
-        raise
     except Exception as e:
         print(f"[{CINEMA_NAME}] Error: {e}", file=sys.stderr)
         raise
@@ -338,4 +363,4 @@ def scrape_bfi_southbank() -> List[Dict]:
 if __name__ == "__main__":
     data = scrape_bfi_southbank()
     print(json.dumps(data, ensure_ascii=False, indent=2))
-    print(f"\nTotal: {len(data)} showings")
+    print(f"\n[INFO] Total: {len(data)} showings", file=sys.stderr)

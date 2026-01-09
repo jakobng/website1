@@ -2,6 +2,7 @@
 
 # HTTP requests
 requests>=2.28.0
+cloudscraper>=1.2.71  # For bypassing bot protection
 
 # HTML parsing
 beautifulsoup4>=4.11.0
