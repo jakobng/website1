@@ -15,6 +15,7 @@ import re
 import sys
 from typing import Dict, List, Optional
 from urllib.parse import urljoin
+import xml.etree.ElementTree as ET
 
 import requests
 from bs4 import BeautifulSoup
@@ -158,17 +159,38 @@ def _extract_showtime_links(soup: BeautifulSoup) -> List[Dict[str, str]]:
     return showtimes
 
 
+def _extract_sitemap_locs(xml_text: str) -> List[str]:
+    try:
+        root = ET.fromstring(xml_text)
+        return [loc.text.strip() for loc in root.iter() if loc.tag.endswith("loc") and loc.text]
+    except ET.ParseError:
+        soup = BeautifulSoup(xml_text, "xml")
+        return [loc.get_text(strip=True) for loc in soup.find_all("loc")]
+
+
 def _fetch_movie_urls(session: requests.Session) -> List[str]:
     movie_urls: List[str] = []
 
     try:
         resp = session.get(SITEMAP_URL, headers=HEADERS, timeout=TIMEOUT)
         resp.raise_for_status()
-        soup = BeautifulSoup(resp.text, "xml")
-        for loc in soup.select("url loc"):
-            url_text = loc.get_text(strip=True)
+        locs = _extract_sitemap_locs(resp.text)
+        sitemap_urls = []
+        for url_text in locs:
             if "/movie/" in url_text:
                 movie_urls.append(url_text)
+            elif url_text.endswith(".xml") or "sitemap" in url_text:
+                sitemap_urls.append(url_text)
+
+        for sitemap_url in sitemap_urls:
+            try:
+                sitemap_resp = session.get(sitemap_url, headers=HEADERS, timeout=TIMEOUT)
+                sitemap_resp.raise_for_status()
+                for url_text in _extract_sitemap_locs(sitemap_resp.text):
+                    if "/movie/" in url_text:
+                        movie_urls.append(url_text)
+            except requests.RequestException as exc:
+                print(f"[{CINEMA_NAME}] Child sitemap fetch failed ({sitemap_url}): {exc}", file=sys.stderr)
     except requests.RequestException as exc:
         print(f"[{CINEMA_NAME}] Sitemap fetch failed: {exc}", file=sys.stderr)
 
