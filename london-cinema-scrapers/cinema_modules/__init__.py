@@ -12,6 +12,6 @@ from . import phoenix_cinema_module
 from . import castle_cinema_module
 # from . import rio_cinema_module
 # from . import curzon_module
-# from . import cine_lumiere_module
+from . import cine_lumiere_module
 # from . import close_up_module
 from . import electric_cinema_module
