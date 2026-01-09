@@ -110,25 +110,11 @@
     "date_text": "2026-01-09",
     "showtime": "18:20",
     "detail_page_url": "https://whatson.bfi.org.uk/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=13E11591-2059-4051-ACFC-9498ED5F92C9&BOparam::WScontent::loadArticle::context_id=6AB30B0A-B306-4062-9C31-FB20D70E923B",
-    "director": "David Lynch",
-    "year": "2025",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
-    "synopsis": "",
-    "tmdb_id": 936972,
-    "tmdb_backdrop_path": null,
-    "tmdb_poster_path": "/bUTVSQuXGnOV1d6p0eZWZ7Nwn9y.jpg",
-    "tmdb_overview": "Two hours of original content previously only available to paid up members of DavidLynch.com. This Best Of package includes 7 short films plus 3 intervalometer camera experiments. All shorts are written, directed, edited and scored by David Lynch with introductions from David before each item. Also includes 20 minutes of David Lynch answering an interesting variety of questions from members of his website. Contains The Darkened Room, Boat, Lamp, Out Yonder Neighbor Boy, Industrial Soundscape, The Bug Crawls, Inveralometer Experiments, Members Questions.",
-    "runtime": 117,
-    "genres": [
-      "Documentary",
-      "Horror",
-      "Fantasy",
-      "Thriller",
-      "Drama",
-      "Comedy"
-    ],
-    "vote_average": 0.0
+    "synopsis": ""
   },
   {
     "cinema_name": "BFI Southbank",
@@ -1529,22 +1515,12 @@
     "showtime": "12:00",
     "detail_page_url": "https://princecharlescinema.com/film/2612/mystery-movie",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31623822",
-    "director": "Hiroaki Matsuyama",
-    "year": "2023",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
-    "format_tags": [],
-    "tmdb_id": 1064669,
-    "tmdb_backdrop_path": "/qXi89QIeqPHmqgyrzTAAu88Yeby.jpg",
-    "tmdb_poster_path": "/nvSDsvsVkQ2xj2KUMYuBUaLV1Jr.jpg",
-    "tmdb_overview": "Kuno Totono, a curly-haired college student, visits Hiroshima and becomes embroiled in a mystery surrounding the inheritance of the Kariatsumari family's assets, using his intelligence and loquaciousness to unravel the case.",
-    "runtime": 129,
-    "genres": [
-      "Mystery",
-      "Drama"
-    ],
-    "vote_average": 7.6
+    "format_tags": []
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -1739,25 +1715,23 @@
     "showtime": "12:15",
     "detail_page_url": "https://princecharlescinema.com/film/11930228/labyrinth-40th-anniversary",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31623992",
-    "director": "Guillermo del Toro",
-    "year": "2006",
+    "director": "Amir Hossein Torabi",
+    "year": "2019",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
     "format_tags": [
       "4K"
     ],
-    "tmdb_id": 1417,
-    "tmdb_backdrop_path": "/6G6nqSW9S7EHA9HrYl0Z8uo2H7f.jpg",
-    "tmdb_poster_path": "/z7xXihu5wHuSMWymq5VAulPVuvg.jpg",
-    "tmdb_overview": "In post–civil war Spain, 10-year-old Ofelia moves with her pregnant mother to live under the control of her cruel stepfather. Drawn into a mysterious labyrinth, she meets a faun who reveals that she may be a lost princess from an underground kingdom. To return to her true father, she must complete a series of surreal and perilous tasks that blur the line between reality and fantasy.",
-    "runtime": 118,
+    "tmdb_id": 637265,
+    "tmdb_backdrop_path": "/8jKmU536Y1QXy4A0LZOU6fwz1nF.jpg",
+    "tmdb_poster_path": "/yFLRcJ0NRIcn0gjKDHhhlZ8u6Dp.jpg",
+    "tmdb_overview": "Negar and Amirali are going to immigrate, but at the very last moment, they face a critical situation: their son, Bardiya, goes missing. Now it is time to unfold all the family secrets…",
+    "runtime": 86,
     "genres": [
-      "Fantasy",
-      "Drama",
-      "War"
+      "Drama"
     ],
-    "vote_average": 7.757
+    "vote_average": 6.3
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -2507,24 +2481,14 @@
     "showtime": "20:45",
     "detail_page_url": "https://princecharlescinema.com/film/2612/mystery-movie",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31623823",
-    "director": "Hiroaki Matsuyama",
-    "year": "2023",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
     "format_tags": [
       "Intro"
-    ],
-    "tmdb_id": 1064669,
-    "tmdb_backdrop_path": "/qXi89QIeqPHmqgyrzTAAu88Yeby.jpg",
-    "tmdb_poster_path": "/nvSDsvsVkQ2xj2KUMYuBUaLV1Jr.jpg",
-    "tmdb_overview": "Kuno Totono, a curly-haired college student, visits Hiroshima and becomes embroiled in a mystery surrounding the inheritance of the Kariatsumari family's assets, using his intelligence and loquaciousness to unravel the case.",
-    "runtime": 129,
-    "genres": [
-      "Mystery",
-      "Drama"
-    ],
-    "vote_average": 7.6
+    ]
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -2561,25 +2525,24 @@
     "showtime": "12:15",
     "detail_page_url": "https://princecharlescinema.com/film/26316046/your-name-kimi-no-na-wa",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31624036",
-    "director": "Makoto Shinkai",
-    "year": "2016",
+    "director": "Lucas Hicks",
+    "year": "2021",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
     "format_tags": [
       "SUB"
     ],
-    "tmdb_id": 372058,
-    "tmdb_backdrop_path": "/8x9iKH8kWA0zdkgNdpAew7OstYe.jpg",
-    "tmdb_poster_path": "/q719jXXEzOoYaps6babgKnONONX.jpg",
-    "tmdb_overview": "High schoolers Mitsuha and Taki are complete strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki’s body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
-    "runtime": 106,
+    "tmdb_id": 1399134,
+    "tmdb_backdrop_path": "/c5HCgho6F4dCzj32F7J09P9VGTZ.jpg",
+    "tmdb_poster_path": "/bXE0gPdWpQIfG5GbiqqYxt7MkZJ.jpg",
+    "tmdb_overview": "Brandon takes the chance in talking to the girl he is interested at a party, not knowing what the outcome could be.",
+    "runtime": 6,
     "genres": [
-      "Animation",
       "Romance",
       "Drama"
     ],
-    "vote_average": 8.479
+    "vote_average": 0.0
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -2988,22 +2951,12 @@
     "showtime": "12:00",
     "detail_page_url": "https://princecharlescinema.com/film/2612/mystery-movie",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31623824",
-    "director": "Hiroaki Matsuyama",
-    "year": "2023",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
-    "format_tags": [],
-    "tmdb_id": 1064669,
-    "tmdb_backdrop_path": "/qXi89QIeqPHmqgyrzTAAu88Yeby.jpg",
-    "tmdb_poster_path": "/nvSDsvsVkQ2xj2KUMYuBUaLV1Jr.jpg",
-    "tmdb_overview": "Kuno Totono, a curly-haired college student, visits Hiroshima and becomes embroiled in a mystery surrounding the inheritance of the Kariatsumari family's assets, using his intelligence and loquaciousness to unravel the case.",
-    "runtime": 129,
-    "genres": [
-      "Mystery",
-      "Drama"
-    ],
-    "vote_average": 7.6
+    "format_tags": []
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -3065,21 +3018,22 @@
     "showtime": "17:50",
     "detail_page_url": "https://princecharlescinema.com/film/19285283/house-hausu",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31624076",
-    "director": "Leo Nelki",
-    "year": "2021",
+    "director": "David Krae",
+    "year": "2006",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
     "format_tags": [],
-    "tmdb_id": 877982,
+    "tmdb_id": 1176218,
     "tmdb_backdrop_path": null,
-    "tmdb_poster_path": "/pmH5VDL3JVgQOCcnfKEWDwEqLE1.jpg",
-    "tmdb_overview": "This is a film about the strangely idyllic time we had during the first UK lockdown, and the media we consumed.",
-    "runtime": 41,
+    "tmdb_poster_path": "/rgiefMFRpldjyqHLXc8ji7pezm4.jpg",
+    "tmdb_overview": "What if you lost everything? Where would you go? What would you do? Joe, a young architecture student, is forced to drop out of school after his parents die in a car accident, leaving only unpaid bills behind. Scrambling around trying to find a job, and a way to get his studies and life on track, he ends up on the edge of homeless, until he connects with a colorful bunch of characters squatting in a boarded up old house, where they \"borrow\" electricity. Each day in the house is an adventure in character, the good, the bad, the comedic, the heavy, and the chaos and insanity of life at the bottom of the barrel.",
+    "runtime": 110,
     "genres": [
-      "Documentary"
+      "Comedy",
+      "Drama"
     ],
-    "vote_average": 0.0
+    "vote_average": 6.0
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -3961,24 +3915,14 @@
     "showtime": "20:45",
     "detail_page_url": "https://princecharlescinema.com/film/2612/mystery-movie",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31623825",
-    "director": "Hiroaki Matsuyama",
-    "year": "2023",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
     "format_tags": [
       "Intro"
-    ],
-    "tmdb_id": 1064669,
-    "tmdb_backdrop_path": "/qXi89QIeqPHmqgyrzTAAu88Yeby.jpg",
-    "tmdb_poster_path": "/nvSDsvsVkQ2xj2KUMYuBUaLV1Jr.jpg",
-    "tmdb_overview": "Kuno Totono, a curly-haired college student, visits Hiroshima and becomes embroiled in a mystery surrounding the inheritance of the Kariatsumari family's assets, using his intelligence and loquaciousness to unravel the case.",
-    "runtime": 129,
-    "genres": [
-      "Mystery",
-      "Drama"
-    ],
-    "vote_average": 7.6
+    ]
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -4092,22 +4036,12 @@
     "showtime": "18:00",
     "detail_page_url": "https://princecharlescinema.com/film/31616930/certified-copy-copie-conforme",
     "booking_url": "https://princecharlescinema.com/prince-charles-cinema/booknow/31624115",
-    "director": "Abbas Kiarostami",
-    "year": "2010",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
-    "format_tags": [],
-    "tmdb_id": 48303,
-    "tmdb_backdrop_path": "/slNzn4E0XA1WE0yh9I53oIzXQ4e.jpg",
-    "tmdb_poster_path": "/soBvtCR33Gv1j6gXwXOIc3JTlNc.jpg",
-    "tmdb_overview": "In Tuscany to promote his latest book, a middle-aged English writer meets a French woman who leads him to the village of Lucignano.",
-    "runtime": 106,
-    "genres": [
-      "Drama",
-      "Romance"
-    ],
-    "vote_average": 6.99
+    "format_tags": []
   },
   {
     "cinema_name": "Prince Charles Cinema",
@@ -4973,15 +4907,18 @@
     "runtime_min": "181",
     "synopsis": "When a warlord dies, a peasant thief is called upon to impersonate him, and then finds himself haunted by the warlord’s…",
     "format_tags": [],
-    "tmdb_id": 523629,
-    "tmdb_backdrop_path": null,
-    "tmdb_poster_path": "/dFzFzHUNxkDm9MZ5orXptwpDSd4.jpg",
-    "tmdb_overview": "Documentary made by Toho for the Masterworks reissue of all of its Kurosawa films. This one focuses on \"Kagemusha\" (1980).",
-    "runtime": 41,
+    "tmdb_id": 11953,
+    "tmdb_backdrop_path": "/7qsKE8GsgjreeQ2mTLd5oKZ7Tbf.jpg",
+    "tmdb_poster_path": "/fJgqj9s8HNZz9zwX6femVJn8HEB.jpg",
+    "tmdb_overview": "Akira Kurosawa's lauded feudal epic presents the tale of a petty thief who is recruited to impersonate Shingen, an aging warlord, in order to avoid attacks by competing clans. When Shingen dies, his generals reluctantly agree to have the impostor take over as the powerful ruler. He soon begins to appreciate life as Shingen, but his commitment to the role is tested when he must lead his troops into battle against the forces of a rival warlord.",
+    "runtime": 180,
     "genres": [
-      "Documentary"
+      "Action",
+      "Drama",
+      "History",
+      "War"
     ],
-    "vote_average": 7.0
+    "vote_average": 7.834
   },
   {
     "cinema_name": "The Garden Cinema",
@@ -6211,16 +6148,17 @@
     "runtime_min": "121",
     "synopsis": "There's something going on behind the white picket fences of Lumberton, North Carolina. And after stumbling upon a severed human ear…",
     "format_tags": [],
-    "tmdb_id": 279100,
-    "tmdb_backdrop_path": "/wNe5eiRLdcE0PN40KN0nbLXG85K.jpg",
-    "tmdb_poster_path": "/5N7pYDUMFd8fbrrBcZlWBdZFLXe.jpg",
-    "tmdb_overview": "An ageing surgeon falls in love with a thirteen-year-old girl.",
-    "runtime": 108,
+    "tmdb_id": 793,
+    "tmdb_backdrop_path": "/12UiL2rS5M80AhS9uiZ633iy4pB.jpg",
+    "tmdb_poster_path": "/tzXuURjPzCqtA6eL0Cswq9wzFx0.jpg",
+    "tmdb_overview": "The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.",
+    "runtime": 120,
     "genres": [
-      "Drama",
-      "Romance"
+      "Mystery",
+      "Thriller",
+      "Crime"
     ],
-    "vote_average": 4.5
+    "vote_average": 7.612
   },
   {
     "cinema_name": "The Garden Cinema",
@@ -6350,16 +6288,17 @@
     "runtime_min": "121",
     "synopsis": "There's something going on behind the white picket fences of Lumberton, North Carolina. And after stumbling upon a severed human ear…",
     "format_tags": [],
-    "tmdb_id": 279100,
-    "tmdb_backdrop_path": "/wNe5eiRLdcE0PN40KN0nbLXG85K.jpg",
-    "tmdb_poster_path": "/5N7pYDUMFd8fbrrBcZlWBdZFLXe.jpg",
-    "tmdb_overview": "An ageing surgeon falls in love with a thirteen-year-old girl.",
-    "runtime": 108,
+    "tmdb_id": 793,
+    "tmdb_backdrop_path": "/12UiL2rS5M80AhS9uiZ633iy4pB.jpg",
+    "tmdb_poster_path": "/tzXuURjPzCqtA6eL0Cswq9wzFx0.jpg",
+    "tmdb_overview": "The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.",
+    "runtime": 120,
     "genres": [
-      "Drama",
-      "Romance"
+      "Mystery",
+      "Thriller",
+      "Crime"
     ],
-    "vote_average": 4.5
+    "vote_average": 7.612
   },
   {
     "cinema_name": "The Garden Cinema",
@@ -6522,15 +6461,18 @@
     "runtime_min": "181",
     "synopsis": "When a warlord dies, a peasant thief is called upon to impersonate him, and then finds himself haunted by the warlord’s…",
     "format_tags": [],
-    "tmdb_id": 523629,
-    "tmdb_backdrop_path": null,
-    "tmdb_poster_path": "/dFzFzHUNxkDm9MZ5orXptwpDSd4.jpg",
-    "tmdb_overview": "Documentary made by Toho for the Masterworks reissue of all of its Kurosawa films. This one focuses on \"Kagemusha\" (1980).",
-    "runtime": 41,
+    "tmdb_id": 11953,
+    "tmdb_backdrop_path": "/7qsKE8GsgjreeQ2mTLd5oKZ7Tbf.jpg",
+    "tmdb_poster_path": "/fJgqj9s8HNZz9zwX6femVJn8HEB.jpg",
+    "tmdb_overview": "Akira Kurosawa's lauded feudal epic presents the tale of a petty thief who is recruited to impersonate Shingen, an aging warlord, in order to avoid attacks by competing clans. When Shingen dies, his generals reluctantly agree to have the impostor take over as the powerful ruler. He soon begins to appreciate life as Shingen, but his commitment to the role is tested when he must lead his troops into battle against the forces of a rival warlord.",
+    "runtime": 180,
     "genres": [
-      "Documentary"
+      "Action",
+      "Drama",
+      "History",
+      "War"
     ],
-    "vote_average": 7.0
+    "vote_average": 7.834
   },
   {
     "cinema_name": "The Garden Cinema",
@@ -6546,16 +6488,17 @@
     "runtime_min": "121",
     "synopsis": "There's something going on behind the white picket fences of Lumberton, North Carolina. And after stumbling upon a severed human ear…",
     "format_tags": [],
-    "tmdb_id": 279100,
-    "tmdb_backdrop_path": "/wNe5eiRLdcE0PN40KN0nbLXG85K.jpg",
-    "tmdb_poster_path": "/5N7pYDUMFd8fbrrBcZlWBdZFLXe.jpg",
-    "tmdb_overview": "An ageing surgeon falls in love with a thirteen-year-old girl.",
-    "runtime": 108,
+    "tmdb_id": 793,
+    "tmdb_backdrop_path": "/12UiL2rS5M80AhS9uiZ633iy4pB.jpg",
+    "tmdb_poster_path": "/tzXuURjPzCqtA6eL0Cswq9wzFx0.jpg",
+    "tmdb_overview": "The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.",
+    "runtime": 120,
     "genres": [
-      "Drama",
-      "Romance"
+      "Mystery",
+      "Thriller",
+      "Crime"
     ],
-    "vote_average": 4.5
+    "vote_average": 7.612
   },
   {
     "cinema_name": "The Garden Cinema",
@@ -6904,16 +6847,17 @@
     "runtime_min": "121",
     "synopsis": "There's something going on behind the white picket fences of Lumberton, North Carolina. And after stumbling upon a severed human ear…",
     "format_tags": [],
-    "tmdb_id": 279100,
-    "tmdb_backdrop_path": "/wNe5eiRLdcE0PN40KN0nbLXG85K.jpg",
-    "tmdb_poster_path": "/5N7pYDUMFd8fbrrBcZlWBdZFLXe.jpg",
-    "tmdb_overview": "An ageing surgeon falls in love with a thirteen-year-old girl.",
-    "runtime": 108,
+    "tmdb_id": 793,
+    "tmdb_backdrop_path": "/12UiL2rS5M80AhS9uiZ633iy4pB.jpg",
+    "tmdb_poster_path": "/tzXuURjPzCqtA6eL0Cswq9wzFx0.jpg",
+    "tmdb_overview": "The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.",
+    "runtime": 120,
     "genres": [
-      "Drama",
-      "Romance"
+      "Mystery",
+      "Thriller",
+      "Crime"
     ],
-    "vote_average": 4.5
+    "vote_average": 7.612
   },
   {
     "cinema_name": "The Garden Cinema",
@@ -6976,16 +6920,7 @@
     "country": "USA",
     "runtime_min": "",
     "synopsis": "After being expelled from film school, a disgruntled young man stages a series of increasingly brutal snuff-style murders to exact revenge on a society he despises. Filmed with a raw, guerrilla aesthetic, the killings blur the line between fiction and reality as he drags the audience into his dark, obsessive vision.A grim and controversial exploitation film, Last House on Dead End Street combines amateurish grit with shocking violence, creating a disturbing, unforgettable descent into revenge, n",
-    "format_tags": [],
-    "tmdb_id": 27328,
-    "tmdb_backdrop_path": "/lkAGt2UB9wtdGlX3eX6YlBvBSjW.jpg",
-    "tmdb_poster_path": "/txCSLrem2N3XfoAn3nQuAgg0th3.jpg",
-    "tmdb_overview": "After being released from prison, a young gangster with a chip on his shoulder decides to punish society by making snuff films.",
-    "runtime": 78,
-    "genres": [
-      "Horror"
-    ],
-    "vote_average": 4.799
+    "format_tags": []
   },
   {
     "cinema_name": "The Nickel",
@@ -9838,24 +9773,11 @@
     "showtime": "12:05",
     "detail_page_url": "https://genesiscinema.co.uk/event/98556",
     "booking_url": "https://genesis.admit-one.co.uk/seats/?perfCode=8794",
-    "director": "Jared Bush",
-    "year": "2025",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
-    "synopsis": "",
-    "tmdb_id": 1084242,
-    "tmdb_backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "tmdb_poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
-    "tmdb_overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "runtime": 107,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
-    ],
-    "vote_average": 7.598
+    "synopsis": ""
   },
   {
     "cinema_name": "Genesis Cinema",
@@ -9865,24 +9787,11 @@
     "showtime": "12:30",
     "detail_page_url": "https://genesiscinema.co.uk/event/98556",
     "booking_url": "https://genesis.admit-one.co.uk/seats/?perfCode=8771",
-    "director": "Jared Bush",
-    "year": "2025",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
-    "synopsis": "",
-    "tmdb_id": 1084242,
-    "tmdb_backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "tmdb_poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
-    "tmdb_overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "runtime": 107,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
-    ],
-    "vote_average": 7.598
+    "synopsis": ""
   },
   {
     "cinema_name": "Genesis Cinema",
@@ -9966,24 +9875,11 @@
     "showtime": "14:40",
     "detail_page_url": "https://genesiscinema.co.uk/event/98556",
     "booking_url": "https://genesis.admit-one.co.uk/seats/?perfCode=8795",
-    "director": "Jared Bush",
-    "year": "2025",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
-    "synopsis": "",
-    "tmdb_id": 1084242,
-    "tmdb_backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "tmdb_poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
-    "tmdb_overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "runtime": 107,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
-    ],
-    "vote_average": 7.598
+    "synopsis": ""
   },
   {
     "cinema_name": "Genesis Cinema",
@@ -10042,24 +9938,11 @@
     "showtime": "15:05",
     "detail_page_url": "https://genesiscinema.co.uk/event/98556",
     "booking_url": "https://genesis.admit-one.co.uk/seats/?perfCode=8779",
-    "director": "Jared Bush",
-    "year": "2025",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
-    "synopsis": "",
-    "tmdb_id": 1084242,
-    "tmdb_backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "tmdb_poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
-    "tmdb_overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "runtime": 107,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
-    ],
-    "vote_average": 7.598
+    "synopsis": ""
   },
   {
     "cinema_name": "Genesis Cinema",
@@ -10312,24 +10195,11 @@
     "showtime": "12:05",
     "detail_page_url": "https://genesiscinema.co.uk/event/98556",
     "booking_url": "https://genesis.admit-one.co.uk/seats/?perfCode=8794",
-    "director": "Jared Bush",
-    "year": "2025",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
-    "synopsis": "",
-    "tmdb_id": 1084242,
-    "tmdb_backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "tmdb_poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
-    "tmdb_overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "runtime": 107,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
-    ],
-    "vote_average": 7.598
+    "synopsis": ""
   },
   {
     "cinema_name": "Genesis Cinema",
@@ -10411,24 +10281,11 @@
     "showtime": "14:40",
     "detail_page_url": "https://genesiscinema.co.uk/event/98556",
     "booking_url": "https://genesis.admit-one.co.uk/seats/?perfCode=8795",
-    "director": "Jared Bush",
-    "year": "2025",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
-    "synopsis": "",
-    "tmdb_id": 1084242,
-    "tmdb_backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "tmdb_poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
-    "tmdb_overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "runtime": 107,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
-    ],
-    "vote_average": 7.598
+    "synopsis": ""
   },
   {
     "cinema_name": "Genesis Cinema",
@@ -13508,20 +13365,21 @@
     "showtime": "20:15",
     "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/close-up",
     "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-bgqjlx",
-    "director": "Leland Montgomery",
-    "year": "2022",
+    "director": "Abbas Kiarostami",
+    "year": "1990",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
-    "tmdb_id": 965235,
-    "tmdb_backdrop_path": "/9shz8QRTB6ERBfCeelKUnmZPoYf.jpg",
-    "tmdb_poster_path": "/dX5dH49IrSWOnJ9OEUxY84akVOx.jpg",
-    "tmdb_overview": "On the eve of his 30th birthday, a gay slacker must overcome his crippling insecurities in order to find love.",
-    "runtime": 16,
+    "tmdb_id": 30017,
+    "tmdb_backdrop_path": "/3t1qZqP1e17wQshpPKSqII1OogM.jpg",
+    "tmdb_poster_path": "/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
+    "tmdb_overview": "This fiction-documentary hybrid uses a sensational real-life event—the arrest of a young man on charges that he fraudulently impersonated the well-known filmmaker Mohsen Makhmalbaf—as the basis for a stunning, multilayered investigation into movies, identity, artistic creation, and existence, in which the real people from the case play themselves.",
+    "runtime": 98,
     "genres": [
-      "Comedy"
+      "Crime",
+      "Drama"
     ],
-    "vote_average": 7.3
+    "vote_average": 7.952
   },
   {
     "cinema_name": "Close-Up Film Centre",
@@ -13531,20 +13389,21 @@
     "showtime": "20:15",
     "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/close-up",
     "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-bgqjlx",
-    "director": "Leland Montgomery",
-    "year": "2022",
+    "director": "Abbas Kiarostami",
+    "year": "1990",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
-    "tmdb_id": 965235,
-    "tmdb_backdrop_path": "/9shz8QRTB6ERBfCeelKUnmZPoYf.jpg",
-    "tmdb_poster_path": "/dX5dH49IrSWOnJ9OEUxY84akVOx.jpg",
-    "tmdb_overview": "On the eve of his 30th birthday, a gay slacker must overcome his crippling insecurities in order to find love.",
-    "runtime": 16,
+    "tmdb_id": 30017,
+    "tmdb_backdrop_path": "/3t1qZqP1e17wQshpPKSqII1OogM.jpg",
+    "tmdb_poster_path": "/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
+    "tmdb_overview": "This fiction-documentary hybrid uses a sensational real-life event—the arrest of a young man on charges that he fraudulently impersonated the well-known filmmaker Mohsen Makhmalbaf—as the basis for a stunning, multilayered investigation into movies, identity, artistic creation, and existence, in which the real people from the case play themselves.",
+    "runtime": 98,
     "genres": [
-      "Comedy"
+      "Crime",
+      "Drama"
     ],
-    "vote_average": 7.3
+    "vote_average": 7.952
   },
   {
     "cinema_name": "Close-Up Film Centre",
@@ -13719,20 +13578,21 @@
     "showtime": "20:00",
     "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/close-up",
     "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-bgqjlx",
-    "director": "Leland Montgomery",
-    "year": "2022",
+    "director": "Abbas Kiarostami",
+    "year": "1990",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
-    "tmdb_id": 965235,
-    "tmdb_backdrop_path": "/9shz8QRTB6ERBfCeelKUnmZPoYf.jpg",
-    "tmdb_poster_path": "/dX5dH49IrSWOnJ9OEUxY84akVOx.jpg",
-    "tmdb_overview": "On the eve of his 30th birthday, a gay slacker must overcome his crippling insecurities in order to find love.",
-    "runtime": 16,
+    "tmdb_id": 30017,
+    "tmdb_backdrop_path": "/3t1qZqP1e17wQshpPKSqII1OogM.jpg",
+    "tmdb_poster_path": "/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
+    "tmdb_overview": "This fiction-documentary hybrid uses a sensational real-life event—the arrest of a young man on charges that he fraudulently impersonated the well-known filmmaker Mohsen Makhmalbaf—as the basis for a stunning, multilayered investigation into movies, identity, artistic creation, and existence, in which the real people from the case play themselves.",
+    "runtime": 98,
     "genres": [
-      "Comedy"
+      "Crime",
+      "Drama"
     ],
-    "vote_average": 7.3
+    "vote_average": 7.952
   },
   {
     "cinema_name": "Close-Up Film Centre",
@@ -13766,20 +13626,21 @@
     "showtime": "18:00",
     "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/close-up",
     "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-bgqjlx",
-    "director": "Leland Montgomery",
-    "year": "2022",
+    "director": "Abbas Kiarostami",
+    "year": "1990",
     "country": "",
     "runtime_min": "",
     "synopsis": "",
-    "tmdb_id": 965235,
-    "tmdb_backdrop_path": "/9shz8QRTB6ERBfCeelKUnmZPoYf.jpg",
-    "tmdb_poster_path": "/dX5dH49IrSWOnJ9OEUxY84akVOx.jpg",
-    "tmdb_overview": "On the eve of his 30th birthday, a gay slacker must overcome his crippling insecurities in order to find love.",
-    "runtime": 16,
+    "tmdb_id": 30017,
+    "tmdb_backdrop_path": "/3t1qZqP1e17wQshpPKSqII1OogM.jpg",
+    "tmdb_poster_path": "/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
+    "tmdb_overview": "This fiction-documentary hybrid uses a sensational real-life event—the arrest of a young man on charges that he fraudulently impersonated the well-known filmmaker Mohsen Makhmalbaf—as the basis for a stunning, multilayered investigation into movies, identity, artistic creation, and existence, in which the real people from the case play themselves.",
+    "runtime": 98,
     "genres": [
-      "Comedy"
+      "Crime",
+      "Drama"
     ],
-    "vote_average": 7.3
+    "vote_average": 7.952
   },
   {
     "cinema_name": "Close-Up Film Centre",
@@ -15193,8 +15054,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -15221,8 +15082,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -15277,8 +15138,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15331,8 +15192,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15441,8 +15302,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15495,8 +15356,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15576,8 +15437,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15603,8 +15464,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "Pay What You Can"
     ],
     "tmdb_id": 1317288,
@@ -15687,8 +15548,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15714,8 +15575,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15768,8 +15629,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -15850,8 +15711,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "£6 Monday!"
     ],
     "tmdb_id": 1317288,
@@ -15878,8 +15739,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "£6 Monday!"
     ],
     "tmdb_id": 1317288,
@@ -15908,7 +15769,7 @@
     "format_tags": [
       "audio-described",
       "hard-of-hearing",
-      "HOH subtitles"
+      "£6 Monday!"
     ],
     "tmdb_id": 858024,
     "tmdb_backdrop_path": "/yt9m5CiU2MZkQoNl1kqLPODNR4t.jpg",
@@ -15935,8 +15796,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -16016,8 +15877,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "£6 Monday!"
     ],
     "tmdb_id": 1317288,
@@ -16072,8 +15933,8 @@
     "runtime_min": "",
     "synopsis": "From Academy Award-winning writer-director Chloe Zhao, Hamnet tells the powerful love story that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
     "format_tags": [
-      "audio-described",
       "parent-baby",
+      "audio-described",
       "parent & baby"
     ],
     "tmdb_id": 858024,
@@ -16129,8 +15990,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -16212,8 +16073,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -16266,8 +16127,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -16322,8 +16183,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -16420,8 +16281,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -16502,9 +16363,9 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "parent-baby",
       "amplified-audio",
+      "parent-baby",
+      "audio-described",
       "parent & baby"
     ],
     "tmdb_id": 1317288,
@@ -16587,8 +16448,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_backdrop_path": "/qKWDHofjMHPSEOTLaixkC9ZmjTT.jpg",
@@ -16696,21 +16557,12 @@
     "showtime": "19:00",
     "detail_page_url": "https://thecastlecinema.com/programme/99991/nt-live-hamlet/",
     "booking_url": "https://thecastlecinema.com/bookings/14201/",
-    "director": "Robin Lough",
-    "year": "2010",
+    "director": "",
+    "year": "",
     "country": "",
     "runtime_min": "",
     "synopsis": "Olivier Award-winner Hiran Abeysekera (Life of Pi) is Hamlet in this fearless, contemporary take on Shakespeare’s famous tragedy. Trapped between duty and doubt, surrounded by power and privilege, young Prince Hamlet dares to ask the ultimate question – you know the one. National Theatre Deputy Artistic Director, Robert Hastie (Standing at the Sky’s Edge, Operation Mincemeat) directs this sharp, stylish and darkly funny reimagining.",
-    "format_tags": [],
-    "tmdb_id": 436484,
-    "tmdb_backdrop_path": "/3N5MYEhqLtwauHv5ck8cqlFD1aG.jpg",
-    "tmdb_poster_path": "/d7z4SkVNOXB4J69BHpTM6BM7n7C.jpg",
-    "tmdb_overview": "A 2010 broadcast of Hamlet returns to cinemas as part of the NT's 50th anniversary celebrations.  Following his celebrated performances at the National Theatre in Burnt by the Sun, The Revenger's Tragedy, Philistines and The Man of Mode, Rory Kinnear plays Hamlet in a dynamic new production of Shakespeare’s complex and profound play about the human condition, directed by Nicholas Hytner.  He is joined by Clare Higgins (Gertrude), Patrick Malahide (Claudius), David Calder (Polonius), James Laurenson (Ghost/Player King) and Ruth Negga (Ophelia).",
-    "runtime": 210,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.8
+    "format_tags": []
   },
   {
     "cinema_name": "Electric Cinema Portobello",
