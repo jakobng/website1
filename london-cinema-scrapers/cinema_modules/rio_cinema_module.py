@@ -208,6 +208,10 @@ def scrape_rio_cinema() -> List[Dict]:
     return sorted(unique_shows, key=lambda x: (x["date_text"], x["showtime"], x["movie_title"]))
 
 
+def scrape_rio() -> List[Dict]:
+    return scrape_rio_cinema()
+
+
 if __name__ == "__main__":
     data = scrape_rio_cinema()
     print(json.dumps(data, ensure_ascii=False, indent=2))
