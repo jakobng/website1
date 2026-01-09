@@ -47,7 +47,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          git add london-cinema-scrapers/data/showtimes.json london-cinema-scrapers/data/tmdb_cache.json
+          git add data/showtimes.json data/tmdb_cache.json
           git commit -m "Auto-Update: London showtimes" || echo "No changes to commit"
           git pull --rebase origin main
           git push
