@@ -17697,5 +17697,88 @@
       "ホラー"
     ],
     "vote_average": 7.0
+  },
+  "ファンファーレ！": {
+    "tmdb_id": 884825,
+    "tmdb_title_jp": "ファンファーレが鳴り響く",
+    "tmdb_title_en": "ファンファーレが鳴り響く",
+    "overview": "",
+    "poster_path": "/dRWmzszMBZkgABvrdXW5LYUJPiz.jpg",
+    "backdrop_path": "/Rl2ynjXhikLqcfVpo2hrSuBvFE.jpg",
+    "release_date": "2020-10-17",
+    "director": "Kazuki Morita",
+    "runtime": 90,
+    "genres": [
+      "ホラー",
+      "ドラマ"
+    ],
+    "vote_average": 6.0
+  },
+  "［ｲﾍﾞﾝﾄ］愛がきこえる": null,
+  "ミゲル・ゴメス アーリーワークス": null,
+  "グランドツアー": null,
+  "サリー": {
+    "tmdb_id": 50497,
+    "tmdb_title_jp": "サリー 死霊と戯れる少女",
+    "tmdb_title_en": "When the Lights Went Out",
+    "overview": "",
+    "poster_path": "/bdsUVOLDADbfIWSJflJSgE8J3Ai.jpg",
+    "backdrop_path": "/vSJnG5qO64ERig9aSWcBiy8ybqG.jpg",
+    "release_date": "2012-01-31",
+    "director": "Pat Holden",
+    "runtime": 86,
+    "genres": [
+      "スリラー",
+      "ドラマ",
+      "ホラー"
+    ],
+    "vote_average": 5.7
+  },
+  "チャック・ベリー ブラウン・アイド・ハンサム・マン": {
+    "tmdb_id": 790999,
+    "tmdb_title_jp": "チャック・ベリー ブラウン・アイド・ハンサム・マン",
+    "tmdb_title_en": "Chuck Berry: Brown Eyed Handsome Man",
+    "overview": "ギタリストなら誰もがコピーする特徴的なギター・リフを発明し、ロックンロール音楽の創始者ともされるチャック・ベリー。2017年に90歳で亡くなるまで現役のロックンローラーとして活躍した彼のトリビュート番組が登場！　番組ではチャック・ベリーの演奏はもちろん、彼の楽曲をカバーするさまざまなミュージシャンの映像をたっぷりフィーチャー。\r 古くは1964年にザ・ビートルズがアメリカ初上陸した際にワシントン・コロシアムで演奏した「ロール・オーヴァー・ベートーヴェン」や同じく1964年にザ・ローリング・ストーンズがUK公演で演奏した「アラウンド・アンド・アラウンド」から、2017年にジェフ・リンがELOとしてロックの殿堂入りセレモニーで演奏した「ロール・オーヴァー・ベートーヴェン」まで。ポール・マッカートニーやトム・ペティ＆ザ・ハートブレイカーズ、キース・リチャーズ、リンダ・ロンシュタット、ブルース・スプリングスティーンも登場する豪華版だ！",
+    "poster_path": "/cJttQpC07HF1nkOgxM1NISxel7f.jpg",
+    "backdrop_path": "/f5kp9uz6XIWEW2fdIYLafrccJ.jpg",
+    "release_date": "2020-09-11",
+    "director": "Ron Weisner",
+    "runtime": 54,
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.0
+  },
+  "Elephant Gymドキュメンタリー映画「More Real Than Dreams」": {
+    "tmdb_id": 1545720,
+    "tmdb_title_jp": "Elephant Gymドキュメンタリー映画「More Real Than Dreams」",
+    "tmdb_title_en": "大象體操：比夢境更真實",
+    "overview": "台湾・高雄出身の3人組インストゥルメンタル・バンド「Elephant Gym」のドキュメンタリー。2012年の結成以来、変拍子による複雑なリズムや楽曲構成と、洗練されたメロディーを交錯させた前衛的なインディーミュージックをつくり続けてきたElephant Gym。24年に実施されたワールドツアーでは、日本を含む23カ国で60公演を行い、世界各地のファンを熱狂させた。しかし華やかなステージの裏側には、メンバーたちの知られざる苦悩と衝突があった。兄妹であるギタリストのTell ChangとベーシストのKT Changは、家族とバンドメンバーの間で揺れ動く。一方、ドラマーのChia-Chin Tuは、掛け持ちしていたバンドから離れざるを得なくなる。そしてワールドツアーの直前、バンドは解散の危機に陥っていた。それでも音楽と絆を信じて歩み続け世界へと羽ばたいた彼らの姿を通して、異なる人間同士が集まるバンドとは何か、そして人と人の繋がりとは何かを問いかける。メンバーのインタビューや各地でのライブ映像のほか、日本から亀田誠治や小西遼のインタビュー映像も収録。",
+    "poster_path": "/bBUZ3gRirAWnEibXHJXsut8ySmR.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-23",
+    "director": "Alulu Kuo",
+    "runtime": 0,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0
+  },
+  "ローズ家〜崖っぷちの夫婦〜": {
+    "tmdb_id": 1267905,
+    "tmdb_title_jp": "ローズ家～崖っぷちの夫婦～",
+    "tmdb_title_en": "The Roses",
+    "overview": "絵に描いたような完璧なカップル、アイヴィとテオは、順風満帆な人生を送っているように見えた。輝かしいキャリア、愛に満ちた結婚生活、優秀な子供たち。だが、その裏側では家庭内戦争が始まろうとしていた。テオのキャリアが急降下する中、アイヴィは野心を露わにする。幸せな夫婦に秘められた競争心と不満が爆発する痛快ブラック・コメディ。",
+    "poster_path": "/5s1sS0XPGXMoIYouY3RgBlA1A5M.jpg",
+    "backdrop_path": "/h4HSZjOeAoHQ3qPuy6x9Cyr69bS.jpg",
+    "release_date": "2025-08-27",
+    "director": "ジェイ・ローチ",
+    "runtime": 105,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 6.728
   }
 }
