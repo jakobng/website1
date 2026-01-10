@@ -21,3 +21,11 @@ from . import rio_cinema_module
 from . import lexi_cinema_module
 from . import arthouse_crouch_end_module
 from . import jw3_module
+from . import peckhamplex_module
+from . import cinema_museum_module
+from . import act_one_module
+from . import chiswick_cinema_module
+from . import cinema_in_the_arches_module
+from . import david_lean_module
+from . import regent_street_module
+from . import ritzy_module
