@@ -51,6 +51,7 @@ from cinema_modules import (
     regent_street_module,
     ritzy_module,
     kiln_theatre_module,
+    riverside_studios_module,
 )
 
 # --- Configuration ---
@@ -657,6 +658,7 @@ def main():
         ("Regent Street Cinema", regent_street_module.scrape_regent_street, None),
         ("Ritzy Cinema", ritzy_module.scrape_ritzy, None),
         ("Kiln Theatre", kiln_theatre_module.scrape_kiln_theatre, None),
+        ("Riverside Studios", riverside_studios_module.scrape_riverside_studios, None),
     ]
 
     print("Starting all scrapers...")

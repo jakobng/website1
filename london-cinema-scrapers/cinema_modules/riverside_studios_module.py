@@ -145,35 +145,106 @@ def _parse_time(time_str: str) -> Optional[str]:
     return None
 
 
-def _extract_film_links(soup: BeautifulSoup) -> List[str]:
+def _extract_filter_data(html: str) -> List[Dict]:
     """
-    Extract film/cinema event links from the what's on page.
-    Returns list of absolute URLs.
+    Extract event data from _filter_data.push({...}) JavaScript calls.
+    Uses brace counting to properly extract nested JSON objects.
+    Returns list of event dictionaries.
     """
-    links = []
+    events = []
 
-    # TODO: Update selectors based on actual HTML structure
-    # Look for links to event/film detail pages
-    for a in soup.find_all("a", href=True):
-        href = a["href"]
-        # Match event pages - adjust pattern as needed
-        if "/whats-on/" in href and href != WHATS_ON_URL:
-            if href.startswith("/"):
-                full_url = BASE_URL + href
-            elif href.startswith("http"):
-                full_url = href
-            else:
+    # Find all _filter_data.push( occurrences
+    push_pattern = r'_filter_data\.push\('
+    for match in re.finditer(push_pattern, html):
+        start_idx = match.end()
+
+        # Count braces to find the matching closing brace
+        if start_idx >= len(html) or html[start_idx] != '{':
+            continue
+
+        brace_count = 0
+        end_idx = start_idx
+        in_string = False
+        escape_next = False
+
+        for i in range(start_idx, len(html)):
+            char = html[i]
+
+            if escape_next:
+                escape_next = False
                 continue
 
-            if full_url not in links and full_url != WHATS_ON_URL.rstrip("/"):
-                links.append(full_url)
+            if char == '\\':
+                escape_next = True
+                continue
 
-    return links
+            if char == '"' and not escape_next:
+                in_string = not in_string
+                continue
+
+            if in_string:
+                continue
+
+            if char == '{':
+                brace_count += 1
+            elif char == '}':
+                brace_count -= 1
+                if brace_count == 0:
+                    end_idx = i + 1
+                    break
+
+        if brace_count != 0:
+            continue
+
+        json_str = html[start_idx:end_idx]
+
+        try:
+            event = json.loads(json_str)
+            events.append(event)
+        except json.JSONDecodeError:
+            # Try to fix common issues
+            try:
+                # Remove trailing commas before } or ]
+                fixed = re.sub(r',\s*([}\]])', r'\1', json_str)
+                event = json.loads(fixed)
+                events.append(event)
+            except json.JSONDecodeError:
+                continue
+
+    return events
 
 
-def _extract_metadata(soup: BeautifulSoup) -> Dict:
+def _is_cinema_event(event: Dict) -> bool:
     """
-    Extract film metadata from a detail page.
+    Check if an event is a cinema event.
+    Cinema events have event_type containing "101" or slot_tag "Cinema".
+    """
+    # Check event_type array
+    event_types = event.get("event_type", [])
+    if isinstance(event_types, list) and "101" in event_types:
+        return True
+
+    # Also check slot_tag as backup
+    slot_tag = event.get("slot_tag", "")
+    if isinstance(slot_tag, str) and "cinema" in slot_tag.lower():
+        return True
+
+    return False
+
+
+def _parse_unix_timestamp(ts: str) -> Optional[dt.datetime]:
+    """
+    Parse Unix timestamp string to datetime.
+    """
+    try:
+        return dt.datetime.fromtimestamp(int(ts))
+    except (ValueError, TypeError, OSError):
+        return None
+
+
+def _extract_metadata_from_event(event: Dict) -> Dict:
+    """
+    Extract film metadata from an event dictionary.
     """
     metadata = {
         "director": "",
@@ -183,88 +254,152 @@ def _extract_metadata(soup: BeautifulSoup) -> Dict:
         "country": "",
     }
 
-    # Try meta description for synopsis
-    meta_desc = soup.find("meta", {"name": "description"})
-    if meta_desc and meta_desc.get("content"):
-        metadata["synopsis"] = _clean(meta_desc["content"])[:500]
+    # Extract runtime from duration field or description
+    duration = event.get("duration", "")
+    if duration:
+        runtime_match = re.search(r"(\d+)\s*(?:min|mins|minutes)?", str(duration), re.I)
+        if runtime_match:
+            metadata["runtime_min"] = runtime_match.group(1)
 
-    if not metadata["synopsis"]:
-        og_desc = soup.find("meta", {"property": "og:description"})
-        if og_desc and og_desc.get("content"):
-            metadata["synopsis"] = _clean(og_desc["content"])[:500]
+    # Try to get synopsis from description or content fields
+    for field in ["description", "content", "short_description", "blurb"]:
+        if event.get(field):
+            text = _clean(str(event[field]))
+            # Strip HTML tags
+            text = re.sub(r"<[^>]+>", " ", text)
+            text = _clean(text)
+            if text:
+                metadata["synopsis"] = text[:500]
+                break
 
-    # Look for runtime in page text
-    page_text = soup.get_text(" ", strip=True)
-    runtime_match = re.search(r"(\d+)\s*(?:min(?:ute)?s?|mins)", page_text, re.I)
-    if runtime_match:
-        metadata["runtime_min"] = runtime_match.group(1)
-
-    # Look for director
-    director_match = re.search(
-        r"Director[:\s]+([A-Za-z\s\-\.]+?)(?:\s*[|\•\n]|$)",
-        page_text
-    )
-    if director_match:
-        metadata["director"] = _clean(director_match.group(1))
+    # Try to extract director from synopsis or other fields
+    if metadata["synopsis"]:
+        director_match = re.search(
+            r"Director[:\s]+([A-Za-z\s\-\.]+?)(?:\s*[|\•\n,]|$)",
+            metadata["synopsis"]
+        )
+        if director_match:
+            metadata["director"] = _clean(director_match.group(1))
 
     return metadata
 
 
-def _extract_showtimes_from_detail(soup: BeautifulSoup, film_url: str) -> List[Dict]:
+def _extract_booking_url_from_html(performance_html: str) -> str:
     """
-    Extract showtimes from a film detail page.
+    Extract booking URL from performance HTML snippet.
+    """
+    if not performance_html:
+        return ""
+
+    # Look for href in the HTML
+    match = re.search(r'href="([^"]+)"', performance_html)
+    if match:
+        url = match.group(1)
+        if url.startswith("/"):
+            return BASE_URL + url
+        return url
+    return ""
+
+
+def _extract_time_from_html(performance_html: str) -> Optional[str]:
+    """
+    Extract showtime from performance HTML snippet.
+    """
+    if not performance_html:
+        return None
+
+    # Look for time in performance-time div or just time pattern
+    time_match = re.search(r"(\d{1,2}:\d{2})", performance_html)
+    if time_match:
+        time_str = time_match.group(1)
+        parts = time_str.split(":")
+        if len(parts) == 2:
+            hour = int(parts[0])
+            minute = int(parts[1])
+            if 0 <= hour < 24 and 0 <= minute < 60:
+                return f"{hour:02d}:{minute:02d}"
+    return None
+
+
+def _extract_showtimes_from_event(event: Dict) -> List[Dict]:
+    """
+    Extract showtimes from an event's performances data.
     """
     shows = []
 
-    # Get film title
-    title = ""
-    title_elem = soup.find("h1")
-    if title_elem:
-        title = _clean(title_elem.get_text())
-
-    if not title:
-        og_title = soup.find("meta", {"property": "og:title"})
-        if og_title and og_title.get("content"):
-            title = _clean(og_title["content"])
-            # Remove site name suffix if present
-            title = re.sub(r"\s*[-–|]\s*Riverside Studios.*$", "", title, flags=re.I)
-
+    title = _clean(event.get("name", "") or event.get("title", ""))
     if not title:
         return []
 
-    metadata = _extract_metadata(soup)
+    # Get the event URL
+    event_url = event.get("url", "")
+    if event_url and not event_url.startswith("http"):
+        event_url = BASE_URL + event_url
 
-    # TODO: Update these selectors based on actual HTML structure
-    # Look for date/time elements - common patterns:
+    metadata = _extract_metadata_from_event(event)
 
-    # Pattern 1: Look for time elements with datetime attribute
-    for time_elem in soup.find_all("time", {"datetime": True}):
-        try:
-            datetime_str = time_elem.get("datetime", "")
-            parsed_dt = dt.datetime.fromisoformat(datetime_str.replace("Z", "+00:00"))
-            show_date = parsed_dt.date()
-            show_time = parsed_dt.strftime("%H:%M")
+    # Parse performances object
+    # Format: {"unix_timestamp": [{"timestamp": "unix_ts", "html": "<a ...>time</a>"}, ...]}
+    performances = event.get("performances", {})
 
-            if TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS):
-                shows.append({
-                    "cinema_name": CINEMA_NAME,
-                    "movie_title": title,
-                    "movie_title_en": title,
-                    "date_text": show_date.isoformat(),
-                    "showtime": show_time,
-                    "detail_page_url": film_url,
-                    "booking_url": "",
-                    "director": metadata["director"],
-                    "year": metadata["year"],
-                    "country": metadata["country"],
-                    "runtime_min": metadata["runtime_min"],
-                    "synopsis": metadata["synopsis"],
-                })
-        except (ValueError, AttributeError):
+    if not isinstance(performances, dict):
+        return []
+
+    for date_ts, perf_list in performances.items():
+        # Parse the date from the key timestamp
+        date_dt = _parse_unix_timestamp(date_ts)
+        if not date_dt:
             continue
 
-    # Pattern 2: Look for date headers with time slots
-    # This will need to be customized based on actual HTML
+        show_date = date_dt.date()
+
+        # Check if within our window
+        if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
+            continue
+
+        if not isinstance(perf_list, list):
+            continue
+
+        for perf in perf_list:
+            if not isinstance(perf, dict):
+                continue
+
+            # Get time from timestamp or HTML
+            perf_ts = perf.get("timestamp", "")
+            perf_html = perf.get("html", "")
+
+            show_time = None
+
+            # Try to get time from the timestamp
+            if perf_ts:
+                perf_dt = _parse_unix_timestamp(perf_ts)
+                if perf_dt:
+                    show_time = perf_dt.strftime("%H:%M")
+
+            # Fall back to extracting from HTML
+            if not show_time:
+                show_time = _extract_time_from_html(perf_html)
+
+            if not show_time:
+                continue
+
+            # Get booking URL from HTML
+            booking_url = _extract_booking_url_from_html(perf_html)
+
+            shows.append({
+                "cinema_name": CINEMA_NAME,
+                "movie_title": title,
+                "movie_title_en": title,
+                "date_text": show_date.isoformat(),
+                "showtime": show_time,
+                "detail_page_url": event_url,
+                "booking_url": booking_url,
+                "director": metadata["director"],
+                "year": metadata["year"],
+                "country": metadata["country"],
+                "runtime_min": metadata["runtime_min"],
+                "synopsis": metadata["synopsis"],
+            })
 
     return shows
 
@@ -273,8 +408,9 @@ def scrape_riverside_studios() -> List[Dict]:
     """
     Scrape Riverside Studios cinema showtimes.
 
-    Fetches the what's on page to get film links, then scrapes each
-    film's detail page for showtimes.
+    The what's on page embeds all event data as JavaScript in
+    _filter_data.push({...}) calls. Cinema events are identified
+    by event_type containing "101" or slot_tag "Cinema".
 
     Returns a list of showtime records with standard schema.
     """
@@ -288,25 +424,18 @@ def scrape_riverside_studios() -> List[Dict]:
         resp = session.get(WHATS_ON_URL, headers=HEADERS, timeout=TIMEOUT)
         resp.raise_for_status()
 
-        soup = BeautifulSoup(resp.text, "html.parser")
-        film_links = _extract_film_links(soup)
+        # Extract event data from JavaScript
+        events = _extract_filter_data(resp.text)
+        print(f"[{CINEMA_NAME}] Found {len(events)} total events in page data", file=sys.stderr)
 
-        print(f"[{CINEMA_NAME}] Found {len(film_links)} event pages", file=sys.stderr)
+        # Filter for cinema events
+        cinema_events = [e for e in events if _is_cinema_event(e)]
+        print(f"[{CINEMA_NAME}] Found {len(cinema_events)} cinema events", file=sys.stderr)
 
-        # Fetch each film detail page
-        for film_url in film_links:
-            try:
-                print(f"[{CINEMA_NAME}] Fetching {film_url}", file=sys.stderr)
-                resp = session.get(film_url, headers=HEADERS, timeout=TIMEOUT)
-                resp.raise_for_status()
-
-                film_soup = BeautifulSoup(resp.text, "html.parser")
-                film_shows = _extract_showtimes_from_detail(film_soup, film_url)
-                shows.extend(film_shows)
-
-            except requests.RequestException as e:
-                print(f"[{CINEMA_NAME}] Error fetching {film_url}: {e}", file=sys.stderr)
-                continue
+        # Extract showtimes from each cinema event
+        for event in cinema_events:
+            event_shows = _extract_showtimes_from_event(event)
+            shows.extend(event_shows)
 
         print(f"[{CINEMA_NAME}] Found {len(shows)} total showings", file=sys.stderr)
 
