@@ -23,7 +23,7 @@ from io import BytesIO
 from zoneinfo import ZoneInfo
 
 # --- PIL imports ---
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter
 
 # --- API Setup ---
 try:
