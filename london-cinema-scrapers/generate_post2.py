@@ -1,9 +1,9 @@
-"Generate Instagram-ready image carousel (V2 - \"A24 Style\" + Spread Layout) for London.
+"""Generate Instagram-ready image carousel (V2 - \"A24 Style\" + Spread Layout) for London.
 - Design: Minimalist typography (\"Today's Film Selection\").
 - Layout: \"Explosive\" collage (images spread to edges/bleed off canvas).
 - Tech: Gemini + Replicate + Pillow.
 - Update: Enforces London timezone, 3-day film rotation history.
-- Feature: Multi-day Showtime Aggregation (Today + Next 2 Days) ON IMAGE + Captions."
+- Feature: Multi-day Showtime Aggregation (Today + Next 2 Days) ON IMAGE + Captions."""
 from __future__ import annotations
 
 import json
