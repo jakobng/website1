@@ -358,13 +358,12 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
             return pil_image
 
         client = genai.Client(api_key=api_key)
-        names_str = ", ".join(cinema_names[:8])
         prompt_text = (
-            "Turn this rough collage into a single unified image in a style suitable to the input - "
-            "a dream architecture cinema exterior or interior. "
-            f"The image MUST include the title 'London Cinema Showtimes' and the date '{date_text}'. "
-            "Do not add any other text. "
-            "Unify the lighting and textures. Make it feel like a single coherent scene. But also try to be faithful to the original cutouts in the collage. They are of recognisable and specific cinemas in london so I dont want to change them much. "
+            f"Refine this collage into a unified image. "
+            f"Strictly preserve the layout, composition, and structures of the input image. "
+            f"Do not add new buildings, objects, or architectural elements that are not present in the collage. "
+            f"Your task is only to blend the edges and unify the lighting and textures so the cutouts look like a cohesive scene. "
+            f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}'."
         )
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview",
