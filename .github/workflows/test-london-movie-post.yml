@@ -1,4 +1,4 @@
-name: Test London Image Gen
+name: Test London Movie Post
 
 on:
   workflow_dispatch:
