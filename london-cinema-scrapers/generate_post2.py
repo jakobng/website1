@@ -588,26 +588,43 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
                 curr_y += 30
             curr_y += 15
     else:
+        # --- STANDARD CENTERED MODE ---
+        scale = 1.0
+        est_h = total_lines * base_line_h
+        if est_h > available_space:
+            scale = max(available_space / est_h, 0.8)  # Limit shrinkage
+
+        final_size = int(base_line_h * scale)
+        try:
+            f_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_size)
+            f_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_size)
+        except:
+            f_cin = fonts['cinema']
+            f_time = fonts['times']
+
         start_y = cursor_y + 10
-        f_cin = fonts['cinema']
-        f_time = fonts['times']
         for cin in sorted_cinemas:
             len_c = draw.textlength(cin, font=f_cin)
             draw.text(((width - len_c)//2, start_y), cin, font=f_cin, fill=(255,255,255))
-            start_y += (f_cin.size * 1.2)
+            start_y += (final_size * 1.2)
+
             for d_key in sorted(schedule_map[cin].keys()):
                 times_str = ", ".join(schedule_map[cin][d_key])
                 is_today = (d_key == primary_date)
                 date_label = format_date_short(d_key, is_today)
                 full_line = f"{date_label}   {times_str}"
+
                 len_line = draw.textlength(full_line, font=f_time)
                 x_line = (width - len_line) // 2
+
                 lbl_color = (255, 200, 100) if is_today else (180, 180, 180)
                 draw.text((x_line, start_y), date_label, font=f_time, fill=lbl_color)
+
                 lbl_w = draw.textlength(date_label, font=f_time)
                 draw.text((x_line + lbl_w + 15, start_y), times_str, font=f_time, fill=(230,230,230))
-                start_y += (f_time.size * 1.1)
-            start_y += 15
+                start_y += (final_size * 1.1)
+
+            start_y += (final_size * 0.6)
 
     return canvas
 
