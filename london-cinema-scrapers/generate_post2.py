@@ -22,6 +22,14 @@ from pathlib import Path
 from io import BytesIO
 from zoneinfo import ZoneInfo
 
+# --- PIL/Pillow ---
+try:
+    from PIL import Image, ImageFont, ImageDraw, ImageFilter, ImageEnhance
+    PIL_AVAILABLE = True
+except ImportError:
+    print("⚠️ Pillow library not found. Run: pip install Pillow")
+    PIL_AVAILABLE = False
+
 # --- API Setup ---
 try:
     import replicate
@@ -265,7 +273,7 @@ You are an art director making a movie collage poster.
 Return JSON: {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
 """
         response = client.models.generate_content(
-            model='gemini-3-pro-image-preview', 
+            model='gemini-3-pro-preview',
             contents=[prompt, *images]
         )
         clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
