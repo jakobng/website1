@@ -364,9 +364,7 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
             "a dream architecture cinema exterior or interior. "
             f"The image MUST include the title 'London Cinema Showtimes' and the date '{date_text}'. "
             "Do not add any other text. "
-            f"If any signage or legible text appears, it must use the exact spelling from this list: {names_str}. "
-            "If you cannot reproduce signage text correctly, remove it entirely. "
-            "Unify the lighting and textures. Make it feel like a single coherent scene."
+            "Unify the lighting and textures. Make it feel like a single coherent scene. But also try to be faithful to the original cutouts in the collage. They are of recognisable and specific cinemas in london so I dont want to change them much. "
         )
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview",
