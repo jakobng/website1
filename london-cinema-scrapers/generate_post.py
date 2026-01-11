@@ -358,10 +358,14 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
             return pil_image
 
         client = genai.Client(api_key=api_key)
+        names_str = ", ".join(cinema_names[:8])
         prompt_text = (
-            f"Turn this rough collage into a single unified image in a style suitable to the input - "
-            f"a dream architecture cinema exterior or interior. "
-            f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}'. "
+            "Turn this rough collage into a single unified image in a style suitable to the input - "
+            "a dream architecture cinema exterior or interior. "
+            f"The image MUST include the title 'London Cinema Showtimes' and the date '{date_text}'. "
+            "Do not add any other text. "
+            f"If any signage or legible text appears, it must use the exact spelling from this list: {names_str}. "
+            "If you cannot reproduce signage text correctly, remove it entirely. "
             "Unify the lighting and textures. Make it feel like a single coherent scene."
         )
         response = client.models.generate_content(
