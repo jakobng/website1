@@ -24,13 +24,13 @@ try:
     from google import genai
     from google.genai import types
 except ImportError:
-    print("📦 Library 'google-genai' not found. Installing...")
+    print("📦 Library 'google-generativeai' not found. Installing...")
     try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "google-genai"])
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "google-generativeai"])
         from google import genai
         from google.genai import types
     except Exception as e:
-        print(f"⚠️ Critical: Failed to install 'google-genai'. Refinement will be skipped. Error: {e}")
+        print(f"⚠️ Critical: Failed to install 'google-generativeai'. Refinement will be skipped. Error: {e}")
 
 # --- Timezone: London (UTC+0/+1 depending on DST) ---
 LONDON_TZ = timezone(timedelta(hours=0))  # Will be handled by zoneinfo for DST
