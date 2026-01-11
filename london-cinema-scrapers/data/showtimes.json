@@ -11911,6 +11911,404 @@
     "synopsis": ""
   },
   {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Taste of Cherry",
+    "movie_title_en": "Taste of Cherry",
+    "date_text": "2026-01-11",
+    "showtime": "16:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/taste-of-cherry",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-jzjalx",
+    "director": "Abbas Kiarostami",
+    "year": "1997",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 30020,
+    "tmdb_title": "Taste of Cherry",
+    "tmdb_original_title": "طعم گيلاس",
+    "tmdb_backdrop_path": "/44SNTCSZTdbF5bzgUy4IfPV3DUq.jpg",
+    "tmdb_poster_path": "/u6GYH4HyR0BVwpqFuTOc2g4KB1L.jpg",
+    "tmdb_overview": "A middle-aged Tehranian man, Mr. Badii is intent on killing himself and seeks someone to bury him after his demise. Driving around the city, the seemingly well-to-do Badii meets with numerous people, including a Muslim student, asking them to take on the job, but initially he has little luck. Eventually, Badii finds a man who is up for the task because he needs the money, but his new associate soon tries to talk him out of committing suicide.",
+    "runtime": 100,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.678
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Ten",
+    "movie_title_en": "Ten",
+    "date_text": "2026-01-11",
+    "showtime": "18:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/ten",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-dlzzjv",
+    "director": "Sophia Cacciola",
+    "year": "2014",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 279516,
+    "tmdb_title": "Ten",
+    "tmdb_original_title": "Ten",
+    "tmdb_backdrop_path": null,
+    "tmdb_poster_path": "/uSQ6m7HH976VPmbVzGZm6h6TEqg.jpg",
+    "tmdb_overview": "Ten women spend the night in a supposedly haunted mansion on Spektor Island in December 1972. Crazy superstitions don't stop them from raiding the wine cellar and throwing a party, at least until the first murder.",
+    "runtime": 83,
+    "genres": [
+      "Adventure",
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "vote_average": 3.667
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "The Wind Will Carry Us",
+    "movie_title_en": "The Wind Will Carry Us",
+    "date_text": "2026-01-11",
+    "showtime": "20:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/the-wind-will-carry-us",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-vrvydv",
+    "director": "Abbas Kiarostami",
+    "year": "1999",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 43423,
+    "tmdb_title": "The Wind Will Carry Us",
+    "tmdb_original_title": "باد ما را خواهد برد",
+    "tmdb_backdrop_path": "/45qY2TYR1adWNO0XNJKSDtUex4l.jpg",
+    "tmdb_poster_path": "/tzrqZungDYA3Djp61NWUm7DtxNI.jpg",
+    "tmdb_overview": "Irreverent city engineer Behzad comes to a rural Kurdish village in Iran to keep vigil for a dying relative. In the meanwhile the film follows his efforts to fit in with the local community and how he changes his own attitudes as a result.",
+    "runtime": 118,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.1
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Mirror",
+    "movie_title_en": "Mirror",
+    "date_text": "2026-01-13",
+    "showtime": "20:15",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/histoire-s-du-cinema/mirror",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-pdavda",
+    "director": "Keith LaFountaine",
+    "year": "2017",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 415786,
+    "tmdb_title": "Mirror",
+    "tmdb_original_title": "Mirror",
+    "tmdb_backdrop_path": "/lpRPoEhIZn5unuuYdfuZuIEtfFd.jpg",
+    "tmdb_poster_path": "/har8XAxo7FtKrt2tvN8KtGFr1em.jpg",
+    "tmdb_overview": "Layla, a writer and musician struggling with depression and trapped in a dying marriage, finds herself falling in love with a woman from a war torn dimension, with whom she can only communicate through her bathroom mirror.",
+    "runtime": 29,
+    "genres": [
+      "Science Fiction",
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 8.167
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Through the Olive Trees",
+    "movie_title_en": "Through the Olive Trees",
+    "date_text": "2026-01-16",
+    "showtime": "20:15",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/through-the-olive-trees",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-qgvobz",
+    "director": "Abbas Kiarostami",
+    "year": "1994",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 47104,
+    "tmdb_title": "Through the Olive Trees",
+    "tmdb_original_title": "زیر درختان زیتون",
+    "tmdb_backdrop_path": "/6pNbXgSg70qInZ4I3VaS2at5spK.jpg",
+    "tmdb_poster_path": "/xcwCF0YTyAOMrVLgXHjvPP0gGbh.jpg",
+    "tmdb_overview": "When the actor in a scene for his film Life And Nothing More… has to quit, a film director casts another man for the part. However, complications arise since the man and the woman who was cast for the scene know each other.",
+    "runtime": 104,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 7.4
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Taste of Cherry",
+    "movie_title_en": "Taste of Cherry",
+    "date_text": "2026-01-17",
+    "showtime": "16:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/taste-of-cherry",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-jzjalx",
+    "director": "Abbas Kiarostami",
+    "year": "1997",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 30020,
+    "tmdb_title": "Taste of Cherry",
+    "tmdb_original_title": "طعم گيلاس",
+    "tmdb_backdrop_path": "/44SNTCSZTdbF5bzgUy4IfPV3DUq.jpg",
+    "tmdb_poster_path": "/u6GYH4HyR0BVwpqFuTOc2g4KB1L.jpg",
+    "tmdb_overview": "A middle-aged Tehranian man, Mr. Badii is intent on killing himself and seeks someone to bury him after his demise. Driving around the city, the seemingly well-to-do Badii meets with numerous people, including a Muslim student, asking them to take on the job, but initially he has little luck. Eventually, Badii finds a man who is up for the task because he needs the money, but his new associate soon tries to talk him out of committing suicide.",
+    "runtime": 100,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.678
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "The Short Films of David Lynch",
+    "movie_title_en": "The Short Films of David Lynch",
+    "date_text": "2026-01-17",
+    "showtime": "18:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/the-short-films-of-david-lynch",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-lozrpo",
+    "director": "David Lynch",
+    "year": "2002",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 1580961,
+    "tmdb_title": "The Short Films of David Lynch",
+    "tmdb_original_title": "The Short Films of David Lynch",
+    "tmdb_backdrop_path": null,
+    "tmdb_poster_path": "/86WCJiXMvPaXEnN02sFjiAbhdB.jpg",
+    "tmdb_overview": "A collection of visionary director David Lynch's short films from the first 29 years of his career is accompanied by a special introduction to each film by the director himself.",
+    "runtime": 97,
+    "genres": [],
+    "vote_average": 6.0
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Close-Up",
+    "movie_title_en": "Close-Up",
+    "date_text": "2026-01-17",
+    "showtime": "20:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/close-up",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-bgqjlx",
+    "director": "Abbas Kiarostami",
+    "year": "1990",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 30017,
+    "tmdb_title": "Close-Up",
+    "tmdb_original_title": "کلوزآپ ، نمای نزدیک",
+    "tmdb_backdrop_path": "/3t1qZqP1e17wQshpPKSqII1OogM.jpg",
+    "tmdb_poster_path": "/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
+    "tmdb_overview": "This fiction-documentary hybrid uses a sensational real-life event—the arrest of a young man on charges that he fraudulently impersonated the well-known filmmaker Mohsen Makhmalbaf—as the basis for a stunning, multilayered investigation into movies, identity, artistic creation, and existence, in which the real people from the case play themselves.",
+    "runtime": 98,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 7.952
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Homework",
+    "movie_title_en": "Homework",
+    "date_text": "2026-01-18",
+    "showtime": "16:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/homework-the-chorus",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-vrvyjv",
+    "director": "James Beshears",
+    "year": "1982",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 30412,
+    "tmdb_title": "Homework",
+    "tmdb_original_title": "Homework",
+    "tmdb_backdrop_path": "/iRNA3mmeY5RjS9alR0MXKBJKo1Q.jpg",
+    "tmdb_poster_path": "/fIgGU39q3h4n1f2GhWp1kAneAZ7.jpg",
+    "tmdb_overview": "Good-looking but virginal \"rockstar\" teen Tommy tries to score with some of the local high school girls. But a classmate's mom decides to make a man out of him.",
+    "runtime": 90,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 3.2
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Close-Up",
+    "movie_title_en": "Close-Up",
+    "date_text": "2026-01-18",
+    "showtime": "18:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/close-up",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-bgqjlx",
+    "director": "Abbas Kiarostami",
+    "year": "1990",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 30017,
+    "tmdb_title": "Close-Up",
+    "tmdb_original_title": "کلوزآپ ، نمای نزدیک",
+    "tmdb_backdrop_path": "/3t1qZqP1e17wQshpPKSqII1OogM.jpg",
+    "tmdb_poster_path": "/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
+    "tmdb_overview": "This fiction-documentary hybrid uses a sensational real-life event—the arrest of a young man on charges that he fraudulently impersonated the well-known filmmaker Mohsen Makhmalbaf—as the basis for a stunning, multilayered investigation into movies, identity, artistic creation, and existence, in which the real people from the case play themselves.",
+    "runtime": 98,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 7.952
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "And Life Goes On",
+    "movie_title_en": "And Life Goes On",
+    "date_text": "2026-01-18",
+    "showtime": "20:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/and-life-goes-on",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-lozval",
+    "director": "Sho Tsukikawa",
+    "year": "2019",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 1223393,
+    "tmdb_title": "And Life Goes On",
+    "tmdb_original_title": "劇場版 そして、生きる",
+    "tmdb_backdrop_path": "/3zAk3OOUPbYRL9AAvUuxMF07W32.jpg",
+    "tmdb_poster_path": "/4nKcSXtlXWRQVUgJqJ1WuUV2vta.jpg",
+    "tmdb_overview": "Despite losing her parents at age three in a car accident, Toko experiences an idyllic childhood thanks to her uncle, who raises her. She dreams of being an actress and, having had some local notoriety in her town, she is ready to take a leap of faith and travel to Tokyo to audition. But, as fate would have it, her hopes are dashed as her world and her country are turned upside down when Japan is struck by the Great East Japan Earthquake on March 11, 2011. This motivates Toko to assist with aid efforts in Kesennuma where she meets volunteer organizer Kiyotaka. While she initially senses something about Kiyotaka is amiss in the midst of their devastated surroundings, feelings of hope grow as do their feelings for one another.",
+    "runtime": 135,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 9.5
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Homework",
+    "movie_title_en": "Homework",
+    "date_text": "2026-01-19",
+    "showtime": "20:15",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/homework-the-chorus",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-vrvyjv",
+    "director": "James Beshears",
+    "year": "1982",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 30412,
+    "tmdb_title": "Homework",
+    "tmdb_original_title": "Homework",
+    "tmdb_backdrop_path": "/iRNA3mmeY5RjS9alR0MXKBJKo1Q.jpg",
+    "tmdb_poster_path": "/fIgGU39q3h4n1f2GhWp1kAneAZ7.jpg",
+    "tmdb_overview": "Good-looking but virginal \"rockstar\" teen Tommy tries to score with some of the local high school girls. But a classmate's mom decides to make a man out of him.",
+    "runtime": 90,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 3.2
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Stalker",
+    "movie_title_en": "Stalker",
+    "date_text": "2026-01-21",
+    "showtime": "20:15",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/histoire-s-du-cinema/stalker",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-grqkel",
+    "director": "Moses Inwang",
+    "year": "2016",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 976218,
+    "tmdb_title": "Stalker",
+    "tmdb_original_title": "Stalker",
+    "tmdb_backdrop_path": "/s81D9yvZF31ejigxvHxX5Z3KCqJ.jpg",
+    "tmdb_poster_path": "/vBmOOIIfL9V8VpvS6STSJZ68Ni8.jpg",
+    "tmdb_overview": "A fashion stylist finds herself being stalked by a man after her car breaks down in the countryside.",
+    "runtime": 109,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 0.0
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "Keira Greene: Light Signalling",
+    "movie_title_en": "Keira Greene: Light Signalling",
+    "date_text": "2026-01-22",
+    "showtime": "20:15",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/keira-greene-light-signalling",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/t-oejzjmn",
+    "director": "",
+    "year": "",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": ""
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "The Short Films of David Lynch",
+    "movie_title_en": "The Short Films of David Lynch",
+    "date_text": "2026-01-23",
+    "showtime": "20:15",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/the-short-films-of-david-lynch",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-lozrpo",
+    "director": "David Lynch",
+    "year": "2002",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 1580961,
+    "tmdb_title": "The Short Films of David Lynch",
+    "tmdb_original_title": "The Short Films of David Lynch",
+    "tmdb_backdrop_path": null,
+    "tmdb_poster_path": "/86WCJiXMvPaXEnN02sFjiAbhdB.jpg",
+    "tmdb_overview": "A collection of visionary director David Lynch's short films from the first 29 years of his career is accompanied by a special introduction to each film by the director himself.",
+    "runtime": 97,
+    "genres": [],
+    "vote_average": 6.0
+  },
+  {
+    "cinema_name": "Close-Up Film Centre",
+    "movie_title": "And Life Goes On",
+    "movie_title_en": "And Life Goes On",
+    "date_text": "2026-01-24",
+    "showtime": "18:00",
+    "detail_page_url": "https://www.closeupfilmcentre.com/film_programmes/2026/close-up-on-abbas-kiarostami/and-life-goes-on",
+    "booking_url": "https://www.ticketsource.co.uk/close-up-cinema/e-lozval",
+    "director": "Sho Tsukikawa",
+    "year": "2019",
+    "country": "",
+    "runtime_min": "",
+    "synopsis": "",
+    "tmdb_id": 1223393,
+    "tmdb_title": "And Life Goes On",
+    "tmdb_original_title": "劇場版 そして、生きる",
+    "tmdb_backdrop_path": "/3zAk3OOUPbYRL9AAvUuxMF07W32.jpg",
+    "tmdb_poster_path": "/4nKcSXtlXWRQVUgJqJ1WuUV2vta.jpg",
+    "tmdb_overview": "Despite losing her parents at age three in a car accident, Toko experiences an idyllic childhood thanks to her uncle, who raises her. She dreams of being an actress and, having had some local notoriety in her town, she is ready to take a leap of faith and travel to Tokyo to audition. But, as fate would have it, her hopes are dashed as her world and her country are turned upside down when Japan is struck by the Great East Japan Earthquake on March 11, 2011. This motivates Toko to assist with aid efforts in Kesennuma where she meets volunteer organizer Kiyotaka. While she initially senses something about Kiyotaka is amiss in the midst of their devastated surroundings, feelings of hope grow as do their feelings for one another.",
+    "runtime": 135,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 9.5
+  },
+  {
     "cinema_name": "Phoenix Cinema",
     "movie_title": "Hamnet: Parents & Baby Screening",
     "movie_title_en": "Hamnet: Parents & Baby Screening",
@@ -13035,8 +13433,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "Pay What You Can"
     ],
     "tmdb_id": 1317288,
@@ -13125,8 +13523,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
@@ -13154,8 +13552,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
@@ -13212,8 +13610,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
@@ -13300,8 +13698,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "£6 Monday!"
     ],
     "tmdb_id": 1317288,
@@ -13330,8 +13728,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "£6 Monday!"
     ],
     "tmdb_id": 1317288,
@@ -13360,8 +13758,8 @@
     "runtime_min": "",
     "synopsis": "From Academy Award-winning writer-director Chloe Zhao, Hamnet tells the powerful love story that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
     "format_tags": [
-      "hard-of-hearing",
       "audio-described",
+      "hard-of-hearing",
       "£6 Monday!"
     ],
     "tmdb_id": 858024,
@@ -13391,8 +13789,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
@@ -13478,8 +13876,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
@@ -13598,8 +13996,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -13687,8 +14085,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
@@ -13745,8 +14143,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -13805,8 +14203,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
       "amplified-audio",
+      "audio-described",
       "+ free guest"
     ],
     "tmdb_id": 1317288,
@@ -13909,8 +14307,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
@@ -13997,9 +14395,9 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio",
       "parent-baby",
+      "amplified-audio",
+      "audio-described",
       "parent & baby"
     ],
     "tmdb_id": 1317288,
@@ -14088,8 +14486,8 @@
     "runtime_min": "",
     "synopsis": "In 1950s New York, Marty Mauser (Timothée Chalamet) is a fast-talking, street-smart optimist, caught in a dead-end job selling shoes in his uncle’s cramped apartment. But Marty has a plan: to become a champion table tennis player, and to turn the sport into a national phenomenon – and absolutely nothing is going to stop him. A young man with a dream no one respects, Marty goes to hell and back in pursuit of greatness.",
     "format_tags": [
-      "audio-described",
-      "amplified-audio"
+      "amplified-audio",
+      "audio-described"
     ],
     "tmdb_id": 1317288,
     "tmdb_title": "Marty Supreme",
