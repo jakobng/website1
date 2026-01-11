@@ -132,11 +132,48 @@ def get_fonts():
             "title_sub": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
             "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
             "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
-            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 24), 
+            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
             "date_label": ImageFont.truetype(str(BOLD_FONT_PATH), 20),
         }
     except:
-        print("⚠️ Fonts not found, using default.")
+        print("⚠️ Fonts not found, using system fallback.")
+        # Try common system fonts as fallback
+        fallback_fonts = [
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+            "/System/Library/Fonts/Helvetica.ttc",
+            "/Windows/Fonts/arial.ttf",
+        ]
+
+        system_font = None
+        for font_path in fallback_fonts:
+            try:
+                system_font = font_path
+                ImageFont.truetype(font_path, 20)  # Test if it loads
+                break
+            except:
+                continue
+
+        if system_font:
+            try:
+                return {
+                    "cover_main": ImageFont.truetype(system_font, 110),
+                    "cover_sub": ImageFont.truetype(system_font, 55),
+                    "cover_date": ImageFont.truetype(system_font, 40),
+                    "title_main": ImageFont.truetype(system_font, 60),
+                    "title_sub": ImageFont.truetype(system_font, 32),
+                    "meta": ImageFont.truetype(system_font, 24),
+                    "cinema": ImageFont.truetype(system_font, 28),
+                    "times": ImageFont.truetype(system_font, 24),
+                    "date_label": ImageFont.truetype(system_font, 20),
+                }
+            except:
+                pass
+
+        # Last resort: use PIL default
+        print("⚠️ No system fonts available, using PIL default (text will be small).")
         d = ImageFont.load_default()
         return {k: d for k in ["cover_main", "cover_sub", "cover_date", "title_main", "title_sub", "meta", "cinema", "times", "date_label"]}
 
