@@ -474,18 +474,14 @@ def draw_final_cover(composite, fonts, is_story=False):
     draw = ImageDraw.Draw(bg)
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
-    
-    main_text = "London Film Spotlights"
-    draw.text((cx + 4, cy - 80 + offset + 4), main_text, font=fonts['cover_main'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy - 80 + offset), main_text, font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
 
-    sub_text = "Today's Top Selections"
-    draw.text((cx + 2, cy + 30 + offset + 2), sub_text, font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 30 + offset), sub_text, font=fonts['cover_sub'], fill=(230,230,230), anchor="mm")
+    main_text = "Today's Film Selection"
+    draw.text((cx + 2, cy - 40 + offset + 2), main_text, font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 40 + offset), main_text, font=fonts['cover_sub'], fill=(255,255,255), anchor="mm")
 
     date_text = get_display_date_str()
-    draw.text((cx + 2, cy + 110 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
-    draw.text((cx, cy + 110 + offset), date_text, font=fonts['cover_date'], fill=(180,180,180), anchor="mm")
+    draw.text((cx + 2, cy + 40 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 40 + offset), date_text, font=fonts['cover_date'], fill=(180,180,180), anchor="mm")
 
     return bg
 
@@ -506,9 +502,14 @@ def draw_fallback_cover(images, fonts, is_story=False):
     draw = ImageDraw.Draw(bg)
     cx, cy = width // 2, height // 2
     offset = -80 if is_story else 0
-    
-    draw.text((cx, cy + offset), "London Film Spotlights", font=fonts['cover_main'], fill=(255,255,255), anchor="mm")
-    draw.text((cx, cy + 100 + offset), get_display_date_str(), font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
+
+    main_text = "Today's Film Selection"
+    draw.text((cx + 2, cy - 40 + offset + 2), main_text, font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 40 + offset), main_text, font=fonts['cover_sub'], fill=(255,255,255), anchor="mm")
+
+    date_text = get_display_date_str()
+    draw.text((cx + 2, cy + 40 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 40 + offset), date_text, font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
     return bg
 
 def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
