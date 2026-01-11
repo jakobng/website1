@@ -1,4 +1,4 @@
-name: Test London Image Generation
+name: Test - London Cinema Post
 
 on:
   workflow_dispatch:

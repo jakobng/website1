@@ -1,4 +1,4 @@
-name: Scrape & Post
+name: Tokyo - Scrape & Post
 
 on:
   workflow_dispatch:

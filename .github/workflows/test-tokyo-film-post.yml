@@ -1,4 +1,4 @@
-name: test generate_post2.py
+name: Test - Tokyo Film Post
 
 on:
   workflow_dispatch: # Manual trigger only
