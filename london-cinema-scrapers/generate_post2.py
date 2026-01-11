@@ -561,8 +561,13 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
         col1_x = 50
         col2_x = 50 + col_w + 20
         compact_size = 24
-        f_cin = ImageFont.truetype(str(BOLD_FONT_PATH), compact_size + 2)
-        f_time = ImageFont.truetype(str(REGULAR_FONT_PATH), compact_size)
+        try:
+            f_cin = ImageFont.truetype(str(BOLD_FONT_PATH), compact_size + 2)
+            f_time = ImageFont.truetype(str(REGULAR_FONT_PATH), compact_size)
+        except:
+            # Fallback to fonts dictionary if custom fonts not available
+            f_cin = fonts['cinema']
+            f_time = fonts['times']
         
         curr_x, curr_y = col1_x, cursor_y + 10
         for i, cin in enumerate(sorted_cinemas):
