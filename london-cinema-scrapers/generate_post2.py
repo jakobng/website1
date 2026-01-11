@@ -273,7 +273,7 @@ You are an art director making a movie collage poster.
 Return JSON: {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
 """
         response = client.models.generate_content(
-            model='gemini-3-pro-preview',
+            model='gemini-3-pro-image-preview',
             contents=[prompt, *images]
         )
         clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
