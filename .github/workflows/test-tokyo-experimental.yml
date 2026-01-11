@@ -1,4 +1,4 @@
-name: Test generate_post3.py
+name: Test - Tokyo Experimental
 
 on:
   workflow_dispatch: # Manual trigger only

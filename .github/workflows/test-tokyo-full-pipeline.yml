@@ -1,4 +1,4 @@
-name: Test Design+Upload (both cinemas+films)
+name: Test - Tokyo Full Pipeline
 
 on:
   workflow_dispatch: # Manual trigger
