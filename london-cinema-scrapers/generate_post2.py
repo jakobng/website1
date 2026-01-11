@@ -22,6 +22,9 @@ from pathlib import Path
 from io import BytesIO
 from zoneinfo import ZoneInfo
 
+# --- PIL imports ---
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter
+
 # --- API Setup ---
 try:
     import replicate
