@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Generator V3 (Prototype)
         # ⚠️ Ensures the script finds showtimes.json in the same folder
-        working-directory: './cinema-scrapers' 
+        working-directory: './tokyo-cinema-scrapers' 
         run: python generate_post3.py
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
@@ -39,14 +39,14 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           # --- FIX: Match the actual output folder and filenames ---
-          # The script saves to 'cinema-scrapers/ig_posts/', so we explicitly add that folder.
+          # The script saves to 'tokyo-cinema-scrapers/ig_posts/', so we explicitly add that folder.
           
           # Force add all V3 images (Feed & Story)
-          git add -f cinema-scrapers/ig_posts/post_v3_*.png
-          git add -f cinema-scrapers/ig_posts/story_v3_*.png
+          git add -f tokyo-cinema-scrapers/ig_posts/post_v3_*.png
+          git add -f tokyo-cinema-scrapers/ig_posts/story_v3_*.png
           
           # Add the caption so you can read the AI's "Vibe Check"
-          git add -f cinema-scrapers/ig_posts/post_v3_caption.txt
+          git add -f tokyo-cinema-scrapers/ig_posts/post_v3_caption.txt
 
           # Debug: Show us what is staged
           git status

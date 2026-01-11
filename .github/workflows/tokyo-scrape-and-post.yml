@@ -24,10 +24,10 @@ jobs:
   scrape-and-post:
     runs-on: ubuntu-latest
     
-    # Run all steps inside the 'cinema-scrapers' folder
+    # Run all steps inside the 'tokyo-cinema-scrapers' folder
     defaults:
       run:
-        working-directory: ./cinema-scrapers
+        working-directory: ./tokyo-cinema-scrapers
 
     steps:
       - name: Checkout code

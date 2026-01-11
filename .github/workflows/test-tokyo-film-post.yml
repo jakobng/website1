@@ -25,7 +25,7 @@ jobs:
           pip install requests Pillow replicate google-genai tzdata
 
       - name: Run Generator (V2 Punk Mode)
-        working-directory: './cinema-scrapers'
+        working-directory: './tokyo-cinema-scrapers'
         run: python generate_post2.py
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
@@ -39,12 +39,12 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
           # 1. Add Images & Captions (Force add in case folder is new)
-          git add -f cinema-scrapers/ig_posts/post_v2_*.png || true
-          git add -f cinema-scrapers/ig_posts/story_v2_*.png || true
-          git add -f cinema-scrapers/ig_posts/post_v2_caption.txt || true
+          git add -f tokyo-cinema-scrapers/ig_posts/post_v2_*.png || true
+          git add -f tokyo-cinema-scrapers/ig_posts/story_v2_*.png || true
+          git add -f tokyo-cinema-scrapers/ig_posts/post_v2_caption.txt || true
           
           # 2. NEW: Add the history file so git is clean
-          git add cinema-scrapers/data/featured_history.json || true
+          git add tokyo-cinema-scrapers/data/featured_history.json || true
           
           # 3. Check for changes
           if git diff --staged --quiet; then

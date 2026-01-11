@@ -11,7 +11,7 @@ IG_USER_ID = os.environ.get("IG_USER_ID")
 IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN")
 
 # Point to the new folder in the URL so Instagram can download them
-GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/cinema-scrapers/ig_posts/" 
+GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/tokyo-cinema-scrapers/ig_posts/" 
 
 API_VERSION = "v21.0"
 GRAPH_URL = f"https://graph.facebook.com/{API_VERSION}"

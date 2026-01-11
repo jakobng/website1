@@ -32,7 +32,7 @@ jobs:
       # --- GENERATION PHASE ---
 
       - name: Run Generator V1 (Cinemas / Sunburst)
-        working-directory: './cinema-scrapers'
+        working-directory: './tokyo-cinema-scrapers'
         run: python generate_post.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
@@ -40,7 +40,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Run Generator V2 (Movies / Punk Zine)
-        working-directory: './cinema-scrapers'
+        working-directory: './tokyo-cinema-scrapers'
         # Now safe to run immediately after V1
         run: python generate_post2.py --type movie
         env:
@@ -57,17 +57,17 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
           # 1. Add DATA files
-          git add 'cinema-scrapers/data/*.json' || true
+          git add 'tokyo-cinema-scrapers/data/*.json' || true
 
           # 2. Add V1 Assets (Cinemas)
-          git add 'cinema-scrapers/ig_posts/post_image_*.png' || true
-          git add 'cinema-scrapers/ig_posts/story_image_*.png' || true
-          git add 'cinema-scrapers/ig_posts/post_caption.txt' || true
+          git add 'tokyo-cinema-scrapers/ig_posts/post_image_*.png' || true
+          git add 'tokyo-cinema-scrapers/ig_posts/story_image_*.png' || true
+          git add 'tokyo-cinema-scrapers/ig_posts/post_caption.txt' || true
           
           # 3. Add V2 Assets (Movies - Punk Zine)
-          git add 'cinema-scrapers/ig_posts/post_v2_image_*.png' || true
-          git add 'cinema-scrapers/ig_posts/story_v2_image_*.png' || true
-          git add 'cinema-scrapers/ig_posts/post_v2_caption.txt' || true
+          git add 'tokyo-cinema-scrapers/ig_posts/post_v2_image_*.png' || true
+          git add 'tokyo-cinema-scrapers/ig_posts/story_v2_image_*.png' || true
+          git add 'tokyo-cinema-scrapers/ig_posts/post_v2_caption.txt' || true
           
           if git diff --staged --quiet; then
             echo "No changes to commit."
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload V1 (Cinemas)
         if: steps.commit_push.outputs.pushed == 'true'
-        working-directory: './cinema-scrapers'
+        working-directory: './tokyo-cinema-scrapers'
         continue-on-error: true
         run: python upload_to_instagram.py --type cinema
         env:
@@ -103,7 +103,7 @@ jobs:
 
       - name: Upload V2 (Movies / Punk Zine)
         if: steps.commit_push.outputs.pushed == 'true'
-        working-directory: './cinema-scrapers'
+        working-directory: './tokyo-cinema-scrapers'
         run: python upload_to_instagram.py --type movie
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
