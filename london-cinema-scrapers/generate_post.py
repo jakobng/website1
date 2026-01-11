@@ -242,20 +242,34 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
         return None
 
     candidates = list(ASSETS_DIR.glob("*"))
-    matches = []
+    exact_matches = []
+    substring_matches = []
+    fuzzy_matches = []
+
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']:
             continue
         f_name = normalize_name(f.stem)
-        if target in f_name or f_name in target:
-            matches.append(f)
+
+        # Prioritize exact matches
+        if f_name == target:
+            exact_matches.append(f)
+        # Then substring matches
+        elif target in f_name or f_name in target:
+            substring_matches.append(f)
+        # Finally fuzzy matches
         else:
             ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
             if ratio > 0.6:
-                matches.append(f)
+                fuzzy_matches.append(f)
 
-    if matches:
-        return random.choice(matches)
+    # Return in order of priority
+    if exact_matches:
+        return random.choice(exact_matches)
+    elif substring_matches:
+        return random.choice(substring_matches)
+    elif fuzzy_matches:
+        return random.choice(fuzzy_matches)
     return None
 
 
