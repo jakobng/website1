@@ -22,5 +22,9 @@ pytz>=2023.3
 # Image processing (for future post generation)
 Pillow>=9.4.0
 
+# AI image processing
+replicate>=0.15.0
+google-generativeai>=0.3.0
+
 # YAML parsing
 pyyaml>=6.0
