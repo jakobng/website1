@@ -442,8 +442,7 @@ def upscale_image(img: Image.Image) -> Image.Image:
         img.save(temp_path, format="PNG")
         
         output = replicate.run(
-            # Updated to latest stable version (Nov 2024)
-            "nightmareai/real-esrgan:279a18ae4f30c9d3636516918d76c8c8262a9bc7c415fe90a88087c78c9ebbef",
+            "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73ab415c722d379caa961",
             input={
                 "image": open(temp_path, "rb"),
                 "scale": 2,
@@ -455,9 +454,7 @@ def upscale_image(img: Image.Image) -> Image.Image:
             os.remove(temp_path)
             
         if output:
-            # Replicate usually returns a URL string, but sometimes a File object
-            url = output.url if hasattr(output, 'url') else (output[0] if isinstance(output, list) else output)
-            
+            url = output if isinstance(output, str) else output[0]
             resp = requests.get(url)
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGB")
@@ -656,21 +653,13 @@ def main() -> None:
     if cinema_images and len(cinema_images) >= 2:
         print("   🎨 Building Hero Collage...")
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
-        
-        # 1. Inpaint (Returns a smaller, creative SD 1.5 image)
-        inpainted_small = inpaint_gaps(layout_rgb, mask) 
-        
-        # 2. Upscale (Makes it sharp and big)
-        print("   🔍 Upscaling to high res...")
-        upscaled_bg = upscale_image(inpainted_small)
-        
-        # Resize to fit exactly our canvas (Upscale might be slightly different size)
-        final_bg = upscaled_bg.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
-
-        # 3. Add Text
-        print("   🔤 Applying text overlay...")
-        final_cover = draw_hero_text_overlay(final_bg, bilingual_date_str)
-        
+        cover_bg = inpaint_gaps(layout_rgb, mask)
+        names_list = [c[0] for c in cinema_images]
+        final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
+        final_cover.save(OUTPUT_DIR / "post_image_00.png")
+    else:
+        print("   📝 Using simple cover (no cinema images found)")
+        final_cover = render_simple_cover(today)
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
 
     # SLIDES
