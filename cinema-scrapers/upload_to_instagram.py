@@ -50,11 +50,24 @@ def upload_carousel_child_container(image_url):
     }
     response = requests.post(url, data=payload)
     result = response.json()
-    
+
     if "id" not in result:
         print(f"❌ Error creating child container: {result}")
+
+        # Check for authentication errors - fail immediately
+        if "error" in result:
+            error_code = result["error"].get("code")
+            if error_code == 190:  # OAuth/Authentication error
+                print("🚨 CRITICAL: Access token is invalid or expired!")
+                print("   This is likely due to:")
+                print("   - Token expiration (Instagram tokens need periodic renewal)")
+                print("   - Password change on Instagram/Facebook account")
+                print("   - Session invalidated by Facebook for security")
+                print("\n   ACTION REQUIRED: Regenerate IG_ACCESS_TOKEN and update GitHub secrets")
+                sys.exit(1)
+
         return None
-        
+
     print(f"   - Child Container Created: {result['id']}")
     return result["id"]
 
@@ -87,11 +100,24 @@ def upload_story_container(image_url):
     }
     response = requests.post(url, data=payload)
     result = response.json()
-    
+
     if "id" not in result:
         print(f"❌ Error creating Story container: {result}")
+
+        # Check for authentication errors - fail immediately
+        if "error" in result:
+            error_code = result["error"].get("code")
+            if error_code == 190:  # OAuth/Authentication error
+                print("🚨 CRITICAL: Access token is invalid or expired!")
+                print("   This is likely due to:")
+                print("   - Token expiration (Instagram tokens need periodic renewal)")
+                print("   - Password change on Instagram/Facebook account")
+                print("   - Session invalidated by Facebook for security")
+                print("\n   ACTION REQUIRED: Regenerate IG_ACCESS_TOKEN and update GitHub secrets")
+                sys.exit(1)
+
         return None
-        
+
     print(f"✅ Created Story Container ID: {result['id']}")
     return result["id"]
 
