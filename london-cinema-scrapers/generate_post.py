@@ -394,31 +394,37 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (Stability AI)...")
+    print("   🎨 Inpainting gaps (FLUX Fill Pro)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
         layout_img.save(temp_img_path, format="PNG")
         mask_img.save(temp_mask_path, format="PNG")
 
+        # FLUX Fill Pro uses 'guidance' instead of 'guidance_scale' and does not use 'strength' or 'negative_prompt'.
         output = replicate.run(
-            "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
+            "black-forest-labs/flux-fill-pro",
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
                 "prompt": "surreal architectural mashup, single unified dream structure, classical cinema architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, London aesthetic, 8k",
-                "negative_prompt": "car, grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
-                "num_inference_steps": 30,
-                "guidance_scale": 7.5,
-                "strength": 0.85
+                "guidance": 60,
+                "steps": 50,
+                "output_format": "jpg",
+                "safety_tolerance": 2
             }
         )
+        
+        # Clean up temp files
         if temp_img_path.exists():
             os.remove(temp_img_path)
         if temp_mask_path.exists():
             os.remove(temp_mask_path)
+            
         if output:
-            url = output[0] if isinstance(output, list) else output
+            # Handle Replicate output (can be a File object with .url or a direct string/list)
+            url = output.url if hasattr(output, 'url') else (output[0] if isinstance(output, list) else output)
+            
             resp = requests.get(url)
             if resp.status_code == 200:
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
