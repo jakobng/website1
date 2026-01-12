@@ -653,13 +653,21 @@ def main() -> None:
     if cinema_images and len(cinema_images) >= 2:
         print("   🎨 Building Hero Collage...")
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
-        cover_bg = inpaint_gaps(layout_rgb, mask)
-        names_list = [c[0] for c in cinema_images]
-        final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
-        final_cover.save(OUTPUT_DIR / "post_image_00.png")
-    else:
-        print("   📝 Using simple cover (no cinema images found)")
-        final_cover = render_simple_cover(today)
+        
+        # 1. Inpaint (Returns a smaller, creative SD 1.5 image)
+        inpainted_small = inpaint_gaps(layout_rgb, mask) 
+        
+        # 2. Upscale (Makes it sharp and big)
+        print("   🔍 Upscaling to high res...")
+        upscaled_bg = upscale_image(inpainted_small)
+        
+        # Resize to fit exactly our canvas (Upscale might be slightly different size)
+        final_bg = upscaled_bg.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+
+        # 3. Add Text
+        print("   🔤 Applying text overlay...")
+        final_cover = draw_hero_text_overlay(final_bg, bilingual_date_str)
+        
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
 
     # SLIDES
