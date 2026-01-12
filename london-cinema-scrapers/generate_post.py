@@ -307,16 +307,17 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     height = target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
+    
+    # 1. Initialize mask as White (255) = Area to Inpaint
     mask = Image.new("L", (width, height), 255)
 
-    # Use 4 cutouts for a balanced collage (like Tokyo)
+    # Use 4 cutouts for a balanced collage
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4:
         imgs_to_process = (imgs_to_process * 4)[:4]
 
     random.shuffle(imgs_to_process)
 
-    # Generate random anchor points for each cutout (like Tokyo)
     anchors = [
         (random.randint(int(width * 0.15), int(width * 0.85)),
          random.randint(int(height * 0.15), int(height * 0.85)))
@@ -326,35 +327,42 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     for i, (name, path) in enumerate(imgs_to_process):
         try:
             raw = Image.open(path).convert("RGBA")
-            # Convert white backgrounds to transparent for pre-made cutouts
             cutout = convert_white_to_transparent(raw)
             bbox = cutout.getbbox()
             if bbox:
                 cutout = cutout.crop(bbox)
 
-            # Match Tokyo's scale settings
             scale_variance = random.uniform(0.8, 1.1)
             max_dim = int(600 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
             cx, cy = anchors[i]
-            # Match Tokyo's jitter range
             cx += random.randint(-50, 50)
             cy += random.randint(-50, 50)
 
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
 
+            # Paste image onto layout
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
+            
+            # 2. Update Mask: Black (0) = Keep this area
+            # We use the image's alpha channel to define the "Keep" zone
             alpha = cutout.split()[3]
             mask.paste(0, (x, y), mask=alpha)
+            
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    mask = mask.filter(ImageFilter.MaxFilter(11))
+    # 3. AGGRESSIVE MASK PROCESSING (The Fix)
+    # MaxFilter(25) expands the White area (Inpaint zone) into the Black area (Image zone) by 25 pixels.
+    # This forces the AI to regenerate the edges of your cutouts, blending them.
+    # GaussianBlur(10) softens the transition so it's not a hard line.
+    mask = mask.filter(ImageFilter.MaxFilter(25)) 
+    mask = mask.filter(ImageFilter.GaussianBlur(10))
+    
     return layout_rgba, layout_rgb.convert("RGB"), mask
-
 
 def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
     print("   ✨ Refining Hero Collage (Gemini + Text Rendering)...")
@@ -394,24 +402,23 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (FLUX Fill Pro)...")
+    print("   🎨 Inpainting gaps (SDXL Inpainting)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
         layout_img.save(temp_img_path, format="PNG")
         mask_img.save(temp_mask_path, format="PNG")
 
-        # FLUX Fill Pro uses 'guidance' instead of 'guidance_scale' and does not use 'strength' or 'negative_prompt'.
         output = replicate.run(
-            "black-forest-labs/flux-fill-pro",
+            "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                "prompt": "surreal architectural mashup, single unified dream structure, classical cinema architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, London aesthetic, 8k",
-                "guidance": 60,
-                "steps": 50,
-                "output_format": "jpg",
-                "safety_tolerance": 2
+                "prompt": "surreal architectural mashup, single unified dream structure, classical cinema architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, London aesthetic, 8k, hyperrealistic",
+                "negative_prompt": "collage, cutouts, hard edges, seams, split screen, borders, frames, text, watermark, blurry, puzzle pieces",
+                "prompt_strength": 0.85, # High adherence to "surreal mashup"
+                "strength": 0.90,        # High strength to allow creative hallucination in the gaps
+                "num_inference_steps": 40
             }
         )
         
@@ -422,9 +429,8 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             os.remove(temp_mask_path)
             
         if output:
-            # Handle Replicate output (can be a File object with .url or a direct string/list)
-            url = output.url if hasattr(output, 'url') else (output[0] if isinstance(output, list) else output)
-            
+            # Handle potential list or string output
+            url = output[0] if isinstance(output, list) else output
             resp = requests.get(url)
             if resp.status_code == 200:
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
