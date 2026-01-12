@@ -155,6 +155,16 @@
             gap: 12px;
         }
 
+        .filters-header {
+            display: none;
+        }
+
+        .filters-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .filter-grid {
             display: grid;
             grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -550,6 +560,51 @@
             h1 {
                 letter-spacing: 0.1em;
             }
+
+            .filters-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .filters-header-label {
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--muted);
+            }
+
+            .filters-toggle {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                border: none;
+                background: transparent;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--accent-strong);
+                cursor: pointer;
+                padding: 4px 0;
+            }
+
+            .filters-toggle-icon {
+                transition: transform 0.2s ease;
+            }
+
+            .filters-toggle.is-collapsed .filters-toggle-icon {
+                transform: rotate(-90deg);
+            }
+
+            .filters-content {
+                display: none;
+            }
+
+            .filters-content.is-expanded {
+                display: flex;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -582,38 +637,47 @@
         </header>
 
         <section class="filters">
-            <div class="filter-grid">
-                <div class="filter">
-                    <label for="search-input">検索 (Search)</label>
-                    <input id="search-input" type="search" placeholder="作品・劇場・監督・ジャンル (Film, cinema, director, genre)">
-                </div>
-                <div class="filter">
-                    <label for="date-select">日付 (Date)</label>
-                    <select id="date-select"></select>
-                </div>
-                <div class="filter">
-                    <label for="time-select">時間帯 (Time)</label>
-                    <select id="time-select">
-                        <option value="any">指定なし (Any time)</option>
-                        <option value="morning">午前 (Morning, before 12)</option>
-                        <option value="afternoon">午後 (Afternoon, 12-17)</option>
-                        <option value="evening">夕方 (Evening, 17-21)</option>
-                        <option value="late">夜 (Late, after 21)</option>
-                    </select>
-                </div>
-                <div class="filter">
-                    <label for="region-select">地域 (Region)</label>
-                    <select id="region-select"></select>
-                </div>
-                <div class="filter">
-                    <label for="sort-select">並び替え (Sort)</label>
-                    <select id="sort-select"></select>
-                </div>
+            <div class="filters-header">
+                <span class="filters-header-label">フィルター (Filters)</span>
+                <button class="filters-toggle" type="button" id="filters-toggle">
+                    <span>表示 (Show)</span>
+                    <span class="filters-toggle-icon">▼</span>
+                </button>
             </div>
-            <div class="filter-grid filter-grid-wide">
-                <div class="filter options-row">
-                    <span class="filter-label">フィルター (Filters)</span>
-                    <button class="link-btn" type="button" id="clear-filters">フィルターをクリア (Clear filters)</button>
+            <div class="filters-content" id="filters-content">
+                <div class="filter-grid">
+                    <div class="filter">
+                        <label for="search-input">検索 (Search)</label>
+                        <input id="search-input" type="search" placeholder="作品・劇場・監督・ジャンル (Film, cinema, director, genre)">
+                    </div>
+                    <div class="filter">
+                        <label for="date-select">日付 (Date)</label>
+                        <select id="date-select"></select>
+                    </div>
+                    <div class="filter">
+                        <label for="time-select">時間帯 (Time)</label>
+                        <select id="time-select">
+                            <option value="any">指定なし (Any time)</option>
+                            <option value="morning">午前 (Morning, before 12)</option>
+                            <option value="afternoon">午後 (Afternoon, 12-17)</option>
+                            <option value="evening">夕方 (Evening, 17-21)</option>
+                            <option value="late">夜 (Late, after 21)</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="region-select">地域 (Region)</label>
+                        <select id="region-select"></select>
+                    </div>
+                    <div class="filter">
+                        <label for="sort-select">並び替え (Sort)</label>
+                        <select id="sort-select"></select>
+                    </div>
+                </div>
+                <div class="filter-grid filter-grid-wide">
+                    <div class="filter options-row">
+                        <span class="filter-label">フィルター (Filters)</span>
+                        <button class="link-btn" type="button" id="clear-filters">フィルターをクリア (Clear filters)</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -726,6 +790,8 @@
                 regionSelect: document.getElementById("region-select"),
                 sortSelect: document.getElementById("sort-select"),
                 clearFilters: document.getElementById("clear-filters"),
+                filtersToggle: document.getElementById("filters-toggle"),
+                filtersContent: document.getElementById("filters-content"),
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
                 cinemaView: document.getElementById("cinema-view"),
                 cinemaIndex: document.getElementById("cinema-index"),
@@ -748,6 +814,7 @@
                 sort: "name",
                 todayDate: "",
                 selectedCinema: "",
+                filtersExpanded: false,
                 filters: {
                     search: "",
                     date: "all",
@@ -801,6 +868,13 @@
             elements.sortSelect.addEventListener("change", function (event) {
                 state.sort = event.target.value;
                 render();
+            });
+
+            elements.filtersToggle.addEventListener("click", function () {
+                state.filtersExpanded = !state.filtersExpanded;
+                elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
+                elements.filtersToggle.classList.toggle("is-collapsed", !state.filtersExpanded);
+                elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? "非表示 (Hide)" : "表示 (Show)";
             });
 
             elements.clearFilters.addEventListener("click", function () {
