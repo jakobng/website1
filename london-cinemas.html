@@ -135,6 +135,45 @@
             margin-bottom: 8px;
         }
 
+        /* Regional Accordion Styling */
+        .region-details {
+            border: 1px solid var(--border-soft);
+            margin-bottom: 8px;
+            background: #fff;
+        }
+
+        .region-summary {
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            background: var(--bg);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .region-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .region-summary::after {
+            content: "▼";
+            font-size: 0.7rem;
+            transition: transform 0.2s;
+        }
+
+        .region-details[open] .region-summary::after {
+            transform: rotate(180deg);
+        }
+
+        .region-content {
+            padding: 0 14px 10px;
+        }
+
         .toggle {
             display: inline-flex;
             border: var(--border-width) solid var(--border);
@@ -703,6 +742,10 @@
                         <label for="region-select">Region</label>
                         <select id="region-select"></select>
                     </div>
+                    <div class="filter" id="sort-filter-container">
+                        <label for="sort-select">Sort</label>
+                        <select id="sort-select"></select>
+                    </div>
 
                 </div>
                 <div class="filter-grid filter-grid-wide">
@@ -872,6 +915,8 @@
                 dateSelect: document.getElementById("date-select"),
                 timeSelect: document.getElementById("time-select"),
                 regionSelect: document.getElementById("region-select"),
+                sortSelect: document.getElementById("sort-select"),
+                sortFilterContainer: document.getElementById("sort-filter-container"),
                 clearFilters: document.getElementById("clear-filters"),
                 includeChains: document.getElementById("include-chains"),
                 filtersToggle: document.getElementById("filters-toggle"),
@@ -895,6 +940,7 @@
             const state = {
                 data: [],
                 view: "cinema",
+                sort: "soonest",
                 todayDate: "",
                 selectedCinema: "",
                 filtersExpanded: false,
@@ -905,6 +951,13 @@
                     region: "all",
                     includeChains: false
                 }
+            };
+
+            const sortOptions = {
+                film: [
+                    { value: "soonest", label: "Soonest" },
+                    { value: "title", label: "A-Z" }
+                ]
             };
 
             const dateFormatter = new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short" });
@@ -937,6 +990,11 @@
 
             elements.regionSelect.addEventListener("change", function (event) {
                 state.filters.region = event.target.value;
+                render();
+            });
+
+            elements.sortSelect.addEventListener("change", function (event) {
+                state.sort = event.target.value;
                 render();
             });
 
@@ -994,11 +1052,37 @@
                     const isActive = button.getAttribute("data-view") === view;
                     button.classList.toggle("is-active", isActive);
                 });
+                
+                updateSortOptions();
+                
                 if (view === "film" && state.filters.date === "all" && state.todayDate) {
                     state.filters.date = state.todayDate;
                     elements.dateSelect.value = state.todayDate;
                 }
                 render();
+            }
+
+            function updateSortOptions() {
+                const options = sortOptions[state.view];
+                if (!options) {
+                    elements.sortFilterContainer.classList.add("is-hidden");
+                    return;
+                }
+                elements.sortFilterContainer.classList.remove("is-hidden");
+                
+                const currentValue = state.sort;
+                elements.sortSelect.innerHTML = "";
+                options.forEach(function (option) {
+                    const optionEl = document.createElement("option");
+                    optionEl.value = option.value;
+                    optionEl.textContent = option.label;
+                    elements.sortSelect.appendChild(optionEl);
+                });
+                const stillValid = options.some(function (option) {
+                    return option.value === currentValue;
+                });
+                state.sort = stillValid ? currentValue : options[0].value;
+                elements.sortSelect.value = state.sort;
             }
 
             function createElement(tag, className, text) {
@@ -1201,6 +1285,8 @@
                     elements.regionSelect.appendChild(option);
                 });
                 elements.regionSelect.value = state.filters.region || "all";
+                
+                updateSortOptions();
             }
 
             function normalizeShowings(rawData) {
@@ -1214,7 +1300,15 @@
                     const runtimeRaw = item.runtime_min || item.runtime || "";
                     const runtime = parseInt(runtimeRaw, 10);
                     const genres = Array.isArray(item.genres) ? item.genres : [];
-                    const formatTags = Array.isArray(item.format_tags) ? item.format_tags : [];
+                    const unwantedTags = new Set([
+                        "Auditorium.Comfort.ReservedSeating",
+                        "Format.Projection.Digital",
+                        "Main Feature",
+                        "Electric Scream!",
+                        "Electric Subtitled"
+                    ]);
+                    const formatTags = (Array.isArray(item.format_tags) ? item.format_tags : [])
+                        .filter(tag => !unwantedTags.has(tag));
 
                     return {
                         id: index,
@@ -1580,10 +1674,16 @@
                             });
 
                             if (cinemasInRegion.length > 0) {
-                                body.appendChild(createElement("div", "film-region-header", region));
+                                const details = createElement("details", "region-details");
+                                const summary = createElement("summary", "region-summary", region);
+                                details.appendChild(summary);
+                                
+                                const content = createElement("div", "region-content");
                                 cinemasInRegion.sort().forEach(function (cinema) {
-                                    renderCinemaRow(body, cinema, showingsByCinema.get(cinema));
+                                    renderCinemaRow(content, cinema, showingsByCinema.get(cinema));
                                 });
+                                details.appendChild(content);
+                                body.appendChild(details);
                             }
                         });
                     } else {
@@ -1641,7 +1741,11 @@
                 }
 
                 const films = groupByFilm(showings);
-                films.sort(function (a, b) { return a.nextTime - b.nextTime; });
+                if (state.sort === "soonest") {
+                    films.sort(function (a, b) { return a.nextTime - b.nextTime; });
+                } else {
+                    films.sort(function (a, b) { return a.title.localeCompare(b.title); });
+                }
 
                 renderFilmList(films, showings.length);
             }
