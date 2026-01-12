@@ -11,7 +11,6 @@ from . import ica_module
 from . import close_up_module
 from . import phoenix_cinema_module
 from . import castle_cinema_module
-from . import curzon_soho_module
 from . import cine_lumiere_module
 from . import electric_cinema_module
 from . import dochouse_module
@@ -28,5 +27,17 @@ from . import chiswick_cinema_module
 from . import cinema_in_the_arches_module
 from . import david_lean_module
 from . import regent_street_module
-from . import ritzy_module
 from . import kiln_theatre_module
+from . import riverside_studios_module
+
+# Chain scrapers (cover multiple locations)
+from . import curzon_chain_module
+from . import everyman_chain_module
+from . import picturehouse_chain_module
+
+# Additional individual cinemas
+from . import bfi_imax_module
+from . import cine_real_module
+from . import coldharbour_blue_module
+from . import olympic_studios_module
+from . import the_arzner_module
