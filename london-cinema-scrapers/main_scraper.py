@@ -32,7 +32,6 @@ from cinema_modules import (
     phoenix_cinema_module,
     castle_cinema_module,
     electric_cinema_module,
-    curzon_soho_module,
     rio_cinema_module,
     dochouse_module,
     sands_films_module,
@@ -43,15 +42,23 @@ from cinema_modules import (
     peckhamplex_module,
     cinema_museum_module,
     rich_mix_module,
-    # New cinema modules
     act_one_module,
     chiswick_cinema_module,
     cinema_in_the_arches_module,
     david_lean_module,
     regent_street_module,
-    ritzy_module,
     kiln_theatre_module,
     riverside_studios_module,
+    # Chain scrapers (cover multiple locations each)
+    curzon_chain_module,
+    everyman_chain_module,
+    picturehouse_chain_module,
+    # Additional individual cinemas
+    bfi_imax_module,
+    cine_real_module,
+    coldharbour_blue_module,
+    olympic_studios_module,
+    the_arzner_module,
 )
 
 # --- Configuration ---
@@ -628,7 +635,9 @@ def main():
     # 1. DEFINE SCRAPERS TO RUN
     # Format: (Display Name, Function Object, Optional Normalizer)
     scrapers_to_run = [
+        # Individual cinemas
         ("BFI Southbank", bfi_southbank_module.scrape_bfi_southbank, None),
+        ("BFI IMAX", bfi_imax_module.scrape_bfi_imax, None),
         ("Prince Charles Cinema", prince_charles_module.scrape_prince_charles, None),
         ("The Garden Cinema", garden_cinema_module.scrape_garden_cinema, None),
         ("The Nickel", nickel_module.scrape_nickel, None),
@@ -639,7 +648,6 @@ def main():
         ("Phoenix Cinema", phoenix_cinema_module.scrape_phoenix_cinema, None),
         ("The Castle Cinema", castle_cinema_module.scrape_castle_cinema, None),
         ("Electric Cinema", electric_cinema_module.scrape_electric_cinema, None),
-        ("Curzon Soho", curzon_soho_module.scrape_curzon_soho, None),
         ("Bertha DocHouse", dochouse_module.scrape_dochouse, None),
         ("Sands Films Cinema Club", sands_films_module.scrape_sands_films, None),
         ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere, None),
@@ -650,15 +658,21 @@ def main():
         ("Peckhamplex", peckhamplex_module.scrape_peckhamplex, None),
         ("The Cinema Museum", cinema_museum_module.scrape_cinema_museum, None),
         ("Rich Mix", rich_mix_module.scrape_rich_mix, None),
-        # New cinema scrapers
         ("ActOne Cinema & Cafe", act_one_module.scrape_act_one_cinema, None),
         ("Chiswick Cinema", chiswick_cinema_module.scrape_chiswick_cinema, None),
         ("The Cinema in the Arches", cinema_in_the_arches_module.scrape_cinema_in_the_arches, None),
         ("David Lean Cinema", david_lean_module.scrape_david_lean, None),
         ("Regent Street Cinema", regent_street_module.scrape_regent_street, None),
-        ("Ritzy Cinema", ritzy_module.scrape_ritzy, None),
         ("Kiln Theatre", kiln_theatre_module.scrape_kiln_theatre, None),
         ("Riverside Studios", riverside_studios_module.scrape_riverside_studios, None),
+        ("Ciné-Real", cine_real_module.scrape_cine_real, None),
+        ("Coldharbour Blue", coldharbour_blue_module.scrape_coldharbour_blue, None),
+        ("Olympic Studios (Barnes)", olympic_studios_module.scrape_olympic_studios, None),
+        ("The Arzner", the_arzner_module.scrape_the_arzner, None),
+        # Chain scrapers (multiple locations each)
+        ("Curzon Cinemas", curzon_chain_module.scrape_all_curzon, None),
+        ("Everyman Cinemas", everyman_chain_module.scrape_everyman_locations, None),
+        ("Picturehouse Cinemas", picturehouse_chain_module.scrape_all_picturehouse, None),
     ]
 
     print("Starting all scrapers...")
