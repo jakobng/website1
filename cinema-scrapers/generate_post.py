@@ -65,6 +65,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # Path Updates
 SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
 ASSETS_DIR = BASE_DIR / "cinema_assets"
+CUTOUTS_DIR = ASSETS_DIR / "cutouts"
 OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_caption.txt"
 
 # Font Updates
@@ -280,6 +281,7 @@ def normalize_name(s):
     return re.sub(r'[^a-z0-9]', '', s)
 
 def get_cinema_image_path(cinema_name: str) -> Path | None:
+    """Get full cinema image for slide backgrounds from ASSETS_DIR."""
     if not ASSETS_DIR.exists(): return None
     if cinema_name in CINEMA_FILENAME_OVERRIDES:
         target = CINEMA_FILENAME_OVERRIDES[cinema_name]
@@ -300,10 +302,51 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
             ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
             if ratio > 0.6:
                 matches.append(f)
-            
+
     if matches:
-        return random.choice(matches) 
+        return random.choice(matches)
     return None
+
+def get_cutout_path(cinema_name: str) -> Path | None:
+    """Get cutout image for hero collage from CUTOUTS_DIR subfolder."""
+    if not CUTOUTS_DIR.exists(): return None
+    if cinema_name in CINEMA_FILENAME_OVERRIDES:
+        target = CINEMA_FILENAME_OVERRIDES[cinema_name]
+    else:
+        clean_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "") or cinema_name
+        target = normalize_name(clean_name).replace("cinema", "").replace("theatre", "").strip()
+
+    if not target: return None
+
+    candidates = list(CUTOUTS_DIR.glob("*"))
+    matches = []
+    for f in candidates:
+        if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
+        f_name = normalize_name(f.stem)
+        if target in f_name:
+            matches.append(f)
+        else:
+            ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
+            if ratio > 0.6:
+                matches.append(f)
+
+    if matches:
+        return random.choice(matches)
+    return None
+
+def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Image.Image:
+    """Convert white/near-white pixels to transparent for cutouts with white backgrounds."""
+    img = img.convert("RGBA")
+    data = img.getdata()
+    new_data = []
+    for item in data:
+        # If pixel is white-ish (all RGB values above threshold), make transparent
+        if item[0] > threshold and item[1] > threshold and item[2] > threshold:
+            new_data.append((255, 255, 255, 0))
+        else:
+            new_data.append(item)
+    img.putdata(new_data)
+    return img
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
@@ -333,39 +376,39 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
     mask = Image.new("L", (width, height), 255)
-    
-    imgs_to_process = cinemas[:5]
-    if len(imgs_to_process) < 5:
-        imgs_to_process = (imgs_to_process * 3)[:5]
-        
+
+    # Use only 2 cutouts for a simpler, more cohesive collage
+    imgs_to_process = cinemas[:2]
+    if len(imgs_to_process) < 2:
+        imgs_to_process = (imgs_to_process * 2)[:2]
+
     random.shuffle(imgs_to_process)
-    
+
+    # Anchor points tailored for 2 cutouts - diagonal placement
     anchors = [
-        (int(width * 0.3), int(height * 0.25)),
-        (int(width * 0.7), int(height * 0.25)),
-        (int(width * 0.5), int(height * 0.50)),
-        (int(width * 0.3), int(height * 0.75)),
-        (int(width * 0.7), int(height * 0.75)),
+        (int(width * 0.35), int(height * 0.35)),
+        (int(width * 0.65), int(height * 0.65)),
     ]
-    
+
     for i, (name, path) in enumerate(imgs_to_process):
         try:
             raw = Image.open(path).convert("RGBA")
-            cutout = remove_background_replicate(raw)
+            # Convert white backgrounds to transparent for pre-made cutouts
+            cutout = convert_white_to_transparent(raw)
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
-            
-            scale_variance = random.uniform(0.7, 1.2)
-            max_dim = int(550 * scale_variance)
+
+            scale_variance = random.uniform(0.8, 1.1)
+            max_dim = int(600 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
-            
+
             cx, cy = anchors[i]
-            cx += random.randint(-100, 100)
-            cy += random.randint(-100, 100)
-            
+            cx += random.randint(-50, 50)
+            cy += random.randint(-50, 50)
+
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
-            
+
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             alpha = cutout.split()[3]
@@ -373,7 +416,7 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    mask = mask.filter(ImageFilter.MaxFilter(11)) 
+    mask = mask.filter(ImageFilter.MaxFilter(11))
     return layout_rgba, layout_rgb.convert("RGB"), mask
     
 def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
@@ -619,19 +662,22 @@ def main() -> None:
     # 5. Generate Images
     print(f"Generating for: {selected_cinemas}")
     
-    # COVER
-    cinema_images = []
+    # COVER - Use cutouts from cutouts subfolder for hero collage
+    cinema_cutouts = []
     for c in selected_cinemas:
-        if path := get_cinema_image_path(c):
-            cinema_images.append((c, path))
-            
-    if cinema_images:
+        # Try cutouts folder first, fall back to full images
+        if path := get_cutout_path(c):
+            cinema_cutouts.append((c, path))
+        elif path := get_cinema_image_path(c):
+            cinema_cutouts.append((c, path))
+
+    if cinema_cutouts:
         print("   🎨 Building Hero Collage...")
-        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
+        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_cutouts, CANVAS_WIDTH, CANVAS_HEIGHT)
         cover_bg = inpaint_gaps(layout_rgb, mask)
-        
+
         # We extract just the names from the list of tuples [('Cinema Name', Path), ...]
-        names_list = [c[0] for c in cinema_images]
+        names_list = [c[0] for c in cinema_cutouts]
         final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
 
