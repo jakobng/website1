@@ -377,17 +377,19 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
     mask = Image.new("L", (width, height), 255)
 
-    # Use only 2 cutouts for a simpler, more cohesive collage
-    imgs_to_process = cinemas[:2]
-    if len(imgs_to_process) < 2:
-        imgs_to_process = (imgs_to_process * 2)[:2]
+    # Use 4 cutouts for a balanced collage
+    imgs_to_process = cinemas[:4]
+    if len(imgs_to_process) < 4:
+        imgs_to_process = (imgs_to_process * 4)[:4]
 
     random.shuffle(imgs_to_process)
 
-    # Anchor points tailored for 2 cutouts - diagonal placement
+    # Anchor points tailored for 4 cutouts - corner placement
     anchors = [
-        (int(width * 0.35), int(height * 0.35)),
-        (int(width * 0.65), int(height * 0.65)),
+        (int(width * 0.30), int(height * 0.30)),
+        (int(width * 0.70), int(height * 0.30)),
+        (int(width * 0.30), int(height * 0.70)),
+        (int(width * 0.70), int(height * 0.70)),
     ]
 
     for i, (name, path) in enumerate(imgs_to_process):
