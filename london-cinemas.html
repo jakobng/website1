@@ -120,6 +120,19 @@
             font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
             text-transform: uppercase;
             letter-spacing: 0.16em;
+            cursor: pointer;
+        }
+
+        .film-region-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-strong);
+            font-weight: 700;
+            padding: 8px 0 4px;
+            border-bottom: 1px solid var(--accent);
+            margin-top: 12px;
+            margin-bottom: 8px;
         }
 
         .toggle {
@@ -695,7 +708,7 @@
                 <div class="filter-grid filter-grid-wide">
                     <div class="filter options-row">
                         <div class="checkbox-row">
-                            <input type="checkbox" id="include-chains" checked>
+                            <input type="checkbox" id="include-chains">
                             <label for="include-chains">Include arthouse chains (Curzon, Everyman, Picturehouse)</label>
                         </div>
                         <button class="link-btn" type="button" id="clear-filters">Clear filters</button>
@@ -890,7 +903,7 @@
                     date: "all",
                     time: "any",
                     region: "all",
-                    includeChains: true
+                    includeChains: false
                 }
             };
 
@@ -964,6 +977,15 @@
             elements.backToCinemas.addEventListener("click", function () {
                 state.selectedCinema = "";
                 render();
+            });
+
+            document.querySelector("h1").addEventListener("click", function () {
+                state.selectedCinema = "";
+                state.filters.search = "";
+                elements.searchInput.value = "";
+                // Reset to cinema view if needed, or just clear cinema selection
+                render();
+                window.scrollTo({ top: 0, behavior: "smooth" });
             });
 
             function setView(view) {
@@ -1551,39 +1573,58 @@
                         showingsByCinema.get(showing.cinema).push(showing);
                     });
 
-                    showingsByCinema.forEach(function (showings, cinema) {
-                        showings.sort(compareShowings);
-                        const row = createElement("div", "showing-row");
-                        row.appendChild(createElement("div", "cinema-name", cinema));
+                    if (film.showings.length > 10) {
+                        regionOrder.forEach(function (region) {
+                            const cinemasInRegion = Array.from(showingsByCinema.keys()).filter(function (name) {
+                                return getRegionForCinema(name) === region;
+                            });
 
-                        const timeRow = createElement("div", "time-row");
-                        showings.forEach(function (showing) {
-                            const includeDate = state.filters.date === "all";
-                            const label = includeDate && showing.dateText
-                                ? formatDate(showing.dateText, false) + " " + (showing.showtime || "TBD")
-                                : (showing.showtime || "TBD");
-                            if (showing.bookingUrl || showing.detailUrl) {
-                                const link = createElement("a", "time-chip", label);
-                                link.href = showing.bookingUrl || showing.detailUrl;
-                                link.target = "_blank";
-                                link.rel = "noopener";
-                                if (showing.bookingUrl) {
-                                    link.classList.add("is-bookable");
-                                }
-                                timeRow.appendChild(link);
-                            } else {
-                                timeRow.appendChild(createElement("span", "time-chip", label));
+                            if (cinemasInRegion.length > 0) {
+                                body.appendChild(createElement("div", "film-region-header", region));
+                                cinemasInRegion.sort().forEach(function (cinema) {
+                                    renderCinemaRow(body, cinema, showingsByCinema.get(cinema));
+                                });
                             }
                         });
-                        row.appendChild(timeRow);
-                        body.appendChild(row);
-                    });
+                    } else {
+                        showingsByCinema.forEach(function (showings, cinema) {
+                            renderCinemaRow(body, cinema, showings);
+                        });
+                    }
 
                     card.appendChild(body);
                     fragment.appendChild(card);
                 });
 
                 elements.filmResultsList.appendChild(fragment);
+            }
+
+            function renderCinemaRow(container, cinema, showings) {
+                showings.sort(compareShowings);
+                const row = createElement("div", "showing-row");
+                row.appendChild(createElement("div", "cinema-name", cinema));
+
+                const timeRow = createElement("div", "time-row");
+                showings.forEach(function (showing) {
+                    const includeDate = state.filters.date === "all";
+                    const label = includeDate && showing.dateText
+                        ? formatDate(showing.dateText, false) + " " + (showing.showtime || "TBD")
+                        : (showing.showtime || "TBD");
+                    if (showing.bookingUrl || showing.detailUrl) {
+                        const link = createElement("a", "time-chip", label);
+                        link.href = showing.bookingUrl || showing.detailUrl;
+                        link.target = "_blank";
+                        link.rel = "noopener";
+                        if (showing.bookingUrl) {
+                            link.classList.add("is-bookable");
+                        }
+                        timeRow.appendChild(link);
+                    } else {
+                        timeRow.appendChild(createElement("span", "time-chip", label));
+                    }
+                });
+                row.appendChild(timeRow);
+                container.appendChild(row);
             }
 
             function renderFilmView(showings) {
