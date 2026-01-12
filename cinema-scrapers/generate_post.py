@@ -337,7 +337,7 @@ def get_cutout_path(cinema_name: str) -> Path | None:
 def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Image.Image:
     """Convert white/near-white pixels to transparent for cutouts with white backgrounds."""
     img = img.convert("RGBA")
-    data = img.getdata()
+    data = list(img.getdata())
     new_data = []
     for item in data:
         # If pixel is white-ish (all RGB values above threshold), make transparent
@@ -347,6 +347,37 @@ def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Imag
             new_data.append(item)
     img.putdata(new_data)
     return img
+
+def create_feathered_mask(size: tuple[int, int], feather_amount: float = 0.3) -> Image.Image:
+    """Create a radial gradient mask for feathered/soft edges on cutouts."""
+    w, h = size
+    mask = Image.new("L", (w, h), 255)
+    center_x, center_y = w // 2, h // 2
+    # Use the smaller dimension to determine fade distance
+    max_dist = min(w, h) / 2
+    fade_start = max_dist * (1 - feather_amount)  # Start fading at this distance from center
+
+    for y in range(h):
+        for x in range(w):
+            dist = ((x - center_x)**2 + (y - center_y)**2) ** 0.5
+            if dist < fade_start:
+                alpha = 255
+            elif dist < max_dist:
+                # Smooth fade from 255 to 0
+                fade_progress = (dist - fade_start) / (max_dist - fade_start)
+                alpha = int(255 * (1 - fade_progress ** 0.5))
+            else:
+                alpha = 0
+            mask.putpixel((x, y), alpha)
+    return mask
+
+def apply_feathered_edges(cutout: Image.Image, feather_amount: float = 0.25) -> Image.Image:
+    """Apply feathered/soft edges to a cutout using radial gradient."""
+    feather_mask = create_feathered_mask(cutout.size, feather_amount)
+    r, g, b, a = cutout.split()
+    # Combine original alpha with feather mask (multiply effect)
+    combined_alpha = Image.composite(a, Image.new("L", a.size, 0), feather_mask)
+    return Image.merge("RGBA", (r, g, b, combined_alpha))
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
@@ -402,6 +433,9 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             scale_variance = random.uniform(0.8, 1.1)
             max_dim = int(600 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
+
+            # Apply feathered/soft edges for better blending
+            cutout = apply_feathered_edges(cutout, feather_amount=0.3)
 
             cx, cy = anchors[i]
             cx += random.randint(-50, 50)
