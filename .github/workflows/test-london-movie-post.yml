@@ -63,5 +63,10 @@ jobs:
           git add ig_posts/*.png ig_posts/*.txt
           
           git commit -m "Test Gen: London ${{ inputs.post_type }} images" || echo "No changes to commit"
+
+          # Stash any unstaged changes to prevent rebase failure
+          git stash --include-untracked || true
           git pull --rebase origin main
+          git stash drop || true
+
           git push

@@ -42,7 +42,12 @@ jobs:
 
           git add ig_posts/*.png ig_posts/*.txt
           git commit -m "Test: London image generation with AI pipeline" || echo "No changes to commit"
+
+          # Stash any unstaged changes to prevent rebase failure
+          git stash --include-untracked || true
           git pull --rebase origin main
+          git stash drop || true
+
           git push
 
       - name: Display Success Message

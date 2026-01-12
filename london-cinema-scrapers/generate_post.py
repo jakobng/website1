@@ -53,6 +53,7 @@ BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "ig_posts"
 ASSETS_DIR = BASE_DIR / "cinema_assets"
+CUTOUTS_DIR = ASSETS_DIR / "cutouts"  # Pre-cut cinema images with backgrounds removed
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -229,10 +230,11 @@ def normalize_name(s):
     return re.sub(r'[^a-z0-9]', '', s)
 
 
-def get_cinema_image_path(cinema_name: str) -> Path | None:
-    if not ASSETS_DIR.exists():
-        return None
-
+def get_cinema_image_path(cinema_name: str, use_cutouts: bool = True) -> Path | None:
+    """
+    Find cinema image path. If use_cutouts=True, prioritizes pre-cut images
+    from cinema_assets/cutouts/ folder (with backgrounds already removed).
+    """
     if cinema_name in CINEMA_FILENAME_OVERRIDES:
         target = CINEMA_FILENAME_OVERRIDES[cinema_name]
     else:
@@ -241,40 +243,73 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     if not target:
         return None
 
-    candidates = list(ASSETS_DIR.glob("*"))
-    exact_matches = []
-    substring_matches = []
-    fuzzy_matches = []
+    # Try cutouts folder first if requested
+    search_dirs = []
+    if use_cutouts and CUTOUTS_DIR.exists():
+        search_dirs.append(CUTOUTS_DIR)
+    if ASSETS_DIR.exists():
+        search_dirs.append(ASSETS_DIR)
 
-    for f in candidates:
-        if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']:
-            continue
-        f_name = normalize_name(f.stem)
+    if not search_dirs:
+        return None
 
-        # Prioritize exact matches
-        if f_name == target:
-            exact_matches.append(f)
-        # Then substring matches
-        elif target in f_name or f_name in target:
-            substring_matches.append(f)
-        # Finally fuzzy matches
-        else:
-            ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
-            if ratio > 0.6:
-                fuzzy_matches.append(f)
+    for search_dir in search_dirs:
+        candidates = [f for f in search_dir.glob("*") if f.is_file()]
+        exact_matches = []
+        substring_matches = []
+        fuzzy_matches = []
 
-    # Return in order of priority
-    if exact_matches:
-        return random.choice(exact_matches)
-    elif substring_matches:
-        return random.choice(substring_matches)
-    elif fuzzy_matches:
-        return random.choice(fuzzy_matches)
+        for f in candidates:
+            if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']:
+                continue
+            f_name = normalize_name(f.stem)
+
+            # Prioritize exact matches
+            if f_name == target:
+                exact_matches.append(f)
+            # Then substring matches
+            elif target in f_name or f_name in target:
+                substring_matches.append(f)
+            # Finally fuzzy matches
+            else:
+                ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
+                if ratio > 0.6:
+                    fuzzy_matches.append(f)
+
+        # Return in order of priority
+        if exact_matches:
+            return random.choice(exact_matches)
+        elif substring_matches:
+            return random.choice(substring_matches)
+        elif fuzzy_matches:
+            return random.choice(fuzzy_matches)
+
     return None
 
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
-    return pil_img.convert("RGBA")
+    """
+    Convert white/near-white backgrounds to transparent.
+    Cutouts from cinema_assets/cutouts/ may have white backgrounds.
+    """
+    img = pil_img.convert("RGBA")
+    data = img.getdata()
+
+    new_data = []
+    # Threshold for "white" - pixels with R, G, B all above this become transparent
+    white_threshold = 240
+
+    for pixel in data:
+        r, g, b, a = pixel
+        # Check if pixel is white or near-white
+        if r > white_threshold and g > white_threshold and b > white_threshold:
+            # Make it fully transparent
+            new_data.append((r, g, b, 0))
+        else:
+            new_data.append(pixel)
+
+    img.putdata(new_data)
+    return img
 
 
 def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> tuple[Image.Image, Image.Image, Image.Image]:
@@ -378,7 +413,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                "prompt": "surreal architectural mashup, single unified dream structure, art deco cinema architecture, classical cinema architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, London aesthetic, 8k",
+                "prompt": "surreal architectural mashup, single unified dream structure, classical cinema architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, London aesthetic, 8k",
                 "negative_prompt": "car, grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
                 "num_inference_steps": 30,
                 "guidance_scale": 7.5,
@@ -401,7 +436,8 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
 
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
-    full_path = get_cinema_image_path(cinema_name)
+    # Use full images for backgrounds, not cutouts
+    full_path = get_cinema_image_path(cinema_name, use_cutouts=False)
     base = Image.new("RGB", (width, height), (30, 30, 30))
     if not full_path or not full_path.exists():
         return base
