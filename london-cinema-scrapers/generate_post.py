@@ -274,27 +274,6 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
 
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        return pil_img.convert("RGBA")
-    try:
-        temp_in = BASE_DIR / "temp_rembg_in.png"
-        pil_img.save(temp_in, format="PNG")
-        output = replicate.run(
-            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
-            input={"image": open(temp_in, "rb")}
-        )
-        if temp_in.exists():
-            os.remove(temp_in)
-        if output:
-            resp = requests.get(str(output))
-            if resp.status_code == 200:
-                img = Image.open(BytesIO(resp.content)).convert("RGBA")
-                extrema = img.getextrema()
-                if extrema[3][1] == 0:
-                    return pil_img.convert("RGBA")
-                return img
-    except Exception as e:
-        print(f"   ⚠️ Rembg failed: {e}. Using original.")
     return pil_img.convert("RGBA")
 
 
