@@ -401,7 +401,7 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
         prompt_text = (
             f"Refine this collage into a unified image, using all of the space. The end result should be a surreal architectural mashup of all of these independent cinemas in London. It's an homage to london cinema."
             f"Strictly preserve the layout, composition, and structures of the input image, but connect the buildings and cutouts in interesting ways."
-            f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}'."
+            f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}' but dont do it in a cliche way. be inventive and mindful of the surrounding image."
         )
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview",
