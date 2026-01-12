@@ -307,8 +307,6 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     height = target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    
-    # 1. Initialize mask as White (255) = Area to Inpaint
     mask = Image.new("L", (width, height), 255)
 
     # Use 4 cutouts for a balanced collage
@@ -343,24 +341,25 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
 
-            # Paste image onto layout
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
-            # 2. Update Mask: Black (0) = Keep this area
-            # We use the image's alpha channel to define the "Keep" zone
             alpha = cutout.split()[3]
+            # Paste the "protect" zone (black) where the image is
             mask.paste(0, (x, y), mask=alpha)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # 3. AGGRESSIVE MASK PROCESSING (The Fix)
-    # MaxFilter(25) expands the White area (Inpaint zone) into the Black area (Image zone) by 25 pixels.
-    # This forces the AI to regenerate the edges of your cutouts, blending them.
-    # GaussianBlur(10) softens the transition so it's not a hard line.
-    mask = mask.filter(ImageFilter.MaxFilter(25)) 
-    mask = mask.filter(ImageFilter.GaussianBlur(10))
+    # --- THE KEY CHANGE: SOFT BLENDING ---
+    # 1. Erode the protected area slightly (so the AI touches the very edge of the photo)
+    #    MaxFilter expands the white (inpaint) area into the black (keep) area.
+    mask = mask.filter(ImageFilter.MaxFilter(9)) 
+
+    # 2. Blur the mask to create a gradient transition.
+    #    This tells SDXL: "Definitely keep the center, definitely replace the background,
+    #    but smoothly blend the pixels in between."
+    mask = mask.filter(ImageFilter.GaussianBlur(15))
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
@@ -398,32 +397,36 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
 
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    # NOTE: We are ignoring 'mask_img' now. We treat the whole collage as a sketch to be refined.
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ⚠️ Replicate not available. Skipping AI Refinement.")
+        print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Unifying collage with SDXL (Image-to-Image)...")
+    print("   🎨 Inpainting gaps (SDXL Inpainting + Soft Mask)...")
     try:
-        temp_img_path = BASE_DIR / "temp_collage_input.png"
+        temp_img_path = BASE_DIR / "temp_inpaint_img.png"
+        temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
         layout_img.save(temp_img_path, format="PNG")
+        mask_img.save(temp_mask_path, format="PNG")
 
         output = replicate.run(
-            "stability-ai/sdxl:7762fd07cf43c9d0eb24f4e554797fc3c25165a370773f5c2a14357778523029",
+            "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
             input={
                 "image": open(temp_img_path, "rb"),
-                "prompt": "cinematic shot, surreal architectural mashup, London cinema, unified building structure, hyperrealistic, 8k, seamless blend, dramatic lighting, volumetric fog, high detail",
-                "negative_prompt": "collage, seams, split screen, borders, cutouts, floating objects, text, watermark, blurry, cartoon, illustration",
-                "prompt_strength": 0.65,  # <--- VITAL: Controls how much it blends (0.6-0.7 is best)
+                "mask": open(temp_mask_path, "rb"),
+                # Prompt focuses on CONNECTING the elements
+                "prompt": "surreal dreamscape, architectural connective tissue, twisting geometry connecting buildings, cinematic fog, london sky, intricate details, hyperrealistic, 8k",
+                "negative_prompt": "hard edges, cutout borders, white space, empty background, cartoon, blurry, low resolution",
+                "prompt_strength": 0.95, # High strength because we are filling empty white space
+                "strength": 1.0,         # Fill the masked area completely
                 "num_inference_steps": 40,
-                "guidance_scale": 7.5,
-                "refine": "expert_ensemble_refiner", # Adds that crisp "Pro" finish
-                "high_noise_frac": 0.8
+                "guidance_scale": 12     # High guidance to force the "architectural connection" concept
             }
         )
         
         if temp_img_path.exists():
             os.remove(temp_img_path)
+        if temp_mask_path.exists():
+            os.remove(temp_mask_path)
             
         if output:
             url = output[0] if isinstance(output, list) else output
@@ -432,8 +435,9 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
                 return img.resize(layout_img.size, Image.Resampling.LANCZOS)
     except Exception as e:
-        print(f"   ⚠️ AI Refinement failed: {e}. Using raw layout.")
+        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
     return layout_img
+
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
     # Use full images for backgrounds, not cutouts
