@@ -76,7 +76,9 @@ OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_caption.txt"
 BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
 
-
+# Secrets
+REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # --- Constants ---
 MINIMUM_FILM_THRESHOLD = 3
@@ -185,7 +187,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
 def clean_search_title(title: str) -> str:
     if not title: return ""
     title = re.sub(r'[\(（].*?[\)）]', '', title)
-    title = re.sub(r'[\[【].*?[\]】]', '', title)
+    title = re.sub(r'[[\[\【].*?[\].\】]', '', title)
     keywords = ["4K", "2K", "3D", "IMAX", "Dolby", "Atmos", "レストア", "デジタル", "リマスター", "完全版", "ディレクターズカット", "劇場版", "特別上映", "特集", "上映後トーク", "舞台挨拶"]
     for kw in keywords:
         title = title.replace(kw, "")
@@ -293,7 +295,7 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
 
     if not target: return None
 
-    candidates = list(ASSETS_DIR.glob("*"))
+    candidates = list(ASSETS_DIR.glob("*\.*\.*")) # Match files with extensions
     matches = []
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
@@ -320,7 +322,7 @@ def get_cutout_path(cinema_name: str) -> Path | None:
 
     if not target: return None
 
-    candidates = list(CUTOUTS_DIR.glob("*"))
+    candidates = list(CUTOUTS_DIR.glob("*\.*\.*")) # Match files with extensions
     matches = []
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
