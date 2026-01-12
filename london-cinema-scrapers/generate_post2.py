@@ -1,239 +1,777 @@
-"""
-Generate Instagram-ready movie spotlight carousel + caption for London showtimes.
-"""
+"""Generate Instagram-ready image carousel (V2 - \"A24 Style\" + Spread Layout) for London.
+- Design: Minimalist typography (\"Today's Film Selection\").
+- Layout: \"Explosive\" collage (images spread to edges/bleed off canvas).
+- Tech: Gemini + Replicate + Pillow.
+- Update: Enforces London timezone, 3-day film rotation history.
+- Feature: Multi-day Showtime Aggregation (Today + Next 2 Days) ON IMAGE + Captions."""
 from __future__ import annotations
 
 import json
-from collections import defaultdict
-from datetime import datetime
+import random
+import textwrap
+import os
+import glob
+import requests
+import math
+import colorsys
+import re
+import time
+from collections import defaultdict, deque
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Iterable
+from io import BytesIO
 from zoneinfo import ZoneInfo
 
-from PIL import Image, ImageDraw, ImageFont
+# --- PIL imports ---
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter
 
-BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
-OUTPUT_DIR = BASE_DIR / "ig_posts"
+# --- API Setup ---
+try:
+    import replicate
+    REPLICATE_AVAILABLE = True
+except ImportError:
+    print("⚠️ Replicate library not found. Run: pip install replicate")
+    REPLICATE_AVAILABLE = False
 
-SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
-OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v2_caption.txt"
+try:
+    from google import genai
+    from google.genai import types
+    GEMINI_AVAILABLE = True
+except ImportError:
+    print("⚠️ Google GenAI library not found. Run: pip install google-genai")
+    GEMINI_AVAILABLE = False
 
-CANVAS_WIDTH = 1080
-CANVAS_HEIGHT = 1350
-STORY_HEIGHT = 1920
-MARGIN = 70
-SLIDE_LIMIT = 8
-
+# --- Timezone: London ---
 LONDON_TZ = ZoneInfo("Europe/London")
 
-FONT_REGULAR_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-FONT_BOLD_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+def get_today_london():
+    """Returns the current datetime in London."""
+    return datetime.now(LONDON_TZ)
 
-WHITE = (255, 255, 255)
-OFF_WHITE = (247, 247, 247)
-CHARCOAL = (40, 40, 40)
-MUTED = (90, 90, 90)
-ACCENT = (32, 82, 149)
+def get_today_str():
+    """Returns YYYY-MM-DD in London."""
+    return get_today_london().strftime("%Y-%m-%d")
 
+def get_display_date_str():
+    """Returns formatted date string for display (London)."""
+    d = get_today_london()
+    # Format: 2026.01.11 (Sun)
+    return d.strftime("%Y.%m.%d (%a)")
 
-def load_font(path: str, size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+# --- Secrets ---
+REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+
+# --- Configuration ---
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
+FONTS_DIR = BASE_DIR / "fonts"
+OUTPUT_DIR = BASE_DIR / "ig_posts"
+
+# Ensure output directory exists
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+# Paths
+SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
+HISTORY_PATH = DATA_DIR / "featured_history.json"
+OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_v2_caption.txt"
+
+# Font Paths
+BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
+REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
+
+# --- CONSTANTS ---
+CANVAS_WIDTH = 1080
+CANVAS_HEIGHT = 1350       # 4:5 Aspect Ratio (Feed)
+STORY_CANVAS_HEIGHT = 1920 # 9:16 Aspect Ratio (Story)
+
+# --- Helpers ---
+
+def format_date_for_caption(date_str: str) -> str:
+    """Converts YYYY-MM-DD to MM/DD (Day)."""
     try:
-        return ImageFont.truetype(path, size)
-    except OSError:
-        return ImageFont.load_default()
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        return dt.strftime("%m/%d (%a)")
+    except:
+        return date_str
 
-
-def parse_date(date_text: str) -> datetime | None:
+def format_date_short(date_str: str, is_today: bool) -> str:
+    """Short format for Image: 'Today' or 'Wed 12'"""
+    if is_today: return "TODAY"
     try:
-        return datetime.strptime(date_text, "%Y-%m-%d")
-    except ValueError:
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        return dt.strftime("%a %d").upper()
+    except:
+        return date_str
+
+def normalize_string(s):
+    if not s: return ""
+    return re.sub(r'\W+', '', str(s)).lower()
+
+def download_image(path: str) -> Image.Image | None:
+    if not path: return None
+    if path.startswith("http"):
+        url = path
+    else:
+        url = f"https://image.tmdb.org/t/p/w1280{path}"
+    try:
+        resp = requests.get(url, timeout=15)
+        if resp.status_code == 200:
+            return Image.open(BytesIO(resp.content)).convert("RGB")
+    except:
         return None
+    return None
 
+def get_fonts():
+    try:
+        return {
+            "cover_main": ImageFont.truetype(str(BOLD_FONT_PATH), 110),
+            "cover_sub": ImageFont.truetype(str(REGULAR_FONT_PATH), 55),
+            "cover_date": ImageFont.truetype(str(REGULAR_FONT_PATH), 40),
+            "title_main": ImageFont.truetype(str(BOLD_FONT_PATH), 60),
+            "title_sub": ImageFont.truetype(str(REGULAR_FONT_PATH), 32),
+            "meta": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
+            "cinema": ImageFont.truetype(str(BOLD_FONT_PATH), 28),
+            "times": ImageFont.truetype(str(REGULAR_FONT_PATH), 24),
+            "date_label": ImageFont.truetype(str(BOLD_FONT_PATH), 20),
+        }
+    except:
+        print("⚠️ Fonts not found, using system fallback.")
+        # Try common system fonts as fallback
+        fallback_fonts = [
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+            "/System/Library/Fonts/Helvetica.ttc",
+            "/Windows/Fonts/arial.ttf",
+        ]
 
-def load_showtimes() -> list[dict]:
-    with open(SHOWTIMES_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+        system_font = None
+        for font_path in fallback_fonts:
+            try:
+                system_font = font_path
+                ImageFont.truetype(font_path, 20)  # Test if it loads
+                break
+            except:
+                continue
 
+        if system_font:
+            try:
+                return {
+                    "cover_main": ImageFont.truetype(system_font, 110),
+                    "cover_sub": ImageFont.truetype(system_font, 55),
+                    "cover_date": ImageFont.truetype(system_font, 40),
+                    "title_main": ImageFont.truetype(system_font, 60),
+                    "title_sub": ImageFont.truetype(system_font, 32),
+                    "meta": ImageFont.truetype(system_font, 24),
+                    "cinema": ImageFont.truetype(system_font, 28),
+                    "times": ImageFont.truetype(system_font, 24),
+                    "date_label": ImageFont.truetype(system_font, 20),
+                }
+            except:
+                pass
 
-def select_target_date(showtimes: Iterable[dict]) -> datetime:
-    today = datetime.now(LONDON_TZ).date()
-    dated = []
-    for entry in showtimes:
-        parsed = parse_date(entry.get("date_text", ""))
-        if parsed:
-            dated.append(parsed.date())
-    if not dated:
-        raise ValueError("No valid date_text entries found in showtimes.")
-    if today in dated:
-        return datetime.combine(today, datetime.min.time(), tzinfo=LONDON_TZ)
-    earliest = min(dated)
-    return datetime.combine(earliest, datetime.min.time(), tzinfo=LONDON_TZ)
+        # Last resort: use PIL default
+        print("⚠️ No system fonts available, using PIL default (text will be small).")
+        d = ImageFont.load_default()
+        return {k: d for k in ["cover_main", "cover_sub", "cover_date", "title_main", "title_sub", "meta", "cinema", "times", "date_label"]}
 
-
-def wrap_text(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont, max_width: int) -> list[str]:
-    words = text.split()
-    lines: list[str] = []
-    current = ""
-    for word in words:
-        test_line = f"{current} {word}".strip()
-        if draw.textlength(test_line, font=font) <= max_width:
-            current = test_line
+def get_faithful_colors(pil_img: Image.Image) -> tuple[tuple, tuple]:
+    small = pil_img.resize((150, 150))
+    result = small.quantize(colors=3, method=2)
+    palette = result.getpalette()
+    c1 = (palette[0], palette[1], palette[2])
+    c2 = (palette[3], palette[4], palette[5])
+    def adjust_for_bg(rgb_tuple, is_accent=False):
+        r, g, b = rgb_tuple
+        h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
+        if is_accent:
+            new_v = max(v, 0.4)
+            new_s = s 
         else:
-            if current:
-                lines.append(current)
-            current = word
-    if current:
-        lines.append(current)
-    return lines or [""]
+            new_v = 0.22 
+            new_s = min(max(s, 0.4), 0.9) 
+            if s < 0.05: 
+                new_s = 0.02
+                new_v = 0.20
+        nr, ng, nb = colorsys.hsv_to_rgb(h, new_s, new_v)
+        return (int(nr*255), int(ng*255), int(nb*255))
+    return adjust_for_bg(c1), adjust_for_bg(c2, is_accent=True)
 
-
-def build_film_schedule(showtimes: Iterable[dict], target_date: datetime) -> dict[str, dict[str, list[str]]]:
-    schedule: dict[str, dict[str, list[str]]] = defaultdict(lambda: defaultdict(list))
-    target_str = target_date.strftime("%Y-%m-%d")
-    for entry in showtimes:
-        if entry.get("date_text") != target_str:
-            continue
-        title = entry.get("movie_title_en") or entry.get("movie_title") or "Untitled"
-        cinema = entry.get("cinema_name", "Unknown Cinema")
-        time_str = entry.get("showtime") or "TBD"
-        schedule[title][cinema].append(time_str)
-    for cinema_map in schedule.values():
-        for times in cinema_map.values():
-            times.sort()
-    return dict(schedule)
-
-
-def cleanup_previous_outputs() -> None:
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    for filename in OUTPUT_DIR.glob("post_v2_image_*.png"):
-        filename.unlink()
-    for filename in OUTPUT_DIR.glob("story_v2_image_*.png"):
-        filename.unlink()
-    for filename in OUTPUT_DIR.glob("post_v2_caption.txt"):
-        filename.unlink()
-
-
-def render_cover_slide(target_date: datetime) -> Image.Image:
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), OFF_WHITE)
-    draw = ImageDraw.Draw(img)
-    title_font = load_font(FONT_BOLD_PATH, 72)
-    subtitle_font = load_font(FONT_REGULAR_PATH, 40)
-    date_font = load_font(FONT_BOLD_PATH, 44)
-
-    title = "London Film Spotlights"
-    subtitle = "Top films across the city"
-    date_line = target_date.strftime("%A %d %B %Y")
-
-    draw.text((MARGIN, 220), title, font=title_font, fill=CHARCOAL)
-    draw.text((MARGIN, 330), subtitle, font=subtitle_font, fill=MUTED)
-    draw.line((MARGIN, 420, CANVAS_WIDTH - MARGIN, 420), fill=ACCENT, width=4)
-    draw.text((MARGIN, 470), date_line, font=date_font, fill=ACCENT)
-    draw.text((MARGIN, CANVAS_HEIGHT - 140), "Swipe for film spotlights", font=subtitle_font, fill=MUTED)
+def create_textured_bg(base_color, accent_color, width, height):
+    img = Image.new("RGB", (width, height), base_color)
+    texture = Image.new("RGBA", (width, height), (0,0,0,0))
+    draw = ImageDraw.Draw(texture)
+    line_color = (*accent_color, 25) 
+    num_lines = int(40 * (height / 1350))
+    for _ in range(num_lines):
+        x1 = random.randint(-width, width * 2)
+        y1 = random.randint(-height, height * 2)
+        length = random.randint(300, 1500)
+        angle = math.radians(45)
+        x2 = x1 + length * math.cos(angle)
+        y2 = y1 + length * math.sin(angle)
+        w = random.randint(1, 4)
+        draw.line([(x1, y1), (x2, y2)], fill=line_color, width=w)
+    texture = texture.filter(ImageFilter.GaussianBlur(radius=2))
+    img.paste(texture, (0,0), texture)
     return img
 
+def apply_film_grain(img):
+    width, height = img.size
+    noise_data = os.urandom(width * height)
+    noise_img = Image.frombytes('L', (width, height), noise_data)
+    if img.mode != 'RGBA': img = img.convert('RGBA')
+    noise_img = noise_img.convert('RGBA')
+    return Image.blend(img, noise_img, alpha=0.05).convert("RGB")
 
-def render_film_slide(title: str, cinema_map: dict[str, list[str]]) -> Image.Image:
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), WHITE)
-    draw = ImageDraw.Draw(img)
-    header_font = load_font(FONT_BOLD_PATH, 56)
-    cinema_font = load_font(FONT_BOLD_PATH, 32)
-    time_font = load_font(FONT_REGULAR_PATH, 26)
+def draw_centered_text(draw, y, text, font, fill, canvas_width=CANVAS_WIDTH):
+    length = draw.textlength(text, font=font)
+    x = (canvas_width - length) // 2
+    draw.text((x, y), text, font=font, fill=fill)
+    return y + font.size + 10 
 
-    title_lines = wrap_text(draw, title, header_font, CANVAS_WIDTH - 2 * MARGIN)
-    y = 80
-    for line in title_lines:
-        draw.text((MARGIN, y), line, font=header_font, fill=CHARCOAL)
-        y += 64
+# --- HISTORY / COOLDOWN MANAGER ---
 
-    draw.line((MARGIN, y + 10, CANVAS_WIDTH - MARGIN, y + 10), fill=ACCENT, width=3)
-    y += 50
+class HistoryManager:
+    def __init__(self, filepath, retention_days=3):
+        self.filepath = filepath
+        self.retention_days = retention_days
+        self.history = self._load()
 
-    max_y = CANVAS_HEIGHT - 120
-    for cinema, times in sorted(cinema_map.items()):
-        cinema_lines = wrap_text(draw, cinema, cinema_font, CANVAS_WIDTH - 2 * MARGIN)
-        for line in cinema_lines:
-            if y + 36 > max_y:
-                draw.text((MARGIN, max_y - 40), "…", font=cinema_font, fill=MUTED)
-                return img
-            draw.text((MARGIN, y), line, font=cinema_font, fill=CHARCOAL)
-            y += 36
+    def _load(self):
+        if not self.filepath.exists():
+            return {}
+        try:
+            with open(self.filepath, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except:
+            return {}
 
-        times_line = f"Times: {', '.join(times)}"
-        time_lines = wrap_text(draw, times_line, time_font, CANVAS_WIDTH - 2 * MARGIN)
-        for line in time_lines:
-            if y + 30 > max_y:
-                draw.text((MARGIN, max_y - 40), "…", font=cinema_font, fill=MUTED)
-                return img
-            draw.text((MARGIN, y), line, font=time_font, fill=MUTED)
-            y += 30
+    def is_on_cooldown(self, film_id):
+        """Check if film_id was featured within the retention period."""
+        today = get_today_london().date()
+        
+        # Check explicit history
+        last_seen_str = self.history.get(str(film_id))
+        if last_seen_str:
+            try:
+                last_seen_date = datetime.strptime(last_seen_str, "%Y-%m-%d").date()
+                days_diff = (today - last_seen_date).days
+                if days_diff < self.retention_days:
+                    return True # Still on cooldown
+            except ValueError:
+                pass # Bad date format, ignore
+        return False
 
-        y += 22
+    def update(self, film_ids):
+        """Update history with today's picks."""
+        today_str = get_today_str()
+        for fid in film_ids:
+            self.history[str(fid)] = today_str
+            
+        self._save()
 
-    return img
+    def _save(self):
+        # Prune old entries to keep file size small
+        today = get_today_london().date()
+        clean_history = {}
+        for fid, date_str in self.history.items():
+            try:
+                entry_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+                if (today - entry_date).days < 14: # Keep 2 weeks of history just in case
+                    clean_history[fid] = date_str
+            except:
+                pass
+        
+        with open(self.filepath, 'w', encoding='utf-8') as f:
+            json.dump(clean_history, f, indent=2)
 
+# --- COLLAGE LOGIC ---
 
-def render_story_slide(target_date: datetime, film_titles: list[str]) -> Image.Image:
-    img = Image.new("RGB", (CANVAS_WIDTH, STORY_HEIGHT), OFF_WHITE)
-    draw = ImageDraw.Draw(img)
-    title_font = load_font(FONT_BOLD_PATH, 72)
-    subtitle_font = load_font(FONT_REGULAR_PATH, 36)
-    list_font = load_font(FONT_BOLD_PATH, 36)
+def ask_gemini_for_layout(images: list[Image.Image]):
+    if not GEMINI_AVAILABLE or not GEMINI_API_KEY:
+        print("⚠️ Gemini not configured. Falling back.")
+        return 0, [1, 2, 3, 4] 
 
-    draw.text((MARGIN, 220), "Film Spotlights", font=title_font, fill=CHARCOAL)
-    draw.text((MARGIN, 320), target_date.strftime("%A %d %B"), font=subtitle_font, fill=ACCENT)
+    print("🧠 Consulting Gemini...")
+    try:
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        prompt = """
+You are an art director making a movie collage poster.
+1. Select ONE image to be the BACKGROUND (negative space/texture).
+2. Select 4 to 5 images to be FOREGROUND CUTOUTS (clear humans).
+Return JSON: {"background_index": 0, "foreground_indices": [1, 3, 4, 6]}
+"""
+        response = client.models.generate_content(
+            model='gemini-3-pro-image-preview', 
+            contents=[prompt, *images]
+        )
+        clean_json = re.search(r'\{.*\}', response.text, re.DOTALL)
+        if clean_json:
+            data = json.loads(clean_json.group(0))
+            return data.get("background_index", 0), data.get("foreground_indices", [1,2,3])
+    except Exception as e:
+        print(f"⚠️ Gemini Analysis failed: {e}")
+    return 0, [1, 2, 3, 4]
 
-    y = 420
-    for title in film_titles[:6]:
-        line = f"• {title}"
-        draw.text((MARGIN, y), line, font=list_font, fill=CHARCOAL)
-        y += 58
+def remove_background(pil_img: Image.Image) -> Image.Image | None:
+    print("✂️ Cutting out sticker...")
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("⚠️ Replicate not configured.")
+        return None
+        
+    try:
+        temp_path = BASE_DIR / "temp_rembg_in.png"
+        pil_img.save(temp_path, format="PNG")
+        output = replicate.run(
+            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
+            input={"image": open(temp_path, "rb")}
+        )
+        if temp_path.exists(): os.remove(temp_path)
+        if output:
+            resp = requests.get(str(output))
+            if resp.status_code == 200:
+                return Image.open(BytesIO(resp.content)).convert("RGBA")
+    except Exception as e:
+        print(f"Replicate Error: {e}")
+        return None
+    return None
 
-    draw.line((MARGIN, STORY_HEIGHT - 280, CANVAS_WIDTH - MARGIN, STORY_HEIGHT - 280), fill=ACCENT, width=4)
-    draw.text((MARGIN, STORY_HEIGHT - 220), "Full listings in bio", font=subtitle_font, fill=MUTED)
-    return img
+def create_sticker_style(img: Image.Image) -> Image.Image:
+    img = img.convert("RGBA")
+    alpha = img.split()[3]
+    border_mask = alpha.filter(ImageFilter.MaxFilter(9))
+    sticker_base = Image.new("RGBA", img.size, (255, 255, 255, 0))
+    sticker_base.paste((255, 255, 255, 255), (0,0), mask=border_mask)
+    sticker_base.paste(img, (0,0), mask=alpha)
+    
+    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    shadow_mask = border_mask.filter(ImageFilter.GaussianBlur(10))
+    shadow_layer = Image.new("RGBA", img.size, (0,0,0,150))
+    shadow.paste(shadow_layer, (10, 20), mask=shadow_mask)
+    
+    final = Image.new("RGBA", img.size, (0,0,0,0))
+    final.paste(shadow, (0,0), mask=shadow)
+    final.paste(sticker_base, (0,0), mask=sticker_base)
+    return final
 
+def create_chaotic_collage(images: list[Image.Image], width=896, height=1152) -> Image.Image:
+    canvas = Image.new("RGB", (width, height), (10,10,10))
+    if not images: return canvas
 
-def build_caption(target_date: datetime, film_titles: list[str]) -> str:
-    header = f"London film spotlights for {target_date.strftime('%A %d %B %Y')}"
-    films = ", ".join(film_titles)
-    return "\n".join([
-        header,
-        "",
-        "Featured films today:",
-        films,
-        "",
-        "#LondonCinema #FilmSpotlight #IndieFilm",
-    ])
+    bg_idx, fg_idxs = ask_gemini_for_layout(images)
+    if bg_idx >= len(images): bg_idx = 0
+    fg_idxs = [i for i in fg_idxs if i < len(images) and i != bg_idx]
+    
+    # Background
+    bg_img = images[bg_idx]
+    bg_ratio = bg_img.width / bg_img.height
+    target_ratio = width / height
+    if bg_ratio > target_ratio:
+        new_h = height
+        new_w = int(new_h * bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - width) // 2
+        bg_img = bg_img.crop((left, 0, left+width, height))
+    else:
+        new_w = width
+        new_h = int(new_w / bg_ratio)
+        bg_img = bg_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - height) // 2
+        bg_img = bg_img.crop((0, top, width, top+height))
+    
+    # Darken background slightly to make white text pop
+    bg_img = ImageEnhance.Brightness(bg_img).enhance(0.7)
+    bg_img = bg_img.filter(ImageFilter.GaussianBlur(3)) 
+    canvas.paste(bg_img, (0,0))
+    
+    # Process Stickers
+    stickers = []
+    print(f"🧩 Processing {len(fg_idxs)} stickers...")
+    for idx in fg_idxs:
+        raw = images[idx]
+        cutout = remove_background(raw)
+        if cutout:
+            bbox = cutout.getbbox()
+            if bbox:
+                cutout = cutout.crop(bbox)
+                sticker = create_sticker_style(cutout)
+                stickers.append(sticker)
+    
+    random.shuffle(stickers) 
+    
+    zones = [
+        (int(width * 0.10), int(height * 0.15)), 
+        (int(width * 0.90), int(height * 0.15)), 
+        (int(width * 0.10), int(height * 0.75)), 
+        (int(width * 0.90), int(height * 0.75)), 
+        (int(width * 0.50), int(height * 0.50)) 
+    ]
+    random.shuffle(zones)
+    
+    for i, sticker in enumerate(stickers):
+        scale = random.uniform(0.40, 0.70)
+        ratio = sticker.width / sticker.height
+        new_w = int(width * scale)
+        new_h = int(new_w / ratio)
+        
+        if new_h > int(height * 0.60): 
+            new_h = int(height * 0.60)
+            new_w = int(new_h * ratio)
+            
+        s_resized = sticker.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        angle = random.randint(-15, 15)
+        s_rotated = s_resized.rotate(angle, resample=Image.Resampling.BICUBIC, expand=True)
+        
+        if i < len(zones):
+            anchor_x, anchor_y = zones[i]
+        else:
+            anchor_x = random.randint(100, width-300)
+            anchor_y = random.randint(100, height-400)
+            
+        jitter_x = random.randint(-200, 200)
+        jitter_y = random.randint(-150, 150)
+        x = anchor_x + jitter_x
+        y = anchor_y + jitter_y
+        
+        min_x = int(-s_rotated.width * 0.2)
+        max_x = width - int(s_rotated.width * 0.8)
+        min_y = int(-s_rotated.height * 0.2)
+        max_y = height - int(s_rotated.height * 0.8)
 
+        x = max(min_x, min(x, max_x))
+        y = max(min_y, min(y, max_y))
+        
+        canvas.paste(s_rotated, (x, y), s_rotated)
 
-def main() -> None:
-    cleanup_previous_outputs()
-    showtimes = load_showtimes()
-    target_date = select_target_date(showtimes)
-    schedule = build_film_schedule(showtimes, target_date)
-    if not schedule:
-        raise ValueError("No showtimes found for selected date.")
+    noise_data = os.urandom(width * height)
+    noise = Image.frombytes('L', (width, height), noise_data)
+    canvas = Image.blend(canvas, noise.convert("RGB"), alpha=0.06)
+    return canvas
 
-    film_titles = sorted(schedule.keys(), key=lambda title: sum(len(times) for times in schedule[title].values()), reverse=True)
-    cover = render_cover_slide(target_date)
-    cover.save(OUTPUT_DIR / "post_v2_image_01.png")
+def draw_final_cover(composite, fonts, is_story=False):
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    bg = composite.copy()
+    bg_ratio = bg.width / bg.height
+    target_ratio = width / height
+    
+    if bg_ratio > target_ratio:
+        new_h = height
+        new_w = int(new_h * bg_ratio)
+        bg = bg.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - width) // 2
+        bg = bg.crop((left, 0, left+width, height))
+    else:
+        new_w = width
+        new_h = int(new_w / bg_ratio)
+        bg = bg.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - height) // 2
+        bg = bg.crop((0, top, width, top+height))
+        
+    draw = ImageDraw.Draw(bg)
+    cx, cy = width // 2, height // 2
+    offset = -80 if is_story else 0
 
-    max_film_slides = SLIDE_LIMIT - 1
-    for idx, title in enumerate(film_titles[:max_film_slides], start=2):
-        slide = render_film_slide(title, schedule[title])
-        slide.save(OUTPUT_DIR / f"post_v2_image_{idx:02d}.png")
+    main_text = "Today's Film Selection"
+    draw.text((cx + 2, cy - 40 + offset + 2), main_text, font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 40 + offset), main_text, font=fonts['cover_sub'], fill=(255,255,255), anchor="mm")
 
-    story = render_story_slide(target_date, film_titles)
-    story.save(OUTPUT_DIR / "story_v2_image_01.png")
+    date_text = get_display_date_str()
+    draw.text((cx + 2, cy + 40 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 40 + offset), date_text, font=fonts['cover_date'], fill=(180,180,180), anchor="mm")
 
-    caption = build_caption(target_date, film_titles)
-    OUTPUT_CAPTION_PATH.write_text(caption, encoding="utf-8")
+    return bg
 
-    print(f"✅ Generated {min(len(film_titles), max_film_slides) + 1} feed slides.")
-    print("✅ Generated 1 story slide.")
-    print(f"✅ Saved caption to {OUTPUT_CAPTION_PATH}")
+def draw_fallback_cover(images, fonts, is_story=False):
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    if images:
+        bg = images[0].resize((width, int(width * images[0].height / images[0].width)))
+        if bg.height < height: bg = bg.resize((int(height * bg.width / bg.height), height))
+        left = (bg.width - width) // 2
+        top = (bg.height - height) // 2
+        bg = bg.crop((left, top, left + width, top + height))
+    else:
+        bg = Image.new("RGB", (width, height), (20,20,20))
+    
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 160))
+    bg.paste(overlay, (0, 0), overlay)
+    draw = ImageDraw.Draw(bg)
+    cx, cy = width // 2, height // 2
+    offset = -80 if is_story else 0
 
+    main_text = "Today's Film Selection"
+    draw.text((cx + 2, cy - 40 + offset + 2), main_text, font=fonts['cover_sub'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy - 40 + offset), main_text, font=fonts['cover_sub'], fill=(255,255,255), anchor="mm")
+
+    date_text = get_display_date_str()
+    draw.text((cx + 2, cy + 40 + offset + 2), date_text, font=fonts['cover_date'], fill=(0,0,0), anchor="mm")
+    draw.text((cx, cy + 40 + offset), date_text, font=fonts['cover_date'], fill=(200,200,200), anchor="mm")
+    return bg
+
+def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
+    from PIL import ImageEnhance
+    width = CANVAS_WIDTH
+    height = STORY_CANVAS_HEIGHT if is_story else CANVAS_HEIGHT
+    c_base, c_accent = get_faithful_colors(img_obj)
+    bg = create_textured_bg(c_base, c_accent, width, height)
+    canvas = apply_film_grain(bg)
+    draw = ImageDraw.Draw(canvas)
+    
+    if is_story:
+        target_w, target_h = 950, 850
+        img_y = 180
+    else:
+        target_w, target_h = 900, 640
+        img_y = 140
+        
+    # Draw Image
+    img_ratio = img_obj.width / img_obj.height
+    if img_ratio > (target_w / target_h):
+        new_h = target_h
+        new_w = int(new_h * img_ratio)
+        img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        left = (new_w - target_w) // 2
+        img_final = img_resized.crop((left, 0, left+target_w, target_h))
+    else:
+        new_w = target_w
+        new_h = int(new_w / img_ratio)
+        img_resized = img_obj.resize((new_w, new_h), Image.Resampling.LANCZOS)
+        top = (new_h - target_h) // 2
+        img_final = img_resized.crop((0, top, target_w, top+target_h))
+    
+    canvas.paste(img_final, ((width - target_w) // 2, img_y))
+    cursor_y = img_y + target_h + (70 if is_story else 50)
+    
+    # Metadata
+    meta_parts = []
+    if film.get('year'): meta_parts.append(str(film['year']))
+    if film.get('runtime'): meta_parts.append(f"{film['runtime']}m")
+    if film.get('genres') and isinstance(film['genres'], list): meta_parts.append(film['genres'][0].upper())
+    meta_str = "  •  ".join(meta_parts)
+    cursor_y = draw_centered_text(draw, cursor_y, meta_str, fonts['meta'], (200, 200, 200), width)
+    cursor_y += 10
+
+    # Titles
+    title = film.get('movie_title_en') or film.get('tmdb_title') or film.get('movie_title', 'Untitled')
+    
+    if len(title) > 22:
+        wrapper = textwrap.TextWrapper(width=22)
+        lines = wrapper.wrap(title)
+        for line in lines:
+            cursor_y = draw_centered_text(draw, cursor_y, line, fonts['title_main'], (255, 255, 255), width)
+    else:
+        cursor_y = draw_centered_text(draw, cursor_y, title, fonts['title_main'], (255, 255, 255), width)
+    cursor_y += 15
+    
+    director = film.get('director')
+    if director:
+        draw_centered_text(draw, cursor_y, f"Dir. {director}", fonts['meta'], (150, 150, 150), width)
+        cursor_y += 40
+    
+    # Showtimes Logic
+    schedule_map = defaultdict(lambda: defaultdict(list))
+    if not primary_date: primary_date = get_today_str()
+    all_dates = sorted(film['multi_day_showings'].keys())
+    for d_key in all_dates:
+        for cin_name, times in film['multi_day_showings'][d_key].items():
+            schedule_map[cin_name][d_key] = sorted(times)
+            
+    sorted_cinemas = sorted(schedule_map.keys())
+    
+    # Estimate space
+    total_lines = 0
+    for cin in sorted_cinemas:
+        total_lines += 1.2
+        total_lines += len(schedule_map[cin])
+        total_lines += 0.5
+        
+    available_space = height - cursor_y - (100 if is_story else 40)
+    base_line_h = 32 if is_story else 28
+    
+    needs_split = (total_lines * base_line_h) > available_space
+    
+    if needs_split:
+        col_w = (width - 100) // 2
+        col1_x = 50
+        col2_x = 50 + col_w + 20
+        compact_size = 24
+        try:
+            f_cin = ImageFont.truetype(str(BOLD_FONT_PATH), compact_size + 2)
+            f_time = ImageFont.truetype(str(REGULAR_FONT_PATH), compact_size)
+        except:
+            # Fallback to fonts dictionary if custom fonts not available
+            f_cin = fonts['cinema']
+            f_time = fonts['times']
+        
+        curr_x, curr_y = col1_x, cursor_y + 10
+        for i, cin in enumerate(sorted_cinemas):
+            remaining = height - curr_y - 50
+            if i > 0 and curr_x == col1_x and (i >= len(sorted_cinemas)/2 or remaining < 200):
+                curr_x = col2_x
+                curr_y = cursor_y + 10
+            draw.text((curr_x, curr_y), cin, font=f_cin, fill=(255,255,255))
+            curr_y += 35
+            for d_key in sorted(schedule_map[cin].keys()):
+                times_str = ", ".join(schedule_map[cin][d_key])
+                is_today = (d_key == primary_date)
+                date_label = format_date_short(d_key, is_today)
+                lbl_color = (255, 200, 100) if is_today else (180, 180, 180)
+                draw.text((curr_x, curr_y), date_label, font=f_time, fill=lbl_color)
+                lbl_w = draw.textlength(date_label, font=f_time)
+                draw.text((curr_x + lbl_w + 10, curr_y), times_str, font=f_time, fill=(230,230,230))
+                curr_y += 30
+            curr_y += 15
+    else:
+        # --- STANDARD CENTERED MODE ---
+        scale = 1.0
+        est_h = total_lines * base_line_h
+        if est_h > available_space:
+            scale = max(available_space / est_h, 0.8)  # Limit shrinkage
+
+        final_size = int(base_line_h * scale)
+        try:
+            f_cin = ImageFont.truetype(str(BOLD_FONT_PATH), final_size)
+            f_time = ImageFont.truetype(str(REGULAR_FONT_PATH), final_size)
+        except:
+            f_cin = fonts['cinema']
+            f_time = fonts['times']
+
+        start_y = cursor_y + 10
+        for cin in sorted_cinemas:
+            len_c = draw.textlength(cin, font=f_cin)
+            draw.text(((width - len_c)//2, start_y), cin, font=f_cin, fill=(255,255,255))
+            start_y += (final_size * 1.2)
+
+            for d_key in sorted(schedule_map[cin].keys()):
+                times_str = ", ".join(schedule_map[cin][d_key])
+                is_today = (d_key == primary_date)
+                date_label = format_date_short(d_key, is_today)
+                full_line = f"{date_label}   {times_str}"
+
+                len_line = draw.textlength(full_line, font=f_time)
+                x_line = (width - len_line) // 2
+
+                lbl_color = (255, 200, 100) if is_today else (180, 180, 180)
+                draw.text((x_line, start_y), date_label, font=f_time, fill=lbl_color)
+
+                lbl_w = draw.textlength(date_label, font=f_time)
+                draw.text((x_line + lbl_w + 15, start_y), times_str, font=f_time, fill=(230,230,230))
+                start_y += (final_size * 1.1)
+
+            start_y += (final_size * 0.6)
+
+    return canvas
+
+def main():
+    from PIL import ImageEnhance
+    print("--- Starting London Movie Spotlight Generation (V2) ---")
+    
+    if OUTPUT_DIR.exists():
+        for f in OUTPUT_DIR.glob("post_v2_*.png"):
+            try: os.remove(f)
+            except: pass
+        for f in OUTPUT_DIR.glob("story_v2_*.png"):
+            try: os.remove(f)
+            except: pass
+
+    today_dt = get_today_london().date()
+    date_strs = [
+        today_dt.strftime("%Y-%m-%d"),
+        (today_dt + timedelta(days=1)).strftime("%Y-%m-%d"),
+        (today_dt + timedelta(days=2)).strftime("%Y-%m-%d")
+    ]
+    primary_date = date_strs[0]
+    print(f"📅 Target Dates: {date_strs}")
+    
+    if not SHOWTIMES_PATH.exists(): 
+        print(f"Showtimes file missing at: {SHOWTIMES_PATH}")
+        return
+        
+    with open(SHOWTIMES_PATH, 'r', encoding='utf-8') as f:
+        raw_data = json.load(f)
+    
+    history_manager = HistoryManager(HISTORY_PATH)
+    
+    candidates_today = set()
+    for item in raw_data:
+        if item.get('date_text') == primary_date:
+            if not item.get('tmdb_backdrop_path'): continue
+            fid = item.get('tmdb_id')
+            if not fid: fid = normalize_string(item.get('movie_title'))
+            candidates_today.add(fid)
+
+    films_map = {}
+    for item in raw_data:
+        d_text = item.get('date_text')
+        if d_text not in date_strs: continue
+        fid = item.get('tmdb_id')
+        if not fid: fid = normalize_string(item.get('movie_title'))
+        if fid not in candidates_today: continue
+        if history_manager.is_on_cooldown(fid): continue
+        
+        if fid not in films_map:
+            films_map[fid] = item
+            films_map[fid]['multi_day_showings'] = defaultdict(lambda: defaultdict(list))
+            films_map[fid]['unique_id'] = fid
+        
+        cinema = item.get('cinema_name', '')
+        time_str = item.get('showtime', '')
+        films_map[fid]['multi_day_showings'][d_text][cinema].append(time_str)
+
+    all_films = list(films_map.values())
+    random.shuffle(all_films)
+    selected = all_films[:9]
+    
+    if not selected:
+        print("No films found for this date.")
+        return
+
+    print(f"Selected {len(selected)} films.")
+    history_manager.update([f['unique_id'] for f in selected])
+    
+    fonts = get_fonts()
+    slide_data = []
+    cover_images = []
+    
+    for film in selected:
+        print(f"Processing: {film.get('movie_title')}")
+        img = download_image(film.get('tmdb_backdrop_path'))
+        if img:
+            slide_data.append({"film": film, "img": img})
+            cover_images.append(img)
+            
+    if not slide_data: return
+
+    collage = create_chaotic_collage(cover_images)
+    if collage:
+        draw_final_cover(collage, fonts, is_story=False).save(OUTPUT_DIR / "post_v2_image_00.png")
+        draw_final_cover(collage, fonts, is_story=True).save(OUTPUT_DIR / "story_v2_image_00.png")
+    else:
+        draw_fallback_cover(cover_images, fonts, is_story=False).save(OUTPUT_DIR / "post_v2_image_00.png")
+        draw_fallback_cover(cover_images, fonts, is_story=True).save(OUTPUT_DIR / "story_v2_image_00.png")
+
+    caption_lines = [f"🎬 London Movie Spotlights - {get_display_date_str()}\n"]
+    for i, item in enumerate(slide_data):
+        film, img = item['film'], item['img']
+        draw_poster_slide(film, img, fonts, is_story=False, primary_date=primary_date).save(OUTPUT_DIR / f"post_v2_image_{i+1:02}.png")
+        draw_poster_slide(film, img, fonts, is_story=True, primary_date=primary_date).save(OUTPUT_DIR / f"story_v2_image_{i+1:02}.png")
+        
+        t = film.get('movie_title_en') or film.get('tmdb_title') or film.get('movie_title')
+        caption_lines.append(f"🎬 {t}")
+        for d_key in sorted(film['multi_day_showings'].keys()):
+            caption_lines.append(f"\n🗓️ {format_date_for_caption(d_key)}" + (" (Today)" if d_key == primary_date else ""))
+            for cin, t_list in film['multi_day_showings'][d_key].items():
+                caption_lines.append(f"📍 {cin}: {', '.join(sorted(t_list))}")
+        caption_lines.append("\n" + "-"*15 + "\n")
+        
+    caption_lines.append("Link in Bio for Full Schedule\n#LondonCinema #FilmSpotlight #IndieFilm")
+    with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
+        f.write("\n".join(caption_lines))
+    print("Done. V2 Movie Spotlight Generated.")
 
 if __name__ == "__main__":
     main()

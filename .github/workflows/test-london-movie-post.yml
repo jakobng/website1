@@ -1,0 +1,67 @@
+name: Test London Movie Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_type:
+        description: 'Post Type to Generate'
+        required: true
+        default: 'movie'
+        type: choice
+        options:
+        - movie
+        - cinema
+
+permissions:
+  contents: write
+
+jobs:
+  test-generate:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./london-cinema-scrapers
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Set Timezone
+        run: sudo timedatectl set-timezone Europe/London
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get install -y fonts-noto-cjk
+
+      - name: Generate Movie Post (V2)
+        if: inputs.post_type == 'movie'
+        run: python generate_post2.py
+        env:
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Generate Cinema Post (V1)
+        if: inputs.post_type == 'cinema'
+        run: python generate_post.py
+        env:
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Commit & Push Images
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Add only the generated images and captions
+          git add ig_posts/*.png ig_posts/*.txt
+          
+          git commit -m "Test Gen: London ${{ inputs.post_type }} images" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push
