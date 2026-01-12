@@ -55,7 +55,12 @@ jobs:
 
           git add data/showtimes.json data/tmdb_cache.json ig_posts/*.png ig_posts/*.txt
           git commit -m "Auto-Update: London showtimes" || echo "No changes to commit"
+
+          # Stash any unstaged changes to prevent rebase failure
+          git stash --include-untracked || true
           git pull --rebase origin main
+          git stash drop || true
+
           git push
 
       - name: Wait for GitHub Pages deployment
