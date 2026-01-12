@@ -57,8 +57,9 @@ CUTOUTS_DIR = ASSETS_DIR / "cutouts"
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
+# Dimensions must be divisible by 8 for SD
 CANVAS_WIDTH = 1080
-CANVAS_HEIGHT = 1350
+CANVAS_HEIGHT = 1344  # Changed from 1350 (not divisible by 8)
 
 JST = timezone(timedelta(hours=9))
 
@@ -119,6 +120,7 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     matches = []
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
+        if f.is_dir(): continue
         f_name = normalize_name(f.stem)
         if target in f_name:
             matches.append(f)
@@ -155,7 +157,7 @@ def get_cutout_path(cinema_name: str) -> Path | None:
 
 def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Image.Image:
     img = img.convert("RGBA")
-    data = img.getdata()
+    data = list(img.getdata())
     new_data = []
     for item in data:
         if item[0] > threshold and item[1] > threshold and item[2] > threshold:
@@ -164,6 +166,34 @@ def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Imag
             new_data.append(item)
     img.putdata(new_data)
     return img
+
+def create_feathered_mask(size: tuple[int, int], feather_amount: float = 0.3) -> Image.Image:
+    """Create a radial gradient mask for feathered/soft edges on cutouts."""
+    w, h = size
+    mask = Image.new("L", (w, h), 255)
+    center_x, center_y = w // 2, h // 2
+    max_dist = min(w, h) / 2
+    fade_start = max_dist * (1 - feather_amount)
+
+    for y in range(h):
+        for x in range(w):
+            dist = ((x - center_x)**2 + (y - center_y)**2) ** 0.5
+            if dist < fade_start:
+                alpha = 255
+            elif dist < max_dist:
+                fade_progress = (dist - fade_start) / (max_dist - fade_start)
+                alpha = int(255 * (1 - fade_progress ** 0.5))
+            else:
+                alpha = 0
+            mask.putpixel((x, y), alpha)
+    return mask
+
+def apply_feathered_edges(cutout: Image.Image, feather_amount: float = 0.25) -> Image.Image:
+    """Apply feathered/soft edges to a cutout using radial gradient."""
+    feather_mask = create_feathered_mask(cutout.size, feather_amount)
+    r, g, b, a = cutout.split()
+    combined_alpha = Image.composite(a, Image.new("L", a.size, 0), feather_mask)
+    return Image.merge("RGBA", (r, g, b, combined_alpha))
 
 def load_showtimes(today_str: str) -> list[dict]:
     try:
@@ -195,6 +225,48 @@ def get_cinema_images(cinemas: list[str]) -> list[tuple[str, Path]]:
             result.append((c, path))
     return result
 
+# --- Helper to run SD img2img via Replicate ---
+def run_sd_img2img(input_image: Image.Image, prompt: str, negative_prompt: str = "",
+                   prompt_strength: float = 0.5, steps: int = 25) -> Image.Image | None:
+    """Run Stable Diffusion img2img via Replicate. Returns None on failure."""
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        print("      ⚠️ Replicate not available")
+        return None
+
+    try:
+        temp_path = BASE_DIR / "temp_sd_input.png"
+        input_image.save(temp_path, format="PNG")
+
+        print(f"      🎨 Running SD img2img (strength={prompt_strength})...")
+        output = replicate.run(
+            "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
+            input={
+                "image": open(temp_path, "rb"),
+                "prompt": prompt,
+                "negative_prompt": negative_prompt or "collage, multiple buildings, split, divided, text, watermark",
+                "prompt_strength": prompt_strength,
+                "num_inference_steps": steps,
+                "guidance_scale": 7.5,
+            }
+        )
+        if temp_path.exists():
+            os.remove(temp_path)
+
+        if output:
+            url = output[0] if isinstance(output, list) else output
+            print(f"      ✅ Got response: {url[:50]}...")
+            resp = requests.get(url)
+            if resp.status_code == 200:
+                return Image.open(BytesIO(resp.content)).convert("RGB")
+            else:
+                print(f"      ❌ Failed to download: HTTP {resp.status_code}")
+        else:
+            print("      ❌ No output from Replicate")
+    except Exception as e:
+        print(f"      ❌ SD img2img failed: {e}")
+
+    return None
+
 # --- Approach 1: img2img (reinterpret whole collage) ---
 def create_basic_collage(cinemas: list[tuple[str, Path]], width: int, height: int) -> Image.Image:
     """Create a basic collage with random placement."""
@@ -214,12 +286,12 @@ def create_basic_collage(cinemas: list[tuple[str, Path]], width: int, height: in
             max_dim = int(550 * random.uniform(0.8, 1.1))
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
-            x = random.randint(int(width * 0.1), int(width * 0.9) - cutout.width)
-            y = random.randint(int(height * 0.1), int(height * 0.9) - cutout.height)
+            x = random.randint(int(width * 0.1), max(int(width * 0.1) + 1, int(width * 0.9) - cutout.width))
+            y = random.randint(int(height * 0.1), max(int(height * 0.1) + 1, int(height * 0.9) - cutout.height))
 
             canvas.paste(cutout, (x, y), mask=cutout)
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"      Error in basic collage: {e}")
     return canvas
 
 def approach_1_img2img(cinemas: list[tuple[str, Path]], width: int, height: int) -> Image.Image:
@@ -227,56 +299,21 @@ def approach_1_img2img(cinemas: list[tuple[str, Path]], width: int, height: int)
     print("   [1/5] img2img approach...")
     collage = create_basic_collage(cinemas, width, height)
 
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   Replicate not available, returning raw collage")
-        return collage
+    result = run_sd_img2img(
+        collage,
+        prompt="surreal dream architecture, impossible cinema building, unified architectural monument, art deco brutalist fusion, single cohesive structure, dramatic lighting, wide angle, 8k",
+        prompt_strength=0.55,
+        steps=30
+    )
 
-    try:
-        temp_path = BASE_DIR / "temp_img2img.png"
-        collage.save(temp_path, format="PNG")
-
-        output = replicate.run(
-            "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
-            input={
-                "image": open(temp_path, "rb"),
-                "prompt": "surreal dream architecture, impossible cinema building, unified architectural monument, blend of art deco and brutalist styles, single cohesive structure, dramatic lighting, wide angle, 8k detailed",
-                "negative_prompt": "collage, multiple buildings, split, divided, separate structures, text, watermark",
-                "prompt_strength": 0.55,  # Lower = more faithful to input
-                "num_inference_steps": 30,
-                "guidance_scale": 7.5,
-            }
-        )
-        if temp_path.exists(): os.remove(temp_path)
-
-        if output:
-            url = output[0] if isinstance(output, list) else output
-            resp = requests.get(url)
-            if resp.status_code == 200:
-                return Image.open(BytesIO(resp.content)).convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
-    except Exception as e:
-        print(f"   img2img failed: {e}")
-
+    if result:
+        return result.resize((width, height), Image.Resampling.LANCZOS)
     return collage
 
-# --- Approach 2: Overlapping cutouts with gradient alpha ---
-def create_radial_gradient_mask(size: tuple[int, int]) -> Image.Image:
-    """Create a radial gradient mask for feathered edges."""
-    w, h = size
-    mask = Image.new("L", (w, h), 0)
-    center_x, center_y = w // 2, h // 2
-    max_dist = ((w/2)**2 + (h/2)**2) ** 0.5
-
-    for y in range(h):
-        for x in range(w):
-            dist = ((x - center_x)**2 + (y - center_y)**2) ** 0.5
-            # Fade from 255 (center) to 0 (edges)
-            alpha = int(255 * max(0, 1 - (dist / max_dist) ** 0.7))
-            mask.putpixel((x, y), alpha)
-    return mask
-
+# --- Approach 2: Overlapping cutouts with feathered gradient alpha ---
 def approach_2_gradient_overlap(cinemas: list[tuple[str, Path]], width: int, height: int) -> Image.Image:
     """Overlapping cutouts with gradient alpha blending."""
-    print("   [2/5] Gradient overlap approach...")
+    print("   [2/5] Gradient overlap approach (feathered edges)...")
     canvas = Image.new("RGBA", (width, height), (200, 200, 200, 255))
 
     imgs = cinemas[:5]
@@ -291,52 +328,32 @@ def approach_2_gradient_overlap(cinemas: list[tuple[str, Path]], width: int, hei
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
 
-            # Larger size for more overlap
             max_dim = int(700 * random.uniform(0.9, 1.2))
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
-            # Create gradient mask and apply to alpha
-            gradient = create_radial_gradient_mask(cutout.size)
-            r, g, b, a = cutout.split()
-            # Combine original alpha with gradient
-            combined_alpha = Image.composite(a, Image.new("L", a.size, 0), gradient)
-            cutout = Image.merge("RGBA", (r, g, b, combined_alpha))
+            # Apply feathered edges
+            cutout = apply_feathered_edges(cutout, feather_amount=0.35)
 
             # Center-biased placement for more overlap
-            x = random.randint(int(width * 0.15), int(width * 0.65))
-            y = random.randint(int(height * 0.15), int(height * 0.65))
+            x = random.randint(int(width * 0.1), int(width * 0.6))
+            y = random.randint(int(height * 0.1), int(height * 0.6))
 
             canvas.paste(cutout, (x, y), mask=cutout)
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"      Error: {e}")
 
-    # Convert to RGB and run through SD for unification
-    result = canvas.convert("RGB")
+    result_rgb = canvas.convert("RGB")
 
-    if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
-        try:
-            temp_path = BASE_DIR / "temp_gradient.png"
-            result.save(temp_path, format="PNG")
-            output = replicate.run(
-                "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
-                input={
-                    "image": open(temp_path, "rb"),
-                    "prompt": "unified dream cinema architecture, single impossible building, art deco brutalist fusion, dramatic lighting",
-                    "negative_prompt": "collage, separate buildings, divided, text",
-                    "prompt_strength": 0.45,
-                    "num_inference_steps": 25,
-                }
-            )
-            if temp_path.exists(): os.remove(temp_path)
-            if output:
-                url = output[0] if isinstance(output, list) else output
-                resp = requests.get(url)
-                if resp.status_code == 200:
-                    return Image.open(BytesIO(resp.content)).convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
-        except Exception as e:
-            print(f"   Gradient approach SD failed: {e}")
+    result = run_sd_img2img(
+        result_rgb,
+        prompt="unified dream cinema architecture, single impossible building, art deco brutalist fusion, dramatic lighting, seamless blend",
+        prompt_strength=0.45,
+        steps=25
+    )
 
-    return result
+    if result:
+        return result.resize((width, height), Image.Resampling.LANCZOS)
+    return result_rgb
 
 # --- Approach 3: Dense collage, minimal gaps ---
 def approach_3_dense_collage(cinemas: list[tuple[str, Path]], width: int, height: int) -> Image.Image:
@@ -362,9 +379,11 @@ def approach_3_dense_collage(cinemas: list[tuple[str, Path]], width: int, height
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
 
-            # Large cutouts for maximum coverage
             max_dim = int(650 * random.uniform(1.0, 1.3))
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
+
+            # Light feathering for dense collage
+            cutout = apply_feathered_edges(cutout, feather_amount=0.2)
 
             px, py = positions[i]
             x = int(width * px) - cutout.width // 2 + random.randint(-30, 30)
@@ -372,43 +391,28 @@ def approach_3_dense_collage(cinemas: list[tuple[str, Path]], width: int, height
 
             canvas.paste(cutout, (x, y), mask=cutout)
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"      Error: {e}")
 
-    result = canvas.convert("RGB")
+    result_rgb = canvas.convert("RGB")
 
-    # Light SD pass to smooth seams only
-    if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
-        try:
-            temp_path = BASE_DIR / "temp_dense.png"
-            result.save(temp_path, format="PNG")
-            output = replicate.run(
-                "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
-                input={
-                    "image": open(temp_path, "rb"),
-                    "prompt": "seamless cinema architecture, unified building facade, smooth transitions, coherent style",
-                    "negative_prompt": "collage edges, seams, separate pieces",
-                    "prompt_strength": 0.35,  # Very light touch
-                    "num_inference_steps": 20,
-                }
-            )
-            if temp_path.exists(): os.remove(temp_path)
-            if output:
-                url = output[0] if isinstance(output, list) else output
-                resp = requests.get(url)
-                if resp.status_code == 200:
-                    return Image.open(BytesIO(resp.content)).convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
-        except Exception as e:
-            print(f"   Dense approach SD failed: {e}")
+    # Very light SD pass to smooth seams
+    result = run_sd_img2img(
+        result_rgb,
+        prompt="seamless cinema architecture, unified building facade, smooth transitions, coherent style",
+        negative_prompt="collage edges, seams, separate pieces, text",
+        prompt_strength=0.35,
+        steps=20
+    )
 
-    return result
+    if result:
+        return result.resize((width, height), Image.Resampling.LANCZOS)
+    return result_rgb
 
 # --- Approach 4: ControlNet with edge guidance ---
 def extract_edges(img: Image.Image) -> Image.Image:
     """Extract edges from image for ControlNet guidance."""
     gray = img.convert("L")
-    # Simple edge detection using PIL filters
     edges = gray.filter(ImageFilter.FIND_EDGES)
-    # Enhance edges
     edges = edges.point(lambda x: 255 if x > 30 else 0)
     return edges
 
@@ -416,38 +420,43 @@ def approach_4_controlnet_edges(cinemas: list[tuple[str, Path]], width: int, hei
     """Use edge detection to guide generation of new architecture."""
     print("   [4/5] ControlNet edges approach...")
 
-    # First create a collage
     collage = create_basic_collage(cinemas, width, height)
     edges = extract_edges(collage)
 
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   Replicate not available")
+        print("      ⚠️ Replicate not available")
         return collage
 
     try:
         temp_edges = BASE_DIR / "temp_edges.png"
         edges.save(temp_edges, format="PNG")
 
-        # Use ControlNet with canny edges
+        print("      🎨 Running ControlNet...")
         output = replicate.run(
             "jagilley/controlnet-canny:aff48af9c68d162388d230a2ab003f68d2638d88307bdaf1c2f1ac95079c9613",
             input={
                 "image": open(temp_edges, "rb"),
-                "prompt": "surreal dream cinema building, impossible architecture monument, art deco meets brutalism, unified single structure, dramatic cinematic lighting, architectural photography, 8k",
+                "prompt": "surreal dream cinema building, impossible architecture monument, art deco brutalism, unified single structure, dramatic cinematic lighting, architectural photography, 8k",
                 "negative_prompt": "collage, multiple buildings, divided, split screen, text, watermark, low quality",
                 "num_inference_steps": 30,
                 "guidance_scale": 9,
             }
         )
-        if temp_edges.exists(): os.remove(temp_edges)
+        if temp_edges.exists():
+            os.remove(temp_edges)
 
         if output:
             url = output[0] if isinstance(output, list) else output
+            print(f"      ✅ Got response: {url[:50]}...")
             resp = requests.get(url)
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
+            else:
+                print(f"      ❌ Failed to download: HTTP {resp.status_code}")
+        else:
+            print("      ❌ No output from ControlNet")
     except Exception as e:
-        print(f"   ControlNet failed: {e}")
+        print(f"      ❌ ControlNet failed: {e}")
 
     return collage
 
@@ -456,18 +465,16 @@ def approach_5_two_pass(cinemas: list[tuple[str, Path]], width: int, height: int
     """Generate base dream architecture, then overlay cutouts with blending."""
     print("   [5/5] Two-pass approach...")
 
-    cinema_names = [c[0] for c in cinemas[:4]]
-    names_str = ", ".join([CINEMA_ENGLISH_NAMES.get(n, n) for n in cinema_names])
-
     # Pass 1: Generate base dream architecture from scratch
     base = Image.new("RGB", (width, height), (200, 200, 200))
 
     if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
         try:
+            print("      🎨 Generating base architecture...")
             output = replicate.run(
                 "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
                 input={
-                    "prompt": f"surreal impossible cinema building exterior, dream architecture monument to film, art deco and brutalist fusion, dramatic wide angle, cinematic lighting, inspired by Tokyo independent cinemas, 8k architectural photography",
+                    "prompt": "surreal impossible cinema building exterior, dream architecture monument to film, art deco brutalist fusion, dramatic wide angle, cinematic lighting, Tokyo independent cinema style, 8k architectural photography",
                     "negative_prompt": "text, people, cars, realistic, multiple buildings",
                     "width": width,
                     "height": height,
@@ -477,11 +484,16 @@ def approach_5_two_pass(cinemas: list[tuple[str, Path]], width: int, height: int
             )
             if output:
                 url = output[0] if isinstance(output, list) else output
+                print(f"      ✅ Got base: {url[:50]}...")
                 resp = requests.get(url)
                 if resp.status_code == 200:
                     base = Image.open(BytesIO(resp.content)).convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
+                else:
+                    print(f"      ❌ Failed to download base: HTTP {resp.status_code}")
+            else:
+                print("      ❌ No output for base generation")
         except Exception as e:
-            print(f"   Base generation failed: {e}")
+            print(f"      ❌ Base generation failed: {e}")
 
     # Pass 2: Overlay cutouts with transparency blending
     canvas = base.convert("RGBA")
@@ -500,77 +512,33 @@ def approach_5_two_pass(cinemas: list[tuple[str, Path]], width: int, height: int
             max_dim = int(400 * random.uniform(0.8, 1.0))
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
-            # Add transparency to cutout for blending
+            # Apply feathered edges and reduce opacity
+            cutout = apply_feathered_edges(cutout, feather_amount=0.35)
             r, g, b, a = cutout.split()
             a = a.point(lambda x: int(x * 0.7))  # 70% opacity
             cutout = Image.merge("RGBA", (r, g, b, a))
 
-            # Feather edges
-            gradient = create_radial_gradient_mask(cutout.size)
-            r, g, b, a = cutout.split()
-            combined_alpha = Image.composite(a, Image.new("L", a.size, 0), gradient)
-            cutout = Image.merge("RGBA", (r, g, b, combined_alpha))
-
-            x = random.randint(int(width * 0.1), int(width * 0.7))
-            y = random.randint(int(height * 0.1), int(height * 0.7))
+            x = random.randint(int(width * 0.1), int(width * 0.6))
+            y = random.randint(int(height * 0.1), int(height * 0.6))
 
             canvas.paste(cutout, (x, y), mask=cutout)
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"      Error: {e}")
 
-    result = canvas.convert("RGB")
+    result_rgb = canvas.convert("RGB")
 
     # Light unification pass
-    if REPLICATE_AVAILABLE and REPLICATE_API_TOKEN:
-        try:
-            temp_path = BASE_DIR / "temp_twopass.png"
-            result.save(temp_path, format="PNG")
-            output = replicate.run(
-                "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
-                input={
-                    "image": open(temp_path, "rb"),
-                    "prompt": "unified dream cinema architecture, cohesive lighting and style, single building",
-                    "negative_prompt": "collage, separate pieces",
-                    "prompt_strength": 0.25,  # Very light
-                    "num_inference_steps": 15,
-                }
-            )
-            if temp_path.exists(): os.remove(temp_path)
-            if output:
-                url = output[0] if isinstance(output, list) else output
-                resp = requests.get(url)
-                if resp.status_code == 200:
-                    return Image.open(BytesIO(resp.content)).convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
-        except Exception as e:
-            print(f"   Two-pass unification failed: {e}")
+    result = run_sd_img2img(
+        result_rgb,
+        prompt="unified dream cinema architecture, cohesive lighting and style, single building",
+        negative_prompt="collage, separate pieces, text",
+        prompt_strength=0.25,
+        steps=15
+    )
 
-    return result
-
-# --- Gemini Refinement (optional final pass) ---
-def refine_with_gemini(img: Image.Image, date_text: str, approach_name: str) -> Image.Image:
-    """Optional Gemini refinement for text overlay."""
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        return img
-
-    try:
-        client = genai.Client(api_key=api_key)
-        prompt = (
-            f"Refine this dream cinema architecture image. "
-            f"Add the title 'TODAY'S CINEMA SELECTION' and date '{date_text}' elegantly. "
-            f"Approach: {approach_name}. Unify lighting and make it cohesive."
-        )
-        response = client.models.generate_content(
-            model="gemini-3-pro-image-preview",
-            contents=[prompt, img],
-            config=types.GenerateContentConfig(response_modalities=["IMAGE"])
-        )
-        for part in response.parts:
-            if part.inline_data:
-                return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(img.size, Image.Resampling.LANCZOS)
-    except Exception as e:
-        print(f"   Gemini refinement failed: {e}")
-    return img
+    if result:
+        return result.resize((width, height), Image.Resampling.LANCZOS)
+    return result_rgb
 
 
 def main():
@@ -583,13 +551,15 @@ def main():
     date_display = f"{today.strftime('%Y.%m.%d')} {today.strftime('%a').upper()}"
 
     print(f"Date: {today_str}")
+    print(f"Canvas: {CANVAS_WIDTH}x{CANVAS_HEIGHT} (divisible by 8: {CANVAS_WIDTH % 8 == 0 and CANVAS_HEIGHT % 8 == 0})")
+    print(f"Replicate available: {REPLICATE_AVAILABLE}")
+    print(f"Replicate token set: {bool(REPLICATE_API_TOKEN)}")
 
     # Get cinemas
     cinemas = get_selected_cinemas(today_str)
     if not cinemas:
         print("No cinemas found, using fallback images from assets")
-        # Fallback: just use whatever images we have
-        all_images = list(ASSETS_DIR.glob("*.jpg")) + list(ASSETS_DIR.glob("*.png"))
+        all_images = [f for f in ASSETS_DIR.glob("*") if f.suffix.lower() in ['.jpg', '.jpeg', '.png'] and f.is_file()]
         cinemas = [(f.stem, f) for f in all_images[:8]]
     else:
         cinemas = get_cinema_images(cinemas)
@@ -613,15 +583,13 @@ def main():
         print(f"\nGenerating: {name}")
         try:
             result = func(cinemas, CANVAS_WIDTH, CANVAS_HEIGHT)
-
-            # Optional: Gemini refinement
-            # result = refine_with_gemini(result, date_display, name)
-
             output_path = OUTPUT_DIR / f"hero_{name}.png"
             result.save(output_path)
-            print(f"   Saved: {output_path}")
+            print(f"   ✅ Saved: {output_path}")
         except Exception as e:
-            print(f"   FAILED: {e}")
+            print(f"   ❌ FAILED: {e}")
+            import traceback
+            traceback.print_exc()
 
     print("\n" + "=" * 60)
     print("DONE - Compare the 5 hero images in ig_posts/")
