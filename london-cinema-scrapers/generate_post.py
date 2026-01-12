@@ -301,15 +301,37 @@ def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Imag
     img.putdata(new_data)
     return img
 
+def feather_cutout(img: Image.Image, erosion: int = 5, blur: int = 15) -> Image.Image:
+    """
+    Refines the edge of a cutout by eroding it (to remove jagged halos)
+    and blurring the alpha channel (to allow soft blending).
+    """
+    if img.mode != 'RGBA':
+        img = img.convert('RGBA')
+    
+    # Extract just the Alpha channel
+    alpha = img.split()[3]
+    
+    # 1. Erode: Shave off a few pixels to remove 'white halos' from bad crops
+    alpha = alpha.filter(ImageFilter.MinFilter(erosion))
+    
+    # 2. Blur: Create a gradient transparency at the edge
+    alpha = alpha.filter(ImageFilter.GaussianBlur(blur))
+    
+    # Apply the new soft alpha back to the image
+    img.putalpha(alpha)
+    return img
 
 def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> tuple[Image.Image, Image.Image, Image.Image]:
     width = target_width
     height = target_height
+    
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
+    
+    # Mask: White (255) = Inpaint (Replace), Black (0) = Keep
     mask = Image.new("L", (width, height), 255)
 
-    # Use 4 cutouts for a balanced collage
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4:
         imgs_to_process = (imgs_to_process * 4)[:4]
@@ -325,10 +347,15 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     for i, (name, path) in enumerate(imgs_to_process):
         try:
             raw = Image.open(path).convert("RGBA")
+            # 1. Remove white background pixels
             cutout = convert_white_to_transparent(raw)
             bbox = cutout.getbbox()
             if bbox:
                 cutout = cutout.crop(bbox)
+            
+            # 2. NEW: Feather the edges so they fade out
+            # erosion=5 removes jagged edges, blur=15 creates the blend zone
+            cutout = feather_cutout(cutout, erosion=5, blur=15)
 
             scale_variance = random.uniform(0.8, 1.1)
             max_dim = int(600 * scale_variance)
@@ -341,25 +368,23 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
 
+            # Paste the soft-edged image onto the layout
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
+            # Update Mask:
+            # The 'alpha' here is now a gradient (feathered).
+            # When we paste 0 (Black) using a gradient mask, we get Gray on the edges.
+            # Gray Mask = AI blends the edge pixels with the background.
             alpha = cutout.split()[3]
-            # Paste the "protect" zone (black) where the image is
             mask.paste(0, (x, y), mask=alpha)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # --- THE KEY CHANGE: SOFT BLENDING ---
-    # 1. Erode the protected area slightly (so the AI touches the very edge of the photo)
-    #    MaxFilter expands the white (inpaint) area into the black (keep) area.
-    mask = mask.filter(ImageFilter.MaxFilter(9)) 
-
-    # 2. Blur the mask to create a gradient transition.
-    #    This tells SDXL: "Definitely keep the center, definitely replace the background,
-    #    but smoothly blend the pixels in between."
-    mask = mask.filter(ImageFilter.GaussianBlur(15))
+    # No need for aggressive mask filtering anymore, as the alpha channel provides the gradient.
+    # Just a tiny blur to smooth out any remaining pixel steps.
+    mask = mask.filter(ImageFilter.GaussianBlur(3))
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
