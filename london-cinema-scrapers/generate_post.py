@@ -328,14 +328,11 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    
-    # Mask: White (255) = Inpaint (Replace), Black (0) = Keep
-    mask = Image.new("L", (width, height), 255)
+    mask = Image.new("L", (width, height), 255) # White = Inpaint
 
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4:
         imgs_to_process = (imgs_to_process * 4)[:4]
-
     random.shuffle(imgs_to_process)
 
     anchors = [
@@ -347,15 +344,12 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     for i, (name, path) in enumerate(imgs_to_process):
         try:
             raw = Image.open(path).convert("RGBA")
-            # 1. Remove white background pixels
             cutout = convert_white_to_transparent(raw)
             bbox = cutout.getbbox()
-            if bbox:
-                cutout = cutout.crop(bbox)
-            
-            # 2. NEW: Feather the edges so they fade out
-            # erosion=5 removes jagged edges, blur=15 creates the blend zone
-            cutout = feather_cutout(cutout, erosion=5, blur=15)
+            if bbox: cutout = cutout.crop(bbox)
+
+            # 1. Soften the image itself (Keep this, it helps)
+            cutout = feather_cutout(cutout, erosion=5, blur=10)
 
             scale_variance = random.uniform(0.8, 1.1)
             max_dim = int(600 * scale_variance)
@@ -364,27 +358,34 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             cx, cy = anchors[i]
             cx += random.randint(-50, 50)
             cy += random.randint(-50, 50)
-
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
 
-            # Paste the soft-edged image onto the layout
+            # Paste image onto layout
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
-            # Update Mask:
-            # The 'alpha' here is now a gradient (feathered).
-            # When we paste 0 (Black) using a gradient mask, we get Gray on the edges.
-            # Gray Mask = AI blends the edge pixels with the background.
+            # 2. CREATE THE "BLEED" ZONE
+            # We take the alpha channel (the shape of the image)
             alpha = cutout.split()[3]
-            mask.paste(0, (x, y), mask=alpha)
+            
+            # We ERODE it heavily (shrink it) before pasting to the mask.
+            # This means the mask "Keep Zone" (Black) is SMALLER than the actual image.
+            # The outer ~20 pixels of the building will sit in the "Inpaint Zone" (White).
+            # The AI will see those pixels but be forced to redraw/blend them.
+            core_mask = alpha.filter(ImageFilter.MinFilter(25)) 
+            
+            # Blur the mask slightly so the transition isn't a sharp line
+            core_mask = core_mask.filter(ImageFilter.GaussianBlur(10))
+
+            # Paste 0 (Protect) using this shrunken core
+            mask.paste(0, (x, y), mask=core_mask)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # No need for aggressive mask filtering anymore, as the alpha channel provides the gradient.
-    # Just a tiny blur to smooth out any remaining pixel steps.
-    mask = mask.filter(ImageFilter.GaussianBlur(3))
+    # Final global blur on the mask to ensure smoothness
+    mask = mask.filter(ImageFilter.GaussianBlur(5))
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
