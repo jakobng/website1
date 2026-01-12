@@ -440,7 +440,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
                 # Prompt focuses on CONNECTING the elements
-                "prompt": "surreal dreamscape, architectural connective tissue, twisting geometry connecting buildings, cinematic fog, london sky, intricate details, hyperrealistic, 8k",
+                "prompt": "surreal dreamscape, architectural connective tissue, twisting geometry connecting buildings, intricate details, hyperrealistic, 8k",
                 "negative_prompt": "hard edges, cutout borders, white space, empty background, cartoon, blurry, low resolution",
                 "prompt_strength": 0.95, # High strength because we are filling empty white space
                 "strength": 1.0,         # Fill the masked area completely
