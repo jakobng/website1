@@ -398,47 +398,42 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
 
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
+    # NOTE: We are ignoring 'mask_img' now. We treat the whole collage as a sketch to be refined.
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ⚠️ Replicate not available. Skipping Inpaint.")
+        print("   ⚠️ Replicate not available. Skipping AI Refinement.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (SDXL Inpainting)...")
+    print("   🎨 Unifying collage with SDXL (Image-to-Image)...")
     try:
-        temp_img_path = BASE_DIR / "temp_inpaint_img.png"
-        temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
+        temp_img_path = BASE_DIR / "temp_collage_input.png"
         layout_img.save(temp_img_path, format="PNG")
-        mask_img.save(temp_mask_path, format="PNG")
 
         output = replicate.run(
-            "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
+            "stability-ai/sdxl:7762fd07cf43c9d0eb24f4e554797fc3c25165a370773f5c2a14357778523029",
             input={
                 "image": open(temp_img_path, "rb"),
-                "mask": open(temp_mask_path, "rb"),
-                "prompt": "surreal architectural mashup, single unified dream structure, classical cinema architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, London aesthetic, 8k, hyperrealistic",
-                "negative_prompt": "collage, cutouts, hard edges, seams, split screen, borders, frames, text, watermark, blurry, puzzle pieces",
-                "prompt_strength": 0.85, # High adherence to "surreal mashup"
-                "strength": 0.90,        # High strength to allow creative hallucination in the gaps
-                "num_inference_steps": 40
+                "prompt": "cinematic shot, surreal architectural mashup, London cinema, unified building structure, hyperrealistic, 8k, seamless blend, dramatic lighting, volumetric fog, high detail",
+                "negative_prompt": "collage, seams, split screen, borders, cutouts, floating objects, text, watermark, blurry, cartoon, illustration",
+                "prompt_strength": 0.65,  # <--- VITAL: Controls how much it blends (0.6-0.7 is best)
+                "num_inference_steps": 40,
+                "guidance_scale": 7.5,
+                "refine": "expert_ensemble_refiner", # Adds that crisp "Pro" finish
+                "high_noise_frac": 0.8
             }
         )
         
-        # Clean up temp files
         if temp_img_path.exists():
             os.remove(temp_img_path)
-        if temp_mask_path.exists():
-            os.remove(temp_mask_path)
             
         if output:
-            # Handle potential list or string output
             url = output[0] if isinstance(output, list) else output
             resp = requests.get(url)
             if resp.status_code == 200:
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
                 return img.resize(layout_img.size, Image.Resampling.LANCZOS)
     except Exception as e:
-        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
+        print(f"   ⚠️ AI Refinement failed: {e}. Using raw layout.")
     return layout_img
-
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
     # Use full images for backgrounds, not cutouts
