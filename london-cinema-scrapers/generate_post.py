@@ -284,9 +284,9 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
     mask = Image.new("L", (width, height), 255)
 
-    imgs_to_process = cinemas[:5]
-    if len(imgs_to_process) < 5:
-        imgs_to_process = (imgs_to_process * 3)[:5]
+    imgs_to_process = cinemas[:2]
+    if len(imgs_to_process) < 2:
+        imgs_to_process = (imgs_to_process * 3)[:2]
 
     random.shuffle(imgs_to_process)
 
