@@ -40,8 +40,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           # Add Images & Captions
-          git add -f cinema-scrapers/ig_posts/post_image_*.png || true
-          git add -f cinema-scrapers/ig_posts/story_image_*.png || true
+          git add -f cinema-scrapers/ig_posts/testpost_image_*.png || true
           git add -f cinema-scrapers/ig_posts/post_caption.txt || true
 
           # Check for changes
@@ -56,3 +55,4 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
