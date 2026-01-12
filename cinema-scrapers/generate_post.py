@@ -384,12 +384,11 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
     random.shuffle(imgs_to_process)
 
-    # Anchor points tailored for 4 cutouts - corner placement
+    # Generate random anchor points for each cutout
     anchors = [
-        (int(width * 0.30), int(height * 0.30)),
-        (int(width * 0.70), int(height * 0.30)),
-        (int(width * 0.30), int(height * 0.70)),
-        (int(width * 0.70), int(height * 0.70)),
+        (random.randint(int(width * 0.15), int(width * 0.85)),
+         random.randint(int(height * 0.15), int(height * 0.85)))
+        for _ in range(4)
     ]
 
     for i, (name, path) in enumerate(imgs_to_process):
