@@ -102,7 +102,7 @@ def _dismiss_yie_overlay(page) -> None:
         )
         page.evaluate(
             "() => {"
-            "document.querySelectorAll('[id^="yie-overlay-"], [id^="yie-backdrop-"]')"
+            "document.querySelectorAll('[id^=\"yie-overlay-\"], [id^=\"yie-backdrop-\"]')"
             ".forEach(el => el.remove());"
             "}"
         )
