@@ -690,10 +690,7 @@
                         <label for="region-select">Region</label>
                         <select id="region-select"></select>
                     </div>
-                    <div class="filter">
-                        <label for="sort-select">Sort</label>
-                        <select id="sort-select"></select>
-                    </div>
+
                 </div>
                 <div class="filter-grid filter-grid-wide">
                     <div class="filter options-row">
@@ -798,6 +795,8 @@
                 "The Lexi Cinema": "West London",
                 "The Nickel": "Central",
                 "ArtHouse Crouch End": "North London",
+                "Backyard Cinema": "South London",
+                "Barbican Cinema": "Central",
                 "JW3 Cinema": "North London",
                 "Rich Mix": "East London",
                 "ActOne Cinema & Cafe": "West London",
@@ -860,7 +859,6 @@
                 dateSelect: document.getElementById("date-select"),
                 timeSelect: document.getElementById("time-select"),
                 regionSelect: document.getElementById("region-select"),
-                sortSelect: document.getElementById("sort-select"),
                 clearFilters: document.getElementById("clear-filters"),
                 includeChains: document.getElementById("include-chains"),
                 filtersToggle: document.getElementById("filters-toggle"),
@@ -884,7 +882,6 @@
             const state = {
                 data: [],
                 view: "cinema",
-                sort: "name",
                 todayDate: "",
                 selectedCinema: "",
                 filtersExpanded: false,
@@ -895,16 +892,6 @@
                     region: "all",
                     includeChains: true
                 }
-            };
-
-            const sortOptions = {
-                cinema: [
-                    { value: "name", label: "Cinema name" }
-                ],
-                film: [
-                    { value: "soonest", label: "Soonest" },
-                    { value: "title", label: "A-Z" }
-                ]
             };
 
             const dateFormatter = new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short" });
@@ -937,11 +924,6 @@
 
             elements.regionSelect.addEventListener("change", function (event) {
                 state.filters.region = event.target.value;
-                render();
-            });
-
-            elements.sortSelect.addEventListener("change", function (event) {
-                state.sort = event.target.value;
                 render();
             });
 
@@ -990,36 +972,11 @@
                     const isActive = button.getAttribute("data-view") === view;
                     button.classList.toggle("is-active", isActive);
                 });
-                updateSortOptions();
                 if (view === "film" && state.filters.date === "all" && state.todayDate) {
                     state.filters.date = state.todayDate;
                     elements.dateSelect.value = state.todayDate;
                 }
                 render();
-            }
-
-            function getDefaultDateForView() {
-                if (state.view === "film" && state.todayDate) {
-                    return state.todayDate;
-                }
-                return "all";
-            }
-
-            function updateSortOptions() {
-                const options = sortOptions[state.view];
-                const currentValue = state.sort;
-                elements.sortSelect.innerHTML = "";
-                options.forEach(function (option) {
-                    const optionEl = document.createElement("option");
-                    optionEl.value = option.value;
-                    optionEl.textContent = option.label;
-                    elements.sortSelect.appendChild(optionEl);
-                });
-                const stillValid = options.some(function (option) {
-                    return option.value === currentValue;
-                });
-                state.sort = stillValid ? currentValue : options[0].value;
-                elements.sortSelect.value = state.sort;
             }
 
             function createElement(tag, className, text) {
@@ -1222,8 +1179,6 @@
                     elements.regionSelect.appendChild(option);
                 });
                 elements.regionSelect.value = state.filters.region || "all";
-
-                updateSortOptions();
             }
 
             function normalizeShowings(rawData) {
@@ -1586,13 +1541,7 @@
                         body.appendChild(createElement("p", "film-blurb", film.overview));
                     }
 
-                    if (film.formatTags.length) {
-                        const tagRow = createElement("div", "tag-row");
-                        film.formatTags.forEach(function (tag) {
-                            tagRow.appendChild(createElement("span", "tag", tag));
-                        });
-                        body.appendChild(tagRow);
-                    }
+
 
                     const showingsByCinema = new Map();
                     film.showings.forEach(function (showing) {
@@ -1651,11 +1600,7 @@
                 }
 
                 const films = groupByFilm(showings);
-                if (state.sort === "soonest") {
-                    films.sort(function (a, b) { return a.nextTime - b.nextTime; });
-                } else {
-                    films.sort(function (a, b) { return a.title.localeCompare(b.title); });
-                }
+                films.sort(function (a, b) { return a.nextTime - b.nextTime; });
 
                 renderFilmList(films, showings.length);
             }
