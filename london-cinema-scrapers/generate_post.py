@@ -287,27 +287,17 @@ def get_cinema_image_path(cinema_name: str, use_cutouts: bool = True) -> Path | 
     return None
 
 
-def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
-    """
-    Convert white/near-white backgrounds to transparent.
-    Cutouts from cinema_assets/cutouts/ may have white backgrounds.
-    """
-    img = pil_img.convert("RGBA")
+def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Image.Image:
+    """Convert white/near-white pixels to transparent for cutouts with white backgrounds."""
+    img = img.convert("RGBA")
     data = img.getdata()
-
     new_data = []
-    # Threshold for "white" - pixels with R, G, B all above this become transparent
-    white_threshold = 240
-
-    for pixel in data:
-        r, g, b, a = pixel
-        # Check if pixel is white or near-white
-        if r > white_threshold and g > white_threshold and b > white_threshold:
-            # Make it fully transparent
-            new_data.append((r, g, b, 0))
+    for item in data:
+        # If pixel is white-ish (all RGB values above threshold), make transparent
+        if item[0] > threshold and item[1] > threshold and item[2] > threshold:
+            new_data.append((255, 255, 255, 0))
         else:
-            new_data.append(pixel)
-
+            new_data.append(item)
     img.putdata(new_data)
     return img
 
@@ -319,35 +309,38 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
     mask = Image.new("L", (width, height), 255)
 
-    imgs_to_process = cinemas[:2]
-    if len(imgs_to_process) < 2:
-        imgs_to_process = (imgs_to_process * 3)[:2]
+    # Use 4 cutouts for a balanced collage (like Tokyo)
+    imgs_to_process = cinemas[:4]
+    if len(imgs_to_process) < 4:
+        imgs_to_process = (imgs_to_process * 4)[:4]
 
     random.shuffle(imgs_to_process)
 
+    # Generate random anchor points for each cutout (like Tokyo)
     anchors = [
-        (int(width * 0.3), int(height * 0.25)),
-        (int(width * 0.7), int(height * 0.25)),
-        (int(width * 0.5), int(height * 0.50)),
-        (int(width * 0.3), int(height * 0.75)),
-        (int(width * 0.7), int(height * 0.75)),
+        (random.randint(int(width * 0.15), int(width * 0.85)),
+         random.randint(int(height * 0.15), int(height * 0.85)))
+        for _ in range(4)
     ]
 
     for i, (name, path) in enumerate(imgs_to_process):
         try:
             raw = Image.open(path).convert("RGBA")
-            cutout = remove_background_replicate(raw)
+            # Convert white backgrounds to transparent for pre-made cutouts
+            cutout = convert_white_to_transparent(raw)
             bbox = cutout.getbbox()
             if bbox:
                 cutout = cutout.crop(bbox)
 
-            scale_variance = random.uniform(0.7, 1.2)
-            max_dim = int(550 * scale_variance)
+            # Match Tokyo's scale settings
+            scale_variance = random.uniform(0.8, 1.1)
+            max_dim = int(600 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
             cx, cy = anchors[i]
-            cx += random.randint(-100, 100)
-            cy += random.randint(-100, 100)
+            # Match Tokyo's jitter range
+            cx += random.randint(-50, 50)
+            cy += random.randint(-50, 50)
 
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
