@@ -155,6 +155,16 @@
             gap: 12px;
         }
 
+        .filters-header {
+            display: none;
+        }
+
+        .filters-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .filter-grid {
             display: grid;
             grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -209,6 +219,28 @@
             font-size: 0.7rem;
             cursor: pointer;
             color: var(--accent-strong);
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-row input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-strong);
+            cursor: pointer;
+        }
+
+        .checkbox-row label {
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: normal;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--ink);
         }
 
         .view-section {
@@ -550,6 +582,51 @@
             h1 {
                 letter-spacing: 0.1em;
             }
+
+            .filters-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .filters-header-label {
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--muted);
+            }
+
+            .filters-toggle {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                border: none;
+                background: transparent;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--accent-strong);
+                cursor: pointer;
+                padding: 4px 0;
+            }
+
+            .filters-toggle-icon {
+                transition: transform 0.2s ease;
+            }
+
+            .filters-toggle.is-collapsed .filters-toggle-icon {
+                transform: rotate(-90deg);
+            }
+
+            .filters-content {
+                display: none;
+            }
+
+            .filters-content.is-expanded {
+                display: flex;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -582,38 +659,50 @@
         </header>
 
         <section class="filters">
-            <div class="filter-grid">
-                <div class="filter">
-                    <label for="search-input">Search</label>
-                    <input id="search-input" type="search" placeholder="Film, cinema, director, genre">
-                </div>
-                <div class="filter">
-                    <label for="date-select">Date</label>
-                    <select id="date-select"></select>
-                </div>
-                <div class="filter">
-                    <label for="time-select">Time</label>
-                    <select id="time-select">
-                        <option value="any">Any time</option>
-                        <option value="morning">Morning (before 12)</option>
-                        <option value="afternoon">Afternoon (12-17)</option>
-                        <option value="evening">Evening (17-21)</option>
-                        <option value="late">Late (after 21)</option>
-                    </select>
-                </div>
-                <div class="filter">
-                    <label for="region-select">Region</label>
-                    <select id="region-select"></select>
-                </div>
-                <div class="filter">
-                    <label for="sort-select">Sort</label>
-                    <select id="sort-select"></select>
-                </div>
+            <div class="filters-header">
+                <span class="filters-header-label">Filters</span>
+                <button class="filters-toggle" type="button" id="filters-toggle">
+                    <span>Show</span>
+                    <span class="filters-toggle-icon">▼</span>
+                </button>
             </div>
-            <div class="filter-grid filter-grid-wide">
-                <div class="filter options-row">
-                    <span class="filter-label">Filters</span>
-                    <button class="link-btn" type="button" id="clear-filters">Clear filters</button>
+            <div class="filters-content" id="filters-content">
+                <div class="filter-grid">
+                    <div class="filter">
+                        <label for="search-input">Search</label>
+                        <input id="search-input" type="search" placeholder="Film, cinema, director, genre">
+                    </div>
+                    <div class="filter">
+                        <label for="date-select">Date</label>
+                        <select id="date-select"></select>
+                    </div>
+                    <div class="filter">
+                        <label for="time-select">Time</label>
+                        <select id="time-select">
+                            <option value="any">Any time</option>
+                            <option value="morning">Morning (before 12)</option>
+                            <option value="afternoon">Afternoon (12-17)</option>
+                            <option value="evening">Evening (17-21)</option>
+                            <option value="late">Late (after 21)</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="region-select">Region</label>
+                        <select id="region-select"></select>
+                    </div>
+                    <div class="filter">
+                        <label for="sort-select">Sort</label>
+                        <select id="sort-select"></select>
+                    </div>
+                </div>
+                <div class="filter-grid filter-grid-wide">
+                    <div class="filter options-row">
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="include-chains" checked>
+                            <label for="include-chains">Include arthouse chains (Curzon, Everyman, Picturehouse)</label>
+                        </div>
+                        <button class="link-btn" type="button" id="clear-filters">Clear filters</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -658,6 +747,25 @@
         document.addEventListener("DOMContentLoaded", function () {
             const jsonUrl = "london-cinema-scrapers/data/showtimes.json";
             const tmdbBase = "https://image.tmdb.org/t/p/";
+
+            const chainCinemas = new Set([
+                // Curzon chain
+                "Curzon Soho", "Curzon Mayfair", "Curzon Bloomsbury", "Curzon Victoria",
+                "Curzon Camden", "Curzon Hoxton", "Curzon Aldgate", "Curzon Sea Containers",
+                "Curzon Wimbledon", "Curzon Richmond", "Curzon Kingston",
+                // Everyman chain
+                "Everyman Baker Street", "Everyman Barnet", "Everyman Belsize Park",
+                "Everyman Borough Yards", "Everyman Brentford", "Everyman Broadgate",
+                "Everyman Canary Wharf", "Everyman Chelsea", "Everyman Crystal Palace",
+                "Everyman Hampstead", "Everyman King's Cross", "Everyman Maida Vale",
+                "Everyman Muswell Hill", "Everyman Screen on the Green",
+                "Everyman Stratford International", "Everyman The Whiteley",
+                // Picturehouse chain
+                "Clapham Picturehouse", "Crouch End Picturehouse", "Ealing Picturehouse",
+                "East Dulwich Picturehouse", "Finsbury Park Picturehouse", "Greenwich Picturehouse",
+                "Hackney Picturehouse", "Picturehouse Central", "Ritzy Cinema",
+                "The Gate", "West Norwood Picturehouse"
+            ]);
 
             const cinemaRegions = {
                 // Individual cinemas
@@ -754,6 +862,9 @@
                 regionSelect: document.getElementById("region-select"),
                 sortSelect: document.getElementById("sort-select"),
                 clearFilters: document.getElementById("clear-filters"),
+                includeChains: document.getElementById("include-chains"),
+                filtersToggle: document.getElementById("filters-toggle"),
+                filtersContent: document.getElementById("filters-content"),
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
                 cinemaView: document.getElementById("cinema-view"),
                 cinemaIndex: document.getElementById("cinema-index"),
@@ -776,11 +887,13 @@
                 sort: "name",
                 todayDate: "",
                 selectedCinema: "",
+                filtersExpanded: false,
                 filters: {
                     search: "",
                     date: "all",
                     time: "any",
-                    region: "all"
+                    region: "all",
+                    includeChains: true
                 }
             };
 
@@ -832,16 +945,30 @@
                 render();
             });
 
+            elements.includeChains.addEventListener("change", function (event) {
+                state.filters.includeChains = event.target.checked;
+                render();
+            });
+
+            elements.filtersToggle.addEventListener("click", function () {
+                state.filtersExpanded = !state.filtersExpanded;
+                elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
+                elements.filtersToggle.classList.toggle("is-collapsed", !state.filtersExpanded);
+                elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? "Hide" : "Show";
+            });
+
             elements.clearFilters.addEventListener("click", function () {
                 state.filters.search = "";
                 state.filters.date = getDefaultDateForView();
                 state.filters.time = "any";
                 state.filters.region = "all";
+                state.filters.includeChains = true;
 
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
                 elements.timeSelect.value = "any";
                 elements.regionSelect.value = "all";
+                elements.includeChains.checked = true;
                 render();
             });
 
@@ -1163,6 +1290,9 @@
                         if (state.filters.time === "late" && showing.timeMinutes < 21 * 60) return false;
                     }
                     if (state.filters.region !== "all" && showing.region !== state.filters.region) {
+                        return false;
+                    }
+                    if (!state.filters.includeChains && chainCinemas.has(showing.cinema)) {
                         return false;
                     }
                     return true;
