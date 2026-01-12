@@ -129,10 +129,14 @@ jobs:
           
           # Commit locally
           git commit -m "Auto-Update: ${{ steps.mode.outputs.post_type }} content" || echo "No changes to commit"
-          
+
+          # Stash any unstaged changes to prevent rebase failure
+          git stash --include-untracked || true
+
           # FIX: Rebase to handle race conditions (if repo updated while running)
           git pull --rebase origin main
-          
+          git stash drop || true
+
           # Push
           git push
 
