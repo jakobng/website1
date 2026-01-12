@@ -399,8 +399,8 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
 
         client = genai.Client(api_key=api_key)
         prompt_text = (
-            f"Refine this collage into a unified image. "
-            f"Strictly preserve the layout, composition, and structures of the input image, but connect the buildings and cutouts in interesting ways. "
+            f"Refine this collage into a unified image, using all of the space."
+            f"Strictly preserve the layout, composition, and structures of the input image, but connect the buildings and cutouts in interesting ways."
             f"Your task is only to blend the edges and unify the lighting and textures so the cutouts look like a cohesive scene. "
             f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}'."
         )
