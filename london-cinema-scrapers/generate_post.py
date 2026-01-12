@@ -442,7 +442,8 @@ def upscale_image(img: Image.Image) -> Image.Image:
         img.save(temp_path, format="PNG")
         
         output = replicate.run(
-            "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73ab415c722d379caa961",
+            # Updated to latest stable version (Nov 2024)
+            "nightmareai/real-esrgan:279a18ae4f30c9d3636516918d76c8c8262a9bc7c415fe90a88087c78c9ebbef",
             input={
                 "image": open(temp_path, "rb"),
                 "scale": 2,
@@ -454,7 +455,9 @@ def upscale_image(img: Image.Image) -> Image.Image:
             os.remove(temp_path)
             
         if output:
-            url = output if isinstance(output, str) else output[0]
+            # Replicate usually returns a URL string, but sometimes a File object
+            url = output.url if hasattr(output, 'url') else (output[0] if isinstance(output, list) else output)
+            
             resp = requests.get(url)
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGB")
