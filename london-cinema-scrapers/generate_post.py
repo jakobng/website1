@@ -307,13 +307,11 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     height = target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    mask = Image.new("L", (width, height), 255)
+    mask = Image.new("L", (width, height), 255) # White = Inpaint
 
-    # Use 4 cutouts for a balanced collage
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4:
         imgs_to_process = (imgs_to_process * 4)[:4]
-
     random.shuffle(imgs_to_process)
 
     anchors = [
@@ -327,8 +325,7 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             raw = Image.open(path).convert("RGBA")
             cutout = convert_white_to_transparent(raw)
             bbox = cutout.getbbox()
-            if bbox:
-                cutout = cutout.crop(bbox)
+            if bbox: cutout = cutout.crop(bbox)
 
             scale_variance = random.uniform(0.8, 1.1)
             max_dim = int(600 * scale_variance)
@@ -337,32 +334,24 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             cx, cy = anchors[i]
             cx += random.randint(-50, 50)
             cy += random.randint(-50, 50)
-
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
 
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
+            # Protect the image area
             alpha = cutout.split()[3]
-            # Paste the "protect" zone (black) where the image is
             mask.paste(0, (x, y), mask=alpha)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # --- THE KEY CHANGE: SOFT BLENDING ---
-    # 1. Erode the protected area slightly (so the AI touches the very edge of the photo)
-    #    MaxFilter expands the white (inpaint) area into the black (keep) area.
-    mask = mask.filter(ImageFilter.MaxFilter(9)) 
-
-    # 2. Blur the mask to create a gradient transition.
-    #    This tells SDXL: "Definitely keep the center, definitely replace the background,
-    #    but smoothly blend the pixels in between."
+    # Soften edges to encourage blending
+    mask = mask.filter(ImageFilter.MaxFilter(9))
     mask = mask.filter(ImageFilter.GaussianBlur(15))
     
     return layout_rgba, layout_rgb.convert("RGB"), mask
-
 def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
     print("   ✨ Refining Hero Collage (Gemini + Text Rendering)...")
     try:
@@ -398,46 +387,82 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (SDXL Inpainting + Soft Mask)...")
+    print("   🎨 Inpainting gaps (Classic SD 1.5)...")
     try:
+        # SD 1.5 works best at 512x768-ish. If we send 1080p, it gets confused.
+        # We shrink it for the "Dreaming" phase, then upscale later.
+        processing_size = (512, 640) # Aspect ratio roughly matches 1080x1350
+        
+        orig_size = layout_img.size
+        small_layout = layout_img.resize(processing_size, Image.Resampling.LANCZOS)
+        small_mask = mask_img.resize(processing_size, Image.Resampling.LANCZOS)
+
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
-        layout_img.save(temp_img_path, format="PNG")
-        mask_img.save(temp_mask_path, format="PNG")
+        small_layout.save(temp_img_path, format="PNG")
+        small_mask.save(temp_mask_path, format="PNG")
 
         output = replicate.run(
-            "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
+            "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                # Prompt focuses on CONNECTING the elements
-                "prompt": "surreal dreamscape, architectural connective tissue, twisting geometry connecting buildings, cinematic fog, london sky, intricate details, hyperrealistic, 8k",
-                "negative_prompt": "hard edges, cutout borders, white space, empty background, cartoon, blurry, low resolution",
-                "prompt_strength": 0.95, # High strength because we are filling empty white space
-                "strength": 1.0,         # Fill the masked area completely
+                "prompt": "surreal architectural mashup, unified dream structure, london cinema, seamless cinematic wide angle, fog, dramatic lighting, detailed",
+                "negative_prompt": "white edges, collage, text, watermark, blurry, low res",
                 "num_inference_steps": 40,
-                "guidance_scale": 12     # High guidance to force the "architectural connection" concept
+                "guidance_scale": 7.5,
+                "strength": 1.0 
             }
         )
         
-        if temp_img_path.exists():
-            os.remove(temp_img_path)
-        if temp_mask_path.exists():
-            os.remove(temp_mask_path)
+        if temp_img_path.exists(): os.remove(temp_img_path)
+        if temp_mask_path.exists(): os.remove(temp_mask_path)
             
         if output:
             url = output[0] if isinstance(output, list) else output
             resp = requests.get(url)
             if resp.status_code == 200:
                 img = Image.open(BytesIO(resp.content)).convert("RGB")
-                return img.resize(layout_img.size, Image.Resampling.LANCZOS)
+                # We return the small AI image. The main function will upscale it.
+                return img
     except Exception as e:
-        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
+        print(f"   ⚠️ Inpainting failed: {e}")
+        
     return layout_img
 
+def upscale_image(img: Image.Image) -> Image.Image:
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
+        return img
+    
+    print("   🚀 Upscaling (RealESRGAN)...")
+    try:
+        temp_path = BASE_DIR / "temp_to_upscale.png"
+        img.save(temp_path, format="PNG")
+        
+        output = replicate.run(
+            "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73ab415c722d379caa961",
+            input={
+                "image": open(temp_path, "rb"),
+                "scale": 2,
+                "face_enhance": False
+            }
+        )
+        
+        if temp_path.exists():
+            os.remove(temp_path)
+            
+        if output:
+            url = output if isinstance(output, str) else output[0]
+            resp = requests.get(url)
+            if resp.status_code == 200:
+                return Image.open(BytesIO(resp.content)).convert("RGB")
+                
+    except Exception as e:
+        print(f"   ⚠️ Upscale failed: {e}")
+    
+    return img
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
     # Use full images for backgrounds, not cutouts
