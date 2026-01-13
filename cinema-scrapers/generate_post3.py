@@ -211,7 +211,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
 def clean_search_title(title: str) -> str:
     if not title: return ""
     title = re.sub(r'[\(（].*?[\)）]', '', title)
-    title = re.sub(r'[\[【].*?[\]】]', '', title)
+    title = re.sub(r'[\\\[\u3010].*?[\\\]\u3011]', '', title)
     keywords = ["4K", "2K", "3D", "IMAX", "Dolby", "Atmos", "レストア", "デジタル", "リマスター", "完全版", "ディレクターズカット", "劇場版", "特別上映", "特集", "上映後トーク", "舞台挨拶"]
     for kw in keywords:
         title = title.replace(kw, "")
@@ -296,8 +296,8 @@ def get_recently_featured(caption_path: Path) -> list[str]:
     if not caption_path.exists(): return []
     try:
         content = caption_path.read_text(encoding="utf-8")
-        names = re.findall(r"--- 【(.*?)】 ---", content)
-        return names
+        names = re.findall(r"---\s\[(.*?)(\s*)\]\s---", content)
+        return [name[0] for name in names]
     except Exception as e:
         print(f"   [WARN] Could not read previous caption: {e}")
         return []
@@ -323,7 +323,7 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
             # Priority 3: Original name normalized
             target = normalize_name(cinema_name)
 
-    candidates = list(ASSETS_DIR.glob("*"))
+    candidates = list(ASSETS_DIR.glob("*\.*", recursive=True))
     matches = []
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
@@ -349,7 +349,7 @@ def get_cutout_path(cinema_name: str) -> Path | None:
         en_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
         target = normalize_name(en_name) if en_name else normalize_name(cinema_name)
 
-    candidates = list(CUTOUTS_DIR.glob("*"))
+    candidates = list(CUTOUTS_DIR.glob("*\.*", recursive=True))
     for f in candidates:
         if normalize_name(f.stem) == target: return f
     return None
@@ -372,6 +372,7 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
     try:
         temp_in = BASE_DIR / f"temp_rembg_{random.randint(0,999)}.png"
         pil_img.save(temp_in, format="PNG")
+        # Stability-ai version for background removal
         output = replicate.run(
             "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
             input={"image": open(temp_in, "rb")}
@@ -385,10 +386,11 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
         print(f"   ⚠️ Rembg failed: {e}")
     return pil_img.convert("RGBA")
 
-def feather_cutout(img: Image.Image, erosion: int = 5, blur: int = 15) -> Image.Image:
+def feather_cutout(img: Image.Image, erosion: int = 2, blur: int = 5) -> Image.Image:
     if img.mode != 'RGBA': img = img.convert('RGBA')
     alpha = img.split()[3]
-    alpha = alpha.filter(ImageFilter.MinFilter(erosion))
+    # Smaller filter to avoid 'bad filter size' on small images
+    alpha = alpha.filter(ImageFilter.MinFilter(3))
     alpha = alpha.filter(ImageFilter.GaussianBlur(blur))
     img.putalpha(alpha)
     return img
@@ -396,15 +398,14 @@ def feather_cutout(img: Image.Image, erosion: int = 5, blur: int = 15) -> Image.
 def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> tuple[Image.Image, Image.Image, Image.Image]:
     width, height = target_width, target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    # Neutral gray background helps SD understand it's an 'empty' space to fill
-    layout_rgb = Image.new("RGBA", (width, height), (128, 128, 128, 255))
-    mask = Image.new("L", (width, height), 255) # 255 = area to inpaint
+    # Neutral gray background
+    layout_rgb = Image.new("RGB", (width, height), (60, 60, 60))
+    mask = Image.new("L", (width, height), 255)
 
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4: imgs_to_process = (imgs_to_process * 4)[:4]
     random.shuffle(imgs_to_process)
 
-    # Better distribution of buildings
     anchors = [
         (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.1), int(height*0.4))),
         (random.randint(int(width*0.6), int(width*0.9)), random.randint(int(height*0.1), int(height*0.4))),
@@ -420,7 +421,7 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
-            cutout = feather_cutout(cutout, erosion=2, blur=5)
+            cutout = feather_cutout(cutout, erosion=1, blur=3)
 
             scale = random.uniform(0.8, 1.1)
             max_dim = int(800 * scale)
@@ -430,16 +431,19 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             x, y = cx - (cutout.width // 2), cy - (cutout.height // 2)
 
             layout_rgba.paste(cutout, (x, y), mask=cutout)
-            layout_rgb.paste(cutout, (x, y), mask=cutout)
             
             alpha = cutout.split()[3]
-            # Shrink the core mask to allow SD to 'eat' into the edges of the buildings
-            core_mask = alpha.filter(ImageFilter.MinFilter(15))
+            # Radius 3 is safe for images as small as 7x7 pixels
+            core_mask = alpha.filter(ImageFilter.MinFilter(3))
             mask.paste(0, (x, y), mask=core_mask)
         except Exception as e:
             print(f"Error processing {name}: {e}")
 
-    return layout_rgba, layout_rgb.convert("RGB"), mask
+    # Re-composite layout_rgb correctly
+    final_layout_rgb = Image.new("RGB", (width, height), (60, 60, 60))
+    final_layout_rgb.paste(layout_rgba, (0,0), mask=layout_rgba)
+
+    return layout_rgba, final_layout_rgb, mask
 
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     if not strategy.get("use_gemini"):
@@ -469,16 +473,11 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     return pil_image
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Image.Image:
-    if not REPLICATE_AVAILABLE:
-        print("   ⚠️ Inpainting skipped: 'replicate' library not installed.")
-        return layout_img
-    if not REPLICATE_API_TOKEN:
-        print("   ⚠️ Inpainting skipped: REPLICATE_API_TOKEN not found in environment.")
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
         return layout_img
     
     prompt = strategy["sd_prompt"]
     print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
-    print(f"   📝 SD Prompt: {prompt}")
     
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
@@ -490,17 +489,16 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
         mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
         
-        # Using SDXL Inpainting for better quality mashups
+        # Updated to the official stability-ai slug with current hash
         output = replicate.run(
-            "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
+            "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14",
             input={
                 "image": open(temp_img, "rb"), 
                 "mask": open(temp_mask, "rb"),
                 "prompt": f"{prompt}, seamless surreal integration, cinematic lighting",
-                "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark, bad anatomy",
+                "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark",
                 "strength": 0.95, 
-                "num_inference_steps": 50,
-                "guidance_scale": 12.0
+                "num_inference_steps": 40
             }
         )
         
