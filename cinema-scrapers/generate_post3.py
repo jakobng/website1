@@ -723,11 +723,15 @@ def main() -> None:
 
         names_list = [c[0] for c in cinema_images]
         final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
-        final_cover.save(OUTPUT_DIR / "post_image_00.png")
+        hero_path = OUTPUT_DIR / "post_image_00.png"
+        final_cover.save(hero_path)
+        print(f"   ✅ Saved Hero Slide to {hero_path}")
         
         # Story version of cover
         story_cover = final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS)
-        story_cover.save(OUTPUT_DIR / "story_image_00.png")
+        story_path = OUTPUT_DIR / "story_image_00.png"
+        story_cover.save(story_path)
+        print(f"   ✅ Saved Story Hero Slide to {story_path}")
 
     # SLIDES
     slide_counter = 0
