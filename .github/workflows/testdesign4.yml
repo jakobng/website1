@@ -53,7 +53,7 @@ jobs:
             exit 0
           fi
 
-          # Commit and Push
+          # Commit first
           git commit -m "TEST: Generated V3 London-style slides"
           
           # Stash any unstaged changes (like deleted old files) to prevent rebase failure
