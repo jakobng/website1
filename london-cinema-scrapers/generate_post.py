@@ -752,7 +752,7 @@ def main() -> None:
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
         cover_bg = inpaint_gaps(layout_rgb, mask)
         names_list = [c[0] for c in cinema_images]
-        final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
+        final_cover = cover_bg
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
     else:
         print("   📝 Using simple cover (no cinema images found)")
