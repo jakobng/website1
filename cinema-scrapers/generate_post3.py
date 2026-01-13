@@ -369,22 +369,38 @@ def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Imag
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
         return pil_img.convert("RGBA")
+    
+    # List of reliable background removal models to try in order
+    REMBG_MODELS = [
+        "851-labs/background-remover:a029dff38972b5fda4ec5d75d7d1cd25aeff621d2cf4946a41055d7db66b80bc",
+        "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
+        "afiaka87/remove-bg:69680da395048d086202525f053229b1613589b9f36f982d1378f8b09062325c"
+    ]
+    
     try:
         temp_in = BASE_DIR / f"temp_rembg_{random.randint(0,999)}.png"
         pil_img.save(temp_in, format="PNG")
-        # Use slug without version to get the latest stable version
-        output = replicate.run(
-            "lucataco/remove-bg",
-            input={"image": open(temp_in, "rb")}
-        )
+        
+        output = None
+        for model_id in REMBG_MODELS:
+            try:
+                print(f"      📡 Trying Rembg: {model_id.split(':')[0]}...")
+                output = replicate.run(model_id, input={"image": open(temp_in, "rb")})
+                if output: break
+            except Exception as e:
+                print(f"      ⚠️ Model {model_id.split(':')[0]} failed: {str(e)[:100]}")
+        
         if temp_in.exists(): os.remove(temp_in)
+        
         if output:
             print(f"      ✅ Rembg successful")
-            resp = requests.get(str(output))
+            # Handle both string and list output
+            url = output[0] if isinstance(output, list) else str(output)
+            resp = requests.get(url)
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGBA")
     except Exception as e:
-        print(f"   ⚠️ Rembg failed: {e}")
+        print(f"   ⚠️ Rembg process failed: {e}")
     return pil_img.convert("RGBA")
 
 def feather_cutout(img: Image.Image, erosion: int = 2, blur: int = 5) -> Image.Image:
@@ -480,6 +496,13 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
     prompt = strategy["sd_prompt"]
     print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
     
+    # Fallback list for inpainting models
+    INPAINT_MODELS = [
+        "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
+        "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14",
+        "sepal/stable-diffusion-xl-inpainting:aca001c8b137114d5e594c68f7084ae6d82f364758aab8d997b233e8ef3c4d93"
+    ]
+    
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
         layout_img.save(temp_img); mask_img.save(temp_mask)
@@ -490,31 +513,37 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
         mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
         
-        # Use slug without version to get the latest stable version
-        output = replicate.run(
-            "stability-ai/sdxl-inpainting",
-            input={
-                "image": open(temp_img, "rb"), 
-                "mask": open(temp_mask, "rb"),
-                "prompt": f"{prompt}, seamless surreal integration, cinematic lighting",
-                "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark",
-                "strength": 0.95, 
-                "num_inference_steps": 40
-            }
-        )
+        output = None
+        for model_id in INPAINT_MODELS:
+            try:
+                print(f"      📡 Trying Inpaint: {model_id.split(':')[0]}...")
+                output = replicate.run(
+                    model_id,
+                    input={
+                        "image": open(temp_img, "rb"), 
+                        "mask": open(temp_mask, "rb"),
+                        "prompt": f"{prompt}, seamless surreal integration, cinematic lighting",
+                        "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark",
+                        "strength": 0.95, 
+                        "num_inference_steps": 40
+                    }
+                )
+                if output: break
+            except Exception as e:
+                print(f"      ⚠️ Model {model_id.split(':')[0]} failed: {str(e)[:100]}")
         
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
         
         if output:
-            url = output[0] if isinstance(output, list) else output
-            print(f"   🔗 Inpainting successful: {url}")
+            url = output[0] if isinstance(output, list) else str(output)
+            print(f"      ✅ Inpainting successful: {url}")
             resp = requests.get(url)
             return Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
         else:
-            print("   ⚠️ Inpainting returned no output.")
+            print("   ⚠️ All inpainting models failed.")
     except Exception as e:
-        print(f"   ⚠️ Inpainting failed: {e}")
+        print(f"   ⚠️ Inpainting process failed: {e}")
     return layout_img
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
