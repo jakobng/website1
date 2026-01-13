@@ -500,6 +500,31 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: list[dict
             draw_text_with_shadow(draw, (MARGIN+60, y), l['times'], reg_f, LIGHT_GRAY); y += 60
     return img
 
+def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: list[dict]) -> None:
+    header = f"🗓️ 本日の東京ミニシアター上映情報 / Today's Featured Showtimes ({date_str})\n"
+    lines = [header]
+    for item in all_featured_cinemas:
+        cinema_name = item['cinema_name']
+        address = CINEMA_ADDRESSES.get(cinema_name, "")
+        lines.append(f"\n--- 【{cinema_name}】 ---")
+        if address:
+            jp_address = address.split("\n")[0]
+            lines.append(f"📍 {jp_address}") 
+        for listing in item['listings']:
+            lines.append(f"• {listing['title']}")
+    dynamic_hashtag = "IndieCinema"
+    if all_featured_cinemas:
+         first_cinema_name = all_featured_cinemas[0]['cinema_name']
+         dynamic_hashtag = "".join(ch for ch in first_cinema_name if ch.isalnum() or "\u3040" <= ch <= "\u30ff" or "\u4e00" <= ch <= "\u9fff")
+
+    footer = f"""
+#TokyoIndieCinema #{dynamic_hashtag} #MiniTheater #MovieLog
+Check Bio for Full Schedule / 詳細はリンクへ
+"""
+    lines.append(footer)
+    with OUTPUT_CAPTION_PATH.open("w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
 def main():
     today = today_in_tokyo().date()
     today_str = today.isoformat()
