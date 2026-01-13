@@ -420,10 +420,10 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
     try:
         if not GEMINI_API_KEY: return pil_image
         client = genai.Client(api_key=GEMINI_API_KEY)
-        prompt_text = (
-            f"Refine this collage into a unified image, using all of the space. The end result should be a surreal architectural mashup of all of these independent cinemas in Tokyo. It's an homage to tokyo cinema."
-            f"Strictly preserve the layout, composition, and structures of the input image. At all! Just connect things, dont change them."
-            f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}' but dont do it in a cliche way. be inventive and mindful of the surrounding image."
+        prompt = (
+            f"Refine this architectural collage into a single unified surreal dreamscape for {date_text}. "
+            f"Connect these Tokyo independent cinemas: {', '.join(cinema_names[:4])}. "
+            "Incorporate the text 'TOKYO CINEMA' and the date in a beautiful, non-cliché way."
         )
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview",
