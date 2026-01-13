@@ -433,13 +433,21 @@ def feather_cutout(img: Image.Image, erosion: int = 2, blur: int = 5) -> Image.I
 def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> tuple[Image.Image, Image.Image, Image.Image]:
     width, height = target_width, target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    # Neutral gray background
-    layout_rgb = Image.new("RGB", (width, height), (60, 60, 60))
-    mask = Image.new("L", (width, height), 255)
+    mask = Image.new("L", (width, height), 255) # 255 = area to inpaint
 
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4: imgs_to_process = (imgs_to_process * 4)[:4]
     random.shuffle(imgs_to_process)
+
+    # Create a messy, blurred background from the images to give SD 'latent hints'
+    base_bg = Image.new("RGB", (width, height), (20, 20, 20))
+    for _, path in imgs_to_process:
+        try:
+            img_bg = Image.open(path).convert("RGB")
+            img_bg = ImageOps.fit(img_bg, (width, height))
+            img_bg = img_bg.filter(ImageFilter.GaussianBlur(30))
+            base_bg = Image.blend(base_bg, img_bg, 0.4)
+        except: continue
 
     anchors = [
         (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.1), int(height*0.4))),
@@ -453,12 +461,10 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             print(f"   ✂️ Processing: {name} ({path.name})")
             raw = Image.open(path).convert("RGBA")
             
-            # If it's in the cutouts folder, we assume it's a subject on a white background
             if "cutouts" in str(path).lower():
                 print(f"      ✨ Applying white-to-transparent conversion")
                 cutout = convert_white_to_transparent(raw, threshold=235)
             else:
-                # Only use Replicate if it's not a pre-made cutout
                 cutout = remove_background_replicate(raw)
             
             bbox = cutout.getbbox()
@@ -472,21 +478,21 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             cx, cy = anchors[i]
             x, y = cx - (cutout.width // 2), cy - (cutout.height // 2)
 
-            # Paste into layout_rgba (the actual collage)
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             
-            # Mask logic: 0 = KEEP (the building), 255 = CHANGE (the gaps)
             alpha = cutout.split()[3]
-            core_mask = alpha.filter(ImageFilter.MinFilter(3))
+            core_mask = alpha.filter(ImageFilter.MinFilter(5)) # Keep the center of buildings sharp
             mask.paste(0, (x, y), mask=core_mask)
         except Exception as e:
             print(f"Error processing {name}: {e}")
 
-    # Re-composite layout_rgb correctly
-    final_layout_rgb = Image.new("RGB", (width, height), (60, 60, 60))
-    final_layout_rgb.paste(layout_rgba, (0,0), mask=layout_rgba)
+    # Final composite layout
+    base_bg.paste(layout_rgba, (0,0), mask=layout_rgba)
 
-    return layout_rgba, final_layout_rgb, mask
+    # Expand the inpaint area to eat into the buildings (as in generate_post.py)
+    mask = mask.filter(ImageFilter.MaxFilter(15))
+
+    return layout_rgba, base_bg, mask
 
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     if not strategy.get("use_gemini"):
@@ -522,8 +528,12 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
     prompt = strategy["sd_prompt"]
     print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
     
-    # Verified working version of SDXL from your Replicate dashboard
-    SDXL_VERSION = "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc"
+    # Using a mix of SDXL and the older working inpaint model from generate_post.py
+    INPAINT_MODELS = [
+        "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
+        "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
+        "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14"
+    ]
     
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
@@ -535,20 +545,25 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
         mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
         
-        print(f"      📡 Calling Replicate (SDXL verified)...")
-        output = replicate.run(
-            SDXL_VERSION,
-            input={
-                "image": open(temp_img, "rb"), 
-                "mask": open(temp_mask, "rb"),
-                "prompt": f"{prompt}, seamless surreal integration, cinematic lighting, high quality",
-                "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark, bad quality, blurry",
-                "strength": 0.85, # Allows for significant mashup while keeping cinema structure
-                "num_inference_steps": 30,
-                "guidance_scale": 7.5,
-                "apply_watermark": False
-            }
-        )
+        output = None
+        for model_id in INPAINT_MODELS:
+            try:
+                print(f"      📡 Trying Inpaint: {model_id.split(':')[0]}...")
+                output = replicate.run(
+                    model_id,
+                    input={
+                        "image": open(temp_img, "rb"), 
+                        "mask": open(temp_mask, "rb"),
+                        "prompt": f"{prompt}, vq-gan artifacts, surprising mashup, dreamy, cinematic",
+                        "negative_prompt": "white background, frames, borders, text, watermark",
+                        "strength": 0.99, 
+                        "num_inference_steps": 40,
+                        "guidance_scale": 12.0
+                    }
+                )
+                if output: break
+            except Exception as e:
+                print(f"      ⚠️ Model {model_id.split(':')[0]} failed: {str(e)[:100]}")
         
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
