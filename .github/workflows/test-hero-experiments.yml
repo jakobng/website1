@@ -1,0 +1,108 @@
+name: Test - Hero Collage Experiments
+
+on:
+  workflow_dispatch: # Manual trigger only
+
+jobs:
+  run_experiments:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-genai replicate requests Pillow tzdata
+
+      - name: Run Hero Experiments (5 approaches)
+        working-directory: './cinema-scrapers'
+        run: python hero_experiments.py
+        env:
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Copy results to docs folder for GitHub Pages
+        run: |
+          mkdir -p docs/experiments
+          cp cinema-scrapers/ig_posts/hero_*.png docs/experiments/ 2>/dev/null || echo "No hero images found"
+
+          # Create a simple HTML index to view the experiments
+          cat > docs/experiments/index.html << 'HTMLEOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Hero Collage Experiments</title>
+            <style>
+              body { font-family: system-ui; max-width: 1200px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #fff; }
+              h1 { text-align: center; }
+              .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+              .card { background: #2a2a2a; border-radius: 8px; overflow: hidden; }
+              .card img { width: 100%; height: auto; }
+              .card h3 { padding: 10px 15px; margin: 0; font-size: 14px; }
+              .card p { padding: 0 15px 15px; margin: 0; font-size: 12px; color: #aaa; }
+            </style>
+          </head>
+          <body>
+            <h1>Hero Collage Experiments</h1>
+            <p style="text-align:center;color:#888;">Compare 5 different approaches for surreal cinema architecture mashups</p>
+            <div class="grid">
+              <div class="card">
+                <img src="hero_01_img2img.png" alt="img2img">
+                <h3>1. img2img</h3>
+                <p>Basic collage reinterpreted by SD with prompt_strength 0.55</p>
+              </div>
+              <div class="card">
+                <img src="hero_02_gradient_overlap.png" alt="gradient overlap">
+                <h3>2. Gradient Overlap</h3>
+                <p>Cutouts with feathered radial alpha, center-biased overlap</p>
+              </div>
+              <div class="card">
+                <img src="hero_03_dense_collage.png" alt="dense collage">
+                <h3>3. Dense Collage</h3>
+                <p>6 large cutouts packed tightly, light SD smoothing (0.35)</p>
+              </div>
+              <div class="card">
+                <img src="hero_04_controlnet_edges.png" alt="controlnet edges">
+                <h3>4. ControlNet Edges</h3>
+                <p>Edge detection guides new architecture generation</p>
+              </div>
+              <div class="card">
+                <img src="hero_05_two_pass.png" alt="two pass">
+                <h3>5. Two-Pass</h3>
+                <p>Generate base architecture, overlay cutouts, unify</p>
+              </div>
+            </div>
+          </body>
+          </html>
+          HTMLEOF
+
+      - name: Commit Experiment Results
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git add -f docs/experiments/
+          git add -f cinema-scrapers/ig_posts/hero_*.png
+
+          git status
+
+          if git diff --cached --quiet; then
+            echo "No experiment images generated."
+            exit 0
+          fi
+
+          git commit -m "EXPERIMENT: Hero collage comparison (5 approaches)"
+          git pull origin main --rebase
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

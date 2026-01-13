@@ -4252,66 +4252,797 @@
     "vote_average": 0.0
   },
   "BLKNWS: Terms & Conditions (18*)": null,
-  "OTHELLO (2026)": {
-    "tmdb_id": 1595531,
-    "tmdb_title": "Othello",
-    "tmdb_original_title": "Othello",
-    "overview": "This epic story of manipulation, jealousy and toxic masculinity explores the darker side of power, rage and desire. Filmed live at the Theatre Royal Haymarket in London especially for the big screen, this is ‘an electrifying star-studded Othello.’",
-    "poster_path": "/yd6lMPgh9qthx9up7sZkpZGkq5m.jpg",
-    "backdrop_path": null,
-    "release_date": "2026-03-04",
-    "director": "Tom Morris",
-    "runtime": 165,
-    "genres": [],
-    "vote_average": 0.0
+  "Aardman Double Bill: The Wrong Trousers + A Matter of Loaf and Death": {
+    "tmdb_id": 901033,
+    "tmdb_title": "Aardman",
+    "tmdb_original_title": "Aardman",
+    "overview": "an animated character of the superhero named Aardman going to the hole",
+    "poster_path": "/leauv8BuuKOfWz80pD3nsZa9GXL.jpg",
+    "backdrop_path": "/9g0QBsffBtHSzHWbCdKPoY16qnP.jpg",
+    "release_date": "1972-04-03",
+    "director": "Peter Lord",
+    "runtime": 1,
+    "genres": [
+      "Animation"
+    ],
+    "vote_average": 6.0
   },
-  "House [Hausu]": {
-    "tmdb_id": 1176218,
-    "tmdb_title": "House",
-    "tmdb_original_title": "House",
-    "overview": "What if you lost everything? Where would you go? What would you do? Joe, a young architecture student, is forced to drop out of school after his parents die in a car accident, leaving only unpaid bills behind. Scrambling around trying to find a job, and a way to get his studies and life on track, he ends up on the edge of homeless, until he connects with a colorful bunch of characters squatting in a boarded up old house, where they \"borrow\" electricity. Each day in the house is an adventure in character, the good, the bad, the comedic, the heavy, and the chaos and insanity of life at the bottom of the barrel.",
-    "poster_path": "/rgiefMFRpldjyqHLXc8ji7pezm4.jpg",
+  "Labyrinth - 40th Anniversary": {
+    "tmdb_id": 637265,
+    "tmdb_title": "Labyrinth",
+    "tmdb_original_title": "هزارتو",
+    "overview": "Negar and Amirali are going to immigrate, but at the very last moment, they face a critical situation: their son, Bardiya, goes missing. Now it is time to unfold all the family secrets…",
+    "poster_path": "/yFLRcJ0NRIcn0gjKDHhhlZ8u6Dp.jpg",
+    "backdrop_path": "/8jKmU536Y1QXy4A0LZOU6fwz1nF.jpg",
+    "release_date": "2019-09-23",
+    "director": "Amir Hossein Torabi",
+    "runtime": 86,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.3
+  },
+  "Ran": {
+    "tmdb_id": 635736,
+    "tmdb_title": "Ran",
+    "tmdb_original_title": "Ran",
+    "overview": "The movie follows Ran's journey, whose main desire is to fulfill his potential. He is ready to deal with difficult experiences of not being accepted by his family and friends, physical and emotional changes, and even dangers to his health, but he is not willing to give up on himself and his happiness.",
+    "poster_path": "/FepaiApo8Yr6pNIZIeYG5kW06J.jpg",
     "backdrop_path": null,
-    "release_date": "2006-04-13",
-    "director": "David Krae",
-    "runtime": 110,
+    "release_date": "2018-06-06",
+    "director": "Lital Yosefi",
+    "runtime": 20,
+    "genres": [],
+    "vote_average": 1.0
+  },
+  "Fargo": {
+    "tmdb_id": 275,
+    "tmdb_title": "Fargo",
+    "tmdb_original_title": "Fargo",
+    "overview": "Jerry, a small-town Minnesota car salesman is bursting at the seams with debt... but he's got a plan. He's going to hire two thugs to kidnap his wife in a scheme to collect a hefty ransom from his wealthy father-in-law. It's going to be a snap and nobody's going to get hurt... until people start dying. Enter Police Chief Marge, a coffee-drinking, parka-wearing - and extremely pregnant - investigator who'll stop at nothing to get her man. And if you think her small-time investigative skills will give the crooks a run for their ransom... you betcha!",
+    "poster_path": "/rt7cpEr1uP6RTZykBFhBTcRaKvG.jpg",
+    "backdrop_path": "/747dgDfL5d8esobk7h4odaOFhUq.jpg",
+    "release_date": "1996-03-08",
+    "director": "Joel Coen",
+    "runtime": 98,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 7.849
+  },
+  "London Short Film Festival: Can you imagine a world?": null,
+  "Mulholland Drive": {
+    "tmdb_id": 1018,
+    "tmdb_title": "Mulholland Drive",
+    "tmdb_original_title": "Mulholland Drive",
+    "overview": "Blonde Betty Elms has only just arrived in Hollywood to become a movie star when she meets an enigmatic brunette with amnesia. Meanwhile, as the two set off to solve the second woman's identity, filmmaker Adam Kesher runs into ominous trouble while casting his latest project.",
+    "poster_path": "/x7A59t6ySylr1L7aubOQEA480vM.jpg",
+    "backdrop_path": "/y1giivdsGLyo1LCvlsL6mLKyTZ7.jpg",
+    "release_date": "2001-06-06",
+    "director": "David Lynch",
+    "runtime": 147,
+    "genres": [
+      "Thriller",
+      "Drama",
+      "Mystery"
+    ],
+    "vote_average": 7.805
+  },
+  "Hamnet (12A) parent and baby screening": null,
+  "Seeds": {
+    "tmdb_id": 1005860,
+    "tmdb_title": "Seeds",
+    "tmdb_original_title": "Seeds",
+    "overview": "A Mohawk woman is hired as a social media influencer but gets caught in a deadly cat-and-mouse game, as she's forced to go to war to preserve her people's heritage from corporate interests.",
+    "poster_path": "/A0oZJp3CCqKSeNLhkXEtHUqDJmx.jpg",
+    "backdrop_path": "/g2Eb4cY8roTA6oAaVUti9Bph8IO.jpg",
+    "release_date": "2024-10-25",
+    "director": "Kaniehtiio Horn",
+    "runtime": 82,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Mystery"
+    ],
+    "vote_average": 5.735
+  },
+  "Raya and The Last Dragon": {
+    "tmdb_id": 527774,
+    "tmdb_title": "Raya and the Last Dragon",
+    "tmdb_original_title": "Raya and the Last Dragon",
+    "overview": "Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.",
+    "poster_path": "/5nVhgCzxKbK47OLIKxCR1syulOn.jpg",
+    "backdrop_path": "/rcUcYzGGicDvhDs58uM44tJKB9F.jpg",
+    "release_date": "2021-03-03",
+    "director": "Don Hall",
+    "runtime": 107,
+    "genres": [
+      "Animation",
+      "Family",
+      "Fantasy",
+      "Action",
+      "Adventure"
+    ],
+    "vote_average": 7.8
+  },
+  "The Ruling Class": {
+    "tmdb_id": 30892,
+    "tmdb_title": "The Ruling Class",
+    "tmdb_original_title": "The Ruling Class",
+    "overview": "When the Earl of Gurney dies in a cross-dressing accident, his schizophrenic son, Jack, inherits the Gurney estate. Jack is not the average nobleman; he sings and dances across the estate and thinks he is Jesus reincarnated. Believing that Jack is mentally unfit to own the estate, the Gurney family plots to steal Jack's inheritance. As their outrageous schemes fail, the family strives to cure Jack of his bizarre behavior, with disastrous results.",
+    "poster_path": "/29EZjwr3jDFWtdj9Lpq2BtCvKga.jpg",
+    "backdrop_path": "/aorPWXGPhteM64CwNoDAM1NYVaJ.jpg",
+    "release_date": "1972-05-24",
+    "director": "Peter Medak",
+    "runtime": 154,
     "genres": [
       "Comedy",
       "Drama"
     ],
-    "vote_average": 6.0
+    "vote_average": 6.386
   },
-  "TV Preview: A Knight of the Seven Kingdoms + Cast Q&A": {
-    "tmdb_id": 944824,
-    "tmdb_title": "A",
-    "tmdb_original_title": "A",
-    "overview": "Single-channel video installation commissioned by Public Art Development Trust, London.",
-    "poster_path": "/7LhPaLmbRJ8NzovDxCYFD6kss9G.jpg",
-    "backdrop_path": null,
-    "release_date": "2002-09-25",
-    "director": "Darren Almond",
-    "runtime": 22,
+  "Sentimental Value (15) captioned screening": null,
+  "The Straight Story": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "A retired farmer and widower in his 70s, Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. Then he hits on the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.726
+  },
+  "Tampopo": {
+    "tmdb_id": 11830,
+    "tmdb_title": "Tampopo",
+    "tmdb_original_title": "タンポポ",
+    "overview": "In this humorous paean to the joys of food, a pair of truck drivers happen onto a decrepit roadside shop selling ramen noodles. The widowed owner, Tampopo, begs them to help her turn her establishment into a paragon of the \"art of noodle-soup making\". Interspersed are satirical vignettes about the importance of food to different aspects of human life.",
+    "poster_path": "/ArYdSuX3zY9fMsE4LqmBl7xJq5R.jpg",
+    "backdrop_path": "/wGfuDcS3dJ1EFivBDWDQAQfsk0G.jpg",
+    "release_date": "1985-11-23",
+    "director": "Jūzō Itami",
+    "runtime": 115,
+    "genres": [
+      "Comedy"
+    ],
+    "vote_average": 7.813
+  },
+  "Mélodie en sous-sol": {
+    "tmdb_id": 22650,
+    "tmdb_title": "Any Number Can Win",
+    "tmdb_original_title": "Mélodie en sous-sol",
+    "overview": "Charles, fresh out of jail, rejects his wife's plan for a quiet life of bourgeois respectability. He enlists a former cell mate, Francis, to assist him in pulling off one final score, a carefully planned assault on the vault of a Cannes casino.",
+    "poster_path": "/pjA8gAy6oqLZHXXdCKygqZA6cf6.jpg",
+    "backdrop_path": "/sPn3xLcCZCHkwql6ubC4fy3HJEJ.jpg",
+    "release_date": "1963-03-19",
+    "director": "Henri Verneuil",
+    "runtime": 118,
+    "genres": [
+      "Crime"
+    ],
+    "vote_average": 7.2
+  },
+  "Eureka": {
+    "tmdb_id": 37943,
+    "tmdb_title": "Eureka",
+    "tmdb_original_title": "Eureka",
+    "overview": "After striking it rich on a large gold strike, a prospector retires to the quiet life on a Caribbean island but ends up coping with an alcoholic wife, a headstrong daughter, and Miami mobsters who want to build a casino.",
+    "poster_path": "/fkeXtf4ePBRvrAAtOeytNwsUHxn.jpg",
+    "backdrop_path": "/xsZpB16yOEMyZuBqgRdqhbedfvt.jpg",
+    "release_date": "1983-05-01",
+    "director": "Nicolas Roeg",
+    "runtime": 130,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 5.3
+  },
+  "All About Eve": {
+    "tmdb_id": 705,
+    "tmdb_title": "All About Eve",
+    "tmdb_original_title": "All About Eve",
+    "overview": "From the moment she glimpses her idol at the stage door, Eve Harrington is determined to take the reins of power away from the great actress Margo Channing. Eve maneuvers her way into Margo's Broadway role, becomes a sensation and even causes turmoil in the lives of Margo's director boyfriend, her playwright and his wife. Only the cynical drama critic sees through Eve, admiring her audacity and perfect pattern of deceit.",
+    "poster_path": "/blBzZaatPWVuWpXEnPscMA4Xp6m.jpg",
+    "backdrop_path": "/zAL3LOswagN9onjN8DPcNFTqKuD.jpg",
+    "release_date": "1950-11-09",
+    "director": "Joseph L. Mankiewicz",
+    "runtime": 139,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.1
+  },
+  "Master and Commander : The Far Side of the World": {
+    "tmdb_id": 8619,
+    "tmdb_title": "Master and Commander: The Far Side of the World",
+    "tmdb_original_title": "Master and Commander: The Far Side of the World",
+    "overview": "After an abrupt and violent encounter with a French warship inflicts severe damage upon his ship, a captain of the British Royal Navy begins a chase over two oceans to capture or destroy the enemy, though he must weigh his commitment to duty and ferocious pursuit of glory against the safety of his devoted crew, including the ship's thoughtful surgeon, his best friend.",
+    "poster_path": "/s1cVTQEZYn4nSjZLnFbzLP0j8y2.jpg",
+    "backdrop_path": "/zMHyNxNt4zhL939XX8QLBW3gWfu.jpg",
+    "release_date": "2003-11-14",
+    "director": "Peter Weir",
+    "runtime": 138,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "War"
+    ],
+    "vote_average": 7.172
+  },
+  "LSFF: GOTHIC (2026)": null,
+  "La Danse: Le Ballet de l’Opera de Paris + intro": {
+    "tmdb_id": 67381,
+    "tmdb_title": "La Danse: The Paris Opera Ballet",
+    "tmdb_original_title": "La danse - Le ballet de L'Opéra de Paris",
+    "overview": "A film by Frederick Wiseman following the ins and outs of 7 ballets by the Paris Opera Ballet.",
+    "poster_path": "/5YKj0rCQX8xACNTduPIEJizXYPw.jpg",
+    "backdrop_path": "/wYDKVh435z8wXWDo4WlnVW7i5QF.jpg",
+    "release_date": "2009-10-07",
+    "director": "Frederick Wiseman",
+    "runtime": 159,
     "genres": [
       "Documentary"
     ],
-    "vote_average": 6.9
+    "vote_average": 7.6
   },
-  "The Handmaiden [Theatrical Cut]": {
-    "tmdb_id": 290098,
-    "tmdb_title": "The Handmaiden",
-    "tmdb_original_title": "아가씨",
-    "overview": "1930s Korea, in the period of Japanese occupation, a new girl, Sookee, is hired as a handmaiden to a Japanese heiress, Hideko, who lives a secluded life on a large countryside estate with her domineering Uncle Kouzuki. But the maid has a secret. She is a pickpocket recruited by a swindler posing as a Japanese Count to help him seduce the Lady to steal her fortune.",
-    "poster_path": "/dLlH4aNHdnmf62umnInL8xPlPzw.jpg",
-    "backdrop_path": "/3upEZ0ltY7WwOSFVXrtiP34D48p.jpg",
-    "release_date": "2016-06-01",
-    "director": "Park Chan-wook",
-    "runtime": 145,
+  "Ballet": {
+    "tmdb_id": 290168,
+    "tmdb_title": "Ballet",
+    "tmdb_original_title": "Ballet",
+    "overview": "Ballet portrays rehearsals, choreography, performances, business transactions, and other day-to-day life of the American Ballet Theatre. Much of the footage dates from the 1992 season. It also includes scenes from the company's European tour, namely in Greece and Copenhagen.",
+    "poster_path": "/mTLkDBm0auJMIxcTxgoe5EgLLeM.jpg",
+    "backdrop_path": "/e7x00AN4XZkPp9fpHIFbJOdBsny.jpg",
+    "release_date": "1995-09-02",
+    "director": "Frederick Wiseman",
+    "runtime": 170,
     "genres": [
-      "Thriller",
+      "Documentary"
+    ],
+    "vote_average": 7.6
+  },
+  "Phoenix Classics - New Orleans Season: Streetcar Named Desire": null,
+  "Come and See": {
+    "tmdb_id": 25237,
+    "tmdb_title": "Come and See",
+    "tmdb_original_title": "Иди и смотри",
+    "overview": "The invasion of a village in Belarus by German forces sends young Florya into the forest to join the weary Resistance fighters, against his family's wishes. There he meets a girl, Glasha, who accompanies him back to his village. On returning home, Florya finds his family and fellow peasants massacred. His continued survival amidst the brutal debris of war becomes increasingly nightmarish, a battle between despair and hope.",
+    "poster_path": "/qNbMsKVzigERgJUbwf8pKyZogpb.jpg",
+    "backdrop_path": "/oIQMt3Q6Qa37YD0JOdYkrIAPYDk.jpg",
+    "release_date": "1985-10-17",
+    "director": "Elem Klimov",
+    "runtime": 142,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "vote_average": 8.214
+  },
+  "Le Bonheur": {
+    "tmdb_id": 679630,
+    "tmdb_title": "Le Bonheur",
+    "tmdb_original_title": "Le Bonheur",
+    "overview": "Recorded in Paris, Theatre de l'espace Cardin.\r Louise is single, Alexandre is in the middle of a divorce, she has no children, he has three, she is more on the left, he is more on the right. Both are over fifty!  If there is no age to fall in love ... love and life together are an equation that gets complicated with age!  The charm of chance encounters is that they bring together people who attract each other without necessarily being compatible.",
+    "poster_path": "/lMjBSKZ1HwR0dxmuGP0NMgIu3Nk.jpg",
+    "backdrop_path": "/kOgISbF08iXNtUwuifsVxroxi0d.jpg",
+    "release_date": "2012-08-23",
+    "director": "Serge Khalfon",
+    "runtime": 109,
+    "genres": [
+      "Comedy"
+    ],
+    "vote_average": 0.0
+  },
+  "La La Land": {
+    "tmdb_id": 313369,
+    "tmdb_title": "La La Land",
+    "tmdb_original_title": "La La Land",
+    "overview": "Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced with decisions that begin to fray the fragile fabric of their love affair, and the dreams they worked so hard to maintain in each other threaten to rip them apart.",
+    "poster_path": "/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
+    "backdrop_path": "/nlPCdZlHtRNcF6C9hzUH4ebmV1w.jpg",
+    "release_date": "2016-12-01",
+    "director": "Damien Chazelle",
+    "runtime": 129,
+    "genres": [
+      "Comedy",
       "Drama",
       "Romance"
     ],
-    "vote_average": 8.194
+    "vote_average": 7.897
+  },
+  "LIVE CONCERT: RAHIMA MAHMUT & THE MIRAS SILK ROAD COLLECTIVE": null,
+  "Annemarie Jacir: Salt of This Sea": null,
+  "The Leopard": {
+    "tmdb_id": 1040,
+    "tmdb_title": "The Leopard",
+    "tmdb_original_title": "Il gattopardo",
+    "overview": "As Garibaldi's troops begin the unification of Italy in the 1860s, an aristocratic Sicilian family grudgingly adapts to the sweeping social changes undermining their way of life. Proud but pragmatic Prince Don Fabrizio Salina allows his war hero nephew, Tancredi, to marry Angelica, the beautiful daughter of gauche, bourgeois Don Calogero, in order to maintain the family's accustomed level of comfort and political clout.",
+    "poster_path": "/riSUxwoK3xjkOgy6YJSvPhi7cO6.jpg",
+    "backdrop_path": "/myikoqu8Z2gtE7TaBgk9r6fB9MF.jpg",
+    "release_date": "1963-03-27",
+    "director": "Luchino Visconti",
+    "runtime": 186,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.7
+  },
+  "LSFF: Can You Imagine A World?": null,
+  "Journey to Italy": {
+    "tmdb_id": 2748,
+    "tmdb_title": "Journey to Italy",
+    "tmdb_original_title": "Viaggio in Italia",
+    "overview": "Married for eight years with no children, Brits Katherine and Alex Joyce are driving to Italy, their ultimate destination just outside of Naples to sell the villa they have just inherited from his uncle, the villa where they will be staying during their time there. On the drive, they come to the realization that this trip marks the first time that they have truly been alone together, and as such don't really know one another in the true sense.",
+    "poster_path": "/tjli2Rjwkn8fivuynxwthnnEzeo.jpg",
+    "backdrop_path": "/5SDqKj8AfUazPqXvOCDL1nmE8Zb.jpg",
+    "release_date": "1954-09-07",
+    "director": "Roberto Rossellini",
+    "runtime": 85,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 7.3
+  },
+  "The Water Babies": {
+    "tmdb_id": 34467,
+    "tmdb_title": "The Water Babies",
+    "tmdb_original_title": "The Water Babies",
+    "overview": "Grimes, an amoral chimney sweep, occasionally likes to steal valuables from his clients. One day, on the verge of being caught, he frames his young apprentice, Tom, for the crime. Tom runs away and jumps into a river where, instead of drowning, he finds himself transformed into a mystical aquatic creature. Swimming and breathing effortlessly, he discovers a colorful underwater world replete with creatures both cruel and kind.",
+    "poster_path": "/vpgFomQKyvpsxazK0SB5pB7S8xo.jpg",
+    "backdrop_path": "/wJmrzkRyOYwMed24E7QcwrLVFIF.jpg",
+    "release_date": "1978-06-23",
+    "director": "Lionel Jeffries",
+    "runtime": 92,
+    "genres": [
+      "Family",
+      "Fantasy",
+      "Animation",
+      "Adventure",
+      "Music"
+    ],
+    "vote_average": 6.0
+  },
+  "Films For Workers: Bread and Roses + Panel": null,
+  "Le Quai des brumes": null,
+  "Perfect Blue (18)": {
+    "tmdb_id": 10494,
+    "tmdb_title": "Perfect Blue",
+    "tmdb_original_title": "PERFECT BLUE",
+    "overview": "Rising pop star Mima quits singing to pursue a career as an actress. After she takes up a role on a popular detective show, her handlers and collaborators begin turning up murdered. Harboring feelings of guilt and haunted by visions of her former self, Mima's reality and fantasy meld into a frenzied paranoia.",
+    "poster_path": "/6WTiOCfDPP8XV4jqfloiVWf7KHq.jpg",
+    "backdrop_path": "/1YRtgjLb5xxUb2rsNRnr54Oc0B2.jpg",
+    "release_date": "1998-02-28",
+    "director": "Satoshi Kon",
+    "runtime": 82,
+    "genres": [
+      "Animation",
+      "Thriller"
+    ],
+    "vote_average": 8.297
+  },
+  "LSFF: FANTASTIC FICTIONS (2026)": null,
+  "Citizen Kane": {
+    "tmdb_id": 15,
+    "tmdb_title": "Citizen Kane",
+    "tmdb_original_title": "Citizen Kane",
+    "overview": "Newspaper magnate Charles Foster Kane is taken from his mother as a boy and made the ward of a rich industrialist. As a result, every well-meaning, tyrannical or self-destructive move he makes for the rest of his life appears in some way to be a reaction to that deeply wounding event.",
+    "poster_path": "/sav0jxhqiH0bPr2vZFU0Kjt2nZL.jpg",
+    "backdrop_path": "/9Y85oA1y6toL2OACXdaC6iTl7eQ.jpg",
+    "release_date": "1941-04-17",
+    "director": "Orson Welles",
+    "runtime": 119,
+    "genres": [
+      "Mystery",
+      "Drama"
+    ],
+    "vote_average": 7.992
+  },
+  "LSFF: A Raised Voice, Amplified": null,
+  "Vertigo": {
+    "tmdb_id": 426,
+    "tmdb_title": "Vertigo",
+    "tmdb_original_title": "Vertigo",
+    "overview": "A retired San Francisco detective suffering from acrophobia investigates the strange activities of an old friend's wife, all the while becoming dangerously obsessed with her.",
+    "poster_path": "/15uOEfqBNTVtDUT7hGBVCka0rZz.jpg",
+    "backdrop_path": "/rtVwkTqllcmyY4TVOycgVBHppWf.jpg",
+    "release_date": "1958-05-09",
+    "director": "Alfred Hitchcock",
+    "runtime": 128,
+    "genres": [
+      "Mystery",
+      "Romance",
+      "Thriller"
+    ],
+    "vote_average": 8.152
+  },
+  "DC League of Super-Pets": {
+    "tmdb_id": 539681,
+    "tmdb_title": "DC League of Super-Pets",
+    "tmdb_original_title": "DC League of Super-Pets",
+    "overview": "When Superman and the rest of the Justice League are kidnapped, Krypto the Super-Dog must convince a rag-tag shelter pack - Ace the hound, PB the potbellied pig, Merton the turtle and Chip the squirrel - to master their own newfound powers and help him rescue the superheroes.",
+    "poster_path": "/qpPMewlugFaejXjz4YNDnpTniFX.jpg",
+    "backdrop_path": "/xfNHRI2f5kHGvogxLd0C5sB90L7.jpg",
+    "release_date": "2022-07-27",
+    "director": "Jared Stern",
+    "runtime": 105,
+    "genres": [
+      "Family",
+      "Comedy",
+      "Adventure",
+      "Animation",
+      "Science Fiction"
+    ],
+    "vote_average": 7.179
+  },
+  "High Treason": {
+    "tmdb_id": 87378,
+    "tmdb_title": "High Treason",
+    "tmdb_original_title": "High Treason",
+    "overview": "Men from Scotland Yard and military intelligence build a dossier on a sabotage ring.",
+    "poster_path": "/feUZmD6nVAsZGSGewSrPYU9D0GX.jpg",
+    "backdrop_path": "/yyu1AxO04krNr6jzYpuojeEsryl.jpg",
+    "release_date": "1951-11-13",
+    "director": "Roy Boulting",
+    "runtime": 93,
+    "genres": [
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "vote_average": 5.3
+  },
+  "Sonic Cinema: Viktoria Schmid and Johann Lurf": null,
+  "When Harry Met Sally": {
+    "tmdb_id": 639,
+    "tmdb_title": "When Harry Met Sally...",
+    "tmdb_original_title": "When Harry Met Sally...",
+    "overview": "Sex always gets in the way of friendships between men and women. At least, that's what Harry Burns believes. So when Harry meets Sally Albright and a deep friendship blossoms between them, Harry's determined not to let his attraction to Sally destroy it. But when a night of weakness ends in a morning of panic, can the pair avoid succumbing to Harry's fears by remaining friends and admitting they just might be the perfect match for each other?",
+    "poster_path": "/rFOiFUhTMtDetqCGClC9PIgnC1P.jpg",
+    "backdrop_path": "/i8aIbji5vcPoHwcLBZYQSniGkAI.jpg",
+    "release_date": "1989-07-12",
+    "director": "Rob Reiner",
+    "runtime": 96,
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "vote_average": 7.4
+  },
+  "THE OGRE OF ATHENS": {
+    "tmdb_id": 47717,
+    "tmdb_title": "The Ogre of Athens",
+    "tmdb_original_title": "Ο Δράκος",
+    "overview": "On New Year’s Eve, a timid bank clerk is mistaken for a notorious criminal mastermind who rules the streets of Athens. Embracing his mistaken identity comes with a price though, as his unwitting white lie begins to unravel.",
+    "poster_path": "/vtmSjaBQAEaQMkJwf2CQCPrwa0E.jpg",
+    "backdrop_path": "/cag7tphdOVF6WGBtTo5185UGoej.jpg",
+    "release_date": "1956-03-05",
+    "director": "Nikos Koundouros",
+    "runtime": 104,
+    "genres": [
+      "Crime",
+      "Comedy",
+      "Thriller",
+      "Drama"
+    ],
+    "vote_average": 7.0
+  },
+  "Hamnet – Screening Without Ads or Trailers": null,
+  "Everyman in Therapy: Mother Vera": null,
+  "The Third Man": {
+    "tmdb_id": 1092,
+    "tmdb_title": "The Third Man",
+    "tmdb_original_title": "The Third Man",
+    "overview": "In postwar Vienna, Austria, Holly Martins, a writer of pulp Westerns, arrives penniless as a guest of his childhood chum Harry Lime, only to learn he has died. Martins develops a conspiracy theory after learning of a \"third man\" present at the time of Harry's death, running into interference from British officer Major Calloway, and falling head-over-heels for Harry's grief-stricken lover, Anna.",
+    "poster_path": "/wxTbbrWypRgUcsTS9zw7p9tMbNq.jpg",
+    "backdrop_path": "/rLLhOCgAjuvlKmjUqVb7P1UAbUI.jpg",
+    "release_date": "1949-08-31",
+    "director": "Carol Reed",
+    "runtime": 105,
+    "genres": [
+      "Thriller",
+      "Mystery"
+    ],
+    "vote_average": 7.912
+  },
+  "The Secret Agent - Preview": null,
+  "I Don't Know Who You Are": {
+    "tmdb_id": 1160041,
+    "tmdb_title": "I Don't Know Who You Are",
+    "tmdb_original_title": "I Don't Know Who You Are",
+    "overview": "Benjamin, a working class gay man living in Toronto, struggles to obtain expensive healthcare after being assaulted by a stranger.",
+    "poster_path": "/rFkbEWczzvkJmjPB82OO9KJMd4e.jpg",
+    "backdrop_path": "/kr1bDeTt21wuy7rocncfXk2tCA.jpg",
+    "release_date": "2024-04-26",
+    "director": "Houston Bone",
+    "runtime": 103,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 9.0
+  },
+  "RBO Encore: Giselle (2026)": null,
+  "Throwback: Speed": null,
+  "TRAIN DREAMS": {
+    "tmdb_id": 1241983,
+    "tmdb_title": "Train Dreams",
+    "tmdb_original_title": "Train Dreams",
+    "overview": "A logger leads a life of quiet grace as he experiences love and loss during an era of monumental change in early 20th-century America.",
+    "poster_path": "/wfzYOVdafdbD1d3SxNqiBtV2Yhx.jpg",
+    "backdrop_path": "/gwohbraLtlTW7F9EAyxOckSBwf3.jpg",
+    "release_date": "2025-11-05",
+    "director": "Clint Bentley",
+    "runtime": 102,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.337
+  },
+  "DOCHOUSE: SEEDS": null,
+  "DOCHOUSE: JOHATSU: INTO THIN AIR": null,
+  "Iris Prize: When Love Broke the Law + Q&amp;A": null,
+  "Crafty Movie Night – Notting Hill": null,
+  "RBO Live: La Traviata (2026)": null,
+  "CLUB ROOM: Dirty Dancing": null,
+  "Met Opera Live: Eugene Onegin (2026)": null,
+  "AVATAR: FIRE AND ASH": {
+    "tmdb_id": 83533,
+    "tmdb_title": "Avatar: Fire and Ash",
+    "tmdb_original_title": "Avatar: Fire and Ash",
+    "overview": "In the wake of the devastating war against the RDA and the loss of their eldest son, Jake Sully and Neytiri face a new threat on Pandora: the Ash People, a violent and power-hungry Na'vi tribe led by the ruthless Varang. Jake's family must fight for their survival and the future of Pandora in a conflict that pushes them to their emotional and physical limits.",
+    "poster_path": "/cf7hE1ifY4UNbS25tGnaTyyDrI2.jpg",
+    "backdrop_path": "/vm4H1DivjQoNIm0Vs6i3CTzFxQ0.jpg",
+    "release_date": "2025-12-17",
+    "director": "James Cameron",
+    "runtime": 198,
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Fantasy"
+    ],
+    "vote_average": 7.362
+  },
+  "Persona": {
+    "tmdb_id": 797,
+    "tmdb_title": "Persona",
+    "tmdb_original_title": "Persona",
+    "overview": "A young nurse, Alma, is put in charge of Elisabeth Vogler: an actress who is seemingly healthy in all respects, but will not talk. As they spend time together, Alma speaks to Elisabeth constantly, never receiving any answer.",
+    "poster_path": "/v2KsLNChpT6vLf0YFhkJmAtGkNq.jpg",
+    "backdrop_path": "/sj2aZDetPE8RoOCAm5QJitCNfLr.jpg",
+    "release_date": "1966-10-18",
+    "director": "Ingmar Bergman",
+    "runtime": 84,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.14
+  },
+  "H IS FOR HAWK": {
+    "tmdb_id": 1243006,
+    "tmdb_title": "H Is for Hawk",
+    "tmdb_original_title": "H Is for Hawk",
+    "overview": "After losing her beloved father, Helen finds herself saved by an unlikely friendship with a stubborn hawk named Mabel. Through the bond, Helen rediscovers the beauty of being alive.",
+    "poster_path": "/bGXjURum6d49cUVkYd6kOJqP0uZ.jpg",
+    "backdrop_path": "/876o0k2cIoNtCpPr6F1hjRyOFp6.jpg",
+    "release_date": "2025-11-26",
+    "director": "Philippa Lowthorpe",
+    "runtime": 128,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.0
+  },
+  "OffBeat: Welcome to the Orchard of England": null,
+  "Met Opera Encore: El Último Sueño de Frida y Diego": null,
+  "Dog-Friendly: The History of Sound": null,
+  "Only Good Things": {
+    "tmdb_id": 1427595,
+    "tmdb_title": "Only Good Things",
+    "tmdb_original_title": "Apenas Coisas Boas",
+    "overview": "Catalão, Brazil, 1984. The rural region of Batalha dos Neves is made up of large crop pastures, a few farms and divided in half by the São Marcos River. Antonio lives alone and isolated taking care of his small farm until the day he encounters Marcelo, a lonely motorcycler who suffers an accident crossing the region. Antonio takes care of Marcelo’s wounds. The two fall in love and live a story that transforms, destabilizes, and causes ruptures in each of them.",
+    "poster_path": "/qWoQdqxVktRXt0G7Iv5pPG3n3ts.jpg",
+    "backdrop_path": "/1XHIIH2bLETZt4fhHCBA4O5TwPi.jpg",
+    "release_date": "2026-02-05",
+    "director": "Daniel Nolasco",
+    "runtime": 104,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "Club Room: Jake O’Neill": null,
+  "DOCHOUSE: MENUS-PLAISIRS": null,
+  "RBO Encore: Woolf Works (2026)": null,
+  "Odd Fish": {
+    "tmdb_id": 1197084,
+    "tmdb_title": "Odd Fish",
+    "tmdb_original_title": "Ljósvíkingar",
+    "overview": "Two childhood friends get a long-awaited opportunity to found and run a seafood restaurant together. When one of them comes out of the closet as a trans woman, their friendship gets tested.",
+    "poster_path": "/tUpFkZbJYLzewnLufoW1wrzwrSn.jpg",
+    "backdrop_path": "/8voWmAQ1CKmGeXqxsp3SG0APyRf.jpg",
+    "release_date": "2024-09-06",
+    "director": "Snævar Sölvason",
+    "runtime": 104,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.0
+  },
+  "Eternity": {
+    "tmdb_id": 1259102,
+    "tmdb_title": "Eternity",
+    "tmdb_original_title": "Eternity",
+    "overview": "In an afterlife where souls have one week to decide where to spend eternity, Joan is faced with the impossible choice between the man she spent her life with and her first love, who died young and has waited decades for her to arrive.",
+    "poster_path": "/o8pg20G67BGmQvRkXwstNre062J.jpg",
+    "backdrop_path": "/fuacZLpnohQtLD0AhtCErcPVL98.jpg",
+    "release_date": "2025-11-26",
+    "director": "David Freyne",
+    "runtime": 114,
+    "genres": [
+      "Romance",
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.146
+  },
+  "28 Years Later + The Bone Temple (Double Bill)": {
+    "tmdb_id": 1272837,
+    "tmdb_title": "28 Years Later: The Bone Temple",
+    "tmdb_original_title": "28 Years Later: The Bone Temple",
+    "overview": "Dr. Kelson finds himself in a shocking new relationship - with consequences that could change the world as they know it - and Spike's encounter with Jimmy Crystal becomes a nightmare he can't escape.",
+    "poster_path": "/xUZTNxYx63y7qBA86bcdLF8zO43.jpg",
+    "backdrop_path": "/hySKuneIV2W8QFUNQ4B8zSYTcrr.jpg",
+    "release_date": "2026-01-14",
+    "director": "Nia DaCosta",
+    "runtime": 109,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Science Fiction"
+    ],
+    "vote_average": 8.8
+  },
+  "Twinless": {
+    "tmdb_id": 1245347,
+    "tmdb_title": "Twinless",
+    "tmdb_original_title": "Twinless",
+    "overview": "Two young men meet in a twin support group and form an unlikely friendship.",
+    "poster_path": "/9vaw9Az5tPLMjNLj426KgKsp0k8.jpg",
+    "backdrop_path": "/fnvTC96lA7pf8ZlMKI2FgBZ86AP.jpg",
+    "release_date": "2025-09-04",
+    "director": "James Sweeney",
+    "runtime": 100,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.1
+  },
+  "2001: A Space Odyssey": {
+    "tmdb_id": 62,
+    "tmdb_title": "2001: A Space Odyssey",
+    "tmdb_original_title": "2001: A Space Odyssey",
+    "overview": "Humanity finds a mysterious object buried beneath the lunar surface and sets off to find its origins with the help of HAL 9000, the world's most advanced super computer.",
+    "poster_path": "/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg",
+    "backdrop_path": "/yfnDgz3Kiv0IkdujrFRh1vcd7Yu.jpg",
+    "release_date": "1968-04-02",
+    "director": "Stanley Kubrick",
+    "runtime": 149,
+    "genres": [
+      "Science Fiction",
+      "Mystery",
+      "Adventure"
+    ],
+    "vote_average": 8.06
+  },
+  "Fackham Hall": {
+    "tmdb_id": 1175174,
+    "tmdb_title": "Fackham Hall",
+    "tmdb_original_title": "Fackham Hall",
+    "overview": "A new porter embarks on an unlikely relationship with the youngest daughter of a prominent English family. Simultaneously, rivalries are spilling over in the Davenport family, led by the Lord and Lady as they also weather the epic failure of the wedding of their eldest daughter to her caddish cousin.",
+    "poster_path": "/zE1Ylky4ktEy0DrXlrnua3eyRzV.jpg",
+    "backdrop_path": "/6PM1erqC2dCKjZSOA830DY2daWQ.jpg",
+    "release_date": "2025-12-01",
+    "director": "Jim O'Hanlon",
+    "runtime": 97,
+    "genres": [
+      "Comedy",
+      "History"
+    ],
+    "vote_average": 7.2
+  },
+  "WAKE UP DEAD MAN: A KNIVES OUT MYSTERY": {
+    "tmdb_id": 812583,
+    "tmdb_title": "Wake Up Dead Man: A Knives Out Mystery",
+    "tmdb_original_title": "Wake Up Dead Man: A Knives Out Mystery",
+    "overview": "When young priest Jud Duplenticy is sent to assist charismatic firebrand Monsignor Jefferson Wicks, it’s clear that all is not well in the pews. After a sudden and seemingly impossible murder rocks the town, the lack of an obvious suspect prompts local police chief Geraldine Scott to join forces with renowned detective Benoit Blanc to unravel a mystery that defies all logic.",
+    "poster_path": "/qCOGGi8JBVEZMc3DVby8rUivyXz.jpg",
+    "backdrop_path": "/fiRDzpcJe7qz3yIR43hdXIE3NHv.jpg",
+    "release_date": "2025-11-26",
+    "director": "Rian Johnson",
+    "runtime": 145,
+    "genres": [
+      "Thriller",
+      "Mystery",
+      "Comedy"
+    ],
+    "vote_average": 7.212
+  },
+  "Club Room Comedy: Tevin Everett, Olga Koch, Vlad Llich, and Roman Harris": null,
+  "The Roses": {
+    "tmdb_id": 1267905,
+    "tmdb_title": "The Roses",
+    "tmdb_original_title": "The Roses",
+    "overview": "Life seems easy for picture-perfect couple Ivy and Theo: successful careers, a loving marriage, great kids. But beneath the façade of their supposed ideal life, a storm is brewing – as Theo's career nosedives while Ivy's own ambitions take off, a tinderbox of fierce competition and hidden resentment ignites.",
+    "poster_path": "/98n5HnCJ5LnXKIMNP9SBfVNyxCE.jpg",
+    "backdrop_path": "/h4HSZjOeAoHQ3qPuy6x9Cyr69bS.jpg",
+    "release_date": "2025-08-27",
+    "director": "Jay Roach",
+    "runtime": 105,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 6.723
+  },
+  "DOCHOUSE: COEXISTENCE, MY ASS": null,
+  "Army of Darkness": {
+    "tmdb_id": 766,
+    "tmdb_title": "Army of Darkness",
+    "tmdb_original_title": "Army of Darkness",
+    "overview": "Ash, a handsome, shotgun-toting, chainsaw-armed department store clerk, is time warped backwards into England's Dark Ages, where he romances a beauty and faces legions of the undead.",
+    "poster_path": "/xsgTuAtR2zSH8Umg3jWZcZjlDpe.jpg",
+    "backdrop_path": "/5RPXs9g0sZ9Woo4pNLxdXdge7tc.jpg",
+    "release_date": "1992-10-31",
+    "director": "Sam Raimi",
+    "runtime": 81,
+    "genres": [
+      "Fantasy",
+      "Horror",
+      "Comedy"
+    ],
+    "vote_average": 7.258
+  },
+  "JAY KELLY": {
+    "tmdb_id": 1069905,
+    "tmdb_title": "Jay Kelly",
+    "tmdb_original_title": "Jay Kelly",
+    "overview": "Famous movie actor Jay Kelly embarks on a journey of self-discovery, confronting both his past and present, accompanied by his devoted manager, Ron.",
+    "poster_path": "/lEXYpY9X17pGC7xYYy17Guv0L3J.jpg",
+    "backdrop_path": "/wR9D9hQvCVBux16NauY4b7letdU.jpg",
+    "release_date": "2025-11-14",
+    "director": "Noah Baumbach",
+    "runtime": 132,
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 6.106
+  },
+  "RBO Live: The Magic Flute (2026)": null,
+  "Break the Game": {
+    "tmdb_id": 632881,
+    "tmdb_title": "Break the Game",
+    "tmdb_original_title": "Break the Game",
+    "overview": "Record-breaking gamer Narcissa Wright grapples with her toxic obsession for attention and her space in the streaming community after coming out as transgender, all while attempting to set a new world record for The Legend of Zelda: Breath of the Wild.",
+    "poster_path": "/8DAXsxoMC3iDkYghaLIcwBLgKyL.jpg",
+    "backdrop_path": "/srRt2HLzRwnTehx7wbkrOXaPbgi.jpg",
+    "release_date": "2023-06-10",
+    "director": "Jane M. Wagner",
+    "runtime": 73,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
   },
   "GINGER & FRED": {
     "tmdb_id": 89072,
@@ -4330,6 +5061,1012 @@
     ],
     "vote_average": 3.077
   },
+  "La Scala: Evgenij Onegin": null,
+  "10 Things I Hate About You": {
+    "tmdb_id": 4951,
+    "tmdb_title": "10 Things I Hate About You",
+    "tmdb_original_title": "10 Things I Hate About You",
+    "overview": "On the first day at his new school, Cameron instantly falls for Bianca, the gorgeous girl of his dreams. The only problem is that Bianca is forbidden to date until her ill-tempered, completely un-dateable older sister Kat goes out, too. In an attempt to solve his problem, Cameron singles out the only guy who could possibly be a match for Kat: a mysterious bad boy with a nasty reputation of his own.",
+    "poster_path": "/ujERk3aKABXU3NDXOAxEQYTHe9A.jpg",
+    "backdrop_path": "/4ssWRanWTKN9CQ0tfq5S1whP7tr.jpg",
+    "release_date": "1999-03-30",
+    "director": "Gil Junger",
+    "runtime": 97,
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "vote_average": 7.6
+  },
+  "The Fog": {
+    "tmdb_id": 791,
+    "tmdb_title": "The Fog",
+    "tmdb_original_title": "The Fog",
+    "overview": "Trapped within an eerie mist, the residents of Antonio Bay have become the unwitting victims of a horrifying vengeance. One hundred years earlier, a ship carrying lepers was purposely lured onto the rocky coastline and sank, drowning all aboard. Now they're back – long-dead mariners who've waited a century for their revenge.",
+    "poster_path": "/v9vt49PUDJGkrMVjhb3yiYo7H4Y.jpg",
+    "backdrop_path": "/8nHYzBDeEPS0hbWYphQplhbTjQ3.jpg",
+    "release_date": "2005-10-14",
+    "director": "Rupert Wainwright",
+    "runtime": 100,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "vote_average": 4.6
+  },
+  "The Mission (1986)": {
+    "tmdb_id": 11416,
+    "tmdb_title": "The Mission",
+    "tmdb_original_title": "The Mission",
+    "overview": "When a Spanish Jesuit goes into the South American wilderness to build a mission in the hope of converting the Indians of the region, a slave hunter is converted and joins his mission. When Spain sells the colony to Portugal, they are forced to defend all they have built against the Portuguese aggressors.",
+    "poster_path": "/6K9cG6LOOtySZF4D4xBu1MApC1N.jpg",
+    "backdrop_path": "/xdxfsLnbLp4B7dZh9GVKZc78VFj.jpg",
+    "release_date": "1986-09-06",
+    "director": "Roland Joffé",
+    "runtime": 125,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Action",
+      "History"
+    ],
+    "vote_average": 7.393
+  },
+  "FACKHAM HALL": {
+    "tmdb_id": 1175174,
+    "tmdb_title": "Fackham Hall",
+    "tmdb_original_title": "Fackham Hall",
+    "overview": "A new porter embarks on an unlikely relationship with the youngest daughter of a prominent English family. Simultaneously, rivalries are spilling over in the Davenport family, led by the Lord and Lady as they also weather the epic failure of the wedding of their eldest daughter to her caddish cousin.",
+    "poster_path": "/zE1Ylky4ktEy0DrXlrnua3eyRzV.jpg",
+    "backdrop_path": "/6PM1erqC2dCKjZSOA830DY2daWQ.jpg",
+    "release_date": "2025-12-01",
+    "director": "Jim O'Hanlon",
+    "runtime": 97,
+    "genres": [
+      "Comedy",
+      "History"
+    ],
+    "vote_average": 7.2
+  },
+  "Iris Prize: 2025 Best Bits + Intro &amp; Q&amp;A": null,
+  "Superworm": {
+    "tmdb_id": 912802,
+    "tmdb_title": "Superworm",
+    "tmdb_original_title": "Superworm",
+    "overview": "Superworm is super-long and super-strong, and is always saving the day. But who can save him when he gets too full of himself and is captured by the evil Wizard Lizard?",
+    "poster_path": "/hzvZDTb9r9Yceomz2GCHn2eneiD.jpg",
+    "backdrop_path": "/i258RQovDRatmVONIqY4oDaKYjY.jpg",
+    "release_date": "2021-12-25",
+    "director": "Jac Hamman",
+    "runtime": 25,
+    "genres": [
+      "Animation",
+      "Family",
+      "Comedy"
+    ],
+    "vote_average": 6.4
+  },
+  "ZOOTROPOLIS 2": null,
+  "DOCHOUSE: BECOMING VICTORIA WOOD": null,
+  "CLUB ROOM: National Theatre Live: The Fifth Step": null,
+  "DOCHOUSE: AI WEIWEI'S TURANDOT": null,
+  "Caught Stealing": {
+    "tmdb_id": 1245993,
+    "tmdb_title": "Caught Stealing",
+    "tmdb_original_title": "Caught Stealing",
+    "overview": "Burned-out ex-baseball player Hank Thompson unexpectedly finds himself embroiled in a dangerous struggle for survival amidst the criminal underbelly of late 1990s New York City, forced to navigate a treacherous underworld he never imagined.",
+    "poster_path": "/cvda8s5J8YaHjTyEyXQpvD6f3iV.jpg",
+    "backdrop_path": "/zWO3B2CTDguZqCrVQ2u5Xnp9VRS.jpg",
+    "release_date": "2025-08-26",
+    "director": "Darren Aronofsky",
+    "runtime": 107,
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Comedy"
+    ],
+    "vote_average": 6.952
+  },
+  "Toddler Club: Chicken Run": null,
+  "RBO Live: Giselle (2026)": null,
+  "JSA (Joint Security Area)": {
+    "tmdb_id": 2440,
+    "tmdb_title": "Joint Security Area",
+    "tmdb_original_title": "공동경비구역 JSA",
+    "overview": "Two North Korean soldiers are killed in the border area between North and South Korea, prompting an investigation by a neutral body. The sergeant is the shooter, but the lead investigator, a Swiss-Korean woman, receives differing accounts from the two sides.",
+    "poster_path": "/etoPOj0bXzfw0LBNslCxqO7MHuv.jpg",
+    "backdrop_path": "/z7w6ACQJTeGYASr1plSwfRe6Ytk.jpg",
+    "release_date": "2000-09-09",
+    "director": "Park Chan-wook",
+    "runtime": 108,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Action"
+    ],
+    "vote_average": 7.822
+  },
+  "Green Screen: Power Station + discussion": null,
+  "Blue Has No Borders + Jessi Gutch Q&A": {
+    "tmdb_id": 1480401,
+    "tmdb_title": "Blue Has No Borders",
+    "tmdb_original_title": "Blue Has No Borders",
+    "overview": "A young filmmaker is determined to know her neighbours in the port town of Folkestone. But in the aftermath of Brexit, building new relationships isn’t easy.",
+    "poster_path": "/oGqedvMNoxXaZSJb2AyjoXU5Ll6.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-02-05",
+    "director": "Jessi Gutch",
+    "runtime": 88,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "DOCHOUSE: OUT OF THE PRESENT": null,
+  "DOCHOUSE: THE SIX BILLION DOLLAR MAN": null,
+  "Man's Favorite Sport?": null,
+  "EXHIBITION ON SCREEN: Frida Kahlo 2026 Encore": null,
+  "DOCHOUSE: BLACK WATER": null,
+  "RBO Encore: The Magic Flute (2026)": null,
+  "Dog-Friendly Screening: Hamnet": null,
+  "Mystery Sapphic Film": null,
+  "Riley": {
+    "tmdb_id": 1177865,
+    "tmdb_title": "Riley",
+    "tmdb_original_title": "Riley",
+    "overview": "The life of a disciplined high school athlete begins to unravel when his queer identity competes against the idea of who he was supposed to be.",
+    "poster_path": "/1vW8CLfLfZ3KAG52G7a6ET3s61N.jpg",
+    "backdrop_path": "/8uUC5GaGJQBhXhWTzoG6siDO79R.jpg",
+    "release_date": "2025-12-04",
+    "director": "Benjamin Howard",
+    "runtime": 93,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 4.0
+  },
+  "Club Room: Hannah Horton & Tara Minton": null,
+  "Kes": {
+    "tmdb_id": 13384,
+    "tmdb_title": "Kes",
+    "tmdb_original_title": "Kes",
+    "overview": "Bullied at school and ignored and abused at home by his indifferent mother and older brother, Billy Casper, a 15-year-old working-class Yorkshire boy, tames and trains his pet kestrel falcon whom he names Kes. Helped and encouraged by his English teacher and his fellow students, Billy finally finds a positive purpose to his unhappy existence.",
+    "poster_path": "/r1FMq75irhsQBVGjXhPU4xA9SDo.jpg",
+    "backdrop_path": "/eWvxOS5g67B1b46Cff9TlYuJleY.jpg",
+    "release_date": "1970-04-03",
+    "director": "Ken Loach",
+    "runtime": 111,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.4
+  },
+  "KIDS CLUB: INSIDE OUT": null,
+  "DOCHOUSE: MONK IN PIECES": null,
+  "CLUB ROOM: BAR TRASH: THE BROTHERHOOD OF SATAN (1971)": null,
+  "RBO Live: Siegfried (2026)": null,
+  "ROH: La Traviata": {
+    "tmdb_id": 574394,
+    "tmdb_title": "La Traviata - ROH",
+    "tmdb_original_title": "La Traviata - ROH",
+    "overview": "",
+    "poster_path": "/jtLyGgXZD2SCS8tihmREg0G7n5D.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-04-13",
+    "director": "Richard Eyre",
+    "runtime": 200,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "The Maltese Falcon": {
+    "tmdb_id": 963,
+    "tmdb_title": "The Maltese Falcon",
+    "tmdb_original_title": "The Maltese Falcon",
+    "overview": "A private detective takes on a case that involves him with three eccentric criminals, a beautiful liar, and their quest for a priceless statuette.",
+    "poster_path": "/bf4o6Uzw5wqLjdKwRuiDrN1xyvl.jpg",
+    "backdrop_path": "/9xzVKUGbVKrrgwlmshJ8SxI5mL7.jpg",
+    "release_date": "1941-10-18",
+    "director": "John Huston",
+    "runtime": 100,
+    "genres": [
+      "Mystery",
+      "Crime",
+      "Thriller"
+    ],
+    "vote_average": 7.708
+  },
+  "Saipan + Q&A": {
+    "tmdb_id": 1322692,
+    "tmdb_title": "Saipan",
+    "tmdb_original_title": "Saipan",
+    "overview": "On the eve of the 2002 FIFA World Cup, Irish captain Roy Keane forfeits his place in the squad at the team's preparation base in Saipan, following a heated disagreement with manager Mick McCarthy.",
+    "poster_path": "/s7IbZFANLHKNglQ9IfjDdrHCVNZ.jpg",
+    "backdrop_path": "/hsq7bw69NCOTJQB1jD9ck2wMdMz.jpg",
+    "release_date": "2025-11-08",
+    "director": "Glenn Leyburn",
+    "runtime": 90,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "vote_average": 0.0
+  },
+  "Matinee: La Scala: Evgenij Onegin": null,
+  "Lord of the Rings: The Fellowship of the Ring - Extended Edition Event": {
+    "tmdb_id": 120,
+    "tmdb_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "tmdb_original_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
+    "poster_path": "/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+    "backdrop_path": "/x2RS3uTcsJJ9IfjNPcgDmukoEcQ.jpg",
+    "release_date": "2001-12-18",
+    "director": "Peter Jackson",
+    "runtime": 179,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "vote_average": 8.427
+  },
+  "Maestro": {
+    "tmdb_id": 523607,
+    "tmdb_title": "Maestro",
+    "tmdb_original_title": "Maestro",
+    "overview": "A towering and fearless love story chronicling the lifelong relationship between Leonard Bernstein and Felicia Montealegre Cohn Bernstein. A love letter to life and art, Maestro at its core is an emotionally epic portrayal of family and love.",
+    "poster_path": "/kxj7rMco6RNYsVcNwuGAIlfWu64.jpg",
+    "backdrop_path": "/et0G74BxoBgNQEZBkUcVhsgeRFF.jpg",
+    "release_date": "2023-11-22",
+    "director": "Bradley Cooper",
+    "runtime": 129,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 6.284
+  },
+  "100 Nights of Hero": {
+    "tmdb_id": 1354518,
+    "tmdb_title": "100 Nights of Hero",
+    "tmdb_original_title": "100 Nights of Hero",
+    "overview": "When a charming house guest arrives at a remote castle, the delicate dynamic between a neglectful husband, his innocent bride Cherry and their devoted maid Hero is thrown into chaos.",
+    "poster_path": "/7OYSJJFU2E9iBGPfU9C9PM56APM.jpg",
+    "backdrop_path": "/skmFqH67nh8zJacf7WcR204Kgvl.jpg",
+    "release_date": "2025-12-05",
+    "director": "Julia Jackman",
+    "runtime": 91,
+    "genres": [
+      "Fantasy",
+      "Romance"
+    ],
+    "vote_average": 5.3
+  },
+  "Portrait of a Lady on Fire": {
+    "tmdb_id": 531428,
+    "tmdb_title": "Portrait of a Lady on Fire",
+    "tmdb_original_title": "Portrait de la jeune fille en feu",
+    "overview": "On an isolated island in Brittany at the end of the eighteenth century, a female painter is obliged to paint a wedding portrait of a young woman.",
+    "poster_path": "/2LquGwEhbg3soxSCs9VNyh5VJd9.jpg",
+    "backdrop_path": "/foFq1RZWQIgFuCQ0nyYccywjFyX.jpg",
+    "release_date": "2019-09-06",
+    "director": "Céline Sciamma",
+    "runtime": 121,
+    "genres": [
+      "Drama",
+      "Romance",
+      "History"
+    ],
+    "vote_average": 8.1
+  },
+  "DOCHOUSE: IRON WINTER": null,
+  "Little Miss Sunshine": {
+    "tmdb_id": 773,
+    "tmdb_title": "Little Miss Sunshine",
+    "tmdb_original_title": "Little Miss Sunshine",
+    "overview": "A family loaded with quirky, colorful characters piles into an old van and road trips to California for little Olive to compete in a beauty pageant.",
+    "poster_path": "/wKn7AJw730emlmzLSmJtzquwaeW.jpg",
+    "backdrop_path": "/vD15pg2cXynxeNIknyuvVH2sPx4.jpg",
+    "release_date": "2006-07-26",
+    "director": "Valerie Faris",
+    "runtime": 102,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.692
+  },
+  "Nuremberg": {
+    "tmdb_id": 1214931,
+    "tmdb_title": "Nuremberg",
+    "tmdb_original_title": "Nuremberg",
+    "overview": "In postwar Germany, an American psychiatrist must determine whether Nazi prisoners are fit to go on trial for war crimes, and finds himself in a complex battle of intellect and ethics with Hermann Göring, Hitler's right-hand man.",
+    "poster_path": "/sxu8TsG7k06ymWL98ELEIE1EMZV.jpg",
+    "backdrop_path": "/ajzEWXl1z75Mx6lOj9lToHt5t6Z.jpg",
+    "release_date": "2025-11-06",
+    "director": "James Vanderbilt",
+    "runtime": 148,
+    "genres": [
+      "History",
+      "Drama"
+    ],
+    "vote_average": 7.3
+  },
+  "RBO Live: Woolf Works (2026)": null,
+  "DOCHOUSE: LONDON BOYS": null,
+  "RBO Encore: Siegfried (2026)": null,
+  "Zog And The Flying Doctors": {
+    "tmdb_id": 779611,
+    "tmdb_title": "Zog and the Flying Doctors",
+    "tmdb_original_title": "Zog and the Flying Doctors",
+    "overview": "Pearl and Gadabout are now a flying doctor trio, caring for creatures including a mermaid, a unicorn and a sneezy lion. However when bad weather forces them to land at the palace, Pearl is locked up by her uncle, the king.",
+    "poster_path": "/aow2SrU1nKY1onSTjHhhLW8Ndd6.jpg",
+    "backdrop_path": "/3VeNFWlxgCJd7Oq8EvoSv50N5Jv.jpg",
+    "release_date": "2021-04-16",
+    "director": "Sean Mullen",
+    "runtime": 25,
+    "genres": [
+      "Animation",
+      "Family",
+      "TV Movie"
+    ],
+    "vote_average": 6.5
+  },
+  "Throwback: Labyrinth (40th Anniversary)": null,
+  "NATIONAL THEATRE LIVE: HAMLET": {
+    "tmdb_id": 396227,
+    "tmdb_title": "National Theatre Live: Hamlet",
+    "tmdb_original_title": "National Theatre Live: Hamlet",
+    "overview": "As a country arms itself for war, a family tears itself apart. Forced to avenge his father's death but paralyzed by the task ahead, Hamlet rages against the impossibility of his predicament, threatening both his sanity and the security of the state.",
+    "poster_path": "/3GLQDQ8WvIEXxLf5qOtUWokrcKd.jpg",
+    "backdrop_path": "/2OlaeKSohqs8d2yYe2W9ZeP70Uh.jpg",
+    "release_date": "2015-10-15",
+    "director": "Robin Lough",
+    "runtime": 217,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
+  "Raiders of the Lost Ark": {
+    "tmdb_id": 85,
+    "tmdb_title": "Raiders of the Lost Ark",
+    "tmdb_original_title": "Raiders of the Lost Ark",
+    "overview": "When Dr. Indiana Jones – the tweed-suited professor who just happens to be a celebrated archaeologist – is hired by the government to locate the legendary Ark of the Covenant, he finds himself up against the entire Nazi regime.",
+    "poster_path": "/ceG9VzoRAVGwivFU403Wc3AHRys.jpg",
+    "backdrop_path": "/zPACwR32amTNvzId9qyapCWXYDJ.jpg",
+    "release_date": "1981-06-12",
+    "director": "Steven Spielberg",
+    "runtime": 115,
+    "genres": [
+      "Adventure",
+      "Action"
+    ],
+    "vote_average": 7.922
+  },
+  "Pip and Posy: Sandpit Friends": {
+    "tmdb_id": 1500283,
+    "tmdb_title": "Pip and Posy: Sandpit Friends",
+    "tmdb_original_title": "Pip and Posy: Sandpit Friends",
+    "overview": "Pip and Posy play in the sandpit, make clay food, avoid imaginary crocodiles, watch falling stars and play with their friends.",
+    "poster_path": "/fnAQsauDPWajvntFw8gPK83pfdS.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-06-20",
+    "director": "",
+    "runtime": 60,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "Toddler Club: Shaun the Sheep Movie": null,
+  "28 YEARS LATER: DOUBLE BILL": {
+    "tmdb_id": 1100988,
+    "tmdb_title": "28 Years Later",
+    "tmdb_original_title": "28 Years Later",
+    "overview": "Twenty-eight years since the rage virus escaped a biological weapons laboratory, now, still in a ruthlessly enforced quarantine, some have found ways to exist amidst the infected. One such group lives on a small island connected to the mainland by a single, heavily-defended causeway. When one member departs on a mission into the dark heart of the mainland, he discovers secrets, wonders, and horrors that have mutated not only the infected but other survivors as well.",
+    "poster_path": "/mIg1qCkVxnAlM2TK3RUF0tdEXlE.jpg",
+    "backdrop_path": "/wxxSyWPPgssnkO6FbCAVyntLLSr.jpg",
+    "release_date": "2025-06-18",
+    "director": "Danny Boyle",
+    "runtime": 115,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Science Fiction"
+    ],
+    "vote_average": 6.632
+  },
+  "RBO CINEMA SEASON 2025-26: LA TRAVIATA": null,
+  "Met Opera Encore: Tristan and Isolde (2026)": null,
+  "The Chronology of Water": {
+    "tmdb_id": 524635,
+    "tmdb_title": "The Chronology of Water",
+    "tmdb_original_title": "The Chronology of Water",
+    "overview": "Growing up in an environment torn apart by violence and alcohol, a young woman finds her voice through the written word and her salvation as a swimmer.",
+    "poster_path": "/aqYIGdhDjWF1wKl2GTuRy1XtbkI.jpg",
+    "backdrop_path": "/c2ATu4NcVZEKHYLHugkqdrsMswt.jpg",
+    "release_date": "2025-09-01",
+    "director": "Kristen Stewart",
+    "runtime": 128,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.9
+  },
+  "High Noon": {
+    "tmdb_id": 288,
+    "tmdb_title": "High Noon",
+    "tmdb_original_title": "High Noon",
+    "overview": "Will Kane, the sheriff of a small town in New Mexico, learns a notorious outlaw he put in jail has been freed, and will be arriving on the noon train. Knowing the outlaw and his gang are coming to kill him, Kane is determined to stand his ground, so he attempts to gather a posse from among the local townspeople.",
+    "poster_path": "/qETSMQ4IXBSAS409Z9OL0ppXWTW.jpg",
+    "backdrop_path": "/qsDcQVqok01YIcT0zWhe1CNNz1h.jpg",
+    "release_date": "1952-06-09",
+    "director": "Fred Zinnemann",
+    "runtime": 85,
+    "genres": [
+      "Western",
+      "Drama"
+    ],
+    "vote_average": 7.658
+  },
+  "Members’ Preview: H is for Hawk": null,
+  "Rerun: Premiere: Spectra": null,
+  "The History of Sound": {
+    "tmdb_id": 891584,
+    "tmdb_title": "The History of Sound",
+    "tmdb_original_title": "The History of Sound",
+    "overview": "In 1917, two young music students attending the Boston Conservatory bond over a mutual love of folk music. They reconnect a few years later, embarking on a song-collecting trip in the backwaters of Maine.",
+    "poster_path": "/5tNr1CySiYQICRsQbWWSSsDiKjn.jpg",
+    "backdrop_path": "/e13Io18jl6p5UiS5Cxhug9ptTPU.jpg",
+    "release_date": "2025-09-12",
+    "director": "Oliver Hermanus",
+    "runtime": 127,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 6.2
+  },
+  "ANZ FF: Not Only Fred Dagg But Also John Clarke": null,
+  "Lord of the Rings: The Two Towers (Extended Edition)": null,
+  "Club Room: Mali Mae": null,
+  "Club Room: Katie Rigby": null,
+  "The Ballad Of Wallis Island + Live Filmmaker Commentary": {
+    "tmdb_id": 1122099,
+    "tmdb_title": "The Ballad of Wallis Island",
+    "tmdb_original_title": "The Ballad of Wallis Island",
+    "overview": "An eccentric lottery winner who lives alone on a remote island tries to make his fantasies come true by getting his favourite musicians to perform at his home.",
+    "poster_path": "/CBG77EwlLhxTb1yKoO4DTUGMM1.jpg",
+    "backdrop_path": "/1nn7nCFRTKeWOXbtjrFxfSvf1EI.jpg",
+    "release_date": "2025-03-28",
+    "director": "James Griffiths",
+    "runtime": 100,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Music"
+    ],
+    "vote_average": 7.1
+  },
+  "If I Had Legs I'd Kick You": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/gkIFK1HzqfgQg4v4ifeNKogHtPG.jpg",
+    "backdrop_path": "/hHN4iGAu0sCYvR0oaFmemKXDnVV.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 6.6
+  },
+  "PETER HUJAR’S DAY": {
+    "tmdb_id": 1159539,
+    "tmdb_title": "Peter Hujar's Day",
+    "tmdb_original_title": "Peter Hujar's Day",
+    "overview": "A recently discovered conversation between photographer Peter Hujar and his friend Linda Rosenkrantz in 1974 reveals a glimpse into New York City’s downtown art scene and the personal struggles and epiphanies that define an artist’s life.",
+    "poster_path": "/6ZIerMBfLbQpO0Es9JpN6OhxQzg.jpg",
+    "backdrop_path": "/kfSIJ4hx2dm7njpln9VqGe9riy8.jpg",
+    "release_date": "2025-11-07",
+    "director": "Ira Sachs",
+    "runtime": 76,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "vote_average": 5.2
+  },
+  "Preview: H Is For Hawk": null,
+  "Met Opera Encore: I Puritani (2026)": null,
+  "DOCHOUSE: THE TRACK": null,
+  "Another World + Q&A": {
+    "tmdb_id": 664506,
+    "tmdb_title": "Another World",
+    "tmdb_original_title": "Un autre monde",
+    "overview": "An executive manager, his wife and his family, at the point when his professional choices are about to overturn all their lives. Philippe Lemesle and his wife are separating, their love irretrievably damaged by pressures of work. A successful executive in industrial conglomerate, Philippe no longer knows how to respond to the contradictory demands of his bosses. Yesterday they wanted a manager, today an enforcer. Now he must decide what his life really means.",
+    "poster_path": "/xhzf8sgqmDnluRsZv6ZHOPzms3q.jpg",
+    "backdrop_path": "/xEHcm3LgMWpXxtFuO9DkZnDSk2F.jpg",
+    "release_date": "2022-02-16",
+    "director": "Stéphane Brizé",
+    "runtime": 96,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.808
+  },
+  "Met Opera Live: El Último Sueño de Frida y Diego": null,
+  "Bugsy Malone": {
+    "tmdb_id": 8446,
+    "tmdb_title": "Bugsy Malone",
+    "tmdb_original_title": "Bugsy Malone",
+    "overview": "New York, 1929, a war rages between two rival gangsters, Fat Sam and Dandy Dan. Dan is in possession of a new and deadly weapon, the dreaded \"splurge gun\". As the custard pies fly, Bugsy Malone, an all-round nice guy, falls for Blousey Brown, a singer at Fat Sam's speakeasy. His designs on her are disrupted by the seductive songstress Tallulah who wants Bugsy for herself.",
+    "poster_path": "/j9BPl3jkNCFgsYe5poKrirUqrf8.jpg",
+    "backdrop_path": "/vF6HsyBdaJAZIYNUVs2hyY5itBy.jpg",
+    "release_date": "1976-07-22",
+    "director": "Alan Parker",
+    "runtime": 93,
+    "genres": [
+      "Drama",
+      "Action",
+      "Comedy",
+      "Music",
+      "Family"
+    ],
+    "vote_average": 6.575
+  },
+  "Met Opera Live: Tristan and Isolde (2026)": null,
+  "In the Mood For Love": {
+    "tmdb_id": 843,
+    "tmdb_title": "In the Mood for Love",
+    "tmdb_original_title": "花樣年華",
+    "overview": "Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.",
+    "poster_path": "/m8jNwTP13ubYZyh5siVuyT9pZDp.jpg",
+    "backdrop_path": "/ffQFnAUm2Uu4RU0nijpjPRf9TBT.jpg",
+    "release_date": "2000-09-29",
+    "director": "Wong Kar-Wai",
+    "runtime": 99,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 8.1
+  },
+  "KIDS CLUB: INSIDE OUT 2": null,
+  "CLUB ROOM: Art Themen Organ Trio": null,
+  "Met Opera 2025-26: I Puritani": null,
+  "Mickey 17": {
+    "tmdb_id": 696506,
+    "tmdb_title": "Mickey 17",
+    "tmdb_original_title": "Mickey 17",
+    "overview": "Unlikely hero Mickey Barnes finds himself in the extraordinary circumstance of working for an employer who demands the ultimate commitment to the job… to die, for a living.",
+    "poster_path": "/edKpE9B5qN3e559OuMCLZdW1iBZ.jpg",
+    "backdrop_path": "/hGLywNhy1Fo1rNFHsNZsXGS69B8.jpg",
+    "release_date": "2025-02-28",
+    "director": "Bong Joon Ho",
+    "runtime": 137,
+    "genres": [
+      "Science Fiction",
+      "Comedy",
+      "Adventure"
+    ],
+    "vote_average": 6.827
+  },
+  "My Own Private Idaho": {
+    "tmdb_id": 468,
+    "tmdb_title": "My Own Private Idaho",
+    "tmdb_original_title": "My Own Private Idaho",
+    "overview": "In this loose adaptation of Shakespeare's \"Henry IV,\" Mike Waters is a hustler afflicted with narcolepsy. Scott Favor is the rebellious son of a mayor. Together, the two travel from Portland, Oregon to Idaho and finally to the coast of Italy in a quest to find Mike's estranged mother. Along the way they turn tricks for money and drugs, eventually attracting the attention of a wealthy benefactor and sexual deviant.",
+    "poster_path": "/p9TF90Pb5yg2MNb2UztzyXktMm4.jpg",
+    "backdrop_path": "/stSaFz5CtMXwIj3r4MDjqxqWRot.jpg",
+    "release_date": "1991-02-01",
+    "director": "Gus Van Sant",
+    "runtime": 104,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.062
+  },
+  "Throwback: About Time": null,
+  "Met Opera Encore: Eugene Onegin (2026)": null,
+  "THE PRESIDENT'S CAKE": {
+    "tmdb_id": 1464883,
+    "tmdb_title": "The President's Cake",
+    "tmdb_original_title": "The President's Cake",
+    "overview": "In 1990s Iraq, it's 'draw day', when schools select students for the honour of bringing items to their mandatory local celebrations of President Saddam Hussein's birthday. Nine-year-old Lamia lives in the historic marshes with her spirited grandmother, Bibi. Before school, Bibi teaches Lamia clever tricks to avoid being chosen for the baking duties. However, when Musa, the authoritative teacher, calls Lamia's name for the most challenging task–the birthday cake–she has no choice but to accept. Refusing could mean imprisonment or even death.",
+    "poster_path": "/abdw51gf1oy3UWllAwqGl6WdkiS.jpg",
+    "backdrop_path": "/1WkCbHamijDjv8hiBZztSLE2ujL.jpg",
+    "release_date": "2025-12-26",
+    "director": "Hasan Hadi",
+    "runtime": 105,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "Nostalgie: An Evening with Dan Smith & Filmmakers": null,
+  "RBO Encore: La Traviata (2026)": null,
+  "RBO Cinema Season 2025-26: La Traviata": null,
+  "The Handmaiden [Theatrical Cut]": {
+    "tmdb_id": 290098,
+    "tmdb_title": "The Handmaiden",
+    "tmdb_original_title": "아가씨",
+    "overview": "1930s Korea, in the period of Japanese occupation, a new girl, Sookee, is hired as a handmaiden to a Japanese heiress, Hideko, who lives a secluded life on a large countryside estate with her domineering Uncle Kouzuki. But the maid has a secret. She is a pickpocket recruited by a swindler posing as a Japanese Count to help him seduce the Lady to steal her fortune.",
+    "poster_path": "/dLlH4aNHdnmf62umnInL8xPlPzw.jpg",
+    "backdrop_path": "/3upEZ0ltY7WwOSFVXrtiP34D48p.jpg",
+    "release_date": "2016-06-01",
+    "director": "Park Chan-wook",
+    "runtime": 145,
+    "genres": [
+      "Thriller",
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 8.194
+  },
+  "Marty Supreme + Josh Safdie Q&A": {
+    "tmdb_id": 1317288,
+    "tmdb_title": "Marty Supreme",
+    "tmdb_original_title": "Marty Supreme",
+    "overview": "In 1950s New York, table tennis player Marty Mauser, a young man with a dream no one respects, goes to Hell and back in pursuit of greatness.",
+    "poster_path": "/firAhZA0uQvRL2slp7v3AnOj0ZX.jpg",
+    "backdrop_path": "/kHHVzOGE23kavlvFOxeHaBmrgBJ.jpg",
+    "release_date": "2025-12-19",
+    "director": "Josh Safdie",
+    "runtime": 150,
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 8.045
+  },
+  "John Carpenter's Vampires": null,
+  "House [Hausu]": {
+    "tmdb_id": 1176218,
+    "tmdb_title": "House",
+    "tmdb_original_title": "House",
+    "overview": "What if you lost everything? Where would you go? What would you do? Joe, a young architecture student, is forced to drop out of school after his parents die in a car accident, leaving only unpaid bills behind. Scrambling around trying to find a job, and a way to get his studies and life on track, he ends up on the edge of homeless, until he connects with a colorful bunch of characters squatting in a boarded up old house, where they \"borrow\" electricity. Each day in the house is an adventure in character, the good, the bad, the comedic, the heavy, and the chaos and insanity of life at the bottom of the barrel.",
+    "poster_path": "/rgiefMFRpldjyqHLXc8ji7pezm4.jpg",
+    "backdrop_path": null,
+    "release_date": "2006-04-13",
+    "director": "David Krae",
+    "runtime": 110,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 6.0
+  },
+  "RBO: Woolf Works": null,
+  "The Store": {
+    "tmdb_id": 110777,
+    "tmdb_title": "The Store",
+    "tmdb_original_title": "The Store",
+    "overview": "THE STORE is a film about the main Neiman-Marcus store and corporate headquarters in Dallas. The sequences in the film include the selection, presentation, marketing, pricing, advertising and selling of a vast array of consumer products including designer clothes and furs, jewelry, perfumes, shoes, electronic products, sportswear, china and porcelain and many other goods. The internal management and organizational aspects of a large corporation are shown, i.e., sales meetings, development of marketing and advertising strategies, training, personnel practices and sales techniques.",
+    "poster_path": "/2A01SAII7gq2xNZVlseGXj1VW98.jpg",
+    "backdrop_path": "/nQvx60fo0xHVLYHfXqLTRlRCLwH.jpg",
+    "release_date": "1983-12-14",
+    "director": "Frederick Wiseman",
+    "runtime": 118,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 6.2
+  },
+  "Private Hire (1 hour)": null,
+  "Break the Game + Director Q&amp;A": {
+    "tmdb_id": 632881,
+    "tmdb_title": "Break the Game",
+    "tmdb_original_title": "Break the Game",
+    "overview": "Record-breaking gamer Narcissa Wright grapples with her toxic obsession for attention and her space in the streaming community after coming out as transgender, all while attempting to set a new world record for The Legend of Zelda: Breath of the Wild.",
+    "poster_path": "/8DAXsxoMC3iDkYghaLIcwBLgKyL.jpg",
+    "backdrop_path": "/srRt2HLzRwnTehx7wbkrOXaPbgi.jpg",
+    "release_date": "2023-06-10",
+    "director": "Jane M. Wagner",
+    "runtime": 73,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "TV Preview: A Knight of the Seven Kingdoms + Cast Q&A": {
+    "tmdb_id": 944824,
+    "tmdb_title": "A",
+    "tmdb_original_title": "A",
+    "overview": "Single-channel video installation commissioned by Public Art Development Trust, London.",
+    "poster_path": "/7LhPaLmbRJ8NzovDxCYFD6kss9G.jpg",
+    "backdrop_path": null,
+    "release_date": "2002-09-25",
+    "director": "Darren Almond",
+    "runtime": 22,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 6.9
+  },
+  "Sunset Boulevard": {
+    "tmdb_id": 599,
+    "tmdb_title": "Sunset Boulevard",
+    "tmdb_original_title": "Sunset Boulevard",
+    "overview": "A hack screenwriter writes a screenplay for a former silent film star who has faded into Hollywood obscurity.",
+    "poster_path": "/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg",
+    "backdrop_path": "/p47ihFj4A7EpBjmPHdTj4ipyq1S.jpg",
+    "release_date": "1950-08-10",
+    "director": "Billy Wilder",
+    "runtime": 110,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.285
+  },
+  "LSFF: Lo-Budget Mayhem": null,
+  "Lexi Seniors' Film Club: Hamnet": null,
+  "The Lord Of The Rings: The Two Towers (25th Anniversary Extended Edition)": {
+    "tmdb_id": 121,
+    "tmdb_title": "The Lord of the Rings: The Two Towers",
+    "tmdb_original_title": "The Lord of the Rings: The Two Towers",
+    "overview": "Frodo Baggins and the other members of the Fellowship continue on their sacred quest to destroy the One Ring--but on separate paths. Their destinies lie at two towers--Orthanc Tower in Isengard, where the corrupt wizard Saruman awaits, and Sauron's fortress at Barad-dur, deep within the dark lands of Mordor. Frodo and Sam are trekking to Mordor to destroy the One Ring of Power while Gimli, Legolas and Aragorn search for the orc-captured Merry and Pippin. All along, nefarious wizard Saruman awaits the Fellowship members at the Orthanc Tower in Isengard.",
+    "poster_path": "/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg",
+    "backdrop_path": "/kWYfW2Re0rUDE6IHhy4CRuKWeFr.jpg",
+    "release_date": "2002-12-18",
+    "director": "Peter Jackson",
+    "runtime": 179,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "vote_average": 8.412
+  },
+  "CLUB ROOM: One Battle After Another": null,
+  "CLOUT + Live Q&A Tour": {
+    "tmdb_id": 1551885,
+    "tmdb_title": "Clout",
+    "tmdb_original_title": "Clout",
+    "overview": "Oskar's desperate pursuit of online fame takes a tragic turn when his claims of discovering a dead body are dismissed by his friends at boarding school, leading him down a dark path in an attempt to prove himself.",
+    "poster_path": "/mE5yzXQiwLIWOYudt1G5N8vTaTN.jpg",
+    "backdrop_path": "/9n1VAbxbUnScGmNz0a06cH9AuXk.jpg",
+    "release_date": "2025-10-08",
+    "director": "Jordan Murphy Doidge",
+    "runtime": 17,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "DRINK & DINE: Elvis": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
+  "DRINK & DINE: The Housemaid": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
+  "OTHELLO (2026)": {
+    "tmdb_id": 1595531,
+    "tmdb_title": "Othello",
+    "tmdb_original_title": "Othello",
+    "overview": "This epic story of manipulation, jealousy and toxic masculinity explores the darker side of power, rage and desire. Filmed live at the Theatre Royal Haymarket in London especially for the big screen, this is ‘an electrifying star-studded Othello.’",
+    "poster_path": "/yd6lMPgh9qthx9up7sZkpZGkq5m.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-04",
+    "director": "Tom Morris",
+    "runtime": 165,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "THE LORD OF THE RINGS: THE FELLOWSHIP OF THE RING": {
+    "tmdb_id": 120,
+    "tmdb_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "tmdb_original_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
+    "poster_path": "/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+    "backdrop_path": "/x2RS3uTcsJJ9IfjNPcgDmukoEcQ.jpg",
+    "release_date": "2001-12-18",
+    "director": "Peter Jackson",
+    "runtime": 179,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "vote_average": 8.427
+  },
+  "The Short Films of Tina Gharavi + intro by Chantelle Boyea, BFI Assistant Curator of Television": {
+    "tmdb_id": 318846,
+    "tmdb_title": "The Big Short",
+    "tmdb_original_title": "The Big Short",
+    "overview": "The men who made millions from a global economic meltdown.",
+    "poster_path": "/scVEaJEwP8zUix8vgmMoJJ9Nq0w.jpg",
+    "backdrop_path": "/l2Lqkfjq1k5pG2gZXD4qSiyrJ0.jpg",
+    "release_date": "2015-12-11",
+    "director": "Adam McKay",
+    "runtime": 131,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.357
+  },
+  "H Is For Hawk": {
+    "tmdb_id": 1243006,
+    "tmdb_title": "H Is for Hawk",
+    "tmdb_original_title": "H Is for Hawk",
+    "overview": "After losing her beloved father, Helen finds herself saved by an unlikely friendship with a stubborn hawk named Mabel. Through the bond, Helen rediscovers the beauty of being alive.",
+    "poster_path": "/bGXjURum6d49cUVkYd6kOJqP0uZ.jpg",
+    "backdrop_path": "/876o0k2cIoNtCpPr6F1hjRyOFp6.jpg",
+    "release_date": "2025-11-26",
+    "director": "Philippa Lowthorpe",
+    "runtime": 128,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.0
+  },
+  "LSFF: PAVING PARADISE": null,
+  "Dog-Friendly: Twinless": null,
+  "DRINK & DINE: 10 Things I Hate About You": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
+  "Pillion + Harry Lighton & Harry Melling Q&A": {
+    "tmdb_id": 1287141,
+    "tmdb_title": "Pillion",
+    "tmdb_original_title": "Pillion",
+    "overview": "A timid man is swept off his feet when an enigmatic, impossibly handsome biker takes him on as his submissive.",
+    "poster_path": "/5mXwQKAGrtvYzNXkiPbqPxqb2zK.jpg",
+    "backdrop_path": "/vqC6OjfU73Hn1ZOA7Is9gfnNaof.jpg",
+    "release_date": "2025-11-28",
+    "director": "Harry Lighton",
+    "runtime": 106,
+    "genres": [
+      "Romance",
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 8.0
+  },
+  "EXHIBITION ON SCREEN: Turner & Constable": {
+    "tmdb_id": 718204,
+    "tmdb_title": "Constable",
+    "tmdb_original_title": "Constable",
+    "overview": "A detective is assigned to handle a murder case, because one unexpected afternoon, a man claims to have committed a murder",
+    "poster_path": "/tSvv9LHrjvZw6qgzvEj2pQFcj48.jpg",
+    "backdrop_path": "/vyhCnLSWfTvGLnKInVSTdE3WAxq.jpg",
+    "release_date": "",
+    "director": "Ormin Dijar (Khaliq Fikri)",
+    "runtime": 27,
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "vote_average": 7.0
+  },
+  "DRINK & DINE: Grease Sing-Along!": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
+  "Robocop - Director's Cut": {
+    "tmdb_id": 97020,
+    "tmdb_title": "RoboCop",
+    "tmdb_original_title": "RoboCop",
+    "overview": "In RoboCop, the year is 2028 and multinational conglomerate OmniCorp is at the center of robot technology.  Overseas, their drones have been used by the military for years, but have been forbidden for law enforcement in America.  Now OmniCorp wants to bring their controversial technology to the home front, and they see a golden opportunity to do it.  When Alex Murphy – a loving husband, father and good cop doing his best to stem the tide of crime and corruption in Detroit – is critically injured, OmniCorp sees their chance to build a part-man, part-robot police officer.  OmniCorp envisions a RoboCop in every city and even more billions for their shareholders, but they never counted on one thing: there is still a man inside the machine.",
+    "poster_path": "/gM5ql3BKYmHG3WtZ0buKXN7xY8O.jpg",
+    "backdrop_path": "/hTDAWiohFTwJaKNcCNlsKs64bip.jpg",
+    "release_date": "2014-01-30",
+    "director": "José Padilha",
+    "runtime": 118,
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Crime"
+    ],
+    "vote_average": 5.885
+  },
+  "DRINK & DINE: Bohemian Rhapsody Sing-Along": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
+  "Kung Fu Hustle": {
+    "tmdb_id": 9470,
+    "tmdb_title": "Kung Fu Hustle",
+    "tmdb_original_title": "功夫",
+    "overview": "It's the 1940s, and the notorious Axe Gang terrorizes Shanghai. Small-time criminals Sing and Bone hope to join, but they only manage to make lots of very dangerous enemies. Fortunately for them, kung fu masters and hidden strength can be found in unlikely places. Now they just have to take on the entire Axe Gang.",
+    "poster_path": "/exbyTbrvRUDKN2mcNEuVor4VFQW.jpg",
+    "backdrop_path": "/9XhZhoSnFJ3AjpfzdIiZVHLQIS4.jpg",
+    "release_date": "2004-02-10",
+    "director": "Stephen Chow",
+    "runtime": 99,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime",
+      "Fantasy"
+    ],
+    "vote_average": 7.478
+  },
+  "Cine-real presents: The Maltese Falcon": {
+    "tmdb_id": 963,
+    "tmdb_title": "The Maltese Falcon",
+    "tmdb_original_title": "The Maltese Falcon",
+    "overview": "A private detective takes on a case that involves him with three eccentric criminals, a beautiful liar, and their quest for a priceless statuette.",
+    "poster_path": "/bf4o6Uzw5wqLjdKwRuiDrN1xyvl.jpg",
+    "backdrop_path": "/9xzVKUGbVKrrgwlmshJ8SxI5mL7.jpg",
+    "release_date": "1941-10-18",
+    "director": "John Huston",
+    "runtime": 100,
+    "genres": [
+      "Mystery",
+      "Crime",
+      "Thriller"
+    ],
+    "vote_average": 7.7
+  },
   "National Theatre Live Presents: Hamlet": {
     "tmdb_id": 10549,
     "tmdb_title": "Hamlet",
@@ -4345,6 +6082,56 @@
     ],
     "vote_average": 7.3
   },
+  "Relaxed Screening: I'm No Angel": {
+    "tmdb_id": 34456,
+    "tmdb_title": "I'm No Angel",
+    "tmdb_original_title": "I'm No Angel",
+    "overview": "The bold Tira works as dancing beauty and lion tamer at a fair. Out of an urgent need of money, she agrees to a risky new number: she'll put her head into the lion's mouth! With this attraction, the circus makes it to New York and Tira can pursue her dearest occupation— flirting with rich men and accepting expensive presents.",
+    "poster_path": "/ttACv1NRimYH9JiyVwy5Kwq2nL0.jpg",
+    "backdrop_path": "/eDsDz98u2ADBStyNwYS5nXcDpmY.jpg",
+    "release_date": "1933-10-06",
+    "director": "Wesley Ruggles",
+    "runtime": 87,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 6.3
+  },
+  "DRINK & DINE: The Greatest Showman Sing-A-Long": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
+  "The Lord Of The Rings: The Fellowship Of The Ring (25th Anniversary Extended Edition)": {
+    "tmdb_id": 120,
+    "tmdb_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "tmdb_original_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
+    "poster_path": "/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+    "backdrop_path": "/x2RS3uTcsJJ9IfjNPcgDmukoEcQ.jpg",
+    "release_date": "2001-12-18",
+    "director": "Peter Jackson",
+    "runtime": 179,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "vote_average": 8.427
+  },
+  "An Evening with Philip Reeve Celebrating 25 Years of Mortal Engines": null,
   "Your Name [Kimi no Na wa.]": {
     "tmdb_id": 1399134,
     "tmdb_title": "Your Name",
@@ -4361,6 +6148,56 @@
     ],
     "vote_average": 0.0
   },
+  "Labyrinth 40th Anniversary": {
+    "tmdb_id": 13597,
+    "tmdb_title": "Labyrinth",
+    "tmdb_original_title": "Labyrinth",
+    "overview": "Frustrated with babysitting on yet another weekend night, Sarah, a teenager with an active imagination, summons the Goblins to take her baby stepbrother away. When little Toby actually disappears, Sarah must follow him into a fantastical world to rescue him from the Goblin King. Guarding his castle is the labyrinth itself, a twisted maze of deception, populated with outrageous characters and unknown dangers.",
+    "poster_path": "/hbSdA1DmNA9IlfVoqJkIWYF2oYm.jpg",
+    "backdrop_path": "/92tb8mgjgL1S2KwrZezyPHPkQ3R.jpg",
+    "release_date": "1986-06-27",
+    "director": "Jim Henson",
+    "runtime": 101,
+    "genres": [
+      "Adventure",
+      "Family",
+      "Fantasy"
+    ],
+    "vote_average": 7.279
+  },
+  "Battle Royale [Batoru rowaiaru]": {
+    "tmdb_id": 3176,
+    "tmdb_title": "Battle Royale",
+    "tmdb_original_title": "バトル・ロワイアル",
+    "overview": "In the future, the Japanese government captures a class of ninth-grade students and forces them to kill each other under the revolutionary \"Battle Royale\" act.",
+    "poster_path": "/gFX7NuBUeKysOB9nEzRqVpHNT32.jpg",
+    "backdrop_path": "/amBvmIshdsSkOtvVIgxl7YSQ9Dg.jpg",
+    "release_date": "2000-12-16",
+    "director": "Kinji Fukasaku",
+    "runtime": 113,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Action"
+    ],
+    "vote_average": 7.271
+  },
+  "Drink & Dine: Stop Making Sense": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "vote_average": 7.5
+  },
   "Duck, You Sucker! [aka Once Upon a Time...the Revolution]": {
     "tmdb_id": 336,
     "tmdb_title": "Duck, You Sucker",
@@ -4374,39 +6211,59 @@
     "genres": [
       "Western"
     ],
-    "vote_average": 7.7
+    "vote_average": 7.693
   },
-  "Aardman Double Bill: The Wrong Trousers + A Matter of Loaf and Death": {
-    "tmdb_id": 901033,
-    "tmdb_title": "Aardman",
-    "tmdb_original_title": "Aardman",
-    "overview": "an animated character of the superhero named Aardman going to the hole",
-    "poster_path": "/leauv8BuuKOfWz80pD3nsZa9GXL.jpg",
-    "backdrop_path": "/9g0QBsffBtHSzHWbCdKPoY16qnP.jpg",
-    "release_date": "1972-04-03",
-    "director": "Peter Lord",
-    "runtime": 1,
+  "DRINK & DINE: Marty Supreme": {
+    "tmdb_id": 428930,
+    "tmdb_title": "Drink",
+    "tmdb_original_title": "Drink",
+    "overview": "A Twilight Zone-inspired cautionary tale about a young mother forced to come face-to-face with her deepest desire.",
+    "poster_path": "/xTS95EbQdECd2BSMlF5GTdUg1i6.jpg",
+    "backdrop_path": "/5wbuSSQNGFSnH0j6E6yvX1avKfw.jpg",
+    "release_date": "2014-01-01",
+    "director": "Emily Moss Wilson",
+    "runtime": 23,
     "genres": [
-      "Animation"
-    ],
-    "vote_average": 6.0
-  },
-  "Labyrinth (40th Anniversary)": {
-    "tmdb_id": 637265,
-    "tmdb_title": "Labyrinth",
-    "tmdb_original_title": "هزارتو",
-    "overview": "Negar and Amirali are going to immigrate, but at the very last moment, they face a critical situation: their son, Bardiya, goes missing. Now it is time to unfold all the family secrets…",
-    "poster_path": "/yFLRcJ0NRIcn0gjKDHhhlZ8u6Dp.jpg",
-    "backdrop_path": "/8jKmU536Y1QXy4A0LZOU6fwz1nF.jpg",
-    "release_date": "2019-09-23",
-    "director": "Amir Hossein Torabi",
-    "runtime": 86,
-    "genres": [
+      "Science Fiction",
       "Drama"
     ],
-    "vote_average": 6.3
+    "vote_average": 7.5
   },
-  "Labyrinth - 40th Anniversary": {
+  "Relaxed Screening: Marty Supreme": {
+    "tmdb_id": 1317288,
+    "tmdb_title": "Marty Supreme",
+    "tmdb_original_title": "Marty Supreme",
+    "overview": "In 1950s New York, table tennis player Marty Mauser, a young man with a dream no one respects, goes to Hell and back in pursuit of greatness.",
+    "poster_path": "/firAhZA0uQvRL2slp7v3AnOj0ZX.jpg",
+    "backdrop_path": "/kHHVzOGE23kavlvFOxeHaBmrgBJ.jpg",
+    "release_date": "2025-12-19",
+    "director": "Josh Safdie",
+    "runtime": 150,
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 8.045
+  },
+  "Lord of the Rings: The Fellowship of the Ring (Extended Edition)": {
+    "tmdb_id": 120,
+    "tmdb_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "tmdb_original_title": "The Lord of the Rings: The Fellowship of the Ring",
+    "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
+    "poster_path": "/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+    "backdrop_path": "/x2RS3uTcsJJ9IfjNPcgDmukoEcQ.jpg",
+    "release_date": "2001-12-18",
+    "director": "Peter Jackson",
+    "runtime": 179,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "vote_average": 8.427
+  },
+  "Mark Kermode Live in 3D at the BFI": null,
+  "Labyrinth (40th Anniversary)": {
     "tmdb_id": 637265,
     "tmdb_title": "Labyrinth",
     "tmdb_original_title": "هزارتو",
@@ -4436,6 +6293,54 @@
       "Music",
       "Drama"
     ],
-    "vote_average": 8.0
+    "vote_average": 8.024
+  },
+  "The Lord Of The Rings: The Return Of The King (25th Anniversary Extended Edition)": {
+    "tmdb_id": 122,
+    "tmdb_title": "The Lord of the Rings: The Return of the King",
+    "tmdb_original_title": "The Lord of the Rings: The Return of the King",
+    "overview": "As armies mass for a final battle that will decide the fate of the world--and powerful, ancient forces of Light and Dark compete to determine the outcome--one member of the Fellowship of the Ring is revealed as the noble heir to the throne of the Kings of Men. Yet, the sole hope for triumph over evil lies with a brave hobbit, Frodo, who, accompanied by his loyal friend Sam and the hideous, wretched Gollum, ventures deep into the very dark heart of Mordor on his seemingly impossible quest to destroy the Ring of Power.​",
+    "poster_path": "/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+    "backdrop_path": "/2u7zbn8EudG6kLlBzUYqP8RyFU4.jpg",
+    "release_date": "2003-12-17",
+    "director": "Peter Jackson",
+    "runtime": 201,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "vote_average": 8.492
+  },
+  "The Voice Of Hind Rajab": {
+    "tmdb_id": 1480382,
+    "tmdb_title": "The Voice of Hind Rajab",
+    "tmdb_original_title": "صوت هند رجب",
+    "overview": "January 29, 2024. Red Crescent volunteers receive an emergency call. A five-year old girl is trapped in a car under fire in Gaza, pleading for rescue. While trying to keep her on the line, they do everything they can to get an ambulance to her. Her name was Hind Rajab.",
+    "poster_path": "/fBcBY8kdBiPsRdtkbldwg3ThlyJ.jpg",
+    "backdrop_path": "/mQwD7GtPTkv6WF5m8AJWGrO5XOE.jpg",
+    "release_date": "2025-09-25",
+    "director": "Kaouther Ben Hania",
+    "runtime": 89,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.2
+  },
+  "Withnail & I + Q&A with Richard E Grant, hosted by Will Arnett": {
+    "tmdb_id": 13446,
+    "tmdb_title": "Withnail & I",
+    "tmdb_original_title": "Withnail & I",
+    "overview": "Two out-of-work actors -- the anxious, luckless Marwood and his acerbic, alcoholic friend, Withnail -- spend their days drifting between their squalid flat, the unemployment office and the pub. When they take a holiday \"by mistake\" at the country house of Withnail's flamboyantly gay uncle, Monty, they encounter the unpleasant side of the English countryside: tedium, terrifying locals and torrential rain.",
+    "poster_path": "/i18cIp8A10A2JgByrfA9oIC9299.jpg",
+    "backdrop_path": "/bOgKCymrdPHPHozhRBNr9XhVD87.jpg",
+    "release_date": "1987-06-19",
+    "director": "Bruce Robinson",
+    "runtime": 108,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.244
   }
 }
