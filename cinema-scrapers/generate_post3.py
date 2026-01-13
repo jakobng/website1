@@ -92,19 +92,19 @@ TITLE_WRAP_WIDTH = 30
 # --- HERO GENERATION STRATEGIES ---
 HERO_STRATEGIES = [
     {
-        "name": "Raw Early-AI Mashup",
-        "sd_prompt": "surreal architectural mashup of Tokyo cinema buildings, early AI vq-gan style, glitched transitions, surprising structural connections, vibrant and messy dreamscape, 35mm film grain, cinematic but chaotic",
+        "name": "Raw VQ-GAN Latent Mashup",
+        "sd_prompt": "early AI vq-gan+clip style, surreal architectural mashup of Tokyo cinema buildings, latent space bleeding, glitched transitions, surprising structural connections, vibrant and messy dreamscape, artifact-heavy, kaleidoscopic cinema facades",
         "use_gemini": False
     },
     {
-        "name": "Refined Surrealism",
-        "sd_prompt": "surrealist architectural collage connecting multiple movie theaters, impossible geometry, dreamy atmospheric lighting, early AI aesthetic, surprising mashups",
+        "name": "Surreal Cinema Dreamscape",
+        "sd_prompt": "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids",
         "use_gemini": True,
-        "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal 'early AI' connections but elevate the final quality. Make the lighting and textures feel like a coherent, high-quality cinematic dreamscape. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."
+        "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal 'early AI' connections but elevate the final quality. Make the lighting and textures feel like a coherent, high-quality 35mm film still. The mashup should feel weird and surprising but intentional. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."
     },
     {
-        "name": "Glitchy Cinema Dream",
-        "sd_prompt": "glitched and overlapping cinema marquees and interiors, kaleidoscopic architectural mashup, vibrant colors, early AI artifacts, dream-like incoherence",
+        "name": "Abstract Marquee Glitch",
+        "sd_prompt": "glitched and overlapping cinema marquees and neon signs, kaleidoscopic architectural mashup, vibrant liquid-like bleeding colors, early AI artifacts, dream-like structural incoherence",
         "use_gemini": False
     }
 ]
@@ -396,29 +396,34 @@ def feather_cutout(img: Image.Image, erosion: int = 5, blur: int = 15) -> Image.
 def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> tuple[Image.Image, Image.Image, Image.Image]:
     width, height = target_width, target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    mask = Image.new("L", (width, height), 255)
+    # Neutral gray background helps SD understand it's an 'empty' space to fill
+    layout_rgb = Image.new("RGBA", (width, height), (128, 128, 128, 255))
+    mask = Image.new("L", (width, height), 255) # 255 = area to inpaint
 
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4: imgs_to_process = (imgs_to_process * 4)[:4]
     random.shuffle(imgs_to_process)
 
-    anchors = [(random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8))) for _ in range(4)]
+    # Better distribution of buildings
+    anchors = [
+        (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.1), int(height*0.4))),
+        (random.randint(int(width*0.6), int(width*0.9)), random.randint(int(height*0.1), int(height*0.4))),
+        (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.6), int(height*0.9))),
+        (random.randint(int(width*0.6), int(width*0.9)), random.randint(int(height*0.6), int(height*0.9)))
+    ]
 
     for i, (name, path) in enumerate(imgs_to_process):
         try:
             print(f"   ✂️ Creating cutout for: {name} ({path.name})")
             raw = Image.open(path).convert("RGBA")
-            
-            # Since no pre-made cutouts, always remove background via AI
             cutout = remove_background_replicate(raw)
             
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
-            cutout = feather_cutout(cutout, erosion=5, blur=10)
+            cutout = feather_cutout(cutout, erosion=2, blur=5)
 
-            scale = random.uniform(0.7, 1.0)
-            max_dim = int(700 * scale)
+            scale = random.uniform(0.8, 1.1)
+            max_dim = int(800 * scale)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
             cx, cy = anchors[i]
@@ -428,12 +433,13 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
             alpha = cutout.split()[3]
-            core_mask = alpha.filter(ImageFilter.MinFilter(20)).filter(ImageFilter.GaussianBlur(10))
+            # Shrink the core mask to allow SD to 'eat' into the edges of the buildings
+            core_mask = alpha.filter(ImageFilter.MinFilter(15))
             mask.paste(0, (x, y), mask=core_mask)
         except Exception as e:
             print(f"Error processing {name}: {e}")
 
-    return layout_rgba, layout_rgb.convert("RGB"), mask.filter(ImageFilter.GaussianBlur(5))
+    return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     if not strategy.get("use_gemini"):
@@ -463,7 +469,12 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     return pil_image
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Image.Image:
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return layout_img
+    if not REPLICATE_AVAILABLE:
+        print("   ⚠️ Inpainting skipped: 'replicate' library not installed.")
+        return layout_img
+    if not REPLICATE_API_TOKEN:
+        print("   ⚠️ Inpainting skipped: REPLICATE_API_TOKEN not found in environment.")
+        return layout_img
     
     prompt = strategy["sd_prompt"]
     print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
@@ -472,20 +483,37 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
         layout_img.save(temp_img); mask_img.save(temp_mask)
+        
+        # DEBUG IMAGES
+        debug_dir = OUTPUT_DIR / "debug"
+        debug_dir.mkdir(exist_ok=True)
+        layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
+        mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
+        
+        # Using SDXL Inpainting for better quality mashups
         output = replicate.run(
             "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
             input={
-                "image": open(temp_img, "rb"), "mask": open(temp_mask, "rb"),
-                "prompt": prompt,
-                "negative_prompt": "white space, borders, frames, text, watermark",
-                "strength": 1.0, "num_inference_steps": 40
+                "image": open(temp_img, "rb"), 
+                "mask": open(temp_mask, "rb"),
+                "prompt": f"{prompt}, seamless surreal integration, cinematic lighting",
+                "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark, bad anatomy",
+                "strength": 0.95, 
+                "num_inference_steps": 50,
+                "guidance_scale": 12.0
             }
         )
+        
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
+        
         if output:
-            resp = requests.get(output[0] if isinstance(output, list) else output)
+            url = output[0] if isinstance(output, list) else output
+            print(f"   🔗 Inpainting successful: {url}")
+            resp = requests.get(url)
             return Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
+        else:
+            print("   ⚠️ Inpainting returned no output.")
     except Exception as e:
         print(f"   ⚠️ Inpainting failed: {e}")
     return layout_img
