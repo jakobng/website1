@@ -343,15 +343,33 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
 
 def get_cutout_path(cinema_name: str) -> Path | None:
     if not CUTOUTS_DIR.exists(): return None
-    # Similar logic to above but for cutouts folder
-    target = CINEMA_FILENAME_OVERRIDES.get(cinema_name)
-    if not target:
+    
+    # Priority 1: Overrides
+    if cinema_name in CINEMA_FILENAME_OVERRIDES:
+        target = CINEMA_FILENAME_OVERRIDES[cinema_name]
+    else:
         en_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
-        target = normalize_name(en_name) if en_name else normalize_name(cinema_name)
+        if en_name:
+            target = normalize_name(en_name).replace("cinema", "").replace("theatre", "").strip()
+        else:
+            target = normalize_name(cinema_name)
 
-    candidates = list(CUTOUTS_DIR.glob("*\.*", recursive=True))
+    candidates = list(CUTOUTS_DIR.glob("*"))
+    matches = []
     for f in candidates:
-        if normalize_name(f.stem) == target: return f
+        if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
+        f_name_norm = normalize_name(f.stem)
+        
+        if target == f_name_norm: return f # Exact match
+        if target in f_name_norm or f_name_norm in target:
+            matches.append(f)
+        else:
+            ratio = difflib.SequenceMatcher(None, target, f_name_norm).ratio()
+            if ratio > 0.6:
+                matches.append(f)
+
+    if matches:
+        return random.choice(matches)
     return None
 
 def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Image.Image:
@@ -432,9 +450,16 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
     for i, (name, path) in enumerate(imgs_to_process):
         try:
-            print(f"   ✂️ Creating cutout for: {name} ({path.name})")
+            print(f"   ✂️ Processing: {name} ({path.name})")
             raw = Image.open(path).convert("RGBA")
-            cutout = remove_background_replicate(raw)
+            
+            # If it's in the cutouts folder, we assume it's a subject on a white background
+            if "cutouts" in str(path).lower():
+                print(f"      ✨ Applying white-to-transparent conversion")
+                cutout = convert_white_to_transparent(raw, threshold=235)
+            else:
+                # Only use Replicate if it's not a pre-made cutout
+                cutout = remove_background_replicate(raw)
             
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
@@ -447,10 +472,11 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             cx, cy = anchors[i]
             x, y = cx - (cutout.width // 2), cy - (cutout.height // 2)
 
+            # Paste into layout_rgba (the actual collage)
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             
+            # Mask logic: 0 = KEEP (the building), 255 = CHANGE (the gaps)
             alpha = cutout.split()[3]
-            # Radius 3 is safe for images as small as 7x7 pixels
             core_mask = alpha.filter(ImageFilter.MinFilter(3))
             mask.paste(0, (x, y), mask=core_mask)
         except Exception as e:
@@ -496,12 +522,8 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
     prompt = strategy["sd_prompt"]
     print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
     
-    # Fallback list for inpainting models
-    INPAINT_MODELS = [
-        "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
-        "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14",
-        "sepal/stable-diffusion-xl-inpainting:aca001c8b137114d5e594c68f7084ae6d82f364758aab8d997b233e8ef3c4d93"
-    ]
+    # Verified working version of SDXL from your Replicate dashboard
+    SDXL_VERSION = "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc"
     
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
@@ -513,37 +535,34 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
         mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
         
-        output = None
-        for model_id in INPAINT_MODELS:
-            try:
-                print(f"      📡 Trying Inpaint: {model_id.split(':')[0]}...")
-                output = replicate.run(
-                    model_id,
-                    input={
-                        "image": open(temp_img, "rb"), 
-                        "mask": open(temp_mask, "rb"),
-                        "prompt": f"{prompt}, seamless surreal integration, cinematic lighting",
-                        "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark",
-                        "strength": 0.95, 
-                        "num_inference_steps": 40
-                    }
-                )
-                if output: break
-            except Exception as e:
-                print(f"      ⚠️ Model {model_id.split(':')[0]} failed: {str(e)[:100]}")
+        print(f"      📡 Calling Replicate (SDXL verified)...")
+        output = replicate.run(
+            SDXL_VERSION,
+            input={
+                "image": open(temp_img, "rb"), 
+                "mask": open(temp_mask, "rb"),
+                "prompt": f"{prompt}, seamless surreal integration, cinematic lighting, high quality",
+                "negative_prompt": "white background, empty space, floating objects, borders, frames, text, watermark, bad quality, blurry",
+                "strength": 0.85, # Allows for significant mashup while keeping cinema structure
+                "num_inference_steps": 30,
+                "guidance_scale": 7.5,
+                "apply_watermark": False
+            }
+        )
         
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
         
         if output:
+            # The SDXL model usually returns a list of file outputs
             url = output[0] if isinstance(output, list) else str(output)
             print(f"      ✅ Inpainting successful: {url}")
             resp = requests.get(url)
             return Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
         else:
-            print("   ⚠️ All inpainting models failed.")
+            print("   ⚠️ SDXL returned no output.")
     except Exception as e:
-        print(f"   ⚠️ Inpainting process failed: {e}")
+        print(f"   ⚠️ SDXL process failed: {e}")
     return layout_img
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
@@ -635,10 +654,13 @@ def main():
     # --- HERO GENERATION ---
     cinema_images = []
     for c in selected:
-        if path := get_cinema_image_path(c): cinema_images.append((c, path))
+        # Prefer pre-made cutouts if they exist
+        path = get_cutout_path(c) or get_cinema_image_path(c)
+        if path:
+            cinema_images.append((c, path))
     
     if cinema_images:
-        print(f"   🎨 Found {len(cinema_images)} cinema images. Generating {len(HERO_STRATEGIES)} hero options...")
+        print(f"   🎨 Found {len(cinema_images)} images for collage. Generating {len(HERO_STRATEGIES)} hero options...")
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
         
         for i, strategy in enumerate(HERO_STRATEGIES):
