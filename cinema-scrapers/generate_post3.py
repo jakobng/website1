@@ -372,13 +372,14 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
     try:
         temp_in = BASE_DIR / f"temp_rembg_{random.randint(0,999)}.png"
         pil_img.save(temp_in, format="PNG")
-        # Stability-ai version for background removal
+        # Use slug without version to get the latest stable version
         output = replicate.run(
-            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
+            "lucataco/remove-bg",
             input={"image": open(temp_in, "rb")}
         )
         if temp_in.exists(): os.remove(temp_in)
         if output:
+            print(f"      ✅ Rembg successful")
             resp = requests.get(str(output))
             if resp.status_code == 200:
                 return Image.open(BytesIO(resp.content)).convert("RGBA")
@@ -489,9 +490,9 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
         mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
         
-        # Updated to the official stability-ai slug with current hash
+        # Use slug without version to get the latest stable version
         output = replicate.run(
-            "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14",
+            "stability-ai/sdxl-inpainting",
             input={
                 "image": open(temp_img, "rb"), 
                 "mask": open(temp_mask, "rb"),
