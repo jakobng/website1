@@ -1,6 +1,6 @@
 """
 Generate Instagram-ready carousel images + caption for Tokyo showtimes.
-V3 Experimental: Uses London-style hero slide (clean PIL drawing, no AI).
+V3 Experimental: Uses London-style hero slide with cinema cutouts collage (no AI).
 """
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -20,6 +20,7 @@ DATA_DIR = BASE_DIR / "data"
 FONTS_DIR = BASE_DIR / "fonts"
 OUTPUT_DIR = BASE_DIR / "ig_posts"
 ASSETS_DIR = BASE_DIR / "cinema_assets"
+CUTOUTS_DIR = BASE_DIR / "cutouts"
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -234,9 +235,99 @@ def cleanup_previous_outputs() -> None:
         filename.unlink()
 
 
+def load_cutouts(max_count: int = 5) -> list[Image.Image]:
+    """Load PNG cutout images from the cutouts folder."""
+    cutouts = []
+    if not CUTOUTS_DIR.exists():
+        print(f"   [INFO] Cutouts folder not found at {CUTOUTS_DIR}")
+        return cutouts
+
+    # Find all PNG files in cutouts folder
+    png_files = list(CUTOUTS_DIR.glob("*.png"))
+    if not png_files:
+        print(f"   [INFO] No PNG cutouts found in {CUTOUTS_DIR}")
+        return cutouts
+
+    # Randomly select up to max_count cutouts
+    selected = random.sample(png_files, min(len(png_files), max_count))
+
+    for path in selected:
+        try:
+            img = Image.open(path).convert("RGBA")
+            cutouts.append(img)
+        except Exception as e:
+            print(f"   [WARN] Could not load cutout {path}: {e}")
+
+    return cutouts
+
+
+def create_collage_background(width: int, height: int, cutouts: list[Image.Image]) -> Image.Image:
+    """Create a collage background from cutout images."""
+    # Start with a gradient or solid background
+    bg = Image.new("RGB", (width, height), OFF_WHITE)
+
+    if not cutouts:
+        return bg
+
+    # Convert to RGBA for compositing
+    bg = bg.convert("RGBA")
+
+    # Define anchor positions for cutouts (scattered around the canvas)
+    anchors = [
+        (int(width * 0.15), int(height * 0.20)),  # Top left
+        (int(width * 0.85), int(height * 0.25)),  # Top right
+        (int(width * 0.50), int(height * 0.45)),  # Center
+        (int(width * 0.20), int(height * 0.75)),  # Bottom left
+        (int(width * 0.80), int(height * 0.70)),  # Bottom right
+    ]
+
+    for i, cutout in enumerate(cutouts[:5]):
+        try:
+            # Scale cutout to reasonable size
+            scale = random.uniform(0.25, 0.45)
+            max_dim = int(min(width, height) * scale)
+            cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
+
+            # Get position with some randomness
+            anchor_x, anchor_y = anchors[i % len(anchors)]
+            x = anchor_x - cutout.width // 2 + random.randint(-50, 50)
+            y = anchor_y - cutout.height // 2 + random.randint(-50, 50)
+
+            # Clamp to canvas bounds
+            x = max(-cutout.width // 2, min(width - cutout.width // 2, x))
+            y = max(-cutout.height // 2, min(height - cutout.height // 2, y))
+
+            # Apply slight transparency to cutouts
+            if cutout.mode == "RGBA":
+                # Reduce opacity slightly for softer look
+                alpha = cutout.split()[3]
+                alpha = ImageEnhance.Brightness(alpha).enhance(0.85)
+                cutout.putalpha(alpha)
+
+            # Paste cutout onto background
+            bg.paste(cutout, (x, y), mask=cutout)
+
+        except Exception as e:
+            print(f"   [WARN] Could not place cutout: {e}")
+
+    return bg.convert("RGB")
+
+
 def render_cover_slide(target_date: datetime, cinema_names: list[str]) -> Image.Image:
-    """London-style hero slide: clean programmatic PIL drawing, no AI."""
-    img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), OFF_WHITE)
+    """London-style hero slide with cinema cutouts collage (no AI)."""
+    # Try to load cutouts for collage background
+    cutouts = load_cutouts(max_count=5)
+
+    if cutouts:
+        print(f"   🎨 Creating collage with {len(cutouts)} cutouts...")
+        img = create_collage_background(CANVAS_WIDTH, CANVAS_HEIGHT, cutouts)
+        # Add semi-transparent overlay for text readability
+        overlay = Image.new("RGBA", (CANVAS_WIDTH, CANVAS_HEIGHT), (255, 255, 255, 200))
+        img = img.convert("RGBA")
+        img = Image.alpha_composite(img, overlay).convert("RGB")
+    else:
+        img = Image.new("RGB", (CANVAS_WIDTH, CANVAS_HEIGHT), OFF_WHITE)
+
     draw = ImageDraw.Draw(img)
 
     title_font = load_font(BOLD_FONT_PATH, 72)

@@ -39,10 +39,8 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Add Images & Captions
-          git add -f cinema-scrapers/ig_posts/post_image_*.png || true
-          git add -f cinema-scrapers/ig_posts/story_image_*.png || true
-          git add -f cinema-scrapers/ig_posts/post_caption.txt || true
+          # Add ALL changes in ig_posts folder
+          git add -f cinema-scrapers/ig_posts/ || true
 
           # Check for changes
           if git diff --staged --quiet; then
@@ -50,9 +48,11 @@ jobs:
             exit 0
           fi
 
-          # Commit and Push
+          # Commit first
           git commit -m "TEST: Generated V3 London-style slides"
-          git pull origin main --rebase
+
+          # Then pull with rebase and push
+          git pull origin main --rebase --autostash
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
