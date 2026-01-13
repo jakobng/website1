@@ -44,9 +44,8 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           # Add Images & Captions
-          git add -f cinema-scrapers/ig_posts/post_image_*.png || true
-          git add -f cinema-scrapers/ig_posts/story_image_*.png || true
-          git add -f cinema-scrapers/ig_posts/post_caption.txt || true
+          git add -f cinema-scrapers/ig_posts/*.png || true
+          git add -f cinema-scrapers/ig_posts/*.txt || true
 
           # Check for changes
           if git diff --staged --quiet; then
