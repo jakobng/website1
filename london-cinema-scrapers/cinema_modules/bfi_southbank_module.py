@@ -297,7 +297,10 @@ def _extract_article_context_events(html: str) -> List[dict]:
         if not isinstance(row, list):
             continue
         item_type = get_value(row, "type")
+        # DEBUG: print(f"Item type: {item_type}")
         if item_type and item_type != "BFI Southbank":
+            if item_type == "IMAX":
+                print("DEBUG: Found IMAX entry in main BFI site!")
             continue
         category = _clean(get_value(row, "category"))
         venue_name = _clean(get_value(row, "venue_name"))

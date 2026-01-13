@@ -16,12 +16,12 @@ import sys
 from typing import Dict, List, Optional
 from urllib.parse import urljoin
 
+import requests
 try:
     import cloudscraper
     HAS_CLOUDSCRAPER = True
 except ImportError:
     HAS_CLOUDSCRAPER = False
-    import requests
 
 from bs4 import BeautifulSoup
 
@@ -156,25 +156,20 @@ def _extract_time_from_text(text: str) -> Optional[str]:
 
 
 def _create_session():
-    """Create a session with cloudscraper if available, else regular requests."""
-    if HAS_CLOUDSCRAPER:
-        return cloudscraper.create_scraper(
-            browser={
-                "browser": "chrome",
-                "platform": "windows",
-                "mobile": False
-            }
-        )
-    else:
-        session = requests.Session()
-        session.headers.update(HEADERS)
-        return session
+    """Create a session with regular requests. Cloudscraper is avoided due to SSL issues with this site."""
+    session = requests.Session()
+    # Using a curl-like User-Agent as the site blocks modern browsers but allows curl
+    session.headers.update({
+        "User-Agent": "curl/8.0.0",
+        "Accept": "*/*",
+    })
+    return session
 
 
 def _fetch_page(session, url: str) -> Optional[str]:
     """Fetch a page with error handling."""
     try:
-        resp = session.get(url, headers=HEADERS, timeout=TIMEOUT)
+        resp = session.get(url, timeout=TIMEOUT)
         resp.raise_for_status()
         return resp.text
     except Exception as e:

@@ -163,11 +163,26 @@ def _extract_article_context_events(html: str) -> List[dict]:
     return events
 
 
+def _looks_like_cloudflare_challenge(html: str) -> bool:
+    if not html:
+        return False
+    lowered = html.lower()
+    return "just a moment" in lowered or "cf-ray" in lowered or "cloudflare" in lowered
+
+
 def _fetch_schedule_html() -> str:
+    session = requests.Session()
+    session.trust_env = False
     try:
-        import cloudscraper
-        scraper = cloudscraper.create_scraper()
-        resp = scraper.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
+        resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
+        if resp.status_code == 403 or _looks_like_cloudflare_challenge(resp.text):
+            try:
+                import cloudscraper
+                scraper = cloudscraper.create_scraper()
+                resp = scraper.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
+            except Exception as e:
+                print(f"[{CINEMA_NAME}] Cloudscraper failed: {e}", file=sys.stderr)
+        
         resp.raise_for_status()
         return resp.text
     except Exception as e:

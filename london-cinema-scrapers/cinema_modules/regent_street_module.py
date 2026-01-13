@@ -120,10 +120,12 @@ def _extract_movie_links(soup: BeautifulSoup) -> List[str]:
 
     for link in soup.select("a[href*='/checkout/showing/']"):
         href = link.get("href", "")
-        match = re.search(r"/checkout/showing/([^/]+)/", href)
+        # Match slug: /checkout/showing/slug/id or /checkout/showing/slug
+        match = re.search(r"/checkout/showing/([^/]+)", href)
         if not match:
             continue
-        movie_url = f"{BASE_URL}/movie/{match.group(1)}"
+        movie_slug = match.group(1)
+        movie_url = f"{BASE_URL}/movie/{movie_slug}"
         if movie_url not in links:
             links.append(movie_url)
 
