@@ -78,7 +78,7 @@ REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
-# --- Constants ---
+# --- CONSTANTS ---
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 8 
 MAX_FEED_VERTICAL_SPACE = 750 
@@ -88,6 +88,26 @@ CANVAS_HEIGHT = 1350
 STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
+
+# --- HERO GENERATION STRATEGIES ---
+HERO_STRATEGIES = [
+    {
+        "name": "Raw Early-AI Mashup",
+        "sd_prompt": "surreal architectural mashup of Tokyo cinema buildings, early AI vq-gan style, glitched transitions, surprising structural connections, vibrant and messy dreamscape, 35mm film grain, cinematic but chaotic",
+        "use_gemini": False
+    },
+    {
+        "name": "Refined Surrealism",
+        "sd_prompt": "surrealist architectural collage connecting multiple movie theaters, impossible geometry, dreamy atmospheric lighting, early AI aesthetic, surprising mashups",
+        "use_gemini": True,
+        "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal 'early AI' connections but elevate the final quality. Make the lighting and textures feel like a coherent, high-quality cinematic dreamscape. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."
+    },
+    {
+        "name": "Glitchy Cinema Dream",
+        "sd_prompt": "glitched and overlapping cinema marquees and interiors, kaleidoscopic architectural mashup, vibrant colors, early AI artifacts, dream-like incoherence",
+        "use_gemini": False
+    }
+]
 
 # --- GLOBAL COLORS ---
 WHITE = (255, 255, 255)
@@ -415,16 +435,21 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
     return layout_rgba, layout_rgb.convert("RGB"), mask.filter(ImageFilter.GaussianBlur(5))
 
-def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
-    print("   ✨ Refining Hero Collage (Gemini)...")
+def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
+    if not strategy.get("use_gemini"):
+        print("   ⏩ Skipping Gemini refinement (as per strategy).")
+        return pil_image
+    
+    print(f"   ✨ Refining Hero Collage (Gemini) - Strategy: {strategy['name']}...")
     try:
         if not GEMINI_API_KEY: return pil_image
         client = genai.Client(api_key=GEMINI_API_KEY)
-        prompt = (
-            f"Refine this architectural collage into a single unified surreal dreamscape for {date_text}. "
-            f"Connect these Tokyo independent cinemas: {', '.join(cinema_names[:4])}. "
-            "Incorporate the text 'TOKYO CINEMA' and the date in a beautiful, non-cliché way."
-        )
+        
+        prompt = strategy["gemini_prompt"].format(date_text=date_text)
+        prompt += f"\nContext Cinemas: {', '.join(cinema_names[:4])}."
+
+        print(f"   📝 Gemini Prompt: {prompt}")
+        
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview",
             contents=[prompt, pil_image],
@@ -437,9 +462,13 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
         print(f"   ⚠️ Gemini Failed: {e}")
     return pil_image
 
-def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
+def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Image.Image:
     if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: return layout_img
-    print("   🎨 Inpainting gaps (SDXL)...")
+    
+    prompt = strategy["sd_prompt"]
+    print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
+    print(f"   📝 SD Prompt: {prompt}")
+    
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
         layout_img.save(temp_img); mask_img.save(temp_mask)
@@ -447,8 +476,8 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
             input={
                 "image": open(temp_img, "rb"), "mask": open(temp_mask, "rb"),
-                "prompt": "surreal architectural mashup, connecting structures, detailed textures, 8k",
-                "negative_prompt": "white space, borders, frames",
+                "prompt": prompt,
+                "negative_prompt": "white space, borders, frames, text, watermark",
                 "strength": 1.0, "num_inference_steps": 40
             }
         )
@@ -553,14 +582,25 @@ def main():
         if path := get_cinema_image_path(c): cinema_images.append((c, path))
     
     if cinema_images:
-        print(f"   🎨 Found {len(cinema_images)} cinema images for collage.")
+        print(f"   🎨 Found {len(cinema_images)} cinema images. Generating {len(HERO_STRATEGIES)} hero options...")
         layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
-        cover_bg = inpaint_gaps(layout_rgb, mask)
-        final_cover = refine_hero_with_ai(cover_bg, bilingual_date, [c[0] for c in cinema_images])
         
-        final_cover.save(OUTPUT_DIR / "post_image_00.png")
-        final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS).save(OUTPUT_DIR / "story_image_00.png")
-        print("   ✅ Saved Hero Slides.")
+        for i, strategy in enumerate(HERO_STRATEGIES):
+            print(f"\n   🚀 Generating Option {i+1}: {strategy['name']}")
+            cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
+            final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, [c[0] for c in cinema_images])
+            
+            # Save individual options
+            opt_path = OUTPUT_DIR / f"hero_option_{i:02}.png"
+            final_cover.save(opt_path)
+            final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS).save(OUTPUT_DIR / f"story_option_{i:02}.png")
+            
+            # Set the first one as the default post_image_00.png
+            if i == 0:
+                final_cover.save(OUTPUT_DIR / "post_image_00.png")
+                final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS).save(OUTPUT_DIR / "story_image_00.png")
+            
+            print(f"   ✅ Saved {strategy['name']} to {opt_path.name}")
     else:
         print("   ⚠️ No images found for Hero Collage.")
 
