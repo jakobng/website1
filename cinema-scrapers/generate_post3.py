@@ -323,7 +323,7 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
             # Priority 3: Original name normalized
             target = normalize_name(cinema_name)
 
-    candidates = list(ASSETS_DIR.glob("*\.*", recursive=True))
+    candidates = list(ASSETS_DIR.glob("**/*"))
     matches = []
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
