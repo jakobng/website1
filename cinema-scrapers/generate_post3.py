@@ -169,7 +169,11 @@ CINEMA_FILENAME_OVERRIDES = {
     "TOHOシネマズ 新宿": "tohoshinjuku",
     "TOHOシネマズ 日比谷": "tohohibiya",
     "新宿ピカデリー": "shinjukupiccadilly",
-    "ポレポレ東中野": "polepole"
+    "ポレポレ東中野": "polepole",
+    "新宿武蔵野館": "musashino_kan",
+    "新宿シネマカリテ": "qualite",
+    "池袋シネマ・ロサ": "rosa",
+    "シアター・イメージフォーラム": "image_forum"
 }
 
 # --- Utility Functions ---
@@ -187,7 +191,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
 def clean_search_title(title: str) -> str:
     if not title: return ""
     title = re.sub(r'[\(（].*?[\)）]', '', title)
-    title = re.sub(r'[[\[\【].*?[\].\】]', '', title)
+    title = re.sub(r'[[\[\u3010].*?[]\]\u3011]', '', title)
     keywords = ["4K", "2K", "3D", "IMAX", "Dolby", "Atmos", "レストア", "デジタル", "リマスター", "完全版", "ディレクターズカット", "劇場版", "特別上映", "特集", "上映後トーク", "舞台挨拶"]
     for kw in keywords:
         title = title.replace(kw, "")
@@ -286,7 +290,10 @@ def normalize_name(s):
 
 def get_cinema_image_path(cinema_name: str) -> Path | None:
     """Get full cinema image for slide backgrounds from ASSETS_DIR."""
-    if not ASSETS_DIR.exists(): return None
+    if not ASSETS_DIR.exists(): 
+        print(f"   [WARN] ASSETS_DIR does not exist: {ASSETS_DIR}")
+        return None
+    
     if cinema_name in CINEMA_FILENAME_OVERRIDES:
         target = CINEMA_FILENAME_OVERRIDES[cinema_name]
     else:
@@ -300,7 +307,8 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
-        if target in f_name:
+        if target == f_name: return f # Exact match
+        if target in f_name or f_name in target:
             matches.append(f)
         else:
             ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
@@ -327,6 +335,7 @@ def get_cutout_path(cinema_name: str) -> Path | None:
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
+        if target == f_name: return f
         if target in f_name:
             matches.append(f)
         else:
@@ -351,6 +360,26 @@ def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Imag
             new_data.append(item)
     img.putdata(new_data)
     return img
+
+def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
+    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
+        return pil_img.convert("RGBA")
+    try:
+        temp_in = BASE_DIR / "temp_rembg_in.png"
+        pil_img.save(temp_in, format="PNG")
+        output = replicate.run(
+            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
+            input={"image": open(temp_in, "rb")}
+        )
+        if temp_in.exists(): os.remove(temp_in)
+        if output:
+            resp = requests.get(str(output))
+            if resp.status_code == 200:
+                img = Image.open(BytesIO(resp.content)).convert("RGBA")
+                return img
+    except Exception as e:
+        print(f"   ⚠️ Rembg failed: {e}. Using original.")
+    return pil_img.convert("RGBA")
 
 def feather_cutout(img: Image.Image, erosion: int = 5, blur: int = 15) -> Image.Image:
     """
@@ -394,9 +423,15 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
     for i, (name, path) in enumerate(imgs_to_process):
         try:
+            print(f"   ✂️ Processing cutout for {name}...")
             raw = Image.open(path).convert("RGBA")
-            # Convert white backgrounds to transparent (essential for Tokyo's non-precut workflow)
-            cutout = convert_white_to_transparent(raw)
+            
+            # If it's NOT in the cutouts folder, it's a full image, so we REMOVE background
+            if "cutouts" not in str(path):
+                cutout = remove_background_replicate(raw)
+            else:
+                cutout = convert_white_to_transparent(raw)
+                
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
 
@@ -418,27 +453,15 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             layout_rgb.paste(cutout, (x, y), mask=cutout)
             
             # 2. CREATE THE "BLEED" ZONE
-            # We take the alpha channel (the shape of the image)
             alpha = cutout.split()[3]
-            
-            # We ERODE it heavily (shrink it) before pasting to the mask.
-            # This means the mask "Keep Zone" (Black) is SMALLER than the actual image.
-            # The outer ~20 pixels of the building will sit in the "Inpaint Zone" (White).
-            # The AI will see those pixels but be forced to redraw/blend them.
             core_mask = alpha.filter(ImageFilter.MinFilter(25)) 
-            
-            # Blur the mask slightly so the transition isn't a sharp line
             core_mask = core_mask.filter(ImageFilter.GaussianBlur(10))
-
-            # Paste 0 (Protect) using this shrunken core
             mask.paste(0, (x, y), mask=core_mask)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # Final global blur on the mask to ensure smoothness
     mask = mask.filter(ImageFilter.GaussianBlur(5))
-    
     return layout_rgba, layout_rgb.convert("RGB"), mask
 
 def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
@@ -626,7 +649,7 @@ Check Bio for Full Schedule / 詳細はリンクへ
         f.write("\n".join(lines))
 
 def main() -> None:
-    # 1. Basic Setup (Correctly fixed for Timezone and Missing Vars)
+    # 1. Basic Setup
     today = today_in_tokyo().date()
     today_str = today.isoformat()
     
@@ -636,7 +659,7 @@ def main() -> None:
     
     print(f"🕒 Generator Time (JST): {today} (String: {today_str})")
 
-    # 🧹 TARGETED CLEANUP (V1 Only)
+    # 🧹 TARGETED CLEANUP
     print("🧹 Cleaning old V1 images...")
     if OUTPUT_DIR.exists():
         for f in OUTPUT_DIR.glob("post_image_*.png"):
@@ -654,11 +677,6 @@ def main() -> None:
 
     if not todays_showings:
         print(f"❌ No showings found for date: {today_str}")
-        print("   (This likely means the Scraper didn't find any data for today)")
-        print("\n   Troubleshooting:")
-        print("   1. Check if main_scraper.py ran successfully")
-        print("   2. Verify the scraper and generator are using the same date (check logs)")
-        print("   3. Cinema websites may not have updated their schedules yet")
         return
     else:
         print(f"✅ Found {len(todays_showings)} showings for {today_str}")
@@ -689,24 +707,27 @@ def main() -> None:
     # 5. Generate Images
     print(f"Generating for: {selected_cinemas}")
     
-    # COVER - Use cutouts from cutouts subfolder for hero collage
-    cinema_cutouts = []
+    # COVER - Build hero collage
+    cinema_images = []
     for c in selected_cinemas:
-        # Try cutouts folder first, fall back to full images
+        # Try cutouts folder first, then fall back to full images
         if path := get_cutout_path(c):
-            cinema_cutouts.append((c, path))
+            cinema_images.append((c, path))
         elif path := get_cinema_image_path(c):
-            cinema_cutouts.append((c, path))
+            cinema_images.append((c, path))
 
-    if cinema_cutouts:
+    if cinema_images:
         print("   🎨 Building Hero Collage...")
-        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_cutouts, CANVAS_WIDTH, CANVAS_HEIGHT)
+        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
         cover_bg = inpaint_gaps(layout_rgb, mask)
 
-        # We extract just the names from the list of tuples [('Cinema Name', Path), ...]
-        names_list = [c[0] for c in cinema_cutouts]
+        names_list = [c[0] for c in cinema_images]
         final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
         final_cover.save(OUTPUT_DIR / "post_image_00.png")
+        
+        # Story version of cover
+        story_cover = final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS)
+        story_cover.save(OUTPUT_DIR / "story_image_00.png")
 
     # SLIDES
     slide_counter = 0
@@ -734,7 +755,7 @@ def main() -> None:
             slide_img.save(OUTPUT_DIR / f"post_image_{slide_counter:02}.png")
             
     write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
-    print("Done. Generated V1 posts (Feed Only).")
+    print("Done. Generated V1 posts (Feed & Story Cover).")
 
 if __name__ == "__main__":
     main()
