@@ -47,7 +47,13 @@ from cinema_modules import (
     chupki_module,
     uplink_kichijoji_module,
     tollywood_module,
-    morc_asagaya_module
+    morc_asagaya_module,
+    jinbocho_theatre_module,
+    cinema_vera_module,
+    institut_francais_module,
+    jack_and_betty_module,
+    athenee_francais_module,
+    white_cine_quinto_module
 )
 
 # --- Configuration ---
@@ -478,6 +484,24 @@ def main():
 
         # Cine Switch Ginza
         ("Cine Switch Ginza", cine_switch_ginza_module.scrape_cine_switch_ginza, None),
+
+        # Jimbocho Theatre
+        ("Jimbocho Theatre", jinbocho_theatre_module.scrape_jinbocho, None),
+
+        # Cinema Vera Shibuya
+        ("Cinema Vera Shibuya", cinema_vera_module.scrape_cinema_vera, None),
+
+        # Institut Francais Tokyo
+        ("Institut Francais Tokyo", institut_francais_module.scrape_institut_francais, None),
+
+        # Jack and Betty Yokohama
+        ("Jack and Betty Yokohama", jack_and_betty_module.scrape_jack_and_betty, None),
+
+        # Athénée Français Cultural Center
+        ("Athenee Francais", athenee_francais_module.scrape_athenee_francais, None),
+
+        # White Cine Quinto
+        ("White Cine Quinto", white_cine_quinto_module.scrape_white_cine_quinto, None),
     ]
 
     print("Starting all scrapers…")

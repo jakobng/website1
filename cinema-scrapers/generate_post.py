@@ -123,7 +123,11 @@ CINEMA_ADDRESSES = {
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F",
     "下北沢トリウッド": "東京都世田谷区代沢5-32-5 2F",
     "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F",
-    "シネマリス": "東京都新宿区新宿3-29-6"
+    "シネマリス": "東京都新宿区新宿3-29-6",
+    "アテネ・フランセ文化センター": "東京都千代田区神田駿河台2-1",
+    "ホワイト シネクイント": "東京都渋谷区宇田川町15-1 渋谷パルコ 8F",
+    "横浜シネマ・ジャック＆ベティ": "神奈川県横浜市中区若葉町3-51",
+    "アンスティチュ・フランセ東京": "東京都新宿区市谷船河原町15"
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -155,7 +159,11 @@ CINEMA_ENGLISH_NAMES = {
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
     "下北沢トリウッド": "Tollywood",
-    "シネマリス": "CineMalice"
+    "シネマリス": "CineMalice",
+    "アテネ・フランセ文化センター": "Athenee Francais Cultural Center",
+    "ホワイト シネクイント": "White Cine Quinto",
+    "横浜シネマ・ジャック＆ベティ": "Jack and Betty Yokohama",
+    "アンスティチュ・フランセ東京": "Institut Francais Tokyo"
 }
 
 CINEMA_FILENAME_OVERRIDES = {
