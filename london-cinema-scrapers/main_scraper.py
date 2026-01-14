@@ -14,6 +14,8 @@ import difflib
 import smtplib
 import ssl
 import unicodedata
+import threading
+import concurrent.futures
 from datetime import datetime, timezone, timedelta
 from email.message import EmailMessage
 from pathlib import Path
@@ -176,14 +178,37 @@ report = ScrapeReport()
 
 # --- TMDB Utilities ---
 
+TITLE_ALIASES = {
+    "zootropolis 2": "Zootopia 2",
+    "zootropolis": "Zootopia",
+    "fools and a flower": "Fools & A Flower",
+    "untold: the retreat": "The Retreat",
+    "avatar: fire and ash": "Avatar 3",
+    "labyrinth": "Labyrinth (1986)", # Force the classic
+    "speed": "Speed (1994)", # Force the classic
+}
+
 def clean_title_for_tmdb(title: str) -> str:
     """
-    Strips common suffixes that confuse TMDB fuzzy matching.
+    Strips common suffixes/prefixes that confuse TMDB fuzzy matching.
     """
     if not title:
         return ""
 
-    # Common UK release suffixes/prefixes to strip
+    # 1. Strip explicit Event Prefixes (often separated by : or - or –)
+    prefix_patterns = [
+        r"^(Narrow Margin presents|In Focus|Crafty Movie Night|Member's Request|Staff Pick|Relaxed Screening|Family Screening|Preview|Premiere|UK Premiere)[:\s–-]+",
+        r"^(Throwback|Babykino|Carers & Babies|Toddler Club|Club Room|Dog-Friendly|Dog-Friendly Screening|Sensory Friendly|HOH|Caption|Autism Friendly)[:\s–-]+",
+        r"^(DOCHOUSE|LSFF|ANZ FILM FESTIVAL|ANZ FF|RBO Live|RBO Encore|Met Opera Live|Met Opera Encore|NT Live|National Theatre Live|Exhibition on Screen|Royal Ballet|Royal Opera|Bolshoi Ballet)[:\s–-]+",
+        r"^(Member's Preview|Members' Preview|Mystery Movie|Secret Movie|Surprise Movie)[:\s–-]+",
+        r"^(Bar Trash|OffBeat|Pink Palace|Films For Workers|Coming Up|London Short Film Festival)[:\s–-]+",
+        r"^(Phoenix Classics|Cine-Real presents|Green Screen)[:\s–-]+",
+    ]
+    cleaned = title
+    for pat in prefix_patterns:
+        cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE)
+
+    # 2. Strip standard rating/screening suffixes
     patterns = [
         r"4K Restor.*",                     # 4K Restore...
         r"4K Digital Remaster.*",           # 4K Digital Remaster
@@ -195,18 +220,30 @@ def clean_title_for_tmdb(title: str) -> str:
         r"\d+th Anniversary.*",             # 50th Anniversary...
         r"Double Bill.*",                   # Double Bill...
         r"Double Feature.*",                # Double Feature...
-        r"\(\s*(U|PG|12A|12|15|18|R)\s*\)$", # UK/US rating suffixes
+        r"\(\s*(U|PG|12A|12|15|15\*|18|R)\s*\)", # UK/US rating suffixes (ANYWHERE)
         r"\(\s*\d{4}\s*\)$",                # (1990)
         r"\(.*?version\)",                  # (XXX version)
-        r"\[.*?\]",                         # [XXX]
+        r"\[.*?\]",                         # [XXX] - e.g. [Kimi no Na wa.]
+        r"(?i)\s+Encore\s*$",               # Encore screenings
+        r"(?i)\s+\d{4}-\d{2,4}\s+Season\s*$", # 2025-26 Season
+        
+        # Noise words at end of string
+        r"(?i)\b(parent and baby|carer|hard of hearing|captioned|subtitled|relaxed|autism|dementia|HOH|Babes-In-Arms)(\s+screening)?\s*$",
+        r"(?i)\s+UK PREMIERE\s*$",
+        
+        # Aggressive suffix stripping for " + " or " - " (often Q&As)
+        # e.g. "Power Station + director Q&A" -> "Power Station"
+        r"\s(\+|–|-)\s+(intro|discussion|q\s*&\s*a|qa|panel|talk|shorts|live score|live music|director|presented by|hosted by|with|screening).*$",
     ]
 
-    cleaned = title
     for pat in patterns:
         cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE)
 
     # Cleanup whitespace
     cleaned = cleaned.strip()
+    
+    # Remove " 3D" or " 2D" at the very end
+    cleaned = re.sub(r"\s(2D|3D)$", "", cleaned, flags=re.IGNORECASE)
 
     # If cleaning removed everything (unlikely), revert
     if not cleaned:
@@ -228,7 +265,12 @@ def parse_year_value(raw_year):
     if not raw_year:
         return None
     try:
-        year = int(str(raw_year).strip())
+        # Handle cases like "2024 / 2025" or "1999 (restored)"
+        clean_y = re.search(r"\d{4}", str(raw_year))
+        if clean_y:
+            year = int(clean_y.group(0))
+        else:
+            return None
     except ValueError:
         return None
     current_year = datetime.now().year
@@ -239,6 +281,7 @@ def parse_year_value(raw_year):
 def extract_year_from_title(title: str):
     if not title:
         return None
+    # Look for (YYYY) at end of string or mid-string
     for match in re.findall(r"\((\d{4})\)", title):
         year = parse_year_value(match)
         if year:
@@ -250,6 +293,7 @@ def truncate_noisy_title(title: str) -> str:
         return ""
     if len(title) < 80:
         return title
+    # Cut off if we hit obviously non-title description text
     for keyword in ["doors", "film", "certificate", "digital", "book here", "not for the easily"]:
         match = re.search(re.escape(keyword), title, flags=re.IGNORECASE)
         if match:
@@ -257,28 +301,33 @@ def truncate_noisy_title(title: str) -> str:
     return title
 
 def strip_event_prefix(title: str) -> str:
-    if not title or ":" not in title:
-        return title
-
-    prefix, rest = title.split(":", 1)
-    prefix_norm = normalize_title_for_match(prefix)
-    prefix_keywords = [
-        "presents",
-        "presented by",
-        "relaxed screening",
-        "senior free matinee",
-        "seniors free matinee",
-        "philosophical screens",
-        "deleted scenes",
-        "scanners inc",
-        "evolution of horror",
-        "narrow margin",
-        "pitchblack playback",
-        "film quiz",
-        "in conversation",
-    ]
-    if any(k in prefix_norm for k in prefix_keywords):
-        return rest.strip()
+    if not title:
+        return ""
+    
+    # Handle separators: ":", " - ", " – "
+    separators = [":", " - ", " – "]
+    
+    # Try splitting by first separator found
+    for sep in separators:
+        if sep in title:
+            prefix, rest = title.split(sep, 1)
+            prefix_norm = normalize_title_for_match(prefix)
+            
+            # Known prefixes to strip
+            prefix_keywords = [
+                "presents", "presented by",
+                "relaxed screening", "senior free matinee", "seniors free matinee",
+                "philosophical screens", "deleted scenes", "scanners inc",
+                "evolution of horror", "narrow margin", "pitchblack playback",
+                "film quiz", "in conversation", "preview", "premiere",
+                "crafty movie night", "member's request", "staff pick",
+                "in focus", "club room", "babykino", "kids club"
+            ]
+            
+            if any(k in prefix_norm for k in prefix_keywords):
+                return rest.strip()
+            # If prefix looks like a date/time or location, maybe strip it? (Context dependent)
+            
     return title
 
 def strip_event_suffix(title: str) -> str:
@@ -287,6 +336,7 @@ def strip_event_suffix(title: str) -> str:
     suffix_patterns = [
         r"\s*\+\s*(intro|discussion|q\s*&\s*a|qa|panel|talk|shorts|live score|live music|director|presented by|hosted by).*$",
         r"\s*-\s*.*(intro|discussion|q\s*&\s*a|qa|panel|talk|live|presented by|hosted by|with).*$",
+        r"(?i)\s+Q&A\s*$",
     ]
     cleaned = title
     for pat in suffix_patterns:
@@ -302,25 +352,30 @@ def build_search_queries(title: str):
     base = strip_event_prefix(base)
     base = strip_event_suffix(base)
 
-    bracket_alts = re.findall(r"\[([^\]]+)\]", base)
-    aka_alts = []
-    for alt in bracket_alts:
+    # Handle square brackets e.g. "Your Name [Kimi no Na wa.]"
+    # We want to search "Your Name" AND "Kimi no Na wa"
+    bracket_matches = re.findall(r"\[([^\]]+)\]", base)
+    
+    cleaned_base = clean_title_for_tmdb(base)
+    
+    # Priority 1: Cleaned Base (e.g. "Hamnet")
+    if cleaned_base:
+        queries.append(cleaned_base)
+        # Check aliases
+        lower_base = cleaned_base.lower()
+        if lower_base in TITLE_ALIASES:
+            queries.append(TITLE_ALIASES[lower_base])
+        
+    # Priority 2: AKA/Bracket content
+    for alt in bracket_matches:
+        # Check for "aka Title" inside brackets
         aka_match = re.search(r"\baka\s+(.*)", alt, flags=re.IGNORECASE)
-        aka_alts.append(aka_match.group(1).strip() if aka_match else alt.strip())
-
-    cleaned = clean_title_for_tmdb(base)
-    base = base.strip(" .,:;")
-    cleaned = cleaned.strip(" .,:;")
-
-    if base:
-        queries.append(base)
-    if cleaned and cleaned not in queries:
-        queries.append(cleaned)
-    for alt in aka_alts:
-        alt_clean = clean_title_for_tmdb(alt).strip(" .,:;")
-        if alt_clean and alt_clean not in queries:
-            queries.append(alt_clean)
-
+        candidate = aka_match.group(1).strip() if aka_match else alt.strip()
+        candidate = clean_title_for_tmdb(candidate)
+        if candidate and candidate not in queries:
+            queries.append(candidate)
+            
+    # Priority 3: Split by " + " or " & " (Double Bills)
     if " + " in base or " & " in base:
         parts = re.split(r"\s*(?:\+|&)\s*", base)
         for part in parts:
@@ -328,10 +383,30 @@ def build_search_queries(title: str):
             part = clean_title_for_tmdb(part).strip(" .,:;")
             if part and part not in queries:
                 queries.append(part)
+    
+    # Priority 4: Colon split (e.g. "Mission: Impossible") -> "Mission Impossible" (sometimes helps)
+    # But also "National Theatre Live: Hamlet" -> "Hamlet"
+    if ":" in cleaned_base:
+        parts = cleaned_base.split(":", 1)
+        if len(parts) > 1:
+            suffix_part = parts[1].strip()
+            if suffix_part and suffix_part not in queries:
+                queries.append(suffix_part)
 
-    return queries
+    # Uniqify
+    final_queries = []
+    for q in queries:
+        q = q.strip(" .,:;")
+        if q and q not in final_queries:
+            final_queries.append(q)
+            
+    return final_queries
 
-def score_tmdb_result(query: str, result: dict, query_year=None) -> float:
+def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=None) -> float:
+    """
+    Sophisticated scoring to match Listings to TMDB Results.
+    Factors: Title Similarity, Year Match, Runtime Match, Popularity.
+    """
     query_norm = normalize_title_for_match(query)
     if not query_norm:
         return 0.0
@@ -339,26 +414,34 @@ def score_tmdb_result(query: str, result: dict, query_year=None) -> float:
     title_norm = normalize_title_for_match(result.get("title", ""))
     original_norm = normalize_title_for_match(result.get("original_title", ""))
 
+    # 1. Title Score (0.0 - 1.0)
+    # ---------------------------------------------------------
     ratios = []
     if title_norm:
         ratios.append(difflib.SequenceMatcher(None, query_norm, title_norm).ratio())
     if original_norm and original_norm != title_norm:
         ratios.append(difflib.SequenceMatcher(None, query_norm, original_norm).ratio())
+    
     if not ratios:
         return 0.0
 
     best_ratio = max(ratios)
-
+    
+    # Token overlap bonus (good for swapped words)
     query_tokens = set(query_norm.split())
     title_tokens = set(title_norm.split()) if title_norm else set()
     if not title_tokens and original_norm:
         title_tokens = set(original_norm.split())
+        
     token_overlap = 0.0
     if query_tokens and title_tokens:
         token_overlap = len(query_tokens & title_tokens) / len(query_tokens | title_tokens)
 
+    # Base Text Score
     score = (0.7 * best_ratio) + (0.3 * token_overlap)
 
+    # 2. Year Logic
+    # ---------------------------------------------------------
     result_year = None
     release_date = result.get("release_date")
     if release_date:
@@ -368,28 +451,90 @@ def score_tmdb_result(query: str, result: dict, query_year=None) -> float:
             result_year = None
 
     if query_year and result_year:
-        if result_year == query_year:
-            score += 0.1
-        elif abs(result_year - query_year) <= 1:
-            score += 0.05
+        diff = abs(result_year - query_year)
+        
+        # SPECIAL LOGIC: If query_year is THIS YEAR (or next), it might be a screening date, not release date.
+        # So if we have a great title match but an old movie, don't penalize.
+        current_year = datetime.now().year
+        is_screening_year = (query_year >= current_year)
+        
+        if diff == 0:
+            score += 0.15      # Perfect Year Match -> Big Boost
+        elif diff == 1:
+            score += 0.05      # Close enough
+        elif diff > 20:
+            if is_screening_year and best_ratio > 0.9:
+                 # It's an old movie (e.g. 1990) being screened in 2026.
+                 # The user (scraper) provided 2026.
+                 # We forgive the year mismatch because the title match is very strong.
+                 pass 
+            else:
+                score -= 0.3   # Different era -> Heavy Penalty
         else:
-            score -= 0.1
+            if not (is_screening_year and best_ratio > 0.9):
+                score -= 0.1   # Wrong year (unless handled above)
+            
+    # 3. Runtime Logic (If Year is missing or ambiguous)
+    # ---------------------------------------------------------
+    # Use runtime to distinguish Short Films vs Features (e.g. "Your Name")
+    # Only if we have a query runtime to check against
+    if query_runtime:
+        # We try to use the runtime from the result if available.
+        # Note: Search results often don't have runtime, but if we are re-scoring detailed objects they will.
+        res_runtime = result.get("runtime")
+        if res_runtime:
+            try:
+                r_diff = abs(int(query_runtime) - int(res_runtime))
+                if r_diff <= 15:
+                    score += 0.1   # Matches well
+                elif r_diff > 40:
+                    score -= 0.25  # Big mismatch (Short vs Feature)
+            except:
+                pass
 
-    if len(query_norm.split()) <= 2 and best_ratio < 0.85:
+    # 4. Popularity / Vote Count (Sanity Check)
+    # ---------------------------------------------------------
+    # If a movie is very obscure (low votes) but matches title, 
+    # it might be a short film or database junk.
+    vote_count = result.get("vote_count", 0)
+    if vote_count > 5000:
+        score += 0.05
+    elif vote_count < 5:
         score -= 0.05
 
-    return score
+    # 5. Length Penalties
+    # ---------------------------------------------------------
+    # Short queries ("X") are dangerous
+    if len(query_norm.split()) <= 1 and best_ratio < 0.95:
+        score -= 0.1
 
-def is_cache_match_ok(title: str, cached: dict, query_year=None) -> bool:
+    return min(max(score, 0.0), 1.0) # Clamp 0..1
+
+def is_cache_match_ok(title: str, cached: dict, query_year=None, query_runtime=None) -> bool:
     if not cached:
         return False
+    
+    # Construct a pseudo-result from cache to pass to scorer
     pseudo_result = {
         "title": cached.get("tmdb_title") or "",
         "original_title": cached.get("tmdb_original_title") or "",
         "release_date": cached.get("release_date") or "",
+        "vote_count": 1000 # Assume cached items were vetted or popular enough
     }
-    score = score_tmdb_result(title, pseudo_result, query_year=query_year)
-    return score >= 0.62
+    
+    score = score_tmdb_result(title, pseudo_result, query_year=query_year, query_runtime=query_runtime)
+    
+    # Runtime check for cached items (since we have the runtime in cache)
+    if query_runtime and cached.get("runtime"):
+        try:
+            r_diff = abs(int(query_runtime) - int(cached["runtime"]))
+            if r_diff > 30: # If duration differs by >30 mins, invalidate cache
+                print(f"   [Cache Invalidate] Runtime mismatch for '{title}': Listed {query_runtime}m vs Cached {cached['runtime']}m")
+                return False
+        except:
+            pass
+            
+    return score >= 0.70 # Slightly higher threshold for cache trust
 
 def load_tmdb_cache():
     if os.path.exists(TMDB_CACHE_FILE):
@@ -404,26 +549,30 @@ def save_tmdb_cache(cache):
     with open(TMDB_CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
-def fetch_tmdb_details(movie_title, session, api_key, movie_year=None):
+def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_runtime=None):
     """
-    Searches TMDB for movie_title.
-    1. Tries exact English match.
-    2. If no result, tries a 'cleaned' version (stripping 4K/Remaster suffixes).
+    Searches TMDB for movie_title with logic to find the BEST match, not just the first.
     """
     search_url = "https://api.themoviedb.org/3/search/movie"
 
+    # Extract year if not provided
     query_year = parse_year_value(movie_year) or extract_year_from_title(movie_title)
+    
+    # Parse runtime if provided
+    query_runtime = None
+    if movie_runtime:
+        try:
+            query_runtime = int(movie_runtime)
+        except:
+            pass
+
     queries = build_search_queries(movie_title)
 
     try:
-        best = None
-        best_score = 0.0
-        best_query = None
+        candidates = []
         seen_ids = set()
 
         for query in queries:
-            if query != movie_title:
-                print(f"   Using cleaned title: '{query}'")
             params = {
                 "api_key": api_key,
                 "query": query,
@@ -436,25 +585,53 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None):
             resp = session.get(search_url, params=params, timeout=5)
             data = resp.json()
             results = data.get("results", [])
+            
+            # FALLBACK: If year filter returned nothing, try without year filter
+            if not results and "year" in params:
+                # print(f"      No results for {query} ({params['year']}). Retrying without year filter...")
+                del params["year"]
+                resp = session.get(search_url, params=params, timeout=5)
+                data = resp.json()
+                results = data.get("results", [])
 
             for result in results:
-                result_id = result.get("id")
-                if not result_id or result_id in seen_ids:
+                res_id = result.get("id")
+                if not res_id or res_id in seen_ids:
                     continue
-                seen_ids.add(result_id)
+                seen_ids.add(res_id)
 
-                score = score_tmdb_result(query, result, query_year=query_year)
-                if score > best_score:
-                    best = result
-                    best_score = score
-                    best_query = query
+                score = score_tmdb_result(query, result, query_year=query_year, query_runtime=query_runtime)
+                
+                # Add to candidates
+                candidates.append({
+                    "score": score,
+                    "result": result,
+                    "query": query
+                })
 
-            if best_score >= 0.92:
-                break
-
-        if best and best_score >= 0.72:
+        # Sort candidates by score descending
+        candidates.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Filter top candidates
+        top_candidates = [c for c in candidates if c["score"] > 0.65]
+        
+        if not top_candidates:
+            return None
+            
+        # Refined Selection: Check Runtimes for top contenders
+        # If we have a runtime, we might need to fetch details for the top matches to verify runtime
+        # because 'search' results don't include runtime.
+        
+        best_match = None
+        
+        # If we have a runtime to verify, we'll check the top 3 candidates
+        check_limit = 3 if query_runtime else 1
+        
+        for candidate in top_candidates[:check_limit]:
+            res = candidate["result"]
+            
             # Fetch full details
-            detail_url = f"https://api.themoviedb.org/3/movie/{best['id']}"
+            detail_url = f"https://api.themoviedb.org/3/movie/{res['id']}"
             d_params = {
                 "api_key": api_key,
                 "language": "en-GB",
@@ -462,7 +639,24 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None):
             }
             d_resp = session.get(detail_url, params=d_params, timeout=5)
             d_data = d_resp.json()
-
+            
+            # Now we have runtime
+            tmdb_runtime = d_data.get("runtime") or 0
+            
+            # Runtime validation
+            if query_runtime and tmdb_runtime > 0:
+                diff = abs(query_runtime - tmdb_runtime)
+                # Relaxed threshold for very long movies (often have intermissions in cinemas)
+                threshold = 45 if query_runtime > 180 else 30
+                if diff > threshold:
+                    # Mismatch! Penalize this candidate significantly
+                    print(f"   [Skip] '{d_data['title']}' runtime mismatch ({tmdb_runtime} vs {query_runtime})")
+                    continue # Skip this one, try next
+                elif diff < 10:
+                    # Good match!
+                    pass
+            
+            # If we pass checks, this is our winner
             # Extract Director
             director = ""
             crew = d_data.get("credits", {}).get("crew", [])
@@ -470,12 +664,9 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None):
                 if c.get("job") == "Director":
                     director = c.get("name")
                     break
-
-            if best_query and best_query != movie_title:
-                print(f"   Best match via: '{best_query}' (score {best_score:.2f})")
-
-            return {
-                "tmdb_id": best["id"],
+            
+            best_match = {
+                "tmdb_id": d_data["id"],
                 "tmdb_title": d_data.get("title"),
                 "tmdb_original_title": d_data.get("original_title"),
                 "overview": d_data.get("overview"),
@@ -487,6 +678,13 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None):
                 "genres": [g["name"] for g in d_data.get("genres", [])],
                 "vote_average": d_data.get("vote_average")
             }
+            
+            if candidate["query"] != movie_title:
+                print(f"   Matched via '{candidate['query']}' (Score: {candidate['score']:.2f})")
+                
+            break # We found the best passing candidate
+
+        return best_match
 
     except Exception as e:
         print(f"   TMDB Error for '{movie_title}': {e}")
@@ -501,31 +699,61 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     print(f"\n--- Starting Enrichment for {len(listings)} listings ---")
 
     # Group by movie title to avoid duplicate API calls
-    unique_titles = list(set(item["movie_title"] for item in listings))
-    title_years = {}
+    # We now also consider year/runtime in the key or lookups
+    unique_map = {} # title -> {year, runtime, count}
+    
+    # Force retry for previously failed items by clearing 'None' from cache
+    initial_cache_size = len(cache)
+    cache = {k: v for k, v in cache.items() if v is not None}
+    if len(cache) < initial_cache_size:
+        print(f"   Cleared {initial_cache_size - len(cache)} 'Not Found' entries from cache to retry with new logic.")
+
     for item in listings:
         title = item.get("movie_title")
         if not title:
             continue
-        if title in title_years and title_years[title]:
-            continue
+            
         year = parse_year_value(item.get("year"))
-        title_years[title] = year
-    print(f"   Unique films to process: {len(unique_titles)}")
+        runtime = None
+        if item.get("runtime_min"):
+             try: 
+                 runtime = int(str(item["runtime_min"]).replace("min","").strip())
+             except: 
+                 pass
+        elif item.get("runtime"):
+             try: 
+                 runtime = int(item["runtime"]) 
+             except: 
+                 pass
+
+        if title not in unique_map:
+            unique_map[title] = {"years": set(), "runtimes": set()}
+            
+        if year: unique_map[title]["years"].add(year)
+        if runtime: unique_map[title]["runtimes"].add(runtime)
+            
+    print(f"   Unique films to process: {len(unique_map)}")
 
     updated_cache = False
 
-    for title in unique_titles:
+    for title, meta in unique_map.items():
+        # Pick best representative year/runtime (heuristics)
+        rep_year = list(meta["years"])[0] if meta["years"] else None
+        rep_runtime = list(meta["runtimes"])[0] if meta["runtimes"] else None
+
         cached = cache.get(title)
-        title_year = title_years.get(title)
-        if cached and not is_cache_match_ok(title, cached, query_year=title_year):
-            cached = None
-            cache.pop(title, None)
+        
+        # Check if cache is still valid given our new stricter rules
+        if cached:
+            if not is_cache_match_ok(title, cached, query_year=rep_year, query_runtime=rep_runtime):
+                # print(f"   Invalidating cache for {title}")
+                cached = None
+                cache.pop(title, None)
 
         if title not in cache:
             # If we haven't checked this title before
-            print(f"   Searching TMDB for: {title}")
-            details = fetch_tmdb_details(title, session, api_key, movie_year=title_year)
+            print(f"   Searching TMDB for: {title} (Yr: {rep_year}, Run: {rep_runtime})")
+            details = fetch_tmdb_details(title, session, api_key, movie_year=rep_year, movie_runtime=rep_runtime)
 
             if details:
                 cache[title] = details
@@ -577,11 +805,11 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
 
 # --- Scraper Runner Wrapper ---
 
-def _run_scraper(name, func, listings_list, normalize_func=None):
+def _run_scraper_task(name, func, normalize_func=None):
     """
-    Runs a scraper function with robust error handling and reporting.
+    Internal task for parallel execution.
+    Returns (name, status, rows, error)
     """
-    print(f"\nScraping {name} ...")
     try:
         # Run the scraper
         rows = func() or []
@@ -590,18 +818,10 @@ def _run_scraper(name, func, listings_list, normalize_func=None):
         if normalize_func and rows:
             rows = normalize_func(rows)
 
-        count = len(rows)
-        print(f"-> {count} showings from {name}.")
-        listings_list.extend(rows)
-
-        # Report Success
-        report.add(name, "SUCCESS", count)
+        return name, "SUCCESS", rows, None
 
     except Exception as e:
-        # Report Failure but DO NOT CRASH main execution
-        print(f"Error in {name}: {e}")
-        traceback.print_exc()
-        report.add(name, "FAILURE", 0, error=e)
+        return name, "FAILURE", [], e
 
 # --- Main Execution ---
 
@@ -636,54 +856,69 @@ def main():
     # Format: (Display Name, Function Object, Optional Normalizer)
     scrapers_to_run = [
         # Individual cinemas
-        ("BFI Southbank", bfi_southbank_module.scrape_bfi_southbank, None),
-        ("BFI IMAX", bfi_imax_module.scrape_bfi_imax, None),
-        ("Prince Charles Cinema", prince_charles_module.scrape_prince_charles, None),
-        ("The Garden Cinema", garden_cinema_module.scrape_garden_cinema, None),
-        ("The Nickel", nickel_module.scrape_nickel, None),
-        ("Barbican Cinema", barbican_module.scrape_barbican, None),
-        ("Genesis Cinema", genesis_module.scrape_genesis, None),
-        ("ICA Cinema", ica_module.scrape_ica, None),
-        ("Close-Up Film Centre", close_up_module.scrape_close_up, None),
-        ("Phoenix Cinema", phoenix_cinema_module.scrape_phoenix_cinema, None),
-        ("The Castle Cinema", castle_cinema_module.scrape_castle_cinema, None),
-        ("Electric Cinema", electric_cinema_module.scrape_electric_cinema, None),
-        ("Bertha DocHouse", dochouse_module.scrape_dochouse, None),
-        ("Sands Films Cinema Club", sands_films_module.scrape_sands_films, None),
-        ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere, None),
-        ("Rio Cinema", rio_cinema_module.scrape_rio, None),
-        ("The Lexi Cinema", lexi_cinema_module.scrape_lexi_cinema, None),
-        ("ArtHouse Crouch End", arthouse_crouch_end_module.scrape_arthouse_crouch_end, None),
-        ("JW3 Cinema", jw3_module.scrape_jw3, None),
-        ("Peckhamplex", peckhamplex_module.scrape_peckhamplex, None),
-        ("The Cinema Museum", cinema_museum_module.scrape_cinema_museum, None),
-        ("Rich Mix", rich_mix_module.scrape_rich_mix, None),
-        ("ActOne Cinema & Cafe", act_one_module.scrape_act_one_cinema, None),
-        ("Chiswick Cinema", chiswick_cinema_module.scrape_chiswick_cinema, None),
-        ("The Cinema in the Arches", cinema_in_the_arches_module.scrape_cinema_in_the_arches, None),
-        ("David Lean Cinema", david_lean_module.scrape_david_lean, None),
-        ("Regent Street Cinema", regent_street_module.scrape_regent_street, None),
-        ("Kiln Theatre", kiln_theatre_module.scrape_kiln_theatre, None),
-        ("Riverside Studios", riverside_studios_module.scrape_riverside_studios, None),
-        ("Ciné-Real", cine_real_module.scrape_cine_real, None),
-        ("Coldharbour Blue", coldharbour_blue_module.scrape_coldharbour_blue, None),
-        ("Olympic Studios (Barnes)", olympic_studios_module.scrape_olympic_studios, None),
-        ("The Arzner", the_arzner_module.scrape_the_arzner, None),
+        ("BFI Southbank", bfi_southbank_module.scrape_bfi_southbank),
+        ("BFI IMAX", bfi_imax_module.scrape_bfi_imax),
+        ("Prince Charles Cinema", prince_charles_module.scrape_prince_charles),
+        ("The Garden Cinema", garden_cinema_module.scrape_garden_cinema),
+        ("The Nickel", nickel_module.scrape_nickel),
+        ("Barbican Cinema", barbican_module.scrape_barbican),
+        ("Genesis Cinema", genesis_module.scrape_genesis),
+        ("ICA Cinema", ica_module.scrape_ica),
+        ("Close-Up Film Centre", close_up_module.scrape_close_up),
+        ("Phoenix Cinema", phoenix_cinema_module.scrape_phoenix_cinema),
+        ("The Castle Cinema", castle_cinema_module.scrape_castle_cinema),
+        ("Electric Cinema", electric_cinema_module.scrape_electric_cinema),
+        ("Bertha DocHouse", dochouse_module.scrape_dochouse),
+        ("Sands Films Cinema Club", sands_films_module.scrape_sands_films),
+        ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere),
+        ("Rio Cinema", rio_cinema_module.scrape_rio),
+        ("The Lexi Cinema", lexi_cinema_module.scrape_lexi_cinema),
+        ("ArtHouse Crouch End", arthouse_crouch_end_module.scrape_arthouse_crouch_end),
+        ("JW3 Cinema", jw3_module.scrape_jw3),
+        ("Peckhamplex", peckhamplex_module.scrape_peckhamplex),
+        ("The Cinema Museum", cinema_museum_module.scrape_cinema_museum),
+        ("Rich Mix", rich_mix_module.scrape_rich_mix),
+        ("ActOne Cinema & Cafe", act_one_module.scrape_act_one_cinema),
+        ("Chiswick Cinema", chiswick_cinema_module.scrape_chiswick_cinema),
+        ("The Cinema in the Arches", cinema_in_the_arches_module.scrape_cinema_in_the_arches),
+        ("David Lean Cinema", david_lean_module.scrape_david_lean),
+        ("Regent Street Cinema", regent_street_module.scrape_regent_street),
+        ("Kiln Theatre", kiln_theatre_module.scrape_kiln_theatre),
+        ("Riverside Studios", riverside_studios_module.scrape_riverside_studios),
+        ("Ciné-Real", cine_real_module.scrape_cine_real),
+        ("Coldharbour Blue", coldharbour_blue_module.scrape_coldharbour_blue),
+        ("Olympic Studios (Barnes)", olympic_studios_module.scrape_olympic_studios),
+        ("The Arzner", the_arzner_module.scrape_the_arzner),
         # Chain scrapers (multiple locations each)
-        ("Curzon Cinemas", curzon_chain_module.scrape_all_curzon, None),
-        ("Everyman Cinemas", everyman_chain_module.scrape_everyman_locations, None),
-        ("Picturehouse Cinemas", picturehouse_chain_module.scrape_all_picturehouse, None),
+        ("Curzon Cinemas", curzon_chain_module.scrape_all_curzon),
+        ("Everyman Cinemas", everyman_chain_module.scrape_everyman_locations),
+        ("Picturehouse Cinemas", picturehouse_chain_module.scrape_all_picturehouse),
     ]
 
-    print("Starting all scrapers...")
+    print(f"Starting {len(scrapers_to_run)} scrapers in parallel...")
 
-    # 2. RUN SCRAPERS
-    for item in scrapers_to_run:
-        name = item[0]
-        func = item[1]
-        norm = item[2] if len(item) > 2 else None
+    # 2. RUN SCRAPERS IN PARALLEL
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        future_to_cinema = {}
+        for item in scrapers_to_run:
+            name = item[0]
+            func = item[1]
+            norm = item[2] if len(item) > 2 else None
+            
+            future = executor.submit(_run_scraper_task, name, func, norm)
+            future_to_cinema[future] = name
 
-        _run_scraper(name, func, listings, normalize_func=norm)
+        for future in concurrent.futures.as_completed(future_to_cinema):
+            name, status, rows, error = future.result()
+            count = len(rows)
+            
+            if status == "SUCCESS":
+                print(f"-> {count} showings from {name}.")
+                listings.extend(rows)
+                report.add(name, "SUCCESS", count)
+            else:
+                print(f"Error in {name}: {error}")
+                report.add(name, "FAILURE", 0, error=error)
 
     # 3. ENRICHMENT
     print(f"\nCollected a total of {len(listings)} showings.")
