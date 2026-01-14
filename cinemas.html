@@ -120,6 +120,7 @@
             font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem);
             text-transform: uppercase;
             letter-spacing: 0.16em;
+            cursor: pointer;
         }
 
         .toggle {
@@ -668,7 +669,7 @@
                         <label for="region-select">地域 (Region)</label>
                         <select id="region-select"></select>
                     </div>
-                    <div class="filter">
+                    <div class="filter" id="sort-filter-container">
                         <label for="sort-select">並び替え (Sort)</label>
                         <select id="sort-select"></select>
                     </div>
@@ -724,11 +725,13 @@
             const tmdbBase = "https://image.tmdb.org/t/p/";
 
             const cinemaCategories = [
-                { name: "渋谷・世田谷区・目黒 (Shibuya, Setagaya-ku, Meguro)", cinemas: [ "シアターギルド代官山", "YEBISU GARDEN CINEMA", "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "目黒シネマ", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ" ] },
-                { name: "新宿 (Shinjuku)", cinemas: [ "K's Cinema (ケイズシネマ)", "シネマート新宿", "新宿シネマカリテ", "新宿武蔵野館", "テアトル新宿", "早稲田松竹", "アンスティチュ・フランセ東京" ] },
-                { name: "杉並・中野・武蔵野 (Suginami, Nakano, Musashino)", cinemas: [ "ポレポレ東中野", "Theater Bacchus", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺" ] },
-                { name: "池袋・田端 (Ikebukuro + Tabata)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA" ] },
-                { name: "千代田区・中央区・墨田区・足立区 (Chiyoda-ku, Chuo-ku, Sumida-ku, Adachi-ku)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "シネマリス", "アテネ・フランセ文化センター", "Stranger (ストレンジャー)", "シネマブルースタジオ" ] },
+                { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu, Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シアターギルド代官山", "YEBISU GARDEN CINEMA", "目黒シネマ" ] },
+                { name: "新宿 (Shinjuku)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "新宿シネマカリテ", "早稲田松竹" ] },
+                { name: "銀座・有楽町・都心 (Ginza, Yurakucho, Central)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京", "シネマリス" ] },
+                { name: "世田谷・下北沢 (Setagaya, Shimokitazawa)", cinemas: [ "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ" ] },
+                { name: "中央線：中野〜吉祥寺 (Chuo Line: Nakano-Kichijoji)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "Theater Bacchus" ] },
+                { name: "池袋・田端 (Ikebukuro & Tabata)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA" ] },
+                { name: "東東京 (East Tokyo)", cinemas: [ "Stranger (ストレンジャー)", "シネマブルースタジオ" ] },
                 { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ" ] }
             ];
 
@@ -794,6 +797,7 @@
                 timeSelect: document.getElementById("time-select"),
                 regionSelect: document.getElementById("region-select"),
                 sortSelect: document.getElementById("sort-select"),
+                sortFilterContainer: document.getElementById("sort-filter-container"),
                 clearFilters: document.getElementById("clear-filters"),
                 filtersToggle: document.getElementById("filters-toggle"),
                 filtersContent: document.getElementById("filters-content"),
@@ -829,9 +833,6 @@
             };
 
             const sortOptions = {
-                cinema: [
-                    { value: "name", label: "劇場名 (Cinema)" }
-                ],
                 film: [
                     { value: "soonest", label: "最も早い (Soonest)" }
                 ]
@@ -907,6 +908,14 @@
                 render();
             });
 
+            document.querySelector("h1").addEventListener("click", function () {
+                state.selectedCinema = "";
+                state.filters.search = "";
+                elements.searchInput.value = "";
+                render();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
             function setView(view) {
                 state.view = view;
                 elements.viewButtons.forEach(function (button) {
@@ -930,6 +939,12 @@
 
             function updateSortOptions() {
                 const options = sortOptions[state.view];
+                if (!options) {
+                    elements.sortFilterContainer.classList.add("is-hidden");
+                    return;
+                }
+                elements.sortFilterContainer.classList.remove("is-hidden");
+
                 const currentValue = state.sort;
                 elements.sortSelect.innerHTML = "";
                 options.forEach(function (option) {
