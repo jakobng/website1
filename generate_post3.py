@@ -89,25 +89,49 @@ STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
+# --- PROMPTS ---
+PROMPT_SIMPLE = "An architectural mashup connecting these cinema buildings and interiors"
+PROMPT_SURREAL = "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids"
+PROMPT_TOKYO = "A surreal architectural homage to Tokyo's independent cinema culture, connecting buildings and interiors"
+
 # --- HERO GENERATION STRATEGIES ---
 HERO_STRATEGIES = [
-    {
-        "name": "Raw VQ-GAN Latent Mashup",
-        "sd_prompt": "early AI vq-gan+clip style, surreal architectural mashup of Tokyo cinema buildings, latent space bleeding, glitched transitions, surprising structural connections, vibrant and messy dreamscape, artifact-heavy, kaleidoscopic cinema facades",
-        "use_gemini": False
-    },
-    {
-        "name": "Surreal Cinema Dreamscape",
-        "sd_prompt": "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids",
-        "use_gemini": True,
-        "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal 'early AI' connections but elevate the final quality. Make the lighting and textures feel like a coherent, high-quality 35mm film still. The mashup should feel weird and surprising but intentional. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."
-    },
-    {
-        "name": "Abstract Marquee Glitch",
-        "sd_prompt": "glitched and overlapping cinema marquees and neon signs, kaleidoscopic architectural mashup, vibrant liquid-like bleeding colors, early AI artifacts, dream-like structural incoherence",
-        "use_gemini": False
-    }
+    # SDXL variations
+    {"name": "SDXL_Raw_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
+    {"name": "SDXL_Gemini_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": True, "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "SDXL_Directed", "model": "sdxl", "sd_prompt": "DYNAMIC", "use_gemini": True, "gemini_prompt": "Final polish of this Gemini-directed mashup. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}'."},
+
+    # FLUX variations
+    {"name": "Flux_Raw_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
+    {"name": "Flux_Gemini_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": True, "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "Flux_Directed", "model": "flux", "sd_prompt": "DYNAMIC", "use_gemini": True, "gemini_prompt": "Final polish of this Gemini-directed mashup. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}'."},
 ]
+
+def generate_creative_sd_prompt(pil_layout, cinema_names):
+    """Gemini looks at the layout and writes a custom prompt for the inpainting model."""
+    print("   🧠 Gemini is acting as Creative Director (Analyzing layout)...")
+    try:
+        if not GEMINI_API_KEY: return PROMPT_SURREAL
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        
+        prompt_to_gemini = (
+            "Look at this collage of independent cinema buildings in Tokyo. I am about to use an AI inpainting model to connect them surrealistically. "
+            "Write a 1-sentence prompt for the AI (Stable Diffusion/Flux) that describes how to connect these specific structures. "
+            f"Specifically mention features you see from: {', '.join(cinema_names[:4])}. "
+            "Focus on: non-euclidean architecture, dream-like connective tissue, and specific Tokyo street elements. "
+            "Keep the prompt under 50 words. Do not use filler text like 'Here is the prompt'."
+        )
+
+        response = client.models.generate_content(
+            model="gemini-3-0-flash-preview", # Updated to 3.0 Flash
+            contents=[prompt_to_gemini, pil_layout]
+        )
+        creative_prompt = response.text.strip()
+        print(f"   📝 Gemini's Creative Direction: {creative_prompt}")
+        return creative_prompt
+    except Exception as e:
+        print(f"   ⚠️ Gemini Director Failed: {e}")
+    return PROMPT_SURREAL
 
 # --- GLOBAL COLORS ---
 WHITE = (255, 255, 255)
@@ -445,15 +469,15 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
         try:
             img_bg = Image.open(path).convert("RGB")
             img_bg = ImageOps.fit(img_bg, (width, height))
-            img_bg = img_bg.filter(ImageFilter.GaussianBlur(30))
-            base_bg = Image.blend(base_bg, img_bg, 0.4)
+            img_bg = img_bg.filter(ImageFilter.GaussianBlur(50)) # More blur for smoother latent hints
+            base_bg = Image.blend(base_bg, img_bg, 0.5)
         except: continue
 
     anchors = [
-        (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.1), int(height*0.4))),
-        (random.randint(int(width*0.6), int(width*0.9)), random.randint(int(height*0.1), int(height*0.4))),
-        (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.6), int(height*0.9))),
-        (random.randint(int(width*0.6), int(width*0.9)), random.randint(int(height*0.6), int(height*0.9)))
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7))),
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7))),
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7))),
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7)))
     ]
 
     for i, (name, path) in enumerate(imgs_to_process):
@@ -469,10 +493,12 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
-            cutout = feather_cutout(cutout, erosion=1, blur=3)
+            
+            # 1. Soften the cutout itself
+            cutout = feather_cutout(cutout, erosion=2, blur=3)
 
-            scale = random.uniform(0.8, 1.1)
-            max_dim = int(800 * scale)
+            scale = random.uniform(0.7, 1.1)
+            max_dim = int(750 * scale)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
             cx, cy = anchors[i]
@@ -480,8 +506,12 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             
+            # 2. CREATE PROTECTIVE MASK
             alpha = cutout.split()[3]
-            core_mask = alpha.filter(ImageFilter.MinFilter(5)) # Keep the center of buildings sharp
+            # Protect almost the entire building, just erode a tiny bit for the edge blend
+            core_mask = alpha.filter(ImageFilter.MinFilter(7)) 
+            core_mask = core_mask.filter(ImageFilter.GaussianBlur(3))
+            
             mask.paste(0, (x, y), mask=core_mask)
         except Exception as e:
             print(f"Error processing {name}: {e}")
@@ -489,8 +519,8 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     # Final composite layout
     base_bg.paste(layout_rgba, (0,0), mask=layout_rgba)
 
-    # Expand the inpaint area to eat into the buildings (as in generate_post.py)
-    mask = mask.filter(ImageFilter.MaxFilter(15))
+    # Global mask expansion - very small to keep SD from wandering too far
+    mask = mask.filter(ImageFilter.MaxFilter(5))
 
     return layout_rgba, base_bg, mask
 
@@ -506,17 +536,28 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
         
         prompt = strategy["gemini_prompt"].format(date_text=date_text)
         prompt += f"\nContext Cinemas: {', '.join(cinema_names[:4])}."
+        prompt += "\nIMPORTANT: Respect the surreal architectural connections made in the previous step. Do not oversimplify or flatten the image."
 
         print(f"   📝 Gemini Prompt: {prompt}")
         
-        response = client.models.generate_content(
-            model="gemini-3-pro-image-preview",
-            contents=[prompt, pil_image],
-            config=types.GenerateContentConfig(response_modalities=["IMAGE"])
-        )
-        for part in response.parts:
-            if part.inline_data:
-                return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+        # Simple retry logic for 503s
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3-pro-image-preview",
+                    contents=[prompt, pil_image],
+                    config=types.GenerateContentConfig(response_modalities=["IMAGE"])
+                )
+                for part in response.parts:
+                    if part.inline_data:
+                        return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+                break # Success but no image? should not happen
+            except Exception as e:
+                if "503" in str(e) and attempt < 2:
+                    print(f"      ⚠️ Gemini busy, retrying in {5 * (attempt+1)}s...")
+                    time.sleep(5 * (attempt+1))
+                else:
+                    raise e
     except Exception as e:
         print(f"   ⚠️ Gemini Failed: {e}")
     return pil_image
@@ -526,14 +567,8 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         return layout_img
     
     prompt = strategy["sd_prompt"]
-    print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
-    
-    # Using a mix of SDXL and the older working inpaint model from generate_post.py
-    INPAINT_MODELS = [
-        "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
-        "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
-        "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14"
-    ]
+    model_type = strategy.get("model", "flux")
+    print(f"   🎨 Inpainting gaps ({model_type.upper()}) - Strategy: {strategy['name']}...")
     
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
@@ -542,42 +577,51 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         # DEBUG IMAGES
         debug_dir = OUTPUT_DIR / "debug"
         debug_dir.mkdir(exist_ok=True)
-        layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
-        mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
         
         output = None
-        for model_id in INPAINT_MODELS:
-            try:
-                print(f"      📡 Trying Inpaint: {model_id.split(':')[0]}...")
-                output = replicate.run(
-                    model_id,
-                    input={
-                        "image": open(temp_img, "rb"), 
-                        "mask": open(temp_mask, "rb"),
-                        "prompt": f"{prompt}, vq-gan artifacts, surprising mashup, dreamy, cinematic",
-                        "negative_prompt": "white background, frames, borders, text, watermark",
-                        "strength": 0.99, 
-                        "num_inference_steps": 40,
-                        "guidance_scale": 12.0
-                    }
-                )
-                if output: break
-            except Exception as e:
-                print(f"      ⚠️ Model {model_id.split(':')[0]} failed: {str(e)[:100]}")
-        
+        if model_type == "flux":
+            print(f"      📡 Trying Flux Fill Pro...")
+            params = {
+                "image": open(temp_img, "rb"), 
+                "mask": open(temp_mask, "rb"),
+                "prompt": f"{prompt}, architectural connective tissue, intricate details, cinematic lighting",
+                "steps": 50,
+                "guidance": 30.0,
+                "safety_tolerance": 5
+            }
+            output = replicate.run("black-forest-labs/flux-fill-pro", input=params)
+        else:
+            print(f"      📡 Trying SDXL (Base with Mask)...")
+            # Using the stable SDXL 1.0 base model which handles masks well
+            params = {
+                "image": open(temp_img, "rb"), 
+                "mask": open(temp_mask, "rb"),
+                "prompt": f"{prompt}, architectural connective tissue, intricate details, cinematic lighting",
+                "negative_prompt": "white background, empty space, frames, borders, text, watermark, bad anatomy, blurry",
+                "num_inference_steps": 50,
+                "guidance_scale": 12.0,
+                "prompt_strength": 0.85,
+                "mask_blur": 5
+            }
+            # This is the most stable SDXL version on Replicate
+            output = replicate.run("stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc", input=params)
+
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
         
         if output:
-            # The SDXL model usually returns a list of file outputs
             url = output[0] if isinstance(output, list) else str(output)
-            print(f"      ✅ Inpainting successful: {url}")
+            print(f"      ✅ Inpainting successful")
             resp = requests.get(url)
-            return Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
+            sd_img = Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
+            
+            # SAVE RAW DEBUG IMAGE
+            sd_img.save(debug_dir / f"{model_type}_raw_{random.randint(0,999)}.png")
+            return sd_img
         else:
-            print("   ⚠️ SDXL returned no output.")
+            print(f"   ⚠️ {model_type.upper()} returned no output.")
     except Exception as e:
-        print(f"   ⚠️ SDXL process failed: {e}")
+        print(f"   ⚠️ {model_type.upper()} process failed: {e}")
     return layout_img
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
@@ -674,25 +718,59 @@ def main():
         if path:
             cinema_images.append((c, path))
     
-    if cinema_images:
-        print(f"   🎨 Found {len(cinema_images)} images for collage. Generating {len(HERO_STRATEGIES)} hero options...")
-        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
-        
-        for i, strategy in enumerate(HERO_STRATEGIES):
-            print(f"\n   🚀 Generating Option {i+1}: {strategy['name']}")
-            cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
-            final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, [c[0] for c in cinema_images])
+        if cinema_images:
+    
+            print(f"   🎨 Found {len(cinema_images)} images for collage. Generating {len(HERO_STRATEGIES)} hero options...")
+    
+            layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
+    
             
-            # Save individual options
-            opt_path = OUTPUT_DIR / f"hero_option_{i:02}.png"
-            final_cover.save(opt_path)
-            final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS).save(OUTPUT_DIR / f"story_option_{i:02}.png")
-            
-            # Set the first one as the default post_image_00.png
-            if i == 0:
-                final_cover.save(OUTPUT_DIR / "post_image_00.png")
-                final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS).save(OUTPUT_DIR / "story_image_00.png")
-            
+    
+            # Pre-generate dynamic prompt if needed
+    
+            cinema_names = [c[0] for c in cinema_images]
+    
+            dynamic_prompt = generate_creative_sd_prompt(layout_rgb, cinema_names)
+    
+    
+    
+            for i, strategy in enumerate(HERO_STRATEGIES):
+    
+                print(f"\n   🚀 Generating Option {i+1}: {strategy['name']}")
+    
+                
+    
+                # Use dynamic prompt if strategy requests it
+    
+                if strategy["sd_prompt"] == "DYNAMIC":
+    
+                    strategy["sd_prompt"] = dynamic_prompt
+    
+    
+    
+                cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
+    
+                final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, cinema_names)
+    
+                
+    
+                # Save individual options with strategy name
+    
+                clean_name = strategy['name'].replace(' ', '_')
+    
+                opt_path = OUTPUT_DIR / f"hero_option_{i:02}_{clean_name}.png"
+    
+                final_cover.save(opt_path)
+    
+                
+    
+                # Set the first one as default
+    
+                if i == 0:
+    
+                    final_cover.save(OUTPUT_DIR / "post_image_00.png")
+    
+                
             print(f"   ✅ Saved {strategy['name']} to {opt_path.name}")
     else:
         print("   ⚠️ No images found for Hero Collage.")
