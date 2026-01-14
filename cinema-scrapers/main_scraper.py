@@ -56,7 +56,9 @@ from cinema_modules import (
     athenee_francais_module,
     white_cine_quinto_module,
     cinema_novecento_module,
-    yokohama_cinemarine_module
+    yokohama_cinemarine_module,
+    kadokawa_yurakucho_module,
+    cinema_neko_module
 )
 
 # --- Configuration ---
@@ -512,9 +514,15 @@ def main():
 
         # Yokohama Cinemarine
         ("Yokohama Cinemarine", yokohama_cinemarine_module.scrape_yokohama_cinemarine, None),
+
+        # Kadokawa Cinema Yurakucho
+        ("Kadokawa Cinema Yurakucho", kadokawa_yurakucho_module.scrape_kadokawa_yurakucho, None),
+
+        # Cinema Neko Ome
+        ("Cinema Neko Ome", cinema_neko_module.scrape_cinema_neko, None),
     ]
 
-    print("Starting all scrapers…")
+    # 2. RUN THEM ONE BY ONE
 
     # 2. RUN SCRAPERS
     for item in scrapers_to_run:
