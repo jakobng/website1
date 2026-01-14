@@ -497,7 +497,7 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
 
         client = genai.Client(api_key=api_key)
         prompt_text = (
-            f"Refine this collage into a unified image, using all of the space. The end result should be a surreal architectural mashup of all of these independent cinemas in London. It's an homage to london cinema."
+            f"Refine this collage into a unified image, using all of the space. The end result should be a surreal architectural mashup of all of these independent cinemas in London. It's an homage to london cinema, but sophisticated and not cheesy. Architectural montage. No cliche film reel or stuff like that."
             f"Strictly preserve the layout, composition, and structures of the input image, but connect the buildings and cutouts in interesting ways."
             f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}' but dont do it in a cliche way. be inventive and mindful of the surrounding image."
         )
