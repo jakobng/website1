@@ -504,10 +504,10 @@ def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
         analysis_prompt = (
             f"Analyze this architectural mashup containing elements of these cinemas: {', '.join(cinema_names[:4])}. "
             "Identify the most successful structural connections and the areas that feel disjointed. "
-            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal 'Tokyo Cinema' masterpiece. "
+            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal dreamlike structure that serves as a kind of weird homage (interior+exteriors). "
             "Refer to specific visual sections (e.g., 'the red marquee on the left', 'the concrete textures in the center'). "
             "Explain how to unify the lighting, shadows, and architectural transitions while strictly preserving the recognizable theater facades. "
-            "Write this as a highly detailed, 100-word creative brief for the final rendering step."
+            "Write this as a highly detailed, 100-word creative brief for the final rendering step. Be specific about sections and where they are in the frame.
         )
 
         response = client.models.generate_content(
