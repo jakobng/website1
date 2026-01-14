@@ -750,9 +750,15 @@
                 </div>
                 <div class="filter-grid filter-grid-wide">
                     <div class="filter options-row">
-                        <div class="checkbox-row">
-                            <input type="checkbox" id="include-chains">
-                            <label for="include-chains">Include arthouse chains (Curzon, Everyman, Picturehouse)</label>
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <div class="checkbox-row">
+                                <input type="checkbox" id="include-chains">
+                                <label for="include-chains">Include arthouse chains</label>
+                            </div>
+                            <div class="checkbox-row">
+                                <input type="checkbox" id="documentary-only">
+                                <label for="documentary-only">Documentaries only</label>
+                            </div>
                         </div>
                         <button class="link-btn" type="button" id="clear-filters">Clear filters</button>
                     </div>
@@ -918,6 +924,7 @@
                 sortFilterContainer: document.getElementById("sort-filter-container"),
                 clearFilters: document.getElementById("clear-filters"),
                 includeChains: document.getElementById("include-chains"),
+                documentaryOnly: document.getElementById("documentary-only"),
                 filtersToggle: document.getElementById("filters-toggle"),
                 filtersContent: document.getElementById("filters-content"),
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
@@ -948,7 +955,8 @@
                     date: "all",
                     time: "any",
                     region: "all",
-                    includeChains: false
+                    includeChains: false,
+                    documentaryOnly: false
                 }
             };
 
@@ -1002,6 +1010,11 @@
                 render();
             });
 
+            elements.documentaryOnly.addEventListener("change", function (event) {
+                state.filters.documentaryOnly = event.target.checked;
+                render();
+            });
+
             elements.filtersToggle.addEventListener("click", function () {
                 state.filtersExpanded = !state.filtersExpanded;
                 elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
@@ -1015,12 +1028,14 @@
                 state.filters.time = "any";
                 state.filters.region = "all";
                 state.filters.includeChains = true;
+                state.filters.documentaryOnly = false;
 
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
                 elements.timeSelect.value = "any";
                 elements.regionSelect.value = "all";
                 elements.includeChains.checked = true;
+                elements.documentaryOnly.checked = false;
                 render();
             });
 
@@ -1059,6 +1074,13 @@
                     elements.dateSelect.value = state.todayDate;
                 }
                 render();
+            }
+
+            function getDefaultDateForView() {
+                if (state.view === "film" && state.todayDate) {
+                    return state.todayDate;
+                }
+                return "all";
             }
 
             function updateSortOptions() {
@@ -1365,6 +1387,9 @@
                     if (!state.filters.includeChains && chainCinemas.has(showing.cinema)) {
                         return false;
                     }
+                    if (state.filters.documentaryOnly && !showing.genres.includes("Documentary")) {
+                        return false;
+                    }
                     return true;
                 });
             }
@@ -1423,6 +1448,7 @@
                 if (state.filters.date !== "all") parts.push("Date: " + formatDate(state.filters.date, true));
                 if (state.filters.time !== "any") parts.push("Time: " + timeBucketLabels[state.filters.time]);
                 if (state.filters.region !== "all") parts.push("Region: " + state.filters.region);
+                if (state.filters.documentaryOnly) parts.push("Documentaries only");
                 if (!parts.length) parts.push("No filters applied");
                 return parts.join(" | ");
             }
