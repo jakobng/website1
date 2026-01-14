@@ -435,17 +435,28 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     height = target_height
     
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    mask = Image.new("L", (width, height), 255) # White = Inpaint
-
+    
+    # Create a messy, blurred background from the images to give SD 'latent hints'
+    base_bg = Image.new("RGB", (width, height), (20, 20, 20))
     imgs_to_process = cinemas[:4]
     if len(imgs_to_process) < 4:
         imgs_to_process = (imgs_to_process * 4)[:4]
+    
+    for _, path in imgs_to_process:
+        try:
+            img_bg = Image.open(path).convert("RGB")
+            img_bg = ImageOps.fit(img_bg, (width, height))
+            img_bg = img_bg.filter(ImageFilter.GaussianBlur(50))
+            base_bg = Image.blend(base_bg, img_bg, 0.5)
+        except: continue
+
+    mask = Image.new("L", (width, height), 255) # White = Inpaint
+
     random.shuffle(imgs_to_process)
 
     anchors = [
-        (random.randint(int(width * 0.15), int(width * 0.85)),
-         random.randint(int(height * 0.15), int(height * 0.85)))
+        (random.randint(int(width * 0.2), int(width * 0.8)),
+         random.randint(int(height * 0.2), int(height * 0.8)))
         for _ in range(4)
     ]
 
@@ -456,46 +467,36 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
 
-            # 1. Soften the image itself (Keep this, it helps)
-            cutout = feather_cutout(cutout, erosion=5, blur=10)
+            # Feather the cutout
+            cutout = feather_cutout(cutout, erosion=3, blur=5)
 
-            scale_variance = random.uniform(0.8, 1.1)
-            max_dim = int(600 * scale_variance)
+            scale_variance = random.uniform(0.7, 1.2)
+            max_dim = int(700 * scale_variance)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
             cx, cy = anchors[i]
-            cx += random.randint(-50, 50)
-            cy += random.randint(-50, 50)
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
 
-            # Paste image onto layout
             layout_rgba.paste(cutout, (x, y), mask=cutout)
-            layout_rgb.paste(cutout, (x, y), mask=cutout)
             
-            # 2. CREATE THE "BLEED" ZONE
-            # We take the alpha channel (the shape of the image)
+            # Create aggressive mask: only protect the very center of the building
             alpha = cutout.split()[3]
-            
-            # We ERODE it heavily (shrink it) before pasting to the mask.
-            # This means the mask "Keep Zone" (Black) is SMALLER than the actual image.
-            # The outer ~20 pixels of the building will sit in the "Inpaint Zone" (White).
-            # The AI will see those pixels but be forced to redraw/blend them.
-            core_mask = alpha.filter(ImageFilter.MinFilter(25)) 
-            
-            # Blur the mask slightly so the transition isn't a sharp line
-            core_mask = core_mask.filter(ImageFilter.GaussianBlur(10))
+            core_mask = alpha.filter(ImageFilter.MinFilter(35)) 
+            core_mask = core_mask.filter(ImageFilter.GaussianBlur(15))
 
-            # Paste 0 (Protect) using this shrunken core
             mask.paste(0, (x, y), mask=core_mask)
             
         except Exception as e:
             print(f"Error processing cutout {name}: {e}")
 
-    # Final global blur on the mask to ensure smoothness
-    mask = mask.filter(ImageFilter.GaussianBlur(5))
+    # Composite buildings onto the blurred background
+    base_bg.paste(layout_rgba, (0, 0), mask=layout_rgba)
     
-    return layout_rgba, layout_rgb.convert("RGB"), mask
+    # Global mask expansion
+    mask = mask.filter(ImageFilter.MaxFilter(10))
+    
+    return layout_rgba, base_bg, mask
 
 def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
     print("   ✨ Refining Hero Collage (Gemini + Text Rendering)...")
@@ -507,9 +508,11 @@ def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
 
         client = genai.Client(api_key=api_key)
         prompt_text = (
-            f"Refine this collage into a unified image, using all of the space. The end result should be a surreal architectural mashup of all of these independent cinemas in London. It's an homage to london cinema, but sophisticated and not cheesy. Architectural montage. No cliche film reel or stuff like that."
-            f"Strictly preserve the layout, composition, and structures of the input image, but connect the buildings and cutouts in interesting ways."
-            f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}' but dont do it in a cliche way. be inventive and mindful of the surrounding image."
+            f"Turn this rough architectural collage into a single unified surreal masterpiece. "
+            f"The image MUST include the title 'LONDON CINEMA' and the date '{date_text}'. "
+            f"Maintain the weird, surprising connections between the buildings ({', '.join(cinema_names[:4])}). "
+            "Elevate the lighting and textures to feel like a high-quality cinematic still. "
+            "Architectural montage. No cliche film reel or stuff like that."
         )
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview",
@@ -533,7 +536,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
         print("   ⚠️ Replicate not available. Skipping Inpaint.")
         return layout_img
 
-    print("   🎨 Inpainting gaps (SDXL Inpainting + Soft Mask)...")
+    print("   🎨 Inpainting gaps (SDXL Inpainting)...")
     try:
         temp_img_path = BASE_DIR / "temp_inpaint_img.png"
         temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
@@ -545,13 +548,12 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
             input={
                 "image": open(temp_img_path, "rb"),
                 "mask": open(temp_mask_path, "rb"),
-                # Prompt focuses on CONNECTING the elements
-                "prompt": "surreal dreamscape, architectural connective tissue, twisting geometry connecting buildings, intricate details, hyperrealistic, 8k",
-                "negative_prompt": "hard edges, cutout borders, white space, empty background, cartoon, blurry, low resolution",
-                "prompt_strength": 0.95, # High strength because we are filling empty white space
-                "strength": 1.0,         # Fill the masked area completely
-                "num_inference_steps": 40,
-                "guidance_scale": 12     # High guidance to force the "architectural connection" concept
+                "prompt": "surreal architectural mashup, dream-like architectural connective tissue, twisting geometry connecting movie theaters, atmospheric lighting, intricate details, hyperrealistic, 8k, cinematic lighting",
+                "negative_prompt": "white background, empty space, frames, borders, text, watermark, blurry, low resolution, cartoon",
+                "prompt_strength": 0.95,
+                "strength": 1.0,
+                "num_inference_steps": 50,
+                "guidance_scale": 15.0
             }
         )
         
@@ -569,6 +571,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
     except Exception as e:
         print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
     return layout_img
+
 
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
