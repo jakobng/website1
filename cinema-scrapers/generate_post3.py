@@ -496,7 +496,7 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     base_bg.paste(layout_rgba, (0,0), mask=layout_rgba)
 
     # Global mask expansion
-    mask = mask.filter(ImageFilter.MaxFilter(10))
+    mask = mask.filter(ImageFilter.MaxFilter(11))
 
     return layout_rgba, base_bg, mask
 
