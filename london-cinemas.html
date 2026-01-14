@@ -1415,7 +1415,8 @@
                             posterPath: showing.posterPath,
                             formatTags: new Set(),
                             showings: [],
-                            letterboxdUrl: showing.letterboxdUrl
+                            letterboxdUrl: showing.letterboxdUrl,
+                            detailUrl: showing.detailUrl
                         });
                     }
                     const film = map.get(key);
@@ -1428,6 +1429,7 @@
                     if (showing.genres.length && !film.genres.length) film.genres = showing.genres.slice();
                     if (showing.rating > film.rating) film.rating = showing.rating;
                     if (!film.letterboxdUrl && showing.letterboxdUrl) film.letterboxdUrl = showing.letterboxdUrl;
+                    if (!film.detailUrl && showing.detailUrl) film.detailUrl = showing.detailUrl;
                     showing.formatTags.forEach(function (tag) {
                         film.formatTags.add(tag);
                     });
@@ -1598,9 +1600,11 @@
                         const timeRow = createElement("div", "time-row");
                         film.showings.forEach(function (showing) {
                             const label = showing.showtime || "TBD";
-                            if (showing.bookingUrl || showing.detailUrl) {
+                            const bestLink = showing.bookingUrl || showing.detailUrl || cinemaWebsite;
+                            
+                            if (bestLink) {
                                 const link = createElement("a", "time-chip", label);
-                                link.href = showing.bookingUrl || showing.detailUrl;
+                                link.href = bestLink;
                                 link.target = "_blank";
                                 link.rel = "noopener";
                                 if (showing.bookingUrl) {
@@ -1729,15 +1733,19 @@
                 const row = createElement("div", "showing-row");
                 row.appendChild(createElement("div", "cinema-name", cinema));
 
+                const cinemaWebsite = getCinemaWebsite(cinema, showings);
                 const timeRow = createElement("div", "time-row");
                 showings.forEach(function (showing) {
                     const includeDate = state.filters.date === "all";
                     const label = includeDate && showing.dateText
                         ? formatDate(showing.dateText, false) + " " + (showing.showtime || "TBD")
                         : (showing.showtime || "TBD");
-                    if (showing.bookingUrl || showing.detailUrl) {
+                    
+                    const bestLink = showing.bookingUrl || showing.detailUrl || cinemaWebsite;
+
+                    if (bestLink) {
                         const link = createElement("a", "time-chip", label);
-                        link.href = showing.bookingUrl || showing.detailUrl;
+                        link.href = bestLink;
                         link.target = "_blank";
                         link.rel = "noopener";
                         if (showing.bookingUrl) {
