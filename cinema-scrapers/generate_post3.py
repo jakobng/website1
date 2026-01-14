@@ -99,7 +99,7 @@ HERO_STRATEGIES = [
     {
         "name": "Surreal Cinema Dreamscape",
         "sd_prompt": "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids",
-        "use_gemini": True,
+        "use_gemini": False, # DISABLED FOR EXPERIMENTATION
         "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal 'early AI' connections but elevate the final quality. Make the lighting and textures feel like a coherent, high-quality 35mm film still. The mashup should feel weird and surprising but intentional. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."
     },
     {
@@ -445,15 +445,15 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
         try:
             img_bg = Image.open(path).convert("RGB")
             img_bg = ImageOps.fit(img_bg, (width, height))
-            img_bg = img_bg.filter(ImageFilter.GaussianBlur(30))
-            base_bg = Image.blend(base_bg, img_bg, 0.4)
+            img_bg = img_bg.filter(ImageFilter.GaussianBlur(50)) # More blur for smoother latent hints
+            base_bg = Image.blend(base_bg, img_bg, 0.5)
         except: continue
 
     anchors = [
-        (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.1), int(height*0.4))),
-        (random.randint(int(width*0.6), int(width*0.9)), random.randint(int(height*0.1), int(height*0.4))),
-        (random.randint(int(width*0.1), int(width*0.4)), random.randint(int(height*0.6), int(height*0.9))),
-        (random.randint(int(width*0.6), int(width*0.9)), random.randint(int(height*0.6), int(height*0.9)))
+        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8))),
+        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8))),
+        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8))),
+        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8)))
     ]
 
     for i, (name, path) in enumerate(imgs_to_process):
@@ -469,10 +469,12 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
-            cutout = feather_cutout(cutout, erosion=1, blur=3)
+            
+            # 1. Soften the cutout itself
+            cutout = feather_cutout(cutout, erosion=3, blur=5)
 
-            scale = random.uniform(0.8, 1.1)
-            max_dim = int(800 * scale)
+            scale = random.uniform(0.7, 1.2) # More scale variance
+            max_dim = int(700 * scale)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
             cx, cy = anchors[i]
@@ -480,8 +482,12 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             
+            # 2. CREATE AGGRESSIVE MASK
             alpha = cutout.split()[3]
-            core_mask = alpha.filter(ImageFilter.MinFilter(5)) # Keep the center of buildings sharp
+            # Erode heavily to force SD to redraw the edges of the buildings
+            core_mask = alpha.filter(ImageFilter.MinFilter(35)) 
+            core_mask = core_mask.filter(ImageFilter.GaussianBlur(15))
+            
             mask.paste(0, (x, y), mask=core_mask)
         except Exception as e:
             print(f"Error processing {name}: {e}")
@@ -489,8 +495,8 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     # Final composite layout
     base_bg.paste(layout_rgba, (0,0), mask=layout_rgba)
 
-    # Expand the inpaint area to eat into the buildings (as in generate_post.py)
-    mask = mask.filter(ImageFilter.MaxFilter(15))
+    # Global mask expansion
+    mask = mask.filter(ImageFilter.MaxFilter(10))
 
     return layout_rgba, base_bg, mask
 
@@ -506,6 +512,7 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
         
         prompt = strategy["gemini_prompt"].format(date_text=date_text)
         prompt += f"\nContext Cinemas: {', '.join(cinema_names[:4])}."
+        prompt += "\nIMPORTANT: Respect the surreal architectural connections made in the previous step. Do not oversimplify or flatten the image."
 
         print(f"   📝 Gemini Prompt: {prompt}")
         
@@ -528,11 +535,11 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
     prompt = strategy["sd_prompt"]
     print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
     
-    # Using a mix of SDXL and the older working inpaint model from generate_post.py
+    # Using the proven London SDXL inpainting model as primary
     INPAINT_MODELS = [
-        "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
-        "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
-        "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14"
+        "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
+        "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14",
+        "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67"
     ]
     
     try:
@@ -549,21 +556,27 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         for model_id in INPAINT_MODELS:
             try:
                 print(f"      📡 Trying Inpaint: {model_id.split(':')[0]}...")
-                output = replicate.run(
-                    model_id,
-                    input={
-                        "image": open(temp_img, "rb"), 
-                        "mask": open(temp_mask, "rb"),
-                        "prompt": f"{prompt}, vq-gan artifacts, surprising mashup, dreamy, cinematic",
-                        "negative_prompt": "white background, frames, borders, text, watermark",
-                        "strength": 0.99, 
-                        "num_inference_steps": 40,
-                        "guidance_scale": 12.0
-                    }
-                )
+                params = {
+                    "image": open(temp_img, "rb"), 
+                    "mask": open(temp_mask, "rb"),
+                    "prompt": f"{prompt}, architectural connective tissue, surprising surreal mashup, intricate details, cinematic lighting",
+                    "negative_prompt": "white background, empty space, frames, borders, text, watermark, bad anatomy, blurry",
+                    "num_inference_steps": 50,
+                    "guidance_scale": 15.0
+                }
+                
+                # Add strength/prompt_strength based on model requirements
+                if "xl-inpainting" in model_id:
+                    params["prompt_strength"] = 0.95
+                    params["strength"] = 1.0
+                else:
+                    params["strength"] = 0.99
+
+                output = replicate.run(model_id, input=params)
                 if output: break
             except Exception as e:
                 print(f"      ⚠️ Model {model_id.split(':')[0]} failed: {str(e)[:100]}")
+
         
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
@@ -573,7 +586,12 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
             url = output[0] if isinstance(output, list) else str(output)
             print(f"      ✅ Inpainting successful: {url}")
             resp = requests.get(url)
-            return Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
+            sd_img = Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
+            
+            # SAVE SD DEBUG IMAGE
+            sd_img.save(debug_dir / f"sd_raw_{strategy['name'].replace(' ', '_')}.png")
+            
+            return sd_img
         else:
             print("   ⚠️ SDXL returned no output.")
     except Exception as e:
