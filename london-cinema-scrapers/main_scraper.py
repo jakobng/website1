@@ -42,7 +42,6 @@ from cinema_modules import (
     arthouse_crouch_end_module,
     jw3_module,
     peckhamplex_module,
-    cinema_museum_module,
     rich_mix_module,
     act_one_module,
     chiswick_cinema_module,
@@ -876,7 +875,6 @@ def main():
         ("ArtHouse Crouch End", arthouse_crouch_end_module.scrape_arthouse_crouch_end),
         ("JW3 Cinema", jw3_module.scrape_jw3),
         ("Peckhamplex", peckhamplex_module.scrape_peckhamplex),
-        ("The Cinema Museum", cinema_museum_module.scrape_cinema_museum),
         ("Rich Mix", rich_mix_module.scrape_rich_mix),
         ("ActOne Cinema & Cafe", act_one_module.scrape_act_one_cinema),
         ("Chiswick Cinema", chiswick_cinema_module.scrape_chiswick_cinema),
@@ -958,4 +956,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
