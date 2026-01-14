@@ -530,14 +530,24 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
 
         print(f"   📝 Gemini Prompt: {prompt}")
         
-        response = client.models.generate_content(
-            model="gemini-3-pro-image-preview",
-            contents=[prompt, pil_image],
-            config=types.GenerateContentConfig(response_modalities=["IMAGE"])
-        )
-        for part in response.parts:
-            if part.inline_data:
-                return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+        # Simple retry logic for 503s
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3-pro-image-preview",
+                    contents=[prompt, pil_image],
+                    config=types.GenerateContentConfig(response_modalities=["IMAGE"])
+                )
+                for part in response.parts:
+                    if part.inline_data:
+                        return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+                break # Success but no image? should not happen
+            except Exception as e:
+                if "503" in str(e) and attempt < 2:
+                    print(f"      ⚠️ Gemini busy, retrying in {5 * (attempt+1)}s...")
+                    time.sleep(5 * (attempt+1))
+                else:
+                    raise e
     except Exception as e:
         print(f"   ⚠️ Gemini Failed: {e}")
     return pil_image
@@ -571,18 +581,20 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
             }
             output = replicate.run("black-forest-labs/flux-fill-pro", input=params)
         else:
-            print(f"      📡 Trying SDXL Inpaint...")
+            print(f"      📡 Trying SDXL (Base with Mask)...")
+            # Using the stable SDXL 1.0 base model which handles masks well
             params = {
                 "image": open(temp_img, "rb"), 
                 "mask": open(temp_mask, "rb"),
                 "prompt": f"{prompt}, architectural connective tissue, intricate details, cinematic lighting",
                 "negative_prompt": "white background, empty space, frames, borders, text, watermark, bad anatomy, blurry",
                 "num_inference_steps": 50,
-                "guidance_scale": 15.0,
-                "prompt_strength": 0.95,
-                "strength": 1.0
+                "guidance_scale": 12.0,
+                "prompt_strength": 0.85,
+                "mask_blur": 5
             }
-            output = replicate.run("stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62", input=params)
+            # This is the most stable SDXL version on Replicate
+            output = replicate.run("stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc", input=params)
 
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
