@@ -96,21 +96,15 @@ PROMPT_TOKYO = "A surreal architectural homage to Tokyo's independent cinema cul
 
 # --- HERO GENERATION STRATEGIES ---
 HERO_STRATEGIES = [
-    # SDXL variations
+    # SDXL RAW Baseline
     {"name": "SDXL_Raw_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
     {"name": "SDXL_Raw_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": False},
     {"name": "SDXL_Raw_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": False},
-    {"name": "SDXL_Gemini_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True},
-    {"name": "SDXL_Gemini_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": True},
-    {"name": "SDXL_Gemini_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": True},
 
-    # FLUX variations
-    {"name": "Flux_Raw_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
-    {"name": "Flux_Raw_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": False},
-    {"name": "Flux_Raw_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": False},
-    {"name": "Flux_Gemini_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True},
-    {"name": "Flux_Gemini_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": True},
-    {"name": "Flux_Gemini_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": True},
+    # SDXL + TWO-STEP GEMINI FEEDBACK
+    {"name": "SDXL_Director_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": "TWO_STEP"},
+    {"name": "SDXL_Director_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": "TWO_STEP"},
+    {"name": "SDXL_Director_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": "TWO_STEP"},
 ]
 
 # --- GLOBAL COLORS ---
@@ -500,32 +494,71 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
     return layout_rgba, base_bg, mask
 
+def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
+    """Gemini looks at the SDXL output and writes a detailed instruction for the final Gemini Artist."""
+    print("   🧠 Gemini Creative Director is analyzing the SDXL mashup...")
+    try:
+        if not GEMINI_API_KEY: return "Unify the image."
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        
+        analysis_prompt = (
+            f"Analyze this architectural mashup containing elements of these cinemas: {', '.join(cinema_names[:4])}. "
+            "Identify the most successful structural connections and the areas that feel disjointed. "
+            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal 'Tokyo Cinema' masterpiece. "
+            "Refer to specific visual sections (e.g., 'the red marquee on the left', 'the concrete textures in the center'). "
+            "Explain how to unify the lighting, shadows, and architectural transitions while strictly preserving the recognizable theater facades. "
+            "Write this as a highly detailed, 100-word creative brief for the final rendering step."
+        )
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=[analysis_prompt, pil_sdxl_image]
+        )
+        brief = response.text.strip()
+        print(f"   📝 Full Creative Brief for Artist:\n{brief}\n")
+        return brief
+    except Exception as e:
+        print(f"   ⚠️ Gemini Director Analysis Failed: {e}")
+    return "Enhance the textures and lighting while preserving the architecture."
+
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     if not strategy.get("use_gemini"):
         print("   ⏩ Skipping Gemini refinement (as per strategy).")
         return pil_image
     
-    print(f"   ✨ Refining Hero Collage (Gemini 3.0) - Strategy: {strategy['name']}...")
+    # Check if we use the new two-step director logic
+    is_two_step = strategy.get("use_gemini") == "TWO_STEP"
+    
+    print(f"   ✨ Finalizing Hero (Gemini 3 Pro) - Strategy: {strategy['name']}...")
     try:
         if not GEMINI_API_KEY: return pil_image
         client = genai.Client(api_key=GEMINI_API_KEY)
         
-        # Smart Refinement Prompt - Gemini now handles the architectural logic
-        prompt = (
-            f"Refine this architectural mashup featuring: {', '.join(cinema_names[:4])}. "
-            "Unify the lighting and textures into a coherent 35mm film still aesthetic. "
-            "Ensure the buildings connect surrealistically while remaining recognizable. "
-            f"Sophisticatedly integrate 'TOKYO CINEMA' and the date '{date_text}' into the architecture or environment. "
-            "Do not be cliché. Make it feel intentional and sophisticated."
-        )
+        if is_two_step:
+            # Step 1: Director gives feedback
+            artist_brief = gemini_creative_direction_feedback(pil_image, cinema_names)
+            # Step 2: Artist follows the brief
+            prompt = (
+                f"ACT AS A MASTER ARTIST. Follow this creative brief to perfect this architectural mashup:\n\n{artist_brief}\n\n"
+                f"MANDATORY: Sophisticatedly integrate the title 'TOKYO CINEMA' and the date '{date_text}' into the scene as part of the architecture or environment. "
+                "The result must feel like a single, high-quality 35mm film still."
+            )
+        else:
+            # Original simple refinement logic
+            prompt = (
+                f"Refine this architectural mashup featuring: {', '.join(cinema_names[:4])}. "
+                "Unify the lighting and textures into a coherent 35mm film still aesthetic. "
+                "Ensure the buildings connect surrealistically while remaining recognizable. "
+                f"Sophisticatedly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene. "
+                "Make it feel intentional and sophisticated."
+            )
 
-        print(f"   📝 Gemini Refinement Prompt: {prompt}")
+        print(f"   📝 Gemini Artist Prompt: {prompt[:100]}...")
         
-        # Simple retry logic for 503s
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
-                    model="gemini-3-0-flash-preview",
+                    model="gemini-3-pro-preview",
                     contents=[prompt, pil_image],
                     config=types.GenerateContentConfig(response_modalities=["IMAGE"])
                 )
@@ -540,7 +573,7 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
                 else:
                     raise e
     except Exception as e:
-        print(f"   ⚠️ Gemini Failed: {e}")
+        print(f"   ⚠️ Gemini Artist Failed: {e}")
     return pil_image
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Image.Image:
