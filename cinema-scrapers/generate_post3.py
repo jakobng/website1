@@ -90,22 +90,28 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- HERO GENERATION STRATEGIES ---
+# Updated to run a matrix: Flux/SDXL x Raw/Gemini
+SURREAL_PROMPT = "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids"
+
 HERO_STRATEGIES = [
-    {
-        "name": "Simple Mashup",
-        "sd_prompt": "An architectural mashup connecting these cinema buildings and interiors",
-        "use_gemini": False
-    },
-    {
-        "name": "Surreal Cinema Dreamscape",
-        "sd_prompt": "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids",
-        "use_gemini": False
-    },
-    {
-        "name": "Tokyo Cinema Homage",
-        "sd_prompt": "A surreal architectural homage to Tokyo's independent cinema culture, connecting buildings and interiors",
-        "use_gemini": False
-    }
+    {"name": "SDXL_Raw", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
+    {"name": "SDXL_Raw", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
+    {"name": "SDXL_Raw", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
+    {"name": "SDXL_Gemini", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": True, 
+     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "SDXL_Gemini", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": True, 
+     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "SDXL_Gemini", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": True, 
+     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "Flux_Raw", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
+    {"name": "Flux_Raw", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
+    {"name": "Flux_Raw", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
+    {"name": "Flux_Gemini", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": True,
+     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "Flux_Gemini", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": True,
+     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "Flux_Gemini", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": True,
+     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
 ]
 
 # --- GLOBAL COLORS ---
@@ -532,14 +538,8 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         return layout_img
     
     prompt = strategy["sd_prompt"]
-    print(f"   🎨 Inpainting gaps (SDXL) - Strategy: {strategy['name']}...")
-    
-    # Using the proven London SDXL inpainting model as primary
-    INPAINT_MODELS = [
-        "stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62",
-        "stability-ai/sdxl-inpainting:95e1e1248437976690f0550c60da1150033d45ef3d4f8f4a1801c80f08a46b14",
-        "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67"
-    ]
+    model_type = strategy.get("model", "flux")
+    print(f"   🎨 Inpainting gaps ({model_type.upper()}) - Strategy: {strategy['name']}...")
     
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
@@ -548,53 +548,49 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
         # DEBUG IMAGES
         debug_dir = OUTPUT_DIR / "debug"
         debug_dir.mkdir(exist_ok=True)
-        layout_img.save(debug_dir / f"layout_{strategy['name'].replace(' ', '_')}.png")
-        mask_img.save(debug_dir / f"mask_{strategy['name'].replace(' ', '_')}.png")
         
         output = None
-        for model_id in INPAINT_MODELS:
-            try:
-                print(f"      📡 Trying Inpaint: {model_id.split(':')[0]}...")
-                params = {
-                    "image": open(temp_img, "rb"), 
-                    "mask": open(temp_mask, "rb"),
-                    "prompt": f"{prompt}, architectural connective tissue, intricate details, cinematic lighting",
-                    "negative_prompt": "white background, empty space, frames, borders, text, watermark, bad anatomy, blurry",
-                    "num_inference_steps": 50,
-                    "guidance_scale": 15.0
-                }
-                
-                # Add strength/prompt_strength based on model requirements
-                if "xl-inpainting" in model_id:
-                    params["prompt_strength"] = 0.95
-                    params["strength"] = 1.0
-                else:
-                    params["strength"] = 0.99
+        if model_type == "flux":
+            print(f"      📡 Trying Flux Fill Pro...")
+            params = {
+                "image": open(temp_img, "rb"), 
+                "mask": open(temp_mask, "rb"),
+                "prompt": f"{prompt}, architectural connective tissue, intricate details, cinematic lighting",
+                "steps": 50,
+                "guidance": 30.0,
+                "safety_tolerance": 5
+            }
+            output = replicate.run("black-forest-labs/flux-fill-pro", input=params)
+        else:
+            print(f"      📡 Trying SDXL Inpaint...")
+            params = {
+                "image": open(temp_img, "rb"), 
+                "mask": open(temp_mask, "rb"),
+                "prompt": f"{prompt}, architectural connective tissue, intricate details, cinematic lighting",
+                "negative_prompt": "white background, empty space, frames, borders, text, watermark, bad anatomy, blurry",
+                "num_inference_steps": 50,
+                "guidance_scale": 15.0,
+                "prompt_strength": 0.95,
+                "strength": 1.0
+            }
+            output = replicate.run("stability-ai/stable-diffusion-xl-inpainting:4f6b21c4795908b98165b452843815c4708779a5446467362363198889772d62", input=params)
 
-                output = replicate.run(model_id, input=params)
-                if output: break
-            except Exception as e:
-                print(f"      ⚠️ Model {model_id.split(':')[0]} failed: {str(e)[:100]}")
-
-        
         if temp_img.exists(): os.remove(temp_img)
         if temp_mask.exists(): os.remove(temp_mask)
         
         if output:
-            # The SDXL model usually returns a list of file outputs
             url = output[0] if isinstance(output, list) else str(output)
-            print(f"      ✅ Inpainting successful: {url}")
+            print(f"      ✅ Inpainting successful")
             resp = requests.get(url)
             sd_img = Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
             
-            # SAVE SD DEBUG IMAGE
-            sd_img.save(debug_dir / f"sd_raw_{strategy['name'].replace(' ', '_')}.png")
-            
+            # SAVE RAW DEBUG IMAGE
+            sd_img.save(debug_dir / f"{model_type}_raw_{random.randint(0,999)}.png")
             return sd_img
         else:
-            print("   ⚠️ SDXL returned no output.")
+            print(f"   ⚠️ {model_type.upper()} returned no output.")
     except Exception as e:
-        print(f"   ⚠️ SDXL process failed: {e}")
+        print(f"   ⚠️ {model_type.upper()} process failed: {e}")
     return layout_img
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
@@ -700,16 +696,14 @@ def main():
             cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
             final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, [c[0] for c in cinema_images])
             
-            # Save individual options
-            opt_path = OUTPUT_DIR / f"hero_option_{i:02}.png"
+            # Save individual options with strategy name
+            clean_name = strategy['name'].replace(' ', '_')
+            opt_path = OUTPUT_DIR / f"hero_option_{i:02}_{clean_name}.png"
             final_cover.save(opt_path)
-            final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS).save(OUTPUT_DIR / f"story_option_{i:02}.png")
             
-            # Set the first one as the default post_image_00.png
+            # Set the first one as default
             if i == 0:
-                final_cover.save(OUTPUT_DIR / "post_image_00.png")
-                final_cover.resize((CANVAS_WIDTH, STORY_CANVAS_HEIGHT), Image.Resampling.LANCZOS).save(OUTPUT_DIR / "story_image_00.png")
-            
+                final_cover.save(OUTPUT_DIR / "post_image_00.png")            
             print(f"   ✅ Saved {strategy['name']} to {opt_path.name}")
     else:
         print("   ⚠️ No images found for Hero Collage.")
