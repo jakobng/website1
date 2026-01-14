@@ -90,37 +90,27 @@ MARGIN = 60
 TITLE_WRAP_WIDTH = 30
 
 # --- PROMPTS ---
-PROMPT_SIMPLE = "An architectural mashup connecting these cinema buildings and interiors"
-PROMPT_SURREAL = "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids"
-PROMPT_TOKYO = "A surreal architectural homage to Tokyo's independent cinema culture, connecting buildings and interiors"
+PROMPT_SIMPLE = "An architectural mashup connecting these cinema buildings and interiors, strictly preserving the original structures of the theaters."
+PROMPT_SURREAL = "surreal dreamscape, architectural connective tissue, twisting non-euclidean geometry connecting movie theaters, strictly preserve the recognizable structures of the input buildings, intricate details, cinematic lighting"
+PROMPT_TOKYO = "A surreal architectural homage to Tokyo's independent cinema culture, connecting buildings and interiors with dream-like connective tissue while keeping the original facades recognizable."
 
 # --- HERO GENERATION STRATEGIES ---
 HERO_STRATEGIES = [
-    # SDXL RAW
+    # SDXL variations
     {"name": "SDXL_Raw_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
     {"name": "SDXL_Raw_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": False},
     {"name": "SDXL_Raw_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": False},
-    
-    # SDXL + GEMINI
-    {"name": "SDXL_Gemini_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True, 
-     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "SDXL_Gemini_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": True, 
-     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "SDXL_Gemini_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": True, 
-     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    
-    # FLUX RAW
+    {"name": "SDXL_Gemini_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True},
+    {"name": "SDXL_Gemini_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": True},
+    {"name": "SDXL_Gemini_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": True},
+
+    # FLUX variations
     {"name": "Flux_Raw_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
     {"name": "Flux_Raw_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": False},
     {"name": "Flux_Raw_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": False},
-    
-    # FLUX + GEMINI
-    {"name": "Flux_Gemini_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True,
-     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "Flux_Gemini_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": True,
-     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "Flux_Gemini_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": True,
-     "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
+    {"name": "Flux_Gemini_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True},
+    {"name": "Flux_Gemini_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": True},
+    {"name": "Flux_Gemini_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": True},
 ]
 
 # --- GLOBAL COLORS ---
@@ -445,23 +435,19 @@ def feather_cutout(img: Image.Image, erosion: int = 2, blur: int = 5) -> Image.I
     return img
 
 def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> tuple[Image.Image, Image.Image, Image.Image]:
-    width, height = target_width, target_height
+    width = target_width
+    height = target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    mask = Image.new("L", (width, height), 255) # 255 = area to inpaint
+    
+    # PURE WHITE BACKGROUND for clear inpainting signal
+    base_bg = Image.new("RGB", (width, height), (255, 255, 255))
+    
+    mask = Image.new("L", (width, height), 255) # 255 = inpaint
 
     imgs_to_process = cinemas[:4]
-    if len(imgs_to_process) < 4: imgs_to_process = (imgs_to_process * 4)[:4]
+    if len(imgs_to_process) < 4:
+        imgs_to_process = (imgs_to_process * 4)[:4]
     random.shuffle(imgs_to_process)
-
-    # Create a messy, blurred background from the images to give SD 'latent hints'
-    base_bg = Image.new("RGB", (width, height), (20, 20, 20))
-    for _, path in imgs_to_process:
-        try:
-            img_bg = Image.open(path).convert("RGB")
-            img_bg = ImageOps.fit(img_bg, (width, height))
-            img_bg = img_bg.filter(ImageFilter.GaussianBlur(50)) # More blur for smoother latent hints
-            base_bg = Image.blend(base_bg, img_bg, 0.5)
-        except: continue
 
     anchors = [
         (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7))),
@@ -498,7 +484,7 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             
             # 2. CREATE PROTECTIVE MASK
             alpha = cutout.split()[3]
-            # Protect almost the entire building, just erode a tiny bit for the edge blend
+            # Protect center of buildings, leave edges for blending
             core_mask = alpha.filter(ImageFilter.MinFilter(7)) 
             core_mask = core_mask.filter(ImageFilter.GaussianBlur(3))
             
@@ -506,10 +492,10 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
         except Exception as e:
             print(f"Error processing {name}: {e}")
 
-    # Final composite layout
+    # Composite buildings onto the WHITE background
     base_bg.paste(layout_rgba, (0,0), mask=layout_rgba)
 
-    # Global mask expansion - very small to keep SD from wandering too far
+    # Global mask expansion
     mask = mask.filter(ImageFilter.MaxFilter(5))
 
     return layout_rgba, base_bg, mask
@@ -519,29 +505,34 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
         print("   ⏩ Skipping Gemini refinement (as per strategy).")
         return pil_image
     
-    print(f"   ✨ Refining Hero Collage (Gemini) - Strategy: {strategy['name']}...")
+    print(f"   ✨ Refining Hero Collage (Gemini 3.0) - Strategy: {strategy['name']}...")
     try:
         if not GEMINI_API_KEY: return pil_image
         client = genai.Client(api_key=GEMINI_API_KEY)
         
-        prompt = strategy["gemini_prompt"].format(date_text=date_text)
-        prompt += f"\nContext Cinemas: {', '.join(cinema_names[:4])}."
-        prompt += "\nIMPORTANT: Respect the surreal architectural connections made in the previous step. Do not oversimplify or flatten the image."
+        # Smart Refinement Prompt - Gemini now handles the architectural logic
+        prompt = (
+            f"Refine this architectural mashup featuring: {', '.join(cinema_names[:4])}. "
+            "Unify the lighting and textures into a coherent 35mm film still aesthetic. "
+            "Ensure the buildings connect surrealistically while remaining recognizable. "
+            f"Sophisticatedly integrate 'TOKYO CINEMA' and the date '{date_text}' into the architecture or environment. "
+            "Do not be cliché. Make it feel intentional and sophisticated."
+        )
 
-        print(f"   📝 Gemini Prompt: {prompt}")
+        print(f"   📝 Gemini Refinement Prompt: {prompt}")
         
         # Simple retry logic for 503s
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
-                    model="gemini-3-pro-image-preview",
+                    model="gemini-3-0-flash-preview",
                     contents=[prompt, pil_image],
                     config=types.GenerateContentConfig(response_modalities=["IMAGE"])
                 )
                 for part in response.parts:
                     if part.inline_data:
                         return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
-                break # Success but no image? should not happen
+                break 
             except Exception as e:
                 if "503" in str(e) and attempt < 2:
                     print(f"      ⚠️ Gemini busy, retrying in {5 * (attempt+1)}s...")
@@ -708,23 +699,49 @@ def main():
         if path:
             cinema_images.append((c, path))
     
-    if cinema_images:
-        print(f"   🎨 Found {len(cinema_images)} images for collage. Generating {len(HERO_STRATEGIES)} hero options...")
-        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
+            if cinema_images:
+    
+                print(f"   🎨 Found {len(cinema_images)} images for collage. Generating {len(HERO_STRATEGIES)} hero options...")
+    
+                layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
+    
+                
+    
+                cinema_names = [c[0] for c in cinema_images]
+    
         
-        for i, strategy in enumerate(HERO_STRATEGIES):
-            print(f"\n   🚀 Generating Option {i+1}: {strategy['name']}")
-            cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
-            final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, [c[0] for c in cinema_images])
-            
-            # Save individual options with strategy name
-            clean_name = strategy['name'].replace(' ', '_')
-            opt_path = OUTPUT_DIR / f"hero_option_{i:02}_{clean_name}.png"
-            final_cover.save(opt_path)
-            
-            # Set the first one as default
-            if i == 0:
-                final_cover.save(OUTPUT_DIR / "post_image_00.png")            
+    
+                for i, strategy in enumerate(HERO_STRATEGIES):
+    
+                    print(f"\n   🚀 Generating Option {i+1}: {strategy['name']}")
+    
+                    
+    
+                    cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
+    
+                    final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, cinema_names)
+    
+                    
+    
+                    # Save individual options with strategy name
+    
+                    clean_name = strategy['name'].replace(' ', '_')
+    
+                    opt_path = OUTPUT_DIR / f"hero_option_{i:02}_{clean_name}.png"
+    
+                    final_cover.save(opt_path)
+    
+                    
+    
+                    # Set the first one as default
+    
+                    if i == 0:
+    
+                        final_cover.save(OUTPUT_DIR / "post_image_00.png")
+    
+        
+    
+                
             print(f"   ✅ Saved {strategy['name']} to {opt_path.name}")
     else:
         print("   ⚠️ No images found for Hero Collage.")
