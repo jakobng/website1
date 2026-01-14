@@ -92,19 +92,18 @@ TITLE_WRAP_WIDTH = 30
 # --- HERO GENERATION STRATEGIES ---
 HERO_STRATEGIES = [
     {
-        "name": "Raw VQ-GAN Latent Mashup",
-        "sd_prompt": "early AI vq-gan+clip style, surreal architectural mashup of Tokyo cinema buildings, latent space bleeding, glitched transitions, surprising structural connections, vibrant and messy dreamscape, artifact-heavy, kaleidoscopic cinema facades",
+        "name": "Simple Mashup",
+        "sd_prompt": "An architectural mashup connecting these cinema buildings and interiors",
         "use_gemini": False
     },
     {
         "name": "Surreal Cinema Dreamscape",
         "sd_prompt": "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids",
-        "use_gemini": False, # DISABLED FOR EXPERIMENTATION
-        "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal 'early AI' connections but elevate the final quality. Make the lighting and textures feel like a coherent, high-quality 35mm film still. The mashup should feel weird and surprising but intentional. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."
+        "use_gemini": False
     },
     {
-        "name": "Abstract Marquee Glitch",
-        "sd_prompt": "glitched and overlapping cinema marquees and neon signs, kaleidoscopic architectural mashup, vibrant liquid-like bleeding colors, early AI artifacts, dream-like structural incoherence",
+        "name": "Tokyo Cinema Homage",
+        "sd_prompt": "A surreal architectural homage to Tokyo's independent cinema culture, connecting buildings and interiors",
         "use_gemini": False
     }
 ]
@@ -559,7 +558,7 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
                 params = {
                     "image": open(temp_img, "rb"), 
                     "mask": open(temp_mask, "rb"),
-                    "prompt": f"{prompt}, architectural connective tissue, surprising surreal mashup, intricate details, cinematic lighting",
+                    "prompt": f"{prompt}, architectural connective tissue, intricate details, cinematic lighting",
                     "negative_prompt": "white background, empty space, frames, borders, text, watermark, bad anatomy, blurry",
                     "num_inference_steps": 50,
                     "guidance_scale": 15.0
