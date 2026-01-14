@@ -450,10 +450,10 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
         except: continue
 
     anchors = [
-        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8))),
-        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8))),
-        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8))),
-        (random.randint(int(width*0.2), int(width*0.8)), random.randint(int(height*0.2), int(height*0.8)))
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7))),
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7))),
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7))),
+        (random.randint(int(width*0.3), int(width*0.7)), random.randint(int(height*0.3), int(height*0.7)))
     ]
 
     for i, (name, path) in enumerate(imgs_to_process):
@@ -471,10 +471,10 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             if bbox: cutout = cutout.crop(bbox)
             
             # 1. Soften the cutout itself
-            cutout = feather_cutout(cutout, erosion=3, blur=5)
+            cutout = feather_cutout(cutout, erosion=2, blur=3)
 
-            scale = random.uniform(0.7, 1.2) # More scale variance
-            max_dim = int(700 * scale)
+            scale = random.uniform(0.7, 1.1)
+            max_dim = int(750 * scale)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
 
             cx, cy = anchors[i]
@@ -482,11 +482,11 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             
-            # 2. CREATE AGGRESSIVE MASK
+            # 2. CREATE PROTECTIVE MASK
             alpha = cutout.split()[3]
-            # Erode heavily to force SD to redraw the edges of the buildings
-            core_mask = alpha.filter(ImageFilter.MinFilter(35)) 
-            core_mask = core_mask.filter(ImageFilter.GaussianBlur(15))
+            # Protect almost the entire building, just erode a tiny bit for the edge blend
+            core_mask = alpha.filter(ImageFilter.MinFilter(7)) 
+            core_mask = core_mask.filter(ImageFilter.GaussianBlur(3))
             
             mask.paste(0, (x, y), mask=core_mask)
         except Exception as e:
@@ -495,8 +495,8 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     # Final composite layout
     base_bg.paste(layout_rgba, (0,0), mask=layout_rgba)
 
-    # Global mask expansion
-    mask = mask.filter(ImageFilter.MaxFilter(11))
+    # Global mask expansion - very small to keep SD from wandering too far
+    mask = mask.filter(ImageFilter.MaxFilter(5))
 
     return layout_rgba, base_bg, mask
 
