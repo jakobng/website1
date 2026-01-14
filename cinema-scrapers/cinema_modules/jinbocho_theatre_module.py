@@ -17,7 +17,7 @@ def clean_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def fetch_soup(url: str, *, encoding: str = "shift_jis") -> Optional[BeautifulSoup]:
+def fetch_soup(url: str, *, encoding: str = "utf-8") -> Optional[BeautifulSoup]:
     """Fetch a URL and return a BeautifulSoup object, or None on error."""
     try:
         resp = requests.get(url, timeout=10)
@@ -183,19 +183,71 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
     return results
 
 
+def _get_current_program_urls() -> List[str]:
+    """
+    Scrape the main page to find current and upcoming program URLs.
+    Returns a list of absolute URLs to program pages.
+    """
+    site_root = BASE_URL.replace("program/", "") # https://www.shogakukan.co.jp/jinbocho-theater/
+    soup = fetch_soup(site_root)
+    if soup is None:
+        return []
+
+    program_urls = set()
+    
+    # Look for links in the "Now Showing" and "Coming Soon" sections
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        # normalize to absolute URL using the site root, not the program base
+        full_url = urljoin(site_root, href)
+        
+        # Check if it looks like a program page
+        if "/program/" in full_url and full_url.endswith(".html") and "index.html" not in full_url and "coming.html" not in full_url:
+             program_urls.add(full_url)
+
+    return list(program_urls)
+
+
 def scrape_jinbocho() -> List[Dict]:
     """
     Public entry point used by main_scraper.
-
-    Currently hard-coded to the 'fujimura' program page.
-    If you later want to support multiple slugs, you can
-    extend this to loop over a list of program slugs.
+    Dynamically finds program pages from the homepage.
     """
-    return _parse_program_page("fujimura")
+    all_showings = []
+    
+    # 1. Get program URLs from main page
+    program_urls = _get_current_program_urls()
+    print(f"DEBUG: Found program URLs: {program_urls}", file=sys.stderr)
+
+    # 2. Parse each program page
+    for url in program_urls:
+        # Extract slug from URL for the _parse_program_page function if we want to keep using it as is,
+        # OR better, modify _parse_program_page to handle the URL directly. 
+        # But _parse_program_page constructs URL from slug: 
+        # program_url = urljoin(BASE_URL, f"{program_slug}.html")
+        
+        # Let's extract the slug:
+        # .../program/slug.html -> slug
+        match = re.search(r"/program/([^/]+)\.html$", url)
+        if match:
+            slug = match.group(1)
+            # Avoid re-scraping list pages directly (though the logic handles it, usually we want the parent program page)
+            if "_list" in slug:
+                continue
+                
+            print(f"DEBUG: Scraping program: {slug}", file=sys.stderr)
+            showings = _parse_program_page(slug)
+            all_showings.extend(showings)
+            
+    return all_showings
 
 
 if __name__ == "__main__":
     data = scrape_jinbocho()
     print(f"{len(data)} showings found")
-    for d in data[:3]:
+    
+    with_times = [d for d in data if d['showtime']]
+    print(f"Showings with times: {len(with_times)}")
+    
+    for d in with_times[:3]:
         print(d)
