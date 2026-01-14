@@ -205,13 +205,20 @@ def scrape_bfi_imax() -> List[Dict]:
         if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
             continue
 
+        full_url = urljoin(SCHEDULE_URL, event["url"])
+        booking_url = full_url
+        detail_page_url = full_url
+        if "&BOparam::WScontent::loadArticle::context_id=" in full_url:
+            detail_page_url = re.sub(r"&BOparam::WScontent::loadArticle::context_id=[^&]+", "", full_url)
+
         shows.append({
             "cinema_name": CINEMA_NAME,
             "movie_title": title,
             "movie_title_en": title,
             "date_text": show_date.isoformat(),
             "showtime": parsed_dt.strftime("%H:%M"),
-            "detail_page_url": urljoin(BASE_URL, event["url"]),
+            "detail_page_url": detail_page_url,
+            "booking_url": booking_url,
             "director": "",
             "year": "",
             "country": "",

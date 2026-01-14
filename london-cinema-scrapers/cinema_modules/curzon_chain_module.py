@@ -117,14 +117,24 @@ def scrape_venue(page, cinema_name, slug) -> List[Dict]:
     
     shows = []
     try:
-        page.goto(venue_url, wait_until="networkidle", timeout=45000)
+        # Changed networkidle to domcontentloaded - networkidle is too strict and often times out
+        page.goto(venue_url, wait_until="domcontentloaded", timeout=60000)
+        
+        # Give it a second to stabilize
+        page.wait_for_timeout(2000)
         
         # Wait for film list selector
         try:
-            page.wait_for_selector(".v-showtime-picker-film-list", timeout=20000)
+            page.wait_for_selector(".v-showtime-picker-film-list", timeout=30000)
         except PlaywrightTimeout:
-            print(f"[{cinema_name}] Timeout waiting for film list (or no films)", file=sys.stderr)
-            return []
+            # Fallback: maybe it just needs more time for 'load'
+            print(f"[{cinema_name}] Retrying with wait_until='load'...", file=sys.stderr)
+            page.goto(venue_url, wait_until="load", timeout=60000)
+            try:
+                page.wait_for_selector(".v-showtime-picker-film-list", timeout=20000)
+            except:
+                print(f"[{cinema_name}] Timeout waiting for film list (or no films)", file=sys.stderr)
+                return []
 
         _dismiss_yie_overlay(page)
 

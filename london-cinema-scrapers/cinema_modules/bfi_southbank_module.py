@@ -437,7 +437,17 @@ def scrape_bfi_southbank() -> List[Dict]:
                 continue
 
             event_url = event.get("url", "")
-            detail_url = urljoin(BASE_URL, event_url) if event_url else ""
+            if event_url:
+                # detail_url should be the general film page (strip context_id if present)
+                # booking_url can be the specific performance page
+                full_url = urljoin(SCHEDULE_URL, event_url)
+                booking_url = full_url
+                detail_page_url = full_url
+                if "&BOparam::WScontent::loadArticle::context_id=" in full_url:
+                    detail_page_url = re.sub(r"&BOparam::WScontent::loadArticle::context_id=[^&]+", "", full_url)
+            else:
+                detail_page_url = ""
+                booking_url = ""
 
             sub_events = event.get("subEvent") or event.get("eventSchedule") or []
             if isinstance(sub_events, dict):
@@ -460,7 +470,8 @@ def scrape_bfi_southbank() -> List[Dict]:
                         "movie_title_en": title,
                         "date_text": show_date.isoformat(),
                         "showtime": parsed_dt.strftime("%H:%M"),
-                        "detail_page_url": detail_url,
+                        "detail_page_url": detail_page_url,
+                        "booking_url": booking_url,
                         "director": "",
                         "year": "",
                         "country": "",
@@ -481,7 +492,8 @@ def scrape_bfi_southbank() -> List[Dict]:
                     "movie_title_en": title,
                     "date_text": show_date.isoformat(),
                     "showtime": parsed_dt.strftime("%H:%M"),
-                    "detail_page_url": detail_url,
+                    "detail_page_url": detail_page_url,
+                    "booking_url": booking_url,
                     "director": "",
                     "year": "",
                     "country": "",
@@ -517,9 +529,14 @@ def scrape_bfi_southbank() -> List[Dict]:
                     continue
 
                 link_elem = listing.select_one("a[href]")
-                detail_url = ""
+                detail_page_url = ""
+                booking_url = ""
                 if link_elem and link_elem.get("href"):
-                    detail_url = urljoin(BASE_URL, link_elem["href"])
+                    full_url = urljoin(SCHEDULE_URL, link_elem["href"])
+                    booking_url = full_url
+                    detail_page_url = full_url
+                    if "&BOparam::WScontent::loadArticle::context_id=" in full_url:
+                        detail_page_url = re.sub(r"&BOparam::WScontent::loadArticle::context_id=[^&]+", "", full_url)
 
                 shows.append({
                     "cinema_name": CINEMA_NAME,
@@ -527,7 +544,8 @@ def scrape_bfi_southbank() -> List[Dict]:
                     "movie_title_en": title,
                     "date_text": show_date.isoformat(),
                     "showtime": show_time,
-                    "detail_page_url": detail_url,
+                    "detail_page_url": detail_page_url,
+                    "booking_url": booking_url,
                     "director": "",
                     "year": "",
                     "country": "",
