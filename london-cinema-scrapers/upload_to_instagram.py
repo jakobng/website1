@@ -22,41 +22,67 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
 
 
 def upload_single_image_container(image_url, caption):
-    """Creates a media container for a single image post."""
+    """Creates a media container for a single image post with retries."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
     payload = {
         "image_url": image_url,
         "caption": caption,
         "access_token": IG_ACCESS_TOKEN
     }
-    response = requests.post(url, data=payload)
-    result = response.json()
+    
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(url, data=payload)
+            result = response.json()
 
-    if "id" not in result:
-        print(f"❌ Error creating single container: {result}")
-        sys.exit(1)
+            if "id" in result:
+                print(f"✅ Created Single Container ID: {result['id']}")
+                return result["id"]
+            else:
+                print(f"   ⚠️ Attempt {attempt+1} failed: {result.get('error', {}).get('message', 'Unknown error')}")
+                if attempt < max_retries - 1:
+                    time.sleep(10)
+        except Exception as e:
+            print(f"   ⚠️ Attempt {attempt+1} exception: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(10)
 
-    print(f"✅ Created Single Container ID: {result['id']}")
-    return result["id"]
+    print(f"❌ Error creating single container after {max_retries} attempts")
+    sys.exit(1)
 
 
 def upload_carousel_child_container(image_url):
-    """Creates a child container for an item inside a carousel."""
+    """Creates a child container for an item inside a carousel with retries."""
+
+    """Creates a child container for an item inside a carousel with retries."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
     payload = {
         "image_url": image_url,
         "is_carousel_item": "true",
         "access_token": IG_ACCESS_TOKEN
     }
-    response = requests.post(url, data=payload)
-    result = response.json()
+    
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(url, data=payload)
+            result = response.json()
 
-    if "id" not in result:
-        print(f"❌ Error creating child container: {result}")
-        return None
+            if "id" in result:
+                print(f"   - Child Container Created: {result['id']}")
+                return result["id"]
+            else:
+                print(f"   ⚠️ Attempt {attempt+1} failed: {result.get('error', {}).get('message', 'Unknown error')}")
+                if attempt < max_retries - 1:
+                    time.sleep(10) # Wait longer between retries
+        except Exception as e:
+            print(f"   ⚠️ Attempt {attempt+1} exception: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(10)
 
-    print(f"   - Child Container Created: {result['id']}")
-    return result["id"]
+    print(f"❌ Failed to create child container after {max_retries} attempts for: {image_url}")
+    return None
 
 
 def upload_carousel_container(child_ids, caption):
@@ -80,22 +106,34 @@ def upload_carousel_container(child_ids, caption):
 
 
 def upload_story_container(image_url):
-    """Creates a media container for a STORY."""
+    """Creates a media container for a STORY with retries."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
     payload = {
         "image_url": image_url,
         "media_type": "STORIES",
         "access_token": IG_ACCESS_TOKEN
     }
-    response = requests.post(url, data=payload)
-    result = response.json()
+    
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(url, data=payload)
+            result = response.json()
 
-    if "id" not in result:
-        print(f"❌ Error creating Story container: {result}")
-        return None
+            if "id" in result:
+                print(f"✅ Created Story Container ID: {result['id']}")
+                return result["id"]
+            else:
+                print(f"   ⚠️ Attempt {attempt+1} failed: {result.get('error', {}).get('message', 'Unknown error')}")
+                if attempt < max_retries - 1:
+                    time.sleep(10)
+        except Exception as e:
+            print(f"   ⚠️ Attempt {attempt+1} exception: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(10)
 
-    print(f"✅ Created Story Container ID: {result['id']}")
-    return result["id"]
+    print(f"❌ Error creating Story container after {max_retries} attempts")
+    return None
 
 
 def publish_media(creation_id):

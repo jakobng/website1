@@ -108,6 +108,17 @@ def normalize_string(s):
     if not s: return ""
     return re.sub(r'\W+', '', str(s)).lower()
 
+def is_major_chain(cinema_name: str) -> bool:
+    """Returns True if the cinema belongs to a major chain (Everyman, Picturehouse, Curzon)."""
+    if not cinema_name: return False
+    name = cinema_name.lower()
+    if "everyman" in name or "picturehouse" in name or "curzon" in name:
+        return True
+    # Special cases for Picturehouses that don't have "picturehouse" in the name
+    if name in ["ritzy cinema", "the gate"]:
+        return True
+    return False
+
 def download_image(path: str) -> Image.Image | None:
     if not path: return None
     if path.startswith("http"):
@@ -700,6 +711,9 @@ def main():
     for item in raw_data:
         if item.get('date_text') == primary_date:
             if not item.get('tmdb_backdrop_path'): continue
+            # Skip candidates that only have major chain showings today
+            if is_major_chain(item.get('cinema_name')): continue
+            
             fid = item.get('tmdb_id')
             if not fid: fid = normalize_string(item.get('movie_title'))
             candidates_today.add(fid)
@@ -708,6 +722,11 @@ def main():
     for item in raw_data:
         d_text = item.get('date_text')
         if d_text not in date_strs: continue
+        
+        # Skip major chain showings
+        cinema = item.get('cinema_name', '')
+        if is_major_chain(cinema): continue
+        
         fid = item.get('tmdb_id')
         if not fid: fid = normalize_string(item.get('movie_title'))
         if fid not in candidates_today: continue
@@ -718,7 +737,6 @@ def main():
             films_map[fid]['multi_day_showings'] = defaultdict(lambda: defaultdict(list))
             films_map[fid]['unique_id'] = fid
         
-        cinema = item.get('cinema_name', '')
         time_str = item.get('showtime', '')
         films_map[fid]['multi_day_showings'][d_text][cinema].append(time_str)
 
@@ -769,8 +787,14 @@ def main():
         caption_lines.append("\n" + "-"*15 + "\n")
         
     caption_lines.append("Link in Bio for Full Schedule\n#LondonCinema #FilmSpotlight #IndieFilm")
+    
+    full_caption = "\n".join(caption_lines)
+    if len(full_caption) > 2100:
+        print(f"⚠️ Caption too long ({len(full_caption)} chars). Truncating...")
+        full_caption = full_caption[:2100] + "... (truncated)"
+        
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
-        f.write("\n".join(caption_lines))
+        f.write(full_caption)
     print("Done. V2 Movie Spotlight Generated.")
 
 if __name__ == "__main__":

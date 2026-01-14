@@ -327,6 +327,16 @@ def normalize_name(s):
     s = str(s).lower()
     return re.sub(r'[^a-z0-9]', '', s)
 
+def is_major_chain(cinema_name: str) -> bool:
+    """Returns True if the cinema belongs to a major chain (Everyman, Picturehouse, Curzon)."""
+    if not cinema_name: return False
+    name = cinema_name.lower()
+    if "everyman" in name or "picturehouse" in name or "curzon" in name:
+        return True
+    # Special cases for Picturehouses that don't have "picturehouse" in the name
+    if name in ["ritzy cinema", "the gate"]:
+        return True
+    return False
 
 def get_cinema_image_path(cinema_name: str, use_cutouts: bool = True) -> Path | None:
     """
@@ -674,8 +684,14 @@ def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: list
 Full schedule: link in bio
 """
     lines.append(footer)
+    
+    full_caption = "\n".join(lines)
+    if len(full_caption) > 2100:
+        print(f"⚠️ Caption too long ({len(full_caption)} chars). Truncating...")
+        full_caption = full_caption[:2100] + "... (truncated)"
+        
     with OUTPUT_CAPTION_PATH.open("w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
+        f.write(full_caption)
 
 
 def main() -> None:
@@ -726,7 +742,9 @@ def main() -> None:
     valid_cinemas = []
     for c_name, shows in grouped.items():
         if len(shows) >= MINIMUM_FILM_THRESHOLD:
-            valid_cinemas.append(c_name)
+            # Skip major chains to spotlight independent cinemas
+            if not is_major_chain(c_name):
+                valid_cinemas.append(c_name)
     candidates = [c for c in valid_cinemas if c not in featured_names]
     if not candidates:
         candidates = valid_cinemas
