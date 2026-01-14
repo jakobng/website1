@@ -43,6 +43,7 @@ from cinema_modules import (
     cine_quinto_module,
     yebisu_garden_module,
     k2_cinema_module,
+    kino_cinema_module,
     cinema_rosa_module,
     chupki_module,
     uplink_kichijoji_module,
@@ -53,7 +54,9 @@ from cinema_modules import (
     institut_francais_module,
     jack_and_betty_module,
     athenee_francais_module,
-    white_cine_quinto_module
+    white_cine_quinto_module,
+    cinema_novecento_module,
+    yokohama_cinemarine_module
 )
 
 # --- Configuration ---
@@ -468,6 +471,7 @@ def main():
         ("Yebisu Garden Cinema", yebisu_garden_module.scrape_yebisu_garden_cinema, None),
         
         ("K2 Cinema", k2_cinema_module.scrape_k2_cinema, None),
+        ("Kino Cinema", kino_cinema_module.scrape_kino_cinema, None),
         ("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa, None),
         ("Chupki", chupki_module.scrape_chupki, None),
         ("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji, None),
@@ -497,11 +501,17 @@ def main():
         # Jack and Betty Yokohama
         ("Jack and Betty Yokohama", jack_and_betty_module.scrape_jack_and_betty, None),
 
+        # Cinema Novecento (Yokohama)
+        ("Cinema Novecento", cinema_novecento_module.scrape_cinema_novecento, None),
+
         # Athénée Français Cultural Center
         ("Athenee Francais", athenee_francais_module.scrape_athenee_francais, None),
 
         # White Cine Quinto
         ("White Cine Quinto", white_cine_quinto_module.scrape_white_cine_quinto, None),
+
+        # Yokohama Cinemarine
+        ("Yokohama Cinemarine", yokohama_cinemarine_module.scrape_yokohama_cinemarine, None),
     ]
 
     print("Starting all scrapers…")
