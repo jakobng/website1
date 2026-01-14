@@ -504,10 +504,10 @@ def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
         analysis_prompt = (
             f"Analyze this architectural mashup containing elements of these cinemas: {', '.join(cinema_names[:4])}. "
             "Identify the most successful structural connections and the areas that feel disjointed. "
-            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal dreamlike structure that serves as a kind of weird homage (interior+exteriors). "
+            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal 'Tokyo Cinema' masterpiece. "
             "Refer to specific visual sections (e.g., 'the red marquee on the left', 'the concrete textures in the center'). "
             "Explain how to unify the lighting, shadows, and architectural transitions while strictly preserving the recognizable theater facades. "
-            "Write this as a highly detailed, 100-word creative brief for the final rendering step. Be specific about sections and where they are in the frame."
+            "Write this as a highly detailed, 100-word creative brief for the final rendering step."
         )
 
         response = client.models.generate_content(
@@ -562,10 +562,16 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
                     contents=[prompt, pil_image],
                     config=types.GenerateContentConfig(response_modalities=["IMAGE"])
                 )
+                
+                if not response or not response.parts:
+                    print(f"      ⚠️ No parts in response (Attempt {attempt+1}). Check safety filters.")
+                    continue
+
                 for part in response.parts:
                     if part.inline_data:
                         return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
-                break 
+                
+                print(f"      ⚠️ No image found in response parts (Attempt {attempt+1}).")
             except Exception as e:
                 if "503" in str(e) and attempt < 2:
                     print(f"      ⚠️ Gemini busy, retrying in {5 * (attempt+1)}s...")
