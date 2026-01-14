@@ -89,28 +89,37 @@ STORY_CANVAS_HEIGHT = 1920
 MARGIN = 60 
 TITLE_WRAP_WIDTH = 30
 
-# --- HERO GENERATION STRATEGIES ---
-# Updated to run a matrix: Flux/SDXL x Raw/Gemini
-SURREAL_PROMPT = "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids"
+# --- PROMPTS ---
+PROMPT_SIMPLE = "An architectural mashup connecting these cinema buildings and interiors"
+PROMPT_SURREAL = "dream-like architectural collage connecting movie theaters, impossible non-euclidean geometry, atmospheric neon lighting, early AI aesthetic, surprising organic-architectural hybrids"
+PROMPT_TOKYO = "A surreal architectural homage to Tokyo's independent cinema culture, connecting buildings and interiors"
 
+# --- HERO GENERATION STRATEGIES ---
 HERO_STRATEGIES = [
-    {"name": "SDXL_Raw", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
-    {"name": "SDXL_Raw", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
-    {"name": "SDXL_Raw", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
-    {"name": "SDXL_Gemini", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": True, 
+    # SDXL RAW
+    {"name": "SDXL_Raw_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
+    {"name": "SDXL_Raw_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": False},
+    {"name": "SDXL_Raw_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": False},
+    
+    # SDXL + GEMINI
+    {"name": "SDXL_Gemini_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True, 
      "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "SDXL_Gemini", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": True, 
+    {"name": "SDXL_Gemini_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": True, 
      "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "SDXL_Gemini", "model": "sdxl", "sd_prompt": SURREAL_PROMPT, "use_gemini": True, 
+    {"name": "SDXL_Gemini_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": True, 
      "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "Flux_Raw", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
-    {"name": "Flux_Raw", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
-    {"name": "Flux_Raw", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": False},
-    {"name": "Flux_Gemini", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": True,
+    
+    # FLUX RAW
+    {"name": "Flux_Raw_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
+    {"name": "Flux_Raw_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": False},
+    {"name": "Flux_Raw_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": False},
+    
+    # FLUX + GEMINI
+    {"name": "Flux_Gemini_Simple", "model": "flux", "sd_prompt": PROMPT_SIMPLE, "use_gemini": True,
      "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "Flux_Gemini", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": True,
+    {"name": "Flux_Gemini_Surreal", "model": "flux", "sd_prompt": PROMPT_SURREAL, "use_gemini": True,
      "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
-    {"name": "Flux_Gemini", "model": "flux", "sd_prompt": SURREAL_PROMPT, "use_gemini": True,
+    {"name": "Flux_Gemini_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": True,
      "gemini_prompt": "Refine this architectural mashup. Maintain the surprising, surreal connections but elevate the final quality. Subtly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene."},
 ]
 
