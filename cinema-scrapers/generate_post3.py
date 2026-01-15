@@ -412,8 +412,8 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
             
-            # Fix: Ensure cutout isn't too small for filters
-            if min(cutout.size) < 10: continue
+            # Fix: Ensure cutout isn't too small for processing
+            if min(cutout.size) < 5: continue
             
             cutout = feather_cutout(cutout, erosion=2, blur=3)
             scale = random.uniform(0.7, 1.1)
@@ -425,9 +425,9 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             layout_rgba.paste(cutout, (x, y), mask=cutout)
             
             alpha = cutout.split()[3]
-            # Fix: Safe filter application
-            if min(cutout.size) > 10:
-                core_mask = alpha.filter(ImageFilter.MinFilter(4)).filter(ImageFilter.GaussianBlur(3))
+            # Fix: Use ODD number (3) for MinFilter to avoid 'bad filter size'
+            if min(cutout.size) > 5:
+                core_mask = alpha.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(3))
                 mask.paste(0, (x, y), mask=core_mask)
             else:
                 mask.paste(0, (x, y), mask=alpha)
