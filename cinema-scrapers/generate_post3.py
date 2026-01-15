@@ -559,13 +559,24 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: list[dict
 def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: list[dict]) -> None:
     lines = [f"🗓️ 本日の東京ミニシアター上映情報 / Today's Featured Showtimes ({date_str})\n"]
     for item in all_featured_cinemas:
-        cinema_name = item['cinema_name']; address = CINEMA_ADDRESSES.get(cinema_name, "")
+        cinema_name = item['cinema_name']
+        address = CINEMA_ADDRESSES.get(cinema_name, "")
         lines.append(f"\n--- 【{cinema_name}】 ---")
-        if address: lines.append(f"📍 {address.split('\n')[0]}") 
-        for listing in item['listings']: lines.append(f"• {listing['title']}")
-    dynamic_hashtag = "".join(ch for ch in all_featured_cinemas[0]['cinema_name'] if ch.isalnum() or "\u3040" <= ch <= "\uffff") if all_featured_cinemas else "IndieCinema"
+        if address:
+            jp_address = address.split('\n')[0]
+            lines.append(f"📍 {jp_address}") 
+        for listing in item['listings']:
+            lines.append(f"• {listing['title']}")
+    
+    if all_featured_cinemas:
+        first_name = all_featured_cinemas[0]['cinema_name']
+        dynamic_hashtag = "".join(ch for ch in first_name if ch.isalnum() or "\u3040" <= ch <= "\uffff")
+    else:
+        dynamic_hashtag = "IndieCinema"
+        
     lines.append(f"\n#TokyoIndieCinema #{dynamic_hashtag} #MiniTheater #MovieLog\nCheck Bio for Full Schedule")
-    with OUTPUT_CAPTION_PATH.open("w", encoding="utf-8") as f: f.write("\n".join(lines))
+    with OUTPUT_CAPTION_PATH.open("w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
 
 def main():
     today = today_in_tokyo().date(); today_str = today.isoformat()
