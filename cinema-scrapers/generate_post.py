@@ -1,6 +1,6 @@
 """
-Generate Instagram-ready image carousel (V2.2 - "Proportional Story Cover").
-REPLACES V28/V61.
+Generate Instagram-ready image carousel (V4 - "Gemini Creative Director").
+Focuses on "Raw Collage -> Gemini Director -> Gemini Generator" pipeline.
 """
 from __future__ import annotations
 
@@ -38,22 +38,12 @@ except ImportError:
         print(f"⚠️ Critical: Failed to install 'google-genai'. Refinement will be skipped. Error: {e}")
 
 # --- ⚡ FIX: Force JST (UTC+9) explicitly ---
-# This ensures 'today' is Wednesday, even if the server thinks it's Tuesday (UTC).
 JST = timezone(timedelta(hours=9))
 
 def today_in_tokyo() -> datetime:
-    """Returns JST datetime, ignoring server timezone settings."""
     return datetime.now(timezone.utc).astimezone(JST)
 
-# --- API Setup ---
-try:
-    import replicate
-    REPLICATE_AVAILABLE = True
-except ImportError:
-    print("⚠️ Replicate library not found. Run: pip install replicate")
-    REPLICATE_AVAILABLE = False
-
-# --- Configuration ---
+# Configuration
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 FONTS_DIR = BASE_DIR / "fonts"
@@ -73,10 +63,9 @@ BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
 
 # Secrets
-REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
-# --- Constants ---
+# --- CONSTANTS ---
 MINIMUM_FILM_THRESHOLD = 3
 INSTAGRAM_SLIDE_LIMIT = 8 
 MAX_FEED_VERTICAL_SPACE = 750 
@@ -123,11 +112,7 @@ CINEMA_ADDRESSES = {
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F",
     "下北沢トリウッド": "東京都世田谷区代沢5-32-5 2F",
     "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F",
-    "シネマリス": "東京都新宿区新宿3-29-6",
-    "アテネ・フランセ文化センター": "東京都千代田区神田駿河台2-1",
-    "ホワイト シネクイント": "東京都渋谷区宇田川町15-1 渋谷パルコ 8F",
-    "横浜シネマ・ジャック＆ベティ": "神奈川県横浜市中区若葉町3-51",
-    "アンスティチュ・フランセ東京": "東京都新宿区市谷船河原町15"
+    "シネマリス": "東京都新宿区新宿3-29-6"
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -159,21 +144,29 @@ CINEMA_ENGLISH_NAMES = {
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
     "下北沢トリウッド": "Tollywood",
-    "シネマリス": "CineMalice",
-    "アテネ・フランセ文化センター": "Athenee Francais Cultural Center",
-    "ホワイト シネクイント": "White Cine Quinto",
-    "横浜シネマ・ジャック＆ベティ": "Jack and Betty Yokohama",
-    "アンスティチュ・フランセ東京": "Institut Francais Tokyo"
+    "シネマリス": "CineMalice"
 }
 
 CINEMA_FILENAME_OVERRIDES = {
     "国立映画アーカイブ": "nfaj",
     "シネマリス": "cinemalice",
-    "109シネマズプレミアム新宿": "109cinemaspremiumshinjuku",
-    "TOHOシネマズ 新宿": "tohoshinjuku",
-    "TOHOシネマズ 日比谷": "tohohibiya",
-    "新宿ピカデリー": "shinjukupiccadilly",
-    "ポレポレ東中野": "polepole"
+    "ポレポレ東中野": "polepole",
+    "新宿武蔵野館": "musashino_kan",
+    "新宿シネマカリテ": "qualite",
+    "池袋シネマ・ロサ": "rosa",
+    "シアター・イメージフォーラム": "image_forum",
+    "シネマブルースタジオ": "blue_studio",
+    "ヒューマントラストシネマ渋谷": "human_shibuya",
+    "ヒューマントラストシネマ有楽町": "human_yurakucho",
+    "アップリンク吉祥寺": "uplink",
+    "新文芸坐": "shin_bungeiza",
+    "早稲田松竹": "waseda_shochiku",
+    "ホワイト シネクイント": "cine_quinto",
+    "シネクイント": "cine_quinto",
+    "渋谷シネクイント": "cine_quinto",
+    "K's Cinema": "ks_cinema",
+    "K's Cinema (ケイズシネマ)": "ks_cinema",
+    "下高井戸シネマ": "shimotakaido"
 }
 
 # --- Utility Functions ---
@@ -191,7 +184,7 @@ def is_probably_not_japanese(text: str | None) -> bool:
 def clean_search_title(title: str) -> str:
     if not title: return ""
     title = re.sub(r'[\(（].*?[\)）]', '', title)
-    title = re.sub(r'[\[【].*?[\]】]', '', title)
+    title = re.sub(r'[\\\[\u3010].*?[\\\]\u3011]', '', title)
     keywords = ["4K", "2K", "3D", "IMAX", "Dolby", "Atmos", "レストア", "デジタル", "リマスター", "完全版", "ディレクターズカット", "劇場版", "特別上映", "特集", "上映後トーク", "舞台挨拶"]
     for kw in keywords:
         title = title.replace(kw, "")
@@ -241,7 +234,7 @@ def format_listings(showings: list[dict]) -> list[dict[str, str | None]]:
         times.sort()
         formatted.append({
             "title": title, 
-            "en_title": en_title, 
+            "en_title": en_title,
             "times": ", ".join(times),
             "first_showtime": times[0] if times else "23:59"
         })
@@ -272,451 +265,342 @@ def segment_listings(listings: list[dict[str, str | None]], max_height: int, spa
         SEGMENTED_LISTS.append(current_segment)
     return SEGMENTED_LISTS
 
-def get_recently_featured(caption_path: Path) -> list[str]:
-    if not caption_path.exists(): return []
-    try:
-        content = caption_path.read_text(encoding="utf-8")
-        names = re.findall(r"--- 【(.*?)】 ---", content)
-        return names
-    except Exception as e:
-        print(f"   [WARN] Could not read previous caption: {e}")
-        return []
-
-# --- ASSET & REPLICATE LOGIC ---
-
 def normalize_name(s):
     s = str(s).lower()
-    return re.sub(r'[^a-z0-9]', '', s)
+    return re.sub(r'[^a-z0-9_]', '', s)
 
 def get_cinema_image_path(cinema_name: str) -> Path | None:
-    """Get full cinema image for slide backgrounds from ASSETS_DIR."""
     if not ASSETS_DIR.exists(): return None
     if cinema_name in CINEMA_FILENAME_OVERRIDES:
         target = CINEMA_FILENAME_OVERRIDES[cinema_name]
     else:
-        clean_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "") or cinema_name
-        target = normalize_name(clean_name).replace("cinema", "").replace("theatre", "").strip()
-
-    if not target: return None
+        en_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+        if en_name:
+            target = normalize_name(en_name).replace("cinema", "").replace("theatre", "").strip()
+        else:
+            target = normalize_name(cinema_name)
 
     candidates = list(ASSETS_DIR.glob("*"))
     matches = []
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
-        f_name = normalize_name(f.stem)
-        if target in f_name:
+        f_name_norm = normalize_name(f.stem)
+        if target == f_name_norm: return f
+        if target in f_name_norm or f_name_norm in target:
             matches.append(f)
         else:
-            ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
-            if ratio > 0.6:
+            ratio = difflib.SequenceMatcher(None, target, f_name_norm).ratio()
+            if ratio > 0.6: 
                 matches.append(f)
-
-    if matches:
-        return random.choice(matches)
-    return None
+    return random.choice(matches) if matches else None
 
 def get_cutout_path(cinema_name: str) -> Path | None:
-    """Get cutout image for hero collage from CUTOUTS_DIR subfolder."""
     if not CUTOUTS_DIR.exists(): return None
     if cinema_name in CINEMA_FILENAME_OVERRIDES:
         target = CINEMA_FILENAME_OVERRIDES[cinema_name]
     else:
-        clean_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "") or cinema_name
-        target = normalize_name(clean_name).replace("cinema", "").replace("theatre", "").strip()
-
-    if not target: return None
-
+        en_name = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
+        if en_name:
+            target = normalize_name(en_name).replace("cinema", "").replace("theatre", "").strip()
+        else:
+            target = normalize_name(cinema_name)
     candidates = list(CUTOUTS_DIR.glob("*"))
     matches = []
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
-        f_name = normalize_name(f.stem)
-        if target in f_name:
+        f_name_norm = normalize_name(f.stem)
+        if target == f_name_norm: return f
+        if target in f_name_norm or f_name_norm in target:
             matches.append(f)
         else:
-            ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
+            ratio = difflib.SequenceMatcher(None, target, f_name_norm).ratio()
             if ratio > 0.6:
                 matches.append(f)
-
-    if matches:
-        return random.choice(matches)
-    return None
+    return random.choice(matches) if matches else None
 
 def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Image.Image:
-    """Convert white/near-white pixels to transparent for cutouts with white backgrounds."""
     img = img.convert("RGBA")
-    data = img.getdata()
-    new_data = []
-    for item in data:
-        # If pixel is white-ish (all RGB values above threshold), make transparent
-        if item[0] > threshold and item[1] > threshold and item[2] > threshold:
-            new_data.append((255, 255, 255, 0))
-        else:
-            new_data.append(item)
-    img.putdata(new_data)
+    r, g, b, a = img.split()
+    mask = ImageChops.darker(ImageChops.darker(r.point(lambda x: 255 if x > threshold else 0),
+                                               g.point(lambda x: 255 if x > threshold else 0)),
+                             b.point(lambda x: 255 if x > threshold else 0))
+    new_alpha = ImageChops.subtract(a, mask)
+    img.putalpha(new_alpha)
     return img
 
-def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN: 
-        return pil_img.convert("RGBA")
-    try:
-        temp_in = BASE_DIR / "temp_rembg_in.png"
-        pil_img.save(temp_in, format="PNG")
-        output = replicate.run(
-            "lucataco/remove-bg:95fcc2a26d3899cd6c2691c900465aaeff466285a65c14638cc5f36f34befaf1",
-            input={"image": open(temp_in, "rb")}
-        )
-        if temp_in.exists(): os.remove(temp_in)
-        if output:
-            resp = requests.get(str(output))
-            if resp.status_code == 200:
-                img = Image.open(BytesIO(resp.content)).convert("RGBA")
-                extrema = img.getextrema()
-                if extrema[3][1] == 0: return pil_img.convert("RGBA")
-                return img
-    except Exception as e:
-        print(f"   ⚠️ Rembg failed: {e}. Using original.")
-    return pil_img.convert("RGBA")
-
-def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> tuple[Image.Image, Image.Image, Image.Image]:
-    width = target_width
-    height = target_height
+def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, target_height: int) -> Image.Image:
+    """
+    Creates a simple collage of 3 cinema cutouts spread out.
+    """
+    width, height = target_width, target_height
     layout_rgba = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    layout_rgb = Image.new("RGBA", (width, height), (255, 255, 255, 255))
-    mask = Image.new("L", (width, height), 255)
-
-    # Use 4 cutouts for a balanced collage
-    imgs_to_process = cinemas[:4]
-    if len(imgs_to_process) < 4:
-        imgs_to_process = (imgs_to_process * 4)[:4]
-
+    
+    # Use 3 cutouts as requested (if available)
+    imgs_to_process = cinemas[:3]
     random.shuffle(imgs_to_process)
-
-    # Generate random anchor points for each cutout
-    anchors = [
-        (random.randint(int(width * 0.15), int(width * 0.85)),
-         random.randint(int(height * 0.15), int(height * 0.85)))
-        for _ in range(4)
-    ]
+    
+    # Simple logic to spread them out
+    anchors = []
+    if len(imgs_to_process) == 1:
+        anchors = [(width//2, height//2)]
+    elif len(imgs_to_process) == 2:
+        anchors = [(width//2, height//3), (width//2, 2*height//3)]
+    else:
+        # spread out more
+        anchors = [
+            (random.randint(int(width * 0.2), int(width * 0.8)), random.randint(int(height * 0.1), int(height * 0.4))),
+            (random.randint(int(width * 0.1), int(width * 0.5)), random.randint(int(height * 0.4), int(height * 0.7))),
+            (random.randint(int(width * 0.5), int(width * 0.9)), random.randint(int(height * 0.6), int(height * 0.9)))
+        ]
 
     for i, (name, path) in enumerate(imgs_to_process):
         try:
+            print(f"   ✂️ Processing: {name} ({path.name})", flush=True)
             raw = Image.open(path).convert("RGBA")
-            # Convert white backgrounds to transparent for pre-made cutouts
+            # Assume white background and convert
             cutout = convert_white_to_transparent(raw)
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
-
-            scale_variance = random.uniform(0.8, 1.1)
-            max_dim = int(600 * scale_variance)
+            
+            # Fix: Ensure cutout isn't too small
+            if min(cutout.size) < 5: continue
+            
+            scale = random.uniform(0.7, 1.1)
+            max_dim = int(600 * scale)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
-
-            cx, cy = anchors[i]
+            
+            cx, cy = anchors[i] if i < len(anchors) else (width//2, height//2)
+            # Jitter
             cx += random.randint(-50, 50)
             cy += random.randint(-50, 50)
 
             x = cx - (cutout.width // 2)
             y = cy - (cutout.height // 2)
-
+            
             layout_rgba.paste(cutout, (x, y), mask=cutout)
-            layout_rgb.paste(cutout, (x, y), mask=cutout)
-            alpha = cutout.split()[3]
-            mask.paste(0, (x, y), mask=alpha)
+                
         except Exception as e:
-            print(f"Error processing cutout {name}: {e}")
+            print(f"Error processing {name}: {e}", flush=True)
+            
+    return layout_rgba
 
-    mask = mask.filter(ImageFilter.MaxFilter(11))
-    return layout_rgba, layout_rgb.convert("RGB"), mask
-    
-def refine_hero_with_ai(pil_image, date_text, cinema_names=[]):
-    print("   ✨ Refining Hero Collage (Gemini 3 Pro + Text Rendering)...")
+def gemini_creative_director(collage_img: Image.Image, cinema_names: list[str], date_text: str) -> str:
+    """
+    Step A: Creative Director Review.
+    """
+    print("   🧐 Creative Director (Gemini 3 Flash) reviewing...", flush=True)
+    if not GEMINI_API_KEY:
+        print("   ⚠️ No API Key found.")
+        return ""
+
     try:
-        api_key = os.environ.get("GEMINI_API_KEY")
-        if not api_key:
-            print("   ⚠️ GEMINI_API_KEY not found. Skipping.")
-            return pil_image
-
-        client = genai.Client(api_key=api_key)
-        names_str = ", ".join(cinema_names[:6])
-        prompt_text = (
-            f"Turn this rough collage into a single image, in a style suitable to the input, a dream architecture cinema exterior or interior"
-            f"The image MUST include the title 'TODAY'S CINEMA SELECTION' and the date '{date_text}'. "
-            "Unify the lighting and textures."
-        )
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        
+        prompt = f"""
+        You are a Visionary Architect specializing in impossible geometry and avant-garde structural synthesis.
+        You are looking at a collage of cinema buildings (exteriors and interiors) floating in space.
+        
+        Your Goal: Write a prompt for a Generative AI that will fuse these isolated elements into a SINGLE, SOPHISTICATED, IMPOSSIBLE ARCHITECTURAL STRUCTURE.
+        
+        CRITICAL INSTRUCTIONS FOR THE PROMPT YOU WRITE:
+        1.  **Format**: EXPLICITLY specify "Vertical Aspect Ratio (4:5)". The output must be a vertical poster composition.
+        2.  **PRESERVE THE CUTOUTS (MOST IMPORTANT)**: The existing building photos in the image are IMMUTABLE ANCHORS. You must explicitly tell the generator: "Do not alter the pixels of the building facades/interiors themselves. Only generate structure in the transparent space around them."
+        3.  **Derive the Style**: Look at the collage. Are the cinemas retro? Modern? Wooden? Concrete? Colorful? **Create a visual style for the connecting structure that complements or strikingly contrasts with these specific buildings.** Do not default to one style; let the input images dictate the vibe.
+        4.  **Sophisticated Fusion**: Avoid cheesy tropes. NO film reels, NO movie projectors, NO popcorn, NO generic "Cyberpunk". Make it feel like high-art architecture.
+        5.  **Structure**: Describe a structure where gravity and perspective are subjective. The roof of one building should morph seamlessly into the staircase of another, or the steps into a doorway. Use whatever language makes the most sense for the images you are seeing.
+        6.  **Melt the Edges**: The *centers* of the photos are immutable, but their *edges* must dissolve naturally into the new structure. A brick wall should twist into a steel beam; a floor should curve up to become a ceiling.
+        7.  **Atmosphere**: High-end architectural photography, cinematic lighting, sophisticated textures, quiet mystery.
+        8.  **Text Integration**: The following text must be integrated subtly but legibly into the architecture (e.g., engraved in stone, projected on glass, or as stylish signage):
+            - "Today's Cinema Selection"
+            - "今日の上映" (Japanese for Today's Screening)
+            - "{date_text}"
+        
+        Output ONLY the prompt text.
+        """
+        
         response = client.models.generate_content(
-            model="gemini-3-pro-image-preview", # Updated model name for stability
-            contents=[prompt_text, pil_image],
+            model="gemini-3-flash-preview", 
+            contents=[prompt, collage_img],
             config=types.GenerateContentConfig(
-                response_modalities=["IMAGE"],
+                safety_settings=[
+                    types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+                ]
             )
         )
+        director_prompt = response.text.strip()
+        print(f"   📝 Director's Prompt: {director_prompt[:100]}...", flush=True)
+        return director_prompt
+    except Exception as e:
+        print(f"   ⚠️ Director failed: {e}", flush=True)
+        return ""
+
+def generate_final_image(collage_img: Image.Image, prompt: str) -> Image.Image | None:
+    """
+    Step B: Final Generation.
+    """
+    print("   ✨ Generating Final Hero (Gemini 3 Pro Image)...", flush=True)
+    if not GEMINI_API_KEY or not prompt: return None
+
+    try:
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        
+        # We feed the collage image as input to guide the structure (ControlNet-like behavior expected from "Nano Banana Pro")
+        response = client.models.generate_content(
+            model="gemini-3-pro-image-preview",
+            contents=[prompt, collage_img],
+            config=types.GenerateContentConfig(
+                response_modalities=["IMAGE"],
+                safety_settings=[
+                    types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+                ]
+            )
+        )
+        
         for part in response.parts:
             if part.inline_data:
-                return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
-        print("   ⚠️ No image returned from Gemini.")
-        return pil_image
-    except Exception as e:
-        print(f"   ⚠️ Gemini Refinement Failed: {e}")
-        return pil_image
+                return Image.open(BytesIO(part.inline_data.data)).convert("RGB")
         
-def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image) -> Image.Image:
-    if not REPLICATE_AVAILABLE or not REPLICATE_API_TOKEN:
-        print("   ⚠️ Replicate not available. Skipping Inpaint.")
-        return layout_img
-
-    print("   🎨 Inpainting gaps (Stability AI)...")
-    try:
-        temp_img_path = BASE_DIR / "temp_inpaint_img.png"
-        temp_mask_path = BASE_DIR / "temp_inpaint_mask.png"
-        layout_img.save(temp_img_path, format="PNG")
-        mask_img.save(temp_mask_path, format="PNG")
-        
-        output = replicate.run(
-            "stability-ai/stable-diffusion-inpainting:c28b92a7ecd66eee4aefcd8a94eb9e7f6c3805d5f06038165407fb5cb355ba67",
-            input={
-                "image": open(temp_img_path, "rb"),
-                "mask": open(temp_mask_path, "rb"),
-                "prompt": "surreal architectural mashup, single unified dream structure, modern japanese architecture, classical cinema architecture, showa retro architecture, seamless wide angle shot, cinema exterior, cinema interior, cinematic lighting, neutral tones, 8k",
-                "negative_prompt": "car, grid, split screen, triptych, borders, frames, dividing lines, collage, multiple views, text, watermark",
-                "num_inference_steps": 30,
-                "guidance_scale": 7.5,
-                "strength": 0.85 
-            }
-        )
-        if temp_img_path.exists(): os.remove(temp_img_path)
-        if temp_mask_path.exists(): os.remove(temp_mask_path)
-        if output:
-            url = output[0] if isinstance(output, list) else output
-            resp = requests.get(url)
-            if resp.status_code == 200:
-                img = Image.open(BytesIO(resp.content)).convert("RGB")
-                return img.resize(layout_img.size, Image.Resampling.LANCZOS)
+        print("   ⚠️ No image returned in response.", flush=True)
     except Exception as e:
-        print(f"   ⚠️ Inpainting failed: {e}. Using raw layout.")
-    return layout_img
+        print(f"   ⚠️ Generation Failed: {e}", flush=True)
+        
+    return None
 
 def create_blurred_cinema_bg(cinema_name: str, width: int, height: int) -> Image.Image:
     full_path = get_cinema_image_path(cinema_name)
     base = Image.new("RGB", (width, height), (30, 30, 30))
-    if not full_path or not full_path.exists():
-        return base
+    if not full_path: return base
     try:
         img = Image.open(full_path).convert("RGB")
-        target_ratio = width / height
-        img_ratio = img.width / img.height
-        if img_ratio > target_ratio:
-            new_width = int(img.height * target_ratio)
-            left = (img.width - new_width) // 2
-            img = img.crop((left, 0, left + new_width, img.height))
-        else:
-            new_height = int(img.width / target_ratio)
-            top = (img.height - new_height) // 2
-            img = img.crop((0, top, img.width, top + new_height))
-        img = img.resize((width, height), Image.Resampling.LANCZOS)
-        img = img.filter(ImageFilter.GaussianBlur(8))
-        overlay = Image.new("RGBA", (width, height), (0, 0, 0, 120))
-        img = img.convert("RGBA")
-        img = Image.alpha_composite(img, overlay).convert("RGB")
-        return img
-    except Exception as e:
-        print(f"Error creating background for {cinema_name}: {e}")
-        return base
+        img = ImageOps.fit(img, (width, height), method=Image.Resampling.LANCZOS)
+        img = img.filter(ImageFilter.GaussianBlur(10))
+        overlay = Image.new("RGBA", (width, height), (0, 0, 0, 140))
+        return Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+    except: return base
 
 def draw_text_with_shadow(draw, xy, text, font, fill, shadow_color=DARK_SHADOW, offset=(3,3), anchor=None):
-    x, y = xy
-    draw.text((x + offset[0], y + offset[1]), text, font=font, fill=shadow_color, anchor=anchor)
-    draw.text((x, y), text, font=font, fill=fill, anchor=anchor)
+    draw.text((xy[0]+offset[0], xy[1]+offset[1]), text, font=font, fill=shadow_color, anchor=anchor)
+    draw.text(xy, text, font=font, fill=fill, anchor=anchor)
 
-def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: list[dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
-    img = bg_template.copy()
-    draw = ImageDraw.Draw(img)
-    try:
-        title_jp_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
-        title_en_font = ImageFont.truetype(str(BOLD_FONT_PATH), 32)
-        regular_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 34)
-        en_movie_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
-        small_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
-        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
-    except Exception:
-        raise
-        
-    content_left = MARGIN + 20
-    y_pos = MARGIN + 40
-    
-    draw_text_with_shadow(draw, (content_left, y_pos), cinema_name, title_jp_font, WHITE)
-    y_pos += 70
-    
-    cinema_name_to_use = cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name, "")
-    if cinema_name_to_use:
-        draw_text_with_shadow(draw, (content_left, y_pos), cinema_name_to_use, title_en_font, LIGHT_GRAY)
-        y_pos += 50
-    else:
-        y_pos += 20
-        
-    address = CINEMA_ADDRESSES.get(cinema_name, "")
-    if address:
-        jp_addr = address.split("\n")[0]
-        draw_text_with_shadow(draw, (content_left, y_pos), f"📍 {jp_addr}", small_font, LIGHT_GRAY)
-        y_pos += 60
-    else:
-        y_pos += 30
-        
-    draw.line([(MARGIN, y_pos), (CANVAS_WIDTH - MARGIN, y_pos)], fill=WHITE, width=3)
-    y_pos += 40
-    
-    for listing in listings:
-        wrapped_title = textwrap.wrap(f"■ {listing['title']}", width=TITLE_WRAP_WIDTH) or [f"■ {listing['title']}"]
-        for line in wrapped_title:
-            draw_text_with_shadow(draw, (content_left, y_pos), line, regular_font, WHITE)
-            y_pos += 40
-        if listing["en_title"]:
-            wrapped_en = textwrap.wrap(f"({listing['en_title']})", width=35)
-            for line in wrapped_en:
-                draw_text_with_shadow(draw, (content_left + 10, y_pos), line, en_movie_font, LIGHT_GRAY)
-                y_pos += 30
-        if listing['times']:
-            draw_text_with_shadow(draw, (content_left + 40, y_pos), listing["times"], regular_font, LIGHT_GRAY)
-            y_pos += 55
-            
-    footer_text_final = "詳細は web / Details online: leonelki.com/cinemas"
-    draw_text_with_shadow(draw, (CANVAS_WIDTH // 2, CANVAS_HEIGHT - MARGIN - 20), footer_text_final, footer_font, LIGHT_GRAY, anchor="mm")
+def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: list[dict], bg_template: Image.Image) -> Image.Image:
+    img = bg_template.copy(); draw = ImageDraw.Draw(img)
+    title_jp_f = ImageFont.truetype(str(BOLD_FONT_PATH), 55); title_en_f = ImageFont.truetype(str(BOLD_FONT_PATH), 32)
+    reg_f = ImageFont.truetype(str(REGULAR_FONT_PATH), 34); en_f = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
+    y = MARGIN + 40
+    draw_text_with_shadow(draw, (MARGIN+20, y), cinema_name, title_jp_f, WHITE); y += 70
+    if cinema_name_en or CINEMA_ENGLISH_NAMES.get(cinema_name):
+        draw_text_with_shadow(draw, (MARGIN+20, y), cinema_name_en or CINEMA_ENGLISH_NAMES[cinema_name], title_en_f, LIGHT_GRAY); y += 55
+    draw.line([(MARGIN, y), (CANVAS_WIDTH-MARGIN, y)], fill=WHITE, width=2); y += 40
+    for l in listings:
+        for line in textwrap.wrap(f"■ {l['title']}", width=TITLE_WRAP_WIDTH):
+            draw_text_with_shadow(draw, (MARGIN+20, y), line, reg_f, WHITE); y += 42
+        if l['en_title']:
+            for line in textwrap.wrap(f"({l['en_title']})", width=38):
+                draw_text_with_shadow(draw, (MARGIN+30, y), line, en_f, LIGHT_GRAY); y += 32
+        if l['times']:
+            draw_text_with_shadow(draw, (MARGIN+60, y), l['times'], reg_f, LIGHT_GRAY); y += 60
     return img
 
 def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: list[dict]) -> None:
-    header = f"🗓️ 本日の東京ミニシアター上映情報 / Today's Featured Showtimes ({date_str})\n"
-    lines = [header]
+    lines = [f"🗓️ 本日の東京ミニシアター上映情報 / Today's Featured Showtimes ({date_str})\n"]
     for item in all_featured_cinemas:
         cinema_name = item['cinema_name']
         address = CINEMA_ADDRESSES.get(cinema_name, "")
         lines.append(f"\n--- 【{cinema_name}】 ---")
         if address:
-            jp_address = address.split("\n")[0]
+            jp_address = address.split('\n')[0]
             lines.append(f"📍 {jp_address}") 
         for listing in item['listings']:
             lines.append(f"• {listing['title']}")
-    dynamic_hashtag = "IndieCinema"
+    
     if all_featured_cinemas:
-         first_cinema_name = all_featured_cinemas[0]['cinema_name']
-         dynamic_hashtag = "".join(ch for ch in first_cinema_name if ch.isalnum() or "\u3040" <= ch <= "\u30ff" or "\u4e00" <= ch <= "\u9fff")
-
-    footer = f"""
-#TokyoIndieCinema #{dynamic_hashtag} #MiniTheater #MovieLog
-Check Bio for Full Schedule / 詳細はリンクへ
-"""
-    lines.append(footer)
+        first_name = all_featured_cinemas[0]['cinema_name']
+        dynamic_hashtag = "".join(ch for ch in first_name if ch.isalnum() or "\u3040" <= ch <= "\uffff")
+    else:
+        dynamic_hashtag = "IndieCinema"
+        
+    lines.append(f"\n#TokyoIndieCinema #{dynamic_hashtag} #MiniTheater #MovieLog\nCheck Bio for Full Schedule")
     with OUTPUT_CAPTION_PATH.open("w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-def main() -> None:
-    # 1. Basic Setup (Correctly fixed for Timezone and Missing Vars)
-    today = today_in_tokyo().date()
-    today_str = today.isoformat()
+def main():
+    today = today_in_tokyo().date(); today_str = today.isoformat()
+    print(f"🕒 Today: {today_str}"); [f.unlink() for f in OUTPUT_DIR.glob("*.png")]
     
-    date_jp = today.strftime("%Y.%m.%d")
-    date_en = today.strftime("%a")
-    bilingual_date_str = f"{date_jp} {date_en.upper()}"
+    showings = load_showtimes(today_str)
+    if not showings: print("❌ No showings."); return
     
-    print(f"🕒 Generator Time (JST): {today} (String: {today_str})")
+    grouped = defaultdict(list)
+    for s in showings: grouped[s['cinema_name']].append(s)
+    valid = [c for c, s in grouped.items() if len(s) >= MINIMUM_FILM_THRESHOLD]; random.shuffle(valid)
+    selected = valid[:INSTAGRAM_SLIDE_LIMIT]
+    if not selected: return
 
-    # 🧹 TARGETED CLEANUP (V1 Only)
-    print("🧹 Cleaning old V1 images...")
-    if OUTPUT_DIR.exists():
-        for f in OUTPUT_DIR.glob("post_image_*.png"):
-            try: os.remove(f)
-            except: pass
-        for f in OUTPUT_DIR.glob("story_image_*.png"):
-            try: os.remove(f)
-            except: pass
-
-    try:
-        todays_showings = load_showtimes(today_str)
-    except Exception as e:
-        print(f"❌ Error loading showtimes: {e}")
-        todays_showings = []
-
-    if not todays_showings:
-        print(f"❌ No showings found for date: {today_str}")
-        print("   (This likely means the Scraper didn't find any data for today)")
-        print("\n   Troubleshooting:")
-        print("   1. Check if main_scraper.py ran successfully")
-        print("   2. Verify the scraper and generator are using the same date (check logs)")
-        print("   3. Cinema websites may not have updated their schedules yet")
-        return
-    else:
-        print(f"✅ Found {len(todays_showings)} showings for {today_str}")
-
-    # 3. Group Cinemas
-    grouped: defaultdict[str, list[dict]] = defaultdict(list)
-    for show in todays_showings:
-        if show.get("cinema_name"):
-            grouped[show.get("cinema_name")].append(show)
-            
-    # 4. Selection Logic
-    featured_names = get_recently_featured(OUTPUT_CAPTION_PATH)
-    valid_cinemas = []
-    for c_name, shows in grouped.items():
-        if len(shows) >= MINIMUM_FILM_THRESHOLD:
-             valid_cinemas.append(c_name)
-    candidates = [c for c in valid_cinemas if c not in featured_names]
-    if not candidates:
-        candidates = valid_cinemas
-        
-    random.shuffle(candidates)
-    selected_cinemas = candidates[:INSTAGRAM_SLIDE_LIMIT]
-    
-    if not selected_cinemas:
-        print("No cinemas met criteria.")
-        return
-
-    # 5. Generate Images
-    print(f"Generating for: {selected_cinemas}")
-    
-    # COVER - Use cutouts from cutouts subfolder for hero collage
-    cinema_cutouts = []
-    for c in selected_cinemas:
-        # Try cutouts folder first, fall back to full images
+    # --- New Hero Workflow ---
+    cinema_images = []
+    for c in selected:
         if path := get_cutout_path(c):
-            cinema_cutouts.append((c, path))
+            cinema_images.append((c, path))
         elif path := get_cinema_image_path(c):
-            cinema_cutouts.append((c, path))
-
-    if cinema_cutouts:
-        print("   🎨 Building Hero Collage...")
-        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_cutouts, CANVAS_WIDTH, CANVAS_HEIGHT)
-        cover_bg = inpaint_gaps(layout_rgb, mask)
-
-        # We extract just the names from the list of tuples [('Cinema Name', Path), ...]
-        names_list = [c[0] for c in cinema_cutouts]
-        final_cover = refine_hero_with_ai(cover_bg, bilingual_date_str, names_list)
-        final_cover.save(OUTPUT_DIR / "post_image_00.png")
-
-    # SLIDES
-    slide_counter = 0
-    all_featured_for_caption = []
+             # Fallback if no cutout exists
+             cinema_images.append((c, path))
     
-    for cinema_name in selected_cinemas:
-        if slide_counter >= 9:
-            break
-
-        shows = grouped[cinema_name]
-        listings = format_listings(shows)
-        segmented = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, spacing={'jp_line': 40, 'time_line': 55, 'en_line': 30})
-        cinema_name_en = CINEMA_ENGLISH_NAMES.get(cinema_name, "")
-        bg_img = create_blurred_cinema_bg(cinema_name, CANVAS_WIDTH, CANVAS_HEIGHT)
+    if cinema_images:
+        print(f"   🎨 Found {len(cinema_images)} images. Starting Creative Director Pipeline...", flush=True)
         
-        all_featured_for_caption.append({
-            'cinema_name': cinema_name, 
-            'listings': [l for sublist in segmented for l in sublist]
-        })
-
-        for segment in segmented:
-            if slide_counter >= 9: break
-            slide_counter += 1
-            slide_img = draw_cinema_slide(cinema_name, cinema_name_en, segment, bg_img)
-            slide_img.save(OUTPUT_DIR / f"post_image_{slide_counter:02}.png")
+        # 1. Create Raw Collage (Keep RGBA for transparency)
+        raw_collage = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
+        
+        # For the Director (Analysis), flattened on white is usually clearer to "see" the composition
+        raw_collage_flat = Image.new("RGB", raw_collage.size, (255, 255, 255))
+        raw_collage_flat.paste(raw_collage, mask=raw_collage)
+        
+        # Save Raw for debugging
+        raw_collage.save(OUTPUT_DIR / "debug_raw_collage.png")
+        
+        # Prepare date string for the prompt
+        # today is already a datetime.date object from earlier in main
+        date_text_jp = today.strftime("%Y.%m.%d")
+        
+        # 2. Creative Director (Flash) - Analyze the layout
+        director_prompt = gemini_creative_director(raw_collage_flat, [c[0] for c in cinema_images], date_text_jp)
+        
+        if director_prompt:
+            # 3. Final Generator (Pro Image)
+            # CRITICAL CHANGE: Pass the RGBA image. 
+            # We hope the model interprets alpha=0 as "fill this" and alpha=255 as "keep this".
+            final_hero = generate_final_image(raw_collage, director_prompt)
             
-    write_caption_for_multiple_cinemas(today_str, all_featured_for_caption)
-    print("Done. Generated V1 posts (Feed Only).")
+            if final_hero:
+                final_hero.save(OUTPUT_DIR / "post_image_00.png")
+                print("   ✅ Hero Image Generated!", flush=True)
+            else:
+                print("   ❌ Final Generation failed. Using Raw Collage as fallback.")
+                raw_collage_flat.save(OUTPUT_DIR / "post_image_00.png")
+        else:
+             print("   ❌ Director failed. Using Raw Collage as fallback.")
+             raw_collage_flat.save(OUTPUT_DIR / "post_image_00.png")
 
-if __name__ == "__main__":
-    main()
+    # --- Slide Generation ---
+    slide_idx = 0; all_featured = []
+    for c_name in selected:
+        if slide_idx >= 9: break
+        listings = format_listings(grouped[c_name])
+        segmented = segment_listings(listings, MAX_FEED_VERTICAL_SPACE, {'jp_line': 40, 'time_line': 55, 'en_line': 30})
+        bg = create_blurred_cinema_bg(c_name, CANVAS_WIDTH, CANVAS_HEIGHT)
+        all_featured.append({'cinema_name': c_name, 'listings': [l for sub in segmented for l in sub]})
+        for seg in segmented:
+            slide_idx += 1
+            if slide_idx >= 10: break
+            draw_cinema_slide(c_name, "", seg, bg).save(OUTPUT_DIR / f"post_image_{slide_idx:02}.png")
+            
+    write_caption_for_multiple_cinemas(today_str, all_featured)
+    print(f"✅ Done. Generated {slide_idx} slides.")
+
+if __name__ == "__main__": main()
