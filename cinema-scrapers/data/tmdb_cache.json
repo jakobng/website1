@@ -18885,5 +18885,118 @@
     "runtime": 102,
     "genres": [],
     "vote_average": 0.0
+  },
+  "東京ランドマーク": {
+    "tmdb_id": 1286531,
+    "tmdb_title_jp": "東京ランドマーク",
+    "tmdb_title_en": "東京ランドマーク",
+    "overview": "",
+    "poster_path": "/9ltHTAQrFVa1OR5nnjAldjN6Y73.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-05-18",
+    "director": "Aki Hayashitomo",
+    "runtime": 0,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0
+  },
+  "ワイズ・ブラッド": null,
+  "旅の終わりのたからもの（字幕）": null,
+  "羅小黒戦記2 ぼくらが望む未来": {
+    "tmdb_id": 1144107,
+    "tmdb_title_jp": "羅小黒戦記２ ぼくらが望む未来",
+    "tmdb_title_en": "罗小黑战记 2",
+    "overview": "中国の人気WEBアニメシリーズを原作に、黒猫の妖精シャオヘイの冒険を描くアクションファンタジーアニメ第2弾。ある襲撃事件により妖精の世界の平和が脅かされ、シャオヘイと師匠ムゲンの運命が大きく揺らいでいく。",
+    "poster_path": "/kM8HFn05FlFrlWw8cmoqrF4ZPVA.jpg",
+    "backdrop_path": "/uJEZaEM2hY3MG50CgZ3z9jeTwmp.jpg",
+    "release_date": "2025-07-18",
+    "director": "顾杰",
+    "runtime": 119,
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アクション"
+    ],
+    "vote_average": 8.5
+  },
+  "夜叉ヶ池": {
+    "tmdb_id": 25622,
+    "tmdb_title_jp": "夜叉ヶ池",
+    "tmdb_title_en": "夜叉ヶ池",
+    "overview": "",
+    "poster_path": "/4LBuvgYQwQSzpLsttO2yrecNFhj.jpg",
+    "backdrop_path": null,
+    "release_date": "2005-05-25",
+    "director": "三池崇史",
+    "runtime": 130,
+    "genres": [
+      "ファンタジー",
+      "サイエンスフィクション"
+    ],
+    "vote_average": 6.6
+  },
+  "動くな、死ね、甦れ！": {
+    "tmdb_id": 41948,
+    "tmdb_title_jp": "動くな、死ね、甦れ！",
+    "tmdb_title_en": "Замри-умри-воскресни!",
+    "overview": "第2次世界大戦直後のソ連。強制収容所地帯となった小さな炭鉱町スーチャンで暮らす12歳の少年ワレルカは、シングルマザーの母親への反抗心から悪戯を繰り返していた。同じ年の少女ガリーヤはいつもワレルカのことを気にかけており、彼が窮地に立たされると守護天使のように現われて助けてくれる。そんなある日、度を越した悪戯で機関車を転覆させてしまったワレルカは、逮捕を恐れて1人で町を飛び出す。",
+    "poster_path": "/ur1jJZXpJdfixWDy5n7T5luSsJn.jpg",
+    "backdrop_path": "/4wcIeLuWkW1IgMlKPXeWu5Y7dLv.jpg",
+    "release_date": "1990-08-01",
+    "director": "ヴィターリー・カネフスキー",
+    "runtime": 105,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.4
+  },
+  "エレファント・ゴッド〈デジタルリマスター版〉": null,
+  "ベ・ラ・ミ　気になるあなた": null,
+  "ダウントン・アビー／グランドフィナーレ（字幕）": null,
+  "愛のごとく": {
+    "tmdb_id": 1011344,
+    "tmdb_title_jp": "マグマのごとく",
+    "tmdb_title_en": "湿度爱情",
+    "overview": "湿度の高い世界でとろける快感を求める女。 敦子は番台でいつも濡れていた。男湯の客は、敦子の表情に劣情した。 夫の満夫はその銭湯のオーナー。親から譲り受けた閉鎖寸前の銭湯を続けた理由が敦子との出会いだった。 2人は客がひけた後の銭湯の中でプレーした。それしか敦子は許さなかった。 ある日、銭湯は初めてだと言う、ひと組の夫婦が来店する。夫婦関係の悩みを聞かされる敦子。 そして、2人の関係している姿を敦子に見て欲しいと頼まれるのだが…。",
+    "poster_path": "/t5xo67qoJxhHikS4A9VFOkFyQbb.jpg",
+    "backdrop_path": "/uCzhjLKNvWi5DFLwQCxk2ILGkSH.jpg",
+    "release_date": "2004-10-15",
+    "director": "亀井亨",
+    "runtime": 67,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "ウォーフェア 戦地最前線（字幕）": null,
+  "夜のたわむれ": {
+    "tmdb_id": 49782,
+    "tmdb_title_jp": "Nattlek",
+    "tmdb_title_en": "Nattlek",
+    "overview": "",
+    "poster_path": "/tud53mPuSu95fAtVKFs895hokuQ.jpg",
+    "backdrop_path": "/pb2ewe13yhICMuNydpWtUxHKOH4.jpg",
+    "release_date": "1966-09-12",
+    "director": "Mai Zetterling",
+    "runtime": 105,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.4
+  },
+  "Megadeth: Behind the Mask": {
+    "tmdb_id": 1596092,
+    "tmdb_title_jp": "Megadeth: Behind the Mask",
+    "tmdb_title_en": "Megadeth: Behind the Mask",
+    "overview": "",
+    "poster_path": "/au25ugceCljDxu8wEWyrjnYH6Ym.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-22",
+    "director": "Casey Tebo",
+    "runtime": 109,
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0
   }
 }
