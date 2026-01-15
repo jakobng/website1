@@ -588,10 +588,9 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
                             types.SafetySetting(category="HARASSMENT", threshold="BLOCK_NONE"),
                             types.SafetySetting(category="SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
                             types.SafetySetting(category="DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
-                        ]
+                        ],
+                        response_modalities=["IMAGE"]
                     )
-                )
-                    config=types.GenerateContentConfig(response_modalities=["IMAGE"])
                 )
                 
                 if not response or not response.parts:
