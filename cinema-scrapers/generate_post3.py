@@ -578,155 +578,251 @@ def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
 
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
 
+
+
     if not strategy.get("use_gemini"):
+
+
 
         print("   ⏩ Skipping Gemini refinement (as per strategy).", flush=True)
 
+
+
         return pil_image
 
+
+
     
+
+
 
     is_two_step = strategy.get("use_gemini") == "TWO_STEP"
 
+
+
     print(f"   ✨ Finalizing Hero (Gemini 3 Pro) - Strategy: {strategy['name']}...", flush=True)
+
+
 
     
 
+
+
     try:
+
+
 
         if not GEMINI_API_KEY: return pil_image
 
+
+
         client = genai.Client(api_key=GEMINI_API_KEY)
 
-        
 
-                if is_two_step:
 
         
 
-                    tech_brief = gemini_creative_direction_feedback(pil_image, cinema_names)
 
-        
 
-                    prompt = (
+        if is_two_step:
 
-        
 
-                        f"Use this architectural brief: {tech_brief}. "
 
-        
+            tech_brief = gemini_creative_direction_feedback(pil_image, cinema_names)
 
-                        f"Combine these theaters into a single, high-quality 35mm film still. "
 
-        
 
-                        f"Include the text 'TOKYO CINEMA' and the date '{date_text}' naturally in the scene. "
+            prompt = (
 
-        
 
-                        "The result must be coherent and sophisticated."
 
-        
+                f"Use this architectural brief: {tech_brief}. "
 
-                    )
 
-        
 
-                else:
+                f"Combine these theaters into a single, high-quality 35mm film still. "
 
-        
 
-                    prompt = (
 
-        
+                f"Include the text 'TOKYO CINEMA' and the date '{date_text}' naturally in the scene. "
 
-                        f"Refine this architectural mashup of {', '.join(cinema_names[:4])}. "
 
-        
 
-                        f"Unify the lighting and add the text 'TOKYO CINEMA' and '{date_text}'. "
+                "The result must be coherent and sophisticated."
 
-        
 
-                        "Make it look like a professional movie poster."
 
-        
+            )
 
-                    )
+
+
+        else:
+
+
+
+            prompt = (
+
+
+
+                f"Refine this architectural mashup of {', '.join(cinema_names[:4])}. "
+
+
+
+                f"Unify the lighting and add the text 'TOKYO CINEMA' and '{date_text}'. "
+
+
+
+                "Make it look like a professional movie poster."
+
+
+
+            )
+
+
+
+
 
 
 
         print(f"   📝 Processing Prompt: {prompt[:120]}...", flush=True)
 
+
+
         
+
+
 
         for attempt in range(3):
 
+
+
             try:
+
+
 
                 response = client.models.generate_content(
 
+
+
                     model="gemini-3-pro-preview",
+
+
 
                     contents=[prompt, pil_image],
 
+
+
                     config=types.GenerateContentConfig(
+
+
 
                         safety_settings=[
 
+
+
                             types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+
+
 
                             types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
 
+
+
                             types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+
+
 
                             types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
 
+
+
                         ],
+
+
 
                         response_modalities=["IMAGE"]
 
+
+
                     )
+
+
 
                 )
 
+
+
                 
+
+
 
                 if response and response.parts:
 
+
+
                     for part in response.parts:
+
+
 
                         if part.inline_data:
 
+
+
                             print(f"      🎨 Successfully generated refined architectural render.", flush=True)
 
-                            return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+
+
+                            return Image.open(BytesIO(part.inline_ündung.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+
+
 
                 
 
-                # If we get here, it was likely a safety block or empty response
+
 
                 print(f"      ⚠️ No image in response (Attempt {attempt+1}). Check for safety blocks.", flush=True)
 
+
+
                 if response and hasattr(response, 'prompt_feedback'):
+
+
 
                     print(f"      🚫 Feedback: {response.prompt_feedback}", flush=True)
 
+
+
             except Exception as e:
+
+
 
                 if "503" in str(e) and attempt < 2:
 
+
+
                     time.sleep(5)
+
+
 
                 else:
 
+
+
                     print(f"      ⚠️ Attempt {attempt+1} failed: {e}", flush=True)
+
+
 
     except Exception as e:
 
+
+
         print(f"   ⚠️ Gemini Refinement Failed: {e}", flush=True)
 
+
+
     
+
+
 
     return pil_image
 
