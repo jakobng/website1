@@ -375,8 +375,11 @@ def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
 def feather_cutout(img: Image.Image, erosion: int = 2, blur: int = 5) -> Image.Image:
     if img.mode != 'RGBA': img = img.convert('RGBA')
     alpha = img.split()[3]
-    alpha = alpha.filter(ImageFilter.MinFilter(3))
-    alpha = alpha.filter(ImageFilter.GaussianBlur(blur))
+    # Ensure filter size is safe for small images
+    min_dim = min(img.size)
+    if min_dim > 10:
+        alpha = alpha.filter(ImageFilter.MinFilter(3))
+        alpha = alpha.filter(ImageFilter.GaussianBlur(blur))
     img.putalpha(alpha)
     return img
 
@@ -387,9 +390,20 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     noise = Image.effect_noise((width, height), 5)
     base_bg = ImageChops.blend(base_bg, noise.convert("RGB"), 0.05)
     mask = Image.new("L", (width, height), 255)
+    
+    # 1. Improved Spatial Distribution
+    # Use a grid-like jittered distribution to keep buildings separated
     imgs_to_process = cinemas[:4]
-    anchors = [(random.randint(200, width-200), random.randint(300, height-300)) for _ in range(4)]
-    anchors.sort(key=lambda a: a[1])
+    random.shuffle(imgs_to_process)
+    
+    quadrants = [
+        (random.randint(200, 450), random.randint(300, 600)),     # Top Left
+        (random.randint(630, width-200), random.randint(300, 600)), # Top Right
+        (random.randint(200, 450), random.randint(750, height-300)), # Bottom Left
+        (random.randint(630, width-200), random.randint(750, height-300)) # Bottom Right
+    ]
+    random.shuffle(quadrants)
+
     for i, (name, path) in enumerate(imgs_to_process):
         try:
             print(f"   ✂️ Processing: {name} ({path.name})", flush=True)
@@ -397,31 +411,44 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             cutout = convert_white_to_transparent(raw) if "cutouts" in str(path).lower() else remove_background_replicate(raw)
             bbox = cutout.getbbox()
             if bbox: cutout = cutout.crop(bbox)
+            
+            # Fix: Ensure cutout isn't too small for filters
+            if min(cutout.size) < 10: continue
+            
             cutout = feather_cutout(cutout, erosion=2, blur=3)
             scale = random.uniform(0.7, 1.1)
             max_dim = int(750 * scale)
             cutout.thumbnail((max_dim, max_dim), Image.Resampling.LANCZOS)
-            cx, cy = anchors[i]
+            
+            cx, cy = quadrants[i]
             x, y = cx - (cutout.width // 2), cy - (cutout.height // 2)
             layout_rgba.paste(cutout, (x, y), mask=cutout)
+            
             alpha = cutout.split()[3]
-            core_mask = alpha.filter(ImageFilter.MinFilter(4)).filter(ImageFilter.GaussianBlur(3))
-            mask.paste(0, (x, y), mask=core_mask)
+            # Fix: Safe filter application
+            if min(cutout.size) > 10:
+                core_mask = alpha.filter(ImageFilter.MinFilter(4)).filter(ImageFilter.GaussianBlur(3))
+                mask.paste(0, (x, y), mask=core_mask)
+            else:
+                mask.paste(0, (x, y), mask=alpha)
+                
         except Exception as e:
             print(f"Error processing {name}: {e}", flush=True)
+            
     base_bg.paste(layout_rgba, (0,0), mask=layout_rgba)
     mask = mask.filter(ImageFilter.MaxFilter(5))
     return layout_rgba, base_bg, mask
 
 def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
-    print("   🧠 Gemini Technical Supervisor is analyzing...", flush=True)
+    print("   🧠 Gemini Creative Director is analyzing the surreal mashup...", flush=True)
     try:
-        if not GEMINI_API_KEY: return "Refine textures and lighting."
+        if not GEMINI_API_KEY: return "Unify the architectural dreamscape."
         client = genai.Client(api_key=GEMINI_API_KEY)
         analysis_prompt = (
-            f"Analyze this architectural visualization containing: {', '.join(cinema_names[:4])}. "
-            "Identify areas where the lighting is inconsistent or where textures clash. "
-            "Provide technical post-production instructions to unify the image. 80 words max."
+            f"Analyze this surreal architectural mashup of: {', '.join(cinema_names[:4])}. "
+            "Describe how a master digital artist should unify these buildings into a single, "
+            "coherent 'Tokyo Cinema' masterpiece. Focus on surreal connective tissue, "
+            "cinematic lighting, and dream-like textures. 100 words max."
         )
         response = client.models.generate_content(
             model="gemini-3-flash-preview",
@@ -436,11 +463,11 @@ def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
             )
         )
         brief = response.text.strip()
-        print(f"   📝 Technical Brief:\n{brief}\n", flush=True)
+        print(f"   📝 Artistic Brief:\n{brief}\n", flush=True)
         return brief
     except Exception as e:
         print(f"   ⚠️ Gemini Analysis Failed: {e}", flush=True)
-    return "Refine textures and unify lighting."
+    return "Enhance the surreal textures and lighting."
 
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     if not strategy.get("use_gemini"):
@@ -452,17 +479,19 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
         if not GEMINI_API_KEY: return pil_image
         client = genai.Client(api_key=GEMINI_API_KEY)
         if is_two_step:
-            brief = gemini_creative_direction_feedback(pil_image, cinema_names)
+            artistic_brief = gemini_creative_direction_feedback(pil_image, cinema_names)
             prompt = (
-                f"Use this brief: {brief}. Combine these theaters into a single, high-quality 35mm film still. "
-                f"Include the text 'TOKYO CINEMA' and the date '{date_text}' naturally. Coherent and sophisticated."
+                f"ACT AS A MASTER ARTIST. Follow this brief to perfect this architectural masterpiece:\n\n{artistic_brief}\n\n"
+                f"MANDATORY: Sophisticatedly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene. "
+                "The result must be a single, high-quality 35mm film still."
             )
         else:
             prompt = (
-                f"Refine this architectural mashup of {', '.join(cinema_names[:4])}. "
-                f"Unify the lighting and add 'TOKYO CINEMA' and '{date_text}'. Professional movie poster."
+                f"Refine this surreal architectural mashup of {', '.join(cinema_names[:4])}. "
+                f"Unify the lighting into a coherent 35mm film still. "
+                f"Integrate 'TOKYO CINEMA' and '{date_text}' naturally."
             )
-        print(f"   📝 Processing Prompt: {prompt[:100]}...", flush=True)
+        print(f"   📝 Artistic Prompt: {prompt[:100]}...", flush=True)
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
@@ -481,11 +510,9 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
                 if response and response.parts:
                     for part in response.parts:
                         if part.inline_data:
-                            print(f"      🎨 Successfully generated refined image.", flush=True)
+                            print(f"      🎨 Successfully generated refined masterpiece.", flush=True)
                             return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
                 print(f"      ⚠️ No image in response (Attempt {attempt+1}).", flush=True)
-                if hasattr(response, 'prompt_feedback'):
-                    print(f"      🚫 Feedback: {response.prompt_feedback}", flush=True)
             except Exception as e:
                 if "503" in str(e) and attempt < 2: time.sleep(5)
                 else: print(f"      ⚠️ Attempt {attempt+1} failed: {e}", flush=True)
