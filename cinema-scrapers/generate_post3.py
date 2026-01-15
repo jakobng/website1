@@ -509,106 +509,225 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     return layout_rgba, base_bg, mask
 
 def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
-    """Gemini looks at the SDXL output and writes a detailed instruction for the final Gemini Artist."""
-    print("   🧠 Gemini Creative Director is analyzing the SDXL mashup...")
+
+    """Gemini acts as a Technical Supervisor to provide specific image-processing instructions."""
+
+    print("   🧠 Gemini Technical Supervisor is analyzing the composite...", flush=True)
+
     try:
-        if not GEMINI_API_KEY: return "Unify the image."
+
+        if not GEMINI_API_KEY: return "Improve lighting and texture consistency."
+
         client = genai.Client(api_key=GEMINI_API_KEY)
+
         
+
         analysis_prompt = (
-            f"Analyze this architectural mashup containing elements of these cinemas: {', '.join(cinema_names[:4])}. "
-            "Identify the most successful structural connections and the areas that feel disjointed. "
-            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal 'Tokyo Cinema' masterpiece. "
-            "Refer to specific visual sections (e.g., 'the red marquee on the left', 'the concrete textures in the center'). "
-            "Explain how to unify the lighting, shadows, and architectural transitions while strictly preserving the recognizable theater facades. "
-            "Write this as a highly detailed, 100-word creative brief for the final rendering step."
+
+            f"Analyze this architectural visualization containing: {', '.join(cinema_names[:4])}. "
+
+            "Identify areas where the lighting is inconsistent or where the structural textures don't match. "
+
+            "Provide a list of technical post-production instructions to unify the image. "
+
+            "Focus on: color balance, shadow integration, and edge-smoothing between elements. "
+
+            "Keep the instructions purely technical and objective. 80 words max."
+
         )
+
+
 
         response = client.models.generate_content(
+
             model="gemini-3-flash-preview",
+
             contents=[analysis_prompt, pil_sdxl_image],
+
             config=types.GenerateContentConfig(
+
                 safety_settings=[
-                                        types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
-                                        types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
-                                        types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
-                                        types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),                ]
+
+                    types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+
+                    types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+
+                    types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+
+                    types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+
+                ]
+
             )
+
         )
+
         brief = response.text.strip()
-        print(f"   📝 Full Creative Brief for Artist:\n{brief}\n")
+
+        print(f"   📝 Technical Brief:\n{brief}\n", flush=True)
+
         return brief
+
     except Exception as e:
-        print(f"   ⚠️ Gemini Director Analysis Failed: {e}")
-    return "Enhance the textures and lighting while preserving the architecture."
+
+        print(f"   ⚠️ Gemini Technical Analysis Failed: {e}", flush=True)
+
+    return "Refine textures and unify lighting."
+
+
 
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
+
     if not strategy.get("use_gemini"):
+
         print("   ⏩ Skipping Gemini refinement (as per strategy).", flush=True)
+
         return pil_image
+
     
-    # Check if we use the new two-step director logic
+
     is_two_step = strategy.get("use_gemini") == "TWO_STEP"
-    
+
     print(f"   ✨ Finalizing Hero (Gemini 3 Pro) - Strategy: {strategy['name']}...", flush=True)
+
+    
+
     try:
+
         if not GEMINI_API_KEY: return pil_image
+
         client = genai.Client(api_key=GEMINI_API_KEY)
-        
-        if is_two_step:
-            # Step 1: Director gives feedback
-            artist_brief = gemini_creative_direction_feedback(pil_image, cinema_names)
-            # Step 2: Artist follows the brief
-            prompt = (
-                f"ACT AS A MASTER ARCHITECTURAL PHOTOGRAPHER AND ARTIST. Follow this creative brief to enhance this cinematic architectural study:\n\n{artist_brief}\n\n"
-                f"MANDATORY: Sophisticatedly integrate the title 'TOKYO CINEMA' and the date '{date_text}' into the scene as part of the architecture or environment. "
-                "The goal is a highly realistic, atmospheric 35mm film still with unified lighting and physical textures."
-            )
-        else:
-            # Original simple refinement logic
-            prompt = (
-                f"Enhance this cinematic architectural study featuring: {', '.join(cinema_names[:4])}. "
-                "Unify the lighting and textures into a coherent 35mm film still aesthetic. "
-                "Ensure the structural elements connect with realistic architectural logic and physical lighting. "
-                f"Sophisticatedly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene. "
-                "The result should be an atmospheric and sophisticated architectural photograph."
-            )
 
-        print(f"   📝 Gemini Artist Prompt: {prompt[:100]}...", flush=True)
         
-        for attempt in range(3):
-            try:
-                response = client.models.generate_content(
-                    model="gemini-3-pro-preview",
-                    contents=[prompt, pil_image],
-                    config=types.GenerateContentConfig(
-                        safety_settings=[
-                                                types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
-                                                types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
-                                                types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
-                                                types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),                        ],
-                        response_modalities=["IMAGE"]
+
+                if is_two_step:
+
+        
+
+                    tech_brief = gemini_creative_direction_feedback(pil_image, cinema_names)
+
+        
+
+                    prompt = (
+
+        
+
+                        f"Use this architectural brief: {tech_brief}. "
+
+        
+
+                        f"Combine these theaters into a single, high-quality 35mm film still. "
+
+        
+
+                        f"Include the text 'TOKYO CINEMA' and the date '{date_text}' naturally in the scene. "
+
+        
+
+                        "The result must be coherent and sophisticated."
+
+        
+
                     )
-                )
-                
-                if not response or not response.parts:
-                    print(f"      ⚠️ No parts in response (Attempt {attempt+1}). Check safety filters.", flush=True)
-                    continue
 
-                for part in response.parts:
-                    if part.inline_data:
-                        print(f"      🎨 Successfully received refined image.", flush=True)
-                        return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
-                
-                print(f"      ⚠️ No image found in response parts (Attempt {attempt+1}).", flush=True)
-            except Exception as e:
-                if "503" in str(e) and attempt < 2:
-                    print(f"      ⚠️ Gemini busy, retrying in {5 * (attempt+1)}s...", flush=True)
-                    time.sleep(5 * (attempt+1))
+        
+
                 else:
-                    raise e
+
+        
+
+                    prompt = (
+
+        
+
+                        f"Refine this architectural mashup of {', '.join(cinema_names[:4])}. "
+
+        
+
+                        f"Unify the lighting and add the text 'TOKYO CINEMA' and '{date_text}'. "
+
+        
+
+                        "Make it look like a professional movie poster."
+
+        
+
+                    )
+
+
+
+        print(f"   📝 Processing Prompt: {prompt[:120]}...", flush=True)
+
+        
+
+        for attempt in range(3):
+
+            try:
+
+                response = client.models.generate_content(
+
+                    model="gemini-3-pro-preview",
+
+                    contents=[prompt, pil_image],
+
+                    config=types.GenerateContentConfig(
+
+                        safety_settings=[
+
+                            types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+
+                            types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+
+                            types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+
+                            types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+
+                        ],
+
+                        response_modalities=["IMAGE"]
+
+                    )
+
+                )
+
+                
+
+                if response and response.parts:
+
+                    for part in response.parts:
+
+                        if part.inline_data:
+
+                            print(f"      🎨 Successfully generated refined architectural render.", flush=True)
+
+                            return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
+
+                
+
+                # If we get here, it was likely a safety block or empty response
+
+                print(f"      ⚠️ No image in response (Attempt {attempt+1}). Check for safety blocks.", flush=True)
+
+                if response and hasattr(response, 'prompt_feedback'):
+
+                    print(f"      🚫 Feedback: {response.prompt_feedback}", flush=True)
+
+            except Exception as e:
+
+                if "503" in str(e) and attempt < 2:
+
+                    time.sleep(5)
+
+                else:
+
+                    print(f"      ⚠️ Attempt {attempt+1} failed: {e}", flush=True)
+
     except Exception as e:
-        print(f"   ⚠️ Gemini Artist Failed: {e}", flush=True)
+
+        print(f"   ⚠️ Gemini Refinement Failed: {e}", flush=True)
+
+    
+
     return pil_image
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Image.Image:
