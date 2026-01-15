@@ -529,11 +529,10 @@ def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
             contents=[analysis_prompt, pil_sdxl_image],
             config=types.GenerateContentConfig(
                 safety_settings=[
-                    types.SafetySetting(category="HATE_SPEECH", threshold="BLOCK_NONE"),
-                    types.SafetySetting(category="HARASSMENT", threshold="BLOCK_NONE"),
-                    types.SafetySetting(category="SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
-                    types.SafetySetting(category="DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
-                ]
+                                        types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+                                        types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+                                        types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+                                        types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),                ]
             )
         )
         brief = response.text.strip()
@@ -545,13 +544,13 @@ def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
 
 def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
     if not strategy.get("use_gemini"):
-        print("   ⏩ Skipping Gemini refinement (as per strategy).")
+        print("   ⏩ Skipping Gemini refinement (as per strategy).", flush=True)
         return pil_image
     
     # Check if we use the new two-step director logic
     is_two_step = strategy.get("use_gemini") == "TWO_STEP"
     
-    print(f"   ✨ Finalizing Hero (Gemini 3 Pro) - Strategy: {strategy['name']}...")
+    print(f"   ✨ Finalizing Hero (Gemini 3 Pro) - Strategy: {strategy['name']}...", flush=True)
     try:
         if not GEMINI_API_KEY: return pil_image
         client = genai.Client(api_key=GEMINI_API_KEY)
@@ -575,7 +574,7 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
                 "The result should be an atmospheric and sophisticated architectural photograph."
             )
 
-        print(f"   📝 Gemini Artist Prompt: {prompt[:100]}...")
+        print(f"   📝 Gemini Artist Prompt: {prompt[:100]}...", flush=True)
         
         for attempt in range(3):
             try:
@@ -584,32 +583,32 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
                     contents=[prompt, pil_image],
                     config=types.GenerateContentConfig(
                         safety_settings=[
-                            types.SafetySetting(category="HATE_SPEECH", threshold="BLOCK_NONE"),
-                            types.SafetySetting(category="HARASSMENT", threshold="BLOCK_NONE"),
-                            types.SafetySetting(category="SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
-                            types.SafetySetting(category="DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
-                        ],
+                                                types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+                                                types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+                                                types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+                                                types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),                        ],
                         response_modalities=["IMAGE"]
                     )
                 )
                 
                 if not response or not response.parts:
-                    print(f"      ⚠️ No parts in response (Attempt {attempt+1}). Check safety filters.")
+                    print(f"      ⚠️ No parts in response (Attempt {attempt+1}). Check safety filters.", flush=True)
                     continue
 
                 for part in response.parts:
                     if part.inline_data:
+                        print(f"      🎨 Successfully received refined image.", flush=True)
                         return Image.open(BytesIO(part.inline_data.data)).convert("RGB").resize(pil_image.size, Image.Resampling.LANCZOS)
                 
-                print(f"      ⚠️ No image found in response parts (Attempt {attempt+1}).")
+                print(f"      ⚠️ No image found in response parts (Attempt {attempt+1}).", flush=True)
             except Exception as e:
                 if "503" in str(e) and attempt < 2:
-                    print(f"      ⚠️ Gemini busy, retrying in {5 * (attempt+1)}s...")
+                    print(f"      ⚠️ Gemini busy, retrying in {5 * (attempt+1)}s...", flush=True)
                     time.sleep(5 * (attempt+1))
                 else:
                     raise e
     except Exception as e:
-        print(f"   ⚠️ Gemini Artist Failed: {e}")
+        print(f"   ⚠️ Gemini Artist Failed: {e}", flush=True)
     return pil_image
 
 def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Image.Image:
