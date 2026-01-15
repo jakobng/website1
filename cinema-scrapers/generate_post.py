@@ -578,8 +578,9 @@ def main():
             final_hero = generate_final_image(raw_collage, director_prompt)
             
             if final_hero:
+                final_hero = final_hero.resize((CANVAS_WIDTH, CANVAS_HEIGHT), Image.Resampling.LANCZOS)
                 final_hero.save(OUTPUT_DIR / "post_image_00.png")
-                print("   ✅ Hero Image Generated!", flush=True)
+                print(f"   ✅ Hero Image Generated and Resized to {CANVAS_WIDTH}x{CANVAS_HEIGHT}!", flush=True)
             else:
                 print("   ❌ Final Generation failed. Using Raw Collage as fallback.")
                 raw_collage_flat.save(OUTPUT_DIR / "post_image_00.png")
