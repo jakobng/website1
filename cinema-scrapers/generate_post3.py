@@ -63,6 +63,8 @@ OUTPUT_DIR = BASE_DIR / "ig_posts"
 
 # Ensure output directory exists
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+DEBUG_DIR = OUTPUT_DIR / "debug"
+DEBUG_DIR.mkdir(parents=True, exist_ok=True)
 
 # Path Updates
 SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
@@ -98,13 +100,13 @@ PROMPT_TOKYO = "A surreal architectural homage to Tokyo's independent cinema cul
 HERO_STRATEGIES = [
     # SDXL RAW Baseline
     {"name": "SDXL_Raw_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": False},
-    {"name": "SDXL_Raw_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": False},
     {"name": "SDXL_Raw_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": False},
+    
+    # FLUX - Much higher quality blending
+    {"name": "Flux_Tokyo", "model": "flux", "sd_prompt": PROMPT_TOKYO, "use_gemini": "TWO_STEP"},
 
     # SDXL + TWO-STEP GEMINI FEEDBACK
-    {"name": "SDXL_Director_Simple", "model": "sdxl", "sd_prompt": PROMPT_SIMPLE, "use_gemini": "TWO_STEP"},
     {"name": "SDXL_Director_Surreal", "model": "sdxl", "sd_prompt": PROMPT_SURREAL, "use_gemini": "TWO_STEP"},
-    {"name": "SDXL_Director_Tokyo", "model": "sdxl", "sd_prompt": PROMPT_TOKYO, "use_gemini": "TWO_STEP"},
 ]
 
 # --- GLOBAL COLORS ---
@@ -191,7 +193,13 @@ CINEMA_FILENAME_OVERRIDES = {
     "ヒューマントラストシネマ有楽町": "human_yurakucho",
     "アップリンク吉祥寺": "uplink",
     "新文芸坐": "shin_bungeiza",
-    "早稲田松竹": "waseda_shochiku"
+    "早稲田松竹": "waseda_shochiku",
+    "ホワイト シネクイント": "cine_quinto",
+    "シネクイント": "cine_quinto",
+    "渋谷シネクイント": "cine_quinto",
+    "K's Cinema": "ks_cinema",
+    "K's Cinema (ケイズシネマ)": "ks_cinema",
+    "下高井戸シネマ": "shimotakaido"
 }
 
 # --- Utility Functions ---
@@ -371,15 +379,21 @@ def get_cutout_path(cinema_name: str) -> Path | None:
     return None
 
 def convert_white_to_transparent(img: Image.Image, threshold: int = 240) -> Image.Image:
+    """Fast conversion of white-ish pixels to transparent using Pillow built-ins."""
     img = img.convert("RGBA")
-    data = img.getdata()
-    new_data = []
-    for item in data:
-        if item[0] > threshold and item[1] > threshold and item[2] > threshold:
-            new_data.append((255, 255, 255, 0))
-        else:
-            new_data.append(item)
-    img.putdata(new_data)
+    r, g, b, a = img.split()
+    # Create mask: 255 where pixel is 'white' (all R,G,B > threshold)
+    mask_r = r.point(lambda x: 255 if x > threshold else 0)
+    mask_g = g.point(lambda x: 255 if x > threshold else 0)
+    mask_b = b.point(lambda x: 255 if x > threshold else 0)
+    
+    # Intersection of all three masks
+    white_mask = ImageChops.darker(mask_r, mask_g)
+    white_mask = ImageChops.darker(white_mask, mask_b)
+    
+    # Final alpha: original alpha AND NOT white_mask
+    new_alpha = ImageChops.subtract(a, white_mask)
+    img.putalpha(new_alpha)
     return img
 
 def remove_background_replicate(pil_img: Image.Image) -> Image.Image:
@@ -504,15 +518,23 @@ def gemini_creative_direction_feedback(pil_sdxl_image, cinema_names):
         analysis_prompt = (
             f"Analyze this architectural mashup containing elements of these cinemas: {', '.join(cinema_names[:4])}. "
             "Identify the most successful structural connections and the areas that feel disjointed. "
-            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal dreamlike structure that serves as a kind of weird homage (interior+exteriors). "
+            "Describe exactly how a master digital artist should enhance this image to make it a coherent, surreal 'Tokyo Cinema' masterpiece. "
             "Refer to specific visual sections (e.g., 'the red marquee on the left', 'the concrete textures in the center'). "
             "Explain how to unify the lighting, shadows, and architectural transitions while strictly preserving the recognizable theater facades. "
-            "Write this as a highly detailed, 100-word creative brief for the final rendering step. Be specific about sections and where they are in the frame."
+            "Write this as a highly detailed, 100-word creative brief for the final rendering step."
         )
 
         response = client.models.generate_content(
             model="gemini-3-flash-preview",
-            contents=[analysis_prompt, pil_sdxl_image]
+            contents=[analysis_prompt, pil_sdxl_image],
+            config=types.GenerateContentConfig(
+                safety_settings=[
+                    types.SafetySetting(category="HATE_SPEECH", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="HARASSMENT", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+                    types.SafetySetting(category="DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+                ]
+            )
         )
         brief = response.text.strip()
         print(f"   📝 Full Creative Brief for Artist:\n{brief}\n")
@@ -539,18 +561,18 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
             artist_brief = gemini_creative_direction_feedback(pil_image, cinema_names)
             # Step 2: Artist follows the brief
             prompt = (
-                f"ACT AS A MASTER ARTIST. Follow this creative brief to perfect this architectural mashup:\n\n{artist_brief}\n\n"
+                f"ACT AS A MASTER ARCHITECTURAL PHOTOGRAPHER AND ARTIST. Follow this creative brief to enhance this cinematic architectural study:\n\n{artist_brief}\n\n"
                 f"MANDATORY: Sophisticatedly integrate the title 'TOKYO CINEMA' and the date '{date_text}' into the scene as part of the architecture or environment. "
-                "The result must feel like a single, high-quality 35mm film still."
+                "The goal is a highly realistic, atmospheric 35mm film still with unified lighting and physical textures."
             )
         else:
             # Original simple refinement logic
             prompt = (
-                f"Refine this architectural mashup featuring: {', '.join(cinema_names[:4])}. "
+                f"Enhance this cinematic architectural study featuring: {', '.join(cinema_names[:4])}. "
                 "Unify the lighting and textures into a coherent 35mm film still aesthetic. "
-                "Ensure the buildings connect surrealistically while remaining recognizable. "
+                "Ensure the structural elements connect with realistic architectural logic and physical lighting. "
                 f"Sophisticatedly integrate 'TOKYO CINEMA' and the date '{date_text}' into the scene. "
-                "Make it feel intentional and sophisticated."
+                "The result should be an atmospheric and sophisticated architectural photograph."
             )
 
         print(f"   📝 Gemini Artist Prompt: {prompt[:100]}...")
@@ -560,6 +582,15 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
                 response = client.models.generate_content(
                     model="gemini-3-pro-preview",
                     contents=[prompt, pil_image],
+                    config=types.GenerateContentConfig(
+                        safety_settings=[
+                            types.SafetySetting(category="HATE_SPEECH", threshold="BLOCK_NONE"),
+                            types.SafetySetting(category="HARASSMENT", threshold="BLOCK_NONE"),
+                            types.SafetySetting(category="SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+                            types.SafetySetting(category="DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+                        ]
+                    )
+                )
                     config=types.GenerateContentConfig(response_modalities=["IMAGE"])
                 )
                 
@@ -593,10 +624,6 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
     try:
         temp_img, temp_mask = BASE_DIR / "temp_in_img.png", BASE_DIR / "temp_in_mask.png"
         layout_img.save(temp_img); mask_img.save(temp_mask)
-        
-        # DEBUG IMAGES
-        debug_dir = OUTPUT_DIR / "debug"
-        debug_dir.mkdir(exist_ok=True)
         
         output = None
         if model_type == "flux":
@@ -635,8 +662,11 @@ def inpaint_gaps(layout_img: Image.Image, mask_img: Image.Image, strategy) -> Im
             resp = requests.get(url)
             sd_img = Image.open(BytesIO(resp.content)).convert("RGB").resize(layout_img.size, Image.Resampling.LANCZOS)
             
-            # SAVE RAW DEBUG IMAGE
-            sd_img.save(debug_dir / f"{model_type}_raw_{random.randint(0,999)}.png")
+            # SAVE RAW DEBUG IMAGE with strategy name
+            clean_strat = strategy['name'].replace(' ', '_')
+            debug_path = DEBUG_DIR / f"step1_raw_{clean_strat}.png"
+            sd_img.save(debug_path)
+            print(f"      📸 Saved raw mashup to {debug_path.name}")
             return sd_img
         else:
             print(f"   ⚠️ {model_type.upper()} returned no output.")
@@ -738,52 +768,27 @@ def main():
         if path:
             cinema_images.append((c, path))
     
-            if cinema_images:
-    
-                print(f"   🎨 Found {len(cinema_images)} images for collage. Generating {len(HERO_STRATEGIES)} hero options...")
-    
-                layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
-    
-                
-    
-                cinema_names = [c[0] for c in cinema_images]
-    
-        
-    
-                for i, strategy in enumerate(HERO_STRATEGIES):
-    
-                    print(f"\n   🚀 Generating Option {i+1}: {strategy['name']}")
-    
-                    
-    
-                    cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
-    
-                    final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, cinema_names)
-    
-                    
-    
-                    # Save individual options with strategy name
-    
-                    clean_name = strategy['name'].replace(' ', '_')
-    
-                    opt_path = OUTPUT_DIR / f"hero_option_{i:02}_{clean_name}.png"
-    
-                    final_cover.save(opt_path)
-    
-                    
-    
-                    # Set the first one as default
-    
-                    if i == 0:
-    
-                        final_cover.save(OUTPUT_DIR / "post_image_00.png")
-    
-        
-    
-                
-            print(f"   ✅ Saved {strategy['name']} to {opt_path.name}")
+    if cinema_images:
+        print(f"   🎨 Found {len(cinema_images)} images for collage. Generating {len(HERO_STRATEGIES)} hero options...", flush=True)
+        layout_rgba, layout_rgb, mask = create_layout_and_mask(cinema_images, CANVAS_WIDTH, CANVAS_HEIGHT)
+        cinema_names = [c[0] for c in cinema_images]
+
+        for i, strategy in enumerate(HERO_STRATEGIES):
+            print(f"\n   🚀 Generating Option {i+1}: {strategy['name']}", flush=True)
+            cover_bg = inpaint_gaps(layout_rgb, mask, strategy)
+            final_cover = refine_hero_with_ai(cover_bg, bilingual_date, strategy, cinema_names)
+            
+            # Save individual options with strategy name
+            clean_name = strategy['name'].replace(' ', '_')
+            opt_path = OUTPUT_DIR / f"hero_option_{i:02}_{clean_name}.png"
+            final_cover.save(opt_path)
+            print(f"   ✅ Saved {strategy['name']} to {opt_path.name}", flush=True)
+            
+            # Set the first one as default
+            if i == 0:
+                final_cover.save(OUTPUT_DIR / "post_image_00.png")
     else:
-        print("   ⚠️ No images found for Hero Collage.")
+        print("   ⚠️ No images found for Hero Collage.", flush=True)
 
     # --- SLIDES ---
     slide_idx = 0
