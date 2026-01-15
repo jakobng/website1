@@ -692,63 +692,119 @@ def refine_hero_with_ai(pil_image, date_text, strategy, cinema_names=[]):
 
 
 
-        for attempt in range(3):
+                for attempt in range(3):
 
 
 
-            try:
+        
 
 
 
-                response = client.models.generate_content(
+                    try:
 
 
 
-                    model="gemini-3-pro-preview",
+        
 
 
 
-                    contents=[prompt, pil_image],
+                        response = client.models.generate_content(
 
 
 
-                    config=types.GenerateContentConfig(
+        
 
 
 
-                        safety_settings=[
+                            model="gemini-3-pro-image-preview",
 
 
 
-                            types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+        
 
 
 
-                            types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+                            contents=[prompt, pil_image],
 
 
 
-                            types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+        
 
 
 
-                            types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+                            config=types.GenerateContentConfig(
 
 
 
-                        ],
+        
 
 
 
-                        response_modalities=["IMAGE"]
+                                safety_settings=[
 
 
 
-                    )
+        
 
 
 
-                )
+                                    types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+
+
+
+        
+
+
+
+                                    types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+
+
+
+        
+
+
+
+                                    types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+
+
+
+        
+
+
+
+                                    types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+
+
+
+        
+
+
+
+                                ],
+
+
+
+        
+
+
+
+                                response_modalities=["IMAGE"]
+
+
+
+        
+
+
+
+                            )
+
+
+
+        
+
+
+
+                        )
 
 
 
