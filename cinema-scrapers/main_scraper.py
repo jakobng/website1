@@ -65,6 +65,10 @@ from cinema_modules import (
 DATA_DIR = "data"
 OUTPUT_JSON = os.path.join(DATA_DIR, "showtimes.json")
 TMDB_CACHE_FILE = os.path.join(DATA_DIR, "tmdb_cache.json")
+TITLE_RESOLUTION_CACHE_FILE = os.path.join(DATA_DIR, "title_resolution_cache.json")
+LEGACY_TITLE_TRANSLATION_CACHE_FILE = os.path.join(DATA_DIR, "title_translation_cache.json")
+MIN_TITLE_MATCH_SCORE = 0.7
+MIN_FINAL_MATCH_SCORE = 0.6
 
 # Ensure data directory exists
 if not os.path.exists(DATA_DIR):
@@ -204,21 +208,31 @@ def clean_title_for_tmdb(title: str) -> str:
     if not title:
         return ""
     
-    # Common Japanese release suffixes/prefixes to strip
+    cleaned = title.replace("\u3000", " ").strip()
+    keyword_pattern = (
+        r"(?:上映|字幕|舞台挨拶|イベント|ｲﾍﾞﾝﾄ|特集|記念|公開|"
+        r"オールナイト|未体験|復刻|再上映|先行|限定|特別|"
+        r"ライブ|生中継|応援上映|4K|2K|リマスター|レストア|デジタル)"
+    )
     patterns = [
-        r"４[ＫK]デジタルリマスター版?",      # 4K Digital Remaster
-        r"デジタルリマスター版?",             # Digital Remaster
-        r"（.*?版）",                       # (XXX Version)
-        r"【.*?】",                          # [XXX] (e.g., [Screening])
-        r"4K Restor.*",                     # 4K Restore...
-        r"Director's Cut",                  # Director's Cut
-        r"ディレクターズ・?カット.*",         # Director's Cut (JP)
-        r"完全版",                          # Complete Version
-        r"発声可能上映",                     # Cheering Screening
-        r"製作\d+周年記念",                  # XXth Anniversary
+        rf"【[^】]*?{keyword_pattern}[^】]*】",
+        rf"［[^］]*?{keyword_pattern}[^］]*］",
+        rf"〈[^〉]*?{keyword_pattern}[^〉]*〉",
+        rf"《[^》]*?{keyword_pattern}[^》]*》",
+        rf"\[[^\]]*?{keyword_pattern}[^\]]*\]",
+        rf"\([^\)]*?{keyword_pattern}[^\)]*\)",
+        r"^\s*[A-Z]\.?\s+",
+        r"^\s*\d+\.\s+",
+        r"\s*(?:4K|2K)\s*(?:デジタル)?(?:リマスター|レストア)?(?:版)?\s*$",
+        r"\s*(?:デジタル)?(?:リマスター|レストア)(?:版)?\s*$",
+        r"\s*(?:IMAX|Dolby|4DX|SCREENX)\s*$",
+        r"\s*(?:完全版|ディレクターズカット|Director's Cut|DC版)\s*$",
+        r"\s*(?:字幕|吹替)\s*$",
+        r"\s*(?:公開\d+周年記念版|\d+周年記念版|\d+周年記念)\s*$",
+        r"\s*(?:復刻版|再上映)\s*$",
+        r"\s*(?:G|PG12|R15\+|R18\+)\s*$",
     ]
-    
-    cleaned = title
+
     for pat in patterns:
         cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE)
     
@@ -244,77 +258,607 @@ def save_tmdb_cache(cache):
     with open(TMDB_CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
-def fetch_tmdb_details(movie_title, session, api_key):
-    """
-    Searches TMDB for movie_title. 
-    1. Tries exact Japanese match.
-    2. If no result, tries a 'cleaned' version (stripping 4K/Remaster suffixes).
-    """
+def load_title_resolution_cache():
+    paths_to_try = [TITLE_RESOLUTION_CACHE_FILE, LEGACY_TITLE_TRANSLATION_CACHE_FILE]
+    for path in paths_to_try:
+        if os.path.exists(path):
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except:
+                return {}
+    return {}
+
+def save_title_resolution_cache(cache):
+    with open(TITLE_RESOLUTION_CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=2)
+
+def _normalize_title_for_match(title: str) -> str:
+    if not title:
+        return ""
+    cleaned = clean_title_for_tmdb(title)
+    cleaned = cleaned.strip().lower()
+    cleaned = re.sub(r"[\\(\\[\\{（［｛].*?[\\)\\]\\}）］｝]", "", cleaned)
+    cleaned = re.sub(r"[\"'“”‘’]", "", cleaned)
+    cleaned = re.sub(r"[\\s:：/|\\\\\\-–—_・／、，。：]+", " ", cleaned)
+    cleaned = re.sub(r"\\s+", " ", cleaned).strip()
+    return cleaned
+
+def _title_similarity(a: str, b: str) -> float:
+    if not a or not b:
+        return 0.0
+    return difflib.SequenceMatcher(None, a, b).ratio()
+
+def _parse_year(value):
+    if not value:
+        return None
+    if m := re.search(r"(19|20)\\d{2}", str(value)):
+        return int(m.group(0))
+    return None
+
+def _parse_int(value):
+    try:
+        return int(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+
+def _normalize_person_name(name: str) -> str:
+    if not name:
+        return ""
+    name = name.strip().lower()
+    name = re.sub(r"[\\s.,・]", "", name)
+    return name
+
+def _director_score(listing_director: str, tmdb_director: str):
+    if not listing_director or not tmdb_director:
+        return None
+    a = _normalize_person_name(listing_director)
+    b = _normalize_person_name(tmdb_director)
+    if not a or not b:
+        return None
+    if a in b or b in a:
+        return 1.0
+    return _title_similarity(a, b)
+
+def _country_score(listing_country: str, tmdb_countries):
+    if not listing_country or not tmdb_countries:
+        return None
+    listing_tokens = [t for t in re.split(r"[\\s/／・,]+", listing_country) if t]
+    if not listing_tokens:
+        return None
+    tmdb_tokens = set()
+    for country in tmdb_countries:
+        name = country.get("name") or ""
+        iso = country.get("iso_3166_1") or ""
+        for token in re.split(r"[\\s/／・,]+", f"{name} {iso}".strip()):
+            if token:
+                tmdb_tokens.add(token.lower())
+    if not tmdb_tokens:
+        return None
+    for token in listing_tokens:
+        normalized = token.lower()
+        if normalized in tmdb_tokens:
+            return 1.0
+        for tmdb_token in tmdb_tokens:
+            if normalized in tmdb_token or tmdb_token in normalized:
+                return 1.0
+    return 0.0
+
+def _runtime_score(listing_runtime, tmdb_runtime):
+    listing_minutes = _parse_int(listing_runtime)
+    tmdb_minutes = _parse_int(tmdb_runtime)
+    if not listing_minutes or not tmdb_minutes:
+        return None
+    diff = abs(listing_minutes - tmdb_minutes)
+    if diff <= 5:
+        return 1.0
+    if diff <= 10:
+        return 0.7
+    if diff <= 20:
+        return 0.4
+    if diff <= 30:
+        return 0.2
+    return 0.0
+
+def _title_match_score(title_info, candidate):
+    query_titles = [
+        _normalize_title_for_match(title_info.get("movie_title", "")),
+        _normalize_title_for_match(title_info.get("movie_title_en", "")),
+    ]
+    query_titles = [t for t in query_titles if t]
+    candidate_titles = [
+        _normalize_title_for_match(candidate.get("title", "")),
+        _normalize_title_for_match(candidate.get("original_title", "")),
+    ]
+    candidate_titles = [t for t in candidate_titles if t]
+
+    title_score = 0.0
+    for query in query_titles:
+        for cand in candidate_titles:
+            title_score = max(title_score, _title_similarity(query, cand))
+    return title_score
+
+def _year_match_score(listing_year, release_date):
+    listing_year = _parse_year(listing_year)
+    tmdb_year = _parse_year(release_date)
+    if listing_year and tmdb_year:
+        diff = abs(listing_year - tmdb_year)
+        return max(0.0, 1.0 - min(diff, 5) / 5)
+    return None
+
+def _score_basic_candidate(candidate, title_info):
+    title_score = _title_match_score(title_info, candidate)
+
+    year_score = _year_match_score(title_info.get("year"), candidate.get("release_date"))
+    year_score = year_score if year_score is not None else 0.0
+
+    popularity = candidate.get("popularity") or 0.0
+    popularity_score = min(float(popularity) / 50.0, 1.0)
+
+    return (title_score * 0.85) + (year_score * 0.1) + (popularity_score * 0.05)
+
+def _score_candidate_with_details(basic_score, details, title_info):
+    score = basic_score * 0.7
+    weight = 0.7
+
+    runtime_score = _runtime_score(title_info.get("runtime_min"), details.get("runtime"))
+    if runtime_score is not None:
+        score += runtime_score * 0.1
+        weight += 0.1
+
+    director_score = _director_score(title_info.get("director"), details.get("director"))
+    if director_score is not None:
+        score += director_score * 0.1
+        weight += 0.1
+
+    country_score = _country_score(title_info.get("country"), details.get("tmdb_countries") or [])
+    if country_score is not None:
+        score += country_score * 0.1
+        weight += 0.1
+
+    if weight == 0:
+        return basic_score
+    return score / weight
+
+def _search_tmdb(query, session, api_key, language):
     search_url = "https://api.themoviedb.org/3/search/movie"
-    
-    # 1. Primary Search (As Is)
     params = {
         "api_key": api_key,
-        "query": movie_title,
-        "language": "ja-JP",
+        "query": query,
+        "language": language,
         "include_adult": "false"
     }
-    
-    try:
-        resp = session.get(search_url, params=params, timeout=5)
-        data = resp.json()
-        results = data.get("results", [])
-        
-        # 2. Fallback: Clean Title Search
-        if not results:
-            clean_title = clean_title_for_tmdb(movie_title)
-            if clean_title != movie_title:
-                print(f"   Using cleaned title: '{clean_title}'")
-                params["query"] = clean_title
-                resp = session.get(search_url, params=params, timeout=5)
-                data = resp.json()
-                results = data.get("results", [])
+    resp = session.get(search_url, params=params, timeout=5)
+    data = resp.json()
+    return data.get("results", [])
 
-        if results:
-            # Pick the most popular/relevant one
-            best = results[0] 
-            
-            # Fetch full details
-            detail_url = f"https://api.themoviedb.org/3/movie/{best['id']}"
-            d_params = {
-                "api_key": api_key,
-                "language": "ja-JP",
-                "append_to_response": "credits,images"
-            }
-            d_resp = session.get(detail_url, params=d_params, timeout=5)
-            d_data = d_resp.json()
-            
-            # Extract Director
-            director = ""
-            crew = d_data.get("credits", {}).get("crew", [])
-            for c in crew:
-                if c.get("job") == "Director":
-                    director = c.get("name")
-                    break
-            
-            return {
-                "tmdb_id": best["id"],
-                "tmdb_title_jp": d_data.get("title"),
-                "tmdb_title_en": d_data.get("original_title"), # fallback
-                "overview": d_data.get("overview"),
-                "poster_path": d_data.get("poster_path"),
-                "backdrop_path": d_data.get("backdrop_path"),
-                "release_date": d_data.get("release_date"),
-                "director": director,
-                "runtime": d_data.get("runtime"),
-                "genres": [g["name"] for g in d_data.get("genres", [])],
-                "vote_average": d_data.get("vote_average")
-            }
-            
+def _fetch_tmdb_details_by_id(tmdb_id, session, api_key):
+    detail_url = f"https://api.themoviedb.org/3/movie/{tmdb_id}"
+    params = {
+        "api_key": api_key,
+        "language": "ja-JP",
+        "append_to_response": "credits,images"
+    }
+    d_resp = session.get(detail_url, params=params, timeout=5)
+    d_data = d_resp.json()
+
+    director = ""
+    crew = d_data.get("credits", {}).get("crew", [])
+    for c in crew:
+        if c.get("job") == "Director":
+            director = c.get("name")
+            break
+
+    return {
+        "tmdb_id": tmdb_id,
+        "tmdb_title_jp": d_data.get("title"),
+        "tmdb_title_en": d_data.get("original_title"),
+        "overview": d_data.get("overview"),
+        "poster_path": d_data.get("poster_path"),
+        "backdrop_path": d_data.get("backdrop_path"),
+        "release_date": d_data.get("release_date"),
+        "director": director,
+        "runtime": d_data.get("runtime"),
+        "genres": [g["name"] for g in d_data.get("genres", [])],
+        "vote_average": d_data.get("vote_average"),
+        "tmdb_countries": d_data.get("production_countries", []),
+    }
+
+def fetch_tmdb_details(title_info, session, api_key):
+    """
+    Searches TMDB with JP + EN titles and scores candidates with soft heuristics.
+    """
+    movie_title = title_info.get("movie_title", "")
+    movie_title_en = title_info.get("movie_title_en", "")
+
+    queries = []
+    seen_queries = set()
+
+    def _add_query(query, language):
+        query = (query or "").strip()
+        if not query:
+            return
+        key = (query.lower(), language)
+        if key in seen_queries:
+            return
+        seen_queries.add(key)
+        queries.append((query, language))
+
+    _add_query(movie_title, "ja-JP")
+    cleaned_jp = clean_title_for_tmdb(movie_title)
+    if cleaned_jp and cleaned_jp != movie_title:
+        _add_query(cleaned_jp, "ja-JP")
+
+    _add_query(movie_title_en, "en-US")
+    cleaned_en = clean_title_for_tmdb(movie_title_en)
+    if cleaned_en and cleaned_en != movie_title_en:
+        _add_query(cleaned_en, "en-US")
+
+    if not queries:
+        return None
+
+    try:
+        candidates = {}
+        for query, language in queries:
+            results = _search_tmdb(query, session, api_key, language)
+            for result in results:
+                if "id" in result:
+                    candidates[result["id"]] = result
+
+        if not candidates:
+            return None
+
+        scored = [(_score_basic_candidate(cand, title_info), cand) for cand in candidates.values()]
+        scored.sort(key=lambda x: x[0], reverse=True)
+
+        best_score, best_candidate = scored[0]
+        second_score = scored[1][0] if len(scored) > 1 else 0.0
+
+        needs_details = len(scored) > 1 and (best_score < 0.85 or (best_score - second_score) < 0.1)
+        candidate_slice = scored[:3] if needs_details else scored[:1]
+
+        details_by_id = {}
+        for score, cand in candidate_slice:
+            details = _fetch_tmdb_details_by_id(cand["id"], session, api_key)
+            if details:
+                details_by_id[cand["id"]] = details
+
+        best_details = None
+        best_final_score = -1.0
+        for score, cand in candidate_slice:
+            details = details_by_id.get(cand["id"])
+            final_score = _score_candidate_with_details(score, details, title_info) if details else score
+            if final_score > best_final_score:
+                best_final_score = final_score
+                best_details = details
+                best_candidate = cand
+
+        if not best_details:
+            best_details = _fetch_tmdb_details_by_id(best_candidate["id"], session, api_key)
+        if not best_details:
+            return None
+
+        title_score = _title_match_score(title_info, best_candidate)
+        year_score = _year_match_score(title_info.get("year"), best_details.get("release_date"))
+        runtime_score = _runtime_score(title_info.get("runtime_min"), best_details.get("runtime"))
+        director_score = _director_score(title_info.get("director"), best_details.get("director"))
+        country_score = _country_score(title_info.get("country"), best_details.get("tmdb_countries") or [])
+
+        support_scores = [s for s in (year_score, runtime_score, director_score, country_score) if s is not None]
+        has_support = any(s >= 0.7 for s in support_scores)
+
+        if best_final_score < MIN_FINAL_MATCH_SCORE:
+            return None
+        if title_score < MIN_TITLE_MATCH_SCORE and not has_support:
+            return None
+        return best_details
+
     except Exception as e:
         print(f"   TMDB Error for '{movie_title}': {e}")
-    
+        return None
+
+def _is_tmdb_cache_hit(entry):
+    return isinstance(entry, dict) and entry.get("tmdb_id")
+
+def _extract_legacy_tmdb_id(entry):
+    if not isinstance(entry, dict):
+        return None
+    if entry.get("tmdb_id"):
+        return None
+    legacy_id = entry.get("id")
+    if isinstance(legacy_id, int):
+        return legacy_id
+    if isinstance(legacy_id, str) and legacy_id.isdigit():
+        return int(legacy_id)
     return None
+
+def _build_title_info(listings):
+    title_info = {}
+    for item in listings:
+        title = item.get("movie_title")
+        if not title:
+            continue
+        info = title_info.setdefault(title, {
+            "movie_title": title,
+            "movie_title_en": "",
+            "year": "",
+            "runtime_min": "",
+            "director": "",
+            "country": "",
+        })
+        for field in ("movie_title_en", "year", "runtime_min", "director", "country"):
+            if not info.get(field) and item.get(field):
+                info[field] = item.get(field)
+    return title_info
+
+def _chunked(items, size):
+    for i in range(0, len(items), size):
+        yield items[i:i + size]
+
+def _extract_gemini_text(payload):
+    try:
+        parts = payload["candidates"][0]["content"]["parts"]
+    except (KeyError, IndexError, TypeError):
+        return ""
+    if not isinstance(parts, list):
+        return ""
+    texts = []
+    for part in parts:
+        if isinstance(part, dict) and part.get("text"):
+            texts.append(part["text"])
+    return "\n".join(texts).strip()
+
+def _parse_gemini_json(text):
+    if not text:
+        return []
+    text = text.strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```(?:json)?", "", text).strip()
+        text = re.sub(r"```$", "", text).strip()
+    start = text.find("[")
+    end = text.rfind("]")
+    if start != -1 and end != -1 and end > start:
+        text = text[start:end + 1]
+    try:
+        data = json.loads(text)
+        if isinstance(data, dict):
+            if data.get("english_title") or data.get("en_title") or data.get("translation"):
+                return [data]
+            data = data.get("resolutions") or data.get("translations") or data.get("results") or []
+        return data if isinstance(data, list) else []
+    except json.JSONDecodeError:
+        obj_start = text.find("{")
+        obj_end = text.rfind("}")
+        if obj_start != -1 and obj_end != -1 and obj_end > obj_start:
+            try:
+                data = json.loads(text[obj_start:obj_end + 1])
+                if isinstance(data, dict):
+                    if data.get("english_title") or data.get("en_title") or data.get("translation"):
+                        return [data]
+            except json.JSONDecodeError:
+                pass
+        return []
+
+def _parse_gemini_fallback(text, input_title):
+    if not text or not input_title:
+        return None
+    text = text.strip()
+    text_unescaped = text.replace('\\"', '"')
+    if re.search(r"\"english_title\"\\s*:\\s*null", text_unescaped, flags=re.IGNORECASE):
+        return {"english_title": None, "release_year": None, "confidence": None, "notes": ""}
+    english_match = re.search(r"\"english_title\"\\s*:\\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
+    if not english_match:
+        english_match = re.search(r"\"en_title\"\\s*:\\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
+    if not english_match:
+        english_match = re.search(r"\"english_title\"\\s*:\\s*\"?([^\"\\n\\r\\}]+)", text_unescaped, flags=re.IGNORECASE)
+    if not english_match:
+        english_match = re.search(r"\"en_title\"\\s*:\\s*\"?([^\"\\n\\r\\}]+)", text_unescaped, flags=re.IGNORECASE)
+    english_title = ""
+    if english_match:
+        english_title = english_match.group(1).strip().strip('"').strip()
+    if not english_title:
+        return None
+    year_match = re.search(r"\"release_year\"\\s*:\\s*(\\d{4})", text_unescaped, flags=re.IGNORECASE)
+    if not year_match:
+        year_match = re.search(r"\"year\"\\s*:\\s*(\\d{4})", text_unescaped, flags=re.IGNORECASE)
+    confidence_match = re.search(r"\"confidence\"\\s*:\\s*([0-9]*\\.?[0-9]+)", text_unescaped, flags=re.IGNORECASE)
+    release_year = int(year_match.group(1)) if year_match else None
+    confidence = float(confidence_match.group(1)) if confidence_match else None
+    return {
+        "english_title": english_title,
+        "release_year": release_year,
+        "confidence": confidence,
+        "notes": "",
+    }
+
+def _gemini_year_matches(details, release_year):
+    if not details or not release_year:
+        return True
+    tmdb_year = _parse_year(details.get("release_date"))
+    if not tmdb_year:
+        return True
+    return tmdb_year == release_year
+
+def _resolve_titles_with_gemini(titles, session, api_key, model, use_search_tool, batch_size):
+    if not titles:
+        return {}
+    endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+    results = {}
+    total_prompt_tokens = 0
+    total_tool_tokens = 0
+    total_output_tokens = 0
+
+    if use_search_tool:
+        batch_size = min(batch_size, 8)
+
+    batches = list(_chunked(titles, batch_size))
+    while batches:
+        batch = batches.pop(0)
+        if not batch:
+            continue
+        if len(batch) == 1:
+            print(f"   Gemini resolving: {batch[0]}")
+        else:
+            preview_titles = ", ".join(batch[:3])
+            suffix = f" (+{len(batch) - 3} more)" if len(batch) > 3 else ""
+            print(f"   Gemini resolving batch: {preview_titles}{suffix}")
+        if len(batch) == 1:
+            prompt = (
+                "You are given one Japanese film title. Use web search to find the "
+                "official English title (not a literal translation). Return a single "
+                "JSON object (not an array) with keys: english_title, release_year, "
+                "confidence. If unsure, set english_title to null. Return only JSON."
+            )
+            title_lines = f"Title: {batch[0]}"
+            max_output_tokens = 2048
+        else:
+            prompt = (
+                "You are given Japanese film titles. Use web search to find the official "
+                "English title (not a literal translation). Return JSON array of objects "
+                "with keys: input_title, english_title, release_year, confidence. "
+                "If unsure, set english_title to null. Return only JSON."
+            )
+            title_lines = "\n".join(f"- {title}" for title in batch)
+            max_output_tokens = min(8192, max(1024, 512 * len(batch)))
+        payload = {
+            "contents": [
+                {"role": "user", "parts": [{"text": f"{prompt}\n\nTitles:\n{title_lines}"}]}
+            ],
+            "generationConfig": {
+                "temperature": 0.2,
+                "maxOutputTokens": max_output_tokens,
+                "responseMimeType": "application/json",
+            },
+        }
+        if use_search_tool:
+            payload["tools"] = [{"google_search": {}}]
+
+        attempts = 0
+        resp = None
+        while attempts < 2:
+            attempts += 1
+            try:
+                resp = session.post(endpoint, params={"key": api_key}, json=payload, timeout=(10, 90))
+                break
+            except requests.exceptions.RequestException as exc:
+                print(f"   Gemini request failed (attempt {attempts}): {exc}")
+                time.sleep(1.5 * attempts)
+        if resp is None:
+            if len(batch) > 1:
+                mid = len(batch) // 2
+                batches.insert(0, batch[mid:])
+                batches.insert(0, batch[:mid])
+            continue
+        if resp.status_code != 200:
+            print(f"   Gemini error {resp.status_code}: {resp.text[:300]}")
+            if resp.status_code == 429 and len(batch) > 1:
+                mid = len(batch) // 2
+                batches.insert(0, batch[mid:])
+                batches.insert(0, batch[:mid])
+            continue
+        data = resp.json()
+        if isinstance(data, dict) and data.get("error"):
+            print(f"   Gemini error: {data['error']}")
+            continue
+        finish_reason = None
+        if isinstance(data, dict):
+            candidates = data.get("candidates") or []
+            if candidates:
+                finish_reason = candidates[0].get("finishReason")
+        usage = data.get("usageMetadata") if isinstance(data, dict) else None
+        if isinstance(usage, dict):
+            total_prompt_tokens += int(usage.get("promptTokenCount") or 0)
+            total_tool_tokens += int(usage.get("toolUsePromptTokenCount") or 0)
+            total_output_tokens += int(usage.get("candidatesTokenCount") or 0)
+            total_output_tokens += int(usage.get("thoughtsTokenCount") or 0)
+        if finish_reason or usage:
+            print(f"   Gemini debug: finishReason={finish_reason} usage={usage}")
+        text = _extract_gemini_text(data)
+        parsed = _parse_gemini_json(text)
+        if not parsed:
+            keys = list(data.keys()) if isinstance(data, dict) else []
+            preview = ""
+            if isinstance(text, str):
+                preview = text[:400].encode("unicode_escape").decode("ascii")
+            print(f"   Gemini response parse failed. Keys: {keys} Preview: {preview}")
+            if len(batch) == 1:
+                fallback = _parse_gemini_fallback(text, batch[0])
+                if fallback is not None:
+                    if not fallback.get("english_title"):
+                        print(f"   Gemini returned no English title for: {batch[0]}")
+                        continue
+                    results[batch[0]] = fallback
+                    print(
+                        "   Gemini resolved (fallback): "
+                        f"{batch[0]} -> {fallback['english_title']} "
+                        f"(year={fallback['release_year']}, conf={fallback['confidence']})"
+                    )
+                    continue
+                print(f"   Gemini parse failed for: {batch[0]}")
+            if len(batch) > 1:
+                mid = len(batch) // 2
+                batches.insert(0, batch[mid:])
+                batches.insert(0, batch[:mid])
+            continue
+
+        resolved_any = False
+        for entry in parsed:
+            if not isinstance(entry, dict):
+                continue
+            input_title = entry.get("input_title") or entry.get("jp_title") or entry.get("title")
+            if not input_title and len(batch) == 1:
+                input_title = batch[0]
+            english_title = entry.get("english_title") or entry.get("en_title") or entry.get("translation")
+            confidence = entry.get("confidence")
+            notes = entry.get("notes") or ""
+            release_year = entry.get("release_year") or entry.get("year")
+            if not input_title or not english_title:
+                continue
+            if isinstance(confidence, str):
+                try:
+                    confidence = float(confidence)
+                except ValueError:
+                    confidence = None
+            if isinstance(release_year, str) and release_year.isdigit():
+                release_year = int(release_year)
+            elif not isinstance(release_year, int):
+                release_year = None
+            results[input_title] = {
+                "english_title": english_title,
+                "release_year": release_year,
+                "confidence": confidence,
+                "notes": notes,
+            }
+            print(
+                "   Gemini resolved: "
+                f"{input_title} -> {english_title} "
+                f"(year={release_year}, conf={confidence})"
+            )
+            resolved_any = True
+        if len(batch) == 1 and not resolved_any:
+            print(f"   Gemini returned no English title for: {batch[0]}")
+
+    if total_prompt_tokens or total_tool_tokens or total_output_tokens:
+        input_tokens = total_prompt_tokens + total_tool_tokens
+        output_tokens = total_output_tokens
+        input_cost = (input_tokens / 1_000_000) * 0.50
+        output_cost = (output_tokens / 1_000_000) * 3.00
+        total_cost = input_cost + output_cost
+        print(
+            "   Gemini usage summary: "
+            f"input_tokens={input_tokens} output_tokens={output_tokens} "
+            f"estimated_cost=${total_cost:.4f}"
+        )
+    return results
+
+def _attempt_tmdb_with_english_title(title, title_info, english_title, release_year, session, api_key):
+    if not english_title:
+        return None
+    resolved_info = dict(title_info)
+    resolved_info["movie_title_en"] = english_title
+    if release_year and not resolved_info.get("year"):
+        resolved_info["year"] = str(release_year)
+    return fetch_tmdb_details(resolved_info, session, api_key)
 
 def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     """
@@ -323,58 +867,217 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     """
     print(f"\n--- Starting Robust Enrichment for {len(listings)} listings ---")
     
-    # Group by movie title to avoid duplicate API calls
-    unique_titles = list(set(item["movie_title"] for item in listings))
+    title_info = _build_title_info(listings)
+    unique_titles = list(title_info.keys())
     print(f"   Unique films to process: {len(unique_titles)}")
     
     updated_cache = False
+    retry_not_found = os.environ.get("TMDB_RETRY_NOT_FOUND", "").lower() in ("1", "true", "yes")
     
-    for title in unique_titles:
-        if title not in cache:
-            # If we haven't checked this title before
-            print(f"   🔍 Searching TMDB for: {title}")
-            details = fetch_tmdb_details(title, session, api_key)
-            
+    for title, info in title_info.items():
+        has_cache_entry = title in cache
+        cache_entry = cache.get(title)
+        if has_cache_entry and _is_tmdb_cache_hit(cache_entry):
+            continue
+        if has_cache_entry and cache_entry is None and not retry_not_found:
+            continue
+        
+        legacy_id = _extract_legacy_tmdb_id(cache_entry)
+        if legacy_id:
+            print(f"   🔍 Fetching TMDB details by cached ID: {title}")
+            details = _fetch_tmdb_details_by_id(legacy_id, session, api_key)
             if details:
                 cache[title] = details
                 updated_cache = True
                 print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
             else:
-                cache[title] = None # Mark as not found so we don't retry immediately
-                print(f"      ❌ Not found.")
-            
-            time.sleep(0.3) # Rate limiting
-            
+                cache[title] = None
+                updated_cache = True
+                print("      ❌ Not found.")
+            time.sleep(0.3)
+            continue
+        
+        print(f"   🔍 Searching TMDB for: {title}")
+        details = fetch_tmdb_details(info, session, api_key)
+        
+        if details:
+            cache[title] = details
+            updated_cache = True
+            print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
+        else:
+            cache[title] = None
+            updated_cache = True
+            print("      ❌ Not found.")
+        
+        time.sleep(0.3)
+
+    resolution_cache = load_title_resolution_cache()
+    resolution_cache_updated = False
+
+    gemini_key = os.environ.get("GEMINI_API_KEY")
+    gemini_enabled = bool(gemini_key) and (
+        os.environ.get("GEMINI_RESOLVE_TITLES", "").lower() in ("1", "true", "yes") or
+        os.environ.get("GEMINI_TRANSLATE_TITLES", "").lower() in ("1", "true", "yes")
+    )
+    gemini_model = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
+    if gemini_model.startswith("models/"):
+        gemini_model = gemini_model.split("/", 1)[1]
+    if "flash" not in gemini_model.lower():
+        gemini_model = "gemini-3-flash-preview"
+    use_search_env = os.environ.get("GEMINI_USE_SEARCH_TOOL")
+    if use_search_env is None or use_search_env == "":
+        gemini_use_search_tool = True
+    else:
+        gemini_use_search_tool = use_search_env.lower() in ("1", "true", "yes")
+    gemini_batch_size = _parse_int(os.environ.get("GEMINI_BATCH_SIZE", "1")) or 1
+    gemini_confidence_threshold = float(os.environ.get("GEMINI_CONFIDENCE_THRESHOLD", "0.6"))
+
+    if not gemini_enabled and (
+        os.environ.get("GEMINI_RESOLVE_TITLES") or os.environ.get("GEMINI_TRANSLATE_TITLES")
+    ):
+        print("   Gemini resolution skipped: GEMINI_API_KEY not set.")
+
+    unresolved_titles = [title for title in unique_titles if not _is_tmdb_cache_hit(cache.get(title))]
+    titles_to_resolve = []
+
+    for title in unresolved_titles:
+        info = title_info[title]
+        if info.get("movie_title_en"):
+            continue
+
+        cached_entry = resolution_cache.get(title)
+        cached_english_title = None
+        cached_confidence = None
+        cached_release_year = None
+        if isinstance(cached_entry, dict):
+            if cached_entry.get("failed"):
+                continue
+            cached_english_title = cached_entry.get("english_title")
+            cached_confidence = cached_entry.get("confidence")
+            cached_release_year = cached_entry.get("release_year")
+        elif isinstance(cached_entry, str):
+            cached_english_title = cached_entry
+
+        if cached_english_title and (cached_confidence is None or cached_confidence >= gemini_confidence_threshold):
+            print(f"   🔁 Retrying TMDB with cached English title: {title} -> {cached_english_title}")
+            details = _attempt_tmdb_with_english_title(title, info, cached_english_title, cached_release_year, session, api_key)
+            if details:
+                cache[title] = details
+                updated_cache = True
+                print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
+            if not details:
+                if isinstance(cached_entry, dict):
+                    failed_entry = dict(cached_entry)
+                    failed_entry["failed"] = True
+                    failed_entry.setdefault("notes", "tmdb_failed")
+                else:
+                    failed_entry = {
+                        "english_title": cached_english_title,
+                        "release_year": cached_release_year,
+                        "confidence": cached_confidence,
+                        "notes": "tmdb_failed",
+                        "failed": True,
+                    }
+                resolution_cache[title] = failed_entry
+                resolution_cache_updated = True
+            time.sleep(0.3)
+            continue
+
+        if gemini_enabled and not cached_english_title:
+            titles_to_resolve.append(title)
+
+    if gemini_enabled and titles_to_resolve:
+        print(f"   🤖 Resolving English titles with Gemini for {len(titles_to_resolve)} titles...")
+        resolutions = _resolve_titles_with_gemini(
+            titles_to_resolve,
+            session,
+            gemini_key,
+            gemini_model,
+            gemini_use_search_tool,
+            gemini_batch_size,
+        )
+
+        for title, entry in resolutions.items():
+            resolution_cache[title] = entry
+            resolution_cache_updated = True
+
+        missing_after = [title for title in titles_to_resolve if title not in resolutions]
+        if missing_after:
+            for title in missing_after:
+                resolution_cache[title] = {
+                    "english_title": None,
+                    "release_year": None,
+                    "confidence": 0.0,
+                    "notes": "gemini_failed",
+                    "failed": True,
+                }
+            resolution_cache_updated = True
+
+        for title, entry in resolutions.items():
+            english_title = entry.get("english_title")
+            confidence = entry.get("confidence")
+            release_year = entry.get("release_year")
+            if confidence is not None and confidence < gemini_confidence_threshold:
+                continue
+            if english_title:
+                info = title_info.get(title, {"movie_title": title})
+                print(f"   🔁 Retrying TMDB with Gemini English title: {title} -> {english_title}")
+                details = _attempt_tmdb_with_english_title(
+                    title,
+                    info,
+                    english_title,
+                    release_year,
+                    session,
+                    api_key,
+                )
+                if details and not _gemini_year_matches(details, release_year):
+                    print(f"      ⚠️ Year mismatch for {title}. Skipping TMDB match.")
+                    details = None
+                if details:
+                    cache[title] = details
+                    updated_cache = True
+                    print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
+                if not details:
+                    failed_entry = dict(entry)
+                    failed_entry["failed"] = True
+                    failed_entry.setdefault("notes", "tmdb_failed")
+                    resolution_cache[title] = failed_entry
+                    resolution_cache_updated = True
+            time.sleep(0.3)
+
     # Apply cached data to listings
     for item in listings:
         t = item["movie_title"]
-        if t in cache and cache[t]:
-            d = cache[t]
-            # Merge fields if missing in scraper data
-            if not item.get("tmdb_id"):
-                item["tmdb_id"] = d["tmdb_id"]
-                item["tmdb_backdrop_path"] = d["backdrop_path"]
-                item["tmdb_poster_path"] = d["poster_path"]
-                item["tmdb_overview_jp"] = d["overview"]
-                item["clean_title_jp"] = d["tmdb_title_jp"]
-                item["runtime"] = d["runtime"]
-                item["genres"] = d["genres"]
-                item["vote_average"] = d["vote_average"]
+        d = cache.get(t)
+        if not _is_tmdb_cache_hit(d):
+            continue
+        # Merge fields if missing in scraper data
+        if not item.get("tmdb_id") and d.get("tmdb_id"):
+            item["tmdb_id"] = d["tmdb_id"]
+            item["tmdb_backdrop_path"] = d.get("backdrop_path")
+            item["tmdb_poster_path"] = d.get("poster_path")
+            item["tmdb_overview_jp"] = d.get("overview")
+            item["clean_title_jp"] = d.get("tmdb_title_jp")
+            item["runtime"] = d.get("runtime")
+            item["genres"] = d.get("genres")
+            item["vote_average"] = d.get("vote_average")
+            
+            # If scraper didn't provide English title
+            if not item.get("movie_title_en"):
+                item["movie_title_en"] = d.get("tmdb_title_en")
+            
+            # If scraper didn't provide Director
+            if not item.get("director"):
+                item["director"] = d.get("director")
                 
-                # If scraper didn't provide English title
-                if not item.get("movie_title_en"):
-                    item["movie_title_en"] = d["tmdb_title_en"]
-                
-                # If scraper didn't provide Director
-                if not item.get("director"):
-                    item["director"] = d["director"]
-                    
-                # If scraper didn't provide Year
-                if not item.get("year") and d["release_date"]:
-                    item["year"] = d["release_date"].split("-")[0]
+            # If scraper didn't provide Year
+            if not item.get("year") and d.get("release_date"):
+                item["year"] = d["release_date"].split("-")[0]
 
     if updated_cache:
         save_tmdb_cache(cache)
+    if resolution_cache_updated:
+        save_title_resolution_cache(resolution_cache)
         
     return listings
 
