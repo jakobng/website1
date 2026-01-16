@@ -117,12 +117,101 @@ def _parse_time_12h(time_str: str) -> Optional[str]:
     return None
 
 
+def _extract_title_from_detail_page(soup: BeautifulSoup, detail_url: str, fallback_title: str) -> str:
+    """
+    Extract the actual film title from a detail page.
+    Falls back to URL slug or the provided fallback title.
+    """
+    # Method 1: Look for h1 or primary heading
+    h1 = soup.find("h1")
+    if h1:
+        title = _clean(h1.get_text())
+        # Skip if it's a generic program heading
+        if title and not title.lower().startswith(("in focus:", "narrow margin", "long takes")):
+            return title
+
+    # Method 2: Look for title in metadata block
+    # ICA often has: "_Ballet_, dir. Frederick Wiseman, US 1995, 170 min."
+    meta_pattern = re.compile(r"_([^_]+)_,\s*dir\.", re.IGNORECASE)
+    page_text = soup.get_text()
+    meta_match = meta_pattern.search(page_text)
+    if meta_match:
+        return meta_match.group(1).strip()
+
+    # Method 3: Extract from URL slug as fallback
+    # e.g., /films/menus-plaisirs-les-troisgros -> "Menus Plaisirs Les Troisgros"
+    slug_match = re.search(r"/films/([^/]+)/?$", detail_url)
+    if slug_match:
+        slug = slug_match.group(1)
+        # Skip program slugs
+        if not slug.startswith(("in-focus-", "narrow-margin-", "long-takes")):
+            # Convert slug to title case
+            title = slug.replace("-", " ").title()
+            return title
+
+    return fallback_title
+
+
+def _is_program_page(soup: BeautifulSoup, url: str) -> bool:
+    """
+    Detect if this is a program/series page (like "In Focus: Frederick Wiseman")
+    that contains multiple films, rather than an individual film page.
+    """
+    # Check URL patterns for program pages
+    program_patterns = [
+        r"/films/in-focus-",
+        r"/films/narrow-margin-",
+        r"/films/long-takes",
+        r"/films/off-circuit",
+    ]
+    for pattern in program_patterns:
+        if re.search(pattern, url, re.IGNORECASE):
+            return True
+
+    return False
+
+
+def _extract_films_from_program_page(soup: BeautifulSoup, session: requests.Session) -> List[Dict]:
+    """
+    Extract individual film listings from a program page.
+    Returns list of {title, url} for each film in the program.
+    """
+    films = []
+    seen_urls = set()
+
+    # Look for film links within the program page
+    # These typically link to individual film detail pages
+    for link in soup.select("a[href*='/films/']"):
+        href = link.get("href", "")
+        if not href or href in seen_urls:
+            continue
+
+        # Skip self-referential and navigation links
+        if re.search(r"/films/(in-focus-|narrow-margin-|long-takes|off-circuit|\d{4}$|today|tomorrow)", href):
+            continue
+
+        seen_urls.add(href)
+        url = urljoin(BASE_URL, href)
+        title = _clean(link.get_text())
+
+        if title and len(title) > 2:
+            films.append({
+                "title": title,
+                "url": url,
+            })
+
+    return films
+
+
 def _extract_screenings_from_detail_page(soup: BeautifulSoup, film_title: str, detail_url: str) -> List[Dict]:
     """
     Extract individual screenings from a film detail page.
     Screenings are typically shown as: time | date | venue
     """
     shows = []
+
+    # First, try to get the actual film title from the page
+    actual_title = _extract_title_from_detail_page(soup, detail_url, film_title)
 
     # Get the full page text for pattern matching
     page_text = soup.get_text()
@@ -218,8 +307,8 @@ def _extract_screenings_from_detail_page(soup: BeautifulSoup, film_title: str, d
 
         shows.append({
             "cinema_name": CINEMA_NAME,
-            "movie_title": film_title,
-            "movie_title_en": film_title,
+            "movie_title": actual_title,
+            "movie_title_en": actual_title,
             "date_text": parsed_date.isoformat(),
             "showtime": parsed_time,
             "detail_page_url": detail_url,
@@ -339,21 +428,60 @@ def scrape_ica() -> List[Dict]:
             print(f"[{CINEMA_NAME}] Warning: No film listings found on main page", file=sys.stderr)
             return []
 
+        # Track URLs we've already processed to avoid duplicates
+        processed_urls = set()
+
         # Visit each film's detail page to get showtimes
         for film in film_listings[:30]:  # Limit to avoid too many requests
             title = film["title"]
             url = film["url"]
+
+            if url in processed_urls:
+                continue
+            processed_urls.add(url)
 
             try:
                 resp = session.get(url, headers=HEADERS, timeout=TIMEOUT)
                 resp.raise_for_status()
 
                 soup = BeautifulSoup(resp.text, "html.parser")
-                film_shows = _extract_screenings_from_detail_page(soup, title, url)
 
-                if film_shows:
-                    print(f"[{CINEMA_NAME}] Found {len(film_shows)} screenings for '{title}'", file=sys.stderr)
-                    shows.extend(film_shows)
+                # Check if this is a program page (e.g., "In Focus: Frederick Wiseman")
+                if _is_program_page(soup, url):
+                    print(f"[{CINEMA_NAME}] Detected program page: '{title}', extracting individual films...", file=sys.stderr)
+                    # Extract individual film links from the program page
+                    program_films = _extract_films_from_program_page(soup, session)
+                    print(f"[{CINEMA_NAME}]   Found {len(program_films)} films in program", file=sys.stderr)
+
+                    # Process each individual film
+                    for pf in program_films[:15]:  # Limit films per program
+                        pf_url = pf["url"]
+                        pf_title = pf["title"]
+
+                        if pf_url in processed_urls:
+                            continue
+                        processed_urls.add(pf_url)
+
+                        try:
+                            pf_resp = session.get(pf_url, headers=HEADERS, timeout=TIMEOUT)
+                            pf_resp.raise_for_status()
+                            pf_soup = BeautifulSoup(pf_resp.text, "html.parser")
+
+                            pf_shows = _extract_screenings_from_detail_page(pf_soup, pf_title, pf_url)
+                            if pf_shows:
+                                print(f"[{CINEMA_NAME}]   Found {len(pf_shows)} screenings for '{pf_shows[0]['movie_title']}'", file=sys.stderr)
+                                shows.extend(pf_shows)
+
+                        except Exception as e:
+                            print(f"[{CINEMA_NAME}]   Error processing program film {pf_title}: {e}", file=sys.stderr)
+                            continue
+                else:
+                    # Regular film detail page
+                    film_shows = _extract_screenings_from_detail_page(soup, title, url)
+
+                    if film_shows:
+                        print(f"[{CINEMA_NAME}] Found {len(film_shows)} screenings for '{film_shows[0]['movie_title']}'", file=sys.stderr)
+                        shows.extend(film_shows)
 
             except requests.RequestException as e:
                 print(f"[{CINEMA_NAME}] Error fetching {url}: {e}", file=sys.stderr)
