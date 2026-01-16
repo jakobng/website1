@@ -183,8 +183,14 @@ TITLE_ALIASES = {
     "fools and a flower": "Fools & A Flower",
     "untold: the retreat": "The Retreat",
     "avatar: fire and ash": "Avatar 3",
-    "labyrinth": "Labyrinth (1986)", # Force the classic
-    "speed": "Speed (1994)", # Force the classic
+    "labyrinth": "Labyrinth (1986)",  # Force the classic
+    "speed": "Speed (1994)",  # Force the classic
+    # Japanese titles with English translations
+    "house [hausu]": "Hausu",
+    "hausu": "Hausu",  # Japanese horror film 1977
+    "house hausu": "Hausu",
+    # Foreign title aliases
+    "la danse: le ballet de l'opera de paris": "La Danse: The Paris Opera Ballet",
 }
 
 def clean_title_for_tmdb(title: str) -> str:
@@ -202,6 +208,12 @@ def clean_title_for_tmdb(title: str) -> str:
         r"^(Member's Preview|Members' Preview|Mystery Movie|Secret Movie|Surprise Movie)[:\s–-]+",
         r"^(Bar Trash|OffBeat|Pink Palace|Films For Workers|Coming Up|London Short Film Festival)[:\s–-]+",
         r"^(Phoenix Classics|Cine-Real presents|Green Screen)[:\s–-]+",
+        # Additional event prefixes
+        r"^(DRINK\s*&\s*DINE|Drink\s*&\s*Dine|DocFest Spotlights|Video Bazaar presents|TV Preview)[:\s–-]+",
+        r"^(SCANNERS\s+INC\.?\s+PRESENTS|Scanners Inc\.? Presents|DELETED SCENES PRESENTS|Deleted Scenes Presents)[:\s–-]+",
+        r"^(Holocaust Memorial Day|Lexi Seniors'? Film Club|Saturday Morning Picture Club)[:\s–-]+",
+        r"^(Nostalgie|Red Flagged[^:]*presents|Queer East presents)[:\s–-]+",
+        r"^An Evening with[^:]+[:\s–-]+",  # "An Evening with X: Film Title"
     ]
     cleaned = title
     for pat in prefix_patterns:
@@ -225,14 +237,18 @@ def clean_title_for_tmdb(title: str) -> str:
         r"\[.*?\]",                         # [XXX] - e.g. [Kimi no Na wa.]
         r"(?i)\s+Encore\s*$",               # Encore screenings
         r"(?i)\s+\d{4}-\d{2,4}\s+Season\s*$", # 2025-26 Season
-        
+
+        # Sing-along suffixes
+        r"(?i)\s+Sing[- ]?A[- ]?Long!?\s*$",  # Sing-A-Long, Sing-Along, Sing A Long
+        r"(?i)\s+Sing[- ]?Along!?\s*$",
+
         # Noise words at end of string
         r"(?i)\b(parent and baby|carer|hard of hearing|captioned|subtitled|relaxed|autism|dementia|HOH|Babes-In-Arms)(\s+screening)?\s*$",
         r"(?i)\s+UK PREMIERE\s*$",
-        
+
         # Aggressive suffix stripping for " + " or " - " (often Q&As)
         # e.g. "Power Station + director Q&A" -> "Power Station"
-        r"\s(\+|–|-)\s+(intro|discussion|q\s*&\s*a|qa|panel|talk|shorts|live score|live music|director|presented by|hosted by|with|screening).*$",
+        r"\s(\+|–|-)\s+(intro|discussion|q\s*&\s*a|qa|panel|talk|shorts|live score|live music|director|presented by|hosted by|with|screening|recorded|cast).*$",
     ]
 
     for pat in patterns:
@@ -354,18 +370,29 @@ def build_search_queries(title: str):
     # Handle square brackets e.g. "Your Name [Kimi no Na wa.]"
     # We want to search "Your Name" AND "Kimi no Na wa"
     bracket_matches = re.findall(r"\[([^\]]+)\]", base)
-    
+
     cleaned_base = clean_title_for_tmdb(base)
-    
+
+    # Check aliases FIRST for the full original title (including brackets)
+    # This handles cases like "House [Hausu]" -> "Hausu"
+    full_lower = base.lower().strip()
+    if full_lower in TITLE_ALIASES:
+        queries.append(TITLE_ALIASES[full_lower])
+
+    # Also check normalized version (brackets without spaces)
+    normalized_full = re.sub(r'\s*\[', ' [', full_lower).strip()
+    if normalized_full in TITLE_ALIASES:
+        queries.append(TITLE_ALIASES[normalized_full])
+
     # Priority 1: Cleaned Base (e.g. "Hamnet")
-    if cleaned_base:
+    if cleaned_base and cleaned_base not in queries:
         queries.append(cleaned_base)
-        # Check aliases
+        # Check aliases for cleaned base
         lower_base = cleaned_base.lower()
-        if lower_base in TITLE_ALIASES:
+        if lower_base in TITLE_ALIASES and TITLE_ALIASES[lower_base] not in queries:
             queries.append(TITLE_ALIASES[lower_base])
-        
-    # Priority 2: AKA/Bracket content
+
+    # Priority 2: AKA/Bracket content (search using foreign/original title)
     for alt in bracket_matches:
         # Check for "aka Title" inside brackets
         aka_match = re.search(r"\baka\s+(.*)", alt, flags=re.IGNORECASE)
@@ -373,15 +400,23 @@ def build_search_queries(title: str):
         candidate = clean_title_for_tmdb(candidate)
         if candidate and candidate not in queries:
             queries.append(candidate)
+            # Also check alias for bracket content
+            if candidate.lower() in TITLE_ALIASES and TITLE_ALIASES[candidate.lower()] not in queries:
+                queries.append(TITLE_ALIASES[candidate.lower()])
             
     # Priority 3: Split by " + " or " & " (Double Bills)
-    if " + " in base or " & " in base:
-        parts = re.split(r"\s*(?:\+|&)\s*", base)
+    # Only split on the CLEANED base to avoid splitting event prefixes like "DRINK & DINE"
+    if " + " in cleaned_base or " & " in cleaned_base:
+        parts = re.split(r"\s*(?:\+|&)\s*", cleaned_base)
         for part in parts:
             part = strip_event_suffix(part.strip())
             part = clean_title_for_tmdb(part).strip(" .,:;")
-            if part and part not in queries:
-                queries.append(part)
+            # Skip parts that are too short (likely noise) or look like event noise
+            if part and len(part) > 3 and part not in queries:
+                # Skip common noise words
+                noise_words = {'intro', 'q', 'a', 'qa', 'discussion', 'panel', 'talk', 'with', 'recorded', 'cast'}
+                if part.lower() not in noise_words:
+                    queries.append(part)
     
     # Priority 4: Colon split (e.g. "Mission: Impossible") -> "Mission Impossible" (sometimes helps)
     # But also "National Theatre Live: Hamlet" -> "Hamlet"
@@ -412,32 +447,49 @@ def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=N
 
     title_norm = normalize_title_for_match(result.get("title", ""))
     original_norm = normalize_title_for_match(result.get("original_title", ""))
+    original_raw = result.get("original_title", "")
 
     # 1. Title Score (0.0 - 1.0)
     # ---------------------------------------------------------
     ratios = []
+    title_ratio = 0.0
+    original_ratio = 0.0
+
     if title_norm:
-        ratios.append(difflib.SequenceMatcher(None, query_norm, title_norm).ratio())
+        title_ratio = difflib.SequenceMatcher(None, query_norm, title_norm).ratio()
+        ratios.append(title_ratio)
     if original_norm and original_norm != title_norm:
-        ratios.append(difflib.SequenceMatcher(None, query_norm, original_norm).ratio())
-    
+        original_ratio = difflib.SequenceMatcher(None, query_norm, original_norm).ratio()
+        ratios.append(original_ratio)
+
     if not ratios:
         return 0.0
 
     best_ratio = max(ratios)
+
+    # Bonus: If query matches original_title better than title, this is likely
+    # the correct foreign film (e.g., "Hausu" matching Japanese "ハウス" entry)
+    original_match_bonus = 0.0
+    if original_ratio > title_ratio + 0.1:
+        # Query matches original title significantly better
+        original_match_bonus = 0.1
+    # Also bonus if original_title contains non-ASCII (foreign language)
+    if original_raw and any(ord(c) > 127 for c in original_raw):
+        if original_ratio > 0.7 or title_ratio > 0.85:
+            original_match_bonus += 0.05
     
     # Token overlap bonus (good for swapped words)
     query_tokens = set(query_norm.split())
     title_tokens = set(title_norm.split()) if title_norm else set()
     if not title_tokens and original_norm:
         title_tokens = set(original_norm.split())
-        
+
     token_overlap = 0.0
     if query_tokens and title_tokens:
         token_overlap = len(query_tokens & title_tokens) / len(query_tokens | title_tokens)
 
-    # Base Text Score
-    score = (0.7 * best_ratio) + (0.3 * token_overlap)
+    # Base Text Score + foreign title bonus
+    score = (0.7 * best_ratio) + (0.3 * token_overlap) + original_match_bonus
 
     # 2. Year Logic
     # ---------------------------------------------------------
