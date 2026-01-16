@@ -57,7 +57,7 @@ jobs:
 
           # Stash any unstaged changes to prevent rebase failure
           git stash --include-untracked || true
-          git pull origin main --rebase
+          git pull --rebase -X theirs origin main
           git stash drop || true
 
           git push

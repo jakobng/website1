@@ -134,7 +134,7 @@ jobs:
           git stash --include-untracked || true
 
           # FIX: Rebase to handle race conditions (if repo updated while running)
-          git pull --rebase origin main
+          git pull --rebase -X theirs origin main
           git stash drop || true
 
           # Push
