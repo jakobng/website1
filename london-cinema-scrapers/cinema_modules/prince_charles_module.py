@@ -108,9 +108,91 @@ def _parse_time_12h(time_str: str) -> Optional[str]:
     return None
 
 
-# Note: Metadata extraction from PCC detail pages is unreliable.
-# The main_scraper.py handles TMDB enrichment which provides better metadata.
-# Keeping this function as a stub for potential future use.
+def _parse_film_metadata(event) -> Dict:
+    """
+    Extract metadata from a jacro-event element.
+
+    The metadata is in two divs:
+    - div.running-time: "197787minsJapan(15)Horror / Comedy"
+    - div.film-info: "Directed by Nobuhiko ObayashiStarring..."
+
+    Returns dict with year, runtime_min, country, director, genre.
+    """
+    metadata = {
+        "year": "",
+        "runtime_min": "",
+        "country": "",
+        "director": "",
+        "genre": "",
+    }
+
+    # Parse running-time div: "197787minsJapan(15)Horror / Comedy"
+    running_time_div = event.select_one("div.running-time")
+    if running_time_div:
+        text = running_time_div.get_text(strip=True)
+
+        # Extract year (4 digits at start, 1900-2099)
+        year_match = re.match(r"^((?:19|20)\d{2})", text)
+        if year_match:
+            metadata["year"] = year_match.group(1)
+            text = text[4:]  # Remove year from text
+
+        # Extract runtime (digits followed by "mins" or "min")
+        runtime_match = re.search(r"(\d+)\s*mins?", text, re.IGNORECASE)
+        if runtime_match:
+            metadata["runtime_min"] = runtime_match.group(1)
+            # Remove runtime from text for further parsing
+            text = re.sub(r"\d+\s*mins?", "", text, flags=re.IGNORECASE)
+
+        # Extract rating in parentheses and remove it
+        # Ratings: (U), (PG), (12), (12A), (15), (18), (TBC), etc.
+        rating_match = re.search(r"\(([^)]+)\)", text)
+        if rating_match:
+            text = re.sub(r"\([^)]+\)", "", text)
+
+        # What remains should be country and genre
+        # Country typically comes before genre, often with comma or just concatenated
+        # Examples: "Japan", "UK, USA", "USA"
+        # Genre: "Horror / Comedy", "Drama", "Science Fiction"
+        remaining = text.strip()
+
+        # Try to separate country from genre
+        # Countries are usually short words, genres often have spaces or slashes
+        # Common countries: USA, UK, Japan, France, Germany, Italy, etc.
+        country_patterns = [
+            r"^((?:USA|UK|Japan|France|Germany|Italy|Spain|South Korea|China|"
+            r"Hong Kong|Taiwan|India|Australia|Canada|Mexico|Brazil|Argentina|"
+            r"Sweden|Denmark|Norway|Finland|Russia|Poland|Belgium|Netherlands|"
+            r"Ireland|Austria|Switzerland|New Zealand|Iran|Israel|Thailand|"
+            r"(?:[A-Z][a-z]+(?:,\s*)?)+))"
+        ]
+
+        for pattern in country_patterns:
+            country_match = re.match(pattern, remaining)
+            if country_match:
+                metadata["country"] = country_match.group(1).strip().rstrip(",")
+                metadata["genre"] = remaining[len(country_match.group(0)):].strip()
+                break
+
+        if not metadata["country"] and remaining:
+            # Fallback: if no country pattern matched, assume it's all genre
+            metadata["genre"] = remaining
+
+    # Parse film-info div: "Directed by Nobuhiko ObayashiStarring..."
+    film_info_div = event.select_one("div.film-info")
+    if film_info_div:
+        text = film_info_div.get_text(strip=True)
+
+        # Extract director - handle various formats
+        # "Directed by X" or "Directed by XStarring Y"
+        director_match = re.search(r"Directed by\s+(.+?)(?:Starring|$)", text)
+        if director_match:
+            director = director_match.group(1).strip()
+            # Clean up: remove trailing punctuation
+            director = re.sub(r"[,;:\s]+$", "", director)
+            metadata["director"] = director
+
+    return metadata
 
 
 def scrape_prince_charles() -> List[Dict]:
@@ -155,6 +237,9 @@ def scrape_prince_charles() -> List[Dict]:
 
             if not film_title:
                 continue
+
+            # Extract metadata (year, runtime, country, director) from the event
+            metadata = _parse_film_metadata(event)
 
             # Parse performance list to extract date/time pairs
             perf_list = event.select_one(".performance-list-items")
@@ -203,7 +288,7 @@ def scrape_prince_charles() -> List[Dict]:
                     book_link = child.select_one("a.film_book_button")
                     booking_url = book_link.get("href", "") if book_link else ""
 
-                    # Create showing record
+                    # Create showing record with scraped metadata
                     shows.append({
                         "cinema_name": CINEMA_NAME,
                         "movie_title": film_title,
@@ -212,10 +297,10 @@ def scrape_prince_charles() -> List[Dict]:
                         "showtime": parsed_time,
                         "detail_page_url": film_link or "",
                         "booking_url": booking_url,
-                        "director": "",
-                        "year": "",
-                        "country": "",
-                        "runtime_min": "",
+                        "director": metadata.get("director", ""),
+                        "year": metadata.get("year", ""),
+                        "country": metadata.get("country", ""),
+                        "runtime_min": metadata.get("runtime_min", ""),
                         "synopsis": "",
                         "format_tags": format_tags,
                     })
