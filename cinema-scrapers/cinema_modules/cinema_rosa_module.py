@@ -73,7 +73,9 @@ def _parse_rosa_detail_page(soup: BeautifulSoup) -> Dict[str, Optional[str]]:
 
     if info_p := soup.select_one("p.film_info"):
         film_info_text = ' '.join(info_p.get_text(separator=' ').split())
-        if match := re.search(r"(\d{4})\s*/", film_info_text): details["year"] = match.group(1)
+        # Avoid matching dates like 2026/01/17 by checking it's not followed by digits
+        if match := re.search(r"(\d{4})\s*/(?!\d{1,2}/)", film_info_text): 
+            details["year"] = match.group(1)
         if match := re.search(r"(\d+時間)?\s*(\d+)分", film_info_text):
             h = int(re.sub(r'\D', '', match.group(1))) if match.group(1) else 0
             m = int(match.group(2))

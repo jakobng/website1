@@ -53,6 +53,18 @@ def _normalise_title(text: str) -> str:
     text = re.sub(r"^(?:【[^】]+】)+", "", text)
     text = re.sub(r"★.*$", "", text)
     text = text.replace('“', '「').replace('”', '」')
+    
+    # Aggressive suffix removal for TMDB matching
+    remove_patterns = [
+        r"\s*4K(?:デジタル)?(?:リマスター)?版?",
+        r"\s*(?:デジタル)?リマスター版?",
+        r"\s*ディレクターズ・カット版?",
+        r"\s*完全版",
+        r"\s*製作\d+周年記念.*",
+    ]
+    for pat in remove_patterns:
+        text = re.sub(pat, "", text)
+        
     return text.strip()
 
 def _get_movie_detail_urls() -> Dict[str, str]:

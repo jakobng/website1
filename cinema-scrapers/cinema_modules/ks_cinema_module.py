@@ -76,7 +76,7 @@ def _select_title_candidates(cell: Tag) -> Iterable[Tag]:
 
 def _parse_detail_page(soup: BeautifulSoup) -> Dict[str, str]:
     """Parses a movie detail page for rich information."""
-    details = {"director": "", "year": "", "runtime_min": "", "country": "", "synopsis": ""}
+    details = {"director": "", "year": "", "runtime_min": "", "country": "", "synopsis": "", "original_title": ""}
     
     # Details Table Parsing
     for table in soup.select("#txt-area table"):
@@ -94,12 +94,18 @@ def _parse_detail_page(soup: BeautifulSoup) -> Dict[str, str]:
                     year_match = re.search(r"(\d{4})年", value)
                     runtime_match = re.search(r"(\d+)分", value)
                     country_match = re.search(r"／\s*([^／]+?)\s*／", value)
+                    # Extract Original Title
+                    # Looks for "原題：" followed by text until next slash or end of string
+                    original_title_match = re.search(r"原題[:：]\s*([^／/]+)", value)
+
                     if year_match:
                         details["year"] = year_match.group(1)
                     if runtime_match:
                         details["runtime_min"] = runtime_match.group(1)
                     if country_match:
                         details["country"] = country_match.group(1).strip()
+                    if original_title_match:
+                        details["original_title"] = original_title_match.group(1).strip()
             break
 
     # Synopsis Parsing
@@ -257,7 +263,7 @@ def scrape_ks_cinema(max_days: int = 7) -> List[Dict]:
                                 all_showings.append({
                                     "cinema_name": CINEMA_NAME_KC,
                                     "movie_title": title,
-                                    "movie_title_en": "",
+                                    "movie_title_en": details.get("original_title", ""),
                                     "date_text": show_date.isoformat(),
                                     "showtime": st,
                                     "director": details.get("director", ""),

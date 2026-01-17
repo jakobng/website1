@@ -133,7 +133,10 @@ def _parse_detail_page(soup: BeautifulSoup, detail_url: str) -> Dict[str, Option
     if spec_text:
         # 3. Parse Year, Runtime, Country ONLY from this block
         if year_match := re.search(r"(\d{4})年", spec_text):
-            details["year"] = year_match.group(1)
+            # Guard: ignore if followed by month (e.g. 2026年1月)
+            suffix_check = spec_text[year_match.end():]
+            if not re.match(r"\s*\d+月", suffix_check):
+                details["year"] = year_match.group(1)
         
         if runtime_match := re.search(r"(\d+)分", spec_text):
             details["runtime_min"] = runtime_match.group(1)

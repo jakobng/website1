@@ -57,7 +57,10 @@ def parse_detail_page(url: str) -> Dict:
         date_text = clean_text(date_div.get_text())
         m = re.search(r"(\d{4})", date_text)
         if m:
-            details["year"] = m.group(1)
+            # Guard: ignore if followed by month or 'Release' (公開)
+            suffix_check = date_text[m.end():]
+            if not re.match(r"[/年]\d+月", suffix_check) and "公開" not in suffix_check:
+                details["year"] = m.group(1)
 
     # <span class="detail-main-visual__time">175分</span>
     time_span = soup.select_one(".detail-main-visual__time")

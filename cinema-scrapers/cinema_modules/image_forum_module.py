@@ -49,8 +49,8 @@ def fetch(url: str) -> BeautifulSoup:
 
 detail_cache: dict[str, dict] = {}
 
-DIRECTOR_RE = re.compile(r"監督[^:：｜|]*[:：｜|]\s*([^\n／｜|]+)")
-YEAR_RE = re.compile(r'\b(19\d{2}|20\d{2})\b')
+DIRECTOR_RE = re.compile(r"監督[^:：｜|\n]*[:：｜|]\s*([^\n／｜|]+)")
+YEAR_RE = re.compile(r'(19\d{2}|20\d{2})')
 RUNTIME_RE = re.compile(r'(\d{2,3})分')
 
 def parse_detail(detail_url: str):
@@ -75,9 +75,12 @@ def parse_detail(detail_url: str):
     meta = {"synopsis": raw_text, **defaults}
 
     # Find director
-    if (m_dir := DIRECTOR_RE.search(raw_text)):
-        # Clean up director name by taking only the first person listed
-        meta["director"] = m_dir.group(1).strip().split("、")[0]
+    # Improved regex to avoid capturing original titles or other metadata
+    if (m_dir := re.search(r"監督[^:：｜|]*[:：｜|]\s*([^\n／｜|]+)", raw_text)):
+        candidate = m_dir.group(1).strip()
+        # If candidate looks like an enclosed title (e.g. 「Title」), ignore it
+        if not re.match(r"^「.*」$", candidate) and "原題" not in candidate:
+             meta["director"] = candidate.split("、")[0]
 
     # Find the best possible metadata line that contains delimiters AND runtime
     best_meta_line = ""

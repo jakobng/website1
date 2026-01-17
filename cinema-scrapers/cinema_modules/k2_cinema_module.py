@@ -147,6 +147,12 @@ def _extract_year_runtime_country(info_text: str) -> Dict[str, Optional[str]]:
 
     # Pattern B: "2024年 日本 125分" or "2024年 / 日本 / 125分"
     year_match = re.search(r"(\d{4})\s*年", text)
+    if year_match:
+        # Check for date-like suffix (e.g. 2026年1月)
+        suffix_check = text[year_match.end() : year_match.end() + 2]
+        if re.match(r"\s*\d+月", suffix_check):
+            year_match = None
+
     runtime_match = None
     for mm in re.finditer(r"(\d+)\s*(?:分|min)", text):
         candidate = int(mm.group(1))
@@ -390,14 +396,6 @@ def _parse_detail_page(soup: BeautifulSoup) -> Dict[str, Optional[str]]:
             en_clean = _clean_title(en_raw)
             if en_clean:
                 details["movie_title_en"] = en_clean
-
-    # ---- Year from the header date (preferred source)
-    # e.g. "2025年11月14日（金）〜　終了未定"
-    if event_date_tag := soup.select_one(".eventDate"):
-        ed_text = _clean_text(event_date_tag)
-        m_year = re.search(r"(\d{4})\s*年", ed_text)
-        if m_year:
-            details["year"] = m_year.group(1)
 
     # ---- Synopsis (INTRODUCTION/STORY block)
     if desc_div := soup.select_one(".eventDescription"):

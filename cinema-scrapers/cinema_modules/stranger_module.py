@@ -66,10 +66,34 @@ def get_headless_driver():
     driver = webdriver.Chrome(options=chrome_options)
     return driver
 
+def _scrape_detail(driver, url):
+    """
+    Visits the detail page and extracts the Original Title (原題) if present.
+    """
+    try:
+        print(f"   > Scraping detail: {url}")
+        driver.get(url)
+        # Wait for body (hydration)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        time.sleep(2)
+        
+        body_text = driver.find_element(By.TAG_NAME, "body").text
+        
+        # Look for "原題"
+        # Based on check: "原題\nGEORGE MICHAEL..."
+        match = re.search(r"原題\s*\n?([^\n]+)", body_text)
+        if match:
+            return clean_text(match.group(1))
+            
+    except Exception as e:
+        print(f"     Error scraping detail {url}: {e}")
+    return None
+
 def scrape_stranger():
     """
     Scrapes Stranger Tokyo using the specific DOM structure (V6).
     Structure: .movie-schedule-item -> Title (h2 span) -> Slots (.slot h2)
+    Now also scrapes detail pages for English titles.
     """
     driver = None
     final_showings = []
@@ -172,6 +196,16 @@ def scrape_stranger():
                 # Clean up title
                 title_text = re.sub(r'\s+', ' ', title_text)
                 
+                # --- NEW: Extract Detail URL ---
+                detail_url = URL_ST
+                link_tag = block.find("a", href=True)
+                # Try to find a link that looks like a showing link
+                if link_tag and "/showing/" in link_tag['href']:
+                     detail_url = urljoin(URL_ST, link_tag['href'])
+                elif link_tag:
+                     # Fallback to any link found in the block
+                     detail_url = urljoin(URL_ST, link_tag['href'])
+
                 # --- B. Extract Showtimes ---
                 # Showtimes are in <td class="slot"> inside <h2> tags
                 slot_times = block.select(".slot h2")
@@ -188,8 +222,29 @@ def scrape_stranger():
                         "movie_title": title_text,
                         "showtime": start_time,
                         "year": None,
-                        "detail_page_url": URL_ST
+                        "detail_page_url": detail_url
                     })
+        
+        # --- 5. Post-process: Fetch details for English titles ---
+        unique_urls = list(set(s['detail_page_url'] for s in final_showings if s['detail_page_url'] and "/showing/" in s['detail_page_url']))
+        print(f"Debug ({CINEMA_NAME_ST}): Found {len(unique_urls)} unique detail pages to scrape for English titles.")
+        
+        detail_cache = {}
+        for url in unique_urls:
+            en_title = _scrape_detail(driver, url)
+            if en_title:
+                detail_cache[url] = en_title
+                print(f"     -> Found EN Title: {en_title}")
+            else:
+                print("     -> No EN Title found.")
+        
+        # Apply to final showings
+        for s in final_showings:
+            url = s['detail_page_url']
+            if url in detail_cache:
+                s['movie_title_en'] = detail_cache[url]
+            else:
+                s['movie_title_en'] = None
                 
     except Exception as e:
         print(f"An unexpected error in scrape_stranger: {e}", file=sys.stderr)
