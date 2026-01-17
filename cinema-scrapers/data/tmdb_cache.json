@@ -12139,7 +12139,29 @@
     "vote_average": 5.7
   },
   "コマンドーニンジャ + パペットモンスター": null,
-  "リンダ リンダ リンダ 4K": null,
+  "リンダ リンダ リンダ 4K": {
+    "tmdb_id": 27337,
+    "tmdb_title_jp": "リンダ リンダ リンダ",
+    "tmdb_title_en": "リンダ リンダ リンダ",
+    "overview": "高校を舞台にガールズバンドの奮闘をさわやかに描いた青春人間ドラマ。出演は『ほえる犬は噛まない』『TUBE』のべ・ドゥナ、『バトル・ロワイアル』シリーズの前田亜季、『ローレライ』の香椎由宇、そしてロックバンドBase Ball Bearのベーシスト・関根史織。監督は『リアリズムの宿』の山下敦弘。ハイティーンの女の子たちの心の微妙な心の揺れや高揚を繊細に描き出す。\r 地方の高校。同じバンドの響子、恵、望に非常事態が。文化祭のためオリジナル曲まで準備したのにギター担当の萠が指を負傷し、怒ったボーカルの凛子がバンドを辞めたからだ。しかし偶然耳にした“ザ・ブルーハーツ”の「リンダ リンダ」を聴くうち、響子たちは“ザ・ブルーハーツ”のコピーバンドをしようと決心。韓国からの留学生ソンにボーカルをしないかと誘うと、OKの返事が。4人は文化祭最終日に向けて練習に励むが……。",
+    "poster_path": "/fiUyBiV2AWiz2XJLmZRoCJKGn2j.jpg",
+    "backdrop_path": "/xSwyEYimb59e8Xcxvd3yZgR4249.jpg",
+    "release_date": "2005-07-23",
+    "director": "山下敦弘",
+    "runtime": 114,
+    "genres": [
+      "コメディ",
+      "音楽",
+      "ドラマ"
+    ],
+    "vote_average": 7.504,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "PASSION": {
     "tmdb_id": 348869,
     "tmdb_title_jp": "PASSION",
@@ -14545,7 +14567,29 @@
     "vote_average": 0.0
   },
   "トワイライト・ウォリアーズ 決戦！九龍城砦（吹）": null,
-  "少女はアンデスの星を見た": null,
+  "少女はアンデスの星を見た": {
+    "tmdb_id": 1156311,
+    "tmdb_title_jp": "Yana-Wara",
+    "tmdb_title_en": "Yana-Wara",
+    "overview": "",
+    "poster_path": "/6sehgPCPk5sWCvFBpXckncayF3S.jpg",
+    "backdrop_path": "/xzsRPvwiOveNmLbSpUTo2JCobGK.jpg",
+    "release_date": "2024-04-04",
+    "director": "Tito Catacora",
+    "runtime": 104,
+    "genres": [
+      "ドラマ",
+      "謎",
+      "ファンタジー"
+    ],
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PE",
+        "name": "Peru"
+      }
+    ]
+  },
   "わたしの頭は〜": {
     "tmdb_id": 1449997,
     "tmdb_title_jp": "わたしの頭はいつもうるさい",
@@ -16899,7 +16943,28 @@
   "ニッポンの、みせものやさん": null,
   "医の倫理と戦争 字幕版": null,
   "ロストランズ 闇を狩る者": null,
-  "八甲田山 4K": null,
+  "八甲田山 4K": {
+    "tmdb_id": 129380,
+    "tmdb_title_jp": "八甲田山",
+    "tmdb_title_en": "八甲田山",
+    "overview": "明治34年　ロシアとの戦争が差し迫っている中、ロシアの厳しい冬の気候での戦闘経験の乏しい日本軍は寒冷地での戦闘訓練の必要を痛切に感じていた。そこで極寒の気候である青森県八甲田山において雪中行軍演習を執り行うことを決定した。雪中行軍において既に実績を持つ青森歩兵第五連隊神田大尉および第三十一連隊徳島大尉に真冬での八甲田山行軍遂行命令が下る。事前の予備調査では少人数で天候にも恵まれていたため特に問題とはならなかったが、これが冬の八甲田山を軽視する方向に進んでいってしまう。八甲田行軍が始まると事前調査とは比べ物にならないほど天候が荒れ始め、気象記録から過去最大級の低気圧が接近しているため演習の中止を進言する神田大尉であったが、演習責任者である彼を差し置いて同行していた上官は演習中止を許さず冬山を軽視したまま極寒地獄の修羅場となる八甲田山へ死の行軍を続けてしまうのであった…",
+    "poster_path": "/1solwae6RKtIL2eP8AOjTqSJOBk.jpg",
+    "backdrop_path": "/j6TSLEfGg35KzbdIuw46bCWqFWJ.jpg",
+    "release_date": "1977-06-04",
+    "director": "森谷司郎",
+    "runtime": 169,
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "RED ROOMS レッドルームズ": null,
   "サターン・ボウリング": null,
   "【新春アンコール上映】大長編 タローマン 万博大爆発": {
@@ -17443,7 +17508,27 @@
     ],
     "vote_average": 6.9
   },
-  "トム、トム、笛吹きの息子Tom, Tom, the Piper’s Son": null,
+  "トム、トム、笛吹きの息子Tom, Tom, the Piper’s Son": {
+    "tmdb_id": 126863,
+    "tmdb_title_jp": "Tom, Tom, the Piper's Son",
+    "tmdb_title_en": "Tom, Tom, the Piper's Son",
+    "overview": "",
+    "poster_path": "/3qB5PfgjyBGeWkFPGJB5nb4NRnF.jpg",
+    "backdrop_path": "/5HAmWpXbhWdxUWykk26J7KLcL2g.jpg",
+    "release_date": "1969-04-11",
+    "director": "Ken Jacobs",
+    "runtime": 115,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
   "デイヴィッド・ブルックス作品集": null,
   "「ドキュメンタリー・フィードバック」シリーズより": null,
   "チョコレートドーナツ": {
@@ -17465,7 +17550,25 @@
   "ラストノート 名もなき者たちの歌": null,
   "ストレイト・ストーリー4Kリマスター版": null,
   "イエス / イエスソングス〜ライヴ・イン・ロンドン 1972〜": null,
-  "詩篇23枝篇23rd": null,
+  "詩篇23枝篇23rd": {
+    "tmdb_id": 435421,
+    "tmdb_title_jp": "23rd Psalm Branch",
+    "tmdb_title_en": "23rd Psalm Branch",
+    "overview": "",
+    "poster_path": "/94YW1CluVESQDciZaQufLoRqeq9.jpg",
+    "backdrop_path": "/2Tld1GFpCri8l4lIvB64Q2zlD8I.jpg",
+    "release_date": "1967-01-27",
+    "director": "Stan Brakhage",
+    "runtime": 63,
+    "genres": [],
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
   "マリー・メンケン／マージョリー・ケラー作品集": null,
   "水の中で": {
     "tmdb_id": 1474272,
@@ -17781,7 +17884,27 @@
     ],
     "vote_average": 6.728
   },
-  "［舞台挨拶］メモリードア": null,
+  "［舞台挨拶］メモリードア": {
+    "tmdb_id": 996846,
+    "tmdb_title_jp": "メモリードア",
+    "tmdb_title_en": "メモリードア",
+    "overview": "",
+    "poster_path": "/7yQzsGA1Eu3XmwC2Roy2mYsyQsW.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "Yoshio Kato",
+    "runtime": 96,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "あなたの微笑みはどこに隠れたの？": {
     "tmdb_id": 95533,
     "tmdb_title_jp": "Où gît votre sourire enfoui?",
@@ -18246,7 +18369,29 @@
     ],
     "vote_average": 6.2
   },
-  "ロサンゼルス・それぞれの愛": null,
+  "ロサンゼルス・それぞれの愛": {
+    "tmdb_id": 86241,
+    "tmdb_title_jp": "Welcome to L.A.",
+    "tmdb_title_en": "Welcome to L.A.",
+    "overview": "",
+    "poster_path": "/2OlIqSuoilz6nLaOQNle1MXNtUx.jpg",
+    "backdrop_path": "/kI3nrKaSEc7MacMTxhcd3Tt5RjM.jpg",
+    "release_date": "1976-11-12",
+    "director": "Alan Rudolph",
+    "runtime": 106,
+    "genres": [
+      "ロマンス",
+      "ドラマ",
+      "音楽"
+    ],
+    "vote_average": 4.81,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
   "チューズ・ミー": null,
   "ボディガード": {
     "tmdb_id": 1154215,
@@ -18460,7 +18605,33 @@
     ],
     "vote_average": 6.3
   },
-  "唐人街探偵1900": null,
+  "唐人街探偵1900": {
+    "tmdb_id": 1357305,
+    "tmdb_title_jp": "唐探1900",
+    "tmdb_title_en": "唐探1900",
+    "overview": "",
+    "poster_path": "/f7LFuTZvLuUb5HfEJxDSvguB9n5.jpg",
+    "backdrop_path": "/6ykQysq6kfZ6Yw5C4dkhcZRd5QI.jpg",
+    "release_date": "2025-01-29",
+    "director": "陈思诚",
+    "runtime": 135,
+    "genres": [
+      "コメディ",
+      "謎",
+      "アクション"
+    ],
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
   "悪名無敵": {
     "tmdb_id": 633643,
     "tmdb_title_jp": "悪名無敵",
@@ -18528,7 +18699,28 @@
   },
   "グッドワン［しゃべれば］": null,
   "アグリーシスター　可愛いあの娘は醜いわたし": null,
-  "地獄への退却": null,
+  "地獄への退却": {
+    "tmdb_id": 208974,
+    "tmdb_title_jp": "Retreat, Hell!",
+    "tmdb_title_en": "Retreat, Hell!",
+    "overview": "",
+    "poster_path": "/pctLnGQ4BFe6dtaum5i0ZKckFND.jpg",
+    "backdrop_path": "/xjbxJK6XIsAeD2ZDhGhLFsKp5OL.jpg",
+    "release_date": "1952-02-17",
+    "director": "Joseph H. Lewis",
+    "runtime": 95,
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
   "拳銃魔": {
     "tmdb_id": 1178810,
     "tmdb_title_jp": "姿なき拳銃魔",
@@ -18600,10 +18792,52 @@
   },
   "土曜日の男": null,
   "10. ボロ家の春秋": null,
-  "15. お早よう": null,
+  "15. お早よう": {
+    "tmdb_id": 28276,
+    "tmdb_title_jp": "お早よう",
+    "tmdb_title_en": "お早よう",
+    "overview": "郊外の住宅地、長屋のように複数の家族が隣り合って暮らしている。林家の息子実（設楽幸嗣）と勇（島津雅彦）はテレビがほしいと両親にねだるが、聞き入れてもらえない。子供たちは、要求を聞き入れてもらえるまで口を利かないというストライキをして、最終的に買ってもらうのだった。　",
+    "poster_path": "/tPrOONTaP4jyRad7hXD6egJ2NQd.jpg",
+    "backdrop_path": "/qH9wiXnx9mU9kNGCH1exaey9CqU.jpg",
+    "release_date": "1959-05-12",
+    "director": "小津安二郎",
+    "runtime": 94,
+    "genres": [
+      "コメディ",
+      "ファミリー",
+      "ドラマ"
+    ],
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "インド映画同好会支援募金�А嵬嫐椶量楫蘯圈廛泪汽蘊絮�": null,
   "落下の王国 4Kデジタルリマスター（字幕）": null,
-  "5. あなた買います": null,
+  "5. あなた買います": {
+    "tmdb_id": 143946,
+    "tmdb_title_jp": "あなた買います",
+    "tmdb_title_en": "あなた買います",
+    "overview": "プロ野球・東洋フラワーズのスカウト岸本は、大学野球の花形選手・栗田を入団させる任を受けるが、栗田には彼を育て上げてきた球気一平というヒモのような男がバックにいた。岸本は球気に接近するが、得体のしれない彼はなかなか手ごわい。やがて他球団も栗田獲得に乗り出す。球気は、彼らを手玉に取りながらどんどん値を吊り上げていくが、やがて栗田の価値に気づいた家族の面々が欲に駆られ、球気に絶縁状を送りつけてきた...。",
+    "poster_path": "/6GYsvoJSwqwmFE4cdGK6yI0npqj.jpg",
+    "backdrop_path": "/iakAW4DI61A6toV8SIIBYMa8tiz.jpg",
+    "release_date": "1956-11-21",
+    "director": "小林正樹",
+    "runtime": 111,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "天使のたまご ４Kリマスター": {
     "tmdb_id": 15916,
     "tmdb_title_jp": "天使のたまご",
@@ -18621,12 +18855,53 @@
     ],
     "vote_average": 7.725
   },
-  "俠骨一代": null,
+  "俠骨一代": {
+    "tmdb_id": 459879,
+    "tmdb_title_jp": "侠骨一代",
+    "tmdb_title_en": "侠骨一代",
+    "overview": "恥に生きるな、男で生きろ！蛮勇と腕力だけの暴れん坊が軍隊生活を皮切りに、幾度か悪徳やくざと対決しながら、遂に恩を受けた親分の組織を継いで大事業を成し遂げる勇壮男性編。",
+    "poster_path": "/4cxMT8N4Wu91DFLuDaBjIbk0L9e.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-05-30",
+    "director": "マキノ雅弘",
+    "runtime": 92,
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "俠勇の花道ドス": null,
   "6. 喜劇 女は男のふるさとヨ": null,
   "5. 大阪の女": null,
   "喝采（字幕）": null,
-  "13. 日本の悲劇": null,
+  "13. 日本の悲劇": {
+    "tmdb_id": 50805,
+    "tmdb_title_jp": "日本の悲劇",
+    "tmdb_title_en": "日本の悲劇",
+    "overview": "",
+    "poster_path": "/6npoR3RIRBlY0arZjXv9xZWlh6a.jpg",
+    "backdrop_path": "/xyPahvksSIfqg0BxD1yNO1xy7im.jpg",
+    "release_date": "1953-06-17",
+    "director": "木下惠介",
+    "runtime": 116,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "お尋ね者七人": {
     "tmdb_id": 563868,
     "tmdb_title_jp": "お尋ね者七人",
@@ -18659,7 +18934,27 @@
     ],
     "vote_average": 6.9
   },
-  "16. 血は渇いてる": null,
+  "16. 血は渇いてる": {
+    "tmdb_id": 88442,
+    "tmdb_title_jp": "血は渇いてる",
+    "tmdb_title_en": "血は渇いてる",
+    "overview": "東洋毛織で社員の首切り通告があった時、社員の木口はみんなを助けようと拳銃自殺を図るが、老社員・金井の機転で一命を取り留める。昭和生命に務めるユキは、そんな木口を生命保険の広告塔にしようと考え、あの手この手で木口を口説くが断られてしまう。",
+    "poster_path": "/jgKQEPTTQ2gLNajUCh9E9IrHcnL.jpg",
+    "backdrop_path": "/rUOvbnFsbT62BHbzo7X3HpU76JA.jpg",
+    "release_date": "1960-10-09",
+    "director": "吉田喜重",
+    "runtime": 87,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "竜虎一代": {
     "tmdb_id": 879609,
     "tmdb_title_jp": "竜虎一代",
@@ -18708,7 +19003,20 @@
     ],
     "vote_average": 0.0
   },
-  "6. 土砂降り〈英語字幕付き〉": null,
+  "6. 土砂降り〈英語字幕付き〉": {
+    "tmdb_id": 968934,
+    "tmdb_title_jp": "When It Rains, It Pours",
+    "tmdb_title_en": "When It Rains, It Pours",
+    "overview": "",
+    "poster_path": "/l3S9tiBRX3sykECUwbtWGLOGreH.jpg",
+    "backdrop_path": null,
+    "release_date": "1986-01-01",
+    "director": "Caveh Zahedi",
+    "runtime": 2,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
   "3. 街の灯": null,
   "《本橋成一の映画》ナージャの村 G": null,
   "聖者〈デジタルリマスター版〉": {
@@ -18751,9 +19059,70 @@
   "機関車小僧＋忘れられた土地　生活の記録シリーズ II": null,
   "2. 男はつらいよ 望郷篇": null,
   "1. 喜劇 駅前温泉": null,
-  "2. 最後の切札": null,
-  "鹿の国《公開 1 周年記念上映》 G": null,
-  "11. モダン道中 その恋待ったなし": null,
+  "2. 最後の切札": {
+    "tmdb_id": 1544878,
+    "tmdb_title_jp": "最後の切札",
+    "tmdb_title_en": "最後の切札",
+    "overview": "異色作家・白崎秀雄の傑作小説「肉の僕」の映画化。  橋本忍が脚色し、野村芳太郎が監督したもので、冷い打算に生きる男の行動と破滅を描く問題野心作。佐田啓二が珍しく悪党を演じている。",
+    "poster_path": "/bEH1H8RjuE1mtg0vCGEdzKd1ET0.jpg",
+    "backdrop_path": "/p4AJhNe0WnAGD23EfAi4OifIuZP.jpg",
+    "release_date": "1960-09-20",
+    "director": "野村芳太郎",
+    "runtime": 93,
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "鹿の国《公開 1 周年記念上映》 G": {
+    "tmdb_id": 1438120,
+    "tmdb_title_jp": "鹿の国",
+    "tmdb_title_en": "鹿の国",
+    "overview": "",
+    "poster_path": "/dkiLEo6phekIP4Bnk0kLe0xETiO.jpg",
+    "backdrop_path": "/carBqITqoIWDtLcg4H5iOmx3sk1.jpg",
+    "release_date": "2025-01-02",
+    "director": "Riko Hiro",
+    "runtime": 98,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "11. モダン道中 その恋待ったなし": {
+    "tmdb_id": 1478983,
+    "tmdb_title_jp": "モダン道中 その恋待ったなし",
+    "tmdb_title_en": "モダン道中 その恋待ったなし",
+    "overview": "",
+    "poster_path": "/iyaNHEKRkXHMayewIPOs7akCaw5.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-07-13",
+    "director": "野村芳太郎",
+    "runtime": 93,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "盤上の向日葵": {
     "tmdb_id": 1418217,
     "tmdb_title_jp": "盤上の向日葵",
@@ -18801,17 +19170,113 @@
     ],
     "vote_average": 7.6
   },
-  "8. 集金旅行": null,
+  "8. 集金旅行": {
+    "tmdb_id": 1418429,
+    "tmdb_title_jp": "集金旅行",
+    "tmdb_title_en": "集金旅行",
+    "overview": "井伏鱒二の同名小説の映画化で、西日本のローカル・カラーを取入れて庶民生活の哀歓を描いたコメディ。「抱かれた花嫁」の共同脚本執筆者の一人、椎名利夫が脚色、「土砂降り」の中村登が監督した。撮影は「抱かれた花嫁」の生方敏夫。主演は「ただいま零匹」の佐田啓二、岡田茉莉子二人を中心に小林トシ子、花菱アチャコ、伊藤雄之助、トニー谷、市村俊幸、関千恵子、十朱久雄など。色彩はイーストマン松竹カラー。",
+    "poster_path": "/czmRiqW1XT2uXYVGEWXnQbq0dNu.jpg",
+    "backdrop_path": null,
+    "release_date": "1957-10-29",
+    "director": "中村登",
+    "runtime": 103,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "インド映画同好会支援募金�А嵬嫐椶量楫蘯圈彡名鐓絮�": null,
-  "1. いろはにほへと": null,
-  "4. 二人で歩いた幾春秋": null,
+  "1. いろはにほへと": {
+    "tmdb_id": 1252671,
+    "tmdb_title_jp": "いろはにほへと",
+    "tmdb_title_en": "いろはにほへと",
+    "overview": "",
+    "poster_path": "/jjulIfkzBUrngur7kw5pT5qzSYz.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-05-20",
+    "director": "中村登",
+    "runtime": 109,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "4. 二人で歩いた幾春秋": {
+    "tmdb_id": 424126,
+    "tmdb_title_jp": "二人で歩いた幾春秋",
+    "tmdb_title_en": "二人で歩いた幾春秋",
+    "overview": "",
+    "poster_path": "/sfzqzbqNgepGTbmI7iPRuwk8jpo.jpg",
+    "backdrop_path": "/cmK9yMRAa5CzvcdMagcLi5cpKpc.jpg",
+    "release_date": "1962-08-12",
+    "director": "木下惠介",
+    "runtime": 102,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "B. 出來ごころ＜サイレント映画＞": null,
   "GRIT ―バレーボール男子日本代表 栄光への始発点―": null,
-  "見はらし世代 G": null,
+  "見はらし世代 G": {
+    "tmdb_id": 1464829,
+    "tmdb_title_jp": "見はらし世代",
+    "tmdb_title_en": "見はらし世代",
+    "overview": "再開発が進む東京・渋谷で胡蝶蘭の配送運転手として働く青年、蓮。ある日、蓮は配達中に父と数年ぶりに再会する。姉・恵美にそのことを話すが、恵美は一見すると我関せずといった様子で黙々と自分の結婚の準備を進めている。母を失って以来、姉弟と父は疎遠になっていたのだ。悶々と日々を過ごしていた蓮だったが、彼はもう一度家族の距離を測り直そうとする。変わりゆく街並みを見つめながら、家族にとって、最後の一夜が始まる...",
+    "poster_path": "/n4OtiOk7uReqIjCEYfKGyqu4oA6.jpg",
+    "backdrop_path": "/lIq0JaqCyjsl643hoT8yZWSDXJt.jpg",
+    "release_date": "2025-10-10",
+    "director": "団塚唯我",
+    "runtime": 115,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "音楽サロン〈デジタルリマスター版〉": null,
   "9. 黒い花粉": null,
   "ロストランズ 闇を狩る者（字幕）": null,
-  "日本大俠客": null,
+  "日本大俠客": {
+    "tmdb_id": 785069,
+    "tmdb_title_jp": "日本大侠客",
+    "tmdb_title_en": "日本大侠客",
+    "overview": "九州の侠客議員として知られる吉田磯吉の長男・敬太郎が書いた自伝をもとに、マキノ雅弘監督が鶴田浩二主演で映画化。明治中期、新工業地帯として胎動し始めた北九州の港町・若松を舞台に、熱烈な郷土愛に燃える吉田磯吉が青春の全てをかけて悪徳ヤクザ一家に敢然と闘いを挑む。磯吉を慕い、彼のピンチを救う鉄火芸者・お竜を藤純子が好演。この役は後年、藤純子の当たり役である『緋牡丹博徒』シリーズの女侠客・緋牡丹のお竜の原型となった。",
+    "poster_path": "/x25BWkWnx4D1M5PPTlkhkXZf8zG.jpg",
+    "backdrop_path": "/9TRWdBrgW0tvEczOuUsjcLOeBpR.jpg",
+    "release_date": "1966-03-19",
+    "director": "マキノ雅弘",
+    "runtime": 95,
+    "genres": [
+      "犯罪"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "チャルラータ〈デジタルリマスター版〉": null,
   "ネタニヤフ調書 汚職と戦争 G": null,
   "14. 顔役（噛みつかれた顔役）": null,
@@ -18831,7 +19296,27 @@
     ],
     "vote_average": 0.0
   },
-  "7. 喜びも悲しみも幾歳月": null,
+  "7. 喜びも悲しみも幾歳月": {
+    "tmdb_id": 216034,
+    "tmdb_title_jp": "新・喜びも悲しみも幾歳月",
+    "tmdb_title_en": "新・喜びも悲しみも幾歳月",
+    "overview": "",
+    "poster_path": "/eephi6WhTAUWiu4SWtRrkGEBEhD.jpg",
+    "backdrop_path": "/aM5HDVPlJaykSPX41e3PrDlLPvo.jpg",
+    "release_date": "1986-06-28",
+    "director": "木下惠介",
+    "runtime": 129,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "ゼンブ・オブ・トーキョー": {
     "tmdb_id": 1328409,
     "tmdb_title_jp": "ゼンブ・オブ・トーキョー",
@@ -18849,12 +19334,50 @@
     "vote_average": 0.0
   },
   "殺し屋のプロット（字幕）": null,
-  "12. 秋刀魚の味": null,
+  "12. 秋刀魚の味": {
+    "tmdb_id": 1568565,
+    "tmdb_title_jp": "秋刀魚の味",
+    "tmdb_title_en": "秋刀魚の味",
+    "overview": "",
+    "poster_path": "/6V805teL9FLXrINjbTv9hSKjnHI.jpg",
+    "backdrop_path": null,
+    "release_date": "2003-01-03",
+    "director": "Yoshito Fukumoto",
+    "runtime": 115,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "うってつけの⽇": null,
   "ビューティフル・ジャーニー ふたりの時空旅行（字幕）": null,
   "おくびょう鳥が歌うほうへ（字幕）": null,
   "異形異類の面掛行列＋冬の夜の神々の宴＋生者と死者のかよい路": null,
-  "3. 四万人の目撃者": null,
+  "3. 四万人の目撃者": {
+    "tmdb_id": 564516,
+    "tmdb_title_jp": "四萬人の目撃者",
+    "tmdb_title_en": "四萬人の目撃者",
+    "overview": "",
+    "poster_path": "/hMaRHQkZ0iygRGBFbDVnopgAfVg.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-02-12",
+    "director": "堀内真直",
+    "runtime": 92,
+    "genres": [
+      "謎"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "帰ってきたあぶない刑事": {
     "tmdb_id": 1220786,
     "tmdb_title_jp": "帰ってきた あぶない刑事",
@@ -19027,7 +19550,29 @@
   "バーフバリ エピック4K": null,
   "血みどろオールナイト2026 新春篇": null,
   "OKプロジェクト 2026年よろしく特別上映会": null,
-  "やくざ刑事(でか)": null,
+  "やくざ刑事(でか)": {
+    "tmdb_id": 90354,
+    "tmdb_title_jp": "やくざ刑事",
+    "tmdb_title_en": "やくざ刑事",
+    "overview": "警視庁と横浜県警本部は、腕利きの刑事・隼田と峰尾を八城会に潜入させ、組織の壊滅を図っていた。会の傘下には西が仕切る西組、三好が仕切る潮会、唯一の資金ルート・阿久津商事があり、隼田は八城会と大倉組の抗争を利用してうまく西組に潜り込む...。",
+    "poster_path": "/muPMksA1MnSLQ6P1Sia52pCUV2h.jpg",
+    "backdrop_path": "/3O5v2vG8DHBoHp1vU2SBYqwVpbK.jpg",
+    "release_date": "1970-05-23",
+    "director": "野田幸男",
+    "runtime": 89,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 5.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "ただ、やるべきことを（字幕）": null,
   "アハーン": null,
   "響け！ 情熱のムリダンガム": null,
