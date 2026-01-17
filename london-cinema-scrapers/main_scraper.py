@@ -276,6 +276,205 @@ def normalize_title_for_match(title: str) -> str:
     normalized = re.sub(r"\s+", " ", normalized).strip()
     return normalized
 
+NON_FILM_EVENT_KEYWORDS = [
+    "open mic",
+    "free entry",
+    "fun in the lounge",
+    "quiz",
+    "trivia",
+    "workshop",
+    "masterclass",
+    "panel",
+    "discussion",
+    "in conversation",
+    "talk",
+    "live podcast",
+    "book launch",
+    "stand up",
+    "stand-up",
+    "comedy night",
+    "live music",
+    "dj set",
+    "club night",
+    "karaoke",
+    "an evening with",
+    "crafty movie night",
+    "toddler club",
+]
+
+PROGRAM_EVENT_KEYWORDS = [
+    "opening night",
+    "closing night",
+    "short film",
+    "short films",
+    "short film showcase",
+    "shorts program",
+    "shorts programme",
+    "showcase",
+    "spotlight",
+    "spotlights",
+    "programme",
+    "program",
+    "selection",
+    "festival highlights",
+]
+
+PROGRAM_CONTEXT_KEYWORDS = [
+    "festival",
+    "lsff",
+    "london short film festival",
+    "anz",
+    "anz film festival",
+    "docfest",
+    "docfest spotlights",
+    "short film festival",
+]
+
+BROADCAST_BRAND_REQUIREMENTS = [
+    (["nt live", "national theatre live", "national theatre live presents"], ["national theatre", "nt live"]),
+    (["met opera", "met opera live", "met opera encore", "metropolitan opera"], ["met opera", "metropolitan opera"]),
+    (["royal opera", "royal opera house", "royal ballet", "rbo live", "rbo encore", "roh"], ["royal opera", "royal opera house", "royal ballet", "rbo", "roh"]),
+    (["bolshoi ballet"], ["bolshoi", "bolshoi ballet"]),
+    (["exhibition on screen"], ["exhibition on screen"]),
+    (["glyndebourne"], ["glyndebourne"]),
+]
+
+COLON_SPLIT_PREFIX_KEYWORDS = [
+    "nt live",
+    "national theatre live",
+    "national theatre live presents",
+    "met opera",
+    "met opera live",
+    "met opera encore",
+    "metropolitan opera",
+    "royal opera",
+    "royal opera house",
+    "royal ballet",
+    "rbo live",
+    "rbo encore",
+    "roh",
+    "bolshoi ballet",
+    "exhibition on screen",
+    "docfest",
+    "docfest spotlights",
+    "lsff",
+    "london short film festival",
+    "anz film festival",
+    "anz ff",
+    "pink palace",
+    "bar trash",
+    "offbeat",
+    "video bazaar presents",
+    "deleted scenes presents",
+    "scanners inc presents",
+    "phoenix classics",
+    "cine-real presents",
+    "films for workers",
+    "saturday morning picture club",
+    "lexi seniors film club",
+    "holocaust memorial day",
+]
+
+def _normalize_keyword_list(keywords):
+    return [normalize_title_for_match(k) for k in keywords if k]
+
+_NON_FILM_EVENT_KEYWORDS = _normalize_keyword_list(NON_FILM_EVENT_KEYWORDS)
+_PROGRAM_EVENT_KEYWORDS = _normalize_keyword_list(PROGRAM_EVENT_KEYWORDS)
+_PROGRAM_CONTEXT_KEYWORDS = _normalize_keyword_list(PROGRAM_CONTEXT_KEYWORDS)
+_COLON_SPLIT_PREFIX_KEYWORDS = _normalize_keyword_list(COLON_SPLIT_PREFIX_KEYWORDS)
+_BROADCAST_BRAND_REQUIREMENTS = [
+    (_normalize_keyword_list(triggers), _normalize_keyword_list(required))
+    for triggers, required in BROADCAST_BRAND_REQUIREMENTS
+]
+_BROADCAST_BRAND_TRIGGERS = sorted({t for triggers, _ in _BROADCAST_BRAND_REQUIREMENTS for t in triggers})
+
+def _title_has_any_keyword(norm_title: str, keywords_norm) -> bool:
+    return any(k in norm_title for k in keywords_norm)
+
+def is_probable_program_event(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    if _title_has_any_keyword(norm, _PROGRAM_EVENT_KEYWORDS):
+        if _title_has_any_keyword(norm, _PROGRAM_CONTEXT_KEYWORDS):
+            return True
+        if "short film" in norm or "short films" in norm:
+            return True
+    return False
+
+def is_probable_non_film_event(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    return _title_has_any_keyword(norm, _NON_FILM_EVENT_KEYWORDS)
+
+def should_skip_tmdb_enrichment(title: str):
+    if is_nt_live_title(title):
+        return True, "nt live listing"
+    if is_probable_program_event(title):
+        return True, "program or festival event"
+    if is_probable_non_film_event(title):
+        return True, "non-film event"
+    return False, ""
+
+def has_broadcast_brand(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    return _title_has_any_keyword(norm, _BROADCAST_BRAND_TRIGGERS)
+
+def is_nt_live_title(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    return "nt live" in norm or "national theatre live" in norm
+
+def get_broadcast_required_tokens(title: str):
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return []
+    required = []
+    for triggers, needed in _BROADCAST_BRAND_REQUIREMENTS:
+        if _title_has_any_keyword(norm, triggers):
+            required.extend(needed)
+    return list(dict.fromkeys(required))
+
+def passes_broadcast_guard(required_tokens, result: dict) -> bool:
+    if not required_tokens:
+        return True
+    combined = f"{result.get('title', '')} {result.get('original_title', '')}"
+    norm = normalize_title_for_match(combined)
+    return _title_has_any_keyword(norm, required_tokens)
+
+def should_split_on_colon(title: str) -> bool:
+    if ":" not in title:
+        return False
+    prefix = title.split(":", 1)[0]
+    prefix_norm = normalize_title_for_match(prefix)
+    return _title_has_any_keyword(prefix_norm, _COLON_SPLIT_PREFIX_KEYWORDS)
+
+def map_tmdb_search_result(result: dict) -> dict:
+    return {
+        "id": result.get("id"),
+        "title": result.get("title") or "",
+        "original_title": result.get("original_title") or "",
+        "release_date": result.get("release_date") or "",
+        "vote_count": result.get("vote_count") or 0,
+        "popularity": result.get("popularity") or 0,
+    }
+
+def run_tmdb_search(session, url, params, year_param):
+    resp = session.get(url, params=params, timeout=5)
+    data = resp.json()
+    results = data.get("results", [])
+    if not results and year_param in params:
+        fallback_params = params.copy()
+        del fallback_params[year_param]
+        resp = session.get(url, params=fallback_params, timeout=5)
+        data = resp.json()
+        results = data.get("results", [])
+    return results
+
 def parse_year_value(raw_year):
     if not raw_year:
         return None
@@ -363,8 +562,11 @@ def build_search_queries(title: str):
         return []
 
     queries = []
-    base = truncate_noisy_title(title.strip())
-    base = strip_event_prefix(base)
+    raw_base = truncate_noisy_title(title.strip())
+    if has_broadcast_brand(raw_base):
+        queries.append(raw_base)
+
+    base = strip_event_prefix(raw_base)
     base = strip_event_suffix(base)
 
     # Handle square brackets e.g. "Your Name [Kimi no Na wa.]"
@@ -418,9 +620,8 @@ def build_search_queries(title: str):
                 if part.lower() not in noise_words:
                     queries.append(part)
     
-    # Priority 4: Colon split (e.g. "Mission: Impossible") -> "Mission Impossible" (sometimes helps)
-    # But also "National Theatre Live: Hamlet" -> "Hamlet"
-    if ":" in cleaned_base:
+    # Priority 4: Colon split (e.g. "National Theatre Live: Hamlet" -> "Hamlet")
+    if ":" in cleaned_base and should_split_on_colon(raw_base):
         parts = cleaned_base.split(":", 1)
         if len(parts) > 1:
             suffix_part = parts[1].strip()
@@ -436,7 +637,7 @@ def build_search_queries(title: str):
             
     return final_queries
 
-def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=None) -> float:
+def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=None, strict_year=False) -> float:
     """
     Sophisticated scoring to match Listings to TMDB Results.
     Factors: Title Similarity, Year Match, Runtime Match, Popularity.
@@ -514,7 +715,7 @@ def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=N
         elif diff == 1:
             score += 0.05      # Close enough
         elif diff > 20:
-            if is_screening_year and best_ratio > 0.9:
+            if is_screening_year and best_ratio > 0.9 and not strict_year:
                  # It's an old movie (e.g. 1990) being screened in 2026.
                  # The user (scraper) provided 2026.
                  # We forgive the year mismatch because the title match is very strong.
@@ -522,7 +723,7 @@ def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=N
             else:
                 score -= 0.3   # Different era -> Heavy Penalty
         else:
-            if not (is_screening_year and best_ratio > 0.9):
+            if not (is_screening_year and best_ratio > 0.9 and not strict_year):
                 score -= 0.1   # Wrong year (unless handled above)
             
     # 3. Runtime Logic (If Year is missing or ambiguous)
@@ -556,8 +757,13 @@ def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=N
     # 5. Length Penalties
     # ---------------------------------------------------------
     # Short queries ("X") are dangerous
-    if len(query_norm.split()) <= 1 and best_ratio < 0.95:
-        score -= 0.1
+    if len(query_norm.split()) <= 1:
+        if vote_count < 50:
+            score -= 0.25
+        elif vote_count < 200:
+            score -= 0.1
+        if best_ratio < 0.95:
+            score -= 0.1
 
     return min(max(score, 0.0), 1.0) # Clamp 0..1
 
@@ -572,8 +778,18 @@ def is_cache_match_ok(title: str, cached: dict, query_year=None, query_runtime=N
         "release_date": cached.get("release_date") or "",
         "vote_count": 1000 # Assume cached items were vetted or popular enough
     }
+
+    required_tokens = get_broadcast_required_tokens(title)
+    if required_tokens and not passes_broadcast_guard(required_tokens, pseudo_result):
+        return False
     
-    score = score_tmdb_result(title, pseudo_result, query_year=query_year, query_runtime=query_runtime)
+    score = score_tmdb_result(
+        title,
+        pseudo_result,
+        query_year=query_year,
+        query_runtime=query_runtime,
+        strict_year=has_broadcast_brand(title),
+    )
     
     # Runtime check for cached items (since we have the runtime in cache)
     if query_runtime and cached.get("runtime"):
@@ -606,6 +822,11 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
     """
     search_url = "https://api.themoviedb.org/3/search/movie"
 
+    skip_tmdb, skip_reason = should_skip_tmdb_enrichment(movie_title)
+    if skip_tmdb:
+        print(f"   [Skip] '{movie_title}' ({skip_reason})")
+        return None
+
     # Extract year if not provided
     query_year = parse_year_value(movie_year) or extract_year_from_title(movie_title)
     
@@ -617,6 +838,8 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
         except:
             pass
 
+    strict_year = has_broadcast_brand(movie_title)
+    required_tokens = get_broadcast_required_tokens(movie_title)
     queries = build_search_queries(movie_title)
 
     try:
@@ -632,26 +855,24 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
             }
             if query_year:
                 params["year"] = query_year
-
-            resp = session.get(search_url, params=params, timeout=5)
-            data = resp.json()
-            results = data.get("results", [])
-            
-            # FALLBACK: If year filter returned nothing, try without year filter
-            if not results and "year" in params:
-                # print(f"      No results for {query} ({params['year']}). Retrying without year filter...")
-                del params["year"]
-                resp = session.get(search_url, params=params, timeout=5)
-                data = resp.json()
-                results = data.get("results", [])
-
+            results = run_tmdb_search(session, search_url, params, "year")
             for result in results:
-                res_id = result.get("id")
+                mapped = map_tmdb_search_result(result)
+                res_id = mapped.get("id")
                 if not res_id or res_id in seen_ids:
                     continue
                 seen_ids.add(res_id)
 
-                score = score_tmdb_result(query, result, query_year=query_year, query_runtime=query_runtime)
+                if required_tokens and not passes_broadcast_guard(required_tokens, mapped):
+                    continue
+
+                score = score_tmdb_result(
+                    query,
+                    mapped,
+                    query_year=query_year,
+                    query_runtime=query_runtime,
+                    strict_year=strict_year,
+                )
                 
                 # Add to candidates
                 candidates.append({
@@ -664,7 +885,8 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
         candidates.sort(key=lambda x: x["score"], reverse=True)
         
         # Filter top candidates
-        top_candidates = [c for c in candidates if c["score"] > 0.65]
+        score_threshold = 0.7 if strict_year else 0.65
+        top_candidates = [c for c in candidates if c["score"] >= score_threshold]
         
         if not top_candidates:
             return None
@@ -680,9 +902,12 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
         
         for candidate in top_candidates[:check_limit]:
             res = candidate["result"]
+            res_id = res.get("id")
+            if not res_id:
+                continue
             
             # Fetch full details
-            detail_url = f"https://api.themoviedb.org/3/movie/{res['id']}"
+            detail_url = f"https://api.themoviedb.org/3/movie/{res_id}"
             d_params = {
                 "api_key": api_key,
                 "language": "en-GB",
@@ -701,7 +926,8 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
                 threshold = 45 if query_runtime > 180 else 30
                 if diff > threshold:
                     # Mismatch! Penalize this candidate significantly
-                    print(f"   [Skip] '{d_data['title']}' runtime mismatch ({tmdb_runtime} vs {query_runtime})")
+                    res_title = d_data.get("title") or d_data.get("name") or "Unknown"
+                    print(f"   [Skip] '{res_title}' runtime mismatch ({tmdb_runtime} vs {query_runtime})")
                     continue # Skip this one, try next
                 elif diff < 10:
                     # Good match!
@@ -796,13 +1022,23 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
         
         # Check if cache is still valid given our new stricter rules
         if cached:
-            if not is_cache_match_ok(title, cached, query_year=rep_year, query_runtime=rep_runtime):
+            skip_tmdb, _ = should_skip_tmdb_enrichment(title)
+            if skip_tmdb:
+                cached = None
+                cache.pop(title, None)
+            elif not is_cache_match_ok(title, cached, query_year=rep_year, query_runtime=rep_runtime):
                 # print(f"   Invalidating cache for {title}")
                 cached = None
                 cache.pop(title, None)
 
         if title not in cache:
             # If we haven't checked this title before
+            skip_tmdb, skip_reason = should_skip_tmdb_enrichment(title)
+            if skip_tmdb:
+                print(f"   Skipping TMDB for: {title} ({skip_reason})")
+                cache[title] = None
+                continue
+
             print(f"   Searching TMDB for: {title} (Yr: {rep_year}, Run: {rep_runtime})")
             details = fetch_tmdb_details(title, session, api_key, movie_year=rep_year, movie_runtime=rep_runtime)
 
