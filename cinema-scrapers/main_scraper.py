@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # main_scraper.py
-# V5.1: Robust Monitoring, Email Alerts, Smart Title Cleaning & Fixed Function Names
+# London Cinema Scraper - V1.0
+# Adapted from Tokyo cinema scraper for London independent cinemas
 
 import json
 import sys
@@ -12,6 +13,9 @@ import os
 import difflib
 import smtplib
 import ssl
+import unicodedata
+import threading
+import concurrent.futures
 from datetime import datetime, timezone, timedelta
 from email.message import EmailMessage
 from pathlib import Path
@@ -19,80 +23,53 @@ from bs4 import BeautifulSoup
 
 # --- All cinema scraper modules ---
 from cinema_modules import (
-    bunkamura_module,
-    bluestudio_module,
-    cine_switch_ginza_module,
-    cinemalice_module,
-    eurospace_module,
-    human_shibuya_module,
-    human_yurakucho_module,
-    image_forum_module,
-    ks_cinema_module,
-    laputa_asagaya_module,
-    meguro_cinema_module,
-    musashino_kan_module,
-    nfaj_calendar_module as nfaj_module,
-    polepole_module,
-    shin_bungeiza_module,
-    shimotakaido_module,
-    stranger_module,
-    theatre_shinjuku_module,
-    waseda_shochiku_module,
-    cinemart_shinjuku_module,
-    cinema_qualite_module,
-    cine_quinto_module,
-    yebisu_garden_module,
-    k2_cinema_module,
-    kino_cinema_module,
-    cinema_rosa_module,
-    chupki_module,
-    uplink_kichijoji_module,
-    tollywood_module,
-    morc_asagaya_module,
-    jinbocho_theatre_module,
-    cinema_vera_module,
-    institut_francais_module,
-    jack_and_betty_module,
-    athenee_francais_module,
-    white_cine_quinto_module,
-    cinema_novecento_module,
-    yokohama_cinemarine_module,
-    kadokawa_yurakucho_module,
-    cinema_neko_module
+    bfi_southbank_module,
+    prince_charles_module,
+    garden_cinema_module,
+    nickel_module,
+    barbican_module,
+    genesis_module,
+    ica_module,
+    close_up_module,
+    phoenix_cinema_module,
+    castle_cinema_module,
+    electric_cinema_module,
+    rio_cinema_module,
+    dochouse_module,
+    sands_films_module,
+    cine_lumiere_module,
+    lexi_cinema_module,
+    arthouse_crouch_end_module,
+    jw3_module,
+    peckhamplex_module,
+    rich_mix_module,
+    act_one_module,
+    chiswick_cinema_module,
+    cinema_in_the_arches_module,
+    david_lean_module,
+    regent_street_module,
+    kiln_theatre_module,
+    riverside_studios_module,
+    # Chain scrapers (cover multiple locations each)
+    curzon_chain_module,
+    everyman_chain_module,
+    picturehouse_chain_module,
+    # Additional individual cinemas
+    bfi_imax_module,
+    cine_real_module,
+    coldharbour_blue_module,
+    olympic_studios_module,
+    the_arzner_module,
 )
 
 # --- Configuration ---
 DATA_DIR = "data"
 OUTPUT_JSON = os.path.join(DATA_DIR, "showtimes.json")
 TMDB_CACHE_FILE = os.path.join(DATA_DIR, "tmdb_cache.json")
-TITLE_RESOLUTION_CACHE_FILE = os.path.join(DATA_DIR, "title_resolution_cache.json")
-LEGACY_TITLE_TRANSLATION_CACHE_FILE = os.path.join(DATA_DIR, "title_translation_cache.json")
-MIN_TITLE_MATCH_SCORE = 0.7
-MIN_FINAL_MATCH_SCORE = 0.6
 
 # Ensure data directory exists
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
-
-# --- Helper: Normalizers ---
-def _normalize_eurospace_schema(listings: list) -> list:
-    """Matches Eurospace module output to standard schema."""
-    normalized = []
-    for show in listings:
-        normalized.append({
-            "cinema_name": show.get("cinema"),
-            "movie_title": show.get("title"),
-            "date_text": show.get("date"),
-            "showtime": show.get("time"),
-            "detail_page_url": show.get("url"),
-            "director": show.get("director"),
-            "year": str(show["year"]) if show.get("year") else "",
-            "country": show.get("country"),
-            "runtime_min": str(show["runtime"]) if show.get("runtime") else "",
-            "synopsis": "",
-            "movie_title_en": "",
-        })
-    return normalized
 
 # --- Monitor & Alert System ---
 class ScrapeReport:
@@ -112,15 +89,15 @@ class ScrapeReport:
 
     def print_summary(self):
         print("\n" + "="*50)
-        print("📊 SCRAPE HEALTH REPORT")
+        print("SCRAPE HEALTH REPORT")
         print("="*50)
-        
+
         failures = []
         warnings = []
 
         # Header
-        print(f"{'STATUS':<4} | {'CINEMA':<25} | {'COUNT':<5} | {'NOTES'}")
-        print("-" * 65)
+        print(f"{'STATUS':<4} | {'CINEMA':<30} | {'COUNT':<5} | {'NOTES'}")
+        print("-" * 70)
 
         for r in self.results:
             # Logic: If SUCCESS but 0 showings, treat as WARNING
@@ -131,17 +108,17 @@ class ScrapeReport:
                 failures.append(r)
 
             # Console Output Icons
-            icon = "✅"
-            if r['status'] == 'WARNING': icon = "⚠️ "
-            if r['status'] == 'FAILURE': icon = "❌"
-            
+            icon = "[OK]"
+            if r['status'] == 'WARNING': icon = "[!!]"
+            if r['status'] == 'FAILURE': icon = "[XX]"
+
             error_msg = f"{r['error']}" if r['error'] else ""
             if r['status'] == 'WARNING' and not error_msg:
                 error_msg = "0 showings found"
 
-            print(f"{icon:<4} | {r['cinema']:<25} | {r['count']:<5} | {error_msg}")
+            print(f"{icon:<4} | {r['cinema']:<30} | {r['count']:<5} | {error_msg}")
 
-        print("-" * 65)
+        print("-" * 70)
         print(f"Total Showings Collected: {self.total_showings}")
         return failures, warnings
 
@@ -152,32 +129,31 @@ class ScrapeReport:
 
         # 1. Gather Credentials
         smtp_server = os.environ.get("SMTP_SERVER", "smtp.gmail.com")
-        # SSL port is usually 465
         smtp_port = int(os.environ.get("SMTP_PORT", 465))
         sender_email = os.environ.get("SMTP_EMAIL")
         sender_password = os.environ.get("SMTP_PASSWORD")
         recipient_email = os.environ.get("ALERT_RECIPIENT_EMAIL")
 
         if not (sender_email and sender_password and recipient_email):
-            print("ℹ️ Skipping email alert: Missing SMTP credentials.")
+            print("Skipping email alert: Missing SMTP credentials.")
             return
 
         # 2. Build Content
-        subject = f"🚨 Scraper Alert: {len(failures)} Crashes, {len(warnings)} Empty"
-        
-        body_lines = ["The Cinema Scraper encountered issues:\n"]
-        
+        subject = f"London Scraper Alert: {len(failures)} Crashes, {len(warnings)} Empty"
+
+        body_lines = ["The London Cinema Scraper encountered issues:\n"]
+
         if failures:
-            body_lines.append(f"❌ CRITICAL FAILURES ({len(failures)}):")
+            body_lines.append(f"CRITICAL FAILURES ({len(failures)}):")
             for f in failures:
                 body_lines.append(f"- {f['cinema']}: {f['error']}")
             body_lines.append("\n")
 
         if warnings:
-            body_lines.append(f"⚠️ POTENTIAL ISSUES (0 Showings Found):")
+            body_lines.append(f"POTENTIAL ISSUES (0 Showings Found):")
             for w in warnings:
                 body_lines.append(f"- {w['cinema']}")
-        
+
         body_lines.append("\nCheck the GitHub Actions logs for full details.")
 
         msg = EmailMessage()
@@ -192,58 +168,640 @@ class ScrapeReport:
             with smtplib.SMTP_SSL(smtp_server, smtp_port, context=context) as server:
                 server.login(sender_email, sender_password)
                 server.send_message(msg)
-            print("📧 Alert email sent successfully.")
+            print("Alert email sent successfully.")
         except Exception as e:
-            print(f"❌ Failed to send email alert: {e}")
+            print(f"Failed to send email alert: {e}")
 
 # Initialize Global Report
 report = ScrapeReport()
 
 # --- TMDB Utilities ---
 
+TITLE_ALIASES = {
+    "zootropolis 2": "Zootopia 2",
+    "zootropolis": "Zootopia",
+    "fools and a flower": "Fools & A Flower",
+    "untold: the retreat": "The Retreat",
+    "avatar: fire and ash": "Avatar 3",
+    "labyrinth": "Labyrinth (1986)",  # Force the classic
+    "speed": "Speed (1994)",  # Force the classic
+    # Japanese titles with English translations
+    "house [hausu]": "Hausu",
+    "hausu": "Hausu",  # Japanese horror film 1977
+    "house hausu": "Hausu",
+    # Foreign title aliases
+    "la danse: le ballet de l'opera de paris": "La Danse: The Paris Opera Ballet",
+}
+
 def clean_title_for_tmdb(title: str) -> str:
     """
-    Aggressively strips 'noise' suffixes that confuse TMDB fuzzy matching.
+    Strips common suffixes/prefixes that confuse TMDB fuzzy matching.
     """
     if not title:
         return ""
-    
-    cleaned = title.replace("\u3000", " ").strip()
-    keyword_pattern = (
-        r"(?:上映|字幕|舞台挨拶|イベント|ｲﾍﾞﾝﾄ|特集|記念|公開|"
-        r"オールナイト|未体験|復刻|再上映|先行|限定|特別|"
-        r"ライブ|生中継|応援上映|4K|2K|リマスター|レストア|デジタル)"
-    )
+
+    # 1. Strip explicit Event Prefixes (often separated by : or - or –)
+    prefix_patterns = [
+        r"^(Narrow Margin presents|In Focus|Crafty Movie Night|Member's Request|Staff Pick|Relaxed Screening|Family Screening|Preview|Premiere|UK Premiere)[:\s–-]+",
+        r"^(Throwback|Babykino|Carers & Babies|Toddler Club|Club Room|Dog-Friendly|Dog-Friendly Screening|Sensory Friendly|HOH|Caption|Autism Friendly)[:\s–-]+",
+        r"^(DOCHOUSE|LSFF|ANZ FILM FESTIVAL|ANZ FF|RBO Live|RBO Encore|Met Opera Live|Met Opera Encore|NT Live|National Theatre Live|Exhibition on Screen|Royal Ballet|Royal Opera|Bolshoi Ballet)[:\s–-]+",
+        r"^(Member's Preview|Members' Preview|Mystery Movie|Secret Movie|Surprise Movie)[:\s–-]+",
+        r"^(Bar Trash|OffBeat|Pink Palace|Films For Workers|Coming Up|London Short Film Festival)[:\s–-]+",
+        r"^(Phoenix Classics|Cine-Real presents|Green Screen)[:\s–-]+",
+        # Additional event prefixes
+        r"^(DRINK\s*&\s*DINE|Drink\s*&\s*Dine|DocFest Spotlights|Video Bazaar presents|TV Preview)[:\s–-]+",
+        r"^(SCANNERS\s+INC\.?\s+PRESENTS|Scanners Inc\.? Presents|DELETED SCENES PRESENTS|Deleted Scenes Presents)[:\s–-]+",
+        r"^(Holocaust Memorial Day|Lexi Seniors'? Film Club|Saturday Morning Picture Club)[:\s–-]+",
+        r"^(Nostalgie|Red Flagged[^:]*presents|Queer East presents)[:\s–-]+",
+        r"^An Evening with[^:]+[:\s–-]+",  # "An Evening with X: Film Title"
+    ]
+    cleaned = title
+    for pat in prefix_patterns:
+        cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE)
+
+    # 2. Strip standard rating/screening suffixes
     patterns = [
-        rf"【[^】]*?{keyword_pattern}[^】]*】",
-        rf"［[^］]*?{keyword_pattern}[^］]*］",
-        rf"〈[^〉]*?{keyword_pattern}[^〉]*〉",
-        rf"《[^》]*?{keyword_pattern}[^》]*》",
-        rf"\[[^\]]*?{keyword_pattern}[^\]]*\]",
-        rf"\([^\)]*?{keyword_pattern}[^\)]*\)",
-        r"^\s*[A-Z]\.?\s+",
-        r"^\s*\d+\.\s+",
-        r"\s*(?:4K|2K)\s*(?:デジタル)?(?:リマスター|レストア)?(?:版)?\s*$",
-        r"\s*(?:デジタル)?(?:リマスター|レストア)(?:版)?\s*$",
-        r"\s*(?:IMAX|Dolby|4DX|SCREENX)\s*$",
-        r"\s*(?:完全版|ディレクターズカット|Director's Cut|DC版)\s*$",
-        r"\s*(?:字幕|吹替)\s*$",
-        r"\s*(?:公開\d+周年記念版|\d+周年記念版|\d+周年記念)\s*$",
-        r"\s*(?:復刻版|再上映)\s*$",
-        r"\s*(?:G|PG12|R15\+|R18\+)\s*$",
+        r"4K Restor.*",                     # 4K Restore...
+        r"4K Digital Remaster.*",           # 4K Digital Remaster
+        r"Director's Cut",                  # Director's Cut
+        r"Extended Edition",                # Extended Edition
+        r"Anniversary Edition",             # Anniversary Edition
+        r"Special Edition",                 # Special Edition
+        r"Remastered",                      # Remastered
+        r"\d+th Anniversary.*",             # 50th Anniversary...
+        r"Double Bill.*",                   # Double Bill...
+        r"Double Feature.*",                # Double Feature...
+        r"\(\s*(U|PG|12A|12|15|15\*|18|R)\s*\)", # UK/US rating suffixes (ANYWHERE)
+        r"\(\s*\d{4}\s*\)$",                # (1990)
+        r"\(.*?version\)",                  # (XXX version)
+        r"\[.*?\]",                         # [XXX] - e.g. [Kimi no Na wa.]
+        r"(?i)\s+Encore\s*$",               # Encore screenings
+        r"(?i)\s+\d{4}-\d{2,4}\s+Season\s*$", # 2025-26 Season
+
+        # Sing-along suffixes
+        r"(?i)\s+Sing[- ]?A[- ]?Long!?\s*$",  # Sing-A-Long, Sing-Along, Sing A Long
+        r"(?i)\s+Sing[- ]?Along!?\s*$",
+
+        # Noise words at end of string
+        r"(?i)\b(parent and baby|carer|hard of hearing|captioned|subtitled|relaxed|autism|dementia|HOH|Babes-In-Arms)(\s+screening)?\s*$",
+        r"(?i)\s+UK PREMIERE\s*$",
+
+        # Aggressive suffix stripping for " + " or " - " (often Q&As)
+        # e.g. "Power Station + director Q&A" -> "Power Station"
+        r"\s(\+|–|-)\s+(intro|discussion|q\s*&\s*a|qa|panel|talk|shorts|live score|live music|director|presented by|hosted by|with|screening|recorded|cast).*$",
     ]
 
     for pat in patterns:
         cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE)
-    
+
     # Cleanup whitespace
     cleaned = cleaned.strip()
     
+    # Remove " 3D" or " 2D" at the very end
+    cleaned = re.sub(r"\s(2D|3D)$", "", cleaned, flags=re.IGNORECASE)
+
     # If cleaning removed everything (unlikely), revert
     if not cleaned:
         return title
-        
+
     return cleaned
+
+def normalize_title_for_match(title: str) -> str:
+    if not title:
+        return ""
+    normalized = unicodedata.normalize("NFKD", title)
+    normalized = normalized.encode("ascii", "ignore").decode("ascii")
+    normalized = normalized.lower()
+    normalized = re.sub(r"[^a-z0-9\s]", " ", normalized)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return normalized
+
+NON_FILM_EVENT_KEYWORDS = [
+    "open mic",
+    "free entry",
+    "fun in the lounge",
+    "quiz",
+    "trivia",
+    "workshop",
+    "masterclass",
+    "panel",
+    "discussion",
+    "in conversation",
+    "talk",
+    "live podcast",
+    "book launch",
+    "stand up",
+    "stand-up",
+    "comedy night",
+    "live music",
+    "dj set",
+    "club night",
+    "karaoke",
+    "an evening with",
+    "crafty movie night",
+    "toddler club",
+]
+
+PROGRAM_EVENT_KEYWORDS = [
+    "opening night",
+    "closing night",
+    "short film",
+    "short films",
+    "short film showcase",
+    "shorts program",
+    "shorts programme",
+    "showcase",
+    "spotlight",
+    "spotlights",
+    "programme",
+    "program",
+    "selection",
+    "festival highlights",
+]
+
+PROGRAM_CONTEXT_KEYWORDS = [
+    "festival",
+    "lsff",
+    "london short film festival",
+    "anz",
+    "anz film festival",
+    "docfest",
+    "docfest spotlights",
+    "short film festival",
+]
+
+BROADCAST_BRAND_REQUIREMENTS = [
+    (["nt live", "national theatre live", "national theatre live presents"], ["national theatre", "nt live"]),
+    (["met opera", "met opera live", "met opera encore", "metropolitan opera"], ["met opera", "metropolitan opera"]),
+    (["royal opera", "royal opera house", "royal ballet", "rbo live", "rbo encore", "roh"], ["royal opera", "royal opera house", "royal ballet", "rbo", "roh"]),
+    (["bolshoi ballet"], ["bolshoi", "bolshoi ballet"]),
+    (["exhibition on screen"], ["exhibition on screen"]),
+    (["glyndebourne"], ["glyndebourne"]),
+]
+
+COLON_SPLIT_PREFIX_KEYWORDS = [
+    "nt live",
+    "national theatre live",
+    "national theatre live presents",
+    "met opera",
+    "met opera live",
+    "met opera encore",
+    "metropolitan opera",
+    "royal opera",
+    "royal opera house",
+    "royal ballet",
+    "rbo live",
+    "rbo encore",
+    "roh",
+    "bolshoi ballet",
+    "exhibition on screen",
+    "docfest",
+    "docfest spotlights",
+    "lsff",
+    "london short film festival",
+    "anz film festival",
+    "anz ff",
+    "pink palace",
+    "bar trash",
+    "offbeat",
+    "video bazaar presents",
+    "deleted scenes presents",
+    "scanners inc presents",
+    "phoenix classics",
+    "cine-real presents",
+    "films for workers",
+    "saturday morning picture club",
+    "lexi seniors film club",
+    "holocaust memorial day",
+]
+
+def _normalize_keyword_list(keywords):
+    return [normalize_title_for_match(k) for k in keywords if k]
+
+_NON_FILM_EVENT_KEYWORDS = _normalize_keyword_list(NON_FILM_EVENT_KEYWORDS)
+_PROGRAM_EVENT_KEYWORDS = _normalize_keyword_list(PROGRAM_EVENT_KEYWORDS)
+_PROGRAM_CONTEXT_KEYWORDS = _normalize_keyword_list(PROGRAM_CONTEXT_KEYWORDS)
+_COLON_SPLIT_PREFIX_KEYWORDS = _normalize_keyword_list(COLON_SPLIT_PREFIX_KEYWORDS)
+_BROADCAST_BRAND_REQUIREMENTS = [
+    (_normalize_keyword_list(triggers), _normalize_keyword_list(required))
+    for triggers, required in BROADCAST_BRAND_REQUIREMENTS
+]
+_BROADCAST_BRAND_TRIGGERS = sorted({t for triggers, _ in _BROADCAST_BRAND_REQUIREMENTS for t in triggers})
+
+def _title_has_any_keyword(norm_title: str, keywords_norm) -> bool:
+    return any(k in norm_title for k in keywords_norm)
+
+def is_probable_program_event(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    if _title_has_any_keyword(norm, _PROGRAM_EVENT_KEYWORDS):
+        if _title_has_any_keyword(norm, _PROGRAM_CONTEXT_KEYWORDS):
+            return True
+        if "short film" in norm or "short films" in norm:
+            return True
+    return False
+
+def is_probable_non_film_event(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    return _title_has_any_keyword(norm, _NON_FILM_EVENT_KEYWORDS)
+
+def should_skip_tmdb_enrichment(title: str):
+    if is_nt_live_title(title):
+        return True, "nt live listing"
+    if is_probable_program_event(title):
+        return True, "program or festival event"
+    if is_probable_non_film_event(title):
+        return True, "non-film event"
+    return False, ""
+
+def has_broadcast_brand(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    return _title_has_any_keyword(norm, _BROADCAST_BRAND_TRIGGERS)
+
+def is_nt_live_title(title: str) -> bool:
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return False
+    return "nt live" in norm or "national theatre live" in norm
+
+def get_broadcast_required_tokens(title: str):
+    norm = normalize_title_for_match(title)
+    if not norm:
+        return []
+    required = []
+    for triggers, needed in _BROADCAST_BRAND_REQUIREMENTS:
+        if _title_has_any_keyword(norm, triggers):
+            required.extend(needed)
+    return list(dict.fromkeys(required))
+
+def passes_broadcast_guard(required_tokens, result: dict) -> bool:
+    if not required_tokens:
+        return True
+    combined = f"{result.get('title', '')} {result.get('original_title', '')}"
+    norm = normalize_title_for_match(combined)
+    return _title_has_any_keyword(norm, required_tokens)
+
+def should_split_on_colon(title: str) -> bool:
+    if ":" not in title:
+        return False
+    prefix = title.split(":", 1)[0]
+    prefix_norm = normalize_title_for_match(prefix)
+    return _title_has_any_keyword(prefix_norm, _COLON_SPLIT_PREFIX_KEYWORDS)
+
+def map_tmdb_search_result(result: dict) -> dict:
+    return {
+        "id": result.get("id"),
+        "title": result.get("title") or "",
+        "original_title": result.get("original_title") or "",
+        "release_date": result.get("release_date") or "",
+        "vote_count": result.get("vote_count") or 0,
+        "popularity": result.get("popularity") or 0,
+    }
+
+def run_tmdb_search(session, url, params, year_param):
+    resp = session.get(url, params=params, timeout=5)
+    data = resp.json()
+    results = data.get("results", [])
+    if not results and year_param in params:
+        fallback_params = params.copy()
+        del fallback_params[year_param]
+        resp = session.get(url, params=fallback_params, timeout=5)
+        data = resp.json()
+        results = data.get("results", [])
+    return results
+
+def parse_year_value(raw_year):
+    if not raw_year:
+        return None
+    try:
+        # Handle cases like "2024 / 2025" or "1999 (restored)"
+        clean_y = re.search(r"\d{4}", str(raw_year))
+        if clean_y:
+            year = int(clean_y.group(0))
+        else:
+            return None
+    except ValueError:
+        return None
+    current_year = datetime.now().year
+    if 1880 <= year <= current_year + 3:
+        return year
+    return None
+
+def extract_year_from_title(title: str):
+    if not title:
+        return None
+    # Look for (YYYY) at end of string or mid-string
+    for match in re.findall(r"\((\d{4})\)", title):
+        year = parse_year_value(match)
+        if year:
+            return year
+    return None
+
+def truncate_noisy_title(title: str) -> str:
+    if not title:
+        return ""
+    if len(title) < 80:
+        return title
+    # Cut off if we hit obviously non-title description text
+    for keyword in ["doors", "film", "certificate", "digital", "book here", "not for the easily"]:
+        match = re.search(re.escape(keyword), title, flags=re.IGNORECASE)
+        if match:
+            return title[:match.start()].strip()
+    return title
+
+def strip_event_prefix(title: str) -> str:
+    if not title:
+        return ""
+    
+    # Handle separators: ":", " - ", " – "
+    separators = [":", " - ", " – "]
+    
+    # Try splitting by first separator found
+    for sep in separators:
+        if sep in title:
+            prefix, rest = title.split(sep, 1)
+            prefix_norm = normalize_title_for_match(prefix)
+            
+            # Known prefixes to strip
+            prefix_keywords = [
+                "presents", "presented by",
+                "relaxed screening", "senior free matinee", "seniors free matinee",
+                "philosophical screens", "deleted scenes", "scanners inc",
+                "evolution of horror", "narrow margin", "pitchblack playback",
+                "film quiz", "in conversation", "preview", "premiere",
+                "crafty movie night", "member's request", "staff pick",
+                "in focus", "club room", "babykino", "kids club"
+            ]
+            
+            if any(k in prefix_norm for k in prefix_keywords):
+                return rest.strip()
+            # If prefix looks like a date/time or location, maybe strip it? (Context dependent)
+            
+    return title
+
+def strip_event_suffix(title: str) -> str:
+    if not title:
+        return ""
+    suffix_patterns = [
+        r"\s*\+\s*(intro|discussion|q\s*&\s*a|qa|panel|talk|shorts|live score|live music|director|presented by|hosted by).*$",
+        r"\s*-\s*.*(intro|discussion|q\s*&\s*a|qa|panel|talk|live|presented by|hosted by|with).*$",
+        r"(?i)\s+Q&A\s*$",
+    ]
+    cleaned = title
+    for pat in suffix_patterns:
+        cleaned = re.sub(pat, "", cleaned, flags=re.IGNORECASE).strip()
+    return cleaned
+
+def build_search_queries(title: str):
+    if not title:
+        return []
+
+    queries = []
+    raw_base = truncate_noisy_title(title.strip())
+    if has_broadcast_brand(raw_base):
+        queries.append(raw_base)
+
+    base = strip_event_prefix(raw_base)
+    base = strip_event_suffix(base)
+
+    # Handle square brackets e.g. "Your Name [Kimi no Na wa.]"
+    # We want to search "Your Name" AND "Kimi no Na wa"
+    bracket_matches = re.findall(r"\[([^\]]+)\]", base)
+
+    cleaned_base = clean_title_for_tmdb(base)
+
+    # Check aliases FIRST for the full original title (including brackets)
+    # This handles cases like "House [Hausu]" -> "Hausu"
+    full_lower = base.lower().strip()
+    if full_lower in TITLE_ALIASES:
+        queries.append(TITLE_ALIASES[full_lower])
+
+    # Also check normalized version (brackets without spaces)
+    normalized_full = re.sub(r'\s*\[', ' [', full_lower).strip()
+    if normalized_full in TITLE_ALIASES:
+        queries.append(TITLE_ALIASES[normalized_full])
+
+    # Priority 1: Cleaned Base (e.g. "Hamnet")
+    if cleaned_base and cleaned_base not in queries:
+        queries.append(cleaned_base)
+        # Check aliases for cleaned base
+        lower_base = cleaned_base.lower()
+        if lower_base in TITLE_ALIASES and TITLE_ALIASES[lower_base] not in queries:
+            queries.append(TITLE_ALIASES[lower_base])
+
+    # Priority 2: AKA/Bracket content (search using foreign/original title)
+    for alt in bracket_matches:
+        # Check for "aka Title" inside brackets
+        aka_match = re.search(r"\baka\s+(.*)", alt, flags=re.IGNORECASE)
+        candidate = aka_match.group(1).strip() if aka_match else alt.strip()
+        candidate = clean_title_for_tmdb(candidate)
+        if candidate and candidate not in queries:
+            queries.append(candidate)
+            # Also check alias for bracket content
+            if candidate.lower() in TITLE_ALIASES and TITLE_ALIASES[candidate.lower()] not in queries:
+                queries.append(TITLE_ALIASES[candidate.lower()])
+            
+    # Priority 3: Split by " + " or " & " (Double Bills)
+    # Only split on the CLEANED base to avoid splitting event prefixes like "DRINK & DINE"
+    if " + " in cleaned_base or " & " in cleaned_base:
+        parts = re.split(r"\s*(?:\+|&)\s*", cleaned_base)
+        for part in parts:
+            part = strip_event_suffix(part.strip())
+            part = clean_title_for_tmdb(part).strip(" .,:;")
+            # Skip parts that are too short (likely noise) or look like event noise
+            if part and len(part) > 3 and part not in queries:
+                # Skip common noise words
+                noise_words = {'intro', 'q', 'a', 'qa', 'discussion', 'panel', 'talk', 'with', 'recorded', 'cast'}
+                if part.lower() not in noise_words:
+                    queries.append(part)
+    
+    # Priority 4: Colon split (e.g. "National Theatre Live: Hamlet" -> "Hamlet")
+    if ":" in cleaned_base and should_split_on_colon(raw_base):
+        parts = cleaned_base.split(":", 1)
+        if len(parts) > 1:
+            suffix_part = parts[1].strip()
+            if suffix_part and suffix_part not in queries:
+                queries.append(suffix_part)
+
+    # Uniqify
+    final_queries = []
+    for q in queries:
+        q = q.strip(" .,:;")
+        if q and q not in final_queries:
+            final_queries.append(q)
+            
+    return final_queries
+
+def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=None, strict_year=False) -> float:
+    """
+    Sophisticated scoring to match Listings to TMDB Results.
+    Factors: Title Similarity, Year Match, Runtime Match, Popularity.
+    """
+    query_norm = normalize_title_for_match(query)
+    if not query_norm:
+        return 0.0
+
+    title_norm = normalize_title_for_match(result.get("title", ""))
+    original_norm = normalize_title_for_match(result.get("original_title", ""))
+    original_raw = result.get("original_title", "")
+
+    # 1. Title Score (0.0 - 1.0)
+    # ---------------------------------------------------------
+    ratios = []
+    title_ratio = 0.0
+    original_ratio = 0.0
+
+    if title_norm:
+        title_ratio = difflib.SequenceMatcher(None, query_norm, title_norm).ratio()
+        ratios.append(title_ratio)
+    if original_norm and original_norm != title_norm:
+        original_ratio = difflib.SequenceMatcher(None, query_norm, original_norm).ratio()
+        ratios.append(original_ratio)
+
+    if not ratios:
+        return 0.0
+
+    best_ratio = max(ratios)
+
+    # Bonus: If query matches original_title better than title, this is likely
+    # the correct foreign film (e.g., "Hausu" matching Japanese "ハウス" entry)
+    original_match_bonus = 0.0
+    if original_ratio > title_ratio + 0.1:
+        # Query matches original title significantly better
+        original_match_bonus = 0.1
+    # Also bonus if original_title contains non-ASCII (foreign language)
+    if original_raw and any(ord(c) > 127 for c in original_raw):
+        if original_ratio > 0.7 or title_ratio > 0.85:
+            original_match_bonus += 0.05
+    
+    # Token overlap bonus (good for swapped words)
+    query_tokens = set(query_norm.split())
+    title_tokens = set(title_norm.split()) if title_norm else set()
+    if not title_tokens and original_norm:
+        title_tokens = set(original_norm.split())
+
+    token_overlap = 0.0
+    if query_tokens and title_tokens:
+        token_overlap = len(query_tokens & title_tokens) / len(query_tokens | title_tokens)
+
+    # Base Text Score + foreign title bonus
+    score = (0.7 * best_ratio) + (0.3 * token_overlap) + original_match_bonus
+
+    # 2. Year Logic
+    # ---------------------------------------------------------
+    result_year = None
+    release_date = result.get("release_date")
+    if release_date:
+        try:
+            result_year = int(release_date.split("-")[0])
+        except ValueError:
+            result_year = None
+
+    if query_year and result_year:
+        diff = abs(result_year - query_year)
+        
+        # SPECIAL LOGIC: If query_year is THIS YEAR (or next), it might be a screening date, not release date.
+        # So if we have a great title match but an old movie, don't penalize.
+        current_year = datetime.now().year
+        is_screening_year = (query_year >= current_year)
+        
+        if diff == 0:
+            score += 0.15      # Perfect Year Match -> Big Boost
+        elif diff == 1:
+            score += 0.05      # Close enough
+        elif diff > 20:
+            if is_screening_year and best_ratio > 0.9 and not strict_year:
+                 # It's an old movie (e.g. 1990) being screened in 2026.
+                 # The user (scraper) provided 2026.
+                 # We forgive the year mismatch because the title match is very strong.
+                 pass 
+            else:
+                score -= 0.3   # Different era -> Heavy Penalty
+        else:
+            if not (is_screening_year and best_ratio > 0.9 and not strict_year):
+                score -= 0.1   # Wrong year (unless handled above)
+            
+    # 3. Runtime Logic (If Year is missing or ambiguous)
+    # ---------------------------------------------------------
+    # Use runtime to distinguish Short Films vs Features (e.g. "Your Name")
+    # Only if we have a query runtime to check against
+    if query_runtime:
+        # We try to use the runtime from the result if available.
+        # Note: Search results often don't have runtime, but if we are re-scoring detailed objects they will.
+        res_runtime = result.get("runtime")
+        if res_runtime:
+            try:
+                r_diff = abs(int(query_runtime) - int(res_runtime))
+                if r_diff <= 15:
+                    score += 0.1   # Matches well
+                elif r_diff > 40:
+                    score -= 0.25  # Big mismatch (Short vs Feature)
+            except:
+                pass
+
+    # 4. Popularity / Vote Count (Sanity Check)
+    # ---------------------------------------------------------
+    # If a movie is very obscure (low votes) but matches title, 
+    # it might be a short film or database junk.
+    vote_count = result.get("vote_count", 0)
+    if vote_count > 5000:
+        score += 0.05
+    elif vote_count < 5:
+        score -= 0.05
+
+    # 5. Length Penalties
+    # ---------------------------------------------------------
+    # Short queries ("X") are dangerous
+    if len(query_norm.split()) <= 1:
+        if vote_count < 50:
+            score -= 0.25
+        elif vote_count < 200:
+            score -= 0.1
+        if best_ratio < 0.95:
+            score -= 0.1
+
+    return min(max(score, 0.0), 1.0) # Clamp 0..1
+
+def is_cache_match_ok(title: str, cached: dict, query_year=None, query_runtime=None) -> bool:
+    if not cached:
+        return False
+    
+    # Construct a pseudo-result from cache to pass to scorer
+    pseudo_result = {
+        "title": cached.get("tmdb_title") or "",
+        "original_title": cached.get("tmdb_original_title") or "",
+        "release_date": cached.get("release_date") or "",
+        "vote_count": 1000 # Assume cached items were vetted or popular enough
+    }
+
+    required_tokens = get_broadcast_required_tokens(title)
+    if required_tokens and not passes_broadcast_guard(required_tokens, pseudo_result):
+        return False
+    
+    score = score_tmdb_result(
+        title,
+        pseudo_result,
+        query_year=query_year,
+        query_runtime=query_runtime,
+        strict_year=has_broadcast_brand(title),
+    )
+    
+    # Runtime check for cached items (since we have the runtime in cache)
+    if query_runtime and cached.get("runtime"):
+        try:
+            r_diff = abs(int(query_runtime) - int(cached["runtime"]))
+            if r_diff > 30: # If duration differs by >30 mins, invalidate cache
+                print(f"   [Cache Invalidate] Runtime mismatch for '{title}': Listed {query_runtime}m vs Cached {cached['runtime']}m")
+                return False
+        except:
+            pass
+            
+    return score >= 0.70 # Slightly higher threshold for cache trust
 
 def load_tmdb_cache():
     if os.path.exists(TMDB_CACHE_FILE):
@@ -258,877 +816,322 @@ def save_tmdb_cache(cache):
     with open(TMDB_CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
-def load_title_resolution_cache():
-    paths_to_try = [TITLE_RESOLUTION_CACHE_FILE, LEGACY_TITLE_TRANSLATION_CACHE_FILE]
-    for path in paths_to_try:
-        if os.path.exists(path):
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except:
-                return {}
-    return {}
-
-def save_title_resolution_cache(cache):
-    with open(TITLE_RESOLUTION_CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump(cache, f, ensure_ascii=False, indent=2)
-
-def _normalize_title_for_match(title: str) -> str:
-    if not title:
-        return ""
-    cleaned = clean_title_for_tmdb(title)
-    cleaned = cleaned.strip().lower()
-    cleaned = re.sub(r"[\\(\\[\\{（［｛].*?[\\)\\]\\}）］｝]", "", cleaned)
-    cleaned = re.sub(r"[\"'“”‘’]", "", cleaned)
-    cleaned = re.sub(r"[\\s:：/|\\\\\\-–—_・／、，。：]+", " ", cleaned)
-    cleaned = re.sub(r"\\s+", " ", cleaned).strip()
-    return cleaned
-
-def _title_similarity(a: str, b: str) -> float:
-    if not a or not b:
-        return 0.0
-    return difflib.SequenceMatcher(None, a, b).ratio()
-
-def _parse_year(value):
-    if not value:
-        return None
-    if m := re.search(r"(19|20)\\d{2}", str(value)):
-        return int(m.group(0))
-    return None
-
-def _parse_int(value):
-    try:
-        return int(str(value).strip())
-    except (TypeError, ValueError):
-        return None
-
-def _normalize_person_name(name: str) -> str:
-    if not name:
-        return ""
-    name = name.strip().lower()
-    name = re.sub(r"[\\s.,・]", "", name)
-    return name
-
-def _director_score(listing_director: str, tmdb_director: str):
-    if not listing_director or not tmdb_director:
-        return None
-    a = _normalize_person_name(listing_director)
-    b = _normalize_person_name(tmdb_director)
-    if not a or not b:
-        return None
-    if a in b or b in a:
-        return 1.0
-    return _title_similarity(a, b)
-
-def _country_score(listing_country: str, tmdb_countries):
-    if not listing_country or not tmdb_countries:
-        return None
-    listing_tokens = [t for t in re.split(r"[\\s/／・,]+", listing_country) if t]
-    if not listing_tokens:
-        return None
-    tmdb_tokens = set()
-    for country in tmdb_countries:
-        name = country.get("name") or ""
-        iso = country.get("iso_3166_1") or ""
-        for token in re.split(r"[\\s/／・,]+", f"{name} {iso}".strip()):
-            if token:
-                tmdb_tokens.add(token.lower())
-    if not tmdb_tokens:
-        return None
-    for token in listing_tokens:
-        normalized = token.lower()
-        if normalized in tmdb_tokens:
-            return 1.0
-        for tmdb_token in tmdb_tokens:
-            if normalized in tmdb_token or tmdb_token in normalized:
-                return 1.0
-    return 0.0
-
-def _runtime_score(listing_runtime, tmdb_runtime):
-    listing_minutes = _parse_int(listing_runtime)
-    tmdb_minutes = _parse_int(tmdb_runtime)
-    if not listing_minutes or not tmdb_minutes:
-        return None
-    diff = abs(listing_minutes - tmdb_minutes)
-    if diff <= 5:
-        return 1.0
-    if diff <= 10:
-        return 0.7
-    if diff <= 20:
-        return 0.4
-    if diff <= 30:
-        return 0.2
-    return 0.0
-
-def _title_match_score(title_info, candidate):
-    query_titles = [
-        _normalize_title_for_match(title_info.get("movie_title", "")),
-        _normalize_title_for_match(title_info.get("movie_title_en", "")),
-    ]
-    query_titles = [t for t in query_titles if t]
-    candidate_titles = [
-        _normalize_title_for_match(candidate.get("title", "")),
-        _normalize_title_for_match(candidate.get("original_title", "")),
-    ]
-    candidate_titles = [t for t in candidate_titles if t]
-
-    title_score = 0.0
-    for query in query_titles:
-        for cand in candidate_titles:
-            title_score = max(title_score, _title_similarity(query, cand))
-    return title_score
-
-def _year_match_score(listing_year, release_date):
-    listing_year = _parse_year(listing_year)
-    tmdb_year = _parse_year(release_date)
-    if listing_year and tmdb_year:
-        diff = abs(listing_year - tmdb_year)
-        return max(0.0, 1.0 - min(diff, 5) / 5)
-    return None
-
-def _score_basic_candidate(candidate, title_info):
-    title_score = _title_match_score(title_info, candidate)
-
-    year_score = _year_match_score(title_info.get("year"), candidate.get("release_date"))
-    year_score = year_score if year_score is not None else 0.0
-
-    popularity = candidate.get("popularity") or 0.0
-    popularity_score = min(float(popularity) / 50.0, 1.0)
-
-    return (title_score * 0.85) + (year_score * 0.1) + (popularity_score * 0.05)
-
-def _score_candidate_with_details(basic_score, details, title_info):
-    score = basic_score * 0.7
-    weight = 0.7
-
-    runtime_score = _runtime_score(title_info.get("runtime_min"), details.get("runtime"))
-    if runtime_score is not None:
-        score += runtime_score * 0.1
-        weight += 0.1
-
-    director_score = _director_score(title_info.get("director"), details.get("director"))
-    if director_score is not None:
-        score += director_score * 0.1
-        weight += 0.1
-
-    country_score = _country_score(title_info.get("country"), details.get("tmdb_countries") or [])
-    if country_score is not None:
-        score += country_score * 0.1
-        weight += 0.1
-
-    if weight == 0:
-        return basic_score
-    return score / weight
-
-def _search_tmdb(query, session, api_key, language):
+def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_runtime=None):
+    """
+    Searches TMDB for movie_title with logic to find the BEST match, not just the first.
+    """
     search_url = "https://api.themoviedb.org/3/search/movie"
-    params = {
-        "api_key": api_key,
-        "query": query,
-        "language": language,
-        "include_adult": "false"
-    }
-    resp = session.get(search_url, params=params, timeout=5)
-    data = resp.json()
-    return data.get("results", [])
 
-def _fetch_tmdb_details_by_id(tmdb_id, session, api_key):
-    detail_url = f"https://api.themoviedb.org/3/movie/{tmdb_id}"
-    params = {
-        "api_key": api_key,
-        "language": "ja-JP",
-        "append_to_response": "credits,images"
-    }
-    d_resp = session.get(detail_url, params=params, timeout=5)
-    d_data = d_resp.json()
-
-    director = ""
-    crew = d_data.get("credits", {}).get("crew", [])
-    for c in crew:
-        if c.get("job") == "Director":
-            director = c.get("name")
-            break
-
-    return {
-        "tmdb_id": tmdb_id,
-        "tmdb_title_jp": d_data.get("title"),
-        "tmdb_title_en": d_data.get("original_title"),
-        "overview": d_data.get("overview"),
-        "poster_path": d_data.get("poster_path"),
-        "backdrop_path": d_data.get("backdrop_path"),
-        "release_date": d_data.get("release_date"),
-        "director": director,
-        "runtime": d_data.get("runtime"),
-        "genres": [g["name"] for g in d_data.get("genres", [])],
-        "vote_average": d_data.get("vote_average"),
-        "tmdb_countries": d_data.get("production_countries", []),
-    }
-
-def fetch_tmdb_details(title_info, session, api_key):
-    """
-    Searches TMDB with JP + EN titles and scores candidates with soft heuristics.
-    """
-    movie_title = title_info.get("movie_title", "")
-    movie_title_en = title_info.get("movie_title_en", "")
-
-    queries = []
-    seen_queries = set()
-
-    def _add_query(query, language):
-        query = (query or "").strip()
-        if not query:
-            return
-        key = (query.lower(), language)
-        if key in seen_queries:
-            return
-        seen_queries.add(key)
-        queries.append((query, language))
-
-    _add_query(movie_title, "ja-JP")
-    cleaned_jp = clean_title_for_tmdb(movie_title)
-    if cleaned_jp and cleaned_jp != movie_title:
-        _add_query(cleaned_jp, "ja-JP")
-
-    _add_query(movie_title_en, "en-US")
-    cleaned_en = clean_title_for_tmdb(movie_title_en)
-    if cleaned_en and cleaned_en != movie_title_en:
-        _add_query(cleaned_en, "en-US")
-
-    if not queries:
+    skip_tmdb, skip_reason = should_skip_tmdb_enrichment(movie_title)
+    if skip_tmdb:
+        print(f"   [Skip] '{movie_title}' ({skip_reason})")
         return None
 
+    # Extract year if not provided
+    query_year = parse_year_value(movie_year) or extract_year_from_title(movie_title)
+    
+    # Parse runtime if provided
+    query_runtime = None
+    if movie_runtime:
+        try:
+            query_runtime = int(movie_runtime)
+        except:
+            pass
+
+    strict_year = has_broadcast_brand(movie_title)
+    required_tokens = get_broadcast_required_tokens(movie_title)
+    queries = build_search_queries(movie_title)
+
     try:
-        candidates = {}
-        for query, language in queries:
-            results = _search_tmdb(query, session, api_key, language)
+        candidates = []
+        seen_ids = set()
+
+        for query in queries:
+            params = {
+                "api_key": api_key,
+                "query": query,
+                "language": "en-GB",
+                "include_adult": "false"
+            }
+            if query_year:
+                params["year"] = query_year
+            results = run_tmdb_search(session, search_url, params, "year")
             for result in results:
-                if "id" in result:
-                    candidates[result["id"]] = result
+                mapped = map_tmdb_search_result(result)
+                res_id = mapped.get("id")
+                if not res_id or res_id in seen_ids:
+                    continue
+                seen_ids.add(res_id)
 
-        if not candidates:
+                if required_tokens and not passes_broadcast_guard(required_tokens, mapped):
+                    continue
+
+                score = score_tmdb_result(
+                    query,
+                    mapped,
+                    query_year=query_year,
+                    query_runtime=query_runtime,
+                    strict_year=strict_year,
+                )
+                
+                # Add to candidates
+                candidates.append({
+                    "score": score,
+                    "result": result,
+                    "query": query
+                })
+
+        # Sort candidates by score descending
+        candidates.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Filter top candidates
+        score_threshold = 0.7 if strict_year else 0.65
+        top_candidates = [c for c in candidates if c["score"] >= score_threshold]
+        
+        if not top_candidates:
             return None
+            
+        # Refined Selection: Check Runtimes for top contenders
+        # If we have a runtime, we might need to fetch details for the top matches to verify runtime
+        # because 'search' results don't include runtime.
+        
+        best_match = None
+        
+        # If we have a runtime to verify, we'll check the top 3 candidates
+        check_limit = 3 if query_runtime else 1
+        
+        for candidate in top_candidates[:check_limit]:
+            res = candidate["result"]
+            res_id = res.get("id")
+            if not res_id:
+                continue
+            
+            # Fetch full details
+            detail_url = f"https://api.themoviedb.org/3/movie/{res_id}"
+            d_params = {
+                "api_key": api_key,
+                "language": "en-GB",
+                "append_to_response": "credits,images"
+            }
+            d_resp = session.get(detail_url, params=d_params, timeout=5)
+            d_data = d_resp.json()
+            
+            # Now we have runtime
+            tmdb_runtime = d_data.get("runtime") or 0
+            
+            # Runtime validation
+            if query_runtime and tmdb_runtime > 0:
+                diff = abs(query_runtime - tmdb_runtime)
+                # Relaxed threshold for very long movies (often have intermissions in cinemas)
+                threshold = 45 if query_runtime > 180 else 30
+                if diff > threshold:
+                    # Mismatch! Penalize this candidate significantly
+                    res_title = d_data.get("title") or d_data.get("name") or "Unknown"
+                    print(f"   [Skip] '{res_title}' runtime mismatch ({tmdb_runtime} vs {query_runtime})")
+                    continue # Skip this one, try next
+                elif diff < 10:
+                    # Good match!
+                    pass
+            
+            # If we pass checks, this is our winner
+            # Extract Director
+            director = ""
+            crew = d_data.get("credits", {}).get("crew", [])
+            for c in crew:
+                if c.get("job") == "Director":
+                    director = c.get("name")
+                    break
+            
+            best_match = {
+                "tmdb_id": d_data["id"],
+                "tmdb_title": d_data.get("title"),
+                "tmdb_original_title": d_data.get("original_title"),
+                "overview": d_data.get("overview"),
+                "poster_path": d_data.get("poster_path"),
+                "backdrop_path": d_data.get("backdrop_path"),
+                "release_date": d_data.get("release_date"),
+                "director": director,
+                "runtime": d_data.get("runtime"),
+                "genres": [g["name"] for g in d_data.get("genres", [])],
+                "vote_average": d_data.get("vote_average")
+            }
+            
+            if candidate["query"] != movie_title:
+                print(f"   Matched via '{candidate['query']}' (Score: {candidate['score']:.2f})")
+                
+            break # We found the best passing candidate
 
-        scored = [(_score_basic_candidate(cand, title_info), cand) for cand in candidates.values()]
-        scored.sort(key=lambda x: x[0], reverse=True)
-
-        best_score, best_candidate = scored[0]
-        second_score = scored[1][0] if len(scored) > 1 else 0.0
-
-        needs_details = len(scored) > 1 and (best_score < 0.85 or (best_score - second_score) < 0.1)
-        candidate_slice = scored[:3] if needs_details else scored[:1]
-
-        details_by_id = {}
-        for score, cand in candidate_slice:
-            details = _fetch_tmdb_details_by_id(cand["id"], session, api_key)
-            if details:
-                details_by_id[cand["id"]] = details
-
-        best_details = None
-        best_final_score = -1.0
-        for score, cand in candidate_slice:
-            details = details_by_id.get(cand["id"])
-            final_score = _score_candidate_with_details(score, details, title_info) if details else score
-            if final_score > best_final_score:
-                best_final_score = final_score
-                best_details = details
-                best_candidate = cand
-
-        if not best_details:
-            best_details = _fetch_tmdb_details_by_id(best_candidate["id"], session, api_key)
-        if not best_details:
-            return None
-
-        title_score = _title_match_score(title_info, best_candidate)
-        year_score = _year_match_score(title_info.get("year"), best_details.get("release_date"))
-        runtime_score = _runtime_score(title_info.get("runtime_min"), best_details.get("runtime"))
-        director_score = _director_score(title_info.get("director"), best_details.get("director"))
-        country_score = _country_score(title_info.get("country"), best_details.get("tmdb_countries") or [])
-
-        support_scores = [s for s in (year_score, runtime_score, director_score, country_score) if s is not None]
-        has_support = any(s >= 0.7 for s in support_scores)
-
-        if best_final_score < MIN_FINAL_MATCH_SCORE:
-            return None
-        if title_score < MIN_TITLE_MATCH_SCORE and not has_support:
-            return None
-        return best_details
+        return best_match
 
     except Exception as e:
         print(f"   TMDB Error for '{movie_title}': {e}")
-        return None
 
-def _is_tmdb_cache_hit(entry):
-    return isinstance(entry, dict) and entry.get("tmdb_id")
-
-def _extract_legacy_tmdb_id(entry):
-    if not isinstance(entry, dict):
-        return None
-    if entry.get("tmdb_id"):
-        return None
-    legacy_id = entry.get("id")
-    if isinstance(legacy_id, int):
-        return legacy_id
-    if isinstance(legacy_id, str) and legacy_id.isdigit():
-        return int(legacy_id)
     return None
-
-def _build_title_info(listings):
-    title_info = {}
-    for item in listings:
-        title = item.get("movie_title")
-        if not title:
-            continue
-        info = title_info.setdefault(title, {
-            "movie_title": title,
-            "movie_title_en": "",
-            "year": "",
-            "runtime_min": "",
-            "director": "",
-            "country": "",
-        })
-        for field in ("movie_title_en", "year", "runtime_min", "director", "country"):
-            if not info.get(field) and item.get(field):
-                info[field] = item.get(field)
-    return title_info
-
-def _chunked(items, size):
-    for i in range(0, len(items), size):
-        yield items[i:i + size]
-
-def _extract_gemini_text(payload):
-    try:
-        parts = payload["candidates"][0]["content"]["parts"]
-    except (KeyError, IndexError, TypeError):
-        return ""
-    if not isinstance(parts, list):
-        return ""
-    texts = []
-    for part in parts:
-        if isinstance(part, dict) and part.get("text"):
-            texts.append(part["text"])
-    return "\n".join(texts).strip()
-
-def _parse_gemini_json(text):
-    if not text:
-        return []
-    text = text.strip()
-    if text.startswith("```"):
-        text = re.sub(r"^```(?:json)?", "", text).strip()
-        text = re.sub(r"```$", "", text).strip()
-    start = text.find("[")
-    end = text.rfind("]")
-    if start != -1 and end != -1 and end > start:
-        text = text[start:end + 1]
-    try:
-        data = json.loads(text)
-        if isinstance(data, dict):
-            if data.get("english_title") or data.get("en_title") or data.get("translation"):
-                return [data]
-            data = data.get("resolutions") or data.get("translations") or data.get("results") or []
-        return data if isinstance(data, list) else []
-    except json.JSONDecodeError:
-        obj_start = text.find("{")
-        obj_end = text.rfind("}")
-        if obj_start != -1 and obj_end != -1 and obj_end > obj_start:
-            try:
-                data = json.loads(text[obj_start:obj_end + 1])
-                if isinstance(data, dict):
-                    if data.get("english_title") or data.get("en_title") or data.get("translation"):
-                        return [data]
-            except json.JSONDecodeError:
-                pass
-        return []
-
-def _parse_gemini_fallback(text, input_title):
-    if not text or not input_title:
-        return None
-    text = text.strip()
-    text_unescaped = text.replace('\\"', '"')
-    if re.search(r"\"english_title\"\\s*:\\s*null", text_unescaped, flags=re.IGNORECASE):
-        return {"english_title": None, "release_year": None, "confidence": None, "notes": ""}
-    english_match = re.search(r"\"english_title\"\\s*:\\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
-    if not english_match:
-        english_match = re.search(r"\"en_title\"\\s*:\\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
-    if not english_match:
-        english_match = re.search(r"\"english_title\"\\s*:\\s*\"?([^\"\\n\\r\\}]+)", text_unescaped, flags=re.IGNORECASE)
-    if not english_match:
-        english_match = re.search(r"\"en_title\"\\s*:\\s*\"?([^\"\\n\\r\\}]+)", text_unescaped, flags=re.IGNORECASE)
-    english_title = ""
-    if english_match:
-        english_title = english_match.group(1).strip().strip('"').strip()
-    if not english_title:
-        return None
-    year_match = re.search(r"\"release_year\"\\s*:\\s*(\\d{4})", text_unescaped, flags=re.IGNORECASE)
-    if not year_match:
-        year_match = re.search(r"\"year\"\\s*:\\s*(\\d{4})", text_unescaped, flags=re.IGNORECASE)
-    confidence_match = re.search(r"\"confidence\"\\s*:\\s*([0-9]*\\.?[0-9]+)", text_unescaped, flags=re.IGNORECASE)
-    release_year = int(year_match.group(1)) if year_match else None
-    confidence = float(confidence_match.group(1)) if confidence_match else None
-    return {
-        "english_title": english_title,
-        "release_year": release_year,
-        "confidence": confidence,
-        "notes": "",
-    }
-
-def _gemini_year_matches(details, release_year):
-    if not details or not release_year:
-        return True
-    tmdb_year = _parse_year(details.get("release_date"))
-    if not tmdb_year:
-        return True
-    return tmdb_year == release_year
-
-def _resolve_titles_with_gemini(titles, session, api_key, model, use_search_tool, batch_size):
-    if not titles:
-        return {}
-    endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-    results = {}
-    total_prompt_tokens = 0
-    total_tool_tokens = 0
-    total_output_tokens = 0
-
-    if use_search_tool:
-        batch_size = min(batch_size, 8)
-
-    batches = list(_chunked(titles, batch_size))
-    while batches:
-        batch = batches.pop(0)
-        if not batch:
-            continue
-        if len(batch) == 1:
-            print(f"   Gemini resolving: {batch[0]}")
-        else:
-            preview_titles = ", ".join(batch[:3])
-            suffix = f" (+{len(batch) - 3} more)" if len(batch) > 3 else ""
-            print(f"   Gemini resolving batch: {preview_titles}{suffix}")
-        if len(batch) == 1:
-            prompt = (
-                "You are given one Japanese film title. Use web search to find the "
-                "official English title (not a literal translation). Return a single "
-                "JSON object (not an array) with keys: english_title, release_year, "
-                "confidence. If unsure, set english_title to null. Return only JSON."
-            )
-            title_lines = f"Title: {batch[0]}"
-            max_output_tokens = 2048
-        else:
-            prompt = (
-                "You are given Japanese film titles. Use web search to find the official "
-                "English title (not a literal translation). Return JSON array of objects "
-                "with keys: input_title, english_title, release_year, confidence. "
-                "If unsure, set english_title to null. Return only JSON."
-            )
-            title_lines = "\n".join(f"- {title}" for title in batch)
-            max_output_tokens = min(8192, max(1024, 512 * len(batch)))
-        payload = {
-            "contents": [
-                {"role": "user", "parts": [{"text": f"{prompt}\n\nTitles:\n{title_lines}"}]}
-            ],
-            "generationConfig": {
-                "temperature": 0.2,
-                "maxOutputTokens": max_output_tokens,
-                "responseMimeType": "application/json",
-            },
-        }
-        if use_search_tool:
-            payload["tools"] = [{"google_search": {}}]
-
-        attempts = 0
-        resp = None
-        while attempts < 2:
-            attempts += 1
-            try:
-                resp = session.post(endpoint, params={"key": api_key}, json=payload, timeout=(10, 90))
-                break
-            except requests.exceptions.RequestException as exc:
-                print(f"   Gemini request failed (attempt {attempts}): {exc}")
-                time.sleep(1.5 * attempts)
-        if resp is None:
-            if len(batch) > 1:
-                mid = len(batch) // 2
-                batches.insert(0, batch[mid:])
-                batches.insert(0, batch[:mid])
-            continue
-        if resp.status_code != 200:
-            print(f"   Gemini error {resp.status_code}: {resp.text[:300]}")
-            if resp.status_code == 429 and len(batch) > 1:
-                mid = len(batch) // 2
-                batches.insert(0, batch[mid:])
-                batches.insert(0, batch[:mid])
-            continue
-        data = resp.json()
-        if isinstance(data, dict) and data.get("error"):
-            print(f"   Gemini error: {data['error']}")
-            continue
-        finish_reason = None
-        if isinstance(data, dict):
-            candidates = data.get("candidates") or []
-            if candidates:
-                finish_reason = candidates[0].get("finishReason")
-        usage = data.get("usageMetadata") if isinstance(data, dict) else None
-        if isinstance(usage, dict):
-            total_prompt_tokens += int(usage.get("promptTokenCount") or 0)
-            total_tool_tokens += int(usage.get("toolUsePromptTokenCount") or 0)
-            total_output_tokens += int(usage.get("candidatesTokenCount") or 0)
-            total_output_tokens += int(usage.get("thoughtsTokenCount") or 0)
-        if finish_reason or usage:
-            print(f"   Gemini debug: finishReason={finish_reason} usage={usage}")
-        text = _extract_gemini_text(data)
-        parsed = _parse_gemini_json(text)
-        if not parsed:
-            keys = list(data.keys()) if isinstance(data, dict) else []
-            preview = ""
-            if isinstance(text, str):
-                preview = text[:400].encode("unicode_escape").decode("ascii")
-            print(f"   Gemini response parse failed. Keys: {keys} Preview: {preview}")
-            if len(batch) == 1:
-                fallback = _parse_gemini_fallback(text, batch[0])
-                if fallback is not None:
-                    if not fallback.get("english_title"):
-                        print(f"   Gemini returned no English title for: {batch[0]}")
-                        continue
-                    results[batch[0]] = fallback
-                    print(
-                        "   Gemini resolved (fallback): "
-                        f"{batch[0]} -> {fallback['english_title']} "
-                        f"(year={fallback['release_year']}, conf={fallback['confidence']})"
-                    )
-                    continue
-                print(f"   Gemini parse failed for: {batch[0]}")
-            if len(batch) > 1:
-                mid = len(batch) // 2
-                batches.insert(0, batch[mid:])
-                batches.insert(0, batch[:mid])
-            continue
-
-        resolved_any = False
-        for entry in parsed:
-            if not isinstance(entry, dict):
-                continue
-            input_title = entry.get("input_title") or entry.get("jp_title") or entry.get("title")
-            if not input_title and len(batch) == 1:
-                input_title = batch[0]
-            english_title = entry.get("english_title") or entry.get("en_title") or entry.get("translation")
-            confidence = entry.get("confidence")
-            notes = entry.get("notes") or ""
-            release_year = entry.get("release_year") or entry.get("year")
-            if not input_title or not english_title:
-                continue
-            if isinstance(confidence, str):
-                try:
-                    confidence = float(confidence)
-                except ValueError:
-                    confidence = None
-            if isinstance(release_year, str) and release_year.isdigit():
-                release_year = int(release_year)
-            elif not isinstance(release_year, int):
-                release_year = None
-            results[input_title] = {
-                "english_title": english_title,
-                "release_year": release_year,
-                "confidence": confidence,
-                "notes": notes,
-            }
-            print(
-                "   Gemini resolved: "
-                f"{input_title} -> {english_title} "
-                f"(year={release_year}, conf={confidence})"
-            )
-            resolved_any = True
-        if len(batch) == 1 and not resolved_any:
-            print(f"   Gemini returned no English title for: {batch[0]}")
-
-    if total_prompt_tokens or total_tool_tokens or total_output_tokens:
-        input_tokens = total_prompt_tokens + total_tool_tokens
-        output_tokens = total_output_tokens
-        input_cost = (input_tokens / 1_000_000) * 0.50
-        output_cost = (output_tokens / 1_000_000) * 3.00
-        total_cost = input_cost + output_cost
-        print(
-            "   Gemini usage summary: "
-            f"input_tokens={input_tokens} output_tokens={output_tokens} "
-            f"estimated_cost=${total_cost:.4f}"
-        )
-    return results
-
-def _attempt_tmdb_with_english_title(title, title_info, english_title, release_year, session, api_key):
-    if not english_title:
-        return None
-    resolved_info = dict(title_info)
-    resolved_info["movie_title_en"] = english_title
-    if release_year and not resolved_info.get("year"):
-        resolved_info["year"] = str(release_year)
-    return fetch_tmdb_details(resolved_info, session, api_key)
 
 def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     """
     Iterates over listings, checks TMDB for metadata/images.
     Updates listings in-place and updates cache.
     """
-    print(f"\n--- Starting Robust Enrichment for {len(listings)} listings ---")
+    print(f"\n--- Starting Enrichment for {len(listings)} listings ---")
+
+    # Group by movie title to avoid duplicate API calls
+    # We now also consider year/runtime in the key or lookups
+    unique_map = {} # title -> {year, runtime, count}
     
-    title_info = _build_title_info(listings)
-    unique_titles = list(title_info.keys())
-    print(f"   Unique films to process: {len(unique_titles)}")
-    
+    # Force retry for previously failed items by clearing 'None' from cache
+    initial_cache_size = len(cache)
+    cache = {k: v for k, v in cache.items() if v is not None}
+    if len(cache) < initial_cache_size:
+        print(f"   Cleared {initial_cache_size - len(cache)} 'Not Found' entries from cache to retry with new logic.")
+
+    for item in listings:
+        title = item.get("movie_title")
+        if not title:
+            continue
+            
+        year = parse_year_value(item.get("year"))
+        runtime = None
+        if item.get("runtime_min"):
+             try: 
+                 runtime = int(str(item["runtime_min"]).replace("min","").strip())
+             except: 
+                 pass
+        elif item.get("runtime"):
+             try: 
+                 runtime = int(item["runtime"]) 
+             except: 
+                 pass
+
+        if title not in unique_map:
+            unique_map[title] = {"years": set(), "runtimes": set()}
+            
+        if year: unique_map[title]["years"].add(year)
+        if runtime: unique_map[title]["runtimes"].add(runtime)
+            
+    print(f"   Unique films to process: {len(unique_map)}")
+
     updated_cache = False
-    retry_not_found = os.environ.get("TMDB_RETRY_NOT_FOUND", "").lower() in ("1", "true", "yes")
-    
-    for title, info in title_info.items():
-        has_cache_entry = title in cache
-        cache_entry = cache.get(title)
-        if has_cache_entry and _is_tmdb_cache_hit(cache_entry):
-            continue
-        if has_cache_entry and cache_entry is None and not retry_not_found:
-            continue
+
+    for title, meta in unique_map.items():
+        # Pick best representative year/runtime (heuristics)
+        rep_year = list(meta["years"])[0] if meta["years"] else None
+        rep_runtime = list(meta["runtimes"])[0] if meta["runtimes"] else None
+
+        cached = cache.get(title)
         
-        legacy_id = _extract_legacy_tmdb_id(cache_entry)
-        if legacy_id:
-            print(f"   🔍 Fetching TMDB details by cached ID: {title}")
-            details = _fetch_tmdb_details_by_id(legacy_id, session, api_key)
-            if details:
-                cache[title] = details
-                updated_cache = True
-                print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
-            else:
+        # Check if cache is still valid given our new stricter rules
+        if cached:
+            skip_tmdb, _ = should_skip_tmdb_enrichment(title)
+            if skip_tmdb:
+                cached = None
+                cache.pop(title, None)
+            elif not is_cache_match_ok(title, cached, query_year=rep_year, query_runtime=rep_runtime):
+                # print(f"   Invalidating cache for {title}")
+                cached = None
+                cache.pop(title, None)
+
+        if title not in cache:
+            # If we haven't checked this title before
+            skip_tmdb, skip_reason = should_skip_tmdb_enrichment(title)
+            if skip_tmdb:
+                print(f"   Skipping TMDB for: {title} ({skip_reason})")
                 cache[title] = None
-                updated_cache = True
-                print("      ❌ Not found.")
-            time.sleep(0.3)
-            continue
-        
-        print(f"   🔍 Searching TMDB for: {title}")
-        details = fetch_tmdb_details(info, session, api_key)
-        
-        if details:
-            cache[title] = details
-            updated_cache = True
-            print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
-        else:
-            cache[title] = None
-            updated_cache = True
-            print("      ❌ Not found.")
-        
-        time.sleep(0.3)
-
-    resolution_cache = load_title_resolution_cache()
-    resolution_cache_updated = False
-
-    gemini_key = os.environ.get("GEMINI_API_KEY")
-    gemini_enabled = bool(gemini_key) and (
-        os.environ.get("GEMINI_RESOLVE_TITLES", "").lower() in ("1", "true", "yes") or
-        os.environ.get("GEMINI_TRANSLATE_TITLES", "").lower() in ("1", "true", "yes")
-    )
-    gemini_model = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
-    if gemini_model.startswith("models/"):
-        gemini_model = gemini_model.split("/", 1)[1]
-    if "flash" not in gemini_model.lower():
-        gemini_model = "gemini-3-flash-preview"
-    use_search_env = os.environ.get("GEMINI_USE_SEARCH_TOOL")
-    if use_search_env is None or use_search_env == "":
-        gemini_use_search_tool = True
-    else:
-        gemini_use_search_tool = use_search_env.lower() in ("1", "true", "yes")
-    gemini_batch_size = _parse_int(os.environ.get("GEMINI_BATCH_SIZE", "1")) or 1
-    gemini_confidence_threshold = float(os.environ.get("GEMINI_CONFIDENCE_THRESHOLD", "0.6"))
-
-    if not gemini_enabled and (
-        os.environ.get("GEMINI_RESOLVE_TITLES") or os.environ.get("GEMINI_TRANSLATE_TITLES")
-    ):
-        print("   Gemini resolution skipped: GEMINI_API_KEY not set.")
-
-    unresolved_titles = [title for title in unique_titles if not _is_tmdb_cache_hit(cache.get(title))]
-    titles_to_resolve = []
-
-    for title in unresolved_titles:
-        info = title_info[title]
-        if info.get("movie_title_en"):
-            continue
-
-        cached_entry = resolution_cache.get(title)
-        cached_english_title = None
-        cached_confidence = None
-        cached_release_year = None
-        if isinstance(cached_entry, dict):
-            if cached_entry.get("failed"):
                 continue
-            cached_english_title = cached_entry.get("english_title")
-            cached_confidence = cached_entry.get("confidence")
-            cached_release_year = cached_entry.get("release_year")
-        elif isinstance(cached_entry, str):
-            cached_english_title = cached_entry
 
-        if cached_english_title and (cached_confidence is None or cached_confidence >= gemini_confidence_threshold):
-            print(f"   🔁 Retrying TMDB with cached English title: {title} -> {cached_english_title}")
-            details = _attempt_tmdb_with_english_title(title, info, cached_english_title, cached_release_year, session, api_key)
+            print(f"   Searching TMDB for: {title} (Yr: {rep_year}, Run: {rep_runtime})")
+            details = fetch_tmdb_details(title, session, api_key, movie_year=rep_year, movie_runtime=rep_runtime)
+
             if details:
                 cache[title] = details
                 updated_cache = True
-                print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
-            if not details:
-                if isinstance(cached_entry, dict):
-                    failed_entry = dict(cached_entry)
-                    failed_entry["failed"] = True
-                    failed_entry.setdefault("notes", "tmdb_failed")
-                else:
-                    failed_entry = {
-                        "english_title": cached_english_title,
-                        "release_year": cached_release_year,
-                        "confidence": cached_confidence,
-                        "notes": "tmdb_failed",
-                        "failed": True,
-                    }
-                resolution_cache[title] = failed_entry
-                resolution_cache_updated = True
-            time.sleep(0.3)
-            continue
+                print(f"      Found: {details['tmdb_title']} (ID: {details['tmdb_id']})")
+            else:
+                cache[title] = None # Mark as not found so we don't retry immediately
+                print(f"      Not found.")
 
-        if gemini_enabled and not cached_english_title:
-            titles_to_resolve.append(title)
-
-    if gemini_enabled and titles_to_resolve:
-        print(f"   🤖 Resolving English titles with Gemini for {len(titles_to_resolve)} titles...")
-        resolutions = _resolve_titles_with_gemini(
-            titles_to_resolve,
-            session,
-            gemini_key,
-            gemini_model,
-            gemini_use_search_tool,
-            gemini_batch_size,
-        )
-
-        for title, entry in resolutions.items():
-            resolution_cache[title] = entry
-            resolution_cache_updated = True
-
-        missing_after = [title for title in titles_to_resolve if title not in resolutions]
-        if missing_after:
-            for title in missing_after:
-                resolution_cache[title] = {
-                    "english_title": None,
-                    "release_year": None,
-                    "confidence": 0.0,
-                    "notes": "gemini_failed",
-                    "failed": True,
-                }
-            resolution_cache_updated = True
-
-        for title, entry in resolutions.items():
-            english_title = entry.get("english_title")
-            confidence = entry.get("confidence")
-            release_year = entry.get("release_year")
-            if confidence is not None and confidence < gemini_confidence_threshold:
-                continue
-            if english_title:
-                info = title_info.get(title, {"movie_title": title})
-                print(f"   🔁 Retrying TMDB with Gemini English title: {title} -> {english_title}")
-                details = _attempt_tmdb_with_english_title(
-                    title,
-                    info,
-                    english_title,
-                    release_year,
-                    session,
-                    api_key,
-                )
-                if details and not _gemini_year_matches(details, release_year):
-                    print(f"      ⚠️ Year mismatch for {title}. Skipping TMDB match.")
-                    details = None
-                if details:
-                    cache[title] = details
-                    updated_cache = True
-                    print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
-                if not details:
-                    failed_entry = dict(entry)
-                    failed_entry["failed"] = True
-                    failed_entry.setdefault("notes", "tmdb_failed")
-                    resolution_cache[title] = failed_entry
-                    resolution_cache_updated = True
-            time.sleep(0.3)
+            time.sleep(0.3) # Rate limiting
 
     # Apply cached data to listings
     for item in listings:
         t = item["movie_title"]
-        d = cache.get(t)
-        if not _is_tmdb_cache_hit(d):
-            continue
-        # Merge fields if missing in scraper data
-        if not item.get("tmdb_id") and d.get("tmdb_id"):
-            item["tmdb_id"] = d["tmdb_id"]
-            item["tmdb_backdrop_path"] = d.get("backdrop_path")
-            item["tmdb_poster_path"] = d.get("poster_path")
-            item["tmdb_overview_jp"] = d.get("overview")
-            item["clean_title_jp"] = d.get("tmdb_title_jp")
-            item["runtime"] = d.get("runtime")
-            item["genres"] = d.get("genres")
-            item["vote_average"] = d.get("vote_average")
-            
-            # If scraper didn't provide English title
-            if not item.get("movie_title_en"):
-                item["movie_title_en"] = d.get("tmdb_title_en")
-            
+        if t in cache and cache[t]:
+            d = cache[t]
+            # Merge fields if missing in scraper data
+            if not item.get("tmdb_id"):
+                item["tmdb_id"] = d["tmdb_id"]
+            if not item.get("tmdb_title"):
+                item["tmdb_title"] = d["tmdb_title"]
+            if not item.get("tmdb_original_title"):
+                item["tmdb_original_title"] = d["tmdb_original_title"]
+            if not item.get("tmdb_backdrop_path"):
+                item["tmdb_backdrop_path"] = d["backdrop_path"]
+            if not item.get("tmdb_poster_path"):
+                item["tmdb_poster_path"] = d["poster_path"]
+            if not item.get("tmdb_overview"):
+                item["tmdb_overview"] = d["overview"]
+            if not item.get("runtime"):
+                item["runtime"] = d["runtime"]
+            if not item.get("genres"):
+                item["genres"] = d["genres"]
+            if not item.get("vote_average"):
+                item["vote_average"] = d["vote_average"]
+
             # If scraper didn't provide Director
             if not item.get("director"):
-                item["director"] = d.get("director")
-                
+                item["director"] = d["director"]
+
             # If scraper didn't provide Year
-            if not item.get("year") and d.get("release_date"):
+            if not item.get("year") and d["release_date"]:
                 item["year"] = d["release_date"].split("-")[0]
 
     if updated_cache:
         save_tmdb_cache(cache)
-    if resolution_cache_updated:
-        save_title_resolution_cache(resolution_cache)
-        
+
     return listings
 
 # --- Scraper Runner Wrapper ---
 
-def _run_scraper(name, func, listings_list, normalize_func=None):
+def _run_scraper_task(name, func, normalize_func=None):
     """
-    Runs a scraper function with robust error handling and reporting.
+    Internal task for parallel execution.
+    Returns (name, status, rows, error)
     """
-    print(f"\nScraping {name} ...")
     try:
         # Run the scraper
         rows = func() or []
-        
-        # Apply normalization if needed (e.g. for Eurospace)
+
+        # Apply normalization if needed
         if normalize_func and rows:
             rows = normalize_func(rows)
-        
-        count = len(rows)
-        print(f"→ {count} showings from {name}.")
-        listings_list.extend(rows)
-        
-        # Report Success
-        report.add(name, "SUCCESS", count)
-        
+
+        return name, "SUCCESS", rows, None
+
     except Exception as e:
-        # Report Failure but DO NOT CRASH main execution
-        print(f"⚠️ Error in {name}: {e}")
-        # traceback.print_exc() # Uncomment for deep debugging
-        report.add(name, "FAILURE", 0, error=e)
+        return name, "FAILURE", [], e
 
 # --- Main Execution ---
 
 def main():
     # --- TIMEZONE SAFETY CHECK ---
-    # Ensure we're using JST explicitly to match generate_post.py
-    JST = timezone(timedelta(hours=9))
+    # Use UK timezone (GMT/BST - automatically handles daylight saving)
+    # Note: For simplicity, we use UTC and let UK dates handle themselves
+    # In production, consider using pytz for proper BST handling
+    UK_OFFSET = timezone(timedelta(hours=0))  # Base GMT, adjust for BST as needed
     now_utc = datetime.now(timezone.utc)
-    now_jst = now_utc.astimezone(JST)
-    today_jst = now_jst.date()
+    now_uk = now_utc.astimezone(UK_OFFSET)
+    today_uk = now_uk.date()
 
-    print(f"🕒 Scraper Start Time:")
+    print(f"Scraper Start Time:")
     print(f"   UTC: {now_utc.strftime('%Y-%m-%d %H:%M:%S %Z')}")
-    print(f"   JST: {now_jst.strftime('%Y-%m-%d %H:%M:%S %Z')}")
-    print(f"   Today (JST): {today_jst.isoformat()}")
+    print(f"   UK:  {now_uk.strftime('%Y-%m-%d %H:%M:%S %Z')}")
+    print(f"   Today (UK): {today_uk.isoformat()}")
     print(f"   System timezone: {time.tzname}")
     print()
 
     tmdb_key = os.environ.get("TMDB_API_KEY")
     if not tmdb_key:
-        print("⚠️ Warning: TMDB_API_KEY not found. Metadata enrichment will be skipped.")
+        print("Warning: TMDB_API_KEY not found. Metadata enrichment will be skipped.")
 
     # Prepare TMDB session
     api_session = requests.Session()
@@ -1139,140 +1142,107 @@ def main():
     # 1. DEFINE SCRAPERS TO RUN
     # Format: (Display Name, Function Object, Optional Normalizer)
     scrapers_to_run = [
-        ("Bunkamura", bunkamura_module.scrape_bunkamura, None),
-        ("K's Cinema", ks_cinema_module.scrape_ks_cinema, None),
-        ("Shin-Bungeiza", shin_bungeiza_module.scrape_shin_bungeiza, None),
-        ("Shimotakaido Cinema", shimotakaido_module.scrape_shimotakaido, None),
-        ("Stranger", stranger_module.scrape_stranger, None),
-        ("Meguro Cinema", meguro_cinema_module.scrape_meguro_cinema, None),
-        
-        # FIXED: Use 'scrape' instead of guessed name
-        ("Image Forum", image_forum_module.scrape, None),
-        
-        # FIXED: Use 'scrape_theatre_shinjuku'
-        ("Theatre Shinjuku", theatre_shinjuku_module.scrape_theatre_shinjuku, None),
-        
-        # FIXED: Use 'scrape_polepole'
-        ("Pole Pole Higashi-Nakano", polepole_module.scrape_polepole, None),
-        
-        # FIXED: Use 'scrape_bluestudio'
-        ("Cinema Blue Studio", bluestudio_module.scrape_bluestudio, None),
-        
-        # FIXED: Use 'scrape_human_shibuya'
-        ("Human Trust Cinema Shibuya", human_shibuya_module.scrape_human_shibuya, None),
-        ("Human Trust Cinema Yurakucho", human_yurakucho_module.scrape_human_yurakucho, None),
-        
-        # FIXED: Use 'scrape_laputa_asagaya'
-        ("Laputa Asagaya", laputa_asagaya_module.scrape_laputa_asagaya, None),
-        
-        ("Shinjuku Musashino-kan", musashino_kan_module.scrape_musashino_kan, None),
-        ("Waseda Shochiku", waseda_shochiku_module.scrape_waseda_shochiku, None),
-        ("National Film Archive", nfaj_module.scrape_nfaj_calendar, None),
-        ("Cinemart Shinjuku", cinemart_shinjuku_module.scrape_cinemart_shinjuku, None),
-        ("Cinema Qualite", cinema_qualite_module.scrape_cinema_qualite, None),
-        ("Cine Quinto", cine_quinto_module.scrape_cine_quinto, None),
-        
-        # FIXED: Use 'scrape_yebisu_garden_cinema'
-        ("Yebisu Garden Cinema", yebisu_garden_module.scrape_yebisu_garden_cinema, None),
-        
-        ("K2 Cinema", k2_cinema_module.scrape_k2_cinema, None),
-        ("Kino Cinema", kino_cinema_module.scrape_kino_cinema, None),
-        ("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa, None),
-        ("Chupki", chupki_module.scrape_chupki, None),
-        ("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji, None),
-        ("Tollywood", tollywood_module.scrape_tollywood, None),
-
-        # FIXED: Use 'fetch_morc_asagaya_showings'
-        ("Morc Asagaya", morc_asagaya_module.fetch_morc_asagaya_showings, None),
-
-        # FIXED: Use 'scrape' AND added normalizer
-        ("Eurospace", eurospace_module.scrape, _normalize_eurospace_schema),
-
-        # CineMalice - new mini-theater opened Dec 2025
-        ("CineMalice", cinemalice_module.scrape_cinemalice, None),
-
-        # Cine Switch Ginza
-        ("Cine Switch Ginza", cine_switch_ginza_module.scrape_cine_switch_ginza, None),
-
-        # Jimbocho Theatre
-        ("Jimbocho Theatre", jinbocho_theatre_module.scrape_jinbocho, None),
-
-        # Cinema Vera Shibuya
-        ("Cinema Vera Shibuya", cinema_vera_module.scrape_cinema_vera, None),
-
-        # Institut Francais Tokyo
-        ("Institut Francais Tokyo", institut_francais_module.scrape_institut_francais, None),
-
-        # Jack and Betty Yokohama
-        ("Jack and Betty Yokohama", jack_and_betty_module.scrape_jack_and_betty, None),
-
-        # Cinema Novecento (Yokohama)
-        ("Cinema Novecento", cinema_novecento_module.scrape_cinema_novecento, None),
-
-        # Athénée Français Cultural Center
-        ("Athenee Francais", athenee_francais_module.scrape_athenee_francais, None),
-
-        # White Cine Quinto
-        ("White Cine Quinto", white_cine_quinto_module.scrape_white_cine_quinto, None),
-
-        # Yokohama Cinemarine
-        ("Yokohama Cinemarine", yokohama_cinemarine_module.scrape_yokohama_cinemarine, None),
-
-        # Kadokawa Cinema Yurakucho
-        ("Kadokawa Cinema Yurakucho", kadokawa_yurakucho_module.scrape_kadokawa_yurakucho, None),
-
-        # Cinema Neko Ome
-        ("Cinema Neko Ome", cinema_neko_module.scrape_cinema_neko, None),
+        # Individual cinemas
+        ("BFI Southbank", bfi_southbank_module.scrape_bfi_southbank),
+        ("BFI IMAX", bfi_imax_module.scrape_bfi_imax),
+        ("Prince Charles Cinema", prince_charles_module.scrape_prince_charles),
+        ("The Garden Cinema", garden_cinema_module.scrape_garden_cinema),
+        ("The Nickel", nickel_module.scrape_nickel),
+        ("Barbican Cinema", barbican_module.scrape_barbican),
+        ("Genesis Cinema", genesis_module.scrape_genesis),
+        ("ICA Cinema", ica_module.scrape_ica),
+        ("Close-Up Film Centre", close_up_module.scrape_close_up),
+        ("Phoenix Cinema", phoenix_cinema_module.scrape_phoenix_cinema),
+        ("The Castle Cinema", castle_cinema_module.scrape_castle_cinema),
+        ("Electric Cinema", electric_cinema_module.scrape_electric_cinema),
+        ("Bertha DocHouse", dochouse_module.scrape_dochouse),
+        ("Sands Films Cinema Club", sands_films_module.scrape_sands_films),
+        ("Ciné Lumière", cine_lumiere_module.scrape_cine_lumiere),
+        ("Rio Cinema", rio_cinema_module.scrape_rio),
+        ("The Lexi Cinema", lexi_cinema_module.scrape_lexi_cinema),
+        ("ArtHouse Crouch End", arthouse_crouch_end_module.scrape_arthouse_crouch_end),
+        ("JW3 Cinema", jw3_module.scrape_jw3),
+        ("Peckhamplex", peckhamplex_module.scrape_peckhamplex),
+        ("Rich Mix", rich_mix_module.scrape_rich_mix),
+        ("ActOne Cinema & Cafe", act_one_module.scrape_act_one_cinema),
+        ("Chiswick Cinema", chiswick_cinema_module.scrape_chiswick_cinema),
+        ("The Cinema in the Arches", cinema_in_the_arches_module.scrape_cinema_in_the_arches),
+        ("David Lean Cinema", david_lean_module.scrape_david_lean),
+        ("Regent Street Cinema", regent_street_module.scrape_regent_street),
+        ("Kiln Theatre", kiln_theatre_module.scrape_kiln_theatre),
+        ("Riverside Studios", riverside_studios_module.scrape_riverside_studios),
+        ("Ciné-Real", cine_real_module.scrape_cine_real),
+        ("Coldharbour Blue", coldharbour_blue_module.scrape_coldharbour_blue),
+        ("Olympic Studios (Barnes)", olympic_studios_module.scrape_olympic_studios),
+        ("The Arzner", the_arzner_module.scrape_the_arzner),
+        # Chain scrapers (multiple locations each)
+        ("Curzon Cinemas", curzon_chain_module.scrape_all_curzon),
+        ("Everyman Cinemas", everyman_chain_module.scrape_everyman_locations),
+        ("Picturehouse Cinemas", picturehouse_chain_module.scrape_all_picturehouse),
     ]
 
-    # 2. RUN THEM ONE BY ONE
+    print(f"Starting {len(scrapers_to_run)} scrapers in parallel...")
 
-    # 2. RUN SCRAPERS
-    for item in scrapers_to_run:
-        # Unpack based on length (handled safely)
-        name = item[0]
-        func = item[1]
-        norm = item[2] if len(item) > 2 else None
-        
-        _run_scraper(name, func, listings, normalize_func=norm)
+    # 2. RUN SCRAPERS IN PARALLEL
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        future_to_cinema = {}
+        for item in scrapers_to_run:
+            name = item[0]
+            func = item[1]
+            norm = item[2] if len(item) > 2 else None
+            
+            future = executor.submit(_run_scraper_task, name, func, norm)
+            future_to_cinema[future] = name
+
+        for future in concurrent.futures.as_completed(future_to_cinema):
+            name, status, rows, error = future.result()
+            count = len(rows)
+            
+            if status == "SUCCESS":
+                print(f"-> {count} showings from {name}.")
+                listings.extend(rows)
+                report.add(name, "SUCCESS", count)
+            else:
+                print(f"Error in {name}: {error}")
+                report.add(name, "FAILURE", 0, error=error)
 
     # 3. ENRICHMENT
     print(f"\nCollected a total of {len(listings)} showings.")
-    
+
     if tmdb_key:
         listings = enrich_listings_with_tmdb_links(listings, tmdb_cache, api_session, tmdb_key)
-    
+
     # 4. SAVE OUTPUT
     print(f"Saving to {OUTPUT_JSON}...")
 
     # --- DATE VALIDATION ---
-    # Check if we have data for today (JST) to help diagnose date issues
-    today_count = sum(1 for item in listings if item.get("date_text") == today_jst.isoformat())
+    today_count = sum(1 for item in listings if item.get("date_text") == today_uk.isoformat())
     all_dates = set(item.get("date_text") for item in listings if item.get("date_text"))
 
-    print(f"\n📊 Data Summary:")
+    print(f"\nData Summary:")
     print(f"   Total listings: {len(listings)}")
-    print(f"   Listings for today ({today_jst.isoformat()}): {today_count}")
+    print(f"   Listings for today ({today_uk.isoformat()}): {today_count}")
     print(f"   Unique dates in data: {sorted(all_dates)[:10]}")
 
     if today_count == 0 and listings:
-        print(f"\n⚠️  WARNING: No listings found for today ({today_jst.isoformat()})!")
-        print(f"   This may cause generate_post.py to fail or show old data.")
+        print(f"\n   WARNING: No listings found for today ({today_uk.isoformat()})!")
         print(f"   Cinema websites may not have updated their schedules yet.")
 
     try:
         with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
             json.dump(listings, f, ensure_ascii=False, indent=2)
-        print("✅ Done.")
+        print("Done.")
     except Exception as e:
-        print(f"❌ Critical Error saving JSON: {e}")
+        print(f"Critical Error saving JSON: {e}")
         sys.exit(1)
 
     # 5. REPORTING & ALERTS
     failures, warnings = report.print_summary()
-    
+
     # Send email if configured
     report.send_email_alert(failures, warnings)
 
 if __name__ == "__main__":
     main()
+
+
