@@ -1112,5 +1112,99 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ガンダーラ 4K修復版": {
+    "english_title": "Gandahar",
+    "release_year": 1987,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Gandahar",
+    "director": "René Laloux",
+    "country": "France"
+  },
+  "フジコ・ヘミング": {
+    "english_title": "Fujiko Hemming: The Pianist in Love",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "恋するピアニスト フジコ・ヘミング",
+    "director": "So-ichiro Komatsu",
+    "country": "Japan"
+  },
+  "アフター・ザー・クエイク": {
+    "english_title": "After the Quake",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "アフター・ザ・クエイク",
+    "director": "Tsuyoshi Inoue",
+    "country": "Japan"
+  },
+  "ヤン・シュヴァンクマイエル": {
+    "english_title": "Jan Švankmajer",
+    "release_year": 1984,
+    "confidence": 0.7,
+    "notes": "",
+    "original_title": "Jan Švankmajer",
+    "director": "Keith Griffiths",
+    "country": "United Kingdom",
+    "failed": true
+  },
+  "医の倫理と戦争": {
+    "english_title": "Medical Ethics and War",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "医の倫理と戦争",
+    "director": "Sosuke Yamamoto",
+    "country": "Japan",
+    "failed": true
+  },
+  "浪花俠客度胸七人斬り": {
+    "english_title": "Seven Murder Yakuza",
+    "release_year": 1967,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "浪花俠客度胸七人斬り",
+    "director": "Shigehiro Ozawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "任俠魚河岸の石松": {
+    "english_title": "Chivalrous Ishimatsu of the Fish Market",
+    "release_year": 1967,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "任俠魚河岸の石松",
+    "director": "Norifumi Suzuki",
+    "country": "Japan",
+    "failed": true
+  },
+  "〈月刊ホン・サンス〉vol.3 水の中で": {
+    "english_title": "In Water",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "물안에서",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "プラスチックの海": {
+    "english_title": "A Plastic Ocean",
+    "release_year": 2016,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A Plastic Ocean",
+    "director": "Craig Leeson",
+    "country": "United Kingdom, Hong Kong"
+  },
+  "テイク・ミー・サムウェア・ナイス": {
+    "english_title": "Take Me Somewhere Nice",
+    "release_year": 2019,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Take Me Somewhere Nice",
+    "director": "Ena Sendijarević",
+    "country": "Netherlands, Bosnia and Herzegovina"
   }
 }

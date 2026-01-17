@@ -19715,5 +19715,398 @@
     ]
   },
   "旅の終わりのたからもの": null,
-  "悪魔のいけにえ 4Kデジタルリマスター 公開50周年記念版": null
+  "悪魔のいけにえ 4Kデジタルリマスター 公開50周年記念版": null,
+  "ガンダーラ 4K修復版": {
+    "tmdb_id": 22500,
+    "tmdb_title_jp": "ガンダーラ",
+    "tmdb_title_en": "Gandahar",
+    "overview": "",
+    "poster_path": "/rupNCaznAWPWH80eX8OgIvRCuog.jpg",
+    "backdrop_path": "/sAwid2NijZMJ8GVvgPtEXkIYtLL.jpg",
+    "release_date": "1987-12-11",
+    "director": "ルネ・ラルー",
+    "runtime": 83,
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "ファンタジー",
+      "アドベンチャー"
+    ],
+    "vote_average": 6.944,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ファンタスティック・プラネット": {
+    "tmdb_id": 16306,
+    "tmdb_title_jp": "ファンタスティック・プラネット",
+    "tmdb_title_en": "La Planète sauvage",
+    "overview": "仏のSF作家ステファン・ウルの長編小説を、マンガ家ローラン・トポールの絵でアニメ化した異色のファンタジー作品。未開の惑星イガムを舞台に人間型のオム族と、彼らを奴隷のように扱うドラーグ族の戦いと協調を描く。SF的イマジネーションの凄さと特異なアニメーション映像には目を見張るものがある。",
+    "poster_path": "/7A0nUOLVhtOJRqFFLQRDjTIvtdf.jpg",
+    "backdrop_path": "/AwrqoanoZVYoc0MRyE0RiHEKm71.jpg",
+    "release_date": "1973-12-01",
+    "director": "ルネ・ラルー",
+    "runtime": 72,
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "vote_average": 7.629,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "XC",
+        "name": "Czechoslovakia"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "フジコ・ヘミング": {
+    "tmdb_id": 1375634,
+    "tmdb_title_jp": "恋するピアニスト　フジコ・ヘミング",
+    "tmdb_title_en": "恋するピアニスト　フジコ・ヘミング",
+    "overview": "2024年4月に92歳でこの世を去った世界的ピアニスト、フジコ・ヘミングの日々を見つめたドキュメンタリー。  90歳を超えても世界中で精力的に演奏を続け、2024年も多くの公演を控えていたなかで逝去したフジコ・ヘミング。サンタモニカ、パリ、東京に家を持ち、愛する猫や犬に囲まれてピアノを弾く毎日が、彼女の愛すべき世界だった。  2018年に公開されロングランヒットを記録したドキュメンタリー映画「フジコ・ヘミングの時間」の小松莊一良監督が、2020年からの4年間にわたる旅路を撮影。戦時中を過ごした岡山に残されているピアノとの再会、父や弟との思い出、コロナ禍での暮らしと祈りを捧げる演奏、思い出の地・横浜でのドラマティックなステージ、そして秘めた恋の話など、いつの時代も、どこで暮らしても、自分らしく生きてきた彼女の姿を、4Kカメラで撮影したダイナミックな演奏シーンを盛り込みながら映し出す。23年3月のパリ・コンセルバトワール劇場でのコンサートでは、「ラ・カンパネラ」「別れの曲」「月の光」など数々の名曲を披露した。  2024年製作／119分／G／日本\r 配給：東映ビデオ\r 劇場公開日：2024年10月18日",
+    "poster_path": "/9P2ED6xfU13FA6iu0S9vF5IcupJ.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-10-18",
+    "director": "Soichiro Komatsu",
+    "runtime": 119,
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "スプリングスティーン": {
+    "tmdb_id": 1230368,
+    "tmdb_title_jp": "スプリングスティーン 孤独のハイウェイ",
+    "tmdb_title_en": "Springsteen: Deliver Me from Nowhere",
+    "overview": "アメリカの魂 ロックの英雄“ The Boss ”ブルース・スプリングスティーン。「Born in the U.S.A.」で世界が振り向く前夜、誰にも頼らず、わずか4トラックの録音機で吹き込んだアルバム『ネブラスカ』。父との確執、その苦悩と創造の情熱を描いた、音楽映画の枠を超え、観る者の心を震わせる感動ドラマ。",
+    "poster_path": "/4jZwKegB2KiGVpyk0mvgry2PKq2.jpg",
+    "backdrop_path": "/oOczvrnhpXUmqCbyKYFj4FQExAo.jpg",
+    "release_date": "2025-10-22",
+    "director": "スコット・クーパー",
+    "runtime": 120,
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "アフター・ザー・クエイク": {
+    "tmdb_id": 1379045,
+    "tmdb_title_jp": "アフター・ザ・クエイク",
+    "tmdb_title_en": "アフター・ザ・クエイク",
+    "overview": "",
+    "poster_path": "/cdW1Pfy4LzRx4NUWYTAUTHUgNjs.jpg",
+    "backdrop_path": "/r1ALuRWATS3waPQhlheB8g9PbfJ.jpg",
+    "release_date": "2025-10-03",
+    "director": "井上剛",
+    "runtime": 132,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 8.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ヤン・シュヴァンクマイエル": null,
+  "どうすればよかったか？【書籍刊行記念アンコール上映】 G": {
+    "tmdb_id": 1188968,
+    "tmdb_title_jp": "どうすればよかったか？",
+    "tmdb_title_en": "どうすればよかったか？",
+    "overview": "",
+    "poster_path": "/bCIkCxbwpE5lOLvslkgf63Nxf4D.jpg",
+    "backdrop_path": "/1dqJn5aYX4jZgHV0OmQzGsTVu30.jpg",
+    "release_date": "2023-10-08",
+    "director": "Fujino Tomoaki",
+    "runtime": 102,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "医の倫理と戦争": null,
+  "九ちゃんのでっかい夢": {
+    "tmdb_id": 663441,
+    "tmdb_title_jp": "九ちゃんのでっかい夢",
+    "tmdb_title_en": "九ちゃんのでっかい夢",
+    "overview": "",
+    "poster_path": "/52OE2iJ0D2g2lCuwMZsp5GreTnh.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-01-02",
+    "director": "山田洋次",
+    "runtime": 89,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "浪花俠客度胸七人斬り": null,
+  "任俠魚河岸の石松": null,
+  "ストレイト・ストーリー": {
+    "tmdb_id": 404,
+    "tmdb_title_jp": "ストレイト・ストーリー",
+    "tmdb_title_en": "The Straight Story",
+    "overview": "アメリカ・アイオワ州ローレンスに住む73歳のガンコな老人アルヴィン・ストレイト。ある日、彼のもとに、76歳の兄が心臓発作で倒れたという知らせが入る。10年来仲違いをしていた兄に会うため、アルヴィンは周囲の反対を押し切り、たったひとりで時速8kmのトラクターに乗って旅に出ることを決意する。",
+    "poster_path": "/zXWrUYBtQPAfKGFoDOgoOBsH14y.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "デヴィッド・リンチ",
+    "runtime": 112,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "怪獣天国": {
+    "tmdb_id": 1595942,
+    "tmdb_title_jp": "怪獣天国",
+    "tmdb_title_en": "怪獣天国",
+    "overview": "",
+    "poster_path": "/kGoBRzLcfONf7tOB7Dvhm4Xqtw.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-23",
+    "director": "河崎実",
+    "runtime": 71,
+    "genres": [
+      "サイエンスフィクション",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "役者になったスパイ": {
+    "tmdb_id": 662286,
+    "tmdb_title_jp": "Moskau einfach!",
+    "tmdb_title_en": "Moskau einfach!",
+    "overview": "",
+    "poster_path": "/2xkvR747p4DtaO2EaVD167WWFsT.jpg",
+    "backdrop_path": "/lJ4xGL4jMYeeLtvAEWRBIAjCqOm.jpg",
+    "release_date": "2020-02-13",
+    "director": "Micha Lewinsky",
+    "runtime": 99,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "〈月刊ホン・サンス〉vol.3 水の中で": {
+    "tmdb_id": 1077647,
+    "tmdb_title_jp": "물안에서",
+    "tmdb_title_en": "물안에서",
+    "overview": "",
+    "poster_path": "/sfg6A1knpv2XagkvXQCd5L3sb7l.jpg",
+    "backdrop_path": "/5G7WyWUBQhic7bk1dbqQaNJ22UL.jpg",
+    "release_date": "2023-04-12",
+    "director": "홍상수",
+    "runtime": 61,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ペンギン・レッスン": {
+    "tmdb_id": 1086497,
+    "tmdb_title_jp": "ペンギン・レッスン",
+    "tmdb_title_en": "The Penguin Lessons",
+    "overview": "アルゼンチンが軍事政権下にあった1976年、イギリス人の英語教師トムは、名門寄宿学校に赴任する。人生に希望を見いだせずにいた彼は、旅先で重油まみれになった死にそうなペンギンを見つけ、そこで知り合った女性と共にペンギンを救う。その後その女性に振られ、ペンギンだけがトムのもとに残されるものの、ペンギンは彼のそばを離れようとはしなかった。",
+    "poster_path": "/g4F0HE1uWUKut8iuBRagscLTArW.jpg",
+    "backdrop_path": "/bNTUgxHYaDmLo1SfRtahcM16XMi.jpg",
+    "release_date": "2025-03-27",
+    "director": "Peter Cattaneo",
+    "runtime": 111,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.105,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "プラスチックの海": {
+    "tmdb_id": 431339,
+    "tmdb_title_jp": "プラスチック・オーシャン",
+    "tmdb_title_en": "A Plastic Ocean",
+    "overview": "世界各地の海洋が、大量のプラスチックごみで溢れかえっている。海洋汚染が動物、環境、そして我々人類に及ぼす知られざる影響を検証するドキュメンタリー映画。",
+    "poster_path": "/8Ry1c7rVYonb4y8ELpdxvvMQWB1.jpg",
+    "backdrop_path": "/zCRjWc0SIV3bR6I41nk69j9CfJb.jpg",
+    "release_date": "2016-09-22",
+    "director": "Craig Leeson",
+    "runtime": 100,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.62,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "テイク・ミー・サムウェア・ナイス": {
+    "tmdb_id": 572979,
+    "tmdb_title_jp": "Take Me Somewhere Nice",
+    "tmdb_title_en": "Take Me Somewhere Nice",
+    "overview": "",
+    "poster_path": "/gOnMrDfk1dFic2V2ilJHByoE2Oq.jpg",
+    "backdrop_path": "/7OdsvVwS3ejlaCDZjZH1UFibh98.jpg",
+    "release_date": "2019-05-23",
+    "director": "Ena Sendijarević",
+    "runtime": 92,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BA",
+        "name": "Bosnia and Herzegovina"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "ドイツ零年": {
+    "tmdb_id": 53016,
+    "tmdb_title_jp": "新ドイツ零年",
+    "tmdb_title_en": "Allemagne 90 neuf zéro",
+    "overview": "",
+    "poster_path": "/xgTZCgpfVnZYjPAFNf2xgBSlJIh.jpg",
+    "backdrop_path": "/yXYUQfMPSNsvnqi7HU94GPdLfpE.jpg",
+    "release_date": "1993-01-15",
+    "director": "ジャン＝リュック・ゴダール",
+    "runtime": 63,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "新ドイツ零年": {
+    "tmdb_id": 53016,
+    "tmdb_title_jp": "新ドイツ零年",
+    "tmdb_title_en": "Allemagne 90 neuf zéro",
+    "overview": "",
+    "poster_path": "/xgTZCgpfVnZYjPAFNf2xgBSlJIh.jpg",
+    "backdrop_path": "/yXYUQfMPSNsvnqi7HU94GPdLfpE.jpg",
+    "release_date": "1993-01-15",
+    "director": "ジャン＝リュック・ゴダール",
+    "runtime": 63,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "アフター・オール・ディーズ・イヤーズ〈デジタル・リマスター版〉": {
+    "tmdb_id": 870767,
+    "tmdb_title_jp": "アフター・オール・ディーズ・イヤーズ",
+    "tmdb_title_en": "其後",
+    "overview": "10年ぶりに故郷に帰ってきたア・ジェは、家族にすら忘れ去られていた上に、無実の罪を着せられ処刑されてしまう。しかし、そのア・ジェが再び人々の前に現れ……。過去と現在が複雑に交錯し、物語はやがて不穏な様相を呈していく。",
+    "poster_path": "/wxiCztCZHrNUlm5eWOi3ytsOKFw.jpg",
+    "backdrop_path": "/fgFk1g029mIdmuaZns70dkRtHTN.jpg",
+    "release_date": "2012-10-13",
+    "director": "リム・カーワイ",
+    "runtime": 98,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  }
 }
