@@ -13,10 +13,10 @@ from bs4 import BeautifulSoup
 CINEMA_NAME_SB = "新文芸坐"
 SCHEDULE_PAGE_URL = "https://www.shin-bungeiza.com/schedule"
 
-# --- Regex for parsing details from the <small> tag ---
+# Regex for parsing details from the <small> tag
 # Now includes an optional director field
 DETAILS_RE = re.compile(
-    r"（(?P<year>\d{4}).*?/(?P<runtime>\d+)分.*?）"
+    r"（(?P<year>\d{4})(?!/).*?/(?P<runtime>\d+)分.*?）"
     r"(?:監督：(?P<director>[^　\s]+))?"
 )
 

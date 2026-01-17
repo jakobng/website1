@@ -168,40 +168,45 @@ def _parse_detail_page(soup: BeautifulSoup) -> Dict[str, str | None]:
                 if candidate >= 40:     # prevents picking up "ラスト4分"
                     runtime_match = mm
 
-            if year_match and not details["year"]:
-                details["year"] = year_match.group(1)
-
-            if runtime_match and not details["runtime_min"]:
-                details["runtime_min"] = runtime_match.group(1)
-
             # Extract country only when year+runtime are localised
-            if year_match and runtime_match and not details["country"]:
-                span_start = year_match.end()
-                span_end = runtime_match.start()
-                between = text[span_start:span_end]
+            if year_match and runtime_match:
+                # Only set year/runtime if we found a likely block pairing
+                if not details["year"]:
+                     # Check for date-like suffix (e.g. 2026年1月)
+                     suffix_check = text[year_match.end():year_match.end()+2]
+                     if not re.match(r"\s*\d+月", suffix_check):
+                        details["year"] = year_match.group(1)
 
-                # Prevent grabbing entire paragraphs as country
-                if span_end - span_start < 120:
-                    between = (between
-                               .replace("／", "/")
-                               .replace("｜", "/")
-                               .replace("|", "/"))
+                if not details["runtime_min"]:
+                    details["runtime_min"] = runtime_match.group(1)
 
-                    tokens = [t.strip() for t in between.split("/")
-                              if t.strip()]
+                if not details["country"]:
+                    span_start = year_match.end()
+                    span_end = runtime_match.start()
+                    between = text[span_start:span_end]
 
-                    # Filter non-country tokens
-                    country_tokens = [
-                        t for t in tokens
-                        if not any(x in t for x in [
-                            "語", "モノクロ", "モノラル", "カラー",
-                            "ヴィスタ", "ビスタ", "DCP",
-                            "上映時間", "サイズ", "レストア"
-                        ])
-                    ]
+                    # Prevent grabbing entire paragraphs as country
+                    if span_end - span_start < 120:
+                        between = (between
+                                .replace("／", "/")
+                                .replace("｜", "/")
+                                .replace("|", "/"))
 
-                    if country_tokens:
-                        details["country"] = "・".join(country_tokens[:2])
+                        tokens = [t.strip() for t in between.split("/")
+                                if t.strip()]
+
+                        # Filter non-country tokens
+                        country_tokens = [
+                            t for t in tokens
+                            if not any(x in t for x in [
+                                "語", "モノクロ", "モノラル", "カラー",
+                                "ヴィスタ", "ビスタ", "DCP",
+                                "上映時間", "サイズ", "レストア"
+                            ])
+                        ]
+
+                        if country_tokens:
+                            details["country"] = "・".join(country_tokens[:2])
 
     # -----------------------
     # 1st pass: summary

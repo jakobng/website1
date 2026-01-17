@@ -187,7 +187,7 @@ def scrape_stranger():
                         "date_text": date_text,
                         "movie_title": title_text,
                         "showtime": start_time,
-                        "year": str(today.year),
+                        "year": None,
                         "detail_page_url": URL_ST
                     })
                 

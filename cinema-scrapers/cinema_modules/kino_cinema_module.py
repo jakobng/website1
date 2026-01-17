@@ -45,6 +45,7 @@ def parse_detail_page(url: str) -> Dict:
         "year": None,
         "country": None,
         "runtime_min": None,
+        "original_title": None,
     }
     if not soup:
         return details
@@ -79,6 +80,8 @@ def parse_detail_page(url: str) -> Dict:
                 content = clean_text(child.get_text())
                 if "監督" in current_header:
                     details["director"] = content
+                elif "原題" in current_header:
+                    details["original_title"] = content
                 elif "製作国" in current_header or "国" in current_header: # Guessing header name
                     # Only if header explicitly says Country.
                     # The sample didn't show country header, but if it appears:
@@ -177,7 +180,7 @@ def scrape_location(location_slug: str, cinema_name_jp: str) -> List[Dict]:
                 results.append({
                     "cinema_name": cinema_name_jp,
                     "movie_title": movie_title,
-                    "movie_title_en": None, # Not easily available
+                    "movie_title_en": details.get("original_title"),
                     "date_text": date_text_iso,
                     "showtime": showtime,
                     "screen_name": screen_name,
