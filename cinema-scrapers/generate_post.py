@@ -421,6 +421,8 @@ def gemini_creative_director(collage_img: Image.Image, cinema_names: list[str], 
             - "Today's Cinema Selection"
             - "今日の上映" (Japanese for Today's Screening)
             - "{date_text}"
+
+        Negative constraints: Do NOT move, resize, rotate, warp, or repaint the cutout centers. Do NOT replace the building interiors. Only dissolve/blend edges.
         
         Output ONLY the prompt text.
         """
