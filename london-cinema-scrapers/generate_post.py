@@ -495,12 +495,12 @@ def creative_director_review(original_layout: Image.Image, date_text: str) -> st
         
         CRITICAL INSTRUCTIONS FOR THE PROMPT YOU WRITE:
         1.  **Format**: EXPLICITLY specify "Vertical Aspect Ratio (4:5)". The output must be a vertical poster composition.
-        2.  **PRESERVE THE CORES**: The *centers* of the building photos are IMMUTABLE ANCHORS and must not be moved. HOWEVER, you MUST aggressively blend, melt, and fuse their *edges* into the new structure. Do not treat them as floating stickers; they must feel physically embedded in the new architecture. Explicitly tell the generator: "Keep the building details sharp, but dissolve their boundaries into the new geometry."
+        2.  **PRESERVE THE CORES**: Explicitly tell the generator: "The *centers* of the building photos are IMMUTABLE ANCHORS and must not be moved. HOWEVER, you MUST aggressively blend, melt, and fuse their *edges* into the new structure. Do not treat them as floating stickers; they must feel physically embedded in the new architecture."
         3.  **Derive the Style**: Look at the collage. Are the cinemas retro? Modern? Wooden? Concrete? Colorful? **Create a visual style for the connecting structure that complements or strikingly contrasts with these specific buildings.** Do not default to one style; let the input images dictate the vibe.
-        4.  **Sophisticated Fusion**: Avoid cheesy tropes. NO film reels, NO movie projectors, NO popcorn, NO generic "Cyberpunk". Make it feel like high-art architecture.
+        4.  **Sophisticated Fusion**: Avoid cheesy tropes. NO film reels, NO movie projectors, NO popcorn, NO generic "Cyberpunk". 
         5.  **Structure**: Describe a structure where gravity and perspective are subjective. The roof of one building should morph seamlessly into the staircase of another, or the steps into a doorway. Use whatever language makes the most sense for the images you are seeing.
         6.  **Melt the Edges**: The *centers* of the photos are immutable, but their *edges* must dissolve naturally into the new structure. A brick wall should twist into a steel beam; a floor should curve up to become a ceiling.
-        7.  **Atmosphere**: High-end architectural photography, cinematic lighting, sophisticated textures, quiet mystery.
+        7.  **Atmosphere**: architectural photography, real, realistic, documentary
         8.  **Text**: Include the text "LONDON CINEMA" and "{date_text}" integrated subtly (e.g., engraved, projected, or as a structural element).
         
         Output ONLY the prompt text.
