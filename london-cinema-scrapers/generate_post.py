@@ -415,8 +415,8 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
     # Inpaint mask: Start with White (Inpaint Everything)
     mask = Image.new("L", (width, height), 255)
 
-    # Use 3 cutouts as requested (if available)
-    imgs_to_process = cinemas[:3]
+    # Use 4 cutouts as requested (if available)
+    imgs_to_process = cinemas[:4]
     
     random.shuffle(imgs_to_process)
 
@@ -425,6 +425,13 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
         anchors = [(width//2, height//2)]
     elif len(imgs_to_process) == 2:
         anchors = [(width//2, height//3), (width//2, 2*height//3)]
+    elif len(imgs_to_process) == 4:
+        anchors = [
+            (random.randint(int(width * 0.2), int(width * 0.45)), random.randint(int(height * 0.1), int(height * 0.4))),
+            (random.randint(int(width * 0.55), int(width * 0.85)), random.randint(int(height * 0.1), int(height * 0.4))),
+            (random.randint(int(width * 0.2), int(width * 0.45)), random.randint(int(height * 0.6), int(height * 0.9))),
+            (random.randint(int(width * 0.55), int(width * 0.85)), random.randint(int(height * 0.6), int(height * 0.9)))
+        ]
     else:
         # spread out more
         anchors = [
