@@ -99,6 +99,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_RESOLVE_TITLES: "1"
 
       # --- STEP 2: GENERATE CONTENT (SPLIT) ---
 
