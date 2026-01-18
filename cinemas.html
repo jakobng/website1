@@ -685,6 +685,10 @@
                         <label for="sort-select" id="sort-label"></label>
                         <select id="sort-select"></select>
                     </div>
+                    <div class="filter">
+                        <label for="doc-only" id="doc-only-label"></label>
+                        <input id="doc-only" type="checkbox">
+                    </div>
                 </div>
                 <div class="filter-grid filter-grid-wide">
                     <div class="filter options-row">
@@ -835,8 +839,10 @@
                     regionAll: "すべての地域",
                     sort: "並び替え",
                     sortSoonest: "最も早い",
+                    sortRelease: "公開年順",
                     sortName: "名前順",
                     sortRating: "評価順",
+                    docOnly: "ドキュメンタリーのみ",
                     clearFilters: "フィルターをクリア",
                     loading: "上映情報を読み込み中...",
                     loadError: "上映情報を読み込めません",
@@ -882,8 +888,10 @@
                     regionAll: "All regions",
                     sort: "Sort",
                     sortSoonest: "Soonest",
+                    sortRelease: "By release year",
                     sortName: "By name",
                     sortRating: "By rating",
+                    docOnly: "Documentary only",
                     clearFilters: "Clear filters",
                     loading: "Loading showtimes...",
                     loadError: "Unable to load showtimes",
@@ -965,6 +973,8 @@
                 sortLabel: document.getElementById("sort-label"),
                 sortSelect: document.getElementById("sort-select"),
                 sortFilterContainer: document.getElementById("sort-filter-container"),
+                docOnlyLabel: document.getElementById("doc-only-label"),
+                docOnlyCheckbox: document.getElementById("doc-only"),
                 filterOptionsLabel: document.getElementById("filter-options-label"),
                 clearFilters: document.getElementById("clear-filters"),
                 // View toggles
@@ -1004,26 +1014,29 @@
                     search: "",
                     date: "all",
                     time: "any",
-                    region: "all"
+                    region: "all",
+                    docOnly: false
                 }
             };
 
             function getSortOptions() {
                 return {
                     film: [
-                        { value: "soonest", label: t("sortSoonest") }
+                        { value: "soonest", label: t("sortSoonest") },
+                        { value: "release", label: t("sortRelease") },
+                        { value: "name", label: t("sortName") }
                     ]
                 };
             }
 
             function getDateFormatter() {
                 const locale = state.lang === "en" ? "en-US" : "ja-JP";
-                return new Intl.DateTimeFormat(locale, { weekday: "short", day: "numeric", month: "short" });
+                return new Intl.DateTimeFormat(locale, { weekday: "short", day: "numeric", month: "short", timeZone: "Asia/Tokyo" });
             }
 
             function getLongDateFormatter() {
                 const locale = state.lang === "en" ? "en-US" : "ja-JP";
-                return new Intl.DateTimeFormat(locale, { weekday: "long", day: "numeric", month: "long" });
+                return new Intl.DateTimeFormat(locale, { weekday: "long", day: "numeric", month: "long", timeZone: "Asia/Tokyo" });
             }
 
             function getRegionForCinema(cinemaName) {
@@ -1050,6 +1063,11 @@
                 render();
             });
 
+            elements.docOnlyCheckbox.addEventListener("change", function (event) {
+                state.filters.docOnly = event.target.checked;
+                render();
+            });
+
             elements.sortSelect.addEventListener("change", function (event) {
                 state.sort = event.target.value;
                 render();
@@ -1067,11 +1085,13 @@
                 state.filters.date = getDefaultDateForView();
                 state.filters.time = "any";
                 state.filters.region = "all";
+                state.filters.docOnly = false;
 
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
                 elements.timeSelect.value = "any";
                 elements.regionSelect.value = "all";
+                elements.docOnlyCheckbox.checked = false;
                 render();
             });
 
@@ -1147,8 +1167,10 @@
                 elements.timeLabel.textContent = t("time");
                 elements.regionLabel.textContent = t("region");
                 elements.sortLabel.textContent = t("sort");
+                elements.docOnlyLabel.textContent = t("docOnly");
                 elements.filterOptionsLabel.textContent = t("filters");
                 elements.clearFilters.textContent = t("clearFilters");
+                elements.docOnlyCheckbox.checked = state.filters.docOnly;
 
                 // Cinema view
                 elements.cinemaLoading.textContent = t("loading");
@@ -1252,9 +1274,18 @@
                 return element;
             }
 
+            function getJstDateText() {
+                return new Intl.DateTimeFormat("en-CA", {
+                    timeZone: "Asia/Tokyo",
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit"
+                }).format(new Date());
+            }
+
             function parseDate(dateText) {
                 if (!dateText) return null;
-                const date = new Date(dateText + "T00:00:00");
+                const date = new Date(dateText + "T00:00:00+09:00");
                 if (Number.isNaN(date.getTime())) return null;
                 return date;
             }
@@ -1288,7 +1319,7 @@
             function parseDateTime(dateText, timeText) {
                 if (!dateText) return null;
                 const timeValue = timeText && timeText.includes(":") ? timeText : "00:00";
-                const date = new Date(dateText + "T" + timeValue + ":00");
+                const date = new Date(dateText + "T" + timeValue + ":00+09:00");
                 if (Number.isNaN(date.getTime())) return null;
                 return date;
             }
@@ -1410,8 +1441,7 @@
             }
 
             function buildFilterOptions(showings) {
-                const today = new Date();
-                const todayText = today.toISOString().slice(0, 10);
+                const todayText = getJstDateText();
 
                 // Only include dates from today onwards
                 const dates = Array.from(new Set(showings.map(function (showing) {
@@ -1483,6 +1513,7 @@
                     const runtimeRaw = item.runtime_min || item.runtime || "";
                     const runtime = parseInt(runtimeRaw, 10);
                     const genres = Array.isArray(item.genres) ? item.genres : [];
+                    const genresEn = Array.isArray(item.genres_en) ? item.genres_en : [];
                     const tags = Array.isArray(item.tags) ? item.tags : [];
 
                     return {
@@ -1504,6 +1535,7 @@
                         year: item.year || "",
                         runtime: Number.isFinite(runtime) ? runtime : "",
                         genres: genres,
+                        genresEn: genresEn,
                         formatTags: tags,
                         rating: item.vote_average ? Number(item.vote_average) : 0,
                         posterPath: item.tmdb_poster_path || "",
@@ -1522,6 +1554,7 @@
                             item.director,
                             item.director_en,
                             genres.join(" "),
+                            genresEn.join(" "),
                             tags.join(" ")
                         ].filter(Boolean).join(" ").toLowerCase(),
                         dateTime: parseDateTime(dateText, showtime),
@@ -1530,8 +1563,22 @@
                 });
             }
 
+            function isDocumentary(showing) {
+                const genres = [];
+                if (Array.isArray(showing.genres)) genres.push.apply(genres, showing.genres);
+                if (Array.isArray(showing.genresEn)) genres.push.apply(genres, showing.genresEn);
+                return genres.some(function (genre) {
+                    const value = String(genre || "").toLowerCase();
+                    return value.includes("documentary") || value.includes("ドキュメンタリー");
+                });
+            }
+
             function applyFilters(showings) {
+                const now = new Date();
                 return showings.filter(function (showing) {
+                    if (showing.timeMinutes !== null && showing.dateTime && showing.dateTime < now) {
+                        return false;
+                    }
                     if (state.filters.search && !showing.searchText.includes(state.filters.search)) {
                         return false;
                     }
@@ -1546,6 +1593,9 @@
                         if (state.filters.time === "late" && showing.timeMinutes < 21 * 60) return false;
                     }
                     if (state.filters.region !== "all" && showing.region !== state.filters.region) {
+                        return false;
+                    }
+                    if (state.filters.docOnly && !isDocumentary(showing)) {
                         return false;
                     }
                     return true;
@@ -1616,6 +1666,7 @@
                 if (state.filters.date !== "all") parts.push("日付: " + formatDate(state.filters.date, true) + " (Date)");
                 if (state.filters.time !== "any") parts.push("時間帯: " + timeBucketLabels[state.filters.time]);
                 if (state.filters.region !== "all") parts.push("地域: " + state.filters.region + " (Region)");
+                if (state.filters.docOnly) parts.push(t("docOnly"));
                 if (!parts.length) parts.push("フィルターなし (No filters applied)");
                 return parts.join(" | ");
             }
@@ -1913,8 +1964,17 @@
                 const films = groupByFilm(showings);
                 if (state.sort === "soonest") {
                     films.sort(function (a, b) { return a.nextTime - b.nextTime; });
+                } else if (state.sort === "release") {
+                    films.sort(function (a, b) {
+                        const yearA = parseInt(a.year, 10) || 0;
+                        const yearB = parseInt(b.year, 10) || 0;
+                        if (yearA !== yearB) return yearB - yearA;
+                        return (a.titleDisplay || a.titleJp || a.titleEn || "").localeCompare(b.titleDisplay || b.titleJp || b.titleEn || "");
+                    });
                 } else {
-                    films.sort(function (a, b) { return a.title.localeCompare(b.title); });
+                    films.sort(function (a, b) {
+                        return (a.titleDisplay || a.titleJp || a.titleEn || "").localeCompare(b.titleDisplay || b.titleJp || b.titleEn || "");
+                    });
                 }
 
                 renderFilmList(films, showings.length);
@@ -1938,7 +1998,7 @@
                         return response.json();
                     })
                     .then(function (data) {
-                        const todayText = new Date().toISOString().slice(0, 10);
+                        const todayText = getJstDateText();
                         state.data = normalizeShowings(data).filter(function (showing) {
                             return showing.dateText >= todayText;
                         });
