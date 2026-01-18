@@ -1333,12 +1333,6 @@
                 return cinemaJapaneseNames[cinemaName] || cinemaName;
             }
 
-            function getCinemaDisplayName(cinemaName) {
-                const jpName = getCinemaJapaneseName(cinemaName);
-                const enName = cinemaEnglishNames[cinemaName] || "";
-                return formatBilingual(jpName, enName);
-            }
-
             function buildMapsUrl(cinemaName) {
                 const query = encodeURIComponent(getCinemaJapaneseName(cinemaName) + " 東京");
                 return "https://www.google.com/maps/search/?api=1&query=" + query;
