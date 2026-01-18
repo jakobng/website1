@@ -1,0 +1,33 @@
+name: Collect hero history
+
+on:
+  workflow_dispatch:
+    inputs:
+      output:
+        description: "Output directory for collected images"
+        default: "collected_hero_history"
+        required: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Collect hero history
+        run: |
+          python3 collect_hero_history.py --output "${{ inputs.output }}"
+
+      - name: Upload collected images
+        uses: actions/upload-artifact@v4
+        with:
+          name: hero-history
+          path: ${{ inputs.output }}
