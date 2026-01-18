@@ -839,8 +839,8 @@
                     regionAll: "すべての地域",
                     sort: "並び替え",
                     sortSoonest: "最も早い",
-                    sortRelease: "公開年順",
-                    sortName: "名前順",
+                    sortReleaseNew: "公開年（新しい順）",
+                    sortReleaseOld: "公開年（古い順）",
                     sortRating: "評価順",
                     docOnly: "ドキュメンタリーのみ",
                     clearFilters: "フィルターをクリア",
@@ -888,8 +888,8 @@
                     regionAll: "All regions",
                     sort: "Sort",
                     sortSoonest: "Soonest",
-                    sortRelease: "By release year",
-                    sortName: "By name",
+                    sortReleaseNew: "Release year (newest)",
+                    sortReleaseOld: "Release year (oldest)",
                     sortRating: "By rating",
                     docOnly: "Documentary only",
                     clearFilters: "Clear filters",
@@ -1005,7 +1005,7 @@
             const state = {
                 data: [],
                 view: "cinema",
-                sort: "name",
+                sort: "soonest",
                 todayDate: "",
                 selectedCinema: "",
                 filtersExpanded: false,
@@ -1023,8 +1023,8 @@
                 return {
                     film: [
                         { value: "soonest", label: t("sortSoonest") },
-                        { value: "release", label: t("sortRelease") },
-                        { value: "name", label: t("sortName") }
+                        { value: "release-new", label: t("sortReleaseNew") },
+                        { value: "release-old", label: t("sortReleaseOld") }
                     ]
                 };
             }
@@ -1319,7 +1319,10 @@
             function parseDateTime(dateText, timeText) {
                 if (!dateText) return null;
                 const timeValue = timeText && timeText.includes(":") ? timeText : "00:00";
-                const date = new Date(dateText + "T" + timeValue + ":00+09:00");
+                const parts = timeValue.split(":");
+                const hours = (parts[0] || "00").padStart(2, "0");
+                const minutes = (parts[1] || "00").padStart(2, "0");
+                const date = new Date(dateText + "T" + hours + ":" + minutes + ":00+09:00");
                 if (Number.isNaN(date.getTime())) return null;
                 return date;
             }
@@ -1964,17 +1967,22 @@
                 const films = groupByFilm(showings);
                 if (state.sort === "soonest") {
                     films.sort(function (a, b) { return a.nextTime - b.nextTime; });
-                } else if (state.sort === "release") {
+                } else if (state.sort === "release-new") {
                     films.sort(function (a, b) {
                         const yearA = parseInt(a.year, 10) || 0;
                         const yearB = parseInt(b.year, 10) || 0;
                         if (yearA !== yearB) return yearB - yearA;
                         return (a.titleDisplay || a.titleJp || a.titleEn || "").localeCompare(b.titleDisplay || b.titleJp || b.titleEn || "");
                     });
-                } else {
+                } else if (state.sort === "release-old") {
                     films.sort(function (a, b) {
+                        const yearA = parseInt(a.year, 10) || 9999;
+                        const yearB = parseInt(b.year, 10) || 9999;
+                        if (yearA !== yearB) return yearA - yearB;
                         return (a.titleDisplay || a.titleJp || a.titleEn || "").localeCompare(b.titleDisplay || b.titleJp || b.titleEn || "");
                     });
+                } else {
+                    films.sort(function (a, b) { return a.nextTime - b.nextTime; });
                 }
 
                 renderFilmList(films, showings.length);
