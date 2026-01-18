@@ -90,37 +90,6 @@ def upload_carousel_container(child_ids, caption):
     print(f"✅ Created Carousel Parent ID: {result['id']}")
     return result["id"]
 
-def upload_story_container(image_url):
-    """Creates a media container for a STORY."""
-    url = f"{GRAPH_URL}/{IG_USER_ID}/media"
-    payload = {
-        "image_url": image_url,
-        "media_type": "STORIES",
-        "access_token": IG_ACCESS_TOKEN
-    }
-    response = requests.post(url, data=payload)
-    result = response.json()
-
-    if "id" not in result:
-        print(f"❌ Error creating Story container: {result}")
-
-        # Check for authentication errors - fail immediately
-        if "error" in result:
-            error_code = result["error"].get("code")
-            if error_code == 190:  # OAuth/Authentication error
-                print("🚨 CRITICAL: Access token is invalid or expired!")
-                print("   This is likely due to:")
-                print("   - Token expiration (Instagram tokens need periodic renewal)")
-                print("   - Password change on Instagram/Facebook account")
-                print("   - Session invalidated by Facebook for security")
-                print("\n   ACTION REQUIRED: Regenerate IG_ACCESS_TOKEN and update GitHub secrets")
-                sys.exit(1)
-
-        return None
-
-    print(f"✅ Created Story Container ID: {result['id']}")
-    return result["id"]
-
 def publish_media(creation_id):
     """Publishes a container (Feed or Story)."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media_publish"
@@ -182,7 +151,6 @@ def main():
     print(f"📂 Looking for files in: {OUTPUT_DIR}")
 
     feed_files = []
-    story_files = []
     caption_text = "No caption found."
 
     # ---------------------------------------------------------
@@ -193,8 +161,7 @@ def main():
         # Cinema Daily (V1) -> Looks for 'post_image_XX.png'
         print("   -> Targeting V1 Files (Cinema Daily)")
         feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_image_*.png")))
-        story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_image_*.png")))
-        
+
         caption_path = os.path.join(OUTPUT_DIR, "post_caption.txt")
         if os.path.exists(caption_path):
             with open(caption_path, "r", encoding="utf-8") as f:
@@ -204,8 +171,7 @@ def main():
         # Movie Spotlight (V2) -> Looks for 'post_v2_image_XX.png'
         print("   -> Targeting V2 Files (Movie Spotlight)")
         feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_v2_image_*.png")))
-        story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_v2_image_*.png")))
-        
+
         caption_path = os.path.join(OUTPUT_DIR, "post_v2_caption.txt")
         if os.path.exists(caption_path):
             with open(caption_path, "r", encoding="utf-8") as f:
@@ -246,40 +212,6 @@ def main():
 
     else:
         print(f"ℹ️ No feed images found for mode '{POST_TYPE}'. Skipping Feed upload.")
-
-    # --- STORY MODE ---
-    print("\n--- CHECKING FOR STORIES ---")
-    
-    if story_files:
-        print(f"🔹 Detected {len(story_files)} Story Images. Starting sequence upload...")
-        
-        for i, local_path in enumerate(story_files):
-            filename = os.path.basename(local_path)
-            # FIX: Added ?v=... to URL
-            image_url = f"{GITHUB_PAGES_BASE_URL}{filename}?v={cache_buster}"
-            print(f"\n   Story {i+1}/{len(story_files)}: {filename}")
-            
-            # 1. Create Container
-            container_id = upload_story_container(image_url)
-            
-            if container_id:
-                # 2. Check Status
-                if check_media_status(container_id):
-                    # 3. Publish Immediately
-                    result = publish_media(container_id)
-                    
-                    if result:
-                        print(f"   ✅ Story {i+1} published.")
-                        # 4. Nap (Rate Limit Protection)
-                        print("   ⏳ Sleeping 10s to be gentle on API...")
-                        time.sleep(10)
-                    else:
-                        print(f"   ❌ Story {i+1} failed to publish.")
-            else:
-                print(f"   Skipping Story {filename} due to container error.")
-                
-    else:
-        print(f"ℹ️ No story images found for mode '{POST_TYPE}'. Skipping Story sequence.")
 
 if __name__ == "__main__":
     main()

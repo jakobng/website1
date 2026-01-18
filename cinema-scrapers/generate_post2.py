@@ -799,16 +799,10 @@ def main():
         print("✅ Collage Assembled!")
         cover_feed = draw_final_cover(collage, fonts, is_story=False)
         cover_feed.save(OUTPUT_DIR / "post_v2_image_00.png")
-        
-        cover_story = draw_final_cover(collage, fonts, is_story=True)
-        cover_story.save(OUTPUT_DIR / "story_v2_image_00.png")
     else:
         print("⚠️ Collage Failed. Using Fallback.")
         fb_feed = draw_fallback_cover(cover_images, fonts, is_story=False)
         fb_feed.save(OUTPUT_DIR / "post_v2_image_00.png")
-        
-        fb_story = draw_fallback_cover(cover_images, fonts, is_story=True)
-        fb_story.save(OUTPUT_DIR / "story_v2_image_00.png")
 
     # --- SLIDE & CAPTION GENERATION ---
     caption_lines = [f"🗓️ {primary_date} Tokyo Cinema Daily\n"]
@@ -820,10 +814,7 @@ def main():
         # Pass primary_date to draw function for highlighting 'TODAY'
         slide_feed = draw_poster_slide(film, img, fonts, is_story=False, primary_date=primary_date)
         slide_feed.save(OUTPUT_DIR / f"post_v2_image_{i+1:02}.png")
-        
-        slide_story = draw_poster_slide(film, img, fonts, is_story=True, primary_date=primary_date)
-        slide_story.save(OUTPUT_DIR / f"story_v2_image_{i+1:02}.png")
-        
+
         # Caption Generation (Uses Multi-Day Data)
         t_jp = film.get('clean_title_jp') or film.get('movie_title')
         caption_lines.append(f"🎬 {t_jp}") 
