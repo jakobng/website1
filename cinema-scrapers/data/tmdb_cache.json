@@ -1,1 +1,6734 @@
-{}
+{
+  "CROSSING　心の交差点": null,
+  "ヤンヤン 夏の想い出": {
+    "tmdb_id": 25538,
+    "tmdb_title_jp": "ヤンヤン 夏の想い出",
+    "tmdb_title_en": "一一",
+    "overview": "8歳のヤンヤンは、祖母と両親と姉と台北のマンションで暮している。しかし、祖母が脳卒中で倒れ昏睡状態に陥ったのを機に家族の空気が変わり始める。看病に疲れた母は家を出、偶然昔の恋人と再会した父は過去を思い出し、姉は恋に思い煩う。そんな家族の姿をヤンヤンは冷静に見守り…。",
+    "poster_path": "/5bLAw5S6RkEMT27hm6oKnEZtU4L.jpg",
+    "backdrop_path": "/69D57G3XqQMVNCwK0Z2PCcYC4Da.jpg",
+    "release_date": "2000-09-20",
+    "director": "楊德昌",
+    "runtime": 174,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "落下の王国": {
+    "tmdb_id": 14784,
+    "tmdb_title_jp": "落下の王国",
+    "tmdb_title_en": "The Fall",
+    "overview": "左腕を骨折して入院中の5歳の少女アレクサンドリアは、脚を骨折してベッドに横たわる青年ロイと出会う。彼は彼女にアレキサンダー大王の物語を聞かせ、翌日も病室に来るようささやく。再びアレクサンドリアがロイのもとを訪れると、彼は総督と6人の男たちが織り成す壮大な叙事詩を語り始める。＜＜ターセム監督が製作した、美しい美術品のような感動巨編。自殺願望のあるスタントマンが幼い少女を操るために始めた虚構の物語が、やがて夢と希望を紡いでいく様子を丹念に映し出す。傷ついた青年役にリー・ペイス。彼を慕う少女を演じるのは、これが映画デビュー作となるカティンカ・ウンタール。CGに頼らず、世界遺産を含む世界24か国以上で撮影された驚きの華麗な映像に息をのむ。＞＞",
+    "poster_path": "/fTNoxpX2Id0pjplmpaWKSNH4hho.jpg",
+    "backdrop_path": "/vNrXoT45xscHY6AN4IGf44vHxVJ.jpg",
+    "release_date": "2006-09-09",
+    "director": "ターセム・シン",
+    "runtime": 119,
+    "genres": [
+      "アドベンチャー",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "vote_average": 7.619,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "チャック・ベリー ブラウン・アイド・ハンサム・マン": {
+    "tmdb_id": 790999,
+    "tmdb_title_jp": "チャック・ベリー ブラウン・アイド・ハンサム・マン",
+    "tmdb_title_en": "Chuck Berry: Brown Eyed Handsome Man",
+    "overview": "ギタリストなら誰もがコピーする特徴的なギター・リフを発明し、ロックンロール音楽の創始者ともされるチャック・ベリー。2017年に90歳で亡くなるまで現役のロックンローラーとして活躍した彼のトリビュート番組が登場！　番組ではチャック・ベリーの演奏はもちろん、彼の楽曲をカバーするさまざまなミュージシャンの映像をたっぷりフィーチャー。\r 古くは1964年にザ・ビートルズがアメリカ初上陸した際にワシントン・コロシアムで演奏した「ロール・オーヴァー・ベートーヴェン」や同じく1964年にザ・ローリング・ストーンズがUK公演で演奏した「アラウンド・アンド・アラウンド」から、2017年にジェフ・リンがELOとしてロックの殿堂入りセレモニーで演奏した「ロール・オーヴァー・ベートーヴェン」まで。ポール・マッカートニーやトム・ペティ＆ザ・ハートブレイカーズ、キース・リチャーズ、リンダ・ロンシュタット、ブルース・スプリングスティーンも登場する豪華版だ！",
+    "poster_path": "/cJttQpC07HF1nkOgxM1NISxel7f.jpg",
+    "backdrop_path": "/f5kp9uz6XIWEW2fdIYLafrccJ.jpg",
+    "release_date": "2020-09-11",
+    "director": "Ron Weisner",
+    "runtime": 54,
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "少女はアンデスの星を見た": {
+    "tmdb_id": 1156311,
+    "tmdb_title_jp": "Yana-Wara",
+    "tmdb_title_en": "Yana-Wara",
+    "overview": "",
+    "poster_path": "/6sehgPCPk5sWCvFBpXckncayF3S.jpg",
+    "backdrop_path": "/xzsRPvwiOveNmLbSpUTo2JCobGK.jpg",
+    "release_date": "2024-04-04",
+    "director": "Tito Catacora",
+    "runtime": 104,
+    "genres": [
+      "ドラマ",
+      "謎",
+      "ファンタジー"
+    ],
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PE",
+        "name": "Peru"
+      }
+    ]
+  },
+  "火の華": {
+    "tmdb_id": 1385004,
+    "tmdb_title_jp": "火の華",
+    "tmdb_title_en": "火の華",
+    "overview": "2016年、PKO（国連平和維持活動）のため南スーダンに派遣された自衛官・島田東介は、現地傭兵との銃撃戦に巻き込まれる。同期で親友の古川裕司が凶弾に倒れ、島田はやむを得ず少年兵を射殺。さらに退却の混乱のなかで隊長の伊藤忠典が行方不明になるが、この前代未聞の「戦闘」は政府によって隠蔽されてしまう。2年後の新潟。悪夢に悩まされる島田は闇の武器ビジネスに加担しながら、花火工場で働き始める。親方の藤井与一や職人仲間たち、与一の娘・昭子に支えられ、心の傷を少しずつ癒していく島田だったが、そんな彼に過去の闇が迫り……。",
+    "poster_path": "/eytr8VdiLEtnDiy7Sh3pDolNbyF.jpg",
+    "backdrop_path": "/rRReKKOnoGMdx3ACMaJiKK3wEAJ.jpg",
+    "release_date": "2025-10-31",
+    "director": "小島央大",
+    "runtime": 124,
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "黒の牛": {
+    "tmdb_id": 1167863,
+    "tmdb_title_jp": "黒の牛",
+    "tmdb_title_en": "黒の牛",
+    "overview": "",
+    "poster_path": "/6l3Cf56cikwpll0i7fkcthGKPtR.jpg",
+    "backdrop_path": "/7ajqnik0ZDnKobIidoS1w99HN4s.jpg",
+    "release_date": "2024-11-08",
+    "director": "蔦哲一朗",
+    "runtime": 114,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "レオ：ブラッディ・スウィート": null,
+  "バーフバリ エピック4K": {
+    "tmdb_id": 1511417,
+    "tmdb_title_jp": "Baahubali: The Epic",
+    "tmdb_title_en": "Baahubali: The Epic",
+    "overview": "",
+    "poster_path": "/z9YIo2qscyaXYgRqIdRJtND3bw8.jpg",
+    "backdrop_path": "/wCwZ4ljSsWyZyTiyk1tGQtBHTDx.jpg",
+    "release_date": "2025-10-29",
+    "director": "S. S. Rajamouli",
+    "runtime": 224,
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "イップ・マン 継承": {
+    "tmdb_id": 365222,
+    "tmdb_title_jp": "イップ・マン 継承",
+    "tmdb_title_en": "葉問3",
+    "overview": "武術家イップ・マンが、イギリス人ボクサーと死闘を繰り広げてから9年。妻や息子と静かな毎日を送ってきた彼は、都市開発を進める悪徳不動産業者が息子の通う小学校の土地を狙っているのを知る。強引に土地買収を行う不動産王とその手下から、小学校を守ろうとするイップ・マン。暴力も辞さない手下たちをけ散らしていく彼だったが、妻が病に倒れてしまう。愛する家族を守るべきか、自分たちが暮らす町のために戦うべきか、そのはざまで思い悩む彼は……。\r ＜ブルース・リーの師匠でもある武術家イップ・マンを主人公に据えた人気アクションの第3弾。1950年代末の香港を舞台に、悪徳不動産業者に挑む彼の姿を、家族との絆を絡めて描く。監督にこれまでのシリーズ同様ウィルソン・イップ、キャストに『ローグ・ワン/スター・ウォーズ・ストーリー』などのドニー・イェンや、リン・ホンら前2作のメンバーが結集。ドニー・イェンが見せる立ち回りに加え、ボクシングの王者としてその名をとどろかせてきたマイク・タイソンの出演も見どころ。＞",
+    "poster_path": "/65dnKAHVfXlRQY4KCe2DAqtzaqQ.jpg",
+    "backdrop_path": "/19Shb0Xn0PeLXA4CkT2TIIvxaR6.jpg",
+    "release_date": "2015-12-24",
+    "director": "葉偉信",
+    "runtime": 105,
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "履歴"
+    ],
+    "vote_average": 7.029,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "イップ・マン外伝 マスターZ": {
+    "tmdb_id": 450001,
+    "tmdb_title_jp": "イップ・マン外伝 マスターZ",
+    "tmdb_title_en": "葉問外傳：張天志",
+    "overview": "ドニー・イェン主演「イップ・マン」シリーズに登場したチョン・ティンチを主人公にしたスピンオフ作品。イップ・マンとの詠春拳の正統争いに敗れ、武術の世界から身を引いたティンチは、小さな食料店を営みながら息子のフォンと穏やかな生活をスタートさせていた。そんな中、ティンチは町を仕切る長楽グループの反逆児キットたちから追われていたジュリアとナナの窮地を救ったことからキットの恨みを買い、店に放火されてしまう。そして、キットたちの策略により、命を落としてしまうナナたち。ティンチは封印していた武術を使い、キットたちのアジトへ単身乗り込んでいく…。マックス・チャンが「イップ・マン　継承」に引き続きティンチを演じるほか、デイブ・バウティスタ、ミシェル・ヨー、トニー・ジャーらが顔をそろえる。監督は香港アクション界の巨匠ユエン・ウーピン。",
+    "poster_path": "/WRTbbT6vRtwREuJHZ4Gark8IHw.jpg",
+    "backdrop_path": "/oEFTbg7xlg6eEq9wN5qhTLdDoax.jpg",
+    "release_date": "2018-12-20",
+    "director": "袁和平",
+    "runtime": 107,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "イップ・マン 完結": {
+    "tmdb_id": 449924,
+    "tmdb_title_jp": "イップ・マン 完結",
+    "tmdb_title_en": "葉問4",
+    "overview": "1964年、愛する妻と死別したイップ・マン(ドニー・イェン)は、アメリカで暮らしているまな弟子のブルース・リーから招待され、息子と一緒にサンフランシスコに行く。イップ・マンは詠春拳の道場を開いたブルース・リーと再会するが、道場がチャイナタウンとアメリカ海軍の対立に巻き込まれてしまう。",
+    "poster_path": "/zZFSF1sUvhQQE796VV3jXDPDsYA.jpg",
+    "backdrop_path": "/jZDudPPIV4lSxEVgzfK9Z6nHdhi.jpg",
+    "release_date": "2019-12-19",
+    "director": "葉偉信",
+    "runtime": 105,
+    "genres": [
+      "アクション",
+      "履歴",
+      "ドラマ"
+    ],
+    "vote_average": 7.267,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "イップ・マン 序章": {
+    "tmdb_id": 14756,
+    "tmdb_title_jp": "イップ・マン 序章",
+    "tmdb_title_en": "葉問",
+    "overview": "1930年代の中国広東省佛山。家族と共に平穏な日々を送る詠春拳の達人、イップ・マン。その実力と人格で人々の尊敬を集める一方、彼を倒して名を挙げようとする武術家たちも多く、心ならずも手合わせをしては、いずれも一ひねりにしてしまうのだった。ところが折しも日中戦争が勃発、佛山を占領した日本軍によって家屋を奪われ、窮乏を強いられる。やがて空手の名手でもある日本軍将校・三浦がイップ・マンの実力に目を付け、日本兵たちに中国武術を教えるよう迫るのだが…。",
+    "poster_path": "/9Ahoj5MpTbbLqUu4VQ7thuqPqHd.jpg",
+    "backdrop_path": "/69QJSMkm5Hh0x9fLElZ8hjv5N4P.jpg",
+    "release_date": "2008-12-12",
+    "director": "葉偉信",
+    "runtime": 108,
+    "genres": [
+      "ドラマ",
+      "アクション",
+      "履歴"
+    ],
+    "vote_average": 7.761,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "イップ・マン 葉問": {
+    "tmdb_id": 37472,
+    "tmdb_title_jp": "イップ・マン 葉問",
+    "tmdb_title_en": "葉問2",
+    "overview": "1950年、妻子を連れ、中国の広東省からイギリスの植民統治下の香港へと移住した詠春拳の達人、マン。早速彼は道場を開き、次第に多くの弟子が集まるようになる。香港の武術界を仕切る洪拳の師範ホンは、それを聞いてこの地で道場を開くには各門派の師範たちの挑戦を受けなければならないとマンに通告。そんなマンは師範たちを次々と倒した末、ホンと対決。さらにマンは、横暴なイギリス人ボクサー、ツイスターとの死闘に挑む。",
+    "poster_path": "/b18PIowICv5tSjTTEIbMIJ3jGAu.jpg",
+    "backdrop_path": "/lFhTEHBphkHw5hDsuRLYAXZB3u4.jpg",
+    "release_date": "2010-04-29",
+    "director": "葉偉信",
+    "runtime": 109,
+    "genres": [
+      "アクション",
+      "履歴",
+      "ドラマ"
+    ],
+    "vote_average": 7.462,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "リバー・ランズ・スルー・イット 4Kリマスター版": {
+    "tmdb_id": 293,
+    "tmdb_title_jp": "リバー・ランズ・スルー・イット",
+    "tmdb_title_en": "A River Runs Through It",
+    "overview": "元大学教授N・マクリーンが74歳で執筆した自伝的処女作（1977年度のピュリツァー賞候補に）を映画化した、Ｒ・レッドフォードの監督第3作。モンタナの自然の中、透明感あふれる映像（第65回アカデミー賞で撮影賞受賞)、叙情的な音楽、俳優陣の好アンサンブルで、家族の絆を描いた。\r 1910年代、モンタナ州の小さな町ミズーラ。ノーマンと2歳年下のポールは、牧師の父親を持つ兄弟。ノーマンは真面目でポールは自由活発と性格は正反対だが、フライフィッシングに打ち込んでいる時は仲がよかった。町を出て大学に通い、青年に成長したノーマンは久しぶりに帰省。ポールは新聞記者となっていてフライフィッシングの腕を上げていたが、賭けポーカーにのめり込んでいた。ノーマンはそんな弟を心配するが……。",
+    "poster_path": "/aVP45oS2cBL4WtZ1kB7r8uarruB.jpg",
+    "backdrop_path": "/85dLdBCBbuZYde0T6L1CKXd707u.jpg",
+    "release_date": "1992-10-09",
+    "director": "ロバート・レッドフォード",
+    "runtime": 123,
+    "genres": [
+      "ドラマ",
+      "ファミリー"
+    ],
+    "vote_average": 7.028,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "乾いた花": {
+    "tmdb_id": 61475,
+    "tmdb_title_jp": "乾いた花",
+    "tmdb_title_en": "乾いた花",
+    "overview": "刑務所を出所した村木は、賭場で少女と出会う。ある夜、彼は屋台でその少女と再会した。彼女の名は冴子。冴子はもっと大きな勝負があるところへ連れて行ってほしいとせがんだ。二人は大きな賭場へ行くが、村木はそこで、葉という男を見つけた。殺しと麻薬だけに生きているという葉は、賭けをしている冴子のことを見つめていた。",
+    "poster_path": "/tYG4fjaGaC3HyOwI1iG1XvzCdO3.jpg",
+    "backdrop_path": "/zchaaZhN2wcIB6O6YLDBehRRBJK.jpg",
+    "release_date": "1964-03-01",
+    "director": "篠田正浩",
+    "runtime": 96,
+    "genres": [
+      "犯罪",
+      "ロマンス"
+    ],
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "太陽の墓場": {
+    "tmdb_id": 111718,
+    "tmdb_title_jp": "太陽の墓場",
+    "tmdb_title_en": "太陽の墓場",
+    "overview": "",
+    "poster_path": "/3siA2lLZ7ikndAH0Q1AICrOfU6H.jpg",
+    "backdrop_path": "/i0OR8iLJdPGgY8SXuAALqGCVOkj.jpg",
+    "release_date": "1960-08-09",
+    "director": "大島渚",
+    "runtime": 88,
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "その口紅が憎い": null,
+  "夜叉ヶ池": {
+    "tmdb_id": 117215,
+    "tmdb_title_jp": "夜叉ヶ池",
+    "tmdb_title_en": "夜叉ヶ池",
+    "overview": "越前の「夜叉ヶ池」には、竜神が棲んでいるという言い伝えがあった。そしてその竜神を鎮めるには、日に3度、鐘をつかなければならないという。しかし鐘つきの老人が死んだ時、その言い伝えを信じるものはいなかった。そしてついに、竜神が大洪水と共に甦る。",
+    "poster_path": "/6obycPfpbYeexCvPPaozkEMq83I.jpg",
+    "backdrop_path": "/bEFfAFQcEgIXbe8lrMG2EIv3DpG.jpg",
+    "release_date": "1979-10-20",
+    "director": "篠田正浩",
+    "runtime": 124,
+    "genres": [
+      "ファンタジー",
+      "ロマンス"
+    ],
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "MEMORIES": {
+    "tmdb_id": 42994,
+    "tmdb_title_jp": "MEMORIES",
+    "tmdb_title_en": "MEMORIES",
+    "overview": "大友克洋が製作総指揮と総監督を務めた、３話から成る劇場用オムニバス・アニメーション大作。遭難した宇宙船を舞台にした、大友の同名漫画を今敏が脚色したＳＦドラマ「彼女の想いで」。誤って実験用の薬を飲んだ男が巻き起こす一大パニックを描くブラック・コメディ「最臭兵器」。大砲を撃つための街に暮らす少年の日々を綴る大友監督作「大砲の街」。いずれもセンス・オブ・ワンダーに彩られた奇妙な味わいが特徴となっている。",
+    "poster_path": "/wzlB8hz2FKTsPvZdx7dsyIgi1UA.jpg",
+    "backdrop_path": "/x8fJnoFw3JMM2JtP8EH8WMeUHoC.jpg",
+    "release_date": "1995-12-23",
+    "director": "大友克洋",
+    "runtime": 113,
+    "genres": [
+      "ファンタジー",
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "vote_average": 7.443,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "愛のごとく": null,
+  "血みどろオールナイト2026 新春篇": null,
+  "ガンダーラ 4K修復版": {
+    "tmdb_id": 22500,
+    "tmdb_title_jp": "ガンダーラ",
+    "tmdb_title_en": "Gandahar",
+    "overview": "",
+    "poster_path": "/rupNCaznAWPWH80eX8OgIvRCuog.jpg",
+    "backdrop_path": "/sAwid2NijZMJ8GVvgPtEXkIYtLL.jpg",
+    "release_date": "1987-12-11",
+    "director": "ルネ・ラルー",
+    "runtime": 83,
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "ファンタジー",
+      "アドベンチャー"
+    ],
+    "vote_average": 6.944,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ファンタスティック・プラネット": {
+    "tmdb_id": 16306,
+    "tmdb_title_jp": "ファンタスティック・プラネット",
+    "tmdb_title_en": "La Planète sauvage",
+    "overview": "仏のSF作家ステファン・ウルの長編小説を、マンガ家ローラン・トポールの絵でアニメ化した異色のファンタジー作品。未開の惑星イガムを舞台に人間型のオム族と、彼らを奴隷のように扱うドラーグ族の戦いと協調を描く。SF的イマジネーションの凄さと特異なアニメーション映像には目を見張るものがある。",
+    "poster_path": "/7A0nUOLVhtOJRqFFLQRDjTIvtdf.jpg",
+    "backdrop_path": "/AwrqoanoZVYoc0MRyE0RiHEKm71.jpg",
+    "release_date": "1973-12-01",
+    "director": "ルネ・ラルー",
+    "runtime": 72,
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "vote_average": 7.629,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "XC",
+        "name": "Czechoslovakia"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "大統領暗殺裁判": {
+    "tmdb_id": 783111,
+    "tmdb_title_jp": "행복의 나라",
+    "tmdb_title_en": "행복의 나라",
+    "overview": "",
+    "poster_path": "/uC8PB7FMk8sOKRrf9MVKdLWQdqx.jpg",
+    "backdrop_path": "/tMv8tIXqAZ2CQkzItxlyeAvgxXH.jpg",
+    "release_date": "2024-08-14",
+    "director": "추창민",
+    "runtime": 124,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ファンファーレ！": null,
+  "フジコ・ヘミング": {
+    "tmdb_id": 551245,
+    "tmdb_title_jp": "フジコ・ヘミングの時間",
+    "tmdb_title_en": "フジコ・ヘミングの時間",
+    "overview": "フジコ・ヘミング。彼女の知られざる素顔と魅力に迫った秀作ドキュメンタリー映画。スウェーデン人の父と日本人ピアニストの母との間に生まれ、母の手ほどきで、5歳でピアノを習い始めたフジコ。若くしてその才能を認められるも幾多の試練が彼女を見舞い、長らくピアノ教師をしながら欧州各地で演奏活動をしていた彼女は、1999年、NHKの番組で紹介されたのをきっかけに一躍人気に火がつくことに。そんな彼女の数奇で波乱に満ちた人生、そして欧州や日本、北米・南米と、コンサートで世界各地を回る合間に見せる、彼女の愛らしい素顔に密着取材し、ファン必見の魅惑作に仕上がり、異例のロングランヒットを記録した。  幾多の試練と困難を乗り越えて、60代の後半にようやくその才能が見いだされ、人気に火がついた奇跡のピアニスト、フジコ・ヘミング。80代の現在、彼女はパリの自宅を拠点に、欧州各地や日本、北米・南米と、コンサートで世界各地を回る多忙な毎日。そんな彼女のワールドツアーの様子やプライベートな日常を2年間にわたって密着取材し、その複雑な生い立ちや、波瀾万丈の幼少期、青春時代、そして飾らない現在の素顔に迫る。",
+    "poster_path": "/376ObUs0Ma6rDdj9FKicYgilKSk.jpg",
+    "backdrop_path": null,
+    "release_date": "2018-06-16",
+    "director": "Soichiro Komatsu",
+    "runtime": 116,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ベートーヴェン捏造": {
+    "tmdb_id": 1501465,
+    "tmdb_title_jp": "ベートーヴェン捏造",
+    "tmdb_title_en": "ベートーヴェン捏造",
+    "overview": "",
+    "poster_path": "/jT89KMf8yYPuRhWJSttiX7QyISC.jpg",
+    "backdrop_path": "/3EFckRlGJRlD48RXtuVfAufNygl.jpg",
+    "release_date": "2025-09-12",
+    "director": "関和亮",
+    "runtime": 115,
+    "genres": [
+      "音楽",
+      "ファンタジー"
+    ],
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "風のマジム": {
+    "tmdb_id": 1495175,
+    "tmdb_title_jp": "風のマジム",
+    "tmdb_title_en": "風のマジム",
+    "overview": "",
+    "poster_path": "/2Z54xMhvTCy7CVUxo7kVC3Jja6k.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-09-05",
+    "director": "芳賀 薫",
+    "runtime": 0,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "てっぺんの向こうにあなたがいる": {
+    "tmdb_id": 1532481,
+    "tmdb_title_jp": "てっぺんの向こうにあなたがいる",
+    "tmdb_title_en": "てっぺんの向こうにあなたがいる",
+    "overview": "",
+    "poster_path": "/yV0kLKkLJN6jXVH2fpSinfIHSoi.jpg",
+    "backdrop_path": "/uZHZqHBO8Is3weRUtbzku9r5b7D.jpg",
+    "release_date": "2025-10-31",
+    "director": "阪本順治",
+    "runtime": 130,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 10.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ジェイ・ケリー": {
+    "tmdb_id": 1069905,
+    "tmdb_title_jp": "ジェイ・ケリー",
+    "tmdb_title_en": "Jay Kelly",
+    "overview": "映画スターのジェイ・ケリーは、献身的なマネージャーと共にヨーロッパを巡る旅に出て、現在と過去の自分に向き合うことになる。",
+    "poster_path": "/cg5kgkZ5Wh0qiXKHGihbag3NCsl.jpg",
+    "backdrop_path": "/wR9D9hQvCVBux16NauY4b7letdU.jpg",
+    "release_date": "2025-11-14",
+    "director": "ノア・バームバック",
+    "runtime": 132,
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "vote_average": 6.121,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "ローズ家〜崖っぷちの夫婦〜": {
+    "tmdb_id": 1267905,
+    "tmdb_title_jp": "ローズ家～崖っぷちの夫婦～",
+    "tmdb_title_en": "The Roses",
+    "overview": "絵に描いたような完璧なカップル、アイヴィとテオは、順風満帆な人生を送っているように見えた。輝かしいキャリア、愛に満ちた結婚生活、優秀な子供たち。だが、その裏側では家庭内戦争が始まろうとしていた。テオのキャリアが急降下する中、アイヴィは野心を露わにする。幸せな夫婦に秘められた競争心と不満が爆発する痛快ブラック・コメディ。",
+    "poster_path": "/5s1sS0XPGXMoIYouY3RgBlA1A5M.jpg",
+    "backdrop_path": "/h4HSZjOeAoHQ3qPuy6x9Cyr69bS.jpg",
+    "release_date": "2025-08-27",
+    "director": "ジェイ・ローチ",
+    "runtime": 105,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 6.723,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "スプリングスティーン": {
+    "tmdb_id": 1230368,
+    "tmdb_title_jp": "スプリングスティーン 孤独のハイウェイ",
+    "tmdb_title_en": "Springsteen: Deliver Me from Nowhere",
+    "overview": "アメリカの魂 ロックの英雄“ The Boss ”ブルース・スプリングスティーン。「Born in the U.S.A.」で世界が振り向く前夜、誰にも頼らず、わずか4トラックの録音機で吹き込んだアルバム『ネブラスカ』。父との確執、その苦悩と創造の情熱を描いた、音楽映画の枠を超え、観る者の心を震わせる感動ドラマ。",
+    "poster_path": "/4jZwKegB2KiGVpyk0mvgry2PKq2.jpg",
+    "backdrop_path": "/oOczvrnhpXUmqCbyKYFj4FQExAo.jpg",
+    "release_date": "2025-10-22",
+    "director": "スコット・クーパー",
+    "runtime": 120,
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ホーリー・カウ": {
+    "tmdb_id": 168040,
+    "tmdb_title_jp": "Porca vacca",
+    "tmdb_title_en": "Porca vacca",
+    "overview": "",
+    "poster_path": "/mFkjs5DDJCW7zzUoF3Dx6TFyPkW.jpg",
+    "backdrop_path": "/6uIc9Qw7xc2vBTrWEzT8Y9vrYtT.jpg",
+    "release_date": "1982-09-23",
+    "director": "パスクァーレ・フェスタ・カンパニーレ",
+    "runtime": 94,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 5.537,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "愛はステロイド": {
+    "tmdb_id": 948549,
+    "tmdb_title_jp": "Love Lies Bleeding",
+    "tmdb_title_en": "Love Lies Bleeding",
+    "overview": "",
+    "poster_path": "/xImj8RLe39YK0lyVu9kXv7ApN8p.jpg",
+    "backdrop_path": "/oMiKHO3H5RixfLsiU5Vumhlp5sj.jpg",
+    "release_date": "2024-03-07",
+    "director": "Rose Glass",
+    "runtime": 104,
+    "genres": [
+      "犯罪",
+      "ロマンス",
+      "スリラー"
+    ],
+    "vote_average": 6.581,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "アフター・ザー・クエイク": {
+    "tmdb_id": 1379045,
+    "tmdb_title_jp": "アフター・ザ・クエイク",
+    "tmdb_title_en": "アフター・ザ・クエイク",
+    "overview": "",
+    "poster_path": "/cdW1Pfy4LzRx4NUWYTAUTHUgNjs.jpg",
+    "backdrop_path": "/r1ALuRWATS3waPQhlheB8g9PbfJ.jpg",
+    "release_date": "2025-10-03",
+    "director": "井上剛",
+    "runtime": 132,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 8.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "バード ここから羽ばたく": {
+    "tmdb_id": 1128752,
+    "tmdb_title_jp": "Bird",
+    "tmdb_title_en": "Bird",
+    "overview": "",
+    "poster_path": "/wKshd6n8EKrwbE2fLOUqC4TSG6O.jpg",
+    "backdrop_path": "/wwtZN9fy6BaFguj6wGPV0ZtCLHD.jpg",
+    "release_date": "2024-11-08",
+    "director": "Andrea Arnold",
+    "runtime": 119,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.232,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "グランドツアー": {
+    "tmdb_id": 1098709,
+    "tmdb_title_jp": "Grand Tour",
+    "tmdb_title_en": "Grand Tour",
+    "overview": "",
+    "poster_path": "/qRq22hYo3PRDGyFpdASUJKGH8eJ.jpg",
+    "backdrop_path": "/gQ272LEg56jcIPx9gNBtfvyF5aq.jpg",
+    "release_date": "2024-11-27",
+    "director": "Miguel Gomes",
+    "runtime": 129,
+    "genres": [
+      "ドラマ",
+      "アドベンチャー"
+    ],
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      }
+    ]
+  },
+  "ヤン・シュヴァンクマイエル": null,
+  "ホウセンカ": {
+    "tmdb_id": 1294972,
+    "tmdb_title_jp": "ホウセンカ",
+    "tmdb_title_en": "ホウセンカ",
+    "overview": "「ろくでもない一生だったな」  独房で孤独な死を迎えようとしていた無期懲役囚の老人に声を掛けたのは、\r 人の言葉を操るホウセンカだった。\r “会話”の中で、老人は自身の過去を振り返り始める。",
+    "poster_path": "/fZsog59guqRZ4Q2DqKCiLDLuyjz.jpg",
+    "backdrop_path": "/mbBHOz1EJThzDHYJ6gWhL8kbC00.jpg",
+    "release_date": "2025-10-10",
+    "director": "木下麦",
+    "runtime": 75,
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ミゲル・ゴメス アーリーワークス": null,
+  "国宝": {
+    "tmdb_id": 1379266,
+    "tmdb_title_jp": "国宝",
+    "tmdb_title_en": "国宝",
+    "overview": "後に国の宝となる男は、任侠の一門に生まれた。抗争で父を亡くした喜久雄（吉沢亮）は、上方歌舞伎の名門の当主・花井半二郎（渡辺謙）に引き取られ、歌舞伎の世界へ飛び込む。そこで、半二郎の実の息子として、生まれながらに将来を約束された御曹司・俊介（横浜流星）と出会う。正反対の血筋を受け継ぎ、生い立ちも才能も異なる2人は、ライバルとして互いに高め合い、芸に青春を捧げるが、多くの出会いと別れが運命の歯車を狂わせていく……。",
+    "poster_path": "/bPuH9nB995PE3P9j4sTanWsxfUW.jpg",
+    "backdrop_path": "/3C8yAIuXlH4BGCpTwEetIv0VBt8.jpg",
+    "release_date": "2025-06-06",
+    "director": "李相日",
+    "runtime": 174,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 8.158,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ジョージ・マイケル 栄光の輝きと心の闇": null,
+  "長安のライチ": null,
+  "ロサンゼルス・それぞれの愛": {
+    "tmdb_id": 86241,
+    "tmdb_title_jp": "Welcome to L.A.",
+    "tmdb_title_en": "Welcome to L.A.",
+    "overview": "",
+    "poster_path": "/2OlIqSuoilz6nLaOQNle1MXNtUx.jpg",
+    "backdrop_path": "/kI3nrKaSEc7MacMTxhcd3Tt5RjM.jpg",
+    "release_date": "1976-11-12",
+    "director": "Alan Rudolph",
+    "runtime": 106,
+    "genres": [
+      "ロマンス",
+      "ドラマ",
+      "音楽"
+    ],
+    "vote_average": 4.81,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "わが心のジミー・ディーン": {
+    "tmdb_id": 67772,
+    "tmdb_title_jp": "Come Back to the 5 & Dime, Jimmy Dean, Jimmy Dean",
+    "tmdb_title_en": "Come Back to the 5 & Dime, Jimmy Dean, Jimmy Dean",
+    "overview": "",
+    "poster_path": "/bnXigd6wq4XVfGLa67185cvXJuY.jpg",
+    "backdrop_path": "/ks7mFdNkLUssfJjWxIIEfL53ZRB.jpg",
+    "release_date": "1982-11-12",
+    "director": "ロバート・アルトマン",
+    "runtime": 110,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.892,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "旅と日々": {
+    "tmdb_id": 1462735,
+    "tmdb_title_jp": "旅と日々",
+    "tmdb_title_en": "旅と日々",
+    "overview": "うだつの上がらない脚本家の李は、ひょんなことから訪れた雪荒ぶ旅先の山奥でおんぼろ宿に迷い込む。雪の重みで今にも落ちてしまいそうな屋根。“べん造\"と名乗る、やる気の感じられない宿主。暖房もない、まともな食事も出ない、布団も自分で敷く始末。しかし、べん造にはちょっとした秘密があるようだ。ある夜、べん造は李を夜の雪の原へと連れ出すのだった…。",
+    "poster_path": "/d5kqa17dP6UqBBctkXJOsbhHjnm.jpg",
+    "backdrop_path": "/aJM7KIdC5mNPjqKp8NdwvzyHceS.jpg",
+    "release_date": "2025-11-07",
+    "director": "三宅唱",
+    "runtime": 89,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "チューズ・ミー": null,
+  "八甲田山 4K": {
+    "tmdb_id": 129380,
+    "tmdb_title_jp": "八甲田山",
+    "tmdb_title_en": "八甲田山",
+    "overview": "明治34年　ロシアとの戦争が差し迫っている中、ロシアの厳しい冬の気候での戦闘経験の乏しい日本軍は寒冷地での戦闘訓練の必要を痛切に感じていた。そこで極寒の気候である青森県八甲田山において雪中行軍演習を執り行うことを決定した。雪中行軍において既に実績を持つ青森歩兵第五連隊神田大尉および第三十一連隊徳島大尉に真冬での八甲田山行軍遂行命令が下る。事前の予備調査では少人数で天候にも恵まれていたため特に問題とはならなかったが、これが冬の八甲田山を軽視する方向に進んでいってしまう。八甲田行軍が始まると事前調査とは比べ物にならないほど天候が荒れ始め、気象記録から過去最大級の低気圧が接近しているため演習の中止を進言する神田大尉であったが、演習責任者である彼を差し置いて同行していた上官は演習中止を許さず冬山を軽視したまま極寒地獄の修羅場となる八甲田山へ死の行軍を続けてしまうのであった…",
+    "poster_path": "/1solwae6RKtIL2eP8AOjTqSJOBk.jpg",
+    "backdrop_path": "/j6TSLEfGg35KzbdIuw46bCWqFWJ.jpg",
+    "release_date": "1977-06-04",
+    "director": "森谷司郎",
+    "runtime": 169,
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "リンダ リンダ リンダ 4K": {
+    "tmdb_id": 27337,
+    "tmdb_title_jp": "リンダ リンダ リンダ",
+    "tmdb_title_en": "リンダ リンダ リンダ",
+    "overview": "高校を舞台にガールズバンドの奮闘をさわやかに描いた青春人間ドラマ。出演は『ほえる犬は噛まない』『TUBE』のべ・ドゥナ、『バトル・ロワイアル』シリーズの前田亜季、『ローレライ』の香椎由宇、そしてロックバンドBase Ball Bearのベーシスト・関根史織。監督は『リアリズムの宿』の山下敦弘。ハイティーンの女の子たちの心の微妙な心の揺れや高揚を繊細に描き出す。\r 地方の高校。同じバンドの響子、恵、望に非常事態が。文化祭のためオリジナル曲まで準備したのにギター担当の萠が指を負傷し、怒ったボーカルの凛子がバンドを辞めたからだ。しかし偶然耳にした“ザ・ブルーハーツ”の「リンダ リンダ」を聴くうち、響子たちは“ザ・ブルーハーツ”のコピーバンドをしようと決心。韓国からの留学生ソンにボーカルをしないかと誘うと、OKの返事が。4人は文化祭最終日に向けて練習に励むが……。",
+    "poster_path": "/fiUyBiV2AWiz2XJLmZRoCJKGn2j.jpg",
+    "backdrop_path": "/xSwyEYimb59e8Xcxvd3yZgR4249.jpg",
+    "release_date": "2005-07-23",
+    "director": "山下敦弘",
+    "runtime": 114,
+    "genres": [
+      "コメディ",
+      "音楽",
+      "ドラマ"
+    ],
+    "vote_average": 7.504,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "リアリズムの宿": {
+    "tmdb_id": 30518,
+    "tmdb_title_jp": "リアリズムの宿",
+    "tmdb_title_en": "リアリズムの宿",
+    "overview": "「ねじ式」「無能の人」の異才漫画家・つげの短編「リアリズムの宿」「会津の釣り宿」とその世界観を基に山下監督が映像化。\r ある冬の日。駆け出しの映画監督・木下と脚本家の坪井は、共通の知人である俳優・舟木に誘われ、東京を旅立って鳥取のとある駅へ。だが発起人の舟木は来ない。ほとんど面識のない木下と坪井は途方に暮れながら舟木を待ちつつ、当てもない旅を始める。その矢先、海岸を歩いていた2人の前に裸同然で走ってきた若い女性が倒れ込む。その女性・敦子は何を思ったか冬空の下で泳いでいたところ、服も荷物も海に流されてしまったという。",
+    "poster_path": "/1cb392E3oeFrYHfGckM4Sc7af6N.jpg",
+    "backdrop_path": "/hiZrclvE1xRKNSlD9gDTikdrWz4.jpg",
+    "release_date": "2003-09-10",
+    "director": "山下敦弘",
+    "runtime": 83,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "グラン・ブルー 完全版 4K": {
+    "tmdb_id": 175,
+    "tmdb_title_jp": "グラン・ブルー",
+    "tmdb_title_en": "Le Grand Bleu",
+    "overview": "ジャック（ジャン=マルク・バール）とエンゾ（ジャン・レノ）は、ギリシャの島で幼なじみとして育つ。やがて二人は成長し、コート・ダジュールで20年ぶりに再会した際、エンゾはイタリアのシチリアで開催されるフリーダイビング大会に参加するようジャックに伝える。同じころ、アンデスで偶然ジャックと出会ったジョアンナ（ロザンナ・アークエット）も、出張を口実にニューヨークからシチリアにやって来る。",
+    "poster_path": "/fg16pNO9KlxzVAN9Z8E5rI5pRKm.jpg",
+    "backdrop_path": "/1J28PJOkusMN5Ab9Q3oF310e11k.jpg",
+    "release_date": "1988-05-10",
+    "director": "Luc Besson",
+    "runtime": 168,
+    "genres": [
+      "ロマンス",
+      "ドラマ",
+      "アドベンチャー"
+    ],
+    "vote_average": 7.449,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "コンパートメント No.6": {
+    "tmdb_id": 588182,
+    "tmdb_title_jp": "コンパートメントNo.6",
+    "tmdb_title_en": "Hytti nro 6",
+    "overview": "",
+    "poster_path": "/yhiVM45MGvvPHbstuvtQ7DMOgPC.jpg",
+    "backdrop_path": "/h0uGdJyZ5o74p0E600oKYyaoDhw.jpg",
+    "release_date": "2021-10-29",
+    "director": "Juho Kuosmanen",
+    "runtime": 106,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.949,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "EE",
+        "name": "Estonia"
+      },
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "カモン カモン": {
+    "tmdb_id": 632617,
+    "tmdb_title_jp": "カモン カモン",
+    "tmdb_title_en": "C'mon C'mon",
+    "overview": "NYでラジオジャーナリストとして1人で暮らすジョニーは、妹から頼まれ、9歳の甥・ジェシーの面倒を数日間みることに。LAの妹の家で突然始まった共同生活は、戸惑いの連続。好奇心旺盛なジェシーは、ジョニーのぎこちない兄妹関係やいまだ 独身でいる理由、自分の父親の病気に関する疑問をストレートに投げかけ、ジョニーを困らせる一方で、ジョニーの仕事や録 音機材に興味を示し、二人は次第に距離を縮めていく。仕事のため NYに戻ることになったジョニーは、ジェシーを連れて行く ことを決めるが...",
+    "poster_path": "/aFhvztBxntRPggKnALGdmnwuLvy.jpg",
+    "backdrop_path": "/zs1I3ZFUDEWa5rFyph7OrMH1aJ9.jpg",
+    "release_date": "2021-11-19",
+    "director": "Mike Mills",
+    "runtime": 109,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "クレイマー、クレイマー": {
+    "tmdb_id": 12102,
+    "tmdb_title_jp": "クレイマー、クレイマー",
+    "tmdb_title_en": "Kramer vs. Kramer",
+    "overview": "ニューヨークのマンハッタン。結婚8年目のサラリーマン、テッド・クレイマーは忙しい毎日を送っているが、ある日突然、自立を決意した妻ジョアンナに家出されてしまう。テッドは仕方なく自力で7歳の息子ビリーの面倒をみるようになるが、仕事と子育ての両立は想像以上に厳しかった。やがてジョアンナは、ビリーの親権が自分にあると裁判所に訴え出るが、テッドは拒絶。クレイマー対クレイマーの裁判が法廷で争われることになる。",
+    "poster_path": "/rtjpX18grVqIlCnvEHZl7drImmN.jpg",
+    "backdrop_path": "/9pUh1fC8TqVtYPeKpdfNyVK0qnn.jpg",
+    "release_date": "1979-12-07",
+    "director": "ロバート・ベントン",
+    "runtime": 105,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.563,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "サターン・ボウリング": {
+    "tmdb_id": 848950,
+    "tmdb_title_jp": "Bowling Saturne",
+    "tmdb_title_en": "Bowling Saturne",
+    "overview": "",
+    "poster_path": "/lyIqihYpiIXLSPYwGEvg0ImnTHK.jpg",
+    "backdrop_path": "/3FYlk1DlXulq5gE7PZ3lIHbYbOA.jpg",
+    "release_date": "2022-10-26",
+    "director": "Patricia Mazuy",
+    "runtime": 114,
+    "genres": [
+      "ドラマ",
+      "スリラー",
+      "犯罪"
+    ],
+    "vote_average": 5.616,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "RED ROOMS レッドルームズ": {
+    "tmdb_id": 912480,
+    "tmdb_title_jp": "Les Chambres rouges",
+    "tmdb_title_en": "Les Chambres rouges",
+    "overview": "",
+    "poster_path": "/k0GlOGua9ox0SoBC96hZAeUp7y4.jpg",
+    "backdrop_path": "/83g3gkDw6oc2mxkyB8DSoXQZJHl.jpg",
+    "release_date": "2023-08-11",
+    "director": "Pascal Plante",
+    "runtime": 118,
+    "genres": [
+      "スリラー",
+      "犯罪"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "ホース・マネー＋わたしたちの男": null,
+  "血 ４Kレストア版": {
+    "tmdb_id": 46821,
+    "tmdb_title_jp": "O Sangue",
+    "tmdb_title_en": "O Sangue",
+    "overview": "",
+    "poster_path": "/zL1g2GLGvlXkR029RJD4KnVDMmz.jpg",
+    "backdrop_path": "/jwMyGyoPQQwlGVrc8socmFTHYva.jpg",
+    "release_date": "1989-12-07",
+    "director": "Pedro Costa",
+    "runtime": 95,
+    "genres": [
+      "ドラマ",
+      "謎"
+    ],
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      }
+    ]
+  },
+  "溶岩の家 ４Kレストア版": {
+    "tmdb_id": 126376,
+    "tmdb_title_jp": "Casa de Lava",
+    "tmdb_title_en": "Casa de Lava",
+    "overview": "",
+    "poster_path": "/2RjUWv8vYlPuTd1HUU2BijDYnHS.jpg",
+    "backdrop_path": "/kse2w3yjli5b89TzzlrprQQbSQj.jpg",
+    "release_date": "1995-02-10",
+    "director": "Pedro Costa",
+    "runtime": 105,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      }
+    ]
+  },
+  "骨 ４Kレストア版": {
+    "tmdb_id": 55700,
+    "tmdb_title_jp": "Ossos",
+    "tmdb_title_en": "Ossos",
+    "overview": "",
+    "poster_path": "/nyL274BPztUt6SBxFQyl0yIVWCH.jpg",
+    "backdrop_path": "/iXq6SRu8YK0Bo5jFpfQ8TYCNaet.jpg",
+    "release_date": "1997-11-14",
+    "director": "Pedro Costa",
+    "runtime": 97,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      }
+    ]
+  },
+  "ヴァンダの部屋 ２Kレストア版": {
+    "tmdb_id": 87063,
+    "tmdb_title_jp": "No Quarto da Vanda",
+    "tmdb_title_en": "No Quarto da Vanda",
+    "overview": "",
+    "poster_path": "/iSPAhJi7wqBkMYcNOBK5dwsJ4B1.jpg",
+    "backdrop_path": "/a56yntKq9u00uzin9EuNyQ1ym5A.jpg",
+    "release_date": "2001-03-02",
+    "director": "Pedro Costa",
+    "runtime": 171,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "ヴィタリナ＋火の娘たち": null,
+  "あなたの微笑みはどこに隠れたの？": {
+    "tmdb_id": 95533,
+    "tmdb_title_jp": "Où gît votre sourire enfoui?",
+    "tmdb_title_en": "Où gît votre sourire enfoui?",
+    "overview": "",
+    "poster_path": "/ia33nE8LmzX3hMynAovpOGn6C5m.jpg",
+    "backdrop_path": "/iZ7x8dpJt28vU7GQBXUv8ByogkK.jpg",
+    "release_date": "2003-01-15",
+    "director": "Pedro Costa",
+    "runtime": 104,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "何も変えてはならない": {
+    "tmdb_id": 85474,
+    "tmdb_title_jp": "Ne change rien",
+    "tmdb_title_en": "Ne change rien",
+    "overview": "",
+    "poster_path": "/gojlZDvjc33UREC7hbQQ1P4OjAm.jpg",
+    "backdrop_path": "/8wdQ4A4FMjq6DfgTVzuoJiEkUB8.jpg",
+    "release_date": "2009-11-19",
+    "director": "Pedro Costa",
+    "runtime": 100,
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      }
+    ]
+  },
+  "コロッサル・ユース 2Kレストア版": {
+    "tmdb_id": 82404,
+    "tmdb_title_jp": "Juventude Em Marcha",
+    "tmdb_title_en": "Juventude Em Marcha",
+    "overview": "",
+    "poster_path": "/6Ys5PfYNldtEtfwlo8lgut3khHE.jpg",
+    "backdrop_path": "/tVYETgmandqHmUpwf68yXAuXpm3.jpg",
+    "release_date": "2006-11-23",
+    "director": "Pedro Costa",
+    "runtime": 155,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "マライコッタイ・ヴァーリバン": {
+    "tmdb_id": 1038874,
+    "tmdb_title_jp": "മലൈക്കോട്ടൈ വാലിബന്‍",
+    "tmdb_title_en": "മലൈക്കോട്ടൈ വാലിബന്‍",
+    "overview": "",
+    "poster_path": "/sMnLaMTWYb19naUBTkcj099bX0M.jpg",
+    "backdrop_path": "/acnivNSu0ohcTemuXuhKJ0cyVgf.jpg",
+    "release_date": "2024-01-25",
+    "director": "Lijo Jose Pellissery",
+    "runtime": 154,
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "アバウトアス・バット・ノット・アバウトアス": {
+    "tmdb_id": 1047001,
+    "tmdb_title_jp": "About Us But Not About Us",
+    "tmdb_title_en": "About Us But Not About Us",
+    "overview": "",
+    "poster_path": "/aLfMSJYSk3x1cQCXsFOhu9Zlj26.jpg",
+    "backdrop_path": "/dHfA82DK7u7meq3KtNBnCAC6glj.jpg",
+    "release_date": "2023-04-08",
+    "director": "Jun Robles Lana",
+    "runtime": 90,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 4.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PH",
+        "name": "Philippines"
+      }
+    ]
+  },
+  "女性の休日": {
+    "tmdb_id": 1181125,
+    "tmdb_title_jp": "The Day Iceland Stood Still",
+    "tmdb_title_en": "The Day Iceland Stood Still",
+    "overview": "",
+    "poster_path": "/2335e2qPPBzsYAbjc8rWut0ad9R.jpg",
+    "backdrop_path": "/2rcFEp1DL6wcLdeKRgtxBcgNR2Y.jpg",
+    "release_date": "2025-01-25",
+    "director": "Pamela Hogan",
+    "runtime": 70,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IS",
+        "name": "Iceland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "〈特集上映〉ロッセリーニ×ゴダール［２つのゼロ年］": null,
+  "セバスチャン": {
+    "tmdb_id": 1067485,
+    "tmdb_title_jp": "Sebastian",
+    "tmdb_title_en": "Sebastian",
+    "overview": "",
+    "poster_path": "/22JTGme2MLETmvhHQdiKP78S5Qf.jpg",
+    "backdrop_path": "/kEvBFfqCtJvtvwZcrprAT3dSvij.jpg",
+    "release_date": "2024-08-02",
+    "director": "Mikko Mäkelä",
+    "runtime": 110,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.478,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      }
+    ]
+  },
+  "ネタニヤフ調書 汚職と戦争": {
+    "tmdb_id": 1353263,
+    "tmdb_title_jp": "The Bibi Files",
+    "tmdb_title_en": "The Bibi Files",
+    "overview": "",
+    "poster_path": "/aZTt7g857dGU9YUIIMHd5yNSKnY.jpg",
+    "backdrop_path": "/xUVwlnl1zXcL04z857q8o0kY14k.jpg",
+    "release_date": "2024-12-13",
+    "director": "Alexis Bloom",
+    "runtime": 115,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.019,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "とれ！": {
+    "tmdb_id": 1556442,
+    "tmdb_title_jp": "とれ！",
+    "tmdb_title_en": "とれ！",
+    "overview": "高校3年生の美咲（中島瑠菜）。やりたいことも見つからず、母子家庭で親に負担をかけたくないため進学はせず、地元で就職しようとバイトをしながら最後の高校生活を送っていた。親友の皐月（まいきち）は親の希望で大学進学を目指しているが、日々SNS投稿に夢中。  そんなある日、美咲が撮ったVLOGに霊のようなものが偶然映り、投稿動画は瞬く間にバズっていく。驚いた二人はこれをチャンスと思い、続けざまに心霊のフェイク動画を投稿し、バズは益々大きくなり広告収益が手元に入る。調子に乗った二人の撮影はエスカレートし、さらなる刺激を求め地元で噂の廃墟に潜入、とうとう取り返しのつかない本物が映りこんでしまう。さらに、廃墟撮影の道中で地蔵を拝んだ美咲は、和装でお面のような顔の“神様”に憑きまとわれることにーー。",
+    "poster_path": "/u9W2IZRQ6JQlf1Bur2fMmzypkZy.jpg",
+    "backdrop_path": "/eT7QekNA6VEIXW9OVbRqrwK9BOl.jpg",
+    "release_date": "2026-01-16",
+    "director": "コウイチ",
+    "runtime": 74,
+    "genres": [
+      "ホラー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "星と月は天の穴": {
+    "tmdb_id": 1543138,
+    "tmdb_title_jp": "星と月は天の穴",
+    "tmdb_title_en": "星と月は天の穴",
+    "overview": "小説家の矢添（綾野 剛）は、妻に逃げられ結婚に失敗して以来、独身のまま40代を迎えていた。心に空いた穴を埋めるように 娼婦・千枝子（田中麗奈）と時折り体を交え、捨てられた過去を引きずりながらやり過ごしていた。そして彼には恋愛に尻込みするもう一つの理由があった。それは、誰にも知られたくない自身の“秘密”にコンプレックスを抱えているからだ。そんな矢添は、自身が執筆する恋愛小説の主人公に自分自身を投影することで「精神的な愛の可能性」を自問するように探求するのが日課だった。ところがある日、画廊で偶然出会った大学生の瀬川紀子（咲耶）と彼女の粗相をきっかけに奇妙な情事へと至り、矢添の日常と心が揺れ始める。",
+    "poster_path": "/okIg9BoXmSyEZxQdN4xDctngqEY.jpg",
+    "backdrop_path": "/dvSTtiRmxXx1xlo9Eva6WH2baYl.jpg",
+    "release_date": "2025-12-19",
+    "director": "荒井晴彦",
+    "runtime": 122,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "よみがえる声【アンコール上映】": {
+    "tmdb_id": 1174530,
+    "tmdb_title_jp": "되살아나는 목소리",
+    "tmdb_title_en": "되살아나는 목소리",
+    "overview": "",
+    "poster_path": "/kTUP0ALMXbxpxFAnVQbEtgynFxH.jpg",
+    "backdrop_path": "/y4NBM12uyvZRrngeAazAFvozLlA.jpg",
+    "release_date": "2024-11-13",
+    "director": "朴壽南",
+    "runtime": 137,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "鹿の国《公開 1 周年記念上映》 G": {
+    "tmdb_id": 1438120,
+    "tmdb_title_jp": "鹿の国",
+    "tmdb_title_en": "鹿の国",
+    "overview": "",
+    "poster_path": "/dkiLEo6phekIP4Bnk0kLe0xETiO.jpg",
+    "backdrop_path": "/carBqITqoIWDtLcg4H5iOmx3sk1.jpg",
+    "release_date": "2025-01-02",
+    "director": "Riko Hiro",
+    "runtime": 98,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "《本橋成一の映画》アレクセイと泉 G": {
+    "tmdb_id": 434561,
+    "tmdb_title_jp": "アレクセイと泉",
+    "tmdb_title_en": "アレクセイと泉",
+    "overview": "",
+    "poster_path": "/5cCbQR6MD9QPydBYEEsuXYfFp7l.jpg",
+    "backdrop_path": null,
+    "release_date": "2002-01-20",
+    "director": "Seiichi Motohashi",
+    "runtime": 104,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "見はらし世代 G": {
+    "tmdb_id": 1464829,
+    "tmdb_title_jp": "見はらし世代",
+    "tmdb_title_en": "見はらし世代",
+    "overview": "再開発が進む東京・渋谷で胡蝶蘭の配送運転手として働く青年、蓮。ある日、蓮は配達中に父と数年ぶりに再会する。姉・恵美にそのことを話すが、恵美は一見すると我関せずといった様子で黙々と自分の結婚の準備を進めている。母を失って以来、姉弟と父は疎遠になっていたのだ。悶々と日々を過ごしていた蓮だったが、彼はもう一度家族の距離を測り直そうとする。変わりゆく街並みを見つめながら、家族にとって、最後の一夜が始まる...",
+    "poster_path": "/n4OtiOk7uReqIjCEYfKGyqu4oA6.jpg",
+    "backdrop_path": "/lIq0JaqCyjsl643hoT8yZWSDXJt.jpg",
+    "release_date": "2025-10-10",
+    "director": "団塚唯我",
+    "runtime": 115,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ネタニヤフ調書 汚職と戦争 G": {
+    "tmdb_id": 1353263,
+    "tmdb_title_jp": "The Bibi Files",
+    "tmdb_title_en": "The Bibi Files",
+    "overview": "",
+    "poster_path": "/aZTt7g857dGU9YUIIMHd5yNSKnY.jpg",
+    "backdrop_path": "/xUVwlnl1zXcL04z857q8o0kY14k.jpg",
+    "release_date": "2024-12-13",
+    "director": "Alexis Bloom",
+    "runtime": 115,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.019,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "《本橋成一の映画》アラヤシキの住人たち G": {
+    "tmdb_id": 1241552,
+    "tmdb_title_jp": "アラヤシキの住人たち",
+    "tmdb_title_en": "アラヤシキの住人たち",
+    "overview": "",
+    "poster_path": "/sfOMPxbVofZJ1MTGs2nLP1KQUjm.jpg",
+    "backdrop_path": null,
+    "release_date": "2015-05-01",
+    "director": "Seiichi Motohashi",
+    "runtime": 117,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "《本橋成一の映画》ナージャの村 G": {
+    "tmdb_id": 976530,
+    "tmdb_title_jp": "ナージャの村",
+    "tmdb_title_en": "ナージャの村",
+    "overview": "",
+    "poster_path": "/n0E8Dz2MN3DlCThcHL0V3xUold0.jpg",
+    "backdrop_path": null,
+    "release_date": "1997-11-22",
+    "director": "Seiichi Motohashi",
+    "runtime": 118,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BY",
+        "name": "Belarus"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "OKプロジェクト 2026年よろしく特別上映会": null,
+  "どうすればよかったか？【書籍刊行記念アンコール上映】 G": {
+    "tmdb_id": 1188968,
+    "tmdb_title_jp": "どうすればよかったか？",
+    "tmdb_title_en": "どうすればよかったか？",
+    "overview": "",
+    "poster_path": "/bCIkCxbwpE5lOLvslkgf63Nxf4D.jpg",
+    "backdrop_path": "/1dqJn5aYX4jZgHV0OmQzGsTVu30.jpg",
+    "release_date": "2023-10-08",
+    "director": "Fujino Tomoaki",
+    "runtime": 102,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "医の倫理と戦争": null,
+  "リトアニアへの旅の追憶": {
+    "tmdb_id": 148811,
+    "tmdb_title_jp": "リトアニアへの旅の追憶",
+    "tmdb_title_en": "Reminiscences of a Journey to Lithuania",
+    "overview": "",
+    "poster_path": "/vnnVqci7fGZFDXBLnxP9nHUCI2m.jpg",
+    "backdrop_path": "/2vclk5TTxXQk0hz3cY3Llbe10AU.jpg",
+    "release_date": "1972-08-02",
+    "director": "ジョナス・メカス",
+    "runtime": 81,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "日本映像ｸﾞﾗﾝﾌﾟﾘ 記念上映会": null,
+  "⼩屋番 ⼋ヶ岳に⽣きる 劇場版": null,
+  "最後のミッション": {
+    "tmdb_id": 896670,
+    "tmdb_title_jp": "The Last Mission",
+    "tmdb_title_en": "The Last Mission",
+    "overview": "",
+    "poster_path": "/l2YbTvTiwVmzaS3Rw2N0nYxYLpb.jpg",
+    "backdrop_path": null,
+    "release_date": "2003-06-02",
+    "director": "Patrick Taulère",
+    "runtime": 89,
+    "genres": [
+      "ドキュメンタリー",
+      "履歴",
+      "戦争"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "サリー[0118イベント]": {
+    "tmdb_id": 1007980,
+    "tmdb_title_jp": "サリー",
+    "tmdb_title_en": "莎莉",
+    "overview": "養鶏で泥まみれの毎日を過ごすうち中年にさしかかっていた女性が、出会い系アプリでフランス人と恋に落ちる。ロマンス詐欺だと周囲に言われるなか、彼女は愛を確かめにパリへ行き…。自分を愛する大切さを描くヒューマンドラマ。",
+    "poster_path": "/c5kxbktPQGykg1nI0cjnw81RpGo.jpg",
+    "backdrop_path": "/kfWS8IY9Pl3MmW9QkiS8IYNrWcJ.jpg",
+    "release_date": "2024-04-03",
+    "director": "練建宏",
+    "runtime": 106,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 3.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "『Tokyo Melody Ryuichi Sakamoto』4Kレストア版": {
+    "tmdb_id": 400033,
+    "tmdb_title_jp": "Tokyo melody, un film sur Ryuichi Sakamoto",
+    "tmdb_title_en": "Tokyo melody, un film sur Ryuichi Sakamoto",
+    "overview": "",
+    "poster_path": "/rq6P9Zb129eIdlzskJtJ46U5AQk.jpg",
+    "backdrop_path": "/s1Us5nFvHbWezACM1GrHwJYUfZL.jpg",
+    "release_date": "1985-04-09",
+    "director": "Elizabeth Lennard",
+    "runtime": 62,
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【未体験2026】マーダー・キャンプ": {
+    "tmdb_id": 1161345,
+    "tmdb_title_jp": "Murder Camp",
+    "tmdb_title_en": "Murder Camp",
+    "overview": "",
+    "poster_path": "/nv6w76lT9PWWlDz75gT4LcDIGYl.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-08-04",
+    "director": "Clara Aranovich",
+    "runtime": 15,
+    "genres": [
+      "コメディ",
+      "ホラー"
+    ],
+    "vote_average": 2.0,
+    "tmdb_countries": []
+  },
+  "【未体験2026】小さな目撃者": null,
+  "MIRRORLIAR FILMS Season8": null,
+  "グッドワン": {
+    "tmdb_id": 1122618,
+    "tmdb_title_jp": "Good One",
+    "tmdb_title_en": "Good One",
+    "overview": "",
+    "poster_path": "/hKNTx4T9skoEJMczJyHg1CsAEMZ.jpg",
+    "backdrop_path": "/13H7aiwQsiEDok54b1OFDTz7u1X.jpg",
+    "release_date": "2024-08-09",
+    "director": "India Donaldson",
+    "runtime": 90,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.609,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【未体験2026】クラーケン 深海の怪物": null,
+  "アグリーシスター　可愛いあの娘は醜いわたし": {
+    "tmdb_id": 1284120,
+    "tmdb_title_jp": "Den stygge stesøsteren",
+    "tmdb_title_en": "Den stygge stesøsteren",
+    "overview": "",
+    "poster_path": "/aM7XhsXqE2Otu0Jmcr8NrxUai4B.jpg",
+    "backdrop_path": "/ev9kxdoJ5IYVprt1OvH2SMWJdU1.jpg",
+    "release_date": "2025-03-07",
+    "director": "Emilie Blichfeldt",
+    "runtime": 109,
+    "genres": [
+      "ホラー",
+      "コメディ",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "vote_average": 7.31,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "【odessa vol+】Tokyo Melody": {
+    "tmdb_id": 400033,
+    "tmdb_title_jp": "Tokyo melody, un film sur Ryuichi Sakamoto",
+    "tmdb_title_en": "Tokyo melody, un film sur Ryuichi Sakamoto",
+    "overview": "",
+    "poster_path": "/rq6P9Zb129eIdlzskJtJ46U5AQk.jpg",
+    "backdrop_path": "/s1Us5nFvHbWezACM1GrHwJYUfZL.jpg",
+    "release_date": "1985-04-09",
+    "director": "Elizabeth Lennard",
+    "runtime": 62,
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【未体験2026】ナターシャ 盗まれたモナ・リザを取り戻せ": {
+    "tmdb_id": 1266781,
+    "tmdb_title_jp": "Natacha, (presque) hôtesse de l'air",
+    "tmdb_title_en": "Natacha, (presque) hôtesse de l'air",
+    "overview": "",
+    "poster_path": "/mvqZY9g8yxwlCLLLvOIupQEwjzw.jpg",
+    "backdrop_path": "/fu9PqKZvAAawuGdchsISzjaSbm3.jpg",
+    "release_date": "2025-04-02",
+    "director": "Noémie Saglio",
+    "runtime": 90,
+    "genres": [
+      "コメディ",
+      "アドベンチャー"
+    ],
+    "vote_average": 5.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      }
+    ]
+  },
+  "【未体験2026】オベックス　電脳世界": {
+    "tmdb_id": 1212461,
+    "tmdb_title_jp": "OBEX",
+    "tmdb_title_en": "OBEX",
+    "overview": "",
+    "poster_path": "/989voQxc9qAJKuBaoBHngqnpLsD.jpg",
+    "backdrop_path": "/3qVlwBtOt3eivzKaVg7PDqUrJns.jpg",
+    "release_date": "2026-01-09",
+    "director": "Albert Birney",
+    "runtime": 91,
+    "genres": [
+      "ファンタジー",
+      "アドベンチャー",
+      "ホラー",
+      "サイエンスフィクション"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【odessa vol+】ﾜﾝ･ﾊﾞﾄﾙ･ｱﾌﾀｰ": {
+    "tmdb_id": 1054867,
+    "tmdb_title_jp": "ワン・バトル・アフター・アナザー",
+    "tmdb_title_en": "One Battle After Another",
+    "overview": "元革命家の頼りない中年男ボブ。彼はさらわれた愛娘を取り戻すため、かつての仲間や謎めいた空手のセンセイの助けを借りながら、恐ろしい軍人ロックジョーに立ち向かっていく。",
+    "poster_path": "/NiITrNf81jK998SYtHr81V4dD7.jpg",
+    "backdrop_path": "/zpEWFNqoN8Qg1SzMMHmaGyOBTdW.jpg",
+    "release_date": "2025-09-23",
+    "director": "ポール・トーマス・アンダーソン",
+    "runtime": 162,
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "アクション"
+    ],
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ボディビルダー": {
+    "tmdb_id": 784524,
+    "tmdb_title_jp": "Magazine Dreams",
+    "tmdb_title_en": "Magazine Dreams",
+    "overview": "",
+    "poster_path": "/vSidx9NHKuQIPEQ4yI9b9zkTeh3.jpg",
+    "backdrop_path": "/bgfqWW9mLs24hXuqiIcxU1j7Fgd.jpg",
+    "release_date": "2025-03-21",
+    "director": "Elijah Bynum",
+    "runtime": 123,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.893,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【未体験2026】ホーム・アローン！　ジョナスとガビのトラップ大作戦": null,
+  "サリー": {
+    "tmdb_id": 1007980,
+    "tmdb_title_jp": "サリー",
+    "tmdb_title_en": "莎莉",
+    "overview": "養鶏で泥まみれの毎日を過ごすうち中年にさしかかっていた女性が、出会い系アプリでフランス人と恋に落ちる。ロマンス詐欺だと周囲に言われるなか、彼女は愛を確かめにパリへ行き…。自分を愛する大切さを描くヒューマンドラマ。",
+    "poster_path": "/c5kxbktPQGykg1nI0cjnw81RpGo.jpg",
+    "backdrop_path": "/kfWS8IY9Pl3MmW9QkiS8IYNrWcJ.jpg",
+    "release_date": "2024-04-03",
+    "director": "練建宏",
+    "runtime": 106,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 3.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "ワン・バトル・アフター・アナザー": {
+    "tmdb_id": 1054867,
+    "tmdb_title_jp": "ワン・バトル・アフター・アナザー",
+    "tmdb_title_en": "One Battle After Another",
+    "overview": "元革命家の頼りない中年男ボブ。彼はさらわれた愛娘を取り戻すため、かつての仲間や謎めいた空手のセンセイの助けを借りながら、恐ろしい軍人ロックジョーに立ち向かっていく。",
+    "poster_path": "/NiITrNf81jK998SYtHr81V4dD7.jpg",
+    "backdrop_path": "/zpEWFNqoN8Qg1SzMMHmaGyOBTdW.jpg",
+    "release_date": "2025-09-23",
+    "director": "ポール・トーマス・アンダーソン",
+    "runtime": 162,
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "アクション"
+    ],
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【odessa vol+】ｱｸﾞﾘｰｼｽﾀｰ": {
+    "tmdb_id": 1284120,
+    "tmdb_title_jp": "Den stygge stesøsteren",
+    "tmdb_title_en": "Den stygge stesøsteren",
+    "overview": "",
+    "poster_path": "/aM7XhsXqE2Otu0Jmcr8NrxUai4B.jpg",
+    "backdrop_path": "/ev9kxdoJ5IYVprt1OvH2SMWJdU1.jpg",
+    "release_date": "2025-03-07",
+    "director": "Emilie Blichfeldt",
+    "runtime": 109,
+    "genres": [
+      "ホラー",
+      "コメディ",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "vote_average": 7.31,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "［舞台挨拶］メモリードア": {
+    "tmdb_id": 996846,
+    "tmdb_title_jp": "メモリードア",
+    "tmdb_title_en": "メモリードア",
+    "overview": "",
+    "poster_path": "/7yQzsGA1Eu3XmwC2Roy2mYsyQsW.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "Yoshio Kato",
+    "runtime": 96,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ストレイト・ストーリー 4Kリマスター版": {
+    "tmdb_id": 404,
+    "tmdb_title_jp": "ストレイト・ストーリー",
+    "tmdb_title_en": "The Straight Story",
+    "overview": "アメリカ・アイオワ州ローレンスに住む73歳のガンコな老人アルヴィン・ストレイト。ある日、彼のもとに、76歳の兄が心臓発作で倒れたという知らせが入る。10年来仲違いをしていた兄に会うため、アルヴィンは周囲の反対を押し切り、たったひとりで時速8kmのトラクターに乗って旅に出ることを決意する。",
+    "poster_path": "/zXWrUYBtQPAfKGFoDOgoOBsH14y.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "デヴィッド・リンチ",
+    "runtime": 112,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.729,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "インランド・エンパイア 4K": {
+    "tmdb_id": 1730,
+    "tmdb_title_jp": "インランド・エンパイア",
+    "tmdb_title_en": "Inland Empire",
+    "overview": "ニッキー（ローラ・ダーン）とデヴォン（ジャスティン・セロー）は、映画監督のキングスリー（ジェレミー・アイアンズ）が手掛ける映画に出演することになる。その作品は、ある秘密を抱えており、主演女優のニッキーは役にのめりこむにつれ、次第に役柄と私生活を混同し始めるようになる。",
+    "poster_path": "/fpo5azURhr4fVh4cB4kitabshdv.jpg",
+    "backdrop_path": "/qyePa65qZVnuYWivTBXkHV9aI3A.jpg",
+    "release_date": "2006-12-06",
+    "director": "デヴィッド・リンチ",
+    "runtime": 180,
+    "genres": [
+      "ホラー",
+      "スリラー",
+      "謎",
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "vote_average": 6.995,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      }
+    ]
+  },
+  "愛がきこえる": {
+    "tmdb_id": 1404734,
+    "tmdb_title_jp": "不说话的爱",
+    "tmdb_title_en": "不说话的爱",
+    "overview": "",
+    "poster_path": "/ltfKnctPbkBc23yvRaKv0r49l4U.jpg",
+    "backdrop_path": "/7kbrHSRgOVq7EIBW6hcvZg39NMM.jpg",
+    "release_date": "2025-03-29",
+    "director": "Mo Sha",
+    "runtime": 111,
+    "genres": [
+      "ドラマ",
+      "ファミリー"
+    ],
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "世界一不運なお針子の人生最悪な1日": {
+    "tmdb_id": 1046758,
+    "tmdb_title_jp": "世界一不運なお針子の人生最悪な1日",
+    "tmdb_title_en": "Sew Torn",
+    "overview": "",
+    "poster_path": "/6N3bJq0VInPhifYml7cZ0TjRrXb.jpg",
+    "backdrop_path": "/qs7JANX6vjjWkZZIPRT7YD0Ej0j.jpg",
+    "release_date": "2025-09-11",
+    "director": "Freddy Macdonald",
+    "runtime": 100,
+    "genres": [
+      "スリラー",
+      "コメディ",
+      "犯罪"
+    ],
+    "vote_average": 6.721,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "落下の王国 4Kデジタルリマスター": {
+    "tmdb_id": 14784,
+    "tmdb_title_jp": "落下の王国",
+    "tmdb_title_en": "The Fall",
+    "overview": "左腕を骨折して入院中の5歳の少女アレクサンドリアは、脚を骨折してベッドに横たわる青年ロイと出会う。彼は彼女にアレキサンダー大王の物語を聞かせ、翌日も病室に来るようささやく。再びアレクサンドリアがロイのもとを訪れると、彼は総督と6人の男たちが織り成す壮大な叙事詩を語り始める。＜＜ターセム監督が製作した、美しい美術品のような感動巨編。自殺願望のあるスタントマンが幼い少女を操るために始めた虚構の物語が、やがて夢と希望を紡いでいく様子を丹念に映し出す。傷ついた青年役にリー・ペイス。彼を慕う少女を演じるのは、これが映画デビュー作となるカティンカ・ウンタール。CGに頼らず、世界遺産を含む世界24か国以上で撮影された驚きの華麗な映像に息をのむ。＞＞",
+    "poster_path": "/fTNoxpX2Id0pjplmpaWKSNH4hho.jpg",
+    "backdrop_path": "/vNrXoT45xscHY6AN4IGf44vHxVJ.jpg",
+    "release_date": "2006-09-09",
+    "director": "ターセム・シン",
+    "runtime": 119,
+    "genres": [
+      "アドベンチャー",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "vote_average": 7.619,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "メモリードア": {
+    "tmdb_id": 996846,
+    "tmdb_title_jp": "メモリードア",
+    "tmdb_title_en": "メモリードア",
+    "overview": "",
+    "poster_path": "/7yQzsGA1Eu3XmwC2Roy2mYsyQsW.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "Yoshio Kato",
+    "runtime": 96,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "プラハの春 不屈のラジオ報道": {
+    "tmdb_id": 533444,
+    "tmdb_title_jp": "WAVES/ウェイブス",
+    "tmdb_title_en": "Waves",
+    "overview": "郊外の町で何不自由のない生活を送っていた一家の人生を一変させた悲劇の死。深い悲しみに暮れる彼らの行く手に、新たな愛が希望の光となって差し込んでゆく。",
+    "poster_path": "/iDYOOa2Fii2ynvOlTdGGr75TuPx.jpg",
+    "backdrop_path": "/vT7xQpsw2J5Yz8G2FjxGDr7rYss.jpg",
+    "release_date": "2019-11-15",
+    "director": "Trey Edward Shults",
+    "runtime": 136,
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "vote_average": 7.358,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "坊っちゃん": {
+    "tmdb_id": 383710,
+    "tmdb_title_jp": "坊っちゃん",
+    "tmdb_title_en": "坊っちゃん",
+    "overview": "",
+    "poster_path": "/aQYmW5mL1xN0FdTuzm2TRTK8etd.jpg",
+    "backdrop_path": null,
+    "release_date": "1966-08-13",
+    "director": "市村泰一",
+    "runtime": 90,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "監獄博徒": {
+    "tmdb_id": 746081,
+    "tmdb_title_jp": "監獄博徒",
+    "tmdb_title_en": "監獄博徒",
+    "overview": "",
+    "poster_path": "/wX2EZS7jGLTKCRu0J8lDbVpQqgq.jpg",
+    "backdrop_path": "/i5ebg6htQyVGNULVKuilp8bkymZ.jpg",
+    "release_date": "1964-10-21",
+    "director": "小沢茂弘",
+    "runtime": 95,
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 10.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "俠勇の花道ドス": {
+    "tmdb_id": 1019103,
+    "tmdb_title_jp": "侠勇の花道　ドス",
+    "tmdb_title_en": "侠勇の花道　ドス",
+    "overview": "",
+    "poster_path": "/clyF0uJ3uB1SADQVuDxDgcfAOSY.jpg",
+    "backdrop_path": "/87h7vyopCSF6G6w9xLXS5ucNCm6.jpg",
+    "release_date": "1966-02-02",
+    "director": "Hiroshi Matsuno",
+    "runtime": 83,
+    "genres": [
+      "犯罪",
+      "アクション",
+      "ドラマ"
+    ],
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "日本大俠客": null,
+  "お尋ね者七人": {
+    "tmdb_id": 563868,
+    "tmdb_title_jp": "お尋ね者七人",
+    "tmdb_title_en": "お尋ね者七人",
+    "overview": "",
+    "poster_path": "/9aaVQjM2YlwdcJnWt6qdBdFJ1a7.jpg",
+    "backdrop_path": null,
+    "release_date": "1966-11-19",
+    "director": "小沢茂弘",
+    "runtime": 90,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "不良番長突撃一番": {
+    "tmdb_id": 233649,
+    "tmdb_title_jp": "不良番長　突撃一番",
+    "tmdb_title_en": "不良番長　突撃一番",
+    "overview": "",
+    "poster_path": "/xCKfvf0zldNtF2Mw2x8IRR1Ge6N.jpg",
+    "backdrop_path": null,
+    "release_date": "1971-12-29",
+    "director": "野田幸男",
+    "runtime": 88,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "俠骨一代": {
+    "tmdb_id": 459879,
+    "tmdb_title_jp": "侠骨一代",
+    "tmdb_title_en": "侠骨一代",
+    "overview": "恥に生きるな、男で生きろ！蛮勇と腕力だけの暴れん坊が軍隊生活を皮切りに、幾度か悪徳やくざと対決しながら、遂に恩を受けた親分の組織を継いで大事業を成し遂げる勇壮男性編。",
+    "poster_path": "/4cxMT8N4Wu91DFLuDaBjIbk0L9e.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-05-30",
+    "director": "マキノ雅弘",
+    "runtime": 92,
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "出世子守唄": {
+    "tmdb_id": 665171,
+    "tmdb_title_jp": "出世子守唄",
+    "tmdb_title_en": "出世子守唄",
+    "overview": "",
+    "poster_path": "/cQ5EENDA1kIAnHrxzwiXul0wi9x.jpg",
+    "backdrop_path": "/40Fm70mF4SehFTtmYgtieHGLlcV.jpg",
+    "release_date": "1967-10-21",
+    "director": "鷹森立一",
+    "runtime": 88,
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "やくざ刑事(でか)": {
+    "tmdb_id": 90354,
+    "tmdb_title_jp": "やくざ刑事",
+    "tmdb_title_en": "やくざ刑事",
+    "overview": "警視庁と横浜県警本部は、腕利きの刑事・隼田と峰尾を八城会に潜入させ、組織の壊滅を図っていた。会の傘下には西が仕切る西組、三好が仕切る潮会、唯一の資金ルート・阿久津商事があり、隼田は八城会と大倉組の抗争を利用してうまく西組に潜り込む...。",
+    "poster_path": "/muPMksA1MnSLQ6P1Sia52pCUV2h.jpg",
+    "backdrop_path": "/3O5v2vG8DHBoHp1vU2SBYqwVpbK.jpg",
+    "release_date": "1970-05-23",
+    "director": "野田幸男",
+    "runtime": 89,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 5.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "九ちゃんのでっかい夢": {
+    "tmdb_id": 663441,
+    "tmdb_title_jp": "九ちゃんのでっかい夢",
+    "tmdb_title_en": "九ちゃんのでっかい夢",
+    "overview": "",
+    "poster_path": "/52OE2iJ0D2g2lCuwMZsp5GreTnh.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-01-02",
+    "director": "山田洋次",
+    "runtime": 89,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "浪花俠客度胸七人斬り": {
+    "tmdb_id": 879573,
+    "tmdb_title_jp": "浪花侠客　度胸七人斬り",
+    "tmdb_title_en": "浪花侠客　度胸七人斬り",
+    "overview": "",
+    "poster_path": "/tbo34imvevO2hZanHjSXEBADY3R.jpg",
+    "backdrop_path": "/mX3W4lVY2voydGZuKRooHFZm0b9.jpg",
+    "release_date": "1967-08-26",
+    "director": "小沢茂弘",
+    "runtime": 88,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "任俠魚河岸の石松": null,
+  "ストレイト・ストーリー": {
+    "tmdb_id": 404,
+    "tmdb_title_jp": "ストレイト・ストーリー",
+    "tmdb_title_en": "The Straight Story",
+    "overview": "アメリカ・アイオワ州ローレンスに住む73歳のガンコな老人アルヴィン・ストレイト。ある日、彼のもとに、76歳の兄が心臓発作で倒れたという知らせが入る。10年来仲違いをしていた兄に会うため、アルヴィンは周囲の反対を押し切り、たったひとりで時速8kmのトラクターに乗って旅に出ることを決意する。",
+    "poster_path": "/zXWrUYBtQPAfKGFoDOgoOBsH14y.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "デヴィッド・リンチ",
+    "runtime": 112,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.729,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ぼくの名前はラワン": {
+    "tmdb_id": 1019185,
+    "tmdb_title_jp": "Name Me Lawand",
+    "tmdb_title_en": "Name Me Lawand",
+    "overview": "",
+    "poster_path": "/1XTIcIlnR1tOlOmtKT3uEZRt7jB.jpg",
+    "backdrop_path": "/4uwLbp0ZzOgPDKYvcqUQYoZgdWc.jpg",
+    "release_date": "2023-07-07",
+    "director": "Edward Lovelace",
+    "runtime": 84,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "白の花実": {
+    "tmdb_id": 1518671,
+    "tmdb_title_jp": "白の花実",
+    "tmdb_title_en": "白の花実",
+    "overview": "周囲に馴染めず転校を繰り返してきた杏菜は、全寮制女子校で出会った、美しく完璧なルームメイト・莉花の突然の死をきっかけに、残された≪日記≫と、莉花の“魂”に静かに侵食され、心を揺るがせていく。やがて莉花の幼なじみ・栞も巻き込みながら、『ヴァージン・スーサイズ』（99）では描かれなかった、 “死の向こう側”へとそっと踏み込んでいき、それぞれの“わたし”が、静かに揺らぎはじめる――。耽美かつ繊細な少女たちの物語。",
+    "poster_path": "/kY6F6Z3nriG9g7m6TNEndoTfMBO.jpg",
+    "backdrop_path": "/89qy0D7RYV91wCrEp4ziX8DWjkV.jpg",
+    "release_date": "2025-12-26",
+    "director": "Yukari Sakamoto",
+    "runtime": 110,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ヴィレッジ 声帯切村": {
+    "tmdb_id": 1029235,
+    "tmdb_title_jp": "Azrael",
+    "tmdb_title_en": "Azrael",
+    "overview": "",
+    "poster_path": "/qpdFKDvJS7oLKTcBLXOaMwUESbs.jpg",
+    "backdrop_path": "/np58LPJkwC3THsKBkBscDKSlQPz.jpg",
+    "release_date": "2024-09-27",
+    "director": "E.L. Katz",
+    "runtime": 86,
+    "genres": [
+      "アクション",
+      "ホラー",
+      "スリラー"
+    ],
+    "vote_average": 5.919,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "マッド・フェイト 狂運": {
+    "tmdb_id": 969050,
+    "tmdb_title_jp": "命案",
+    "tmdb_title_en": "命案",
+    "overview": "",
+    "poster_path": "/6YUviYlW0qSqeOneKPYX1wXgDqB.jpg",
+    "backdrop_path": "/wBH2UUKQWAYUZ4QbDPf5ITdenjS.jpg",
+    "release_date": "2023-04-20",
+    "director": "鄭保瑞",
+    "runtime": 108,
+    "genres": [
+      "謎",
+      "スリラー"
+    ],
+    "vote_average": 6.424,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "エミリア・ペレス": {
+    "tmdb_id": 974950,
+    "tmdb_title_jp": "エミリア・ペレス",
+    "tmdb_title_en": "Emilia Pérez",
+    "overview": "大手法律事務所に勤める過小評価された弁護士リタは、犯罪者を裁判にかけることよりも刑務所から釈放することに関心があるが、ある犯罪組織のリーダーに雇われる。",
+    "poster_path": "/7seqaCaaXDNUHOx4DqwpoOH8pPa.jpg",
+    "backdrop_path": "/u2eA9pqi1q3DvevT7RuDuJHxxBT.jpg",
+    "release_date": "2024-08-21",
+    "director": "ジャック・オーディアール",
+    "runtime": 132,
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 6.489,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "MX",
+        "name": "Mexico"
+      }
+    ]
+  },
+  "教皇選挙": {
+    "tmdb_id": 974576,
+    "tmdb_title_jp": "教皇選挙",
+    "tmdb_title_en": "Conclave",
+    "overview": "バチカンのシスティーナ礼拝堂で行われる教皇選挙＜コンクラーベ＞の裏側を描くヒューマン・ミステリー。ローマ教皇が死去した。悲しみに暮れる暇もなくローレンス枢機卿は新教皇を決める教皇選挙を執り仕切るが、その渦中、バチカンを震撼させるある秘密を知る。",
+    "poster_path": "/duUwtarUFB7araLzBTEKoSG6927.jpg",
+    "backdrop_path": "/91SnazWmEWnnH988aaz0l6NaWY9.jpg",
+    "release_date": "2024-10-25",
+    "director": "エドワード・ベルガー",
+    "runtime": 120,
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 7.191,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ロン・ライス作品集（2）": null,
+  "ストム・ソゴー作品集": null,
+  "アンソロジー・フィルムアーカイブスの創設者たち": null,
+  "時を数えて、砂漠に立つHe": {
+    "tmdb_id": 190060,
+    "tmdb_title_jp": "He Stands in a Desert Counting the Seconds of His Life",
+    "tmdb_title_en": "He Stands in a Desert Counting the Seconds of His Life",
+    "overview": "",
+    "poster_path": "/ffTB0xCRFyxYme3LQUlwOKJpsEZ.jpg",
+    "backdrop_path": "/xJzB9ZUCTMlqTLzgOar2jqSfFCr.jpg",
+    "release_date": "1986-02-22",
+    "director": "ジョナス・メカス",
+    "runtime": 149,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ボーン・イン・フレイムズBorn in Flames": {
+    "tmdb_id": 36832,
+    "tmdb_title_jp": "Born in Flames",
+    "tmdb_title_en": "Born in Flames",
+    "overview": "",
+    "poster_path": "/uV8R8B8m5rp1NFvuodWk4ZuCXY0.jpg",
+    "backdrop_path": "/pC9qonwPXvvPx5kOT48X8U4sOTq.jpg",
+    "release_date": "1983-04-01",
+    "director": "Lizzie Borden",
+    "runtime": 80,
+    "genres": [
+      "ドラマ",
+      "サイエンスフィクション"
+    ],
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "リグルーピングRegrouping": {
+    "tmdb_id": 384024,
+    "tmdb_title_jp": "Regrouping",
+    "tmdb_title_en": "Regrouping",
+    "overview": "",
+    "poster_path": "/qPC45LFk81SfmtHKNo7jVzTQpdq.jpg",
+    "backdrop_path": "/ibQ9Xc7aNs4wP6ElyIJJfb2LYwL.jpg",
+    "release_date": "1976-12-08",
+    "director": "Lizzie Borden",
+    "runtime": 80,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 3.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "「ドキュメンタリー・フィードバック」シリーズより": null,
+  "トム、トム、笛吹きの息子Tom, Tom, the Piper’s Son": {
+    "tmdb_id": 126863,
+    "tmdb_title_jp": "Tom, Tom, the Piper's Son",
+    "tmdb_title_en": "Tom, Tom, the Piper's Son",
+    "overview": "",
+    "poster_path": "/3qB5PfgjyBGeWkFPGJB5nb4NRnF.jpg",
+    "backdrop_path": "/5HAmWpXbhWdxUWykk26J7KLcL2g.jpg",
+    "release_date": "1969-04-11",
+    "director": "Ken Jacobs",
+    "runtime": 115,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "グリーサーズ・パレスGreaser’s Palace": {
+    "tmdb_id": 90715,
+    "tmdb_title_jp": "Greaser's Palace",
+    "tmdb_title_en": "Greaser's Palace",
+    "overview": "",
+    "poster_path": "/ojPhdxrC00j0zN2hUrgn0kDdZT0.jpg",
+    "backdrop_path": "/7MEmmOQP3n2FdbCuurzjwmRiQ3B.jpg",
+    "release_date": "1972-07-31",
+    "director": "Robert Downey Sr.",
+    "runtime": 91,
+    "genres": [
+      "西洋",
+      "コメディ"
+    ],
+    "vote_average": 4.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "構造映画作品集": null,
+  "デイヴィッド・ブルックス作品集": null,
+  "ロン・ライス作品集（1）": null,
+  "マリー・メンケン／マージョリー・ケラー作品集": null,
+  "「オーディオビジュアル・フィードバック」シリーズより": null,
+  "抽象アニメーション作品集": null,
+  "詩篇23枝篇23rd": {
+    "tmdb_id": 435421,
+    "tmdb_title_jp": "23rd Psalm Branch",
+    "tmdb_title_en": "23rd Psalm Branch",
+    "overview": "",
+    "poster_path": "/94YW1CluVESQDciZaQufLoRqeq9.jpg",
+    "backdrop_path": "/2Tld1GFpCri8l4lIvB64Q2zlD8I.jpg",
+    "release_date": "1967-01-27",
+    "director": "Stan Brakhage",
+    "runtime": 63,
+    "genres": [],
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ジャグラー／ニューヨーク25時【4K上映】": {
+    "tmdb_id": 44686,
+    "tmdb_title_jp": "ジャグラー ニューヨーク25時",
+    "tmdb_title_en": "Night of the Juggler",
+    "overview": "娘を突然誘拐された父親の、事件発生の朝から結着がつく翌日の明け方までの25時間にわたる必死の追跡を描く。\r ニューヨークの朝。元警官でトラック運転手のジョン・ボイド（ジェイムス・ブローリン）は、夜勤を終え、アパートに帰った。妻と別れ、娘のキャシー（アビー・ブルーストーン）と2人暮しの彼は、その日誕生日のキャシーにバレエの切符をプレゼントすると、彼女を学校まで送っていった。その頃、ガス・ソルティック（クリフ・ゴーマン）は、ある金持ちの不動産屋の娘を誘拐して身代金をせしめようと、盗んだ車で待っていた。しかし、彼は勘違いしてまちがって、ボイドの娘キャシーを車に引きずり込んでしまう。",
+    "poster_path": "/fv9LeLgbzR08UHjGyfbsEKf5JkO.jpg",
+    "backdrop_path": "/hXDG1YaJy4JCSZsqbD3snpEFmvt.jpg",
+    "release_date": "1980-06-06",
+    "director": "Robert Butler",
+    "runtime": 101,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 6.481,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "大命中！MEは何しにアマゾンへ？": {
+    "tmdb_id": 1148558,
+    "tmdb_title_jp": "아마존 활명수",
+    "tmdb_title_en": "아마존 활명수",
+    "overview": "",
+    "poster_path": "/lldTF4hL5b4bca8PXXlvjZ8v1S3.jpg",
+    "backdrop_path": "/2J7XU2lJV0xHFdW9u6ay3pBaiNV.jpg",
+    "release_date": "2024-10-30",
+    "director": "김창주",
+    "runtime": 113,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "SEBASTIAN セバスチャン": {
+    "tmdb_id": 1067485,
+    "tmdb_title_jp": "Sebastian",
+    "tmdb_title_en": "Sebastian",
+    "overview": "",
+    "poster_path": "/22JTGme2MLETmvhHQdiKP78S5Qf.jpg",
+    "backdrop_path": "/kEvBFfqCtJvtvwZcrprAT3dSvij.jpg",
+    "release_date": "2024-08-02",
+    "director": "Mikko Mäkelä",
+    "runtime": 110,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.478,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      }
+    ]
+  },
+  "ダーティハンター": {
+    "tmdb_id": 1001026,
+    "tmdb_title_jp": "Chasse gardée",
+    "tmdb_title_en": "Chasse gardée",
+    "overview": "",
+    "poster_path": "/ghr7MVNdznpYyxV661KmeSDEh9l.jpg",
+    "backdrop_path": "/qzO12qIyyGfrbs0lLzdFAEWjWXr.jpg",
+    "release_date": "2023-12-20",
+    "director": "Antonin Fourlon",
+    "runtime": 101,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "唐人街探偵1900": {
+    "tmdb_id": 1357305,
+    "tmdb_title_jp": "唐探1900",
+    "tmdb_title_en": "唐探1900",
+    "overview": "",
+    "poster_path": "/f7LFuTZvLuUb5HfEJxDSvguB9n5.jpg",
+    "backdrop_path": "/6ykQysq6kfZ6Yw5C4dkhcZRd5QI.jpg",
+    "release_date": "2025-01-29",
+    "director": "陈思诚",
+    "runtime": 135,
+    "genres": [
+      "コメディ",
+      "謎",
+      "アクション"
+    ],
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "Fox Hunt フォックス・ハント": {
+    "tmdb_id": 729684,
+    "tmdb_title_jp": "猎狐·行动",
+    "tmdb_title_en": "猎狐·行动",
+    "overview": "",
+    "poster_path": "/y8CpJRV7b43CGjEH0qcnnbWj8xs.jpg",
+    "backdrop_path": "/hSn77LAWty1YsUlma6DDuyq2pH6.jpg",
+    "release_date": "2025-04-04",
+    "director": "レオ・チャン",
+    "runtime": 106,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "Megadeth: Behind the Mask": {
+    "tmdb_id": 1596092,
+    "tmdb_title_jp": "Megadeth: Behind the Mask",
+    "tmdb_title_en": "Megadeth: Behind the Mask",
+    "overview": "",
+    "poster_path": "/au25ugceCljDxu8wEWyrjnYH6Ym.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-22",
+    "director": "Casey Tebo",
+    "runtime": 109,
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ウォーフェア 戦地最前線": {
+    "tmdb_id": 1241436,
+    "tmdb_title_jp": "ウォーフェア 戦地最前線",
+    "tmdb_title_en": "Warfare",
+    "overview": "＜極限の95分、映画史上最もリアルな戦場に、あなたを閉じ込める＞\r 2006年、イラク。監督を務めたメンドーサが所属していたアメリカ特殊部隊の小隊８名は、危険地帯ラマディで、アルカイダ幹部の監視と狙撃の任務についていた。ところが事態を察知した敵兵から先制攻撃を受け、全面衝突が始まる。反乱勢力に完全包囲され、負傷者は続出。救助を要請するが、さらなる攻撃を受け現場は地獄と化す。本部との通信を閉ざした通信兵・メンドーサ、指揮官のジョーは部隊への指示を完全に放棄し、皆から信頼される狙撃手のエリオット（愛称:ブージャー･ブー(鼻くそブーの意)）は爆撃により意識を失ってしまう。痛みに耐えきれず叫び声を上げる者、鎮痛剤のモルヒネを打ち間違える者、持ち場を守らずパニックに陥る者。彼らは逃げ場のない、轟音鳴り響くウォーフェア（戦闘）から、いかにして脱出するのか。",
+    "poster_path": "/ikdVFWer1HWuRcpSVE9EIhoQVPV.jpg",
+    "backdrop_path": "/cJvUJEEQ86LSjl4gFLkYpdCJC96.jpg",
+    "release_date": "2025-04-09",
+    "director": "Ray Mendoza",
+    "runtime": 95,
+    "genres": [
+      "戦争",
+      "アクション"
+    ],
+    "vote_average": 7.091,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "万事快調〈オール・グリーンズ〉": {
+    "tmdb_id": 1532395,
+    "tmdb_title_jp": "万事快調〈オール・グリーンズ〉",
+    "tmdb_title_en": "万事快調〈オール・グリーンズ〉",
+    "overview": "",
+    "poster_path": "/yo6eLG1F2tC8ecdkXcYLlfu72bl.jpg",
+    "backdrop_path": "/diQKCrUfy6L5xzLIXEtE4AWBKbR.jpg",
+    "release_date": "2026-01-16",
+    "director": "児山隆",
+    "runtime": 119,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "千年女優 4Kリマスター版": {
+    "tmdb_id": 33320,
+    "tmdb_title_jp": "千年女優",
+    "tmdb_title_en": "千年女優",
+    "overview": "映像製作会社社長・立花源也は、かつて一世を風靡した大女優・藤原千代子の半生を振り返るドキュメンタリー制作を依頼された。千代子の大ファンだった立花は若いカメラマンを引き連れ、30年前に人気絶頂の中、忽然と姿を消し、以来公の場に現われなかった千代子の屋敷へ向かった。ようやく姿を現した千代子は、歳は老いても昔の清純な印象を残していた。そして、戸惑いながらも自らの人生を語り始めた。それは、女優になる前、女学生の頃に恋した名も知らぬ男性を、生涯をかけて追い求める壮大なラブ・ストーリーだった。",
+    "poster_path": "/iVNCVWAqBSDU0MJCq1ehAIGifev.jpg",
+    "backdrop_path": "/jZW391Kknf4YiIaZ1XHyVjnJaKe.jpg",
+    "release_date": "2002-09-14",
+    "director": "今敏",
+    "runtime": 87,
+    "genres": [
+      "ドラマ",
+      "アニメーション",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "vote_average": 7.839,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "東京ゴッドファーザーズ 4Kリマスター版": {
+    "tmdb_id": 13398,
+    "tmdb_title_jp": "東京ゴッドファーザーズ",
+    "tmdb_title_en": "東京ゴッドファーザーズ",
+    "overview": "新宿の裏通り界隈を根城にするホームレスの中年男性ギン、オカマのハナ、家出娘のミユキはクリスマス・イヴの夜、ゴミ置き場に捨てられた赤ん坊を発見。ギンは赤ん坊を警察に届けようとするが、子どもを育てることが夢だったハナは赤ん坊を勝手に《清子》と命名し、自分たちで親探しをしようと決める。だが、手がかりになりそうなものは赤ん坊と一緒にあったわずかな写真と名刺だけ。翌日、3人は写真の場所を探して歩き回る。",
+    "poster_path": "/46nfwdUnyrIJMAnFqYaMDqInxVo.jpg",
+    "backdrop_path": "/mnppPdfdtKPNoRemzIZDwOKpgfv.jpg",
+    "release_date": "2003-12-05",
+    "director": "今敏",
+    "runtime": 92,
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "コメディ"
+    ],
+    "vote_average": 7.926,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "PERFECT BLUE 4Kリマスター版": null,
+  "パプリカ 4Kリマスター版": {
+    "tmdb_id": 4977,
+    "tmdb_title_jp": "パプリカ",
+    "tmdb_title_en": "パプリカ",
+    "overview": "パプリカ/千葉敦子は、時田浩作の発明した夢を共有する装置DCミニを使用するサイコセラピスト。ある日、そのDCミニが研究所から盗まれてしまい、それを悪用して他人の夢に強制介入し、悪夢を見せ精神を崩壊させる事件が発生するようになる。敦子達は犯人の正体・目的、そして終わり無き悪夢から抜け出す方法を探る。",
+    "poster_path": "/aD0uIqGX3xdmUF2Ol2nvhJsfL5C.jpg",
+    "backdrop_path": "/zfbuY4A9X5sTJ2bzTt84rtiDK9t.jpg",
+    "release_date": "2006-10-01",
+    "director": "今敏",
+    "runtime": 90,
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "スリラー"
+    ],
+    "vote_average": 7.813,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "天使のたまご 4Kリマスター": {
+    "tmdb_id": 15916,
+    "tmdb_title_jp": "天使のたまご",
+    "tmdb_title_en": "天使のたまご",
+    "overview": "ノアの方舟が陸地を見つけられなかったもう1つの世界。巨大な眼球を模し、中に複数の人型の彫像が鎮座する宗教の象徴のような機械仕掛けの太陽が海に沈み、世界は夜を迎える。  方舟の中の動物がすべて化石になった頃、忘れ去られた街で一人の少年と一人の少女が出会う。",
+    "poster_path": "/nCjPdzIqynTp7jwOMEzYpF4IcZS.jpg",
+    "backdrop_path": "/nZn384qWYugXu6U1N8Ya0Iv0NXE.jpg",
+    "release_date": "1985-12-22",
+    "director": "押井守",
+    "runtime": 71,
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "謎"
+    ],
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ピアス 刺心": {
+    "tmdb_id": 940247,
+    "tmdb_title_jp": "刺心切骨",
+    "tmdb_title_en": "刺心切骨",
+    "overview": "",
+    "poster_path": "/ctMqFfhkCvYLFX0kHdazQo8Wojy.jpg",
+    "backdrop_path": "/4ggd2yJ0YpWEpAwnJ75NUzByRkc.jpg",
+    "release_date": "2024-11-07",
+    "director": "Nelicia Low",
+    "runtime": 109,
+    "genres": [
+      "ドラマ",
+      "謎",
+      "スリラー"
+    ],
+    "vote_average": 7.375,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SG",
+        "name": "Singapore"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      }
+    ]
+  },
+  "君と私": null,
+  "ブラックホールに願いを！": {
+    "tmdb_id": 1550008,
+    "tmdb_title_jp": "ブラックホールに願いを！",
+    "tmdb_title_en": "ブラックホールに願いを！",
+    "overview": "",
+    "poster_path": "/wExUm4ptSovCE6ZvQ4P1gigS9zl.jpg",
+    "backdrop_path": "/tXE2fVM1f8bamVRoMBSQzK52yvX.jpg",
+    "release_date": "2025-12-06",
+    "director": "So Watanabe",
+    "runtime": 117,
+    "genres": [
+      "サイエンスフィクション"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "フレッシュ・デリ": {
+    "tmdb_id": 4972,
+    "tmdb_title_jp": "フレッシュ・デリ",
+    "tmdb_title_en": "De grønne slagtere",
+    "overview": "開店休業状態の肉屋のスヴェンとビャン。誤って人を巨大冷凍庫に閉じ込めて殺してしまったスヴェンは、死体の肉をマリネにして売るが、評判を呼んでしまい……恐怖のホラー作品。",
+    "poster_path": "/plIr2NknxxvzY9nkR8AgnuLl4mK.jpg",
+    "backdrop_path": "/6932vcYj1gGqydcC8yVrVohPVY2.jpg",
+    "release_date": "2003-03-08",
+    "director": "Anders Thomas Jensen",
+    "runtime": 100,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 7.093,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      }
+    ]
+  },
+  "みらいのうた": {
+    "tmdb_id": 1555277,
+    "tmdb_title_jp": "みらいのうた",
+    "tmdb_title_en": "みらいのうた",
+    "overview": "日本を代表するロックミュージシャン吉井和哉。  撮影開始した矢先に病が発覚。復活への３年間を記録。  吉井をロックの世界に導いた人物との交流も。",
+    "poster_path": "/dDXhYeq9NSwjdqlZknGqpHzLvfl.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-31",
+    "director": "Elizabeth Miyaji",
+    "runtime": 137,
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "アダムズ・アップル": {
+    "tmdb_id": 1023,
+    "tmdb_title_jp": "アダムズ・アップル",
+    "tmdb_title_en": "Adams æbler",
+    "overview": "",
+    "poster_path": "/6RNmgq0UKvPuzLI6iY81ugLhjw2.jpg",
+    "backdrop_path": "/iVnsOj0MtVE1lzfillNAPqCdhpR.jpg",
+    "release_date": "2005-04-15",
+    "director": "Anders Thomas Jensen",
+    "runtime": 95,
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "犯罪"
+    ],
+    "vote_average": 7.447,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "アフター・ウェディング": {
+    "tmdb_id": 3549,
+    "tmdb_title_jp": "アフター・ウェディング",
+    "tmdb_title_en": "Efter brylluppet",
+    "overview": "",
+    "poster_path": "/jUiB4jkt1fS7AVK8h9154xGQ4Qp.jpg",
+    "backdrop_path": "/c2nxaEE0yBcg9qeqrisbkvBxTNh.jpg",
+    "release_date": "2006-02-24",
+    "director": "Susanne Bier",
+    "runtime": 124,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.126,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "ブレイカウェイ": {
+    "tmdb_id": 10180,
+    "tmdb_title_jp": "ブレイカウェイ",
+    "tmdb_title_en": "Blinkende lygter",
+    "overview": "",
+    "poster_path": "/8drJTelBYElR5Xh1DwCWOTJIaBs.jpg",
+    "backdrop_path": "/oW8tmQwXbg45AwqLqKCRhbgV89P.jpg",
+    "release_date": "2000-11-03",
+    "director": "Anders Thomas Jensen",
+    "runtime": 109,
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪"
+    ],
+    "vote_average": 7.145,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "偽りなき者": {
+    "tmdb_id": 103663,
+    "tmdb_title_jp": "偽りなき者",
+    "tmdb_title_en": "Jagten",
+    "overview": "“北欧の至宝”と称される名優、マッツ・ミケルセンを主演に迎えたサスペンス・ドラマ。一人の少女の作り話によって、変質者の烙印を押されてしまった幼稚園教師のルーカス。全てを失った彼はさらなる迫害の標的となり……。",
+    "poster_path": "/fQi5PXcGZBJDrocZevg4KrRWMA.jpg",
+    "backdrop_path": "/7zN7m5jEyrNxFYm2EbQJAZwAG5i.jpg",
+    "release_date": "2012-10-25",
+    "director": "Thomas Vinterberg",
+    "runtime": 116,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 8.098,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "チャップリン": null,
+  "旅人の必需品": {
+    "tmdb_id": 1146410,
+    "tmdb_title_jp": "여행자의 필요",
+    "tmdb_title_en": "여행자의 필요",
+    "overview": "",
+    "poster_path": "/fNhyJp2fy47vg66LZ8aA2b0tsVQ.jpg",
+    "backdrop_path": "/u3JuBKQTuyfvWy7Rm01Ugej6Qs5.jpg",
+    "release_date": "2024-04-24",
+    "director": "홍상수",
+    "runtime": 90,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ウォーフェア 戦地最前線（字幕）": {
+    "tmdb_id": 1241436,
+    "tmdb_title_jp": "ウォーフェア 戦地最前線",
+    "tmdb_title_en": "Warfare",
+    "overview": "＜極限の95分、映画史上最もリアルな戦場に、あなたを閉じ込める＞\r 2006年、イラク。監督を務めたメンドーサが所属していたアメリカ特殊部隊の小隊８名は、危険地帯ラマディで、アルカイダ幹部の監視と狙撃の任務についていた。ところが事態を察知した敵兵から先制攻撃を受け、全面衝突が始まる。反乱勢力に完全包囲され、負傷者は続出。救助を要請するが、さらなる攻撃を受け現場は地獄と化す。本部との通信を閉ざした通信兵・メンドーサ、指揮官のジョーは部隊への指示を完全に放棄し、皆から信頼される狙撃手のエリオット（愛称:ブージャー･ブー(鼻くそブーの意)）は爆撃により意識を失ってしまう。痛みに耐えきれず叫び声を上げる者、鎮痛剤のモルヒネを打ち間違える者、持ち場を守らずパニックに陥る者。彼らは逃げ場のない、轟音鳴り響くウォーフェア（戦闘）から、いかにして脱出するのか。",
+    "poster_path": "/ikdVFWer1HWuRcpSVE9EIhoQVPV.jpg",
+    "backdrop_path": "/cJvUJEEQ86LSjl4gFLkYpdCJC96.jpg",
+    "release_date": "2025-04-09",
+    "director": "Ray Mendoza",
+    "runtime": 95,
+    "genres": [
+      "戦争",
+      "アクション"
+    ],
+    "vote_average": 7.091,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "旅の終わりのたからもの（字幕）": {
+    "tmdb_id": 1220515,
+    "tmdb_title_jp": "Treasure",
+    "tmdb_title_en": "Treasure",
+    "overview": "",
+    "poster_path": "/iZWgDOg6Oc6kDkJSAJCttfh8dpq.jpg",
+    "backdrop_path": "/8nQzt0zzc0eV4zzy4dpQiDP6CBg.jpg",
+    "release_date": "2024-06-13",
+    "director": "Julia von Heinz",
+    "runtime": 111,
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "vote_average": 6.571,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      },
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      }
+    ]
+  },
+  "Black Box Diaries": {
+    "tmdb_id": 1214499,
+    "tmdb_title_jp": "Black Box Diaries",
+    "tmdb_title_en": "Black Box Diaries",
+    "overview": "性暴力の被害者として、ジャーナリストとして、事件の真実を追及し、権力に対して戦いを挑んだ伊藤詩織。彼女や周りの人たちが記録した膨大な音声や映像で構成されたドキュメンタリー。",
+    "poster_path": "/yMFO9EceZ2HRbhHmmVBqYyWNPGa.jpg",
+    "backdrop_path": "/sC5FzA4DfQr6ML3rSKL3E3v5as8.jpg",
+    "release_date": "2024-10-24",
+    "director": "伊藤詩織",
+    "runtime": 103,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "喝采（字幕）": null,
+  "ロストランズ 闇を狩る者（字幕）": {
+    "tmdb_id": 324544,
+    "tmdb_title_jp": "In the Lost Lands",
+    "tmdb_title_en": "In the Lost Lands",
+    "overview": "",
+    "poster_path": "/dDlfjR7gllmr8HTeN6rfrYhTdwX.jpg",
+    "backdrop_path": "/jb7yM17VZvDqUJVS4JR77EOfgEM.jpg",
+    "release_date": "2025-02-27",
+    "director": "ポール・W・S・アンダーソン",
+    "runtime": 102,
+    "genres": [
+      "アクション",
+      "ファンタジー",
+      "西洋"
+    ],
+    "vote_average": 6.429,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "ひゃくえむ。": {
+    "tmdb_id": 1295026,
+    "tmdb_title_jp": "ひゃくえむ。",
+    "tmdb_title_en": "ひゃくえむ。",
+    "overview": "生まれつき足が速く、「友達」も「居場所」も手に入れてきたトガシと、辛い現実を忘れるため、ただがむしゃらに走っていた転校生の小宮。トガシは、そんな小宮に速く走る方法を教え、放課後2人で練習を重ねる。打ち込むものを見つけ、貪欲に記録を追うようになる小宮。次第に2人は100m走を通して、ライバルとも親友ともいえる関係になっていった。数年後、天才ランナーとして名を馳せるも、勝ち続けなければいけない恐怖に怯えるトガシの前にトップランナーの一人となった小宮が現れる――。",
+    "poster_path": "/ftUHKZfXONnjuOGGpNeFCeAXbYF.jpg",
+    "backdrop_path": "/hKy4J8jbiOBmSKs0NlcHP1hLWYl.jpg",
+    "release_date": "2025-09-19",
+    "director": "岩井澤健治",
+    "runtime": 106,
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "vote_average": 7.683,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ただ、やるべきことを（字幕）": {
+    "tmdb_id": 1172503,
+    "tmdb_title_jp": "해야 할 일",
+    "tmdb_title_en": "해야 할 일",
+    "overview": "",
+    "poster_path": "/nhyzAAxpTaHKCFmehBXAin0a5hE.jpg",
+    "backdrop_path": "/wSqlFvZ0kgGr4N5918sVEWCQ5Kf.jpg",
+    "release_date": "2024-09-25",
+    "director": "Park Hong-jun",
+    "runtime": 103,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ダウントン・アビー／グランドフィナーレ（字幕）": {
+    "tmdb_id": 1289936,
+    "tmdb_title_jp": "Downton Abbey: The Grand Finale",
+    "tmdb_title_en": "Downton Abbey: The Grand Finale",
+    "overview": "",
+    "poster_path": "/m1tLlMTCwc6oK6OjWTOI4b32wnA.jpg",
+    "backdrop_path": "/jvzPTf0nhsqAXodYT6ILKb99IA2.jpg",
+    "release_date": "2025-09-10",
+    "director": "Simon Curtis",
+    "runtime": 123,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.195,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "おくびょう鳥が歌うほうへ（字幕）": {
+    "tmdb_id": 785542,
+    "tmdb_title_jp": "The Outrun",
+    "tmdb_title_en": "The Outrun",
+    "overview": "",
+    "poster_path": "/zfRR2CkbvYrLuOPQFm8vBaENyMy.jpg",
+    "backdrop_path": "/5OOYy7YpnwWxZAx8enpwRLIIRR8.jpg",
+    "release_date": "2024-09-27",
+    "director": "ノラ・フィングシャイト",
+    "runtime": 118,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.833,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "架空の犬と嘘をつく猫": {
+    "tmdb_id": 1559218,
+    "tmdb_title_jp": "架空の犬と嘘をつく猫",
+    "tmdb_title_en": "架空の犬と嘘をつく猫",
+    "overview": "弟の死により現実を見なくなった母親を筆頭に、家族の誰もが”不都合な真実“から目をそらし、それでもなお一緒に暮らしている、機能不全の羽猫家の約30年間を描いた物語。",
+    "poster_path": "/rAUGA6yt1EJ6kGNEUvENNUEPdtj.jpg",
+    "backdrop_path": "/7NGb9x9L4l64TfawvYiDGAcKd1t.jpg",
+    "release_date": "2026-01-09",
+    "director": "森ガキ侑大",
+    "runtime": 125,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "GRIT ―バレーボール男子日本代表 栄光への始発点―": null,
+  "落語家の業": null,
+  "宝島": {
+    "tmdb_id": 1293968,
+    "tmdb_title_jp": "宝島",
+    "tmdb_title_en": "宝島",
+    "overview": "沖縄がアメリカだった時代。米軍基地から奪った物資を住民らに分け与える、“戦果アギヤー”と呼ばれる若者たちがいた。その中心にいるのは、いつか「でっかい戦果」を上げることを夢見る幼馴染の4人、オン、グスク、ヤマコ、レイ。その中でも、英雄的存在であり、リーダーとしてみんなを引っ張っていたのが、一番年上のオンだった。全てを懸けて臨んだある襲撃の夜、オンは「予定外の戦果」を手に入れ、突然消息を絶つ…。残された3人はやがて、警察官、小学校の先生、ヤクザになり、それぞれの想いを胸に、憧れの存在オンの失踪の謎を追うが――。",
+    "poster_path": "/aX5G8rimkQmnDkNP3IGBI4bqTNk.jpg",
+    "backdrop_path": "/6Nx5e2gW12LKnTdRBv0xl4Qd6eo.jpg",
+    "release_date": "2025-09-19",
+    "director": "大友啓史",
+    "runtime": 191,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 9.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "兄を持ち運べるサイズに": {
+    "tmdb_id": 1461775,
+    "tmdb_title_jp": "兄を持ち運べるサイズに",
+    "tmdb_title_en": "兄を持ち運べるサイズに",
+    "overview": "ある日、理子のもとに警察から電話が入る。それは、何年も会っていない兄が死んだという知らせだった。発見したのは、兄と暮らしていた息子の良一だという。「早く、兄を持ち運べるサイズにしてしまおう」。そう考えた理子は東北へ向かい、警察署で7年ぶりに兄の元妻・加奈子と、その娘・満里奈と再会する。兄たちが住んでいたゴミ屋敷と化したアパートを片づけていた3人は、壁に貼られた家族写真を見つける。そこには、子ども時代の兄と理子が写ったものや、兄と加奈子、満里奈、良一という、兄が築いた家庭の写真などがあった。同じように迷惑をかけられたはずの加奈子は、兄の後始末をしながら悪口を言い続ける理子に、「もしかしたら、理子ちゃんには、あの人の知らないところがあるのかな」と言う。これをきっかけに、理子たちはそれぞれに家族を見つめ直すことになる。",
+    "poster_path": "/6cfZI2G5EbiSMzd0lSMCAfmifFK.jpg",
+    "backdrop_path": "/jgNRXM69ygunAnLHNMuI0RBpGiA.jpg",
+    "release_date": "2025-11-28",
+    "director": "中野量太",
+    "runtime": 126,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "トリツカレ男": {
+    "tmdb_id": 1484833,
+    "tmdb_title_jp": "トリツカレ男",
+    "tmdb_title_en": "トリツカレ男",
+    "overview": "ひとたび何かに夢中になると、ほかのことが目に入らなくなってしまうジュゼッペは、街のみんなから“トリツカレ男”と呼ばれている。  三段跳び、探偵、歌……ジュゼッペがとりつかれるものは誰も予想ができないものばかりだ。  行き場のないネズミのシエロに話しかけるうちにネズミ語をマスターしたジュゼッペ。  昆虫採集に夢中になっていると、公園で風船売りをしているペチカに一目惚れ。今度はペチカに夢中になった。  勇気を出してペチカに話しかけたジュゼッペだったが、ペチカの心には悲しみがあった。  大好きなペチカのため、相棒のシエロとともに、彼女が抱える心配事を、これまでとりつかれた数々の技を使ってこっそり解決していく。  ジュゼッペの夢中が、奇跡となってあなたに届くーー",
+    "poster_path": "/vzNDv1Ts7GzlFJ2pgcMYev3BDCG.jpg",
+    "backdrop_path": "/7aaiLHEALz8YFpci3wRheWSddrh.jpg",
+    "release_date": "2025-11-07",
+    "director": "高橋渉",
+    "runtime": 98,
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "ロマンス",
+      "音楽"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ラストノート 名もなき者たちの歌": null,
+  "怪獣天国": {
+    "tmdb_id": 1595942,
+    "tmdb_title_jp": "怪獣天国",
+    "tmdb_title_en": "怪獣天国",
+    "overview": "",
+    "poster_path": "/kGoBRzLcfONf7tOB7Dvhm4Xqtw.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-23",
+    "director": "河崎実",
+    "runtime": 71,
+    "genres": [
+      "サイエンスフィクション",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "佐藤忠男、映画の旅": {
+    "tmdb_id": 1555803,
+    "tmdb_title_jp": "佐藤忠男、映画の旅",
+    "tmdb_title_en": "佐藤忠男、映画の旅",
+    "overview": "独学で映画評論の道を開拓し、60年にわたる評論家人生で日本映画史を体系化した功績、そして後年にはライフワークとしてアジア映画を発掘し日本に先駆的に紹介した功績から、映画評論家として初めて文化功労者に選出されたことでも知られる佐藤忠男。庶民の目線から多岐に映画を論じ、アジアとの映画交流や後進の育成にも尽力したが、2022年3月に91歳で逝去した。",
+    "poster_path": "/yUuo6WXM66CKaoaXcKq1f6BJOrD.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-01",
+    "director": "Terasaki Mizuho",
+    "runtime": 98,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "アハーン": {
+    "tmdb_id": 829549,
+    "tmdb_title_jp": "आहान",
+    "tmdb_title_en": "आहान",
+    "overview": "",
+    "poster_path": "/gMb3pKpXU3WXQpFjteynQDwctp2.jpg",
+    "backdrop_path": "/e8u5EVmgfB4A57TLlmIfo2mnM3c.jpg",
+    "release_date": "2021-03-19",
+    "director": "Nikhil Pherwani",
+    "runtime": 81,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "響け！ 情熱のムリダンガム": {
+    "tmdb_id": 504437,
+    "tmdb_title_jp": "சர்வம் தாளமயம்",
+    "tmdb_title_en": "சர்வம் தாளமயம்",
+    "overview": "",
+    "poster_path": "/2LreMDJBdGC55Ngbs8EDvyAVWX4.jpg",
+    "backdrop_path": "/yM19JFb4DA52RvbxbUAz8MtmNJE.jpg",
+    "release_date": "2019-02-01",
+    "director": "Rajiv Menon",
+    "runtime": 133,
+    "genres": [
+      "ファミリー",
+      "音楽",
+      "ドラマ"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "CROSSING 心の交差点": null,
+  "TOKYOタクシー": {
+    "tmdb_id": 1422404,
+    "tmdb_title_jp": "TOKYOタクシー",
+    "tmdb_title_en": "TOKYOタクシー",
+    "overview": "タクシー運転手の宇佐美浩二は、ある日、85歳の高野すみれを東京の柴又から、神奈川の葉山にある高齢者施設まで送ることになった。すみれは浩二に、いくつか寄り道を依頼する。次第に心を許したすみれは、自らの壮絶な過去を語り始める。偶然出会った二人の心が、そして人生が大きく動いていくことになる。",
+    "poster_path": "/iJHARu7sCkQy419txqTwKCgQQWQ.jpg",
+    "backdrop_path": "/wPvNbPmRdMAgSkXiuTBUdlZvj2b.jpg",
+    "release_date": "2025-11-21",
+    "director": "山田洋次",
+    "runtime": 103,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【チリの闘い：武器なき民の抵抗】第2部：クーデター": {
+    "tmdb_id": 132148,
+    "tmdb_title_jp": "La batalla de Chile (Parte 2). El Golpe de Estado",
+    "tmdb_title_en": "La batalla de Chile (Parte 2). El Golpe de Estado",
+    "overview": "",
+    "poster_path": "/kwLnp3uM2gbDLxeteutGcrQCqZb.jpg",
+    "backdrop_path": "/xvh6gngqMwgyyfmR4mtaLxnCTy.jpg",
+    "release_date": "1976-03-13",
+    "director": "Patricio Guzmán",
+    "runtime": 88,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.684,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CL",
+        "name": "Chile"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CU",
+        "name": "Cuba"
+      },
+      {
+        "iso_3166_1": "VE",
+        "name": "Venezuela"
+      }
+    ]
+  },
+  "おくびょう鳥が歌うほうへ": {
+    "tmdb_id": 785542,
+    "tmdb_title_jp": "The Outrun",
+    "tmdb_title_en": "The Outrun",
+    "overview": "",
+    "poster_path": "/zfRR2CkbvYrLuOPQFm8vBaENyMy.jpg",
+    "backdrop_path": "/5OOYy7YpnwWxZAx8enpwRLIIRR8.jpg",
+    "release_date": "2024-09-27",
+    "director": "ノラ・フィングシャイト",
+    "runtime": 118,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.833,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "アイアン・メイデン：フライト666": {
+    "tmdb_id": 19105,
+    "tmdb_title_jp": "Iron Maiden: Flight 666",
+    "tmdb_title_en": "Iron Maiden: Flight 666",
+    "overview": "",
+    "poster_path": "/3Qfao6dEKEVxLWbX2ALqoge182o.jpg",
+    "backdrop_path": "/o1zaOyLalrfA96FiqYZKhZWQBHp.jpg",
+    "release_date": "2009-04-21",
+    "director": "Scot McFadyen",
+    "runtime": 113,
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "vote_average": 7.752,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "アグリーシスター 可愛いあの娘は醜いわたし": null,
+  "シネマ歌舞伎『歌舞伎ＮＥＸＴ 朧の森に棲む鬼』幸四郎版": null,
+  "ストレイト・ストーリー4Kリマスター版": {
+    "tmdb_id": 404,
+    "tmdb_title_jp": "ストレイト・ストーリー",
+    "tmdb_title_en": "The Straight Story",
+    "overview": "アメリカ・アイオワ州ローレンスに住む73歳のガンコな老人アルヴィン・ストレイト。ある日、彼のもとに、76歳の兄が心臓発作で倒れたという知らせが入る。10年来仲違いをしていた兄に会うため、アルヴィンは周囲の反対を押し切り、たったひとりで時速8kmのトラクターに乗って旅に出ることを決意する。",
+    "poster_path": "/zXWrUYBtQPAfKGFoDOgoOBsH14y.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "デヴィッド・リンチ",
+    "runtime": 112,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.729,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "モディリアーニ！": null,
+  "ワーキングマン": {
+    "tmdb_id": 1197306,
+    "tmdb_title_jp": "ワーキングマン",
+    "tmdb_title_en": "A Working Man",
+    "overview": "レヴォン・ケイドは、受勲もした軍歴を持つ極秘任務隊員だが、そのキャリアを封印し、建設業で質素な生活を送っていた。しかし、彼にとって家族同然である上司の娘が人身売買集団に連れ去られてしまう。彼女を連れ戻そうとするレヴォンは、捜索の過程で想像をはるかに上回る腐敗社会を目の当たりにするのだった。",
+    "poster_path": "/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg",
+    "backdrop_path": "/fTrQsdMS2MUw00RnzH0r3JWHhts.jpg",
+    "release_date": "2025-03-26",
+    "director": "David Ayer",
+    "runtime": 118,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 6.701,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "万事快調 〈オール・グリーンズ〉": {
+    "tmdb_id": 1532395,
+    "tmdb_title_jp": "万事快調〈オール・グリーンズ〉",
+    "tmdb_title_en": "万事快調〈オール・グリーンズ〉",
+    "overview": "",
+    "poster_path": "/yo6eLG1F2tC8ecdkXcYLlfu72bl.jpg",
+    "backdrop_path": "/diQKCrUfy6L5xzLIXEtE4AWBKbR.jpg",
+    "release_date": "2026-01-16",
+    "director": "児山隆",
+    "runtime": 119,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "喝采": {
+    "tmdb_id": 800513,
+    "tmdb_title_jp": "The Great Lillian Hall",
+    "tmdb_title_en": "The Great Lillian Hall",
+    "overview": "",
+    "poster_path": "/8rbwcw8yQXEmSweaxDfyMRwXaVt.jpg",
+    "backdrop_path": "/Rsh1NIh9Xlwp6bTs4djjdDcZrb.jpg",
+    "release_date": "2024-06-30",
+    "director": "マイケル・クリストファー",
+    "runtime": 111,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.022,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "藤本タツキ 17-26 Part-1": null,
+  "藤本タツキ 17-26 Part-2": null,
+  "あなたならどうする？ 人生を決める 百万ドルのキス": null,
+  "ペリリュー -楽園のゲルニカ-": {
+    "tmdb_id": 1418666,
+    "tmdb_title_jp": "ペリリュー －楽園のゲルニカ－",
+    "tmdb_title_en": "ペリリュー －楽園のゲルニカ－",
+    "overview": "",
+    "poster_path": "/a7c9bttpcxjkG9UH20rbUIfY3ru.jpg",
+    "backdrop_path": "/jKHlGoME9vAnvY8war2aWABSktR.jpg",
+    "release_date": "2025-12-05",
+    "director": "久慈悟郎",
+    "runtime": 106,
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "戦争"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『コードギアス 反逆のルルーシュⅡ 叛道』【コードギアス20周年記念復刻上映会 Road to CODE GEASS 20th Year】": {
+    "tmdb_id": 477777,
+    "tmdb_title_jp": "コードギアス 反逆のルルーシュⅡ 叛道",
+    "tmdb_title_en": "コードギアス 反逆のルルーシュⅡ 叛道",
+    "overview": "仮面の反逆者「ゼロ」として反ブリタニア勢力「黒の騎士団」を率いるルルーシュ。親友のスザクはブリタニア第3皇女ユーフェミアの騎士に任命され、それぞれの立場で力をつけていく2人だったが、ユーフェミアがエリア11副総督として行政特区「日本」の発足を発表し、大きな転機が訪れる。行政特区日本が実現すれば黒の騎士団の存在意義が失われてしまうことから、ルルーシュはユーフェミアとの面会を試みるが・・・。",
+    "poster_path": "/uDpoqBWcAAghFWmUOEnNQMok9FN.jpg",
+    "backdrop_path": "/de94egii0q7C6GZu6gFTJS6MeMB.jpg",
+    "release_date": "2018-02-10",
+    "director": "谷口悟朗",
+    "runtime": 133,
+    "genres": [
+      "サイエンスフィクション",
+      "アニメーション",
+      "ドラマ",
+      "アクション"
+    ],
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【チリの闘い：武器なき民の抵抗】第3部：民衆の力": {
+    "tmdb_id": 132150,
+    "tmdb_title_jp": "La batalla de Chile (Parte 3). El Poder Popular",
+    "tmdb_title_en": "La batalla de Chile (Parte 3). El Poder Popular",
+    "overview": "",
+    "poster_path": "/9ILZtNQWe4j6RO4hhA6ZeSUY0dK.jpg",
+    "backdrop_path": "/67t3dSgVDYyG8l2hqToe2BZJdAx.jpg",
+    "release_date": "1979-03-15",
+    "director": "Patricio Guzmán",
+    "runtime": 78,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.368,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CL",
+        "name": "Chile"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CU",
+        "name": "Cuba"
+      },
+      {
+        "iso_3166_1": "VE",
+        "name": "Venezuela"
+      }
+    ]
+  },
+  "この本を盗む者は": {
+    "tmdb_id": 1492347,
+    "tmdb_title_jp": "この本を盗む者は",
+    "tmdb_title_en": "この本を盗む者は",
+    "overview": "「本なんて、読まなければよかった……！」  書物の街・読長町に住む高校生の御倉深冬。  曾祖父が創立した巨大な書庫「御倉館」を代々管理する一家の娘だが、当の本人は本が好きではなかった。  ある日、御倉館の本が盗まれたことで、読長町は突然物語の世界に飲み込まれてしまう。  それは本にかけられた呪い――“ブックカース”だった。  呪いを解く鍵は、物語の中に―― 町を救うため、深冬は不思議な少女・真白とともに本泥棒を捕まえる旅に出る。泥棒の正体は一体誰なのか？そして、深冬も知らない“呪い”と“御倉家”の秘密とは……？  2人の少女が “本の世界”を旅する、謎解き冒険ファンタジーが開幕！  すべての呪いが解けるとき、あなたは奪われた真実と出会う――",
+    "poster_path": "/lzAnNjN3rjMZItT2KV41GQsDyOP.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-12-26",
+    "director": "福岡大生",
+    "runtime": 85,
+    "genres": [
+      "アニメーション",
+      "ファンタジー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "手に魂を込め、歩いてみれば": {
+    "tmdb_id": 1465560,
+    "tmdb_title_jp": "Put your soul on your hand and walk",
+    "tmdb_title_en": "Put your soul on your hand and walk",
+    "overview": "",
+    "poster_path": "/vrEDz3kBG6AZKF3aiaQJB0Qgp8a.jpg",
+    "backdrop_path": "/jurvNOQ4qpmjRFl2Y7SumkoK5DW.jpg",
+    "release_date": "2025-08-22",
+    "director": "Sepideh Farsi",
+    "runtime": 113,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IR",
+        "name": "Iran"
+      },
+      {
+        "iso_3166_1": "PS",
+        "name": "Palestinian Territory"
+      }
+    ]
+  },
+  "Elephant Gymドキュメンタリー映画「More Real Than Dreams」": {
+    "tmdb_id": 1545720,
+    "tmdb_title_jp": "Elephant Gymドキュメンタリー映画「More Real Than Dreams」",
+    "tmdb_title_en": "大象體操：比夢境更真實",
+    "overview": "台湾・高雄出身の3人組インストゥルメンタル・バンド「Elephant Gym」のドキュメンタリー。2012年の結成以来、変拍子による複雑なリズムや楽曲構成と、洗練されたメロディーを交錯させた前衛的なインディーミュージックをつくり続けてきたElephant Gym。24年に実施されたワールドツアーでは、日本を含む23カ国で60公演を行い、世界各地のファンを熱狂させた。しかし華やかなステージの裏側には、メンバーたちの知られざる苦悩と衝突があった。兄妹であるギタリストのTell ChangとベーシストのKT Changは、家族とバンドメンバーの間で揺れ動く。一方、ドラマーのChia-Chin Tuは、掛け持ちしていたバンドから離れざるを得なくなる。そしてワールドツアーの直前、バンドは解散の危機に陥っていた。それでも音楽と絆を信じて歩み続け世界へと羽ばたいた彼らの姿を通して、異なる人間同士が集まるバンドとは何か、そして人と人の繋がりとは何かを問いかける。メンバーのインタビューや各地でのライブ映像のほか、日本から亀田誠治や小西遼のインタビュー映像も収録。",
+    "poster_path": "/bBUZ3gRirAWnEibXHJXsut8ySmR.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-01-23",
+    "director": "Alulu Kuo",
+    "runtime": 0,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "羅小黒戦記2 ぼくらが望む未来": {
+    "tmdb_id": 1144107,
+    "tmdb_title_jp": "羅小黒戦記２ ぼくらが望む未来",
+    "tmdb_title_en": "罗小黑战记 2",
+    "overview": "中国の人気WEBアニメシリーズを原作に、黒猫の妖精シャオヘイの冒険を描くアクションファンタジーアニメ第2弾。ある襲撃事件により妖精の世界の平和が脅かされ、シャオヘイと師匠ムゲンの運命が大きく揺らいでいく。",
+    "poster_path": "/kM8HFn05FlFrlWw8cmoqrF4ZPVA.jpg",
+    "backdrop_path": "/uJEZaEM2hY3MG50CgZ3z9jeTwmp.jpg",
+    "release_date": "2025-07-18",
+    "director": "顾杰",
+    "runtime": 119,
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アクション"
+    ],
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "ゾンビランドサガ　ゆめぎんがパラダイス": {
+    "tmdb_id": 959646,
+    "tmdb_title_jp": "ゾンビランドサガ ゆめぎんがパラダイス",
+    "tmdb_title_en": "ゾンビランドサガ ゆめぎんがパラダイス",
+    "overview": "",
+    "poster_path": "/wmsBwd3dtd9i1Pl6nDZyd0WlTeO.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-24",
+    "director": "石田貴史",
+    "runtime": 120,
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "音楽",
+      "アクション"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ひとつの机、ふたつの制服": {
+    "tmdb_id": 1335881,
+    "tmdb_title_jp": "夜校女生",
+    "tmdb_title_en": "夜校女生",
+    "overview": "",
+    "poster_path": "/qnnFzo9l8b4qspJ8ZYbVWoaHtyL.jpg",
+    "backdrop_path": "/hm2rWgEZJrxHP8gv9Pg6yRhOZFB.jpg",
+    "release_date": "2025-02-27",
+    "director": "Ching Shen Chuang",
+    "runtime": 110,
+    "genres": [
+      "ロマンス"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "【アンコール上映】WHO?": {
+    "tmdb_id": 76764,
+    "tmdb_title_jp": "Who?",
+    "tmdb_title_en": "Who?",
+    "overview": "",
+    "poster_path": "/5COApMItosxI5OHrBXE0VlPvxhU.jpg",
+    "backdrop_path": "/5GNd5PWQ63KdGo41DytcFnFv3M7.jpg",
+    "release_date": "1974-04-18",
+    "director": "Jack Gold",
+    "runtime": 93,
+    "genres": [
+      "謎",
+      "スリラー",
+      "サイエンスフィクション",
+      "ドラマ"
+    ],
+    "vote_average": 4.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "大地に詩を書くように": {
+    "tmdb_id": 1160496,
+    "tmdb_title_jp": "땅에 쓰는 시",
+    "tmdb_title_en": "땅에 쓰는 시",
+    "overview": "",
+    "poster_path": "/dxR8fWoqC56T66URAc0KY7oMrlN.jpg",
+    "backdrop_path": "/eEaDVi1fcy3NsOJI5e7X5DnuvD0.jpg",
+    "release_date": "2024-04-17",
+    "director": "Jung Da-woon",
+    "runtime": 113,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "〔月刊ホン・サンス Vol.1〕旅人の必需品": {
+    "tmdb_id": 1146410,
+    "tmdb_title_jp": "여행자의 필요",
+    "tmdb_title_en": "여행자의 필요",
+    "overview": "",
+    "poster_path": "/fNhyJp2fy47vg66LZ8aA2b0tsVQ.jpg",
+    "backdrop_path": "/u3JuBKQTuyfvWy7Rm01Ugej6Qs5.jpg",
+    "release_date": "2024-04-24",
+    "director": "홍상수",
+    "runtime": 90,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ヒポクラテスの盲点": null,
+  "東京ランドマーク": {
+    "tmdb_id": 1286531,
+    "tmdb_title_jp": "東京ランドマーク",
+    "tmdb_title_en": "東京ランドマーク",
+    "overview": "",
+    "poster_path": "/9ltHTAQrFVa1OR5nnjAldjN6Y73.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-05-18",
+    "director": "Aki Hayashitomo",
+    "runtime": 0,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "ベ・ラ・ミ　気になるあなた": null,
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】コーヒー&シガレッツ": {
+    "tmdb_id": 883,
+    "tmdb_title_jp": "コーヒー＆シガレッツ",
+    "tmdb_title_en": "Coffee and Cigarettes",
+    "overview": "アルフレッド・モリーナが、ロスにやってきたスティーブ・クーガンに面会を切望。「今度休暇旅行にどう？　2人だけで」「自宅の電話番号を教えてくれよ」と迫るアルフレッドに、真意をつかめないスティーブは……。（『いとこ？』より）＜ジム・ジャームッシュ監督が18年に渡って撮りためたコーヒーとタバコをテーマにした短編映画集。11本のショート・フィルムに登場するのは、ケイト・ブランシェット、ビル・マーレイ、スティーブ・ブシェミ、ロベルト・ベニーニなど総勢24名。第3話目の『カリフォルニアのどこかで』はカンヌ映画祭短編部門のパルム・ドールを受賞している。監督ならではセンスのいい音楽とユーモアを最後まで楽しめる作品。＞",
+    "poster_path": "/pfG02QCsutx3PIxFS8UY4iM9AsS.jpg",
+    "backdrop_path": "/AtPCvNJVrngHxpoogQsQkIZBs3D.jpg",
+    "release_date": "2004-03-12",
+    "director": "ジム・ジャームッシュ",
+    "runtime": 97,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "動くな、死ね、甦れ！": {
+    "tmdb_id": 41948,
+    "tmdb_title_jp": "動くな、死ね、甦れ！",
+    "tmdb_title_en": "Замри-умри-воскресни!",
+    "overview": "第2次世界大戦直後のソ連。強制収容所地帯となった小さな炭鉱町スーチャンで暮らす12歳の少年ワレルカは、シングルマザーの母親への反抗心から悪戯を繰り返していた。同じ年の少女ガリーヤはいつもワレルカのことを気にかけており、彼が窮地に立たされると守護天使のように現われて助けてくれる。そんなある日、度を越した悪戯で機関車を転覆させてしまったワレルカは、逮捕を恐れて1人で町を飛び出す。",
+    "poster_path": "/ur1jJZXpJdfixWDy5n7T5luSsJn.jpg",
+    "backdrop_path": "/4wcIeLuWkW1IgMlKPXeWu5Y7dLv.jpg",
+    "release_date": "1990-08-01",
+    "director": "ヴィターリー・カネフスキー",
+    "runtime": 105,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SU",
+        "name": "Soviet Union"
+      }
+    ]
+  },
+  "ひとりで⽣きる": {
+    "tmdb_id": 196929,
+    "tmdb_title_jp": "ひとりで生きる",
+    "tmdb_title_en": "Самостоятельная жизнь",
+    "overview": "世界中から絶賛で迎えられた「動くな、死ね、甦れ！」から２年。主人公ワレルカも１５歳、少年期に別れを告げようとしていたが、大人たちの世界はより悲劇的な様相を呈していた。唯一の心の拠り所は、ガリーヤの妹ワーリャだけだった。ワレルカは学校を退学になると、ひとりで町を出る。残されたワーリャは、手紙を送り続けるが…。",
+    "poster_path": "/tdW2kiP8010nGmIPiuMzYdyOLHe.jpg",
+    "backdrop_path": "/rf7ZphY506qVtrWjszjpxWHxHxo.jpg",
+    "release_date": "1992-05-26",
+    "director": "ヴィターリー・カネフスキー",
+    "runtime": 97,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 3.692,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】ナイト・オン・ザ・プラネット": {
+    "tmdb_id": 339,
+    "tmdb_title_jp": "ナイト・オン・ザ・プラネット",
+    "tmdb_title_en": "Night on Earth",
+    "overview": "地球という星の、ロサンゼルス、ニューヨーク、パリ、ローマ、ヘルシンキという5つの都市で、5人のタクシー・ドライバーが乗客を乗せた。同じ夜にそれぞれに繰り広げられる5つの物語。本作はジャームッシュの作品に共通して見られる奇妙な可笑しさ、卓越したセンスが冴える会話に加え、背景に広がる空しさに満ちた荒涼感は健在であり、その独自の雰囲気で好き嫌いがハッキリと二分される彼の作品にしては割りと門戸が広く、様々な人が楽しめる作品に仕上がっている。特に、ニューヨークが舞台の話と、ロベルト・ベニーニ主演によるパリの話がお勧め。",
+    "poster_path": "/7UAiUF7HjzGFIqm1QlqfqMZJKiS.jpg",
+    "backdrop_path": "/s7lwxcX5iZuOdoQhM77WyQaPtWv.jpg",
+    "release_date": "1991-12-12",
+    "director": "ジム・ジャームッシュ",
+    "runtime": 128,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 7.515,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ただ、やるべきことを": {
+    "tmdb_id": 1172503,
+    "tmdb_title_jp": "해야 할 일",
+    "tmdb_title_en": "해야 할 일",
+    "overview": "",
+    "poster_path": "/nhyzAAxpTaHKCFmehBXAin0a5hE.jpg",
+    "backdrop_path": "/wSqlFvZ0kgGr4N5918sVEWCQ5Kf.jpg",
+    "release_date": "2024-09-25",
+    "director": "Park Hong-jun",
+    "runtime": 103,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "汚れた血": {
+    "tmdb_id": 64131,
+    "tmdb_title_jp": "汚れた血",
+    "tmdb_title_en": "Mauvais Sang",
+    "overview": "愛の無いセックスで感染する奇病STBOが蔓延するパリ。幼少の頃から虚無感や孤独感に生きてきた青年アレックスは、恋人リーズと居る時も虚しさは同じだった。原因不明の腹痛にも襲われ生活に嫌気がさしたアレックスは、人生を何とかして変えなければと考え続けていた。そんな矢先、行方知れずの父親が電車に轢かれ死んでしまう。アレックスの父親の友人マルクは彼の多大なる借金を背負うこととなり、STBOの血清を盗み密売する作戦を考え出す。そしてその作戦に必要な人材としてアレックスを見つけ出す。アレックスは作戦に乗るが、そこでマルクの恋人であるアンナにかつてない運命を感じ、物語は動き始める。",
+    "poster_path": "/4Dcoc3VkkR68GVI12oSCQn0pfzd.jpg",
+    "backdrop_path": "/sRY16xQIV5lHL1yTotyqPyyjsju.jpg",
+    "release_date": "1986-11-26",
+    "director": "Leos Carax",
+    "runtime": 119,
+    "genres": [
+      "ロマンス",
+      "犯罪",
+      "ドラマ",
+      "サイエンスフィクション"
+    ],
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "水の中で": {
+    "tmdb_id": 1077647,
+    "tmdb_title_jp": "물안에서",
+    "tmdb_title_en": "물안에서",
+    "overview": "",
+    "poster_path": "/sfg6A1knpv2XagkvXQCd5L3sb7l.jpg",
+    "backdrop_path": "/5G7WyWUBQhic7bk1dbqQaNJ22UL.jpg",
+    "release_date": "2023-04-12",
+    "director": "홍상수",
+    "runtime": 61,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ポンヌフの恋人": {
+    "tmdb_id": 2767,
+    "tmdb_title_jp": "ポンヌフの恋人",
+    "tmdb_title_en": "Les Amants du Pont-Neuf",
+    "overview": "",
+    "poster_path": "/zGSngzqUrt6OSXwXXfG92qxYgFg.jpg",
+    "backdrop_path": "/edaW476pWD9l8t77dFjmnAtWUmR.jpg",
+    "release_date": "1991-10-16",
+    "director": "Leos Carax",
+    "runtime": 126,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.399,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "イマジナリーライン": {
+    "tmdb_id": 1537809,
+    "tmdb_title_jp": "イマジナリーライン",
+    "tmdb_title_en": "イマジナリーライン",
+    "overview": "",
+    "poster_path": "/bHVNLtBZYVsXMGxhCC71I7SpILQ.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-03-16",
+    "director": "Kensho Sakamoto",
+    "runtime": 90,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ツイン・ピークス ローラ・パーマー最期の7日間": {
+    "tmdb_id": 1923,
+    "tmdb_title_jp": "ツイン・ピークス/ローラ・パーマー最期の7日間",
+    "tmdb_title_en": "Twin Peaks: Fire Walk with Me",
+    "overview": "FBI特別捜査官チェット・デズモンドは町のウエートレス、テレサ・バンクスの殺害事件を調査中に謎の失踪を遂げる。それから1年後、町全体に巣くった邪悪な者達は学園の女王であるローラ・パーマーを標的にし始めていた。時を同じくして、テレサ・バンクス殺害事件の捜査を引き継いだ特別捜査官デイル・クーパーは、彼に備わった特別な才能、鋭い第六感を生かして深い謎を解明しようと決意するのだった。",
+    "poster_path": "/hQFPxgUqNKJlsco6NJ6rLtds2zE.jpg",
+    "backdrop_path": "/g5G19q0xgkzWEvfcGo1KcL8nQOk.jpg",
+    "release_date": "1992-06-03",
+    "director": "デヴィッド・リンチ",
+    "runtime": 135,
+    "genres": [
+      "ドラマ",
+      "謎",
+      "ホラー"
+    ],
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "鯨が消えた入り江 / 我在這裡等你": {
+    "tmdb_id": 1214266,
+    "tmdb_title_jp": "我在這裡等你",
+    "tmdb_title_en": "我在這裡等你",
+    "overview": "",
+    "poster_path": "/j1x9RdHVaD4NYbev77SgilKuWrw.jpg",
+    "backdrop_path": "/70ueoLF3JzRqfy2IcTheaisNWQ9.jpg",
+    "release_date": "2024-05-10",
+    "director": "Teng I-Han",
+    "runtime": 100,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "欲望の翼 デジタル・リマスター版 / 阿飛正傳": {
+    "tmdb_id": 18311,
+    "tmdb_title_jp": "欲望の翼",
+    "tmdb_title_en": "阿飛正傳",
+    "overview": "L・チャンを主軸に、M・チャン、C・ラウ、A・ラウ、J・チュン、T・レオンと、当時人気絶頂の香港のトップスターたちがきら星のごとく顔をそろえて各自の魅力を存分に発揮。彼らが繰り広げる甘く切ない男女の擦れ違いの恋愛劇を、ウォン監督がスタイリッシュな映像と話法でムード満点に描いて評判を呼び、第10回香港電影金像奨で、作品賞、監督賞など主要5部門を制覇。これが2作目だったウォン監督の異才ぶりをより広く知らしめ、世界中でそれにしびれる熱狂的ファンが続出することとなった。\r 1960年の香港。競技場の売店の販売員スーは、プレーボーイのヨディからきざなセリフで口説かれ、彼を愛するようになるが、ヨディはやがて、クラブのダンサーのミミに心が移ってしまう。彼に捨てられて心傷つき、夜の街をひとりさまようスーを巡回中の若い警官タイドは慰め、彼女に恋心を抱くが、それは片想いに終わる。“お前の実の母親は外国にいる”と養母から告げられたヨディは、実母に会いにフィリピンへと旅立つが……。",
+    "poster_path": "/kt2Ngq7GkyNL0PBu6cxFgm1q034.jpg",
+    "backdrop_path": "/4TvipgMIlm0Pvk3mCICAodsKP6m.jpg",
+    "release_date": "1990-12-15",
+    "director": "王家衞",
+    "runtime": 95,
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.255,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "マルホランド・ドライブ": {
+    "tmdb_id": 1018,
+    "tmdb_title_jp": "マルホランド・ドライブ",
+    "tmdb_title_en": "Mulholland Drive",
+    "overview": "ある真夜中、マルホランド・ドライブで車の衝突事故が発生。ただ独り助かった黒髪の女は、ハリウッドの街までなんとか辿り着き、留守宅へ忍び込む。すると、そこは有名女優ルースの家だった。そして、直後にやってきたルースの姪ベティに見つかってしまう。ベティは、とっさにリタと名乗ったこの女を叔母の友人と思い込むが、すぐに見知らぬ他人であることを知った。何も思い出せないと打ち明けるリタ。手掛かりは大金と謎の青い鍵が入った彼女のバッグ。ベティは同情と好奇心から、リタの記憶を取り戻す手助けを買って出るのだが…。",
+    "poster_path": "/2OAYHObh12cRuwoGMCqsGVEF8gQ.jpg",
+    "backdrop_path": "/y1giivdsGLyo1LCvlsL6mLKyTZ7.jpg",
+    "release_date": "2001-06-06",
+    "director": "デヴィッド・リンチ",
+    "runtime": 147,
+    "genres": [
+      "スリラー",
+      "ドラマ",
+      "謎"
+    ],
+    "vote_average": 7.806,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ブエノスアイレス / 春光乍洩": {
+    "tmdb_id": 18329,
+    "tmdb_title_jp": "ブエノスアイレス",
+    "tmdb_title_en": "春光乍洩",
+    "overview": "香港映画界の鬼才、ウォン・カーウァイ監督が男同士の切ない愛を描いた恋愛ドラマ。惹かれ合いながらも、傷つける事しかできない男と男の刹那的な愛を綴ってゆく。徹底的に突き放した視点で彼等を捉える事で、より深い感情の揺れ動きを捉える手腕は流石。またアルゼンチンの雄大な自然美や、アストル・ピアソラの切ないメロディが映画を効果的に彩る。トニー・レオン、レスリーチャン共演。南米アルゼンチンへとやってきた、ウィンとファイ。幾度となく別れを繰り返してきた2人は、ここでも些細な諍いを繰り返し別れてしまう。そして、ファイが働くタンゴ・バーで再会を果たすが...。",
+    "poster_path": "/ncQ1fjX1q54jQ3tiGUPl0ny6WpJ.jpg",
+    "backdrop_path": "/2Xkd3WeAx11cHxb4Lr3wnSNDWcd.jpg",
+    "release_date": "1997-05-30",
+    "director": "王家衛",
+    "runtime": 96,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.562,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "さらば、わが愛／覇王別姫": {
+    "tmdb_id": 10997,
+    "tmdb_title_jp": "さらば、わが愛／覇王別姫",
+    "tmdb_title_en": "霸王别姬",
+    "overview": "1925年、9歳の少年・小豆子は、娼婦の母親に連れられ京劇養成所“喜福成”にやって来た。そこで彼は少年・小石頭と仲良くなる。やがてふたりは成長し、小豆子は女形に、小石頭は男役に決められ、それぞれ程蝶衣、段小樓と名乗り有名スターになっていく。1937年、中国と日本との戦いが深まる中で、段小樓は娼婦の菊仙と出会い結婚する。段小樓に思いを寄せていた程蝶衣は、2度と共演しないと言い放ち、彼のもとを去る。",
+    "poster_path": "/AnDERsriBgUSD0MTtzh4bASUmkA.jpg",
+    "backdrop_path": "/bBiZN1epQTu3F8iFLBuMhc4TRzr.jpg",
+    "release_date": "1993-01-01",
+    "director": "陈凯歌",
+    "runtime": 172,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.922,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "殺し屋１": {
+    "tmdb_id": 9696,
+    "tmdb_title_jp": "殺し屋1",
+    "tmdb_title_en": "殺し屋1",
+    "overview": "暴力、セックス、ドラッグ、殺しが蔓延る多国籍街・歌舞伎町。その一角にあるヤクザマンションと呼ばれるビルに事務所を構える安生組の組長が、組の資金3億円と共に姿を消した。若頭・垣原は組長捜しに乗り出すが、その時既に組長はヤクザ壊滅を企む謎の手配師・ジジイによってマインドコントロールされた、靴の踵に仕込んだ鉈を武器とする泣き虫の殺し屋・イチに殺されていた。そのことを突き止めた垣原は、組長の仇を討つべく手下の高山や会長・中沢、イチに過去の自分を投影する鉄砲玉の金子、双子のサド刑事・二郎と三郎、敵対する組の船鬼や鈴木ら周囲を巻き込んでイチ捜しを開始。だが、実は究極のマゾである彼の目的は、やがてイチの無情な殺戮方法に対する興味へと移行していく。そして、遂にイチを捜し出した垣原は、イチに痛めつけられる期待に胸を膨らませるのであったが、肝腎のイチは不甲斐なく彼の期待に応えてはくれなかった。そこで、絶望した垣原は自らの耳に針を刺し自分を痛めつけると、イチに倒される妄想を見ながら投身自殺するのであった。",
+    "poster_path": "/gtqkEgS7fhvgKmSCt9EqTdQt6t9.jpg",
+    "backdrop_path": "/aw0EeseSr10dVUuY6Aiv6HhP8UW.jpg",
+    "release_date": "2001-12-22",
+    "director": "三池崇史",
+    "runtime": 129,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ホラー"
+    ],
+    "vote_average": 7.001,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "チリの闘い 第2部：クーデター": {
+    "tmdb_id": 132148,
+    "tmdb_title_jp": "La batalla de Chile (Parte 2). El Golpe de Estado",
+    "tmdb_title_en": "La batalla de Chile (Parte 2). El Golpe de Estado",
+    "overview": "",
+    "poster_path": "/kwLnp3uM2gbDLxeteutGcrQCqZb.jpg",
+    "backdrop_path": "/xvh6gngqMwgyyfmR4mtaLxnCTy.jpg",
+    "release_date": "1976-03-13",
+    "director": "Patricio Guzmán",
+    "runtime": 88,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.684,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CL",
+        "name": "Chile"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CU",
+        "name": "Cuba"
+      },
+      {
+        "iso_3166_1": "VE",
+        "name": "Venezuela"
+      }
+    ]
+  },
+  "チリの闘い 第3部：民衆の力": {
+    "tmdb_id": 132150,
+    "tmdb_title_jp": "La batalla de Chile (Parte 3). El Poder Popular",
+    "tmdb_title_en": "La batalla de Chile (Parte 3). El Poder Popular",
+    "overview": "",
+    "poster_path": "/9ILZtNQWe4j6RO4hhA6ZeSUY0dK.jpg",
+    "backdrop_path": "/67t3dSgVDYyG8l2hqToe2BZJdAx.jpg",
+    "release_date": "1979-03-15",
+    "director": "Patricio Guzmán",
+    "runtime": 78,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.368,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CL",
+        "name": "Chile"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CU",
+        "name": "Cuba"
+      },
+      {
+        "iso_3166_1": "VE",
+        "name": "Venezuela"
+      }
+    ]
+  },
+  "ヤンヤン 夏の想い出　4Kレストア版": {
+    "tmdb_id": 25538,
+    "tmdb_title_jp": "ヤンヤン 夏の想い出",
+    "tmdb_title_en": "一一",
+    "overview": "8歳のヤンヤンは、祖母と両親と姉と台北のマンションで暮している。しかし、祖母が脳卒中で倒れ昏睡状態に陥ったのを機に家族の空気が変わり始める。看病に疲れた母は家を出、偶然昔の恋人と再会した父は過去を思い出し、姉は恋に思い煩う。そんな家族の姿をヤンヤンは冷静に見守り…。",
+    "poster_path": "/5bLAw5S6RkEMT27hm6oKnEZtU4L.jpg",
+    "backdrop_path": "/69D57G3XqQMVNCwK0Z2PCcYC4Da.jpg",
+    "release_date": "2000-09-20",
+    "director": "楊德昌",
+    "runtime": 174,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "役者になったスパイ": {
+    "tmdb_id": 662286,
+    "tmdb_title_jp": "Moskau einfach!",
+    "tmdb_title_en": "Moskau einfach!",
+    "overview": "",
+    "poster_path": "/2xkvR747p4DtaO2EaVD167WWFsT.jpg",
+    "backdrop_path": "/lJ4xGL4jMYeeLtvAEWRBIAjCqOm.jpg",
+    "release_date": "2020-02-13",
+    "director": "Micha Lewinsky",
+    "runtime": 99,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "1. いろはにほへと": {
+    "tmdb_id": 1252671,
+    "tmdb_title_jp": "いろはにほへと",
+    "tmdb_title_en": "いろはにほへと",
+    "overview": "",
+    "poster_path": "/jjulIfkzBUrngur7kw5pT5qzSYz.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-05-20",
+    "director": "中村登",
+    "runtime": 109,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "2. 最後の切札": {
+    "tmdb_id": 1544878,
+    "tmdb_title_jp": "最後の切札",
+    "tmdb_title_en": "最後の切札",
+    "overview": "異色作家・白崎秀雄の傑作小説「肉の僕」の映画化。  橋本忍が脚色し、野村芳太郎が監督したもので、冷い打算に生きる男の行動と破滅を描く問題野心作。佐田啓二が珍しく悪党を演じている。",
+    "poster_path": "/bEH1H8RjuE1mtg0vCGEdzKd1ET0.jpg",
+    "backdrop_path": "/p4AJhNe0WnAGD23EfAi4OifIuZP.jpg",
+    "release_date": "1960-09-20",
+    "director": "野村芳太郎",
+    "runtime": 93,
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "3. 四万人の目撃者": {
+    "tmdb_id": 564516,
+    "tmdb_title_jp": "四萬人の目撃者",
+    "tmdb_title_en": "四萬人の目撃者",
+    "overview": "",
+    "poster_path": "/hMaRHQkZ0iygRGBFbDVnopgAfVg.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-02-12",
+    "director": "堀内真直",
+    "runtime": 92,
+    "genres": [
+      "謎"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "4. 二人で歩いた幾春秋": {
+    "tmdb_id": 424126,
+    "tmdb_title_jp": "二人で歩いた幾春秋",
+    "tmdb_title_en": "二人で歩いた幾春秋",
+    "overview": "",
+    "poster_path": "/sfzqzbqNgepGTbmI7iPRuwk8jpo.jpg",
+    "backdrop_path": "/cmK9yMRAa5CzvcdMagcLi5cpKpc.jpg",
+    "release_date": "1962-08-12",
+    "director": "木下惠介",
+    "runtime": 102,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "5. あなた買います": {
+    "tmdb_id": 143946,
+    "tmdb_title_jp": "あなた買います",
+    "tmdb_title_en": "あなた買います",
+    "overview": "プロ野球・東洋フラワーズのスカウト岸本は、大学野球の花形選手・栗田を入団させる任を受けるが、栗田には彼を育て上げてきた球気一平というヒモのような男がバックにいた。岸本は球気に接近するが、得体のしれない彼はなかなか手ごわい。やがて他球団も栗田獲得に乗り出す。球気は、彼らを手玉に取りながらどんどん値を吊り上げていくが、やがて栗田の価値に気づいた家族の面々が欲に駆られ、球気に絶縁状を送りつけてきた...。",
+    "poster_path": "/6GYsvoJSwqwmFE4cdGK6yI0npqj.jpg",
+    "backdrop_path": "/iakAW4DI61A6toV8SIIBYMa8tiz.jpg",
+    "release_date": "1956-11-21",
+    "director": "小林正樹",
+    "runtime": 111,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "6. 土砂降り〈英語字幕付き〉": {
+    "tmdb_id": 298711,
+    "tmdb_title_jp": "土砂降り",
+    "tmdb_title_en": "土砂降り",
+    "overview": "",
+    "poster_path": "/2NuIxdzqOn2DUXo5ReqnH6rCUDW.jpg",
+    "backdrop_path": "/mPGs99FbxaI8BKvzlhLCDwYK7BC.jpg",
+    "release_date": "1957-06-11",
+    "director": "中村登",
+    "runtime": 105,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "7. 喜びも悲しみも幾歳月": {
+    "tmdb_id": 216034,
+    "tmdb_title_jp": "新・喜びも悲しみも幾歳月",
+    "tmdb_title_en": "新・喜びも悲しみも幾歳月",
+    "overview": "",
+    "poster_path": "/eephi6WhTAUWiu4SWtRrkGEBEhD.jpg",
+    "backdrop_path": "/aM5HDVPlJaykSPX41e3PrDlLPvo.jpg",
+    "release_date": "1986-06-28",
+    "director": "木下惠介",
+    "runtime": 129,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "8. 集金旅行": {
+    "tmdb_id": 1418429,
+    "tmdb_title_jp": "集金旅行",
+    "tmdb_title_en": "集金旅行",
+    "overview": "井伏鱒二の同名小説の映画化で、西日本のローカル・カラーを取入れて庶民生活の哀歓を描いたコメディ。「抱かれた花嫁」の共同脚本執筆者の一人、椎名利夫が脚色、「土砂降り」の中村登が監督した。撮影は「抱かれた花嫁」の生方敏夫。主演は「ただいま零匹」の佐田啓二、岡田茉莉子二人を中心に小林トシ子、花菱アチャコ、伊藤雄之助、トニー谷、市村俊幸、関千恵子、十朱久雄など。色彩はイーストマン松竹カラー。",
+    "poster_path": "/czmRiqW1XT2uXYVGEWXnQbq0dNu.jpg",
+    "backdrop_path": null,
+    "release_date": "1957-10-29",
+    "director": "中村登",
+    "runtime": 103,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "9. 黒い花粉": null,
+  "10. ボロ家の春秋": {
+    "tmdb_id": 271241,
+    "tmdb_title_jp": "Boarding House Blues",
+    "tmdb_title_en": "Boarding House Blues",
+    "overview": "",
+    "poster_path": "/6Y8l77kaUzUtvQnHvB4Qep6jNkS.jpg",
+    "backdrop_path": "/hAKjk9YyduinkNyhSZetraF8FoK.jpg",
+    "release_date": "1948-09-01",
+    "director": "Josh Binney",
+    "runtime": 86,
+    "genres": [
+      "音楽",
+      "ドラマ"
+    ],
+    "vote_average": 5.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "11. モダン道中 その恋待ったなし": {
+    "tmdb_id": 1478983,
+    "tmdb_title_jp": "モダン道中 その恋待ったなし",
+    "tmdb_title_en": "モダン道中 その恋待ったなし",
+    "overview": "",
+    "poster_path": "/iyaNHEKRkXHMayewIPOs7akCaw5.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-07-13",
+    "director": "野村芳太郎",
+    "runtime": 93,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "12. 秋刀魚の味": {
+    "tmdb_id": 1568565,
+    "tmdb_title_jp": "秋刀魚の味",
+    "tmdb_title_en": "秋刀魚の味",
+    "overview": "",
+    "poster_path": "/6V805teL9FLXrINjbTv9hSKjnHI.jpg",
+    "backdrop_path": null,
+    "release_date": "2003-01-03",
+    "director": "Yoshito Fukumoto",
+    "runtime": 115,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "13. 日本の悲劇": {
+    "tmdb_id": 50805,
+    "tmdb_title_jp": "日本の悲劇",
+    "tmdb_title_en": "日本の悲劇",
+    "overview": "",
+    "poster_path": "/6npoR3RIRBlY0arZjXv9xZWlh6a.jpg",
+    "backdrop_path": "/xyPahvksSIfqg0BxD1yNO1xy7im.jpg",
+    "release_date": "1953-06-17",
+    "director": "木下惠介",
+    "runtime": 116,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "14. 顔役（噛みつかれた顔役）": {
+    "tmdb_id": 495855,
+    "tmdb_title_jp": "喜劇　団地親分",
+    "tmdb_title_en": "喜劇　団地親分",
+    "overview": "",
+    "poster_path": "/qVsjaO9WCsyJ9J0klZ35Uthg2AU.jpg",
+    "backdrop_path": null,
+    "release_date": "1962-01-25",
+    "director": "市村泰一",
+    "runtime": 82,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "15. お早よう": {
+    "tmdb_id": 28276,
+    "tmdb_title_jp": "お早よう",
+    "tmdb_title_en": "お早よう",
+    "overview": "郊外の住宅地、長屋のように複数の家族が隣り合って暮らしている。林家の息子実（設楽幸嗣）と勇（島津雅彦）はテレビがほしいと両親にねだるが、聞き入れてもらえない。子供たちは、要求を聞き入れてもらえるまで口を利かないというストライキをして、最終的に買ってもらうのだった。　",
+    "poster_path": "/tPrOONTaP4jyRad7hXD6egJ2NQd.jpg",
+    "backdrop_path": "/qH9wiXnx9mU9kNGCH1exaey9CqU.jpg",
+    "release_date": "1959-05-12",
+    "director": "小津安二郎",
+    "runtime": 94,
+    "genres": [
+      "コメディ",
+      "ファミリー",
+      "ドラマ"
+    ],
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "16. 血は渇いてる": {
+    "tmdb_id": 88442,
+    "tmdb_title_jp": "血は渇いてる",
+    "tmdb_title_en": "血は渇いてる",
+    "overview": "東洋毛織で社員の首切り通告があった時、社員の木口はみんなを助けようと拳銃自殺を図るが、老社員・金井の機転で一命を取り留める。昭和生命に務めるユキは、そんな木口を生命保険の広告塔にしようと考え、あの手この手で木口を口説くが断られてしまう。",
+    "poster_path": "/jgKQEPTTQ2gLNajUCh9E9IrHcnL.jpg",
+    "backdrop_path": "/rUOvbnFsbT62BHbzo7X3HpU76JA.jpg",
+    "release_date": "1960-10-09",
+    "director": "吉田喜重",
+    "runtime": 87,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "1. 雨月物語": {
+    "tmdb_id": 14696,
+    "tmdb_title_jp": "雨月物語",
+    "tmdb_title_en": "雨月物語",
+    "overview": "戦国の世、貧しい陶工・源十郎が若狭姫という女性と知り合い、生活をともにするようになる。だが美しい若狭姫の正体は死霊であった。それを知った源十郎は若狭姫を捨てて故郷に逃げるが、彼女の怨念は執拗に追いすがる……。「雨月物語」をベースに、川口松太郎らが脚色。",
+    "poster_path": "/44MlxSO8NvBVl5MfxACj6Ihwtd5.jpg",
+    "backdrop_path": "/iB1tCWl4MKl6OO1kMBD5LxM5BmJ.jpg",
+    "release_date": "1953-03-26",
+    "director": "溝口健二",
+    "runtime": 96,
+    "genres": [
+      "ファンタジー",
+      "ドラマ",
+      "謎"
+    ],
+    "vote_average": 8.002,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "2. 蛇娘と白髪魔": {
+    "tmdb_id": 182921,
+    "tmdb_title_jp": "蛇娘と白髪魔",
+    "tmdb_title_en": "蛇娘と白髪魔",
+    "overview": "",
+    "poster_path": "/eAn27NWmyn2q827vJoTcEzvq0Vr.jpg",
+    "backdrop_path": "/rBjPxHiFfZOcIX48f2NhD5s5d7W.jpg",
+    "release_date": "1968-12-14",
+    "director": "湯浅憲明",
+    "runtime": 82,
+    "genres": [
+      "ホラー",
+      "スリラー",
+      "謎"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "3. 妖婆": {
+    "tmdb_id": 390494,
+    "tmdb_title_jp": "妖婆",
+    "tmdb_title_en": "妖婆",
+    "overview": "",
+    "poster_path": "/f2kew5iB37Vhl1CkfLLYCk1yrQB.jpg",
+    "backdrop_path": null,
+    "release_date": "1976-10-16",
+    "director": "今井正",
+    "runtime": 97,
+    "genres": [
+      "ホラー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "4. 姑獲鳥（うぶめ）の夏": {
+    "tmdb_id": 227254,
+    "tmdb_title_jp": "姑獲鳥の夏",
+    "tmdb_title_en": "姑獲鳥の夏",
+    "overview": "1952（昭和27）年、夏の東京。小説家の関口はちまたで広まる、産婦人科の大病院である久遠寺医院の娘・梗子が、妊娠20カ月目を迎えたのに一向に出産する気配がなく、しかも彼女の夫は1年半前に医院の密室から忽然と消え、以来、行方不明となっているという不思議な噂を耳にする。雑誌の依頼で事件を取材することになった関口は、古本屋の店主にして神社の神主でもある、博覧強記の友人・京極堂に相談を持ちかける。",
+    "poster_path": "/l3Y3xYBB4fqfkfuKGz6q0HlRfz5.jpg",
+    "backdrop_path": "/rQ1qd8KFlTtN4fkAdRcq5v9hMXK.jpg",
+    "release_date": "2005-07-15",
+    "director": "実相寺昭雄",
+    "runtime": 123,
+    "genres": [
+      "スリラー",
+      "ホラー"
+    ],
+    "vote_average": 7.167,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "5. 怪談〈短縮版〉": {
+    "tmdb_id": 30959,
+    "tmdb_title_jp": "怪談",
+    "tmdb_title_en": "怪談",
+    "overview": "「黒髪」：妻を捨て、京都から遠い任地へと赴いた武士。そこで彼は、良い家柄の娘と結婚するが、彼女は冷酷な女で、男は今さら、別れた妻のことを思い出すのだった。やがて任期を終え、京都に戻った彼は最初の妻と再会するが…。「雪女」：きこりの巳之吉は、森へ薪を採りに入ったところで吹雪に遭い、山小屋に閉じ込められるはめに。その晩彼は、雪女の姿を目の当たりにし…。ほかに「耳無し抱一の話」「茶碗の中」の計4編。",
+    "poster_path": "/lxOxZVhGkmnz7jFJDS8EfkhxmmN.jpg",
+    "backdrop_path": "/9GAU0z2wVA8M2D2w36CaloWYYgv.jpg",
+    "release_date": "1965-01-06",
+    "director": "小林正樹",
+    "runtime": 183,
+    "genres": [
+      "ホラー",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "6. 牡丹燈籠": {
+    "tmdb_id": 1208461,
+    "tmdb_title_jp": "牡丹燈籠",
+    "tmdb_title_en": "牡丹燈籠",
+    "overview": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1910-06-01",
+    "director": "",
+    "runtime": 0,
+    "genres": [
+      "ホラー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "7. リング": {
+    "tmdb_id": 139937,
+    "tmdb_title_jp": "リング",
+    "tmdb_title_en": "リング",
+    "overview": "鈴木光司の同名の小説を原作とした1995年のテレビ映画版。  新聞社に勤める浅川和行（高橋克典）は、若者4人が同日同時刻に急死したことに疑問を抱き、なおかつそのうちの1人が自分の姪であったこともあって調査をはじめる。その結果4人が、死の一週間前に箱根に同泊し、そこで1本のビデオをみていたことを知る。おそるおそるみたそのビデオには不気味な映像のあとに「この映像を見た者は、一週間後のこの時間に死ぬ運命にある。死にたくなければ今からいうことを実行せよ。すなわち・・・・・・」という白い文字が浮かび、なんとそこでプッツリとぎれていた。 そのテープを、超能力による恨みの念写であると確信した大学教授の高山竜司（原田芳雄）と共に「死のタイムリミット」におびえながらも、このビデオの真意に迫ってゆく。そこには三十余年以前にさかのぼる、ある母親の残酷かつ奇妙な物語がかくされていた。そのおぞましい怨念はリングのようにつながり、意外な形でくり返されてゆく・・・・・・。",
+    "poster_path": "/cegmPLjKMWFR9ZJawwSgybf7x8M.jpg",
+    "backdrop_path": "/oi9ypQk8QPvgTky9kX08W6UTG8v.jpg",
+    "release_date": "1995-08-11",
+    "director": "瀧川治水",
+    "runtime": 90,
+    "genres": [
+      "ホラー",
+      "テレビ映画",
+      "謎"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "8. 陰陽師": {
+    "tmdb_id": 21325,
+    "tmdb_title_jp": "陰陽師",
+    "tmdb_title_en": "陰陽師",
+    "overview": "人ももののけも同じ闇の中で呼吸をしていた平安時代。都の陰陽師である安倍晴明は、友人の源博雅から夜毎に自分の笛を聴きに来る牛車の女性の話をもちかけられる。そんな中、生まれたばかりの帝の子・敦平親王の身体に異変が起きる。",
+    "poster_path": "/ptiwNaV092Ut3qWLnN07fx2hFjl.jpg",
+    "backdrop_path": "/if0IBbnzdeacoGf2Dgj1dAqZktu.jpg",
+    "release_date": "2001-10-06",
+    "director": "滝田洋二郎",
+    "runtime": 116,
+    "genres": [
+      "ドラマ",
+      "ホラー",
+      "履歴",
+      "アクション"
+    ],
+    "vote_average": 6.292,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ジョルスン物語": {
+    "tmdb_id": 31206,
+    "tmdb_title_jp": "The Jolson Story",
+    "tmdb_title_en": "The Jolson Story",
+    "overview": "",
+    "poster_path": "/TA8OqACOphikMD16HLeohJqPk.jpg",
+    "backdrop_path": "/cxQ1yRHsxotDjiyk5TB8JgP8YWt.jpg",
+    "release_date": "1946-10-10",
+    "director": "Alfred E. Green",
+    "runtime": 128,
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "離婚の子": {
+    "tmdb_id": 185075,
+    "tmdb_title_jp": "Child of Divorce",
+    "tmdb_title_en": "Child of Divorce",
+    "overview": "",
+    "poster_path": "/4oxJd53inbtqJrhdf7ikIEpz8Go.jpg",
+    "backdrop_path": "/q1MKcUHNIfQpDIR204A8fSuzQq2.jpg",
+    "release_date": "1946-10-14",
+    "director": "Richard Fleischer",
+    "runtime": 62,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ラスト・ラン": {
+    "tmdb_id": 274982,
+    "tmdb_title_jp": "ラスト・ラン～愛と裏切りの百億円",
+    "tmdb_title_en": "ラスト・ラン～愛と裏切りの百億円",
+    "overview": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1991-12-30",
+    "director": "三池崇史",
+    "runtime": 100,
+    "genres": [
+      "犯罪",
+      "アクション",
+      "テレビ映画"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "静かについて来い": {
+    "tmdb_id": 31167,
+    "tmdb_title_jp": "Follow Me Quietly",
+    "tmdb_title_en": "Follow Me Quietly",
+    "overview": "",
+    "poster_path": "/undj4wTGliQ909hYypS0LRRGyRA.jpg",
+    "backdrop_path": "/nXZxPRA1LtOFfYFw7HDdvPAQ4Q7.jpg",
+    "release_date": "1949-07-07",
+    "director": "Richard Fleischer",
+    "runtime": 60,
+    "genres": [
+      "犯罪",
+      "謎",
+      "スリラー"
+    ],
+    "vote_average": 6.203,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "パスポートのない女": {
+    "tmdb_id": 30195,
+    "tmdb_title_jp": "A Lady Without Passport",
+    "tmdb_title_en": "A Lady Without Passport",
+    "overview": "",
+    "poster_path": "/wJfzpAglQhQLtUICju4A2cRmK77.jpg",
+    "backdrop_path": "/6e5FrrOapD9bIT8bLX1OttDtpUs.jpg",
+    "release_date": "1950-08-03",
+    "director": "Joseph H. Lewis",
+    "runtime": 74,
+    "genres": [
+      "スリラー",
+      "犯罪"
+    ],
+    "vote_average": 5.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "秘密捜査官": null,
+  "夜よりも深い闇": {
+    "tmdb_id": 40824,
+    "tmdb_title_jp": "So Dark the Night",
+    "tmdb_title_en": "So Dark the Night",
+    "overview": "",
+    "poster_path": "/wqGngbTPCAUyKOZTwseWa61SBVn.jpg",
+    "backdrop_path": "/p0PUaNCoh3lYXn4DxnbmJT2WQRx.jpg",
+    "release_date": "1946-10-10",
+    "director": "Joseph H. Lewis",
+    "runtime": 71,
+    "genres": [
+      "犯罪",
+      "謎"
+    ],
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ニューヨーク大騒動": {
+    "tmdb_id": 88407,
+    "tmdb_title_jp": "So This Is New York",
+    "tmdb_title_en": "So This Is New York",
+    "overview": "",
+    "poster_path": "/xV9sDUCo3UmnPPxHVSu36f0pJsB.jpg",
+    "backdrop_path": "/z2AznCrDHePcqGQpgeH6gbG9MvF.jpg",
+    "release_date": "1948-06-01",
+    "director": "Richard Fleischer",
+    "runtime": 79,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "替え玉殺人事件": {
+    "tmdb_id": 33673,
+    "tmdb_title_jp": "His Kind of Woman",
+    "tmdb_title_en": "His Kind of Woman",
+    "overview": "",
+    "poster_path": "/mB5vCfHE7ootyK96F3IVhLSaJzP.jpg",
+    "backdrop_path": "/pOtCuWEVxWrO7bkZiPvirOv27ZT.jpg",
+    "release_date": "1951-08-15",
+    "director": "John Farrow",
+    "runtime": 120,
+    "genres": [
+      "犯罪",
+      "コメディ",
+      "スリラー"
+    ],
+    "vote_average": 6.612,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "地獄への退却": {
+    "tmdb_id": 208974,
+    "tmdb_title_jp": "Retreat, Hell!",
+    "tmdb_title_en": "Retreat, Hell!",
+    "overview": "",
+    "poster_path": "/pctLnGQ4BFe6dtaum5i0ZKckFND.jpg",
+    "backdrop_path": "/xjbxJK6XIsAeD2ZDhGhLFsKp5OL.jpg",
+    "release_date": "1952-02-17",
+    "director": "Joseph H. Lewis",
+    "runtime": 95,
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "札束無情": {
+    "tmdb_id": 22924,
+    "tmdb_title_jp": "Armored Car Robbery",
+    "tmdb_title_en": "Armored Car Robbery",
+    "overview": "",
+    "poster_path": "/1cYOPFbHEEXcXq8VYlJI5h2QpIe.jpg",
+    "backdrop_path": "/ZV98BXRcmNef2ypusfrJi5cm5R.jpg",
+    "release_date": "1950-06-08",
+    "director": "Richard Fleischer",
+    "runtime": 67,
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "アクション"
+    ],
+    "vote_average": 6.507,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "脱獄者の叫び": {
+    "tmdb_id": 27560,
+    "tmdb_title_jp": "Cry of the Hunted",
+    "tmdb_title_en": "Cry of the Hunted",
+    "overview": "",
+    "poster_path": "/1ZcsGaXzSXZOjtviSaPI2HjzjNG.jpg",
+    "backdrop_path": "/fOGyHGVToTWc3qJ4v58KXNYdKU2.jpg",
+    "release_date": "1953-05-08",
+    "director": "Joseph H. Lewis",
+    "runtime": 80,
+    "genres": [
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ベラ・ルゴシの幽霊の館": {
+    "tmdb_id": 23014,
+    "tmdb_title_jp": "Invisible Ghost",
+    "tmdb_title_en": "Invisible Ghost",
+    "overview": "",
+    "poster_path": "/fV5XAHUYRlgWqSnfBzV8OCNa3cP.jpg",
+    "backdrop_path": "/r4zkprGCkP5fKlpUIoffCzgLPaC.jpg",
+    "release_date": "1941-04-25",
+    "director": "Joseph H. Lewis",
+    "runtime": 64,
+    "genres": [
+      "ホラー",
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 5.268,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "海底二万哩": {
+    "tmdb_id": 173,
+    "tmdb_title_jp": "海底二万哩",
+    "tmdb_title_en": "20,000 Leagues Under the Sea",
+    "overview": "１８６０年代、世界各地の海で、謎の怪物による船舶の沈没事故が相次いで発生。海洋学者のアロナックス教授らはアメリカ政府から派遣され、船で調査に乗り出す。ある夜、彼らの乗った船は謎の物体と衝突。それは、権力と戦争を憎む天才科学者ネモ船長率いる万能潜水艦ノーチラス号だった。教授たちは船長に招かれ、海底へと旅に出る。",
+    "poster_path": "/zJrdmWtDqxz7awE7taf7FGmVrsH.jpg",
+    "backdrop_path": "/6kN5rkADuRtVw7kLD08JyQHZ5OB.jpg",
+    "release_date": "1954-12-23",
+    "director": "Richard Fleischer",
+    "runtime": 127,
+    "genres": [
+      "アドベンチャー",
+      "サイエンスフィクション",
+      "ファミリー"
+    ],
+    "vote_average": 7.052,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ウィリー叔父さんの帰還": {
+    "tmdb_id": 220574,
+    "tmdb_title_jp": "The Return of October",
+    "tmdb_title_en": "The Return of October",
+    "overview": "",
+    "poster_path": "/65VtMDRTyVSBIBFj3g0k59G7Got.jpg",
+    "backdrop_path": "/zAAZCbjLh3zrupbOKnVQM91uxWR.jpg",
+    "release_date": "1948-10-26",
+    "director": "Joseph H. Lewis",
+    "runtime": 98,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 5.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "帰ってきたワイルド・ビル": {
+    "tmdb_id": 308189,
+    "tmdb_title_jp": "The Return of Wild Bill",
+    "tmdb_title_en": "The Return of Wild Bill",
+    "overview": "",
+    "poster_path": "/yNrM4YFuxPBhtPcmfUo98wBeJQy.jpg",
+    "backdrop_path": "/aD77WFTvWB9K4KwymF5VUvEXWiw.jpg",
+    "release_date": "1940-06-26",
+    "director": "Joseph H. Lewis",
+    "runtime": 60,
+    "genres": [
+      "西洋"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "罠を仕掛けろ": {
+    "tmdb_id": 29260,
+    "tmdb_title_jp": "Trapped",
+    "tmdb_title_en": "Trapped",
+    "overview": "",
+    "poster_path": "/ylqAsFE9pfpBgdfsie2FABD2VYW.jpg",
+    "backdrop_path": "/3ty1Whni0RiGt4nBnFr3a5A91J0.jpg",
+    "release_date": "1949-09-27",
+    "director": "Richard Fleischer",
+    "runtime": 78,
+    "genres": [
+      "犯罪",
+      "スリラー",
+      "謎"
+    ],
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "拳銃魔": {
+    "tmdb_id": 1178810,
+    "tmdb_title_jp": "姿なき拳銃魔",
+    "tmdb_title_en": "姿なき拳銃魔",
+    "overview": "",
+    "poster_path": "/obU6fRhTvTGKjvWdelbAU5AxPRX.jpg",
+    "backdrop_path": "/4iChjjv7s0p5ei8RXtYbF4abgzt.jpg",
+    "release_date": "1964-03-04",
+    "director": "小杉勇",
+    "runtime": 84,
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "カモ": null,
+  "私の名前はジュリア・ロス": {
+    "tmdb_id": 42077,
+    "tmdb_title_jp": "My Name Is Julia Ross",
+    "tmdb_title_en": "My Name Is Julia Ross",
+    "overview": "",
+    "poster_path": "/ofUTB5ojMTr6mndUxVQan5p8p2X.jpg",
+    "backdrop_path": "/gFl2UbHNznIxxsp4kkKX7lB8uGX.jpg",
+    "release_date": "1945-11-08",
+    "director": "Joseph H. Lewis",
+    "runtime": 65,
+    "genres": [
+      "スリラー",
+      "謎"
+    ],
+    "vote_average": 6.692,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "望みなき捜索": {
+    "tmdb_id": 120932,
+    "tmdb_title_jp": "Desperate Search",
+    "tmdb_title_en": "Desperate Search",
+    "overview": "",
+    "poster_path": "/cgTq8qKDDaFXjD8FYIorftoQ0Od.jpg",
+    "backdrop_path": "/raEjggcQZGMn2pppIp23dk214mr.jpg",
+    "release_date": "1952-11-19",
+    "director": "Joseph H. Lewis",
+    "runtime": 73,
+    "genres": [
+      "アドベンチャー",
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ビッグ・コンボ": {
+    "tmdb_id": 22342,
+    "tmdb_title_jp": "The Big Combo",
+    "tmdb_title_en": "The Big Combo",
+    "overview": "",
+    "poster_path": "/fltH7VmdZQeCRMwionxfYKOZoPg.jpg",
+    "backdrop_path": "/b2X4TG3e3QC4vzNfR25I58h5fdY.jpg",
+    "release_date": "1955-02-13",
+    "director": "Joseph H. Lewis",
+    "runtime": 88,
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ボディガード": null,
+  "ロデオの英雄": {
+    "tmdb_id": 120615,
+    "tmdb_title_jp": "Arena",
+    "tmdb_title_en": "Arena",
+    "overview": "",
+    "poster_path": "/gbdRxRvuBuQFRyBIC10E1WVW7Vq.jpg",
+    "backdrop_path": "/tgDGPDF1VcJhG6s2TBPvmliGVbj.jpg",
+    "release_date": "1953-06-24",
+    "director": "Richard Fleischer",
+    "runtime": 83,
+    "genres": [
+      "西洋",
+      "ドラマ"
+    ],
+    "vote_average": 4.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "その女を殺せ": {
+    "tmdb_id": 31713,
+    "tmdb_title_jp": "その女を殺せ",
+    "tmdb_title_en": "The Narrow Margin",
+    "overview": "",
+    "poster_path": "/kdlCfBmTZ7CoJoCvS1b56Xj1qJi.jpg",
+    "backdrop_path": "/yFUFyxPrlMeo110xX9gzRic3CHC.jpg",
+    "release_date": "1952-05-03",
+    "director": "Richard Fleischer",
+    "runtime": 72,
+    "genres": [
+      "スリラー",
+      "犯罪"
+    ],
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "恐怖の土曜日": {
+    "tmdb_id": 39834,
+    "tmdb_title_jp": "恐怖の土曜日",
+    "tmdb_title_en": "Violent Saturday",
+    "overview": "",
+    "poster_path": "/2ypnc0Rh5MThlKPpynqu8Arp81p.jpg",
+    "backdrop_path": "/tYt6qg8fShgf8Pa2f1ac8wfuypF.jpg",
+    "release_date": "1955-04-01",
+    "director": "Richard Fleischer",
+    "runtime": 90,
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 6.74,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "夢去りぬ": {
+    "tmdb_id": 82203,
+    "tmdb_title_jp": "The Girl in the Red Velvet Swing",
+    "tmdb_title_en": "The Girl in the Red Velvet Swing",
+    "overview": "",
+    "poster_path": "/mv1ia76cFLSNI7Ma9QZpnRrW3RE.jpg",
+    "backdrop_path": "/DoSgcJiIn936eYmhubc4lYWjX8.jpg",
+    "release_date": "1955-10-01",
+    "director": "Richard Fleischer",
+    "runtime": 109,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "捨身の一撃": {
+    "tmdb_id": 43314,
+    "tmdb_title_jp": "A Lawless Street",
+    "tmdb_title_en": "A Lawless Street",
+    "overview": "",
+    "poster_path": "/1fatP9UP4MqTjOh0TXrrUJ58zg3.jpg",
+    "backdrop_path": "/56ct1H6rxQrohJ0Ouz3Orrt8wrM.jpg",
+    "release_date": "1955-11-15",
+    "director": "Joseph H. Lewis",
+    "runtime": 78,
+    "genres": [
+      "西洋"
+    ],
+    "vote_average": 5.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "気のいい女たち Les Bonnes femmes": {
+    "tmdb_id": 27419,
+    "tmdb_title_jp": "Les Bonnes Femmes",
+    "tmdb_title_en": "Les Bonnes Femmes",
+    "overview": "",
+    "poster_path": "/oWYSw2PtPCGaGG7vIChOeDMOPyo.jpg",
+    "backdrop_path": "/7Wht4ckYWNyT0qDzjcE9Wm22y4v.jpg",
+    "release_date": "1960-04-22",
+    "director": "Claude Chabrol",
+    "runtime": 100,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "女鹿 Les Biches": {
+    "tmdb_id": 1787,
+    "tmdb_title_jp": "Les Biches",
+    "tmdb_title_en": "Les Biches",
+    "overview": "",
+    "poster_path": "/8Um28mR1lPWoKP7RI80lDKhn8Xe.jpg",
+    "backdrop_path": "/ylOk9eD57uChXuaXzCrsZtYvyCz.jpg",
+    "release_date": "1968-03-22",
+    "director": "Claude Chabrol",
+    "runtime": 95,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "不貞の女 La Femme Infidèle": {
+    "tmdb_id": 8286,
+    "tmdb_title_jp": "La Femme infidèle",
+    "tmdb_title_en": "La Femme infidèle",
+    "overview": "",
+    "poster_path": "/7aiBnKUjfvKwkHO3KQgXR2nycAj.jpg",
+    "backdrop_path": "/1Q8AKdjbaHQUU8xk7CpXFSOXFn3.jpg",
+    "release_date": "1969-01-22",
+    "director": "Claude Chabrol",
+    "runtime": 98,
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 6.857,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "肉屋 Le Boucher": {
+    "tmdb_id": 2912,
+    "tmdb_title_jp": "Le Boucher",
+    "tmdb_title_en": "Le Boucher",
+    "overview": "",
+    "poster_path": "/gvnGtHBgwnQkewajNDA0VMYkbCi.jpg",
+    "backdrop_path": "/eglf9YfrgCDlupodENN8qPtN5vC.jpg",
+    "release_date": "1970-02-27",
+    "director": "Claude Chabrol",
+    "runtime": 93,
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "ドラマ"
+    ],
+    "vote_average": 7.11,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "ヴィオレット・ノジエール Violette Nozière": {
+    "tmdb_id": 2813,
+    "tmdb_title_jp": "Violette Nozière",
+    "tmdb_title_en": "Violette Nozière",
+    "overview": "",
+    "poster_path": "/disxoPRvZm9UqkKMXV2NXaXUayV.jpg",
+    "backdrop_path": "/lQH7ZASIhyXwfvN71FbFSrHq8BY.jpg",
+    "release_date": "1978-05-24",
+    "director": "Claude Chabrol",
+    "runtime": 124,
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 6.673,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "主婦マリーがしたこと Une Affaire de femmes": {
+    "tmdb_id": 41975,
+    "tmdb_title_jp": "Une affaire de femmes",
+    "tmdb_title_en": "Une affaire de femmes",
+    "overview": "",
+    "poster_path": "/gNYGQwXpgW6T3QNy42f4uQnzD97.jpg",
+    "backdrop_path": "/uVyHoOtk7N1e3aEoHIuJbT6IBJg.jpg",
+    "release_date": "1988-09-14",
+    "director": "Claude Chabrol",
+    "runtime": 108,
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ベティ Betty": null,
+  "沈黙の女/ロウフィールド館の惨劇 La Cérémonie": {
+    "tmdb_id": 1802,
+    "tmdb_title_jp": "La Cérémonie",
+    "tmdb_title_en": "La Cérémonie",
+    "overview": "",
+    "poster_path": "/9Mnc2cp0xuucyVT7wINtikdlH0l.jpg",
+    "backdrop_path": "/33xE2R7WhFji3k1UtzR8SxImQWO.jpg",
+    "release_date": "1995-08-30",
+    "director": "Claude Chabrol",
+    "runtime": 112,
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 7.268,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "最後の賭け Rien ne va plus": {
+    "tmdb_id": 562878,
+    "tmdb_title_jp": "Rien ne va plus",
+    "tmdb_title_en": "Rien ne va plus",
+    "overview": "",
+    "poster_path": "/1DXIHXEADsm2TW6eBwlC9daa0iO.jpg",
+    "backdrop_path": null,
+    "release_date": "1964-06-18",
+    "director": "Jean Bacqué",
+    "runtime": 91,
+    "genres": [
+      "コメディ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "甘い罠 Merci pour le chocolat": {
+    "tmdb_id": 10305,
+    "tmdb_title_jp": "Merci pour le chocolat",
+    "tmdb_title_en": "Merci pour le chocolat",
+    "overview": "",
+    "poster_path": "/ydhpmHQp6VRZ0GjxHGcPR2pKE6M.jpg",
+    "backdrop_path": "/8LAGMRpcRIZ0saHp0gYUd0wKV8x.jpg",
+    "release_date": "2000-10-25",
+    "director": "Claude Chabrol",
+    "runtime": 101,
+    "genres": [
+      "スリラー",
+      "ドラマ",
+      "謎"
+    ],
+    "vote_average": 6.325,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "引き裂かれた女 La Fille coupée en deux": {
+    "tmdb_id": 5592,
+    "tmdb_title_jp": "La Fille coupée en deux",
+    "tmdb_title_en": "La Fille coupée en deux",
+    "overview": "",
+    "poster_path": "/aABQToRZDPwFzQYXTQLiRYPpy4S.jpg",
+    "backdrop_path": "/dFHJB93XClheLwdUMCWqdmu1YL.jpg",
+    "release_date": "2007-08-08",
+    "director": "Claude Chabrol",
+    "runtime": 115,
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "スリラー"
+    ],
+    "vote_average": 5.914,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "ブライアン・エプスタイン 世界最高のバンドを育てた男": {
+    "tmdb_id": 819277,
+    "tmdb_title_jp": "ブライアン・エプスタイン 世界最高のバンドを育てた男",
+    "tmdb_title_en": "Midas Man",
+    "overview": "ブライアン・エプスタインは、祖父が始めた家具店で日々忙しい毎日を送っていた。店舗に増設したレコード部門も２年後には看板部門に成長。ある日、リヴァプールのクラブ「キャヴァーン」で、まだ駆け出しの４人組ローカルバンド「ビートルズ」と出会う。４人が奏でる音楽に図らずとも心を奪われ、バンドのメンバーたちにマネージメント契約を打診。ステージマナーを教え、衣裳も髪型もととのえる。有名レコード会社を回り、ついにＥＭＩ傘下のパーロフォンから辛くもデビューを遂げ、瞬く間にバンドは世界中でその名を知らぬ者がいないほどの存在になっていく。メンバーの活躍にエプスタインも喜びをあふれさせるが、彼の中にはマネージャーとしての表の顔からはうかがい知れぬ、一個の人間として満たされない思いがあったのだったー。",
+    "poster_path": "/upfHomg9jaHUaSMCqJ63Yg1KF8W.jpg",
+    "backdrop_path": "/q7jEo6UkM7HsBioHJ3BpUnfgnjP.jpg",
+    "release_date": "2024-08-23",
+    "director": "Joe Stephenson",
+    "runtime": 112,
+    "genres": [
+      "音楽",
+      "ドラマ",
+      "履歴"
+    ],
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "ブルーボーイ事件": {
+    "tmdb_id": 1545317,
+    "tmdb_title_jp": "ブルーボーイ事件",
+    "tmdb_title_en": "ブルーボーイ事件",
+    "overview": "",
+    "poster_path": "/r4YIwFp5MI2Rfb140LK1QwjpOac.jpg",
+    "backdrop_path": "/iZ2BfrTmTJPLRar2yxmOfWockIK.jpg",
+    "release_date": "2025-11-14",
+    "director": "飯塚花笑",
+    "runtime": 106,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "〈月刊ホン・サンス〉vol.2 小川のほとりで": {
+    "tmdb_id": 1315057,
+    "tmdb_title_jp": "小川のほとりで",
+    "tmdb_title_en": "수유천",
+    "overview": "",
+    "poster_path": "/41rm8LzPhguB80yy7ajkUVOftAB.jpg",
+    "backdrop_path": "/3PLkT5wlRTETwz9v4ARcRCQ8qva.jpg",
+    "release_date": "2024-09-18",
+    "director": "홍상수",
+    "runtime": 111,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "〈月刊ホン・サンス〉vol.3 水の中で": {
+    "tmdb_id": 1077647,
+    "tmdb_title_jp": "물안에서",
+    "tmdb_title_en": "물안에서",
+    "overview": "",
+    "poster_path": "/sfg6A1knpv2XagkvXQCd5L3sb7l.jpg",
+    "backdrop_path": "/5G7WyWUBQhic7bk1dbqQaNJ22UL.jpg",
+    "release_date": "2023-04-12",
+    "director": "홍상수",
+    "runtime": 61,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ペンギン・レッスン": {
+    "tmdb_id": 1086497,
+    "tmdb_title_jp": "ペンギン・レッスン",
+    "tmdb_title_en": "The Penguin Lessons",
+    "overview": "アルゼンチンが軍事政権下にあった1976年、イギリス人の英語教師トムは、名門寄宿学校に赴任する。人生に希望を見いだせずにいた彼は、旅先で重油まみれになった死にそうなペンギンを見つけ、そこで知り合った女性と共にペンギンを救う。その後その女性に振られ、ペンギンだけがトムのもとに残されるものの、ペンギンは彼のそばを離れようとはしなかった。",
+    "poster_path": "/g4F0HE1uWUKut8iuBRagscLTArW.jpg",
+    "backdrop_path": "/bNTUgxHYaDmLo1SfRtahcM16XMi.jpg",
+    "release_date": "2025-03-27",
+    "director": "Peter Cattaneo",
+    "runtime": 111,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.105,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "プラスチックの海": {
+    "tmdb_id": 431339,
+    "tmdb_title_jp": "プラスチック・オーシャン",
+    "tmdb_title_en": "A Plastic Ocean",
+    "overview": "世界各地の海洋が、大量のプラスチックごみで溢れかえっている。海洋汚染が動物、環境、そして我々人類に及ぼす知られざる影響を検証するドキュメンタリー映画。",
+    "poster_path": "/8Ry1c7rVYonb4y8ELpdxvvMQWB1.jpg",
+    "backdrop_path": "/zCRjWc0SIV3bR6I41nk69j9CfJb.jpg",
+    "release_date": "2016-09-22",
+    "director": "Craig Leeson",
+    "runtime": 100,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 7.62,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "土曜日の男": {
+    "tmdb_id": 1194915,
+    "tmdb_title_jp": "స‌రిపోదా శ‌నివారం",
+    "tmdb_title_en": "స‌రిపోదా శ‌నివారం",
+    "overview": "",
+    "poster_path": "/e2yVhbMkpi4JvvdIhvRpS0Muge7.jpg",
+    "backdrop_path": "/yxQACC8pPE5RpRU8nFVU830LL6u.jpg",
+    "release_date": "2024-08-29",
+    "director": "Vivek Athreya",
+    "runtime": 172,
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "帰ってきたあぶない刑事": {
+    "tmdb_id": 1220786,
+    "tmdb_title_jp": "帰ってきた あぶない刑事",
+    "tmdb_title_en": "帰ってきた あぶない刑事",
+    "overview": "ドラマ放映開始から38年―。劇場版最新作から8年―。 昭和・平成・令和、3つの時代を超える“ 最強のバディムービー”大復活。 タカ＆ユージがヨコハマに堂々凱旋！",
+    "poster_path": "/89kvl3ASlzJUvpe38bWcu1Qfw78.jpg",
+    "backdrop_path": "/ztSgdB734XSM3txHA3Jpi4srIi9.jpg",
+    "release_date": "2024-05-24",
+    "director": "原廣利",
+    "runtime": 120,
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "ドラマ",
+      "犯罪"
+    ],
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "インド映画同好会支援募金�А嵬嫐椶量楫蘯圈廛泪汽蘊絮�": {
+    "tmdb_id": 370076,
+    "tmdb_title_jp": "தெறி",
+    "tmdb_title_en": "தெறி",
+    "overview": "",
+    "poster_path": "/f6BhexotEqO3GejXa3FopBNGL6M.jpg",
+    "backdrop_path": "/yzoyr6nuB3ChA38MSHjYKlMpU6W.jpg",
+    "release_date": "2016-04-14",
+    "director": "Atlee",
+    "runtime": 157,
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "インド映画同好会支援募金�А嵬嫐椶量楫蘯圈彡名鐓絮�": {
+    "tmdb_id": 580078,
+    "tmdb_title_jp": "嫐",
+    "tmdb_title_en": "嫐",
+    "overview": "",
+    "poster_path": "/nI6XXKKjwkUPGGDojZ4y08o9abF.jpg",
+    "backdrop_path": null,
+    "release_date": "2017-04-14",
+    "director": "余為彦",
+    "runtime": 104,
+    "genres": [],
+    "vote_average": 1.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "夜のたわむれ": {
+    "tmdb_id": 49782,
+    "tmdb_title_jp": "Nattlek",
+    "tmdb_title_en": "Nattlek",
+    "overview": "",
+    "poster_path": "/tud53mPuSu95fAtVKFs895hokuQ.jpg",
+    "backdrop_path": "/pb2ewe13yhICMuNydpWtUxHKOH4.jpg",
+    "release_date": "1966-09-12",
+    "director": "Mai Zetterling",
+    "runtime": 105,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "ワイズ・ブラッド": {
+    "tmdb_id": 42179,
+    "tmdb_title_jp": "Wise Blood",
+    "tmdb_title_en": "Wise Blood",
+    "overview": "",
+    "poster_path": "/gSZQC6u86iaugBSs1KBrXST7KSL.jpg",
+    "backdrop_path": "/6DCf47GiqRqW5v2IfBfURpCQdlT.jpg",
+    "release_date": "1979-10-24",
+    "director": "ジョン・ヒューストン",
+    "runtime": 106,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "洛東江": {
+    "tmdb_id": 1019274,
+    "tmdb_title_jp": "낙동강",
+    "tmdb_title_en": "낙동강",
+    "overview": "",
+    "poster_path": "/eUAMyFbPTuIetoUlHr8botf4EdY.jpg",
+    "backdrop_path": null,
+    "release_date": "1952-11-15",
+    "director": "전창근",
+    "runtime": 45,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ピアコル": {
+    "tmdb_id": 159586,
+    "tmdb_title_jp": "피아골",
+    "tmdb_title_en": "피아골",
+    "overview": "",
+    "poster_path": "/cgecyVHJSS1YCgeXtFBoVaykMO1.jpg",
+    "backdrop_path": null,
+    "release_date": "1955-09-23",
+    "director": "이강천",
+    "runtime": 107,
+    "genres": [
+      "戦争",
+      "ドラマ"
+    ],
+    "vote_average": 5.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "未亡人": null,
+  "嫁入りの日": {
+    "tmdb_id": 271757,
+    "tmdb_title_jp": "시집가는 날",
+    "tmdb_title_en": "시집가는 날",
+    "overview": "",
+    "poster_path": "/kUylcQ85AnQ6YqIlXdgb9V27waw.jpg",
+    "backdrop_path": null,
+    "release_date": "1956-11-27",
+    "director": "이병일",
+    "runtime": 79,
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "履歴"
+    ],
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "自由夫人": {
+    "tmdb_id": 1443601,
+    "tmdb_title_jp": "自由ケ丘夫人",
+    "tmdb_title_en": "自由ケ丘夫人",
+    "overview": "",
+    "poster_path": "/fkDHNgfRg4CML2UUUoBuMdL6P2l.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-09-18",
+    "director": "佐伯幸三",
+    "runtime": 90,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "地獄花": {
+    "tmdb_id": 530308,
+    "tmdb_title_jp": "地獄花",
+    "tmdb_title_en": "地獄花",
+    "overview": "",
+    "poster_path": "/5H4uSrgkxO0txfrT1pjCUHLEZdP.jpg",
+    "backdrop_path": null,
+    "release_date": "1957-06-25",
+    "director": "伊藤大輔",
+    "runtime": 99,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "お金": null,
+  "百万円と苦虫女": {
+    "tmdb_id": 69454,
+    "tmdb_title_jp": "百万円と苦虫女",
+    "tmdb_title_en": "百万円と苦虫女",
+    "overview": "鈴子は短大を卒業したものの就職できずに仕方なくアルバイトをしている。どうにかしてこの生活から抜け出そうと考えている中、ひょんな事件に巻き込まれてしまう。 「百万円貯まったら、この家を出て行きます！」 と家族に宣言。百万円を貯めるたびに、次から次へと引越しをして、1人で生きていく決意をする。 海の家での短期アルバイト、桃園で桃をもぎり、ホームセンターで働き、ちょっぴり恋をする― 行く先々の街で様々な人たちと出会い、笑ったり、怒ったり素敵な恋をしながら、自分だけの生き方をみつけてゆく一人の女性の物語。",
+    "poster_path": "/d74rAZUtVjRMmn0nbshNeuySWv2.jpg",
+    "backdrop_path": "/dkcXnXrUuiTz1XHlD6BFx1Ouemx.jpg",
+    "release_date": "2008-07-19",
+    "director": "タナダユキ",
+    "runtime": 121,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.121,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ビッグ・シティ〈デジタルリマスター版〉": {
+    "tmdb_id": 60567,
+    "tmdb_title_jp": "মহানগর",
+    "tmdb_title_en": "মহানগর",
+    "overview": "",
+    "poster_path": "/ryV9qzEr6x8KoiCNPpQTWswKSLr.jpg",
+    "backdrop_path": "/cDxkqKumuTe9q5MoC98tRXGW50o.jpg",
+    "release_date": "1963-09-27",
+    "director": "Satyajit Ray",
+    "runtime": 136,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.786,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "谷間の少女＋農村住宅改善": null,
+  "機関車小僧＋忘れられた土地　生活の記録シリーズ II": null,
+  "異形異類の面掛行列＋冬の夜の神々の宴＋生者と死者のかよい路": null,
+  "チャルラータ〈デジタルリマスター版〉": {
+    "tmdb_id": 35790,
+    "tmdb_title_jp": "চারুলতা",
+    "tmdb_title_en": "চারুলতা",
+    "overview": "",
+    "poster_path": "/jPp3oUuaqSZjbCdeyhh8vKs3Z5I.jpg",
+    "backdrop_path": "/hXYf2k0igWcfReM98949EVTfSgP.jpg",
+    "release_date": "1964-04-17",
+    "director": "Satyajit Ray",
+    "runtime": 117,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.483,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "ゆきははなである 新野の雪まつり": {
+    "tmdb_id": 1191585,
+    "tmdb_title_jp": "ゆきははなである 新野の雪まつり",
+    "tmdb_title_en": "ゆきははなである 新野の雪まつり",
+    "overview": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1980-10-04",
+    "director": "野田真吉",
+    "runtime": 129,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "主人公〈デジタルリマスター版〉": null,
+  "臆病者〈デジタルリマスター版〉": {
+    "tmdb_id": 138030,
+    "tmdb_title_jp": "কাপুরুষ",
+    "tmdb_title_en": "কাপুরুষ",
+    "overview": "",
+    "poster_path": "/8jo7QOnJdE2O7RavGRN8WocEpHO.jpg",
+    "backdrop_path": "/fmvlV6uJpKKpPVLZ76Et8GYtoGR.jpg",
+    "release_date": "1965-05-07",
+    "director": "Satyajit Ray",
+    "runtime": 70,
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "vote_average": 7.196,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "聖者〈デジタルリマスター版〉": {
+    "tmdb_id": 198567,
+    "tmdb_title_jp": "মহাপুরুষ",
+    "tmdb_title_en": "মহাপুরুষ",
+    "overview": "",
+    "poster_path": "/udDiovclSg7AKiRWZnoSpcp5HOA.jpg",
+    "backdrop_path": "/u0iak3jqnc4gzExomWnpRSz74Us.jpg",
+    "release_date": "1965-05-06",
+    "director": "Satyajit Ray",
+    "runtime": 65,
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "エレファント・ゴッド〈デジタルリマスター版〉": {
+    "tmdb_id": 165432,
+    "tmdb_title_jp": "জয় বাবা ফেলুনাথ",
+    "tmdb_title_en": "জয় বাবা ফেলুনাথ",
+    "overview": "",
+    "poster_path": "/hTuoj57JdCLLcb52pxmXUFuhSTZ.jpg",
+    "backdrop_path": "/cfezKpJ9aL3K19CVMAxlyllCwqI.jpg",
+    "release_date": "1979-01-04",
+    "director": "Satyajit Ray",
+    "runtime": 120,
+    "genres": [
+      "謎",
+      "アドベンチャー",
+      "犯罪",
+      "ファミリー"
+    ],
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "音楽サロン〈デジタルリマスター版〉": {
+    "tmdb_id": 822,
+    "tmdb_title_jp": "জলসাঘর",
+    "tmdb_title_en": "জলসাঘর",
+    "overview": "",
+    "poster_path": "/tbcOKg8wGA3zCSiCFdeL2xDbd7v.jpg",
+    "backdrop_path": "/mh4WEd1A3iYtu6uPgsiGboCkRFb.jpg",
+    "release_date": "1958-10-10",
+    "director": "Satyajit Ray",
+    "runtime": 100,
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "vote_average": 7.497,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "テイク・ミー・サムウェア・ナイス": {
+    "tmdb_id": 572979,
+    "tmdb_title_jp": "Take Me Somewhere Nice",
+    "tmdb_title_en": "Take Me Somewhere Nice",
+    "overview": "",
+    "poster_path": "/gOnMrDfk1dFic2V2ilJHByoE2Oq.jpg",
+    "backdrop_path": "/7OdsvVwS3ejlaCDZjZH1UFibh98.jpg",
+    "release_date": "2019-05-23",
+    "director": "Ena Sendijarević",
+    "runtime": 92,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BA",
+        "name": "Bosnia and Herzegovina"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "ドイツ零年": {
+    "tmdb_id": 53016,
+    "tmdb_title_jp": "新ドイツ零年",
+    "tmdb_title_en": "Allemagne 90 neuf zéro",
+    "overview": "",
+    "poster_path": "/xgTZCgpfVnZYjPAFNf2xgBSlJIh.jpg",
+    "backdrop_path": "/yXYUQfMPSNsvnqi7HU94GPdLfpE.jpg",
+    "release_date": "1993-01-15",
+    "director": "ジャン＝リュック・ゴダール",
+    "runtime": 63,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "新ドイツ零年": {
+    "tmdb_id": 53016,
+    "tmdb_title_jp": "新ドイツ零年",
+    "tmdb_title_en": "Allemagne 90 neuf zéro",
+    "overview": "",
+    "poster_path": "/xgTZCgpfVnZYjPAFNf2xgBSlJIh.jpg",
+    "backdrop_path": "/yXYUQfMPSNsvnqi7HU94GPdLfpE.jpg",
+    "release_date": "1993-01-15",
+    "director": "ジャン＝リュック・ゴダール",
+    "runtime": 63,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "アフター・オール・ディーズ・イヤーズ〈デジタル・リマスター版〉": {
+    "tmdb_id": 870767,
+    "tmdb_title_jp": "アフター・オール・ディーズ・イヤーズ",
+    "tmdb_title_en": "其後",
+    "overview": "10年ぶりに故郷に帰ってきたア・ジェは、家族にすら忘れ去られていた上に、無実の罪を着せられ処刑されてしまう。しかし、そのア・ジェが再び人々の前に現れ……。過去と現在が複雑に交錯し、物語はやがて不穏な様相を呈していく。",
+    "poster_path": "/wxiCztCZHrNUlm5eWOi3ytsOKFw.jpg",
+    "backdrop_path": "/fgFk1g029mIdmuaZns70dkRtHTN.jpg",
+    "release_date": "2012-10-13",
+    "director": "リム・カーワイ",
+    "runtime": 98,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "栄光のバックホーム": {
+    "tmdb_id": 1548626,
+    "tmdb_title_jp": "栄光のバックホーム",
+    "tmdb_title_en": "栄光のバックホーム",
+    "overview": "2013年のドラフト会議で、阪神タイガースから2位指名を受けた18歳の横田慎太郎。16年の開幕戦では一軍のスタメンに抜てきされ、初ヒットを記録するなど、誰もがその将来に大きな期待を寄せていた。ところが間もなく、慎太郎の視界にボールが二重に見えるという異変が生じる。医師の診断は脳腫瘍という、21歳の若者には過酷なものだった。それでも慎太郎は、家族や恩師、チームメイトら多くの人々に支えられながら、病との闘いに立ち向かっていく。19年9月の引退試合では、奇跡のバックホームを披露し、スタジアムを感動に包んだ。しかし、慎太郎のドラマはそこで終わりではなかった。",
+    "poster_path": "/8cwA3PUqjEL7XMwr1vZEFXLsz5e.jpg",
+    "backdrop_path": "/A6AISTjwNR6K1imVxTCIoih0HuR.jpg",
+    "release_date": "2025-11-28",
+    "director": "秋山純",
+    "runtime": 135,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "盤上の向日葵": {
+    "tmdb_id": 1418217,
+    "tmdb_title_jp": "盤上の向日葵",
+    "tmdb_title_en": "盤上の向日葵",
+    "overview": "山中で謎の白骨死体が発見される。事件解明の手掛かりは、遺体とともに発見されたこの世に7組しか現存しない希少な将棋駒。容疑をかけられたのは、突如将棋界に現れ、一躍時の人となっていた天才棋士〈上条桂介〉だった。さらに捜査の過程で、桂介の過去を知る重要人物として、賭け将棋で裏社会に生きた男〈東明重慶〉の存在が浮かび上がる。桂介と東明のあいだに何があったのか？謎に包まれた桂介の生い立ちが明らかになっていく。それは、想像を絶する過酷なものだった......",
+    "poster_path": "/xrZZaH5aOpPfKM6ur66hOHgvNPI.jpg",
+    "backdrop_path": "/eIdzvjZz5L1uqjAcMyQp3Rg88cg.jpg",
+    "release_date": "2025-10-31",
+    "director": "熊澤尚人",
+    "runtime": 123,
+    "genres": [
+      "ドラマ",
+      "謎"
+    ],
+    "vote_average": 9.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "羅小黒戦記２ ぼくらが望む未来": {
+    "tmdb_id": 1144107,
+    "tmdb_title_jp": "羅小黒戦記２ ぼくらが望む未来",
+    "tmdb_title_en": "罗小黑战记 2",
+    "overview": "中国の人気WEBアニメシリーズを原作に、黒猫の妖精シャオヘイの冒険を描くアクションファンタジーアニメ第2弾。ある襲撃事件により妖精の世界の平和が脅かされ、シャオヘイと師匠ムゲンの運命が大きく揺らいでいく。",
+    "poster_path": "/kM8HFn05FlFrlWw8cmoqrF4ZPVA.jpg",
+    "backdrop_path": "/uJEZaEM2hY3MG50CgZ3z9jeTwmp.jpg",
+    "release_date": "2025-07-18",
+    "director": "顾杰",
+    "runtime": 119,
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アクション"
+    ],
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  }
+}

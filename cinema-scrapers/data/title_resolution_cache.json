@@ -1,1 +1,1536 @@
-{}
+{
+  "レオ：ブラッディ・スウィート": {
+    "english_title": "Leo",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Leo",
+    "director": "Lokesh Kanagaraj",
+    "country": "India",
+    "failed": true
+  },
+  "バーフバリ エピック4K": {
+    "english_title": "Baahubali: The Epic",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Baahubali: The Epic",
+    "director": "S.S. Rajamouli",
+    "country": "India"
+  },
+  "イップ・マン 葉問": {
+    "english_title": "Ip Man 2",
+    "release_year": 2010,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "葉問2",
+    "director": "Wilson Yip",
+    "country": "Hong Kong"
+  },
+  "その口紅が憎い": {
+    "english_title": "A Temptress",
+    "release_year": 1965,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "その口紅が憎い",
+    "director": "Kazuo Hase",
+    "country": "Japan",
+    "failed": true
+  },
+  "愛のごとく": {
+    "english_title": "As Love Goes",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "愛のごとく",
+    "director": "Izuchi Kishu",
+    "country": "Japan",
+    "failed": true
+  },
+  "血みどろオールナイト2026 新春篇": {
+    "english_title": "Chimidoro All Night 2026 New Year Edition",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "血みどろオールナイト2026 新春篇",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "ガンダーラ 4K修復版": {
+    "english_title": "Gandahar",
+    "release_year": 1987,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Gandahar",
+    "director": "René Laloux",
+    "country": "France"
+  },
+  "大統領暗殺裁判": {
+    "english_title": "Land of Happiness",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "행복의 나라",
+    "director": "Choo Chang-min",
+    "country": "South Korea"
+  },
+  "ファンファーレ！": {
+    "english_title": "Fanfare",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ファンファーレ",
+    "director": "Ryohei Yoshino",
+    "country": "Japan",
+    "failed": true
+  },
+  "フジコ・ヘミング": {
+    "english_title": "Fuzjko: A Pianist of Silence & Solitude",
+    "release_year": 2018,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "フジコ・ヘミングの時間",
+    "director": "Soichiro Komatsu",
+    "country": "Japan"
+  },
+  "ホーリー・カウ": {
+    "english_title": "Holy Cow",
+    "release_year": 2024,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Vingt Dieux",
+    "director": "Louise Courvoisier",
+    "country": "France"
+  },
+  "愛はステロイド": {
+    "english_title": "Love Lies Bleeding",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Love Lies Bleeding",
+    "director": "Rose Glass",
+    "country": "USA, UK"
+  },
+  "アフター・ザー・クエイク": {
+    "english_title": "After the Quake",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "アフター・ザ・クエイク",
+    "director": "Tsuyoshi Inoue",
+    "country": "Japan"
+  },
+  "バード ここから羽ばたく": {
+    "english_title": "Bird",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Bird",
+    "director": "Andrea Arnold",
+    "country": "United Kingdom"
+  },
+  "グランドツアー": {
+    "english_title": "Grand Tour",
+    "release_year": 2024,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Grand Tour",
+    "director": "Miguel Gomes",
+    "country": "Portugal, Italy, France, Germany, Japan, China"
+  },
+  "ヤン・シュヴァンクマイエル": {
+    "english_title": "Jan Svankmajer: Alchemist of the Surreal",
+    "release_year": 2001,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "Jan Svankmajer: Alchimiste du surréel",
+    "director": "Bertrand Schmitt, Michel Leclerc",
+    "country": "France",
+    "failed": true
+  },
+  "ミゲル・ゴメス アーリーワークス": {
+    "english_title": "Miguel Gomes: Early Works",
+    "release_year": 2025,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "ミゲル・ゴメス アーリーワークス",
+    "director": "Miguel Gomes",
+    "country": "Portugal",
+    "failed": true
+  },
+  "サターン・ボウリング": {
+    "english_title": "Saturn Bowling",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Bowling Saturne",
+    "director": "Patricia Mazuy",
+    "country": "France"
+  },
+  "RED ROOMS レッドルームズ": {
+    "english_title": "Red Rooms",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Les Chambres rouges",
+    "director": "Pascal Plante",
+    "country": "Canada"
+  },
+  "ホース・マネー＋わたしたちの男": {
+    "english_title": "Horse Money + Our Man",
+    "release_year": 2014,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Cavalo Dinheiro + O Nosso Homem",
+    "director": "Pedro Costa",
+    "country": "Portugal",
+    "failed": true
+  },
+  "血 ４Kレストア版": {
+    "english_title": "Blood",
+    "release_year": 1989,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "O Sangue",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "溶岩の家 ４Kレストア版": {
+    "english_title": "Down to Earth",
+    "release_year": 1994,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Casa de Lava",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "骨 ４Kレストア版": {
+    "english_title": "Bones",
+    "release_year": 1997,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Ossos",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "ヴァンダの部屋 ２Kレストア版": {
+    "english_title": "In Vanda's Room",
+    "release_year": 2000,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "No Quarto da Vanda",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "ヴィタリナ＋火の娘たち": {
+    "english_title": "Vitalina Varela + The Daughters of Fire",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Vitalina Varela + As Filhas do Fogo",
+    "director": "Pedro Costa",
+    "country": "Portugal",
+    "failed": true
+  },
+  "あなたの微笑みはどこに隠れたの？": {
+    "english_title": "Where Does Your Hidden Smile Lie?",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Onde Jaz o Teu Sorriso?",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "何も変えてはならない": {
+    "english_title": "Ne Change Rien",
+    "release_year": 2009,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Ne change rien",
+    "director": "Pedro Costa",
+    "country": "Portugal, France"
+  },
+  "コロッサル・ユース 2Kレストア版": {
+    "english_title": "Colossal Youth",
+    "release_year": 2006,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Juventude em Marcha",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "マライコッタイ・ヴァーリバン": {
+    "english_title": "Malaikottai Vaaliban",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Malaikottai Vaaliban",
+    "director": "Lijo Jose Pellissery",
+    "country": "India"
+  },
+  "アバウトアス・バット・ノット・アバウトアス": {
+    "english_title": "About Us But Not About Us",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "About Us But Not About Us",
+    "director": "Jun Robles Lana",
+    "country": "Philippines"
+  },
+  "〈特集上映〉ロッセリーニ×ゴダール［２つのゼロ年］": {
+    "english_title": "Rossellini x Godard: Two Year Zeros",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "〈特集上映〉ロッセリーニ×ゴダール［２つのゼロ年］",
+    "director": "Roberto Rossellini, Jean-Luc Godard",
+    "country": "Italy, France",
+    "failed": true
+  },
+  "よみがえる声【アンコール上映】": {
+    "english_title": "Voices of the Silenced",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "よみがえる声",
+    "director": "Park Soo-nam, Park Mai",
+    "country": "Japan, South Korea"
+  },
+  "《本橋成一の映画》アレクセイと泉 G": {
+    "english_title": "Alexei and the Spring",
+    "release_year": 2002,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "アレクセイと泉",
+    "director": "Seiichi Motohashi",
+    "country": "Japan"
+  },
+  "ネタニヤフ調書 汚職と戦争 G": {
+    "english_title": "The Bibi Files",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Bibi Files",
+    "director": "Alexis Bloom",
+    "country": "Israel, USA"
+  },
+  "《本橋成一の映画》アラヤシキの住人たち G": {
+    "english_title": "Take your time - Arayashiki",
+    "release_year": 2015,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "アラヤシキの住人たち",
+    "director": "Seiichi Motohashi",
+    "country": "Japan"
+  },
+  "《本橋成一の映画》ナージャの村 G": {
+    "english_title": "Nadya's Village",
+    "release_year": 1998,
+    "confidence": 5,
+    "notes": "",
+    "original_title": "ナージャの村",
+    "director": "Seiichi Motohashi",
+    "country": "Japan"
+  },
+  "OKプロジェクト 2026年よろしく特別上映会": {
+    "english_title": "OK Project 2026 Yoroshiku Special Screening",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "OKプロジェクト 2026年よろしく特別上映会",
+    "director": "Yurina Kaneko",
+    "country": "Japan",
+    "failed": true
+  },
+  "医の倫理と戦争": {
+    "english_title": "Medical Ethics and War",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "医の倫理と戦争",
+    "director": "Sosuke Yamamoto",
+    "country": "Japan",
+    "failed": true
+  },
+  "日本映像ｸﾞﾗﾝﾌﾟﾘ 記念上映会": {
+    "english_title": "Japan Video Grand Prix Memorial Screening",
+    "release_year": null,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "日本映像ｸﾞﾗﾝﾌﾟﾘ 記念上映会",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "⼩屋番 ⼋ヶ岳に⽣きる 劇場版": {
+    "english_title": "The Hut Keeper: Living in the Yatsugatake Mountains",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "小屋番 八ヶ岳に生きる 劇場版",
+    "director": "Shinya Fukazawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "最後のミッション": {
+    "english_title": "The Last Mission",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "最後のミッション",
+    "director": "Shunji Muguruma",
+    "country": "Japan"
+  },
+  "サリー[0118イベント]": {
+    "english_title": "Salli",
+    "release_year": 2023,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "莎莉",
+    "director": "Lien Chien Hung",
+    "country": "Taiwan"
+  },
+  "『Tokyo Melody Ryuichi Sakamoto』4Kレストア版": {
+    "english_title": "Tokyo Melody: A Film about Ryuichi Sakamoto",
+    "release_year": 1985,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Tokyo melody: un film sur Ryuichi Sakamoto",
+    "director": "Elizabeth Lennard",
+    "country": "France, Japan"
+  },
+  "MIRRORLIAR FILMS Season8": {
+    "english_title": "MIRRORLIAR FILMS Season 8",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "MIRRORLIAR FILMS Season8",
+    "director": "Adnan Al Rajeev, Miyuki Matsuda, Toichiro Setsuda, Kohei Hirota, Haru Ando, Eri Sado",
+    "country": "Japan",
+    "failed": true
+  },
+  "【odessa vol+】Tokyo Melody": {
+    "english_title": "Tokyo Melody: A Film about Ryuichi Sakamoto",
+    "release_year": 1985,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Tokyo Melody: Un film sur Ryuichi Sakamoto",
+    "director": "Elizabeth Lennard",
+    "country": "France, Japan"
+  },
+  "【odessa vol+】ﾜﾝ･ﾊﾞﾄﾙ･ｱﾌﾀｰ": {
+    "english_title": "One Battle After Another",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "One Battle After Another",
+    "director": "Paul Thomas Anderson",
+    "country": "USA"
+  },
+  "【odessa vol+】ｱｸﾞﾘｰｼｽﾀｰ": {
+    "english_title": "The Ugly Stepsister",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Den stygge stesøsteren",
+    "director": "Emilie Blichfeldt",
+    "country": "Norway"
+  },
+  "俠勇の花道ドス": {
+    "english_title": "Sword: Flower-Strewn Path of Courage",
+    "release_year": 1966,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "侠勇の花道 ドス",
+    "director": "Hiroki Matsuno",
+    "country": "Japan"
+  },
+  "日本大俠客": {
+    "english_title": "Great Chivalry of Japan",
+    "release_year": 1966,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "日本大俠客",
+    "director": "Masahiro Makino",
+    "country": "Japan",
+    "failed": true
+  },
+  "俠骨一代": {
+    "english_title": "The Chivalrous Life",
+    "release_year": 1967,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "俠骨一代",
+    "director": "Masahiro Makino",
+    "country": "Japan"
+  },
+  "やくざ刑事(でか)": {
+    "english_title": "The Kamikaze Cop",
+    "release_year": 1970,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "やくざ刑事",
+    "director": "Yukio Noda",
+    "country": "Japan"
+  },
+  "浪花俠客度胸七人斬り": {
+    "english_title": "Seven Murder Yakuza",
+    "release_year": 1967,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "浪花侠客 度胸七人斬り",
+    "director": "Shigehiro Ozawa",
+    "country": "Japan"
+  },
+  "任俠魚河岸の石松": {
+    "english_title": "Chivalrous Ishimatsu of the Fish Market",
+    "release_year": 1967,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "任俠魚河岸の石松",
+    "director": "Norifumi Suzuki",
+    "country": "Japan",
+    "failed": true
+  },
+  "ヴィレッジ 声帯切村": {
+    "english_title": "Azrael",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Azrael",
+    "director": "E.L. Katz",
+    "country": "United States"
+  },
+  "マッド・フェイト 狂運": {
+    "english_title": "Mad Fate",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "命案",
+    "director": "Soi Cheang",
+    "country": "Hong Kong"
+  },
+  "ロン・ライス作品集（2）": {
+    "english_title": "Ron Rice Program 2",
+    "release_year": null,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ロン・ライス作品集（2）",
+    "director": "Ron Rice",
+    "country": "USA",
+    "failed": true
+  },
+  "ストム・ソゴー作品集": {
+    "english_title": "Stom Sogo Anthology",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ストム・ソゴー作品集",
+    "director": "Stom Sogo",
+    "country": "Japan",
+    "failed": true
+  },
+  "アンソロジー・フィルムアーカイブスの創設者たち": {
+    "english_title": "Founders of Anthology Film Archives",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "アンソロジー・フィルムアーカイブスの創設者たち",
+    "director": null,
+    "country": "USA",
+    "failed": true
+  },
+  "時を数えて、砂漠に立つHe": {
+    "english_title": "He Stands in a Desert Counting the Seconds of His Life",
+    "release_year": 1985,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "He Stands in a Desert Counting the Seconds of His Life",
+    "director": "Jonas Mekas",
+    "country": "USA"
+  },
+  "ボーン・イン・フレイムズBorn in Flames": {
+    "english_title": "Born in Flames",
+    "release_year": 1983,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Born in Flames",
+    "director": "Lizzie Borden",
+    "country": "United States"
+  },
+  "リグルーピングRegrouping": {
+    "english_title": "Regrouping",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Regrouping",
+    "director": "Lizzie Borden",
+    "country": "USA"
+  },
+  "「ドキュメンタリー・フィードバック」シリーズより": {
+    "english_title": "Documentary Feedback",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "「ドキュメンタリー・フィードバック」シリーズより",
+    "director": null,
+    "country": "USA",
+    "failed": true
+  },
+  "トム、トム、笛吹きの息子Tom, Tom, the Piper’s Son": {
+    "english_title": "Tom, Tom, the Piper's Son",
+    "release_year": 1969,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Tom, Tom, the Piper's Son",
+    "director": "Ken Jacobs",
+    "country": "USA"
+  },
+  "グリーサーズ・パレスGreaser’s Palace": {
+    "english_title": "Greaser's Palace",
+    "release_year": 1972,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Greaser's Palace",
+    "director": "Robert Downey Sr.",
+    "country": "USA"
+  },
+  "構造映画作品集": {
+    "english_title": "Structural Film Anthology",
+    "release_year": 2004,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "構造映画作品集",
+    "director": "Taka Iimura",
+    "country": "Japan",
+    "failed": true
+  },
+  "デイヴィッド・ブルックス作品集": {
+    "english_title": "David Brooks Short Films",
+    "release_year": null,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "デイヴィッド・ブルックス作品集",
+    "director": "David Brooks",
+    "country": "USA",
+    "failed": true
+  },
+  "ロン・ライス作品集（1）": {
+    "english_title": "Ron Rice Program 1",
+    "release_year": 1960,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "ロン・ライス作品集（1）",
+    "director": "Ron Rice",
+    "country": "USA",
+    "failed": true
+  },
+  "「オーディオビジュアル・フィードバック」シリーズより": {
+    "english_title": "From the 'Audio-Visual Feedback' Series",
+    "release_year": null,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "「オーディオビジュアル・フィードバック」シリーズより",
+    "director": null,
+    "country": "USA",
+    "failed": true
+  },
+  "抽象アニメーション作品集": {
+    "english_title": "Abstract Animation Works",
+    "release_year": 2008,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "抽象アニメーション作品集",
+    "director": "Maya Yonesho",
+    "country": "Japan",
+    "failed": true
+  },
+  "詩篇23枝篇23rd": {
+    "english_title": "23rd Psalm Branch",
+    "release_year": 1966,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "23rd Psalm Branch",
+    "director": "Stan Brakhage",
+    "country": "USA"
+  },
+  "大命中！MEは何しにアマゾンへ？": {
+    "english_title": "Amazon Bullseye",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "아마존 활명수",
+    "director": "Kim Chang-ju",
+    "country": "South Korea"
+  },
+  "SEBASTIAN セバスチャン": {
+    "english_title": "Sebastian",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Sebastian",
+    "director": "Mikko Mäkelä",
+    "country": "United Kingdom, Finland, Belgium"
+  },
+  "ダーティハンター": {
+    "english_title": "Open Season",
+    "release_year": 1974,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Los cazadores",
+    "director": "Peter Collinson",
+    "country": "Spain"
+  },
+  "唐人街探偵1900": {
+    "english_title": "Detective Chinatown 1900",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "唐人街探案1900",
+    "director": "Chen Sicheng, Dai Mo",
+    "country": "China"
+  },
+  "Fox Hunt フォックス・ハント": {
+    "english_title": "Fox Hunt",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "獵狐行動",
+    "director": "Leo Zhang",
+    "country": "China"
+  },
+  "GRIT ―バレーボール男子日本代表 栄光への始発点―": {
+    "english_title": "GRIT: The Starting Point for Glory",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "GRIT ―バレーボール男子日本代表 栄光への始発点―",
+    "director": "Takafumi Kawakami",
+    "country": "Japan",
+    "failed": true
+  },
+  "落語家の業": {
+    "english_title": "Rakugoka no Go",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "落語家の業",
+    "director": "Kyosuke Enokizono",
+    "country": "Japan",
+    "failed": true
+  },
+  "ラストノート 名もなき者たちの歌": {
+    "english_title": "Last Note: Song of the Nameless",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ラストノート 名もなき者たちの歌",
+    "director": "Kyoichi Komoto",
+    "country": "Japan",
+    "failed": true
+  },
+  "アハーン": {
+    "english_title": "Ahaan",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Ahaan",
+    "director": "Nikhil Pherwani",
+    "country": "India"
+  },
+  "響け！ 情熱のムリダンガム": {
+    "english_title": "Sarvam Thaala Mayam",
+    "release_year": 2019,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Sarvam Thaala Mayam",
+    "director": "Rajiv Menon",
+    "country": "India"
+  },
+  "【チリの闘い：武器なき民の抵抗】第2部：クーデター": {
+    "english_title": "The Battle of Chile: Part II",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La batalla de Chile: La lucha de un pueblo sin armas - Segunda parte: El golpe de estado",
+    "director": "Patricio Guzmán",
+    "country": "Chile"
+  },
+  "シネマ歌舞伎『歌舞伎ＮＥＸＴ 朧の森に棲む鬼』幸四郎版": {
+    "english_title": "Lord of the Lies",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "シネマ歌舞伎『歌舞伎ＮＥＸＴ 朧の森に棲む鬼』幸四郎版",
+    "director": "Hidenori Inoue",
+    "country": "Japan",
+    "failed": true
+  },
+  "藤本タツキ 17-26 Part-1": {
+    "english_title": "Tatsuki Fujimoto 17-26 Part 1",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "藤本タツキ 17-26 Part-1",
+    "director": "Seishirō Nagaya, Nobukage Kimura, Nobuyuki Takeuchi, Naoya Ando",
+    "country": "Japan",
+    "failed": true
+  },
+  "藤本タツキ 17-26 Part-2": {
+    "english_title": "Tatsuki Fujimoto 17-26 Part-2",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "藤本タツキ 17-26 Part-2",
+    "director": "Tetsuaki Watanabe, Kazuaki Terasawa, Shu Honma",
+    "country": "Japan",
+    "failed": true
+  },
+  "【チリの闘い：武器なき民の抵抗】第3部：民衆の力": {
+    "english_title": "The Battle of Chile: Part 3 - The Power of the People",
+    "release_year": 1979,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La batalla de Chile: La lucha de un pueblo sin armas - Tercera parte: El poder popular",
+    "director": "Patricio Guzmán",
+    "country": "Chile"
+  },
+  "ひとつの机、ふたつの制服": {
+    "english_title": "The Uniform",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "夜校女生",
+    "director": "Zhuang Jing-shen",
+    "country": "Taiwan"
+  },
+  "大地に詩を書くように": {
+    "english_title": "Poetry on Land",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "땅에 쓰는 시",
+    "director": "Jung Da-woon",
+    "country": "South Korea"
+  },
+  "〔月刊ホン・サンス Vol.1〕旅人の必需品": {
+    "english_title": "A Traveler's Needs",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "여행자의 필요",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "ヒポクラテスの盲点": {
+    "english_title": "Hippocrates' Blind Spot",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ヒポクラテスの盲点",
+    "director": "Hayato Onishi",
+    "country": "Japan",
+    "failed": true
+  },
+  "ベ・ラ・ミ　気になるあなた": {
+    "english_title": "Bel Ami",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "漂亮朋友",
+    "director": "Geng Jun",
+    "country": "China",
+    "failed": true
+  },
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】コーヒー&シガレッツ": {
+    "english_title": "Coffee and Cigarettes",
+    "release_year": 2003,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Coffee and Cigarettes",
+    "director": "Jim Jarmusch",
+    "country": "United States"
+  },
+  "ひとりで⽣きる": {
+    "english_title": "An Independent Life",
+    "release_year": 1992,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Самостоятельная жизнь",
+    "director": "Vitali Kanevsky",
+    "country": "Russia"
+  },
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】ナイト・オン・ザ・プラネット": {
+    "english_title": "Night on Earth",
+    "release_year": 1991,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Night on Earth",
+    "director": "Jim Jarmusch",
+    "country": "United States"
+  },
+  "ただ、やるべきことを": {
+    "english_title": "Work to Do",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "해야 할 일",
+    "director": "Park Hong-jun",
+    "country": "South Korea"
+  },
+  "水の中で": {
+    "english_title": "In Water",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "물안에서",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "鯨が消えた入り江 / 我在這裡等你": {
+    "english_title": "A Balloon's Landing",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "我在這裡等你",
+    "director": "Angel Teng",
+    "country": "Taiwan"
+  },
+  "欲望の翼 デジタル・リマスター版 / 阿飛正傳": {
+    "english_title": "Days of Being Wild",
+    "release_year": 1990,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "阿飛正傳",
+    "director": "Wong Kar-wai",
+    "country": "Hong Kong"
+  },
+  "チリの闘い 第2部：クーデター": {
+    "english_title": "The Battle of Chile: Part II - The Coup",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La batalla de Chile: La lucha de un pueblo sin armas - Segunda parte: El golpe de estado",
+    "director": "Patricio Guzmán",
+    "country": "Chile"
+  },
+  "チリの闘い 第3部：民衆の力": {
+    "english_title": "The Battle of Chile: Part 3 - The Power of the People",
+    "release_year": 1979,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La batalla de Chile: El poder popular",
+    "director": "Patricio Guzmán",
+    "country": "Chile"
+  },
+  "9. 黒い花粉": {
+    "english_title": "Black Pollen",
+    "release_year": 1958,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "黒い花粉",
+    "director": "Hideo Oba",
+    "country": "Japan",
+    "failed": true
+  },
+  "10. ボロ家の春秋": {
+    "english_title": "Boarding House Blues",
+    "release_year": 1958,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ボロ家の春秋",
+    "director": "Noboru Nakamura",
+    "country": "Japan"
+  },
+  "14. 顔役（噛みつかれた顔役）": {
+    "english_title": "The Country Boss",
+    "release_year": 1958,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "顔役（噛みつかれた顔役）",
+    "director": "Noboru Nakamura",
+    "country": "Japan"
+  },
+  "4. 姑獲鳥（うぶめ）の夏": {
+    "english_title": "The Summer of the Ubume",
+    "release_year": 2005,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "姑獲鳥の夏",
+    "director": "Akio Jissoji",
+    "country": "Japan"
+  },
+  "5. 怪談〈短縮版〉": {
+    "english_title": "Kwaidan",
+    "release_year": 1964,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "怪談",
+    "director": "Masaki Kobayashi",
+    "country": "Japan"
+  },
+  "6. 牡丹燈籠": {
+    "english_title": "The Bride from Hades",
+    "release_year": 1968,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "牡丹燈籠",
+    "director": "Satsuo Yamamoto",
+    "country": "Japan"
+  },
+  "7. リング": {
+    "english_title": "Ring",
+    "release_year": 1998,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "リング",
+    "director": "Hideo Nakata",
+    "country": "Japan"
+  },
+  "8. 陰陽師": {
+    "english_title": "Onmyoji",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "陰陽師",
+    "director": "Yojiro Takita",
+    "country": "Japan"
+  },
+  "ジョルスン物語": {
+    "english_title": "The Jolson Story",
+    "release_year": 1946,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Jolson Story",
+    "director": "Alfred E. Green",
+    "country": "USA"
+  },
+  "離婚の子": {
+    "english_title": "Child of Divorce",
+    "release_year": 1946,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Child of Divorce",
+    "director": "Richard Fleischer",
+    "country": "United States"
+  },
+  "ラスト・ラン": {
+    "english_title": "Last Run: 100 Million Yen's Worth of Love & Betrayal",
+    "release_year": 1991,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "ラスト・ラン〜愛と裏切りの百億円",
+    "director": "Takashi Miike",
+    "country": "Japan"
+  },
+  "静かについて来い": {
+    "english_title": "Follow Me Quietly",
+    "release_year": 1949,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Follow Me Quietly",
+    "director": "Richard Fleischer",
+    "country": "USA"
+  },
+  "パスポートのない女": {
+    "english_title": "A Lady Without Passport",
+    "release_year": 1950,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A Lady Without Passport",
+    "director": "Joseph H. Lewis",
+    "country": "United States"
+  },
+  "秘密捜査官": {
+    "english_title": "Undercover Agent",
+    "release_year": 1960,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "秘密捜査官",
+    "director": "Umetsugu Inoue",
+    "country": "Japan",
+    "failed": true
+  },
+  "夜よりも深い闇": {
+    "english_title": "So Dark the Night",
+    "release_year": 1946,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "So Dark the Night",
+    "director": "Joseph H. Lewis",
+    "country": "United States"
+  },
+  "ニューヨーク大騒動": {
+    "english_title": "So This Is New York",
+    "release_year": 1948,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "So This Is New York",
+    "director": "Richard Fleischer",
+    "country": "United States"
+  },
+  "替え玉殺人事件": {
+    "english_title": "His Kind of Woman",
+    "release_year": 1951,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "His Kind of Woman",
+    "director": "John Farrow",
+    "country": "United States"
+  },
+  "地獄への退却": {
+    "english_title": "Retreat, Hell!",
+    "release_year": 1952,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Retreat, Hell!",
+    "director": "Joseph H. Lewis",
+    "country": "USA"
+  },
+  "札束無情": {
+    "english_title": "Armored Car Robbery",
+    "release_year": 1950,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "札束無情",
+    "director": "Richard Fleischer",
+    "country": "United States"
+  },
+  "脱獄者の叫び": {
+    "english_title": "Cry of the Hunted",
+    "release_year": 1953,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Cry of the Hunted",
+    "director": "Joseph H. Lewis",
+    "country": "USA"
+  },
+  "ベラ・ルゴシの幽霊の館": {
+    "english_title": "Invisible Ghost",
+    "release_year": 1941,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Invisible Ghost",
+    "director": "Joseph H. Lewis",
+    "country": "United States"
+  },
+  "ウィリー叔父さんの帰還": {
+    "english_title": "The Return of October",
+    "release_year": 1948,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Return of October",
+    "director": "Joseph H. Lewis",
+    "country": "USA"
+  },
+  "帰ってきたワイルド・ビル": {
+    "english_title": "The Return of Wild Bill",
+    "release_year": 1940,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Return of Wild Bill",
+    "director": "Joseph H. Lewis",
+    "country": "USA"
+  },
+  "罠を仕掛けろ": {
+    "english_title": "Trapped",
+    "release_year": 1949,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Trapped",
+    "director": "Richard Fleischer",
+    "country": "United States"
+  },
+  "カモ": {
+    "english_title": "Kamo",
+    "release_year": 1965,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "カモ",
+    "director": "Hideo Sekigawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "私の名前はジュリア・ロス": {
+    "english_title": "My Name Is Julia Ross",
+    "release_year": 1945,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "My Name Is Julia Ross",
+    "director": "Joseph H. Lewis",
+    "country": "United States"
+  },
+  "望みなき捜索": {
+    "english_title": "Desperate Search",
+    "release_year": 1952,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Desperate Search",
+    "director": "Joseph H. Lewis",
+    "country": "USA"
+  },
+  "ビッグ・コンボ": {
+    "english_title": "The Big Combo",
+    "release_year": 1955,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Big Combo",
+    "director": "Joseph H. Lewis",
+    "country": "United States"
+  },
+  "ボディガード": {
+    "english_title": "The Bodyguard",
+    "release_year": 1973,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ボディガード牙",
+    "director": "Ryuichi Takamori",
+    "country": "Japan",
+    "failed": true
+  },
+  "ロデオの英雄": {
+    "english_title": "Arena",
+    "release_year": 1953,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Arena",
+    "director": "Richard Fleischer",
+    "country": "USA"
+  },
+  "夢去りぬ": {
+    "english_title": "The Girl in the Red Velvet Swing",
+    "release_year": 1955,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "The Girl in the Red Velvet Swing",
+    "director": "Richard Fleischer",
+    "country": "USA"
+  },
+  "捨身の一撃": {
+    "english_title": "A Lawless Street",
+    "release_year": 1955,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A Lawless Street",
+    "director": "Joseph H. Lewis",
+    "country": "USA"
+  },
+  "不貞の女 La Femme Infidèle": {
+    "english_title": "The Unfaithful Wife",
+    "release_year": 1969,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Femme Infidèle",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "肉屋 Le Boucher": {
+    "english_title": "The Butcher",
+    "release_year": 1970,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Le Boucher",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "ヴィオレット・ノジエール Violette Nozière": {
+    "english_title": "Violette Nozière",
+    "release_year": 1978,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Violette Nozière",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "主婦マリーがしたこと Une Affaire de femmes": {
+    "english_title": "Story of Women",
+    "release_year": 1988,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Une affaire de femmes",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "ベティ Betty": {
+    "english_title": "Betty",
+    "release_year": 1994,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ベティ",
+    "director": "Toshiyuki Mizutani",
+    "country": "Japan",
+    "failed": true
+  },
+  "沈黙の女/ロウフィールド館の惨劇 La Cérémonie": {
+    "english_title": "La Cérémonie",
+    "release_year": 1995,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Cérémonie",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "最後の賭け Rien ne va plus": {
+    "english_title": "The Swindle",
+    "release_year": 1997,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Rien ne va plus",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "甘い罠 Merci pour le chocolat": {
+    "english_title": "Nightcap",
+    "release_year": 2000,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Merci pour le chocolat",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "引き裂かれた女 La Fille coupée en deux": {
+    "english_title": "A Girl Cut in Two",
+    "release_year": 2007,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Fille coupée en deux",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "〈月刊ホン・サンス〉vol.2 小川のほとりで": {
+    "english_title": "By the Stream",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "수유천",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "〈月刊ホン・サンス〉vol.3 水の中で": {
+    "english_title": "In the Water",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "물안에서",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "プラスチックの海": {
+    "english_title": "A Plastic Ocean",
+    "release_year": 2016,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "A Plastic Ocean",
+    "director": "Craig Leeson",
+    "country": "United Kingdom, Hong Kong"
+  },
+  "土曜日の男": {
+    "english_title": "Saripodhaa Sanivaaram",
+    "release_year": 2024,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "Saripodhaa Sanivaaram",
+    "director": "Vivek Athreya",
+    "country": "India"
+  },
+  "インド映画同好会支援募金�А嵬嫐椶量楫蘯圈廛泪汽蘊絮�": {
+    "english_title": "Theri",
+    "release_year": 2016,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Theri",
+    "director": "Atlee",
+    "country": "India"
+  },
+  "インド映画同好会支援募金�А嵬嫐椶量楫蘯圈彡名鐓絮�": {
+    "english_title": "Sextasy",
+    "release_year": 2017,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "嫐",
+    "director": "Kuo-fu Chen",
+    "country": "Taiwan"
+  },
+  "夜のたわむれ": {
+    "english_title": "Night Games",
+    "release_year": 1966,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Nattlek",
+    "director": "Mai Zetterling",
+    "country": "Sweden"
+  },
+  "ワイズ・ブラッド": {
+    "english_title": "Wise Blood",
+    "release_year": 1979,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Wise Blood",
+    "director": "John Huston",
+    "country": "USA"
+  },
+  "洛東江": {
+    "english_title": "Nakdong River",
+    "release_year": 1952,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "洛東江",
+    "director": "Jeon Chang-geun",
+    "country": "South Korea"
+  },
+  "ピアコル": {
+    "english_title": "Piagol",
+    "release_year": 1955,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "피아골",
+    "director": "Lee Kang-cheon",
+    "country": "South Korea"
+  },
+  "未亡人": {
+    "english_title": "The Widow",
+    "release_year": 1950,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "未亡人",
+    "director": "Shirō Toyoda",
+    "country": "Japan",
+    "failed": true
+  },
+  "嫁入りの日": {
+    "english_title": "The Wedding Day",
+    "release_year": 1956,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "시집가는 날",
+    "director": "Lee Byeong-il",
+    "country": "South Korea"
+  },
+  "地獄花": {
+    "english_title": "Bloom of Hell",
+    "release_year": 1957,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "地獄花",
+    "director": "Daisuke Ito",
+    "country": "Japan"
+  },
+  "お金": {
+    "english_title": "Money",
+    "release_year": 1968,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "お金",
+    "director": "Kozaburo Yoshimura",
+    "country": "Japan",
+    "failed": true
+  },
+  "ビッグ・シティ〈デジタルリマスター版〉": {
+    "english_title": "The Big City",
+    "release_year": 1963,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Mahanagar",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "谷間の少女＋農村住宅改善": {
+    "english_title": "The Girl of the Valley + Renovating Farm Houses",
+    "release_year": 1949,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "谷間の少女＋農村住宅改善",
+    "director": "Shinkichi Noda",
+    "country": "Japan",
+    "failed": true
+  },
+  "機関車小僧＋忘れられた土地　生活の記録シリーズ II": {
+    "english_title": "The Locomotive Kid / Forgotten Land: Records of Living Series II",
+    "release_year": 1950,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "機関車小僧＋忘れられた土地　生活の記録シリーズ II",
+    "director": "Shinkichi Noda",
+    "country": "Japan",
+    "failed": true
+  },
+  "チャルラータ〈デジタルリマスター版〉": {
+    "english_title": "Charulata",
+    "release_year": 1964,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Charulata",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "主人公〈デジタルリマスター版〉": {
+    "english_title": "The Hero",
+    "release_year": 1966,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Nayak",
+    "director": "Satyajit Ray",
+    "country": "India",
+    "failed": true
+  },
+  "臆病者〈デジタルリマスター版〉": {
+    "english_title": "The Coward",
+    "release_year": 1965,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Kapurush",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "聖者〈デジタルリマスター版〉": {
+    "english_title": "The Holy Man",
+    "release_year": 1965,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mahapurush",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "エレファント・ゴッド〈デジタルリマスター版〉": {
+    "english_title": "The Elephant God",
+    "release_year": 1979,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Joi Baba Felunath",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "音楽サロン〈デジタルリマスター版〉": {
+    "english_title": "The Music Room",
+    "release_year": 1958,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Jalsaghar",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "テイク・ミー・サムウェア・ナイス": {
+    "english_title": "Take Me Somewhere Nice",
+    "release_year": 2019,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Take Me Somewhere Nice",
+    "director": "Ena Sendijarević",
+    "country": "Netherlands, Bosnia and Herzegovina"
+  },
+  "マリー・メンケン／マージョリー・ケラー作品集": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "異形異類の面掛行列＋冬の夜の神々の宴＋生者と死者のかよい路": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  }
+}
