@@ -638,80 +638,74 @@
     <main class="page">
         <header class="page-header">
             <div class="header-left">
-                <div class="site-credit">サイト制作: ネルキ・リオ (Site made by Leo Nelki)</div>
+                <div class="site-credit" id="site-credit"></div>
                 <div class="toggle lang-toggle" role="group" aria-label="Language">
                     <button class="toggle-btn" data-lang="ja" type="button">日本語</button>
                     <button class="toggle-btn" data-lang="en" type="button">EN</button>
                 </div>
             </div>
             <div class="header-center">
-                <h1>東京ミニシアター上映情報 (Tokyo Mini-Theater Showtimes)</h1>
+                <h1 id="site-title"></h1>
             </div>
             <div class="header-right">
-                <div class="toggle" role="group" aria-label="表示切替 (View toggles)">
-                    <button class="toggle-btn is-active" data-view="cinema" type="button">シネマ別 (Cinema)</button>
-                    <button class="toggle-btn" data-view="film" type="button">作品別 (Film)</button>
+                <div class="toggle" role="group" aria-label="View toggles">
+                    <button class="toggle-btn is-active" data-view="cinema" type="button" id="view-cinema-btn"></button>
+                    <button class="toggle-btn" data-view="film" type="button" id="view-film-btn"></button>
                 </div>
             </div>
         </header>
 
         <section class="filters">
             <div class="filters-header">
-                <span class="filters-header-label">フィルター (Filters)</span>
+                <span class="filters-header-label" id="filters-label"></span>
                 <button class="filters-toggle" type="button" id="filters-toggle">
-                    <span>表示 (Show)</span>
+                    <span id="filters-toggle-text"></span>
                     <span class="filters-toggle-icon">▼</span>
                 </button>
             </div>
             <div class="filters-content" id="filters-content">
                 <div class="filter-grid">
                     <div class="filter">
-                        <label for="search-input">検索 (Search)</label>
-                        <input id="search-input" type="search" placeholder="作品・劇場・監督・ジャンル (Film, cinema, director, genre)">
+                        <label for="search-input" id="search-label"></label>
+                        <input id="search-input" type="search">
                     </div>
                     <div class="filter">
-                        <label for="date-select">日付 (Date)</label>
+                        <label for="date-select" id="date-label"></label>
                         <select id="date-select"></select>
                     </div>
                     <div class="filter">
-                        <label for="time-select">時間帯 (Time)</label>
-                        <select id="time-select">
-                            <option value="any">指定なし (Any time)</option>
-                            <option value="morning">午前 (Morning, before 12)</option>
-                            <option value="afternoon">午後 (Afternoon, 12-17)</option>
-                            <option value="evening">夕方 (Evening, 17-21)</option>
-                            <option value="late">夜 (Late, after 21)</option>
-                        </select>
+                        <label for="time-select" id="time-label"></label>
+                        <select id="time-select"></select>
                     </div>
                     <div class="filter">
-                        <label for="region-select">地域 (Region)</label>
+                        <label for="region-select" id="region-label"></label>
                         <select id="region-select"></select>
                     </div>
                     <div class="filter" id="sort-filter-container">
-                        <label for="sort-select">並び替え (Sort)</label>
+                        <label for="sort-select" id="sort-label"></label>
                         <select id="sort-select"></select>
                     </div>
                 </div>
                 <div class="filter-grid filter-grid-wide">
                     <div class="filter options-row">
-                        <span class="filter-label">フィルター (Filters)</span>
-                        <button class="link-btn" type="button" id="clear-filters">フィルターをクリア (Clear filters)</button>
+                        <span class="filter-label" id="filter-options-label"></span>
+                        <button class="link-btn" type="button" id="clear-filters"></button>
                     </div>
                 </div>
             </div>
         </section>
         <section class="view-section" id="cinema-view">
             <div id="cinema-index">
-                <div class="loading">上映情報を読み込み中... (Loading showtimes...)</div>
+                <div class="loading" id="cinema-loading"></div>
             </div>
             <div id="cinema-showtimes" class="is-hidden">
                 <div class="cinema-showtimes-header">
-                    <button class="back-btn" type="button" id="back-to-cinemas">シネマ一覧へ戻る (Back to cinemas)</button>
+                    <button class="back-btn" type="button" id="back-to-cinemas"></button>
                     <div>
                         <div class="cinema-title-row">
                             <h2 class="cinema-title" id="cinema-title"></h2>
-                            <a class="film-link cinema-site-link is-hidden" id="cinema-site-link" href="#" target="_blank" rel="noopener">公式サイト (Website)</a>
-                            <a class="film-link cinema-map-link" id="cinema-map-link" href="#" target="_blank" rel="noopener">地図 (Map)</a>
+                            <a class="film-link cinema-site-link is-hidden" id="cinema-site-link" href="#" target="_blank" rel="noopener"></a>
+                            <a class="film-link cinema-map-link" id="cinema-map-link" href="#" target="_blank" rel="noopener"></a>
                         </div>
                         <div class="cinema-meta" id="cinema-meta"></div>
                     </div>
@@ -726,14 +720,14 @@
                 <div class="results-meta" id="film-results-meta"></div>
             </div>
             <div class="film-list" id="film-results-list">
-                <div class="loading">上映情報を読み込み中... (Loading showtimes...)</div>
+                <div class="loading" id="film-loading"></div>
             </div>
-            <div class="empty-state is-hidden" id="film-empty">該当する作品がありません (No films match those filters).</div>
+            <div class="empty-state is-hidden" id="film-empty"></div>
         </section>
 
         <footer class="page-footer">
-            <p>上映情報は各劇場サイトから取得しています。最終確認は公式ページでお願いします。(Listings are scraped from cinema sites. Always double-check the booking page for last-minute changes.)</p>
-            <p><a href="cinema-scrapers/data/showtimes.json">上映情報JSONをダウンロード (Download the raw showtimes JSON)</a>.</p>
+            <p id="footer-disclaimer"></p>
+            <p><a href="cinema-scrapers/data/showtimes.json" id="footer-download-link"></a></p>
         </footer>
     </main>
 
@@ -811,21 +805,170 @@
                 "横浜シネマリン": "Yokohama Cinemarine"
             };
 
+            const regionNames = {
+                "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)": { ja: "渋谷・目黒・恵比寿", en: "Shibuya, Meguro, Ebisu" },
+                "新宿 (Shinjuku)": { ja: "新宿", en: "Shinjuku" },
+                "都心 (Central - Ginza, Yurakucho, Kanda)": { ja: "都心（銀座・有楽町・神田）", en: "Central (Ginza, Yurakucho, Kanda)" },
+                "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa)": { ja: "西東京（中野・杉並・世田谷・立川）", en: "West Tokyo" },
+                "北東京 (North Tokyo - Ikebukuro, Tabata)": { ja: "北東京（池袋・田端）", en: "North Tokyo" },
+                "東東京 (East Tokyo)": { ja: "東東京", en: "East Tokyo" },
+                "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
+            };
+
+            const i18n = {
+                ja: {
+                    siteTitle: "東京ミニシアター上映情報",
+                    siteCredit: "サイト制作: ネルキ・リオ",
+                    viewCinema: "シネマ別",
+                    viewFilm: "作品別",
+                    filters: "フィルター",
+                    filtersShow: "表示",
+                    filtersHide: "非表示",
+                    search: "検索",
+                    searchPlaceholder: "作品・劇場・監督・ジャンル",
+                    date: "日付",
+                    dateAll: "すべての日付",
+                    time: "時間帯",
+                    timeAny: "指定なし",
+                    timeMorning: "午前（12時前）",
+                    timeAfternoon: "午後（12〜17時）",
+                    timeEvening: "夕方（17〜21時）",
+                    timeLate: "夜（21時以降）",
+                    region: "地域",
+                    regionAll: "すべての地域",
+                    sort: "並び替え",
+                    sortSoonest: "最も早い",
+                    sortName: "名前順",
+                    sortRating: "評価順",
+                    clearFilters: "フィルターをクリア",
+                    loading: "上映情報を読み込み中...",
+                    loadError: "上映情報を読み込めません",
+                    noFilms: "該当する作品がありません",
+                    noCinemas: "該当するシネマがありません",
+                    noShowings: "該当する上映がありません",
+                    backToCinemas: "シネマ一覧へ戻る",
+                    films: "作品",
+                    showings: "上映",
+                    cinemas: "シネマ",
+                    map: "地図",
+                    site: "公式サイト",
+                    today: "今日",
+                    tomorrow: "明日",
+                    min: "分",
+                    posterUnavailable: "ポスターなし",
+                    tbd: "未定",
+                    other: "その他",
+                    unknownCinema: "不明な劇場",
+                    untitled: "タイトル未定",
+                    footerDisclaimer: "上映情報は各劇場サイトから取得しています。最終確認は公式ページでお願いします。",
+                    downloadJson: "上映情報JSONをダウンロード"
+                },
+                en: {
+                    siteTitle: "Tokyo Mini-Theater Showtimes",
+                    siteCredit: "Site by Leo Nelki",
+                    viewCinema: "By Cinema",
+                    viewFilm: "By Film",
+                    filters: "Filters",
+                    filtersShow: "Show",
+                    filtersHide: "Hide",
+                    search: "Search",
+                    searchPlaceholder: "Film, cinema, director, genre",
+                    date: "Date",
+                    dateAll: "All dates",
+                    time: "Time",
+                    timeAny: "Any time",
+                    timeMorning: "Morning (before 12)",
+                    timeAfternoon: "Afternoon (12-17)",
+                    timeEvening: "Evening (17-21)",
+                    timeLate: "Late (after 21)",
+                    region: "Region",
+                    regionAll: "All regions",
+                    sort: "Sort",
+                    sortSoonest: "Soonest",
+                    sortName: "By name",
+                    sortRating: "By rating",
+                    clearFilters: "Clear filters",
+                    loading: "Loading showtimes...",
+                    loadError: "Unable to load showtimes",
+                    noFilms: "No films match those filters",
+                    noCinemas: "No cinemas match those filters",
+                    noShowings: "No showings match those filters",
+                    backToCinemas: "Back to cinemas",
+                    films: "films",
+                    showings: "showings",
+                    cinemas: "cinemas",
+                    map: "Map",
+                    site: "Website",
+                    today: "Today",
+                    tomorrow: "Tomorrow",
+                    min: "min",
+                    posterUnavailable: "No poster",
+                    tbd: "TBD",
+                    other: "Other",
+                    unknownCinema: "Unknown cinema",
+                    untitled: "Untitled",
+                    footerDisclaimer: "Listings are scraped from cinema sites. Always double-check the booking page for last-minute changes.",
+                    downloadJson: "Download raw showtimes JSON"
+                }
+            };
+
+            function t(key) {
+                return i18n[state.lang][key] || i18n.ja[key] || key;
+            }
+
+            function getRegionName(fullName) {
+                const names = regionNames[fullName];
+                if (names) return names[state.lang];
+                return fullName;
+            }
+
+            function getCinemaDisplayName(cinemaName) {
+                if (state.lang === "en") {
+                    return cinemaEnglishNames[cinemaName] || cinemaName;
+                } else {
+                    return cinemaJapaneseNames[cinemaName] || cinemaName;
+                }
+            }
+
+            function getFilmDisplayTitle(film) {
+                if (state.lang === "en") {
+                    return film.titleEn || film.titleJp || film.titleDisplay;
+                } else {
+                    return film.titleJp || film.titleDisplay;
+                }
+            }
 
             const elements = {
+                // Header
+                siteTitle: document.getElementById("site-title"),
+                siteCredit: document.getElementById("site-credit"),
+                viewCinemaBtn: document.getElementById("view-cinema-btn"),
+                viewFilmBtn: document.getElementById("view-film-btn"),
+                // Filters
+                filtersLabel: document.getElementById("filters-label"),
+                filtersToggle: document.getElementById("filters-toggle"),
+                filtersToggleText: document.getElementById("filters-toggle-text"),
+                filtersContent: document.getElementById("filters-content"),
+                searchLabel: document.getElementById("search-label"),
                 searchInput: document.getElementById("search-input"),
+                dateLabel: document.getElementById("date-label"),
                 dateSelect: document.getElementById("date-select"),
+                timeLabel: document.getElementById("time-label"),
                 timeSelect: document.getElementById("time-select"),
+                regionLabel: document.getElementById("region-label"),
                 regionSelect: document.getElementById("region-select"),
+                sortLabel: document.getElementById("sort-label"),
                 sortSelect: document.getElementById("sort-select"),
                 sortFilterContainer: document.getElementById("sort-filter-container"),
+                filterOptionsLabel: document.getElementById("filter-options-label"),
                 clearFilters: document.getElementById("clear-filters"),
-                filtersToggle: document.getElementById("filters-toggle"),
-                filtersContent: document.getElementById("filters-content"),
+                // View toggles
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
                 langButtons: Array.from(document.querySelectorAll("[data-lang]")),
+                // Cinema view
                 cinemaView: document.getElementById("cinema-view"),
                 cinemaIndex: document.getElementById("cinema-index"),
+                cinemaLoading: document.getElementById("cinema-loading"),
                 cinemaShowtimes: document.getElementById("cinema-showtimes"),
                 cinemaTitle: document.getElementById("cinema-title"),
                 cinemaMapLink: document.getElementById("cinema-map-link"),
@@ -833,11 +976,16 @@
                 cinemaMeta: document.getElementById("cinema-meta"),
                 cinemaShowtimesList: document.getElementById("cinema-showtimes-list"),
                 backToCinemas: document.getElementById("back-to-cinemas"),
+                // Film view
                 filmView: document.getElementById("film-view"),
                 filmResultsCount: document.getElementById("film-results-count"),
                 filmResultsMeta: document.getElementById("film-results-meta"),
                 filmResultsList: document.getElementById("film-results-list"),
-                filmEmpty: document.getElementById("film-empty")
+                filmLoading: document.getElementById("film-loading"),
+                filmEmpty: document.getElementById("film-empty"),
+                // Footer
+                footerDisclaimer: document.getElementById("footer-disclaimer"),
+                footerDownloadLink: document.getElementById("footer-download-link")
             };
             const state = {
                 data: [],
@@ -855,23 +1003,26 @@
                 }
             };
 
-            const sortOptions = {
-                film: [
-                    { value: "soonest", label: "最も早い (Soonest)" }
-                ]
-            };
+            function getSortOptions() {
+                return {
+                    film: [
+                        { value: "soonest", label: t("sortSoonest") }
+                    ]
+                };
+            }
 
-            const dateFormatter = new Intl.DateTimeFormat("ja-JP", { weekday: "short", day: "numeric", month: "short" });
-            const longDateFormatter = new Intl.DateTimeFormat("ja-JP", { weekday: "long", day: "numeric", month: "long" });
-            const timeBucketLabels = {
-                morning: "午前 (Morning, before 12)",
-                afternoon: "午後 (Afternoon, 12-17)",
-                evening: "夕方 (Evening, 17-21)",
-                late: "夜 (Late, after 21)"
-            };
+            function getDateFormatter() {
+                const locale = state.lang === "en" ? "en-US" : "ja-JP";
+                return new Intl.DateTimeFormat(locale, { weekday: "short", day: "numeric", month: "short" });
+            }
+
+            function getLongDateFormatter() {
+                const locale = state.lang === "en" ? "en-US" : "ja-JP";
+                return new Intl.DateTimeFormat(locale, { weekday: "long", day: "numeric", month: "long" });
+            }
 
             function getRegionForCinema(cinemaName) {
-                return cinemaRegions[cinemaName] || "その他 (Other)";
+                return cinemaRegions[cinemaName] || t("other");
             }
 
             elements.searchInput.addEventListener("input", function (event) {
@@ -967,7 +1118,77 @@
                     const isActive = button.getAttribute("data-lang") === lang;
                     button.classList.toggle("is-active", isActive);
                 });
+                updateUIText();
+                updateTimeSelect();
+                updateRegionSelect();
+                updateSortOptions();
                 render();
+            }
+
+            function updateUIText() {
+                // Header
+                elements.siteTitle.textContent = t("siteTitle");
+                elements.siteCredit.textContent = t("siteCredit");
+                elements.viewCinemaBtn.textContent = t("viewCinema");
+                elements.viewFilmBtn.textContent = t("viewFilm");
+
+                // Filters
+                elements.filtersLabel.textContent = t("filters");
+                elements.filtersToggleText.textContent = state.filtersExpanded ? t("filtersHide") : t("filtersShow");
+                elements.searchLabel.textContent = t("search");
+                elements.searchInput.placeholder = t("searchPlaceholder");
+                elements.dateLabel.textContent = t("date");
+                elements.timeLabel.textContent = t("time");
+                elements.regionLabel.textContent = t("region");
+                elements.sortLabel.textContent = t("sort");
+                elements.filterOptionsLabel.textContent = t("filters");
+                elements.clearFilters.textContent = t("clearFilters");
+
+                // Cinema view
+                elements.cinemaLoading.textContent = t("loading");
+                elements.backToCinemas.textContent = t("backToCinemas");
+                elements.cinemaMapLink.textContent = t("map");
+                elements.cinemaSiteLink.textContent = t("site");
+
+                // Film view
+                elements.filmLoading.textContent = t("loading");
+                elements.filmEmpty.textContent = t("noFilms");
+
+                // Footer
+                elements.footerDisclaimer.textContent = t("footerDisclaimer");
+                elements.footerDownloadLink.textContent = t("downloadJson");
+            }
+
+            function updateTimeSelect() {
+                const currentValue = elements.timeSelect.value || "any";
+                elements.timeSelect.innerHTML = "";
+                const options = [
+                    { value: "any", label: t("timeAny") },
+                    { value: "morning", label: t("timeMorning") },
+                    { value: "afternoon", label: t("timeAfternoon") },
+                    { value: "evening", label: t("timeEvening") },
+                    { value: "late", label: t("timeLate") }
+                ];
+                options.forEach(function (opt) {
+                    const option = document.createElement("option");
+                    option.value = opt.value;
+                    option.textContent = opt.label;
+                    elements.timeSelect.appendChild(option);
+                });
+                elements.timeSelect.value = currentValue;
+            }
+
+            function updateRegionSelect() {
+                const currentValue = elements.regionSelect.value || "all";
+                const options = Array.from(elements.regionSelect.options);
+                options.forEach(function (option) {
+                    if (option.value === "all") {
+                        option.textContent = t("regionAll");
+                    } else {
+                        option.textContent = getRegionName(option.value);
+                    }
+                });
+                elements.regionSelect.value = currentValue;
             }
 
             function getDefaultDateForView() {
@@ -978,6 +1199,7 @@
             }
 
             function updateSortOptions() {
+                const sortOptions = getSortOptions();
                 const options = sortOptions[state.view];
                 if (!options) {
                     elements.sortFilterContainer.classList.add("is-hidden");
@@ -1021,7 +1243,7 @@
             function formatDate(dateText, longFormat) {
                 const date = parseDate(dateText);
                 if (!date) return dateText || "";
-                return longFormat ? longDateFormatter.format(date) : dateFormatter.format(date);
+                return longFormat ? getLongDateFormatter().format(date) : getDateFormatter().format(date);
             }
 
             function getDateRange(showings) {
@@ -1175,19 +1397,23 @@
             }
 
             function buildFilterOptions(showings) {
-                const dates = Array.from(new Set(showings.map(function (showing) {
-                    return showing.dateText;
-                }).filter(Boolean))).sort();
-
                 const today = new Date();
                 const todayText = today.toISOString().slice(0, 10);
-                state.todayDate = dates.includes(todayText) ? todayText : "";
+
+                // Only include dates from today onwards
+                const dates = Array.from(new Set(showings.map(function (showing) {
+                    return showing.dateText;
+                }).filter(function (dateText) {
+                    return dateText && dateText >= todayText;
+                }))).sort();
+
+                state.todayDate = dates.includes(todayText) ? todayText : (dates[0] || "");
                 state.filters.date = "all";
 
                 elements.dateSelect.innerHTML = "";
                 const allOption = document.createElement("option");
                 allOption.value = "all";
-                allOption.textContent = "全日程 (All dates)";
+                allOption.textContent = t("dateAll");
                 elements.dateSelect.appendChild(allOption);
 
                 dates.forEach(function (dateText) {
@@ -1215,12 +1441,12 @@
                 elements.regionSelect.innerHTML = "";
                 const allRegionsOption = document.createElement("option");
                 allRegionsOption.value = "all";
-                allRegionsOption.textContent = "全地域 (All regions)";
+                allRegionsOption.textContent = t("regionAll");
                 elements.regionSelect.appendChild(allRegionsOption);
                 orderedRegions.forEach(function (region) {
                     const option = document.createElement("option");
                     option.value = region;
-                    option.textContent = region;
+                    option.textContent = getRegionName(region);
                     elements.regionSelect.appendChild(option);
                 });
                 elements.regionSelect.value = state.filters.region || "all";
@@ -1230,11 +1456,11 @@
 
             function normalizeShowings(rawData) {
                 return rawData.map(function (item, index) {
-                    const titleJp = item.clean_title_jp || item.movie_title || item.movie_title_en || "Untitled";
+                    const titleJp = item.clean_title_jp || item.movie_title || item.movie_title_en || t("untitled");
                     const titleEn = item.movie_title_en || "";
                     const titleDisplay = formatBilingual(titleJp, titleEn);
                     const tmdbId = item.tmdb_id ? String(item.tmdb_id) : "";
-                    const rawCinemaName = item.cinema_name || "不明な劇場 (Unknown cinema)";
+                    const rawCinemaName = item.cinema_name || t("unknownCinema");
                     const cinemaJp = getCinemaJapaneseName(rawCinemaName);
                     const region = getRegionForCinema(rawCinemaName);
                     const cinemaEn = cinemaEnglishNames[rawCinemaName] || "";
@@ -1388,7 +1614,7 @@
                 });
 
                 if (!cinemasMap.size) {
-                    elements.cinemaIndex.appendChild(createElement("div", "empty-state", "該当する劇場がありません (No cinemas match those filters)."));
+                    elements.cinemaIndex.appendChild(createElement("div", "empty-state", t("noCinemas")));
                     return;
                 }
 
@@ -1407,7 +1633,7 @@
                     renderedBlocks += 1;
 
                     const block = createElement("div", "region-block");
-                    block.appendChild(createElement("h2", "region-title", category.name));
+                    block.appendChild(createElement("h2", "region-title", getRegionName(category.name)));
 
                     const grid = createElement("div", "cinema-grid");
                     cinemas.forEach(function (cinema) {
@@ -1427,7 +1653,7 @@
                 });
 
                 if (!renderedBlocks) {
-                    elements.cinemaIndex.appendChild(createElement("div", "empty-state", "該当する劇場がありません (No cinemas match those filters)."));
+                    elements.cinemaIndex.appendChild(createElement("div", "empty-state", t("noCinemas")));
                 }
             }
 
@@ -1449,12 +1675,12 @@
 
                 const range = getDateRange(showings);
                 const metaParts = [];
-                if (showings.length) metaParts.push(showings.length + "件の上映 (showings)");
+                if (showings.length) metaParts.push(showings.length + " " + t("showings"));
                 if (range) metaParts.push(range);
                 elements.cinemaMeta.textContent = metaParts.join(" | ");
 
                 if (!showings.length) {
-                    elements.cinemaShowtimesList.appendChild(createElement("div", "empty-state", "該当する上映がありません (No showings match those filters)."));
+                    elements.cinemaShowtimesList.appendChild(createElement("div", "empty-state", t("noShowings")));
                     return;
                 }
 
@@ -1493,7 +1719,7 @@
 
                         const info = createElement("div");
                         const titleRow = createElement("div", "cinema-film-title");
-                        titleRow.appendChild(createElement("span", null, film.titleDisplay));
+                        titleRow.appendChild(createElement("span", null, getFilmDisplayTitle(film)));
                         if (film.letterboxdUrl) {
                             const letterboxd = createElement("a", "film-link", "Letterboxd");
                             letterboxd.href = film.letterboxdUrl;
@@ -1506,7 +1732,7 @@
                         const metaParts = [];
                         if (film.year) metaParts.push(film.year);
                         if (film.director) metaParts.push(film.director);
-                        if (film.runtime) metaParts.push(film.runtime + "分 (min)");
+                        if (film.runtime) metaParts.push(film.runtime + " " + t("min"));
                         if (metaParts.length) {
                             info.appendChild(createElement("div", "cinema-film-meta", metaParts.join(" | ")));
                         }
@@ -1515,7 +1741,7 @@
 
                         const timeRow = createElement("div", "time-row");
                         film.showings.forEach(function (showing) {
-                            const label = showing.showtime || "未定 (TBD)";
+                            const label = showing.showtime || t("tbd");
                             if (showing.bookingUrl || showing.detailUrl) {
                                 const link = createElement("a", "time-chip", label);
                                 link.href = showing.bookingUrl || showing.detailUrl;
@@ -1556,14 +1782,14 @@
             }
 
             function renderFilmList(films, totalShowings) {
-                elements.filmResultsCount.textContent = totalShowings + "件の上映 / " + films.length + "作品 (" + totalShowings + " showings / " + films.length + " films)";
+                elements.filmResultsCount.textContent = totalShowings + " " + t("showings") + " / " + films.length + " " + t("films");
                 elements.filmResultsMeta.textContent = getFiltersSummary();
 
                 const fragment = document.createDocumentFragment();
                 films.forEach(function (film) {
                     const card = createElement("article", "film-card");
 
-                    const poster = createElement("div", "film-poster", "ポスターなし (Poster unavailable)");
+                    const poster = createElement("div", "film-poster", t("posterUnavailable"));
                     const posterUrl = getImageUrl(film.posterPath, "w342");
                     if (posterUrl) {
                         poster.style.backgroundImage = "url(\"" + posterUrl + "\")";
@@ -1574,7 +1800,7 @@
                     card.appendChild(poster);
 
                     const body = createElement("div", "film-body");
-                    body.appendChild(createElement("h3", "film-title", film.titleDisplay));
+                    body.appendChild(createElement("h3", "film-title", getFilmDisplayTitle(film)));
 
                     const actions = createElement("div", "film-actions");
                     if (film.letterboxdUrl) {
@@ -1591,7 +1817,7 @@
                     const metaParts = [];
                     if (film.year) metaParts.push(film.year);
                     if (film.director) metaParts.push(film.director);
-                    if (film.runtime) metaParts.push(film.runtime + "分 (min)");
+                    if (film.runtime) metaParts.push(film.runtime + " " + t("min"));
                     if (metaParts.length) {
                         body.appendChild(createElement("div", "film-meta", metaParts.join(" | ")));
                     }
@@ -1626,8 +1852,8 @@
                         showings.forEach(function (showing) {
                             const includeDate = state.filters.date === "all";
                             const label = includeDate && showing.dateText
-                                ? formatDate(showing.dateText, false) + " " + (showing.showtime || "未定 (TBD)")
-                                : (showing.showtime || "未定 (TBD)");
+                                ? formatDate(showing.dateText, false) + " " + (showing.showtime || t("tbd"))
+                                : (showing.showtime || t("tbd"));
                             if (showing.bookingUrl || showing.detailUrl) {
                                 const link = createElement("a", "time-chip", label);
                                 link.href = showing.bookingUrl || showing.detailUrl;
@@ -1693,23 +1919,28 @@
                         return response.json();
                     })
                     .then(function (data) {
-                        state.data = normalizeShowings(data);
+                        const todayText = new Date().toISOString().slice(0, 10);
+                        state.data = normalizeShowings(data).filter(function (showing) {
+                            return showing.dateText >= todayText;
+                        });
                         buildFilterOptions(state.data);
                         render();
                     })
                     .catch(function () {
                         elements.cinemaIndex.innerHTML = "";
-                        elements.cinemaIndex.appendChild(createElement("div", "loading", "上映情報を読み込めません (Unable to load showtimes)."));
+                        elements.cinemaIndex.appendChild(createElement("div", "loading", t("loadError")));
                         elements.filmResultsList.innerHTML = "";
-                        elements.filmResultsList.appendChild(createElement("div", "loading", "上映情報を読み込めません (Unable to load showtimes)."));
+                        elements.filmResultsList.appendChild(createElement("div", "loading", t("loadError")));
                     });
             }
 
-            // Initialize language button state
+            // Initialize language button state and UI text
             elements.langButtons.forEach(function (button) {
                 const isActive = button.getAttribute("data-lang") === state.lang;
                 button.classList.toggle("is-active", isActive);
             });
+            updateUIText();
+            updateTimeSelect();
 
             fetchShowtimes();
         });
