@@ -15706,7 +15706,27 @@
       }
     ]
   },
-  "6. 牡丹燈籠": null,
+  "6. 牡丹燈籠": {
+    "tmdb_id": 1208461,
+    "tmdb_title_jp": "牡丹燈籠",
+    "tmdb_title_en": "牡丹燈籠",
+    "overview": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1910-06-01",
+    "director": "",
+    "runtime": 0,
+    "genres": [
+      "ホラー"
+    ],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
   "7. リング": {
     "tmdb_id": 139937,
     "tmdb_title_jp": "リング",
@@ -16148,6 +16168,295 @@
       {
         "iso_3166_1": "CN",
         "name": "China"
+      }
+    ]
+  },
+  "この子の七つのお祝いに": {
+    "tmdb_id": 415379,
+    "tmdb_title_jp": "この子の七つのお祝いに",
+    "tmdb_title_en": "この子の七つのお祝いに",
+    "overview": "怨念に満ちた女の情念の世界と血塗られた愛憎劇を描き、「第一回横溝正史賞」を受賞した斉藤澪の小説を、『黒の超特急』『陸軍中野学校』『痴人の愛』『花岡青洲の妻』『動脈列島』の名匠・増村保造が、岩下志麻、根津甚八、岸田今日子ら超豪華キャストを得て独特の陰影に富んだ色彩設計による映像美で映画化し、結果的には増村の映画監督作としての遺作となった。『ルパン三世』シリーズで知られる大野雄二による音楽も聴きどころ。  次期総理の座を狙う大臣の秘書、秦一毅(村井国夫)の家に出入りしていた池畑良子（畑中葉子）の惨殺死体が発見される。政界の闇を暴こうと良子に接触していたルポライターの母田耕一（杉浦直樹）は、秦の内妻で占い師の青蛾（辺見マリ）の身辺を探っていた。母田は後輩記者の須藤（根津甚八）に協力を請う。その時に初めて会ったバーのママ、ゆき子（岩下志麻）に惹かれる母田。ふたりは密会を重ねる。そんな矢先、青蛾の正体を突き止めた母田が謎の死を遂げた。母田に代わって事件の真相を探るため、会津に向った須藤がそこで目にしたのは…。",
+    "poster_path": "/YcXIyjpcBB7nVCv83EnpRF6SEv.jpg",
+    "backdrop_path": "/5YNVPqGcHLVjaliSfkips5ERpdl.jpg",
+    "release_date": "1982-10-09",
+    "director": "増村保造",
+    "runtime": 111,
+    "genres": [
+      "謎",
+      "ホラー",
+      "ドラマ"
+    ],
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "渚の白い家": {
+    "tmdb_id": 647945,
+    "tmdb_title_jp": "渚の白い家",
+    "tmdb_title_en": "渚の白い家",
+    "overview": "",
+    "poster_path": "/hvSiuzhmQSuAS7kcSWREVpzKAdI.jpg",
+    "backdrop_path": null,
+    "release_date": "1978-04-08",
+    "director": "斎藤耕一",
+    "runtime": 102,
+    "genres": [],
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "青春 -春-": {
+    "tmdb_id": 493514,
+    "tmdb_title_jp": "青春（春）",
+    "tmdb_title_en": "青春（春）",
+    "overview": "",
+    "poster_path": "/fhy4fPF6jrrzm04rA9qwynhBUhv.jpg",
+    "backdrop_path": "/rRY1FokbN4NP3JDeIDfb9Xy06wG.jpg",
+    "release_date": "2023-11-10",
+    "director": "王兵",
+    "runtime": 212,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "青春 -苦-": {
+    "tmdb_id": 1315054,
+    "tmdb_title_jp": "青春（苦）",
+    "tmdb_title_en": "青春（苦）",
+    "overview": "",
+    "poster_path": "/ig7OqdUVOzBLqm3mHp2RNIpEb0P.jpg",
+    "backdrop_path": "/eSCCCcg9VUi9BGzSVa9YL9aiw1Z.jpg",
+    "release_date": "2025-04-02",
+    "director": "王兵",
+    "runtime": 227,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "青春 -帰-": {
+    "tmdb_id": 1319196,
+    "tmdb_title_jp": "青春（归）",
+    "tmdb_title_en": "青春（归）",
+    "overview": "",
+    "poster_path": "/fy4FZhP4NV4Mmm9G3MfeZ0Pcjmc.jpg",
+    "backdrop_path": "/51sG6tWY3NdZArCc55HLs2ebVWA.jpg",
+    "release_date": "2025-07-09",
+    "director": "王兵",
+    "runtime": 152,
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "ウォーフェア　戦地最前線": {
+    "tmdb_id": 1241436,
+    "tmdb_title_jp": "ウォーフェア 戦地最前線",
+    "tmdb_title_en": "Warfare",
+    "overview": "＜極限の95分、映画史上最もリアルな戦場に、あなたを閉じ込める＞\r 2006年、イラク。監督を務めたメンドーサが所属していたアメリカ特殊部隊の小隊８名は、危険地帯ラマディで、アルカイダ幹部の監視と狙撃の任務についていた。ところが事態を察知した敵兵から先制攻撃を受け、全面衝突が始まる。反乱勢力に完全包囲され、負傷者は続出。救助を要請するが、さらなる攻撃を受け現場は地獄と化す。本部との通信を閉ざした通信兵・メンドーサ、指揮官のジョーは部隊への指示を完全に放棄し、皆から信頼される狙撃手のエリオット（愛称:ブージャー･ブー(鼻くそブーの意)）は爆撃により意識を失ってしまう。痛みに耐えきれず叫び声を上げる者、鎮痛剤のモルヒネを打ち間違える者、持ち場を守らずパニックに陥る者。彼らは逃げ場のない、轟音鳴り響くウォーフェア（戦闘）から、いかにして脱出するのか。",
+    "poster_path": "/ikdVFWer1HWuRcpSVE9EIhoQVPV.jpg",
+    "backdrop_path": "/cJvUJEEQ86LSjl4gFLkYpdCJC96.jpg",
+    "release_date": "2025-04-09",
+    "director": "Ray Mendoza",
+    "runtime": 95,
+    "genres": [
+      "戦争",
+      "アクション"
+    ],
+    "vote_average": 7.091,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "インランド・エンパイア": {
+    "tmdb_id": 1730,
+    "tmdb_title_jp": "インランド・エンパイア",
+    "tmdb_title_en": "Inland Empire",
+    "overview": "ニッキー(ローラ・ダーン)とデヴォン(ジャスティン・セロー)は、映画監督のキングスリー(ジェレミー・アイアンズ)が手掛ける映画に出演することになる。その作品は、ある秘密を抱えており、主演女優のニッキーは役にのめりこむにつれ、次第に役柄と私生活を混同し始めるようになる。",
+    "poster_path": "/fpo5azURhr4fVh4cB4kitabshdv.jpg",
+    "backdrop_path": "/qyePa65qZVnuYWivTBXkHV9aI3A.jpg",
+    "release_date": "2006-12-06",
+    "director": "デヴィッド・リンチ",
+    "runtime": 180,
+    "genres": [
+      "ホラー",
+      "スリラー",
+      "謎",
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      }
+    ]
+  },
+  "ストレイト・ストーリー ４Kリマスター版": {
+    "tmdb_id": 404,
+    "tmdb_title_jp": "ストレイト・ストーリー",
+    "tmdb_title_en": "The Straight Story",
+    "overview": "アメリカ・アイオワ州ローレンスに住む73歳のガンコな老人アルヴィン・ストレイト。ある日、彼のもとに、76歳の兄が心臓発作で倒れたという知らせが入る。10年来仲違いをしていた兄に会うため、アルヴィンは周囲の反対を押し切り、たったひとりで時速8kmのトラクターに乗って旅に出ることを決意する。",
+    "poster_path": "/zXWrUYBtQPAfKGFoDOgoOBsH14y.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "デヴィッド・リンチ",
+    "runtime": 112,
+    "genres": [
+      "ドラマ"
+    ],
+    "vote_average": 7.73,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "安楽死特区": null,
+  "旅の終わりのたからもの": {
+    "tmdb_id": 1220515,
+    "tmdb_title_jp": "Treasure",
+    "tmdb_title_en": "Treasure",
+    "overview": "",
+    "poster_path": "/iZWgDOg6Oc6kDkJSAJCttfh8dpq.jpg",
+    "backdrop_path": "/8nQzt0zzc0eV4zzy4dpQiDP6CBg.jpg",
+    "release_date": "2024-06-13",
+    "director": "Julia von Heinz",
+    "runtime": 111,
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "vote_average": 6.571,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      },
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      }
+    ]
+  },
+  "悪魔のいけにえ 4Kデジタルリマスター 公開50周年記念版": {
+    "tmdb_id": 30497,
+    "tmdb_title_jp": "悪魔のいけにえ",
+    "tmdb_title_en": "The Texas Chain Saw Massacre",
+    "overview": "チェーンソー片手に徘徊する、人間の皮をかぶった大男……汚れたエプロンには一体どれほどの人の血が染みついているのか。ウィスコンシンに実在した殺人鬼をモデルにした恐怖映画。\r テキサス州の片田舎。5人の若者が車で旅をしていた。途中、燃料が切れ、休憩を兼ねて立ち寄った農家で凄惨な“祭り”に巻き込まれていく。マスクを被った男“レザーフェイス”と、その怪しい一家――逃げ場のない絶望の中、恐怖の夜が幕を開ける。",
+    "poster_path": "/gcGxWfOGY3TTzL7TJfVWrnCBfFo.jpg",
+    "backdrop_path": "/wvBx1Q1FcQE1BPLfBbgA3y9aaS1.jpg",
+    "release_date": "1974-10-11",
+    "director": "トビー・フーパー",
+    "runtime": 84,
+    "genres": [
+      "ホラー"
+    ],
+    "vote_average": 7.278,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
       }
     ]
   }

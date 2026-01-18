@@ -1532,5 +1532,42 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ストレイト・ストーリー ４Kリマスター版": {
+    "english_title": "The Straight Story",
+    "release_year": 1999,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Straight Story",
+    "director": "David Lynch",
+    "country": "United States"
+  },
+  "安楽死特区": {
+    "english_title": "Euthanasia Special Zone",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "安楽死特区",
+    "director": "Banmei Takahashi",
+    "country": "Japan",
+    "failed": true
+  },
+  "旅の終わりのたからもの": {
+    "english_title": "Treasure",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Treasure",
+    "director": "Julia von Heinz",
+    "country": "Germany"
+  },
+  "悪魔のいけにえ 4Kデジタルリマスター 公開50周年記念版": {
+    "english_title": "The Texas Chain Saw Massacre",
+    "release_year": 1974,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Texas Chain Saw Massacre",
+    "director": "Tobe Hooper",
+    "country": "USA"
   }
 }
