@@ -417,8 +417,7 @@ def gemini_creative_director(collage_img: Image.Image, cinema_names: list[str], 
         5.  **Structure**: Describe a structure where gravity and perspective are subjective. The roof of one building should morph seamlessly into the staircase of another, or the steps into a doorway. Use whatever language makes the most sense for the images you are seeing.
         6.  **Melt the Edges**: The *centers* of the photos are immutable, but their *edges* must dissolve naturally into the new structure. A brick wall should twist into a steel beam; a floor should curve up to become a ceiling.
         7.  **Atmosphere**: again, you look at the cutout images and you decide the vibe. But nothing cartoonish or unrealistic in texture. It should all be roughly photographic. But do play around widely within that.
-        8.  **NO EXTERNAL BRANDING**: CRITICAL - Do NOT add any cinema branding, signage, or names that are not ALREADY visible in the source images. Specifically: NO "IMAX", NO "BFI", NO "Odeon", NO "AMC", NO multiplexes brands. These are Tokyo independent cinemas - only use text/branding that exists in the provided cutout images.
-        9.  **Text Integration**: The following text must be integrated subtly but legibly into the architecture (e.g., engraved in stone, projected on glass, or as stylish signage):
+        8.  **Text Integration**: The following text must be integrated subtly but legibly into the architecture (e.g., engraved in stone, projected on glass, or as stylish signage):
             - "Today's Cinema Selection"
             - "今日の上映" (Japanese for Today's Screening)
             - "{date_text}"
