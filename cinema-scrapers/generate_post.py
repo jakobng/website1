@@ -203,6 +203,13 @@ def find_best_english_title(showing: dict) -> str | None:
     if en_title := get_clean_title('movie_title_en'): return en_title
     return None
 
+def parse_showtime_to_minutes(time_str: str) -> int:
+    match = re.match(r'^\s*(\d{1,2})\s*:\s*(\d{2})\s*$', time_str)
+    if not match:
+        return 24 * 60 + 1
+    hours, minutes = match.groups()
+    return (int(hours) * 60) + int(minutes)
+
 def load_showtimes(today_str: str) -> list[dict]:
     try:
         with SHOWTIMES_PATH.open("r", encoding="utf-8") as handle:
@@ -231,7 +238,7 @@ def format_listings(showings: list[dict]) -> list[dict[str, str | None]]:
     
     formatted = []
     for (title, en_title), times in movies.items():
-        times.sort()
+        times.sort(key=parse_showtime_to_minutes)
         formatted.append({
             "title": title, 
             "en_title": en_title,
@@ -239,7 +246,7 @@ def format_listings(showings: list[dict]) -> list[dict[str, str | None]]:
             "first_showtime": times[0] if times else "23:59"
         })
     
-    formatted.sort(key=lambda x: x['first_showtime'])
+    formatted.sort(key=lambda x: parse_showtime_to_minutes(x['first_showtime']))
     return formatted
 
 def segment_listings(listings: list[dict[str, str | None]], max_height: int, spacing: dict[str, int]) -> list[list[dict]]:
