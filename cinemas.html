@@ -681,9 +681,9 @@
                         <label for="region-select" id="region-label"></label>
                         <select id="region-select"></select>
                     </div>
-                    <div class="filter" id="sort-filter-container">
-                        <label for="sort-select" id="sort-label"></label>
-                        <select id="sort-select"></select>
+                    <div class="filter">
+                        <label for="genre-select" id="genre-label"></label>
+                        <select id="genre-select"></select>
                     </div>
                 </div>
                 <div class="filter-grid filter-grid-wide">
@@ -737,13 +737,13 @@
             const tmdbBase = "https://image.tmdb.org/t/p/";
 
             const cinemaCategories = [
-                { name: "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "目黒シネマ" ] },
-                { name: "新宿 (Shinjuku)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "早稲田松竹", "アンスティチュ・フランセ東京" ] },
-                { name: "都心 (Central - Ginza, Yurakucho, Kanda)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "シネマリス", "アテネ・フランセ文化センター", "神保町シアター" ] },
-                { name: "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
-                { name: "北東京 (North Tokyo - Ikebukuro, Tabata)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA" ] },
-                { name: "東東京 (East Tokyo)", cinemas: [ "Stranger (ストレンジャー)", "シネマブルースタジオ" ] },
-                { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
+                { name: "Shibuya Area (Shibuya, Meguro, Ebisu)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "目黒シネマ" ] },
+                { name: "Shinjuku Area (Shinjuku, Waseda, Kagurazaka)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "早稲田松竹", "アンスティチュ・フランセ東京" ] },
+                { name: "Central Tokyo (Ginza, Yurakucho, Kanda, Jimbocho)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "シネマリス", "アテネ・フランセ文化センター", "神保町シアター" ] },
+                { name: "West Tokyo (Nakano, Asagaya, Shimokitazawa, Kichijoji)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
+                { name: "North Tokyo (Ikebukuro, Tabata)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA" ] },
+                { name: "East Tokyo (Morishita, Sumida)", cinemas: [ "Stranger (ストレンジャー)", "シネマブルースタジオ" ] },
+                { name: "Yokohama (Kannai, Koganecho)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
             ];
 
             const cinemaRegions = {};
@@ -803,13 +803,13 @@
             };
 
             const regionNames = {
-                "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)": { ja: "渋谷・目黒・恵比寿", en: "Shibuya, Meguro, Ebisu" },
-                "新宿 (Shinjuku)": { ja: "新宿", en: "Shinjuku" },
-                "都心 (Central - Ginza, Yurakucho, Kanda)": { ja: "都心（銀座・有楽町・神田）", en: "Central (Ginza, Yurakucho, Kanda)" },
-                "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)": { ja: "西東京（中野・杉並・世田谷・立川・青梅）", en: "West Tokyo" },
-                "北東京 (North Tokyo - Ikebukuro, Tabata)": { ja: "北東京（池袋・田端）", en: "North Tokyo" },
-                "東東京 (East Tokyo)": { ja: "東東京", en: "East Tokyo" },
-                "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
+                "Shibuya Area (Shibuya, Meguro, Ebisu)": { ja: "渋谷エリア（渋谷・目黒・恵比寿）", en: "Shibuya Area (Shibuya, Meguro, Ebisu)" },
+                "Shinjuku Area (Shinjuku, Waseda, Kagurazaka)": { ja: "新宿エリア（新宿・早稲田・神楽坂）", en: "Shinjuku Area (Shinjuku, Waseda, Kagurazaka)" },
+                "Central Tokyo (Ginza, Yurakucho, Kanda, Jimbocho)": { ja: "都心（銀座・有楽町・神田・神保町）", en: "Central Tokyo (Ginza, Yurakucho, Kanda, Jimbocho)" },
+                "West Tokyo (Nakano, Asagaya, Shimokitazawa, Kichijoji)": { ja: "西東京（中野・阿佐ヶ谷・下北沢・吉祥寺）", en: "West Tokyo (Nakano, Asagaya, Shimokitazawa, Kichijoji)" },
+                "North Tokyo (Ikebukuro, Tabata)": { ja: "北東京（池袋・田端）", en: "North Tokyo (Ikebukuro, Tabata)" },
+                "East Tokyo (Morishita, Sumida)": { ja: "東東京（森下・墨田）", en: "East Tokyo (Morishita, Sumida)" },
+                "Yokohama (Kannai, Koganecho)": { ja: "横浜（関内・黄金町）", en: "Yokohama (Kannai, Koganecho)" }
             };
 
             const i18n = {
@@ -833,10 +833,8 @@
                     timeLate: "夜（21時以降）",
                     region: "地域",
                     regionAll: "すべての地域",
-                    sort: "並び替え",
-                    sortSoonest: "最も早い",
-                    sortName: "名前順",
-                    sortRating: "評価順",
+                    genre: "ジャンル",
+                    genreAll: "すべてのジャンル",
                     clearFilters: "フィルターをクリア",
                     loading: "上映情報を読み込み中...",
                     loadError: "上映情報を読み込めません",
@@ -880,10 +878,8 @@
                     timeLate: "Late (after 21)",
                     region: "Region",
                     regionAll: "All regions",
-                    sort: "Sort",
-                    sortSoonest: "Soonest",
-                    sortName: "By name",
-                    sortRating: "By rating",
+                    genre: "Genre",
+                    genreAll: "All genres",
                     clearFilters: "Clear filters",
                     loading: "Loading showtimes...",
                     loadError: "Unable to load showtimes",
@@ -962,9 +958,8 @@
                 timeSelect: document.getElementById("time-select"),
                 regionLabel: document.getElementById("region-label"),
                 regionSelect: document.getElementById("region-select"),
-                sortLabel: document.getElementById("sort-label"),
-                sortSelect: document.getElementById("sort-select"),
-                sortFilterContainer: document.getElementById("sort-filter-container"),
+                genreLabel: document.getElementById("genre-label"),
+                genreSelect: document.getElementById("genre-select"),
                 filterOptionsLabel: document.getElementById("filter-options-label"),
                 clearFilters: document.getElementById("clear-filters"),
                 // View toggles
@@ -995,7 +990,6 @@
             const state = {
                 data: [],
                 view: "cinema",
-                sort: "name",
                 todayDate: "",
                 selectedCinema: "",
                 filtersExpanded: false,
@@ -1004,17 +998,10 @@
                     search: "",
                     date: "all",
                     time: "any",
-                    region: "all"
+                    region: "all",
+                    genre: "all"
                 }
             };
-
-            function getSortOptions() {
-                return {
-                    film: [
-                        { value: "soonest", label: t("sortSoonest") }
-                    ]
-                };
-            }
 
             function getDateFormatter() {
                 const locale = state.lang === "en" ? "en-US" : "ja-JP";
@@ -1050,8 +1037,8 @@
                 render();
             });
 
-            elements.sortSelect.addEventListener("change", function (event) {
-                state.sort = event.target.value;
+            elements.genreSelect.addEventListener("change", function (event) {
+                state.filters.genre = event.target.value;
                 render();
             });
 
@@ -1059,7 +1046,7 @@
                 state.filtersExpanded = !state.filtersExpanded;
                 elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
                 elements.filtersToggle.classList.toggle("is-collapsed", !state.filtersExpanded);
-                elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? "非表示 (Hide)" : "表示 (Show)";
+                elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? t("filtersHide") : t("filtersShow");
             });
 
             elements.clearFilters.addEventListener("click", function () {
@@ -1067,11 +1054,13 @@
                 state.filters.date = getDefaultDateForView();
                 state.filters.time = "any";
                 state.filters.region = "all";
+                state.filters.genre = "all";
 
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
                 elements.timeSelect.value = "any";
                 elements.regionSelect.value = "all";
+                elements.genreSelect.value = "all";
                 render();
             });
 
@@ -1108,7 +1097,6 @@
                     const isActive = button.getAttribute("data-view") === view;
                     button.classList.toggle("is-active", isActive);
                 });
-                updateSortOptions();
                 if (view === "film" && state.filters.date === "all" && state.todayDate) {
                     state.filters.date = state.todayDate;
                     elements.dateSelect.value = state.todayDate;
@@ -1127,7 +1115,7 @@
                 updateTimeSelect();
                 updateDateSelect();
                 updateRegionSelect();
-                updateSortOptions();
+                updateGenreSelect();
                 render();
             }
 
@@ -1146,7 +1134,7 @@
                 elements.dateLabel.textContent = t("date");
                 elements.timeLabel.textContent = t("time");
                 elements.regionLabel.textContent = t("region");
-                elements.sortLabel.textContent = t("sort");
+                elements.genreLabel.textContent = t("genre");
                 elements.filterOptionsLabel.textContent = t("filters");
                 elements.clearFilters.textContent = t("clearFilters");
 
@@ -1197,6 +1185,20 @@
                 elements.regionSelect.value = currentValue;
             }
 
+            function updateGenreSelect() {
+                const currentValue = elements.genreSelect.value || "all";
+                const options = Array.from(elements.genreSelect.options);
+                options.forEach(function (option) {
+                    if (option.value === "all") {
+                        option.textContent = t("genreAll");
+                    } else {
+                        // Genres are currently just text, but could be localized if we had a map
+                        option.textContent = option.value;
+                    }
+                });
+                elements.genreSelect.value = currentValue;
+            }
+
             function updateDateSelect() {
                 const currentValue = elements.dateSelect.value || "all";
                 const options = Array.from(elements.dateSelect.options);
@@ -1215,30 +1217,6 @@
                     return state.todayDate;
                 }
                 return "all";
-            }
-
-            function updateSortOptions() {
-                const sortOptions = getSortOptions();
-                const options = sortOptions[state.view];
-                if (!options) {
-                    elements.sortFilterContainer.classList.add("is-hidden");
-                    return;
-                }
-                elements.sortFilterContainer.classList.remove("is-hidden");
-
-                const currentValue = state.sort;
-                elements.sortSelect.innerHTML = "";
-                options.forEach(function (option) {
-                    const optionEl = document.createElement("option");
-                    optionEl.value = option.value;
-                    optionEl.textContent = option.label;
-                    elements.sortSelect.appendChild(optionEl);
-                });
-                const stillValid = options.some(function (option) {
-                    return option.value === currentValue;
-                });
-                state.sort = stillValid ? currentValue : options[0].value;
-                elements.sortSelect.value = state.sort;
             }
 
             function createElement(tag, className, text) {
@@ -1464,7 +1442,28 @@
                 });
                 elements.regionSelect.value = state.filters.region || "all";
 
-                updateSortOptions();
+                // Genres
+                const genres = new Set();
+                showings.forEach(function (showing) {
+                    if (showing.genres && Array.isArray(showing.genres)) {
+                        showing.genres.forEach(function (g) { genres.add(g); });
+                    }
+                });
+                const sortedGenres = Array.from(genres).sort();
+                
+                elements.genreSelect.innerHTML = "";
+                const allGenresOption = document.createElement("option");
+                allGenresOption.value = "all";
+                allGenresOption.textContent = t("genreAll");
+                elements.genreSelect.appendChild(allGenresOption);
+
+                sortedGenres.forEach(function (g) {
+                    const option = document.createElement("option");
+                    option.value = g;
+                    option.textContent = g;
+                    elements.genreSelect.appendChild(option);
+                });
+                elements.genreSelect.value = state.filters.genre || "all";
             }
 
             function normalizeShowings(rawData) {
@@ -1548,6 +1547,9 @@
                     if (state.filters.region !== "all" && showing.region !== state.filters.region) {
                         return false;
                     }
+                    if (state.filters.genre !== "all" && (!showing.genres || !showing.genres.includes(state.filters.genre))) {
+                        return false;
+                    }
                     return true;
                 });
             }
@@ -1574,6 +1576,7 @@
                             genres: showing.genres.slice(),
                             rating: showing.rating || 0,
                             overview: showing.overview,
+                            overviewEn: showing.overviewEn,
                             posterPath: showing.posterPath,
                             formatTags: new Set(),
                             showings: [],
@@ -1612,11 +1615,18 @@
 
             function getFiltersSummary() {
                 const parts = [];
-                if (state.filters.search) parts.push("検索: \"" + state.filters.search + "\" (Search)");
-                if (state.filters.date !== "all") parts.push("日付: " + formatDate(state.filters.date, true) + " (Date)");
-                if (state.filters.time !== "any") parts.push("時間帯: " + timeBucketLabels[state.filters.time]);
-                if (state.filters.region !== "all") parts.push("地域: " + state.filters.region + " (Region)");
-                if (!parts.length) parts.push("フィルターなし (No filters applied)");
+                if (state.filters.search) parts.push(t("search") + ": \"" + state.filters.search + "\"");
+                if (state.filters.date !== "all") parts.push(t("date") + ": " + formatDate(state.filters.date, true));
+                if (state.filters.time !== "any") {
+                    const key = "time" + state.filters.time.charAt(0).toUpperCase() + state.filters.time.slice(1);
+                    parts.push(t("time") + ": " + t(key));
+                }
+                if (state.filters.region !== "all") parts.push(t("region") + ": " + getRegionName(state.filters.region));
+                if (state.filters.genre !== "all") parts.push(t("genre") + ": " + state.filters.genre);
+                
+                if (!parts.length) parts.push(t("filters") + ": " + t("filtersHide").replace("非表示", "なし").replace("Hide", "None")); 
+                
+                if (!parts.length) return "フィルターなし (No filters applied)";
                 return parts.join(" | ");
             }
             function renderCinemaIndex(showings) {
@@ -1911,11 +1921,11 @@
                 }
 
                 const films = groupByFilm(showings);
-                if (state.sort === "soonest") {
-                    films.sort(function (a, b) { return a.nextTime - b.nextTime; });
-                } else {
-                    films.sort(function (a, b) { return a.title.localeCompare(b.title); });
-                }
+                // Default to Soonest
+                films.sort(function (a, b) { return a.nextTime - b.nextTime; });
+
+                renderFilmList(films, showings.length);
+            }
 
                 renderFilmList(films, showings.length);
             }
