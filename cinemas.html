@@ -104,8 +104,18 @@
             align-items: center;
         }
 
+        .header-left {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
         .header-right {
             justify-content: flex-end;
+        }
+
+        .lang-toggle {
+            margin-top: 4px;
         }
 
         .site-credit {
@@ -522,6 +532,10 @@
                 justify-content: center;
             }
 
+            .header-left {
+                align-items: center;
+            }
+
             .filter-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -625,6 +639,10 @@
         <header class="page-header">
             <div class="header-left">
                 <div class="site-credit">サイト制作: ネルキ・リオ (Site made by Leo Nelki)</div>
+                <div class="toggle lang-toggle" role="group" aria-label="Language">
+                    <button class="toggle-btn" data-lang="ja" type="button">日本語</button>
+                    <button class="toggle-btn" data-lang="en" type="button">EN</button>
+                </div>
             </div>
             <div class="header-center">
                 <h1>東京ミニシアター上映情報 (Tokyo Mini-Theater Showtimes)</h1>
@@ -805,6 +823,7 @@
                 filtersToggle: document.getElementById("filters-toggle"),
                 filtersContent: document.getElementById("filters-content"),
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
+                langButtons: Array.from(document.querySelectorAll("[data-lang]")),
                 cinemaView: document.getElementById("cinema-view"),
                 cinemaIndex: document.getElementById("cinema-index"),
                 cinemaShowtimes: document.getElementById("cinema-showtimes"),
@@ -827,6 +846,7 @@
                 todayDate: "",
                 selectedCinema: "",
                 filtersExpanded: false,
+                lang: localStorage.getItem("cinemas-lang") || "ja",
                 filters: {
                     search: "",
                     date: "all",
@@ -906,6 +926,13 @@
                 });
             });
 
+            elements.langButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const lang = button.getAttribute("data-lang");
+                    setLang(lang);
+                });
+            });
+
             elements.backToCinemas.addEventListener("click", function () {
                 state.selectedCinema = "";
                 render();
@@ -930,6 +957,16 @@
                     state.filters.date = state.todayDate;
                     elements.dateSelect.value = state.todayDate;
                 }
+                render();
+            }
+
+            function setLang(lang) {
+                state.lang = lang;
+                localStorage.setItem("cinemas-lang", lang);
+                elements.langButtons.forEach(function (button) {
+                    const isActive = button.getAttribute("data-lang") === lang;
+                    button.classList.toggle("is-active", isActive);
+                });
                 render();
             }
 
@@ -1232,6 +1269,7 @@
                         posterPath: item.tmdb_poster_path || "",
                         backdropPath: item.tmdb_backdrop_path || "",
                         overview: item.synopsis || item.tmdb_overview_jp || "",
+                        overviewEn: item.tmdb_overview_en || item.synopsis_en || "",
                         tmdbId: tmdbId,
                         letterboxdUrl: buildLetterboxdUrl(item.movie_title_en || item.movie_title || titleJp, tmdbId),
                         searchText: [
@@ -1306,6 +1344,7 @@
                     if (!film.director && showing.director) film.director = showing.director;
                     if (!film.runtime && showing.runtime) film.runtime = showing.runtime;
                     if (!film.overview && showing.overview) film.overview = showing.overview;
+                    if (!film.overviewEn && showing.overviewEn) film.overviewEn = showing.overviewEn;
                     if (!film.posterPath && showing.posterPath) film.posterPath = showing.posterPath;
                     if (!film.titleEn && showing.titleEn) {
                         film.titleEn = showing.titleEn;
@@ -1557,8 +1596,9 @@
                         body.appendChild(createElement("div", "film-meta", metaParts.join(" | ")));
                     }
 
-                    if (film.overview) {
-                        body.appendChild(createElement("p", "film-blurb", film.overview));
+                    var displayOverview = state.lang === "en" ? (film.overviewEn || film.overview) : film.overview;
+                    if (displayOverview) {
+                        body.appendChild(createElement("p", "film-blurb", displayOverview));
                     }
 
                     if (film.formatTags.length) {
@@ -1664,6 +1704,12 @@
                         elements.filmResultsList.appendChild(createElement("div", "loading", "上映情報を読み込めません (Unable to load showtimes)."));
                     });
             }
+
+            // Initialize language button state
+            elements.langButtons.forEach(function (button) {
+                const isActive = button.getAttribute("data-lang") === state.lang;
+                button.classList.toggle("is-active", isActive);
+            });
 
             fetchShowtimes();
         });
