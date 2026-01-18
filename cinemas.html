@@ -737,10 +737,10 @@
             const tmdbBase = "https://image.tmdb.org/t/p/";
 
             const cinemaCategories = [
-                { name: "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シアターギルド代官山", "YEBISU GARDEN CINEMA", "目黒シネマ" ] },
-                { name: "新宿 (Shinjuku)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "新宿シネマカリテ", "kino cinéma新宿", "早稲田松竹", "アンスティチュ・フランセ東京" ] },
-                { name: "都心 (Central - Ginza, Yurakucho, Kanda)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "シネマリス", "アテネ・フランセ文化センター" ] },
-                { name: "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "Theater Bacchus", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館" ] },
+                { name: "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "目黒シネマ" ] },
+                { name: "新宿 (Shinjuku)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "早稲田松竹", "アンスティチュ・フランセ東京" ] },
+                { name: "都心 (Central - Ginza, Yurakucho, Kanda)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "シネマリス", "アテネ・フランセ文化センター", "神保町シアター" ] },
+                { name: "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
                 { name: "北東京 (North Tokyo - Ikebukuro, Tabata)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA" ] },
                 { name: "東東京 (East Tokyo)", cinemas: [ "Stranger (ストレンジャー)", "シネマブルースタジオ" ] },
                 { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
@@ -756,38 +756,34 @@
             const cinemaJapaneseNames = {
                 "K's Cinema (ケイズシネマ)": "ケイズシネマ",
                 "Stranger (ストレンジャー)": "ストレンジャー",
-                "YEBISU GARDEN CINEMA": "恵比寿ガーデンシネマ",
                 "K2 Cinema": "K2シネマ",
-                "Theater Bacchus": "シアターバッカス高円寺",
                 "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura ル・シネマ",
                 "CINEMA Chupki TABATA": "チュプキ・タバタ",
-                "アップリンク吉祥寺": "アップリンク吉祥寺"
+                "Cinema Neko (シネマネコ)": "シネマネコ"
             };
             const cinemaEnglishNames = {
                 "K's Cinema (ケイズシネマ)": "K's Cinema",
                 "Stranger (ストレンジャー)": "Stranger",
                 "シネマート新宿": "Cinemart Shinjuku",
-                "新宿シネマカリテ": "Shinjuku Cinema Qualite",
                 "新宿武蔵野館": "Shinjuku Musashino-kan",
                 "テアトル新宿": "Theatre Shinjuku",
                 "早稲田松竹": "Waseda Shochiku",
-                "シアターギルド代官山": "Theatre Guild Daikanyama",
-                "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
                 "シアター・イメージフォーラム": "Theatre Image Forum",
                 "ユーロスペース": "Eurospace",
                 "ヒューマントラストシネマ渋谷": "Human Trust Cinema Shibuya",
+                "シネマヴェーラ渋谷": "Cinema Vera Shibuya",
                 "新文芸坐": "Shin-Bungeiza",
                 "目黒シネマ": "Meguro Cinema",
                 "ポレポレ東中野": "Pole Pole Higashi-Nakano",
                 "K2 Cinema": "K2 Cinema",
-                "Theater Bacchus": "Theater Bacchus",
                 "ヒューマントラストシネマ有楽町": "Human Trust Cinema Yurakucho",
                 "ラピュタ阿佐ヶ谷": "Laputa Asagaya",
                 "下高井戸シネマ": "Shimotakaido Cinema",
                 "国立映画アーカイブ": "National Film Archive of Japan",
+                "神保町シアター": "Jimbocho Theatre",
                 "池袋シネマ・ロサ": "Ikebukuro Cinema Rosa",
                 "シネスイッチ銀座": "Cine Switch Ginza",
-                "シネマブルースタジオ" : "Cinema Blue Studio",
+                "シネマブルースタジオ": "Cinema Blue Studio",
                 "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
                 "CINEMA Chupki TABATA": "Cinema Chupki Tabata",
                 "シネクイント": "Cine Quinto Shibuya",
@@ -802,14 +798,15 @@
                 "シネマ・ノヴェチェント": "Cinema Novecento",
                 "kino cinéma新宿": "Kino Cinema Shinjuku",
                 "kino cinéma立川髙島屋S.C.館": "Kino Cinema Tachikawa",
-                "横浜シネマリン": "Yokohama Cinemarine"
+                "横浜シネマリン": "Yokohama Cinemarine",
+                "Cinema Neko (シネマネコ)": "Cinema Neko"
             };
 
             const regionNames = {
                 "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)": { ja: "渋谷・目黒・恵比寿", en: "Shibuya, Meguro, Ebisu" },
                 "新宿 (Shinjuku)": { ja: "新宿", en: "Shinjuku" },
                 "都心 (Central - Ginza, Yurakucho, Kanda)": { ja: "都心（銀座・有楽町・神田）", en: "Central (Ginza, Yurakucho, Kanda)" },
-                "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa)": { ja: "西東京（中野・杉並・世田谷・立川）", en: "West Tokyo" },
+                "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)": { ja: "西東京（中野・杉並・世田谷・立川・青梅）", en: "West Tokyo" },
                 "北東京 (North Tokyo - Ikebukuro, Tabata)": { ja: "北東京（池袋・田端）", en: "North Tokyo" },
                 "東東京 (East Tokyo)": { ja: "東東京", en: "East Tokyo" },
                 "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
@@ -935,6 +932,14 @@
                     return film.titleEn || film.titleJp || film.titleDisplay;
                 } else {
                     return film.titleJp || film.titleDisplay;
+                }
+            }
+
+            function getFilmDirector(film) {
+                if (state.lang === "en") {
+                    return film.directorEn || film.director || "";
+                } else {
+                    return film.director || "";
                 }
             }
 
@@ -1120,6 +1125,7 @@
                 });
                 updateUIText();
                 updateTimeSelect();
+                updateDateSelect();
                 updateRegionSelect();
                 updateSortOptions();
                 render();
@@ -1189,6 +1195,19 @@
                     }
                 });
                 elements.regionSelect.value = currentValue;
+            }
+
+            function updateDateSelect() {
+                const currentValue = elements.dateSelect.value || "all";
+                const options = Array.from(elements.dateSelect.options);
+                options.forEach(function (option) {
+                    if (option.value === "all") {
+                        option.textContent = t("dateAll");
+                    } else {
+                        option.textContent = formatDate(option.value, true);
+                    }
+                });
+                elements.dateSelect.value = currentValue;
             }
 
             function getDefaultDateForView() {
@@ -1487,6 +1506,7 @@
                         bookingUrl: item.booking_url || item.purchase_url || "",
                         detailUrl: item.detail_page_url || item.official_site || "",
                         director: item.director || "",
+                        directorEn: item.director_en || "",
                         year: item.year || "",
                         runtime: Number.isFinite(runtime) ? runtime : "",
                         genres: genres,
@@ -1506,6 +1526,7 @@
                             cinemaJp,
                             cinemaEn,
                             item.director,
+                            item.director_en,
                             genres.join(" "),
                             tags.join(" ")
                         ].filter(Boolean).join(" ").toLowerCase(),
@@ -1554,6 +1575,7 @@
                             titleDisplay: showing.titleDisplay,
                             year: showing.year,
                             director: showing.director,
+                            directorEn: showing.directorEn,
                             runtime: showing.runtime,
                             genres: showing.genres.slice(),
                             rating: showing.rating || 0,
@@ -1568,6 +1590,7 @@
                     film.showings.push(showing);
                     if (!film.year && showing.year) film.year = showing.year;
                     if (!film.director && showing.director) film.director = showing.director;
+                    if (!film.directorEn && showing.directorEn) film.directorEn = showing.directorEn;
                     if (!film.runtime && showing.runtime) film.runtime = showing.runtime;
                     if (!film.overview && showing.overview) film.overview = showing.overview;
                     if (!film.overviewEn && showing.overviewEn) film.overviewEn = showing.overviewEn;
@@ -1731,7 +1754,8 @@
 
                         const metaParts = [];
                         if (film.year) metaParts.push(film.year);
-                        if (film.director) metaParts.push(film.director);
+                        var filmDirector = getFilmDirector(film);
+                        if (filmDirector) metaParts.push(filmDirector);
                         if (film.runtime) metaParts.push(film.runtime + " " + t("min"));
                         if (metaParts.length) {
                             info.appendChild(createElement("div", "cinema-film-meta", metaParts.join(" | ")));
@@ -1816,7 +1840,8 @@
 
                     const metaParts = [];
                     if (film.year) metaParts.push(film.year);
-                    if (film.director) metaParts.push(film.director);
+                    var filmDirector = getFilmDirector(film);
+                    if (filmDirector) metaParts.push(filmDirector);
                     if (film.runtime) metaParts.push(film.runtime + " " + t("min"));
                     if (metaParts.length) {
                         body.appendChild(createElement("div", "film-meta", metaParts.join(" | ")));
