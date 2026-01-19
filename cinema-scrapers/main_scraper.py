@@ -68,6 +68,7 @@ OUTPUT_JSON = os.path.join(DATA_DIR, "showtimes.json")
 TMDB_CACHE_FILE = os.path.join(DATA_DIR, "tmdb_cache.json")
 TITLE_RESOLUTION_CACHE_FILE = os.path.join(DATA_DIR, "title_resolution_cache.json")
 LEGACY_TITLE_TRANSLATION_CACHE_FILE = os.path.join(DATA_DIR, "title_translation_cache.json")
+SYNOPSIS_TRANSLATION_CACHE_FILE = os.path.join(DATA_DIR, "synopsis_translation_cache.json")
 MIN_TITLE_MATCH_SCORE = 0.7
 MIN_FINAL_MATCH_SCORE = 0.6
 YEARLESS_SUPPORT_CANDIDATE_THRESHOLD = 5
@@ -258,6 +259,19 @@ def load_tmdb_cache():
 
 def save_tmdb_cache(cache):
     with open(TMDB_CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=2)
+
+def load_synopsis_translation_cache():
+    if os.path.exists(SYNOPSIS_TRANSLATION_CACHE_FILE):
+        try:
+            with open(SYNOPSIS_TRANSLATION_CACHE_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except:
+            return {}
+    return {}
+
+def save_synopsis_translation_cache(cache):
+    with open(SYNOPSIS_TRANSLATION_CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
 def load_title_resolution_cache():
@@ -1670,6 +1684,8 @@ def main():
     # Prepare TMDB session
     api_session = requests.Session()
     tmdb_cache = load_tmdb_cache()
+    synopsis_translation_cache = load_synopsis_translation_cache()
+    synopsis_translation_cache_updated = False
 
     sample_unmatched = None
     for i, arg in enumerate(sys.argv):
@@ -1726,6 +1742,10 @@ def main():
                     film_key = f"tmdb:{tmdb_id}"
                 else:
                     film_key = f"title:{item.get('movie_title', '')}"
+                cached_translation = synopsis_translation_cache.get(film_key)
+                if cached_translation:
+                    item["synopsis_en"] = cached_translation
+                    continue
                 if film_key not in synopses_to_translate:
                     synopses_to_translate[film_key] = jp_synopsis
                     film_key_to_items[film_key] = []
@@ -1740,6 +1760,8 @@ def main():
                     gemini_model
                 )
                 for film_key, en_synopsis in translations.items():
+                    synopsis_translation_cache[film_key] = en_synopsis
+                    synopsis_translation_cache_updated = True
                     for item in film_key_to_items.get(film_key, []):
                         item["synopsis_en"] = en_synopsis
                 print(f"   ✓ Translated {len(translations)} synopses")
@@ -1767,6 +1789,8 @@ def main():
         except Exception as e:
             print(f"❌ Critical Error saving JSON: {e}")
             sys.exit(1)
+        if synopsis_translation_cache_updated:
+            save_synopsis_translation_cache(synopsis_translation_cache)
         return
 
     listings = []
@@ -1908,6 +1932,10 @@ def main():
                 film_key = f"tmdb:{tmdb_id}"
             else:
                 film_key = f"title:{item.get('movie_title', '')}"
+            cached_translation = synopsis_translation_cache.get(film_key)
+            if cached_translation:
+                item["synopsis_en"] = cached_translation
+                continue
 
             if film_key not in synopses_to_translate:
                 synopses_to_translate[film_key] = jp_synopsis
@@ -1925,6 +1953,8 @@ def main():
 
             # Apply translations to all matching items
             for film_key, en_synopsis in translations.items():
+                synopsis_translation_cache[film_key] = en_synopsis
+                synopsis_translation_cache_updated = True
                 for item in film_key_to_items.get(film_key, []):
                     item["synopsis_en"] = en_synopsis
 
@@ -1967,6 +1997,8 @@ def main():
     except Exception as e:
         print(f"❌ Critical Error saving JSON: {e}")
         sys.exit(1)
+    if synopsis_translation_cache_updated:
+        save_synopsis_translation_cache(synopsis_translation_cache)
 
     # 5. REPORTING & ALERTS
     failures, warnings = report.print_summary()
