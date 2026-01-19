@@ -693,8 +693,16 @@
             transition: transform 0.15s ease;
         }
 
+        .region-area[data-has-cinemas="false"] {
+            cursor: default;
+        }
+
         .region-area:hover {
             transform: scale(1.02);
+        }
+
+        .region-area[data-has-cinemas="false"]:hover {
+            transform: none;
         }
 
         .region-shape {
@@ -704,10 +712,20 @@
             transition: fill 0.2s ease, stroke 0.2s ease;
         }
 
+        .region-area[data-has-cinemas="false"] .region-shape {
+            stroke: var(--border-soft);
+        }
+
         .region-area:hover .region-shape {
             fill: rgba(var(--accent-rgb), 0.2);
             stroke: var(--accent-strong);
             stroke-width: 2;
+        }
+
+        .region-area[data-has-cinemas="false"]:hover .region-shape {
+            fill: var(--bg);
+            stroke: var(--border-soft);
+            stroke-width: 1.5;
         }
 
         .region-area.is-selected .region-shape {
@@ -883,58 +901,58 @@
 
                     <!-- Region: Ikebukuro (Toshima-ku area - north) -->
                     <g class="region-area" data-region="池袋 (Ikebukuro)">
-                        <path d="M 110 55 L 170 45 L 210 60 L 205 95 L 150 100 L 110 80 Z" class="region-shape"/>
-                        <text x="160" y="68" class="region-label-ja">池袋</text>
-                        <text x="160" y="82" class="region-label-en">Ikebukuro</text>
-                        <text x="160" y="94" class="region-count"></text>
+                        <path d="M 120 40 L 170 35 L 215 55 L 210 88 L 180 110 L 135 102 L 112 72 Z" class="region-shape"/>
+                        <text x="166" y="70" class="region-label-ja">池袋</text>
+                        <text x="166" y="84" class="region-label-en">Ikebukuro</text>
+                        <text x="166" y="96" class="region-count"></text>
                     </g>
 
                     <!-- Region: Tabata & Kita Senju (north-east cluster) -->
                     <g class="region-area" data-region="田端・北千住 (Tabata & Kita Senju)">
-                        <path d="M 210 60 L 250 50 L 285 70 L 275 100 L 235 105 L 205 95 Z" class="region-shape"/>
-                        <text x="246" y="74" class="region-label-ja">田端・北千住</text>
-                        <text x="246" y="88" class="region-label-en">Tabata & Kita Senju</text>
-                        <text x="246" y="100" class="region-count"></text>
+                        <path d="M 215 55 L 255 45 L 300 70 L 292 108 L 255 128 L 220 112 Z" class="region-shape"/>
+                        <text x="258" y="80" class="region-label-ja">田端・北千住</text>
+                        <text x="258" y="94" class="region-label-en">Tabata & Kita Senju</text>
+                        <text x="258" y="106" class="region-count"></text>
                     </g>
 
                     <!-- Region: Shinjuku/Waseda (west-central) -->
                     <g class="region-area" data-region="新宿・早稲田 (Shinjuku & Waseda)">
-                        <path d="M 70 90 L 110 55 L 110 80 L 150 100 L 145 140 L 100 150 L 70 120 Z" class="region-shape"/>
-                        <text x="118" y="108" class="region-label-ja">新宿</text>
-                        <text x="118" y="122" class="region-label-en">Shinjuku</text>
-                        <text x="118" y="134" class="region-count"></text>
+                        <path d="M 82 86 L 112 60 L 130 78 L 140 108 L 165 118 L 158 158 L 112 172 L 78 138 Z" class="region-shape"/>
+                        <text x="122" y="118" class="region-label-ja">新宿</text>
+                        <text x="122" y="132" class="region-label-en">Shinjuku</text>
+                        <text x="122" y="144" class="region-count"></text>
                     </g>
 
                     <!-- Region: Central & East (Ginza, Jimbocho, Sumida) -->
                     <g class="region-area" data-region="都心・東部 (Central & East - Ginza to Sumida)">
-                        <path d="M 150 100 L 205 95 L 235 105 L 275 100 L 300 130 L 295 170 L 260 205 L 200 200 L 145 140 Z" class="region-shape"/>
-                        <text x="226" y="140" class="region-label-ja">都心・東部</text>
-                        <text x="226" y="154" class="region-label-en">Central & East</text>
-                        <text x="226" y="166" class="region-count"></text>
+                        <path d="M 165 118 L 210 108 L 238 118 L 285 112 L 315 145 L 308 188 L 272 222 L 222 228 L 182 200 L 158 158 Z" class="region-shape"/>
+                        <text x="236" y="162" class="region-label-ja">都心・東部</text>
+                        <text x="236" y="176" class="region-label-en">Central & East</text>
+                        <text x="236" y="188" class="region-count"></text>
                     </g>
 
                     <!-- Region: Shibuya/Ebisu/Meguro (southwest wards) -->
                     <g class="region-area" data-region="渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)">
-                        <path d="M 70 120 L 100 150 L 145 140 L 200 200 L 260 205 L 250 235 L 200 260 L 120 250 L 80 210 Z" class="region-shape"/>
-                        <text x="168" y="210" class="region-label-ja">渋谷・恵比寿・目黒</text>
-                        <text x="168" y="224" class="region-label-en">Shibuya Area</text>
-                        <text x="168" y="236" class="region-count"></text>
+                        <path d="M 78 138 L 112 172 L 158 158 L 182 200 L 222 228 L 270 222 L 258 254 L 210 276 L 140 270 L 98 232 Z" class="region-shape"/>
+                        <text x="176" y="216" class="region-label-ja">渋谷・恵比寿・目黒</text>
+                        <text x="176" y="230" class="region-label-en">Shibuya Area</text>
+                        <text x="176" y="242" class="region-count"></text>
                     </g>
 
                     <!-- Region: West (Nakano, Suginami, Setagaya, Tachikawa, Ome - western suburbs) -->
                     <g class="region-area" data-region="西部 (West - Chuo/Keio Lines & Setagaya)">
-                        <path d="M 20 70 L 70 90 L 70 120 L 80 210 L 60 240 L 20 220 Z" class="region-shape"/>
-                        <text x="46" y="150" class="region-label-ja">西部</text>
-                        <text x="46" y="164" class="region-label-en">West</text>
-                        <text x="46" y="176" class="region-count"></text>
+                        <path d="M 25 62 L 82 86 L 78 138 L 98 232 L 72 258 L 24 238 Z" class="region-shape"/>
+                        <text x="54" y="164" class="region-label-ja">西部</text>
+                        <text x="54" y="178" class="region-label-en">West</text>
+                        <text x="54" y="190" class="region-count"></text>
                     </g>
 
                     <!-- Region: Yokohama (Kanagawa - separate city to southwest) -->
                     <g class="region-area" data-region="横浜 (Yokohama)">
-                        <path d="M 60 240 L 120 250 L 200 260 L 210 340 L 60 340 Z" class="region-shape"/>
-                        <text x="140" y="300" class="region-label-ja">横浜</text>
-                        <text x="140" y="314" class="region-label-en">Yokohama</text>
-                        <text x="140" y="326" class="region-count"></text>
+                        <path d="M 72 258 L 140 270 L 210 276 L 222 340 L 60 340 Z" class="region-shape"/>
+                        <text x="150" y="304" class="region-label-ja">横浜</text>
+                        <text x="150" y="318" class="region-label-en">Yokohama</text>
+                        <text x="150" y="330" class="region-count"></text>
                     </g>
                 </svg>
                 <div class="map-legend">
@@ -1364,6 +1382,9 @@
             // Region map event listeners
             elements.regionAreas.forEach(function (area) {
                 area.addEventListener("click", function () {
+                    if (area.getAttribute("data-has-cinemas") === "false") {
+                        return;
+                    }
                     const region = area.getAttribute("data-region");
                     if (state.filters.region === region) {
                         // Clicking selected region deselects it
@@ -2299,19 +2320,24 @@
             function updateRegionMap() {
                 // Update selected state for each region area
                 elements.regionAreas.forEach(function (area) {
+                    const hasCinemas = area.getAttribute("data-has-cinemas") !== "false";
                     const region = area.getAttribute("data-region");
                     const isSelected = state.filters.region === region;
-                    area.classList.toggle("is-selected", isSelected);
+                    area.classList.toggle("is-selected", hasCinemas && isSelected);
 
                     // Update cinema count for this region
                     const countEl = area.querySelector(".region-count");
                     if (countEl) {
-                        const cinemaCount = cinemaCategories.find(function (cat) {
-                            return cat.name === region;
-                        });
-                        if (cinemaCount) {
-                            const count = cinemaCount.cinemas.length;
-                            countEl.textContent = count + " " + t("mapCinemaCount");
+                        if (!hasCinemas) {
+                            countEl.textContent = "";
+                        } else {
+                            const cinemaCount = cinemaCategories.find(function (cat) {
+                                return cat.name === region;
+                            });
+                            if (cinemaCount) {
+                                const count = cinemaCount.cinemas.length;
+                                countEl.textContent = count + " " + t("mapCinemaCount");
+                            }
                         }
                     }
                 });
