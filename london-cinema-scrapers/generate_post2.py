@@ -767,17 +767,14 @@ def main():
     collage = create_chaotic_collage(cover_images)
     if collage:
         draw_final_cover(collage, fonts, is_story=False).save(OUTPUT_DIR / "post_v2_image_00.png")
-        draw_final_cover(collage, fonts, is_story=True).save(OUTPUT_DIR / "story_v2_image_00.png")
     else:
         draw_fallback_cover(cover_images, fonts, is_story=False).save(OUTPUT_DIR / "post_v2_image_00.png")
-        draw_fallback_cover(cover_images, fonts, is_story=True).save(OUTPUT_DIR / "story_v2_image_00.png")
 
     caption_lines = [f"🎬 London Movie Spotlights - {get_display_date_str()}\n"]
     for i, item in enumerate(slide_data):
         film, img = item['film'], item['img']
         draw_poster_slide(film, img, fonts, is_story=False, primary_date=primary_date).save(OUTPUT_DIR / f"post_v2_image_{i+1:02}.png")
-        draw_poster_slide(film, img, fonts, is_story=True, primary_date=primary_date).save(OUTPUT_DIR / f"story_v2_image_{i+1:02}.png")
-        
+
         t = film.get('movie_title_en') or film.get('tmdb_title') or film.get('movie_title')
         caption_lines.append(f"🎬 {t}")
         for d_key in sorted(film['multi_day_showings'].keys()):

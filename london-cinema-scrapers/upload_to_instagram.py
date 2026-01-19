@@ -105,37 +105,6 @@ def upload_carousel_container(child_ids, caption):
     return result["id"]
 
 
-def upload_story_container(image_url):
-    """Creates a media container for a STORY with retries."""
-    url = f"{GRAPH_URL}/{IG_USER_ID}/media"
-    payload = {
-        "image_url": image_url,
-        "media_type": "STORIES",
-        "access_token": IG_ACCESS_TOKEN
-    }
-    
-    max_retries = 3
-    for attempt in range(max_retries):
-        try:
-            response = requests.post(url, data=payload)
-            result = response.json()
-
-            if "id" in result:
-                print(f"✅ Created Story Container ID: {result['id']}")
-                return result["id"]
-            else:
-                print(f"   ⚠️ Attempt {attempt+1} failed: {result.get('error', {}).get('message', 'Unknown error')}")
-                if attempt < max_retries - 1:
-                    time.sleep(10)
-        except Exception as e:
-            print(f"   ⚠️ Attempt {attempt+1} exception: {e}")
-            if attempt < max_retries - 1:
-                time.sleep(10)
-
-    print(f"❌ Error creating Story container after {max_retries} attempts")
-    return None
-
-
 def publish_media(creation_id):
     """Publishes a container (Feed or Story)."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media_publish"
@@ -197,13 +166,11 @@ def main():
     print(f"📂 Looking for files in: {OUTPUT_DIR}")
 
     feed_files = []
-    story_files = []
     caption_text = "No caption found."
 
     if post_type == "cinema":
         print("   -> Targeting V1 Files (Cinema Daily)")
         feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_image_*.png")))
-        story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_image_*.png")))
 
         caption_path = os.path.join(OUTPUT_DIR, "post_caption.txt")
         if os.path.exists(caption_path):
@@ -213,7 +180,6 @@ def main():
     elif post_type == "movie":
         print("   -> Targeting V2 Files (Movie Spotlight)")
         feed_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "post_v2_image_*.png")))
-        story_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, "story_v2_image_*.png")))
 
         caption_path = os.path.join(OUTPUT_DIR, "post_v2_caption.txt")
         if os.path.exists(caption_path):
@@ -242,18 +208,6 @@ def main():
                 publish_media(parent_id)
     else:
         print("ℹ️ No feed images found.")
-
-    if story_files:
-        print(f"📲 Detected {len(story_files)} Story Images.")
-        for local_path in story_files:
-            filename = os.path.basename(local_path)
-            image_url = f"{GITHUB_PAGES_BASE_URL}{filename}?v={cache_buster}"
-            container_id = upload_story_container(image_url)
-            if container_id and check_media_status(container_id):
-                publish_media(container_id)
-            time.sleep(2)
-    else:
-        print("ℹ️ No story images found.")
 
 
 if __name__ == "__main__":
