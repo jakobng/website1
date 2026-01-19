@@ -637,13 +637,36 @@
         .region-map-section {
             background: var(--card);
             border: var(--border-width) solid var(--border);
-            padding: 16px;
             box-shadow: var(--shadow-soft);
+        }
+
+        .region-map-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .region-map-summary-toggle {
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .region-map-section[open] .region-map-summary {
+            border-bottom: var(--border-width) solid var(--border);
+        }
+
+        .region-map-content {
+            padding: 12px 16px 16px;
         }
 
         #region-map {
             width: 100%;
-            max-width: 480px;
+            max-width: 360px;
             height: auto;
             margin: 0 auto;
             display: block;
@@ -740,8 +763,12 @@
         }
 
         @media (max-width: 600px) {
-            .region-map-section {
-                padding: 12px 8px;
+            .region-map-summary {
+                padding: 10px 12px;
+            }
+
+            .region-map-content {
+                padding: 10px 12px 12px;
             }
 
             .region-label-ja {
@@ -892,7 +919,7 @@
             <div class="map-legend">
                 <button class="map-reset-btn" type="button" id="map-reset-btn"></button>
             </div>
-        </section>
+        </details>
 
         <section class="view-section" id="cinema-view">
             <div id="cinema-index">
@@ -1066,6 +1093,8 @@
                     footerDisclaimer: "上映情報は各劇場サイトから取得しています。最終確認は公式ページでお願いします。",
                     downloadJson: "上映情報JSONをダウンロード",
                     mapReset: "すべての地域を表示",
+                    mapShow: "地図を表示",
+                    mapHide: "地図を隠す",
                     mapCinemaCount: "館"
                 },
                 en: {
@@ -1117,6 +1146,8 @@
                     footerDisclaimer: "Listings are scraped from cinema sites. Always double-check the booking page for last-minute changes.",
                     downloadJson: "Download raw showtimes JSON",
                     mapReset: "Show all regions",
+                    mapShow: "Show map",
+                    mapHide: "Hide map",
                     mapCinemaCount: "cinemas"
                 }
             };
@@ -1206,6 +1237,8 @@
                 footerDisclaimer: document.getElementById("footer-disclaimer"),
                 footerDownloadLink: document.getElementById("footer-download-link"),
                 // Region Map
+                mapSummaryTitle: document.getElementById("map-summary-title"),
+                mapSummaryToggle: document.getElementById("map-summary-toggle"),
                 regionMap: document.getElementById("region-map"),
                 regionMapSection: document.getElementById("region-map-section"),
                 regionAreas: Array.from(document.querySelectorAll(".region-area")),
@@ -1325,6 +1358,10 @@
                 render();
             });
 
+            elements.regionMapSection.addEventListener("toggle", function () {
+                updateMapSummaryText();
+            });
+
             elements.viewButtons.forEach(function (button) {
                 button.addEventListener("click", function () {
                     const view = button.getAttribute("data-view");
@@ -1415,6 +1452,15 @@
                 // Footer
                 elements.footerDisclaimer.textContent = t("footerDisclaimer");
                 elements.footerDownloadLink.textContent = t("downloadJson");
+
+                // Map summary
+                updateMapSummaryText();
+            }
+
+            function updateMapSummaryText() {
+                if (!elements.mapSummaryTitle || !elements.mapSummaryToggle) return;
+                elements.mapSummaryTitle.textContent = t("map");
+                elements.mapSummaryToggle.textContent = elements.regionMapSection.open ? t("mapHide") : t("mapShow");
             }
 
             function updateTimeSelect() {
