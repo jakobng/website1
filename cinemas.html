@@ -822,71 +822,71 @@
         <section class="region-map-section" id="region-map-section">
             <svg id="region-map" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
                 <!-- Tokyo Bay water -->
-                <path d="M 280 0 L 400 0 L 400 340 L 200 340 L 200 280 Q 240 260 260 220 Q 285 160 280 100 Z"
+                <path d="M 250 40 L 400 40 L 400 340 L 190 340 L 205 270 L 280 230 L 305 160 L 300 80 L 250 45 Z"
                       fill="#e8f4f8" stroke="none"/>
 
                 <!-- Bay label -->
-                <text x="340" y="180" class="bay-label">東京湾</text>
-                <text x="340" y="196" class="bay-label-en">Tokyo Bay</text>
+                <text x="336" y="205" class="bay-label">東京湾</text>
+                <text x="336" y="221" class="bay-label-en">Tokyo Bay</text>
 
                 <!-- Coastline -->
-                <path d="M 280 100 Q 285 160 260 220 Q 240 260 200 280"
+                <path d="M 250 45 L 300 80 L 305 160 L 280 230 L 205 270"
                       fill="none" stroke="var(--border-soft)" stroke-width="2"/>
 
                 <!-- Region: Ikebukuro (Toshima-ku area - north) -->
                 <g class="region-area" data-region="池袋 (Ikebukuro)">
-                    <path d="M 130 45 L 185 35 L 200 70 L 175 95 L 130 90 Z" class="region-shape"/>
-                    <text x="162" y="62" class="region-label-ja">池袋</text>
-                    <text x="162" y="76" class="region-label-en">Ikebukuro</text>
-                    <text x="162" y="88" class="region-count"></text>
+                    <path d="M 110 55 L 170 45 L 210 60 L 205 95 L 150 100 L 110 80 Z" class="region-shape"/>
+                    <text x="160" y="68" class="region-label-ja">池袋</text>
+                    <text x="160" y="82" class="region-label-en">Ikebukuro</text>
+                    <text x="160" y="94" class="region-count"></text>
                 </g>
 
-                <!-- Region: North & East (Kita, Adachi, Sumida - northeast toward bay) -->
-                <g class="region-area" data-region="北東部 (North & East - Tabata, Senju, Sumida)">
-                    <path d="M 185 35 L 280 25 L 280 100 Q 270 95 250 100 L 220 120 L 200 70 Z" class="region-shape"/>
-                    <text x="238" y="62" class="region-label-ja">北東部</text>
-                    <text x="238" y="76" class="region-label-en">North & East</text>
-                    <text x="238" y="88" class="region-count"></text>
+                <!-- Region: Tabata & Kita Senju (north-east cluster) -->
+                <g class="region-area" data-region="田端・北千住 (Tabata & Kita Senju)">
+                    <path d="M 210 60 L 250 50 L 285 70 L 275 100 L 235 105 L 205 95 Z" class="region-shape"/>
+                    <text x="246" y="74" class="region-label-ja">田端・北千住</text>
+                    <text x="246" y="88" class="region-label-en">Tabata & Kita Senju</text>
+                    <text x="246" y="100" class="region-count"></text>
                 </g>
 
-                <!-- Region: Shinjuku/Waseda (Shinjuku-ku area - west-central) -->
+                <!-- Region: Shinjuku/Waseda (west-central) -->
                 <g class="region-area" data-region="新宿・早稲田 (Shinjuku & Waseda)">
-                    <path d="M 85 70 L 130 45 L 130 90 L 175 95 L 170 140 L 120 150 L 85 120 Z" class="region-shape"/>
-                    <text x="127" y="100" class="region-label-ja">新宿</text>
-                    <text x="127" y="114" class="region-label-en">Shinjuku</text>
-                    <text x="127" y="126" class="region-count"></text>
+                    <path d="M 70 90 L 110 55 L 110 80 L 150 100 L 145 140 L 100 150 L 70 120 Z" class="region-shape"/>
+                    <text x="118" y="108" class="region-label-ja">新宿</text>
+                    <text x="118" y="122" class="region-label-en">Shinjuku</text>
+                    <text x="118" y="134" class="region-count"></text>
                 </g>
 
-                <!-- Region: Central Tokyo (Chiyoda, Chuo, Minato east - Ginza/Yurakucho/Jimbocho) -->
-                <g class="region-area" data-region="都心 (Central Tokyo - Ginza to Jimbocho)">
-                    <path d="M 175 95 L 200 70 L 220 120 L 250 100 Q 270 95 280 100 Q 285 160 260 220 L 200 200 L 170 140 Z" class="region-shape"/>
-                    <text x="222" y="145" class="region-label-ja">都心</text>
-                    <text x="222" y="159" class="region-label-en">Central</text>
-                    <text x="222" y="171" class="region-count"></text>
+                <!-- Region: Central & East (Ginza, Jimbocho, Sumida) -->
+                <g class="region-area" data-region="都心・東部 (Central & East - Ginza to Sumida)">
+                    <path d="M 150 100 L 205 95 L 235 105 L 275 100 L 300 130 L 295 170 L 260 205 L 200 200 L 145 140 Z" class="region-shape"/>
+                    <text x="226" y="140" class="region-label-ja">都心・東部</text>
+                    <text x="226" y="154" class="region-label-en">Central & East</text>
+                    <text x="226" y="166" class="region-count"></text>
                 </g>
 
-                <!-- Region: Shibuya/Ebisu/Meguro (southwest 23 wards) -->
+                <!-- Region: Shibuya/Ebisu/Meguro (southwest wards) -->
                 <g class="region-area" data-region="渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)">
-                    <path d="M 85 120 L 120 150 L 170 140 L 200 200 L 260 220 Q 240 260 200 280 L 140 270 L 100 230 L 85 180 Z" class="region-shape"/>
-                    <text x="158" y="200" class="region-label-ja">渋谷・恵比寿・目黒</text>
-                    <text x="158" y="214" class="region-label-en">Shibuya Area</text>
-                    <text x="158" y="226" class="region-count"></text>
+                    <path d="M 70 120 L 100 150 L 145 140 L 200 200 L 260 205 L 250 235 L 200 260 L 120 250 L 80 210 Z" class="region-shape"/>
+                    <text x="168" y="210" class="region-label-ja">渋谷・恵比寿・目黒</text>
+                    <text x="168" y="224" class="region-label-en">Shibuya Area</text>
+                    <text x="168" y="236" class="region-count"></text>
                 </g>
 
                 <!-- Region: West (Nakano, Suginami, Setagaya, Tachikawa, Ome - western suburbs) -->
                 <g class="region-area" data-region="西部 (West - Chuo/Keio Lines & Setagaya)">
-                    <path d="M 0 50 L 85 70 L 85 120 L 85 180 L 100 230 L 60 260 L 0 240 Z" class="region-shape"/>
-                    <text x="50" y="145" class="region-label-ja">西部</text>
-                    <text x="50" y="159" class="region-label-en">West</text>
-                    <text x="50" y="171" class="region-count"></text>
+                    <path d="M 20 70 L 70 90 L 70 120 L 80 210 L 60 240 L 20 220 Z" class="region-shape"/>
+                    <text x="46" y="150" class="region-label-ja">西部</text>
+                    <text x="46" y="164" class="region-label-en">West</text>
+                    <text x="46" y="176" class="region-count"></text>
                 </g>
 
                 <!-- Region: Yokohama (Kanagawa - separate city to southwest) -->
                 <g class="region-area" data-region="横浜 (Yokohama)">
-                    <path d="M 60 260 L 100 230 L 140 270 L 200 280 L 200 340 L 60 340 Z" class="region-shape"/>
-                    <text x="130" y="300" class="region-label-ja">横浜</text>
-                    <text x="130" y="314" class="region-label-en">Yokohama</text>
-                    <text x="130" y="326" class="region-count"></text>
+                    <path d="M 60 240 L 120 250 L 200 260 L 210 340 L 60 340 Z" class="region-shape"/>
+                    <text x="140" y="300" class="region-label-ja">横浜</text>
+                    <text x="140" y="314" class="region-label-en">Yokohama</text>
+                    <text x="140" y="326" class="region-count"></text>
                 </g>
             </svg>
             <div class="map-legend">
@@ -939,9 +939,9 @@
             const cinemaCategories = [
                 { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "目黒シネマ" ] },
                 { name: "新宿・早稲田 (Shinjuku & Waseda)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "シネマリス", "早稲田松竹" ] },
-                { name: "都心 (Central Tokyo - Ginza to Jimbocho)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京" ] },
+                { name: "都心・東部 (Central & East - Ginza to Sumida)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京", "Stranger (ストレンジャー)" ] },
                 { name: "池袋 (Ikebukuro)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ" ] },
-                { name: "北東部 (North & East - Tabata, Senju, Sumida)", cinemas: [ "CINEMA Chupki TABATA", "シネマブルースタジオ", "Stranger (ストレンジャー)" ] },
+                { name: "田端・北千住 (Tabata & Kita Senju)", cinemas: [ "CINEMA Chupki TABATA", "シネマブルースタジオ" ] },
                 { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
                 { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
             ];
@@ -1009,9 +1009,9 @@
             const regionNames = {
                 "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)": { ja: "渋谷・恵比寿・目黒", en: "Shibuya, Ebisu & Meguro" },
                 "新宿・早稲田 (Shinjuku & Waseda)": { ja: "新宿・早稲田", en: "Shinjuku & Waseda" },
-                "都心 (Central Tokyo - Ginza to Jimbocho)": { ja: "都心（銀座〜神保町）", en: "Central Tokyo (Ginza to Jimbocho)" },
+                "都心・東部 (Central & East - Ginza to Sumida)": { ja: "都心・東部（銀座〜墨田）", en: "Central & East (Ginza to Sumida)" },
                 "池袋 (Ikebukuro)": { ja: "池袋", en: "Ikebukuro" },
-                "北東部 (North & East - Tabata, Senju, Sumida)": { ja: "北東部（田端・千住・墨田）", en: "North & East (Tabata, Senju, Sumida)" },
+                "田端・北千住 (Tabata & Kita Senju)": { ja: "田端・北千住", en: "Tabata & Kita Senju" },
                 "西部 (West - Chuo/Keio Lines & Setagaya)": { ja: "西部（中央線・京王線沿線、世田谷）", en: "West (Chuo/Keio Lines & Setagaya)" },
                 "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
             };
