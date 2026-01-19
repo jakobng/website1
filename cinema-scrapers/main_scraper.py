@@ -311,6 +311,55 @@ def _normalize_person_name(name: str) -> str:
     name = re.sub(r"[\s.,\u30fb]", "", name)
     return name
 
+def _contains_japanese(text: str) -> bool:
+    if not text:
+        return False
+    return re.search(r"[\u3040-\u30ff\u3400-\u9fff]", text) is not None
+
+def _pick_english_title_from_translations(translations: dict) -> str:
+    if not translations:
+        return ""
+    entries = translations.get("translations") or []
+    best_title = ""
+    best_rank = 99
+    for entry in entries:
+        if entry.get("iso_639_1") != "en":
+            continue
+        data = entry.get("data") or {}
+        title = data.get("title") or ""
+        if not title or _contains_japanese(title):
+            continue
+        region = entry.get("iso_3166_1") or ""
+        rank = 2
+        if region == "US":
+            rank = 0
+        elif region == "GB":
+            rank = 1
+        if rank < best_rank:
+            best_title = title
+            best_rank = rank
+    return best_title
+
+def _pick_english_title_from_alt_titles(alt_titles: dict) -> str:
+    if not alt_titles:
+        return ""
+    entries = alt_titles.get("titles") or []
+    best_title = ""
+    best_rank = 99
+    english_regions = {"US", "GB", "AU", "CA", "IE", "NZ"}
+    for entry in entries:
+        region = entry.get("iso_3166_1") or ""
+        if region not in english_regions:
+            continue
+        title = entry.get("title") or ""
+        if not title or _contains_japanese(title):
+            continue
+        rank = 1 if region == "GB" else 0
+        if rank < best_rank:
+            best_title = title
+            best_rank = rank
+    return best_title
+
 def _director_score(listing_director: str, tmdb_director: str):
     if not listing_director or not tmdb_director:
         return None
@@ -462,32 +511,111 @@ def _search_tmdb(query, session, api_key, language):
 
 def _fetch_tmdb_details_by_id(tmdb_id, session, api_key):
     detail_url = f"https://api.themoviedb.org/3/movie/{tmdb_id}"
-    params = {
+
+    # Fetch Japanese details
+    params_jp = {
         "api_key": api_key,
         "language": "ja-JP",
-        "append_to_response": "credits,images"
+        "append_to_response": "credits,images,translations,alternative_titles"
     }
-    d_resp = session.get(detail_url, params=params, timeout=5)
+    d_resp = session.get(detail_url, params=params_jp, timeout=5)
     d_data = d_resp.json()
 
-    director = ""
+    director_jp = ""
+    director_id = None
     crew = d_data.get("credits", {}).get("crew", [])
     for c in crew:
         if c.get("job") == "Director":
-            director = c.get("name")
+            director_jp = c.get("name")
+            director_id = c.get("id")
             break
+
+    # Fetch English details
+    overview_en = ""
+    director_en = ""
+    genres_en = []
+    title_en = ""
+    try:
+        params_en = {
+            "api_key": api_key,
+            "language": "en-US",
+            "append_to_response": "credits"
+        }
+        en_resp = session.get(detail_url, params=params_en, timeout=5)
+        en_data = en_resp.json()
+        title_en = en_data.get("title", "")
+        overview_en = en_data.get("overview", "")
+        genres_en = [g["name"] for g in en_data.get("genres", [])]
+        en_crew = en_data.get("credits", {}).get("crew", [])
+        for c in en_crew:
+            if c.get("job") == "Director":
+                director_en = c.get("name")
+                if director_id is None:
+                    director_id = c.get("id")
+                break
+    except Exception as e:
+        print(f"   Warning: Could not fetch English details for TMDB ID {tmdb_id}: {e}")
+
+    title_jp = d_data.get("title") or ""
+    if not title_en or _contains_japanese(title_en) or (title_jp and title_en == title_jp):
+        translated_title = _pick_english_title_from_translations(d_data.get("translations"))
+        if not translated_title:
+            translated_title = _pick_english_title_from_alt_titles(d_data.get("alternative_titles"))
+        if translated_title:
+            title_en = translated_title
+
+    if director_id:
+        person_url = f"https://api.themoviedb.org/3/person/{director_id}"
+        try:
+            person_jp_resp = session.get(
+                person_url,
+                params={"api_key": api_key, "language": "ja-JP"},
+                timeout=5
+            )
+            person_jp = person_jp_resp.json()
+            jp_name = person_jp.get("name") or ""
+            if _contains_japanese(jp_name):
+                director_jp = jp_name
+            else:
+                for alias in person_jp.get("also_known_as") or []:
+                    if _contains_japanese(alias):
+                        director_jp = alias
+                        break
+        except Exception as e:
+            print(f"   Warning: Could not fetch Japanese director details for TMDB ID {tmdb_id}: {e}")
+        try:
+            person_en_resp = session.get(
+                person_url,
+                params={"api_key": api_key, "language": "en-US"},
+                timeout=5
+            )
+            person_en = person_en_resp.json()
+            en_name = person_en.get("name") or ""
+            if en_name:
+                director_en = en_name
+        except Exception as e:
+            print(f"   Warning: Could not fetch English director details for TMDB ID {tmdb_id}: {e}")
+
+    if not director_jp and director_en:
+        director_jp = director_en
 
     return {
         "tmdb_id": tmdb_id,
         "tmdb_title_jp": d_data.get("title"),
-        "tmdb_title_en": d_data.get("original_title"),
+        "tmdb_title_en": title_en or d_data.get("original_title"),
+        "tmdb_title_original": d_data.get("original_title"),
+        "tmdb_original_language": d_data.get("original_language"),
         "overview": d_data.get("overview"),
+        "overview_en": overview_en,
         "poster_path": d_data.get("poster_path"),
         "backdrop_path": d_data.get("backdrop_path"),
         "release_date": d_data.get("release_date"),
-        "director": director,
-        "runtime": d_data.get("runtime"),
+        "director": director_jp,
+        "director_jp": director_jp,
+        "director_en": director_en,
         "genres": [g["name"] for g in d_data.get("genres", [])],
+        "genres_en": genres_en,
+        "runtime": d_data.get("runtime"),
         "vote_average": d_data.get("vote_average"),
         "tmdb_countries": d_data.get("production_countries", []),
     }
@@ -699,7 +827,7 @@ def _build_title_info(listings):
             "director": "",
             "country": "",
         })
-        for field in ("movie_title_en", "year", "runtime_min", "director", "country"):
+        for field in ("movie_title_en", "movie_title_original", "year", "runtime_min", "director", "country"):
             if not info.get(field) and item.get(field):
                 info[field] = item.get(field)
     return title_info
@@ -1003,6 +1131,104 @@ def _resolve_titles_with_gemini(titles, session, api_key, model, use_search_tool
         )
     return results
 
+
+def _translate_synopses_with_gemini(synopses_to_translate, session, api_key, model):
+    """
+    Translates Japanese synopses to English using Gemini.
+
+    Args:
+        synopses_to_translate: dict mapping film_key -> japanese_synopsis
+        session: requests session
+        api_key: Gemini API key
+        model: Gemini model name (e.g., 'gemini-3-flash-preview')
+
+    Returns:
+        dict mapping film_key -> english_synopsis
+    """
+    if not synopses_to_translate:
+        return {}
+
+    endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+    results = {}
+    total_prompt_tokens = 0
+    total_output_tokens = 0
+
+    # Process one at a time for reliability (synopses can be long)
+    items = list(synopses_to_translate.items())
+
+    for i, (film_key, jp_synopsis) in enumerate(items, 1):
+        if not jp_synopsis or len(jp_synopsis.strip()) < 10:
+            continue
+
+        print(f"   Translating synopsis {i}/{len(items)}: {film_key[:50]}...")
+
+        prompt = (
+            "Translate the following Japanese film synopsis to English. "
+            "Maintain the tone and style. Return only the English translation, nothing else.\n\n"
+            f"Japanese synopsis:\n{jp_synopsis}"
+        )
+
+        payload = {
+            "contents": [
+                {"role": "user", "parts": [{"text": prompt}]}
+            ],
+            "generationConfig": {
+                "temperature": 0.3,
+                "maxOutputTokens": 2048,
+            },
+        }
+
+        attempts = 0
+        resp = None
+        while attempts < 2:
+            attempts += 1
+            try:
+                resp = session.post(endpoint, params={"key": api_key}, json=payload, timeout=(10, 60))
+                break
+            except requests.exceptions.RequestException as exc:
+                print(f"   Gemini translation request failed (attempt {attempts}): {exc}")
+                time.sleep(1.5 * attempts)
+
+        if resp is None:
+            continue
+
+        if resp.status_code != 200:
+            print(f"   Gemini translation error {resp.status_code}: {resp.text[:200]}")
+            if resp.status_code == 429:
+                time.sleep(2)
+            continue
+
+        data = resp.json()
+        if isinstance(data, dict) and data.get("error"):
+            print(f"   Gemini translation error: {data['error']}")
+            continue
+
+        # Extract usage info
+        usage = data.get("usageMetadata") if isinstance(data, dict) else None
+        if isinstance(usage, dict):
+            total_prompt_tokens += int(usage.get("promptTokenCount") or 0)
+            total_output_tokens += int(usage.get("candidatesTokenCount") or 0)
+
+        # Extract translated text
+        translated_text = _extract_gemini_text(data)
+        if translated_text:
+            results[film_key] = translated_text.strip()
+            print(f"   ✓ Translated: {film_key[:40]}... ({len(translated_text)} chars)")
+
+    if total_prompt_tokens or total_output_tokens:
+        # Gemini 3 flash pricing (approximate)
+        input_cost = (total_prompt_tokens / 1_000_000) * 0.10
+        output_cost = (total_output_tokens / 1_000_000) * 0.40
+        total_cost = input_cost + output_cost
+        print(
+            f"   Gemini translation summary: "
+            f"input_tokens={total_prompt_tokens} output_tokens={total_output_tokens} "
+            f"estimated_cost=${total_cost:.4f}"
+        )
+
+    return results
+
+
 def _attempt_tmdb_with_english_title(
     title,
     title_info,
@@ -1046,6 +1272,13 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     title_info = _build_title_info(listings)
     unique_titles = list(title_info.keys())
     print(f"   Unique films to process: {len(unique_titles)}")
+    tmdb_ids = sorted({
+        _parse_int(item.get("tmdb_id"))
+        for item in listings
+        if _parse_int(item.get("tmdb_id"))
+    })
+    if tmdb_ids:
+        print(f"   TMDB IDs provided: {len(tmdb_ids)}")
 
     def _tmdb_coverage(label):
         total = len(unique_titles)
@@ -1057,6 +1290,23 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     
     updated_cache = False
     retry_not_found = os.environ.get("TMDB_RETRY_NOT_FOUND", "").lower() in ("1", "true", "yes")
+
+    for tmdb_id in tmdb_ids:
+        cache_key = f"tmdb:{tmdb_id}"
+        cached = cache.get(cache_key)
+        if _is_tmdb_cache_hit(cached):
+            continue
+        print(f"   🔍 Fetching TMDB details by ID: {tmdb_id}")
+        details = _fetch_tmdb_details_by_id(tmdb_id, session, api_key)
+        if details:
+            cache[cache_key] = details
+            updated_cache = True
+            print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
+        else:
+            cache[cache_key] = None
+            updated_cache = True
+            print("      ❌ Not found.")
+        time.sleep(0.3)
     
     for title, info in title_info.items():
         has_cache_entry = title in cache
@@ -1072,6 +1322,7 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
             details = _fetch_tmdb_details_by_id(legacy_id, session, api_key)
             if details:
                 cache[title] = details
+                cache[f"tmdb:{details['tmdb_id']}"] = details
                 updated_cache = True
                 print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
             else:
@@ -1086,6 +1337,7 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
         
         if details:
             cache[title] = details
+            cache[f"tmdb:{details['tmdb_id']}"] = details
             updated_cache = True
             print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
         else:
@@ -1182,6 +1434,7 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
                 details = None
             if details:
                 cache[title] = details
+                cache[f"tmdb:{details['tmdb_id']}"] = details
                 updated_cache = True
                 print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
             if not details:
@@ -1282,6 +1535,7 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
                     details = None
                 if details:
                     cache[title] = details
+                    cache[f"tmdb:{details['tmdb_id']}"] = details
                     updated_cache = True
                     print(f"      ✅ Found: {details['tmdb_title_jp']} (ID: {details['tmdb_id']})")
                 if not details:
@@ -1298,31 +1552,64 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     # Apply cached data to listings
     for item in listings:
         t = item["movie_title"]
-        d = cache.get(t)
+        d = None
+        tmdb_id = _parse_int(item.get("tmdb_id"))
+        if tmdb_id:
+            d = cache.get(f"tmdb:{tmdb_id}")
+        if not _is_tmdb_cache_hit(d):
+            d = cache.get(t)
         if not _is_tmdb_cache_hit(d):
             continue
         # Merge fields if missing in scraper data
         if not item.get("tmdb_id") and d.get("tmdb_id"):
             item["tmdb_id"] = d["tmdb_id"]
+        if not item.get("tmdb_backdrop_path") and d.get("backdrop_path"):
             item["tmdb_backdrop_path"] = d.get("backdrop_path")
+        if not item.get("tmdb_poster_path") and d.get("poster_path"):
             item["tmdb_poster_path"] = d.get("poster_path")
+        if not item.get("tmdb_overview_jp") and d.get("overview"):
             item["tmdb_overview_jp"] = d.get("overview")
+        if not item.get("tmdb_overview_en") and d.get("overview_en"):
+            item["tmdb_overview_en"] = d.get("overview_en")
+        if not item.get("clean_title_jp") and d.get("tmdb_title_jp"):
             item["clean_title_jp"] = d.get("tmdb_title_jp")
+        if not item.get("movie_title_jp"):
+            item["movie_title_jp"] = d.get("tmdb_title_jp") or item.get("movie_title") or ""
+        title_jp = item.get("movie_title_jp") or item.get("movie_title") or ""
+        if not item.get("movie_title_original") and d.get("tmdb_title_original"):
+            item["movie_title_original"] = d.get("tmdb_title_original")
+        if not item.get("original_language") and d.get("tmdb_original_language"):
+            item["original_language"] = d.get("tmdb_original_language")
+        if item.get("runtime") in (None, "") and d.get("runtime") is not None:
             item["runtime"] = d.get("runtime")
+        if not item.get("genres") and d.get("genres"):
             item["genres"] = d.get("genres")
+        if item.get("vote_average") in (None, "") and d.get("vote_average") is not None:
             item["vote_average"] = d.get("vote_average")
-            
-            # If scraper didn't provide English title
-            if not item.get("movie_title_en"):
+
+        # If scraper didn't provide English title
+        if d.get("tmdb_title_en"):
+            current_en = item.get("movie_title_en") or ""
+            if (not current_en) or _contains_japanese(current_en) or (title_jp and current_en == title_jp):
                 item["movie_title_en"] = d.get("tmdb_title_en")
-            
-            # If scraper didn't provide Director
-            if not item.get("director"):
-                item["director"] = d.get("director")
-                
-            # Always prefer TMDB year if available, as cinemas often list local release year
-            if d.get("release_date"):
-                item["year"] = d["release_date"].split("-")[0]
+
+        # If scraper didn't provide Director
+        if not item.get("director"):
+            item["director"] = d.get("director")
+        if not item.get("director_jp"):
+            item["director_jp"] = d.get("director_jp") or d.get("director") or item.get("director") or ""
+
+        # Add English director name from TMDB
+        if not item.get("director_en") and d.get("director_en"):
+            item["director_en"] = d.get("director_en")
+
+        # Add English genres from TMDB
+        if not item.get("genres_en") and d.get("genres_en"):
+            item["genres_en"] = d.get("genres_en")
+
+        # Always prefer TMDB year if available, as cinemas often list local release year
+        if d.get("release_date"):
+            item["year"] = d["release_date"].split("-")[0]
 
     if updated_cache:
         save_tmdb_cache(cache)
@@ -1415,6 +1702,50 @@ def main():
             print(f"Enrich-only sample mode: {sample_size} titles -> {len(listings)} listings.")
         if tmdb_key:
             listings = enrich_listings_with_tmdb_links(listings, tmdb_cache, api_session, tmdb_key)
+
+        # Synopsis translation for enrich-only mode
+        gemini_key = os.environ.get("GEMINI_API_KEY")
+
+        if gemini_key:
+            print("\n📝 Translating missing English synopses...")
+            gemini_model = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
+            if gemini_model.startswith("models/"):
+                gemini_model = gemini_model.split("/", 1)[1]
+
+            synopses_to_translate = {}
+            film_key_to_items = {}
+
+            for item in listings:
+                if item.get("tmdb_overview_en") or item.get("synopsis_en"):
+                    continue
+                jp_synopsis = item.get("synopsis") or item.get("tmdb_overview_jp")
+                if not jp_synopsis:
+                    continue
+                tmdb_id = item.get("tmdb_id")
+                if tmdb_id:
+                    film_key = f"tmdb:{tmdb_id}"
+                else:
+                    film_key = f"title:{item.get('movie_title', '')}"
+                if film_key not in synopses_to_translate:
+                    synopses_to_translate[film_key] = jp_synopsis
+                    film_key_to_items[film_key] = []
+                film_key_to_items[film_key].append(item)
+
+            if synopses_to_translate:
+                print(f"   Found {len(synopses_to_translate)} unique films needing translation")
+                translations = _translate_synopses_with_gemini(
+                    synopses_to_translate,
+                    api_session,
+                    gemini_key,
+                    gemini_model
+                )
+                for film_key, en_synopsis in translations.items():
+                    for item in film_key_to_items.get(film_key, []):
+                        item["synopsis_en"] = en_synopsis
+                print(f"   ✓ Translated {len(translations)} synopses")
+            else:
+                print("   No synopses need translation")
+
         print(f"Saving to {output_path}...")
 
         today_count = sum(1 for item in listings if item.get("date_text") == today_jst.isoformat())
@@ -1542,10 +1873,75 @@ def main():
 
     # 3. ENRICHMENT
     print(f"\nCollected a total of {len(listings)} showings.")
-    
+
     if tmdb_key:
         listings = enrich_listings_with_tmdb_links(listings, tmdb_cache, api_session, tmdb_key)
-    
+
+    # 3.5. SYNOPSIS TRANSLATION
+    # Translate synopses that don't have English from TMDB
+    gemini_key = os.environ.get("GEMINI_API_KEY")
+
+    if gemini_key:
+        print("\n📝 Translating missing English synopses...")
+        gemini_model = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
+        if gemini_model.startswith("models/"):
+            gemini_model = gemini_model.split("/", 1)[1]
+
+        # Find unique films that need translation
+        # Key by TMDB ID if available, otherwise by title
+        synopses_to_translate = {}
+        film_key_to_items = {}
+
+        for item in listings:
+            # Skip if already has English synopsis
+            if item.get("tmdb_overview_en") or item.get("synopsis_en"):
+                continue
+
+            # Get Japanese synopsis (prefer scraped, fallback to TMDB)
+            jp_synopsis = item.get("synopsis") or item.get("tmdb_overview_jp")
+            if not jp_synopsis:
+                continue
+
+            # Create unique key for this film
+            tmdb_id = item.get("tmdb_id")
+            if tmdb_id:
+                film_key = f"tmdb:{tmdb_id}"
+            else:
+                film_key = f"title:{item.get('movie_title', '')}"
+
+            if film_key not in synopses_to_translate:
+                synopses_to_translate[film_key] = jp_synopsis
+                film_key_to_items[film_key] = []
+            film_key_to_items[film_key].append(item)
+
+        if synopses_to_translate:
+            print(f"   Found {len(synopses_to_translate)} unique films needing translation")
+            translations = _translate_synopses_with_gemini(
+                synopses_to_translate,
+                api_session,
+                gemini_key,
+                gemini_model
+            )
+
+            # Apply translations to all matching items
+            for film_key, en_synopsis in translations.items():
+                for item in film_key_to_items.get(film_key, []):
+                    item["synopsis_en"] = en_synopsis
+
+            print(f"   ✓ Translated {len(translations)} synopses")
+        else:
+            print("   No synopses need translation (all have English from TMDB)")
+
+    for item in listings:
+        if not item.get("movie_title_jp"):
+            item["movie_title_jp"] = item.get("movie_title") or ""
+        if "movie_title_en" not in item:
+            item["movie_title_en"] = ""
+        if not item.get("director_jp"):
+            item["director_jp"] = item.get("director") or ""
+        if "director_en" not in item:
+            item["director_en"] = ""
+
     # 4. SAVE OUTPUT
     print(f"Saving to {OUTPUT_JSON}...")
 
