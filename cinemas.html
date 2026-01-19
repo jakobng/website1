@@ -741,12 +741,11 @@
             const tmdbBase = "https://image.tmdb.org/t/p/";
 
             const cinemaCategories = [
-                { name: "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "目黒シネマ" ] },
-                { name: "新宿 (Shinjuku)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "早稲田松竹", "アンスティチュ・フランセ東京" ] },
-                { name: "都心 (Central - Ginza, Yurakucho, Kanda)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "シネマリス", "アテネ・フランセ文化センター", "神保町シアター" ] },
-                { name: "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
-                { name: "北東京 (North Tokyo - Ikebukuro, Tabata)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA" ] },
-                { name: "東東京 (East Tokyo)", cinemas: [ "Stranger (ストレンジャー)", "シネマブルースタジオ" ] },
+                { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "目黒シネマ" ] },
+                { name: "新宿・早稲田 (Shinjuku & Waseda)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "シネマリス", "早稲田松竹" ] },
+                { name: "都心 (Central Tokyo - Ginza to Jimbocho)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京" ] },
+                { name: "池袋・北東部 (Ikebukuro & North/East)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA", "シネマブルースタジオ", "Stranger (ストレンジャー)" ] },
+                { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
                 { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
             ];
 
@@ -763,7 +762,9 @@
                 "K2 Cinema": "K2シネマ",
                 "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura ル・シネマ",
                 "CINEMA Chupki TABATA": "チュプキ・タバタ",
-                "Cinema Neko (シネマネコ)": "シネマネコ"
+                "Cinema Neko (シネマネコ)": "シネマネコ",
+                "YEBISU GARDEN CINEMA": "恵比寿ガーデンシネマ",
+                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "角川シネマ有楽町"
             };
             const cinemaEnglishNames = {
                 "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -803,16 +804,17 @@
                 "kino cinéma新宿": "Kino Cinema Shinjuku",
                 "kino cinéma立川髙島屋S.C.館": "Kino Cinema Tachikawa",
                 "横浜シネマリン": "Yokohama Cinemarine",
-                "Cinema Neko (シネマネコ)": "Cinema Neko"
+                "Cinema Neko (シネマネコ)": "Cinema Neko",
+                "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
+                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "Kadokawa Cinema Yurakucho"
             };
 
             const regionNames = {
-                "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)": { ja: "渋谷・目黒・恵比寿", en: "Shibuya, Meguro, Ebisu" },
-                "新宿 (Shinjuku)": { ja: "新宿", en: "Shinjuku" },
-                "都心 (Central - Ginza, Yurakucho, Kanda)": { ja: "都心（銀座・有楽町・神田）", en: "Central (Ginza, Yurakucho, Kanda)" },
-                "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)": { ja: "西東京（中野・杉並・世田谷・立川・青梅）", en: "West Tokyo" },
-                "北東京 (North Tokyo - Ikebukuro, Tabata)": { ja: "北東京（池袋・田端）", en: "North Tokyo" },
-                "東東京 (East Tokyo)": { ja: "東東京", en: "East Tokyo" },
+                "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)": { ja: "渋谷・恵比寿・目黒", en: "Shibuya, Ebisu & Meguro" },
+                "新宿・早稲田 (Shinjuku & Waseda)": { ja: "新宿・早稲田", en: "Shinjuku & Waseda" },
+                "都心 (Central Tokyo - Ginza to Jimbocho)": { ja: "都心（銀座〜神保町）", en: "Central Tokyo (Ginza to Jimbocho)" },
+                "池袋・北東部 (Ikebukuro & North/East)": { ja: "池袋・北東部", en: "Ikebukuro & North/East" },
+                "西部 (West - Chuo/Keio Lines & Setagaya)": { ja: "西部（中央線・京王線沿線、世田谷）", en: "West (Chuo/Keio Lines & Setagaya)" },
                 "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
             };
 
