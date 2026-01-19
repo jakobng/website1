@@ -699,33 +699,20 @@
             pointer-events: none;
         }
 
-        .yamanote-label {
-            font-size: 10px;
-            fill: #8B9A47;
-            font-weight: 500;
-            text-anchor: middle;
-            pointer-events: none;
-        }
-
         .bay-label {
-            font-size: 10px;
-            fill: var(--border-soft);
+            font-size: 11px;
+            fill: #7ba3b8;
             font-weight: 500;
             text-anchor: middle;
             pointer-events: none;
         }
 
         .bay-label-en {
-            font-size: 8px;
-            fill: var(--border-soft);
+            font-size: 9px;
+            fill: #7ba3b8;
             text-anchor: middle;
             pointer-events: none;
             opacity: 0.7;
-        }
-
-        .yamanote-label-en {
-            font-size: 7px;
-            fill: var(--border-soft);
         }
 
         .map-legend {
@@ -833,94 +820,74 @@
         </section>
 
         <section class="region-map-section" id="region-map-section">
-            <svg id="region-map" viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
-                <!-- Tokyo Bay -->
-                <path d="M 320 80 Q 400 120 410 200 Q 415 280 380 350 L 280 350 Q 300 280 295 200 Q 290 140 320 80"
-                      fill="var(--grid)" stroke="var(--border-soft)" stroke-width="1" opacity="0.5"/>
-                <text x="360" y="220" class="bay-label">東京湾</text>
-                <text x="360" y="235" class="bay-label-en">Tokyo Bay</text>
+            <svg id="region-map" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+                <!-- Tokyo Bay water -->
+                <path d="M 280 0 L 400 0 L 400 340 L 200 340 L 200 280 Q 240 260 260 220 Q 285 160 280 100 Z"
+                      fill="#e8f4f8" stroke="none"/>
 
-                <!-- Yamanote Line loop (more realistic shape) -->
-                <path d="M 200 60
-                         Q 260 55 285 90
-                         Q 310 130 300 180
-                         Q 290 230 250 260
-                         Q 200 285 150 270
-                         Q 100 250 90 200
-                         Q 80 150 100 110
-                         Q 130 60 200 60"
-                      fill="none" stroke="#8B9A47" stroke-width="4" opacity="0.7"/>
-                <text x="175" y="170" class="yamanote-label">山手線</text>
+                <!-- Bay label -->
+                <text x="340" y="180" class="bay-label">東京湾</text>
+                <text x="340" y="196" class="bay-label-en">Tokyo Bay</text>
 
-                <!-- Chuo Line going west -->
-                <line x1="100" y1="140" x2="20" y2="140" stroke="#E85D04" stroke-width="3" opacity="0.6"/>
+                <!-- Coastline -->
+                <path d="M 280 100 Q 285 160 260 220 Q 240 260 200 280"
+                      fill="none" stroke="var(--border-soft)" stroke-width="2"/>
 
-                <!-- Line to Yokohama (Toyoko/JR) -->
-                <line x1="150" y1="270" x2="120" y2="350" stroke="#E85D04" stroke-width="3" opacity="0.6"/>
-
-                <!-- Region: West (Chuo/Keio lines, extending west) -->
-                <g class="region-area" data-region="西部 (West - Chuo/Keio Lines & Setagaya)">
-                    <path d="M 15 95 L 95 95 Q 85 140 95 185 L 15 185 Q 5 140 15 95" rx="4" class="region-shape"/>
-                    <text x="55" y="132" class="region-label-ja">西部</text>
-                    <text x="55" y="148" class="region-label-en">West</text>
-                    <text x="55" y="164" class="region-count"></text>
-                </g>
-
-                <!-- Region: Shinjuku/Waseda (west side of loop) -->
-                <g class="region-area" data-region="新宿・早稲田 (Shinjuku & Waseda)">
-                    <path d="M 95 85 Q 130 60 165 75 L 165 145 Q 130 160 95 145 Z" class="region-shape"/>
-                    <text x="130" y="105" class="region-label-ja">新宿</text>
-                    <text x="130" y="120" class="region-label-en">Shinjuku</text>
-                    <text x="130" y="135" class="region-count"></text>
-                </g>
-
-                <!-- Region: Ikebukuro (northwest on loop) -->
+                <!-- Region: Ikebukuro (Toshima-ku area - north) -->
                 <g class="region-area" data-region="池袋 (Ikebukuro)">
-                    <path d="M 165 40 Q 200 30 235 40 L 250 95 Q 210 105 170 95 Z" class="region-shape"/>
-                    <text x="207" y="62" class="region-label-ja">池袋</text>
-                    <text x="207" y="77" class="region-label-en">Ikebukuro</text>
-                    <text x="207" y="92" class="region-count"></text>
+                    <path d="M 130 45 L 185 35 L 200 70 L 175 95 L 130 90 Z" class="region-shape"/>
+                    <text x="162" y="62" class="region-label-ja">池袋</text>
+                    <text x="162" y="76" class="region-label-en">Ikebukuro</text>
+                    <text x="162" y="88" class="region-count"></text>
                 </g>
 
-                <!-- Region: North & East (northeast, outside loop toward bay) -->
+                <!-- Region: North & East (Kita, Adachi, Sumida - northeast toward bay) -->
                 <g class="region-area" data-region="北東部 (North & East - Tabata, Senju, Sumida)">
-                    <path d="M 250 25 L 320 25 Q 335 60 330 100 L 290 130 Q 265 95 250 55 Z" class="region-shape"/>
-                    <text x="288" y="58" class="region-label-ja">北東部</text>
-                    <text x="288" y="73" class="region-label-en">North & East</text>
-                    <text x="288" y="88" class="region-count"></text>
+                    <path d="M 185 35 L 280 25 L 280 100 Q 270 95 250 100 L 220 120 L 200 70 Z" class="region-shape"/>
+                    <text x="238" y="62" class="region-label-ja">北東部</text>
+                    <text x="238" y="76" class="region-label-en">North & East</text>
+                    <text x="238" y="88" class="region-count"></text>
                 </g>
 
-                <!-- Region: Central Tokyo (inside loop, east side - Ginza/Yurakucho/Jimbocho) -->
+                <!-- Region: Shinjuku/Waseda (Shinjuku-ku area - west-central) -->
+                <g class="region-area" data-region="新宿・早稲田 (Shinjuku & Waseda)">
+                    <path d="M 85 70 L 130 45 L 130 90 L 175 95 L 170 140 L 120 150 L 85 120 Z" class="region-shape"/>
+                    <text x="127" y="100" class="region-label-ja">新宿</text>
+                    <text x="127" y="114" class="region-label-en">Shinjuku</text>
+                    <text x="127" y="126" class="region-count"></text>
+                </g>
+
+                <!-- Region: Central Tokyo (Chiyoda, Chuo, Minato east - Ginza/Yurakucho/Jimbocho) -->
                 <g class="region-area" data-region="都心 (Central Tokyo - Ginza to Jimbocho)">
-                    <path d="M 195 95 L 270 110 Q 285 160 270 210 L 195 225 Q 180 160 195 95" class="region-shape"/>
-                    <text x="232" y="148" class="region-label-ja">都心</text>
-                    <text x="232" y="163" class="region-label-en">Central</text>
-                    <text x="232" y="178" class="region-count"></text>
+                    <path d="M 175 95 L 200 70 L 220 120 L 250 100 Q 270 95 280 100 Q 285 160 260 220 L 200 200 L 170 140 Z" class="region-shape"/>
+                    <text x="222" y="145" class="region-label-ja">都心</text>
+                    <text x="222" y="159" class="region-label-en">Central</text>
+                    <text x="222" y="171" class="region-count"></text>
                 </g>
 
-                <!-- Region: Shibuya/Ebisu/Meguro (southwest on loop) -->
+                <!-- Region: Shibuya/Ebisu/Meguro (southwest 23 wards) -->
                 <g class="region-area" data-region="渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)">
-                    <path d="M 95 160 Q 130 145 170 155 L 190 230 Q 150 255 110 240 Z" class="region-shape"/>
-                    <text x="145" y="188" class="region-label-ja">渋谷・恵比寿</text>
-                    <text x="145" y="203" class="region-label-en">Shibuya</text>
-                    <text x="145" y="218" class="region-count"></text>
+                    <path d="M 85 120 L 120 150 L 170 140 L 200 200 L 260 220 Q 240 260 200 280 L 140 270 L 100 230 L 85 180 Z" class="region-shape"/>
+                    <text x="158" y="200" class="region-label-ja">渋谷・恵比寿・目黒</text>
+                    <text x="158" y="214" class="region-label-en">Shibuya Area</text>
+                    <text x="158" y="226" class="region-count"></text>
                 </g>
 
-                <!-- Region: Yokohama (southwest, separate city along bay) -->
+                <!-- Region: West (Nakano, Suginami, Setagaya, Tachikawa, Ome - western suburbs) -->
+                <g class="region-area" data-region="西部 (West - Chuo/Keio Lines & Setagaya)">
+                    <path d="M 0 50 L 85 70 L 85 120 L 85 180 L 100 230 L 60 260 L 0 240 Z" class="region-shape"/>
+                    <text x="50" y="145" class="region-label-ja">西部</text>
+                    <text x="50" y="159" class="region-label-en">West</text>
+                    <text x="50" y="171" class="region-count"></text>
+                </g>
+
+                <!-- Region: Yokohama (Kanagawa - separate city to southwest) -->
                 <g class="region-area" data-region="横浜 (Yokohama)">
-                    <path d="M 70 295 L 170 280 Q 185 310 175 345 L 75 355 Q 60 325 70 295" class="region-shape"/>
-                    <text x="122" y="312" class="region-label-ja">横浜</text>
-                    <text x="122" y="327" class="region-label-en">Yokohama</text>
-                    <text x="122" y="342" class="region-count"></text>
+                    <path d="M 60 260 L 100 230 L 140 270 L 200 280 L 200 340 L 60 340 Z" class="region-shape"/>
+                    <text x="130" y="300" class="region-label-ja">横浜</text>
+                    <text x="130" y="314" class="region-label-en">Yokohama</text>
+                    <text x="130" y="326" class="region-count"></text>
                 </g>
-
-                <!-- Station markers on Yamanote -->
-                <circle cx="130" cy="108" r="4" fill="var(--ink)" opacity="0.4"/>
-                <circle cx="207" cy="55" r="4" fill="var(--ink)" opacity="0.4"/>
-                <circle cx="285" cy="105" r="4" fill="var(--ink)" opacity="0.4"/>
-                <circle cx="290" cy="180" r="4" fill="var(--ink)" opacity="0.4"/>
-                <circle cx="150" cy="200" r="4" fill="var(--ink)" opacity="0.4"/>
-                <circle cx="100" cy="150" r="4" fill="var(--ink)" opacity="0.4"/>
             </svg>
             <div class="map-legend">
                 <button class="map-reset-btn" type="button" id="map-reset-btn"></button>
