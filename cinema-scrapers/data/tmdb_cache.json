@@ -16459,5 +16459,96 @@
         "name": "United States of America"
       }
     ]
+  },
+  "終点のあの子": {
+    "tmdb_id": 1502131,
+    "tmdb_title_jp": "終点のあの子",
+    "tmdb_title_en": "The Girl at the End of the Line",
+    "tmdb_title_original": "終点のあの子",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kiyoko Tachibana, a student at an integrated middle and high school for girls in Tokyo, met Akari Okusawa, who was wearing a bright blue dress, at the start of the new school year in her first year of high school. In contrast to the other students, Akari freely interacts with everyone and quickly becomes popular, and Kiyoko is attracted to her. Kiyoko's newly awakened feelings for her soon involve the whole class, and the situation develops into a disturbance.",
+    "poster_path": "/VJjyMznpIMDXZmpeLBlw2zCgCJ.jpg",
+    "backdrop_path": "/tN5VIsdm3FePMTg3A4O3n6nA8GT.jpg",
+    "release_date": "2026-01-23",
+    "director": "吉田浩太",
+    "director_jp": "吉田浩太",
+    "director_en": "Kōta Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 125,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1502131": {
+    "tmdb_id": 1502131,
+    "tmdb_title_jp": "終点のあの子",
+    "tmdb_title_en": "The Girl at the End of the Line",
+    "tmdb_title_original": "終点のあの子",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kiyoko Tachibana, a student at an integrated middle and high school for girls in Tokyo, met Akari Okusawa, who was wearing a bright blue dress, at the start of the new school year in her first year of high school. In contrast to the other students, Akari freely interacts with everyone and quickly becomes popular, and Kiyoko is attracted to her. Kiyoko's newly awakened feelings for her soon involve the whole class, and the situation develops into a disturbance.",
+    "poster_path": "/VJjyMznpIMDXZmpeLBlw2zCgCJ.jpg",
+    "backdrop_path": "/tN5VIsdm3FePMTg3A4O3n6nA8GT.jpg",
+    "release_date": "2026-01-23",
+    "director": "吉田浩太",
+    "director_jp": "吉田浩太",
+    "director_en": "Kōta Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 125,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【舞台挨拶】黒の牛": {
+    "tmdb_id": 1167863,
+    "tmdb_title_jp": "黒の牛",
+    "tmdb_title_en": "Black Ox",
+    "tmdb_title_original": "黒の牛",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The life of a man, transitioning from a hunter-gatherer existence in the mountains to a life in the farm. One day, he comes across an ox, which somehow, he succeeds in leading back to his home. He lives with the animal, which becomes his companion in a life of changing seasons.",
+    "poster_path": "/6l3Cf56cikwpll0i7fkcthGKPtR.jpg",
+    "backdrop_path": "/7ajqnik0ZDnKobIidoS1w99HN4s.jpg",
+    "release_date": "2024-11-08",
+    "director": "蔦哲一朗",
+    "director_jp": "蔦哲一朗",
+    "director_en": "Tetsuichirô Tsuta",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 114,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
   }
 }
