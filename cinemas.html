@@ -632,6 +632,120 @@
                 transform: translate(-50%, -50%) scale(2);
             }
         }
+
+        /* Region Map Styles */
+        .region-map-section {
+            background: var(--card);
+            border: var(--border-width) solid var(--border);
+            padding: 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        #region-map {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .region-area {
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .region-area:hover {
+            transform: scale(1.03);
+        }
+
+        .region-shape {
+            fill: var(--bg);
+            stroke: var(--border);
+            stroke-width: 1.5;
+            transition: fill 0.2s ease, stroke 0.2s ease;
+        }
+
+        .region-area:hover .region-shape {
+            fill: rgba(var(--accent-rgb), 0.15);
+            stroke: var(--accent-strong);
+        }
+
+        .region-area.is-selected .region-shape {
+            fill: rgba(var(--accent-rgb), 0.3);
+            stroke: var(--accent-strong);
+            stroke-width: 2.5;
+        }
+
+        .region-label-ja {
+            font-size: 11px;
+            font-weight: 600;
+            fill: var(--ink);
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .region-label-en {
+            font-size: 8px;
+            fill: var(--muted);
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .region-count {
+            font-size: 9px;
+            fill: var(--muted);
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .yamanote-label {
+            font-size: 9px;
+            fill: var(--muted);
+            font-weight: 500;
+        }
+
+        .yamanote-label-en {
+            font-size: 7px;
+            fill: var(--border-soft);
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .map-reset-btn {
+            background: transparent;
+            border: var(--border-width) solid var(--border);
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .map-reset-btn:hover {
+            background: var(--bg);
+        }
+
+        .map-reset-btn.is-hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .region-map-section {
+                padding: 12px 8px;
+            }
+
+            .region-label-ja {
+                font-size: 10px;
+            }
+
+            .region-label-en {
+                font-size: 7px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -698,6 +812,82 @@
                 </div>
             </div>
         </section>
+
+        <section class="region-map-section" id="region-map-section">
+            <svg id="region-map" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+                <!-- Yamanote Line loop (stylized) -->
+                <ellipse cx="200" cy="140" rx="95" ry="75" fill="none" stroke="var(--border-soft)" stroke-width="3" stroke-dasharray="6 3"/>
+
+                <!-- Connection lines to outer areas -->
+                <line x1="105" y1="140" x2="30" y2="140" stroke="var(--border-soft)" stroke-width="2" stroke-dasharray="4 2"/>
+                <line x1="200" y1="215" x2="200" y2="290" stroke="var(--border-soft)" stroke-width="2" stroke-dasharray="4 2"/>
+                <line x1="270" y1="85" x2="340" y2="50" stroke="var(--border-soft)" stroke-width="2" stroke-dasharray="4 2"/>
+
+                <!-- Region: West (top-left, outside loop) -->
+                <g class="region-area" data-region="西部 (West - Chuo/Keio Lines & Setagaya)">
+                    <rect x="10" y="70" width="90" height="60" rx="4" class="region-shape"/>
+                    <text x="55" y="95" class="region-label-ja">西部</text>
+                    <text x="55" y="112" class="region-label-en">West</text>
+                    <text x="55" y="125" class="region-count"></text>
+                </g>
+
+                <!-- Region: Shinjuku/Waseda (west on loop) -->
+                <g class="region-area" data-region="新宿・早稲田 (Shinjuku & Waseda)">
+                    <rect x="105" y="70" width="75" height="55" rx="4" class="region-shape"/>
+                    <text x="142" y="92" class="region-label-ja">新宿・早稲田</text>
+                    <text x="142" y="107" class="region-label-en">Shinjuku</text>
+                    <text x="142" y="120" class="region-count"></text>
+                </g>
+
+                <!-- Region: Ikebukuro (north on loop) -->
+                <g class="region-area" data-region="池袋 (Ikebukuro)">
+                    <rect x="185" y="40" width="70" height="50" rx="4" class="region-shape"/>
+                    <text x="220" y="60" class="region-label-ja">池袋</text>
+                    <text x="220" y="75" class="region-label-en">Ikebukuro</text>
+                    <text x="220" y="88" class="region-count"></text>
+                </g>
+
+                <!-- Region: North & East (northeast, outside loop) -->
+                <g class="region-area" data-region="北東部 (North & East - Tabata, Senju, Sumida)">
+                    <rect x="290" y="25" width="100" height="60" rx="4" class="region-shape"/>
+                    <text x="340" y="48" class="region-label-ja">北東部</text>
+                    <text x="340" y="63" class="region-label-en">North & East</text>
+                    <text x="340" y="78" class="region-count"></text>
+                </g>
+
+                <!-- Region: Central Tokyo (center-right in loop) -->
+                <g class="region-area" data-region="都心 (Central Tokyo - Ginza to Jimbocho)">
+                    <rect x="200" y="105" width="85" height="60" rx="4" class="region-shape"/>
+                    <text x="242" y="128" class="region-label-ja">都心</text>
+                    <text x="242" y="143" class="region-label-en">Central</text>
+                    <text x="242" y="158" class="region-count"></text>
+                </g>
+
+                <!-- Region: Shibuya/Ebisu/Meguro (south on loop) -->
+                <g class="region-area" data-region="渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)">
+                    <rect x="115" y="145" width="80" height="65" rx="4" class="region-shape"/>
+                    <text x="155" y="168" class="region-label-ja">渋谷・恵比寿</text>
+                    <text x="155" y="183" class="region-label-en">Shibuya</text>
+                    <text x="155" y="198" class="region-count"></text>
+                </g>
+
+                <!-- Region: Yokohama (far south) -->
+                <g class="region-area" data-region="横浜 (Yokohama)">
+                    <rect x="155" y="250" width="90" height="55" rx="4" class="region-shape"/>
+                    <text x="200" y="272" class="region-label-ja">横浜</text>
+                    <text x="200" y="287" class="region-label-en">Yokohama</text>
+                    <text x="200" y="300" class="region-count"></text>
+                </g>
+
+                <!-- Yamanote label -->
+                <text x="295" y="175" class="yamanote-label">JR山手線</text>
+                <text x="295" y="188" class="yamanote-label-en">Yamanote Line</text>
+            </svg>
+            <div class="map-legend">
+                <button class="map-reset-btn" type="button" id="map-reset-btn"></button>
+            </div>
+        </section>
+
         <section class="view-section" id="cinema-view">
             <div id="cinema-index">
                 <div class="loading" id="cinema-loading"></div>
@@ -741,12 +931,12 @@
             const tmdbBase = "https://image.tmdb.org/t/p/";
 
             const cinemaCategories = [
-                { name: "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "目黒シネマ" ] },
-                { name: "新宿 (Shinjuku)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "早稲田松竹", "アンスティチュ・フランセ東京" ] },
-                { name: "都心 (Central - Ginza, Yurakucho, Kanda)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "シネマリス", "アテネ・フランセ文化センター", "神保町シアター" ] },
-                { name: "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
-                { name: "北東京 (North Tokyo - Ikebukuro, Tabata)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "CINEMA Chupki TABATA" ] },
-                { name: "東東京 (East Tokyo)", cinemas: [ "Stranger (ストレンジャー)", "シネマブルースタジオ" ] },
+                { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "目黒シネマ" ] },
+                { name: "新宿・早稲田 (Shinjuku & Waseda)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "シネマリス", "早稲田松竹" ] },
+                { name: "都心 (Central Tokyo - Ginza to Jimbocho)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京" ] },
+                { name: "池袋 (Ikebukuro)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ" ] },
+                { name: "北東部 (North & East - Tabata, Senju, Sumida)", cinemas: [ "CINEMA Chupki TABATA", "シネマブルースタジオ", "Stranger (ストレンジャー)" ] },
+                { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
                 { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
             ];
 
@@ -763,7 +953,9 @@
                 "K2 Cinema": "K2シネマ",
                 "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura ル・シネマ",
                 "CINEMA Chupki TABATA": "チュプキ・タバタ",
-                "Cinema Neko (シネマネコ)": "シネマネコ"
+                "Cinema Neko (シネマネコ)": "シネマネコ",
+                "YEBISU GARDEN CINEMA": "恵比寿ガーデンシネマ",
+                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "角川シネマ有楽町"
             };
             const cinemaEnglishNames = {
                 "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -803,16 +995,18 @@
                 "kino cinéma新宿": "Kino Cinema Shinjuku",
                 "kino cinéma立川髙島屋S.C.館": "Kino Cinema Tachikawa",
                 "横浜シネマリン": "Yokohama Cinemarine",
-                "Cinema Neko (シネマネコ)": "Cinema Neko"
+                "Cinema Neko (シネマネコ)": "Cinema Neko",
+                "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
+                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "Kadokawa Cinema Yurakucho"
             };
 
             const regionNames = {
-                "渋谷・目黒・恵比寿 (Shibuya, Meguro, Ebisu)": { ja: "渋谷・目黒・恵比寿", en: "Shibuya, Meguro, Ebisu" },
-                "新宿 (Shinjuku)": { ja: "新宿", en: "Shinjuku" },
-                "都心 (Central - Ginza, Yurakucho, Kanda)": { ja: "都心（銀座・有楽町・神田）", en: "Central (Ginza, Yurakucho, Kanda)" },
-                "西東京 (West Tokyo - Nakano, Suginami, Setagaya, Tachikawa, Ome)": { ja: "西東京（中野・杉並・世田谷・立川・青梅）", en: "West Tokyo" },
-                "北東京 (North Tokyo - Ikebukuro, Tabata)": { ja: "北東京（池袋・田端）", en: "North Tokyo" },
-                "東東京 (East Tokyo)": { ja: "東東京", en: "East Tokyo" },
+                "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)": { ja: "渋谷・恵比寿・目黒", en: "Shibuya, Ebisu & Meguro" },
+                "新宿・早稲田 (Shinjuku & Waseda)": { ja: "新宿・早稲田", en: "Shinjuku & Waseda" },
+                "都心 (Central Tokyo - Ginza to Jimbocho)": { ja: "都心（銀座〜神保町）", en: "Central Tokyo (Ginza to Jimbocho)" },
+                "池袋 (Ikebukuro)": { ja: "池袋", en: "Ikebukuro" },
+                "北東部 (North & East - Tabata, Senju, Sumida)": { ja: "北東部（田端・千住・墨田）", en: "North & East (Tabata, Senju, Sumida)" },
+                "西部 (West - Chuo/Keio Lines & Setagaya)": { ja: "西部（中央線・京王線沿線、世田谷）", en: "West (Chuo/Keio Lines & Setagaya)" },
                 "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
             };
 
@@ -864,7 +1058,9 @@
                     unknownCinema: "不明な劇場",
                     untitled: "タイトル未定",
                     footerDisclaimer: "上映情報は各劇場サイトから取得しています。最終確認は公式ページでお願いします。",
-                    downloadJson: "上映情報JSONをダウンロード"
+                    downloadJson: "上映情報JSONをダウンロード",
+                    mapReset: "すべての地域を表示",
+                    mapCinemaCount: "館"
                 },
                 en: {
                     siteTitle: "Tokyo Mini-Theater Showtimes",
@@ -913,7 +1109,9 @@
                     unknownCinema: "Unknown cinema",
                     untitled: "Untitled",
                     footerDisclaimer: "Listings are scraped from cinema sites. Always double-check the booking page for last-minute changes.",
-                    downloadJson: "Download raw showtimes JSON"
+                    downloadJson: "Download raw showtimes JSON",
+                    mapReset: "Show all regions",
+                    mapCinemaCount: "cinemas"
                 }
             };
 
@@ -1000,7 +1198,12 @@
                 filmEmpty: document.getElementById("film-empty"),
                 // Footer
                 footerDisclaimer: document.getElementById("footer-disclaimer"),
-                footerDownloadLink: document.getElementById("footer-download-link")
+                footerDownloadLink: document.getElementById("footer-download-link"),
+                // Region Map
+                regionMap: document.getElementById("region-map"),
+                regionMapSection: document.getElementById("region-map-section"),
+                regionAreas: Array.from(document.querySelectorAll(".region-area")),
+                mapResetBtn: document.getElementById("map-reset-btn")
             };
             const state = {
                 data: [],
@@ -1092,6 +1295,27 @@
                 elements.timeSelect.value = "any";
                 elements.regionSelect.value = "all";
                 elements.docOnlyCheckbox.checked = false;
+                render();
+            });
+
+            // Region map event listeners
+            elements.regionAreas.forEach(function (area) {
+                area.addEventListener("click", function () {
+                    const region = area.getAttribute("data-region");
+                    if (state.filters.region === region) {
+                        // Clicking selected region deselects it
+                        state.filters.region = "all";
+                    } else {
+                        state.filters.region = region;
+                    }
+                    elements.regionSelect.value = state.filters.region;
+                    render();
+                });
+            });
+
+            elements.mapResetBtn.addEventListener("click", function () {
+                state.filters.region = "all";
+                elements.regionSelect.value = "all";
                 render();
             });
 
@@ -1988,8 +2212,35 @@
                 renderFilmList(films, showings.length);
             }
 
+            function updateRegionMap() {
+                // Update selected state for each region area
+                elements.regionAreas.forEach(function (area) {
+                    const region = area.getAttribute("data-region");
+                    const isSelected = state.filters.region === region;
+                    area.classList.toggle("is-selected", isSelected);
+
+                    // Update cinema count for this region
+                    const countEl = area.querySelector(".region-count");
+                    if (countEl) {
+                        const cinemaCount = cinemaCategories.find(function (cat) {
+                            return cat.name === region;
+                        });
+                        if (cinemaCount) {
+                            const count = cinemaCount.cinemas.length;
+                            countEl.textContent = count + " " + t("mapCinemaCount");
+                        }
+                    }
+                });
+
+                // Show/hide reset button based on whether a region is selected
+                const hasSelection = state.filters.region !== "all";
+                elements.mapResetBtn.classList.toggle("is-hidden", !hasSelection);
+                elements.mapResetBtn.textContent = t("mapReset");
+            }
+
             function render() {
                 const filtered = applyFilters(state.data);
+                updateRegionMap();
                 if (state.view === "film") {
                     renderFilmView(filtered);
                 } else {
