@@ -1569,5 +1569,208 @@
     "original_title": "The Texas Chain Saw Massacre",
     "director": "Tobe Hooper",
     "country": "USA"
+  },
+  "グレイフォックス": {
+    "english_title": "The Grey Fox",
+    "release_year": 1982,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "The Grey Fox",
+    "director": "Phillip Borsos",
+    "country": "Canada"
+  },
+  "オリビアと雲": {
+    "english_title": "Olivia & the Clouds",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Olivia & Las Nubes",
+    "director": "Tomás Pichardo-Espaillat",
+    "country": "Dominican Republic"
+  },
+  "【odessa vol+】ｶﾘｷﾞｭﾗ　究極版": {
+    "english_title": "Caligula: The Ultimate Cut",
+    "release_year": 1979,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Caligula",
+    "director": "Tinto Brass",
+    "country": "Italy, United States"
+  },
+  "ただいまって言える場所［0123］": {
+    "english_title": "A Place Where I Can Say I'm Home",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ただいまって言える場所",
+    "director": "Renpei Tsukamoto",
+    "country": "Japan"
+  },
+  "カリギュラ 究極版": {
+    "english_title": "Caligula: The Ultimate Cut",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Caligula",
+    "director": "Tinto Brass",
+    "country": "Italy, United States",
+    "failed": true
+  },
+  "RRR連続ナイト！": {
+    "english_title": "RRR",
+    "release_year": 2022,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "RRR",
+    "director": "S. S. Rajamouli",
+    "country": "India"
+  },
+  "【ﾄｰｸｲﾍﾞﾝﾄ】万事快調<ｵｰﾙ･ｸﾞﾘｰﾝｽﾞ>": {
+    "english_title": "All Greens",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "万事快調〈オール・グリーンズ〉",
+    "director": "Takashi Koyama",
+    "country": "Japan"
+  },
+  "ダウントン・アビー／グランドフィナーレ": {
+    "english_title": "Downton Abbey: The Grand Finale",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Downton Abbey: The Grand Finale",
+    "director": "Simon Curtis",
+    "country": "United Kingdom"
+  },
+  "『役者になったスパイ』トークイベント": {
+    "english_title": "One-way to Moscow",
+    "release_year": 2020,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Moskau Einfach!",
+    "director": "Micha Lewinsky",
+    "country": "Switzerland"
+  },
+  "A DOCUMENTARY FILM OF LOSTAGE -ひかりのまち、わたしたちの-": {
+    "english_title": "A DOCUMENTARY FILM OF LOSTAGE -Hikari no Machi, Ours-",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "A DOCUMENTARY FILM OF LOSTAGE -ひかりのまち、わたしたちの-",
+    "director": "MINORxU",
+    "country": "Japan",
+    "failed": true
+  },
+  "おててつないで": {
+    "english_title": "Holding Hands",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "おててつないで",
+    "director": "Yuki Sugawara",
+    "country": "Japan",
+    "failed": true
+  },
+  "【チリの闘い：武器なき民の抵抗】第1部：ブルジョワジーの叛乱": {
+    "english_title": "The Battle of Chile: Part 1 - The Insurrection of the Bourgeoisie",
+    "release_year": 1975,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La batalla de Chile: La insurrección de la burguesía",
+    "director": "Patricio Guzmán",
+    "country": "Chile"
+  },
+  "シネマ歌舞伎『歌舞伎NEXT 朧の森に棲む鬼』松也版": {
+    "english_title": "Cinema Kabuki: Lord of the Lies (Matsuya Version)",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "シネマ歌舞伎『歌舞伎NEXT 朧の森に棲む鬼』松也版",
+    "director": "Hidenori Inoue",
+    "country": "Japan",
+    "failed": true
+  },
+  "ボルドーに囚われた女": {
+    "english_title": "Visiting Hours",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Prisonnière de Bordeaux",
+    "director": "Patricia Mazuy",
+    "country": "France"
+  },
+  "よそ者の会(2023)+よそ者の会(2025)": {
+    "english_title": "The Outsiders' Club",
+    "release_year": null,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "よそ者の会",
+    "director": "Hami Nishizaki",
+    "country": "Japan"
+  },
+  "ブリジットとブリジット": {
+    "english_title": "Brigitte and Brigitte",
+    "release_year": 1966,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Brigitte et Brigitte",
+    "director": "Luc Moullet",
+    "country": "France"
+  },
+  "ビリー・ザ・キッドの冒険": {
+    "english_title": "A Girl Is a Gun",
+    "release_year": 1971,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Une aventure de Billy le Kid",
+    "director": "Luc Moullet",
+    "country": "France"
+  },
+  "ゴールドマン裁判": {
+    "english_title": "The Goldman Case",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Le Procès Goldman",
+    "director": "Cédric Kahn",
+    "country": "France"
+  },
+  "ジムの物語": {
+    "english_title": "Jim's Story",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Le Roman de Jim",
+    "director": "Arnaud Larrieu, Jean-Marie Larrieu",
+    "country": "France"
+  },
+  "歓喜": {
+    "english_title": "Joy",
+    "release_year": 1937,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "歓喜",
+    "director": "Mikio Naruse",
+    "country": "Japan",
+    "failed": true
+  },
+  "パティ―との二十一夜": {
+    "english_title": "21 Nights with Pattie",
+    "release_year": 2015,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "21 nuits avec Pattie",
+    "director": "Arnaud Larrieu, Jean-Marie Larrieu",
+    "country": "France"
+  },
+  "【ﾄｰｸｼｮｰ】百万円と苦虫女": {
+    "english_title": "One Million Yen Girl",
+    "release_year": 2008,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "百万円と苦虫女",
+    "director": "Yuki Tanada",
+    "country": "Japan"
   }
 }

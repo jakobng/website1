@@ -4291,7 +4291,7 @@
     "tmdb_title_original": "The Straight Story",
     "tmdb_original_language": "en",
     "overview": "アメリカ・アイオワ州ローレンスに住む73歳のガンコな老人アルヴィン・ストレイト。ある日、彼のもとに、76歳の兄が心臓発作で倒れたという知らせが入る。10年来仲違いをしていた兄に会うため、アルヴィンは周囲の反対を押し切り、たったひとりで時速8kmのトラクターに乗って旅に出ることを決意する。",
-    "overview_en": "A retired farmer and widower in his 70s, Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. Then he hits on the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "overview_en": "A retired farmer and widower in his seventies named Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
     "poster_path": "/zXWrUYBtQPAfKGFoDOgoOBsH14y.jpg",
     "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
     "release_date": "1999-10-15",
@@ -4305,7 +4305,7 @@
       "Drama"
     ],
     "runtime": 112,
-    "vote_average": 7.729,
+    "vote_average": 7.73,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -8995,7 +8995,7 @@
       "Romance"
     ],
     "runtime": 123,
-    "vote_average": 7.195,
+    "vote_average": 7.146,
     "tmdb_countries": [
       {
         "iso_3166_1": "GB",
@@ -16548,6 +16548,1824 @@
       {
         "iso_3166_1": "TW",
         "name": "Taiwan"
+      }
+    ]
+  },
+  "グレイフォックス": {
+    "tmdb_id": 42136,
+    "tmdb_title_jp": "The Grey Fox",
+    "tmdb_title_en": "The Grey Fox",
+    "tmdb_title_original": "The Grey Fox",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Old West highwayman Bill Miner, known to Pinkertons as \"The Gentleman Bandit,\" is released in 1901 after 33 years in prison. A genial and charming old man, he re-enters a world unfamiliar to him, and returns to the only thing that gives him purpose — robbery.",
+    "poster_path": "/ycE2WBSczxBgM1vtRQ9KTtwGTMR.jpg",
+    "backdrop_path": "/5m3iuO5ACGuOE15Gv1TXmNweXRK.jpg",
+    "release_date": "1982-12-16",
+    "director": "Phillip Borsos",
+    "director_jp": "Phillip Borsos",
+    "director_en": "Phillip Borsos",
+    "genres": [
+      "西洋",
+      "履歴"
+    ],
+    "genres_en": [
+      "Western",
+      "History"
+    ],
+    "runtime": 92,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "オリビアと雲": {
+    "tmdb_id": 1288987,
+    "tmdb_title_jp": "Olivia y las nubes",
+    "tmdb_title_en": "Olivia & the Clouds",
+    "tmdb_title_original": "Olivia y las nubes",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "Olivia & the Clouds explores love's complexities through a Rashomon effect. Olivia, haunted by a past love, hides it under her bed. She trades flowers with this ghost in exchange for comforting rain clouds. Barbara, rejected by Mauricio, escapes reality through fantastical stories. Mauricio, full of regrets, is swallowed by the earth. Ramon, smitten by Olivia, witnesses the growth of a strange plant mirroring her. With surreal elements, the film delves into the enduring power of love's memory.",
+    "poster_path": "/nwfjehaVFGWmnubSQRFRwwyLVKL.jpg",
+    "backdrop_path": "/2zoNGjUV4Y1Asp1Hxkg3Whx4LZE.jpg",
+    "release_date": "2025-06-19",
+    "director": "Tomás Pichardo-Espaillat",
+    "director_jp": "Tomás Pichardo-Espaillat",
+    "director_en": "Tomás Pichardo-Espaillat",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DO",
+        "name": "Dominican Republic"
+      }
+    ]
+  },
+  "【未体験2026】コゼリスク攻城戦 モンゴル軍襲撃": {
+    "tmdb_id": 584855,
+    "tmdb_title_jp": "Злой город",
+    "tmdb_title_en": "Fierce Town",
+    "tmdb_title_original": "Злой город",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "By the middle of the 12th century, the borders of the Mongolian Empire stretched from the Adriatic and Mediterranean Seas in the west to the southern lands of China in the east. The Mongolian army, under Khan Batu’s command, was known for its invisibility, destroying anyone who dared to challenge them. Yet, even within their central territories, some areas refused to bow to the Genghisids. Kozelsk was one of them. The Mongolian armies bypassed the high walls of this small town, considering that \"the skin of the wolf was not worth the risk of encountering its teeth\".However, one of the Khan’s commanders harbored a grudge against the town's citizens. Now, the people of Kozelsk must face a battle against the strongest army in the world, with no hope of victory. This is a story about people facing their death. Some try to escape, others are willing to do anything to survive, but most are prepared to protect their city from the relentless storms of the Mongolian hordes.",
+    "poster_path": "/cNJLuyHnli2kEDoI7i5THArU2cB.jpg",
+    "backdrop_path": "/fOcAU0Jzw4sx4aUTopRavJrLHeF.jpg",
+    "release_date": "2025-01-30",
+    "director": "Konstantin Buslov",
+    "director_jp": "Konstantin Buslov",
+    "director_en": "Konstantin Buslov",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Action"
+    ],
+    "runtime": 0,
+    "vote_average": 7.389,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "tmdb:584855": {
+    "tmdb_id": 584855,
+    "tmdb_title_jp": "Злой город",
+    "tmdb_title_en": "Fierce Town",
+    "tmdb_title_original": "Злой город",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "By the middle of the 12th century, the borders of the Mongolian Empire stretched from the Adriatic and Mediterranean Seas in the west to the southern lands of China in the east. The Mongolian army, under Khan Batu’s command, was known for its invisibility, destroying anyone who dared to challenge them. Yet, even within their central territories, some areas refused to bow to the Genghisids. Kozelsk was one of them. The Mongolian armies bypassed the high walls of this small town, considering that \"the skin of the wolf was not worth the risk of encountering its teeth\".However, one of the Khan’s commanders harbored a grudge against the town's citizens. Now, the people of Kozelsk must face a battle against the strongest army in the world, with no hope of victory. This is a story about people facing their death. Some try to escape, others are willing to do anything to survive, but most are prepared to protect their city from the relentless storms of the Mongolian hordes.",
+    "poster_path": "/cNJLuyHnli2kEDoI7i5THArU2cB.jpg",
+    "backdrop_path": "/fOcAU0Jzw4sx4aUTopRavJrLHeF.jpg",
+    "release_date": "2025-01-30",
+    "director": "Konstantin Buslov",
+    "director_jp": "Konstantin Buslov",
+    "director_en": "Konstantin Buslov",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Action"
+    ],
+    "runtime": 0,
+    "vote_average": 7.389,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "【未体験2026】ワールド・ブレイカー": null,
+  "【odessa vol+】ｶﾘｷﾞｭﾗ　究極版": {
+    "tmdb_id": 9453,
+    "tmdb_title_jp": "カリギュラ",
+    "tmdb_title_en": "Caligula",
+    "tmdb_title_original": "Caligola",
+    "tmdb_original_language": "it",
+    "overview": "偏執狂的なティベリウス皇帝の死後、その後継者カリグラが権力を掌握し、帝国を狂気と堕落の血なまぐさいスパイラルに陥れる。",
+    "overview_en": "After the death of the paranoid emperor Tiberius, Caligula, his heir, seizes power and plunges the empire into a bloody spiral of madness and depravity.",
+    "poster_path": "/9KArPusEQE6yn5oInxm6zO1720B.jpg",
+    "backdrop_path": "/cT6xO3YjzfZKYGhZ8S7plNlA27F.jpg",
+    "release_date": "1979-08-14",
+    "director": "ティント・ブラス",
+    "director_jp": "ティント・ブラス",
+    "director_en": "Tinto Brass",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 156,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【未体験2026】ブチャ 最後の証人": {
+    "tmdb_id": 1219063,
+    "tmdb_title_jp": "Буча",
+    "tmdb_title_en": "Bucha",
+    "tmdb_title_original": "Буча",
+    "tmdb_original_language": "uk",
+    "overview": "",
+    "overview_en": "The story of a refugee from Kazakhstan who in the spring of 2022 saved hundreds of Ukrainians in Bucha and other cities and towns occupied by Russian troops.",
+    "poster_path": "/mls4vfWVUjbReAH5rXu6iaPZYXd.jpg",
+    "backdrop_path": "/wrehrKLnxXQM0Sk2S5GJhJY6kq4.jpg",
+    "release_date": "2024-11-07",
+    "director": "Stanislav Tiunov",
+    "director_jp": "Stanislav Tiunov",
+    "director_en": "Stanislav Tiunov",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "UA",
+        "name": "Ukraine"
+      }
+    ]
+  },
+  "tmdb:1219063": {
+    "tmdb_id": 1219063,
+    "tmdb_title_jp": "Буча",
+    "tmdb_title_en": "Bucha",
+    "tmdb_title_original": "Буча",
+    "tmdb_original_language": "uk",
+    "overview": "",
+    "overview_en": "The story of a refugee from Kazakhstan who in the spring of 2022 saved hundreds of Ukrainians in Bucha and other cities and towns occupied by Russian troops.",
+    "poster_path": "/mls4vfWVUjbReAH5rXu6iaPZYXd.jpg",
+    "backdrop_path": "/wrehrKLnxXQM0Sk2S5GJhJY6kq4.jpg",
+    "release_date": "2024-11-07",
+    "director": "Stanislav Tiunov",
+    "director_jp": "Stanislav Tiunov",
+    "director_en": "Stanislav Tiunov",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "UA",
+        "name": "Ukraine"
+      }
+    ]
+  },
+  "ただいまって言える場所［0123］": {
+    "tmdb_id": 1568457,
+    "tmdb_title_jp": "ただいまって言える場所",
+    "tmdb_title_en": "ただいまって言える場所",
+    "tmdb_title_original": "ただいまって言える場所",
+    "tmdb_original_language": "ja",
+    "overview": "大人なのに学校へ行きたくない…。大人なのに反抗期中…。親から自立できない中学教師・えりこ。一方、勉強もできて、友達もいて、荒れてもいない大人の仮面を被った“原因不明の不登校少女”・千花。二人は同じ学校の教師と生徒。だが部屋から出られないのも一緒だった。ある日、えりこが趣味のBL漫画をネット出品すると、“チー”という少女と意気投合。それが千花だった。互いに気づかぬままSNSで感想を送り合い、いつしか本音を話せる親友になっていく。一緒に部屋から出ようと親や学校に向き合うが、千花の“不登校の真相”とえりこの“過去の傷”が二人を追い詰め、取り巻く世界が予期せぬ方向に動き始める――。",
+    "overview_en": "",
+    "poster_path": "/toKLnsJ3501vQe90kR6SigCtKvR.jpg",
+    "backdrop_path": "/uGlwlgM4JxwPWu9u2lyyLYP1jXa.jpg",
+    "release_date": "2026-01-23",
+    "director": "塚本連平",
+    "director_jp": "塚本連平",
+    "director_en": "Renpei Tsukamoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【未体験2026】帰ってきたガリバー": {
+    "tmdb_id": 763539,
+    "tmdb_title_jp": "Гуллівер повертається",
+    "tmdb_title_en": "Gulliver Returns",
+    "tmdb_title_original": "Гуллівер повертається",
+    "tmdb_original_language": "uk",
+    "overview": "",
+    "overview_en": "World traveler and adventurer Gulliver is invited to return to Lilliput, the town he previously saved from the enemy fleet of the neighboring Blefuscu.",
+    "poster_path": "/ewSgFq3pqZiYxYViB3l8vTrPRvm.jpg",
+    "backdrop_path": "/gBzyD14X6jzHmX7FLroOCFfj9GM.jpg",
+    "release_date": "2021-08-19",
+    "director": "Илья Максимов",
+    "director_jp": "Илья Максимов",
+    "director_en": "Ilya Maksimov",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy"
+    ],
+    "runtime": 90,
+    "vote_average": 6.107,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CY",
+        "name": "Cyprus"
+      },
+      {
+        "iso_3166_1": "UA",
+        "name": "Ukraine"
+      }
+    ]
+  },
+  "tmdb:763539": {
+    "tmdb_id": 763539,
+    "tmdb_title_jp": "Гуллівер повертається",
+    "tmdb_title_en": "Gulliver Returns",
+    "tmdb_title_original": "Гуллівер повертається",
+    "tmdb_original_language": "uk",
+    "overview": "",
+    "overview_en": "World traveler and adventurer Gulliver is invited to return to Lilliput, the town he previously saved from the enemy fleet of the neighboring Blefuscu.",
+    "poster_path": "/ewSgFq3pqZiYxYViB3l8vTrPRvm.jpg",
+    "backdrop_path": "/gBzyD14X6jzHmX7FLroOCFfj9GM.jpg",
+    "release_date": "2021-08-19",
+    "director": "Илья Максимов",
+    "director_jp": "Илья Максимов",
+    "director_en": "Ilya Maksimov",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy"
+    ],
+    "runtime": 90,
+    "vote_average": 6.107,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CY",
+        "name": "Cyprus"
+      },
+      {
+        "iso_3166_1": "UA",
+        "name": "Ukraine"
+      }
+    ]
+  },
+  "【未体験2026】アリゲーター：暴水領域": {
+    "tmdb_id": 1006462,
+    "tmdb_title_jp": "The Flood",
+    "tmdb_title_en": "Flood",
+    "tmdb_title_original": "The Flood",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A horde of giant hungry alligators is unleashed on a group of in-transit prisoners and their guards after a massive hurricane floods Louisiana.",
+    "poster_path": "/mvjqqklMpHwOxc40rn7dMhGT0Fc.jpg",
+    "backdrop_path": "/bz66a19bR6BKsbY8gSZCM4etJiK.jpg",
+    "release_date": "2023-07-14",
+    "director": "Brandon Slagle",
+    "director_jp": "Brandon Slagle",
+    "director_en": "Brandon Slagle",
+    "genres": [
+      "アクション",
+      "謎",
+      "スリラー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Mystery",
+      "Thriller",
+      "Horror"
+    ],
+    "runtime": 93,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TH",
+        "name": "Thailand"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1006462": {
+    "tmdb_id": 1006462,
+    "tmdb_title_jp": "The Flood",
+    "tmdb_title_en": "Flood",
+    "tmdb_title_original": "The Flood",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A horde of giant hungry alligators is unleashed on a group of in-transit prisoners and their guards after a massive hurricane floods Louisiana.",
+    "poster_path": "/mvjqqklMpHwOxc40rn7dMhGT0Fc.jpg",
+    "backdrop_path": "/bz66a19bR6BKsbY8gSZCM4etJiK.jpg",
+    "release_date": "2023-07-14",
+    "director": "Brandon Slagle",
+    "director_jp": "Brandon Slagle",
+    "director_en": "Brandon Slagle",
+    "genres": [
+      "アクション",
+      "謎",
+      "スリラー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Mystery",
+      "Thriller",
+      "Horror"
+    ],
+    "runtime": 93,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TH",
+        "name": "Thailand"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ただいまって言える場所": {
+    "tmdb_id": 1568457,
+    "tmdb_title_jp": "ただいまって言える場所",
+    "tmdb_title_en": "ただいまって言える場所",
+    "tmdb_title_original": "ただいまって言える場所",
+    "tmdb_original_language": "ja",
+    "overview": "大人なのに学校へ行きたくない…。大人なのに反抗期中…。親から自立できない中学教師・えりこ。一方、勉強もできて、友達もいて、荒れてもいない大人の仮面を被った“原因不明の不登校少女”・千花。二人は同じ学校の教師と生徒。だが部屋から出られないのも一緒だった。ある日、えりこが趣味のBL漫画をネット出品すると、“チー”という少女と意気投合。それが千花だった。互いに気づかぬままSNSで感想を送り合い、いつしか本音を話せる親友になっていく。一緒に部屋から出ようと親や学校に向き合うが、千花の“不登校の真相”とえりこの“過去の傷”が二人を追い詰め、取り巻く世界が予期せぬ方向に動き始める――。",
+    "overview_en": "",
+    "poster_path": "/toKLnsJ3501vQe90kR6SigCtKvR.jpg",
+    "backdrop_path": "/uGlwlgM4JxwPWu9u2lyyLYP1jXa.jpg",
+    "release_date": "2026-01-23",
+    "director": "塚本連平",
+    "director_jp": "塚本連平",
+    "director_en": "Renpei Tsukamoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1568457": {
+    "tmdb_id": 1568457,
+    "tmdb_title_jp": "ただいまって言える場所",
+    "tmdb_title_en": "ただいまって言える場所",
+    "tmdb_title_original": "ただいまって言える場所",
+    "tmdb_original_language": "ja",
+    "overview": "大人なのに学校へ行きたくない…。大人なのに反抗期中…。親から自立できない中学教師・えりこ。一方、勉強もできて、友達もいて、荒れてもいない大人の仮面を被った“原因不明の不登校少女”・千花。二人は同じ学校の教師と生徒。だが部屋から出られないのも一緒だった。ある日、えりこが趣味のBL漫画をネット出品すると、“チー”という少女と意気投合。それが千花だった。互いに気づかぬままSNSで感想を送り合い、いつしか本音を話せる親友になっていく。一緒に部屋から出ようと親や学校に向き合うが、千花の“不登校の真相”とえりこの“過去の傷”が二人を追い詰め、取り巻く世界が予期せぬ方向に動き始める――。",
+    "overview_en": "",
+    "poster_path": "/toKLnsJ3501vQe90kR6SigCtKvR.jpg",
+    "backdrop_path": "/uGlwlgM4JxwPWu9u2lyyLYP1jXa.jpg",
+    "release_date": "2026-01-23",
+    "director": "塚本連平",
+    "director_jp": "塚本連平",
+    "director_en": "Renpei Tsukamoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "博徒解散式": {
+    "tmdb_id": 415045,
+    "tmdb_title_jp": "博徒解散式",
+    "tmdb_title_en": "Gambler's Farewell",
+    "tmdb_title_original": "博徒解散式",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The story of men devoted to the yakuza lifestyle and their struggles during a time of fading yakuza power.",
+    "poster_path": "/yIL3Yb6z4rizhExgQCWygDWGgJP.jpg",
+    "backdrop_path": "/zlRiebH5rsnzZb87t2x6dDEmUnp.jpg",
+    "release_date": "1968-02-09",
+    "director": "深作欣二",
+    "director_jp": "深作欣二",
+    "director_en": "Kinji Fukasaku",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 91,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:415045": {
+    "tmdb_id": 415045,
+    "tmdb_title_jp": "博徒解散式",
+    "tmdb_title_en": "Gambler's Farewell",
+    "tmdb_title_original": "博徒解散式",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The story of men devoted to the yakuza lifestyle and their struggles during a time of fading yakuza power.",
+    "poster_path": "/yIL3Yb6z4rizhExgQCWygDWGgJP.jpg",
+    "backdrop_path": "/zlRiebH5rsnzZb87t2x6dDEmUnp.jpg",
+    "release_date": "1968-02-09",
+    "director": "深作欣二",
+    "director_jp": "深作欣二",
+    "director_en": "Kinji Fukasaku",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 91,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "大幹部無頼": {
+    "tmdb_id": 363611,
+    "tmdb_title_jp": "大幹部 無頼",
+    "tmdb_title_en": "Outlaw: Gangster VIP 2",
+    "tmdb_title_original": "大幹部 無頼",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Goro (Tetsuya Watari) wants to put his dark past behind. He heads to Hirosaki City to offer his condolences to Yumeko and to reunite with Yukiko (Chieko Matsubara), but finds that Yumeko is fatally ill. Although Yukiko was taking care of her, she is pressed for money. Goro wants to help and knows that there is only one way to come up with fast money.",
+    "poster_path": "/khBujoktI9Ar0foMHfD4S5zpfwr.jpg",
+    "backdrop_path": "/wZKryTWopcOAxWIgpPxxWGukQb5.jpg",
+    "release_date": "1968-04-28",
+    "director": "小澤啓一",
+    "director_jp": "小澤啓一",
+    "director_en": "Keiichi Ozawa",
+    "genres": [
+      "犯罪",
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 97,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:363611": {
+    "tmdb_id": 363611,
+    "tmdb_title_jp": "大幹部 無頼",
+    "tmdb_title_en": "Outlaw: Gangster VIP 2",
+    "tmdb_title_original": "大幹部 無頼",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Goro (Tetsuya Watari) wants to put his dark past behind. He heads to Hirosaki City to offer his condolences to Yumeko and to reunite with Yukiko (Chieko Matsubara), but finds that Yumeko is fatally ill. Although Yukiko was taking care of her, she is pressed for money. Goro wants to help and knows that there is only one way to come up with fast money.",
+    "poster_path": "/khBujoktI9Ar0foMHfD4S5zpfwr.jpg",
+    "backdrop_path": "/wZKryTWopcOAxWIgpPxxWGukQb5.jpg",
+    "release_date": "1968-04-28",
+    "director": "小澤啓一",
+    "director_jp": "小澤啓一",
+    "director_en": "Keiichi Ozawa",
+    "genres": [
+      "犯罪",
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 97,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "カリギュラ 究極版": null,
+  "ストレイト・ストーリー 4Kリマスター版【4K上映】": {
+    "tmdb_id": 404,
+    "tmdb_title_jp": "ストレイト・ストーリー",
+    "tmdb_title_en": "The Straight Story",
+    "tmdb_title_original": "The Straight Story",
+    "tmdb_original_language": "en",
+    "overview": "アメリカ・アイオワ州ローレンスに住む73歳のガンコな老人アルヴィン・ストレイト。ある日、彼のもとに、76歳の兄が心臓発作で倒れたという知らせが入る。10年来仲違いをしていた兄に会うため、アルヴィンは周囲の反対を押し切り、たったひとりで時速8kmのトラクターに乗って旅に出ることを決意する。",
+    "overview_en": "A retired farmer and widower in his seventies named Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/zXWrUYBtQPAfKGFoDOgoOBsH14y.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "デヴィッド・リンチ",
+    "director_jp": "デヴィッド・リンチ",
+    "director_en": "David Lynch",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 112,
+    "vote_average": 7.73,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ヘアスプレー": {
+    "tmdb_id": 11054,
+    "tmdb_title_jp": "ヘアスプレー",
+    "tmdb_title_en": "Hairspray",
+    "tmdb_title_original": "Hairspray",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "'Pleasantly plump' teenager Tracy Turnblad achieves her dream of becoming a regular on the Corny Collins Dance Show. Now a teen hero, she starts using her fame to speak out for the causes she believes in, most of all integration. In doing so, she earns the wrath of the show's former star, Amber Von Tussle, as well as Amber's manipulative, pro-segregation parents. The rivalry comes to a head as Amber and Tracy vie for the title of Miss Auto Show 1963.",
+    "poster_path": "/lBrlUoZC6jv9zPZTzPNs9MtXJ51.jpg",
+    "backdrop_path": "/bH5OLuPjCg9Tat6G6VDbxGiP6FP.jpg",
+    "release_date": "1988-02-26",
+    "director": "John Waters",
+    "director_jp": "John Waters",
+    "director_en": "John Waters",
+    "genres": [
+      "コメディ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 92,
+    "vote_average": 6.813,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:11054": {
+    "tmdb_id": 11054,
+    "tmdb_title_jp": "ヘアスプレー",
+    "tmdb_title_en": "Hairspray",
+    "tmdb_title_original": "Hairspray",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "'Pleasantly plump' teenager Tracy Turnblad achieves her dream of becoming a regular on the Corny Collins Dance Show. Now a teen hero, she starts using her fame to speak out for the causes she believes in, most of all integration. In doing so, she earns the wrath of the show's former star, Amber Von Tussle, as well as Amber's manipulative, pro-segregation parents. The rivalry comes to a head as Amber and Tracy vie for the title of Miss Auto Show 1963.",
+    "poster_path": "/lBrlUoZC6jv9zPZTzPNs9MtXJ51.jpg",
+    "backdrop_path": "/bH5OLuPjCg9Tat6G6VDbxGiP6FP.jpg",
+    "release_date": "1988-02-26",
+    "director": "John Waters",
+    "director_jp": "John Waters",
+    "director_en": "John Waters",
+    "genres": [
+      "コメディ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 92,
+    "vote_average": 6.813,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "RRR連続ナイト！": {
+    "tmdb_id": 579974,
+    "tmdb_title_jp": "RRR",
+    "tmdb_title_en": "RRR",
+    "tmdb_title_original": "రౌద్రం రణం రుధిరం",
+    "tmdb_original_language": "te",
+    "overview": "舞台は1920年、英国植民地時代のインド。英国軍にさらわれた幼い少女を救うため、立ち上がるビーム。大義のため英国政府の警察となるラーマ。熱い思いを胸に秘めた男たちが運命に導かれて出会い、唯一無二の親友となる。しかし、ある事件をきっかけに究極の選択を迫られることに。彼らが選ぶのは、友情か？使命か？",
+    "overview_en": "A fictional history of two legendary revolutionaries' journey away from home before they began fighting for their country in the 1920s.",
+    "poster_path": "/1dGapGFlyGepGfBbpKTfEImdiWN.jpg",
+    "backdrop_path": "/i0Y0wP8H6SRgjr6QmuwbtQbS24D.jpg",
+    "release_date": "2022-03-24",
+    "director": "S. S. Rajamouli",
+    "director_jp": "S. S. Rajamouli",
+    "director_en": "S. S. Rajamouli",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "runtime": 185,
+    "vote_average": 7.734,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "LIVE IN THEATER「BATTLE OF TOKYO-うつくしき嘘-」": null,
+  "【ﾄｰｸｲﾍﾞﾝﾄ】万事快調<ｵｰﾙ･ｸﾞﾘｰﾝｽﾞ>": {
+    "tmdb_id": 1532395,
+    "tmdb_title_jp": "万事快調〈オール・グリーンズ〉",
+    "tmdb_title_en": "All Greens",
+    "tmdb_title_original": "万事快調〈オール・グリーンズ〉",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Hidemi Boku and Miruku live in a town with no future in sight. To chase their dreams and leave this place behind, there's only one way out—striking it rich! They form a club called \"All Greens\" and embark on a forbidden extracurricular adventure…",
+    "poster_path": "/yo6eLG1F2tC8ecdkXcYLlfu72bl.jpg",
+    "backdrop_path": "/diQKCrUfy6L5xzLIXEtE4AWBKbR.jpg",
+    "release_date": "2026-01-16",
+    "director": "児山隆",
+    "director_jp": "児山隆",
+    "director_en": "Takashi Koyama",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 119,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ダウントン・アビー／グランドフィナーレ": {
+    "tmdb_id": 1289936,
+    "tmdb_title_jp": "Downton Abbey: The Grand Finale",
+    "tmdb_title_en": "Downton Abbey: The Grand Finale",
+    "tmdb_title_original": "Downton Abbey: The Grand Finale",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "When Mary finds herself at the center of a public scandal and the family faces financial strife, the entire household grapples with the threat of social disgrace. The Crawleys must embrace change as the staff prepares for a new chapter with the next generation leading Downton Abbey into the future.",
+    "poster_path": "/m1tLlMTCwc6oK6OjWTOI4b32wnA.jpg",
+    "backdrop_path": "/jvzPTf0nhsqAXodYT6ILKb99IA2.jpg",
+    "release_date": "2025-09-10",
+    "director": "Simon Curtis",
+    "director_jp": "Simon Curtis",
+    "director_en": "Simon Curtis",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 123,
+    "vote_average": 7.146,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "『役者になったスパイ』トークイベント": {
+    "tmdb_id": 662286,
+    "tmdb_title_jp": "Moskau einfach!",
+    "tmdb_title_en": "One-way to Moscow",
+    "tmdb_title_original": "Moskau einfach!",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "30 years ago, Switzerland was shaken by a scandal that seems to have already been forgotten: more than 900,000 people were surveilled because of their political convictions. Against the backdrop of this \"secret files scandal,\" Micha Lewinsky sets his film. Conscientious policeman Viktor Schuler is tasked by his superior to infiltrate the Schauspielhaus, a renowned Zurich theatre, in order to keep an eye on its leftist scene. However, Viktor finds himself quite taken with the artist's life and falls in love with the subversive actress Odile Lehmann.",
+    "poster_path": "/2xkvR747p4DtaO2EaVD167WWFsT.jpg",
+    "backdrop_path": "/lJ4xGL4jMYeeLtvAEWRBIAjCqOm.jpg",
+    "release_date": "2020-02-13",
+    "director": "Micha Lewinsky",
+    "director_jp": "Micha Lewinsky",
+    "director_en": "Micha Lewinsky",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 99,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "これからの私たち - All Shall Be Well": {
+    "tmdb_id": 1157680,
+    "tmdb_title_jp": "從今以後",
+    "tmdb_title_en": "All Shall Be Well",
+    "tmdb_title_original": "從今以後",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Angie and Pat are a couple living in Hong Kong who have been together for over four decades. After Pat's unexpected death, Angie finds herself at the mercy of her extended family as she struggles to retain both her dignity and the home that they shared for over thirty years.",
+    "poster_path": "/intFSM3ife6zq10O6Chqwk8Qz2R.jpg",
+    "backdrop_path": "/2h0Be13p5wmONQk42KRqp5iH7ZN.jpg",
+    "release_date": "2024-05-01",
+    "director": "楊曜愷",
+    "director_jp": "楊曜愷",
+    "director_en": "Ray Yeung",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:1157680": {
+    "tmdb_id": 1157680,
+    "tmdb_title_jp": "從今以後",
+    "tmdb_title_en": "All Shall Be Well",
+    "tmdb_title_original": "從今以後",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Angie and Pat are a couple living in Hong Kong who have been together for over four decades. After Pat's unexpected death, Angie finds herself at the mercy of her extended family as she struggles to retain both her dignity and the home that they shared for over thirty years.",
+    "poster_path": "/intFSM3ife6zq10O6Chqwk8Qz2R.jpg",
+    "backdrop_path": "/2h0Be13p5wmONQk42KRqp5iH7ZN.jpg",
+    "release_date": "2024-05-01",
+    "director": "楊曜愷",
+    "director_jp": "楊曜愷",
+    "director_en": "Ray Yeung",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "A DOCUMENTARY FILM OF LOSTAGE -ひかりのまち、わたしたちの-": null,
+  "アウトローズ": {
+    "tmdb_id": 1251895,
+    "tmdb_title_jp": "アウトローズ",
+    "tmdb_title_en": "Outlaws",
+    "tmdb_title_original": "アウトローズ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Assistant young head of Kimoto Kogyo, Naraoka (Kazuya Kimura), was caught just before he was about to kill the balls of Gunji (Riki Takeuchi), the head of the Kujukai Kujukai family, a rival organization. When he is released from prison, the government has switched to a policy of coexistence and co-prosperity, and there is no place for Naraoka. Unnecessary even by his own gang, Naraoka begins to work as a shinogi with his only brother Tsutomu (Kazuki Namioka) and fellow inmate Kameda (Akio Shiro). However, this is the territory of the Kujukus, and they are surrounded by enemies as they run amok without a care...",
+    "poster_path": "/4J4yDkqCZkfFpcSpD7ikUr3QdbM.jpg",
+    "backdrop_path": null,
+    "release_date": "2011-03-09",
+    "director": "港雄二",
+    "director_jp": "港雄二",
+    "director_en": "Yūji Minato",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 77,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1251895": {
+    "tmdb_id": 1251895,
+    "tmdb_title_jp": "アウトローズ",
+    "tmdb_title_en": "Outlaws",
+    "tmdb_title_original": "アウトローズ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Assistant young head of Kimoto Kogyo, Naraoka (Kazuya Kimura), was caught just before he was about to kill the balls of Gunji (Riki Takeuchi), the head of the Kujukai Kujukai family, a rival organization. When he is released from prison, the government has switched to a policy of coexistence and co-prosperity, and there is no place for Naraoka. Unnecessary even by his own gang, Naraoka begins to work as a shinogi with his only brother Tsutomu (Kazuki Namioka) and fellow inmate Kameda (Akio Shiro). However, this is the territory of the Kujukus, and they are surrounded by enemies as they run amok without a care...",
+    "poster_path": "/4J4yDkqCZkfFpcSpD7ikUr3QdbM.jpg",
+    "backdrop_path": null,
+    "release_date": "2011-03-09",
+    "director": "港雄二",
+    "director_jp": "港雄二",
+    "director_en": "Yūji Minato",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 77,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "おててつないで": null,
+  "【チリの闘い：武器なき民の抵抗】第1部：ブルジョワジーの叛乱": {
+    "tmdb_id": 132144,
+    "tmdb_title_jp": "La batalla de Chile (Parte 1). La insurrección de la burguesía",
+    "tmdb_title_en": "The Battle of Chile: Part I",
+    "tmdb_title_original": "La batalla de Chile (Parte 1). La insurrección de la burguesía",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "The chronicle of the political tension in Chile in 1973 and of the violent counter revolution against the democratically elected government of Salvador Allende.",
+    "poster_path": "/iZMeh5TxvLPQ2aYF4ZyvhvkJDPh.jpg",
+    "backdrop_path": "/ijGipE4DDF5YX3P0vg8JU6CmKSt.jpg",
+    "release_date": "1975-03-18",
+    "director": "Patricio Guzmán",
+    "director_jp": "Patricio Guzmán",
+    "director_en": "Patricio Guzmán",
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Documentary",
+      "History"
+    ],
+    "runtime": 97,
+    "vote_average": 7.208,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CL",
+        "name": "Chile"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CU",
+        "name": "Cuba"
+      },
+      {
+        "iso_3166_1": "VE",
+        "name": "Venezuela"
+      }
+    ]
+  },
+  "シネマ歌舞伎『歌舞伎NEXT 朧の森に棲む鬼』松也版": null,
+  "ガザからの声 Episode1 「アハマドの物語」": {
+    "tmdb_id": 1607728,
+    "tmdb_title_jp": "ガザからの声 Episode1「アハマドの物語」",
+    "tmdb_title_en": "Voices from Gaza Episode 1 Ahmad's Story",
+    "tmdb_title_original": "ガザからの声 Episode1「アハマドの物語」",
+    "tmdb_original_language": "ar",
+    "overview": "",
+    "overview_en": "This is the first installment of the \"Voices from Gaza\" documentary project, which aims to deliver to the world the current state of the Gaza Strip in Palestine in 2025, a state that cannot be fully conveyed through fragmented news footage or social media videos, at a speed faster than a typical film release.  Ahmad Al-Gharban, a 16-year-old boy from Beit Lahia in northern Gaza, survived an Israeli attack on March 22, 2025, but lost both legs and his fingers. His twin brother, Muhammad, his uncle, and a 6-year-old cousin were also killed. Ahmad began studying circus music at age 7 with his deceased brother, and dreamed of becoming a performer. Ahmad and his family currently live in a refugee camp where drones fly overhead 24/7. The camp is located on the site of the former Islamic University of Gaza.",
+    "poster_path": "/3FuLNFcYP8Cu74HDkaWsCGWg0wG.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-22",
+    "director": "Muhammad Sawwaf",
+    "director_jp": "Muhammad Sawwaf",
+    "director_en": "Muhammad Sawwaf",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 48,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PS",
+        "name": "Palestinian Territory"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1607728": {
+    "tmdb_id": 1607728,
+    "tmdb_title_jp": "ガザからの声 Episode1「アハマドの物語」",
+    "tmdb_title_en": "Voices from Gaza Episode 1 Ahmad's Story",
+    "tmdb_title_original": "ガザからの声 Episode1「アハマドの物語」",
+    "tmdb_original_language": "ar",
+    "overview": "",
+    "overview_en": "This is the first installment of the \"Voices from Gaza\" documentary project, which aims to deliver to the world the current state of the Gaza Strip in Palestine in 2025, a state that cannot be fully conveyed through fragmented news footage or social media videos, at a speed faster than a typical film release.  Ahmad Al-Gharban, a 16-year-old boy from Beit Lahia in northern Gaza, survived an Israeli attack on March 22, 2025, but lost both legs and his fingers. His twin brother, Muhammad, his uncle, and a 6-year-old cousin were also killed. Ahmad began studying circus music at age 7 with his deceased brother, and dreamed of becoming a performer. Ahmad and his family currently live in a refugee camp where drones fly overhead 24/7. The camp is located on the site of the former Islamic University of Gaza.",
+    "poster_path": "/3FuLNFcYP8Cu74HDkaWsCGWg0wG.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-22",
+    "director": "Muhammad Sawwaf",
+    "director_jp": "Muhammad Sawwaf",
+    "director_en": "Muhammad Sawwaf",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 48,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PS",
+        "name": "Palestinian Territory"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "最初の年：民意が生んだ、社会主義アジェンデ政権": null,
+  "クイーンダム／誕生": {
+    "tmdb_id": 951036,
+    "tmdb_title_jp": "Queendom",
+    "tmdb_title_en": "Queendom",
+    "tmdb_title_original": "Queendom",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "In defiance of Russia’s anti-LGBTQ laws, a queer, 21-year-old artist risks her life performing in surreal costumes throughout Moscow. Jenna Marvin’s radical public performances blend artistry and activism in this SXSW documentary.",
+    "poster_path": "/cmpVHgtfeJgyIergZwjH85i1NdC.jpg",
+    "backdrop_path": "/A4zCy3ShUWVdH2Rh4RJtvWX25k1.jpg",
+    "release_date": "2023-12-01",
+    "director": "Agniia Galdanova",
+    "director_jp": "Agniia Galdanova",
+    "director_en": "Agniia Galdanova",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 98,
+    "vote_average": 8.429,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:951036": {
+    "tmdb_id": 951036,
+    "tmdb_title_jp": "Queendom",
+    "tmdb_title_en": "Queendom",
+    "tmdb_title_original": "Queendom",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "In defiance of Russia’s anti-LGBTQ laws, a queer, 21-year-old artist risks her life performing in surreal costumes throughout Moscow. Jenna Marvin’s radical public performances blend artistry and activism in this SXSW documentary.",
+    "poster_path": "/cmpVHgtfeJgyIergZwjH85i1NdC.jpg",
+    "backdrop_path": "/A4zCy3ShUWVdH2Rh4RJtvWX25k1.jpg",
+    "release_date": "2023-12-01",
+    "director": "Agniia Galdanova",
+    "director_jp": "Agniia Galdanova",
+    "director_en": "Agniia Galdanova",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 98,
+    "vote_average": 8.429,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "パシフィクション": {
+    "tmdb_id": 691214,
+    "tmdb_title_jp": "パシフィクション",
+    "tmdb_title_en": "Pacifiction",
+    "tmdb_title_original": "Pacifiction",
+    "tmdb_original_language": "fr",
+    "overview": "『ルイ14世の死』（16）で知られるアルベルト・セラの最新作。フランス領ポリネシアの島を舞台にフィルム・ノワールを思わせるスタイルで描かれる人間模様。カンヌ映画祭コンペティションで上映。",
+    "overview_en": "Island of Tahiti. French government official De Roller is a calculating man with impeccable manners, capable of dealing with both high society and the locals he frequents in shady joints.",
+    "poster_path": "/oXkEO5QBW7EG24BjGm9LqIJ1rpt.jpg",
+    "backdrop_path": "/ccE09Tf0W38uPV1GoQJKvopg0R0.jpg",
+    "release_date": "2022-09-02",
+    "director": "Albert Serra",
+    "director_jp": "Albert Serra",
+    "director_en": "Albert Serra",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 166,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PF",
+        "name": "French Polynesia"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "tmdb:691214": {
+    "tmdb_id": 691214,
+    "tmdb_title_jp": "パシフィクション",
+    "tmdb_title_en": "Pacifiction",
+    "tmdb_title_original": "Pacifiction",
+    "tmdb_original_language": "fr",
+    "overview": "『ルイ14世の死』（16）で知られるアルベルト・セラの最新作。フランス領ポリネシアの島を舞台にフィルム・ノワールを思わせるスタイルで描かれる人間模様。カンヌ映画祭コンペティションで上映。",
+    "overview_en": "Island of Tahiti. French government official De Roller is a calculating man with impeccable manners, capable of dealing with both high society and the locals he frequents in shady joints.",
+    "poster_path": "/oXkEO5QBW7EG24BjGm9LqIJ1rpt.jpg",
+    "backdrop_path": "/ccE09Tf0W38uPV1GoQJKvopg0R0.jpg",
+    "release_date": "2022-09-02",
+    "director": "Albert Serra",
+    "director_jp": "Albert Serra",
+    "director_en": "Albert Serra",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 166,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PF",
+        "name": "French Polynesia"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "ボルドーに囚われた女": {
+    "tmdb_id": 961080,
+    "tmdb_title_jp": "La prisonnière de Bordeaux",
+    "tmdb_title_en": "Visiting Hours",
+    "tmdb_title_original": "La prisonnière de Bordeaux",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Alma, alone in her big townhouse, and Mina, a single mother from a housing project in another city, have organized their lives around the prison visits they make to their respective partners. When the two women meet in the room outside the visiting area, an unlikely friendship begins...",
+    "poster_path": "/7ES8HoWEVptqFEnbdIgiwrqsiNC.jpg",
+    "backdrop_path": "/sOD3UBuOYPNh8keNJ4XvK6zHcIq.jpg",
+    "release_date": "2024-08-28",
+    "director": "Patricia Mazuy",
+    "director_jp": "Patricia Mazuy",
+    "director_en": "Patricia Mazuy",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 108,
+    "vote_average": 5.87,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "よそ者の会(2023)+よそ者の会(2025)": {
+    "tmdb_id": 1447878,
+    "tmdb_title_jp": "よそ者の会",
+    "tmdb_title_en": "The Outsiders' Club",
+    "tmdb_title_original": "よそ者の会",
+    "tmdb_original_language": "ja",
+    "overview": "鈴木槙生は大学の清掃員として静かに働く傍ら、密かに爆弾作りに没頭している。ある日、構内で「よそ者の会」のポスターを目にし、興味を抱き会合に参加する。どこにいてもよそ者だと感じる。そんな「よそ者」たちが集まり…。",
+    "overview_en": "Suzuki Makio works quietly as a janitor at a university while secretly devoting himself to making bombs. One day, he sees a poster on campus that reads, \"Outsiders' Club: Members Wanted.\" Intrigued, he joins the meeting and finds a group of students discussing their daily frustrations and feelings of despair. The organizer of this strange gathering is a female student named Kinuko Sakata. At first glance, she seems to be an ordinary student, but she is harbouring an unexpected secret…",
+    "poster_path": "/gbUF6gDJlnGRJIroQErVzy4Srci.jpg",
+    "backdrop_path": "/aadwILEOBMjIZlaStL0sEVhKfSp.jpg",
+    "release_date": "2025-05-23",
+    "director": "Hami Nishizaki",
+    "director_jp": "Hami Nishizaki",
+    "director_en": "Hami Nishizaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 42,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ブリジットとブリジット": {
+    "tmdb_id": 63216,
+    "tmdb_title_jp": "Brigitte et Brigitte",
+    "tmdb_title_en": "Brigitte and Brigitte",
+    "tmdb_title_original": "Brigitte et Brigitte",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Episodes in the lives of two country girls at school in Paris and their opinions.",
+    "poster_path": "/wTFcjTwxPzl1ZTdp0NjyV6SdvTk.jpg",
+    "backdrop_path": "/gX5Rt8Hj3ml52MaApZyroeJKB27.jpg",
+    "release_date": "1966-12-17",
+    "director": "Luc Moullet",
+    "director_jp": "Luc Moullet",
+    "director_en": "Luc Moullet",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 72,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ビリー・ザ・キッドの冒険": {
+    "tmdb_id": 162450,
+    "tmdb_title_jp": "Une aventure de Billy le Kid",
+    "tmdb_title_en": "A Girl Is a Gun",
+    "tmdb_title_original": "Une aventure de Billy le Kid",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "The intense and twisted relationship between a man and a woman in a bizarre wilderness, as a seductress accompanies a gunslinger fleeing from a posse.",
+    "poster_path": "/y9Z6XVF23VoWyMOGbx4TLHopbjz.jpg",
+    "backdrop_path": "/5h7JKgPN1TNH6zElagfMxAryztu.jpg",
+    "release_date": "1971-01-24",
+    "director": "Luc Moullet",
+    "director_jp": "Luc Moullet",
+    "director_en": "Luc Moullet",
+    "genres": [
+      "西洋"
+    ],
+    "genres_en": [
+      "Western"
+    ],
+    "runtime": 75,
+    "vote_average": 4.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ゴールドマン裁判": {
+    "tmdb_id": 972118,
+    "tmdb_title_jp": "Le Procès Goldman",
+    "tmdb_title_en": "The Goldman Case",
+    "tmdb_title_original": "Le Procès Goldman",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A second trial begins in November 1975 against French left-wing revolutionary Pierre Goldman, accused of several armed robberies and the death of two chemists.",
+    "poster_path": "/mMypGSCFv7G7QhHIKjM60aNbFzC.jpg",
+    "backdrop_path": "/6cpzcoVpAifoZPyJ02Kfs0wnA5S.jpg",
+    "release_date": "2023-06-07",
+    "director": "塞德里克·康 (简体中文)",
+    "director_jp": "塞德里克·康 (简体中文)",
+    "director_en": "Cédric Kahn",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "History"
+    ],
+    "runtime": 118,
+    "vote_average": 6.934,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ジムの物語": {
+    "tmdb_id": 1102938,
+    "tmdb_title_jp": "Le roman de Jim",
+    "tmdb_title_en": "Jim's Story",
+    "tmdb_title_original": "Le roman de Jim",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Aymeric runs into Florence, a former coworker, one evening in Saint-Claude in the Haut-Jura. She is six months pregnant and single. When she gives birth to Jim, Aymeric is there. They spend happy years together until Christophe, Jim's biological father, shows up... It could be the start of a melodrama, it's also the start of an odyssey into fatherhood.",
+    "poster_path": "/4KKoLrfblH2AydjwI2vJS8tE3P2.jpg",
+    "backdrop_path": "/1umiZBQ6oUbyKATwyxAVRlDELnd.jpg",
+    "release_date": "2024-08-14",
+    "director": "Arnaud Larrieu",
+    "director_jp": "Arnaud Larrieu",
+    "director_en": "Arnaud Larrieu",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 101,
+    "vote_average": 6.848,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "歓喜": null,
+  "パティ―との二十一夜": {
+    "tmdb_id": 359805,
+    "tmdb_title_jp": "21 nuits avec Pattie",
+    "tmdb_title_en": "21 Nights with Pattie",
+    "tmdb_title_original": "21 nuits avec Pattie",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "During the height of summer, Caroline, a forty-year-old Parisian and mother, arrives in a small village in the south of France. She must hastily organize the funeral of her mother, a flighty lawyer, whom she barely used to see. Caroline is welcomed by Pattie, who likes to talk about her love affairs with the local men to anyone who'll listen. Then, while the whole valley gets ready for the traditional mid-summer dance, Caroline's mother's corpse mysteriously disappears...",
+    "poster_path": "/kIIpIyEHAViLp4Ib048wdIaGk1w.jpg",
+    "backdrop_path": "/vrsJz5JHpUf1nhbEr8ObysjdIV2.jpg",
+    "release_date": "2015-11-25",
+    "director": "Jean-Marie Larrieu",
+    "director_jp": "Jean-Marie Larrieu",
+    "director_en": "Jean-Marie Larrieu",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 110,
+    "vote_average": 5.697,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "【ﾄｰｸｼｮｰ】百万円と苦虫女": {
+    "tmdb_id": 69454,
+    "tmdb_title_jp": "百万円と苦虫女",
+    "tmdb_title_en": "One Million Yen Girl",
+    "tmdb_title_original": "百万円と苦虫女",
+    "tmdb_original_language": "ja",
+    "overview": "鈴子は短大を卒業したものの就職できずに仕方なくアルバイトをしている。どうにかしてこの生活から抜け出そうと考えている中、ひょんな事件に巻き込まれてしまう。 「百万円貯まったら、この家を出て行きます！」 と家族に宣言。百万円を貯めるたびに、次から次へと引越しをして、1人で生きていく決意をする。 海の家での短期アルバイト、桃園で桃をもぎり、ホームセンターで働き、ちょっぴり恋をする― 行く先々の街で様々な人たちと出会い、笑ったり、怒ったり素敵な恋をしながら、自分だけの生き方をみつけてゆく一人の女性の物語。",
+    "overview_en": "A 21-year-old girl is released from prison, only to deal with the neighborhood gossip about her and family conflicts. She decides to save one million yen, move to where no one knows her and keep repeating the process.",
+    "poster_path": "/d74rAZUtVjRMmn0nbshNeuySWv2.jpg",
+    "backdrop_path": "/dkcXnXrUuiTz1XHlD6BFx1Ouemx.jpg",
+    "release_date": "2008-07-19",
+    "director": "タナダユキ",
+    "director_jp": "タナダユキ",
+    "director_en": "Yuki Tanada",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 121,
+    "vote_average": 7.121,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:42136": {
+    "tmdb_id": 42136,
+    "tmdb_title_jp": "The Grey Fox",
+    "tmdb_title_en": "The Grey Fox",
+    "tmdb_title_original": "The Grey Fox",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Old West highwayman Bill Miner, known to Pinkertons as \"The Gentleman Bandit,\" is released in 1901 after 33 years in prison. A genial and charming old man, he re-enters a world unfamiliar to him, and returns to the only thing that gives him purpose — robbery.",
+    "poster_path": "/ycE2WBSczxBgM1vtRQ9KTtwGTMR.jpg",
+    "backdrop_path": "/5m3iuO5ACGuOE15Gv1TXmNweXRK.jpg",
+    "release_date": "1982-12-16",
+    "director": "Phillip Borsos",
+    "director_jp": "Phillip Borsos",
+    "director_en": "Phillip Borsos",
+    "genres": [
+      "西洋",
+      "履歴"
+    ],
+    "genres_en": [
+      "Western",
+      "History"
+    ],
+    "runtime": 92,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "tmdb:1288987": {
+    "tmdb_id": 1288987,
+    "tmdb_title_jp": "Olivia y las nubes",
+    "tmdb_title_en": "Olivia & the Clouds",
+    "tmdb_title_original": "Olivia y las nubes",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "Olivia & the Clouds explores love's complexities through a Rashomon effect. Olivia, haunted by a past love, hides it under her bed. She trades flowers with this ghost in exchange for comforting rain clouds. Barbara, rejected by Mauricio, escapes reality through fantastical stories. Mauricio, full of regrets, is swallowed by the earth. Ramon, smitten by Olivia, witnesses the growth of a strange plant mirroring her. With surreal elements, the film delves into the enduring power of love's memory.",
+    "poster_path": "/nwfjehaVFGWmnubSQRFRwwyLVKL.jpg",
+    "backdrop_path": "/2zoNGjUV4Y1Asp1Hxkg3Whx4LZE.jpg",
+    "release_date": "2025-06-19",
+    "director": "Tomás Pichardo-Espaillat",
+    "director_jp": "Tomás Pichardo-Espaillat",
+    "director_en": "Tomás Pichardo-Espaillat",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DO",
+        "name": "Dominican Republic"
+      }
+    ]
+  },
+  "tmdb:9453": {
+    "tmdb_id": 9453,
+    "tmdb_title_jp": "カリギュラ",
+    "tmdb_title_en": "Caligula",
+    "tmdb_title_original": "Caligola",
+    "tmdb_original_language": "it",
+    "overview": "偏執狂的なティベリウス皇帝の死後、その後継者カリグラが権力を掌握し、帝国を狂気と堕落の血なまぐさいスパイラルに陥れる。",
+    "overview_en": "After the death of the paranoid emperor Tiberius, Caligula, his heir, seizes power and plunges the empire into a bloody spiral of madness and depravity.",
+    "poster_path": "/9KArPusEQE6yn5oInxm6zO1720B.jpg",
+    "backdrop_path": "/cT6xO3YjzfZKYGhZ8S7plNlA27F.jpg",
+    "release_date": "1979-08-14",
+    "director": "ティント・ブラス",
+    "director_jp": "ティント・ブラス",
+    "director_en": "Tinto Brass",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 156,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:579974": {
+    "tmdb_id": 579974,
+    "tmdb_title_jp": "RRR",
+    "tmdb_title_en": "RRR",
+    "tmdb_title_original": "రౌద్రం రణం రుధిరం",
+    "tmdb_original_language": "te",
+    "overview": "舞台は1920年、英国植民地時代のインド。英国軍にさらわれた幼い少女を救うため、立ち上がるビーム。大義のため英国政府の警察となるラーマ。熱い思いを胸に秘めた男たちが運命に導かれて出会い、唯一無二の親友となる。しかし、ある事件をきっかけに究極の選択を迫られることに。彼らが選ぶのは、友情か？使命か？",
+    "overview_en": "A fictional history of two legendary revolutionaries' journey away from home before they began fighting for their country in the 1920s.",
+    "poster_path": "/1dGapGFlyGepGfBbpKTfEImdiWN.jpg",
+    "backdrop_path": "/i0Y0wP8H6SRgjr6QmuwbtQbS24D.jpg",
+    "release_date": "2022-03-24",
+    "director": "S. S. Rajamouli",
+    "director_jp": "S. S. Rajamouli",
+    "director_en": "S. S. Rajamouli",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "runtime": 185,
+    "vote_average": 7.734,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "tmdb:132144": {
+    "tmdb_id": 132144,
+    "tmdb_title_jp": "La batalla de Chile (Parte 1). La insurrección de la burguesía",
+    "tmdb_title_en": "The Battle of Chile: Part I",
+    "tmdb_title_original": "La batalla de Chile (Parte 1). La insurrección de la burguesía",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "The chronicle of the political tension in Chile in 1973 and of the violent counter revolution against the democratically elected government of Salvador Allende.",
+    "poster_path": "/iZMeh5TxvLPQ2aYF4ZyvhvkJDPh.jpg",
+    "backdrop_path": "/ijGipE4DDF5YX3P0vg8JU6CmKSt.jpg",
+    "release_date": "1975-03-18",
+    "director": "Patricio Guzmán",
+    "director_jp": "Patricio Guzmán",
+    "director_en": "Patricio Guzmán",
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Documentary",
+      "History"
+    ],
+    "runtime": 97,
+    "vote_average": 7.208,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CL",
+        "name": "Chile"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CU",
+        "name": "Cuba"
+      },
+      {
+        "iso_3166_1": "VE",
+        "name": "Venezuela"
+      }
+    ]
+  },
+  "tmdb:961080": {
+    "tmdb_id": 961080,
+    "tmdb_title_jp": "La prisonnière de Bordeaux",
+    "tmdb_title_en": "Visiting Hours",
+    "tmdb_title_original": "La prisonnière de Bordeaux",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Alma, alone in her big townhouse, and Mina, a single mother from a housing project in another city, have organized their lives around the prison visits they make to their respective partners. When the two women meet in the room outside the visiting area, an unlikely friendship begins...",
+    "poster_path": "/7ES8HoWEVptqFEnbdIgiwrqsiNC.jpg",
+    "backdrop_path": "/sOD3UBuOYPNh8keNJ4XvK6zHcIq.jpg",
+    "release_date": "2024-08-28",
+    "director": "Patricia Mazuy",
+    "director_jp": "Patricia Mazuy",
+    "director_en": "Patricia Mazuy",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 108,
+    "vote_average": 5.87,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1447878": {
+    "tmdb_id": 1447878,
+    "tmdb_title_jp": "よそ者の会",
+    "tmdb_title_en": "The Outsiders' Club",
+    "tmdb_title_original": "よそ者の会",
+    "tmdb_original_language": "ja",
+    "overview": "鈴木槙生は大学の清掃員として静かに働く傍ら、密かに爆弾作りに没頭している。ある日、構内で「よそ者の会」のポスターを目にし、興味を抱き会合に参加する。どこにいてもよそ者だと感じる。そんな「よそ者」たちが集まり…。",
+    "overview_en": "Suzuki Makio works quietly as a janitor at a university while secretly devoting himself to making bombs. One day, he sees a poster on campus that reads, \"Outsiders' Club: Members Wanted.\" Intrigued, he joins the meeting and finds a group of students discussing their daily frustrations and feelings of despair. The organizer of this strange gathering is a female student named Kinuko Sakata. At first glance, she seems to be an ordinary student, but she is harbouring an unexpected secret…",
+    "poster_path": "/gbUF6gDJlnGRJIroQErVzy4Srci.jpg",
+    "backdrop_path": "/aadwILEOBMjIZlaStL0sEVhKfSp.jpg",
+    "release_date": "2025-05-23",
+    "director": "Hami Nishizaki",
+    "director_jp": "Hami Nishizaki",
+    "director_en": "Hami Nishizaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 42,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:63216": {
+    "tmdb_id": 63216,
+    "tmdb_title_jp": "Brigitte et Brigitte",
+    "tmdb_title_en": "Brigitte and Brigitte",
+    "tmdb_title_original": "Brigitte et Brigitte",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Episodes in the lives of two country girls at school in Paris and their opinions.",
+    "poster_path": "/wTFcjTwxPzl1ZTdp0NjyV6SdvTk.jpg",
+    "backdrop_path": "/gX5Rt8Hj3ml52MaApZyroeJKB27.jpg",
+    "release_date": "1966-12-17",
+    "director": "Luc Moullet",
+    "director_jp": "Luc Moullet",
+    "director_en": "Luc Moullet",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 72,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:162450": {
+    "tmdb_id": 162450,
+    "tmdb_title_jp": "Une aventure de Billy le Kid",
+    "tmdb_title_en": "A Girl Is a Gun",
+    "tmdb_title_original": "Une aventure de Billy le Kid",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "The intense and twisted relationship between a man and a woman in a bizarre wilderness, as a seductress accompanies a gunslinger fleeing from a posse.",
+    "poster_path": "/y9Z6XVF23VoWyMOGbx4TLHopbjz.jpg",
+    "backdrop_path": "/5h7JKgPN1TNH6zElagfMxAryztu.jpg",
+    "release_date": "1971-01-24",
+    "director": "Luc Moullet",
+    "director_jp": "Luc Moullet",
+    "director_en": "Luc Moullet",
+    "genres": [
+      "西洋"
+    ],
+    "genres_en": [
+      "Western"
+    ],
+    "runtime": 75,
+    "vote_average": 4.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:972118": {
+    "tmdb_id": 972118,
+    "tmdb_title_jp": "Le Procès Goldman",
+    "tmdb_title_en": "The Goldman Case",
+    "tmdb_title_original": "Le Procès Goldman",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A second trial begins in November 1975 against French left-wing revolutionary Pierre Goldman, accused of several armed robberies and the death of two chemists.",
+    "poster_path": "/mMypGSCFv7G7QhHIKjM60aNbFzC.jpg",
+    "backdrop_path": "/6cpzcoVpAifoZPyJ02Kfs0wnA5S.jpg",
+    "release_date": "2023-06-07",
+    "director": "塞德里克·康 (简体中文)",
+    "director_jp": "塞德里克·康 (简体中文)",
+    "director_en": "Cédric Kahn",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "History"
+    ],
+    "runtime": 118,
+    "vote_average": 6.934,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1102938": {
+    "tmdb_id": 1102938,
+    "tmdb_title_jp": "Le roman de Jim",
+    "tmdb_title_en": "Jim's Story",
+    "tmdb_title_original": "Le roman de Jim",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Aymeric runs into Florence, a former coworker, one evening in Saint-Claude in the Haut-Jura. She is six months pregnant and single. When she gives birth to Jim, Aymeric is there. They spend happy years together until Christophe, Jim's biological father, shows up... It could be the start of a melodrama, it's also the start of an odyssey into fatherhood.",
+    "poster_path": "/4KKoLrfblH2AydjwI2vJS8tE3P2.jpg",
+    "backdrop_path": "/1umiZBQ6oUbyKATwyxAVRlDELnd.jpg",
+    "release_date": "2024-08-14",
+    "director": "Arnaud Larrieu",
+    "director_jp": "Arnaud Larrieu",
+    "director_en": "Arnaud Larrieu",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 101,
+    "vote_average": 6.848,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:359805": {
+    "tmdb_id": 359805,
+    "tmdb_title_jp": "21 nuits avec Pattie",
+    "tmdb_title_en": "21 Nights with Pattie",
+    "tmdb_title_original": "21 nuits avec Pattie",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "During the height of summer, Caroline, a forty-year-old Parisian and mother, arrives in a small village in the south of France. She must hastily organize the funeral of her mother, a flighty lawyer, whom she barely used to see. Caroline is welcomed by Pattie, who likes to talk about her love affairs with the local men to anyone who'll listen. Then, while the whole valley gets ready for the traditional mid-summer dance, Caroline's mother's corpse mysteriously disappears...",
+    "poster_path": "/kIIpIyEHAViLp4Ib048wdIaGk1w.jpg",
+    "backdrop_path": "/vrsJz5JHpUf1nhbEr8ObysjdIV2.jpg",
+    "release_date": "2015-11-25",
+    "director": "Jean-Marie Larrieu",
+    "director_jp": "Jean-Marie Larrieu",
+    "director_en": "Jean-Marie Larrieu",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 110,
+    "vote_average": 5.697,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
       }
     ]
   }
