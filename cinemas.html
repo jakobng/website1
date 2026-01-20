@@ -23,11 +23,9 @@
             --shadow-soft: 0 6px 14px rgba(0, 0, 0, 0.06);
             --border-width: 1px;
         }
-
         * {
             box-sizing: border-box;
         }
-
         body {
             margin: 0;
             min-height: 100vh;
@@ -42,7 +40,6 @@
             position: relative;
             overflow-x: hidden;
         }
-
         body::before {
             content: "";
             position: fixed;
@@ -62,24 +59,20 @@
             pointer-events: none;
             z-index: -1;
         }
-
         @keyframes pulseGlow {
             0% { transform: translate(-50%, -50%) scale(0.05); opacity: 1; }
             60% { opacity: 0.85; }
             100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
         }
-
         a {
             color: inherit;
             text-decoration: none;
         }
-
         button,
         input,
         select {
             font-family: inherit;
         }
-
         .page {
             max-width: 1200px;
             margin: 0 auto;
@@ -88,139 +81,227 @@
             gap: 18px;
         }
         .page-header {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
-            align-items: center;
-            gap: 12px;
-            padding: 18px 20px;
-            border: var(--border-width) solid var(--border);
-            background: var(--card);
-            box-shadow: var(--shadow);
-        }
-
-        .header-left,
-        .header-right {
             display: flex;
             align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px 20px 20px; /* Increased top padding */
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
-
         .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
+            gap: 8px; /* Increased gap */
         }
-
-        .header-right {
-            justify-content: flex-end;
+        /* Mobile adjust for header */
+        @media (max-width: 640px) {
+            .page-header {
+                flex-direction: column;
+                gap: 16px;
+                padding-top: 24px;
+            }
+            .header-left {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                align-items: center;
+                order: 2;
+                margin-bottom: 0;
+            }
+            h1 { order: 1; }
         }
-
         .lang-toggle {
-            margin-top: 4px;
+            display: inline-flex;
+            gap: 8px; /* Spacing between buttons */
+            background: rgba(255,255,255,0.6);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-soft);
         }
-
+        .lang-btn {
+            background: none;
+            border: none;
+            font-size: 0.85rem; /* Larger font */
+            font-weight: 700;   /* Bolder */
+            color: var(--muted);
+            cursor: pointer;
+            padding: 2px 4px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .lang-btn.is-active {
+            color: var(--ink);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
         .site-credit {
             font-size: 0.7rem;
             letter-spacing: 0.04em;
             color: var(--muted);
         }
-
         h1 {
             margin: 0;
             text-align: center;
-            font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem);
+            font-size: clamp(1.8rem, 1.4rem + 1.2vw, 2.5rem);
             text-transform: uppercase;
             letter-spacing: 0.16em;
             cursor: pointer;
+            font-weight: 700;
+            line-height: 1.1;
         }
-
-        .toggle {
-            display: inline-flex;
-            border: var(--border-width) solid var(--border);
-            background: #fff;
+        /* --- NEW TABS --- */
+        .view-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-soft);
         }
-
-        .toggle-btn {
-            border: none;
+        .tab-btn {
             background: transparent;
-            padding: 8px 12px;
+            border: none;
+            padding: 12px 16px;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.7rem;
+            letter-spacing: 0.1em;
             font-weight: 600;
-            cursor: pointer;
             color: var(--muted);
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s;
         }
-
-        .toggle-btn.is-active {
+        .tab-btn::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
             background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .tab-btn.is-active {
             color: var(--ink);
         }
-
-        .filters {
-            border: var(--border-width) solid var(--border);
+        .tab-btn.is-active::after {
+            opacity: 1;
+        }
+        /* --- NEW CONTROLS BAR --- */
+        .controls-section {
             background: var(--card);
-            padding: 18px 20px;
+            border: var(--border-width) solid var(--border);
             box-shadow: var(--shadow-soft);
+            padding: 16px 20px;
+            margin-bottom: 18px;
+        }
+        .primary-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .search-wrapper {
+            flex: 1;
+            min-width: 200px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 4px;
         }
-
-        .filters-header {
+        .date-wrapper {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .filter-toggle-btn {
+            height: 42px; /* Match input height roughly */
+            margin-top: auto; /* Align with inputs */
+            padding: 0 16px;
+            background: #fff;
+            border: var(--border-width) solid var(--border);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .filter-toggle-btn:hover {
+            background: var(--bg);
+        }
+        .filter-toggle-btn.is-active {
+            background: var(--border);
+            color: #fff;
+            border-color: var(--border);
+        }
+        .advanced-filters {
             display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-soft);
+            animation: slideDown 0.2s ease-out;
         }
-
-        .filters-content {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .advanced-filters.is-expanded {
+            display: block;
         }
-
-        .filter-grid {
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .advanced-grid {
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            align-items: end;
         }
-
-        .filter-grid-wide {
-            grid-template-columns: minmax(0, 1fr);
-        }
-
-        .filter {
+        .control-group {
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
-
-        label,
-        .filter-label {
-            font-size: 0.75rem;
+        .checkbox-group {
+            flex-direction: row;
+            align-items: center;
+            height: 42px; /* Align with inputs */
+            padding-left: 4px;
+        }
+        .clear-btn-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 12px;
+        }
+        label {
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--muted);
-            font-weight: 600;
+            font-weight: 700;
         }
-
         input[type="search"],
         select {
-            padding: 8px 10px;
+            height: 42px;
+            padding: 0 12px;
             border: var(--border-width) solid var(--border);
             background: #fff;
+            width: 100%;
+            font-size: 0.9rem;
         }
-
         input[type="search"]:focus,
         select:focus {
-            outline: 2px solid rgba(209, 72, 54, 0.2);
+            outline: 2px solid var(--accent);
+            border-color: var(--accent);
         }
-
-        .options-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            height: 100%;
-        }
-
         .link-btn {
             border: none;
             background: transparent;
@@ -230,15 +311,14 @@
             font-size: 0.7rem;
             cursor: pointer;
             color: var(--accent-strong);
+            padding: 8px 0;
         }
-
         .view-section {
             border: var(--border-width) solid var(--border);
             background: var(--card);
             padding: 18px 20px;
             box-shadow: var(--shadow-soft);
         }
-
         .is-hidden {
             display: none;
         }
@@ -246,25 +326,21 @@
             padding: 16px 0;
             border-top: var(--border-width) solid var(--border-soft);
         }
-
         .region-block:first-child {
             border-top: none;
             padding-top: 0;
         }
-
         .region-title {
             margin: 0 0 12px;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
         }
-
         .cinema-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 12px;
         }
-
         .cinema-card {
             border: var(--border-width) solid var(--border);
             background: #fff;
@@ -276,16 +352,13 @@
             gap: 6px;
             box-shadow: var(--shadow-soft);
         }
-
         .cinema-card-title {
             font-weight: 600;
         }
-
         .cinema-card-meta {
             font-size: 0.8rem;
             color: var(--muted);
         }
-
         .cinema-showtimes-header {
             display: flex;
             align-items: flex-start;
@@ -295,7 +368,6 @@
             padding-bottom: 12px;
             margin-bottom: 12px;
         }
-
         .back-btn {
             border: var(--border-width) solid var(--border);
             background: #fff;
@@ -306,34 +378,28 @@
             font-weight: 600;
             cursor: pointer;
         }
-
         .cinema-title {
             margin: 0;
             font-size: 1.4rem;
         }
-
         .cinema-title-row {
             display: flex;
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
         }
-
         .cinema-meta {
             color: var(--muted);
             font-size: 0.85rem;
         }
-
         .date-block {
             padding: 14px 0;
             border-top: var(--border-width) solid var(--border-soft);
         }
-
         .date-block:first-child {
             border-top: none;
             padding-top: 0;
         }
-
         .date-title {
             margin: 0 0 12px;
             font-size: 0.8rem;
@@ -344,7 +410,6 @@
             padding-bottom: 6px;
             border-bottom: 2px solid var(--accent);
         }
-
         .cinema-film {
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
@@ -352,12 +417,10 @@
             padding: 12px 0;
             border-top: var(--border-width) solid var(--border-soft);
         }
-
         .cinema-film:first-child {
             border-top: none;
             padding-top: 0;
         }
-
         .cinema-film-title {
             display: flex;
             align-items: center;
@@ -365,7 +428,6 @@
             gap: 10px;
             font-weight: 600;
         }
-
         .film-link {
             border: var(--border-width) solid var(--border);
             padding: 4px 8px;
@@ -374,36 +436,30 @@
             letter-spacing: 0.08em;
             background: #fff;
         }
-
         .cinema-map-link {
             margin-top: 2px;
         }
-
         .cinema-film-meta {
             color: var(--muted);
             font-size: 0.8rem;
             margin-top: 4px;
         }
-
         .time-row {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
-
         .time-chip {
             border: var(--border-width) solid var(--border);
             padding: 6px 10px;
             font-size: 0.8rem;
             background: #fff;
         }
-
         .time-chip.is-bookable {
             background: #fff;
             border-color: var(--border);
             color: var(--ink);
         }
-
         .film-view-header {
             display: flex;
             justify-content: space-between;
@@ -413,22 +469,18 @@
             padding-bottom: 12px;
             margin-bottom: 12px;
         }
-
         .results-count {
             font-weight: 600;
         }
-
         .results-meta {
             color: var(--muted);
             font-size: 0.85rem;
         }
-
         .film-list {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
-
         .film-card {
             border: var(--border-width) solid var(--border);
             background: #fff;
@@ -438,7 +490,6 @@
             gap: 16px;
             box-shadow: var(--shadow);
         }
-
         .film-poster {
             width: 160px;
             aspect-ratio: 2 / 3;
@@ -452,40 +503,33 @@
             color: var(--muted);
             padding: 10px;
         }
-
         .film-body {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-
         .film-title {
             margin: 0;
             font-size: 1.3rem;
         }
-
         .film-actions {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
         }
-
         .film-meta {
             color: var(--muted);
             font-size: 0.85rem;
         }
-
         .film-blurb {
             margin: 0;
             color: var(--muted);
         }
-
         .tag-row {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
-
         .tag {
             border: var(--border-width) solid var(--border-soft);
             padding: 4px 8px;
@@ -493,18 +537,15 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
-
         .showing-row {
             display: grid;
             grid-template-columns: 160px minmax(0, 1fr);
             gap: 12px;
             align-items: flex-start;
         }
-
         .cinema-name {
             font-weight: 600;
         }
-
         .loading,
         .empty-state {
             text-align: center;
@@ -512,7 +553,6 @@
             border: 1px dashed var(--border-soft);
             color: var(--muted);
         }
-
         .page-footer {
             text-align: center;
             font-size: 0.85rem;
@@ -520,68 +560,54 @@
             border-top: var(--border-width) solid var(--border-soft);
             padding-top: 16px;
         }
-
         @media (max-width: 1000px) {
             .page-header {
                 grid-template-columns: minmax(0, 1fr);
                 text-align: center;
             }
-
             .header-left,
             .header-right {
                 justify-content: center;
             }
-
             .header-left {
                 align-items: center;
             }
-
             .filter-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-
             .filter-grid-wide {
                 grid-template-columns: minmax(0, 1fr);
             }
-
             .cinema-showtimes-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .film-card {
                 grid-template-columns: minmax(0, 1fr);
             }
-
             .film-poster {
                 width: 100%;
                 max-width: 220px;
             }
-
             .showing-row {
                 grid-template-columns: minmax(0, 1fr);
             }
-
             .cinema-film {
                 grid-template-columns: minmax(0, 1fr);
             }
         }
-
         @media (max-width: 640px) {
             .filter-grid {
                 grid-template-columns: minmax(0, 1fr);
             }
-
             h1 {
                 letter-spacing: 0.1em;
             }
-
             .filters-header {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             }
-
             .filters-header-label {
                 font-size: 0.85rem;
                 font-weight: 600;
@@ -589,7 +615,6 @@
                 letter-spacing: 0.1em;
                 color: var(--muted);
             }
-
             .filters-toggle {
                 display: flex;
                 align-items: center;
@@ -604,24 +629,19 @@
                 cursor: pointer;
                 padding: 4px 0;
             }
-
             .filters-toggle-icon {
                 transition: transform 0.2s ease;
             }
-
             .filters-toggle.is-collapsed .filters-toggle-icon {
                 transform: rotate(-90deg);
             }
-
             .filters-content {
                 display: none;
             }
-
             .filters-content.is-expanded {
                 display: flex;
             }
         }
-
         @media (prefers-reduced-motion: reduce) {
             * {
                 transition: none !important;
@@ -632,335 +652,78 @@
                 transform: translate(-50%, -50%) scale(2);
             }
         }
-
-        /* Region Map Styles */
-        .region-map-section {
-            background: var(--card);
-            border: var(--border-width) solid var(--border);
-            box-shadow: var(--shadow-soft);
+        /* Map Drawer Styles */
+        /* Hide the old summary header since the button is now in the toolbar */
+        @media (max-width: 1000px) {
+            .top-row-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
         }
-
-        .region-map-summary {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--ink);
-        }
-
-        .region-map-summary-toggle {
-            font-size: 0.8rem;
-            color: var(--muted);
-            font-weight: 500;
-            border: var(--border-width) solid var(--border);
-            background: transparent;
-            padding: 4px 10px;
-            cursor: pointer;
-        }
-
-        .region-map-section.is-collapsed .region-map-content {
-            display: none;
-        }
-
-        .region-map-section.is-collapsed .region-map-summary {
-            border-bottom: none;
-        }
-
-        .region-map-section .region-map-summary {
-        }
-
-        .region-map-section[open] .region-map-summary {
-            border-bottom: var(--border-width) solid var(--border);
-        }
-
-        .region-map-content {
-            padding: 12px 16px 16px;
-        }
-
-        #region-map {
-            width: 100%;
-            max-width: 320px;
-            max-width: 360px;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-        }
-
-        .region-area {
-            cursor: pointer;
-            transition: transform 0.15s ease;
-        }
-
-        .region-area[data-has-cinemas="false"] {
-            cursor: default;
-        }
-
-        .region-area:hover {
-            transform: scale(1.02);
-        }
-
-        .region-area[data-has-cinemas="false"]:hover {
-            transform: none;
-        }
-
-        .region-shape {
-            fill: var(--bg);
-            stroke: var(--border);
-            stroke-width: 1.5;
-            transition: fill 0.2s ease, stroke 0.2s ease;
-        }
-
-        .region-area[data-has-cinemas="false"] .region-shape {
-            stroke: var(--border-soft);
-        }
-
-        .region-area:hover .region-shape {
-            fill: rgba(var(--accent-rgb), 0.2);
-            stroke: var(--accent-strong);
-            stroke-width: 2;
-        }
-
-        .region-area[data-has-cinemas="false"]:hover .region-shape {
-            fill: var(--bg);
-            stroke: var(--border-soft);
-            stroke-width: 1.5;
-        }
-
-        .region-area.is-selected .region-shape {
-            fill: rgba(var(--accent-rgb), 0.35);
-            stroke: var(--accent-strong);
-            stroke-width: 2.5;
-        }
-
-        .region-label-ja {
-            font-size: 11px;
-            font-weight: 600;
-            fill: var(--ink);
-            text-anchor: middle;
-            pointer-events: none;
-        }
-
-        .region-label-en {
-            font-size: 8px;
-            fill: var(--muted);
-            text-anchor: middle;
-            pointer-events: none;
-        }
-
-        .region-count {
-            font-size: 8px;
-            fill: var(--muted);
-            text-anchor: middle;
-            pointer-events: none;
-        }
-
-        .bay-label {
-            font-size: 11px;
-            fill: #7ba3b8;
-            font-weight: 500;
-            text-anchor: middle;
-            pointer-events: none;
-        }
-
-        .bay-label-en {
-            font-size: 9px;
-            fill: #7ba3b8;
-            text-anchor: middle;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        .map-legend {
-            display: flex;
-            justify-content: center;
-            margin-top: 12px;
-        }
-
-        .map-reset-btn {
-            background: transparent;
-            border: var(--border-width) solid var(--border);
-            padding: 6px 14px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.15s ease;
-        }
-
-        .map-reset-btn:hover {
-            background: var(--bg);
-        }
-
-        .map-reset-btn.is-hidden {
-            display: none;
-        }
-
         @media (max-width: 600px) {
-            .region-map-summary {
-                padding: 10px 12px;
-            }
-
-            .region-map-content {
-                padding: 10px 12px 12px;
-            }
-
-            .region-label-ja {
-                font-size: 10px;
-            }
-
-            .region-label-en {
-                font-size: 7px;
-            }
         }
-    </style>
+        /* Merged Region Styles */
+        /* Inactive Regions */
+        /* Active Regions */
+        /* Map Labels */
+        /* Reset transform origin for each group is hard in CSS without individual IDs. 
+           Let's just use color change. */
+</style>
 </head>
 <body>
     <main class="page">
         <header class="page-header">
             <div class="header-left">
-                <div class="site-credit" id="site-credit"></div>
-                <div class="toggle lang-toggle" role="group" aria-label="Language">
-                    <button class="toggle-btn" data-lang="ja" type="button">日本語</button>
-                    <button class="toggle-btn" data-lang="en" type="button">EN</button>
-                </div>
-            </div>
-            <div class="header-center">
                 <h1 id="site-title"></h1>
-            </div>
-            <div class="header-right">
-                <div class="toggle" role="group" aria-label="View toggles">
-                    <button class="toggle-btn is-active" data-view="cinema" type="button" id="view-cinema-btn"></button>
-                    <button class="toggle-btn" data-view="film" type="button" id="view-film-btn"></button>
+                <div class="site-credit" id="site-credit"></div>
+                <div class="lang-toggle" role="group" aria-label="Language">
+                    <button class="lang-btn" data-lang="ja" type="button">JP</button>
+                    <button class="lang-btn" data-lang="en" type="button">EN</button>
                 </div>
             </div>
         </header>
-
-        <section class="filters">
-            <div class="filters-header">
-                <span class="filters-header-label" id="filters-label"></span>
-                <button class="filters-toggle" type="button" id="filters-toggle">
+        <nav class="view-tabs">
+            <button class="tab-btn is-active" data-view="cinema" type="button" id="view-cinema-btn"></button>
+            <button class="tab-btn" data-view="film" type="button" id="view-film-btn"></button>
+        </nav>
+        <section class="controls-section">
+            <div class="primary-controls">
+                <div class="search-wrapper">
+                    <label for="search-input" id="search-label"></label>
+                    <input id="search-input" type="search">
+                </div>
+                <div class="date-wrapper">
+                    <label for="date-select" id="date-label"></label>
+                    <select id="date-select"></select>
+                </div>
+                <button class="filter-toggle-btn" type="button" id="filters-toggle">
                     <span id="filters-toggle-text"></span>
-                    <span class="filters-toggle-icon">▼</span>
+                    <span>+</span>
                 </button>
             </div>
-            <div class="filters-content" id="filters-content">
-                <div class="filter-grid">
-                    <div class="filter">
-                        <label for="search-input" id="search-label"></label>
-                        <input id="search-input" type="search">
-                    </div>
-                    <div class="filter">
-                        <label for="date-select" id="date-label"></label>
-                        <select id="date-select"></select>
-                    </div>
-                    <div class="filter">
+            <div class="advanced-filters" id="filters-content">
+                <div class="advanced-grid">
+                    <div class="control-group">
                         <label for="time-select" id="time-label"></label>
                         <select id="time-select"></select>
                     </div>
-                    <div class="filter">
+                    <div class="control-group">
                         <label for="region-select" id="region-label"></label>
                         <select id="region-select"></select>
                     </div>
-                    <div class="filter" id="sort-filter-container">
+                    <div class="control-group" id="sort-filter-container">
                         <label for="sort-select" id="sort-label"></label>
                         <select id="sort-select"></select>
                     </div>
-                    <div class="filter">
-                        <label for="doc-only" id="doc-only-label"></label>
+                    <div class="control-group checkbox-group">
                         <input id="doc-only" type="checkbox">
+                        <label for="doc-only" id="doc-only-label" style="margin-left: 6px; cursor: pointer;"></label>
                     </div>
-                </div>
-                <div class="filter-grid filter-grid-wide">
-                    <div class="filter options-row">
-                        <span class="filter-label" id="filter-options-label"></span>
+                    <div class="clear-btn-wrapper">
                         <button class="link-btn" type="button" id="clear-filters"></button>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="region-map-section is-collapsed" id="region-map-section">
-            <div class="region-map-summary">
-                <span class="region-map-summary-title" id="map-summary-title"></span>
-                <button class="region-map-summary-toggle" type="button" id="map-toggle-btn"></button>
-            </div>
-            <div class="region-map-content" id="region-map-content">
-                <svg id="region-map" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Tokyo Bay water -->
-                    <path d="M 250 40 L 400 40 L 400 340 L 190 340 L 205 270 L 280 230 L 305 160 L 300 80 L 250 45 Z"
-                          fill="#e8f4f8" stroke="none"/>
-
-                    <!-- Bay label -->
-                    <text x="336" y="205" class="bay-label">東京湾</text>
-                    <text x="336" y="221" class="bay-label-en">Tokyo Bay</text>
-
-                    <!-- Coastline -->
-                    <path d="M 250 45 L 300 80 L 305 160 L 280 230 L 205 270"
-                          fill="none" stroke="var(--border-soft)" stroke-width="2"/>
-
-                    <!-- Region: Ikebukuro (Toshima-ku area - north) -->
-                    <g class="region-area" data-region="池袋 (Ikebukuro)">
-                        <path d="M 120 40 L 170 35 L 215 55 L 210 88 L 180 110 L 135 102 L 112 72 Z" class="region-shape"/>
-                        <text x="166" y="70" class="region-label-ja">池袋</text>
-                        <text x="166" y="84" class="region-label-en">Ikebukuro</text>
-                        <text x="166" y="96" class="region-count"></text>
-                    </g>
-
-                    <!-- Region: Tabata & Kita Senju (north-east cluster) -->
-                    <g class="region-area" data-region="田端・北千住 (Tabata & Kita Senju)">
-                        <path d="M 215 55 L 255 45 L 300 70 L 292 108 L 255 128 L 220 112 Z" class="region-shape"/>
-                        <text x="258" y="80" class="region-label-ja">田端・北千住</text>
-                        <text x="258" y="94" class="region-label-en">Tabata & Kita Senju</text>
-                        <text x="258" y="106" class="region-count"></text>
-                    </g>
-
-                    <!-- Region: Shinjuku/Waseda (west-central) -->
-                    <g class="region-area" data-region="新宿・早稲田 (Shinjuku & Waseda)">
-                        <path d="M 82 86 L 112 60 L 130 78 L 140 108 L 165 118 L 158 158 L 112 172 L 78 138 Z" class="region-shape"/>
-                        <text x="122" y="118" class="region-label-ja">新宿</text>
-                        <text x="122" y="132" class="region-label-en">Shinjuku</text>
-                        <text x="122" y="144" class="region-count"></text>
-                    </g>
-
-                    <!-- Region: Central & East (Ginza, Jimbocho, Sumida) -->
-                    <g class="region-area" data-region="都心・東部 (Central & East - Ginza to Sumida)">
-                        <path d="M 165 118 L 210 108 L 238 118 L 285 112 L 315 145 L 308 188 L 272 222 L 222 228 L 182 200 L 158 158 Z" class="region-shape"/>
-                        <text x="236" y="162" class="region-label-ja">都心・東部</text>
-                        <text x="236" y="176" class="region-label-en">Central & East</text>
-                        <text x="236" y="188" class="region-count"></text>
-                    </g>
-
-                    <!-- Region: Shibuya/Ebisu/Meguro (southwest wards) -->
-                    <g class="region-area" data-region="渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)">
-                        <path d="M 78 138 L 112 172 L 158 158 L 182 200 L 222 228 L 270 222 L 258 254 L 210 276 L 140 270 L 98 232 Z" class="region-shape"/>
-                        <text x="176" y="216" class="region-label-ja">渋谷・恵比寿・目黒</text>
-                        <text x="176" y="230" class="region-label-en">Shibuya Area</text>
-                        <text x="176" y="242" class="region-count"></text>
-                    </g>
-
-                    <!-- Region: West (Nakano, Suginami, Setagaya, Tachikawa, Ome - western suburbs) -->
-                    <g class="region-area" data-region="西部 (West - Chuo/Keio Lines & Setagaya)">
-                        <path d="M 25 62 L 82 86 L 78 138 L 98 232 L 72 258 L 24 238 Z" class="region-shape"/>
-                        <text x="54" y="164" class="region-label-ja">西部</text>
-                        <text x="54" y="178" class="region-label-en">West</text>
-                        <text x="54" y="190" class="region-count"></text>
-                    </g>
-
-                    <!-- Region: Yokohama (Kanagawa - separate city to southwest) -->
-                    <g class="region-area" data-region="横浜 (Yokohama)">
-                        <path d="M 72 258 L 140 270 L 210 276 L 222 340 L 60 340 Z" class="region-shape"/>
-                        <text x="150" y="304" class="region-label-ja">横浜</text>
-                        <text x="150" y="318" class="region-label-en">Yokohama</text>
-                        <text x="150" y="330" class="region-count"></text>
-                    </g>
-                </svg>
-                <div class="map-legend">
-                    <button class="map-reset-btn" type="button" id="map-reset-btn"></button>
-                </div>
-            </div>
-        </section>
-
         <section class="view-section" id="cinema-view">
             <div id="cinema-index">
                 <div class="loading" id="cinema-loading"></div>
@@ -980,7 +743,6 @@
                 <div id="cinema-showtimes-list"></div>
             </div>
         </section>
-
         <section class="view-section is-hidden" id="film-view">
             <div class="film-view-header">
                 <div class="results-count" id="film-results-count"></div>
@@ -991,18 +753,15 @@
             </div>
             <div class="empty-state is-hidden" id="film-empty"></div>
         </section>
-
         <footer class="page-footer">
             <p id="footer-disclaimer"></p>
             <p><a href="cinema-scrapers/data/showtimes.json" id="footer-download-link"></a></p>
         </footer>
     </main>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const jsonUrl = "cinema-scrapers/data/showtimes.json";
             const tmdbBase = "https://image.tmdb.org/t/p/";
-
             const cinemaCategories = [
                 { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "目黒シネマ" ] },
                 { name: "新宿・早稲田 (Shinjuku & Waseda)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "シネマリス", "早稲田松竹" ] },
@@ -1012,14 +771,12 @@
                 { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
                 { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
             ];
-
             const cinemaRegions = {};
             cinemaCategories.forEach(function (category) {
                 category.cinemas.forEach(function (cinemaName) {
                     cinemaRegions[cinemaName] = category.name;
                 });
             });
-
             const cinemaJapaneseNames = {
                 "K's Cinema (ケイズシネマ)": "ケイズシネマ",
                 "Stranger (ストレンジャー)": "ストレンジャー",
@@ -1072,7 +829,6 @@
                 "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
                 "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "Kadokawa Cinema Yurakucho"
             };
-
             const regionNames = {
                 "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)": { ja: "渋谷・恵比寿・目黒", en: "Shibuya, Ebisu & Meguro" },
                 "新宿・早稲田 (Shinjuku & Waseda)": { ja: "新宿・早稲田", en: "Shinjuku & Waseda" },
@@ -1082,7 +838,6 @@
                 "西部 (West - Chuo/Keio Lines & Setagaya)": { ja: "西部（中央線・京王線沿線、世田谷）", en: "West (Chuo/Keio Lines & Setagaya)" },
                 "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
             };
-
             const i18n = {
                 ja: {
                     siteTitle: "東京ミニシアター上映情報",
@@ -1191,17 +946,14 @@
                     mapCinemaCount: "cinemas"
                 }
             };
-
             function t(key) {
                 return i18n[state.lang][key] || i18n.ja[key] || key;
             }
-
             function getRegionName(fullName) {
                 const names = regionNames[fullName];
                 if (names) return names[state.lang];
                 return fullName;
             }
-
             function getCinemaDisplayName(cinemaName) {
                 if (state.lang === "en") {
                     return cinemaEnglishNames[cinemaName] || cinemaName;
@@ -1209,7 +961,6 @@
                     return cinemaJapaneseNames[cinemaName] || cinemaName;
                 }
             }
-
             function getFilmDisplayTitle(film) {
                 if (state.lang === "en") {
                     return film.titleEn || film.titleJp || film.titleDisplay;
@@ -1217,7 +968,6 @@
                     return film.titleJp || film.titleDisplay;
                 }
             }
-
             function getFilmDirector(film) {
                 if (state.lang === "en") {
                     return film.directorEn || film.director || "";
@@ -1225,7 +975,6 @@
                     return film.director || "";
                 }
             }
-
             const elements = {
                 // Header
                 siteTitle: document.getElementById("site-title"),
@@ -1233,7 +982,6 @@
                 viewCinemaBtn: document.getElementById("view-cinema-btn"),
                 viewFilmBtn: document.getElementById("view-film-btn"),
                 // Filters
-                filtersLabel: document.getElementById("filters-label"),
                 filtersToggle: document.getElementById("filters-toggle"),
                 filtersToggleText: document.getElementById("filters-toggle-text"),
                 filtersContent: document.getElementById("filters-content"),
@@ -1250,7 +998,6 @@
                 sortFilterContainer: document.getElementById("sort-filter-container"),
                 docOnlyLabel: document.getElementById("doc-only-label"),
                 docOnlyCheckbox: document.getElementById("doc-only"),
-                filterOptionsLabel: document.getElementById("filter-options-label"),
                 clearFilters: document.getElementById("clear-filters"),
                 // View toggles
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
@@ -1275,17 +1022,9 @@
                 filmEmpty: document.getElementById("film-empty"),
                 // Footer
                 footerDisclaimer: document.getElementById("footer-disclaimer"),
-                footerDownloadLink: document.getElementById("footer-download-link"),
-                // Region Map
-                mapSummaryTitle: document.getElementById("map-summary-title"),
-                mapToggleBtn: document.getElementById("map-toggle-btn"),
-                mapSummaryToggle: document.getElementById("map-summary-toggle"),
-                regionMap: document.getElementById("region-map"),
-                regionMapSection: document.getElementById("region-map-section"),
-                regionMapContent: document.getElementById("region-map-content"),
-                regionAreas: Array.from(document.querySelectorAll(".region-area")),
-                mapResetBtn: document.getElementById("map-reset-btn")
+                footerDownloadLink: document.getElementById("footer-download-link")
             };
+
             const state = {
                 data: [],
                 view: "cinema",
@@ -1312,65 +1051,62 @@
                     ]
                 };
             }
-
             function getDateFormatter() {
                 const locale = state.lang === "en" ? "en-US" : "ja-JP";
                 return new Intl.DateTimeFormat(locale, { weekday: "short", day: "numeric", month: "short", timeZone: "Asia/Tokyo" });
             }
-
             function getLongDateFormatter() {
                 const locale = state.lang === "en" ? "en-US" : "ja-JP";
                 return new Intl.DateTimeFormat(locale, { weekday: "long", day: "numeric", month: "long", timeZone: "Asia/Tokyo" });
             }
-
             function getRegionForCinema(cinemaName) {
                 return cinemaRegions[cinemaName] || t("other");
             }
-
             elements.searchInput.addEventListener("input", function (event) {
                 state.filters.search = event.target.value.trim().toLowerCase();
                 render();
             });
-
             elements.dateSelect.addEventListener("change", function (event) {
                 state.filters.date = event.target.value;
                 render();
             });
-
             elements.timeSelect.addEventListener("change", function (event) {
                 state.filters.time = event.target.value;
                 render();
             });
-
             elements.regionSelect.addEventListener("change", function (event) {
                 state.filters.region = event.target.value;
                 render();
             });
-
             elements.docOnlyCheckbox.addEventListener("change", function (event) {
                 state.filters.docOnly = event.target.checked;
                 render();
             });
-
             elements.sortSelect.addEventListener("change", function (event) {
                 state.sort = event.target.value;
                 render();
             });
+            function closeFilters() {
+                state.filtersExpanded = false;
+                elements.filtersContent.classList.remove("is-expanded");
+                elements.filtersToggle.classList.remove("is-active");
+                const icon = elements.filtersToggle.querySelector("span:last-child");
+                if (icon) icon.textContent = "+";
+            }
 
             elements.filtersToggle.addEventListener("click", function () {
                 state.filtersExpanded = !state.filtersExpanded;
                 elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
-                elements.filtersToggle.classList.toggle("is-collapsed", !state.filtersExpanded);
-                elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? "非表示 (Hide)" : "表示 (Show)";
+                elements.filtersToggle.classList.toggle("is-active", state.filtersExpanded);
+                const icon = elements.filtersToggle.querySelector("span:last-child");
+                if (icon) icon.textContent = state.filtersExpanded ? "−" : "+";
             });
-
             elements.clearFilters.addEventListener("click", function () {
                 state.filters.search = "";
                 state.filters.date = getDefaultDateForView();
                 state.filters.time = "any";
                 state.filters.region = "all";
                 state.filters.docOnly = false;
-
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
                 elements.timeSelect.value = "any";
@@ -1378,57 +1114,23 @@
                 elements.docOnlyCheckbox.checked = false;
                 render();
             });
-
-            // Region map event listeners
-            elements.regionAreas.forEach(function (area) {
-                area.addEventListener("click", function () {
-                    if (area.getAttribute("data-has-cinemas") === "false") {
-                        return;
-                    }
-                    const region = area.getAttribute("data-region");
-                    if (state.filters.region === region) {
-                        // Clicking selected region deselects it
-                        state.filters.region = "all";
-                    } else {
-                        state.filters.region = region;
-                    }
-                    elements.regionSelect.value = state.filters.region;
-                    render();
-                });
-            });
-
-            elements.mapResetBtn.addEventListener("click", function () {
-                state.filters.region = "all";
-                elements.regionSelect.value = "all";
-                render();
-            });
-
-            elements.mapToggleBtn.addEventListener("click", function () {
-                elements.regionMapSection.classList.toggle("is-collapsed");
-            });
-            elements.regionMapSection.addEventListener("toggle", function () {
-                updateMapSummaryText();
-            });
-
+            
             elements.viewButtons.forEach(function (button) {
                 button.addEventListener("click", function () {
                     const view = button.getAttribute("data-view");
                     setView(view);
                 });
             });
-
             elements.langButtons.forEach(function (button) {
                 button.addEventListener("click", function () {
                     const lang = button.getAttribute("data-lang");
                     setLang(lang);
                 });
             });
-
             elements.backToCinemas.addEventListener("click", function () {
                 state.selectedCinema = "";
                 render();
             });
-
             document.querySelector("h1").addEventListener("click", function () {
                 state.selectedCinema = "";
                 state.filters.search = "";
@@ -1436,7 +1138,6 @@
                 render();
                 window.scrollTo({ top: 0, behavior: "smooth" });
             });
-
             function setView(view) {
                 state.view = view;
                 elements.viewButtons.forEach(function (button) {
@@ -1444,13 +1145,14 @@
                     button.classList.toggle("is-active", isActive);
                 });
                 updateSortOptions();
+                /* 
                 if (view === "film" && state.filters.date === "all" && state.todayDate) {
                     state.filters.date = state.todayDate;
                     elements.dateSelect.value = state.todayDate;
                 }
+                */
                 render();
             }
-
             function setLang(lang) {
                 state.lang = lang;
                 localStorage.setItem("cinemas-lang", lang);
@@ -1465,17 +1167,14 @@
                 updateSortOptions();
                 render();
             }
-
             function updateUIText() {
                 // Header
                 elements.siteTitle.textContent = t("siteTitle");
                 elements.siteCredit.textContent = t("siteCredit");
                 elements.viewCinemaBtn.textContent = t("viewCinema");
                 elements.viewFilmBtn.textContent = t("viewFilm");
-
                 // Filters
-                elements.filtersLabel.textContent = t("filters");
-                elements.filtersToggleText.textContent = state.filtersExpanded ? t("filtersHide") : t("filtersShow");
+                elements.filtersToggleText.textContent = t("filters");
                 elements.searchLabel.textContent = t("search");
                 elements.searchInput.placeholder = t("searchPlaceholder");
                 elements.dateLabel.textContent = t("date");
@@ -1483,39 +1182,20 @@
                 elements.regionLabel.textContent = t("region");
                 elements.sortLabel.textContent = t("sort");
                 elements.docOnlyLabel.textContent = t("docOnly");
-                elements.filterOptionsLabel.textContent = t("filters");
                 elements.clearFilters.textContent = t("clearFilters");
                 elements.docOnlyCheckbox.checked = state.filters.docOnly;
-
                 // Cinema view
                 elements.cinemaLoading.textContent = t("loading");
                 elements.backToCinemas.textContent = t("backToCinemas");
                 elements.cinemaMapLink.textContent = t("map");
                 elements.cinemaSiteLink.textContent = t("site");
-
                 // Film view
                 elements.filmLoading.textContent = t("loading");
                 elements.filmEmpty.textContent = t("noFilms");
-
                 // Footer
                 elements.footerDisclaimer.textContent = t("footerDisclaimer");
                 elements.footerDownloadLink.textContent = t("downloadJson");
-
-                // Map summary
-                updateMapSummaryText();
             }
-
-            function updateMapSummaryText() {
-                if (!elements.mapSummaryTitle || !elements.mapToggleBtn) return;
-                elements.mapSummaryTitle.textContent = t("map");
-                const isCollapsed = elements.regionMapSection.classList.contains("is-collapsed");
-                elements.mapToggleBtn.textContent = isCollapsed ? t("mapShow") : t("mapHide");
-                elements.mapToggleBtn.setAttribute("aria-expanded", (!isCollapsed).toString());
-                if (!elements.mapSummaryTitle || !elements.mapSummaryToggle) return;
-                elements.mapSummaryTitle.textContent = t("map");
-                elements.mapSummaryToggle.textContent = elements.regionMapSection.open ? t("mapHide") : t("mapShow");
-            }
-
             function updateTimeSelect() {
                 const currentValue = elements.timeSelect.value || "any";
                 elements.timeSelect.innerHTML = "";
@@ -1534,7 +1214,6 @@
                 });
                 elements.timeSelect.value = currentValue;
             }
-
             function updateRegionSelect() {
                 const currentValue = elements.regionSelect.value || "all";
                 const options = Array.from(elements.regionSelect.options);
@@ -1547,7 +1226,6 @@
                 });
                 elements.regionSelect.value = currentValue;
             }
-
             function updateDateSelect() {
                 const currentValue = elements.dateSelect.value || "all";
                 const options = Array.from(elements.dateSelect.options);
@@ -1560,14 +1238,12 @@
                 });
                 elements.dateSelect.value = currentValue;
             }
-
             function getDefaultDateForView() {
                 if (state.view === "film" && state.todayDate) {
                     return state.todayDate;
                 }
                 return "all";
             }
-
             function updateSortOptions() {
                 const sortOptions = getSortOptions();
                 const options = sortOptions[state.view];
@@ -1576,7 +1252,6 @@
                     return;
                 }
                 elements.sortFilterContainer.classList.remove("is-hidden");
-
                 const currentValue = state.sort;
                 elements.sortSelect.innerHTML = "";
                 options.forEach(function (option) {
@@ -1591,7 +1266,6 @@
                 state.sort = stillValid ? currentValue : options[0].value;
                 elements.sortSelect.value = state.sort;
             }
-
             function createElement(tag, className, text) {
                 const element = document.createElement(tag);
                 if (className) {
@@ -1602,7 +1276,6 @@
                 }
                 return element;
             }
-
             function getJstDateText() {
                 return new Intl.DateTimeFormat("en-CA", {
                     timeZone: "Asia/Tokyo",
@@ -1611,20 +1284,17 @@
                     day: "2-digit"
                 }).format(new Date());
             }
-
             function parseDate(dateText) {
                 if (!dateText) return null;
                 const date = new Date(dateText + "T00:00:00+09:00");
                 if (Number.isNaN(date.getTime())) return null;
                 return date;
             }
-
             function formatDate(dateText, longFormat) {
                 const date = parseDate(dateText);
                 if (!date) return dateText || "";
                 return longFormat ? getLongDateFormatter().format(date) : getDateFormatter().format(date);
             }
-
             function getDateRange(showings) {
                 const dates = showings.map(function (showing) {
                     return showing.dateText;
@@ -1635,16 +1305,14 @@
                 }
                 return formatDate(dates[0], true) + " - " + formatDate(dates[dates.length - 1], true);
             }
-
             function timeToMinutes(timeText) {
-                if (!timeText || !timeText.includes(":")) return null;
-                const parts = timeText.split(":");
-                const hours = parseInt(parts[0], 10);
-                const minutes = parseInt(parts[1], 10);
-                if (Number.isNaN(hours) || Number.isNaN(minutes)) return null;
+                if (!timeText || typeof timeText !== 'string') return null;
+                const match = timeText.match(/(\d{1,2}):(\d{2})/);
+                if (!match) return null;
+                const hours = parseInt(match[1], 10);
+                const minutes = parseInt(match[2], 10);
                 return hours * 60 + minutes;
             }
-
             function parseDateTime(dateText, timeText) {
                 if (!dateText) return null;
                 const timeValue = timeText && timeText.includes(":") ? timeText : "00:00";
@@ -1655,11 +1323,9 @@
                 if (Number.isNaN(date.getTime())) return null;
                 return date;
             }
-
             function timeValue(date) {
                 return date ? date.getTime() : Number.POSITIVE_INFINITY;
             }
-
             function compareShowings(a, b) {
                 const aTime = timeValue(a.dateTime);
                 const bTime = timeValue(b.dateTime);
@@ -1668,7 +1334,6 @@
                 }
                 return (a.showtime || "").localeCompare(b.showtime || "");
             }
-
             function normalizeTitle(title) {
                 return (title || "")
                     .toLowerCase()
@@ -1676,14 +1341,12 @@
                     .replace(/[^a-z0-9]+/g, "-")
                     .replace(/^-+|-+$/g, "");
             }
-
             function formatBilingual(primary, secondary) {
                 if (!primary && !secondary) return "";
                 if (!primary) return secondary;
                 if (!secondary || secondary === primary) return primary;
                 return primary + " (" + secondary + ")";
             }
-
             function buildLetterboxdUrl(title, tmdbId) {
                 if (tmdbId) {
                     return "https://letterboxd.com/tmdb/" + tmdbId + "/";
@@ -1691,16 +1354,13 @@
                 const slug = normalizeTitle(title);
                 return slug ? "https://letterboxd.com/film/" + slug + "/" : "";
             }
-
             function getCinemaJapaneseName(cinemaName) {
                 return cinemaJapaneseNames[cinemaName] || cinemaName;
             }
-
             function buildMapsUrl(cinemaName) {
                 const query = encodeURIComponent(getCinemaJapaneseName(cinemaName) + " 東京");
                 return "https://www.google.com/maps/search/?api=1&query=" + query;
             }
-
             const cinemaWebsiteOverrides = {
                 "下北沢トリウッド": "https://tollywood.jp/",
                 "下高井戸シネマ": "https://shimotakaidocinema.com/",
@@ -1718,19 +1378,16 @@
                 "tickets.barbican.org.uk",
                 "bookings.thegardencinema.co.uk"
             ]);
-
             function isBlockedHost(host) {
                 if (blockedHosts.has(host)) return true;
                 return blockedHostSuffixes.some(function (suffix) {
                     return host.endsWith(suffix);
                 });
             }
-
             function getCinemaWebsite(cinemaName, showings) {
                 if (cinemaWebsiteOverrides[cinemaName]) return cinemaWebsiteOverrides[cinemaName];
                 const counts = new Map();
                 const origins = new Map();
-
                 showings.forEach(function (showing) {
                     [showing.bookingUrl, showing.detailUrl].forEach(function (url) {
                         if (!url) return;
@@ -1745,9 +1402,7 @@
                         if (!origins.has(host)) origins.set(host, parsed.origin);
                     });
                 });
-
                 if (!counts.size) return "";
-
                 function pickHost(skipBlocked) {
                     let bestHost = "";
                     let bestCount = -1;
@@ -1760,37 +1415,30 @@
                     });
                     return bestHost;
                 }
-
                 const preferredHost = pickHost(true) || pickHost(false);
                 if (!preferredHost) return "";
                 return origins.get(preferredHost) || ("https://" + preferredHost);
             }
-
             function getImageUrl(path, size) {
                 if (!path) return "";
                 if (path.startsWith("http")) return path;
                 return tmdbBase + size + path;
             }
-
             function buildFilterOptions(showings) {
                 const todayText = getJstDateText();
-
                 // Only include dates from today onwards
                 const dates = Array.from(new Set(showings.map(function (showing) {
                     return showing.dateText;
                 }).filter(function (dateText) {
                     return dateText && dateText >= todayText;
                 }))).sort();
-
                 state.todayDate = dates.includes(todayText) ? todayText : (dates[0] || "");
                 state.filters.date = "all";
-
                 elements.dateSelect.innerHTML = "";
                 const allOption = document.createElement("option");
                 allOption.value = "all";
                 allOption.textContent = t("dateAll");
                 elements.dateSelect.appendChild(allOption);
-
                 dates.forEach(function (dateText) {
                     const option = document.createElement("option");
                     option.value = dateText;
@@ -1801,7 +1449,6 @@
                     state.filters.date = state.todayDate;
                 }
                 elements.dateSelect.value = state.filters.date || "all";
-
                 const regions = Array.from(new Set(showings.map(function (showing) {
                     return showing.region;
                 }).filter(Boolean)));
@@ -1825,10 +1472,8 @@
                     elements.regionSelect.appendChild(option);
                 });
                 elements.regionSelect.value = state.filters.region || "all";
-
                 updateSortOptions();
             }
-
             function normalizeShowings(rawData) {
                 return rawData.map(function (item, index) {
                     const titleJp = item.clean_title_jp || item.movie_title || item.movie_title_en || t("untitled");
@@ -1847,7 +1492,6 @@
                     const genres = Array.isArray(item.genres) ? item.genres : [];
                     const genresEn = Array.isArray(item.genres_en) ? item.genres_en : [];
                     const tags = Array.isArray(item.tags) ? item.tags : [];
-
                     return {
                         id: index,
                         cinema: rawCinemaName,
@@ -1894,7 +1538,6 @@
                     };
                 });
             }
-
             function isDocumentary(showing) {
                 const genres = [];
                 if (Array.isArray(showing.genres)) genres.push.apply(genres, showing.genres);
@@ -1904,26 +1547,40 @@
                     return value.includes("documentary") || value.includes("ドキュメンタリー");
                 });
             }
-
             function applyFilters(showings) {
                 const now = new Date();
+                const filterTime = state.filters.time;
+
                 return showings.filter(function (showing) {
+                    // Filter out past shows (only if they are actually in the past)
                     if (showing.timeMinutes !== null && showing.dateTime && showing.dateTime < now) {
                         return false;
                     }
+
                     if (state.filters.search && !showing.searchText.includes(state.filters.search)) {
                         return false;
                     }
+                    
                     if (state.filters.date !== "all" && showing.dateText !== state.filters.date) {
                         return false;
                     }
-                    if (state.filters.time !== "any") {
-                        if (showing.timeMinutes === null) return false;
-                        if (state.filters.time === "morning" && showing.timeMinutes >= 12 * 60) return false;
-                        if (state.filters.time === "afternoon" && (showing.timeMinutes < 12 * 60 || showing.timeMinutes >= 17 * 60)) return false;
-                        if (state.filters.time === "evening" && (showing.timeMinutes < 17 * 60 || showing.timeMinutes >= 21 * 60)) return false;
-                        if (state.filters.time === "late" && showing.timeMinutes < 21 * 60) return false;
+                    
+                    // Time filter
+                    if (filterTime !== "any") {
+                        const mins = showing.timeMinutes;
+                        if (mins === null) return false; 
+                        
+                        const isMorning = mins < 12 * 60;
+                        const isAfternoon = mins >= 12 * 60 && mins < 17 * 60;
+                        const isEvening = mins >= 17 * 60 && mins < 21 * 60;
+                        const isLate = mins >= 21 * 60;
+                        
+                        if (filterTime === "morning" && !isMorning) return false;
+                        if (filterTime === "afternoon" && !isAfternoon) return false;
+                        if (filterTime === "evening" && !isEvening) return false;
+                        if (filterTime === "late" && !isLate) return false;
                     }
+                    
                     if (state.filters.region !== "all" && showing.region !== state.filters.region) {
                         return false;
                     }
@@ -1933,12 +1590,10 @@
                     return true;
                 });
             }
-
             function getFilmKey(showing) {
                 const keyTitle = (showing.titleEn || showing.titleJp || showing.titleDisplay || "").trim();
                 return showing.tmdbId ? "tmdb-" + showing.tmdbId : "title-" + keyTitle;
             }
-
             function groupByFilm(showings) {
                 const map = new Map();
                 showings.forEach(function (showing) {
@@ -1982,7 +1637,6 @@
                         film.formatTags.add(tag);
                     });
                 });
-
                 const films = Array.from(map.values());
                 films.forEach(function (film) {
                     film.showings.sort(compareShowings);
@@ -1991,12 +1645,14 @@
                 });
                 return films;
             }
-
             function getFiltersSummary() {
                 const parts = [];
                 if (state.filters.search) parts.push("検索: \"" + state.filters.search + "\" (Search)");
                 if (state.filters.date !== "all") parts.push("日付: " + formatDate(state.filters.date, true) + " (Date)");
-                if (state.filters.time !== "any") parts.push("時間帯: " + timeBucketLabels[state.filters.time]);
+                if (state.filters.time !== "any") {
+                    const timeKey = "time" + state.filters.time.charAt(0).toUpperCase() + state.filters.time.slice(1);
+                    parts.push("時間帯: " + t(timeKey));
+                }
                 if (state.filters.region !== "all") parts.push("地域: " + state.filters.region + " (Region)");
                 if (state.filters.docOnly) parts.push(t("docOnly"));
                 if (!parts.length) parts.push("フィルターなし (No filters applied)");
@@ -2004,7 +1660,6 @@
             }
             function renderCinemaIndex(showings) {
                 elements.cinemaIndex.innerHTML = "";
-
                 const cinemasMap = new Map();
                 showings.forEach(function (showing) {
                     if (!cinemasMap.has(showing.cinema)) {
@@ -2012,12 +1667,10 @@
                     }
                     cinemasMap.get(showing.cinema).showings.push(showing);
                 });
-
                 if (!cinemasMap.size) {
                     elements.cinemaIndex.appendChild(createElement("div", "empty-state", t("noCinemas")));
                     return;
                 }
-
                 let renderedBlocks = 0;
                 cinemaCategories.forEach(function (category) {
                     const cinemas = category.cinemas.map(function (cinemaName) {
@@ -2026,15 +1679,12 @@
                     }).filter(function (cinema) {
                         return cinema.count > 0;
                     });
-
                     if (!cinemas.length) {
                         return;
                     }
                     renderedBlocks += 1;
-
                     const block = createElement("div", "region-block");
                     block.appendChild(createElement("h2", "region-title", getRegionName(category.name)));
-
                     const grid = createElement("div", "cinema-grid");
                     cinemas.forEach(function (cinema) {
                         const card = createElement("button", "cinema-card");
@@ -2047,16 +1697,13 @@
                         });
                         grid.appendChild(card);
                     });
-
                     block.appendChild(grid);
                     elements.cinemaIndex.appendChild(block);
                 });
-
                 if (!renderedBlocks) {
                     elements.cinemaIndex.appendChild(createElement("div", "empty-state", t("noCinemas")));
                 }
             }
-
             function renderCinemaShowtimes(showings) {
                 elements.cinemaShowtimesList.innerHTML = "";
                 elements.cinemaTitle.textContent = getCinemaDisplayName(state.selectedCinema);
@@ -2072,18 +1719,15 @@
                     elements.cinemaSiteLink.classList.add("is-hidden");
                     elements.cinemaSiteLink.removeAttribute("href");
                 }
-
                 const range = getDateRange(showings);
                 const metaParts = [];
                 if (showings.length) metaParts.push(showings.length + " " + t("showings"));
                 if (range) metaParts.push(range);
                 elements.cinemaMeta.textContent = metaParts.join(" | ");
-
                 if (!showings.length) {
                     elements.cinemaShowtimesList.appendChild(createElement("div", "empty-state", t("noShowings")));
                     return;
                 }
-
                 const byDate = new Map();
                 showings.forEach(function (showing) {
                     const dateKey = showing.dateText || "日付不明 (Unknown date)";
@@ -2092,11 +1736,9 @@
                     }
                     byDate.get(dateKey).push(showing);
                 });
-
                 Array.from(byDate.keys()).sort().forEach(function (dateKey) {
                     const group = createElement("div", "date-block");
                     group.appendChild(createElement("h3", "date-title", formatDate(dateKey, true)));
-
                     const filmMap = new Map();
                     byDate.get(dateKey).forEach(function (showing) {
                         const key = getFilmKey(showing);
@@ -2112,11 +1754,9 @@
                         }
                         filmMap.get(key).showings.push(showing);
                     });
-
                     Array.from(filmMap.values()).forEach(function (film) {
                         film.showings.sort(compareShowings);
                         const row = createElement("div", "cinema-film");
-
                         const info = createElement("div");
                         const titleRow = createElement("div", "cinema-film-title");
                         titleRow.appendChild(createElement("span", null, getFilmDisplayTitle(film)));
@@ -2128,7 +1768,6 @@
                             titleRow.appendChild(letterboxd);
                         }
                         info.appendChild(titleRow);
-
                         const metaParts = [];
                         if (film.year) metaParts.push(film.year);
                         var filmDirector = getFilmDirector(film);
@@ -2137,9 +1776,7 @@
                         if (metaParts.length) {
                             info.appendChild(createElement("div", "cinema-film-meta", metaParts.join(" | ")));
                         }
-
                         row.appendChild(info);
-
                         const timeRow = createElement("div", "time-row");
                         film.showings.forEach(function (showing) {
                             const label = showing.showtime || t("tbd");
@@ -2159,15 +1796,12 @@
                         row.appendChild(timeRow);
                         group.appendChild(row);
                     });
-
                     elements.cinemaShowtimesList.appendChild(group);
                 });
             }
-
             function renderCinemaView(showings) {
                 elements.cinemaView.classList.remove("is-hidden");
                 elements.filmView.classList.add("is-hidden");
-
                 if (state.selectedCinema) {
                     elements.cinemaIndex.classList.add("is-hidden");
                     elements.cinemaShowtimes.classList.remove("is-hidden");
@@ -2181,118 +1815,106 @@
                     renderCinemaIndex(showings);
                 }
             }
-
             function renderFilmList(films, totalShowings) {
                 elements.filmResultsCount.textContent = totalShowings + " " + t("showings") + " / " + films.length + " " + t("films");
                 elements.filmResultsMeta.textContent = getFiltersSummary();
-
                 const fragment = document.createDocumentFragment();
                 films.forEach(function (film) {
-                    const card = createElement("article", "film-card");
-
-                    const poster = createElement("div", "film-poster", t("posterUnavailable"));
-                    const posterUrl = getImageUrl(film.posterPath, "w342");
-                    if (posterUrl) {
-                        poster.style.backgroundImage = "url(\"" + posterUrl + "\")";
-                        poster.style.backgroundSize = "cover";
-                        poster.style.backgroundPosition = "center";
-                        poster.textContent = "";
-                    }
-                    card.appendChild(poster);
-
-                    const body = createElement("div", "film-body");
-                    body.appendChild(createElement("h3", "film-title", getFilmDisplayTitle(film)));
-
-                    const actions = createElement("div", "film-actions");
-                    if (film.letterboxdUrl) {
-                        const letterboxd = createElement("a", "film-link", "Letterboxd");
-                        letterboxd.href = film.letterboxdUrl;
-                        letterboxd.target = "_blank";
-                        letterboxd.rel = "noopener";
-                        actions.appendChild(letterboxd);
-                    }
-                    if (actions.childNodes.length) {
-                        body.appendChild(actions);
-                    }
-
-                    const metaParts = [];
-                    if (film.year) metaParts.push(film.year);
-                    var filmDirector = getFilmDirector(film);
-                    if (filmDirector) metaParts.push(filmDirector);
-                    if (film.runtime) metaParts.push(film.runtime + " " + t("min"));
-                    if (metaParts.length) {
-                        body.appendChild(createElement("div", "film-meta", metaParts.join(" | ")));
-                    }
-
-                    var displayOverview = state.lang === "en" ? (film.overviewEn || film.overview) : film.overview;
-                    if (displayOverview) {
-                        body.appendChild(createElement("p", "film-blurb", displayOverview));
-                    }
-
-                    if (film.formatTags.length) {
-                        const tagRow = createElement("div", "tag-row");
-                        film.formatTags.forEach(function (tag) {
-                            tagRow.appendChild(createElement("span", "tag", tag));
-                        });
-                        body.appendChild(tagRow);
-                    }
-
-                    const showingsByCinema = new Map();
-                    film.showings.forEach(function (showing) {
-                        if (!showingsByCinema.has(showing.cinema)) {
-                            showingsByCinema.set(showing.cinema, []);
+                    try {
+                        const card = createElement("article", "film-card");
+                        const poster = createElement("div", "film-poster", t("posterUnavailable"));
+                        const posterUrl = getImageUrl(film.posterPath, "w342");
+                        if (posterUrl) {
+                            poster.style.backgroundImage = "url(\"" + posterUrl + "\")";
+                            poster.style.backgroundSize = "cover";
+                            poster.style.backgroundPosition = "center";
+                            poster.textContent = "";
                         }
-                        showingsByCinema.get(showing.cinema).push(showing);
-                    });
-
-                    showingsByCinema.forEach(function (showings, cinema) {
-                        showings.sort(compareShowings);
-                        const row = createElement("div", "showing-row");
-                        row.appendChild(createElement("div", "cinema-name", getCinemaDisplayName(cinema)));
-
-                        const timeRow = createElement("div", "time-row");
-                        showings.forEach(function (showing) {
-                            const includeDate = state.filters.date === "all";
-                            const label = includeDate && showing.dateText
-                                ? formatDate(showing.dateText, false) + " " + (showing.showtime || t("tbd"))
-                                : (showing.showtime || t("tbd"));
-                            if (showing.bookingUrl || showing.detailUrl) {
-                                const link = createElement("a", "time-chip", label);
-                                link.href = showing.bookingUrl || showing.detailUrl;
-                                link.target = "_blank";
-                                link.rel = "noopener";
-                                if (showing.bookingUrl) {
-                                    link.classList.add("is-bookable");
-                                }
-                                timeRow.appendChild(link);
-                            } else {
-                                timeRow.appendChild(createElement("span", "time-chip", label));
+                        card.appendChild(poster);
+                        const body = createElement("div", "film-body");
+                        body.appendChild(createElement("h3", "film-title", getFilmDisplayTitle(film)));
+                        const actions = createElement("div", "film-actions");
+                        if (film.letterboxdUrl) {
+                            const letterboxd = createElement("a", "film-link", "Letterboxd");
+                            letterboxd.href = film.letterboxdUrl;
+                            letterboxd.target = "_blank";
+                            letterboxd.rel = "noopener";
+                            actions.appendChild(letterboxd);
+                        }
+                        if (actions.childNodes.length) {
+                            body.appendChild(actions);
+                        }
+                        const metaParts = [];
+                        if (film.year) metaParts.push(film.year);
+                        var filmDirector = getFilmDirector(film);
+                        if (filmDirector) metaParts.push(filmDirector);
+                        if (film.runtime) metaParts.push(film.runtime + " " + t("min"));
+                        if (metaParts.length) {
+                            body.appendChild(createElement("div", "film-meta", metaParts.join(" | ")));
+                        }
+                        var displayOverview = state.lang === "en" ? (film.overviewEn || film.overview) : film.overview;
+                        if (displayOverview) {
+                            body.appendChild(createElement("p", "film-blurb", displayOverview));
+                        }
+                        if (film.formatTags.length) {
+                            const tagRow = createElement("div", "tag-row");
+                            film.formatTags.forEach(function (tag) {
+                                tagRow.appendChild(createElement("span", "tag", tag));
+                            });
+                            body.appendChild(tagRow);
+                        }
+                        const showingsByCinema = new Map();
+                        film.showings.forEach(function (showing) {
+                            if (!showingsByCinema.has(showing.cinema)) {
+                                showingsByCinema.set(showing.cinema, []);
                             }
+                            showingsByCinema.get(showing.cinema).push(showing);
                         });
-                        row.appendChild(timeRow);
-                        body.appendChild(row);
-                    });
-
-                    card.appendChild(body);
-                    fragment.appendChild(card);
+                        showingsByCinema.forEach(function (showings, cinema) {
+                            showings.sort(compareShowings);
+                            const row = createElement("div", "showing-row");
+                            row.appendChild(createElement("div", "cinema-name", getCinemaDisplayName(cinema)));
+                            const timeRow = createElement("div", "time-row");
+                            showings.forEach(function (showing) {
+                                const includeDate = state.filters.date === "all";
+                                const label = includeDate && showing.dateText
+                                    ? formatDate(showing.dateText, false) + " " + (showing.showtime || t("tbd"))
+                                    : (showing.showtime || t("tbd"));
+                                if (showing.bookingUrl || showing.detailUrl) {
+                                    const link = createElement("a", "time-chip", label);
+                                    link.href = showing.bookingUrl || showing.detailUrl;
+                                    link.target = "_blank";
+                                    link.rel = "noopener";
+                                    if (showing.bookingUrl) {
+                                        link.classList.add("is-bookable");
+                                    }
+                                    timeRow.appendChild(link);
+                                } else {
+                                    timeRow.appendChild(createElement("span", "time-chip", label));
+                                }
+                            });
+                            row.appendChild(timeRow);
+                            body.appendChild(row);
+                        });
+                        card.appendChild(body);
+                        fragment.appendChild(card);
+                    } catch (e) {
+                        console.error("Error rendering film:", film, e);
+                    }
                 });
-
                 elements.filmResultsList.appendChild(fragment);
             }
-
             function renderFilmView(showings) {
                 elements.cinemaView.classList.add("is-hidden");
                 elements.filmView.classList.remove("is-hidden");
                 elements.filmResultsList.innerHTML = "";
                 elements.filmEmpty.classList.add("is-hidden");
                 elements.filmResultsMeta.textContent = getFiltersSummary();
-
                 if (!showings.length) {
                     elements.filmResultsCount.textContent = "0件の上映 (0 showings)";
                     elements.filmEmpty.classList.remove("is-hidden");
                     return;
                 }
-
                 const films = groupByFilm(showings);
                 if (state.sort === "soonest") {
                     films.sort(function (a, b) { return a.nextTime - b.nextTime; });
@@ -2313,51 +1935,16 @@
                 } else {
                     films.sort(function (a, b) { return a.nextTime - b.nextTime; });
                 }
-
                 renderFilmList(films, showings.length);
             }
-
-            function updateRegionMap() {
-                // Update selected state for each region area
-                elements.regionAreas.forEach(function (area) {
-                    const hasCinemas = area.getAttribute("data-has-cinemas") !== "false";
-                    const region = area.getAttribute("data-region");
-                    const isSelected = state.filters.region === region;
-                    area.classList.toggle("is-selected", hasCinemas && isSelected);
-
-                    // Update cinema count for this region
-                    const countEl = area.querySelector(".region-count");
-                    if (countEl) {
-                        if (!hasCinemas) {
-                            countEl.textContent = "";
-                        } else {
-                            const cinemaCount = cinemaCategories.find(function (cat) {
-                                return cat.name === region;
-                            });
-                            if (cinemaCount) {
-                                const count = cinemaCount.cinemas.length;
-                                countEl.textContent = count + " " + t("mapCinemaCount");
-                            }
-                        }
-                    }
-                });
-
-                // Show/hide reset button based on whether a region is selected
-                const hasSelection = state.filters.region !== "all";
-                elements.mapResetBtn.classList.toggle("is-hidden", !hasSelection);
-                elements.mapResetBtn.textContent = t("mapReset");
-            }
-
-            function render() {
+                         function render() {
                 const filtered = applyFilters(state.data);
-                updateRegionMap();
                 if (state.view === "film") {
                     renderFilmView(filtered);
                 } else {
                     renderCinemaView(filtered);
                 }
             }
-
             function fetchShowtimes() {
                 fetch(jsonUrl + "?t=" + Date.now(), { cache: "no-store" })
                     .then(function (response) {
@@ -2381,7 +1968,6 @@
                         elements.filmResultsList.appendChild(createElement("div", "loading", t("loadError")));
                     });
             }
-
             // Initialize language button state and UI text
             elements.langButtons.forEach(function (button) {
                 const isActive = button.getAttribute("data-lang") === state.lang;
@@ -2389,7 +1975,6 @@
             });
             updateUIText();
             updateTimeSelect();
-
             fetchShowtimes();
         });
     </script>
