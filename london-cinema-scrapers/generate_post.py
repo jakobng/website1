@@ -207,10 +207,10 @@ CINEMA_FILENAME_OVERRIDES = {
     "ActOne Cinema & Cafe": "actone",
     "Ciné-Real": "cinereal",
     "Coldharbour Blue": "coldharbourblue",
-    "Olympic Studios (Barnes)": "olympic",
+    "Olympic Studios (Barnes)": "olympicbarnes",
     "The Arzner": "arzner",
     "Kiln Theatre": "kiln",
-    "Riverside Studios": "riverside",
+    "Riverside Studios": "riversidestudios",
     "Peckhamplex": "peckhamplex",
     "The Cinema Museum": "cinemamuseum",
     # Curzon chain
