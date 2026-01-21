@@ -112,7 +112,18 @@ CINEMA_ADDRESSES = {
     "アップリンク吉祥寺": "東京都武蔵野市吉祥寺本町1-5-1 4F",
     "下北沢トリウッド": "東京都世田谷区代沢5-32-5 2F",
     "Morc阿佐ヶ谷": "東京都杉並区阿佐谷北2-12-19 B1F",
-    "シネマリス": "東京都新宿区新宿3-29-6"
+    "シネマリス": "東京都新宿区新宿3-29-6",
+    "アテネ・フランセ文化センター": "東京都千代田区神田駿河台2-11",
+    "シネマ・ノヴェチェント": "神奈川県横浜市西区久保町26-1 2F",
+    "シネマヴェーラ渋谷": "東京都渋谷区円山町1-5 4F",
+    "アンスティチュ・フランセ東京": "東京都新宿区市谷船河原町15",
+    "横浜シネマ・ジャック＆ベティ": "神奈川県横浜市中区若葉町3-51",
+    "神保町シアター": "東京都千代田区神田神保町1-23",
+    "角川シネマ有楽町": "東京都千代田区有楽町1-11-1 8F",
+    "kino cinéma新宿": "東京都新宿区新宿3-13-3 4F",
+    "kino cinéma立川髙島屋S.C.館": "東京都立川市曙町2-39-3 8F",
+    "横浜シネマリン": "神奈川県横浜市中区長者町6-95",
+    "Cinema Neko (シネマネコ)": "東京都青梅市西分町3-123"
 }
 
 CINEMA_ENGLISH_NAMES = {
@@ -144,7 +155,18 @@ CINEMA_ENGLISH_NAMES = {
     "アップリンク吉祥寺": "Uplink Kichijoji",
     "Morc阿佐ヶ谷": "Morc Asagaya",
     "下北沢トリウッド": "Tollywood",
-    "シネマリス": "CineMalice"
+    "シネマリス": "CineMalice",
+    "アテネ・フランセ文化センター": "Athénée Français Cultural Center",
+    "シネマ・ノヴェチェント": "Cinema Novecento",
+    "シネマヴェーラ渋谷": "Cinema Vera Shibuya",
+    "アンスティチュ・フランセ東京": "Institut Français Tokyo",
+    "横浜シネマ・ジャック＆ベティ": "Cinema Jack & Betty",
+    "神保町シアター": "Jinbocho Theatre",
+    "角川シネマ有楽町": "Kadokawa Cinema Yurakucho",
+    "kino cinéma新宿": "kino cinéma Shinjuku",
+    "kino cinéma立川髙島屋S.C.館": "kino cinéma Tachikawa",
+    "横浜シネマリン": "Yokohama Cinemarine",
+    "Cinema Neko (シネマネコ)": "Cinema Neko"
 }
 
 CINEMA_FILENAME_OVERRIDES = {
@@ -166,7 +188,18 @@ CINEMA_FILENAME_OVERRIDES = {
     "渋谷シネクイント": "cine_quinto",
     "K's Cinema": "ks_cinema",
     "K's Cinema (ケイズシネマ)": "ks_cinema",
-    "下高井戸シネマ": "shimotakaido"
+    "下高井戸シネマ": "shimotakaido",
+    "アテネ・フランセ文化センター": "Athenee",
+    "シネマ・ノヴェチェント": "novecento",
+    "シネマヴェーラ渋谷": "vera",
+    "アンスティチュ・フランセ東京": "francais",
+    "横浜シネマ・ジャック＆ベティ": "jackandbetty",
+    "神保町シアター": "jimbocho",
+    "角川シネマ有楽町": "kadokawa",
+    "kino cinéma新宿": "kinoshinjuku",
+    "kino cinéma立川髙島屋S.C.館": "kinotachikawa",
+    "横浜シネマリン": "cinemarine",
+    "Cinema Neko (シネマネコ)": "neko"
 }
 
 # --- Utility Functions ---
