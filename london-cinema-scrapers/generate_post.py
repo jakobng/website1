@@ -503,12 +503,12 @@ def creative_director_review(original_layout: Image.Image, date_text: str) -> st
         CRITICAL INSTRUCTIONS FOR THE PROMPT YOU WRITE:
         1.  **Format**: EXPLICITLY specify "Vertical Aspect Ratio (4:5)". The output must be a vertical poster composition.
         2.  **PRESERVE THE CORES**: Explicitly tell the generator: "The *centers* of the building photos are IMMUTABLE ANCHORS and must not be moved. HOWEVER, you MUST aggressively blend, melt, and fuse their *edges* into the new structure. Do not treat them as floating stickers; they must feel physically embedded in the new architecture."
-        3.  **Derive the Style**: Look at the collage. Are the cinemas retro? Modern? Wooden? Concrete? Colorful? **Create a visual style for the connecting structure that complements or strikingly contrasts with these specific buildings.** Do not default to one style; let the input images dictate the vibe.
+        3.  **Derive the Style**: Look at the collage with a generous and imaginative eye. You are the artist, you must see the best possible art within this collage. **Create a visual style for the connecting structure that complements or strikingly contrasts with these specific buildings.** Do not default to one style; let the input images dictate the vibe.
         4.  **Sophisticated Fusion**: Avoid cheesy tropes. NO film reels, NO movie projectors, NO popcorn, NO generic "Cyberpunk". 
         5.  **Structure**: Describe a structure where gravity and perspective are subjective. The roof of one building should morph seamlessly into the staircase of another, or the steps into a doorway. Use whatever language makes the most sense for the images you are seeing.
         6.  **Melt the Edges**: The *centers* of the photos are immutable, but their *edges* must dissolve naturally into the new structure. A brick wall should twist into a steel beam; a floor should curve up to become a ceiling.
         7.  **Atmosphere**: again, you look at the cutout images and you decide the vibe. But nothing cartoonish or unrealistic in texture. It should all be roughly photographic. But do play around widely within that. 
-        8.  **Text**: Include the text "LONDON CINEMA" and "{date_text}" integrated subtly (e.g., engraved, projected, or as a structural element).
+        8.  **Text**: Include the text "LONDON CINEMA" and "{date_text}" integrated into the existing buildings + chaos in a way that makes sense.
 
         Negative constraints: Do NOT move, resize, rotate, warp, or repaint the cutout centers. Do NOT replace the building interiors. Only dissolve/blend edges.
         
