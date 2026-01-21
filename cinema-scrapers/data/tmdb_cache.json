@@ -18368,5 +18368,603 @@
         "name": "France"
       }
     ]
+  },
+  "ミシェル・ルグラン 世界を変えた映画音楽家": {
+    "tmdb_id": 1280476,
+    "tmdb_title_jp": "ミシェル・ルグラン 世界を変えた映画音楽家",
+    "tmdb_title_en": "Once Upon a Time Michel Legrand",
+    "tmdb_title_original": "Il était une fois Michel Legrand",
+    "tmdb_original_language": "fr",
+    "overview": "フランスが生んだ偉大なジャズミュージシャンにして唯一無二の作曲家、ミシェル・ルグラン。2019年1月26日に他界するまでの75年の音楽人生のなかで、「シェルブールの雨傘」「ロシュフォールの恋人たち」といったジャック・ドゥミ監督とのコンビで名作を生み、「華麗なる賭け」などハリウッドでも活躍した。本作ではルグランの軌跡をたどるとともに、彼にとって人生最後の公演となった18年12月のフィルハーモニー・ド・パリでのコンサートの舞台裏に密着。晩年の姿を映し出すほか、スティングやクロード・ルルーシュら45名以上の音楽家や映画監督、ルグランの家族へのインタビューを交え、自他ともに一切の妥協を許さない厳格な姿勢、栄光の裏に隠された挫折と苦悩など、ルグランの知られざる素顔を余すことなく描き出す。",
+    "overview_en": "Michel Legrand, jazz musician and composer extraordinaire, has left his mark on the history of cinema, including the films of Jacques Demy, especially The Umbrellas of Cherbourg, the 60th anniversary of which is being celebrated in Cannes. Using never-before-seen archives and personal accounts, the film looks back on a lifetime dedicated to music, and the career of a man who served it masterfully to the very end.",
+    "poster_path": "/ccVja8Jo6KkAxoUo1hLsCFa2pMJ.jpg",
+    "backdrop_path": "/5tsdin7ddHvYYXtrzicAzcWl5GJ.jpg",
+    "release_date": "2024-12-04",
+    "director": "David Hertzog Dessites",
+    "director_jp": "David Hertzog Dessites",
+    "director_en": "David Hertzog Dessites",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 120,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1280476": {
+    "tmdb_id": 1280476,
+    "tmdb_title_jp": "ミシェル・ルグラン 世界を変えた映画音楽家",
+    "tmdb_title_en": "Once Upon a Time Michel Legrand",
+    "tmdb_title_original": "Il était une fois Michel Legrand",
+    "tmdb_original_language": "fr",
+    "overview": "フランスが生んだ偉大なジャズミュージシャンにして唯一無二の作曲家、ミシェル・ルグラン。2019年1月26日に他界するまでの75年の音楽人生のなかで、「シェルブールの雨傘」「ロシュフォールの恋人たち」といったジャック・ドゥミ監督とのコンビで名作を生み、「華麗なる賭け」などハリウッドでも活躍した。本作ではルグランの軌跡をたどるとともに、彼にとって人生最後の公演となった18年12月のフィルハーモニー・ド・パリでのコンサートの舞台裏に密着。晩年の姿を映し出すほか、スティングやクロード・ルルーシュら45名以上の音楽家や映画監督、ルグランの家族へのインタビューを交え、自他ともに一切の妥協を許さない厳格な姿勢、栄光の裏に隠された挫折と苦悩など、ルグランの知られざる素顔を余すことなく描き出す。",
+    "overview_en": "Michel Legrand, jazz musician and composer extraordinaire, has left his mark on the history of cinema, including the films of Jacques Demy, especially The Umbrellas of Cherbourg, the 60th anniversary of which is being celebrated in Cannes. Using never-before-seen archives and personal accounts, the film looks back on a lifetime dedicated to music, and the career of a man who served it masterfully to the very end.",
+    "poster_path": "/ccVja8Jo6KkAxoUo1hLsCFa2pMJ.jpg",
+    "backdrop_path": "/5tsdin7ddHvYYXtrzicAzcWl5GJ.jpg",
+    "release_date": "2024-12-04",
+    "director": "David Hertzog Dessites",
+    "director_jp": "David Hertzog Dessites",
+    "director_en": "David Hertzog Dessites",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 120,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "アニキ・ボボ": {
+    "tmdb_id": 81210,
+    "tmdb_title_jp": "Aniki-Bóbó",
+    "tmdb_title_en": "Aniki-Bóbó",
+    "tmdb_title_original": "Aniki-Bóbó",
+    "tmdb_original_language": "pt",
+    "overview": "",
+    "overview_en": "Two schoolboys, Carlitos and Eduardo, fight for the affection of a girl, Teresinha.",
+    "poster_path": "/wmxHHtntMYsKF2b0MNqbsUD3yqj.jpg",
+    "backdrop_path": "/vAzsFnjLY0Y4DCnLTuOho6dfJru.jpg",
+    "release_date": "1942-12-18",
+    "director": "Manoel de Oliveira",
+    "director_jp": "Manoel de Oliveira",
+    "director_en": "Manoel de Oliveira",
+    "genres": [
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Family"
+    ],
+    "runtime": 71,
+    "vote_average": 7.544,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      }
+    ]
+  },
+  "mid90s ミッドナインティーズ": {
+    "tmdb_id": 437586,
+    "tmdb_title_jp": "mid90s ミッドナインティーズ",
+    "tmdb_title_en": "mid90s",
+    "tmdb_title_original": "mid90s",
+    "tmdb_original_language": "en",
+    "overview": "1990年代半ばのロサンゼルス。13歳のスティーヴィーは兄のイアン、⺟のダブニーと暮らしている。⼩柄なスティーヴィーは⼒の強い兄に全く⻭が⽴たず、早く⼤きくなって彼を⾒返してやりたいと願っていた。そんなある⽇、街のスケートボード・ショップを訪れたスティーヴィーは、店に出⼊りする少年たちと知り合う。彼らは驚くほど⾃由でかっこよく、スティーヴィーは憧れのような気持ちで、そのグループに近付こうとするが…。",
+    "overview_en": "In 1990s Los Angeles, a 13-year-old spends his summer navigating between a troubled home life and a crew of new friends he meets at a skate shop.",
+    "poster_path": "/9Tw0Y3DK5kGIU9X1yw3Q9gCkOlb.jpg",
+    "backdrop_path": "/BOeORWljjIPGuCwUgLls24ctF3.jpg",
+    "release_date": "2018-10-19",
+    "director": "ジョナ・ヒル",
+    "director_jp": "ジョナ・ヒル",
+    "director_en": "Jonah Hill",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 86,
+    "vote_average": 7.486,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:437586": {
+    "tmdb_id": 437586,
+    "tmdb_title_jp": "mid90s ミッドナインティーズ",
+    "tmdb_title_en": "mid90s",
+    "tmdb_title_original": "mid90s",
+    "tmdb_original_language": "en",
+    "overview": "1990年代半ばのロサンゼルス。13歳のスティーヴィーは兄のイアン、⺟のダブニーと暮らしている。⼩柄なスティーヴィーは⼒の強い兄に全く⻭が⽴たず、早く⼤きくなって彼を⾒返してやりたいと願っていた。そんなある⽇、街のスケートボード・ショップを訪れたスティーヴィーは、店に出⼊りする少年たちと知り合う。彼らは驚くほど⾃由でかっこよく、スティーヴィーは憧れのような気持ちで、そのグループに近付こうとするが…。",
+    "overview_en": "In 1990s Los Angeles, a 13-year-old spends his summer navigating between a troubled home life and a crew of new friends he meets at a skate shop.",
+    "poster_path": "/9Tw0Y3DK5kGIU9X1yw3Q9gCkOlb.jpg",
+    "backdrop_path": "/BOeORWljjIPGuCwUgLls24ctF3.jpg",
+    "release_date": "2018-10-19",
+    "director": "ジョナ・ヒル",
+    "director_jp": "ジョナ・ヒル",
+    "director_en": "Jonah Hill",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 86,
+    "vote_average": 7.486,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "KIDS／キッズ": {
+    "tmdb_id": 9344,
+    "tmdb_title_jp": "KIDS/キッズ",
+    "tmdb_title_en": "Kids",
+    "tmdb_title_original": "Kids",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A day in the life of a group of teens as they travel around New York City skating, drinking, smoking and deflowering virgins.",
+    "poster_path": "/8qV8hUVCUnFIQKewzlhaFWhdszK.jpg",
+    "backdrop_path": "/c6TjV0i5NzUV4MF8N5wxBW7NcrW.jpg",
+    "release_date": "1995-07-28",
+    "director": "Larry Clark",
+    "director_jp": "Larry Clark",
+    "director_en": "Larry Clark",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 91,
+    "vote_average": 6.892,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:9344": {
+    "tmdb_id": 9344,
+    "tmdb_title_jp": "KIDS/キッズ",
+    "tmdb_title_en": "Kids",
+    "tmdb_title_original": "Kids",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A day in the life of a group of teens as they travel around New York City skating, drinking, smoking and deflowering virgins.",
+    "poster_path": "/8qV8hUVCUnFIQKewzlhaFWhdszK.jpg",
+    "backdrop_path": "/c6TjV0i5NzUV4MF8N5wxBW7NcrW.jpg",
+    "release_date": "1995-07-28",
+    "director": "Larry Clark",
+    "director_jp": "Larry Clark",
+    "director_en": "Larry Clark",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 91,
+    "vote_average": 6.892,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "タクシードライバー": {
+    "tmdb_id": 103,
+    "tmdb_title_jp": "タクシードライバー",
+    "tmdb_title_en": "Taxi Driver",
+    "tmdb_title_original": "Taxi Driver",
+    "tmdb_original_language": "en",
+    "overview": "ニューヨークの夜を走るひとりのタクシードライバーを主人公に、現代都市に潜む狂気と混乱を描き出した、監督マーティン・スコセッシ×主演ロバート・デ・ニーロの、アメリカン・ニューシネマの傑作。ベトナム帰りの青年トラヴィス・ビックルは夜の街をタクシーで流しながら、世界の不浄さに苛立ちを感じていた。大統領候補の選挙事務所に勤めるベッツィと親しくなるトラヴィスだったが、彼女をポルノ映画館に誘ったことで絶交されてしまう。やがて、闇ルートから銃を手に入れたトラヴィスは自己鍛錬を始めるが、そんな彼の胸中にひとつの計画が沸き上がる……。",
+    "overview_en": "Suffering from insomnia, disturbed loner Travis Bickle takes a job as a New York City cabbie, haunting the streets nightly, growing increasingly detached from reality as he dreams of cleaning up the filthy city.",
+    "poster_path": "/yS66Q86Nfxs279o3kVZV29DEJ2Z.jpg",
+    "backdrop_path": "/fhejfyX20tyF0s65CIf27wOuH9G.jpg",
+    "release_date": "1976-02-09",
+    "director": "マーティン・スコセッシ",
+    "director_jp": "マーティン・スコセッシ",
+    "director_en": "Martin Scorsese",
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 114,
+    "vote_average": 8.129,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:103": {
+    "tmdb_id": 103,
+    "tmdb_title_jp": "タクシードライバー",
+    "tmdb_title_en": "Taxi Driver",
+    "tmdb_title_original": "Taxi Driver",
+    "tmdb_original_language": "en",
+    "overview": "ニューヨークの夜を走るひとりのタクシードライバーを主人公に、現代都市に潜む狂気と混乱を描き出した、監督マーティン・スコセッシ×主演ロバート・デ・ニーロの、アメリカン・ニューシネマの傑作。ベトナム帰りの青年トラヴィス・ビックルは夜の街をタクシーで流しながら、世界の不浄さに苛立ちを感じていた。大統領候補の選挙事務所に勤めるベッツィと親しくなるトラヴィスだったが、彼女をポルノ映画館に誘ったことで絶交されてしまう。やがて、闇ルートから銃を手に入れたトラヴィスは自己鍛錬を始めるが、そんな彼の胸中にひとつの計画が沸き上がる……。",
+    "overview_en": "Suffering from insomnia, disturbed loner Travis Bickle takes a job as a New York City cabbie, haunting the streets nightly, growing increasingly detached from reality as he dreams of cleaning up the filthy city.",
+    "poster_path": "/yS66Q86Nfxs279o3kVZV29DEJ2Z.jpg",
+    "backdrop_path": "/fhejfyX20tyF0s65CIf27wOuH9G.jpg",
+    "release_date": "1976-02-09",
+    "director": "マーティン・スコセッシ",
+    "director_jp": "マーティン・スコセッシ",
+    "director_en": "Martin Scorsese",
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 114,
+    "vote_average": 8.129,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "DREAMS": null,
+  "LOVE": {
+    "tmdb_id": 663127,
+    "tmdb_title_jp": "Love",
+    "tmdb_title_en": "Love",
+    "tmdb_title_original": "Love",
+    "tmdb_original_language": "id",
+    "overview": "",
+    "overview_en": "Love is a 2008 Indonesian anthology romance film directed by Kabir Bhatia as a remake of the 2006 film Cinta .  In Jakarta, five couples of varying ages and backgrounds experience the different stages of romantic love, from its giddy start to its painful end.",
+    "poster_path": "/nLus3Lg9j43zIFzv0QjUyrSloE5.jpg",
+    "backdrop_path": "/gjkhVFRX9yJbQVZvPcDfjbegCBC.jpg",
+    "release_date": "2008-02-14",
+    "director": "Kabir Bhatia",
+    "director_jp": "Kabir Bhatia",
+    "director_en": "Kabir Bhatia",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 126,
+    "vote_average": 4.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ID",
+        "name": "Indonesia"
+      }
+    ]
+  },
+  "tmdb:663127": {
+    "tmdb_id": 663127,
+    "tmdb_title_jp": "Love",
+    "tmdb_title_en": "Love",
+    "tmdb_title_original": "Love",
+    "tmdb_original_language": "id",
+    "overview": "",
+    "overview_en": "Love is a 2008 Indonesian anthology romance film directed by Kabir Bhatia as a remake of the 2006 film Cinta .  In Jakarta, five couples of varying ages and backgrounds experience the different stages of romantic love, from its giddy start to its painful end.",
+    "poster_path": "/nLus3Lg9j43zIFzv0QjUyrSloE5.jpg",
+    "backdrop_path": "/gjkhVFRX9yJbQVZvPcDfjbegCBC.jpg",
+    "release_date": "2008-02-14",
+    "director": "Kabir Bhatia",
+    "director_jp": "Kabir Bhatia",
+    "director_en": "Kabir Bhatia",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 126,
+    "vote_average": 4.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ID",
+        "name": "Indonesia"
+      }
+    ]
+  },
+  "SEX": null,
+  "夜勤事件［0128完成披露］": {
+    "tmdb_id": 1567203,
+    "tmdb_title_jp": "夜勤事件",
+    "tmdb_title_en": "The Convenience Store",
+    "tmdb_title_original": "夜勤事件",
+    "tmdb_original_language": "ja",
+    "overview": "その恐怖は、深夜のコンビニから始まる…実況動画は再生回数6,000万回以上！Z世代をざわつかせたホラーゲームが遂に実写映画化！",
+    "overview_en": "Tazuru is a college student working the night shift alone in a convenience store. The manager of the store, who has been missing for days, is found dead in the basement, with his eyes gouged out. Tazuru tells the police the creepy events that unfolded on the four previous nights: getting sent mysterious SD cards with disturbing videos on them, the door chime ringing with no reason, weird things on security camera, being visited by a weird old lady looking for her grandson and a creepy ghost boy. Inspector Sawatari is initially incredulous, but then similar events start happening to him too.",
+    "poster_path": "/7wL8GlTbd9FjuBauIBUMiqfPkEo.jpg",
+    "backdrop_path": "/fPRfRAPM26KUFE1IKM0d3cywNWN.jpg",
+    "release_date": "2026-02-20",
+    "director": "永江二朗",
+    "director_jp": "永江二朗",
+    "director_en": "Jirô Nagae",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 83,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "カップルの解剖学": {
+    "tmdb_id": 70921,
+    "tmdb_title_jp": "Anatomie d'un rapport",
+    "tmdb_title_en": "Anatomy of a Relationship",
+    "tmdb_title_original": "Anatomie d'un rapport",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A woman's feminist awakening drives an intellectual couple to a relationship crisis.",
+    "poster_path": "/7PsmtIODGQB0GdJ2oDKrrKWJ2yZ.jpg",
+    "backdrop_path": null,
+    "release_date": "1976-09-29",
+    "director": "Antonietta Pizzorno",
+    "director_jp": "Antonietta Pizzorno",
+    "director_en": "Antonietta Pizzorno",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 79,
+    "vote_average": 5.077,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "メドール〜": {
+    "tmdb_id": 270882,
+    "tmdb_title_jp": "L'Empire de Médor",
+    "tmdb_title_en": "L'Empire de Médor",
+    "tmdb_title_original": "L'Empire de Médor",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "L'empire de medor is a satirical voyage of discovery through the universe of the dog lover. By systematically scrutinising the industry that capitalises on the love for man's best friend, Moullet has made an absurdist film that shows how the love of animals has become a kind of surrogate religion for many people. He takes us to canine beauticians and beauty contests, and explores the field from dried dog food to advanced super-duper pooper-scoopers. By showing in great detail all those gadgets and gimmicks to make the lives of pets as agreeable as possible, Moullet vents his barely concealed criticism of consumer society.",
+    "poster_path": "/jUkrtsUHcwNRGOD5tjgTYfOOxgd.jpg",
+    "backdrop_path": null,
+    "release_date": "1986-05-21",
+    "director": "Luc Moullet",
+    "director_jp": "Luc Moullet",
+    "director_en": "Luc Moullet",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 13,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "インド映画同好会支援募金�А屮薀好肇侫 璽沺次廛泪汽蘊絮�": {
+    "tmdb_id": 613703,
+    "tmdb_title_jp": "கடைசி விவசாயி",
+    "tmdb_title_en": "Kadaisi Vivasayi",
+    "tmdb_title_original": "கடைசி விவசாயி",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "Maayandi, the only farmer in a village that has abandoned farming, is charged with a petty case that leads to his imprisonment.",
+    "poster_path": "/8TNnEojAEc8Kt6HMWgQNRPcL9J3.jpg",
+    "backdrop_path": "/nTFleA0vJNfphRaurvDoItnzTkr.jpg",
+    "release_date": "2022-02-11",
+    "director": "M. Manikandan",
+    "director_jp": "M. Manikandan",
+    "director_en": "M. Manikandan",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 145,
+    "vote_average": 8.571,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "tmdb:81210": {
+    "tmdb_id": 81210,
+    "tmdb_title_jp": "Aniki-Bóbó",
+    "tmdb_title_en": "Aniki-Bóbó",
+    "tmdb_title_original": "Aniki-Bóbó",
+    "tmdb_original_language": "pt",
+    "overview": "",
+    "overview_en": "Two schoolboys, Carlitos and Eduardo, fight for the affection of a girl, Teresinha.",
+    "poster_path": "/wmxHHtntMYsKF2b0MNqbsUD3yqj.jpg",
+    "backdrop_path": "/vAzsFnjLY0Y4DCnLTuOho6dfJru.jpg",
+    "release_date": "1942-12-18",
+    "director": "Manoel de Oliveira",
+    "director_jp": "Manoel de Oliveira",
+    "director_en": "Manoel de Oliveira",
+    "genres": [
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Family"
+    ],
+    "runtime": 71,
+    "vote_average": 7.544,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PT",
+        "name": "Portugal"
+      }
+    ]
+  },
+  "tmdb:1567203": {
+    "tmdb_id": 1567203,
+    "tmdb_title_jp": "夜勤事件",
+    "tmdb_title_en": "The Convenience Store",
+    "tmdb_title_original": "夜勤事件",
+    "tmdb_original_language": "ja",
+    "overview": "その恐怖は、深夜のコンビニから始まる…実況動画は再生回数6,000万回以上！Z世代をざわつかせたホラーゲームが遂に実写映画化！",
+    "overview_en": "Tazuru is a college student working the night shift alone in a convenience store. The manager of the store, who has been missing for days, is found dead in the basement, with his eyes gouged out. Tazuru tells the police the creepy events that unfolded on the four previous nights: getting sent mysterious SD cards with disturbing videos on them, the door chime ringing with no reason, weird things on security camera, being visited by a weird old lady looking for her grandson and a creepy ghost boy. Inspector Sawatari is initially incredulous, but then similar events start happening to him too.",
+    "poster_path": "/7wL8GlTbd9FjuBauIBUMiqfPkEo.jpg",
+    "backdrop_path": "/fPRfRAPM26KUFE1IKM0d3cywNWN.jpg",
+    "release_date": "2026-02-20",
+    "director": "永江二朗",
+    "director_jp": "永江二朗",
+    "director_en": "Jirô Nagae",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 83,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:70921": {
+    "tmdb_id": 70921,
+    "tmdb_title_jp": "Anatomie d'un rapport",
+    "tmdb_title_en": "Anatomy of a Relationship",
+    "tmdb_title_original": "Anatomie d'un rapport",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A woman's feminist awakening drives an intellectual couple to a relationship crisis.",
+    "poster_path": "/7PsmtIODGQB0GdJ2oDKrrKWJ2yZ.jpg",
+    "backdrop_path": null,
+    "release_date": "1976-09-29",
+    "director": "Antonietta Pizzorno",
+    "director_jp": "Antonietta Pizzorno",
+    "director_en": "Antonietta Pizzorno",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 79,
+    "vote_average": 5.077,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:270882": {
+    "tmdb_id": 270882,
+    "tmdb_title_jp": "L'Empire de Médor",
+    "tmdb_title_en": "L'Empire de Médor",
+    "tmdb_title_original": "L'Empire de Médor",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "L'empire de medor is a satirical voyage of discovery through the universe of the dog lover. By systematically scrutinising the industry that capitalises on the love for man's best friend, Moullet has made an absurdist film that shows how the love of animals has become a kind of surrogate religion for many people. He takes us to canine beauticians and beauty contests, and explores the field from dried dog food to advanced super-duper pooper-scoopers. By showing in great detail all those gadgets and gimmicks to make the lives of pets as agreeable as possible, Moullet vents his barely concealed criticism of consumer society.",
+    "poster_path": "/jUkrtsUHcwNRGOD5tjgTYfOOxgd.jpg",
+    "backdrop_path": null,
+    "release_date": "1986-05-21",
+    "director": "Luc Moullet",
+    "director_jp": "Luc Moullet",
+    "director_en": "Luc Moullet",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 13,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:613703": {
+    "tmdb_id": 613703,
+    "tmdb_title_jp": "கடைசி விவசாயி",
+    "tmdb_title_en": "Kadaisi Vivasayi",
+    "tmdb_title_original": "கடைசி விவசாயி",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "Maayandi, the only farmer in a village that has abandoned farming, is charged with a petty case that leads to his imprisonment.",
+    "poster_path": "/8TNnEojAEc8Kt6HMWgQNRPcL9J3.jpg",
+    "backdrop_path": "/nTFleA0vJNfphRaurvDoItnzTkr.jpg",
+    "release_date": "2022-02-11",
+    "director": "M. Manikandan",
+    "director_jp": "M. Manikandan",
+    "director_en": "M. Manikandan",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 145,
+    "vote_average": 8.571,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
   }
 }

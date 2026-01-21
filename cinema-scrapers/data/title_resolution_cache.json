@@ -1772,5 +1772,70 @@
     "original_title": "百万円と苦虫女",
     "director": "Yuki Tanada",
     "country": "Japan"
+  },
+  "アニキ・ボボ": {
+    "english_title": "Aniki Bóbó",
+    "release_year": 1942,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Aniki Bóbó",
+    "director": "Manoel de Oliveira",
+    "country": "Portugal"
+  },
+  "DREAMS": {
+    "english_title": "Dreams",
+    "release_year": 1990,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "夢",
+    "director": "Akira Kurosawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "SEX": {
+    "english_title": "Sex",
+    "release_year": 1988,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "SEX",
+    "director": "Hitoshi Yazaki",
+    "country": "Japan",
+    "failed": true
+  },
+  "夜勤事件［0128完成披露］": {
+    "english_title": "The Convenience Store",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "夜勤事件",
+    "director": "Jiro Nagae",
+    "country": "Japan"
+  },
+  "カップルの解剖学": {
+    "english_title": "Anatomy of a Relationship",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Anatomie d'un rapport",
+    "director": "Luc Moullet, Antonietta Pizzorno",
+    "country": "France"
+  },
+  "メドール〜": {
+    "english_title": "The Medor Empire",
+    "release_year": 1986,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "L'Empire de Médor",
+    "director": "Luc Moullet",
+    "country": "France"
+  },
+  "インド映画同好会支援募金�А屮薀好肇侫 璽沺次廛泪汽蘊絮�": {
+    "english_title": "The Last Farmer",
+    "release_year": 2021,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Kadaisi Vivasayi",
+    "director": "M. Manikandan",
+    "country": "India"
   }
 }
