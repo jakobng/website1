@@ -204,7 +204,7 @@ def clean_title_for_tmdb(title: str) -> str:
     prefix_patterns = [
         r"^(Narrow Margin presents|In Focus|Crafty Movie Night|Member's Request|Staff Pick|Relaxed Screening|Family Screening|Preview|Premiere|UK Premiere)[:\s–-]+",
         r"^(Throwback|Babykino|Carers & Babies|Toddler Club|Club Room|Dog-Friendly|Dog-Friendly Screening|Sensory Friendly|HOH|Caption|Autism Friendly)[:\s–-]+",
-        r"^(DOCHOUSE|LSFF|ANZ FILM FESTIVAL|ANZ FF|RBO Live|RBO Encore|Met Opera Live|Met Opera Encore|NT Live|National Theatre Live|Exhibition on Screen|Royal Ballet|Royal Opera|Bolshoi Ballet)[:\s–-]+",
+        r"^(DOCHOUSE|LSFF|ANZ FILM FESTIVAL|ANZ FF|RBO Live|RBO Encore|Met Opera Live|Met Opera Encore|Exhibition on Screen|Royal Ballet|Royal Opera|Bolshoi Ballet)[:\s–-]+",
         r"^(Member's Preview|Members' Preview|Mystery Movie|Secret Movie|Surprise Movie)[:\s–-]+",
         r"^(Bar Trash|OffBeat|Pink Palace|Films For Workers|Coming Up|London Short Film Festival)[:\s–-]+",
         r"^(Phoenix Classics|Cine-Real presents|Green Screen)[:\s–-]+",
@@ -340,9 +340,6 @@ BROADCAST_BRAND_REQUIREMENTS = [
 ]
 
 COLON_SPLIT_PREFIX_KEYWORDS = [
-    "nt live",
-    "national theatre live",
-    "national theatre live presents",
     "met opera",
     "met opera live",
     "met opera encore",
@@ -428,6 +425,30 @@ def is_nt_live_title(title: str) -> bool:
     if not norm:
         return False
     return "nt live" in norm or "national theatre live" in norm
+
+def is_nt_live_listing(item: dict) -> bool:
+    if not item:
+        return False
+    title = item.get("movie_title") or item.get("movie_title_en") or ""
+    if is_nt_live_title(title):
+        return True
+    url_fields = [
+        item.get("detail_page_url"),
+        item.get("booking_url"),
+        item.get("official_site"),
+    ]
+    for url in url_fields:
+        if not url:
+            continue
+        lowered = str(url).lower()
+        if "nt-live" in lowered or "national-theatre-live" in lowered:
+            return True
+    format_tags = item.get("format_tags") or []
+    if isinstance(format_tags, list):
+        for tag in format_tags:
+            if is_nt_live_title(str(tag)):
+                return True
+    return False
 
 def get_broadcast_required_tokens(title: str):
     norm = normalize_title_for_match(title)
@@ -978,6 +999,8 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     # Group by movie title to avoid duplicate API calls
     # We now also consider year/runtime in the key or lookups
     unique_map = {} # title -> {year, runtime, count}
+    skip_tmdb_titles = set()
+    skip_tmdb_items = set()
     
     # Force retry for previously failed items by clearing 'None' from cache
     initial_cache_size = len(cache)
@@ -988,6 +1011,10 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     for item in listings:
         title = item.get("movie_title")
         if not title:
+            continue
+        if is_nt_live_listing(item):
+            skip_tmdb_titles.add(title)
+            skip_tmdb_items.add(id(item))
             continue
             
         year = parse_year_value(item.get("year"))
@@ -1012,6 +1039,10 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     print(f"   Unique films to process: {len(unique_map)}")
 
     updated_cache = False
+    for title in skip_tmdb_titles:
+        if title in cache:
+            cache.pop(title, None)
+            updated_cache = True
 
     for title, meta in unique_map.items():
         # Pick best representative year/runtime (heuristics)
@@ -1054,6 +1085,8 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
 
     # Apply cached data to listings
     for item in listings:
+        if id(item) in skip_tmdb_items:
+            continue
         t = item["movie_title"]
         if t in cache and cache[t]:
             d = cache[t]

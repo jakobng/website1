@@ -776,7 +776,7 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
 
 def main():
     from PIL import ImageEnhance
-    print("--- Starting London Movie Spotlight Generation (V2) ---")
+    print("--- Starting London Today's Film Selection (V2) ---")
     
     if OUTPUT_DIR.exists():
         for f in OUTPUT_DIR.glob("post_v2_*.png"):
@@ -876,7 +876,7 @@ def main():
     
     print(f"📸 Generating {len(slide_data)} poster slides...")
 
-    caption_lines = [f"🎬 London Movie Spotlights - {get_display_date_str()}\n"]
+    caption_lines = [f"🎬 London Today's Film Selection - {get_display_date_str()}\n"]
     for i, item in enumerate(slide_data):
         film, img = item['film'], item['img']
         try:
@@ -907,7 +907,7 @@ def main():
         
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write(full_caption)
-    print("Done. V2 Movie Spotlight Generated.")
+    print("Done. V2 Today's Film Selection generated.")
 
 if __name__ == "__main__":
     main()
