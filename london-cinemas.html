@@ -106,6 +106,7 @@
 
         .header-right {
             justify-content: flex-end;
+            gap: 12px;
         }
 
         .site-credit {
@@ -116,16 +117,13 @@
         .ig-link {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            justify-content: center;
+            padding: 6px;
             color: var(--accent-strong);
         }
         .ig-link svg {
-            width: 16px;
-            height: 16px;
+            width: 22px;
+            height: 22px;
         }
         .ig-link:hover {
             text-decoration: underline;
@@ -715,19 +713,18 @@
         <header class="page-header">
             <div class="header-left">
                 <div class="site-credit">Site made by Leo Nelki</div>
-                <a class="ig-link" href="https://www.instagram.com/londoncinemashowtimes/" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
-                        <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"></circle>
-                        <circle cx="17.2" cy="6.8" r="1.4" fill="currentColor"></circle>
-                    </svg>
-                    <span>IG @londoncinemashowtimes</span>
-                </a>
             </div>
             <div class="header-center">
                 <h1>London Cinema Showtimes</h1>
             </div>
             <div class="header-right">
+                <a class="ig-link" href="https://www.instagram.com/londoncinemashowtimes/" target="_blank" rel="noopener" aria-label="London Cinema Showtimes Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                        <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                        <circle cx="17.2" cy="6.8" r="1.4" fill="currentColor"></circle>
+                    </svg>
+                </a>
                 <div class="toggle" role="group" aria-label="View toggles">
                     <button class="toggle-btn is-active" data-view="cinema" type="button">Cinema view</button>
                     <button class="toggle-btn" data-view="film" type="button">Film view</button>
@@ -824,7 +821,6 @@
         <footer class="page-footer">
             <p>Listings are scraped from cinema sites. Always double-check the booking page for last-minute changes.</p>
             <p><a href="london-cinema-scrapers/data/showtimes.json">Download the raw showtimes JSON</a>.</p>
-            <p><a href="https://www.instagram.com/londoncinemashowtimes/" target="_blank" rel="noopener">Instagram @londoncinemashowtimes</a></p>
         </footer>
     </main>
 
