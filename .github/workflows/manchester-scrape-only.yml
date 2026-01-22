@@ -1,0 +1,54 @@
+name: Manchester - Scrape Only
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-only:
+    runs-on: ubuntu-latest
+
+    # Run all steps inside the 'manchester_cinema_scrapers' folder
+    defaults:
+      run:
+        working-directory: ./manchester_cinema_scrapers
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Set Timezone to UK (GMT/BST)
+      - name: Set Timezone
+        run: sudo timedatectl set-timezone Europe/London
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          sudo apt-get install -y fonts-noto-cjk
+
+      - name: Run Scraper
+        run: python main_scraper.py
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Commit & Push Data
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git add data/*.json
+          git commit -m "Auto-Update: manchester scrape data" || echo "No changes to commit"
+          git pull --rebase -X theirs origin main
+          git push
