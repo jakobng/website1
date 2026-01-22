@@ -352,7 +352,7 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
-        if target in f_name:
+        if target == f_name:
             matches.append(f)
 
     if matches:
@@ -374,12 +374,8 @@ def get_cutout_path(cinema_name: str) -> Path | None:
     for f in candidates:
         if f.suffix.lower() not in ['.jpg', '.jpeg', '.png']: continue
         f_name = normalize_name(f.stem)
-        if target in f_name:
+        if target == f_name:
             matches.append(f)
-        else:
-            ratio = difflib.SequenceMatcher(None, target, f_name).ratio()
-            if ratio > 0.6:
-                matches.append(f)
 
     if matches:
         return random.choice(matches)
