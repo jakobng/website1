@@ -1,0 +1,55 @@
+name: Instagram Upload
+
+on:
+  workflow_dispatch:
+    inputs:
+      location:
+        description: 'Location (Tokyo or London)'
+        required: true
+        default: 'Tokyo'
+        type: choice
+        options:
+          - Tokyo
+          - London
+      post_type:
+        description: 'Post Type (cinema or movie)'
+        required: true
+        default: 'cinema'
+        type: choice
+        options:
+          - cinema
+          - movie
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install requests
+
+      # --- TOKYO UPLOAD ---
+      - name: Upload Tokyo Post
+        if: inputs.location == 'Tokyo'
+        working-directory: ./cinema-scrapers
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python upload_to_instagram.py --type ${{ inputs.post_type }}
+
+      # --- LONDON UPLOAD ---
+      - name: Upload London Post
+        if: inputs.location == 'London'
+        working-directory: ./london-cinema-scrapers
+        env:
+          IG_USER_ID: ${{ secrets.LONDON_IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.LONDON_IG_ACCESS_TOKEN }}
+        run: python upload_to_instagram.py --type ${{ inputs.post_type }}
