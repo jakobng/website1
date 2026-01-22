@@ -1837,5 +1837,109 @@
     "original_title": "Kadaisi Vivasayi",
     "director": "M. Manikandan",
     "country": "India"
+  },
+  "【字幕】ﾏｰｽﾞ･ｴｸｽﾌﾟﾚｽ[0129先行]": {
+    "english_title": "Mars Express",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mars Express",
+    "director": "Jérémie Périn",
+    "country": "France"
+  },
+  "天文館探偵物語": {
+    "english_title": "Tenmonkan Detective Story",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "天文館探偵物語",
+    "director": "Ryo Moroe",
+    "country": "Japan",
+    "failed": true
+  },
+  "韓国ミュージカル ON SCREEN『笑う男』（字幕）": {
+    "english_title": "The Man Who Laughs",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "웃는 남자",
+    "director": "Kwon Eun-ah",
+    "country": "South Korea",
+    "failed": true
+  },
+  "LIVE IN THEATER 「BATTLE OF TOKYO -うつくしき嘘-」": {
+    "english_title": "LIVE IN THEATER \"BATTLE OF TOKYO -Beautiful Lies-\"",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "LIVE IN THEATER 「BATTLE OF TOKYO -うつくしき嘘-」",
+    "director": "Norihisa Hiranuma",
+    "country": "Japan",
+    "failed": true
+  },
+  "【マッツ・ミケルセン生誕60周年祭】フレッシュ・デリ": {
+    "english_title": "The Green Butchers",
+    "release_year": 2003,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "De grønne slagtere",
+    "director": "Anders Thomas Jensen",
+    "country": "Denmark"
+  },
+  "走り来る男": {
+    "english_title": "Thick Skinned",
+    "release_year": 1989,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Peaux de vaches",
+    "director": "Patricia Mazuy",
+    "country": "France"
+  },
+  "防寒帽": {
+    "english_title": "Mountain Pass",
+    "release_year": 1978,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Passe montagne",
+    "director": "Jean-François Stévenin",
+    "country": "France"
+  },
+  "最初の年": {
+    "english_title": "The First Year",
+    "release_year": 1972,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "El primer año",
+    "director": "Patricio Guzmán",
+    "country": "Chile",
+    "failed": true
+  },
+  "石炭の値打ち": {
+    "english_title": "The Price of Coal",
+    "release_year": 1977,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Price of Coal",
+    "director": "Ken Loach",
+    "country": "United Kingdom",
+    "failed": true
+  },
+  "ELECTRIC DRAGON 80000V": {
+    "english_title": "Electric Dragon 80,000V",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "エレクトリック・ドラゴン 80000V",
+    "director": "Sogo Ishii",
+    "country": "Japan"
+  },
+  "君と私": {
+    "english_title": "The Dream Songs",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "너와 나",
+    "director": "Cho Hyun-chul",
+    "country": "South Korea"
   }
 }
