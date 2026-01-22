@@ -618,14 +618,54 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
             f_cin = fonts['cinema']
             f_time = fonts['times']
         
+        # Calculate how many cinemas can fit per column
+        line_height_cinema = 35
+        line_height_showtime = 30
+        gap_between_cinemas = 15
+        
+        def estimate_cinema_height(cin):
+            """Estimate height needed for a cinema entry."""
+            return line_height_cinema + len(schedule_map[cin]) * line_height_showtime + gap_between_cinemas
+        
+        # Split cinemas evenly between columns
+        max_cinemas_per_col = max(1, len(sorted_cinemas) // 2)
+        col1_cinemas = sorted_cinemas[:max_cinemas_per_col]
+        col2_cinemas = sorted_cinemas[max_cinemas_per_col:]
+        
+        # Check if we need to truncate and add ellipsis
+        max_height_per_col = available_space - 20  # Leave some margin
+        col1_display = []
+        col2_display = []
+        col1_has_more = False
+        col2_has_more = False
+        
+        # Process column 1
+        col1_y = 0
+        for cin in col1_cinemas:
+            needed = estimate_cinema_height(cin)
+            if col1_y + needed <= max_height_per_col:
+                col1_display.append(cin)
+                col1_y += needed
+            else:
+                col1_has_more = True
+                break
+        
+        # Process column 2
+        col2_y = 0
+        for cin in col2_cinemas:
+            needed = estimate_cinema_height(cin)
+            if col2_y + needed <= max_height_per_col:
+                col2_display.append(cin)
+                col2_y += needed
+            else:
+                col2_has_more = True
+                break
+        
+        # Draw column 1
         curr_x, curr_y = col1_x, cursor_y + 10
-        for i, cin in enumerate(sorted_cinemas):
-            remaining = height - curr_y - 50
-            if i > 0 and curr_x == col1_x and (i >= len(sorted_cinemas)/2 or remaining < 200):
-                curr_x = col2_x
-                curr_y = cursor_y + 10
+        for cin in col1_display:
             draw.text((curr_x, curr_y), cin, font=f_cin, fill=(255,255,255))
-            curr_y += 35
+            curr_y += line_height_cinema
             for d_key in sorted(schedule_map[cin].keys()):
                 times_str = ", ".join(schedule_map[cin][d_key])
                 is_today = (d_key == primary_date)
@@ -634,8 +674,34 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
                 draw.text((curr_x, curr_y), date_label, font=f_time, fill=lbl_color)
                 lbl_w = draw.textlength(date_label, font=f_time)
                 draw.text((curr_x + lbl_w + 10, curr_y), times_str, font=f_time, fill=(230,230,230))
-                curr_y += 30
-            curr_y += 15
+                curr_y += line_height_showtime
+            curr_y += gap_between_cinemas
+        
+        # Add ellipsis for column 1 if needed
+        if col1_has_more:
+            ellipsis_y = min(curr_y, height - 50)
+            draw.text((curr_x, ellipsis_y), "...", font=f_time, fill=(180, 180, 180))
+        
+        # Draw column 2
+        curr_x, curr_y = col2_x, cursor_y + 10
+        for cin in col2_display:
+            draw.text((curr_x, curr_y), cin, font=f_cin, fill=(255,255,255))
+            curr_y += line_height_cinema
+            for d_key in sorted(schedule_map[cin].keys()):
+                times_str = ", ".join(schedule_map[cin][d_key])
+                is_today = (d_key == primary_date)
+                date_label = format_date_short(d_key, is_today)
+                lbl_color = (255, 200, 100) if is_today else (180, 180, 180)
+                draw.text((curr_x, curr_y), date_label, font=f_time, fill=lbl_color)
+                lbl_w = draw.textlength(date_label, font=f_time)
+                draw.text((curr_x + lbl_w + 10, curr_y), times_str, font=f_time, fill=(230,230,230))
+                curr_y += line_height_showtime
+            curr_y += gap_between_cinemas
+        
+        # Add ellipsis for column 2 if needed
+        if col2_has_more:
+            ellipsis_y = min(curr_y, height - 50)
+            draw.text((curr_x, ellipsis_y), "...", font=f_time, fill=(180, 180, 180))
     else:
         # --- STANDARD CENTERED MODE ---
         scale = 1.0
@@ -651,11 +717,36 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
             f_cin = fonts['cinema']
             f_time = fonts['times']
 
+        # Calculate how many cinemas can fit
+        line_height_cinema = int(final_size * 1.2)
+        line_height_showtime = int(final_size * 1.1)
+        gap_between_cinemas = int(final_size * 0.6)
+        
+        def estimate_cinema_height(cin):
+            """Estimate height needed for a cinema entry."""
+            return line_height_cinema + len(schedule_map[cin]) * line_height_showtime + gap_between_cinemas
+        
+        max_height = available_space - 20  # Leave margin
         start_y = cursor_y + 10
+        displayed_cinemas = []
+        current_height = 0
+        
+        # Determine which cinemas to display
         for cin in sorted_cinemas:
+            needed = estimate_cinema_height(cin)
+            if current_height + needed <= max_height:
+                displayed_cinemas.append(cin)
+                current_height += needed
+            else:
+                break
+        
+        has_more = len(displayed_cinemas) < len(sorted_cinemas)
+        
+        # Draw cinemas
+        for cin in displayed_cinemas:
             len_c = draw.textlength(cin, font=f_cin)
             draw.text(((width - len_c)//2, start_y), cin, font=f_cin, fill=(255,255,255))
-            start_y += (final_size * 1.2)
+            start_y += line_height_cinema
 
             for d_key in sorted(schedule_map[cin].keys()):
                 times_str = ", ".join(schedule_map[cin][d_key])
@@ -671,9 +762,15 @@ def draw_poster_slide(film, img_obj, fonts, is_story=False, primary_date=None):
 
                 lbl_w = draw.textlength(date_label, font=f_time)
                 draw.text((x_line + lbl_w + 15, start_y), times_str, font=f_time, fill=(230,230,230))
-                start_y += (final_size * 1.1)
+                start_y += line_height_showtime
 
-            start_y += (final_size * 0.6)
+            start_y += gap_between_cinemas
+        
+        # Add ellipsis if there are more cinemas
+        if has_more:
+            ellipsis_y = min(start_y, height - 50)
+            len_ellipsis = draw.textlength("...", font=f_time)
+            draw.text(((width - len_ellipsis) // 2, ellipsis_y), "...", font=f_time, fill=(180, 180, 180))
 
     return canvas
 
@@ -762,18 +859,36 @@ def main():
             slide_data.append({"film": film, "img": img})
             cover_images.append(img)
             
-    if not slide_data: return
+    if not slide_data: 
+        print("⚠️ No slide data available (no images downloaded).")
+        return
 
+    print(f"📸 Generating cover image...")
     collage = create_chaotic_collage(cover_images)
     if collage:
-        draw_final_cover(collage, fonts, is_story=False).save(OUTPUT_DIR / "post_v2_image_00.png")
+        cover_path = OUTPUT_DIR / "post_v2_image_00.png"
+        draw_final_cover(collage, fonts, is_story=False).save(cover_path)
+        print(f"  ✅ Saved cover: {cover_path.name}")
     else:
-        draw_fallback_cover(cover_images, fonts, is_story=False).save(OUTPUT_DIR / "post_v2_image_00.png")
+        cover_path = OUTPUT_DIR / "post_v2_image_00.png"
+        draw_fallback_cover(cover_images, fonts, is_story=False).save(cover_path)
+        print(f"  ✅ Saved fallback cover: {cover_path.name}")
+    
+    print(f"📸 Generating {len(slide_data)} poster slides...")
 
     caption_lines = [f"🎬 London Movie Spotlights - {get_display_date_str()}\n"]
     for i, item in enumerate(slide_data):
         film, img = item['film'], item['img']
-        draw_poster_slide(film, img, fonts, is_story=False, primary_date=primary_date).save(OUTPUT_DIR / f"post_v2_image_{i+1:02}.png")
+        try:
+            slide = draw_poster_slide(film, img, fonts, is_story=False, primary_date=primary_date)
+            output_path = OUTPUT_DIR / f"post_v2_image_{i+1:02}.png"
+            slide.save(output_path)
+            print(f"  ✅ Saved: {output_path.name}")
+        except Exception as e:
+            print(f"  ❌ Error generating slide {i+1}: {e}")
+            import traceback
+            traceback.print_exc()
+            continue
 
         t = film.get('movie_title_en') or film.get('tmdb_title') or film.get('movie_title')
         caption_lines.append(f"🎬 {t}")
