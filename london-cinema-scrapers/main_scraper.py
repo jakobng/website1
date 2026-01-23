@@ -276,6 +276,24 @@ def normalize_title_for_match(title: str) -> str:
     normalized = re.sub(r"\s+", " ", normalized).strip()
     return normalized
 
+
+def director_matches(query_director: str, tmdb_director: str) -> bool:
+    q_norm = normalize_title_for_match(query_director)
+    t_norm = normalize_title_for_match(tmdb_director)
+    if not q_norm or not t_norm:
+        return True
+    if q_norm == t_norm or q_norm in t_norm or t_norm in q_norm:
+        return True
+    query_parts = [normalize_title_for_match(p) for p in re.split(r",|&| and |/|;", query_director)]
+    tmdb_parts = [normalize_title_for_match(p) for p in re.split(r",|&| and |/|;", tmdb_director)]
+    for part in query_parts:
+        if part and (part in t_norm or t_norm in part):
+            return True
+    for part in tmdb_parts:
+        if part and (part in q_norm or q_norm in part):
+            return True
+    return False
+
 NON_FILM_EVENT_KEYWORDS = [
     "open mic",
     "free entry",
@@ -788,7 +806,7 @@ def score_tmdb_result(query: str, result: dict, query_year=None, query_runtime=N
 
     return min(max(score, 0.0), 1.0) # Clamp 0..1
 
-def is_cache_match_ok(title: str, cached: dict, query_year=None, query_runtime=None) -> bool:
+def is_cache_match_ok(title: str, cached: dict, query_year=None, query_runtime=None, query_director=None) -> bool:
     if not cached:
         return False
     
@@ -804,6 +822,10 @@ def is_cache_match_ok(title: str, cached: dict, query_year=None, query_runtime=N
     if required_tokens and not passes_broadcast_guard(required_tokens, pseudo_result):
         return False
     
+    if query_director and cached.get("director"):
+        if not director_matches(query_director, cached.get("director", "")):
+            return False
+
     score = score_tmdb_result(
         title,
         pseudo_result,
@@ -837,7 +859,7 @@ def save_tmdb_cache(cache):
     with open(TMDB_CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
-def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_runtime=None):
+def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_runtime=None, movie_director=None):
     """
     Searches TMDB for movie_title with logic to find the BEST match, not just the first.
     """
@@ -919,7 +941,7 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
         best_match = None
         
         # If we have a runtime to verify, we'll check the top 3 candidates
-        check_limit = 3 if query_runtime else 1
+        check_limit = 3 if (query_runtime or movie_director) else 1
         
         for candidate in top_candidates[:check_limit]:
             res = candidate["result"]
@@ -962,6 +984,11 @@ def fetch_tmdb_details(movie_title, session, api_key, movie_year=None, movie_run
                 if c.get("job") == "Director":
                     director = c.get("name")
                     break
+
+            if movie_director and director and not director_matches(movie_director, director):
+                res_title = d_data.get("title") or d_data.get("name") or "Unknown"
+                print(f"   [Skip] '{res_title}' director mismatch ({director} vs {movie_director})")
+                continue
             
             best_match = {
                 "tmdb_id": d_data["id"],
@@ -997,8 +1024,8 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
     print(f"\n--- Starting Enrichment for {len(listings)} listings ---")
 
     # Group by movie title to avoid duplicate API calls
-    # We now also consider year/runtime in the key or lookups
-    unique_map = {} # title -> {year, runtime, count}
+    # We now also consider year/runtime/director in the key or lookups
+    unique_map = {} # title -> {years, runtimes, directors}
     skip_tmdb_titles = set()
     skip_tmdb_items = set()
     
@@ -1018,6 +1045,9 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
             continue
             
         year = parse_year_value(item.get("year"))
+        director = item.get("director")
+        if director:
+            director = str(director).strip()
         runtime = None
         if item.get("runtime_min"):
              try: 
@@ -1031,10 +1061,11 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
                  pass
 
         if title not in unique_map:
-            unique_map[title] = {"years": set(), "runtimes": set()}
+            unique_map[title] = {"years": set(), "runtimes": set(), "directors": set()}
             
         if year: unique_map[title]["years"].add(year)
         if runtime: unique_map[title]["runtimes"].add(runtime)
+        if director: unique_map[title]["directors"].add(director)
             
     print(f"   Unique films to process: {len(unique_map)}")
 
@@ -1048,6 +1079,7 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
         # Pick best representative year/runtime (heuristics)
         rep_year = list(meta["years"])[0] if meta["years"] else None
         rep_runtime = list(meta["runtimes"])[0] if meta["runtimes"] else None
+        rep_director = list(meta["directors"])[0] if meta["directors"] else None
 
         cached = cache.get(title)
         
@@ -1057,7 +1089,13 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
             if skip_tmdb:
                 cached = None
                 cache.pop(title, None)
-            elif not is_cache_match_ok(title, cached, query_year=rep_year, query_runtime=rep_runtime):
+            elif not is_cache_match_ok(
+                title,
+                cached,
+                query_year=rep_year,
+                query_runtime=rep_runtime,
+                query_director=rep_director,
+            ):
                 # print(f"   Invalidating cache for {title}")
                 cached = None
                 cache.pop(title, None)
@@ -1071,7 +1109,14 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
                 continue
 
             print(f"   Searching TMDB for: {title} (Yr: {rep_year}, Run: {rep_runtime})")
-            details = fetch_tmdb_details(title, session, api_key, movie_year=rep_year, movie_runtime=rep_runtime)
+            details = fetch_tmdb_details(
+                title,
+                session,
+                api_key,
+                movie_year=rep_year,
+                movie_runtime=rep_runtime,
+                movie_director=rep_director,
+            )
 
             if details:
                 cache[title] = details

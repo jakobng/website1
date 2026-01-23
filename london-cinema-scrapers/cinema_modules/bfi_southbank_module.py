@@ -369,6 +369,143 @@ def _fetch_schedule_html() -> str:
     return resp.text
 
 
+def _fetch_detail_html(detail_url: str) -> str:
+    if not detail_url:
+        return ""
+    session = requests.Session()
+    session.trust_env = False
+    try:
+        resp = session.get(detail_url, headers=HEADERS, timeout=TIMEOUT)
+        if resp.status_code == 403 or _looks_like_cloudflare_challenge(resp.text):
+            try:
+                import cloudscraper
+            except Exception:
+                print(f"[{CINEMA_NAME}] Cloudscraper not available for detail pages.", file=sys.stderr)
+            else:
+                scraper = cloudscraper.create_scraper()
+                resp = scraper.get(detail_url, headers=HEADERS, timeout=TIMEOUT)
+        resp.raise_for_status()
+        return resp.text
+    except Exception as e:
+        print(f"[{CINEMA_NAME}] Error fetching detail page: {e}", file=sys.stderr)
+        return ""
+
+
+def _normalize_title_for_compare(text: str) -> str:
+    if not text:
+        return ""
+    lowered = _clean(text).lower()
+    return re.sub(r"[^a-z0-9]+", " ", lowered).strip()
+
+
+def _should_override_title(original: str, detail_title: str) -> bool:
+    if not detail_title:
+        return False
+    if not original:
+        return True
+    original_norm = _normalize_title_for_compare(original)
+    detail_norm = _normalize_title_for_compare(detail_title)
+    if not detail_norm:
+        return False
+    if original_norm == detail_norm:
+        return False
+    return detail_norm in original_norm or original_norm in detail_norm
+
+
+def _extract_year_from_text(text: str) -> str:
+    match = re.search(r"\b(19\d{2}|20\d{2})\b", text)
+    return match.group(1) if match else ""
+
+
+def _extract_runtime_from_text(text: str) -> str:
+    match = re.search(r"(\d{2,3})\s*min", text, re.IGNORECASE)
+    return match.group(1) if match else ""
+
+
+def _extract_detail_metadata(detail_html: str) -> Dict[str, str]:
+    metadata = {
+        "title": "",
+        "director": "",
+        "year": "",
+        "country": "",
+        "runtime_min": "",
+        "synopsis": "",
+    }
+    if not detail_html:
+        return metadata
+
+    soup = BeautifulSoup(detail_html, "html.parser")
+
+    title_elem = soup.find("h1")
+    if title_elem:
+        metadata["title"] = _clean(title_elem.get_text(" ", strip=True))
+
+    info_wrappers = soup.select("ul.Film-info__information li.Film-info__information__wrapper")
+    info_values: List[str] = []
+    for wrapper in info_wrappers:
+        heading_elem = wrapper.select_one(".Film-info__information__heading")
+        value_elem = wrapper.select_one(".Film-info__information__value")
+        value_text = _clean(value_elem.get_text(" ", strip=True)) if value_elem else ""
+        if value_text:
+            info_values.append(value_text)
+
+        heading = _clean(heading_elem.get_text(" ", strip=True)) if heading_elem else ""
+        heading_norm = heading.lower()
+        if not heading_norm or not value_text:
+            continue
+        if "director" in heading_norm and not metadata["director"]:
+            metadata["director"] = value_text
+        elif ("runtime" in heading_norm or "running time" in heading_norm or "duration" in heading_norm) and not metadata["runtime_min"]:
+            metadata["runtime_min"] = _extract_runtime_from_text(value_text)
+        elif "year" in heading_norm and not metadata["year"]:
+            metadata["year"] = _extract_year_from_text(value_text)
+        elif "country" in heading_norm and not metadata["country"]:
+            metadata["country"] = value_text
+
+    if not metadata["year"] or not metadata["runtime_min"] or not metadata["country"]:
+        for value_text in info_values:
+            if not metadata["year"]:
+                metadata["year"] = _extract_year_from_text(value_text) or metadata["year"]
+            if not metadata["runtime_min"]:
+                metadata["runtime_min"] = _extract_runtime_from_text(value_text) or metadata["runtime_min"]
+            if metadata["year"] and not metadata["country"]:
+                year_match = re.search(r"\b(19\d{2}|20\d{2})\b", value_text)
+                if year_match:
+                    country_candidate = value_text[:year_match.start()].strip(" ,.-")
+                    if country_candidate:
+                        metadata["country"] = country_candidate
+
+    synopsis_elem = soup.select_one(".Page__description")
+    if synopsis_elem:
+        metadata["synopsis"] = _clean(synopsis_elem.get_text(" ", strip=True))
+
+    return metadata
+
+
+def _enrich_shows_with_detail_pages(shows: List[Dict]) -> List[Dict]:
+    if not shows:
+        return shows
+    detail_cache: Dict[str, Dict[str, str]] = {}
+    for show in shows:
+        detail_url = show.get("detail_page_url") or ""
+        if not detail_url:
+            continue
+        if detail_url not in detail_cache:
+            detail_html = _fetch_detail_html(detail_url)
+            detail_cache[detail_url] = _extract_detail_metadata(detail_html) if detail_html else {}
+        metadata = detail_cache.get(detail_url) or {}
+        if not metadata:
+            continue
+        detail_title = metadata.get("title", "")
+        if detail_title and _should_override_title(show.get("movie_title", ""), detail_title):
+            show["movie_title"] = detail_title
+            show["movie_title_en"] = detail_title
+        for key in ("director", "year", "country", "runtime_min", "synopsis"):
+            if metadata.get(key) and not show.get(key):
+                show[key] = metadata[key]
+    return shows
+
+
 def _collect_event_nodes(json_ld: List[dict]) -> List[dict]:
     """Return JSON-LD nodes that represent events."""
     events: List[dict] = []
@@ -560,6 +697,8 @@ def scrape_bfi_southbank() -> List[Dict]:
     except Exception as e:
         print(f"[{CINEMA_NAME}] Error: {e}", file=sys.stderr)
         raise
+
+    shows = _enrich_shows_with_detail_pages(shows)
 
     # Deduplicate
     seen = set()
