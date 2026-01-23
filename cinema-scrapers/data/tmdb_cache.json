@@ -19545,5 +19545,813 @@
         "name": "South Korea"
       }
     ]
+  },
+  "「ぼっち・ざ・ろっく！」劇場総集編 一挙上映": {
+    "tmdb_id": 1201387,
+    "tmdb_title_jp": "劇場総集編ぼっち・ざ・ろっく！Re:Re:",
+    "tmdb_title_en": "BOCCHI THE ROCK! Recap Part 2",
+    "tmdb_title_original": "劇場総集編ぼっち・ざ・ろっく！Re:Re:",
+    "tmdb_original_language": "ja",
+    "overview": "ギターが大好きな孤独な少女“ぼっちちゃん”こと後藤ひとりは、伊地知虹夏が率いる結束バンドに加入する。人前で演奏することに不慣れだが練習に励む後藤は、仲間にギター練習を見てもらう。文化祭ライブでの演奏に向けて、彼女たちはひたむきに練習を続ける。",
+    "overview_en": "Revisit Bocchi's journey to playing at her school festival and friendship with Kita.",
+    "poster_path": "/yAjU5ENF5mmFoKgaFJauMlfEWhV.jpg",
+    "backdrop_path": "/bAwlPvcKjtFX0F8bz4GQVRwcIEu.jpg",
+    "release_date": "2024-08-09",
+    "director": "斎藤圭一郎",
+    "director_jp": "斎藤圭一郎",
+    "director_en": "Keiichiro Saito",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Music"
+    ],
+    "runtime": 77,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ヒア・アンド・ゼア": null,
+  "ライフ・アンド・ナッシング・モア": {
+    "tmdb_id": 473355,
+    "tmdb_title_jp": "La vida y nada más",
+    "tmdb_title_en": "Life and Nothing More",
+    "tmdb_title_original": "La vida y nada más",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Standing on the edge of adulthood, Andrew yearns to find his purpose as a young African-American in today's America. With his mother longing to find more to her life then parenting, Andrew is forced to take on the mounting pressure of family responsibility. His search for connection with an absent father, leads him to a dangerous crossroads.",
+    "poster_path": "/pL4e5xycWPCC1qZDi7riRlxCRIR.jpg",
+    "backdrop_path": "/uStWdD4xxdtC11MqRNb4KvaDPQf.jpg",
+    "release_date": "2018-01-25",
+    "director": "Antonio Méndez Esparza",
+    "director_jp": "Antonio Méndez Esparza",
+    "director_en": "Antonio Méndez Esparza",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "家庭裁判所 第３H法廷": {
+    "tmdb_id": 730539,
+    "tmdb_title_jp": "Courtroom 3H",
+    "tmdb_title_en": "Courtroom 3H",
+    "tmdb_title_original": "Courtroom 3H",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Through different legal cases and the complexity of the State of Florida’s legal processes involving minors, the film shows how delicate legal resolutions can be for children, who are ultimately the ones most affected by these judicial decisions.",
+    "poster_path": "/fLQFG38SPbeotMKCq17aInUsaCO.jpg",
+    "backdrop_path": null,
+    "release_date": "2020-09-19",
+    "director": "Antonio Méndez Esparza",
+    "director_jp": "Antonio Méndez Esparza",
+    "director_en": "Antonio Méndez Esparza",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 115,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "サムシング・ハプンズ・トゥ・ミー": {
+    "tmdb_id": 828936,
+    "tmdb_title_jp": "Que nadie duerma",
+    "tmdb_title_en": "Something Is About to Happen",
+    "tmdb_title_original": "Que nadie duerma",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "After losing her job as a computer programmer, Lucía decides to become a cab driver.",
+    "poster_path": "/lIPC1FM9KBX8vXRG40iSJoKsZsv.jpg",
+    "backdrop_path": "/cBueKI86rE4f0ommhkVo4snHUxp.jpg",
+    "release_date": "2023-11-17",
+    "director": "Antonio Méndez Esparza",
+    "director_jp": "Antonio Méndez Esparza",
+    "director_en": "Antonio Méndez Esparza",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 123,
+    "vote_average": 5.982,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "RO",
+        "name": "Romania"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "ぬいぐるみとしゃべる人はやさしい": {
+    "tmdb_id": 1071481,
+    "tmdb_title_jp": "ぬいぐるみとしゃべる人はやさしい",
+    "tmdb_title_en": "People Who Talk to Plushies Are Kind",
+    "tmdb_title_original": "ぬいぐるみとしゃべる人はやさしい",
+    "tmdb_original_language": "ja",
+    "overview": "オムニバス映画「21世紀の女の子」の一編で注目され、「眠る虫」などの中短編を発表した金子由里奈監督が、大前粟生の同名小説を原作に、自身初の長編商業映画に挑んだ青春ドラマ。男らしさ、女らしさを求められる世の中に息苦しさを感じている男子大学生を主人公に、ぬいぐるみに語りかけることで心を解放する“ぬいぐるみサークル”の繊細で心優しいメンバーたちの青春群像を綴る。主人公の青年役を「町田くんの世界」の細田佳央太が好演。共演は「いとみち」の駒井蓮と「麻希のいる世界」の新谷ゆづみ。\r 京都のとある大学に進学した男子学生・七森は、いわゆる男らしさ、女らしさを苦手に感じていた。そんな折、入学式で同じ1回生の麦戸美海子と知り合った彼は、彼女と“ぬいぐるみサークル”に入る。そこは各々が好きなことをぬいぐるみに話しかけるという活動を主にするサークルだった。心優しい先輩らと親しくなっていく七森は、麦戸と打ち解けていく一方、なぜか唯一ぬいぐるみと話さない1回生・白城ゆいと交際を始めることに。",
+    "overview_en": "When sophomore university student Nanamori meets Mugito, they decide to join a club. Intrigued by the Plushies Club, they soon realize it is not a place where people make plushies, but rather one where members are welcome to talk to stuffed animals about their feelings, or anything they might not want to discuss with other people. An introvert’s paradise. A safe space. An escape from society’s pressures and rules. For Nananori, it’s a natural fit: the club allows him to explore his uneasiness about dating and society’s imposed gender roles. But soon, an overwhelmed Mugito disappears, and the more pragmatic club member Shiraki begins voicing opposition to the group’s insular methods. Real life encroaches.",
+    "poster_path": "/AlibMyoMlu0bk0ksJfD95ox8XN9.jpg",
+    "backdrop_path": "/rgipAJE1m9ymraNDO3TjiT8KYSf.jpg",
+    "release_date": "2023-04-01",
+    "director": "金子由里奈",
+    "director_jp": "金子由里奈",
+    "director_en": "Yurina Kaneko",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 110,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1071481": {
+    "tmdb_id": 1071481,
+    "tmdb_title_jp": "ぬいぐるみとしゃべる人はやさしい",
+    "tmdb_title_en": "People Who Talk to Plushies Are Kind",
+    "tmdb_title_original": "ぬいぐるみとしゃべる人はやさしい",
+    "tmdb_original_language": "ja",
+    "overview": "オムニバス映画「21世紀の女の子」の一編で注目され、「眠る虫」などの中短編を発表した金子由里奈監督が、大前粟生の同名小説を原作に、自身初の長編商業映画に挑んだ青春ドラマ。男らしさ、女らしさを求められる世の中に息苦しさを感じている男子大学生を主人公に、ぬいぐるみに語りかけることで心を解放する“ぬいぐるみサークル”の繊細で心優しいメンバーたちの青春群像を綴る。主人公の青年役を「町田くんの世界」の細田佳央太が好演。共演は「いとみち」の駒井蓮と「麻希のいる世界」の新谷ゆづみ。\r 京都のとある大学に進学した男子学生・七森は、いわゆる男らしさ、女らしさを苦手に感じていた。そんな折、入学式で同じ1回生の麦戸美海子と知り合った彼は、彼女と“ぬいぐるみサークル”に入る。そこは各々が好きなことをぬいぐるみに話しかけるという活動を主にするサークルだった。心優しい先輩らと親しくなっていく七森は、麦戸と打ち解けていく一方、なぜか唯一ぬいぐるみと話さない1回生・白城ゆいと交際を始めることに。",
+    "overview_en": "When sophomore university student Nanamori meets Mugito, they decide to join a club. Intrigued by the Plushies Club, they soon realize it is not a place where people make plushies, but rather one where members are welcome to talk to stuffed animals about their feelings, or anything they might not want to discuss with other people. An introvert’s paradise. A safe space. An escape from society’s pressures and rules. For Nananori, it’s a natural fit: the club allows him to explore his uneasiness about dating and society’s imposed gender roles. But soon, an overwhelmed Mugito disappears, and the more pragmatic club member Shiraki begins voicing opposition to the group’s insular methods. Real life encroaches.",
+    "poster_path": "/AlibMyoMlu0bk0ksJfD95ox8XN9.jpg",
+    "backdrop_path": "/rgipAJE1m9ymraNDO3TjiT8KYSf.jpg",
+    "release_date": "2023-04-01",
+    "director": "金子由里奈",
+    "director_jp": "金子由里奈",
+    "director_en": "Yurina Kaneko",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 110,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "クイーンダム[0131舞台挨拶]": {
+    "tmdb_id": 951036,
+    "tmdb_title_jp": "Queendom",
+    "tmdb_title_en": "Queendom",
+    "tmdb_title_original": "Queendom",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "In defiance of Russia’s anti-LGBTQ laws, a queer, 21-year-old artist risks her life performing in surreal costumes throughout Moscow. Jenna Marvin’s radical public performances blend artistry and activism in this SXSW documentary.",
+    "poster_path": "/cmpVHgtfeJgyIergZwjH85i1NdC.jpg",
+    "backdrop_path": "/A4zCy3ShUWVdH2Rh4RJtvWX25k1.jpg",
+    "release_date": "2023-12-01",
+    "director": "Agniia Galdanova",
+    "director_jp": "Agniia Galdanova",
+    "director_en": "Agniia Galdanova",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 98,
+    "vote_average": 8.429,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "メガロポリス": {
+    "tmdb_id": 592831,
+    "tmdb_title_jp": "Megalopolis",
+    "tmdb_title_en": "Megalopolis: A Fable",
+    "tmdb_title_original": "Megalopolis",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In a futuristic New York known as New Rome, visionary architect Cesar Catilina dreams of building \"Megalopolis,\" a utopian city that redefines society’s limits. Opposing him is the corrupt Mayor Franklyn Cicero, who clings to power and profit. Between them stands Julia, the mayor’s daughter, whose love for Cesar forces her to choose between loyalty, ambition, and the fate of humanity.",
+    "poster_path": "/8Sok3HNA3r1GHnK2lCytHyBz1A.jpg",
+    "backdrop_path": "/1DHbZ1XRvdeXbD2P7W1OJbxqN9b.jpg",
+    "release_date": "2024-09-25",
+    "director": "フランシス・フォード・コッポラ",
+    "director_jp": "フランシス・フォード・コッポラ",
+    "director_en": "Francis Ford Coppola",
+    "genres": [
+      "サイエンスフィクション",
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Drama",
+      "Fantasy"
+    ],
+    "runtime": 138,
+    "vote_average": 5.179,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:592831": {
+    "tmdb_id": 592831,
+    "tmdb_title_jp": "Megalopolis",
+    "tmdb_title_en": "Megalopolis: A Fable",
+    "tmdb_title_original": "Megalopolis",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In a futuristic New York known as New Rome, visionary architect Cesar Catilina dreams of building \"Megalopolis,\" a utopian city that redefines society’s limits. Opposing him is the corrupt Mayor Franklyn Cicero, who clings to power and profit. Between them stands Julia, the mayor’s daughter, whose love for Cesar forces her to choose between loyalty, ambition, and the fate of humanity.",
+    "poster_path": "/8Sok3HNA3r1GHnK2lCytHyBz1A.jpg",
+    "backdrop_path": "/1DHbZ1XRvdeXbD2P7W1OJbxqN9b.jpg",
+    "release_date": "2024-09-25",
+    "director": "フランシス・フォード・コッポラ",
+    "director_jp": "フランシス・フォード・コッポラ",
+    "director_en": "Francis Ford Coppola",
+    "genres": [
+      "サイエンスフィクション",
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Drama",
+      "Fantasy"
+    ],
+    "runtime": 138,
+    "vote_average": 5.179,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ザ・ザ・コルダのフェニキア計画": {
+    "tmdb_id": 1137350,
+    "tmdb_title_jp": "ザ・ザ・コルダのフェニキア計画",
+    "tmdb_title_en": "The Phoenician Scheme",
+    "tmdb_title_original": "The Phoenician Scheme",
+    "tmdb_original_language": "en",
+    "overview": "舞台は1950年代、“現代の大独立国フェニキア”。6度の暗殺未遂から生き延びた大富豪ザ・ザ・コルダは、フェニキア全域に及ぶ陸海三つのインフラを整備する大規模プロジェクト「フェニキア計画」の実現を目指していた。そんな中、とある妨害によって赤字が拡大、財政難に陥り、計画が脅かされることに。ザ・ザは離れて暮らす修道女見習いの一人娘リーズルを後継者に指名し、彼女を連れて旅に出る。目的は資金調達と計画推進、そしてリーズルの母の死の真相を追うこと。果たして、プロジェクトは成功するのか？　リーズルの母を殺したのは誰か？　そして、父と娘は「本当の家族」になれるのか──？",
+    "overview_en": "Wealthy businessman Zsa-zsa Korda appoints his only daughter, a nun, as sole heir to his estate. As Korda embarks on a new enterprise, they soon become the target of scheming tycoons, foreign terrorists, and determined assassins.",
+    "poster_path": "/rNJpx1Eig3m91YdjnwZ7I1Bgj6V.jpg",
+    "backdrop_path": "/w3RDV3pSpxN0C2DZ4Xpw4o5LWpI.jpg",
+    "release_date": "2025-05-23",
+    "director": "ウェス・アンダーソン",
+    "director_jp": "ウェス・アンダーソン",
+    "director_en": "Wes Anderson",
+    "genres": [
+      "コメディ",
+      "アドベンチャー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Adventure",
+      "Crime"
+    ],
+    "runtime": 102,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "tmdb:1137350": {
+    "tmdb_id": 1137350,
+    "tmdb_title_jp": "ザ・ザ・コルダのフェニキア計画",
+    "tmdb_title_en": "The Phoenician Scheme",
+    "tmdb_title_original": "The Phoenician Scheme",
+    "tmdb_original_language": "en",
+    "overview": "舞台は1950年代、“現代の大独立国フェニキア”。6度の暗殺未遂から生き延びた大富豪ザ・ザ・コルダは、フェニキア全域に及ぶ陸海三つのインフラを整備する大規模プロジェクト「フェニキア計画」の実現を目指していた。そんな中、とある妨害によって赤字が拡大、財政難に陥り、計画が脅かされることに。ザ・ザは離れて暮らす修道女見習いの一人娘リーズルを後継者に指名し、彼女を連れて旅に出る。目的は資金調達と計画推進、そしてリーズルの母の死の真相を追うこと。果たして、プロジェクトは成功するのか？　リーズルの母を殺したのは誰か？　そして、父と娘は「本当の家族」になれるのか──？",
+    "overview_en": "Wealthy businessman Zsa-zsa Korda appoints his only daughter, a nun, as sole heir to his estate. As Korda embarks on a new enterprise, they soon become the target of scheming tycoons, foreign terrorists, and determined assassins.",
+    "poster_path": "/rNJpx1Eig3m91YdjnwZ7I1Bgj6V.jpg",
+    "backdrop_path": "/w3RDV3pSpxN0C2DZ4Xpw4o5LWpI.jpg",
+    "release_date": "2025-05-23",
+    "director": "ウェス・アンダーソン",
+    "director_jp": "ウェス・アンダーソン",
+    "director_en": "Wes Anderson",
+    "genres": [
+      "コメディ",
+      "アドベンチャー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Adventure",
+      "Crime"
+    ],
+    "runtime": 102,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "小屋番 八ヶ岳に生きる 劇場版": null,
+  "【マッツ・ミケルセン生誕60周年祭】メン＆チキン": {
+    "tmdb_id": 296313,
+    "tmdb_title_jp": "メン＆チキン",
+    "tmdb_title_en": "Men & Chicken",
+    "tmdb_title_original": "Mænd & høns",
+    "tmdb_original_language": "da",
+    "overview": "",
+    "overview_en": "Men & Chicken is a black comedy about two outcast brothers who, by getting to know their unknown family, discover a horrible truth about themselves and their relatives.",
+    "poster_path": "/lGD30CMxSujSeNv4FZndddr1xSA.jpg",
+    "backdrop_path": "/coAxeGkmdEXhsbSdpSsjg0i4cRn.jpg",
+    "release_date": "2015-02-05",
+    "director": "Anders Thomas Jensen",
+    "director_jp": "Anders Thomas Jensen",
+    "director_en": "Anders Thomas Jensen",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 104,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】ミステリー・トレイン": {
+    "tmdb_id": 11305,
+    "tmdb_title_jp": "ミステリー・トレイン",
+    "tmdb_title_en": "Mystery Train",
+    "tmdb_title_original": "Mystery Train",
+    "tmdb_original_language": "en",
+    "overview": "物語は「ファー・フロム・ヨコハマ」「ア・ゴースト」「ロスト・イン・スペース」と名づけられた3話からなるオムニバスで、それぞれの話の人物たちが、互いに知らないまま、別々に同じ夜汽車を見、エルビスの〈ブルー・ムーン〉を聞き、そして翌朝1発の銃声を耳にする、ワン・ナイト・ストーリー。",
+    "overview_en": "In Memphis, Tennessee, over the course of a single night, the Arcade Hotel, run by an eccentric night clerk and a clueless bellboy, is visited by a young Japanese couple traveling in search of the roots of rock; an Italian woman in mourning who stumbles upon a fleeing charlatan girl; and a comical trio of accidental thieves looking for a place to hide.",
+    "poster_path": "/xJJV2em8WLVLO5OKES0Y2mkrewq.jpg",
+    "backdrop_path": "/t0GxYLiPkTtFBuzoPLmLU3HSKEN.jpg",
+    "release_date": "1989-09-06",
+    "director": "ジム・ジャームッシュ",
+    "director_jp": "ジム・ジャームッシュ",
+    "director_en": "Jim Jarmusch",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 7.336,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "チリの闘い 第1部：ブルジョワジーの叛乱": {
+    "tmdb_id": 132144,
+    "tmdb_title_jp": "La batalla de Chile (Parte 1). La insurrección de la burguesía",
+    "tmdb_title_en": "The Battle of Chile: Part I",
+    "tmdb_title_original": "La batalla de Chile (Parte 1). La insurrección de la burguesía",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "The chronicle of the political tension in Chile in 1973 and of the violent counter revolution against the democratically elected government of Salvador Allende.",
+    "poster_path": "/iZMeh5TxvLPQ2aYF4ZyvhvkJDPh.jpg",
+    "backdrop_path": "/ijGipE4DDF5YX3P0vg8JU6CmKSt.jpg",
+    "release_date": "1975-03-18",
+    "director": "Patricio Guzmán",
+    "director_jp": "Patricio Guzmán",
+    "director_en": "Patricio Guzmán",
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Documentary",
+      "History"
+    ],
+    "runtime": 97,
+    "vote_average": 7.208,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CL",
+        "name": "Chile"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CU",
+        "name": "Cuba"
+      },
+      {
+        "iso_3166_1": "VE",
+        "name": "Venezuela"
+      }
+    ]
+  },
+  "次元を超える": {
+    "tmdb_id": 1213025,
+    "tmdb_title_jp": "次元を超える",
+    "tmdb_title_en": "Transcending Dimensions",
+    "tmdb_title_original": "次元を超える",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Rosuke, a monk, has gone missing. His lover, Nonoka, takes the assassin Shinno to a religious facility in search of Rosuke. There, they meet a sorcerer called Ajari. Meanwhile, Rosuke is on a spaceship heading to the unknown planet named Kelman. There, he meets a strange old man. And then...a battle...",
+    "poster_path": "/8OCOpDhpJHAqGJkqGY3RWFMtDI0.jpg",
+    "backdrop_path": "/k9broyVzL8zwmlCqC79LdRcEvJ6.jpg",
+    "release_date": "2025-02-01",
+    "director": "豊田利晃",
+    "director_jp": "豊田利晃",
+    "director_en": "Toshiaki Toyoda",
+    "genres": [
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Fantasy"
+    ],
+    "runtime": 97,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1213025": {
+    "tmdb_id": 1213025,
+    "tmdb_title_jp": "次元を超える",
+    "tmdb_title_en": "Transcending Dimensions",
+    "tmdb_title_original": "次元を超える",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Rosuke, a monk, has gone missing. His lover, Nonoka, takes the assassin Shinno to a religious facility in search of Rosuke. There, they meet a sorcerer called Ajari. Meanwhile, Rosuke is on a spaceship heading to the unknown planet named Kelman. There, he meets a strange old man. And then...a battle...",
+    "poster_path": "/8OCOpDhpJHAqGJkqGY3RWFMtDI0.jpg",
+    "backdrop_path": "/k9broyVzL8zwmlCqC79LdRcEvJ6.jpg",
+    "release_date": "2025-02-01",
+    "director": "豊田利晃",
+    "director_jp": "豊田利晃",
+    "director_en": "Toshiaki Toyoda",
+    "genres": [
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Fantasy"
+    ],
+    "runtime": 97,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ナイトフラワー": {
+    "tmdb_id": 1499101,
+    "tmdb_title_jp": "ナイトフラワー",
+    "tmdb_title_en": "Night Flower",
+    "tmdb_title_original": "ナイトフラワー",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Driven to the brink, Natsuki makes a desperate gamble: selling drugs to make her children's dreams come true. Living a double life—mother by day, dealer by dark—where will this dangerous path lead her—?",
+    "poster_path": "/iK6MDIDlmWK7JxYXVwBr1WG2Cn2.jpg",
+    "backdrop_path": "/g8HqOlJyh4UvSdUa0zuz4dE8hzE.jpg",
+    "release_date": "2025-11-28",
+    "director": "内田英治",
+    "director_jp": "内田英治",
+    "director_en": "Eiji Uchida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1499101": {
+    "tmdb_id": 1499101,
+    "tmdb_title_jp": "ナイトフラワー",
+    "tmdb_title_en": "Night Flower",
+    "tmdb_title_original": "ナイトフラワー",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Driven to the brink, Natsuki makes a desperate gamble: selling drugs to make her children's dreams come true. Living a double life—mother by day, dealer by dark—where will this dangerous path lead her—?",
+    "poster_path": "/iK6MDIDlmWK7JxYXVwBr1WG2Cn2.jpg",
+    "backdrop_path": "/g8HqOlJyh4UvSdUa0zuz4dE8hzE.jpg",
+    "release_date": "2025-11-28",
+    "director": "内田英治",
+    "director_jp": "内田英治",
+    "director_en": "Eiji Uchida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1201387": {
+    "tmdb_id": 1201387,
+    "tmdb_title_jp": "劇場総集編ぼっち・ざ・ろっく！Re:Re:",
+    "tmdb_title_en": "BOCCHI THE ROCK! Recap Part 2",
+    "tmdb_title_original": "劇場総集編ぼっち・ざ・ろっく！Re:Re:",
+    "tmdb_original_language": "ja",
+    "overview": "ギターが大好きな孤独な少女“ぼっちちゃん”こと後藤ひとりは、伊地知虹夏が率いる結束バンドに加入する。人前で演奏することに不慣れだが練習に励む後藤は、仲間にギター練習を見てもらう。文化祭ライブでの演奏に向けて、彼女たちはひたむきに練習を続ける。",
+    "overview_en": "Revisit Bocchi's journey to playing at her school festival and friendship with Kita.",
+    "poster_path": "/yAjU5ENF5mmFoKgaFJauMlfEWhV.jpg",
+    "backdrop_path": "/bAwlPvcKjtFX0F8bz4GQVRwcIEu.jpg",
+    "release_date": "2024-08-09",
+    "director": "斎藤圭一郎",
+    "director_jp": "斎藤圭一郎",
+    "director_en": "Keiichiro Saito",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Music"
+    ],
+    "runtime": 77,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:473355": {
+    "tmdb_id": 473355,
+    "tmdb_title_jp": "La vida y nada más",
+    "tmdb_title_en": "Life and Nothing More",
+    "tmdb_title_original": "La vida y nada más",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Standing on the edge of adulthood, Andrew yearns to find his purpose as a young African-American in today's America. With his mother longing to find more to her life then parenting, Andrew is forced to take on the mounting pressure of family responsibility. His search for connection with an absent father, leads him to a dangerous crossroads.",
+    "poster_path": "/pL4e5xycWPCC1qZDi7riRlxCRIR.jpg",
+    "backdrop_path": "/uStWdD4xxdtC11MqRNb4KvaDPQf.jpg",
+    "release_date": "2018-01-25",
+    "director": "Antonio Méndez Esparza",
+    "director_jp": "Antonio Méndez Esparza",
+    "director_en": "Antonio Méndez Esparza",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "tmdb:730539": {
+    "tmdb_id": 730539,
+    "tmdb_title_jp": "Courtroom 3H",
+    "tmdb_title_en": "Courtroom 3H",
+    "tmdb_title_original": "Courtroom 3H",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Through different legal cases and the complexity of the State of Florida’s legal processes involving minors, the film shows how delicate legal resolutions can be for children, who are ultimately the ones most affected by these judicial decisions.",
+    "poster_path": "/fLQFG38SPbeotMKCq17aInUsaCO.jpg",
+    "backdrop_path": null,
+    "release_date": "2020-09-19",
+    "director": "Antonio Méndez Esparza",
+    "director_jp": "Antonio Méndez Esparza",
+    "director_en": "Antonio Méndez Esparza",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 115,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:828936": {
+    "tmdb_id": 828936,
+    "tmdb_title_jp": "Que nadie duerma",
+    "tmdb_title_en": "Something Is About to Happen",
+    "tmdb_title_original": "Que nadie duerma",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "After losing her job as a computer programmer, Lucía decides to become a cab driver.",
+    "poster_path": "/lIPC1FM9KBX8vXRG40iSJoKsZsv.jpg",
+    "backdrop_path": "/cBueKI86rE4f0ommhkVo4snHUxp.jpg",
+    "release_date": "2023-11-17",
+    "director": "Antonio Méndez Esparza",
+    "director_jp": "Antonio Méndez Esparza",
+    "director_en": "Antonio Méndez Esparza",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 123,
+    "vote_average": 5.982,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "RO",
+        "name": "Romania"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "tmdb:296313": {
+    "tmdb_id": 296313,
+    "tmdb_title_jp": "メン＆チキン",
+    "tmdb_title_en": "Men & Chicken",
+    "tmdb_title_original": "Mænd & høns",
+    "tmdb_original_language": "da",
+    "overview": "",
+    "overview_en": "Men & Chicken is a black comedy about two outcast brothers who, by getting to know their unknown family, discover a horrible truth about themselves and their relatives.",
+    "poster_path": "/lGD30CMxSujSeNv4FZndddr1xSA.jpg",
+    "backdrop_path": "/coAxeGkmdEXhsbSdpSsjg0i4cRn.jpg",
+    "release_date": "2015-02-05",
+    "director": "Anders Thomas Jensen",
+    "director_jp": "Anders Thomas Jensen",
+    "director_en": "Anders Thomas Jensen",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 104,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "tmdb:11305": {
+    "tmdb_id": 11305,
+    "tmdb_title_jp": "ミステリー・トレイン",
+    "tmdb_title_en": "Mystery Train",
+    "tmdb_title_original": "Mystery Train",
+    "tmdb_original_language": "en",
+    "overview": "物語は「ファー・フロム・ヨコハマ」「ア・ゴースト」「ロスト・イン・スペース」と名づけられた3話からなるオムニバスで、それぞれの話の人物たちが、互いに知らないまま、別々に同じ夜汽車を見、エルビスの〈ブルー・ムーン〉を聞き、そして翌朝1発の銃声を耳にする、ワン・ナイト・ストーリー。",
+    "overview_en": "In Memphis, Tennessee, over the course of a single night, the Arcade Hotel, run by an eccentric night clerk and a clueless bellboy, is visited by a young Japanese couple traveling in search of the roots of rock; an Italian woman in mourning who stumbles upon a fleeing charlatan girl; and a comical trio of accidental thieves looking for a place to hide.",
+    "poster_path": "/xJJV2em8WLVLO5OKES0Y2mkrewq.jpg",
+    "backdrop_path": "/t0GxYLiPkTtFBuzoPLmLU3HSKEN.jpg",
+    "release_date": "1989-09-06",
+    "director": "ジム・ジャームッシュ",
+    "director_jp": "ジム・ジャームッシュ",
+    "director_en": "Jim Jarmusch",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 7.336,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
   }
 }

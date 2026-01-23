@@ -1941,5 +1941,97 @@
     "original_title": "너와 나",
     "director": "Cho Hyun-chul",
     "country": "South Korea"
+  },
+  "「ぼっち・ざ・ろっく！」劇場総集編 一挙上映": {
+    "english_title": "BOCCHI THE ROCK! Recap Part 1 & 2",
+    "release_year": 2024,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "「ぼっち・ざ・ろっく！」劇場総集編 一挙上映",
+    "director": "Keiichirō Saitō",
+    "country": "Japan"
+  },
+  "ヒア・アンド・ゼア": {
+    "english_title": "Here and There",
+    "release_year": 2012,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Aquí y Allá",
+    "director": "Antonio Méndez Esparza",
+    "country": "Spain",
+    "failed": true
+  },
+  "ライフ・アンド・ナッシング・モア": {
+    "english_title": "Life and Nothing More",
+    "release_year": 2017,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Life and Nothing More",
+    "director": "Antonio Méndez Esparza",
+    "country": "Spain, USA"
+  },
+  "家庭裁判所 第３H法廷": {
+    "english_title": "Courtroom 3H",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Courtroom 3H",
+    "director": "Antonio Méndez Esparza",
+    "country": "Spain"
+  },
+  "サムシング・ハプンズ・トゥ・ミー": {
+    "english_title": "Something Is About to Happen",
+    "release_year": 2023,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Que nadie duerma",
+    "director": "Antonio Méndez Esparza",
+    "country": "Spain"
+  },
+  "クイーンダム[0131舞台挨拶]": {
+    "english_title": "Queendom",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Queendom",
+    "director": "Agniia Galdanova",
+    "country": "France, USA"
+  },
+  "小屋番 八ヶ岳に生きる 劇場版": {
+    "english_title": "Koyaban",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "小屋番 八ヶ岳に生きる 劇場版",
+    "director": "Shinya Fukasawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "【マッツ・ミケルセン生誕60周年祭】メン＆チキン": {
+    "english_title": "Men & Chicken",
+    "release_year": 2015,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mænd & høns",
+    "director": "Anders Thomas Jensen",
+    "country": "Denmark"
+  },
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】ミステリー・トレイン": {
+    "english_title": "Mystery Train",
+    "release_year": 1989,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mystery Train",
+    "director": "Jim Jarmusch",
+    "country": "United States"
+  },
+  "チリの闘い 第1部：ブルジョワジーの叛乱": {
+    "english_title": "The Battle of Chile: Part 1 - The Insurrection of the Bourgeoisie",
+    "release_year": 1975,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La batalla de Chile: La insurrección de la burguesía",
+    "director": "Patricio Guzmán",
+    "country": "Chile"
   }
 }
