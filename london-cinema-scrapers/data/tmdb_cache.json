@@ -8886,7 +8886,88 @@
     ],
     "vote_average": 7.9
   },
-  "NT Live: Hamlet": null,
+  "Preview: Scarlet": {
+    "tmdb_id": 840111,
+    "tmdb_title": "Scarlet",
+    "tmdb_original_title": "L'Envol",
+    "overview": "A French widower and WWI veteran returns home after the war to raise his newborn daughter.",
+    "poster_path": "/s6kr3P8OuskO4g4yqSAhb1hR8Uk.jpg",
+    "backdrop_path": "/lSLXjPJcGbnbZQywpqIrqCg3hT1.jpg",
+    "release_date": "2023-01-11",
+    "director": "Pietro Marcello",
+    "runtime": 105,
+    "genres": [
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "vote_average": 6.81
+  },
+  "Pink Palace: Brand X + Q&A": {
+    "tmdb_id": 94834,
+    "tmdb_title": "Brand X",
+    "tmdb_original_title": "Brand X",
+    "overview": "In 1969, Taylor Mead complained to his friend artist Wynn Chamberlain that Andy Warhol had never paid him for any of the work he had done for him and Wynn said he would make a film especially for Taylor. Inspired by the banality of 1960's television, Chamberlain wrote and directed Brand X, an 87 minute series of faux television shows spoofing the politics and mass media of the day, complete with commercials for Sex, Sweat, Computer Dating and Peanut Butter. BRAND X follows Taylor Mead through a day in a wacky television studio as he portrays an exercise guru, a talk show host, a veteran returning from the American Civil War, a hospital patient in a soap opera, the President of the United States and a televangelist giving the Nightly Sermon. BRAND X satirizes President Nixon, the Vietnam War, sex, drugs, computers, money and race relations.",
+    "poster_path": "/sIAHwpDBDaMJ5zGwpzWBPw6eUZ8.jpg",
+    "backdrop_path": null,
+    "release_date": "1970-05-18",
+    "director": "Win Chamberlain",
+    "runtime": 87,
+    "genres": [
+      "Comedy"
+    ],
+    "vote_average": 3.333
+  },
+  "Sentimental Value (15) captioned screening": {
+    "tmdb_id": 1124566,
+    "tmdb_title": "Sentimental Value",
+    "tmdb_original_title": "Affeksjonsverdi",
+    "overview": "Sisters Nora and Agnes reunite with their estranged father, the charismatic Gustav, a once-renowned director who offers stage actress Nora a role in what he hopes will be his comeback film. When Nora turns it down, she soon discovers he has given her part to an eager young Hollywood star.",
+    "poster_path": "/24JALfUQsIgfNqMD7vTbqEVfsqf.jpg",
+    "backdrop_path": "/vRoIogTQDO5yAmTmH5uGrlPfS0N.jpg",
+    "release_date": "2025-08-20",
+    "director": "Joachim Trier",
+    "runtime": 133,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.6
+  },
+  "ZOOTROPOLIS 2": {
+    "tmdb_id": 1084242,
+    "tmdb_title": "Zootopia 2",
+    "tmdb_original_title": "Zootopia 2",
+    "overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
+    "poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
+    "backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
+    "release_date": "2025-11-26",
+    "director": "Jared Bush",
+    "runtime": 107,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Adventure",
+      "Family",
+      "Mystery"
+    ],
+    "vote_average": 7.591
+  },
+  "DOCHOUSE: THE TRACK": {
+    "tmdb_id": 398277,
+    "tmdb_title": "The Track",
+    "tmdb_original_title": "The Track",
+    "overview": "When suburban mother, Caren (Missy Yager), meets a teenager working the streets of Las Vegas, Barbie (Mariah Kirstie), the result is a mother daughter relationship that may save both their lives.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2016-06-12",
+    "director": "Brett Levner",
+    "runtime": 90,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 0.0
+  },
   "Cine-real presents: The Maltese Falcon": {
     "tmdb_id": 963,
     "tmdb_title": "The Maltese Falcon",
@@ -8922,6 +9003,48 @@
     ],
     "vote_average": 7.907
   },
+  "CAMP CLASSICS presents: Ms. 45 (1981)": {
+    "tmdb_id": 22171,
+    "tmdb_title": "Ms .45",
+    "tmdb_original_title": "Ms .45",
+    "overview": "After being attacked and raped twice in one day, a timid, mute seamstress becomes a violent agent of revenge for wronged women.",
+    "poster_path": "/9ulPP8hcBjIrWRqeXsZVjL0uX3E.jpg",
+    "backdrop_path": "/vXrZ7pyHHQGBSyfXC791b62Ouxv.jpg",
+    "release_date": "1981-04-24",
+    "director": "Abel Ferrara",
+    "runtime": 81,
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Action"
+    ],
+    "vote_average": 6.682
+  },
+  "Certain Women - Seasonal Affective Cinema": null,
+  "Bar Trash: CLEOPATRA JONES (1973)": {
+    "tmdb_id": 26196,
+    "tmdb_title": "Cleopatra Jones",
+    "tmdb_original_title": "Cleopatra Jones",
+    "overview": "After federal agent Cleopatra Jones orders the burning of a Turkish poppy field, the notorious drug lord Mommy vows to destroy her.",
+    "poster_path": "/j13LI9r1Jim2XPvmJUvwGFtD0ag.jpg",
+    "backdrop_path": "/mCtJjF5L5NuK3bY1uzA5tY6xpAz.jpg",
+    "release_date": "1973-07-13",
+    "director": "Jack Starrett",
+    "runtime": 89,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "vote_average": 5.646
+  },
+  "Some Like it Swing": null,
+  "Funday Quiz": null,
+  "Backstage - I'm Migrant Film Festival": null,
+  "Echoes of a Distant Home: Stories of Longing and identity - I'm Migrant Film Festival": null,
+  "Just Like Us - Queer Stories from the SWANA Region - I'm Migrant Film Festival": null,
+  "Silents Synced - R.E.M. X Buster Keaton's Sherlock Jr.": null,
+  "Members' Scratch Night": null,
   "Blue Velvet (40th Anniversary)": {
     "tmdb_id": 793,
     "tmdb_title": "Blue Velvet",
@@ -8937,9 +9060,8 @@
       "Thriller",
       "Crime"
     ],
-    "vote_average": 7.6
+    "vote_average": 7.611
   },
-  "Members' Scratch Night": null,
   "LSFF: Can You Imagine A World?": null,
   "LSFF: A Raised Voice, Amplified": null,
   "Video Bazaar presents: Burst City": {
@@ -8961,72 +9083,58 @@
   },
   "Live stand-up + Is This Thing On?": null,
   "Site&Sound 08: Build it Up, Tear it Down": null,
-  "Manhunter Presented by The Cult Classic Collective": null,
-  "Certain Women - Seasonal Affective Cinema": null,
-  "Some Like it Swing": null,
-  "Funday Quiz": null,
-  "Backstage - I'm Migrant Film Festival": null,
-  "Echoes of a Distant Home: Stories of Longing and identity - I'm Migrant Film Festival": null,
-  "Just Like Us - Queer Stories from the SWANA Region - I'm Migrant Film Festival": null,
-  "National Theatre Live: Hamlet": null,
-  "Phoenix Classics - New Orleans Season: Streetcar Named Desire": {
-    "tmdb_id": 133018,
-    "tmdb_title": "A Streetcar Named Desire",
-    "tmdb_original_title": "A Streetcar Named Desire",
-    "overview": "As Blanche’s fragile world crumbles, she turns to her sister Stella for solace – but her downward spiral brings her face to face with the brutal, unforgiving Stanley Kowalski.",
-    "poster_path": "/3ak9YT05YitFCuDrkH7UKeWSgxA.jpg",
-    "backdrop_path": null,
-    "release_date": "1984-03-04",
-    "director": "John Erman",
-    "runtime": 119,
+  "The Emperor's Naked Army Marches On": {
+    "tmdb_id": 51929,
+    "tmdb_title": "The Emperor's Naked Army Marches On",
+    "tmdb_original_title": "ゆきゆきて、神軍",
+    "overview": "Kenzo Okuzaki, a 62-year-old veteran of the New Guinea campaign in World War II, sets out to conduct interviews with survivors and relatives to find the truth behind atrocities committed while the Japanese garrison was surrounded, in particular the unexplained killing of two Japanese privates in his unit.",
+    "poster_path": "/gMbMe2R8edL8SfioyjJqt1b1qZy.jpg",
+    "backdrop_path": "/pDDAfCdglMVzIWhJFep7xnUu1yG.jpg",
+    "release_date": "1987-08-01",
+    "director": "Kazuo Hara",
+    "runtime": 122,
     "genres": [
-      "Drama",
-      "TV Movie"
+      "Documentary"
     ],
-    "vote_average": 5.4
+    "vote_average": 7.5
   },
-  "Phoenix Classics: Breathless": {
-    "tmdb_id": 269,
-    "tmdb_title": "Breathless",
-    "tmdb_original_title": "À bout de souffle",
-    "overview": "A small-time thief steals a car and impulsively murders a motorcycle policeman. Wanted by the authorities, he attempts to persuade a girl to run away to Italy with him.",
-    "poster_path": "/9Wx0Wdn2EOqeCZU4SP6tlS3LOml.jpg",
-    "backdrop_path": "/4WGuyWf1f94CsEeVIIqDKGw5rmO.jpg",
-    "release_date": "1960-03-16",
-    "director": "Jean-Luc Godard",
-    "runtime": 90,
+  "Beautiful Thing": {
+    "tmdb_id": 10938,
+    "tmdb_title": "Beautiful Thing",
+    "tmdb_original_title": "Beautiful Thing",
+    "overview": "During a long, hot summer on the Thamesmead Estate in Southeast London, three teenagers edge towards adulthood.",
+    "poster_path": "/34fPI0phWQ189lc5O7aNf12jWPm.jpg",
+    "backdrop_path": "/2qGHNcU8YBIbvNc8HR1YczBeejA.jpg",
+    "release_date": "1996-06-21",
+    "director": "Hettie Macdonald",
+    "runtime": 92,
     "genres": [
+      "Comedy",
       "Drama",
-      "Crime"
+      "Romance"
     ],
-    "vote_average": 7.49
+    "vote_average": 7.2
   },
-  "FREE CINEMA": null,
-  "FREE CINEMA (in the US)": null,
-  "Menus-Plaisirs": null,
-  "DocFest Spotlights: Cuba & Alaska": null,
-  "Keira Greene: Light Signalling": null,
+  "Smurfs": {
+    "tmdb_id": 936108,
+    "tmdb_title": "Smurfs",
+    "tmdb_original_title": "Smurfs",
+    "overview": "When Papa Smurf is mysteriously taken by evil wizards, Razamel and Gargamel, Smurfette leads the Smurfs on a mission into the real world to save him. With the help of new friends, the Smurfs must discover what defines their destiny to save the universe.",
+    "poster_path": "/8o6lkhL32xQJeB52IIG1us5BVey.jpg",
+    "backdrop_path": "/9whEVuKte4Qi0LI4TzPf7glinJW.jpg",
+    "release_date": "2025-07-05",
+    "director": "Chris Miller",
+    "runtime": 89,
+    "genres": [
+      "Animation",
+      "Family",
+      "Fantasy"
+    ],
+    "vote_average": 5.888
+  },
   "The Short Films of David Lynch": null,
   "Stalker": null,
   "The Liberated Film Club: Jennifer Lucy Allan": null,
-  "Mudlarking and Metamorphosis + Chris Newby in conversation with Dr Noni Stacey": null,
-  "Preview: Scarlet": {
-    "tmdb_id": 840111,
-    "tmdb_title": "Scarlet",
-    "tmdb_original_title": "L'Envol",
-    "overview": "A French widower and WWI veteran returns home after the war to raise his newborn daughter.",
-    "poster_path": "/s6kr3P8OuskO4g4yqSAhb1hR8Uk.jpg",
-    "backdrop_path": "/lSLXjPJcGbnbZQywpqIrqCg3hT1.jpg",
-    "release_date": "2023-01-11",
-    "director": "Pietro Marcello",
-    "runtime": 105,
-    "genres": [
-      "Drama",
-      "History",
-      "Romance"
-    ],
-    "vote_average": 6.81
-  },
   "Nouvelle Vague (Preview screenings)": null,
   "I Am Nasrine + intro by Wendy Russell, BFI Screencraft Archivist": {
     "tmdb_id": 167447,
@@ -9175,7 +9283,7 @@
       "Crime",
       "Drama"
     ],
-    "vote_average": 7.267
+    "vote_average": 7.3
   },
   "Preview screening: Nouvelle Vague + Q&A with actor Guillaume Marbeck": {
     "tmdb_id": 1254808,
@@ -9192,7 +9300,7 @@
       "Drama",
       "History"
     ],
-    "vote_average": 7.42
+    "vote_average": 7.366
   },
   "Twin Peaks: Fire Walk with Me + intro by Lindsay Hallam, author of Twin Peaks: Fire Walk with Me": {
     "tmdb_id": 1923,
@@ -9200,7 +9308,7 @@
     "tmdb_original_title": "Twin Peaks: Fire Walk with Me",
     "overview": "In the questionable town of Deer Meadow, Washington, FBI Agent Desmond inexplicably disappears while hunting for the man who murdered a teen girl. The killer is never apprehended, and, after experiencing dark visions and supernatural encounters, Agent Dale Cooper chillingly predicts that the culprit will claim another life. Meanwhile, in the more cozy town of Twin Peaks, hedonistic beauty Laura Palmer hangs with lowlifes and seems destined for a grisly fate.",
     "poster_path": "/mxsGXqetGnirf99qapYd5MMY1VL.jpg",
-    "backdrop_path": "/g5G19q0xgkzWEvfcGo1KcL8nQOk.jpg",
+    "backdrop_path": "/ke4yX2eS5eUC94YTkKgoGWi53TM.jpg",
     "release_date": "1992-06-03",
     "director": "David Lynch",
     "runtime": 135,
@@ -9211,25 +9319,26 @@
     ],
     "vote_average": 7.4
   },
-  "NT Live: The Fifth Step": null,
-  "Hamnet (12A)": {
-    "tmdb_id": 858024,
-    "tmdb_title": "Hamnet",
-    "tmdb_original_title": "Hamnet",
-    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
-    "poster_path": "/61xMzN4h8iLk0hq6oUzr9Ts6GE9.jpg",
-    "backdrop_path": "/yt9m5CiU2MZkQoNl1kqLPODNR4t.jpg",
-    "release_date": "2025-11-26",
-    "director": "Chloé Zhao",
-    "runtime": 126,
+  "Slacker": {
+    "tmdb_id": 14022,
+    "tmdb_title": "Slacker",
+    "tmdb_original_title": "Slacker",
+    "overview": "Austin, Texas, is an Eden for the young and unambitious, from the enthusiastically eccentric to the dangerously apathetic. Here, the nobly lazy can eschew responsibility in favor of nursing their esoteric obsessions. The locals include a backseat philosopher who passionately expounds on his dream theories to a seemingly comatose cabbie, a young woman who tries to hawk Madonna's Pap test to anyone who will listen and a kindly old anarchist looking for recruits.",
+    "poster_path": "/8cEWYiKJgVWCgO1aOQItifZBQOw.jpg",
+    "backdrop_path": "/1gjK6oZSQtvhFBbSgkBvn72dPLF.jpg",
+    "release_date": "1991-07-05",
+    "director": "Richard Linklater",
+    "runtime": 97,
     "genres": [
       "Drama",
-      "Romance"
+      "Comedy"
     ],
-    "vote_average": 7.651
+    "vote_average": 6.731
   },
-  "Noon (Podne) (15*)": null,
-  "Solve Along A Murder She Wrote": null,
+  "Menus-Plaisirs": null,
+  "DocFest Spotlights: Cuba & Alaska": null,
+  "FREE CINEMA": null,
+  "FREE CINEMA (in the US)": null,
   "Mystery Movie": null,
   "Your Name [Kimi no Na wa.]": {
     "tmdb_id": 372058,
@@ -9304,22 +9413,38 @@
     ],
     "vote_average": 7.3
   },
-  "Pink Palace: Brand X + Q&A": {
-    "tmdb_id": 94834,
-    "tmdb_title": "Brand X",
-    "tmdb_original_title": "Brand X",
-    "overview": "In 1969, Taylor Mead complained to his friend artist Wynn Chamberlain that Andy Warhol had never paid him for any of the work he had done for him and Wynn said he would make a film especially for Taylor. Inspired by the banality of 1960's television, Chamberlain wrote and directed Brand X, an 87 minute series of faux television shows spoofing the politics and mass media of the day, complete with commercials for Sex, Sweat, Computer Dating and Peanut Butter. BRAND X follows Taylor Mead through a day in a wacky television studio as he portrays an exercise guru, a talk show host, a veteran returning from the American Civil War, a hospital patient in a soap opera, the President of the United States and a televangelist giving the Nightly Sermon. BRAND X satirizes President Nixon, the Vietnam War, sex, drugs, computers, money and race relations.",
-    "poster_path": "/sIAHwpDBDaMJ5zGwpzWBPw6eUZ8.jpg",
-    "backdrop_path": null,
-    "release_date": "1970-05-18",
-    "director": "Win Chamberlain",
-    "runtime": 87,
+  "8 1/2": {
+    "tmdb_id": 422,
+    "tmdb_title": "8½",
+    "tmdb_original_title": "8½",
+    "overview": "Guido Anselmi, a film director, finds himself creatively barren at the peak of his career. Urged by his doctors to rest, Anselmi heads for a luxurious resort, but a sorry group gathers—his producer, staff, actors, wife, mistress, and relatives—each one begging him to get on with the show. In retreat from their dependency, he fantasizes about past women and dreams of his childhood.",
+    "poster_path": "/t8pFvll3cFrn5NmqZz2FawqIwPe.jpg",
+    "backdrop_path": "/y2FNZLHynsevBnVTocGW6c3pQpr.jpg",
+    "release_date": "1963-02-14",
+    "director": "Federico Fellini",
+    "runtime": 139,
     "genres": [
-      "Comedy"
+      "Drama"
     ],
-    "vote_average": 3.333
+    "vote_average": 8.1
   },
-  "Coming Up – LSD: Dream Emulator and the rest of Osamo Sato’s Lovely Sweet Dream": null,
+  "Blow Out": {
+    "tmdb_id": 11644,
+    "tmdb_title": "Blow Out",
+    "tmdb_original_title": "Blow Out",
+    "overview": "While recording sound effects for a slasher flick, Jack Terry stumbles upon a real-life horror: a car careening off a bridge and into a river. Jack jumps into the water and fishes out Sally from the car, but the other passenger is already dead — a governor intending to run for president. As Jack does some investigating of his tapes, and starts a perilous romance with Sally, he enters a tangled web of conspiracy that might leave him dead.",
+    "poster_path": "/nzYNrav10oXRKDy183PeDG3XoeT.jpg",
+    "backdrop_path": "/nk87CtgZ7wd86W37oJHGYAJbmLz.jpg",
+    "release_date": "1981-07-24",
+    "director": "Brian De Palma",
+    "runtime": 108,
+    "genres": [
+      "Thriller",
+      "Mystery",
+      "Crime"
+    ],
+    "vote_average": 7.4
+  },
   "Films For Workers: Bread and Roses + Panel": null,
   "LSFF: Lo-Budget Mayhem": null,
   "Die My Love with SCRT® & Mubi": null,
@@ -9355,6 +9480,24 @@
     "vote_average": 0.0
   },
   "LSFF: WTF?!": null,
+  "R.E.M x Buster Keaton's Sherlock Jr.": null,
+  "Pink Palace: Kaboom": {
+    "tmdb_id": 46837,
+    "tmdb_title": "Kaboom",
+    "tmdb_original_title": "Kaboom",
+    "overview": "Smith, a typical young college student who likes partying and engaging in acts of random sex and debauchery, has been having some interesting dreams revolving around two gorgeous women -- and is shocked when he meets the dream girls in real life. Lorelei looks just like his fantasy brunette, while a mysterious red-haired girl being chased by assassins draws him into an international conspiracy. Or is it all just a drug-induced hallucination?",
+    "poster_path": "/tMKhfXGDCVlHH5NoGZdiBg0UDeS.jpg",
+    "backdrop_path": "/kPsmN62vFuJD3FjFIRZXO84tKQI.jpg",
+    "release_date": "2010-10-06",
+    "director": "Gregg Araki",
+    "runtime": 86,
+    "genres": [
+      "Comedy",
+      "Science Fiction",
+      "Mystery"
+    ],
+    "vote_average": 5.582
+  },
   "London Short Film Festival: Can you imagine a world?": null,
   "Lexi Seniors' Film Club: Hamnet": {
     "tmdb_id": 858024,
@@ -9362,7 +9505,7 @@
     "tmdb_original_title": "Hamnet",
     "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
     "poster_path": "/61xMzN4h8iLk0hq6oUzr9Ts6GE9.jpg",
-    "backdrop_path": "/yt9m5CiU2MZkQoNl1kqLPODNR4t.jpg",
+    "backdrop_path": "/uRDu9DiTVf97z5sj6qesmyQpYji.jpg",
     "release_date": "2025-11-26",
     "director": "Chloé Zhao",
     "runtime": 126,
@@ -9370,7 +9513,7 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 7.651
+    "vote_average": 7.675
   },
   "Holocaust Memorial Day: Nuremberg": {
     "tmdb_id": 1214931,
@@ -9387,17 +9530,103 @@
       "Drama",
       "Thriller"
     ],
-    "vote_average": 7.356
+    "vote_average": 7.353
   },
   "London Short Film Festival: London Lives": null,
+  "LIVE CONCERT: RAHIMA MAHMUT & THE MIRAS SILK ROAD COLLECTIVE": null,
+  "CARERS & BABIES: RENTAL FAMILY": {
+    "tmdb_id": 1208348,
+    "tmdb_title": "Rental Family",
+    "tmdb_original_title": "Rental Family",
+    "overview": "An American actor in Tokyo struggles to find purpose until he lands an unusual gig: working for a Japanese 'rental family' agency, playing stand-in roles for strangers. As he immerses himself in his clients' worlds, he begins to form genuine bonds that blur the lines between performance and reality.",
+    "poster_path": "/A5lswNlytTUrnMWsuD0NFfhZlf3.jpg",
+    "backdrop_path": "/ufuabtiOem0kHeYz6b8x8MjBb2L.jpg",
+    "release_date": "2025-11-20",
+    "director": "Hikari",
+    "runtime": 110,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.744
+  },
+  "LSFF: BRITISH LIVES": null,
+  "FUN IN THE LOUNGE - FREE ENTRY: OPEN MIC": null,
+  "FUN IN THE LOUNGE - FREE ENTRY: UNTITLED COMEDY NIGHT": null,
+  "LIVE JAZZ WITH TRENT PIETERSE QUARTET": null,
+  "LSFF: The Colonial Present in Cinema and Sound (+ reflective listening soundscape)": null,
+  "FUN IN THE LOUNGE - FREE ENTRY: BOARD GAMES": null,
+  "Hamnet (12A)": {
+    "tmdb_id": 858024,
+    "tmdb_title": "Hamnet",
+    "tmdb_original_title": "Hamnet",
+    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
+    "poster_path": "/61xMzN4h8iLk0hq6oUzr9Ts6GE9.jpg",
+    "backdrop_path": "/uRDu9DiTVf97z5sj6qesmyQpYji.jpg",
+    "release_date": "2025-11-26",
+    "director": "Chloé Zhao",
+    "runtime": 126,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 7.675
+  },
+  "The History of Sound (15)": {
+    "tmdb_id": 891584,
+    "tmdb_title": "The History of Sound",
+    "tmdb_original_title": "The History of Sound",
+    "overview": "In 1917, two young music students attending the Boston Conservatory bond over a mutual love of folk music. They reconnect a few years later, embarking on a song-collecting trip in the backwaters of Maine.",
+    "poster_path": "/5tNr1CySiYQICRsQbWWSSsDiKjn.jpg",
+    "backdrop_path": "/e13Io18jl6p5UiS5Cxhug9ptTPU.jpg",
+    "release_date": "2025-09-12",
+    "director": "Oliver Hermanus",
+    "runtime": 127,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 6.3
+  },
+  "Phoenix Classics - New Orleans Season: Streetcar Named Desire": {
+    "tmdb_id": 133018,
+    "tmdb_title": "A Streetcar Named Desire",
+    "tmdb_original_title": "A Streetcar Named Desire",
+    "overview": "As Blanche’s fragile world crumbles, she turns to her sister Stella for solace – but her downward spiral brings her face to face with the brutal, unforgiving Stanley Kowalski.",
+    "poster_path": "/3ak9YT05YitFCuDrkH7UKeWSgxA.jpg",
+    "backdrop_path": null,
+    "release_date": "1984-03-04",
+    "director": "John Erman",
+    "runtime": 119,
+    "genres": [
+      "Drama",
+      "TV Movie"
+    ],
+    "vote_average": 5.4
+  },
+  "Phoenix Classics: Breathless": {
+    "tmdb_id": 269,
+    "tmdb_title": "Breathless",
+    "tmdb_original_title": "À bout de souffle",
+    "overview": "A small-time thief steals a car and impulsively murders a motorcycle policeman. Wanted by the authorities, he attempts to persuade a girl to run away to Italy with him.",
+    "poster_path": "/9Wx0Wdn2EOqeCZU4SP6tlS3LOml.jpg",
+    "backdrop_path": "/4WGuyWf1f94CsEeVIIqDKGw5rmO.jpg",
+    "release_date": "1960-03-16",
+    "director": "Jean-Luc Godard",
+    "runtime": 90,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "vote_average": 7.5
+  },
   "MUSICAL SHORTS - Presented by Small World Cinema": null,
   "NOVELLE VAGUE": null,
-  "NT LIVE: HAMLET": null,
   "ROMANCING THE STONE (DMF)": null,
   "ROMANCING THE STONE (Relaxed Screening)": null,
   "THE HOUSEMAID (Babes-In-Arms)": null,
   "WICKED FOR GOOD (Relaxed Screening)": null,
-  "National Theatre Live Presents: Hamlet": null,
   "Labyrinth 40th Anniversary Screenings": {
     "tmdb_id": 13597,
     "tmdb_title": "Labyrinth",
@@ -9415,77 +9644,23 @@
     ],
     "vote_average": 7.3
   },
-  "Sentimental Value (15) captioned screening": {
-    "tmdb_id": 1124566,
-    "tmdb_title": "Sentimental Value",
-    "tmdb_original_title": "Affeksjonsverdi",
-    "overview": "Sisters Nora and Agnes reunite with their estranged father, the charismatic Gustav, a once-renowned director who offers stage actress Nora a role in what he hopes will be his comeback film. When Nora turns it down, she soon discovers he has given her part to an eager young Hollywood star.",
-    "poster_path": "/24JALfUQsIgfNqMD7vTbqEVfsqf.jpg",
-    "backdrop_path": "/vRoIogTQDO5yAmTmH5uGrlPfS0N.jpg",
-    "release_date": "2025-08-20",
-    "director": "Joachim Trier",
-    "runtime": 133,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.6
-  },
-  "Song Sung Blue (12A) captioned screening": {
-    "tmdb_id": 1371185,
-    "tmdb_title": "Song Sung Blue",
-    "tmdb_original_title": "Song Sung Blue",
-    "overview": "Based on a true story, two down-on-their-luck musicians form a joyous Neil Diamond tribute band, proving it's never too late to find love and follow your dreams.",
-    "poster_path": "/kQzDdxI0F5z16qo2vzDoqdVMl4O.jpg",
-    "backdrop_path": "/mnEx3lTjjQYHMj55ZnZHQZVUlZ.jpg",
-    "release_date": "2025-12-25",
-    "director": "Craig Brewer",
-    "runtime": 133,
+  "Babykino: Hamnet": {
+    "tmdb_id": 858024,
+    "tmdb_title": "Hamnet",
+    "tmdb_original_title": "Hamnet",
+    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
+    "poster_path": "/61xMzN4h8iLk0hq6oUzr9Ts6GE9.jpg",
+    "backdrop_path": "/uRDu9DiTVf97z5sj6qesmyQpYji.jpg",
+    "release_date": "2025-11-26",
+    "director": "Chloé Zhao",
+    "runtime": 126,
     "genres": [
       "Drama",
-      "Music",
       "Romance"
     ],
-    "vote_average": 7.695
+    "vote_average": 7.675
   },
-  "Marty Supreme (15) captioned screening": {
-    "tmdb_id": 1317288,
-    "tmdb_title": "Marty Supreme",
-    "tmdb_original_title": "Marty Supreme",
-    "overview": "In 1950s New York, table tennis player Marty Mauser, a young man with a dream no one respects, goes to Hell and back in pursuit of greatness.",
-    "poster_path": "/firAhZA0uQvRL2slp7v3AnOj0ZX.jpg",
-    "backdrop_path": "/kHHVzOGE23kavlvFOxeHaBmrgBJ.jpg",
-    "release_date": "2025-12-19",
-    "director": "Josh Safdie",
-    "runtime": 150,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 8.103
-  },
-  "NT Live: Hamlet (12A) captioned screening": null,
-  "LIVE CONCERT: RAHIMA MAHMUT & THE MIRAS SILK ROAD COLLECTIVE": null,
-  "CARERS & BABIES: RENTAL FAMILY": {
-    "tmdb_id": 1208348,
-    "tmdb_title": "Rental Family",
-    "tmdb_original_title": "Rental Family",
-    "overview": "An American actor in Tokyo struggles to find purpose until he lands an unusual gig: working for a Japanese 'rental family' agency, playing stand-in roles for strangers. As he immerses himself in his clients' worlds, he begins to form genuine bonds that blur the lines between performance and reality.",
-    "poster_path": "/A5lswNlytTUrnMWsuD0NFfhZlf3.jpg",
-    "backdrop_path": "/ufuabtiOem0kHeYz6b8x8MjBb2L.jpg",
-    "release_date": "2025-11-20",
-    "director": "Hikari",
-    "runtime": 110,
-    "genres": [
-      "Comedy",
-      "Drama"
-    ],
-    "vote_average": 7.8
-  },
-  "LSFF: BRITISH LIVES": null,
-  "FUN IN THE LOUNGE - FREE ENTRY: OPEN MIC": null,
-  "FUN IN THE LOUNGE - FREE ENTRY: UNTITLED COMEDY NIGHT": null,
-  "LIVE JAZZ WITH TRENT PIETERSE QUARTET": null,
-  "LSFF: The Colonial Present in Cinema and Sound (+ reflective listening soundscape)": null,
-  "FUN IN THE LOUNGE - FREE ENTRY: BOARD GAMES": null,
+  "Hayley Mills: The Family Way": null,
   "La Femme Independent FF Official Competition 1": null,
   "Let's Sing + Director & Cast Q&A": {
     "tmdb_id": 936866,
@@ -9503,24 +9678,54 @@
     ],
     "vote_average": 0.0
   },
-  "National Theatre Live: The Fifth Step": null,
-  "Babykino: Hamnet": {
-    "tmdb_id": 858024,
-    "tmdb_title": "Hamnet",
-    "tmdb_original_title": "Hamnet",
-    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
-    "poster_path": "/61xMzN4h8iLk0hq6oUzr9Ts6GE9.jpg",
-    "backdrop_path": "/yt9m5CiU2MZkQoNl1kqLPODNR4t.jpg",
-    "release_date": "2025-11-26",
-    "director": "Chloé Zhao",
-    "runtime": 126,
+  "La Femme Independent FF Official Competition 2": null,
+  "Song Sung Blue (12A) captioned screening": {
+    "tmdb_id": 1371185,
+    "tmdb_title": "Song Sung Blue",
+    "tmdb_original_title": "Song Sung Blue",
+    "overview": "Based on a true story, two down-on-their-luck musicians form a joyous Neil Diamond tribute band, proving it's never too late to find love and follow your dreams.",
+    "poster_path": "/kQzDdxI0F5z16qo2vzDoqdVMl4O.jpg",
+    "backdrop_path": "/mnEx3lTjjQYHMj55ZnZHQZVUlZ.jpg",
+    "release_date": "2025-12-25",
+    "director": "Craig Brewer",
+    "runtime": 133,
     "genres": [
       "Drama",
+      "Music",
       "Romance"
     ],
-    "vote_average": 7.651
+    "vote_average": 7.648
   },
-  "Hayley Mills: The Family Way": null,
+  "Marty Supreme (15) captioned screening": {
+    "tmdb_id": 1317288,
+    "tmdb_title": "Marty Supreme",
+    "tmdb_original_title": "Marty Supreme",
+    "overview": "In 1950s New York, table tennis player Marty Mauser, a young man with a dream no one respects, goes to Hell and back in pursuit of greatness.",
+    "poster_path": "/firAhZA0uQvRL2slp7v3AnOj0ZX.jpg",
+    "backdrop_path": "/kHHVzOGE23kavlvFOxeHaBmrgBJ.jpg",
+    "release_date": "2025-12-19",
+    "director": "Josh Safdie",
+    "runtime": 150,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.094
+  },
+  "Letter from Siberia": {
+    "tmdb_id": 128831,
+    "tmdb_title": "Letter from Siberia",
+    "tmdb_original_title": "Lettre de Sibérie",
+    "overview": "A faceless traveller takes a journey through the barren reaches of a Siberia caught between tradition and modernity, imparting his philosophical musings on its people and places, wildlife and culture.",
+    "poster_path": "/aSo8zaGNSDrjWgyhEA0lTO7IwdL.jpg",
+    "backdrop_path": "/8MhriiL6Mrcnpo4jp9AvZuSCb5D.jpg",
+    "release_date": "1957-05-16",
+    "director": "Chris Marker",
+    "runtime": 62,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 6.862
+  },
   "Labyrinth 40th Anniversary": {
     "tmdb_id": 13597,
     "tmdb_title": "Labyrinth",
@@ -9539,6 +9744,9 @@
     "vote_average": 7.3
   },
   "Valentine Special Film Quiz - When Rom Met Com": null,
+  "STOLEN DREAMS REDEMPTION | BRIXTON 2.0": null,
+  "Crafty Movie Night – Bridget Jones’s Diary": null,
+  "CINE MARICA: Hable Con Ella": null,
   "Mystery Sapphic Film": null,
   "Iris Prize: 2025 Best Bits + Intro &amp; Q&amp;A": null,
   "Iris Prize: When Love Broke the Law + Q&amp;A": null,
@@ -9562,19 +9770,59 @@
     ],
     "vote_average": 7.179
   },
-  "Private Screening": null,
   "LFFF: Pillion Fetish-Friendly Fundraiser Q&amp;A": null,
   "LFFF: The Visitor Q&amp;A &amp; After Party": null,
-  "STOLEN DREAMS REDEMPTION | BRIXTON 2.0": null,
-  "Crafty Movie Night – Bridget Jones’s Diary": null,
-  "CINE MARICA: Hable Con Ella": null,
-  "NT Live: Hamlet Thu 22 Jan": null,
-  "London Short Film Festival Not Her First Rodeo Tue 27 Jan": null,
-  "London Short Film Festival East London, Bangladesh & Tales of Becoming Wed 28 Jan": null,
-  "London Short Film Festival It’s Probably Fine (We Tried Our Best) Thu 29 Jan": null,
-  "London Short Film Festival Animation Variety Show Fri 30 Jan": null,
-  "London Short Film Festival My Eye Is My Ear Sat 31 Jan": null,
-  "London Short Film Festival Society Is A Hole Sat 31 Jan": null,
+  "Rerun: Spectra: Desires": null,
+  "Mercy": {
+    "tmdb_id": 180305,
+    "tmdb_title": "Mercy",
+    "tmdb_original_title": "Mercy",
+    "overview": "A single mom and her two boys help take care of their grandmother with mystical powers.",
+    "poster_path": "/wiYki9Cz1SCsKzERLd9dABC8Q5r.jpg",
+    "backdrop_path": "/3rhK9RQI2fMWUBIgDgfdyBBbihC.jpg",
+    "release_date": "2014-10-07",
+    "director": "Peter Cornwell",
+    "runtime": 78,
+    "genres": [
+      "Thriller",
+      "Horror"
+    ],
+    "vote_average": 5.134
+  },
+  "Stitch Head": {
+    "tmdb_id": 1214130,
+    "tmdb_title": "Stitch Head",
+    "tmdb_original_title": "Stitch Head",
+    "overview": "Stitch Head was the first creature brought to 'almost life' by mad professor Erasmus. In the years since, he’s become nursemaid to the master’s ever-growing menagerie of neglected creatures, tasked with teaching them to suppress their 'inner monster' and hide out in the castle — away from prying eyes and itchy pitchfork fingers, of the village mob in the valley below. But when grubby circus impresario Fulbert Freakfinder arrives offering Stitch Head a starring role in his freak show, our hero is tempted by the promise of love and acceptance.",
+    "poster_path": "/p0ZOIaQ8oLEGmQVrYcmvIOUuSqs.jpg",
+    "backdrop_path": "/zIFFlcvilrrbUlveEbIsFAtUfGT.jpg",
+    "release_date": "2025-10-16",
+    "director": "Steve Hudson",
+    "runtime": 91,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Family",
+      "Comedy"
+    ],
+    "vote_average": 7.0
+  },
+  "Heavyweight": {
+    "tmdb_id": 904748,
+    "tmdb_title": "Heavyweight",
+    "tmdb_original_title": "Тяжеловес",
+    "overview": "This is the story of a sporting battle. Only the opponent is not a man, but a barbell weighing several hundred kilograms. One day, Fedor loses to his \"opponent\" and gets seriously injured, incompatible with a sports career. Doctors, relatives, and friends do not believe in the possibility of continuing professional sports, but Fedor, in spite of fate and everyone, finds the strength and overcomes the disease. Fedor is back on the platform one-on-one with his soulless rival. How will this fight end this time?",
+    "poster_path": "/d1pASCBmmqmWPHW6nCE3gn45GZX.jpg",
+    "backdrop_path": null,
+    "release_date": "2017-03-29",
+    "director": "Roman Nesterenko",
+    "runtime": 100,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 0.0
+  },
   "The Traitors - Live Final": {
     "tmdb_id": 620330,
     "tmdb_title": "The Traitors",
@@ -9588,7 +9836,6 @@
     "genres": [],
     "vote_average": 0.0
   },
-  "THE WITCH THAT CAME FROM THE SEA": null,
   "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday23.1Doors8.15pmFilm8.45pmDigitalSold Out": null,
   "EVOLUTION OF HORROR PRESENTS: FLESH FOR FRANKENSTEIN 3D": {
     "tmdb_id": 3043,
@@ -9701,9 +9948,43 @@
   "HELL'S GROUND (ZIBANKHANA)": null,
   "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday13.2Doors8:15pmFilm8:45pmDigitalBook here": null,
   "CAFE FLESH": null,
+  "DEATH RIDES A HORSE": {
+    "tmdb_id": 49397,
+    "tmdb_title": "Death Rides a Horse",
+    "tmdb_original_title": "Da uomo a uomo",
+    "overview": "Bill Meceita, a boy whose family was murdered in front of him by a gang, sets out 15 years later to exact revenge. On his journey, he finds himself continually sparring and occasionally cooperating with Ryan, a gunfighter on his own quest for vengeance, who knows more than he says about Bill's tragedy.",
+    "poster_path": "/qjvb8IYBaqizU1GG1qmGtMJpkBK.jpg",
+    "backdrop_path": "/9FbiHF7JcBNxeNrOgHa1kRlioZU.jpg",
+    "release_date": "1967-08-31",
+    "director": "Giulio Petroni",
+    "runtime": 114,
+    "genres": [
+      "Western"
+    ],
+    "vote_average": 7.0
+  },
+  "NAVAJO JOE": {
+    "tmdb_id": 6474,
+    "tmdb_title": "Navajo Joe",
+    "tmdb_original_title": "Navajo Joe",
+    "overview": "The sole survivor of a bloody massacre vows revenge on his attackers and on the men who killed his wife.",
+    "poster_path": "/hxrsKfgsPlQozvANkZy84lDRKFv.jpg",
+    "backdrop_path": "/jJ92NP8ivBRCsrIXjcD4Kva8oCw.jpg",
+    "release_date": "1966-11-25",
+    "director": "Sergio Corbucci",
+    "runtime": 93,
+    "genres": [
+      "Western"
+    ],
+    "vote_average": 6.215
+  },
+  "London Short Film Festival Not Her First Rodeo Tue 27 Jan": null,
+  "London Short Film Festival East London, Bangladesh & Tales of Becoming Wed 28 Jan": null,
+  "London Short Film Festival It’s Probably Fine (We Tried Our Best) Thu 29 Jan": null,
+  "London Short Film Festival Animation Variety Show Fri 30 Jan": null,
+  "London Short Film Festival My Eye Is My Ear Sat 31 Jan": null,
+  "London Short Film Festival Society Is A Hole Sat 31 Jan": null,
   "Avatar: Fire and Ash (3D)": null,
-  "Club Room Comedy: Tevin Everett, Olga Koch, Vlad Llich, and Roman Harris": null,
-  "National Theatre Live: Hamlet (2026)": null,
   "The Traitors Finale Watch Party": null,
   "DRINK & DINE: Marty Supreme": {
     "tmdb_id": 1317288,
@@ -9718,7 +9999,7 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 8.103
+    "vote_average": 8.094
   },
   "Stop Making Sense: Dance-Along": null,
   "Dog-Friendly Screening: Hamnet": null,
@@ -9759,6 +10040,24 @@
     "vote_average": 7.329
   },
   "Blues at the Ritzy": null,
+  "Family Special: Pip and Posy and Friends": null,
+  "Rabbit Trap": {
+    "tmdb_id": 1193824,
+    "tmdb_title": "Rabbit Trap",
+    "tmdb_original_title": "Rabbit Trap",
+    "overview": "When a musician and her husband move to a remote house in Wales, the music they make disturbs local ancient folk magic, bringing a nameless child to their door who is intent on infiltrating their lives.",
+    "poster_path": "/sKnwnnmBpjo9BEskHtja6ToXUV1.jpg",
+    "backdrop_path": "/xkKDKUHQKgjgGuyzFihKoWQIvK0.jpg",
+    "release_date": "2025-09-12",
+    "director": "Bryn Chainey",
+    "runtime": 88,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "vote_average": 6.024
+  },
   "ANZ Film Festival: Kangaroo": {
     "tmdb_id": 352561,
     "tmdb_title": "Kangaroo",
@@ -9808,8 +10107,9 @@
       "Science Fiction",
       "Drama"
     ],
-    "vote_average": 6.5
+    "vote_average": 6.4
   },
+  "Dog-Friendly Screening: The History of Sound": null,
   "ANZ FILM FESTIVAL: SHORT FILM SHOWCASE": null,
   "ANZ Film Festival: KOKA": {
     "tmdb_id": 1316326,
@@ -9863,6 +10163,23 @@
   },
   "My Father's Shadow in association with We Are Parable": null,
   "Spark Storytelling Open Mic": null,
+  "The Scarecrows' Wedding": {
+    "tmdb_id": 1488459,
+    "tmdb_title": "The Scarecrows' Wedding",
+    "tmdb_original_title": "The Scarecrows' Wedding",
+    "overview": "Devoted scarecrows Betty O'Barley and Harry O'Hay are planning a wedding to remember. When Harry insists on leaving the farm to collect one last thing for their big day, smooth-talking Reginald Rake swoops in with plans of his own. Chaos follows, and soon Betty's in danger and everything's at risk. Can Harry get back in time and save the day?",
+    "poster_path": "/dlLlAINgInFzHC10JV44oOSw5gG.jpg",
+    "backdrop_path": "/q3OgeTuWsidiD1WqvgzwKXrjo0P.jpg",
+    "release_date": "2025-12-25",
+    "director": "Samantha Cutler",
+    "runtime": 26,
+    "genres": [
+      "Animation",
+      "Family",
+      "Romance"
+    ],
+    "vote_average": 6.2
+  },
   "The Secret Agent - Preview": null,
   "The Big Ritzy Quiz": null,
   "RBO Live: Woolf Works (2026)": null,
@@ -9905,7 +10222,6 @@
   "RBO Encore: Woolf Works (2026)": null,
   "Vinyl Sisters": null,
   "Club Room: Hannah Horton & Tara Minton": null,
-  "National Theatre Live: The Audience (2026 Encore)": null,
   "RBO Live: Giselle (2026)": null,
   "OTHELLO (2026)": {
     "tmdb_id": 1595531,
@@ -9935,8 +10251,42 @@
     ],
     "vote_average": 0.0
   },
+  "The Handmaiden": {
+    "tmdb_id": 290098,
+    "tmdb_title": "The Handmaiden",
+    "tmdb_original_title": "아가씨",
+    "overview": "1930s Korea, in the period of Japanese occupation, a new girl, Sookee, is hired as a handmaiden to a Japanese heiress, Hideko, who lives a secluded life on a large countryside estate with her domineering Uncle Kouzuki. But the maid has a secret. She is a pickpocket recruited by a swindler posing as a Japanese Count to help him seduce the Lady to steal her fortune.",
+    "poster_path": "/dLlH4aNHdnmf62umnInL8xPlPzw.jpg",
+    "backdrop_path": "/3upEZ0ltY7WwOSFVXrtiP34D48p.jpg",
+    "release_date": "2016-06-01",
+    "director": "Park Chan-wook",
+    "runtime": 145,
+    "genres": [
+      "Thriller",
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 8.2
+  },
   "RBO Encore: Giselle (2026)": null,
   "EXHIBITION ON SCREEN: Turner & Constable": null,
+  "Stoker": {
+    "tmdb_id": 86825,
+    "tmdb_title": "Stoker",
+    "tmdb_original_title": "Stoker",
+    "overview": "After India's father dies in an auto accident, her uncle Charlie, whom she never knew existed, comes to live with her and her emotionally unstable mother Evelyn. Soon after his arrival, she comes to suspect this mysterious, charming man has ulterior motives, but instead of feeling outrage or horror, this friendless girl becomes increasingly infatuated with him.",
+    "poster_path": "/aK0PTgwDiLm2YCNpOrhD8JR3mqL.jpg",
+    "backdrop_path": "/t0QMymxi72yRY00qwFIPQBYXPXo.jpg",
+    "release_date": "2013-02-28",
+    "director": "Park Chan-wook",
+    "runtime": 99,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "vote_average": 6.637
+  },
   "DRINK & DINE: The Greatest Showman Sing-A-Long": {
     "tmdb_id": 316029,
     "tmdb_title": "The Greatest Showman",
@@ -9953,8 +10303,43 @@
     "vote_average": 7.868
   },
   "Green Screen: Power Station + discussion": null,
+  "Decision to Leave": {
+    "tmdb_id": 705996,
+    "tmdb_title": "Decision to Leave",
+    "tmdb_original_title": "헤어질 결심",
+    "overview": "From a mountain peak in South Korea, a man plummets to his death. Did he jump, or was he pushed? When detective Hae-joon arrives on the scene, he begins to suspect the dead man’s wife Seo-rae. But as he digs deeper into the investigation, he finds himself trapped in a web of deception and desire.",
+    "poster_path": "/N0rskx91Eh6aWjvBybeY6epNic.jpg",
+    "backdrop_path": "/qMQzyEGpDDzk68FdYfwcz4Nk2qX.jpg",
+    "release_date": "2022-06-29",
+    "director": "Park Chan-wook",
+    "runtime": 139,
+    "genres": [
+      "Thriller",
+      "Mystery",
+      "Romance"
+    ],
+    "vote_average": 7.322
+  },
   "Met Opera Live: Tristan and Isolde (2026)": null,
   "Met Opera Encore: Tristan and Isolde (2026)": null,
+  "Oldboy": {
+    "tmdb_id": 87516,
+    "tmdb_title": "Oldboy",
+    "tmdb_original_title": "Oldboy",
+    "overview": "A man has only three and a half days and limited resources to discover why he was imprisoned in a nondescript room for 20 years without any explanation.",
+    "poster_path": "/iX93YdBrZA1EpGbphmjf4ARj1Za.jpg",
+    "backdrop_path": "/yl9waUJoMTp1NnraBn4KWHuUSsx.jpg",
+    "release_date": "2013-11-14",
+    "director": "Spike Lee",
+    "runtime": 104,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Mystery",
+      "Action"
+    ],
+    "vote_average": 5.9
+  },
   "RBO Live: Siegfried (2026)": null,
   "DRINK & DINE: Bohemian Rhapsody Sing-Along": {
     "tmdb_id": 424694,
@@ -9973,15 +10358,12 @@
     "vote_average": 7.963
   },
   "RBO Encore: Siegfried (2026)": null,
-  "National Theatre Live: All My Sons (2026)": null,
   "RBO Live: The Magic Flute (2026)": null,
   "Lob-sters Tennis Anniversary Screening:Challengers": null,
   "RBO Encore: The Magic Flute (2026)": null,
   "Met Opera Live: Eugene Onegin (2026)": null,
   "Met Opera Encore: Eugene Onegin (2026)": null,
   "EXHIBITION ON SCREEN: Frida Kahlo 2026 Encore": null,
-  "National Theatre Live: The Playboy of the Western World": null,
-  "National Theatre Live: Les Liaisons Dangereuses": null,
   "Toddler Club: Chicken Run": null,
   "Lord of the Rings: The Two Towers (Extended Edition)": {
     "tmdb_id": 121,
@@ -10025,7 +10407,7 @@
     "poster_path": "/s7IbZFANLHKNglQ9IfjDdrHCVNZ.jpg",
     "backdrop_path": "/66goUG18qJdtbnJ7R4HIsibUMKI.jpg",
     "release_date": "2025-11-08",
-    "director": "Lisa Barros D'Sa",
+    "director": "Glenn Leyburn",
     "runtime": 91,
     "genres": [
       "Drama",
@@ -10051,35 +10433,124 @@
   "The Art of Audacity presents Erin Brockovich + Live Q&A": null,
   "An Evening of Music-Themed Classic Shorts": null,
   "Toddler Club: Zootropolis 2": null,
+  "Shelter": {
+    "tmdb_id": 1290821,
+    "tmdb_title": "Shelter",
+    "tmdb_original_title": "Shelter",
+    "overview": "Mason lives in recluse at a remote setting by the sea. When he chooses to rescue a young girl from drowning in a terrible storm, he unwittingly sets off a chain reaction that soon brings violence his way, forcing him to confront choices from his past.",
+    "poster_path": "/klvZs66SG19qmacdwxSRkdFQhQS.jpg",
+    "backdrop_path": "/uCGzI1EtQWXG5yRPB5PSyOdFNcC.jpg",
+    "release_date": "2026-01-28",
+    "director": "Ric Roman Waugh",
+    "runtime": 107,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "vote_average": 0.0
+  },
   "Lord of the Rings: Return of the King (Extended Edition)": null,
   "Throwback: Misery": null,
   "Beyond: The Voice of Hind Rajab": null,
-  "Sonic Cinema Viktoria Schmid Johann Lurf": null,
+  "Silents Synced presents: Buster Keaton's Sherlock Jr (with R.E.M.'s 'Monster' & 'New Adventures in Hi-Fi')": {
+    "tmdb_id": 1379597,
+    "tmdb_title": "R.E.M. - New Adventures in Hi-Fi",
+    "tmdb_original_title": "R.E.M. - New Adventures in Hi-Fi",
+    "overview": "Celebrating the 25th anniversary of R.E.M.'s tenth studio album. This Blu-ray Audio offers a trove of content, including the remastered album in hi-res and 5.1 Surround Sound audio, plus restored music videos including \"Electrolite\" and  \"E-Bow the Letter.\"",
+    "poster_path": "/1QdklsJ6bLOVGEpn726MZmIVEkD.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "",
+    "runtime": 0,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "Send Help": {
+    "tmdb_id": 1198994,
+    "tmdb_title": "Send Help",
+    "tmdb_original_title": "Send Help",
+    "overview": "Two colleagues become stranded on a deserted island, the only survivors of a plane crash. On the island, they must overcome past grievances and work together to survive, but ultimately, it's a battle of wills and wits to make it out alive.",
+    "poster_path": "/lNam8wi4bhzZ6U4wRb2T1nGsSix.jpg",
+    "backdrop_path": "/493MuzSs6iLyKM7aqsA30eODfsV.jpg",
+    "release_date": "2026-01-22",
+    "director": "Sam Raimi",
+    "runtime": 113,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Comedy"
+    ],
+    "vote_average": 6.5
+  },
   "Lsff Trans Sister Seventies": null,
   "Lsff The Colonial Present In Cinema And Sound": null,
   "Lsff A Corecore Mixtape": null,
   "Lsff The Silent Image Of A Woman": null,
   "Lsff This Is A Switchboard For Conjuring Dimensions": null,
-  "Listen With Your Eyes 5": null,
-  "Preview All That S Left Of You Q A": null,
-  "ZOOTROPOLIS 2": {
-    "tmdb_id": 1084242,
-    "tmdb_title": "Zootopia 2",
-    "tmdb_original_title": "Zootopia 2",
-    "overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "poster_path": "/bjUWGw0Ao0qVWxagN3VCwBJHVo6.jpg",
-    "backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "release_date": "2025-11-26",
-    "director": "Jared Bush",
-    "runtime": 107,
+  "Lsff Forms Of Truth Rising Non Fiction Filmmakers": null,
+  "Lsff Wonders And Disasters": null,
+  "Lsff International Competition Visions And Voices": null,
+  "Lsff International Competition Talk About The Passion": null,
+  "Lsff In Order Not To Be Here": {
+    "tmdb_id": 255940,
+    "tmdb_title": "In Order Not to Be Here",
+    "tmdb_original_title": "In Order Not to Be Here",
+    "overview": "A night flight through hysteria and police surveillance in suburban America.",
+    "poster_path": "/c3SHKByCfnEaZDD4rjrMwmiChnY.jpg",
+    "backdrop_path": "/cU2W3Fa1ESfA4u0hqkv2vGvEX3t.jpg",
+    "release_date": "2002-11-10",
+    "director": "Deborah Stratman",
+    "runtime": 33,
     "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
+      "Documentary"
     ],
-    "vote_average": 7.591
+    "vote_average": 6.3
+  },
+  "Lsff Emo Tapes": null,
+  "Lsff Express Yourself": {
+    "tmdb_id": 1544452,
+    "tmdb_title": "Express Yourself",
+    "tmdb_original_title": "Express Yourself",
+    "overview": "A creative figure must reckon with others more powerful than them and forces beyond their control. Intended as a depiction of the tension between machines and man, the natural and the unnatural, especially in relation to art and sociality.",
+    "poster_path": "/jtJwfJLworsAocYTkbPlVusKauf.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-25",
+    "director": "Ellis Spennser",
+    "runtime": 6,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "Lsff Eye To Eye": {
+    "tmdb_id": 660363,
+    "tmdb_title": "Eye to Eye",
+    "tmdb_original_title": "Silmästä silmään",
+    "overview": "For the family members of murder victims mourning is often postponed indefinitely. To unlock the trauma and begin the grieving, a method called restorative dialogue brings two parents - and the audience - eye to eye with the murderers.",
+    "poster_path": "/p4Mf7aVkWRqu5RLHk65cAPbT9UI.jpg",
+    "backdrop_path": null,
+    "release_date": "2020-01-30",
+    "director": "John Webster",
+    "runtime": 73,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 6.3
+  },
+  "Listen With Your Eyes 5": null,
+  "Do You Love Me": {
+    "tmdb_id": 1025381,
+    "tmdb_title": "Do You Love Me?",
+    "tmdb_original_title": "Ти мене любиш?",
+    "overview": "Kira is living her life with the teenage confidence that the world revolves around her. Born and raised in the late Soviet Ukraine, she sees her life predictable and clear. But it doesn't last long. Suddenly, she discovers that her father has a mistress, and her mother knows about it but prefers to remain silent. As Kira's family begins to fall apart —and so does the Soviet State— everything she knew turns out to be an illusion. Kira is searching for love, warmth, and hope for the future, going down a dark path she could not foresee.",
+    "poster_path": "/77lsmFGy2owudc1BZpabXJMNsIv.jpg",
+    "backdrop_path": "/sIb9Vmdu7WKBJi37Z7CWUDm1dm5.jpg",
+    "release_date": "2024-05-30",
+    "director": "Tonya Noyabriova",
+    "runtime": 90,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 5.8
   },
   "DOCHOUSE: BLACK WATER": {
     "tmdb_id": 454615,
@@ -10097,23 +10568,6 @@
     ],
     "vote_average": 5.6
   },
-  "DOCHOUSE: THE TRACK": {
-    "tmdb_id": 398277,
-    "tmdb_title": "The Track",
-    "tmdb_original_title": "The Track",
-    "overview": "When suburban mother, Caren (Missy Yager), meets a teenager working the streets of Las Vegas, Barbie (Mariah Kirstie), the result is a mother daughter relationship that may save both their lives.",
-    "poster_path": null,
-    "backdrop_path": null,
-    "release_date": "2016-06-12",
-    "director": "Brett Levner",
-    "runtime": 90,
-    "genres": [
-      "Drama",
-      "Thriller"
-    ],
-    "vote_average": 0.0
-  },
-  "NATIONAL THEATRE LIVE: HAMLET": null,
   "LSFF: OPENING NIGHT: THIS TIME IT'S PERSONAL": null,
   "DOCHOUSE: SEEDS": null,
   "LSFF: LONDON LIVES (2026)": null,
@@ -10190,6 +10644,21 @@
   "CINEMILE PODCAST: LIVE!": null,
   "LSFF: SO LONG TO THE VALLEYS, SO LONG TO THE SEAS": null,
   "LSFF: YOU'RE A RED FLAG": null,
+  "DOCHOUSE: THE VOICE OF HIND RAJAB": {
+    "tmdb_id": 1480382,
+    "tmdb_title": "The Voice of Hind Rajab",
+    "tmdb_original_title": "صوت هند رجب",
+    "overview": "January 29, 2024. Red Crescent volunteers receive an emergency call. A five-year old girl is trapped in a car under fire in Gaza, pleading for rescue. While trying to keep her on the line, they do everything they can to get an ambulance to her. Her name was Hind Rajab.",
+    "poster_path": "/fBcBY8kdBiPsRdtkbldwg3ThlyJ.jpg",
+    "backdrop_path": "/mQwD7GtPTkv6WF5m8AJWGrO5XOE.jpg",
+    "release_date": "2025-09-25",
+    "director": "Kaouther Ben Hania",
+    "runtime": 89,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.178
+  },
   "KIDS CLUB: THE WILD ROBOT": {
     "tmdb_id": 1184918,
     "tmdb_title": "The Wild Robot",
@@ -10225,5 +10694,20 @@
     ],
     "vote_average": 4.269
   },
-  "LSFF: AWARDS CEREMONY & SCREENING (2026)": null
+  "LSFF: AWARDS CEREMONY & SCREENING (2026)": null,
+  "DOCHOUSE: THE SHEPHERD AND THE BEAR": {
+    "tmdb_id": 1125043,
+    "tmdb_title": "The Shepherd and the Bear",
+    "tmdb_original_title": "The Shepherd and the Bear",
+    "overview": "High in the French Pyrenees, the reintroduction of wild bears in a traditional shepherding community provokes deep conflict. An aging shepherd struggles to find a successor as bears prey on his flock, and a teenage boy becomes obsessed with tracking the bear.",
+    "poster_path": "/j2QuoCkwrUm646RrzaAxDkS0His.jpg",
+    "backdrop_path": "/4MOJwSblMQNhTl4NkKHv2cJDKaf.jpg",
+    "release_date": "2026-02-06",
+    "director": "Max Keegan",
+    "runtime": 101,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  }
 }
