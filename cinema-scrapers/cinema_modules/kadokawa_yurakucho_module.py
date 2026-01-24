@@ -23,7 +23,7 @@ if __name__ == "__main__" and sys.platform == "win32":
 # --- End: Configure stdout and stderr ---
 
 CINEMA_NAME_KY = "Kadokawa Cinema Yurakucho (角川シネマ有楽町)"
-URL_KY = "http://www.kadokawa-cinema.jp/yurakucho/"
+URL_KY = "https://www.kadokawa-cinema.jp/theaters/yurakucho/"
 
 def clean_text(text):
     if not text: return ""
@@ -47,8 +47,9 @@ def scrape_kadokawa_yurakucho():
         driver.get(URL_KY)
         
         wait = WebDriverWait(driver, 20)
-        # Wait for schedule swiper to appear
+        # Wait for schedule swiper and content to appear
         wait.until(EC.presence_of_element_located((By.CLASS_NAME, "schedule-swiper__item")))
+        wait.until(EC.presence_of_element_located((By.CLASS_NAME, "tab_content-wrap")))
         
         # 1. Find Date Tabs
         date_tabs = driver.find_elements(By.CLASS_NAME, "schedule-swiper__item")
@@ -63,7 +64,10 @@ def scrape_kadokawa_yurakucho():
             
             # Extract date from tab
             try:
-                day_text = tab.find_element(By.CLASS_NAME, "day").text.strip() # "01/14"
+                try:
+                    day_text = tab.find_element(By.CLASS_NAME, "day").text.strip() # "01/14"
+                except Exception:
+                    day_text = tab.text.strip()
                 match = re.search(r'(\d{1,2})/(\d{1,2})', day_text)
                 if not match: continue
                 
@@ -77,13 +81,18 @@ def scrape_kadokawa_yurakucho():
                 
                 # Click the tab
                 driver.execute_script("arguments[0].click();", tab)
-                time.sleep(2) # Wait for content to update
+                WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, ".tab_content-wrap .content-item"))
+                )
+                time.sleep(1) # Allow any lazy content to settle
                 
                 # Parse current page content
                 soup = BeautifulSoup(driver.page_source, 'html.parser')
                 
                 # Each movie is in .content-item
                 movie_blocks = soup.select('.tab_content-wrap .content-item')
+                if not movie_blocks:
+                    movie_blocks = soup.select('.content-item')
                 for block in movie_blocks:
                     title_a = block.select_one('a.title')
                     if not title_a: 

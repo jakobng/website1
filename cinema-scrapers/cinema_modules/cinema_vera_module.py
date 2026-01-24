@@ -49,17 +49,19 @@ def scrape_cinema_vera() -> List[Dict]:
     period_tag = soup.select_one(".lineup .subject li.schedule h4")
     # Example: 2025/12/27 ～ 2026/01/23
     start_year = datetime.now().year
+    start_month = None
     if period_tag:
         period_text = period_tag.get_text()
-        m = re.search(r"(\d{4})", period_text)
+        m = re.search(r"(\d{4})/(\d{1,2})", period_text)
         if m:
             start_year = int(m.group(1))
+            start_month = int(m.group(2))
 
     table = soup.select_one("table.pctime")
     if not table:
         return results
 
-    current_month = None
+    current_month = start_month
     current_year = start_year
 
     for tr in table.find_all("tr"):
@@ -67,26 +69,36 @@ def scrape_cinema_vera() -> List[Dict]:
         if not date_td:
             continue
 
-        day_text = clean_text(date_td.select_one(".day").get_text())
+        day_tag = date_td.select_one(".day")
+        day_text = clean_text(day_tag.get_text()) if day_tag else clean_text(date_td.get_text())
         # day_text can be "12/27" or just "28"
         if "/" in day_text:
-            month_str, day_str = day_text.split("/")
-            new_month = int(month_str)
+            match = re.search(r"(\d{1,2})\s*/\s*(\d{1,2})", day_text)
+            if not match:
+                continue
+            new_month = int(match.group(1))
             # If month decreases (e.g. 12 -> 1), increment year
             if current_month is not None and new_month < current_month:
                 current_year += 1
             current_month = new_month
-            day = int(day_str)
+            day = int(match.group(2))
         else:
-            day = int(day_text)
+            match = re.search(r"(\d{1,2})", day_text)
+            if not match:
+                continue
+            day = int(match.group(1))
             if current_month is None:
                 # Should not happen with current site structure
                 current_month = datetime.now().month
 
         date_iso = f"{current_year:04d}-{current_month:02d}-{day:02d}"
 
-        # Showings are in subsequent td.cel7
-        for td in tr.find_all("td", class_="cel7"):
+        show_cells = tr.find_all("td", class_="cel7")
+        if not show_cells:
+            show_cells = [td for td in tr.find_all("td") if td is not date_td]
+
+        # Showings are in subsequent cells
+        for td in show_cells:
             time_tag = td.select_one(".time")
             film_tag = td.select_one(".film")
 

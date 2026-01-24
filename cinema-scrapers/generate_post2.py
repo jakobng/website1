@@ -94,7 +94,6 @@ CINEMA_ENGLISH_NAMES = {
     "Bunkamura ル・シネマ 渋谷宮下": "Bunkamura Le Cinéma",
     "K's Cinema (ケイズシネマ)": "K's Cinema",
     "シネマート新宿": "Cinemart Shinjuku",
-    "新宿シネマカリテ": "Shinjuku Cinema Qualite",
     "新宿武蔵野館": "Shinjuku Musashino-kan",
     "テアトル新宿": "Theatre Shinjuku",
     "早稲田松竹": "Waseda Shochiku",
