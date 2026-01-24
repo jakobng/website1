@@ -2033,5 +2033,217 @@
     "original_title": "La batalla de Chile: La insurrección de la burguesía",
     "director": "Patricio Guzmán",
     "country": "Chile"
+  },
+  "岩井澤健治のアニメーション": {
+    "english_title": "Kenji Iwaizawa's Animation",
+    "release_year": 2021,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "岩井澤健治のアニメーション",
+    "director": "Kenji Iwaizawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "おばけ": {
+    "english_title": "Obake",
+    "release_year": 2019,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "おばけ",
+    "director": "Hiromichi Nakao",
+    "country": "Japan"
+  },
+  "時のおと": {
+    "english_title": "Toki no Oto",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "時のおと",
+    "director": "Kyo Katayama",
+    "country": "Japan",
+    "failed": true
+  },
+  "シケモクとクズと花火と": {
+    "english_title": "Shikemoku, Kuzu and Hanabi",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "シケモクとクズと花火と",
+    "director": "Kentaro Yamagishi",
+    "country": "Japan",
+    "failed": true
+  },
+  "結婚相手見つけます": {
+    "english_title": "The Model and the Marriage Broker",
+    "release_year": 1951,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Model and the Marriage Broker",
+    "director": "George Cukor",
+    "country": "USA"
+  },
+  "暗黒街": {
+    "english_title": "Underworld",
+    "release_year": 1956,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "暗黒街",
+    "director": "Kajiro Yamamoto",
+    "country": "Japan"
+  },
+  "ラブ・ハッピー": {
+    "english_title": "Love Happy",
+    "release_year": 1949,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Love Happy",
+    "director": "David Miller",
+    "country": "USA"
+  },
+  "嬲られ者": {
+    "english_title": "Manhandled",
+    "release_year": 1924,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Manhandled",
+    "director": "Allan Dwan",
+    "country": "USA"
+  },
+  "暁の偵察": {
+    "english_title": "The Dawn Patrol",
+    "release_year": 1930,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Dawn Patrol",
+    "director": "Howard Hawks",
+    "country": "USA"
+  },
+  "路上のライオン": {
+    "english_title": "A Lion Is in the Streets",
+    "release_year": 1953,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A Lion Is in the Streets",
+    "director": "Raoul Walsh",
+    "country": "USA"
+  },
+  "奇妙な女": {
+    "english_title": "The Strange Woman",
+    "release_year": 1924,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "奇妙な女",
+    "director": "Teinosuke Kinugasa",
+    "country": "Japan"
+  },
+  "タイタニック": {
+    "english_title": "Titanic",
+    "release_year": 1997,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Titanic",
+    "director": "James Cameron",
+    "country": "USA"
+  },
+  "私刑される女": {
+    "english_title": "Woman They Almost Lynched",
+    "release_year": 1953,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Woman They Almost Lynched",
+    "director": "Allan Dwan",
+    "country": "USA"
+  },
+  "愛の嗚咽": {
+    "english_title": "A Bill of Divorcement",
+    "release_year": 1932,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A Bill of Divorcement",
+    "director": "George Cukor",
+    "country": "United States"
+  },
+  "野望の果て": {
+    "english_title": "Ruthless",
+    "release_year": 1948,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Ruthless",
+    "director": "Edgar G. Ulmer",
+    "country": "USA"
+  },
+  "暗闇の秘密": {
+    "english_title": "Night Unto Night",
+    "release_year": 1949,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Night Unto Night",
+    "director": "Don Siegel",
+    "country": "USA"
+  },
+  "群衆の喚呼": {
+    "english_title": "The Crowd Roars",
+    "release_year": 1932,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Crowd Roars",
+    "director": "Howard Hawks",
+    "country": "United States"
+  },
+  "逮捕命令": {
+    "english_title": "Silver Lode",
+    "release_year": 1954,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Silver Lode",
+    "director": "Allan Dwan",
+    "country": "USA"
+  },
+  "黒猫": {
+    "english_title": "Kuroneko",
+    "release_year": 1968,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "藪の中の黒猫",
+    "director": "Kaneto Shindo",
+    "country": "Japan"
+  },
+  "悪徳": {
+    "english_title": "Vices",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "悪徳",
+    "director": "Shin Saburi",
+    "country": "Japan",
+    "failed": true
+  },
+  "最後の命令": {
+    "english_title": "The Last Command",
+    "release_year": 1928,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "The Last Command",
+    "director": "Josef von Sternberg",
+    "country": "United States"
+  },
+  "復活": {
+    "english_title": "Resurrection",
+    "release_year": 1950,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "復活",
+    "director": "Akira Nobuchi",
+    "country": "Japan"
+  },
+  "サイレントナイト": {
+    "english_title": "Silent Night",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "サイレントナイト",
+    "director": "Kenichi Fujiwara",
+    "country": "Japan",
+    "failed": true
   }
 }
