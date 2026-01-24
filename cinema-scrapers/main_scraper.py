@@ -40,7 +40,6 @@ from cinema_modules import (
     theatre_shinjuku_module,
     waseda_shochiku_module,
     cinemart_shinjuku_module,
-    cinema_qualite_module,
     cine_quinto_module,
     yebisu_garden_module,
     k2_cinema_module,
@@ -1828,7 +1827,6 @@ def main():
         ("Waseda Shochiku", waseda_shochiku_module.scrape_waseda_shochiku, None),
         ("National Film Archive", nfaj_module.scrape_nfaj_calendar, None),
         ("Cinemart Shinjuku", cinemart_shinjuku_module.scrape_cinemart_shinjuku, None),
-        ("Cinema Qualite", cinema_qualite_module.scrape_cinema_qualite, None),
         ("Cine Quinto", cine_quinto_module.scrape_cine_quinto, None),
         
         # FIXED: Use 'scrape_yebisu_garden_cinema'
