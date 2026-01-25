@@ -1,82 +1,5 @@
 schema_version: 1
 projects:
-  - id: jap_civic_tech
-    title: Japanese Civic Tech Party
-    synopsis: >
-      A feature documentary about a Japanese political civic tech party,
-      exploring how technology, grassroots organizing, and democratic ideals
-      reshape civic participation.
-    topic_summary:
-      - democracy
-      - civic_technology
-      - political_innovation
-      - japan
-    segments:
-      - id: core_party
-        title: The Party and Its People
-        summary: Inside the party's origins, leaders, and community.
-        primary_locations:
-          - Tokyo
-          - Japan
-        alternate_locations:
-          - Yokohama
-          - Osaka
-        communities:
-          - civic_tech_community
-          - political_volunteers
-        institutions:
-          - political_parties
-          - local_government
-        themes:
-          - democracy
-          - governance
-          - transparency
-      - id: civic_tools
-        title: Tools of Participation
-        summary: How digital tools enable civic engagement and accountability.
-        primary_locations:
-          - Japan
-        alternate_locations:
-          - South_Korea
-          - Taiwan
-        communities:
-          - open_source_community
-          - journalists
-        institutions:
-          - universities
-          - watchdog_ngos
-        themes:
-          - civic_technology
-          - accountability
-    topic_graph:
-      nodes:
-        - id: democracy
-          label: Democracy
-          weight: 0.95
-          tags: [governance, rights]
-        - id: civic_technology
-          label: Civic Technology
-          weight: 0.9
-          tags: [open_source, transparency]
-        - id: japan
-          label: Japan
-          weight: 0.85
-          tags: [asia]
-        - id: political_innovation
-          label: Political Innovation
-          weight: 0.8
-          tags: [future_of_governance]
-      edges:
-        - from: democracy
-          to: civic_technology
-          weight: 0.7
-    funding_hints:
-      - democracy_foundations
-      - civic_participation_grants
-      - japan_community_funds
-    constraints:
-      required: []
-      avoid: []
   - id: mouthful_of_river
     title: Mouthful of River
     alternate_titles:
@@ -492,13 +415,16 @@ projects:
       avoid: []
   - id: broad_listening
     title: Broad Listening
+    alternate_titles:
+      - Japanese Civic Tech Party
     logline: >
       A sci-fi documentary about Japan's newest political party and their attempt
       to upgrade democracy for the digital age.
     synopsis: >
       A portrait of Takahiro Anno and Team Mirai as they build open-source tools
       for transparency and participation in Japan, interwoven with speculative
-      scenes that visualize the shared future they are fighting for.
+      scenes that visualize the shared future they are fighting for. Explores how
+      technology, grassroots organizing, and democratic ideals reshape civic participation.
     topic_summary:
       - digital_democracy
       - civic_technology
@@ -507,25 +433,41 @@ projects:
       - political_participation
       - consensus_building
       - speculative_futures
+      - democracy
+      - political_innovation
+      - transparency
+      - governance
     segments:
       - id: team_mirai_present
         title: Team Mirai in the Present
         summary: The party builds tools for transparency and participation.
         primary_locations:
           - Japan
-        alternate_locations:
           - Tokyo
+        alternate_locations:
+          - Yokohama
+          - Osaka
         communities:
           - civic_tech_community
           - engineers
           - citizens
+          - political_volunteers
+          - open_source_community
+          - journalists
         institutions:
           - Team_Mirai
           - Digital_Democracy_2030
+          - political_parties
+          - local_government
+          - universities
+          - watchdog_ngos
         themes:
           - transparency
           - participation
           - democratic_innovation
+          - democracy
+          - governance
+          - accountability
         key_participants:
           - Takahiro_Anno
       - id: speculative_future
@@ -569,11 +511,11 @@ projects:
         - id: civic_technology
           label: Civic Technology
           weight: 0.9
-          tags: [open_source, tools]
+          tags: [open_source, tools, transparency]
         - id: japan
           label: Japan
           weight: 0.85
-          tags: [politics, society]
+          tags: [politics, society, asia]
         - id: consensus
           label: Consensus Building
           weight: 0.8
@@ -582,6 +524,14 @@ projects:
           label: Speculative Futures
           weight: 0.7
           tags: [sci_fi, imagination]
+        - id: political_innovation
+          label: Political Innovation
+          weight: 0.8
+          tags: [future_of_governance]
+        - id: democracy
+          label: Democracy
+          weight: 0.9
+          tags: [governance, rights]
       edges:
         - from: digital_democracy
           to: civic_technology
@@ -592,6 +542,12 @@ projects:
         - from: digital_democracy
           to: japan
           weight: 0.5
+        - from: democracy
+          to: civic_technology
+          weight: 0.7
+        - from: political_innovation
+          to: digital_democracy
+          weight: 0.65
     flexibility:
       fixed_elements:
         - Digital democracy focus in Japan
@@ -632,6 +588,8 @@ projects:
       - democracy_foundations
       - civic_tech_grants
       - japan_documentary_funds
+      - civic_participation_grants
+      - japan_community_funds
     search_preferences:
       open_calls:
         priority: must_include
