@@ -1,7 +1,17 @@
-name: Tokyo - Scrape Only
+name: Scrape Only
 
 on:
   workflow_dispatch:
+    inputs:
+      city:
+        description: 'City to scrape'
+        required: true
+        default: 'london'
+        type: choice
+        options:
+        - london
+        - tokyo
+        - manchester
 
 permissions:
   contents: write
@@ -10,10 +20,10 @@ jobs:
   scrape-only:
     runs-on: ubuntu-latest
 
-    # Run all steps inside the 'cinema-scrapers' folder
-    defaults:
-      run:
-        working-directory: ./cinema-scrapers
+    env:
+      WORKDIR: ${{ inputs.city == 'london' && 'london-cinema-scrapers' || inputs.city == 'tokyo' && 'cinema-scrapers' || 'manchester_cinema_scrapers' }}
+      TIMEZONE: ${{ inputs.city == 'tokyo' && 'Asia/Tokyo' || 'Europe/London' }}
+      GEMINI_RESOLVE_TITLES: ${{ inputs.city == 'tokyo' && '1' || '' }}
 
     steps:
       - name: Checkout code
@@ -24,17 +34,18 @@ jobs:
         with:
           python-version: '3.11'
 
-      # Set Timezone to JST
       - name: Set Timezone
-        run: sudo timedatectl set-timezone Asia/Tokyo
+        run: sudo timedatectl set-timezone ${{ env.TIMEZONE }}
 
       - name: Install Dependencies
+        working-directory: ./${{ env.WORKDIR }}
         run: |
           pip install -r requirements.txt
           playwright install chromium
           sudo apt-get install -y fonts-noto-cjk
 
       - name: Run Scraper
+        working-directory: ./${{ env.WORKDIR }}
         run: python main_scraper.py
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
@@ -42,14 +53,14 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           ALERT_RECIPIENT_EMAIL: ${{ secrets.ALERT_RECIPIENT_EMAIL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_RESOLVE_TITLES: "1"
+          GEMINI_RESOLVE_TITLES: ${{ env.GEMINI_RESOLVE_TITLES }}
 
       - name: Commit & Push Data
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          git add data/*.json
-          git commit -m "Auto-Update: tokyo scrape data" || echo "No changes to commit"
+          git add ${{ env.WORKDIR }}/data/*.json
+          git commit -m "Auto-Update: ${{ inputs.city }} scrape data" || echo "No changes to commit"
           git pull --rebase -X theirs origin main
           git push
