@@ -10,6 +10,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+def _get_int(key: str, default: int) -> int:
+    """Get an environment variable as int, handling empty strings."""
+    val = os.getenv(key, "")
+    if val.strip() == "":
+        return default
+    return int(val)
+
+
 @dataclass
 class AppConfig:
     base_dir: Path = Path(__file__).resolve().parents[1]
@@ -31,7 +39,7 @@ class AppConfig:
     )
 
     smtp_host: str | None = os.getenv("SMTP_HOST")
-    smtp_port: int = int(os.getenv("SMTP_PORT", "587"))
+    smtp_port: int = _get_int("SMTP_PORT", 587)
     smtp_user: str | None = os.getenv("SMTP_USER")
     smtp_pass: str | None = os.getenv("SMTP_PASS")
     imap_host: str | None = os.getenv("IMAP_HOST")
@@ -40,10 +48,10 @@ class AppConfig:
     from_email: str | None = os.getenv("FROM_EMAIL")
     to_email: str | None = os.getenv("TO_EMAIL")
 
-    discovery_interval_hours: int = int(os.getenv("DISCOVERY_INTERVAL_HOURS", "24"))
-    reply_check_minutes: int = int(os.getenv("REPLY_CHECK_MINUTES", "30"))
+    discovery_interval_hours: int = _get_int("DISCOVERY_INTERVAL_HOURS", 24)
+    reply_check_minutes: int = _get_int("REPLY_CHECK_MINUTES", 30)
 
-    max_results_per_query: int = int(os.getenv("MAX_RESULTS_PER_QUERY", "5"))
-    max_queries_per_project: int = int(os.getenv("MAX_QUERIES_PER_PROJECT", "30"))
-    followup_depth: int = int(os.getenv("FOLLOWUP_DEPTH", "2"))
+    max_results_per_query: int = _get_int("MAX_RESULTS_PER_QUERY", 5)
+    max_queries_per_project: int = _get_int("MAX_QUERIES_PER_PROJECT", 30)
+    followup_depth: int = _get_int("FOLLOWUP_DEPTH", 2)
     debug: bool = os.getenv("DEBUG", "").lower() in {"1", "true", "yes"}
