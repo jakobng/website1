@@ -5,8 +5,17 @@ on:
   schedule:
     - cron: '0 9 * * 1/14'
   
-  # Also allow manual trigger from GitHub UI
+  # Allow manual trigger from GitHub UI with options
   workflow_dispatch:
+    inputs:
+      skip_discovery:
+        description: 'Skip discovery (only send digest from existing data)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 # Set the working directory for all jobs
 defaults:
@@ -31,7 +40,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
+      - name: Download previous database (if skipping discovery)
+        if: ${{ github.event.inputs.skip_discovery == 'true' }}
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          name: results-db
+          path: funding_assistant/data/
+          workflow_conclusion: success
+          if_no_artifact_found: warn
+      
       - name: Run funding discovery
+        if: ${{ github.event.inputs.skip_discovery != 'true' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
@@ -42,6 +61,7 @@ jobs:
           python run_local.py
       
       - name: Run outreach discovery
+        if: ${{ github.event.inputs.skip_discovery != 'true' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
