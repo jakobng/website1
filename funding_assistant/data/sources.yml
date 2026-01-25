@@ -1,0 +1,38 @@
+schema_version: 1
+funder_types:
+  - foundations
+  - philanthropy_individuals
+  - ngos
+  - civic_groups
+  - universities
+  - research_institutes
+  - corporate_grants
+  - cultural_institutions
+  - public_funding_bodies
+  - regional_councils
+seed_queries:
+  - documentary film grant
+  - film funding opportunity
+  - foundation film funding
+  - investigative documentary grant
+  - social impact documentary funding
+source_domains:
+  - "site:.org film grant"
+  - "site:.gov film funding"
+  - "site:.ac.uk film funding"
+  - "site:.jp grant programme documentary"
+  - "site:.eu cultural funding"
+regions:
+  global:
+    - global
+    - international
+  europe:
+    - europe
+    - uk
+    - scotland
+    - ireland
+  asia_pacific:
+    - japan
+    - taiwan
+    - south korea
+    - new zealand

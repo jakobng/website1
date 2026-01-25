@@ -1,0 +1,665 @@
+schema_version: 1
+projects:
+  - id: jap_civic_tech
+    title: Japanese Civic Tech Party
+    synopsis: >
+      A feature documentary about a Japanese political civic tech party,
+      exploring how technology, grassroots organizing, and democratic ideals
+      reshape civic participation.
+    topic_summary:
+      - democracy
+      - civic_technology
+      - political_innovation
+      - japan
+    segments:
+      - id: core_party
+        title: The Party and Its People
+        summary: Inside the party's origins, leaders, and community.
+        primary_locations:
+          - Tokyo
+          - Japan
+        alternate_locations:
+          - Yokohama
+          - Osaka
+        communities:
+          - civic_tech_community
+          - political_volunteers
+        institutions:
+          - political_parties
+          - local_government
+        themes:
+          - democracy
+          - governance
+          - transparency
+      - id: civic_tools
+        title: Tools of Participation
+        summary: How digital tools enable civic engagement and accountability.
+        primary_locations:
+          - Japan
+        alternate_locations:
+          - South_Korea
+          - Taiwan
+        communities:
+          - open_source_community
+          - journalists
+        institutions:
+          - universities
+          - watchdog_ngos
+        themes:
+          - civic_technology
+          - accountability
+    topic_graph:
+      nodes:
+        - id: democracy
+          label: Democracy
+          weight: 0.95
+          tags: [governance, rights]
+        - id: civic_technology
+          label: Civic Technology
+          weight: 0.9
+          tags: [open_source, transparency]
+        - id: japan
+          label: Japan
+          weight: 0.85
+          tags: [asia]
+        - id: political_innovation
+          label: Political Innovation
+          weight: 0.8
+          tags: [future_of_governance]
+      edges:
+        - from: democracy
+          to: civic_technology
+          weight: 0.7
+    funding_hints:
+      - democracy_foundations
+      - civic_participation_grants
+      - japan_community_funds
+    constraints:
+      required: []
+      avoid: []
+  - id: mouthful_of_river
+    title: Mouthful of River
+    alternate_titles:
+      - Tu Nube Seca Mi Rio
+    logline: >
+      Rivers are given voice through AI, even as the data centers powering that
+      voice erode the ecosystems they depend on.
+    synopsis: >
+      A mosaic documentary following indigenous communities, scientists,
+      artists, and activists as they seek new ways to listen to rivers and
+      confront the paradox of AI infrastructure draining the waters it needs.
+    topic_summary:
+      - rivers
+      - ai
+      - data_centres
+      - digital_democracy
+      - ai_alignment
+      - rights_of_nature
+      - indigenous_reciprocity
+      - environmental_justice
+      - ecological_intelligence
+      - activism
+      - sound_ecology
+      - data_governance
+    segments:
+      - id: taiwan_source
+        title: River Source in Taiwan
+        summary: Indigenous reciprocity, ritual, and river kinship at the source.
+        primary_locations:
+          - Southern_Taiwan
+        alternate_locations:
+          - Northern_Taiwan
+        communities:
+          - Paiwan_people
+          - Tayal_people
+          - indigenous_communities
+        institutions:
+          - local_government
+          - digital_ministry
+        themes:
+          - reciprocity
+          - river_kinship
+          - rights_of_nature
+        key_participants:
+          - Giyu_Tjauvaljian
+      - id: river_roding_representation
+        title: River Representation in the UK
+        summary: A river representative at council questions representation itself.
+        primary_locations:
+          - London
+          - River_Roding
+        alternate_locations:
+          - River_Ouse
+          - River_Don
+        communities:
+          - local_residents
+          - policy_makers
+        institutions:
+          - local_councils
+          - river_rights_groups
+        themes:
+          - governance
+          - representation
+          - river_rights
+        key_participants:
+          - Fang_Juichang
+      - id: river_don_science
+        title: River Don Listening Systems
+        summary: Hydrophones, sensors, and the River Storyteller AI in Sheffield.
+        primary_locations:
+          - Sheffield
+          - River_Don
+        alternate_locations:
+          - Manchester
+          - River_Roding
+        communities:
+          - scientists
+          - artists
+          - local_residents
+        institutions:
+          - River_Don_Project
+          - universities
+        themes:
+          - sound_ecology
+          - machine_listening
+          - civic_technology
+        key_participants:
+          - Jonny_Douglas
+      - id: ergene_sensors
+        title: Sensor Networks on the Ergene
+        summary: Optical sensors and AI reveal pollutants and river health.
+        primary_locations:
+          - Turkey
+          - Ergene_River
+        alternate_locations:
+          - Finland
+          - Poland
+        communities:
+          - engineers
+          - scientists
+        institutions:
+          - research_labs
+        themes:
+          - pollution_monitoring
+          - ai_for_ecology
+          - data_translation
+        key_participants:
+          - Atakan_Aral
+      - id: ecological_art
+        title: Ecological Intelligence Artworks
+        summary: Installations and sculptures translating river data into poetry.
+        primary_locations:
+          - United_Kingdom
+          - Europe
+        alternate_locations:
+          - Spain
+        communities:
+          - artists
+          - technologists
+        institutions:
+          - cultural_institutions
+        themes:
+          - ecological_intelligence
+          - art_and_data
+          - speculative_design
+        key_participants:
+          - SUPERFLUX
+          - Marco_Barotti
+          - Amor_Munoz
+      - id: data_centers_us
+        title: Data Centers on the Columbia River
+        summary: The scale and impact of hyperscale infrastructure in Oregon.
+        primary_locations:
+          - The_Dalles
+          - Oregon
+          - Columbia_River
+        alternate_locations:
+          - Washington_State
+        communities:
+          - local_residents
+          - activists
+        institutions:
+          - WaterWatch_Oregon
+          - Google
+        themes:
+          - water_extraction
+          - corporate_power
+          - climate_risk
+        key_participants:
+          - John_DeVoe
+      - id: spain_activism
+        title: Activism in Talavera
+        summary: Community resistance to data center expansion in drought regions.
+        primary_locations:
+          - Talavera
+          - Spain
+        alternate_locations:
+          - France
+        communities:
+          - activists
+          - local_residents
+        institutions:
+          - Tu_Nube_Seca_Mi_Rio
+          - Meta
+        themes:
+          - environmental_justice
+          - water_rights
+          - civic_resistance
+        key_participants:
+          - Aurora_Gomez
+      - id: delta_rights
+        title: River Rights and Legal Frameworks
+        summary: Rights of nature movements and new legal experiments.
+        primary_locations:
+          - United_Kingdom
+        alternate_locations:
+          - New_Zealand
+          - Colombia
+          - Canada
+        communities:
+          - legal_advocates
+          - activists
+        institutions:
+          - rights_of_nature_groups
+        themes:
+          - legal_personhood
+          - governance
+          - reciprocity
+    topic_graph:
+      nodes:
+        - id: rivers
+          label: Rivers and Watersheds
+          weight: 0.95
+          tags: [ecology, kinship]
+        - id: digital_democracy
+          label: Digital Democracy
+          weight: 0.85
+          tags: [governance, participation]
+        - id: ai_alignment
+          label: AI Alignment
+          weight: 0.8
+          tags: [ethics, safety]
+        - id: ai
+          label: Artificial Intelligence
+          weight: 0.9
+          tags: [technology, infrastructure]
+        - id: data_centres
+          label: Data Centres
+          weight: 0.85
+          tags: [water_use, energy]
+        - id: rights_of_nature
+          label: Rights of Nature
+          weight: 0.8
+          tags: [law, governance]
+        - id: indigenous_reciprocity
+          label: Indigenous Reciprocity
+          weight: 0.85
+          tags: [ritual, kinship]
+        - id: environmental_justice
+          label: Environmental Justice
+          weight: 0.8
+          tags: [activism, equity]
+        - id: ecological_intelligence
+          label: Ecological Intelligence
+          weight: 0.75
+          tags: [art, sensing]
+      edges:
+        - from: digital_democracy
+          to: ai
+          weight: 0.65
+        - from: ai
+          to: data_centres
+          weight: 0.8
+        - from: data_centres
+          to: rivers
+          weight: 0.75
+        - from: indigenous_reciprocity
+          to: rivers
+          weight: 0.7
+        - from: environmental_justice
+          to: rights_of_nature
+          weight: 0.6
+    flexibility:
+      fixed_elements: []
+      preferred_elements:
+        - Taiwan indigenous sequence (Paiwan or Tayal)
+      flexible_elements:
+        - All locations and case studies are flexible if funding aligns
+      open_questions:
+        - Final narrator approach and tone
+        - Priority legal case for river rights
+    team:
+      - name: Leo_Nelki
+        role: Co-Director_Producer
+        base: Japan
+        citizenships:
+          - United_Kingdom
+          - Germany
+        funding_access:
+          - United_Kingdom
+          - Germany
+          - Japan
+      - name: Patricia_Echeverria_Liras
+        role: Co-Director_Producer
+        base: Spain
+        citizenships:
+          - Spain
+          - United_States
+        funding_access:
+          - Spain
+          - United_States
+      - name: Fang_Juichang
+        role: Advisor_Participant
+        base: United_Kingdom
+      - name: Audrey_Tang
+        role: Advisor_Potential
+        base: Taiwan
+      - name: Jonny_Douglas
+        role: Advisor_Participant
+        base: United_Kingdom
+    eligibility:
+      countries_access:
+        - United_Kingdom
+        - Japan
+        - Spain
+        - United_States
+        - European_Union
+    partners:
+      - name: Doc_Society
+        relationship: RAD_Grant_Recipient
+        location: United_Kingdom
+      - name: Doc_Society
+        relationship: Future_Proof_Lab_Selected
+        location: United_Kingdom
+      - name: Audrey_Tang
+        relationship: Contacted
+        location: Taiwan
+      - name: Memory
+        relationship: Target_Production_Company
+        location: United_States
+    production:
+      stage: development
+      timeline:
+        development: 2025-2026
+        production: Spring_2026
+        post_production: 2026-2027
+        completion: Fall_2027
+      budget_range_usd:
+        min: 400000
+        max: 600000
+    funding_targets:
+      - name: Catapult_Film_Fund
+        type: foundation
+        amount_usd: 25000
+        status: applied
+      - name: Doc_Society_RAD_Fund
+        type: foundation
+        amount_usd: 7000
+        status: pending
+      - name: Doc_Society_Climate_Story_Fund
+        type: foundation
+        amount_usd: 50000
+        status: potential
+      - name: Sundance_Documentary_Fund
+        type: foundation
+        amount_usd: 40000
+        status: potential
+      - name: Mozilla_Creative_Media_Awards
+        type: foundation
+        amount_usd: 15000
+        status: potential
+      - name: LACMA_Art_Technology_Lab
+        type: grant
+        amount_usd: 5000
+        status: potential
+      - name: Taiwan_C_LAB
+        type: grant
+        amount_usd: 20000
+        status: potential
+      - name: Japan_Foundation_Asia_Center
+        type: grant
+        amount_usd: 15000
+        status: potential
+      - name: Taiwan_Ministry_of_Culture_TIDF
+        type: government
+        amount_usd: 20000
+        status: in_discussion
+      - name: Creative_Europe_MEDIA
+        type: government
+        amount_usd: 40000
+        status: in_discussion
+      - name: ICAA_Spain
+        type: government
+        amount_usd: 30000
+        status: potential
+      - name: Broadcasters_ARTE_BBC_AlJazeera
+        type: broadcaster
+        amount_usd: 50000
+        status: potential
+      - name: Private_Investors
+        type: private
+        amount_usd: 20000
+        status: in_conversation
+    funding_hints:
+      - climate_foundations
+      - indigenous_film_funds
+      - river_rights_grants
+      - ai_ethics_funds
+      - arts_and_technology_grants
+      - environmental_justice_funders
+    funding_priorities:
+      - documentary_film_funds
+    funding_categories:
+      - documentary_film_funds
+      - climate_environment
+      - indigenous_rights
+      - ai_tech_ethics
+      - arts_technology
+      - philanthropy_foundations
+      - broadcasters_coproduction
+    search_preferences:
+      open_calls:
+        priority: must_include
+      outreach_balance: balanced
+      languages:
+        - English
+        - Spanish
+        - Japanese
+        - Mandarin
+      collect_contacts: true
+      include_conflicts: true
+      contact_lead_types:
+        - emails
+        - contact_forms
+        - linkedin
+      report_style:
+        list_size: large
+        include_long_shots: true
+        require_rationale: true
+      report_frequency: weekly
+      report_organization: segments_with_category_tags
+    inspirations:
+      - Audrey_Tang
+    reference_texts:
+      - title: Plurality
+        author: Audrey_Tang
+      - title: 6_pack_of_care
+        author: Audrey_Tang
+    links:
+      - https://checker.gitcoin.co/public/project/show/the-river-don-project
+    constraints:
+      required: []
+      avoid: []
+  - id: broad_listening
+    title: Broad Listening
+    logline: >
+      A sci-fi documentary about Japan's newest political party and their attempt
+      to upgrade democracy for the digital age.
+    synopsis: >
+      A portrait of Takahiro Anno and Team Mirai as they build open-source tools
+      for transparency and participation in Japan, interwoven with speculative
+      scenes that visualize the shared future they are fighting for.
+    topic_summary:
+      - digital_democracy
+      - civic_technology
+      - open_source
+      - japan
+      - political_participation
+      - consensus_building
+      - speculative_futures
+    segments:
+      - id: team_mirai_present
+        title: Team Mirai in the Present
+        summary: The party builds tools for transparency and participation.
+        primary_locations:
+          - Japan
+        alternate_locations:
+          - Tokyo
+        communities:
+          - civic_tech_community
+          - engineers
+          - citizens
+        institutions:
+          - Team_Mirai
+          - Digital_Democracy_2030
+        themes:
+          - transparency
+          - participation
+          - democratic_innovation
+        key_participants:
+          - Takahiro_Anno
+      - id: speculative_future
+        title: Shared Reality (Speculative)
+        summary: Co-created sci-fi scenes showing a more engaged democracy.
+        primary_locations:
+          - Japan
+        alternate_locations:
+          - Taiwan
+        communities:
+          - artists
+          - technologists
+        institutions:
+          - creative_teams
+        themes:
+          - future_of_democracy
+          - speculative_design
+      - id: global_context
+        title: Global Digital Democracy Movement
+        summary: vTaiwan, Polis, Decidim, and consensus-based civic tech.
+        primary_locations:
+          - Taiwan
+        alternate_locations:
+          - Europe
+        communities:
+          - civic_tech_community
+          - policy_makers
+        institutions:
+          - vTaiwan
+          - Computational_Democracy_Project
+          - Decidim
+        themes:
+          - consensus_building
+          - civic_infrastructure
+    topic_graph:
+      nodes:
+        - id: digital_democracy
+          label: Digital Democracy
+          weight: 0.95
+          tags: [governance, participation]
+        - id: civic_technology
+          label: Civic Technology
+          weight: 0.9
+          tags: [open_source, tools]
+        - id: japan
+          label: Japan
+          weight: 0.85
+          tags: [politics, society]
+        - id: consensus
+          label: Consensus Building
+          weight: 0.8
+          tags: [deliberation, pluralism]
+        - id: speculative_futures
+          label: Speculative Futures
+          weight: 0.7
+          tags: [sci_fi, imagination]
+      edges:
+        - from: digital_democracy
+          to: civic_technology
+          weight: 0.7
+        - from: civic_technology
+          to: consensus
+          weight: 0.6
+        - from: digital_democracy
+          to: japan
+          weight: 0.5
+    flexibility:
+      fixed_elements:
+        - Digital democracy focus in Japan
+        - Team Mirai central access
+      preferred_elements:
+        - Ongoing access to Team Mirai biweekly
+      flexible_elements:
+        - Speculative scenes scope and locations
+        - Global civic tech context segments
+      open_questions:
+        - Final balance between documentary and speculative sequences
+    team:
+      - name: Leo_Nelki
+        role: Director_Writer
+        base: Japan
+        citizenships:
+          - United_Kingdom
+          - Germany
+        funding_access:
+          - United_Kingdom
+          - European_Union
+          - Japan
+    production:
+      stage: development
+      timeline:
+        year: 2026
+      duration_minutes: 35
+    funding_priorities:
+      - documentary_film_funds
+    funding_categories:
+      - documentary_film_funds
+      - democracy_civic_tech
+      - open_source
+      - governance_innovation
+      - arts_technology
+      - broadcasters_coproduction
+    funding_hints:
+      - democracy_foundations
+      - civic_tech_grants
+      - japan_documentary_funds
+    search_preferences:
+      open_calls:
+        priority: must_include
+      outreach_balance: balanced
+      languages:
+        - English
+        - Japanese
+      collect_contacts: true
+      include_conflicts: true
+      contact_lead_types:
+        - emails
+        - contact_forms
+        - linkedin
+      report_style:
+        list_size: large
+        include_long_shots: true
+        require_rationale: true
+      report_frequency: weekly
+      report_organization: segments_with_category_tags
+    inspirations:
+      - Audrey_Tang
+    reference_texts:
+      - title: Plurality
+        author: Audrey_Tang
+      - title: Plurality
+        author: Glen_Weyl
+    links:
+      - https://www.leonelki.com
+    constraints:
+      required: []
+      avoid: []
