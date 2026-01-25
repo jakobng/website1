@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+from urllib.parse import urlparse
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -49,7 +50,7 @@ def classify_results_heuristic(results: list[StoredResult]) -> dict[int, str]:
     Fast heuristic-based classification using URL and title patterns.
     No LLM calls - instant results.
     """
-    # Known aggregator domains
+    # Known aggregator domains (host-only or host/path)
     aggregator_domains = {
         "documentary.org", "filmdaily.tv", "filmfreeway.com", "withoutabox.com",
         "shortfilmdepot.com", "reelport.com", "submittable.com", "slideroom.com",
@@ -57,7 +58,7 @@ def classify_results_heuristic(results: list[StoredResult]) -> dict[int, str]:
         "filmmakers.com", "indiewire.com/galleries", "screendaily.com/festivals",
     }
     
-    # Known news domains
+    # Known news domains (host-only or host/path)
     news_domains = {
         "deadline.com", "variety.com", "hollywoodreporter.com", "indiewire.com",
         "screendaily.com", "realscreen.com", "documentary.org/news", "vurchel.com",
@@ -80,20 +81,30 @@ def classify_results_heuristic(results: list[StoredResult]) -> dict[int, str]:
         url_lower = r.url.lower()
         title_lower = r.title.lower()
         
-        # Extract domain
+        # Extract domain and path
         domain = ""
         if "://" in url_lower:
-            domain = url_lower.split("://")[1].split("/")[0]
+            parsed = urlparse(url_lower)
+            domain = parsed.netloc
             if domain.startswith("www."):
                 domain = domain[4:]
         
         # Check aggregator domains
-        if any(agg in domain for agg in aggregator_domains):
+        if any("/" in agg and agg in url_lower for agg in aggregator_domains):
+            classifications[r.id] = "aggregator"
+            continue
+        if any("/" not in agg and agg in domain for agg in aggregator_domains):
             classifications[r.id] = "aggregator"
             continue
         
         # Check news domains (but not if it looks like an actual grant page)
-        if any(news in domain for news in news_domains):
+        if any("/" in news and news in url_lower for news in news_domains):
+            if "apply" in title_lower or "deadline" in title_lower or "application" in url_lower:
+                classifications[r.id] = "specific_grant"
+            else:
+                classifications[r.id] = "news"
+            continue
+        if any("/" not in news and news in domain for news in news_domains):
             # Could be news, but might reference actual grants
             if "apply" in title_lower or "deadline" in title_lower or "application" in url_lower:
                 classifications[r.id] = "specific_grant"

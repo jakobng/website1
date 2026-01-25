@@ -142,11 +142,11 @@ def _extract_domain(url: str) -> str:
     return domain.lower()
 
 
-def get_or_create_funder(conn: sqlite3.Connection, url: str, name: str | None = None) -> tuple[int, bool]:
+def get_or_create_funder(conn: sqlite3.Connection, url: str, name: str | None = None) -> tuple[int | None, bool]:
     """Get or create a funder record. Returns (funder_id, is_new)."""
     domain = _extract_domain(url)
     if not domain:
-        return (0, False)
+        return (None, False)
     
     row = conn.execute(
         "SELECT id, times_seen FROM funders WHERE domain = ?",
