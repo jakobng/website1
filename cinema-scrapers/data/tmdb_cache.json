@@ -22940,5 +22940,211 @@
         "name": "Japan"
       }
     ]
+  },
+  "ロバと王女": {
+    "tmdb_id": 5590,
+    "tmdb_title_jp": "ロバと王女",
+    "tmdb_title_en": "Donkey Skin",
+    "tmdb_title_original": "Peau d'âne",
+    "tmdb_original_language": "fr",
+    "overview": "妃を亡くした王（ジャン・マレー）は自分の娘である王女（カトリーヌ・ドヌーヴ）に結婚を迫る。困った王女はロバの皮に身を隠して姿を消すが、何も知らない王子（ジャック・ペラン）に一目惚れされ……。",
+    "overview_en": "A fairy godmother helps a princess disguise herself so she won't have to marry her father.",
+    "poster_path": "/tB0GXoQPh6gbKKhEsGXsfsYZUac.jpg",
+    "backdrop_path": "/3yZva3ONs7C1kKJ6IVvrZQJCUIj.jpg",
+    "release_date": "1970-12-16",
+    "director": "雅克·德米",
+    "director_jp": "雅克·德米",
+    "director_en": "Jacques Demy",
+    "genres": [
+      "ファンタジー",
+      "コメディ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Comedy",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 90,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:5590": {
+    "tmdb_id": 5590,
+    "tmdb_title_jp": "ロバと王女",
+    "tmdb_title_en": "Donkey Skin",
+    "tmdb_title_original": "Peau d'âne",
+    "tmdb_original_language": "fr",
+    "overview": "妃を亡くした王（ジャン・マレー）は自分の娘である王女（カトリーヌ・ドヌーヴ）に結婚を迫る。困った王女はロバの皮に身を隠して姿を消すが、何も知らない王子（ジャック・ペラン）に一目惚れされ……。",
+    "overview_en": "A fairy godmother helps a princess disguise herself so she won't have to marry her father.",
+    "poster_path": "/tB0GXoQPh6gbKKhEsGXsfsYZUac.jpg",
+    "backdrop_path": "/3yZva3ONs7C1kKJ6IVvrZQJCUIj.jpg",
+    "release_date": "1970-12-16",
+    "director": "雅克·德米",
+    "director_jp": "雅克·德米",
+    "director_en": "Jacques Demy",
+    "genres": [
+      "ファンタジー",
+      "コメディ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Comedy",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 90,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "コール・オブ・ヒーローズ／武勇伝": {
+    "tmdb_id": 413198,
+    "tmdb_title_jp": "コール・オブ・ヒーローズ／武勇伝",
+    "tmdb_title_en": "Call of Heroes",
+    "tmdb_title_original": "危城",
+    "tmdb_original_language": "cn",
+    "overview": "1914年、内戦下の中国では、極悪非道な北洋軍閥が各地で虐殺と略奪を繰り返し、戦乱を逃れてやむなく郷里を後にする難民が大量に発生。石頭村で教師をしていたパク・レンも、生徒の子どもたちを連れて命からがら村を逃げ出し、近隣の普城へと向かう。普城では、ヨン・ハックナンが自警団を結成して村の平和を堅持していたが、やがてそこへ、軍閥を率いる将軍の息子チョウ・シウロンたちが押し寄せ、絶体絶命の危機が迫る。",
+    "overview_en": "During the warlords era in China, a village located in rural area called Pucheng fell into dangerous situation when its government allocated all its military force to the front line, the cruel commandant Cao from the enemy troops arrived the village and killed the innocent, the guardians of Pucheng were desperate to fight against Cao for justice and to protect their homeland.",
+    "poster_path": "/cgF3QsM11OwOYvskctWHFJEsBMQ.jpg",
+    "backdrop_path": "/fugdTm2XsAIxT5wVfp20lfogJak.jpg",
+    "release_date": "2016-08-12",
+    "director": "陳木勝",
+    "director_jp": "陳木勝",
+    "director_en": "Benny Chan Muk-Sing",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 120,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:413198": {
+    "tmdb_id": 413198,
+    "tmdb_title_jp": "コール・オブ・ヒーローズ／武勇伝",
+    "tmdb_title_en": "Call of Heroes",
+    "tmdb_title_original": "危城",
+    "tmdb_original_language": "cn",
+    "overview": "1914年、内戦下の中国では、極悪非道な北洋軍閥が各地で虐殺と略奪を繰り返し、戦乱を逃れてやむなく郷里を後にする難民が大量に発生。石頭村で教師をしていたパク・レンも、生徒の子どもたちを連れて命からがら村を逃げ出し、近隣の普城へと向かう。普城では、ヨン・ハックナンが自警団を結成して村の平和を堅持していたが、やがてそこへ、軍閥を率いる将軍の息子チョウ・シウロンたちが押し寄せ、絶体絶命の危機が迫る。",
+    "overview_en": "During the warlords era in China, a village located in rural area called Pucheng fell into dangerous situation when its government allocated all its military force to the front line, the cruel commandant Cao from the enemy troops arrived the village and killed the innocent, the guardians of Pucheng were desperate to fight against Cao for justice and to protect their homeland.",
+    "poster_path": "/cgF3QsM11OwOYvskctWHFJEsBMQ.jpg",
+    "backdrop_path": "/fugdTm2XsAIxT5wVfp20lfogJak.jpg",
+    "release_date": "2016-08-12",
+    "director": "陳木勝",
+    "director_jp": "陳木勝",
+    "director_en": "Benny Chan Muk-Sing",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 120,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "ぼくら、20世紀の⼦供たち": {
+    "tmdb_id": 461759,
+    "tmdb_title_jp": "ぼくら、20世紀の子供たち",
+    "tmdb_title_en": "We, the Children of the 20th Century",
+    "tmdb_title_original": "Nous, les enfants du xxème siècle",
+    "tmdb_original_language": "fr",
+    "overview": "カンヌ映画祭受賞を初めとして世界的に絶賛された「動くな、死ね、甦れ！」「ひとりで生きる」に続いて、ヴィターリー・カネフスキーが完成したドキュメンタリー。\r サント・ペテルブルクの荒廃した通りで生活する少年たちや、かつてカネフスキーの映画に出演した少年との監獄での再会などを映し出す。",
+    "overview_en": "It focuses on how youngsters in capitalist Russia turn to crime. Either they thrive at their game or they get locked up. In any case they're trapped. The portrayed kids are old men, acting wise and tough while in fact they're victims.",
+    "poster_path": "/v0sMWsomfFxRFItEmdZZjRzJoAR.jpg",
+    "backdrop_path": null,
+    "release_date": "1994-06-14",
+    "director": "ヴィターリー・カネフスキー",
+    "director_jp": "ヴィターリー・カネフスキー",
+    "director_en": "Vitali Kanevsky",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 87,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "tmdb:461759": {
+    "tmdb_id": 461759,
+    "tmdb_title_jp": "ぼくら、20世紀の子供たち",
+    "tmdb_title_en": "We, the Children of the 20th Century",
+    "tmdb_title_original": "Nous, les enfants du xxème siècle",
+    "tmdb_original_language": "fr",
+    "overview": "カンヌ映画祭受賞を初めとして世界的に絶賛された「動くな、死ね、甦れ！」「ひとりで生きる」に続いて、ヴィターリー・カネフスキーが完成したドキュメンタリー。\r サント・ペテルブルクの荒廃した通りで生活する少年たちや、かつてカネフスキーの映画に出演した少年との監獄での再会などを映し出す。",
+    "overview_en": "It focuses on how youngsters in capitalist Russia turn to crime. Either they thrive at their game or they get locked up. In any case they're trapped. The portrayed kids are old men, acting wise and tough while in fact they're victims.",
+    "poster_path": "/v0sMWsomfFxRFItEmdZZjRzJoAR.jpg",
+    "backdrop_path": null,
+    "release_date": "1994-06-14",
+    "director": "ヴィターリー・カネフスキー",
+    "director_jp": "ヴィターリー・カネフスキー",
+    "director_en": "Vitali Kanevsky",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 87,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
   }
 }
