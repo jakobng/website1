@@ -25,7 +25,10 @@ class DigestEntry:
     """A curated entry for the digest."""
     result: StoredResult
     result_type: str  # specific_grant, funder_org
-    explanation: str  # Why this fits the project
+    description: str  # What is this fund/org?
+    why_fits: str  # Why this fits the project
+    eligibility_summary: str  # Key eligibility in plain language
+    confidence: str  # high, medium, low
     primary_url: str  # Actual funder URL (may differ from result.url if news article)
     is_new: bool  # First time being shown
 
@@ -195,23 +198,41 @@ For news articles, extract the actual grant/funder URL being discussed if possib
     return classifications
 
 
-def generate_explanations(
+@dataclass
+class OpportunityInfo:
+    """Structured info about an opportunity for the digest."""
+    description: str  # What is this fund/org?
+    why_fits: str  # Why it fits this specific project
+    eligibility_summary: str  # Key eligibility in plain language
+    confidence: str  # "high", "medium", "low" - how confident are we this is relevant?
+
+
+def generate_opportunity_info(
     llm: LLMClient,
     project: dict,
     entries: list[tuple[StoredResult, str]],  # (result, result_type)
-) -> list[str]:
+) -> list[OpportunityInfo]:
     """
-    Generate personalized explanations for why each result fits this project.
+    Generate detailed info about each opportunity.
     
-    Returns list of explanation strings in same order as entries.
+    Returns structured info for each entry.
     """
     if not llm.available or not entries:
-        return [r.summary or r.title for r, _ in entries]
+        return [
+            OpportunityInfo(
+                description=r.summary or r.title,
+                why_fits="",
+                eligibility_summary=r.eligibility_notes or "",
+                confidence="medium",
+            )
+            for r, _ in entries
+        ]
     
     # Build project context
     project_context = f"""Project: {project.get('title', 'Untitled')}
 Synopsis: {project.get('synopsis', '')}
-Topics: {', '.join(project.get('topic_summary', []))}"""
+Topics: {', '.join(project.get('topic_summary', []))}
+Team locations/eligibility: {', '.join(project.get('eligibility', {}).get('countries_access', []))}"""
     
     # Build entries info
     entries_info = []
@@ -226,34 +247,125 @@ Topics: {', '.join(project.get('topic_summary', []))}"""
             "amount": r.grant_amount,
             "funder_type": r.funder_type,
             "topics": r.topic_match,
+            "eligibility_notes": r.eligibility_notes or "",
         })
     
-    prompt = f"""You are helping a documentary filmmaker understand funding opportunities.
+    prompt = f"""You are helping a documentary filmmaker evaluate funding opportunities.
 
 {project_context}
 
-For each opportunity below, write a 1-2 sentence explanation of WHY it's relevant for THIS SPECIFIC film.
-Be specific - reference the film's themes, locations, or approach. Don't just describe the grant.
+For each opportunity, provide structured analysis. Be CRITICAL and HONEST.
+
+IMPORTANT RULES:
+1. If the opportunity seems closed, outdated, or the URL looks like a generic resource page, set confidence to "low"
+2. If eligibility doesn't match (wrong country, wrong project type), set confidence to "low" and note why
+3. Only set confidence "high" if it's clearly a good match with open applications
+4. For "description", explain WHAT this fund/organization IS in 1 sentence (not why it fits)
+5. For "why_fits", explain specifically why it's relevant to THIS film's themes
 
 Opportunities:
 {json.dumps(entries_info, indent=2)}
 
-Return a JSON array of strings, one explanation per opportunity, in the same order.
-Each explanation should be personalized, e.g.:
-- "Your film's focus on [specific theme] aligns well with their [specific program]. They've funded similar projects about [topic]."
-- "Given your Japan location and civic tech angle, this Japanese foundation could be a natural fit."
-- "Their interest in [topic] makes this worth exploring, though you'd need to emphasize the [aspect] of your project."
+Return a JSON array with one object per opportunity:
+[
+  {{
+    "id": <result_id>,
+    "description": "One sentence explaining what this fund/organization is and does",
+    "why_fits": "1-2 sentences on why specifically relevant for this film's themes/approach",
+    "eligibility_summary": "Key requirements in plain language (country, project stage, format, etc.)",
+    "confidence": "high|medium|low"
+  }}
+]
 
-Be honest - if the fit is weak, say so briefly."""
+Examples:
+- description: "The Catapult Film Fund provides development grants up to $35K for feature documentaries focused on social justice issues."
+- why_fits: "Your focus on environmental justice and indigenous communities aligns with their track record of funding climate and human rights stories."
+- eligibility_summary: "US or international filmmakers; feature documentaries; development or production stage; rolling deadlines"
+- confidence: "high" (if clearly open and good match) / "low" (if eligibility unclear or poor match)"""
 
-    text = llm._generate(prompt, timeout=120)
+    text = llm._generate(prompt, timeout=180)
     data = _extract_json(text)
     
-    if isinstance(data, list) and len(data) == len(entries):
-        return [str(e) for e in data]
+    results = []
+    id_to_info = {}
     
-    # Fallback
-    return [r.summary or r.title for r, _ in entries]
+    if isinstance(data, list):
+        for item in data:
+            if isinstance(item, dict) and "id" in item:
+                id_to_info[item["id"]] = OpportunityInfo(
+                    description=item.get("description", ""),
+                    why_fits=item.get("why_fits", ""),
+                    eligibility_summary=item.get("eligibility_summary", ""),
+                    confidence=item.get("confidence", "medium"),
+                )
+    
+    # Build results in order, with fallbacks
+    for r, _ in entries:
+        if r.id in id_to_info:
+            results.append(id_to_info[r.id])
+        else:
+            results.append(OpportunityInfo(
+                description=r.summary or r.title,
+                why_fits="",
+                eligibility_summary=r.eligibility_notes or "",
+                confidence="medium",
+            ))
+    
+    return results
+
+
+def generate_explanations(
+    llm: LLMClient,
+    project: dict,
+    entries: list[tuple[StoredResult, str]],  # (result, result_type)
+) -> list[str]:
+    """
+    Generate personalized explanations for why each result fits this project.
+    
+    Returns list of explanation strings in same order as entries.
+    NOTE: This is a simplified wrapper. For full info, use generate_opportunity_info().
+    """
+    infos = generate_opportunity_info(llm, project, entries)
+    return [info.why_fits or info.description for info in infos]
+
+
+def _is_opportunity_active(r: StoredResult) -> bool:
+    """Check if an opportunity appears to be active/open."""
+    # Skip if explicitly marked as closed
+    if r.is_open and r.is_open.lower() == "false":
+        return False
+    
+    # Check deadline for past dates
+    if r.deadline:
+        deadline_lower = r.deadline.lower().strip()
+        
+        # Skip obviously closed deadlines
+        if deadline_lower in ("closed", "expired", "ended"):
+            return False
+        
+        # Try to parse date formats like "2023-12-31" or "December 31, 2023"
+        try:
+            # Common formats
+            for fmt in ("%Y-%m-%d", "%B %d, %Y", "%d/%m/%Y", "%m/%d/%Y"):
+                try:
+                    deadline_date = datetime.strptime(deadline_lower, fmt)
+                    if deadline_date < datetime.now():
+                        return False
+                    break
+                except ValueError:
+                    continue
+            
+            # Check for year in text like "2023-12-31" or "2024"
+            import re
+            year_match = re.search(r'\b(20\d{2})\b', deadline_lower)
+            if year_match:
+                year = int(year_match.group(1))
+                if year < datetime.now().year:
+                    return False
+        except Exception:
+            pass
+    
+    return True
 
 
 def build_project_digest(
@@ -272,6 +384,7 @@ def build_project_digest(
     new_orgs = []
     shown_grants = []
     outreach_targets = []
+    skipped_closed = 0
     
     for r in results:
         rtype = classifications.get(r.id, "specific_grant")
@@ -279,6 +392,11 @@ def build_project_digest(
         
         # Skip aggregators and irrelevant
         if rtype in ("aggregator", "irrelevant"):
+            continue
+        
+        # Skip closed/expired opportunities
+        if not _is_opportunity_active(r):
+            skipped_closed += 1
             continue
         
         # Check if this is an outreach result (from outreach discovery)
@@ -301,6 +419,9 @@ def build_project_digest(
             if is_new:
                 new_orgs.append((r, rtype))
     
+    if skipped_closed > 0:
+        print(f"  Filtered out {skipped_closed} closed/expired opportunities", flush=True)
+    
     # Sort by score
     new_grants.sort(key=lambda x: x[0].score or 0, reverse=True)
     new_orgs.sort(key=lambda x: x[0].score or 0, reverse=True)
@@ -318,61 +439,99 @@ def build_project_digest(
         if r.deadline and r.deadline not in ("ongoing", "rolling", "unknown", "null"):
             deadline_reminders.append((r, rtype))
     
-    # Generate explanations for all selected
+    # Generate detailed info for all selected
     all_selected = selected_grants + selected_orgs + deadline_reminders + selected_outreach
     
     if all_selected:
-        print(f"  Generating explanations for {len(all_selected)} opportunities...", flush=True)
-        explanations = generate_explanations(llm, project, all_selected)
+        print(f"  Analyzing {len(all_selected)} opportunities...", flush=True)
+        infos = generate_opportunity_info(llm, project, all_selected)
     else:
-        explanations = []
+        infos = []
     
-    # Build digest entries
+    # Build digest entries, filtering out low-confidence results
     grant_entries = []
     org_entries = []
     reminder_entries = []
     outreach_entries = []
     
     idx = 0
+    low_confidence_skipped = 0
+    
     for r, rtype in selected_grants:
+        info = infos[idx] if idx < len(infos) else OpportunityInfo("", "", "", "medium")
+        idx += 1
+        
+        # Skip low confidence results
+        if info.confidence == "low":
+            low_confidence_skipped += 1
+            continue
+        
         grant_entries.append(DigestEntry(
             result=r,
             result_type=rtype,
-            explanation=explanations[idx] if idx < len(explanations) else "",
+            description=info.description,
+            why_fits=info.why_fits,
+            eligibility_summary=info.eligibility_summary,
+            confidence=info.confidence,
             primary_url=r.url,
             is_new=True,
         ))
-        idx += 1
     
     for r, rtype in selected_orgs:
+        info = infos[idx] if idx < len(infos) else OpportunityInfo("", "", "", "medium")
+        idx += 1
+        
+        if info.confidence == "low":
+            low_confidence_skipped += 1
+            continue
+        
         org_entries.append(DigestEntry(
             result=r,
             result_type=rtype,
-            explanation=explanations[idx] if idx < len(explanations) else "",
+            description=info.description,
+            why_fits=info.why_fits,
+            eligibility_summary=info.eligibility_summary,
+            confidence=info.confidence,
             primary_url=r.url,
             is_new=True,
         ))
-        idx += 1
     
     for r, rtype in deadline_reminders:
+        info = infos[idx] if idx < len(infos) else OpportunityInfo("", "", "", "medium")
+        idx += 1
+        
         reminder_entries.append(DigestEntry(
             result=r,
             result_type=rtype,
-            explanation=explanations[idx] if idx < len(explanations) else "",
+            description=info.description,
+            why_fits=info.why_fits,
+            eligibility_summary=info.eligibility_summary,
+            confidence=info.confidence,
             primary_url=r.url,
             is_new=False,
         ))
-        idx += 1
     
     for r, rtype in selected_outreach:
+        info = infos[idx] if idx < len(infos) else OpportunityInfo("", "", "", "medium")
+        idx += 1
+        
+        if info.confidence == "low":
+            low_confidence_skipped += 1
+            continue
+        
         outreach_entries.append(DigestEntry(
             result=r,
             result_type=rtype,
-            explanation=explanations[idx] if idx < len(explanations) else r.eligibility_notes or "",
+            description=info.description,
+            why_fits=info.why_fits or r.eligibility_notes or "",
+            eligibility_summary=info.eligibility_summary,
+            confidence=info.confidence,
             primary_url=r.url,
             is_new=True,
         ))
-        idx += 1
+    
+    if low_confidence_skipped > 0:
+        print(f"  Filtered out {low_confidence_skipped} low-confidence results", flush=True)
     
     return ProjectDigest(
         project_id=project["id"],
@@ -411,24 +570,34 @@ def format_digest_text(digests: list[ProjectDigest]) -> str:
                 lines.append(f"{i}. **{r.title}**")
                 
                 meta_parts = []
-                if r.deadline and r.deadline not in ("null", "unknown"):
+                if r.deadline and r.deadline not in ("null", "unknown", ""):
                     meta_parts.append(f"Deadline: {r.deadline}")
                 if r.grant_amount:
                     meta_parts.append(f"Amount: {r.grant_amount}")
                 if r.is_open and r.is_open.lower() == "true":
                     meta_parts.append("OPEN")
-                elif r.is_open and r.is_open.lower() == "false":
-                    meta_parts.append("CLOSED")
+                
+                # Add confidence indicator for medium confidence
+                if entry.confidence == "medium":
+                    meta_parts.append("(verify eligibility)")
                 
                 if meta_parts:
                     lines.append(f"   {' | '.join(meta_parts)}")
                 
-                lines.append("")
-                lines.append(f"   Why it fits: {entry.explanation}")
-                lines.append("")
+                # What is this fund?
+                if entry.description:
+                    lines.append("")
+                    lines.append(f"   What: {entry.description}")
                 
-                if r.eligibility_notes:
-                    lines.append(f"   Eligibility: {r.eligibility_notes}")
+                # Why it fits
+                if entry.why_fits:
+                    lines.append("")
+                    lines.append(f"   Fit: {entry.why_fits}")
+                
+                # Eligibility
+                if entry.eligibility_summary:
+                    lines.append("")
+                    lines.append(f"   Eligibility: {entry.eligibility_summary}")
                 
                 lines.append(f"   -> {entry.primary_url}")
                 lines.append("")
@@ -446,9 +615,14 @@ def format_digest_text(digests: list[ProjectDigest]) -> str:
                 if r.funder_type:
                     lines.append(f"   Type: {r.funder_type}")
                 
-                lines.append("")
-                lines.append(f"   Why approach: {entry.explanation}")
-                lines.append("")
+                if entry.description:
+                    lines.append("")
+                    lines.append(f"   What: {entry.description}")
+                
+                if entry.why_fits:
+                    lines.append("")
+                    lines.append(f"   Fit: {entry.why_fits}")
+                
                 lines.append(f"   -> {entry.primary_url}")
                 lines.append("")
         
@@ -480,9 +654,13 @@ def format_digest_text(digests: list[ProjectDigest]) -> str:
                 if entity_type not in ("unknown", "other"):
                     lines.append(f"   Type: {entity_type}")
                 
-                lines.append("")
-                lines.append(f"   Why reach out: {entry.explanation}")
-                lines.append("")
+                if entry.description:
+                    lines.append("")
+                    lines.append(f"   Who: {entry.description}")
+                
+                if entry.why_fits:
+                    lines.append("")
+                    lines.append(f"   Why: {entry.why_fits}")
                 
                 if r.contact_info:
                     lines.append(f"   Contact: {r.contact_info}")
