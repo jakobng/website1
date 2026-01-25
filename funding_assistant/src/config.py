@@ -18,6 +18,30 @@ def _get_int(key: str, default: int) -> int:
     return int(val)
 
 
+def _get_smtp_host(email: str | None) -> str | None:
+    """Infer SMTP host from email address if not explicitly set."""
+    explicit = os.getenv("SMTP_HOST", "").strip()
+    if explicit:
+        return explicit
+    
+    if not email:
+        return None
+    
+    # Infer from email domain
+    domain = email.split("@")[-1].lower() if "@" in email else ""
+    
+    smtp_hosts = {
+        "gmail.com": "smtp.gmail.com",
+        "googlemail.com": "smtp.gmail.com",
+        "outlook.com": "smtp.office365.com",
+        "hotmail.com": "smtp.office365.com",
+        "yahoo.com": "smtp.mail.yahoo.com",
+        "icloud.com": "smtp.mail.me.com",
+    }
+    
+    return smtp_hosts.get(domain)
+
+
 @dataclass
 class AppConfig:
     base_dir: Path = Path(__file__).resolve().parents[1]
@@ -38,15 +62,17 @@ class AppConfig:
         "BING_ENDPOINT", "https://api.bing.microsoft.com/v7.0/search"
     )
 
-    smtp_host: str | None = os.getenv("SMTP_HOST")
+    # Email config - supports both explicit settings and simple SMTP_EMAIL/SMTP_PASSWORD
+    _smtp_email: str | None = os.getenv("SMTP_EMAIL") or os.getenv("SMTP_USER")
+    smtp_user: str | None = os.getenv("SMTP_USER") or os.getenv("SMTP_EMAIL")
+    smtp_pass: str | None = os.getenv("SMTP_PASS") or os.getenv("SMTP_PASSWORD")
+    smtp_host: str | None = _get_smtp_host(_smtp_email)
     smtp_port: int = _get_int("SMTP_PORT", 587)
-    smtp_user: str | None = os.getenv("SMTP_USER")
-    smtp_pass: str | None = os.getenv("SMTP_PASS")
+    from_email: str | None = os.getenv("FROM_EMAIL") or os.getenv("SMTP_EMAIL")
+    to_email: str | None = os.getenv("TO_EMAIL")
     imap_host: str | None = os.getenv("IMAP_HOST")
     imap_user: str | None = os.getenv("IMAP_USER")
     imap_pass: str | None = os.getenv("IMAP_PASS")
-    from_email: str | None = os.getenv("FROM_EMAIL")
-    to_email: str | None = os.getenv("TO_EMAIL")
 
     discovery_interval_hours: int = _get_int("DISCOVERY_INTERVAL_HOURS", 24)
     reply_check_minutes: int = _get_int("REPLY_CHECK_MINUTES", 30)
