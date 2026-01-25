@@ -27,6 +27,163 @@ from src.storage import (
 )
 
 
+# =============================================================================
+# MULTILINGUAL SEARCH SUPPORT
+# =============================================================================
+
+# Common funding-related terms in different languages
+TRANSLATIONS = {
+    "Japanese": {
+        "documentary grant": "ドキュメンタリー 助成金",
+        "documentary film grant": "ドキュメンタリー映画 助成金",
+        "documentary film fund": "ドキュメンタリー映画 基金",
+        "film fund": "映画基金",
+        "film grant": "映画助成金",
+        "documentary funding": "ドキュメンタリー資金",
+        "open call": "公募",
+        "grant application": "助成金申請",
+        "civic technology": "シビックテック",
+        "democracy": "民主主義",
+        "political participation": "政治参加",
+        "digital democracy": "デジタル民主主義",
+        "nonprofit organization": "NPO法人",
+        "foundation": "財団",
+        "cultural fund": "文化基金",
+        "arts grant": "芸術助成",
+    },
+    "Mandarin": {
+        "documentary grant": "紀錄片補助",
+        "documentary film grant": "紀錄片電影補助金",
+        "documentary film fund": "紀錄片基金",
+        "film fund": "電影基金",
+        "film grant": "電影補助金",
+        "documentary funding": "紀錄片資金",
+        "open call": "公開徵件",
+        "grant application": "補助申請",
+        "indigenous rights": "原住民權利",
+        "environmental": "環境",
+        "river rights": "河流權利",
+        "water conservation": "水資源保護",
+        "nonprofit organization": "非營利組織",
+        "foundation": "基金會",
+        "cultural fund": "文化基金",
+        "Taiwan film": "台灣電影",
+    },
+    "Spanish": {
+        "documentary grant": "subvención documental",
+        "documentary film grant": "beca para documental",
+        "documentary film fund": "fondo de cine documental",
+        "film fund": "fondo de cine",
+        "film grant": "ayuda cinematográfica",
+        "documentary funding": "financiación documental",
+        "open call": "convocatoria abierta",
+        "grant application": "solicitud de subvención",
+        "environmental justice": "justicia ambiental",
+        "water rights": "derechos del agua",
+        "climate": "clima",
+        "river": "río",
+        "nonprofit organization": "organización sin fines de lucro",
+        "foundation": "fundación",
+        "cultural fund": "fondo cultural",
+        "activism": "activismo",
+    },
+    "German": {
+        "documentary grant": "Dokumentarfilm Förderung",
+        "documentary film grant": "Dokumentarfilm Förderung",
+        "documentary film fund": "Dokumentarfilm Fonds",
+        "film fund": "Filmförderung",
+        "film grant": "Filmförderung",
+        "documentary funding": "Dokumentarfilm Finanzierung",
+        "open call": "offene Ausschreibung",
+        "grant application": "Förderantrag",
+        "nonprofit organization": "gemeinnützige Organisation",
+        "foundation": "Stiftung",
+        "cultural fund": "Kulturfonds",
+    },
+}
+
+# Language codes for location-based inference
+LOCATION_LANGUAGES = {
+    "Japan": "Japanese",
+    "Tokyo": "Japanese",
+    "Taiwan": "Mandarin",
+    "Southern Taiwan": "Mandarin",
+    "Spain": "Spanish",
+    "Talavera": "Spanish",
+    "Germany": "German",
+    "European Union": "German",  # Include some German queries for EU
+}
+
+
+def get_project_languages(project: dict) -> list[str]:
+    """Get languages to search in based on project config."""
+    # Check explicit language preferences
+    search_prefs = project.get("search_preferences", {})
+    languages = search_prefs.get("languages", [])
+    
+    if languages:
+        return languages
+    
+    # Infer from locations
+    inferred = {"English"}  # Always include English
+    for segment in project.get("segments", []):
+        for loc in segment.get("primary_locations", []):
+            loc_str = str(loc).replace("_", " ")
+            if loc_str in LOCATION_LANGUAGES:
+                inferred.add(LOCATION_LANGUAGES[loc_str])
+    
+    return list(inferred)
+
+
+def translate_query(query: str, language: str) -> str | None:
+    """Translate a query to another language using our dictionary."""
+    if language not in TRANSLATIONS:
+        return None
+    
+    translations = TRANSLATIONS[language]
+    query_lower = query.lower()
+    
+    # Try exact match first
+    if query_lower in translations:
+        return translations[query_lower]
+    
+    # Try to translate parts of the query
+    translated_parts = []
+    for eng_term, translated_term in translations.items():
+        if eng_term in query_lower:
+            # Replace the English term with the translated version
+            return query_lower.replace(eng_term, translated_term)
+    
+    return None
+
+
+def add_multilingual_queries(queries: list[str], project: dict, max_per_language: int = 10) -> list[str]:
+    """Add translated versions of queries for project languages."""
+    languages = get_project_languages(project)
+    
+    # Filter to languages we have translations for (excluding English)
+    target_languages = [lang for lang in languages if lang in TRANSLATIONS]
+    
+    if not target_languages:
+        return queries
+    
+    # Select key queries to translate (prioritize shorter, more generic ones)
+    key_queries = [q for q in queries if len(q.split()) <= 4][:max_per_language]
+    
+    translated = []
+    for lang in target_languages:
+        for query in key_queries:
+            trans = translate_query(query, lang)
+            if trans and trans not in translated and trans not in queries:
+                translated.append(trans)
+    
+    # Add translated queries (interleaved with original)
+    result = list(queries)
+    result.extend(translated)
+    
+    return result
+
+
 @dataclass
 class DiscoveryReport:
     project_id: str
@@ -235,7 +392,12 @@ def build_broad_queries(project: dict, sources: dict) -> list[str]:
     queries.extend(sources.get("seed_queries", []))
     
     # Deduplicate while preserving order
-    return list(dict.fromkeys([q.strip() for q in queries if q.strip()]))
+    queries = list(dict.fromkeys([q.strip() for q in queries if q.strip()]))
+    
+    # Add multilingual versions of key queries
+    queries = add_multilingual_queries(queries, project, max_per_language=8)
+    
+    return queries
 
 
 def build_outreach_queries(project: dict, sources: dict) -> list[str]:
@@ -338,7 +500,12 @@ def build_outreach_queries(project: dict, sources: dict) -> list[str]:
     ])
     
     # Deduplicate
-    return list(dict.fromkeys([q.strip() for q in queries if q.strip()]))
+    queries = list(dict.fromkeys([q.strip() for q in queries if q.strip()]))
+    
+    # Add multilingual versions of key queries
+    queries = add_multilingual_queries(queries, project, max_per_language=5)
+    
+    return queries
 
 
 def generate_queries(project: dict, sources: dict, llm: LLMClient, max_queries: int, strategy: str) -> list[str]:
