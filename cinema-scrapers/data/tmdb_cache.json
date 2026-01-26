@@ -19387,13 +19387,13 @@
   },
   "tmdb:586810": {
     "tmdb_id": 586810,
-    "tmdb_title_jp": "Mars Express",
+    "tmdb_title_jp": "マーズ・エクスプレス",
     "tmdb_title_en": "Mars Express",
     "tmdb_title_original": "Mars Express",
     "tmdb_original_language": "fr",
-    "overview": "",
+    "overview": "ときは23世紀――西暦2200年。地球での仕事を終え、活動拠点である火星に戻ってきた私立探偵 アリーヌ 。「行方不明になっている大学生の娘を探してほしい」という男の依頼を受けて、アンドロイドの相棒 カルロス と共に捜索を開始する。調査の過程で、火星の首都ノクティスの暗部に足を踏み入れていく二人を待ち受けていたのは、腐敗した街の裏側、強大な権力を持つ企業の陰謀、そして人間とロボットが共存する社会の根幹を揺るがす事態だった。",
     "overview_en": "In 2200, private detective Aline Ruby and her android partner Carlos Rivera are hired by a wealthy businessman to track down a notorious hacker. On Mars, they descend deep into the underbelly of the planet's capital city where they uncover a darker story of brain farms, political corruption, and a missing girl who holds a secret about the robots that threatens to change the face of the universe.",
-    "poster_path": "/A1D0eZqneQGCmhpxSdex9DmjFSB.jpg",
+    "poster_path": "/pvV19mW9nTl8Qn2lQkYGk8L7ptc.jpg",
     "backdrop_path": "/yIOw17XdfsoCaydtrkzlZBCcHk6.jpg",
     "release_date": "2023-11-22",
     "director": "Jérémie Périn",
@@ -19412,7 +19412,7 @@
       "Mystery"
     ],
     "runtime": 89,
-    "vote_average": 7.444,
+    "vote_average": 7.4,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -23144,6 +23144,369 @@
       {
         "iso_3166_1": "RU",
         "name": "Russia"
+      }
+    ]
+  },
+  "夜叉ヶ池 4Kデジタルリマスター版": {
+    "tmdb_id": 117215,
+    "tmdb_title_jp": "夜叉ヶ池",
+    "tmdb_title_en": "Demon Pond",
+    "tmdb_title_original": "夜叉ヶ池",
+    "tmdb_original_language": "ja",
+    "overview": "越前の「夜叉ヶ池」には、竜神が棲んでいるという言い伝えがあった。そしてその竜神を鎮めるには、日に3度、鐘をつかなければならないという。しかし鐘つきの老人が死んだ時、その言い伝えを信じるものはいなかった。そしてついに、竜神が大洪水と共に甦る。",
+    "overview_en": "When a lone traveler stumbles upon a remote, drought-stricken village, he finds himself engulfed in a whirlpool of myth, mystery, and magic: in a nearby pond reside spirits who hold the fate of the town’s inhabitants, including lovers Akira and Yuri, in their hands.",
+    "poster_path": "/6obycPfpbYeexCvPPaozkEMq83I.jpg",
+    "backdrop_path": "/bEFfAFQcEgIXbe8lrMG2EIv3DpG.jpg",
+    "release_date": "1979-10-20",
+    "director": "篠田正浩",
+    "director_jp": "篠田正浩",
+    "director_en": "Masahiro Shinoda",
+    "genres": [
+      "ファンタジー",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Romance"
+    ],
+    "runtime": 124,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "暗戦 デッドエンド": {
+    "tmdb_id": 2463,
+    "tmdb_title_jp": "暗戦 デッドエンド",
+    "tmdb_title_en": "Running Out of Time",
+    "tmdb_title_original": "暗戰",
+    "tmdb_original_language": "cn",
+    "overview": "アンディ・ラウ×ジョニー・トーが贈る究極の犯罪ゲーム！\r 抜群の頭脳をもつ男が仕掛けた、最期の完全犯罪。\r ゲームを仕かけた犯人と、罠にハマっていく刑事──男のプライドをかけた激突を、香港ノワールのスタイリッシュな映像美で描くサスペンス・アクション。アンディ・ラウの孤高の演技が、第19回香港電影金像賞最優秀主演男優賞を授賞。刑事と知能犯の間に生まれる情感が、ジョニー･トー監督の手により丁寧につむぎだされ、哀愁の音楽とともに究極の“男の美学”を漂わす。\r 末期ガンで余命４週間と宣告された男が、人質をとってビル屋上に立てこもる。現場へ急行したホー刑事に対し、男は「72時間のゲームを楽しもう」と言い放つやその場から逃走。追跡すればするほど、捜査の網の目をすり抜けていく犯人。善人を死に至らしめない犯行ポリシーと、ホー刑事を巧みに巻き込んでいく才能に、なにか特別な意図があるとホーは感じ始める。",
+    "overview_en": "Police inspector and excellent hostage negotiator Ho Sheung-Sang finds himself in over his head when he is pulled into a 72 hour game by a cancer suffering criminal out for vengeance on Hong Kong's organized crime syndicates.",
+    "poster_path": "/bah2ri0WDl0lFHIKE1b3cdyFkj9.jpg",
+    "backdrop_path": "/a0jFMDNLmkIooaOvlWHnkrUJMeF.jpg",
+    "release_date": "1999-09-23",
+    "director": "杜琪峰",
+    "director_jp": "杜琪峰",
+    "director_en": "Johnnie To",
+    "genres": [
+      "ドラマ",
+      "アクション",
+      "スリラー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "runtime": 93,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:2463": {
+    "tmdb_id": 2463,
+    "tmdb_title_jp": "暗戦 デッドエンド",
+    "tmdb_title_en": "Running Out of Time",
+    "tmdb_title_original": "暗戰",
+    "tmdb_original_language": "cn",
+    "overview": "アンディ・ラウ×ジョニー・トーが贈る究極の犯罪ゲーム！\r 抜群の頭脳をもつ男が仕掛けた、最期の完全犯罪。\r ゲームを仕かけた犯人と、罠にハマっていく刑事──男のプライドをかけた激突を、香港ノワールのスタイリッシュな映像美で描くサスペンス・アクション。アンディ・ラウの孤高の演技が、第19回香港電影金像賞最優秀主演男優賞を授賞。刑事と知能犯の間に生まれる情感が、ジョニー･トー監督の手により丁寧につむぎだされ、哀愁の音楽とともに究極の“男の美学”を漂わす。\r 末期ガンで余命４週間と宣告された男が、人質をとってビル屋上に立てこもる。現場へ急行したホー刑事に対し、男は「72時間のゲームを楽しもう」と言い放つやその場から逃走。追跡すればするほど、捜査の網の目をすり抜けていく犯人。善人を死に至らしめない犯行ポリシーと、ホー刑事を巧みに巻き込んでいく才能に、なにか特別な意図があるとホーは感じ始める。",
+    "overview_en": "Police inspector and excellent hostage negotiator Ho Sheung-Sang finds himself in over his head when he is pulled into a 72 hour game by a cancer suffering criminal out for vengeance on Hong Kong's organized crime syndicates.",
+    "poster_path": "/bah2ri0WDl0lFHIKE1b3cdyFkj9.jpg",
+    "backdrop_path": "/a0jFMDNLmkIooaOvlWHnkrUJMeF.jpg",
+    "release_date": "1999-09-23",
+    "director": "杜琪峰",
+    "director_jp": "杜琪峰",
+    "director_en": "Johnnie To",
+    "genres": [
+      "ドラマ",
+      "アクション",
+      "スリラー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "runtime": 93,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "デッドエンド 暗戦リターンズ": {
+    "tmdb_id": 45303,
+    "tmdb_title_jp": "暗戰 2",
+    "tmdb_title_en": "Running Out of Time 2",
+    "tmdb_title_original": "暗戰 2",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Ho Sheung Sang finds himself wrapped up in another cat-and-mouse game, this time against a tricky magician.",
+    "poster_path": "/66IpIhBg87z8bzNyxOWKHplbNCg.jpg",
+    "backdrop_path": "/fRUYuvMTyNrY2ksPpDLqqV9XiVW.jpg",
+    "release_date": "2001-12-27",
+    "director": "羅永昌",
+    "director_jp": "羅永昌",
+    "director_en": "Law Wing-Cheong",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 95,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "エロス＋虐殺": {
+    "tmdb_id": 78117,
+    "tmdb_title_jp": "エロス＋虐殺",
+    "tmdb_title_en": "Eros + Massacre",
+    "tmdb_title_original": "エロス＋虐殺",
+    "tmdb_original_language": "ja",
+    "overview": "　松竹ヌーヴェル・ヴァーグ出身の吉田喜重監督が、大正のアナーキスト大杉栄が三角関係のもつれから刺された事件を取り上げ、大正時代と現代（昭和40年代）のそれぞれの風俗と人物たちを、時間軸と空間軸を交錯させ前衛的な手法で描いた愛と憎しみのドラマ。出演は細川俊之、岡田茉莉子。映画のモデルとなったひとりが、名誉毀損・プライバシー侵害を理由に、映画上映禁止の訴訟を起こしたことでも知られる。ちなみにこの時の請求は棄却されている。",
+    "overview_en": "Two interwoven stories. The first is a biography of anarchist Sakae Osugi which follows his relationship with three women in the 1920s. The second centers around two 1960s students researching Osugi's theories.",
+    "poster_path": "/9gYUtPdsX0hntzPjWMAY5NULYZ0.jpg",
+    "backdrop_path": "/zEPVHPVN72OMOAbngjDjkkPKQdJ.jpg",
+    "release_date": "1969-03-13",
+    "director": "吉田喜重",
+    "director_jp": "吉田喜重",
+    "director_en": "Yoshishige Yoshida",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "History"
+    ],
+    "runtime": 167,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:78117": {
+    "tmdb_id": 78117,
+    "tmdb_title_jp": "エロス＋虐殺",
+    "tmdb_title_en": "Eros + Massacre",
+    "tmdb_title_original": "エロス＋虐殺",
+    "tmdb_original_language": "ja",
+    "overview": "　松竹ヌーヴェル・ヴァーグ出身の吉田喜重監督が、大正のアナーキスト大杉栄が三角関係のもつれから刺された事件を取り上げ、大正時代と現代（昭和40年代）のそれぞれの風俗と人物たちを、時間軸と空間軸を交錯させ前衛的な手法で描いた愛と憎しみのドラマ。出演は細川俊之、岡田茉莉子。映画のモデルとなったひとりが、名誉毀損・プライバシー侵害を理由に、映画上映禁止の訴訟を起こしたことでも知られる。ちなみにこの時の請求は棄却されている。",
+    "overview_en": "Two interwoven stories. The first is a biography of anarchist Sakae Osugi which follows his relationship with three women in the 1920s. The second centers around two 1960s students researching Osugi's theories.",
+    "poster_path": "/9gYUtPdsX0hntzPjWMAY5NULYZ0.jpg",
+    "backdrop_path": "/zEPVHPVN72OMOAbngjDjkkPKQdJ.jpg",
+    "release_date": "1969-03-13",
+    "director": "吉田喜重",
+    "director_jp": "吉田喜重",
+    "director_en": "Yoshishige Yoshida",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "History"
+    ],
+    "runtime": 167,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "シネマブル-スタジオ": null,
+  "本格スタジオ型映画館 シネマ ブル-スタジオ 公式twitterにて最新情報をつぶやいています！": null,
+  "メラニア": {
+    "tmdb_id": 1413097,
+    "tmdb_title_jp": "Melania",
+    "tmdb_title_en": "Melania",
+    "tmdb_title_original": "Melania",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Offering unprecedented access to the 20 days leading up to the 2025 Presidential Inauguration — through the eyes of the First Lady-elect herself — step inside Melania Trump's world as she orchestrates inauguration plans, navigates the complexities of the White House transition, and reenters public life with her family. With exclusive footage capturing critical meetings, private conversations, and never-before-seen environments, Mrs. Trump returns to one of the world's most powerful roles.",
+    "poster_path": "/ba6Silct0Y4pyvrSv0Tj0Urmx9f.jpg",
+    "backdrop_path": "/85BqDpCZSA5lzsRbANkchg0RFIf.jpg",
+    "release_date": "2026-01-30",
+    "director": "ブレット・ラトナー",
+    "director_jp": "ブレット・ラトナー",
+    "director_en": "Brett Ratner",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 104,
+    "vote_average": 1.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1413097": {
+    "tmdb_id": 1413097,
+    "tmdb_title_jp": "Melania",
+    "tmdb_title_en": "Melania",
+    "tmdb_title_original": "Melania",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Offering unprecedented access to the 20 days leading up to the 2025 Presidential Inauguration — through the eyes of the First Lady-elect herself — step inside Melania Trump's world as she orchestrates inauguration plans, navigates the complexities of the White House transition, and reenters public life with her family. With exclusive footage capturing critical meetings, private conversations, and never-before-seen environments, Mrs. Trump returns to one of the world's most powerful roles.",
+    "poster_path": "/ba6Silct0Y4pyvrSv0Tj0Urmx9f.jpg",
+    "backdrop_path": "/85BqDpCZSA5lzsRbANkchg0RFIf.jpg",
+    "release_date": "2026-01-30",
+    "director": "ブレット・ラトナー",
+    "director_jp": "ブレット・ラトナー",
+    "director_en": "Brett Ratner",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 104,
+    "vote_average": 1.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【吹替版】マーズ・エクスプレス": {
+    "tmdb_id": 586810,
+    "tmdb_title_jp": "マーズ・エクスプレス",
+    "tmdb_title_en": "Mars Express",
+    "tmdb_title_original": "Mars Express",
+    "tmdb_original_language": "fr",
+    "overview": "ときは23世紀――西暦2200年。地球での仕事を終え、活動拠点である火星に戻ってきた私立探偵 アリーヌ 。「行方不明になっている大学生の娘を探してほしい」という男の依頼を受けて、アンドロイドの相棒 カルロス と共に捜索を開始する。調査の過程で、火星の首都ノクティスの暗部に足を踏み入れていく二人を待ち受けていたのは、腐敗した街の裏側、強大な権力を持つ企業の陰謀、そして人間とロボットが共存する社会の根幹を揺るがす事態だった。",
+    "overview_en": "In 2200, private detective Aline Ruby and her android partner Carlos Rivera are hired by a wealthy businessman to track down a notorious hacker. On Mars, they descend deep into the underbelly of the planet's capital city where they uncover a darker story of brain farms, political corruption, and a missing girl who holds a secret about the robots that threatens to change the face of the universe.",
+    "poster_path": "/pvV19mW9nTl8Qn2lQkYGk8L7ptc.jpg",
+    "backdrop_path": "/yIOw17XdfsoCaydtrkzlZBCcHk6.jpg",
+    "release_date": "2023-11-22",
+    "director": "Jérémie Périn",
+    "director_jp": "Jérémie Périn",
+    "director_en": "Jérémie Périn",
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "アクション",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Science Fiction",
+      "Action",
+      "Mystery"
+    ],
+    "runtime": 89,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "マーズ・エクスプレス": {
+    "tmdb_id": 586810,
+    "tmdb_title_jp": "マーズ・エクスプレス",
+    "tmdb_title_en": "Mars Express",
+    "tmdb_title_original": "Mars Express",
+    "tmdb_original_language": "fr",
+    "overview": "ときは23世紀――西暦2200年。地球での仕事を終え、活動拠点である火星に戻ってきた私立探偵 アリーヌ 。「行方不明になっている大学生の娘を探してほしい」という男の依頼を受けて、アンドロイドの相棒 カルロス と共に捜索を開始する。調査の過程で、火星の首都ノクティスの暗部に足を踏み入れていく二人を待ち受けていたのは、腐敗した街の裏側、強大な権力を持つ企業の陰謀、そして人間とロボットが共存する社会の根幹を揺るがす事態だった。",
+    "overview_en": "In 2200, private detective Aline Ruby and her android partner Carlos Rivera are hired by a wealthy businessman to track down a notorious hacker. On Mars, they descend deep into the underbelly of the planet's capital city where they uncover a darker story of brain farms, political corruption, and a missing girl who holds a secret about the robots that threatens to change the face of the universe.",
+    "poster_path": "/pvV19mW9nTl8Qn2lQkYGk8L7ptc.jpg",
+    "backdrop_path": "/yIOw17XdfsoCaydtrkzlZBCcHk6.jpg",
+    "release_date": "2023-11-22",
+    "director": "Jérémie Périn",
+    "director_jp": "Jérémie Périn",
+    "director_en": "Jérémie Périn",
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "アクション",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Science Fiction",
+      "Action",
+      "Mystery"
+    ],
+    "runtime": 89,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:45303": {
+    "tmdb_id": 45303,
+    "tmdb_title_jp": "暗戰 2",
+    "tmdb_title_en": "Running Out of Time 2",
+    "tmdb_title_original": "暗戰 2",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Ho Sheung Sang finds himself wrapped up in another cat-and-mouse game, this time against a tricky magician.",
+    "poster_path": "/66IpIhBg87z8bzNyxOWKHplbNCg.jpg",
+    "backdrop_path": "/fRUYuvMTyNrY2ksPpDLqqV9XiVW.jpg",
+    "release_date": "2001-12-27",
+    "director": "羅永昌",
+    "director_jp": "羅永昌",
+    "director_en": "Law Wing-Cheong",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 95,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
       }
     ]
   }

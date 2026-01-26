@@ -2254,5 +2254,37 @@
     "original_title": "Мы, дети 20 века",
     "director": "Vitaly Kanevsky",
     "country": "France, Russia"
+  },
+  "デッドエンド 暗戦リターンズ": {
+    "english_title": "Running Out of Time 2",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "暗戰2",
+    "director": "Johnnie To, Law Wing-cheung",
+    "country": "Hong Kong"
+  },
+  "【吹替版】マーズ・エクスプレス": {
+    "english_title": "Mars Express",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mars Express",
+    "director": "Jérémie Périn",
+    "country": "France"
+  },
+  "シネマブル-スタジオ": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "本格スタジオ型映画館 シネマ ブル-スタジオ 公式twitterにて最新情報をつぶやいています！": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
