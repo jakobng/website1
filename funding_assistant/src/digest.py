@@ -740,7 +740,7 @@ def generate_digest(
             config.db_path,
             project_id=project_id,
             min_score=min_score,
-            include_shown=True,
+            include_shown=False,
         )
         
         if not results:
