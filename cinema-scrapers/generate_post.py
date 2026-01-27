@@ -164,7 +164,17 @@ CINEMA_ENGLISH_NAMES = {
     "kino cinéma新宿": "kino cinéma Shinjuku",
     "kino cinéma立川髙島屋S.C.館": "kino cinéma Tachikawa",
     "横浜シネマリン": "Yokohama Cinemarine",
-    "Cinema Neko (シネマネコ)": "Cinema Neko"
+    "Cinema Neko (シネマネコ)": "Cinema Neko",
+    "ホワイト シネクイント": "White Cine Quinto",
+    "シネ・リーブル池袋": "Cine Libre Ikebukuro",
+    "キネカ大森": "Kineca Omori",
+    "シネマシティ": "Cinema City",
+    "東京都写真美術館": "Tokyo Photographic Art Museum",
+    "吉祥寺オデヲン": "Kichijoji Odeon",
+    "シアターギルド代官山": "Theater Guild Daikanyama",
+    "シアターギルド下北沢": "Theater Guild Shimokitazawa",
+    "シネマハウス大塚": "Cinema House Otsuka",
+    "東劇": "Togeki"
 }
 
 CINEMA_FILENAME_OVERRIDES = {
@@ -553,11 +563,17 @@ def draw_cinema_slide(cinema_name: str, cinema_name_en: str, listings: list[dict
             draw_text_with_shadow(draw, (MARGIN+60, y), l['times'], reg_f, LIGHT_GRAY); y += 60
     return img
 
-def write_caption_for_multiple_cinemas(date_str: str, all_featured_cinemas: list[dict]) -> None:
+def write_caption_for_multiple_cinemas(
+    date_str: str,
+    all_featured_cinemas: list[dict],
+    cinema_address_overrides: dict[str, str] | None = None
+) -> None:
     lines = [f"🗓️ 本日の東京ミニシアター上映情報 / Today's Featured Showtimes ({date_str})\n"]
     for item in all_featured_cinemas:
         cinema_name = item['cinema_name']
         address = CINEMA_ADDRESSES.get(cinema_name, "")
+        if not address and cinema_address_overrides:
+            address = cinema_address_overrides.get(cinema_name, "")
         lines.append(f"\n--- 【{cinema_name}】 ---")
         if address:
             jp_address = address.split('\n')[0]
@@ -636,6 +652,10 @@ def main():
 
     # --- Slide Generation ---
     slide_idx = 0; all_featured = []
+    cinema_address_overrides = {}
+    for s in showings:
+        if s.get("cinema_address") and s.get("cinema_name") not in cinema_address_overrides:
+            cinema_address_overrides[s["cinema_name"]] = s["cinema_address"]
     for c_name in selected:
         if slide_idx >= 9: break
         listings = format_listings(grouped[c_name])
@@ -647,7 +667,7 @@ def main():
             if slide_idx >= 10: break
             draw_cinema_slide(c_name, "", seg, bg).save(OUTPUT_DIR / f"post_image_{slide_idx:02}.png")
             
-    write_caption_for_multiple_cinemas(today_str, all_featured)
+    write_caption_for_multiple_cinemas(today_str, all_featured, cinema_address_overrides)
     print(f"✅ Done. Generated {slide_idx} slides.")
 
 if __name__ == "__main__": main()
