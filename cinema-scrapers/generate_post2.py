@@ -967,7 +967,7 @@ def main():
     candidates_today = set()
     for item in raw_data:
         if item.get('date_text') == primary_date:
-            if not item.get('tmdb_backdrop_path'): continue
+            if not (item.get('tmdb_backdrop_path') or item.get('image_url')): continue
             fid = item.get('tmdb_id')
             if not fid: fid = normalize_string(item.get('movie_title'))
             candidates_today.add(fid)
@@ -1027,7 +1027,8 @@ def main():
     
     for film in selected:
         print(f"Processing: {film.get('clean_title_jp') or film.get('movie_title')}")
-        img = download_image(film.get('tmdb_backdrop_path'))
+        img_path = film.get('tmdb_backdrop_path') or film.get('image_url')
+        img = download_image(img_path)
         if img:
             slide_data.append({"film": film, "img": img})
             cover_images.append(img)

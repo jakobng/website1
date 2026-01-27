@@ -19,47 +19,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 # --- All cinema scraper modules ---
-from cinema_modules import (
-    bunkamura_module,
-    bluestudio_module,
-    cine_switch_ginza_module,
-    cinemalice_module,
-    eurospace_module,
-    human_shibuya_module,
-    human_yurakucho_module,
-    image_forum_module,
-    ks_cinema_module,
-    laputa_asagaya_module,
-    meguro_cinema_module,
-    musashino_kan_module,
-    nfaj_calendar_module as nfaj_module,
-    polepole_module,
-    shin_bungeiza_module,
-    shimotakaido_module,
-    stranger_module,
-    theatre_shinjuku_module,
-    waseda_shochiku_module,
-    cinemart_shinjuku_module,
-    cine_quinto_module,
-    yebisu_garden_module,
-    k2_cinema_module,
-    kino_cinema_module,
-    cinema_rosa_module,
-    chupki_module,
-    uplink_kichijoji_module,
-    tollywood_module,
-    morc_asagaya_module,
-    jinbocho_theatre_module,
-    cinema_vera_module,
-    institut_francais_module,
-    jack_and_betty_module,
-    athenee_francais_module,
-    white_cine_quinto_module,
-    cinema_novecento_module,
-    yokohama_cinemarine_module,
-    kadokawa_yurakucho_module,
-    cinema_neko_module
-)
+from cinema_modules import eiga_tokyo_module, eiga_kanagawa_module
 
 # --- Configuration ---
 DATA_DIR = "data"
@@ -1586,6 +1546,11 @@ def enrich_listings_with_tmdb_links(listings, cache, session, api_key):
             item["tmdb_overview_en"] = d.get("overview_en")
         if not item.get("clean_title_jp") and d.get("tmdb_title_jp"):
             item["clean_title_jp"] = d.get("tmdb_title_jp")
+
+        # Prefer TMDB posters; only keep eiga image when TMDB has none
+        if item.get("tmdb_poster_path"):
+            if item.get("image_url"):
+                item["image_url"] = ""
         if not item.get("movie_title_jp"):
             item["movie_title_jp"] = d.get("tmdb_title_jp") or item.get("movie_title") or ""
         title_jp = item.get("movie_title_jp") or item.get("movie_title") or ""
@@ -1797,89 +1762,8 @@ def main():
     # 1. DEFINE SCRAPERS TO RUN
     # Format: (Display Name, Function Object, Optional Normalizer)
     scrapers_to_run = [
-        ("Bunkamura", bunkamura_module.scrape_bunkamura, None),
-        ("K's Cinema", ks_cinema_module.scrape_ks_cinema, None),
-        ("Shin-Bungeiza", shin_bungeiza_module.scrape_shin_bungeiza, None),
-        ("Shimotakaido Cinema", shimotakaido_module.scrape_shimotakaido, None),
-        ("Stranger", stranger_module.scrape_stranger, None),
-        ("Meguro Cinema", meguro_cinema_module.scrape_meguro_cinema, None),
-        
-        # FIXED: Use 'scrape' instead of guessed name
-        ("Image Forum", image_forum_module.scrape, None),
-        
-        # FIXED: Use 'scrape_theatre_shinjuku'
-        ("Theatre Shinjuku", theatre_shinjuku_module.scrape_theatre_shinjuku, None),
-        
-        # FIXED: Use 'scrape_polepole'
-        ("Pole Pole Higashi-Nakano", polepole_module.scrape_polepole, None),
-        
-        # FIXED: Use 'scrape_bluestudio'
-        ("Cinema Blue Studio", bluestudio_module.scrape_bluestudio, None),
-        
-        # FIXED: Use 'scrape_human_shibuya'
-        ("Human Trust Cinema Shibuya", human_shibuya_module.scrape_human_shibuya, None),
-        ("Human Trust Cinema Yurakucho", human_yurakucho_module.scrape_human_yurakucho, None),
-        
-        # FIXED: Use 'scrape_laputa_asagaya'
-        ("Laputa Asagaya", laputa_asagaya_module.scrape_laputa_asagaya, None),
-        
-        ("Shinjuku Musashino-kan", musashino_kan_module.scrape_musashino_kan, None),
-        ("Waseda Shochiku", waseda_shochiku_module.scrape_waseda_shochiku, None),
-        ("National Film Archive", nfaj_module.scrape_nfaj_calendar, None),
-        ("Cinemart Shinjuku", cinemart_shinjuku_module.scrape_cinemart_shinjuku, None),
-        ("Cine Quinto", cine_quinto_module.scrape_cine_quinto, None),
-        
-        # FIXED: Use 'scrape_yebisu_garden_cinema'
-        ("Yebisu Garden Cinema", yebisu_garden_module.scrape_yebisu_garden_cinema, None),
-        
-        ("K2 Cinema", k2_cinema_module.scrape_k2_cinema, None),
-        ("Kino Cinema", kino_cinema_module.scrape_kino_cinema, None),
-        ("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa, None),
-        ("Chupki", chupki_module.scrape_chupki, None),
-        ("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji, None),
-        ("Tollywood", tollywood_module.scrape_tollywood, None),
-
-        # FIXED: Use 'fetch_morc_asagaya_showings'
-        ("Morc Asagaya", morc_asagaya_module.fetch_morc_asagaya_showings, None),
-
-        # FIXED: Use 'scrape' AND added normalizer
-        ("Eurospace", eurospace_module.scrape, _normalize_eurospace_schema),
-
-        # CineMalice - new mini-theater opened Dec 2025
-        ("CineMalice", cinemalice_module.scrape_cinemalice, None),
-
-        # Cine Switch Ginza
-        ("Cine Switch Ginza", cine_switch_ginza_module.scrape_cine_switch_ginza, None),
-
-        # Jimbocho Theatre
-        ("Jimbocho Theatre", jinbocho_theatre_module.scrape_jinbocho, None),
-
-        # Cinema Vera Shibuya
-        ("Cinema Vera Shibuya", cinema_vera_module.scrape_cinema_vera, None),
-
-        # Institut Francais Tokyo
-        ("Institut Francais Tokyo", institut_francais_module.scrape_institut_francais, None),
-
-        # Jack and Betty Yokohama
-        ("Jack and Betty Yokohama", jack_and_betty_module.scrape_jack_and_betty, None),
-
-        # Cinema Novecento (Yokohama)
-        ("Cinema Novecento", cinema_novecento_module.scrape_cinema_novecento, None),
-
-        # Athénée Français Cultural Center
-        ("Athenee Francais", athenee_francais_module.scrape_athenee_francais, None),
-
-        # White Cine Quinto
-        ("White Cine Quinto", white_cine_quinto_module.scrape_white_cine_quinto, None),
-
-        # Yokohama Cinemarine
-        ("Yokohama Cinemarine", yokohama_cinemarine_module.scrape_yokohama_cinemarine, None),
-
-        # Kadokawa Cinema Yurakucho
-        ("Kadokawa Cinema Yurakucho", kadokawa_yurakucho_module.scrape_kadokawa_yurakucho, None),
-
-        # Cinema Neko Ome
-        ("Cinema Neko Ome", cinema_neko_module.scrape_cinema_neko, None),
+        ("Eiga.com Tokyo", eiga_tokyo_module.scrape_eiga_tokyo, None),
+        ("Eiga.com Kanagawa", eiga_kanagawa_module.scrape_eiga_kanagawa, None),
     ]
 
     # 2. RUN THEM ONE BY ONE

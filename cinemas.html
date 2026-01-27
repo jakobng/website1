@@ -1003,7 +1003,7 @@
                 if (state.lang === "en") {
                     return film.titleEn || film.titleJp || film.titleDisplay;
                 } else {
-                    return film.titleJp || film.titleDisplay;
+                    return film.titleJp || film.titleEn || film.titleDisplay;
                 }
             }
             function getFilmDirector(film) {
@@ -1385,6 +1385,26 @@
                 if (!secondary || secondary === primary) return primary;
                 return primary + " (" + secondary + ")";
             }
+            function containsJapanese(text) {
+                return /[\u3040-\u30ff\u3400-\u9fff]/.test(text || "");
+            }
+            function pickJapaneseTitle(item) {
+                const candidates = [
+                    item.movie_title_jp,
+                    item.movie_title,
+                    item.clean_title_jp,
+                    item.movie_title_en
+                ];
+                for (var i = 0; i < candidates.length; i += 1) {
+                    var value = candidates[i];
+                    if (value && containsJapanese(value)) return value;
+                }
+                for (var j = 0; j < candidates.length; j += 1) {
+                    var fallback = candidates[j];
+                    if (fallback) return fallback;
+                }
+                return "";
+            }
             function buildLetterboxdUrl(title, tmdbId) {
                 if (tmdbId) {
                     return "https://letterboxd.com/tmdb/" + tmdbId + "/";
@@ -1514,7 +1534,7 @@
             }
             function normalizeShowings(rawData) {
                 return rawData.map(function (item, index) {
-                    const titleJp = item.clean_title_jp || item.movie_title || item.movie_title_en || t("untitled");
+                    const titleJp = pickJapaneseTitle(item) || t("untitled");
                     const titleEn = item.movie_title_en || "";
                     const titleDisplay = formatBilingual(titleJp, titleEn);
                     const tmdbId = item.tmdb_id ? String(item.tmdb_id) : "";
@@ -1552,8 +1572,9 @@
                         genresEn: genresEn,
                         formatTags: tags,
                         rating: item.vote_average ? Number(item.vote_average) : 0,
-                        posterPath: item.tmdb_poster_path || "",
+                        posterPath: item.tmdb_poster_path || item.image_url || "",
                         backdropPath: item.tmdb_backdrop_path || "",
+                        imageUrl: item.image_url || "",
                         overview: item.synopsis || item.tmdb_overview_jp || "",
                         overviewEn: item.tmdb_overview_en || item.synopsis_en || "",
                         tmdbId: tmdbId,
