@@ -2286,5 +2286,661 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ネタニヤフ調書　汚職と戦争": {
+    "english_title": "The Bibi Files",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Bibi Files",
+    "director": "Alexis Bloom",
+    "country": "Israel, USA"
+  },
+  "アバウトアス ・バット・ノット・アバウトアス": {
+    "english_title": "About Us But Not About Us",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "About Us But Not About Us",
+    "director": "Jun Robles Lana",
+    "country": "Philippines"
+  },
+  "鯨が消えた入り江": {
+    "english_title": "A Balloon's Landing",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "我在這裡等你",
+    "director": "Angel Teng",
+    "country": "Taiwan"
+  },
+  "消滅世界": {
+    "english_title": "Vanishing World",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "消滅世界",
+    "director": "Makoto Kawamura",
+    "country": "Japan"
+  },
+  "INFINITE 15TH ANNIVERSARY CONCERT LIMITED EDITION THE MOVIE": {
+    "english_title": "INFINITE 15TH ANNIVERSARY CONCERT LIMITED EDITION THE MOVIE",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "인피니트 15주년 콘서트 리미티드 에디션 더 무비",
+    "director": "Son Seok",
+    "country": "South Korea"
+  },
+  "群集の喚呼": {
+    "english_title": "The Crowd Roars",
+    "release_year": 1932,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Crowd Roars",
+    "director": "Howard Hawks",
+    "country": "USA"
+  },
+  "悪徳（1955）": {
+    "english_title": "The Big Knife",
+    "release_year": 1955,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "The Big Knife",
+    "director": "Robert Aldrich",
+    "country": "USA"
+  },
+  "なぶられ者": {
+    "english_title": "Manhandled",
+    "release_year": 1924,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Manhandled",
+    "director": "Allan Dwan",
+    "country": "USA"
+  },
+  "タイタニック（1927）": {
+    "english_title": "East Side, West Side",
+    "release_year": 1927,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "East Side, West Side",
+    "director": "Allan Dwan",
+    "country": "United States"
+  },
+  "LIVE IN THEATER「BATTLE OF TOKYO うつくしき嘘」": {
+    "english_title": "LIVE IN THEATER \"BATTLE OF TOKYO -Utsukushiki Uso-\"",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "LIVE IN THEATER「BATTLE OF TOKYO うつくしき嘘」",
+    "director": "Norihisa Hiranuma",
+    "country": "Japan"
+  },
+  "カリギュラ　究極版": {
+    "english_title": "Caligula: The Ultimate Cut",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Caligula: The Ultimate Cut",
+    "director": "Tinto Brass",
+    "country": "United States, Italy",
+    "failed": true
+  },
+  "Tokyo Melody Ryuichi Sakamoto": {
+    "english_title": "Tokyo Melody: A Film about Ryuichi Sakamoto",
+    "release_year": 1985,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Tokyo melody: un film sur Ryuichi Sakamoto",
+    "director": "Elizabeth Lennard",
+    "country": "France, Japan"
+  },
+  "ワールド・ブレイカー": {
+    "english_title": "World Breaker",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "World Breaker",
+    "director": "Brad Anderson",
+    "country": "United States",
+    "failed": true
+  },
+  "アリゲーター　暴水領域": {
+    "english_title": "The Flood",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Flood",
+    "director": "Brandon Slagle",
+    "country": "United States"
+  },
+  "コゼリスク攻城戦　モンゴル軍襲撃": {
+    "english_title": "Fierce Town",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Злой город",
+    "director": "Konstantin Buslov",
+    "country": "Russia"
+  },
+  "ブチャ　最後の証人": {
+    "english_title": "Bucha",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Буча",
+    "director": "Stanislav Tiunov",
+    "country": "Ukraine"
+  },
+  "帰ってきたガリバー": {
+    "english_title": "Gulliver Returns",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Гуллівер повертається",
+    "director": "Ilya Maksimov",
+    "country": "Ukraine"
+  },
+  "CROSSING 心の交差点": {
+    "english_title": "Crossing",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Crossing",
+    "director": "Levan Akin",
+    "country": "Sweden, Denmark, France, Turkey, Georgia",
+    "failed": true
+  },
+  "シャルルとリュシー": {
+    "english_title": "Charles and Lucie",
+    "release_year": 1979,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Charles et Lucie",
+    "director": "Nelly Kaplan",
+    "country": "France"
+  },
+  "バッタ君町に行く": {
+    "english_title": "Mr. Bug Goes to Town",
+    "release_year": 1941,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mr. Bug Goes to Town",
+    "director": "Dave Fleischer",
+    "country": "USA"
+  },
+  "しわ": {
+    "english_title": "Wrinkles",
+    "release_year": 2011,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Arrugas",
+    "director": "Ignacio Ferreras",
+    "country": "Spain",
+    "failed": true
+  },
+  "パパ・プティ・バトー": {
+    "english_title": "Papa, the Lil' Boats",
+    "release_year": 1971,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Papa les p'tits bateaux",
+    "director": "Nelly Kaplan",
+    "country": "France"
+  },
+  "海賊のフィアンセ": {
+    "english_title": "A Very Curious Girl",
+    "release_year": 1969,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Fiancée du pirate",
+    "director": "Nelly Kaplan",
+    "country": "France"
+  },
+  "パティーとの二十一夜": {
+    "english_title": "21 Nights with Pattie",
+    "release_year": 2015,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Vingt et une nuits avec Pattie",
+    "director": "Arnaud Larrieu, Jean-Marie Larrieu",
+    "country": "France"
+  },
+  "ロストランズ　闇を狩る者": {
+    "english_title": "In the Lost Lands",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "In the Lost Lands",
+    "director": "Paul W. S. Anderson",
+    "country": "United States"
+  },
+  "韓国ミュージカル ON SCREEN「笑う男」": {
+    "english_title": "The Man Who Laughs",
+    "release_year": 2018,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "웃는 남자",
+    "director": "Robert Johanson",
+    "country": "South Korea",
+    "failed": true
+  },
+  "長安のライチ": {
+    "english_title": "The Lychee Road",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "长安的荔枝",
+    "director": "Da Peng",
+    "country": "China"
+  },
+  "ヘアスプレー（1988）": {
+    "english_title": "Hairspray",
+    "release_year": 1988,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Hairspray",
+    "director": "John Waters",
+    "country": "United States"
+  },
+  "プラハの春　不屈のラジオ報道": {
+    "english_title": "Waves",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Vlny",
+    "director": "Jiří Mádl",
+    "country": "Czech Republic"
+  },
+  "ナショナル・シアター・ライブ「ウォレン夫人の職業」": {
+    "english_title": "National Theatre Live: Mrs. Warren's Profession",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mrs. Warren's Profession",
+    "director": "Dominic Cooke",
+    "country": "United Kingdom"
+  },
+  "映画　きかんしゃトーマス　サンタをさがせ！パーシーのクリスマス急行": {
+    "english_title": "Thomas & Friends: The Christmas Letter Express",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Thomas & Friends: The Christmas Letter Express",
+    "director": "Campbell Bryer",
+    "country": "United States, Canada"
+  },
+  "バーフバリ　エピック4K": {
+    "english_title": "Baahubali: The Epic",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Baahubali: The Epic",
+    "director": "S. S. Rajamouli",
+    "country": "India"
+  },
+  "ダウントン・アビー　グランドフィナーレ": {
+    "english_title": "Downton Abbey: The Grand Finale",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Downton Abbey: The Grand Finale",
+    "director": "Simon Curtis",
+    "country": "United Kingdom"
+  },
+  "GRIT バレーボール男子日本代表　栄光への始発点": {
+    "english_title": "GRIT",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "GRIT バレーボール男子日本代表 栄光への始発点",
+    "director": "Takafumi Kawakami",
+    "country": "Japan",
+    "failed": true
+  },
+  "サムシング・エクストラ！　やさしい泥棒のゆかいな逃避行": {
+    "english_title": "A Little Something Extra",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Un P'tit Truc en Plus",
+    "director": "Artus",
+    "country": "France"
+  },
+  "#RUNSEOKJIN_EP.TOUR THE MOVIE": {
+    "english_title": "#RUNSEOKJIN_EP.TOUR THE MOVIE",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "#RUNSEOKJIN_EP.TOUR THE MOVIE",
+    "director": "Jun-Soo Park",
+    "country": "South Korea"
+  },
+  "シネマ歌舞伎　歌舞伎NEXT 朧の森に棲む鬼　松也版": {
+    "english_title": "Cinema Kabuki: Lord of the Lies (Matsuya Version)",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "シネマ歌舞伎 歌舞伎NEXT 朧の森に棲む鬼 松也版",
+    "director": "Hidenori Inoue",
+    "country": "Japan",
+    "failed": true
+  },
+  "シネマ歌舞伎　鰯賣戀曳網": {
+    "english_title": "The Sardine Seller's Net of Love",
+    "release_year": 2021,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "シネマ歌舞伎 鰯賣戀曳網",
+    "director": "Kanso Fujima",
+    "country": "Japan",
+    "failed": true
+  },
+  "チャップリン": {
+    "english_title": "Chaplin: Spirit of the Tramp",
+    "release_year": 2024,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Chaplin: Spirit of the Tramp",
+    "director": "Carmen Chaplin",
+    "country": "France, Netherlands, Spain, United Kingdom"
+  },
+  "ピアス　刺心": {
+    "english_title": "Pierce",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "刺心切骨",
+    "director": "Nelicia Low",
+    "country": "Singapore"
+  },
+  "A DOCUMENTARY FILM OF LOSTAGE ひかりのまち、わたしたちの": {
+    "english_title": "A DOCUMENTARY FILM OF LOSTAGE -Hikari no Machi, Ours-",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "A DOCUMENTARY FILM OF LOSTAGE －ひかりのまち、わたしたちの－",
+    "director": "MINORxU",
+    "country": "Japan",
+    "failed": true
+  },
+  "これからの私たち All Shall Be Well": {
+    "english_title": "All Shall Be Well",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "從今以後",
+    "director": "Ray Yeung",
+    "country": "Hong Kong"
+  },
+  "モディリアーニ！": {
+    "english_title": "Modì, Three Days on the Wing of Madness",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Modì, Three Days on the Wing of Madness",
+    "director": "Johnny Depp",
+    "country": "United Kingdom, Hungary, Italy"
+  },
+  "アイアン・メイデン　フライト666": {
+    "english_title": "Iron Maiden: Flight 666",
+    "release_year": 2009,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Iron Maiden: Flight 666",
+    "director": "Sam Dunn, Scot McFadyen",
+    "country": "United Kingdom, Canada"
+  },
+  "More Real Than Dreams": {
+    "english_title": "More Real Than Dreams",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "大象體操：比夢境更真實",
+    "director": "Alulu Kuo",
+    "country": "Taiwan"
+  },
+  "最初の年　民意が生んだ、社会主義アジェンデ政権": {
+    "english_title": "The First Year",
+    "release_year": 1972,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "El primer año",
+    "director": "Patricio Guzmán",
+    "country": "Chile",
+    "failed": true
+  },
+  "ワールド・オブ・ハンス・ジマー　新次元へ": {
+    "english_title": "The World of Hans Zimmer - A New Dimension",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The World of Hans Zimmer - A New Dimension",
+    "director": "Matthias Greving",
+    "country": "Germany"
+  },
+  "チリの闘い　武器なき民の抵抗": {
+    "english_title": "The Battle of Chile",
+    "release_year": 1975,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La batalla de Chile: La lucha de un pueblo sin armas",
+    "director": "Patricio Guzmán",
+    "country": "Chile"
+  },
+  "冬冬（トントン）の夏休み": {
+    "english_title": "A Summer at Grandpa's",
+    "release_year": 1984,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "冬冬的假期",
+    "director": "Hou Hsiao-hsien",
+    "country": "Taiwan"
+  },
+  "ふたごのユーとミー　忘れられない夏": {
+    "english_title": "You & Me & Me",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ธอกับฉันกับฉัน",
+    "director": "Wanweaw Hongvivatana, Weawwan Hongvivatana",
+    "country": "Thailand"
+  },
+  "ボンヘッファー　ヒトラーを暗殺しようとした牧師": {
+    "english_title": "Bonhoeffer: Pastor. Spy. Assassin.",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Bonhoeffer: Pastor. Spy. Assassin.",
+    "director": "Todd Komarnicki",
+    "country": "USA"
+  },
+  "最後の賭け": {
+    "english_title": "The Last Bet",
+    "release_year": 1960,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "最後の賭け",
+    "director": "Kiyoshi Saeki",
+    "country": "Japan",
+    "failed": true
+  },
+  "プシュパ　君臨": {
+    "english_title": "Pushpa 2: The Rule",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Pushpa 2: The Rule",
+    "director": "Sukumar",
+    "country": "India"
+  },
+  "プシュパ　覚醒": {
+    "english_title": "Pushpa: The Rise - Part 1",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Pushpa: The Rise - Part 1",
+    "director": "Sukumar",
+    "country": "India",
+    "failed": true
+  },
+  "響け！情熱のムリダンガム": {
+    "english_title": "Madras Beats",
+    "release_year": 2019,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Sarvam Thaala Mayam",
+    "director": "Rajiv Menon",
+    "country": "India"
+  },
+  "私は憎まない": {
+    "english_title": "I Shall Not Hate",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "I Shall Not Hate",
+    "director": "Tal Barda",
+    "country": "Canada, France"
+  },
+  "自分に見合った顔": {
+    "english_title": "The Face You Deserve",
+    "release_year": 2004,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A Cara que Mereces",
+    "director": "Miguel Gomes",
+    "country": "Portugal"
+  },
+  "私たちの好きな八月": {
+    "english_title": "Our Beloved Month of August",
+    "release_year": 2008,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Aquele Querido Mês de Agosto",
+    "director": "Miguel Gomes",
+    "country": "Portugal"
+  },
+  "ジョージ・マイケル　栄光の輝きと心の闇": {
+    "english_title": "George Michael: Portrait of an Artist",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "George Michael: Portrait of an Artist",
+    "director": "Simon Napier-Bell",
+    "country": "United Kingdom"
+  },
+  "チューズ・ミー": {
+    "english_title": "Choose Me",
+    "release_year": 1984,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Choose Me",
+    "director": "Alan Rudolph",
+    "country": "United States"
+  },
+  "映画作家ストローブ＝ユイレ　あなたの微笑みはどこに隠れたの？": {
+    "english_title": "Where Does Your Hidden Smile Lie?",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Danièle Huillet, Jean-Marie Straub cinéastes : Où gît votre sourire enfoui?",
+    "director": "Pedro Costa",
+    "country": "France, Portugal"
+  },
+  "コロッサル・ユース": {
+    "english_title": "Colossal Youth",
+    "release_year": 2006,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Juventude em Marcha",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "血": {
+    "english_title": "Blood",
+    "release_year": 1989,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "血",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "ヴァンダの部屋": {
+    "english_title": "In Vanda's Room",
+    "release_year": 2000,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "No Quarto da Vanda",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "骨（1997）": {
+    "english_title": "Bones",
+    "release_year": 1997,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Ossos",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "溶岩の家": {
+    "english_title": "Down to Earth",
+    "release_year": 1994,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Casa de Lava",
+    "director": "Pedro Costa",
+    "country": "Portugal"
+  },
+  "聖者": {
+    "english_title": "The Holy Man",
+    "release_year": 1965,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Mahapurush",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "エレファント・ゴッド": {
+    "english_title": "The Elephant God",
+    "release_year": 1979,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Joi Baba Felunath",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "ビッグ・シティ": {
+    "english_title": "The Big City",
+    "release_year": 1963,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Mahanagar",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "音楽サロン": {
+    "english_title": "The Music Room",
+    "release_year": 1958,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Jalsaghar",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "小屋番　八ヶ岳に生きる　劇場版": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "臆病者": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
