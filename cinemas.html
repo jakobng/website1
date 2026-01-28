@@ -801,12 +801,12 @@
             const jsonUrl = "cinema-scrapers/data/showtimes.json";
             const tmdbBase = "https://image.tmdb.org/t/p/";
             const cinemaCategories = [
-                { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "目黒シネマ" ] },
+                { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "シアターギルド代官山", "キネカ大森", "目黒シネマ" ] },
                 { name: "新宿・早稲田 (Shinjuku & Waseda)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "シネマリス", "早稲田松竹" ] },
-                { name: "都心・東部 (Central & East - Ginza to Sumida)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京", "Stranger (ストレンジャー)" ] },
-                { name: "池袋 (Ikebukuro)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ" ] },
+                { name: "都心・東部 (Central & East - Ginza to Sumida)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "角川シネマ有楽町", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京", "東劇", "Stranger (ストレンジャー)" ] },
+                { name: "池袋 (Ikebukuro)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "シネ・リーブル池袋", "シネマハウス大塚" ] },
                 { name: "田端・北千住 (Tabata & Kita Senju)", cinemas: [ "CINEMA Chupki TABATA", "シネマブルースタジオ" ] },
-                { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
+                { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "吉祥寺オデヲン", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "シネマシティ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
                 { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
             ];
             const cinemaRegions = {};
@@ -865,7 +865,15 @@
                 "横浜シネマリン": "Yokohama Cinemarine",
                 "Cinema Neko (シネマネコ)": "Cinema Neko",
                 "YEBISU GARDEN CINEMA": "Yebisu Garden Cinema",
-                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "Kadokawa Cinema Yurakucho"
+                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "Kadokawa Cinema Yurakucho",
+                "角川シネマ有楽町": "Kadokawa Cinema Yurakucho",
+                "キネカ大森": "Kineca Omori",
+                "シアターギルド代官山": "Theater Guild Daikanyama",
+                "シネマシティ": "Cinema City",
+                "シネマハウス大塚": "Cinema House Otsuka",
+                "シネ・リーブル池袋": "Cine Libre Ikebukuro",
+                "吉祥寺オデヲン": "Kichijoji Odeon",
+                "東劇": "Togeki"
             };
             const regionNames = {
                 "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)": { ja: "渋谷・恵比寿・目黒", en: "Shibuya, Ebisu & Meguro" },
