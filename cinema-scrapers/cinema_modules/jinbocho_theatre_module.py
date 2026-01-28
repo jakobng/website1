@@ -9,12 +9,184 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.shogakukan.co.jp/jinbocho-theater/program/"
+FULLWIDTH_DIGITS = str.maketrans("０１２３４５６７８９", "0123456789")
+CIRCLED_DIGITS = {
+    "①": 1,
+    "②": 2,
+    "③": 3,
+    "④": 4,
+    "⑤": 5,
+    "⑥": 6,
+    "⑦": 7,
+    "⑧": 8,
+    "⑨": 9,
+    "⑩": 10,
+    "⑪": 11,
+    "⑫": 12,
+    "⑬": 13,
+    "⑭": 14,
+    "⑮": 15,
+    "⑯": 16,
+    "⑰": 17,
+    "⑱": 18,
+    "⑲": 19,
+    "⑳": 20,
+}
+CIRCLED_DIGIT_PATTERN = "".join(CIRCLED_DIGITS.keys())
 CINEMA_NAME = "神保町シアター"
 
 
 def clean_text(text: str) -> str:
     """Normalize whitespace."""
     return re.sub(r"\s+", " ", text).strip()
+
+
+def _normalize_number_token(token: str) -> Optional[int]:
+    if not token:
+        return None
+    if token in CIRCLED_DIGITS:
+        return CIRCLED_DIGITS[token]
+    normalized = token.translate(FULLWIDTH_DIGITS)
+    if normalized.isdigit():
+        return int(normalized)
+    return None
+
+
+def _extract_film_number_and_title(raw_title: str) -> tuple[Optional[int], str]:
+    title = clean_text(raw_title)
+    if not title:
+        return None, ""
+
+    first_char = title[0]
+    if first_char in CIRCLED_DIGITS:
+        number = CIRCLED_DIGITS[first_char]
+        cleaned = title[1:].lstrip(" .．)）")
+        return number, cleaned
+
+    m = re.match(r"^\s*([0-9０-９]{1,2})[\.．)）]?\s*(.*)$", title)
+    if m:
+        number = _normalize_number_token(m.group(1))
+        cleaned = m.group(2).strip()
+        return number, cleaned
+
+    return None, title
+
+
+def _extract_program_year(text: str) -> Optional[int]:
+    if not text:
+        return None
+    if m := re.search(r"(19|20)\d{2}", text):
+        return int(m.group(0))
+    return None
+
+
+def _format_iso_date(year: Optional[int], month: int, day: int) -> str:
+    if not year:
+        return f"{month}月{day}日"
+    return f"{year:04d}-{month:02d}-{day:02d}"
+
+
+def _parse_dates_from_line(
+    line: str,
+    current_month: Optional[int],
+) -> tuple[list[tuple[int, int]], Optional[int], Optional[int]]:
+    dates: list[tuple[int, int]] = []
+    line_year = _extract_program_year(line)
+
+    for m in re.finditer(r"(\d{1,2})\s*月\s*(\d{1,2})\s*日", line):
+        month = int(m.group(1))
+        day = int(m.group(2))
+        dates.append((month, day))
+        current_month = month
+
+    if not dates:
+        for m in re.finditer(r"(\d{1,2})/(\d{1,2})", line):
+            month = int(m.group(1))
+            day = int(m.group(2))
+            dates.append((month, day))
+            current_month = month
+
+    if not dates and current_month:
+        for m in re.finditer(r"(\d{1,2})\s*日", line):
+            day = int(m.group(1))
+            dates.append((current_month, day))
+
+    return dates, current_month, line_year
+
+
+def _parse_showings_from_lines(lines: List[str], default_year: Optional[int]) -> List[Dict[str, str]]:
+    showings: List[Dict[str, str]] = []
+    current_month: Optional[int] = None
+
+    for line in lines:
+        line = clean_text(line)
+        if not line or ":" not in line:
+            continue
+
+        times = re.findall(r"\d{1,2}:\d{2}", line)
+        if not times:
+            continue
+
+        dates, current_month, line_year = _parse_dates_from_line(line, current_month)
+        if not dates:
+            continue
+
+        use_year = line_year or default_year
+        for month, day in dates:
+            date_text = _format_iso_date(use_year, month, day)
+            for show_time in times:
+                showings.append({"date_text": date_text, "showtime": show_time})
+
+    return showings
+
+
+def _parse_schedule_map_from_lines(
+    lines: List[str],
+    default_year: Optional[int],
+) -> Dict[int, List[Dict[str, str]]]:
+    schedule_map: Dict[int, List[Dict[str, str]]] = {}
+    current_month: Optional[int] = None
+
+    for line in lines:
+        line = clean_text(line)
+        if not line or ":" not in line:
+            continue
+
+        dates, current_month, line_year = _parse_dates_from_line(line, current_month)
+        if not dates:
+            continue
+
+        pairs = set()
+        time_first = re.findall(
+            rf"(\d{{1,2}}:\d{{2}})\s*[（(]?\s*([0-9０-９]|[{CIRCLED_DIGIT_PATTERN}])\s*[)）]?",
+            line,
+        )
+        for time_text, number_text in time_first:
+            film_number = _normalize_number_token(number_text)
+            if film_number:
+                pairs.add((film_number, time_text))
+
+        number_first = re.findall(
+            rf"([0-9０-９]|[{CIRCLED_DIGIT_PATTERN}])\s*[)）]?\s*(\d{{1,2}}:\d{{2}})",
+            line,
+        )
+        for number_text, time_text in number_first:
+            film_number = _normalize_number_token(number_text)
+            if film_number:
+                pairs.add((film_number, time_text))
+
+        if not pairs:
+            continue
+
+        use_year = line_year or default_year
+        for month, day in dates:
+            date_text = _format_iso_date(use_year, month, day)
+            for film_number, time_text in pairs:
+                schedule_map.setdefault(film_number, []).append(
+                    {"date_text": date_text, "showtime": time_text}
+                )
+
+    return schedule_map
 
 
 def fetch_soup(url: str, *, encoding: str = "utf-8") -> Optional[BeautifulSoup]:
@@ -92,6 +264,9 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
     # Overall period text, e.g. "2025年11月1日（土）～28日（金）"
     schedule_tag = soup.select_one("p.schedule")
     program_period_text = clean_text(schedule_tag.get_text()) if schedule_tag else ""
+    program_year = _extract_program_year(program_period_text) or _extract_program_year(
+        soup.get_text(" ", strip=True)
+    )
 
     # Find the detailed list page (e.g. fujimura_list.html)
     list_href = None
@@ -109,14 +284,19 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
     if list_soup is None:
         return results
 
+    schedule_lines = [
+        line for line in soup.get_text("\n").splitlines() if ":" in line
+    ]
+    schedule_map = _parse_schedule_map_from_lines(schedule_lines, program_year)
+
     # Each film block
     for film in list_soup.select("div.data2_film"):
         # --- Basic metadata ---
         h4 = film.select_one(".data2_title h4")
         movie_title = ""
+        film_number = None
         if h4:
-            # Remove leading "1." etc.
-            movie_title = clean_text(re.sub(r"^\d+\.\s*", "", h4.get_text()))
+            film_number, movie_title = _extract_film_number_and_title(h4.get_text())
 
         text_blocks = [
             clean_text(p.get_text(" ", strip=True)) for p in film.select(".data2_text")
@@ -135,22 +315,13 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
         showings: List[Dict[str, Optional[str]]] = []
 
         if sche_tag:
-            for line in sche_tag.get_text("\n").splitlines():
-                line = clean_text(line)
-                if not line or not re.search(r"\d", line):
-                    continue
-                # Example lines:
-                #   11月1日（土）11:00
-                #   11月3日（祝・月）15:30
-                m = re.match(r"(\d+月\d+日[^\d]*)(\d{1,2}:\d{2})", line)
-                if m:
-                    show_date, show_time = m.groups()
-                    showings.append(
-                        {
-                            "date_text": show_date,
-                            "showtime": show_time,
-                        }
-                    )
+            showings = _parse_showings_from_lines(
+                sche_tag.get_text("\n").splitlines(),
+                program_year,
+            )
+
+        if not showings and film_number and film_number in schedule_map:
+            showings = list(schedule_map.get(film_number, []))
 
         # If for some reason no per-line showings parsed, fall back to program period
         if not showings:

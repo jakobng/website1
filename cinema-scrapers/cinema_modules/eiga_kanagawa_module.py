@@ -191,20 +191,32 @@ def _extract_movie_details(
 
 
 def _extract_showtimes_for_date(section: BeautifulSoup, date_key: str) -> List[str]:
-    table = section.select_one("table.weekly-schedule")
-    if not table:
+    tables = section.select("table.weekly-schedule")
+    if not tables:
         return []
-    cell = table.select_one(f'td[data-date="{date_key}"]')
-    if not cell:
-        return []
-    times = []
-    for span in cell.find_all("span"):
-        text = span.get_text(strip=True)
-        if re.match(r"^\d{1,2}:\d{2}$", text):
-            times.append(_normalize_showtime(text))
-    if not times:
-        text = cell.get_text(" ", strip=True)
-        times = [_normalize_showtime(t) for t in re.findall(r"\b\d{1,2}:\d{2}\b", text)]
+    times: List[str] = []
+    for table in tables:
+        cells = table.select(f'td[data-date="{date_key}"]')
+        if not cells:
+            continue
+        for cell in cells:
+            cell_times: List[str] = []
+            for span in cell.find_all("span"):
+                text = span.get_text(strip=True)
+                if re.match(r"^\d{1,2}:\d{2}$", text):
+                    cell_times.append(_normalize_showtime(text))
+            text = cell.get_text(" ", strip=True)
+            range_pat = re.compile(r"(\d{1,2}:\d{2})\s*[~\u301c\uFF5E\-–—]\s*(\d{1,2}:\d{2})")
+            range_ends = {_normalize_showtime(end) for _, end in range_pat.findall(text)}
+            for t in re.findall(r"\b\d{1,2}:\d{2}\b", text):
+                normalized = _normalize_showtime(t)
+                if normalized in range_ends:
+                    continue
+                if normalized not in cell_times:
+                    cell_times.append(normalized)
+            for showtime in cell_times:
+                if showtime not in times:
+                    times.append(showtime)
     return times
 
 
