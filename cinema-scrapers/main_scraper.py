@@ -20,6 +20,47 @@ from bs4 import BeautifulSoup
 
 # --- All cinema scraper modules ---
 from cinema_modules import eiga_tokyo_module, eiga_kanagawa_module
+from cinema_modules import (
+    bunkamura_module,
+    bluestudio_module,
+    cine_switch_ginza_module,
+    cinemalice_module,
+    eurospace_module,
+    human_shibuya_module,
+    human_yurakucho_module,
+    image_forum_module,
+    ks_cinema_module,
+    laputa_asagaya_module,
+    meguro_cinema_module,
+    musashino_kan_module,
+    nfaj_calendar_module as nfaj_module,
+    polepole_module,
+    shin_bungeiza_module,
+    shimotakaido_module,
+    stranger_module,
+    theatre_shinjuku_module,
+    waseda_shochiku_module,
+    cinemart_shinjuku_module,
+    cine_quinto_module,
+    yebisu_garden_module,
+    k2_cinema_module,
+    kino_cinema_module,
+    cinema_rosa_module,
+    chupki_module,
+    uplink_kichijoji_module,
+    tollywood_module,
+    morc_asagaya_module,
+    jinbocho_theatre_module,
+    cinema_vera_module,
+    institut_francais_module,
+    jack_and_betty_module,
+    athenee_francais_module,
+    white_cine_quinto_module,
+    cinema_novecento_module,
+    yokohama_cinemarine_module,
+    kadokawa_yurakucho_module,
+    cinema_neko_module,
+)
 
 # --- Configuration ---
 DATA_DIR = "data"
@@ -258,6 +299,94 @@ def _normalize_title_for_match(title: str) -> str:
     cleaned = re.sub(r"[\s:?/|\\_???????-]+", " ", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned
+
+EIGA_PREFERRED_FIELDS = (
+    "movie_title",
+    "movie_title_jp",
+    "movie_title_en",
+    "movie_title_original",
+    "director",
+    "director_jp",
+    "director_en",
+    "year",
+    "country",
+    "runtime_min",
+    "synopsis",
+    "synopsis_en",
+    "detail_page_url",
+    "image_url",
+    "tags",
+    "eiga_movie_id",
+    "eiga_theater_id",
+)
+
+def _build_film_key(item: dict) -> str:
+    for field in ("movie_title", "movie_title_jp", "movie_title_en", "movie_title_original"):
+        value = item.get(field)
+        if value:
+            key = _normalize_title_for_match(value)
+            if key:
+                return key
+    return ""
+
+def _build_listing_key(item: dict, film_key: str) -> tuple:
+    title_key = film_key or _normalize_title_for_match(item.get("movie_title", ""))
+    if not title_key:
+        title_key = item.get("movie_title", "")
+    return (
+        item.get("cinema_name", ""),
+        item.get("date_text", ""),
+        item.get("showtime", ""),
+        title_key,
+    )
+
+def _build_eiga_film_index(listings: list) -> dict:
+    film_index = {}
+    for item in listings:
+        film_key = _build_film_key(item)
+        if not film_key:
+            continue
+        if film_key not in film_index:
+            film_index[film_key] = {}
+        meta = film_index[film_key]
+        for field in EIGA_PREFERRED_FIELDS:
+            value = item.get(field)
+            if value and not meta.get(field):
+                meta[field] = value
+    return film_index
+
+def _apply_eiga_metadata(target: dict, eiga_meta: dict) -> None:
+    for field in EIGA_PREFERRED_FIELDS:
+        value = eiga_meta.get(field)
+        if value:
+            target[field] = value
+
+def _merge_eiga_with_legacy(eiga_listings: list, legacy_listings: list) -> list:
+    film_index = _build_eiga_film_index(eiga_listings)
+    merged = []
+    seen = set()
+
+    for item in eiga_listings:
+        film_key = _build_film_key(item)
+        key = _build_listing_key(item, film_key)
+        if key in seen:
+            continue
+        merged.append(item)
+        seen.add(key)
+
+    for item in legacy_listings:
+        film_key = _build_film_key(item)
+        merged_item = item
+        if film_key and film_key in film_index:
+            merged_item = dict(item)
+            _apply_eiga_metadata(merged_item, film_index[film_key])
+        key = _build_listing_key(merged_item, film_key)
+        if key in seen:
+            continue
+        merged.append(merged_item)
+        seen.add(key)
+
+    return merged
 
 def _title_similarity(a: str, b: str) -> float:
     if not a or not b:
@@ -1757,25 +1886,72 @@ def main():
             save_synopsis_translation_cache(synopsis_translation_cache)
         return
 
-    listings = []
+    eiga_listings = []
+    legacy_listings = []
 
     # 1. DEFINE SCRAPERS TO RUN
     # Format: (Display Name, Function Object, Optional Normalizer)
-    scrapers_to_run = [
+    eiga_scrapers_to_run = [
         ("Eiga.com Tokyo", eiga_tokyo_module.scrape_eiga_tokyo, None),
         ("Eiga.com Kanagawa", eiga_kanagawa_module.scrape_eiga_kanagawa, None),
     ]
 
-    # 2. RUN THEM ONE BY ONE
+    legacy_scrapers_to_run = [
+        ("Bunkamura", bunkamura_module.scrape_bunkamura, None),
+        ("K's Cinema", ks_cinema_module.scrape_ks_cinema, None),
+        ("Shin-Bungeiza", shin_bungeiza_module.scrape_shin_bungeiza, None),
+        ("Shimotakaido Cinema", shimotakaido_module.scrape_shimotakaido, None),
+        ("Stranger", stranger_module.scrape_stranger, None),
+        ("Meguro Cinema", meguro_cinema_module.scrape_meguro_cinema, None),
+        ("Image Forum", image_forum_module.scrape, None),
+        ("Theatre Shinjuku", theatre_shinjuku_module.scrape_theatre_shinjuku, None),
+        ("Pole Pole Higashi-Nakano", polepole_module.scrape_polepole, None),
+        ("Cinema Blue Studio", bluestudio_module.scrape_bluestudio, None),
+        ("Human Trust Cinema Shibuya", human_shibuya_module.scrape_human_shibuya, None),
+        ("Human Trust Cinema Yurakucho", human_yurakucho_module.scrape_human_yurakucho, None),
+        ("Laputa Asagaya", laputa_asagaya_module.scrape_laputa_asagaya, None),
+        ("Shinjuku Musashino-kan", musashino_kan_module.scrape_musashino_kan, None),
+        ("Waseda Shochiku", waseda_shochiku_module.scrape_waseda_shochiku, None),
+        ("National Film Archive", nfaj_module.scrape_nfaj_calendar, None),
+        ("Cinemart Shinjuku", cinemart_shinjuku_module.scrape_cinemart_shinjuku, None),
+        ("Cine Quinto", cine_quinto_module.scrape_cine_quinto, None),
+        ("Yebisu Garden Cinema", yebisu_garden_module.scrape_yebisu_garden_cinema, None),
+        ("K2 Cinema", k2_cinema_module.scrape_k2_cinema, None),
+        ("Kino Cinema", kino_cinema_module.scrape_kino_cinema, None),
+        ("Cinema Rosa", cinema_rosa_module.scrape_cinema_rosa, None),
+        ("Chupki", chupki_module.scrape_chupki, None),
+        ("Uplink Kichijoji", uplink_kichijoji_module.scrape_uplink_kichijoji, None),
+        ("Tollywood", tollywood_module.scrape_tollywood, None),
+        ("Morc Asagaya", morc_asagaya_module.fetch_morc_asagaya_showings, None),
+        ("Eurospace", eurospace_module.scrape, _normalize_eurospace_schema),
+        ("CineMalice", cinemalice_module.scrape_cinemalice, None),
+        ("Cine Switch Ginza", cine_switch_ginza_module.scrape_cine_switch_ginza, None),
+        ("Jimbocho Theatre", jinbocho_theatre_module.scrape_jinbocho, None),
+        ("Cinema Vera Shibuya", cinema_vera_module.scrape_cinema_vera, None),
+        ("Institut Francais Tokyo", institut_francais_module.scrape_institut_francais, None),
+        ("Jack and Betty Yokohama", jack_and_betty_module.scrape_jack_and_betty, None),
+        ("Cinema Novecento", cinema_novecento_module.scrape_cinema_novecento, None),
+        ("Athenee Francais", athenee_francais_module.scrape_athenee_francais, None),
+        ("White Cine Quinto", white_cine_quinto_module.scrape_white_cine_quinto, None),
+        ("Yokohama Cinemarine", yokohama_cinemarine_module.scrape_yokohama_cinemarine, None),
+        ("Kadokawa Cinema Yurakucho", kadokawa_yurakucho_module.scrape_kadokawa_yurakucho, None),
+        ("Cinema Neko Ome", cinema_neko_module.scrape_cinema_neko, None),
+    ]
 
-    # 2. RUN SCRAPERS
-    for item in scrapers_to_run:
-        # Unpack based on length (handled safely)
+    # 2. RUN THEM ONE BY ONE
+    for item in eiga_scrapers_to_run:
         name = item[0]
         func = item[1]
         norm = item[2] if len(item) > 2 else None
-        
-        _run_scraper(name, func, listings, normalize_func=norm)
+        _run_scraper(name, func, eiga_listings, normalize_func=norm)
+
+    for item in legacy_scrapers_to_run:
+        name = item[0]
+        func = item[1]
+        norm = item[2] if len(item) > 2 else None
+        _run_scraper(name, func, legacy_listings, normalize_func=norm)
+
+    listings = _merge_eiga_with_legacy(eiga_listings, legacy_listings)
 
     # 3. ENRICHMENT
     print(f"\nCollected a total of {len(listings)} showings.")
