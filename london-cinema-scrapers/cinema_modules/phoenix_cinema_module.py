@@ -164,7 +164,7 @@ def _extract_sitemap_locs(xml_text: str) -> List[str]:
         root = ET.fromstring(xml_text)
         return [loc.text.strip() for loc in root.iter() if loc.tag.endswith("loc") and loc.text]
     except ET.ParseError:
-        soup = BeautifulSoup(xml_text, "xml")
+        soup = BeautifulSoup(xml_text, "html.parser")
         return [loc.get_text(strip=True) for loc in soup.find_all("loc")]
 
 
