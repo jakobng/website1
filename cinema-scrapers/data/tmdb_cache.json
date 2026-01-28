@@ -9501,7 +9501,7 @@
       "Mystery"
     ],
     "runtime": 96,
-    "vote_average": 8.002,
+    "vote_average": 8.003,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -9571,7 +9571,7 @@
       "Mystery"
     ],
     "runtime": 71,
-    "vote_average": 7.7,
+    "vote_average": 7.728,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -9678,7 +9678,7 @@
       "Action"
     ],
     "runtime": 116,
-    "vote_average": 6.292,
+    "vote_average": 6.338,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -9777,7 +9777,7 @@
       "Drama"
     ],
     "runtime": 94,
-    "vote_average": 7.7,
+    "vote_average": 7.702,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -30698,6 +30698,2503 @@
       {
         "iso_3166_1": "GB",
         "name": "United Kingdom"
+      }
+    ]
+  },
+  "ストロベリームーン 余命半年の恋": {
+    "tmdb_id": 1502700,
+    "tmdb_title_jp": "ストロベリームーン",
+    "tmdb_title_en": "Strawberry Moon",
+    "tmdb_title_original": "ストロベリームーン",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Being sick since childhood, Moe has spent most of her life at home, without school or friends. After being given just six months to live, she decides to spend her final days differently—by attending high school. On the very first day, she boldly confesses her feelings to her classmate Hinata. The two start dating and experience their first love. Then, on Moe’s birthday, they plan to watch the “Strawberry Moon” together – a full moon said to bind lovers forever. But after that night, she disappears without a word…",
+    "poster_path": "/lJC0r26tZM5J4P32PRJhtTNkhtp.jpg",
+    "backdrop_path": "/czT3vIokuddLvwLGv2o4wjjZ7p6.jpg",
+    "release_date": "2025-10-17",
+    "director": "酒井麻衣",
+    "director_jp": "酒井麻衣",
+    "director_en": "Mai Sakai",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 120,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "脱出の最中": {
+    "tmdb_id": 1599751,
+    "tmdb_title_jp": "脱出の最中",
+    "tmdb_title_en": "In the Midst of Escape",
+    "tmdb_title_original": "脱出の最中",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/upKiRyDESePcCQV0Ff2qFS3Haze.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-29",
+    "director": "黒川幸則",
+    "director_jp": "黒川幸則",
+    "director_en": "Yukinori Kurokawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1599751": {
+    "tmdb_id": 1599751,
+    "tmdb_title_jp": "脱出の最中",
+    "tmdb_title_en": "In the Midst of Escape",
+    "tmdb_title_original": "脱出の最中",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/upKiRyDESePcCQV0Ff2qFS3Haze.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-29",
+    "director": "黒川幸則",
+    "director_jp": "黒川幸則",
+    "director_en": "Yukinori Kurokawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "アルトマン×ルドルフ特集 まとめて見られるオールナイト！": null,
+  "郊外の鳥たち": {
+    "tmdb_id": 537867,
+    "tmdb_title_jp": "郊区的鸟",
+    "tmdb_title_en": "Suburban Birds",
+    "tmdb_title_original": "郊区的鸟",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "Hao is part of a team of young engineers called in to investigate a series of craters that have opened up on the edge of the city. Meanwhile, a younger boy, also named Hao, spends long afternoons playing with friends and making mischief until one-by-one, his playmates start to disappear. As these parallel stories unfold, the connections between them proliferate and grow stranger.",
+    "poster_path": "/oWiuPvTHk2J2Grf25Cy3esIV9k0.jpg",
+    "backdrop_path": "/nsvaFZJiZtylGX21gGJEBVFlKUQ.jpg",
+    "release_date": "2019-08-30",
+    "director": "仇晟 ",
+    "director_jp": "仇晟 ",
+    "director_en": "Qiu Sheng",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "凱里ブルース": {
+    "tmdb_id": 362178,
+    "tmdb_title_jp": "凱里ブルース",
+    "tmdb_title_en": "Kaili Blues",
+    "tmdb_title_original": "路边野餐",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "Chen Sheng goes off in search of his nephew who has been abandoned by his father. Along the way, he encounters numerous people from his past and also those from his future.",
+    "poster_path": "/jYcor5JeWFImaWtcURgAQY3wb6y.jpg",
+    "backdrop_path": "/b08ydxzpqR4WDSgnkLBSp4hfB3v.jpg",
+    "release_date": "2016-03-23",
+    "director": "毕赣",
+    "director_jp": "毕赣",
+    "director_en": "Bi Gan",
+    "genres": [
+      "ドラマ",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery"
+    ],
+    "runtime": 113,
+    "vote_average": 7.042,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:362178": {
+    "tmdb_id": 362178,
+    "tmdb_title_jp": "凱里ブルース",
+    "tmdb_title_en": "Kaili Blues",
+    "tmdb_title_original": "路边野餐",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "Chen Sheng goes off in search of his nephew who has been abandoned by his father. Along the way, he encounters numerous people from his past and also those from his future.",
+    "poster_path": "/jYcor5JeWFImaWtcURgAQY3wb6y.jpg",
+    "backdrop_path": "/b08ydxzpqR4WDSgnkLBSp4hfB3v.jpg",
+    "release_date": "2016-03-23",
+    "director": "毕赣",
+    "director_jp": "毕赣",
+    "director_en": "Bi Gan",
+    "genres": [
+      "ドラマ",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery"
+    ],
+    "runtime": 113,
+    "vote_average": 7.042,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "ロングデイズ・ジャーニー この夜の涯てへ": {
+    "tmdb_id": 486898,
+    "tmdb_title_jp": "ロングデイズ・ジャーニー この夜の涯てへ",
+    "tmdb_title_en": "Long Day's Journey Into Night",
+    "tmdb_title_original": "地球最后的夜晚",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "Luo Hongwu returns to Kaili, the hometown from which he fled many years ago. He begins the search for the woman he loved and whom he has never been able to forget.",
+    "poster_path": "/aNiktNRbwIHVINB4DTJjWFAObHo.jpg",
+    "backdrop_path": "/zJDaoc3HIHIgIOiY60NxqZUdXcp.jpg",
+    "release_date": "2018-12-31",
+    "director": "毕赣",
+    "director_jp": "毕赣",
+    "director_en": "Bi Gan",
+    "genres": [
+      "ドラマ",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery"
+    ],
+    "runtime": 138,
+    "vote_average": 6.954,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "tmdb:486898": {
+    "tmdb_id": 486898,
+    "tmdb_title_jp": "ロングデイズ・ジャーニー この夜の涯てへ",
+    "tmdb_title_en": "Long Day's Journey Into Night",
+    "tmdb_title_original": "地球最后的夜晚",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "Luo Hongwu returns to Kaili, the hometown from which he fled many years ago. He begins the search for the woman he loved and whom he has never been able to forget.",
+    "poster_path": "/aNiktNRbwIHVINB4DTJjWFAObHo.jpg",
+    "backdrop_path": "/zJDaoc3HIHIgIOiY60NxqZUdXcp.jpg",
+    "release_date": "2018-12-31",
+    "director": "毕赣",
+    "director_jp": "毕赣",
+    "director_en": "Bi Gan",
+    "genres": [
+      "ドラマ",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery"
+    ],
+    "runtime": 138,
+    "vote_average": 6.954,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "Bi Gan A SHORT STORY ビー・ガン／ショート・ストーリー": {
+    "tmdb_id": 1156230,
+    "tmdb_title_jp": "短片故事",
+    "tmdb_title_en": "Short Story",
+    "tmdb_title_original": "短片故事",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "The husband dreams that his wife leaves him, while he tries to save the relationship. Once awake and sleepless, he finds himself faced with their unchanged life, without understanding whether what has just happened is reality or just a dream.",
+    "poster_path": "/rk2q6KQjuplMeWQQuCSGgFpzRMn.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-08-30",
+    "director": "Wu Lang",
+    "director_jp": "Wu Lang",
+    "director_en": "Wu Lang",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 12,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "太陽 デジタル・リマスター版": null,
+  "牡牛座 レーニンの肖像": {
+    "tmdb_id": 844547,
+    "tmdb_title_jp": "Taurus",
+    "tmdb_title_en": "Good News",
+    "tmdb_title_original": "Taurus",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A rising but troubled musician searches for the inspiration to record one last song, pushing himself deep into the void.",
+    "poster_path": "/bWH1s160oYX1vybg3zPnL4ygMpw.jpg",
+    "backdrop_path": "/pVgjxcKmplPkzNqsQMIMv1b8VMB.jpg",
+    "release_date": "2022-11-18",
+    "director": "Tim Sutton",
+    "director_jp": "Tim Sutton",
+    "director_en": "Tim Sutton",
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music"
+    ],
+    "runtime": 98,
+    "vote_average": 5.794,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "モレク神": {
+    "tmdb_id": 959558,
+    "tmdb_title_jp": "Moloch",
+    "tmdb_title_en": "Moloch",
+    "tmdb_title_original": "Moloch",
+    "tmdb_original_language": "nl",
+    "overview": "",
+    "overview_en": "Betriek lives at the edge of a peat bog in the North of the Netherlands. When she and her family are attacked by a random stranger one night, Betriek sets out to find an explanation. The more she digs, the more she becomes convinced that she is being hunted by something ancient.",
+    "poster_path": "/3jVzYOnylmvo7ZnGerjfoRj2wFz.jpg",
+    "backdrop_path": "/or5e8vxfd9Nc0rrLHKjD3YFhhmg.jpg",
+    "release_date": "2022-05-19",
+    "director": "Nico van den Brink",
+    "director_jp": "Nico van den Brink",
+    "director_en": "Nico van den Brink",
+    "genres": [
+      "ホラー",
+      "謎",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "runtime": 99,
+    "vote_average": 5.997,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "象は静かに座っている": {
+    "tmdb_id": 499556,
+    "tmdb_title_jp": "大象席地而坐",
+    "tmdb_title_en": "An Elephant Sitting Still",
+    "tmdb_title_original": "大象席地而坐",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "In the northern Chinese city of Manzhouli, they say there is an elephant that simply sits and ignores the world. Manzhouli becomes an obsession for the protagonists of this film, a longed-for escape from the downward spiral in which they find themselves.",
+    "poster_path": "/dlQ7GsNeKPHIWF744igVqm4LipI.jpg",
+    "backdrop_path": "/5b1r0b77BovGp4ejUsYsx3arQoe.jpg",
+    "release_date": "2018-12-14",
+    "director": "胡波",
+    "director_jp": "胡波",
+    "director_en": "Hu Bo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 230,
+    "vote_average": 7.706,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "独裁者たちのとき": {
+    "tmdb_id": 981462,
+    "tmdb_title_jp": "Cuento de hadas",
+    "tmdb_title_en": "Fairytale",
+    "tmdb_title_original": "Cuento de hadas",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "Two fairy godmothers struggle to make their godchildren not fight and love each other, but a third person intervenes and worsens the situation.",
+    "poster_path": "/jBj88jZ4pGdTo5mKbskkUviki7G.jpg",
+    "backdrop_path": null,
+    "release_date": "1951-01-01",
+    "director": "Edgar Neville",
+    "director_jp": "Edgar Neville",
+    "director_en": "Edgar Neville",
+    "genres": [
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy"
+    ],
+    "runtime": 81,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "チェチェンへ アレクサンドラの旅": {
+    "tmdb_id": 73030,
+    "tmdb_title_jp": "Александра",
+    "tmdb_title_en": "Aleksandra",
+    "tmdb_title_original": "Александра",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "Саша — фельдшер Скорой помощи. Вся ее жизнь подчинена работе и заботе о муже Романе. Саша и не думает о развлечениях, встречах с подругами и покупках. Все тяжело заработанные деньги она тратит на любимого супруга, а в выходные пишет за него курсовые. Ведь Роман учится в институте, правда, в основном он весело проводит время с друзьями. И вот наступит момент, когда Роману станет скучно с домашней Сашей, и главной героине придется начинать жизнь с «чистого листа» — без мужа и для себя.",
+    "poster_path": "/diFwl7BlItwz6isY5WfLCiAakU0.jpg",
+    "backdrop_path": null,
+    "release_date": "2010-06-06",
+    "director": "Yuliya Krasnova",
+    "director_jp": "Yuliya Krasnova",
+    "director_en": "Yuliya Krasnova",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "ペテルブルグ・エレジー＋ヒトラーのためのソナタ": null,
+  "西湖畔(せいこはん)に生きる": {
+    "tmdb_id": 925293,
+    "tmdb_title_jp": "西湖畔(せいこはん)に生きる",
+    "tmdb_title_en": "Dwelling by the West Lake",
+    "tmdb_title_original": "草木人间",
+    "tmdb_original_language": "zh",
+    "overview": "山水画にインスパイアされたデビュー作「春江水暖～しゅんこうすいだん」で市井の人々の人生の機微を描いたグー・シャオガン（顧暁剛）監督の山水映画第2弾。中国緑茶の産地として有名な西湖の沿岸に暮らす母親と息子の関係を軸に、経済環境の変化に揺れる家族の姿を美しい風景の中に描き出す。グー監督のオリジナルストーリーながら、釈迦の十大弟子のひとり・目蓮が地獄に堕ちた母親を救う物語「目蓮救母」の現代版ともいえる。",
+    "overview_en": "A mother and her son living amid economic turbulence in the beautiful Chinese green tea-farming landscape.",
+    "poster_path": "/xZ98t7DC9a3dZujfkgF5csqiw3A.jpg",
+    "backdrop_path": "/sFeFWK3SI662yC2sx4clmWttWVj.jpg",
+    "release_date": "2024-04-03",
+    "director": "顾晓刚",
+    "director_jp": "顾晓刚",
+    "director_en": "Gu Xiaogang",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 5.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:925293": {
+    "tmdb_id": 925293,
+    "tmdb_title_jp": "西湖畔(せいこはん)に生きる",
+    "tmdb_title_en": "Dwelling by the West Lake",
+    "tmdb_title_original": "草木人间",
+    "tmdb_original_language": "zh",
+    "overview": "山水画にインスパイアされたデビュー作「春江水暖～しゅんこうすいだん」で市井の人々の人生の機微を描いたグー・シャオガン（顧暁剛）監督の山水映画第2弾。中国緑茶の産地として有名な西湖の沿岸に暮らす母親と息子の関係を軸に、経済環境の変化に揺れる家族の姿を美しい風景の中に描き出す。グー監督のオリジナルストーリーながら、釈迦の十大弟子のひとり・目蓮が地獄に堕ちた母親を救う物語「目蓮救母」の現代版ともいえる。",
+    "overview_en": "A mother and her son living amid economic turbulence in the beautiful Chinese green tea-farming landscape.",
+    "poster_path": "/xZ98t7DC9a3dZujfkgF5csqiw3A.jpg",
+    "backdrop_path": "/sFeFWK3SI662yC2sx4clmWttWVj.jpg",
+    "release_date": "2024-04-03",
+    "director": "顾晓刚",
+    "director_jp": "顾晓刚",
+    "director_en": "Gu Xiaogang",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 5.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "春江水暖〜しゅんこうすいだん": {
+    "tmdb_id": 596881,
+    "tmdb_title_jp": "春江水暖～しゅんこうすいだん",
+    "tmdb_title_en": "Dwelling in the Fuchun Mountains",
+    "tmdb_title_original": "春江水暖",
+    "tmdb_original_language": "zh",
+    "overview": "再開発のただ中にある杭州市の富陽地区。顧家の家長である年老いた母の誕生日を祝うため、4人の息子や親戚たちが集まる。しかし祝宴の最中に母が脳卒中で倒れ、命は取り留めたものの認知症が進み、介護が必要になってしまう。飲食店を営む長男、漁師の次男、ダウン症の息子を男手ひとつで育てる三男、気ままな独身生活を楽しむ四男ら、息子たちは思いがけず、それぞれの人生に直面することになる。第72回カンヌ国際映画祭批評家週間のクロージング作品。",
+    "overview_en": "In the Chinese town of Fuyang, four brothers go about their day-to-day lives, their destinies shaped by love and challenges.",
+    "poster_path": "/nnjXQ9TUjxRHO00tCAtbPloncHN.jpg",
+    "backdrop_path": "/AsDanXphy2uvK227rIZP1BiUWEr.jpg",
+    "release_date": "2020-01-01",
+    "director": "顾晓刚",
+    "director_jp": "顾晓刚",
+    "director_en": "Gu Xiaogang",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 150,
+    "vote_average": 7.371,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:596881": {
+    "tmdb_id": 596881,
+    "tmdb_title_jp": "春江水暖～しゅんこうすいだん",
+    "tmdb_title_en": "Dwelling in the Fuchun Mountains",
+    "tmdb_title_original": "春江水暖",
+    "tmdb_original_language": "zh",
+    "overview": "再開発のただ中にある杭州市の富陽地区。顧家の家長である年老いた母の誕生日を祝うため、4人の息子や親戚たちが集まる。しかし祝宴の最中に母が脳卒中で倒れ、命は取り留めたものの認知症が進み、介護が必要になってしまう。飲食店を営む長男、漁師の次男、ダウン症の息子を男手ひとつで育てる三男、気ままな独身生活を楽しむ四男ら、息子たちは思いがけず、それぞれの人生に直面することになる。第72回カンヌ国際映画祭批評家週間のクロージング作品。",
+    "overview_en": "In the Chinese town of Fuyang, four brothers go about their day-to-day lives, their destinies shaped by love and challenges.",
+    "poster_path": "/nnjXQ9TUjxRHO00tCAtbPloncHN.jpg",
+    "backdrop_path": "/AsDanXphy2uvK227rIZP1BiUWEr.jpg",
+    "release_date": "2020-01-01",
+    "director": "顾晓刚",
+    "director_jp": "顾晓刚",
+    "director_en": "Gu Xiaogang",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 150,
+    "vote_average": 7.371,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "水の中で息をする 彼女でも彼でもなく": {
+    "tmdb_id": 1161928,
+    "tmdb_title_jp": "Holding Back the Tide",
+    "tmdb_title_en": "Holding Back the Tide",
+    "tmdb_title_original": "Holding Back the Tide",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "This impressionist hybrid documentary traces the oyster through its many life cycles in New York, once the world's oyster capital. Now their specter haunts the city through queer characters embodying ancient myth, discovering the overlooked history and biology of the bivalve that built the city. As environmentalists restore them to the harbor, Holding Back the Tide looks to the oyster as a queer icon, entangled with nature, with much to teach about our continued survival.",
+    "poster_path": "/fk3vJGtKzwU9rCD6qXj6dn9kLIk.jpg",
+    "backdrop_path": "/1daJ3wEedvTZX7rBCl7rLOi5KCT.jpg",
+    "release_date": "2024-09-06",
+    "director": "Emily Packer",
+    "director_jp": "Emily Packer",
+    "director_en": "Emily Packer",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 81,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1161928": {
+    "tmdb_id": 1161928,
+    "tmdb_title_jp": "Holding Back the Tide",
+    "tmdb_title_en": "Holding Back the Tide",
+    "tmdb_title_original": "Holding Back the Tide",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "This impressionist hybrid documentary traces the oyster through its many life cycles in New York, once the world's oyster capital. Now their specter haunts the city through queer characters embodying ancient myth, discovering the overlooked history and biology of the bivalve that built the city. As environmentalists restore them to the harbor, Holding Back the Tide looks to the oyster as a queer icon, entangled with nature, with much to teach about our continued survival.",
+    "poster_path": "/fk3vJGtKzwU9rCD6qXj6dn9kLIk.jpg",
+    "backdrop_path": "/1daJ3wEedvTZX7rBCl7rLOi5KCT.jpg",
+    "release_date": "2024-09-06",
+    "director": "Emily Packer",
+    "director_jp": "Emily Packer",
+    "director_en": "Emily Packer",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 81,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【vol+】吹替 ﾏｰｽﾞ･ｴｸｽﾌﾟﾚｽ": {
+    "tmdb_id": 586810,
+    "tmdb_title_jp": "マーズ・エクスプレス",
+    "tmdb_title_en": "Mars Express",
+    "tmdb_title_original": "Mars Express",
+    "tmdb_original_language": "fr",
+    "overview": "ときは23世紀――西暦2200年。地球での仕事を終え、活動拠点である火星に戻ってきた私立探偵 アリーヌ 。「行方不明になっている大学生の娘を探してほしい」という男の依頼を受けて、アンドロイドの相棒 カルロス と共に捜索を開始する。調査の過程で、火星の首都ノクティスの暗部に足を踏み入れていく二人を待ち受けていたのは、腐敗した街の裏側、強大な権力を持つ企業の陰謀、そして人間とロボットが共存する社会の根幹を揺るがす事態だった。",
+    "overview_en": "In 2200, private detective Aline Ruby and her android partner Carlos Rivera are hired by a wealthy businessman to track down a notorious hacker. On Mars, they descend deep into the underbelly of the planet's capital city where they uncover a darker story of brain farms, political corruption, and a missing girl who holds a secret about the robots that threatens to change the face of the universe.",
+    "poster_path": "/pvV19mW9nTl8Qn2lQkYGk8L7ptc.jpg",
+    "backdrop_path": "/yIOw17XdfsoCaydtrkzlZBCcHk6.jpg",
+    "release_date": "2023-11-22",
+    "director": "Jérémie Périn",
+    "director_jp": "Jérémie Périn",
+    "director_en": "Jérémie Périn",
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "アクション",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Science Fiction",
+      "Action",
+      "Mystery"
+    ],
+    "runtime": 89,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "【vol+】字幕 ﾏｰｽﾞ･ｴｸｽﾌﾟﾚｽ": {
+    "tmdb_id": 586810,
+    "tmdb_title_jp": "マーズ・エクスプレス",
+    "tmdb_title_en": "Mars Express",
+    "tmdb_title_original": "Mars Express",
+    "tmdb_original_language": "fr",
+    "overview": "ときは23世紀――西暦2200年。地球での仕事を終え、活動拠点である火星に戻ってきた私立探偵 アリーヌ 。「行方不明になっている大学生の娘を探してほしい」という男の依頼を受けて、アンドロイドの相棒 カルロス と共に捜索を開始する。調査の過程で、火星の首都ノクティスの暗部に足を踏み入れていく二人を待ち受けていたのは、腐敗した街の裏側、強大な権力を持つ企業の陰謀、そして人間とロボットが共存する社会の根幹を揺るがす事態だった。",
+    "overview_en": "In 2200, private detective Aline Ruby and her android partner Carlos Rivera are hired by a wealthy businessman to track down a notorious hacker. On Mars, they descend deep into the underbelly of the planet's capital city where they uncover a darker story of brain farms, political corruption, and a missing girl who holds a secret about the robots that threatens to change the face of the universe.",
+    "poster_path": "/pvV19mW9nTl8Qn2lQkYGk8L7ptc.jpg",
+    "backdrop_path": "/yIOw17XdfsoCaydtrkzlZBCcHk6.jpg",
+    "release_date": "2023-11-22",
+    "director": "Jérémie Périn",
+    "director_jp": "Jérémie Périn",
+    "director_en": "Jérémie Périn",
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "アクション",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Science Fiction",
+      "Action",
+      "Mystery"
+    ],
+    "runtime": 89,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "【未体験2026】ラスト・ロデオ ～約束のフィールド～": {
+    "tmdb_id": 1380682,
+    "tmdb_title_jp": "The Last Rodeo",
+    "tmdb_title_en": "The Last Rodeo",
+    "tmdb_title_original": "The Last Rodeo",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A retired rodeo legend risks it all to save his grandson. Facing his own painful past and the fears of his family, he enters a high-stakes bullriding competition as the oldest contestant ever. Along the way, he reconciles old wounds with his estranged daughter and proves that true courage is found in the fight for family.",
+    "poster_path": "/62nu9AEIeyDNCQ2xJabq7gwb2zR.jpg",
+    "backdrop_path": "/9MuwxjnVPGweFwo4cZPbXM2iRX9.jpg",
+    "release_date": "2025-05-22",
+    "director": "Jon Avnet",
+    "director_jp": "Jon Avnet",
+    "director_en": "Jon Avnet",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 7.754,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1380682": {
+    "tmdb_id": 1380682,
+    "tmdb_title_jp": "The Last Rodeo",
+    "tmdb_title_en": "The Last Rodeo",
+    "tmdb_title_original": "The Last Rodeo",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A retired rodeo legend risks it all to save his grandson. Facing his own painful past and the fears of his family, he enters a high-stakes bullriding competition as the oldest contestant ever. Along the way, he reconciles old wounds with his estranged daughter and proves that true courage is found in the fight for family.",
+    "poster_path": "/62nu9AEIeyDNCQ2xJabq7gwb2zR.jpg",
+    "backdrop_path": "/9MuwxjnVPGweFwo4cZPbXM2iRX9.jpg",
+    "release_date": "2025-05-22",
+    "director": "Jon Avnet",
+    "director_jp": "Jon Avnet",
+    "director_en": "Jon Avnet",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 7.754,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【未体験2026】スケッチ ～描かれたモンスターたち～": {
+    "tmdb_id": 1319969,
+    "tmdb_title_jp": "Sketch",
+    "tmdb_title_en": "Sketch: Attention à ce que tu dessines",
+    "tmdb_title_original": "Sketch",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "When a young girl’s sketchbook falls into a strange pond, her drawings come to life—chaotic, real, and on the loose. As the town descends into chaos, her family must reunite and stop the monsters they never meant to unleash.",
+    "poster_path": "/sxiDj3dTgZuCPkx30Jvyq8K9QUV.jpg",
+    "backdrop_path": "/3htgvJ6d0GV633oHYueeISk8J7w.jpg",
+    "release_date": "2025-08-06",
+    "director": "Seth Worley",
+    "director_jp": "Seth Worley",
+    "director_en": "Seth Worley",
+    "genres": [
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Adventure",
+      "Fantasy",
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 93,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1319969": {
+    "tmdb_id": 1319969,
+    "tmdb_title_jp": "Sketch",
+    "tmdb_title_en": "Sketch: Attention à ce que tu dessines",
+    "tmdb_title_original": "Sketch",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "When a young girl’s sketchbook falls into a strange pond, her drawings come to life—chaotic, real, and on the loose. As the town descends into chaos, her family must reunite and stop the monsters they never meant to unleash.",
+    "poster_path": "/sxiDj3dTgZuCPkx30Jvyq8K9QUV.jpg",
+    "backdrop_path": "/3htgvJ6d0GV633oHYueeISk8J7w.jpg",
+    "release_date": "2025-08-06",
+    "director": "Seth Worley",
+    "director_jp": "Seth Worley",
+    "director_en": "Seth Worley",
+    "genres": [
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Adventure",
+      "Fantasy",
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 93,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【未体験2026】パルブロス：黙示録の子供たち": {
+    "tmdb_id": 1199974,
+    "tmdb_title_jp": "Párvulos: Hijos del Apocalipsis",
+    "tmdb_title_en": "Párvulos: Children of the Apocalypse",
+    "tmdb_title_original": "Párvulos: Hijos del Apocalipsis",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "In a dystopian future ravaged by a viral apocalypse, three young brothers—Salvador, Oliver, and Benjamin—find themselves isolated in a remote cabin deep within the woods. As they navigate this desolate world, they harbor a dark and disturbing secret in their basement, a presence they must feed to ensure their own survival.",
+    "poster_path": "/g3lmSgQRQK5uz5ch0sfV75Oz11g.jpg",
+    "backdrop_path": "/mSIp4SUvsFOjA2vKnLTS5AnyR1A.jpg",
+    "release_date": "2024-10-18",
+    "director": "Isaac Ezban",
+    "director_jp": "Isaac Ezban",
+    "director_en": "Isaac Ezban",
+    "genres": [
+      "ホラー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Fantasy"
+    ],
+    "runtime": 120,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MX",
+        "name": "Mexico"
+      }
+    ]
+  },
+  "tmdb:1199974": {
+    "tmdb_id": 1199974,
+    "tmdb_title_jp": "Párvulos: Hijos del Apocalipsis",
+    "tmdb_title_en": "Párvulos: Children of the Apocalypse",
+    "tmdb_title_original": "Párvulos: Hijos del Apocalipsis",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "In a dystopian future ravaged by a viral apocalypse, three young brothers—Salvador, Oliver, and Benjamin—find themselves isolated in a remote cabin deep within the woods. As they navigate this desolate world, they harbor a dark and disturbing secret in their basement, a presence they must feed to ensure their own survival.",
+    "poster_path": "/g3lmSgQRQK5uz5ch0sfV75Oz11g.jpg",
+    "backdrop_path": "/mSIp4SUvsFOjA2vKnLTS5AnyR1A.jpg",
+    "release_date": "2024-10-18",
+    "director": "Isaac Ezban",
+    "director_jp": "Isaac Ezban",
+    "director_en": "Isaac Ezban",
+    "genres": [
+      "ホラー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Fantasy"
+    ],
+    "runtime": 120,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MX",
+        "name": "Mexico"
+      }
+    ]
+  },
+  "【未体験2026】スタック": {
+    "tmdb_id": 623664,
+    "tmdb_title_jp": "Stuck",
+    "tmdb_title_en": "Stuck",
+    "tmdb_title_original": "Stuck",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A sex toy mishap leads to a night in the emergency room, where a freshly broken-up couple are forced to confront their issues on love and relationships.",
+    "poster_path": "/6KJ0QyRJIAQ7cpZCvrEA4iBYHpE.jpg",
+    "backdrop_path": "/aUxB1VWTl7hgDqTU52ZAW6a3Gna.jpg",
+    "release_date": "2018-08-14",
+    "director": "Corey Shurge",
+    "director_jp": "Corey Shurge",
+    "director_en": "Corey Shurge",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 15,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "tmdb:623664": {
+    "tmdb_id": 623664,
+    "tmdb_title_jp": "Stuck",
+    "tmdb_title_en": "Stuck",
+    "tmdb_title_original": "Stuck",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A sex toy mishap leads to a night in the emergency room, where a freshly broken-up couple are forced to confront their issues on love and relationships.",
+    "poster_path": "/6KJ0QyRJIAQ7cpZCvrEA4iBYHpE.jpg",
+    "backdrop_path": "/aUxB1VWTl7hgDqTU52ZAW6a3Gna.jpg",
+    "release_date": "2018-08-14",
+    "director": "Corey Shurge",
+    "director_jp": "Corey Shurge",
+    "director_en": "Corey Shurge",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 15,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "戦後最大の賭場": {
+    "tmdb_id": 532475,
+    "tmdb_title_jp": "戦後最大の賭場　",
+    "tmdb_title_en": "The Biggest Gamble",
+    "tmdb_title_original": "戦後最大の賭場　",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "When Honjo is selected as Kansai district's chairman, Iwasa of the rival gang asks Itsuki to do everything possible to have Honjo step down, which puts Itsuki between a rock and a hard place.",
+    "poster_path": "/sp45eLwlVUiuf3paQBMUmWOxzGg.jpg",
+    "backdrop_path": null,
+    "release_date": "1969-04-19",
+    "director": "山下耕作",
+    "director_jp": "山下耕作",
+    "director_en": "Kōsaku Yamashita",
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 107,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:532475": {
+    "tmdb_id": 532475,
+    "tmdb_title_jp": "戦後最大の賭場　",
+    "tmdb_title_en": "The Biggest Gamble",
+    "tmdb_title_original": "戦後最大の賭場　",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "When Honjo is selected as Kansai district's chairman, Iwasa of the rival gang asks Itsuki to do everything possible to have Honjo step down, which puts Itsuki between a rock and a hard place.",
+    "poster_path": "/sp45eLwlVUiuf3paQBMUmWOxzGg.jpg",
+    "backdrop_path": null,
+    "release_date": "1969-04-19",
+    "director": "山下耕作",
+    "director_jp": "山下耕作",
+    "director_en": "Kōsaku Yamashita",
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 107,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "現代やくざ与太者の掟": {
+    "tmdb_id": 537351,
+    "tmdb_title_jp": "現代やくざ 与太者の掟",
+    "tmdb_title_en": "A Modern Yakuza: The Code of the Lawless",
+    "tmdb_title_original": "現代やくざ 与太者の掟",
+    "tmdb_original_language": "ja",
+    "overview": "昭和32年、暴力団や愚連隊が我がもの顔で歩く新宿の街に、フラリ一人の男が降り立った。男は天涯孤独の身の上で、少年院、刑務所とヨセバ暮らしを繰り返し、今また五年の務めを終えてシャバへ出たところであった...。ある暴力団抗争の渦中に巻き込まれた一匹狼が、悪の華咲く新宿で、ドスを片手に血の雨降らす痛快アクション巨編。",
+    "overview_en": "Just released on parole, one young man hurtles towards a face-off with the gangsters controlling Shinjuku and its lucrative prostitutes.",
+    "poster_path": "/qYzDmpaKH69mhQkZrzffR74k0zi.jpg",
+    "backdrop_path": "/xwdJqF9gtGL0DnDKQmM8STzDUZo.jpg",
+    "release_date": "1969-02-01",
+    "director": "降旗康男",
+    "director_jp": "降旗康男",
+    "director_en": "Yasuo Furuhata",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:537351": {
+    "tmdb_id": 537351,
+    "tmdb_title_jp": "現代やくざ 与太者の掟",
+    "tmdb_title_en": "A Modern Yakuza: The Code of the Lawless",
+    "tmdb_title_original": "現代やくざ 与太者の掟",
+    "tmdb_original_language": "ja",
+    "overview": "昭和32年、暴力団や愚連隊が我がもの顔で歩く新宿の街に、フラリ一人の男が降り立った。男は天涯孤独の身の上で、少年院、刑務所とヨセバ暮らしを繰り返し、今また五年の務めを終えてシャバへ出たところであった...。ある暴力団抗争の渦中に巻き込まれた一匹狼が、悪の華咲く新宿で、ドスを片手に血の雨降らす痛快アクション巨編。",
+    "overview_en": "Just released on parole, one young man hurtles towards a face-off with the gangsters controlling Shinjuku and its lucrative prostitutes.",
+    "poster_path": "/qYzDmpaKH69mhQkZrzffR74k0zi.jpg",
+    "backdrop_path": "/xwdJqF9gtGL0DnDKQmM8STzDUZo.jpg",
+    "release_date": "1969-02-01",
+    "director": "降旗康男",
+    "director_jp": "降旗康男",
+    "director_en": "Yasuo Furuhata",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "鬼胎（クィテ） 黒い修道女": {
+    "tmdb_id": 1224993,
+    "tmdb_title_jp": "검은 수녀들",
+    "tmdb_title_en": "Dark Nuns",
+    "tmdb_title_original": "검은 수녀들",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Desperation drives two nuns to perform an exorcism no nun should attempt. With a possessed child at the mercy of evil and the opposition of the Catholic Church, they take on the dangerous forbidden rituals themselves, putting their immortal souls in grave danger. They must confront the terrifying cost of their sacrilegious actions, but one goal remains: the boy must be saved at all costs.",
+    "poster_path": "/8NqTc1N4M6XOrOxw0Kd8W40G72d.jpg",
+    "backdrop_path": "/xIB0jjWBuURB0K2Pr91VsjUNYsY.jpg",
+    "release_date": "2025-01-24",
+    "director": "권혁재",
+    "director_jp": "권혁재",
+    "director_en": "Kwon Hyeok-jae",
+    "genres": [
+      "ホラー",
+      "謎",
+      "スリラー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery",
+      "Thriller",
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 6.24,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "クイーンダム／誕生 上映前舞台挨拶": {
+    "tmdb_id": 951036,
+    "tmdb_title_jp": "Queendom",
+    "tmdb_title_en": "Queendom",
+    "tmdb_title_original": "Queendom",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "In defiance of Russia’s anti-LGBTQ laws, a queer, 21-year-old artist risks her life performing in surreal costumes throughout Moscow. Jenna Marvin’s radical public performances blend artistry and activism in this SXSW documentary.",
+    "poster_path": "/cmpVHgtfeJgyIergZwjH85i1NdC.jpg",
+    "backdrop_path": "/A4zCy3ShUWVdH2Rh4RJtvWX25k1.jpg",
+    "release_date": "2023-12-01",
+    "director": "Agniia Galdanova",
+    "director_jp": "Agniia Galdanova",
+    "director_en": "Agniia Galdanova",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 98,
+    "vote_average": 8.429,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "長安のライチ 予告３分": {
+    "tmdb_id": 1356587,
+    "tmdb_title_jp": "长安的荔枝",
+    "tmdb_title_en": "The Lychee Road",
+    "tmdb_title_original": "长安的荔枝",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "During the Tianbao period of the Tang Dynasty, Li Shande, a petty official in Chang'an, was suddenly given a task to bring fresh lychees from Lingnan. The lychee is perishable, and becomes tasteless three days after it leaves the branch, and Lingnan is more than 5,000 miles away from Chang'an, so this is an impossible task. But for the sake of his wife and daughter at home, Li Shande was determined to give it a try.",
+    "poster_path": "/bT8E8PDcN25FKynuFvzHYDp2Tk1.jpg",
+    "backdrop_path": "/8OPxY4gmVLoURJcz1BbR2a4Hi5q.jpg",
+    "release_date": "2025-07-12",
+    "director": "大鹏",
+    "director_jp": "大鹏",
+    "director_en": "Dong Chengpeng",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Comedy"
+    ],
+    "runtime": 122,
+    "vote_average": 7.226,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "ビバ・マエストロ！指揮者ドゥダメルの挑戦【再上映】": {
+    "tmdb_id": 801690,
+    "tmdb_title_jp": "¡Viva Maestro!",
+    "tmdb_title_en": "¡Viva Maestro!",
+    "tmdb_title_original": "¡Viva Maestro!",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Conductor Gustavo Dudamel sets the music world afire with his original interpretations of the greatest symphonic works. He is named one of Time's \"100 Most Influential People\" and serves as music and artistic director of the Los Angeles Philharmonic. Amidst social unrest in his native Venezuela, he devises an innovative concert that celebrates the power of art to renew and unite.",
+    "poster_path": "/uNkTGpXUcZY9R6g3koATX1Pe6yN.jpg",
+    "backdrop_path": "/yw7B62CR2Mb70Bz9KNIPHMe2EPz.jpg",
+    "release_date": "2022-04-08",
+    "director": "Ted Braun",
+    "director_jp": "Ted Braun",
+    "director_en": "Ted Braun",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 99,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "在日ミャンマー人 －私たちの自由－": null,
+  "宝島【アンコール上映】": {
+    "tmdb_id": 1293968,
+    "tmdb_title_jp": "宝島",
+    "tmdb_title_en": "Hero's Island",
+    "tmdb_title_original": "宝島",
+    "tmdb_original_language": "ja",
+    "overview": "沖縄がアメリカだった時代。米軍基地から奪った物資を住民らに分け与える、“戦果アギヤー”と呼ばれる若者たちがいた。その中心にいるのは、いつか「でっかい戦果」を上げることを夢見る幼馴染の4人、オン、グスク、ヤマコ、レイ。その中でも、英雄的存在であり、リーダーとしてみんなを引っ張っていたのが、一番年上のオンだった。全てを懸けて臨んだある襲撃の夜、オンは「予定外の戦果」を手に入れ、突然消息を絶つ…。残された3人はやがて、警察官、小学校の先生、ヤクザになり、それぞれの想いを胸に、憧れの存在オンの失踪の謎を追うが――。",
+    "overview_en": "Set in post-war Okinawa, Japan, Gusuku had 3 close childhood friends: On, Yamako and On's younger brother Rei. On was the oldest of the group and he was like a leader to everybody else. He was also a heroic figure to them. On led his friends into the U.S. military base and they stole supplies to give away to the local residents. Everybody in the neighborhood praised On. One night, they entered the U.S. military based to steal supplies. During their raid, On was chased by U.S. soldiers and went missing. Years later, Gusuku now works as a police officer. Yamako is an elementary school teacher. Rei is a member of the yakuza. These three people are still unable to get over the disappearance of On. They chase after the truth behind On's disappearance and uncover a shocking answer.",
+    "poster_path": "/aX5G8rimkQmnDkNP3IGBI4bqTNk.jpg",
+    "backdrop_path": "/6Nx5e2gW12LKnTdRBv0xl4Qd6eo.jpg",
+    "release_date": "2025-09-19",
+    "director": "大友啓史",
+    "director_jp": "大友啓史",
+    "director_en": "Keishi Otomo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 191,
+    "vote_average": 9.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ガザからの声 Episode2 「ミュージシャン・アハマドのメッセージ」": null,
+  "『コードギアス 反逆のルルーシュⅢ 皇道』【コードギアス20周年記念復刻上映会 Road to CODE GEASS 20th Year】": {
+    "tmdb_id": 477779,
+    "tmdb_title_jp": "コードギアス 反逆のルルーシュⅢ 皇道",
+    "tmdb_title_en": "Code Geass: Lelouch of the Rebellion III - Glorification",
+    "tmdb_title_original": "コードギアス 反逆のルルーシュⅢ 皇道",
+    "tmdb_original_language": "ja",
+    "overview": "2006～08年に計2シーズンが放送された人気アニメ「コードギアス　反逆のルルーシュ」を再構築した劇場版3部作の完結編。全50話のテレビアニメを再編集し、新作カットを加えて全編新規アフレコを行った。世界支配をもくろむ巨大帝国ブリタニアと、ブリタニアに反旗を翻す黒の騎士団がついに激突する。それは、黒の騎士団を率いる仮面の男ゼロ＝ルルーシュの思惑通りだったが、妹ナナリーの存在がルルーシュの計算を狂わせていく。一方、ブリタニアの第2皇子シュナイゼルが黒の騎士団に接触。ゼロの秘密を明かし、黒の騎士団の統制を内部から揺るがせようとしていた。そうして戦いは激化していき、あらゆる人々の怒りや悲しみ、執着や願いも飲み込んでいくが……。",
+    "overview_en": "With his spell of impressive successes seemingly behind him, Lelouch Lamperouge's hopes of destroying the Brittanian Empire presided over by his father are crumbling at an alarming rate. With his sister kidnapped, his former friend Suzaku ignoring his pleas for help, and his organisation The Black Knights losing their faith in him, the man behind Zero's mask is left with nowhere to turn.",
+    "poster_path": "/jBf0LCOqXCqhqX6FiXk3vIRaHpo.jpg",
+    "backdrop_path": "/jjlHf9ruKb0BMpR1sobMONIYKcy.jpg",
+    "release_date": "2018-05-01",
+    "director": "谷口悟朗",
+    "director_jp": "谷口悟朗",
+    "director_en": "Goro Taniguchi",
+    "genres": [
+      "サイエンスフィクション",
+      "アニメーション",
+      "ドラマ",
+      "アクション"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Animation",
+      "Drama",
+      "Action"
+    ],
+    "runtime": 140,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:477779": {
+    "tmdb_id": 477779,
+    "tmdb_title_jp": "コードギアス 反逆のルルーシュⅢ 皇道",
+    "tmdb_title_en": "Code Geass: Lelouch of the Rebellion III - Glorification",
+    "tmdb_title_original": "コードギアス 反逆のルルーシュⅢ 皇道",
+    "tmdb_original_language": "ja",
+    "overview": "2006～08年に計2シーズンが放送された人気アニメ「コードギアス　反逆のルルーシュ」を再構築した劇場版3部作の完結編。全50話のテレビアニメを再編集し、新作カットを加えて全編新規アフレコを行った。世界支配をもくろむ巨大帝国ブリタニアと、ブリタニアに反旗を翻す黒の騎士団がついに激突する。それは、黒の騎士団を率いる仮面の男ゼロ＝ルルーシュの思惑通りだったが、妹ナナリーの存在がルルーシュの計算を狂わせていく。一方、ブリタニアの第2皇子シュナイゼルが黒の騎士団に接触。ゼロの秘密を明かし、黒の騎士団の統制を内部から揺るがせようとしていた。そうして戦いは激化していき、あらゆる人々の怒りや悲しみ、執着や願いも飲み込んでいくが……。",
+    "overview_en": "With his spell of impressive successes seemingly behind him, Lelouch Lamperouge's hopes of destroying the Brittanian Empire presided over by his father are crumbling at an alarming rate. With his sister kidnapped, his former friend Suzaku ignoring his pleas for help, and his organisation The Black Knights losing their faith in him, the man behind Zero's mask is left with nowhere to turn.",
+    "poster_path": "/jBf0LCOqXCqhqX6FiXk3vIRaHpo.jpg",
+    "backdrop_path": "/jjlHf9ruKb0BMpR1sobMONIYKcy.jpg",
+    "release_date": "2018-05-01",
+    "director": "谷口悟朗",
+    "director_jp": "谷口悟朗",
+    "director_en": "Goro Taniguchi",
+    "genres": [
+      "サイエンスフィクション",
+      "アニメーション",
+      "ドラマ",
+      "アクション"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Animation",
+      "Drama",
+      "Action"
+    ],
+    "runtime": 140,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "椰子の高さ": {
+    "tmdb_id": 1339604,
+    "tmdb_title_jp": "椰子の高さ",
+    "tmdb_title_en": "The Height of the Coconut Trees",
+    "tmdb_title_original": "椰子の高さ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Just before their honeymoon, Sugamoto and Aoki break up. Sugamoto decides to bury her lost emotion by going on the determined honeymoon trip alone. The journey's end is a remote town famous for being a suicide hotspot, a place where the spirits of those who took their own lives roam around without finding a way to the afterlife. In this chaotic space where humans and ghosts meet, traces of the past abound, but maybe all these give them the strength to start a new chapter in life.",
+    "poster_path": "/vCyLm5PN4lkfl89hRn1oeX595En.jpg",
+    "backdrop_path": "/Avjj0u3FlutyD71UtdVDVMEJsGO.jpg",
+    "release_date": "2026-02-06",
+    "director": "杜杰",
+    "director_jp": "杜杰",
+    "director_en": "Du Jie",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 100,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1339604": {
+    "tmdb_id": 1339604,
+    "tmdb_title_jp": "椰子の高さ",
+    "tmdb_title_en": "The Height of the Coconut Trees",
+    "tmdb_title_original": "椰子の高さ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Just before their honeymoon, Sugamoto and Aoki break up. Sugamoto decides to bury her lost emotion by going on the determined honeymoon trip alone. The journey's end is a remote town famous for being a suicide hotspot, a place where the spirits of those who took their own lives roam around without finding a way to the afterlife. In this chaotic space where humans and ghosts meet, traces of the past abound, but maybe all these give them the strength to start a new chapter in life.",
+    "poster_path": "/vCyLm5PN4lkfl89hRn1oeX595En.jpg",
+    "backdrop_path": "/Avjj0u3FlutyD71UtdVDVMEJsGO.jpg",
+    "release_date": "2026-02-06",
+    "director": "杜杰",
+    "director_jp": "杜杰",
+    "director_en": "Du Jie",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 100,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ボーイ・ミーツ・ガール": {
+    "tmdb_id": 63418,
+    "tmdb_title_jp": "ボーイ・ミーツ・ガール",
+    "tmdb_title_en": "Boy Meets Girl",
+    "tmdb_title_original": "Boy Meets Girl",
+    "tmdb_original_language": "fr",
+    "overview": "恋人フロランスに振られたばかりのアレックスは、いつも悲しげなモノローグをパリの街に浮かべるような孤独な男。部屋の壁に貼ったパリの地図に、フロランスが残した傷から自殺しようとしたという旨のメモを貼り付ける。一方、どこか遠い世界で暮らしているミレーユも、恋人ベルナールと喧嘩ばかりの日々。まるで別の夢であるかのように離れている二つの世界は、徐々に距離を縮め、ついに出会うことになるが…。",
+    "overview_en": "In Paris at night, a young aspiring filmmaker grapples with heartbreak after his girlfriend leaves him for his best friend. After a failed attempt to confront his friend, he wanders the streets and encounters a girl who has just been abandoned. Their paths cross at a party, bringing together two tormented souls.",
+    "poster_path": "/nvg50CkDBaWkWHtnCSaJ7brLcMO.jpg",
+    "backdrop_path": "/vFIC5xBv81hPHKnGU2noTid0HjE.jpg",
+    "release_date": "1984-11-21",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 104,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:63418": {
+    "tmdb_id": 63418,
+    "tmdb_title_jp": "ボーイ・ミーツ・ガール",
+    "tmdb_title_en": "Boy Meets Girl",
+    "tmdb_title_original": "Boy Meets Girl",
+    "tmdb_original_language": "fr",
+    "overview": "恋人フロランスに振られたばかりのアレックスは、いつも悲しげなモノローグをパリの街に浮かべるような孤独な男。部屋の壁に貼ったパリの地図に、フロランスが残した傷から自殺しようとしたという旨のメモを貼り付ける。一方、どこか遠い世界で暮らしているミレーユも、恋人ベルナールと喧嘩ばかりの日々。まるで別の夢であるかのように離れている二つの世界は、徐々に距離を縮め、ついに出会うことになるが…。",
+    "overview_en": "In Paris at night, a young aspiring filmmaker grapples with heartbreak after his girlfriend leaves him for his best friend. After a failed attempt to confront his friend, he wanders the streets and encounters a girl who has just been abandoned. Their paths cross at a party, bringing together two tormented souls.",
+    "poster_path": "/nvg50CkDBaWkWHtnCSaJ7brLcMO.jpg",
+    "backdrop_path": "/vFIC5xBv81hPHKnGU2noTid0HjE.jpg",
+    "release_date": "1984-11-21",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 104,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "トラララ": {
+    "tmdb_id": 657195,
+    "tmdb_title_jp": "Tralala",
+    "tmdb_title_en": "Tralala",
+    "tmdb_title_original": "Tralala",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A 48-year-old homeless singer and composer receive a cryptic message that makes him believe he has been visited by the Virgin Mary.",
+    "poster_path": "/2ji6LgFftw4639IitNTYUTZWia4.jpg",
+    "backdrop_path": "/gBcISebRgoEm02VsnMj1TX8ilkj.jpg",
+    "release_date": "2021-07-16",
+    "director": "Jean-Marie Larrieu",
+    "director_jp": "Jean-Marie Larrieu",
+    "director_en": "Jean-Marie Larrieu",
+    "genres": [
+      "コメディ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Music"
+    ],
+    "runtime": 120,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "IT'S NOT ME イッツ・ノット・ミー": {
+    "tmdb_id": 1136987,
+    "tmdb_title_jp": "C'est pas moi",
+    "tmdb_title_en": "It's Not Me",
+    "tmdb_title_original": "C'est pas moi",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "This free-form film is a self-portrait, which revisits more than 40 years of the author’s filmography and questions the major stations of his life, while capturing the political tremors of the time.",
+    "poster_path": "/cZa91XFQoNsfx1uLNByz7pIFH2G.jpg",
+    "backdrop_path": "/wR7HeOCCpRrDEjea09qCdfYNDdj.jpg",
+    "release_date": "2024-06-12",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Documentary"
+    ],
+    "runtime": 42,
+    "vote_average": 7.179,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "メドールの帝国": {
+    "tmdb_id": 270882,
+    "tmdb_title_jp": "L'Empire de Médor",
+    "tmdb_title_en": "L'Empire de Médor",
+    "tmdb_title_original": "L'Empire de Médor",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "L'empire de medor is a satirical voyage of discovery through the universe of the dog lover. By systematically scrutinising the industry that capitalises on the love for man's best friend, Moullet has made an absurdist film that shows how the love of animals has become a kind of surrogate religion for many people. He takes us to canine beauticians and beauty contests, and explores the field from dried dog food to advanced super-duper pooper-scoopers. By showing in great detail all those gadgets and gimmicks to make the lives of pets as agreeable as possible, Moullet vents his barely concealed criticism of consumer society.",
+    "poster_path": "/jUkrtsUHcwNRGOD5tjgTYfOOxgd.jpg",
+    "backdrop_path": null,
+    "release_date": "1986-05-21",
+    "director": "Luc Moullet",
+    "director_jp": "Luc Moullet",
+    "director_en": "Luc Moullet",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 13,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "雨月物語": {
+    "tmdb_id": 14696,
+    "tmdb_title_jp": "雨月物語",
+    "tmdb_title_en": "Ugetsu",
+    "tmdb_title_original": "雨月物語",
+    "tmdb_original_language": "ja",
+    "overview": "戦国の世、貧しい陶工・源十郎が若狭姫という女性と知り合い、生活をともにするようになる。だが美しい若狭姫の正体は死霊であった。それを知った源十郎は若狭姫を捨てて故郷に逃げるが、彼女の怨念は執拗に追いすがる……。「雨月物語」をベースに、川口松太郎らが脚色。",
+    "overview_en": "In 16th century Japan, peasants Genjuro and Tobei sell their earthenware pots to a group of soldiers in a nearby village, in defiance of a local sage's warning against seeking to profit from warfare. Genjuro's pursuit of both riches and the mysterious Lady Wakasa, as well as Tobei's desire to become a samurai, run the risk of destroying both themselves and their wives, Miyagi and Ohama.",
+    "poster_path": "/44MlxSO8NvBVl5MfxACj6Ihwtd5.jpg",
+    "backdrop_path": "/iB1tCWl4MKl6OO1kMBD5LxM5BmJ.jpg",
+    "release_date": "1953-03-26",
+    "director": "溝口健二",
+    "director_jp": "溝口健二",
+    "director_en": "Kenji Mizoguchi",
+    "genres": [
+      "ファンタジー",
+      "ドラマ",
+      "謎"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Drama",
+      "Mystery"
+    ],
+    "runtime": 96,
+    "vote_average": 8.003,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "蛇娘と白髪魔": {
+    "tmdb_id": 182921,
+    "tmdb_title_jp": "蛇娘と白髪魔",
+    "tmdb_title_en": "The Snake Girl and the Silver-Haired Witch",
+    "tmdb_title_original": "蛇娘と白髪魔",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Up until this point, young Sayuri Nanjo has had to live most of her life in a nun-run boarding school for orphans and away from her parents. That's all about to change when her real father mysteriously comes to get her and finally bring her home.",
+    "poster_path": "/eAn27NWmyn2q827vJoTcEzvq0Vr.jpg",
+    "backdrop_path": "/rBjPxHiFfZOcIX48f2NhD5s5d7W.jpg",
+    "release_date": "1968-12-14",
+    "director": "湯浅憲明",
+    "director_jp": "湯浅憲明",
+    "director_en": "Noriaki Yuasa",
+    "genres": [
+      "ホラー",
+      "スリラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Horror",
+      "Thriller",
+      "Mystery"
+    ],
+    "runtime": 82,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "妖婆": {
+    "tmdb_id": 390494,
+    "tmdb_title_jp": "妖婆",
+    "tmdb_title_en": "The Possessed",
+    "tmdb_title_original": "妖婆",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Oshima, a rich girl married Shinzo, and her cousin girl Sawa has been jealous of Oshima deeply. Sawa cursed Oshima so Shinzo could not hold her and do anything at all. Shinzo hated Oshima, and he made love with Sawa.",
+    "poster_path": "/f2kew5iB37Vhl1CkfLLYCk1yrQB.jpg",
+    "backdrop_path": null,
+    "release_date": "1976-10-16",
+    "director": "今井正",
+    "director_jp": "今井正",
+    "director_en": "Tadashi Imai",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 97,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "姑獲鳥（うぶめ）の夏": {
+    "tmdb_id": 227254,
+    "tmdb_title_jp": "姑獲鳥の夏",
+    "tmdb_title_en": "Summer of Ubume",
+    "tmdb_title_original": "姑獲鳥の夏",
+    "tmdb_original_language": "ja",
+    "overview": "1952（昭和27）年、夏の東京。小説家の関口はちまたで広まる、産婦人科の大病院である久遠寺医院の娘・梗子が、妊娠20カ月目を迎えたのに一向に出産する気配がなく、しかも彼女の夫は1年半前に医院の密室から忽然と消え、以来、行方不明となっているという不思議な噂を耳にする。雑誌の依頼で事件を取材することになった関口は、古本屋の店主にして神社の神主でもある、博覧強記の友人・京極堂に相談を持ちかける。",
+    "overview_en": "Kyogokudo is a used book seller who doubles as an onmyouji, or Heian style occultist. His friend Sekiguchi brings him the story of a woman who has been pregnant for twenty months. Sekiguchi investigates further with the help of his friend Enokizu, a detective with the unusual ability to see people's memories. They are hired by the impossibly pregnant woman's sister to find the woman's missing husband and lay this whole matter to rest. In the end, they need the help of Kyogokudo to exorcise the family curse.",
+    "poster_path": "/l3Y3xYBB4fqfkfuKGz6q0HlRfz5.jpg",
+    "backdrop_path": "/rQ1qd8KFlTtN4fkAdRcq5v9hMXK.jpg",
+    "release_date": "2005-07-15",
+    "director": "実相寺昭雄",
+    "director_jp": "実相寺昭雄",
+    "director_en": "Akio Jissoji",
+    "genres": [
+      "スリラー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Horror"
+    ],
+    "runtime": 123,
+    "vote_average": 7.167,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "怪談〈短縮版〉": {
+    "tmdb_id": 30959,
+    "tmdb_title_jp": "怪談",
+    "tmdb_title_en": "Kwaidan",
+    "tmdb_title_original": "怪談",
+    "tmdb_original_language": "ja",
+    "overview": "「黒髪」：妻を捨て、京都から遠い任地へと赴いた武士。そこで彼は、良い家柄の娘と結婚するが、彼女は冷酷な女で、男は今さら、別れた妻のことを思い出すのだった。やがて任期を終え、京都に戻った彼は最初の妻と再会するが…。「雪女」：きこりの巳之吉は、森へ薪を採りに入ったところで吹雪に遭い、山小屋に閉じ込められるはめに。その晩彼は、雪女の姿を目の当たりにし…。ほかに「耳無し抱一の話」「茶碗の中」の計4編。",
+    "overview_en": "Taking its title from an archaic Japanese word meaning \"ghost story,\" this anthology adapts four folk tales. A penniless samurai marries for money with tragic results. A man stranded in a blizzard is saved by Yuki the Snow Maiden, but his rescue comes at a cost. Blind musician Hoichi is forced to perform for an audience of ghosts. An author relates the story of a samurai who sees another warrior's reflection in his teacup.",
+    "poster_path": "/lxOxZVhGkmnz7jFJDS8EfkhxmmN.jpg",
+    "backdrop_path": "/9GAU0z2wVA8M2D2w36CaloWYYgv.jpg",
+    "release_date": "1965-01-06",
+    "director": "小林正樹",
+    "director_jp": "小林正樹",
+    "director_en": "Masaki Kobayashi",
+    "genres": [
+      "ホラー",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Horror",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 183,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "牡丹燈籠": {
+    "tmdb_id": 1208461,
+    "tmdb_title_jp": "牡丹燈籠",
+    "tmdb_title_en": "Botan Dōrō",
+    "tmdb_title_original": "牡丹燈籠",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The first film of Botan Dôrô, the famous ghost story by Encho Sayutei, concerning a man who makes love to a beautiful woman in a strange house, and wakes up to embrace of a rotting skeleton.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1910-06-01",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "リング": {
+    "tmdb_id": 139937,
+    "tmdb_title_jp": "リング",
+    "tmdb_title_en": "Ring",
+    "tmdb_title_original": "リング",
+    "tmdb_original_language": "ja",
+    "overview": "鈴木光司の同名の小説を原作とした1995年のテレビ映画版。  新聞社に勤める浅川和行（高橋克典）は、若者4人が同日同時刻に急死したことに疑問を抱き、なおかつそのうちの1人が自分の姪であったこともあって調査をはじめる。その結果4人が、死の一週間前に箱根に同泊し、そこで1本のビデオをみていたことを知る。おそるおそるみたそのビデオには不気味な映像のあとに「この映像を見た者は、一週間後のこの時間に死ぬ運命にある。死にたくなければ今からいうことを実行せよ。すなわち・・・・・・」という白い文字が浮かび、なんとそこでプッツリとぎれていた。 そのテープを、超能力による恨みの念写であると確信した大学教授の高山竜司（原田芳雄）と共に「死のタイムリミット」におびえながらも、このビデオの真意に迫ってゆく。そこには三十余年以前にさかのぼる、ある母親の残酷かつ奇妙な物語がかくされていた。そのおぞましい怨念はリングのようにつながり、意外な形でくり返されてゆく・・・・・・。",
+    "overview_en": "In different parts of Tokyo, four young and seemingly healthy people suddenly die of heart failure at exactly the same moment. Reporter Kazuyuki Asakawa decides to investigate the deaths, and discovers that the four had stayed at a rural inn together just a week earlier. At the inn, he comes across a strange video that ends with a message saying that anyone who watches it will die exactly seven days later. Now the clock is ticking for Asakawa. Can he break the curse in time?",
+    "poster_path": "/cegmPLjKMWFR9ZJawwSgybf7x8M.jpg",
+    "backdrop_path": "/oi9ypQk8QPvgTky9kX08W6UTG8v.jpg",
+    "release_date": "1995-08-11",
+    "director": "瀧川治水",
+    "director_jp": "瀧川治水",
+    "director_en": "Chisui Takigawa",
+    "genres": [
+      "ホラー",
+      "テレビ映画",
+      "謎"
+    ],
+    "genres_en": [
+      "Horror",
+      "TV Movie",
+      "Mystery"
+    ],
+    "runtime": 90,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "陰陽師": {
+    "tmdb_id": 21325,
+    "tmdb_title_jp": "陰陽師",
+    "tmdb_title_en": "Onmyoji",
+    "tmdb_title_original": "陰陽師",
+    "tmdb_original_language": "ja",
+    "overview": "人ももののけも同じ闇の中で呼吸をしていた平安時代。都の陰陽師である安倍晴明は、友人の源博雅から夜毎に自分の笛を聴きに来る牛車の女性の話をもちかけられる。そんな中、生まれたばかりの帝の子・敦平親王の身体に異変が起きる。",
+    "overview_en": "During a dark time in the Heian period, when evil forces threaten the kingdom, the emperor relies on the onmyōji to keep the supernatural forces in line. But as political events become highly charged, friction within the order leads to betrayal. Now, Seimei, a talented member of the clan, must face down his master, Dōson, in the hopes of restoring peace to the kingdom.",
+    "poster_path": "/ptiwNaV092Ut3qWLnN07fx2hFjl.jpg",
+    "backdrop_path": "/if0IBbnzdeacoGf2Dgj1dAqZktu.jpg",
+    "release_date": "2001-10-06",
+    "director": "滝田洋二郎",
+    "director_jp": "滝田洋二郎",
+    "director_en": "Yojiro Takita",
+    "genres": [
+      "ドラマ",
+      "ホラー",
+      "履歴",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Horror",
+      "History",
+      "Action"
+    ],
+    "runtime": 116,
+    "vote_average": 6.338,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "いろはにほへと": {
+    "tmdb_id": 1252671,
+    "tmdb_title_jp": "いろはにほへと",
+    "tmdb_title_en": "Irohanihoheto",
+    "tmdb_title_original": "いろはにほへと",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The anonymous partnership Investment Economic Association, led by its president Ryuichi Amano, collected money from many ordinary people and paid out large dividends, making it famous as \"Japan's only investment bank for ordinary people.\" On the other hand, Detective Muneharu Matsumoto of the Metropolitan Police Department's Second Investigative Division has suspicions about this organization, and has been spying on the business association for many years. However, Matsumoto was having a hard time getting any solid proof of the nature of the incident...",
+    "poster_path": "/jjulIfkzBUrngur7kw5pT5qzSYz.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-05-20",
+    "director": "中村登",
+    "director_jp": "中村登",
+    "director_en": "Noboru Nakamura",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "最後の切札": {
+    "tmdb_id": 1544878,
+    "tmdb_title_jp": "最後の切札",
+    "tmdb_title_en": "The Grave Tells All",
+    "tmdb_title_original": "最後の切札",
+    "tmdb_original_language": "ja",
+    "overview": "異色作家・白崎秀雄の傑作小説「肉の僕」の映画化。  橋本忍が脚色し、野村芳太郎が監督したもので、冷い打算に生きる男の行動と破滅を描く問題野心作。佐田啓二が珍しく悪党を演じている。",
+    "overview_en": "",
+    "poster_path": "/bEH1H8RjuE1mtg0vCGEdzKd1ET0.jpg",
+    "backdrop_path": "/p4AJhNe0WnAGD23EfAi4OifIuZP.jpg",
+    "release_date": "1960-09-20",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "四万人の目撃者": {
+    "tmdb_id": 564516,
+    "tmdb_title_jp": "四萬人の目撃者",
+    "tmdb_title_en": "Hot Corner Murder",
+    "tmdb_title_original": "四萬人の目撃者",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Prosecutor Takayama investigates the sudden death of a third baseman in the middle of a game.",
+    "poster_path": "/hMaRHQkZ0iygRGBFbDVnopgAfVg.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-02-12",
+    "director": "堀内真直",
+    "director_jp": "堀内真直",
+    "director_en": "Manao Horiuchi",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "二人で歩いた幾春秋": {
+    "tmdb_id": 424126,
+    "tmdb_title_jp": "二人で歩いた幾春秋",
+    "tmdb_title_en": "Ballad of a Workman",
+    "tmdb_title_original": "二人で歩いた幾春秋",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A demobilized soldier becomes a day laborer with a road construction gang, and his wife goes to work to bolster their income. Their modest dream is to see their son grow and to be happy as a family.",
+    "poster_path": "/sfzqzbqNgepGTbmI7iPRuwk8jpo.jpg",
+    "backdrop_path": "/cmK9yMRAa5CzvcdMagcLi5cpKpc.jpg",
+    "release_date": "1962-08-12",
+    "director": "木下惠介",
+    "director_jp": "木下惠介",
+    "director_en": "Keisuke Kinoshita",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 102,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "黒い花粉": null,
+  "ボロ家の春秋": null,
+  "モダン道中 その恋待ったなし": {
+    "tmdb_id": 1478983,
+    "tmdb_title_jp": "モダン道中 その恋待ったなし",
+    "tmdb_title_en": "Modan dôchû: Sono koi matta nashi",
+    "tmdb_title_original": "モダン道中 その恋待ったなし",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A road trip comedy set against the backdrop of the famous historical sites of Tohoku and Hokkaido.",
+    "poster_path": "/iyaNHEKRkXHMayewIPOs7akCaw5.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-07-13",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "秋刀魚の味": {
+    "tmdb_id": 1568565,
+    "tmdb_title_jp": "秋刀魚の味",
+    "tmdb_title_en": "An Autumn Afternoon",
+    "tmdb_title_original": "秋刀魚の味",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A 2003 version of the 1962 original.  Shuhei Hirayama is a widower with a 24-year-old daughter. Gradually, he comes to realize that she should not be obliged to look after him for the rest of his life, so he arranges a marriage for her.",
+    "poster_path": "/6V805teL9FLXrINjbTv9hSKjnHI.jpg",
+    "backdrop_path": null,
+    "release_date": "2003-01-03",
+    "director": "福本義人",
+    "director_jp": "福本義人",
+    "director_en": "Yoshito Fukumoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 115,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "日本の悲劇": {
+    "tmdb_id": 153778,
+    "tmdb_title_jp": "日本の悲劇",
+    "tmdb_title_en": "Japan's Tragedy",
+    "tmdb_title_original": "日本の悲劇",
+    "tmdb_original_language": "ja",
+    "overview": "2011年3月11日の東日本大震災の日。東京の下町に住む村井不二男は入院し、肺ガンの手術を受ける。秋になり、再び手術をしなければ余命は3か月だと宣告されるが、勝手に退院。不二男と暮らす息子の義男は無職で、妻と別れ、不二男の年金を頼りに生活していた。帰宅した不二男は義男の説得も聞かず、自室のドアや窓を封鎖して「ミイラになる」と言い放つ。",
+    "overview_en": "In 2010, 31,560 people ended their own lives and about 20,000 people died or went missing with the earthquake. Unemployed widower Fujio Murai’s family tragedy contains instances of both; diagnosed with lung cancer, Fujio refuses surgery and returns home with his son Yoshio.",
+    "poster_path": "/g9AvSRRZ6CpKesLULraJYvV5aMu.jpg",
+    "backdrop_path": null,
+    "release_date": "2012-10-05",
+    "director": "小林政広",
+    "director_jp": "小林政広",
+    "director_en": "Masahiro Kobayashi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 101,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:153778": {
+    "tmdb_id": 153778,
+    "tmdb_title_jp": "日本の悲劇",
+    "tmdb_title_en": "Japan's Tragedy",
+    "tmdb_title_original": "日本の悲劇",
+    "tmdb_original_language": "ja",
+    "overview": "2011年3月11日の東日本大震災の日。東京の下町に住む村井不二男は入院し、肺ガンの手術を受ける。秋になり、再び手術をしなければ余命は3か月だと宣告されるが、勝手に退院。不二男と暮らす息子の義男は無職で、妻と別れ、不二男の年金を頼りに生活していた。帰宅した不二男は義男の説得も聞かず、自室のドアや窓を封鎖して「ミイラになる」と言い放つ。",
+    "overview_en": "In 2010, 31,560 people ended their own lives and about 20,000 people died or went missing with the earthquake. Unemployed widower Fujio Murai’s family tragedy contains instances of both; diagnosed with lung cancer, Fujio refuses surgery and returns home with his son Yoshio.",
+    "poster_path": "/g9AvSRRZ6CpKesLULraJYvV5aMu.jpg",
+    "backdrop_path": null,
+    "release_date": "2012-10-05",
+    "director": "小林政広",
+    "director_jp": "小林政広",
+    "director_en": "Masahiro Kobayashi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 101,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "顔役（噛みつかれた顔役）": {
+    "tmdb_id": 495855,
+    "tmdb_title_jp": "喜劇　団地親分",
+    "tmdb_title_en": "A Country Boss",
+    "tmdb_title_original": "喜劇　団地親分",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A country boss gives up his way of life because of his daughter's marriage.",
+    "poster_path": "/qVsjaO9WCsyJ9J0klZ35Uthg2AU.jpg",
+    "backdrop_path": null,
+    "release_date": "1962-01-25",
+    "director": "市村泰一",
+    "director_jp": "市村泰一",
+    "director_en": "Hirokazu Ichimura",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 82,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "お早よう": {
+    "tmdb_id": 28276,
+    "tmdb_title_jp": "お早よう",
+    "tmdb_title_en": "Good Morning",
+    "tmdb_title_original": "お早よう",
+    "tmdb_original_language": "ja",
+    "overview": "郊外の住宅地、長屋のように複数の家族が隣り合って暮らしている。林家の息子実（設楽幸嗣）と勇（島津雅彦）はテレビがほしいと両親にねだるが、聞き入れてもらえない。子供たちは、要求を聞き入れてもらえるまで口を利かないというストライキをして、最終的に買ってもらうのだった。　",
+    "overview_en": "A lighthearted take on director Yasujiro Ozu’s perennial theme of the challenges of inter­generational relationships, Good Morning tells the story of two young boys who stop speaking in protest after their parents refuse to buy a television set. Ozu weaves a wealth of subtle gags through a family portrait as rich as those of his dramatic films, mocking the foibles of the adult world through the eyes of his child protagonists. Shot in stunning color and set in a suburb of Tokyo where housewives gossip about the neighbors’ new washing machine and unemployed husbands look for work as door-to-door salesmen, this charming comedy refashions Ozu’s own silent classic I Was Born, But . . . to gently satirize consumerism in postwar Japan.",
+    "poster_path": "/tPrOONTaP4jyRad7hXD6egJ2NQd.jpg",
+    "backdrop_path": "/qH9wiXnx9mU9kNGCH1exaey9CqU.jpg",
+    "release_date": "1959-05-12",
+    "director": "小津安二郎",
+    "director_jp": "小津安二郎",
+    "director_en": "Yasujirō Ozu",
+    "genres": [
+      "コメディ",
+      "ファミリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Family",
+      "Drama"
+    ],
+    "runtime": 94,
+    "vote_average": 7.702,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "血は渇いてる": {
+    "tmdb_id": 88442,
+    "tmdb_title_jp": "血は渇いてる",
+    "tmdb_title_en": "Blood Is Dry",
+    "tmdb_title_original": "血は渇いてる",
+    "tmdb_original_language": "ja",
+    "overview": "東洋毛織で社員の首切り通告があった時、社員の木口はみんなを助けようと拳銃自殺を図るが、老社員・金井の機転で一命を取り留める。昭和生命に務めるユキは、そんな木口を生命保険の広告塔にしようと考え、あの手この手で木口を口説くが断られてしまう。",
+    "overview_en": "An employee in an assurance company threatens to commit suicide when management announces a massive layoff, the company uses this threat to its own advantage by turning the incident into an advertising campaign. With the success of the campaign, however, he is no longer a desperate man pointing a gun to his head, but a potential leader who wishes to take advantage of his failed suicide.",
+    "poster_path": "/jgKQEPTTQ2gLNajUCh9E9IrHcnL.jpg",
+    "backdrop_path": "/rUOvbnFsbT62BHbzo7X3HpU76JA.jpg",
+    "release_date": "1960-10-09",
+    "director": "吉田喜重",
+    "director_jp": "吉田喜重",
+    "director_en": "Yoshishige Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "天使のたまご ４Kリマスター": {
+    "tmdb_id": 15916,
+    "tmdb_title_jp": "天使のたまご",
+    "tmdb_title_en": "Angel's Egg",
+    "tmdb_title_original": "天使のたまご",
+    "tmdb_original_language": "ja",
+    "overview": "ノアの方舟が陸地を見つけられなかったもう1つの世界。巨大な眼球を模し、中に複数の人型の彫像が鎮座する宗教の象徴のような機械仕掛けの太陽が海に沈み、世界は夜を迎える。  方舟の中の動物がすべて化石になった頃、忘れ去られた街で一人の少年と一人の少女が出会う。",
+    "overview_en": "In the ruins of a strange city, a young girl takes care of a large egg she holds carefully in her arms. She bonds with a boy who is searching for a bird he saw in a dream.",
+    "poster_path": "/nCjPdzIqynTp7jwOMEzYpF4IcZS.jpg",
+    "backdrop_path": "/nZn384qWYugXu6U1N8Ya0Iv0NXE.jpg",
+    "release_date": "1985-12-22",
+    "director": "押井守",
+    "director_jp": "押井守",
+    "director_en": "Mamoru Oshii",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Mystery"
+    ],
+    "runtime": 71,
+    "vote_average": 7.728,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1502700": {
+    "tmdb_id": 1502700,
+    "tmdb_title_jp": "ストロベリームーン",
+    "tmdb_title_en": "Strawberry Moon",
+    "tmdb_title_original": "ストロベリームーン",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Being sick since childhood, Moe has spent most of her life at home, without school or friends. After being given just six months to live, she decides to spend her final days differently—by attending high school. On the very first day, she boldly confesses her feelings to her classmate Hinata. The two start dating and experience their first love. Then, on Moe’s birthday, they plan to watch the “Strawberry Moon” together – a full moon said to bind lovers forever. But after that night, she disappears without a word…",
+    "poster_path": "/lJC0r26tZM5J4P32PRJhtTNkhtp.jpg",
+    "backdrop_path": "/czT3vIokuddLvwLGv2o4wjjZ7p6.jpg",
+    "release_date": "2025-10-17",
+    "director": "酒井麻衣",
+    "director_jp": "酒井麻衣",
+    "director_en": "Mai Sakai",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 120,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:537867": {
+    "tmdb_id": 537867,
+    "tmdb_title_jp": "郊区的鸟",
+    "tmdb_title_en": "Suburban Birds",
+    "tmdb_title_original": "郊区的鸟",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "Hao is part of a team of young engineers called in to investigate a series of craters that have opened up on the edge of the city. Meanwhile, a younger boy, also named Hao, spends long afternoons playing with friends and making mischief until one-by-one, his playmates start to disappear. As these parallel stories unfold, the connections between them proliferate and grow stranger.",
+    "poster_path": "/oWiuPvTHk2J2Grf25Cy3esIV9k0.jpg",
+    "backdrop_path": "/nsvaFZJiZtylGX21gGJEBVFlKUQ.jpg",
+    "release_date": "2019-08-30",
+    "director": "仇晟 ",
+    "director_jp": "仇晟 ",
+    "director_en": "Qiu Sheng",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "tmdb:1156230": {
+    "tmdb_id": 1156230,
+    "tmdb_title_jp": "短片故事",
+    "tmdb_title_en": "Short Story",
+    "tmdb_title_original": "短片故事",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "The husband dreams that his wife leaves him, while he tries to save the relationship. Once awake and sleepless, he finds himself faced with their unchanged life, without understanding whether what has just happened is reality or just a dream.",
+    "poster_path": "/rk2q6KQjuplMeWQQuCSGgFpzRMn.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-08-30",
+    "director": "Wu Lang",
+    "director_jp": "Wu Lang",
+    "director_en": "Wu Lang",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 12,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:844547": {
+    "tmdb_id": 844547,
+    "tmdb_title_jp": "Taurus",
+    "tmdb_title_en": "Good News",
+    "tmdb_title_original": "Taurus",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A rising but troubled musician searches for the inspiration to record one last song, pushing himself deep into the void.",
+    "poster_path": "/bWH1s160oYX1vybg3zPnL4ygMpw.jpg",
+    "backdrop_path": "/pVgjxcKmplPkzNqsQMIMv1b8VMB.jpg",
+    "release_date": "2022-11-18",
+    "director": "Tim Sutton",
+    "director_jp": "Tim Sutton",
+    "director_en": "Tim Sutton",
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music"
+    ],
+    "runtime": 98,
+    "vote_average": 5.794,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:959558": {
+    "tmdb_id": 959558,
+    "tmdb_title_jp": "Moloch",
+    "tmdb_title_en": "Moloch",
+    "tmdb_title_original": "Moloch",
+    "tmdb_original_language": "nl",
+    "overview": "",
+    "overview_en": "Betriek lives at the edge of a peat bog in the North of the Netherlands. When she and her family are attacked by a random stranger one night, Betriek sets out to find an explanation. The more she digs, the more she becomes convinced that she is being hunted by something ancient.",
+    "poster_path": "/3jVzYOnylmvo7ZnGerjfoRj2wFz.jpg",
+    "backdrop_path": "/or5e8vxfd9Nc0rrLHKjD3YFhhmg.jpg",
+    "release_date": "2022-05-19",
+    "director": "Nico van den Brink",
+    "director_jp": "Nico van den Brink",
+    "director_en": "Nico van den Brink",
+    "genres": [
+      "ホラー",
+      "謎",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "runtime": 99,
+    "vote_average": 5.997,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "tmdb:499556": {
+    "tmdb_id": 499556,
+    "tmdb_title_jp": "大象席地而坐",
+    "tmdb_title_en": "An Elephant Sitting Still",
+    "tmdb_title_original": "大象席地而坐",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "In the northern Chinese city of Manzhouli, they say there is an elephant that simply sits and ignores the world. Manzhouli becomes an obsession for the protagonists of this film, a longed-for escape from the downward spiral in which they find themselves.",
+    "poster_path": "/dlQ7GsNeKPHIWF744igVqm4LipI.jpg",
+    "backdrop_path": "/5b1r0b77BovGp4ejUsYsx3arQoe.jpg",
+    "release_date": "2018-12-14",
+    "director": "胡波",
+    "director_jp": "胡波",
+    "director_en": "Hu Bo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 230,
+    "vote_average": 7.706,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:981462": {
+    "tmdb_id": 981462,
+    "tmdb_title_jp": "Cuento de hadas",
+    "tmdb_title_en": "Fairytale",
+    "tmdb_title_original": "Cuento de hadas",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "Two fairy godmothers struggle to make their godchildren not fight and love each other, but a third person intervenes and worsens the situation.",
+    "poster_path": "/jBj88jZ4pGdTo5mKbskkUviki7G.jpg",
+    "backdrop_path": null,
+    "release_date": "1951-01-01",
+    "director": "Edgar Neville",
+    "director_jp": "Edgar Neville",
+    "director_en": "Edgar Neville",
+    "genres": [
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy"
+    ],
+    "runtime": 81,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "tmdb:73030": {
+    "tmdb_id": 73030,
+    "tmdb_title_jp": "Александра",
+    "tmdb_title_en": "Aleksandra",
+    "tmdb_title_original": "Александра",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "Саша — фельдшер Скорой помощи. Вся ее жизнь подчинена работе и заботе о муже Романе. Саша и не думает о развлечениях, встречах с подругами и покупках. Все тяжело заработанные деньги она тратит на любимого супруга, а в выходные пишет за него курсовые. Ведь Роман учится в институте, правда, в основном он весело проводит время с друзьями. И вот наступит момент, когда Роману станет скучно с домашней Сашей, и главной героине придется начинать жизнь с «чистого листа» — без мужа и для себя.",
+    "poster_path": "/diFwl7BlItwz6isY5WfLCiAakU0.jpg",
+    "backdrop_path": null,
+    "release_date": "2010-06-06",
+    "director": "Yuliya Krasnova",
+    "director_jp": "Yuliya Krasnova",
+    "director_en": "Yuliya Krasnova",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "tmdb:1224993": {
+    "tmdb_id": 1224993,
+    "tmdb_title_jp": "검은 수녀들",
+    "tmdb_title_en": "Dark Nuns",
+    "tmdb_title_original": "검은 수녀들",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Desperation drives two nuns to perform an exorcism no nun should attempt. With a possessed child at the mercy of evil and the opposition of the Catholic Church, they take on the dangerous forbidden rituals themselves, putting their immortal souls in grave danger. They must confront the terrifying cost of their sacrilegious actions, but one goal remains: the boy must be saved at all costs.",
+    "poster_path": "/8NqTc1N4M6XOrOxw0Kd8W40G72d.jpg",
+    "backdrop_path": "/xIB0jjWBuURB0K2Pr91VsjUNYsY.jpg",
+    "release_date": "2025-01-24",
+    "director": "권혁재",
+    "director_jp": "권혁재",
+    "director_en": "Kwon Hyeok-jae",
+    "genres": [
+      "ホラー",
+      "謎",
+      "スリラー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery",
+      "Thriller",
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 6.24,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:801690": {
+    "tmdb_id": 801690,
+    "tmdb_title_jp": "¡Viva Maestro!",
+    "tmdb_title_en": "¡Viva Maestro!",
+    "tmdb_title_original": "¡Viva Maestro!",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Conductor Gustavo Dudamel sets the music world afire with his original interpretations of the greatest symphonic works. He is named one of Time's \"100 Most Influential People\" and serves as music and artistic director of the Los Angeles Philharmonic. Amidst social unrest in his native Venezuela, he devises an innovative concert that celebrates the power of art to renew and unite.",
+    "poster_path": "/uNkTGpXUcZY9R6g3koATX1Pe6yN.jpg",
+    "backdrop_path": "/yw7B62CR2Mb70Bz9KNIPHMe2EPz.jpg",
+    "release_date": "2022-04-08",
+    "director": "Ted Braun",
+    "director_jp": "Ted Braun",
+    "director_en": "Ted Braun",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 99,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:657195": {
+    "tmdb_id": 657195,
+    "tmdb_title_jp": "Tralala",
+    "tmdb_title_en": "Tralala",
+    "tmdb_title_original": "Tralala",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A 48-year-old homeless singer and composer receive a cryptic message that makes him believe he has been visited by the Virgin Mary.",
+    "poster_path": "/2ji6LgFftw4639IitNTYUTZWia4.jpg",
+    "backdrop_path": "/gBcISebRgoEm02VsnMj1TX8ilkj.jpg",
+    "release_date": "2021-07-16",
+    "director": "Jean-Marie Larrieu",
+    "director_jp": "Jean-Marie Larrieu",
+    "director_en": "Jean-Marie Larrieu",
+    "genres": [
+      "コメディ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Music"
+    ],
+    "runtime": 120,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1136987": {
+    "tmdb_id": 1136987,
+    "tmdb_title_jp": "C'est pas moi",
+    "tmdb_title_en": "It's Not Me",
+    "tmdb_title_original": "C'est pas moi",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "This free-form film is a self-portrait, which revisits more than 40 years of the author’s filmography and questions the major stations of his life, while capturing the political tremors of the time.",
+    "poster_path": "/cZa91XFQoNsfx1uLNByz7pIFH2G.jpg",
+    "backdrop_path": "/wR7HeOCCpRrDEjea09qCdfYNDdj.jpg",
+    "release_date": "2024-06-12",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Documentary"
+    ],
+    "runtime": 42,
+    "vote_average": 7.179,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
       }
     ]
   }

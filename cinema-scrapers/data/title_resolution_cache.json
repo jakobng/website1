@@ -2942,5 +2942,269 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ストロベリームーン 余命半年の恋": {
+    "english_title": "Strawberry Moon",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ストロベリームーン 余命半年の恋",
+    "director": "Mai Sakai",
+    "country": "Japan"
+  },
+  "郊外の鳥たち": {
+    "english_title": "Suburban Birds",
+    "release_year": 2018,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "郊区的鸟",
+    "director": "Qiu Sheng",
+    "country": "China"
+  },
+  "Bi Gan A SHORT STORY ビー・ガン／ショート・ストーリー": {
+    "english_title": "A Short Story",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "破碎太阳之心",
+    "director": "Bi Gan",
+    "country": "China"
+  },
+  "太陽 デジタル・リマスター版": {
+    "english_title": "The Sun",
+    "release_year": 2005,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "太陽",
+    "director": "Alexander Sokurov",
+    "country": "Russia, Italy, France, Switzerland",
+    "failed": true
+  },
+  "牡牛座 レーニンの肖像": {
+    "english_title": "Taurus",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Телец",
+    "director": "Alexander Sokurov",
+    "country": "Russia"
+  },
+  "モレク神": {
+    "english_title": "Moloch",
+    "release_year": 1999,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Молох",
+    "director": "Aleksandr Sokurov",
+    "country": "Russia"
+  },
+  "象は静かに座っている": {
+    "english_title": "An Elephant Sitting Still",
+    "release_year": 2018,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "大象席地而坐",
+    "director": "Hu Bo",
+    "country": "China"
+  },
+  "独裁者たちのとき": {
+    "english_title": "Fairytale",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "独裁者たちのとき",
+    "director": "Alexander Sokurov",
+    "country": "Russia"
+  },
+  "チェチェンへ アレクサンドラの旅": {
+    "english_title": "Alexandra",
+    "release_year": 2007,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Александра",
+    "director": "Alexander Sokurov",
+    "country": "Russia"
+  },
+  "ペテルブルグ・エレジー＋ヒトラーのためのソナタ": {
+    "english_title": "Petersburg Elegy / Sonata for Hitler",
+    "release_year": 1990,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Peterburgskaya elegiya / Sonata dlya Gitlera",
+    "director": "Aleksandr Sokurov",
+    "country": "Soviet Union",
+    "failed": true
+  },
+  "【vol+】吹替 ﾏｰｽﾞ･ｴｸｽﾌﾟﾚｽ": {
+    "english_title": "Mars Express",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mars Express",
+    "director": "Jérémie Périn",
+    "country": "France"
+  },
+  "【vol+】字幕 ﾏｰｽﾞ･ｴｸｽﾌﾟﾚｽ": {
+    "english_title": "Mars Express",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mars Express",
+    "director": "Jérémie Périn",
+    "country": "France"
+  },
+  "鬼胎（クィテ） 黒い修道女": {
+    "english_title": "Dark Nuns",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "검은 수녀들",
+    "director": "Kwon Hyeok-jae",
+    "country": "South Korea"
+  },
+  "クイーンダム／誕生 上映前舞台挨拶": {
+    "english_title": "Queendom",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Queendom",
+    "director": "Agniia Galdanova",
+    "country": "France, USA"
+  },
+  "長安のライチ 予告３分": {
+    "english_title": "The Lychee of Chang'an",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "长安的荔枝",
+    "director": "Da Peng",
+    "country": "China"
+  },
+  "ビバ・マエストロ！指揮者ドゥダメルの挑戦【再上映】": {
+    "english_title": "¡Viva Maestro!",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "¡Viva Maestro!",
+    "director": "Ted Braun",
+    "country": "USA"
+  },
+  "在日ミャンマー人 －私たちの自由－": {
+    "english_title": "Burmese in Japan - Our Freedom",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "在日ミャンマー人 －私たちの自由－",
+    "director": "Toshikuni Doi",
+    "country": "Japan",
+    "failed": true
+  },
+  "トラララ": {
+    "english_title": "Tralala",
+    "release_year": 2021,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Tralala",
+    "director": "Arnaud Larrieu, Jean-Marie Larrieu",
+    "country": "France"
+  },
+  "IT'S NOT ME イッツ・ノット・ミー": {
+    "english_title": "It's Not Me",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "C'est pas moi",
+    "director": "Leos Carax",
+    "country": "France"
+  },
+  "メドールの帝国": {
+    "english_title": "The Empire of Medor",
+    "release_year": 1986,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "L'Empire de Médor",
+    "director": "Luc Moullet",
+    "country": "France"
+  },
+  "姑獲鳥（うぶめ）の夏": {
+    "english_title": "The Summer of the Ubume",
+    "release_year": 2005,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "姑獲鳥の夏",
+    "director": "Akio Jissoji",
+    "country": "Japan"
+  },
+  "怪談〈短縮版〉": {
+    "english_title": "Kwaidan",
+    "release_year": 1964,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "怪談",
+    "director": "Masaki Kobayashi",
+    "country": "Japan"
+  },
+  "牡丹燈籠": {
+    "english_title": "The Bride from Hades",
+    "release_year": 1968,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "牡丹燈籠",
+    "director": "Satsuo Yamamoto",
+    "country": "Japan"
+  },
+  "リング": {
+    "english_title": "Ring",
+    "release_year": 1998,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "リング",
+    "director": "Hideo Nakata",
+    "country": "Japan"
+  },
+  "陰陽師": {
+    "english_title": "Onmyoji: The Yin Yang Master",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "陰陽師",
+    "director": "Yōjirō Takita",
+    "country": "Japan"
+  },
+  "黒い花粉": {
+    "english_title": "Black Pollen",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "黒い花粉",
+    "director": "Hideo Ōba",
+    "country": "Japan",
+    "failed": true
+  },
+  "ボロ家の春秋": {
+    "english_title": "It Happened in a Crowded Shack",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ボロ家の春秋",
+    "director": "Noboru Nakamura",
+    "country": "Japan",
+    "failed": true
+  },
+  "顔役（噛みつかれた顔役）": {
+    "english_title": "The Country Boss",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "顔役（噛みつかれた顔役）",
+    "director": "Noboru Nakamura",
+    "country": "Japan"
+  },
+  "アルトマン×ルドルフ特集 まとめて見られるオールナイト！": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
