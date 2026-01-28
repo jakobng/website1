@@ -206,7 +206,14 @@ CINEMA_FILENAME_OVERRIDES = {
     "kino cinéma新宿": "kinoshinjuku",
     "kino cinéma立川髙島屋S.C.館": "kinotachikawa",
     "横浜シネマリン": "cinemarine",
-    "Cinema Neko (シネマネコ)": "neko"
+    "Cinema Neko (シネマネコ)": "neko",
+    "キネカ大森": "cinekaomori",
+    "シネマシティ": "cinemacity",
+    "シネマハウス大塚": "cinemahouse",
+    "シネ・リーブル池袋": "cinelibre",
+    "吉祥寺オデヲン": "kichijojiodean",
+    "シアターギルド代官山": "theatreguild",
+    "東劇": "tokegi"
 }
 
 # --- Utility Functions ---
