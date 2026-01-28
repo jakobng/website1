@@ -3206,5 +3206,78 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "クイーンダム　誕生": {
+    "english_title": "Queendom",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Queendom",
+    "director": "Agniia Galdanova",
+    "country": "France, USA"
+  },
+  "かちこみ！ドラゴン・タイガー・ゲート": {
+    "english_title": "Dragon Tiger Gate",
+    "release_year": 2006,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "龍虎門",
+    "director": "Wilson Yip",
+    "country": "Hong Kong"
+  },
+  "鬼胎（クィテ）　黒い修道女": {
+    "english_title": "Dark Nuns",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "검은 수녀들",
+    "director": "Kwon Hyeok-jae",
+    "country": "South Korea"
+  },
+  "在日ミャンマー人　わたしたちの自由": {
+    "english_title": "Burmese in Japan - Our Freedom",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "在日ミャンマー人　わたしたちの自由",
+    "director": "Toshikuni Doi",
+    "country": "Japan",
+    "failed": true
+  },
+  "ビバ・マエストロ！指揮者ドゥダメルの挑戦": {
+    "english_title": "¡Viva Maestro!",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "¡Viva Maestro!",
+    "director": "Ted Braun",
+    "country": "United States"
+  },
+  "キムズビデオ": {
+    "english_title": "Kim's Video",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Kim's Video",
+    "director": "David Redmon, Ashley Sabin",
+    "country": "USA"
+  },
+  "ストロベリームーン　余命半年の恋": {
+    "english_title": "Strawberry Moon",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ストロベリームーン　余命半年の恋",
+    "director": "Mai Sakai",
+    "country": "Japan"
+  },
+  "長安のライチ 応援上映": {
+    "english_title": "The Lychee Road",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "長安的荔枝",
+    "director": "Da Peng",
+    "country": "China"
   }
 }

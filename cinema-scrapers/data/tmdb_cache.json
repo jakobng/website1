@@ -30094,7 +30094,7 @@
       "Comedy"
     ],
     "runtime": 122,
-    "vote_average": 7.226,
+    "vote_average": 7.2,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -33195,6 +33195,533 @@
       {
         "iso_3166_1": "FR",
         "name": "France"
+      }
+    ]
+  },
+  "天使のたまご": {
+    "tmdb_id": 15916,
+    "tmdb_title_jp": "天使のたまご",
+    "tmdb_title_en": "Angel's Egg",
+    "tmdb_title_original": "天使のたまご",
+    "tmdb_original_language": "ja",
+    "overview": "ノアの方舟が陸地を見つけられなかったもう1つの世界。巨大な眼球を模し、中に複数の人型の彫像が鎮座する宗教の象徴のような機械仕掛けの太陽が海に沈み、世界は夜を迎える。  方舟の中の動物がすべて化石になった頃、忘れ去られた街で一人の少年と一人の少女が出会う。",
+    "overview_en": "In the ruins of a strange city, a young girl takes care of a large egg she holds carefully in her arms. She bonds with a boy who is searching for a bird he saw in a dream.",
+    "poster_path": "/nCjPdzIqynTp7jwOMEzYpF4IcZS.jpg",
+    "backdrop_path": "/nZn384qWYugXu6U1N8Ya0Iv0NXE.jpg",
+    "release_date": "1985-12-22",
+    "director": "押井守",
+    "director_jp": "押井守",
+    "director_en": "Mamoru Oshii",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Mystery"
+    ],
+    "runtime": 71,
+    "vote_average": 7.728,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "クイーンダム　誕生": {
+    "tmdb_id": 951036,
+    "tmdb_title_jp": "Queendom",
+    "tmdb_title_en": "Queendom",
+    "tmdb_title_original": "Queendom",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "In defiance of Russia’s anti-LGBTQ laws, a queer, 21-year-old artist risks her life performing in surreal costumes throughout Moscow. Jenna Marvin’s radical public performances blend artistry and activism in this SXSW documentary.",
+    "poster_path": "/cmpVHgtfeJgyIergZwjH85i1NdC.jpg",
+    "backdrop_path": "/A4zCy3ShUWVdH2Rh4RJtvWX25k1.jpg",
+    "release_date": "2023-12-01",
+    "director": "Agniia Galdanova",
+    "director_jp": "Agniia Galdanova",
+    "director_en": "Agniia Galdanova",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 98,
+    "vote_average": 8.429,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "最強のふたり": {
+    "tmdb_id": 77338,
+    "tmdb_title_jp": "最強のふたり",
+    "tmdb_title_en": "The Intouchables",
+    "tmdb_title_original": "Intouchables",
+    "tmdb_original_language": "fr",
+    "overview": "パラグライダーの事故のために首から下が不自由になり、車いす生活を送る大富豪フィリップ。介護者募集の面接にアフリカ系青年ドリスがやって来る。ドリスは不採用の証明書3枚で支給される失業手当が目的だったが、フィリップは彼を気に入って介護者に採用。介護の訓練が始まるが、マイペースのドリス。しかし、傲慢で気難しいフィリップに対してドリスがシニカルなユーモアや深い教養を示すうち、2人の間に友情が芽生えていく。",
+    "overview_en": "A true story of two men who should never have met – a quadriplegic aristocrat who was injured in a paragliding accident and a young man from the projects.",
+    "poster_path": "/b4hfdkHrx2VpXDqFeD3SuE6tgYe.jpg",
+    "backdrop_path": "/5ATSg3rufgIMfcrHd2gEi678hZu.jpg",
+    "release_date": "2011-11-02",
+    "director": "Éric Toledano",
+    "director_jp": "Éric Toledano",
+    "director_en": "Éric Toledano",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 113,
+    "vote_average": 8.27,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:77338": {
+    "tmdb_id": 77338,
+    "tmdb_title_jp": "最強のふたり",
+    "tmdb_title_en": "The Intouchables",
+    "tmdb_title_original": "Intouchables",
+    "tmdb_original_language": "fr",
+    "overview": "パラグライダーの事故のために首から下が不自由になり、車いす生活を送る大富豪フィリップ。介護者募集の面接にアフリカ系青年ドリスがやって来る。ドリスは不採用の証明書3枚で支給される失業手当が目的だったが、フィリップは彼を気に入って介護者に採用。介護の訓練が始まるが、マイペースのドリス。しかし、傲慢で気難しいフィリップに対してドリスがシニカルなユーモアや深い教養を示すうち、2人の間に友情が芽生えていく。",
+    "overview_en": "A true story of two men who should never have met – a quadriplegic aristocrat who was injured in a paragliding accident and a young man from the projects.",
+    "poster_path": "/b4hfdkHrx2VpXDqFeD3SuE6tgYe.jpg",
+    "backdrop_path": "/5ATSg3rufgIMfcrHd2gEi678hZu.jpg",
+    "release_date": "2011-11-02",
+    "director": "Éric Toledano",
+    "director_jp": "Éric Toledano",
+    "director_en": "Éric Toledano",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 113,
+    "vote_average": 8.27,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "かちこみ！ドラゴン・タイガー・ゲート": {
+    "tmdb_id": 15860,
+    "tmdb_title_jp": "龍虎門",
+    "tmdb_title_en": "Dragon Tiger Gate",
+    "tmdb_title_original": "龍虎門",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Three young martial arts masters emerge from the back streets of Hong Kong to help the powerless fight injustice.",
+    "poster_path": "/qamxFxSDtxFk4WPOp5bOYroLqFa.jpg",
+    "backdrop_path": "/gOsmhLqpHcahFQJsUwHvqHG436S.jpg",
+    "release_date": "2006-07-27",
+    "director": "葉偉信",
+    "director_jp": "葉偉信",
+    "director_en": "Wilson Yip",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 94,
+    "vote_average": 6.686,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "少林サッカー": {
+    "tmdb_id": 11770,
+    "tmdb_title_jp": "少林サッカー",
+    "tmdb_title_en": "Shaolin Soccer",
+    "tmdb_title_original": "少林足球",
+    "tmdb_original_language": "cn",
+    "overview": "“黄金の右”と呼ばれるサッカー選手ファンは、チームメイトのハンが持ちかけた八百長試合に荷担したことがきっかけで自慢の脚を折られてしまった。夢半ばで諦めざるを得なかったファン。それから20年、ファンは、いまやサッカー界の首領として君臨するハンの雑用係にまで落ちぶれていた。そんなある日、ファンは街で不思議な青年シンと出会う。少林拳を信奉する彼は、くず拾いをしながら道行く人に少林拳を説いて回っていた。ファンはふとしたことからシンの超人的な脚力を見抜き、自らがなし得なかった夢をシンに託すべく、彼にサッカーを教え込むのだった。",
+    "overview_en": "A young Shaolin follower reunites with his discouraged brothers to form a soccer team using their martial art skills to their advantage.",
+    "poster_path": "/4PX03q04itGzk3A1ZNf3anaiBnd.jpg",
+    "backdrop_path": "/lMRX4cLx4hxYth3iQ96c0E1RHGB.jpg",
+    "release_date": "2001-07-05",
+    "director": "周星馳",
+    "director_jp": "周星馳",
+    "director_en": "Stephen Chow",
+    "genres": [
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 113,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:11770": {
+    "tmdb_id": 11770,
+    "tmdb_title_jp": "少林サッカー",
+    "tmdb_title_en": "Shaolin Soccer",
+    "tmdb_title_original": "少林足球",
+    "tmdb_original_language": "cn",
+    "overview": "“黄金の右”と呼ばれるサッカー選手ファンは、チームメイトのハンが持ちかけた八百長試合に荷担したことがきっかけで自慢の脚を折られてしまった。夢半ばで諦めざるを得なかったファン。それから20年、ファンは、いまやサッカー界の首領として君臨するハンの雑用係にまで落ちぶれていた。そんなある日、ファンは街で不思議な青年シンと出会う。少林拳を信奉する彼は、くず拾いをしながら道行く人に少林拳を説いて回っていた。ファンはふとしたことからシンの超人的な脚力を見抜き、自らがなし得なかった夢をシンに託すべく、彼にサッカーを教え込むのだった。",
+    "overview_en": "A young Shaolin follower reunites with his discouraged brothers to form a soccer team using their martial art skills to their advantage.",
+    "poster_path": "/4PX03q04itGzk3A1ZNf3anaiBnd.jpg",
+    "backdrop_path": "/lMRX4cLx4hxYth3iQ96c0E1RHGB.jpg",
+    "release_date": "2001-07-05",
+    "director": "周星馳",
+    "director_jp": "周星馳",
+    "director_en": "Stephen Chow",
+    "genres": [
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 113,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "鬼胎（クィテ）　黒い修道女": {
+    "tmdb_id": 1224993,
+    "tmdb_title_jp": "검은 수녀들",
+    "tmdb_title_en": "Dark Nuns",
+    "tmdb_title_original": "검은 수녀들",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Desperation drives two nuns to perform an exorcism no nun should attempt. With a possessed child at the mercy of evil and the opposition of the Catholic Church, they take on the dangerous forbidden rituals themselves, putting their immortal souls in grave danger. They must confront the terrifying cost of their sacrilegious actions, but one goal remains: the boy must be saved at all costs.",
+    "poster_path": "/8NqTc1N4M6XOrOxw0Kd8W40G72d.jpg",
+    "backdrop_path": "/xIB0jjWBuURB0K2Pr91VsjUNYsY.jpg",
+    "release_date": "2025-01-24",
+    "director": "권혁재",
+    "director_jp": "권혁재",
+    "director_en": "Kwon Hyeok-jae",
+    "genres": [
+      "ホラー",
+      "謎",
+      "スリラー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery",
+      "Thriller",
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 6.24,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "在日ミャンマー人　わたしたちの自由": null,
+  "ビバ・マエストロ！指揮者ドゥダメルの挑戦": {
+    "tmdb_id": 801690,
+    "tmdb_title_jp": "¡Viva Maestro!",
+    "tmdb_title_en": "¡Viva Maestro!",
+    "tmdb_title_original": "¡Viva Maestro!",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Conductor Gustavo Dudamel sets the music world afire with his original interpretations of the greatest symphonic works. He is named one of Time's \"100 Most Influential People\" and serves as music and artistic director of the Los Angeles Philharmonic. Amidst social unrest in his native Venezuela, he devises an innovative concert that celebrates the power of art to renew and unite.",
+    "poster_path": "/uNkTGpXUcZY9R6g3koATX1Pe6yN.jpg",
+    "backdrop_path": "/yw7B62CR2Mb70Bz9KNIPHMe2EPz.jpg",
+    "release_date": "2022-04-08",
+    "director": "Ted Braun",
+    "director_jp": "Ted Braun",
+    "director_en": "Ted Braun",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 99,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "キムズビデオ": {
+    "tmdb_id": 1058673,
+    "tmdb_title_jp": "Kim's Video",
+    "tmdb_title_en": "Kim's Video",
+    "tmdb_title_original": "Kim's Video",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Since 1987, and for almost three decades, New York cinephiles had access to a vast treasure trove of rare films thanks to Kim's Video, a small empire run by Yongman Kim, an enigmatic character who amassed more than fifty thousand VHS tapes.",
+    "poster_path": "/rqMNKFY5RpbavDAiPd3jgNzd6fP.jpg",
+    "backdrop_path": "/e3QWy9vh0E2TLpt9sMDAVcJVEby.jpg",
+    "release_date": "2023-09-27",
+    "director": "David Redmon",
+    "director_jp": "David Redmon",
+    "director_en": "David Redmon",
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Documentary",
+      "History"
+    ],
+    "runtime": 89,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "コミック雑誌なんかいらない!": {
+    "tmdb_id": 85015,
+    "tmdb_title_jp": "コミック雑誌なんかいらない！",
+    "tmdb_title_en": "No More Comics!",
+    "tmdb_title_original": "コミック雑誌なんかいらない！",
+    "tmdb_original_language": "ja",
+    "overview": "TVの芸能レポーター木滑は、取材拒否や暴力にも「恐縮です」の一言で乗り切る低姿勢のハイエナ。怪物と化したワイトショーやジャーナリズムの中で、果たして彼は何を見い出すのか?",
+    "overview_en": "Stuck doing show-biz schlock, an investigative reporter stumbles on a scheme to swindle pensions through an attractive gold futures scam, a potential news-story.",
+    "poster_path": "/6TwsUSgpNwbryGarv6wBEzo0JI9.jpg",
+    "backdrop_path": "/ekq6vWk8gVTlppCVNmW2nlAbC0E.jpg",
+    "release_date": "1986-03-24",
+    "director": "滝田洋二郎",
+    "director_jp": "滝田洋二郎",
+    "director_en": "Yojiro Takita",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 127,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:85015": {
+    "tmdb_id": 85015,
+    "tmdb_title_jp": "コミック雑誌なんかいらない！",
+    "tmdb_title_en": "No More Comics!",
+    "tmdb_title_original": "コミック雑誌なんかいらない！",
+    "tmdb_original_language": "ja",
+    "overview": "TVの芸能レポーター木滑は、取材拒否や暴力にも「恐縮です」の一言で乗り切る低姿勢のハイエナ。怪物と化したワイトショーやジャーナリズムの中で、果たして彼は何を見い出すのか?",
+    "overview_en": "Stuck doing show-biz schlock, an investigative reporter stumbles on a scheme to swindle pensions through an attractive gold futures scam, a potential news-story.",
+    "poster_path": "/6TwsUSgpNwbryGarv6wBEzo0JI9.jpg",
+    "backdrop_path": "/ekq6vWk8gVTlppCVNmW2nlAbC0E.jpg",
+    "release_date": "1986-03-24",
+    "director": "滝田洋二郎",
+    "director_jp": "滝田洋二郎",
+    "director_en": "Yojiro Takita",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 127,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ストロベリームーン　余命半年の恋": {
+    "tmdb_id": 1502700,
+    "tmdb_title_jp": "ストロベリームーン",
+    "tmdb_title_en": "Strawberry Moon",
+    "tmdb_title_original": "ストロベリームーン",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Being sick since childhood, Moe has spent most of her life at home, without school or friends. After being given just six months to live, she decides to spend her final days differently—by attending high school. On the very first day, she boldly confesses her feelings to her classmate Hinata. The two start dating and experience their first love. Then, on Moe’s birthday, they plan to watch the “Strawberry Moon” together – a full moon said to bind lovers forever. But after that night, she disappears without a word…",
+    "poster_path": "/lJC0r26tZM5J4P32PRJhtTNkhtp.jpg",
+    "backdrop_path": "/czT3vIokuddLvwLGv2o4wjjZ7p6.jpg",
+    "release_date": "2025-10-17",
+    "director": "酒井麻衣",
+    "director_jp": "酒井麻衣",
+    "director_en": "Mai Sakai",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 120,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "長安のライチ 応援上映": {
+    "tmdb_id": 1356587,
+    "tmdb_title_jp": "长安的荔枝",
+    "tmdb_title_en": "The Lychee Road",
+    "tmdb_title_original": "长安的荔枝",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "During the Tianbao period of the Tang Dynasty, Li Shande, a petty official in Chang'an, was suddenly given a task to bring fresh lychees from Lingnan. The lychee is perishable, and becomes tasteless three days after it leaves the branch, and Lingnan is more than 5,000 miles away from Chang'an, so this is an impossible task. But for the sake of his wife and daughter at home, Li Shande was determined to give it a try.",
+    "poster_path": "/bT8E8PDcN25FKynuFvzHYDp2Tk1.jpg",
+    "backdrop_path": "/8OPxY4gmVLoURJcz1BbR2a4Hi5q.jpg",
+    "release_date": "2025-07-12",
+    "director": "大鹏",
+    "director_jp": "大鹏",
+    "director_en": "Dong Chengpeng",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Comedy"
+    ],
+    "runtime": 122,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:15860": {
+    "tmdb_id": 15860,
+    "tmdb_title_jp": "龍虎門",
+    "tmdb_title_en": "Dragon Tiger Gate",
+    "tmdb_title_original": "龍虎門",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Three young martial arts masters emerge from the back streets of Hong Kong to help the powerless fight injustice.",
+    "poster_path": "/qamxFxSDtxFk4WPOp5bOYroLqFa.jpg",
+    "backdrop_path": "/gOsmhLqpHcahFQJsUwHvqHG436S.jpg",
+    "release_date": "2006-07-27",
+    "director": "葉偉信",
+    "director_jp": "葉偉信",
+    "director_en": "Wilson Yip",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 94,
+    "vote_average": 6.686,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:1058673": {
+    "tmdb_id": 1058673,
+    "tmdb_title_jp": "Kim's Video",
+    "tmdb_title_en": "Kim's Video",
+    "tmdb_title_original": "Kim's Video",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Since 1987, and for almost three decades, New York cinephiles had access to a vast treasure trove of rare films thanks to Kim's Video, a small empire run by Yongman Kim, an enigmatic character who amassed more than fifty thousand VHS tapes.",
+    "poster_path": "/rqMNKFY5RpbavDAiPd3jgNzd6fP.jpg",
+    "backdrop_path": "/e3QWy9vh0E2TLpt9sMDAVcJVEby.jpg",
+    "release_date": "2023-09-27",
+    "director": "David Redmon",
+    "director_jp": "David Redmon",
+    "director_en": "David Redmon",
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Documentary",
+      "History"
+    ],
+    "runtime": 89,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
       }
     ]
   }
