@@ -1277,7 +1277,7 @@
                 elements.dateSelect.value = currentValue;
             }
             function getDefaultDateForView() {
-                if (state.view === "film" && state.todayDate) {
+                if (state.todayDate) {
                     return state.todayDate;
                 }
                 return "all";
@@ -1491,7 +1491,7 @@
                     return dateText && dateText >= todayText;
                 }))).sort();
                 state.todayDate = dates.includes(todayText) ? todayText : (dates[0] || "");
-                state.filters.date = "all";
+                state.filters.date = getDefaultDateForView();
                 elements.dateSelect.innerHTML = "";
                 const allOption = document.createElement("option");
                 allOption.value = "all";
@@ -1503,9 +1503,6 @@
                     option.textContent = formatDate(dateText, true);
                     elements.dateSelect.appendChild(option);
                 });
-                if (state.view === "film" && state.todayDate) {
-                    state.filters.date = state.todayDate;
-                }
                 elements.dateSelect.value = state.filters.date || "all";
                 const regions = Array.from(new Set(showings.map(function (showing) {
                     return showing.region;
