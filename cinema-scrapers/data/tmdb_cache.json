@@ -4452,7 +4452,7 @@
       "Drama"
     ],
     "runtime": 128,
-    "vote_average": 7.515,
+    "vote_average": 7.521,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -4985,7 +4985,7 @@
       "Thriller"
     ],
     "runtime": 115,
-    "vote_average": 5.914,
+    "vote_average": 5.939,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -5655,7 +5655,7 @@
       "Romance"
     ],
     "runtime": 117,
-    "vote_average": 7.483,
+    "vote_average": 7.503,
     "tmdb_countries": [
       {
         "iso_3166_1": "IN",
@@ -8992,7 +8992,7 @@
       "Music"
     ],
     "runtime": 120,
-    "vote_average": 6.8,
+    "vote_average": 6.9,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -11788,7 +11788,7 @@
       "Drama"
     ],
     "runtime": 132,
-    "vote_average": 8.6,
+    "vote_average": 7.714,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -20492,7 +20492,7 @@
       "Comedy"
     ],
     "runtime": 106,
-    "vote_average": 7.336,
+    "vote_average": 7.34,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -20830,7 +20830,7 @@
       "Thriller"
     ],
     "runtime": 101,
-    "vote_average": 7.176,
+    "vote_average": 7.174,
     "tmdb_countries": [
       {
         "iso_3166_1": "HK",
@@ -23219,7 +23219,7 @@
       "Thriller"
     ],
     "runtime": 120,
-    "vote_average": 6.4,
+    "vote_average": 6.426,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -23531,7 +23531,7 @@
   "tmdb:1413097": {
     "tmdb_id": 1413097,
     "tmdb_title_jp": "Melania",
-    "tmdb_title_en": "Melania",
+    "tmdb_title_en": "Melanoma",
     "tmdb_title_original": "Melania",
     "tmdb_original_language": "en",
     "overview": "",
@@ -23549,7 +23549,7 @@
       "Documentary"
     ],
     "runtime": 104,
-    "vote_average": 1.0,
+    "vote_average": 3.8,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -23638,9 +23638,9 @@
     "poster_path": "/66IpIhBg87z8bzNyxOWKHplbNCg.jpg",
     "backdrop_path": "/fRUYuvMTyNrY2ksPpDLqqV9XiVW.jpg",
     "release_date": "2001-12-27",
-    "director": "羅永昌",
-    "director_jp": "羅永昌",
-    "director_en": "Law Wing-Cheong",
+    "director": "杜琪峰",
+    "director_jp": "杜琪峰",
+    "director_en": "Johnnie To",
     "genres": [
       "アクション",
       "犯罪",
@@ -27911,7 +27911,7 @@
       "Romance"
     ],
     "runtime": 123,
-    "vote_average": 7.813,
+    "vote_average": 7.808,
     "tmdb_countries": [
       {
         "iso_3166_1": "IN",
@@ -30401,7 +30401,7 @@
       "Drama"
     ],
     "runtime": 93,
-    "vote_average": 7.4,
+    "vote_average": 7.42,
     "tmdb_countries": [
       {
         "iso_3166_1": "TW",
@@ -33722,6 +33722,3395 @@
       {
         "iso_3166_1": "US",
         "name": "United States of America"
+      }
+    ]
+  },
+  "水の中で息をする　彼女でも彼でもなく": {
+    "tmdb_id": 1161928,
+    "tmdb_title_jp": "Holding Back the Tide",
+    "tmdb_title_en": "Holding Back the Tide",
+    "tmdb_title_original": "Holding Back the Tide",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "This impressionist hybrid documentary traces the oyster through its many life cycles in New York, once the world's oyster capital. Now their specter haunts the city through queer characters embodying ancient myth, discovering the overlooked history and biology of the bivalve that built the city. As environmentalists restore them to the harbor, Holding Back the Tide looks to the oyster as a queer icon, entangled with nature, with much to teach about our continued survival.",
+    "poster_path": "/fk3vJGtKzwU9rCD6qXj6dn9kLIk.jpg",
+    "backdrop_path": "/1daJ3wEedvTZX7rBCl7rLOi5KCT.jpg",
+    "release_date": "2024-09-06",
+    "director": "Emily Packer",
+    "director_jp": "Emily Packer",
+    "director_en": "Emily Packer",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 81,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "暗黒街（1927）": {
+    "tmdb_id": 42565,
+    "tmdb_title_jp": "Underworld",
+    "tmdb_title_en": "Underworld",
+    "tmdb_title_original": "Underworld",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Boisterous gangster kingpin Bull Weed rehabilitates his former lawyer from his alcoholic haze, but complications arise when he falls for Weed's girlfriend.",
+    "poster_path": "/6ZjgbeCwS7sipil1J221lbjaqGG.jpg",
+    "backdrop_path": "/1NYCVTVWmwy0r5KYD1CXk8RcRyj.jpg",
+    "release_date": "1927-08-20",
+    "director": "Josef von Sternberg",
+    "director_jp": "Josef von Sternberg",
+    "director_en": "Josef von Sternberg",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Romance"
+    ],
+    "runtime": 87,
+    "vote_average": 7.018,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "パルブロス　黙示録の子供たち": {
+    "tmdb_id": 1199974,
+    "tmdb_title_jp": "Párvulos: Hijos del Apocalipsis",
+    "tmdb_title_en": "Párvulos: Children of the Apocalypse",
+    "tmdb_title_original": "Párvulos: Hijos del Apocalipsis",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "In a dystopian future ravaged by a viral apocalypse, three young brothers—Salvador, Oliver, and Benjamin—find themselves isolated in a remote cabin deep within the woods. As they navigate this desolate world, they harbor a dark and disturbing secret in their basement, a presence they must feed to ensure their own survival.",
+    "poster_path": "/g3lmSgQRQK5uz5ch0sfV75Oz11g.jpg",
+    "backdrop_path": "/mSIp4SUvsFOjA2vKnLTS5AnyR1A.jpg",
+    "release_date": "2024-10-18",
+    "director": "Isaac Ezban",
+    "director_jp": "Isaac Ezban",
+    "director_en": "Isaac Ezban",
+    "genres": [
+      "ホラー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Fantasy"
+    ],
+    "runtime": 120,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MX",
+        "name": "Mexico"
+      }
+    ]
+  },
+  "スケッチ　描かれたモンスターたち": {
+    "tmdb_id": 1319969,
+    "tmdb_title_jp": "Sketch",
+    "tmdb_title_en": "Sketch: Attention à ce que tu dessines",
+    "tmdb_title_original": "Sketch",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "When a young girl’s sketchbook falls into a strange pond, her drawings come to life—chaotic, real, and on the loose. As the town descends into chaos, her family must reunite and stop the monsters they never meant to unleash.",
+    "poster_path": "/sxiDj3dTgZuCPkx30Jvyq8K9QUV.jpg",
+    "backdrop_path": "/3htgvJ6d0GV633oHYueeISk8J7w.jpg",
+    "release_date": "2025-08-06",
+    "director": "Seth Worley",
+    "director_jp": "Seth Worley",
+    "director_en": "Seth Worley",
+    "genres": [
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Adventure",
+      "Fantasy",
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 93,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "スタック": {
+    "tmdb_id": 623664,
+    "tmdb_title_jp": "Stuck",
+    "tmdb_title_en": "Stuck",
+    "tmdb_title_original": "Stuck",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A sex toy mishap leads to a night in the emergency room, where a freshly broken-up couple are forced to confront their issues on love and relationships.",
+    "poster_path": "/6KJ0QyRJIAQ7cpZCvrEA4iBYHpE.jpg",
+    "backdrop_path": "/aUxB1VWTl7hgDqTU52ZAW6a3Gna.jpg",
+    "release_date": "2018-08-14",
+    "director": "Corey Shurge",
+    "director_jp": "Corey Shurge",
+    "director_en": "Corey Shurge",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 15,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "ラスト・ロデオ　約束のフィールド": {
+    "tmdb_id": 1380682,
+    "tmdb_title_jp": "The Last Rodeo",
+    "tmdb_title_en": "The Last Rodeo",
+    "tmdb_title_original": "The Last Rodeo",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A retired rodeo legend risks it all to save his grandson. Facing his own painful past and the fears of his family, he enters a high-stakes bullriding competition as the oldest contestant ever. Along the way, he reconciles old wounds with his estranged daughter and proves that true courage is found in the fight for family.",
+    "poster_path": "/62nu9AEIeyDNCQ2xJabq7gwb2zR.jpg",
+    "backdrop_path": "/9MuwxjnVPGweFwo4cZPbXM2iRX9.jpg",
+    "release_date": "2025-05-22",
+    "director": "Jon Avnet",
+    "director_jp": "Jon Avnet",
+    "director_en": "Jon Avnet",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 7.754,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "オール・アバウト・マイ・マザー": {
+    "tmdb_id": 99,
+    "tmdb_title_jp": "オール・アバウト・マイ・マザー",
+    "tmdb_title_en": "All About My Mother",
+    "tmdb_title_original": "Todo sobre mi madre",
+    "tmdb_original_language": "es",
+    "overview": "マドリードに住む移植コーディネーターのマヌエラは、作家志望の息子・エステバンを女手一つで育ててきた。エステバンの誕生日、二人は『欲望という名の電車』の舞台を観に行く。そして、マヌエラが息子に今まで話さなかった父のことを話そうと決心したとき、エステバンは舞台の主演だった大女優ウマ・ロッホにサインをもらおうとして車にはねられ、そのまま亡くなってしまう。  息子の死を行方不明となっている父に伝えるため、バルセロナへ旅立ったマヌエラは、ひょんなことから息子の死の原因となったウマの付き人になる。バルセロナでマヌエラは、ウマのレズビアンの恋人で麻薬中毒の若手女優・ニナ、性転換した明るいゲイの娼婦・アグラード、エイズを抱えて妊娠した純朴なシスター・ロサ、その母親でボケの進んだ夫に手を焼く厳格な贋作画家、そして、今では「ロラ」という名の女性となりロサにエイズをうつした、息子と同名の元夫といった様々な女性たちと出会い、やがて人生への希望を取り戻していく。",
+    "overview_en": "Following the tragic death of her teenage son, Manuela travels from Madrid to Barcelona in an attempt to contact the long-estranged father the boy never knew. She reunites with an old friend, an outspoken transgender sex worker, and befriends a troubled actress and a pregnant, HIV-positive nun.",
+    "poster_path": "/k58l5tu41EOUa1PMHyEObWVCGZT.jpg",
+    "backdrop_path": "/tilClWjFZeUTGJu0pxgF72fvUmN.jpg",
+    "release_date": "1999-04-16",
+    "director": "ペドロ・アルモドバル",
+    "director_jp": "ペドロ・アルモドバル",
+    "director_en": "Pedro Almodóvar",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 101,
+    "vote_average": 7.629,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:99": {
+    "tmdb_id": 99,
+    "tmdb_title_jp": "オール・アバウト・マイ・マザー",
+    "tmdb_title_en": "All About My Mother",
+    "tmdb_title_original": "Todo sobre mi madre",
+    "tmdb_original_language": "es",
+    "overview": "マドリードに住む移植コーディネーターのマヌエラは、作家志望の息子・エステバンを女手一つで育ててきた。エステバンの誕生日、二人は『欲望という名の電車』の舞台を観に行く。そして、マヌエラが息子に今まで話さなかった父のことを話そうと決心したとき、エステバンは舞台の主演だった大女優ウマ・ロッホにサインをもらおうとして車にはねられ、そのまま亡くなってしまう。  息子の死を行方不明となっている父に伝えるため、バルセロナへ旅立ったマヌエラは、ひょんなことから息子の死の原因となったウマの付き人になる。バルセロナでマヌエラは、ウマのレズビアンの恋人で麻薬中毒の若手女優・ニナ、性転換した明るいゲイの娼婦・アグラード、エイズを抱えて妊娠した純朴なシスター・ロサ、その母親でボケの進んだ夫に手を焼く厳格な贋作画家、そして、今では「ロラ」という名の女性となりロサにエイズをうつした、息子と同名の元夫といった様々な女性たちと出会い、やがて人生への希望を取り戻していく。",
+    "overview_en": "Following the tragic death of her teenage son, Manuela travels from Madrid to Barcelona in an attempt to contact the long-estranged father the boy never knew. She reunites with an old friend, an outspoken transgender sex worker, and befriends a troubled actress and a pregnant, HIV-positive nun.",
+    "poster_path": "/k58l5tu41EOUa1PMHyEObWVCGZT.jpg",
+    "backdrop_path": "/tilClWjFZeUTGJu0pxgF72fvUmN.jpg",
+    "release_date": "1999-04-16",
+    "director": "ペドロ・アルモドバル",
+    "director_jp": "ペドロ・アルモドバル",
+    "director_en": "Pedro Almodóvar",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 101,
+    "vote_average": 7.629,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ぼのぼの": {
+    "tmdb_id": 643277,
+    "tmdb_title_jp": "ぼのぼの",
+    "tmdb_title_en": "Bonobono",
+    "tmdb_title_original": "ぼのぼの",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The first theatrical release, titled Bonobono, opened in theaters on 1993-11-13. The film has since been broadcast on domestic television in Japan, including on broadcast satellite channels such as NHK BS-2. The film has been released on VHS and DVD in Japan, including in a \"no cut\" edition.",
+    "poster_path": "/vjG7FF1aCql50IJBIr3BQLlOePE.jpg",
+    "backdrop_path": "/x7dn00iOqSx3jWgMifwvPSYxvEz.jpg",
+    "release_date": "1993-11-13",
+    "director": "いがらしみきお",
+    "director_jp": "いがらしみきお",
+    "director_en": "Mikio Igarashi",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:643277": {
+    "tmdb_id": 643277,
+    "tmdb_title_jp": "ぼのぼの",
+    "tmdb_title_en": "Bonobono",
+    "tmdb_title_original": "ぼのぼの",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The first theatrical release, titled Bonobono, opened in theaters on 1993-11-13. The film has since been broadcast on domestic television in Japan, including on broadcast satellite channels such as NHK BS-2. The film has been released on VHS and DVD in Japan, including in a \"no cut\" edition.",
+    "poster_path": "/vjG7FF1aCql50IJBIr3BQLlOePE.jpg",
+    "backdrop_path": "/x7dn00iOqSx3jWgMifwvPSYxvEz.jpg",
+    "release_date": "1993-11-13",
+    "director": "いがらしみきお",
+    "director_jp": "いがらしみきお",
+    "director_en": "Mikio Igarashi",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "マスク": {
+    "tmdb_id": 854,
+    "tmdb_title_jp": "マスク",
+    "tmdb_title_en": "The Mask",
+    "tmdb_title_original": "The Mask",
+    "tmdb_original_language": "en",
+    "overview": "真面目だけが取り柄の気弱な銀行員スタンリー。楽しみといえば往年のアニメを見ることくらいで、恋人もできずに冴えない日々を送っていた。そんなある夜、スタンリーは川で奇妙な仮面を見つける。自宅に持ち帰り顔に当ててみると、本人とは正反対のワイルドな男“マスク”に変身してしまう。風のように町へ飛び出した緑色の怪人“マスク”は、普段スタンリーを冷笑してきた人々に次々と仕返しをしていく。",
+    "overview_en": "Stanley Ipkiss, an insecure banker who has lost his zest for life stumbles upon an ancient mask, that turns him into a confident suave cartoon-like character who upsets his ordinary life.",
+    "poster_path": "/o6AKEOazLaYklnMolYB64ENUCLz.jpg",
+    "backdrop_path": "/bQlw59HncOXX9alFlOYKHAvSnm.jpg",
+    "release_date": "1994-07-29",
+    "director": "チャック・ラッセル",
+    "director_jp": "チャック・ラッセル",
+    "director_en": "Chuck Russell",
+    "genres": [
+      "ロマンス",
+      "コメディ",
+      "犯罪",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Romance",
+      "Comedy",
+      "Crime",
+      "Fantasy"
+    ],
+    "runtime": 102,
+    "vote_average": 6.975,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:854": {
+    "tmdb_id": 854,
+    "tmdb_title_jp": "マスク",
+    "tmdb_title_en": "The Mask",
+    "tmdb_title_original": "The Mask",
+    "tmdb_original_language": "en",
+    "overview": "真面目だけが取り柄の気弱な銀行員スタンリー。楽しみといえば往年のアニメを見ることくらいで、恋人もできずに冴えない日々を送っていた。そんなある夜、スタンリーは川で奇妙な仮面を見つける。自宅に持ち帰り顔に当ててみると、本人とは正反対のワイルドな男“マスク”に変身してしまう。風のように町へ飛び出した緑色の怪人“マスク”は、普段スタンリーを冷笑してきた人々に次々と仕返しをしていく。",
+    "overview_en": "Stanley Ipkiss, an insecure banker who has lost his zest for life stumbles upon an ancient mask, that turns him into a confident suave cartoon-like character who upsets his ordinary life.",
+    "poster_path": "/o6AKEOazLaYklnMolYB64ENUCLz.jpg",
+    "backdrop_path": "/bQlw59HncOXX9alFlOYKHAvSnm.jpg",
+    "release_date": "1994-07-29",
+    "director": "チャック・ラッセル",
+    "director_jp": "チャック・ラッセル",
+    "director_en": "Chuck Russell",
+    "genres": [
+      "ロマンス",
+      "コメディ",
+      "犯罪",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Romance",
+      "Comedy",
+      "Crime",
+      "Fantasy"
+    ],
+    "runtime": 102,
+    "vote_average": 6.975,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "グリーンマイル": {
+    "tmdb_id": 497,
+    "tmdb_title_jp": "グリーンマイル",
+    "tmdb_title_en": "The Green Mile",
+    "tmdb_title_original": "The Green Mile",
+    "tmdb_original_language": "en",
+    "overview": "大恐慌中の1935年。コールドマウンテン刑務所にあり、処刑室に続く通路があせた緑色であるため、“グリーンマイル”と呼ばれる死刑囚専用棟に殺人犯コーフィが収監される。だが、幼女惨殺の罪状とは裏腹に、コーフィは素晴らしい力を持っていた。彼は看守長ポールの重度の尿路感染症を治癒し、残忍な看守パーシーに踏み殺されたネズミをよみがえらせる。奇跡を目の当たりにしたポールはコーフィが本当に殺人犯なのか疑いだす。",
+    "overview_en": "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cell block's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
+    "poster_path": "/7ynN9QXuYOoT8hLGqB5PVDznWN7.jpg",
+    "backdrop_path": "/lgJlu0Fp1mdTaFEeaQJ7DskhSOr.jpg",
+    "release_date": "1999-12-10",
+    "director": "Frank Darabont",
+    "director_jp": "Frank Darabont",
+    "director_en": "Frank Darabont",
+    "genres": [
+      "ファンタジー",
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 189,
+    "vote_average": 8.504,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:497": {
+    "tmdb_id": 497,
+    "tmdb_title_jp": "グリーンマイル",
+    "tmdb_title_en": "The Green Mile",
+    "tmdb_title_original": "The Green Mile",
+    "tmdb_original_language": "en",
+    "overview": "大恐慌中の1935年。コールドマウンテン刑務所にあり、処刑室に続く通路があせた緑色であるため、“グリーンマイル”と呼ばれる死刑囚専用棟に殺人犯コーフィが収監される。だが、幼女惨殺の罪状とは裏腹に、コーフィは素晴らしい力を持っていた。彼は看守長ポールの重度の尿路感染症を治癒し、残忍な看守パーシーに踏み殺されたネズミをよみがえらせる。奇跡を目の当たりにしたポールはコーフィが本当に殺人犯なのか疑いだす。",
+    "overview_en": "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cell block's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
+    "poster_path": "/7ynN9QXuYOoT8hLGqB5PVDznWN7.jpg",
+    "backdrop_path": "/lgJlu0Fp1mdTaFEeaQJ7DskhSOr.jpg",
+    "release_date": "1999-12-10",
+    "director": "Frank Darabont",
+    "director_jp": "Frank Darabont",
+    "director_en": "Frank Darabont",
+    "genres": [
+      "ファンタジー",
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 189,
+    "vote_average": 8.504,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "恋のゆくえ　ファビュラス・ベイカー・ボーイズ": {
+    "tmdb_id": 10875,
+    "tmdb_title_jp": "恋のゆくえ／ファビュラス・ベイカー・ボーイズ",
+    "tmdb_title_en": "The Fabulous Baker Boys",
+    "tmdb_title_original": "The Fabulous Baker Boys",
+    "tmdb_original_language": "en",
+    "overview": "風采の上がらないジャズ・ピアニスト・コンビが、起死回生にと雇った美人ヴォーカリスト、スージー。彼女の人気でトリオは一躍脚光を浴びるが、やがて彼らは三者三様の苦い経験をする破目に……。＜監督が撮影当時弱冠29歳とはとても思えない、男女の心の機微を繊細につづった秀作。M・ファイファーが吹替え無しで挑んだ素晴らしいボーカル、ボーとジェフのブリッジズ兄弟の共演と話題は多かったが、何よりも、単なる恋愛劇を越え、アーティストと芸人の狭間で揺れるジャズメンたちの人間ドラマとして、実に格調高い仕上がりになった。＞",
+    "overview_en": "The lives of two struggling musicians, who happen to be brothers, inevitably change when they team up with a beautiful, up-and-coming singer.",
+    "poster_path": "/ge1CJHKOOpc3CTx4eSxVxjLxkUu.jpg",
+    "backdrop_path": "/iUpEDBcoYzND2MhIWr10C93ikFV.jpg",
+    "release_date": "1989-10-13",
+    "director": "Steve Kloves",
+    "director_jp": "Steve Kloves",
+    "director_en": "Steve Kloves",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 114,
+    "vote_average": 6.598,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:10875": {
+    "tmdb_id": 10875,
+    "tmdb_title_jp": "恋のゆくえ／ファビュラス・ベイカー・ボーイズ",
+    "tmdb_title_en": "The Fabulous Baker Boys",
+    "tmdb_title_original": "The Fabulous Baker Boys",
+    "tmdb_original_language": "en",
+    "overview": "風采の上がらないジャズ・ピアニスト・コンビが、起死回生にと雇った美人ヴォーカリスト、スージー。彼女の人気でトリオは一躍脚光を浴びるが、やがて彼らは三者三様の苦い経験をする破目に……。＜監督が撮影当時弱冠29歳とはとても思えない、男女の心の機微を繊細につづった秀作。M・ファイファーが吹替え無しで挑んだ素晴らしいボーカル、ボーとジェフのブリッジズ兄弟の共演と話題は多かったが、何よりも、単なる恋愛劇を越え、アーティストと芸人の狭間で揺れるジャズメンたちの人間ドラマとして、実に格調高い仕上がりになった。＞",
+    "overview_en": "The lives of two struggling musicians, who happen to be brothers, inevitably change when they team up with a beautiful, up-and-coming singer.",
+    "poster_path": "/ge1CJHKOOpc3CTx4eSxVxjLxkUu.jpg",
+    "backdrop_path": "/iUpEDBcoYzND2MhIWr10C93ikFV.jpg",
+    "release_date": "1989-10-13",
+    "director": "Steve Kloves",
+    "director_jp": "Steve Kloves",
+    "director_en": "Steve Kloves",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 114,
+    "vote_average": 6.598,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ヘドウィグ・アンド・アングリーインチ": {
+    "tmdb_id": 13403,
+    "tmdb_title_jp": "ヘドウィグ・アンド・アングリーインチ",
+    "tmdb_title_en": "Hedwig and the Angry Inch",
+    "tmdb_title_original": "Hedwig and the Angry Inch",
+    "tmdb_original_language": "en",
+    "overview": "自由と引き換えに性転換をして女としてアメリカに来たヘドウィグ。やがてロッカーを夢見るとトミーと恋に落ちた彼は、自分の持つ音楽やロック魂を全て教え込む全て教え込む。だがトミーは裏切り全曲を盗んでデビュー。",
+    "overview_en": "Raised a boy in East Berlin, Hedwig undergoes a personal transformation in order to emigrate to the U.S., where she reinvents herself as an 'internationally ignored' but divinely talented rock diva, inhabiting a 'beautiful gender of one'.",
+    "poster_path": "/jafIFAW8sHQkzWPGoMDR4892dFI.jpg",
+    "backdrop_path": "/uY5EB9VIX8lT03MdYcR9DzlhEGM.jpg",
+    "release_date": "2001-07-20",
+    "director": "John Cameron Mitchell",
+    "director_jp": "John Cameron Mitchell",
+    "director_en": "John Cameron Mitchell",
+    "genres": [
+      "コメディ",
+      "音楽",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Music",
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:13403": {
+    "tmdb_id": 13403,
+    "tmdb_title_jp": "ヘドウィグ・アンド・アングリーインチ",
+    "tmdb_title_en": "Hedwig and the Angry Inch",
+    "tmdb_title_original": "Hedwig and the Angry Inch",
+    "tmdb_original_language": "en",
+    "overview": "自由と引き換えに性転換をして女としてアメリカに来たヘドウィグ。やがてロッカーを夢見るとトミーと恋に落ちた彼は、自分の持つ音楽やロック魂を全て教え込む全て教え込む。だがトミーは裏切り全曲を盗んでデビュー。",
+    "overview_en": "Raised a boy in East Berlin, Hedwig undergoes a personal transformation in order to emigrate to the U.S., where she reinvents herself as an 'internationally ignored' but divinely talented rock diva, inhabiting a 'beautiful gender of one'.",
+    "poster_path": "/jafIFAW8sHQkzWPGoMDR4892dFI.jpg",
+    "backdrop_path": "/uY5EB9VIX8lT03MdYcR9DzlhEGM.jpg",
+    "release_date": "2001-07-20",
+    "director": "John Cameron Mitchell",
+    "director_jp": "John Cameron Mitchell",
+    "director_en": "John Cameron Mitchell",
+    "genres": [
+      "コメディ",
+      "音楽",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Music",
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "オーシャンズ": {
+    "tmdb_id": 36970,
+    "tmdb_title_jp": "オーシャンズ",
+    "tmdb_title_en": "Oceans",
+    "tmdb_title_original": "Oceans",
+    "tmdb_original_language": "en",
+    "overview": "『ニュー・シネマ・パラダイス』や『コーラス』の名優にして、『WATARIDORI』では監督として観る者を魅了したジャック・ペランが、世界中の海を取材したネイチャー・ドキュメンタリー。北極海から南極海、海上から大気圧1,100倍の深海へと、世界50か所で4年以上の月日をかけて100種類以上もの海洋生物を撮影。本作のために開発された最新の撮影技術を駆使してとらえられた決定的な瞬間は美しくも驚異的で、まるで海にいるかのような臨場感で楽しませてくれる。",
+    "overview_en": "An ecological drama/documentary, filmed throughout the globe. Part thriller, part meditation on the vanishing wonders of the sub-aquatic world.",
+    "poster_path": "/kIT3G7QoV1vatMCL8TAA3xnkO2V.jpg",
+    "backdrop_path": "/8Jys5rX9IQkKxVfNeq8OKdSSx9g.jpg",
+    "release_date": "2010-01-22",
+    "director": "ジャック・ペラン",
+    "director_jp": "ジャック・ペラン",
+    "director_en": "Jacques Perrin",
+    "genres": [
+      "ドキュメンタリー",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Family"
+    ],
+    "runtime": 84,
+    "vote_average": 7.434,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:36970": {
+    "tmdb_id": 36970,
+    "tmdb_title_jp": "オーシャンズ",
+    "tmdb_title_en": "Oceans",
+    "tmdb_title_original": "Oceans",
+    "tmdb_original_language": "en",
+    "overview": "『ニュー・シネマ・パラダイス』や『コーラス』の名優にして、『WATARIDORI』では監督として観る者を魅了したジャック・ペランが、世界中の海を取材したネイチャー・ドキュメンタリー。北極海から南極海、海上から大気圧1,100倍の深海へと、世界50か所で4年以上の月日をかけて100種類以上もの海洋生物を撮影。本作のために開発された最新の撮影技術を駆使してとらえられた決定的な瞬間は美しくも驚異的で、まるで海にいるかのような臨場感で楽しませてくれる。",
+    "overview_en": "An ecological drama/documentary, filmed throughout the globe. Part thriller, part meditation on the vanishing wonders of the sub-aquatic world.",
+    "poster_path": "/kIT3G7QoV1vatMCL8TAA3xnkO2V.jpg",
+    "backdrop_path": "/8Jys5rX9IQkKxVfNeq8OKdSSx9g.jpg",
+    "release_date": "2010-01-22",
+    "director": "ジャック・ペラン",
+    "director_jp": "ジャック・ペラン",
+    "director_en": "Jacques Perrin",
+    "genres": [
+      "ドキュメンタリー",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Family"
+    ],
+    "runtime": 84,
+    "vote_average": 7.434,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "KUBO クボ　二本の弦の秘密": {
+    "tmdb_id": 313297,
+    "tmdb_title_jp": "KUBO／クボ 二本の弦の秘密",
+    "tmdb_title_en": "Kubo and the Two Strings",
+    "tmdb_title_original": "Kubo and the Two Strings",
+    "tmdb_original_language": "en",
+    "overview": "昔々の日本。左目を失った少年クボは衰弱した母親と暮らし、母親譲りである魔法の三味線を奏でながら、ハンゾウという侍の物語を村で語って生活費を稼ぐ。盆踊りの夜、母親の妹だという2人の“闇の姉妹”が現われてクボに襲い掛かるが、彼の母親はクボに父親の“刀・よろい・かぶと”を集めろと言い、魔法でクボを遠方に送り出す。旅を始めたクボは、雌のサルや雄のクワガタを仲間にしつつ、“刀・よろい・かぶと”を探す。",
+    "overview_en": "Kubo mesmerizes the people in his village with his magical gift for spinning wild tales with origami. When he accidentally summons an evil spirit seeking vengeance, Kubo is forced to go on a quest to solve the mystery of his fallen samurai father and his mystical weaponry, as well as discover his own magical powers.",
+    "poster_path": "/jIeRsLRaqeK9GFLHzAcfy0DRs6z.jpg",
+    "backdrop_path": "/bhspYsRMHgMqzUlxiVpIY8OrqMt.jpg",
+    "release_date": "2016-08-18",
+    "director": "トラヴィス・ナイト",
+    "director_jp": "トラヴィス・ナイト",
+    "director_en": "Travis Knight",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Family"
+    ],
+    "runtime": 102,
+    "vote_average": 7.632,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:313297": {
+    "tmdb_id": 313297,
+    "tmdb_title_jp": "KUBO／クボ 二本の弦の秘密",
+    "tmdb_title_en": "Kubo and the Two Strings",
+    "tmdb_title_original": "Kubo and the Two Strings",
+    "tmdb_original_language": "en",
+    "overview": "昔々の日本。左目を失った少年クボは衰弱した母親と暮らし、母親譲りである魔法の三味線を奏でながら、ハンゾウという侍の物語を村で語って生活費を稼ぐ。盆踊りの夜、母親の妹だという2人の“闇の姉妹”が現われてクボに襲い掛かるが、彼の母親はクボに父親の“刀・よろい・かぶと”を集めろと言い、魔法でクボを遠方に送り出す。旅を始めたクボは、雌のサルや雄のクワガタを仲間にしつつ、“刀・よろい・かぶと”を探す。",
+    "overview_en": "Kubo mesmerizes the people in his village with his magical gift for spinning wild tales with origami. When he accidentally summons an evil spirit seeking vengeance, Kubo is forced to go on a quest to solve the mystery of his fallen samurai father and his mystical weaponry, as well as discover his own magical powers.",
+    "poster_path": "/jIeRsLRaqeK9GFLHzAcfy0DRs6z.jpg",
+    "backdrop_path": "/bhspYsRMHgMqzUlxiVpIY8OrqMt.jpg",
+    "release_date": "2016-08-18",
+    "director": "トラヴィス・ナイト",
+    "director_jp": "トラヴィス・ナイト",
+    "director_en": "Travis Knight",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Family"
+    ],
+    "runtime": 102,
+    "vote_average": 7.632,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "めぐみ　引き裂かれた家族の30年": {
+    "tmdb_id": 49652,
+    "tmdb_title_jp": "Abduction: The Megumi Yokota Story",
+    "tmdb_title_en": "Abduction: The Megumi Yokota Story",
+    "tmdb_title_original": "Abduction: The Megumi Yokota Story",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A documentary on a 13-year-old Japanese girl abducted by North Korean spies.",
+    "poster_path": "/AvAPMThjVpWdhdmGPh59TGrsZex.jpg",
+    "backdrop_path": null,
+    "release_date": "2006-01-22",
+    "director": "Patty Kim",
+    "director_jp": "Patty Kim",
+    "director_en": "Patty Kim",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 85,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "奇跡": {
+    "tmdb_id": 79382,
+    "tmdb_title_jp": "奇跡",
+    "tmdb_title_en": "I Wish",
+    "tmdb_title_original": "奇跡",
+    "tmdb_original_language": "ja",
+    "overview": "小学生の兄弟、航一と龍之介は、両親の離婚で、鹿児島と福岡で暮していた。新しい環境にすぐに溶け込んだ弟・龍之介と違い、鹿児島に移り住んだ兄・航一は、現実を受け入れられず、憤る気持ちを持て余していた。ある日、航一は、新しく開通する九州新幹線、「つばめ」と「さくら」の一番列車がすれ違う瞬間を見ると奇跡が起こるという噂を聞く。もう一度、家族で暮したい航一は、弟と友達を誘い“奇跡”を起こす計画を立てる。",
+    "overview_en": "Twelve-year-old Koichi, who has been separated from his brother Ryunosuke due to his parents' divorce, hears a rumor that the new bullet trains will precipitate a wish-granting miracle when they pass each other at top speed.",
+    "poster_path": "/r2mpgDIuU2tOKLRYSl2In2VdBJb.jpg",
+    "backdrop_path": "/oRqDdcxBvAWIBGq3z8wN6uOFNEZ.jpg",
+    "release_date": "2011-06-11",
+    "director": "是枝裕和",
+    "director_jp": "是枝裕和",
+    "director_en": "Hirokazu Kore-eda",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 127,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:79382": {
+    "tmdb_id": 79382,
+    "tmdb_title_jp": "奇跡",
+    "tmdb_title_en": "I Wish",
+    "tmdb_title_original": "奇跡",
+    "tmdb_original_language": "ja",
+    "overview": "小学生の兄弟、航一と龍之介は、両親の離婚で、鹿児島と福岡で暮していた。新しい環境にすぐに溶け込んだ弟・龍之介と違い、鹿児島に移り住んだ兄・航一は、現実を受け入れられず、憤る気持ちを持て余していた。ある日、航一は、新しく開通する九州新幹線、「つばめ」と「さくら」の一番列車がすれ違う瞬間を見ると奇跡が起こるという噂を聞く。もう一度、家族で暮したい航一は、弟と友達を誘い“奇跡”を起こす計画を立てる。",
+    "overview_en": "Twelve-year-old Koichi, who has been separated from his brother Ryunosuke due to his parents' divorce, hears a rumor that the new bullet trains will precipitate a wish-granting miracle when they pass each other at top speed.",
+    "poster_path": "/r2mpgDIuU2tOKLRYSl2In2VdBJb.jpg",
+    "backdrop_path": "/oRqDdcxBvAWIBGq3z8wN6uOFNEZ.jpg",
+    "release_date": "2011-06-11",
+    "director": "是枝裕和",
+    "director_jp": "是枝裕和",
+    "director_en": "Hirokazu Kore-eda",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 127,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ナイトクローラー": {
+    "tmdb_id": 242582,
+    "tmdb_title_jp": "ナイトクローラー",
+    "tmdb_title_en": "Nightcrawler",
+    "tmdb_title_original": "Nightcrawler",
+    "tmdb_original_language": "en",
+    "overview": "人脈も学歴もないために、仕事にありつけないルイス。たまたま事故現場に出くわした彼は、そこで衝撃的な映像を撮ってはマスコミに売るナイトクローラーと呼ばれるパパラッチの姿を目にする。ルイスもビデオカメラを手に入れ、警察無線を傍受しては、事件現場、事故現場に駆け付ける。その後、過激さを誇る彼の映像は、高値でテレビ局に買い取られるように。やがて局の要望はエスカレートし、それに応えようとルイスもとんでもない行動を取る。",
+    "overview_en": "When Lou Bloom, desperate for work, muscles into the world of L.A. crime journalism, he blurs the line between observer and participant to become the star of his own story. Aiding him in his effort is Nina, a TV-news veteran.",
+    "poster_path": "/3FaRLIYw8YUAtHW9g9lLFwvTJcp.jpg",
+    "backdrop_path": "/bdI6U1mT0kCdTJ6TWtiFxQ42GSn.jpg",
+    "release_date": "2014-10-23",
+    "director": "ダン・ギルロイ",
+    "director_jp": "ダン・ギルロイ",
+    "director_en": "Dan Gilroy",
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 118,
+    "vote_average": 7.708,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:242582": {
+    "tmdb_id": 242582,
+    "tmdb_title_jp": "ナイトクローラー",
+    "tmdb_title_en": "Nightcrawler",
+    "tmdb_title_original": "Nightcrawler",
+    "tmdb_original_language": "en",
+    "overview": "人脈も学歴もないために、仕事にありつけないルイス。たまたま事故現場に出くわした彼は、そこで衝撃的な映像を撮ってはマスコミに売るナイトクローラーと呼ばれるパパラッチの姿を目にする。ルイスもビデオカメラを手に入れ、警察無線を傍受しては、事件現場、事故現場に駆け付ける。その後、過激さを誇る彼の映像は、高値でテレビ局に買い取られるように。やがて局の要望はエスカレートし、それに応えようとルイスもとんでもない行動を取る。",
+    "overview_en": "When Lou Bloom, desperate for work, muscles into the world of L.A. crime journalism, he blurs the line between observer and participant to become the star of his own story. Aiding him in his effort is Nina, a TV-news veteran.",
+    "poster_path": "/3FaRLIYw8YUAtHW9g9lLFwvTJcp.jpg",
+    "backdrop_path": "/bdI6U1mT0kCdTJ6TWtiFxQ42GSn.jpg",
+    "release_date": "2014-10-23",
+    "director": "ダン・ギルロイ",
+    "director_jp": "ダン・ギルロイ",
+    "director_en": "Dan Gilroy",
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 118,
+    "vote_average": 7.708,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "溺れるナイフ": {
+    "tmdb_id": 410220,
+    "tmdb_title_jp": "溺れるナイフ",
+    "tmdb_title_en": "Drowning Love",
+    "tmdb_title_original": "溺れるナイフ",
+    "tmdb_original_language": "ja",
+    "overview": "東京で雑誌モデルを務める望月夏芽は、急に父親の郷里である浮雲町に転居することになる。彼女は都会とはかけ離れた田舎での地味な生活に幻滅してしまうが、長谷川航一朗と出会ったことで人生が一変する。彼は田舎町で有名な神主の一族の出身で、夏芽はひねくれ者で一風変わった航一朗に強く惹き付けられる。",
+    "overview_en": "Natsume Mochizuki  works as a teen model in Tokyo, but she learns that she has to move to her father's hometown of Ukigumo. She is in a desperate situation because she can't do the things she wants to do in Ukigumo. One day, she meets Koichiro Hasegawa. He is the successor of the Hasegawa family. His family is wealthy and is respected in the area. Natsume Mochizuki and Koichiro Hasegawa become attracted to each other, but something changes their fate.",
+    "poster_path": "/5BS8N9n5DuvxpHE0HrxBSLTIT6d.jpg",
+    "backdrop_path": "/gZcEEHWMrkldqQbE2aPsp1xDUSe.jpg",
+    "release_date": "2016-11-05",
+    "director": "山戸結希",
+    "director_jp": "山戸結希",
+    "director_en": "Yuki Yamato",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 6.163,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:410220": {
+    "tmdb_id": 410220,
+    "tmdb_title_jp": "溺れるナイフ",
+    "tmdb_title_en": "Drowning Love",
+    "tmdb_title_original": "溺れるナイフ",
+    "tmdb_original_language": "ja",
+    "overview": "東京で雑誌モデルを務める望月夏芽は、急に父親の郷里である浮雲町に転居することになる。彼女は都会とはかけ離れた田舎での地味な生活に幻滅してしまうが、長谷川航一朗と出会ったことで人生が一変する。彼は田舎町で有名な神主の一族の出身で、夏芽はひねくれ者で一風変わった航一朗に強く惹き付けられる。",
+    "overview_en": "Natsume Mochizuki  works as a teen model in Tokyo, but she learns that she has to move to her father's hometown of Ukigumo. She is in a desperate situation because she can't do the things she wants to do in Ukigumo. One day, she meets Koichiro Hasegawa. He is the successor of the Hasegawa family. His family is wealthy and is respected in the area. Natsume Mochizuki and Koichiro Hasegawa become attracted to each other, but something changes their fate.",
+    "poster_path": "/5BS8N9n5DuvxpHE0HrxBSLTIT6d.jpg",
+    "backdrop_path": "/gZcEEHWMrkldqQbE2aPsp1xDUSe.jpg",
+    "release_date": "2016-11-05",
+    "director": "山戸結希",
+    "director_jp": "山戸結希",
+    "director_en": "Yuki Yamato",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 6.163,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ボーイ・ミーツ・ガール（1983）": {
+    "tmdb_id": 63418,
+    "tmdb_title_jp": "ボーイ・ミーツ・ガール",
+    "tmdb_title_en": "Boy Meets Girl",
+    "tmdb_title_original": "Boy Meets Girl",
+    "tmdb_original_language": "fr",
+    "overview": "恋人フロランスに振られたばかりのアレックスは、いつも悲しげなモノローグをパリの街に浮かべるような孤独な男。部屋の壁に貼ったパリの地図に、フロランスが残した傷から自殺しようとしたという旨のメモを貼り付ける。一方、どこか遠い世界で暮らしているミレーユも、恋人ベルナールと喧嘩ばかりの日々。まるで別の夢であるかのように離れている二つの世界は、徐々に距離を縮め、ついに出会うことになるが…。",
+    "overview_en": "In Paris at night, a young aspiring filmmaker grapples with heartbreak after his girlfriend leaves him for his best friend. After a failed attempt to confront his friend, he wanders the streets and encounters a girl who has just been abandoned. Their paths cross at a party, bringing together two tormented souls.",
+    "poster_path": "/nvg50CkDBaWkWHtnCSaJ7brLcMO.jpg",
+    "backdrop_path": "/vFIC5xBv81hPHKnGU2noTid0HjE.jpg",
+    "release_date": "1984-11-21",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 104,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "IT’S NOT ME イッツ・ノット・ミー": {
+    "tmdb_id": 1136987,
+    "tmdb_title_jp": "C'est pas moi",
+    "tmdb_title_en": "It's Not Me",
+    "tmdb_title_original": "C'est pas moi",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "This free-form film is a self-portrait, which revisits more than 40 years of the author’s filmography and questions the major stations of his life, while capturing the political tremors of the time.",
+    "poster_path": "/cZa91XFQoNsfx1uLNByz7pIFH2G.jpg",
+    "backdrop_path": "/wR7HeOCCpRrDEjea09qCdfYNDdj.jpg",
+    "release_date": "2024-06-12",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Documentary"
+    ],
+    "runtime": 42,
+    "vote_average": 7.179,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "祖谷物語　おくのひと": {
+    "tmdb_id": 229173,
+    "tmdb_title_jp": "祖谷物語―おくのひと―",
+    "tmdb_title_en": "The Tale of Iya",
+    "tmdb_title_original": "祖谷物語―おくのひと―",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "As a tunnel construction project threatens the natural order of one of Japan's last untouched regions, an old man and his granddaughter Haruna's humble lifestyle begins to influence the outlook of a man from Tokyo.",
+    "poster_path": "/ybQ9oIZiItNzZKGCru8uYfJHMXR.jpg",
+    "backdrop_path": "/bKDxZdQlH9vv0iXDqeUuaHgXsYv.jpg",
+    "release_date": "2013-10-22",
+    "director": "蔦哲一朗",
+    "director_jp": "蔦哲一朗",
+    "director_en": "Tetsuichirô Tsuta",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Mystery"
+    ],
+    "runtime": 170,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "素敵すぎて素敵すぎて素敵すぎる": {
+    "tmdb_id": 1447896,
+    "tmdb_title_jp": "素敵すぎて素敵すぎて素敵すぎる",
+    "tmdb_title_en": "So Beautiful, Wonderful and Lovely",
+    "tmdb_title_original": "素敵すぎて素敵すぎて素敵すぎる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "School cleaner Nozomi Haruta was happy. She was supposed to marry her partner, her beloved, her soulmate, the handsome teacher Chitose Yokomizo, but when he secretly marries someone else, he ruins her dreams and breaks her heart. Also, maybe her mind? Seized by desperation, Nozomi photobombs his big wedding photograph by replacing the bride, steals the camera, and makes a run for it! Headlong into the path of a courier carrying Castella cakes! When she wakes up, she sees Chitose hovering over her, only it’s not him, but a being who calls himself Castella (as in the cake). For the next two weeks (the expiration date for the cakes), he will be Nozomi’s cake-based companion and help her get over her despair.",
+    "poster_path": "/k0ZkQ0dSnzV9Fi4dJkTqH0vJBQ1.jpg",
+    "backdrop_path": "/E1iUbo2P65iVHORruPBHD8zkMZ.jpg",
+    "release_date": "2025-09-27",
+    "director": "大河原恵",
+    "director_jp": "大河原恵",
+    "director_en": "Megumi Okawara",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 67,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1447896": {
+    "tmdb_id": 1447896,
+    "tmdb_title_jp": "素敵すぎて素敵すぎて素敵すぎる",
+    "tmdb_title_en": "So Beautiful, Wonderful and Lovely",
+    "tmdb_title_original": "素敵すぎて素敵すぎて素敵すぎる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "School cleaner Nozomi Haruta was happy. She was supposed to marry her partner, her beloved, her soulmate, the handsome teacher Chitose Yokomizo, but when he secretly marries someone else, he ruins her dreams and breaks her heart. Also, maybe her mind? Seized by desperation, Nozomi photobombs his big wedding photograph by replacing the bride, steals the camera, and makes a run for it! Headlong into the path of a courier carrying Castella cakes! When she wakes up, she sees Chitose hovering over her, only it’s not him, but a being who calls himself Castella (as in the cake). For the next two weeks (the expiration date for the cakes), he will be Nozomi’s cake-based companion and help her get over her despair.",
+    "poster_path": "/k0ZkQ0dSnzV9Fi4dJkTqH0vJBQ1.jpg",
+    "backdrop_path": "/E1iUbo2P65iVHORruPBHD8zkMZ.jpg",
+    "release_date": "2025-09-27",
+    "director": "大河原恵",
+    "director_jp": "大河原恵",
+    "director_en": "Megumi Okawara",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 67,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ロングホットサマーバケーション": {
+    "tmdb_id": 1600743,
+    "tmdb_title_jp": "ロングホットサマーバケーション",
+    "tmdb_title_en": "Long Hot Summer Vacation",
+    "tmdb_title_original": "ロングホットサマーバケーション",
+    "tmdb_original_language": "ja",
+    "overview": "日ノ本亀子・月代の日本人姉妹が暮らす家に、不法移民のラルゴ人姉妹・フォルテとヴォーチェが乗り込んできて...。",
+    "overview_en": "",
+    "poster_path": "/aLcCUxV6SL4jGMIkAUoWvnmLBfl.jpg",
+    "backdrop_path": "/fTg6dQW0t1UkyMmRr9L0U4ar9vb.jpg",
+    "release_date": "2026-01-18",
+    "director": "小野峻志",
+    "director_jp": "小野峻志",
+    "director_en": "Takashi Ono",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 53,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1600743": {
+    "tmdb_id": 1600743,
+    "tmdb_title_jp": "ロングホットサマーバケーション",
+    "tmdb_title_en": "Long Hot Summer Vacation",
+    "tmdb_title_original": "ロングホットサマーバケーション",
+    "tmdb_original_language": "ja",
+    "overview": "日ノ本亀子・月代の日本人姉妹が暮らす家に、不法移民のラルゴ人姉妹・フォルテとヴォーチェが乗り込んできて...。",
+    "overview_en": "",
+    "poster_path": "/aLcCUxV6SL4jGMIkAUoWvnmLBfl.jpg",
+    "backdrop_path": "/fTg6dQW0t1UkyMmRr9L0U4ar9vb.jpg",
+    "release_date": "2026-01-18",
+    "director": "小野峻志",
+    "director_jp": "小野峻志",
+    "director_en": "Takashi Ono",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 53,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "エゴイスト": {
+    "tmdb_id": 1027273,
+    "tmdb_title_jp": "エゴイスト",
+    "tmdb_title_en": "Egoist",
+    "tmdb_title_original": "エゴイスト",
+    "tmdb_original_language": "ja",
+    "overview": "14 歳で⺟を失い、⽥舎町でゲイである⾃分を隠して鬱屈とした思春期を過ごした浩輔。今は東京の出版社でファッション誌の編集者として働き、仕事が終われば気の置けない友人たちと気ままな時間を過ごしている。そんな彼が出会ったのは、シングルマザーである⺟を⽀えながら暮らす、パーソナルトレーナーの龍太。  自分を守る鎧のようにハイブランドの服に身を包み、気ままながらもどこか虚勢を張って生きている浩輔と、最初は戸惑いながらも浩輔から差し伸べられた救いの手をとった、自分の美しさに無頓着で健気な龍太。惹かれ合った２人は、時に龍太の⺟も交えながら満ち⾜りた時間を重ねていく。亡き⺟への想いを抱えた浩輔にとって、⺟に寄り添う龍太をサポートし、愛し合う時間は幸せなものだった。しかし彼らの前に突然、思いもよらない運命が押し寄せる――。",
+    "overview_en": "A lonely magazine editor finds romance with his personal trainer until a confession changes everything. Based on the novel by Makoto Takayama.",
+    "poster_path": "/uu2dYVQSGIFRqtAUWykWsiSgup7.jpg",
+    "backdrop_path": "/o10cLFQHLssYSdDGzEatkh0kG2m.jpg",
+    "release_date": "2023-02-10",
+    "director": "松永大司",
+    "director_jp": "松永大司",
+    "director_en": "Daishi Matsunaga",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 120,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1027273": {
+    "tmdb_id": 1027273,
+    "tmdb_title_jp": "エゴイスト",
+    "tmdb_title_en": "Egoist",
+    "tmdb_title_original": "エゴイスト",
+    "tmdb_original_language": "ja",
+    "overview": "14 歳で⺟を失い、⽥舎町でゲイである⾃分を隠して鬱屈とした思春期を過ごした浩輔。今は東京の出版社でファッション誌の編集者として働き、仕事が終われば気の置けない友人たちと気ままな時間を過ごしている。そんな彼が出会ったのは、シングルマザーである⺟を⽀えながら暮らす、パーソナルトレーナーの龍太。  自分を守る鎧のようにハイブランドの服に身を包み、気ままながらもどこか虚勢を張って生きている浩輔と、最初は戸惑いながらも浩輔から差し伸べられた救いの手をとった、自分の美しさに無頓着で健気な龍太。惹かれ合った２人は、時に龍太の⺟も交えながら満ち⾜りた時間を重ねていく。亡き⺟への想いを抱えた浩輔にとって、⺟に寄り添う龍太をサポートし、愛し合う時間は幸せなものだった。しかし彼らの前に突然、思いもよらない運命が押し寄せる――。",
+    "overview_en": "A lonely magazine editor finds romance with his personal trainer until a confession changes everything. Based on the novel by Makoto Takayama.",
+    "poster_path": "/uu2dYVQSGIFRqtAUWykWsiSgup7.jpg",
+    "backdrop_path": "/o10cLFQHLssYSdDGzEatkh0kG2m.jpg",
+    "release_date": "2023-02-10",
+    "director": "松永大司",
+    "director_jp": "松永大司",
+    "director_en": "Daishi Matsunaga",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 120,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "桐島、部活やめるってよ": {
+    "tmdb_id": 175041,
+    "tmdb_title_jp": "桐島、部活やめるってよ",
+    "tmdb_title_en": "The Kirishima Thing",
+    "tmdb_title_original": "桐島、部活やめるってよ",
+    "tmdb_original_language": "ja",
+    "overview": "とある田舎町の県立高校映画部に所属する前田涼也は、クラスの中では地味で目立たないものの、映画に対する情熱が人一倍強い人物だった。そんな彼の学校の生徒たちは、金曜日の放課後、いつもと変わらず部活に励み、一方暇を持て余す帰宅部がバスケに興じるなど、それぞれの日常を過ごしていた。ある日、学校で一番人気があるバレー部のキャプテン桐島が退部。それをきっかけに、各部やクラスの人間関係に動揺が広がり始めていく。",
+    "overview_en": "A story about the disappearance of Kirishima, a star athlete of the volleyball club, and how his disappearance affects every person in school.",
+    "poster_path": "/kDKfi4yRMsJVTtI63of4nSYPuV4.jpg",
+    "backdrop_path": "/2SUoPDFxVXxJ64KG4KBs1qU0fQq.jpg",
+    "release_date": "2012-08-11",
+    "director": "吉田大八",
+    "director_jp": "吉田大八",
+    "director_en": "Daihachi Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:175041": {
+    "tmdb_id": 175041,
+    "tmdb_title_jp": "桐島、部活やめるってよ",
+    "tmdb_title_en": "The Kirishima Thing",
+    "tmdb_title_original": "桐島、部活やめるってよ",
+    "tmdb_original_language": "ja",
+    "overview": "とある田舎町の県立高校映画部に所属する前田涼也は、クラスの中では地味で目立たないものの、映画に対する情熱が人一倍強い人物だった。そんな彼の学校の生徒たちは、金曜日の放課後、いつもと変わらず部活に励み、一方暇を持て余す帰宅部がバスケに興じるなど、それぞれの日常を過ごしていた。ある日、学校で一番人気があるバレー部のキャプテン桐島が退部。それをきっかけに、各部やクラスの人間関係に動揺が広がり始めていく。",
+    "overview_en": "A story about the disappearance of Kirishima, a star athlete of the volleyball club, and how his disappearance affects every person in school.",
+    "poster_path": "/kDKfi4yRMsJVTtI63of4nSYPuV4.jpg",
+    "backdrop_path": "/2SUoPDFxVXxJ64KG4KBs1qU0fQq.jpg",
+    "release_date": "2012-08-11",
+    "director": "吉田大八",
+    "director_jp": "吉田大八",
+    "director_en": "Daihachi Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "シング・ストリート　未来へのうた": {
+    "tmdb_id": 369557,
+    "tmdb_title_jp": "シング・ストリート 未来へのうた",
+    "tmdb_title_en": "Sing Street",
+    "tmdb_title_original": "Sing Street",
+    "tmdb_original_language": "en",
+    "overview": "1980年代のダブリンで育った少年は、好きな女性に好印象を与えるためにバンドを結成し、ぎくしゃくした家庭生活から抜け出します。",
+    "overview_en": "A boy growing up in Dublin during the 1980s escapes his strained family life by starting a band to impress the mysterious girl he likes.",
+    "poster_path": "/yAsgoRy8VGopY7GuhSOzchljuM2.jpg",
+    "backdrop_path": "/yB35bWnl0hBsc7bgMrO98d4s3Kj.jpg",
+    "release_date": "2016-03-11",
+    "director": "ジョン・カーニー",
+    "director_jp": "ジョン・カーニー",
+    "director_en": "John Carney",
+    "genres": [
+      "ロマンス",
+      "ドラマ",
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama",
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 7.858,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:369557": {
+    "tmdb_id": 369557,
+    "tmdb_title_jp": "シング・ストリート 未来へのうた",
+    "tmdb_title_en": "Sing Street",
+    "tmdb_title_original": "Sing Street",
+    "tmdb_original_language": "en",
+    "overview": "1980年代のダブリンで育った少年は、好きな女性に好印象を与えるためにバンドを結成し、ぎくしゃくした家庭生活から抜け出します。",
+    "overview_en": "A boy growing up in Dublin during the 1980s escapes his strained family life by starting a band to impress the mysterious girl he likes.",
+    "poster_path": "/yAsgoRy8VGopY7GuhSOzchljuM2.jpg",
+    "backdrop_path": "/yB35bWnl0hBsc7bgMrO98d4s3Kj.jpg",
+    "release_date": "2016-03-11",
+    "director": "ジョン・カーニー",
+    "director_jp": "ジョン・カーニー",
+    "director_en": "John Carney",
+    "genres": [
+      "ロマンス",
+      "ドラマ",
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama",
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 7.858,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "同級生": {
+    "tmdb_id": 372754,
+    "tmdb_title_jp": "同級生",
+    "tmdb_title_en": "Dou kyu sei – Classmates",
+    "tmdb_title_original": "同級生",
+    "tmdb_original_language": "ja",
+    "overview": "高校入試で全教科満点をとった秀才の佐条利人、ライブ活動をして女子にも人気のバンドマン草壁光。およそ交わらないであろう二人の男の子。そんな「ジャンルが違う」彼らは、合唱祭の練習をきっかけに話すようになる。放課後の教室で、佐条に歌を教える草壁。音を感じ、声を聴き、ハーモニーを奏でるうちに、二人の心は響き合っていった。ゆるやかに高まり、ふとした瞬間にはじける恋の感情。お調子者だけどピュアで、まっすぐに思いを語る草壁光と、はねつけながらも少しずつ心を開いてゆく佐条利人。互いのこともよく知らず、おそらく自分のこともまだ分からない。そんな青いときのなかで、もがき、惑いつつも寄り添い合う二人。やがて将来や進学を考える時期が訪れ、前に進もうとする彼らが見つけた思いとは…。",
+    "overview_en": "Rihito Sajo, an honor student with a perfect score on the entrance exam and Hikaru Kusakabe, in a band and popular among girls, would have never crossed paths. Until one day they started talking at the practice for their school’s upcoming chorus festival. After school, the two meet regularly, as Hikaru helps Rihito to improve his singing skills. While they listen to each other’s voice and harmonize, their hearts start to beat together.",
+    "poster_path": "/7byisQANRFHf9SC60n5PaLywuMa.jpg",
+    "backdrop_path": "/tLmyP7akYmxLwyfTEt2qyj2sOR3.jpg",
+    "release_date": "2016-02-20",
+    "director": "中村章子",
+    "director_jp": "中村章子",
+    "director_en": "Shoko Nakamura",
+    "genres": [
+      "ロマンス",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Romance",
+      "Animation"
+    ],
+    "runtime": 60,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:372754": {
+    "tmdb_id": 372754,
+    "tmdb_title_jp": "同級生",
+    "tmdb_title_en": "Dou kyu sei – Classmates",
+    "tmdb_title_original": "同級生",
+    "tmdb_original_language": "ja",
+    "overview": "高校入試で全教科満点をとった秀才の佐条利人、ライブ活動をして女子にも人気のバンドマン草壁光。およそ交わらないであろう二人の男の子。そんな「ジャンルが違う」彼らは、合唱祭の練習をきっかけに話すようになる。放課後の教室で、佐条に歌を教える草壁。音を感じ、声を聴き、ハーモニーを奏でるうちに、二人の心は響き合っていった。ゆるやかに高まり、ふとした瞬間にはじける恋の感情。お調子者だけどピュアで、まっすぐに思いを語る草壁光と、はねつけながらも少しずつ心を開いてゆく佐条利人。互いのこともよく知らず、おそらく自分のこともまだ分からない。そんな青いときのなかで、もがき、惑いつつも寄り添い合う二人。やがて将来や進学を考える時期が訪れ、前に進もうとする彼らが見つけた思いとは…。",
+    "overview_en": "Rihito Sajo, an honor student with a perfect score on the entrance exam and Hikaru Kusakabe, in a band and popular among girls, would have never crossed paths. Until one day they started talking at the practice for their school’s upcoming chorus festival. After school, the two meet regularly, as Hikaru helps Rihito to improve his singing skills. While they listen to each other’s voice and harmonize, their hearts start to beat together.",
+    "poster_path": "/7byisQANRFHf9SC60n5PaLywuMa.jpg",
+    "backdrop_path": "/tLmyP7akYmxLwyfTEt2qyj2sOR3.jpg",
+    "release_date": "2016-02-20",
+    "director": "中村章子",
+    "director_jp": "中村章子",
+    "director_en": "Shoko Nakamura",
+    "genres": [
+      "ロマンス",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Romance",
+      "Animation"
+    ],
+    "runtime": 60,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "マスター　先生が来る！": null,
+  "エレクション　黒社会": {
+    "tmdb_id": 18747,
+    "tmdb_title_jp": "エレクション",
+    "tmdb_title_en": "Election",
+    "tmdb_title_original": "黑社會",
+    "tmdb_original_language": "cn",
+    "overview": "香港最大の暴力団の会長選挙を背景に、トップを狙う男達の仁義なき戦いを描いたジョニー・トー監督の犯罪群像劇。2年に一度行われる香港最大のマフィア「和連勝会」の会長選挙戦。冷静沈着なロク（サイモン・ヤム）が次期会長に選ばれるが、組の稼ぎ頭で、選挙に敗れたディー（レオン・カーフェイ）との間で、会長だけが手にすることが出来るという「竜頭棍」の争奪戦が始まる。出演は「愛人／ラマン」レオン・カーフェイ、「PTU」のサイモン・ヤムら。",
+    "overview_en": "After losing an election to become chairman of the Wo Lin Shing triad, a gang leader lashes out and tries to seize the dragon-head baton, the official symbol of a chairman's authority.",
+    "poster_path": "/cXrCnc8jw6DHpsaIH5BEFq3da0v.jpg",
+    "backdrop_path": "/uVnHskokSRJ8cRItMA0L9NQ9dXa.jpg",
+    "release_date": "2005-10-20",
+    "director": "杜琪峰",
+    "director_jp": "杜琪峰",
+    "director_en": "Johnnie To",
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 101,
+    "vote_average": 7.174,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "コール・オブ・ヒーローズ　武勇伝": {
+    "tmdb_id": 413198,
+    "tmdb_title_jp": "コール・オブ・ヒーローズ／武勇伝",
+    "tmdb_title_en": "Call of Heroes",
+    "tmdb_title_original": "危城",
+    "tmdb_original_language": "cn",
+    "overview": "1914年、内戦下の中国では、極悪非道な北洋軍閥が各地で虐殺と略奪を繰り返し、戦乱を逃れてやむなく郷里を後にする難民が大量に発生。石頭村で教師をしていたパク・レンも、生徒の子どもたちを連れて命からがら村を逃げ出し、近隣の普城へと向かう。普城では、ヨン・ハックナンが自警団を結成して村の平和を堅持していたが、やがてそこへ、軍閥を率いる将軍の息子チョウ・シウロンたちが押し寄せ、絶体絶命の危機が迫る。",
+    "overview_en": "During the warlords era in China, a village located in rural area called Pucheng fell into dangerous situation when its government allocated all its military force to the front line, the cruel commandant Cao from the enemy troops arrived the village and killed the innocent, the guardians of Pucheng were desperate to fight against Cao for justice and to protect their homeland.",
+    "poster_path": "/cgF3QsM11OwOYvskctWHFJEsBMQ.jpg",
+    "backdrop_path": "/fugdTm2XsAIxT5wVfp20lfogJak.jpg",
+    "release_date": "2016-08-12",
+    "director": "陳木勝",
+    "director_jp": "陳木勝",
+    "director_en": "Benny Chan Muk-Sing",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 120,
+    "vote_average": 6.426,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "暗戦　デッドエンド": {
+    "tmdb_id": 2463,
+    "tmdb_title_jp": "暗戦 デッドエンド",
+    "tmdb_title_en": "Running Out of Time",
+    "tmdb_title_original": "暗戰",
+    "tmdb_original_language": "cn",
+    "overview": "アンディ・ラウ×ジョニー・トーが贈る究極の犯罪ゲーム！\r 抜群の頭脳をもつ男が仕掛けた、最期の完全犯罪。\r ゲームを仕かけた犯人と、罠にハマっていく刑事──男のプライドをかけた激突を、香港ノワールのスタイリッシュな映像美で描くサスペンス・アクション。アンディ・ラウの孤高の演技が、第19回香港電影金像賞最優秀主演男優賞を授賞。刑事と知能犯の間に生まれる情感が、ジョニー･トー監督の手により丁寧につむぎだされ、哀愁の音楽とともに究極の“男の美学”を漂わす。\r 末期ガンで余命４週間と宣告された男が、人質をとってビル屋上に立てこもる。現場へ急行したホー刑事に対し、男は「72時間のゲームを楽しもう」と言い放つやその場から逃走。追跡すればするほど、捜査の網の目をすり抜けていく犯人。善人を死に至らしめない犯行ポリシーと、ホー刑事を巧みに巻き込んでいく才能に、なにか特別な意図があるとホーは感じ始める。",
+    "overview_en": "Police inspector and excellent hostage negotiator Ho Sheung-Sang finds himself in over his head when he is pulled into a 72 hour game by a cancer suffering criminal out for vengeance on Hong Kong's organized crime syndicates.",
+    "poster_path": "/bah2ri0WDl0lFHIKE1b3cdyFkj9.jpg",
+    "backdrop_path": "/a0jFMDNLmkIooaOvlWHnkrUJMeF.jpg",
+    "release_date": "1999-09-23",
+    "director": "杜琪峰",
+    "director_jp": "杜琪峰",
+    "director_en": "Johnnie To",
+    "genres": [
+      "ドラマ",
+      "アクション",
+      "スリラー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "runtime": 93,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "デッドエンド　暗戦リターンズ": {
+    "tmdb_id": 45303,
+    "tmdb_title_jp": "暗戰 2",
+    "tmdb_title_en": "Running Out of Time 2",
+    "tmdb_title_original": "暗戰 2",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Ho Sheung Sang finds himself wrapped up in another cat-and-mouse game, this time against a tricky magician.",
+    "poster_path": "/66IpIhBg87z8bzNyxOWKHplbNCg.jpg",
+    "backdrop_path": "/fRUYuvMTyNrY2ksPpDLqqV9XiVW.jpg",
+    "release_date": "2001-12-27",
+    "director": "杜琪峰",
+    "director_jp": "杜琪峰",
+    "director_en": "Johnnie To",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 95,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "労働者階級は天国に入る": {
+    "tmdb_id": 56231,
+    "tmdb_title_jp": "La classe operaia va in paradiso",
+    "tmdb_title_en": "The Working Class Goes to Heaven",
+    "tmdb_title_original": "La classe operaia va in paradiso",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "After losing a finger in a work accident, an Italian worker becomes increasingly involved in political and revolutionary groups.",
+    "poster_path": "/8OWORT3ldccCnuyMsHrSkYjwiwN.jpg",
+    "backdrop_path": "/nZRxN3c9Hywlu5jh6mqLArIwShF.jpg",
+    "release_date": "1971-09-17",
+    "director": "Elio Petri",
+    "director_jp": "Elio Petri",
+    "director_en": "Elio Petri",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "コードギアス　反逆のルルーシュIII 皇道": {
+    "tmdb_id": 477779,
+    "tmdb_title_jp": "コードギアス 反逆のルルーシュⅢ 皇道",
+    "tmdb_title_en": "Code Geass: Lelouch of the Rebellion III - Glorification",
+    "tmdb_title_original": "コードギアス 反逆のルルーシュⅢ 皇道",
+    "tmdb_original_language": "ja",
+    "overview": "2006～08年に計2シーズンが放送された人気アニメ「コードギアス　反逆のルルーシュ」を再構築した劇場版3部作の完結編。全50話のテレビアニメを再編集し、新作カットを加えて全編新規アフレコを行った。世界支配をもくろむ巨大帝国ブリタニアと、ブリタニアに反旗を翻す黒の騎士団がついに激突する。それは、黒の騎士団を率いる仮面の男ゼロ＝ルルーシュの思惑通りだったが、妹ナナリーの存在がルルーシュの計算を狂わせていく。一方、ブリタニアの第2皇子シュナイゼルが黒の騎士団に接触。ゼロの秘密を明かし、黒の騎士団の統制を内部から揺るがせようとしていた。そうして戦いは激化していき、あらゆる人々の怒りや悲しみ、執着や願いも飲み込んでいくが……。",
+    "overview_en": "With his spell of impressive successes seemingly behind him, Lelouch Lamperouge's hopes of destroying the Brittanian Empire presided over by his father are crumbling at an alarming rate. With his sister kidnapped, his former friend Suzaku ignoring his pleas for help, and his organisation The Black Knights losing their faith in him, the man behind Zero's mask is left with nowhere to turn.",
+    "poster_path": "/jBf0LCOqXCqhqX6FiXk3vIRaHpo.jpg",
+    "backdrop_path": "/jjlHf9ruKb0BMpR1sobMONIYKcy.jpg",
+    "release_date": "2018-05-01",
+    "director": "谷口悟朗",
+    "director_jp": "谷口悟朗",
+    "director_en": "Goro Taniguchi",
+    "genres": [
+      "サイエンスフィクション",
+      "アニメーション",
+      "ドラマ",
+      "アクション"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Animation",
+      "Drama",
+      "Action"
+    ],
+    "runtime": 140,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ボーン・イン・フレイムズ": {
+    "tmdb_id": 36832,
+    "tmdb_title_jp": "Born in Flames",
+    "tmdb_title_en": "Born in Flames",
+    "tmdb_title_original": "Born in Flames",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In near-future New York, ten years after the “social-democratic war of liberation,” diverse groups of women organize a feminist uprising as equality remains unfulfilled.",
+    "poster_path": "/uV8R8B8m5rp1NFvuodWk4ZuCXY0.jpg",
+    "backdrop_path": "/pC9qonwPXvvPx5kOT48X8U4sOTq.jpg",
+    "release_date": "1983-04-01",
+    "director": "莉兹·波登",
+    "director_jp": "莉兹·波登",
+    "director_en": "Lizzie Borden",
+    "genres": [
+      "ドラマ",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Science Fiction"
+    ],
+    "runtime": 80,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ペリリュー　楽園のゲルニカ": {
+    "tmdb_id": 1418666,
+    "tmdb_title_jp": "ペリリュー －楽園のゲルニカ－",
+    "tmdb_title_en": "Peleliu: Guernica of Paradise",
+    "tmdb_title_original": "ペリリュー －楽園のゲルニカ－",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The Battle of Peleliu was fought on the lovely Pacific island of that name by Japanese and American forces toward the end of the Pacific War. A work of fiction based on historical fact, this movie views the battle through the eyes of Tamaru, a 22-year-old soldier and aspiring cartoonist seeing his first combat. A chronicle of the “truth” as seen by a young man struggling to come to terms with war in an era when war was the norm.",
+    "poster_path": "/a7c9bttpcxjkG9UH20rbUIfY3ru.jpg",
+    "backdrop_path": "/jKHlGoME9vAnvY8war2aWABSktR.jpg",
+    "release_date": "2025-12-05",
+    "director": "久慈悟郎",
+    "director_jp": "久慈悟郎",
+    "director_en": "Goro Kuji",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "War"
+    ],
+    "runtime": 106,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ガザからの声 Episode2「ミュージシャン・アハマドのメッセージ」": null,
+  "Helpless": {
+    "tmdb_id": 1211257,
+    "tmdb_title_jp": "Helpless",
+    "tmdb_title_en": "Helpless",
+    "tmdb_title_original": "Helpless",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Claire and Ned are driving at night on their way to see family and show off the new addition to their family - a child. But while changing a flat tire, Ned is severely injured. The more time that passes, the more paranoid Ned becomes, convinced that something sinister lurks outside.",
+    "poster_path": "/woZ9XH5rRuCa5iteOCZDJiaqciZ.jpg",
+    "backdrop_path": null,
+    "release_date": "2013-07-28",
+    "director": "Thor Moreno",
+    "director_jp": "Thor Moreno",
+    "director_en": "Thor Moreno",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 75,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1211257": {
+    "tmdb_id": 1211257,
+    "tmdb_title_jp": "Helpless",
+    "tmdb_title_en": "Helpless",
+    "tmdb_title_original": "Helpless",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Claire and Ned are driving at night on their way to see family and show off the new addition to their family - a child. But while changing a flat tire, Ned is severely injured. The more time that passes, the more paranoid Ned becomes, convinced that something sinister lurks outside.",
+    "poster_path": "/woZ9XH5rRuCa5iteOCZDJiaqciZ.jpg",
+    "backdrop_path": null,
+    "release_date": "2013-07-28",
+    "director": "Thor Moreno",
+    "director_jp": "Thor Moreno",
+    "director_en": "Thor Moreno",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 75,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "東京ゾンビ": {
+    "tmdb_id": 27843,
+    "tmdb_title_jp": "東京ゾンビ",
+    "tmdb_title_en": "Tokyo Zombie",
+    "tmdb_title_original": "東京ゾンビ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Two Japanese friends accidentally kill their boss and dump his remains in Black Fuji, a mountain/landfill hybrid. This leads to poor results when the chemicals of the landfill mix with the corpse (and many other corpses) to give rise to a zombie infestation in Tokyo.",
+    "poster_path": "/cvZjwpLhNkYDqDlu8M4F3kKsM3W.jpg",
+    "backdrop_path": "/jaVCJ1d8RrWUwrKVs8cYLzgUisq.jpg",
+    "release_date": "2005-12-10",
+    "director": "佐藤佐吉",
+    "director_jp": "佐藤佐吉",
+    "director_en": "Sakichi Sato",
+    "genres": [
+      "コメディ",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Horror"
+    ],
+    "runtime": 104,
+    "vote_average": 5.457,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:27843": {
+    "tmdb_id": 27843,
+    "tmdb_title_jp": "東京ゾンビ",
+    "tmdb_title_en": "Tokyo Zombie",
+    "tmdb_title_original": "東京ゾンビ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Two Japanese friends accidentally kill their boss and dump his remains in Black Fuji, a mountain/landfill hybrid. This leads to poor results when the chemicals of the landfill mix with the corpse (and many other corpses) to give rise to a zombie infestation in Tokyo.",
+    "poster_path": "/cvZjwpLhNkYDqDlu8M4F3kKsM3W.jpg",
+    "backdrop_path": "/jaVCJ1d8RrWUwrKVs8cYLzgUisq.jpg",
+    "release_date": "2005-12-10",
+    "director": "佐藤佐吉",
+    "director_jp": "佐藤佐吉",
+    "director_en": "Sakichi Sato",
+    "genres": [
+      "コメディ",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Horror"
+    ],
+    "runtime": 104,
+    "vote_average": 5.457,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "秋刀魚の味（1962）": {
+    "tmdb_id": 50759,
+    "tmdb_title_jp": "秋刀魚の味",
+    "tmdb_title_en": "An Autumn Afternoon",
+    "tmdb_title_original": "秋刀魚の味",
+    "tmdb_original_language": "ja",
+    "overview": "周平（笠智衆）は、妻とは死別し、長男の幸一（佐田啓二）は結婚して家を出て団地暮らし。いまは娘の路子（岩下志麻）と次男の和夫（三上真一郎）と３人安らかに暮らしていた。  ある日、周平はいつものように友人の河合（中村伸郎）、堀江（北龍二）と酒を飲みに行く。  話題は路子の嫁行きの話になり、まだ路子を嫁にやることなど考えてもいなかった周平は悩み始める…。  日本映画界の巨匠・小津安二郎監督の最後の作品で、妻に先立たれた男とその子供達の幸せの中にもなぜか潜む孤独と寂しさを描いた作品。",
+    "overview_en": "Shuhei Hirayama is a widower with a 24-year-old daughter. Gradually, he comes to realize that she should not be obliged to look after him for the rest of his life, so he arranges a marriage for her.",
+    "poster_path": "/lia3Lk8AgdtU9SaSq59jANDj3vh.jpg",
+    "backdrop_path": "/r9cWPx9W8ObmMIBdbBce9bUXZhq.jpg",
+    "release_date": "1962-11-18",
+    "director": "小津安二郎",
+    "director_jp": "小津安二郎",
+    "director_en": "Yasujirō Ozu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.862,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "渡る世間は鬼ばかり ボロ家の春秋": null,
+  "グリーンバレット": {
+    "tmdb_id": 1001714,
+    "tmdb_title_jp": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_title_en": "Green Bullet",
+    "tmdb_title_original": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_original_language": "ja",
+    "overview": "阪元裕吾監督監督が殺し屋・国岡を追ったモキュメンタリー（疑似ドキュメンタリー）「最強殺し屋伝説国岡［完全版］」の続編にして外伝の第1弾。殺し屋・国岡は新たに6人の“殺し屋女子”（演じるのはミスマガジン2021の受賞者陣）を一人前の殺し屋にしようとする合宿にインストラクターとして招かれ……。前作と同じく、殺し屋たちのゆるい日常と激しいアクションのギャップが見もの。本作に続き外伝第2弾「最強殺し屋伝説国岡外伝国岡ツアーズ大阪編～蘇る金のドラゴン・なにわアサシンの逆襲～」も製作。\r 京都で活動しているすご腕殺し屋の国岡は、プロの殺し屋を目指している若い女性6人、ふみか、美香、はるか、唯、梨紗、響を一人前の殺し屋にする訓練合宿にインストラクターとして参加する。だが女性たちはいずれも個性が強く、国岡は手こずる事態に。やがて一行が起こした事件のせいで、凶暴かつ最悪な殺し屋集団“フォックスハンター”が合宿所に来ることになり、国岡は6人を率いて“フォックスハンター”と激闘を繰り広げる。",
+    "overview_en": "Six girls participate in the boot camp for assassins. The instructor of the boot camp is the legendary hitman, Kunioka. At first, they repel each other, but the girls gradually develop friendships while enduring the hard training. By chance, the girls get involved in a life-threatening battle with a group of anarchist hitmen.",
+    "poster_path": "/nTeVHCe0FMuC8l0AIneud78waB5.jpg",
+    "backdrop_path": "/50reRp5eyWLBttZ15DIOjjUFWcP.jpg",
+    "release_date": "2022-08-26",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 106,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1001714": {
+    "tmdb_id": 1001714,
+    "tmdb_title_jp": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_title_en": "Green Bullet",
+    "tmdb_title_original": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_original_language": "ja",
+    "overview": "阪元裕吾監督監督が殺し屋・国岡を追ったモキュメンタリー（疑似ドキュメンタリー）「最強殺し屋伝説国岡［完全版］」の続編にして外伝の第1弾。殺し屋・国岡は新たに6人の“殺し屋女子”（演じるのはミスマガジン2021の受賞者陣）を一人前の殺し屋にしようとする合宿にインストラクターとして招かれ……。前作と同じく、殺し屋たちのゆるい日常と激しいアクションのギャップが見もの。本作に続き外伝第2弾「最強殺し屋伝説国岡外伝国岡ツアーズ大阪編～蘇る金のドラゴン・なにわアサシンの逆襲～」も製作。\r 京都で活動しているすご腕殺し屋の国岡は、プロの殺し屋を目指している若い女性6人、ふみか、美香、はるか、唯、梨紗、響を一人前の殺し屋にする訓練合宿にインストラクターとして参加する。だが女性たちはいずれも個性が強く、国岡は手こずる事態に。やがて一行が起こした事件のせいで、凶暴かつ最悪な殺し屋集団“フォックスハンター”が合宿所に来ることになり、国岡は6人を率いて“フォックスハンター”と激闘を繰り広げる。",
+    "overview_en": "Six girls participate in the boot camp for assassins. The instructor of the boot camp is the legendary hitman, Kunioka. At first, they repel each other, but the girls gradually develop friendships while enduring the hard training. By chance, the girls get involved in a life-threatening battle with a group of anarchist hitmen.",
+    "poster_path": "/nTeVHCe0FMuC8l0AIneud78waB5.jpg",
+    "backdrop_path": "/50reRp5eyWLBttZ15DIOjjUFWcP.jpg",
+    "release_date": "2022-08-26",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 106,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "最強殺し屋伝説国岡　完全版": {
+    "tmdb_id": 894264,
+    "tmdb_title_jp": "最強殺し屋伝説国岡 [完全版]",
+    "tmdb_title_en": "Legendary Hit-man, Kunioka",
+    "tmdb_title_original": "最強殺し屋伝説国岡 [完全版]",
+    "tmdb_original_language": "ja",
+    "overview": "「ベイビーわるきゅーれ」シリーズの阪元裕吾監督自身が、京都最強の殺し屋・国岡の日常とその仕事ぶりを記録したという、モキュメンタリー（疑似ドキュメンタリー）のスタイルで描いた異色のコミカルアクション。伊能昌幸が演じる殺し屋国岡のゆるい日常とハードなアクションのギャップは、「ベイビーわるきゅーれ」の世界観と重なり、独自のユーモアが笑いを誘う。\r 2018年。映画監督の阪元は新作映画「ベイビーわるきゅーれ」の脚本に取り組むが、“関西殺し屋協会”という殺し屋ビジネスネットワークがあると知って新作の参考にしようと協会に取材を申し込む。協会から紹介されたのは、京都最強の殺し屋、国岡昌幸（23歳）だが、国岡は普段、一般人と変わらぬ生活を送っていた。やがて国岡は標的と異なる人物を殺してしまい、逆上した依頼主が次々と放つ殺し屋たちを迎え撃つ事態に……。",
+    "overview_en": "In 2018, director Sakamoto was working on a script for his new movie \"Baby Assassins.\" He learns of a hitman business network called \"Kansai Hitman Association\" and applies for interviews as a reference for writing scripts. He is introduced to Masayuki Kunioka, a freelancer who is known as the strongest hitman in Kyoto. Sakamoto decides to follow Kunioka in his day-to-day life. One day, Kunioka kills the wrong person due to miscommunication with the client and is targeted by both the hitmen sent from the furious client and those who are aiming for revenge on behalf of the victim.",
+    "poster_path": "/lIIaQSI5m0mww843e2qg8FgpGa3.jpg",
+    "backdrop_path": "/c7wPDhR1BugigUH0u0hMDtkmHC5.jpg",
+    "release_date": "2021-10-08",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:894264": {
+    "tmdb_id": 894264,
+    "tmdb_title_jp": "最強殺し屋伝説国岡 [完全版]",
+    "tmdb_title_en": "Legendary Hit-man, Kunioka",
+    "tmdb_title_original": "最強殺し屋伝説国岡 [完全版]",
+    "tmdb_original_language": "ja",
+    "overview": "「ベイビーわるきゅーれ」シリーズの阪元裕吾監督自身が、京都最強の殺し屋・国岡の日常とその仕事ぶりを記録したという、モキュメンタリー（疑似ドキュメンタリー）のスタイルで描いた異色のコミカルアクション。伊能昌幸が演じる殺し屋国岡のゆるい日常とハードなアクションのギャップは、「ベイビーわるきゅーれ」の世界観と重なり、独自のユーモアが笑いを誘う。\r 2018年。映画監督の阪元は新作映画「ベイビーわるきゅーれ」の脚本に取り組むが、“関西殺し屋協会”という殺し屋ビジネスネットワークがあると知って新作の参考にしようと協会に取材を申し込む。協会から紹介されたのは、京都最強の殺し屋、国岡昌幸（23歳）だが、国岡は普段、一般人と変わらぬ生活を送っていた。やがて国岡は標的と異なる人物を殺してしまい、逆上した依頼主が次々と放つ殺し屋たちを迎え撃つ事態に……。",
+    "overview_en": "In 2018, director Sakamoto was working on a script for his new movie \"Baby Assassins.\" He learns of a hitman business network called \"Kansai Hitman Association\" and applies for interviews as a reference for writing scripts. He is introduced to Masayuki Kunioka, a freelancer who is known as the strongest hitman in Kyoto. Sakamoto decides to follow Kunioka in his day-to-day life. One day, Kunioka kills the wrong person due to miscommunication with the client and is targeted by both the hitmen sent from the furious client and those who are aiming for revenge on behalf of the victim.",
+    "poster_path": "/lIIaQSI5m0mww843e2qg8FgpGa3.jpg",
+    "backdrop_path": "/c7wPDhR1BugigUH0u0hMDtkmHC5.jpg",
+    "release_date": "2021-10-08",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ナイト・オン・ザ・プラネット": {
+    "tmdb_id": 339,
+    "tmdb_title_jp": "ナイト・オン・ザ・プラネット",
+    "tmdb_title_en": "Night on Earth",
+    "tmdb_title_original": "Night on Earth",
+    "tmdb_original_language": "en",
+    "overview": "地球という星の、ロサンゼルス、ニューヨーク、パリ、ローマ、ヘルシンキという5つの都市で、5人のタクシー・ドライバーが乗客を乗せた。同じ夜にそれぞれに繰り広げられる5つの物語。本作はジャームッシュの作品に共通して見られる奇妙な可笑しさ、卓越したセンスが冴える会話に加え、背景に広がる空しさに満ちた荒涼感は健在であり、その独自の雰囲気で好き嫌いがハッキリと二分される彼の作品にしては割りと門戸が広く、様々な人が楽しめる作品に仕上がっている。特に、ニューヨークが舞台の話と、ロベルト・ベニーニ主演によるパリの話がお勧め。",
+    "overview_en": "A quintet of cabbies in five cities and their remarkable fares on the same eventful night.",
+    "poster_path": "/7UAiUF7HjzGFIqm1QlqfqMZJKiS.jpg",
+    "backdrop_path": "/s7lwxcX5iZuOdoQhM77WyQaPtWv.jpg",
+    "release_date": "1991-12-12",
+    "director": "ジム・ジャームッシュ",
+    "director_jp": "ジム・ジャームッシュ",
+    "director_en": "Jim Jarmusch",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 128,
+    "vote_average": 7.521,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "パターソン": {
+    "tmdb_id": 370755,
+    "tmdb_title_jp": "パターソン",
+    "tmdb_title_en": "Paterson",
+    "tmdb_title_original": "Paterson",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A week in the life of Paterson, a poet bus driver, and his wife Laura, a very creative artist, who live in Paterson, New Jersey, hometown of many famous poets and artists.",
+    "poster_path": "/AuJ1ZlfqwuAr9H5Qr1U9KILylse.jpg",
+    "backdrop_path": "/5Bk7kYSKAuNrxI5BXpDqlsln2P0.jpg",
+    "release_date": "2016-11-17",
+    "director": "ジム・ジャームッシュ",
+    "director_jp": "ジム・ジャームッシュ",
+    "director_en": "Jim Jarmusch",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 118,
+    "vote_average": 7.116,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:370755": {
+    "tmdb_id": 370755,
+    "tmdb_title_jp": "パターソン",
+    "tmdb_title_en": "Paterson",
+    "tmdb_title_original": "Paterson",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A week in the life of Paterson, a poet bus driver, and his wife Laura, a very creative artist, who live in Paterson, New Jersey, hometown of many famous poets and artists.",
+    "poster_path": "/AuJ1ZlfqwuAr9H5Qr1U9KILylse.jpg",
+    "backdrop_path": "/5Bk7kYSKAuNrxI5BXpDqlsln2P0.jpg",
+    "release_date": "2016-11-17",
+    "director": "ジム・ジャームッシュ",
+    "director_jp": "ジム・ジャームッシュ",
+    "director_en": "Jim Jarmusch",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 118,
+    "vote_average": 7.116,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "WHO？": null,
+  "ミステリー・トレイン": {
+    "tmdb_id": 11305,
+    "tmdb_title_jp": "ミステリー・トレイン",
+    "tmdb_title_en": "Mystery Train",
+    "tmdb_title_original": "Mystery Train",
+    "tmdb_original_language": "en",
+    "overview": "物語は「ファー・フロム・ヨコハマ」「ア・ゴースト」「ロスト・イン・スペース」と名づけられた3話からなるオムニバスで、それぞれの話の人物たちが、互いに知らないまま、別々に同じ夜汽車を見、エルビスの〈ブルー・ムーン〉を聞き、そして翌朝1発の銃声を耳にする、ワン・ナイト・ストーリー。",
+    "overview_en": "In Memphis, Tennessee, over the course of a single night, the Arcade Hotel, run by an eccentric night clerk and a clueless bellboy, is visited by a young Japanese couple traveling in search of the roots of rock; an Italian woman in mourning who stumbles upon a fleeing charlatan girl; and a comical trio of accidental thieves looking for a place to hide.",
+    "poster_path": "/xJJV2em8WLVLO5OKES0Y2mkrewq.jpg",
+    "backdrop_path": "/t0GxYLiPkTtFBuzoPLmLU3HSKEN.jpg",
+    "release_date": "1989-09-06",
+    "director": "ジム・ジャームッシュ",
+    "director_jp": "ジム・ジャームッシュ",
+    "director_en": "Jim Jarmusch",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 7.34,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "エターナル・サンシャイン": {
+    "tmdb_id": 38,
+    "tmdb_title_jp": "エターナル・サンシャイン",
+    "tmdb_title_en": "Eternal Sunshine of the Spotless Mind",
+    "tmdb_title_original": "Eternal Sunshine of the Spotless Mind",
+    "tmdb_original_language": "en",
+    "overview": "もうすぐヴァレンタインという季節。平凡な男ジョエルは、恋人クレメンタイン（クレム）と喧嘩をしてしまう。何とか仲直りしようとプレゼントを買って彼女の働く本屋に行くが、クレムは彼を知らないかのように扱い、目の前でほかの男といちゃつく始末。ジョエルはひどいショックを受ける。やがて彼はクレムが記憶を消す手術を受けたことを知る。苦しんだ末、ジョエルもクレムの記憶を消し去る手術を受けることを決心。手術を受けながら、ジョエルはクレムとの思い出をさまよい、やがて無意識下で手術に抵抗し始める。",
+    "overview_en": "Joel Barish, heartbroken that his girlfriend underwent a procedure to erase him from her memory, decides to do the same. However, as he watches his memories of her fade away, he realises that he still loves her, and may be too late to correct his mistake.",
+    "poster_path": "/vC4Dsk9xPcxeBMkvTme709THvMl.jpg",
+    "backdrop_path": "/744ybMaYRry1IQKoDakMc4GEU4L.jpg",
+    "release_date": "2004-03-19",
+    "director": "Michel Gondry",
+    "director_jp": "Michel Gondry",
+    "director_en": "Michel Gondry",
+    "genres": [
+      "サイエンスフィクション",
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 108,
+    "vote_average": 8.092,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:38": {
+    "tmdb_id": 38,
+    "tmdb_title_jp": "エターナル・サンシャイン",
+    "tmdb_title_en": "Eternal Sunshine of the Spotless Mind",
+    "tmdb_title_original": "Eternal Sunshine of the Spotless Mind",
+    "tmdb_original_language": "en",
+    "overview": "もうすぐヴァレンタインという季節。平凡な男ジョエルは、恋人クレメンタイン（クレム）と喧嘩をしてしまう。何とか仲直りしようとプレゼントを買って彼女の働く本屋に行くが、クレムは彼を知らないかのように扱い、目の前でほかの男といちゃつく始末。ジョエルはひどいショックを受ける。やがて彼はクレムが記憶を消す手術を受けたことを知る。苦しんだ末、ジョエルもクレムの記憶を消し去る手術を受けることを決心。手術を受けながら、ジョエルはクレムとの思い出をさまよい、やがて無意識下で手術に抵抗し始める。",
+    "overview_en": "Joel Barish, heartbroken that his girlfriend underwent a procedure to erase him from her memory, decides to do the same. However, as he watches his memories of her fade away, he realises that he still loves her, and may be too late to correct his mistake.",
+    "poster_path": "/vC4Dsk9xPcxeBMkvTme709THvMl.jpg",
+    "backdrop_path": "/744ybMaYRry1IQKoDakMc4GEU4L.jpg",
+    "release_date": "2004-03-19",
+    "director": "Michel Gondry",
+    "director_jp": "Michel Gondry",
+    "director_en": "Michel Gondry",
+    "genres": [
+      "サイエンスフィクション",
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 108,
+    "vote_average": 8.092,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "やくざ刑事 マリファナ密売組織": {
+    "tmdb_id": 106054,
+    "tmdb_title_jp": "やくざ刑事 マリファナ密売組織",
+    "tmdb_title_en": "Kamikaze Cop, Marihuana Syndicate",
+    "tmdb_title_original": "やくざ刑事　マリファナ密売組織",
+    "tmdb_original_language": "ja",
+    "overview": "警視庁特捜部の刑事・隼田志郎。自称警視庁愚連隊の彼は、暴力団・東京誠和会のマリファナ密売ルートを探るため組織に潜入。幹部の石黒に取り入った。一方、関西の大組織・夏井興業も東京進出を狙っており、隼田は両者の対立をあおることで一挙殲滅を目論む。",
+    "overview_en": "An undercover cop insinuates himself into a yakuza family. Managing to avert an assassination attack on the boss he is assigned to kill a rival boss.",
+    "poster_path": "/gGH1CEoF7sAkMaUVdiYvU57rPdc.jpg",
+    "backdrop_path": "/wp0WLLEruCpaowA7Kf5DlCJBA6y.jpg",
+    "release_date": "1970-10-17",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:106054": {
+    "tmdb_id": 106054,
+    "tmdb_title_jp": "やくざ刑事 マリファナ密売組織",
+    "tmdb_title_en": "Kamikaze Cop, Marihuana Syndicate",
+    "tmdb_title_original": "やくざ刑事　マリファナ密売組織",
+    "tmdb_original_language": "ja",
+    "overview": "警視庁特捜部の刑事・隼田志郎。自称警視庁愚連隊の彼は、暴力団・東京誠和会のマリファナ密売ルートを探るため組織に潜入。幹部の石黒に取り入った。一方、関西の大組織・夏井興業も東京進出を狙っており、隼田は両者の対立をあおることで一挙殲滅を目論む。",
+    "overview_en": "An undercover cop insinuates himself into a yakuza family. Managing to avert an assassination attack on the boss he is assigned to kill a rival boss.",
+    "poster_path": "/gGH1CEoF7sAkMaUVdiYvU57rPdc.jpg",
+    "backdrop_path": "/wp0WLLEruCpaowA7Kf5DlCJBA6y.jpg",
+    "release_date": "1970-10-17",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "緋牡丹博徒　花札勝負": {
+    "tmdb_id": 55645,
+    "tmdb_title_jp": "緋牡丹博徒　花札勝負",
+    "tmdb_title_en": "Red Peony Gambler: Flower Cards Game",
+    "tmdb_title_original": "緋牡丹博徒　花札勝負",
+    "tmdb_original_language": "ja",
+    "overview": "「緋牡丹博徒」シリーズ第3弾。明治中期、渡世修行中のお竜（藤純子）は、熱田神宮大祭の勧進賭博を控える名古屋随一の西之丸一家に草履を脱ぐが、賭博を仕切る貸元の座を狙う金原一家に恩義のある渡世人・花岡（高倉健）と、双方の仁義なき抗争に巻き込まれていく。",
+    "overview_en": "The third chapter of the ‘Red Peony Gambler’ saga depicts the happiness and sadness of Red Peony Oryu’s life as she seals her femininity with a red peony tattoo and lives in world of chivalry and honor of the yakuza. This story takes place in the middle of the Meiji era in Nagoya. Oryu is wandering the country, training herself to reinstate her family name. With a written recommendation from Kumatora, she appears at the door of the Nishinomaru family. At the same time, the family is preparing for the gambling competition at the Netsuda Shrine Festival, which they have been hosting for generations. Meanwhile, the crooked Kinbara family is plotting to take over the competition. And now Oryu is forced to get involved in the struggle…",
+    "poster_path": "/xvMhbniiNBwDC6Nu9OE9wGNkY2q.jpg",
+    "backdrop_path": "/eMwVtL9Y6cPQS8TmO6zBpr9vnrl.jpg",
+    "release_date": "1969-02-01",
+    "director": "加藤泰",
+    "director_jp": "加藤泰",
+    "director_en": "Tai Katō",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 99,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "現代やくざ 与太者の掟": {
+    "tmdb_id": 537351,
+    "tmdb_title_jp": "現代やくざ 与太者の掟",
+    "tmdb_title_en": "A Modern Yakuza: The Code of the Lawless",
+    "tmdb_title_original": "現代やくざ 与太者の掟",
+    "tmdb_original_language": "ja",
+    "overview": "昭和32年、暴力団や愚連隊が我がもの顔で歩く新宿の街に、フラリ一人の男が降り立った。男は天涯孤独の身の上で、少年院、刑務所とヨセバ暮らしを繰り返し、今また五年の務めを終えてシャバへ出たところであった...。ある暴力団抗争の渦中に巻き込まれた一匹狼が、悪の華咲く新宿で、ドスを片手に血の雨降らす痛快アクション巨編。",
+    "overview_en": "Just released on parole, one young man hurtles towards a face-off with the gangsters controlling Shinjuku and its lucrative prostitutes.",
+    "poster_path": "/qYzDmpaKH69mhQkZrzffR74k0zi.jpg",
+    "backdrop_path": "/xwdJqF9gtGL0DnDKQmM8STzDUZo.jpg",
+    "release_date": "1969-02-01",
+    "director": "降旗康男",
+    "director_jp": "降旗康男",
+    "director_en": "Yasuo Furuhata",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "甘い罠": null,
+  "主婦マリーがしたこと": null,
+  "引き裂かれた女": {
+    "tmdb_id": 5592,
+    "tmdb_title_jp": "La Fille coupée en deux",
+    "tmdb_title_en": "A Girl Cut in Two",
+    "tmdb_title_original": "La Fille coupée en deux",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A TV weather girl is torn between an older man, a famous married author whom she loves but who won't leave his wife, and a semi-deranged young heir to an industrial fortune who loves her.",
+    "poster_path": "/aABQToRZDPwFzQYXTQLiRYPpy4S.jpg",
+    "backdrop_path": "/dFHJB93XClheLwdUMCWqdmu1YL.jpg",
+    "release_date": "2007-08-08",
+    "director": "克洛德·夏布洛尔",
+    "director_jp": "克洛德·夏布洛尔",
+    "director_en": "Claude Chabrol",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 115,
+    "vote_average": 5.939,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "みんな、おしゃべり！": {
+    "tmdb_id": 1555231,
+    "tmdb_title_jp": "みんな、おしゃべり！",
+    "tmdb_title_en": "The Chatterboxes",
+    "tmdb_title_original": "みんな、おしゃべり！",
+    "tmdb_original_language": "ja",
+    "overview": "ろう者vsクルド人！　CODA（コーダ）の監督による日本手話とクルド語を題材にしたオリジナル脚本。ろう者・聴者双方に向けた字幕付き作品。",
+    "overview_en": "Deaf Japanese vs. Hearing Kurds! A film by the director of  CODA  (Child of Deaf Adults), in Japanese Sign Language and Kurdish. Subtitled for both Deaf and Hearing audiences.",
+    "poster_path": "/uPfMinf5D17miHtitM5U7MnTtfS.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-30",
+    "director": "Ken Kawai",
+    "director_jp": "Ken Kawai",
+    "director_en": "Ken Kawai",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 143,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1555231": {
+    "tmdb_id": 1555231,
+    "tmdb_title_jp": "みんな、おしゃべり！",
+    "tmdb_title_en": "The Chatterboxes",
+    "tmdb_title_original": "みんな、おしゃべり！",
+    "tmdb_original_language": "ja",
+    "overview": "ろう者vsクルド人！　CODA（コーダ）の監督による日本手話とクルド語を題材にしたオリジナル脚本。ろう者・聴者双方に向けた字幕付き作品。",
+    "overview_en": "Deaf Japanese vs. Hearing Kurds! A film by the director of  CODA  (Child of Deaf Adults), in Japanese Sign Language and Kurdish. Subtitled for both Deaf and Hearing audiences.",
+    "poster_path": "/uPfMinf5D17miHtitM5U7MnTtfS.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-30",
+    "director": "Ken Kawai",
+    "director_jp": "Ken Kawai",
+    "director_en": "Ken Kawai",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 143,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "エロス+虐殺": {
+    "tmdb_id": 78117,
+    "tmdb_title_jp": "エロス＋虐殺",
+    "tmdb_title_en": "Eros + Massacre",
+    "tmdb_title_original": "エロス＋虐殺",
+    "tmdb_original_language": "ja",
+    "overview": "　松竹ヌーヴェル・ヴァーグ出身の吉田喜重監督が、大正のアナーキスト大杉栄が三角関係のもつれから刺された事件を取り上げ、大正時代と現代（昭和40年代）のそれぞれの風俗と人物たちを、時間軸と空間軸を交錯させ前衛的な手法で描いた愛と憎しみのドラマ。出演は細川俊之、岡田茉莉子。映画のモデルとなったひとりが、名誉毀損・プライバシー侵害を理由に、映画上映禁止の訴訟を起こしたことでも知られる。ちなみにこの時の請求は棄却されている。",
+    "overview_en": "Two interwoven stories. The first is a biography of anarchist Sakae Osugi which follows his relationship with three women in the 1920s. The second centers around two 1960s students researching Osugi's theories.",
+    "poster_path": "/9gYUtPdsX0hntzPjWMAY5NULYZ0.jpg",
+    "backdrop_path": "/zEPVHPVN72OMOAbngjDjkkPKQdJ.jpg",
+    "release_date": "1969-03-13",
+    "director": "吉田喜重",
+    "director_jp": "吉田喜重",
+    "director_en": "Yoshishige Yoshida",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "History"
+    ],
+    "runtime": 167,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "フジコ・ヘミング　永遠の音色": null,
+  "アフター・ザ・クエイク": {
+    "tmdb_id": 1379045,
+    "tmdb_title_jp": "アフター・ザ・クエイク",
+    "tmdb_title_en": "After the Quake",
+    "tmdb_title_original": "アフター・ザ・クエイク",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Based on four of the six short stories compiled in Murakami Haruki's anthology, After the Quake explores the complex aftermath of Japan’s earthquakes and other global crises. (Movie version of the TV drama).",
+    "poster_path": "/cdW1Pfy4LzRx4NUWYTAUTHUgNjs.jpg",
+    "backdrop_path": "/r1ALuRWATS3waPQhlheB8g9PbfJ.jpg",
+    "release_date": "2025-10-03",
+    "director": "井上剛",
+    "director_jp": "井上剛",
+    "director_en": "Tsuyoshi Inoue",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 132,
+    "vote_average": 7.714,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "スプリングスティーン　孤独のハイウェイ": {
+    "tmdb_id": 1230368,
+    "tmdb_title_jp": "スプリングスティーン 孤独のハイウェイ",
+    "tmdb_title_en": "Springsteen: Deliver Me from Nowhere",
+    "tmdb_title_original": "Springsteen: Deliver Me from Nowhere",
+    "tmdb_original_language": "en",
+    "overview": "アメリカの魂 ロックの英雄“ The Boss ”ブルース・スプリングスティーン。「Born in the U.S.A.」で世界が振り向く前夜、誰にも頼らず、わずか4トラックの録音機で吹き込んだアルバム『ネブラスカ』。父との確執、その苦悩と創造の情熱を描いた、音楽映画の枠を超え、観る者の心を震わせる感動ドラマ。",
+    "overview_en": "Bruce Springsteen, a young musician on the cusp of global superstardom, struggles to reconcile the pressures of success with the ghosts of his past.",
+    "poster_path": "/4jZwKegB2KiGVpyk0mvgry2PKq2.jpg",
+    "backdrop_path": "/oOczvrnhpXUmqCbyKYFj4FQExAo.jpg",
+    "release_date": "2025-10-22",
+    "director": "スコット・クーパー",
+    "director_jp": "スコット・クーパー",
+    "director_en": "Scott Cooper",
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music"
+    ],
+    "runtime": 120,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "蟲（2018）": {
+    "tmdb_id": 390066,
+    "tmdb_title_jp": "蟲",
+    "tmdb_title_en": "Insect",
+    "tmdb_title_original": "Hmyz",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "The Dung Beetle is late, the Parasite is asleep and Mrs Larva is more interested in her knitting than the director’s instructions. It’s clear: this amateur theatre company has a long way to go before they can perform their version of \"The Insect Play\", a famous satirical work from 1922 by the brothers Karel and Josef Čapek which features insects with decidedly human traits: greed, egocentrism, jealousy.",
+    "poster_path": "/dYpA3hmYR24jb97E9drwz4ypgs0.jpg",
+    "backdrop_path": "/qg3q6piKATWPiAfFb0aTlZg9ZPr.jpg",
+    "release_date": "2018-02-19",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Animation"
+    ],
+    "runtime": 98,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "SK",
+        "name": "Slovakia"
+      }
+    ]
+  },
+  "錬金炉アタノール": {
+    "tmdb_id": 673008,
+    "tmdb_title_jp": "Alchymická pec",
+    "tmdb_title_en": "Alchemical Furnace",
+    "tmdb_title_original": "Alchymická pec",
+    "tmdb_original_language": "sk",
+    "overview": "",
+    "overview_en": "Jan Svankmajer, at 85 years of age, is one of the most prominent artists of European cinema. His work has inspired and guided generations of directors, and represents a sharp and merciless exploration of human nature which is entirely unique. When he decided to retire from filmmaking after \"Insect\" (2018), his producer suggested that the creative processes which ferment within their company Athanor should be preserved on film. Over three years, the directors of this documentary followed the life of Jan Svankmajer, elucidating his artistic principles, as well as his collaboration with old friend and producer Jaromír Kallista. The film is also haunted by the memory of Eva Svankmajerová, his wife and creative partner, muse and inseparable other half. Playful and poetic, candid and with a touch of Czech humour, it is an ode to creation and to companionship.",
+    "poster_path": "/eCU7NOthr16i6wjHXxdjdpLzL9c.jpg",
+    "backdrop_path": "/rRBFQIaoUJErwpMwL9mhRT3iUhq.jpg",
+    "release_date": "2020-10-15",
+    "director": "Jan Daňhel",
+    "director_jp": "Jan Daňhel",
+    "director_en": "Jan Daňhel",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 117,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "SK",
+        "name": "Slovakia"
+      }
+    ]
+  },
+  "クンストカメラ": {
+    "tmdb_id": 1035527,
+    "tmdb_title_jp": "Kunstkamera",
+    "tmdb_title_en": "Kunstkamera",
+    "tmdb_title_original": "Kunstkamera",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "An astonishing array of paintings, drawings, sculptures, prints, objects and materials fill room after room - but this is not a museum open to the general public. It is the home of the celebrated artist couple Jan Svankmajer and his late wife Eva, situated in the Czech Republic's Horni Stankov Castle.",
+    "poster_path": "/b7SM2zHm9yr8Wn0dBTeE487aouA.jpg",
+    "backdrop_path": "/bDqM76ly0LyRTEVCmCwDKYBzzDZ.jpg",
+    "release_date": "2022-11-17",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 114,
+    "vote_average": 10.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      }
+    ]
+  },
+  "アリス（1988）": null,
+  "ファウスト（1994）": {
+    "tmdb_id": 18919,
+    "tmdb_title_jp": "ファウスト",
+    "tmdb_title_en": "Faust",
+    "tmdb_title_original": "Lekce Faust",
+    "tmdb_original_language": "cs",
+    "overview": "ゲーテの戯曲「ファウスト」をシュヴァンクマイエルが自ら翻案し映画化した「アリス」に続く長編2作目。実在したとされる魔術師の伝説が独自の解釈によってつづられ、奇妙な生物たちの姿や独特な食事描写などが実写・粘土細工・ストップモーションアニメーションなどを駆使して描かれていく。",
+    "overview_en": "A very free adaptation of Marlowe's \"Doctor Faustus\", Goethe's \"Faust\" and various other treatments of the old legend of the man who sold his soul to the devil. A nondescript man is lured by a strange map into a sinister puppet theatre, where he finds himself immersed in an indescribably weird version of the play, blending live actors, clay animation and giant puppets.",
+    "poster_path": "/A5SqoalLi3Agu5qdZykJhpGePkH.jpg",
+    "backdrop_path": "/qiGF1b2vH38WRWQooLp3q9LS7m2.jpg",
+    "release_date": "1994-09-10",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "アニメーション",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy"
+    ],
+    "runtime": 97,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "オテサーネク 妄想の子供": {
+    "tmdb_id": 18939,
+    "tmdb_title_jp": "オテサーネク　妄想の子供",
+    "tmdb_title_en": "Little Otik",
+    "tmdb_title_original": "Otesánek",
+    "tmdb_original_language": "cs",
+    "overview": "実写とアニメを組み合わせて、シュールでグロテスク、なおかつどこかユーモラスな独自の映像世界を探求し続けるアート・アニメ界の奇才ヤン・シュヴァンクマイエル監督がチェコの民話を下敷きに描いた異色長編ダークファンタジー作。  なかなか子宝に恵まれず、寂しい思いをしていたホラーク夫妻。ある日ホラークが、偶然地面から掘り出した、どこか人間の形によく似た木の切り株を夫人にプレゼントすると、夫人は早速それをわが子に見たててオティークと名付け、周囲の人々の奇異なまなざしをよそに、溺愛して養育するようになる。みるみるうちに成長したオティークは、食欲を異常に発達させて、飼い猫から人間まであらゆるものをむさぼり食うようになり…。",
+    "overview_en": "When a childless couple learn that they cannot have children, it causes great distress. To ease his wife's pain, the man finds a piece of root in the backyard and chops it and varnishes it into the shape of a child. However the woman takes the root as her baby and starts to pretend that it is real.",
+    "poster_path": "/i2tHooKzDBjHLvHeiUjuqDMf6e4.jpg",
+    "backdrop_path": "/4iThHj4wK5A5Rfbe66y3KpyhD3Z.jpg",
+    "release_date": "2001-01-25",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "コメディ",
+      "ファンタジー",
+      "ホラー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Fantasy",
+      "Horror",
+      "Animation"
+    ],
+    "runtime": 132,
+    "vote_average": 6.987,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:18939": {
+    "tmdb_id": 18939,
+    "tmdb_title_jp": "オテサーネク　妄想の子供",
+    "tmdb_title_en": "Little Otik",
+    "tmdb_title_original": "Otesánek",
+    "tmdb_original_language": "cs",
+    "overview": "実写とアニメを組み合わせて、シュールでグロテスク、なおかつどこかユーモラスな独自の映像世界を探求し続けるアート・アニメ界の奇才ヤン・シュヴァンクマイエル監督がチェコの民話を下敷きに描いた異色長編ダークファンタジー作。  なかなか子宝に恵まれず、寂しい思いをしていたホラーク夫妻。ある日ホラークが、偶然地面から掘り出した、どこか人間の形によく似た木の切り株を夫人にプレゼントすると、夫人は早速それをわが子に見たててオティークと名付け、周囲の人々の奇異なまなざしをよそに、溺愛して養育するようになる。みるみるうちに成長したオティークは、食欲を異常に発達させて、飼い猫から人間まであらゆるものをむさぼり食うようになり…。",
+    "overview_en": "When a childless couple learn that they cannot have children, it causes great distress. To ease his wife's pain, the man finds a piece of root in the backyard and chops it and varnishes it into the shape of a child. However the woman takes the root as her baby and starts to pretend that it is real.",
+    "poster_path": "/i2tHooKzDBjHLvHeiUjuqDMf6e4.jpg",
+    "backdrop_path": "/4iThHj4wK5A5Rfbe66y3KpyhD3Z.jpg",
+    "release_date": "2001-01-25",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "コメディ",
+      "ファンタジー",
+      "ホラー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Fantasy",
+      "Horror",
+      "Animation"
+    ],
+    "runtime": 132,
+    "vote_average": 6.987,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "サヴァイヴィング ライフ　夢は第二の人生": {
+    "tmdb_id": 76638,
+    "tmdb_title_jp": "サヴァイヴィング ライフ -夢は第二の人生-",
+    "tmdb_title_en": "Surviving Life (Theory and Practice)",
+    "tmdb_title_original": "Přežít svůj život",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "Eugene, an aging man, leads a double life - one real, the other in his dreams. He goes to see a psychoanalyst, who tries to interpret the meaning of his dreams. Eugene finds a way of entering his dream-world at will and finds out about his childhood and what really happened to his parents.",
+    "poster_path": "/7XRx7Pf5P4y2AwXKaltDFykjQw1.jpg",
+    "backdrop_path": "/uPTMnetNKoDk66GNwvI4aIOyeri.jpg",
+    "release_date": "2010-09-16",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 6.956,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "SK",
+        "name": "Slovakia"
+      }
+    ]
+  },
+  "tmdb:76638": {
+    "tmdb_id": 76638,
+    "tmdb_title_jp": "サヴァイヴィング ライフ -夢は第二の人生-",
+    "tmdb_title_en": "Surviving Life (Theory and Practice)",
+    "tmdb_title_original": "Přežít svůj život",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "Eugene, an aging man, leads a double life - one real, the other in his dreams. He goes to see a psychoanalyst, who tries to interpret the meaning of his dreams. Eugene finds a way of entering his dream-world at will and finds out about his childhood and what really happened to his parents.",
+    "poster_path": "/7XRx7Pf5P4y2AwXKaltDFykjQw1.jpg",
+    "backdrop_path": "/uPTMnetNKoDk66GNwvI4aIOyeri.jpg",
+    "release_date": "2010-09-16",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 6.956,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "SK",
+        "name": "Slovakia"
+      }
+    ]
+  },
+  "家庭裁判所　第3H法廷": {
+    "tmdb_id": 730539,
+    "tmdb_title_jp": "Courtroom 3H",
+    "tmdb_title_en": "Courtroom 3H",
+    "tmdb_title_original": "Courtroom 3H",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Through different legal cases and the complexity of the State of Florida’s legal processes involving minors, the film shows how delicate legal resolutions can be for children, who are ultimately the ones most affected by these judicial decisions.",
+    "poster_path": "/fLQFG38SPbeotMKCq17aInUsaCO.jpg",
+    "backdrop_path": null,
+    "release_date": "2020-09-19",
+    "director": "Antonio Méndez Esparza",
+    "director_jp": "Antonio Méndez Esparza",
+    "director_en": "Antonio Méndez Esparza",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 115,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "アイム・スティル・ヒア": {
+    "tmdb_id": 1000837,
+    "tmdb_title_jp": "アイム・スティル・ヒア",
+    "tmdb_title_en": "I'm Still Here",
+    "tmdb_title_original": "Ainda Estou Aqui",
+    "tmdb_original_language": "pt",
+    "overview": "元国会議員であったルーベンス・パイヴァが軍事政権によって誘拐されるという、実際に起こった事件をもとに描かれる歴史劇。",
+    "overview_en": "A woman married to a former politician during the 1971 military dictatorship in Brazil is forced to reinvent herself and chart a new course for her family after a violent and arbitrary act.",
+    "poster_path": "/baxwoU9dtzwDVm0RL2Ya61f6smT.jpg",
+    "backdrop_path": "/j9uruwRe9qM8RnP758dF7ISB8Bj.jpg",
+    "release_date": "2024-09-19",
+    "director": "ウォルター・サレス",
+    "director_jp": "ウォルター・サレス",
+    "director_en": "Walter Salles",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 138,
+    "vote_average": 7.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BR",
+        "name": "Brazil"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1000837": {
+    "tmdb_id": 1000837,
+    "tmdb_title_jp": "アイム・スティル・ヒア",
+    "tmdb_title_en": "I'm Still Here",
+    "tmdb_title_original": "Ainda Estou Aqui",
+    "tmdb_original_language": "pt",
+    "overview": "元国会議員であったルーベンス・パイヴァが軍事政権によって誘拐されるという、実際に起こった事件をもとに描かれる歴史劇。",
+    "overview_en": "A woman married to a former politician during the 1971 military dictatorship in Brazil is forced to reinvent herself and chart a new course for her family after a violent and arbitrary act.",
+    "poster_path": "/baxwoU9dtzwDVm0RL2Ya61f6smT.jpg",
+    "backdrop_path": "/j9uruwRe9qM8RnP758dF7ISB8Bj.jpg",
+    "release_date": "2024-09-19",
+    "director": "ウォルター・サレス",
+    "director_jp": "ウォルター・サレス",
+    "director_en": "Walter Salles",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 138,
+    "vote_average": 7.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BR",
+        "name": "Brazil"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "リー・ミラー　彼女の瞳が映す世界": null,
+  "主人公": null,
+  "チャルラータ": {
+    "tmdb_id": 35790,
+    "tmdb_title_jp": "চারুলতা",
+    "tmdb_title_en": "Charulata",
+    "tmdb_title_original": "চারুলতা",
+    "tmdb_original_language": "bn",
+    "overview": "",
+    "overview_en": "In 1870s India, Charulata is an isolated, artistically inclined woman who sees little of her busy journalist husband, Bhupati. Realizing that his wife is alienated and unhappy, he convinces his cousin, Amal, to spend time with Charulata and nourish her creative impulses. Amal is a fledgling poet himself, and he and Charulata bond over their shared love of art.",
+    "poster_path": "/jPp3oUuaqSZjbCdeyhh8vKs3Z5I.jpg",
+    "backdrop_path": "/hXYf2k0igWcfReM98949EVTfSgP.jpg",
+    "release_date": "1964-04-17",
+    "director": "Satyajit Ray",
+    "director_jp": "Satyajit Ray",
+    "director_en": "Satyajit Ray",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 117,
+    "vote_average": 7.503,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "メラニア（字幕）": {
+    "tmdb_id": 1413097,
+    "tmdb_title_jp": "Melania",
+    "tmdb_title_en": "Melanoma",
+    "tmdb_title_original": "Melania",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Offering unprecedented access to the 20 days leading up to the 2025 Presidential Inauguration — through the eyes of the First Lady-elect herself — step inside Melania Trump's world as she orchestrates inauguration plans, navigates the complexities of the White House transition, and reenters public life with her family. With exclusive footage capturing critical meetings, private conversations, and never-before-seen environments, Mrs. Trump returns to one of the world's most powerful roles.",
+    "poster_path": "/ba6Silct0Y4pyvrSv0Tj0Urmx9f.jpg",
+    "backdrop_path": "/85BqDpCZSA5lzsRbANkchg0RFIf.jpg",
+    "release_date": "2026-01-30",
+    "director": "ブレット・ラトナー",
+    "director_jp": "ブレット・ラトナー",
+    "director_en": "Brett Ratner",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 104,
+    "vote_average": 3.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "聖飢魔II地球デビュー40周年記念期間限定再集結大黒ミサツアー 「THE END OF SEASON ONE」FINALライヴ・ヴューイング": null,
+  "【マッツ・ミケルセン生誕60周年祭】偽りなき者": null,
+  "【マッツ・ミケルセン生誕60周年祭】ブレイカウェイ": {
+    "tmdb_id": 10180,
+    "tmdb_title_jp": "ブレイカウェイ",
+    "tmdb_title_en": "Flickering Lights",
+    "tmdb_title_original": "Blinkende lygter",
+    "tmdb_original_language": "da",
+    "overview": "",
+    "overview_en": "Four small gangsters from Copenhagen trick a gangster boss: they take over 4,000,000 kroner which they were supposed to bring him. Trying to escape to Barcelona they are forced to stop in the countryside, in an old, wrecked house, hiding there for several weeks. Slowly, one after another, they realize, that they would like to stay there, start a new life.",
+    "poster_path": "/8drJTelBYElR5Xh1DwCWOTJIaBs.jpg",
+    "backdrop_path": "/oW8tmQwXbg45AwqLqKCRhbgV89P.jpg",
+    "release_date": "2000-11-03",
+    "director": "Anders Thomas Jensen",
+    "director_jp": "Anders Thomas Jensen",
+    "director_en": "Anders Thomas Jensen",
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 109,
+    "vote_average": 7.145,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "フレイムユニオン 最強殺し屋伝説国岡［私闘編］": {
+    "tmdb_id": 1537830,
+    "tmdb_title_jp": "フレイムユニオン 最強殺し屋伝説国岡[私闘編]",
+    "tmdb_title_en": "Flame Union",
+    "tmdb_title_original": "フレイムユニオン 最強殺し屋伝説国岡[私闘編]",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In this adventure, Kunioka saves the life of Manaka Takuya, a part-time freelance assassin who botches a big gun procurement assignment. Due to this incident, Manaka is suspended from the hitman association and his father, the former number one ranked hitman in Kyoto, drags him back to the family home to do chores. When Kunioka checks up on his former brother-in-arms, he finds Manaka has become domesticated but the reappearance of unioka reawakens Manaka’s fighting spirit and the young man challenges his father to a duel as part of his return to walking the path of an assassin. In order to defeat his father, however, Manaka will have to embark on intense training…",
+    "poster_path": "/8jIrZodCTX00SldNV9uFmjuMEvK.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-10",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "犯罪",
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "第6回映画批評月間 フランス映画の現在をめぐって": null,
+  "冬冬の夏休み デジタルリマスター版": {
+    "tmdb_id": 92989,
+    "tmdb_title_jp": "冬冬の夏休み",
+    "tmdb_title_en": "A Summer at Grandpa's",
+    "tmdb_title_original": "冬冬的假期",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "A coming-of-age story about a young brother and sister whom spend a pivotal summer in the country with their grandparents.",
+    "poster_path": "/qp0b8TdTbml9K4C0t48u0n5TgXc.jpg",
+    "backdrop_path": "/b0Jsfl5xW87GOAAFEoqaf3GAIXF.jpg",
+    "release_date": "1984-11-24",
+    "director": "侯孝賢",
+    "director_jp": "侯孝賢",
+    "director_en": "Hou Hsiao-hsien",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 7.42,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "花嫁はどこへ": {
+    "tmdb_id": 1163194,
+    "tmdb_title_jp": "लापता लेडीज़",
+    "tmdb_title_en": "Lost Ladies",
+    "tmdb_title_original": "लापता लेडीज़",
+    "tmdb_original_language": "hi",
+    "overview": "",
+    "overview_en": "In 2001, somewhere in rural India, two young brides get accidentally swapped on a train. In the ensuing chaos, they both encounter a host of colourful characters, resulting in hilarious and unexpected consequences.",
+    "poster_path": "/g02I3aE8qIbkanduIvWw2GMft92.jpg",
+    "backdrop_path": "/uUVXEEyMsyWxrcbmAppUCYg6egV.jpg",
+    "release_date": "2024-03-01",
+    "director": "キラン・ラオ",
+    "director_jp": "キラン・ラオ",
+    "director_en": "Kiran Rao",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 123,
+    "vote_average": 7.808,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "tmdb:42565": {
+    "tmdb_id": 42565,
+    "tmdb_title_jp": "Underworld",
+    "tmdb_title_en": "Underworld",
+    "tmdb_title_original": "Underworld",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Boisterous gangster kingpin Bull Weed rehabilitates his former lawyer from his alcoholic haze, but complications arise when he falls for Weed's girlfriend.",
+    "poster_path": "/6ZjgbeCwS7sipil1J221lbjaqGG.jpg",
+    "backdrop_path": "/1NYCVTVWmwy0r5KYD1CXk8RcRyj.jpg",
+    "release_date": "1927-08-20",
+    "director": "Josef von Sternberg",
+    "director_jp": "Josef von Sternberg",
+    "director_en": "Josef von Sternberg",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Romance"
+    ],
+    "runtime": 87,
+    "vote_average": 7.018,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:49652": {
+    "tmdb_id": 49652,
+    "tmdb_title_jp": "Abduction: The Megumi Yokota Story",
+    "tmdb_title_en": "Abduction: The Megumi Yokota Story",
+    "tmdb_title_original": "Abduction: The Megumi Yokota Story",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A documentary on a 13-year-old Japanese girl abducted by North Korean spies.",
+    "poster_path": "/AvAPMThjVpWdhdmGPh59TGrsZex.jpg",
+    "backdrop_path": null,
+    "release_date": "2006-01-22",
+    "director": "Patty Kim",
+    "director_jp": "Patty Kim",
+    "director_en": "Patty Kim",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 85,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:56231": {
+    "tmdb_id": 56231,
+    "tmdb_title_jp": "La classe operaia va in paradiso",
+    "tmdb_title_en": "The Working Class Goes to Heaven",
+    "tmdb_title_original": "La classe operaia va in paradiso",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "After losing a finger in a work accident, an Italian worker becomes increasingly involved in political and revolutionary groups.",
+    "poster_path": "/8OWORT3ldccCnuyMsHrSkYjwiwN.jpg",
+    "backdrop_path": "/nZRxN3c9Hywlu5jh6mqLArIwShF.jpg",
+    "release_date": "1971-09-17",
+    "director": "Elio Petri",
+    "director_jp": "Elio Petri",
+    "director_en": "Elio Petri",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "tmdb:50759": {
+    "tmdb_id": 50759,
+    "tmdb_title_jp": "秋刀魚の味",
+    "tmdb_title_en": "An Autumn Afternoon",
+    "tmdb_title_original": "秋刀魚の味",
+    "tmdb_original_language": "ja",
+    "overview": "周平（笠智衆）は、妻とは死別し、長男の幸一（佐田啓二）は結婚して家を出て団地暮らし。いまは娘の路子（岩下志麻）と次男の和夫（三上真一郎）と３人安らかに暮らしていた。  ある日、周平はいつものように友人の河合（中村伸郎）、堀江（北龍二）と酒を飲みに行く。  話題は路子の嫁行きの話になり、まだ路子を嫁にやることなど考えてもいなかった周平は悩み始める…。  日本映画界の巨匠・小津安二郎監督の最後の作品で、妻に先立たれた男とその子供達の幸せの中にもなぜか潜む孤独と寂しさを描いた作品。",
+    "overview_en": "Shuhei Hirayama is a widower with a 24-year-old daughter. Gradually, he comes to realize that she should not be obliged to look after him for the rest of his life, so he arranges a marriage for her.",
+    "poster_path": "/lia3Lk8AgdtU9SaSq59jANDj3vh.jpg",
+    "backdrop_path": "/r9cWPx9W8ObmMIBdbBce9bUXZhq.jpg",
+    "release_date": "1962-11-18",
+    "director": "小津安二郎",
+    "director_jp": "小津安二郎",
+    "director_en": "Yasujirō Ozu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.862,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:390066": {
+    "tmdb_id": 390066,
+    "tmdb_title_jp": "蟲",
+    "tmdb_title_en": "Insect",
+    "tmdb_title_original": "Hmyz",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "The Dung Beetle is late, the Parasite is asleep and Mrs Larva is more interested in her knitting than the director’s instructions. It’s clear: this amateur theatre company has a long way to go before they can perform their version of \"The Insect Play\", a famous satirical work from 1922 by the brothers Karel and Josef Čapek which features insects with decidedly human traits: greed, egocentrism, jealousy.",
+    "poster_path": "/dYpA3hmYR24jb97E9drwz4ypgs0.jpg",
+    "backdrop_path": "/qg3q6piKATWPiAfFb0aTlZg9ZPr.jpg",
+    "release_date": "2018-02-19",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Animation"
+    ],
+    "runtime": 98,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "SK",
+        "name": "Slovakia"
+      }
+    ]
+  },
+  "tmdb:673008": {
+    "tmdb_id": 673008,
+    "tmdb_title_jp": "Alchymická pec",
+    "tmdb_title_en": "Alchemical Furnace",
+    "tmdb_title_original": "Alchymická pec",
+    "tmdb_original_language": "sk",
+    "overview": "",
+    "overview_en": "Jan Svankmajer, at 85 years of age, is one of the most prominent artists of European cinema. His work has inspired and guided generations of directors, and represents a sharp and merciless exploration of human nature which is entirely unique. When he decided to retire from filmmaking after \"Insect\" (2018), his producer suggested that the creative processes which ferment within their company Athanor should be preserved on film. Over three years, the directors of this documentary followed the life of Jan Svankmajer, elucidating his artistic principles, as well as his collaboration with old friend and producer Jaromír Kallista. The film is also haunted by the memory of Eva Svankmajerová, his wife and creative partner, muse and inseparable other half. Playful and poetic, candid and with a touch of Czech humour, it is an ode to creation and to companionship.",
+    "poster_path": "/eCU7NOthr16i6wjHXxdjdpLzL9c.jpg",
+    "backdrop_path": "/rRBFQIaoUJErwpMwL9mhRT3iUhq.jpg",
+    "release_date": "2020-10-15",
+    "director": "Jan Daňhel",
+    "director_jp": "Jan Daňhel",
+    "director_en": "Jan Daňhel",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 117,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "SK",
+        "name": "Slovakia"
+      }
+    ]
+  },
+  "tmdb:1035527": {
+    "tmdb_id": 1035527,
+    "tmdb_title_jp": "Kunstkamera",
+    "tmdb_title_en": "Kunstkamera",
+    "tmdb_title_original": "Kunstkamera",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "An astonishing array of paintings, drawings, sculptures, prints, objects and materials fill room after room - but this is not a museum open to the general public. It is the home of the celebrated artist couple Jan Svankmajer and his late wife Eva, situated in the Czech Republic's Horni Stankov Castle.",
+    "poster_path": "/b7SM2zHm9yr8Wn0dBTeE487aouA.jpg",
+    "backdrop_path": "/bDqM76ly0LyRTEVCmCwDKYBzzDZ.jpg",
+    "release_date": "2022-11-17",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 114,
+    "vote_average": 10.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      }
+    ]
+  },
+  "tmdb:18919": {
+    "tmdb_id": 18919,
+    "tmdb_title_jp": "ファウスト",
+    "tmdb_title_en": "Faust",
+    "tmdb_title_original": "Lekce Faust",
+    "tmdb_original_language": "cs",
+    "overview": "ゲーテの戯曲「ファウスト」をシュヴァンクマイエルが自ら翻案し映画化した「アリス」に続く長編2作目。実在したとされる魔術師の伝説が独自の解釈によってつづられ、奇妙な生物たちの姿や独特な食事描写などが実写・粘土細工・ストップモーションアニメーションなどを駆使して描かれていく。",
+    "overview_en": "A very free adaptation of Marlowe's \"Doctor Faustus\", Goethe's \"Faust\" and various other treatments of the old legend of the man who sold his soul to the devil. A nondescript man is lured by a strange map into a sinister puppet theatre, where he finds himself immersed in an indescribably weird version of the play, blending live actors, clay animation and giant puppets.",
+    "poster_path": "/A5SqoalLi3Agu5qdZykJhpGePkH.jpg",
+    "backdrop_path": "/qiGF1b2vH38WRWQooLp3q9LS7m2.jpg",
+    "release_date": "1994-09-10",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "アニメーション",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy"
+    ],
+    "runtime": 97,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
       }
     ]
   }

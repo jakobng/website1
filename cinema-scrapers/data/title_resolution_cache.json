@@ -3279,5 +3279,339 @@
     "original_title": "長安的荔枝",
     "director": "Da Peng",
     "country": "China"
+  },
+  "水の中で息をする　彼女でも彼でもなく": {
+    "english_title": "Holding Back the Tide",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Holding Back the Tide",
+    "director": "Emily Packer",
+    "country": "United States"
+  },
+  "暗黒街（1927）": {
+    "english_title": "Underworld",
+    "release_year": 1927,
+    "confidence": 5,
+    "notes": "",
+    "original_title": "Underworld",
+    "director": "Josef von Sternberg",
+    "country": "USA"
+  },
+  "パルブロス　黙示録の子供たち": {
+    "english_title": "Párvulos: Children of the Apocalypse",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Párvulos: Hijos del apocalipsis",
+    "director": "Isaac Ezban",
+    "country": "Mexico"
+  },
+  "スケッチ　描かれたモンスターたち": {
+    "english_title": "Sketch",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Sketch",
+    "director": "Seth Worley",
+    "country": "USA"
+  },
+  "スタック": {
+    "english_title": "Stuck",
+    "release_year": 2020,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Stuck",
+    "director": "David Mikalson",
+    "country": "USA"
+  },
+  "ラスト・ロデオ　約束のフィールド": {
+    "english_title": "The Last Rodeo",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Last Rodeo",
+    "director": "Jon Avnet",
+    "country": "USA"
+  },
+  "めぐみ　引き裂かれた家族の30年": {
+    "english_title": "Abduction: The Megumi Yokota Story",
+    "release_year": 2006,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "めぐみ　引き裂かれた家族の30年",
+    "director": "Chris Sheridan, Patty Kim",
+    "country": "United States"
+  },
+  "ボーイ・ミーツ・ガール（1983）": {
+    "english_title": "Boy Meets Girl",
+    "release_year": 1984,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Boy Meets Girl",
+    "director": "Leos Carax",
+    "country": "France"
+  },
+  "IT’S NOT ME イッツ・ノット・ミー": {
+    "english_title": "It's Not Me",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "C'est pas moi",
+    "director": "Leos Carax",
+    "country": "France"
+  },
+  "マスター　先生が来る！": {
+    "english_title": "Master",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Master",
+    "director": "Lokesh Kanagaraj",
+    "country": "India",
+    "failed": true
+  },
+  "エレクション　黒社会": {
+    "english_title": "Election",
+    "release_year": 2005,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "黑社會",
+    "director": "Johnnie To",
+    "country": "Hong Kong"
+  },
+  "デッドエンド　暗戦リターンズ": {
+    "english_title": "Running Out of Time 2",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "暗戰2",
+    "director": "Johnnie To, Law Wing-cheung",
+    "country": "Hong Kong"
+  },
+  "労働者階級は天国に入る": {
+    "english_title": "The Working Class Goes to Heaven",
+    "release_year": 1971,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "La classe operaia va in paradiso",
+    "director": "Elio Petri",
+    "country": "Italy"
+  },
+  "ボーン・イン・フレイムズ": {
+    "english_title": "Born in Flames",
+    "release_year": 1983,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Born in Flames",
+    "director": "Lizzie Borden",
+    "country": "USA"
+  },
+  "ガザからの声 Episode2「ミュージシャン・アハマドのメッセージ」": {
+    "english_title": "Voices from Gaza: Episode 2. Ahmad the Musician's Message",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ガザからの声 Episode2「ミュージシャン・アハマドのメッセージ」",
+    "director": "Muhammad Sawwaf",
+    "country": "Japan, Palestine",
+    "failed": true
+  },
+  "秋刀魚の味（1962）": {
+    "english_title": "An Autumn Afternoon",
+    "release_year": 1962,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "秋刀魚の味",
+    "director": "Yasujirō Ozu",
+    "country": "Japan"
+  },
+  "渡る世間は鬼ばかり ボロ家の春秋": {
+    "english_title": "It Happened in a Crowded Shack",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "渡る世間は鬼ばかり ボロ家の春秋",
+    "director": "Noboru Nakamura",
+    "country": "Japan",
+    "failed": true
+  },
+  "甘い罠": {
+    "english_title": "Sweet Trap",
+    "release_year": 1963,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "甘い罠",
+    "director": "Koji Wakamatsu",
+    "country": "Japan",
+    "failed": true
+  },
+  "主婦マリーがしたこと": {
+    "english_title": "Story of Women",
+    "release_year": 1988,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Une affaire de femmes",
+    "director": "Claude Chabrol",
+    "country": "France",
+    "failed": true
+  },
+  "引き裂かれた女": {
+    "english_title": "A Girl Cut in Two",
+    "release_year": 2007,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Fille coupée en deux",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "フジコ・ヘミング　永遠の音色": {
+    "english_title": "Fuzjko: Everlasting Melody",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "フジコ・ヘミング 永遠の音色",
+    "director": "Soichiro Komatsu",
+    "country": "Japan",
+    "failed": true
+  },
+  "蟲（2018）": {
+    "english_title": "Insects",
+    "release_year": 2018,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Hmyz",
+    "director": "Jan Švankmajer",
+    "country": "Czech Republic"
+  },
+  "錬金炉アタノール": {
+    "english_title": "Athanor: The Alchemical Furnace",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Alchymická pec",
+    "director": "Jan Daňhel, Adam Oľha",
+    "country": "Czech Republic, Slovakia"
+  },
+  "クンストカメラ": {
+    "english_title": "Kunstkamera",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Kunstkamera",
+    "director": "Jan Švankmajer",
+    "country": "Czech Republic"
+  },
+  "アリス（1988）": {
+    "english_title": "Alice",
+    "release_year": 1988,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Něco z Alenky",
+    "director": "Jan Švankmajer",
+    "country": "Czechoslovakia",
+    "failed": true
+  },
+  "ファウスト（1994）": {
+    "english_title": "Faust",
+    "release_year": 1994,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Lekce Faust",
+    "director": "Jan Švankmajer",
+    "country": "Czech Republic"
+  },
+  "家庭裁判所　第3H法廷": {
+    "english_title": "Courtroom 3H",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Courtroom 3H",
+    "director": "Antonio Méndez Esparza",
+    "country": "Spain, USA"
+  },
+  "リー・ミラー　彼女の瞳が映す世界": {
+    "english_title": "Lee",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Lee",
+    "director": "Ellen Kuras",
+    "country": "United Kingdom",
+    "failed": true
+  },
+  "主人公": {
+    "english_title": "The Hero",
+    "release_year": 1966,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "Nayak",
+    "director": "Satyajit Ray",
+    "country": "India",
+    "failed": true
+  },
+  "チャルラータ": {
+    "english_title": "Charulata",
+    "release_year": 1964,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Charulata",
+    "director": "Satyajit Ray",
+    "country": "India"
+  },
+  "聖飢魔II地球デビュー40周年記念期間限定再集結大黒ミサツアー 「THE END OF SEASON ONE」FINALライヴ・ヴューイング": {
+    "english_title": "SEIKIMA II 40th Anniversary of Earth Debut Limited Time Reunion Great Black Mass Tour \"THE END OF SEASON ONE\" FINAL Live Viewing",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "聖飢魔II地球デビュー40周年記念期間限定再集結大黒ミサツアー 「THE END OF SEASON ONE」FINALライヴ・ヴューイング",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "【マッツ・ミケルセン生誕60周年祭】偽りなき者": {
+    "english_title": "The Hunt",
+    "release_year": 2012,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Jagten",
+    "director": "Thomas Vinterberg",
+    "country": "Denmark",
+    "failed": true
+  },
+  "【マッツ・ミケルセン生誕60周年祭】ブレイカウェイ": {
+    "english_title": "Flickering Lights",
+    "release_year": 2000,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Blinkende lygter",
+    "director": "Anders Thomas Jensen",
+    "country": "Denmark"
+  },
+  "第6回映画批評月間 フランス映画の現在をめぐって": {
+    "english_title": "6th Film Criticism Month: Around the Present of French Cinema",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "第6回映画批評月間 フランス映画の現在をめぐって",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "花嫁はどこへ": {
+    "english_title": "Lost Ladies",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Laapataa Ladies",
+    "director": "Kiran Rao",
+    "country": "India"
+  },
+  "WHO？": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
