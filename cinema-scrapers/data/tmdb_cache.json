@@ -11306,7 +11306,7 @@
       "Action"
     ],
     "runtime": 119,
-    "vote_average": 8.5,
+    "vote_average": 8.463,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -37111,6 +37111,447 @@
       {
         "iso_3166_1": "DE",
         "name": "Germany"
+      }
+    ]
+  },
+  "ロイヤル・アフェア　愛と欲望の王宮": {
+    "tmdb_id": 88273,
+    "tmdb_title_jp": "ロイヤル・アフェア 愛と欲望の王宮",
+    "tmdb_title_en": "A Royal Affair",
+    "tmdb_title_original": "En kongelig affære",
+    "tmdb_original_language": "da",
+    "overview": "",
+    "overview_en": "A young queen falls in love with her physician, and they start a revolution that changes their nation forever.",
+    "poster_path": "/ccZftyf5wPfHxNi1pdRZ36zR2a.jpg",
+    "backdrop_path": "/mcoZV42CxmW07Ob8ynDuZ7wKZSr.jpg",
+    "release_date": "2012-03-29",
+    "director": "Nikolaj Arcel",
+    "director_jp": "Nikolaj Arcel",
+    "director_en": "Nikolaj Arcel",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "runtime": 137,
+    "vote_average": 7.357,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "tmdb:88273": {
+    "tmdb_id": 88273,
+    "tmdb_title_jp": "ロイヤル・アフェア 愛と欲望の王宮",
+    "tmdb_title_en": "A Royal Affair",
+    "tmdb_title_original": "En kongelig affære",
+    "tmdb_original_language": "da",
+    "overview": "",
+    "overview_en": "A young queen falls in love with her physician, and they start a revolution that changes their nation forever.",
+    "poster_path": "/ccZftyf5wPfHxNi1pdRZ36zR2a.jpg",
+    "backdrop_path": "/mcoZV42CxmW07Ob8ynDuZ7wKZSr.jpg",
+    "release_date": "2012-03-29",
+    "director": "Nikolaj Arcel",
+    "director_jp": "Nikolaj Arcel",
+    "director_en": "Nikolaj Arcel",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "runtime": 137,
+    "vote_average": 7.357,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "俺の血は他人の血": {
+    "tmdb_id": 856027,
+    "tmdb_title_jp": "俺の血は他人の血",
+    "tmdb_title_en": "My Blood is the Blood of Others",
+    "tmdb_title_original": "俺の血は他人の血",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/fvm1Z3M2hb4GbRl9yqXyG0ekQdv.jpg",
+    "backdrop_path": null,
+    "release_date": "1974-10-12",
+    "director": "舛田利雄",
+    "director_jp": "舛田利雄",
+    "director_en": "Toshio Masuda",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 91,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:856027": {
+    "tmdb_id": 856027,
+    "tmdb_title_jp": "俺の血は他人の血",
+    "tmdb_title_en": "My Blood is the Blood of Others",
+    "tmdb_title_original": "俺の血は他人の血",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/fvm1Z3M2hb4GbRl9yqXyG0ekQdv.jpg",
+    "backdrop_path": null,
+    "release_date": "1974-10-12",
+    "director": "舛田利雄",
+    "director_jp": "舛田利雄",
+    "director_en": "Toshio Masuda",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 91,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "怒れ毒蛇（コブラ） 目撃者を消せ": {
+    "tmdb_id": 388059,
+    "tmdb_title_jp": "怒れ毒蛇　目撃者を消せ",
+    "tmdb_title_en": "Cobra",
+    "tmdb_title_original": "怒れ毒蛇 目撃者を消せ",
+    "tmdb_original_language": "ja",
+    "overview": "小村刑事（田宮二郎）は別名コブラと呼ばれ、執拗で冷酷な刑事として犯罪者たちに恐れられている。ある日、ファションモデルが何者かに殺された。目撃者は、同僚のモデルのマリ子（奈良富士子）である。小村は嫌がるマリ子を強引に、彼女のマンションまで送った。二人の後を香港の女殺し屋李萍（汪萍）が尾けている。マリ子がマンションに入ろうとした瞬間、何者かがドラムかんを落とした。マリ子は無事だったが、小村の睨んだ通り、生き証人である彼女は消されようとしているのだ。この事件の担当検事として赤木検事が任命されたが、彼はことごとく小村と対立した。というのも、捨て子だった小村は、今は亡き高島巡査部長に育てられ刑事となったのだが、小村のかつての恋人美代子（山本陽子）は、今では赤木の妻となっており、赤木は二人の関係を知っているのである。そして、小村の今の生き甲斐は、高島を殺した香港の空手の達人・北一平（カオチャン）に復讐することだった。ある日、マリ子のマンションを張り込んでいた小村は李萍と会った。以前、小村はある麻薬組織の捜査の時に、李萍を利用し、彼女の愛を裏切ったことがある。以来、李萍は小村を狙っていたのだった。数日後、小村は事件の背後の黒幕である組織の主要人物と睨んだ中小企業連合会の会長・中条（渡辺文雄）と松島財閥の松島広高（加島潤）の山荘へ潜入するが、数人のヤクザに捕えられてしまった。だが、何故か中条は小村を助けた。その帰途、天城山中を下る小村の車のブレーキがはずされており、必死のアクロバット運転で車から一瞬飛び降りたが、車は谷底へ転落していった",
+    "overview_en": "Japanese crime film.",
+    "poster_path": "/zpqvdyd7PzrohtswmDcaEpCfjih.jpg",
+    "backdrop_path": "/xXMbAfN0JvwqvGGB2352Elh0HW8.jpg",
+    "release_date": "1974-02-16",
+    "director": "井上梅次",
+    "director_jp": "井上梅次",
+    "director_en": "Umetsugu Inoue",
+    "genres": [
+      "犯罪"
+    ],
+    "genres_en": [
+      "Crime"
+    ],
+    "runtime": 91,
+    "vote_average": 10.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "クライマーズ・ハイ": {
+    "tmdb_id": 41533,
+    "tmdb_title_jp": "クライマーズ・ハイ",
+    "tmdb_title_en": "Climber's High",
+    "tmdb_title_original": "クライマーズ・ハイ",
+    "tmdb_original_language": "ja",
+    "overview": "1985年8月、群馬県御巣鷹山に日航ジャンボ機が墜落。未曾有の大惨事を取材することになった地元新聞の記者たちの激動の一週間を、緊迫感あふれるタッチで描く。",
+    "overview_en": "On August 12, 1985, a jumbo jet crashes, causing 520 fatalities, making the accident the biggest single-plane accident in the world. The local press reporters are tossed about by the waves of facts and rumors. While overwhelmed by the magnitude of the accident, Yuuki, in charge of this crash report at a local newspaper, faces a string of decision-making moments. What are news and a reporter? How should a man do his work and survive in a corporate hierarchy? What do family and friends mean to him? An intriguing story, which keeps the audience on the edge of tension and reality.",
+    "poster_path": "/kbKRX7ylOUGc0YtVFp9XBqUTwvm.jpg",
+    "backdrop_path": "/nPKaTltWRVgJPLGMVwkeqoU5pt8.jpg",
+    "release_date": "2008-07-05",
+    "director": "原田眞人",
+    "director_jp": "原田眞人",
+    "director_en": "Masato Harada",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 145,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:41533": {
+    "tmdb_id": 41533,
+    "tmdb_title_jp": "クライマーズ・ハイ",
+    "tmdb_title_en": "Climber's High",
+    "tmdb_title_original": "クライマーズ・ハイ",
+    "tmdb_original_language": "ja",
+    "overview": "1985年8月、群馬県御巣鷹山に日航ジャンボ機が墜落。未曾有の大惨事を取材することになった地元新聞の記者たちの激動の一週間を、緊迫感あふれるタッチで描く。",
+    "overview_en": "On August 12, 1985, a jumbo jet crashes, causing 520 fatalities, making the accident the biggest single-plane accident in the world. The local press reporters are tossed about by the waves of facts and rumors. While overwhelmed by the magnitude of the accident, Yuuki, in charge of this crash report at a local newspaper, faces a string of decision-making moments. What are news and a reporter? How should a man do his work and survive in a corporate hierarchy? What do family and friends mean to him? An intriguing story, which keeps the audience on the edge of tension and reality.",
+    "poster_path": "/kbKRX7ylOUGc0YtVFp9XBqUTwvm.jpg",
+    "backdrop_path": "/nPKaTltWRVgJPLGMVwkeqoU5pt8.jpg",
+    "release_date": "2008-07-05",
+    "director": "原田眞人",
+    "director_jp": "原田眞人",
+    "director_en": "Masato Harada",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 145,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "バウンス ko GALS": {
+    "tmdb_id": 27228,
+    "tmdb_title_jp": "バウンス ko GALS",
+    "tmdb_title_en": "Bounce Ko Gals",
+    "tmdb_title_original": "バウンス ko GALS",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Jonko runs a group of high school girls involved in paid dating. Raku is a street dancer. Togo was brought up in the US, and after being back in Japan for one year, wants to escape to New York. Their contact with the world of talent scouts and yakuza places them in danger over the span of one day and night in the Shibuya district of Tokyo.",
+    "poster_path": "/cjnm1DYINDRahqzoX0K2u8CTQDA.jpg",
+    "backdrop_path": "/6ydWiE5kTiyfRKHlOFhzu8jKrch.jpg",
+    "release_date": "1997-10-18",
+    "director": "原田眞人",
+    "director_jp": "原田眞人",
+    "director_en": "Masato Harada",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 110,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:27228": {
+    "tmdb_id": 27228,
+    "tmdb_title_jp": "バウンス ko GALS",
+    "tmdb_title_en": "Bounce Ko Gals",
+    "tmdb_title_original": "バウンス ko GALS",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Jonko runs a group of high school girls involved in paid dating. Raku is a street dancer. Togo was brought up in the US, and after being back in Japan for one year, wants to escape to New York. Their contact with the world of talent scouts and yakuza places them in danger over the span of one day and night in the Shibuya district of Tokyo.",
+    "poster_path": "/cjnm1DYINDRahqzoX0K2u8CTQDA.jpg",
+    "backdrop_path": "/6ydWiE5kTiyfRKHlOFhzu8jKrch.jpg",
+    "release_date": "1997-10-18",
+    "director": "原田眞人",
+    "director_jp": "原田眞人",
+    "director_en": "Masato Harada",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 110,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "blur: Live At Wembley Stadium ブラー：ライヴ・アット・ウェンブリー・スタジアム": {
+    "tmdb_id": 1274237,
+    "tmdb_title_jp": "blur: Live at Wembley Stadium",
+    "tmdb_title_en": "blur: Live at Wembley Stadium",
+    "tmdb_title_original": "blur: Live at Wembley Stadium",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A cinematic concert film immortalizing blur’s biggest shows to date. Highlights include The Narcissist and St Charles Square from the recent acclaimed #1 album, ‘The Ballad of Darren’, as well as There’s No Other Way, Popscene, Beetlebum, Trimm Trabb, Villa Rosie, Coffee & TV, Under the Westway, Out of Time, To the End, Parklife, Song 2, This is a Low, Girls & Boys, Tender, and The Universal.",
+    "poster_path": "/bU6IJ0Gh29fSw6lDZM6XZfrDIJU.jpg",
+    "backdrop_path": "/yCuWQujeEJtOy6JgAfHklPRy8fV.jpg",
+    "release_date": "2024-09-06",
+    "director": "Toby L",
+    "director_jp": "Toby L",
+    "director_en": "Toby L",
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Music",
+      "Documentary"
+    ],
+    "runtime": 128,
+    "vote_average": 7.25,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "SMTOWN LIVE 2025-26 in FUKUOKA ライブ・ビューイング": null,
+  "羅小黒戦記(ロシャオヘイセンキ)２ ぼくらが望む未来": {
+    "tmdb_id": 1144107,
+    "tmdb_title_jp": "羅小黒戦記２ ぼくらが望む未来",
+    "tmdb_title_en": "The Legend of Hei 2",
+    "tmdb_title_original": "罗小黑战记 2",
+    "tmdb_original_language": "zh",
+    "overview": "中国の人気WEBアニメシリーズを原作に、黒猫の妖精シャオヘイの冒険を描くアクションファンタジーアニメ第2弾。ある襲撃事件により妖精の世界の平和が脅かされ、シャオヘイと師匠ムゲンの運命が大きく揺らいでいく。",
+    "overview_en": "When an attack shatters the fragile peace between the spirit world and humanity, Hei teams up with Luye, the last disciple of his Shifu Wuxian, to expose a conspiracy that threatens both realms - and the bond they've sworn to protect.",
+    "poster_path": "/kM8HFn05FlFrlWw8cmoqrF4ZPVA.jpg",
+    "backdrop_path": "/uJEZaEM2hY3MG50CgZ3z9jeTwmp.jpg",
+    "release_date": "2025-07-18",
+    "director": "顾杰",
+    "director_jp": "顾杰",
+    "director_en": "Gu Jie",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Action"
+    ],
+    "runtime": 119,
+    "vote_average": 8.463,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "カップルの〜": null,
+  "ビリー・ザ〜+ウニの陰謀": null,
+  "土砂降り〈英語字幕付き〉": {
+    "tmdb_id": 298711,
+    "tmdb_title_jp": "土砂降り",
+    "tmdb_title_en": "When It Rains, It Pours",
+    "tmdb_title_original": "土砂降り",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Tane, the lady proprietor of an inn for amorous couples, lives there with her three children. When her eldest daughter loses her fiancé due to the fact her mother is a mistress, her despair drives her to become a cabaret hostess.",
+    "poster_path": "/2NuIxdzqOn2DUXo5ReqnH6rCUDW.jpg",
+    "backdrop_path": "/mPGs99FbxaI8BKvzlhLCDwYK7BC.jpg",
+    "release_date": "1957-06-11",
+    "director": "中村登",
+    "director_jp": "中村登",
+    "director_en": "Noboru Nakamura",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:388059": {
+    "tmdb_id": 388059,
+    "tmdb_title_jp": "怒れ毒蛇　目撃者を消せ",
+    "tmdb_title_en": "Cobra",
+    "tmdb_title_original": "怒れ毒蛇 目撃者を消せ",
+    "tmdb_original_language": "ja",
+    "overview": "小村刑事（田宮二郎）は別名コブラと呼ばれ、執拗で冷酷な刑事として犯罪者たちに恐れられている。ある日、ファションモデルが何者かに殺された。目撃者は、同僚のモデルのマリ子（奈良富士子）である。小村は嫌がるマリ子を強引に、彼女のマンションまで送った。二人の後を香港の女殺し屋李萍（汪萍）が尾けている。マリ子がマンションに入ろうとした瞬間、何者かがドラムかんを落とした。マリ子は無事だったが、小村の睨んだ通り、生き証人である彼女は消されようとしているのだ。この事件の担当検事として赤木検事が任命されたが、彼はことごとく小村と対立した。というのも、捨て子だった小村は、今は亡き高島巡査部長に育てられ刑事となったのだが、小村のかつての恋人美代子（山本陽子）は、今では赤木の妻となっており、赤木は二人の関係を知っているのである。そして、小村の今の生き甲斐は、高島を殺した香港の空手の達人・北一平（カオチャン）に復讐することだった。ある日、マリ子のマンションを張り込んでいた小村は李萍と会った。以前、小村はある麻薬組織の捜査の時に、李萍を利用し、彼女の愛を裏切ったことがある。以来、李萍は小村を狙っていたのだった。数日後、小村は事件の背後の黒幕である組織の主要人物と睨んだ中小企業連合会の会長・中条（渡辺文雄）と松島財閥の松島広高（加島潤）の山荘へ潜入するが、数人のヤクザに捕えられてしまった。だが、何故か中条は小村を助けた。その帰途、天城山中を下る小村の車のブレーキがはずされており、必死のアクロバット運転で車から一瞬飛び降りたが、車は谷底へ転落していった",
+    "overview_en": "Japanese crime film.",
+    "poster_path": "/zpqvdyd7PzrohtswmDcaEpCfjih.jpg",
+    "backdrop_path": "/xXMbAfN0JvwqvGGB2352Elh0HW8.jpg",
+    "release_date": "1974-02-16",
+    "director": "井上梅次",
+    "director_jp": "井上梅次",
+    "director_en": "Umetsugu Inoue",
+    "genres": [
+      "犯罪"
+    ],
+    "genres_en": [
+      "Crime"
+    ],
+    "runtime": 91,
+    "vote_average": 10.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1274237": {
+    "tmdb_id": 1274237,
+    "tmdb_title_jp": "blur: Live at Wembley Stadium",
+    "tmdb_title_en": "blur: Live at Wembley Stadium",
+    "tmdb_title_original": "blur: Live at Wembley Stadium",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A cinematic concert film immortalizing blur’s biggest shows to date. Highlights include The Narcissist and St Charles Square from the recent acclaimed #1 album, ‘The Ballad of Darren’, as well as There’s No Other Way, Popscene, Beetlebum, Trimm Trabb, Villa Rosie, Coffee & TV, Under the Westway, Out of Time, To the End, Parklife, Song 2, This is a Low, Girls & Boys, Tender, and The Universal.",
+    "poster_path": "/bU6IJ0Gh29fSw6lDZM6XZfrDIJU.jpg",
+    "backdrop_path": "/yCuWQujeEJtOy6JgAfHklPRy8fV.jpg",
+    "release_date": "2024-09-06",
+    "director": "Toby L",
+    "director_jp": "Toby L",
+    "director_en": "Toby L",
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Music",
+      "Documentary"
+    ],
+    "runtime": 128,
+    "vote_average": 7.25,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
       }
     ]
   }

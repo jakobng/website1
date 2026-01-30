@@ -3613,5 +3613,62 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "怒れ毒蛇（コブラ） 目撃者を消せ": {
+    "english_title": "Angry Cobra: Kill the Witness",
+    "release_year": 1974,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "怒れ毒蛇 目撃者を消せ",
+    "director": "Umetsugu Inoue",
+    "country": "Japan"
+  },
+  "blur: Live At Wembley Stadium ブラー：ライヴ・アット・ウェンブリー・スタジアム": {
+    "english_title": "blur: Live At Wembley Stadium",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "blur: Live At Wembley Stadium",
+    "director": "Toby L.",
+    "country": "UK"
+  },
+  "SMTOWN LIVE 2025-26 in FUKUOKA ライブ・ビューイング": {
+    "english_title": "SMTOWN LIVE 2025-26 in FUKUOKA Live Viewing",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "SMTOWN LIVE 2025-26 in FUKUOKA ライブ・ビューイング",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "羅小黒戦記(ロシャオヘイセンキ)２ ぼくらが望む未来": {
+    "english_title": "The Legend of Hei II",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "罗小黑战记2",
+    "director": "MTJJ",
+    "country": "China"
+  },
+  "カップルの〜": {
+    "english_title": "The Couple",
+    "release_year": 1968,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "カップルの〜",
+    "director": "Yoji Kuri",
+    "country": "Japan",
+    "failed": true
+  },
+  "ビリー・ザ〜+ウニの陰謀": {
+    "english_title": "A Girl Is a Gun + The Cabal of the Sea Urchin",
+    "release_year": 1971,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Une aventure de Billy le Kid + La Cabale des oursins",
+    "director": "Luc Moullet",
+    "country": "France",
+    "failed": true
   }
 }
