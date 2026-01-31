@@ -132,16 +132,10 @@ def _extract_times(t: str) -> List[str]:
     """
     t = _normalize_text(t)
     m = re.search(r"上映時間[^0-9]*([0-9:/・･ ,　／/]+)", t)
-    if not m:
-        return []
-    seg = m.group(1)
-    parts = re.split(r"[／/・･,\s]+", seg)
+    seg = m.group(1) if m else t
     times = []
-    for p in parts:
-        p = p.strip()
-        if re.fullmatch(_TIME_RE, p):
-            h, mmin = map(int, p.split(":"))
-            times.append(f"{h:02d}:{mmin:02d}")  # zero-pad normalization
+    for h, mmin in re.findall(_TIME_RE, seg):
+        times.append(f"{int(h):02d}:{int(mmin):02d}")
     # Preserve input order while de-duplicating
     out, seen = [], set()
     for t0 in times:
@@ -149,6 +143,30 @@ def _extract_times(t: str) -> List[str]:
             seen.add(t0)
             out.append(t0)
     return out
+
+
+def _is_title_candidate(line: str) -> bool:
+    if not line:
+        return False
+    if line.startswith("※"):
+        return False
+    if "上映" in line:
+        return False
+    if any(key in line for key in ("上映スケジュール", "schedule", "過去の上映作品", "Access", "交通", "ブルースタジオ", "シネマブルースタジオ")):
+        return False
+    if any(key in line for key in ("監督", "脚本", "製作", "撮影", "音楽", "出演", "料金", "チケット")):
+        return False
+    if re.search(r"\d{4}/\d{1,2}/\d{1,2}", line):
+        return False
+    if re.search(r"\d{1,2}：\d{2}", line) or re.search(_TIME_RE, _normalize_text(line)):
+        return False
+    if re.search(r"\d{4}年", line) and "分" in line:
+        return False
+    return True
+
+
+def _clean_title(line: str) -> str:
+    return line.split("※")[0].strip()
 
 def _make_film_id(title: str) -> str:
     slug = re.sub(r"[^A-Za-z0-9]+", "-", title).strip("-").lower()
@@ -224,6 +242,73 @@ def scrape_bluestudio(max_days: int = 14) -> List[Dict]:
     all_showings: List[Dict] = []
     seen_blocks = set()   # (title, start, end)
     seen_rows = set()     # (title, date, time) for de-duplication
+
+    lines = [line.strip() for line in soup.get_text("\n").split("\n") if line.strip()]
+    line_showings: List[Dict] = []
+    seen_rows_line = set()
+    date_indices = []
+    for idx, line in enumerate(lines):
+        if re.search(r"\d{4}/\d{1,2}/\d{1,2}", line):
+            date_indices.append(idx)
+
+    for pos, idx in enumerate(date_indices):
+        line = lines[idx]
+        date_line = line
+        if not re.search(r"\d{4}/\d{1,2}/\d{1,2}", date_line) and idx + 1 < len(lines):
+            date_line = line + " " + lines[idx + 1]
+        dr = _extract_date_range(date_line)
+        if not dr:
+            continue
+        start, end = dr
+
+        title = None
+        for back in range(idx - 1, max(-1, idx - 10), -1):
+            candidate = lines[back]
+            if _is_title_candidate(candidate):
+                title = _clean_title(candidate)
+                break
+        if not title:
+            continue
+
+        times = []
+        for forward in range(idx, min(len(lines), idx + 8)):
+            times = _extract_times(lines[forward])
+            if times:
+                break
+        if not times:
+            continue
+
+        next_idx = date_indices[pos + 1] if pos + 1 < len(date_indices) else len(lines)
+        block_text = " ".join(lines[idx:next_idx])
+        details = _parse_details_from_text(block_text)
+
+        day = max(today, start)
+        while day <= end and day < cutoff:
+            for t_str in times:
+                row_key = (title, day.isoformat(), t_str)
+                if row_key in seen_rows_line:
+                    continue
+                seen_rows_line.add(row_key)
+                record = {
+                    "cinema_name": CINEMA_NAME,
+                    "movie_title": title,
+                    "date_text": day.isoformat(),
+                    "date_dow": day_name[day.weekday()],
+                    "date_dow_jp": _WEEKDAY_JP[day.weekday()],
+                    "date_iso_week": day.isocalendar().week,
+                    "showtime": t_str,
+                    "screen_name": None,
+                    "detail_page_url": BASE_URL,
+                    "film_id": _make_film_id(title),
+                    **details,
+                }
+                line_showings.append(record)
+            day += dt.timedelta(days=1)
+
+    if line_showings:
+        line_showings.sort(key=lambda x: (x.get("date_text", ""), x.get("showtime", ""), x.get("movie_title", "")))
+        print(f"INFO: Scrape complete: {len(line_showings)} showings", file=sys.stderr)
+        return line_showings
 
     # Primary path: table layout (modern/legacy both contain these labels)
     tables = [
