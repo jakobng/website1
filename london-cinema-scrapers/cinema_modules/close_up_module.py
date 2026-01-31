@@ -19,7 +19,11 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.closeupfilmcentre.com"
-SCHEDULE_URL = f"{BASE_URL}/film_programmes/"
+FALLBACK_BASE_URL = "https://closeupfilmcentre.com"
+SCHEDULE_URLS = [
+    (BASE_URL, f"{BASE_URL}/film_programmes/"),
+    (FALLBACK_BASE_URL, f"{FALLBACK_BASE_URL}/film_programmes/"),
+]
 CINEMA_NAME = "Close-Up Film Centre"
 
 HEADERS = {
@@ -98,6 +102,23 @@ def _extract_shows_json(html: str) -> List[dict]:
     return []
 
 
+def _fetch_schedule_html(session: requests.Session) -> tuple:
+    """Fetch schedule HTML, trying fallback host if needed."""
+    last_error = None
+    for base_url, schedule_url in SCHEDULE_URLS:
+        try:
+            resp = session.get(schedule_url, headers=HEADERS, timeout=TIMEOUT)
+            resp.raise_for_status()
+            return resp.text, base_url
+        except requests.RequestException as e:
+            last_error = e
+            print(f"[{CINEMA_NAME}] Request failed for {schedule_url}: {e}", file=sys.stderr)
+
+    if last_error:
+        raise last_error
+    raise RuntimeError("No schedule URL configured")
+
+
 def scrape_close_up() -> List[Dict]:
     """
     Scrape Close-Up Film Centre showtimes from their film programmes page.
@@ -119,10 +140,8 @@ def scrape_close_up() -> List[Dict]:
 
     try:
         session = requests.Session()
-        resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
-        resp.raise_for_status()
-
-        html = resp.text
+        session.trust_env = False  # Ignore env proxy settings for this target
+        html, base_url = _fetch_schedule_html(session)
 
         # Extract JSON data from JavaScript variable
         shows_data = _extract_shows_json(html)
@@ -150,7 +169,7 @@ def scrape_close_up() -> List[Dict]:
 
             # Build detail page URL
             film_url = entry.get("film_url", "")
-            detail_url = urljoin(BASE_URL, film_url) if film_url else ""
+            detail_url = urljoin(base_url, film_url) if film_url else ""
 
             # Get booking URL
             booking_url = entry.get("blink", "")
