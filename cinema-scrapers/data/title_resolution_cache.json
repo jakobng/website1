@@ -3670,5 +3670,74 @@
     "director": "Luc Moullet",
     "country": "France",
     "failed": true
+  },
+  "六つの顔": {
+    "english_title": "Six Faces",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "六つの顔",
+    "director": "Isshin Inudo",
+    "country": "Japan",
+    "failed": true
+  },
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】パターソン": {
+    "english_title": "Paterson",
+    "release_year": 2016,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Paterson",
+    "director": "Jim Jarmusch",
+    "country": "United States"
+  },
+  "WAR/バトル・オブ・フェイト": {
+    "english_title": "War 2",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "War 2",
+    "director": "Ayan Mukerji",
+    "country": "India"
+  },
+  "やさしさ": {
+    "english_title": "Tenderness",
+    "release_year": 1966,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "Nezhnost",
+    "director": "Elyor Ishmukhamedov",
+    "country": "Soviet Union",
+    "failed": true
+  },
+  "UFO少年アブドラジャン": {
+    "english_title": "Abdullajon",
+    "release_year": 1991,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Abdullajon",
+    "director": "Zulfikar Musakov",
+    "country": "Uzbekistan",
+    "failed": true
+  },
+  "落語家の業（ごう）": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "イスラーム映画祭エンサイクロペディア": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ピクニック＋ロスト・イン・メージズ": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }

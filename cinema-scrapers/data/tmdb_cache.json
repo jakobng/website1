@@ -35812,7 +35812,7 @@
       "Romance"
     ],
     "runtime": 118,
-    "vote_average": 7.116,
+    "vote_average": 7.115,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -37552,6 +37552,648 @@
       {
         "iso_3166_1": "GB",
         "name": "United Kingdom"
+      }
+    ]
+  },
+  "DitO": {
+    "tmdb_id": 1280287,
+    "tmdb_title_jp": "DitO",
+    "tmdb_title_en": "DitO",
+    "tmdb_title_original": "DitO",
+    "tmdb_original_language": "ja",
+    "overview": "「オボの声」などに出演してきた俳優・結城貴史が主演・監督を務めた、日比合作の人間ドラマ。日本に妻子を残しフィリピンで再起を図るプロボクサー・神山の元に、一人娘・桃子が神山を頼りやってきて、二人は衝突しながらも少しずつ親子の絆を結んでいく。タイトルのDitOとは、タガログ語で“ここ”（英語では“here”）のこと。",
+    "overview_en": "Professional boxer Eiji Kamiyama had been attempting a comeback in the Philippines but hit 40 without a fight. Suddenly, his daughter Momoko arrives with news of her mother's death. Disturbed by their reunion, Momoko and Eiji start an awkward life together, seeking what it means to be a parent and child. Miraculously granted a fight, Eiji decides to battle for their own place in the world. This story portrays the growth and existence of a \"parent\" and \"child,\" set against the backdrop of boxing.",
+    "poster_path": "/ovI7iXNOuj9MLh1jMMwfXmiTxIa.jpg",
+    "backdrop_path": "/hYG8cOLNZ1OpvswlhBvqVrhd3oq.jpg",
+    "release_date": "2024-04-25",
+    "director": "Takashi Yuki",
+    "director_jp": "Takashi Yuki",
+    "director_en": "Takashi Yuki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 117,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "PH",
+        "name": "Philippines"
+      }
+    ]
+  },
+  "tmdb:1280287": {
+    "tmdb_id": 1280287,
+    "tmdb_title_jp": "DitO",
+    "tmdb_title_en": "DitO",
+    "tmdb_title_original": "DitO",
+    "tmdb_original_language": "ja",
+    "overview": "「オボの声」などに出演してきた俳優・結城貴史が主演・監督を務めた、日比合作の人間ドラマ。日本に妻子を残しフィリピンで再起を図るプロボクサー・神山の元に、一人娘・桃子が神山を頼りやってきて、二人は衝突しながらも少しずつ親子の絆を結んでいく。タイトルのDitOとは、タガログ語で“ここ”（英語では“here”）のこと。",
+    "overview_en": "Professional boxer Eiji Kamiyama had been attempting a comeback in the Philippines but hit 40 without a fight. Suddenly, his daughter Momoko arrives with news of her mother's death. Disturbed by their reunion, Momoko and Eiji start an awkward life together, seeking what it means to be a parent and child. Miraculously granted a fight, Eiji decides to battle for their own place in the world. This story portrays the growth and existence of a \"parent\" and \"child,\" set against the backdrop of boxing.",
+    "poster_path": "/ovI7iXNOuj9MLh1jMMwfXmiTxIa.jpg",
+    "backdrop_path": "/hYG8cOLNZ1OpvswlhBvqVrhd3oq.jpg",
+    "release_date": "2024-04-25",
+    "director": "Takashi Yuki",
+    "director_jp": "Takashi Yuki",
+    "director_en": "Takashi Yuki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 117,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "PH",
+        "name": "Philippines"
+      }
+    ]
+  },
+  "六つの顔": null,
+  "大菩薩峠": {
+    "tmdb_id": 19884,
+    "tmdb_title_jp": "大菩薩峠",
+    "tmdb_title_en": "The Sword of Doom",
+    "tmdb_title_original": "大菩薩峠",
+    "tmdb_original_language": "ja",
+    "overview": "物語始めの舞台は、甲州と江戸。御嶽山奉納の剣術試合で、宇津木文之丞との勝負をゆずらなかった机竜之助は、文之丞の妻だったお浜と夫婦になる。大菩薩峠で、机竜之助に斬られた老人の孫のお松は、七兵衛の世話で厄介になった生け花の師匠のところから、神尾主膳の屋敷へ奉公にあがる。竜之助が組する江戸の浪士組（新徴組の前身）では、近藤勇と芹沢鴨が頭角を顕す。舞台の後半は、清河八郎の暗殺以後、新徴組が新撰組へ、江戸から京都へ移っていく。大菩薩峠と御嶽山奉納試合からの因縁、近藤勇や芹沢鴨の新徴組に身を置いた流れに、文久3年、机竜之助の音無しの剣術は、その在り方が求められていく。",
+    "overview_en": "Ryunosuke, a gifted swordsman plying his trade during the turbulent final days of Shogunate rule, has no moral code and kills without remorse. It’s a way of life that leads to madness.",
+    "poster_path": "/bxmAk4Qf7yf7vMhuev1Vw4nxbLK.jpg",
+    "backdrop_path": "/4qEw9OXqagoJDW0vpzLL5Fe1Mt0.jpg",
+    "release_date": "1966-02-25",
+    "director": "岡本喜八",
+    "director_jp": "岡本喜八",
+    "director_en": "Kihachi Okamoto",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 7.726,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:19884": {
+    "tmdb_id": 19884,
+    "tmdb_title_jp": "大菩薩峠",
+    "tmdb_title_en": "The Sword of Doom",
+    "tmdb_title_original": "大菩薩峠",
+    "tmdb_original_language": "ja",
+    "overview": "物語始めの舞台は、甲州と江戸。御嶽山奉納の剣術試合で、宇津木文之丞との勝負をゆずらなかった机竜之助は、文之丞の妻だったお浜と夫婦になる。大菩薩峠で、机竜之助に斬られた老人の孫のお松は、七兵衛の世話で厄介になった生け花の師匠のところから、神尾主膳の屋敷へ奉公にあがる。竜之助が組する江戸の浪士組（新徴組の前身）では、近藤勇と芹沢鴨が頭角を顕す。舞台の後半は、清河八郎の暗殺以後、新徴組が新撰組へ、江戸から京都へ移っていく。大菩薩峠と御嶽山奉納試合からの因縁、近藤勇や芹沢鴨の新徴組に身を置いた流れに、文久3年、机竜之助の音無しの剣術は、その在り方が求められていく。",
+    "overview_en": "Ryunosuke, a gifted swordsman plying his trade during the turbulent final days of Shogunate rule, has no moral code and kills without remorse. It’s a way of life that leads to madness.",
+    "poster_path": "/bxmAk4Qf7yf7vMhuev1Vw4nxbLK.jpg",
+    "backdrop_path": "/4qEw9OXqagoJDW0vpzLL5Fe1Mt0.jpg",
+    "release_date": "1966-02-25",
+    "director": "岡本喜八",
+    "director_jp": "岡本喜八",
+    "director_en": "Kihachi Okamoto",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 7.726,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "殺人狂時代": {
+    "tmdb_id": 30588,
+    "tmdb_title_jp": "殺人狂時代",
+    "tmdb_title_en": "Monsieur Verdoux",
+    "tmdb_title_original": "Monsieur Verdoux",
+    "tmdb_original_language": "en",
+    "overview": "大恐慌のために失業した銀行員ヴェルドゥの新事業とは? 結婚詐欺と連続殺人をブラック・ユーモアで描く異色のチャップリン喜劇。黒い笑いの中に込められているのは大量殺人に対する怒り……。",
+    "overview_en": "The film is about an unemployed banker, Henri Verdoux, and his sociopathic methods of attaining income. While being both loyal and competent in his work, Verdoux has been laid-off. To make money for his wife and child, he marries wealthy widows and then murders them. His crime spree eventually works against him when two particular widows break his normal routine.",
+    "poster_path": "/ircjtULfRe20SwkYfOhWJR03kLn.jpg",
+    "backdrop_path": "/f5EUue0mNt4gzjsrCP5QZENv3Ub.jpg",
+    "release_date": "1947-09-26",
+    "director": "查理·卓别林",
+    "director_jp": "查理·卓别林",
+    "director_en": "Charlie Chaplin",
+    "genres": [
+      "コメディ",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 124,
+    "vote_average": 7.693,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:30588": {
+    "tmdb_id": 30588,
+    "tmdb_title_jp": "殺人狂時代",
+    "tmdb_title_en": "Monsieur Verdoux",
+    "tmdb_title_original": "Monsieur Verdoux",
+    "tmdb_original_language": "en",
+    "overview": "大恐慌のために失業した銀行員ヴェルドゥの新事業とは? 結婚詐欺と連続殺人をブラック・ユーモアで描く異色のチャップリン喜劇。黒い笑いの中に込められているのは大量殺人に対する怒り……。",
+    "overview_en": "The film is about an unemployed banker, Henri Verdoux, and his sociopathic methods of attaining income. While being both loyal and competent in his work, Verdoux has been laid-off. To make money for his wife and child, he marries wealthy widows and then murders them. His crime spree eventually works against him when two particular widows break his normal routine.",
+    "poster_path": "/ircjtULfRe20SwkYfOhWJR03kLn.jpg",
+    "backdrop_path": "/f5EUue0mNt4gzjsrCP5QZENv3Ub.jpg",
+    "release_date": "1947-09-26",
+    "director": "查理·卓别林",
+    "director_jp": "查理·卓别林",
+    "director_en": "Charlie Chaplin",
+    "genres": [
+      "コメディ",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 124,
+    "vote_average": 7.693,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "富士山と、コーヒーと、": {
+    "tmdb_id": 1563792,
+    "tmdb_title_jp": "富士山と、コーヒーと、しあわせの数式",
+    "tmdb_title_en": "Mount Fuji, Coffee, and the Formula for Happiness",
+    "tmdb_title_original": "富士山と、コーヒーと、しあわせの数式",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Takuma, a university student who has just started living with his grandmother Fumiko, finds a university admissions guide in his late grandfather Eishi's study. It was a surprise for Fumiko, left behind by Eishi. Fumiko takes a step forward and enjoys her days of \"studying,\" a dream she had as a young person. Meanwhile, Takuma is unsure of his dream and worries about his future. The two then find a mysterious mathematical formula in Eishi's notebook, who loved Mount Fuji...",
+    "poster_path": "/p5KDyZUWMVlFQLHi4eZLSwoNNOU.jpg",
+    "backdrop_path": "/sFZBzb2ZSSES74PD8wGj17ahNxX.jpg",
+    "release_date": "2025-10-24",
+    "director": "中西健二",
+    "director_jp": "中西健二",
+    "director_en": "Kenji Nakanishi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1563792": {
+    "tmdb_id": 1563792,
+    "tmdb_title_jp": "富士山と、コーヒーと、しあわせの数式",
+    "tmdb_title_en": "Mount Fuji, Coffee, and the Formula for Happiness",
+    "tmdb_title_original": "富士山と、コーヒーと、しあわせの数式",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Takuma, a university student who has just started living with his grandmother Fumiko, finds a university admissions guide in his late grandfather Eishi's study. It was a surprise for Fumiko, left behind by Eishi. Fumiko takes a step forward and enjoys her days of \"studying,\" a dream she had as a young person. Meanwhile, Takuma is unsure of his dream and worries about his future. The two then find a mysterious mathematical formula in Eishi's notebook, who loved Mount Fuji...",
+    "poster_path": "/p5KDyZUWMVlFQLHi4eZLSwoNNOU.jpg",
+    "backdrop_path": "/sFZBzb2ZSSES74PD8wGj17ahNxX.jpg",
+    "release_date": "2025-10-24",
+    "director": "中西健二",
+    "director_jp": "中西健二",
+    "director_en": "Kenji Nakanishi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "フランケンシュタイン": {
+    "tmdb_id": 1062722,
+    "tmdb_title_jp": "フランケンシュタイン",
+    "tmdb_title_en": "Frankenstein",
+    "tmdb_title_original": "Frankenstein",
+    "tmdb_original_language": "en",
+    "overview": "ひとりの天才科学者と、その野心が創り出した恐ろしい怪物をめぐるメアリー・シェリーの古典小説の名作を、アカデミー賞受賞のギレルモ・デル・トロ監督が新たな視点で映像化。",
+    "overview_en": "Dr. Victor Frankenstein, a brilliant but egotistical scientist, brings a creature to life in a monstrous experiment that ultimately leads to the undoing of both the creator and his tragic creation.",
+    "poster_path": "/siIvWg36CiikM2f43GtiYxHXEDj.jpg",
+    "backdrop_path": "/ceyakefyCRAgyeFhefa2bz6d9QO.jpg",
+    "release_date": "2025-10-17",
+    "director": "ギレルモ・デル・トロ",
+    "director_jp": "ギレルモ・デル・トロ",
+    "director_en": "Guillermo del Toro",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 150,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "tmdb:1062722": {
+    "tmdb_id": 1062722,
+    "tmdb_title_jp": "フランケンシュタイン",
+    "tmdb_title_en": "Frankenstein",
+    "tmdb_title_original": "Frankenstein",
+    "tmdb_original_language": "en",
+    "overview": "ひとりの天才科学者と、その野心が創り出した恐ろしい怪物をめぐるメアリー・シェリーの古典小説の名作を、アカデミー賞受賞のギレルモ・デル・トロ監督が新たな視点で映像化。",
+    "overview_en": "Dr. Victor Frankenstein, a brilliant but egotistical scientist, brings a creature to life in a monstrous experiment that ultimately leads to the undoing of both the creator and his tragic creation.",
+    "poster_path": "/siIvWg36CiikM2f43GtiYxHXEDj.jpg",
+    "backdrop_path": "/ceyakefyCRAgyeFhefa2bz6d9QO.jpg",
+    "release_date": "2025-10-17",
+    "director": "ギレルモ・デル・トロ",
+    "director_jp": "ギレルモ・デル・トロ",
+    "director_en": "Guillermo del Toro",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 150,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "『かたつむりのメモワール』": {
+    "tmdb_id": 1064486,
+    "tmdb_title_jp": "かたつむりのメモワール",
+    "tmdb_title_en": "Memoir of a Snail",
+    "tmdb_title_original": "Memoir of a Snail",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Forcibly separated from her twin brother when they are orphaned, a melancholic misfit learns how to find confidence within herself amid the clutter of misfortunes and everyday life.",
+    "poster_path": "/woaN8CbloH0akyX0E72ayxlJAB4.jpg",
+    "backdrop_path": "/jl2YIADk391yc6Qjy9JhgCRkHJk.jpg",
+    "release_date": "2024-10-17",
+    "director": "アダム・エリオット",
+    "director_jp": "アダム・エリオット",
+    "director_en": "Adam Elliot",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 94,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      }
+    ]
+  },
+  "tmdb:1064486": {
+    "tmdb_id": 1064486,
+    "tmdb_title_jp": "かたつむりのメモワール",
+    "tmdb_title_en": "Memoir of a Snail",
+    "tmdb_title_original": "Memoir of a Snail",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Forcibly separated from her twin brother when they are orphaned, a melancholic misfit learns how to find confidence within herself amid the clutter of misfortunes and everyday life.",
+    "poster_path": "/woaN8CbloH0akyX0E72ayxlJAB4.jpg",
+    "backdrop_path": "/jl2YIADk391yc6Qjy9JhgCRkHJk.jpg",
+    "release_date": "2024-10-17",
+    "director": "アダム・エリオット",
+    "director_jp": "アダム・エリオット",
+    "director_en": "Adam Elliot",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 94,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      }
+    ]
+  },
+  "ミックスモダン": {
+    "tmdb_id": 1418516,
+    "tmdb_title_jp": "ミックスモダン",
+    "tmdb_title_en": "The Longing",
+    "tmdb_title_original": "ミックスモダン",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A couple running a restaurant hires young people who have been released from juvenile detention to help them reintegrate into society. The 18-year-old Yuto is keen to start a new life with their help.",
+    "poster_path": "/fbZckCNTcaGbzboFsP8NwSPylPQ.jpg",
+    "backdrop_path": "/1B3ZEuGfT3FvhZC7Shs4upLdTea.jpg",
+    "release_date": "2025-02-15",
+    "director": "Toshizo Fujiwara",
+    "director_jp": "Toshizo Fujiwara",
+    "director_en": "Toshizo Fujiwara",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 104,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1418516": {
+    "tmdb_id": 1418516,
+    "tmdb_title_jp": "ミックスモダン",
+    "tmdb_title_en": "The Longing",
+    "tmdb_title_original": "ミックスモダン",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A couple running a restaurant hires young people who have been released from juvenile detention to help them reintegrate into society. The 18-year-old Yuto is keen to start a new life with their help.",
+    "poster_path": "/fbZckCNTcaGbzboFsP8NwSPylPQ.jpg",
+    "backdrop_path": "/1B3ZEuGfT3FvhZC7Shs4upLdTea.jpg",
+    "release_date": "2025-02-15",
+    "director": "Toshizo Fujiwara",
+    "director_jp": "Toshizo Fujiwara",
+    "director_en": "Toshizo Fujiwara",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 104,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "落語家の業（ごう）": null,
+  "【𝐖𝐄𝐄𝐊𝐄𝐍𝐃 𝐉𝐈𝐌 𝐉𝐀𝐑𝐌𝐔𝐒𝐂𝐇​​】パターソン": {
+    "tmdb_id": 370755,
+    "tmdb_title_jp": "パターソン",
+    "tmdb_title_en": "Paterson",
+    "tmdb_title_original": "Paterson",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A week in the life of Paterson, a poet bus driver, and his wife Laura, a very creative artist, who live in Paterson, New Jersey, hometown of many famous poets and artists.",
+    "poster_path": "/AuJ1ZlfqwuAr9H5Qr1U9KILylse.jpg",
+    "backdrop_path": "/5Bk7kYSKAuNrxI5BXpDqlsln2P0.jpg",
+    "release_date": "2016-11-17",
+    "director": "ジム・ジャームッシュ",
+    "director_jp": "ジム・ジャームッシュ",
+    "director_en": "Jim Jarmusch",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 118,
+    "vote_average": 7.115,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "グリーンバレット 最強殺し屋伝説国岡[合宿編]": {
+    "tmdb_id": 1001714,
+    "tmdb_title_jp": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_title_en": "Green Bullet",
+    "tmdb_title_original": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_original_language": "ja",
+    "overview": "阪元裕吾監督監督が殺し屋・国岡を追ったモキュメンタリー（疑似ドキュメンタリー）「最強殺し屋伝説国岡［完全版］」の続編にして外伝の第1弾。殺し屋・国岡は新たに6人の“殺し屋女子”（演じるのはミスマガジン2021の受賞者陣）を一人前の殺し屋にしようとする合宿にインストラクターとして招かれ……。前作と同じく、殺し屋たちのゆるい日常と激しいアクションのギャップが見もの。本作に続き外伝第2弾「最強殺し屋伝説国岡外伝国岡ツアーズ大阪編～蘇る金のドラゴン・なにわアサシンの逆襲～」も製作。\r 京都で活動しているすご腕殺し屋の国岡は、プロの殺し屋を目指している若い女性6人、ふみか、美香、はるか、唯、梨紗、響を一人前の殺し屋にする訓練合宿にインストラクターとして参加する。だが女性たちはいずれも個性が強く、国岡は手こずる事態に。やがて一行が起こした事件のせいで、凶暴かつ最悪な殺し屋集団“フォックスハンター”が合宿所に来ることになり、国岡は6人を率いて“フォックスハンター”と激闘を繰り広げる。",
+    "overview_en": "Six girls participate in the boot camp for assassins. The instructor of the boot camp is the legendary hitman, Kunioka. At first, they repel each other, but the girls gradually develop friendships while enduring the hard training. By chance, the girls get involved in a life-threatening battle with a group of anarchist hitmen.",
+    "poster_path": "/nTeVHCe0FMuC8l0AIneud78waB5.jpg",
+    "backdrop_path": "/50reRp5eyWLBttZ15DIOjjUFWcP.jpg",
+    "release_date": "2022-08-26",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 106,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "イスラーム映画祭エンサイクロペディア": null,
+  "ツーリストファミリー": {
+    "tmdb_id": 1398359,
+    "tmdb_title_jp": "டூரிஸ்ட் ஃபாமிலி",
+    "tmdb_title_en": "Tourist Family",
+    "tmdb_title_original": "டூரிஸ்ட் ஃபாமிலி",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "A quirky Sri Lankan family seeking a fresh start in India transforms a disconnected neighborhood into a vibrant community with their infectious love and kindness.",
+    "poster_path": "/rEffPihtdQXiXfRdfq7pPM5JDqa.jpg",
+    "backdrop_path": "/9aecROz2WTJVxO0MMKrMDQsx7F6.jpg",
+    "release_date": "2025-04-30",
+    "director": "Abishan Jeevinth",
+    "director_jp": "Abishan Jeevinth",
+    "director_en": "Abishan Jeevinth",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "runtime": 128,
+    "vote_average": 7.933,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "tmdb:1398359": {
+    "tmdb_id": 1398359,
+    "tmdb_title_jp": "டூரிஸ்ட் ஃபாமிலி",
+    "tmdb_title_en": "Tourist Family",
+    "tmdb_title_original": "டூரிஸ்ட் ஃபாமிலி",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "A quirky Sri Lankan family seeking a fresh start in India transforms a disconnected neighborhood into a vibrant community with their infectious love and kindness.",
+    "poster_path": "/rEffPihtdQXiXfRdfq7pPM5JDqa.jpg",
+    "backdrop_path": "/9aecROz2WTJVxO0MMKrMDQsx7F6.jpg",
+    "release_date": "2025-04-30",
+    "director": "Abishan Jeevinth",
+    "director_jp": "Abishan Jeevinth",
+    "director_en": "Abishan Jeevinth",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "runtime": 128,
+    "vote_average": 7.933,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "WAR/バトル・オブ・フェイト": {
+    "tmdb_id": 1109086,
+    "tmdb_title_jp": "वॉर 2",
+    "tmdb_title_en": "War 2",
+    "tmdb_title_original": "वॉर 2",
+    "tmdb_original_language": "hi",
+    "overview": "",
+    "overview_en": "Years ago Agent Kabir went rogue, became India’s greatest villain ever.  As he descends further into the deepest shadows... India sends its deadliest, most lethal agent after him, Agent Vikram  A Special Units Officer who is more than Kabir’s equal and a relentless Terminator driven by his own demons, determined to put a bullet into Kabir’s skull.",
+    "poster_path": "/j8Gl3S4L7LE8GIF1J1phZ2Cbo72.jpg",
+    "backdrop_path": "/pKIRUTnwY3YYU9urSdsuobdcliP.jpg",
+    "release_date": "2025-08-13",
+    "director": "Ayan Mukerji",
+    "director_jp": "Ayan Mukerji",
+    "director_en": "Ayan Mukerji",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "runtime": 173,
+    "vote_average": 5.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "やさしさ": null,
+  "UFO少年アブドラジャン": null,
+  "ピクニック＋ロスト・イン・メージズ": null,
+  "tmdb:1109086": {
+    "tmdb_id": 1109086,
+    "tmdb_title_jp": "वॉर 2",
+    "tmdb_title_en": "War 2",
+    "tmdb_title_original": "वॉर 2",
+    "tmdb_original_language": "hi",
+    "overview": "",
+    "overview_en": "Years ago Agent Kabir went rogue, became India’s greatest villain ever.  As he descends further into the deepest shadows... India sends its deadliest, most lethal agent after him, Agent Vikram  A Special Units Officer who is more than Kabir’s equal and a relentless Terminator driven by his own demons, determined to put a bullet into Kabir’s skull.",
+    "poster_path": "/j8Gl3S4L7LE8GIF1J1phZ2Cbo72.jpg",
+    "backdrop_path": "/pKIRUTnwY3YYU9urSdsuobdcliP.jpg",
+    "release_date": "2025-08-13",
+    "director": "Ayan Mukerji",
+    "director_jp": "Ayan Mukerji",
+    "director_en": "Ayan Mukerji",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "runtime": 173,
+    "vote_average": 5.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
       }
     ]
   }
