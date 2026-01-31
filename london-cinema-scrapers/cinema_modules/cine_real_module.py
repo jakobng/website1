@@ -10,14 +10,15 @@ import json
 import re
 import sys
 from typing import Dict, List, Optional, Tuple
+from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
 
 # --- Constants ---
 CINEMA_NAME = "Ciné-Real"
-BASE_URL = "https://cine-real.com"
-SCHEDULE_URL = f"{BASE_URL}/pages/next-screenings"
+BASE_URL = "https://www.cine-real.com"
+SCHEDULE_URL = f"{BASE_URL}/pages/next-screening"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -92,6 +93,7 @@ def scrape_cine_real() -> List[Dict]:
 
     try:
         session = requests.Session()
+        session.trust_env = False
         resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
@@ -100,35 +102,44 @@ def scrape_cine_real() -> List[Dict]:
         # <p><b>Wednesday 21st January</b></p>
         # <p><a href="...">Film Title ..., 7.30pm</a></p>
         
-        content_div = soup.find("div", class_="editor-content")
+        content_div = (
+            soup.find("div", class_="editor-content")
+            or soup.find("div", class_="rte")
+            or soup.find("div", class_="page-content")
+            or soup.find("main")
+            or soup
+        )
         if not content_div:
-            print(f"[{CINEMA_NAME}] Warning: Could not find .editor-content", file=sys.stderr)
+            print(f"[{CINEMA_NAME}] Warning: Could not find main content container", file=sys.stderr)
             return []
 
         current_date = None
         
-        for p in content_div.find_all("p"):
+        for p in content_div.find_all(["p", "h2", "h3", "h4", "a"]):
             text = _clean_text(p.get_text())
             
             # Check for date line (usually bold)
             # <b>Wednesday 21st January</b>
-            if p.find("b") and re.search(r"\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+", text):
-                 # Try to parse as date
-                 # Use a dummy time string just to trigger the date parsing logic in helper
-                 d, _ = _parse_date_and_time(text, "12pm")
-                 if d:
-                     current_date = d
-                     continue
+            if (p.find(["b", "strong"]) or p.name in {"h2", "h3", "h4"}) and re.search(r"\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+", text):
+                # Try to parse as date
+                # Use a dummy time string just to trigger the date parsing logic in helper
+                d, _ = _parse_date_and_time(text, "12pm")
+                if d:
+                    current_date = d
+                    continue
 
             # Check for movie link line
             # <a href="...">The Third Man on original 16mm, 7.30pm</a>
-            link = p.find("a")
+            link = p if p.name == "a" else p.find("a")
             if link and current_date:
                 link_text = _clean_text(link.get_text())
                 href = link.get("href")
                 
                 if not href:
                     continue
+
+                if href.startswith("/"):
+                    href = urljoin(BASE_URL, href)
                 
                 # Extract time first
                 # Use a dummy date text that is guaranteed to work with our parser to just extract time
@@ -166,7 +177,16 @@ def scrape_cine_real() -> List[Dict]:
         print(f"[{CINEMA_NAME}] Error: {exc}", file=sys.stderr)
         return []
 
-    return shows
+    seen = set()
+    unique_shows = []
+    for s in shows:
+        key = (s.get("movie_title"), s.get("date_text"), s.get("showtime"), s.get("booking_url"))
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_shows.append(s)
+
+    return unique_shows
 
 
 def scrape_cine_real_wrapper() -> List[Dict]:

@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.peckhamplex.london"
 FILMS_URL = f"{BASE_URL}/films/out-now"
+PEARL_DEAN_URL = "https://www.pearlanddean.com/cinemas/peckhamplex/"
 CINEMA_NAME = "Peckhamplex"
 
 HEADERS = {
@@ -53,7 +54,7 @@ def _parse_date_text(date_str: str) -> Optional[dt.date]:
 
     # Remove day name and comma if present
     date_str = re.sub(
-        r"^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)[,\s]+",
+        r"^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*[,\s]+",
         "",
         date_str,
         flags=re.IGNORECASE
@@ -68,6 +69,11 @@ def _parse_date_text(date_str: str) -> Optional[dt.date]:
         "%d %B %Y",     # 9 January 2026
         "%d %B",        # 9 January (assume current/next year)
         "%B %d",        # January 9 (assume current/next year)
+        "%b %d, %Y",    # Jan 9, 2026
+        "%b %d %Y",     # Jan 9 2026
+        "%d %b %Y",     # 9 Jan 2026
+        "%d %b",        # 9 Jan (assume current/next year)
+        "%b %d",        # Jan 9 (assume current/next year)
     ]
 
     for fmt in formats:
@@ -107,7 +113,29 @@ def _parse_time(time_str: str) -> Optional[str]:
         if 0 <= hour <= 23 and 0 <= minute <= 59:
             return f"{hour:02d}:{minute:02d}"
 
+    # Match hour with am/pm only (e.g., "7pm")
+    match = re.search(r"\b(\d{1,2})\s*(am|pm)\b", time_str)
+    if match:
+        hour = int(match.group(1))
+        meridiem = match.group(2)
+        if meridiem == "pm" and hour != 12:
+            hour += 12
+        elif meridiem == "am" and hour == 12:
+            hour = 0
+        if 0 <= hour <= 23:
+            return f"{hour:02d}:00"
+
     return None
+
+
+def _extract_times(text: str) -> List[str]:
+    times: List[str] = []
+    for match in re.finditer(r"\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\b", text, re.IGNORECASE):
+        candidate = match.group(0)
+        parsed = _parse_time(candidate)
+        if parsed:
+            times.append(parsed)
+    return times
 
 
 def _get_film_urls(session: requests.Session) -> List[Dict[str, str]]:
@@ -309,6 +337,76 @@ def _scrape_film_detail(session: requests.Session, film_url: str, film_title: st
     return shows
 
 
+def _scrape_pearl_dean_listings(session: requests.Session) -> List[Dict]:
+    """
+    Fallback scraper for Peckhamplex showtimes via Pearl & Dean listings page.
+    """
+    shows: List[Dict] = []
+
+    try:
+        resp = session.get(PEARL_DEAN_URL, headers=HEADERS, timeout=TIMEOUT)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+
+        current_title = ""
+        current_date: Optional[dt.date] = None
+
+        for elem in soup.find_all(["h2", "h3", "h4", "p", "li", "a", "span"]):
+            text = _clean(elem.get_text(" ", strip=True))
+            if not text:
+                continue
+
+            if elem.name in {"h2", "h3", "h4"}:
+                if len(text) > 2 and "showing" not in text.lower() and "coming soon" not in text.lower():
+                    current_title = text
+                    current_date = None
+                continue
+
+            if not current_title:
+                continue
+
+            date_candidate = _parse_date_text(text)
+            if date_candidate:
+                current_date = date_candidate
+
+            times = _extract_times(text)
+            if not times:
+                continue
+
+            link = elem if elem.name == "a" else elem.find("a")
+            booking_url = ""
+            if link and link.get("href"):
+                booking_url = link.get("href", "")
+                if booking_url and not booking_url.startswith("http"):
+                    booking_url = urljoin(PEARL_DEAN_URL, booking_url)
+
+            show_date = current_date or TODAY
+            if not (TODAY <= show_date < TODAY + dt.timedelta(days=WINDOW_DAYS)):
+                continue
+
+            for time_str in times:
+                shows.append({
+                    "cinema_name": CINEMA_NAME,
+                    "movie_title": current_title,
+                    "movie_title_en": current_title,
+                    "date_text": show_date.isoformat(),
+                    "showtime": time_str,
+                    "detail_page_url": PEARL_DEAN_URL,
+                    "booking_url": booking_url or PEARL_DEAN_URL,
+                    "director": "",
+                    "year": "",
+                    "country": "",
+                    "runtime_min": "",
+                    "synopsis": "",
+                    "format_tags": [],
+                })
+
+    except requests.RequestException as e:
+        print(f"[{CINEMA_NAME}] Error fetching Pearl & Dean listings: {e}", file=sys.stderr)
+
+    return shows
+
+
 def scrape_peckhamplex() -> List[Dict]:
     """
     Scrape Peckhamplex Cinema showtimes.
@@ -326,6 +424,7 @@ def scrape_peckhamplex() -> List[Dict]:
 
     try:
         session = requests.Session()
+        session.trust_env = False
 
         # Get list of films
         films = _get_film_urls(session)
@@ -334,6 +433,9 @@ def scrape_peckhamplex() -> List[Dict]:
         for film in films:
             film_shows = _scrape_film_detail(session, film["url"], film["title"])
             shows.extend(film_shows)
+
+        if not shows:
+            shows = _scrape_pearl_dean_listings(session)
 
         print(f"[{CINEMA_NAME}] Found {len(shows)} showings from {len(films)} films", file=sys.stderr)
 
