@@ -3739,5 +3739,140 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ハリー・スミス作品集": {
+    "english_title": "The Films of Harry Smith",
+    "release_year": 2002,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ハリー・スミス作品集",
+    "director": "Harry Smith",
+    "country": "USA",
+    "failed": true
+  },
+  "「イメージレス・フィルムズ」シリーズより": {
+    "english_title": "From the 'Imageless Films' Series",
+    "release_year": 2022,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "「イメージレス・フィルムズ」シリーズより",
+    "director": null,
+    "country": "USA",
+    "failed": true
+  },
+  "ふたたび男がTwice a Man": {
+    "english_title": "Twice a Man",
+    "release_year": 1963,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Twice a Man",
+    "director": "Gregory J. Markopoulos",
+    "country": "United States"
+  },
+  "クッチャー兄弟作品集": {
+    "english_title": "Kuchar Brothers Collection",
+    "release_year": null,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "クッチャー兄弟作品集",
+    "director": "George Kuchar, Mike Kuchar",
+    "country": "USA",
+    "failed": true
+  },
+  "｢アヴァンギャルド広告｣シリーズより": {
+    "english_title": "From the 'Avant-Garde Advertising' Series",
+    "release_year": 1921,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "｢アヴァンギャルド広告｣シリーズより",
+    "director": "Walter Ruttmann",
+    "country": "Germany",
+    "failed": true
+  },
+  "魔界転生": {
+    "english_title": "Samurai Reincarnation",
+    "release_year": 1981,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "魔界転生",
+    "director": "Kinji Fukasaku",
+    "country": "Japan"
+  },
+  "武田純一郎作品集": {
+    "english_title": "The Works of Junichiro Takeda",
+    "release_year": null,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "武田純一郎作品集",
+    "director": "Junichiro Takeda",
+    "country": "Japan",
+    "failed": true
+  },
+  "久里洋二 短篇アニメーション作品集": {
+    "english_title": "The Collected Short Animations of Yoji Kuri",
+    "release_year": 2004,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "久里洋二 短篇アニメーション作品集",
+    "director": "Yoji Kuri",
+    "country": "Japan",
+    "failed": true
+  },
+  "田名網敬一作品集": {
+    "english_title": "Keiichi Tanaami Works",
+    "release_year": 2003,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "田名網敬一作品集",
+    "director": "Keiichi Tanaami",
+    "country": "Japan",
+    "failed": true
+  },
+  "ショージとタカオ": {
+    "english_title": "Shoji & Takao: A 44-Year Fight for the Simple Life",
+    "release_year": 2010,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ショージとタカオ",
+    "director": "Yoko Ide",
+    "country": "Japan",
+    "failed": true
+  },
+  "【マッツ・ミケルセン生誕60周年祭】アダムズ・アップル": {
+    "english_title": "Adam's Apples",
+    "release_year": 2005,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Adams Æbler",
+    "director": "Anders Thomas Jensen",
+    "country": "Denmark"
+  },
+  "インド映画同好会支援募金�А屮薀好肇侫 璽沺次彡名鐓絮�": {
+    "english_title": "The Last Farmer",
+    "release_year": 2021,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Kadaisi Vivasayi",
+    "director": "M. Manikandan",
+    "country": "India"
+  },
+  "ファリダの二千の歌": {
+    "english_title": "2000 Songs of Farida",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Faridaning ikki ming qo'shig'i",
+    "director": "Yolkin Tuychiev",
+    "country": "Uzbekistan"
+  },
+  "苦い果実": {
+    "english_title": "Bitter Fruit",
+    "release_year": 1959,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "苦い果実",
+    "director": "Eizo Sugawa",
+    "country": "Japan",
+    "failed": true
   }
 }
