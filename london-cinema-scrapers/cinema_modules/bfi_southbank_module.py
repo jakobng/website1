@@ -22,6 +22,10 @@ from bs4 import BeautifulSoup
 
 BASE_URL = "https://whatson.bfi.org.uk"
 SCHEDULE_URL = f"{BASE_URL}/Online/default.asp"
+SCHEDULE_FALLBACK_URLS = [
+    SCHEDULE_URL,
+    f"{BASE_URL}/Online/",
+]
 CINEMA_NAME = "BFI Southbank"
 
 HEADERS = {
@@ -351,39 +355,84 @@ def _looks_like_cloudflare_challenge(html: str) -> bool:
     return "just a moment" in lowered or "cf-ray" in lowered or "cloudflare" in lowered
 
 
-def _fetch_schedule_html() -> str:
+def _fetch_schedule_html() -> tuple:
     session = requests.Session()
     session.trust_env = False
-    resp = session.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
-    if resp.status_code == 403 or _looks_like_cloudflare_challenge(resp.text):
+    referer = f"{BASE_URL}/"
+    headers = {**HEADERS, "Referer": referer}
+
+    last_resp = None
+    for url in SCHEDULE_FALLBACK_URLS:
         try:
-            import cloudscraper
-        except Exception:
-            raise RuntimeError(
-                "BFI blocked the request (Cloudflare). Install cloudscraper or provide BFI_HTML_PATH."
-            ) from None
+            session.get(referer, headers=HEADERS, timeout=TIMEOUT)
+        except requests.RequestException:
+            pass
+        resp = session.get(url, headers=headers, timeout=TIMEOUT)
+        last_resp = resp
+        if resp.status_code == 403 or _looks_like_cloudflare_challenge(resp.text):
+            continue
+        resp.raise_for_status()
+        return resp.text, session
 
-        scraper = cloudscraper.create_scraper()
-        resp = scraper.get(SCHEDULE_URL, headers=HEADERS, timeout=TIMEOUT)
-    resp.raise_for_status()
-    return resp.text
+    try:
+        import cloudscraper
+    except Exception:
+        raise RuntimeError(
+            "BFI blocked the request (Cloudflare). Install cloudscraper or provide BFI_HTML_PATH."
+        ) from None
+
+    scraper = cloudscraper.create_scraper(
+        browser={"browser": "chrome", "platform": "windows", "mobile": False}
+    )
+    scraper.trust_env = False
+    for url in SCHEDULE_FALLBACK_URLS:
+        try:
+            scraper.get(referer, headers=HEADERS, timeout=TIMEOUT)
+        except requests.RequestException:
+            pass
+        resp = scraper.get(url, headers=headers, timeout=TIMEOUT)
+        last_resp = resp
+        if resp.status_code == 403 or _looks_like_cloudflare_challenge(resp.text):
+            continue
+        resp.raise_for_status()
+        return resp.text, scraper
+
+    if last_resp is not None:
+        last_resp.raise_for_status()
+    raise RuntimeError("BFI request failed with no response")
 
 
-def _fetch_detail_html(detail_url: str) -> str:
+def _fetch_detail_html(
+    detail_url: str,
+    session: Optional[requests.Session] = None,
+    referer: str = "",
+) -> str:
     if not detail_url:
         return ""
-    session = requests.Session()
-    session.trust_env = False
+    headers = HEADERS
+    if referer:
+        headers = {**HEADERS, "Referer": referer}
+    active_session = session
+    if active_session is None:
+        active_session = requests.Session()
+        active_session.trust_env = False
     try:
-        resp = session.get(detail_url, headers=HEADERS, timeout=TIMEOUT)
+        resp = active_session.get(detail_url, headers=headers, timeout=TIMEOUT)
         if resp.status_code == 403 or _looks_like_cloudflare_challenge(resp.text):
             try:
                 import cloudscraper
             except Exception:
                 print(f"[{CINEMA_NAME}] Cloudscraper not available for detail pages.", file=sys.stderr)
             else:
-                scraper = cloudscraper.create_scraper()
-                resp = scraper.get(detail_url, headers=HEADERS, timeout=TIMEOUT)
+                scraper = cloudscraper.create_scraper(
+                    browser={"browser": "chrome", "platform": "windows", "mobile": False}
+                )
+                scraper.trust_env = False
+                try:
+                    scraper.cookies.update(active_session.cookies)
+                except Exception:
+                    pass
+                resp = scraper.get(detail_url, headers=headers, timeout=TIMEOUT)
         resp.raise_for_status()
         return resp.text
     except Exception as e:
@@ -482,7 +531,11 @@ def _extract_detail_metadata(detail_html: str) -> Dict[str, str]:
     return metadata
 
 
-def _enrich_shows_with_detail_pages(shows: List[Dict]) -> List[Dict]:
+def _enrich_shows_with_detail_pages(
+    shows: List[Dict],
+    session: Optional[requests.Session] = None,
+    referer: str = "",
+) -> List[Dict]:
     if not shows:
         return shows
     detail_cache: Dict[str, Dict[str, str]] = {}
@@ -491,7 +544,7 @@ def _enrich_shows_with_detail_pages(shows: List[Dict]) -> List[Dict]:
         if not detail_url:
             continue
         if detail_url not in detail_cache:
-            detail_html = _fetch_detail_html(detail_url)
+            detail_html = _fetch_detail_html(detail_url, session=session, referer=referer)
             detail_cache[detail_url] = _extract_detail_metadata(detail_html) if detail_html else {}
         metadata = detail_cache.get(detail_url) or {}
         if not metadata:
@@ -549,11 +602,14 @@ def scrape_bfi_southbank() -> List[Dict]:
         html_override = _load_html_override()
         html_text = ""
         soup = None
+        detail_session = None
         if html_override:
             html_text = html_override
             soup = BeautifulSoup(html_override, "html.parser")
+            detail_session = requests.Session()
+            detail_session.trust_env = False
         else:
-            html_text = _fetch_schedule_html()
+            html_text, detail_session = _fetch_schedule_html()
             soup = BeautifulSoup(html_text, "html.parser")
 
         if html_text:
@@ -698,7 +754,7 @@ def scrape_bfi_southbank() -> List[Dict]:
         print(f"[{CINEMA_NAME}] Error: {e}", file=sys.stderr)
         raise
 
-    shows = _enrich_shows_with_detail_pages(shows)
+    shows = _enrich_shows_with_detail_pages(shows, session=detail_session, referer=SCHEDULE_URL)
 
     # Deduplicate
     seen = set()
