@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
@@ -15,8 +16,9 @@ from bs4 import BeautifulSoup, Tag
 CINEMA_NAME_KC = "K's Cinema (ケイズシネマ)"
 BASE_URL = "https://www.ks-cinema.com/"
 IFRAME_SRC_URL_KC = urljoin(BASE_URL, "/calendar/index.html")
-SAMPLE_DATA_DIR = Path(__file__).with_name("sample_data")
+SAMPLE_DATA_DIR = Path(__file__).resolve().parents[1] / "sample_data"
 SAMPLE_CALENDAR_PATH = SAMPLE_DATA_DIR / "ks_cinema_calendar_sample.html"
+EIGALAND_URL_RE = re.compile(r"https?://schedule\\.eigaland\\.com/schedule\\?webKey=[^\\s'\"<>]+")
 
 # --- Helper Functions ---
 
@@ -70,6 +72,144 @@ def _select_title_candidates(cell: Tag) -> Iterable[Tag]:
                 continue
             seen.add(key)
             yield node
+
+
+# --- Eigaland Schedule Support ---
+
+def _discover_eigaland_schedule_url() -> str:
+    try:
+        response = requests.get(BASE_URL, headers={'User-Agent': 'Mozilla/5.0'}, timeout=20)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        print(f"INFO: [{CINEMA_NAME_KC}] Could not fetch homepage for Eigaland discovery: {e}", file=sys.stderr)
+        return ""
+
+    html = response.text or ""
+    match = EIGALAND_URL_RE.search(html)
+    if match:
+        return match.group(0)
+
+    soup = BeautifulSoup(html, "html.parser")
+    for link in soup.select("a[href*='schedule.eigaland.com']"):
+        href = link.get("href") or ""
+        if "webKey=" in href:
+            return href
+    return ""
+
+
+def _parse_eigaland_date(date_str: str, today: date) -> Optional[date]:
+    match = re.search(r"(\d{1,2})/(\d{1,2})", date_str)
+    if not match:
+        return None
+    month, day = map(int, match.groups())
+    year = today.year
+    if month < today.month and (today.month - month) > 6:
+        year += 1
+    elif month > today.month and (month - today.month) > 6:
+        year -= 1
+    try:
+        return date(year, month, day)
+    except ValueError:
+        return None
+
+
+def _scrape_eigaland_schedule(schedule_url: str, max_days: int = 7) -> List[Dict]:
+    try:
+        from selenium import webdriver
+        from selenium.webdriver.chrome.options import Options
+        from selenium.webdriver.common.by import By
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
+    except Exception as e:
+        print(f"INFO: [{CINEMA_NAME_KC}] Selenium not available for Eigaland scrape: {e}", file=sys.stderr)
+        return []
+
+    driver = None
+    showings: List[Dict] = []
+    today = date.today()
+    end_date = today + timedelta(days=max_days - 1)
+
+    try:
+        options = Options()
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--window-size=1280,1000")
+        options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+
+        driver = webdriver.Chrome(options=options)
+        driver.get(schedule_url)
+        wait = WebDriverWait(driver, 20)
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".calender-head-item")))
+        time.sleep(1)
+
+        date_items = driver.find_elements(By.CSS_SELECTOR, ".calender-head-item")
+        for idx in range(min(len(date_items), max_days)):
+            date_items = driver.find_elements(By.CSS_SELECTOR, ".calender-head-item")
+            if idx >= len(date_items):
+                break
+
+            item = date_items[idx]
+            date_text_elem = item.find_element(By.CSS_SELECTOR, ".date") if item.find_elements(By.CSS_SELECTOR, ".date") else None
+            date_text = date_text_elem.text.strip() if date_text_elem else item.text.strip()
+            show_date = _parse_eigaland_date(date_text, today)
+            if not show_date or not (today <= show_date <= end_date):
+                continue
+
+            if "active" not in item.get_attribute("class"):
+                driver.execute_script("arguments[0].click();", item)
+                time.sleep(1.5)
+
+            movie_items = driver.find_elements(By.CSS_SELECTOR, ".movie-schedule-item")
+            for movie_item in movie_items:
+                title = ""
+                for selector in ["span[style*='font-weight']", ".movie-title", "span.title", "span"]:
+                    try:
+                        title_elem = movie_item.find_element(By.CSS_SELECTOR, selector)
+                        title = title_elem.text.strip()
+                        if title and title != "NEW":
+                            break
+                    except Exception:
+                        continue
+
+                if not title or title == "NEW":
+                    continue
+
+                time_elems = movie_item.find_elements(By.CSS_SELECTOR, ".slot h2")
+                for time_elem in time_elems:
+                    showtime = time_elem.text.strip()
+                    if not showtime:
+                        continue
+                    showings.append({
+                        "cinema_name": CINEMA_NAME_KC,
+                        "movie_title": title,
+                        "date_text": show_date.isoformat(),
+                        "showtime": showtime,
+                        "detail_page_url": schedule_url,
+                        "director": "",
+                        "year": "",
+                        "country": "",
+                        "runtime_min": "",
+                        "synopsis": "",
+                        "movie_title_en": "",
+                    })
+    except Exception as e:
+        print(f"ERROR: [{CINEMA_NAME_KC}] Eigaland scrape failed: {e}", file=sys.stderr)
+    finally:
+        if driver:
+            driver.quit()
+
+    # Deduplicate
+    unique = []
+    seen = set()
+    for s in showings:
+        key = (s["date_text"], s["movie_title"], s["showtime"])
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(s)
+    return unique
 
 
 # --- Detail Page Parsing ---
@@ -163,6 +303,15 @@ def _resolve_detail_url(cell: Tag) -> str:
 
 
 def scrape_ks_cinema(max_days: int = 7) -> List[Dict]:
+    eigaland_url = _discover_eigaland_schedule_url()
+    if eigaland_url:
+        print(f"INFO: [{CINEMA_NAME_KC}] Found Eigaland schedule: {eigaland_url}")
+        eigaland_showings = _scrape_eigaland_schedule(eigaland_url, max_days=max_days)
+        if eigaland_showings:
+            print(f"INFO: [{CINEMA_NAME_KC}] Using Eigaland showings: {len(eigaland_showings)}")
+            return eigaland_showings
+        print(f"INFO: [{CINEMA_NAME_KC}] Eigaland returned no showings, falling back to calendar.")
+
     print(f"INFO: [{CINEMA_NAME_KC}] Fetching calendar iframe: {IFRAME_SRC_URL_KC}")
     iframe_soup = _fetch_soup(IFRAME_SRC_URL_KC, for_calendar=True)
     if not iframe_soup:
