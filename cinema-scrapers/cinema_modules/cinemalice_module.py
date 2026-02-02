@@ -69,6 +69,7 @@ def _init_selenium_driver() -> "webdriver.Chrome":
 def _scrape_with_selenium() -> List[Dict]:
     """
     Scrape CineMalice schedule using Selenium to render the React page.
+    Iterates through date buttons to load each day's schedule.
     Returns list of showtime dictionaries.
     """
     if not SELENIUM_AVAILABLE:
@@ -90,98 +91,109 @@ def _scrape_with_selenium() -> List[Dict]:
         wait = WebDriverWait(driver, SELENIUM_TIMEOUT)
         time.sleep(5)  # Allow ample time for React hydration and content rendering
 
-        # Find all date blocks
-        # Structure: <div class="overflow-hidden rounded-[20px]"> ... </div>
-        # Inside: Header (bg-beige-600) and Content (bg-white)
-        date_blocks = driver.find_elements(By.XPATH, 
-            "//div[contains(@class, 'overflow-hidden') and contains(@class, 'rounded-[20px]')]")
-        
-        print(f"{CINEMA_NAME}: Found {len(date_blocks)} date blocks")
+        # Find the container for date buttons (grid with 7 columns)
+        try:
+            date_grid = driver.find_element(By.XPATH, "//div[contains(@class, 'grid') and contains(@class, 'grid-cols-7')]")
+            # Get the number of buttons to iterate
+            buttons = date_grid.find_elements(By.TAG_NAME, "button")
+            button_count = len(buttons)
+            print(f"{CINEMA_NAME}: Found {button_count} date buttons")
+        except NoSuchElementException:
+            print(f"{CINEMA_NAME}: Could not find date button grid, scraping current view only")
+            button_count = 0
 
-        for block in date_blocks:
-            try:
-                # Extract Date from Header
-                # Header: <div class="bg-beige-600 ...">
-                #   <div>Month</div> <div>/</div> <div>Day</div>
-                header = block.find_element(By.XPATH, ".//div[contains(@class, 'bg-beige-600')]")
-                
-                # The date parts are in child divs. 
-                # XPath indices are 1-based. 
-                # div[1] -> Month, div[2] -> /, div[3] -> Day
-                month_text = header.find_element(By.XPATH, "./div[1]").text.strip()
-                day_text = header.find_element(By.XPATH, "./div[3]").text.strip()
-                
-                if not month_text.isdigit() or not day_text.isdigit():
-                    continue
+        # If no buttons found, we run the loop once (index -1) to scrape whatever is visible
+        loop_range = range(button_count) if button_count > 0 else [-1]
+
+        for i in loop_range:
+            # If we are iterating buttons, click the next one
+            if i >= 0:
+                try:
+                    # Re-find grid and buttons to avoid stale elements
+                    date_grid = driver.find_element(By.XPATH, "//div[contains(@class, 'grid') and contains(@class, 'grid-cols-7')]")
+                    buttons = date_grid.find_elements(By.TAG_NAME, "button")
                     
-                month = int(month_text)
-                day = int(day_text)
+                    if i < len(buttons):
+                        button = buttons[i]
+                        # Scroll into view just in case
+                        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
+                        button.click()
+                        time.sleep(1.5) # Wait for React state update
+                except Exception as e:
+                    print(f"{CINEMA_NAME}: Error clicking button {i}: {e}")
+                    continue
 
-                # Determine year
-                year = TODAY.year
-                # If scraping in Dec for Jan, year+1. If scraping in Jan for Dec (unlikely), year-1?
-                # Simple logic: if month is significantly less than current month, it's next year.
-                # However, usually we just look forward.
-                if month < TODAY.month and (TODAY.month - month) > 6:
-                     year += 1
-                # Or if current is Dec and target is Jan
-                if TODAY.month == 12 and month == 1:
-                    year += 1
-                
-                date_str = f"{year}-{month:02d}-{day:02d}"
-
-                # Extract Movies from Content
-                # Content: <div class="bg-white ...">
-                content = block.find_element(By.XPATH, ".//div[contains(@class, 'bg-white')]")
-                
-                # Each movie on Desktop has a specific container: <div class="hidden md:block">
-                # We target this to avoid duplicates from the mobile view
-                movie_containers = content.find_elements(By.CSS_SELECTOR, "div.hidden.md\\:block")
-                
-                for container in movie_containers:
-                    try:
-                        # Movie Title: <h3>
-                        title_el = container.find_element(By.TAG_NAME, "h3")
-                        title = title_el.text.strip()
-                        
-                        if not title:
-                            continue
-
-                        # Showtimes
-                        # Times are in <div class="... text-[20px] ...">HH:MM</div>
-                        # We use the specific class 'text-[20px]'
-                        time_els = container.find_elements(By.CSS_SELECTOR, "div.text-\\[20px\\]")
-                        
-                        for time_el in time_els:
-                            time_text = time_el.text.strip()
-                            
-                            # Validate time format HH:MM
-                            if not re.match(r'^\d{1,2}:\d{2}$', time_text):
-                                continue
-                                
-                            hour = int(time_text.split(':')[0])
-                            
-                            results.append({
-                                "cinema_name": CINEMA_NAME,
-                                "movie_title": title,
-                                "movie_title_en": "",
-                                "date_text": date_str,
-                                "showtime": time_text,
-                                "director": "",
-                                "year": "",
-                                "country": "",
-                                "runtime_min": None,
-                                "synopsis": "",
-                                "detail_page_url": SCHEDULE_URL,
-                            })
-                            
-                    except NoSuchElementException:
+            # Find all date blocks (usually only one visible after clicking)
+            # Structure: <div class="overflow-hidden rounded-[20px]"> ... </div>
+            date_blocks = driver.find_elements(By.XPATH, 
+                "//div[contains(@class, 'overflow-hidden') and contains(@class, 'rounded-[20px]')]")
+            
+            for block in date_blocks:
+                try:
+                    # Extract Date from Header
+                    # Header: <div class="bg-beige-600 ...">
+                    header = block.find_element(By.XPATH, ".//div[contains(@class, 'bg-beige-600')]")
+                    
+                    # The date parts are in child divs. 
+                    month_text = header.find_element(By.XPATH, "./div[1]").text.strip()
+                    day_text = header.find_element(By.XPATH, "./div[3]").text.strip()
+                    
+                    if not month_text.isdigit() or not day_text.isdigit():
                         continue
                         
-            except (NoSuchElementException, ValueError, IndexError) as e:
-                # Use print for debugging but don't spam stderr unless critical
-                # print(f"DEBUG: Error parsing block: {e}")
-                continue
+                    month = int(month_text)
+                    day = int(day_text)
+
+                    # Determine year
+                    year = TODAY.year
+                    if month < TODAY.month and (TODAY.month - month) > 6:
+                         year += 1
+                    if TODAY.month == 12 and month == 1:
+                        year += 1
+                    
+                    date_str = f"{year}-{month:02d}-{day:02d}"
+
+                    # Extract Movies from Content
+                    content = block.find_element(By.XPATH, ".//div[contains(@class, 'bg-white')]")
+                    
+                    # Target desktop container
+                    movie_containers = content.find_elements(By.CSS_SELECTOR, "div.hidden.md\\:block")
+                    
+                    for container in movie_containers:
+                        try:
+                            title_el = container.find_element(By.TAG_NAME, "h3")
+                            title = title_el.text.strip()
+                            
+                            if not title:
+                                continue
+
+                            # Showtimes
+                            time_els = container.find_elements(By.CSS_SELECTOR, "div.text-\\[20px\\]")
+                            
+                            for time_el in time_els:
+                                time_text = time_el.text.strip()
+                                if not re.match(r'^\d{1,2}:\d{2}$', time_text):
+                                    continue
+                                
+                                results.append({
+                                    "cinema_name": CINEMA_NAME,
+                                    "movie_title": title,
+                                    "movie_title_en": "",
+                                    "date_text": date_str,
+                                    "showtime": time_text,
+                                    "director": "",
+                                    "year": "",
+                                    "country": "",
+                                    "runtime_min": None,
+                                    "synopsis": "",
+                                    "detail_page_url": SCHEDULE_URL,
+                                })
+                                
+                        except NoSuchElementException:
+                            continue
+                            
+                except (NoSuchElementException, ValueError, IndexError) as e:
+                    continue
 
         print(f"{CINEMA_NAME}: Selenium scraping found {len(results)} showings")
         return results
