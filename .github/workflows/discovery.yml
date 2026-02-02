@@ -2,8 +2,8 @@ name: Funding Discovery
 
 on:
   # Run every 2 weeks (on Mondays at 9am UTC)
-  schedule:
-    - cron: '0 9 * * 1/14'
+  # schedule:
+  # cron: '0 9 * * 1/14'
   
   # Allow manual trigger from GitHub UI with options
   workflow_dispatch:
@@ -93,3 +93,4 @@ jobs:
           name: digest
           path: funding_assistant/data/digest_*.txt
           retention-days: 90
+
