@@ -115,6 +115,117 @@ def _iter_rowspan(table: Tag):
         rowspans = [max(0, x - 1) for x in rowspans]
         yield tr, cells_info
 
+# --- Schedule Table Helpers ---
+
+def _find_main_schedule_table(soup: BeautifulSoup) -> Optional[Tag]:
+    anchor = soup.find("a", attrs={"name": "2"})
+    if anchor:
+        table = anchor.find_next("table", class_="px12")
+        if table:
+            return table
+
+    for table in soup.find_all("table"):
+        if table.find("a", href=re.compile("sc\\.html")) or table.find("a", href=re.compile(r"sakuhin.*\\.html")):
+            return table
+
+    return soup.find("table", class_="px12")
+
+
+def _find_header_row(table: Tag) -> Optional[Tag]:
+    for tr in table.find_all("tr"):
+        cells = tr.find_all(["td", "th"])
+        if not cells:
+            continue
+        date_like = sum(1 for c in cells if re.search(r"\d{1,2}(?:[\\/／]\d{1,2})?", c.get_text()))
+        if date_like >= 3:
+            return tr
+    return table.find("tr")
+
+def _extract_page_title(soup: BeautifulSoup) -> str:
+    for selector in ("h1", "h2.title", "h2", "h3.title"):
+        node = soup.select_one(selector)
+        if node:
+            title_text = _clean_text(node.get_text(strip=True))
+            if title_text:
+                return title_text
+    title_tag = soup.find("title")
+    if title_tag:
+        title_text = _clean_text(title_tag.get_text(strip=True))
+        if title_text:
+            return title_text
+    return ""
+
+def _find_date_time_table(soup: BeautifulSoup) -> Optional[Tag]:
+    best_table = None
+    best_score = 0
+    for table in soup.find_all("table"):
+        score = 0
+        for tr in table.find_all("tr"):
+            text = tr.get_text(" ", strip=True)
+            if re.search(r"\d{1,2}[\\/／]\d{1,2}", text) or re.search(r"\d{1,2}月\d{1,2}日", text):
+                score += 1
+            if re.search(r"\d{1,2}:\d{2}", text):
+                score += 1
+        if score > best_score:
+            best_score = score
+            best_table = table
+    return best_table
+
+def _parse_simple_schedule_table(table: Tag, today: dt.date, page_title: str, source_url: str = "") -> List[Dict]:
+    shows: List[Dict] = []
+    current_year = today.year
+    for tr in table.find_all("tr"):
+        cells = tr.find_all(["td", "th"])
+        if len(cells) < 2:
+            continue
+        row_text = tr.get_text(" ", strip=True)
+        if not re.search(r"\d{1,2}[\\/／]\d{1,2}", row_text) and not re.search(r"\d{1,2}月\d{1,2}日", row_text):
+            continue
+
+        date_text = cells[0].get_text(" ", strip=True)
+        date_match = re.search(r"(\d{1,2})[\\/／](\d{1,2})", date_text)
+        if date_match:
+            month, day = map(int, date_match.groups())
+            year = current_year
+            if month < today.month and (today.month - month) > 6:
+                year += 1
+            elif month > today.month and (month - today.month) > 6:
+                year -= 1
+            try:
+                show_date = dt.date(year, month, day)
+            except ValueError:
+                continue
+        else:
+            date_match = re.search(r"(\d{1,2})月(\d{1,2})日", date_text)
+            if not date_match:
+                continue
+            month, day = map(int, date_match.groups())
+            show_date = dt.date(current_year, month, day)
+
+        times = re.findall(r"\d{1,2}:\d{2}", row_text)
+        if not times:
+            continue
+
+        title_text = ""
+        if len(cells) >= 2:
+            title_text = _clean_text(cells[1].get_text(" ", strip=True))
+        title_text = re.sub(r"\d{1,2}:\d{2}", "", title_text).strip()
+        title_text = title_text or page_title or "ラピュタ阿佐ヶ谷"
+
+        for time_str in times:
+            shows.append({
+                "movie_title": title_text,
+                "date_text": show_date.isoformat(),
+                "showtime": time_str,
+                "director": "",
+                "year": "",
+                "country": None,
+                "runtime_min": None,
+                "synopsis": None,
+                "detail_page_url": source_url,
+            })
+    return shows
+
 # ──────────────────────────────────────────────────────────
 # Stage 3: Scrape sakuhin.html for Rich Metadata
 # ──────────────────────────────────────────────────────────
@@ -161,6 +272,7 @@ def _scrape_program_schedule_page(url: str, today: dt.date) -> List[Dict]:
     if not soup: return []
 
     shows = []
+    page_title = _extract_page_title(soup)
     
     # Try to find the specific table for Laputa Asagaya
     # Sometimes header text varies, so fallback to finding the first sc_table if URL implies Laputa
@@ -174,9 +286,14 @@ def _scrape_program_schedule_page(url: str, today: dt.date) -> List[Dict]:
         # Fallback: Just take the first sc_table
         schedule_table = soup.find("table", class_="sc_table")
         
-    if not schedule_table: return []
+    if not schedule_table:
+        fallback_table = _find_date_time_table(soup)
+        if not fallback_table:
+            return []
+        return _parse_simple_schedule_table(fallback_table, today, page_title, url)
 
     current_month, current_year = today.month, today.year
+    month_initialized = False
     for tr, cells in _iter_rowspan(schedule_table):
         if not cells: continue
 
@@ -184,7 +301,13 @@ def _scrape_program_schedule_page(url: str, today: dt.date) -> List[Dict]:
             month_m = _date_pat.search(cells[0][0].get_text())
             if month_m:
                 new_month = int(month_m.group(1))
-                if new_month < current_month: 
+                if not month_initialized:
+                    month_initialized = True
+                    if new_month > today.month + 1:
+                        current_year = today.year - 1
+                    else:
+                        current_year = today.year
+                elif new_month < current_month:
                     current_year += 1
                 elif new_month > current_month and (new_month - current_month) > 10:
                     current_year -= 1
@@ -240,6 +363,12 @@ def _scrape_program_schedule_page(url: str, today: dt.date) -> List[Dict]:
                     "runtime_min": movie_data.get("runtime_min"), "synopsis": None,
                     "detail_page_url": detail_url,
                 })
+    if shows:
+        return shows
+
+    fallback_table = _find_date_time_table(soup)
+    if fallback_table:
+        return _parse_simple_schedule_table(fallback_table, today, page_title, url)
     return shows
 
 # ──────────────────────────────────────────────────────────
@@ -253,25 +382,31 @@ def scrape_laputa_asagaya() -> List[Dict]:
     program_urls_to_visit = set()
     today = dt.date.today()
     
-    anchor = main_soup.find("a", attrs={"name": "2"})
-    table = anchor.find_next("table", class_="px12") if anchor else None
+    table = _find_main_schedule_table(main_soup)
     if not table: return []
 
-    header_tr = table.find("tr")
+    header_tr = _find_header_row(table)
+    if not header_tr: return []
+    header_cells = header_tr.find_all(["td", "th"])
+    if not header_cells: return []
     iso_dates: List[Optional[dt.date]] = []
     year, month, last_day = today.year, 0, 0
-    for td in header_tr.find_all("td"):
-        t = td.get_text(strip=True)
-        if "/" in t:
-            month_str, day_str = t.split("/"); month, day = int(month_str), int(day_str)
-        elif t.isdigit():
-            day = int(t)
-            if month == 0: month = today.month
+    for cell in header_cells:
+        t = cell.get_text(strip=True)
+        md_match = re.search(r"(\d{1,2})\s*[\\/／]\s*(\d{1,2})", t)
+        if md_match:
+            month, day = map(int, md_match.groups())
+        else:
+            day_match = re.search(r"(\d{1,2})", t)
+            if not day_match:
+                iso_dates.append(None); continue
+            day = int(day_match.group(1))
+            if month == 0:
+                month = today.month
             if 0 < day < last_day:
                 month += 1
-                if month == 13: month, year = 1, year + 1
-        else:
-            iso_dates.append(None); continue
+                if month == 13:
+                    month, year = 1, year + 1
         try:
             iso_dates.append(dt.date(year, month, day)); last_day = day
         except ValueError: iso_dates.append(None)
