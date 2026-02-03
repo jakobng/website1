@@ -3874,5 +3874,392 @@
     "director": "Eizo Sugawa",
     "country": "Japan",
     "failed": true
+  },
+  "BE:the ONE START BEYOND DREAMS": {
+    "english_title": "BE:the ONE -START BEYOND DREAMS-",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "BE:the ONE -START BEYOND DREAMS-",
+    "director": "Yoon-Dong Oh, Ha-Min Kim",
+    "country": "Japan",
+    "failed": true
+  },
+  "チャオ・ヤングの墓": {
+    "english_title": "The Grave of Chao Young",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "チャオ・ヤングの墓",
+    "director": "Konnichi Hakase",
+    "country": "Japan",
+    "failed": true
+  },
+  "いまおかしんじBrand new film secret screening": {
+    "english_title": "The Key",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "鍵",
+    "director": "Shinji Imaoka",
+    "country": "Japan",
+    "failed": true
+  },
+  "天使たち": {
+    "english_title": "Falling Angels",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "天使たち",
+    "director": "Naima Kimura",
+    "country": "Japan"
+  },
+  "【ドラマ】射鵰英雄伝": {
+    "english_title": "The Legend of the Condor Heroes",
+    "release_year": 2003,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "射雕英雄传",
+    "director": "Yu Min",
+    "country": "China",
+    "failed": true
+  },
+  "音楽 ブラッシュアップ版": {
+    "english_title": "On-Gaku: Our Sound (Brush-up Edition)",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "音楽 ブラッシュアップ版",
+    "director": "Kenji Iwaisawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "収容病棟 前編": {
+    "english_title": "'Til Madness Do Us Part",
+    "release_year": 2013,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "瘋愛",
+    "director": "Wang Bing",
+    "country": "Hong Kong",
+    "failed": true
+  },
+  "無言歌": {
+    "english_title": "The Ditch",
+    "release_year": 2010,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "夹边沟",
+    "director": "Wang Bing",
+    "country": "Hong Kong, France, Belgium",
+    "failed": true
+  },
+  "収容病棟 後編": {
+    "english_title": "'Til Madness Do Us Part",
+    "release_year": 2013,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "瘋愛",
+    "director": "Wang Bing",
+    "country": "Hong Kong, France, Japan",
+    "failed": true
+  },
+  "〈特集上映〉チャールズ・バーネット エブリデイ・ブルース": {
+    "english_title": "Charles Burnett: Everyday Blues",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Charles Burnett: Everyday Blues",
+    "director": "Charles Burnett",
+    "country": "USA",
+    "failed": true
+  },
+  "【odessa vol+】フレワカ": {
+    "english_title": "Fréwaka",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Fréwaka",
+    "director": "Aislinn Clarke",
+    "country": "Ireland"
+  },
+  "やくざ刑事(でか)マリファナ密売組織": {
+    "english_title": "The Assassin",
+    "release_year": 1970,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "やくざ刑事 マリファナ密売組織",
+    "director": "Yukio Noda, Toshiya Ito",
+    "country": "Japan",
+    "failed": true
+  },
+  "博徒百人任俠道": {
+    "english_title": "One Hundred Gamblers: Chivalrous Path",
+    "release_year": 1969,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "博徒百人 任俠道",
+    "director": "Takashi Nomura",
+    "country": "Japan",
+    "failed": true
+  },
+  "FREWAKA フレワカ": {
+    "english_title": "Fréwaka",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Fréwaka",
+    "director": "Aislinn Clarke",
+    "country": "Ireland"
+  },
+  "射鵰英雄伝": {
+    "english_title": "Legends of the Condor Heroes: The Gallants",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "射雕英雄传：侠之大者",
+    "director": "Tsui Hark",
+    "country": "China"
+  },
+  "笑えない世界でも": {
+    "english_title": "Even In A World Where You Can't Laugh",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "笑えない世界でも",
+    "director": "Atsushi Okamoto",
+    "country": "Japan",
+    "failed": true
+  },
+  "【マッツ・ミケルセン生誕60周年祭】アフター・ウェディング": {
+    "english_title": "After the Wedding",
+    "release_year": 2006,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Efter brylluppet",
+    "director": "Susanne Bier",
+    "country": "Denmark"
+  },
+  "開栓の試み": {
+    "english_title": "Essai d'ouverture",
+    "release_year": 1988,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Essai d'ouverture",
+    "director": "Luc Moullet",
+    "country": "France"
+  },
+  "大統領暗殺裁判 16日間の真実": {
+    "english_title": "Land of Happiness",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "행복의 나라",
+    "director": "Choo Chang-min",
+    "country": "South Korea",
+    "failed": true
+  },
+  "第15回死刑映画週間": {
+    "english_title": "15th Death Penalty Film Week",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "第15回死刑映画週間",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "SAYAMA みえない手錠をはずすまで": {
+    "english_title": "INVISIBLE HANDCUFFS- The Sayama Case",
+    "release_year": 2014,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "SAYAMA みえない手錠をはずすまで",
+    "director": "Kim Sung-woong",
+    "country": "Japan",
+    "failed": true
+  },
+  "SAYAMAみえない手錠をはずすまで": {
+    "english_title": "Invisible Handcuffs: The Sayama Case",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "SAYAMA みえない手錠をはずすまで",
+    "director": "Kim Sung-woong",
+    "country": "Japan",
+    "failed": true
+  },
+  "ヤンヤン 夏の思い出": {
+    "english_title": "Yi Yi",
+    "release_year": 2000,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "一一",
+    "director": "Edward Yang",
+    "country": "Taiwan"
+  },
+  "ミッシェル・オスロ監督特集 動き出す世界たち": {
+    "english_title": "The Animated Worlds of Michel Ocelot",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ミッシェル・オスロ監督特集 動き出す世界たち",
+    "director": "Michel Ocelot",
+    "country": "France",
+    "failed": true
+  },
+  "ミッシェル・オスロ監督特集関連子ども向け週間2026": {
+    "english_title": "Michel Ocelot Retrospective: Children's Week 2026",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "ミッシェル・オスロ監督特集関連子ども向け週間2026",
+    "director": "Michel Ocelot",
+    "country": "France",
+    "failed": true
+  },
+  "シネクラブ『メイキング』": {
+    "english_title": "Making of",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Making of",
+    "director": "Cédric Kahn",
+    "country": "France"
+  },
+  "〈別冊ホン・サンス〉イントロダクション": {
+    "english_title": "Introduction",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "인트로덕션",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "バレンタイン一揆": {
+    "english_title": "Valentine Ikki",
+    "release_year": 2012,
+    "confidence": 5,
+    "notes": "",
+    "original_title": "バレンタイン一揆",
+    "director": "Hitomi Yoshimura",
+    "country": "Japan",
+    "failed": true
+  },
+  "記録・授業―ビーバー 人間について―授業者・林竹二先生": {
+    "english_title": "Record of a Lesson: Beaver",
+    "release_year": 1977,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "記録・授業―ビーバー 人間について―授業者・林竹二先生",
+    "director": "Tetsuo Shinomiya",
+    "country": "Japan",
+    "failed": true
+  },
+  "山に生きるまつり": {
+    "english_title": "Hunting Festival in a Mountain Village",
+    "release_year": 1970,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "山に生きるまつり",
+    "director": "Tadayoshi Himeda",
+    "country": "Japan",
+    "failed": true
+  },
+  "自然農 川口由一の世界": {
+    "english_title": "Natural Farming: The World of Yoshikazu Kawaguchi",
+    "release_year": 1997,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "自然農 川口由一の世界",
+    "director": "Shukichi Koizumi",
+    "country": "Japan",
+    "failed": true
+  },
+  "月あかりの下で ある定時制高校の記憶": {
+    "english_title": "Under the Moonlight",
+    "release_year": 2010,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "月あかりの下で ある定時制高校の記憶",
+    "director": "Naoko Ota",
+    "country": "Japan",
+    "failed": true
+  },
+  "熱いノン": {
+    "english_title": "Hot Bread",
+    "release_year": 2018,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Issiq non",
+    "director": "Umid Khamdamov",
+    "country": "Uzbekistan"
+  },
+  "きみに夢中": {
+    "english_title": "Delighted by You",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Maftuningman",
+    "director": "Yuldash Agzamov",
+    "country": "Soviet Union"
+  },
+  "劇場版『涼宮ハルヒの消失』リバイバル上映": {
+    "english_title": "The Disappearance of Haruhi Suzumiya",
+    "release_year": 2010,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "劇場版『涼宮ハルヒの消失』リバイバル上映",
+    "director": "Tatsuya Ishihara, Yasuhiro Takimoto",
+    "country": "Japan"
+  },
+  "カルテットという名の青春": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "やくざ非情史刑務所(ムショ)兄弟": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ウニの陰謀": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "私は死にたくない": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ある村の健康管理": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ラマ教の高地にて―インド・ラダックの旅―": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "BS1スペシャル ラップと知事選 沖縄 若者たちの声": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
