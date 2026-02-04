@@ -588,13 +588,7 @@ def write_caption_for_multiple_cinemas(
         for listing in item['listings']:
             lines.append(f"• {listing['title']}")
     
-    if all_featured_cinemas:
-        first_name = all_featured_cinemas[0]['cinema_name']
-        dynamic_hashtag = "".join(ch for ch in first_name if ch.isalnum() or "\u3040" <= ch <= "\uffff")
-    else:
-        dynamic_hashtag = "IndieCinema"
-        
-    lines.append(f"\n#TokyoIndieCinema #{dynamic_hashtag} #MiniTheater #MovieLog\nCheck Bio for Full Schedule")
+    lines.append("\nCheck Bio for Full Schedule")
     with OUTPUT_CAPTION_PATH.open("w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 

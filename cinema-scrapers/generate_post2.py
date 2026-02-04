@@ -1048,38 +1048,26 @@ def main():
         fb_feed.save(OUTPUT_DIR / "post_v2_image_00.png")
 
     # --- SLIDE & CAPTION GENERATION ---
-    caption_lines = [f"🗓️ {primary_date} Tokyo Cinema Daily\n"]
+    pretty_primary = format_date_for_caption(primary_date)
+    caption_lines = [
+        f"🎬 Tokyo Cinema Daily — {pretty_primary}",
+        "Full schedules are in the slides. Link in bio.",
+    ]
     
     for i, item in enumerate(slide_data):
         film = item['film']
         img = item['img']
         
         # Pass primary_date and tmdb_cache to draw function for highlighting 'TODAY' and getting English titles
-        slide_feed = draw_poster_slide(film, img, fonts, is_story=False, primary_date=primary_date, tmdb_cache=tmdb_cache)
+        slide_feed = draw_poster_slide(
+            film,
+            img,
+            fonts,
+            is_story=False,
+            primary_date=primary_date,
+            tmdb_cache=tmdb_cache,
+        )
         slide_feed.save(OUTPUT_DIR / f"post_v2_image_{i+1:02}.png")
-
-        # Caption Generation (Uses Multi-Day Data)
-        t_jp = film.get('clean_title_jp') or film.get('movie_title')
-        caption_lines.append(f"🎬 {t_jp}") 
-        if film.get('movie_title_en'): caption_lines.append(f"({film['movie_title_en']})")
-        
-        sorted_dates = sorted(film['multi_day_showings'].keys())
-        for d_key in sorted_dates:
-            pretty_date = format_date_for_caption(d_key)
-            if d_key == primary_date:
-                caption_lines.append(f"\n🔻 {pretty_date} (Today)")
-            else:
-                caption_lines.append(f"\n🗓️ {pretty_date}")
-                
-            daily_shows = film['multi_day_showings'][d_key]
-            for cin, t_list in daily_shows.items():
-                t_list.sort()
-                caption_lines.append(f"📍 {cin}: {', '.join(t_list)}")
-                
-        caption_lines.append("\n" + "-"*15 + "\n")
-        
-    caption_lines.append("Link in Bio for Full Schedule / 詳細はリンクへ")
-    caption_lines.append("#TokyoIndieCinema #MiniTheater #MovieLog")
     
     with open(OUTPUT_CAPTION_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(caption_lines))

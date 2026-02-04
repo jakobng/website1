@@ -22,6 +22,19 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
 
 # --- API Helper Functions ---
 
+CAPTION_MAX_LEN = 2200  # Instagram caption limit
+
+def normalize_caption(text):
+    if not text:
+        return ""
+    return text.replace("\r\n", "\n").strip()
+
+def enforce_caption_length(text, max_len=CAPTION_MAX_LEN):
+    if len(text) <= max_len:
+        return text
+    print(f"⚠️ Caption too long ({len(text)} chars). Truncating to {max_len}.")
+    return text[:max_len].rstrip()
+
 def upload_single_image_container(image_url, caption):
     """Creates a media container for a single image post."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
@@ -176,6 +189,8 @@ def main():
         if os.path.exists(caption_path):
             with open(caption_path, "r", encoding="utf-8") as f:
                 caption_text = f.read()
+
+    caption_text = enforce_caption_length(normalize_caption(caption_text))
 
     # --- Cache Buster for GitHub Pages ---
     # Appends a timestamp so Instagram fetches the fresh file, not the cached old one.
