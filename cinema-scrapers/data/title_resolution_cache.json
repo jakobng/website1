@@ -4261,5 +4261,62 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "神社　悪魔のささやき": {
+    "english_title": "The Shrine",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "신사: 악귀의 속삭임",
+    "director": "Kazuyoshi Kumakiri",
+    "country": "South Korea"
+  },
+  "クリーム　フェアウェル・コンサート1968": {
+    "english_title": "Farewell Concert",
+    "release_year": 1969,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Farewell Concert",
+    "director": "Tony Palmer",
+    "country": "United Kingdom"
+  },
+  "シャドウズ・エッジ": {
+    "english_title": "The Shadow's Edge",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "捕風追影",
+    "director": "Larry Yang",
+    "country": "China"
+  },
+  "鉄西区 第一部：工場": {
+    "english_title": "West of the Tracks, Part 1: Rust",
+    "release_year": 2002,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "铁西区",
+    "director": "Wang Bing",
+    "country": "China",
+    "failed": true
+  },
+  "鉄西区 第二部：街": {
+    "english_title": "West of the Tracks, Part 2: Remnants",
+    "release_year": 2002,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "铁西区",
+    "director": "Wang Bing",
+    "country": "China",
+    "failed": true
+  },
+  "鉄西区 第三部：鉄路": {
+    "english_title": "West of the Tracks, Part 3: Rails",
+    "release_year": 2002,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "铁西区 第三部分：铁路",
+    "director": "Wang Bing",
+    "country": "China",
+    "failed": true
   }
 }
