@@ -1,9 +1,9 @@
 const CACHE_NAME = "cinema-scrapers-v1";
 const CORE_ASSETS = [
-  "./cinemas.html",
-  "./manifest.webmanifest",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  "/cinemas",
+  "/manifest.webmanifest",
+  "/cinema-scrapers/icons/icon-192.png",
+  "/cinema-scrapers/icons/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -34,7 +34,10 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  const isHtml = url.pathname.endsWith("/cinemas.html") || url.pathname.endsWith("/");
+  const isHtml =
+    url.pathname === "/cinemas" ||
+    url.pathname === "/cinemas/" ||
+    url.pathname === "/";
   if (isHtml) {
     event.respondWith(
       fetch(event.request)
