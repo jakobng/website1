@@ -170,6 +170,19 @@
             padding: 6px;
             color: var(--accent-strong);
         }
+        .install-btn {
+            border: var(--border-width) solid var(--border);
+            background: #fff;
+            padding: 6px 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+        }
+        .install-btn:hover {
+            background: var(--bg);
+        }
         .ig-link svg {
             width: 22px;
             height: 22px;
@@ -712,6 +725,7 @@
                 </div>
             </div>
             <div class="header-right">
+                <button class="install-btn is-hidden" type="button" id="install-app-btn"></button>
                 <a class="ig-link" href="https://www.instagram.com/tokyominitheater/" target="_blank" rel="noopener" aria-label="Tokyo Mini-Theater Instagram">
                     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
@@ -938,7 +952,8 @@
                     mapReset: "すべての地域を表示",
                     mapShow: "地図を表示",
                     mapHide: "地図を隠す",
-                    mapCinemaCount: "館"
+                    mapCinemaCount: "館",
+                    installApp: "Install"
                 },
                 en: {
                     siteTitle: "Tokyo Mini-Theater Showtimes",
@@ -991,7 +1006,8 @@
                     mapReset: "Show all regions",
                     mapShow: "Show map",
                     mapHide: "Hide map",
-                    mapCinemaCount: "cinemas"
+                    mapCinemaCount: "cinemas",
+                    installApp: "Install"
                 }
             };
             function t(key) {
@@ -1029,6 +1045,7 @@
                 siteCredit: document.getElementById("site-credit"),
                 viewCinemaBtn: document.getElementById("view-cinema-btn"),
                 viewFilmBtn: document.getElementById("view-film-btn"),
+                installButton: document.getElementById("install-app-btn"),
                 // Filters
                 filtersToggle: document.getElementById("filters-toggle"),
                 filtersToggleText: document.getElementById("filters-toggle-text"),
@@ -1175,6 +1192,36 @@
                     setLang(lang);
                 });
             });
+            function shouldShowInstallButton() {
+                return /Android/i.test(navigator.userAgent);
+            }
+            let deferredInstallPrompt = null;
+            window.addEventListener("beforeinstallprompt", function (event) {
+                event.preventDefault();
+                if (!shouldShowInstallButton()) {
+                    return;
+                }
+                deferredInstallPrompt = event;
+                if (elements.installButton) {
+                    elements.installButton.classList.remove("is-hidden");
+                }
+            });
+            if (elements.installButton) {
+                elements.installButton.addEventListener("click", function () {
+                    if (!deferredInstallPrompt) return;
+                    deferredInstallPrompt.prompt();
+                    deferredInstallPrompt.userChoice.finally(function () {
+                        deferredInstallPrompt = null;
+                        elements.installButton.classList.add("is-hidden");
+                    });
+                });
+            }
+            window.addEventListener("appinstalled", function () {
+                deferredInstallPrompt = null;
+                if (elements.installButton) {
+                    elements.installButton.classList.add("is-hidden");
+                }
+            });
             elements.backToCinemas.addEventListener("click", function () {
                 state.selectedCinema = "";
                 render();
@@ -1221,6 +1268,9 @@
                 elements.siteCredit.textContent = t("siteCredit");
                 elements.viewCinemaBtn.textContent = t("viewCinema");
                 elements.viewFilmBtn.textContent = t("viewFilm");
+                if (elements.installButton) {
+                    elements.installButton.textContent = t("installApp");
+                }
                 // Filters
                 elements.filtersToggleText.textContent = t("filters");
                 elements.searchLabel.textContent = t("search");
