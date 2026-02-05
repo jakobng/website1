@@ -4318,5 +4318,335 @@
     "director": "Wang Bing",
     "country": "China",
     "failed": true
+  },
+  "キラー・オブ・シープ": {
+    "english_title": "Killer of Sheep",
+    "release_year": 1977,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Killer of Sheep",
+    "director": "Charles Burnett",
+    "country": "USA"
+  },
+  "マイ・ブラザーズ・ウェディング": {
+    "english_title": "My Brother's Wedding",
+    "release_year": 1983,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "My Brother's Wedding",
+    "director": "Charles Burnett",
+    "country": "USA"
+  },
+  "リバース・オブ・ヘル": {
+    "english_title": "Home Sweet Home Rebirth",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Home Sweet Home Rebirth",
+    "director": "Steffen Hacker, Alexander Kiesl",
+    "country": "Thailand"
+  },
+  "Pina ピナ・バウシュ　踊り続けるいのち": {
+    "english_title": "Pina",
+    "release_year": 2011,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Pina",
+    "director": "Wim Wenders",
+    "country": "Germany, France, United Kingdom"
+  },
+  "blur：Live At Wembley Stadium ブラー：ライヴ・アット・ウェンブリー・スタジアム": {
+    "english_title": "blur: Live at Wembley Stadium",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "blur: Live at Wembley Stadium",
+    "director": "Toby L",
+    "country": "United Kingdom"
+  },
+  "大菩薩峠（1966）": {
+    "english_title": "The Sword of Doom",
+    "release_year": 1966,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "大菩薩峠",
+    "director": "Kihachi Okamoto",
+    "country": "Japan"
+  },
+  "音楽　ブラッシュアップ版": {
+    "english_title": "ON-GAKU: OUR SOUND",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "音楽",
+    "director": "Kenji Iwaisawa",
+    "country": "Japan"
+  },
+  "悪い奴ほど手が白い": {
+    "english_title": "We Still Kill the Old Way",
+    "release_year": 1967,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A ciascuno il suo",
+    "director": "Elio Petri",
+    "country": "Italy"
+  },
+  "魔界転生（1981）": {
+    "english_title": "Samurai Reincarnation",
+    "release_year": 1981,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "魔界転生",
+    "director": "Kinji Fukasaku",
+    "country": "Japan"
+  },
+  "パンダのすごい世界": {
+    "english_title": "The Panda Adventure",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "熊猫奇遇記",
+    "director": "Bibo Liang",
+    "country": "China",
+    "failed": true
+  },
+  "顔役（1958）": {
+    "english_title": "The Country Boss",
+    "release_year": 1958,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "顔役",
+    "director": "Noboru Nakamura",
+    "country": "Japan"
+  },
+  "日本の悲劇（1953）": {
+    "english_title": "A Japanese Tragedy",
+    "release_year": 1953,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "日本の悲劇",
+    "director": "Keisuke Kinoshita",
+    "country": "Japan"
+  },
+  "バーラ先生の特別授業": {
+    "english_title": "Vaathi",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Vaathi",
+    "director": "Venky Atluri",
+    "country": "India"
+  },
+  "永遠の絆": {
+    "english_title": "Viswasam",
+    "release_year": 2019,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "永遠の絆",
+    "director": "Siva",
+    "country": "India"
+  },
+  "カッティ　刃物と水道管": {
+    "english_title": "Kaththi",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Kaththi",
+    "director": "A.R. Murugadoss",
+    "country": "India"
+  },
+  "マーリ": {
+    "english_title": "Maari",
+    "release_year": 2015,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Maari",
+    "director": "Balaji Mohan",
+    "country": "India"
+  },
+  "マーク・アントニー": {
+    "english_title": "Mark Antony",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mark Antony",
+    "director": "Adhik Ravichandran",
+    "country": "India"
+  },
+  "2つの愛が進行中": {
+    "english_title": "Kaathuvaakula Rendu Kaadhal",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Kaathuvaakula Rendu Kaadhal",
+    "director": "Vignesh Shivan",
+    "country": "India"
+  },
+  "シャンカラーバラナム　不滅のメロディ": {
+    "english_title": "Shankarabharanam",
+    "release_year": 1980,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Sankarabharanam",
+    "director": "K. Viswanath",
+    "country": "India"
+  },
+  "ジュンについて": {
+    "english_title": "About Jun",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ジュンについて",
+    "director": "Ryutaro Tano",
+    "country": "Japan",
+    "failed": true
+  },
+  "五月の雨": {
+    "english_title": "Mayday Rain",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "五月の雨",
+    "director": "Leo Tomita",
+    "country": "Japan",
+    "failed": true
+  },
+  "小さなロバ、ビム": {
+    "english_title": "Bim, the Little Donkey",
+    "release_year": 1950,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Bim le petit âne",
+    "director": "Albert Lamorisse",
+    "country": "France"
+  },
+  "素晴らしい風船旅行": {
+    "english_title": "Stowaway in the Sky",
+    "release_year": 1960,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Le Voyage en ballon",
+    "director": "Albert Lamorisse",
+    "country": "France"
+  },
+  "フィフィ大空をゆく": {
+    "english_title": "Circus Angel",
+    "release_year": 1965,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Fifi la plume",
+    "director": "Albert Lamorisse",
+    "country": "France"
+  },
+  "シャロウ・グレイブ": {
+    "english_title": "Shallow Grave",
+    "release_year": 1994,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Shallow Grave",
+    "director": "Danny Boyle",
+    "country": "United Kingdom"
+  },
+  "牡牛座　レーニンの肖像": {
+    "english_title": "Taurus",
+    "release_year": 2001,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Телец",
+    "director": "Alexander Sokurov",
+    "country": "Russia"
+  },
+  "太陽（2005）": {
+    "english_title": "The Sun",
+    "release_year": 2005,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Солнце",
+    "director": "Aleksandr Sokurov",
+    "country": "Russia, Italy, Switzerland, France",
+    "failed": true
+  },
+  "Bi Gan A SHORT STORY ビー・ガン　ショート・ストーリー": {
+    "english_title": "A Short Story",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "破碎太阳之心",
+    "director": "Bi Gan",
+    "country": "China"
+  },
+  "西湖畔（せいこはん）に生きる": {
+    "english_title": "Dwelling by the West Lake",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "草木人間",
+    "director": "Gu Xiaogang",
+    "country": "China"
+  },
+  "チェチェンへ　アレクサンドラの旅": {
+    "english_title": "Alexandra",
+    "release_year": 2007,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Александра",
+    "director": "Alexander Sokurov",
+    "country": "Russia, France",
+    "failed": true
+  },
+  "青春": {
+    "english_title": "Youth",
+    "release_year": 1988,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "青春",
+    "director": "Shunichi Nagasaki",
+    "country": "Japan",
+    "failed": true
+  },
+  "青春　帰": {
+    "english_title": "Youth (Homecoming)",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "青春 (归)",
+    "director": "Wang Bing",
+    "country": "France, Luxembourg, Netherlands"
+  },
+  "青春　苦": {
+    "english_title": "Youth (Hard Times)",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "青春：苦",
+    "director": "Wang Bing",
+    "country": "China"
+  },
+  "イントロダクション": {
+    "english_title": "Introduction",
+    "release_year": 2021,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "인트로덕션",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "ファリダの⼆千の歌": {
+    "english_title": "2000 Songs of Farida",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Faridaning ikki ming qoʻshigʻi",
+    "director": "Yalkin Tuychiev",
+    "country": "Uzbekistan"
+  },
+  "たしかにあった幻（字幕）": {
+    "english_title": "Yakushima's Illusion",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "たしかにあった幻",
+    "director": "Naomi Kawase",
+    "country": "Japan"
   }
 }
