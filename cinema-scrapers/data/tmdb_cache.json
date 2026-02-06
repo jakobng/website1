@@ -40707,7 +40707,7 @@
       "Thriller"
     ],
     "runtime": 96,
-    "vote_average": 6.109,
+    "vote_average": 6.115,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -40777,7 +40777,7 @@
       "Drama"
     ],
     "runtime": 111,
-    "vote_average": 6.52,
+    "vote_average": 6.515,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -45511,6 +45511,406 @@
       {
         "iso_3166_1": "NL",
         "name": "Netherlands"
+      }
+    ]
+  },
+  "FRÉWAKA フレワカ": {
+    "tmdb_id": 1189735,
+    "tmdb_title_jp": "Fréamhacha",
+    "tmdb_title_en": "Fréwaka",
+    "tmdb_title_original": "Fréamhacha",
+    "tmdb_original_language": "ga",
+    "overview": "",
+    "overview_en": "Care worker Shoo, who is haunted by a personal tragedy, is sent to a remote village to care for an agoraphobic woman, who fears both her neighbours and the Na Sídhe – sinister folkloric entities she believes abducted her decades before.",
+    "poster_path": "/pfLylbmY0uxQm6Sh63j6bpb7XB3.jpg",
+    "backdrop_path": "/qj0GN10AC65FcJchKLTDmOFE15X.jpg",
+    "release_date": "2025-04-25",
+    "director": "Aislinn Clarke",
+    "director_jp": "Aislinn Clarke",
+    "director_en": "Aislinn Clarke",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 103,
+    "vote_average": 7.353,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "フレンドー　#最狂ピエロ警報": {
+    "tmdb_id": 713364,
+    "tmdb_title_jp": "Clown in a Cornfield",
+    "tmdb_title_en": "Un clown dans un champ de maïs",
+    "tmdb_title_original": "Clown in a Cornfield",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Quinn and her father have just moved to the quiet town of Kettle Springs hoping for a fresh start. Instead, she discovers a fractured community that has fallen on hard times after the treasured Baypen Corn Syrup Factory burned down. As the locals bicker amongst themselves and tensions boil over, a sinister, grinning figure emerges from the cornfields to cleanse the town of its burdens, one bloody victim at a time.",
+    "poster_path": "/cTa1gSyUrvByw2uILt8iyJHbcRb.jpg",
+    "backdrop_path": "/zrIE7qg61W2KEwDRCW83VtkhSeo.jpg",
+    "release_date": "2025-05-02",
+    "director": "Eli Craig",
+    "director_jp": "Eli Craig",
+    "director_en": "Eli Craig",
+    "genres": [
+      "ホラー",
+      "謎",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "runtime": 96,
+    "vote_average": 6.115,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      }
+    ]
+  },
+  "ホームステッド　世界が崩れる時": {
+    "tmdb_id": 1217690,
+    "tmdb_title_jp": "Homestead",
+    "tmdb_title_en": "Homestead",
+    "tmdb_title_original": "Homestead",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A nuclear bomb is detonated in Los Angeles, and the nation devolves into unprecedented chaos. Ex-Green Beret Jeff Eriksson and his family escape to The Homestead, an eccentric prepper’s fortress nestled in the mountains. As violent threats and apocalyptic conditions creep toward their borders, the residents of The Homestead are left to wonder: how long can a group of people resist both the dangers of human nature and the bloodshed at their doorstep?",
+    "poster_path": "/fKts7WTTP7KWvI6N7WYIuEhmgXP.jpg",
+    "backdrop_path": "/7xbAPWP9utLRecydyFSBaQ0PYGZ.jpg",
+    "release_date": "2024-12-19",
+    "director": "Ben Smallbone",
+    "director_jp": "Ben Smallbone",
+    "director_en": "Ben Smallbone",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 6.515,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "トゥギャザー": null,
+  "両親（ふたり）が決めたこと": {
+    "tmdb_id": 1224666,
+    "tmdb_title_jp": "Polvo serán",
+    "tmdb_title_en": "They Will Be Dust",
+    "tmdb_title_original": "Polvo serán",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "After receiving the diagnosis of an incurable brain tumor, Claudia decides to undertake her last trip to Switzerland. There she can decide how and when to end her life thanks to the help of an assisted suicide association.",
+    "poster_path": "/UR3cOvqPJSMsAiaebAIZUd6jGR.jpg",
+    "backdrop_path": "/bQInJ4d9ajaPGHGpEL5RPpmbE0p.jpg",
+    "release_date": "2024-11-15",
+    "director": "Carlos Marques-Marcet",
+    "director_jp": "Carlos Marques-Marcet",
+    "director_en": "Carlos Marques-Marcet",
+    "genres": [
+      "ドラマ",
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "METライブビューイング2025-26 R・シュトラウス《アラベッラ》": null,
+  "日本のいちばん長い日": {
+    "tmdb_id": 47370,
+    "tmdb_title_jp": "日本のいちばん長い日",
+    "tmdb_title_en": "Japan's Longest Day",
+    "tmdb_title_original": "日本のいちばん長い日",
+    "tmdb_original_language": "ja",
+    "overview": "昭和天皇や閣僚たちが御前会議において降伏を決定した1945年（昭和20年）8月14日の正午から、国民に対してラジオ（日本放送協会）の玉音放送を通じてポツダム宣言の受諾を知らせる8月15日正午までの24時間を描いている。",
+    "overview_en": "Following the detonation of the atomic bombs on Hiroshima and Nagasaki, the Japanese military and the government clash over the demand from the Allies for unconditional surrender. Minister of the Army Anami leads the military officers who propose to fight on, even to the death of every Japanese citizen. Emperor Hirohito, however, joins with his ministers in asking the unthinkable, the peaceful surrender of Japan. When the military plots a coup to overthrow the Emperor's civilian government, Anami must face the choice between his desires and loyalty to his Emperor.",
+    "poster_path": "/ix1uEGm9pr27Kc1jn7SHSu4DDzV.jpg",
+    "backdrop_path": "/fcwsUTdFFDOMtede2O7L4qRs21U.jpg",
+    "release_date": "1967-08-03",
+    "director": "岡本喜八",
+    "director_jp": "岡本喜八",
+    "director_en": "Kihachi Okamoto",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "War"
+    ],
+    "runtime": 157,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:47370": {
+    "tmdb_id": 47370,
+    "tmdb_title_jp": "日本のいちばん長い日",
+    "tmdb_title_en": "Japan's Longest Day",
+    "tmdb_title_original": "日本のいちばん長い日",
+    "tmdb_original_language": "ja",
+    "overview": "昭和天皇や閣僚たちが御前会議において降伏を決定した1945年（昭和20年）8月14日の正午から、国民に対してラジオ（日本放送協会）の玉音放送を通じてポツダム宣言の受諾を知らせる8月15日正午までの24時間を描いている。",
+    "overview_en": "Following the detonation of the atomic bombs on Hiroshima and Nagasaki, the Japanese military and the government clash over the demand from the Allies for unconditional surrender. Minister of the Army Anami leads the military officers who propose to fight on, even to the death of every Japanese citizen. Emperor Hirohito, however, joins with his ministers in asking the unthinkable, the peaceful surrender of Japan. When the military plots a coup to overthrow the Emperor's civilian government, Anami must face the choice between his desires and loyalty to his Emperor.",
+    "poster_path": "/ix1uEGm9pr27Kc1jn7SHSu4DDzV.jpg",
+    "backdrop_path": "/fcwsUTdFFDOMtede2O7L4qRs21U.jpg",
+    "release_date": "1967-08-03",
+    "director": "岡本喜八",
+    "director_jp": "岡本喜八",
+    "director_en": "Kihachi Okamoto",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "War"
+    ],
+    "runtime": 157,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "TVアニメ『小市民シリーズ』": null,
+  "０課の女赤い手錠(ワッパ)": {
+    "tmdb_id": 62852,
+    "tmdb_title_jp": "０課の女　赤い手錠",
+    "tmdb_title_en": "Zero Woman: Red Handcuffs",
+    "tmdb_title_original": "０課の女　赤い手錠",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Agent Zero is a cop that uses her own methods for dealing with criminals. After she unlawfully kills a rapist in a violent fashion, she is sent to prison and stripped of her badge. But very soon after, a rich politician's daughter is kidnapped by a ruthless gang. Agent Zero is let out of prison with the mission of going undercover to find the politician's daughter and return her safely. Using her deadly red handcuffs, she disposes of the criminals one by one.",
+    "poster_path": "/xsEAD444B3reGiZmF6QpBn0P1pJ.jpg",
+    "backdrop_path": "/lWBLFK7BrEqCL46cJkj9GjXrj1t.jpg",
+    "release_date": "1974-05-21",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "スリラー",
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 88,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "アメリカン・ハニー": {
+    "tmdb_id": 340485,
+    "tmdb_title_jp": "アメリカン・ハニー",
+    "tmdb_title_en": "American Honey",
+    "tmdb_title_original": "American Honey",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A restless teenager escapes her troubled home and joins a traveling crew of young drifters selling magazines across the American Midwest. Immersed in a world of reckless partying, risky hustles, and fleeting romances, she searches for freedom and belonging on the open road.",
+    "poster_path": "/41SVO0AElBAl7zks9dFhJ0OjHni.jpg",
+    "backdrop_path": "/fLvgZEMv012AHZk2PAxMyG8WROt.jpg",
+    "release_date": "2016-09-30",
+    "director": "Andrea Arnold",
+    "director_jp": "Andrea Arnold",
+    "director_en": "Andrea Arnold",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 163,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:340485": {
+    "tmdb_id": 340485,
+    "tmdb_title_jp": "アメリカン・ハニー",
+    "tmdb_title_en": "American Honey",
+    "tmdb_title_original": "American Honey",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A restless teenager escapes her troubled home and joins a traveling crew of young drifters selling magazines across the American Midwest. Immersed in a world of reckless partying, risky hustles, and fleeting romances, she searches for freedom and belonging on the open road.",
+    "poster_path": "/41SVO0AElBAl7zks9dFhJ0OjHni.jpg",
+    "backdrop_path": "/fLvgZEMv012AHZk2PAxMyG8WROt.jpg",
+    "release_date": "2016-09-30",
+    "director": "Andrea Arnold",
+    "director_jp": "Andrea Arnold",
+    "director_en": "Andrea Arnold",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 163,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "「文豪ストレイドッグス」第４シーズンオールナイト上映会": null,
+  "欧米クラシックシリーズ バレンタインスペシャル": null,
+  "tmdb:1224666": {
+    "tmdb_id": 1224666,
+    "tmdb_title_jp": "Polvo serán",
+    "tmdb_title_en": "They Will Be Dust",
+    "tmdb_title_original": "Polvo serán",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "After receiving the diagnosis of an incurable brain tumor, Claudia decides to undertake her last trip to Switzerland. There she can decide how and when to end her life thanks to the help of an assisted suicide association.",
+    "poster_path": "/UR3cOvqPJSMsAiaebAIZUd6jGR.jpg",
+    "backdrop_path": "/bQInJ4d9ajaPGHGpEL5RPpmbE0p.jpg",
+    "release_date": "2024-11-15",
+    "director": "Carlos Marques-Marcet",
+    "director_jp": "Carlos Marques-Marcet",
+    "director_en": "Carlos Marques-Marcet",
+    "genres": [
+      "ドラマ",
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "tmdb:62852": {
+    "tmdb_id": 62852,
+    "tmdb_title_jp": "０課の女　赤い手錠",
+    "tmdb_title_en": "Zero Woman: Red Handcuffs",
+    "tmdb_title_original": "０課の女　赤い手錠",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Agent Zero is a cop that uses her own methods for dealing with criminals. After she unlawfully kills a rapist in a violent fashion, she is sent to prison and stripped of her badge. But very soon after, a rich politician's daughter is kidnapped by a ruthless gang. Agent Zero is let out of prison with the mission of going undercover to find the politician's daughter and return her safely. Using her deadly red handcuffs, she disposes of the criminals one by one.",
+    "poster_path": "/xsEAD444B3reGiZmF6QpBn0P1pJ.jpg",
+    "backdrop_path": "/lWBLFK7BrEqCL46cJkj9GjXrj1t.jpg",
+    "release_date": "1974-05-21",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "スリラー",
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 88,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
       }
     ]
   }

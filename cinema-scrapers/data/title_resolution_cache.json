@@ -4648,5 +4648,97 @@
     "original_title": "たしかにあった幻",
     "director": "Naomi Kawase",
     "country": "Japan"
+  },
+  "FRÉWAKA フレワカ": {
+    "english_title": "Fréwaka",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Fréwaka",
+    "director": "Aislinn Clarke",
+    "country": "Ireland"
+  },
+  "フレンドー　#最狂ピエロ警報": {
+    "english_title": "Clown in a Cornfield",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Clown in a Cornfield",
+    "director": "Eli Craig",
+    "country": "United States"
+  },
+  "ホームステッド　世界が崩れる時": {
+    "english_title": "Homestead",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Homestead",
+    "director": "Ben Smallbone",
+    "country": "United States"
+  },
+  "トゥギャザー": {
+    "english_title": "Together",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Together",
+    "director": "Michael Shanks",
+    "country": "Australia, USA",
+    "failed": true
+  },
+  "両親（ふたり）が決めたこと": {
+    "english_title": "They Will Be Dust",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Polvo serán",
+    "director": "Carlos Marques-Marcet",
+    "country": "Spain"
+  },
+  "METライブビューイング2025-26 R・シュトラウス《アラベッラ》": {
+    "english_title": "The Met: Live in HD - Arabella",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "METライブビューイング2025-26 R・シュトラウス《アラベッラ》",
+    "director": "Otto Schenk",
+    "country": "USA",
+    "failed": true
+  },
+  "TVアニメ『小市民シリーズ』": {
+    "english_title": "SHOSHIMIN: How to become ordinary",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "小市民シリーズ",
+    "director": "Mamoru Kanbe",
+    "country": "Japan",
+    "failed": true
+  },
+  "０課の女赤い手錠(ワッパ)": {
+    "english_title": "Zero Woman: Red Handcuffs",
+    "release_year": 1974,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "０課の女 赤い手錠(ワッパ)",
+    "director": "Yukio Noda",
+    "country": "Japan"
+  },
+  "「文豪ストレイドッグス」第４シーズンオールナイト上映会": {
+    "english_title": "Bungo Stray Dogs Season 4 All-Night Screening",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "「文豪ストレイドッグス」第４シーズンオールナイト上映会",
+    "director": "Takuya Igarashi",
+    "country": "Japan",
+    "failed": true
+  },
+  "欧米クラシックシリーズ バレンタインスペシャル": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
