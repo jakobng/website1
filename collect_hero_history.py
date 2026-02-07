@@ -19,8 +19,8 @@ class Target:
 DEFAULT_TARGETS = [
     Target("london", Path("london-cinema-scrapers/ig_posts/post_image_00.png")),
     Target("london", Path("london-cinema-scrapers/ig_posts/post_v2_image_00.png")),
-    Target("tokyo", Path("cinema-scrapers/ig_posts/post_image_00.png")),
-    Target("tokyo", Path("cinema-scrapers/ig_posts/post_v2_image_00.png")),
+    Target("tokyo", Path("tokyo-cinema-scrapers/ig_posts/post_image_00.png")),
+    Target("tokyo", Path("tokyo-cinema-scrapers/ig_posts/post_v2_image_00.png")),
 ]
 
 

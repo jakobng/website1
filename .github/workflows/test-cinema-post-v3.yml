@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      WORKDIR: ${{ inputs.city == 'london' && 'london-cinema-scrapers' || 'cinema-scrapers' }}
+      WORKDIR: ${{ inputs.city == 'london' && 'london-cinema-scrapers' || 'tokyo-cinema-scrapers' }}
       TIMEZONE: ${{ inputs.city == 'tokyo' && 'Asia/Tokyo' || 'Europe/London' }}
 
     steps:
