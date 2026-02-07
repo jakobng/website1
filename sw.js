@@ -1,9 +1,10 @@
-const CACHE_NAME = "cinema-scrapers-v1";
+const CACHE_NAME = "tokyo-cinema-scrapers-v2";
 const CORE_ASSETS = [
-  "/cinemas",
+  "/tokyo-cinemas.html",
+  "/cinemas.html",
   "/manifest.webmanifest",
-  "/cinema-scrapers/icons/icon-192.png",
-  "/cinema-scrapers/icons/icon-512.png"
+  "/tokyo-cinema-scrapers/icons/icon-192.png",
+  "/tokyo-cinema-scrapers/icons/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -35,8 +36,12 @@ self.addEventListener("fetch", (event) => {
   }
 
   const isHtml =
+    url.pathname === "/tokyo-cinemas" ||
+    url.pathname === "/tokyo-cinemas/" ||
+    url.pathname === "/tokyo-cinemas.html" ||
     url.pathname === "/cinemas" ||
     url.pathname === "/cinemas/" ||
+    url.pathname === "/cinemas.html" ||
     url.pathname === "/";
   if (isHtml) {
     event.respondWith(
