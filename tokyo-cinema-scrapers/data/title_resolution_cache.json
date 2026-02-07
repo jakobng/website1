@@ -4740,5 +4740,59 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "JUST ANOTHER": {
+    "english_title": "JUST ANOTHER",
+    "release_year": 2020,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "JUST ANOTHER",
+    "director": "Noriko Oishi",
+    "country": "Japan",
+    "failed": true
+  },
+  "ぼくらの居場所": {
+    "english_title": "Scarborough",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Scarborough",
+    "director": "Shasha Nakhai, Rich Williamson",
+    "country": "Canada"
+  },
+  "ブライアン・エプスタイン": {
+    "english_title": "Midas Man",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ブライアン・エプスタイン 世界最高のバンドを育てた男",
+    "director": "Joe Stephenson",
+    "country": "United Kingdom"
+  },
+  "テレビの中に入りたい": {
+    "english_title": "I Saw the TV Glow",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "I Saw the TV Glow",
+    "director": "Jane Schoenbrun",
+    "country": "United States"
+  },
+  "お姐ちゃん罷り通る": {
+    "english_title": "3 Dolls Go to Hong Kong",
+    "release_year": 1959,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "お姐ちゃん罷り通る",
+    "director": "Toshio Sugie",
+    "country": "Japan",
+    "failed": true
+  },
+  "劇場版 ほんとうにあった怖い話～ゾク変な間取り～": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
