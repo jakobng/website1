@@ -189,6 +189,239 @@ def _parse_schedule_map_from_lines(
     return schedule_map
 
 
+def _extract_runtime_min(text: str) -> Optional[str]:
+    if not text:
+        return None
+    normalized = text.translate(FULLWIDTH_DIGITS)
+    hour_min = re.search(r"(\d{1,2})\s*時間\s*(\d{1,2})\s*分", normalized)
+    if hour_min:
+        hours = int(hour_min.group(1))
+        minutes = int(hour_min.group(2))
+        return str(hours * 60 + minutes)
+    minute_only = re.search(r"(\d{2,3})\s*分", normalized)
+    if minute_only:
+        return minute_only.group(1)
+    match = re.search(r"(\d{2,3})", normalized)
+    if match:
+        return match.group(1)
+    return None
+
+
+def _extract_country(text: str) -> Optional[str]:
+    if not text:
+        return None
+    patterns = [
+        ("\u65e5\u672c", "Japan"),
+        ("\u30a2\u30e1\u30ea\u30ab|\u7c73\u56fd", "USA"),
+        ("\u30a4\u30ae\u30ea\u30b9|\u82f1\u56fd", "UK"),
+        ("\u30d5\u30e9\u30f3\u30b9", "France"),
+        ("\u30c9\u30a4\u30c4", "Germany"),
+        ("\u30a4\u30bf\u30ea\u30a2", "Italy"),
+        ("\u30b9\u30da\u30a4\u30f3", "Spain"),
+        ("\u97d3\u56fd", "South Korea"),
+        ("\u4e2d\u56fd", "China"),
+        ("\u9999\u6e2f", "Hong Kong"),
+        ("\u53f0\u6e7e", "Taiwan"),
+        ("\u30ed\u30b7\u30a2|\u30bd\u9023", "Russia"),
+        ("\u30ab\u30ca\u30c0", "Canada"),
+        ("\u30aa\u30fc\u30b9\u30c8\u30e9\u30ea\u30a2", "Australia"),
+        ("\u30d6\u30e9\u30b8\u30eb", "Brazil"),
+        ("\u30a2\u30eb\u30bc\u30f3\u30c1\u30f3", "Argentina"),
+        ("\u30e1\u30ad\u30b7\u30b3", "Mexico"),
+        ("\u30a4\u30f3\u30c9", "India"),
+        ("\u30bf\u30a4", "Thailand"),
+        ("\u30d9\u30c8\u30ca\u30e0", "Vietnam"),
+        ("\u30d5\u30a3\u30ea\u30d4\u30f3", "Philippines"),
+        ("\u30a4\u30f3\u30c9\u30cd\u30b7\u30a2", "Indonesia"),
+        ("\u30c8\u30eb\u30b3", "Turkey"),
+        ("\u30b9\u30a6\u30a7\u30fc\u30c7\u30f3", "Sweden"),
+        ("\u30ce\u30eb\u30a6\u30a7\u30fc", "Norway"),
+        ("\u30c7\u30f3\u30de\u30fc\u30af", "Denmark"),
+        ("\u30d5\u30a3\u30f3\u30e9\u30f3\u30c9", "Finland"),
+        ("\u30dd\u30fc\u30e9\u30f3\u30c9", "Poland"),
+        ("\u30c1\u30a7\u30b3", "Czech Republic"),
+        ("\u30aa\u30fc\u30b9\u30c8\u30ea\u30a2", "Austria"),
+        ("\u30b9\u30a4\u30b9", "Switzerland"),
+        ("\u30d9\u30eb\u30ae\u30fc", "Belgium"),
+        ("\u30aa\u30e9\u30f3\u30c0", "Netherlands"),
+        ("\u30ae\u30ea\u30b7\u30e3", "Greece"),
+        ("\u30a2\u30a4\u30eb\u30e9\u30f3\u30c9", "Ireland"),
+        ("\u30cb\u30e5\u30fc\u30b8\u30fc\u30e9\u30f3\u30c9", "New Zealand"),
+        ("\u30a4\u30b9\u30e9\u30a8\u30eb", "Israel"),
+        ("\u30a4\u30e9\u30f3", "Iran"),
+        ("\u30a8\u30b8\u30d7\u30c8", "Egypt"),
+        ("\u5357\u30a2\u30d5\u30ea\u30ab", "South Africa"),
+        ("\u30a6\u30af\u30e9\u30a4\u30ca", "Ukraine"),
+    ]
+    for pattern, name in patterns:
+        if re.search(pattern, text):
+            return name
+    return None
+
+
+def _extract_detail_block_info(block: BeautifulSoup) -> Dict[str, Optional[str]]:
+    info: Dict[str, Optional[str]] = {
+        "director": None,
+        "year": None,
+        "runtime_min": None,
+        "country": None,
+        "synopsis": None,
+    }
+
+    sub = block.select_one(".filmBlock__sub")
+    if sub:
+        sub_text = clean_text(sub.get_text(" ", strip=True))
+        year = _extract_program_year(sub_text)
+        runtime = _extract_runtime_min(sub_text)
+        country = _extract_country(sub_text)
+        if year:
+            info["year"] = str(year)
+        if runtime:
+            info["runtime_min"] = runtime
+        if country:
+            info["country"] = country
+
+    for row in block.select(".filmInfo__row"):
+        dt = row.select_one("dt")
+        dd = row.select_one("dd")
+        if not dt or not dd:
+            continue
+        label = clean_text(dt.get_text(" ", strip=True))
+        if "監督" in label:
+            director = clean_text(dd.get_text(" ", strip=True))
+            if director:
+                info["director"] = director
+            continue
+        if "製作国" in label or label == "国":
+            country = clean_text(dd.get_text(" ", strip=True))
+            if country:
+                info["country"] = country
+
+    film_text = block.select_one(".filmText p")
+    if film_text:
+        synopsis = clean_text(film_text.get_text(" ", strip=True))
+        if synopsis:
+            info["synopsis"] = synopsis
+
+    if not info["synopsis"]:
+        heading = block.find(lambda tag: tag.name in ("h3", "h4") and "物語" in tag.get_text())
+        if heading:
+            for sibling in heading.find_all_next():
+                if sibling.name == "p":
+                    synopsis = clean_text(sibling.get_text(" ", strip=True))
+                    if synopsis:
+                        info["synopsis"] = synopsis
+                        break
+
+    return info
+
+
+def _split_detail_url(detail_url: str) -> tuple[str, Optional[str]]:
+    if "#" not in detail_url:
+        return detail_url, None
+    base_url, fragment = detail_url.split("#", 1)
+    return base_url, fragment or None
+
+
+def _enrich_showings_from_detail_pages(showings: List[Dict]) -> None:
+    soup_cache: Dict[str, Optional[BeautifulSoup]] = {}
+    detail_cache: Dict[str, Dict[str, Optional[str]]] = {}
+
+    for showing in showings:
+        detail_url = showing.get("detail_page_url")
+        if not detail_url or "#" not in detail_url:
+            continue
+
+        base_url, fragment = _split_detail_url(detail_url)
+        if not fragment:
+            continue
+
+        cache_key = f"{base_url}#{fragment}"
+        if cache_key in detail_cache:
+            detail_info = detail_cache[cache_key]
+        else:
+            soup = soup_cache.get(base_url)
+            if soup is None:
+                soup = fetch_soup(base_url)
+                soup_cache[base_url] = soup
+            if soup is None:
+                continue
+
+            block = soup.select_one(f"#{fragment}")
+            if not block:
+                detail_info = {
+                    "director": None,
+                    "year": None,
+                    "runtime_min": None,
+                    "country": None,
+                    "synopsis": None,
+                }
+            else:
+                detail_info = _extract_detail_block_info(block)
+            detail_cache[cache_key] = detail_info
+
+        if detail_info.get("director") and not showing.get("director"):
+            showing["director"] = detail_info["director"]
+        if detail_info.get("year") and not showing.get("year"):
+            showing["year"] = detail_info["year"]
+        if detail_info.get("runtime_min") and not showing.get("runtime_min"):
+            showing["runtime_min"] = detail_info["runtime_min"]
+        if detail_info.get("country") and not showing.get("country"):
+            showing["country"] = detail_info["country"]
+        if detail_info.get("synopsis") and not showing.get("synopsis"):
+            showing["synopsis"] = detail_info["synopsis"]
+
+
+def _parse_schedule_page(soup: BeautifulSoup, site_root: str) -> List[Dict]:
+    results: List[Dict] = []
+    schedule_section = soup.select_one("section#schedule")
+    if not schedule_section:
+        return results
+
+    for day in schedule_section.select("section.day[data-date]"):
+        date_text = (day.get("data-date") or "").strip()
+        if not date_text:
+            continue
+        if day.select_one(".closedCard"):
+            continue
+
+        for slot in day.select(".slot"):
+            time_tag = slot.select_one(".t")
+            title_tag = slot.select_one("a.title")
+            if not time_tag or not title_tag:
+                continue
+
+            showtime = clean_text(time_tag.get_text(" ", strip=True))
+            movie_title = clean_text(title_tag.get_text(" ", strip=True))
+            href = (title_tag.get("href") or "").strip()
+            detail_url = urljoin(site_root, href) if href else site_root
+
+            runtime_min = None
+            dur_tag = slot.select_one(".dur")
+            if dur_tag:
+                runtime_min = _extract_runtime_min(dur_tag.get_text(" ", strip=True))
+
+            results.append(
+                {
+                    "cinema_name": CINEMA_NAME,
+                    "movie_title": movie_title,
+                    "movie_title_en": None,
+                    "director": None,
+                    "year": None,
+                    "country": None,
+                    "runtime_min": runtime_min,
+                    "synopsis": None,
+                    "date_text": date_text,
+                    "showtime": showtime,
+                    "detail_page_url": detail_url,
+                    "program_title": None,
+                    "purchase_url": None,
+                }
+            )
+
+    return results
+
+
 def fetch_soup(url: str, *, encoding: str = "utf-8") -> Optional[BeautifulSoup]:
     """Fetch a URL and return a BeautifulSoup object, or None on error."""
     try:
@@ -385,6 +618,14 @@ def scrape_jinbocho() -> List[Dict]:
     Dynamically finds program pages from the homepage.
     """
     all_showings = []
+    site_root = BASE_URL.replace("program/", "")
+
+    soup = fetch_soup(site_root)
+    if soup is not None:
+        schedule_showings = _parse_schedule_page(soup, site_root)
+        if schedule_showings:
+            _enrich_showings_from_detail_pages(schedule_showings)
+            return schedule_showings
     
     # 1. Get program URLs from main page
     program_urls = _get_current_program_urls()
