@@ -46371,5 +46371,134 @@
         "name": "United States of America"
       }
     ]
+  },
+  "狼よ落日を斬れ 風雲篇・激情篇・怒濤篇": {
+    "tmdb_id": 70385,
+    "tmdb_title_jp": "狼よ落日を斬れ",
+    "tmdb_title_en": "The Last Samurai",
+    "tmdb_title_original": "狼よ落日を斬れ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The film follows the story of Sugi Toranosuke, a ronin, who returns to his home town of Edo many years after his attempted suicide as a sickly child. Rescued and adopted by a master swordsman, he has grown into a master swordsman and a very kind gentleman. The time is around 1868 the year that the nails were finally put into the coffin containing the feudal system that nurtured and sustained the samurai. Sugi is confused and unsure about what is happening but his teacher wants him out of the chaos of the multiple power struggles between the various clans.",
+    "poster_path": "/o4WHApeJWxu3QVYRbDzg1cEtGfd.jpg",
+    "backdrop_path": "/wNPx3U5TCU9VOiHmAMGz5iMEd0v.jpg",
+    "release_date": "1974-09-20",
+    "director": "三隅研次",
+    "director_jp": "三隅研次",
+    "director_en": "Kenji Misumi",
+    "genres": [
+      "ドラマ",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Action"
+    ],
+    "runtime": 159,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "整形水": {
+    "tmdb_id": 706712,
+    "tmdb_title_jp": "整形水",
+    "tmdb_title_en": "Beauty Water",
+    "tmdb_title_original": "기기괴괴 성형수",
+    "tmdb_original_language": "ko",
+    "overview": "小さい頃から外見に強いコンプレックスを持ち、人気タレントのメイクを担当しているイェジ。タレントからは罵倒され、ふとした偶然で出演したTV番組では、自分への悪意ある書き込みで自暴自棄に。そしてある日、巷で噂になっている“整形水”がイェジの元へ届けられた。顔を浸せば、自らの手で自由自在に思い通りの容姿へと変えることができてしまう奇跡の水。後遺症も副作用もない。美しくなりたいという欲望に駆られ、イェジは“整形水”を試すことを決意する。全く新しい人生を歩むために。それからしばらくして、周囲で不審な出来事が起こり始める…。",
+    "overview_en": "Beauty Water looks like a common skin cosmetic. But unlike other cosmetics, people can sculpt their skin with it like molding clay and change their appearance. An ordinary girl, Yaeji, comes across the 'Beauty Water' by chance, and her endless desire to be the most beautiful woman brings her unimaginable disaster.",
+    "poster_path": "/jRrrjDVDNezVoBbLW22vexgpcKB.jpg",
+    "backdrop_path": "/2jeH5eMbA7TUHYuIzwKZZgJoQ6V.jpg",
+    "release_date": "2020-09-09",
+    "director": "Cho Kyung-hun",
+    "director_jp": "Cho Kyung-hun",
+    "director_en": "Cho Kyung-hun",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Horror"
+    ],
+    "runtime": 85,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:706712": {
+    "tmdb_id": 706712,
+    "tmdb_title_jp": "整形水",
+    "tmdb_title_en": "Beauty Water",
+    "tmdb_title_original": "기기괴괴 성형수",
+    "tmdb_original_language": "ko",
+    "overview": "小さい頃から外見に強いコンプレックスを持ち、人気タレントのメイクを担当しているイェジ。タレントからは罵倒され、ふとした偶然で出演したTV番組では、自分への悪意ある書き込みで自暴自棄に。そしてある日、巷で噂になっている“整形水”がイェジの元へ届けられた。顔を浸せば、自らの手で自由自在に思い通りの容姿へと変えることができてしまう奇跡の水。後遺症も副作用もない。美しくなりたいという欲望に駆られ、イェジは“整形水”を試すことを決意する。全く新しい人生を歩むために。それからしばらくして、周囲で不審な出来事が起こり始める…。",
+    "overview_en": "Beauty Water looks like a common skin cosmetic. But unlike other cosmetics, people can sculpt their skin with it like molding clay and change their appearance. An ordinary girl, Yaeji, comes across the 'Beauty Water' by chance, and her endless desire to be the most beautiful woman brings her unimaginable disaster.",
+    "poster_path": "/jRrrjDVDNezVoBbLW22vexgpcKB.jpg",
+    "backdrop_path": "/2jeH5eMbA7TUHYuIzwKZZgJoQ6V.jpg",
+    "release_date": "2020-09-09",
+    "director": "Cho Kyung-hun",
+    "director_jp": "Cho Kyung-hun",
+    "director_en": "Cho Kyung-hun",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Horror"
+    ],
+    "runtime": 85,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "『小屋番 八ヶ岳に生きる 劇場版』舞台挨拶付き上映": null,
+  "tmdb:70385": {
+    "tmdb_id": 70385,
+    "tmdb_title_jp": "狼よ落日を斬れ",
+    "tmdb_title_en": "The Last Samurai",
+    "tmdb_title_original": "狼よ落日を斬れ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The film follows the story of Sugi Toranosuke, a ronin, who returns to his home town of Edo many years after his attempted suicide as a sickly child. Rescued and adopted by a master swordsman, he has grown into a master swordsman and a very kind gentleman. The time is around 1868 the year that the nails were finally put into the coffin containing the feudal system that nurtured and sustained the samurai. Sugi is confused and unsure about what is happening but his teacher wants him out of the chaos of the multiple power struggles between the various clans.",
+    "poster_path": "/o4WHApeJWxu3QVYRbDzg1cEtGfd.jpg",
+    "backdrop_path": "/wNPx3U5TCU9VOiHmAMGz5iMEd0v.jpg",
+    "release_date": "1974-09-20",
+    "director": "三隅研次",
+    "director_jp": "三隅研次",
+    "director_en": "Kenji Misumi",
+    "genres": [
+      "ドラマ",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Action"
+    ],
+    "runtime": 159,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
   }
 }

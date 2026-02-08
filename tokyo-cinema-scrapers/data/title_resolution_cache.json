@@ -4794,5 +4794,24 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "狼よ落日を斬れ 風雲篇・激情篇・怒濤篇": {
+    "english_title": "The Last Samurai",
+    "release_year": 1974,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "狼よ落日を斬れ 風雲篇・激情篇・怒濤篇",
+    "director": "Kenji Misumi",
+    "country": "Japan"
+  },
+  "『小屋番 八ヶ岳に生きる 劇場版』舞台挨拶付き上映": {
+    "english_title": "Koyaban: Living on Mount Yatsugatake - The Movie",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "小屋番 八ヶ岳に生きる 劇場版",
+    "director": "Shinya Fukasawa",
+    "country": "Japan",
+    "failed": true
   }
 }
