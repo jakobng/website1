@@ -4870,7 +4870,7 @@
     "overview": "",
     "overview_en": "An unlikely friendship between a dour, working class butcher and a repressed schoolteacher coincides with a grisly series of Ripper-type murders in a provincial French town.",
     "poster_path": "/gvnGtHBgwnQkewajNDA0VMYkbCi.jpg",
-    "backdrop_path": "/eglf9YfrgCDlupodENN8qPtN5vC.jpg",
+    "backdrop_path": "/8cyxP51631Pfi2yMfYafkcg7y7u.jpg",
     "release_date": "1970-02-27",
     "director": "克洛德·夏布洛尔",
     "director_jp": "克洛德·夏布洛尔",
@@ -4886,7 +4886,7 @@
       "Drama"
     ],
     "runtime": 93,
-    "vote_average": 7.11,
+    "vote_average": 7.116,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -44803,7 +44803,7 @@
       "Thriller"
     ],
     "runtime": 129,
-    "vote_average": 8.15,
+    "vote_average": 8.149,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -46498,6 +46498,969 @@
       {
         "iso_3166_1": "JP",
         "name": "Japan"
+      }
+    ]
+  },
+  "ブゴニア": {
+    "tmdb_id": 701387,
+    "tmdb_title_jp": "ブゴニア",
+    "tmdb_title_en": "Bugonia",
+    "tmdb_title_original": "Bugonia",
+    "tmdb_original_language": "en",
+    "overview": "人気絶頂のカリスマ経営者として脚光を浴びるミシェル（エマ・ストーン）が誘拐された。犯人は、陰謀論に心酔するテディ（ジェシー・プレモンス）とドン（エイダン・デルビス）の2人組。ミシェルが地球を侵略しにきた宇宙人だと信じてやまない彼らの要求はただ一つ。「地球から手を引け」彼らの馬鹿げた要望を一蹴するミシェルだが、事態は思わぬ方向へと加速していき——。",
+    "overview_en": "Two conspiracy obsessed young men kidnap the high-powered CEO of a major company, convinced that she is an alien intent on destroying planet Earth.",
+    "poster_path": "/1prf5Qob2ZRCFWp6XHvVSey8G6e.jpg",
+    "backdrop_path": "/tN3pTxkQoP96wtaEahYuRVdUWb2.jpg",
+    "release_date": "2025-10-23",
+    "director": "ヨルゴス・ランティモス",
+    "director_jp": "ヨルゴス・ランティモス",
+    "director_en": "Yorgos Lanthimos",
+    "genres": [
+      "サイエンスフィクション",
+      "スリラー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Thriller",
+      "Comedy"
+    ],
+    "runtime": 119,
+    "vote_average": 7.37,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "tmdb:701387": {
+    "tmdb_id": 701387,
+    "tmdb_title_jp": "ブゴニア",
+    "tmdb_title_en": "Bugonia",
+    "tmdb_title_original": "Bugonia",
+    "tmdb_original_language": "en",
+    "overview": "人気絶頂のカリスマ経営者として脚光を浴びるミシェル（エマ・ストーン）が誘拐された。犯人は、陰謀論に心酔するテディ（ジェシー・プレモンス）とドン（エイダン・デルビス）の2人組。ミシェルが地球を侵略しにきた宇宙人だと信じてやまない彼らの要求はただ一つ。「地球から手を引け」彼らの馬鹿げた要望を一蹴するミシェルだが、事態は思わぬ方向へと加速していき——。",
+    "overview_en": "Two conspiracy obsessed young men kidnap the high-powered CEO of a major company, convinced that she is an alien intent on destroying planet Earth.",
+    "poster_path": "/1prf5Qob2ZRCFWp6XHvVSey8G6e.jpg",
+    "backdrop_path": "/tN3pTxkQoP96wtaEahYuRVdUWb2.jpg",
+    "release_date": "2025-10-23",
+    "director": "ヨルゴス・ランティモス",
+    "director_jp": "ヨルゴス・ランティモス",
+    "director_en": "Yorgos Lanthimos",
+    "genres": [
+      "サイエンスフィクション",
+      "スリラー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Thriller",
+      "Comedy"
+    ],
+    "runtime": 119,
+    "vote_average": 7.37,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "クライム101": {
+    "tmdb_id": 1171145,
+    "tmdb_title_jp": "クライム101",
+    "tmdb_title_en": "Crime 101",
+    "tmdb_title_original": "Crime 101",
+    "tmdb_original_language": "en",
+    "overview": "アメリカ西海岸線を走るハイウェイ＜101＞号線で、数百万ドルの宝石が消える強盗事件が多発。４年間にも及ぶデーヴィスの犯行は一切のミスがなく完璧だったが、人生最大の大金を得るために高額商品を扱う保険会社に勤めるシャロンに接触し、共謀を持ちかけたことから思わぬ綻びを見せ始める──。",
+    "overview_en": "When an elusive thief whose high-stakes heists unfold along the iconic 101 freeway in Los Angeles eyes the score of a lifetime, with hopes of this being his final job, his path collides with a disillusioned insurance broker who is facing her own crossroads, forcing the two to collaborate. Determined to crack the case, a relentless detective closes in on the operation, raising the stakes even higher.",
+    "poster_path": "/7curvoRSvtHTdd7QhTkWbuQMds5.jpg",
+    "backdrop_path": "/2t25zHKX3PAUZWppuLD36JGdgCA.jpg",
+    "release_date": "2026-02-09",
+    "director": "バート・レイトン",
+    "director_jp": "バート・レイトン",
+    "director_en": "Bart Layton",
+    "genres": [
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 141,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1171145": {
+    "tmdb_id": 1171145,
+    "tmdb_title_jp": "クライム101",
+    "tmdb_title_en": "Crime 101",
+    "tmdb_title_original": "Crime 101",
+    "tmdb_original_language": "en",
+    "overview": "アメリカ西海岸線を走るハイウェイ＜101＞号線で、数百万ドルの宝石が消える強盗事件が多発。４年間にも及ぶデーヴィスの犯行は一切のミスがなく完璧だったが、人生最大の大金を得るために高額商品を扱う保険会社に勤めるシャロンに接触し、共謀を持ちかけたことから思わぬ綻びを見せ始める──。",
+    "overview_en": "When an elusive thief whose high-stakes heists unfold along the iconic 101 freeway in Los Angeles eyes the score of a lifetime, with hopes of this being his final job, his path collides with a disillusioned insurance broker who is facing her own crossroads, forcing the two to collaborate. Determined to crack the case, a relentless detective closes in on the operation, raising the stakes even higher.",
+    "poster_path": "/7curvoRSvtHTdd7QhTkWbuQMds5.jpg",
+    "backdrop_path": "/2t25zHKX3PAUZWppuLD36JGdgCA.jpg",
+    "release_date": "2026-02-09",
+    "director": "バート・レイトン",
+    "director_jp": "バート・レイトン",
+    "director_en": "Bart Layton",
+    "genres": [
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 141,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "新劇場版　銀魂　吉原大炎上": {
+    "tmdb_id": 1530941,
+    "tmdb_title_jp": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_title_en": "Shin-Gekijōban Gintama: Yoshiwara Daienjō",
+    "tmdb_title_original": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Upon meeting a young boy named Haruta who makes a living as a pickpocket, Gintoki discovers that he is pickpocketing out of a desire to meet his long-lost mother, Hiwa, Yoshiwara's number one courtesan. Gintoki and his friends venture to Yoshiwara to fulfill Haruta's wish, but standing in their way is Housen, the Night King who rules Yoshiwara.",
+    "poster_path": "/5F7YrauGDP2tbzz84KKwji2MB3e.jpg",
+    "backdrop_path": "/8qSFFK9AcMl2Ecp249f5J3Nr8MK.jpg",
+    "release_date": "2026-02-13",
+    "director": "安藤尚也",
+    "director_jp": "安藤尚也",
+    "director_en": "Naoya Ando",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 124,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1530941": {
+    "tmdb_id": 1530941,
+    "tmdb_title_jp": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_title_en": "Shin-Gekijōban Gintama: Yoshiwara Daienjō",
+    "tmdb_title_original": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Upon meeting a young boy named Haruta who makes a living as a pickpocket, Gintoki discovers that he is pickpocketing out of a desire to meet his long-lost mother, Hiwa, Yoshiwara's number one courtesan. Gintoki and his friends venture to Yoshiwara to fulfill Haruta's wish, but standing in their way is Housen, the Night King who rules Yoshiwara.",
+    "poster_path": "/5F7YrauGDP2tbzz84KKwji2MB3e.jpg",
+    "backdrop_path": "/8qSFFK9AcMl2Ecp249f5J3Nr8MK.jpg",
+    "release_date": "2026-02-13",
+    "director": "安藤尚也",
+    "director_jp": "安藤尚也",
+    "director_en": "Naoya Ando",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 124,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "劇場版　僕の心のヤバイやつ": {
+    "tmdb_id": 1363979,
+    "tmdb_title_jp": "劇場版 僕の心のヤバイやつ",
+    "tmdb_title_en": "The Dangers in My Heart: The Movie",
+    "tmdb_title_original": "劇場版 僕の心のヤバイやつ",
+    "tmdb_original_language": "ja",
+    "overview": "市川京太郎は、『殺人大百科』や『解剖図』を愛読する中二病こじらせ男子。そんな市川の静かな世界に、クラスの人気者・山田杏奈が突然入り込んできた！  図書室でおにぎりを頬張ったり、鼻歌を歌ったり。かと思えば、急接近してきたり……。  予測不能な山田の言動に戸惑いながらも、気づけば市川の頭の中は、山田のことでいっぱいになっていた。  一方の山田も、市川と話すうちに、次第に存在が気になるようになっていき――。  初めて知った“好き”という気持ち。すれ違いも、不器用な想いも乗り越えて、ふたりの距離は、ゆっくりと、でも確かに縮まっていく。",
+    "overview_en": "A re-edit of both anime seasons featuring newly added footage and will depict the story of Ichikawa and Yamada after the events of the TV series.",
+    "poster_path": "/m0SmTFThfKTMZMKxUsxc7vFUla.jpg",
+    "backdrop_path": "/b1CO4XDNSYIZE1ev8Z72fcxJjC7.jpg",
+    "release_date": "2026-02-13",
+    "director": "陳達理",
+    "director_jp": "陳達理",
+    "director_en": "Chen Dali",
+    "genres": [
+      "アニメーション",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Animation",
+      "Romance"
+    ],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1363979": {
+    "tmdb_id": 1363979,
+    "tmdb_title_jp": "劇場版 僕の心のヤバイやつ",
+    "tmdb_title_en": "The Dangers in My Heart: The Movie",
+    "tmdb_title_original": "劇場版 僕の心のヤバイやつ",
+    "tmdb_original_language": "ja",
+    "overview": "市川京太郎は、『殺人大百科』や『解剖図』を愛読する中二病こじらせ男子。そんな市川の静かな世界に、クラスの人気者・山田杏奈が突然入り込んできた！  図書室でおにぎりを頬張ったり、鼻歌を歌ったり。かと思えば、急接近してきたり……。  予測不能な山田の言動に戸惑いながらも、気づけば市川の頭の中は、山田のことでいっぱいになっていた。  一方の山田も、市川と話すうちに、次第に存在が気になるようになっていき――。  初めて知った“好き”という気持ち。すれ違いも、不器用な想いも乗り越えて、ふたりの距離は、ゆっくりと、でも確かに縮まっていく。",
+    "overview_en": "A re-edit of both anime seasons featuring newly added footage and will depict the story of Ichikawa and Yamada after the events of the TV series.",
+    "poster_path": "/m0SmTFThfKTMZMKxUsxc7vFUla.jpg",
+    "backdrop_path": "/b1CO4XDNSYIZE1ev8Z72fcxJjC7.jpg",
+    "release_date": "2026-02-13",
+    "director": "陳達理",
+    "director_jp": "陳達理",
+    "director_en": "Chen Dali",
+    "genres": [
+      "アニメーション",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Animation",
+      "Romance"
+    ],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "めまい（1958）": {
+    "tmdb_id": 426,
+    "tmdb_title_jp": "めまい",
+    "tmdb_title_en": "Vertigo",
+    "tmdb_title_original": "Vertigo",
+    "tmdb_original_language": "en",
+    "overview": "サスペンスの巨匠アルフレッド・ヒッチコック監督の最高傑作のひとつ。美女の自殺の裏に隠された巧妙なトリックを、謎めいたロマンスとともに描いたミステリー。  とある悲惨な事件をきっかけに、高所恐怖症となり、警察を退職したジョンのもとに、旧友から情緒不安定な自分の妻マデリンを尾行してほしいとの依頼が入った。断り切れなかったジョンは、その日の夜から尾行を開始。やがてマデリンを愛するようになってしまったジョンの目の前で彼女は身を投げた…。失意に暮れるジョンは、町をさまよううちにマデリンそっくりの女性と出会う。",
+    "overview_en": "A retired San Francisco detective suffering from acrophobia investigates the strange activities of an old friend's wife, all the while becoming dangerously obsessed with her.",
+    "poster_path": "/caCcL8neKm5y4OvNDZgPmKus6zg.jpg",
+    "backdrop_path": "/rtVwkTqllcmyY4TVOycgVBHppWf.jpg",
+    "release_date": "1958-05-09",
+    "director": "アルフレッド・ヒッチコック",
+    "director_jp": "アルフレッド・ヒッチコック",
+    "director_en": "Alfred Hitchcock",
+    "genres": [
+      "謎",
+      "ロマンス",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Mystery",
+      "Romance",
+      "Thriller"
+    ],
+    "runtime": 129,
+    "vote_average": 8.149,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "挽歌（1957）": {
+    "tmdb_id": 181359,
+    "tmdb_title_jp": "挽歌",
+    "tmdb_title_en": "Elegy of the North",
+    "tmdb_title_original": "挽歌",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A sensitive young woman aged 22 fell in love with a middle aged man who was troubled by his unfaithful wife.",
+    "poster_path": "/iUniS5CXctWZlzXwiMV7lobw390.jpg",
+    "backdrop_path": "/6V4i2ygBp6iVgIDAsls0UjjFbuL.jpg",
+    "release_date": "1957-09-01",
+    "director": "五所平之助",
+    "director_jp": "五所平之助",
+    "director_en": "Heinosuke Gosho",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 117,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "不貞の女": null,
+  "女鹿": null,
+  "道行き": {
+    "tmdb_id": 1464814,
+    "tmdb_title_jp": "道行き",
+    "tmdb_title_en": "Michiyuki - Voices of Time",
+    "tmdb_title_original": "道行き",
+    "tmdb_original_language": "ja",
+    "overview": "奈良県御所市に代々暮らす梅本(桐竹勘十郎)が所有していた古民家を購入した駒井(渡辺大知)は、大阪から移住し改修工事を進めている。その様子を見に来る梅本が語る昔の町や家に流れてきた時間の話が、駒井に大切な風景を思い出させる。そしてふたりの中で、旅の景色はゆっくりと広がっていく。",
+    "overview_en": "Moving into an old house in the rural countryside, videographer Komai converses with its former owner Umemoto, drawing from personal memories to discuss histories, cartographies and the passage of time, reflecting upon the changing tides of tradition and progress within generational spans of the town’s history.",
+    "poster_path": "/79dJu2frSTl1NTTMfeUlGAc3yX8.jpg",
+    "backdrop_path": "/fEimPgw8RkEY2LF4xbsmeqXeFfS.jpg",
+    "release_date": "2024-09-19",
+    "director": "中尾広道",
+    "director_jp": "中尾広道",
+    "director_en": "Nakao Hiromichi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 77,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1464814": {
+    "tmdb_id": 1464814,
+    "tmdb_title_jp": "道行き",
+    "tmdb_title_en": "Michiyuki - Voices of Time",
+    "tmdb_title_original": "道行き",
+    "tmdb_original_language": "ja",
+    "overview": "奈良県御所市に代々暮らす梅本(桐竹勘十郎)が所有していた古民家を購入した駒井(渡辺大知)は、大阪から移住し改修工事を進めている。その様子を見に来る梅本が語る昔の町や家に流れてきた時間の話が、駒井に大切な風景を思い出させる。そしてふたりの中で、旅の景色はゆっくりと広がっていく。",
+    "overview_en": "Moving into an old house in the rural countryside, videographer Komai converses with its former owner Umemoto, drawing from personal memories to discuss histories, cartographies and the passage of time, reflecting upon the changing tides of tradition and progress within generational spans of the town’s history.",
+    "poster_path": "/79dJu2frSTl1NTTMfeUlGAc3yX8.jpg",
+    "backdrop_path": "/fEimPgw8RkEY2LF4xbsmeqXeFfS.jpg",
+    "release_date": "2024-09-19",
+    "director": "中尾広道",
+    "director_jp": "中尾広道",
+    "director_en": "Nakao Hiromichi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 77,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【吹替版】スペルマゲドン 精な": {
+    "tmdb_id": 1064307,
+    "tmdb_title_jp": "スペルマゲドン　精なる大冒険",
+    "tmdb_title_en": "Spermageddon",
+    "tmdb_title_original": "Spermageddon",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Two narrative threads: one is an emerging love story between awkward teens Jens and Lisa, who are having sex for the first time; the other, an eventful quest of Simon the Semen and his friends to reach the golden goal, the Egg.",
+    "poster_path": "/xXJjuZwSI6O6r4MnnCZuSmEJfiy.jpg",
+    "backdrop_path": "/5OEcsHKZy9TLFz9qXLp5NJN9K8e.jpg",
+    "release_date": "2024-12-28",
+    "director": "Tommy Wirkola",
+    "director_jp": "Tommy Wirkola",
+    "director_en": "Tommy Wirkola",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "runtime": 80,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "私のすべて": null,
+  "スペルマゲドン 精なる大冒険": {
+    "tmdb_id": 1064307,
+    "tmdb_title_jp": "スペルマゲドン　精なる大冒険",
+    "tmdb_title_en": "Spermageddon",
+    "tmdb_title_original": "Spermageddon",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Two narrative threads: one is an emerging love story between awkward teens Jens and Lisa, who are having sex for the first time; the other, an eventful quest of Simon the Semen and his friends to reach the golden goal, the Egg.",
+    "poster_path": "/xXJjuZwSI6O6r4MnnCZuSmEJfiy.jpg",
+    "backdrop_path": "/5OEcsHKZy9TLFz9qXLp5NJN9K8e.jpg",
+    "release_date": "2024-12-28",
+    "director": "Tommy Wirkola",
+    "director_jp": "Tommy Wirkola",
+    "director_en": "Tommy Wirkola",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "runtime": 80,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "tmdb:1064307": {
+    "tmdb_id": 1064307,
+    "tmdb_title_jp": "スペルマゲドン　精なる大冒険",
+    "tmdb_title_en": "Spermageddon",
+    "tmdb_title_original": "Spermageddon",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Two narrative threads: one is an emerging love story between awkward teens Jens and Lisa, who are having sex for the first time; the other, an eventful quest of Simon the Semen and his friends to reach the golden goal, the Egg.",
+    "poster_path": "/xXJjuZwSI6O6r4MnnCZuSmEJfiy.jpg",
+    "backdrop_path": "/5OEcsHKZy9TLFz9qXLp5NJN9K8e.jpg",
+    "release_date": "2024-12-28",
+    "director": "Tommy Wirkola",
+    "director_jp": "Tommy Wirkola",
+    "director_en": "Tommy Wirkola",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "runtime": 80,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "［舞台挨拶］道行き": {
+    "tmdb_id": 1464814,
+    "tmdb_title_jp": "道行き",
+    "tmdb_title_en": "Michiyuki - Voices of Time",
+    "tmdb_title_original": "道行き",
+    "tmdb_original_language": "ja",
+    "overview": "奈良県御所市に代々暮らす梅本(桐竹勘十郎)が所有していた古民家を購入した駒井(渡辺大知)は、大阪から移住し改修工事を進めている。その様子を見に来る梅本が語る昔の町や家に流れてきた時間の話が、駒井に大切な風景を思い出させる。そしてふたりの中で、旅の景色はゆっくりと広がっていく。",
+    "overview_en": "Moving into an old house in the rural countryside, videographer Komai converses with its former owner Umemoto, drawing from personal memories to discuss histories, cartographies and the passage of time, reflecting upon the changing tides of tradition and progress within generational spans of the town’s history.",
+    "poster_path": "/79dJu2frSTl1NTTMfeUlGAc3yX8.jpg",
+    "backdrop_path": "/fEimPgw8RkEY2LF4xbsmeqXeFfS.jpg",
+    "release_date": "2024-09-19",
+    "director": "中尾広道",
+    "director_jp": "中尾広道",
+    "director_en": "Nakao Hiromichi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 77,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ブルックリンでZ級監督と恋に落ちた私": {
+    "tmdb_id": 1481597,
+    "tmdb_title_jp": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_en": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_original": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A jaded Japanese movie star stranded in NYC without money or phone meets a passionate indie filmmaker and his crew, leading to an unexpected creative journey that could reignite her love for cinema.",
+    "poster_path": "/lOVkjcvOK6TLrGWYqQeSiS5Q647.jpg",
+    "backdrop_path": "/uHknvhfZPIHT5yqGoN37HJIKz33.jpg",
+    "release_date": "2025-11-20",
+    "director": "宇賀那健一",
+    "director_jp": "宇賀那健一",
+    "director_en": "Ken'ichi Ugana",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ヴァリドマン": null,
+  "ラブ・アクチュアリー": {
+    "tmdb_id": 508,
+    "tmdb_title_jp": "ラブ・アクチュアリー",
+    "tmdb_title_en": "Love Actually",
+    "tmdb_title_original": "Love Actually",
+    "tmdb_original_language": "en",
+    "overview": "ロンドン。英国の新首相デヴィッドは着任早々、秘書のナタリーに一目ぼれ。最愛の妻を亡くしたダニエルは、妻の連れ子から恋に悩んでいると明かされる。作家ジェイミーは、言葉が通じないポルトガル人のメイドに好意を。3人の子どもがいるハリーとカレンの夫妻だが、ハリーは会社の若い部下と浮気をしていた。ハリーの会社に勤めるサラは入社以来ずっとある同僚に片思い中などなど、人々はさまざまな想いを胸に聖夜を迎えていく。",
+    "overview_en": "Eight very different couples deal with their love lives in various loosely interrelated tales all set during a frantic month before Christmas in London.",
+    "poster_path": "/dbiDxg9XY6sWtVt5gjkWNVIwkqT.jpg",
+    "backdrop_path": "/xUWf5xX0AnZgAnYXAMk03zTbsef.jpg",
+    "release_date": "2003-09-07",
+    "director": "Richard Curtis",
+    "director_jp": "Richard Curtis",
+    "director_en": "Richard Curtis",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 135,
+    "vote_average": 7.094,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:508": {
+    "tmdb_id": 508,
+    "tmdb_title_jp": "ラブ・アクチュアリー",
+    "tmdb_title_en": "Love Actually",
+    "tmdb_title_original": "Love Actually",
+    "tmdb_original_language": "en",
+    "overview": "ロンドン。英国の新首相デヴィッドは着任早々、秘書のナタリーに一目ぼれ。最愛の妻を亡くしたダニエルは、妻の連れ子から恋に悩んでいると明かされる。作家ジェイミーは、言葉が通じないポルトガル人のメイドに好意を。3人の子どもがいるハリーとカレンの夫妻だが、ハリーは会社の若い部下と浮気をしていた。ハリーの会社に勤めるサラは入社以来ずっとある同僚に片思い中などなど、人々はさまざまな想いを胸に聖夜を迎えていく。",
+    "overview_en": "Eight very different couples deal with their love lives in various loosely interrelated tales all set during a frantic month before Christmas in London.",
+    "poster_path": "/dbiDxg9XY6sWtVt5gjkWNVIwkqT.jpg",
+    "backdrop_path": "/xUWf5xX0AnZgAnYXAMk03zTbsef.jpg",
+    "release_date": "2003-09-07",
+    "director": "Richard Curtis",
+    "director_jp": "Richard Curtis",
+    "director_en": "Richard Curtis",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 135,
+    "vote_average": 7.094,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "アバウト・タイム 愛おしい時間について": {
+    "tmdb_id": 122906,
+    "tmdb_title_jp": "アバウト・タイム ～愛おしい時間について～",
+    "tmdb_title_en": "About Time",
+    "tmdb_title_original": "About Time",
+    "tmdb_original_language": "en",
+    "overview": "自分に自信がなく恋人のいないティムは21歳の誕生日に、父親から一家の男たちにはタイムトラベル能力があることを告げられる。恋人を得るため張り切ってタイムトラベルを繰り返すティムは、やがて魅力的な女性メアリーと恋をする。しかしタイムトラベルによって生じたアクシデントにより、そもそもメアリーと出会っていなかったということになってしまう。",
+    "overview_en": "The night after another unsatisfactory New Year's party, Tim's father tells his son that the men in his family have always had the ability to travel through time. They can't change history, but they can change what happens and has happened in their own lives. Thus begins the start of a lesson in learning to appreciate life itself as it is, as it comes, and most importantly, the people living alongside us.",
+    "poster_path": "/lDuqLnrTbbAx9R1oYLClwOyMDze.jpg",
+    "backdrop_path": "/einbto9qLXFx9QXxEHylaxDbKPx.jpg",
+    "release_date": "2013-09-04",
+    "director": "Richard Curtis",
+    "director_jp": "Richard Curtis",
+    "director_en": "Richard Curtis",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 124,
+    "vote_average": 7.906,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:122906": {
+    "tmdb_id": 122906,
+    "tmdb_title_jp": "アバウト・タイム ～愛おしい時間について～",
+    "tmdb_title_en": "About Time",
+    "tmdb_title_original": "About Time",
+    "tmdb_original_language": "en",
+    "overview": "自分に自信がなく恋人のいないティムは21歳の誕生日に、父親から一家の男たちにはタイムトラベル能力があることを告げられる。恋人を得るため張り切ってタイムトラベルを繰り返すティムは、やがて魅力的な女性メアリーと恋をする。しかしタイムトラベルによって生じたアクシデントにより、そもそもメアリーと出会っていなかったということになってしまう。",
+    "overview_en": "The night after another unsatisfactory New Year's party, Tim's father tells his son that the men in his family have always had the ability to travel through time. They can't change history, but they can change what happens and has happened in their own lives. Thus begins the start of a lesson in learning to appreciate life itself as it is, as it comes, and most importantly, the people living alongside us.",
+    "poster_path": "/lDuqLnrTbbAx9R1oYLClwOyMDze.jpg",
+    "backdrop_path": "/einbto9qLXFx9QXxEHylaxDbKPx.jpg",
+    "release_date": "2013-09-04",
+    "director": "Richard Curtis",
+    "director_jp": "Richard Curtis",
+    "director_en": "Richard Curtis",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 124,
+    "vote_average": 7.906,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "岸辺の旅": {
+    "tmdb_id": 334991,
+    "tmdb_title_jp": "岸辺の旅",
+    "tmdb_title_en": "Journey to the Shore",
+    "tmdb_title_original": "岸辺の旅",
+    "tmdb_original_language": "ja",
+    "overview": "3年間行方不明となっていた夫の優介がある日ふいに帰ってきて、妻の瑞希を旅に誘う。それは優介が失踪してから帰宅するまでに関わってきた人々を訪ねる旅で、空白の3年間をたどるように旅を続けるうちに、瑞希は彼への深い愛を再確認していく。やがて優介が突然姿を現した理由、そして彼が瑞希に伝えたかったことが明らかになる。",
+    "overview_en": "Mizuki's husband Yusuke has been missing for three years. He suddenly comes back home as a ghost and asks Mizuki to go on a trip with him. Their trip consists of visiting the people that helped Yusuke on his previous travel.",
+    "poster_path": "/8mCM7ofYwUK8n7e7Q3mcyFaWa3U.jpg",
+    "backdrop_path": "/nygRqI0XXp3zCyBMnF1tX5kUN6B.jpg",
+    "release_date": "2015-09-30",
+    "director": "黒沢清",
+    "director_jp": "黒沢清",
+    "director_en": "Kiyoshi Kurosawa",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "runtime": 128,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:334991": {
+    "tmdb_id": 334991,
+    "tmdb_title_jp": "岸辺の旅",
+    "tmdb_title_en": "Journey to the Shore",
+    "tmdb_title_original": "岸辺の旅",
+    "tmdb_original_language": "ja",
+    "overview": "3年間行方不明となっていた夫の優介がある日ふいに帰ってきて、妻の瑞希を旅に誘う。それは優介が失踪してから帰宅するまでに関わってきた人々を訪ねる旅で、空白の3年間をたどるように旅を続けるうちに、瑞希は彼への深い愛を再確認していく。やがて優介が突然姿を現した理由、そして彼が瑞希に伝えたかったことが明らかになる。",
+    "overview_en": "Mizuki's husband Yusuke has been missing for three years. He suddenly comes back home as a ghost and asks Mizuki to go on a trip with him. Their trip consists of visiting the people that helped Yusuke on his previous travel.",
+    "poster_path": "/8mCM7ofYwUK8n7e7Q3mcyFaWa3U.jpg",
+    "backdrop_path": "/nygRqI0XXp3zCyBMnF1tX5kUN6B.jpg",
+    "release_date": "2015-09-30",
+    "director": "黒沢清",
+    "director_jp": "黒沢清",
+    "director_en": "Kiyoshi Kurosawa",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "runtime": 128,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "私の男": null,
+  "肉屋": {
+    "tmdb_id": 2912,
+    "tmdb_title_jp": "Le Boucher",
+    "tmdb_title_en": "The Butcher",
+    "tmdb_title_original": "Le Boucher",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "An unlikely friendship between a dour, working class butcher and a repressed schoolteacher coincides with a grisly series of Ripper-type murders in a provincial French town.",
+    "poster_path": "/gvnGtHBgwnQkewajNDA0VMYkbCi.jpg",
+    "backdrop_path": "/8cyxP51631Pfi2yMfYafkcg7y7u.jpg",
+    "release_date": "1970-02-27",
+    "director": "克洛德·夏布洛尔",
+    "director_jp": "克洛德·夏布洛尔",
+    "director_en": "Claude Chabrol",
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 7.116,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "ベルギー映画上映「ヴィトリヴァル」": {
+    "tmdb_id": 1012611,
+    "tmdb_title_jp": "Vitrival",
+    "tmdb_title_en": "Vitrival – The Most Beautiful Village in the World",
+    "tmdb_title_original": "Vitrival",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Benjamin and Little Pierre, cousins and local policemen, patrol Vitrival while listening to Radio Chevauchoir. They have a lot to do: dick graffitis are popping up on the village walls. Of course, no one has seen or heard anything. At the same time, one villager commits suicide, then two, then three. Season after season, dick graffitis and suicides proliferate. What can Benjamin and Pierre do about it? Days and celebrations will keep flowing, no matter what.",
+    "poster_path": "/3aDpjfMj34uvtOthGVy25ttr1Th.jpg",
+    "backdrop_path": "/sxCwdTaRFoW8Fz5DJbJxbqgpCZa.jpg",
+    "release_date": "2025-11-26",
+    "director": "Noëlle Bastin",
+    "director_jp": "Noëlle Bastin",
+    "director_en": "Noëlle Bastin",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 111,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      }
+    ]
+  },
+  "tmdb:181359": {
+    "tmdb_id": 181359,
+    "tmdb_title_jp": "挽歌",
+    "tmdb_title_en": "Elegy of the North",
+    "tmdb_title_original": "挽歌",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A sensitive young woman aged 22 fell in love with a middle aged man who was troubled by his unfaithful wife.",
+    "poster_path": "/iUniS5CXctWZlzXwiMV7lobw390.jpg",
+    "backdrop_path": "/6V4i2ygBp6iVgIDAsls0UjjFbuL.jpg",
+    "release_date": "1957-09-01",
+    "director": "五所平之助",
+    "director_jp": "五所平之助",
+    "director_en": "Heinosuke Gosho",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 117,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1481597": {
+    "tmdb_id": 1481597,
+    "tmdb_title_jp": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_en": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_original": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A jaded Japanese movie star stranded in NYC without money or phone meets a passionate indie filmmaker and his crew, leading to an unexpected creative journey that could reignite her love for cinema.",
+    "poster_path": "/lOVkjcvOK6TLrGWYqQeSiS5Q647.jpg",
+    "backdrop_path": "/uHknvhfZPIHT5yqGoN37HJIKz33.jpg",
+    "release_date": "2025-11-20",
+    "director": "宇賀那健一",
+    "director_jp": "宇賀那健一",
+    "director_en": "Ken'ichi Ugana",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1012611": {
+    "tmdb_id": 1012611,
+    "tmdb_title_jp": "Vitrival",
+    "tmdb_title_en": "Vitrival – The Most Beautiful Village in the World",
+    "tmdb_title_original": "Vitrival",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Benjamin and Little Pierre, cousins and local policemen, patrol Vitrival while listening to Radio Chevauchoir. They have a lot to do: dick graffitis are popping up on the village walls. Of course, no one has seen or heard anything. At the same time, one villager commits suicide, then two, then three. Season after season, dick graffitis and suicides proliferate. What can Benjamin and Pierre do about it? Days and celebrations will keep flowing, no matter what.",
+    "poster_path": "/3aDpjfMj34uvtOthGVy25ttr1Th.jpg",
+    "backdrop_path": "/sxCwdTaRFoW8Fz5DJbJxbqgpCZa.jpg",
+    "release_date": "2025-11-26",
+    "director": "Noëlle Bastin",
+    "director_jp": "Noëlle Bastin",
+    "director_en": "Noëlle Bastin",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 111,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
       }
     ]
   }

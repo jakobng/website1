@@ -4813,5 +4813,108 @@
     "director": "Shinya Fukasawa",
     "country": "Japan",
     "failed": true
+  },
+  "めまい（1958）": {
+    "english_title": "Vertigo",
+    "release_year": 1958,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Vertigo",
+    "director": "Alfred Hitchcock",
+    "country": "United States"
+  },
+  "挽歌（1957）": {
+    "english_title": "Elegy of the North",
+    "release_year": 1957,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "挽歌",
+    "director": "Heinosuke Gosho",
+    "country": "Japan"
+  },
+  "不貞の女": {
+    "english_title": "The Adulteress",
+    "release_year": 1966,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "不貞の女",
+    "director": "Koji Wakamatsu",
+    "country": "Japan",
+    "failed": true
+  },
+  "女鹿": {
+    "english_title": "The She-Deer",
+    "release_year": 1960,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "女鹿",
+    "director": "Kō Nakahira",
+    "country": "Japan",
+    "failed": true
+  },
+  "【吹替版】スペルマゲドン 精な": {
+    "english_title": "Spermageddon",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Spermageddon",
+    "director": "Tommy Wirkola, Rasmus A. Sivertsen",
+    "country": "Norway"
+  },
+  "［舞台挨拶］道行き": {
+    "english_title": "Michiyuki - Voices of Time",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "道行き",
+    "director": "Hiromichi Nakao",
+    "country": "Japan"
+  },
+  "ブルックリンでZ級監督と恋に落ちた私": {
+    "english_title": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ブルックリンでZ級監督と恋に落ちた私",
+    "director": "Kenichi Ugana",
+    "country": "Japan"
+  },
+  "ヴァリドマン": {
+    "english_title": "Validman",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ヴァリドマン",
+    "director": "Tsutomu Kuno",
+    "country": "Japan",
+    "failed": true
+  },
+  "私の男": {
+    "english_title": "My Man",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "私の男",
+    "director": "Kazuyoshi Kumakiri",
+    "country": "Japan",
+    "failed": true
+  },
+  "肉屋": {
+    "english_title": "The Butcher",
+    "release_year": 1970,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Le boucher",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "ベルギー映画上映「ヴィトリヴァル」": {
+    "english_title": "Vitrival – The Most Beautiful Village in the World",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Vitrival",
+    "director": "Noëlle Bastin, Baptiste Bogaert",
+    "country": "Belgium"
   }
 }
