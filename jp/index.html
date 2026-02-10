@@ -1,159 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ネルキ・リオ - フィルム・ポートフォリオ</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="alternate" hreflang="en" href="/index.html">
-  <link rel="alternate" hreflang="ja" href="/jp/index.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ネルキ・リオ</title>
+    <link rel="stylesheet" href="../portfolio-collage.css?v=1.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1 style="font-size: 1.6em; line-height: 1.2em;">
-        <a href="/jp/index.html" style="color: inherit; text-decoration: none;">
-          ネルキ・リオ<br>
-          <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
-        </a>
-      </h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="/jp/index.html" class="active">ホーム</a></li>
-        <li><a href="/jp/completed.html">完成作品</a></li>
-        <li><a href="/jp/wip.html">制作中</a></li>
-        <li><a href="/jp/writing.html">文章</a></li>
-        <li><a href="/jp/other-projects.html">実験</a></li>
-      </ul>
-    </nav>
-  </div>
+<body class="collage-theme-v4">
+    <header class="collage-header-v4">
+        <div class="intro-block">
+            <h1>Leo Nelki</h1>
+            <p class="intro-text">マージーサイドと東京を拠点とするドキュメンタリー監督・プロデューサー。</p>
+        </div>
+        <div class="nav-wrapper">
+            <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="メニュー">☰</button>
+            <nav class="collage-nav-v4">
+                <a href="/jp/films.html">作品</a>
+                <a href="/jp/other-projects.html">その他のプロジェクト</a>
+                <a href="/jp/cv.html">経歴</a>
+            </nav>
+        </div>
+    </header>
 
-  <div class="main-content">
-    <div class="connected-grid homepage-grid">
-
-      <div class="grid-item intro-item">
-        <p>
-          イギリス・マージーサイドと東京を拠点に活動するドキュメンタリー監督／プロデューサーです。
-          このサイトを通じて、想像力と現実のあいだをつなぐ映画づくりの仲間と出会いたいと思っています。
-          <br><br>
-          作品に関するお問い合わせは <a href="mailto:hello@leonelki.com">hello@leonelki.com</a> まで。
-        </p>
-      </div>
-
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="mobile-close-btn" id="mobileMenuClose">閉じる &times;</button>
+        <nav class="mobile-nav-links">
+            <a href="/jp/index.html">ホーム</a>
+            <a href="/jp/films.html">作品</a>
+            <a href="/jp/other-projects.html">その他のプロジェクト</a>
+            <a href="/jp/cv.html">経歴</a>
+        </nav>
     </div>
 
-    <h2 class="subtle-heading">日本</h2>
-    <div class="connected-grid film-highlight-grid">
+    <main class="collage-scroll-v4">
+        <section class="collage-stage-v4" id="collageStage">
+            <img id="collageImage" src="../images/collage/collage_final3.jpg" alt="映画スチルのコラージュ">
+            <div class="hotspot-layer" id="hotspotLayer"></div>
+        </section>
+        
+        <footer class="status-footer-v4">
+            Leo Nelki — シネマ・ポートフォリオ 2026
+        </footer>
+    </main>
 
-      <a href="/jp/broadlistening-film-page.html" class="grid-item film-item-link">
-        <img src="../images/broadlistening_still.jpg" alt="『ブロード・リスニング』スチル">
-        <div class="grid-item-info">
-          <h3>ブロード・リスニング</h3>
-          <p>監督、脚本</p>
-          <p>2026年 · <span class="status status-in-progress">制作中</span> · 35分</p>
-        </div>
-      </a>
-
-      <a href="/jp/sij-film-page.html" class="grid-item film-item-link">
-        <img src="../images/sij_withlaurels.png" alt="『Sunday in Japan』スチル">
-        <div class="grid-item-info">
-          <h3>Sunday in Japan</h3>
-          <p>監督、脚本</p>
-          <p>2026年 · <span class="status status-in-progress">制作中</span> · 85分</p>
-        </div>
-      </a>
-
-      <a href="/jp/arakawacats-film-page.html" class="grid-item film-item-link">
-        <img src="../images/arakawacats_still.jpg" alt="『荒川キャッツ』スチル">
-        <div class="grid-item-info">
-          <h3>荒川キャッツ</h3>
-          <p>監督</p>
-          <p>2024年 · <span class="status status-completed">完成</span> · 7分</p>
-        </div>
-      </a>
-
-    </div>
-
-    <h2 class="subtle-heading">日本以外</h2>
-    <div class="connected-grid film-highlight-grid">
-
-      <a href="/jp/mulika-film-page.html" class="grid-item film-item-link">
-        <img src="../images/Mulika_withlaurels.png" alt="『Mulika』スチル">
-        <div class="grid-item-info">
-          <h3>Mulika</h3>
-          <h4>監督：Maisha Maene</h4>
-          <p>プロデューサー、編集</p>
-          <p>2022年 · <span class="status status-completed">完成</span> · 14分</p>
-        </div>
-      </a>
-
-      <a href="/jp/sik-film-page.html" class="grid-item film-item-link">
-        <img src="../images/SIK_withlaurels.png" alt="『Spaceman in Kongo』スチル">
-        <div class="grid-item-info">
-          <h3>Spaceman in Kongo</h3>
-          <h4>監督：Maisha Maene</h4>
-          <p>プロデューサー、脚本</p>
-          <p>2027年 · <span class="status status-in-progress">開発中</span> · 90分</p>
-        </div>
-      </a>
-
-      <a href="/jp/mouthfulofriver-film-page.html" class="grid-item film-item-link">
-        <img src="../images/mouthful_still.jpg" alt="『Mouthful of River』スチル">
-        <div class="grid-item-info">
-          <h3>Mouthful of River</h3>
-          <h4>パトリシア・エスチェベリア・リラスと共同監督</h4>
-          <p>監督、脚本</p>
-          <p>2027年 · <span class="status status-in-progress">開発中</span> · 85分</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- Language toggle: clean text, slightly larger & higher -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-  <script>
-    (function(){
-      function toggleLang(){
-        var file = (location.pathname.split('/').filter(Boolean).pop() || 'index.html');
-        if (location.pathname.startsWith('/jp/')) {
-          location.href = '/' + file;        // jp -> en
-        } else {
-          location.href = '/jp/' + file;     // en -> jp
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+    <script src="../collage-layout.js?v=1.1"></script>
+    <script src="../portfolio-collage.js?v=1.1"></script>
+    <script src="../lang-toggle-global.js?v=1.1"></script>
 </body>
 </html>

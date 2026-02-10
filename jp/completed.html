@@ -9,16 +9,11 @@
   <link rel="alternate" hreflang="ja" href="/jp/completed.html">
 </head>
 <body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation" aria-controls="site-navigation" aria-expanded="false">☰</button>
-  <div class="sidebar" id="site-navigation">
+  <button class="mobile-nav-toggle" aria-label="ナビゲーションを開く">☰</button>
+  <div class="sidebar">
     <div class="sidebar-header">
-      <h1 style="font-size: 1.6em; line-height: 1.2em;">
-        <a href="/jp/index.html" style="color: inherit; text-decoration: none;">
-          ネルキ・リオ<br>
-          <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
-        </a>
-      </h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+      <h1><a href="/jp/index.html">Leo Nelki</a></h1>
+      <button class="mobile-nav-close" aria-label="ナビゲーションを閉じる">×</button>
     </div>
     <nav>
       <ul>
@@ -32,69 +27,85 @@
   </div>
 
   <div class="main-content">
-    <h2 class="subtle-heading">長編映画</h2>
+    <h2 class="subtle-heading">長編</h2>
     <div class="connected-grid feature-film-grid"></div>
 
-    <h2 class="subtle-heading">短編映画</h2>
+    <h2 class="subtle-heading">短編</h2>
     <div class="connected-grid short-film-grid">
 
       <a href="/jp/arakawacats-film-page.html" class="grid-item film-item-link">
-        <img src="../images/arakawacats_still.jpg" alt="『荒川キャッツ』スチル">
+        <img src="../images/arakawacats_still.jpg" alt="荒川キャッツ">
         <div class="grid-item-info">
           <h3>荒川キャッツ</h3>
           <p>監督</p>
-          <p>2024年 · <span class="status status-completed">完成</span> · 7分</p>
+          <p>2024 · <span class="status status-completed">完成</span> · 7 分</p>
         </div>
       </a>
 
       <a href="/jp/lobiekosimba-film-page.html" class="grid-item film-item-link">
-        <img src="../images/lobiekosimba_still.png" alt="『Lobi Ekosimba』スチル">
+        <img src="../images/lobiekosimba_still.png" alt="ロビ・エコシンバ">
         <div class="grid-item-info">
-          <h3>Lobi Ekosimba</h3>
+          <h3>ロビ・エコシンバ</h3>
           <h4>監督：Eli Maene</h4>
-          <p>共同プロデューサー／編集</p>
-          <p>2024年 · <span class="status status-completed">完成</span> · 15分</p>
+          <p>Co-プロデューサー・編集</p>
+          <p>2024 · <span class="status status-completed">完成</span> · 15 分</p>
         </div>
       </a>
 
       <a href="/jp/mulika-film-page.html" class="grid-item film-item-link">
-        <img src="../images/Mulika_withlaurels.png" alt="『Mulika』スチル">
+        <img src="../images/Mulika_withlaurels.png" alt="ムリカ">
         <div class="grid-item-info">
-          <h3>Mulika</h3>
+          <h3>ムリカ</h3>
           <h4>監督：Maisha Maene</h4>
-          <p>プロデューサー、編集</p>
-          <p>2022年 · <span class="status status-completed">完成</span> · 14分</p>
+          <p>プロデューサー・編集</p>
+          <p>2022 · <span class="status status-completed">完成</span> · 14 分</p>
         </div>
       </a>
 
       <a href="/jp/apa-film-page.html" class="grid-item film-item-link">
-        <img src="../images/apa_still.png" alt="『APA』スチル">
+        <img src="../images/apa_still.png" alt="アパ">
         <div class="grid-item-info">
-          <h3>APA</h3>
-          <h4>マイシャ・マエネと共同監督</h4>
-          <p>監督、脚本</p>
-          <p>2021年 · <span class="status status-completed">完成</span> · 3分</p>
+          <h3>アパ</h3>
+          <h4>共同監督：Maisha Maene</h4>
+          <p>監督・脚本</p>
+          <p>2021 · <span class="status status-completed">完成</span> · 3 分</p>
         </div>
       </a>
 
     </div>
   </div>
 
+  <!-- 言語切替 -->
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 9999;
+      font-size: 19px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle:hover { text-decoration: underline; }
+  </style>
   <script>
     (function(){
       function toggleLang(){
-        var p = location.pathname;
-        var file = p.split('/').filter(Boolean).pop() || 'index.html';
-        if (p.startsWith('/jp/')) {
-          location.href = '/' + file;
+        var file = (location.pathname.split('/').filter(Boolean).pop() || 'completed.html');
+        if (location.pathname.startsWith('/jp/')) {
+          location.href = '/' + file;        // 日本語 -> 英語
         } else {
-          location.href = '/jp/' + file;
+          location.href = '/jp/' + file;     // 英語 -> 日本語
         }
       }
       window.__toggleLang = toggleLang;
     })();
   </script>
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="言語を切り替え">EN</a>
 
   <script>
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -102,47 +113,8 @@
     const sidebar = document.querySelector('.sidebar');
 
     if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.setAttribute('aria-expanded', 'false');
-
-      const openNav = () => {
-        sidebar.classList.add('open');
-        mobileNavToggle.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('nav-open');
-      };
-
-      const closeNav = () => {
-        sidebar.classList.remove('open');
-        mobileNavToggle.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('nav-open');
-      };
-
-      const toggleNav = () => {
-        if (sidebar.classList.contains('open')) {
-          closeNav();
-        } else {
-          openNav();
-        }
-      };
-
-      mobileNavToggle.addEventListener('click', toggleNav);
-      mobileNavClose.addEventListener('click', closeNav);
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && sidebar.classList.contains('open')) {
-          closeNav();
-          mobileNavToggle.focus();
-        }
-      });
-
-      document.addEventListener('click', (event) => {
-        if (
-          sidebar.classList.contains('open') &&
-          !sidebar.contains(event.target) &&
-          !mobileNavToggle.contains(event.target)
-        ) {
-          closeNav();
-        }
-      });
+      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
+      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
     }
   </script>
 </body>

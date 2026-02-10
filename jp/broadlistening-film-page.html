@@ -4,126 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ブロード・リスニング - Leo Nelki</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../film-page-system.css">
   <link rel="alternate" hreflang="en" href="/broadlistening-film-page.html">
   <link rel="alternate" hreflang="ja" href="/jp/broadlistening-film-page.html">
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="ナビゲーションを開く">&#9776;</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1><a href="/jp/index.html">Leo Nelki</a></h1>
-      <button class="mobile-nav-close" aria-label="ナビゲーションを閉じる">&times;</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">ホーム</a></li>
-        <li><a href="completed.html">完成作品</a></li>
-        <li><a href="wip.html">制作中の作品</a></li>
-        <li><a href="writing.html">執筆</a></li>
-      </ul>
+<body class="film-body">
+  <header class="film-topbar">
+    <a class="logo" href="/jp/index.html">&larr; ホーム</a>
+    <nav class="film-nav">
+      <a href="/jp/films.html">作品</a>
+      <a href="/jp/other-projects.html">その他のプロジェクト</a>
+      <a href="/broadlistening-film-page.html" aria-label="言語を切り替え">EN</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="connected-grid film-page-grid">
+  <main class="film-shell">
+    <section class="film-frame film-hero">
+      <img src="../images/broadlistening_still.jpg" alt="ブロード・リスニング のスチル">
+    </section>
 
-      <div class="grid-item hero-image-item" id="broadlistening-hero-image"></div>
+    <section class="film-frame film-lead">
+      <h1>ブロード・リスニング</h1>
+      <p class="film-logline">高齢化、政治的無関心、制度の硬直に揺れる日本で、AIエンジニアでSF作家の安野貴博が新政党「チームみらい」を立ち上げる。目標は、デジタル時代に合わせて民主主義を更新すること。</p>
+    </section>
 
-      <div class="grid-item title-item">
-        <h1>ブロード・リスニング</h1>
-      </div>
+    <section class="film-grid">
+      <article class="film-card film-span-8">
+        <h2>この作品について</h2>
+        <p><em>ブロード・リスニング</em>はSF的想像力を取り入れたドキュメンタリーです。政治をより透明で参加型にするオープンソース・ツールを開発する安野と若いエンジニアたちの姿を追います。日本で最も新しい政党のひとつであるチームみらいが、硬直した政治制度の中で「ブロード・リスニング」を実装しようとする試みを描きます。</p>
+        <p>さらに本作は近未来にも踏み込みます。共同制作された思弁的なSFシーンを通して、チームみらいが目指す社会を可視化します。そこにあるのは技術的ディストピアではなく、デジタル・ツールによってより深い参加が生まれる「共有された現実」です。現在の政治の現実と未来の可能性を交差させながら、日本の民主主義を更新できるのかを問いかけます。</p>
+      </article>
 
-      <div class="grid-item logline-item">
-        <p>高齢化、政治的無関心、そして停滞したシステムに直面する日本で、AIエンジニアでありSF作家でもある安野貴博が新しい政党「チームみらい」を立ち上げる。彼らの目標は、デジタル時代にふさわしい民主主義へとアップデートすることだ。</p>
-      </div>
-
-      <div class="grid-item callout-block topic-summary-item collaborator-item">
-        <h2>制作メンバー募集：日本在住のコラボレーターを求めています</h2>
-        <p>本作は現在制作中であり、日本語でコミュニケーションができるコラボレーターを募集しています。監督・プロデュースから撮影・録音、翻訳、制作サポートまで、どのような形の参加も歓迎します。</p>
-        <p>テクノロジー、政治、ドキュメンタリー制作の交差点に関心のある方は、<a href="mailto:hello@leonelki.com">hello@leonelki.com</a> までご連絡ください。</p>
-      </div>
-
-      <div class="grid-item about-item">
-        <h2>作品について</h2>
-        <p>『ブロード・リスニング』はSFドキュメンタリーであり、安野と若いエンジニアたちが政治をより透明で参加しやすくするためのオープンソースツールを構築する姿を描き出します。日本で最も新しく最も若い政党として、彼らが日本の硬直した政治の枠内で「ブロード・リスニング」という構想を実現しようと奮闘する過程を追います。</p>
-        <p>さらに本作は近未来にも踏み込み、共同制作された思索的なSFシーンを通じてチームみらいが目指す世界を可視化します。そこに描かれるのは技術的なディストピアではなく、デジタルツールがより意味のある、深く関与する民主主義を実現した「共有された現実」です。現在の政治的現実と未来の可能性を織り交ぜながら、『ブロード・リスニング』は日本の民主主義がアップデート可能かどうかを探ります。</p>
-      </div>
-
-      <div class="grid-item specs-item">
-        <h2>詳細</h2>
-        <ul class="specs-list">
+      <article class="film-card film-span-4">
+        <h2>作品情報</h2>
+        <ul class="film-detail-list">
           <li><span>監督</span><span>Leo Nelki</span></li>
           <li><span>脚本</span><span>Leo Nelki</span></li>
-          <li><span>作品タイプ</span><span>クリエイティブ・ドキュメンタリー</span></li>
-          <li><span>制作年</span><span>2026</span></li>
+          <li><span>種別</span><span>クリエイティブ・ドキュメンタリー</span></li>
+          <li><span>年</span><span>2026</span></li>
           <li><span>上映時間</span><span>35分</span></li>
-          <li><span>ステータス</span><span class="status status-in-production">制作中</span></li>
+          <li><span>ステータス</span><span>制作中</span></li>
         </ul>
-      </div>
+      </article>
 
-      <div class="grid-item topic-summary-item context-item">
-        <h2>より詳しい背景：世界のデジタル民主主義ムーブメント</h2>
-        <p>安野貴博の活動は、テクノロジーを用いて民主主義のプロセスを再発明しようとする、世界的に広がるムーブメントの一部です。過去数十年間、ソーシャルメディアのようなデジタルツールは社会の分断を増幅させることが少なくありませんでした。この「シビックテック」の新しい波は、その逆を目指します。すなわち、合意形成と協調のために設計されたシステムを構築することです。</p>
-        <p>このムーブメントの核心的な哲学的指針となっているのが、台湾の初代デジタル大臣オードリー・タンと経済学者グレン・ワイルが共著した書籍<strong>『Plurality』</strong>です。本書は、社会的な差異を乗り越え、多様性を進歩のための力として活用するテクノロジーの設計を提唱しています。</p>
-        <p>その最も著名な実践例が、台湾の先駆的なプロジェクト<strong>「vTaiwan」</strong>です。これはオンラインとオフラインを組み合わせたプロセスで、市民、専門家、政府関係者が複雑な国家的課題について熟議を行います。vTaiwanは<strong>「Polis」</strong>のようなツールを活用し、Uberの規制やAIガバナンスといった対立の激しいテーマで見事に合意形成を成功させてきました。</p>
-        <p>Polis自体が重要なイノベーションです。非営利団体<strong>Computational Democracy Project</strong>によって開発されたこの対話プラットフォームは、エンゲージメントの最大化ではなく、異なる意見グループを横断する「集団が情報を共有した上での合意」を機械学習によって見つけ出すことを目的としています。</p>
-        <p>日本でもこの動きは勢いを増しています。安野の政党<strong>「チームみらい」</strong>と、彼が立ち上げた超党派のプロジェクト<strong>「デジタル民主主義2030」</strong>は、これらの原則を日本の文脈で応用し、政治の透明化や市民の熟議のためのオープンソースツールを開発しています。また、兵庫県加古川市のような自治体では、「Decidim」といったプラットフォームを用いて市民をまちづくりに参加させる実験が行われています。これらの取り組みは、21世紀にふさわしい、より応答性が高く、強靭で、参加型の民主主義を構築するための世界共通の実験なのです。</p>
-        <h3>関連リンク:</h3>
+      <article class="film-card film-span-6">
+        <h2>コラボレーター募集（日本拠点）</h2>
+        <p>本作は現在開発中で、日本語で協働できるコラボレーターを募集しています。監督・プロデュース、撮影・録音、翻訳、制作補助まで、あらゆる形での参加を歓迎します。</p>
+        <p>テクノロジー、政治、ドキュメンタリー制作の交点に関心のある方は、<a href="mailto:hello@leonelki.com">hello@leonelki.com</a> までご連絡ください。</p>
+      </article>
+
+      <article class="film-card film-span-6">
+        <h2>補足：グローバルなデジタル民主主義の潮流</h2>
+        <p>安野貴博の実践は、テクノロジーによって民主主義のプロセスを再設計しようとする世界的な潮流の一部です。ソーシャルメディアのようなデジタルツールは分断を増幅してきましたが、新しい「シビックテック」はその逆を目指し、合意形成と協働のための仕組みを設計します。</p>
+        <p>この潮流の重要な思想的ガイドが、台湾初代デジタル担当大臣 Audrey Tang と経済学者 Glen Weyl の共著 <strong><em>Plurality</em></strong> です。本書は、社会的な差異を橋渡しし、多様性を前進の力として活かす技術設計を提案しています。</p>
+        <p>代表的な実践例は台湾の先駆的プロジェクト <strong>vTaiwan</strong> です。市民・専門家・行政がオンラインとオフラインを横断して複雑な公共課題を討議し、<strong>Polis</strong> などのツールを用いて、Uber規制やAIガバナンスのような対立的テーマでも合意形成を実現してきました。</p>
+        <p>Polis自体も重要なイノベーションです。非営利団体 <strong>Computational Democracy Project</strong> が開発した対話・調査プラットフォームで、機械学習を「エンゲージメント最大化」のためではなく、異なる立場を横断する「集団知にもとづく合意点」を見つけるために用います。</p>
+        <p>日本でもこの動きは広がりつつあります。安野の政党 <strong>Team Mirai</strong> と超党派プロジェクト <strong>Digital Democracy 2030</strong> は、政治の透明性と市民討議のためのオープンソース・ツールを日本の文脈で実装しています。加古川市のような自治体でも Decidim 等を使った参加型の取り組みが進んでおり、より応答的でしなやかな21世紀の民主主義をつくるための国際的実験が共有されています。</p>
+        <h3>さらに読む</h3>
         <ul>
-            <li><a href="https://www.plurality.net" target="_blank" rel="noopener noreferrer">Plurality</a></li>
-            <li><a href="https://info.vtaiwan.tw/" target="_blank" rel="noopener noreferrer">vTaiwan</a></li>
-            <li><a href="https://compdemocracy.org/" target="_blank" rel="noopener noreferrer">Computational Democracy Project (Polis)</a></li>
-            <li><a href="https://dd2030.org/" target="_blank" rel="noopener noreferrer">デジタル民主主義2030 (日本)</a></li>
+          <li><a href="https://www.plurality.net" target="_blank" rel="noopener noreferrer">Plurality</a></li>
+          <li><a href="https://info.vtaiwan.tw/" target="_blank" rel="noopener noreferrer">vTaiwan</a></li>
+          <li><a href="https://compdemocracy.org/" target="_blank" rel="noopener noreferrer">Computational Democracy Project (Polis)</a></li>
+          <li><a href="https://dd2030.org/" target="_blank" rel="noopener noreferrer">Digital Democracy 2030 (Japan)</a></li>
         </ul>
-      </div>
-    </div>
-  </div>
+      </article>
+    </section>
+  </main>
 
-  <style>
-   .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-   .lang-toggle:hover { text-decoration: underline; }
-  </style>
-
-  <script>
-    (function(){
-      function toggleLang(){
-        var p = location.pathname;
-        var file = p.split('/').filter(Boolean).pop() || 'index.html';
-
-        if (p.startsWith('/jp/')) {
-          var en = file;
-          location.href = '/' + en;
-        } else {
-          location.href = '/jp/' + file;
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="言語を切り替える">English</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+  <script src="../film-page-system.js"></script>
+  <script src="../lang-toggle-global.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

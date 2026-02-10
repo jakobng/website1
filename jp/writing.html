@@ -3,98 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文章 - ネルキ・リオ</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>文章 - Leo Nelki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../catalogue.css">
   <link rel="alternate" hreflang="en" href="/writing.html">
   <link rel="alternate" hreflang="ja" href="/jp/writing.html">
-  <style>
-    .writing-links ul { list-style: none; padding-left: 0; }
-    .writing-links li { margin-bottom: 10px; }
-    .writing-links a { text-decoration: none; color: var(--blue-accent); font-weight: bold; }
-    .writing-links a:hover { text-decoration: underline; }
-  </style>
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1 style="font-size: 1.6em; line-height: 1.2em;">
-        <a href="/jp/index.html" style="color: inherit; text-decoration: none;">
-          ネルキ・リオ<br>
-          <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
-        </a>
-      </h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="/jp/index.html">ホーム</a></li>
-        <li><a href="/jp/completed.html">完成作品</a></li>
-        <li><a href="/jp/wip.html">制作中の作品</a></li>
-        <li><a href="/jp/writing.html" class="active">文章</a></li>
-        <li><a href="/jp/other-projects.html">実験</a></li>
-      </ul>
+<body class="catalogue-page">
+  <header class="cat-topbar">
+    <a class="logo" href="/jp/index.html">&larr; ホーム</a>
+    <nav class="cat-nav" aria-label="主要ナビゲーション">
+      <a href="/jp/films.html">作品</a>
+      <a href="/jp/other-projects.html">その他のプロジェクト</a>
+      <a href="/jp/cv.html">経歴</a>
+      <a href="/writing.html" aria-label="言語を切り替え">EN</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="connected-grid">
-      <div class="grid-item text-content-item">
-        <h2>考えごとと制作プロセス</h2>
-        <p>ここでは、作品や制作プロセスについての考えを綴っていきます。</p>
-
-        <div class="writing-links">
-          <h3><em>Mouthful of River</em> のテーマ探索：</h3>
-          <ul>
-            <li><a href="/jp/blog/democracy-lens.html">デモクラシーの視点（近日公開）</a></li>
-            <li><a href="/jp/blog/environmentalism-lens.html">環境主義の視点（近日公開）</a></li>
-            <li><a href="/jp/blog/ai-alignment-lens.html">AIアラインメントの視点（近日公開）</a></li>
-          </ul>
+  <main class="cat-shell">
+    <section class="cat-columns">
+      <article class="cat-column">
+        <h2>テーマ別リサーチ</h2>
+        <p style="font-size: 0.85rem; color: #666; margin-bottom: 2rem;"><em>川の声を聴く</em> のために展開しているリサーチ視点：</p>
+        <div class="cat-list">
+          <a class="cat-item" href="/blog/democracy-lens.html">
+            <div class="cat-content">
+              <span class="cat-title">民主主義レンズ</span>
+              <span class="cat-meta">リサーチ</span>
+              <span class="cat-description">準備中</span>
+            </div>
+          </a>
+          <a class="cat-item" href="/blog/environmentalism-lens.html">
+            <div class="cat-content">
+              <span class="cat-title">環境主義レンズ</span>
+              <span class="cat-meta">リサーチ</span>
+              <span class="cat-description">準備中</span>
+            </div>
+          </a>
+          <a class="cat-item" href="/blog/ai-alignment-lens.html">
+            <div class="cat-content">
+              <span class="cat-title">AIアラインメント・レンズ</span>
+              <span class="cat-meta">リサーチ</span>
+              <span class="cat-description">準備中</span>
+            </div>
+          </a>
         </div>
-      </div>
-    </div>
-  </div>
+      </article>
 
-  <!-- Language toggle (clean text, slightly larger & higher) -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-  <script>
-    (function(){
-      function toggleLang(){
-        var file = location.pathname.split('/').filter(Boolean).pop() || 'writing.html';
-        if (location.pathname.startsWith('/jp/')) {
-          location.href = '/' + file;    // jp -> en
-        } else {
-          location.href = '/jp/' + file; // en -> jp
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+      <article class="cat-column">
+        <h2>学術文章</h2>
+        <div class="cat-list">
+          <a class="cat-item" href="https://intellectdiscover.com/content/journals/10.1386/fm_00178_1" target="_blank" rel="noopener">
+            <div class="cat-content">
+              <span class="cat-title">Makavejev’s “Neo-documentarism”</span>
+              <span class="cat-meta">Film Matters / Vol 12, Issue 3</span>
+              <span class="cat-description">ドキュメンタリー表現におけるシュルレアリスム技法を論じたエッセイ。</span>
+            </div>
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="../lang-toggle-global.js"></script>
 </body>
 </html>
