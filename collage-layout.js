@@ -98,7 +98,7 @@ window.COLLAGE_LAYOUT = {
       "status": "Documentary",
       "role": "Director",
       "runtime": "35 mins",
-      "summary": "In a Japan grappling with an aging population and political apathy, a new political party launches to upgrade democracy for the digital age.",
+      "summary": "A sci-fi author turned AI engineer enters Japanese politics, using open-source technology to ask whether digital tools can deepen, rather than damage, democracy.",
       "image": "images/broadlistening_still.jpg",
       "url": "broadlistening-film-page.html",
       "x": 1929,
