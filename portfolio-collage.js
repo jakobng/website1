@@ -18,6 +18,14 @@
       });
   }
 
+  var fallbackWorldImage = image ? image.getAttribute("src") : "";
+
+  if (image) {
+    image.addEventListener("error", function () {
+      if (fallbackWorldImage) image.src = fallbackWorldImage;
+    });
+  }
+
   if (!data) return;
 
   var isSmall = window.matchMedia("(max-width: 768px)").matches;
@@ -73,7 +81,7 @@
     }, 50);
   }
 
-  image.src = data.world_image;
+  if (image && data.world_image) image.src = data.world_image;
 
   data.projects.forEach(function (project) {
     var hotspot = document.createElement("a");
