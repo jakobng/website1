@@ -1,118 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leo Nelki - Film Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="alternate" hreflang="en" href="/index.html">
-  <link rel="alternate" hreflang="ja" href="/jp/index.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo Nelki</title>
+    <link rel="stylesheet" href="portfolio-collage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1><a href="/index.html">Leo Nelki</a></h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+<body class="collage-theme-v4">
+    <header class="collage-header-v4">
+        <div class="intro-block">
+            <h1>Leo Nelki</h1>
+            <p class="intro-text">Documentary director and producer based between Merseyside and Tokyo.</p>
+        </div>
+        <div class="nav-wrapper">
+            <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+            <nav class="collage-nav-v4">
+                <a href="films.html">Films</a>
+                <a href="other-projects.html">Other Projects</a>
+                <a href="cv.html">CV</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="mobile-close-btn" id="mobileMenuClose">Close &times;</button>
+        <nav class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="films.html">Films</a>
+            <a href="other-projects.html">Other Projects</a>
+            <a href="cv.html">CV</a>
+        </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="completed.html">Completed Films</a></li>
-        <li><a href="wip.html">Works in Progress</a></li>
-        <li><a href="writing.html">Writing</a></li>
-        <li><a href="other-projects.html">Experiments</a></li>
-      </ul>
-    </nav>
-  </div>
 
-  <div class="main-content">
-    <div class="connected-grid homepage-grid">
+    <main class="collage-scroll-v4">
+        <section class="collage-stage-v4" id="collageStage">
+            <img id="collageImage" src="" alt="Film still collage">
+            <div class="hotspot-layer" id="hotspotLayer"></div>
+        </section>
+        
+        <footer class="status-footer-v4">
+            Leo Nelki — Cinema Portfolio 2026
+        </footer>
+    </main>
 
-      <div class="grid-item intro-item">
-        <p>
-          I am a documentary director and producer based between Merseyside (UK) and Tokyo.
-          I want this site to help me find collaborators, to make films together which can
-          bridge our imaginations and the world around us.
-          <br><br>
-          Please contact me about any of these films <a href="mailto:hello@leonelki.com">hello@leonelki.com</a>
-        </p>
-      </div>
-
-      <a href="mulika-film-page.html" class="grid-item film-item-link">
-        <img src="images/Mulika_withlaurels.png" alt="Still from Mulika">
-        <div class="grid-item-info">
-          <h3>Mulika</h3>
-          <h4>Directed by Maisha Maene</h4>
-          <p>Producer, Editor</p>
-          <p>2022 · <span class="status status-completed">Completed</span> · 14 mins</p>
-        </div>
-      </a>
-
-      <a href="sik-film-page.html" class="grid-item film-item-link">
-        <img src="images/SIK_withlaurels.png" alt="Still from Spaceman in Kongo">
-        <div class="grid-item-info">
-          <h3>Spaceman in Kongo</h3>
-          <h4>Directed by Maisha Maene</h4>
-          <p>Producer, Writer</p>
-          <p>2027 · <span class="status status-in-development">In Development</span> · 90 mins</p>
-        </div>
-      </a>
-
-      <a href="mouthfulofriver-film-page.html" class="grid-item film-item-link">
-        <img src="images/mouthful_still.jpg" alt="Still from Mouthful of River">
-        <div class="grid-item-info">
-          <h3>Mouthful of River</h3>
-          <h4>Co-directed with Patricia Esheverria Liras</h4>
-          <p>Director, Writer</p>
-          <p>2027 · <span class="status status-in-development">In Development</span> · 85 mins</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- Language toggle: clean text, slightly larger & higher -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-  <script>
-    (function(){
-      function toggleLang(){
-        var file = (location.pathname.split('/').filter(Boolean).pop() || 'index.html');
-        if (location.pathname.startsWith('/jp/')) {
-          location.href = '/' + file;        // jp -> en
-        } else {
-          location.href = '/jp/' + file;     // en -> jp
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+    <script src="collage-layout.js"></script>
+    <script src="portfolio-collage.js"></script>
+  <script src="lang-toggle-global.js"></script>
 </body>
 </html>

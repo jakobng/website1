@@ -1,54 +1,47 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mulika - Leo Nelki</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="film-page-system.css">
   <link rel="alternate" hreflang="en" href="/mulika-film-page.html">
   <link rel="alternate" hreflang="ja" href="/jp/mulika-film-page.html">
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1><a href="/index.html">Leo Nelki</a></h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="completed.html">Completed Films</a></li>
-        <li><a href="wip.html">Works in Progress</a></li>
-        <li><a href="writing.html">Writing</a></li>
-        <li><a href="other-projects.html">Experiments</a></li>
-      </ul>
+<body class="film-body">
+  <header class="film-topbar">
+    <a class="logo" href="index.html">&larr; Homepage</a>
+    <nav class="film-nav">
+      <a href="films.html">Films</a>
+      <a href="other-projects.html">Other Projects</a>
+      <a href="#" data-lang-toggle data-lang-file="mulika-film-page.html" aria-label="Switch language">日本語</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="connected-grid film-page-grid">
+  <main class="film-shell">
+    <section class="film-frame film-hero">
+      <img src="images/mulika_still.jpg" alt="Mulika still">
+    </section>
 
-      <div class="grid-item hero-image-item" id="mulika-hero-image"></div>
-      
-      <div class="grid-item title-item">
-        <h1>Mulika</h1>
-      </div>
+    <section class="film-frame film-lead">
+      <h1>Mulika</h1>
+      <p class="film-logline">An &lsquo;afronaut&rsquo; emerges from the wreckage of his spaceship in the volcanic crater of Mount Nyiragongo. As he descends into the city below, encountering the people of present-day Goma, he begins to understand what he must do to change the future for his people.</p>
+    </section>
 
-      <div class="grid-item logline-item">
-        <p>An ‘afronaut’ emerges from the wreckage of his spaceship in the volcanic crater of Mount Nyiragongo. As he descends into the city below, encountering the people of present-day Goma, he begins to understand what he must do to change the future for his people.</p>
-      </div>
-
-      <div class="grid-item video-embed-container">
-        <div class="video-responsive">
-          <iframe src="https://player.vimeo.com/video/689701312?h=7a6c23cb6c" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <section class="film-grid">
+      <article class="film-card film-span-12">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/689701312?h=7a6c23cb6c" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Mulika trailer"></iframe>
         </div>
-      </div>
+      </article>
 
-      <div class="grid-item about-item">
+      <article class="film-card film-span-7">
         <h2>Details</h2>
-        <ul class="specs-list">
-          <li><span>Director / Writer </span><span>Maisha Maene</span></li>
+        <ul class="film-detail-list">
+          <li><span>Director / Writer</span><span>Maisha Maene</span></li>
           <li><span>Producer / Editor</span><span>Leo Nelki</span></li>
           <li><span>Cast</span><span>Sefu Weber-kal, Faustin Biyoga, Ibrahim Twaha, Sarah Bahati</span></li>
           <li><span>Original Score</span><span>Don Zilla, Jack Moran</span></li>
@@ -68,21 +61,21 @@
           <li><span>Thanks</span><span>Robert Levy, Terry Duffy, Max Nelki Gopfert, Bazirake Maene Pascal, Denise Ngende, Chris Horsley, Nyege Nyege Tapes, BBOXX DRC, Uhuru Film Company, Bomoyi Art Center, Lac Kivu Lodge</span></li>
           <li><span>Filmed on location in</span><span>Goma, DRC</span></li>
         </ul>
-      </div>
+      </article>
 
-      <div class="grid-item specs-item">
-        <h4>Awards</h4>
+      <article class="film-card film-span-5">
+        <h2>Awards</h2>
         <ul>
           <li>Locarno Film Festival (Winner: Medien Patent Verwaltung AG Award)</li>
           <li>Dresden Short Film Festival (Winner: Golden Horseman for Sound Design)</li>
-          <li>Fickin International Film Festival Kinshasa (Winner: Best Film & Best Image)</li>
+          <li>Fickin International Film Festival Kinshasa (Winner: Best Film &amp; Best Image)</li>
           <li>Drunken Film Fest Oakland (Winner: Best World Narrative)</li>
         </ul>
 
-        <h4>Screenings</h4>
+        <h3>Screenings</h3>
         <ul>
-          <li><strong>Sundance Film Festival, USA</strong></li>
-          <li><strong>Locarno Film Festival, Switzerland</strong></li>
+          <li>Sundance Film Festival, USA</li>
+          <li>Locarno Film Festival, Switzerland</li>
           <li>FESPACO, Burkina Faso</li>
           <li>Clermont-Ferrand Short Film Festival, France</li>
           <li>Palm Springs International Shortfest, USA</li>
@@ -97,56 +90,27 @@
           <li>Aesthetica Short Film Festival, UK</li>
           <li>RIDM, Canada</li>
           <li>DOXA Documentary Film Festival, Canada</li>
-          <!-- (keep/add any remaining screenings you have) -->
         </ul>
-      </div>
+      </article>
+    </section>
+  </main>
 
-    </div>
-  </div>
-
-  <!-- Language toggle -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-
-  <script>
-    (function(){
-      function toggleLang(){
-        var p = location.pathname;
-        var file = p.split('/').filter(Boolean).pop() || 'index.html';
-        if (p.startsWith('/jp/')) {
-          location.href = '/' + file;
-        } else {
-          location.href = '/jp/' + file;
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+  <script src="film-page-system.js"></script>
+  <script src="lang-toggle-global.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

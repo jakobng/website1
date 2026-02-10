@@ -4,92 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Writing - Leo Nelki</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catalogue.css">
   <link rel="alternate" hreflang="en" href="/writing.html">
   <link rel="alternate" hreflang="ja" href="/jp/writing.html">
-  <style>
-    .writing-links ul { list-style: none; padding-left: 0; }
-    .writing-links li { margin-bottom: 10px; }
-    .writing-links a { text-decoration: none; color: var(--blue-accent); font-weight: bold; }
-    .writing-links a:hover { text-decoration: underline; }
-  </style>
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1><a href="/index.html">Leo Nelki</a></h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="completed.html">Completed Films</a></li>
-        <li><a href="wip.html">Works in Progress</a></li>
-        <li><a href="writing.html" class="active">Writing</a></li>
-        <li><a href="other-projects.html">Experiments</a></li>
-      </ul>
+<body class="catalogue-page">
+  <header class="cat-topbar">
+    <a class="logo" href="index.html">&larr; Homepage</a>
+    <nav class="cat-nav" aria-label="Primary">
+      <a href="films.html">Films</a>
+      <a href="other-projects.html">Other Projects</a>
+      <a href="cv.html">CV</a>
+      <a href="#" data-lang-toggle data-lang-file="writing.html" aria-label="Switch language">日本語</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="connected-grid">
-      <div class="grid-item text-content-item">
-        <h2>Thoughts &amp; Process</h2>
-        <p>I will be writing thoughts on my films and creative process here.</p>
-
-        <div class="writing-links">
-          <h3>Thematic Explorations for <em>Mouthful of River</em>:</h3>
-          <ul>
-            <li><a href="blog/democracy-lens.html">Democracy Lens (Coming Soon)</a></li>
-            <li><a href="blog/environmentalism-lens.html">Environmentalism Lens (Coming Soon)</a></li>
-            <li><a href="blog/ai-alignment-lens.html">AI Alignment Lens (Coming Soon)</a></li>
-          </ul>
+  <main class="cat-shell">
+    <section class="cat-columns">
+      <article class="cat-column">
+        <h2>Thematic Explorations</h2>
+        <p style="font-size: 0.85rem; color: #666; margin-bottom: 2rem;">Research lenses developed for <em>Mouthful of River</em>:</p>
+        <div class="cat-list">
+          <a class="cat-item" href="blog/democracy-lens.html">
+            <div class="cat-content">
+              <span class="cat-title">Democracy Lens</span>
+              <span class="cat-meta">Research</span>
+              <span class="cat-description">Coming soon</span>
+            </div>
+          </a>
+          <a class="cat-item" href="blog/environmentalism-lens.html">
+            <div class="cat-content">
+              <span class="cat-title">Environmentalism Lens</span>
+              <span class="cat-meta">Research</span>
+              <span class="cat-description">Coming soon</span>
+            </div>
+          </a>
+          <a class="cat-item" href="blog/ai-alignment-lens.html">
+            <div class="cat-content">
+              <span class="cat-title">AI Alignment Lens</span>
+              <span class="cat-meta">Research</span>
+              <span class="cat-description">Coming soon</span>
+            </div>
+          </a>
         </div>
-      </div>
-    </div>
-  </div>
+      </article>
 
-  <!-- Language toggle (clean text, slightly larger & higher) -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-  <script>
-    (function(){
-      function toggleLang(){
-        var file = location.pathname.split('/').filter(Boolean).pop() || 'writing.html';
-        if (location.pathname.startsWith('/jp/')) {
-          location.href = '/' + file;    // jp -> en
-        } else {
-          location.href = '/jp/' + file; // en -> jp
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+      <article class="cat-column">
+        <h2>Academic Writing</h2>
+        <div class="cat-list">
+          <a class="cat-item" href="https://intellectdiscover.com/content/journals/10.1386/fm_00178_1" target="_blank" rel="noopener">
+            <div class="cat-content">
+              <span class="cat-title">Makavejev’s “Neo-documentarism”</span>
+              <span class="cat-meta">Film Matters / Vol 12, Issue 3</span>
+              <span class="cat-description">An essay on surrealist techniques in documentary form.</span>
+            </div>
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="lang-toggle-global.js"></script>
 </body>
 </html>

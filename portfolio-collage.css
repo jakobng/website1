@@ -1,0 +1,468 @@
+:root {
+    --bg: #fcfaf5;
+    --wall: #f2f0eb;
+    --panel: rgba(255, 255, 255, 0.95);
+    --line: #d1cdc4;
+    --line-dim: rgba(0, 0, 0, 0.08);
+    --text: #222222;
+    --muted: #727272;
+    --accent: #b08d28;
+}
+
+body.collage-theme-v4 {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Mono", monospace;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Enhanced Sunburst */
+body.collage-theme-v4::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    width: 80vmax;
+    height: 80vmax;
+    background: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 0.9) 0%,              
+        rgba(253, 184, 19, 0.35) 15%,
+        rgba(253, 184, 19, 0) 70%
+    );
+    border-radius: 50%;
+    animation: pulseGlow 50s infinite ease-in-out;
+    pointer-events: none;
+    z-index: -1; 
+}
+
+@keyframes pulseGlow {
+    0%   { transform: translate(-50%, -50%) scale(0.1); opacity: 0.9; }
+    50%  { opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(4.5); opacity: 0; }
+}
+
+.collage-header-v4 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 3rem;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.collage-header-v4 * { pointer-events: auto; }
+
+.collage-header-v4 h1 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-family: "Archivo Expanded", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 0.6rem 1rem;
+    display: inline-block;
+}
+
+.intro-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: auto;
+}
+
+.intro-text {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    max-width: 25ch;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: flex-start;
+    pointer-events: auto;
+}
+
+.collage-nav-v4 {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.collage-nav-v4 a {
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.collage-nav-v4 a:hover {
+    border-color: var(--accent);
+    background: #fff;
+}
+
+/* Mobile Menu Button & Overlay (Hidden on Desktop) */
+.mobile-menu-btn {
+    display: none;
+    background: #fff;
+    border: 1px solid var(--line);
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    font-family: inherit;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text);
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: center;
+}
+
+.mobile-nav-links a {
+    font-family: "Archivo Expanded", sans-serif;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Gallery Frame Layout (Desktop / Core) */
+.collage-scroll-v4 {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.collage-stage-v4 {
+    position: relative;
+    width: 65vw;
+    max-width: 850px;
+    margin: 15vh 0;
+    flex-shrink: 0;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.07);
+}
+
+.collage-stage-v4 img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+}
+
+/* Spotlight Dimming (Clean Hole Method) */
+.desat-mask {
+    position: absolute;
+    inset: 0;
+    z-index: 16;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    mask-image: radial-gradient(black 0%, black 100%); 
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+}
+
+.hotspot-layer.has-active .desat-mask {
+    opacity: 1;
+    -webkit-mask-image: none;
+    mask-image: none;
+    background: rgba(0, 0, 0, 0.25);
+    clip-path: polygon(
+        0% 0%, 0% 100%, 
+        var(--focus-left) 100%, 
+        var(--focus-left) var(--focus-top), 
+        calc(var(--focus-left) + var(--focus-width)) var(--focus-top), 
+        calc(var(--focus-left) + var(--focus-width)) calc(var(--focus-top) + var(--focus-height)), 
+        var(--focus-left) calc(var(--focus-top) + var(--focus-height)), 
+        var(--focus-left) 100%, 
+        100% 100%, 100% 0%
+    );
+}
+
+/* Hotspots */
+.hotspot-v4 {
+    position: absolute;
+    display: block;
+    text-decoration: none;
+    z-index: 12;
+    border: 3px solid transparent;
+    transition: all 180ms ease;
+    box-sizing: border-box;
+}
+
+.hotspot-v4.is-active {
+    z-index: 22;
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+}
+
+.hotspot-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.2rem;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 70%);
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 140ms ease;
+    pointer-events: none;
+}
+
+.hotspot-v4.is-active .hotspot-label {
+    opacity: 1;
+}
+
+.hotspot-title {
+    display: block;
+    font-family: "Archivo Expanded", sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+}
+
+.hotspot-meta {
+    display: block;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.hotspot-summary {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+/* Margin Callouts */
+.callout-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.callout {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.callout:hover, .callout.is-active {
+    opacity: 1;
+    color: var(--text);
+}
+
+.callout.left {
+    right: 100%;
+    padding-right: 2rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.callout.right {
+    left: 100%;
+    padding-left: 2rem;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    text-align: left;
+}
+
+.callout-text {
+    font-family: "Archivo Expanded", sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.callout.is-active .callout-text {
+    color: var(--text);
+}
+
+.callout-line {
+    width: 40px;
+    height: 1px;
+    background: var(--line);
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.callout.is-active .callout-line {
+    width: 60px;
+    background: var(--accent);
+}
+
+.status-footer-v4 {
+    margin-top: 6rem;
+    padding-bottom: 4rem;
+    color: var(--muted);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}
+
+/* Mobile Overrides */
+@media (max-width: 768px) {
+    .callout-wrapper { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .collage-nav-v4 { display: none; }
+
+    .collage-header-v4 {
+        position: absolute;
+        padding: 1.5rem;
+        flex-direction: column;
+    }
+
+    .nav-wrapper {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .intro-text {
+        max-width: 85%;
+        font-size: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    .collage-scroll-v4 {
+        padding-top: 80px;
+    }
+
+    .collage-stage-v4 {
+        width: 92vw;
+        margin-bottom: 5rem;
+    }
+
+    /* Internal Black Frames with Title inside */
+    .hotspot-v4 {
+        border: 2px solid #000;
+        opacity: 1;
+    }
+
+    .hotspot-label {
+        opacity: 1 !important;
+        background: none;
+        padding: 0.5rem;
+        bottom: 0;
+        top: auto;
+    }
+
+    .hotspot-title {
+        color: #fff;
+        font-size: 0.55rem;
+        letter-spacing: 0.1em;
+        background: #000;
+        display: inline-block;
+        padding: 2px 5px;
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+    }
+
+    .hotspot-meta, .hotspot-summary {
+        display: none;
+    }
+
+    /* Active Mobile State (The Spotlight) */
+    .hotspot-v4.is-active {
+        border-color: #fff;
+        z-index: 50;
+    }
+
+    .hotspot-v4.is-active .hotspot-label {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.95) 70%);
+        padding: 1rem;
+        top: auto;
+        bottom: 0;
+    }
+
+    .hotspot-v4.is-active .hotspot-title {
+        font-size: 0.9rem;
+        background: none;
+        position: static;
+        padding: 0;
+        margin-bottom: 0.4rem;
+    }
+
+    .hotspot-v4.is-active .hotspot-meta,
+    .hotspot-v4.is-active .hotspot-summary {
+        display: block;
+    }
+}

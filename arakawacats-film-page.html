@@ -1,91 +1,66 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arakawa Cats - Leo Nelki</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="film-page-system.css">
   <link rel="alternate" hreflang="en" href="/arakawacats-film-page.html">
   <link rel="alternate" hreflang="ja" href="/jp/arakawacats-film-page.html">
 </head>
-<body>
-
-  <div class="sidebar">
-    <h1><a href="/index.html">Leo Nelki</a></h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="completed.html">Completed Films</a></li>
-        <li><a href="wip.html">Works in Progress</a></li>
-        <li><a href="writing.html">Writing</a></li>
-        <li><a href="other-projects.html">Experiments</a></li>
-      </ul>
+<body class="film-body">
+  <header class="film-topbar">
+    <a class="logo" href="index.html">&larr; Homepage</a>
+    <nav class="film-nav">
+      <a href="films.html">Films</a>
+      <a href="other-projects.html">Other Projects</a>
+      <a href="#" data-lang-toggle data-lang-file="arakawacats-film-page.html" aria-label="Switch language">日本語</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="connected-grid film-page-grid">
+  <main class="film-shell">
+    <section class="film-frame film-hero">
+      <img src="images/arakawacats_still.jpg" alt="Arakawa Cats still">
+    </section>
 
-      <div class="grid-item hero-image-item" id="arakawa-hero-image"></div>
-      
-      <div class="grid-item title-item">
-        <h1>Arakawa Cats</h1>
-      </div>
+    <section class="film-frame film-lead">
+      <h1>Arakawa Cats</h1>
+      <p class="film-logline">Finding redemption on the banks of Tokyo&rsquo;s Arakawa river.</p>
+    </section>
 
-      <div class="grid-item logline-item">
-        <p>Finding redemption on the banks of Tokyo’s Arakawa river.</p>
-      </div>
-
-      <div class="grid-item specs-item">
+    <section class="film-grid">
+      <article class="film-card film-span-5">
         <h2>Details</h2>
-        <ul class="specs-list">
+        <ul class="film-detail-list">
           <li><span>Director</span><span>Leo Nelki</span></li>
           <li><span>Cast</span><span>Ruben Torosyan</span></li>
           <li><span>Music</span><span>Katey Moss Catwalk by David Teie</span></li>
           <li><span>Year</span><span>2024</span></li>
           <li><span>Thanks</span><span>Moeka Iida, Felix Idle, Alfred Oyaka, Ruben Torosyan</span></li>
         </ul>
-      </div>
-    </div>
-  </div>
+      </article>
+    </section>
+  </main>
 
-  <!-- Language toggle -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;         /* slightly higher */
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;   /* slightly larger font */
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-
-  <script>
-    (function(){
-      function toggleLang(){
-        var p = location.pathname;
-        var file = p.split('/').filter(Boolean).pop() || 'index.html';
-
-        if (p.startsWith('/jp/')) {
-          var en = file.replace(/-jp(?=\.html$)/, '');
-          location.href = '/' + en;
-        } else {
-          var jp = file.replace(/\.html$/, '-jp.html');
-          location.href = '/jp/' + jp;
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">日本語</a>
-
+  <script src="film-page-system.js"></script>
+  <script src="lang-toggle-global.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
