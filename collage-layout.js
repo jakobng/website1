@@ -7,7 +7,7 @@ window.COLLAGE_LAYOUT = {
     "width": 3072,
     "height": 4350
   },
-  "world_image": "images/collage/collage_final3.png",
+  "world_image": "images/collage/collage_final3.jpg",
   "input_image": "images/collage/collage_input.png",
   "mask_image": "images/collage/collage_mask.png",
   "projects": [
