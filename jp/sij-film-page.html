@@ -3,119 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sunday in Japan - 短編ドキュメンタリー</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>Sunday in Japan - Leo Nelki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../film-page-system.css">
   <link rel="alternate" hreflang="en" href="/sij-film-page.html">
   <link rel="alternate" hreflang="ja" href="/jp/sij-film-page.html">
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1 style="font-size: 1.6em; line-height: 1.2em;">
-        <a href="/jp/index.html" style="color: inherit; text-decoration: none;">
-          ネルキ・リオ<br>
-          <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
-        </a>
-      </h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="/jp/index.html">ホーム</a></li>
-        <li><a href="/jp/completed.html">完成作品</a></li>
-        <li><a href="/jp/wip.html">制作中</a></li>
-        <li><a href="/jp/writing.html">文章</a></li>
-        <li><a href="/jp/other-projects.html">実験</a></li>
-      </ul>
+<body class="film-body">
+  <header class="film-topbar">
+    <a class="logo" href="/jp/index.html">&larr; ホーム</a>
+    <nav class="film-nav">
+      <a href="/jp/films.html">作品</a>
+      <a href="/jp/other-projects.html">その他のプロジェクト</a>
+      <a href="/sij-film-page.html" aria-label="Switch language">EN</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="connected-grid film-page-grid">
+  <main class="film-shell">
+    <section class="film-frame film-hero">
+      <img src="../images/sij_still.png" alt="Sunday in Japan still">
+    </section>
 
-      <div class="grid-item hero-image-item" id="sij-hero-image"></div>
-      
-      <div class="grid-item title-item">
-        <h1>Sunday in Japan</h1>
-      </div>
+    <section class="film-frame film-lead">
+      <h1>Sunday in Japan</h1>
+      <p class="film-logline">"Ugandan Jackie Chan" Sunday creates action scenes drawn from his life as an asylum-seeker in Tokyo.</p>
+    </section>
 
-      <div class="grid-item logline-item">
-        <p>“ウガンダのジャッキー・チェン”ことSundayが、東京での難民申請者としての経験からアクション・シーンを生み出していく。</p>
-      </div>
+    <section class="film-grid">
+      <article class="film-card film-span-7">
+        <h2>About This Film</h2>
+        <p>Sunday is a Ugandan man in his fifties. He has been an asylum-seeker in Japan for nearly 15 years. Inspired by Wakaliwood, a Ugandan style of action movies, and together with the local Japanese community, they begin filming scenes born out of Sunday&rsquo;s experiences in Japan. Faced with the constant threat of detention or deportation, and with no permission to work or travel, Sunday at first suggests ideas that reflect this harsh reality that he has lived with for over a decade.</p>
+        <p>But as he becomes accustomed to his new position as an action-movie director, Sunday shifts his focus away from scenes inspired by fear and begins to depict an imagined future in Japan.</p>
+      </article>
 
-      <div class="grid-item about-item">
-        <h2>作品について</h2>
-        <p>Sundayは50代のウガンダ人男性。日本で難民申請を続けておよそ15年になる。ウガンダ発のアクション映画スタイル「ワカリウッド」に触発され、地域の日本人コミュニティとともに、彼が日本で経験してきた出来事から生まれたシーンの撮影を始める。収容や送還の不安が常につきまとう中、就労や渡航の許可もない。最初、Sundayが提案するアイデアは、十数年にわたり彼が向き合ってきた厳しい現実を反映していた。</p>
-        <p>しかしアクション映画の“監督”という新しい立場に慣れるにつれ、恐れに由来する場面から離れ、日本での想像上の未来を描くことへと焦点を移していく。</p>
-      </div>
-
-      <div class="grid-item specs-item">
-        <h2>詳細</h2>
-        <ul class="specs-list">
-          <li><span>監督</span><span>ネルキ・リオ (Leo Nelki)</span></li>
-          <li><span>プロデューサー</span><span>Moon Road Media, Elda Productions</span></li>
-          <li><span>ステータス</span><span class="status status-in-production">制作中</span></li>
+      <article class="film-card film-span-5">
+        <h2>Details</h2>
+        <ul class="film-detail-list">
+          <li><span>Director</span><span>Leo Nelki</span></li>
+          <li><span>Producers</span><span>Moon Road Media, Elda Productions</span></li>
+          <li><span>Status</span><span>In Production</span></li>
         </ul>
 
-        <h4>支援</h4>
+        <h3>Supported by</h3>
         <ul>
           <li>Creative Europe Media</li>
           <li>Docs Up Fund</li>
         </ul>
 
-        <h4>選出</h4>
+        <h3>Selected for</h3>
         <ul>
           <li>Sheffield Doc Fest Meetmarket</li>
           <li>TokyoDocs</li>
           <li>FipaDoc</li>
           <li>DocsBarcelona</li>
         </ul>
-      </div>
+      </article>
+    </section>
+  </main>
 
-    </div>
-  </div>
-
-  <!-- Language toggle (clean text, slightly larger & higher) -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-  <script>
-    (function(){
-      function toggleLang(){
-        var file = location.pathname.split('/').filter(Boolean).pop() || 'sij-film-page.html';
-        if (location.pathname.startsWith('/jp/')) {
-          location.href = '/' + file;        // jp -> en
-        } else {
-          location.href = '/jp/' + file;     // en -> jp
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+  <script src="../film-page-system.js"></script>
+  <script src="../lang-toggle-global.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

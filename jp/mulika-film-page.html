@@ -3,155 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mulika - 短編映画</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>Mulika - Leo Nelki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../film-page-system.css">
   <link rel="alternate" hreflang="en" href="/mulika-film-page.html">
   <link rel="alternate" hreflang="ja" href="/jp/mulika-film-page.html">
 </head>
-<body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1 style="font-size: 1.6em; line-height: 1.2em;">
-        <a href="/jp/index.html" style="color: inherit; text-decoration: none;">
-          ネルキ・リオ<br>
-          <span style="font-size: 0.8em; font-weight: 400;">Leo Nelki</span>
-        </a>
-      </h1>
-      <button class="mobile-nav-close" aria-label="Close navigation">&times;</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="/jp/index.html">ホーム</a></li>
-        <li><a href="/jp/completed.html">完成作品</a></li>
-        <li><a href="/jp/wip.html">制作中</a></li>
-        <li><a href="/jp/writing.html">文章</a></li>
-        <li><a href="/jp/other-projects.html">実験</a></li>
-      </ul>
+<body class="film-body">
+  <header class="film-topbar">
+    <a class="logo" href="/jp/index.html">&larr; ホーム</a>
+    <nav class="film-nav">
+      <a href="/jp/films.html">作品</a>
+      <a href="/jp/other-projects.html">その他のプロジェクト</a>
+      <a href="/mulika-film-page.html" aria-label="Switch language">EN</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="connected-grid film-page-grid">
+  <main class="film-shell">
+    <section class="film-frame film-hero">
+      <img src="../images/mulika_still.jpg" alt="Mulika still">
+    </section>
 
-      <div class="grid-item hero-image-item" id="mulika-hero-image"></div>
-      
-      <div class="grid-item title-item">
-        <h1>Mulika</h1>
-      </div>
+    <section class="film-frame film-lead">
+      <h1>Mulika</h1>
+      <p class="film-logline">An &lsquo;afronaut&rsquo; emerges from the wreckage of his spaceship in the volcanic crater of Mount Nyiragongo. As he descends into the city below, encountering the people of present-day Goma, he begins to understand what he must do to change the future for his people.</p>
+    </section>
 
-      <div class="grid-item logline-item">
-        <p>ニイラゴンゴ火山の火口で宇宙船の残骸から現れた“アフロノート”。彼はゴマの街へと降りていき、人びとと出会いながら、自分が未来を変えるために何をすべきかを見出していく。</p>
-      </div>
-
-      <div class="grid-item video-embed-container">
-        <div class="video-responsive">
-          <iframe src="https://player.vimeo.com/video/689701312?h=7a6c23cb6c" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <section class="film-grid">
+      <article class="film-card film-span-12">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/689701312?h=7a6c23cb6c" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Mulika trailer"></iframe>
         </div>
-      </div>
+      </article>
 
-      <div class="grid-item about-item">
-        <h2>詳細</h2>
-        <ul class="specs-list">
-          <li><span>監督・脚本</span><span>マイシャ・マエネ</span></li>
-          <li><span>プロデューサー／編集</span><span>ネルキ・リオ (Leo Nelki)</span></li>
-          <li><span>出演</span><span>セフ・ウェバー＝カル、フォースタン・ビヨガ、イブラヒム・トワハ、サラ・バハティ</span></li>
-          <li><span>オリジナル音楽</span><span>ドン・ジラ、ジャック・モラン</span></li>
-          <li><span>クラブ・シーン楽曲</span><span>Rey Sapienz &amp; Congo Techno Ensemble「Eza Makambo」</span></li>
-          <li><span>撮影監督</span><span>TD ジャック・ムヒンド</span></li>
-          <li><span>セカンドカメラ</span><span>エリ・マエネ</span></li>
-          <li><span>撮影助手</span><span>ジャスティン・カセレカ</span></li>
-          <li><span>ドローン操作</span><span>クリス・ホースリー</span></li>
-          <li><span>セカンドドローン</span><span>ミシェル・ルナンガ</span></li>
-          <li><span>衣装</span><span>アイザック・バハティ</span></li>
-          <li><span>整音</span><span>タヴィス・カクレ・ムヘシ</span></li>
-          <li><span>ボイスオーバー台本</span><span>ココ・カバンバ</span></li>
-          <li><span>翻訳</span><span>エリオラ・ヘンツラー</span></li>
-          <li><span>カラーリスト</span><span>ヴァレリオ・モリーニ</span></li>
-          <li><span>パートナー</span><span>Trust Merchant Bank（DRC）</span></li>
-          <li><span>支援</span><span>Terry Duffy Art Foundation, BADA Projects</span></li>
-          <li><span>謝辞</span><span>Robert Levy, Terry Duffy, Max Nelki Gopfert, Bazirake Maene Pascal, Denise Ngende, Chris Horsley, Nyege Nyege Tapes, BBOXX DRC, Uhuru Film Company, Bomoyi Art Center, Lac Kivu Lodge</span></li>
-          <li><span>撮影地</span><span>ゴマ（コンゴ民主共和国）</span></li>
+      <article class="film-card film-span-7">
+        <h2>Details</h2>
+        <ul class="film-detail-list">
+          <li><span>Director / Writer</span><span>Maisha Maene</span></li>
+          <li><span>Producer / Editor</span><span>Leo Nelki</span></li>
+          <li><span>Cast</span><span>Sefu Weber-kal, Faustin Biyoga, Ibrahim Twaha, Sarah Bahati</span></li>
+          <li><span>Original Score</span><span>Don Zilla, Jack Moran</span></li>
+          <li><span>Music (Club Scene)</span><span>Eza Makambo by Rey Sapienz and the Congo Techno Ensemble</span></li>
+          <li><span>Director of Photography</span><span>TD Jack Muhindo</span></li>
+          <li><span>2nd Camera</span><span>Eli Maene</span></li>
+          <li><span>Assistant DOP</span><span>Justin Kasereka</span></li>
+          <li><span>Drone Operator</span><span>Chris Horsley</span></li>
+          <li><span>2nd Drone Operator</span><span>Michel Lunanga</span></li>
+          <li><span>Costume Designer</span><span>Isaac Bahati</span></li>
+          <li><span>Sound Recordist</span><span>Tavis Kakule Muhesi</span></li>
+          <li><span>Voiceover Text</span><span>Koko Kabamba</span></li>
+          <li><span>Translation</span><span>Eliora Henzler</span></li>
+          <li><span>Colourist</span><span>Valerio Morini</span></li>
+          <li><span>In partnership with</span><span>Trust Merchant Bank, DRC</span></li>
+          <li><span>Supported by</span><span>Terry Duffy Art Foundation, BADA Projects</span></li>
+          <li><span>Thanks</span><span>Robert Levy, Terry Duffy, Max Nelki Gopfert, Bazirake Maene Pascal, Denise Ngende, Chris Horsley, Nyege Nyege Tapes, BBOXX DRC, Uhuru Film Company, Bomoyi Art Center, Lac Kivu Lodge</span></li>
+          <li><span>Filmed on location in</span><span>Goma, DRC</span></li>
         </ul>
-      </div>
+      </article>
 
-      <div class="grid-item specs-item">
-        <h4>受賞</h4>
+      <article class="film-card film-span-5">
+        <h2>Awards</h2>
         <ul>
-          <li>ロカルノ映画祭（Medien Patent Verwaltung AG Award 受賞）</li>
-          <li>ドレスデン短編映画祭（Golden Horseman for Sound Design 受賞）</li>
-          <li>Fickin 国際映画祭キンシャサ（最優秀作品賞・最優秀撮影賞）</li>
-          <li>Drunken Film Fest Oakland（Best World Narrative）</li>
+          <li>Locarno Film Festival (Winner: Medien Patent Verwaltung AG Award)</li>
+          <li>Dresden Short Film Festival (Winner: Golden Horseman for Sound Design)</li>
+          <li>Fickin International Film Festival Kinshasa (Winner: Best Film &amp; Best Image)</li>
+          <li>Drunken Film Fest Oakland (Winner: Best World Narrative)</li>
         </ul>
 
-        <h4>上映</h4>
+        <h3>Screenings</h3>
         <ul>
-          <li><strong>サンダンス映画祭（米）</strong></li>
-          <li><strong>ロカルノ映画祭（スイス）</strong></li>
-          <li>FESPACO（ブルキナファソ）</li>
-          <li>クレルモン＝フェラン国際短編映画祭（仏）</li>
-          <li>パームスプリングス国際ショートフェスト（米）</li>
-          <li>アスペン・ショートフェスト（米）</li>
-          <li>タンペレ映画祭（フィンランド）</li>
-          <li>ロンドン短編映画祭（英）</li>
-          <li>エンカウンターズ短編映画祭（英）</li>
-          <li>シアトル国際映画祭（米）</li>
-          <li>ヘルシンキ国際映画祭 Love &amp; Anarchy（フィンランド）</li>
-          <li>ヴィンタートゥール国際短編映画祭（スイス）</li>
-          <li>ドレスデン国際短編映画祭（独）</li>
-          <li>Aesthetica 短編映画祭（英）</li>
-          <li>RIDM（カナダ）</li>
-          <li>DOXA ドキュメンタリー映画祭（カナダ）</li>
-          <!-- （必要に応じて他の上映を追記してください） -->
+          <li>Sundance Film Festival, USA</li>
+          <li>Locarno Film Festival, Switzerland</li>
+          <li>FESPACO, Burkina Faso</li>
+          <li>Clermont-Ferrand Short Film Festival, France</li>
+          <li>Palm Springs International Shortfest, USA</li>
+          <li>Aspen ShortFest, USA</li>
+          <li>Tampere Film Festival, Finland</li>
+          <li>London Short Film Festival, UK</li>
+          <li>Encounters Short Film Festival, UK</li>
+          <li>Seattle International Film Festival, USA</li>
+          <li>Helsinki International Film Festival Love &amp; Anarchy, Finland</li>
+          <li>Internationale Kurzfilmtage Winterthur, Switzerland</li>
+          <li>Dresden International Short Film Festival, Germany</li>
+          <li>Aesthetica Short Film Festival, UK</li>
+          <li>RIDM, Canada</li>
+          <li>DOXA Documentary Film Festival, Canada</li>
         </ul>
-      </div>
+      </article>
+    </section>
+  </main>
 
-    </div>
-  </div>
-
-  <!-- Language toggle -->
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 9999;
-      font-size: 19px;
-      font-weight: 700;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-    .lang-toggle:hover { text-decoration: underline; }
-  </style>
-
-  <script>
-    (function(){
-      function toggleLang(){
-        var p = location.pathname;
-        var file = p.split('/').filter(Boolean).pop() || 'index.html';
-        if (p.startsWith('/jp/')) {
-          location.href = '/' + file;
-        } else {
-          location.href = '/jp/' + file;
-        }
-      }
-      window.__toggleLang = toggleLang;
-    })();
-  </script>
-
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
-
-  <script>
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const sidebar = document.querySelector('.sidebar');
-    if (mobileNavToggle && sidebar && mobileNavClose) {
-      mobileNavToggle.addEventListener('click', () => sidebar.classList.add('open'));
-      mobileNavClose.addEventListener('click', () => sidebar.classList.remove('open'));
-    }
-  </script>
+  <script src="../film-page-system.js"></script>
+  <script src="../lang-toggle-global.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
