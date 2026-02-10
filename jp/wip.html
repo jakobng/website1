@@ -9,7 +9,7 @@
   <link rel="alternate" hreflang="ja" href="/jp/wip.html">
 </head>
 <body>
-  <button class="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+  <button class="mobile-nav-toggle" aria-label="ナビゲーションを開く">&#9776;</button>
   <div class="sidebar">
     <div class="sidebar-header">
       <h1><a href="/jp/index.html">Leo Nelki</a></h1>
@@ -86,7 +86,7 @@
     </div>
   </div>
 
-  <!-- Language toggle (clean text, slightly larger & higher) -->
+  <!-- 言語切替 -->
   <style>
     .lang-toggle {
       position: fixed;
@@ -108,15 +108,15 @@
       function toggleLang(){
         var file = location.pathname.split('/').filter(Boolean).pop() || 'wip.html';
         if (location.pathname.startsWith('/jp/')) {
-          location.href = '/' + file;        // jp -> en
+          location.href = '/' + file;        // 日本語 -> 英語
         } else {
-          location.href = '/jp/' + file;     // en -> jp
+          location.href = '/jp/' + file;     // 英語 -> 日本語
         }
       }
       window.__toggleLang = toggleLang;
     })();
   </script>
-  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="Switch language">EN</a>
+  <a class="lang-toggle" href="#" onclick="__toggleLang(); return false;" aria-label="言語を切り替え">EN</a>
 
   <script>
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
