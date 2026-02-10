@@ -18,6 +18,28 @@
       });
   }
 
+  var fallbackWorldImage = image ? image.getAttribute("src") : "";
+  var worldImageCandidates = [];
+
+  function addCandidate(src) {
+    if (!src) return;
+    if (worldImageCandidates.indexOf(src) === -1) worldImageCandidates.push(src);
+  }
+
+  addCandidate(data && data.world_image);
+  addCandidate(fallbackWorldImage);
+  addCandidate("images/mouthful_still.jpg");
+  addCandidate("images/broadlistening_still.jpg");
+
+  if (image) {
+    image.dataset.fallbackIndex = "0";
+    image.addEventListener("error", function () {
+      var nextIndex = Number(image.dataset.fallbackIndex || "0") + 1;
+      image.dataset.fallbackIndex = String(nextIndex);
+      if (worldImageCandidates[nextIndex]) image.src = worldImageCandidates[nextIndex];
+    });
+  }
+
   if (!data) return;
 
   var isSmall = window.matchMedia("(max-width: 768px)").matches;
@@ -73,7 +95,7 @@
     }, 50);
   }
 
-  image.src = data.world_image;
+  if (image && worldImageCandidates[0]) image.src = worldImageCandidates[0];
 
   data.projects.forEach(function (project) {
     var hotspot = document.createElement("a");
