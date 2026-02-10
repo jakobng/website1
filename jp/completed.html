@@ -3,79 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>完成作品</title>
+  <title>Completed Films</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="alternate" hreflang="en" href="/completed.html">
   <link rel="alternate" hreflang="ja" href="/jp/completed.html">
 </head>
 <body>
-  <button class="mobile-nav-toggle" aria-label="ナビゲーションを開く">☰</button>
+  <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
   <div class="sidebar">
     <div class="sidebar-header">
       <h1><a href="/jp/index.html">Leo Nelki</a></h1>
-      <button class="mobile-nav-close" aria-label="ナビゲーションを閉じる">×</button>
+      <button class="mobile-nav-close" aria-label="Close navigation">×</button>
     </div>
     <nav>
       <ul>
         <li><a href="/jp/index.html">ホーム</a></li>
-        <li><a href="/jp/completed.html" class="active">完成作品</a></li>
-        <li><a href="/jp/wip.html">制作中</a></li>
-        <li><a href="/jp/writing.html">文章</a></li>
-        <li><a href="/jp/other-projects.html">実験</a></li>
+        <li><a href="/jp/completed.html" class="active">Completed Films</a></li>
+        <li><a href="/jp/wip.html">Works in Progress</a></li>
+        <li><a href="/jp/writing.html">Writing</a></li>
+        <li><a href="/jp/other-projects.html">Experiments</a></li>
       </ul>
     </nav>
   </div>
 
   <div class="main-content">
-    <h2 class="subtle-heading">長編</h2>
+    <h2 class="subtle-heading">Feature Films</h2>
     <div class="connected-grid feature-film-grid"></div>
 
-    <h2 class="subtle-heading">短編</h2>
+    <h2 class="subtle-heading">Short Films</h2>
     <div class="connected-grid short-film-grid">
 
       <a href="/jp/arakawacats-film-page.html" class="grid-item film-item-link">
-        <img src="../images/arakawacats_still.jpg" alt="荒川キャッツ">
+        <img src="../images/arakawacats_still.jpg" alt="Still from Arakawa Cats">
         <div class="grid-item-info">
-          <h3>荒川キャッツ</h3>
-          <p>監督</p>
-          <p>2024 · <span class="status status-completed">完成</span> · 7 分</p>
+          <h3>Arakawa Cats</h3>
+          <p>Director</p>
+          <p>2024 · <span class="status status-completed">Completed</span> · 7 mins</p>
         </div>
       </a>
 
       <a href="/jp/lobiekosimba-film-page.html" class="grid-item film-item-link">
-        <img src="../images/lobiekosimba_still.png" alt="ロビ・エコシンバ">
+        <img src="../images/lobiekosimba_still.png" alt="Still from Lobi Ekosimba">
         <div class="grid-item-info">
-          <h3>ロビ・エコシンバ</h3>
-          <h4>監督：Eli Maene</h4>
-          <p>Co-プロデューサー・編集</p>
-          <p>2024 · <span class="status status-completed">完成</span> · 15 分</p>
+          <h3>Lobi Ekosimba</h3>
+          <h4>Directed by Eli Maene</h4>
+          <p>Co-Producer, Editor</p>
+          <p>2024 · <span class="status status-completed">Completed</span> · 15 mins</p>
         </div>
       </a>
 
       <a href="/jp/mulika-film-page.html" class="grid-item film-item-link">
-        <img src="../images/Mulika_withlaurels.png" alt="ムリカ">
+        <img src="../images/Mulika_withlaurels.png" alt="Still from Mulika">
         <div class="grid-item-info">
-          <h3>ムリカ</h3>
-          <h4>監督：Maisha Maene</h4>
-          <p>プロデューサー・編集</p>
-          <p>2022 · <span class="status status-completed">完成</span> · 14 分</p>
+          <h3>Mulika</h3>
+          <h4>Directed by Maisha Maene</h4>
+          <p>Producer, Editor</p>
+          <p>2022 · <span class="status status-completed">Completed</span> · 14 mins</p>
         </div>
       </a>
 
       <a href="/jp/apa-film-page.html" class="grid-item film-item-link">
-        <img src="../images/apa_still.png" alt="アパ">
+        <img src="../images/apa_still.png" alt="Still from APA">
         <div class="grid-item-info">
-          <h3>アパ</h3>
-          <h4>共同監督：Maisha Maene</h4>
-          <p>監督・脚本</p>
-          <p>2021 · <span class="status status-completed">完成</span> · 3 分</p>
+          <h3>APA</h3>
+          <h4>Co-directed with Maisha Maene</h4>
+          <p>Director, Writer</p>
+          <p>2021 · <span class="status status-completed">Completed</span> · 3 mins</p>
         </div>
       </a>
 
     </div>
   </div>
 
-  <!-- 言語切替 -->
+  <!-- Language toggle: clean text, slightly larger & higher -->
   <style>
     .lang-toggle {
       position: fixed;
@@ -97,9 +97,9 @@
       function toggleLang(){
         var file = (location.pathname.split('/').filter(Boolean).pop() || 'completed.html');
         if (location.pathname.startsWith('/jp/')) {
-          location.href = '/' + file;        // 日本語 -> 英語
+          location.href = '/' + file;        // jp -> en
         } else {
-          location.href = '/jp/' + file;     // 英語 -> 日本語
+          location.href = '/jp/' + file;     // en -> jp
         }
       }
       window.__toggleLang = toggleLang;
