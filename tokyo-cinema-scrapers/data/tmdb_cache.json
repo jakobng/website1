@@ -19562,7 +19562,7 @@
       "Mystery"
     ],
     "runtime": 89,
-    "vote_average": 7.4,
+    "vote_average": 7.447,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -46697,7 +46697,7 @@
   "tmdb:1530941": {
     "tmdb_id": 1530941,
     "tmdb_title_jp": "新劇場版 銀魂 -吉原大炎上-",
-    "tmdb_title_en": "Shin-Gekijōban Gintama: Yoshiwara Daienjō",
+    "tmdb_title_en": "Gintama: Yoshiwara in Flames",
     "tmdb_title_original": "新劇場版 銀魂 -吉原大炎上-",
     "tmdb_original_language": "ja",
     "overview": "",
@@ -47461,6 +47461,1729 @@
       {
         "iso_3166_1": "BE",
         "name": "Belgium"
+      }
+    ]
+  },
+  "12月の君へ": {
+    "tmdb_id": 1104331,
+    "tmdb_title_jp": "12月の君へ",
+    "tmdb_title_en": "Heavy Snow",
+    "tmdb_title_original": "폭설",
+    "tmdb_original_language": "ko",
+    "overview": "俳優を夢見る高校生スアンの学校に、子役出身の人気俳優ソルが都会から転校してくる。きらびやかな世界で自分を見失い苦しんでいたソルは、スアンの青く燃えるような演技に心ひかれていく。ある日の放課後、冬の海でサーフィンをした2人は、冷えきった体を炎の前で寄せあい、互いの孤独に触れるように心を通わせる。しかし、思春期の揺れる思いは友情と恋愛の狭間ですれ違い、やがてソルはスアンの前から姿を消してしまう。時が流れ、成長して俳優となったスアンは、かつて伝えられなかったソルへの思いを胸に、彼女の面影を探し続けていた。ある雪の日、スアンは再び冬の海へと向かう。",
+    "overview_en": "Su-an, a performing arts high school student, becomes close with Seol, an actress and celebrity. During a trip, they realize that they have feelings for each other. However, misunderstandings pile up too much, and Seol leaves Su-an. Su-an later becomes an actress and returns to the winter sea, longing for Seol.",
+    "poster_path": "/10566j27JPWTAMju9HPmoxls09F.jpg",
+    "backdrop_path": "/wfP2iVp5K7Qm72V4vegAVfi6tl5.jpg",
+    "release_date": "2024-10-23",
+    "director": "Yun Su-ik",
+    "director_jp": "Yun Su-ik",
+    "director_en": "Yun Su-ik",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 77,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:1104331": {
+    "tmdb_id": 1104331,
+    "tmdb_title_jp": "12月の君へ",
+    "tmdb_title_en": "Heavy Snow",
+    "tmdb_title_original": "폭설",
+    "tmdb_original_language": "ko",
+    "overview": "俳優を夢見る高校生スアンの学校に、子役出身の人気俳優ソルが都会から転校してくる。きらびやかな世界で自分を見失い苦しんでいたソルは、スアンの青く燃えるような演技に心ひかれていく。ある日の放課後、冬の海でサーフィンをした2人は、冷えきった体を炎の前で寄せあい、互いの孤独に触れるように心を通わせる。しかし、思春期の揺れる思いは友情と恋愛の狭間ですれ違い、やがてソルはスアンの前から姿を消してしまう。時が流れ、成長して俳優となったスアンは、かつて伝えられなかったソルへの思いを胸に、彼女の面影を探し続けていた。ある雪の日、スアンは再び冬の海へと向かう。",
+    "overview_en": "Su-an, a performing arts high school student, becomes close with Seol, an actress and celebrity. During a trip, they realize that they have feelings for each other. However, misunderstandings pile up too much, and Seol leaves Su-an. Su-an later becomes an actress and returns to the winter sea, longing for Seol.",
+    "poster_path": "/10566j27JPWTAMju9HPmoxls09F.jpg",
+    "backdrop_path": "/wfP2iVp5K7Qm72V4vegAVfi6tl5.jpg",
+    "release_date": "2024-10-23",
+    "director": "Yun Su-ik",
+    "director_jp": "Yun Su-ik",
+    "director_en": "Yun Su-ik",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 77,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "オスロ、8月31日": {
+    "tmdb_id": 75233,
+    "tmdb_title_jp": "オスロ、8月31日",
+    "tmdb_title_en": "Oslo, August 31st",
+    "tmdb_title_original": "Oslo, 31. august",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "A recovering drug addict is granted a day’s leave from rehab and returns to Oslo, where he reconnects with friends, faces the weight of his past, and struggles with uncertainty about his future. Over the course of one day, he drifts through encounters that reflect his longing for connection and his deep sense of alienation.",
+    "poster_path": "/89jwBEQfiCHpNhPBU4hi8F8mzOi.jpg",
+    "backdrop_path": "/9JPzNkDAzrnqINyaYMKfgL4FZPT.jpg",
+    "release_date": "2011-08-31",
+    "director": "ヨアキム・トリアー",
+    "director_jp": "ヨアキム・トリアー",
+    "director_en": "Joachim Trier",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 7.494,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "tmdb:75233": {
+    "tmdb_id": 75233,
+    "tmdb_title_jp": "オスロ、8月31日",
+    "tmdb_title_en": "Oslo, August 31st",
+    "tmdb_title_original": "Oslo, 31. august",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "A recovering drug addict is granted a day’s leave from rehab and returns to Oslo, where he reconnects with friends, faces the weight of his past, and struggles with uncertainty about his future. Over the course of one day, he drifts through encounters that reflect his longing for connection and his deep sense of alienation.",
+    "poster_path": "/89jwBEQfiCHpNhPBU4hi8F8mzOi.jpg",
+    "backdrop_path": "/9JPzNkDAzrnqINyaYMKfgL4FZPT.jpg",
+    "release_date": "2011-08-31",
+    "director": "ヨアキム・トリアー",
+    "director_jp": "ヨアキム・トリアー",
+    "director_en": "Joachim Trier",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 7.494,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "スペルマゲドン　精なる大冒険": {
+    "tmdb_id": 1064307,
+    "tmdb_title_jp": "スペルマゲドン　精なる大冒険",
+    "tmdb_title_en": "Spermageddon",
+    "tmdb_title_original": "Spermageddon",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Two narrative threads: one is an emerging love story between awkward teens Jens and Lisa, who are having sex for the first time; the other, an eventful quest of Simon the Semen and his friends to reach the golden goal, the Egg.",
+    "poster_path": "/xXJjuZwSI6O6r4MnnCZuSmEJfiy.jpg",
+    "backdrop_path": "/5OEcsHKZy9TLFz9qXLp5NJN9K8e.jpg",
+    "release_date": "2024-12-28",
+    "director": "Tommy Wirkola",
+    "director_jp": "Tommy Wirkola",
+    "director_en": "Tommy Wirkola",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "runtime": 80,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "アバウト・タイム　愛おしい時間について": {
+    "tmdb_id": 122906,
+    "tmdb_title_jp": "アバウト・タイム ～愛おしい時間について～",
+    "tmdb_title_en": "About Time",
+    "tmdb_title_original": "About Time",
+    "tmdb_original_language": "en",
+    "overview": "自分に自信がなく恋人のいないティムは21歳の誕生日に、父親から一家の男たちにはタイムトラベル能力があることを告げられる。恋人を得るため張り切ってタイムトラベルを繰り返すティムは、やがて魅力的な女性メアリーと恋をする。しかしタイムトラベルによって生じたアクシデントにより、そもそもメアリーと出会っていなかったということになってしまう。",
+    "overview_en": "The night after another unsatisfactory New Year's party, Tim's father tells his son that the men in his family have always had the ability to travel through time. They can't change history, but they can change what happens and has happened in their own lives. Thus begins the start of a lesson in learning to appreciate life itself as it is, as it comes, and most importantly, the people living alongside us.",
+    "poster_path": "/lDuqLnrTbbAx9R1oYLClwOyMDze.jpg",
+    "backdrop_path": "/einbto9qLXFx9QXxEHylaxDbKPx.jpg",
+    "release_date": "2013-09-04",
+    "director": "Richard Curtis",
+    "director_jp": "Richard Curtis",
+    "director_en": "Richard Curtis",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 124,
+    "vote_average": 7.906,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ANIMAL": {
+    "tmdb_id": 781732,
+    "tmdb_title_jp": "Animal",
+    "tmdb_title_en": "Animal",
+    "tmdb_title_original": "Animal",
+    "tmdb_original_language": "hi",
+    "overview": "",
+    "overview_en": "The hardened son of a powerful industrialist returns home after years abroad and vows to take bloody revenge on those threatening his father's life.",
+    "poster_path": "/hqaJrihfOCJyytIiuh1MKecM4BB.jpg",
+    "backdrop_path": "/lprsAHkwMxk2iC6VZxNmV0H7g1t.jpg",
+    "release_date": "2023-12-01",
+    "director": "Sandeep Reddy Vanga",
+    "director_jp": "Sandeep Reddy Vanga",
+    "director_en": "Sandeep Reddy Vanga",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 201,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "tmdb:781732": {
+    "tmdb_id": 781732,
+    "tmdb_title_jp": "Animal",
+    "tmdb_title_en": "Animal",
+    "tmdb_title_original": "Animal",
+    "tmdb_original_language": "hi",
+    "overview": "",
+    "overview_en": "The hardened son of a powerful industrialist returns home after years abroad and vows to take bloody revenge on those threatening his father's life.",
+    "poster_path": "/hqaJrihfOCJyytIiuh1MKecM4BB.jpg",
+    "backdrop_path": "/lprsAHkwMxk2iC6VZxNmV0H7g1t.jpg",
+    "release_date": "2023-12-01",
+    "director": "Sandeep Reddy Vanga",
+    "director_jp": "Sandeep Reddy Vanga",
+    "director_en": "Sandeep Reddy Vanga",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 201,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "ファーゴ": {
+    "tmdb_id": 275,
+    "tmdb_title_jp": "ファーゴ",
+    "tmdb_title_en": "Fargo",
+    "tmdb_title_original": "Fargo",
+    "tmdb_original_language": "en",
+    "overview": "アメリカ中北部の田舎町を舞台に、偽装誘拐が引き起こす惨劇とそれに関わる人々の奇妙な姿を描いたユニークな犯罪ドラマ。コーエン兄弟はその特異な作風で知られる、８０～９０年代アメリカ・インディペンデント映画界の雄だが、この作品はその真価がもっとも発揮された一編と言っていいだろう。実話を基にしているとはいえ、ほとんどは創作だというストーリー自体の面白さももちろんだが、個々のキャラクターのおかしさとさりげなくも効果的な台詞の数々は、ドラマの完成度を極限まで高めている。雪に覆われた白い町で起こる血みどろの物語。まさに“白のフィルム・ノワール”と呼んでもいい。カンヌ映画祭で監督賞に輝いただけでなく、アカデミーでは主演女優賞と脚本賞も獲得した逸品。\r ミネソタ州ミネアポリスに住むカー・ディーラーのジェリー・ランディガード（Ｗ・Ｈ・メイシー）は借金返済のために自分の妻ジーンを誘拐し、会社のオーナーでもある義父から身代金をいただこうと考えた。誘拐を実行するのは、前科者の従業員から紹介された妙な二人組、カール（Ｓ・ブシェミ）とグリムスラッド（Ｐ・ストーメア）。だがジーンを自宅から誘拐した二人は、隣町ブレイナードまで逃げたところで、停車を命じた警官と目撃者を射殺してしまう。ブレイナードの女性警察署長マージ・ガンダーソン（Ｆ・マクドーマンド）は事件を追ってミネアポリスに赴くが、その間にも狂い始めた誘拐計画は次々と犠牲者を産んでいく……。  　",
+    "overview_en": "Jerry, a small-town Minnesota car salesman is bursting at the seams with debt... but he's got a plan. He's going to hire two thugs to kidnap his wife in a scheme to collect a hefty ransom from his wealthy father-in-law. It's going to be a snap and nobody's going to get hurt... until people start dying. Enter Police Chief Marge, a coffee-drinking, parka-wearing - and extremely pregnant - investigator who'll stop at nothing to get her man. And if you think her small-time investigative skills will give the crooks a run for their ransom... you betcha!",
+    "poster_path": "/mRiIXxPS8xREcfvuS9h2kFbwIpM.jpg",
+    "backdrop_path": "/747dgDfL5d8esobk7h4odaOFhUq.jpg",
+    "release_date": "1996-03-08",
+    "director": "ジョエル・コーエン",
+    "director_jp": "ジョエル・コーエン",
+    "director_en": "Joel Coen",
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 98,
+    "vote_average": 7.847,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:275": {
+    "tmdb_id": 275,
+    "tmdb_title_jp": "ファーゴ",
+    "tmdb_title_en": "Fargo",
+    "tmdb_title_original": "Fargo",
+    "tmdb_original_language": "en",
+    "overview": "アメリカ中北部の田舎町を舞台に、偽装誘拐が引き起こす惨劇とそれに関わる人々の奇妙な姿を描いたユニークな犯罪ドラマ。コーエン兄弟はその特異な作風で知られる、８０～９０年代アメリカ・インディペンデント映画界の雄だが、この作品はその真価がもっとも発揮された一編と言っていいだろう。実話を基にしているとはいえ、ほとんどは創作だというストーリー自体の面白さももちろんだが、個々のキャラクターのおかしさとさりげなくも効果的な台詞の数々は、ドラマの完成度を極限まで高めている。雪に覆われた白い町で起こる血みどろの物語。まさに“白のフィルム・ノワール”と呼んでもいい。カンヌ映画祭で監督賞に輝いただけでなく、アカデミーでは主演女優賞と脚本賞も獲得した逸品。\r ミネソタ州ミネアポリスに住むカー・ディーラーのジェリー・ランディガード（Ｗ・Ｈ・メイシー）は借金返済のために自分の妻ジーンを誘拐し、会社のオーナーでもある義父から身代金をいただこうと考えた。誘拐を実行するのは、前科者の従業員から紹介された妙な二人組、カール（Ｓ・ブシェミ）とグリムスラッド（Ｐ・ストーメア）。だがジーンを自宅から誘拐した二人は、隣町ブレイナードまで逃げたところで、停車を命じた警官と目撃者を射殺してしまう。ブレイナードの女性警察署長マージ・ガンダーソン（Ｆ・マクドーマンド）は事件を追ってミネアポリスに赴くが、その間にも狂い始めた誘拐計画は次々と犠牲者を産んでいく……。  　",
+    "overview_en": "Jerry, a small-town Minnesota car salesman is bursting at the seams with debt... but he's got a plan. He's going to hire two thugs to kidnap his wife in a scheme to collect a hefty ransom from his wealthy father-in-law. It's going to be a snap and nobody's going to get hurt... until people start dying. Enter Police Chief Marge, a coffee-drinking, parka-wearing - and extremely pregnant - investigator who'll stop at nothing to get her man. And if you think her small-time investigative skills will give the crooks a run for their ransom... you betcha!",
+    "poster_path": "/mRiIXxPS8xREcfvuS9h2kFbwIpM.jpg",
+    "backdrop_path": "/747dgDfL5d8esobk7h4odaOFhUq.jpg",
+    "release_date": "1996-03-08",
+    "director": "ジョエル・コーエン",
+    "director_jp": "ジョエル・コーエン",
+    "director_en": "Joel Coen",
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 98,
+    "vote_average": 7.847,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "シビル・ウォー　アメリカ最後の日": {
+    "tmdb_id": 929590,
+    "tmdb_title_jp": "シビル・ウォー アメリカ最後の日",
+    "tmdb_title_en": "Civil War",
+    "tmdb_title_original": "Civil War",
+    "tmdb_original_language": "en",
+    "overview": "連邦政府から19もの州が離脱したアメリカ。テキサスとカリフォルニアの同盟からなる“西部勢力”と政府軍の間で内戦が勃発し、各地で激しい武力衝突が繰り広げられていた。「国民の皆さん、我々は歴史的勝利に近づいている——」。就任 “3期目”に突入した権威主義的な大統領はテレビ演説で力強く訴えるが、ワシントンD.C.の陥落は目前に迫っていた。ニューヨークに滞在していた4人のジャーナリストは、14ヶ月一度も取材を受けていないという大統領に単独インタビューを行うため、ホワイトハウスへと向かう。だが戦場と化した旅路を行く中で、内戦の恐怖と狂気に呑み込まれていくー",
+    "overview_en": "In the near future, a group of war journalists attempt to survive while reporting the truth as the United States stands on the brink of civil war.",
+    "poster_path": "/pP9i0iStttI5dLf3BAfgjV1XdFQ.jpg",
+    "backdrop_path": "/t2SXZ7KLriaLyf5QT8Iar6fSOGp.jpg",
+    "release_date": "2024-04-10",
+    "director": "アレックス・ガーランド",
+    "director_jp": "アレックス・ガーランド",
+    "director_en": "Alex Garland",
+    "genres": [
+      "戦争",
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "War",
+      "Action",
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 6.845,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:929590": {
+    "tmdb_id": 929590,
+    "tmdb_title_jp": "シビル・ウォー アメリカ最後の日",
+    "tmdb_title_en": "Civil War",
+    "tmdb_title_original": "Civil War",
+    "tmdb_original_language": "en",
+    "overview": "連邦政府から19もの州が離脱したアメリカ。テキサスとカリフォルニアの同盟からなる“西部勢力”と政府軍の間で内戦が勃発し、各地で激しい武力衝突が繰り広げられていた。「国民の皆さん、我々は歴史的勝利に近づいている——」。就任 “3期目”に突入した権威主義的な大統領はテレビ演説で力強く訴えるが、ワシントンD.C.の陥落は目前に迫っていた。ニューヨークに滞在していた4人のジャーナリストは、14ヶ月一度も取材を受けていないという大統領に単独インタビューを行うため、ホワイトハウスへと向かう。だが戦場と化した旅路を行く中で、内戦の恐怖と狂気に呑み込まれていくー",
+    "overview_en": "In the near future, a group of war journalists attempt to survive while reporting the truth as the United States stands on the brink of civil war.",
+    "poster_path": "/pP9i0iStttI5dLf3BAfgjV1XdFQ.jpg",
+    "backdrop_path": "/t2SXZ7KLriaLyf5QT8Iar6fSOGp.jpg",
+    "release_date": "2024-04-10",
+    "director": "アレックス・ガーランド",
+    "director_jp": "アレックス・ガーランド",
+    "director_en": "Alex Garland",
+    "genres": [
+      "戦争",
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "War",
+      "Action",
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 6.845,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "アプレンティス　ドナルド・トランプの創り方": {
+    "tmdb_id": 1182047,
+    "tmdb_title_jp": "アプレンティス：ドナルド・トランプの創り方",
+    "tmdb_title_en": "The Apprentice",
+    "tmdb_title_original": "The Apprentice",
+    "tmdb_original_language": "en",
+    "overview": "成功を夢見ていた20代のドナルド・トランプが、伝説の弁護士に導かれて驚愕の変身を遂げ、トップへと成り上がるまでを暴いた衝撃の問題作。不動産業を営む父の会社が政府に訴えられ、破産寸前まで追い込まれたトランプは、悪徳弁護士ロイ・コーンから“勝つための3つのルール”という非道の手段を伝授される。",
+    "overview_en": "A young Donald Trump, eager to make his name as a hungry scion of a wealthy family in 1970s New York, comes under the spell of Roy Cohn, the cutthroat attorney who would help create the Donald Trump we know today. Cohn sees in Trump the perfect protégé—someone with raw ambition, a hunger for success, and a willingness to do whatever it takes to win.",
+    "poster_path": "/549Hdul2BgPnZMhqFxp6npp2opr.jpg",
+    "backdrop_path": "/kv9xVrxfLpudBLyYf1QvLCpUQuy.jpg",
+    "release_date": "2024-10-09",
+    "director": "Ali Abbasi",
+    "director_jp": "Ali Abbasi",
+    "director_en": "Ali Abbasi",
+    "genres": [
+      "履歴",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "History",
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 6.867,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "tmdb:1182047": {
+    "tmdb_id": 1182047,
+    "tmdb_title_jp": "アプレンティス：ドナルド・トランプの創り方",
+    "tmdb_title_en": "The Apprentice",
+    "tmdb_title_original": "The Apprentice",
+    "tmdb_original_language": "en",
+    "overview": "成功を夢見ていた20代のドナルド・トランプが、伝説の弁護士に導かれて驚愕の変身を遂げ、トップへと成り上がるまでを暴いた衝撃の問題作。不動産業を営む父の会社が政府に訴えられ、破産寸前まで追い込まれたトランプは、悪徳弁護士ロイ・コーンから“勝つための3つのルール”という非道の手段を伝授される。",
+    "overview_en": "A young Donald Trump, eager to make his name as a hungry scion of a wealthy family in 1970s New York, comes under the spell of Roy Cohn, the cutthroat attorney who would help create the Donald Trump we know today. Cohn sees in Trump the perfect protégé—someone with raw ambition, a hunger for success, and a willingness to do whatever it takes to win.",
+    "poster_path": "/549Hdul2BgPnZMhqFxp6npp2opr.jpg",
+    "backdrop_path": "/kv9xVrxfLpudBLyYf1QvLCpUQuy.jpg",
+    "release_date": "2024-10-09",
+    "director": "Ali Abbasi",
+    "director_jp": "Ali Abbasi",
+    "director_en": "Ali Abbasi",
+    "genres": [
+      "履歴",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "History",
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 6.867,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "在日ミャンマー人－わたしたちの自由－": null,
+  "死んでもいい": {
+    "tmdb_id": 266628,
+    "tmdb_title_jp": "死んでもいい",
+    "tmdb_title_en": "Original Sin",
+    "tmdb_title_original": "死んでもいい",
+    "tmdb_original_language": "ja",
+    "overview": "気まま旅を続ける信は、ある日、名美と出会いひと目ぼれする。そのまま名美の働く不動産屋を訪れ、アパートを借りる。信は名美にアパートに案内されたとき、初めて名美が社長の妻であることを知るが、すでに信の気持ちは抑えがたくなっていて…。",
+    "overview_en": "Based on a novel by Bo Nishimura, the film is about an extramarital affair between the wife of an estate agent and a 22 year old man.",
+    "poster_path": "/pxv5fbZSiPfJP76S2SaDRzHUXdp.jpg",
+    "backdrop_path": "/j80HdLR3nagvqpnLolJi1LHenof.jpg",
+    "release_date": "1992-10-20",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 117,
+    "vote_average": 4.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:266628": {
+    "tmdb_id": 266628,
+    "tmdb_title_jp": "死んでもいい",
+    "tmdb_title_en": "Original Sin",
+    "tmdb_title_original": "死んでもいい",
+    "tmdb_original_language": "ja",
+    "overview": "気まま旅を続ける信は、ある日、名美と出会いひと目ぼれする。そのまま名美の働く不動産屋を訪れ、アパートを借りる。信は名美にアパートに案内されたとき、初めて名美が社長の妻であることを知るが、すでに信の気持ちは抑えがたくなっていて…。",
+    "overview_en": "Based on a novel by Bo Nishimura, the film is about an extramarital affair between the wife of an estate agent and a 22 year old man.",
+    "poster_path": "/pxv5fbZSiPfJP76S2SaDRzHUXdp.jpg",
+    "backdrop_path": "/j80HdLR3nagvqpnLolJi1LHenof.jpg",
+    "release_date": "1992-10-20",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 117,
+    "vote_average": 4.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ヌードの夜": {
+    "tmdb_id": 105125,
+    "tmdb_title_jp": "ヌードの夜",
+    "tmdb_title_en": "A Night in Nude",
+    "tmdb_title_original": "ヌードの夜",
+    "tmdb_original_language": "ja",
+    "overview": "代行屋の紅次郎こと村木哲郎は古いビルを事務所兼自宅にしている。ある日、土屋名美が事務所を訪ねてきて東京の観光案内を依頼され引き受けたが、その夜、電話が掛かって来て急に帰ることになったのでホテルに預けた荷物を自宅に送るよう頼まれる。指定されたホテルの部屋に行ってみると、浴室に男の死体があった。村木は自分が嵌められたことに気付き、慌てて部屋を掃除し死体をスーツケースに詰めて自宅に運び、消息を絶った土屋名美を探し始める。",
+    "overview_en": "Jiro is a Tokyo man who offers a stand-in service where he'll do \"anything\". A woman claiming to be from Fukuoka wants to be shown around Tokyo and see the sights. What Jiro doesn't know is that this woman isn't who she says she is. She's on the run from her Yakuza boyfriend, and Jiro is going to be unwittingly entwined in the situation.",
+    "poster_path": "/AaGqanl3rDj4sqBcIJhHgqQs805.jpg",
+    "backdrop_path": "/cLhdwwQMzkxNPrn6v9F0QwKGEeB.jpg",
+    "release_date": "1993-12-18",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 110,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:105125": {
+    "tmdb_id": 105125,
+    "tmdb_title_jp": "ヌードの夜",
+    "tmdb_title_en": "A Night in Nude",
+    "tmdb_title_original": "ヌードの夜",
+    "tmdb_original_language": "ja",
+    "overview": "代行屋の紅次郎こと村木哲郎は古いビルを事務所兼自宅にしている。ある日、土屋名美が事務所を訪ねてきて東京の観光案内を依頼され引き受けたが、その夜、電話が掛かって来て急に帰ることになったのでホテルに預けた荷物を自宅に送るよう頼まれる。指定されたホテルの部屋に行ってみると、浴室に男の死体があった。村木は自分が嵌められたことに気付き、慌てて部屋を掃除し死体をスーツケースに詰めて自宅に運び、消息を絶った土屋名美を探し始める。",
+    "overview_en": "Jiro is a Tokyo man who offers a stand-in service where he'll do \"anything\". A woman claiming to be from Fukuoka wants to be shown around Tokyo and see the sights. What Jiro doesn't know is that this woman isn't who she says she is. She's on the run from her Yakuza boyfriend, and Jiro is going to be unwittingly entwined in the situation.",
+    "poster_path": "/AaGqanl3rDj4sqBcIJhHgqQs805.jpg",
+    "backdrop_path": "/cLhdwwQMzkxNPrn6v9F0QwKGEeB.jpg",
+    "release_date": "1993-12-18",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 110,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ノーマン・ザ・スノーマン特集": null,
+  "驕楢｡後″": {
+    "tmdb_id": 1464814,
+    "tmdb_title_jp": "道行き",
+    "tmdb_title_en": "Michiyuki - Voices of Time",
+    "tmdb_title_original": "道行き",
+    "tmdb_original_language": "ja",
+    "overview": "奈良県御所市に代々暮らす梅本(桐竹勘十郎)が所有していた古民家を購入した駒井(渡辺大知)は、大阪から移住し改修工事を進めている。その様子を見に来る梅本が語る昔の町や家に流れてきた時間の話が、駒井に大切な風景を思い出させる。そしてふたりの中で、旅の景色はゆっくりと広がっていく。",
+    "overview_en": "Moving into an old house in the rural countryside, videographer Komai converses with its former owner Umemoto, drawing from personal memories to discuss histories, cartographies and the passage of time, reflecting upon the changing tides of tradition and progress within generational spans of the town’s history.",
+    "poster_path": "/79dJu2frSTl1NTTMfeUlGAc3yX8.jpg",
+    "backdrop_path": "/fEimPgw8RkEY2LF4xbsmeqXeFfS.jpg",
+    "release_date": "2024-09-19",
+    "director": "中尾広道",
+    "director_jp": "中尾広道",
+    "director_en": "Nakao Hiromichi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 77,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【吹替】マーズ・エクスプレス": {
+    "tmdb_id": 586810,
+    "tmdb_title_jp": "マーズ・エクスプレス",
+    "tmdb_title_en": "Mars Express",
+    "tmdb_title_original": "Mars Express",
+    "tmdb_original_language": "fr",
+    "overview": "ときは23世紀――西暦2200年。地球での仕事を終え、活動拠点である火星に戻ってきた私立探偵 アリーヌ 。「行方不明になっている大学生の娘を探してほしい」という男の依頼を受けて、アンドロイドの相棒 カルロス と共に捜索を開始する。調査の過程で、火星の首都ノクティスの暗部に足を踏み入れていく二人を待ち受けていたのは、腐敗した街の裏側、強大な権力を持つ企業の陰謀、そして人間とロボットが共存する社会の根幹を揺るがす事態だった。",
+    "overview_en": "In 2200, private detective Aline Ruby and her android partner Carlos Rivera are hired by a wealthy businessman to track down a notorious hacker. On Mars, they descend deep into the underbelly of the planet's capital city where they uncover a darker story of brain farms, political corruption, and a missing girl who holds a secret about the robots that threatens to change the face of the universe.",
+    "poster_path": "/pvV19mW9nTl8Qn2lQkYGk8L7ptc.jpg",
+    "backdrop_path": "/yIOw17XdfsoCaydtrkzlZBCcHk6.jpg",
+    "release_date": "2023-11-22",
+    "director": "Jérémie Périn",
+    "director_jp": "Jérémie Périn",
+    "director_en": "Jérémie Périn",
+    "genres": [
+      "アニメーション",
+      "サイエンスフィクション",
+      "アクション",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Science Fiction",
+      "Action",
+      "Mystery"
+    ],
+    "runtime": 89,
+    "vote_average": 7.447,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "新劇場版　銀魂[0213上映後]": {
+    "tmdb_id": 1530941,
+    "tmdb_title_jp": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_title_en": "Gintama: Yoshiwara in Flames",
+    "tmdb_title_original": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Upon meeting a young boy named Haruta who makes a living as a pickpocket, Gintoki discovers that he is pickpocketing out of a desire to meet his long-lost mother, Hiwa, Yoshiwara's number one courtesan. Gintoki and his friends venture to Yoshiwara to fulfill Haruta's wish, but standing in their way is Housen, the Night King who rules Yoshiwara.",
+    "poster_path": "/5F7YrauGDP2tbzz84KKwji2MB3e.jpg",
+    "backdrop_path": "/8qSFFK9AcMl2Ecp249f5J3Nr8MK.jpg",
+    "release_date": "2026-02-13",
+    "director": "安藤尚也",
+    "director_jp": "安藤尚也",
+    "director_en": "Naoya Ando",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 124,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "新劇場版　銀魂[0213上映前]": {
+    "tmdb_id": 1530941,
+    "tmdb_title_jp": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_title_en": "Gintama: Yoshiwara in Flames",
+    "tmdb_title_original": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Upon meeting a young boy named Haruta who makes a living as a pickpocket, Gintoki discovers that he is pickpocketing out of a desire to meet his long-lost mother, Hiwa, Yoshiwara's number one courtesan. Gintoki and his friends venture to Yoshiwara to fulfill Haruta's wish, but standing in their way is Housen, the Night King who rules Yoshiwara.",
+    "poster_path": "/5F7YrauGDP2tbzz84KKwji2MB3e.jpg",
+    "backdrop_path": "/8qSFFK9AcMl2Ecp249f5J3Nr8MK.jpg",
+    "release_date": "2026-02-13",
+    "director": "安藤尚也",
+    "director_jp": "安藤尚也",
+    "director_en": "Naoya Ando",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 124,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【字幕】ｽﾍﾟﾙﾏｹﾞﾄﾞﾝ": {
+    "tmdb_id": 1064307,
+    "tmdb_title_jp": "スペルマゲドン　精なる大冒険",
+    "tmdb_title_en": "Spermageddon",
+    "tmdb_title_original": "Spermageddon",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Two narrative threads: one is an emerging love story between awkward teens Jens and Lisa, who are having sex for the first time; the other, an eventful quest of Simon the Semen and his friends to reach the golden goal, the Egg.",
+    "poster_path": "/xXJjuZwSI6O6r4MnnCZuSmEJfiy.jpg",
+    "backdrop_path": "/5OEcsHKZy9TLFz9qXLp5NJN9K8e.jpg",
+    "release_date": "2024-12-28",
+    "director": "Tommy Wirkola",
+    "director_jp": "Tommy Wirkola",
+    "director_en": "Tommy Wirkola",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "runtime": 80,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "【vol+】吹替 ｽﾍﾟﾙﾏｹﾞﾄﾞﾝ": {
+    "tmdb_id": 1064307,
+    "tmdb_title_jp": "スペルマゲドン　精なる大冒険",
+    "tmdb_title_en": "Spermageddon",
+    "tmdb_title_original": "Spermageddon",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Two narrative threads: one is an emerging love story between awkward teens Jens and Lisa, who are having sex for the first time; the other, an eventful quest of Simon the Semen and his friends to reach the golden goal, the Egg.",
+    "poster_path": "/xXJjuZwSI6O6r4MnnCZuSmEJfiy.jpg",
+    "backdrop_path": "/5OEcsHKZy9TLFz9qXLp5NJN9K8e.jpg",
+    "release_date": "2024-12-28",
+    "director": "Tommy Wirkola",
+    "director_jp": "Tommy Wirkola",
+    "director_en": "Tommy Wirkola",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "runtime": 80,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "【吹替】ｽﾍﾟﾙﾏｹﾞﾄﾞﾝ": {
+    "tmdb_id": 1064307,
+    "tmdb_title_jp": "スペルマゲドン　精なる大冒険",
+    "tmdb_title_en": "Spermageddon",
+    "tmdb_title_original": "Spermageddon",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Two narrative threads: one is an emerging love story between awkward teens Jens and Lisa, who are having sex for the first time; the other, an eventful quest of Simon the Semen and his friends to reach the golden goal, the Egg.",
+    "poster_path": "/xXJjuZwSI6O6r4MnnCZuSmEJfiy.jpg",
+    "backdrop_path": "/5OEcsHKZy9TLFz9qXLp5NJN9K8e.jpg",
+    "release_date": "2024-12-28",
+    "director": "Tommy Wirkola",
+    "director_jp": "Tommy Wirkola",
+    "director_en": "Tommy Wirkola",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "runtime": 80,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      }
+    ]
+  },
+  "銀魂 吉原大炎上【odessa vol+】": {
+    "tmdb_id": 1530941,
+    "tmdb_title_jp": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_title_en": "Gintama: Yoshiwara in Flames",
+    "tmdb_title_original": "新劇場版 銀魂 -吉原大炎上-",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Upon meeting a young boy named Haruta who makes a living as a pickpocket, Gintoki discovers that he is pickpocketing out of a desire to meet his long-lost mother, Hiwa, Yoshiwara's number one courtesan. Gintoki and his friends venture to Yoshiwara to fulfill Haruta's wish, but standing in their way is Housen, the Night King who rules Yoshiwara.",
+    "poster_path": "/5F7YrauGDP2tbzz84KKwji2MB3e.jpg",
+    "backdrop_path": "/8qSFFK9AcMl2Ecp249f5J3Nr8MK.jpg",
+    "release_date": "2026-02-13",
+    "director": "安藤尚也",
+    "director_jp": "安藤尚也",
+    "director_en": "Naoya Ando",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 124,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ﾌﾞﾙｯｸﾘﾝでZ級監督[0214ｲﾍﾞﾝﾄ]": {
+    "tmdb_id": 1481597,
+    "tmdb_title_jp": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_en": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_original": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A jaded Japanese movie star stranded in NYC without money or phone meets a passionate indie filmmaker and his crew, leading to an unexpected creative journey that could reignite her love for cinema.",
+    "poster_path": "/lOVkjcvOK6TLrGWYqQeSiS5Q647.jpg",
+    "backdrop_path": "/uHknvhfZPIHT5yqGoN37HJIKz33.jpg",
+    "release_date": "2025-11-20",
+    "director": "宇賀那健一",
+    "director_jp": "宇賀那健一",
+    "director_en": "Ken'ichi Ugana",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "博奕打ち流れ者": {
+    "tmdb_id": 546136,
+    "tmdb_title_jp": "博奕打ち　流れ者",
+    "tmdb_title_en": "The Drifting Gambler",
+    "tmdb_title_original": "博奕打ち　流れ者",
+    "tmdb_original_language": "ja",
+    "overview": "渡世の義理から仲間とともに殴り込みをかけた舟木栄太郎は、凄絶な戦いの末見事相手を倒す。一緒に殴りこんだ老侠客・仁助は深手を負い、栄太郎に別れた妻と娘・とみに届ける金を託し息を引き取った。それから５年。とみを探す栄太郎は深川木場の木場政一家に草鞋を脱ぎ、そこでとみと出会う。.",
+    "overview_en": "8th part of the Gamblers / Bakuchi-uchi series.",
+    "poster_path": "/4zgRBiYcne8rj4NYPPEUPeYa1pm.jpg",
+    "backdrop_path": "/bghtgzzhWVpEvnFhg2GQ0e0G2S7.jpg",
+    "release_date": "1970-04-18",
+    "director": "山下耕作",
+    "director_jp": "山下耕作",
+    "director_en": "Kōsaku Yamashita",
+    "genres": [
+      "犯罪"
+    ],
+    "genres_en": [
+      "Crime"
+    ],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:546136": {
+    "tmdb_id": 546136,
+    "tmdb_title_jp": "博奕打ち　流れ者",
+    "tmdb_title_en": "The Drifting Gambler",
+    "tmdb_title_original": "博奕打ち　流れ者",
+    "tmdb_original_language": "ja",
+    "overview": "渡世の義理から仲間とともに殴り込みをかけた舟木栄太郎は、凄絶な戦いの末見事相手を倒す。一緒に殴りこんだ老侠客・仁助は深手を負い、栄太郎に別れた妻と娘・とみに届ける金を託し息を引き取った。それから５年。とみを探す栄太郎は深川木場の木場政一家に草鞋を脱ぎ、そこでとみと出会う。.",
+    "overview_en": "8th part of the Gamblers / Bakuchi-uchi series.",
+    "poster_path": "/4zgRBiYcne8rj4NYPPEUPeYa1pm.jpg",
+    "backdrop_path": "/bghtgzzhWVpEvnFhg2GQ0e0G2S7.jpg",
+    "release_date": "1970-04-18",
+    "director": "山下耕作",
+    "director_jp": "山下耕作",
+    "director_en": "Kōsaku Yamashita",
+    "genres": [
+      "犯罪"
+    ],
+    "genres_en": [
+      "Crime"
+    ],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "遊俠列伝": {
+    "tmdb_id": 824296,
+    "tmdb_title_jp": "遊侠列伝",
+    "tmdb_title_en": "Yukyo-retsuden",
+    "tmdb_title_original": "遊侠列伝",
+    "tmdb_original_language": "ja",
+    "overview": "昭和初期、兄貴分の妹と駆け落ちした主人公が、その幸せもつかの間、愛する妻に死なれて一人息子を連れて旅を続けるが、恩義ある親分が殺されたのを知り、幼い子どもと彼を慕う娘をふり切って、仇討ちのために単身殴り込む！\r 主演の高倉健が、見事なドスさばきを魅せながら、テキ屋魂を画面いっぱいに叩き付ける任侠娯楽大作。メガホンをとる小沢茂弘監督が、渡世の義理と人情の板ばさみに苦悩する男の哀愁や、人情の機微を描き出した意欲作。",
+    "overview_en": "A street vendor who eloped with his girlfriend and injured her brother loses her to illness, and now has to confront the brother and some dirty local yakuza.",
+    "poster_path": "/70LmYy48GYtWzwH54YwmsfRnHBY.jpg",
+    "backdrop_path": "/trvwBomo7xgCuuHvrtfvTQOkTuV.jpg",
+    "release_date": "1970-07-04",
+    "director": "小沢茂弘",
+    "director_jp": "小沢茂弘",
+    "director_en": "Shigehiro Ozawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:824296": {
+    "tmdb_id": 824296,
+    "tmdb_title_jp": "遊侠列伝",
+    "tmdb_title_en": "Yukyo-retsuden",
+    "tmdb_title_original": "遊侠列伝",
+    "tmdb_original_language": "ja",
+    "overview": "昭和初期、兄貴分の妹と駆け落ちした主人公が、その幸せもつかの間、愛する妻に死なれて一人息子を連れて旅を続けるが、恩義ある親分が殺されたのを知り、幼い子どもと彼を慕う娘をふり切って、仇討ちのために単身殴り込む！\r 主演の高倉健が、見事なドスさばきを魅せながら、テキ屋魂を画面いっぱいに叩き付ける任侠娯楽大作。メガホンをとる小沢茂弘監督が、渡世の義理と人情の板ばさみに苦悩する男の哀愁や、人情の機微を描き出した意欲作。",
+    "overview_en": "A street vendor who eloped with his girlfriend and injured her brother loses her to illness, and now has to confront the brother and some dirty local yakuza.",
+    "poster_path": "/70LmYy48GYtWzwH54YwmsfRnHBY.jpg",
+    "backdrop_path": "/trvwBomo7xgCuuHvrtfvTQOkTuV.jpg",
+    "release_date": "1970-07-04",
+    "director": "小沢茂弘",
+    "director_jp": "小沢茂弘",
+    "director_en": "Shigehiro Ozawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "トレインスポッティング（R15+）": {
+    "tmdb_id": 627,
+    "tmdb_title_jp": "トレインスポッティング",
+    "tmdb_title_en": "Trainspotting",
+    "tmdb_title_original": "Trainspotting",
+    "tmdb_original_language": "en",
+    "overview": "ドラッグ中毒のマークと悪友たちは常にハイ状態か、あるいはドラッグを手に入れるため盗みに精を出しているというていたらく。ある日、マークはこのままではいけないと更生するためにロンドンに行き職に就く。ところが、彼らの仲間が会社に押し掛けたことが原因で、マークはクビになってしまう。",
+    "overview_en": "Heroin addict Mark Renton stumbles through bad ideas and sobriety attempts with his unreliable friends --Sick Boy, Begbie, Spud and Tommy. He also has an underage girlfriend, Diane, along for the ride. After cleaning up and moving from Edinburgh to London, Mark finds he can't escape the life he left behind as Begbie and Sick Boy come knocking.",
+    "poster_path": "/vgFhBO3tyZp7eEDUvJmSFrNJzfC.jpg",
+    "backdrop_path": "/wUc83y8kXNdRK66o0HU5X8eBri4.jpg",
+    "release_date": "1996-02-23",
+    "director": "ダニー・ボイル",
+    "director_jp": "ダニー・ボイル",
+    "director_en": "Danny Boyle",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 93,
+    "vote_average": 7.96,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "13日の金曜日【コケティッシュゾーンVol.3】": {
+    "tmdb_id": 4488,
+    "tmdb_title_jp": "13日の金曜日",
+    "tmdb_title_en": "Friday the 13th",
+    "tmdb_title_original": "Friday the 13th",
+    "tmdb_original_language": "en",
+    "overview": "過去に若い男女が惨殺されて以来、呪われたキャンプ場として嫌われているニュージャージー州のあるキャンプ場を舞台に、次々に起こる惨殺事件を描く。",
+    "overview_en": "Camp counselors are stalked and murdered by an unknown assailant while trying to reopen a summer camp that was the site of a child's drowning.",
+    "poster_path": "/2jx1qkir3kLxwAt51q0RXy1RZSA.jpg",
+    "backdrop_path": "/16zzKM5vDxnYiqG6Tg6wOkOLSmj.jpg",
+    "release_date": "1980-05-09",
+    "director": "ショーン・S・カニンガム",
+    "director_jp": "ショーン・S・カニンガム",
+    "director_en": "Sean S. Cunningham",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 95,
+    "vote_average": 6.401,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ザ・ストーン・ローゼズ メイド・オブ・ストーン": {
+    "tmdb_id": 193524,
+    "tmdb_title_jp": "The Stone Roses: Made of Stone",
+    "tmdb_title_en": "The Stone Roses: Made of Stone",
+    "tmdb_title_original": "The Stone Roses: Made of Stone",
+    "tmdb_original_language": "en",
+    "overview": "1980年代に英国マンチェスターで結成され、マッドチェスター・ムーブメントの中心的存在として活躍したロックバンド“ザ・ストーン・ローゼズ”。本作は、自身も熱狂的ファンという「THIS IS ENGLAND」のシェーン・メドウス監督が、96年の解散から15年ぶりに再結成されたストーン・ローゼズの奇跡の復活に密着した音楽ドキュメンタリー。メンバー４人の再会から地元マンチェスターでの凱旋ライブまでを中心に、そのリハーサルやバックステージ映像とともに、過去のアーカイヴ映像を交えつつ、彼らが歩んできた道のりと現在の姿を映し出していく。",
+    "overview_en": "A documentary about the English alternative rock band, The Stone Roses. Meadows interweaves archive film, intimate behind-the-scenes footage and never-before-seen material, delivering the definitive account of the band and their music. He was also granted unprecedented access to their rehearsals for the summer 2012 Manchester concerts. A momentous occasion in modern music, these were the first gigs performed by The Stone Roses in 16 years.",
+    "poster_path": "/g6RMrCPKwBJpPnqqzfKjGnVxzQM.jpg",
+    "backdrop_path": "/4gjl23lEJ6nOPkSBebf09LU28iJ.jpg",
+    "release_date": "2013-05-28",
+    "director": "Shane Meadows",
+    "director_jp": "Shane Meadows",
+    "director_en": "Shane Meadows",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 96,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "ブルックリンでZ級監督と恋に落ちた私 上映後舞台挨拶": {
+    "tmdb_id": 1481597,
+    "tmdb_title_jp": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_en": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_title_original": "I Fell in Love with a Z-Grade Director in Brooklyn",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A jaded Japanese movie star stranded in NYC without money or phone meets a passionate indie filmmaker and his crew, leading to an unexpected creative journey that could reignite her love for cinema.",
+    "poster_path": "/lOVkjcvOK6TLrGWYqQeSiS5Q647.jpg",
+    "backdrop_path": "/uHknvhfZPIHT5yqGoN37HJIKz33.jpg",
+    "release_date": "2025-11-20",
+    "director": "宇賀那健一",
+    "director_jp": "宇賀那健一",
+    "director_en": "Ken'ichi Ugana",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "枯れ木に銃弾": null,
+  "ザ・カース": {
+    "tmdb_id": 1395839,
+    "tmdb_title_jp": "ザ・カース",
+    "tmdb_title_en": "The Curse",
+    "tmdb_title_original": "The Curse",
+    "tmdb_original_language": "ja",
+    "overview": "物語の主人公は東京で暮らす美容師の璃子。ある日、台湾の友人・淑芬（シューフン）のSNSに不穏な写真と「お前ら全員さっさと死ね」という呪詛の言葉を発見します。やがて親友や仲間たちが次々と怪死を遂げ、璃子自身のもとにも紙人形の呪いが迫り寄ることに。恐怖の発生源を探るべく台湾に渡った彼女の前に現れるのは、不気味な《赤い服の女》と想像を絶する闇でした。",
+    "overview_en": "After seeing her friend’s disturbing social media posts, Riko tries to intervene to help her but fails to prevent her from dying a mysterious, violent death. Convinced there is more to the story than a suicide, Riko dives into a world of memes, influencers, and posting for attention. As the pile of bodies grows, and Riko faces her own possible curse, she and her friends travel to Taiwan to find the source of this demonic social media killer.",
+    "poster_path": "/eiLtWm1BiqS2BHJ7PuPJSp9d69M.jpg",
+    "backdrop_path": "/1jxTnpaGckczKx0V41smden59Xq.jpg",
+    "release_date": "2026-01-16",
+    "director": "宇賀那健一",
+    "director_jp": "宇賀那健一",
+    "director_en": "Ken'ichi Ugana",
+    "genres": [
+      "スリラー",
+      "謎",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Mystery",
+      "Horror"
+    ],
+    "runtime": 95,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1395839": {
+    "tmdb_id": 1395839,
+    "tmdb_title_jp": "ザ・カース",
+    "tmdb_title_en": "The Curse",
+    "tmdb_title_original": "The Curse",
+    "tmdb_original_language": "ja",
+    "overview": "物語の主人公は東京で暮らす美容師の璃子。ある日、台湾の友人・淑芬（シューフン）のSNSに不穏な写真と「お前ら全員さっさと死ね」という呪詛の言葉を発見します。やがて親友や仲間たちが次々と怪死を遂げ、璃子自身のもとにも紙人形の呪いが迫り寄ることに。恐怖の発生源を探るべく台湾に渡った彼女の前に現れるのは、不気味な《赤い服の女》と想像を絶する闇でした。",
+    "overview_en": "After seeing her friend’s disturbing social media posts, Riko tries to intervene to help her but fails to prevent her from dying a mysterious, violent death. Convinced there is more to the story than a suicide, Riko dives into a world of memes, influencers, and posting for attention. As the pile of bodies grows, and Riko faces her own possible curse, she and her friends travel to Taiwan to find the source of this demonic social media killer.",
+    "poster_path": "/eiLtWm1BiqS2BHJ7PuPJSp9d69M.jpg",
+    "backdrop_path": "/1jxTnpaGckczKx0V41smden59Xq.jpg",
+    "release_date": "2026-01-16",
+    "director": "宇賀那健一",
+    "director_jp": "宇賀那健一",
+    "director_en": "Ken'ichi Ugana",
+    "genres": [
+      "スリラー",
+      "謎",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Mystery",
+      "Horror"
+    ],
+    "runtime": 95,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "MOOSIC LAB2026": null,
+  "ジャグラー／ニューヨーク25時 4K修復版": {
+    "tmdb_id": 44686,
+    "tmdb_title_jp": "ジャグラー ニューヨーク25時",
+    "tmdb_title_en": "Night of the Juggler",
+    "tmdb_title_original": "Night of the Juggler",
+    "tmdb_original_language": "en",
+    "overview": "娘を突然誘拐された父親の、事件発生の朝から結着がつく翌日の明け方までの25時間にわたる必死の追跡を描く。\r ニューヨークの朝。元警官でトラック運転手のジョン・ボイド（ジェイムス・ブローリン）は、夜勤を終え、アパートに帰った。妻と別れ、娘のキャシー（アビー・ブルーストーン）と2人暮しの彼は、その日誕生日のキャシーにバレエの切符をプレゼントすると、彼女を学校まで送っていった。その頃、ガス・ソルティック（クリフ・ゴーマン）は、ある金持ちの不動産屋の娘を誘拐して身代金をせしめようと、盗んだ車で待っていた。しかし、彼は勘違いしてまちがって、ボイドの娘キャシーを車に引きずり込んでしまう。",
+    "overview_en": "When a twisted psychotic kidnaps a young girl, mistaking her for the daughter of a wealthy developer, her father, a hardened ex-cop, doggedly hunts them through New York's seamy streets.",
+    "poster_path": "/fv9LeLgbzR08UHjGyfbsEKf5JkO.jpg",
+    "backdrop_path": "/hXDG1YaJy4JCSZsqbD3snpEFmvt.jpg",
+    "release_date": "1980-06-06",
+    "director": "Robert Butler",
+    "director_jp": "Robert Butler",
+    "director_en": "Robert Butler",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 101,
+    "vote_average": 6.481,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "『コードギアス 亡国のアキト 第1章』【コードギアス20周年記念復刻上映会 Road to CODE GEASS 20th Year】": {
+    "tmdb_id": 185526,
+    "tmdb_title_jp": "コードギアス 亡国のアキト 第1章 翼竜は舞い降りた",
+    "tmdb_title_en": "Code Geass: Akito the Exiled 1: The Wyvern Arrives",
+    "tmdb_title_original": "コードギアス 亡国のアキト 第1章「翼竜は舞い降りた」",
+    "tmdb_original_language": "ja",
+    "overview": "皇暦2017年。日本ではルルーシュが大国ブリタニア帝国への反抗を繰り広げているころ、ヨーロッパ連合国E.U.もまたブリタニアの侵攻に圧倒されていた。そこでE.U.軍は特殊部隊「W-0」を編成。中でも元ブリタニアの貴族の少女レイラ・マルカルを司令官にパイロットの日向アキトら日本人の少年少女たちから成るナイトメア部隊は、生還の可能性の低い戦いに送り込まれる。",
+    "overview_en": "The side story takes place in 2017 a.t.b., between the rise of the “Black Knights” organization and the return of the supposedly \"dead\" Zero. The setting is in Europe, where the European Union (E.U.) allied nations are being invaded by the overwhelming forces of the Holy Britannian Empire. On the verge of defeat, the E.U. army forms a special unit known as “W-0″, of which a young pilot named Akito Hyuga is a member. Leila Malkal , a former Britannian Aristocrat comes to the E.U.'s aid, commanding the “Wyvern” Knightmare corps comprised of Japanese teenagers. They recklessly plunge into a battlefield, where the survival rate is extremely low, at about 5% only. They fight for their freedom and for a \"home\" to which they can return.",
+    "poster_path": "/oRu1HzbQotLQHOvuhgM1s1QyRD3.jpg",
+    "backdrop_path": "/72Pgfgg9zKI2MjY57AObWeeZS0V.jpg",
+    "release_date": "2012-08-04",
+    "director": "赤根和樹",
+    "director_jp": "赤根和樹",
+    "director_en": "Kazuki Akane",
+    "genres": [
+      "アクション",
+      "サイエンスフィクション",
+      "アニメーション",
+      "戦争"
+    ],
+    "genres_en": [
+      "Action",
+      "Science Fiction",
+      "Animation",
+      "War"
+    ],
+    "runtime": 51,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:185526": {
+    "tmdb_id": 185526,
+    "tmdb_title_jp": "コードギアス 亡国のアキト 第1章 翼竜は舞い降りた",
+    "tmdb_title_en": "Code Geass: Akito the Exiled 1: The Wyvern Arrives",
+    "tmdb_title_original": "コードギアス 亡国のアキト 第1章「翼竜は舞い降りた」",
+    "tmdb_original_language": "ja",
+    "overview": "皇暦2017年。日本ではルルーシュが大国ブリタニア帝国への反抗を繰り広げているころ、ヨーロッパ連合国E.U.もまたブリタニアの侵攻に圧倒されていた。そこでE.U.軍は特殊部隊「W-0」を編成。中でも元ブリタニアの貴族の少女レイラ・マルカルを司令官にパイロットの日向アキトら日本人の少年少女たちから成るナイトメア部隊は、生還の可能性の低い戦いに送り込まれる。",
+    "overview_en": "The side story takes place in 2017 a.t.b., between the rise of the “Black Knights” organization and the return of the supposedly \"dead\" Zero. The setting is in Europe, where the European Union (E.U.) allied nations are being invaded by the overwhelming forces of the Holy Britannian Empire. On the verge of defeat, the E.U. army forms a special unit known as “W-0″, of which a young pilot named Akito Hyuga is a member. Leila Malkal , a former Britannian Aristocrat comes to the E.U.'s aid, commanding the “Wyvern” Knightmare corps comprised of Japanese teenagers. They recklessly plunge into a battlefield, where the survival rate is extremely low, at about 5% only. They fight for their freedom and for a \"home\" to which they can return.",
+    "poster_path": "/oRu1HzbQotLQHOvuhgM1s1QyRD3.jpg",
+    "backdrop_path": "/72Pgfgg9zKI2MjY57AObWeeZS0V.jpg",
+    "release_date": "2012-08-04",
+    "director": "赤根和樹",
+    "director_jp": "赤根和樹",
+    "director_en": "Kazuki Akane",
+    "genres": [
+      "アクション",
+      "サイエンスフィクション",
+      "アニメーション",
+      "戦争"
+    ],
+    "genres_en": [
+      "Action",
+      "Science Fiction",
+      "Animation",
+      "War"
+    ],
+    "runtime": 51,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "RETURNEES リターニーズ ~元子ども兵 それぞれの再起~": null,
+  "私たちの一日": {
+    "tmdb_id": 1114775,
+    "tmdb_title_jp": "우리의 하루",
+    "tmdb_title_en": "In Our Day",
+    "tmdb_title_original": "우리의 하루",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Recently returned to South Korea, an actress in her forties is staying with her friend and her cat. Meanwhile, an aging poet in declining health lives alone after the death of his own cat. One day, each receives a visit from a different young aspiring artist, who come equipped with questions about their careers and life itself.",
+    "poster_path": "/712BOyadfS8Dt56ymxEyahlqYOQ.jpg",
+    "backdrop_path": "/auCqpkz6wFuy1KvXTIAKUq2lFNP.jpg",
+    "release_date": "2023-07-19",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 84,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "川沿いのホテル": {
+    "tmdb_id": 535550,
+    "tmdb_title_jp": "강변호텔",
+    "tmdb_title_en": "Hotel by the River",
+    "tmdb_title_original": "강변호텔",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "An aging poet summons his estranged sons to the hotel he is staying at because he feels his death is near; meanwhile, he encounters two women staying at the hotel.",
+    "poster_path": "/ywaoCYngVWsjsNgekXfUhmcEMGZ.jpg",
+    "backdrop_path": "/vsJhllg03dDAB4LkXelRI1xozDT.jpg",
+    "release_date": "2019-02-15",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 6.457,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "キリクと魔女": {
+    "tmdb_id": 21348,
+    "tmdb_title_jp": "キリクと魔女",
+    "tmdb_title_en": "Kirikou and the Sorceress",
+    "tmdb_title_original": "Kirikou et la sorcière",
+    "tmdb_original_language": "fr",
+    "overview": "アフリカの村。ある日、小さな男の子が母親の胎内から自力で生まれ出てきた。そして、自分でへその緒を切ると自らキリクと名乗るのだった。彼が生まれた村は今、窮地に立たされている。魔女カラバの脅威に晒されていたのだ。キリクの父親や村の男たちは、カラバに戦いを挑み、その結果みな彼女に喰われてしまった。カラバの呪いによって村の泉は枯れ、黄金も奪われてしまった。そんな中、キリクは“どうして魔女カラバは意地悪なの？”と村人に問いかける。その質問に“お山の賢者”だけが答えられると知ったキリクは、さっそく会いに向かうのだが…。",
+    "overview_en": "Drawn from elements of West African folk tales, it depicts how a newborn boy, Kirikou, saves his village from the evil witch Karaba.",
+    "poster_path": "/Av7htUzC4lKxYorfR5DC1WFPcH8.jpg",
+    "backdrop_path": "/oAIHUFNsNCVs7Rz9LNTINPFIa4j.jpg",
+    "release_date": "1998-12-09",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "ファンタジー",
+      "アドベンチャー",
+      "アニメーション",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Adventure",
+      "Animation",
+      "Family"
+    ],
+    "runtime": 71,
+    "vote_average": 7.341,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      }
+    ]
+  },
+  "tmdb:21348": {
+    "tmdb_id": 21348,
+    "tmdb_title_jp": "キリクと魔女",
+    "tmdb_title_en": "Kirikou and the Sorceress",
+    "tmdb_title_original": "Kirikou et la sorcière",
+    "tmdb_original_language": "fr",
+    "overview": "アフリカの村。ある日、小さな男の子が母親の胎内から自力で生まれ出てきた。そして、自分でへその緒を切ると自らキリクと名乗るのだった。彼が生まれた村は今、窮地に立たされている。魔女カラバの脅威に晒されていたのだ。キリクの父親や村の男たちは、カラバに戦いを挑み、その結果みな彼女に喰われてしまった。カラバの呪いによって村の泉は枯れ、黄金も奪われてしまった。そんな中、キリクは“どうして魔女カラバは意地悪なの？”と村人に問いかける。その質問に“お山の賢者”だけが答えられると知ったキリクは、さっそく会いに向かうのだが…。",
+    "overview_en": "Drawn from elements of West African folk tales, it depicts how a newborn boy, Kirikou, saves his village from the evil witch Karaba.",
+    "poster_path": "/Av7htUzC4lKxYorfR5DC1WFPcH8.jpg",
+    "backdrop_path": "/oAIHUFNsNCVs7Rz9LNTINPFIa4j.jpg",
+    "release_date": "1998-12-09",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "ファンタジー",
+      "アドベンチャー",
+      "アニメーション",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Adventure",
+      "Animation",
+      "Family"
+    ],
+    "runtime": 71,
+    "vote_average": 7.341,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      }
+    ]
+  },
+  "フランコフォニーのお祭り：ベルギー映画『ヴィトリヴァル』上映+監督トークセッション": {
+    "tmdb_id": 1012611,
+    "tmdb_title_jp": "Vitrival",
+    "tmdb_title_en": "Vitrival – The Most Beautiful Village in the World",
+    "tmdb_title_original": "Vitrival",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Benjamin and Little Pierre, cousins and local policemen, patrol Vitrival while listening to Radio Chevauchoir. They have a lot to do: dick graffitis are popping up on the village walls. Of course, no one has seen or heard anything. At the same time, one villager commits suicide, then two, then three. Season after season, dick graffitis and suicides proliferate. What can Benjamin and Pierre do about it? Days and celebrations will keep flowing, no matter what.",
+    "poster_path": "/3aDpjfMj34uvtOthGVy25ttr1Th.jpg",
+    "backdrop_path": "/sxCwdTaRFoW8Fz5DJbJxbqgpCZa.jpg",
+    "release_date": "2025-11-26",
+    "director": "Noëlle Bastin",
+    "director_jp": "Noëlle Bastin",
+    "director_en": "Noëlle Bastin",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 111,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      }
+    ]
+  },
+  "豹変と沈黙 日記でたどる沖縄戦への道 ※追加上映": null,
+  "ゴーストRE:BIRTH 仮面ライダースペクター": {
+    "tmdb_id": 437440,
+    "tmdb_title_jp": "ゴースト RE：BIRTH 仮面ライダースペクター",
+    "tmdb_title_en": "Kamen Rider Ghost RE:BIRTH - Kamen Rider Specter",
+    "tmdb_title_original": "ゴースト RE：BIRTH 仮面ライダースペクター",
+    "tmdb_original_language": "ja",
+    "overview": "アランはアカリやイゴールによる協力のもと、眼魔世界の大気を改造する計画を進めていたが、難航しているうえに自分の理想のために多くの民が犠牲となっている現状に心を痛めていた。そんなアランをマコトは友として支えていたが、眼魔牢獄が地上に落下し、そこから脱獄したダントンと出会う。そしてマコトは自分とカノンの出生を知り、大いに苦悩することとなってしまう。",
+    "overview_en": "A continuation from the Kamen Rider Ghost TV series, this is the story of Makoto, Alain, and Kanon who have traveled back to the Ganma World. It will explain the connection between Makoto and the Makoto doppelganger. Kanon’s secret will be revealed as well.",
+    "poster_path": "/v6PSEVUTOjRMpgyRzeMWTDyIu6p.jpg",
+    "backdrop_path": "/28DMLlEZlWv9L065kI4L74GR0cs.jpg",
+    "release_date": "2017-04-19",
+    "director": "上堀内佳寿也",
+    "director_jp": "上堀内佳寿也",
+    "director_en": "Kazuya Kamihoriuchi",
+    "genres": [
+      "サイエンスフィクション",
+      "アクション",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "runtime": 60,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:437440": {
+    "tmdb_id": 437440,
+    "tmdb_title_jp": "ゴースト RE：BIRTH 仮面ライダースペクター",
+    "tmdb_title_en": "Kamen Rider Ghost RE:BIRTH - Kamen Rider Specter",
+    "tmdb_title_original": "ゴースト RE：BIRTH 仮面ライダースペクター",
+    "tmdb_original_language": "ja",
+    "overview": "アランはアカリやイゴールによる協力のもと、眼魔世界の大気を改造する計画を進めていたが、難航しているうえに自分の理想のために多くの民が犠牲となっている現状に心を痛めていた。そんなアランをマコトは友として支えていたが、眼魔牢獄が地上に落下し、そこから脱獄したダントンと出会う。そしてマコトは自分とカノンの出生を知り、大いに苦悩することとなってしまう。",
+    "overview_en": "A continuation from the Kamen Rider Ghost TV series, this is the story of Makoto, Alain, and Kanon who have traveled back to the Ganma World. It will explain the connection between Makoto and the Makoto doppelganger. Kanon’s secret will be revealed as well.",
+    "poster_path": "/v6PSEVUTOjRMpgyRzeMWTDyIu6p.jpg",
+    "backdrop_path": "/28DMLlEZlWv9L065kI4L74GR0cs.jpg",
+    "release_date": "2017-04-19",
+    "director": "上堀内佳寿也",
+    "director_jp": "上堀内佳寿也",
+    "director_en": "Kazuya Kamihoriuchi",
+    "genres": [
+      "サイエンスフィクション",
+      "アクション",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "runtime": 60,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:4488": {
+    "tmdb_id": 4488,
+    "tmdb_title_jp": "13日の金曜日",
+    "tmdb_title_en": "Friday the 13th",
+    "tmdb_title_original": "Friday the 13th",
+    "tmdb_original_language": "en",
+    "overview": "過去に若い男女が惨殺されて以来、呪われたキャンプ場として嫌われているニュージャージー州のあるキャンプ場を舞台に、次々に起こる惨殺事件を描く。",
+    "overview_en": "Camp counselors are stalked and murdered by an unknown assailant while trying to reopen a summer camp that was the site of a child's drowning.",
+    "poster_path": "/2jx1qkir3kLxwAt51q0RXy1RZSA.jpg",
+    "backdrop_path": "/16zzKM5vDxnYiqG6Tg6wOkOLSmj.jpg",
+    "release_date": "1980-05-09",
+    "director": "ショーン・S・カニンガム",
+    "director_jp": "ショーン・S・カニンガム",
+    "director_en": "Sean S. Cunningham",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 95,
+    "vote_average": 6.401,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:193524": {
+    "tmdb_id": 193524,
+    "tmdb_title_jp": "The Stone Roses: Made of Stone",
+    "tmdb_title_en": "The Stone Roses: Made of Stone",
+    "tmdb_title_original": "The Stone Roses: Made of Stone",
+    "tmdb_original_language": "en",
+    "overview": "1980年代に英国マンチェスターで結成され、マッドチェスター・ムーブメントの中心的存在として活躍したロックバンド“ザ・ストーン・ローゼズ”。本作は、自身も熱狂的ファンという「THIS IS ENGLAND」のシェーン・メドウス監督が、96年の解散から15年ぶりに再結成されたストーン・ローゼズの奇跡の復活に密着した音楽ドキュメンタリー。メンバー４人の再会から地元マンチェスターでの凱旋ライブまでを中心に、そのリハーサルやバックステージ映像とともに、過去のアーカイヴ映像を交えつつ、彼らが歩んできた道のりと現在の姿を映し出していく。",
+    "overview_en": "A documentary about the English alternative rock band, The Stone Roses. Meadows interweaves archive film, intimate behind-the-scenes footage and never-before-seen material, delivering the definitive account of the band and their music. He was also granted unprecedented access to their rehearsals for the summer 2012 Manchester concerts. A momentous occasion in modern music, these were the first gigs performed by The Stone Roses in 16 years.",
+    "poster_path": "/g6RMrCPKwBJpPnqqzfKjGnVxzQM.jpg",
+    "backdrop_path": "/4gjl23lEJ6nOPkSBebf09LU28iJ.jpg",
+    "release_date": "2013-05-28",
+    "director": "Shane Meadows",
+    "director_jp": "Shane Meadows",
+    "director_en": "Shane Meadows",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 96,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:1114775": {
+    "tmdb_id": 1114775,
+    "tmdb_title_jp": "우리의 하루",
+    "tmdb_title_en": "In Our Day",
+    "tmdb_title_original": "우리의 하루",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Recently returned to South Korea, an actress in her forties is staying with her friend and her cat. Meanwhile, an aging poet in declining health lives alone after the death of his own cat. One day, each receives a visit from a different young aspiring artist, who come equipped with questions about their careers and life itself.",
+    "poster_path": "/712BOyadfS8Dt56ymxEyahlqYOQ.jpg",
+    "backdrop_path": "/auCqpkz6wFuy1KvXTIAKUq2lFNP.jpg",
+    "release_date": "2023-07-19",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 84,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:535550": {
+    "tmdb_id": 535550,
+    "tmdb_title_jp": "강변호텔",
+    "tmdb_title_en": "Hotel by the River",
+    "tmdb_title_original": "강변호텔",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "An aging poet summons his estranged sons to the hotel he is staying at because he feels his death is near; meanwhile, he encounters two women staying at the hotel.",
+    "poster_path": "/ywaoCYngVWsjsNgekXfUhmcEMGZ.jpg",
+    "backdrop_path": "/vsJhllg03dDAB4LkXelRI1xozDT.jpg",
+    "release_date": "2019-02-15",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 6.457,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
       }
     ]
   }
