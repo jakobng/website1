@@ -5120,5 +5120,23 @@
     "director": "Yoshikazu Hara",
     "country": "Japan",
     "failed": true
+  },
+  "13日の金曜日（1980）": {
+    "english_title": "Friday the 13th",
+    "release_year": 1980,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Friday the 13th",
+    "director": "Sean S. Cunningham",
+    "country": "United States"
+  },
+  "狼と子羊の夜": {
+    "english_title": "Onaayum Aattukkuttiyum",
+    "release_year": 2013,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Onaayum Aattukkuttiyum",
+    "director": "Mysskin",
+    "country": "India"
   }
 }

@@ -5965,7 +5965,7 @@
       "Thriller"
     ],
     "runtime": 101,
-    "vote_average": 6.481,
+    "vote_average": 6.5,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -49184,6 +49184,262 @@
       {
         "iso_3166_1": "KR",
         "name": "South Korea"
+      }
+    ]
+  },
+  "13日の金曜日（1980）": {
+    "tmdb_id": 4488,
+    "tmdb_title_jp": "13日の金曜日",
+    "tmdb_title_en": "Friday the 13th",
+    "tmdb_title_original": "Friday the 13th",
+    "tmdb_original_language": "en",
+    "overview": "過去に若い男女が惨殺されて以来、呪われたキャンプ場として嫌われているニュージャージー州のあるキャンプ場を舞台に、次々に起こる惨殺事件を描く。",
+    "overview_en": "Camp counselors are stalked and murdered by an unknown assailant while trying to reopen a summer camp that was the site of a child's drowning.",
+    "poster_path": "/2jx1qkir3kLxwAt51q0RXy1RZSA.jpg",
+    "backdrop_path": "/16zzKM5vDxnYiqG6Tg6wOkOLSmj.jpg",
+    "release_date": "1980-05-09",
+    "director": "ショーン・S・カニンガム",
+    "director_jp": "ショーン・S・カニンガム",
+    "director_en": "Sean S. Cunningham",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 95,
+    "vote_average": 6.401,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ジャグラー　ニューヨーク25時": {
+    "tmdb_id": 44686,
+    "tmdb_title_jp": "ジャグラー ニューヨーク25時",
+    "tmdb_title_en": "Night of the Juggler",
+    "tmdb_title_original": "Night of the Juggler",
+    "tmdb_original_language": "en",
+    "overview": "娘を突然誘拐された父親の、事件発生の朝から結着がつく翌日の明け方までの25時間にわたる必死の追跡を描く。\r ニューヨークの朝。元警官でトラック運転手のジョン・ボイド（ジェイムス・ブローリン）は、夜勤を終え、アパートに帰った。妻と別れ、娘のキャシー（アビー・ブルーストーン）と2人暮しの彼は、その日誕生日のキャシーにバレエの切符をプレゼントすると、彼女を学校まで送っていった。その頃、ガス・ソルティック（クリフ・ゴーマン）は、ある金持ちの不動産屋の娘を誘拐して身代金をせしめようと、盗んだ車で待っていた。しかし、彼は勘違いしてまちがって、ボイドの娘キャシーを車に引きずり込んでしまう。",
+    "overview_en": "When a twisted psychotic kidnaps a young girl, mistaking her for the daughter of a wealthy developer, her father, a hardened ex-cop, doggedly hunts them through New York's seamy streets.",
+    "poster_path": "/fv9LeLgbzR08UHjGyfbsEKf5JkO.jpg",
+    "backdrop_path": "/hXDG1YaJy4JCSZsqbD3snpEFmvt.jpg",
+    "release_date": "1980-06-06",
+    "director": "Robert Butler",
+    "director_jp": "Robert Butler",
+    "director_en": "Robert Butler",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 101,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "狼と子羊の夜": {
+    "tmdb_id": 224339,
+    "tmdb_title_jp": "ஓநாயும் ஆட்டுக்குட்டியும்",
+    "tmdb_title_en": "Onaayum Aattukkuttiyum",
+    "tmdb_title_original": "ஓநாயும் ஆட்டுக்குட்டியும்",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "Chandru, a medical student, saves a dying man by operating him, but soon, the police are knocking on his doors for helping Wolf, a paid killer. And, worse, they want him to kill Wolf.",
+    "poster_path": "/iiA4VggMIsgeZORP0BXdGUQPFIp.jpg",
+    "backdrop_path": "/4Pe1UN0oAj654ZhMP09uM9zz8q8.jpg",
+    "release_date": "2013-09-27",
+    "director": "Mysskin",
+    "director_jp": "Mysskin",
+    "director_en": "Mysskin",
+    "genres": [
+      "犯罪",
+      "謎",
+      "スリラー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Mystery",
+      "Thriller",
+      "Action"
+    ],
+    "runtime": 142,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "夜がまた来る": {
+    "tmdb_id": 143687,
+    "tmdb_title_jp": "夜がまた来る",
+    "tmdb_title_en": "Alone in the Night",
+    "tmdb_title_original": "夜がまた来る",
+    "tmdb_original_language": "ja",
+    "overview": "愛する夫をやくざに殺されたことから、自らの体を、そして人生までも犠牲にしながら夫の復讐の機会をうかがう女・名美を夏川結衣が熱演。やくざに犯され、覚醒剤に溺れながらも、彼女を支えているのは夫への愛。皮肉な運命にもてあそばれるふたりに、明けることのない夜がまた来る…。",
+    "overview_en": "An undercover narcotics officer is killed, and after his funeral some yakuza break into his apartment and rape his wife, Nami, while looking for the drugs they claim he stole from them. Afterwards Nami attempts to commit suicide, but after being rescued by a mysterious yakuza she decides to infiltrate the gang and get revenge.",
+    "poster_path": "/hGd4Dgjo9j9QfRuy51m6CWNuRuo.jpg",
+    "backdrop_path": "/fs4kUYvlXsIw3vJV39nn7RwzL4p.jpg",
+    "release_date": "1994-10-22",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 108,
+    "vote_average": 5.75,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:143687": {
+    "tmdb_id": 143687,
+    "tmdb_title_jp": "夜がまた来る",
+    "tmdb_title_en": "Alone in the Night",
+    "tmdb_title_original": "夜がまた来る",
+    "tmdb_original_language": "ja",
+    "overview": "愛する夫をやくざに殺されたことから、自らの体を、そして人生までも犠牲にしながら夫の復讐の機会をうかがう女・名美を夏川結衣が熱演。やくざに犯され、覚醒剤に溺れながらも、彼女を支えているのは夫への愛。皮肉な運命にもてあそばれるふたりに、明けることのない夜がまた来る…。",
+    "overview_en": "An undercover narcotics officer is killed, and after his funeral some yakuza break into his apartment and rape his wife, Nami, while looking for the drugs they claim he stole from them. Afterwards Nami attempts to commit suicide, but after being rescued by a mysterious yakuza she decides to infiltrate the gang and get revenge.",
+    "poster_path": "/hGd4Dgjo9j9QfRuy51m6CWNuRuo.jpg",
+    "backdrop_path": "/fs4kUYvlXsIw3vJV39nn7RwzL4p.jpg",
+    "release_date": "1994-10-22",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 108,
+    "vote_average": 5.75,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "天使のはらわた 赤い閃光": {
+    "tmdb_id": 143685,
+    "tmdb_title_jp": "天使のはらわた 赤い閃光",
+    "tmdb_title_en": "Angel Guts: Red Flash",
+    "tmdb_title_original": "天使のはらわた 赤い閃光",
+    "tmdb_original_language": "ja",
+    "overview": "高校時代に見知らぬ男にレイプされた経験を持つカメラマンの土屋名美は、それが原因で極度の潔癖症となり、男と体を重ねると殴る蹴るの暴行を加えるようになっていた。忌まわしい過去を忘れるため酒を飲み過ぎた名美は酔いつぶれ、ラブホテルの回転ベッドで目を覚ました。かたわらには男の死体とビデオカメラがあり、名美はカメラからビデオテープを抜き取りホテルを後にしてしまう。その日から彼女のもとには脅迫電話がかかるようになり、編集者の村木に問題のビデオを見せようとするのだったが…。",
+    "overview_en": "Nami is a photographer on the set of a porn film. When photographing a rape scene between a teacher and a schoolgirl, she becomes uncomfortable, having remembered a similar incident in her own past.",
+    "poster_path": "/zeNq03FQI9sf5IIID8KHTrdg20o.jpg",
+    "backdrop_path": "/jUu8nCJelHlrL2GIuibrl39TPHd.jpg",
+    "release_date": "1994-09-10",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "スリラー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 3.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:143685": {
+    "tmdb_id": 143685,
+    "tmdb_title_jp": "天使のはらわた 赤い閃光",
+    "tmdb_title_en": "Angel Guts: Red Flash",
+    "tmdb_title_original": "天使のはらわた 赤い閃光",
+    "tmdb_original_language": "ja",
+    "overview": "高校時代に見知らぬ男にレイプされた経験を持つカメラマンの土屋名美は、それが原因で極度の潔癖症となり、男と体を重ねると殴る蹴るの暴行を加えるようになっていた。忌まわしい過去を忘れるため酒を飲み過ぎた名美は酔いつぶれ、ラブホテルの回転ベッドで目を覚ました。かたわらには男の死体とビデオカメラがあり、名美はカメラからビデオテープを抜き取りホテルを後にしてしまう。その日から彼女のもとには脅迫電話がかかるようになり、編集者の村木に問題のビデオを見せようとするのだったが…。",
+    "overview_en": "Nami is a photographer on the set of a porn film. When photographing a rape scene between a teacher and a schoolgirl, she becomes uncomfortable, having remembered a similar incident in her own past.",
+    "poster_path": "/zeNq03FQI9sf5IIID8KHTrdg20o.jpg",
+    "backdrop_path": "/jUu8nCJelHlrL2GIuibrl39TPHd.jpg",
+    "release_date": "1994-09-10",
+    "director": "石井隆",
+    "director_jp": "石井隆",
+    "director_en": "Takashi Ishii",
+    "genres": [
+      "スリラー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 3.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:224339": {
+    "tmdb_id": 224339,
+    "tmdb_title_jp": "ஓநாயும் ஆட்டுக்குட்டியும்",
+    "tmdb_title_en": "Onaayum Aattukkuttiyum",
+    "tmdb_title_original": "ஓநாயும் ஆட்டுக்குட்டியும்",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "Chandru, a medical student, saves a dying man by operating him, but soon, the police are knocking on his doors for helping Wolf, a paid killer. And, worse, they want him to kill Wolf.",
+    "poster_path": "/iiA4VggMIsgeZORP0BXdGUQPFIp.jpg",
+    "backdrop_path": "/4Pe1UN0oAj654ZhMP09uM9zz8q8.jpg",
+    "release_date": "2013-09-27",
+    "director": "Mysskin",
+    "director_jp": "Mysskin",
+    "director_en": "Mysskin",
+    "genres": [
+      "犯罪",
+      "謎",
+      "スリラー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Mystery",
+      "Thriller",
+      "Action"
+    ],
+    "runtime": 142,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
       }
     ]
   }
