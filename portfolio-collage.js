@@ -28,6 +28,21 @@
 
   if (!data) return;
 
+  var isJp = location.pathname.startsWith("/jp/");
+  var jpTitlesById = {
+    mouthful: "川をひとくち",
+    sik: "コンゴの宇宙飛行士",
+    mulika: "ムリカ",
+    sij: "日曜日の日本",
+    broadlistening: "ブロード・リスニング",
+    arakawacats: "荒川の猫たち"
+  };
+
+  function projectTitle(project) {
+    if (!isJp) return project.title;
+    return jpTitlesById[project.id] || project.title;
+  }
+
   var isSmall = window.matchMedia("(max-width: 768px)").matches;
   var armedId = "";
   var activeHotspot = null;
@@ -97,7 +112,7 @@
 
     var title = document.createElement("span");
     title.className = "hotspot-title";
-    title.textContent = project.title;
+    title.textContent = projectTitle(project);
 
     var meta = document.createElement("span");
     meta.className = "hotspot-meta";
@@ -136,7 +151,7 @@
     
     var text = document.createElement("span");
     text.className = "callout-text";
-    text.textContent = project.title;
+    text.textContent = projectTitle(project);
     
     var line = document.createElement("span");
     line.className = "callout-line";
