@@ -1,5 +1,6 @@
 (function () {
-  var LANG_LABEL = "\u65e5\u672c\u8a9e";
+  var IS_JP = location.pathname.startsWith("/jp/");
+  var LANG_LABEL = IS_JP ? "EN" : "\u65e5\u672c\u8a9e";
 
   function targetForPage(file) {
     if (location.pathname.startsWith("/jp/")) {
