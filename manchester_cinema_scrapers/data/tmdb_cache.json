@@ -682,9 +682,6 @@
     ],
     "vote_average": 7.329
   },
-  "Pitchblack Playback: James Blake 'James Blake' 15th anniversary": null,
-  "Pitchblack Playback: Fugees 'The Score' 30th anniversary": null,
-  "Pitchblack Playback: ROSALÍA 'LUX'": null,
   "THX 1138": {
     "tmdb_id": 636,
     "tmdb_title": "THX 1138",
@@ -701,7 +698,6 @@
     ],
     "vote_average": 6.443
   },
-  "GASP! Valentine’s Monster Double Feature": null,
   "Arrow Video Club: The Driller Killer": {
     "tmdb_id": 13553,
     "tmdb_title": "The Driller Killer",
@@ -716,22 +712,6 @@
       "Horror"
     ],
     "vote_average": 5.155
-  },
-  "Valentines Special: The Before Trilogy": null,
-  "Movie Church: Magnolia": {
-    "tmdb_id": 334,
-    "tmdb_title": "Magnolia",
-    "tmdb_original_title": "Magnolia",
-    "overview": "On one random day in the San Fernando Valley, a dying father, a young wife, a male caretaker, a famous lost son, a police officer in love, a boy genius, an ex-boy genius, a game show host and an estranged daughter will each become part of a dazzling multiplicity of plots, but one story.",
-    "poster_path": "/tpfC325Jk6S38VTe5dDWjWtoyxr.jpg",
-    "backdrop_path": "/mFfyE5DPFDqoes4HIcElHc2a15y.jpg",
-    "release_date": "1999-12-17",
-    "director": "Paul Thomas Anderson",
-    "runtime": 189,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.732
   },
   "THE END OF EVANGELION": {
     "tmdb_id": 18491,
@@ -750,23 +730,6 @@
       "Fantasy"
     ],
     "vote_average": 8.261
-  },
-  "Private Chat + Womxn: Working": null,
-  "DVD Menu Scream: Overboard": {
-    "tmdb_id": 10780,
-    "tmdb_title": "Overboard",
-    "tmdb_original_title": "Overboard",
-    "overview": "Heiress Joanna Stayton hires carpenter Dean Proffitt to build a closet on her yacht—and refuses to pay him for the project when it's done. But after Joanna accidentally falls overboard and loses her memory, Dean sees an opportunity to get even.",
-    "poster_path": "/v9MVFgUTvNRXmm2WWOzST6UXb5x.jpg",
-    "backdrop_path": "/dZSQv9Lz5pab3pOnVvd3yjC1N0K.jpg",
-    "release_date": "1987-12-16",
-    "director": "Garry Marshall",
-    "runtime": 112,
-    "genres": [
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 6.811
   },
   "Interference Films Presents: Riki-Oh: The Story of Ricky": {
     "tmdb_id": 17467,
@@ -818,7 +781,6 @@
     ],
     "vote_average": 8.1
   },
-  "OBSCURE FILM PRESENTS: GENRE IDENTITIES, PART ONE - TRANSNESS AND GENRE": null,
   "Blow Out": {
     "tmdb_id": 11644,
     "tmdb_title": "Blow Out",
@@ -836,22 +798,6 @@
     ],
     "vote_average": 7.4
   },
-  "SPEED + STRIKE PRESENTS: CRASH": {
-    "tmdb_id": 884,
-    "tmdb_title": "Crash",
-    "tmdb_original_title": "Crash",
-    "overview": "A car crash victim suddenly finds himself turned on by car accidents and becomes involved with an underground sub-culture of like-minded souls.",
-    "poster_path": "/gpai5oUFyFGLHOCsYTvVMqlbY7A.jpg",
-    "backdrop_path": "/vQNknPEVSAui6IL6eUlDBPfUzcW.jpg",
-    "release_date": "1996-07-17",
-    "director": "David Cronenberg",
-    "runtime": 100,
-    "genres": [
-      "Thriller",
-      "Drama"
-    ],
-    "vote_average": 6.465
-  },
   "All About My Mother": {
     "tmdb_id": 99,
     "tmdb_title": "All About My Mother",
@@ -868,8 +814,6 @@
     ],
     "vote_average": 7.628
   },
-  "Twin Peaks Drag Night": null,
-  "Twin Peaks Day 2026": null,
   "The Housemaid (2025)": {
     "tmdb_id": 1368166,
     "tmdb_title": "The Housemaid",
@@ -980,7 +924,6 @@
     ],
     "vote_average": 6.619
   },
-  "Iris 2025: Best Bits": null,
   "Hamlet": {
     "tmdb_id": 175341,
     "tmdb_title": "Hamlet",
@@ -1009,7 +952,6 @@
     "genres": [],
     "vote_average": 0.0
   },
-  "Little Amélie (PG) [Dubbed]": null,
   "Wuthering Heights": {
     "tmdb_id": 1316092,
     "tmdb_title": "“Wuthering Heights”",
@@ -1041,27 +983,6 @@
     ],
     "vote_average": 7.533
   },
-  "Little Amélie (PG) [Subtitled]": null,
-  "When Love Broke the Law": null,
-  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
-    "tmdb_id": 494603,
-    "tmdb_title": "The Highway Rat",
-    "tmdb_original_title": "The Highway Rat",
-    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
-    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
-    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
-    "release_date": "2018-10-10",
-    "director": "Jeroen Jaspaert",
-    "runtime": 25,
-    "genres": [
-      "Family",
-      "Animation",
-      "Comedy",
-      "TV Movie"
-    ],
-    "vote_average": 6.3
-  },
-  "Royal Ballet/ Woolf Works (CTBA)": null,
   "A Bad Summer": {
     "tmdb_id": 1378734,
     "tmdb_title": "A Bad Summer",
@@ -1127,23 +1048,6 @@
     ],
     "vote_average": 6.532
   },
-  "Members' Preview: Wasteman": {
-    "tmdb_id": 1307373,
-    "tmdb_title": "Wasteman",
-    "tmdb_original_title": "Wasteman",
-    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
-    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
-    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
-    "release_date": "2026-02-20",
-    "director": "Cal McMau",
-    "runtime": 90,
-    "genres": [
-      "Thriller",
-      "Crime",
-      "Drama"
-    ],
-    "vote_average": 0.0
-  },
   "\"Wuthering Heights\"": {
     "tmdb_id": 1316092,
     "tmdb_title": "“Wuthering Heights”",
@@ -1159,22 +1063,6 @@
       "Romance"
     ],
     "vote_average": 8.4
-  },
-  "Valentine’s Throwback: Pretty Woman": {
-    "tmdb_id": 114,
-    "tmdb_title": "Pretty Woman",
-    "tmdb_original_title": "Pretty Woman",
-    "overview": "While on a business trip in Los Angeles, Edward Lewis, a millionaire entrepreneur who makes a living buying and breaking up companies, picks up a prostitute, Vivian, while asking for directions; after, Edward hires Vivian to stay with him for the weekend to accompany him to a few social events, and the two get closer only to discover there are significant hurdles to overcome as they try to bridge the gap between their very different worlds.",
-    "poster_path": "/hVHUfT801LQATGd26VPzhorIYza.jpg",
-    "backdrop_path": "/sGEqHTylawwS6hwKultk1mKUjdB.jpg",
-    "release_date": "1990-03-23",
-    "director": "Garry Marshall",
-    "runtime": 120,
-    "genres": [
-      "Romance",
-      "Comedy"
-    ],
-    "vote_average": 7.5
   },
   "Beyond: Nouvelle Vague": {
     "tmdb_id": 1254808,
@@ -1226,24 +1114,6 @@
     ],
     "vote_average": 4.4
   },
-  "Throwback: A Knight's Tale (25th Anniversary)": {
-    "tmdb_id": 9476,
-    "tmdb_title": "A Knight's Tale",
-    "tmdb_original_title": "A Knight's Tale",
-    "overview": "William Thatcher, a knight's peasant apprentice, gets a chance at glory when the knight dies suddenly mid-tournament. Posing as a knight himself, William won't stop until he's crowned tournament champion—assuming matters of the heart don't get in the way.",
-    "poster_path": "/srb1XnrlDZHcdpjBKqUu4qAzxKU.jpg",
-    "backdrop_path": "/gkT737kgnmI6jZyXbUBJRwVbGkW.jpg",
-    "release_date": "2001-05-11",
-    "director": "Brian Helgeland",
-    "runtime": 133,
-    "genres": [
-      "Adventure",
-      "Drama",
-      "Romance",
-      "Action"
-    ],
-    "vote_average": 6.867
-  },
   "One Battle After Another": {
     "tmdb_id": 1054867,
     "tmdb_title": "One Battle After Another",
@@ -1261,12 +1131,6 @@
     ],
     "vote_average": 7.421
   },
-  "Weekly Arthouse Screening": null,
-  "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
-  "National Theatre Live: The Audience": null,
-  "The Royal Ballet: Giselle": null,
-  "The Royal Ballet: Woolf Works": null,
-  "The Royal Opera: The Magic Flute": null,
   "Breakaway Femmes": {
     "tmdb_id": 1499299,
     "tmdb_title": "Breakaway Femmes",
@@ -1279,6 +1143,350 @@
     "runtime": 90,
     "genres": [
       "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "Othello": {
+    "tmdb_id": 47697,
+    "tmdb_title": "Othello",
+    "tmdb_original_title": "Othello",
+    "overview": "Manipulated by his jealous ensign Iago, the Moorish general Othello is driven to believe that his new wife Desdemona is unfaithful, setting in motion a chain of deception, jealousy, and violence that leads to tragedy.",
+    "poster_path": "/61A7EJqfMsrQO0YWsUWq8gbgbu0.jpg",
+    "backdrop_path": "/kHbwWLE4mFVoC4wFCXsZ2HioRuf.jpg",
+    "release_date": "1951-11-28",
+    "director": "Orson Welles",
+    "runtime": 93,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.351
+  },
+  "GASP! Valentine’s Monster Double Feature": null,
+  "Valentines Special: The Before Trilogy": null,
+  "Movie Church: Magnolia": {
+    "tmdb_id": 334,
+    "tmdb_title": "Magnolia",
+    "tmdb_original_title": "Magnolia",
+    "overview": "On one random day in the San Fernando Valley, a dying father, a young wife, a male caretaker, a famous lost son, a police officer in love, a boy genius, an ex-boy genius, a game show host and an estranged daughter will each become part of a dazzling multiplicity of plots, but one story.",
+    "poster_path": "/tpfC325Jk6S38VTe5dDWjWtoyxr.jpg",
+    "backdrop_path": "/mFfyE5DPFDqoes4HIcElHc2a15y.jpg",
+    "release_date": "1999-12-17",
+    "director": "Paul Thomas Anderson",
+    "runtime": 189,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.7
+  },
+  "Private Chat + Womxn: Working": null,
+  "DVD Menu Scream: Overboard": {
+    "tmdb_id": 10780,
+    "tmdb_title": "Overboard",
+    "tmdb_original_title": "Overboard",
+    "overview": "Heiress Joanna Stayton hires carpenter Dean Proffitt to build a closet on her yacht—and refuses to pay him for the project when it's done. But after Joanna accidentally falls overboard and loses her memory, Dean sees an opportunity to get even.",
+    "poster_path": "/v9MVFgUTvNRXmm2WWOzST6UXb5x.jpg",
+    "backdrop_path": "/dZSQv9Lz5pab3pOnVvd3yjC1N0K.jpg",
+    "release_date": "1987-12-16",
+    "director": "Garry Marshall",
+    "runtime": 112,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 6.81
+  },
+  "OBSCURE FILM PRESENTS: GENRE IDENTITIES, PART ONE - TRANSNESS AND GENRE": null,
+  "SPEED + STRIKE PRESENTS: CRASH": {
+    "tmdb_id": 884,
+    "tmdb_title": "Crash",
+    "tmdb_original_title": "Crash",
+    "overview": "A car crash victim suddenly finds himself turned on by car accidents and becomes involved with an underground sub-culture of like-minded souls.",
+    "poster_path": "/gpai5oUFyFGLHOCsYTvVMqlbY7A.jpg",
+    "backdrop_path": "/vQNknPEVSAui6IL6eUlDBPfUzcW.jpg",
+    "release_date": "1996-07-17",
+    "director": "David Cronenberg",
+    "runtime": 100,
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "vote_average": 6.5
+  },
+  "Twin Peaks Drag Night": null,
+  "Twin Peaks Day 2026": null,
+  "Make A Scene Presents: Shirley Valentine": {
+    "tmdb_id": 18683,
+    "tmdb_title": "Shirley Valentine",
+    "tmdb_original_title": "Shirley Valentine",
+    "overview": "Wondering what has happened to herself, now feeling stagnant and in a rut, Shirley Valentine finds herself regularly talking to the wall while preparing her husband's chips and egg. When her best friend wins a trip-for-two to Greece Shirley begins to see the world, and herself, in a different light.",
+    "poster_path": "/rrRrHNhur1DTp1KOp0YfFWvymQD.jpg",
+    "backdrop_path": "/a2A8ftKtoe89b7YTcHYXoWorrzo.jpg",
+    "release_date": "1989-08-30",
+    "director": "Lewis Gilbert",
+    "runtime": 108,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "vote_average": 6.255
+  },
+  "Little Amélie (PG) [Dubbed]": null,
+  "Little Amélie (PG) [Subtitled]": null,
+  "When Love Broke the Law": null,
+  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
+    "tmdb_id": 494603,
+    "tmdb_title": "The Highway Rat",
+    "tmdb_original_title": "The Highway Rat",
+    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
+    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
+    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
+    "release_date": "2018-10-10",
+    "director": "Jeroen Jaspaert",
+    "runtime": 25,
+    "genres": [
+      "Family",
+      "Animation",
+      "Comedy",
+      "TV Movie"
+    ],
+    "vote_average": 6.3
+  },
+  "Royal Ballet/ Woolf Works (CTBA)": null,
+  "We Are Parable presents: Wasteman + Murewa": null,
+  "Members' Preview: Wasteman": {
+    "tmdb_id": 1307373,
+    "tmdb_title": "Wasteman",
+    "tmdb_original_title": "Wasteman",
+    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
+    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
+    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
+    "release_date": "2026-02-20",
+    "director": "Cal McMau",
+    "runtime": 90,
+    "genres": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "Valentine’s Throwback: Pretty Woman": {
+    "tmdb_id": 114,
+    "tmdb_title": "Pretty Woman",
+    "tmdb_original_title": "Pretty Woman",
+    "overview": "While on a business trip in Los Angeles, Edward Lewis, a millionaire entrepreneur who makes a living buying and breaking up companies, picks up a prostitute, Vivian, while asking for directions; after, Edward hires Vivian to stay with him for the weekend to accompany him to a few social events, and the two get closer only to discover there are significant hurdles to overcome as they try to bridge the gap between their very different worlds.",
+    "poster_path": "/hVHUfT801LQATGd26VPzhorIYza.jpg",
+    "backdrop_path": "/sGEqHTylawwS6hwKultk1mKUjdB.jpg",
+    "release_date": "1990-03-23",
+    "director": "Garry Marshall",
+    "runtime": 120,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "vote_average": 7.456
+  },
+  "Throwback: A Knight's Tale (25th Anniversary)": {
+    "tmdb_id": 9476,
+    "tmdb_title": "A Knight's Tale",
+    "tmdb_original_title": "A Knight's Tale",
+    "overview": "William Thatcher, a knight's peasant apprentice, gets a chance at glory when the knight dies suddenly mid-tournament. Posing as a knight himself, William won't stop until he's crowned tournament champion—assuming matters of the heart don't get in the way.",
+    "poster_path": "/srb1XnrlDZHcdpjBKqUu4qAzxKU.jpg",
+    "backdrop_path": "/gkT737kgnmI6jZyXbUBJRwVbGkW.jpg",
+    "release_date": "2001-05-11",
+    "director": "Brian Helgeland",
+    "runtime": 133,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Romance",
+      "Action"
+    ],
+    "vote_average": 6.868
+  },
+  "Weekly Arthouse Screening": null,
+  "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
+  "Hoppers": {
+    "tmdb_id": 1327819,
+    "tmdb_title": "Hoppers",
+    "tmdb_original_title": "Hoppers",
+    "overview": "Scientists have discovered how to \"hop\" human consciousness into lifelike robotic animals, allowing people to communicate with animals as animals. Animal lover Mabel seizes an opportunity to use the technology, uncovering mysteries within the animal world that are beyond anything she could have imagined.",
+    "poster_path": "/12tvpCv413QvvJlZGf4lRq446tT.jpg",
+    "backdrop_path": "/2RrLuIfIzGWWIH8IAEo6o0IYHmx.jpg",
+    "release_date": "2026-03-04",
+    "director": "Daniel Chong",
+    "runtime": 105,
+    "genres": [
+      "Animation",
+      "Family",
+      "Comedy",
+      "Science Fiction"
+    ],
+    "vote_average": 0.0
+  },
+  "National Theatre Live: The Audience": null,
+  "Reminders Of Him": {
+    "tmdb_id": 1367642,
+    "tmdb_title": "Reminders of Him",
+    "tmdb_original_title": "Reminders of Him",
+    "overview": "When Diem's custodial grandparents adamantly refuse Kenna's attempts to see her, she discovers unexpected compassion, and then something truer and deeper, with former NFL player and local bar owner Ledger. As their secret romance develops, so do the dangers for both of them, leading Kenna toward heartbreak and, ultimately, the hope for a second chance.",
+    "poster_path": "/oR80dLGjaQ9HVsfWUQeJ04uOSR.jpg",
+    "backdrop_path": "/xFu5YfFvcyQHa8brWVo6XMug8EM.jpg",
+    "release_date": "2026-03-05",
+    "director": "Vanessa Caswill",
+    "runtime": 114,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 0.0
+  },
+  "Exhibition On Screen: Turner & Constable": null,
+  "The Royal Ballet: Giselle": null,
+  "The Royal Ballet: Woolf Works": null,
+  "The Royal Opera: The Magic Flute": null,
+  "EPiC: Elvis Presley in Concert": {
+    "tmdb_id": 1445363,
+    "tmdb_title": "EPiC: Elvis Presley in Concert",
+    "tmdb_original_title": "EPiC: Elvis Presley in Concert",
+    "overview": "Never-before-seen footage and recordings feature Elvis Presley in concert at his Las Vegas residency during the later stage of his career.",
+    "poster_path": "/433YxgwVpX8sUPbqzjTAQjLkPX0.jpg",
+    "backdrop_path": "/jnCCegcsk4wkmTzbFV746Myloxs.jpg",
+    "release_date": "2026-02-18",
+    "director": "Baz Luhrmann",
+    "runtime": 97,
+    "genres": [
+      "Music",
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "Mother's Pride": {
+    "tmdb_id": 1418901,
+    "tmdb_title": "Mother's Pride",
+    "tmdb_original_title": "Mother's Pride",
+    "overview": "A comedy about a failing pub, a divided community and a grieving family whose lives are changed by brewing real ale and entering the Great British Beer Awards.",
+    "poster_path": "/jWrNT4QawuM5OclbjkbrhpbI2Wf.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-06",
+    "director": "Nick Moorcroft",
+    "runtime": 93,
+    "genres": [
+      "Comedy"
+    ],
+    "vote_average": 0.0
+  },
+  "How To Make A Killing": {
+    "tmdb_id": 1210732,
+    "tmdb_title": "How to Make a Killing",
+    "tmdb_original_title": "Un ours dans le Jura",
+    "overview": "Michel and Cathy, wed for longer than they can remember, lead a quiet but monotonous life in the mountains. When a bear bursts out in front of Michel’s car, accidentally killing two drug dealers and revealing a €2 million loot in the process, their life takes an unpredictable turn, especially when they decide to cover up the incident and keep the money! But their plan leads them to stumble upon an unexplained trail of dead bodies. More used to being honest than crooked, Michel and Cathy’s clumsy cover-up efforts soon put an interfering inspector hot on their trail.",
+    "poster_path": "/oovadj4TsgCuAGfd5LhDP19ZCYD.jpg",
+    "backdrop_path": "/s7xmwFJQj99lICSGQkr8sQ7G9IA.jpg",
+    "release_date": "2025-01-01",
+    "director": "Franck Dubosc",
+    "runtime": 113,
+    "genres": [
+      "Comedy",
+      "Thriller",
+      "Crime"
+    ],
+    "vote_average": 6.456
+  },
+  "The Secret Agent": {
+    "tmdb_id": 1220564,
+    "tmdb_title": "The Secret Agent",
+    "tmdb_original_title": "O Agente Secreto",
+    "overview": "Brazil, 1977. Marcelo, a technology expert in his early 40s, is on the run. Hoping to reunite with his son, he travels to Recife during Carnival but soon realizes that the city is not the safe haven he was expecting.",
+    "poster_path": "/iLE2YOmeboeTDC7GlOp1dzh1VFo.jpg",
+    "backdrop_path": "/eeGRpU64sIrRApjWXvTpK5Lep2K.jpg",
+    "release_date": "2025-07-23",
+    "director": "Kleber Mendonça Filho",
+    "runtime": 161,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 7.54
+  },
+  "Crime 101": {
+    "tmdb_id": 1171145,
+    "tmdb_title": "Crime 101",
+    "tmdb_original_title": "Crime 101",
+    "overview": "An elusive thief, eyeing his final score, encounters a disillusioned insurance broker at her own crossroads. As their paths intertwine, a relentless detective trails them hoping to thwart the multi-million dollar heist they are planning.",
+    "poster_path": "/fDj8ZATOTmiFy7BF43L3XLIOrf0.jpg",
+    "backdrop_path": "/2t25zHKX3PAUZWppuLD36JGdgCA.jpg",
+    "release_date": "2026-02-11",
+    "director": "Bart Layton",
+    "runtime": 140,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "vote_average": 9.7
+  },
+  "The Bride!": {
+    "tmdb_id": 359427,
+    "tmdb_title": "The Bride",
+    "tmdb_original_title": "屍憶",
+    "overview": "Han and Hao are about to get married soon when Hao picks up a strange red envelope on the street and then all hell breaks loose with a vengeful supernatural bride wreaking havoc on his life.",
+    "poster_path": "/c9ur7kcf0AwyWz0kE62vM0MCa2f.jpg",
+    "backdrop_path": "/xSUCG1onLkvTbdr8Hw4xHZFoXr8.jpg",
+    "release_date": "2015-08-20",
+    "director": "Lingo Hsieh",
+    "runtime": 89,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "vote_average": 6.0
+  },
+  "If I Had Legs I'd Kick You": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/lfD6Gwf9qZu8aF017mGlDOXqWHQ.jpg",
+    "backdrop_path": "/hHN4iGAu0sCYvR0oaFmemKXDnVV.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.538
+  },
+  "It’s Never Over, Jeff Buckley": {
+    "tmdb_id": 1400381,
+    "tmdb_title": "It's Never Over, Jeff Buckley",
+    "tmdb_original_title": "It's Never Over, Jeff Buckley",
+    "overview": "Rising musician Jeff Buckley had only released one album when he died suddenly in 1997. Now, never-before-seen footage, exclusive voice messages, and accounts from those closest to him offer a portrait of the captivating singer.",
+    "poster_path": "/rrKe8bC6UKFKvfZHvbwA9Bq5hkR.jpg",
+    "backdrop_path": "/qfx7A90iIKMUc4VhIRZhNzU6iTY.jpg",
+    "release_date": "2025-08-08",
+    "director": "Amy J. Berg",
+    "runtime": 106,
+    "genres": [
+      "Documentary",
+      "Music"
+    ],
+    "vote_average": 7.9
+  },
+  "Peaky Blinders: The Immortal Man": {
+    "tmdb_id": 875828,
+    "tmdb_title": "Peaky Blinders: The Immortal Man",
+    "tmdb_original_title": "Peaky Blinders: The Immortal Man",
+    "overview": "Birmingham, 1940: Amidst the chaos of WWII, Tommy Shelby is driven back from a self-imposed exile to face his most destructive reckoning yet. With the future of the family and the country at stake, Tommy must face his own demons, and choose whether to confront his legacy, or burn it to the ground.",
+    "poster_path": "/gRMalasZEzsZi4w2VFuYusfSfqf.jpg",
+    "backdrop_path": "/61BiigHOW0ReOZvV039UfeFM2gW.jpg",
+    "release_date": "2026-03-06",
+    "director": "Tom Harper",
+    "runtime": 112,
+    "genres": [
+      "Crime",
+      "Drama"
     ],
     "vote_average": 0.0
   },
@@ -1299,20 +1507,22 @@
   },
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
-  "Othello": {
-    "tmdb_id": 47697,
-    "tmdb_title": "Othello",
-    "tmdb_original_title": "Othello",
-    "overview": "Manipulated by his jealous ensign Iago, the Moorish general Othello is driven to believe that his new wife Desdemona is unfaithful, setting in motion a chain of deception, jealousy, and violence that leads to tragedy.",
-    "poster_path": "/61A7EJqfMsrQO0YWsUWq8gbgbu0.jpg",
-    "backdrop_path": "/kHbwWLE4mFVoC4wFCXsZ2HioRuf.jpg",
-    "release_date": "1951-11-28",
-    "director": "Orson Welles",
-    "runtime": 93,
+  "National Theatre Live: Hamlet": null,
+  "Romeo + Juliet 30th Anniversary": {
+    "tmdb_id": 280942,
+    "tmdb_title": "Romeo Juliet",
+    "tmdb_original_title": "ரோமியோ ஜூலியட்",
+    "overview": "Aishwarya, an air hostess, wants to marry a millionaire, but mistakes Karthik, a gym trainer, for a rich guy and woos him. She calls off the romance when she discovers that he isn't well off, but Karthik will not let her leave that easily.",
+    "poster_path": "/3KOmLC3hDwEt0JLjrMqErCiCxyr.jpg",
+    "backdrop_path": "/c2geGSk3h5VKRFeSdgSZi4AyOgM.jpg",
+    "release_date": "2015-06-12",
+    "director": "Lakshman",
+    "runtime": 151,
     "genres": [
-      "Drama"
+      "Comedy",
+      "Drama",
+      "Romance"
     ],
-    "vote_average": 7.351
-  },
-  "National Theatre Live: Hamlet": null
+    "vote_average": 5.974
+  }
 }
