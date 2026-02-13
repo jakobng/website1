@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>Field Translator</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/client/icons/icon-192.png" />
+    <link rel="stylesheet" href="/client/styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Field Translator (JA/ZH -> EN)</h1>
+
+      <section class="panel">
+        <div class="controls">
+          <div>
+            <label for="projectName">Project Name</label>
+            <input id="projectName" type="text" value="untitled-shoot" />
+          </div>
+
+          <div>
+            <label for="sourceLang">Source Language Hint</label>
+            <select id="sourceLang">
+              <option value="auto" selected>Auto detect</option>
+              <option value="ja">Japanese</option>
+              <option value="zh">Chinese</option>
+              <option value="ko">Korean</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="pt">Portuguese</option>
+              <option value="ar">Arabic</option>
+              <option value="ru">Russian</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mode">Mode</label>
+            <select id="mode">
+              <option value="balanced" selected>Balanced (5-12s)</option>
+              <option value="realtime">Realtime (experimental)</option>
+              <option value="latency">Lower Latency</option>
+              <option value="accuracy">Higher Accuracy</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="targetLang">Target Language</label>
+            <input id="targetLang" type="text" value="en" list="targetLangList" />
+            <datalist id="targetLangList">
+              <option value="en"></option>
+              <option value="ja"></option>
+              <option value="zh"></option>
+              <option value="es"></option>
+              <option value="fr"></option>
+              <option value="de"></option>
+              <option value="it"></option>
+              <option value="pt"></option>
+              <option value="ar"></option>
+              <option value="ru"></option>
+              <option value="hi"></option>
+            </datalist>
+          </div>
+
+          <div class="full-width">
+            <label for="conversationContext">Conversation Context (optional)</label>
+            <textarea
+              id="conversationContext"
+              rows="3"
+              placeholder="Example: market negotiation about location access and timing, with film crew logistics."
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="row row-actions">
+          <button id="startBtn" class="primary">Start Session</button>
+          <button id="stopBtn" class="danger" disabled>Stop Session</button>
+          <button id="installBtn" class="secondary" hidden>Install App</button>
+        </div>
+
+        <div id="status" class="status">Idle</div>
+      </section>
+
+      <section class="panel">
+        <div id="liveCaption" class="caption">Waiting for session start...</div>
+        <div id="liveTranscript" class="transcript"></div>
+      </section>
+
+      <section class="panel">
+        <div class="exports">
+          <button id="exportJsonBtn" disabled>Export JSON</button>
+          <button id="exportCsvBtn" disabled>Export CSV</button>
+          <button id="exportSrtBtn" disabled>Export SRT</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Session Log</h2>
+        <div id="logList" class="log"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/client/app.js"></script>
+  </body>
+</html>
