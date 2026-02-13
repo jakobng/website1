@@ -18,6 +18,38 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
 
 
+def verify_target_account():
+    """Validates that the configured IG_USER_ID is reachable with the access token."""
+    url = f"{GRAPH_URL}/{IG_USER_ID}"
+    params = {
+        "fields": "id,username",
+        "access_token": IG_ACCESS_TOKEN,
+    }
+
+    try:
+        response = requests.get(url, params=params)
+        result = response.json()
+    except Exception as e:
+        print(f"❌ Failed to validate Instagram account: {e}")
+        sys.exit(1)
+
+    if "error" in result:
+        print("❌ Instagram credential/account mismatch.")
+        print(f"   IG_USER_ID configured: {IG_USER_ID}")
+        print(f"   API error: {result['error'].get('message', 'Unknown error')}")
+        sys.exit(1)
+
+    resolved_id = str(result.get("id", ""))
+    resolved_username = result.get("username", "unknown")
+    if resolved_id != str(IG_USER_ID):
+        print("❌ Instagram account validation failed.")
+        print(f"   IG_USER_ID configured: {IG_USER_ID}")
+        print(f"   IG_USER_ID resolved: {resolved_id}")
+        sys.exit(1)
+
+    print(f"✅ Target Instagram account verified: @{resolved_username} ({resolved_id})")
+
+
 def upload_carousel_child_container(image_url):
     """Creates a child container for an item inside a carousel with retries."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
@@ -119,6 +151,8 @@ def main():
     if not IG_USER_ID or not IG_ACCESS_TOKEN:
         print("⚠️ Missing Instagram credentials. Skipping upload.")
         sys.exit(0)
+
+    verify_target_account()
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", default="cinema", help="Post type: cinema or movie")
