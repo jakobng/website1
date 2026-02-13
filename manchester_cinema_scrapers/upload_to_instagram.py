@@ -6,7 +6,7 @@ import sys
 import argparse
 
 # --- Configuration ---
-IG_USER_ID = os.environ.get("MANCHESTER_IG_USER_ID")
+MANCHESTER_IG_USER_ID = os.environ.get("MANCHESTER_IG_USER_ID")
 IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN")
 
 GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/manchester_cinema_scrapers/ig_posts/"
@@ -20,7 +20,7 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
 
 def verify_target_account():
     """Validates that the configured MANCHESTER_IG_USER_ID is reachable with the access token."""
-    url = f"{GRAPH_URL}/{IG_USER_ID}"
+    url = f"{GRAPH_URL}/{MANCHESTER_IG_USER_ID}"
     params = {
         "fields": "id,username",
         "access_token": IG_ACCESS_TOKEN,
@@ -35,16 +35,16 @@ def verify_target_account():
 
     if "error" in result:
         print("❌ Instagram credential/account mismatch.")
-        print(f"   IG_USER_ID configured: {IG_USER_ID}")
+        print(f"   MANCHESTER_IG_USER_ID configured: {MANCHESTER_IG_USER_ID}")
         print(f"   API error: {result['error'].get('message', 'Unknown error')}")
         sys.exit(1)
 
     resolved_id = str(result.get("id", ""))
     resolved_username = result.get("username", "unknown")
-    if resolved_id != str(IG_USER_ID):
+    if resolved_id != str(MANCHESTER_IG_USER_ID):
         print("❌ Instagram account validation failed.")
-        print(f"   IG_USER_ID configured: {IG_USER_ID}")
-        print(f"   IG_USER_ID resolved: {resolved_id}")
+        print(f"   MANCHESTER_IG_USER_ID configured: {MANCHESTER_IG_USER_ID}")
+        print(f"   MANCHESTER_IG_USER_ID resolved: {resolved_id}")
         sys.exit(1)
 
     print(f"✅ Target Instagram account verified: @{resolved_username} ({resolved_id})")
@@ -52,7 +52,7 @@ def verify_target_account():
 
 def upload_carousel_child_container(image_url):
     """Creates a child container for an item inside a carousel with retries."""
-    url = f"{GRAPH_URL}/{IG_USER_ID}/media"
+    url = f"{GRAPH_URL}/{MANCHESTER_IG_USER_ID}/media"
     payload = {
         "image_url": image_url,
         "is_carousel_item": "true",
@@ -83,7 +83,7 @@ def upload_carousel_child_container(image_url):
 
 def upload_carousel_container(child_ids, caption):
     """Creates the parent container for the carousel."""
-    url = f"{GRAPH_URL}/{IG_USER_ID}/media"
+    url = f"{GRAPH_URL}/{MANCHESTER_IG_USER_ID}/media"
     payload = {
         "media_type": "CAROUSEL",
         "children": ",".join(child_ids),
@@ -103,7 +103,7 @@ def upload_carousel_container(child_ids, caption):
 
 def publish_media(creation_id):
     """Publishes a container."""
-    url = f"{GRAPH_URL}/{IG_USER_ID}/media_publish"
+    url = f"{GRAPH_URL}/{MANCHESTER_IG_USER_ID}/media_publish"
     payload = {
         "creation_id": creation_id,
         "access_token": IG_ACCESS_TOKEN
@@ -148,7 +148,7 @@ def check_media_status(container_id):
 
 
 def main():
-    if not IG_USER_ID or not IG_ACCESS_TOKEN:
+    if not MANCHESTER_IG_USER_ID or not IG_ACCESS_TOKEN:
         print("⚠️ Missing Instagram credentials. Skipping upload.")
         sys.exit(0)
 
