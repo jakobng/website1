@@ -20,7 +20,7 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
 
 def verify_target_account():
     """Validates that the configured MANCHESTER_IG_USER_ID is reachable with the access token."""
-    url = f"{GRAPH_URL}/{MANCHESTER_IG_USER_ID}"
+    url = f"{GRAPH_URL}/{IG_USER_ID}"
     params = {
         "fields": "id,username",
         "access_token": IG_ACCESS_TOKEN,
