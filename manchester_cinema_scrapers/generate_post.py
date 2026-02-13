@@ -111,12 +111,12 @@ CINEMA_ADDRESSES = {
 
 CINEMA_FILENAME_OVERRIDES = {
     # Manchester cinemas
-    "HOME Manchester": "home",
+    "HOME Manchester": "Home",
     "Cultplex": "cultplex",
     "The Savoy": "savoy",
-    "Everyman Manchester": "everyman",
-    "Regent Cinema": "regent",
-    "The Plaza": "plaza",
+    "Everyman Manchester": "everyman_manchester",
+    "Regent Cinema": "regent_manchester",
+    "The Plaza": "plaza_stockport",
     "The Block Cinema": "block",
     "Small World Cinema Club": "smallworld",
 }
@@ -208,6 +208,7 @@ def get_cinema_image_path(cinema_name: str) -> Path | None:
     else:
         target = normalize_name(cinema_name)
 
+    target = normalize_name(target)
     if not target: return None
 
     candidates = list(ASSETS_DIR.glob("*"))
@@ -230,6 +231,7 @@ def get_cutout_path(cinema_name: str) -> Path | None:
     else:
         target = normalize_name(cinema_name)
 
+    target = normalize_name(target)
     if not target: return None
 
     candidates = list(CUTOUTS_DIR.glob("*"))
