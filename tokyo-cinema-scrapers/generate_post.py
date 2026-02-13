@@ -57,6 +57,7 @@ SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
 ASSETS_DIR = BASE_DIR / "cinema_assets"
 CUTOUTS_DIR = ASSETS_DIR / "cutouts"
 OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_caption.txt"
+CREATIVE_HISTORY_PATH = DATA_DIR / "creative_direction_history.json"
 
 # Font Updates
 BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
@@ -445,6 +446,31 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
             
     return layout_rgba
 
+def load_recent_direction_history(limit: int = 4) -> list[dict]:
+    if not CREATIVE_HISTORY_PATH.exists():
+        return []
+    try:
+        data = json.loads(CREATIVE_HISTORY_PATH.read_text(encoding="utf-8"))
+        if isinstance(data, list):
+            return data[-limit:]
+    except Exception as e:
+        print(f"   ⚠️ Could not read creative history: {e}", flush=True)
+    return []
+
+def save_direction_history_entry(date_text: str, director_prompt: str) -> None:
+    history = load_recent_direction_history(limit=30)
+    history.append({
+        "date": date_text,
+        "director_prompt": director_prompt,
+    })
+    try:
+        CREATIVE_HISTORY_PATH.write_text(
+            json.dumps(history[-30:], ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+    except Exception as e:
+        print(f"   ⚠️ Could not save creative history: {e}", flush=True)
+
 def gemini_creative_director(collage_img: Image.Image, cinema_names: list[str], date_text: str) -> str:
     """
     Step A: Creative Director Review.
@@ -456,10 +482,20 @@ def gemini_creative_director(collage_img: Image.Image, cinema_names: list[str], 
 
     try:
         client = genai.Client(api_key=GEMINI_API_KEY)
+        recent_history = load_recent_direction_history(limit=4)
+        history_context = ""
+        if recent_history:
+            recent_lines = []
+            for item in recent_history:
+                short_prompt = (item.get("director_prompt") or "").replace("\n", " ")[:300]
+                recent_lines.append(f"- {item.get('date', 'unknown date')}: {short_prompt}")
+            history_context = "\nRecent creative direction (avoid repeating these moods/forms):\n" + "\n".join(recent_lines)
         
         prompt = f"""
         You are a Visionary Architect specializing in impossible geometry and avant-garde structural synthesis.
         You are looking at a collage of cinema buildings (exteriors and interiors) floating in space.
+
+        {history_context}
 
         Your Goal: Write a prompt for a Generative AI that will fuse these isolated elements into a SINGLE, SOPHISTICATED, IMPOSSIBLE ARCHITECTURAL STRUCTURE.
 
@@ -471,12 +507,14 @@ def gemini_creative_director(collage_img: Image.Image, cinema_names: list[str], 
         5.  **Structure**: Describe a structure where gravity and perspective are subjective. The roof of one building should morph seamlessly into the staircase of another, or the steps into a doorway. Use whatever language makes the most sense for the images you are seeing.
         6.  **Melt the Edges**: The *centers* of the photos are immutable, but their *edges* must dissolve naturally into the new structure. A brick wall should twist into a steel beam; a floor should curve up to become a ceiling.
         7.  **Atmosphere**: again, you look at the cutout images and you decide the vibe. But nothing cartoonish or unrealistic in texture. It should all be roughly photographic. But do play around widely within that.
-        8.  **Text Integration**: The following text must be integrated subtly but legibly into the architecture (e.g., engraved in stone, projected on glass, or as stylish signage):
+        8.  **Variation Rule**: Compare with the recent creative direction list. Pick a clearly different formal language (e.g. blocky vs flowy, compressed vs sprawling), a different lighting mood, and a different material/colour strategy.
+        9.  **Cutout Protection Rule**: Treat the central area of each cutout as locked source photography. Never paint over those core regions. Only transform the edge transition zones.
+        10. **Text Integration**: The following text must be integrated subtly but legibly into the architecture (e.g., engraved in stone, projected on glass, or as stylish signage):
             - "Today's Cinema Selection"
             - "今日の上映" (Japanese for Today's Screening)
             - "{date_text}"
 
-        Negative constraints: Do NOT move, resize, rotate, warp, or repaint the cutout centers. Do NOT replace the building interiors. Only dissolve/blend edges. Do NOT add cinema brands or signage not present in the source images.
+        Negative constraints: Do NOT move, resize, rotate, warp, or repaint the cutout centers. Do NOT replace the building interiors. Do NOT hallucinate completely new replacement buildings. Only dissolve/blend edges. Do NOT add cinema brands or signage not present in the source images.
 
         Output ONLY the prompt text.
         """
@@ -494,6 +532,7 @@ def gemini_creative_director(collage_img: Image.Image, cinema_names: list[str], 
             )
         )
         director_prompt = response.text.strip()
+        save_direction_history_entry(date_text, director_prompt)
         print(f"   📝 Director's Prompt: {director_prompt[:100]}...", flush=True)
         return director_prompt
     except Exception as e:
