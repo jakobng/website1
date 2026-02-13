@@ -133,7 +133,7 @@ jobs:
         id: instagram_upload
         run: python upload_to_instagram.py --type ${{ steps.mode.outputs.post_type }}
         env:
-          IG_USER_ID: ${{ secrets.MANCHESTER_IG_USER_ID }}
+          MANCHESTER_IG_USER_ID: ${{ secrets.MANCHESTER_IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
 
       - name: Send Failure Alert Email
