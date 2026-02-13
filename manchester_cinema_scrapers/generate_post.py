@@ -68,6 +68,7 @@ SHOWTIMES_PATH = DATA_DIR / "showtimes.json"
 ASSETS_DIR = BASE_DIR / "cinema_assets"
 CUTOUTS_DIR = ASSETS_DIR / "cutouts"
 OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_caption.txt"
+CREATIVE_HISTORY_PATH = DATA_DIR / "creative_direction_history.json"
 
 # Font Updates - Using the fonts found in the fonts folder
 BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
@@ -335,6 +336,31 @@ def create_layout_and_mask(cinemas: list[tuple[str, Path]], target_width: int, t
 
     return layout_rgba, mask
 
+def load_recent_direction_history(limit: int = 4) -> list[dict]:
+    if not CREATIVE_HISTORY_PATH.exists():
+        return []
+    try:
+        data = json.loads(CREATIVE_HISTORY_PATH.read_text(encoding="utf-8"))
+        if isinstance(data, list):
+            return data[-limit:]
+    except Exception as e:
+        print(f"   ⚠️ Could not read creative history: {e}")
+    return []
+
+def save_direction_history_entry(date_text: str, director_prompt: str) -> None:
+    history = load_recent_direction_history(limit=30)
+    history.append({
+        "date": date_text,
+        "director_prompt": director_prompt,
+    })
+    try:
+        CREATIVE_HISTORY_PATH.write_text(
+            json.dumps(history[-30:], ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+    except Exception as e:
+        print(f"   ⚠️ Could not save creative history: {e}")
+
 def creative_director_review(original_layout: Image.Image, date_text: str) -> str:
     """
     Uses Gemini to look at the layout and write a prompt for the final generation.
@@ -350,6 +376,16 @@ def creative_director_review(original_layout: Image.Image, date_text: str) -> st
     inputs.append("Role: Creative Director. Task: Analyze this image to guide the creation of a final masterpiece.")
     inputs.append("Image: Original Collage (Reference for cutouts).")
     inputs.append(original_layout)
+    recent_history = load_recent_direction_history(limit=4)
+    if recent_history:
+        recent_lines = []
+        for item in recent_history:
+            short_prompt = (item.get("director_prompt") or "").replace("\n", " ")[:300]
+            recent_lines.append(f"- {item.get('date', 'unknown date')}: {short_prompt}")
+        inputs.append(
+            "Recent creative direction (avoid repeating these moods/forms):\n" +
+            "\n".join(recent_lines)
+        )
         
     prompt = f"""
         You are a Visionary Architect specializing in impossible geometry and avant-garde structural synthesis.
@@ -364,10 +400,12 @@ def creative_director_review(original_layout: Image.Image, date_text: str) -> st
         4.  **Sophisticated Fusion**: Avoid cheesy tropes. NO film reels, NO movie projectors, NO popcorn, NO generic "Cyberpunk". 
         5.  **Structure**: Describe a structure where gravity and perspective are subjective. The roof of one building should morph seamlessly into the staircase of another, or the steps into a doorway. Use whatever language makes the most sense for the images you are seeing.
         6.  **Melt the Edges**: The *centers* of the photos are immutable, but their *edges* must dissolve naturally into the new structure. A brick wall should twist into a steel beam; a floor should curve up to become a ceiling.
-        7.  **Atmosphere**: again, you look at the cutout images and you decide the vibe. But nothing cartoonish or unrealistic in texture. It should all be roughly photographic. But do play around widely within that. 
-        8.  **Text**: Include the text "MANCHESTER CINEMA" and "{date_text}" integrated subtly (e.g., engraved, projected, or as a structural element).
+        7.  **Atmosphere**: again, you look at the cutout images and you decide the vibe. But nothing cartoonish or unrealistic in texture. It should all be roughly photographic. But do play around widely within that.
+        8.  **Variation Rule**: Compare with the recent creative direction list. Pick a clearly different formal language (e.g. blocky vs flowy, compressed vs sprawling), a different lighting mood, and a different material/colour strategy.
+        9.  **Cutout Protection Rule**: Treat the central area of each cutout as locked source photography. Never paint over those core regions. Only transform the edge transition zones.
+        10. **Text**: Include the text "MANCHESTER CINEMA" and "{date_text}" integrated subtly (e.g., engraved, projected, or as a structural element).
 
-        Negative constraints: Do NOT move, resize, rotate, warp, or repaint the cutout centers. Do NOT replace the building interiors. Only dissolve/blend edges.
+        Negative constraints: Do NOT move, resize, rotate, warp, or repaint the cutout centers. Do NOT replace the building interiors. Do NOT hallucinate completely new replacement buildings. Only dissolve/blend edges.
         
         Output ONLY the prompt text.
         """
@@ -387,6 +425,7 @@ def creative_director_review(original_layout: Image.Image, date_text: str) -> st
             )
         )
         director_prompt = response.text.strip()
+        save_direction_history_entry(date_text, director_prompt)
         print(f"   📝 Director's Full Prompt:\n{director_prompt}\n" + "-"*40, flush=True)
         return director_prompt
     except Exception as e:
