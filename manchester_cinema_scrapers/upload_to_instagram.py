@@ -6,7 +6,7 @@ import sys
 import argparse
 
 # --- Configuration ---
-IG_USER_ID = os.environ.get("IG_USER_ID")
+IG_USER_ID = os.environ.get("MANCHESTER_IG_USER_ID")
 IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN")
 
 GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/manchester_cinema_scrapers/ig_posts/"
@@ -19,8 +19,8 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
 
 
 def verify_target_account():
-    """Validates that the configured IG_USER_ID is reachable with the access token."""
-    url = f"{GRAPH_URL}/{IG_USER_ID}"
+    """Validates that the configured MANCHESTER_IG_USER_ID is reachable with the access token."""
+    url = f"{GRAPH_URL}/{MANCHESTER_IG_USER_ID}"
     params = {
         "fields": "id,username",
         "access_token": IG_ACCESS_TOKEN,
