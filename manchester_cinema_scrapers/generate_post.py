@@ -72,6 +72,8 @@ OUTPUT_CAPTION_PATH = OUTPUT_DIR / "post_caption.txt"
 # Font Updates - Using the fonts found in the fonts folder
 BOLD_FONT_PATH = FONTS_DIR / "NotoSansJP-Bold.ttf"
 REGULAR_FONT_PATH = FONTS_DIR / "NotoSansJP-Regular.ttf"
+SYSTEM_BOLD_FONT_PATH = Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc")
+SYSTEM_REGULAR_FONT_PATH = Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc")
 
 # Secrets
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
@@ -480,21 +482,22 @@ def draw_text_with_shadow(draw, xy, text, font, fill, shadow_color=DARK_SHADOW, 
     draw.text((x + offset[0], y + offset[1]), text, font=font, fill=shadow_color, anchor=anchor)
     draw.text((x, y), text, font=font, fill=fill, anchor=anchor)
 
+def load_font(preferred_path: Path, fallback_path: Path, size: int):
+    try:
+        return ImageFont.truetype(str(preferred_path), size)
+    except Exception:
+        try:
+            return ImageFont.truetype(str(fallback_path), size)
+        except Exception:
+            return ImageFont.load_default()
+
 def draw_cinema_slide(cinema_name: str, listings: list[dict[str, str | None]], bg_template: Image.Image) -> Image.Image:
     img = bg_template.copy()
     draw = ImageDraw.Draw(img)
-    try:
-        # Load fonts - using the Japanese fonts as they are available in the folder
-        title_font = ImageFont.truetype(str(BOLD_FONT_PATH), 55)
-        regular_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 34)
-        small_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 28)
-        footer_font = ImageFont.truetype(str(REGULAR_FONT_PATH), 24)
-    except Exception:
-        # Fallback
-        title_font = ImageFont.load_default()
-        regular_font = ImageFont.load_default()
-        small_font = ImageFont.load_default()
-        footer_font = ImageFont.load_default()
+    title_font = load_font(BOLD_FONT_PATH, SYSTEM_BOLD_FONT_PATH, 55)
+    regular_font = load_font(REGULAR_FONT_PATH, SYSTEM_REGULAR_FONT_PATH, 34)
+    small_font = load_font(REGULAR_FONT_PATH, SYSTEM_REGULAR_FONT_PATH, 28)
+    footer_font = load_font(REGULAR_FONT_PATH, SYSTEM_REGULAR_FONT_PATH, 24)
         
     content_left = MARGIN + 20
     y_pos = MARGIN + 40
