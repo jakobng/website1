@@ -52576,5 +52576,460 @@
     "runtime": 42,
     "vote_average": 0.0,
     "tmdb_countries": []
+  },
+  "博奕打ち 流れ者": {
+    "tmdb_id": 546136,
+    "tmdb_title_jp": "博奕打ち　流れ者",
+    "tmdb_title_en": "The Drifting Gambler",
+    "tmdb_title_original": "博奕打ち　流れ者",
+    "tmdb_original_language": "ja",
+    "overview": "渡世の義理から仲間とともに殴り込みをかけた舟木栄太郎は、凄絶な戦いの末見事相手を倒す。一緒に殴りこんだ老侠客・仁助は深手を負い、栄太郎に別れた妻と娘・とみに届ける金を託し息を引き取った。それから５年。とみを探す栄太郎は深川木場の木場政一家に草鞋を脱ぎ、そこでとみと出会う。.",
+    "overview_en": "8th part of the Gamblers / Bakuchi-uchi series.",
+    "poster_path": "/4zgRBiYcne8rj4NYPPEUPeYa1pm.jpg",
+    "backdrop_path": "/bghtgzzhWVpEvnFhg2GQ0e0G2S7.jpg",
+    "release_date": "1970-04-18",
+    "director": "山下耕作",
+    "director_jp": "山下耕作",
+    "director_en": "Kōsaku Yamashita",
+    "genres": [
+      "犯罪"
+    ],
+    "genres_en": [
+      "Crime"
+    ],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "動くな、死ね、甦れ！〈デジタルリマスター版〉": {
+    "tmdb_id": 41948,
+    "tmdb_title_jp": "動くな、死ね、甦れ！",
+    "tmdb_title_en": "Freeze, Die, Come to Life",
+    "tmdb_title_original": "Замри-умри-воскресни!",
+    "tmdb_original_language": "ru",
+    "overview": "第2次世界大戦直後のソ連。強制収容所地帯となった小さな炭鉱町スーチャンで暮らす12歳の少年ワレルカは、シングルマザーの母親への反抗心から悪戯を繰り返していた。同じ年の少女ガリーヤはいつもワレルカのことを気にかけており、彼が窮地に立たされると守護天使のように現われて助けてくれる。そんなある日、度を越した悪戯で機関車を転覆させてしまったワレルカは、逮捕を恐れて1人で町を飛び出す。",
+    "overview_en": "Stuck in a mining town near Vladivostok in 1947 amongst Soviet exiles and Japanese POWs (Japanese prisoners remained in Siberia for years after the war had ended), the kids have to come up with something to keep them busy. Two friends, Valerka and Galia, play some peculiar, very dangerous games of their own amid the man-made wasteland of Suchan.",
+    "poster_path": "/ur1jJZXpJdfixWDy5n7T5luSsJn.jpg",
+    "backdrop_path": "/4wcIeLuWkW1IgMlKPXeWu5Y7dLv.jpg",
+    "release_date": "1990-08-01",
+    "director": "ヴィターリー・カネフスキー",
+    "director_jp": "ヴィターリー・カネフスキー",
+    "director_en": "Vitali Kanevsky",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SU",
+        "name": "Soviet Union"
+      }
+    ]
+  },
+  "河内山宗俊 4K": {
+    "tmdb_id": 128722,
+    "tmdb_title_jp": "河内山宗俊",
+    "tmdb_title_en": "Priest of Darkness",
+    "tmdb_title_original": "河内山宗俊",
+    "tmdb_original_language": "ja",
+    "overview": "居酒屋に居候する河内山宗俊と、用心棒の金子市之丞。その日暮らしの生活を送る彼らにとって、甘酒屋の娘・お浪は心の慰めだった。ある日、お浪が不良の弟・広太郎の借金のために身売りすることを知った宗俊と市之丞は、彼女を救うべく手を組むが...。",
+    "overview_en": "A boy steals a knife from an old samurai, unaware of its value, setting off a strange chain of events.",
+    "poster_path": "/ccEDvZyFkCVl1C418MNS9xcK7qS.jpg",
+    "backdrop_path": "/sqJKqTIAHpqWs5znsOGaAABDuib.jpg",
+    "release_date": "1936-04-30",
+    "director": "山中貞雄",
+    "director_jp": "山中貞雄",
+    "director_en": "Sadao Yamanaka",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 82,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:128722": {
+    "tmdb_id": 128722,
+    "tmdb_title_jp": "河内山宗俊",
+    "tmdb_title_en": "Priest of Darkness",
+    "tmdb_title_original": "河内山宗俊",
+    "tmdb_original_language": "ja",
+    "overview": "居酒屋に居候する河内山宗俊と、用心棒の金子市之丞。その日暮らしの生活を送る彼らにとって、甘酒屋の娘・お浪は心の慰めだった。ある日、お浪が不良の弟・広太郎の借金のために身売りすることを知った宗俊と市之丞は、彼女を救うべく手を組むが...。",
+    "overview_en": "A boy steals a knife from an old samurai, unaware of its value, setting off a strange chain of events.",
+    "poster_path": "/ccEDvZyFkCVl1C418MNS9xcK7qS.jpg",
+    "backdrop_path": "/sqJKqTIAHpqWs5znsOGaAABDuib.jpg",
+    "release_date": "1936-04-30",
+    "director": "山中貞雄",
+    "director_jp": "山中貞雄",
+    "director_en": "Sadao Yamanaka",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 82,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "人情紙風船 4K": {
+    "tmdb_id": 84237,
+    "tmdb_title_jp": "人情紙風船",
+    "tmdb_title_en": "Humanity and Paper Balloons",
+    "tmdb_title_original": "人情紙風船",
+    "tmdb_original_language": "ja",
+    "overview": "江戸の貧乏長屋で浪人の首吊りが発生、役人が調べに来る。長屋の住人である髪結いの新三は、長屋の連中で浪人の為にお通夜をしてやろうと言い、大家を説き伏せて酒をせしめる。お通夜が行われるが、長屋の連中は酒がただで飲めると喜び陽気な馬鹿騒ぎを行う。山中貞雄監督の遺作。",
+    "overview_en": "In a slum in Edo Japan, a ronin hopes that his deceased father's former master will hire him while a disgraced hairdresser attempts to regain his pride by kidnapping the daughter of a wealthy pawnbroker, who is set to be married.",
+    "poster_path": "/u2q5dLHM7B6hig1V5fGxyHFSlyR.jpg",
+    "backdrop_path": "/sp6i5DtPWJKgCW9zzIb0fbgjseC.jpg",
+    "release_date": "1937-08-25",
+    "director": "山中貞雄",
+    "director_jp": "山中貞雄",
+    "director_en": "Sadao Yamanaka",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 86,
+    "vote_average": 7.904,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:84237": {
+    "tmdb_id": 84237,
+    "tmdb_title_jp": "人情紙風船",
+    "tmdb_title_en": "Humanity and Paper Balloons",
+    "tmdb_title_original": "人情紙風船",
+    "tmdb_original_language": "ja",
+    "overview": "江戸の貧乏長屋で浪人の首吊りが発生、役人が調べに来る。長屋の住人である髪結いの新三は、長屋の連中で浪人の為にお通夜をしてやろうと言い、大家を説き伏せて酒をせしめる。お通夜が行われるが、長屋の連中は酒がただで飲めると喜び陽気な馬鹿騒ぎを行う。山中貞雄監督の遺作。",
+    "overview_en": "In a slum in Edo Japan, a ronin hopes that his deceased father's former master will hire him while a disgraced hairdresser attempts to regain his pride by kidnapping the daughter of a wealthy pawnbroker, who is set to be married.",
+    "poster_path": "/u2q5dLHM7B6hig1V5fGxyHFSlyR.jpg",
+    "backdrop_path": "/sp6i5DtPWJKgCW9zzIb0fbgjseC.jpg",
+    "release_date": "1937-08-25",
+    "director": "山中貞雄",
+    "director_jp": "山中貞雄",
+    "director_en": "Sadao Yamanaka",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 86,
+    "vote_average": 7.904,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "丹下左膳余話 百万両の壺 4K": {
+    "tmdb_id": 1235870,
+    "tmdb_title_jp": "Tange Sazen: The Million Ryo Pot",
+    "tmdb_title_en": "Tange Sazen: The Million Ryo Pot",
+    "tmdb_title_original": "Tange Sazen: The Million Ryo Pot",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Samasuke (Tatsuya Nakadai) lives in Souma Nakamura Han, he was ordered by Karo to murder Kogi Onmitsu (Ninja sent by Bakuhu). However, he was taken aback. He not only lost his right arm, but also his eyes were scared and dropped into a river. 3 years later, he changed his name to Sazen, and was lived in Edo. For some reasons, he got involved in a conflict between Kogi and Kiryu Han over \"Kokezaru no Tsubo\" which strages 1 million ryo (currency).",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "月曜日のユカ": {
+    "tmdb_id": 109948,
+    "tmdb_title_jp": "月曜日のユカ",
+    "tmdb_title_en": "Only on Mondays",
+    "tmdb_title_original": "月曜日のユカ",
+    "tmdb_original_language": "ja",
+    "overview": "横浜の外国人客が多い上流ナイトクラブでは、今日もユカと呼ばれる18歳の女の子が人気を集めていた。さまざまな伝説を身のまわりに撒きちらす女、平気で男と寝て、教会にもかよう。彼女にとっては当り前の生活も、人からみれば異様にうつった。横浜のユカのアパートで、ユカがパパと呼んでいる船荷会社の社長は、初老の男だがユカにとってはパパ を幸福にしてあげたいという気持でいっぱいだ。ある日曜日、ユカがボーイフレンドの修と街を歩いていた時、ショウウィンドウをのぞいて素晴しい人形を、その娘に買ってやっている嬉しそうなパパをみた時から、ユカもそんな風にパパを喜ばせたいと思った。ユカの目的は男をよろこばすだけだったから...。",
+    "overview_en": "Yuka is a “good-time girl” from Yokohama who is persuaded by her papa to sleep with a foreign business executive so that he can close an important deal. Nakahira presents a shrewdly observed portrait of a modern, sexually assertive woman—an unsettling character for a changing but still patriarchal society.",
+    "poster_path": "/ptjvwCJ9kI3IHriP6G1oh4YN855.jpg",
+    "backdrop_path": "/yATPwKSVbDf9IR9cyFJbMZabJvG.jpg",
+    "release_date": "1964-03-04",
+    "director": "中平康",
+    "director_jp": "中平康",
+    "director_en": "Kō Nakahira",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 94,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:109948": {
+    "tmdb_id": 109948,
+    "tmdb_title_jp": "月曜日のユカ",
+    "tmdb_title_en": "Only on Mondays",
+    "tmdb_title_original": "月曜日のユカ",
+    "tmdb_original_language": "ja",
+    "overview": "横浜の外国人客が多い上流ナイトクラブでは、今日もユカと呼ばれる18歳の女の子が人気を集めていた。さまざまな伝説を身のまわりに撒きちらす女、平気で男と寝て、教会にもかよう。彼女にとっては当り前の生活も、人からみれば異様にうつった。横浜のユカのアパートで、ユカがパパと呼んでいる船荷会社の社長は、初老の男だがユカにとってはパパ を幸福にしてあげたいという気持でいっぱいだ。ある日曜日、ユカがボーイフレンドの修と街を歩いていた時、ショウウィンドウをのぞいて素晴しい人形を、その娘に買ってやっている嬉しそうなパパをみた時から、ユカもそんな風にパパを喜ばせたいと思った。ユカの目的は男をよろこばすだけだったから...。",
+    "overview_en": "Yuka is a “good-time girl” from Yokohama who is persuaded by her papa to sleep with a foreign business executive so that he can close an important deal. Nakahira presents a shrewdly observed portrait of a modern, sexually assertive woman—an unsettling character for a changing but still patriarchal society.",
+    "poster_path": "/ptjvwCJ9kI3IHriP6G1oh4YN855.jpg",
+    "backdrop_path": "/yATPwKSVbDf9IR9cyFJbMZabJvG.jpg",
+    "release_date": "1964-03-04",
+    "director": "中平康",
+    "director_jp": "中平康",
+    "director_en": "Kō Nakahira",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 94,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "闇の中の魑魅魍魎": {
+    "tmdb_id": 198654,
+    "tmdb_title_jp": "闇の中の魑魅魍魎",
+    "tmdb_title_en": "Evil Spirits in the Darkness",
+    "tmdb_title_original": "闇の中の魑魅魍魎",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The film depicts the youth of Kinzo, a heretic painter who worked in Tosa during the late Edo period, and the hurricane-like inner side of his life.",
+    "poster_path": "/diB7xdpgKdvnZFDt5mHwWVEsOaT.jpg",
+    "backdrop_path": null,
+    "release_date": "1971-06-07",
+    "director": "中平康",
+    "director_jp": "中平康",
+    "director_en": "Kō Nakahira",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 110,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:198654": {
+    "tmdb_id": 198654,
+    "tmdb_title_jp": "闇の中の魑魅魍魎",
+    "tmdb_title_en": "Evil Spirits in the Darkness",
+    "tmdb_title_original": "闇の中の魑魅魍魎",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The film depicts the youth of Kinzo, a heretic painter who worked in Tosa during the late Edo period, and the hurricane-like inner side of his life.",
+    "poster_path": "/diB7xdpgKdvnZFDt5mHwWVEsOaT.jpg",
+    "backdrop_path": null,
+    "release_date": "1971-06-07",
+    "director": "中平康",
+    "director_jp": "中平康",
+    "director_en": "Kō Nakahira",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 110,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "狂った果実": {
+    "tmdb_id": 125277,
+    "tmdb_title_jp": "狂った果実",
+    "tmdb_title_en": "Crazed Fruit",
+    "tmdb_title_original": "狂った果実",
+    "tmdb_original_language": "ja",
+    "overview": "ガソリンスタンドで働く佐川哲夫と原宿で遊ぶ森千加がはじめて出会ったのは、彼女がボーイフレンドとガスの補給にやってきたときだ。哲夫は夜は暴力バー「パラダイス」で働いているが、生活は真面目だ。数日して、ジョギング中の哲夫のわきを、千加が偶然に通りかかり二人はドライブをした。彼女のドレッシーな姿に、哲夫は強引に犯してしまう、翌日、千加はスタンドにやって来て、強姦魔と哲夫をからかい、彼は興奮して客の外車をブツけてしまい、店をクビになってしまう。哲夫はその夜、「パラダイス」で、払いの悪い客を徹底的にブチのめす。そこへ千加が現れ、二人は彼女のマンションで体を重ねた。千加から義父の東野の子を宿していると聞いた哲夫は、東野の会社に殴り込みに行った。そんな哲夫の直線的な行動に、千加は馴染めないものを感じる。数日後、千加の遊び仲間でアメラグのメンバーがパラダイスにやって来て、大騒ぎをした。二十万円の請求にせせら笑う学生たち。哲夫と学生たちの間で乱闘がはじまり、はずみで、店の先輩大沢の妻でホステスの春恵が流産してしまう。事情を聞いた大沢は哲夫と一緒に学生たちの溜り場「ショットガン」に乗り込んだ。入り乱れる双方、哲夫の持っていた出刀抱丁がひとりを刺し、修羅場と化した。呆然と街を歩く千加。翌日、いつものようにジョギングをする哲夫。その後を、覆面パトカーがスーッと追って行った。",
+    "overview_en": "A working class young man, Tetsuo, who distrusts all rich people, falls in love with a girl, Chika, from an affluent family. He has a difficult time, but love survives despite the problems.",
+    "poster_path": "/qzuZczWAB7uvnsL1XwSC2X4Zm9H.jpg",
+    "backdrop_path": "/1aOilQa8fqYUpjIgfw23HaaNspB.jpg",
+    "release_date": "1981-04-24",
+    "director": "根岸吉太郎",
+    "director_jp": "根岸吉太郎",
+    "director_en": "Kichitaro Negishi",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "Thriller"
+    ],
+    "runtime": 85,
+    "vote_average": 5.438,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:125277": {
+    "tmdb_id": 125277,
+    "tmdb_title_jp": "狂った果実",
+    "tmdb_title_en": "Crazed Fruit",
+    "tmdb_title_original": "狂った果実",
+    "tmdb_original_language": "ja",
+    "overview": "ガソリンスタンドで働く佐川哲夫と原宿で遊ぶ森千加がはじめて出会ったのは、彼女がボーイフレンドとガスの補給にやってきたときだ。哲夫は夜は暴力バー「パラダイス」で働いているが、生活は真面目だ。数日して、ジョギング中の哲夫のわきを、千加が偶然に通りかかり二人はドライブをした。彼女のドレッシーな姿に、哲夫は強引に犯してしまう、翌日、千加はスタンドにやって来て、強姦魔と哲夫をからかい、彼は興奮して客の外車をブツけてしまい、店をクビになってしまう。哲夫はその夜、「パラダイス」で、払いの悪い客を徹底的にブチのめす。そこへ千加が現れ、二人は彼女のマンションで体を重ねた。千加から義父の東野の子を宿していると聞いた哲夫は、東野の会社に殴り込みに行った。そんな哲夫の直線的な行動に、千加は馴染めないものを感じる。数日後、千加の遊び仲間でアメラグのメンバーがパラダイスにやって来て、大騒ぎをした。二十万円の請求にせせら笑う学生たち。哲夫と学生たちの間で乱闘がはじまり、はずみで、店の先輩大沢の妻でホステスの春恵が流産してしまう。事情を聞いた大沢は哲夫と一緒に学生たちの溜り場「ショットガン」に乗り込んだ。入り乱れる双方、哲夫の持っていた出刀抱丁がひとりを刺し、修羅場と化した。呆然と街を歩く千加。翌日、いつものようにジョギングをする哲夫。その後を、覆面パトカーがスーッと追って行った。",
+    "overview_en": "A working class young man, Tetsuo, who distrusts all rich people, falls in love with a girl, Chika, from an affluent family. He has a difficult time, but love survives despite the problems.",
+    "poster_path": "/qzuZczWAB7uvnsL1XwSC2X4Zm9H.jpg",
+    "backdrop_path": "/1aOilQa8fqYUpjIgfw23HaaNspB.jpg",
+    "release_date": "1981-04-24",
+    "director": "根岸吉太郎",
+    "director_jp": "根岸吉太郎",
+    "director_en": "Kichitaro Negishi",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "Thriller"
+    ],
+    "runtime": 85,
+    "vote_average": 5.438,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "災 劇場版[0221ｲﾍﾞﾝﾄ]": {
+    "tmdb_id": 1521352,
+    "tmdb_title_jp": "災 劇場版",
+    "tmdb_title_en": "Sai: Disaster",
+    "tmdb_title_original": "災 劇場版",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Four people lead ordinary lives in different places, their paths never crossing. A mysterious man appears in each story, always as someone else. One moment, a cram school instructor; the next, a truck driver, a barber - his identity constantly shifting. Then, death strikes. A detective pursues the truth, closing in on a revelation...",
+    "poster_path": "/pKzKYSNhjDvf2C0AsYhco8nCVtw.jpg",
+    "backdrop_path": "/kq2Lym2qKZcbTAt4KjJYeYwVxGH.jpg",
+    "release_date": "2026-02-20",
+    "director": "関友太朗",
+    "director_jp": "関友太朗",
+    "director_en": "Yutaro Seki",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 128,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1521352": {
+    "tmdb_id": 1521352,
+    "tmdb_title_jp": "災 劇場版",
+    "tmdb_title_en": "Sai: Disaster",
+    "tmdb_title_original": "災 劇場版",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Four people lead ordinary lives in different places, their paths never crossing. A mysterious man appears in each story, always as someone else. One moment, a cram school instructor; the next, a truck driver, a barber - his identity constantly shifting. Then, death strikes. A detective pursues the truth, closing in on a revelation...",
+    "poster_path": "/pKzKYSNhjDvf2C0AsYhco8nCVtw.jpg",
+    "backdrop_path": "/kq2Lym2qKZcbTAt4KjJYeYwVxGH.jpg",
+    "release_date": "2026-02-20",
+    "director": "関友太朗",
+    "director_jp": "関友太朗",
+    "director_en": "Yutaro Seki",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 128,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "佐藤創我": null,
+  "tmdb:1235870": {
+    "tmdb_id": 1235870,
+    "tmdb_title_jp": "Tange Sazen: The Million Ryo Pot",
+    "tmdb_title_en": "Tange Sazen: The Million Ryo Pot",
+    "tmdb_title_original": "Tange Sazen: The Million Ryo Pot",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Samasuke (Tatsuya Nakadai) lives in Souma Nakamura Han, he was ordered by Karo to murder Kogi Onmitsu (Ninja sent by Bakuhu). However, he was taken aback. He not only lost his right arm, but also his eyes were scared and dropped into a river. 3 years later, he changed his name to Sazen, and was lived in Edo. For some reasons, he got involved in a conflict between Kogi and Kiryu Han over \"Kokezaru no Tsubo\" which strages 1 million ryo (currency).",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": []
   }
 }

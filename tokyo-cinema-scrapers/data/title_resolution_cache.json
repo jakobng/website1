@@ -5385,5 +5385,21 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "丹下左膳余話 百万両の壺 4K": {
+    "english_title": "The Million Ryo Pot",
+    "release_year": 1935,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "丹下左膳余話 百万両の壺",
+    "director": "Sadao Yamanaka",
+    "country": "Japan"
+  },
+  "佐藤創我": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
