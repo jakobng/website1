@@ -1926,7 +1926,7 @@ def main():
         ("Eurospace", eurospace_module.scrape, _normalize_eurospace_schema),
         ("CineMalice", cinemalice_module.scrape_cinemalice, None),
         ("Cine Switch Ginza", cine_switch_ginza_module.scrape_cine_switch_ginza, None),
-        ("Jimbocho Theatre", jinbocho_theatre_module.scrape_jinbocho, None),
+        ("Jinbocho Theatre", jinbocho_theatre_module.scrape_jinbocho, None),
         ("Cinema Vera Shibuya", cinema_vera_module.scrape_cinema_vera, None),
         ("Institut Francais Tokyo", institut_francais_module.scrape_institut_francais, None),
         ("Jack and Betty Yokohama", jack_and_betty_module.scrape_jack_and_betty, None),
