@@ -4,6 +4,7 @@ import glob
 import time
 import sys
 import argparse
+import hashlib
 
 # --- Configuration ---
 MANCHESTER_IG_USER_ID = os.environ.get("MANCHESTER_IG_USER_ID")
@@ -16,6 +17,30 @@ GRAPH_URL = f"https://graph.facebook.com/{API_VERSION}"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, "ig_posts")
+
+
+def dedupe_files_by_content(file_paths):
+    """Drop duplicate images (same bytes) while preserving order."""
+    seen_hashes = set()
+    unique_files = []
+
+    for path in file_paths:
+        try:
+            with open(path, "rb") as f:
+                digest = hashlib.sha256(f.read()).hexdigest()
+        except Exception as e:
+            print(f"   ⚠️ Could not hash {os.path.basename(path)}: {e}")
+            unique_files.append(path)
+            continue
+
+        if digest in seen_hashes:
+            print(f"   ⚠️ Skipping duplicate slide: {os.path.basename(path)}")
+            continue
+
+        seen_hashes.add(digest)
+        unique_files.append(path)
+
+    return unique_files
 
 
 def verify_target_account():
@@ -184,6 +209,7 @@ def main():
                 caption_text = f.read()
 
     cache_buster = int(time.time())
+    feed_files = dedupe_files_by_content(feed_files)
 
     if feed_files:
         print(f"🔹 Detected {len(feed_files)} Feed Images.")
