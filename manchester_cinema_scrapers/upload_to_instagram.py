@@ -6,8 +6,8 @@ import sys
 import argparse
 
 # --- Configuration ---
-IG_USER_ID = os.environ.get("MANCHESTER_IG_USER_ID") or os.environ.get("IG_USER_ID")
-IG_ACCESS_TOKEN = os.environ.get("MANCHESTER_IG_ACCESS_TOKEN") or os.environ.get("IG_ACCESS_TOKEN")
+IG_USER_ID = os.environ.get("IG_USER_ID")
+IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN")
 
 GITHUB_PAGES_BASE_URL = "https://jakobng.github.io/website1/manchester_cinema_scrapers/ig_posts/"
 

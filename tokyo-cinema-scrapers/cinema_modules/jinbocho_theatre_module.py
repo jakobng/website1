@@ -9,6 +9,12 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.shogakukan.co.jp/jinbocho-theater/program/"
+REQUEST_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+    "Accept-Language": "ja,en-US;q=0.9,en;q=0.8",
+    "Referer": "https://www.shogakukan.co.jp/jinbocho-theater/",
+}
 FULLWIDTH_DIGITS = str.maketrans("０１２３４５６７８９", "0123456789")
 CIRCLED_DIGITS = {
     "①": 1,
@@ -425,7 +431,7 @@ def _parse_schedule_page(soup: BeautifulSoup, site_root: str) -> List[Dict]:
 def fetch_soup(url: str, *, encoding: str = "utf-8") -> Optional[BeautifulSoup]:
     """Fetch a URL and return a BeautifulSoup object, or None on error."""
     try:
-        resp = requests.get(url, timeout=10)
+        resp = requests.get(url, timeout=10, headers=REQUEST_HEADERS)
         resp.raise_for_status()
     except requests.RequestException as e:
         print(f"ERROR: [{CINEMA_NAME}] Could not fetch {url}: {e}", file=sys.stderr)

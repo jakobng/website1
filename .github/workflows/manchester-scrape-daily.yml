@@ -133,8 +133,8 @@ jobs:
         id: instagram_upload
         run: python upload_to_instagram.py --type ${{ steps.mode.outputs.post_type }}
         env:
-          IG_USER_ID: ${{ secrets.MANCHESTER_IG_USER_ID || secrets.IG_USER_ID }}
-          IG_ACCESS_TOKEN: ${{ secrets.MANCHESTER_IG_ACCESS_TOKEN || secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
 
       - name: Send Failure Alert Email
         if: failure() && steps.instagram_upload.outcome == 'failure'
@@ -163,7 +163,7 @@ jobs:
 
           Common causes:
           - Instagram access token expired or invalidated
-          - Authentication error (check MANCHESTER_IG_ACCESS_TOKEN / IG_ACCESS_TOKEN secret)
+          - Authentication error (check IG_ACCESS_TOKEN secret)
           - API rate limit exceeded
 
           View full logs:
@@ -172,7 +172,7 @@ jobs:
           To fix expired token:
           1. Go to Facebook Graph API Explorer
           2. Generate a new long-lived access token
-          3. Update MANCHESTER_IG_ACCESS_TOKEN (or IG_ACCESS_TOKEN) in repository secrets
+          3. Update IG_ACCESS_TOKEN in repository secrets
           '''
 
           msg.attach(MIMEText(body, 'plain'))
