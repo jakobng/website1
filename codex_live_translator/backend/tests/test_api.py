@@ -53,12 +53,42 @@ def test_end_to_end_session(tmp_path, monkeypatch):
     assert payload["segment_id"] == "seg-1"
     assert payload["translation_en"]
 
+    realtime_connect_response = client.post(
+        "/v1/realtime/connect",
+        json={
+            "session_id": session_id,
+            "offer_sdp": "v=0",
+            "source_lang_hint": "ja",
+        },
+    )
+    assert realtime_connect_response.status_code == 400
+    assert "requires FT_PROVIDER=openai" in realtime_connect_response.text
+
+    text_translate_response = client.post(
+        "/v1/text/translate",
+        json={
+            "session_id": session_id,
+            "segment_id": "seg-2",
+            "transcript_src": "konnichiwa",
+            "started_at_ms": 8000,
+            "ended_at_ms": 12000,
+            "prior_context_json": ["hello context"],
+            "source_lang_hint": "ja",
+            "target_lang": "en",
+            "conversation_context": "street interview",
+        },
+    )
+    assert text_translate_response.status_code == 200
+    text_payload = text_translate_response.json()
+    assert text_payload["segment_id"] == "seg-2"
+    assert text_payload["translation_en"]
+
     end_response = client.post("/v1/session/end", json={"session_id": session_id})
     assert end_response.status_code == 200
-    assert end_response.json()["segments_count"] == 1
+    assert end_response.json()["segments_count"] == 2
 
     export_response = client.get(f"/v1/session/{session_id}/export?format=json")
     assert export_response.status_code == 200
     exported = export_response.json()
     assert exported["session"]["session_id"] == session_id
-    assert len(exported["segments"]) == 1
+    assert len(exported["segments"]) == 2

@@ -11,7 +11,9 @@ Real-time-ish field translation system for documentary/film shoots.
 
 - FastAPI backend with APIs:
   - `POST /v1/session/start`
+  - `POST /v1/realtime/connect`
   - `POST /v1/segment/process`
+  - `POST /v1/text/translate`
   - `POST /v1/session/end`
   - `GET /v1/session/{id}/export?format=json|csv|srt`
 - SQLite persistence for sessions and segments.
@@ -22,8 +24,8 @@ Real-time-ish field translation system for documentary/film shoots.
   - one-tap start/stop
   - source language `Auto detect` by default (manual hint optional)
   - optional conversation context box (topic hints for better translation choices)
-  - mode-based chunking:
-    - `Realtime (experimental)`: continuous ~1.2s slices with queue trimming for lowest delay
+  - mode-based capture:
+    - `Realtime WebRTC (OpenAI)`: true low-latency live transcription path (finalized transcript lines translated via backend)
     - `Lower Latency`: 5s chunks
     - `Balanced`: 8s chunks
     - `Higher Accuracy`: 12s chunks
@@ -129,6 +131,8 @@ FT_OPENAI_TRANSLATE_MODEL=gpt-4.1-mini
 
 If key is missing while `openai` is selected, app falls back to mock.
 
+Realtime WebRTC mode also requires `openai` provider with a valid key.
+
 ## Audio hookup notes (Rode Wireless Pro)
 
 Use either:
@@ -163,6 +167,33 @@ No direct camera-overlay compositor is implemented in this repo.
 - `source_lang_hint` (string, optional)
 - `target_lang` (string, optional)
 - `audio_file` (file)
+
+## API request format for `/v1/realtime/connect`
+
+`application/json` body:
+
+- `session_id` (string)
+- `offer_sdp` (string)
+- `source_lang_hint` (string, optional)
+
+Returns:
+
+- `answer_sdp` (string)
+- `call_id` (string, optional)
+
+## API request format for `/v1/text/translate`
+
+`application/json` body:
+
+- `session_id` (string)
+- `segment_id` (string)
+- `transcript_src` (string)
+- `started_at_ms` (int)
+- `ended_at_ms` (int)
+- `prior_context_json` (string list, optional)
+- `source_lang_hint` (string, optional)
+- `target_lang` (string, optional)
+- `conversation_context` (string, optional)
 
 ## Tests
 

@@ -22,3 +22,14 @@ class SegmentProcessor(ABC):
         conversation_context: str | None = None,
     ) -> ProcessedSegment:
         raise NotImplementedError
+
+    @abstractmethod
+    async def translate_text(
+        self,
+        transcript: str,
+        source_lang: str,
+        target_lang: str,
+        prior_context: list[str],
+        conversation_context: str | None = None,
+    ) -> str:
+        raise NotImplementedError

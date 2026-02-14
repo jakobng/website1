@@ -4,6 +4,7 @@ import time
 import uuid
 from pathlib import Path
 
+import httpx
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, PlainTextResponse
@@ -11,12 +12,15 @@ from fastapi.staticfiles import StaticFiles
 
 from .config import get_settings
 from .models import (
+    RealtimeConnectRequest,
+    RealtimeConnectResponse,
     SegmentProcessResponse,
     SegmentRecord,
     SessionEndRequest,
     SessionEndResponse,
     SessionStartRequest,
     SessionStartResponse,
+    TextTranslateRequest,
 )
 from .services.factory import build_processor
 from .store import Store, utc_now
@@ -90,6 +94,74 @@ async def start_session(request: SessionStartRequest) -> SessionStartResponse:
     return SessionStartResponse(session_id=record.session_id, started_at=record.created_at)
 
 
+@app.post("/v1/realtime/connect", response_model=RealtimeConnectResponse)
+async def connect_realtime(request: RealtimeConnectRequest) -> RealtimeConnectResponse:
+    session = store.get_session(request.session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Unknown session_id")
+
+    if settings.provider.strip().lower() != "openai" or not settings.openai_api_key:
+        raise HTTPException(
+            status_code=400,
+            detail="Realtime mode requires FT_PROVIDER=openai and FT_OPENAI_API_KEY",
+        )
+
+    offer_sdp = request.offer_sdp.strip()
+    if not offer_sdp:
+        raise HTTPException(status_code=400, detail="offer_sdp is required")
+
+    source_lang = (request.source_lang_hint or session.source_lang_hint or "auto").strip()
+    transcription_config: dict[str, str] = {"model": settings.openai_transcribe_model}
+    if source_lang and source_lang != "auto":
+        transcription_config["language"] = source_lang
+
+    transcription_session = {
+        "type": "transcription",
+        "audio": {
+            "input": {
+                "transcription": transcription_config,
+                "turn_detection": {
+                    "type": "server_vad",
+                    "silence_duration_ms": 600,
+                },
+                "noise_reduction": {"type": "near_field"},
+            }
+        },
+    }
+
+    headers = {"Authorization": f"Bearer {settings.openai_api_key}"}
+    files = {
+        "sdp": ("offer.sdp", offer_sdp, "application/sdp"),
+        "session": (
+            "session.json",
+            json.dumps(transcription_session),
+            "application/json",
+        ),
+    }
+
+    try:
+        async with httpx.AsyncClient(timeout=settings.segment_timeout_seconds) as client:
+            response = await client.post(
+                "https://api.openai.com/v1/realtime/calls",
+                headers=headers,
+                files=files,
+            )
+    except Exception as exc:  # noqa: BLE001
+        logger.exception("realtime connection failed")
+        raise HTTPException(status_code=502, detail=f"Provider failed: {exc}") from exc
+
+    if response.status_code >= 400:
+        detail = _extract_error_message(response)
+        raise HTTPException(status_code=502, detail=f"Provider failed: {detail}")
+
+    answer_sdp = response.text.strip()
+    if not answer_sdp:
+        raise HTTPException(status_code=502, detail="Provider failed: Empty SDP answer")
+
+    call_id = response.headers.get("x-openai-call-id")
+    return RealtimeConnectResponse(answer_sdp=answer_sdp, call_id=call_id)
+
+
 @app.post("/v1/segment/process", response_model=SegmentProcessResponse)
 async def process_segment(
     session_id: str = Form(...),
@@ -110,14 +182,14 @@ async def process_segment(
         raise HTTPException(status_code=400, detail="ended_at_ms must be >= started_at_ms")
 
     try:
-        prior_context = json.loads(prior_context_json) if prior_context_json else []
+        prior_context_raw = json.loads(prior_context_json) if prior_context_json else []
     except json.JSONDecodeError as exc:
         raise HTTPException(status_code=400, detail="prior_context_json must be valid JSON") from exc
 
-    if not isinstance(prior_context, list):
+    if not isinstance(prior_context_raw, list):
         raise HTTPException(status_code=400, detail="prior_context_json must decode to a list")
 
-    prior_context = [str(line) for line in prior_context[-settings.max_context_lines :]]
+    prior_context = [str(line) for line in prior_context_raw[-settings.max_context_lines :]]
     conversation_context = (conversation_context or "").strip()
 
     chosen_source_lang = (source_lang_hint or session.source_lang_hint or "auto").strip()
@@ -164,6 +236,67 @@ async def process_segment(
         confidence=processed.confidence,
         latency_ms=latency_ms,
         is_final=processed.is_final,
+    )
+
+
+@app.post("/v1/text/translate", response_model=SegmentProcessResponse)
+async def translate_text(request: TextTranslateRequest) -> SegmentProcessResponse:
+    session = store.get_session(request.session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Unknown session_id")
+
+    if not request.segment_id.strip():
+        raise HTTPException(status_code=400, detail="segment_id is required")
+
+    if request.ended_at_ms < request.started_at_ms:
+        raise HTTPException(status_code=400, detail="ended_at_ms must be >= started_at_ms")
+
+    transcript = request.transcript_src.strip()
+    if not transcript:
+        raise HTTPException(status_code=400, detail="transcript_src is empty")
+
+    prior_context = [str(line) for line in request.prior_context_json[-settings.max_context_lines :]]
+    conversation_context = (request.conversation_context or "").strip()
+
+    chosen_source_lang = (request.source_lang_hint or session.source_lang_hint or "auto").strip()
+    chosen_target_lang = (request.target_lang or session.target_lang or "en").strip()
+
+    processing_started = time.perf_counter()
+    try:
+        translation = await processor.translate_text(
+            transcript=transcript,
+            source_lang=chosen_source_lang,
+            target_lang=chosen_target_lang,
+            prior_context=prior_context,
+            conversation_context=conversation_context,
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.exception("text translation failed")
+        raise HTTPException(status_code=502, detail=f"Provider failed: {exc}") from exc
+
+    latency_ms = int((time.perf_counter() - processing_started) * 1000)
+    store.upsert_segment(
+        SegmentRecord(
+            session_id=request.session_id,
+            segment_id=request.segment_id,
+            t_start_ms=request.started_at_ms,
+            t_end_ms=request.ended_at_ms,
+            transcript_src=transcript,
+            translation_en=translation,
+            confidence=0.7 if settings.provider.strip().lower() == "openai" else 0.25,
+            latency_ms=latency_ms,
+            finalized=True,
+            created_at=utc_now(),
+        )
+    )
+
+    return SegmentProcessResponse(
+        segment_id=request.segment_id,
+        transcript_src=transcript,
+        translation_en=translation,
+        confidence=0.7 if settings.provider.strip().lower() == "openai" else 0.25,
+        latency_ms=latency_ms,
+        is_final=True,
     )
 
 
@@ -215,3 +348,30 @@ async def export_session(
             "Content-Disposition": f'attachment; filename="{session_id}.srt"',
         },
     )
+
+
+def _extract_error_message(response: httpx.Response) -> str:
+    try:
+        payload = response.json()
+    except ValueError:
+        return response.text.strip()[:300] or response.reason_phrase
+
+    if isinstance(payload, dict):
+        error = payload.get("error")
+        if isinstance(error, dict):
+            message = error.get("message")
+            err_type = error.get("type")
+            code = error.get("code")
+            details = [
+                part
+                for part in [
+                    str(err_type) if err_type else "",
+                    str(code) if code else "",
+                    str(message) if message else "",
+                ]
+                if part
+            ]
+            if details:
+                return " | ".join(details)
+
+    return str(payload)[:300]

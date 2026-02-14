@@ -29,7 +29,7 @@ class OpenAIProcessor(SegmentProcessor):
         conversation_context: str | None = None,
     ) -> ProcessedSegment:
         transcript = await self._transcribe(audio_bytes, mime_type, source_lang)
-        translation = await self._translate(
+        translation = await self.translate_text(
             transcript=transcript,
             source_lang=source_lang,
             target_lang=target_lang,
@@ -41,6 +41,22 @@ class OpenAIProcessor(SegmentProcessor):
             translation_en=translation,
             confidence=0.7,
             is_final=True,
+        )
+
+    async def translate_text(
+        self,
+        transcript: str,
+        source_lang: str,
+        target_lang: str,
+        prior_context: list[str],
+        conversation_context: str | None = None,
+    ) -> str:
+        return await self._translate(
+            transcript=transcript,
+            source_lang=source_lang,
+            target_lang=target_lang,
+            prior_context=prior_context,
+            conversation_context=conversation_context,
         )
 
     async def _transcribe(

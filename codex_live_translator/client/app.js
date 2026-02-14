@@ -1,7 +1,5 @@
 const MAX_CONTEXT_LINES = 4;
 const REALTIME_MODE = "realtime";
-const REALTIME_TIMESLICE_MS = 1200;
-const REALTIME_MAX_QUEUE = 2;
 
 const els = {
   projectName: document.getElementById("projectName"),
@@ -36,6 +34,13 @@ let lastChunkEndedAtMs = 0;
 let currentChunkMs = 10000;
 let activeMode = "balanced";
 let deferredInstallPrompt = null;
+
+let rtcPeerConnection = null;
+let rtcDataChannel = null;
+let rtcPartialTranscript = "";
+let rtcLastEndedAtMs = 0;
+let realtimeTextQueue = [];
+let realtimeTextQueueActive = false;
 
 function setStatus(msg) {
   els.status.textContent = msg;
@@ -188,6 +193,65 @@ async function postSegment(segment) {
   return response.json();
 }
 
+async function postTranslatedText({
+  segmentId,
+  transcript,
+  startedAtMs,
+  endedAtMs,
+}) {
+  const response = await fetch("/v1/text/translate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      session_id: sessionId,
+      segment_id: segmentId,
+      transcript_src: transcript,
+      started_at_ms: startedAtMs,
+      ended_at_ms: endedAtMs,
+      prior_context_json: recentTranslations.slice(-MAX_CONTEXT_LINES),
+      source_lang_hint: els.sourceLang.value.trim() || "auto",
+      target_lang: els.targetLang.value.trim() || "en",
+      conversation_context: (els.conversationContext.value || "").trim(),
+    }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`translate failed ${response.status}: ${text}`);
+  }
+
+  return response.json();
+}
+
+async function drainRealtimeTextQueue() {
+  if (realtimeTextQueueActive) {
+    return;
+  }
+
+  realtimeTextQueueActive = true;
+  while (realtimeTextQueue.length) {
+    const next = realtimeTextQueue.shift();
+    try {
+      const translated = await postTranslatedText(next);
+
+      recentTranslations.push(translated.translation_en);
+      recentTranslations = recentTranslations.slice(-MAX_CONTEXT_LINES);
+
+      els.liveCaption.textContent = translated.translation_en || "...";
+      addLogEntry({
+        startedAtMs: next.startedAtMs,
+        translation: translated.translation_en,
+        transcript: next.transcript,
+      });
+      setStatus(`Live realtime | translation latency ${translated.latency_ms}ms`);
+    } catch (translateError) {
+      console.error(translateError);
+      setStatus(`Realtime translate error: ${translateError.message}`);
+    }
+  }
+  realtimeTextQueueActive = false;
+}
+
 async function drainQueue() {
   if (queueActive) {
     return;
@@ -236,11 +300,6 @@ function enqueueChunk(blob) {
     blob,
   });
 
-  if (isRealtimeMode(activeMode) && requestQueue.length > REALTIME_MAX_QUEUE) {
-    const dropCount = requestQueue.length - REALTIME_MAX_QUEUE;
-    requestQueue.splice(0, dropCount);
-  }
-
   drainQueue();
 }
 
@@ -283,27 +342,123 @@ function startChunkedRecorderCycle() {
   }, currentChunkMs);
 }
 
-function startRealtimeRecorder() {
-  if (!captureActive || !mediaStream) {
-    return;
-  }
+function configureRtcDataChannel(dataChannel) {
+  dataChannel.onmessage = async (event) => {
+    try {
+      const payload = JSON.parse(event.data);
+      const eventType = payload?.type || "";
 
-  mediaRecorder = new MediaRecorder(mediaStream, recorderOptions);
+      if (eventType === "conversation.item.input_audio_transcription.delta") {
+        const delta = payload?.delta || "";
+        if (delta) {
+          rtcPartialTranscript += delta;
+          els.liveTranscript.textContent = rtcPartialTranscript;
+        }
+        return;
+      }
 
-  mediaRecorder.ondataavailable = (event) => {
-    if (event.data && event.data.size > 0) {
-      enqueueChunk(event.data);
+      if (eventType === "conversation.item.input_audio_transcription.completed") {
+        const finalText = (payload?.transcript || "").trim();
+        rtcPartialTranscript = "";
+        if (!finalText) {
+          return;
+        }
+
+        const endedAtMs = relMs(Date.now());
+        const startedAtMs = rtcLastEndedAtMs;
+        rtcLastEndedAtMs = endedAtMs;
+
+        els.liveTranscript.textContent = finalText;
+
+        realtimeTextQueue.push({
+          segmentId: makeSegmentId(),
+          transcript: finalText,
+          startedAtMs: Math.max(0, startedAtMs),
+          endedAtMs: Math.max(endedAtMs, startedAtMs + 1),
+        });
+        drainRealtimeTextQueue();
+        return;
+      }
+
+      if (eventType === "error") {
+        const message =
+          payload?.error?.message || payload?.message || "Realtime error";
+        setStatus(`Realtime error: ${message}`);
+      }
+    } catch (parseError) {
+      console.error(parseError);
     }
   };
 
-  mediaRecorder.onerror = (event) => {
-    setStatus(`Recorder error: ${event.error?.message || "unknown"}`);
+  dataChannel.onopen = () => {
+    setStatus("Realtime connected. Listening...");
   };
 
-  mediaRecorder.start(REALTIME_TIMESLICE_MS);
+  dataChannel.onclose = () => {
+    if (captureActive) {
+      setStatus("Realtime connection closed.");
+    }
+  };
+}
+
+async function startRealtimeCapture() {
+  if (!window.RTCPeerConnection) {
+    throw new Error("Browser does not support WebRTC realtime mode");
+  }
+
+  mediaStream = await navigator.mediaDevices.getUserMedia({
+    audio: {
+      echoCancellation: true,
+      noiseSuppression: true,
+      autoGainControl: true,
+    },
+  });
+
+  rtcPeerConnection = new RTCPeerConnection();
+  mediaStream.getTracks().forEach((track) => {
+    rtcPeerConnection.addTrack(track, mediaStream);
+  });
+
+  rtcDataChannel = rtcPeerConnection.createDataChannel("oai-events");
+  configureRtcDataChannel(rtcDataChannel);
+
+  rtcPeerConnection.ondatachannel = (event) => {
+    configureRtcDataChannel(event.channel);
+  };
+
+  const offer = await rtcPeerConnection.createOffer();
+  await rtcPeerConnection.setLocalDescription(offer);
+
+  const response = await fetch("/v1/realtime/connect", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      session_id: sessionId,
+      offer_sdp: offer.sdp,
+      source_lang_hint: els.sourceLang.value.trim() || "auto",
+    }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`realtime connect failed ${response.status}: ${text}`);
+  }
+
+  const payload = await response.json();
+  await rtcPeerConnection.setRemoteDescription({
+    type: "answer",
+    sdp: payload.answer_sdp,
+  });
+
+  captureActive = true;
 }
 
 async function startAudioCapture(mode) {
+  if (isRealtimeMode(mode)) {
+    await startRealtimeCapture();
+    return;
+  }
+
   mediaStream = await navigator.mediaDevices.getUserMedia({
     audio: {
       echoCancellation: true,
@@ -327,11 +482,6 @@ async function startAudioCapture(mode) {
   }
 
   captureActive = true;
-  if (isRealtimeMode(mode)) {
-    startRealtimeRecorder();
-    return;
-  }
-
   startChunkedRecorderCycle();
 }
 
@@ -340,6 +490,21 @@ async function stopAudioCapture() {
   if (chunkStopTimer) {
     clearTimeout(chunkStopTimer);
     chunkStopTimer = null;
+  }
+
+  if (rtcDataChannel) {
+    rtcDataChannel.close();
+    rtcDataChannel = null;
+  }
+
+  if (rtcPeerConnection) {
+    rtcPeerConnection.getSenders().forEach((sender) => {
+      if (sender.track) {
+        sender.track.stop();
+      }
+    });
+    rtcPeerConnection.close();
+    rtcPeerConnection = null;
   }
 
   if (!mediaRecorder) {
@@ -405,9 +570,13 @@ async function startSession() {
     currentChunkMs = chunkMsForMode(activeMode);
     sessionStartEpochMs = Date.now();
     lastChunkEndedAtMs = 0;
+    rtcLastEndedAtMs = 0;
+    rtcPartialTranscript = "";
     segmentCounter = 0;
     requestQueue = [];
     recentTranslations = [];
+    realtimeTextQueue = [];
+    realtimeTextQueueActive = false;
     els.logList.innerHTML = "";
 
     await startAudioCapture(activeMode);
@@ -415,16 +584,10 @@ async function startSession() {
     setRunningState(true);
     setExportState(true);
     if (isRealtimeMode(activeMode)) {
-      setStatus(
-        `Live session ${sessionId.slice(0, 8)}... realtime ${(
-          REALTIME_TIMESLICE_MS / 1000
-        ).toFixed(1)}s slices`,
-      );
+      setStatus(`Live session ${sessionId.slice(0, 8)}... realtime WebRTC`);
     } else {
       setStatus(
-        `Live session ${sessionId.slice(0, 8)}... chunk ${(
-          currentChunkMs / 1000
-        ).toFixed(1)}s`,
+        `Live session ${sessionId.slice(0, 8)}... chunk ${(currentChunkMs / 1000).toFixed(1)}s`,
       );
     }
     els.liveCaption.textContent = "Listening...";
@@ -447,7 +610,12 @@ async function stopSession() {
 
   await stopAudioCapture();
 
-  while (queueActive || requestQueue.length) {
+  while (
+    queueActive ||
+    requestQueue.length ||
+    realtimeTextQueueActive ||
+    realtimeTextQueue.length
+  ) {
     await new Promise((resolve) => setTimeout(resolve, 150));
   }
 

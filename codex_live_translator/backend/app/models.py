@@ -35,6 +35,29 @@ class SegmentProcessResponse(BaseModel):
     is_final: bool
 
 
+class TextTranslateRequest(BaseModel):
+    session_id: str
+    segment_id: str
+    transcript_src: str
+    started_at_ms: int
+    ended_at_ms: int
+    prior_context_json: list[str] = Field(default_factory=list)
+    source_lang_hint: str = Field(default="auto")
+    target_lang: str = Field(default="en")
+    conversation_context: str = Field(default="")
+
+
+class RealtimeConnectRequest(BaseModel):
+    session_id: str
+    offer_sdp: str
+    source_lang_hint: str = Field(default="auto")
+
+
+class RealtimeConnectResponse(BaseModel):
+    answer_sdp: str
+    call_id: str | None = None
+
+
 @dataclass(slots=True)
 class SessionRecord:
     session_id: str
