@@ -5401,5 +5401,96 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "壁の外側と内側": {
+    "english_title": "Outside and Inside the Wall",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "壁の外側と内側 パレスチナ・イスラエル取材記",
+    "director": "Yasunori Kawakami",
+    "country": "Japan"
+  },
+  "さよならはスローボールで": {
+    "english_title": "Eephus",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Eephus",
+    "director": "Carson Lund",
+    "country": "United States"
+  },
+  "オムネス・フィルムズ特集と": {
+    "english_title": "Omnes Films Special",
+    "release_year": 2025,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "オムネス・フィルムズ特集",
+    "director": null,
+    "country": "USA",
+    "failed": true
+  },
+  "パフォーマーたちの人生": {
+    "english_title": "Lives of Performers",
+    "release_year": 1972,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Lives of Performers",
+    "director": "Yvonne Rainer",
+    "country": "USA"
+  },
+  "クリスティーナ、トーキング・ピクチャーズ": {
+    "english_title": "Kristina Talking Pictures",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Kristina Talking Pictures",
+    "director": "Yvonne Rainer",
+    "country": "USA"
+  },
+  "ベルリンからの旅／1971": {
+    "english_title": "Journeys from Berlin/1971",
+    "release_year": 1980,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Journeys from Berlin/1971",
+    "director": "Yvonne Rainer",
+    "country": "USA"
+  },
+  "マーダー・アンド・マーダー": {
+    "english_title": "MURDER and murder",
+    "release_year": 1996,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "MURDER and murder",
+    "director": "Yvonne Rainer",
+    "country": "United States"
+  },
+  "じっちゃ！": {
+    "english_title": "Grandpa!",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "じっちゃ！",
+    "director": "Toshimitsu Chimura",
+    "country": "Japan",
+    "failed": true
+  },
+  "もしも脳梗塞になったなら": {
+    "english_title": "It's a Wonderful Life",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "もしも脳梗塞になったなら",
+    "director": "Takafumi Ota",
+    "country": "Japan",
+    "failed": true
+  },
+  "Eno": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
