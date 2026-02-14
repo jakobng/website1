@@ -1406,8 +1406,6 @@
     ],
     "vote_average": 6.4
   },
-  "Weekly Arthouse Screening": null,
-  "GASP! Valentine’s Monster Double Feature": null,
   "Valentines Special: The Before Trilogy": null,
   "Movie Church: Magnolia": {
     "tmdb_id": 334,
@@ -1422,7 +1420,7 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 7.732
+    "vote_average": 7.7
   },
   "Private Chat + Womxn: Working": null,
   "DVD Menu Scream: Overboard": {
@@ -1476,6 +1474,46 @@
     ],
     "vote_average": 6.255
   },
+  "The Piano Teacher": {
+    "tmdb_id": 1791,
+    "tmdb_title": "The Piano Teacher",
+    "tmdb_original_title": "La Pianiste",
+    "overview": "Erika Kohut, a sexually repressed piano teacher living with her domineering mother, meets a young man who starts romantically pursuing her.",
+    "poster_path": "/gNHKYQnP1RnqEhkivHJzBPb4MOP.jpg",
+    "backdrop_path": "/tEhvOU8nJp4v9goYwrJTASJJD3C.jpg",
+    "release_date": "2001-09-05",
+    "director": "Michael Haneke",
+    "runtime": 131,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 7.3
+  },
+  "Little Amélie (PG) [Dubbed]": null,
+  "When Love Broke the Law": null,
+  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
+    "tmdb_id": 494603,
+    "tmdb_title": "The Highway Rat",
+    "tmdb_original_title": "The Highway Rat",
+    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
+    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
+    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
+    "release_date": "2018-10-10",
+    "director": "Jeroen Jaspaert",
+    "runtime": 25,
+    "genres": [
+      "Family",
+      "Animation",
+      "Comedy",
+      "TV Movie"
+    ],
+    "vote_average": 6.3
+  },
+  "Little Amélie (PG) [Subtitled]": null,
+  "Royal Ballet/ Woolf Works (CTBA)": null,
+  "We Are Parable presents: Wasteman + Murewa": null,
+  "Weekly Arthouse Screening": null,
   "Valentine’s Throwback: Pretty Woman": {
     "tmdb_id": 114,
     "tmdb_title": "Pretty Woman",
@@ -1511,29 +1549,6 @@
     "vote_average": 6.9
   },
   "National Theatre Live: The Audience": null,
-  "Little Amélie (PG) [Subtitled]": null,
-  "Little Amélie (PG) [Dubbed]": null,
-  "When Love Broke the Law": null,
-  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
-    "tmdb_id": 494603,
-    "tmdb_title": "The Highway Rat",
-    "tmdb_original_title": "The Highway Rat",
-    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
-    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
-    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
-    "release_date": "2018-10-10",
-    "director": "Jeroen Jaspaert",
-    "runtime": 25,
-    "genres": [
-      "Family",
-      "Animation",
-      "Comedy",
-      "TV Movie"
-    ],
-    "vote_average": 6.3
-  },
-  "Royal Ballet/ Woolf Works (CTBA)": null,
-  "We Are Parable presents: Wasteman + Murewa": null,
   "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
@@ -1554,9 +1569,9 @@
     ],
     "vote_average": 6.1
   },
+  "National Theatre Live: Hamlet": null,
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
-  "National Theatre Live: Hamlet": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
     "tmdb_title": "Romeo Juliet",
