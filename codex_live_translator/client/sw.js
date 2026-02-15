@@ -1,4 +1,4 @@
-const CACHE_NAME = "field-translator-v1";
+const CACHE_NAME = "field-translator-v2";
 const SHELL_ASSETS = [
   "/",
   "/client/styles.css",
@@ -47,31 +47,35 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) {
-        return cached;
-      }
+  const isAppShellAsset =
+    url.pathname === "/" ||
+    url.pathname === "/manifest.webmanifest" ||
+    url.pathname.startsWith("/client/");
 
-      return fetch(request)
+  if (isAppShellAsset) {
+    event.respondWith(
+      fetch(request)
         .then((networkResponse) => {
-          if (
-            networkResponse.ok &&
-            (url.pathname === "/" ||
-              url.pathname === "/manifest.webmanifest" ||
-              url.pathname.startsWith("/client/"))
-          ) {
+          if (networkResponse.ok) {
             const copy = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           }
           return networkResponse;
         })
-        .catch(() => {
-          if (url.pathname === "/") {
-            return caches.match("/");
-          }
-          return new Response("offline", { status: 503 });
-        });
-    }),
-  );
+        .catch(() =>
+          caches.match(request).then((cached) => {
+            if (cached) {
+              return cached;
+            }
+            if (url.pathname === "/") {
+              return caches.match("/");
+            }
+            return new Response("offline", { status: 503 });
+          }),
+        ),
+    );
+    return;
+  }
+
+  event.respondWith(caches.match(request).then((cached) => cached || fetch(request)));
 });

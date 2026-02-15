@@ -462,8 +462,8 @@ async function startRealtimeCapture() {
   await rtcPeerConnection.setLocalDescription(offer);
   await waitForIceGatheringComplete(rtcPeerConnection);
 
-  const localOfferSdp = (rtcPeerConnection.localDescription?.sdp || "").trim();
-  if (!localOfferSdp || !localOfferSdp.includes("m=audio")) {
+  const localOfferSdp = rtcPeerConnection.localDescription?.sdp || "";
+  if (!localOfferSdp.trim() || !localOfferSdp.includes("m=audio")) {
     throw new Error("Failed to build a valid realtime audio offer");
   }
 

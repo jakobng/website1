@@ -106,8 +106,8 @@ async def connect_realtime(request: RealtimeConnectRequest) -> RealtimeConnectRe
             detail="Realtime mode requires FT_PROVIDER=openai and FT_OPENAI_API_KEY",
         )
 
-    offer_sdp = request.offer_sdp.strip()
-    if not offer_sdp:
+    offer_sdp = request.offer_sdp
+    if not offer_sdp or not offer_sdp.strip():
         raise HTTPException(status_code=400, detail="offer_sdp is required")
 
     source_lang = (request.source_lang_hint or session.source_lang_hint or "auto").strip()
