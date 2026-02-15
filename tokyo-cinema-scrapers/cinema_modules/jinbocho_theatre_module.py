@@ -47,6 +47,14 @@ def clean_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def _normalize_schedule_line(line: str) -> str:
+    if not line:
+        return ""
+    normalized = line.translate(FULLWIDTH_DIGITS)
+    normalized = normalized.replace("：", ":").replace("／", "/")
+    return normalized
+
+
 def _normalize_number_token(token: str) -> Optional[int]:
     if not token:
         return None
@@ -96,6 +104,7 @@ def _parse_dates_from_line(
     line: str,
     current_month: Optional[int],
 ) -> tuple[list[tuple[int, int]], Optional[int], Optional[int]]:
+    line = _normalize_schedule_line(line)
     dates: list[tuple[int, int]] = []
     line_year = _extract_program_year(line)
 
@@ -125,7 +134,7 @@ def _parse_showings_from_lines(lines: List[str], default_year: Optional[int]) ->
     current_month: Optional[int] = None
 
     for line in lines:
-        line = clean_text(line)
+        line = clean_text(_normalize_schedule_line(line))
         if not line or ":" not in line:
             continue
 
@@ -154,7 +163,7 @@ def _parse_schedule_map_from_lines(
     current_month: Optional[int] = None
 
     for line in lines:
-        line = clean_text(line)
+        line = clean_text(_normalize_schedule_line(line))
         if not line or ":" not in line:
             continue
 
@@ -380,24 +389,26 @@ def _enrich_showings_from_detail_pages(showings: List[Dict]) -> None:
 
 def _parse_schedule_page(soup: BeautifulSoup, site_root: str) -> List[Dict]:
     results: List[Dict] = []
-    schedule_section = soup.select_one("section#schedule")
+    schedule_section = soup.select_one("section#schedule, #schedule, .schedule")
     if not schedule_section:
         return results
 
-    for day in schedule_section.select("section.day[data-date]"):
+    for day in schedule_section.select("section.day[data-date], .day[data-date], [data-date]"):
         date_text = (day.get("data-date") or "").strip()
         if not date_text:
             continue
         if day.select_one(".closedCard"):
             continue
 
-        for slot in day.select(".slot"):
-            time_tag = slot.select_one(".t")
-            title_tag = slot.select_one("a.title")
+        for slot in day.select(".slot, .schedule-slot, .schedule-item"):
+            time_tag = slot.select_one(".t, .time, time")
+            title_tag = slot.select_one("a.title, .title a, .movie-title, .title, a[href]")
             if not time_tag or not title_tag:
                 continue
 
             showtime = clean_text(time_tag.get_text(" ", strip=True))
+            if not re.match(r"^\d{1,2}:\d{2}$", showtime):
+                continue
             movie_title = clean_text(title_tag.get_text(" ", strip=True))
             href = (title_tag.get("href") or "").strip()
             detail_url = urljoin(site_root, href) if href else site_root
@@ -491,6 +502,8 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
     program_url = urljoin(BASE_URL, f"{program_slug}.html")
     soup = fetch_soup(program_url)
     if soup is None:
+        soup = fetch_soup(urljoin(BASE_URL, f"{program_slug}/"))
+    if soup is None:
         return results
 
     # Program title (including any subtitle/series label)
@@ -510,8 +523,10 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
     # Find the detailed list page (e.g. fujimura_list.html)
     list_href = None
     for a in soup.find_all("a", href=True):
-        if a["href"].endswith("_list.html"):
-            list_href = a["href"]
+        href = (a["href"] or "").strip()
+        href_clean = href.split("#", 1)[0].split("?", 1)[0]
+        if href_clean.endswith("_list.html") or href_clean.endswith("_list"):
+            list_href = href
             break
 
     if list_href is None:
@@ -524,14 +539,15 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
         return results
 
     schedule_lines = [
-        line for line in soup.get_text("\n").splitlines() if ":" in line
+        line for line in soup.get_text("\n").splitlines() if ":" in line or "：" in line
     ]
     schedule_map = _parse_schedule_map_from_lines(schedule_lines, program_year)
 
     # Each film block
-    for film in list_soup.select("div.data2_film"):
+    film_blocks = list_soup.select("div.data2_film, .data2_film, .filmBlock, .film-block, article.film")
+    for film in film_blocks:
         # --- Basic metadata ---
-        h4 = film.select_one(".data2_title h4")
+        h4 = film.select_one(".data2_title h4, h4, h3")
         movie_title = ""
         film_number = None
         if h4:
@@ -593,6 +609,121 @@ def _parse_program_page(program_slug: str = "fujimura") -> List[Dict]:
     return results
 
 
+def _extract_showings_from_feature_text(text: str, default_year: Optional[int]) -> List[Dict[str, str]]:
+    entries: List[Dict[str, str]] = []
+    line = clean_text(_normalize_schedule_line(text))
+    if not line:
+        return entries
+
+    for m in re.finditer(r"(\d{1,2})\s*/\s*(\d{1,2}).*?(\d{1,2}:\d{2})", line):
+        month = int(m.group(1))
+        day = int(m.group(2))
+        showtime = m.group(3)
+        entries.append(
+            {
+                "date_text": _format_iso_date(default_year, month, day),
+                "showtime": showtime,
+            }
+        )
+    return entries
+
+
+def _parse_feature_page(feature_url: str) -> List[Dict]:
+    results: List[Dict] = []
+    soup = fetch_soup(feature_url)
+    if soup is None:
+        return results
+
+    page_text = soup.get_text(" ", strip=True)
+    default_year = _extract_program_year(feature_url) or _extract_program_year(page_text)
+
+    h1 = soup.select_one("h1")
+    program_title = clean_text(h1.get_text(" ", strip=True)) if h1 else ""
+
+    for film in soup.select("article.filmBlock"):
+        title_tag = film.select_one(".filmBlock__title, h3, h4")
+        if not title_tag:
+            continue
+        _, movie_title = _extract_film_number_and_title(title_tag.get_text(" ", strip=True))
+        if not movie_title:
+            continue
+
+        sub_tag = film.select_one(".filmBlock__sub")
+        sub_text = clean_text(sub_tag.get_text(" ", strip=True)) if sub_tag else ""
+
+        year = extract_year(sub_text)
+        if not year:
+            parsed_year = _extract_program_year(sub_text)
+            year = str(parsed_year) if parsed_year else None
+
+        runtime_min = _extract_runtime_min(sub_text)
+        country = _extract_country(sub_text)
+
+        director = None
+        for row in film.select("dl.filmInfo__row, .filmInfo__row"):
+            dt = row.select_one("dt")
+            dd = row.select_one("dd")
+            if not dt or not dd:
+                continue
+            label = clean_text(dt.get_text(" ", strip=True))
+            if "監督" in label:
+                director = clean_text(dd.get_text(" ", strip=True))
+                break
+
+        synopsis = None
+        synopsis_tag = film.select_one(".filmText p, .filmText")
+        if synopsis_tag:
+            parsed_synopsis = clean_text(synopsis_tag.get_text(" ", strip=True))
+            synopsis = parsed_synopsis or None
+
+        slot_lines = [li.get_text(" ", strip=True) for li in film.select(".filmTimes__list li")]
+        showings: List[Dict[str, str]] = []
+        for slot in slot_lines:
+            showings.extend(_extract_showings_from_feature_text(slot, default_year))
+
+        if not showings:
+            continue
+
+        for s in showings:
+            results.append(
+                {
+                    "cinema_name": CINEMA_NAME,
+                    "movie_title": movie_title,
+                    "movie_title_en": None,
+                    "director": director,
+                    "year": year,
+                    "country": country,
+                    "runtime_min": runtime_min,
+                    "synopsis": synopsis,
+                    "date_text": s["date_text"],
+                    "showtime": s["showtime"],
+                    "detail_page_url": feature_url,
+                    "program_title": program_title,
+                    "purchase_url": None,
+                }
+            )
+
+    return results
+
+
+def _get_current_feature_urls() -> List[str]:
+    site_root = BASE_URL.replace("program/", "")
+    soup = fetch_soup(site_root)
+    if soup is None:
+        return []
+
+    feature_urls = set()
+    for a in soup.find_all("a", href=True):
+        href = (a["href"] or "").strip()
+        if not href:
+            continue
+        full_url = urljoin(site_root, href).split("#", 1)[0]
+        normalized_url = full_url.split("?", 1)[0].rstrip("/")
+        if "/features/" in normalized_url and normalized_url.endswith(".html"):
+            feature_urls.add(normalized_url)
+    return sorted(feature_urls)
+
+
 def _get_current_program_urls() -> List[str]:
     """
     Scrape the main page to find current and upcoming program URLs.
@@ -607,15 +738,22 @@ def _get_current_program_urls() -> List[str]:
     
     # Look for links in the "Now Showing" and "Coming Soon" sections
     for a in soup.find_all("a", href=True):
-        href = a["href"]
+        href = (a["href"] or "").strip()
+        if not href:
+            continue
         # normalize to absolute URL using the site root, not the program base
-        full_url = urljoin(site_root, href)
+        full_url = urljoin(site_root, href).split("#", 1)[0]
+        normalized_url = full_url.split("?", 1)[0].rstrip("/")
         
         # Check if it looks like a program page
-        if "/program/" in full_url and full_url.endswith(".html") and "index.html" not in full_url and "coming.html" not in full_url:
-             program_urls.add(full_url)
+        if "/program/" not in normalized_url:
+            continue
+        if normalized_url.endswith(("index.html", "coming.html", "top.html")):
+            continue
+        if re.search(r"/program/[^/]+(?:\.html)?$", normalized_url):
+            program_urls.add(normalized_url)
 
-    return list(program_urls)
+    return sorted(program_urls)
 
 
 def scrape_jinbocho() -> List[Dict]:
@@ -646,21 +784,45 @@ def scrape_jinbocho() -> List[Dict]:
         
         # Let's extract the slug:
         # .../program/slug.html -> slug
-        match = re.search(r"/program/([^/]+)\.html$", url)
+        normalized_url = url.split("?", 1)[0].rstrip("/")
+        match = re.search(r"/program/([^/?#]+?)(?:\.html)?$", normalized_url)
         if match:
             slug = match.group(1)
             # Avoid re-scraping list pages directly (though the logic handles it, usually we want the parent program page)
-            if "_list" in slug:
+            if slug in {"", "program"} or "_list" in slug:
                 continue
                 
             print(f"DEBUG: Scraping program: {slug}", file=sys.stderr)
             showings = _parse_program_page(slug)
             all_showings.extend(showings)
-            
-    return all_showings
+
+    # 3. Fallback for current site structure: feature pages with filmBlock schedules
+    if not all_showings:
+        feature_urls = _get_current_feature_urls()
+        print(f"DEBUG: Found feature URLs: {feature_urls}", file=sys.stderr)
+        for feature_url in feature_urls:
+            showings = _parse_feature_page(feature_url)
+            all_showings.extend(showings)
+
+    # Deduplicate
+    deduped = {}
+    for s in all_showings:
+        key = (s.get("date_text"), s.get("showtime"), s.get("movie_title"))
+        deduped[key] = s
+
+    return list(deduped.values())
 
 
 if __name__ == "__main__":
+    if sys.platform == "win32":
+        try:
+            if sys.stdout.encoding != "utf-8":
+                sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+            if sys.stderr.encoding != "utf-8":
+                sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
     data = scrape_jinbocho()
     print(f"{len(data)} showings found")
     
