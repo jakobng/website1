@@ -401,6 +401,34 @@ function configureRtcDataChannel(dataChannel) {
   };
 }
 
+function waitForIceGatheringComplete(peerConnection, timeoutMs = 1500) {
+  if (peerConnection.iceGatheringState === "complete") {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = () => {
+      if (settled) {
+        return;
+      }
+      settled = true;
+      peerConnection.removeEventListener(
+        "icegatheringstatechange",
+        onStateChange,
+      );
+      resolve();
+    };
+    const onStateChange = () => {
+      if (peerConnection.iceGatheringState === "complete") {
+        finish();
+      }
+    };
+    peerConnection.addEventListener("icegatheringstatechange", onStateChange);
+    setTimeout(finish, timeoutMs);
+  });
+}
+
 async function startRealtimeCapture() {
   if (!window.RTCPeerConnection) {
     throw new Error("Browser does not support WebRTC realtime mode");
@@ -413,6 +441,10 @@ async function startRealtimeCapture() {
       autoGainControl: true,
     },
   });
+
+  if (!mediaStream.getAudioTracks().length) {
+    throw new Error("No audio track available for realtime mode");
+  }
 
   rtcPeerConnection = new RTCPeerConnection();
   mediaStream.getTracks().forEach((track) => {
@@ -428,13 +460,19 @@ async function startRealtimeCapture() {
 
   const offer = await rtcPeerConnection.createOffer();
   await rtcPeerConnection.setLocalDescription(offer);
+  await waitForIceGatheringComplete(rtcPeerConnection);
+
+  const localOfferSdp = (rtcPeerConnection.localDescription?.sdp || "").trim();
+  if (!localOfferSdp || !localOfferSdp.includes("m=audio")) {
+    throw new Error("Failed to build a valid realtime audio offer");
+  }
 
   const response = await fetch("/v1/realtime/connect", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       session_id: sessionId,
-      offer_sdp: offer.sdp,
+      offer_sdp: localOfferSdp,
       source_lang_hint: els.sourceLang.value.trim() || "auto",
     }),
   });

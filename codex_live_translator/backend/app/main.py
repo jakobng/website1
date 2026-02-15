@@ -131,11 +131,10 @@ async def connect_realtime(request: RealtimeConnectRequest) -> RealtimeConnectRe
 
     headers = {"Authorization": f"Bearer {settings.openai_api_key}"}
     files = {
-        "sdp": (None, offer_sdp, "application/sdp"),
+        "sdp": (None, offer_sdp),
         "session": (
             None,
             json.dumps(transcription_session),
-            "application/json",
         ),
     }
 
