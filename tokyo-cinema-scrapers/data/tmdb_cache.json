@@ -9501,7 +9501,7 @@
       "Mystery"
     ],
     "runtime": 96,
-    "vote_average": 8.003,
+    "vote_average": 8.005,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -9760,7 +9760,7 @@
     "tmdb_original_language": "ja",
     "overview": "郊外の住宅地、長屋のように複数の家族が隣り合って暮らしている。林家の息子実（設楽幸嗣）と勇（島津雅彦）はテレビがほしいと両親にねだるが、聞き入れてもらえない。子供たちは、要求を聞き入れてもらえるまで口を利かないというストライキをして、最終的に買ってもらうのだった。　",
     "overview_en": "A lighthearted take on director Yasujiro Ozu’s perennial theme of the challenges of inter­generational relationships, Good Morning tells the story of two young boys who stop speaking in protest after their parents refuse to buy a television set. Ozu weaves a wealth of subtle gags through a family portrait as rich as those of his dramatic films, mocking the foibles of the adult world through the eyes of his child protagonists. Shot in stunning color and set in a suburb of Tokyo where housewives gossip about the neighbors’ new washing machine and unemployed husbands look for work as door-to-door salesmen, this charming comedy refashions Ozu’s own silent classic I Was Born, But . . . to gently satirize consumerism in postwar Japan.",
-    "poster_path": "/tPrOONTaP4jyRad7hXD6egJ2NQd.jpg",
+    "poster_path": "/gOEvZGvVjEFTTRu0nN5mLz5NEgq.jpg",
     "backdrop_path": "/qH9wiXnx9mU9kNGCH1exaey9CqU.jpg",
     "release_date": "1959-05-12",
     "director": "小津安二郎",
@@ -9777,7 +9777,7 @@
       "Drama"
     ],
     "runtime": 94,
-    "vote_average": 7.702,
+    "vote_average": 7.7,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -10250,7 +10250,7 @@
       "Mystery"
     ],
     "runtime": 82,
-    "vote_average": 6.8,
+    "vote_average": 6.706,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -53731,6 +53731,1459 @@
       {
         "iso_3166_1": "US",
         "name": "United States of America"
+      }
+    ]
+  },
+  "ちぎれた愛の殺人": {
+    "tmdb_id": 109054,
+    "tmdb_title_jp": "ちぎれた愛の殺人",
+    "tmdb_title_en": "The Brutal Insanity of Love",
+    "tmdb_title_original": "ちぎれた愛の殺人",
+    "tmdb_original_language": "ja",
+    "overview": "女子大生・岡川文絵が校舎の屋上から飛び降り自殺した。警視庁の刑事・水橋陽子は、美術史の助教授で剣道場で稽古をつけていた村木哲郎に会う。今回は完全な自殺だったが、五年前に起きたある女子大生の失踪事件に彼が関係しているのではと陽子は疑っていた。",
+    "overview_en": "A policewoman investigates the apparent suicide of a college coed. The prime suspects include the girl's professor, who may have been having an affair with her, and the professor's wife, who frequents lesbian bars. Gruesome axe murders and mutilations ensue, leading Yokoyama to a shocking discovery.",
+    "poster_path": "/aNsdunxbNBVukaPN3QxDDJoR7BB.jpg",
+    "backdrop_path": "/atzaQS9YSTWJFuTD2DYAOSiGkkk.jpg",
+    "release_date": "1993-06-26",
+    "director": "池田敏春",
+    "director_jp": "池田敏春",
+    "director_en": "Toshiharu Ikeda",
+    "genres": [
+      "謎",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Mystery",
+      "Horror"
+    ],
+    "runtime": 101,
+    "vote_average": 3.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:109054": {
+    "tmdb_id": 109054,
+    "tmdb_title_jp": "ちぎれた愛の殺人",
+    "tmdb_title_en": "The Brutal Insanity of Love",
+    "tmdb_title_original": "ちぎれた愛の殺人",
+    "tmdb_original_language": "ja",
+    "overview": "女子大生・岡川文絵が校舎の屋上から飛び降り自殺した。警視庁の刑事・水橋陽子は、美術史の助教授で剣道場で稽古をつけていた村木哲郎に会う。今回は完全な自殺だったが、五年前に起きたある女子大生の失踪事件に彼が関係しているのではと陽子は疑っていた。",
+    "overview_en": "A policewoman investigates the apparent suicide of a college coed. The prime suspects include the girl's professor, who may have been having an affair with her, and the professor's wife, who frequents lesbian bars. Gruesome axe murders and mutilations ensue, leading Yokoyama to a shocking discovery.",
+    "poster_path": "/aNsdunxbNBVukaPN3QxDDJoR7BB.jpg",
+    "backdrop_path": "/atzaQS9YSTWJFuTD2DYAOSiGkkk.jpg",
+    "release_date": "1993-06-26",
+    "director": "池田敏春",
+    "director_jp": "池田敏春",
+    "director_en": "Toshiharu Ikeda",
+    "genres": [
+      "謎",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Mystery",
+      "Horror"
+    ],
+    "runtime": 101,
+    "vote_average": 3.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ぼくら、20世紀の子供たち〈デジタルリマスター版〉": {
+    "tmdb_id": 461759,
+    "tmdb_title_jp": "ぼくら、20世紀の子供たち",
+    "tmdb_title_en": "We, the Children of the 20th Century",
+    "tmdb_title_original": "Nous, les enfants du xxème siècle",
+    "tmdb_original_language": "fr",
+    "overview": "カンヌ映画祭受賞を初めとして世界的に絶賛された「動くな、死ね、甦れ！」「ひとりで生きる」に続いて、ヴィターリー・カネフスキーが完成したドキュメンタリー。\r サント・ペテルブルクの荒廃した通りで生活する少年たちや、かつてカネフスキーの映画に出演した少年との監獄での再会などを映し出す。",
+    "overview_en": "It focuses on how youngsters in capitalist Russia turn to crime. Either they thrive at their game or they get locked up. In any case they're trapped. The portrayed kids are old men, acting wise and tough while in fact they're victims.",
+    "poster_path": "/v0sMWsomfFxRFItEmdZZjRzJoAR.jpg",
+    "backdrop_path": null,
+    "release_date": "1994-06-14",
+    "director": "ヴィターリー・カネフスキー",
+    "director_jp": "ヴィターリー・カネフスキー",
+    "director_en": "Vitali Kanevsky",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 87,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "『いろはにほへと』": {
+    "tmdb_id": 1252671,
+    "tmdb_title_jp": "いろはにほへと",
+    "tmdb_title_en": "Irohanihoheto",
+    "tmdb_title_original": "いろはにほへと",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The anonymous partnership Investment Economic Association, led by its president Ryuichi Amano, collected money from many ordinary people and paid out large dividends, making it famous as \"Japan's only investment bank for ordinary people.\" On the other hand, Detective Muneharu Matsumoto of the Metropolitan Police Department's Second Investigative Division has suspicions about this organization, and has been spying on the business association for many years. However, Matsumoto was having a hard time getting any solid proof of the nature of the incident...",
+    "poster_path": "/jjulIfkzBUrngur7kw5pT5qzSYz.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-05-20",
+    "director": "中村登",
+    "director_jp": "中村登",
+    "director_en": "Noboru Nakamura",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『最後の切札』": {
+    "tmdb_id": 1544878,
+    "tmdb_title_jp": "最後の切札",
+    "tmdb_title_en": "The Grave Tells All",
+    "tmdb_title_original": "最後の切札",
+    "tmdb_original_language": "ja",
+    "overview": "異色作家・白崎秀雄の傑作小説「肉の僕」の映画化。  橋本忍が脚色し、野村芳太郎が監督したもので、冷い打算に生きる男の行動と破滅を描く問題野心作。佐田啓二が珍しく悪党を演じている。",
+    "overview_en": "",
+    "poster_path": "/bEH1H8RjuE1mtg0vCGEdzKd1ET0.jpg",
+    "backdrop_path": "/p4AJhNe0WnAGD23EfAi4OifIuZP.jpg",
+    "release_date": "1960-09-20",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『四万人の目撃者』": {
+    "tmdb_id": 564516,
+    "tmdb_title_jp": "四萬人の目撃者",
+    "tmdb_title_en": "Hot Corner Murder",
+    "tmdb_title_original": "四萬人の目撃者",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Prosecutor Takayama investigates the sudden death of a third baseman in the middle of a game.",
+    "poster_path": "/hMaRHQkZ0iygRGBFbDVnopgAfVg.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-02-12",
+    "director": "堀内真直",
+    "director_jp": "堀内真直",
+    "director_en": "Manao Horiuchi",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『二人で歩いた幾春秋』": {
+    "tmdb_id": 424126,
+    "tmdb_title_jp": "二人で歩いた幾春秋",
+    "tmdb_title_en": "Ballad of a Workman",
+    "tmdb_title_original": "二人で歩いた幾春秋",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A demobilized soldier becomes a day laborer with a road construction gang, and his wife goes to work to bolster their income. Their modest dream is to see their son grow and to be happy as a family.",
+    "poster_path": "/sfzqzbqNgepGTbmI7iPRuwk8jpo.jpg",
+    "backdrop_path": "/cmK9yMRAa5CzvcdMagcLi5cpKpc.jpg",
+    "release_date": "1962-08-12",
+    "director": "木下惠介",
+    "director_jp": "木下惠介",
+    "director_en": "Keisuke Kinoshita",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 102,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『あなた買います』": {
+    "tmdb_id": 143946,
+    "tmdb_title_jp": "あなた買います",
+    "tmdb_title_en": "I Will Buy You",
+    "tmdb_title_original": "あなた買います",
+    "tmdb_original_language": "ja",
+    "overview": "プロ野球・東洋フラワーズのスカウト岸本は、大学野球の花形選手・栗田を入団させる任を受けるが、栗田には彼を育て上げてきた球気一平というヒモのような男がバックにいた。岸本は球気に接近するが、得体のしれない彼はなかなか手ごわい。やがて他球団も栗田獲得に乗り出す。球気は、彼らを手玉に取りながらどんどん値を吊り上げていくが、やがて栗田の価値に気づいた家族の面々が欲に駆られ、球気に絶縁状を送りつけてきた...。",
+    "overview_en": "A talent scout moves sharply, dead-set on signing a promising athlete to the baseball team the Toyko Flowers.",
+    "poster_path": "/6GYsvoJSwqwmFE4cdGK6yI0npqj.jpg",
+    "backdrop_path": "/iakAW4DI61A6toV8SIIBYMa8tiz.jpg",
+    "release_date": "1956-11-21",
+    "director": "小林正樹",
+    "director_jp": "小林正樹",
+    "director_en": "Masaki Kobayashi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『土砂降り 〈英語字幕付き〉 』": {
+    "tmdb_id": 298711,
+    "tmdb_title_jp": "土砂降り",
+    "tmdb_title_en": "When It Rains, It Pours",
+    "tmdb_title_original": "土砂降り",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Tane, the lady proprietor of an inn for amorous couples, lives there with her three children. When her eldest daughter loses her fiancé due to the fact her mother is a mistress, her despair drives her to become a cabaret hostess.",
+    "poster_path": "/2NuIxdzqOn2DUXo5ReqnH6rCUDW.jpg",
+    "backdrop_path": "/mPGs99FbxaI8BKvzlhLCDwYK7BC.jpg",
+    "release_date": "1957-06-11",
+    "director": "中村登",
+    "director_jp": "中村登",
+    "director_en": "Noboru Nakamura",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『喜びも悲しみも幾歳月』": {
+    "tmdb_id": 255784,
+    "tmdb_title_jp": "㐂びも悲しみも幾歳月",
+    "tmdb_title_en": "Times of Joy and Sorrow",
+    "tmdb_title_original": "㐂びも悲しみも幾歳月",
+    "tmdb_original_language": "ja",
+    "overview": "松竹が誇る天才監督・木下惠介監督が、日本縦断ロケを敢行。高峰秀子と佐田啓二の主演により、同名の主題歌と共に大ヒットを記録した名作。灯台守一家の25年にわたる波乱に満ちた生活と愛情を、繊細かつ力強いタッチで描いた壮大なる年代記。 灯台守の夫と連れ添う妻の半生を描いた作品。なくてはならない大切なものを教えてくれる、心温まる作品。",
+    "overview_en": "The story of the trials and tribulations of a lighthouse keeper and his wife.",
+    "poster_path": "/lMExdDQSFtZnNu3IlnvWg8Ssxv9.jpg",
+    "backdrop_path": "/nqZdswj2D8hFhRCBYQk1VyN5rBD.jpg",
+    "release_date": "1957-10-01",
+    "director": "木下惠介",
+    "director_jp": "木下惠介",
+    "director_en": "Keisuke Kinoshita",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 162,
+    "vote_average": 9.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『集金旅行』": {
+    "tmdb_id": 1418429,
+    "tmdb_title_jp": "集金旅行",
+    "tmdb_title_en": "Shūkin ryokō",
+    "tmdb_title_original": "集金旅行",
+    "tmdb_original_language": "ja",
+    "overview": "井伏鱒二の同名小説の映画化で、西日本のローカル・カラーを取入れて庶民生活の哀歓を描いたコメディ。「抱かれた花嫁」の共同脚本執筆者の一人、椎名利夫が脚色、「土砂降り」の中村登が監督した。撮影は「抱かれた花嫁」の生方敏夫。主演は「ただいま零匹」の佐田啓二、岡田茉莉子二人を中心に小林トシ子、花菱アチャコ、伊藤雄之助、トニー谷、市村俊幸、関千恵子、十朱久雄など。色彩はイーストマン松竹カラー。",
+    "overview_en": "",
+    "poster_path": "/czmRiqW1XT2uXYVGEWXnQbq0dNu.jpg",
+    "backdrop_path": null,
+    "release_date": "1957-10-29",
+    "director": "中村登",
+    "director_jp": "中村登",
+    "director_en": "Noboru Nakamura",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『黒い花粉』": {
+    "tmdb_id": 187263,
+    "tmdb_title_jp": "True Love",
+    "tmdb_title_en": "True Love",
+    "tmdb_title_original": "True Love",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "On the surface, Kate and Jack, late 20's, are happy. But like everyone, they carry secrets that neither of them is prepared to reveal. After their wedding, they wake from a deep, dark sleep, each alone in a sealed room with no doors or windows, just a projection screen and a monitor with two buttons: one for “yes”, one for “no”. As the horror of their situation unfolds, surveillance films showing their life together, appear on the screen as the monitor asks questions, each more strange and terrifying that the last. It soon becomes apparent that a bizarre test of their relationship is underway, and the secrets revealed lead them deeper and deeper into what could not just destroy their love, but threaten their very lives…",
+    "poster_path": "/dSDb91ir36zCmf22QKt5SVNJFCi.jpg",
+    "backdrop_path": "/wxvLmgdPbGSvtSf32pm3KXySWDj.jpg",
+    "release_date": "2012-10-13",
+    "director": "Enrico Clerico Nasino",
+    "director_jp": "Enrico Clerico Nasino",
+    "director_en": "Enrico Clerico Nasino",
+    "genres": [
+      "スリラー"
+    ],
+    "genres_en": [
+      "Thriller"
+    ],
+    "runtime": 103,
+    "vote_average": 4.667,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "『ボロ家の春秋』": null,
+  "『モダン道中 その恋待ったなし』": {
+    "tmdb_id": 1478983,
+    "tmdb_title_jp": "モダン道中 その恋待ったなし",
+    "tmdb_title_en": "Modan dôchû: Sono koi matta nashi",
+    "tmdb_title_original": "モダン道中 その恋待ったなし",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A road trip comedy set against the backdrop of the famous historical sites of Tohoku and Hokkaido.",
+    "poster_path": "/iyaNHEKRkXHMayewIPOs7akCaw5.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-07-13",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『秋刀魚の味』": {
+    "tmdb_id": 50759,
+    "tmdb_title_jp": "秋刀魚の味",
+    "tmdb_title_en": "An Autumn Afternoon",
+    "tmdb_title_original": "秋刀魚の味",
+    "tmdb_original_language": "ja",
+    "overview": "周平（笠智衆）は、妻とは死別し、長男の幸一（佐田啓二）は結婚して家を出て団地暮らし。いまは娘の路子（岩下志麻）と次男の和夫（三上真一郎）と３人安らかに暮らしていた。  ある日、周平はいつものように友人の河合（中村伸郎）、堀江（北龍二）と酒を飲みに行く。  話題は路子の嫁行きの話になり、まだ路子を嫁にやることなど考えてもいなかった周平は悩み始める…。  日本映画界の巨匠・小津安二郎監督の最後の作品で、妻に先立たれた男とその子供達の幸せの中にもなぜか潜む孤独と寂しさを描いた作品。",
+    "overview_en": "Shuhei Hirayama is a widower with a 24-year-old daughter. Gradually, he comes to realize that she should not be obliged to look after him for the rest of his life, so he arranges a marriage for her.",
+    "poster_path": "/lia3Lk8AgdtU9SaSq59jANDj3vh.jpg",
+    "backdrop_path": "/r9cWPx9W8ObmMIBdbBce9bUXZhq.jpg",
+    "release_date": "1962-11-18",
+    "director": "小津安二郎",
+    "director_jp": "小津安二郎",
+    "director_en": "Yasujirō Ozu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.862,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『日本の悲劇』": {
+    "tmdb_id": 50805,
+    "tmdb_title_jp": "日本の悲劇",
+    "tmdb_title_en": "A Japanese Tragedy",
+    "tmdb_title_original": "日本の悲劇",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "At the close of the war in Japan, a widowed mother makes every possible sacrifice to bring up her ungrateful son and daughter who are unimpressed with their poor standard of living at home. They gradually reject her in search of the material comforts that working as a maid cannot provide. The mother's despair becomes interminable.",
+    "poster_path": "/6npoR3RIRBlY0arZjXv9xZWlh6a.jpg",
+    "backdrop_path": "/xyPahvksSIfqg0BxD1yNO1xy7im.jpg",
+    "release_date": "1953-06-17",
+    "director": "木下惠介",
+    "director_jp": "木下惠介",
+    "director_en": "Keisuke Kinoshita",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 116,
+    "vote_average": 5.321,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『顔役 （噛みつかれた顔役） 』": {
+    "tmdb_id": 495855,
+    "tmdb_title_jp": "喜劇　団地親分",
+    "tmdb_title_en": "A Country Boss",
+    "tmdb_title_original": "喜劇　団地親分",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A country boss gives up his way of life because of his daughter's marriage.",
+    "poster_path": "/qVsjaO9WCsyJ9J0klZ35Uthg2AU.jpg",
+    "backdrop_path": null,
+    "release_date": "1962-01-25",
+    "director": "市村泰一",
+    "director_jp": "市村泰一",
+    "director_en": "Hirokazu Ichimura",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 82,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『お早よう』": {
+    "tmdb_id": 28276,
+    "tmdb_title_jp": "お早よう",
+    "tmdb_title_en": "Good Morning",
+    "tmdb_title_original": "お早よう",
+    "tmdb_original_language": "ja",
+    "overview": "郊外の住宅地、長屋のように複数の家族が隣り合って暮らしている。林家の息子実（設楽幸嗣）と勇（島津雅彦）はテレビがほしいと両親にねだるが、聞き入れてもらえない。子供たちは、要求を聞き入れてもらえるまで口を利かないというストライキをして、最終的に買ってもらうのだった。　",
+    "overview_en": "A lighthearted take on director Yasujiro Ozu’s perennial theme of the challenges of inter­generational relationships, Good Morning tells the story of two young boys who stop speaking in protest after their parents refuse to buy a television set. Ozu weaves a wealth of subtle gags through a family portrait as rich as those of his dramatic films, mocking the foibles of the adult world through the eyes of his child protagonists. Shot in stunning color and set in a suburb of Tokyo where housewives gossip about the neighbors’ new washing machine and unemployed husbands look for work as door-to-door salesmen, this charming comedy refashions Ozu’s own silent classic I Was Born, But . . . to gently satirize consumerism in postwar Japan.",
+    "poster_path": "/gOEvZGvVjEFTTRu0nN5mLz5NEgq.jpg",
+    "backdrop_path": "/qH9wiXnx9mU9kNGCH1exaey9CqU.jpg",
+    "release_date": "1959-05-12",
+    "director": "小津安二郎",
+    "director_jp": "小津安二郎",
+    "director_en": "Yasujirō Ozu",
+    "genres": [
+      "コメディ",
+      "ファミリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Family",
+      "Drama"
+    ],
+    "runtime": 94,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『血は渇いてる』": {
+    "tmdb_id": 88442,
+    "tmdb_title_jp": "血は渇いてる",
+    "tmdb_title_en": "Blood Is Dry",
+    "tmdb_title_original": "血は渇いてる",
+    "tmdb_original_language": "ja",
+    "overview": "東洋毛織で社員の首切り通告があった時、社員の木口はみんなを助けようと拳銃自殺を図るが、老社員・金井の機転で一命を取り留める。昭和生命に務めるユキは、そんな木口を生命保険の広告塔にしようと考え、あの手この手で木口を口説くが断られてしまう。",
+    "overview_en": "An employee in an assurance company threatens to commit suicide when management announces a massive layoff, the company uses this threat to its own advantage by turning the incident into an advertising campaign. With the success of the campaign, however, he is no longer a desperate man pointing a gun to his head, but a potential leader who wishes to take advantage of his failed suicide.",
+    "poster_path": "/jgKQEPTTQ2gLNajUCh9E9IrHcnL.jpg",
+    "backdrop_path": "/rUOvbnFsbT62BHbzo7X3HpU76JA.jpg",
+    "release_date": "1960-10-09",
+    "director": "吉田喜重",
+    "director_jp": "吉田喜重",
+    "director_en": "Yoshishige Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『雨月物語』": {
+    "tmdb_id": 14696,
+    "tmdb_title_jp": "雨月物語",
+    "tmdb_title_en": "Ugetsu",
+    "tmdb_title_original": "雨月物語",
+    "tmdb_original_language": "ja",
+    "overview": "戦国の世、貧しい陶工・源十郎が若狭姫という女性と知り合い、生活をともにするようになる。だが美しい若狭姫の正体は死霊であった。それを知った源十郎は若狭姫を捨てて故郷に逃げるが、彼女の怨念は執拗に追いすがる……。「雨月物語」をベースに、川口松太郎らが脚色。",
+    "overview_en": "In 16th century Japan, peasants Genjuro and Tobei sell their earthenware pots to a group of soldiers in a nearby village, in defiance of a local sage's warning against seeking to profit from warfare. Genjuro's pursuit of both riches and the mysterious Lady Wakasa, as well as Tobei's desire to become a samurai, run the risk of destroying both themselves and their wives, Miyagi and Ohama.",
+    "poster_path": "/44MlxSO8NvBVl5MfxACj6Ihwtd5.jpg",
+    "backdrop_path": "/iB1tCWl4MKl6OO1kMBD5LxM5BmJ.jpg",
+    "release_date": "1953-03-26",
+    "director": "溝口健二",
+    "director_jp": "溝口健二",
+    "director_en": "Kenji Mizoguchi",
+    "genres": [
+      "ファンタジー",
+      "ドラマ",
+      "謎"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Drama",
+      "Mystery"
+    ],
+    "runtime": 96,
+    "vote_average": 8.005,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『蛇娘と白髪魔』": {
+    "tmdb_id": 182921,
+    "tmdb_title_jp": "蛇娘と白髪魔",
+    "tmdb_title_en": "The Snake Girl and the Silver-Haired Witch",
+    "tmdb_title_original": "蛇娘と白髪魔",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Up until this point, young Sayuri Nanjo has had to live most of her life in a nun-run boarding school for orphans and away from her parents. That's all about to change when her real father mysteriously comes to get her and finally bring her home.",
+    "poster_path": "/eAn27NWmyn2q827vJoTcEzvq0Vr.jpg",
+    "backdrop_path": "/rBjPxHiFfZOcIX48f2NhD5s5d7W.jpg",
+    "release_date": "1968-12-14",
+    "director": "湯浅憲明",
+    "director_jp": "湯浅憲明",
+    "director_en": "Noriaki Yuasa",
+    "genres": [
+      "ホラー",
+      "スリラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Horror",
+      "Thriller",
+      "Mystery"
+    ],
+    "runtime": 82,
+    "vote_average": 6.706,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『妖婆』": {
+    "tmdb_id": 390494,
+    "tmdb_title_jp": "妖婆",
+    "tmdb_title_en": "The Possessed",
+    "tmdb_title_original": "妖婆",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Oshima, a rich girl married Shinzo, and her cousin girl Sawa has been jealous of Oshima deeply. Sawa cursed Oshima so Shinzo could not hold her and do anything at all. Shinzo hated Oshima, and he made love with Sawa.",
+    "poster_path": "/f2kew5iB37Vhl1CkfLLYCk1yrQB.jpg",
+    "backdrop_path": null,
+    "release_date": "1976-10-16",
+    "director": "今井正",
+    "director_jp": "今井正",
+    "director_en": "Tadashi Imai",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 97,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『姑獲鳥 （うぶめ） の夏』": {
+    "tmdb_id": 227254,
+    "tmdb_title_jp": "姑獲鳥の夏",
+    "tmdb_title_en": "Summer of Ubume",
+    "tmdb_title_original": "姑獲鳥の夏",
+    "tmdb_original_language": "ja",
+    "overview": "1952（昭和27）年、夏の東京。小説家の関口はちまたで広まる、産婦人科の大病院である久遠寺医院の娘・梗子が、妊娠20カ月目を迎えたのに一向に出産する気配がなく、しかも彼女の夫は1年半前に医院の密室から忽然と消え、以来、行方不明となっているという不思議な噂を耳にする。雑誌の依頼で事件を取材することになった関口は、古本屋の店主にして神社の神主でもある、博覧強記の友人・京極堂に相談を持ちかける。",
+    "overview_en": "Kyogokudo is a used book seller who doubles as an onmyouji, or Heian style occultist. His friend Sekiguchi brings him the story of a woman who has been pregnant for twenty months. Sekiguchi investigates further with the help of his friend Enokizu, a detective with the unusual ability to see people's memories. They are hired by the impossibly pregnant woman's sister to find the woman's missing husband and lay this whole matter to rest. In the end, they need the help of Kyogokudo to exorcise the family curse.",
+    "poster_path": "/l3Y3xYBB4fqfkfuKGz6q0HlRfz5.jpg",
+    "backdrop_path": "/rQ1qd8KFlTtN4fkAdRcq5v9hMXK.jpg",
+    "release_date": "2005-07-15",
+    "director": "実相寺昭雄",
+    "director_jp": "実相寺昭雄",
+    "director_en": "Akio Jissoji",
+    "genres": [
+      "スリラー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Horror"
+    ],
+    "runtime": 123,
+    "vote_average": 7.167,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『怪談 〈短縮版〉 』": {
+    "tmdb_id": 30959,
+    "tmdb_title_jp": "怪談",
+    "tmdb_title_en": "Kwaidan",
+    "tmdb_title_original": "怪談",
+    "tmdb_original_language": "ja",
+    "overview": "「黒髪」：妻を捨て、京都から遠い任地へと赴いた武士。そこで彼は、良い家柄の娘と結婚するが、彼女は冷酷な女で、男は今さら、別れた妻のことを思い出すのだった。やがて任期を終え、京都に戻った彼は最初の妻と再会するが…。「雪女」：きこりの巳之吉は、森へ薪を採りに入ったところで吹雪に遭い、山小屋に閉じ込められるはめに。その晩彼は、雪女の姿を目の当たりにし…。ほかに「耳無し抱一の話」「茶碗の中」の計4編。",
+    "overview_en": "Taking its title from an archaic Japanese word meaning \"ghost story,\" this anthology adapts four folk tales. A penniless samurai marries for money with tragic results. A man stranded in a blizzard is saved by Yuki the Snow Maiden, but his rescue comes at a cost. Blind musician Hoichi is forced to perform for an audience of ghosts. An author relates the story of a samurai who sees another warrior's reflection in his teacup.",
+    "poster_path": "/lxOxZVhGkmnz7jFJDS8EfkhxmmN.jpg",
+    "backdrop_path": "/9GAU0z2wVA8M2D2w36CaloWYYgv.jpg",
+    "release_date": "1965-01-06",
+    "director": "小林正樹",
+    "director_jp": "小林正樹",
+    "director_en": "Masaki Kobayashi",
+    "genres": [
+      "ホラー",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Horror",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 183,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『牡丹燈籠』": {
+    "tmdb_id": 108648,
+    "tmdb_title_jp": "牡丹燈籠",
+    "tmdb_title_en": "The Bride from Hades",
+    "tmdb_title_original": "牡丹燈籠",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "On the night of the summer Obon festival, Hagiwara Shinzaburo meets a beautiful courtesan named Otsuyu. Not knowing she's a ghost, he becomes infatuated by her.",
+    "poster_path": "/o3l0q26RaQ5Qvm7fpFTtw5293JV.jpg",
+    "backdrop_path": "/v8PojAL414Ou7GNVSDbCPO53TUJ.jpg",
+    "release_date": "1968-06-15",
+    "director": "山本薩夫",
+    "director_jp": "山本薩夫",
+    "director_en": "Satsuo Yamamoto",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 89,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:108648": {
+    "tmdb_id": 108648,
+    "tmdb_title_jp": "牡丹燈籠",
+    "tmdb_title_en": "The Bride from Hades",
+    "tmdb_title_original": "牡丹燈籠",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "On the night of the summer Obon festival, Hagiwara Shinzaburo meets a beautiful courtesan named Otsuyu. Not knowing she's a ghost, he becomes infatuated by her.",
+    "poster_path": "/o3l0q26RaQ5Qvm7fpFTtw5293JV.jpg",
+    "backdrop_path": "/v8PojAL414Ou7GNVSDbCPO53TUJ.jpg",
+    "release_date": "1968-06-15",
+    "director": "山本薩夫",
+    "director_jp": "山本薩夫",
+    "director_en": "Satsuo Yamamoto",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 89,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『リング』": {
+    "tmdb_id": 2671,
+    "tmdb_title_jp": "リング",
+    "tmdb_title_en": "Ring",
+    "tmdb_title_original": "リング",
+    "tmdb_original_language": "ja",
+    "overview": "某テレビ局のディレクターである浅川玲子は、都市伝説にまつわる取材の中で、見た者を1週間後に死に至らしめる「呪いのビデオ」に関わったと噂される男女が、数日前に奇怪な死を遂げた自分の姪、大石智子と同日の同時刻に死亡していることに気づく。調査を進めた玲子は、同時に死んだ智子たち4人の間には交友関係があり、彼らが1週間前に伊豆の貸し別荘「伊豆パシフィックランド」に宿泊していたこと、そしてその際に撮影されたフィルム写真上の4人の顔が不気味に歪んでいることに着目する。彼らの死の謎を突きとめようとして問題の貸し別荘を訪れた玲子は、そこで貸出されていた不審なビデオの映像を見てしまい、直後に不気味な無言電話を受け取る。これを境に、玲子自身の写真もまた死んだ4人と同様に歪んだ顔で写るようになってしまう。",
+    "overview_en": "A mysterious video has been linked to a number of deaths, and when an inquisitive journalist finds the tape and views it herself, she sets in motion a chain of events that puts her own life in danger.",
+    "poster_path": "/6KWX8jRZHtfXLGGViKAcUW41ZXs.jpg",
+    "backdrop_path": "/sGhbO6muh1Fnpa7nkxYCfvmgWCo.jpg",
+    "release_date": "1998-01-31",
+    "director": "中田秀夫",
+    "director_jp": "中田秀夫",
+    "director_en": "Hideo Nakata",
+    "genres": [
+      "ホラー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 96,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:2671": {
+    "tmdb_id": 2671,
+    "tmdb_title_jp": "リング",
+    "tmdb_title_en": "Ring",
+    "tmdb_title_original": "リング",
+    "tmdb_original_language": "ja",
+    "overview": "某テレビ局のディレクターである浅川玲子は、都市伝説にまつわる取材の中で、見た者を1週間後に死に至らしめる「呪いのビデオ」に関わったと噂される男女が、数日前に奇怪な死を遂げた自分の姪、大石智子と同日の同時刻に死亡していることに気づく。調査を進めた玲子は、同時に死んだ智子たち4人の間には交友関係があり、彼らが1週間前に伊豆の貸し別荘「伊豆パシフィックランド」に宿泊していたこと、そしてその際に撮影されたフィルム写真上の4人の顔が不気味に歪んでいることに着目する。彼らの死の謎を突きとめようとして問題の貸し別荘を訪れた玲子は、そこで貸出されていた不審なビデオの映像を見てしまい、直後に不気味な無言電話を受け取る。これを境に、玲子自身の写真もまた死んだ4人と同様に歪んだ顔で写るようになってしまう。",
+    "overview_en": "A mysterious video has been linked to a number of deaths, and when an inquisitive journalist finds the tape and views it herself, she sets in motion a chain of events that puts her own life in danger.",
+    "poster_path": "/6KWX8jRZHtfXLGGViKAcUW41ZXs.jpg",
+    "backdrop_path": "/sGhbO6muh1Fnpa7nkxYCfvmgWCo.jpg",
+    "release_date": "1998-01-31",
+    "director": "中田秀夫",
+    "director_jp": "中田秀夫",
+    "director_en": "Hideo Nakata",
+    "genres": [
+      "ホラー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 96,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『陰陽師』": {
+    "tmdb_id": 21325,
+    "tmdb_title_jp": "陰陽師",
+    "tmdb_title_en": "Onmyoji",
+    "tmdb_title_original": "陰陽師",
+    "tmdb_original_language": "ja",
+    "overview": "人ももののけも同じ闇の中で呼吸をしていた平安時代。都の陰陽師である安倍晴明は、友人の源博雅から夜毎に自分の笛を聴きに来る牛車の女性の話をもちかけられる。そんな中、生まれたばかりの帝の子・敦平親王の身体に異変が起きる。",
+    "overview_en": "During a dark time in the Heian period, when evil forces threaten the kingdom, the emperor relies on the onmyōji to keep the supernatural forces in line. But as political events become highly charged, friction within the order leads to betrayal. Now, Seimei, a talented member of the clan, must face down his master, Dōson, in the hopes of restoring peace to the kingdom.",
+    "poster_path": "/ptiwNaV092Ut3qWLnN07fx2hFjl.jpg",
+    "backdrop_path": "/if0IBbnzdeacoGf2Dgj1dAqZktu.jpg",
+    "release_date": "2001-10-06",
+    "director": "滝田洋二郎",
+    "director_jp": "滝田洋二郎",
+    "director_en": "Yojiro Takita",
+    "genres": [
+      "ドラマ",
+      "ホラー",
+      "履歴",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Horror",
+      "History",
+      "Action"
+    ],
+    "runtime": 116,
+    "vote_average": 6.338,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『悪太郎』": {
+    "tmdb_id": 375030,
+    "tmdb_title_jp": "悪太郎",
+    "tmdb_title_en": "The Incorrigible",
+    "tmdb_title_original": "悪太郎",
+    "tmdb_original_language": "ja",
+    "overview": "大正時代を舞台に、素行不良で“悪太郎”の名を着せられた青年の一途な恋を描いた文芸ロマン。今東光の原作を山内賢×和泉雅子コンビで映画化。鈴木清順監督と美術監督・木村威夫との初コンビ作でもある。\r 頃は大正の初期、素行不良、悪太郎の名を着せられて神戸の神聖学院をクビになった中学4年の紺野東吾は、母の知人である豊岡中学の近藤校長に預けられてしまった。東吾は母を憎んだが、ひとまず用意された下宿に落ち着くことにした。翌日の編入試験では早速悪太郎ぶりを発揮し、答案もデタラメを書く始末だったが、東吾が小説家を志していると母から聞いていた近藤は、東吾の非をさとし再試験を受けさせたところ、なんと満点に近い成績をとり試験をパスした。ある日、東吾は本屋で、校医の娘で豊岡小町と騒がれている恵美子がストリンドベリの小説を買っていたことを知り、興味を覚えた。",
+    "overview_en": "Based on the loosely autobiographical novel of the same name by Toko Kon. Ken Yamanouchi stars as Togo Konno, the titular bastard.",
+    "poster_path": "/nGuHfvr8b9l6qnmTlKLDuLJwWGk.jpg",
+    "backdrop_path": "/s364eSrDB89APtDVYqqWrSlGgKB.jpg",
+    "release_date": "1963-09-21",
+    "director": "鈴木清順",
+    "director_jp": "鈴木清順",
+    "director_en": "Seijun Suzuki",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "runtime": 95,
+    "vote_average": 6.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:375030": {
+    "tmdb_id": 375030,
+    "tmdb_title_jp": "悪太郎",
+    "tmdb_title_en": "The Incorrigible",
+    "tmdb_title_original": "悪太郎",
+    "tmdb_original_language": "ja",
+    "overview": "大正時代を舞台に、素行不良で“悪太郎”の名を着せられた青年の一途な恋を描いた文芸ロマン。今東光の原作を山内賢×和泉雅子コンビで映画化。鈴木清順監督と美術監督・木村威夫との初コンビ作でもある。\r 頃は大正の初期、素行不良、悪太郎の名を着せられて神戸の神聖学院をクビになった中学4年の紺野東吾は、母の知人である豊岡中学の近藤校長に預けられてしまった。東吾は母を憎んだが、ひとまず用意された下宿に落ち着くことにした。翌日の編入試験では早速悪太郎ぶりを発揮し、答案もデタラメを書く始末だったが、東吾が小説家を志していると母から聞いていた近藤は、東吾の非をさとし再試験を受けさせたところ、なんと満点に近い成績をとり試験をパスした。ある日、東吾は本屋で、校医の娘で豊岡小町と騒がれている恵美子がストリンドベリの小説を買っていたことを知り、興味を覚えた。",
+    "overview_en": "Based on the loosely autobiographical novel of the same name by Toko Kon. Ken Yamanouchi stars as Togo Konno, the titular bastard.",
+    "poster_path": "/nGuHfvr8b9l6qnmTlKLDuLJwWGk.jpg",
+    "backdrop_path": "/s364eSrDB89APtDVYqqWrSlGgKB.jpg",
+    "release_date": "1963-09-21",
+    "director": "鈴木清順",
+    "director_jp": "鈴木清順",
+    "director_en": "Seijun Suzuki",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "runtime": 95,
+    "vote_average": 6.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『おゆきさん』 ＊デジタル上映": {
+    "tmdb_id": 1415950,
+    "tmdb_title_jp": "おゆきさん",
+    "tmdb_title_en": "Oyuki",
+    "tmdb_title_original": "おゆきさん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A movie-loving nanny lives and works in the home of a university professor and eventually becomes the family's support system, leading a bright and joyful life.",
+    "poster_path": "/q1Awhp9HfEuq6Gs6mV6JnoTSF2m.jpg",
+    "backdrop_path": "/oDMzQ5ltKpvs2mcKDjaLQzDEuS5.jpg",
+    "release_date": "1966-12-04",
+    "director": "鍛冶昇",
+    "director_jp": "鍛冶昇",
+    "director_en": "Noboru Kaji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 80,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『私は泣かない』 ＊デジタル上映": {
+    "tmdb_id": 467953,
+    "tmdb_title_jp": "私は泣かない",
+    "tmdb_title_en": "I'll Never Cry!",
+    "tmdb_title_original": "私は泣かない",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The rehabilitation of a delinquent on leaving reformatory. Her redemption comes through a boy in a wheelchair; by his rehabilitation, growing comes in courage along with her patient, she grows by finding meaning in her own existence. She finally sees a new world before her and has the determination to lead a normal life.",
+    "poster_path": "/oTlKzcAanVUMiWDH8OaknlUR1Oc.jpg",
+    "backdrop_path": null,
+    "release_date": "1966-10-29",
+    "director": "吉田憲二",
+    "director_jp": "吉田憲二",
+    "director_en": "Kenji Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 91,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『青春の海』": {
+    "tmdb_id": 481974,
+    "tmdb_title_jp": "青春の海",
+    "tmdb_title_en": "The Black Sheep",
+    "tmdb_title_original": "青春の海",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Young female teacher Kyoko Miyake relocates to a small seaside town with her runaway little sister, but their new life is complicated by hoodlum-like Jiro Yamazaki (the black sheep of the title) who is related to the family hosting them and whom they keep running into, but can't help but to feel sympathy for. Of course, rumours start fast in a small town, but delightfully she doesn't really care at all. This is another very solid Shogoro Nishimura film.",
+    "poster_path": "/1YDL8vmVTfu3hDZqOERpMHDJczm.jpg",
+    "backdrop_path": "/8mbdxEHlTrPqDb88sYEs8QfRby7.jpg",
+    "release_date": "1967-01-03",
+    "director": "西村昭五郎",
+    "director_jp": "西村昭五郎",
+    "director_en": "Shōgorō Nishimura",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 89,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:481974": {
+    "tmdb_id": 481974,
+    "tmdb_title_jp": "青春の海",
+    "tmdb_title_en": "The Black Sheep",
+    "tmdb_title_original": "青春の海",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Young female teacher Kyoko Miyake relocates to a small seaside town with her runaway little sister, but their new life is complicated by hoodlum-like Jiro Yamazaki (the black sheep of the title) who is related to the family hosting them and whom they keep running into, but can't help but to feel sympathy for. Of course, rumours start fast in a small town, but delightfully she doesn't really care at all. This is another very solid Shogoro Nishimura film.",
+    "poster_path": "/1YDL8vmVTfu3hDZqOERpMHDJczm.jpg",
+    "backdrop_path": "/8mbdxEHlTrPqDb88sYEs8QfRby7.jpg",
+    "release_date": "1967-01-03",
+    "director": "西村昭五郎",
+    "director_jp": "西村昭五郎",
+    "director_en": "Shōgorō Nishimura",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 89,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『非行少女』": {
+    "tmdb_id": 279233,
+    "tmdb_title_jp": "非行少女",
+    "tmdb_title_en": "Bad Girl",
+    "tmdb_title_original": "非行少女",
+    "tmdb_original_language": "ja",
+    "overview": "15歳の若枝はうす汚ないバーで酔客と酒を飲み、ヤケクソのように女給のハイヒールをかっぱらってとび出した。東京で仕事に失敗して帰って来た21歳の三郎は、職安通いの空虚な毎日を送っていた。暗く陰うつな北陸の空、金沢の映画館の前で幼ななじみの二人は再会した。三郎はうらぶれた彼女に、なけなしの金からスカートを買ってやった。喜んだ若枝は、のんだくれの父親長吉と、いやな継母のいる家をとび出したわけを話した。若枝をこれ以上堕落させまいと決心した三郎は、翌日から少しずつおくれた勉強を教えてやった。若枝の心にやすらぎがよみがえり、三郎はうれし泣きする彼女の涙をそっとすすってやるのだった…。",
+    "overview_en": "Wakae is a 15 year old girl who lived under the same roof with her alcoholic father and stepmom. Her mother had died years ago. She spends her nights at a rundown bar, sharing drinks and cigarettes with the lowlife drunks. She has nowhere to turn and no one to talk to, until she is reunited with her childhood friend, Saburo, who brings warmth to her heart.",
+    "poster_path": "/xdIxxCvVIdILq6Zy5A4zCGnP2uf.jpg",
+    "backdrop_path": null,
+    "release_date": "1963-03-16",
+    "director": "浦山桐郎",
+    "director_jp": "浦山桐郎",
+    "director_en": "Kirio Urayama",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 114,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:279233": {
+    "tmdb_id": 279233,
+    "tmdb_title_jp": "非行少女",
+    "tmdb_title_en": "Bad Girl",
+    "tmdb_title_original": "非行少女",
+    "tmdb_original_language": "ja",
+    "overview": "15歳の若枝はうす汚ないバーで酔客と酒を飲み、ヤケクソのように女給のハイヒールをかっぱらってとび出した。東京で仕事に失敗して帰って来た21歳の三郎は、職安通いの空虚な毎日を送っていた。暗く陰うつな北陸の空、金沢の映画館の前で幼ななじみの二人は再会した。三郎はうらぶれた彼女に、なけなしの金からスカートを買ってやった。喜んだ若枝は、のんだくれの父親長吉と、いやな継母のいる家をとび出したわけを話した。若枝をこれ以上堕落させまいと決心した三郎は、翌日から少しずつおくれた勉強を教えてやった。若枝の心にやすらぎがよみがえり、三郎はうれし泣きする彼女の涙をそっとすすってやるのだった…。",
+    "overview_en": "Wakae is a 15 year old girl who lived under the same roof with her alcoholic father and stepmom. Her mother had died years ago. She spends her nights at a rundown bar, sharing drinks and cigarettes with the lowlife drunks. She has nowhere to turn and no one to talk to, until she is reunited with her childhood friend, Saburo, who brings warmth to her heart.",
+    "poster_path": "/xdIxxCvVIdILq6Zy5A4zCGnP2uf.jpg",
+    "backdrop_path": null,
+    "release_date": "1963-03-16",
+    "director": "浦山桐郎",
+    "director_jp": "浦山桐郎",
+    "director_en": "Kirio Urayama",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 114,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『絶唱』": {
+    "tmdb_id": 459842,
+    "tmdb_title_jp": "絶唱",
+    "tmdb_title_en": "No Greater Love",
+    "tmdb_title_original": "絶唱",
+    "tmdb_original_language": "ja",
+    "overview": "歌謡界のプリンス舟木一夫が絶対のコンビ和泉雅子と組んで贈る悲恋超大作。古い因襲と迫害に傷つき耐えながら、ただ一筋の愛に生き殉じた、大地主の息子と山番の娘との美しくも悲しい物語。\r 昭和十八年、太平洋戦争も真っ只中の頃である。園田順吉は山陰地方の旧家でいまなお権勢をほしいままにしている家の一人息子である。ある日のこと、突然、父親から町の実業家の令嬢と結婚しろと言われ、激しい口論の末、これを断る。順吉には、園田家で女中をしている小雪と恋仲にあったのだ。それを知った順吉の父親は小雪を“他国行き”にさせようとするが、家を出ることを決めた順吉は、小雪を連れて日本海の荒波と砂丘に挟まれた小さな町で暮らし始めたのだった。貧しくも幸せに暮らす二人の下に、順吉の召集令状が舞い込む。順吉が出征してからも小雪は一生懸命に働き、順吉から届く戦地からの手紙を楽しみに待っていた。戦況が厳しくになるにつれ、やがて順吉からの手紙も途絶え、小雪もいつしか胸を侵されて、病床に臥す身となっていた。ただただ順吉の無事の帰還を祈りながら…。",
+    "overview_en": "In 1943, Japan is amidst the Pacific War. Sobei Sonoda is one of the wealthiest landowners of the San'in region. His land spread for miles, as far as the eye can see. People treated him with respect. But even the richest must think about the future. One day, he decides to arrange a marriage between his only son, Junkichi and the daughter of an even more powerful family. Sobei, hoping to benefit from this union, soon discovers that his son was in love with a lower class girl.",
+    "poster_path": "/mlLZLz9HSLAsRVG7WVJNmCPvpei.jpg",
+    "backdrop_path": "/zRPhv99WJZXF0gG4y1f4OlIViKh.jpg",
+    "release_date": "1966-09-17",
+    "director": "西河克己",
+    "director_jp": "西河克己",
+    "director_en": "Katsumi Nishikawa",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:459842": {
+    "tmdb_id": 459842,
+    "tmdb_title_jp": "絶唱",
+    "tmdb_title_en": "No Greater Love",
+    "tmdb_title_original": "絶唱",
+    "tmdb_original_language": "ja",
+    "overview": "歌謡界のプリンス舟木一夫が絶対のコンビ和泉雅子と組んで贈る悲恋超大作。古い因襲と迫害に傷つき耐えながら、ただ一筋の愛に生き殉じた、大地主の息子と山番の娘との美しくも悲しい物語。\r 昭和十八年、太平洋戦争も真っ只中の頃である。園田順吉は山陰地方の旧家でいまなお権勢をほしいままにしている家の一人息子である。ある日のこと、突然、父親から町の実業家の令嬢と結婚しろと言われ、激しい口論の末、これを断る。順吉には、園田家で女中をしている小雪と恋仲にあったのだ。それを知った順吉の父親は小雪を“他国行き”にさせようとするが、家を出ることを決めた順吉は、小雪を連れて日本海の荒波と砂丘に挟まれた小さな町で暮らし始めたのだった。貧しくも幸せに暮らす二人の下に、順吉の召集令状が舞い込む。順吉が出征してからも小雪は一生懸命に働き、順吉から届く戦地からの手紙を楽しみに待っていた。戦況が厳しくになるにつれ、やがて順吉からの手紙も途絶え、小雪もいつしか胸を侵されて、病床に臥す身となっていた。ただただ順吉の無事の帰還を祈りながら…。",
+    "overview_en": "In 1943, Japan is amidst the Pacific War. Sobei Sonoda is one of the wealthiest landowners of the San'in region. His land spread for miles, as far as the eye can see. People treated him with respect. But even the richest must think about the future. One day, he decides to arrange a marriage between his only son, Junkichi and the daughter of an even more powerful family. Sobei, hoping to benefit from this union, soon discovers that his son was in love with a lower class girl.",
+    "poster_path": "/mlLZLz9HSLAsRVG7WVJNmCPvpei.jpg",
+    "backdrop_path": "/zRPhv99WJZXF0gG4y1f4OlIViKh.jpg",
+    "release_date": "1966-09-17",
+    "director": "西河克己",
+    "director_jp": "西河克己",
+    "director_en": "Katsumi Nishikawa",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『終りなき生命を』 ＊デジタル上映": {
+    "tmdb_id": 640192,
+    "tmdb_title_jp": "終りなき生命を",
+    "tmdb_title_en": "The Will to Live",
+    "tmdb_title_original": "終りなき生命を",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/eztU8PsAlq0Ox9HvDRsQgMeu5Ya.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-07-08",
+    "director": "吉田憲二",
+    "director_jp": "吉田憲二",
+    "director_en": "Kenji Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『朝霧』": {
+    "tmdb_id": 1145927,
+    "tmdb_title_jp": "朝霧",
+    "tmdb_title_en": "Morning Fog",
+    "tmdb_title_original": "朝霧",
+    "tmdb_original_language": "ja",
+    "overview": "美しい裏日本福井を背景に描く、珠玉の母と娘の人生ドラマ。",
+    "overview_en": "Kyoko and her mother Yuki returned to their hometown of Fukui. Yuki runs a dressmaker's store in the city, and Kyoko has taken a job as a nurse at a prefectural hospital. The film depicts the daughter's attempt to grow from adolescence to adulthood in a family of one mother and one daughter, and her emotional exchange with her mother against the backdrop of the harsh natural environment.",
+    "poster_path": "/sHb7YTbJTPZMkdJeT5ZcOJ2Oed3.jpg",
+    "backdrop_path": null,
+    "release_date": "1971-09-18",
+    "director": "吉田憲二",
+    "director_jp": "吉田憲二",
+    "director_en": "Kenji Yoshida",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 96,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1145927": {
+    "tmdb_id": 1145927,
+    "tmdb_title_jp": "朝霧",
+    "tmdb_title_en": "Morning Fog",
+    "tmdb_title_original": "朝霧",
+    "tmdb_original_language": "ja",
+    "overview": "美しい裏日本福井を背景に描く、珠玉の母と娘の人生ドラマ。",
+    "overview_en": "Kyoko and her mother Yuki returned to their hometown of Fukui. Yuki runs a dressmaker's store in the city, and Kyoko has taken a job as a nurse at a prefectural hospital. The film depicts the daughter's attempt to grow from adolescence to adulthood in a family of one mother and one daughter, and her emotional exchange with her mother against the backdrop of the harsh natural environment.",
+    "poster_path": "/sHb7YTbJTPZMkdJeT5ZcOJ2Oed3.jpg",
+    "backdrop_path": null,
+    "release_date": "1971-09-18",
+    "director": "吉田憲二",
+    "director_jp": "吉田憲二",
+    "director_en": "Kenji Yoshida",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 96,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "〈月刊ホン・サンス〉vol.4 私たちの一日": {
+    "tmdb_id": 1114775,
+    "tmdb_title_jp": "우리의 하루",
+    "tmdb_title_en": "In Our Day",
+    "tmdb_title_original": "우리의 하루",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Recently returned to South Korea, an actress in her forties is staying with her friend and her cat. Meanwhile, an aging poet in declining health lives alone after the death of his own cat. One day, each receives a visit from a different young aspiring artist, who come equipped with questions about their careers and life itself.",
+    "poster_path": "/712BOyadfS8Dt56ymxEyahlqYOQ.jpg",
+    "backdrop_path": "/auCqpkz6wFuy1KvXTIAKUq2lFNP.jpg",
+    "release_date": "2023-07-19",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 84,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "翔んだタックル大旋風": {
+    "tmdb_id": 1568452,
+    "tmdb_title_jp": "翔んだタックル大旋風",
+    "tmdb_title_en": "翔んだタックル大旋風",
+    "tmdb_title_original": "翔んだタックル大旋風",
+    "tmdb_original_language": "ja",
+    "overview": "憧れの吉岡先輩が所属する日ノ丸大学アメフト部のマネージャーとなった秋子。しかし、顧問の澤田の指示で試合中にあらゆる危険プレイを重ねたことから、チームは出場停止処分を受けてしまう。しかもキャプテンの平山から「吉岡は試合中の事故で死んだ」と告げられ、秋子は絶望する。吉岡の死を受け、一念発起した秋子は自らアメフト選手になることを志願し、過酷な練習に打ち込んでいく。一方、城西署の刑事・沙織は、元部員の佐々木が関わるチームの重大な秘密を知る。",
+    "overview_en": "",
+    "poster_path": "/m3TTR5e8fxaybyPx2B7pZHpjtub.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-12-26",
+    "director": "小野峻志",
+    "director_jp": "小野峻志",
+    "director_en": "Takashi Ono",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Horror"
+    ],
+    "runtime": 74,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1568452": {
+    "tmdb_id": 1568452,
+    "tmdb_title_jp": "翔んだタックル大旋風",
+    "tmdb_title_en": "翔んだタックル大旋風",
+    "tmdb_title_original": "翔んだタックル大旋風",
+    "tmdb_original_language": "ja",
+    "overview": "憧れの吉岡先輩が所属する日ノ丸大学アメフト部のマネージャーとなった秋子。しかし、顧問の澤田の指示で試合中にあらゆる危険プレイを重ねたことから、チームは出場停止処分を受けてしまう。しかもキャプテンの平山から「吉岡は試合中の事故で死んだ」と告げられ、秋子は絶望する。吉岡の死を受け、一念発起した秋子は自らアメフト選手になることを志願し、過酷な練習に打ち込んでいく。一方、城西署の刑事・沙織は、元部員の佐々木が関わるチームの重大な秘密を知る。",
+    "overview_en": "",
+    "poster_path": "/m3TTR5e8fxaybyPx2B7pZHpjtub.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-12-26",
+    "director": "小野峻志",
+    "director_jp": "小野峻志",
+    "director_en": "Takashi Ono",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Horror"
+    ],
+    "runtime": 74,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "FRIDAY【アンコール上映】": null,
+  "ブーニン 天才ピアニストの沈黙と再生": null,
+  "tmdb:187263": {
+    "tmdb_id": 187263,
+    "tmdb_title_jp": "True Love",
+    "tmdb_title_en": "True Love",
+    "tmdb_title_original": "True Love",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "On the surface, Kate and Jack, late 20's, are happy. But like everyone, they carry secrets that neither of them is prepared to reveal. After their wedding, they wake from a deep, dark sleep, each alone in a sealed room with no doors or windows, just a projection screen and a monitor with two buttons: one for “yes”, one for “no”. As the horror of their situation unfolds, surveillance films showing their life together, appear on the screen as the monitor asks questions, each more strange and terrifying that the last. It soon becomes apparent that a bizarre test of their relationship is underway, and the secrets revealed lead them deeper and deeper into what could not just destroy their love, but threaten their very lives…",
+    "poster_path": "/dSDb91ir36zCmf22QKt5SVNJFCi.jpg",
+    "backdrop_path": "/wxvLmgdPbGSvtSf32pm3KXySWDj.jpg",
+    "release_date": "2012-10-13",
+    "director": "Enrico Clerico Nasino",
+    "director_jp": "Enrico Clerico Nasino",
+    "director_en": "Enrico Clerico Nasino",
+    "genres": [
+      "スリラー"
+    ],
+    "genres_en": [
+      "Thriller"
+    ],
+    "runtime": 103,
+    "vote_average": 4.667,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "tmdb:1415950": {
+    "tmdb_id": 1415950,
+    "tmdb_title_jp": "おゆきさん",
+    "tmdb_title_en": "Oyuki",
+    "tmdb_title_original": "おゆきさん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A movie-loving nanny lives and works in the home of a university professor and eventually becomes the family's support system, leading a bright and joyful life.",
+    "poster_path": "/q1Awhp9HfEuq6Gs6mV6JnoTSF2m.jpg",
+    "backdrop_path": "/oDMzQ5ltKpvs2mcKDjaLQzDEuS5.jpg",
+    "release_date": "1966-12-04",
+    "director": "鍛冶昇",
+    "director_jp": "鍛冶昇",
+    "director_en": "Noboru Kaji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 80,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:467953": {
+    "tmdb_id": 467953,
+    "tmdb_title_jp": "私は泣かない",
+    "tmdb_title_en": "I'll Never Cry!",
+    "tmdb_title_original": "私は泣かない",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The rehabilitation of a delinquent on leaving reformatory. Her redemption comes through a boy in a wheelchair; by his rehabilitation, growing comes in courage along with her patient, she grows by finding meaning in her own existence. She finally sees a new world before her and has the determination to lead a normal life.",
+    "poster_path": "/oTlKzcAanVUMiWDH8OaknlUR1Oc.jpg",
+    "backdrop_path": null,
+    "release_date": "1966-10-29",
+    "director": "吉田憲二",
+    "director_jp": "吉田憲二",
+    "director_en": "Kenji Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 91,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:640192": {
+    "tmdb_id": 640192,
+    "tmdb_title_jp": "終りなき生命を",
+    "tmdb_title_en": "The Will to Live",
+    "tmdb_title_original": "終りなき生命を",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/eztU8PsAlq0Ox9HvDRsQgMeu5Ya.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-07-08",
+    "director": "吉田憲二",
+    "director_jp": "吉田憲二",
+    "director_en": "Kenji Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
       }
     ]
   }

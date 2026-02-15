@@ -5492,5 +5492,107 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "『黒い花粉』": {
+    "english_title": "True Love",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "黒い花粉",
+    "director": "Hideo Ōba",
+    "country": "Japan"
+  },
+  "『ボロ家の春秋』": {
+    "english_title": "The Seasons of a Shabby House",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ボロ家の春秋",
+    "director": "Noboru Nakamura",
+    "country": "Japan",
+    "failed": true
+  },
+  "『顔役 （噛みつかれた顔役） 』": {
+    "english_title": "The Country Boss",
+    "release_year": 1958,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "顔役 （噛みつかれた顔役）",
+    "director": "Noboru Nakamura",
+    "country": "Japan"
+  },
+  "『姑獲鳥 （うぶめ） の夏』": {
+    "english_title": "The Summer of the Ubume",
+    "release_year": 2005,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "姑獲鳥の夏",
+    "director": "Akio Jissoji",
+    "country": "Japan"
+  },
+  "『怪談 〈短縮版〉 』": {
+    "english_title": "Kwaidan",
+    "release_year": 1964,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "怪談",
+    "director": "Masaki Kobayashi",
+    "country": "Japan"
+  },
+  "『おゆきさん』 ＊デジタル上映": {
+    "english_title": "Oyuki-san",
+    "release_year": 1966,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "おゆきさん",
+    "director": "Noboru Kaji",
+    "country": "Japan"
+  },
+  "『私は泣かない』 ＊デジタル上映": {
+    "english_title": "I'll Never Cry!",
+    "release_year": 1966,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "私は泣かない",
+    "director": "Kenji Yoshida",
+    "country": "Japan"
+  },
+  "『終りなき生命を』 ＊デジタル上映": {
+    "english_title": "Life Without End",
+    "release_year": 1967,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "終りなき生命を",
+    "director": "Kenji Yoshida",
+    "country": "Japan"
+  },
+  "〈月刊ホン・サンス〉vol.4 私たちの一日": {
+    "english_title": "In Our Day",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "우리의 하루",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "FRIDAY【アンコール上映】": {
+    "english_title": "FRIDAY",
+    "release_year": 2020,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "FRIDAY",
+    "director": "Shikai Kyodai",
+    "country": "Japan",
+    "failed": true
+  },
+  "ブーニン 天才ピアニストの沈黙と再生": {
+    "english_title": "Bunin: The Silence and Rebirth of a Genius Pianist",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ブーニン 天才ピアニストの沈黙と再生",
+    "director": "Azusa Nakajima",
+    "country": "Japan",
+    "failed": true
   }
 }
