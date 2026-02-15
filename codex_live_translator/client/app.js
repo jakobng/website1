@@ -482,10 +482,13 @@ async function startRealtimeCapture() {
     throw new Error(`realtime connect failed ${response.status}: ${text}`);
   }
 
-  const payload = await response.json();
+  const answerSdp = await response.text();
+  if (!answerSdp.includes("v=0") || !answerSdp.includes("m=audio")) {
+    throw new Error(`realtime answer invalid: ${answerSdp.slice(0, 180)}`);
+  }
   await rtcPeerConnection.setRemoteDescription({
     type: "answer",
-    sdp: payload.answer_sdp,
+    sdp: answerSdp,
   });
 
   captureActive = true;

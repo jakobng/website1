@@ -53,11 +53,6 @@ class RealtimeConnectRequest(BaseModel):
     source_lang_hint: str = Field(default="auto")
 
 
-class RealtimeConnectResponse(BaseModel):
-    answer_sdp: str
-    call_id: str | None = None
-
-
 @dataclass(slots=True)
 class SessionRecord:
     session_id: str

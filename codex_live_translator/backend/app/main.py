@@ -13,7 +13,6 @@ from fastapi.staticfiles import StaticFiles
 from .config import get_settings
 from .models import (
     RealtimeConnectRequest,
-    RealtimeConnectResponse,
     SegmentProcessResponse,
     SegmentRecord,
     SessionEndRequest,
@@ -94,8 +93,8 @@ async def start_session(request: SessionStartRequest) -> SessionStartResponse:
     return SessionStartResponse(session_id=record.session_id, started_at=record.created_at)
 
 
-@app.post("/v1/realtime/connect", response_model=RealtimeConnectResponse)
-async def connect_realtime(request: RealtimeConnectRequest) -> RealtimeConnectResponse:
+@app.post("/v1/realtime/connect")
+async def connect_realtime(request: RealtimeConnectRequest) -> PlainTextResponse:
     session = store.get_session(request.session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Unknown session_id")
@@ -153,12 +152,18 @@ async def connect_realtime(request: RealtimeConnectRequest) -> RealtimeConnectRe
         detail = _extract_error_message(response)
         raise HTTPException(status_code=502, detail=f"Provider failed: {detail}")
 
-    answer_sdp = response.text.strip()
+    answer_sdp = _normalize_sdp(response.text)
     if not answer_sdp:
         raise HTTPException(status_code=502, detail="Provider failed: Empty SDP answer")
+    if "v=0" not in answer_sdp or "m=audio" not in answer_sdp:
+        snippet = answer_sdp[:240].replace("\r", "\\r").replace("\n", "\\n")
+        raise HTTPException(status_code=502, detail=f"Provider failed: Invalid SDP answer ({snippet})")
 
     call_id = response.headers.get("x-openai-call-id")
-    return RealtimeConnectResponse(answer_sdp=answer_sdp, call_id=call_id)
+    headers: dict[str, str] = {}
+    if call_id:
+        headers["x-openai-call-id"] = call_id
+    return PlainTextResponse(answer_sdp, media_type="application/sdp", headers=headers)
 
 
 @app.post("/v1/segment/process", response_model=SegmentProcessResponse)
@@ -374,3 +379,14 @@ def _extract_error_message(response: httpx.Response) -> str:
                 return " | ".join(details)
 
     return str(payload)[:300]
+
+
+def _normalize_sdp(raw_sdp: str) -> str:
+    if not raw_sdp:
+        return ""
+    cleaned = raw_sdp.replace("\ufeff", "")
+    cleaned = cleaned.replace("\r\n", "\n").replace("\r", "\n")
+    lines = [line for line in cleaned.split("\n") if line.strip()]
+    if not lines:
+        return ""
+    return "\r\n".join(lines) + "\r\n"
