@@ -1406,7 +1406,22 @@
     ],
     "vote_average": 6.4
   },
-  "Valentines Special: The Before Trilogy": null,
+  "The Piano Teacher": {
+    "tmdb_id": 1791,
+    "tmdb_title": "The Piano Teacher",
+    "tmdb_original_title": "La Pianiste",
+    "overview": "Erika Kohut, a sexually repressed piano teacher living with her domineering mother, meets a young man who starts romantically pursuing her.",
+    "poster_path": "/gNHKYQnP1RnqEhkivHJzBPb4MOP.jpg",
+    "backdrop_path": "/tEhvOU8nJp4v9goYwrJTASJJD3C.jpg",
+    "release_date": "2001-09-05",
+    "director": "Michael Haneke",
+    "runtime": 131,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 7.3
+  },
   "Movie Church: Magnolia": {
     "tmdb_id": 334,
     "tmdb_title": "Magnolia",
@@ -1420,7 +1435,7 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 7.7
+    "vote_average": 7.732
   },
   "Private Chat + Womxn: Working": null,
   "DVD Menu Scream: Overboard": {
@@ -1474,24 +1489,56 @@
     ],
     "vote_average": 6.255
   },
-  "The Piano Teacher": {
-    "tmdb_id": 1791,
-    "tmdb_title": "The Piano Teacher",
-    "tmdb_original_title": "La Pianiste",
-    "overview": "Erika Kohut, a sexually repressed piano teacher living with her domineering mother, meets a young man who starts romantically pursuing her.",
-    "poster_path": "/gNHKYQnP1RnqEhkivHJzBPb4MOP.jpg",
-    "backdrop_path": "/tEhvOU8nJp4v9goYwrJTASJJD3C.jpg",
-    "release_date": "2001-09-05",
-    "director": "Michael Haneke",
-    "runtime": 131,
+  "I Saw the TV Glow": {
+    "tmdb_id": 858017,
+    "tmdb_title": "I Saw the TV Glow",
+    "tmdb_original_title": "I Saw the TV Glow",
+    "overview": "Teenager Owen is just trying to make it through life in the suburbs when his classmate Maddy introduces him to a mysterious TV show — a vision of a supernatural world beneath their own. In the pale glow of the television, Owen’s view of reality begins to crack.",
+    "poster_path": "/hS4GYkYpN1rfl4GIxyc02sCyfAj.jpg",
+    "backdrop_path": "/jKulL2hdp5S7dVbpoItAtdCyzXI.jpg",
+    "release_date": "2024-05-03",
+    "director": "Jane Schoenbrun",
+    "runtime": 100,
     "genres": [
+      "Horror",
+      "Drama"
+    ],
+    "vote_average": 6.102
+  },
+  "Moonstruck": {
+    "tmdb_id": 2039,
+    "tmdb_title": "Moonstruck",
+    "tmdb_original_title": "Moonstruck",
+    "overview": "37-year-old Italian-American widow Loretta Castorini believes she is unlucky in love, and so accepts a marriage proposal from her boyfriend Johnny, even though she doesn't love him. When she meets his estranged younger brother Ronny, an emotional and passionate man, she finds herself drawn to him. She tries to resist, but Ronny, who blames his brother for the loss of his hand, has no scruples about aggressively pursuing her while Johnny is out of the country. As Loretta falls for Ronny, she learns that she's not the only one in her family with a secret romance.",
+    "poster_path": "/2mnVWpvsHEHHnfvLn1NXYVvBGl5.jpg",
+    "backdrop_path": "/5RQ5SIcrtKeUYeYeJLRTljR8LcN.jpg",
+    "release_date": "1987-12-16",
+    "director": "Norman Jewison",
+    "runtime": 102,
+    "genres": [
+      "Comedy",
       "Drama",
       "Romance"
     ],
-    "vote_average": 7.3
+    "vote_average": 6.846
   },
-  "Little Amélie (PG) [Dubbed]": null,
-  "When Love Broke the Law": null,
+  "The Greasy Strangler": {
+    "tmdb_id": 320413,
+    "tmdb_title": "The Greasy Strangler",
+    "tmdb_original_title": "The Greasy Strangler",
+    "overview": "Ronnie runs a Disco walking tour with his son, Brayden. When a sexy woman takes the tour, it begins a competition between father and son for her love. It also signals the arrival of an oily strangler who stalks the streets at night.",
+    "poster_path": "/lsIJ8iTA2DK12SNTKf0vLKh1BGm.jpg",
+    "backdrop_path": "/flz1hSZTUl5wNs2i4nmcyX8Tg7n.jpg",
+    "release_date": "2016-06-03",
+    "director": "Jim Hosking",
+    "runtime": 93,
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Thriller"
+    ],
+    "vote_average": 5.585
+  },
   "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
     "tmdb_id": 494603,
     "tmdb_title": "The Highway Rat",
@@ -1512,8 +1559,24 @@
   },
   "Little Amélie (PG) [Subtitled]": null,
   "Royal Ballet/ Woolf Works (CTBA)": null,
+  "Little Amélie (PG) [Dubbed]": null,
   "We Are Parable presents: Wasteman + Murewa": null,
-  "Weekly Arthouse Screening": null,
+  "Like Asura": {
+    "tmdb_id": 110852,
+    "tmdb_title": "Like Asura",
+    "tmdb_original_title": "阿修羅のごとく",
+    "overview": "The four Takezawa sisters discover that their father has an illegitimate child so they hire a private detective to investigate.",
+    "poster_path": "/2VQHoHYBjv0vuxtdTIBehyhkhhw.jpg",
+    "backdrop_path": "/68mT9gJW55tJAjGOK4rymk9mFaO.jpg",
+    "release_date": "2003-11-08",
+    "director": "Yoshimitsu Morita",
+    "runtime": 135,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 6.5
+  },
   "Valentine’s Throwback: Pretty Woman": {
     "tmdb_id": 114,
     "tmdb_title": "Pretty Woman",
@@ -1549,10 +1612,10 @@
     "vote_average": 6.9
   },
   "National Theatre Live: The Audience": null,
+  "Weekly Arthouse Screening": null,
   "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
-  "The Royal Ballet: Woolf Works": null,
   "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
@@ -1570,6 +1633,7 @@
     "vote_average": 6.1
   },
   "National Theatre Live: Hamlet": null,
+  "The Royal Ballet: Woolf Works": null,
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
   "Romeo + Juliet 30th Anniversary": {
