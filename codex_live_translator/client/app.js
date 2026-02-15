@@ -1,5 +1,7 @@
 const MAX_CONTEXT_LINES = 4;
 const REALTIME_MODE = "realtime";
+const REALTIME_PREVIEW_MIN_INTERVAL_MS = 1500;
+const REALTIME_PREVIEW_MIN_CHARS = 18;
 
 const els = {
   projectName: document.getElementById("projectName"),
@@ -39,6 +41,10 @@ let rtcPeerConnection = null;
 let rtcDataChannel = null;
 let rtcPartialTranscript = "";
 let rtcLastEndedAtMs = 0;
+let rtcCurrentSegmentId = null;
+let rtcCurrentSegmentStartMs = 0;
+let rtcLastPreviewAtMs = 0;
+let rtcLastPreviewTranscript = "";
 let realtimeTextQueue = [];
 let realtimeTextQueueActive = false;
 
@@ -198,6 +204,7 @@ async function postTranslatedText({
   transcript,
   startedAtMs,
   endedAtMs,
+  isFinal,
 }) {
   const response = await fetch("/v1/text/translate", {
     method: "POST",
@@ -208,6 +215,7 @@ async function postTranslatedText({
       transcript_src: transcript,
       started_at_ms: startedAtMs,
       ended_at_ms: endedAtMs,
+      is_final: isFinal,
       prior_context_json: recentTranslations.slice(-MAX_CONTEXT_LINES),
       source_lang_hint: els.sourceLang.value.trim() || "auto",
       target_lang: els.targetLang.value.trim() || "en",
@@ -233,17 +241,23 @@ async function drainRealtimeTextQueue() {
     const next = realtimeTextQueue.shift();
     try {
       const translated = await postTranslatedText(next);
-
-      recentTranslations.push(translated.translation_en);
-      recentTranslations = recentTranslations.slice(-MAX_CONTEXT_LINES);
-
       els.liveCaption.textContent = translated.translation_en || "...";
-      addLogEntry({
-        startedAtMs: next.startedAtMs,
-        translation: translated.translation_en,
-        transcript: next.transcript,
-      });
-      setStatus(`Live realtime | translation latency ${translated.latency_ms}ms`);
+      if (next.isFinal) {
+        recentTranslations.push(translated.translation_en);
+        recentTranslations = recentTranslations.slice(-MAX_CONTEXT_LINES);
+        addLogEntry({
+          startedAtMs: next.startedAtMs,
+          translation: translated.translation_en,
+          transcript: next.transcript,
+        });
+        setStatus(
+          `Live realtime | final translation latency ${translated.latency_ms}ms`,
+        );
+      } else {
+        setStatus(
+          `Live realtime | rolling translation latency ${translated.latency_ms}ms`,
+        );
+      }
     } catch (translateError) {
       console.error(translateError);
       setStatus(`Realtime translate error: ${translateError.message}`);
@@ -353,6 +367,27 @@ function configureRtcDataChannel(dataChannel) {
         if (delta) {
           rtcPartialTranscript += delta;
           els.liveTranscript.textContent = rtcPartialTranscript;
+
+          const nowMs = relMs(Date.now());
+          const sinceLastPreview = nowMs - rtcLastPreviewAtMs;
+          const transcriptChanged = rtcPartialTranscript !== rtcLastPreviewTranscript;
+          if (
+            transcriptChanged &&
+            rtcPartialTranscript.trim().length >= REALTIME_PREVIEW_MIN_CHARS &&
+            sinceLastPreview >= REALTIME_PREVIEW_MIN_INTERVAL_MS &&
+            rtcCurrentSegmentId
+          ) {
+            rtcLastPreviewAtMs = nowMs;
+            rtcLastPreviewTranscript = rtcPartialTranscript;
+            realtimeTextQueue.push({
+              segmentId: rtcCurrentSegmentId,
+              transcript: rtcPartialTranscript,
+              startedAtMs: rtcCurrentSegmentStartMs,
+              endedAtMs: Math.max(nowMs, rtcCurrentSegmentStartMs + 1),
+              isFinal: false,
+            });
+            drainRealtimeTextQueue();
+          }
         }
         return;
       }
@@ -365,17 +400,25 @@ function configureRtcDataChannel(dataChannel) {
         }
 
         const endedAtMs = relMs(Date.now());
-        const startedAtMs = rtcLastEndedAtMs;
+        const startedAtMs = rtcCurrentSegmentStartMs;
         rtcLastEndedAtMs = endedAtMs;
 
         els.liveTranscript.textContent = finalText;
 
+        if (!rtcCurrentSegmentId) {
+          rtcCurrentSegmentId = makeSegmentId();
+        }
         realtimeTextQueue.push({
-          segmentId: makeSegmentId(),
+          segmentId: rtcCurrentSegmentId,
           transcript: finalText,
           startedAtMs: Math.max(0, startedAtMs),
           endedAtMs: Math.max(endedAtMs, startedAtMs + 1),
+          isFinal: true,
         });
+        rtcCurrentSegmentStartMs = endedAtMs;
+        rtcCurrentSegmentId = makeSegmentId();
+        rtcLastPreviewTranscript = "";
+        rtcLastPreviewAtMs = endedAtMs;
         drainRealtimeTextQueue();
         return;
       }
@@ -492,6 +535,10 @@ async function startRealtimeCapture() {
   });
 
   captureActive = true;
+  rtcCurrentSegmentStartMs = rtcLastEndedAtMs;
+  if (!rtcCurrentSegmentId) {
+    rtcCurrentSegmentId = makeSegmentId();
+  }
 }
 
 async function startAudioCapture(mode) {
@@ -613,6 +660,10 @@ async function startSession() {
     lastChunkEndedAtMs = 0;
     rtcLastEndedAtMs = 0;
     rtcPartialTranscript = "";
+    rtcCurrentSegmentId = null;
+    rtcCurrentSegmentStartMs = 0;
+    rtcLastPreviewAtMs = 0;
+    rtcLastPreviewTranscript = "";
     segmentCounter = 0;
     requestQueue = [];
     recentTranslations = [];

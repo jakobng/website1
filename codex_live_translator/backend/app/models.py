@@ -41,6 +41,7 @@ class TextTranslateRequest(BaseModel):
     transcript_src: str
     started_at_ms: int
     ended_at_ms: int
+    is_final: bool = Field(default=True)
     prior_context_json: list[str] = Field(default_factory=list)
     source_lang_hint: str = Field(default="auto")
     target_lang: str = Field(default="en")

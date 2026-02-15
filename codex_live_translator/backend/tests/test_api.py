@@ -76,12 +76,14 @@ def test_end_to_end_session(tmp_path, monkeypatch):
             "source_lang_hint": "ja",
             "target_lang": "en",
             "conversation_context": "street interview",
+            "is_final": False,
         },
     )
     assert text_translate_response.status_code == 200
     text_payload = text_translate_response.json()
     assert text_payload["segment_id"] == "seg-2"
     assert text_payload["translation_en"]
+    assert text_payload["is_final"] is False
 
     end_response = client.post("/v1/session/end", json={"session_id": session_id})
     assert end_response.status_code == 200

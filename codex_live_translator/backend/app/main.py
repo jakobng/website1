@@ -289,7 +289,7 @@ async def translate_text(request: TextTranslateRequest) -> SegmentProcessRespons
             translation_en=translation,
             confidence=0.7 if settings.provider.strip().lower() == "openai" else 0.25,
             latency_ms=latency_ms,
-            finalized=True,
+            finalized=request.is_final,
             created_at=utc_now(),
         )
     )
@@ -300,7 +300,7 @@ async def translate_text(request: TextTranslateRequest) -> SegmentProcessRespons
         translation_en=translation,
         confidence=0.7 if settings.provider.strip().lower() == "openai" else 0.25,
         latency_ms=latency_ms,
-        is_final=True,
+        is_final=request.is_final,
     )
 
 
