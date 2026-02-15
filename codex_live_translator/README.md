@@ -25,10 +25,9 @@ Real-time-ish field translation system for documentary/film shoots.
   - source language `Auto detect` by default (manual hint optional)
   - optional conversation context box (topic hints for better translation choices)
   - mode-based capture:
-    - `Realtime WebRTC (OpenAI)`: true low-latency live transcription path (finalized transcript lines translated via backend)
-    - `Lower Latency`: 5s chunks
-    - `Balanced`: 8s chunks
-    - `Higher Accuracy`: 12s chunks
+    - `Fast`: realtime WebRTC path (finalized transcript lines translated via backend)
+    - `Balanced`: 5s chunks
+    - `Accurate (with delay)`: 8s chunks
   - live translated caption
   - rolling session log
   - export buttons
@@ -131,7 +130,7 @@ FT_OPENAI_TRANSLATE_MODEL=gpt-4.1-mini
 
 If key is missing while `openai` is selected, app falls back to mock.
 
-Realtime WebRTC mode also requires `openai` provider with a valid key.
+Fast mode (Realtime WebRTC) also requires `openai` provider with a valid key.
 
 ## Audio hookup notes (Rode Wireless Pro)
 

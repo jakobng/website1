@@ -136,9 +136,6 @@ function chunkMsForMode(mode) {
   if (mode === "latency") {
     return 5000;
   }
-  if (mode === "accuracy") {
-    return 12000;
-  }
   return 8000;
 }
 
@@ -676,7 +673,7 @@ async function startSession() {
     setRunningState(true);
     setExportState(true);
     if (isRealtimeMode(activeMode)) {
-      setStatus(`Live session ${sessionId.slice(0, 8)}... realtime WebRTC`);
+      setStatus(`Live session ${sessionId.slice(0, 8)}... fast mode`);
     } else {
       setStatus(
         `Live session ${sessionId.slice(0, 8)}... chunk ${(currentChunkMs / 1000).toFixed(1)}s`,
