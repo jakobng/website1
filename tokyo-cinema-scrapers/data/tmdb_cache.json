@@ -19042,7 +19042,7 @@
     "tmdb_title_original": "夜勤事件",
     "tmdb_original_language": "ja",
     "overview": "その恐怖は、深夜のコンビニから始まる…実況動画は再生回数6,000万回以上！Z世代をざわつかせたホラーゲームが遂に実写映画化！",
-    "overview_en": "Tazuru is a college student working the night shift alone in a convenience store. The manager of the store, who has been missing for days, is found dead in the basement, with his eyes gouged out. Tazuru tells the police the creepy events that unfolded on the four previous nights: getting sent mysterious SD cards with disturbing videos on them, the door chime ringing with no reason, weird things on security camera, being visited by a weird old lady looking for her grandson and a creepy ghost boy. Inspector Sawatari is initially incredulous, but then similar events start happening to him too.",
+    "overview_en": "Tazuru is a college student working the night shift alone in a convenience store. The manager of the store, who has been missing for days, is found dead in the basement, with his eyes gouged out. Tazuru tells the police the creepy events that unfolded on the four previous nights: getting sent mysterious SD cards with disturbing videos on them, the door chime ringing with no reason, weird things on security camera, being visited by a weird old lady looking for her grandson, and a creepy ghost boy. Inspector Sawatari is initially incredulous, but then similar events start happening to him too.",
     "poster_path": "/7wL8GlTbd9FjuBauIBUMiqfPkEo.jpg",
     "backdrop_path": "/fPRfRAPM26KUFE1IKM0d3cywNWN.jpg",
     "release_date": "2026-02-20",
@@ -55184,6 +55184,472 @@
       {
         "iso_3166_1": "JP",
         "name": "Japan"
+      }
+    ]
+  },
+  "超かぐや姫！": {
+    "tmdb_id": 1575337,
+    "tmdb_title_jp": "超かぐや姫！",
+    "tmdb_title_en": "Cosmic Princess Kaguya!",
+    "tmdb_title_original": "超かぐや姫！",
+    "tmdb_original_language": "ja",
+    "overview": "月から逃げてきた自由奔放な少女・かぐやと暮らすことになった彩葉は、かぐやにねだられ、共に仮想空間でライバー活動を始める。だがかぐやには、地球に長く居られない理由が...。",
+    "overview_en": "Iroha's life gets knocked off its orbit when Kaguya, a carefree runaway from the Moon, moves in and convinces her to perform in a virtual world together.",
+    "poster_path": "/9tkMo2GNrtuzggwNF4MzixXw3B1.jpg",
+    "backdrop_path": "/1jdPUUSy37Wzw3xuc8otI86X2gv.jpg",
+    "release_date": "2026-01-22",
+    "director": "山下清悟",
+    "director_jp": "山下清悟",
+    "director_en": "Shingo Yamashita",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "音楽",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Music",
+      "Science Fiction"
+    ],
+    "runtime": 143,
+    "vote_average": 8.255,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1575337": {
+    "tmdb_id": 1575337,
+    "tmdb_title_jp": "超かぐや姫！",
+    "tmdb_title_en": "Cosmic Princess Kaguya!",
+    "tmdb_title_original": "超かぐや姫！",
+    "tmdb_original_language": "ja",
+    "overview": "月から逃げてきた自由奔放な少女・かぐやと暮らすことになった彩葉は、かぐやにねだられ、共に仮想空間でライバー活動を始める。だがかぐやには、地球に長く居られない理由が...。",
+    "overview_en": "Iroha's life gets knocked off its orbit when Kaguya, a carefree runaway from the Moon, moves in and convinces her to perform in a virtual world together.",
+    "poster_path": "/9tkMo2GNrtuzggwNF4MzixXw3B1.jpg",
+    "backdrop_path": "/1jdPUUSy37Wzw3xuc8otI86X2gv.jpg",
+    "release_date": "2026-01-22",
+    "director": "山下清悟",
+    "director_jp": "山下清悟",
+    "director_en": "Shingo Yamashita",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "音楽",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Music",
+      "Science Fiction"
+    ],
+    "runtime": 143,
+    "vote_average": 8.255,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "おさるのベン": {
+    "tmdb_id": 1315303,
+    "tmdb_title_jp": "おさるのベン",
+    "tmdb_title_en": "Primate",
+    "tmdb_title_original": "Primate",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Lucy, a college student, along with her friends, spend their vacation at her family's home in Hawaii, which includes her pet chimpanzee, Ben. However, when Ben contracts rabies after being bitten by a rabid animal, the group must fight for their lives in order to avoid the now-violent chimp.",
+    "poster_path": "/57cyAMc9c8iveudogTRuDOQjujn.jpg",
+    "backdrop_path": "/9uakM2woks0JV8HKIc4oatIVS88.jpg",
+    "release_date": "2026-01-01",
+    "director": "Johannes Roberts",
+    "director_jp": "Johannes Roberts",
+    "director_en": "Johannes Roberts",
+    "genres": [
+      "ホラー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 89,
+    "vote_average": 6.646,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1315303": {
+    "tmdb_id": 1315303,
+    "tmdb_title_jp": "おさるのベン",
+    "tmdb_title_en": "Primate",
+    "tmdb_title_original": "Primate",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Lucy, a college student, along with her friends, spend their vacation at her family's home in Hawaii, which includes her pet chimpanzee, Ben. However, when Ben contracts rabies after being bitten by a rabid animal, the group must fight for their lives in order to avoid the now-violent chimp.",
+    "poster_path": "/57cyAMc9c8iveudogTRuDOQjujn.jpg",
+    "backdrop_path": "/9uakM2woks0JV8HKIc4oatIVS88.jpg",
+    "release_date": "2026-01-01",
+    "director": "Johannes Roberts",
+    "director_jp": "Johannes Roberts",
+    "director_en": "Johannes Roberts",
+    "genres": [
+      "ホラー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 89,
+    "vote_average": 6.646,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "226": {
+    "tmdb_id": 202826,
+    "tmdb_title_jp": "226",
+    "tmdb_title_en": "Four Days of Snow and Blood",
+    "tmdb_title_original": "226",
+    "tmdb_original_language": "ja",
+    "overview": "国際連盟を脱退し国際的に孤立していた日本は、国内でも政治不安、恐慌や経済不況が蔓延し国民の不満が高まっていた。  こうした状況を憂い憤っていた一部の帝国陸軍青年将校達はひそかに企てていた現政権を取り巻く元老、重臣を粛清し天皇陛下中心の国政を実現すべく昭和維新を実現すべく昭和８年2月２１日ついにそれぞれの部隊を巻き込んで決起するが、国民を正義に導くはずの彼らの行動は次第にその思惑とはかけ離れた方向に陥っていく。",
+    "overview_en": "Based on the \"2.26 Incident\", an attempted coup d'état in Japan 1936, launched by radical ultra-nationalist parts of the military. Several leading politicians were killed and the center of Tokyo was briefly held by the insurgents before the coup was suppressed.",
+    "poster_path": "/xwAZfA8S2yFiilYfkcIrY5LOYz0.jpg",
+    "backdrop_path": "/9QklJrambyFNgbu7PZ0sJqJXHJG.jpg",
+    "release_date": "1989-06-17",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "ドラマ",
+      "戦争",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "War",
+      "History"
+    ],
+    "runtime": 113,
+    "vote_average": 6.75,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "死霊魂 第一部": null,
+  "死霊魂 第二部": null,
+  "死霊魂 第三部": null,
+  "青春 -春-(第1部)": {
+    "tmdb_id": 493514,
+    "tmdb_title_jp": "青春（春）",
+    "tmdb_title_en": "Youth (Spring)",
+    "tmdb_title_original": "青春（春）",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "This film was shot between 2014 and 2019 in the town of Zhili, a district of Huzhou City in Zhejiang province, China. Zhili is home to over 18,000 privately-run workshops producing children's clothes, mostly for the domestic market, but some also for export. The workshops employ around 300,000 migrant workers, chiefly from the rural provinces of Yunnan, Guizhou, Anhui, Jiangxi, Henan and Jiangsu.",
+    "poster_path": "/fhy4fPF6jrrzm04rA9qwynhBUhv.jpg",
+    "backdrop_path": "/rRY1FokbN4NP3JDeIDfb9Xy06wG.jpg",
+    "release_date": "2023-11-10",
+    "director": "王兵",
+    "director_jp": "王兵",
+    "director_en": "Wang Bing",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 212,
+    "vote_average": 6.818,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "青春 -苦-(第2部)": {
+    "tmdb_id": 1315054,
+    "tmdb_title_jp": "青春（苦）",
+    "tmdb_title_en": "Youth (Hard Times)",
+    "tmdb_title_original": "青春（苦）",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "In this enveloping second part of the Youth trilogy, shot between 2015 and 2019, Wang Bing deepens his vérité portrait of a generation struggling to survive on meager wages amidst a nation’s economic expansion, emphasizing the distrustful, increasingly combative relationship between workers and management.",
+    "poster_path": "/ig7OqdUVOzBLqm3mHp2RNIpEb0P.jpg",
+    "backdrop_path": "/eSCCCcg9VUi9BGzSVa9YL9aiw1Z.jpg",
+    "release_date": "2025-04-02",
+    "director": "王兵",
+    "director_jp": "王兵",
+    "director_en": "Wang Bing",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 227,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "青春 -帰-(第3部)": {
+    "tmdb_id": 1319196,
+    "tmdb_title_jp": "青春（归）",
+    "tmdb_title_en": "Youth (Homecoming)",
+    "tmdb_title_original": "青春（归）",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "Wang Bing concludes his monumental Youth trilogy in expansive fashion, giving ever wider scope to the lives of migrant workers in Zhili’s textile factories as they plan to go to their remote hometowns to visit their families and celebrate the festivities for New Year’s break.",
+    "poster_path": "/fy4FZhP4NV4Mmm9G3MfeZ0Pcjmc.jpg",
+    "backdrop_path": "/51sG6tWY3NdZArCc55HLs2ebVWA.jpg",
+    "release_date": "2025-07-09",
+    "director": "王兵",
+    "director_jp": "王兵",
+    "director_en": "Wang Bing",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 152,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "夜勤事件": {
+    "tmdb_id": 1567203,
+    "tmdb_title_jp": "夜勤事件",
+    "tmdb_title_en": "The Convenience Store",
+    "tmdb_title_original": "夜勤事件",
+    "tmdb_original_language": "ja",
+    "overview": "その恐怖は、深夜のコンビニから始まる…実況動画は再生回数6,000万回以上！Z世代をざわつかせたホラーゲームが遂に実写映画化！",
+    "overview_en": "Tazuru is a college student working the night shift alone in a convenience store. The manager of the store, who has been missing for days, is found dead in the basement, with his eyes gouged out. Tazuru tells the police the creepy events that unfolded on the four previous nights: getting sent mysterious SD cards with disturbing videos on them, the door chime ringing with no reason, weird things on security camera, being visited by a weird old lady looking for her grandson, and a creepy ghost boy. Inspector Sawatari is initially incredulous, but then similar events start happening to him too.",
+    "poster_path": "/7wL8GlTbd9FjuBauIBUMiqfPkEo.jpg",
+    "backdrop_path": "/fPRfRAPM26KUFE1IKM0d3cywNWN.jpg",
+    "release_date": "2026-02-20",
+    "director": "永江二朗",
+    "director_jp": "永江二朗",
+    "director_en": "Jirô Nagae",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 83,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "CatVideoFest（キャットビデオフェスト）": null,
+  "ハピクキ＆ミガーン アクション短編映画 応援イベント": null,
+  "鮫肌男と桃尻女": {
+    "tmdb_id": 36867,
+    "tmdb_title_jp": "鮫肌男と桃尻女",
+    "tmdb_title_en": "Shark Skin Man and Peach Hip Girl",
+    "tmdb_title_original": "鮫肌男と桃尻女",
+    "tmdb_original_language": "ja",
+    "overview": "叔父が経営するホテルで働くトシコは、ある日ホテルから逃げだす。その道中、組の金を横領した鮫肌と出会い、共に逃亡することに。ふたりは組織の幹部・田抜やトシコの叔父に雇われた殺し屋・山田たちから追われる中で、やがて互いに引かれ合うが…。",
+    "overview_en": "In dreamlike mountain scenery, Toshiko makes a daring escape from her sexually warped Uncle Sonezaki. Fortunately, she met Samehada as she runs for her life, which is also escaping from some slayers. What follows is a wild chase that leads the audience into a comically violent world.",
+    "poster_path": "/t8nFRql6y9TcHJ6ijCr24EEvpy5.jpg",
+    "backdrop_path": "/zaydFrMVU5mn3ajBc3VwbNasYAG.jpg",
+    "release_date": "1999-02-06",
+    "director": "石井克人",
+    "director_jp": "石井克人",
+    "director_en": "Katsuhito Ishii",
+    "genres": [
+      "犯罪",
+      "コメディ",
+      "スリラー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Comedy",
+      "Thriller",
+      "Action"
+    ],
+    "runtime": 108,
+    "vote_average": 6.833,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:36867": {
+    "tmdb_id": 36867,
+    "tmdb_title_jp": "鮫肌男と桃尻女",
+    "tmdb_title_en": "Shark Skin Man and Peach Hip Girl",
+    "tmdb_title_original": "鮫肌男と桃尻女",
+    "tmdb_original_language": "ja",
+    "overview": "叔父が経営するホテルで働くトシコは、ある日ホテルから逃げだす。その道中、組の金を横領した鮫肌と出会い、共に逃亡することに。ふたりは組織の幹部・田抜やトシコの叔父に雇われた殺し屋・山田たちから追われる中で、やがて互いに引かれ合うが…。",
+    "overview_en": "In dreamlike mountain scenery, Toshiko makes a daring escape from her sexually warped Uncle Sonezaki. Fortunately, she met Samehada as she runs for her life, which is also escaping from some slayers. What follows is a wild chase that leads the audience into a comically violent world.",
+    "poster_path": "/t8nFRql6y9TcHJ6ijCr24EEvpy5.jpg",
+    "backdrop_path": "/zaydFrMVU5mn3ajBc3VwbNasYAG.jpg",
+    "release_date": "1999-02-06",
+    "director": "石井克人",
+    "director_jp": "石井克人",
+    "director_en": "Katsuhito Ishii",
+    "genres": [
+      "犯罪",
+      "コメディ",
+      "スリラー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Comedy",
+      "Thriller",
+      "Action"
+    ],
+    "runtime": 108,
+    "vote_average": 6.833,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:202826": {
+    "tmdb_id": 202826,
+    "tmdb_title_jp": "226",
+    "tmdb_title_en": "Four Days of Snow and Blood",
+    "tmdb_title_original": "226",
+    "tmdb_original_language": "ja",
+    "overview": "国際連盟を脱退し国際的に孤立していた日本は、国内でも政治不安、恐慌や経済不況が蔓延し国民の不満が高まっていた。  こうした状況を憂い憤っていた一部の帝国陸軍青年将校達はひそかに企てていた現政権を取り巻く元老、重臣を粛清し天皇陛下中心の国政を実現すべく昭和維新を実現すべく昭和８年2月２１日ついにそれぞれの部隊を巻き込んで決起するが、国民を正義に導くはずの彼らの行動は次第にその思惑とはかけ離れた方向に陥っていく。",
+    "overview_en": "Based on the \"2.26 Incident\", an attempted coup d'état in Japan 1936, launched by radical ultra-nationalist parts of the military. Several leading politicians were killed and the center of Tokyo was briefly held by the insurgents before the coup was suppressed.",
+    "poster_path": "/xwAZfA8S2yFiilYfkcIrY5LOYz0.jpg",
+    "backdrop_path": "/9QklJrambyFNgbu7PZ0sJqJXHJG.jpg",
+    "release_date": "1989-06-17",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "ドラマ",
+      "戦争",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "War",
+      "History"
+    ],
+    "runtime": 113,
+    "vote_average": 6.75,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:493514": {
+    "tmdb_id": 493514,
+    "tmdb_title_jp": "青春（春）",
+    "tmdb_title_en": "Youth (Spring)",
+    "tmdb_title_original": "青春（春）",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "This film was shot between 2014 and 2019 in the town of Zhili, a district of Huzhou City in Zhejiang province, China. Zhili is home to over 18,000 privately-run workshops producing children's clothes, mostly for the domestic market, but some also for export. The workshops employ around 300,000 migrant workers, chiefly from the rural provinces of Yunnan, Guizhou, Anhui, Jiangxi, Henan and Jiangsu.",
+    "poster_path": "/fhy4fPF6jrrzm04rA9qwynhBUhv.jpg",
+    "backdrop_path": "/rRY1FokbN4NP3JDeIDfb9Xy06wG.jpg",
+    "release_date": "2023-11-10",
+    "director": "王兵",
+    "director_jp": "王兵",
+    "director_en": "Wang Bing",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 212,
+    "vote_average": 6.818,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
       }
     ]
   }

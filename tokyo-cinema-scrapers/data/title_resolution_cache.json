@@ -5594,5 +5594,78 @@
     "director": "Azusa Nakajima",
     "country": "Japan",
     "failed": true
+  },
+  "226": {
+    "english_title": "Four Days of Snow and Blood",
+    "release_year": 1989,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "226",
+    "director": "Hideo Gosha",
+    "country": "Japan"
+  },
+  "死霊魂 第一部": {
+    "english_title": "Dead Souls",
+    "release_year": 2018,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "死霊魂",
+    "director": "Wang Bing",
+    "country": "France, Switzerland",
+    "failed": true
+  },
+  "死霊魂 第二部": {
+    "english_title": "Dead Souls",
+    "release_year": 2018,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "死霊魂",
+    "director": "Wang Bing",
+    "country": "France, Switzerland",
+    "failed": true
+  },
+  "死霊魂 第三部": {
+    "english_title": "Dead Souls",
+    "release_year": 2018,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "死霊魂 第三部",
+    "director": "Wang Bing",
+    "country": "France",
+    "failed": true
+  },
+  "青春 -春-(第1部)": {
+    "english_title": "Youth (Spring)",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "青春 (春)",
+    "director": "Wang Bing",
+    "country": "France, Luxembourg, Netherlands"
+  },
+  "青春 -苦-(第2部)": {
+    "english_title": "Youth (Hard Times)",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "青春：苦",
+    "director": "Wang Bing",
+    "country": "China"
+  },
+  "青春 -帰-(第3部)": {
+    "english_title": "Youth (Homecoming)",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "青春 (归)",
+    "director": "Wang Bing",
+    "country": "France, Luxembourg, Netherlands"
+  },
+  "ハピクキ＆ミガーン アクション短編映画 応援イベント": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
