@@ -12190,21 +12190,6 @@
     ],
     "vote_average": 6.471
   },
-  "Possession": {
-    "tmdb_id": 21484,
-    "tmdb_title": "Possession",
-    "tmdb_original_title": "Possession",
-    "overview": "A young woman left her family for an unspecified reason. The husband determines to find out the truth and starts following his wife. At first, he suspects that a man is involved. But gradually, he finds out more and more strange behaviors and bizarre incidents that indicate something more than a possessed love affair.",
-    "poster_path": "/lUFZsUuJ0YyhBXH8D2BFUd6wODm.jpg",
-    "backdrop_path": "/dHvNDVe4gdyp3QxAzX5yaWnoaEB.jpg",
-    "release_date": "1981-05-27",
-    "director": "Andrzej Żuławski",
-    "runtime": 124,
-    "genres": [
-      "Horror"
-    ],
-    "vote_average": 7.334
-  },
   "The Presidents Cake": {
     "tmdb_id": 1464883,
     "tmdb_title": "The President's Cake",
@@ -16419,6 +16404,203 @@
     ],
     "vote_average": 0.0
   },
+  "Queer East presents Miracle on Jongno Street": {
+    "tmdb_id": 108357,
+    "tmdb_title": "Miracle on Jongno Street",
+    "tmdb_original_title": "종로의 기적",
+    "overview": "A story about 4 gay men who try to lead a normal life in Korea, the conservative and harsh country for LGBT in Asia. In the middle of making a queer film Jun-moon, a director, loses his self-confidence due to social scrutiny regarding his sexual orientation. Byung-gwon, a gay rights activist, has been participating in movements to establish equal rights for homosexual laborers. Young-soo, a chef who moved from the countryside 15 years ago, lived a lonely life but he finds happiness after joining a gay choir. Yol, who works for a major company, dreams of the day him and his partner, can have a legal wedding with overcoming the prejudice against people living with HIV/AIDS.",
+    "poster_path": "/3aXneppSKAcs5HAkZUJqzrYK3di.jpg",
+    "backdrop_path": "/qIyH3A96VDUUunVK3pbyW0w1RJM.jpg",
+    "release_date": "2011-06-02",
+    "director": "Lee Hyuk-sang",
+    "runtime": 119,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 6.0
+  },
+  "The Lion King (1994)": {
+    "tmdb_id": 8587,
+    "tmdb_title": "The Lion King",
+    "tmdb_original_title": "The Lion King",
+    "overview": "Young lion prince Simba, eager to one day become king of the Pride Lands, grows up under the watchful eye of his father Mufasa; all the while his villainous uncle Scar conspires to take the throne for himself. Amid betrayal and tragedy, Simba must confront his past and find his rightful place in the Circle of Life.",
+    "poster_path": "/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
+    "backdrop_path": "/q00H8EqULYSK74lgevMkhmGGLHn.jpg",
+    "release_date": "1994-06-15",
+    "director": "Roger Allers",
+    "runtime": 89,
+    "genres": [
+      "Family",
+      "Animation",
+      "Drama",
+      "Adventure"
+    ],
+    "vote_average": 8.255
+  },
+  "Nina & The Hedgehog’s Secret": {
+    "tmdb_id": 588524,
+    "tmdb_title": "Nina and the Hedgehog's Secret",
+    "tmdb_original_title": "Nina et le secret du hérisson",
+    "overview": "The world of 10-year old Nina has been in turmoil since her father lost his job. Despite weeks of strike, his factory closed down. The manager had tampered with the accounts and precipitated its collapse. But rumour has it that a nest-egg remains hidden somewhere in the factory. Nina and her friend Mehdi spring into action to help Nina’s dad out. This tale of our times, which is also a coming-of-age story, stages the interaction between the concerns of children and those of adults.",
+    "poster_path": "/pTcu3kpwwDaqps600BECW3g16hw.jpg",
+    "backdrop_path": "/9hnBjEMtKWRDkRmUrCG7igRQQpk.jpg",
+    "release_date": "2023-10-11",
+    "director": "Alain Gagnol",
+    "runtime": 82,
+    "genres": [
+      "Animation",
+      "Family"
+    ],
+    "vote_average": 7.1
+  },
+  "Once Upon a Time in the West": {
+    "tmdb_id": 335,
+    "tmdb_title": "Once Upon a Time in the West",
+    "tmdb_original_title": "C'era una volta il West",
+    "overview": "As the railroad builders advance unstoppably through the Arizona desert on their way to the sea, Jill arrives in the small town of Flagstone with the intention of starting a new life.",
+    "poster_path": "/qbYgqOczabWNn2XKwgMtVrntD6P.jpg",
+    "backdrop_path": "/aKZ9hDmLJTaGSxWdhxqMTcvXmk4.jpg",
+    "release_date": "1968-12-21",
+    "director": "Sergio Leone",
+    "runtime": 166,
+    "genres": [
+      "Drama",
+      "Western"
+    ],
+    "vote_average": 8.28
+  },
+  "Hamnet (12A)": {
+    "tmdb_id": 858024,
+    "tmdb_title": "Hamnet",
+    "tmdb_original_title": "Hamnet",
+    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
+    "poster_path": "/vbeyOZm2bvBXcbgPD3v6o94epPX.jpg",
+    "backdrop_path": "/73BClq9FOcrWrutnpiqhCNEWEwJ.jpg",
+    "release_date": "2025-11-26",
+    "director": "Chloé Zhao",
+    "runtime": 126,
+    "genres": [
+      "Drama",
+      "Romance",
+      "History"
+    ],
+    "vote_average": 7.754
+  },
+  "Dog-Friendly: Twinless": {
+    "tmdb_id": 1245347,
+    "tmdb_title": "Twinless",
+    "tmdb_original_title": "Twinless",
+    "overview": "Two men who lost their respective twin brothers develop a growing friendship after meeting in a support group. However, both harbor long-hidden secrets that threaten to tear them apart.",
+    "poster_path": "/9vaw9Az5tPLMjNLj426KgKsp0k8.jpg",
+    "backdrop_path": "/fnvTC96lA7pf8ZlMKI2FgBZ86AP.jpg",
+    "release_date": "2025-09-04",
+    "director": "James Sweeney",
+    "runtime": 100,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.307
+  },
+  "100 Nights of Hero + A Friend of Dorothy": {
+    "tmdb_id": 1354518,
+    "tmdb_title": "100 Nights of Hero",
+    "tmdb_original_title": "100 Nights of Hero",
+    "overview": "When a charming house guest arrives at a remote castle, the delicate dynamic between a neglectful husband, his innocent bride Cherry and their devoted maid Hero is thrown into chaos.",
+    "poster_path": "/7OYSJJFU2E9iBGPfU9C9PM56APM.jpg",
+    "backdrop_path": "/skmFqH67nh8zJacf7WcR204Kgvl.jpg",
+    "release_date": "2025-12-05",
+    "director": "Julia Jackman",
+    "runtime": 91,
+    "genres": [
+      "Fantasy",
+      "Romance"
+    ],
+    "vote_average": 5.6
+  },
+  "UK Premiere of 4K Restoration: The Garden of Eden": {
+    "tmdb_id": 112358,
+    "tmdb_title": "The Garden of Eden",
+    "tmdb_original_title": "The Garden of Eden",
+    "overview": "Toni Le Brun, a beautiful Viennese singer, becomes the ward of the wardrobe mistress of a Monte Carlo nightclub. Her benefactor, however, is actually a baroness incognito. Toni falls in love with the handsome Richard, but as they prepare to marry, she comes to believe he is only after the wealth accompanying her new noble status. But truth, like true love, will not be kept secret long.",
+    "poster_path": "/w0E0LfiWvPhocdmg9Y3f8oj8dl2.jpg",
+    "backdrop_path": "/8GsfV6HR9IXk0lMa0ZZUR9Jx6AY.jpg",
+    "release_date": "1928-02-04",
+    "director": "Lewis Milestone",
+    "runtime": 76,
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 5.6
+  },
+  "Black Girl + Jemima + Johnny": {
+    "tmdb_id": 95597,
+    "tmdb_title": "Black Girl",
+    "tmdb_original_title": "La Noire de...",
+    "overview": "Eager to find a better life abroad, a Senegalese woman becomes a mere governess to a family in southern France, suffering from discrimination and marginalization.",
+    "poster_path": "/hYYAk9I9KkscSr8DC30KyDjzsVu.jpg",
+    "backdrop_path": "/3NcTGBFQnGpUUvfloymFiTaejZA.jpg",
+    "release_date": "1966-03-17",
+    "director": "Ousmane Sembène",
+    "runtime": 65,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.242
+  },
+  "Sonic The Hedgehog 3": {
+    "tmdb_id": 939243,
+    "tmdb_title": "Sonic the Hedgehog 3",
+    "tmdb_original_title": "Sonic the Hedgehog 3",
+    "overview": "Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before. With their abilities outmatched in every way, Team Sonic must seek out an unlikely alliance in hopes of stopping Shadow and protecting the planet.",
+    "poster_path": "/d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    "backdrop_path": "/noPEm6Vu9Lm6QUdTGLOyRgk4M6s.jpg",
+    "release_date": "2024-12-19",
+    "director": "Jeff Fowler",
+    "runtime": 110,
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Comedy",
+      "Family"
+    ],
+    "vote_average": 7.627
+  },
+  "Relaxed Screening: Labyrinth (40th Anniversary)": {
+    "tmdb_id": 13597,
+    "tmdb_title": "Labyrinth",
+    "tmdb_original_title": "Labyrinth",
+    "overview": "Frustrated with babysitting on yet another weekend night, Sarah, a teenager with an active imagination, summons the Goblins to take her baby stepbrother away. When little Toby actually disappears, Sarah must follow him into a fantastical world to rescue him from the Goblin King. Guarding his castle is the labyrinth itself, a twisted maze of deception, populated with outrageous characters and unknown dangers.",
+    "poster_path": "/hbSdA1DmNA9IlfVoqJkIWYF2oYm.jpg",
+    "backdrop_path": "/92tb8mgjgL1S2KwrZezyPHPkQ3R.jpg",
+    "release_date": "1986-06-27",
+    "director": "Jim Henson",
+    "runtime": 101,
+    "genres": [
+      "Adventure",
+      "Family",
+      "Fantasy"
+    ],
+    "vote_average": 7.3
+  },
+  "Drink & Dine: It's Never Over, Jeff Buckley + Grace Listening Party": {
+    "tmdb_id": 1400381,
+    "tmdb_title": "It's Never Over, Jeff Buckley",
+    "tmdb_original_title": "It's Never Over, Jeff Buckley",
+    "overview": "Rising musician Jeff Buckley had only released one album when he died suddenly in 1997. Now, never-before-seen footage, exclusive voice messages, and accounts from those closest to him offer a portrait of the captivating singer.",
+    "poster_path": "/rrKe8bC6UKFKvfZHvbwA9Bq5hkR.jpg",
+    "backdrop_path": "/qfx7A90iIKMUc4VhIRZhNzU6iTY.jpg",
+    "release_date": "2025-08-08",
+    "director": "Amy J. Berg",
+    "runtime": 106,
+    "genres": [
+      "Documentary",
+      "Music"
+    ],
+    "vote_average": 7.9
+  },
   "Cine-Real presents: When Harry Met Sally": {
     "tmdb_id": 639,
     "tmdb_title": "When Harry Met Sally...",
@@ -16450,7 +16632,7 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 8.1
+    "vote_average": 8.143
   },
   "Power Station + director Q&A": {
     "tmdb_id": 1480450,
@@ -16482,11 +16664,57 @@
       "Thriller",
       "Crime"
     ],
-    "vote_average": 7.206
+    "vote_average": 7.2
   },
   "Pitchblack Playback: J Dilla 'Donuts' (20th Anniversary)": null,
   "Members Only: Friendship Collage Workshop": null,
-  "Notting Hill": null,
+  "Looney Tunes: The Day The World Blew Up": null,
+  "Zootropolis 2": {
+    "tmdb_id": 1084242,
+    "tmdb_title": "Zootopia 2",
+    "tmdb_original_title": "Zootopia 2",
+    "overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
+    "poster_path": "/oJ7g2CifqpStmoYQyaLQgEU32qO.jpg",
+    "backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
+    "release_date": "2025-11-26",
+    "director": "Jared Bush",
+    "runtime": 108,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Adventure",
+      "Family",
+      "Mystery"
+    ],
+    "vote_average": 7.611
+  },
+  "Delicatessen Presented by The Cult Classic Collective": null,
+  "The Miraculous Transformation of the Working Class Into Foreigners - I'm Migrant Film Festival": null,
+  "RuPaul's Drag Race: UK vs. the World Series 3.": null,
+  "Bar Trash 200: PLAN 9 FROM OUTER SPACE (1958)": {
+    "tmdb_id": 10513,
+    "tmdb_title": "Plan 9 from Outer Space",
+    "tmdb_original_title": "Plan 9 from Outer Space",
+    "overview": "In California, an old man grieves the loss of his wife, and dies the day after she is buried. However, the space soldier Eros and his mate Tanna use an electric device to resurrect them both, alongside the strong Inspector Clay, who was murdered by the alien-controlled dead couple. When the populations of Hollywood and Washington DC see flying saucers on the sky, a colonel, a police lieutenant, a commercial pilot, his wife and a policeman try to stop the aliens.",
+    "poster_path": "/bmicZi7PvlnZ9rZqp6QXN2Db0pT.jpg",
+    "backdrop_path": "/9pHCAT1ScILdkhY8ErfOma8W4kB.jpg",
+    "release_date": "1957-03-15",
+    "director": "Edward D. Wood Jr.",
+    "runtime": 79,
+    "genres": [
+      "Science Fiction",
+      "Horror"
+    ],
+    "vote_average": 4.203
+  },
+  "Sumud / Life endures: Three Stories from Palestine - I'm Migrant Film Festival": null,
+  "Some Like it Swing": null,
+  "Six Nations": null,
+  "Fractured Horizons: Three stories of migration and the desire for refuge - I'm Migrant Film Festival": null,
+  "Home Truths: Shorts exploring relationships and private lives - I'm Migrant Film Festival": null,
+  "Bar Trash: SCARECROW IN A GARDEN OF CUCUMBERS (1972) with Avery McNeilly": null,
+  "Wuthering Heights: Screening + Book Club Presented by Girls in Film and It's Hardback Out Here": null,
+  "Im Migrant: Koutaiba al Janabi and Nabeel Yasin - I'm Migrant Film Festival": null,
   "Electric Scream!: Wuthering Heights": null,
   "Little Amélie - dubbed": null,
   "Diosa (Goddess) + Q&A": {
@@ -16541,29 +16769,124 @@
     "vote_average": 6.25
   },
   "The London International Animation Festival presents Wonderful Animated Shorts for 3 -12 year-olds": null,
-  "Queer East presents Miracle on Jongno Street": {
-    "tmdb_id": 108357,
-    "tmdb_title": "Miracle on Jongno Street",
-    "tmdb_original_title": "종로의 기적",
-    "overview": "A story about 4 gay men who try to lead a normal life in Korea, the conservative and harsh country for LGBT in Asia. In the middle of making a queer film Jun-moon, a director, loses his self-confidence due to social scrutiny regarding his sexual orientation. Byung-gwon, a gay rights activist, has been participating in movements to establish equal rights for homosexual laborers. Young-soo, a chef who moved from the countryside 15 years ago, lived a lonely life but he finds happiness after joining a gay choir. Yol, who works for a major company, dreams of the day him and his partner, can have a legal wedding with overcoming the prejudice against people living with HIV/AIDS.",
-    "poster_path": "/3aXneppSKAcs5HAkZUJqzrYK3di.jpg",
-    "backdrop_path": "/qIyH3A96VDUUunVK3pbyW0w1RJM.jpg",
-    "release_date": "2011-06-02",
-    "director": "Lee Hyuk-sang",
-    "runtime": 119,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 6.0
-  },
   "Members' sake & cheese tasting": null,
   "Video Bazaar presents He Who Gets Slapped w/ Live Score": null,
+  "Resurrection + Q&A": {
+    "tmdb_id": 878608,
+    "tmdb_title": "Resurrection",
+    "tmdb_original_title": "狂野时代",
+    "overview": "In a future where humanity has surrendered its ability to dream in exchange for immortality, an outcast finds illusion, nightmarish visions, and beauty in an intoxicating world of his own making.",
+    "poster_path": "/wBXvXc7CoE1TCEL96VzMkMQKYG9.jpg",
+    "backdrop_path": "/2JcKTEP0L6EXk88ITGVGU4uo7hm.jpg",
+    "release_date": "2025-11-22",
+    "director": "Bi Gan",
+    "runtime": 160,
+    "genres": [
+      "Drama",
+      "Science Fiction",
+      "Fantasy"
+    ],
+    "vote_average": 6.8
+  },
+  "Photosensitive": {
+    "tmdb_id": 1385185,
+    "tmdb_title": "Photosensitive",
+    "tmdb_original_title": "Światłoczuła",
+    "overview": "Agata is a self-fulfilled woman who loves life. She is visually impaired. Robert is an acclaimed photographer. He has everything, yet feels as though he has nothing. Their meeting will change everything. Together, they will face their past and their own limitations, discovering that true love is born from acceptance and the courage to be yourself.",
+    "poster_path": "/lxhU2f0W8GG0mNZ1BiAGhZX7k5z.jpg",
+    "backdrop_path": "/uWSW7HWZEbPAl17ZkPnnzPSDmz6.jpg",
+    "release_date": "2025-01-24",
+    "director": "Tadeusz Śliwa",
+    "runtime": 92,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "vote_average": 7.0
+  },
+  "Anniversary": {
+    "tmdb_id": 1126336,
+    "tmdb_title": "Anniversary",
+    "tmdb_original_title": "Anniversary",
+    "overview": "When Ellen and Paul’s son introduces his new girlfriend one lovely afternoon at their 25th anniversary party, no one suspects that it is the beginning of the end for this happy family. The new girlfriend is Liz, Ellen’s former student, who left the university, some years before, after Ellen called her out in class for her radical ideology.",
+    "poster_path": "/sSdpXGBNt3mQzjZZVK6eV5NcPdc.jpg",
+    "backdrop_path": "/mNUciC3vHhoskveYsO3hiFypqMz.jpg",
+    "release_date": "2025-10-29",
+    "director": "Jan Komasa",
+    "runtime": 111,
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "vote_average": 6.617
+  },
   "BAFTA-nominated Shorts": null,
   "Fukushima: A Nuclear Nightmare": null,
   "DocFest Spotlights: Niñxs": null,
   "Pompeii: Below the Clouds": null,
-  "FREE CINEMA": null,
-  "FREE CINEMA (in the US)": null,
+  "Molly vs the Machines": {
+    "tmdb_id": 1557606,
+    "tmdb_title": "Molly vs.THE MACHINES",
+    "tmdb_original_title": "Molly vs.THE MACHINES",
+    "overview": "From a teenager’s suburban bedroom to the boardrooms of Silicon Valley, this is a story of a heartbroken father’s quest to uncover the truth behind his daughter's death and his fightback against how the most powerful corporations of the modern age operate.",
+    "poster_path": "/mArVXHRTKBSz4IfRVR3qKekYwPl.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-01",
+    "director": "Marc Silver",
+    "runtime": 83,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "The Experience + Orderly or Disorderly": {
+    "tmdb_id": 645302,
+    "tmdb_title": "The Experience",
+    "tmdb_original_title": "The Experience",
+    "overview": "At a wilderness camp for troubled youth, two girls Scarlet and Dylan form a bond that gets tested by love, money, and experiences beyond their perceived realm of existence.",
+    "poster_path": "/gyR6BcxlaXezypXbqQnp9M0Yrjt.jpg",
+    "backdrop_path": "/1JtXHV8uLotDKd3ssZCx8SwVMtm.jpg",
+    "release_date": "2019-11-05",
+    "director": "Katerina Gorshkov",
+    "runtime": 95,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 4.65
+  },
+  "The Traveler + Breaktime": {
+    "tmdb_id": 32612,
+    "tmdb_title": "The Traveler",
+    "tmdb_original_title": "The Traveler",
+    "overview": "On a dark Christmas Eve in a small town, the lone Sheriffs on the night shift encounter a mysterious man who goes by the name of Mr. Nobody. As the night progresses, the Sheriffs discover that this isn't just a nobody, but a vengeful killer whose past threatens to haunt them all.",
+    "poster_path": "/7vZ2C66SwastgmQKJ1wC41F2WFK.jpg",
+    "backdrop_path": "/dsoIyzH8MSnqh0yK0b9SGcDDzpv.jpg",
+    "release_date": "2010-11-15",
+    "director": "Michael Oblowitz",
+    "runtime": 96,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "vote_average": 5.4
+  },
+  "A Wedding Suit + Bread and Alley": {
+    "tmdb_id": 134209,
+    "tmdb_title": "A Wedding Suit",
+    "tmdb_original_title": "لباسی برای عروسی‎‎",
+    "overview": "A woman orders a suit from a tailor for her young son to wear to her sister's wedding. The tailor's apprentice, together with two other teenage boys who work in the same building, devise a plan to try on the suit at night to see what it feels like.",
+    "poster_path": "/g31ePKouKrV13Wt1Fsuow3PJl5M.jpg",
+    "backdrop_path": "/diUqFv3nk7iQPokMVgcdsr1Wkkb.jpg",
+    "release_date": "1976-01-01",
+    "director": "Abbas Kiarostami",
+    "runtime": 59,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.0
+  },
+  "There Was a Tower: A Portrait of Mih&Atilde;&iexcl;ly V&Atilde;&shy;g": null,
+  "The Liberated Film Club: Mih&Atilde;&iexcl;ly V&Atilde;&shy;g": null,
   "Kill Bill: The Whole Bloody Affair": {
     "tmdb_id": 414419,
     "tmdb_title": "Kill Bill: The Whole Bloody Affair",
@@ -16619,58 +16942,80 @@
   "Prince Charles Cinema Film Quiz": null,
   "Twin Peaks : Pilot - Northwest Passage": null,
   "Sing-A-Long-A Rocky Horror Picture Show": null,
-  "The Lion King (1994)": {
-    "tmdb_id": 8587,
-    "tmdb_title": "The Lion King",
-    "tmdb_original_title": "The Lion King",
-    "overview": "Young lion prince Simba, eager to one day become king of the Pride Lands, grows up under the watchful eye of his father Mufasa; all the while his villainous uncle Scar conspires to take the throne for himself. Amid betrayal and tragedy, Simba must confront his past and find his rightful place in the Circle of Life.",
-    "poster_path": "/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
-    "backdrop_path": "/q00H8EqULYSK74lgevMkhmGGLHn.jpg",
-    "release_date": "1994-06-15",
-    "director": "Roger Allers",
-    "runtime": 89,
-    "genres": [
-      "Family",
-      "Animation",
-      "Drama",
-      "Adventure"
-    ],
-    "vote_average": 8.255
-  },
   "The Lord of the Rings Trilogy - Extended Editions": null,
   "Mystery Movie Marathon": null,
-  "Looney Tunes: The Day The World Blew Up": null,
-  "Six Nations": null,
-  "The Forgotten Civilisation - I'm Migrant Film Festival": null,
-  "Zootropolis 2": null,
-  "Delicatessen Presented by The Cult Classic Collective": null,
-  "The Miraculous Transformation of the Working Class Into Foreigners - I'm Migrant Film Festival": null,
-  "RuPaul's Drag Race: UK vs. the World Series 3.": null,
-  "Bar Trash 200: PLAN 9 FROM OUTER SPACE (1958)": {
-    "tmdb_id": 10513,
-    "tmdb_title": "Plan 9 from Outer Space",
-    "tmdb_original_title": "Plan 9 from Outer Space",
-    "overview": "In California, an old man grieves the loss of his wife, and dies the day after she is buried. However, the space soldier Eros and his mate Tanna use an electric device to resurrect them both, alongside the strong Inspector Clay, who was murdered by the alien-controlled dead couple. When the populations of Hollywood and Washington DC see flying saucers on the sky, a colonel, a police lieutenant, a commercial pilot, his wife and a policeman try to stop the aliens.",
-    "poster_path": "/bmicZi7PvlnZ9rZqp6QXN2Db0pT.jpg",
-    "backdrop_path": "/9pHCAT1ScILdkhY8ErfOma8W4kB.jpg",
-    "release_date": "1957-03-15",
-    "director": "Edward D. Wood Jr.",
-    "runtime": 79,
+  "Dr. Strangelove": null,
+  "The Lost Boys": {
+    "tmdb_id": 1547,
+    "tmdb_title": "The Lost Boys",
+    "tmdb_original_title": "The Lost Boys",
+    "overview": "When an unsuspecting town newcomer is drawn to local blood fiends, the Frog brothers and other unlikely heroes gear up to rescue him.",
+    "poster_path": "/nH1lvyQvfbL5GKScTtT6zkIvDEn.jpg",
+    "backdrop_path": "/6zvbeKxgc80xQsZLJ4eQVZSKXO8.jpg",
+    "release_date": "1987-07-31",
+    "director": "Joel Schumacher",
+    "runtime": 97,
     "genres": [
-      "Science Fiction",
-      "Horror"
+      "Horror",
+      "Comedy",
+      "Thriller",
+      "Drama",
+      "Romance"
     ],
-    "vote_average": 4.203
+    "vote_average": 7.089
   },
-  "Sumud / Life endures: Three Stories from Palestine - I'm Migrant Film Festival": null,
-  "Some Like it Swing": null,
-  "Fractured Horizons: Three stories of migration and the desire for refuge - I'm Migrant Film Festival": null,
-  "Home Truths: Shorts exploring relationships and private lives - I'm Migrant Film Festival": null,
-  "Bar Trash: SCARECROW IN A GARDEN OF CUCUMBERS (1972) with Avery McNeilly": null,
-  "Wuthering Heights: Screening + Book Club Presented by Girls in Film and It's Hardback Out Here": null,
-  "Im Migrant: Koutaiba al Janabi and Nabeel Yasin - I'm Migrant Film Festival": null,
+  "Woman In The Dunes": {
+    "tmdb_id": 16672,
+    "tmdb_title": "Woman in the Dunes",
+    "tmdb_original_title": "砂の女",
+    "overview": "A vacationing entomologist suffers extreme physical and psychological trauma after being taken captive by the residents of a poor seaside village and made to live with a woman whose life task is shoveling sand for them.",
+    "poster_path": "/f0JpsMQ9oEjKBD66Ky3qK3z7LGT.jpg",
+    "backdrop_path": "/dxfFh9pTKDaYH2B6PwcR6ohCM1L.jpg",
+    "release_date": "1964-02-15",
+    "director": "Hiroshi Teshigahara",
+    "runtime": 147,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 8.206
+  },
+  "Possession": null,
+  "FREE CINEMA": null,
+  "FREE CINEMA (in the US)": null,
+  "Marathon Man": {
+    "tmdb_id": 10518,
+    "tmdb_title": "Marathon Man",
+    "tmdb_original_title": "Marathon Man",
+    "overview": "A graduate student and obsessive runner in New York is drawn into a mysterious plot involving his brother, a member of the secretive Division.",
+    "poster_path": "/uPNgubSiri2yvBQRPtP77ViYjN.jpg",
+    "backdrop_path": "/djRD1jAXkUEQIFnG6fFFQAh9LD4.jpg",
+    "release_date": "1976-10-08",
+    "director": "John Schlesinger",
+    "runtime": 125,
+    "genres": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 7.174
+  },
+  "Molly Vs The Machines": {
+    "tmdb_id": 1557606,
+    "tmdb_title": "Molly vs.THE MACHINES",
+    "tmdb_original_title": "Molly vs.THE MACHINES",
+    "overview": "From a teenager’s suburban bedroom to the boardrooms of Silicon Valley, this is a story of a heartbroken father’s quest to uncover the truth behind his daughter's death and his fightback against how the most powerful corporations of the modern age operate.",
+    "poster_path": "/mArVXHRTKBSz4IfRVR3qKekYwPl.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-01",
+    "director": "Marc Silver",
+    "runtime": 83,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
   "LITTLE AMELIE": null,
-  "NEUROSPICY! + Q&A": null,
   "Dyke TV: the early naughties + discussion": null,
   "TV PARTY, TONIGHT!: An Education in Blood and Guts Filmmaking": null,
   "Pink Palace: Dildo Heaven + Intro Talk": null,
@@ -16680,6 +17025,7 @@
   "SÜRREAL SİNEMA: VANILLA IS A TURKISH WORD": null,
   "TV PARTY, TONIGHT!: Photographers on Film": null,
   "Pink Palace: Cat People (on VHS)": null,
+  "Molly Vs THE MACHINES + Discussion": null,
   "Little Amélie": null,
   "Lexi Seniors' Film Club: Out of Africa": {
     "tmdb_id": 606,
@@ -16731,56 +17077,39 @@
     ],
     "vote_average": 10.0
   },
-  "Hayley Mills: The Family Way": null,
-  "S&Atilde;&iexcl;t&Atilde;&iexcl;ntang&Atilde;&sup3;": null,
-  "The Experience + Orderly or Disorderly": {
-    "tmdb_id": 645302,
-    "tmdb_title": "The Experience",
-    "tmdb_original_title": "The Experience",
-    "overview": "At a wilderness camp for troubled youth, two girls Scarlet and Dylan form a bond that gets tested by love, money, and experiences beyond their perceived realm of existence.",
-    "poster_path": "/gyR6BcxlaXezypXbqQnp9M0Yrjt.jpg",
-    "backdrop_path": "/1JtXHV8uLotDKd3ssZCx8SwVMtm.jpg",
-    "release_date": "2019-11-05",
-    "director": "Katerina Gorshkov",
-    "runtime": 95,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 4.65
-  },
-  "The Traveler + Breaktime": {
-    "tmdb_id": 32612,
-    "tmdb_title": "The Traveler",
-    "tmdb_original_title": "The Traveler",
-    "overview": "On a dark Christmas Eve in a small town, the lone Sheriffs on the night shift encounter a mysterious man who goes by the name of Mr. Nobody. As the night progresses, the Sheriffs discover that this isn't just a nobody, but a vengeful killer whose past threatens to haunt them all.",
-    "poster_path": "/7vZ2C66SwastgmQKJ1wC41F2WFK.jpg",
-    "backdrop_path": "/dsoIyzH8MSnqh0yK0b9SGcDDzpv.jpg",
-    "release_date": "2010-11-15",
-    "director": "Michael Oblowitz",
-    "runtime": 96,
+  "Phoenix Classics: Interview With A Vampire": {
+    "tmdb_id": 628,
+    "tmdb_title": "Interview with the Vampire",
+    "tmdb_original_title": "Interview with the Vampire",
+    "overview": "A vampire relates his epic life story of love, betrayal, loneliness, and dark hunger to an over-curious reporter.",
+    "poster_path": "/2162lAT2MP36MyJd2sttmj5du5T.jpg",
+    "backdrop_path": "/3fChciF2G1wXHsyTfJD9y7uN6Il.jpg",
+    "release_date": "1994-11-11",
+    "director": "Neil Jordan",
+    "runtime": 123,
     "genres": [
       "Horror",
-      "Thriller"
+      "Drama",
+      "Fantasy"
     ],
-    "vote_average": 5.4
+    "vote_average": 7.385
   },
-  "A Wedding Suit + Bread and Alley": {
-    "tmdb_id": 134209,
-    "tmdb_title": "A Wedding Suit",
-    "tmdb_original_title": "لباسی برای عروسی‎‎",
-    "overview": "A woman orders a suit from a tailor for her young son to wear to her sister's wedding. The tailor's apprentice, together with two other teenage boys who work in the same building, devise a plan to try on the suit at night to see what it feels like.",
-    "poster_path": "/g31ePKouKrV13Wt1Fsuow3PJl5M.jpg",
-    "backdrop_path": "/diUqFv3nk7iQPokMVgcdsr1Wkkb.jpg",
-    "release_date": "1976-01-01",
-    "director": "Abbas Kiarostami",
-    "runtime": 59,
+  "Molly Vs THE MACHINES": {
+    "tmdb_id": 1557606,
+    "tmdb_title": "Molly vs.THE MACHINES",
+    "tmdb_original_title": "Molly vs.THE MACHINES",
+    "overview": "From a teenager’s suburban bedroom to the boardrooms of Silicon Valley, this is a story of a heartbroken father’s quest to uncover the truth behind his daughter's death and his fightback against how the most powerful corporations of the modern age operate.",
+    "poster_path": "/mArVXHRTKBSz4IfRVR3qKekYwPl.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-01",
+    "director": "Marc Silver",
+    "runtime": 83,
     "genres": [
-      "Drama"
+      "Documentary"
     ],
-    "vote_average": 7.0
+    "vote_average": 0.0
   },
-  "There Was a Tower: A Portrait of Mih&Atilde;&iexcl;ly V&Atilde;&shy;g": null,
-  "The Liberated Film Club: Mih&Atilde;&iexcl;ly V&Atilde;&shy;g": null,
+  "Hayley Mills: The Family Way": null,
   "CARERS & BABIES: STITCH HEAD": {
     "tmdb_id": 1214130,
     "tmdb_title": "Stitch Head",
@@ -16804,64 +17133,13 @@
   "MAY YOU BE WITH THE FARCE": null,
   "FUN IN THE LOUNGE - FREE ENTRY: OPEN MIC": null,
   "LIVE JAZZ WITH TRENT PIETERSE QUARTET": null,
-  "Nina & The Hedgehog’s Secret": {
-    "tmdb_id": 588524,
-    "tmdb_title": "Nina and the Hedgehog's Secret",
-    "tmdb_original_title": "Nina et le secret du hérisson",
-    "overview": "The world of 10-year old Nina has been in turmoil since her father lost his job. Despite weeks of strike, his factory closed down. The manager had tampered with the accounts and precipitated its collapse. But rumour has it that a nest-egg remains hidden somewhere in the factory. Nina and her friend Mehdi spring into action to help Nina’s dad out. This tale of our times, which is also a coming-of-age story, stages the interaction between the concerns of children and those of adults.",
-    "poster_path": "/pTcu3kpwwDaqps600BECW3g16hw.jpg",
-    "backdrop_path": "/9hnBjEMtKWRDkRmUrCG7igRQQpk.jpg",
-    "release_date": "2023-10-11",
-    "director": "Alain Gagnol",
-    "runtime": 82,
-    "genres": [
-      "Animation",
-      "Family"
-    ],
-    "vote_average": 7.1
-  },
-  "Once Upon a Time in the West": {
-    "tmdb_id": 335,
-    "tmdb_title": "Once Upon a Time in the West",
-    "tmdb_original_title": "C'era una volta il West",
-    "overview": "As the railroad builders advance unstoppably through the Arizona desert on their way to the sea, Jill arrives in the small town of Flagstone with the intention of starting a new life.",
-    "poster_path": "/qbYgqOczabWNn2XKwgMtVrntD6P.jpg",
-    "backdrop_path": "/aKZ9hDmLJTaGSxWdhxqMTcvXmk4.jpg",
-    "release_date": "1968-12-21",
-    "director": "Sergio Leone",
-    "runtime": 166,
-    "genres": [
-      "Drama",
-      "Western"
-    ],
-    "vote_average": 8.28
-  },
+  "GENTLE, ANGRY WOMEN + DIRECTOR Q&A": null,
   "EOS: TURNER AND CONSTABLE 2026": null,
   "HAMNET (Babes-In-Arms screening)": null,
   "MUSICAL SHORTS - Presented by Small World Cinema": null,
   "NOVELLE VAGUE": null,
   "YOUNG FRANKENSTEIN (Dementia-Friendly Screening)": null,
   "YOUNG FRANKENSTEIN (Relaxed Screening)": null,
-  "Singin' in the Rain - £4 All Tickets!": null,
-  "When Harry Met Sally - £4 All Tickets!": null,
-  "Woolf Works (TBC)": null,
-  "Hamnet (12A)": {
-    "tmdb_id": 858024,
-    "tmdb_title": "Hamnet",
-    "tmdb_original_title": "Hamnet",
-    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
-    "poster_path": "/vbeyOZm2bvBXcbgPD3v6o94epPX.jpg",
-    "backdrop_path": "/73BClq9FOcrWrutnpiqhCNEWEwJ.jpg",
-    "release_date": "2025-11-26",
-    "director": "Chloé Zhao",
-    "runtime": 126,
-    "genres": [
-      "Drama",
-      "Romance",
-      "History"
-    ],
-    "vote_average": 7.754
-  },
   "H is for Hawk (12A) captioned screening parent and baby screening": null,
   "H is for Hawk (12A) captioned screening": {
     "tmdb_id": 1243006,
@@ -16892,7 +17170,7 @@
       "Comedy",
       "Drama"
     ],
-    "vote_average": 6.855
+    "vote_average": 6.828
   },
   "The President's Cake (12A) captioned screening tbc": null,
   "RBO: Giselle": null,
@@ -16913,38 +17191,6 @@
     ],
     "vote_average": 7.0
   },
-  "Dog-Friendly: Twinless": {
-    "tmdb_id": 1245347,
-    "tmdb_title": "Twinless",
-    "tmdb_original_title": "Twinless",
-    "overview": "Two men who lost their respective twin brothers develop a growing friendship after meeting in a support group. However, both harbor long-hidden secrets that threaten to tear them apart.",
-    "poster_path": "/9vaw9Az5tPLMjNLj426KgKsp0k8.jpg",
-    "backdrop_path": "/fnvTC96lA7pf8ZlMKI2FgBZ86AP.jpg",
-    "release_date": "2025-09-04",
-    "director": "James Sweeney",
-    "runtime": 100,
-    "genres": [
-      "Comedy",
-      "Drama"
-    ],
-    "vote_average": 7.307
-  },
-  "100 Nights of Hero + A Friend of Dorothy": {
-    "tmdb_id": 1354518,
-    "tmdb_title": "100 Nights of Hero",
-    "tmdb_original_title": "100 Nights of Hero",
-    "overview": "When a charming house guest arrives at a remote castle, the delicate dynamic between a neglectful husband, his innocent bride Cherry and their devoted maid Hero is thrown into chaos.",
-    "poster_path": "/7OYSJJFU2E9iBGPfU9C9PM56APM.jpg",
-    "backdrop_path": "/skmFqH67nh8zJacf7WcR204Kgvl.jpg",
-    "release_date": "2025-12-05",
-    "director": "Julia Jackman",
-    "runtime": 91,
-    "genres": [
-      "Fantasy",
-      "Romance"
-    ],
-    "vote_average": 5.6
-  },
   "LFFF: Pillion Fetish-Friendly Fundraiser Q&amp;A": null,
   "The Moment + Intro by Femmi": {
     "tmdb_id": 1422562,
@@ -16962,9 +17208,7 @@
     ],
     "vote_average": 4.6
   },
-  "LFFF: Shorts Session 1": null,
   "LFFF: Documentaries": null,
-  "LFFF: A Body to Live In + Short Films": null,
   "Rerun: Spectra: Desires": null,
   "Dog Party: The Moment": null,
   "brat Double Bill: Pillion": null,
@@ -17024,28 +17268,61 @@
     ],
     "vote_average": 8.282
   },
+  "The Ice Tower (15)": {
+    "tmdb_id": 1143440,
+    "tmdb_title": "The Ice Tower",
+    "tmdb_original_title": "La tour de glace",
+    "overview": "Jeanne, a 15-year-old orphan, witnesses the shoot for a film adaptation of the fairy tale The Snow Queen, and she becomes fascinated by its star, Cristina, an actress who is just as mysterious and alluring as the Queen she is playing.",
+    "poster_path": "/3PeKQJMrpFysN8dnakd9vnUXgRL.jpg",
+    "backdrop_path": "/y72IAmAJaZg1Ed20weH89GMZP8R.jpg",
+    "release_date": "2025-09-17",
+    "director": "Lucile Hadžihalilović",
+    "runtime": 118,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "vote_average": 5.676
+  },
+  "It Was Just an Accident (12A)": {
+    "tmdb_id": 1456349,
+    "tmdb_title": "It Was Just an Accident",
+    "tmdb_original_title": "Un simple accident",
+    "overview": "An unassuming mechanic is reminded of his time in an Iranian prison when he encounters a man he suspects to be his sadistic jailhouse captor.",
+    "poster_path": "/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg",
+    "backdrop_path": "/zhoMwQofjgVec5Sin05hWECJtVQ.jpg",
+    "release_date": "2025-09-27",
+    "director": "Jafar Panahi",
+    "runtime": 104,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Crime",
+      "Mystery"
+    ],
+    "vote_average": 7.178
+  },
+  "Snow White and Seven Dwarfs + Introduction (U)": {
+    "tmdb_id": 408,
+    "tmdb_title": "Snow White and the Seven Dwarfs",
+    "tmdb_original_title": "Snow White and the Seven Dwarfs",
+    "overview": "A beautiful girl, Snow White, takes refuge in the forest in the house of seven dwarfs to hide from her stepmother, the wicked Queen. The Queen is jealous because she wants to be known as \"the fairest in the land,\" and Snow White's beauty surpasses her own.",
+    "poster_path": "/3VAHfuNb6Z7UiW12iYKANSPBl8m.jpg",
+    "backdrop_path": "/4yWayBvwl9gHXaWrDrAslxjL7mh.jpg",
+    "release_date": "1938-01-14",
+    "director": "David Hand",
+    "runtime": 83,
+    "genres": [
+      "Fantasy",
+      "Animation",
+      "Family"
+    ],
+    "vote_average": 7.1
+  },
   "CINE MARICA: Hable Con Ella": null,
   "Kotoa & Friends Meets Rocking Time HIFI": null,
   "Crafty Movie Night – Dirty Dancing": null,
   "Looney Tunes: The Day the Earth Blew Up": null,
-  "A Generation": null,
-  "UK Premiere of 4K Restoration: The Garden of Eden": {
-    "tmdb_id": 112358,
-    "tmdb_title": "The Garden of Eden",
-    "tmdb_original_title": "The Garden of Eden",
-    "overview": "Toni Le Brun, a beautiful Viennese singer, becomes the ward of the wardrobe mistress of a Monte Carlo nightclub. Her benefactor, however, is actually a baroness incognito. Toni falls in love with the handsome Richard, but as they prepare to marry, she comes to believe he is only after the wealth accompanying her new noble status. But truth, like true love, will not be kept secret long.",
-    "poster_path": "/w0E0LfiWvPhocdmg9Y3f8oj8dl2.jpg",
-    "backdrop_path": "/8GsfV6HR9IXk0lMa0ZZUR9Jx6AY.jpg",
-    "release_date": "1928-02-04",
-    "director": "Lewis Milestone",
-    "runtime": 76,
-    "genres": [
-      "Drama",
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 5.6
-  },
   "Black Queer Lives in the Archive": null,
   "MilkTea presents – UK Premiere: Last Days": {
     "tmdb_id": 1093402,
@@ -17067,26 +17344,59 @@
   "Rough Treatment": null,
   "Reflecting on Stuart Hall’s Impact in association with the Stuart Hall Foundation": null,
   "Multicultural TV on ITV": null,
-  "Black Girl + Jemima + Johnny": {
-    "tmdb_id": 95597,
-    "tmdb_title": "Black Girl",
-    "tmdb_original_title": "La Noire de...",
-    "overview": "Eager to find a better life abroad, a Senegalese woman becomes a mere governess to a family in southern France, suffering from discrimination and marginalization.",
-    "poster_path": "/hYYAk9I9KkscSr8DC30KyDjzsVu.jpg",
-    "backdrop_path": "/3NcTGBFQnGpUUvfloymFiTaejZA.jpg",
-    "release_date": "1966-03-17",
-    "director": "Ousmane Sembène",
-    "runtime": 65,
+  "The Wedding": null,
+  "Man of Iron": {
+    "tmdb_id": 225,
+    "tmdb_title": "Man of Iron",
+    "tmdb_original_title": "Człowiek z żelaza",
+    "overview": "In Warsaw in 1980, the Communist Party sends disgruntled radio reporter Winkel to Gdańsk to dig up dirt on the shipyard strikers - particularly on Maciek Tomczyk, an independent labour union leader whose father was killed in the December 1970 protests. Posing as sympathetic, Winkel interviews the people surrounding Tomczyk, including his detained wife, Agnieszka.",
+    "poster_path": "/22wNUqKyz2m6wzAt31f26H8Y433.jpg",
+    "backdrop_path": "/row4sMw5mVzKCWRbyrAQ39zvyLX.jpg",
+    "release_date": "1981-07-27",
+    "director": "Andrzej Wajda",
+    "runtime": 147,
     "genres": [
+      "Drama",
+      "History"
+    ],
+    "vote_average": 6.961
+  },
+  "West Indies: The Fugitive Slaves of Liberty": {
+    "tmdb_id": 271858,
+    "tmdb_title": "West Indies",
+    "tmdb_original_title": "West Indies ou les Nègres marrons de la liberté",
+    "overview": "Aboard a giant slave ship in an abandoned Citroën factory, the history of the West Indies is traced through several centuries of French oppression. The ship becomes a stage for the people to tell stories via song and dance—from their enslavement to their displacement in Metropolitan France.",
+    "poster_path": "/px8QJjA5i0l8r9kWov2FNpkpP47.jpg",
+    "backdrop_path": "/fxHzWHbTp6G4qjg9KKO9c0A2ig4.jpg",
+    "release_date": "1979-01-02",
+    "director": "Med Hondo",
+    "runtime": 116,
+    "genres": [
+      "Music",
+      "History",
       "Drama"
     ],
-    "vote_average": 7.242
+    "vote_average": 6.4
   },
-  "The Wedding": null,
+  "The Promised Land": {
+    "tmdb_id": 511,
+    "tmdb_title": "The Promised Land",
+    "tmdb_original_title": "Ziemia obiecana",
+    "overview": "In nineteenth-century Łódź, Poland, three friends want to make a lot of money by building and investing in a textile factory. An exceptional portrait of rapid industrial expansion is shown through the eyes of one Polish town.",
+    "poster_path": "/pjk8K5MpQJX0XczTC2KOVWNj0lC.jpg",
+    "backdrop_path": "/xQa198uEb8DLwQntDwO9jlilXcC.jpg",
+    "release_date": "1975-02-21",
+    "director": "Andrzej Wajda",
+    "runtime": 179,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "vote_average": 7.3
+  },
   "BLACK IN SEASON FILM CLUB 2026 Waiting to Exhale Fri 20 Feb": null,
   "Fight the Power: Resistance & Revolution I am not your Negro Wed 25 Feb": null,
   "Dubplate presents Dubplate Drama 20th Anniversary Screening FRI 27 FEB 18_Live": null,
-  "NAKED KILLER (ON VHS)": null,
   "THE DECLINE OF WESTERN CIVILISATION": null,
   "SCARLET WARNING 666": null,
   "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday20.2Doors8:15pmFilm8:45pmDigitalBook here": null,
@@ -17112,58 +17422,225 @@
   "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday27.2Doors8:15pmFilm8:45pmDigitalBook here": null,
   "BLONDE DEATH (ON VHS)": null,
   "DOA: A RIGHT OF PASSAGE": null,
-  "Sonic The Hedgehog 3": {
-    "tmdb_id": 939243,
-    "tmdb_title": "Sonic the Hedgehog 3",
-    "tmdb_original_title": "Sonic the Hedgehog 3",
-    "overview": "Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before. With their abilities outmatched in every way, Team Sonic must seek out an unlikely alliance in hopes of stopping Shadow and protecting the planet.",
-    "poster_path": "/d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    "backdrop_path": "/noPEm6Vu9Lm6QUdTGLOyRgk4M6s.jpg",
-    "release_date": "2024-12-19",
-    "director": "Jeff Fowler",
-    "runtime": 110,
+  "SAINT JACK": {
+    "tmdb_id": 77166,
+    "tmdb_title": "Saint Jack",
+    "tmdb_original_title": "Saint Jack",
+    "overview": "Jack Flowers is an American hustler trying to make his fortune in 1970s Singapore in small time pimping. His dreams of building a fortune by running a brothel himself and returning to the States is materialized when he is offered the opportunity by the CIA to run a brothel for the R&R activities of U.S. soldiers on leave in Singapore.",
+    "poster_path": "/kWrjxCM9fxzw1hdk4gXLWO8tqtD.jpg",
+    "backdrop_path": "/ureC6Q3NqPkbojNxdcXceTGgSMC.jpg",
+    "release_date": "1979-04-27",
+    "director": "Peter Bogdanovich",
+    "runtime": 115,
     "genres": [
-      "Action",
-      "Science Fiction",
-      "Comedy",
-      "Family"
+      "Drama"
     ],
-    "vote_average": 7.627
+    "vote_average": 6.604
   },
-  "Relaxed Screening: Labyrinth (40th Anniversary)": {
-    "tmdb_id": 13597,
-    "tmdb_title": "Labyrinth",
-    "tmdb_original_title": "Labyrinth",
-    "overview": "Frustrated with babysitting on yet another weekend night, Sarah, a teenager with an active imagination, summons the Goblins to take her baby stepbrother away. When little Toby actually disappears, Sarah must follow him into a fantastical world to rescue him from the Goblin King. Guarding his castle is the labyrinth itself, a twisted maze of deception, populated with outrageous characters and unknown dangers.",
-    "poster_path": "/hbSdA1DmNA9IlfVoqJkIWYF2oYm.jpg",
-    "backdrop_path": "/92tb8mgjgL1S2KwrZezyPHPkQ3R.jpg",
-    "release_date": "1986-06-27",
-    "director": "Jim Henson",
-    "runtime": 101,
+  "THEY ALL LAUGHED": {
+    "tmdb_id": 31921,
+    "tmdb_title": "They All Laughed",
+    "tmdb_original_title": "They All Laughed",
+    "overview": "New York's Odyssey Detective Agency is hired by two different clients to follow two women suspected of infidelity. Ladies' man John Russo trails Angela Niotes, the elegant wife of a wealthy Italian industrialist, while Charles Rutledge and Arthur Brodsky follow Dolores Martin, the beautiful young wife of a jealous husband. Their respective cases are complicated when John falls for Angela, and Charles falls for Dolores.",
+    "poster_path": "/cyHc92xZ4i6rjRTwOzxvAEwJ218.jpg",
+    "backdrop_path": "/iM00v7z7q7lKMNJMab00eOxFGIL.jpg",
+    "release_date": "1981-11-20",
+    "director": "Peter Bogdanovich",
+    "runtime": 115,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 5.8
+  },
+  "WHAT'S UP DOC?": {
+    "tmdb_id": 6949,
+    "tmdb_title": "What's Up, Doc?",
+    "tmdb_original_title": "What's Up, Doc?",
+    "overview": "The accidental mix-up of four identical plaid overnight bags leads to a series of increasingly wild and wacky situations.",
+    "poster_path": "/d5WwZxneeAH2Kj2SeDV6oUY2oW0.jpg",
+    "backdrop_path": "/lDeH6UkNGX2UcaOKTJ5SHtmNwbD.jpg",
+    "release_date": "1972-03-09",
+    "director": "Peter Bogdanovich",
+    "runtime": 94,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Romance"
+    ],
+    "vote_average": 7.357
+  },
+  "SHRIME TIME: A NIGHT OF BIZARRO UNDERSEEN ANIMEFrom radical student animation collectives to sun-bleached techno-dystopias and gore-drenched horror, Shrime Time shines where the sun daren’t: revealing the backside of seldom-seen Japanese visual culture. Expect screenings from the 1960s to the present day, paired with special guests: musicians, artists, researchers and those obsessed with the outermost edges of Japan’s visual imagination.The Shirime a y?kai": null,
+  "SCHOOL IN THE CROSSHAIRS": {
+    "tmdb_id": 78163,
+    "tmdb_title": "School in the Crosshairs",
+    "tmdb_original_title": "ねらわれた学園",
+    "overview": "Mitamura Yuka is a normal, shy high school student. Except for the fact that she has psychic powers. When a new student with similar powers begins to show her skills, creating a force of psychic Nazi student enforcers, Yuka and her friends vow to stop her. But behind it all is a mysterious force that will put Yuka's powers to the ultimate test!",
+    "poster_path": "/g3TMkhAy1pTxJ2nTTYiOeFjhu9Q.jpg",
+    "backdrop_path": "/yRrDnpnjptUbgoEDdC3WHUM5JPb.jpg",
+    "release_date": "1981-07-11",
+    "director": "Nobuhiko Obayashi",
+    "runtime": 90,
+    "genres": [
+      "Fantasy",
+      "Science Fiction",
+      "Comedy"
+    ],
+    "vote_average": 6.2
+  },
+  "THE GIRL WHO LEPT THROUGH TIME": null,
+  "CITY OF THE LIVING DEAD": {
+    "tmdb_id": 24920,
+    "tmdb_title": "City of the Living Dead",
+    "tmdb_original_title": "Paura nella città dei morti viventi",
+    "overview": "A woman seemingly dies of fright after participating in a séance where she sees a vision of a Dunwich priest hanging himself in a church cemetery. New York City reporter Peter Bell investigates and learns that the priest's suicide has somehow opened a portal to Hell and must be sealed by All Saints Day, or else the dead will overtake humanity.",
+    "poster_path": "/8ymAiDW9ct2GSywWkqATEiKE8OB.jpg",
+    "backdrop_path": "/whhv9CuZAQ9NfiNVpl1u7yXAf4N.jpg",
+    "release_date": "1980-08-11",
+    "director": "Lucio Fulci",
+    "runtime": 93,
+    "genres": [
+      "Horror"
+    ],
+    "vote_average": 6.44
+  },
+  "THE BEYOND": {
+    "tmdb_id": 19204,
+    "tmdb_title": "The Beyond",
+    "tmdb_original_title": "...E tu vivrai nel terrore! L'aldilà",
+    "overview": "A young woman inherits an old hotel in Louisiana where, following a series of supernatural \"accidents\", she learns that the building was built over one of the entrances to Hell.",
+    "poster_path": "/kMSZHq9VYQV1FCbM8nz2zrZShzx.jpg",
+    "backdrop_path": "/ysCpbgA1zxOmkb1IWKzwhTxDxk3.jpg",
+    "release_date": "1981-04-22",
+    "director": "Lucio Fulci",
+    "runtime": 88,
+    "genres": [
+      "Horror"
+    ],
+    "vote_average": 6.91
+  },
+  "EL TOPO": {
+    "tmdb_id": 13041,
+    "tmdb_title": "El Topo",
+    "tmdb_original_title": "El Topo",
+    "overview": "El Topo decides to confront warrior Masters on a trans-formative desert journey he begins with his 6 year old son, who must bury his childhood totems to become a man.",
+    "poster_path": "/4ea7sUzZaQNRuIm4M6EqWLQWfnX.jpg",
+    "backdrop_path": "/xkfXO0Zswvvlbs0FlxH3TA4qji3.jpg",
+    "release_date": "1970-12-18",
+    "director": "Alejandro Jodorowsky",
+    "runtime": 125,
     "genres": [
       "Adventure",
-      "Family",
-      "Fantasy"
+      "Drama",
+      "Western"
     ],
-    "vote_average": 7.3
+    "vote_average": 7.058
   },
-  "Dog-Friendly Screening: Wuthering Heights": null,
-  "Dog-Friendly Screening: Best in Show": null,
-  "Drink & Dine: It's Never Over, Jeff Buckley + Grace Listening Party": {
-    "tmdb_id": 1400381,
-    "tmdb_title": "It's Never Over, Jeff Buckley",
-    "tmdb_original_title": "It's Never Over, Jeff Buckley",
-    "overview": "Rising musician Jeff Buckley had only released one album when he died suddenly in 1997. Now, never-before-seen footage, exclusive voice messages, and accounts from those closest to him offer a portrait of the captivating singer.",
-    "poster_path": "/rrKe8bC6UKFKvfZHvbwA9Bq5hkR.jpg",
-    "backdrop_path": "/qfx7A90iIKMUc4VhIRZhNzU6iTY.jpg",
-    "release_date": "2025-08-08",
-    "director": "Amy J. Berg",
-    "runtime": 106,
+  "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday6.3Doors8:30pmFilm9pmDigitalBook here": null,
+  "EXISTENZ": {
+    "tmdb_id": 1946,
+    "tmdb_title": "eXistenZ",
+    "tmdb_original_title": "eXistenZ",
+    "overview": "A game designer on the run from assassins must play her latest virtual reality creation with a marketing trainee to determine if the game has been damaged.",
+    "poster_path": "/kETKF0JhdTPn1knci8CAdYL0d79.jpg",
+    "backdrop_path": "/epmwIWdQLouFJ8yx55quVvgnTKu.jpg",
+    "release_date": "1999-04-14",
+    "director": "David Cronenberg",
+    "runtime": 97,
     "genres": [
-      "Documentary",
-      "Music"
+      "Action",
+      "Thriller",
+      "Science Fiction"
     ],
-    "vote_average": 7.9
+    "vote_average": 6.784
+  },
+  "LA BÊTE": {
+    "tmdb_id": 44132,
+    "tmdb_title": "The Beast",
+    "tmdb_original_title": "La Bête",
+    "overview": "The head of a failing French family thinks that fate has smiled down on him when the daughter of a wealthy man agrees to be married to his son. The daughter and her aunt then travel out to the French countryside to meet with the family, unaware that a mysterious 'beast' is stalking the vicinity.",
+    "poster_path": "/jIKqdwBYutlyItSBed8uBS5mCJX.jpg",
+    "backdrop_path": "/2aHMwdhnK7OScRkyXCl8qWiGCsC.jpg",
+    "release_date": "1975-08-20",
+    "director": "Walerian Borowczyk",
+    "runtime": 98,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror",
+      "Romance"
+    ],
+    "vote_average": 5.4
+  },
+  "BILLY THE KID AND THE GREEN BAIZE VAMPIRE": {
+    "tmdb_id": 172620,
+    "tmdb_title": "Billy the Kid and the Green Baize Vampire",
+    "tmdb_original_title": "Billy the Kid and the Green Baize Vampire",
+    "overview": "Cocky cockney snooker player Billy Kid accepts the challenge of a grudge match from Maxwell Randall (the Green Baize Vampire), six times world champion; the loser will never play professional snooker again.",
+    "poster_path": "/cjRi3sbEdKUp7W9Rzihn4XqoFJO.jpg",
+    "backdrop_path": "/lH1HdXW4TDf4ikOaV99Sipsqr8B.jpg",
+    "release_date": "1985-11-25",
+    "director": "Alan Clarke",
+    "runtime": 89,
+    "genres": [
+      "Western",
+      "Comedy",
+      "Horror",
+      "Music",
+      "Fantasy",
+      "Drama"
+    ],
+    "vote_average": 5.9
+  },
+  "BLUE VELVET": {
+    "tmdb_id": 793,
+    "tmdb_title": "Blue Velvet",
+    "tmdb_original_title": "Blue Velvet",
+    "overview": "The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.",
+    "poster_path": "/tzXuURjPzCqtA6eL0Cswq9wzFx0.jpg",
+    "backdrop_path": "/12UiL2rS5M80AhS9uiZ633iy4pB.jpg",
+    "release_date": "1986-09-19",
+    "director": "David Lynch",
+    "runtime": 120,
+    "genres": [
+      "Mystery",
+      "Thriller",
+      "Crime"
+    ],
+    "vote_average": 7.608
+  },
+  "DEF BY TEMPTATION": {
+    "tmdb_id": 71853,
+    "tmdb_title": "Def by Temptation",
+    "tmdb_original_title": "Def by Temptation",
+    "overview": "An evil succubus is preying on libidinous black men in New York, and all that stands in her way is a minister-in-training, an aspiring actor, and a cop that specializes in cases involving the supernatural.",
+    "poster_path": "/cC96OjOeYXmBF6RuePlxA709tkz.jpg",
+    "backdrop_path": "/fTPi0tXFf4BSDDdf7J9pq5V9XyG.jpg",
+    "release_date": "1990-03-23",
+    "director": "James Bond III",
+    "runtime": 95,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Romance"
+    ],
+    "vote_average": 4.7
+  },
+  "RBO Encore: Woolf Works (2026)": null,
+  "Hamlet (2026)": {
+    "tmdb_id": 843342,
+    "tmdb_title": "Hamlet",
+    "tmdb_original_title": "Hamlet",
+    "overview": "Set in a modern-day London of economic and political uncertainty, the story follows the intersecting themes of familial honor, moral duty and dynastic corruption.",
+    "poster_path": "/9hyE2dkQjuoKDwUNDBCV98NhYGm.jpg",
+    "backdrop_path": "/s8JEKHgD26NaMU20PluSJsZusqu.jpg",
+    "release_date": "2026-02-06",
+    "director": "Aneil Karia",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 5.25
   },
   "Crash (1997)": {
     "tmdb_id": 884,
@@ -17181,23 +17658,6 @@
     ],
     "vote_average": 6.465
   },
-  "Funky Stuff": null,
-  "Hamlet (2026)": {
-    "tmdb_id": 843342,
-    "tmdb_title": "Hamlet",
-    "tmdb_original_title": "Hamlet",
-    "overview": "Set in a modern-day London of economic and political uncertainty, the story follows the intersecting themes of familial honor, moral duty and dynastic corruption.",
-    "poster_path": "/9hyE2dkQjuoKDwUNDBCV98NhYGm.jpg",
-    "backdrop_path": "/s8JEKHgD26NaMU20PluSJsZusqu.jpg",
-    "release_date": "2026-02-06",
-    "director": "Aneil Karia",
-    "runtime": 113,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 5.25
-  },
-  "RBO Encore: Woolf Works (2026)": null,
   "Wasteman + Live Intro with David Jonsson and Tom Blyth": {
     "tmdb_id": 1307373,
     "tmdb_title": "Wasteman",
@@ -17255,6 +17715,7 @@
     ],
     "vote_average": 4.6
   },
+  "Dog-Friendly Screening: Wuthering Heights": null,
   "LUNCH SCREENING: COOL RUNNINGS + WINTER OLYMPICS": {
     "tmdb_id": 444974,
     "tmdb_title": "Sapporo Winter Olympics",
@@ -17299,7 +17760,7 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 6.524
+    "vote_average": 6.5
   },
   "Spare Ribs Club: Wuthering Heights": null,
   "Relaxed Screening: Casablanca": {
@@ -17316,7 +17777,7 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 8.1
+    "vote_average": 8.143
   },
   "Drink & Dine: Licorice Pizza + Pizza Night": {
     "tmdb_id": 718032,
@@ -17493,7 +17954,7 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 7.867
+    "vote_average": 7.866
   },
   "Drink & Dine: Sinners + Listening Party": {
     "tmdb_id": 1233413,
@@ -17510,13 +17971,14 @@
       "Action",
       "Thriller"
     ],
-    "vote_average": 7.5
+    "vote_average": 7.49
   },
   "Academy Awards Best Picture Winner 2026": null,
   "Club Room: Joe Pettitt Trio": null,
   "Green Screen: Power Station + discussion": null,
   "Awards Lunch: Academy Best Picture Winner 2026": null,
   "Met Opera Live: Tristan and Isolde (2026)": null,
+  "Funky Stuff": null,
   "Met Opera Encore: Tristan and Isolde (2026)": null,
   "East London Doc Club: Red Herring + Q&A": null,
   "Lunch Screening: Craft Club: The Muppets": null,
@@ -17568,8 +18030,6 @@
   "NT: The Playboy of the Western World - Knit-Along": null,
   "Teatro dell’Opera di Roma: Lohengrin": null,
   "La Scala Milan: Cosi Fan Tutte": null,
-  "Toddler Club: Lady and the Tramp (1955)": null,
-  "Valentine’s Throwback: Pretty Woman": null,
   "Toddler Club: Room on the Broom + The Gruffalo's Child": null,
   "Family Film Club: Spider-Man: Into The Spider-Verse": null,
   "Beyond: Nouvelle Vague": null,
@@ -17577,6 +18037,7 @@
   "Family Film Club: Matilda The Musical": null,
   "Toddler Club: Pip and Posy and Friends": null,
   "Toddler Club: The Scarecrows' Wedding + Tabby McTat": null,
+  "Valentine’s Throwback: Pretty Woman": null,
   "Metropolis": null,
   "Toddler Club: Dr Seuss' The Lorax": null,
   "Throwback: A Knight's Tale (25th Anniversary)": {
@@ -17598,6 +18059,23 @@
     "vote_average": 6.9
   },
   "Toddler Club: Lilo & Stitch (2002)": null,
+  "Throwback: The Fifth Element": {
+    "tmdb_id": 18,
+    "tmdb_title": "The Fifth Element",
+    "tmdb_original_title": "Le Cinquième Élément",
+    "overview": "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.",
+    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
+    "backdrop_path": "/bx1W729hyWQqNQoiq9LsX30FBf.jpg",
+    "release_date": "1997-05-02",
+    "director": "Luc Besson",
+    "runtime": 126,
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "vote_average": 7.563
+  },
   "Schroeter Eika Katappa": null,
   "Isiah Medina Shorts": null,
   "88 88": null,
@@ -17617,7 +18095,7 @@
       "Thriller",
       "Music"
     ],
-    "vote_average": 6.799
+    "vote_average": 6.817
   },
   "Preview Resurrection": {
     "tmdb_id": 10359,
@@ -17636,12 +18114,12 @@
     ],
     "vote_average": 6.113
   },
-  "FILM CLUB: IT’S NEVER OVER, JEFF BUCKLEY": null,
-  "RBO CINEMA SEASON 2025-26: WOOLF WORKS": null,
+  "Antonia Luxem Tetralogy On Falling": null,
   "FILM CLUB: CERTAIN WOMEN": null,
   "DOCHOUSE: BAFTA-NOMINATED SHORTS": null,
   "DOCHOUSE: FUKUSHIMA: A NUCLEAR NIGHTMARE": null,
   "FILM CLUB: LET THE SUNSHINE IN": null,
+  "FILM CLUB: IT’S NEVER OVER, JEFF BUCKLEY": null,
   "DOCHOUSE: NINXS": {
     "tmdb_id": 1447567,
     "tmdb_title": "Niñxs",
@@ -17674,5 +18152,21 @@
       "Fantasy"
     ],
     "vote_average": 7.042
+  },
+  "FILM CLUB: LOST IN TRANSLATION": null,
+  "DOCHOUSE: MOLLY VS THE MACHINES": {
+    "tmdb_id": 1557606,
+    "tmdb_title": "Molly vs.THE MACHINES",
+    "tmdb_original_title": "Molly vs.THE MACHINES",
+    "overview": "From a teenager’s suburban bedroom to the boardrooms of Silicon Valley, this is a story of a heartbroken father’s quest to uncover the truth behind his daughter's death and his fightback against how the most powerful corporations of the modern age operate.",
+    "poster_path": "/mArVXHRTKBSz4IfRVR3qKekYwPl.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-01",
+    "director": "Marc Silver",
+    "runtime": 83,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
   }
 }
