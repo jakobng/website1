@@ -20455,7 +20455,7 @@
       "Drama"
     ],
     "runtime": 104,
-    "vote_average": 6.5,
+    "vote_average": 6.492,
     "tmdb_countries": [
       {
         "iso_3166_1": "DK",
@@ -55650,6 +55650,1000 @@
       {
         "iso_3166_1": "NL",
         "name": "Netherlands"
+      }
+    ]
+  },
+  "センチメンタル・バリュー": {
+    "tmdb_id": 1124566,
+    "tmdb_title_jp": "センチメンタル・バリュー",
+    "tmdb_title_en": "Sentimental Value",
+    "tmdb_title_original": "Affeksjonsverdi",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Sisters Nora and Agnes reunite with their estranged father, the charismatic Gustav, a once-renowned director who offers stage actress Nora a role in what he hopes will be his comeback film. When Nora turns it down, she soon discovers he has given her part to an eager young Hollywood star.",
+    "poster_path": "/1wM3MTY4Inf6fOL5nMqPKaVTfHi.jpg",
+    "backdrop_path": "/mXlDBIHh9hBkDCMNazGV2fEPr5J.jpg",
+    "release_date": "2025-08-20",
+    "director": "ヨアキム・トリアー",
+    "director_jp": "ヨアキム・トリアー",
+    "director_en": "Joachim Trier",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 133,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TR",
+        "name": "Turkey"
+      },
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:1124566": {
+    "tmdb_id": 1124566,
+    "tmdb_title_jp": "センチメンタル・バリュー",
+    "tmdb_title_en": "Sentimental Value",
+    "tmdb_title_original": "Affeksjonsverdi",
+    "tmdb_original_language": "no",
+    "overview": "",
+    "overview_en": "Sisters Nora and Agnes reunite with their estranged father, the charismatic Gustav, a once-renowned director who offers stage actress Nora a role in what he hopes will be his comeback film. When Nora turns it down, she soon discovers he has given her part to an eager young Hollywood star.",
+    "poster_path": "/1wM3MTY4Inf6fOL5nMqPKaVTfHi.jpg",
+    "backdrop_path": "/mXlDBIHh9hBkDCMNazGV2fEPr5J.jpg",
+    "release_date": "2025-08-20",
+    "director": "ヨアキム・トリアー",
+    "director_jp": "ヨアキム・トリアー",
+    "director_en": "Joachim Trier",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 133,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TR",
+        "name": "Turkey"
+      },
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "夜勤事件 The Convenience Store": {
+    "tmdb_id": 1567203,
+    "tmdb_title_jp": "夜勤事件",
+    "tmdb_title_en": "The Convenience Store",
+    "tmdb_title_original": "夜勤事件",
+    "tmdb_original_language": "ja",
+    "overview": "その恐怖は、深夜のコンビニから始まる…実況動画は再生回数6,000万回以上！Z世代をざわつかせたホラーゲームが遂に実写映画化！",
+    "overview_en": "Tazuru is a college student working the night shift alone in a convenience store. The manager of the store, who has been missing for days, is found dead in the basement, with his eyes gouged out. Tazuru tells the police the creepy events that unfolded on the four previous nights: getting sent mysterious SD cards with disturbing videos on them, the door chime ringing with no reason, weird things on security camera, being visited by a weird old lady looking for her grandson, and a creepy ghost boy. Inspector Sawatari is initially incredulous, but then similar events start happening to him too.",
+    "poster_path": "/7wL8GlTbd9FjuBauIBUMiqfPkEo.jpg",
+    "backdrop_path": "/fPRfRAPM26KUFE1IKM0d3cywNWN.jpg",
+    "release_date": "2026-02-20",
+    "director": "永江二朗",
+    "director_jp": "永江二朗",
+    "director_en": "Jirô Nagae",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 83,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "教場 Requiem": {
+    "tmdb_id": 1557893,
+    "tmdb_title_jp": "教場 Requiem",
+    "tmdb_title_en": "Kyojo Requiem",
+    "tmdb_title_original": "教場 Requiem",
+    "tmdb_original_language": "ja",
+    "overview": "風間公親は、最後に何を見るのだろう。",
+    "overview_en": "",
+    "poster_path": "/cFwpQtlUM63U0AKpwet7OPrL7HA.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-02-20",
+    "director": "中江功",
+    "director_jp": "中江功",
+    "director_en": "Isamu Nakae",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1557893": {
+    "tmdb_id": 1557893,
+    "tmdb_title_jp": "教場 Requiem",
+    "tmdb_title_en": "Kyojo Requiem",
+    "tmdb_title_original": "教場 Requiem",
+    "tmdb_original_language": "ja",
+    "overview": "風間公親は、最後に何を見るのだろう。",
+    "overview_en": "",
+    "poster_path": "/cFwpQtlUM63U0AKpwet7OPrL7HA.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-02-20",
+    "director": "中江功",
+    "director_jp": "中江功",
+    "director_en": "Isamu Nakae",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "東方神起 20th Anniversary Film「IDENTITY」": {
+    "tmdb_id": 1576370,
+    "tmdb_title_jp": "東方神起 20th Anniversary Film『IDENTITY』",
+    "tmdb_title_en": "TVXQ! 20th Anniversary Film『IDENTITY』",
+    "tmdb_title_original": "東方神起 20th Anniversary Film『IDENTITY』",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/AmkunFWhOuZfBZY48Z9l43y0Ifw.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-02-20",
+    "director": "Kenta Tanoue",
+    "director_jp": "Kenta Tanoue",
+    "director_en": "Kenta Tanoue",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 134,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1576370": {
+    "tmdb_id": 1576370,
+    "tmdb_title_jp": "東方神起 20th Anniversary Film『IDENTITY』",
+    "tmdb_title_en": "TVXQ! 20th Anniversary Film『IDENTITY』",
+    "tmdb_title_original": "東方神起 20th Anniversary Film『IDENTITY』",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/AmkunFWhOuZfBZY48Z9l43y0Ifw.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-02-20",
+    "director": "Kenta Tanoue",
+    "director_jp": "Kenta Tanoue",
+    "director_en": "Kenta Tanoue",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 134,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "シネマ歌舞伎　歌舞伎NEXT 朧の森に棲む鬼　幸四郎版": null,
+  "長崎　閃光の影で": {
+    "tmdb_id": 1527843,
+    "tmdb_title_jp": "長崎―閃光の影で―",
+    "tmdb_title_en": "Nagasaki: In the Shadow of the Flash",
+    "tmdb_title_original": "長崎―閃光の影で―",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Nagasaki, 1945. Three nursing students, Tanaka Sumi, Ohno Atsuko, and Iwanaga Misao, return home when school is closed due to air raids, and spend some peaceful time with family and friends. However, at 11:02 AM on August 9th, the atomic bomb is dropped, and their daily lives are instantly shattered. The city is reduced to ruins, and despite their inexperience, the nursing students rush to provide medical care to the injured. Faced with the cruel reality that more lives must be buried than can be saved, the women continue to question the value and meaning of life.",
+    "poster_path": "/lqwnLi4l73zVJW9Du0aZa4mfO3g.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-01",
+    "director": "松本准平",
+    "director_jp": "松本准平",
+    "director_en": "Junpei Matsumoto",
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "War"
+    ],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1527843": {
+    "tmdb_id": 1527843,
+    "tmdb_title_jp": "長崎―閃光の影で―",
+    "tmdb_title_en": "Nagasaki: In the Shadow of the Flash",
+    "tmdb_title_original": "長崎―閃光の影で―",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Nagasaki, 1945. Three nursing students, Tanaka Sumi, Ohno Atsuko, and Iwanaga Misao, return home when school is closed due to air raids, and spend some peaceful time with family and friends. However, at 11:02 AM on August 9th, the atomic bomb is dropped, and their daily lives are instantly shattered. The city is reduced to ruins, and despite their inexperience, the nursing students rush to provide medical care to the injured. Faced with the cruel reality that more lives must be buried than can be saved, the women continue to question the value and meaning of life.",
+    "poster_path": "/lqwnLi4l73zVJW9Du0aZa4mfO3g.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-01",
+    "director": "松本准平",
+    "director_jp": "松本准平",
+    "director_en": "Junpei Matsumoto",
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "War"
+    ],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "どうしようもない10人": null,
+  "DEAD OR ZOMBIE": null,
+  "幻愛 夢の向こうに": null,
+  "〈特集上映〉ポーランド暗黒SF≪文明の終焉4部作≫": null,
+  "災 劇場版": {
+    "tmdb_id": 1521352,
+    "tmdb_title_jp": "災 劇場版",
+    "tmdb_title_en": "Sai: Disaster",
+    "tmdb_title_original": "災 劇場版",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Four people lead ordinary lives in different places, their paths never crossing. A mysterious man appears in each story, always as someone else. One moment, a cram school instructor; the next, a truck driver, a barber - his identity constantly shifting. Then, death strikes. A detective pursues the truth, closing in on a revelation...",
+    "poster_path": "/pKzKYSNhjDvf2C0AsYhco8nCVtw.jpg",
+    "backdrop_path": "/kq2Lym2qKZcbTAt4KjJYeYwVxGH.jpg",
+    "release_date": "2026-02-20",
+    "director": "関友太朗",
+    "director_jp": "関友太朗",
+    "director_en": "Yutaro Seki",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 128,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "夜勤事件[0221公開記念]": {
+    "tmdb_id": 1567203,
+    "tmdb_title_jp": "夜勤事件",
+    "tmdb_title_en": "The Convenience Store",
+    "tmdb_title_original": "夜勤事件",
+    "tmdb_original_language": "ja",
+    "overview": "その恐怖は、深夜のコンビニから始まる…実況動画は再生回数6,000万回以上！Z世代をざわつかせたホラーゲームが遂に実写映画化！",
+    "overview_en": "Tazuru is a college student working the night shift alone in a convenience store. The manager of the store, who has been missing for days, is found dead in the basement, with his eyes gouged out. Tazuru tells the police the creepy events that unfolded on the four previous nights: getting sent mysterious SD cards with disturbing videos on them, the door chime ringing with no reason, weird things on security camera, being visited by a weird old lady looking for her grandson, and a creepy ghost boy. Inspector Sawatari is initially incredulous, but then similar events start happening to him too.",
+    "poster_path": "/7wL8GlTbd9FjuBauIBUMiqfPkEo.jpg",
+    "backdrop_path": "/fPRfRAPM26KUFE1IKM0d3cywNWN.jpg",
+    "release_date": "2026-02-20",
+    "director": "永江二朗",
+    "director_jp": "永江二朗",
+    "director_en": "Jirô Nagae",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 83,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "Flow": {
+    "tmdb_id": 262610,
+    "tmdb_title_jp": "Flow",
+    "tmdb_title_en": "Flow",
+    "tmdb_title_original": "Flow",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A filmmaker talks about his work and love life with an unseen friend behind the camera. We also watch four of his short films.",
+    "poster_path": "/uqUwD865PnyxEKXVdHrHEL6bRIj.jpg",
+    "backdrop_path": "/5Re8n4DqcTTRwvzCvxbgwt6SecH.jpg",
+    "release_date": "1996-01-01",
+    "director": "Quentin Lee",
+    "director_jp": "Quentin Lee",
+    "director_en": "Quentin Lee",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "ホラー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Horror",
+      "Crime"
+    ],
+    "runtime": 80,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:262610": {
+    "tmdb_id": 262610,
+    "tmdb_title_jp": "Flow",
+    "tmdb_title_en": "Flow",
+    "tmdb_title_original": "Flow",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A filmmaker talks about his work and love life with an unseen friend behind the camera. We also watch four of his short films.",
+    "poster_path": "/uqUwD865PnyxEKXVdHrHEL6bRIj.jpg",
+    "backdrop_path": "/5Re8n4DqcTTRwvzCvxbgwt6SecH.jpg",
+    "release_date": "1996-01-01",
+    "director": "Quentin Lee",
+    "director_jp": "Quentin Lee",
+    "director_en": "Quentin Lee",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "ホラー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Horror",
+      "Crime"
+    ],
+    "runtime": 80,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "昭和残俠伝吼えろ唐獅子": {
+    "tmdb_id": 363318,
+    "tmdb_title_jp": "昭和残侠伝 吼えろ唐獅子",
+    "tmdb_title_en": "Contemporary Tales of Chivalry: Forbidden Love",
+    "tmdb_title_original": "昭和残侠伝　吼えろ唐獅子",
+    "tmdb_original_language": "ja",
+    "overview": "前橋の黒田一家に草鞋を脱いだ一匹狼の渡世人・花田秀次郎は、一宿一飯の義理から風間文三という黒田一家の若衆を追って金沢へとやってきた。文三は一家と対立する博徒一家の親分を斬り旅に出されたが、黒田親分の女房のおみのが、恋い慕う文三の後を追って逃げたことから黒田の怒りを買ったのだった。ふたりを追って秀次郎が辿りついた金沢では、ある工事権を巡り地元の三州一家と稲葉一家が対立していた。稲葉一家に草鞋を脱いだ秀次郎は、再び争いの渦中に巻き込まれるが、そんな中で、昔の恋人・加代と再会する。だが加代は、稲葉一家と敵対する三州一家の親分・三州政治の女房となっていた。秀次郎は文三とおみのの一件で無理を通した代わりに、渡世の義理で三州政治を斬ることになるが…。",
+    "overview_en": "The story of a lone wolf struggling with human compassion and duty.",
+    "poster_path": "/x9S3CDqJRUJ7LHaff7oHdGSGJWR.jpg",
+    "backdrop_path": "/pFWM9YCbyVvLxhB3K4ki5o1DKae.jpg",
+    "release_date": "1971-10-27",
+    "director": "佐伯清",
+    "director_jp": "佐伯清",
+    "director_en": "Kiyoshi Saeki",
+    "genres": [
+      "犯罪",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action"
+    ],
+    "runtime": 97,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:363318": {
+    "tmdb_id": 363318,
+    "tmdb_title_jp": "昭和残侠伝 吼えろ唐獅子",
+    "tmdb_title_en": "Contemporary Tales of Chivalry: Forbidden Love",
+    "tmdb_title_original": "昭和残侠伝　吼えろ唐獅子",
+    "tmdb_original_language": "ja",
+    "overview": "前橋の黒田一家に草鞋を脱いだ一匹狼の渡世人・花田秀次郎は、一宿一飯の義理から風間文三という黒田一家の若衆を追って金沢へとやってきた。文三は一家と対立する博徒一家の親分を斬り旅に出されたが、黒田親分の女房のおみのが、恋い慕う文三の後を追って逃げたことから黒田の怒りを買ったのだった。ふたりを追って秀次郎が辿りついた金沢では、ある工事権を巡り地元の三州一家と稲葉一家が対立していた。稲葉一家に草鞋を脱いだ秀次郎は、再び争いの渦中に巻き込まれるが、そんな中で、昔の恋人・加代と再会する。だが加代は、稲葉一家と敵対する三州一家の親分・三州政治の女房となっていた。秀次郎は文三とおみのの一件で無理を通した代わりに、渡世の義理で三州政治を斬ることになるが…。",
+    "overview_en": "The story of a lone wolf struggling with human compassion and duty.",
+    "poster_path": "/x9S3CDqJRUJ7LHaff7oHdGSGJWR.jpg",
+    "backdrop_path": "/pFWM9YCbyVvLxhB3K4ki5o1DKae.jpg",
+    "release_date": "1971-10-27",
+    "director": "佐伯清",
+    "director_jp": "佐伯清",
+    "director_en": "Kiyoshi Saeki",
+    "genres": [
+      "犯罪",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action"
+    ],
+    "runtime": 97,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "傷だらけの人生古い奴でござんす": {
+    "tmdb_id": 462279,
+    "tmdb_title_jp": "傷だらけの人生　古い奴でござんす",
+    "tmdb_title_en": "A Scarred Life 2: Blood Will Tell",
+    "tmdb_title_original": "傷だらけの人生　古い奴でござんす",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "President of the territorial yakuza organization is being manipulated by a crooked leader in the military and some capitalists Ishikiri. The plan is to get multiple family of the organized crime groups based in Osaka to war it out and order the Shima to the Onishi group of the branch to expand the territory. Now members of the same yakuza gang are forced to fight each other over territory and honor.",
+    "poster_path": "/bcKcLwiqhy9HY320WkB3i5HM10u.jpg",
+    "backdrop_path": null,
+    "release_date": "1972-01-22",
+    "director": "小沢茂弘",
+    "director_jp": "小沢茂弘",
+    "director_en": "Shigehiro Ozawa",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 92,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:462279": {
+    "tmdb_id": 462279,
+    "tmdb_title_jp": "傷だらけの人生　古い奴でござんす",
+    "tmdb_title_en": "A Scarred Life 2: Blood Will Tell",
+    "tmdb_title_original": "傷だらけの人生　古い奴でござんす",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "President of the territorial yakuza organization is being manipulated by a crooked leader in the military and some capitalists Ishikiri. The plan is to get multiple family of the organized crime groups based in Osaka to war it out and order the Shima to the Onishi group of the branch to expand the territory. Now members of the same yakuza gang are forced to fight each other over territory and honor.",
+    "poster_path": "/bcKcLwiqhy9HY320WkB3i5HM10u.jpg",
+    "backdrop_path": null,
+    "release_date": "1972-01-22",
+    "director": "小沢茂弘",
+    "director_jp": "小沢茂弘",
+    "director_en": "Shigehiro Ozawa",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 92,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ショート・パルス 5つの鼓動≪Ver.1≫": null,
+  "驚蟄無声 スケア・アウト【日本語字幕無し】": {
+    "tmdb_id": 1447971,
+    "tmdb_title_jp": "惊蛰无声",
+    "tmdb_title_en": "Scare Out",
+    "tmdb_title_original": "惊蛰无声",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "After a critical intelligence leak, a national security unit launches an intensive investigation. But successive setbacks in their arrest operations reveal a shocking truth: the trail leads back to within the unit itself. Amidst a storm of trust and betrayal, a silent battle begins to unfold...",
+    "poster_path": "/cPdZiwjdLel5DD7Nm99FcSsXuSr.jpg",
+    "backdrop_path": "/1YOLU0ZJ7lc4AiaJaLmofXIN6or.jpg",
+    "release_date": "2026-02-17",
+    "director": "チャン・イーモウ",
+    "director_jp": "チャン・イーモウ",
+    "director_en": "Zhang Yimou",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 104,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "キャロル・キング&ジェイムス・テイラー:ジャスト・コール・アウト・マイ・ネーム": {
+    "tmdb_id": 920230,
+    "tmdb_title_jp": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_en": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_original": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Explore the 50-year friendship between award-winning singer/songwriters James Taylor and Carole King. The duo famously performed at Los Angeles’s Troubadour in 1970, and in 2010 made a triumphant return performance.",
+    "poster_path": "/lJRpdHb6UdhMk4BssKbJDJIbLbU.jpg",
+    "backdrop_path": "/uzJ7WZrE1yWb7poTOXCtB3glDqk.jpg",
+    "release_date": "2022-01-02",
+    "director": "フランク・マーシャル",
+    "director_jp": "フランク・マーシャル",
+    "director_en": "Frank Marshall",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 97,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ブーニン　天才ピアニストの沈黙と再生": null,
+  "『キャロル・キング&ジェイムス・テイラー:ジャスト・コール・アウト・マイ・ネーム』トークイベント": {
+    "tmdb_id": 920230,
+    "tmdb_title_jp": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_en": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_original": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Explore the 50-year friendship between award-winning singer/songwriters James Taylor and Carole King. The duo famously performed at Los Angeles’s Troubadour in 1970, and in 2010 made a triumphant return performance.",
+    "poster_path": "/lJRpdHb6UdhMk4BssKbJDJIbLbU.jpg",
+    "backdrop_path": "/uzJ7WZrE1yWb7poTOXCtB3glDqk.jpg",
+    "release_date": "2022-01-02",
+    "director": "フランク・マーシャル",
+    "director_jp": "フランク・マーシャル",
+    "director_en": "Frank Marshall",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 97,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "「なりすま師」同時上映「ヒューマンエラー」": null,
+  "明日を夜に捨てて": {
+    "tmdb_id": 1306449,
+    "tmdb_title_jp": "明日を夜に捨てて",
+    "tmdb_title_en": "A Wasted Night",
+    "tmdb_title_original": "明日を夜に捨てて",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Aya and Asuka work in the sex industry. Despite clashing personalities, they somehow get along, spending every spare moment chatting aimlessly as they hang out in coffee shops, smoke together outside, or ride together in their work van. One day, the van breaks down, and they find themselves walking through the city at night. Wandering aimlessly and talking, their trivial chatter gradually takes on a greater depth.",
+    "poster_path": "/7WRixHMvPlPgHIa7ZxjI9o5ZFBB.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-07-16",
+    "director": "Zhang Suming",
+    "director_jp": "Zhang Suming",
+    "director_en": "Zhang Suming",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 60,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1306449": {
+    "tmdb_id": 1306449,
+    "tmdb_title_jp": "明日を夜に捨てて",
+    "tmdb_title_en": "A Wasted Night",
+    "tmdb_title_original": "明日を夜に捨てて",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Aya and Asuka work in the sex industry. Despite clashing personalities, they somehow get along, spending every spare moment chatting aimlessly as they hang out in coffee shops, smoke together outside, or ride together in their work van. One day, the van breaks down, and they find themselves walking through the city at night. Wandering aimlessly and talking, their trivial chatter gradually takes on a greater depth.",
+    "poster_path": "/7WRixHMvPlPgHIa7ZxjI9o5ZFBB.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-07-16",
+    "director": "Zhang Suming",
+    "director_jp": "Zhang Suming",
+    "director_en": "Zhang Suming",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 60,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "CatVideoFest": {
+    "tmdb_id": 1143394,
+    "tmdb_title_jp": "CatVideoFest 2023",
+    "tmdb_title_en": "Cat Video Fest 2023",
+    "tmdb_title_original": "CatVideoFest 2023",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "CatVideoFest is a compilation reel of the latest and best cat videos culled from countless hours of unique submissions and sourced animations, music videos, and classic internet powerhouses. CatVideoFest is a joyous communal experience, only available in theaters, and raises money for cats in need through partnerships with local cat charities, animal welfare organizations, and shelters to best serve cats in the area.",
+    "poster_path": "/Ac6jSINcNz2Etzyju0eXUCwcgR9.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-08-01",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 70,
+    "vote_average": 7.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1143394": {
+    "tmdb_id": 1143394,
+    "tmdb_title_jp": "CatVideoFest 2023",
+    "tmdb_title_en": "Cat Video Fest 2023",
+    "tmdb_title_original": "CatVideoFest 2023",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "CatVideoFest is a compilation reel of the latest and best cat videos culled from countless hours of unique submissions and sourced animations, music videos, and classic internet powerhouses. CatVideoFest is a joyous communal experience, only available in theaters, and raises money for cats in need through partnerships with local cat charities, animal welfare organizations, and shelters to best serve cats in the area.",
+    "poster_path": "/Ac6jSINcNz2Etzyju0eXUCwcgR9.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-08-01",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 70,
+    "vote_average": 7.0,
+    "tmdb_countries": []
+  },
+  "キャロル・キング＆ジェイムス・テイラー：ジャスト・コール・アウト・マイ・ネーム": null,
+  "【緊急上映】REVOLUTION＋１": {
+    "tmdb_id": 1026301,
+    "tmdb_title_jp": "REVOLUTION＋1",
+    "tmdb_title_en": "REVOLUTION+1",
+    "tmdb_title_original": "REVOLUTION＋1",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Tatsuya Kawakami's mother becomes a member of a religious group after her husband commits suicide, and makes a large donation to the organization. Her three children are forced to live in poverty, and her eldest son, who is blind in one eye due to illness, takes his own life. Kawakami comes to believe that the religious group has ruined his life, so he creates a homemade gun and carries out an assassination plot against former prime minister Shinzo Abe, who has close ties to the religious group, which has been accused of siphoning off money from its members.",
+    "poster_path": "/uxlJUyYVaDNC0NlVvyeT6pNdho9.jpg",
+    "backdrop_path": "/jxcEV0jXQMutd5EqNw0juuYi5wt.jpg",
+    "release_date": "2023-03-11",
+    "director": "足立正生",
+    "director_jp": "足立正生",
+    "director_en": "Masao Adachi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 80,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ポーラX": {
+    "tmdb_id": 35717,
+    "tmdb_title_jp": "ポーラX",
+    "tmdb_title_en": "Pola X",
+    "tmdb_title_original": "Pola X",
+    "tmdb_original_language": "fr",
+    "overview": "『ポンヌフの恋人』の鬼才レオス・カラックスが、発表当時“狂気の書”と評されたハーマン・メルヴィルの『ピエール』を映画化。森に囲まれたノルマンディの城館で母と暮らす、仮面小説家のピエール。婚約者リュシーとの結婚も間近に控えたある日、彼は自分の姉だと名乗る黒髪の女と出会う……。",
+    "overview_en": "A writer leaves his upper-class life and journeys with a woman claiming to be his sister, and her two friends.",
+    "poster_path": "/7sTR8jWXd1PTfjRWHd5gKmNdYKC.jpg",
+    "backdrop_path": "/1GLqS5pRl3xpgrPjrIkFpQZH1IZ.jpg",
+    "release_date": "1999-05-12",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 134,
+    "vote_average": 5.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "tmdb:35717": {
+    "tmdb_id": 35717,
+    "tmdb_title_jp": "ポーラX",
+    "tmdb_title_en": "Pola X",
+    "tmdb_title_original": "Pola X",
+    "tmdb_original_language": "fr",
+    "overview": "『ポンヌフの恋人』の鬼才レオス・カラックスが、発表当時“狂気の書”と評されたハーマン・メルヴィルの『ピエール』を映画化。森に囲まれたノルマンディの城館で母と暮らす、仮面小説家のピエール。婚約者リュシーとの結婚も間近に控えたある日、彼は自分の姉だと名乗る黒髪の女と出会う……。",
+    "overview_en": "A writer leaves his upper-class life and journeys with a woman claiming to be his sister, and her two friends.",
+    "poster_path": "/7sTR8jWXd1PTfjRWHd5gKmNdYKC.jpg",
+    "backdrop_path": "/1GLqS5pRl3xpgrPjrIkFpQZH1IZ.jpg",
+    "release_date": "1999-05-12",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 134,
+    "vote_average": 5.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "シアターフニャオ×「14歳の栞」": null,
+  "メン＆チキン": {
+    "tmdb_id": 296313,
+    "tmdb_title_jp": "メン＆チキン",
+    "tmdb_title_en": "Men & Chicken",
+    "tmdb_title_original": "Mænd & høns",
+    "tmdb_original_language": "da",
+    "overview": "",
+    "overview_en": "Men & Chicken is a black comedy about two outcast brothers who, by getting to know their unknown family, discover a horrible truth about themselves and their relatives.",
+    "poster_path": "/lGD30CMxSujSeNv4FZndddr1xSA.jpg",
+    "backdrop_path": "/coAxeGkmdEXhsbSdpSsjg0i4cRn.jpg",
+    "release_date": "2015-02-05",
+    "director": "Anders Thomas Jensen",
+    "director_jp": "Anders Thomas Jensen",
+    "director_en": "Anders Thomas Jensen",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 104,
+    "vote_average": 6.492,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "tmdb:1447971": {
+    "tmdb_id": 1447971,
+    "tmdb_title_jp": "惊蛰无声",
+    "tmdb_title_en": "Scare Out",
+    "tmdb_title_original": "惊蛰无声",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "After a critical intelligence leak, a national security unit launches an intensive investigation. But successive setbacks in their arrest operations reveal a shocking truth: the trail leads back to within the unit itself. Amidst a storm of trust and betrayal, a silent battle begins to unfold...",
+    "poster_path": "/cPdZiwjdLel5DD7Nm99FcSsXuSr.jpg",
+    "backdrop_path": "/1YOLU0ZJ7lc4AiaJaLmofXIN6or.jpg",
+    "release_date": "2026-02-17",
+    "director": "チャン・イーモウ",
+    "director_jp": "チャン・イーモウ",
+    "director_en": "Zhang Yimou",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 104,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:920230": {
+    "tmdb_id": 920230,
+    "tmdb_title_jp": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_en": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_original": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Explore the 50-year friendship between award-winning singer/songwriters James Taylor and Carole King. The duo famously performed at Los Angeles’s Troubadour in 1970, and in 2010 made a triumphant return performance.",
+    "poster_path": "/lJRpdHb6UdhMk4BssKbJDJIbLbU.jpg",
+    "backdrop_path": "/uzJ7WZrE1yWb7poTOXCtB3glDqk.jpg",
+    "release_date": "2022-01-02",
+    "director": "フランク・マーシャル",
+    "director_jp": "フランク・マーシャル",
+    "director_en": "Frank Marshall",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 97,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
       }
     ]
   }

@@ -5667,5 +5667,92 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "シネマ歌舞伎　歌舞伎NEXT 朧の森に棲む鬼　幸四郎版": {
+    "english_title": "Cinema Kabuki: Kabuki NEXT - Lord of the Lies (Koshiro Version)",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "シネマ歌舞伎 歌舞伎NEXT 朧の森に棲む鬼 幸四郎版",
+    "director": "Hidenori Inoue",
+    "country": "Japan",
+    "failed": true
+  },
+  "どうしようもない10人": {
+    "english_title": "The Hopeless 10",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "どうしようもない10人",
+    "director": "Hiroyasu Kitagawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "DEAD OR ZOMBIE": {
+    "english_title": "DEAD OR ZOMBIE",
+    "release_year": 2022,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "DEAD OR ZOMBIE ゾンビが発生しようとも、ボクたちは自己評価を変えない",
+    "director": "Tomoya Sato",
+    "country": "Japan",
+    "failed": true
+  },
+  "ショート・パルス 5つの鼓動≪Ver.1≫": {
+    "english_title": "Short Pulse",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ショート・パルス 5つの鼓動",
+    "director": "Neo Sora, Yorgos Lanthimos, Jonathan Glazer, Alice Rohrwacher, JR",
+    "country": "Japan",
+    "failed": true
+  },
+  "驚蟄無声 スケア・アウト【日本語字幕無し】": {
+    "english_title": "Scare Out",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "惊蛰无声",
+    "director": "Zhang Yimou",
+    "country": "China"
+  },
+  "キャロル・キング&ジェイムス・テイラー:ジャスト・コール・アウト・マイ・ネーム": {
+    "english_title": "Carole King & James Taylor: Just Call Out My Name",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Carole King & James Taylor: Just Call Out My Name",
+    "director": "Frank Marshall",
+    "country": "United States"
+  },
+  "ブーニン　天才ピアニストの沈黙と再生": {
+    "english_title": "Bunin: The Silence and Rebirth of a Genius Pianist",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ブーニン　天才ピアニストの沈黙と再生",
+    "director": "Azusa Nakajima",
+    "country": "Japan",
+    "failed": true
+  },
+  "『キャロル・キング&ジェイムス・テイラー:ジャスト・コール・アウト・マイ・ネーム』トークイベント": {
+    "english_title": "Carole King & James Taylor: Just Call Out My Name",
+    "release_year": 2022,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Carole King & James Taylor: Just Call Out My Name",
+    "director": "Frank Marshall",
+    "country": "USA"
+  },
+  "「なりすま師」同時上映「ヒューマンエラー」": {
+    "english_title": "Narisumashi / Human Error",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "「なりすま師」同時上映「ヒューマンエラー」",
+    "director": "Akari Katsuki",
+    "country": "Japan",
+    "failed": true
   }
 }
