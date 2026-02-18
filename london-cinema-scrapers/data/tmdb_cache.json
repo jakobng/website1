@@ -9280,23 +9280,6 @@
     ],
     "vote_average": 0.0
   },
-  "Resurrection + Pre-recorded Director's Intro": {
-    "tmdb_id": 878608,
-    "tmdb_title": "Resurrection",
-    "tmdb_original_title": "狂野时代",
-    "overview": "In a future where humanity has surrendered its ability to dream in exchange for immortality, an outcast finds illusion, nightmarish visions, and beauty in an intoxicating world of his own making.",
-    "poster_path": "/wBXvXc7CoE1TCEL96VzMkMQKYG9.jpg",
-    "backdrop_path": "/2JcKTEP0L6EXk88ITGVGU4uo7hm.jpg",
-    "release_date": "2025-11-22",
-    "director": "Bi Gan",
-    "runtime": 160,
-    "genres": [
-      "Drama",
-      "Science Fiction",
-      "Fantasy"
-    ],
-    "vote_average": 7.0
-  },
   "Room on the Broom + Zog and the Flying Doctors (U)": {
     "tmdb_id": 152581,
     "tmdb_title": "Room on the Broom",
@@ -11094,22 +11077,6 @@
       "Music"
     ],
     "vote_average": 7.165
-  },
-  "It's Never Over, Jeff Buckley": {
-    "tmdb_id": 1400381,
-    "tmdb_title": "It's Never Over, Jeff Buckley",
-    "tmdb_original_title": "It's Never Over, Jeff Buckley",
-    "overview": "Rising musician Jeff Buckley had only released one album when he died suddenly in 1997. Now, never-before-seen footage, exclusive voice messages, and accounts from those closest to him offer a portrait of the captivating singer.",
-    "poster_path": "/rrKe8bC6UKFKvfZHvbwA9Bq5hkR.jpg",
-    "backdrop_path": "/qfx7A90iIKMUc4VhIRZhNzU6iTY.jpg",
-    "release_date": "2025-08-08",
-    "director": "Amy J. Berg",
-    "runtime": 106,
-    "genres": [
-      "Documentary",
-      "Music"
-    ],
-    "vote_average": 7.9
   },
   "Drink & Dine: It's Never Over, Jeff Buckley": {
     "tmdb_id": 1400381,
@@ -16584,25 +16551,6 @@
     ],
     "vote_average": 7.9
   },
-  "Zootropolis 2": {
-    "tmdb_id": 1084242,
-    "tmdb_title": "Zootopia 2",
-    "tmdb_original_title": "Zootopia 2",
-    "overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
-    "poster_path": "/oJ7g2CifqpStmoYQyaLQgEU32qO.jpg",
-    "backdrop_path": "/7nfpkR9XsQ1lBNCXSSHxGV7Dkxe.jpg",
-    "release_date": "2025-11-26",
-    "director": "Jared Bush",
-    "runtime": 108,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Adventure",
-      "Family",
-      "Mystery"
-    ],
-    "vote_average": 7.611
-  },
   "Diosa (Goddess) + Q&A": {
     "tmdb_id": 1318589,
     "tmdb_title": "Goddess",
@@ -17111,6 +17059,365 @@
     ],
     "vote_average": 0.0
   },
+  "The Lego Movie": {
+    "tmdb_id": 137106,
+    "tmdb_title": "The Lego Movie",
+    "tmdb_original_title": "The Lego Movie",
+    "overview": "An ordinary Lego mini-figure, mistakenly thought to be the extraordinary MasterBuilder, is recruited to join a quest to stop an evil Lego tyrant from conquering the universe.",
+    "poster_path": "/lbctonEnewCYZ4FYoTZhs8cidAl.jpg",
+    "backdrop_path": "/6gI1dAkOaUQ6659OdRPsTLlsem5.jpg",
+    "release_date": "2014-02-06",
+    "director": "Phil Lord",
+    "runtime": 100,
+    "genres": [
+      "Animation",
+      "Family",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "vote_average": 7.421
+  },
+  "Magazine Dreams": {
+    "tmdb_id": 784524,
+    "tmdb_title": "Magazine Dreams",
+    "tmdb_original_title": "Magazine Dreams",
+    "overview": "Aspiring bodybuilder Killian Maddox struggles to find human connection in an exploration of celebrity and violence. Nothing deters him from his fiercely protected dream of superstardom, not even the doctors who warn him of the permanent damage he causes to himself with his quest.",
+    "poster_path": "/vSidx9NHKuQIPEQ4yI9b9zkTeh3.jpg",
+    "backdrop_path": "/bgfqWW9mLs24hXuqiIcxU1j7Fgd.jpg",
+    "release_date": "2025-03-21",
+    "director": "Elijah Bynum",
+    "runtime": 123,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.753
+  },
+  "The Long Goodbye": {
+    "tmdb_id": 1847,
+    "tmdb_title": "The Long Goodbye",
+    "tmdb_original_title": "The Long Goodbye",
+    "overview": "In 1970s Hollywood, Detective Philip Marlowe tries to help a friend who is accused of murdering his wife.",
+    "poster_path": "/oBhUK54yBJ0aH6u9zCzSV5iV7OP.jpg",
+    "backdrop_path": "/g3KOnOycUThwV4PRjtiAK0CuzID.jpg",
+    "release_date": "1973-03-08",
+    "director": "Robert Altman",
+    "runtime": 112,
+    "genres": [
+      "Mystery",
+      "Drama",
+      "Crime"
+    ],
+    "vote_average": 7.403
+  },
+  "The Golden Child": {
+    "tmdb_id": 10136,
+    "tmdb_title": "The Golden Child",
+    "tmdb_original_title": "The Golden Child",
+    "overview": "After a Tibetan boy, the mystical Golden Child, is kidnapped by the evil Sardo Numspa, humankind's fate hangs in the balance. On the other side of the world in Los Angeles, the priestess Kee Nang seeks the Chosen One, who will save the boy from death. When Nang sees social worker Chandler Jarrell on television discussing his ability to find missing children, she solicits his expertise, despite his skepticism over being \"chosen.\"",
+    "poster_path": "/9gPphtcGmna90U9CEsWlUVaSkAw.jpg",
+    "backdrop_path": "/wCT10p7jpFF6V0RBt1Fsl5NEqA6.jpg",
+    "release_date": "1986-12-12",
+    "director": "Michael Ritchie",
+    "runtime": 94,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "vote_average": 5.936
+  },
+  "Onibaba": {
+    "tmdb_id": 3763,
+    "tmdb_title": "Onibaba",
+    "tmdb_original_title": "鬼婆",
+    "overview": "While her son, Kichi, is away at war, a woman and her daughter-in-law survive by killing samurai who stray into their swamp, then selling whatever valuables they find. Both are devastated when they learn that Kichi has died, but his wife soon begins an affair with a neighbor who survived the war, Hachi. The mother disapproves and, when she can't steal Hachi for herself, tries to scare her daughter-in-law with a mysterious mask from a dead samurai.",
+    "poster_path": "/xyPLG53OodhJtvfQEfcmC43l16O.jpg",
+    "backdrop_path": "/wZwA7HN8ahWsz5AGsTR5I0UdsjZ.jpg",
+    "release_date": "1964-11-21",
+    "director": "Kaneto Shindō",
+    "runtime": 105,
+    "genres": [
+      "Horror"
+    ],
+    "vote_average": 7.669
+  },
+  "Carers & Babies: If I Had Legs I'd Kick You": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
+    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.506
+  },
+  "Carers & Babies: The Testament of Ann Lee": {
+    "tmdb_id": 1401281,
+    "tmdb_title": "The Testament of Ann Lee",
+    "tmdb_original_title": "The Testament of Ann Lee",
+    "overview": "The extraordinary true legend of Ann Lee, founder of the devotional sect known as the Shakers.",
+    "poster_path": "/hU1frHnDwJQ3YDERVppxTLvHjc7.jpg",
+    "backdrop_path": "/r6rCEYFdk8FcKc5x9zJFJUSPGJg.jpg",
+    "release_date": "2025-12-25",
+    "director": "Mona Fastvold",
+    "runtime": 137,
+    "genres": [
+      "Drama",
+      "History",
+      "Music"
+    ],
+    "vote_average": 7.0
+  },
+  "Journey + A Wedding Suit (12A*)": {
+    "tmdb_id": 291572,
+    "tmdb_title": "Journey",
+    "tmdb_original_title": "Journey",
+    "overview": "Deserted by their mother, a young boy and his sister discover the true meaning of family while living with their grandfather.",
+    "poster_path": "/gXqX2K7oRHbKrQSCLGwO341Tfzn.jpg",
+    "backdrop_path": "/eX2pJW98rkZvD6IUh8P72Kmn9w8.jpg",
+    "release_date": "1995-12-10",
+    "director": "Tom McLoughlin",
+    "runtime": 96,
+    "genres": [
+      "Drama",
+      "TV Movie"
+    ],
+    "vote_average": 6.2
+  },
+  "CARERS & BABIES: STITCH HEAD": {
+    "tmdb_id": 1214130,
+    "tmdb_title": "Stitch Head",
+    "tmdb_original_title": "Stitch Head",
+    "overview": "Stitch Head was the first creature brought to 'almost life' by mad professor Erasmus. In the years since, he’s become nursemaid to the master’s ever-growing menagerie of neglected creatures, tasked with teaching them to suppress their 'inner monster' and hide out in the castle — away from prying eyes and itchy pitchfork fingers, of the village mob in the valley below. But when grubby circus impresario Fulbert Freakfinder arrives offering Stitch Head a starring role in his freak show, our hero is tempted by the promise of love and acceptance.",
+    "poster_path": "/p0ZOIaQ8oLEGmQVrYcmvIOUuSqs.jpg",
+    "backdrop_path": "/zIFFlcvilrrbUlveEbIsFAtUfGT.jpg",
+    "release_date": "2025-10-16",
+    "director": "Steve Hudson",
+    "runtime": 91,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Family",
+      "Comedy"
+    ],
+    "vote_average": 7.0
+  },
+  "Springsteen: Deliver Me from Nowhere": {
+    "tmdb_id": 1230368,
+    "tmdb_title": "Springsteen: Deliver Me from Nowhere",
+    "tmdb_original_title": "Springsteen: Deliver Me from Nowhere",
+    "overview": "Bruce Springsteen, a young musician on the cusp of global superstardom, struggles to reconcile the pressures of success with the ghosts of his past.",
+    "poster_path": "/csBV3eq4RDjNg1acNQ8kwOZyPlZ.jpg",
+    "backdrop_path": "/oOczvrnhpXUmqCbyKYFj4FQExAo.jpg",
+    "release_date": "2025-10-22",
+    "director": "Scott Cooper",
+    "runtime": 120,
+    "genres": [
+      "Drama",
+      "Music"
+    ],
+    "vote_average": 6.8
+  },
+  "Odyssey": {
+    "tmdb_id": 1330747,
+    "tmdb_title": "Odyssey",
+    "tmdb_original_title": "Odyssey",
+    "overview": "Natasha Flynn, a coke-fueled London estate agent, hides her crumbling life behind luxury. When loan sharks offer cash to hide a kidnapped agent, she's dragged into London's seedy underworld, leading to a bloody, chaotic showdown.",
+    "poster_path": "/4kx1Umb1IYdhNCNJmvtRQNjp2wB.jpg",
+    "backdrop_path": "/zmuX9eLqFsdvAMsvvPy9OHu5TPR.jpg",
+    "release_date": "2025-11-07",
+    "director": "Gerard Johnson",
+    "runtime": 110,
+    "genres": [
+      "Thriller",
+      "Crime"
+    ],
+    "vote_average": 4.6
+  },
+  "Dead of Winter": {
+    "tmdb_id": 1235746,
+    "tmdb_title": "Dead of Winter",
+    "tmdb_original_title": "Dead of Winter",
+    "overview": "A widowed fisherwoman, travelling alone through snowbound northern Minnesota, interrupts the kidnapping of a teenage girl. Hours from the nearest town and with no phone service, she realizes that she is the young girl's only hope.",
+    "poster_path": "/5DcrN62sGAiRJxt8rXSRlSRLwIE.jpg",
+    "backdrop_path": "/ajdB8AoHKrYlOR4yMDMZYLFyfdj.jpg",
+    "release_date": "2025-09-23",
+    "director": "Brian Kirk",
+    "runtime": 98,
+    "genres": [
+      "Thriller",
+      "Action"
+    ],
+    "vote_average": 6.462
+  },
+  "MilkTea presents – UK Premiere: Last Days": {
+    "tmdb_id": 1093402,
+    "tmdb_title": "Last Days",
+    "tmdb_original_title": "Last Days",
+    "overview": "Determined to fulfill his life’s mission, 26-year-old John Allen Chau embarks on a dangerous adventure across the globe to convert the uncontacted tribe of North Sentinel Island to Christianity, while a detective from the Andaman Islands races to stop him before he does harm to himself or the tribe.",
+    "poster_path": "/kg0FHevBu2SiSa3i9DtOxSa1vNr.jpg",
+    "backdrop_path": "/9Wk2Uq8tpRad5peHws93L2wo60V.jpg",
+    "release_date": "2025-10-24",
+    "director": "Justin Lin",
+    "runtime": 120,
+    "genres": [
+      "Drama",
+      "Action",
+      "Adventure"
+    ],
+    "vote_average": 7.3
+  },
+  "THE GIRL WHO LEAPT THROUGH TIME": {
+    "tmdb_id": 62385,
+    "tmdb_title": "The Girl Who Leapt Through Time",
+    "tmdb_original_title": "時をかける少女",
+    "overview": "Kazuko Yoshiyama is a third-year junior-high-school student. One day, while cleaning the lab, she smells lavender and faints. From then on, she has the power to travel through time.",
+    "poster_path": "/7zMGrEqPXFQbDilDKXAXUirKN2Z.jpg",
+    "backdrop_path": "/hyTOL3dpF42doI9dnQy8cho8qL0.jpg",
+    "release_date": "1983-07-16",
+    "director": "Nobuhiko Obayashi",
+    "runtime": 104,
+    "genres": [
+      "Science Fiction",
+      "Romance"
+    ],
+    "vote_average": 6.7
+  },
+  "THE STABILIZER": {
+    "tmdb_id": 81468,
+    "tmdb_title": "The Stabilizer",
+    "tmdb_original_title": "Segi Tiga Emas",
+    "overview": "Peter Goldson, aka The Stabilizer, searches for drug smuggler Greg Rainmaker. Rainmaker killed Goldson's fiancee by kicking her with his spiked shoes, and now Goldson wants revenge. Meanwhile, Rainmaker has kidnapped the famous Professor Protost, and the Stabilizer teams up with his daughter Christina to save the Professor and bring Rainmaker down for good.",
+    "poster_path": "/tFKZeAFsQKddJ1RJNKzZgWxYsRy.jpg",
+    "backdrop_path": "/dyAF9NWZ0l9MoXjWK4qSbFKkavK.jpg",
+    "release_date": "1986-07-04",
+    "director": "Arizal",
+    "runtime": 87,
+    "genres": [
+      "Action"
+    ],
+    "vote_average": 5.1
+  },
+  "Wasteman + Live Intro with David Jonsson and Tom Blyth": {
+    "tmdb_id": 1307373,
+    "tmdb_title": "Wasteman",
+    "tmdb_original_title": "Wasteman",
+    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
+    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
+    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
+    "release_date": "2026-02-20",
+    "director": "Cal McMau",
+    "runtime": 90,
+    "genres": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "If I Had Legs I'd Kick You + Rose Byrne Q&A": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
+    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.506
+  },
+  "Members’ Preview: How To Make A Killing": {
+    "tmdb_id": 467905,
+    "tmdb_title": "How to Make a Killing",
+    "tmdb_original_title": "How to Make a Killing",
+    "overview": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
+    "poster_path": "/kw7x5mSmHhoeeqwXLwXTBsofD1N.jpg",
+    "backdrop_path": "/vuaPZ4IbsIRr2wDARZT7rFQ5CgP.jpg",
+    "release_date": "2026-02-20",
+    "director": "John Patton Ford",
+    "runtime": 109,
+    "genres": [
+      "Comedy",
+      "Thriller",
+      "Drama"
+    ],
+    "vote_average": 6.0
+  },
+  "WASTEMAN": {
+    "tmdb_id": 1307373,
+    "tmdb_title": "Wasteman",
+    "tmdb_original_title": "Wasteman",
+    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
+    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
+    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
+    "release_date": "2026-02-20",
+    "director": "Cal McMau",
+    "runtime": 90,
+    "genres": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "GOOD LUCK, HAVE FUN, DON'T DIE": {
+    "tmdb_id": 1119449,
+    "tmdb_title": "Good Luck, Have Fun, Don't Die",
+    "tmdb_original_title": "Good Luck, Have Fun, Don't Die",
+    "overview": "A man claiming to be from the future takes the patrons of an iconic Los Angeles diner hostage in search of unlikely recruits in a quest to save the world.",
+    "poster_path": "/rWcfOdY7TU6lTdazWj0ebDZnAfO.jpg",
+    "backdrop_path": "/yjOSpDQe8tzr8easpjTFVoQXsOX.jpg",
+    "release_date": "2026-02-13",
+    "director": "Gore Verbinski",
+    "runtime": 134,
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "vote_average": 7.722
+  },
+  "DOCHOUSE: NINXS": {
+    "tmdb_id": 1447567,
+    "tmdb_title": "Niñxs",
+    "tmdb_original_title": "Niñxs",
+    "overview": "At the foot of Tepozteco, a sacred hill that governs the winds and fertility, lies the small town of Tepoztlán. Against this backdrop, fifteen-year-old Karla's body and mind are undergoing a revolution.",
+    "poster_path": "/3CMuNTwcGL2PXOREItE6OQo60UJ.jpg",
+    "backdrop_path": "/taS81CrpPak95vgMHfmxkAAma5u.jpg",
+    "release_date": "2025-04-05",
+    "director": "Kani Lapuerta",
+    "runtime": 86,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "MOLLY VS THE MACHINES": {
+    "tmdb_id": 1557606,
+    "tmdb_title": "Molly vs.THE MACHINES",
+    "tmdb_original_title": "Molly vs.THE MACHINES",
+    "overview": "From a teenager’s suburban bedroom to the boardrooms of Silicon Valley, this is a story of a heartbroken father’s quest to uncover the truth behind his daughter's death and his fightback against how the most powerful corporations of the modern age operate.",
+    "poster_path": "/mArVXHRTKBSz4IfRVR3qKekYwPl.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-01",
+    "director": "Marc Silver",
+    "runtime": 83,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
   "Cine-Real presents: When Harry Met Sally": {
     "tmdb_id": 639,
     "tmdb_title": "When Harry Met Sally...",
@@ -17126,7 +17433,7 @@
       "Romance",
       "Drama"
     ],
-    "vote_average": 7.403
+    "vote_average": 7.404
   },
   "THE MOMENT with an introduction from Aidan Zamiri and Charli XCX": null,
   "Cine-real presents: Casablanca": {
@@ -17143,7 +17450,7 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 8.144
+    "vote_average": 8.1
   },
   "Power Station + director Q&A": {
     "tmdb_id": 1480450,
@@ -17179,11 +17486,27 @@
   },
   "Pitchblack Playback: J Dilla 'Donuts' (20th Anniversary)": null,
   "Members Only: Friendship Collage Workshop": null,
+  "Pitchblack Playback: Carole King 'Tapestry' + Nick Drake 'Bryter Layter'": null,
   "Little Amélie - subtitled": null,
-  "Little Amélie - dubbed": null,
   "Industry Panel: Intimacy Coordination": null,
   "Fantasia": null,
   "Film Exposure Night": null,
+  "Koyaanisqatsi": {
+    "tmdb_id": 11314,
+    "tmdb_title": "Koyaanisqatsi",
+    "tmdb_original_title": "Koyaanisqatsi",
+    "overview": "Takes us to locations all around the US and shows us the heavy toll that modern technology is having on humans and the earth. The visual tone poem contains neither dialogue nor a vocalized narration: its tone is set by the juxtaposition of images and the exceptional music by Philip Glass.",
+    "poster_path": "/6zCNciRcob8lwuydVXgq0esla8L.jpg",
+    "backdrop_path": "/84E96lyR81OvUjCimcrfuzn9er5.jpg",
+    "release_date": "1983-04-27",
+    "director": "Godfrey Reggio",
+    "runtime": 86,
+    "genres": [
+      "Documentary",
+      "Music"
+    ],
+    "vote_average": 7.868
+  },
   "We Are Doc Women presents: Still Pushing Pineapples + Q&A": {
     "tmdb_id": 1480460,
     "tmdb_title": "Still Pushing Pineapples",
@@ -17222,28 +17545,8 @@
   "Members' sake & cheese tasting": null,
   "Video Bazaar presents He Who Gets Slapped w/ Live Score": null,
   "Electric Scream!: Wuthering Heights": null,
-  "The Lego Movie": {
-    "tmdb_id": 137106,
-    "tmdb_title": "The Lego Movie",
-    "tmdb_original_title": "The Lego Movie",
-    "overview": "An ordinary Lego mini-figure, mistakenly thought to be the extraordinary MasterBuilder, is recruited to join a quest to stop an evil Lego tyrant from conquering the universe.",
-    "poster_path": "/lbctonEnewCYZ4FYoTZhs8cidAl.jpg",
-    "backdrop_path": "/6gI1dAkOaUQ6659OdRPsTLlsem5.jpg",
-    "release_date": "2014-02-06",
-    "director": "Phil Lord",
-    "runtime": 100,
-    "genres": [
-      "Animation",
-      "Family",
-      "Adventure",
-      "Comedy",
-      "Fantasy"
-    ],
-    "vote_average": 7.421
-  },
   "Looney Tunes: The Day The World Blew Up": null,
-  "The Miraculous Transformation of the Working Class Into Foreigners - I'm Migrant Film Festival": null,
-  "RuPaul's Drag Race: UK vs. the World Series 3.": null,
+  "Zootropolis 2": null,
   "Bar Trash 200: PLAN 9 FROM OUTER SPACE (1958)": {
     "tmdb_id": 10513,
     "tmdb_title": "Plan 9 from Outer Space",
@@ -17260,29 +17563,16 @@
     ],
     "vote_average": 4.203
   },
+  "It's Never Over, Jeff Buckley": null,
   "Sumud / Life endures: Three Stories from Palestine - I'm Migrant Film Festival": null,
   "Some Like it Swing": null,
   "Six Nations": null,
   "Fractured Horizons: Three stories of migration and the desire for refuge - I'm Migrant Film Festival": null,
   "Home Truths: Shorts exploring relationships and private lives - I'm Migrant Film Festival": null,
+  "RuPaul's Drag Race: UK vs. the World Series 3.": null,
   "Bar Trash: SCARECROW IN A GARDEN OF CUCUMBERS (1972) with Avery McNeilly": null,
   "Wuthering Heights: Screening + Book Club Presented by Girls in Film and It's Hardback Out Here": null,
   "Im Migrant: Koutaiba al Janabi and Nabeel Yasin - I'm Migrant Film Festival": null,
-  "Magazine Dreams": {
-    "tmdb_id": 784524,
-    "tmdb_title": "Magazine Dreams",
-    "tmdb_original_title": "Magazine Dreams",
-    "overview": "Aspiring bodybuilder Killian Maddox struggles to find human connection in an exploration of celebrity and violence. Nothing deters him from his fiercely protected dream of superstardom, not even the doctors who warn him of the permanent damage he causes to himself with his quest.",
-    "poster_path": "/vSidx9NHKuQIPEQ4yI9b9zkTeh3.jpg",
-    "backdrop_path": "/bgfqWW9mLs24hXuqiIcxU1j7Fgd.jpg",
-    "release_date": "2025-03-21",
-    "director": "Elijah Bynum",
-    "runtime": 123,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 6.753
-  },
   "The Experience + Orderly or Disorderly": {
     "tmdb_id": 645302,
     "tmdb_title": "The Experience",
@@ -17335,23 +17625,7 @@
   "Fukushima: A Nuclear Nightmare": null,
   "DocFest Spotlights: Niñxs": null,
   "Pompeii: Below the Clouds": null,
-  "Kill Bill: The Whole Bloody Affair": {
-    "tmdb_id": 414419,
-    "tmdb_title": "Kill Bill: The Whole Bloody Affair",
-    "tmdb_original_title": "Kill Bill: The Whole Bloody Affair",
-    "overview": "A former assassin—known only as The Bride—wakes up from a coma after her former boss and lover, Bill, shoots her in the head and steals her unborn child during her wedding rehearsal. She soon embarks on a bloody quest for revenge, hunting down her ex-colleagues of the Deadly Viper Assassination Squad before confronting Bill himself. Quentin Tarantino’s complete Kill Bill, a combination of Volumes 1 and 2, previously deleted scenes, alternate takes, a full-color remaster of the Crazy 88 fight, a 7-minute anime sequence by Production I.G., and a built-in intermission.",
-    "poster_path": "/lRQHS8x9ofDPVx9gjq6sGAfERkf.jpg",
-    "backdrop_path": "/ljFbfNmnJtU4gYXJnPSLDiVhBLu.jpg",
-    "release_date": "2011-03-27",
-    "director": "Quentin Tarantino",
-    "runtime": 247,
-    "genres": [
-      "Action",
-      "Crime"
-    ],
-    "vote_average": 8.0
-  },
-  "Mystery Movie": null,
+  "FREE CINEMA (in the US)": null,
   "8 1/2": {
     "tmdb_id": 422,
     "tmdb_title": "8½",
@@ -17389,61 +17663,93 @@
   "Stalker": null,
   "Prince Charles Cinema Film Quiz": null,
   "Twin Peaks : Pilot - Northwest Passage": null,
+  "Mystery Movie": null,
   "Sing-A-Long-A Rocky Horror Picture Show": null,
   "The Lord of the Rings Trilogy - Extended Editions": null,
   "Mystery Movie Marathon": null,
   "Dr. Strangelove": null,
-  "Possession": null,
-  "The Long Goodbye": {
-    "tmdb_id": 1847,
-    "tmdb_title": "The Long Goodbye",
-    "tmdb_original_title": "The Long Goodbye",
-    "overview": "In 1970s Hollywood, Detective Philip Marlowe tries to help a friend who is accused of murdering his wife.",
-    "poster_path": "/oBhUK54yBJ0aH6u9zCzSV5iV7OP.jpg",
-    "backdrop_path": "/g3KOnOycUThwV4PRjtiAK0CuzID.jpg",
-    "release_date": "1973-03-08",
-    "director": "Robert Altman",
-    "runtime": 112,
-    "genres": [
-      "Mystery",
-      "Drama",
-      "Crime"
-    ],
-    "vote_average": 7.403
-  },
-  "The Golden Child": {
-    "tmdb_id": 10136,
-    "tmdb_title": "The Golden Child",
-    "tmdb_original_title": "The Golden Child",
-    "overview": "After a Tibetan boy, the mystical Golden Child, is kidnapped by the evil Sardo Numspa, humankind's fate hangs in the balance. On the other side of the world in Los Angeles, the priestess Kee Nang seeks the Chosen One, who will save the boy from death. When Nang sees social worker Chandler Jarrell on television discussing his ability to find missing children, she solicits his expertise, despite his skepticism over being \"chosen.\"",
-    "poster_path": "/9gPphtcGmna90U9CEsWlUVaSkAw.jpg",
-    "backdrop_path": "/wCT10p7jpFF6V0RBt1Fsl5NEqA6.jpg",
-    "release_date": "1986-12-12",
-    "director": "Michael Ritchie",
-    "runtime": 94,
+  "Kill Bill: The Whole Bloody Affair": {
+    "tmdb_id": 414419,
+    "tmdb_title": "Kill Bill: The Whole Bloody Affair",
+    "tmdb_original_title": "Kill Bill: The Whole Bloody Affair",
+    "overview": "A former assassin—known only as The Bride—wakes up from a coma after her former boss and lover, Bill, shoots her in the head and steals her unborn child during her wedding rehearsal. She soon embarks on a bloody quest for revenge, hunting down her ex-colleagues of the Deadly Viper Assassination Squad before confronting Bill himself. Quentin Tarantino’s complete Kill Bill, a combination of Volumes 1 and 2, previously deleted scenes, alternate takes, a full-color remaster of the Crazy 88 fight, a 7-minute anime sequence by Production I.G., and a built-in intermission.",
+    "poster_path": "/lRQHS8x9ofDPVx9gjq6sGAfERkf.jpg",
+    "backdrop_path": "/qe4Tp0hURXqiih5AV1kHimXIt3u.jpg",
+    "release_date": "2011-03-27",
+    "director": "Quentin Tarantino",
+    "runtime": 247,
     "genres": [
       "Action",
-      "Adventure",
-      "Comedy"
+      "Crime"
     ],
-    "vote_average": 5.936
+    "vote_average": 8.0
   },
-  "Onibaba": {
-    "tmdb_id": 3763,
-    "tmdb_title": "Onibaba",
-    "tmdb_original_title": "鬼婆",
-    "overview": "While her son, Kichi, is away at war, a woman and her daughter-in-law survive by killing samurai who stray into their swamp, then selling whatever valuables they find. Both are devastated when they learn that Kichi has died, but his wife soon begins an affair with a neighbor who survived the war, Hachi. The mother disapproves and, when she can't steal Hachi for herself, tries to scare her daughter-in-law with a mysterious mask from a dead samurai.",
-    "poster_path": "/xyPLG53OodhJtvfQEfcmC43l16O.jpg",
-    "backdrop_path": "/wZwA7HN8ahWsz5AGsTR5I0UdsjZ.jpg",
-    "release_date": "1964-11-21",
-    "director": "Kaneto Shindō",
-    "runtime": 105,
+  "Possession": null,
+  "Dazed and Confused": {
+    "tmdb_id": 9571,
+    "tmdb_title": "Dazed and Confused",
+    "tmdb_original_title": "Dazed and Confused",
+    "overview": "The adventures of a group of Texas teens on their last day of school in 1976, centering on student Randall Floyd, who moves easily among stoners, jocks and geeks. Floyd is a star athlete, but he also likes smoking weed, which presents a conundrum when his football coach demands he sign a \"no drugs\" pledge.",
+    "poster_path": "/msG9awbLhVZwv1Eh9Ge7SofMexW.jpg",
+    "backdrop_path": "/mhYQOazZVBAPtKDw3TXybDtMJgK.jpg",
+    "release_date": "1993-09-24",
+    "director": "Richard Linklater",
+    "runtime": 102,
     "genres": [
-      "Horror"
+      "Comedy",
+      "Drama"
     ],
-    "vote_average": 7.669
+    "vote_average": 7.3
   },
-  "FREE CINEMA (in the US)": null,
+  "The Spirit of the Beehive": {
+    "tmdb_id": 4495,
+    "tmdb_title": "The Spirit of the Beehive",
+    "tmdb_original_title": "El espíritu de la colmena",
+    "overview": "In 1940, in the immediate aftermath of the Spanish Civil War, a young girl living on the Castilian plain is haunted after attending a screening of James Whale's 1931 film Frankenstein and hearing from her sister that the monster is not dead, instead existing as a spirit inhabiting a nearby barn.",
+    "poster_path": "/p2wx4EWasQaPGxnbS2IsW74ewVN.jpg",
+    "backdrop_path": "/4vbL72K9uVaMLhnvmdg1So7kqex.jpg",
+    "release_date": "1973-10-08",
+    "director": "Víctor Erice",
+    "runtime": 98,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "vote_average": 7.6
+  },
+  "The Good, The Bad and The Ugly": {
+    "tmdb_id": 429,
+    "tmdb_title": "The Good, the Bad and the Ugly",
+    "tmdb_original_title": "Il buono, il brutto, il cattivo",
+    "overview": "While the Civil War rages on between the Union and the Confederacy, three men – a quiet loner, a ruthless hitman, and a Mexican bandit – comb the American Southwest in search of a strongbox containing $200,000 in stolen gold.",
+    "poster_path": "/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg",
+    "backdrop_path": "/Adrip2Jqzw56KeuV2nAxucKMNXA.jpg",
+    "release_date": "1966-12-23",
+    "director": "Sergio Leone",
+    "runtime": 161,
+    "genres": [
+      "Western"
+    ],
+    "vote_average": 8.468
+  },
+  "Spider-Man: Across the Spider-Verse": {
+    "tmdb_id": 569094,
+    "tmdb_title": "Spider-Man: Across the Spider-Verse",
+    "tmdb_original_title": "Spider-Man: Across the Spider-Verse",
+    "overview": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse's very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
+    "poster_path": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+    "backdrop_path": "/9xfDWXAUbFXQK585JvByT5pEAhe.jpg",
+    "release_date": "2023-05-31",
+    "director": "Justin K. Thompson",
+    "runtime": 140,
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "vote_average": 8.336
+  },
   "LITTLE AMELIE": null,
   "Dyke TV: the early naughties + discussion": null,
   "TV PARTY, TONIGHT!: An Education in Blood and Guts Filmmaking": null,
@@ -17451,42 +17757,10 @@
   "NEVER WATCHING MOVIES: Spike Lee’s SCHOOL DAZE": null,
   "Peaking – Euphoric Psychedelia in our Digital Imaginations": null,
   "Pink Palace: Thundercrack!": null,
-  "Carers & Babies: If I Had Legs I'd Kick You": {
-    "tmdb_id": 1160360,
-    "tmdb_title": "If I Had Legs I'd Kick You",
-    "tmdb_original_title": "If I Had Legs I'd Kick You",
-    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
-    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
-    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
-    "release_date": "2025-10-10",
-    "director": "Mary Bronstein",
-    "runtime": 113,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 6.506
-  },
   "SÜRREAL SİNEMA: VANILLA IS A TURKISH WORD": null,
   "TV PARTY, TONIGHT!: Photographers on Film": null,
   "Pink Palace: Cat People (on VHS)": null,
   "Molly Vs THE MACHINES + Discussion": null,
-  "Carers & Babies: The Testament of Ann Lee": {
-    "tmdb_id": 1401281,
-    "tmdb_title": "The Testament of Ann Lee",
-    "tmdb_original_title": "The Testament of Ann Lee",
-    "overview": "The extraordinary true legend of Ann Lee, founder of the devotional sect known as the Shakers.",
-    "poster_path": "/hU1frHnDwJQ3YDERVppxTLvHjc7.jpg",
-    "backdrop_path": "/r6rCEYFdk8FcKc5x9zJFJUSPGJg.jpg",
-    "release_date": "2025-12-25",
-    "director": "Mona Fastvold",
-    "runtime": 137,
-    "genres": [
-      "Drama",
-      "History",
-      "Music"
-    ],
-    "vote_average": 7.0
-  },
   "Little Amélie": null,
   "Lexi Seniors' Film Club: Out of Africa": {
     "tmdb_id": 606,
@@ -17506,55 +17780,44 @@
     "vote_average": 7.164
   },
   "Black History Studies: Afeni Shakur and the Trial of the Black Panther 21 + Liberty Double Bill": null,
-  "It's Never Over Jeff Buckley": null,
-  "Phoenix Classics: Easy Rider": {
-    "tmdb_id": 624,
-    "tmdb_title": "Easy Rider",
-    "tmdb_original_title": "Easy Rider",
-    "overview": "Wyatt and Billy, two Harley-riding hippies, complete a drug deal in Southern California and decide to travel cross-country in search of spiritual truth.",
-    "poster_path": "/mmGEB6ly9OG8SYVfvAoa6QqHNvN.jpg",
-    "backdrop_path": "/qvTmYyYsv71qTq5syAq24k1kGk.jpg",
-    "release_date": "1969-06-26",
-    "director": "Dennis Hopper",
-    "runtime": 95,
+  "Hayley Mills: The Family Way": null,
+  "ActOne Film Quiz": null,
+  "FUN IN THE LOUNGE - FREE ENTRY: UNTITLED COMEDY NIGHT": null,
+  "MAY YOU BE WITH THE FARCE": null,
+  "FUN IN THE LOUNGE - FREE ENTRY: OPEN MIC": null,
+  "LIVE JAZZ WITH TRENT PIETERSE QUARTET": null,
+  "GENTLE, ANGRY WOMEN + DIRECTOR Q&A": null,
+  "CARERS & BABIES: \"WUTHERING HEIGHTS\"": {
+    "tmdb_id": 1316092,
+    "tmdb_title": "“Wuthering Heights”",
+    "tmdb_original_title": "“Wuthering Heights”",
+    "overview": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England.",
+    "poster_path": "/ywRO5dyE8RyyXJd6cvd69jLZeic.jpg",
+    "backdrop_path": "/vSQSYd2zZTqc0zmHImwWEGGluMI.jpg",
+    "release_date": "2026-02-11",
+    "director": "Emerald Fennell",
+    "runtime": 136,
     "genres": [
-      "Adventure",
+      "Romance",
       "Drama"
     ],
-    "vote_average": 7.05
+    "vote_average": 6.671
   },
-  "Collective Monologue + director Q&amp;A": {
-    "tmdb_id": 898335,
-    "tmdb_title": "Collective Monologue",
-    "tmdb_original_title": "Monólogo colectivo",
-    "overview": "Intimate and fragmented moments unfold in a community of zoos and animal rescue centers across Argentina. As histories of these institutions are uncovered, dedicated workers commit both day and night to caring for the remaining enclosed animals, fostering a mutual bond that transcends imagined boundaries between human and animal.",
-    "poster_path": "/kQ5yIjsrGerYPP65EZ5dvvKy5KB.jpg",
-    "backdrop_path": "/xu2HjWBJjMWt6xGmJvn7g7wwiwJ.jpg",
-    "release_date": "2025-01-16",
-    "director": "Jessica Sarah Rinland",
-    "runtime": 104,
+  "CLASSIC MATINEE:THE AGE OF INNOCENCE": null,
+  "ROYAL BALLET LIVE: GISELLE": {
+    "tmdb_id": 1482365,
+    "tmdb_title": "Royal Ballet & Opera 2025/26: Giselle",
+    "tmdb_original_title": "Royal Ballet & Opera 2025/26: Giselle",
+    "overview": "The world turns upside down for the peasant girl Giselle when she discovers her lover Albrecht is actually a nobleman promised to another. In despair, she kills herself. Her spirit joins the Wilis, the vengeful ghosts of women who have been jilted and die before their wedding day. The Wilis are hell-bent on killing any man who crosses their path in a dance to the death. Wracked with guilt, Albrecht visits Giselle’s grave, where he must face the Wilis – and Giselle’s ghost. Will he survive?",
+    "poster_path": "/pYjzu4ubAX8JuGkdzDp6OKc9T56.jpg",
+    "backdrop_path": "/kX9df8GcZdTiCmW9gI24T7HcoDr.jpg",
+    "release_date": "2026-03-03",
+    "director": "",
+    "runtime": 210,
     "genres": [
-      "Documentary"
+      "Music"
     ],
-    "vote_average": 10.0
-  },
-  "It Was Just an Accident: Index on Censorship Panel Event": null,
-  "Hayley Mills: The Family Way": null,
-  "Journey + A Wedding Suit (12A*)": {
-    "tmdb_id": 291572,
-    "tmdb_title": "Journey",
-    "tmdb_original_title": "Journey",
-    "overview": "Deserted by their mother, a young boy and his sister discover the true meaning of family while living with their grandfather.",
-    "poster_path": "/gXqX2K7oRHbKrQSCLGwO341Tfzn.jpg",
-    "backdrop_path": "/eX2pJW98rkZvD6IUh8P72Kmn9w8.jpg",
-    "release_date": "1995-12-10",
-    "director": "Tom McLoughlin",
-    "runtime": 96,
-    "genres": [
-      "Drama",
-      "TV Movie"
-    ],
-    "vote_average": 6.2
+    "vote_average": 0.0
   },
   "EOS: TURNER AND CONSTABLE 2026": null,
   "HAMNET (Babes-In-Arms screening)": null,
@@ -17562,30 +17825,23 @@
   "NOVELLE VAGUE": null,
   "YOUNG FRANKENSTEIN (Dementia-Friendly Screening)": null,
   "YOUNG FRANKENSTEIN (Relaxed Screening)": null,
-  "CARERS & BABIES: STITCH HEAD": {
-    "tmdb_id": 1214130,
-    "tmdb_title": "Stitch Head",
-    "tmdb_original_title": "Stitch Head",
-    "overview": "Stitch Head was the first creature brought to 'almost life' by mad professor Erasmus. In the years since, he’s become nursemaid to the master’s ever-growing menagerie of neglected creatures, tasked with teaching them to suppress their 'inner monster' and hide out in the castle — away from prying eyes and itchy pitchfork fingers, of the village mob in the valley below. But when grubby circus impresario Fulbert Freakfinder arrives offering Stitch Head a starring role in his freak show, our hero is tempted by the promise of love and acceptance.",
-    "poster_path": "/p0ZOIaQ8oLEGmQVrYcmvIOUuSqs.jpg",
-    "backdrop_path": "/zIFFlcvilrrbUlveEbIsFAtUfGT.jpg",
-    "release_date": "2025-10-16",
-    "director": "Steve Hudson",
-    "runtime": 91,
+  "Resurrection + Pre-recorded Director's Intro": {
+    "tmdb_id": 878608,
+    "tmdb_title": "Resurrection",
+    "tmdb_original_title": "狂野时代",
+    "overview": "In a future where humanity has surrendered its ability to dream in exchange for immortality, an outcast finds illusion, nightmarish visions, and beauty in an intoxicating world of his own making.",
+    "poster_path": "/wBXvXc7CoE1TCEL96VzMkMQKYG9.jpg",
+    "backdrop_path": "/2JcKTEP0L6EXk88ITGVGU4uo7hm.jpg",
+    "release_date": "2025-11-22",
+    "director": "Bi Gan",
+    "runtime": 160,
     "genres": [
-      "Animation",
-      "Adventure",
-      "Family",
-      "Comedy"
+      "Drama",
+      "Science Fiction",
+      "Fantasy"
     ],
-    "vote_average": 7.0
+    "vote_average": 6.8
   },
-  "ActOne Film Quiz": null,
-  "FUN IN THE LOUNGE - FREE ENTRY: UNTITLED COMEDY NIGHT": null,
-  "MAY YOU BE WITH THE FARCE": null,
-  "FUN IN THE LOUNGE - FREE ENTRY: OPEN MIC": null,
-  "LIVE JAZZ WITH TRENT PIETERSE QUARTET": null,
-  "GENTLE, ANGRY WOMEN + DIRECTOR Q&A": null,
   "H is for Hawk (12A) captioned screening parent and baby screening": null,
   "H is for Hawk (12A) captioned screening": {
     "tmdb_id": 1243006,
@@ -17616,7 +17872,7 @@
       "Comedy",
       "Drama"
     ],
-    "vote_average": 6.662
+    "vote_average": 6.671
   },
   "The President's Cake (12A) captioned screening tbc": null,
   "Looney Tunes: The Day The Earth Blew Up": null,
@@ -17655,7 +17911,6 @@
     ],
     "vote_average": 4.6
   },
-  "LFFF: Documentaries": null,
   "Rerun: Spectra: Desires": null,
   "Dog Party: The Moment": null,
   "brat Double Bill: Pillion": null,
@@ -17702,6 +17957,21 @@
     "genres": [],
     "vote_average": 0.0
   },
+  "Riley + Q&amp;A": {
+    "tmdb_id": 1177865,
+    "tmdb_title": "Riley",
+    "tmdb_original_title": "Riley",
+    "overview": "The life of a disciplined high school athlete begins to unravel when his queer identity competes against the idea of who he was supposed to be.",
+    "poster_path": "/1vW8CLfLfZ3KAG52G7a6ET3s61N.jpg",
+    "backdrop_path": "/8uUC5GaGJQBhXhWTzoG6siDO79R.jpg",
+    "release_date": "2025-12-04",
+    "director": "Benjamin Howard",
+    "runtime": 93,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.25
+  },
   "Sunset Boulevard + Intro from Norma Desperate": {
     "tmdb_id": 599,
     "tmdb_title": "Sunset Boulevard",
@@ -17715,86 +17985,35 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 8.282
+    "vote_average": 8.283
+  },
+  "The Powerpuff Girls Movie + Intro from Nyongbella": {
+    "tmdb_id": 59387,
+    "tmdb_title": "The Powerpuff Girls Movie",
+    "tmdb_original_title": "The Powerpuff Girls Movie",
+    "overview": "After destroying the city of Townsville in a game of tag, a trio of superpowered little girls must redeem themselves by stopping a vengeful monkey's plot for world domination.",
+    "poster_path": "/yAFalW8UtdJg1z1gPjXx8C1sXZq.jpg",
+    "backdrop_path": "/9JYhHvfdLC0rUI1AtXyw6l4bUpV.jpg",
+    "release_date": "2002-07-03",
+    "director": "Craig McCracken",
+    "runtime": 74,
+    "genres": [
+      "Animation",
+      "Action",
+      "Family"
+    ],
+    "vote_average": 6.792
   },
   "CINE MARICA: Hable Con Ella": null,
   "Kotoa & Friends Meets Rocking Time HIFI": null,
-  "Springsteen: Deliver Me from Nowhere": {
-    "tmdb_id": 1230368,
-    "tmdb_title": "Springsteen: Deliver Me from Nowhere",
-    "tmdb_original_title": "Springsteen: Deliver Me from Nowhere",
-    "overview": "Bruce Springsteen, a young musician on the cusp of global superstardom, struggles to reconcile the pressures of success with the ghosts of his past.",
-    "poster_path": "/csBV3eq4RDjNg1acNQ8kwOZyPlZ.jpg",
-    "backdrop_path": "/oOczvrnhpXUmqCbyKYFj4FQExAo.jpg",
-    "release_date": "2025-10-22",
-    "director": "Scott Cooper",
-    "runtime": 120,
-    "genres": [
-      "Drama",
-      "Music"
-    ],
-    "vote_average": 6.8
-  },
   "Crafty Movie Night – Dirty Dancing": null,
-  "Odyssey": {
-    "tmdb_id": 1330747,
-    "tmdb_title": "Odyssey",
-    "tmdb_original_title": "Odyssey",
-    "overview": "Natasha Flynn, a coke-fueled London estate agent, hides her crumbling life behind luxury. When loan sharks offer cash to hide a kidnapped agent, she's dragged into London's seedy underworld, leading to a bloody, chaotic showdown.",
-    "poster_path": "/4kx1Umb1IYdhNCNJmvtRQNjp2wB.jpg",
-    "backdrop_path": "/zmuX9eLqFsdvAMsvvPy9OHu5TPR.jpg",
-    "release_date": "2025-11-07",
-    "director": "Gerard Johnson",
-    "runtime": 110,
-    "genres": [
-      "Thriller",
-      "Crime"
-    ],
-    "vote_average": 4.6
-  },
   "The Shepherd and the Bear (Docs Night)": null,
-  "Dead of Winter": {
-    "tmdb_id": 1235746,
-    "tmdb_title": "Dead of Winter",
-    "tmdb_original_title": "Dead of Winter",
-    "overview": "A widowed fisherwoman, travelling alone through snowbound northern Minnesota, interrupts the kidnapping of a teenage girl. Hours from the nearest town and with no phone service, she realizes that she is the young girl's only hope.",
-    "poster_path": "/5DcrN62sGAiRJxt8rXSRlSRLwIE.jpg",
-    "backdrop_path": "/ajdB8AoHKrYlOR4yMDMZYLFyfdj.jpg",
-    "release_date": "2025-09-23",
-    "director": "Brian Kirk",
-    "runtime": 98,
-    "genres": [
-      "Thriller",
-      "Action"
-    ],
-    "vote_average": 6.462
-  },
+  "Special Guest x THE GREMLINS": null,
   "Looney Tunes: The Day the Earth Blew Up": null,
-  "BLACK IN SEASON FILM CLUB 2026 Waiting to Exhale Fri 20 Feb": null,
-  "Fight the Power: Resistance & Revolution I am not your Negro Wed 25 Feb": null,
-  "Dubplate presents Dubplate Drama 20th Anniversary Screening FRI 27 FEB 18_Live": null,
-  "MilkTea presents – UK Premiere: Last Days": {
-    "tmdb_id": 1093402,
-    "tmdb_title": "Last Days",
-    "tmdb_original_title": "Last Days",
-    "overview": "Determined to fulfill his life’s mission, 26-year-old John Allen Chau embarks on a dangerous adventure across the globe to convert the uncontacted tribe of North Sentinel Island to Christianity, while a detective from the Andaman Islands races to stop him before he does harm to himself or the tribe.",
-    "poster_path": "/kg0FHevBu2SiSa3i9DtOxSa1vNr.jpg",
-    "backdrop_path": "/9Wk2Uq8tpRad5peHws93L2wo60V.jpg",
-    "release_date": "2025-10-24",
-    "director": "Justin Lin",
-    "runtime": 120,
-    "genres": [
-      "Drama",
-      "Action",
-      "Adventure"
-    ],
-    "vote_average": 7.3
-  },
-  "Rough Treatment": null,
   "Reflecting on Stuart Hall’s Impact in association with the Stuart Hall Foundation": null,
   "Multicultural TV on ITV": null,
   "The Wedding": null,
-  "THE DECLINE OF WESTERN CIVILISATION": null,
+  "Bridgerton part two (season four)": null,
   "SCARLET WARNING 666": null,
   "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday20.2Doors8:15pmFilm8:45pmDigitalBook here": null,
   "THE KILLING OF AMERICA (ON VHS)": null,
@@ -17820,40 +18039,156 @@
   "BLONDE DEATH (ON VHS)": null,
   "DOA: A RIGHT OF PASSAGE": null,
   "SHRIME TIME: A NIGHT OF BIZARRO UNDERSEEN ANIMEFrom radical student animation collectives to sun-bleached techno-dystopias and gore-drenched horror, Shrime Time shines where the sun daren’t: revealing the backside of seldom-seen Japanese visual culture. Expect screenings from the 1960s to the present day, paired with special guests: musicians, artists, researchers and those obsessed with the outermost edges of Japan’s visual imagination.The Shirime a y?kai": null,
-  "THE GIRL WHO LEAPT THROUGH TIME": {
-    "tmdb_id": 62385,
-    "tmdb_title": "The Girl Who Leapt Through Time",
-    "tmdb_original_title": "時をかける少女",
-    "overview": "Kazuko Yoshiyama is a third-year junior-high-school student. One day, while cleaning the lab, she smells lavender and faints. From then on, she has the power to travel through time.",
-    "poster_path": "/7zMGrEqPXFQbDilDKXAXUirKN2Z.jpg",
-    "backdrop_path": "/hyTOL3dpF42doI9dnQy8cho8qL0.jpg",
-    "release_date": "1983-07-16",
-    "director": "Nobuhiko Obayashi",
-    "runtime": 104,
-    "genres": [
-      "Science Fiction",
-      "Romance"
-    ],
-    "vote_average": 6.7
-  },
   "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday6.3Doors8:30pmFilm9pmDigitalBook here": null,
-  "THE STABILIZER": {
-    "tmdb_id": 81468,
-    "tmdb_title": "The Stabilizer",
-    "tmdb_original_title": "Segi Tiga Emas",
-    "overview": "Peter Goldson, aka The Stabilizer, searches for drug smuggler Greg Rainmaker. Rainmaker killed Goldson's fiancee by kicking her with his spiked shoes, and now Goldson wants revenge. Meanwhile, Rainmaker has kidnapped the famous Professor Protost, and the Stabilizer teams up with his daughter Christina to save the Professor and bring Rainmaker down for good.",
-    "poster_path": "/tFKZeAFsQKddJ1RJNKzZgWxYsRy.jpg",
-    "backdrop_path": "/dyAF9NWZ0l9MoXjWK4qSbFKkavK.jpg",
-    "release_date": "1986-07-04",
-    "director": "Arizal",
-    "runtime": 87,
+  "FATAL PULSE + SECRET MUSICAL COMEDY PERFORMANCE!": {
+    "tmdb_id": 524423,
+    "tmdb_title": "Fatal Pulse",
+    "tmdb_original_title": "Fatal Pulse",
+    "overview": "Follows the exploits of husband/wife moguls trapped with a deadbeat couch potato brother in a hallucinogenic 1-900 world of 1991. Everyone is plotting to kill everyone else, including themselves, and ultimately do. Inspired by the corporate take-over era of the late 80s/early 90s and all the dark, atmospheric, neo-noir thrillers that came along with it.",
+    "poster_path": "/8stsv7jhIQz9QmEHG6QOD0TuLv4.jpg",
+    "backdrop_path": "/vJYFkGoo4dDPmXU0R8SWOLMA2yr.jpg",
+    "release_date": "2018-05-25",
+    "director": "Damon Packard",
+    "runtime": 115,
     "genres": [
-      "Action"
+      "Thriller",
+      "Comedy",
+      "Drama"
     ],
-    "vote_average": 5.1
+    "vote_average": 4.4
+  },
+  "SWITCHBLADE SISTERS": {
+    "tmdb_id": 52633,
+    "tmdb_title": "Switchblade Sisters",
+    "tmdb_original_title": "Switchblade Sisters",
+    "overview": "The leader of an inner city girl gang is challenged when a new girl moves into the neighborhood.",
+    "poster_path": "/axVIxmkYZFBDwMMhifeUXLHzu56.jpg",
+    "backdrop_path": "/ogHI9aLHXPIT8awXKyo2WEHbQii.jpg",
+    "release_date": "1975-01-05",
+    "director": "Jack Hill",
+    "runtime": 91,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 6.284
   },
   "Film Club Awards Panel 2026": null,
   "BAFTA 2026 Best Picture Winner": null,
+  "The Royal Ballet: Giselle": {
+    "tmdb_id": 1482365,
+    "tmdb_title": "Royal Ballet & Opera 2025/26: Giselle",
+    "tmdb_original_title": "Royal Ballet & Opera 2025/26: Giselle",
+    "overview": "The world turns upside down for the peasant girl Giselle when she discovers her lover Albrecht is actually a nobleman promised to another. In despair, she kills herself. Her spirit joins the Wilis, the vengeful ghosts of women who have been jilted and die before their wedding day. The Wilis are hell-bent on killing any man who crosses their path in a dance to the death. Wracked with guilt, Albrecht visits Giselle’s grave, where he must face the Wilis – and Giselle’s ghost. Will he survive?",
+    "poster_path": "/pYjzu4ubAX8JuGkdzDp6OKc9T56.jpg",
+    "backdrop_path": "/kX9df8GcZdTiCmW9gI24T7HcoDr.jpg",
+    "release_date": "2026-03-03",
+    "director": "",
+    "runtime": 210,
+    "genres": [
+      "Music"
+    ],
+    "vote_average": 0.0
+  },
+  "If I Had Legs I’d Kick You": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
+    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.506
+  },
+  "BLACK IN SEASON FILM CLUB 2026 Waiting to Exhale Fri 20 Feb": null,
+  "Fight the Power: Resistance & Revolution I am not your Negro Wed 25 Feb": null,
+  "elevenfiftyfive elevenfiftyfive Soundsystem Presents: SIRĀT Thu 26 Feb": null,
+  "Dubplate presents Dubplate Drama 20th Anniversary Screening FRI 27 FEB 18_Live": null,
+  "Phoenix Classics: Easy Rider": {
+    "tmdb_id": 624,
+    "tmdb_title": "Easy Rider",
+    "tmdb_original_title": "Easy Rider",
+    "overview": "Wyatt and Billy, two Harley-riding hippies, complete a drug deal in Southern California and decide to travel cross-country in search of spiritual truth.",
+    "poster_path": "/mmGEB6ly9OG8SYVfvAoa6QqHNvN.jpg",
+    "backdrop_path": "/qvTmYyYsv71qTq5syAq24k1kGk.jpg",
+    "release_date": "1969-06-26",
+    "director": "Dennis Hopper",
+    "runtime": 95,
+    "genres": [
+      "Adventure",
+      "Drama"
+    ],
+    "vote_average": 7.05
+  },
+  "Collective Monologue + director Q&amp;A": {
+    "tmdb_id": 898335,
+    "tmdb_title": "Collective Monologue",
+    "tmdb_original_title": "Monólogo colectivo",
+    "overview": "Intimate and fragmented moments unfold in a community of zoos and animal rescue centers across Argentina. As histories of these institutions are uncovered, dedicated workers commit both day and night to caring for the remaining enclosed animals, fostering a mutual bond that transcends imagined boundaries between human and animal.",
+    "poster_path": "/kQ5yIjsrGerYPP65EZ5dvvKy5KB.jpg",
+    "backdrop_path": "/xu2HjWBJjMWt6xGmJvn7g7wwiwJ.jpg",
+    "release_date": "2025-01-16",
+    "director": "Jessica Sarah Rinland",
+    "runtime": 104,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 10.0
+  },
+  "It Was Just an Accident: Index on Censorship Panel Event": null,
+  "Toddler Club: Pip and Posy and Friends": null,
+  "Toddler Club: The Scarecrows' Wedding + Tabby McTat": null,
+  "Family Film Club: Spider-Man: Into The Spider-Verse": null,
+  "Valentine’s Throwback: Pretty Woman": null,
+  "Family Film Club: Matilda The Musical": null,
+  "Metropolis": null,
+  "Toddler Club: Dr Seuss' The Lorax": null,
+  "Family Film Club: The Goonies": null,
+  "Throwback: A Knight's Tale (25th Anniversary)": {
+    "tmdb_id": 9476,
+    "tmdb_title": "A Knight's Tale",
+    "tmdb_original_title": "A Knight's Tale",
+    "overview": "William Thatcher, a knight's peasant apprentice, gets a chance at glory when the knight dies suddenly mid-tournament. Posing as a knight himself, William won't stop until he's crowned tournament champion—assuming matters of the heart don't get in the way.",
+    "poster_path": "/srb1XnrlDZHcdpjBKqUu4qAzxKU.jpg",
+    "backdrop_path": "/gkT737kgnmI6jZyXbUBJRwVbGkW.jpg",
+    "release_date": "2001-05-11",
+    "director": "Brian Helgeland",
+    "runtime": 133,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Romance",
+      "Action"
+    ],
+    "vote_average": 6.867
+  },
+  "CKTRL “Spirit”": null,
+  "Toddler Club: Lilo & Stitch (2002)": null,
+  "Throwback: The Fifth Element": {
+    "tmdb_id": 18,
+    "tmdb_title": "The Fifth Element",
+    "tmdb_original_title": "Le Cinquième Élément",
+    "overview": "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.",
+    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
+    "backdrop_path": "/bx1W729hyWQqNQoiq9LsX30FBf.jpg",
+    "release_date": "1997-05-02",
+    "director": "Luc Besson",
+    "runtime": 126,
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "vote_average": 7.563
+  },
+  "La Bohème": null,
+  "RBO Cinema Season 2025-26: Giselle": null,
   "Hamlet (2026)": {
     "tmdb_id": 843342,
     "tmdb_title": "Hamlet",
@@ -17868,23 +18203,6 @@
       "Drama"
     ],
     "vote_average": 5.25
-  },
-  "Wasteman + Live Intro with David Jonsson and Tom Blyth": {
-    "tmdb_id": 1307373,
-    "tmdb_title": "Wasteman",
-    "tmdb_original_title": "Wasteman",
-    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
-    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
-    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
-    "release_date": "2026-02-20",
-    "director": "Cal McMau",
-    "runtime": 90,
-    "genres": [
-      "Thriller",
-      "Crime",
-      "Drama"
-    ],
-    "vote_average": 0.0
   },
   "Vinyl Sisters": null,
   "Marty Supreme (70mm)": null,
@@ -17910,21 +18228,6 @@
   "Club Room: Hannah Horton & Sam Leak Duo": null,
   "The Testament of Ann Lee (70mm)": null,
   "Awards Lunch: Frankenstein": null,
-  "If I Had Legs I'd Kick You + Rose Byrne Q&A": {
-    "tmdb_id": 1160360,
-    "tmdb_title": "If I Had Legs I'd Kick You",
-    "tmdb_original_title": "If I Had Legs I'd Kick You",
-    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
-    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
-    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
-    "release_date": "2025-10-10",
-    "director": "Mary Bronstein",
-    "runtime": 113,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 6.506
-  },
   "Drink & Dine: The Moment": {
     "tmdb_id": 1422562,
     "tmdb_title": "The Moment",
@@ -17942,7 +18245,6 @@
     "vote_average": 4.6
   },
   "Dog-Friendly Screening: Wuthering Heights": null,
-  "Events Placeholder (2 hours)": null,
   "LUNCH SCREENING: COOL RUNNINGS + WINTER OLYMPICS": {
     "tmdb_id": 444974,
     "tmdb_title": "Sapporo Winter Olympics",
@@ -17989,7 +18291,7 @@
       "Thriller",
       "Music"
     ],
-    "vote_average": 6.8
+    "vote_average": 6.82
   },
   "Girls in Film Presents: If I Had Legs I'd Kick You": {
     "tmdb_id": 1160360,
@@ -18021,7 +18323,7 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 8.144
+    "vote_average": 8.1
   },
   "Drink & Dine: Licorice Pizza + Pizza Night": {
     "tmdb_id": 718032,
@@ -18041,6 +18343,23 @@
     "vote_average": 6.954
   },
   "Blues at the Ritzy": null,
+  "Kung Fu Panda 2": {
+    "tmdb_id": 49444,
+    "tmdb_title": "Kung Fu Panda 2",
+    "tmdb_original_title": "Kung Fu Panda 2",
+    "overview": "Po is finally living the dream as the Dragon Warrior—until a dark secret from his past comes roaring back. When the ruthless peacock lord Shen unleashes a terrifying new weapon to wipe out kung fu itself, Po and the Furious Five race across China to put an end to his plans. But if Po is to have any hope of stopping him, he must first unravel the mystery of where he came from and come to terms with his trauma.",
+    "poster_path": "/mtqqD00vB4PGRt20gWtGqFhrkd0.jpg",
+    "backdrop_path": "/7BdxZXbSkUiVeCRXKD3hi9KYeWm.jpg",
+    "release_date": "2011-05-25",
+    "director": "Jennifer Yuh Nelson",
+    "runtime": 91,
+    "genres": [
+      "Animation",
+      "Family",
+      "Comedy"
+    ],
+    "vote_average": 7.058
+  },
   "The Conversation (50th Anniversary 4K Restoration)": {
     "tmdb_id": 970943,
     "tmdb_title": "The Conversation",
@@ -18108,7 +18427,7 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 6.792
+    "vote_average": 6.8
   },
   "The Big Ritzy Quiz": null,
   "RBO Live: Giselle (2026)": null,
@@ -18215,10 +18534,23 @@
       "Action",
       "Thriller"
     ],
-    "vote_average": 7.5
+    "vote_average": 7.493
   },
   "Academy Awards Best Picture Winner 2026": null,
   "Club Room: Joe Pettitt Trio": null,
+  "Hipish Vintage presents Donnie Darko: The Director's Cut": {
+    "tmdb_id": 753004,
+    "tmdb_title": "The",
+    "tmdb_original_title": "The",
+    "overview": "The most commonly used word in English, THE is a frustrated, elderly woman who seeks a place in an ever changing world - and an ever changing language.",
+    "poster_path": "/rtD4YBt433qo6nYx2U8iGso6UwJ.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "Xaque Gruber",
+    "runtime": 8,
+    "genres": [],
+    "vote_average": 8.0
+  },
   "Green Screen: Power Station + discussion": null,
   "Awards Lunch: Academy Best Picture Winner 2026": null,
   "Met Opera Live: Tristan and Isolde (2026)": null,
@@ -18274,69 +18606,6 @@
   "NT: The Playboy of the Western World - Knit-Along": null,
   "Teatro dell’Opera di Roma: Lohengrin": null,
   "La Scala Milan: Cosi Fan Tutte": null,
-  "Toddler Club: Tiddler + The Snail and the Whale": null,
-  "Family Film Club: Matilda The Musical": null,
-  "Beyond: Nouvelle Vague": null,
-  "Toddler Club: Pip and Posy and Friends": null,
-  "Toddler Club: The Scarecrows' Wedding + Tabby McTat": null,
-  "Family Film Club: Spider-Man: Into The Spider-Verse": null,
-  "Valentine’s Throwback: Pretty Woman": null,
-  "Metropolis": null,
-  "Toddler Club: Dr Seuss' The Lorax": null,
-  "Family Film Club: The Goonies": null,
-  "Throwback: A Knight's Tale (25th Anniversary)": {
-    "tmdb_id": 9476,
-    "tmdb_title": "A Knight's Tale",
-    "tmdb_original_title": "A Knight's Tale",
-    "overview": "William Thatcher, a knight's peasant apprentice, gets a chance at glory when the knight dies suddenly mid-tournament. Posing as a knight himself, William won't stop until he's crowned tournament champion—assuming matters of the heart don't get in the way.",
-    "poster_path": "/srb1XnrlDZHcdpjBKqUu4qAzxKU.jpg",
-    "backdrop_path": "/gkT737kgnmI6jZyXbUBJRwVbGkW.jpg",
-    "release_date": "2001-05-11",
-    "director": "Brian Helgeland",
-    "runtime": 133,
-    "genres": [
-      "Adventure",
-      "Drama",
-      "Romance",
-      "Action"
-    ],
-    "vote_average": 6.867
-  },
-  "Toddler Club: Lilo & Stitch (2002)": null,
-  "Throwback: The Fifth Element": {
-    "tmdb_id": 18,
-    "tmdb_title": "The Fifth Element",
-    "tmdb_original_title": "Le Cinquième Élément",
-    "overview": "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.",
-    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
-    "backdrop_path": "/bx1W729hyWQqNQoiq9LsX30FBf.jpg",
-    "release_date": "1997-05-02",
-    "director": "Luc Besson",
-    "runtime": 126,
-    "genres": [
-      "Science Fiction",
-      "Action",
-      "Adventure"
-    ],
-    "vote_average": 7.6
-  },
-  "Members’ Preview: How To Make A Killing": {
-    "tmdb_id": 467905,
-    "tmdb_title": "How to Make a Killing",
-    "tmdb_original_title": "How to Make a Killing",
-    "overview": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
-    "poster_path": "/kw7x5mSmHhoeeqwXLwXTBsofD1N.jpg",
-    "backdrop_path": "/vuaPZ4IbsIRr2wDARZT7rFQ5CgP.jpg",
-    "release_date": "2026-02-20",
-    "director": "John Patton Ford",
-    "runtime": 109,
-    "genres": [
-      "Comedy",
-      "Thriller",
-      "Drama"
-    ],
-    "vote_average": 6.0
-  },
   "Schroeter Eika Katappa": null,
   "Isiah Medina Shorts": null,
   "88 88": null,
@@ -18356,7 +18625,7 @@
       "Thriller",
       "Music"
     ],
-    "vote_average": 6.8
+    "vote_average": 6.82
   },
   "Preview Resurrection": {
     "tmdb_id": 10359,
@@ -18376,62 +18645,8 @@
     "vote_average": 6.113
   },
   "Antonia Luxem Tetralogy On Falling": null,
-  "FILM CLUB: CERTAIN WOMEN": null,
-  "DOCHOUSE: BAFTA-NOMINATED SHORTS": null,
-  "WASTEMAN": {
-    "tmdb_id": 1307373,
-    "tmdb_title": "Wasteman",
-    "tmdb_original_title": "Wasteman",
-    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
-    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
-    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
-    "release_date": "2026-02-20",
-    "director": "Cal McMau",
-    "runtime": 90,
-    "genres": [
-      "Thriller",
-      "Crime",
-      "Drama"
-    ],
-    "vote_average": 0.0
-  },
-  "GOOD LUCK, HAVE FUN, DON'T DIE": {
-    "tmdb_id": 1119449,
-    "tmdb_title": "Good Luck, Have Fun, Don't Die",
-    "tmdb_original_title": "Good Luck, Have Fun, Don't Die",
-    "overview": "A man claiming to be from the future takes the patrons of an iconic Los Angeles diner hostage in search of unlikely recruits in a quest to save the world.",
-    "poster_path": "/rWcfOdY7TU6lTdazWj0ebDZnAfO.jpg",
-    "backdrop_path": "/yjOSpDQe8tzr8easpjTFVoQXsOX.jpg",
-    "release_date": "2026-02-13",
-    "director": "Gore Verbinski",
-    "runtime": 134,
-    "genres": [
-      "Science Fiction",
-      "Action",
-      "Adventure",
-      "Comedy"
-    ],
-    "vote_average": 7.722
-  },
-  "DOCHOUSE: FUKUSHIMA: A NUCLEAR NIGHTMARE": null,
   "FILM CLUB: LET THE SUNSHINE IN": null,
   "FILM CLUB: IT’S NEVER OVER, JEFF BUCKLEY": null,
-  "DOCHOUSE: NINXS": {
-    "tmdb_id": 1447567,
-    "tmdb_title": "Niñxs",
-    "tmdb_original_title": "Niñxs",
-    "overview": "At the foot of Tepozteco, a sacred hill that governs the winds and fertility, lies the small town of Tepoztlán. Against this backdrop, fifteen-year-old Karla's body and mind are undergoing a revolution.",
-    "poster_path": "/3CMuNTwcGL2PXOREItE6OQo60UJ.jpg",
-    "backdrop_path": "/taS81CrpPak95vgMHfmxkAAma5u.jpg",
-    "release_date": "2025-04-05",
-    "director": "Kani Lapuerta",
-    "runtime": 86,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 0.0
-  },
-  "DOCHOUSE: POMPEII: BELOW THE CLOUDS": null,
   "KIDS CLUB: WONKA": {
     "tmdb_id": 787699,
     "tmdb_title": "Wonka",
@@ -18447,23 +18662,8 @@
       "Family",
       "Fantasy"
     ],
-    "vote_average": 7.0
+    "vote_average": 7.043
   },
-  "FILM CLUB: LOST IN TRANSLATION": null,
   "FILM CLUB: MOLLY VS THE MACHINES": null,
-  "MOLLY VS THE MACHINES": {
-    "tmdb_id": 1557606,
-    "tmdb_title": "Molly vs.THE MACHINES",
-    "tmdb_original_title": "Molly vs.THE MACHINES",
-    "overview": "From a teenager’s suburban bedroom to the boardrooms of Silicon Valley, this is a story of a heartbroken father’s quest to uncover the truth behind his daughter's death and his fightback against how the most powerful corporations of the modern age operate.",
-    "poster_path": "/mArVXHRTKBSz4IfRVR3qKekYwPl.jpg",
-    "backdrop_path": null,
-    "release_date": "2026-03-01",
-    "director": "Marc Silver",
-    "runtime": 83,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 0.0
-  }
+  "RBO CINEMA SEASON 2025-26: GISELLE": null
 }
