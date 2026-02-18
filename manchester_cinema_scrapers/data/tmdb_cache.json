@@ -1536,7 +1536,42 @@
     ],
     "vote_average": 8.0
   },
+  "Wasteman": {
+    "tmdb_id": 1307373,
+    "tmdb_title": "Wasteman",
+    "tmdb_original_title": "Wasteman",
+    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
+    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
+    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
+    "release_date": "2026-02-20",
+    "director": "Cal McMau",
+    "runtime": 90,
+    "genres": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "Members’ Preview: How To Make A Killing": {
+    "tmdb_id": 467905,
+    "tmdb_title": "How to Make a Killing",
+    "tmdb_original_title": "How to Make a Killing",
+    "overview": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
+    "poster_path": "/kw7x5mSmHhoeeqwXLwXTBsofD1N.jpg",
+    "backdrop_path": "/vuaPZ4IbsIRr2wDARZT7rFQ5CgP.jpg",
+    "release_date": "2026-02-20",
+    "director": "John Patton Ford",
+    "runtime": 109,
+    "genres": [
+      "Comedy",
+      "Thriller",
+      "Drama"
+    ],
+    "vote_average": 6.0
+  },
   "Monthly World Cinema Screening": null,
+  "Weekly Arthouse Screening": null,
   "Private Chat + Womxn: Working": null,
   "DVD Menu Scream: Overboard": {
     "tmdb_id": 10780,
@@ -1589,6 +1624,9 @@
     ],
     "vote_average": 6.255
   },
+  "Little Amélie (PG) [Dubbed]": null,
+  "Little Amélie (PG) [Subtitled]": null,
+  "We Are Parable presents: Wasteman + Murewa": null,
   "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
     "tmdb_id": 494603,
     "tmdb_title": "The Highway Rat",
@@ -1607,9 +1645,21 @@
     ],
     "vote_average": 6.3
   },
-  "Little Amélie (PG) [Subtitled]": null,
-  "Little Amélie (PG) [Dubbed]": null,
-  "We Are Parable presents: Wasteman + Murewa": null,
+  "If I Had Legs I’d Kick You": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
+    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.506
+  },
   "Valentine’s Throwback: Pretty Woman": {
     "tmdb_id": 114,
     "tmdb_title": "Pretty Woman",
@@ -1624,24 +1674,7 @@
       "Romance",
       "Comedy"
     ],
-    "vote_average": 7.455
-  },
-  "Wasteman": {
-    "tmdb_id": 1307373,
-    "tmdb_title": "Wasteman",
-    "tmdb_original_title": "Wasteman",
-    "overview": "Taylor's hopes for a fresh start post parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
-    "poster_path": "/znNVGtyjdkGIhsjV6tcmFkEqczM.jpg",
-    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
-    "release_date": "2026-02-20",
-    "director": "Cal McMau",
-    "runtime": 90,
-    "genres": [
-      "Thriller",
-      "Crime",
-      "Drama"
-    ],
-    "vote_average": 0.0
+    "vote_average": 7.5
   },
   "Throwback: A Knight's Tale (25th Anniversary)": {
     "tmdb_id": 9476,
@@ -1677,26 +1710,8 @@
       "Action",
       "Adventure"
     ],
-    "vote_average": 7.6
+    "vote_average": 7.563
   },
-  "Members’ Preview: How To Make A Killing": {
-    "tmdb_id": 467905,
-    "tmdb_title": "How to Make a Killing",
-    "tmdb_original_title": "How to Make a Killing",
-    "overview": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
-    "poster_path": "/kw7x5mSmHhoeeqwXLwXTBsofD1N.jpg",
-    "backdrop_path": "/vuaPZ4IbsIRr2wDARZT7rFQ5CgP.jpg",
-    "release_date": "2026-02-20",
-    "director": "John Patton Ford",
-    "runtime": 109,
-    "genres": [
-      "Comedy",
-      "Thriller",
-      "Drama"
-    ],
-    "vote_average": 6.0
-  },
-  "Weekly Arthouse Screening": null,
   "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
@@ -1716,9 +1731,9 @@
     ],
     "vote_average": 6.1
   },
-  "National Theatre Live: Hamlet": null,
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
+  "National Theatre Live: Hamlet": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
     "tmdb_title": "Romeo Juliet",
