@@ -37184,7 +37184,7 @@
       "Romance"
     ],
     "runtime": 137,
-    "vote_average": 7.357,
+    "vote_average": 7.355,
     "tmdb_countries": [
       {
         "iso_3166_1": "CZ",
@@ -56644,6 +56644,870 @@
       {
         "iso_3166_1": "US",
         "name": "United States of America"
+      }
+    ]
+  },
+  "災　劇場版": {
+    "tmdb_id": 1521352,
+    "tmdb_title_jp": "災 劇場版",
+    "tmdb_title_en": "Sai: Disaster",
+    "tmdb_title_original": "災 劇場版",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Four people lead ordinary lives in different places, their paths never crossing. A mysterious man appears in each story, always as someone else. One moment, a cram school instructor; the next, a truck driver, a barber - his identity constantly shifting. Then, death strikes. A detective pursues the truth, closing in on a revelation...",
+    "poster_path": "/pKzKYSNhjDvf2C0AsYhco8nCVtw.jpg",
+    "backdrop_path": "/kq2Lym2qKZcbTAt4KjJYeYwVxGH.jpg",
+    "release_date": "2026-02-20",
+    "director": "関友太朗",
+    "director_jp": "関友太朗",
+    "director_en": "Yutaro Seki",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 128,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "幻愛　夢の向こうに": null,
+  "キャロル・キング＆ジェイムス・テイラー　ジャスト・コール・アウト・マイ・ネーム": {
+    "tmdb_id": 920230,
+    "tmdb_title_jp": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_en": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_title_original": "Carole King & James Taylor: Just Call Out My Name",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Explore the 50-year friendship between award-winning singer/songwriters James Taylor and Carole King. The duo famously performed at Los Angeles’s Troubadour in 1970, and in 2010 made a triumphant return performance.",
+    "poster_path": "/lJRpdHb6UdhMk4BssKbJDJIbLbU.jpg",
+    "backdrop_path": "/uzJ7WZrE1yWb7poTOXCtB3glDqk.jpg",
+    "release_date": "2022-01-02",
+    "director": "フランク・マーシャル",
+    "director_jp": "フランク・マーシャル",
+    "director_en": "Frank Marshall",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 97,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ザ・カラテ": {
+    "tmdb_id": 275577,
+    "tmdb_title_jp": "ザ・カラテ",
+    "tmdb_title_en": "The Karate",
+    "tmdb_title_original": "ザ・カラテ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Bronson Lee, a Japanese-American raised by his grandma in the harsh, poverty-stricken desert Southwest, returns to Japan to demonstrate his mastery of karate by entering the tournament that will determine the first World Karate Champion.",
+    "poster_path": "/zPN6429Jb5YsG9sEz7teGMghlz3.jpg",
+    "backdrop_path": "/w4MZ5EaDV4zAikqbtehDtgkP2Hc.jpg",
+    "release_date": "1974-06-15",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:275577": {
+    "tmdb_id": 275577,
+    "tmdb_title_jp": "ザ・カラテ",
+    "tmdb_title_en": "The Karate",
+    "tmdb_title_original": "ザ・カラテ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Bronson Lee, a Japanese-American raised by his grandma in the harsh, poverty-stricken desert Southwest, returns to Japan to demonstrate his mastery of karate by entering the tournament that will determine the first World Karate Champion.",
+    "poster_path": "/zPN6429Jb5YsG9sEz7teGMghlz3.jpg",
+    "backdrop_path": "/w4MZ5EaDV4zAikqbtehDtgkP2Hc.jpg",
+    "release_date": "1974-06-15",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "顔役と爆弾娘": null,
+  "アズールとアスマール": {
+    "tmdb_id": 19026,
+    "tmdb_title_jp": "アズールとアスマール",
+    "tmdb_title_en": "Azur & Asmar: The Princes' Quest",
+    "tmdb_title_original": "Azur et Asmar",
+    "tmdb_original_language": "fr",
+    "overview": "ヨーロッパの領主の子アズールとアラビア人の乳母ジェナヌの子アスマール。身分も人種も違う２人だったが、彼らはジェナヌの子守歌を聞きながら兄弟のように育てられた。しかしやがてアズールは寄宿生活となり、用なしとなったジェナヌと共にアスマールも屋敷を出て行くことに。その後成長したアズールは、ジェナヌの子守歌が忘れられず、その国を訪ねるため遠く海を渡った。しかし、ようやく辿り着いたイスラムの地で、“青い目は不吉”との言葉を耳にしたアズールは、目を閉じて盲目のふりをして旅を続ける。やがてアズールは、成功して大富豪となったジェナヌとアスマールとの再会を果たすのだが…。",
+    "overview_en": "Raised on tales of a Djinn fairy princess, Azur, a young Frenchman goes to North Africa in search of the sprite, only to discover that his close childhood friend, Asmar, an Arab youth whose mother raised both boys also seeks the genie.",
+    "poster_path": "/iZBcIvLQ3OwAUuwL6BcjH5AUh9.jpg",
+    "backdrop_path": "/fBtaZ5QLYdfUiVgbcnTjzxGq6HD.jpg",
+    "release_date": "2006-10-25",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family"
+    ],
+    "runtime": 99,
+    "vote_average": 7.688,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "tmdb:19026": {
+    "tmdb_id": 19026,
+    "tmdb_title_jp": "アズールとアスマール",
+    "tmdb_title_en": "Azur & Asmar: The Princes' Quest",
+    "tmdb_title_original": "Azur et Asmar",
+    "tmdb_original_language": "fr",
+    "overview": "ヨーロッパの領主の子アズールとアラビア人の乳母ジェナヌの子アスマール。身分も人種も違う２人だったが、彼らはジェナヌの子守歌を聞きながら兄弟のように育てられた。しかしやがてアズールは寄宿生活となり、用なしとなったジェナヌと共にアスマールも屋敷を出て行くことに。その後成長したアズールは、ジェナヌの子守歌が忘れられず、その国を訪ねるため遠く海を渡った。しかし、ようやく辿り着いたイスラムの地で、“青い目は不吉”との言葉を耳にしたアズールは、目を閉じて盲目のふりをして旅を続ける。やがてアズールは、成功して大富豪となったジェナヌとアスマールとの再会を果たすのだが…。",
+    "overview_en": "Raised on tales of a Djinn fairy princess, Azur, a young Frenchman goes to North Africa in search of the sprite, only to discover that his close childhood friend, Asmar, an Arab youth whose mother raised both boys also seeks the genie.",
+    "poster_path": "/iZBcIvLQ3OwAUuwL6BcjH5AUh9.jpg",
+    "backdrop_path": "/fBtaZ5QLYdfUiVgbcnTjzxGq6HD.jpg",
+    "release_date": "2006-10-25",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family"
+    ],
+    "runtime": 99,
+    "vote_average": 7.688,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "夜のとばりの物語": {
+    "tmdb_id": 79000,
+    "tmdb_title_jp": "夜のとばりの物語",
+    "tmdb_title_en": "Tales of the Night",
+    "tmdb_title_original": "Les Contes de la nuit",
+    "tmdb_original_language": "fr",
+    "overview": "「キリクと魔女」「アズールとアスマール」のフランスアニメーション界の鬼才ミッシェル・オスロ監督が、全10話の短編ＴＶシリーズ「ドラゴン＆プリンセス」を基に、古い映画館の映写技師と好奇心旺盛な少年と少女を進行役に紡ぐ幻想的な６つの愛の物語。一人の青年を愛した姉妹の運命を描く「狼男」、都の守り神の生贄として選ばれた美しい娘と、娘を救うために立ち上がる青年を描く「黄金の都と選ばれし者」をはじめ愛の深さが試される全６編の物語が、影絵ならではの光と影のコントラストと、エキゾチックかつ繊細な圧倒的色彩美で綴られていく。",
+    "overview_en": "Six exotic fables, each unfold in a unique locale, from Tibet, to medieval Europe, an Aztec kingdom, the African plains, and even the Land of the Dead.",
+    "poster_path": "/w4rVRefDlAY54ws5QCywxxPbKI6.jpg",
+    "backdrop_path": "/zSgTXy9FgvQc7gAciUN9vKfvg8v.jpg",
+    "release_date": "2011-07-20",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "ファンタジー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Animation"
+    ],
+    "runtime": 84,
+    "vote_average": 7.323,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:79000": {
+    "tmdb_id": 79000,
+    "tmdb_title_jp": "夜のとばりの物語",
+    "tmdb_title_en": "Tales of the Night",
+    "tmdb_title_original": "Les Contes de la nuit",
+    "tmdb_original_language": "fr",
+    "overview": "「キリクと魔女」「アズールとアスマール」のフランスアニメーション界の鬼才ミッシェル・オスロ監督が、全10話の短編ＴＶシリーズ「ドラゴン＆プリンセス」を基に、古い映画館の映写技師と好奇心旺盛な少年と少女を進行役に紡ぐ幻想的な６つの愛の物語。一人の青年を愛した姉妹の運命を描く「狼男」、都の守り神の生贄として選ばれた美しい娘と、娘を救うために立ち上がる青年を描く「黄金の都と選ばれし者」をはじめ愛の深さが試される全６編の物語が、影絵ならではの光と影のコントラストと、エキゾチックかつ繊細な圧倒的色彩美で綴られていく。",
+    "overview_en": "Six exotic fables, each unfold in a unique locale, from Tibet, to medieval Europe, an Aztec kingdom, the African plains, and even the Land of the Dead.",
+    "poster_path": "/w4rVRefDlAY54ws5QCywxxPbKI6.jpg",
+    "backdrop_path": "/zSgTXy9FgvQc7gAciUN9vKfvg8v.jpg",
+    "release_date": "2011-07-20",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "ファンタジー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Animation"
+    ],
+    "runtime": 84,
+    "vote_average": 7.323,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "夜のとばりの物語 醒めない夢": {
+    "tmdb_id": 924383,
+    "tmdb_title_jp": "夜のとばりの物語 ―醒めない夢―",
+    "tmdb_title_en": "Yoru no tobari no monogatari: Samenai yume",
+    "tmdb_title_original": "夜のとばりの物語 ―醒めない夢―",
+    "tmdb_original_language": "ja",
+    "overview": "好奇心旺盛な少年少女が、古い映画館で映写技師とともにつむぐ5つの夢物語がオムニバス形式で描かれる。短編シリーズ「ドラゴン＆プリンセス」（全10話）から選ばれた5話と新作1話の計6話で構成された前作の好評を受け、残り5話を集めて映画化した。日本語吹替えキャストは前作に続き坂本真綾らが務める。",
+    "overview_en": "Five further stories from the French designer, writer and director Michel Ocelot: La Maîtresse des monstres, Le Pont du petit cordonnier, Le Mousse et sa chatte, L'Écolier sorcier,  and Ivan Tsarévitch et la Princesse Changeante. This compilation movie has only been released in Japan.",
+    "poster_path": "/qk7k98SSd1SZ2mJec6j2BeCoOwL.jpg",
+    "backdrop_path": "/hY1dx3Y1Qk8yUl7cFmMk2o2M7ww.jpg",
+    "release_date": "2013-01-19",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Animation"
+    ],
+    "runtime": 70,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:924383": {
+    "tmdb_id": 924383,
+    "tmdb_title_jp": "夜のとばりの物語 ―醒めない夢―",
+    "tmdb_title_en": "Yoru no tobari no monogatari: Samenai yume",
+    "tmdb_title_original": "夜のとばりの物語 ―醒めない夢―",
+    "tmdb_original_language": "ja",
+    "overview": "好奇心旺盛な少年少女が、古い映画館で映写技師とともにつむぐ5つの夢物語がオムニバス形式で描かれる。短編シリーズ「ドラゴン＆プリンセス」（全10話）から選ばれた5話と新作1話の計6話で構成された前作の好評を受け、残り5話を集めて映画化した。日本語吹替えキャストは前作に続き坂本真綾らが務める。",
+    "overview_en": "Five further stories from the French designer, writer and director Michel Ocelot: La Maîtresse des monstres, Le Pont du petit cordonnier, Le Mousse et sa chatte, L'Écolier sorcier,  and Ivan Tsarévitch et la Princesse Changeante. This compilation movie has only been released in Japan.",
+    "poster_path": "/qk7k98SSd1SZ2mJec6j2BeCoOwL.jpg",
+    "backdrop_path": "/hY1dx3Y1Qk8yUl7cFmMk2o2M7ww.jpg",
+    "release_date": "2013-01-19",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Animation"
+    ],
+    "runtime": 70,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ディリリとパリの時間旅行": {
+    "tmdb_id": 421456,
+    "tmdb_title_jp": "ディリリとパリの時間旅行",
+    "tmdb_title_en": "Dilili in Paris",
+    "tmdb_title_original": "Dilili à Paris",
+    "tmdb_original_language": "fr",
+    "overview": "芸術や科学が花開き、世界中から様々な分野の才能がきらほしのごとく集まったベル・エポックのパリ。ニューカレドニアから密かに船に乗り、たったひとりでやって来た好奇心旺盛な少女ディリリは、パリは自分の庭だと語る配達人の青年オレルと出会い、友だちになる。折しも巷では、少女たちばかりを狙った連続誘拐事件の話題で持ちきりで、ディリリは少女たちを救うべく、顔の広いオレルの力を借りて事件の解決に乗り出すのだったが…。",
+    "overview_en": "With the help of her delivery-boy friend, Dilili, a young Kanak, investigates a spate of mysterious kidnappings of young girls that is plaguing Belle Epoque Paris.  In the course of her investigation she encounters a series of extraordinary characters, each of whom provides her with clues that will help her in her quest.",
+    "poster_path": "/277b7TMaQbqhWFidJy9ZRgLroIH.jpg",
+    "backdrop_path": "/zhEWuu6H6Gzv5weG7znoL6J8GtZ.jpg",
+    "release_date": "2018-10-10",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure"
+    ],
+    "runtime": 95,
+    "vote_average": 6.668,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:421456": {
+    "tmdb_id": 421456,
+    "tmdb_title_jp": "ディリリとパリの時間旅行",
+    "tmdb_title_en": "Dilili in Paris",
+    "tmdb_title_original": "Dilili à Paris",
+    "tmdb_original_language": "fr",
+    "overview": "芸術や科学が花開き、世界中から様々な分野の才能がきらほしのごとく集まったベル・エポックのパリ。ニューカレドニアから密かに船に乗り、たったひとりでやって来た好奇心旺盛な少女ディリリは、パリは自分の庭だと語る配達人の青年オレルと出会い、友だちになる。折しも巷では、少女たちばかりを狙った連続誘拐事件の話題で持ちきりで、ディリリは少女たちを救うべく、顔の広いオレルの力を借りて事件の解決に乗り出すのだったが…。",
+    "overview_en": "With the help of her delivery-boy friend, Dilili, a young Kanak, investigates a spate of mysterious kidnappings of young girls that is plaguing Belle Epoque Paris.  In the course of her investigation she encounters a series of extraordinary characters, each of whom provides her with clues that will help her in her quest.",
+    "poster_path": "/277b7TMaQbqhWFidJy9ZRgLroIH.jpg",
+    "backdrop_path": "/zhEWuu6H6Gzv5weG7znoL6J8GtZ.jpg",
+    "release_date": "2018-10-10",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure"
+    ],
+    "runtime": 95,
+    "vote_average": 6.668,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "古の王子と3つの花": {
+    "tmdb_id": 947590,
+    "tmdb_title_jp": "古の王子と3つの花",
+    "tmdb_title_en": "The Black Pharaoh, the Savage and the Princess",
+    "tmdb_title_original": "Le Pharaon, le Sauvage et la Princesse",
+    "tmdb_original_language": "fr",
+    "overview": "クシュ王国の王子は結婚を認めてもらうため、エジプト遠征の旅に出て、神々に祈り祝福されながら戦わずして国々を降伏させ、上下エジプトを統一、最初の黒人ファラオとなる。中世フランスの酷薄な城主に追いやられた王子は、地下牢の囚人を逃がした罪で森に追放されるが、数年後美しき野生児として城主に立ち向かう。モロッコ王宮を追われた王子は、雇われたお店の揚げ菓子を通じて国から出た事がない王女と出合い、2人は宮殿を抜け出し自分たちで生きていく。自分を信じることで自らの運命を変え幸福を手にする、至福の映像美で巡る３つの都、３つの時代の物語。",
+    "overview_en": "Three tales, three ages, three worlds. At the time of Ancient Egypt, a young king becomes the first black pharaoh to deserve the hand of his loved one. During the French Middle Ages, a mysterious wild boy steals from the rich to give to the poor. In 18th-century Turkey, a prince of pastries and a princess of roses escape the palace to live their love.",
+    "poster_path": "/dOjV2vaFxDSJZkozCJV4yRecEUb.jpg",
+    "backdrop_path": "/tZXyDNGHNXxvYw3qG2shFChPPjf.jpg",
+    "release_date": "2022-10-19",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 83,
+    "vote_average": 6.176,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:947590": {
+    "tmdb_id": 947590,
+    "tmdb_title_jp": "古の王子と3つの花",
+    "tmdb_title_en": "The Black Pharaoh, the Savage and the Princess",
+    "tmdb_title_original": "Le Pharaon, le Sauvage et la Princesse",
+    "tmdb_original_language": "fr",
+    "overview": "クシュ王国の王子は結婚を認めてもらうため、エジプト遠征の旅に出て、神々に祈り祝福されながら戦わずして国々を降伏させ、上下エジプトを統一、最初の黒人ファラオとなる。中世フランスの酷薄な城主に追いやられた王子は、地下牢の囚人を逃がした罪で森に追放されるが、数年後美しき野生児として城主に立ち向かう。モロッコ王宮を追われた王子は、雇われたお店の揚げ菓子を通じて国から出た事がない王女と出合い、2人は宮殿を抜け出し自分たちで生きていく。自分を信じることで自らの運命を変え幸福を手にする、至福の映像美で巡る３つの都、３つの時代の物語。",
+    "overview_en": "Three tales, three ages, three worlds. At the time of Ancient Egypt, a young king becomes the first black pharaoh to deserve the hand of his loved one. During the French Middle Ages, a mysterious wild boy steals from the rich to give to the poor. In 18th-century Turkey, a prince of pastries and a princess of roses escape the palace to live their love.",
+    "poster_path": "/dOjV2vaFxDSJZkozCJV4yRecEUb.jpg",
+    "backdrop_path": "/tZXyDNGHNXxvYw3qG2shFChPPjf.jpg",
+    "release_date": "2022-10-19",
+    "director": "ミッシェル・オスロ",
+    "director_jp": "ミッシェル・オスロ",
+    "director_en": "Michel Ocelot",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 83,
+    "vote_average": 6.176,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "〈ミシェル・オスロ監督 短編作品〉": null,
+  "キートンの大列車追跡": {
+    "tmdb_id": 961,
+    "tmdb_title_jp": "キートン将軍",
+    "tmdb_title_en": "The General",
+    "tmdb_title_original": "The General",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "During America’s Civil War, Union spies steal engineer Johnny Gray's beloved locomotive, 'The General'—with Johnnie's lady love aboard an attached boxcar—and he single-handedly must do all in his power to both get The General back and to rescue Annabelle.",
+    "poster_path": "/2IqFPt9lHF7xLbtDw6DttXQXeet.jpg",
+    "backdrop_path": "/h3OrUbmxpatQid9C5kPuXhOwGYh.jpg",
+    "release_date": "1926-12-25",
+    "director": "Clyde Bruckman",
+    "director_jp": "Clyde Bruckman",
+    "director_en": "Clyde Bruckman",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "コメディ",
+      "戦争",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "War",
+      "Romance"
+    ],
+    "runtime": 79,
+    "vote_average": 7.921,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "オルフェ": {
+    "tmdb_id": 4558,
+    "tmdb_title_jp": "Orphée",
+    "tmdb_title_en": "Orpheus",
+    "tmdb_title_original": "Orphée",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A famous poet in postwar Paris, scorned by the Left Bank youth, is in love with both his wife Eurydice and a mysterious princess. Seeking inspiration, the poet becomes obsessed and follows the princess from the world of the living to the land of the dead.",
+    "poster_path": "/mVCCZiyDK1jlUxUz3EAzwdpdZx8.jpg",
+    "backdrop_path": "/aZCi37ZOJZnECirobe36Fx9r1Yr.jpg",
+    "release_date": "1950-09-29",
+    "director": "Jean Cocteau",
+    "director_jp": "Jean Cocteau",
+    "director_en": "Jean Cocteau",
+    "genres": [
+      "ロマンス",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "幸運を！": {
+    "tmdb_id": 63768,
+    "tmdb_title_jp": "Bonne Chance",
+    "tmdb_title_en": "Good Luck",
+    "tmdb_title_original": "Bonne Chance",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A girl, Marie, who got engaged to a boy who is leaving for military training (thirteen days) wins two million on the raffle, thanks to an older man, Claude, whom she calls her good luck …",
+    "poster_path": "/vYExufzXygeklR4r756VuWvjndv.jpg",
+    "backdrop_path": "/v1pfHQQVeJ0KcTDDceLIIpX6lSP.jpg",
+    "release_date": "1935-09-20",
+    "director": "Sacha Guitry",
+    "director_jp": "Sacha Guitry",
+    "director_en": "Sacha Guitry",
+    "genres": [
+      "ロマンス",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Comedy"
+    ],
+    "runtime": 78,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "かぐや姫の物語": {
+    "tmdb_id": 149871,
+    "tmdb_title_jp": "かぐや姫の物語",
+    "tmdb_title_en": "The Tale of The Princess Kaguya",
+    "tmdb_title_original": "かぐや姫の物語",
+    "tmdb_original_language": "ja",
+    "overview": "今は昔、竹取の翁が見つけた光り輝く竹の中からかわいらしい女の子が現れ、翁は媼と共に大切に育てることに。女の子は瞬く間に美しい娘に成長しかぐや姫と名付けられ、うわさを聞き付けた男たちが求婚してくるようになる。彼らに無理難題を突き付け次々と振ったかぐや姫は、やがて月を見ては物思いにふけるようになり……。",
+    "overview_en": "Found inside a shining stalk of bamboo by an old bamboo cutter and his wife, a tiny girl grows rapidly into an exquisite young lady. The mysterious young princess enthrals all who encounter her. But, ultimately, she must confront her fate.",
+    "poster_path": "/dmrRZUAmjw5Era1Disd6Qa6r8Ox.jpg",
+    "backdrop_path": "/AtOQdXdibzCiMDIcFA0sBdk1ryf.jpg",
+    "release_date": "2013-11-23",
+    "director": "高畑勲",
+    "director_jp": "高畑勲",
+    "director_en": "Isao Takahata",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Fantasy"
+    ],
+    "runtime": 137,
+    "vote_average": 8.093,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:149871": {
+    "tmdb_id": 149871,
+    "tmdb_title_jp": "かぐや姫の物語",
+    "tmdb_title_en": "The Tale of The Princess Kaguya",
+    "tmdb_title_original": "かぐや姫の物語",
+    "tmdb_original_language": "ja",
+    "overview": "今は昔、竹取の翁が見つけた光り輝く竹の中からかわいらしい女の子が現れ、翁は媼と共に大切に育てることに。女の子は瞬く間に美しい娘に成長しかぐや姫と名付けられ、うわさを聞き付けた男たちが求婚してくるようになる。彼らに無理難題を突き付け次々と振ったかぐや姫は、やがて月を見ては物思いにふけるようになり……。",
+    "overview_en": "Found inside a shining stalk of bamboo by an old bamboo cutter and his wife, a tiny girl grows rapidly into an exquisite young lady. The mysterious young princess enthrals all who encounter her. But, ultimately, she must confront her fate.",
+    "poster_path": "/dmrRZUAmjw5Era1Disd6Qa6r8Ox.jpg",
+    "backdrop_path": "/AtOQdXdibzCiMDIcFA0sBdk1ryf.jpg",
+    "release_date": "2013-11-23",
+    "director": "高畑勲",
+    "director_jp": "高畑勲",
+    "director_en": "Isao Takahata",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Fantasy"
+    ],
+    "runtime": 137,
+    "vote_average": 8.093,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "城の生活": {
+    "tmdb_id": 4194,
+    "tmdb_title_jp": "La Vie de château",
+    "tmdb_title_en": "A Matter of Resistance",
+    "tmdb_title_original": "La Vie de château",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In the countryside near Normandy's beaches lives Marie, unhappy. It's 1945, she's married to Jérôme, a somewhat fussy milquetoast, diffident to the war around him and unwilling to move his wife to Paris, where she longs to live, shop, and party. A German outfit is bivouacked at Jérôme and Marie's crumbling château because its commanding officer is pursuing Marie. She's also eyed by a French spy working with the Allies as they plan D-Day. He woos her (posing to the Germans as her brother) and, in his passion, forgets his mission. Heroics come from an unexpected direction, and Marie makes her choice.",
+    "poster_path": "/1GBytbyajl8BOKG8ZUjrEgQGSz1.jpg",
+    "backdrop_path": "/o4J01PEdAnv3B01LZGZLw19gEHy.jpg",
+    "release_date": "1966-01-25",
+    "director": "Jean-Paul Rappeneau",
+    "director_jp": "Jean-Paul Rappeneau",
+    "director_en": "Jean-Paul Rappeneau",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 93,
+    "vote_average": 6.824,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ロイヤル・アフェア 愛と欲望の王宮": {
+    "tmdb_id": 88273,
+    "tmdb_title_jp": "ロイヤル・アフェア 愛と欲望の王宮",
+    "tmdb_title_en": "A Royal Affair",
+    "tmdb_title_original": "En kongelig affære",
+    "tmdb_original_language": "da",
+    "overview": "",
+    "overview_en": "A young queen falls in love with her physician, and they start a revolution that changes their nation forever.",
+    "poster_path": "/ccZftyf5wPfHxNi1pdRZ36zR2a.jpg",
+    "backdrop_path": "/mcoZV42CxmW07Ob8ynDuZ7wKZSr.jpg",
+    "release_date": "2012-03-29",
+    "director": "Nikolaj Arcel",
+    "director_jp": "Nikolaj Arcel",
+    "director_en": "Nikolaj Arcel",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "runtime": 137,
+    "vote_average": 7.355,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "SE",
+        "name": "Sweden"
+      }
+    ]
+  },
+  "tmdb:961": {
+    "tmdb_id": 961,
+    "tmdb_title_jp": "キートン将軍",
+    "tmdb_title_en": "The General",
+    "tmdb_title_original": "The General",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "During America’s Civil War, Union spies steal engineer Johnny Gray's beloved locomotive, 'The General'—with Johnnie's lady love aboard an attached boxcar—and he single-handedly must do all in his power to both get The General back and to rescue Annabelle.",
+    "poster_path": "/2IqFPt9lHF7xLbtDw6DttXQXeet.jpg",
+    "backdrop_path": "/h3OrUbmxpatQid9C5kPuXhOwGYh.jpg",
+    "release_date": "1926-12-25",
+    "director": "Clyde Bruckman",
+    "director_jp": "Clyde Bruckman",
+    "director_en": "Clyde Bruckman",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "コメディ",
+      "戦争",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "War",
+      "Romance"
+    ],
+    "runtime": 79,
+    "vote_average": 7.921,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:4558": {
+    "tmdb_id": 4558,
+    "tmdb_title_jp": "Orphée",
+    "tmdb_title_en": "Orpheus",
+    "tmdb_title_original": "Orphée",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A famous poet in postwar Paris, scorned by the Left Bank youth, is in love with both his wife Eurydice and a mysterious princess. Seeking inspiration, the poet becomes obsessed and follows the princess from the world of the living to the land of the dead.",
+    "poster_path": "/mVCCZiyDK1jlUxUz3EAzwdpdZx8.jpg",
+    "backdrop_path": "/aZCi37ZOJZnECirobe36Fx9r1Yr.jpg",
+    "release_date": "1950-09-29",
+    "director": "Jean Cocteau",
+    "director_jp": "Jean Cocteau",
+    "director_en": "Jean Cocteau",
+    "genres": [
+      "ロマンス",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:63768": {
+    "tmdb_id": 63768,
+    "tmdb_title_jp": "Bonne Chance",
+    "tmdb_title_en": "Good Luck",
+    "tmdb_title_original": "Bonne Chance",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A girl, Marie, who got engaged to a boy who is leaving for military training (thirteen days) wins two million on the raffle, thanks to an older man, Claude, whom she calls her good luck …",
+    "poster_path": "/vYExufzXygeklR4r756VuWvjndv.jpg",
+    "backdrop_path": "/v1pfHQQVeJ0KcTDDceLIIpX6lSP.jpg",
+    "release_date": "1935-09-20",
+    "director": "Sacha Guitry",
+    "director_jp": "Sacha Guitry",
+    "director_en": "Sacha Guitry",
+    "genres": [
+      "ロマンス",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Comedy"
+    ],
+    "runtime": 78,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:4194": {
+    "tmdb_id": 4194,
+    "tmdb_title_jp": "La Vie de château",
+    "tmdb_title_en": "A Matter of Resistance",
+    "tmdb_title_original": "La Vie de château",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In the countryside near Normandy's beaches lives Marie, unhappy. It's 1945, she's married to Jérôme, a somewhat fussy milquetoast, diffident to the war around him and unwilling to move his wife to Paris, where she longs to live, shop, and party. A German outfit is bivouacked at Jérôme and Marie's crumbling château because its commanding officer is pursuing Marie. She's also eyed by a French spy working with the Allies as they plan D-Day. He woos her (posing to the Germans as her brother) and, in his passion, forgets his mission. Heroics come from an unexpected direction, and Marie makes her choice.",
+    "poster_path": "/1GBytbyajl8BOKG8ZUjrEgQGSz1.jpg",
+    "backdrop_path": "/o4J01PEdAnv3B01LZGZLw19gEHy.jpg",
+    "release_date": "1966-01-25",
+    "director": "Jean-Paul Rappeneau",
+    "director_jp": "Jean-Paul Rappeneau",
+    "director_en": "Jean-Paul Rappeneau",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 93,
+    "vote_average": 6.824,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
       }
     ]
   }

@@ -5754,5 +5754,70 @@
     "director": "Akari Katsuki",
     "country": "Japan",
     "failed": true
+  },
+  "キャロル・キング＆ジェイムス・テイラー　ジャスト・コール・アウト・マイ・ネーム": {
+    "english_title": "Carole King & James Taylor: Just Call Out My Name",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Carole King & James Taylor: Just Call Out My Name",
+    "director": "Frank Marshall",
+    "country": "United States"
+  },
+  "顔役と爆弾娘": {
+    "english_title": "The Big Shot and the Bomb Girl",
+    "release_year": 1959,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "顔役と爆弾娘",
+    "director": "Masanori Kakei",
+    "country": "Japan",
+    "failed": true
+  },
+  "〈ミシェル・オスロ監督 短編作品〉": {
+    "english_title": "Short Films by Michel Ocelot",
+    "release_year": null,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Courts métrages de Michel Ocelot",
+    "director": "Michel Ocelot",
+    "country": "France",
+    "failed": true
+  },
+  "キートンの大列車追跡": {
+    "english_title": "The General",
+    "release_year": 1926,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The General",
+    "director": "Buster Keaton, Clyde Bruckman",
+    "country": "United States"
+  },
+  "オルフェ": {
+    "english_title": "Orpheus",
+    "release_year": 1950,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Orphée",
+    "director": "Jean Cocteau",
+    "country": "France"
+  },
+  "幸運を！": {
+    "english_title": "Good Luck",
+    "release_year": 1935,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Bonne chance!",
+    "director": "Sacha Guitry",
+    "country": "France"
+  },
+  "城の生活": {
+    "english_title": "A Matter of Resistance",
+    "release_year": 1966,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Vie de château",
+    "director": "Jean-Paul Rappeneau",
+    "country": "France"
   }
 }
