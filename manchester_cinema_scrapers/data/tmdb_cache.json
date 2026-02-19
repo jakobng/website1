@@ -1570,9 +1570,6 @@
     ],
     "vote_average": 6.0
   },
-  "Monthly World Cinema Screening": null,
-  "Weekly Arthouse Screening": null,
-  "Private Chat + Womxn: Working": null,
   "DVD Menu Scream: Overboard": {
     "tmdb_id": 10780,
     "tmdb_title": "Overboard",
@@ -1588,62 +1585,6 @@
       "Romance"
     ],
     "vote_average": 6.807
-  },
-  "OBSCURE FILM PRESENTS: GENRE IDENTITIES, PART ONE - TRANSNESS AND GENRE": null,
-  "SPEED + STRIKE PRESENTS: CRASH": {
-    "tmdb_id": 884,
-    "tmdb_title": "Crash",
-    "tmdb_original_title": "Crash",
-    "overview": "A car crash victim suddenly finds himself turned on by car accidents and becomes involved with an underground sub-culture of like-minded souls.",
-    "poster_path": "/gpai5oUFyFGLHOCsYTvVMqlbY7A.jpg",
-    "backdrop_path": "/vQNknPEVSAui6IL6eUlDBPfUzcW.jpg",
-    "release_date": "1996-07-17",
-    "director": "David Cronenberg",
-    "runtime": 100,
-    "genres": [
-      "Thriller",
-      "Drama"
-    ],
-    "vote_average": 6.462
-  },
-  "Twin Peaks Drag Night": null,
-  "Twin Peaks Day 2026": null,
-  "Make A Scene Presents: Shirley Valentine": {
-    "tmdb_id": 18683,
-    "tmdb_title": "Shirley Valentine",
-    "tmdb_original_title": "Shirley Valentine",
-    "overview": "Wondering what has happened to herself, now feeling stagnant and in a rut, Shirley Valentine finds herself regularly talking to the wall while preparing her husband's chips and egg. When her best friend wins a trip-for-two to Greece Shirley begins to see the world, and herself, in a different light.",
-    "poster_path": "/rrRrHNhur1DTp1KOp0YfFWvymQD.jpg",
-    "backdrop_path": "/a2A8ftKtoe89b7YTcHYXoWorrzo.jpg",
-    "release_date": "1989-08-30",
-    "director": "Lewis Gilbert",
-    "runtime": 108,
-    "genres": [
-      "Romance",
-      "Comedy"
-    ],
-    "vote_average": 6.255
-  },
-  "Little Amélie (PG) [Dubbed]": null,
-  "Little Amélie (PG) [Subtitled]": null,
-  "We Are Parable presents: Wasteman + Murewa": null,
-  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
-    "tmdb_id": 494603,
-    "tmdb_title": "The Highway Rat",
-    "tmdb_original_title": "The Highway Rat",
-    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
-    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
-    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
-    "release_date": "2018-10-10",
-    "director": "Jeroen Jaspaert",
-    "runtime": 25,
-    "genres": [
-      "Family",
-      "Animation",
-      "Comedy",
-      "TV Movie"
-    ],
-    "vote_average": 6.3
   },
   "If I Had Legs I’d Kick You": {
     "tmdb_id": 1160360,
@@ -1675,6 +1616,96 @@
       "Comedy"
     ],
     "vote_average": 7.5
+  },
+  "Monthly World Cinema Screening": null,
+  "OBSCURE FILM PRESENTS: GENRE IDENTITIES, PART ONE - TRANSNESS AND GENRE": null,
+  "SPEED + STRIKE PRESENTS: CRASH": {
+    "tmdb_id": 884,
+    "tmdb_title": "Crash",
+    "tmdb_original_title": "Crash",
+    "overview": "A car crash victim suddenly finds himself turned on by car accidents and becomes involved with an underground sub-culture of like-minded souls.",
+    "poster_path": "/gpai5oUFyFGLHOCsYTvVMqlbY7A.jpg",
+    "backdrop_path": "/vQNknPEVSAui6IL6eUlDBPfUzcW.jpg",
+    "release_date": "1996-07-17",
+    "director": "David Cronenberg",
+    "runtime": 100,
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "vote_average": 6.458
+  },
+  "Twin Peaks Drag Night": null,
+  "Twin Peaks Day 2026": null,
+  "Make A Scene Presents: Shirley Valentine": {
+    "tmdb_id": 18683,
+    "tmdb_title": "Shirley Valentine",
+    "tmdb_original_title": "Shirley Valentine",
+    "overview": "Wondering what has happened to herself, now feeling stagnant and in a rut, Shirley Valentine finds herself regularly talking to the wall while preparing her husband's chips and egg. When her best friend wins a trip-for-two to Greece Shirley begins to see the world, and herself, in a different light.",
+    "poster_path": "/rrRrHNhur1DTp1KOp0YfFWvymQD.jpg",
+    "backdrop_path": "/a2A8ftKtoe89b7YTcHYXoWorrzo.jpg",
+    "release_date": "1989-08-30",
+    "director": "Lewis Gilbert",
+    "runtime": 108,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "vote_average": 6.255
+  },
+  "U Are the Universe": {
+    "tmdb_id": 1013052,
+    "tmdb_title": "U Are the Universe",
+    "tmdb_original_title": "Ти – Космос",
+    "overview": "After the explosion of the Earth, the Ukrainian space trucker Andriy becomes the only human in the Universe until French woman Catherine calls him from the faraway space station. Andriy decides to see her despite all the obstacles.",
+    "poster_path": "/oJpjWajfSGHIbenzqyeKoQuYfem.jpg",
+    "backdrop_path": "/lCuRY9QF821VOOV8IJyeLfIuhTI.jpg",
+    "release_date": "2025-04-24",
+    "director": "Pavlo Ostrikov",
+    "runtime": 101,
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Comedy"
+    ],
+    "vote_average": 7.976
+  },
+  "Little Amélie (PG) [Subtitled]": null,
+  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
+    "tmdb_id": 494603,
+    "tmdb_title": "The Highway Rat",
+    "tmdb_original_title": "The Highway Rat",
+    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
+    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
+    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
+    "release_date": "2018-10-10",
+    "director": "Jeroen Jaspaert",
+    "runtime": 25,
+    "genres": [
+      "Family",
+      "Animation",
+      "Comedy",
+      "TV Movie"
+    ],
+    "vote_average": 6.3
+  },
+  "Little Amélie (PG) [Dubbed]": null,
+  "Ghost Killer": {
+    "tmdb_id": 1330435,
+    "tmdb_title": "Ghost Killer",
+    "tmdb_original_title": "ゴーストキラー",
+    "overview": "After being possessed by the ghost of vengeful hitman Kudo, college student Fumika Matsuoka agrees to help him finish his quest for revenge from beyond the grave.",
+    "poster_path": "/uKIG4f25QHUpBmBv0MPWOzKMGAM.jpg",
+    "backdrop_path": "/vgXjOkMhlGeeAlacqtyQwBkARdS.jpg",
+    "release_date": "2025-04-11",
+    "director": "Kensuke Sonomura",
+    "runtime": 104,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "vote_average": 7.2
   },
   "Throwback: A Knight's Tale (25th Anniversary)": {
     "tmdb_id": 9476,
@@ -1712,6 +1743,23 @@
     ],
     "vote_average": 7.563
   },
+  "AURORA: What Happened To The Earth?": {
+    "tmdb_id": 1616936,
+    "tmdb_title": "AURORA: What Happened to the Earth? Live From Mexico City",
+    "tmdb_original_title": "AURORA: What Happened to the Earth? Live From Mexico City",
+    "overview": "Norwegian alt-pop artist AURORA plays her biggest ever headline performance at Mexico City’s Palacio de los Deportes as part of her What Happened to the Earth? Tour. Filmed live on Dia De Los Muertos (Day of the Dead), the arena is transformed into a space of spellbinding sound and light, and filled with fans in festive dress. AURORA’s ethereal voice is ever-captivating as she sings haunting ballads including 'Dreams' and 'Exist for Love' as well as fan-favourites 'Runaway', 'The Seed' and 'Churchyard'. Known for blending electronic pop with folk and vivid storytelling, AURORA’s performances are always immersive and emotional, and this concert – celebrating nature and the human experience – solidifies her as a beacon of originality and inspiration.",
+    "poster_path": "/fYShYKxsa8ZiMkPkbjiVoKnD9jV.jpg",
+    "backdrop_path": "/tiTRz3pBlM51qVciPUJ0h3OAOTK.jpg",
+    "release_date": "2026-03-04",
+    "director": "Gonzalo Lopez",
+    "runtime": 90,
+    "genres": [
+      "Music",
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "Weekly Arthouse Screening": null,
   "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
@@ -1733,7 +1781,6 @@
   },
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
-  "National Theatre Live: Hamlet": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
     "tmdb_title": "Romeo Juliet",
