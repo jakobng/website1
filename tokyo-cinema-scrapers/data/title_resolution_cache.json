@@ -5819,5 +5819,253 @@
     "original_title": "La Vie de château",
     "director": "Jean-Paul Rappeneau",
     "country": "France"
+  },
+  "宇宙戦争　次の世紀": {
+    "english_title": "The War of the Worlds: Next Century",
+    "release_year": 1981,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Wojna światów – następne stulecie",
+    "director": "Piotr Szulkin",
+    "country": "Poland"
+  },
+  "オビ・オバ　文明の終わり": {
+    "english_title": "O-Bi, O-Ba: The End of Civilization",
+    "release_year": 1985,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "O-bi, O-ba. Koniec cywilizacji",
+    "director": "Piotr Szulkin",
+    "country": "Poland"
+  },
+  "ガガ　英雄たちに栄光あれ": {
+    "english_title": "Ga-ga: Glory to the Heroes",
+    "release_year": 1986,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Ga, ga. Chwała bohaterom",
+    "director": "Piotr Szulkin",
+    "country": "Poland"
+  },
+  "THE CITY": {
+    "english_title": "THE CITY",
+    "release_year": 2024,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "THE CITY",
+    "director": "Katsuyoshi Kuroyanagi",
+    "country": "Japan"
+  },
+  "暁の合唱（1941）": {
+    "english_title": "Dawn Chorus",
+    "release_year": 1941,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "暁の合唱",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan"
+  },
+  "子供の四季　秋冬の巻": {
+    "english_title": "Four Seasons of Children: Autumn/Winter",
+    "release_year": 1939,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "子供の四季　秋冬の巻",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan",
+    "failed": true
+  },
+  "子供の四季　春夏の巻": {
+    "english_title": "Four Seasons of Children: Spring/Summer",
+    "release_year": 1939,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "子供の四季　春夏の巻",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan",
+    "failed": true
+  },
+  "幻愛　夢の向こうに": {
+    "english_title": "Beyond the Dream",
+    "release_year": 2019,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "幻愛",
+    "director": "Kiwi Chow",
+    "country": "Hong Kong"
+  },
+  "驚蟄無声　スケア・アウト": {
+    "english_title": "Scare Out",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "惊蛰无声",
+    "director": "Zhang Yimou",
+    "country": "China"
+  },
+  "ショート・パルス 5つの鼓動": {
+    "english_title": "Short Pulse: Five Beats",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ショート・パルス 5つの鼓動",
+    "director": "Neo Sora, Yorgos Lanthimos, Jonathan Glazer, Alice Rohrwacher, JR",
+    "country": "Japan",
+    "failed": true
+  },
+  "火垂るの墓（1988）": {
+    "english_title": "Grave of the Fireflies",
+    "release_year": 1988,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "火垂るの墓",
+    "director": "Isao Takahata",
+    "country": "Japan"
+  },
+  "地球交響曲 ガイアシンフォニー": {
+    "english_title": "Gaia Symphony",
+    "release_year": 1992,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "地球交響曲 ガイアシンフォニー",
+    "director": "Jin Tatsumura",
+    "country": "Japan",
+    "failed": true
+  },
+  "メロスたち": {
+    "english_title": "Meloses",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "メロスたち",
+    "director": "Shinichiro Origuchi",
+    "country": "Japan",
+    "failed": true
+  },
+  "サウンド・オブ・レボリューション　グリーンランドの夜明け": {
+    "english_title": "Sumé: The Sound of a Revolution",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Sume - Mumisitsinerup Nipaa",
+    "director": "Inuk Silis Høegh",
+    "country": "Greenland"
+  },
+  "怪談（1964）": {
+    "english_title": "Kwaidan",
+    "release_year": 1964,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "怪談",
+    "director": "Masaki Kobayashi",
+    "country": "Japan"
+  },
+  "オルフェ（1950）": {
+    "english_title": "Orpheus",
+    "release_year": 1950,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Orphée",
+    "director": "Jean Cocteau",
+    "country": "France"
+  },
+  "工場　鉄西区　第一部": {
+    "english_title": "Tie Xi Qu: West of the Tracks, Part 1: Rust",
+    "release_year": 2002,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "铁西区：工厂",
+    "director": "Wang Bing",
+    "country": "China",
+    "failed": true
+  },
+  "丹下左膳余話　百万両の壺": {
+    "english_title": "The Million Ryo Pot",
+    "release_year": 1935,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "丹下左膳余話　百万両の壺",
+    "director": "Sadao Yamanaka",
+    "country": "Japan"
+  },
+  "狂った果実（1956）": {
+    "english_title": "Crazed Fruit",
+    "release_year": 1956,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "狂った果実",
+    "director": "Kō Nakahira",
+    "country": "Japan"
+  },
+  "FRIDAY": {
+    "english_title": "FRIDAY",
+    "release_year": 2020,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "FRIDAY",
+    "director": "Shikai Kyodai",
+    "country": "Japan",
+    "failed": true
+  },
+  "ロビー！ 4000億円を懸けた仁義なき18ホール": {
+    "english_title": "Lobby",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "로비",
+    "director": "Ha Jung-woo",
+    "country": "South Korea",
+    "failed": true
+  },
+  "一夜限定『サウンド・オブ・レボリューション グリーンランドの夜明け』ミニライブ+トーク付上映": {
+    "english_title": "Sumé: The Sound of a Revolution",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Sumé: Mumisitsinerup nipaa",
+    "director": "Inuk Silis Høegh",
+    "country": "Greenland"
+  },
+  "ブーニン 天才ピアニストの沈黙と再生（字幕）": {
+    "english_title": "Bunin: The Silence and Rebirth of a Genius Pianist",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ブーニン 天才ピアニストの沈黙と再生",
+    "director": "Azusa Nakajima",
+    "country": "Japan",
+    "failed": true
+  },
+  "〔月刊ホン・サンス Vol.2〕小川のほとりで": {
+    "english_title": "By the Stream",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "수유천",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "【クロード・シャブロル傑作選】肉屋": {
+    "english_title": "The Butcher",
+    "release_year": 1970,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Le Boucher",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "ゴーレム": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "《東京ビジュアルアーツ・アカデミー 学生作品特集上映 2026》": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
