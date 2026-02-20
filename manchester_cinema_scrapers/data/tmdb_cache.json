@@ -1617,7 +1617,72 @@
     ],
     "vote_average": 7.5
   },
+  "U Are the Universe": {
+    "tmdb_id": 1013052,
+    "tmdb_title": "U Are the Universe",
+    "tmdb_original_title": "Ти – Космос",
+    "overview": "After the explosion of the Earth, the Ukrainian space trucker Andriy becomes the only human in the Universe until French woman Catherine calls him from the faraway space station. Andriy decides to see her despite all the obstacles.",
+    "poster_path": "/oJpjWajfSGHIbenzqyeKoQuYfem.jpg",
+    "backdrop_path": "/lCuRY9QF821VOOV8IJyeLfIuhTI.jpg",
+    "release_date": "2025-04-24",
+    "director": "Pavlo Ostrikov",
+    "runtime": 101,
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Comedy"
+    ],
+    "vote_average": 7.976
+  },
+  "Ghost Killer": {
+    "tmdb_id": 1330435,
+    "tmdb_title": "Ghost Killer",
+    "tmdb_original_title": "ゴーストキラー",
+    "overview": "After being possessed by the ghost of vengeful hitman Kudo, college student Fumika Matsuoka agrees to help him finish his quest for revenge from beyond the grave.",
+    "poster_path": "/uKIG4f25QHUpBmBv0MPWOzKMGAM.jpg",
+    "backdrop_path": "/vgXjOkMhlGeeAlacqtyQwBkARdS.jpg",
+    "release_date": "2025-04-11",
+    "director": "Kensuke Sonomura",
+    "runtime": 104,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "vote_average": 7.2
+  },
+  "AURORA: What Happened To The Earth?": {
+    "tmdb_id": 1616936,
+    "tmdb_title": "AURORA: What Happened to the Earth? Live From Mexico City",
+    "tmdb_original_title": "AURORA: What Happened to the Earth? Live From Mexico City",
+    "overview": "Norwegian alt-pop artist AURORA plays her biggest ever headline performance at Mexico City’s Palacio de los Deportes as part of her What Happened to the Earth? Tour. Filmed live on Dia De Los Muertos (Day of the Dead), the arena is transformed into a space of spellbinding sound and light, and filled with fans in festive dress. AURORA’s ethereal voice is ever-captivating as she sings haunting ballads including 'Dreams' and 'Exist for Love' as well as fan-favourites 'Runaway', 'The Seed' and 'Churchyard'. Known for blending electronic pop with folk and vivid storytelling, AURORA’s performances are always immersive and emotional, and this concert – celebrating nature and the human experience – solidifies her as a beacon of originality and inspiration.",
+    "poster_path": "/fYShYKxsa8ZiMkPkbjiVoKnD9jV.jpg",
+    "backdrop_path": "/tiTRz3pBlM51qVciPUJ0h3OAOTK.jpg",
+    "release_date": "2026-03-04",
+    "director": "Gonzalo Lopez",
+    "runtime": 90,
+    "genres": [
+      "Music",
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
   "Monthly World Cinema Screening": null,
+  "Mother's Pride (2026)": {
+    "tmdb_id": 1418901,
+    "tmdb_title": "Mother's Pride",
+    "tmdb_original_title": "Mother's Pride",
+    "overview": "A comedy about a failing pub, a divided community and a grieving family whose lives are changed by brewing real ale and entering the Great British Beer Awards.",
+    "poster_path": "/jWrNT4QawuM5OclbjkbrhpbI2Wf.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-06",
+    "director": "Nick Moorcroft",
+    "runtime": 93,
+    "genres": [
+      "Comedy"
+    ],
+    "vote_average": 0.0
+  },
   "OBSCURE FILM PRESENTS: GENRE IDENTITIES, PART ONE - TRANSNESS AND GENRE": null,
   "SPEED + STRIKE PRESENTS: CRASH": {
     "tmdb_id": 884,
@@ -1633,7 +1698,7 @@
       "Thriller",
       "Drama"
     ],
-    "vote_average": 6.458
+    "vote_average": 6.461
   },
   "Twin Peaks Drag Night": null,
   "Twin Peaks Day 2026": null,
@@ -1653,24 +1718,7 @@
     ],
     "vote_average": 6.255
   },
-  "U Are the Universe": {
-    "tmdb_id": 1013052,
-    "tmdb_title": "U Are the Universe",
-    "tmdb_original_title": "Ти – Космос",
-    "overview": "After the explosion of the Earth, the Ukrainian space trucker Andriy becomes the only human in the Universe until French woman Catherine calls him from the faraway space station. Andriy decides to see her despite all the obstacles.",
-    "poster_path": "/oJpjWajfSGHIbenzqyeKoQuYfem.jpg",
-    "backdrop_path": "/lCuRY9QF821VOOV8IJyeLfIuhTI.jpg",
-    "release_date": "2025-04-24",
-    "director": "Pavlo Ostrikov",
-    "runtime": 101,
-    "genres": [
-      "Science Fiction",
-      "Adventure",
-      "Comedy"
-    ],
-    "vote_average": 7.976
-  },
-  "Little Amélie (PG) [Subtitled]": null,
+  "If You're Lost I'll Come Find You": null,
   "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
     "tmdb_id": 494603,
     "tmdb_title": "The Highway Rat",
@@ -1690,22 +1738,22 @@
     "vote_average": 6.3
   },
   "Little Amélie (PG) [Dubbed]": null,
-  "Ghost Killer": {
-    "tmdb_id": 1330435,
-    "tmdb_title": "Ghost Killer",
-    "tmdb_original_title": "ゴーストキラー",
-    "overview": "After being possessed by the ghost of vengeful hitman Kudo, college student Fumika Matsuoka agrees to help him finish his quest for revenge from beyond the grave.",
-    "poster_path": "/uKIG4f25QHUpBmBv0MPWOzKMGAM.jpg",
-    "backdrop_path": "/vgXjOkMhlGeeAlacqtyQwBkARdS.jpg",
-    "release_date": "2025-04-11",
-    "director": "Kensuke Sonomura",
-    "runtime": 104,
+  "Little Amélie (PG) [Subtitled]": null,
+  "Baby & Carer/ Little Amélie (PG) [Dubbed]": {
+    "tmdb_id": 751496,
+    "tmdb_title": "Baby",
+    "tmdb_original_title": "Baby",
+    "overview": "A young drug addict who has lost touch with her rich family hits rock bottom when she sells her new-born baby to child traffickers. She soon regrets her decision and finds the courage and strength to get him back. To do so, she must follow a trail into the woods and find an eerie house where the old lady she met, her albino servant and a girl with a strange gait, all live together. Nothing could have prepared her for the horror she is about to discover.",
+    "poster_path": "/ala49VxcJmyDdNOCNg9PWfrxTWu.jpg",
+    "backdrop_path": "/yx045ADkPwsYEmW4cB7G7r84SVQ.jpg",
+    "release_date": "2020-12-18",
+    "director": "Juanma Bajo Ulloa",
+    "runtime": 106,
     "genres": [
-      "Action",
-      "Comedy",
-      "Fantasy"
+      "Thriller",
+      "Horror"
     ],
-    "vote_average": 7.2
+    "vote_average": 5.32
   },
   "Throwback: A Knight's Tale (25th Anniversary)": {
     "tmdb_id": 9476,
@@ -1742,22 +1790,6 @@
       "Adventure"
     ],
     "vote_average": 7.563
-  },
-  "AURORA: What Happened To The Earth?": {
-    "tmdb_id": 1616936,
-    "tmdb_title": "AURORA: What Happened to the Earth? Live From Mexico City",
-    "tmdb_original_title": "AURORA: What Happened to the Earth? Live From Mexico City",
-    "overview": "Norwegian alt-pop artist AURORA plays her biggest ever headline performance at Mexico City’s Palacio de los Deportes as part of her What Happened to the Earth? Tour. Filmed live on Dia De Los Muertos (Day of the Dead), the arena is transformed into a space of spellbinding sound and light, and filled with fans in festive dress. AURORA’s ethereal voice is ever-captivating as she sings haunting ballads including 'Dreams' and 'Exist for Love' as well as fan-favourites 'Runaway', 'The Seed' and 'Churchyard'. Known for blending electronic pop with folk and vivid storytelling, AURORA’s performances are always immersive and emotional, and this concert – celebrating nature and the human experience – solidifies her as a beacon of originality and inspiration.",
-    "poster_path": "/fYShYKxsa8ZiMkPkbjiVoKnD9jV.jpg",
-    "backdrop_path": "/tiTRz3pBlM51qVciPUJ0h3OAOTK.jpg",
-    "release_date": "2026-03-04",
-    "director": "Gonzalo Lopez",
-    "runtime": 90,
-    "genres": [
-      "Music",
-      "Documentary"
-    ],
-    "vote_average": 0.0
   },
   "Weekly Arthouse Screening": null,
   "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
