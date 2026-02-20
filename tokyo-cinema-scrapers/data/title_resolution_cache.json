@@ -6067,5 +6067,89 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "NG騎士ラムネ＆40 第36・37・38話": {
+    "english_title": "NG Knight Ramune & 40",
+    "release_year": 1990,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "NG騎士ラムネ＆40 第36・37・38話",
+    "director": "Hiroshi Negishi",
+    "country": "Japan",
+    "failed": true
+  },
+  "カネフスキーが見つめた20世紀の子どもたち": {
+    "english_title": "We, Children of the 20th Century",
+    "release_year": 1994,
+    "confidence": 0.7,
+    "notes": "",
+    "original_title": "Nous, les enfants du XXe siècle",
+    "director": "Vitali Kanevsky",
+    "country": "France, Russia"
+  },
+  "文豪ストレイドッグス 第5シーズンオールナイト上映会": {
+    "english_title": "Bungo Stray Dogs Season 5 All-Night Screening",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "文豪ストレイドッグス 第5シーズンオールナイト上映会",
+    "director": "Takuya Igarashi",
+    "country": "Japan",
+    "failed": true
+  },
+  "驚蟄無声 ｽｹｱ･ｱｳﾄ【日本語字幕無し】予告５分": {
+    "english_title": "Scare Out",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "驚蟄無声",
+    "director": "Zhang Yimou",
+    "country": "China"
+  },
+  "子供の四季 春夏": {
+    "english_title": "Four Seasons of Children: Spring/Summer",
+    "release_year": 1939,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "子供の四季 春夏",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan",
+    "failed": true
+  },
+  "子供の四季 秋冬": {
+    "english_title": "Four Seasons of Children: Autumn/Winter",
+    "release_year": 1939,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "子供の四季 秋冬",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan",
+    "failed": true
+  },
+  "大佛さまと子供たち": {
+    "english_title": "Children of the Great Buddha",
+    "release_year": 1952,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "大佛さまと子供たち",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan"
+  },
+  "今は昔、栄養映画館": {
+    "english_title": "Now as Always, the Cinema Nurtures Us",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "今は昔、栄養映画館の旅",
+    "director": "Masaaki Takeda",
+    "country": "Japan",
+    "failed": true
+  },
+  "今は昔、栄養映画館の旅": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }

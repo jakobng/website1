@@ -56608,7 +56608,7 @@
       "Crime"
     ],
     "runtime": 104,
-    "vote_average": 6.0,
+    "vote_average": 5.667,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -59871,5 +59871,1454 @@
         "name": "Japan"
       }
     ]
-  }
+  },
+  "NG騎士ラムネ＆40 第36・37・38話": null,
+  "カネフスキーが見つめた20世紀の子どもたち": {
+    "tmdb_id": 461759,
+    "tmdb_title_jp": "ぼくら、20世紀の子供たち",
+    "tmdb_title_en": "We, the Children of the 20th Century",
+    "tmdb_title_original": "Nous, les enfants du xxème siècle",
+    "tmdb_original_language": "fr",
+    "overview": "カンヌ映画祭受賞を初めとして世界的に絶賛された「動くな、死ね、甦れ！」「ひとりで生きる」に続いて、ヴィターリー・カネフスキーが完成したドキュメンタリー。\r サント・ペテルブルクの荒廃した通りで生活する少年たちや、かつてカネフスキーの映画に出演した少年との監獄での再会などを映し出す。",
+    "overview_en": "It focuses on how youngsters in capitalist Russia turn to crime. Either they thrive at their game or they get locked up. In any case they're trapped. The portrayed kids are old men, acting wise and tough while in fact they're victims.",
+    "poster_path": "/v0sMWsomfFxRFItEmdZZjRzJoAR.jpg",
+    "backdrop_path": null,
+    "release_date": "1994-06-14",
+    "director": "ヴィターリー・カネフスキー",
+    "director_jp": "ヴィターリー・カネフスキー",
+    "director_en": "Vitali Kanevsky",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 87,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ]
+  },
+  "ザ・カラテ2": {
+    "tmdb_id": 287351,
+    "tmdb_title_jp": "ザ・カラテ2",
+    "tmdb_title_en": "The Karate 2",
+    "tmdb_title_original": "ザ・カラテ2",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is the second film of the ZA KARATE trilogy (AKA BRONSON LEE CHAMPION). Tadashi Yamashita reprises his role as the Karate World Champion and must faces dozens of worldwide pretenders, such as the Guillotine Brothers of New Guinea, Killer Samson, Dracula Jack (Bolo) who all want a shot at him at all cost and also to steal the famous Orikirimaru Sword.",
+    "poster_path": "/27jwMTHWjhmMhlTimAGOjQn1JdN.jpg",
+    "backdrop_path": null,
+    "release_date": "1974-11-01",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:287351": {
+    "tmdb_id": 287351,
+    "tmdb_title_jp": "ザ・カラテ2",
+    "tmdb_title_en": "The Karate 2",
+    "tmdb_title_original": "ザ・カラテ2",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is the second film of the ZA KARATE trilogy (AKA BRONSON LEE CHAMPION). Tadashi Yamashita reprises his role as the Karate World Champion and must faces dozens of worldwide pretenders, such as the Guillotine Brothers of New Guinea, Killer Samson, Dracula Jack (Bolo) who all want a shot at him at all cost and also to steal the famous Orikirimaru Sword.",
+    "poster_path": "/27jwMTHWjhmMhlTimAGOjQn1JdN.jpg",
+    "backdrop_path": null,
+    "release_date": "1974-11-01",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "文豪ストレイドッグス 第5シーズンオールナイト上映会": null,
+  "驚蟄無声 ｽｹｱ･ｱｳﾄ【日本語字幕無し】予告５分": {
+    "tmdb_id": 1447971,
+    "tmdb_title_jp": "惊蛰无声",
+    "tmdb_title_en": "Scare Out",
+    "tmdb_title_original": "惊蛰无声",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "After a critical intelligence leak, a national security unit launches an intensive investigation. But successive setbacks in their arrest operations reveal a shocking truth: the trail leads back to within the unit itself. Amidst a storm of trust and betrayal, a silent battle begins to unfold...",
+    "poster_path": "/cPdZiwjdLel5DD7Nm99FcSsXuSr.jpg",
+    "backdrop_path": "/1YOLU0ZJ7lc4AiaJaLmofXIN6or.jpg",
+    "release_date": "2026-02-17",
+    "director": "チャン・イーモウ",
+    "director_jp": "チャン・イーモウ",
+    "director_en": "Zhang Yimou",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 104,
+    "vote_average": 5.667,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "星くず兄弟の伝説【アンコール上映】": {
+    "tmdb_id": 530578,
+    "tmdb_title_jp": "星くず兄弟の伝説",
+    "tmdb_title_en": "The Legend of the Stardust Brothers",
+    "tmdb_title_original": "星くず兄弟の伝説",
+    "tmdb_original_language": "ja",
+    "overview": "近未来、東京の下町――\r かつて「スターダスト・ブラザーズ」として一斉を風靡したカンとシンゴ。東京の下町にあるバーのオヤジとなったシンゴは過去の栄光を夢見、「地球がダメなら月でもう一度スターに‼」との思いで、売れっ子DJとして活躍するカンを誘ってリ・エイジングスタジオで若返り、月へと旅立つ。\r 月世界で彼らを迎えたのは、どうしようもなくダメな芸能プロダクション「アストロ・プロモーション」。社長のアストロ南北は地球では売れっ子スターだったと自称するが、この事務所にはウサコとチェリー喜美雄というパッとしない二人のタレントしかいない有様。しかも新・星くず兄弟の初ステージは場末のショーパブだった。すっかり意気消沈した二人に酔っぱらいの老人が「スターになりたかったら〈ロックの魂〉を探せ」と声をかける。\r こうして謎の〈ロックの魂〉を求めて、スターダスト・ブラザーズ二人の月世界の冒険がはじまる。一方、月の芸能界を支配する組織「フラッシュバブル」の女ボス、ベタール卑美子と片腕チェザーレ伊東は、星くず兄弟の活躍を封じるべく、刺客を送り込むことに。\r 果たして、スターダスト・ブラザーズ二人は〈ロックの魂〉を手に入れることはできるのか!?\r はたまた、スターになることができるのか!?",
+    "overview_en": "A shady music mogul brings together two wannabe stars—punk rock rebel Kan and new-wave crooner Shingo—and transforms them into the Stardust Brothers, a girl-friendly, silver-jumpsuited, synth-pop sensation. Along with their #1 fan, who herself dreams of a music career, the duo rockets to stardom.",
+    "poster_path": "/hv0jJAQe2aaQMElde3w9N6nAIoo.jpg",
+    "backdrop_path": "/l6dwa57KqjUn6h7OODNvN6zuq0W.jpg",
+    "release_date": "1985-06-15",
+    "director": "手塚眞",
+    "director_jp": "手塚眞",
+    "director_en": "Makoto Tezuka",
+    "genres": [
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 98,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:530578": {
+    "tmdb_id": 530578,
+    "tmdb_title_jp": "星くず兄弟の伝説",
+    "tmdb_title_en": "The Legend of the Stardust Brothers",
+    "tmdb_title_original": "星くず兄弟の伝説",
+    "tmdb_original_language": "ja",
+    "overview": "近未来、東京の下町――\r かつて「スターダスト・ブラザーズ」として一斉を風靡したカンとシンゴ。東京の下町にあるバーのオヤジとなったシンゴは過去の栄光を夢見、「地球がダメなら月でもう一度スターに‼」との思いで、売れっ子DJとして活躍するカンを誘ってリ・エイジングスタジオで若返り、月へと旅立つ。\r 月世界で彼らを迎えたのは、どうしようもなくダメな芸能プロダクション「アストロ・プロモーション」。社長のアストロ南北は地球では売れっ子スターだったと自称するが、この事務所にはウサコとチェリー喜美雄というパッとしない二人のタレントしかいない有様。しかも新・星くず兄弟の初ステージは場末のショーパブだった。すっかり意気消沈した二人に酔っぱらいの老人が「スターになりたかったら〈ロックの魂〉を探せ」と声をかける。\r こうして謎の〈ロックの魂〉を求めて、スターダスト・ブラザーズ二人の月世界の冒険がはじまる。一方、月の芸能界を支配する組織「フラッシュバブル」の女ボス、ベタール卑美子と片腕チェザーレ伊東は、星くず兄弟の活躍を封じるべく、刺客を送り込むことに。\r 果たして、スターダスト・ブラザーズ二人は〈ロックの魂〉を手に入れることはできるのか!?\r はたまた、スターになることができるのか!?",
+    "overview_en": "A shady music mogul brings together two wannabe stars—punk rock rebel Kan and new-wave crooner Shingo—and transforms them into the Stardust Brothers, a girl-friendly, silver-jumpsuited, synth-pop sensation. Along with their #1 fan, who herself dreams of a music career, the duo rockets to stardom.",
+    "poster_path": "/hv0jJAQe2aaQMElde3w9N6nAIoo.jpg",
+    "backdrop_path": "/l6dwa57KqjUn6h7OODNvN6zuq0W.jpg",
+    "release_date": "1985-06-15",
+    "director": "手塚眞",
+    "director_jp": "手塚眞",
+    "director_en": "Makoto Tezuka",
+    "genres": [
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 98,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "星くず兄弟の新たな伝説": {
+    "tmdb_id": 603516,
+    "tmdb_title_jp": "星くず兄弟の新たな伝説",
+    "tmdb_title_en": "The Brand New Legend of the Stardust Brothers",
+    "tmdb_title_original": "星くず兄弟の新たな伝説",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A sequel to the 1980 movie The Legend of the Stardust Brothers. As well as being a rock musical comedy, it also borrows elements from other genres such as road movies, westerns, and meta fiction.",
+    "poster_path": "/i8DwgH08b0ap2euWLiurHZp9XJX.jpg",
+    "backdrop_path": "/nU6G9KNc6E4GnIdvmWxmxzjKZiG.jpg",
+    "release_date": "2018-01-20",
+    "director": "手塚眞",
+    "director_jp": "手塚眞",
+    "director_en": "Makoto Tezuka",
+    "genres": [
+      "コメディ",
+      "サイエンスフィクション",
+      "音楽"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Science Fiction",
+      "Music"
+    ],
+    "runtime": 132,
+    "vote_average": 2.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:603516": {
+    "tmdb_id": 603516,
+    "tmdb_title_jp": "星くず兄弟の新たな伝説",
+    "tmdb_title_en": "The Brand New Legend of the Stardust Brothers",
+    "tmdb_title_original": "星くず兄弟の新たな伝説",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A sequel to the 1980 movie The Legend of the Stardust Brothers. As well as being a rock musical comedy, it also borrows elements from other genres such as road movies, westerns, and meta fiction.",
+    "poster_path": "/i8DwgH08b0ap2euWLiurHZp9XJX.jpg",
+    "backdrop_path": "/nU6G9KNc6E4GnIdvmWxmxzjKZiG.jpg",
+    "release_date": "2018-01-20",
+    "director": "手塚眞",
+    "director_jp": "手塚眞",
+    "director_en": "Makoto Tezuka",
+    "genres": [
+      "コメディ",
+      "サイエンスフィクション",
+      "音楽"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Science Fiction",
+      "Music"
+    ],
+    "runtime": 132,
+    "vote_average": 2.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "子供の四季 春夏": null,
+  "子供の四季 秋冬": null,
+  "暁の合唱": {
+    "tmdb_id": 845049,
+    "tmdb_title_jp": "暁の合唱",
+    "tmdb_title_en": "Dawn Chorus",
+    "tmdb_title_original": "暁の合唱",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A young girl gives up high school to help out family expenses and starts to work as a bus conductor.",
+    "poster_path": "/vMuQCNZ0XsSIxYphuGHIbEARQTi.jpg",
+    "backdrop_path": null,
+    "release_date": "1941-06-12",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:845049": {
+    "tmdb_id": 845049,
+    "tmdb_title_jp": "暁の合唱",
+    "tmdb_title_en": "Dawn Chorus",
+    "tmdb_title_original": "暁の合唱",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A young girl gives up high school to help out family expenses and starts to work as a bus conductor.",
+    "poster_path": "/vMuQCNZ0XsSIxYphuGHIbEARQTi.jpg",
+    "backdrop_path": null,
+    "release_date": "1941-06-12",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "大佛さまと子供たち": {
+    "tmdb_id": 741419,
+    "tmdb_title_jp": "大仏さまと子供たち",
+    "tmdb_title_en": "Children of the Great Buddha",
+    "tmdb_title_original": "大仏さまと子供たち",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The final film in the Beehive trilogy. Set in post-war Nara, it follows a group of orphans living in a temple who support themselves by acting as guides for tourists visiting the Great Buddha.",
+    "poster_path": "/zdbnNZ4MnVuYBRonr7Isfha4VdM.jpg",
+    "backdrop_path": null,
+    "release_date": "1952-10-23",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 102,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "家庭日記": {
+    "tmdb_id": 400619,
+    "tmdb_title_jp": "家庭日記",
+    "tmdb_title_en": "Family Diary",
+    "tmdb_title_original": "家庭日記",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Two childhood friends go their own ways but meet again some years later after they have both married. They get re-acquainted, meet each others’ families, and all is well. Then the disagreements start...",
+    "poster_path": "/t2x41bq4N0wgjpgiQRlwMqpF67D.jpg",
+    "backdrop_path": null,
+    "release_date": "1938-09-29",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 99,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:400619": {
+    "tmdb_id": 400619,
+    "tmdb_title_jp": "家庭日記",
+    "tmdb_title_en": "Family Diary",
+    "tmdb_title_original": "家庭日記",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Two childhood friends go their own ways but meet again some years later after they have both married. They get re-acquainted, meet each others’ families, and all is well. Then the disagreements start...",
+    "poster_path": "/t2x41bq4N0wgjpgiQRlwMqpF67D.jpg",
+    "backdrop_path": null,
+    "release_date": "1938-09-29",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 99,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "母のおもかげ": {
+    "tmdb_id": 741408,
+    "tmdb_title_jp": "母のおもかげ",
+    "tmdb_title_en": "Image of a Mother",
+    "tmdb_title_original": "母のおもかげ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The young boy Michio struggles with the loss of his mother while his widowed father, Sadao remarries the kind-hearted Sonoko, who has a daughter of her own. As Michio clings to memories of his mother, the family navigates the challenges of grief, love, and new beginnings.",
+    "poster_path": "/nDXoiGdpgyPPQX5X3SwE1JoieyC.jpg",
+    "backdrop_path": "/8khP2C2Hmr0jTq7NSObF7DfXU8F.jpg",
+    "release_date": "1959-03-04",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:741408": {
+    "tmdb_id": 741408,
+    "tmdb_title_jp": "母のおもかげ",
+    "tmdb_title_en": "Image of a Mother",
+    "tmdb_title_original": "母のおもかげ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The young boy Michio struggles with the loss of his mother while his widowed father, Sadao remarries the kind-hearted Sonoko, who has a daughter of her own. As Michio clings to memories of his mother, the family navigates the challenges of grief, love, and new beginnings.",
+    "poster_path": "/nDXoiGdpgyPPQX5X3SwE1JoieyC.jpg",
+    "backdrop_path": "/8khP2C2Hmr0jTq7NSObF7DfXU8F.jpg",
+    "release_date": "1959-03-04",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "明日は日本晴れ": {
+    "tmdb_id": 1038192,
+    "tmdb_title_jp": "明日は日本晴れ",
+    "tmdb_title_en": "Tomorrow Will Be Fine Weather",
+    "tmdb_title_original": "明日は日本晴れ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Lost for 70 years until 2022, Shimizu’s second postwar film recalls Mr. Thank You as he frames the narrative in a familiar setting, tracking an autumnal bus ride from a hot spring town through a mountain pass. When the jaunty bus unceremoniously breaks down, a bittersweet sadness overcomes the passengers as unexpected reunions take place, but nothing can be what it was before the war.",
+    "poster_path": "/dW7ZFzYCCqNuPK2w4oqv7VU5izB.jpg",
+    "backdrop_path": null,
+    "release_date": "1948-12-07",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 65,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1038192": {
+    "tmdb_id": 1038192,
+    "tmdb_title_jp": "明日は日本晴れ",
+    "tmdb_title_en": "Tomorrow Will Be Fine Weather",
+    "tmdb_title_original": "明日は日本晴れ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Lost for 70 years until 2022, Shimizu’s second postwar film recalls Mr. Thank You as he frames the narrative in a familiar setting, tracking an autumnal bus ride from a hot spring town through a mountain pass. When the jaunty bus unceremoniously breaks down, a bittersweet sadness overcomes the passengers as unexpected reunions take place, but nothing can be what it was before the war.",
+    "poster_path": "/dW7ZFzYCCqNuPK2w4oqv7VU5izB.jpg",
+    "backdrop_path": null,
+    "release_date": "1948-12-07",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 65,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "何故彼女等はそうなったか": {
+    "tmdb_id": 841638,
+    "tmdb_title_jp": "何故彼女等はそうなったか",
+    "tmdb_title_en": "Girl's Reform School",
+    "tmdb_title_original": "何故彼女等はそうなったか",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The day to day life in an establishment for delinquent teenage girls.",
+    "poster_path": "/cVCsFEpjuPgVMvENdeY0JpSDZG5.jpg",
+    "backdrop_path": "/xGrg755UaleaRxp38sYHEHtb1Cm.jpg",
+    "release_date": "1956-02-05",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:841638": {
+    "tmdb_id": 841638,
+    "tmdb_title_jp": "何故彼女等はそうなったか",
+    "tmdb_title_en": "Girl's Reform School",
+    "tmdb_title_original": "何故彼女等はそうなったか",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The day to day life in an establishment for delinquent teenage girls.",
+    "poster_path": "/cVCsFEpjuPgVMvENdeY0JpSDZG5.jpg",
+    "backdrop_path": "/xGrg755UaleaRxp38sYHEHtb1Cm.jpg",
+    "release_date": "1956-02-05",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "風の中の子供": {
+    "tmdb_id": 211256,
+    "tmdb_title_jp": "風の中の子供",
+    "tmdb_title_en": "Children in the Wind",
+    "tmdb_title_original": "風の中の子供",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "On vacation's eve, a boy is sent to the countryside to live with his uncle after his father is imprisoned and accused of embezzlement.",
+    "poster_path": "/2EhQBVNhQbDza5H1hjWa5JvhxLL.jpg",
+    "backdrop_path": "/m2uBKyBx8pe4Q6OX6ePPIzGN5Og.jpg",
+    "release_date": "1937-11-11",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 88,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:211256": {
+    "tmdb_id": 211256,
+    "tmdb_title_jp": "風の中の子供",
+    "tmdb_title_en": "Children in the Wind",
+    "tmdb_title_original": "風の中の子供",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "On vacation's eve, a boy is sent to the countryside to live with his uncle after his father is imprisoned and accused of embezzlement.",
+    "poster_path": "/2EhQBVNhQbDza5H1hjWa5JvhxLL.jpg",
+    "backdrop_path": "/m2uBKyBx8pe4Q6OX6ePPIzGN5Og.jpg",
+    "release_date": "1937-11-11",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 88,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "母情": {
+    "tmdb_id": 220163,
+    "tmdb_title_jp": "母情",
+    "tmdb_title_en": "A Mother's Love",
+    "tmdb_title_original": "母情",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A bar girl tries to pass her three children, each from a different father, to rural relatives.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1950-06-27",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:220163": {
+    "tmdb_id": 220163,
+    "tmdb_title_jp": "母情",
+    "tmdb_title_en": "A Mother's Love",
+    "tmdb_title_original": "母情",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A bar girl tries to pass her three children, each from a different father, to rural relatives.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1950-06-27",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "按摩と女": {
+    "tmdb_id": 91094,
+    "tmdb_title_jp": "按摩と女",
+    "tmdb_title_en": "The Masseurs and a Woman",
+    "tmdb_title_original": "按摩と女",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A pair of blind masseurs, an enigmatic city woman, a lonely man and his ill-behaved nephew—The Masseurs and a Woman is made up of crisscrossing miniature studies of love and family at a remote resort in the mountains. With delicate and surprising humor, Hiroshi Shimizu paints a timeless portrait of loneliness and the human need to connect.",
+    "poster_path": "/tNI9KvOl2ZTgN354EDvonL8sLHz.jpg",
+    "backdrop_path": "/khEsilaCR8UMs8XyCFbSpYR5vWk.jpg",
+    "release_date": "1938-07-07",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 66,
+    "vote_average": 6.833,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:91094": {
+    "tmdb_id": 91094,
+    "tmdb_title_jp": "按摩と女",
+    "tmdb_title_en": "The Masseurs and a Woman",
+    "tmdb_title_original": "按摩と女",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A pair of blind masseurs, an enigmatic city woman, a lonely man and his ill-behaved nephew—The Masseurs and a Woman is made up of crisscrossing miniature studies of love and family at a remote resort in the mountains. With delicate and surprising humor, Hiroshi Shimizu paints a timeless portrait of loneliness and the human need to connect.",
+    "poster_path": "/tNI9KvOl2ZTgN354EDvonL8sLHz.jpg",
+    "backdrop_path": "/khEsilaCR8UMs8XyCFbSpYR5vWk.jpg",
+    "release_date": "1938-07-07",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 66,
+    "vote_average": 6.833,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "サヨンの鐘": {
+    "tmdb_id": 257432,
+    "tmdb_title_jp": "サヨンの鐘",
+    "tmdb_title_en": "Sayon's Bell",
+    "tmdb_title_original": "サヨンの鐘",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Based on the true story of a 17-year old Atayal girl called Sayun Hayun from Nan'oku village, Giran district, Taihoku Prefecture (in current Taiwan) who went missing and was thought to have drowned whilst helping carry the luggage of her teacher Masaki Takita during a storm in 1938.",
+    "poster_path": "/fVCBqczBEg3cFzYn0bo2sdnyWlU.jpg",
+    "backdrop_path": null,
+    "release_date": "1943-07-01",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "tmdb:257432": {
+    "tmdb_id": 257432,
+    "tmdb_title_jp": "サヨンの鐘",
+    "tmdb_title_en": "Sayon's Bell",
+    "tmdb_title_original": "サヨンの鐘",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Based on the true story of a 17-year old Atayal girl called Sayun Hayun from Nan'oku village, Giran district, Taihoku Prefecture (in current Taiwan) who went missing and was thought to have drowned whilst helping carry the luggage of her teacher Masaki Takita during a storm in 1938.",
+    "poster_path": "/fVCBqczBEg3cFzYn0bo2sdnyWlU.jpg",
+    "backdrop_path": null,
+    "release_date": "1943-07-01",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "桃の花の咲く下で": {
+    "tmdb_id": 741418,
+    "tmdb_title_jp": "桃の花の咲く下で",
+    "tmdb_title_en": "Under the Blossoming Peach",
+    "tmdb_title_original": "桃の花の咲く下で",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A picture-story-show operator, accompanies her son, Akira, who lives apart from her, to a hot-spring medical treatment and spend a moment of brief happiness together, but eventually the time comes to say goodbye. The portrayal of the children and the atmosphere of the hot spring resort shine through in this film about a mother by master filmmaker Hiroshi Shimizu.",
+    "poster_path": "/6Y6x3Kn2nKfFPDguFqMW6lXx791.jpg",
+    "backdrop_path": null,
+    "release_date": "1951-03-24",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 74,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:741418": {
+    "tmdb_id": 741418,
+    "tmdb_title_jp": "桃の花の咲く下で",
+    "tmdb_title_en": "Under the Blossoming Peach",
+    "tmdb_title_original": "桃の花の咲く下で",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A picture-story-show operator, accompanies her son, Akira, who lives apart from her, to a hot-spring medical treatment and spend a moment of brief happiness together, but eventually the time comes to say goodbye. The portrayal of the children and the atmosphere of the hot spring resort shine through in this film about a mother by master filmmaker Hiroshi Shimizu.",
+    "poster_path": "/6Y6x3Kn2nKfFPDguFqMW6lXx791.jpg",
+    "backdrop_path": null,
+    "release_date": "1951-03-24",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 74,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "花形選手": {
+    "tmdb_id": 238203,
+    "tmdb_title_jp": "花形選手",
+    "tmdb_title_en": "A Star Athlete",
+    "tmdb_title_original": "花形選手",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "During college military training exercises, the bond between two friends and athletic rivals is tested when one of them becomes involved with a woman who may be a prostitute.",
+    "poster_path": "/k3AZ5KpRcLMxqCtVhg6EU70dQpX.jpg",
+    "backdrop_path": "/sZDCkxOpnyPdSu1tE3uIrTj5gbB.jpg",
+    "release_date": "1937-05-01",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 64,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:238203": {
+    "tmdb_id": 238203,
+    "tmdb_title_jp": "花形選手",
+    "tmdb_title_en": "A Star Athlete",
+    "tmdb_title_original": "花形選手",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "During college military training exercises, the bond between two friends and athletic rivals is tested when one of them becomes involved with a woman who may be a prostitute.",
+    "poster_path": "/k3AZ5KpRcLMxqCtVhg6EU70dQpX.jpg",
+    "backdrop_path": "/sZDCkxOpnyPdSu1tE3uIrTj5gbB.jpg",
+    "release_date": "1937-05-01",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 64,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "霧の音": {
+    "tmdb_id": 741414,
+    "tmdb_title_jp": "霧の音",
+    "tmdb_title_en": "Sound in the Mist",
+    "tmdb_title_original": "霧の音",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In the heart of the Japanese Alps, in Kamikochi, Nagano Prefecture, botany professor Kazuhiko Onuma spends time with Tsuruko, his lover. One night, Kazuhiko's wife Kazuyo comes to see them and confronts the professor about his extramarital affair, and Tsuruko, an inevitable witness to the confrontation, leaves the professor the following morning. Over the next decade, whenever he visits the mountain cabin every autumn equinox, the memory of Tsuruko will forever haunt Kazuhiko...",
+    "poster_path": "/scn6ybr27K65FuyptKIL0VYtXkJ.jpg",
+    "backdrop_path": "/uh6nsnZzjKPUFZPs8ckP6rbdzJe.jpg",
+    "release_date": "1956-11-21",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:741414": {
+    "tmdb_id": 741414,
+    "tmdb_title_jp": "霧の音",
+    "tmdb_title_en": "Sound in the Mist",
+    "tmdb_title_original": "霧の音",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In the heart of the Japanese Alps, in Kamikochi, Nagano Prefecture, botany professor Kazuhiko Onuma spends time with Tsuruko, his lover. One night, Kazuhiko's wife Kazuyo comes to see them and confronts the professor about his extramarital affair, and Tsuruko, an inevitable witness to the confrontation, leaves the professor the following morning. Over the next decade, whenever he visits the mountain cabin every autumn equinox, the memory of Tsuruko will forever haunt Kazuhiko...",
+    "poster_path": "/scn6ybr27K65FuyptKIL0VYtXkJ.jpg",
+    "backdrop_path": "/uh6nsnZzjKPUFZPs8ckP6rbdzJe.jpg",
+    "release_date": "1956-11-21",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "簪": {
+    "tmdb_id": 115596,
+    "tmdb_title_jp": "簪",
+    "tmdb_title_en": "Ornamental Hairpin",
+    "tmdb_title_original": "簪",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A Japanese mountain inn patron's foot is cut by an ornamental hairpin accidentally left behind by a former patron, leading to much curiosity among the other patrons regarding her identity.",
+    "poster_path": "/cCgPjISAuEL1W92EWiw8gDH173F.jpg",
+    "backdrop_path": "/mzveSC4QlAFL7zYc9ucKvdgBvBN.jpg",
+    "release_date": "1941-08-26",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 71,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:115596": {
+    "tmdb_id": 115596,
+    "tmdb_title_jp": "簪",
+    "tmdb_title_en": "Ornamental Hairpin",
+    "tmdb_title_original": "簪",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A Japanese mountain inn patron's foot is cut by an ornamental hairpin accidentally left behind by a former patron, leading to much curiosity among the other patrons regarding her identity.",
+    "poster_path": "/cCgPjISAuEL1W92EWiw8gDH173F.jpg",
+    "backdrop_path": "/mzveSC4QlAFL7zYc9ucKvdgBvBN.jpg",
+    "release_date": "1941-08-26",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 71,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "母の旅路": {
+    "tmdb_id": 741413,
+    "tmdb_title_jp": "母の旅路",
+    "tmdb_title_en": "A Mother's Journey",
+    "tmdb_title_original": "母の旅路",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/vGXgnQYCGbAZGpIzyrmLxbdNfzi.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-09-21",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 92,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:741413": {
+    "tmdb_id": 741413,
+    "tmdb_title_jp": "母の旅路",
+    "tmdb_title_en": "A Mother's Journey",
+    "tmdb_title_original": "母の旅路",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/vGXgnQYCGbAZGpIzyrmLxbdNfzi.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-09-21",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 92,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "有りがたうさん": {
+    "tmdb_id": 100033,
+    "tmdb_title_jp": "有りがたうさん",
+    "tmdb_title_en": "Mr. Thank You",
+    "tmdb_title_original": "有りがたうさん",
+    "tmdb_original_language": "ja",
+    "overview": "昭和の名匠・清水宏監督が、川端康成の短編小説「有難う」を上原謙主演で映画化したロードムービー。伊豆地方の美しい自然を背景に、バス運転手と乗客たちが織り成す人間模様をユーモラスに描く。道を譲ってくれた人々に「ありがとう」と声を掛けることから、「ありがとうさん」と呼ばれて親しまれているバス運転手。そんな彼のバスに、貧しさから東京に売られていく娘とその母親、訳ありの女、威張り散らすヒゲの紳士らが乗り込んでくる。（eiga.com）",
+    "overview_en": "In Depression-era Japan, a courteous bus driver carries an eclectic group of passengers from the mountainous Izu to Tokyo.",
+    "poster_path": "/f4s8MM5qar8mM8S2hc07RlfwI4.jpg",
+    "backdrop_path": "/pGLJqCREnCERxwbqsKv7ZNKIm9E.jpg",
+    "release_date": "1936-02-27",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 76,
+    "vote_average": 7.012,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:100033": {
+    "tmdb_id": 100033,
+    "tmdb_title_jp": "有りがたうさん",
+    "tmdb_title_en": "Mr. Thank You",
+    "tmdb_title_original": "有りがたうさん",
+    "tmdb_original_language": "ja",
+    "overview": "昭和の名匠・清水宏監督が、川端康成の短編小説「有難う」を上原謙主演で映画化したロードムービー。伊豆地方の美しい自然を背景に、バス運転手と乗客たちが織り成す人間模様をユーモラスに描く。道を譲ってくれた人々に「ありがとう」と声を掛けることから、「ありがとうさん」と呼ばれて親しまれているバス運転手。そんな彼のバスに、貧しさから東京に売られていく娘とその母親、訳ありの女、威張り散らすヒゲの紳士らが乗り込んでくる。（eiga.com）",
+    "overview_en": "In Depression-era Japan, a courteous bus driver carries an eclectic group of passengers from the mountainous Izu to Tokyo.",
+    "poster_path": "/f4s8MM5qar8mM8S2hc07RlfwI4.jpg",
+    "backdrop_path": "/pGLJqCREnCERxwbqsKv7ZNKIm9E.jpg",
+    "release_date": "1936-02-27",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 76,
+    "vote_average": 7.012,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "みかへりの塔": {
+    "tmdb_id": 259118,
+    "tmdb_title_jp": "みかへりの塔",
+    "tmdb_title_en": "Introspection Tower",
+    "tmdb_title_original": "みかへりの塔",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A reformatory in the remote countryside houses 200 delinquents and problem children. The teachers and caretakers face much trouble. The school is often short on water, and one day, the well runs dry.",
+    "poster_path": "/xKp9VFrRTWN4Uu0D9MdgahPlegg.jpg",
+    "backdrop_path": "/4340A0IhPdt9CCcwdLRNXAzqs1E.jpg",
+    "release_date": "1941-01-30",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:259118": {
+    "tmdb_id": 259118,
+    "tmdb_title_jp": "みかへりの塔",
+    "tmdb_title_en": "Introspection Tower",
+    "tmdb_title_original": "みかへりの塔",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A reformatory in the remote countryside houses 200 delinquents and problem children. The teachers and caretakers face much trouble. The school is often short on water, and one day, the well runs dry.",
+    "poster_path": "/xKp9VFrRTWN4Uu0D9MdgahPlegg.jpg",
+    "backdrop_path": "/4340A0IhPdt9CCcwdLRNXAzqs1E.jpg",
+    "release_date": "1941-01-30",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "蜂の巣の子供たち": {
+    "tmdb_id": 97714,
+    "tmdb_title_jp": "蜂の巣の子供たち",
+    "tmdb_title_en": "Children of the Beehive",
+    "tmdb_title_original": "蜂の巣の子供たち",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A group of war orphans initially seen scratching out an existence through black market work, as they are taken under the wing of a nameless soldier, just repatriated after the war.",
+    "poster_path": "/371KRPFgkCvMhAuh1IKoFHgyXF4.jpg",
+    "backdrop_path": "/hqqHgzKyJRlludWEdQ6FgBPTA12.jpg",
+    "release_date": "1948-08-24",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 86,
+    "vote_average": 6.615,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:97714": {
+    "tmdb_id": 97714,
+    "tmdb_title_jp": "蜂の巣の子供たち",
+    "tmdb_title_en": "Children of the Beehive",
+    "tmdb_title_original": "蜂の巣の子供たち",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A group of war orphans initially seen scratching out an existence through black market work, as they are taken under the wing of a nameless soldier, just repatriated after the war.",
+    "poster_path": "/371KRPFgkCvMhAuh1IKoFHgyXF4.jpg",
+    "backdrop_path": "/hqqHgzKyJRlludWEdQ6FgBPTA12.jpg",
+    "release_date": "1948-08-24",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 86,
+    "vote_average": 6.615,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "その後の蜂の巣の子供たち": {
+    "tmdb_id": 741416,
+    "tmdb_title_jp": "その後の蜂の巣の子供たち",
+    "tmdb_title_en": "Children of the Beehive: What Happened Next",
+    "tmdb_title_original": "その後の蜂の巣の子供たち",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In Shimizu’s sequel to his 1948 masterpiece, a journalist arrives in the secluded foothills of Izu to find a hidden commune to ask, “What happened to the children of the Beehive?” Three years have passed and her question situates itself not only in the realm of Shimizu’s craft, but that of reality: What became of the war orphans Shimizu raised?",
+    "poster_path": "/zMZWeVdYGG1s4qVotKameTu2QqZ.jpg",
+    "backdrop_path": "/v76IlQHjQhwDJUcEBBp2hDKT5sk.jpg",
+    "release_date": "1951-02-12",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:741416": {
+    "tmdb_id": 741416,
+    "tmdb_title_jp": "その後の蜂の巣の子供たち",
+    "tmdb_title_en": "Children of the Beehive: What Happened Next",
+    "tmdb_title_original": "その後の蜂の巣の子供たち",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In Shimizu’s sequel to his 1948 masterpiece, a journalist arrives in the secluded foothills of Izu to find a hidden commune to ask, “What happened to the children of the Beehive?” Three years have passed and her question situates itself not only in the realm of Shimizu’s craft, but that of reality: What became of the war orphans Shimizu raised?",
+    "poster_path": "/zMZWeVdYGG1s4qVotKameTu2QqZ.jpg",
+    "backdrop_path": "/v76IlQHjQhwDJUcEBBp2hDKT5sk.jpg",
+    "release_date": "1951-02-12",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "小原庄助さん": {
+    "tmdb_id": 255943,
+    "tmdb_title_jp": "小原庄助さん",
+    "tmdb_title_en": "Mr. Shosuke Ohara",
+    "tmdb_title_original": "小原庄助さん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Saheita, the final heir of a once rich and respectable family, can't refuse the many villagers that come to him for favours and money, even though he is on the brink of bankruptcy. Around town he is better known by his nickname Mr. Shosuke Ohara.",
+    "poster_path": "/uxaugmmIWrG8J3DPcTwXZbnYohW.jpg",
+    "backdrop_path": "/8KhXKsAGUbD11MohVQT1guDSlug.jpg",
+    "release_date": "1949-11-08",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:255943": {
+    "tmdb_id": 255943,
+    "tmdb_title_jp": "小原庄助さん",
+    "tmdb_title_en": "Mr. Shosuke Ohara",
+    "tmdb_title_original": "小原庄助さん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Saheita, the final heir of a once rich and respectable family, can't refuse the many villagers that come to him for favours and money, even though he is on the brink of bankruptcy. Around town he is better known by his nickname Mr. Shosuke Ohara.",
+    "poster_path": "/uxaugmmIWrG8J3DPcTwXZbnYohW.jpg",
+    "backdrop_path": "/8KhXKsAGUbD11MohVQT1guDSlug.jpg",
+    "release_date": "1949-11-08",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "次郎物語": {
+    "tmdb_id": 837585,
+    "tmdb_title_jp": "次郎物語",
+    "tmdb_title_en": "The Tale of Jiro",
+    "tmdb_title_original": "次郎物語",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/2O43fb14SS5s91nGTTQkMS7PFqr.jpg",
+    "backdrop_path": null,
+    "release_date": "1941-12-11",
+    "director": "島耕二",
+    "director_jp": "島耕二",
+    "director_en": "Shima Kōji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:837585": {
+    "tmdb_id": 837585,
+    "tmdb_title_jp": "次郎物語",
+    "tmdb_title_en": "The Tale of Jiro",
+    "tmdb_title_original": "次郎物語",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/2O43fb14SS5s91nGTTQkMS7PFqr.jpg",
+    "backdrop_path": null,
+    "release_date": "1941-12-11",
+    "director": "島耕二",
+    "director_jp": "島耕二",
+    "director_en": "Shima Kōji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "今は昔、栄養映画館": null,
+  "今は昔、栄養映画館の旅": null
 }
