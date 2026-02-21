@@ -1667,7 +1667,6 @@
     ],
     "vote_average": 0.0
   },
-  "Monthly World Cinema Screening": null,
   "Mother's Pride (2026)": {
     "tmdb_id": 1418901,
     "tmdb_title": "Mother's Pride",
@@ -1683,6 +1682,26 @@
     ],
     "vote_average": 0.0
   },
+  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
+    "tmdb_id": 494603,
+    "tmdb_title": "The Highway Rat",
+    "tmdb_original_title": "The Highway Rat",
+    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
+    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
+    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
+    "release_date": "2018-10-10",
+    "director": "Jeroen Jaspaert",
+    "runtime": 25,
+    "genres": [
+      "Family",
+      "Animation",
+      "Comedy",
+      "TV Movie"
+    ],
+    "vote_average": 6.3
+  },
+  "Monthly World Cinema Screening": null,
+  "Weekly Arthouse Screening": null,
   "OBSCURE FILM PRESENTS: GENRE IDENTITIES, PART ONE - TRANSNESS AND GENRE": null,
   "SPEED + STRIKE PRESENTS: CRASH": {
     "tmdb_id": 884,
@@ -1719,23 +1738,21 @@
     "vote_average": 6.255
   },
   "If You're Lost I'll Come Find You": null,
-  "Family Film/ The Scarecrows' Wedding + The Highway Rat (U)": {
-    "tmdb_id": 494603,
-    "tmdb_title": "The Highway Rat",
-    "tmdb_original_title": "The Highway Rat",
-    "overview": "The tale of a ravenous rat who craves buns, biscuits and all sweet things. Tearing along the highway, he searches for sugary treats to steal, until his sweet tooth leads him to a sticky end.",
-    "poster_path": "/dxNKtY0e5pm6BFCdDMP3riRVBTb.jpg",
-    "backdrop_path": "/muXYdzOL7DSlzoWYuu6QOCdy7vZ.jpg",
-    "release_date": "2018-10-10",
-    "director": "Jeroen Jaspaert",
-    "runtime": 25,
+  "Jennifer's Body": {
+    "tmdb_id": 19994,
+    "tmdb_title": "Jennifer's Body",
+    "tmdb_original_title": "Jennifer's Body",
+    "overview": "Jennifer, a gorgeous, seductive cheerleader takes evil to a whole new level after she's possessed by a sinister demon. Now it's up to her best friend to stop Jennifer's reign of terror before it's too late.",
+    "poster_path": "/wrkjsGcFJxcQqR56kJUYAEKKg2T.jpg",
+    "backdrop_path": "/dcqbt5j5K6oMnz2kdEpJY8iG20i.jpg",
+    "release_date": "2009-09-18",
+    "director": "Karyn Kusama",
+    "runtime": 107,
     "genres": [
-      "Family",
-      "Animation",
-      "Comedy",
-      "TV Movie"
+      "Horror",
+      "Comedy"
     ],
-    "vote_average": 6.3
+    "vote_average": 5.988
   },
   "Little Amélie (PG) [Dubbed]": null,
   "Little Amélie (PG) [Subtitled]": null,
@@ -1789,9 +1806,25 @@
       "Action",
       "Adventure"
     ],
-    "vote_average": 7.563
+    "vote_average": 7.564
   },
-  "Weekly Arthouse Screening": null,
+  "THE BRIDE!": {
+    "tmdb_id": 1159831,
+    "tmdb_title": "The Bride!",
+    "tmdb_original_title": "The Bride!",
+    "overview": "A lonely Frankenstein travels to 1930s Chicago to ask groundbreaking scientist Dr. Euphronious to create a companion for him. The two revive a murdered young woman and The Bride is born. But what ensues is beyond what either of them imagined.",
+    "poster_path": "/vu1cbpWza1F0OSUTqVMlJYcNgC2.jpg",
+    "backdrop_path": "/pMlCbasyAqBLV18CLEkDm07VKtn.jpg",
+    "release_date": "2026-03-04",
+    "director": "Maggie Gyllenhaal",
+    "runtime": 126,
+    "genres": [
+      "Science Fiction",
+      "Horror",
+      "Comedy"
+    ],
+    "vote_average": 0.0
+  },
   "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
