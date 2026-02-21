@@ -4769,7 +4769,7 @@
     "overview": "FBI特別捜査官チェット・デズモンドは町のウエートレス、テレサ・バンクスの殺害事件を調査中に謎の失踪を遂げる。それから1年後、町全体に巣くった邪悪な者達は学園の女王であるローラ・パーマーを標的にし始めていた。時を同じくして、テレサ・バンクス殺害事件の捜査を引き継いだ特別捜査官デイル・クーパーは、彼に備わった特別な才能、鋭い第六感を生かして深い謎を解明しようと決意するのだった。",
     "overview_en": "In the questionable town of Deer Meadow, Washington, FBI Agent Desmond inexplicably disappears while hunting for the man who murdered a teen girl. The killer is never apprehended, and, after experiencing dark visions and supernatural encounters, Agent Dale Cooper chillingly predicts that the culprit will claim another life. Meanwhile, in the more cozy town of Twin Peaks, hedonistic beauty Laura Palmer hangs with lowlifes and seems destined for a grisly fate.",
     "poster_path": "/hQFPxgUqNKJlsco6NJ6rLtds2zE.jpg",
-    "backdrop_path": "/ke4yX2eS5eUC94YTkKgoGWi53TM.jpg",
+    "backdrop_path": "/amGU1FpELmenVvNmPShW58Orepy.jpg",
     "release_date": "1992-06-03",
     "director": "デヴィッド・リンチ",
     "director_jp": "デヴィッド・リンチ",
@@ -4785,7 +4785,7 @@
       "Horror"
     ],
     "runtime": 135,
-    "vote_average": 7.404,
+    "vote_average": 7.408,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -61320,5 +61320,950 @@
     ]
   },
   "今は昔、栄養映画館": null,
-  "今は昔、栄養映画館の旅": null
+  "今は昔、栄養映画館の旅": null,
+  "北陸代理戦争": {
+    "tmdb_id": 91892,
+    "tmdb_title_jp": "北陸代理戦争",
+    "tmdb_title_en": "Hokuriku Proxy War",
+    "tmdb_title_original": "北陸代理戦争",
+    "tmdb_original_language": "ja",
+    "overview": "福井の富安組組長・安浦と若頭・川田の間でトラブルが発生。安浦から相談を受けた弟分の万谷は、彼に大阪浅田組の金井を紹介する。そんな中、この機会を利用して、北陸を侵略する金井。そこで、川田は北陸を取り戻そうと立ち上がる。",
+    "overview_en": "A Yakuza group from Osaka with dreams of national dominance moves into the snowy Hokuriku region, sparking a bloody turf war with local gangs.",
+    "poster_path": "/8mclrqibImISlc7wEOUWSqRaK3K.jpg",
+    "backdrop_path": "/rTztWCPaapImzqResO8ddfw0gSS.jpg",
+    "release_date": "1977-02-26",
+    "director": "深作欣二",
+    "director_jp": "深作欣二",
+    "director_en": "Kinji Fukasaku",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Action"
+    ],
+    "runtime": 98,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:91892": {
+    "tmdb_id": 91892,
+    "tmdb_title_jp": "北陸代理戦争",
+    "tmdb_title_en": "Hokuriku Proxy War",
+    "tmdb_title_original": "北陸代理戦争",
+    "tmdb_original_language": "ja",
+    "overview": "福井の富安組組長・安浦と若頭・川田の間でトラブルが発生。安浦から相談を受けた弟分の万谷は、彼に大阪浅田組の金井を紹介する。そんな中、この機会を利用して、北陸を侵略する金井。そこで、川田は北陸を取り戻そうと立ち上がる。",
+    "overview_en": "A Yakuza group from Osaka with dreams of national dominance moves into the snowy Hokuriku region, sparking a bloody turf war with local gangs.",
+    "poster_path": "/8mclrqibImISlc7wEOUWSqRaK3K.jpg",
+    "backdrop_path": "/rTztWCPaapImzqResO8ddfw0gSS.jpg",
+    "release_date": "1977-02-26",
+    "director": "深作欣二",
+    "director_jp": "深作欣二",
+    "director_en": "Kinji Fukasaku",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "アクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Action"
+    ],
+    "runtime": 98,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "仁義なき戦い 完結篇": {
+    "tmdb_id": 64912,
+    "tmdb_title_jp": "仁義なき戦い 完結篇",
+    "tmdb_title_en": "Battles Without Honor and Humanity: Final Episode",
+    "tmdb_title_original": "仁義なき戦い 完結篇",
+    "tmdb_original_language": "ja",
+    "overview": "広能組・打本会の連合と山守組との広島抗争は、警察による組長クラスの一斉検挙、いわゆる「頂上作戦」によって終息に向かう。打本会は解散し、広能組長・広能昌三は網走刑務所に収監された。一方、山守組側では逮捕されるも未決保釈となった最高幹部・武田明が広島に散在するやくざ組織に大同団結を呼びかけ、市民社会からの厳しい視線をかわすため政治結社「天政会」として統一組織を立ち上げた。しかし天政会は、会長・武田明、理事・江田省一らの主流派と副会長・大友勝利、幹事長・早川英男らの反主流派とに分かれ一枚岩ではなかった。",
+    "overview_en": "While Hirono is in prison, his rival Takeda turns his own crime organization into a political party, whose two executives stir up new tensions in their thirst for power.",
+    "poster_path": "/799isAqCuIYV3lKECi65DIQPiiE.jpg",
+    "backdrop_path": "/3gtr17V2XtZMlZi22GoWuFlwXXs.jpg",
+    "release_date": "1974-06-29",
+    "director": "深作欣二",
+    "director_jp": "深作欣二",
+    "director_en": "Kinji Fukasaku",
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 100,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:64912": {
+    "tmdb_id": 64912,
+    "tmdb_title_jp": "仁義なき戦い 完結篇",
+    "tmdb_title_en": "Battles Without Honor and Humanity: Final Episode",
+    "tmdb_title_original": "仁義なき戦い 完結篇",
+    "tmdb_original_language": "ja",
+    "overview": "広能組・打本会の連合と山守組との広島抗争は、警察による組長クラスの一斉検挙、いわゆる「頂上作戦」によって終息に向かう。打本会は解散し、広能組長・広能昌三は網走刑務所に収監された。一方、山守組側では逮捕されるも未決保釈となった最高幹部・武田明が広島に散在するやくざ組織に大同団結を呼びかけ、市民社会からの厳しい視線をかわすため政治結社「天政会」として統一組織を立ち上げた。しかし天政会は、会長・武田明、理事・江田省一らの主流派と副会長・大友勝利、幹事長・早川英男らの反主流派とに分かれ一枚岩ではなかった。",
+    "overview_en": "While Hirono is in prison, his rival Takeda turns his own crime organization into a political party, whose two executives stir up new tensions in their thirst for power.",
+    "poster_path": "/799isAqCuIYV3lKECi65DIQPiiE.jpg",
+    "backdrop_path": "/3gtr17V2XtZMlZi22GoWuFlwXXs.jpg",
+    "release_date": "1974-06-29",
+    "director": "深作欣二",
+    "director_jp": "深作欣二",
+    "director_en": "Kinji Fukasaku",
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 100,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "マルドロール／腐敗": {
+    "tmdb_id": 959596,
+    "tmdb_title_jp": "Le Dossier Maldoror",
+    "tmdb_title_en": "Maldoror",
+    "tmdb_title_original": "Le Dossier Maldoror",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "When two girls go missing, Paul Chartier, an impulsive young police recruit, is assigned to “Maldoror”. This secret unit has been set up to monitor a dangerous sex offender. When the operation fails, fed up with the limits of the legal system, Chartier embarks on a solitary hunt to bring down the culprits.",
+    "poster_path": "/bal8kRJC4gfIehPAjSUDCBCtTKK.jpg",
+    "backdrop_path": "/5N3w3cC5d8fDMLuuDMn8io4StUE.jpg",
+    "release_date": "2024-09-08",
+    "director": "Fabrice Du Welz",
+    "director_jp": "Fabrice Du Welz",
+    "director_en": "Fabrice Du Welz",
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 155,
+    "vote_average": 6.391,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "篠崎誠監督特集": null,
+  "T2 トレインスポッティング": {
+    "tmdb_id": 180863,
+    "tmdb_title_jp": "T2 トレインスポッティング",
+    "tmdb_title_en": "T2 Trainspotting",
+    "tmdb_title_original": "T2 Trainspotting",
+    "tmdb_original_language": "en",
+    "overview": "スコットランド、エディンバラ。大金を持ち逃げし20年ぶりにオランダからこの地に戻ってきたマーク・レントン(ユアン・マクレガー)。表向きはパブを経営しながら、売春、ゆすりを稼業とするシック・ボーイ(ジョニー・リー・ミラー)。家族に愛想を尽かされ、孤独に絶望しているスパッド(ユエン・ブレムナー)。刑務所に服役中のベグビー(ロバート・カーライル)。想像通り？モノ分かりの良い大人になれずに荒んだ人生を疾走する彼らの再会、そして彼らが選ぶ未来とは──。",
+    "overview_en": "After 20 years abroad, Mark Renton returns to Scotland and reunites with his old friends Sick Boy, Spud and Begbie.",
+    "poster_path": "/lprwbMDNwGXifjT6rRyrVtNIZZB.jpg",
+    "backdrop_path": "/kR48L1E3OLOkQcnlmpi5wDj7ZZt.jpg",
+    "release_date": "2017-01-27",
+    "director": "ダニー・ボイル",
+    "director_jp": "ダニー・ボイル",
+    "director_en": "Danny Boyle",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 117,
+    "vote_average": 6.943,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:180863": {
+    "tmdb_id": 180863,
+    "tmdb_title_jp": "T2 トレインスポッティング",
+    "tmdb_title_en": "T2 Trainspotting",
+    "tmdb_title_original": "T2 Trainspotting",
+    "tmdb_original_language": "en",
+    "overview": "スコットランド、エディンバラ。大金を持ち逃げし20年ぶりにオランダからこの地に戻ってきたマーク・レントン(ユアン・マクレガー)。表向きはパブを経営しながら、売春、ゆすりを稼業とするシック・ボーイ(ジョニー・リー・ミラー)。家族に愛想を尽かされ、孤独に絶望しているスパッド(ユエン・ブレムナー)。刑務所に服役中のベグビー(ロバート・カーライル)。想像通り？モノ分かりの良い大人になれずに荒んだ人生を疾走する彼らの再会、そして彼らが選ぶ未来とは──。",
+    "overview_en": "After 20 years abroad, Mark Renton returns to Scotland and reunites with his old friends Sick Boy, Spud and Begbie.",
+    "poster_path": "/lprwbMDNwGXifjT6rRyrVtNIZZB.jpg",
+    "backdrop_path": "/kR48L1E3OLOkQcnlmpi5wDj7ZZt.jpg",
+    "release_date": "2017-01-27",
+    "director": "ダニー・ボイル",
+    "director_jp": "ダニー・ボイル",
+    "director_en": "Danny Boyle",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 117,
+    "vote_average": 6.943,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "最強殺し屋伝説国岡【完全版】": {
+    "tmdb_id": 894264,
+    "tmdb_title_jp": "最強殺し屋伝説国岡 [完全版]",
+    "tmdb_title_en": "Legendary Hit-man, Kunioka",
+    "tmdb_title_original": "最強殺し屋伝説国岡 [完全版]",
+    "tmdb_original_language": "ja",
+    "overview": "「ベイビーわるきゅーれ」シリーズの阪元裕吾監督自身が、京都最強の殺し屋・国岡の日常とその仕事ぶりを記録したという、モキュメンタリー（疑似ドキュメンタリー）のスタイルで描いた異色のコミカルアクション。伊能昌幸が演じる殺し屋国岡のゆるい日常とハードなアクションのギャップは、「ベイビーわるきゅーれ」の世界観と重なり、独自のユーモアが笑いを誘う。\r 2018年。映画監督の阪元は新作映画「ベイビーわるきゅーれ」の脚本に取り組むが、“関西殺し屋協会”という殺し屋ビジネスネットワークがあると知って新作の参考にしようと協会に取材を申し込む。協会から紹介されたのは、京都最強の殺し屋、国岡昌幸（23歳）だが、国岡は普段、一般人と変わらぬ生活を送っていた。やがて国岡は標的と異なる人物を殺してしまい、逆上した依頼主が次々と放つ殺し屋たちを迎え撃つ事態に……。",
+    "overview_en": "In 2018, director Sakamoto was working on a script for his new movie \"Baby Assassins.\" He learns of a hitman business network called \"Kansai Hitman Association\" and applies for interviews as a reference for writing scripts. He is introduced to Masayuki Kunioka, a freelancer who is known as the strongest hitman in Kyoto. Sakamoto decides to follow Kunioka in his day-to-day life. One day, Kunioka kills the wrong person due to miscommunication with the client and is targeted by both the hitmen sent from the furious client and those who are aiming for revenge on behalf of the victim.",
+    "poster_path": "/lIIaQSI5m0mww843e2qg8FgpGa3.jpg",
+    "backdrop_path": "/c7wPDhR1BugigUH0u0hMDtkmHC5.jpg",
+    "release_date": "2021-10-08",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "グリーンバレット 最強殺し屋伝説国岡【合宿編】": {
+    "tmdb_id": 1001714,
+    "tmdb_title_jp": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_title_en": "Green Bullet",
+    "tmdb_title_original": "グリーンバレット 最強殺し屋伝説国岡[合宿編]",
+    "tmdb_original_language": "ja",
+    "overview": "阪元裕吾監督監督が殺し屋・国岡を追ったモキュメンタリー（疑似ドキュメンタリー）「最強殺し屋伝説国岡［完全版］」の続編にして外伝の第1弾。殺し屋・国岡は新たに6人の“殺し屋女子”（演じるのはミスマガジン2021の受賞者陣）を一人前の殺し屋にしようとする合宿にインストラクターとして招かれ……。前作と同じく、殺し屋たちのゆるい日常と激しいアクションのギャップが見もの。本作に続き外伝第2弾「最強殺し屋伝説国岡外伝国岡ツアーズ大阪編～蘇る金のドラゴン・なにわアサシンの逆襲～」も製作。\r 京都で活動しているすご腕殺し屋の国岡は、プロの殺し屋を目指している若い女性6人、ふみか、美香、はるか、唯、梨紗、響を一人前の殺し屋にする訓練合宿にインストラクターとして参加する。だが女性たちはいずれも個性が強く、国岡は手こずる事態に。やがて一行が起こした事件のせいで、凶暴かつ最悪な殺し屋集団“フォックスハンター”が合宿所に来ることになり、国岡は6人を率いて“フォックスハンター”と激闘を繰り広げる。",
+    "overview_en": "Six girls participate in the boot camp for assassins. The instructor of the boot camp is the legendary hitman, Kunioka. At first, they repel each other, but the girls gradually develop friendships while enduring the hard training. By chance, the girls get involved in a life-threatening battle with a group of anarchist hitmen.",
+    "poster_path": "/nTeVHCe0FMuC8l0AIneud78waB5.jpg",
+    "backdrop_path": "/50reRp5eyWLBttZ15DIOjjUFWcP.jpg",
+    "release_date": "2022-08-26",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 106,
+    "vote_average": 8.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "フレイムユニオン 最強殺し屋伝説国岡【私闘編】": {
+    "tmdb_id": 1537830,
+    "tmdb_title_jp": "フレイムユニオン 最強殺し屋伝説国岡[私闘編]",
+    "tmdb_title_en": "Flame Union",
+    "tmdb_title_original": "フレイムユニオン 最強殺し屋伝説国岡[私闘編]",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In this adventure, Kunioka saves the life of Manaka Takuya, a part-time freelance assassin who botches a big gun procurement assignment. Due to this incident, Manaka is suspended from the hitman association and his father, the former number one ranked hitman in Kyoto, drags him back to the family home to do chores. When Kunioka checks up on his former brother-in-arms, he finds Manaka has become domesticated but the reappearance of unioka reawakens Manaka’s fighting spirit and the young man challenges his father to a duel as part of his return to walking the path of an assassin. In order to defeat his father, however, Manaka will have to embark on intense training…",
+    "poster_path": "/8jIrZodCTX00SldNV9uFmjuMEvK.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-10",
+    "director": "阪元裕吾",
+    "director_jp": "阪元裕吾",
+    "director_en": "Yugo Sakamoto",
+    "genres": [
+      "犯罪",
+      "アクション",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action",
+      "Comedy"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ツイン・ピークス ローラ・パーマー最期の7日間 4K": {
+    "tmdb_id": 1923,
+    "tmdb_title_jp": "ツイン・ピークス/ローラ・パーマー最期の7日間",
+    "tmdb_title_en": "Twin Peaks: Fire Walk with Me",
+    "tmdb_title_original": "Twin Peaks: Fire Walk with Me",
+    "tmdb_original_language": "en",
+    "overview": "FBI特別捜査官チェット・デズモンドは町のウエートレス、テレサ・バンクスの殺害事件を調査中に謎の失踪を遂げる。それから1年後、町全体に巣くった邪悪な者達は学園の女王であるローラ・パーマーを標的にし始めていた。時を同じくして、テレサ・バンクス殺害事件の捜査を引き継いだ特別捜査官デイル・クーパーは、彼に備わった特別な才能、鋭い第六感を生かして深い謎を解明しようと決意するのだった。",
+    "overview_en": "In the questionable town of Deer Meadow, Washington, FBI Agent Desmond inexplicably disappears while hunting for the man who murdered a teen girl. The killer is never apprehended, and, after experiencing dark visions and supernatural encounters, Agent Dale Cooper chillingly predicts that the culprit will claim another life. Meanwhile, in the more cozy town of Twin Peaks, hedonistic beauty Laura Palmer hangs with lowlifes and seems destined for a grisly fate.",
+    "poster_path": "/hQFPxgUqNKJlsco6NJ6rLtds2zE.jpg",
+    "backdrop_path": "/amGU1FpELmenVvNmPShW58Orepy.jpg",
+    "release_date": "1992-06-03",
+    "director": "デヴィッド・リンチ",
+    "director_jp": "デヴィッド・リンチ",
+    "director_en": "David Lynch",
+    "genres": [
+      "ドラマ",
+      "謎",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery",
+      "Horror"
+    ],
+    "runtime": 135,
+    "vote_average": 7.408,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "『おばけ』【アンコール上映】": {
+    "tmdb_id": 583097,
+    "tmdb_title_jp": "おばけ",
+    "tmdb_title_en": "Obake",
+    "tmdb_title_original": "おばけ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Satellite-city resident Yayoi  feels like her days spent on the train commuting to school are filled with emptiness. One day she encounters a ghost-like guy and Zaningen's music, and her boring life starts to change.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2014-07-05",
+    "director": "坂本ユカリ",
+    "director_jp": "坂本ユカリ",
+    "director_en": "Yukari Sakamoto",
+    "genres": [
+      "コメディ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "runtime": 50,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "侍とお姐ちゃん": {
+    "tmdb_id": 1635064,
+    "tmdb_title_jp": "侍とお姐ちゃん",
+    "tmdb_title_en": "Three Dolls and Three Guys",
+    "tmdb_title_original": "侍とお姐ちゃん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Punch, Pinch, and Sench become involved in a murder mystery centering on a Chinese billionaire (Mihashi), actually a Japanese yakuza, who claims to be developing a tourist's paradise on the island of Oshima.",
+    "poster_path": "/o9sxdATg4xt3bud5PpD2NwOwC0z.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-01-09",
+    "director": "杉江敏男",
+    "director_jp": "杉江敏男",
+    "director_en": "Toshio Sugie",
+    "genres": [
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 89,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1635064": {
+    "tmdb_id": 1635064,
+    "tmdb_title_jp": "侍とお姐ちゃん",
+    "tmdb_title_en": "Three Dolls and Three Guys",
+    "tmdb_title_original": "侍とお姐ちゃん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Punch, Pinch, and Sench become involved in a murder mystery centering on a Chinese billionaire (Mihashi), actually a Japanese yakuza, who claims to be developing a tourist's paradise on the island of Oshima.",
+    "poster_path": "/o9sxdATg4xt3bud5PpD2NwOwC0z.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-01-09",
+    "director": "杉江敏男",
+    "director_jp": "杉江敏男",
+    "director_en": "Toshio Sugie",
+    "genres": [
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 89,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "日本暴力団殺しの盃": {
+    "tmdb_id": 537314,
+    "tmdb_title_jp": "日本暴力団 殺しの盃",
+    "tmdb_title_en": "Organized Crime: Killer's Glory",
+    "tmdb_title_original": "日本暴力団 殺しの盃",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A professional lone-wolf hitman comes to his blood brother's aid when his boss is brutally murdered by an unknown yakuza faction.",
+    "poster_path": "/unkE1qzWhcKh5IsHDOth7whTSmH.jpg",
+    "backdrop_path": "/3j0XwcUbyiMPClG5a1DYKjLLSeq.jpg",
+    "release_date": "1972-05-27",
+    "director": "降旗康男",
+    "director_jp": "降旗康男",
+    "director_en": "Yasuo Furuhata",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:537314": {
+    "tmdb_id": 537314,
+    "tmdb_title_jp": "日本暴力団 殺しの盃",
+    "tmdb_title_en": "Organized Crime: Killer's Glory",
+    "tmdb_title_original": "日本暴力団 殺しの盃",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A professional lone-wolf hitman comes to his blood brother's aid when his boss is brutally murdered by an unknown yakuza faction.",
+    "poster_path": "/unkE1qzWhcKh5IsHDOth7whTSmH.jpg",
+    "backdrop_path": "/3j0XwcUbyiMPClG5a1DYKjLLSeq.jpg",
+    "release_date": "1972-05-27",
+    "director": "降旗康男",
+    "director_jp": "降旗康男",
+    "director_en": "Yasuo Furuhata",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "まむしの兄弟傷害恐喝十八犯": {
+    "tmdb_id": 904679,
+    "tmdb_title_jp": "まむしの兄弟　傷害恐喝十八犯",
+    "tmdb_title_en": "The Viper Brothers: 18 Extortion Threats",
+    "tmdb_title_original": "まむしの兄弟　傷害恐喝十八犯",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Part 4 in a long running (8+1 films) action/comedy/melodrama series about a pair of short tempered, amoral, but not evil chinpira (Bunta Sugawara and Tamio Kawachi) thinking too big of themselves. Sugawara tries to overcome a traumatic experience of getting in bed blindfolded with a girl who turned out to be an old granny. Later he and Kawaji try to settle down in a neighbourhood harassed by businessman yakuza Bin Amatsu.",
+    "poster_path": "/1HDefEGyxhRlqXJgV3MOOPebi4K.jpg",
+    "backdrop_path": "/msqFUf0Bxev6OEHelGZ9Qc543EN.jpg",
+    "release_date": "1972-08-25",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 88,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:904679": {
+    "tmdb_id": 904679,
+    "tmdb_title_jp": "まむしの兄弟　傷害恐喝十八犯",
+    "tmdb_title_en": "The Viper Brothers: 18 Extortion Threats",
+    "tmdb_title_original": "まむしの兄弟　傷害恐喝十八犯",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Part 4 in a long running (8+1 films) action/comedy/melodrama series about a pair of short tempered, amoral, but not evil chinpira (Bunta Sugawara and Tamio Kawachi) thinking too big of themselves. Sugawara tries to overcome a traumatic experience of getting in bed blindfolded with a girl who turned out to be an old granny. Later he and Kawaji try to settle down in a neighbourhood harassed by businessman yakuza Bin Amatsu.",
+    "poster_path": "/1HDefEGyxhRlqXJgV3MOOPebi4K.jpg",
+    "backdrop_path": "/msqFUf0Bxev6OEHelGZ9Qc543EN.jpg",
+    "release_date": "1972-08-25",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 88,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "《宝塚歌劇 雪組東京宝塚劇場公演『ボー・ブランメル～美しすぎた男～』『Prayer～祈り～』千秋楽 ライブ中継》": null,
+  "TRAVERSE－トラバース－": {
+    "tmdb_id": 593787,
+    "tmdb_title_jp": "Traverse -トラバース-",
+    "tmdb_title_en": "Traverse",
+    "tmdb_title_original": "Traverse -トラバース-",
+    "tmdb_original_language": "ja",
+    "overview": "一緒に足を運んだ地元の祭りで、空手道場の師範・高梨淳の妻でジャーナリストの亜紀が姿を消した。冷たい姿で帰ってきた亜紀を警察は自殺と断定し、亜紀の自殺を止められなかったと落胆する高梨は道場を閉鎖してしまう。そして高梨は、養子の里菜と義理の親子という溝を埋められない時間を過ごしていたが、そんな中で里菜が何者かに連れ去られてしまい……。",
+    "overview_en": "An emotionally damaged girl is taken in by a married couple, the Takanashis. Shortly after the start of their happy family, the journalist wife is killed. The villainous forces that murdered his wife now come for Takanashi and his adopted daughter. In order to protect the girl so precious to him, Takanashi stands against them with his karate.",
+    "poster_path": "/lEKYM2IiN1fwwwrqnTYNRxYYHmd.jpg",
+    "backdrop_path": "/rRKHZeKkDY2zmbX1UJlQhPpESgI.jpg",
+    "release_date": "2019-11-02",
+    "director": "Yūki Okada",
+    "director_jp": "Yūki Okada",
+    "director_en": "Yūki Okada",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 96,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:593787": {
+    "tmdb_id": 593787,
+    "tmdb_title_jp": "Traverse -トラバース-",
+    "tmdb_title_en": "Traverse",
+    "tmdb_title_original": "Traverse -トラバース-",
+    "tmdb_original_language": "ja",
+    "overview": "一緒に足を運んだ地元の祭りで、空手道場の師範・高梨淳の妻でジャーナリストの亜紀が姿を消した。冷たい姿で帰ってきた亜紀を警察は自殺と断定し、亜紀の自殺を止められなかったと落胆する高梨は道場を閉鎖してしまう。そして高梨は、養子の里菜と義理の親子という溝を埋められない時間を過ごしていたが、そんな中で里菜が何者かに連れ去られてしまい……。",
+    "overview_en": "An emotionally damaged girl is taken in by a married couple, the Takanashis. Shortly after the start of their happy family, the journalist wife is killed. The villainous forces that murdered his wife now come for Takanashi and his adopted daughter. In order to protect the girl so precious to him, Takanashi stands against them with his karate.",
+    "poster_path": "/lEKYM2IiN1fwwwrqnTYNRxYYHmd.jpg",
+    "backdrop_path": "/rRKHZeKkDY2zmbX1UJlQhPpESgI.jpg",
+    "release_date": "2019-11-02",
+    "director": "Yūki Okada",
+    "director_jp": "Yūki Okada",
+    "director_en": "Yūki Okada",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 96,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "TRAVERSE 2 -Next Level-": null,
+  "湯徳章―私は誰なのか―": {
+    "tmdb_id": 1236428,
+    "tmdb_title_jp": "湯徳章ー私は誰なのかー",
+    "tmdb_title_en": "In Search of a Mixed Identity",
+    "tmdb_title_original": "尋找湯德章",
+    "tmdb_original_language": "zh",
+    "overview": "日本統治時代の台湾に生まれ、戦後に起きたニニ八事件の渦中で多くの市民を救った弁護士・湯徳章（トゥン・テッチョン）。その人物像を追求するドキュメンタリー。",
+    "overview_en": "The history of THNG Tek-chiong family not only reflects the confusion and the pursuit of Taiwanese identity over generations, but also serves as a cautionary tale for the people living in Taiwan.",
+    "poster_path": "/7Ulx8LL40ExqvzKPkdTQesKxt0k.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-03-15",
+    "director": "連楨惠",
+    "director_jp": "連楨惠",
+    "director_en": "Jen-hui Lien",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "tmdb:1236428": {
+    "tmdb_id": 1236428,
+    "tmdb_title_jp": "湯徳章ー私は誰なのかー",
+    "tmdb_title_en": "In Search of a Mixed Identity",
+    "tmdb_title_original": "尋找湯德章",
+    "tmdb_original_language": "zh",
+    "overview": "日本統治時代の台湾に生まれ、戦後に起きたニニ八事件の渦中で多くの市民を救った弁護士・湯徳章（トゥン・テッチョン）。その人物像を追求するドキュメンタリー。",
+    "overview_en": "The history of THNG Tek-chiong family not only reflects the confusion and the pursuit of Taiwanese identity over generations, but also serves as a cautionary tale for the people living in Taiwan.",
+    "poster_path": "/7Ulx8LL40ExqvzKPkdTQesKxt0k.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-03-15",
+    "director": "連楨惠",
+    "director_jp": "連楨惠",
+    "director_en": "Jen-hui Lien",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "憧れdoll": {
+    "tmdb_id": 1284367,
+    "tmdb_title_jp": "憧れdoll",
+    "tmdb_title_en": "Akogare doll",
+    "tmdb_title_original": "憧れdoll",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A woman becomes friends with one of her customers, who becomes quite obsessive...",
+    "poster_path": "/4sQhPVOMTns0GK1zH1qP7uIYuCm.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-01-10",
+    "director": "みやび",
+    "director_jp": "みやび",
+    "director_en": "Miyabi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 127,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1284367": {
+    "tmdb_id": 1284367,
+    "tmdb_title_jp": "憧れdoll",
+    "tmdb_title_en": "Akogare doll",
+    "tmdb_title_original": "憧れdoll",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A woman becomes friends with one of her customers, who becomes quite obsessive...",
+    "poster_path": "/4sQhPVOMTns0GK1zH1qP7uIYuCm.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-01-10",
+    "director": "みやび",
+    "director_jp": "みやび",
+    "director_en": "Miyabi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 127,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "秘密関係 Secret Lover 最後の約束": null,
+  "ラストムービーPART2": {
+    "tmdb_id": 1553096,
+    "tmdb_title_jp": "ラストムービーPART２",
+    "tmdb_title_en": "Last Movie Part 2",
+    "tmdb_title_original": "ラストムービーPART２",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Movie made to be screened at Yokohama Cinemarine.",
+    "poster_path": "/iLrGgGLkDiPrPCFic478xPHssNq.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-09-27",
+    "director": "古澤健",
+    "director_jp": "古澤健",
+    "director_en": "Takeshi Furusawa",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 29,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1553096": {
+    "tmdb_id": 1553096,
+    "tmdb_title_jp": "ラストムービーPART２",
+    "tmdb_title_en": "Last Movie Part 2",
+    "tmdb_title_original": "ラストムービーPART２",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Movie made to be screened at Yokohama Cinemarine.",
+    "poster_path": "/iLrGgGLkDiPrPCFic478xPHssNq.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-09-27",
+    "director": "古澤健",
+    "director_jp": "古澤健",
+    "director_en": "Takeshi Furusawa",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 29,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "潜行一千里 ILHA FORMOSA": {
+    "tmdb_id": 1013701,
+    "tmdb_title_jp": "潜行一千里",
+    "tmdb_title_en": "ILHA FORMOSA",
+    "tmdb_title_original": "潜行一千里",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/xdHSXdfXh1zE6z3XBMx4oA1G7bN.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-22",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 79,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "サウダーヂ": {
+    "tmdb_id": 141653,
+    "tmdb_title_jp": "サウダーヂ",
+    "tmdb_title_en": "Saudade",
+    "tmdb_title_original": "サウダーヂ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Seiji works on construction sites. He sympathizes with Hosaka just back from Thailand. Together, they spend their evenings in bars with Thai girls. On a construction site, they meet Takeru, a member of the hip-hop collective of the city.",
+    "poster_path": "/dkneKWdzoB41VjoDtAeBFxTI2AP.jpg",
+    "backdrop_path": null,
+    "release_date": "2011-10-22",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 167,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:141653": {
+    "tmdb_id": 141653,
+    "tmdb_title_jp": "サウダーヂ",
+    "tmdb_title_en": "Saudade",
+    "tmdb_title_original": "サウダーヂ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Seiji works on construction sites. He sympathizes with Hosaka just back from Thailand. Together, they spend their evenings in bars with Thai girls. On a construction site, they meet Takeru, a member of the hip-hop collective of the city.",
+    "poster_path": "/dkneKWdzoB41VjoDtAeBFxTI2AP.jpg",
+    "backdrop_path": null,
+    "release_date": "2011-10-22",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 167,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:959596": {
+    "tmdb_id": 959596,
+    "tmdb_title_jp": "Le Dossier Maldoror",
+    "tmdb_title_en": "Maldoror",
+    "tmdb_title_original": "Le Dossier Maldoror",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "When two girls go missing, Paul Chartier, an impulsive young police recruit, is assigned to “Maldoror”. This secret unit has been set up to monitor a dangerous sex offender. When the operation fails, fed up with the limits of the legal system, Chartier embarks on a solitary hunt to bring down the culprits.",
+    "poster_path": "/bal8kRJC4gfIehPAjSUDCBCtTKK.jpg",
+    "backdrop_path": "/5N3w3cC5d8fDMLuuDMn8io4StUE.jpg",
+    "release_date": "2024-09-08",
+    "director": "Fabrice Du Welz",
+    "director_jp": "Fabrice Du Welz",
+    "director_en": "Fabrice Du Welz",
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 155,
+    "vote_average": 6.391,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1013701": {
+    "tmdb_id": 1013701,
+    "tmdb_title_jp": "潜行一千里",
+    "tmdb_title_en": "ILHA FORMOSA",
+    "tmdb_title_original": "潜行一千里",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/xdHSXdfXh1zE6z3XBMx4oA1G7bN.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-22",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 79,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  }
 }

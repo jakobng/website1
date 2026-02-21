@@ -6151,5 +6151,69 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "マルドロール／腐敗": {
+    "english_title": "Maldoror",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Maldoror",
+    "director": "Fabrice Du Welz",
+    "country": "Belgium, France"
+  },
+  "『おばけ』【アンコール上映】": {
+    "english_title": "Obake",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "おばけ",
+    "director": "Hiromichi Nakao",
+    "country": "Japan"
+  },
+  "《宝塚歌劇 雪組東京宝塚劇場公演『ボー・ブランメル～美しすぎた男～』『Prayer～祈り～』千秋楽 ライブ中継》": {
+    "english_title": "Takarazuka Revue Snow Troupe Tokyo Takarazuka Theater Last Performance “Beau Brummell－A Man Too Beautiful－” “Prayer” Live Viewing",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "宝塚歌劇 雪組東京宝塚劇場公演『ボー・ブランメル～美しすぎた男～』『Prayer～祈り～』千秋楽 ライブ中継",
+    "director": "Hirokazu Ikuta, Kazunori Nakamura",
+    "country": "Japan",
+    "failed": true
+  },
+  "TRAVERSE 2 -Next Level-": {
+    "english_title": "TRAVERSE 2 -Next Level-",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "TRAVERSE 2 -Next Level-",
+    "director": "Satoshi Hakuzen",
+    "country": "Japan",
+    "failed": true
+  },
+  "秘密関係 Secret Lover 最後の約束": {
+    "english_title": "Secret Lover: The Movie",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "秘密関係 Secret Lover 最後の約束",
+    "director": "Chiang Ping-Chen",
+    "country": "Japan, Taiwan",
+    "failed": true
+  },
+  "潜行一千里 ILHA FORMOSA": {
+    "english_title": "Hidden Journey of a Thousand Miles: Ilha Formosa",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "潜行一千里 ILHA FORMOSA",
+    "director": "Katsuya Tomita",
+    "country": "Japan"
+  },
+  "篠崎誠監督特集": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
