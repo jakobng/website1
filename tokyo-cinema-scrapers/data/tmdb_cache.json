@@ -62265,5 +62265,309 @@
         "name": "Japan"
       }
     ]
+  },
+  "柳生武芸帳 片目の忍者": {
+    "tmdb_id": 374381,
+    "tmdb_title_jp": "柳生武芸帳　片目の忍者",
+    "tmdb_title_en": "The Yagyu Military Art: The One-Eyed Ninja",
+    "tmdb_title_original": "柳生武芸帳　片目の忍者",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The famed ninja Yagyu Jubei fights to suppress a coup d’etat plotted against Tokugawa Shogunate.",
+    "poster_path": "/y7zYPU79P3qObuuosVcuFvprgI4.jpg",
+    "backdrop_path": null,
+    "release_date": "1963-12-21",
+    "director": "松村昌治",
+    "director_jp": "松村昌治",
+    "director_en": "Shoji Matsumura",
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama",
+      "History"
+    ],
+    "runtime": 86,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:374381": {
+    "tmdb_id": 374381,
+    "tmdb_title_jp": "柳生武芸帳　片目の忍者",
+    "tmdb_title_en": "The Yagyu Military Art: The One-Eyed Ninja",
+    "tmdb_title_original": "柳生武芸帳　片目の忍者",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The famed ninja Yagyu Jubei fights to suppress a coup d’etat plotted against Tokugawa Shogunate.",
+    "poster_path": "/y7zYPU79P3qObuuosVcuFvprgI4.jpg",
+    "backdrop_path": null,
+    "release_date": "1963-12-21",
+    "director": "松村昌治",
+    "director_jp": "松村昌治",
+    "director_en": "Shoji Matsumura",
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama",
+      "History"
+    ],
+    "runtime": 86,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "忍者狩り": {
+    "tmdb_id": 410968,
+    "tmdb_title_jp": "忍者狩り",
+    "tmdb_title_en": "Ninja Hunter",
+    "tmdb_title_original": "Ninja Gari",
+    "tmdb_original_language": "ja",
+    "overview": "伊賀の下忍・突悪が目を覚ますと無数の忍者の遺体が転がっていた。邪鬼という下忍から、殺したのは突悪自身だと説明されるが、彼はそれを含むすべての記憶を失っていた。そんな中、敵国・甲賀に潜入していた楓衣の遺体を発見したことで断片的に記憶が甦り...。",
+    "overview_en": "Tao, a ninja from the Iga clan, wakes up in a damp cave surrounded by bodies. Suffering from amnesia, he can’t remember how or even why he’s in there, or if he was the perpetrator of the massacre. As Tao tries to solve this enigma, a bizarre web of betrayals unfolds before our eyes in an explosive cocktail.",
+    "poster_path": "/bG9Ij9H9NFbp2nPGJDnHKkDn6z2.jpg",
+    "backdrop_path": "/e0DHmnq5bbe9nzFwsVhmZvTdvp7.jpg",
+    "release_date": "2015-07-17",
+    "director": "千葉誠治",
+    "director_jp": "千葉誠治",
+    "director_en": "Seiji Chiba",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 96,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:410968": {
+    "tmdb_id": 410968,
+    "tmdb_title_jp": "忍者狩り",
+    "tmdb_title_en": "Ninja Hunter",
+    "tmdb_title_original": "Ninja Gari",
+    "tmdb_original_language": "ja",
+    "overview": "伊賀の下忍・突悪が目を覚ますと無数の忍者の遺体が転がっていた。邪鬼という下忍から、殺したのは突悪自身だと説明されるが、彼はそれを含むすべての記憶を失っていた。そんな中、敵国・甲賀に潜入していた楓衣の遺体を発見したことで断片的に記憶が甦り...。",
+    "overview_en": "Tao, a ninja from the Iga clan, wakes up in a damp cave surrounded by bodies. Suffering from amnesia, he can’t remember how or even why he’s in there, or if he was the perpetrator of the massacre. As Tao tries to solve this enigma, a bizarre web of betrayals unfolds before our eyes in an explosive cocktail.",
+    "poster_path": "/bG9Ij9H9NFbp2nPGJDnHKkDn6z2.jpg",
+    "backdrop_path": "/e0DHmnq5bbe9nzFwsVhmZvTdvp7.jpg",
+    "release_date": "2015-07-17",
+    "director": "千葉誠治",
+    "director_jp": "千葉誠治",
+    "director_en": "Seiji Chiba",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 96,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "十兵衛暗殺剣": {
+    "tmdb_id": 374383,
+    "tmdb_title_jp": "十兵衛暗殺剣",
+    "tmdb_title_en": "Yagyu Chronicles 9: Assassin's Sword",
+    "tmdb_title_original": "十兵衛暗殺剣",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The Yagyu Family have been teaching the Shinkage style of fencing for generations. Now a new fencing school has opened in Edo, claiming to be the true Shinkage style. Yagyu Jubei faces his biggest challenge yet when the master of the new school claims he is the legitimate successor of Shinkage and tries to take the Yagyu's political power.",
+    "poster_path": "/rZrmQjsVdmOq3Vls0SUYtH0oxY5.jpg",
+    "backdrop_path": null,
+    "release_date": "1964-10-14",
+    "director": "倉田準二",
+    "director_jp": "倉田準二",
+    "director_en": "Junji Kurata",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 86,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:374383": {
+    "tmdb_id": 374383,
+    "tmdb_title_jp": "十兵衛暗殺剣",
+    "tmdb_title_en": "Yagyu Chronicles 9: Assassin's Sword",
+    "tmdb_title_original": "十兵衛暗殺剣",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The Yagyu Family have been teaching the Shinkage style of fencing for generations. Now a new fencing school has opened in Edo, claiming to be the true Shinkage style. Yagyu Jubei faces his biggest challenge yet when the master of the new school claims he is the legitimate successor of Shinkage and tries to take the Yagyu's political power.",
+    "poster_path": "/rZrmQjsVdmOq3Vls0SUYtH0oxY5.jpg",
+    "backdrop_path": null,
+    "release_date": "1964-10-14",
+    "director": "倉田準二",
+    "director_jp": "倉田準二",
+    "director_en": "Junji Kurata",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 86,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "RED ROOMS": {
+    "tmdb_id": 1462238,
+    "tmdb_title_jp": "Making 'Red Rooms'",
+    "tmdb_title_en": "Making 'Red Rooms'",
+    "tmdb_title_original": "Making 'Red Rooms'",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Documentary about the making of Pascal Plante's film “Red Rooms” (2023).",
+    "poster_path": "/tYG2llXJ3acxCVsIpz4CwbO39rr.jpg",
+    "backdrop_path": "/5abiH5m7CGV3WBqHEaN0wzOTOQf.jpg",
+    "release_date": "2024-11-07",
+    "director": "Sarah Baril Gaudet",
+    "director_jp": "Sarah Baril Gaudet",
+    "director_en": "Sarah Baril Gaudet",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 49,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1462238": {
+    "tmdb_id": 1462238,
+    "tmdb_title_jp": "Making 'Red Rooms'",
+    "tmdb_title_en": "Making 'Red Rooms'",
+    "tmdb_title_original": "Making 'Red Rooms'",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Documentary about the making of Pascal Plante's film “Red Rooms” (2023).",
+    "poster_path": "/tYG2llXJ3acxCVsIpz4CwbO39rr.jpg",
+    "backdrop_path": "/5abiH5m7CGV3WBqHEaN0wzOTOQf.jpg",
+    "release_date": "2024-11-07",
+    "director": "Sarah Baril Gaudet",
+    "director_jp": "Sarah Baril Gaudet",
+    "director_en": "Sarah Baril Gaudet",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 49,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "バンコクナイツ": {
+    "tmdb_id": 408262,
+    "tmdb_title_jp": "バンコクナイツ",
+    "tmdb_title_en": "Bangkok Nites",
+    "tmdb_title_original": "バンコクナイツ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Bangkok, 2015. Ozawa, a Japanese man who had nowhere to go, meets Luck, a woman has reached the height of her glory on Thaniya Street, a place that flourishes by servicing only Japanese men. Through a trip to trace the scars of colonialism, they look for paradise that we had lost.",
+    "poster_path": "/eR46gVx7XfKW8HNOhGBQprWEOji.jpg",
+    "backdrop_path": "/4qMAete50tm1p3YW7vqW4t2BQIZ.jpg",
+    "release_date": "2016-08-12",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 183,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "LA",
+        "name": "Lao People's Democratic Republic"
+      },
+      {
+        "iso_3166_1": "TH",
+        "name": "Thailand"
+      }
+    ]
+  },
+  "tmdb:408262": {
+    "tmdb_id": 408262,
+    "tmdb_title_jp": "バンコクナイツ",
+    "tmdb_title_en": "Bangkok Nites",
+    "tmdb_title_original": "バンコクナイツ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Bangkok, 2015. Ozawa, a Japanese man who had nowhere to go, meets Luck, a woman has reached the height of her glory on Thaniya Street, a place that flourishes by servicing only Japanese men. Through a trip to trace the scars of colonialism, they look for paradise that we had lost.",
+    "poster_path": "/eR46gVx7XfKW8HNOhGBQprWEOji.jpg",
+    "backdrop_path": "/4qMAete50tm1p3YW7vqW4t2BQIZ.jpg",
+    "release_date": "2016-08-12",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 183,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "LA",
+        "name": "Lao People's Democratic Republic"
+      },
+      {
+        "iso_3166_1": "TH",
+        "name": "Thailand"
+      }
+    ]
   }
 }
