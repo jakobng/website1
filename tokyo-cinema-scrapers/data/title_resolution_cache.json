@@ -6215,5 +6215,50 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "この場所": {
+    "english_title": "Kono Basho",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "この場所",
+    "director": "Jaime Pacena II",
+    "country": "Philippines, Japan"
+  },
+  "日比（ニッピ）の影裏3部作": {
+    "english_title": "Raised in Water",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "日比（ニッピ）の影裏3部作",
+    "director": "Janus Victoria, Daichi Hasegawa",
+    "country": "Japan, Philippines"
+  },
+  "smoke デジタルリマスター版": {
+    "english_title": "Smoke",
+    "release_year": 1995,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Smoke",
+    "director": "Wayne Wang",
+    "country": "United States",
+    "failed": true
+  },
+  "雲の上": {
+    "english_title": "Above the Clouds",
+    "release_year": 2003,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "雲の上",
+    "director": "Katsuya Tomita",
+    "country": "Japan",
+    "failed": true
+  },
+  "ENHYPEN [WALK THE LINE SUMMER EDITION] IN CINEMAS": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
