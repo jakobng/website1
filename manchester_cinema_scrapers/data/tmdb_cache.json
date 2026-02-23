@@ -1733,7 +1733,6 @@
     ],
     "vote_average": 0.0
   },
-  "Monthly World Cinema Screening": null,
   "SPEED + STRIKE PRESENTS: CRASH": {
     "tmdb_id": 884,
     "tmdb_title": "Crash",
@@ -1750,25 +1749,6 @@
     ],
     "vote_average": 6.5
   },
-  "Twin Peaks Drag Night": null,
-  "Twin Peaks Day 2026": null,
-  "Make A Scene Presents: Shirley Valentine": {
-    "tmdb_id": 18683,
-    "tmdb_title": "Shirley Valentine",
-    "tmdb_original_title": "Shirley Valentine",
-    "overview": "Wondering what has happened to herself, now feeling stagnant and in a rut, Shirley Valentine finds herself regularly talking to the wall while preparing her husband's chips and egg. When her best friend wins a trip-for-two to Greece Shirley begins to see the world, and herself, in a different light.",
-    "poster_path": "/rrRrHNhur1DTp1KOp0YfFWvymQD.jpg",
-    "backdrop_path": "/a2A8ftKtoe89b7YTcHYXoWorrzo.jpg",
-    "release_date": "1989-08-30",
-    "director": "Lewis Gilbert",
-    "runtime": 108,
-    "genres": [
-      "Romance",
-      "Comedy"
-    ],
-    "vote_average": 6.255
-  },
-  "If You're Lost I'll Come Find You": null,
   "Bend It Like Beckham": {
     "tmdb_id": 455,
     "tmdb_title": "Bend It Like Beckham",
@@ -1818,19 +1798,6 @@
     ],
     "vote_average": 7.664
   },
-  "Global Justice Now Youth MCR: Women at War": {
-    "tmdb_id": 982440,
-    "tmdb_title": "Women at War",
-    "tmdb_original_title": "女性の戦ひ",
-    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
-    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
-    "backdrop_path": null,
-    "release_date": "1939-02-01",
-    "director": "Yasushi Sasaki",
-    "runtime": 82,
-    "genres": [],
-    "vote_average": 0.0
-  },
   "American Psycho": {
     "tmdb_id": 1359,
     "tmdb_title": "American Psycho",
@@ -1848,23 +1815,6 @@
     ],
     "vote_average": 7.408
   },
-  "Little Amélie (PG) [Subtitled]": null,
-  "Baby & Carer/ Little Amélie (PG) [Dubbed]": {
-    "tmdb_id": 751496,
-    "tmdb_title": "Baby",
-    "tmdb_original_title": "Baby",
-    "overview": "A young drug addict who has lost touch with her rich family hits rock bottom when she sells her new-born baby to child traffickers. She soon regrets her decision and finds the courage and strength to get him back. To do so, she must follow a trail into the woods and find an eerie house where the old lady she met, her albino servant and a girl with a strange gait, all live together. Nothing could have prepared her for the horror she is about to discover.",
-    "poster_path": "/ala49VxcJmyDdNOCNg9PWfrxTWu.jpg",
-    "backdrop_path": "/yx045ADkPwsYEmW4cB7G7r84SVQ.jpg",
-    "release_date": "2020-12-18",
-    "director": "Juanma Bajo Ulloa",
-    "runtime": 106,
-    "genres": [
-      "Thriller",
-      "Horror"
-    ],
-    "vote_average": 5.32
-  },
   "She Taught Me Serendipity": {
     "tmdb_id": 1361156,
     "tmdb_title": "She Taught Me Serendipity",
@@ -1881,6 +1831,105 @@
     ],
     "vote_average": 7.1
   },
+  "Monthly World Cinema Screening": null,
+  "Twin Peaks Drag Night": null,
+  "Twin Peaks Day 2026": null,
+  "Make A Scene Presents: Shirley Valentine": {
+    "tmdb_id": 18683,
+    "tmdb_title": "Shirley Valentine",
+    "tmdb_original_title": "Shirley Valentine",
+    "overview": "Wondering what has happened to herself, now feeling stagnant and in a rut, Shirley Valentine finds herself regularly talking to the wall while preparing her husband's chips and egg. When her best friend wins a trip-for-two to Greece Shirley begins to see the world, and herself, in a different light.",
+    "poster_path": "/rrRrHNhur1DTp1KOp0YfFWvymQD.jpg",
+    "backdrop_path": "/a2A8ftKtoe89b7YTcHYXoWorrzo.jpg",
+    "release_date": "1989-08-30",
+    "director": "Lewis Gilbert",
+    "runtime": 108,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "vote_average": 6.255
+  },
+  "If You're Lost I'll Come Find You": null,
+  "Global Justice Now Youth MCR: Women at War": {
+    "tmdb_id": 982440,
+    "tmdb_title": "Women at War",
+    "tmdb_original_title": "女性の戦ひ",
+    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
+    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
+    "backdrop_path": null,
+    "release_date": "1939-02-01",
+    "director": "Yasushi Sasaki",
+    "runtime": 82,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "Gasp! Presents: The Slumber Party Massacre": {
+    "tmdb_id": 27475,
+    "tmdb_title": "The Slumber Party Massacre",
+    "tmdb_original_title": "The Slumber Party Massacre",
+    "overview": "Trish invites her high school basketball teammates over for a night they'll never forget when an unexpected guest crashes the party: an escaped psychopath with a portable power drill.",
+    "poster_path": "/rh65oDy8CNJoEAOf7oudhIt3DM6.jpg",
+    "backdrop_path": "/3A8hf7Va32HjGAAgatMa0ibPD9E.jpg",
+    "release_date": "1982-09-10",
+    "director": "Amy Holden Jones",
+    "runtime": 76,
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "vote_average": 5.579
+  },
+  "Movie Church: Cléo from 5 to 7": {
+    "tmdb_id": 499,
+    "tmdb_title": "Cléo from 5 to 7",
+    "tmdb_original_title": "Cléo de 5 à 7",
+    "overview": "Agnès Varda eloquently captures Paris in the sixties with this real-time portrait of a singer set adrift in the city as she awaits test results of a biopsy. A chronicle of the minutes of one woman’s life, Cléo from 5 to 7 is a spirited mix of vivid vérité and melodrama, featuring a score by Michel Legrand and cameos by Jean-Luc Godard and Anna Karina.",
+    "poster_path": "/oelBStY4xpguaplRv15P3Za7Xsr.jpg",
+    "backdrop_path": "/oyatchDPpS4I9jpIIezFJGrmXcR.jpg",
+    "release_date": "1962-04-11",
+    "director": "Agnès Varda",
+    "runtime": 90,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.651
+  },
+  "Lost in Translation": {
+    "tmdb_id": 153,
+    "tmdb_title": "Lost in Translation",
+    "tmdb_original_title": "Lost in Translation",
+    "overview": "Two lost souls visiting Tokyo -- the young, neglected wife of a photographer and a washed-up movie star shooting a TV commercial -- find an odd solace and pensive freedom to be real in each other's company, away from their lives in America.",
+    "poster_path": "/3jCLmYDIIiSMPujbwygNpqdpM8N.jpg",
+    "backdrop_path": "/6ITVHoipvxAS8luzKtHTbPaHLtT.jpg",
+    "release_date": "2003-09-18",
+    "director": "Sofia Coppola",
+    "runtime": 102,
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 7.384
+  },
+  "Baby & Carer/ Little Amélie (PG) [Dubbed]": {
+    "tmdb_id": 751496,
+    "tmdb_title": "Baby",
+    "tmdb_original_title": "Baby",
+    "overview": "A young drug addict who has lost touch with her rich family hits rock bottom when she sells her new-born baby to child traffickers. She soon regrets her decision and finds the courage and strength to get him back. To do so, she must follow a trail into the woods and find an eerie house where the old lady she met, her albino servant and a girl with a strange gait, all live together. Nothing could have prepared her for the horror she is about to discover.",
+    "poster_path": "/ala49VxcJmyDdNOCNg9PWfrxTWu.jpg",
+    "backdrop_path": "/yx045ADkPwsYEmW4cB7G7r84SVQ.jpg",
+    "release_date": "2020-12-18",
+    "director": "Juanma Bajo Ulloa",
+    "runtime": 106,
+    "genres": [
+      "Thriller",
+      "Horror"
+    ],
+    "vote_average": 5.32
+  },
+  "Little Amélie (PG) [Subtitled]": null,
+  "NT Live/ The Audience": null,
   "Throwback: A Knight's Tale (25th Anniversary)": {
     "tmdb_id": 9476,
     "tmdb_title": "A Knight's Tale",
@@ -1897,7 +1946,7 @@
       "Romance",
       "Action"
     ],
-    "vote_average": 6.9
+    "vote_average": 6.867
   },
   "National Theatre Live: The Audience": null,
   "Throwback: The Fifth Element": {
@@ -1917,8 +1966,23 @@
     ],
     "vote_average": 7.563
   },
+  "Throwback: Singin' in the Rain": {
+    "tmdb_id": 872,
+    "tmdb_title": "Singin' in the Rain",
+    "tmdb_original_title": "Singin' in the Rain",
+    "overview": "In 1927 Hollywood, a silent film star falls for a chorus girl just as he and his paranoid screen partner struggle to make the difficult transition to talking pictures.",
+    "poster_path": "/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
+    "backdrop_path": "/6qOyw4yfzbzTp5YsCX26C28Do0S.jpg",
+    "release_date": "1952-04-10",
+    "director": "Gene Kelly",
+    "runtime": 103,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 8.139
+  },
   "Weekly Arthouse Screening": null,
-  "Labyrinth 40th Anniverary. FT. DAVID BOWIE PARTY!": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
   "The Royal Opera: The Magic Flute": null,
