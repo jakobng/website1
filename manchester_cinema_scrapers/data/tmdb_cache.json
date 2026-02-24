@@ -1831,39 +1831,6 @@
     ],
     "vote_average": 7.1
   },
-  "Monthly World Cinema Screening": null,
-  "Twin Peaks Drag Night": null,
-  "Twin Peaks Day 2026": null,
-  "Make A Scene Presents: Shirley Valentine": {
-    "tmdb_id": 18683,
-    "tmdb_title": "Shirley Valentine",
-    "tmdb_original_title": "Shirley Valentine",
-    "overview": "Wondering what has happened to herself, now feeling stagnant and in a rut, Shirley Valentine finds herself regularly talking to the wall while preparing her husband's chips and egg. When her best friend wins a trip-for-two to Greece Shirley begins to see the world, and herself, in a different light.",
-    "poster_path": "/rrRrHNhur1DTp1KOp0YfFWvymQD.jpg",
-    "backdrop_path": "/a2A8ftKtoe89b7YTcHYXoWorrzo.jpg",
-    "release_date": "1989-08-30",
-    "director": "Lewis Gilbert",
-    "runtime": 108,
-    "genres": [
-      "Romance",
-      "Comedy"
-    ],
-    "vote_average": 6.255
-  },
-  "If You're Lost I'll Come Find You": null,
-  "Global Justice Now Youth MCR: Women at War": {
-    "tmdb_id": 982440,
-    "tmdb_title": "Women at War",
-    "tmdb_original_title": "女性の戦ひ",
-    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
-    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
-    "backdrop_path": null,
-    "release_date": "1939-02-01",
-    "director": "Yasushi Sasaki",
-    "runtime": 82,
-    "genres": [],
-    "vote_average": 0.0
-  },
   "Gasp! Presents: The Slumber Party Massacre": {
     "tmdb_id": 27475,
     "tmdb_title": "The Slumber Party Massacre",
@@ -1912,24 +1879,39 @@
     ],
     "vote_average": 7.384
   },
-  "Baby & Carer/ Little Amélie (PG) [Dubbed]": {
-    "tmdb_id": 751496,
-    "tmdb_title": "Baby",
-    "tmdb_original_title": "Baby",
-    "overview": "A young drug addict who has lost touch with her rich family hits rock bottom when she sells her new-born baby to child traffickers. She soon regrets her decision and finds the courage and strength to get him back. To do so, she must follow a trail into the woods and find an eerie house where the old lady she met, her albino servant and a girl with a strange gait, all live together. Nothing could have prepared her for the horror she is about to discover.",
-    "poster_path": "/ala49VxcJmyDdNOCNg9PWfrxTWu.jpg",
-    "backdrop_path": "/yx045ADkPwsYEmW4cB7G7r84SVQ.jpg",
-    "release_date": "2020-12-18",
-    "director": "Juanma Bajo Ulloa",
-    "runtime": 106,
+  "Monthly World Cinema Screening": null,
+  "Twin Peaks Drag Night": null,
+  "Twin Peaks Day 2026": null,
+  "Make A Scene Presents: Shirley Valentine": {
+    "tmdb_id": 18683,
+    "tmdb_title": "Shirley Valentine",
+    "tmdb_original_title": "Shirley Valentine",
+    "overview": "Wondering what has happened to herself, now feeling stagnant and in a rut, Shirley Valentine finds herself regularly talking to the wall while preparing her husband's chips and egg. When her best friend wins a trip-for-two to Greece Shirley begins to see the world, and herself, in a different light.",
+    "poster_path": "/rrRrHNhur1DTp1KOp0YfFWvymQD.jpg",
+    "backdrop_path": "/a2A8ftKtoe89b7YTcHYXoWorrzo.jpg",
+    "release_date": "1989-08-30",
+    "director": "Lewis Gilbert",
+    "runtime": 108,
     "genres": [
-      "Thriller",
-      "Horror"
+      "Romance",
+      "Comedy"
     ],
-    "vote_average": 5.32
+    "vote_average": 6.255
   },
-  "Little Amélie (PG) [Subtitled]": null,
-  "NT Live/ The Audience": null,
+  "If You're Lost I'll Come Find You": null,
+  "Global Justice Now Youth MCR: Women at War": {
+    "tmdb_id": 982440,
+    "tmdb_title": "Women at War",
+    "tmdb_original_title": "女性の戦ひ",
+    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
+    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
+    "backdrop_path": null,
+    "release_date": "1939-02-01",
+    "director": "Yasushi Sasaki",
+    "runtime": 82,
+    "genres": [],
+    "vote_average": 0.0
+  },
   "Throwback: A Knight's Tale (25th Anniversary)": {
     "tmdb_id": 9476,
     "tmdb_title": "A Knight's Tale",
@@ -1964,7 +1946,7 @@
       "Action",
       "Adventure"
     ],
-    "vote_average": 7.563
+    "vote_average": 7.6
   },
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
@@ -1980,7 +1962,56 @@
       "Comedy",
       "Romance"
     ],
-    "vote_average": 8.139
+    "vote_average": 8.14
+  },
+  "Beyond: If I Had Legs I'd Kick You": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
+    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.395
+  },
+  "Baby & Carer/ Little Amélie (PG) [Dubbed]": {
+    "tmdb_id": 751496,
+    "tmdb_title": "Baby",
+    "tmdb_original_title": "Baby",
+    "overview": "A young drug addict who has lost touch with her rich family hits rock bottom when she sells her new-born baby to child traffickers. She soon regrets her decision and finds the courage and strength to get him back. To do so, she must follow a trail into the woods and find an eerie house where the old lady she met, her albino servant and a girl with a strange gait, all live together. Nothing could have prepared her for the horror she is about to discover.",
+    "poster_path": "/ala49VxcJmyDdNOCNg9PWfrxTWu.jpg",
+    "backdrop_path": "/yx045ADkPwsYEmW4cB7G7r84SVQ.jpg",
+    "release_date": "2020-12-18",
+    "director": "Juanma Bajo Ulloa",
+    "runtime": 106,
+    "genres": [
+      "Thriller",
+      "Horror"
+    ],
+    "vote_average": 5.32
+  },
+  "Little Amélie (PG) [Subtitled]": null,
+  "NT Live/ The Audience": null,
+  "Missing Child Videotape": {
+    "tmdb_id": 1341284,
+    "tmdb_title": "Missing Child Videotape",
+    "tmdb_original_title": "ミッシング・チャイルド・ビデオテープ",
+    "overview": "Keita discovers a missing boy in the woods and soon receives a mysterious videotape from his estranged mother.",
+    "poster_path": "/aclZUkfzUM20Jkd5a3Lw2owJ1KZ.jpg",
+    "backdrop_path": "/8SOBcfTNRzOKGbbHdOkRARV9mlT.jpg",
+    "release_date": "2025-01-24",
+    "director": "Ryota Kondo",
+    "runtime": 104,
+    "genres": [
+      "Mystery",
+      "Horror"
+    ],
+    "vote_average": 7.9
   },
   "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
