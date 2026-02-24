@@ -6260,5 +6260,168 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "夜鶯　ある洋館での殺人事件": {
+    "english_title": "Be Somebody",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "揚名立万",
+    "director": "Liu Xun Zimo",
+    "country": "China"
+  },
+  "TRAVERSE 2 Next Level": {
+    "english_title": "TRAVERSE 2: Next Level",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "TRAVERSE 2 -Next Level-",
+    "director": "Baek Seon-cheol",
+    "country": "Japan",
+    "failed": true
+  },
+  "死の天使　ヨーゼフ・メンゲレ": {
+    "english_title": "The Disappearance of Josef Mengele",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Das Verschwinden des Josef Mengele",
+    "director": "Kirill Serebrennikov",
+    "country": "France"
+  },
+  "行方不明〈2023年〉": {
+    "english_title": "The Missing",
+    "release_year": 2023,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Iti Mapukpukaw",
+    "director": "Carl Joseph E. Papa",
+    "country": "Philippines",
+    "failed": true
+  },
+  "HAPPYEND": {
+    "english_title": "Happyend",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "HAPPYEND",
+    "director": "Neo Sora",
+    "country": "Japan"
+  },
+  "〈凱旋上映〉身体という極点からさらに外側へ:1990年代日本の実験映画と若者たち": {
+    "english_title": "From the Summit of the “Body” and Beyond: Youth in the 1990s Japanese Experimental Cinema",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "身体という極点からさらに外側へ:1990年代日本の実験映画と若者たち",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "MALUM 悪しき神": {
+    "english_title": "Malum",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Malum",
+    "director": "Anthony DiBlasi",
+    "country": "USA"
+  },
+  "LV ﾐｭｰｼﾞｶﾙ『刀剣乱舞』～静かなる夜半の寝": {
+    "english_title": "Musical: Touken Ranbu ~Shizukanaru Yowa no Nezame~",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ミュージカル『刀剣乱舞』～静かなる夜半の寝ざめ～",
+    "director": "Isamu Kayano",
+    "country": "Japan"
+  },
+  "【吹替版】スペルマゲドン 精なる大冒険": {
+    "english_title": "Spermageddon",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Spermageddon",
+    "director": "Tommy Wirkola, Rasmus A. Sivertsen",
+    "country": "Norway"
+  },
+  "正義廻廊＜上映後イベント＞": {
+    "english_title": "The Sparring Partner",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "正義迴廊",
+    "director": "Ho Cheuk-tin",
+    "country": "Hong Kong"
+  },
+  "オーロラの涙": {
+    "english_title": "On Falling",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "On Falling",
+    "director": "Laura Carreira",
+    "country": "United Kingdom, Portugal"
+  },
+  "驚蟄無声 ｽｹｱ･ｱｳﾄ【日本語字幕無し】": {
+    "english_title": "Scare Out",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "惊蛰无声",
+    "director": "Zhang Yimou",
+    "country": "China"
+  },
+  "長孫―家族の季節": {
+    "english_title": "House of the Seasons",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "장손",
+    "director": "Oh Jung-min",
+    "country": "South Korea"
+  },
+  "ウォンジュ・アカデミー劇場の記録": {
+    "english_title": "Wonju Academy Cinema",
+    "release_year": 2024,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "무너지지 않는다",
+    "director": "Kim Gwi-min, Lee Mi-hyun, Choi Eun-ji",
+    "country": "South Korea"
+  },
+  "Playback": {
+    "english_title": "Playback",
+    "release_year": 2012,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Playback",
+    "director": "Sho Miyake",
+    "country": "Japan",
+    "failed": true
+  },
+  "Smoke デジタルリマスター版": {
+    "english_title": "Smoke",
+    "release_year": 1995,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Smoke",
+    "director": "Wayne Wang",
+    "country": "United States",
+    "failed": true
+  },
+  "災Q&A［0228ｲﾍﾞﾝﾄ］": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "『SSSS.GRIDMAN』全話一挙上映会": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
