@@ -67,12 +67,30 @@
           </div>
 
           <div class="full-width">
+            <label for="audioDevice">Audio Input</label>
+            <select id="audioDevice">
+              <option value="">Default microphone</option>
+            </select>
+          </div>
+
+          <div class="full-width">
             <label for="conversationContext">Conversation Context (optional)</label>
             <textarea
               id="conversationContext"
               rows="3"
               placeholder="Example: market negotiation about location access and timing, with film crew logistics."
             ></textarea>
+          </div>
+
+          <div class="full-width toggles-row">
+            <label class="toggle-label">
+              <input type="checkbox" id="ttsEnabled" />
+              Read translations aloud
+            </label>
+            <label class="toggle-label">
+              <input type="checkbox" id="autoExport" checked />
+              Auto-export JSON on stop
+            </label>
           </div>
         </div>
 
@@ -82,10 +100,18 @@
           <button id="installBtn" class="secondary" hidden>Install App</button>
         </div>
 
-        <div id="status" class="status">Idle</div>
+        <div class="status-row">
+          <span id="connDot" class="conn-dot"></span>
+          <span id="status" class="status">Idle</span>
+        </div>
       </section>
 
       <section class="panel">
+        <div class="caption-toolbar">
+          <div id="levelMeter" class="level-meter"><div id="levelBar" class="level-bar"></div></div>
+          <button id="fontDown" class="icon-btn" title="Smaller text">A&minus;</button>
+          <button id="fontUp" class="icon-btn" title="Larger text">A+</button>
+        </div>
         <div id="liveCaption" class="caption">Waiting for session start...</div>
         <div id="liveTranscript" class="transcript"></div>
       </section>

@@ -3,16 +3,34 @@ const REALTIME_MODE = "realtime";
 const REALTIME_PREVIEW_MIN_INTERVAL_MS = 1500;
 const REALTIME_PREVIEW_MIN_CHARS = 18;
 
+const VAD_SILENCE_THRESHOLD = 0.012;
+const VAD_SILENCE_DURATION_MS = 650;
+const VAD_MIN_CHUNK_MS = 3000;
+const VAD_MAX_CHUNK_BALANCED = 12000;
+const VAD_MAX_CHUNK_LATENCY = 8000;
+
+const OFFLINE_DB_NAME = "ft-offline";
+const OFFLINE_DB_VERSION = 1;
+const OFFLINE_STORE = "pending-segments";
+const HEALTH_CHECK_INTERVAL_MS = 15000;
+
 const els = {
   projectName: document.getElementById("projectName"),
   sourceLang: document.getElementById("sourceLang"),
   targetLang: document.getElementById("targetLang"),
   conversationContext: document.getElementById("conversationContext"),
   mode: document.getElementById("mode"),
+  audioDevice: document.getElementById("audioDevice"),
+  ttsEnabled: document.getElementById("ttsEnabled"),
+  autoExport: document.getElementById("autoExport"),
   installBtn: document.getElementById("installBtn"),
   startBtn: document.getElementById("startBtn"),
   stopBtn: document.getElementById("stopBtn"),
   status: document.getElementById("status"),
+  connDot: document.getElementById("connDot"),
+  levelBar: document.getElementById("levelBar"),
+  fontDown: document.getElementById("fontDown"),
+  fontUp: document.getElementById("fontUp"),
   liveCaption: document.getElementById("liveCaption"),
   liveTranscript: document.getElementById("liveTranscript"),
   logList: document.getElementById("logList"),
@@ -48,8 +66,29 @@ let rtcLastPreviewTranscript = "";
 let realtimeTextQueue = [];
 let realtimeTextQueueActive = false;
 
+let audioContext = null;
+let analyserNode = null;
+let levelAnimFrame = null;
+let wakeLockSentinel = null;
+let captionFontScale = parseFloat(localStorage.getItem("ft-font-scale") || "1.0");
+let connectionHealthy = true;
+let healthCheckInterval = null;
+let vadCheckInterval = null;
+let vadSilenceStartMs = 0;
+let chunkStartedAtMs = 0;
+let offlineDB = null;
+
+// ── Utility ──────────────────────────────────────────────────────────
+
 function setStatus(msg) {
   els.status.textContent = msg;
+}
+
+function setConnHealth(healthy) {
+  connectionHealthy = healthy;
+  if (els.connDot) {
+    els.connDot.className = healthy ? "conn-dot conn-ok" : "conn-dot conn-bad";
+  }
 }
 
 function setRunningState(running) {
@@ -83,11 +122,9 @@ async function installApp() {
   if (!deferredInstallPrompt) {
     return;
   }
-
   const promptEvent = deferredInstallPrompt;
   deferredInstallPrompt = null;
   promptEvent.prompt();
-
   try {
     await promptEvent.userChoice;
   } finally {
@@ -99,7 +136,6 @@ async function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) {
     return;
   }
-
   try {
     await navigator.serviceWorker.register("/sw.js");
   } catch (error) {
@@ -133,15 +169,399 @@ function guessExtension(mimeType) {
 }
 
 function chunkMsForMode(mode) {
-  if (mode === "latency") {
-    return 5000;
-  }
-  return 8000;
+  return mode === "latency" ? VAD_MAX_CHUNK_LATENCY : VAD_MAX_CHUNK_BALANCED;
 }
 
 function isRealtimeMode(mode) {
   return mode === REALTIME_MODE;
 }
+
+// ── Audio Device Selection ───────────────────────────────────────────
+
+async function enumerateAudioDevices() {
+  if (!navigator.mediaDevices?.enumerateDevices) {
+    return;
+  }
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const audioInputs = devices.filter((d) => d.kind === "audioinput");
+    const currentValue = els.audioDevice.value;
+    els.audioDevice.innerHTML = '<option value="">Default microphone</option>';
+    audioInputs.forEach((device) => {
+      const opt = document.createElement("option");
+      opt.value = device.deviceId;
+      opt.textContent =
+        device.label || `Microphone ${device.deviceId.slice(0, 8)}`;
+      els.audioDevice.appendChild(opt);
+    });
+    if (
+      currentValue &&
+      [...els.audioDevice.options].some((o) => o.value === currentValue)
+    ) {
+      els.audioDevice.value = currentValue;
+    }
+  } catch (err) {
+    console.warn("Failed to enumerate audio devices", err);
+  }
+}
+
+function isExternalMic(deviceId) {
+  if (!deviceId) {
+    return false;
+  }
+  const opt = [...els.audioDevice.options].find((o) => o.value === deviceId);
+  if (!opt) {
+    return false;
+  }
+  const label = opt.textContent.toLowerCase();
+  return /rode|wireless|usb|external|line.in|audio.interface/i.test(label);
+}
+
+function getAudioConstraints() {
+  const deviceId = els.audioDevice.value;
+  const external = isExternalMic(deviceId);
+  const constraints = {
+    echoCancellation: !external,
+    noiseSuppression: !external,
+    autoGainControl: !external,
+  };
+  if (deviceId) {
+    constraints.deviceId = { exact: deviceId };
+  }
+  return constraints;
+}
+
+// ── Audio Level Meter ────────────────────────────────────────────────
+
+function startLevelMeter(stream) {
+  try {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createMediaStreamSource(stream);
+    analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 256;
+    source.connect(analyserNode);
+
+    const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
+    function updateLevel() {
+      if (!analyserNode) {
+        return;
+      }
+      analyserNode.getByteTimeDomainData(dataArray);
+      let sum = 0;
+      for (let i = 0; i < dataArray.length; i++) {
+        const v = (dataArray[i] - 128) / 128;
+        sum += v * v;
+      }
+      const rms = Math.sqrt(sum / dataArray.length);
+      const pct = Math.min(100, rms * 300);
+      if (els.levelBar) {
+        els.levelBar.style.width = `${pct}%`;
+        els.levelBar.className =
+          pct > 60
+            ? "level-bar level-hot"
+            : pct > 20
+              ? "level-bar level-warm"
+              : "level-bar";
+      }
+      levelAnimFrame = requestAnimationFrame(updateLevel);
+    }
+    updateLevel();
+  } catch (err) {
+    console.warn("Level meter unavailable", err);
+  }
+}
+
+function stopLevelMeter() {
+  if (levelAnimFrame) {
+    cancelAnimationFrame(levelAnimFrame);
+    levelAnimFrame = null;
+  }
+  if (audioContext) {
+    audioContext.close().catch(() => {});
+    audioContext = null;
+    analyserNode = null;
+  }
+  if (els.levelBar) {
+    els.levelBar.style.width = "0%";
+  }
+}
+
+function getCurrentRMS() {
+  if (!analyserNode) {
+    return 0;
+  }
+  const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
+  analyserNode.getByteTimeDomainData(dataArray);
+  let sum = 0;
+  for (let i = 0; i < dataArray.length; i++) {
+    const v = (dataArray[i] - 128) / 128;
+    sum += v * v;
+  }
+  return Math.sqrt(sum / dataArray.length);
+}
+
+// ── Wake Lock ────────────────────────────────────────────────────────
+
+async function acquireWakeLock() {
+  if (!("wakeLock" in navigator)) {
+    return;
+  }
+  try {
+    wakeLockSentinel = await navigator.wakeLock.request("screen");
+    wakeLockSentinel.addEventListener("release", () => {
+      wakeLockSentinel = null;
+      if (captureActive) {
+        acquireWakeLock();
+      }
+    });
+  } catch (err) {
+    console.warn("Wake lock failed", err);
+  }
+}
+
+async function releaseWakeLock() {
+  if (wakeLockSentinel) {
+    try {
+      await wakeLockSentinel.release();
+    } catch {
+      /* already released */
+    }
+    wakeLockSentinel = null;
+  }
+}
+
+// ── Connection Health ────────────────────────────────────────────────
+
+async function checkHealth() {
+  try {
+    const response = await fetch("/health", {
+      signal: AbortSignal.timeout(5000),
+    });
+    setConnHealth(response.ok);
+  } catch {
+    setConnHealth(false);
+  }
+}
+
+function startHealthCheck() {
+  checkHealth();
+  healthCheckInterval = setInterval(checkHealth, HEALTH_CHECK_INTERVAL_MS);
+}
+
+function stopHealthCheck() {
+  if (healthCheckInterval) {
+    clearInterval(healthCheckInterval);
+    healthCheckInterval = null;
+  }
+}
+
+// ── Offline Buffering (IndexedDB) ───────────────────────────────────
+
+function openOfflineDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(OFFLINE_DB_NAME, OFFLINE_DB_VERSION);
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains(OFFLINE_STORE)) {
+        db.createObjectStore(OFFLINE_STORE, {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function storeOfflineSegment(segment) {
+  try {
+    if (!offlineDB) {
+      offlineDB = await openOfflineDB();
+    }
+    const tx = offlineDB.transaction(OFFLINE_STORE, "readwrite");
+    const arrayBuffer = await segment.blob.arrayBuffer();
+    tx.objectStore(OFFLINE_STORE).add({
+      segmentId: segment.segmentId,
+      startedAtMs: segment.startedAtMs,
+      endedAtMs: segment.endedAtMs,
+      audioBuffer: arrayBuffer,
+      mimeType: segment.blob.type || "audio/webm",
+      sessionId: sessionId,
+      sourceLang: els.sourceLang.value.trim(),
+      targetLang: els.targetLang.value.trim() || "en",
+      priorContext: recentTranslations.slice(-MAX_CONTEXT_LINES),
+      conversationContext: (els.conversationContext.value || "").trim(),
+    });
+    await new Promise((resolve, reject) => {
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+  } catch (err) {
+    console.error("Failed to store offline segment", err);
+  }
+}
+
+async function drainOfflineSegments() {
+  try {
+    if (!offlineDB) {
+      offlineDB = await openOfflineDB();
+    }
+    const tx = offlineDB.transaction(OFFLINE_STORE, "readonly");
+    const objectStore = tx.objectStore(OFFLINE_STORE);
+    const all = await new Promise((resolve, reject) => {
+      const req = objectStore.getAll();
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+
+    if (!all.length) {
+      return;
+    }
+    setStatus(`Uploading ${all.length} buffered segment(s)...`);
+
+    for (const item of all) {
+      try {
+        const blob = new Blob([item.audioBuffer], { type: item.mimeType });
+        const formData = new FormData();
+        formData.set("session_id", item.sessionId);
+        formData.set("segment_id", item.segmentId);
+        formData.set("started_at_ms", String(item.startedAtMs));
+        formData.set("ended_at_ms", String(item.endedAtMs));
+        formData.set("source_lang_hint", item.sourceLang);
+        formData.set("target_lang", item.targetLang);
+        formData.set("prior_context_json", JSON.stringify(item.priorContext));
+        formData.set("conversation_context", item.conversationContext);
+        const ext = guessExtension(item.mimeType);
+        formData.set("audio_file", blob, `${item.segmentId}.${ext}`);
+
+        const response = await fetch("/v1/segment/process", {
+          method: "POST",
+          body: formData,
+        });
+        if (response.ok) {
+          const delTx = offlineDB.transaction(OFFLINE_STORE, "readwrite");
+          delTx.objectStore(OFFLINE_STORE).delete(item.id);
+        }
+      } catch {
+        break;
+      }
+    }
+  } catch (err) {
+    console.warn("Failed to drain offline segments", err);
+  }
+}
+
+// ── TTS ──────────────────────────────────────────────────────────────
+
+function speakTranslation(text) {
+  if (!els.ttsEnabled.checked || !window.speechSynthesis) {
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 1.1;
+  utterance.lang = els.targetLang.value.trim() || "en";
+  window.speechSynthesis.speak(utterance);
+}
+
+// ── Font Size ────────────────────────────────────────────────────────
+
+function applyFontScale() {
+  const size = `clamp(1rem, ${3.6 * captionFontScale}vw, ${2.1 * captionFontScale}rem)`;
+  els.liveCaption.style.fontSize = size;
+  localStorage.setItem("ft-font-scale", String(captionFontScale));
+}
+
+function adjustFontSize(delta) {
+  captionFontScale = Math.max(0.6, Math.min(2.0, captionFontScale + delta));
+  applyFontScale();
+}
+
+// ── Session Resume ───────────────────────────────────────────────────
+
+function saveSessionState() {
+  if (!sessionId) {
+    return;
+  }
+  localStorage.setItem(
+    "ft-session",
+    JSON.stringify({
+      sessionId,
+      activeMode,
+      sessionStartEpochMs,
+      segmentCounter,
+      recentTranslations,
+    }),
+  );
+}
+
+function clearSessionState() {
+  localStorage.removeItem("ft-session");
+}
+
+function checkSessionResume() {
+  const saved = localStorage.getItem("ft-session");
+  if (!saved) {
+    return;
+  }
+  setTimeout(() => {
+    try {
+      const state = JSON.parse(saved);
+      if (!state.sessionId) {
+        return;
+      }
+      const resume = confirm(
+        `A previous session (${state.sessionId.slice(0, 8)}...) was interrupted. Resume it?\n\nPress Cancel to start fresh.`,
+      );
+      if (resume) {
+        sessionId = state.sessionId;
+        activeMode = state.activeMode || "balanced";
+        sessionStartEpochMs = state.sessionStartEpochMs || Date.now();
+        segmentCounter = state.segmentCounter || 0;
+        recentTranslations = state.recentTranslations || [];
+        currentChunkMs = chunkMsForMode(activeMode);
+        setExportState(true);
+        setStatus(
+          `Resumed session ${sessionId.slice(0, 8)}... Press Start to continue capturing.`,
+        );
+      } else {
+        clearSessionState();
+      }
+    } catch {
+      clearSessionState();
+    }
+  }, 500);
+}
+
+// ── Auto Export ──────────────────────────────────────────────────────
+
+async function autoExportSession() {
+  if (!els.autoExport.checked || !sessionId) {
+    return;
+  }
+  try {
+    const response = await fetch(
+      `/v1/session/${sessionId}/export?format=json`,
+    );
+    if (!response.ok) {
+      return;
+    }
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `session-${sessionId.slice(0, 8)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    console.warn("Auto-export failed", err);
+  }
+}
+
+// ── Log Entries ──────────────────────────────────────────────────────
 
 function addLogEntry({ startedAtMs, translation, transcript }) {
   const entry = document.createElement("div");
@@ -162,6 +582,8 @@ function addLogEntry({ startedAtMs, translation, transcript }) {
   entry.append(ts, en, src);
   els.logList.prepend(entry);
 }
+
+// ── Network Requests ─────────────────────────────────────────────────
 
 async function postSegment(segment) {
   const formData = new FormData();
@@ -228,6 +650,8 @@ async function postTranslatedText({
   return response.json();
 }
 
+// ── Realtime Text Queue ──────────────────────────────────────────────
+
 async function drainRealtimeTextQueue() {
   if (realtimeTextQueueActive) {
     return;
@@ -247,6 +671,8 @@ async function drainRealtimeTextQueue() {
           translation: translated.translation_en,
           transcript: next.transcript,
         });
+        speakTranslation(translated.translation_en);
+        saveSessionState();
         setStatus(
           `Live realtime | final translation latency ${translated.latency_ms}ms`,
         );
@@ -262,6 +688,8 @@ async function drainRealtimeTextQueue() {
   }
   realtimeTextQueueActive = false;
 }
+
+// ── Chunk Queue ──────────────────────────────────────────────────────
 
 async function drainQueue() {
   if (queueActive) {
@@ -283,13 +711,20 @@ async function drainQueue() {
         translation: result.translation_en,
         transcript: result.transcript_src,
       });
+      speakTranslation(result.translation_en);
+      saveSessionState();
 
       setStatus(
         `Live | queue ${requestQueue.length} | segment latency ${result.latency_ms}ms`,
       );
     } catch (error) {
-      console.error(error);
-      setStatus(`Error: ${error.message}`);
+      if (!navigator.onLine) {
+        setStatus("Offline - buffering segment locally");
+        await storeOfflineSegment(next);
+      } else {
+        console.error(error);
+        setStatus(`Error: ${error.message}`);
+      }
     }
   }
   queueActive = false;
@@ -314,6 +749,55 @@ function enqueueChunk(blob) {
   drainQueue();
 }
 
+// ── VAD-based Chunking ───────────────────────────────────────────────
+
+function startVadMonitor() {
+  chunkStartedAtMs = Date.now();
+  vadSilenceStartMs = 0;
+  const maxMs = chunkMsForMode(activeMode);
+
+  vadCheckInterval = setInterval(() => {
+    const elapsed = Date.now() - chunkStartedAtMs;
+    const rms = getCurrentRMS();
+    const isSilent = rms < VAD_SILENCE_THRESHOLD;
+
+    if (isSilent) {
+      if (!vadSilenceStartMs) {
+        vadSilenceStartMs = Date.now();
+      }
+      const silenceDuration = Date.now() - vadSilenceStartMs;
+      if (elapsed >= VAD_MIN_CHUNK_MS && silenceDuration >= VAD_SILENCE_DURATION_MS) {
+        stopCurrentChunk();
+        return;
+      }
+    } else {
+      vadSilenceStartMs = 0;
+    }
+
+    if (elapsed >= maxMs) {
+      stopCurrentChunk();
+    }
+  }, 80);
+}
+
+function stopVadMonitor() {
+  if (vadCheckInterval) {
+    clearInterval(vadCheckInterval);
+    vadCheckInterval = null;
+  }
+}
+
+function stopCurrentChunk() {
+  stopVadMonitor();
+  if (chunkStopTimer) {
+    clearTimeout(chunkStopTimer);
+    chunkStopTimer = null;
+  }
+  if (mediaRecorder && mediaRecorder.state !== "inactive") {
+    mediaRecorder.stop();
+  }
+}
+
 function startChunkedRecorderCycle() {
   if (!captureActive || !mediaStream) {
     return;
@@ -333,6 +817,7 @@ function startChunkedRecorderCycle() {
   };
 
   mediaRecorder.onstop = () => {
+    stopVadMonitor();
     if (parts.length > 0) {
       const mimeType =
         mediaRecorder?.mimeType || parts[0].type || "audio/webm";
@@ -346,12 +831,19 @@ function startChunkedRecorderCycle() {
   };
 
   mediaRecorder.start();
-  chunkStopTimer = setTimeout(() => {
-    if (mediaRecorder && mediaRecorder.state !== "inactive") {
-      mediaRecorder.stop();
-    }
-  }, currentChunkMs);
+
+  if (analyserNode) {
+    startVadMonitor();
+  } else {
+    chunkStopTimer = setTimeout(() => {
+      if (mediaRecorder && mediaRecorder.state !== "inactive") {
+        mediaRecorder.stop();
+      }
+    }, chunkMsForMode(activeMode));
+  }
 }
+
+// ── Realtime (WebRTC) ────────────────────────────────────────────────
 
 function configureRtcDataChannel(dataChannel) {
   dataChannel.onmessage = async (event) => {
@@ -367,7 +859,8 @@ function configureRtcDataChannel(dataChannel) {
 
           const nowMs = relMs(Date.now());
           const sinceLastPreview = nowMs - rtcLastPreviewAtMs;
-          const transcriptChanged = rtcPartialTranscript !== rtcLastPreviewTranscript;
+          const transcriptChanged =
+            rtcPartialTranscript !== rtcLastPreviewTranscript;
           if (
             transcriptChanged &&
             rtcPartialTranscript.trim().length >= REALTIME_PREVIEW_MIN_CHARS &&
@@ -389,7 +882,10 @@ function configureRtcDataChannel(dataChannel) {
         return;
       }
 
-      if (eventType === "conversation.item.input_audio_transcription.completed") {
+      if (
+        eventType ===
+        "conversation.item.input_audio_transcription.completed"
+      ) {
         const finalText = (payload?.transcript || "").trim();
         rtcPartialTranscript = "";
         if (!finalText) {
@@ -475,16 +971,14 @@ async function startRealtimeCapture() {
   }
 
   mediaStream = await navigator.mediaDevices.getUserMedia({
-    audio: {
-      echoCancellation: true,
-      noiseSuppression: true,
-      autoGainControl: true,
-    },
+    audio: getAudioConstraints(),
   });
 
   if (!mediaStream.getAudioTracks().length) {
     throw new Error("No audio track available for realtime mode");
   }
+
+  startLevelMeter(mediaStream);
 
   rtcPeerConnection = new RTCPeerConnection();
   mediaStream.getTracks().forEach((track) => {
@@ -538,6 +1032,8 @@ async function startRealtimeCapture() {
   }
 }
 
+// ── Audio Capture Start/Stop ─────────────────────────────────────────
+
 async function startAudioCapture(mode) {
   if (isRealtimeMode(mode)) {
     await startRealtimeCapture();
@@ -545,12 +1041,10 @@ async function startAudioCapture(mode) {
   }
 
   mediaStream = await navigator.mediaDevices.getUserMedia({
-    audio: {
-      echoCancellation: true,
-      noiseSuppression: true,
-      autoGainControl: true,
-    },
+    audio: getAudioConstraints(),
   });
+
+  startLevelMeter(mediaStream);
 
   const supportedMimeTypes = [
     "audio/webm;codecs=opus",
@@ -572,10 +1066,13 @@ async function startAudioCapture(mode) {
 
 async function stopAudioCapture() {
   captureActive = false;
+  stopVadMonitor();
   if (chunkStopTimer) {
     clearTimeout(chunkStopTimer);
     chunkStopTimer = null;
   }
+
+  stopLevelMeter();
 
   if (rtcDataChannel) {
     rtcDataChannel.close();
@@ -626,6 +1123,8 @@ async function stopAudioCapture() {
   recorderOptions = {};
 }
 
+// ── Session Lifecycle ────────────────────────────────────────────────
+
 async function startSession() {
   if (!navigator.mediaDevices?.getUserMedia) {
     setStatus("This browser does not support microphone capture.");
@@ -669,6 +1168,9 @@ async function startSession() {
     els.logList.innerHTML = "";
 
     await startAudioCapture(activeMode);
+    await acquireWakeLock();
+    saveSessionState();
+    startHealthCheck();
 
     setRunningState(true);
     setExportState(true);
@@ -676,7 +1178,7 @@ async function startSession() {
       setStatus(`Live session ${sessionId.slice(0, 8)}... fast mode`);
     } else {
       setStatus(
-        `Live session ${sessionId.slice(0, 8)}... chunk ${(currentChunkMs / 1000).toFixed(1)}s`,
+        `Live session ${sessionId.slice(0, 8)}... VAD chunking (max ${(currentChunkMs / 1000).toFixed(0)}s)`,
       );
     }
     els.liveCaption.textContent = "Listening...";
@@ -685,6 +1187,7 @@ async function startSession() {
     console.error(error);
     setStatus(`Failed to start: ${error.message}`);
     await stopAudioCapture();
+    await releaseWakeLock();
     sessionId = null;
     setRunningState(false);
   }
@@ -698,6 +1201,8 @@ async function stopSession() {
   setStatus("Stopping session...");
 
   await stopAudioCapture();
+  await releaseWakeLock();
+  stopHealthCheck();
 
   while (
     queueActive ||
@@ -723,11 +1228,14 @@ async function stopSession() {
     setStatus(
       `Ended | duration ${(payload.duration_ms / 1000).toFixed(1)}s | segments ${payload.segments_count}`,
     );
+
+    await autoExportSession();
   } catch (error) {
     console.error(error);
     setStatus(`Failed to end cleanly: ${error.message}`);
   }
 
+  clearSessionState();
   setRunningState(false);
 }
 
@@ -738,6 +1246,8 @@ function openExport(format) {
   window.open(`/v1/session/${sessionId}/export?format=${format}`, "_blank");
 }
 
+// ── Event Listeners ──────────────────────────────────────────────────
+
 els.startBtn.addEventListener("click", startSession);
 els.stopBtn.addEventListener("click", stopSession);
 els.exportJsonBtn.addEventListener("click", () => openExport("json"));
@@ -745,6 +1255,12 @@ els.exportCsvBtn.addEventListener("click", () => openExport("csv"));
 els.exportSrtBtn.addEventListener("click", () => openExport("srt"));
 if (els.installBtn) {
   els.installBtn.addEventListener("click", installApp);
+}
+if (els.fontDown) {
+  els.fontDown.addEventListener("click", () => adjustFontSize(-0.15));
+}
+if (els.fontUp) {
+  els.fontUp.addEventListener("click", () => adjustFontSize(0.15));
 }
 
 window.addEventListener("beforeinstallprompt", (event) => {
@@ -759,7 +1275,43 @@ window.addEventListener("appinstalled", () => {
   setStatus("Installed. You can launch from your Android home screen.");
 });
 
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && captureActive) {
+    acquireWakeLock();
+  }
+});
+
+if (navigator.mediaDevices) {
+  navigator.mediaDevices.addEventListener("devicechange", enumerateAudioDevices);
+}
+
+window.addEventListener("online", () => {
+  setConnHealth(true);
+  drainOfflineSegments();
+});
+
+window.addEventListener("offline", () => {
+  setConnHealth(false);
+});
+
+// ── Init ─────────────────────────────────────────────────────────────
+
 setRunningState(false);
 setExportState(false);
 updateInstallButton();
+applyFontScale();
 registerServiceWorker();
+enumerateAudioDevices();
+checkSessionResume();
+
+(async () => {
+  try {
+    const tempStream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    });
+    tempStream.getTracks().forEach((t) => t.stop());
+    await enumerateAudioDevices();
+  } catch {
+    /* permission denied or unavailable - device list will show generic labels */
+  }
+})();
