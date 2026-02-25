@@ -6423,5 +6423,72 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ゴリラホール": {
+    "english_title": "Gorilla Hall",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ゴリラホール",
+    "director": "Koji Uehara",
+    "country": "Japan",
+    "failed": true
+  },
+  "アニタ 反逆の女神": {
+    "english_title": "Catching Fire: The Story of Anita Pallenberg",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Catching Fire: The Story of Anita Pallenberg",
+    "director": "Alexis Bloom, Svetlana Zill",
+    "country": "USA"
+  },
+  "リアム・ギャラガー ライブ・アット・ネブワース2022": {
+    "english_title": "Liam Gallagher: Knebworth 22",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Liam Gallagher: Knebworth 22",
+    "director": "Toby L.",
+    "country": "United Kingdom"
+  },
+  "レッツ・ゲット・ロスト 4Kレストア": {
+    "english_title": "Let's Get Lost",
+    "release_year": 1988,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Let's Get Lost",
+    "director": "Bruce Weber",
+    "country": "USA"
+  },
+  "ゆらゆら帝国 2009.04.26 LIVE＠日比谷野外大音楽堂": {
+    "english_title": "Yura Yura Teikoku 2009.04.26 LIVE @ Hibiya Open-Air Concert Hall",
+    "release_year": 2009,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ゆらゆら帝国 2009.04.26 LIVE＠日比谷野外大音楽堂",
+    "director": "Hitoshi Ohne",
+    "country": "Japan",
+    "failed": true
+  },
+  "映画 潜行一千里": {
+    "english_title": "Eiga Senko issenri",
+    "release_year": 2017,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "映画 潜行一千里",
+    "director": "Masahiro Mukoyama",
+    "country": "Japan",
+    "failed": true
+  },
+  "FURUSATO 2009": {
+    "english_title": "FURUSATO 2009",
+    "release_year": 2009,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ふるさと2009",
+    "director": "Katsuya Tomita",
+    "country": "Japan",
+    "failed": true
   }
 }
