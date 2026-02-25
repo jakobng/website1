@@ -93,6 +93,21 @@ def _parse_iso_datetime(iso_str: str) -> Optional[dt.datetime]:
     except ValueError:
         return None
 
+def _is_maintenance_page(page) -> bool:
+    """Detect Vista Digital maintenance or Cloudflare block page."""
+    try:
+        title = (page.title() or "").lower()
+        if "maintenance" in title:
+            return True
+        # Vista maintenance page has this
+        body = page.content()
+        if "vista digital" in body.lower() and "maintenance" in body.lower():
+            return True
+        return False
+    except Exception:
+        return False
+
+
 def _dismiss_yie_overlay(page) -> None:
     try:
         if not page.query_selector("[id^='yie-overlay-'], [id^='yie-backdrop-']"):
@@ -117,23 +132,29 @@ def scrape_venue(page, cinema_name, slug) -> List[Dict]:
     
     shows = []
     try:
-        # Changed networkidle to domcontentloaded - networkidle is too strict and often times out
         page.goto(venue_url, wait_until="domcontentloaded", timeout=60000)
-        
-        # Give it a second to stabilize
-        page.wait_for_timeout(2000)
-        
+        page.wait_for_timeout(3000)  # Allow JS/Cloudflare to settle
+
+        if _is_maintenance_page(page):
+            print(f"[{cinema_name}] Site returned maintenance page - skipping", file=sys.stderr)
+            return []
+
         # Wait for film list selector
         try:
-            page.wait_for_selector(".v-showtime-picker-film-list", timeout=30000)
+            page.wait_for_selector(".v-showtime-picker-film-list", timeout=25000)
         except PlaywrightTimeout:
-            # Fallback: maybe it just needs more time for 'load'
+            if _is_maintenance_page(page):
+                print(f"[{cinema_name}] Site in maintenance - skipping", file=sys.stderr)
+                return []
             print(f"[{cinema_name}] Retrying with wait_until='load'...", file=sys.stderr)
             page.goto(venue_url, wait_until="load", timeout=60000)
+            page.wait_for_timeout(2000)
+            if _is_maintenance_page(page):
+                return []
             try:
-                page.wait_for_selector(".v-showtime-picker-film-list", timeout=20000)
-            except:
-                print(f"[{cinema_name}] Timeout waiting for film list (or no films)", file=sys.stderr)
+                page.wait_for_selector(".v-showtime-picker-film-list", timeout=15000)
+            except PlaywrightTimeout:
+                print(f"[{cinema_name}] Timeout waiting for film list", file=sys.stderr)
                 return []
 
         _dismiss_yie_overlay(page)
@@ -258,16 +279,25 @@ def scrape_all_curzon() -> List[Dict]:
     
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    "--disable-blink-features=AutomationControlled",
+                    "--disable-dev-shm-usage",
+                    "--no-sandbox",
+                ],
+            )
             context = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+                viewport={"width": 1920, "height": 1080},
+                locale="en-GB",
+                timezone_id="Europe/London",
             )
             page = context.new_page()
 
             for name, slug in LONDON_VENUES:
                 shows = scrape_venue(page, name, slug)
                 all_shows.extend(shows)
-                # Small pause to let things settle? Not strictly needed with Playwright but good for rate limiting logic
                 time.sleep(1)
 
             browser.close()
