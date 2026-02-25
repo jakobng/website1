@@ -1,12 +1,12 @@
 :root {
-  --bg: #0f172a;
-  --panel: #111827;
-  --panel-soft: #1f2937;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --accent: #22c55e;
-  --warn: #f59e0b;
-  --danger: #ef4444;
+  --bg: #f7f7f7;
+  --panel: #ffffff;
+  --panel-soft: #f3f4f6;
+  --text: #111111;
+  --muted: #5f6368;
+  --accent: #15803d;
+  --warn: #ca8a04;
+  --danger: #dc2626;
 }
 
 * {
@@ -16,7 +16,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: radial-gradient(circle at top right, #1e293b, #0b1020 55%);
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -30,12 +30,13 @@ h1 {
   margin: 0 0 12px;
   font-size: 1.3rem;
   font-weight: 700;
+  color: #000000;
 }
 
 .panel {
-  background: linear-gradient(160deg, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.96));
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 12px;
+  background: var(--panel);
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
   padding: 12px;
   margin-bottom: 12px;
 }
@@ -58,9 +59,9 @@ select,
 textarea,
 button {
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.65);
+  border-radius: 2px;
+  border: 1px solid #c4c7cc;
+  background: #ffffff;
   color: var(--text);
   font-size: 0.95rem;
   padding: 10px;
@@ -75,24 +76,32 @@ textarea {
   grid-column: 1 / -1;
 }
 
+.hint-text {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 button {
   cursor: pointer;
-  background: rgba(30, 41, 59, 0.85);
+  background: #ffffff;
 }
 
 button.primary {
-  border-color: rgba(34, 197, 94, 0.6);
-  background: rgba(21, 128, 61, 0.4);
+  border-color: #111111;
+  background: #111111;
+  color: #ffffff;
 }
 
 button.danger {
-  border-color: rgba(239, 68, 68, 0.65);
-  background: rgba(185, 28, 28, 0.35);
+  border-color: #b91c1c;
+  background: #ffffff;
+  color: #b91c1c;
 }
 
 button.secondary {
-  border-color: rgba(148, 163, 184, 0.55);
-  background: rgba(30, 41, 59, 0.85);
+  border-color: #c4c7cc;
+  background: #ffffff;
 }
 
 button:disabled {
@@ -127,7 +136,7 @@ button:disabled {
 .transcript {
   margin-top: 8px;
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: #374151;
   min-height: 22px;
 }
 
@@ -139,10 +148,10 @@ button:disabled {
 }
 
 .log-item {
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
   padding: 8px;
-  background: rgba(15, 23, 42, 0.55);
+  background: #ffffff;
 }
 
 .log-time {
@@ -158,7 +167,7 @@ button:disabled {
 .log-src {
   margin-top: 3px;
   font-size: 0.85rem;
-  color: #cbd5e1;
+  color: #4b5563;
 }
 
 .exports {
@@ -227,8 +236,8 @@ button:disabled {
 .level-meter {
   flex: 1;
   height: 6px;
-  background: rgba(148, 163, 184, 0.15);
-  border-radius: 3px;
+  background: #e5e7eb;
+  border-radius: 2px;
   overflow: hidden;
 }
 
@@ -236,7 +245,7 @@ button:disabled {
   height: 100%;
   width: 0%;
   background: var(--accent);
-  border-radius: 3px;
+  border-radius: 0;
   transition: width 0.08s linear;
 }
 

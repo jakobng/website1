@@ -186,12 +186,12 @@ async function enumerateAudioDevices() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     const audioInputs = devices.filter((d) => d.kind === "audioinput");
     const currentValue = els.audioDevice.value;
-    els.audioDevice.innerHTML = '<option value="">Default microphone</option>';
+    els.audioDevice.innerHTML = '<option value="">Default microphone (system selected)</option>';
     audioInputs.forEach((device) => {
       const opt = document.createElement("option");
       opt.value = device.deviceId;
       opt.textContent =
-        device.label || `Microphone ${device.deviceId.slice(0, 8)}`;
+        device.label || `Microphone ${device.deviceId.slice(0, 8)} (unnamed device)`;
       els.audioDevice.appendChild(opt);
     });
     if (
