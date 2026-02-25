@@ -1879,9 +1879,38 @@
     ],
     "vote_average": 7.384
   },
+  "Beyond: If I Had Legs I'd Kick You": {
+    "tmdb_id": 1160360,
+    "tmdb_title": "If I Had Legs I'd Kick You",
+    "tmdb_original_title": "If I Had Legs I'd Kick You",
+    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
+    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
+    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
+    "release_date": "2025-10-10",
+    "director": "Mary Bronstein",
+    "runtime": 113,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.395
+  },
+  "Missing Child Videotape": {
+    "tmdb_id": 1341284,
+    "tmdb_title": "Missing Child Videotape",
+    "tmdb_original_title": "ミッシング・チャイルド・ビデオテープ",
+    "overview": "Keita discovers a missing boy in the woods and soon receives a mysterious videotape from his estranged mother.",
+    "poster_path": "/aclZUkfzUM20Jkd5a3Lw2owJ1KZ.jpg",
+    "backdrop_path": "/8SOBcfTNRzOKGbbHdOkRARV9mlT.jpg",
+    "release_date": "2025-01-24",
+    "director": "Ryota Kondo",
+    "runtime": 104,
+    "genres": [
+      "Mystery",
+      "Horror"
+    ],
+    "vote_average": 7.9
+  },
   "Monthly World Cinema Screening": null,
-  "Twin Peaks Drag Night": null,
-  "Twin Peaks Day 2026": null,
   "Make A Scene Presents: Shirley Valentine": {
     "tmdb_id": 18683,
     "tmdb_title": "Shirley Valentine",
@@ -1946,7 +1975,7 @@
       "Action",
       "Adventure"
     ],
-    "vote_average": 7.6
+    "vote_average": 7.563
   },
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
@@ -1964,21 +1993,7 @@
     ],
     "vote_average": 8.14
   },
-  "Beyond: If I Had Legs I'd Kick You": {
-    "tmdb_id": 1160360,
-    "tmdb_title": "If I Had Legs I'd Kick You",
-    "tmdb_original_title": "If I Had Legs I'd Kick You",
-    "overview": "With her life crashing down around her, Linda attempts to navigate her child's mysterious illness, her absent husband, a missing person, and an increasingly hostile relationship with her therapist.",
-    "poster_path": "/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg",
-    "backdrop_path": "/Gq68CyfTlj4QiDsX8eZqFi8ce6.jpg",
-    "release_date": "2025-10-10",
-    "director": "Mary Bronstein",
-    "runtime": 113,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 6.395
-  },
+  "Weekly Arthouse Screening": null,
   "Baby & Carer/ Little Amélie (PG) [Dubbed]": {
     "tmdb_id": 751496,
     "tmdb_title": "Baby",
@@ -1996,24 +2011,41 @@
     "vote_average": 5.32
   },
   "Little Amélie (PG) [Subtitled]": null,
-  "NT Live/ The Audience": null,
-  "Missing Child Videotape": {
-    "tmdb_id": 1341284,
-    "tmdb_title": "Missing Child Videotape",
-    "tmdb_original_title": "ミッシング・チャイルド・ビデオテープ",
-    "overview": "Keita discovers a missing boy in the woods and soon receives a mysterious videotape from his estranged mother.",
-    "poster_path": "/aclZUkfzUM20Jkd5a3Lw2owJ1KZ.jpg",
-    "backdrop_path": "/8SOBcfTNRzOKGbbHdOkRARV9mlT.jpg",
-    "release_date": "2025-01-24",
-    "director": "Ryota Kondo",
-    "runtime": 104,
+  "Sirât": {
+    "tmdb_id": 1151272,
+    "tmdb_title": "Sirāt",
+    "tmdb_original_title": "Sirāt",
+    "overview": "A man and his son arrive at a rave lost in the mountains of Morocco. They are looking for Marina, their daughter and sister, who disappeared months ago at another rave. Driven by fate, they decide to follow a group of ravers in search of one last party, in hopes Marina will be there.",
+    "poster_path": "/bzBtsLi17rK4G6kDvOXfUZfAhca.jpg",
+    "backdrop_path": "/kOUV5WbisWMg56d8eB45ZHEVxYq.jpg",
+    "release_date": "2025-06-06",
+    "director": "Oliver Laxe",
+    "runtime": 115,
     "genres": [
-      "Mystery",
-      "Horror"
+      "Drama",
+      "Thriller",
+      "Music"
     ],
-    "vote_average": 7.9
+    "vote_average": 6.799
   },
-  "Weekly Arthouse Screening": null,
+  "The Testament of Ann Lee": {
+    "tmdb_id": 1401281,
+    "tmdb_title": "The Testament of Ann Lee",
+    "tmdb_original_title": "The Testament of Ann Lee",
+    "overview": "The extraordinary true legend of Ann Lee, founder of the devotional sect known as the Shakers.",
+    "poster_path": "/hU1frHnDwJQ3YDERVppxTLvHjc7.jpg",
+    "backdrop_path": "/r6rCEYFdk8FcKc5x9zJFJUSPGJg.jpg",
+    "release_date": "2025-12-25",
+    "director": "Mona Fastvold",
+    "runtime": 137,
+    "genres": [
+      "Drama",
+      "History",
+      "Music"
+    ],
+    "vote_average": 6.8
+  },
+  "NT Live/ The Audience": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
   "The Royal Opera: The Magic Flute": null,
