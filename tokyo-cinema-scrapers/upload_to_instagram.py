@@ -84,6 +84,20 @@ def upload_carousel_child_container(image_url):
     print(f"   - Child Container Created: {result['id']}")
     return result["id"]
 
+def upload_carousel_child_with_retry(image_url, retries=3, delay_seconds=4):
+    """Retry child container creation to avoid partial carousels from transient fetch errors."""
+    for attempt in range(1, retries + 1):
+        child_id = upload_carousel_child_container(image_url)
+        if child_id:
+            return child_id
+
+        if attempt < retries:
+            print(f"   ⚠️ Child upload failed (attempt {attempt}/{retries}). Retrying in {delay_seconds}s...")
+            time.sleep(delay_seconds)
+
+    print(f"   ❌ Child upload failed after {retries} attempts: {image_url}")
+    return None
+
 def upload_carousel_container(child_ids, caption):
     """Creates the parent container for the carousel."""
     url = f"{GRAPH_URL}/{IG_USER_ID}/media"
@@ -201,6 +215,7 @@ def main():
         print(f"🔹 Detected {len(feed_files)} Feed Images.")
         
         child_ids = []
+        child_failures = []
         for local_path in feed_files:
             filename = os.path.basename(local_path)
             # FIX: Added ?v=... to URL
@@ -213,10 +228,17 @@ def main():
                 publish_media(c_id)
             else:
                 # Carousel Item
-                c_id = upload_carousel_child_container(image_url)
+                c_id = upload_carousel_child_with_retry(image_url)
                 if c_id:
                     child_ids.append(c_id)
+                else:
+                    child_failures.append(filename)
                 time.sleep(2) # Brief pause
+
+        if child_failures:
+            print("❌ Aborting publish: one or more carousel images failed to upload.")
+            print(f"   Failed images: {', '.join(child_failures)}")
+            sys.exit(1)
 
         if child_ids:
             print("🔹 Creating Carousel Parent...")
