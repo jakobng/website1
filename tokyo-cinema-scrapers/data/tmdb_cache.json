@@ -8519,7 +8519,7 @@
       "Drama"
     ],
     "runtime": 119,
-    "vote_average": 7.232,
+    "vote_average": 7.23,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -41185,7 +41185,47 @@
       }
     ]
   },
-  "両親が決めたこと": null,
+  "両親が決めたこと": {
+    "tmdb_id": 1224666,
+    "tmdb_title_jp": "Polvo serán",
+    "tmdb_title_en": "They Will Be Dust",
+    "tmdb_title_original": "Polvo serán",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "After receiving the diagnosis of an incurable brain tumor, Claudia decides to undertake her last trip to Switzerland. There she can decide how and when to end her life thanks to the help of an assisted suicide association.",
+    "poster_path": "/UR3cOvqPJSMsAiaebAIZUd6jGR.jpg",
+    "backdrop_path": "/bQInJ4d9ajaPGHGpEL5RPpmbE0p.jpg",
+    "release_date": "2024-11-15",
+    "director": "Carlos Marques-Marcet",
+    "director_jp": "Carlos Marques-Marcet",
+    "director_en": "Carlos Marques-Marcet",
+    "genres": [
+      "ドラマ",
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 106,
+    "vote_average": 6.85,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
   "射鵰英雄伝": {
     "tmdb_id": 1185528,
     "tmdb_title_jp": "射雕英雄传：侠之大者",
@@ -45863,7 +45903,7 @@
       "Comedy"
     ],
     "runtime": 106,
-    "vote_average": 6.6,
+    "vote_average": 6.85,
     "tmdb_countries": [
       {
         "iso_3166_1": "IT",
@@ -62666,8 +62706,8 @@
   "tmdb:1316092": {
     "tmdb_id": 1316092,
     "tmdb_title_jp": "嵐が丘",
-    "tmdb_title_en": "“Wuthering Heights”",
-    "tmdb_title_original": "“Wuthering Heights”",
+    "tmdb_title_en": "\"Wuthering Heights\"",
+    "tmdb_title_original": "\"Wuthering Heights\"",
     "tmdb_original_language": "en",
     "overview": "",
     "overview_en": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England.",
@@ -62686,7 +62726,7 @@
       "Drama"
     ],
     "runtime": 136,
-    "vote_average": 6.538,
+    "vote_average": 6.535,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -63831,7 +63871,35 @@
   },
   "〈凱旋上映〉身体という極点からさらに外側へ:1990年代日本の実験映画と若者たち": null,
   "夜鶯 ―ある洋館での殺人事件―": null,
-  "コーナー・オブ・ジ・アース　カムチャツカ": null,
+  "コーナー・オブ・ジ・アース　カムチャツカ": {
+    "tmdb_id": 1082354,
+    "tmdb_title_jp": "Corners of the Earth: Kamchatka",
+    "tmdb_title_en": "Corners of the Earth: Kamchatka",
+    "tmdb_title_original": "Corners of the Earth: Kamchatka",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In February 2022, filmmakers Spencer Frost and Guy Williment, and pro surfers Letty Mortensen and Fraser Dovell started a journey to the unexplored Kamchatka Peninsula in far eastern Russia. After two years of planning, their adventure almost ended before it even started, when Russia invaded Ukraine an hour before their scheduled flight to Moscow.  They went anyway.",
+    "poster_path": "/dIASUPccHSC3qypsCk8mV9DabjU.jpg",
+    "backdrop_path": "/tV6RPwn0VKavTnCDMwe8dOMuzwh.jpg",
+    "release_date": "2023-08-03",
+    "director": "Spencer Frost",
+    "director_jp": "Spencer Frost",
+    "director_en": "Spencer Frost",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 90,
+    "vote_average": 9.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      }
+    ]
+  },
   "MALUM 悪しき神": {
     "tmdb_id": 1094403,
     "tmdb_title_jp": "Malum",
@@ -65417,6 +65485,2145 @@
       {
         "iso_3166_1": "US",
         "name": "United States of America"
+      }
+    ]
+  },
+  "母情（1950）": {
+    "tmdb_id": 220163,
+    "tmdb_title_jp": "母情",
+    "tmdb_title_en": "A Mother's Love",
+    "tmdb_title_original": "母情",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A bar girl tries to pass her three children, each from a different father, to rural relatives.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1950-06-27",
+    "director": "清水宏",
+    "director_jp": "清水宏",
+    "director_en": "Hiroshi Shimizu",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 86,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "至福のレストラン　三つ星トロワグロ": {
+    "tmdb_id": 1077050,
+    "tmdb_title_jp": "Menus-Plaisirs, les Troisgros",
+    "tmdb_title_en": "Menus-Plaisirs, les Troisgros",
+    "tmdb_title_original": "Menus-Plaisirs, les Troisgros",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Founded in 1930, Troisgros has held three Michelin stars for 55 years. The children of the fourth generation, Marie-Pierre and Michel's sons are continuing the family business: César runs the Michelin-starred restaurant, \"Le Bois sans feuilles\" (\"The Leafless Wood\"), and Léo is in charge of one of the other two Troisgros restaurants, \"La Colline du colombier\" (\"The Dovecote Hill\"). From the daily market to the cheese maturing cellars, via the vineyard, the cattle farm and the vegetable garden adjacent to the restaurant, Menus-Plaisirs is an intimate, sensory journey through the kitchens of one of the world's most prestigious restaurants.",
+    "poster_path": "/z2JNXDbNNOaJdSLA4lJ3eLYXFPr.jpg",
+    "backdrop_path": "/5ELDLGm5CewuuoZmJFU1hZBqfI7.jpg",
+    "release_date": "2023-11-22",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 240,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ボストン市庁舎": {
+    "tmdb_id": 726041,
+    "tmdb_title_jp": "ボストン市庁舎",
+    "tmdb_title_en": "City Hall",
+    "tmdb_title_original": "City Hall",
+    "tmdb_original_language": "en",
+    "overview": "ボストン市政府を壮大なスケールで描き、人種的正義、住宅問題、気候変動対策などを網羅した作品。",
+    "overview_en": "An epic look at Boston’s city government, covering racial justice, housing, climate action, and more.",
+    "poster_path": "/2tVjql9HmDw7ZP1nIqfT7RpoT3E.jpg",
+    "backdrop_path": "/ipuUQtjAEFjJhUCePc7MbRe6BGN.jpg",
+    "release_date": "2020-10-21",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 272,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:726041": {
+    "tmdb_id": 726041,
+    "tmdb_title_jp": "ボストン市庁舎",
+    "tmdb_title_en": "City Hall",
+    "tmdb_title_original": "City Hall",
+    "tmdb_original_language": "en",
+    "overview": "ボストン市政府を壮大なスケールで描き、人種的正義、住宅問題、気候変動対策などを網羅した作品。",
+    "overview_en": "An epic look at Boston’s city government, covering racial justice, housing, climate action, and more.",
+    "poster_path": "/2tVjql9HmDw7ZP1nIqfT7RpoT3E.jpg",
+    "backdrop_path": "/ipuUQtjAEFjJhUCePc7MbRe6BGN.jpg",
+    "release_date": "2020-10-21",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 272,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "金子文子　何が私をこうさせたか": {
+    "tmdb_id": 1466682,
+    "tmdb_title_jp": "金子文子 何が私をこうさせたか",
+    "tmdb_title_en": "Kaneko Fumiko",
+    "tmdb_title_original": "金子文子 何が私をこうさせたか",
+    "tmdb_original_language": "ja",
+    "overview": "金子文子はなぜ死んだのか。大審院で死刑判決を受けた後、無期懲役に減刑され、栃木女子刑務所に送られた。自死するまで何があったのか。本映画では文子のナマの声を伝える短歌をもとに、これまで空白であった死刑判決から自死に至る121日間の、文子のたったひとりの闘いを描きます。",
+    "overview_en": "Why did she die? The Supreme Court first sentenced her to death, but then commuted her sentence to life imprisonment and sent her to Tochigi Women's Prison. What happened before she took her own life there? Based on her tanka poems, which convey her raw voice, the film explores her lone fight during the 121 days between her death sentence and suicide, a period that has remained obscure to date.",
+    "poster_path": "/q8S8L3ZgfMxMtRDuunRTrkfp6R3.jpg",
+    "backdrop_path": "/8S2Sz7uHuAgQz0SIlyFD9ofshlv.jpg",
+    "release_date": "2026-02-28",
+    "director": "浜野佐知",
+    "director_jp": "浜野佐知",
+    "director_en": "Sachi Hamano",
+    "genres": [
+      "履歴",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "History",
+      "Drama"
+    ],
+    "runtime": 121,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "湯徳章　私は誰なのか": {
+    "tmdb_id": 1236428,
+    "tmdb_title_jp": "湯徳章ー私は誰なのかー",
+    "tmdb_title_en": "In Search of a Mixed Identity",
+    "tmdb_title_original": "尋找湯德章",
+    "tmdb_original_language": "zh",
+    "overview": "日本統治時代の台湾に生まれ、戦後に起きたニニ八事件の渦中で多くの市民を救った弁護士・湯徳章（トゥン・テッチョン）。その人物像を追求するドキュメンタリー。",
+    "overview_en": "The history of THNG Tek-chiong family not only reflects the confusion and the pursuit of Taiwanese identity over generations, but also serves as a cautionary tale for the people living in Taiwan.",
+    "poster_path": "/7Ulx8LL40ExqvzKPkdTQesKxt0k.jpg",
+    "backdrop_path": null,
+    "release_date": "2024-03-15",
+    "director": "連楨惠",
+    "director_jp": "連楨惠",
+    "director_en": "Jen-hui Lien",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "長孫　家族の季節": {
+    "tmdb_id": 1172507,
+    "tmdb_title_jp": "장손",
+    "tmdb_title_en": "House of the Seasons",
+    "tmdb_title_original": "장손",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "It’s summer, and the whole Kim family has gathered in Daegu for the ancestral rites. This includes Seong-jin, the eldest grandson of the family, whose father has taken on the family business: a tofu factory. After the rites, family tensions start to rise and Seong-jin drops the bombshell that he won’t be taking on the family business.",
+    "poster_path": "/sLJfFRhu3tiXyHQAWGoiKc5WKiH.jpg",
+    "backdrop_path": "/igTJXYAgRNHzKXRMWP83nBwPAXo.jpg",
+    "release_date": "2024-09-11",
+    "director": "오정민",
+    "director_jp": "오정민",
+    "director_en": "Oh Jung-min",
+    "genres": [
+      "ドラマ",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery"
+    ],
+    "runtime": 121,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "そして大黒柱は…": {
+    "tmdb_id": 1276644,
+    "tmdb_title_jp": "そして大黒柱は...",
+    "tmdb_title_en": "And the Breadwinner Is...",
+    "tmdb_title_original": "And the Breadwinner Is...",
+    "tmdb_original_language": "tl",
+    "overview": "フィリピンから台湾へ出稼ぎして家族を支えるバンビ。自分の仕送りで家を建て事業も成功し幸せに暮らしているとの言葉を信じて帰省するがすべて嘘。借金地獄が待っていた。フィリピンの大スター、バイス・ガンダ主演のドタバタ喜劇。",
+    "overview_en": "When Bambi discovers that her family has squandered their savings, they devise a plan to cover their debts — but first, she must fake her death.",
+    "poster_path": "/fELjp7LpQv8g5JENmRk6SMI7nFj.jpg",
+    "backdrop_path": "/22zGPrn4oD2ZUOqNvfBngxGWh9S.jpg",
+    "release_date": "2025-01-02",
+    "director": "Jun Robles Lana",
+    "director_jp": "Jun Robles Lana",
+    "director_en": "Jun Robles Lana",
+    "genres": [
+      "コメディ",
+      "ファミリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Family",
+      "Drama"
+    ],
+    "runtime": 123,
+    "vote_average": 6.571,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "PH",
+        "name": "Philippines"
+      }
+    ]
+  },
+  "行方不明": null,
+  "PLAN 75": {
+    "tmdb_id": 958487,
+    "tmdb_title_jp": "PLAN 75",
+    "tmdb_title_en": "Plan 75",
+    "tmdb_title_original": "PLAN 75",
+    "tmdb_original_language": "ja",
+    "overview": "夫と死別してひとりで慎ましく暮らす、角谷ミチ（倍賞千恵子）は78歳。ある日、高齢を理由にホテルの客室清掃の仕事を突然解雇される。住む場所をも失いそうになった彼女は＜プラン75＞の申請を検討し始める。一方、市役所の＜プラン７５＞の申請窓口で働くヒロム、死を選んだお年寄りに“その日”が来る直前までサポートするコールセンタースタッフの瑶子（河合優実）は、このシステムの存在に強い疑問を抱いていく。また、フィリピンから単身来日した介護職のマリア（ステファニー・アリアン）は幼い娘の手術費用を稼ぐため、より高給の＜プラン75＞関連施設に転職。利用者の遺品処理など、複雑な思いを抱えて作業に勤しむ日々を送る。  果たして、＜プラン75＞に翻弄される人々が最後に見出した答えとは―――。",
+    "overview_en": "In a Japan of the near future, the government program Plan 75 encourages senior citizens to be voluntarily euthanized to remedy a super-aged society. An elderly woman whose means of survival are vanishing, a pragmatic Plan 75 salesman, and a young Filipino laborer face choices of life and death.",
+    "poster_path": "/qy6V327vtsk41dy9XI6rTRjtrxN.jpg",
+    "backdrop_path": "/tdrDN4DoFJnNRRgbvGFVX4Gch5a.jpg",
+    "release_date": "2022-06-17",
+    "director": "早川千絵",
+    "director_jp": "早川千絵",
+    "director_en": "Chie Hayakawa",
+    "genres": [
+      "ドラマ",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Science Fiction"
+    ],
+    "runtime": 112,
+    "vote_average": 6.696,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "PH",
+        "name": "Philippines"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "QA",
+        "name": "Qatar"
+      }
+    ]
+  },
+  "tmdb:958487": {
+    "tmdb_id": 958487,
+    "tmdb_title_jp": "PLAN 75",
+    "tmdb_title_en": "Plan 75",
+    "tmdb_title_original": "PLAN 75",
+    "tmdb_original_language": "ja",
+    "overview": "夫と死別してひとりで慎ましく暮らす、角谷ミチ（倍賞千恵子）は78歳。ある日、高齢を理由にホテルの客室清掃の仕事を突然解雇される。住む場所をも失いそうになった彼女は＜プラン75＞の申請を検討し始める。一方、市役所の＜プラン７５＞の申請窓口で働くヒロム、死を選んだお年寄りに“その日”が来る直前までサポートするコールセンタースタッフの瑶子（河合優実）は、このシステムの存在に強い疑問を抱いていく。また、フィリピンから単身来日した介護職のマリア（ステファニー・アリアン）は幼い娘の手術費用を稼ぐため、より高給の＜プラン75＞関連施設に転職。利用者の遺品処理など、複雑な思いを抱えて作業に勤しむ日々を送る。  果たして、＜プラン75＞に翻弄される人々が最後に見出した答えとは―――。",
+    "overview_en": "In a Japan of the near future, the government program Plan 75 encourages senior citizens to be voluntarily euthanized to remedy a super-aged society. An elderly woman whose means of survival are vanishing, a pragmatic Plan 75 salesman, and a young Filipino laborer face choices of life and death.",
+    "poster_path": "/qy6V327vtsk41dy9XI6rTRjtrxN.jpg",
+    "backdrop_path": "/tdrDN4DoFJnNRRgbvGFVX4Gch5a.jpg",
+    "release_date": "2022-06-17",
+    "director": "早川千絵",
+    "director_jp": "早川千絵",
+    "director_en": "Chie Hayakawa",
+    "genres": [
+      "ドラマ",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Drama",
+      "Science Fiction"
+    ],
+    "runtime": 112,
+    "vote_average": 6.696,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "PH",
+        "name": "Philippines"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "QA",
+        "name": "Qatar"
+      }
+    ]
+  },
+  "TRAVERSE トラバース": {
+    "tmdb_id": 593787,
+    "tmdb_title_jp": "Traverse -トラバース-",
+    "tmdb_title_en": "Traverse",
+    "tmdb_title_original": "Traverse -トラバース-",
+    "tmdb_original_language": "ja",
+    "overview": "一緒に足を運んだ地元の祭りで、空手道場の師範・高梨淳の妻でジャーナリストの亜紀が姿を消した。冷たい姿で帰ってきた亜紀を警察は自殺と断定し、亜紀の自殺を止められなかったと落胆する高梨は道場を閉鎖してしまう。そして高梨は、養子の里菜と義理の親子という溝を埋められない時間を過ごしていたが、そんな中で里菜が何者かに連れ去られてしまい……。",
+    "overview_en": "An emotionally damaged girl is taken in by a married couple, the Takanashis. Shortly after the start of their happy family, the journalist wife is killed. The villainous forces that murdered his wife now come for Takanashi and his adopted daughter. In order to protect the girl so precious to him, Takanashi stands against them with his karate.",
+    "poster_path": "/lEKYM2IiN1fwwwrqnTYNRxYYHmd.jpg",
+    "backdrop_path": "/rRKHZeKkDY2zmbX1UJlQhPpESgI.jpg",
+    "release_date": "2019-11-02",
+    "director": "Yūki Okada",
+    "director_jp": "Yūki Okada",
+    "director_en": "Yūki Okada",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 96,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "マルドロール　腐敗": {
+    "tmdb_id": 959596,
+    "tmdb_title_jp": "Le Dossier Maldoror",
+    "tmdb_title_en": "Maldoror",
+    "tmdb_title_original": "Le Dossier Maldoror",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "When two girls go missing, Paul Chartier, an impulsive young police recruit, is assigned to “Maldoror”. This secret unit has been set up to monitor a dangerous sex offender. When the operation fails, fed up with the limits of the legal system, Chartier embarks on a solitary hunt to bring down the culprits.",
+    "poster_path": "/bal8kRJC4gfIehPAjSUDCBCtTKK.jpg",
+    "backdrop_path": "/5N3w3cC5d8fDMLuuDMn8io4StUE.jpg",
+    "release_date": "2024-09-08",
+    "director": "Fabrice Du Welz",
+    "director_jp": "Fabrice Du Welz",
+    "director_en": "Fabrice Du Welz",
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 155,
+    "vote_average": 6.391,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "忍者狩り（1964）": {
+    "tmdb_id": 185381,
+    "tmdb_title_jp": "忍者狩り",
+    "tmdb_title_en": "Ninja Hunt",
+    "tmdb_title_original": "忍者狩り",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "It's a rare occasion when a noted filmmaker like Yamauchi Tetsuya gets to re-visit a previous film, and in this re-make of NINJA GARI, he not only does that, but has created an even better piece. While the original from 1964 starred the great old-time actor Konoe Jushiro, this version is perfectly cast with his son Matsukata Hiroki in the lead as Wadakuro, one of four ronin hired to fight against the Shogunate's plot to abolish the Gamo Clan, who are struggling to reinstate their young heir Tanemaru as their Lord. Facing the threat of the Koga Ninja, Wadakuro shows his own cruelty while on a personal vendetta. This is a very brutal film, with lots of realistic ninja action, violent deaths, a dark story line and is completely without any light-hearted 'humor' elements that Toei used to incorperate back in the golden era. And with Matsukata Hiroki's outstanding martial skills, the swordplay is even better in this one. This is definitely one of the best ninja movies ever made!",
+    "poster_path": "/zpPOT9LDtM9j5eGib8aR9P2K1Zt.jpg",
+    "backdrop_path": "/goEMrMPLOFEz9RDkM3Hph5ocd3r.jpg",
+    "release_date": "1982-04-09",
+    "director": "山内鉄也",
+    "director_jp": "山内鉄也",
+    "director_en": "Tetsuya Yamanouchi",
+    "genres": [
+      "アクション",
+      "テレビ映画",
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Action",
+      "TV Movie",
+      "Drama",
+      "History"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "激突!殺人拳": {
+    "tmdb_id": 40810,
+    "tmdb_title_jp": "激突! 殺人拳",
+    "tmdb_title_en": "The Street Fighter",
+    "tmdb_title_original": "激突! 殺人拳",
+    "tmdb_original_language": "ja",
+    "overview": "不可能を可能にすると呼ばれる空手、拳法の達人・剣琢磨は、冷酷非情なプロの殺し屋。彼はその超人的な腕を見込まれ、香港に本拠地を持つ極東マフィア組織・五竜会メンバーの牟田口組組長・牟田口連蔵から、ある娘の誘拐を依頼される。その娘とは東南アジアの石油王の一人娘・サライ。だが、彼女を誘拐して石油王国を乗っ取ろうと画策する五竜会の魂胆を知った琢磨は、牟田口らの申し出を断わり、相棒のラクダとともにサライの身辺警護を買って出る。一方、琢磨が敵に廻ったことを知った五竜会会長・王石文こと英国人のキングストンは、九竜魔窟の大ボス・九竜断首（デインサウ）を雇い入れた。デインサウは大男の蒙古人や盲目の剣客、殺し屋琢磨に復讐心を持つ楯城らを引き連れて日本に乗り込む。果たして琢磨はサライを守りきれるのか！？",
+    "overview_en": "Takuma Tsurugi takes on the government, the police, the mafia and an international ring of kidnappers who aim to dispossess a beautiful young heiress of her millions.",
+    "poster_path": "/rVhjZDFakDwgguD0hD7Mp9idimv.jpg",
+    "backdrop_path": "/tsOtLYSXlBjkKhsr0mnMaEve4bL.jpg",
+    "release_date": "1974-02-02",
+    "director": "小沢茂弘",
+    "director_jp": "小沢茂弘",
+    "director_en": "Shigehiro Ozawa",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 90,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ユージュアル・サスペクツ": {
+    "tmdb_id": 629,
+    "tmdb_title_jp": "ユージュアル・サスペクツ",
+    "tmdb_title_en": "The Usual Suspects",
+    "tmdb_title_original": "The Usual Suspects",
+    "tmdb_original_language": "en",
+    "overview": "船舶の炎上事故を調べていた捜査官クラインは尋問していたヴァーバルから奇妙な話を聞かされる。6週間前に銃器強奪事件の容疑者として集められた5人が、釈放後、協力して宝石強奪を決行。ブツをさばくためにLAの故買屋と接触した5人は、そこで新たなヤマを依頼されるが、宝石と聞かされていた獲物は麻薬で、トラブルから相手を射殺してしまう。そして恐慌状態の彼らの前に、伝説のギャング“カイザー・ソゼ”の右腕と名乗る弁護士が現れたというのだ。",
+    "overview_en": "Held in an L.A. interrogation room, Verbal Kint attempts to convince the feds that a mythic crime lord, Keyser Soze, not only exists, but was also responsible for drawing him and his four partners into a multi-million dollar heist that ended with an explosion in San Pedro harbor – leaving few survivors. Verbal lures his interrogators with an incredible story of the crime lord's almost supernatural prowess.",
+    "poster_path": "/6xeq777IDeBk6HGUiB8Qb3igNc.jpg",
+    "backdrop_path": "/hy0Hx9fMPk2fmw26Li60z1S2giU.jpg",
+    "release_date": "1995-07-19",
+    "director": "ブライアン・シンガー",
+    "director_jp": "ブライアン・シンガー",
+    "director_en": "Bryan Singer",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 105,
+    "vote_average": 8.169,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:629": {
+    "tmdb_id": 629,
+    "tmdb_title_jp": "ユージュアル・サスペクツ",
+    "tmdb_title_en": "The Usual Suspects",
+    "tmdb_title_original": "The Usual Suspects",
+    "tmdb_original_language": "en",
+    "overview": "船舶の炎上事故を調べていた捜査官クラインは尋問していたヴァーバルから奇妙な話を聞かされる。6週間前に銃器強奪事件の容疑者として集められた5人が、釈放後、協力して宝石強奪を決行。ブツをさばくためにLAの故買屋と接触した5人は、そこで新たなヤマを依頼されるが、宝石と聞かされていた獲物は麻薬で、トラブルから相手を射殺してしまう。そして恐慌状態の彼らの前に、伝説のギャング“カイザー・ソゼ”の右腕と名乗る弁護士が現れたというのだ。",
+    "overview_en": "Held in an L.A. interrogation room, Verbal Kint attempts to convince the feds that a mythic crime lord, Keyser Soze, not only exists, but was also responsible for drawing him and his four partners into a multi-million dollar heist that ended with an explosion in San Pedro harbor – leaving few survivors. Verbal lures his interrogators with an incredible story of the crime lord's almost supernatural prowess.",
+    "poster_path": "/6xeq777IDeBk6HGUiB8Qb3igNc.jpg",
+    "backdrop_path": "/hy0Hx9fMPk2fmw26Li60z1S2giU.jpg",
+    "release_date": "1995-07-19",
+    "director": "ブライアン・シンガー",
+    "director_jp": "ブライアン・シンガー",
+    "director_en": "Bryan Singer",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 105,
+    "vote_average": 8.169,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "HOUSE ハウス": null,
+  "コードギアス　亡国のアキト　第2章「引き裂かれし翼竜」": {
+    "tmdb_id": 212161,
+    "tmdb_title_jp": "コードギアス 亡国のアキト 第2章 引き裂かれし翼竜",
+    "tmdb_title_en": "Code Geass: Akito the Exiled 2: The Wyvern Divided",
+    "tmdb_title_original": "コードギアス 亡国のアキト 第2章「引き裂かれし翼竜」",
+    "tmdb_original_language": "ja",
+    "overview": "激化の一途をたどる、ユーロ・ブリタニアとユーロピア共和国連合の戦争。劣勢を強いられているユーロピア共和国連合軍は、ユーロ・ブリタニアの日本占領で国を失った少年少女を集めた特殊部隊wZEROに、陽動を目的とした敵中降下命令を下す。しかし、部隊のメンバーは隊長のレイラや日向アキトを筆頭に、5人しか残されていなかった。そのころ、ユーロ・ブリタニアではギアスという謎めいた力を用いて恩人を自死に向かわせたシンが、聖ミカエル騎士団の総帥となる。さらに、彼と配下のアシュラ隊に出動せよという指令が……。",
+    "overview_en": "The war between Euro Britannia and the European Union  continues. New orders are given to the W-0 Unit. To land in the middle of the enemy territory as a diversion.  The pilots of the W-0 Unit consist only of the commanding officer, Leila, the only surviving Japanese from their last battle, Akito, and the three that escaped from the Eleven ghettos and lived in the underworld, Ryou, Yukiya, and Ayano. With everyone holding their respective expectations, the operation moves forward.  On the other side in Euro Britannia, Shin, who made his benefactor commit suicide with the mysterious power of “Geass”, is appointed the leader of the Knights of St. Michael. As Shin steadily advances for the sake of his own ambition, he and his subordinates in the Ashura squad are given orders to deploy.  The one that lives in order to fight, and the one that fights in order to live.",
+    "poster_path": "/npugTpu0k68p3by0z9hhaNf7zbc.jpg",
+    "backdrop_path": "/7SJ4Oz86UgKuKivmMXvOanTVCJa.jpg",
+    "release_date": "2013-09-14",
+    "director": "赤根和樹",
+    "director_jp": "赤根和樹",
+    "director_en": "Kazuki Akane",
+    "genres": [
+      "アクション",
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Action",
+      "Animation",
+      "Science Fiction"
+    ],
+    "runtime": 60,
+    "vote_average": 6.234,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "絶倫海女しまり貝": {
+    "tmdb_id": 207945,
+    "tmdb_title_jp": "絶倫海女しまり貝",
+    "tmdb_title_en": "Horny Diver: Tight Shellfish",
+    "tmdb_title_original": "絶倫海女しまり貝",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A small fishing village becomes the target of Mr. Matsunaga, a ruthless real estate developer who wants to turn the quaint area into a lucrative tourist attraction.  Hiring a young, horny man named Junpei to bed the local ladies in an attempt to persuade them all to sign deals for their land, the lovely diving girls of the area succumb to his sexual desires.  When the true intentions of the developer are discovered, the entire sleazy plan comes crashing down.  Will the diving girls continue to grab their clams?  Will Junpei finally find true love among the luscious naked nymphs?",
+    "poster_path": "/qsqf2KRHR3JSGZiXP3IwKm0VOkj.jpg",
+    "backdrop_path": "/gOAUbJAcrb2e5GGaVO2v8aZ450A.jpg",
+    "release_date": "1985-07-20",
+    "director": "藤浦敦",
+    "director_jp": "藤浦敦",
+    "director_en": "Atsushi Fujiura",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 69,
+    "vote_average": 2.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:207945": {
+    "tmdb_id": 207945,
+    "tmdb_title_jp": "絶倫海女しまり貝",
+    "tmdb_title_en": "Horny Diver: Tight Shellfish",
+    "tmdb_title_original": "絶倫海女しまり貝",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A small fishing village becomes the target of Mr. Matsunaga, a ruthless real estate developer who wants to turn the quaint area into a lucrative tourist attraction.  Hiring a young, horny man named Junpei to bed the local ladies in an attempt to persuade them all to sign deals for their land, the lovely diving girls of the area succumb to his sexual desires.  When the true intentions of the developer are discovered, the entire sleazy plan comes crashing down.  Will the diving girls continue to grab their clams?  Will Junpei finally find true love among the luscious naked nymphs?",
+    "poster_path": "/qsqf2KRHR3JSGZiXP3IwKm0VOkj.jpg",
+    "backdrop_path": "/gOAUbJAcrb2e5GGaVO2v8aZ450A.jpg",
+    "release_date": "1985-07-20",
+    "director": "藤浦敦",
+    "director_jp": "藤浦敦",
+    "director_en": "Atsushi Fujiura",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 69,
+    "vote_average": 2.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "くノ一化粧": {
+    "tmdb_id": 569077,
+    "tmdb_title_jp": "くノ一化粧",
+    "tmdb_title_en": "The Spying Sorceress",
+    "tmdb_title_original": "くノ一化粧",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Second part of the series where sex magic skills of female and Iga ninjas clash over enourmous treasure of the Toyotomi family, discovered in connection with the plot to overthrow the shogunate.",
+    "poster_path": "/jAMHDoNNruJlApytGEOfvEY5G7N.jpg",
+    "backdrop_path": "/irVireyWskH4Nje3UjTmaKhK6wL.jpg",
+    "release_date": "1964-12-12",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "アクション",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Action",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:569077": {
+    "tmdb_id": 569077,
+    "tmdb_title_jp": "くノ一化粧",
+    "tmdb_title_en": "The Spying Sorceress",
+    "tmdb_title_original": "くノ一化粧",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Second part of the series where sex magic skills of female and Iga ninjas clash over enourmous treasure of the Toyotomi family, discovered in connection with the plot to overthrow the shogunate.",
+    "poster_path": "/jAMHDoNNruJlApytGEOfvEY5G7N.jpg",
+    "backdrop_path": "/irVireyWskH4Nje3UjTmaKhK6wL.jpg",
+    "release_date": "1964-12-12",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "アクション",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Action",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "鉄砲玉の美学": {
+    "tmdb_id": 104578,
+    "tmdb_title_jp": "鉄砲玉の美学",
+    "tmdb_title_en": "Aesthetics of a Bullet",
+    "tmdb_title_original": "鉄砲玉の美学 　",
+    "tmdb_original_language": "ja",
+    "overview": "関西を拠点にする広域暴力団・天祐会は、九州へ新たに進出すべく、血気盛んなチンピラを鉄砲玉として宮崎へ送り込むことを計画。近ごろ不運続きの冴えないチンピラ・小池清が、その役を割り振られることに。拳銃とともに100万円もの大金を渡された清は、宮崎の繁華街に単身乗り込んで派手に暴れ回るが、地元の暴力団組織は、しばらく彼の様子を静観。それをいいことに、清は本来の役目も忘れて大いにはしゃぎまわるのだが…。",
+    "overview_en": "A small time crook who sells rabbits for a living frequently gets himself into trouble with loan sharks and the yakuza. He dreams of becoming a successful big-shot and embarks on the life of a yakuza hitman.",
+    "poster_path": "/nc3xAg7IfYnD4b9Iqsr6ORSRJP0.jpg",
+    "backdrop_path": "/A5EAlNXspIBV6iS5IpOgo0TRSEx.jpg",
+    "release_date": "1973-02-10",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "犯罪",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action"
+    ],
+    "runtime": 100,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:104578": {
+    "tmdb_id": 104578,
+    "tmdb_title_jp": "鉄砲玉の美学",
+    "tmdb_title_en": "Aesthetics of a Bullet",
+    "tmdb_title_original": "鉄砲玉の美学 　",
+    "tmdb_original_language": "ja",
+    "overview": "関西を拠点にする広域暴力団・天祐会は、九州へ新たに進出すべく、血気盛んなチンピラを鉄砲玉として宮崎へ送り込むことを計画。近ごろ不運続きの冴えないチンピラ・小池清が、その役を割り振られることに。拳銃とともに100万円もの大金を渡された清は、宮崎の繁華街に単身乗り込んで派手に暴れ回るが、地元の暴力団組織は、しばらく彼の様子を静観。それをいいことに、清は本来の役目も忘れて大いにはしゃぎまわるのだが…。",
+    "overview_en": "A small time crook who sells rabbits for a living frequently gets himself into trouble with loan sharks and the yakuza. He dreams of becoming a successful big-shot and embarks on the life of a yakuza hitman.",
+    "poster_path": "/nc3xAg7IfYnD4b9Iqsr6ORSRJP0.jpg",
+    "backdrop_path": "/A5EAlNXspIBV6iS5IpOgo0TRSEx.jpg",
+    "release_date": "1973-02-10",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "犯罪",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Action"
+    ],
+    "runtime": 100,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "日本暗殺秘録": {
+    "tmdb_id": 244210,
+    "tmdb_title_jp": "日本暗殺秘録",
+    "tmdb_title_en": "Memoir of Japanese Assassinations",
+    "tmdb_title_original": "日本暗殺秘録",
+    "tmdb_original_language": "ja",
+    "overview": "時代を問わず、反体制に燃える者たちの情念と生きた姿を描いていく。【収録内容】「桜田門外の変」「大久保暗殺事件」「大隈暗殺事件」「星亨暗殺事件」「安田暗殺事件」「ギロチン社事件」「血盟団事件」「永田暗殺事件」「ニ・二六事件」",
+    "overview_en": "This anthology film consists of nine incidents in the late 19th and early 20th centuries when assassins changed the course of Japanese history.",
+    "poster_path": "/r7E3tkWIJNA9Ne7uFBeppiaITAG.jpg",
+    "backdrop_path": "/wQ9mRNvQ5fivUhVXq4GDerGDdYJ.jpg",
+    "release_date": "1969-10-16",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 142,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:244210": {
+    "tmdb_id": 244210,
+    "tmdb_title_jp": "日本暗殺秘録",
+    "tmdb_title_en": "Memoir of Japanese Assassinations",
+    "tmdb_title_original": "日本暗殺秘録",
+    "tmdb_original_language": "ja",
+    "overview": "時代を問わず、反体制に燃える者たちの情念と生きた姿を描いていく。【収録内容】「桜田門外の変」「大久保暗殺事件」「大隈暗殺事件」「星亨暗殺事件」「安田暗殺事件」「ギロチン社事件」「血盟団事件」「永田暗殺事件」「ニ・二六事件」",
+    "overview_en": "This anthology film consists of nine incidents in the late 19th and early 20th centuries when assassins changed the course of Japanese history.",
+    "poster_path": "/r7E3tkWIJNA9Ne7uFBeppiaITAG.jpg",
+    "backdrop_path": "/wQ9mRNvQ5fivUhVXq4GDerGDdYJ.jpg",
+    "release_date": "1969-10-16",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 142,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "未来を花束にして": {
+    "tmdb_id": 245168,
+    "tmdb_title_jp": "未来を花束にして",
+    "tmdb_title_en": "Suffragette",
+    "tmdb_title_original": "Suffragette",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Based on true events about the foot soldiers of the early feminist movement, women who were forced underground to pursue a dangerous game of cat and mouse with an increasingly brutal State.",
+    "poster_path": "/tBLSUnzaHWvkVE5mwygUativhqG.jpg",
+    "backdrop_path": "/mYzmWGhy9PZ6xUo0D4i3bBRdX2u.jpg",
+    "release_date": "2015-10-16",
+    "director": "Sarah Gavron",
+    "director_jp": "Sarah Gavron",
+    "director_en": "Sarah Gavron",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 106,
+    "vote_average": 7.196,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:245168": {
+    "tmdb_id": 245168,
+    "tmdb_title_jp": "未来を花束にして",
+    "tmdb_title_en": "Suffragette",
+    "tmdb_title_original": "Suffragette",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Based on true events about the foot soldiers of the early feminist movement, women who were forced underground to pursue a dangerous game of cat and mouse with an increasingly brutal State.",
+    "poster_path": "/tBLSUnzaHWvkVE5mwygUativhqG.jpg",
+    "backdrop_path": "/mYzmWGhy9PZ6xUo0D4i3bBRdX2u.jpg",
+    "release_date": "2015-10-16",
+    "director": "Sarah Gavron",
+    "director_jp": "Sarah Gavron",
+    "director_en": "Sarah Gavron",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 106,
+    "vote_average": 7.196,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "夜明けの祈り": {
+    "tmdb_id": 364051,
+    "tmdb_title_jp": "夜明けの祈り",
+    "tmdb_title_en": "The Innocents",
+    "tmdb_title_original": "Les Innocentes",
+    "tmdb_original_language": "fr",
+    "overview": "ソ連兵の蛮行による修道女妊娠と彼女たちを救ったフランス人女医の活動という、ポーランドで起こったショッキングな実話を映画化。フランス映画界を代表するアンヌ・フォンテーヌ監督が事件をリアルに映し出す。",
+    "overview_en": "Poland, 1945. Mathilde, a young French Red Cross doctor, is on a mission to help the war survivors. When a nun seeks for her help, she is brought to a convent where several pregnant sisters are hiding, unable to reconcile their faith with their pregnancy. Mathilde becomes their only hope.",
+    "poster_path": "/bUzI1OQlp1v7M2ezu6vQn5EKiSZ.jpg",
+    "backdrop_path": "/1lafNmLIrcWXHlASKmyo2sEAIOu.jpg",
+    "release_date": "2016-02-10",
+    "director": "Anne Fontaine",
+    "director_jp": "Anne Fontaine",
+    "director_en": "Anne Fontaine",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 115,
+    "vote_average": 7.053,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      }
+    ]
+  },
+  "tmdb:364051": {
+    "tmdb_id": 364051,
+    "tmdb_title_jp": "夜明けの祈り",
+    "tmdb_title_en": "The Innocents",
+    "tmdb_title_original": "Les Innocentes",
+    "tmdb_original_language": "fr",
+    "overview": "ソ連兵の蛮行による修道女妊娠と彼女たちを救ったフランス人女医の活動という、ポーランドで起こったショッキングな実話を映画化。フランス映画界を代表するアンヌ・フォンテーヌ監督が事件をリアルに映し出す。",
+    "overview_en": "Poland, 1945. Mathilde, a young French Red Cross doctor, is on a mission to help the war survivors. When a nun seeks for her help, she is brought to a convent where several pregnant sisters are hiding, unable to reconcile their faith with their pregnancy. Mathilde becomes their only hope.",
+    "poster_path": "/bUzI1OQlp1v7M2ezu6vQn5EKiSZ.jpg",
+    "backdrop_path": "/1lafNmLIrcWXHlASKmyo2sEAIOu.jpg",
+    "release_date": "2016-02-10",
+    "director": "Anne Fontaine",
+    "director_jp": "Anne Fontaine",
+    "director_en": "Anne Fontaine",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 115,
+    "vote_average": 7.053,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "PL",
+        "name": "Poland"
+      }
+    ]
+  },
+  "モロッコ、彼女たちの朝": {
+    "tmdb_id": 1448093,
+    "tmdb_title_jp": "Adam",
+    "tmdb_title_en": "Adam",
+    "tmdb_title_original": "Adam",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In contemporary South Africa, 18-year-old Adam Coetzee, whose life takes an unexpected turn when his mother, Carol, enrolls him in the Prinsloo Bush School.  Once at the Bush School, Adam quickly discovers that the school's training methods, led by the rigid and militaristic Derek, are unlike anything he's ever experienced.",
+    "poster_path": "/2l1ZmBw7zTZ8m61GgxlV8vZYLGw.jpg",
+    "backdrop_path": "/bQN1X1x67bgxCuVDeayP6SGbuJV.jpg",
+    "release_date": "2025-03-16",
+    "director": "Winford Collings",
+    "director_jp": "Winford Collings",
+    "director_en": "Winford Collings",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 107,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ZA",
+        "name": "South Africa"
+      }
+    ]
+  },
+  "スモーク": {
+    "tmdb_id": 10149,
+    "tmdb_title_jp": "スモーク",
+    "tmdb_title_en": "Smoke",
+    "tmdb_title_original": "Smoke",
+    "tmdb_original_language": "en",
+    "overview": "アメリカを代表する作家ポール・オースターが書き下ろした原作を基に、男たちの中に隠された哀しいロマンティシズムを描いた都会の物語。14年間毎朝同じ時刻に店の前で写真を撮り続けている煙草屋の店長オーギー、彼の馴染みの客で突然の事故により出産まもない妻を失って以来ペンを持てずにいる作家のポール、彼が車に跳ねられそうになった所を助けた黒人少年ラシードの3人を軸に、ブルックリンのとある煙草屋に集まる男達女達の日常を、過去と現在を、嘘と本当を巧みに交差させながら進んでゆく。",
+    "overview_en": "Writer Paul Benjamin is nearly hit by a bus when he leaves Auggie Wren's smoke shop. Stranger Rashid Cole  saves his life, and soon middle-aged Paul tells homeless Rashid that he wouldn't mind a short-term housemate. Still grieving over his wife's murder, Paul is moved by both Rashid's quest to reconnect with his father and Auggie's discovery that a woman who might be his daughter is about to give birth.",
+    "poster_path": "/zKEPm5dJEMuVhzWc3FoIuLe4em2.jpg",
+    "backdrop_path": "/dkg2DcGg6cjDia20yLWDaNLBRIb.jpg",
+    "release_date": "1995-06-09",
+    "director": "王颖",
+    "director_jp": "王颖",
+    "director_en": "Wayne Wang",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 112,
+    "vote_average": 7.202,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:10149": {
+    "tmdb_id": 10149,
+    "tmdb_title_jp": "スモーク",
+    "tmdb_title_en": "Smoke",
+    "tmdb_title_original": "Smoke",
+    "tmdb_original_language": "en",
+    "overview": "アメリカを代表する作家ポール・オースターが書き下ろした原作を基に、男たちの中に隠された哀しいロマンティシズムを描いた都会の物語。14年間毎朝同じ時刻に店の前で写真を撮り続けている煙草屋の店長オーギー、彼の馴染みの客で突然の事故により出産まもない妻を失って以来ペンを持てずにいる作家のポール、彼が車に跳ねられそうになった所を助けた黒人少年ラシードの3人を軸に、ブルックリンのとある煙草屋に集まる男達女達の日常を、過去と現在を、嘘と本当を巧みに交差させながら進んでゆく。",
+    "overview_en": "Writer Paul Benjamin is nearly hit by a bus when he leaves Auggie Wren's smoke shop. Stranger Rashid Cole  saves his life, and soon middle-aged Paul tells homeless Rashid that he wouldn't mind a short-term housemate. Still grieving over his wife's murder, Paul is moved by both Rashid's quest to reconnect with his father and Auggie's discovery that a woman who might be his daughter is about to give birth.",
+    "poster_path": "/zKEPm5dJEMuVhzWc3FoIuLe4em2.jpg",
+    "backdrop_path": "/dkg2DcGg6cjDia20yLWDaNLBRIb.jpg",
+    "release_date": "1995-06-09",
+    "director": "王颖",
+    "director_jp": "王颖",
+    "director_en": "Wayne Wang",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 112,
+    "vote_average": 7.202,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ヴィレッジ・オン・ザ・ヴィレッジ": {
+    "tmdb_id": 586979,
+    "tmdb_title_jp": "Village on the Village",
+    "tmdb_title_en": "Village on the Village",
+    "tmdb_title_original": "Village on the Village",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Left alone by his music group, Nakanishi lands in a peaceful but strange village. He laughs and drinks with it's residents until the alcohol seems to have a supernatural effect on him ...",
+    "poster_path": "/hD9KxPTSD1sDqc5kmOlqz8Zkwof.jpg",
+    "backdrop_path": null,
+    "release_date": "2016-08-06",
+    "director": "黒川幸則",
+    "director_jp": "黒川幸則",
+    "director_en": "Yukinori Kurokawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 76,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:586979": {
+    "tmdb_id": 586979,
+    "tmdb_title_jp": "Village on the Village",
+    "tmdb_title_en": "Village on the Village",
+    "tmdb_title_original": "Village on the Village",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Left alone by his music group, Nakanishi lands in a peaceful but strange village. He laughs and drinks with it's residents until the alcohol seems to have a supernatural effect on him ...",
+    "poster_path": "/hD9KxPTSD1sDqc5kmOlqz8Zkwof.jpg",
+    "backdrop_path": null,
+    "release_date": "2016-08-06",
+    "director": "黒川幸則",
+    "director_jp": "黒川幸則",
+    "director_en": "Yukinori Kurokawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 76,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "にわのすなば GARDEN SANDBOX": {
+    "tmdb_id": 996764,
+    "tmdb_title_jp": "にわのすなば",
+    "tmdb_title_en": "Garden Sandbox",
+    "tmdb_title_original": "にわのすなば",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After some misunderstanding, Sakaguchi is hired to make a tourist guide video on Tobako (a fictitious name for Kawaguchi) in the outskirts of Tokyo. This element in the script sparks off a fanciful wandering strewn with unexpected meetings. First with Kitagawa, thanks to whom Sakaguchi landed the job. Then with a seamstress, and then with Yoshino, with whom a half-hearted romance emerges. Thus the narrative unfolds, in halts and swerves, espousing unexpected meetings, and offering the strolling character an opportunity for displacements from one place to the next. The deserted town has come to a standstill - the shooting took place during the lockdown - and this acts as a metaphor for the idleness of the characters. GARDEN SANDBOX is light and nimble, whereas its main character hasa limp. Her demeanour and her stiff body exude a peculiar quality, somewhat comically at odds with the setting.",
+    "poster_path": "/eAJRQ5FLMzmr1IYEmELjG8k5tBh.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-07-06",
+    "director": "黒川幸則",
+    "director_jp": "黒川幸則",
+    "director_en": "Yukinori Kurokawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 69,
+    "vote_average": 9.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:996764": {
+    "tmdb_id": 996764,
+    "tmdb_title_jp": "にわのすなば",
+    "tmdb_title_en": "Garden Sandbox",
+    "tmdb_title_original": "にわのすなば",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After some misunderstanding, Sakaguchi is hired to make a tourist guide video on Tobako (a fictitious name for Kawaguchi) in the outskirts of Tokyo. This element in the script sparks off a fanciful wandering strewn with unexpected meetings. First with Kitagawa, thanks to whom Sakaguchi landed the job. Then with a seamstress, and then with Yoshino, with whom a half-hearted romance emerges. Thus the narrative unfolds, in halts and swerves, espousing unexpected meetings, and offering the strolling character an opportunity for displacements from one place to the next. The deserted town has come to a standstill - the shooting took place during the lockdown - and this acts as a metaphor for the idleness of the characters. GARDEN SANDBOX is light and nimble, whereas its main character hasa limp. Her demeanour and her stiff body exude a peculiar quality, somewhat comically at odds with the setting.",
+    "poster_path": "/eAJRQ5FLMzmr1IYEmELjG8k5tBh.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-07-06",
+    "director": "黒川幸則",
+    "director_jp": "黒川幸則",
+    "director_en": "Yukinori Kurokawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 69,
+    "vote_average": 9.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "悪太郎": {
+    "tmdb_id": 375030,
+    "tmdb_title_jp": "悪太郎",
+    "tmdb_title_en": "The Incorrigible",
+    "tmdb_title_original": "悪太郎",
+    "tmdb_original_language": "ja",
+    "overview": "大正時代を舞台に、素行不良で“悪太郎”の名を着せられた青年の一途な恋を描いた文芸ロマン。今東光の原作を山内賢×和泉雅子コンビで映画化。鈴木清順監督と美術監督・木村威夫との初コンビ作でもある。\r 頃は大正の初期、素行不良、悪太郎の名を着せられて神戸の神聖学院をクビになった中学4年の紺野東吾は、母の知人である豊岡中学の近藤校長に預けられてしまった。東吾は母を憎んだが、ひとまず用意された下宿に落ち着くことにした。翌日の編入試験では早速悪太郎ぶりを発揮し、答案もデタラメを書く始末だったが、東吾が小説家を志していると母から聞いていた近藤は、東吾の非をさとし再試験を受けさせたところ、なんと満点に近い成績をとり試験をパスした。ある日、東吾は本屋で、校医の娘で豊岡小町と騒がれている恵美子がストリンドベリの小説を買っていたことを知り、興味を覚えた。",
+    "overview_en": "Based on the loosely autobiographical novel of the same name by Toko Kon. Ken Yamanouchi stars as Togo Konno, the titular bastard.",
+    "poster_path": "/nGuHfvr8b9l6qnmTlKLDuLJwWGk.jpg",
+    "backdrop_path": "/s364eSrDB89APtDVYqqWrSlGgKB.jpg",
+    "release_date": "1963-09-21",
+    "director": "鈴木清順",
+    "director_jp": "鈴木清順",
+    "director_en": "Seijun Suzuki",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "runtime": 95,
+    "vote_average": 6.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "おゆきさん": {
+    "tmdb_id": 1415950,
+    "tmdb_title_jp": "おゆきさん",
+    "tmdb_title_en": "Oyuki",
+    "tmdb_title_original": "おゆきさん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A movie-loving nanny lives and works in the home of a university professor and eventually becomes the family's support system, leading a bright and joyful life.",
+    "poster_path": "/q1Awhp9HfEuq6Gs6mV6JnoTSF2m.jpg",
+    "backdrop_path": "/oDMzQ5ltKpvs2mcKDjaLQzDEuS5.jpg",
+    "release_date": "1966-12-04",
+    "director": "鍛冶昇",
+    "director_jp": "鍛冶昇",
+    "director_en": "Noboru Kaji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 80,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "青春の海（1967）": {
+    "tmdb_id": 481974,
+    "tmdb_title_jp": "青春の海",
+    "tmdb_title_en": "The Black Sheep",
+    "tmdb_title_original": "青春の海",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Young female teacher Kyoko Miyake relocates to a small seaside town with her runaway little sister, but their new life is complicated by hoodlum-like Jiro Yamazaki (the black sheep of the title) who is related to the family hosting them and whom they keep running into, but can't help but to feel sympathy for. Of course, rumours start fast in a small town, but delightfully she doesn't really care at all. This is another very solid Shogoro Nishimura film.",
+    "poster_path": "/1YDL8vmVTfu3hDZqOERpMHDJczm.jpg",
+    "backdrop_path": "/8mbdxEHlTrPqDb88sYEs8QfRby7.jpg",
+    "release_date": "1967-01-03",
+    "director": "西村昭五郎",
+    "director_jp": "西村昭五郎",
+    "director_en": "Shōgorō Nishimura",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 89,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "私は泣かない": {
+    "tmdb_id": 467953,
+    "tmdb_title_jp": "私は泣かない",
+    "tmdb_title_en": "I'll Never Cry!",
+    "tmdb_title_original": "私は泣かない",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The rehabilitation of a delinquent on leaving reformatory. Her redemption comes through a boy in a wheelchair; by his rehabilitation, growing comes in courage along with her patient, she grows by finding meaning in her own existence. She finally sees a new world before her and has the determination to lead a normal life.",
+    "poster_path": "/oTlKzcAanVUMiWDH8OaknlUR1Oc.jpg",
+    "backdrop_path": null,
+    "release_date": "1966-10-29",
+    "director": "吉田憲二",
+    "director_jp": "吉田憲二",
+    "director_en": "Kenji Yoshida",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 91,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "1923": {
+    "tmdb_id": 1317888,
+    "tmdb_title_jp": "1923 간토대학살",
+    "tmdb_title_en": "1923 Kanto Massacre",
+    "tmdb_title_original": "1923 간토대학살",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "The Great Kanto Earthquake of 1923 marked a moment of unprecedented material destruction and cultural rupture in modern Japan. The disaster soon became subject to human interpretation and political manipulation as the earth tremors and subsequent fire produced not only physical chaos but also the rumors and violence against Koreans revealing what was fearful and why. After a century, this documentary reconstructs the course of this mayhem against the colonized, and traces the ways in which the story of this genocidal violence has long been covered up, haunting those whose lives were never the same after encountering the forbidden truth.",
+    "poster_path": "/1X4EfrfYZd2gaI0zXxCewXx7QjN.jpg",
+    "backdrop_path": "/yOSK6Rw16CxE0uoMcwbOtps6CKd.jpg",
+    "release_date": "2024-08-15",
+    "director": "김태영",
+    "director_jp": "김태영",
+    "director_en": "Kim Tae-yeong",
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Documentary",
+      "History"
+    ],
+    "runtime": 112,
+    "vote_average": 5.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "日本暴力団 殺しの盃": {
+    "tmdb_id": 537314,
+    "tmdb_title_jp": "日本暴力団 殺しの盃",
+    "tmdb_title_en": "Organized Crime: Killer's Glory",
+    "tmdb_title_original": "日本暴力団 殺しの盃",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A professional lone-wolf hitman comes to his blood brother's aid when his boss is brutally murdered by an unknown yakuza faction.",
+    "poster_path": "/unkE1qzWhcKh5IsHDOth7whTSmH.jpg",
+    "backdrop_path": "/3j0XwcUbyiMPClG5a1DYKjLLSeq.jpg",
+    "release_date": "1972-05-27",
+    "director": "降旗康男",
+    "director_jp": "降旗康男",
+    "director_en": "Yasuo Furuhata",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "まむしの兄弟 傷害恐喝十八犯": {
+    "tmdb_id": 904679,
+    "tmdb_title_jp": "まむしの兄弟　傷害恐喝十八犯",
+    "tmdb_title_en": "The Viper Brothers: 18 Extortion Threats",
+    "tmdb_title_original": "まむしの兄弟　傷害恐喝十八犯",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Part 4 in a long running (8+1 films) action/comedy/melodrama series about a pair of short tempered, amoral, but not evil chinpira (Bunta Sugawara and Tamio Kawachi) thinking too big of themselves. Sugawara tries to overcome a traumatic experience of getting in bed blindfolded with a girl who turned out to be an old granny. Later he and Kawaji try to settle down in a neighbourhood harassed by businessman yakuza Bin Amatsu.",
+    "poster_path": "/1HDefEGyxhRlqXJgV3MOOPebi4K.jpg",
+    "backdrop_path": "/msqFUf0Bxev6OEHelGZ9Qc543EN.jpg",
+    "release_date": "1972-08-25",
+    "director": "中島貞夫",
+    "director_jp": "中島貞夫",
+    "director_en": "Sadao Nakajima",
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 88,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "記録・授業「人間について」(1部2部)": null,
+  "大日向村の46年 満州移民・その後の人々": null,
+  "自然農 川口由一の世界 1995年の記録": null,
+  "ラマ教の高地にて インド・ラダッタの旅": null,
+  "月あかりの下で　ある定時制高校の記憶": null,
+  "まなぶ　通信制中学 60年の空白を越えて": null,
+  "クリスマス・イブ・イン・ミラーズ・ポイント": {
+    "tmdb_id": 1073650,
+    "tmdb_title_jp": "Christmas Eve in Miller's Point",
+    "tmdb_title_en": "Christmas Eve in Miller's Point",
+    "tmdb_title_original": "Christmas Eve in Miller's Point",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A family gathers on Christmas Eve for what could be the last holiday in their ancestral home. As the night wears on and tensions arise, one of the teenagers sneaks out with her friends to claim the wintry suburb for her own.",
+    "poster_path": "/tJ5q6TbdRtoXDqXdkbg4aGGLLkC.jpg",
+    "backdrop_path": "/z8kXJSpl6dy1merK77LMQksg2sS.jpg",
+    "release_date": "2024-11-08",
+    "director": "Tyler Taormina",
+    "director_jp": "Tyler Taormina",
+    "director_en": "Tyler Taormina",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 107,
+    "vote_average": 5.207,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "AR",
+        "name": "Argentina"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "ハム・オン・ライ": {
+    "tmdb_id": 527176,
+    "tmdb_title_jp": "Ham on Rye",
+    "tmdb_title_en": "Ham on Rye",
+    "tmdb_title_original": "Ham on Rye",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A bizarre rite of passage at the local deli determines the fate of a generation of teenagers, leading some to escape their suburban town and dooming others to remain…",
+    "poster_path": "/8dweXTd42NUZ9cKYh83QZgx2xEK.jpg",
+    "backdrop_path": "/gN4ik9foQP89CAbkurglImqaTmj.jpg",
+    "release_date": "2019-08-10",
+    "director": "Tyler Taormina",
+    "director_jp": "Tyler Taormina",
+    "director_en": "Tyler Taormina",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Mystery"
+    ],
+    "runtime": 85,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "トポロジー・オブ・セイレーン": {
+    "tmdb_id": 602112,
+    "tmdb_title_jp": "Topology of Sirens",
+    "tmdb_title_en": "Topology of Sirens",
+    "tmdb_title_original": "Topology of Sirens",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After discovering a set of cryptic microcassettes in her new home, Cas is drawn into a meditative mystery of  environmental sound and experimental music.",
+    "poster_path": "/9DK9WRrkmzgakG9TfFRKgiV30yq.jpg",
+    "backdrop_path": "/7OM9oQ1oC3LrSGNCYUw3JjvljBY.jpg",
+    "release_date": "2021-07-22",
+    "director": "Jonathan Davies",
+    "director_jp": "Jonathan Davies",
+    "director_en": "Jonathan Davies",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 106,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ハッパーズ・コメット": {
+    "tmdb_id": 927606,
+    "tmdb_title_jp": "Happer's Comet",
+    "tmdb_title_en": "Happer's Comet",
+    "tmdb_title_original": "Happer's Comet",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In a small suburban town steeped in alienation, residents escape into the night on rollerblades.",
+    "poster_path": "/xvKfYQCj5eKdlJx7wodeZDIXR03.jpg",
+    "backdrop_path": "/zeOiy4rPo9hwQn8HGjs3NvBBDXJ.jpg",
+    "release_date": "2023-06-16",
+    "director": "Tyler Taormina",
+    "director_jp": "Tyler Taormina",
+    "director_en": "Tyler Taormina",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 62,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "COW 牛": {
+    "tmdb_id": 661348,
+    "tmdb_title_jp": "Cow",
+    "tmdb_title_en": "Cow",
+    "tmdb_title_original": "Cow",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A close-up portrait of the daily lives of a pair of cows: told by way of some narrative-free, intimate POV photography, with plenty of close shot images, we follow the daily routine of these animals as they live what can only be described as mundane, boring lives - all with an ultimate purpose within the human food chain.",
+    "poster_path": "/faszRX0wSzGqjIzDXt79H9ibsXa.jpg",
+    "backdrop_path": "/kCF4tIyvLN9BieEUzUOVFwgGUPM.jpg",
+    "release_date": "2022-01-14",
+    "director": "Andrea Arnold",
+    "director_jp": "Andrea Arnold",
+    "director_en": "Andrea Arnold",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 93,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "バード　ここから羽ばたく": {
+    "tmdb_id": 1128752,
+    "tmdb_title_jp": "Bird",
+    "tmdb_title_en": "Bird",
+    "tmdb_title_original": "Bird",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "12-year-old Bailey lives with her single dad Bug and brother Hunter in a squat in North Kent. Bug doesn’t have much time for his kids, and Bailey, who is approaching puberty, seeks attention and adventure elsewhere.",
+    "poster_path": "/wKshd6n8EKrwbE2fLOUqC4TSG6O.jpg",
+    "backdrop_path": "/wwtZN9fy6BaFguj6wGPV0ZtCLHD.jpg",
+    "release_date": "2024-11-08",
+    "director": "Andrea Arnold",
+    "director_jp": "Andrea Arnold",
+    "director_en": "Andrea Arnold",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 119,
+    "vote_average": 7.23,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ワザリング・ハイツ　嵐が丘": {
+    "tmdb_id": 1316092,
+    "tmdb_title_jp": "嵐が丘",
+    "tmdb_title_en": "\"Wuthering Heights\"",
+    "tmdb_title_original": "\"Wuthering Heights\"",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England.",
+    "poster_path": "/9Rmhua58sWR3RrjhNmH2ky6etQg.jpg",
+    "backdrop_path": "/vSQSYd2zZTqc0zmHImwWEGGluMI.jpg",
+    "release_date": "2026-02-11",
+    "director": "エメラルド・フェネル",
+    "director_jp": "エメラルド・フェネル",
+    "director_en": "Emerald Fennell",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 136,
+    "vote_average": 6.535,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "361 White and Black": null,
+  "潜行一千里 ILHA FORMOSA（イラ・フォルモサ）": {
+    "tmdb_id": 1013701,
+    "tmdb_title_jp": "潜行一千里",
+    "tmdb_title_en": "ILHA FORMOSA",
+    "tmdb_title_original": "潜行一千里",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/xdHSXdfXh1zE6z3XBMx4oA1G7bN.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-22",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 79,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "典座 TENZO": {
+    "tmdb_id": 596890,
+    "tmdb_title_jp": "典座 -TENZO-",
+    "tmdb_title_en": "Tenzo",
+    "tmdb_title_original": "典座 -TENZO-",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "To address the social crisis, Chiken - a buddhist monk - throws himself into various tasks such as a suicide helpline, in his temple in Yamanashi. In Fukushima, his old mate Ryûgyô - whose temple was wrecked by the tsunami - lives in a portacabin and works on construction sites.",
+    "poster_path": "/8UbZrGRd9LZLICf5OwNomm8tKAY.jpg",
+    "backdrop_path": "/hI3TYhcjM1CXOkLxY0q5qjiFu9u.jpg",
+    "release_date": "2019-11-27",
+    "director": "富田克也",
+    "director_jp": "富田克也",
+    "director_en": "Katsuya Tomita",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 63,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "映画　潜行一千里": null,
+  "FURUSATO2009": null,
+  "ロビー！ 4000億円を懸けた仁義なき18ホール（字幕）": null,
+  "《少女たちの季節～今関あきよし短編集》": null,
+  "白い馬 4K": {
+    "tmdb_id": 15382,
+    "tmdb_title_jp": "白い馬",
+    "tmdb_title_en": "White Mane",
+    "tmdb_title_original": "Crin blanc: Le cheval sauvage",
+    "tmdb_original_language": "fr",
+    "overview": "南仏カマルグの荒地に、野生馬の一群が生息していた。地元の牧童たちは群れのリーダー、“白いたてがみ”を何とかして捕らえようとするが、逃げられるばかり。そんなある日、漁師の少年フォルコが、ついに牧童たちに捕らわれた“白いたてがみ”の姿を目撃。フォルコは彼を牧童から守りたいと願うが……。＜1953年のカンヌ国際映画祭でグランプリに輝いたアルベール・ラモリス監督の名作。南フランスの荒地を舞台に、“白いたてがみ”と呼ばれる美しい荒馬と、彼と心を通わせ、次第に強いきずなで結ばれる少年の物語が展開する。歳月を経ても決して色あせることのない、アルベール監督の作品世界が感動的。シンプルなストーリーとナレーション、さらにはモノクロームの映像で構成された、まさに伝説の一作。＞",
+    "overview_en": "In the south of France, in a vast plain region called the Camargue, lives White Mane, a magnificent stallion and the leader of a herd of wild horses too proud to let themselves be broken by humans. Only Folco, a young fisherman, manages to tame him. A strong friendship grows between the boy and the horse, as the two go looking for the freedom that the world of men won’t allow them.",
+    "poster_path": "/xJqNCvuU5vT7NQV8FBqp7OgKbEs.jpg",
+    "backdrop_path": "/dRCxftGmZCJTQ66NTjzakp8YwAI.jpg",
+    "release_date": "1953-03-31",
+    "director": "Albert Lamorisse",
+    "director_jp": "Albert Lamorisse",
+    "director_en": "Albert Lamorisse",
+    "genres": [
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Family"
+    ],
+    "runtime": 41,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:15382": {
+    "tmdb_id": 15382,
+    "tmdb_title_jp": "白い馬",
+    "tmdb_title_en": "White Mane",
+    "tmdb_title_original": "Crin blanc: Le cheval sauvage",
+    "tmdb_original_language": "fr",
+    "overview": "南仏カマルグの荒地に、野生馬の一群が生息していた。地元の牧童たちは群れのリーダー、“白いたてがみ”を何とかして捕らえようとするが、逃げられるばかり。そんなある日、漁師の少年フォルコが、ついに牧童たちに捕らわれた“白いたてがみ”の姿を目撃。フォルコは彼を牧童から守りたいと願うが……。＜1953年のカンヌ国際映画祭でグランプリに輝いたアルベール・ラモリス監督の名作。南フランスの荒地を舞台に、“白いたてがみ”と呼ばれる美しい荒馬と、彼と心を通わせ、次第に強いきずなで結ばれる少年の物語が展開する。歳月を経ても決して色あせることのない、アルベール監督の作品世界が感動的。シンプルなストーリーとナレーション、さらにはモノクロームの映像で構成された、まさに伝説の一作。＞",
+    "overview_en": "In the south of France, in a vast plain region called the Camargue, lives White Mane, a magnificent stallion and the leader of a herd of wild horses too proud to let themselves be broken by humans. Only Folco, a young fisherman, manages to tame him. A strong friendship grows between the boy and the horse, as the two go looking for the freedom that the world of men won’t allow them.",
+    "poster_path": "/xJqNCvuU5vT7NQV8FBqp7OgKbEs.jpg",
+    "backdrop_path": "/dRCxftGmZCJTQ66NTjzakp8YwAI.jpg",
+    "release_date": "1953-03-31",
+    "director": "Albert Lamorisse",
+    "director_jp": "Albert Lamorisse",
+    "director_en": "Albert Lamorisse",
+    "genres": [
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Family"
+    ],
+    "runtime": 41,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "赤い風船 4K": {
+    "tmdb_id": 15265,
+    "tmdb_title_jp": "赤い風船",
+    "tmdb_title_en": "The Red Balloon",
+    "tmdb_title_original": "Le Ballon rouge",
+    "tmdb_original_language": "fr",
+    "overview": "ある朝、赤い風船が街灯に引っ掛かっているのを見つけた少年パスカル。街灯によじ登って風船を手に取った彼は、しっかり握ったまま風船と一緒に過ごすように。だが、しばらくすると、風船は手を離してもパスカルの行く先々についてくるようになる。そんなパスカルと風船を町のいたずらっ子たちが追うが……。＜1956年に発表され、その年のカンヌ国際映画祭でパルムドールを受賞したものの、日本では観る機会が限られていた伝説の名作。赤い風船と1人の少年が織り成す、ハートウォーミングでファンタスティックなドラマが展開する。監督は“シネ・ポエム”と呼ぶべき作品を生み出した、アルベール・ラモリス。シンプルなストーリーとわずかなセリフで構成されている、詩情豊かな作品世界が堪能できる。＞",
+    "overview_en": "A young boy discovers a stray balloon, which seems to have a mind of its own, on the streets of Paris. The two become inseparable, yet the world’s harsh realities finally interfere.",
+    "poster_path": "/yN9iPgtwOhkwUzDtRUyONX93Hzm.jpg",
+    "backdrop_path": "/w9QL9kd2SijhGNxB8cYBrGWUQy2.jpg",
+    "release_date": "1956-08-24",
+    "director": "Albert Lamorisse",
+    "director_jp": "Albert Lamorisse",
+    "director_en": "Albert Lamorisse",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "ファミリー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Family",
+      "Fantasy"
+    ],
+    "runtime": 34,
+    "vote_average": 7.741,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:15265": {
+    "tmdb_id": 15265,
+    "tmdb_title_jp": "赤い風船",
+    "tmdb_title_en": "The Red Balloon",
+    "tmdb_title_original": "Le Ballon rouge",
+    "tmdb_original_language": "fr",
+    "overview": "ある朝、赤い風船が街灯に引っ掛かっているのを見つけた少年パスカル。街灯によじ登って風船を手に取った彼は、しっかり握ったまま風船と一緒に過ごすように。だが、しばらくすると、風船は手を離してもパスカルの行く先々についてくるようになる。そんなパスカルと風船を町のいたずらっ子たちが追うが……。＜1956年に発表され、その年のカンヌ国際映画祭でパルムドールを受賞したものの、日本では観る機会が限られていた伝説の名作。赤い風船と1人の少年が織り成す、ハートウォーミングでファンタスティックなドラマが展開する。監督は“シネ・ポエム”と呼ぶべき作品を生み出した、アルベール・ラモリス。シンプルなストーリーとわずかなセリフで構成されている、詩情豊かな作品世界が堪能できる。＞",
+    "overview_en": "A young boy discovers a stray balloon, which seems to have a mind of its own, on the streets of Paris. The two become inseparable, yet the world’s harsh realities finally interfere.",
+    "poster_path": "/yN9iPgtwOhkwUzDtRUyONX93Hzm.jpg",
+    "backdrop_path": "/w9QL9kd2SijhGNxB8cYBrGWUQy2.jpg",
+    "release_date": "1956-08-24",
+    "director": "Albert Lamorisse",
+    "director_jp": "Albert Lamorisse",
+    "director_en": "Albert Lamorisse",
+    "genres": [
+      "コメディ",
+      "ドラマ",
+      "ファミリー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama",
+      "Family",
+      "Fantasy"
+    ],
+    "runtime": 34,
+    "vote_average": 7.741,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1082354": {
+    "tmdb_id": 1082354,
+    "tmdb_title_jp": "Corners of the Earth: Kamchatka",
+    "tmdb_title_en": "Corners of the Earth: Kamchatka",
+    "tmdb_title_original": "Corners of the Earth: Kamchatka",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In February 2022, filmmakers Spencer Frost and Guy Williment, and pro surfers Letty Mortensen and Fraser Dovell started a journey to the unexplored Kamchatka Peninsula in far eastern Russia. After two years of planning, their adventure almost ended before it even started, when Russia invaded Ukraine an hour before their scheduled flight to Moscow.  They went anyway.",
+    "poster_path": "/dIASUPccHSC3qypsCk8mV9DabjU.jpg",
+    "backdrop_path": "/tV6RPwn0VKavTnCDMwe8dOMuzwh.jpg",
+    "release_date": "2023-08-03",
+    "director": "Spencer Frost",
+    "director_jp": "Spencer Frost",
+    "director_en": "Spencer Frost",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 90,
+    "vote_average": 9.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      }
+    ]
+  },
+  "tmdb:1077050": {
+    "tmdb_id": 1077050,
+    "tmdb_title_jp": "Menus-Plaisirs, les Troisgros",
+    "tmdb_title_en": "Menus-Plaisirs, les Troisgros",
+    "tmdb_title_original": "Menus-Plaisirs, les Troisgros",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Founded in 1930, Troisgros has held three Michelin stars for 55 years. The children of the fourth generation, Marie-Pierre and Michel's sons are continuing the family business: César runs the Michelin-starred restaurant, \"Le Bois sans feuilles\" (\"The Leafless Wood\"), and Léo is in charge of one of the other two Troisgros restaurants, \"La Colline du colombier\" (\"The Dovecote Hill\"). From the daily market to the cheese maturing cellars, via the vineyard, the cattle farm and the vegetable garden adjacent to the restaurant, Menus-Plaisirs is an intimate, sensory journey through the kitchens of one of the world's most prestigious restaurants.",
+    "poster_path": "/z2JNXDbNNOaJdSLA4lJ3eLYXFPr.jpg",
+    "backdrop_path": "/5ELDLGm5CewuuoZmJFU1hZBqfI7.jpg",
+    "release_date": "2023-11-22",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 240,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:185381": {
+    "tmdb_id": 185381,
+    "tmdb_title_jp": "忍者狩り",
+    "tmdb_title_en": "Ninja Hunt",
+    "tmdb_title_original": "忍者狩り",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "It's a rare occasion when a noted filmmaker like Yamauchi Tetsuya gets to re-visit a previous film, and in this re-make of NINJA GARI, he not only does that, but has created an even better piece. While the original from 1964 starred the great old-time actor Konoe Jushiro, this version is perfectly cast with his son Matsukata Hiroki in the lead as Wadakuro, one of four ronin hired to fight against the Shogunate's plot to abolish the Gamo Clan, who are struggling to reinstate their young heir Tanemaru as their Lord. Facing the threat of the Koga Ninja, Wadakuro shows his own cruelty while on a personal vendetta. This is a very brutal film, with lots of realistic ninja action, violent deaths, a dark story line and is completely without any light-hearted 'humor' elements that Toei used to incorperate back in the golden era. And with Matsukata Hiroki's outstanding martial skills, the swordplay is even better in this one. This is definitely one of the best ninja movies ever made!",
+    "poster_path": "/zpPOT9LDtM9j5eGib8aR9P2K1Zt.jpg",
+    "backdrop_path": "/goEMrMPLOFEz9RDkM3Hph5ocd3r.jpg",
+    "release_date": "1982-04-09",
+    "director": "山内鉄也",
+    "director_jp": "山内鉄也",
+    "director_en": "Tetsuya Yamanouchi",
+    "genres": [
+      "アクション",
+      "テレビ映画",
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Action",
+      "TV Movie",
+      "Drama",
+      "History"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1448093": {
+    "tmdb_id": 1448093,
+    "tmdb_title_jp": "Adam",
+    "tmdb_title_en": "Adam",
+    "tmdb_title_original": "Adam",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In contemporary South Africa, 18-year-old Adam Coetzee, whose life takes an unexpected turn when his mother, Carol, enrolls him in the Prinsloo Bush School.  Once at the Bush School, Adam quickly discovers that the school's training methods, led by the rigid and militaristic Derek, are unlike anything he's ever experienced.",
+    "poster_path": "/2l1ZmBw7zTZ8m61GgxlV8vZYLGw.jpg",
+    "backdrop_path": "/bQN1X1x67bgxCuVDeayP6SGbuJV.jpg",
+    "release_date": "2025-03-16",
+    "director": "Winford Collings",
+    "director_jp": "Winford Collings",
+    "director_en": "Winford Collings",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 107,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ZA",
+        "name": "South Africa"
+      }
+    ]
+  },
+  "tmdb:1317888": {
+    "tmdb_id": 1317888,
+    "tmdb_title_jp": "1923 간토대학살",
+    "tmdb_title_en": "1923 Kanto Massacre",
+    "tmdb_title_original": "1923 간토대학살",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "The Great Kanto Earthquake of 1923 marked a moment of unprecedented material destruction and cultural rupture in modern Japan. The disaster soon became subject to human interpretation and political manipulation as the earth tremors and subsequent fire produced not only physical chaos but also the rumors and violence against Koreans revealing what was fearful and why. After a century, this documentary reconstructs the course of this mayhem against the colonized, and traces the ways in which the story of this genocidal violence has long been covered up, haunting those whose lives were never the same after encountering the forbidden truth.",
+    "poster_path": "/1X4EfrfYZd2gaI0zXxCewXx7QjN.jpg",
+    "backdrop_path": "/yOSK6Rw16CxE0uoMcwbOtps6CKd.jpg",
+    "release_date": "2024-08-15",
+    "director": "김태영",
+    "director_jp": "김태영",
+    "director_en": "Kim Tae-yeong",
+    "genres": [
+      "ドキュメンタリー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Documentary",
+      "History"
+    ],
+    "runtime": 112,
+    "vote_average": 5.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:1073650": {
+    "tmdb_id": 1073650,
+    "tmdb_title_jp": "Christmas Eve in Miller's Point",
+    "tmdb_title_en": "Christmas Eve in Miller's Point",
+    "tmdb_title_original": "Christmas Eve in Miller's Point",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A family gathers on Christmas Eve for what could be the last holiday in their ancestral home. As the night wears on and tensions arise, one of the teenagers sneaks out with her friends to claim the wintry suburb for her own.",
+    "poster_path": "/tJ5q6TbdRtoXDqXdkbg4aGGLLkC.jpg",
+    "backdrop_path": "/z8kXJSpl6dy1merK77LMQksg2sS.jpg",
+    "release_date": "2024-11-08",
+    "director": "Tyler Taormina",
+    "director_jp": "Tyler Taormina",
+    "director_en": "Tyler Taormina",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 107,
+    "vote_average": 5.207,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "AR",
+        "name": "Argentina"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:527176": {
+    "tmdb_id": 527176,
+    "tmdb_title_jp": "Ham on Rye",
+    "tmdb_title_en": "Ham on Rye",
+    "tmdb_title_original": "Ham on Rye",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A bizarre rite of passage at the local deli determines the fate of a generation of teenagers, leading some to escape their suburban town and dooming others to remain…",
+    "poster_path": "/8dweXTd42NUZ9cKYh83QZgx2xEK.jpg",
+    "backdrop_path": "/gN4ik9foQP89CAbkurglImqaTmj.jpg",
+    "release_date": "2019-08-10",
+    "director": "Tyler Taormina",
+    "director_jp": "Tyler Taormina",
+    "director_en": "Tyler Taormina",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Mystery"
+    ],
+    "runtime": 85,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:602112": {
+    "tmdb_id": 602112,
+    "tmdb_title_jp": "Topology of Sirens",
+    "tmdb_title_en": "Topology of Sirens",
+    "tmdb_title_original": "Topology of Sirens",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After discovering a set of cryptic microcassettes in her new home, Cas is drawn into a meditative mystery of  environmental sound and experimental music.",
+    "poster_path": "/9DK9WRrkmzgakG9TfFRKgiV30yq.jpg",
+    "backdrop_path": "/7OM9oQ1oC3LrSGNCYUw3JjvljBY.jpg",
+    "release_date": "2021-07-22",
+    "director": "Jonathan Davies",
+    "director_jp": "Jonathan Davies",
+    "director_en": "Jonathan Davies",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 106,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:927606": {
+    "tmdb_id": 927606,
+    "tmdb_title_jp": "Happer's Comet",
+    "tmdb_title_en": "Happer's Comet",
+    "tmdb_title_original": "Happer's Comet",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In a small suburban town steeped in alienation, residents escape into the night on rollerblades.",
+    "poster_path": "/xvKfYQCj5eKdlJx7wodeZDIXR03.jpg",
+    "backdrop_path": "/zeOiy4rPo9hwQn8HGjs3NvBBDXJ.jpg",
+    "release_date": "2023-06-16",
+    "director": "Tyler Taormina",
+    "director_jp": "Tyler Taormina",
+    "director_en": "Tyler Taormina",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 62,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:661348": {
+    "tmdb_id": 661348,
+    "tmdb_title_jp": "Cow",
+    "tmdb_title_en": "Cow",
+    "tmdb_title_original": "Cow",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A close-up portrait of the daily lives of a pair of cows: told by way of some narrative-free, intimate POV photography, with plenty of close shot images, we follow the daily routine of these animals as they live what can only be described as mundane, boring lives - all with an ultimate purpose within the human food chain.",
+    "poster_path": "/faszRX0wSzGqjIzDXt79H9ibsXa.jpg",
+    "backdrop_path": "/kCF4tIyvLN9BieEUzUOVFwgGUPM.jpg",
+    "release_date": "2022-01-14",
+    "director": "Andrea Arnold",
+    "director_jp": "Andrea Arnold",
+    "director_en": "Andrea Arnold",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 93,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
       }
     ]
   }
