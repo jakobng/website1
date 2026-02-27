@@ -1978,21 +1978,6 @@
     ],
     "vote_average": 6.8
   },
-  "Monthly World Cinema Screening": null,
-  "If You're Lost I'll Come Find You": null,
-  "Global Justice Now Youth MCR: Women at War": {
-    "tmdb_id": 982440,
-    "tmdb_title": "Women at War",
-    "tmdb_original_title": "女性の戦ひ",
-    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
-    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
-    "backdrop_path": null,
-    "release_date": "1939-02-01",
-    "director": "Yasushi Sasaki",
-    "runtime": 82,
-    "genres": [],
-    "vote_average": 0.0
-  },
   "Baby & Carer/ Little Amélie (PG) [Dubbed]": {
     "tmdb_id": 751496,
     "tmdb_title": "Baby",
@@ -2009,8 +1994,6 @@
     ],
     "vote_average": 5.32
   },
-  "Little Amélie (PG) [Subtitled]": null,
-  "NT Live/ The Audience": null,
   "Cleo From 5-7 (PG)": {
     "tmdb_id": 499,
     "tmdb_title": "Cléo from 5 to 7",
@@ -2026,7 +2009,38 @@
     ],
     "vote_average": 7.651
   },
-  "National Theatre Live: The Audience": null,
+  "Monthly World Cinema Screening": null,
+  "If You're Lost I'll Come Find You": null,
+  "Global Justice Now Youth MCR: Women at War": {
+    "tmdb_id": 982440,
+    "tmdb_title": "Women at War",
+    "tmdb_original_title": "女性の戦ひ",
+    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
+    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
+    "backdrop_path": null,
+    "release_date": "1939-02-01",
+    "director": "Yasushi Sasaki",
+    "runtime": 82,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "Northern Exposure Short Film Showcase": null,
+  "NT Live/ The Audience": null,
+  "The Corinthians: We Were The Champions (PG)": {
+    "tmdb_id": 1630577,
+    "tmdb_title": "The Corinthians: We Were the Champions",
+    "tmdb_original_title": "The Corinthians: We Were the Champions",
+    "overview": "A documentary highlighting the talent and plight of a successful British women’s football team who fought against sexist attitudes to become champions.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2026-02-26",
+    "director": "Helen Tither",
+    "runtime": 89,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
   "Throwback: The Fifth Element": {
     "tmdb_id": 18,
     "tmdb_title": "The Fifth Element",
@@ -2042,8 +2056,9 @@
       "Action",
       "Adventure"
     ],
-    "vote_average": 7.6
+    "vote_average": 7.563
   },
+  "National Theatre Live: The Audience": null,
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
     "tmdb_title": "Singin' in the Rain",
@@ -2052,13 +2067,13 @@
     "poster_path": "/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
     "backdrop_path": "/6qOyw4yfzbzTp5YsCX26C28Do0S.jpg",
     "release_date": "1952-04-10",
-    "director": "Gene Kelly",
+    "director": "Stanley Donen",
     "runtime": 103,
     "genres": [
       "Comedy",
       "Romance"
     ],
-    "vote_average": 8.139
+    "vote_average": 8.138
   },
   "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
