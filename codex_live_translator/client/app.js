@@ -18,8 +18,12 @@ const els = {
   projectName: document.getElementById("projectName"),
   sourceLang: document.getElementById("sourceLang"),
   targetLang: document.getElementById("targetLang"),
+  conversationMode: document.getElementById("conversationMode"),
   conversationContext: document.getElementById("conversationContext"),
   mode: document.getElementById("mode"),
+  settingsToggle: document.getElementById("settingsToggle"),
+  settingsPanel: document.getElementById("settingsPanel"),
+  swapDirectionBtn: document.getElementById("swapDirectionBtn"),
   audioDevice: document.getElementById("audioDevice"),
   ttsEnabled: document.getElementById("ttsEnabled"),
   autoExport: document.getElementById("autoExport"),
@@ -53,6 +57,8 @@ let recentTranslations = [];
 let lastChunkEndedAtMs = 0;
 let currentChunkMs = 10000;
 let activeMode = "balanced";
+let activeConversationMode = "single";
+let directionSwapped = false;
 let deferredInstallPrompt = null;
 
 let rtcPeerConnection = null;
@@ -174,6 +180,56 @@ function chunkMsForMode(mode) {
 
 function isRealtimeMode(mode) {
   return mode === REALTIME_MODE;
+}
+
+
+function getLanguageLabel(code) {
+  const normalized = (code || "").trim().toLowerCase();
+  const sourceOpt = [...els.sourceLang.options].find((o) => o.value === normalized);
+  if (sourceOpt) {
+    return sourceOpt.textContent;
+  }
+  if (!normalized || normalized === "auto") {
+    return "Auto detect";
+  }
+  return normalized;
+}
+
+function getDirectionLanguages() {
+  const source = els.sourceLang.value.trim() || "auto";
+  const target = els.targetLang.value.trim() || "en";
+  if (activeConversationMode === "two-way" && directionSwapped) {
+    return { sourceLang: target, targetLang: source };
+  }
+  return { sourceLang: source, targetLang: target };
+}
+
+function updateDirectionButton() {
+  if (!els.swapDirectionBtn) {
+    return;
+  }
+  const source = els.sourceLang.value.trim() || "auto";
+  const target = els.targetLang.value.trim() || "en";
+  const canToggle = activeConversationMode === "two-way";
+  els.swapDirectionBtn.disabled = !canToggle;
+  if (!canToggle) {
+    els.swapDirectionBtn.textContent = "Switch Speaker (disabled in one-way mode)";
+    return;
+  }
+  const from = directionSwapped ? getLanguageLabel(target) : getLanguageLabel(source);
+  const to = directionSwapped ? getLanguageLabel(source) : getLanguageLabel(target);
+  els.swapDirectionBtn.textContent = `Switch Speaker (${from} → ${to})`;
+}
+
+function toggleSettingsPanel() {
+  if (!els.settingsPanel || !els.settingsToggle) {
+    return;
+  }
+  const opening = els.settingsPanel.classList.contains("settings-collapsed");
+  els.settingsPanel.classList.toggle("settings-collapsed", !opening);
+  els.settingsPanel.classList.toggle("settings-open", opening);
+  els.settingsToggle.textContent = opening ? "Hide Settings" : "Show Settings";
+  els.settingsToggle.setAttribute("aria-expanded", opening ? "true" : "false");
 }
 
 // ── Audio Device Selection ───────────────────────────────────────────
@@ -388,8 +444,8 @@ async function storeOfflineSegment(segment) {
       audioBuffer: arrayBuffer,
       mimeType: segment.blob.type || "audio/webm",
       sessionId: sessionId,
-      sourceLang: els.sourceLang.value.trim(),
-      targetLang: els.targetLang.value.trim() || "en",
+      sourceLang: getDirectionLanguages().sourceLang,
+      targetLang: getDirectionLanguages().targetLang,
       priorContext: recentTranslations.slice(-MAX_CONTEXT_LINES),
       conversationContext: (els.conversationContext.value || "").trim(),
     });
@@ -461,7 +517,7 @@ function speakTranslation(text) {
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 1.1;
-  utterance.lang = els.targetLang.value.trim() || "en";
+  utterance.lang = getDirectionLanguages().targetLang;
   window.speechSynthesis.speak(utterance);
 }
 
@@ -591,8 +647,9 @@ async function postSegment(segment) {
   formData.set("segment_id", segment.segmentId);
   formData.set("started_at_ms", String(segment.startedAtMs));
   formData.set("ended_at_ms", String(segment.endedAtMs));
-  formData.set("source_lang_hint", els.sourceLang.value.trim());
-  formData.set("target_lang", els.targetLang.value.trim() || "en");
+  const direction = getDirectionLanguages();
+  formData.set("source_lang_hint", direction.sourceLang);
+  formData.set("target_lang", direction.targetLang);
   formData.set(
     "prior_context_json",
     JSON.stringify(recentTranslations.slice(-MAX_CONTEXT_LINES)),
@@ -636,8 +693,8 @@ async function postTranslatedText({
       ended_at_ms: endedAtMs,
       is_final: isFinal,
       prior_context_json: recentTranslations.slice(-MAX_CONTEXT_LINES),
-      source_lang_hint: els.sourceLang.value.trim() || "auto",
-      target_lang: els.targetLang.value.trim() || "en",
+      source_lang_hint: getDirectionLanguages().sourceLang || "auto",
+      target_lang: getDirectionLanguages().targetLang || "en",
       conversation_context: (els.conversationContext.value || "").trim(),
     }),
   });
@@ -1007,7 +1064,7 @@ async function startRealtimeCapture() {
     body: JSON.stringify({
       session_id: sessionId,
       offer_sdp: localOfferSdp,
-      source_lang_hint: els.sourceLang.value.trim() || "auto",
+      source_lang_hint: getDirectionLanguages().sourceLang || "auto",
     }),
   });
 
@@ -1138,8 +1195,8 @@ async function startSession() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         project_name: els.projectName.value.trim() || "untitled-shoot",
-        source_lang_hint: els.sourceLang.value.trim() || "auto",
-        target_lang: els.targetLang.value.trim() || "en",
+        source_lang_hint: getDirectionLanguages().sourceLang || "auto",
+        target_lang: getDirectionLanguages().targetLang || "en",
         mode: els.mode.value.trim() || "balanced",
       }),
     });
@@ -1151,6 +1208,9 @@ async function startSession() {
     const payload = await response.json();
     sessionId = payload.session_id;
     activeMode = els.mode.value.trim() || "balanced";
+    activeConversationMode = els.conversationMode.value.trim() || "single";
+    directionSwapped = false;
+    updateDirectionButton();
     currentChunkMs = chunkMsForMode(activeMode);
     sessionStartEpochMs = Date.now();
     lastChunkEndedAtMs = 0;
@@ -1181,7 +1241,8 @@ async function startSession() {
         `Live session ${sessionId.slice(0, 8)}... VAD chunking (max ${(currentChunkMs / 1000).toFixed(0)}s)`,
       );
     }
-    els.liveCaption.textContent = "Listening...";
+    const direction = getDirectionLanguages();
+    els.liveCaption.textContent = `Listening (${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)})...`;
     els.liveTranscript.textContent = "";
   } catch (error) {
     console.error(error);
@@ -1246,6 +1307,17 @@ function openExport(format) {
   window.open(`/v1/session/${sessionId}/export?format=${format}`, "_blank");
 }
 
+
+
+function swapConversationDirection() {
+  if (activeConversationMode !== "two-way") {
+    return;
+  }
+  directionSwapped = !directionSwapped;
+  updateDirectionButton();
+  const direction = getDirectionLanguages();
+  setStatus(`Direction switched: ${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)}`);
+}
 // ── Event Listeners ──────────────────────────────────────────────────
 
 els.startBtn.addEventListener("click", startSession);
@@ -1255,6 +1327,25 @@ els.exportCsvBtn.addEventListener("click", () => openExport("csv"));
 els.exportSrtBtn.addEventListener("click", () => openExport("srt"));
 if (els.installBtn) {
   els.installBtn.addEventListener("click", installApp);
+}
+if (els.settingsToggle) {
+  els.settingsToggle.addEventListener("click", toggleSettingsPanel);
+}
+if (els.conversationMode) {
+  els.conversationMode.addEventListener("change", () => {
+    activeConversationMode = els.conversationMode.value.trim() || "single";
+    directionSwapped = false;
+    updateDirectionButton();
+  });
+}
+if (els.sourceLang) {
+  els.sourceLang.addEventListener("change", updateDirectionButton);
+}
+if (els.targetLang) {
+  els.targetLang.addEventListener("input", updateDirectionButton);
+}
+if (els.swapDirectionBtn) {
+  els.swapDirectionBtn.addEventListener("click", swapConversationDirection);
 }
 if (els.fontDown) {
   els.fontDown.addEventListener("click", () => adjustFontSize(-0.15));
@@ -1303,6 +1394,7 @@ applyFontScale();
 registerServiceWorker();
 enumerateAudioDevices();
 checkSessionResume();
+updateDirectionButton();
 
 (async () => {
   try {

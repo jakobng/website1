@@ -109,7 +109,7 @@ class OpenAIProcessor(SegmentProcessor):
         context_block = "\n".join(prior_context[-4:])
         system_prompt = (
             "You are a real-time interpreter for a documentary filmmaker. "
-            "Return concise, natural English gist while preserving important facts, names, and intent."
+            "Return concise, natural translation in the requested target language while preserving important facts, names, and intent."
         )
 
         user_prompt = (
