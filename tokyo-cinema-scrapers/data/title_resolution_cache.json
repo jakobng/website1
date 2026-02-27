@@ -6766,5 +6766,21 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "【2026】14歳の栞": {
+    "english_title": "Bookmark 14",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "14歳の栞",
+    "director": "Ryo Takebayashi",
+    "country": "Japan"
+  },
+  "開場": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }

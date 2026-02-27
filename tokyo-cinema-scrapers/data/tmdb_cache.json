@@ -67626,5 +67626,735 @@
         "name": "United Kingdom"
       }
     ]
-  }
+  },
+  "湯徳章―私は誰なのか―（字幕）": null,
+  "【2026】14歳の栞": {
+    "tmdb_id": 825904,
+    "tmdb_title_jp": "14歳の栞",
+    "tmdb_title_en": "Bookmark 14",
+    "tmdb_title_original": "14歳の栞",
+    "tmdb_original_language": "ja",
+    "overview": "とある中学校の3学期、「2年6組」35人全員に密着し、ひとりひとりの物語を紐解いていく青春リアリティ映画。",
+    "overview_en": "This is a documentary about youth that closely follows all of the students in a single second-year junior high school class. It is set in Japan and shows a \"normal junior high school\" that is neither urban or rural. This plain view of puberty is portrayed by 35 students.",
+    "poster_path": "/kWYsYgfJlaeX8An8RommysJ0WJ9.jpg",
+    "backdrop_path": "/mbL3ycz3mfSSxms1lNyomn4uewe.jpg",
+    "release_date": "2021-03-05",
+    "director": "竹林亮",
+    "director_jp": "竹林亮",
+    "director_en": "Ryo Takebayashi",
+    "genres": [
+      "ドキュメンタリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Drama"
+    ],
+    "runtime": 120,
+    "vote_average": 5.0,
+    "tmdb_countries": []
+  },
+  "『拝啓天皇陛下様』": {
+    "tmdb_id": 810765,
+    "tmdb_title_jp": "拝啓天皇陛下様",
+    "tmdb_title_en": "To Your Majesty, The Emperor",
+    "tmdb_title_original": "拝啓天皇陛下様",
+    "tmdb_original_language": "ja",
+    "overview": "漢字がほとんど読めず、カタカナしか書けない純朴な男性が、兵役義務により新兵となるところから物語ははじまる。戦友であり良き理解者でもある棟本博との長年にわたる関係を軸に構成されている。",
+    "overview_en": "A conscript from a poor background writes the Emperor asking if he can stay in the army when his service is up.",
+    "poster_path": "/cckAOXaFtxzKbvVjDJwRHqQtAn1.jpg",
+    "backdrop_path": "/5QEhubuM9rfFodboirM2xGFSR65.jpg",
+    "release_date": "1963-04-28",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "コメディ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Comedy",
+      "War"
+    ],
+    "runtime": 100,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:810765": {
+    "tmdb_id": 810765,
+    "tmdb_title_jp": "拝啓天皇陛下様",
+    "tmdb_title_en": "To Your Majesty, The Emperor",
+    "tmdb_title_original": "拝啓天皇陛下様",
+    "tmdb_original_language": "ja",
+    "overview": "漢字がほとんど読めず、カタカナしか書けない純朴な男性が、兵役義務により新兵となるところから物語ははじまる。戦友であり良き理解者でもある棟本博との長年にわたる関係を軸に構成されている。",
+    "overview_en": "A conscript from a poor background writes the Emperor asking if he can stay in the army when his service is up.",
+    "poster_path": "/cckAOXaFtxzKbvVjDJwRHqQtAn1.jpg",
+    "backdrop_path": "/5QEhubuM9rfFodboirM2xGFSR65.jpg",
+    "release_date": "1963-04-28",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "コメディ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Comedy",
+      "War"
+    ],
+    "runtime": 100,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『あゝ声なき友』": {
+    "tmdb_id": 713494,
+    "tmdb_title_jp": "あゝ声なき友",
+    "tmdb_title_en": "My Voiceless Friends",
+    "tmdb_title_original": "あゝ声なき友",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A man who survived the war carries the will of his comrades in arms, walking across the country visiting the bereaved families.",
+    "poster_path": "/s9iv1sEmcL3dOobnnSInTm9KNd9.jpg",
+    "backdrop_path": null,
+    "release_date": "1972-04-29",
+    "director": "今井正",
+    "director_jp": "今井正",
+    "director_en": "Tadashi Imai",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:713494": {
+    "tmdb_id": 713494,
+    "tmdb_title_jp": "あゝ声なき友",
+    "tmdb_title_en": "My Voiceless Friends",
+    "tmdb_title_original": "あゝ声なき友",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A man who survived the war carries the will of his comrades in arms, walking across the country visiting the bereaved families.",
+    "poster_path": "/s9iv1sEmcL3dOobnnSInTm9KNd9.jpg",
+    "backdrop_path": null,
+    "release_date": "1972-04-29",
+    "director": "今井正",
+    "director_jp": "今井正",
+    "director_en": "Tadashi Imai",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『友情』": {
+    "tmdb_id": 1472110,
+    "tmdb_title_jp": "友情",
+    "tmdb_title_en": "Friendship",
+    "tmdb_title_original": "友情",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is a story about the emotional connection between a young man with no clear purpose and a middle-aged man who abandoned his wife, children, and hometown but is hiding his pain inside.",
+    "poster_path": "/lGZ388NikdGmC7RRSmW2MKkUQHE.jpg",
+    "backdrop_path": null,
+    "release_date": "1975-11-29",
+    "director": "宮崎晃",
+    "director_jp": "宮崎晃",
+    "director_en": "Akira Miyazaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1472110": {
+    "tmdb_id": 1472110,
+    "tmdb_title_jp": "友情",
+    "tmdb_title_en": "Friendship",
+    "tmdb_title_original": "友情",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is a story about the emotional connection between a young man with no clear purpose and a middle-aged man who abandoned his wife, children, and hometown but is hiding his pain inside.",
+    "poster_path": "/lGZ388NikdGmC7RRSmW2MKkUQHE.jpg",
+    "backdrop_path": null,
+    "release_date": "1975-11-29",
+    "director": "宮崎晃",
+    "director_jp": "宮崎晃",
+    "director_en": "Akira Miyazaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "『 男はつらいよ 寅次郎ハイビスカスの花』": {
+    "tmdb_id": 329370,
+    "tmdb_title_jp": "男はつらいよ 寅次郎ハイビスカスの花",
+    "tmdb_title_en": "Tora-san's Tropical Fever",
+    "tmdb_title_original": "男はつらいよ 寅次郎ハイビスカスの花",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第25作。懐かしいリリー（浅丘ルリ子）から、寅さんへ手紙が舞い込んでくる。彼女は沖縄で仕事中に倒れて、入院しているという。“寅さんに一目逢いたい”というリリーの願いを叶えるべく、寅さんは那覇へ向かう。懸命の看病の甲斐あって、リリーは退院。二人は小さな家を間借りして同棲を始める。ある日、気を許し合っただけに、二人は大げんかをしてしまう。",
+    "overview_en": "When cabaret singer Lily writes Toraya about her illness, Tora-san rushes to Okinawa to be by her side.",
+    "poster_path": "/14ZAYb9vqfE3fRidrzm2F58qsT8.jpg",
+    "backdrop_path": "/Vmslhd7Azslrpm70mLHuZFXce7.jpg",
+    "release_date": "1980-08-02",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ",
+      "ファミリー",
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Family",
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 104,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:329370": {
+    "tmdb_id": 329370,
+    "tmdb_title_jp": "男はつらいよ 寅次郎ハイビスカスの花",
+    "tmdb_title_en": "Tora-san's Tropical Fever",
+    "tmdb_title_original": "男はつらいよ 寅次郎ハイビスカスの花",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第25作。懐かしいリリー（浅丘ルリ子）から、寅さんへ手紙が舞い込んでくる。彼女は沖縄で仕事中に倒れて、入院しているという。“寅さんに一目逢いたい”というリリーの願いを叶えるべく、寅さんは那覇へ向かう。懸命の看病の甲斐あって、リリーは退院。二人は小さな家を間借りして同棲を始める。ある日、気を許し合っただけに、二人は大げんかをしてしまう。",
+    "overview_en": "When cabaret singer Lily writes Toraya about her illness, Tora-san rushes to Okinawa to be by her side.",
+    "poster_path": "/14ZAYb9vqfE3fRidrzm2F58qsT8.jpg",
+    "backdrop_path": "/Vmslhd7Azslrpm70mLHuZFXce7.jpg",
+    "release_date": "1980-08-02",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ",
+      "ファミリー",
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Family",
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 104,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『僕はボディガード』": {
+    "tmdb_id": 1325990,
+    "tmdb_title_jp": "僕はボディガード",
+    "tmdb_title_en": "I'm a Bodyguard",
+    "tmdb_title_original": "僕はボディガード",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kita Ippei (Atsumi Kiyoshi) became a security officer in the Metropolitan Police Department's Security Division after catching a thug who attacked a writer living in the area while working at a police box. His dream is to become a bodyguard (BG) for the Prime Minister, just like his senior, Detective Inspector Takagi (Ryu Chishu). Kita Ippei is very successful in both work and love, getting attacked while guarding a female minister, getting some perks as a BG for a foreign princess, and becoming friends with a woman at his favorite bar.",
+    "poster_path": "/i4LhbNu8v5NXloOuWJBU9BS3ODz.jpg",
+    "backdrop_path": null,
+    "release_date": "1964-05-16",
+    "director": "久松静児",
+    "director_jp": "久松静児",
+    "director_en": "Seiji Hisamatsu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1325990": {
+    "tmdb_id": 1325990,
+    "tmdb_title_jp": "僕はボディガード",
+    "tmdb_title_en": "I'm a Bodyguard",
+    "tmdb_title_original": "僕はボディガード",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kita Ippei (Atsumi Kiyoshi) became a security officer in the Metropolitan Police Department's Security Division after catching a thug who attacked a writer living in the area while working at a police box. His dream is to become a bodyguard (BG) for the Prime Minister, just like his senior, Detective Inspector Takagi (Ryu Chishu). Kita Ippei is very successful in both work and love, getting attacked while guarding a female minister, getting some perks as a BG for a foreign princess, and becoming friends with a woman at his favorite bar.",
+    "poster_path": "/i4LhbNu8v5NXloOuWJBU9BS3ODz.jpg",
+    "backdrop_path": null,
+    "release_date": "1964-05-16",
+    "director": "久松静児",
+    "director_jp": "久松静児",
+    "director_en": "Seiji Hisamatsu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『父子草』": {
+    "tmdb_id": 422125,
+    "tmdb_title_jp": "父子草",
+    "tmdb_title_en": "Green Light to Joy",
+    "tmdb_title_original": "父子草",
+    "tmdb_original_language": "ja",
+    "overview": "ガード下におでん屋を出している竹子は、初老に近い土工風の男平井義太郎の、どこか淋し気でいて、鼻ッぱしらの強い、気ップのよさに興味を持っていた。或る日、常連の若い客、西村茂と義太郎は、些細なことから喧嘩になったが、若い西村に敵うはずはなかった。それから、毎晩、西村に相撲で挑戦する義太郎だったが、それというのも、波がシベリヤで捕虜生活を終え、故郷に帰還したのだが、彼がすでに戦死してしまっていると思った彼の妻は、弟と再婚してしまっていた。",
+    "overview_en": "Drama about the friendship between a lonely laborer (Atsumi) and a young woman (Hoshi) unable to enter college.",
+    "poster_path": "/soXQz4PyHYy7C1MTCnCNPtVaFqL.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-12-06",
+    "director": "丸山誠治",
+    "director_jp": "丸山誠治",
+    "director_en": "Seiji Maruyama",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 85,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:422125": {
+    "tmdb_id": 422125,
+    "tmdb_title_jp": "父子草",
+    "tmdb_title_en": "Green Light to Joy",
+    "tmdb_title_original": "父子草",
+    "tmdb_original_language": "ja",
+    "overview": "ガード下におでん屋を出している竹子は、初老に近い土工風の男平井義太郎の、どこか淋し気でいて、鼻ッぱしらの強い、気ップのよさに興味を持っていた。或る日、常連の若い客、西村茂と義太郎は、些細なことから喧嘩になったが、若い西村に敵うはずはなかった。それから、毎晩、西村に相撲で挑戦する義太郎だったが、それというのも、波がシベリヤで捕虜生活を終え、故郷に帰還したのだが、彼がすでに戦死してしまっていると思った彼の妻は、弟と再婚してしまっていた。",
+    "overview_en": "Drama about the friendship between a lonely laborer (Atsumi) and a young woman (Hoshi) unable to enter college.",
+    "poster_path": "/soXQz4PyHYy7C1MTCnCNPtVaFqL.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-12-06",
+    "director": "丸山誠治",
+    "director_jp": "丸山誠治",
+    "director_en": "Seiji Maruyama",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 85,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『 喜劇 ・男は愛嬌』": {
+    "tmdb_id": 1281114,
+    "tmdb_title_jp": "喜劇 男は愛嬌",
+    "tmdb_title_en": "Charming Men",
+    "tmdb_title_original": "喜劇 男は愛嬌",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "One day, when Goro (Kiyoshi Atsumi) returns to his poor tenement house from a trip on a deep-sea tuna boat, his neighbor's daughter Haruko (Mitsuko Baisho) also returns from the juvenile classification center on the same day. However, at a welcome party held by Goro for Haruko, a drunk friend crashes into Haruko's house with a dump truck and is forced to leave. Goro plans to marry Haruko to a rich man and force her to pay dowry, but...",
+    "poster_path": "/wKvAaXmuSccnewccKY9QjeHfZNk.jpg",
+    "backdrop_path": null,
+    "release_date": "1970-06-13",
+    "director": "森崎東",
+    "director_jp": "森崎東",
+    "director_en": "Azuma Morisaki",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 87,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1281114": {
+    "tmdb_id": 1281114,
+    "tmdb_title_jp": "喜劇 男は愛嬌",
+    "tmdb_title_en": "Charming Men",
+    "tmdb_title_original": "喜劇 男は愛嬌",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "One day, when Goro (Kiyoshi Atsumi) returns to his poor tenement house from a trip on a deep-sea tuna boat, his neighbor's daughter Haruko (Mitsuko Baisho) also returns from the juvenile classification center on the same day. However, at a welcome party held by Goro for Haruko, a drunk friend crashes into Haruko's house with a dump truck and is forced to leave. Goro plans to marry Haruko to a rich man and force her to pay dowry, but...",
+    "poster_path": "/wKvAaXmuSccnewccKY9QjeHfZNk.jpg",
+    "backdrop_path": null,
+    "release_date": "1970-06-13",
+    "director": "森崎東",
+    "director_jp": "森崎東",
+    "director_en": "Azuma Morisaki",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 87,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『 男はつらいよ 寅次郎サラダ記念日』": {
+    "tmdb_id": 417861,
+    "tmdb_title_jp": "男はつらいよ 寅次郎サラダ記念日",
+    "tmdb_title_en": "Tora-san's Salad-Day Memorial",
+    "tmdb_title_original": "男はつらいよ 寅次郎サラダ記念日",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第40作。信州小諸、駅前で知り合ったお婆さん（鈴木光枝）の家に泊まり、昔語りを聞く寅さん。翌朝、医師・原田真知子（三田佳子）が、お婆さんを病院に入院させるためにやってくる。重病のお婆さんは、寅さんの説得でなんとか入院し、真知子は寅さんを御礼にと家に招待する。くるまやに帰った寅さんは、満男の大学受験の下見ということで、真知子の姪・由紀（三田寛子）を早稲田大学に訪ねる。さらに真知子も息子に会うために東京へ。寅さんにとって幸福な日々となる。",
+    "overview_en": "In his travels through Japan, Tora-san meets and falls in love with a female doctor, however he is afraid of committing to a relationship.",
+    "poster_path": "/p80o38i4O23uh10WPGMBZUopHO4.jpg",
+    "backdrop_path": "/sTFEgI3QwP2jsBRaNHXpqQNAyDC.jpg",
+    "release_date": "1988-12-24",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 100,
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:417861": {
+    "tmdb_id": 417861,
+    "tmdb_title_jp": "男はつらいよ 寅次郎サラダ記念日",
+    "tmdb_title_en": "Tora-san's Salad-Day Memorial",
+    "tmdb_title_original": "男はつらいよ 寅次郎サラダ記念日",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第40作。信州小諸、駅前で知り合ったお婆さん（鈴木光枝）の家に泊まり、昔語りを聞く寅さん。翌朝、医師・原田真知子（三田佳子）が、お婆さんを病院に入院させるためにやってくる。重病のお婆さんは、寅さんの説得でなんとか入院し、真知子は寅さんを御礼にと家に招待する。くるまやに帰った寅さんは、満男の大学受験の下見ということで、真知子の姪・由紀（三田寛子）を早稲田大学に訪ねる。さらに真知子も息子に会うために東京へ。寅さんにとって幸福な日々となる。",
+    "overview_en": "In his travels through Japan, Tora-san meets and falls in love with a female doctor, however he is afraid of committing to a relationship.",
+    "poster_path": "/p80o38i4O23uh10WPGMBZUopHO4.jpg",
+    "backdrop_path": "/sTFEgI3QwP2jsBRaNHXpqQNAyDC.jpg",
+    "release_date": "1988-12-24",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 100,
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『東海一の若親分』": {
+    "tmdb_id": 1203548,
+    "tmdb_title_jp": "若き日の次郎長東海一の若親分",
+    "tmdb_title_en": "Jirocho’s Days of Youth: The Youngest Boss in the Tokai Region",
+    "tmdb_title_original": "若き日の次郎長東海一の若親分",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "He was married to his lover's butterfly and started a new residence. But good things do not last. In his uncle, Uzaemon in Kawashima, Yoshiji Akaji, Yoshimoto's lender, and Kanehira Akagi, the older brother of the former loan of Mishima, played a challenge. It is said to open the ladies' room to the settlement of Wada island. Although Jiro headed to Shigetsugu for arbitration, he was forced to surrender. In such a case, Jiro became chased by Kinpei and others.",
+    "poster_path": "/wWixIwLYrkVPdTBhRAY9pRFaNk1.jpg",
+    "backdrop_path": "/gvKyLp1nEdsElTZf3qi1kWm07wL.jpg",
+    "release_date": "1961-06-21",
+    "director": "マキノ雅弘",
+    "director_jp": "マキノ雅弘",
+    "director_en": "Masahiro Makino",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "History"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1203548": {
+    "tmdb_id": 1203548,
+    "tmdb_title_jp": "若き日の次郎長東海一の若親分",
+    "tmdb_title_en": "Jirocho’s Days of Youth: The Youngest Boss in the Tokai Region",
+    "tmdb_title_original": "若き日の次郎長東海一の若親分",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "He was married to his lover's butterfly and started a new residence. But good things do not last. In his uncle, Uzaemon in Kawashima, Yoshiji Akaji, Yoshimoto's lender, and Kanehira Akagi, the older brother of the former loan of Mishima, played a challenge. It is said to open the ladies' room to the settlement of Wada island. Although Jiro headed to Shigetsugu for arbitration, he was forced to surrender. In such a case, Jiro became chased by Kinpei and others.",
+    "poster_path": "/wWixIwLYrkVPdTBhRAY9pRFaNk1.jpg",
+    "backdrop_path": "/gvKyLp1nEdsElTZf3qi1kWm07wL.jpg",
+    "release_date": "1961-06-21",
+    "director": "マキノ雅弘",
+    "director_jp": "マキノ雅弘",
+    "director_en": "Masahiro Makino",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "History"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『あいつばかりが何故もてる』": {
+    "tmdb_id": 1105806,
+    "tmdb_title_jp": "あいつばかりが何故もてる",
+    "tmdb_title_en": "Aitsu bakari ga naze moteru",
+    "tmdb_title_original": "あいつばかりが何故もてる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "1962 Japanese movie",
+    "poster_path": "/dqiVHlCsNFkIfbl1fUkvEvcSQW.jpg",
+    "backdrop_path": null,
+    "release_date": "1962-11-18",
+    "director": "酒井欣也",
+    "director_jp": "酒井欣也",
+    "director_en": "Kinya Sakai",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1105806": {
+    "tmdb_id": 1105806,
+    "tmdb_title_jp": "あいつばかりが何故もてる",
+    "tmdb_title_en": "Aitsu bakari ga naze moteru",
+    "tmdb_title_original": "あいつばかりが何故もてる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "1962 Japanese movie",
+    "poster_path": "/dqiVHlCsNFkIfbl1fUkvEvcSQW.jpg",
+    "backdrop_path": null,
+    "release_date": "1962-11-18",
+    "director": "酒井欣也",
+    "director_jp": "酒井欣也",
+    "director_en": "Kinya Sakai",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『八つ墓村』": {
+    "tmdb_id": 119947,
+    "tmdb_title_jp": "八つ墓村",
+    "tmdb_title_en": "Village of Eight Gravestones",
+    "tmdb_title_original": "八つ墓村",
+    "tmdb_original_language": "ja",
+    "overview": "東京で暮らしている青年・寺田辰弥は、自分を探していた母方の祖父・井川丑松が目の前で変死したことを機に、生まれ故郷の八つ墓村を訪れる。そこは戦国時代、村人たちによって8人の落ち武者が惨殺されたという忌まわしい歴史をもつ土地だった。帰郷した辰弥の周りでは次々と奇怪な殺人事件が起こり…。  横溝正史の同名ミステリー小説を、巨匠・野村芳太郎監督が映画化。渥美清演じる名探偵・金田一耕助が事件の謎を解き明かす。",
+    "overview_en": "The heir to a family fortune discovers that a curse has been placed on it, put there centuries before by a band of samurai warriors. Adaptation of novel by Seishi Yokomizo",
+    "poster_path": "/6n39yJMm57iQmBgLv575shJFk2Q.jpg",
+    "backdrop_path": "/3uDaCbtMhFKKJ7zmj6hFiIdk2ZM.jpg",
+    "release_date": "1977-10-29",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "スリラー",
+      "ホラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Horror",
+      "Mystery"
+    ],
+    "runtime": 151,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:119947": {
+    "tmdb_id": 119947,
+    "tmdb_title_jp": "八つ墓村",
+    "tmdb_title_en": "Village of Eight Gravestones",
+    "tmdb_title_original": "八つ墓村",
+    "tmdb_original_language": "ja",
+    "overview": "東京で暮らしている青年・寺田辰弥は、自分を探していた母方の祖父・井川丑松が目の前で変死したことを機に、生まれ故郷の八つ墓村を訪れる。そこは戦国時代、村人たちによって8人の落ち武者が惨殺されたという忌まわしい歴史をもつ土地だった。帰郷した辰弥の周りでは次々と奇怪な殺人事件が起こり…。  横溝正史の同名ミステリー小説を、巨匠・野村芳太郎監督が映画化。渥美清演じる名探偵・金田一耕助が事件の謎を解き明かす。",
+    "overview_en": "The heir to a family fortune discovers that a curse has been placed on it, put there centuries before by a band of samurai warriors. Adaptation of novel by Seishi Yokomizo",
+    "poster_path": "/6n39yJMm57iQmBgLv575shJFk2Q.jpg",
+    "backdrop_path": "/3uDaCbtMhFKKJ7zmj6hFiIdk2ZM.jpg",
+    "release_date": "1977-10-29",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "スリラー",
+      "ホラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Horror",
+      "Mystery"
+    ],
+    "runtime": 151,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『 男はつらいよ 旅と女と寅次郎』": {
+    "tmdb_id": 417851,
+    "tmdb_title_jp": "男はつらいよ 旅と女と寅次郎",
+    "tmdb_title_en": "Tora-san's Song of Love",
+    "tmdb_title_original": "男はつらいよ 旅と女と寅次郎",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第31作。寅さんが、満男の小学校生活最後の運動会に行くか行かないで、大げんか。そして旅先の佐渡島への港で出会ったのが、私生活と仕事の板挟みで何もかも投げ出したくなって、失踪中の演歌歌手・京はるみ（都はるみ）。そうとは知らず寅さんは、彼女と佐渡への二人旅。楽しい時を過ごし、やがて別れの時が。彼女の正体にいつしか気づいた寅さんは、優しい言葉をかける。そして柴又、「佐渡島の休日」に想いを馳せ、はるみの歌に聞き惚れていると、なんとはるみがとらやへやってくる・・・",
+    "overview_en": "Tora-san returns to his family home to learn that his brother-in-law cannot go to Mitsuo's (Tora-san's nephew) athletic event. Tora-san volunteers to take his place, but gets into an argument with his brother-in-law's boss and returns to the road. He meets a young woman in Niigata who, unbeknownst to him, is a popular enka singer.",
+    "poster_path": "/aPSe8525Ltawf9H6k9yOIxDorIX.jpg",
+    "backdrop_path": "/hYT7gsKzDOq0dQiw0hB0RcnrxkL.jpg",
+    "release_date": "1983-08-06",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 101,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:417851": {
+    "tmdb_id": 417851,
+    "tmdb_title_jp": "男はつらいよ 旅と女と寅次郎",
+    "tmdb_title_en": "Tora-san's Song of Love",
+    "tmdb_title_original": "男はつらいよ 旅と女と寅次郎",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第31作。寅さんが、満男の小学校生活最後の運動会に行くか行かないで、大げんか。そして旅先の佐渡島への港で出会ったのが、私生活と仕事の板挟みで何もかも投げ出したくなって、失踪中の演歌歌手・京はるみ（都はるみ）。そうとは知らず寅さんは、彼女と佐渡への二人旅。楽しい時を過ごし、やがて別れの時が。彼女の正体にいつしか気づいた寅さんは、優しい言葉をかける。そして柴又、「佐渡島の休日」に想いを馳せ、はるみの歌に聞き惚れていると、なんとはるみがとらやへやってくる・・・",
+    "overview_en": "Tora-san returns to his family home to learn that his brother-in-law cannot go to Mitsuo's (Tora-san's nephew) athletic event. Tora-san volunteers to take his place, but gets into an argument with his brother-in-law's boss and returns to the road. He meets a young woman in Niigata who, unbeknownst to him, is a popular enka singer.",
+    "poster_path": "/aPSe8525Ltawf9H6k9yOIxDorIX.jpg",
+    "backdrop_path": "/hYT7gsKzDOq0dQiw0hB0RcnrxkL.jpg",
+    "release_date": "1983-08-06",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 101,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "開場": null
 }
