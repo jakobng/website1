@@ -17741,23 +17741,6 @@
     ],
     "vote_average": 0.0
   },
-  "Hamnet (12A)": {
-    "tmdb_id": 858024,
-    "tmdb_title": "Hamnet",
-    "tmdb_original_title": "Hamnet",
-    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
-    "poster_path": "/vbeyOZm2bvBXcbgPD3v6o94epPX.jpg",
-    "backdrop_path": "/73BClq9FOcrWrutnpiqhCNEWEwJ.jpg",
-    "release_date": "2025-11-26",
-    "director": "Chloé Zhao",
-    "runtime": 126,
-    "genres": [
-      "Drama",
-      "Romance",
-      "History"
-    ],
-    "vote_average": 7.706
-  },
   "OTHELLO": {
     "tmdb_id": 1595531,
     "tmdb_title": "Othello",
@@ -19718,10 +19701,244 @@
     ],
     "vote_average": 6.867
   },
-  "Members Only: Friendship Collage Workshop": null,
-  "Pitchblack Playback: Carole King 'Tapestry' + Nick Drake 'Bryter Layter'": null,
-  "Pitchblack Playback: Alice Coltrane 'Journey In Satchidananda' + Herbie Hancock 'Maiden Voyage''": null,
-  "Queer East presents Edhi Alice: Reverse": null,
+  "Ivan's Childhood": {
+    "tmdb_id": 31442,
+    "tmdb_title": "Ivan's Childhood",
+    "tmdb_original_title": "Иваново детство",
+    "overview": "In WW2, twelve year old Soviet orphan Ivan Bondarev works for the Soviet army as a scout behind the German lines and strikes a friendship with three sympathetic Soviet officers.",
+    "poster_path": "/vmRWSLP1DE9WTta0hfzIafJ0dID.jpg",
+    "backdrop_path": "/jOulpNwtoJP5fF1LJX1ojw6BxBq.jpg",
+    "release_date": "1962-05-09",
+    "director": "Andrei Tarkovsky",
+    "runtime": 95,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "vote_average": 7.8
+  },
+  "Ashes of Time Redux": {
+    "tmdb_id": 40751,
+    "tmdb_title": "Ashes of Time",
+    "tmdb_original_title": "東邪西毒",
+    "overview": "Ouyang Feng is a heartbroken and cynical man who spends his days in the desert, connecting expert swordsmen with those seeking revenge and willing to pay for it. Throughout five seasons in exile, Ouyang spins tales of his clients' unrequited loves and unusual acts of bravery.",
+    "poster_path": "/ciyEwAbvoMHPP3281cgSnfslu43.jpg",
+    "backdrop_path": "/smtzZRpE8hQkQNnhQg2TIRfcWcj.jpg",
+    "release_date": "1994-09-17",
+    "director": "Wong Kar-Wai",
+    "runtime": 100,
+    "genres": [
+      "Drama",
+      "Action"
+    ],
+    "vote_average": 7.058
+  },
+  "Black History Studies: Afeni Shakur and the Trial of the Black Panther 21 + Liberty Double Bill": {
+    "tmdb_id": 284262,
+    "tmdb_title": "Liberty",
+    "tmdb_original_title": "Liberty",
+    "overview": "Born with valuable and powerful abilities, a young woman escapes a confidential, brutal experiment. Federal agents will stop at nothing to capture her.",
+    "poster_path": "/t3PnVs1uWl0LuoJT6JRwClguRXu.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "",
+    "runtime": 0,
+    "genres": [
+      "Thriller",
+      "Horror",
+      "Science Fiction"
+    ],
+    "vote_average": 0.0
+  },
+  "Blue Has No Borders + Q&amp;A": {
+    "tmdb_id": 1480401,
+    "tmdb_title": "Blue Has No Borders",
+    "tmdb_original_title": "Blue Has No Borders",
+    "overview": "A young filmmaker is determined to know her neighbours in the port town of Folkestone. But in the aftermath of Brexit, building new relationships isn’t easy.",
+    "poster_path": "/yAwJkpXQWsI6VWOfBsDZZezhfss.jpg",
+    "backdrop_path": "/nRjT8eE9F54ayzuf2QBeBiMD8UD.jpg",
+    "release_date": "2026-02-05",
+    "director": "Jessi Gutch",
+    "runtime": 88,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "MIDWINTER BREAK": {
+    "tmdb_id": 1125701,
+    "tmdb_title": "Midwinter Break",
+    "tmdb_original_title": "Midwinter Break",
+    "overview": "Longtime retired couple Stella and Gerry realise that their relationship has reached a crossroads while on holiday in Amsterdam. After so much time and so many memories, long-held promises and deeply concealed wounds threaten to come to light and force them to confront their future.",
+    "poster_path": "/vkMOruokVnD05xSiwI2hWBzG7UD.jpg",
+    "backdrop_path": "/svwTSUdth8LH5RpS64C6xwPWPWa.jpg",
+    "release_date": "2026-02-20",
+    "director": "Polly Findlay",
+    "runtime": 91,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.0
+  },
+  "SOUND OF FALLING": {
+    "tmdb_id": 1221061,
+    "tmdb_title": "Sound of Falling",
+    "tmdb_original_title": "In die Sonne schauen",
+    "overview": "Four adolescent girls each spend their youth in the same farmhouse over the last century. Though separated by decades, resonances between their lives emerge: their desires and distress, secrets and truths, encounters with another’s gaze and defiant gaze in return.",
+    "poster_path": "/mv2edAI0vmheVVcv4mIVW5X8GNP.jpg",
+    "backdrop_path": "/cXr5YOMJKZBkokgNogHjEyFZLc6.jpg",
+    "release_date": "2025-08-28",
+    "director": "Mascha Schilinski",
+    "runtime": 148,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.8
+  },
+  "Wendy and Lucy": {
+    "tmdb_id": 8942,
+    "tmdb_title": "Wendy and Lucy",
+    "tmdb_original_title": "Wendy and Lucy",
+    "overview": "A near-penniless drifter's journey to Alaska in search of work is interrupted when she loses her dog while attempting to shoplift food for it.",
+    "poster_path": "/cVtF8SW4zMbculTXD52RDvmQAAR.jpg",
+    "backdrop_path": "/wUScRcpPtfFPZpWZmUIIbHLEsBJ.jpg",
+    "release_date": "2008-12-10",
+    "director": "Kelly Reichardt",
+    "runtime": 80,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.819
+  },
+  "Primavera": {
+    "tmdb_id": 1365683,
+    "tmdb_title": "Primavera",
+    "tmdb_original_title": "Primavera",
+    "overview": "In 18th-century Venice, 20-year-old violin virtuoso Cecilia lives at the Pièta orphanage, where, despite her talent, she remains confined, knowing that marriage is the only way out. Yet, her life takes a turn after she meets Antonio Vivaldi, a brilliant and ambitious composer who becomes the new violin teacher. Guided by Vivaldi and his music, Cecilia finds the strength to challenge the destiny that once seemed inevitable.",
+    "poster_path": "/6Giqb3a9ITCKhlkNeWtfzGWOxU0.jpg",
+    "backdrop_path": "/tjRhxRyaF7LgGnNP2lrAIo3cQSb.jpg",
+    "release_date": "2025-12-05",
+    "director": "Damiano Michieletto",
+    "runtime": 111,
+    "genres": [
+      "Music",
+      "Drama",
+      "History"
+    ],
+    "vote_average": 6.636
+  },
+  "CHARLEY VARRICK": {
+    "tmdb_id": 27331,
+    "tmdb_title": "Charley Varrick",
+    "tmdb_original_title": "Charley Varrick",
+    "overview": "Charley Varrick robs a bank in a small town with his friends, but instead of obtaining a small amount of money, they discover they stole a very large amount of money belonging to the mob. Charley must now come up with a plan to not only evade the police but the mob as well.",
+    "poster_path": "/qPG2VPNA72he1Kczm2yFmslPNZN.jpg",
+    "backdrop_path": "/3fQ3C4SetoVxSsODFPqJqmIOhJQ.jpg",
+    "release_date": "1973-09-19",
+    "director": "Don Siegel",
+    "runtime": 111,
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Drama",
+      "Action"
+    ],
+    "vote_average": 7.35
+  },
+  "REPO MAN": {
+    "tmdb_id": 13820,
+    "tmdb_title": "Repo Man",
+    "tmdb_original_title": "Repo Man",
+    "overview": "A down and out young punk gets a job working with a seasoned repo man, but what awaits him in his new career is a series of outlandish adventures revolving around aliens, the CIA, and a most wanted '64 Chevy.",
+    "poster_path": "/bjuu5UceuVUNUjnOC2fBzL3hZKC.jpg",
+    "backdrop_path": "/5K5oPo1NJrAVUeaPzcXFH13Xplo.jpg",
+    "release_date": "1984-03-02",
+    "director": "Alex Cox",
+    "runtime": 92,
+    "genres": [
+      "Comedy",
+      "Science Fiction"
+    ],
+    "vote_average": 6.663
+  },
+  "THE TRIAL": {
+    "tmdb_id": 49057,
+    "tmdb_title": "The Trial",
+    "tmdb_original_title": "The Trial",
+    "overview": "After the horrific death of his wife and two sons, suicide seems to be the only escape for small town attorney Kent \"Mac\" McClain... until he's assigned a capital punishment case that begins to transform his life and those around him forever.",
+    "poster_path": "/jM5jAE7lHznh2JbK5yGxThGkL4l.jpg",
+    "backdrop_path": "/s8Mdcgn07ia1q0xYrBQ96SAZ6id.jpg",
+    "release_date": "2010-09-10",
+    "director": "Gary Wheeler",
+    "runtime": 100,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 5.788
+  },
+  "DOCHOUSE: UNDER THE YUGOSLAV SKY": {
+    "tmdb_id": 366321,
+    "tmdb_title": "Under the Yugoslav Sky",
+    "tmdb_original_title": "Pod jugoslovenskim nebom",
+    "overview": "This is the first feature, as well as the first sound film made in Yugoslavia. It is a collection of vignettes made for tourism purposes showing the most beautiful parts of the country.",
+    "poster_path": "/e97RIOpAaKzcQzz1lHd6t2aL3CB.jpg",
+    "backdrop_path": null,
+    "release_date": "1934-01-01",
+    "director": "Miodrag Đorđević",
+    "runtime": 84,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "BREAKING SOCIAL": {
+    "tmdb_id": 951019,
+    "tmdb_title": "Breaking Social",
+    "tmdb_original_title": "Breaking Social",
+    "overview": "The social contract: the rules we follow - and some don’t. Breaking Social uncovers the pattern of corruption and kleptocracy erasing the social tissue, followed by social uprisings. In Chile a new turn is taken, with young women in the lead.",
+    "poster_path": "/wWpwHNQYAoHdjRFbOrm2hWTR7f1.jpg",
+    "backdrop_path": "/gAgHIZXARiDE76NIUAxqMRwDT1V.jpg",
+    "release_date": "2023-10-26",
+    "director": "Fredrik Gertten",
+    "runtime": 93,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 7.7
+  },
+  "The Traveler + Breaktime": {
+    "tmdb_id": 32612,
+    "tmdb_title": "The Traveler",
+    "tmdb_original_title": "The Traveler",
+    "overview": "On a dark Christmas Eve in a small town, the lone Sheriffs on the night shift encounter a mysterious man who goes by the name of Mr. Nobody. As the night progresses, the Sheriffs discover that this isn't just a nobody, but a vengeful killer whose past threatens to haunt them all.",
+    "poster_path": "/7vZ2C66SwastgmQKJ1wC41F2WFK.jpg",
+    "backdrop_path": "/dsoIyzH8MSnqh0yK0b9SGcDDzpv.jpg",
+    "release_date": "2010-11-15",
+    "director": "Michael Oblowitz",
+    "runtime": 96,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "vote_average": 5.4
+  },
+  "A Wedding Suit + Bread and Alley": {
+    "tmdb_id": 134209,
+    "tmdb_title": "A Wedding Suit",
+    "tmdb_original_title": "لباسی برای عروسی‎‎",
+    "overview": "A woman orders a suit from a tailor for her young son to wear to her sister's wedding. The tailor's apprentice, together with two other teenage boys who work in the same building, devise a plan to try on the suit at night to see what it feels like.",
+    "poster_path": "/g31ePKouKrV13Wt1Fsuow3PJl5M.jpg",
+    "backdrop_path": "/diUqFv3nk7iQPokMVgcdsr1Wkkb.jpg",
+    "release_date": "1976-01-01",
+    "director": "Abbas Kiarostami",
+    "runtime": 59,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.0
+  },
   "Drag performance, Scarlett Spritzes + Sylvia Scarlett": {
     "tmdb_id": 31866,
     "tmdb_title": "Sylvia Scarlett",
@@ -19760,64 +19977,46 @@
     ],
     "vote_average": 6.985
   },
-  "The Ponds + Swim Peeps Social": {
-    "tmdb_id": 576896,
-    "tmdb_title": "The Ponds",
-    "tmdb_original_title": "The Ponds",
-    "overview": "Twelve months spent following the year-round swimmers who frequent the Men's, Ladies' and Mixed Ponds on Hampstead Heath, London - unique bathing spots in which people have taken the waters since the days of Byron, Keats and John Constable.",
-    "poster_path": "/hlBRy7EyebGqJU7HM7XZpD20fkc.jpg",
-    "backdrop_path": null,
-    "release_date": "2019-01-10",
-    "director": "Samuel Smith",
-    "runtime": 76,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 6.0
-  },
-  "Electric Scream! My Father's Shadow": null,
-  "Electric Scream! The Secret Agent": null,
-  "Electric Scream! Peaky Blinders": null,
-  "Wuthering Heights: Screening + Book Club Presented by Girls in Film and It's Hardback Out Here": null,
+  "The Ponds + Swim Peeps Social": null,
+  "Faber book launch & quiz": null,
+  "Everybody to Kenmure Street Rating": null,
   "Im Migrant: Koutaiba al Janabi and Ghani Alani - I'm Migrant Film Festival": null,
   "RuPaul's Drag Race: UK vs. the World Series 3.": null,
   "Bar Trash: TERMINAL ISLAND (1973) with Selina Robertson & Isabel Moir": null,
   "Six Nations": null,
   "Bobby Fortunes 2000 Fathoms": null,
-  "The Traveler + Breaktime": {
-    "tmdb_id": 32612,
-    "tmdb_title": "The Traveler",
-    "tmdb_original_title": "The Traveler",
-    "overview": "On a dark Christmas Eve in a small town, the lone Sheriffs on the night shift encounter a mysterious man who goes by the name of Mr. Nobody. As the night progresses, the Sheriffs discover that this isn't just a nobody, but a vengeful killer whose past threatens to haunt them all.",
-    "poster_path": "/7vZ2C66SwastgmQKJ1wC41F2WFK.jpg",
-    "backdrop_path": "/dsoIyzH8MSnqh0yK0b9SGcDDzpv.jpg",
-    "release_date": "2010-11-15",
-    "director": "Michael Oblowitz",
-    "runtime": 96,
+  "Bar Trash: EMPIRE OF THE ANTS (1977)": {
+    "tmdb_id": 42218,
+    "tmdb_title": "Empire of the Ants",
+    "tmdb_original_title": "Empire of the Ants",
+    "overview": "A Florida real estate developer and her captain lure investors to a property in the Everglades called Dreamland Shores, under false pretenses that the swampland will soon be developed. After the group arrives on a small island, they find it has been overrun by giant mutated ants, brought on by the dumping of toxic waste in the area.",
+    "poster_path": "/6cmuKjH92h2wrBlbj0WPaTdnpnl.jpg",
+    "backdrop_path": "/fZqKC0Dw420APMovCTdneSURJDb.jpg",
+    "release_date": "1977-06-29",
+    "director": "Bert I. Gordon",
+    "runtime": 89,
     "genres": [
       "Horror",
-      "Thriller"
+      "Science Fiction"
     ],
-    "vote_average": 5.4
+    "vote_average": 4.9
   },
-  "A Wedding Suit + Bread and Alley": {
-    "tmdb_id": 134209,
-    "tmdb_title": "A Wedding Suit",
-    "tmdb_original_title": "لباسی برای عروسی‎‎",
-    "overview": "A woman orders a suit from a tailor for her young son to wear to her sister's wedding. The tailor's apprentice, together with two other teenage boys who work in the same building, devise a plan to try on the suit at night to see what it feels like.",
-    "poster_path": "/g31ePKouKrV13Wt1Fsuow3PJl5M.jpg",
-    "backdrop_path": "/diUqFv3nk7iQPokMVgcdsr1Wkkb.jpg",
-    "release_date": "1976-01-01",
-    "director": "Abbas Kiarostami",
-    "runtime": 59,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.0
-  },
+  "Members Only: Friendship Collage Workshop": null,
+  "Pitchblack Playback: Carole King 'Tapestry' + Nick Drake 'Bryter Layter'": null,
+  "Pitchblack Playback: Alice Coltrane 'Journey In Satchidananda' + Herbie Hancock 'Maiden Voyage''": null,
+  "THE HEIRLOOM presented by Jellied Reels": null,
+  "Electric Scream! My Father's Shadow": null,
+  "Electric Scream! The Secret Agent": null,
+  "Electric Scream! Peaky Blinders": null,
   "Pompeii: Below the Clouds": null,
   "Kinoteka: In Memoriam – Marcel Łoziński": null,
-  "The Grandmaster (Extended Cut)": null,
+  "Molly Vs THE MACHINES + Discussion": null,
+  "Little White Lies: The Testament of Ann Lee": null,
+  "Pink Palace: Wakefield Poole’s Bijou + Intro": null,
+  "Women from Hackney's History Premiere + Panel": null,
+  "Soul To Soul": null,
+  "Iris LGBTQ+ Film Festival On the Move: Best Bits + Q&A": null,
+  "TV PARTY, TONIGHT!: A Pink Palace Collaboration": null,
   "Sing-A-Long-A Rocky Horror Picture Show": null,
   "The Lord of the Rings Trilogy - Extended Editions": null,
   "Mystery Movie Marathon": null,
@@ -19840,67 +20039,28 @@
       "Action",
       "Drama"
     ],
-    "vote_average": 8.451
+    "vote_average": 8.4
   },
   "Dune : Part One": null,
   "Captured Souls: In Conversation with Graham Humphreys": null,
   "Funeral Parade presents \"Young Soul Rebels\"": null,
-  "Ivan's Childhood": {
-    "tmdb_id": 31442,
-    "tmdb_title": "Ivan's Childhood",
-    "tmdb_original_title": "Иваново детство",
-    "overview": "In WW2, twelve year old Soviet orphan Ivan Bondarev works for the Soviet army as a scout behind the German lines and strikes a friendship with three sympathetic Soviet officers.",
-    "poster_path": "/vmRWSLP1DE9WTta0hfzIafJ0dID.jpg",
-    "backdrop_path": "/jOulpNwtoJP5fF1LJX1ojw6BxBq.jpg",
-    "release_date": "1962-05-09",
-    "director": "Andrei Tarkovsky",
-    "runtime": 95,
+  "Solve Along A Murder She Wrote": null,
+  "Big Shark": {
+    "tmdb_id": 580428,
+    "tmdb_title": "Big Shark",
+    "tmdb_original_title": "Big Shark",
+    "overview": "Three firefighters must save New Orleans from a gigantic shark.",
+    "poster_path": "/pOTmZMeAaSQLydJrByAuekYiVIU.jpg",
+    "backdrop_path": "/a9GJj0dasZQUGt93ySHLTHbBPff.jpg",
+    "release_date": "2023-04-28",
+    "director": "Tommy Wiseau",
+    "runtime": 105,
     "genres": [
-      "Drama",
-      "War"
-    ],
-    "vote_average": 7.8
-  },
-  "Ashes of Time Redux": {
-    "tmdb_id": 40751,
-    "tmdb_title": "Ashes of Time",
-    "tmdb_original_title": "東邪西毒",
-    "overview": "Ouyang Feng is a heartbroken and cynical man who spends his days in the desert, connecting expert swordsmen with those seeking revenge and willing to pay for it. Throughout five seasons in exile, Ouyang spins tales of his clients' unrequited loves and unusual acts of bravery.",
-    "poster_path": "/ciyEwAbvoMHPP3281cgSnfslu43.jpg",
-    "backdrop_path": "/smtzZRpE8hQkQNnhQg2TIRfcWcj.jpg",
-    "release_date": "1994-09-17",
-    "director": "Wong Kar-Wai",
-    "runtime": 100,
-    "genres": [
-      "Drama",
-      "Action"
-    ],
-    "vote_average": 7.058
-  },
-  "Pink Palace: Cat People (on VHS)": null,
-  "Molly Vs THE MACHINES + Discussion": null,
-  "Little White Lies: The Testament of Ann Lee": null,
-  "Pink Palace: Wakefield Poole’s Bijou + Intro": null,
-  "Women from Hackney's History Premiere + Panel": null,
-  "Soul To Soul": null,
-  "Iris LGBTQ+ Film Festival On the Move: Best Bits + Q&A": null,
-  "TV PARTY, TONIGHT!: A Pink Palace Collaboration": null,
-  "Black History Studies: Afeni Shakur and the Trial of the Black Panther 21 + Liberty Double Bill": {
-    "tmdb_id": 284262,
-    "tmdb_title": "Liberty",
-    "tmdb_original_title": "Liberty",
-    "overview": "Born with valuable and powerful abilities, a young woman escapes a confidential, brutal experiment. Federal agents will stop at nothing to capture her.",
-    "poster_path": "/t3PnVs1uWl0LuoJT6JRwClguRXu.jpg",
-    "backdrop_path": null,
-    "release_date": "",
-    "director": "",
-    "runtime": 0,
-    "genres": [
-      "Thriller",
       "Horror",
-      "Science Fiction"
+      "Comedy",
+      "Adventure"
     ],
-    "vote_average": 0.0
+    "vote_average": 6.5
   },
   "It's Never Over, Jeff Buckley": null,
   "Annemarie Jacir: Wajib": null,
@@ -19921,22 +20081,6 @@
   },
   "Molly Vs THE MACHINES + recorded debate": null,
   "Exhibition On Screen: Turner &amp; Constable": null,
-  "Blue Has No Borders + Q&amp;A": {
-    "tmdb_id": 1480401,
-    "tmdb_title": "Blue Has No Borders",
-    "tmdb_original_title": "Blue Has No Borders",
-    "overview": "A young filmmaker is determined to know her neighbours in the port town of Folkestone. But in the aftermath of Brexit, building new relationships isn’t easy.",
-    "poster_path": "/yAwJkpXQWsI6VWOfBsDZZezhfss.jpg",
-    "backdrop_path": "/nRjT8eE9F54ayzuf2QBeBiMD8UD.jpg",
-    "release_date": "2026-02-05",
-    "director": "Jessi Gutch",
-    "runtime": 88,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 0.0
-  },
-  "Secrets of the Jinn Valley Treasure + Introduction (15*)": null,
   "Babykino: Hamnet": {
     "tmdb_id": 858024,
     "tmdb_title": "Hamnet",
@@ -19952,49 +20096,9 @@
       "Romance",
       "History"
     ],
-    "vote_average": 7.719
+    "vote_average": 7.7
   },
   "Exhibition on Screen: Turner & Constable": null,
-  "EOS: TURNER AND CONSTABLE 2026": null,
-  "GALAXY QUEST (Dementia-Friendly Screening)": null,
-  "GALAXY QUEST (Relaxed Screening)": null,
-  "HAMNET (Babes-In-Arms screening)": null,
-  "MARTY SUPREME (BiAs)": null,
-  "MIDWINTER BREAK": {
-    "tmdb_id": 1125701,
-    "tmdb_title": "Midwinter Break",
-    "tmdb_original_title": "Midwinter Break",
-    "overview": "Longtime retired couple Stella and Gerry realise that their relationship has reached a crossroads while on holiday in Amsterdam. After so much time and so many memories, long-held promises and deeply concealed wounds threaten to come to light and force them to confront their future.",
-    "poster_path": "/vkMOruokVnD05xSiwI2hWBzG7UD.jpg",
-    "backdrop_path": "/svwTSUdth8LH5RpS64C6xwPWPWa.jpg",
-    "release_date": "2026-02-20",
-    "director": "Polly Findlay",
-    "runtime": 91,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.0
-  },
-  "MUSICAL SHORTS - Presented by Small World Cinema": null,
-  "NOVELLE VAGUE": null,
-  "SOUND OF FALLING": {
-    "tmdb_id": 1221061,
-    "tmdb_title": "Sound of Falling",
-    "tmdb_original_title": "In die Sonne schauen",
-    "overview": "Four adolescent girls each spend their youth in the same farmhouse over the last century. Though separated by decades, resonances between their lives emerge: their desires and distress, secrets and truths, encounters with another’s gaze and defiant gaze in return.",
-    "poster_path": "/mv2edAI0vmheVVcv4mIVW5X8GNP.jpg",
-    "backdrop_path": "/cXr5YOMJKZBkokgNogHjEyFZLc6.jpg",
-    "release_date": "2025-08-28",
-    "director": "Mascha Schilinski",
-    "runtime": 148,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 6.8
-  },
-  "YOUNG FRANKENSTEIN (Dementia-Friendly Screening)": null,
-  "YOUNG FRANKENSTEIN (Relaxed Screening)": null,
-  "FUN IN THE LOUNGE - FREE ENTRY: OPEN MIC": null,
   "LIVE JAZZ WITH TRENT PIETERSE QUARTET": null,
   "GENTLE, ANGRY WOMEN + DIRECTOR Q&A": null,
   "CLASSIC MATINEE:THE AGE OF INNOCENCE": null,
@@ -20031,39 +20135,82 @@
     "vote_average": 7.7
   },
   "EXHIBITION ON SCREEN: TURNER & CONSTABLE": null,
+  "EOS: TURNER AND CONSTABLE 2026": null,
+  "GALAXY QUEST (Dementia-Friendly Screening)": null,
+  "GALAXY QUEST (Relaxed Screening)": null,
+  "HAMNET (Babes-In-Arms screening)": null,
+  "MARTY SUPREME (BiAs)": null,
+  "MUSICAL SHORTS - Presented by Small World Cinema": null,
+  "YOUNG FRANKENSTEIN (Dementia-Friendly Screening)": null,
+  "YOUNG FRANKENSTEIN (Relaxed Screening)": null,
   "My Father’s Shadow": null,
-  "Wuthering Heights (15) captioned screening": {
-    "tmdb_id": 1316092,
-    "tmdb_title": "\"Wuthering Heights\"",
-    "tmdb_original_title": "\"Wuthering Heights\"",
-    "overview": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England.",
-    "poster_path": "/ywRO5dyE8RyyXJd6cvd69jLZeic.jpg",
-    "backdrop_path": "/vSQSYd2zZTqc0zmHImwWEGGluMI.jpg",
-    "release_date": "2026-02-11",
-    "director": "Emerald Fennell",
-    "runtime": 136,
+  "Hamnet (12A)": {
+    "tmdb_id": 858024,
+    "tmdb_title": "Hamnet",
+    "tmdb_original_title": "Hamnet",
+    "overview": "The powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
+    "poster_path": "/vbeyOZm2bvBXcbgPD3v6o94epPX.jpg",
+    "backdrop_path": "/73BClq9FOcrWrutnpiqhCNEWEwJ.jpg",
+    "release_date": "2025-11-26",
+    "director": "Chloé Zhao",
+    "runtime": 126,
     "genres": [
-      "Romance",
-      "Drama"
-    ],
-    "vote_average": 6.503
-  },
-  "Nouvelle Vague (12A) captioned screening": {
-    "tmdb_id": 1254808,
-    "tmdb_title": "Nouvelle Vague",
-    "tmdb_original_title": "Nouvelle Vague",
-    "overview": "After writing for Cahiers du cinéma, a young Jean-Luc Godard decides making films is the best film criticism. He convinces producer Georges de Beauregard to fund a low-budget feature, and creates a treatment with fellow New Wave filmmaker François Truffaut about a gangster couple. The result? Breathless, one of the first features of the Nouvelle Vague era of French cinema.",
-    "poster_path": "/AfE7DZ0DPgme6I58dlYp1Bo9xeN.jpg",
-    "backdrop_path": "/c15Fg4jvclF5VjxCi1mtjUg4a6H.jpg",
-    "release_date": "2025-10-08",
-    "director": "Richard Linklater",
-    "runtime": 106,
-    "genres": [
-      "Comedy",
       "Drama",
+      "Romance",
       "History"
     ],
-    "vote_average": 7.326
+    "vote_average": 7.7
+  },
+  "The Testament of Ann Lee (15*)": {
+    "tmdb_id": 1401281,
+    "tmdb_title": "The Testament of Ann Lee",
+    "tmdb_original_title": "The Testament of Ann Lee",
+    "overview": "The extraordinary true legend of Ann Lee, founder of the devotional sect known as the Shakers.",
+    "poster_path": "/hU1frHnDwJQ3YDERVppxTLvHjc7.jpg",
+    "backdrop_path": "/r6rCEYFdk8FcKc5x9zJFJUSPGJg.jpg",
+    "release_date": "2025-12-25",
+    "director": "Mona Fastvold",
+    "runtime": 137,
+    "genres": [
+      "Drama",
+      "History",
+      "Music"
+    ],
+    "vote_average": 6.8
+  },
+  "Sirât (15)": {
+    "tmdb_id": 1151272,
+    "tmdb_title": "Sirāt",
+    "tmdb_original_title": "Sirāt",
+    "overview": "A man and his son arrive at a rave lost in the mountains of Morocco. They are looking for Marina, their daughter and sister, who disappeared months ago at another rave. Driven by fate, they decide to follow a group of ravers in search of one last party, in hopes Marina will be there.",
+    "poster_path": "/bzBtsLi17rK4G6kDvOXfUZfAhca.jpg",
+    "backdrop_path": "/kOUV5WbisWMg56d8eB45ZHEVxYq.jpg",
+    "release_date": "2025-06-06",
+    "director": "Oliver Laxe",
+    "runtime": 115,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Music"
+    ],
+    "vote_average": 6.802
+  },
+  "The Testament of Ann Lee [35mm] (15*)": {
+    "tmdb_id": 1401281,
+    "tmdb_title": "The Testament of Ann Lee",
+    "tmdb_original_title": "The Testament of Ann Lee",
+    "overview": "The extraordinary true legend of Ann Lee, founder of the devotional sect known as the Shakers.",
+    "poster_path": "/hU1frHnDwJQ3YDERVppxTLvHjc7.jpg",
+    "backdrop_path": "/r6rCEYFdk8FcKc5x9zJFJUSPGJg.jpg",
+    "release_date": "2025-12-25",
+    "director": "Mona Fastvold",
+    "runtime": 137,
+    "genres": [
+      "Drama",
+      "History",
+      "Music"
+    ],
+    "vote_average": 6.8
   },
   "Looney Tunes: The Day The Earth Blew Up": null,
   "RBO: Giselle": null,
@@ -20131,7 +20278,7 @@
       "Romance",
       "Music"
     ],
-    "vote_average": 7.536
+    "vote_average": 7.5
   },
   "UK Premiere: Behind the Open Door + Q&amp;A": null,
   "Spectra: Dreamscapes": null,
@@ -20196,14 +20343,44 @@
     ],
     "vote_average": 6.792
   },
-  "Kotoa & Friends Meets Rocking Time HIFI": null,
+  "Wuthering Heights (15) captioned screening": {
+    "tmdb_id": 1316092,
+    "tmdb_title": "\"Wuthering Heights\"",
+    "tmdb_original_title": "\"Wuthering Heights\"",
+    "overview": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England.",
+    "poster_path": "/ywRO5dyE8RyyXJd6cvd69jLZeic.jpg",
+    "backdrop_path": "/vSQSYd2zZTqc0zmHImwWEGGluMI.jpg",
+    "release_date": "2026-02-11",
+    "director": "Emerald Fennell",
+    "runtime": 136,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "vote_average": 6.5
+  },
+  "Nouvelle Vague (12A) captioned screening": {
+    "tmdb_id": 1254808,
+    "tmdb_title": "Nouvelle Vague",
+    "tmdb_original_title": "Nouvelle Vague",
+    "overview": "After writing for Cahiers du cinéma, a young Jean-Luc Godard decides making films is the best film criticism. He convinces producer Georges de Beauregard to fund a low-budget feature, and creates a treatment with fellow New Wave filmmaker François Truffaut about a gangster couple. The result? Breathless, one of the first features of the Nouvelle Vague era of French cinema.",
+    "poster_path": "/AfE7DZ0DPgme6I58dlYp1Bo9xeN.jpg",
+    "backdrop_path": "/c15Fg4jvclF5VjxCi1mtjUg4a6H.jpg",
+    "release_date": "2025-10-08",
+    "director": "Richard Linklater",
+    "runtime": 106,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "History"
+    ],
+    "vote_average": 7.326
+  },
   "Crafty Movie Night – Dirty Dancing": null,
   "The Shepherd and the Bear (Docs Night)": null,
   "Special Guest x THE GREMLINS": null,
   "Bloody Mary Film Club – Film TBA": null,
   "Looney Tunes: The Day the Earth Blew Up": null,
-  "elevenfiftyfive elevenfiftyfive Soundsystem Presents: SIRĀT Thu 26 Feb": null,
-  "Dubplate presents Dubplate Drama 20th Anniversary Screening FRI 27 FEB 18_Live": null,
   "Celebrating Peaky Blinders": null,
   "Arts and Multiculturalism": null,
   "The Subnormal Scandal": null,
@@ -20213,40 +20390,71 @@
   "The Quiz of Rassilon": null,
   "The Solidarity Trilogy: Walesa: Man of Hope": null,
   "A Focus on the Bandung File": null,
-  "Wendy and Lucy": {
-    "tmdb_id": 8942,
-    "tmdb_title": "Wendy and Lucy",
-    "tmdb_original_title": "Wendy and Lucy",
-    "overview": "A near-penniless drifter's journey to Alaska in search of work is interrupted when she loses her dog while attempting to shoplift food for it.",
-    "poster_path": "/cVtF8SW4zMbculTXD52RDvmQAAR.jpg",
-    "backdrop_path": "/wUScRcpPtfFPZpWZmUIIbHLEsBJ.jpg",
-    "release_date": "2008-12-10",
-    "director": "Kelly Reichardt",
-    "runtime": 80,
+  "Member exclusive: Sirat": null,
+  "Multiculturalism Goes Mainstream": null,
+  "A House of Dynamite": {
+    "tmdb_id": 1290159,
+    "tmdb_title": "A House of Dynamite",
+    "tmdb_original_title": "A House of Dynamite",
+    "overview": "When a single, unattributed missile is launched at the United States, a race begins to determine who is responsible and how to respond.",
+    "poster_path": "/AiJ8L90ftPAwVf3SDx7Fj9IMZoy.jpg",
+    "backdrop_path": "/5SVRVwBfHCIkffiq0MmbdvnHWSz.jpg",
+    "release_date": "2025-10-02",
+    "director": "Kathryn Bigelow",
+    "runtime": 112,
+    "genres": [
+      "Thriller"
+    ],
+    "vote_average": 6.397
+  },
+  "A Year of School": {
+    "tmdb_id": 1442922,
+    "tmdb_title": "A Year of School",
+    "tmdb_original_title": "Un anno di scuola",
+    "overview": "2007. Fred, a 17-year-old girl who just moved from Sweden to Northeast Italy, enrolls for her high school senior year—finding herself the only female student in an all-male class. Lively and good-looking, she quickly becomes the center of attention, especially for three classmates: Antero, charming and reserved; Pasini, a cocky womanizer; Mitis, gruff and sagacious. The three have been best friends for as long as they can remember, but Fred's arrival puts their longstanding bond to the test. As each of the guys secretly desires Fred for himself, she yearns to be accepted into the group and be considered 'one of them', but is asked to sacrifice more and more in order to belong.",
+    "poster_path": "/p1Fd8cIp0rfqfmlb66ydZADsJP.jpg",
+    "backdrop_path": "/2stEL3ibnjg9B9Rjr0U4CyuYc5Z.jpg",
+    "release_date": "2026-06-10",
+    "director": "Laura Samani",
+    "runtime": 102,
     "genres": [
       "Drama"
     ],
-    "vote_average": 6.819
+    "vote_average": 0.0
   },
-  "Member exclusive: Sirat": null,
-  "Primavera": {
-    "tmdb_id": 1365683,
-    "tmdb_title": "Primavera",
-    "tmdb_original_title": "Primavera",
-    "overview": "In 18th-century Venice, 20-year-old violin virtuoso Cecilia lives at the Pièta orphanage, where, despite her talent, she remains confined, knowing that marriage is the only way out. Yet, her life takes a turn after she meets Antonio Vivaldi, a brilliant and ambitious composer who becomes the new violin teacher. Guided by Vivaldi and his music, Cecilia finds the strength to challenge the destiny that once seemed inevitable.",
-    "poster_path": "/6Giqb3a9ITCKhlkNeWtfzGWOxU0.jpg",
-    "backdrop_path": "/tjRhxRyaF7LgGnNP2lrAIo3cQSb.jpg",
-    "release_date": "2025-12-05",
-    "director": "Damiano Michieletto",
-    "runtime": 111,
+  "Heads or Tails?": {
+    "tmdb_id": 1078822,
+    "tmdb_title": "Heads or Tails?",
+    "tmdb_original_title": "Testa o croce?",
+    "overview": "When cowboy Billi and his sweetheart Rosa run away together, he is accused of her husband's death and becomes the symbol of a local uprising. Everyone wants his head and only Rosa knows the secret that could finally set them free.",
+    "poster_path": "/Tv6fscEsGNVk9op70Mm5ctIqfl.jpg",
+    "backdrop_path": "/bbntAQGbL0E54CiyC9ficb70UEj.jpg",
+    "release_date": "2025-10-02",
+    "director": "Matteo Zoppis",
+    "runtime": 116,
     "genres": [
-      "Music",
-      "Drama",
-      "History"
+      "Western",
+      "Comedy"
     ],
-    "vote_average": 6.636
+    "vote_average": 6.5
   },
-  "Multiculturalism Goes Mainstream": null,
+  "Katyn": {
+    "tmdb_id": 13614,
+    "tmdb_title": "Katyn",
+    "tmdb_original_title": "Katyń",
+    "overview": "On September 1st, 1939, Nazi Germany invades Poland, unleashing World War II. On September 17th, the Soviet Red Army crosses the border. The Polish army, unable to fight on two fronts, is defeated. Thousands of Polish men, both military and government officials, are captured by the invaders. Their fate will only be known several years later.",
+    "poster_path": "/g9yyF5zC2pel0gG6vxlVpkDgZgC.jpg",
+    "backdrop_path": "/8nDDWPMB6odNmWpKy0VQaiXyxMY.jpg",
+    "release_date": "2007-09-21",
+    "director": "Andrzej Wajda",
+    "runtime": 122,
+    "genres": [
+      "Drama",
+      "History",
+      "War"
+    ],
+    "vote_average": 6.721
+  },
   "DEVIL STORY (DUBBED)": null,
   "MYSTERY MOVIENot for the easily offended, and strictly programmed for adult audiences only - our mystery films are eye-popping forays into the bold and bonkers world of psychotronic cinema. Expect the unacceptable.Certificate:18Friday27.2Doors8:15pmFilm8:45pmDigitalBook here": null,
   "BLONDE DEATH (ON VHS)": null,
@@ -20289,40 +20497,9 @@
     ],
     "vote_average": 4.813
   },
-  "CHARLEY VARRICK": {
-    "tmdb_id": 27331,
-    "tmdb_title": "Charley Varrick",
-    "tmdb_original_title": "Charley Varrick",
-    "overview": "Charley Varrick robs a bank in a small town with his friends, but instead of obtaining a small amount of money, they discover they stole a very large amount of money belonging to the mob. Charley must now come up with a plan to not only evade the police but the mob as well.",
-    "poster_path": "/qPG2VPNA72he1Kczm2yFmslPNZN.jpg",
-    "backdrop_path": "/3fQ3C4SetoVxSsODFPqJqmIOhJQ.jpg",
-    "release_date": "1973-09-19",
-    "director": "Don Siegel",
-    "runtime": 111,
-    "genres": [
-      "Crime",
-      "Thriller",
-      "Drama",
-      "Action"
-    ],
-    "vote_average": 7.35
-  },
-  "REPO MAN": {
-    "tmdb_id": 13820,
-    "tmdb_title": "Repo Man",
-    "tmdb_original_title": "Repo Man",
-    "overview": "A down and out young punk gets a job working with a seasoned repo man, but what awaits him in his new career is a series of outlandish adventures revolving around aliens, the CIA, and a most wanted '64 Chevy.",
-    "poster_path": "/bjuu5UceuVUNUjnOC2fBzL3hZKC.jpg",
-    "backdrop_path": "/5K5oPo1NJrAVUeaPzcXFH13Xplo.jpg",
-    "release_date": "1984-03-02",
-    "director": "Alex Cox",
-    "runtime": 92,
-    "genres": [
-      "Comedy",
-      "Science Fiction"
-    ],
-    "vote_average": 6.663
-  },
+  "SUPERMARKT": null,
+  "NAKED KILLER": null,
+  "Dubplate presents Dubplate Drama 20th Anniversary Screening FRI 27 FEB 18_Live": null,
   "Film Club Awards Panel 2026": null,
   "BAFTA 2026 Best Picture Winner: One Battle": null,
   "The Kitchen Brigade [La brigade]": {
@@ -20342,7 +20519,78 @@
     "vote_average": 6.4
   },
   "Exhibition On Screen: Turner & Constable": null,
-  "The Testament of Ann Lee (70mm)": null,
+  "American Fiction": {
+    "tmdb_id": 1056360,
+    "tmdb_title": "American Fiction",
+    "tmdb_original_title": "American Fiction",
+    "overview": "A novelist fed up with the establishment profiting from \"Black\" entertainment uses a pen name to write a book that propels him into the heart of hypocrisy and the madness he claims to disdain.",
+    "poster_path": "/57MFWGHarg9jid7yfDTka4RmcMU.jpg",
+    "backdrop_path": "/3mpgltEMgPf8zFtPnAWdDVN8ZT1.jpg",
+    "release_date": "2023-11-10",
+    "director": "Cord Jefferson",
+    "runtime": 117,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.269
+  },
+  "Toddler Club: Lilo & Stitch (2002)": null,
+  "Little Amélie": null,
+  "Throwback: The Fifth Element": {
+    "tmdb_id": 18,
+    "tmdb_title": "The Fifth Element",
+    "tmdb_original_title": "Le Cinquième Élément",
+    "overview": "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.",
+    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
+    "backdrop_path": "/bx1W729hyWQqNQoiq9LsX30FBf.jpg",
+    "release_date": "1997-05-02",
+    "director": "Luc Besson",
+    "runtime": 126,
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "vote_average": 7.563
+  },
+  "La Bohème": null,
+  "RBO Cinema Season 2025-26: Giselle": null,
+  "Grace Campbell Presents: Best In Show": {
+    "tmdb_id": 13785,
+    "tmdb_title": "Best in Show",
+    "tmdb_original_title": "Best in Show",
+    "overview": "The tension is palpable, the excitement is mounting and the heady scent of competition is in the air as hundreds of eager contestants from across America prepare to take part in what is undoubtedly one of the greatest events of their lives -- the Mayflower Dog Show. The canine contestants and their owners are as wondrously diverse as the great country that has bred them.",
+    "poster_path": "/oH3usecZHZYHOLpDrWAXUQ7Qaua.jpg",
+    "backdrop_path": "/itVxHnmzMJbfHhX3rbzCuyI9mfB.jpg",
+    "release_date": "2000-09-29",
+    "director": "Christopher Guest",
+    "runtime": 90,
+    "genres": [
+      "Comedy"
+    ],
+    "vote_average": 6.856
+  },
+  "Bounce Short Film Night": null,
+  "Toddler Club: Stick Man + Superworm": null,
+  "Throwback: Singin' in the Rain": {
+    "tmdb_id": 872,
+    "tmdb_title": "Singin' in the Rain",
+    "tmdb_original_title": "Singin' in the Rain",
+    "overview": "In 1927 Hollywood, a silent film star falls for a chorus girl just as he and his paranoid screen partner struggle to make the difficult transition to talking pictures.",
+    "poster_path": "/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
+    "backdrop_path": "/6qOyw4yfzbzTp5YsCX26C28Do0S.jpg",
+    "release_date": "1952-04-10",
+    "director": "Stanley Donen",
+    "runtime": 103,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 8.138
+  },
+  "Beyond: If I Had Legs I'd Kick You": null,
+  "Soundtracking: Broken English": null,
   "Relaxed Screening: Casablanca": {
     "tmdb_id": 289,
     "tmdb_title": "Casablanca",
@@ -20352,13 +20600,14 @@
     "backdrop_path": "/87wqeMeUeMRLjsE1IWNKJcPlpuC.jpg",
     "release_date": "1943-01-15",
     "director": "Michael Curtiz",
-    "runtime": 98,
+    "runtime": 102,
     "genres": [
       "Drama",
       "Romance"
     ],
-    "vote_average": 8.143
+    "vote_average": 8.1
   },
+  "The Testament of Ann Lee (70mm)": null,
   "Drink & Dine: Licorice Pizza + Pizza Night": {
     "tmdb_id": 718032,
     "tmdb_title": "Licorice Pizza",
@@ -20374,10 +20623,9 @@
       "Comedy",
       "Romance"
     ],
-    "vote_average": 7.0
+    "vote_average": 6.955
   },
   "Blues at the Ritzy": null,
-  "Little Amélie": null,
   "The Conversation (50th Anniversary 4K Restoration)": {
     "tmdb_id": 970943,
     "tmdb_title": "The Conversation",
@@ -20410,7 +20658,7 @@
       "Horror",
       "Mystery"
     ],
-    "vote_average": 5.983
+    "vote_average": 5.987
   },
   "My Beautiful Laundrette (40th Anniversary) + Q&A": {
     "tmdb_id": 11240,
@@ -20481,7 +20729,7 @@
       "Thriller",
       "Science Fiction"
     ],
-    "vote_average": 6.793
+    "vote_average": 6.792
   },
   "Hackney Film Quiz": null,
   "Blue Has No Borders + Jessi Gutch Q&A": {
@@ -20517,6 +20765,7 @@
     "vote_average": 0.0
   },
   "Belgrade Noir: Vladimir Pogacic's Big and Small": null,
+  "Dog-Friendly Screening: Hoppers": null,
   "Awards Lunch: Sentimental Value + Soundtrack": {
     "tmdb_id": 78467,
     "tmdb_title": "Soundtrack",
@@ -20606,6 +20855,7 @@
     ],
     "vote_average": 7.866
   },
+  "Arco - Preview": null,
   "Drink & Dine: Sinners + Listening Party": {
     "tmdb_id": 1233413,
     "tmdb_title": "Sinners",
@@ -20621,7 +20871,7 @@
       "Action",
       "Thriller"
     ],
-    "vote_average": 7.49
+    "vote_average": 7.491
   },
   "Academy Awards Best Picture Winner 2026": null,
   "Club Room: Joe Pettitt Trio": null,
@@ -20717,7 +20967,7 @@
       "Romance",
       "Music"
     ],
-    "vote_average": 7.536
+    "vote_average": 7.5
   },
   "Drink & Dine: Purple Rain + Prince Dance Party": {
     "tmdb_id": 13763,
@@ -20751,61 +21001,6 @@
   "NT: The Playboy of the Western World - Knit-Along": null,
   "Teatro dell’Opera di Roma: Lohengrin": null,
   "La Scala Milan: Cosi Fan Tutte": null,
-  "Toddler Club: Lilo & Stitch (2002)": null,
-  "Throwback: The Fifth Element": {
-    "tmdb_id": 18,
-    "tmdb_title": "The Fifth Element",
-    "tmdb_original_title": "Le Cinquième Élément",
-    "overview": "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.",
-    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
-    "backdrop_path": "/bx1W729hyWQqNQoiq9LsX30FBf.jpg",
-    "release_date": "1997-05-02",
-    "director": "Luc Besson",
-    "runtime": 126,
-    "genres": [
-      "Science Fiction",
-      "Action",
-      "Adventure"
-    ],
-    "vote_average": 7.6
-  },
-  "La Bohème": null,
-  "RBO Cinema Season 2025-26: Giselle": null,
-  "Grace Campbell Presents: Best In Show": {
-    "tmdb_id": 13785,
-    "tmdb_title": "Best in Show",
-    "tmdb_original_title": "Best in Show",
-    "overview": "The tension is palpable, the excitement is mounting and the heady scent of competition is in the air as hundreds of eager contestants from across America prepare to take part in what is undoubtedly one of the greatest events of their lives -- the Mayflower Dog Show. The canine contestants and their owners are as wondrously diverse as the great country that has bred them.",
-    "poster_path": "/oH3usecZHZYHOLpDrWAXUQ7Qaua.jpg",
-    "backdrop_path": "/itVxHnmzMJbfHhX3rbzCuyI9mfB.jpg",
-    "release_date": "2000-09-29",
-    "director": "Christopher Guest",
-    "runtime": 90,
-    "genres": [
-      "Comedy"
-    ],
-    "vote_average": 6.863
-  },
-  "Bounce Short Film Night": null,
-  "Toddler Club: Stick Man + Superworm": null,
-  "Throwback: Singin' in the Rain": {
-    "tmdb_id": 872,
-    "tmdb_title": "Singin' in the Rain",
-    "tmdb_original_title": "Singin' in the Rain",
-    "overview": "In 1927 Hollywood, a silent film star falls for a chorus girl just as he and his paranoid screen partner struggle to make the difficult transition to talking pictures.",
-    "poster_path": "/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
-    "backdrop_path": "/6qOyw4yfzbzTp5YsCX26C28Do0S.jpg",
-    "release_date": "1952-04-10",
-    "director": "Gene Kelly",
-    "runtime": 103,
-    "genres": [
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 8.139
-  },
-  "Beyond: If I Had Legs I'd Kick You": null,
-  "Schroeter Shorts Programme 1": null,
   "Preview Resurrection": {
     "tmdb_id": 872497,
     "tmdb_title": "Resurrection",
@@ -20821,11 +21016,12 @@
       "Horror",
       "Mystery"
     ],
-    "vote_average": 5.983
+    "vote_average": 5.987
   },
   "Antonia Luxem Tetralogy On Falling": null,
   "Schroeter The Death Of Maria Malibran": null,
   "Jlg New American Revolution": null,
+  "Lost Reels Gas Food Lodging": null,
   "DOCHOUSE: POMPEII: BELOW THE CLOUDS": null,
   "KIDS CLUB: WONKA": {
     "tmdb_id": 787699,
@@ -20880,52 +21076,6 @@
   "FILM CLUB: VAGABOND": null,
   "FILM CLUB: SENTIMENTAL VALUE": null,
   "FILM CLUB: ALL WE IMAGINE AS LIGHT": null,
-  "THE TRIAL": {
-    "tmdb_id": 49057,
-    "tmdb_title": "The Trial",
-    "tmdb_original_title": "The Trial",
-    "overview": "After the horrific death of his wife and two sons, suicide seems to be the only escape for small town attorney Kent \"Mac\" McClain... until he's assigned a capital punishment case that begins to transform his life and those around him forever.",
-    "poster_path": "/jM5jAE7lHznh2JbK5yGxThGkL4l.jpg",
-    "backdrop_path": "/s8Mdcgn07ia1q0xYrBQ96SAZ6id.jpg",
-    "release_date": "2010-09-10",
-    "director": "Gary Wheeler",
-    "runtime": 100,
-    "genres": [
-      "Comedy",
-      "Drama",
-      "Romance"
-    ],
-    "vote_average": 5.788
-  },
-  "DOCHOUSE: UNDER THE YUGOSLAV SKY": {
-    "tmdb_id": 366321,
-    "tmdb_title": "Under the Yugoslav Sky",
-    "tmdb_original_title": "Pod jugoslovenskim nebom",
-    "overview": "This is the first feature, as well as the first sound film made in Yugoslavia. It is a collection of vignettes made for tourism purposes showing the most beautiful parts of the country.",
-    "poster_path": "/e97RIOpAaKzcQzz1lHd6t2aL3CB.jpg",
-    "backdrop_path": null,
-    "release_date": "1934-01-01",
-    "director": "Miodrag Đorđević",
-    "runtime": 84,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 0.0
-  },
   "FILM CLUB: SINNERS": null,
-  "BREAKING SOCIAL": {
-    "tmdb_id": 951019,
-    "tmdb_title": "Breaking Social",
-    "tmdb_original_title": "Breaking Social",
-    "overview": "The social contract: the rules we follow - and some don’t. Breaking Social uncovers the pattern of corruption and kleptocracy erasing the social tissue, followed by social uprisings. In Chile a new turn is taken, with young women in the lead.",
-    "poster_path": "/wWpwHNQYAoHdjRFbOrm2hWTR7f1.jpg",
-    "backdrop_path": "/gAgHIZXARiDE76NIUAxqMRwDT1V.jpg",
-    "release_date": "2023-10-26",
-    "director": "Fredrik Gertten",
-    "runtime": 93,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 7.7
-  }
+  "FILM CLUB: LET THE SUNSHINE IN": null
 }
