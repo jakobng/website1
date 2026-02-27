@@ -107,7 +107,7 @@ Deploy once more after setting environment variables.
 
 ### Important limits to know
 
-- `plan: free` in `render.yaml` is the lowest-cost starter path and may sleep when idle.
+- `plan: starter` in `render.yaml` keeps the service always on (no idle sleep cold starts).
 - This app currently uses SQLite. On many cloud setups without a persistent disk, old session/export data can be lost after restart/redeploy.
 - For production reliability, use a paid always-on plan and persistent storage.
 
