@@ -12,10 +12,11 @@
   </head>
   <body>
     <main>
-      <h1>Field Translator (JA/ZH -> EN)</h1>
+      <h1>Field Translator</h1>
 
       <section class="panel">
-        <div class="controls">
+        <button id="settingsToggle" class="secondary settings-toggle" type="button" aria-expanded="false">Show Settings</button>
+        <div id="settingsPanel" class="controls settings-collapsed">
           <div>
             <label for="projectName">Project Name</label>
             <input id="projectName" type="text" value="untitled-shoot" />
@@ -25,8 +26,14 @@
             <label for="sourceLang">Source Language Hint</label>
             <select id="sourceLang">
               <option value="auto" selected>Auto detect</option>
+              <option value="en">English</option>
               <option value="ja">Japanese</option>
-              <option value="zh">Chinese</option>
+              <option value="zh">Mandarin Chinese</option>
+              <option value="nan">Taiwanese Hokkien</option>
+              <option value="hak">Taiwanese Hakka</option>
+              <option value="ami">Amis</option>
+              <option value="tay">Atayal</option>
+              <option value="pwn">Paiwan</option>
               <option value="ko">Korean</option>
               <option value="es">Spanish</option>
               <option value="fr">French</option>
@@ -40,7 +47,15 @@
           </div>
 
           <div>
-            <label for="mode">Mode</label>
+            <label for="conversationMode">Conversation Mode</label>
+            <select id="conversationMode">
+              <option value="single" selected>One-way translation</option>
+              <option value="two-way">Two-way conversation</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mode">Capture Mode</label>
             <select id="mode">
               <option value="balanced" selected>Accurate (with delay)</option>
               <option value="latency">Balanced</option>
@@ -55,6 +70,11 @@
               <option value="en"></option>
               <option value="ja"></option>
               <option value="zh"></option>
+              <option value="nan"></option>
+              <option value="hak"></option>
+              <option value="ami"></option>
+              <option value="tay"></option>
+              <option value="pwn"></option>
               <option value="es"></option>
               <option value="fr"></option>
               <option value="de"></option>
@@ -99,6 +119,10 @@
           <button id="startBtn" class="primary">Start Session</button>
           <button id="stopBtn" class="danger" disabled>Stop Session</button>
           <button id="installBtn" class="secondary" hidden>Install App</button>
+        </div>
+
+        <div class="row row-actions">
+          <button id="swapDirectionBtn" class="secondary" disabled>Switch Speaker (A → B)</button>
         </div>
 
         <div class="status-row">
