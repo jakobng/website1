@@ -11,6 +11,7 @@ from fastapi.responses import FileResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 
 from .config import get_settings
+from .language_support import normalize_source_language_for_transcription
 from .models import (
     RealtimeConnectRequest,
     SegmentProcessResponse,
@@ -111,8 +112,9 @@ async def connect_realtime(request: RealtimeConnectRequest) -> PlainTextResponse
 
     source_lang = (request.source_lang_hint or session.source_lang_hint or "auto").strip()
     transcription_config: dict[str, str] = {"model": settings.openai_transcribe_model}
-    if source_lang and source_lang != "auto":
-        transcription_config["language"] = source_lang
+    transcribe_lang = normalize_source_language_for_transcription(source_lang)
+    if transcribe_lang:
+        transcription_config["language"] = transcribe_lang
 
     transcription_session = {
         "type": "transcription",

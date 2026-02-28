@@ -137,7 +137,10 @@
           <button id="fontDown" class="icon-btn" title="Smaller text">A&minus;</button>
           <button id="fontUp" class="icon-btn" title="Larger text">A+</button>
         </div>
-        <div id="liveCaption" class="caption">Waiting for session start...</div>
+        <div id="captionStage" class="caption-stage">
+          <div id="liveCaption" class="caption">Waiting for session start...</div>
+          <div id="liveCaptionMirror" class="caption caption-mirror" aria-hidden="true">Waiting for session start...</div>
+        </div>
         <div id="liveTranscript" class="transcript"></div>
       </section>
 

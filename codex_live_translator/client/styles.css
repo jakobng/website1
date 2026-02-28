@@ -149,6 +149,23 @@ button:disabled {
   min-height: 96px;
 }
 
+
+.caption-stage {
+  display: grid;
+  gap: 0;
+}
+
+.caption-mirror {
+  display: none;
+  transform: rotate(180deg);
+  border-top: 1px dashed #d1d5db;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.caption-stage-two-way .caption-mirror {
+  display: block;
+}
 .transcript {
   margin-top: 8px;
   font-size: 0.95rem;
