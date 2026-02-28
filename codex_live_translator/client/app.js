@@ -35,7 +35,9 @@ const els = {
   levelBar: document.getElementById("levelBar"),
   fontDown: document.getElementById("fontDown"),
   fontUp: document.getElementById("fontUp"),
+  captionStage: document.getElementById("captionStage"),
   liveCaption: document.getElementById("liveCaption"),
+  liveCaptionMirror: document.getElementById("liveCaptionMirror"),
   liveTranscript: document.getElementById("liveTranscript"),
   logList: document.getElementById("logList"),
   exportJsonBtn: document.getElementById("exportJsonBtn"),
@@ -230,6 +232,27 @@ function toggleSettingsPanel() {
   els.settingsPanel.classList.toggle("settings-open", opening);
   els.settingsToggle.textContent = opening ? "Hide Settings" : "Show Settings";
   els.settingsToggle.setAttribute("aria-expanded", opening ? "true" : "false");
+}
+
+
+function setLiveCaptionText(text) {
+  if (els.liveCaption) {
+    els.liveCaption.textContent = text;
+  }
+  if (els.liveCaptionMirror) {
+    els.liveCaptionMirror.textContent = text;
+  }
+}
+
+function updateConversationLayout() {
+  if (!els.captionStage) {
+    return;
+  }
+  if (activeConversationMode === "two-way") {
+    els.captionStage.classList.add("caption-stage-two-way");
+  } else {
+    els.captionStage.classList.remove("caption-stage-two-way");
+  }
 }
 
 // ── Audio Device Selection ───────────────────────────────────────────
@@ -719,7 +742,7 @@ async function drainRealtimeTextQueue() {
     const next = realtimeTextQueue.shift();
     try {
       const translated = await postTranslatedText(next);
-      els.liveCaption.textContent = translated.translation_en || "...";
+      setLiveCaptionText(translated.translation_en || "...");
       if (next.isFinal) {
         recentTranslations.push(translated.translation_en);
         recentTranslations = recentTranslations.slice(-MAX_CONTEXT_LINES);
@@ -761,7 +784,7 @@ async function drainQueue() {
       recentTranslations.push(result.translation_en);
       recentTranslations = recentTranslations.slice(-MAX_CONTEXT_LINES);
 
-      els.liveCaption.textContent = result.translation_en || "...";
+      setLiveCaptionText(result.translation_en || "...");
       els.liveTranscript.textContent = result.transcript_src || "";
       addLogEntry({
         startedAtMs: next.startedAtMs,
@@ -1211,6 +1234,7 @@ async function startSession() {
     activeConversationMode = els.conversationMode.value.trim() || "single";
     directionSwapped = false;
     updateDirectionButton();
+    updateConversationLayout();
     currentChunkMs = chunkMsForMode(activeMode);
     sessionStartEpochMs = Date.now();
     lastChunkEndedAtMs = 0;
@@ -1242,7 +1266,7 @@ async function startSession() {
       );
     }
     const direction = getDirectionLanguages();
-    els.liveCaption.textContent = `Listening (${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)})...`;
+    setLiveCaptionText(`Listening (${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)})...`);
     els.liveTranscript.textContent = "";
   } catch (error) {
     console.error(error);
@@ -1336,6 +1360,7 @@ if (els.conversationMode) {
     activeConversationMode = els.conversationMode.value.trim() || "single";
     directionSwapped = false;
     updateDirectionButton();
+    updateConversationLayout();
   });
 }
 if (els.sourceLang) {
@@ -1395,6 +1420,7 @@ registerServiceWorker();
 enumerateAudioDevices();
 checkSessionResume();
 updateDirectionButton();
+updateConversationLayout();
 
 (async () => {
   try {

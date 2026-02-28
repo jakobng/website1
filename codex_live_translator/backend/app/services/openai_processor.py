@@ -3,6 +3,7 @@ import json
 
 import httpx
 
+from ..language_support import describe_language_hint, normalize_source_language_for_transcription
 from .provider_base import ProcessedSegment, SegmentProcessor
 
 
@@ -67,8 +68,9 @@ class OpenAIProcessor(SegmentProcessor):
     ) -> str:
         headers = {"Authorization": f"Bearer {self.api_key}"}
         data = {"model": self.transcribe_model}
-        if source_lang and source_lang != "auto":
-            data["language"] = source_lang
+        transcribe_lang = normalize_source_language_for_transcription(source_lang)
+        if transcribe_lang:
+            data["language"] = transcribe_lang
 
         files = {
             "file": (
@@ -113,7 +115,7 @@ class OpenAIProcessor(SegmentProcessor):
         )
 
         user_prompt = (
-            f"Source language hint: {source_lang}.\n"
+            f"Source language hint: {describe_language_hint(source_lang)}.\n"
             f"Target language: {target_lang}.\n"
             "Expected conversation context:\n"
             f"{conversation_context.strip() if conversation_context else '(none)'}\n\n"
