@@ -7234,7 +7234,7 @@
       "Thriller"
     ],
     "runtime": 157,
-    "vote_average": 6.7,
+    "vote_average": 6.693,
     "tmdb_countries": [
       {
         "iso_3166_1": "IN",
@@ -26672,7 +26672,7 @@
     "overview": "悪魔の心臓を持つ「チェンソーマン」となり、公安対魔特異4課のデビルハンターに所属する少年・デンジ。憧れのマキマとのデートでうかれる帰り道、雨宿りをしていると、カフェで働く少女レゼと出会いー!?",
     "overview_en": "In a brutal war between devils, hunters, and secret enemies, a mysterious girl named Reze has stepped into Denji's world, and he faces his deadliest battle yet, fueled by love in a world where survival knows no rules.",
     "poster_path": "/A7J9KaSC3BYAqMoR0TKJXDbm0QX.jpg",
-    "backdrop_path": "/7BnTZKp5lVdaA7dlCG6y8TAiL7f.jpg",
+    "backdrop_path": "/kfXgo2rMF1A19celCwLyQ4Xwpf8.jpg",
     "release_date": "2025-09-19",
     "director": "吉原達矢",
     "director_jp": "吉原達矢",
@@ -68356,5 +68356,639 @@
       }
     ]
   },
-  "開場": null
+  "開場": null,
+  "原発をとめた裁判長　そして原発をとめる農家たち": null,
+  "ニッポニアニッポン　フクシマ狂詩曲（ラプソディ）": {
+    "tmdb_id": 757049,
+    "tmdb_title_jp": "ニッポニアニッポン　フクシマ狂詩曲",
+    "tmdb_title_en": "Nipponia Nippon – Fukushima Rhapsody",
+    "tmdb_title_original": "ニッポニアニッポン　フクシマ狂詩曲",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Naraho town in Fukushima Prefecture is on the front-line of the government-funded nuclear power plant decommissioning work. Kokuhei Kusunoki is transferred from Aizu Wakamatsu City to Naraho Town to take over the Disaster PR Division. Murai takes Kokuhei around Fukushima including areas washed away by the tsunami. They examine the still incomplete railway lines, the unfinished decontamination area and villages in the danger zone, where deadly cesium continues to pile up. One day Kokuhei is told to organize a party to celebrate the professor who has been appointed as deputy director of the Atomic Energy Research Institute.",
+    "poster_path": "/eVxek4CKFjjvk4FSUQjoBcAJQYL.jpg",
+    "backdrop_path": null,
+    "release_date": "2019-03-09",
+    "director": "才谷遼",
+    "director_jp": "才谷遼",
+    "director_en": "Ryo Saitani",
+    "genres": [
+      "音楽",
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Music",
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "津田寛治に撮休はない": null,
+  "陽暉楼": {
+    "tmdb_id": 50896,
+    "tmdb_title_jp": "陽暉楼",
+    "tmdb_title_en": "The Geisha",
+    "tmdb_title_original": "陽暉楼",
+    "tmdb_original_language": "ja",
+    "overview": "大正元年、太田勝造は呂鶴と駆け落ちし娘の桃若をもうけるが、呂鶴は追っ手に殺害されてしまう。勝造は桃若を連れて高知の遊郭「陽暉楼」を訪れる。二十年後、桃若は陽暉楼の売れっ子になっていた。勝造は大阪に珠子という女を囲っていたが、珠子は呂鶴に瓜二つの桃若に激しく嫉妬、陽暉楼に身を売ろうとするが女将に断られてしまう。",
+    "overview_en": "Yokiro was the most successful Geisha house in Western Japan during the first half of the 20th century and remains open to this day. At its peak, it was home to over 200 geisha, however behind the fabulous facade, there were many battles - between family members, men and women, and with the Yakuza. Momokawa was sold to Yokiro at age 12, and despite being the top geisha, her many complicated relationships provide unending challenges throughout her glamorous but turbulent life.",
+    "poster_path": "/6f79ATI0p8w23q3lsoQsv5eFNyr.jpg",
+    "backdrop_path": "/cSOuNLdX8r3uoTBvNLwiWNGQU9A.jpg",
+    "release_date": "1983-09-10",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "runtime": 144,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:50896": {
+    "tmdb_id": 50896,
+    "tmdb_title_jp": "陽暉楼",
+    "tmdb_title_en": "The Geisha",
+    "tmdb_title_original": "陽暉楼",
+    "tmdb_original_language": "ja",
+    "overview": "大正元年、太田勝造は呂鶴と駆け落ちし娘の桃若をもうけるが、呂鶴は追っ手に殺害されてしまう。勝造は桃若を連れて高知の遊郭「陽暉楼」を訪れる。二十年後、桃若は陽暉楼の売れっ子になっていた。勝造は大阪に珠子という女を囲っていたが、珠子は呂鶴に瓜二つの桃若に激しく嫉妬、陽暉楼に身を売ろうとするが女将に断られてしまう。",
+    "overview_en": "Yokiro was the most successful Geisha house in Western Japan during the first half of the 20th century and remains open to this day. At its peak, it was home to over 200 geisha, however behind the fabulous facade, there were many battles - between family members, men and women, and with the Yakuza. Momokawa was sold to Yokiro at age 12, and despite being the top geisha, her many complicated relationships provide unending challenges throughout her glamorous but turbulent life.",
+    "poster_path": "/6f79ATI0p8w23q3lsoQsv5eFNyr.jpg",
+    "backdrop_path": "/cSOuNLdX8r3uoTBvNLwiWNGQU9A.jpg",
+    "release_date": "1983-09-10",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "ドラマ",
+      "ロマンス",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "runtime": 144,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "極道の妻たち": {
+    "tmdb_id": 125132,
+    "tmdb_title_jp": "極道の妻たち",
+    "tmdb_title_en": "Yakuza Ladies",
+    "tmdb_title_original": "極道の妻たち",
+    "tmdb_original_language": "ja",
+    "overview": "粟津環は堂本組若頭補佐で粟津組組長の妻である。気丈な彼女は、服役中の夫・等に変わり組を守っていたが、堂本組総長が急死した。関西を拠点に全国的に勢力を持つ堂本組は、傘下組員二万人の暴力団で、粟津組はその直系である。堂本組の跡目相続人は、故人の遺言によって若頭の柿沼に決定した。これを不満とする舎弟頭の蔵川は、同補佐の小磯らを引き連れて朋竜会を結成したが環はあくまで堂本に忠誠を尽し、小磯の誘いを拒否する。",
+    "overview_en": "When her crime boss husband is sent to prison, a woman assumes control of one of the most powerful gangs in Japan.",
+    "poster_path": "/sfVnp2Lxig2Yt2oJpJmNyawRoW1.jpg",
+    "backdrop_path": "/15jeXRNLe74Mwvhbag6BSGlBKIp.jpg",
+    "release_date": "1986-11-15",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 119,
+    "vote_average": 5.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ジガルタンダ": {
+    "tmdb_id": 270766,
+    "tmdb_title_jp": "ஜிகர்தண்டா",
+    "tmdb_title_en": "Jigarthanda",
+    "tmdb_title_original": "ஜிகர்தண்டா",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "A budding director endeavors to research a merciless gangster for making a film on gangsterism. But his secret attempts to conduct the research fail when he gets caught for snooping.",
+    "poster_path": "/l8glOly0cVae3r7dWvxVQ0Ny1tw.jpg",
+    "backdrop_path": "/ydXxKE3km4qsoqunO6g5SpbKhD4.jpg",
+    "release_date": "2014-08-01",
+    "director": "Karthik Subbaraj",
+    "director_jp": "Karthik Subbaraj",
+    "director_en": "Karthik Subbaraj",
+    "genres": [
+      "音楽",
+      "犯罪",
+      "コメディ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Music",
+      "Crime",
+      "Comedy",
+      "Thriller"
+    ],
+    "runtime": 170,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "サムシング・エクストラ！": {
+    "tmdb_id": 1152014,
+    "tmdb_title_jp": "Un p'tit truc en plus",
+    "tmdb_title_en": "A Little Something Extra",
+    "tmdb_title_original": "Un p'tit truc en plus",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "To escape the police, a father and his son are forced to find refuge in a summer camp for young adults with mental disabilities, taking on the role of an educator and a boarder. The beginning of troubles and a wonderful human experience that will change them forever.",
+    "poster_path": "/uIlJ1wOlEt5K3NowJQDG4qscQAC.jpg",
+    "backdrop_path": "/rTNMyZ5JcrfKnPamaYOo9wzq3m5.jpg",
+    "release_date": "2024-04-18",
+    "director": "Artus",
+    "director_jp": "Artus",
+    "director_en": "Artus",
+    "genres": [
+      "コメディ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 89,
+    "vote_average": 7.126,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "〈北欧の至宝〉": null,
+  "エディントンへようこそ": {
+    "tmdb_id": 648878,
+    "tmdb_title_jp": "Eddington",
+    "tmdb_title_en": "Eddington",
+    "tmdb_title_original": "Eddington",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In May of 2020, a standoff between a small-town sheriff and mayor sparks a powder keg as neighbor is pitted against neighbor in Eddington, New Mexico.",
+    "poster_path": "/cISgZGvGBJKjOBmAW86lZ6hiK3c.jpg",
+    "backdrop_path": "/5PJkK2iVXRO1ydrtgwuJdevmnOe.jpg",
+    "release_date": "2025-07-16",
+    "director": "アリ・アスター",
+    "director_jp": "アリ・アスター",
+    "director_en": "Ari Aster",
+    "genres": [
+      "西洋",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Western",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 148,
+    "vote_average": 6.426,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      }
+    ]
+  },
+  "僕の帰る場所《藤元明緒最新作「LOST LAND」公開記念過去作上映》": {
+    "tmdb_id": 479844,
+    "tmdb_title_jp": "僕の帰る場所",
+    "tmdb_title_en": "Passage of Life",
+    "tmdb_title_original": "僕の帰る場所",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Burmese boy Kaung and his family emigrated to Japan with the hope for a better life. They have lived in Tokyo for years, but never obtained a visum. The daily strain of their illegal residence eventually starts to tear the family apart.",
+    "poster_path": "/nHftEgODIsE9ykUD5UL113rpjR0.jpg",
+    "backdrop_path": "/bfcJPnWT9kr8eeJeIYRiFIXeiK2.jpg",
+    "release_date": "2017-10-29",
+    "director": "藤元明緒",
+    "director_jp": "藤元明緒",
+    "director_en": "Akio Fujimoto",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 98,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MM",
+        "name": "Myanmar"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:479844": {
+    "tmdb_id": 479844,
+    "tmdb_title_jp": "僕の帰る場所",
+    "tmdb_title_en": "Passage of Life",
+    "tmdb_title_original": "僕の帰る場所",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Burmese boy Kaung and his family emigrated to Japan with the hope for a better life. They have lived in Tokyo for years, but never obtained a visum. The daily strain of their illegal residence eventually starts to tear the family apart.",
+    "poster_path": "/nHftEgODIsE9ykUD5UL113rpjR0.jpg",
+    "backdrop_path": "/bfcJPnWT9kr8eeJeIYRiFIXeiK2.jpg",
+    "release_date": "2017-10-29",
+    "director": "藤元明緒",
+    "director_jp": "藤元明緒",
+    "director_en": "Akio Fujimoto",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 98,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MM",
+        "name": "Myanmar"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ライブビューイング ミュージカル『⼑剣乱舞』 〜静かなる夜半の寝ざめ〜": null,
+  "劇場版チェンソーマン レゼ篇": {
+    "tmdb_id": 1218925,
+    "tmdb_title_jp": "劇場版 チェンソーマン レゼ篇",
+    "tmdb_title_en": "Chainsaw Man - The Movie: Reze Arc",
+    "tmdb_title_original": "劇場版 チェンソーマン レゼ篇",
+    "tmdb_original_language": "ja",
+    "overview": "悪魔の心臓を持つ「チェンソーマン」となり、公安対魔特異4課のデビルハンターに所属する少年・デンジ。憧れのマキマとのデートでうかれる帰り道、雨宿りをしていると、カフェで働く少女レゼと出会いー!?",
+    "overview_en": "In a brutal war between devils, hunters, and secret enemies, a mysterious girl named Reze has stepped into Denji's world, and he faces his deadliest battle yet, fueled by love in a world where survival knows no rules.",
+    "poster_path": "/A7J9KaSC3BYAqMoR0TKJXDbm0QX.jpg",
+    "backdrop_path": "/kfXgo2rMF1A19celCwLyQ4Xwpf8.jpg",
+    "release_date": "2025-09-19",
+    "director": "吉原達矢",
+    "director_jp": "吉原達矢",
+    "director_en": "Tatsuya Yoshihara",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 100,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "WITH": null,
+  "オリヴィエ・アサイヤス特集 2026 映画の現在形 ー第33回フランス映画祭関連企画": null,
+  "インド映画同好会支援募金�─屮譽癲彗綢慊名鐓絮如峅于�-Theri」": {
+    "tmdb_id": 370076,
+    "tmdb_title_jp": "தெறி",
+    "tmdb_title_en": "Theri",
+    "tmdb_title_original": "தெறி",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "When an honest cop, Vijay Kumar's family is ruthlessly slaughtered by a politician and his aides, he decides to change his identity and commits his life to bring his daughter up in a serene atmosphere. But some freak events end up compromising his identity and what he does to save his daughter and avenge the death of his family unfurls as Theri.",
+    "poster_path": "/f6BhexotEqO3GejXa3FopBNGL6M.jpg",
+    "backdrop_path": "/yzoyr6nuB3ChA38MSHjYKlMpU6W.jpg",
+    "release_date": "2016-04-14",
+    "director": "Atlee",
+    "director_jp": "Atlee",
+    "director_en": "Atlee",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 157,
+    "vote_average": 6.693,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "インド映画同好会支援募金�─屮譽癲彗綢悒泪汽蘊絮如峅于�-Theri」": {
+    "tmdb_id": 370076,
+    "tmdb_title_jp": "தெறி",
+    "tmdb_title_en": "Theri",
+    "tmdb_title_original": "தெறி",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "When an honest cop, Vijay Kumar's family is ruthlessly slaughtered by a politician and his aides, he decides to change his identity and commits his life to bring his daughter up in a serene atmosphere. But some freak events end up compromising his identity and what he does to save his daughter and avenge the death of his family unfurls as Theri.",
+    "poster_path": "/f6BhexotEqO3GejXa3FopBNGL6M.jpg",
+    "backdrop_path": "/yzoyr6nuB3ChA38MSHjYKlMpU6W.jpg",
+    "release_date": "2016-04-14",
+    "director": "Atlee",
+    "director_jp": "Atlee",
+    "director_en": "Atlee",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 157,
+    "vote_average": 6.693,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "インド映画同好会支援募金�─屮譽癲彗綢悒泪汽蘊絮如屮凜�クラムとヴェーダー タミル語版」": null,
+  "「生きる」大川小学校 津波裁判を闘った人たち": {
+    "tmdb_id": 1237794,
+    "tmdb_title_jp": "「生きる」大川小学校 津波裁判を闘った人たち",
+    "tmdb_title_en": "Record of Life: Those Who Fought  in the Okawa Tsunami Trial",
+    "tmdb_title_original": "「生きる」大川小学校 津波裁判を闘った人たち",
+    "tmdb_original_language": "ja",
+    "overview": "2011年3月11日に起こった東日本大震災で、宮城県石巻市の大川小学校は津波にのまれ、全校児童の7割に相当する74人の児童（うち4人は未だ行方不明）と10人の教職員が亡くなった。地震発生から津波が学校に到達するまで約51分、ラジオや行政防災無線で津波情報は学校側にも伝わりスクールバスも待機していた。にもかかわらず、この震災で大川小学校は唯一多数の犠牲者を出した。この惨事を引き起こした事実・理由を知りたいという親たちの切なる願いに対し、行政の対応には誠意が感じられず、その説明に嘘や隠ぺいがあると感じた親たちは真実を求め、石巻市と宮城県を被告にして国家賠償請求の裁判を提起した。彼らは、震災直後から、そして裁判が始まってからも記録を撮り続け、のべ10年にわたる映像が貴重な記録として残ることになっていく——",
+    "overview_en": "On March 11, 2011, Okawa Elementary School in Ishinomaki City was engulfed by a tsunami, and 74 children, or 70% of the school's children, were killed. 51 minutes elapsed between the earthquake and when the tsunami reached the school. The school was informed of the tsunami and a school bus was on standby, but students did not evacuate. Okawa Elementary was the only school that suffered a large number of casualties in this earthquake. This documentary follows the lawsuit that followed the disaster, where the parents sought the truth behind the tragedy.",
+    "poster_path": "/vnpPXTNBxgH2JBiQQsswvYup1r6.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-02-18",
+    "director": "寺田和弘",
+    "director_jp": "寺田和弘",
+    "director_en": "Kazuhiro Terada",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 124,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1237794": {
+    "tmdb_id": 1237794,
+    "tmdb_title_jp": "「生きる」大川小学校 津波裁判を闘った人たち",
+    "tmdb_title_en": "Record of Life: Those Who Fought  in the Okawa Tsunami Trial",
+    "tmdb_title_original": "「生きる」大川小学校 津波裁判を闘った人たち",
+    "tmdb_original_language": "ja",
+    "overview": "2011年3月11日に起こった東日本大震災で、宮城県石巻市の大川小学校は津波にのまれ、全校児童の7割に相当する74人の児童（うち4人は未だ行方不明）と10人の教職員が亡くなった。地震発生から津波が学校に到達するまで約51分、ラジオや行政防災無線で津波情報は学校側にも伝わりスクールバスも待機していた。にもかかわらず、この震災で大川小学校は唯一多数の犠牲者を出した。この惨事を引き起こした事実・理由を知りたいという親たちの切なる願いに対し、行政の対応には誠意が感じられず、その説明に嘘や隠ぺいがあると感じた親たちは真実を求め、石巻市と宮城県を被告にして国家賠償請求の裁判を提起した。彼らは、震災直後から、そして裁判が始まってからも記録を撮り続け、のべ10年にわたる映像が貴重な記録として残ることになっていく——",
+    "overview_en": "On March 11, 2011, Okawa Elementary School in Ishinomaki City was engulfed by a tsunami, and 74 children, or 70% of the school's children, were killed. 51 minutes elapsed between the earthquake and when the tsunami reached the school. The school was informed of the tsunami and a school bus was on standby, but students did not evacuate. Okawa Elementary was the only school that suffered a large number of casualties in this earthquake. This documentary follows the lawsuit that followed the disaster, where the parents sought the truth behind the tragedy.",
+    "poster_path": "/vnpPXTNBxgH2JBiQQsswvYup1r6.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-02-18",
+    "director": "寺田和弘",
+    "director_jp": "寺田和弘",
+    "director_en": "Kazuhiro Terada",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 124,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "花物語バビロン＋バビロン2-THE OZAWA-": null,
+  "RAP IN TONDOの長い予告編＋ラップ・イン・プノンペン": null,
+  "tmdb:757049": {
+    "tmdb_id": 757049,
+    "tmdb_title_jp": "ニッポニアニッポン　フクシマ狂詩曲",
+    "tmdb_title_en": "Nipponia Nippon – Fukushima Rhapsody",
+    "tmdb_title_original": "ニッポニアニッポン　フクシマ狂詩曲",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Naraho town in Fukushima Prefecture is on the front-line of the government-funded nuclear power plant decommissioning work. Kokuhei Kusunoki is transferred from Aizu Wakamatsu City to Naraho Town to take over the Disaster PR Division. Murai takes Kokuhei around Fukushima including areas washed away by the tsunami. They examine the still incomplete railway lines, the unfinished decontamination area and villages in the danger zone, where deadly cesium continues to pile up. One day Kokuhei is told to organize a party to celebrate the professor who has been appointed as deputy director of the Atomic Energy Research Institute.",
+    "poster_path": "/eVxek4CKFjjvk4FSUQjoBcAJQYL.jpg",
+    "backdrop_path": null,
+    "release_date": "2019-03-09",
+    "director": "才谷遼",
+    "director_jp": "才谷遼",
+    "director_en": "Ryo Saitani",
+    "genres": [
+      "音楽",
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Music",
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:125132": {
+    "tmdb_id": 125132,
+    "tmdb_title_jp": "極道の妻たち",
+    "tmdb_title_en": "Yakuza Ladies",
+    "tmdb_title_original": "極道の妻たち",
+    "tmdb_original_language": "ja",
+    "overview": "粟津環は堂本組若頭補佐で粟津組組長の妻である。気丈な彼女は、服役中の夫・等に変わり組を守っていたが、堂本組総長が急死した。関西を拠点に全国的に勢力を持つ堂本組は、傘下組員二万人の暴力団で、粟津組はその直系である。堂本組の跡目相続人は、故人の遺言によって若頭の柿沼に決定した。これを不満とする舎弟頭の蔵川は、同補佐の小磯らを引き連れて朋竜会を結成したが環はあくまで堂本に忠誠を尽し、小磯の誘いを拒否する。",
+    "overview_en": "When her crime boss husband is sent to prison, a woman assumes control of one of the most powerful gangs in Japan.",
+    "poster_path": "/sfVnp2Lxig2Yt2oJpJmNyawRoW1.jpg",
+    "backdrop_path": "/15jeXRNLe74Mwvhbag6BSGlBKIp.jpg",
+    "release_date": "1986-11-15",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 119,
+    "vote_average": 5.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:270766": {
+    "tmdb_id": 270766,
+    "tmdb_title_jp": "ஜிகர்தண்டா",
+    "tmdb_title_en": "Jigarthanda",
+    "tmdb_title_original": "ஜிகர்தண்டா",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "A budding director endeavors to research a merciless gangster for making a film on gangsterism. But his secret attempts to conduct the research fail when he gets caught for snooping.",
+    "poster_path": "/l8glOly0cVae3r7dWvxVQ0Ny1tw.jpg",
+    "backdrop_path": "/ydXxKE3km4qsoqunO6g5SpbKhD4.jpg",
+    "release_date": "2014-08-01",
+    "director": "Karthik Subbaraj",
+    "director_jp": "Karthik Subbaraj",
+    "director_en": "Karthik Subbaraj",
+    "genres": [
+      "音楽",
+      "犯罪",
+      "コメディ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Music",
+      "Crime",
+      "Comedy",
+      "Thriller"
+    ],
+    "runtime": 170,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "tmdb:1152014": {
+    "tmdb_id": 1152014,
+    "tmdb_title_jp": "Un p'tit truc en plus",
+    "tmdb_title_en": "A Little Something Extra",
+    "tmdb_title_original": "Un p'tit truc en plus",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "To escape the police, a father and his son are forced to find refuge in a summer camp for young adults with mental disabilities, taking on the role of an educator and a boarder. The beginning of troubles and a wonderful human experience that will change them forever.",
+    "poster_path": "/uIlJ1wOlEt5K3NowJQDG4qscQAC.jpg",
+    "backdrop_path": "/rTNMyZ5JcrfKnPamaYOo9wzq3m5.jpg",
+    "release_date": "2024-04-18",
+    "director": "Artus",
+    "director_jp": "Artus",
+    "director_en": "Artus",
+    "genres": [
+      "コメディ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 89,
+    "vote_average": 7.126,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:648878": {
+    "tmdb_id": 648878,
+    "tmdb_title_jp": "Eddington",
+    "tmdb_title_en": "Eddington",
+    "tmdb_title_original": "Eddington",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In May of 2020, a standoff between a small-town sheriff and mayor sparks a powder keg as neighbor is pitted against neighbor in Eddington, New Mexico.",
+    "poster_path": "/cISgZGvGBJKjOBmAW86lZ6hiK3c.jpg",
+    "backdrop_path": "/5PJkK2iVXRO1ydrtgwuJdevmnOe.jpg",
+    "release_date": "2025-07-16",
+    "director": "アリ・アスター",
+    "director_jp": "アリ・アスター",
+    "director_en": "Ari Aster",
+    "genres": [
+      "西洋",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Western",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 148,
+    "vote_average": 6.426,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      }
+    ]
+  }
 }

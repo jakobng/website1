@@ -6782,5 +6782,146 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "原発をとめた裁判長　そして原発をとめる農家たち": {
+    "english_title": "The Judge Who Stopped the Nuclear Plant and the Farmers Who Stop the Nuclear Plant",
+    "release_year": 2022,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "原発をとめた裁判長　そして原発をとめる農家たち",
+    "director": "Hiroyasu Obara",
+    "country": "Japan",
+    "failed": true
+  },
+  "ニッポニアニッポン　フクシマ狂詩曲（ラプソディ）": {
+    "english_title": "Nipponia Nippon: Fukushima Rhapsody",
+    "release_year": 2019,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ニッポニアニッポン　フクシマ狂詩曲（ラプソディ）",
+    "director": "Ryo Saitani",
+    "country": "Japan"
+  },
+  "極道の妻たち": {
+    "english_title": "Yakuza Wives",
+    "release_year": 1986,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "極道の妻たち",
+    "director": "Hideo Gosha",
+    "country": "Japan"
+  },
+  "ジガルタンダ": {
+    "english_title": "Jigarthanda",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Jigarthanda",
+    "director": "Karthik Subbaraj",
+    "country": "India"
+  },
+  "サムシング・エクストラ！": {
+    "english_title": "A Little Something Extra",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Un p'tit truc en plus",
+    "director": "Artus",
+    "country": "France"
+  },
+  "エディントンへようこそ": {
+    "english_title": "Eddington",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Eddington",
+    "director": "Ari Aster",
+    "country": "USA"
+  },
+  "ライブビューイング ミュージカル『⼑剣乱舞』 〜静かなる夜半の寝ざめ〜": {
+    "english_title": "Musical Touken Ranbu: Shizukanaru Yowa no Nezame - Live Viewing",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ライブビューイング ミュージカル『⼑剣乱舞』 〜静かなる夜半の寝ざめ〜",
+    "director": "Isamu Kayano",
+    "country": "Japan",
+    "failed": true
+  },
+  "オリヴィエ・アサイヤス特集 2026 映画の現在形 ー第33回フランス映画祭関連企画": {
+    "english_title": "Olivier Assayas 2026 – Cinema in the Present",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Olivier Assayas 2026 Le temps présent du cinéma",
+    "director": "Olivier Assayas",
+    "country": "France",
+    "failed": true
+  },
+  "インド映画同好会支援募金�─屮譽癲彗綢慊名鐓絮如峅于�-Theri」": {
+    "english_title": "Theri",
+    "release_year": 2016,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Theri",
+    "director": "Atlee",
+    "country": "India"
+  },
+  "インド映画同好会支援募金�─屮譽癲彗綢悒泪汽蘊絮如峅于�-Theri」": {
+    "english_title": "Theri",
+    "release_year": 2016,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Theri",
+    "director": "Atlee",
+    "country": "India"
+  },
+  "花物語バビロン＋バビロン2-THE OZAWA-": {
+    "english_title": "Flower Story Babylon + Guns of Babylon",
+    "release_year": 2012,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "花物語バビロン＋バビロン2-THE OZAWA-",
+    "director": "Toranosuke Aizawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "RAP IN TONDOの長い予告編＋ラップ・イン・プノンペン": {
+    "english_title": "Rap in Tondo: Long Trailer + Rap in Phnom Penh",
+    "release_year": 2018,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "RAP IN TONDOの長い予告編＋ラップ・イン・プノンペン",
+    "director": "Katsuya Tomita",
+    "country": "Japan",
+    "failed": true
+  },
+  "津田寛治に撮休はない": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "〈北欧の至宝〉": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "WITH": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "インド映画同好会支援募金�─屮譽癲彗綢悒泪汽蘊絮如屮凜�クラムとヴェーダー タミル語版」": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
