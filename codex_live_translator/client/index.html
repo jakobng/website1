@@ -121,10 +121,6 @@
           <button id="installBtn" class="secondary" hidden>Install App</button>
         </div>
 
-        <div class="row row-actions">
-          <button id="swapDirectionBtn" class="secondary" disabled>Switch Speaker (A → B)</button>
-        </div>
-
         <div class="status-row">
           <span id="connDot" class="conn-dot"></span>
           <span id="status" class="status">Idle</span>
@@ -138,10 +134,16 @@
           <button id="fontUp" class="icon-btn" title="Larger text">A+</button>
         </div>
         <div id="captionStage" class="caption-stage">
-          <div id="liveCaption" class="caption">Waiting for session start...</div>
-          <div id="liveCaptionMirror" class="caption caption-mirror" aria-hidden="true">Waiting for session start...</div>
+          <div id="sourcePane" class="caption-pane pane-source">
+            <div id="sourceLanguageLabel" class="caption-label">Source</div>
+            <div id="liveTranscript" class="caption">Waiting for session start...</div>
+          </div>
+          <button id="swapDirectionBtn" class="swap-direction-fab" type="button">⇄ Switch Speaker</button>
+          <div id="targetPane" class="caption-pane pane-target">
+            <div id="targetLanguageLabel" class="caption-label">Target</div>
+            <div id="liveCaption" class="caption">Waiting for session start...</div>
+          </div>
         </div>
-        <div id="liveTranscript" class="transcript"></div>
       </section>
 
       <section class="panel">

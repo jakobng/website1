@@ -36,6 +36,8 @@ const els = {
   fontDown: document.getElementById("fontDown"),
   fontUp: document.getElementById("fontUp"),
   captionStage: document.getElementById("captionStage"),
+  sourceLanguageLabel: document.getElementById("sourceLanguageLabel"),
+  targetLanguageLabel: document.getElementById("targetLanguageLabel"),
   liveCaption: document.getElementById("liveCaption"),
   liveCaptionMirror: document.getElementById("liveCaptionMirror"),
   liveTranscript: document.getElementById("liveTranscript"),
@@ -206,6 +208,17 @@ function getDirectionLanguages() {
   return { sourceLang: source, targetLang: target };
 }
 
+function updateLanguageLabels() {
+  if (els.sourceLanguageLabel) {
+    const source = getDirectionLanguages().sourceLang;
+    els.sourceLanguageLabel.textContent = `Speaker | ${getLanguageLabel(source)}`;
+  }
+  if (els.targetLanguageLabel) {
+    const target = getDirectionLanguages().targetLang;
+    els.targetLanguageLabel.textContent = `Translation | ${getLanguageLabel(target)}`;
+  }
+}
+
 function updateDirectionButton() {
   if (!els.swapDirectionBtn) {
     return;
@@ -215,12 +228,14 @@ function updateDirectionButton() {
   const canToggle = activeConversationMode === "two-way";
   els.swapDirectionBtn.disabled = !canToggle;
   if (!canToggle) {
-    els.swapDirectionBtn.textContent = "Switch Speaker (disabled in one-way mode)";
+    els.swapDirectionBtn.textContent = "Switch Speaker (available in two-way mode)";
+    updateLanguageLabels();
     return;
   }
   const from = directionSwapped ? getLanguageLabel(target) : getLanguageLabel(source);
   const to = directionSwapped ? getLanguageLabel(source) : getLanguageLabel(target);
   els.swapDirectionBtn.textContent = `Switch Speaker (${from} → ${to})`;
+  updateLanguageLabels();
 }
 
 function toggleSettingsPanel() {
@@ -241,6 +256,12 @@ function setLiveCaptionText(text) {
   }
   if (els.liveCaptionMirror) {
     els.liveCaptionMirror.textContent = text;
+  }
+}
+
+function setLiveTranscriptText(text) {
+  if (els.liveTranscript) {
+    els.liveTranscript.textContent = text;
   }
 }
 
@@ -785,7 +806,7 @@ async function drainQueue() {
       recentTranslations = recentTranslations.slice(-MAX_CONTEXT_LINES);
 
       setLiveCaptionText(result.translation_en || "...");
-      els.liveTranscript.textContent = result.transcript_src || "";
+      setLiveTranscriptText(result.transcript_src || "");
       addLogEntry({
         startedAtMs: next.startedAtMs,
         translation: result.translation_en,
@@ -935,7 +956,7 @@ function configureRtcDataChannel(dataChannel) {
         const delta = payload?.delta || "";
         if (delta) {
           rtcPartialTranscript += delta;
-          els.liveTranscript.textContent = rtcPartialTranscript;
+          setLiveTranscriptText(rtcPartialTranscript);
 
           const nowMs = relMs(Date.now());
           const sinceLastPreview = nowMs - rtcLastPreviewAtMs;
@@ -976,7 +997,7 @@ function configureRtcDataChannel(dataChannel) {
         const startedAtMs = rtcCurrentSegmentStartMs;
         rtcLastEndedAtMs = endedAtMs;
 
-        els.liveTranscript.textContent = finalText;
+        setLiveTranscriptText(finalText);
 
         if (!rtcCurrentSegmentId) {
           rtcCurrentSegmentId = makeSegmentId();
@@ -1267,7 +1288,7 @@ async function startSession() {
     }
     const direction = getDirectionLanguages();
     setLiveCaptionText(`Listening (${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)})...`);
-    els.liveTranscript.textContent = "";
+    setLiveTranscriptText("");
   } catch (error) {
     console.error(error);
     setStatus(`Failed to start: ${error.message}`);
@@ -1341,6 +1362,8 @@ function swapConversationDirection() {
   updateDirectionButton();
   const direction = getDirectionLanguages();
   setStatus(`Direction switched: ${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)}`);
+  setLiveCaptionText(`Listening for ${getLanguageLabel(direction.sourceLang)}...`);
+  updateLanguageLabels();
 }
 // ── Event Listeners ──────────────────────────────────────────────────
 
@@ -1421,6 +1444,7 @@ enumerateAudioDevices();
 checkSessionResume();
 updateDirectionButton();
 updateConversationLayout();
+updateLanguageLabels();
 
 (async () => {
   try {
