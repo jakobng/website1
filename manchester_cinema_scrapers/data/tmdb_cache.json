@@ -2009,23 +2009,6 @@
     ],
     "vote_average": 7.651
   },
-  "Monthly World Cinema Screening": null,
-  "If You're Lost I'll Come Find You": null,
-  "Global Justice Now Youth MCR: Women at War": {
-    "tmdb_id": 982440,
-    "tmdb_title": "Women at War",
-    "tmdb_original_title": "女性の戦ひ",
-    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
-    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
-    "backdrop_path": null,
-    "release_date": "1939-02-01",
-    "director": "Yasushi Sasaki",
-    "runtime": 82,
-    "genres": [],
-    "vote_average": 0.0
-  },
-  "Northern Exposure Short Film Showcase": null,
-  "NT Live/ The Audience": null,
   "The Corinthians: We Were The Champions (PG)": {
     "tmdb_id": 1630577,
     "tmdb_title": "The Corinthians: We Were the Champions",
@@ -2041,6 +2024,43 @@
     ],
     "vote_average": 0.0
   },
+  "Monthly World Cinema Screening": null,
+  "GOAT (2026)": {
+    "tmdb_id": 1297842,
+    "tmdb_title": "GOAT",
+    "tmdb_original_title": "GOAT",
+    "overview": "A small goat with big dreams gets a once-in-a-lifetime shot to join the pros and play roarball, a high-intensity, co-ed, full-contact sport dominated by the fastest, fiercest animals in the world.",
+    "poster_path": "/wfuqMlaExcoYiUEvKfVpUTt1v4u.jpg",
+    "backdrop_path": "/1qwhYqg7YEZajh3Q4biqbuQoDq8.jpg",
+    "release_date": "2026-02-11",
+    "director": "Tyree Dillihay",
+    "runtime": 100,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family",
+      "Action"
+    ],
+    "vote_average": 7.5
+  },
+  "NT Live/ The Audience": null,
+  "If You're Lost I'll Come Find You": null,
+  "Global Justice Now Youth MCR: Women at War": {
+    "tmdb_id": 982440,
+    "tmdb_title": "Women at War",
+    "tmdb_original_title": "女性の戦ひ",
+    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
+    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
+    "backdrop_path": null,
+    "release_date": "1939-02-01",
+    "director": "Yasushi Sasaki",
+    "runtime": 82,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "Northern Exposure Short Film Showcase": null,
+  "Arrow Video Club: Fulci Double Bill": null,
+  "Weekly Arthouse Screening": null,
   "Throwback: The Fifth Element": {
     "tmdb_id": 18,
     "tmdb_title": "The Fifth Element",
@@ -2075,7 +2095,6 @@
     ],
     "vote_average": 8.138
   },
-  "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
   "The Royal Opera: The Magic Flute": null,
