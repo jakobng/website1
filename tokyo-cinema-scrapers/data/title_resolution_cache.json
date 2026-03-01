@@ -6923,5 +6923,40 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "絶倫!! 好色一代［『ニッポンの猥褻』改題版］＊": {
+    "english_title": "Obscenities of Japan",
+    "release_year": 1993,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "絶倫!! 好色一代［『ニッポンの猥褻』改題版］",
+    "director": "Akira Fukamachi",
+    "country": "Japan",
+    "failed": true
+  },
+  "〈別冊ホン・サンス〉川沿いのホテル": {
+    "english_title": "Hotel by the River",
+    "release_year": 2018,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Gangbyeon Hotel",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "エリス＆トム ─ボサノヴァ名盤誕生秘話─": {
+    "english_title": "Elis & Tom: It Had to Be You",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Elis & Tom – Só Tinha De Ser Com Você",
+    "director": "Roberto de Oliveira, Jom Tob Azulay",
+    "country": "Brazil"
+  },
+  "劇場版 ロッキンミュージカル シン・シャドウブラウン＆ブラックパイレーツの冒険": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
