@@ -3,7 +3,11 @@ import json
 
 import httpx
 
-from ..language_support import describe_language_hint, normalize_source_language_for_transcription
+from ..language_support import (
+    describe_language_hint,
+    normalize_source_language_for_transcription,
+    parse_two_way_target,
+)
 from .provider_base import ProcessedSegment, SegmentProcessor
 
 
@@ -109,6 +113,15 @@ class OpenAIProcessor(SegmentProcessor):
         }
 
         context_block = "\n".join(prior_context[-4:])
+        two_way_target = parse_two_way_target(target_lang)
+        if two_way_target:
+            target_instruction = (
+                f"Two-way mode: detect whether the transcript is English or {two_way_target}. "
+                f"If the transcript is English, translate into {two_way_target}. "
+                f"If the transcript is {two_way_target} (or any non-English language), translate into English."
+            )
+        else:
+            target_instruction = f"Target language: {target_lang}."
         system_prompt = (
             "You are a real-time interpreter for a documentary filmmaker. "
             "Return concise, natural translation in the requested target language while preserving important facts, names, and intent."
@@ -116,7 +129,7 @@ class OpenAIProcessor(SegmentProcessor):
 
         user_prompt = (
             f"Source language hint: {describe_language_hint(source_lang)}.\n"
-            f"Target language: {target_lang}.\n"
+            f"{target_instruction}\n"
             "Expected conversation context:\n"
             f"{conversation_context.strip() if conversation_context else '(none)'}\n\n"
             "Recent context (oldest to newest):\n"

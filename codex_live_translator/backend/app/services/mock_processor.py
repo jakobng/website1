@@ -1,4 +1,5 @@
 from .provider_base import ProcessedSegment, SegmentProcessor
+from ..language_support import parse_two_way_target
 
 
 class MockProcessor(SegmentProcessor):
@@ -43,4 +44,7 @@ class MockProcessor(SegmentProcessor):
             context_note = f" Context tail: {prior_context[-1][:120]}"
         if conversation_context:
             context_note += f" Topic hint: {conversation_context[:120]}"
+        two_way_target = parse_two_way_target(target_lang)
+        if two_way_target:
+            return f"AUTO({two_way_target}<->EN) gist: {transcript[:160]}{context_note}"
         return f"{target_lang.upper()} gist: {transcript[:160]}{context_note}"
