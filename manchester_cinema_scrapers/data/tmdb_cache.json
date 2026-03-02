@@ -2042,25 +2042,6 @@
     ],
     "vote_average": 7.5
   },
-  "Monthly World Cinema Screening": null,
-  "Weekly Arthouse Screening": null,
-  "If You're Lost I'll Come Find You": null,
-  "Global Justice Now Youth MCR: Women at War": {
-    "tmdb_id": 982440,
-    "tmdb_title": "Women at War",
-    "tmdb_original_title": "女性の戦ひ",
-    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
-    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
-    "backdrop_path": null,
-    "release_date": "1939-02-01",
-    "director": "Yasushi Sasaki",
-    "runtime": 82,
-    "genres": [],
-    "vote_average": 0.0
-  },
-  "Northern Exposure Short Film Showcase": null,
-  "Arrow Video Club: Fulci Double Bill": null,
-  "Bottomless School of Rock": null,
   "www.RachelOrmont.com": {
     "tmdb_id": 1008376,
     "tmdb_title": "www.RachelOrmont.com",
@@ -2078,7 +2059,6 @@
     ],
     "vote_average": 7.0
   },
-  "Hard Boiled (4K)": null,
   "The Wife": {
     "tmdb_id": 340613,
     "tmdb_title": "The Wife",
@@ -2094,7 +2074,6 @@
     ],
     "vote_average": 7.1
   },
-  "NT Live/ The Audience": null,
   "The Last Blossom": {
     "tmdb_id": 1294972,
     "tmdb_title": "The Last Blossom",
@@ -2112,6 +2091,62 @@
     ],
     "vote_average": 8.0
   },
+  "Project Hail Mary": {
+    "tmdb_id": 687163,
+    "tmdb_title": "Project Hail Mary",
+    "tmdb_original_title": "Project Hail Mary",
+    "overview": "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction… but an unexpected friendship means he may not have to do it alone.",
+    "poster_path": "/iOb2fjXLbpJgyQXe46n1WtGCnaa.jpg",
+    "backdrop_path": "/o2xLxY1LdwBMsrGD9hjIaOrIQm6.jpg",
+    "release_date": "2026-03-13",
+    "director": "Phil Lord",
+    "runtime": 157,
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Mystery"
+    ],
+    "vote_average": 0.0
+  },
+  "Monthly World Cinema Screening": null,
+  "If You're Lost I'll Come Find You": null,
+  "Global Justice Now Youth MCR: Women at War": {
+    "tmdb_id": 982440,
+    "tmdb_title": "Women at War",
+    "tmdb_original_title": "女性の戦ひ",
+    "overview": "Naomi Tazawa (Hiroko Kawasaki), who works at Isetan Department Store, was told by an executive at a film company (Ken Uehara), that he was going to make a film about her. She was scouted to become an actress, but she held strong. Around that time, her adoptive father dies, and at the time of his death, she learns that her real father was a man of high rank.",
+    "poster_path": "/qezOGYyGTvK0Hvff37kevJbMWZ7.jpg",
+    "backdrop_path": null,
+    "release_date": "1939-02-01",
+    "director": "Yasushi Sasaki",
+    "runtime": 82,
+    "genres": [],
+    "vote_average": 0.0
+  },
+  "Northern Exposure Short Film Showcase": null,
+  "Arrow Video Club: Fulci Double Bill": null,
+  "Bottomless School of Rock": null,
+  "Hard Boiled (4K)": null,
+  "Highlander 40th Anniversary": {
+    "tmdb_id": 8009,
+    "tmdb_title": "Highlander",
+    "tmdb_original_title": "Highlander",
+    "overview": "He fought his first battle on the Scottish Highlands in 1536. He will fight his greatest battle on the streets of New York City in 1986. His name is Connor MacLeod. He is immortal.",
+    "poster_path": "/8Z8dptJEypuLoOQro1WugD855YE.jpg",
+    "backdrop_path": "/2EfbAWLq8s2f1LxTAIuLGYpKETV.jpg",
+    "release_date": "1986-03-07",
+    "director": "Russell Mulcahy",
+    "runtime": 116,
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "vote_average": 6.859
+  },
+  "NT Live/ The Audience": null,
+  "Royal Ballet/ Giselle (CTBA)": null,
+  "Weekly Arthouse Screening": null,
   "Throwback: The Fifth Element": {
     "tmdb_id": 18,
     "tmdb_title": "The Fifth Element",
@@ -2138,7 +2173,7 @@
     "poster_path": "/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
     "backdrop_path": "/6qOyw4yfzbzTp5YsCX26C28Do0S.jpg",
     "release_date": "1952-04-10",
-    "director": "Gene Kelly",
+    "director": "Stanley Donen",
     "runtime": 103,
     "genres": [
       "Comedy",
@@ -2146,23 +2181,7 @@
     ],
     "vote_average": 8.138
   },
-  "Project Hail Mary": {
-    "tmdb_id": 687163,
-    "tmdb_title": "Project Hail Mary",
-    "tmdb_original_title": "Project Hail Mary",
-    "overview": "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction… but an unexpected friendship means he may not have to do it alone.",
-    "poster_path": "/iOb2fjXLbpJgyQXe46n1WtGCnaa.jpg",
-    "backdrop_path": "/o2xLxY1LdwBMsrGD9hjIaOrIQm6.jpg",
-    "release_date": "2026-03-13",
-    "director": "Phil Lord",
-    "runtime": 157,
-    "genres": [
-      "Science Fiction",
-      "Adventure",
-      "Mystery"
-    ],
-    "vote_average": 0.0
-  },
+  "Throwback: Master and Commander": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
   "The Royal Opera: The Magic Flute": null,
