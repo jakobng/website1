@@ -62,8 +62,8 @@ let lastChunkEndedAtMs = 0;
 let currentChunkMs = 10000;
 let activeMode = "balanced";
 let activeConversationMode = "single";
-let directionSwapped = false;
 let deferredInstallPrompt = null;
+const TWO_WAY_TARGET_PREFIX = "two-way-auto:";
 
 let rtcPeerConnection = null;
 let rtcDataChannel = null;
@@ -202,20 +202,39 @@ function getLanguageLabel(code) {
 function getDirectionLanguages() {
   const source = els.sourceLang.value.trim() || "auto";
   const target = els.targetLang.value.trim() || "en";
-  if (activeConversationMode === "two-way" && directionSwapped) {
-    return { sourceLang: target, targetLang: source };
+  if (activeConversationMode === "two-way") {
+    const otherLang = source.toLowerCase() === "en" ? target : source;
+    return {
+      sourceLang: "auto",
+      targetLang: `${TWO_WAY_TARGET_PREFIX}${(otherLang || "es").trim() || "es"}`,
+    };
   }
   return { sourceLang: source, targetLang: target };
 }
 
+function getTwoWayOtherLanguage() {
+  const source = els.sourceLang.value.trim() || "auto";
+  const target = els.targetLang.value.trim() || "en";
+  return source.toLowerCase() === "en" ? target : source;
+}
+
 function updateLanguageLabels() {
   if (els.sourceLanguageLabel) {
-    const source = getDirectionLanguages().sourceLang;
-    els.sourceLanguageLabel.textContent = `Speaker | ${getLanguageLabel(source)}`;
+    if (activeConversationMode === "two-way") {
+      const otherLang = getTwoWayOtherLanguage();
+      els.sourceLanguageLabel.textContent = `Other side | ${getLanguageLabel(otherLang)}`;
+    } else {
+      const source = getDirectionLanguages().sourceLang;
+      els.sourceLanguageLabel.textContent = `Speaker | ${getLanguageLabel(source)}`;
+    }
   }
   if (els.targetLanguageLabel) {
-    const target = getDirectionLanguages().targetLang;
-    els.targetLanguageLabel.textContent = `Translation | ${getLanguageLabel(target)}`;
+    if (activeConversationMode === "two-way") {
+      els.targetLanguageLabel.textContent = "English side | English";
+    } else {
+      const target = getDirectionLanguages().targetLang;
+      els.targetLanguageLabel.textContent = `Translation | ${getLanguageLabel(target)}`;
+    }
   }
 }
 
@@ -225,16 +244,15 @@ function updateDirectionButton() {
   }
   const source = els.sourceLang.value.trim() || "auto";
   const target = els.targetLang.value.trim() || "en";
-  const canToggle = activeConversationMode === "two-way";
-  els.swapDirectionBtn.disabled = !canToggle;
-  if (!canToggle) {
-    els.swapDirectionBtn.textContent = "Switch Speaker (available in two-way mode)";
-    updateLanguageLabels();
-    return;
+  const canToggle = activeConversationMode !== "two-way";
+  els.swapDirectionBtn.disabled = true;
+  els.swapDirectionBtn.hidden = true;
+  if (canToggle) {
+    els.swapDirectionBtn.textContent = `Translation (${getLanguageLabel(source)} → ${getLanguageLabel(target)})`;
+  } else {
+    const otherLang = getTwoWayOtherLanguage();
+    els.swapDirectionBtn.textContent = `Auto direction (${getLanguageLabel(otherLang)} ↔ English)`;
   }
-  const from = directionSwapped ? getLanguageLabel(target) : getLanguageLabel(source);
-  const to = directionSwapped ? getLanguageLabel(source) : getLanguageLabel(target);
-  els.swapDirectionBtn.textContent = `Switch Speaker (${from} → ${to})`;
   updateLanguageLabels();
 }
 
@@ -1253,7 +1271,6 @@ async function startSession() {
     sessionId = payload.session_id;
     activeMode = els.mode.value.trim() || "balanced";
     activeConversationMode = els.conversationMode.value.trim() || "single";
-    directionSwapped = false;
     updateDirectionButton();
     updateConversationLayout();
     currentChunkMs = chunkMsForMode(activeMode);
@@ -1286,8 +1303,13 @@ async function startSession() {
         `Live session ${sessionId.slice(0, 8)}... VAD chunking (max ${(currentChunkMs / 1000).toFixed(0)}s)`,
       );
     }
-    const direction = getDirectionLanguages();
-    setLiveCaptionText(`Listening (${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)})...`);
+    if (activeConversationMode === "two-way") {
+      const otherLang = getTwoWayOtherLanguage();
+      setLiveCaptionText(`Listening (auto ${getLanguageLabel(otherLang)} ↔ English)...`);
+    } else {
+      const direction = getDirectionLanguages();
+      setLiveCaptionText(`Listening (${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)})...`);
+    }
     setLiveTranscriptText("");
   } catch (error) {
     console.error(error);
@@ -1354,17 +1376,6 @@ function openExport(format) {
 
 
 
-function swapConversationDirection() {
-  if (activeConversationMode !== "two-way") {
-    return;
-  }
-  directionSwapped = !directionSwapped;
-  updateDirectionButton();
-  const direction = getDirectionLanguages();
-  setStatus(`Direction switched: ${getLanguageLabel(direction.sourceLang)} → ${getLanguageLabel(direction.targetLang)}`);
-  setLiveCaptionText(`Listening for ${getLanguageLabel(direction.sourceLang)}...`);
-  updateLanguageLabels();
-}
 // ── Event Listeners ──────────────────────────────────────────────────
 
 els.startBtn.addEventListener("click", startSession);
@@ -1381,7 +1392,6 @@ if (els.settingsToggle) {
 if (els.conversationMode) {
   els.conversationMode.addEventListener("change", () => {
     activeConversationMode = els.conversationMode.value.trim() || "single";
-    directionSwapped = false;
     updateDirectionButton();
     updateConversationLayout();
   });
@@ -1391,9 +1401,6 @@ if (els.sourceLang) {
 }
 if (els.targetLang) {
   els.targetLang.addEventListener("input", updateDirectionButton);
-}
-if (els.swapDirectionBtn) {
-  els.swapDirectionBtn.addEventListener("click", swapConversationDirection);
 }
 if (els.fontDown) {
   els.fontDown.addEventListener("click", () => adjustFontSize(-0.15));

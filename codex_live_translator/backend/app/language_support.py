@@ -16,6 +16,8 @@ LANGUAGE_HINT_NAMES = {
     "pwn": "Paiwan",
 }
 
+TWO_WAY_TARGET_PREFIX = "two-way-auto:"
+
 
 def normalize_source_language_for_transcription(source_lang: str) -> str | None:
     normalized = (source_lang or "").strip().lower()
@@ -36,3 +38,13 @@ def describe_language_hint(language_code: str) -> str:
     if name:
         return f"{name} ({normalized})"
     return normalized
+
+
+def parse_two_way_target(target_lang: str) -> str | None:
+    normalized = (target_lang or "").strip().lower()
+    if not normalized.startswith(TWO_WAY_TARGET_PREFIX):
+        return None
+    other_lang = normalized.removeprefix(TWO_WAY_TARGET_PREFIX).strip()
+    if not other_lang:
+        return None
+    return other_lang
