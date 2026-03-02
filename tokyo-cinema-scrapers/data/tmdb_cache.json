@@ -36458,7 +36458,7 @@
       "Animation"
     ],
     "runtime": 132,
-    "vote_average": 6.987,
+    "vote_average": 7.007,
     "tmdb_countries": [
       {
         "iso_3166_1": "CZ",
@@ -69649,6 +69649,600 @@
       {
         "iso_3166_1": "BR",
         "name": "Brazil"
+      }
+    ]
+  },
+  "ウィキッド　永遠の約束": {
+    "tmdb_id": 967941,
+    "tmdb_title_jp": "ウィキッド 永遠の約束",
+    "tmdb_title_en": "Wicked: For Good",
+    "tmdb_title_original": "Wicked: For Good",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "As an angry mob rises against the Wicked Witch, Glinda and Elphaba will need to come together one final time. With their singular friendship now the fulcrum of their futures, they will need to truly see each other, with honesty and empathy, if they are to change themselves, and all of Oz, for good.",
+    "poster_path": "/qzKgabRKPsMtFYqbjTLc37mwbBj.jpg",
+    "backdrop_path": "/cGbPBHKSFO7hSIjxkb3KOaGdOep.jpg",
+    "release_date": "2025-11-19",
+    "director": "ジョン・M・チュウ",
+    "director_jp": "ジョン・M・チュウ",
+    "director_en": "Jon M. Chu",
+    "genres": [
+      "ファンタジー",
+      "アドベンチャー",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Adventure",
+      "Romance"
+    ],
+    "runtime": 137,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:967941": {
+    "tmdb_id": 967941,
+    "tmdb_title_jp": "ウィキッド 永遠の約束",
+    "tmdb_title_en": "Wicked: For Good",
+    "tmdb_title_original": "Wicked: For Good",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "As an angry mob rises against the Wicked Witch, Glinda and Elphaba will need to come together one final time. With their singular friendship now the fulcrum of their futures, they will need to truly see each other, with honesty and empathy, if they are to change themselves, and all of Oz, for good.",
+    "poster_path": "/qzKgabRKPsMtFYqbjTLc37mwbBj.jpg",
+    "backdrop_path": "/cGbPBHKSFO7hSIjxkb3KOaGdOep.jpg",
+    "release_date": "2025-11-19",
+    "director": "ジョン・M・チュウ",
+    "director_jp": "ジョン・M・チュウ",
+    "director_en": "Jon M. Chu",
+    "genres": [
+      "ファンタジー",
+      "アドベンチャー",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Adventure",
+      "Romance"
+    ],
+    "runtime": 137,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ブルームーン": {
+    "tmdb_id": 1299655,
+    "tmdb_title_jp": "Blue Moon",
+    "tmdb_title_en": "Blue Moon",
+    "tmdb_title_original": "Blue Moon",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "On the evening of March 31, 1943, legendary lyricist Lorenz Hart confronts his shattered self-confidence in Sardi’s bar as his former collaborator, Richard Rodgers, celebrates the opening night of his ground-breaking hit musical, “Oklahoma!”",
+    "poster_path": "/nij3i5ziQdqfiK29gb4rX1bkmVy.jpg",
+    "backdrop_path": "/fsuqi2SIjoPHmuVhJlrk1McomEo.jpg",
+    "release_date": "2025-10-17",
+    "director": "理查德·林克莱特",
+    "director_jp": "理查德·林克莱特",
+    "director_en": "Richard Linklater",
+    "genres": [
+      "履歴",
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "History",
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 100,
+    "vote_average": 6.741,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "人狼 JIN-ROH": {
+    "tmdb_id": 823,
+    "tmdb_title_jp": "人狼 JIN-ROH",
+    "tmdb_title_en": "Jin-Roh: The Wolf Brigade",
+    "tmdb_title_original": "人狼 JIN-ROH",
+    "tmdb_original_language": "ja",
+    "overview": "敗戦から十数年。占領軍統治下の混迷を抜け、国際社会への復帰をめざし高度経済成長を続けるもう一つの日本。しかしスラム化した首都での凶悪犯罪が激増。武装する反政府勢力により首都圏治安警察機構との武力衝突が相次いだ。治安の番人として強化服と重火器で完全武装する、“ケルベロス”というその精鋭集団は、ゲリラを徹底的に排除してゆくのだった。",
+    "overview_en": "A member of an elite paramilitary counter-terrorism unit becomes traumatized after witnessing the suicide bombing of a young girl and is forced to undergo retraining. However, unbeknownst to him, he becomes a key player in a dispute between rival police divisions, as he finds himself increasingly involved with the sister of the girl he saw die.",
+    "poster_path": "/cbWpFiOomvA1VhTMoh4bHAizOAu.jpg",
+    "backdrop_path": "/6HtIoLN8VQ5IQQo9VU9HmM4jSFc.jpg",
+    "release_date": "1999-11-17",
+    "director": "沖浦啓之",
+    "director_jp": "沖浦啓之",
+    "director_en": "Hiroyuki Okiura",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ロマンス",
+      "スリラー",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Romance",
+      "Thriller",
+      "Science Fiction"
+    ],
+    "runtime": 98,
+    "vote_average": 7.405,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:823": {
+    "tmdb_id": 823,
+    "tmdb_title_jp": "人狼 JIN-ROH",
+    "tmdb_title_en": "Jin-Roh: The Wolf Brigade",
+    "tmdb_title_original": "人狼 JIN-ROH",
+    "tmdb_original_language": "ja",
+    "overview": "敗戦から十数年。占領軍統治下の混迷を抜け、国際社会への復帰をめざし高度経済成長を続けるもう一つの日本。しかしスラム化した首都での凶悪犯罪が激増。武装する反政府勢力により首都圏治安警察機構との武力衝突が相次いだ。治安の番人として強化服と重火器で完全武装する、“ケルベロス”というその精鋭集団は、ゲリラを徹底的に排除してゆくのだった。",
+    "overview_en": "A member of an elite paramilitary counter-terrorism unit becomes traumatized after witnessing the suicide bombing of a young girl and is forced to undergo retraining. However, unbeknownst to him, he becomes a key player in a dispute between rival police divisions, as he finds himself increasingly involved with the sister of the girl he saw die.",
+    "poster_path": "/cbWpFiOomvA1VhTMoh4bHAizOAu.jpg",
+    "backdrop_path": "/6HtIoLN8VQ5IQQo9VU9HmM4jSFc.jpg",
+    "release_date": "1999-11-17",
+    "director": "沖浦啓之",
+    "director_jp": "沖浦啓之",
+    "director_en": "Hiroyuki Okiura",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ロマンス",
+      "スリラー",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Romance",
+      "Thriller",
+      "Science Fiction"
+    ],
+    "runtime": 98,
+    "vote_average": 7.405,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ガールズ＆パンツァー　もっとらぶらぶ作戦です！　第3幕": null,
+  "アイカツ！ 10th STORY 未来へのSTARWAY": {
+    "tmdb_id": 1066946,
+    "tmdb_title_jp": "アイカツ! 10th STORY ～未来へのSTARWAY～",
+    "tmdb_title_en": "Aikatsu! 10th Story: Starway to the Future",
+    "tmdb_title_original": "アイカツ! 10th STORY ～未来へのSTARWAY～",
+    "tmdb_original_language": "ja",
+    "overview": "スターライト学園高等部3年の星宮いちご、霧矢あおい、紫吹蘭たちは、半年後に迫る卒業を意識し始める。卒業してもアイドル活動は続くが、卒業はひとつの分岐点でもある。自分たちはこれからどんな道を歩んでいきたいのかを、大切に考え始めるいちごたち。そんな彼女たちは未来への新たな一歩を踏み出し、卒業ライブのステージでそれぞれの思いを明かす。",
+    "overview_en": "While Akari is shining brightly as Starlight Queen, the duo unit \"Cosmos\", composed of Ichigo and Akari, just had a successful first live event!  As time flows by while their activites continue, Ichigo, who is now in her third year of Starlight School's high school divison, is starting to become aware of her graduation that is coming in half a year. She knows that even after she graduates, she'd like to continue her idol activities. However, to pass the hurdle towards her graduation, there is one more fork in the road lying ahead. As idols, for Ichigo, Aoi and Ran, exactly what path would they like to move forward on from now on, this important decision is now something they must consider with care.",
+    "poster_path": "/cF0j6lV6mjZHfixWjB7KTvq393M.jpg",
+    "backdrop_path": "/vx4CPLT6m5NSrkeozbnP7vcYWt1.jpg",
+    "release_date": "2023-01-20",
+    "director": "木村隆一",
+    "director_jp": "木村隆一",
+    "director_en": "Ryuichi Kimura",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "ドラマ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Drama",
+      "Music"
+    ],
+    "runtime": 72,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1066946": {
+    "tmdb_id": 1066946,
+    "tmdb_title_jp": "アイカツ! 10th STORY ～未来へのSTARWAY～",
+    "tmdb_title_en": "Aikatsu! 10th Story: Starway to the Future",
+    "tmdb_title_original": "アイカツ! 10th STORY ～未来へのSTARWAY～",
+    "tmdb_original_language": "ja",
+    "overview": "スターライト学園高等部3年の星宮いちご、霧矢あおい、紫吹蘭たちは、半年後に迫る卒業を意識し始める。卒業してもアイドル活動は続くが、卒業はひとつの分岐点でもある。自分たちはこれからどんな道を歩んでいきたいのかを、大切に考え始めるいちごたち。そんな彼女たちは未来への新たな一歩を踏み出し、卒業ライブのステージでそれぞれの思いを明かす。",
+    "overview_en": "While Akari is shining brightly as Starlight Queen, the duo unit \"Cosmos\", composed of Ichigo and Akari, just had a successful first live event!  As time flows by while their activites continue, Ichigo, who is now in her third year of Starlight School's high school divison, is starting to become aware of her graduation that is coming in half a year. She knows that even after she graduates, she'd like to continue her idol activities. However, to pass the hurdle towards her graduation, there is one more fork in the road lying ahead. As idols, for Ichigo, Aoi and Ran, exactly what path would they like to move forward on from now on, this important decision is now something they must consider with care.",
+    "poster_path": "/cF0j6lV6mjZHfixWjB7KTvq393M.jpg",
+    "backdrop_path": "/vx4CPLT6m5NSrkeozbnP7vcYWt1.jpg",
+    "release_date": "2023-01-20",
+    "director": "木村隆一",
+    "director_jp": "木村隆一",
+    "director_en": "Ryuichi Kimura",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "ドラマ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Drama",
+      "Music"
+    ],
+    "runtime": 72,
+    "vote_average": 7.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "追いつめる": {
+    "tmdb_id": 916942,
+    "tmdb_title_jp": "追いつめる",
+    "tmdb_title_en": "Catch Up",
+    "tmdb_title_original": "追いつめる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "An investigation into the obsession of a former detective the loser of life!",
+    "poster_path": "/tPsEgByk2qYJfGlWsDJj601MnaX.jpg",
+    "backdrop_path": null,
+    "release_date": "1992-07-10",
+    "director": "工藤栄一",
+    "director_jp": "工藤栄一",
+    "director_en": "Eiichi Kudō",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:916942": {
+    "tmdb_id": 916942,
+    "tmdb_title_jp": "追いつめる",
+    "tmdb_title_en": "Catch Up",
+    "tmdb_title_original": "追いつめる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "An investigation into the obsession of a former detective the loser of life!",
+    "poster_path": "/tPsEgByk2qYJfGlWsDJj601MnaX.jpg",
+    "backdrop_path": null,
+    "release_date": "1992-07-10",
+    "director": "工藤栄一",
+    "director_jp": "工藤栄一",
+    "director_en": "Eiichi Kudō",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "藍反射[0308ｲﾍﾞﾝﾄ]": {
+    "tmdb_id": 1379475,
+    "tmdb_title_jp": "藍反射",
+    "tmdb_title_en": "About Me",
+    "tmdb_title_original": "藍反射",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Ovulation disorder disrupts her assumed future. Not understanding what's happening, she gradually feels distant from those close to her.",
+    "poster_path": "/c7k1Gb7xQzI4XvVlkHBHYe2jlQq.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-02",
+    "director": "Kozue Nomoto",
+    "director_jp": "Kozue Nomoto",
+    "director_en": "Kozue Nomoto",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1379475": {
+    "tmdb_id": 1379475,
+    "tmdb_title_jp": "藍反射",
+    "tmdb_title_en": "About Me",
+    "tmdb_title_original": "藍反射",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Ovulation disorder disrupts her assumed future. Not understanding what's happening, she gradually feels distant from those close to her.",
+    "poster_path": "/c7k1Gb7xQzI4XvVlkHBHYe2jlQq.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-02",
+    "director": "Kozue Nomoto",
+    "director_jp": "Kozue Nomoto",
+    "director_en": "Kozue Nomoto",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ナースコール": {
+    "tmdb_id": 1356670,
+    "tmdb_title_jp": "Heldin",
+    "tmdb_title_en": "Late Shift",
+    "tmdb_title_original": "Heldin",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "Dedicated nurse Floria navigates the relentless pace of her hospital’s understaffed surgical ward with humanity and warmth. As her overnight shift intensifies, she is pushed to the brink in a race against time.",
+    "poster_path": "/yfzWIdiS10jb9GpeOXYuxHXGIAa.jpg",
+    "backdrop_path": "/egNz2a18eQ9ycBfQQkQehSTeNwH.jpg",
+    "release_date": "2025-02-27",
+    "director": "ペトラ・ビオンディナ・フォックス",
+    "director_jp": "ペトラ・ビオンディナ・フォックス",
+    "director_en": "Petra Biondina Volpe",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 92,
+    "vote_average": 7.792,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "tmdb:1356670": {
+    "tmdb_id": 1356670,
+    "tmdb_title_jp": "Heldin",
+    "tmdb_title_en": "Late Shift",
+    "tmdb_title_original": "Heldin",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "Dedicated nurse Floria navigates the relentless pace of her hospital’s understaffed surgical ward with humanity and warmth. As her overnight shift intensifies, she is pushed to the brink in a race against time.",
+    "poster_path": "/yfzWIdiS10jb9GpeOXYuxHXGIAa.jpg",
+    "backdrop_path": "/egNz2a18eQ9ycBfQQkQehSTeNwH.jpg",
+    "release_date": "2025-02-27",
+    "director": "ペトラ・ビオンディナ・フォックス",
+    "director_jp": "ペトラ・ビオンディナ・フォックス",
+    "director_en": "Petra Biondina Volpe",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 92,
+    "vote_average": 7.792,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "【Filmarks 90's】ユージュアル・サスペクツ": {
+    "tmdb_id": 629,
+    "tmdb_title_jp": "ユージュアル・サスペクツ",
+    "tmdb_title_en": "The Usual Suspects",
+    "tmdb_title_original": "The Usual Suspects",
+    "tmdb_original_language": "en",
+    "overview": "船舶の炎上事故を調べていた捜査官クラインは尋問していたヴァーバルから奇妙な話を聞かされる。6週間前に銃器強奪事件の容疑者として集められた5人が、釈放後、協力して宝石強奪を決行。ブツをさばくためにLAの故買屋と接触した5人は、そこで新たなヤマを依頼されるが、宝石と聞かされていた獲物は麻薬で、トラブルから相手を射殺してしまう。そして恐慌状態の彼らの前に、伝説のギャング“カイザー・ソゼ”の右腕と名乗る弁護士が現れたというのだ。",
+    "overview_en": "Held in an L.A. interrogation room, Verbal Kint attempts to convince the feds that a mythic crime lord, Keyser Soze, not only exists, but was also responsible for drawing him and his four partners into a multi-million dollar heist that ended with an explosion in San Pedro harbor – leaving few survivors. Verbal lures his interrogators with an incredible story of the crime lord's almost supernatural prowess.",
+    "poster_path": "/6xeq777IDeBk6HGUiB8Qb3igNc.jpg",
+    "backdrop_path": "/hy0Hx9fMPk2fmw26Li60z1S2giU.jpg",
+    "release_date": "1995-07-19",
+    "director": "ブライアン・シンガー",
+    "director_jp": "ブライアン・シンガー",
+    "director_en": "Bryan Singer",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 105,
+    "vote_average": 8.169,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【ヤン・シュヴァンクマイエル特集】オテサーネク": {
+    "tmdb_id": 18939,
+    "tmdb_title_jp": "オテサーネク　妄想の子供",
+    "tmdb_title_en": "Little Otik",
+    "tmdb_title_original": "Otesánek",
+    "tmdb_original_language": "cs",
+    "overview": "実写とアニメを組み合わせて、シュールでグロテスク、なおかつどこかユーモラスな独自の映像世界を探求し続けるアート・アニメ界の奇才ヤン・シュヴァンクマイエル監督がチェコの民話を下敷きに描いた異色長編ダークファンタジー作。  なかなか子宝に恵まれず、寂しい思いをしていたホラーク夫妻。ある日ホラークが、偶然地面から掘り出した、どこか人間の形によく似た木の切り株を夫人にプレゼントすると、夫人は早速それをわが子に見たててオティークと名付け、周囲の人々の奇異なまなざしをよそに、溺愛して養育するようになる。みるみるうちに成長したオティークは、食欲を異常に発達させて、飼い猫から人間まであらゆるものをむさぼり食うようになり…。",
+    "overview_en": "When a childless couple learn that they cannot have children, it causes great distress. To ease his wife's pain, the man finds a piece of root in the backyard and chops it and varnishes it into the shape of a child. However the woman takes the root as her baby and starts to pretend that it is real.",
+    "poster_path": "/i2tHooKzDBjHLvHeiUjuqDMf6e4.jpg",
+    "backdrop_path": "/4iThHj4wK5A5Rfbe66y3KpyhD3Z.jpg",
+    "release_date": "2001-01-25",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "コメディ",
+      "ファンタジー",
+      "ホラー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Fantasy",
+      "Horror",
+      "Animation"
+    ],
+    "runtime": 132,
+    "vote_average": 7.007,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "REDLINE": null,
+  "佐藤さんと佐藤さん": {
+    "tmdb_id": 1449863,
+    "tmdb_title_jp": "佐藤さんと佐藤さん",
+    "tmdb_title_en": "Sato and Sato",
+    "tmdb_title_original": "佐藤さんと佐藤さん",
+    "tmdb_original_language": "ja",
+    "overview": "佐藤サチ（22）は、ダンス好きの活発なアウトドア派。佐藤タモツ（23）は、正義感の強い真面目なインドア派 。2人は正反対な性格だがなぜか気が合い、程なくして付き合い同棲を始める。そして5年後。弁護士を夢見るタモツは、司法試験を受けるが不合格が続く。会社員として働いていたサチは、 一人孤独に頑張るタモツを助けようと、一緒に勉強を始める。数年経ってもタモツは相変わらず不合格だった一方で、サチが司法試験に合格。そんな中、サチの妊娠が発覚し、2人は結婚することになる。  産後すぐに、弁護士として働き出したサチに対し、 タモツは塾講師のアルバイトをしながら家で息子の世話をし、その片手間に司法試験の勉強をする。そんな中、忙しいサチが息子の支度を忘れたり、家でのだらしない姿にタモツはイライラが募る。 育児に対する考え方も全く違う2人は対立し、次第に絶妙に保たれていたはずのバランスが崩れ始める。",
+    "overview_en": "It’s easy to promise ‘for better or worse’ in a wedding vow, but how many marriages can truly weather every storm? Sachi decides to study for the bar exam with her boyfriend Tamotsu as an act of solidarity. However, Sachi ends up becoming a lawyer, while Tamotsu, who fails the exam repeatedly, is relegated to stay-at-home dad.",
+    "poster_path": "/v7PNtL4bpXxIWie6KATByZjrkf3.jpg",
+    "backdrop_path": "/vO0YxmF987FPpRTBeEviOKF4RBZ.jpg",
+    "release_date": "2025-11-28",
+    "director": "天野千尋",
+    "director_jp": "天野千尋",
+    "director_en": "Chihiro Amano",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 114,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1449863": {
+    "tmdb_id": 1449863,
+    "tmdb_title_jp": "佐藤さんと佐藤さん",
+    "tmdb_title_en": "Sato and Sato",
+    "tmdb_title_original": "佐藤さんと佐藤さん",
+    "tmdb_original_language": "ja",
+    "overview": "佐藤サチ（22）は、ダンス好きの活発なアウトドア派。佐藤タモツ（23）は、正義感の強い真面目なインドア派 。2人は正反対な性格だがなぜか気が合い、程なくして付き合い同棲を始める。そして5年後。弁護士を夢見るタモツは、司法試験を受けるが不合格が続く。会社員として働いていたサチは、 一人孤独に頑張るタモツを助けようと、一緒に勉強を始める。数年経ってもタモツは相変わらず不合格だった一方で、サチが司法試験に合格。そんな中、サチの妊娠が発覚し、2人は結婚することになる。  産後すぐに、弁護士として働き出したサチに対し、 タモツは塾講師のアルバイトをしながら家で息子の世話をし、その片手間に司法試験の勉強をする。そんな中、忙しいサチが息子の支度を忘れたり、家でのだらしない姿にタモツはイライラが募る。 育児に対する考え方も全く違う2人は対立し、次第に絶妙に保たれていたはずのバランスが崩れ始める。",
+    "overview_en": "It’s easy to promise ‘for better or worse’ in a wedding vow, but how many marriages can truly weather every storm? Sachi decides to study for the bar exam with her boyfriend Tamotsu as an act of solidarity. However, Sachi ends up becoming a lawyer, while Tamotsu, who fails the exam repeatedly, is relegated to stay-at-home dad.",
+    "poster_path": "/v7PNtL4bpXxIWie6KATByZjrkf3.jpg",
+    "backdrop_path": "/vO0YxmF987FPpRTBeEviOKF4RBZ.jpg",
+    "release_date": "2025-11-28",
+    "director": "天野千尋",
+    "director_jp": "天野千尋",
+    "director_en": "Chihiro Amano",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 114,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1299655": {
+    "tmdb_id": 1299655,
+    "tmdb_title_jp": "Blue Moon",
+    "tmdb_title_en": "Blue Moon",
+    "tmdb_title_original": "Blue Moon",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "On the evening of March 31, 1943, legendary lyricist Lorenz Hart confronts his shattered self-confidence in Sardi’s bar as his former collaborator, Richard Rodgers, celebrates the opening night of his ground-breaking hit musical, “Oklahoma!”",
+    "poster_path": "/nij3i5ziQdqfiK29gb4rX1bkmVy.jpg",
+    "backdrop_path": "/fsuqi2SIjoPHmuVhJlrk1McomEo.jpg",
+    "release_date": "2025-10-17",
+    "director": "理查德·林克莱特",
+    "director_jp": "理查德·林克莱特",
+    "director_en": "Richard Linklater",
+    "genres": [
+      "履歴",
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "History",
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 100,
+    "vote_average": 6.741,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IE",
+        "name": "Ireland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
       }
     ]
   }

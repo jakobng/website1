@@ -6958,5 +6958,34 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ブルームーン": {
+    "english_title": "Blue Moon",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Blue Moon",
+    "director": "Richard Linklater",
+    "country": "USA"
+  },
+  "ガールズ＆パンツァー　もっとらぶらぶ作戦です！　第3幕": {
+    "english_title": "Girls und Panzer: Motto Love Love Sakusen Desu! Act 3",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ガールズ＆パンツァー もっとらぶらぶ作戦です！ 第3幕",
+    "director": "Masami Shimoda",
+    "country": "Japan",
+    "failed": true
+  },
+  "REDLINE": {
+    "english_title": "Redline",
+    "release_year": 2009,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "レッドライン",
+    "director": "Takeshi Koike",
+    "country": "Japan",
+    "failed": true
   }
 }
