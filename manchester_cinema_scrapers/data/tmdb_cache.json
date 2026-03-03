@@ -2142,10 +2142,27 @@
       "Action",
       "Fantasy"
     ],
-    "vote_average": 6.859
+    "vote_average": 6.9
   },
   "NT Live/ The Audience": null,
-  "Royal Ballet/ Giselle (CTBA)": null,
+  "Royal Ballet/ Giselle (PG)": null,
+  "We Are Parable presents: Set It Off": {
+    "tmdb_id": 9400,
+    "tmdb_title": "Set It Off",
+    "tmdb_original_title": "Set It Off",
+    "overview": "Four inner-city Black women, determined to end their constant struggle, decide to live by one rule — get what you want or die trying. So the four women take back their lives and take out some banks in the process.",
+    "poster_path": "/wpiARyUqTfabzakAXHMIUY6Tl1A.jpg",
+    "backdrop_path": "/8ebAtpx6YVfRGrxPrs4nTTWSbT9.jpg",
+    "release_date": "1996-11-06",
+    "director": "F. Gary Gray",
+    "runtime": 123,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 7.188
+  },
   "Weekly Arthouse Screening": null,
   "Throwback: The Fifth Element": {
     "tmdb_id": 18,
@@ -2173,7 +2190,7 @@
     "poster_path": "/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
     "backdrop_path": "/6qOyw4yfzbzTp5YsCX26C28Do0S.jpg",
     "release_date": "1952-04-10",
-    "director": "Stanley Donen",
+    "director": "Gene Kelly",
     "runtime": 103,
     "genres": [
       "Comedy",
@@ -2183,8 +2200,6 @@
   },
   "Throwback: Master and Commander": null,
   "Exhibition On Screen: Turner & Constable": null,
-  "The Royal Ballet: Giselle": null,
-  "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
     "tmdb_title": "First Steps",
@@ -2200,8 +2215,10 @@
     ],
     "vote_average": 6.1
   },
+  "The Royal Ballet: Giselle": null,
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
+  "The Royal Opera: The Magic Flute": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
     "tmdb_title": "Romeo Juliet",
