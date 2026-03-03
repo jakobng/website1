@@ -56,9 +56,16 @@ jobs:
             current_hour=$(date +%H)
             echo "Current Manchester Hour: $current_hour"
 
+            # 7 AM local -> Cinema post daily; scraper runs every other day.
             if [ "$current_hour" == "07" ]; then
               TYPE="cinema"
-              SCRAPE="true"
+              day_of_year=$(date +%j)
+              if [ $((10#$day_of_year % 2)) -eq 0 ]; then
+                SCRAPE="true"
+              else
+                SCRAPE="false"
+              fi
+            # 8 AM local -> Skip Scraper + Movie Post
             elif [ "$current_hour" == "08" ]; then
               TYPE="movie"
               SCRAPE="false"

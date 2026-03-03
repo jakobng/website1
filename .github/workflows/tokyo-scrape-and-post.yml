@@ -62,11 +62,16 @@ jobs:
             current_hour=$(date +%H)
             echo "Current JST Hour: $current_hour"
             
-            # 7 AM JST -> Run Scraper + Cinema Post
+            # 7 AM local -> Cinema post daily; scraper runs every other day.
             if [ "$current_hour" == "07" ]; then
               TYPE="cinema"
-              SCRAPE="true"
-            # 8 AM JST -> Skip Scraper + Movie Post
+              day_of_year=$(date +%j)
+              if [ $((10#$day_of_year % 2)) -eq 0 ]; then
+                SCRAPE="true"
+              else
+                SCRAPE="false"
+              fi
+            # 8 AM local -> Skip Scraper + Movie Post
             elif [ "$current_hour" == "08" ]; then
               TYPE="movie"
               SCRAPE="false"
