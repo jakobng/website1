@@ -20962,7 +20962,7 @@
       "Music"
     ],
     "runtime": 122,
-    "vote_average": 7.262,
+    "vote_average": 7.343,
     "tmdb_countries": [
       {
         "iso_3166_1": "GB",
@@ -64739,7 +64739,7 @@
       "Drama"
     ],
     "runtime": 123,
-    "vote_average": 7.404,
+    "vote_average": 7.414,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -70243,6 +70243,1420 @@
       {
         "iso_3166_1": "US",
         "name": "United States of America"
+      }
+    ]
+  },
+  "満江紅　マンジャンホン": {
+    "tmdb_id": 1066298,
+    "tmdb_title_jp": "满江红",
+    "tmdb_title_en": "Full River Red",
+    "tmdb_title_original": "满江红",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "During China's Song Dynasty, a mysterious murder occurs at Chancellor Quin Hui's palace after meeting delegates from the neighboring Jin Dynasty. The members become embroiled not just in a murder mystery, but a larger conspiracy concerning the fate of the empire.",
+    "poster_path": "/4eFNcvct2xB7XuxSWhQKW1aTAz4.jpg",
+    "backdrop_path": "/cMoi6ljDVZbfbaivpARi4vIagTI.jpg",
+    "release_date": "2023-01-22",
+    "director": "チャン・イーモウ",
+    "director_jp": "チャン・イーモウ",
+    "director_en": "Zhang Yimou",
+    "genres": [
+      "謎",
+      "コメディ",
+      "スリラー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Mystery",
+      "Comedy",
+      "Thriller",
+      "History"
+    ],
+    "runtime": 157,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "アシスタント": {
+    "tmdb_id": 627463,
+    "tmdb_title_jp": "アシスタント",
+    "tmdb_title_en": "The Assistant",
+    "tmdb_title_original": "The Assistant",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A searing look at a day in the life of an assistant to a powerful executive. As Jane follows her daily routine, she grows increasingly aware of the insidious abuse that threatens every aspect of her position.",
+    "poster_path": "/duTzU28dGzhGckKVyv0losETcsD.jpg",
+    "backdrop_path": "/fFJQYhnjKfgweZCbRNOE1E015DF.jpg",
+    "release_date": "2020-01-31",
+    "director": "Kitty Green",
+    "director_jp": "Kitty Green",
+    "director_en": "Kitty Green",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 88,
+    "vote_average": 6.291,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:627463": {
+    "tmdb_id": 627463,
+    "tmdb_title_jp": "アシスタント",
+    "tmdb_title_en": "The Assistant",
+    "tmdb_title_original": "The Assistant",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A searing look at a day in the life of an assistant to a powerful executive. As Jane follows her daily routine, she grows increasingly aware of the insidious abuse that threatens every aspect of her position.",
+    "poster_path": "/duTzU28dGzhGckKVyv0losETcsD.jpg",
+    "backdrop_path": "/fFJQYhnjKfgweZCbRNOE1E015DF.jpg",
+    "release_date": "2020-01-31",
+    "director": "Kitty Green",
+    "director_jp": "Kitty Green",
+    "director_en": "Kitty Green",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 88,
+    "vote_average": 6.291,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ドマーニ！　愛のことづて": {
+    "tmdb_id": 1026227,
+    "tmdb_title_jp": "まだ明日がある",
+    "tmdb_title_en": "There's Still Tomorrow",
+    "tmdb_title_original": "C'è ancora domani",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "In postwar Rome, a working-class woman dreams of a better future for herself and her daughter while facing abuse at the hands of her domineering husband. When a mysterious letter arrives, she discovers the courage to change the circumstances of her life.",
+    "poster_path": "/fnQ9jrRMK9GFnJA1pquaDxfXZyr.jpg",
+    "backdrop_path": "/fNXUCk54vGcoKr34olN14ohUSFY.jpg",
+    "release_date": "2023-10-26",
+    "director": "パオラ・コルテッレージ",
+    "director_jp": "パオラ・コルテッレージ",
+    "director_en": "Paola Cortellesi",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "History"
+    ],
+    "runtime": 118,
+    "vote_average": 8.08,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "tmdb:1026227": {
+    "tmdb_id": 1026227,
+    "tmdb_title_jp": "まだ明日がある",
+    "tmdb_title_en": "There's Still Tomorrow",
+    "tmdb_title_original": "C'è ancora domani",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "In postwar Rome, a working-class woman dreams of a better future for herself and her daughter while facing abuse at the hands of her domineering husband. When a mysterious letter arrives, she discovers the courage to change the circumstances of her life.",
+    "poster_path": "/fnQ9jrRMK9GFnJA1pquaDxfXZyr.jpg",
+    "backdrop_path": "/fNXUCk54vGcoKr34olN14ohUSFY.jpg",
+    "release_date": "2023-10-26",
+    "director": "パオラ・コルテッレージ",
+    "director_jp": "パオラ・コルテッレージ",
+    "director_en": "Paola Cortellesi",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "History"
+    ],
+    "runtime": 118,
+    "vote_average": 8.08,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "ジャンヌ・ディエルマン　ブリュッセル1080、コメルス河畔通り23番地": {
+    "tmdb_id": 44012,
+    "tmdb_title_jp": "ジャンヌ・ディエルマン ブリュッセル1080、コメルス河畔通り23番地",
+    "tmdb_title_en": "Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles",
+    "tmdb_title_original": "Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A lonely young widow lives with her son following an immutable order: while the boy is in school, she cares for their apartment, does chores, and receives clients in the afternoon.",
+    "poster_path": "/mc5cgBaXnepgDbqSNCyaFrUmQpl.jpg",
+    "backdrop_path": "/z81DzVg9lrBPr4M88ldmZ3FbBUY.jpg",
+    "release_date": "1976-01-21",
+    "director": "Chantal Akerman",
+    "director_jp": "Chantal Akerman",
+    "director_en": "Chantal Akerman",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 202,
+    "vote_average": 7.399,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:44012": {
+    "tmdb_id": 44012,
+    "tmdb_title_jp": "ジャンヌ・ディエルマン ブリュッセル1080、コメルス河畔通り23番地",
+    "tmdb_title_en": "Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles",
+    "tmdb_title_original": "Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A lonely young widow lives with her son following an immutable order: while the boy is in school, she cares for their apartment, does chores, and receives clients in the afternoon.",
+    "poster_path": "/mc5cgBaXnepgDbqSNCyaFrUmQpl.jpg",
+    "backdrop_path": "/z81DzVg9lrBPr4M88ldmZ3FbBUY.jpg",
+    "release_date": "1976-01-21",
+    "director": "Chantal Akerman",
+    "director_jp": "Chantal Akerman",
+    "director_en": "Chantal Akerman",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 202,
+    "vote_average": 7.399,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "燃ゆる女の肖像": {
+    "tmdb_id": 531428,
+    "tmdb_title_jp": "燃ゆる女の肖像",
+    "tmdb_title_en": "Portrait of a Lady on Fire",
+    "tmdb_title_original": "Portrait de la jeune fille en feu",
+    "tmdb_original_language": "fr",
+    "overview": "画家のマリアンヌはブルターニュの貴婦人から、娘のエロイーズの見合いのための肖像画を頼まれる。だが、エロイーズ自身は結婚を拒んでいた。身分を隠して近づき、孤島の屋敷で密かに肖像画を完成させたマリアンヌは、真実を知ったエロイーズから絵の出来栄えを否定される。描き直すと決めたマリアンヌに、意外にもモデルになると申し出るエロイーズ。キャンバスをはさんで見つめ合い、美しい島を共に散策し、音楽や文学について語り合ううちに、恋におちる二人。約束の5日後、肖像画はあと一筆で完成となるが、それは別れを意味していた──。",
+    "overview_en": "On an isolated island in Brittany at the end of the eighteenth century, a female painter is obliged to paint a wedding portrait of a young woman.",
+    "poster_path": "/hRrp5ilspqTML15XPvtWpjKeKpo.jpg",
+    "backdrop_path": "/foFq1RZWQIgFuCQ0nyYccywjFyX.jpg",
+    "release_date": "2019-09-06",
+    "director": "瑟琳·席安玛",
+    "director_jp": "瑟琳·席安玛",
+    "director_en": "Céline Sciamma",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 121,
+    "vote_average": 8.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:531428": {
+    "tmdb_id": 531428,
+    "tmdb_title_jp": "燃ゆる女の肖像",
+    "tmdb_title_en": "Portrait of a Lady on Fire",
+    "tmdb_title_original": "Portrait de la jeune fille en feu",
+    "tmdb_original_language": "fr",
+    "overview": "画家のマリアンヌはブルターニュの貴婦人から、娘のエロイーズの見合いのための肖像画を頼まれる。だが、エロイーズ自身は結婚を拒んでいた。身分を隠して近づき、孤島の屋敷で密かに肖像画を完成させたマリアンヌは、真実を知ったエロイーズから絵の出来栄えを否定される。描き直すと決めたマリアンヌに、意外にもモデルになると申し出るエロイーズ。キャンバスをはさんで見つめ合い、美しい島を共に散策し、音楽や文学について語り合ううちに、恋におちる二人。約束の5日後、肖像画はあと一筆で完成となるが、それは別れを意味していた──。",
+    "overview_en": "On an isolated island in Brittany at the end of the eighteenth century, a female painter is obliged to paint a wedding portrait of a young woman.",
+    "poster_path": "/hRrp5ilspqTML15XPvtWpjKeKpo.jpg",
+    "backdrop_path": "/foFq1RZWQIgFuCQ0nyYccywjFyX.jpg",
+    "release_date": "2019-09-06",
+    "director": "瑟琳·席安玛",
+    "director_jp": "瑟琳·席安玛",
+    "director_en": "Céline Sciamma",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 121,
+    "vote_average": 8.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "しあわせな選択": {
+    "tmdb_id": 639988,
+    "tmdb_title_jp": "어쩔수가없다",
+    "tmdb_title_en": "No Other Choice",
+    "tmdb_title_original": "어쩔수가없다",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "After being laid off and humiliated by a ruthless job market, a veteran paper mill manager descends into violence in a desperate bid to reclaim his dignity.",
+    "poster_path": "/9w7WGjQes0Cs0s4U3Qr09Tg1Sra.jpg",
+    "backdrop_path": "/vuUDwAi9UgLyNN9xZLtKTaLQWnl.jpg",
+    "release_date": "2025-09-24",
+    "director": "パク・チャヌク",
+    "director_jp": "パク・チャヌク",
+    "director_en": "Park Chan-wook",
+    "genres": [
+      "コメディ",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 139,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:639988": {
+    "tmdb_id": 639988,
+    "tmdb_title_jp": "어쩔수가없다",
+    "tmdb_title_en": "No Other Choice",
+    "tmdb_title_original": "어쩔수가없다",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "After being laid off and humiliated by a ruthless job market, a veteran paper mill manager descends into violence in a desperate bid to reclaim his dignity.",
+    "poster_path": "/9w7WGjQes0Cs0s4U3Qr09Tg1Sra.jpg",
+    "backdrop_path": "/vuUDwAi9UgLyNN9xZLtKTaLQWnl.jpg",
+    "release_date": "2025-09-24",
+    "director": "パク・チャヌク",
+    "director_jp": "パク・チャヌク",
+    "director_en": "Park Chan-wook",
+    "genres": [
+      "コメディ",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 139,
+    "vote_average": 7.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "レッド・ツェッペリン：ビカミング": {
+    "tmdb_id": 857800,
+    "tmdb_title_jp": "レッド・ツェッペリン：ビカミング",
+    "tmdb_title_en": "Becoming Led Zeppelin",
+    "tmdb_title_original": "Becoming Led Zeppelin",
+    "tmdb_original_language": "en",
+    "overview": "60年代末、イギリスで産声を上げたロックバンド「レッド・ツェッペリン」。ジミー・ペイジ、ジョン・ポール・ジョーンズ、ジョン・ボーナム、ロバート・プラント。およそ12年間の活動の中で、彼らが起こした現象はまさに事件であり、予言であり、そして未来であった。デビューアルバムでいきなり世界を熱狂の渦に巻き込んだバンドの出発点にはいったい何があったのか。未公開のジョン・ボーナムの生前音声のほか、メンバーの家族写真や映像、初期のライブシーンなど貴重なアーカイヴ映像とともに、その知られざる歴史を語る証言者はオリジナルメンバーのみ！さらに、部分的ではなく１曲まるごと演奏シーンを映し出すことで、私たちはまるでその場に居合わせたかのようにメンバーの声を聞き、当時のライブをリアルタイムで目撃した感覚になるだろう。4人のメンバーとともに当時を再体感する、まさにユニークにして最高の没入型“映画オデッセイ”である。今、音楽シーンに新たな「伝説」が誕生する！",
+    "overview_en": "The individual journeys of the four members of the band, as they move through the music scene of the 1960s, playing small clubs throughout Britain and performing some of the biggest hits of the era, until their meeting in the summer of 1968 for a rehearsal that changes their lives forever.",
+    "poster_path": "/ja3BA6nc9z3nN4SLUJ7HL0OdNlv.jpg",
+    "backdrop_path": "/zjqvYpo7SZ23QI8GO77zRO68kEO.jpg",
+    "release_date": "2025-02-05",
+    "director": "バーナード・マクマホン",
+    "director_jp": "バーナード・マクマホン",
+    "director_en": "Bernard MacMahon",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 122,
+    "vote_average": 7.343,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ジェイコブス・ラダー 4Kレストア": {
+    "tmdb_id": 2291,
+    "tmdb_title_jp": "ジェイコブス・ラダー",
+    "tmdb_title_en": "Jacob's Ladder",
+    "tmdb_title_original": "Jacob's Ladder",
+    "tmdb_original_language": "en",
+    "overview": "旧約聖書のヤコブの話をヒントに、悪夢と現実の間で翻弄されていくベトナム帰りの男の奇妙な体験を描いたサスペンス・スリラー。ニューヨークの郵便局員であるジェイコブは最近夢と現実の区別がつかなくなるほど奇妙な出来事に遭遇していた。疾走する地下鉄に乗る得体の知れない人々。掛かりつけの医者の死亡。自分を轢き殺そうとした車に乗る異様な人物。そしてベトナムの悪夢や幻覚までもが見え始め……。そんな時、ベトナム時代の戦友から電話がかかってくる……。",
+    "overview_en": "After returning home from the Vietnam War, veteran Jacob Singer struggles to maintain his sanity. Plagued by hallucinations and flashbacks, Singer rapidly falls apart as the world and people around him morph and twist into disturbing images. His girlfriend, Jezzie, and ex-wife, Sarah, try to help, but to little avail. Even Singer's chiropractor friend, Louis, fails to reach him as he descends into madness.",
+    "poster_path": "/ufLcHIi1aXjjH8MediAMvnwDsVI.jpg",
+    "backdrop_path": "/oubk1SEFtg3Q8eOncFvGQVa6OoP.jpg",
+    "release_date": "1990-11-02",
+    "director": "Adrian Lyne",
+    "director_jp": "Adrian Lyne",
+    "director_en": "Adrian Lyne",
+    "genres": [
+      "ドラマ",
+      "謎",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery",
+      "Horror"
+    ],
+    "runtime": 113,
+    "vote_average": 7.356,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:2291": {
+    "tmdb_id": 2291,
+    "tmdb_title_jp": "ジェイコブス・ラダー",
+    "tmdb_title_en": "Jacob's Ladder",
+    "tmdb_title_original": "Jacob's Ladder",
+    "tmdb_original_language": "en",
+    "overview": "旧約聖書のヤコブの話をヒントに、悪夢と現実の間で翻弄されていくベトナム帰りの男の奇妙な体験を描いたサスペンス・スリラー。ニューヨークの郵便局員であるジェイコブは最近夢と現実の区別がつかなくなるほど奇妙な出来事に遭遇していた。疾走する地下鉄に乗る得体の知れない人々。掛かりつけの医者の死亡。自分を轢き殺そうとした車に乗る異様な人物。そしてベトナムの悪夢や幻覚までもが見え始め……。そんな時、ベトナム時代の戦友から電話がかかってくる……。",
+    "overview_en": "After returning home from the Vietnam War, veteran Jacob Singer struggles to maintain his sanity. Plagued by hallucinations and flashbacks, Singer rapidly falls apart as the world and people around him morph and twist into disturbing images. His girlfriend, Jezzie, and ex-wife, Sarah, try to help, but to little avail. Even Singer's chiropractor friend, Louis, fails to reach him as he descends into madness.",
+    "poster_path": "/ufLcHIi1aXjjH8MediAMvnwDsVI.jpg",
+    "backdrop_path": "/oubk1SEFtg3Q8eOncFvGQVa6OoP.jpg",
+    "release_date": "1990-11-02",
+    "director": "Adrian Lyne",
+    "director_jp": "Adrian Lyne",
+    "director_en": "Adrian Lyne",
+    "genres": [
+      "ドラマ",
+      "謎",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery",
+      "Horror"
+    ],
+    "runtime": 113,
+    "vote_average": 7.356,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ペーパーシティ 東京大空襲の記憶": {
+    "tmdb_id": 842235,
+    "tmdb_title_jp": "Paper City",
+    "tmdb_title_en": "Paper City",
+    "tmdb_title_original": "Paper City",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Just after midnight on 10 March 1945, the US launched an air-based attack on eastern Tokyo; continuing until morning, the raid left more than 100,000 people dead and a quarter of the city eradicated. Unlike their loved ones, Hiroshi Hoshino, Michiko Kiyooka and Minoru Tsukiyama managed to emerge from the bombings. Now in their twilight years, they wish for nothing more than recognition and reparations for those who, like them, had been indelibly harmed by the war – but the Japanese government and even their fellow citizens seem disinclined to acknowledge the past.",
+    "poster_path": "/t13c27U21MmPljisKsDiZeYjiF9.jpg",
+    "backdrop_path": null,
+    "release_date": "2021-08-16",
+    "director": "Adrian Francis",
+    "director_jp": "Adrian Francis",
+    "director_en": "Adrian Francis",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 80,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:842235": {
+    "tmdb_id": 842235,
+    "tmdb_title_jp": "Paper City",
+    "tmdb_title_en": "Paper City",
+    "tmdb_title_original": "Paper City",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Just after midnight on 10 March 1945, the US launched an air-based attack on eastern Tokyo; continuing until morning, the raid left more than 100,000 people dead and a quarter of the city eradicated. Unlike their loved ones, Hiroshi Hoshino, Michiko Kiyooka and Minoru Tsukiyama managed to emerge from the bombings. Now in their twilight years, they wish for nothing more than recognition and reparations for those who, like them, had been indelibly harmed by the war – but the Japanese government and even their fellow citizens seem disinclined to acknowledge the past.",
+    "poster_path": "/t13c27U21MmPljisKsDiZeYjiF9.jpg",
+    "backdrop_path": null,
+    "release_date": "2021-08-16",
+    "director": "Adrian Francis",
+    "director_jp": "Adrian Francis",
+    "director_en": "Adrian Francis",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 80,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『鶏・The Chicken』＋『アメガラス』": null,
+  "ホールディング・リアット": {
+    "tmdb_id": 1418569,
+    "tmdb_title_jp": "Holding Liat",
+    "tmdb_title_en": "Holding Liat",
+    "tmdb_title_original": "Holding Liat",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Liat Atzili was kidnapped from her kibbutz on October 7. What begins as a chronicle of her parents, sister, and children's efforts to secure her return, becomes a portrait of conflicting impulses towards anger, indifference, and compassion straining the bonds of one grieving family.",
+    "poster_path": "/eqLXeHTCCepLaYSMwOcBpex5FJI.jpg",
+    "backdrop_path": "/nKrb2Bfh1Wl77ZE1XQwXdhXBgv3.jpg",
+    "release_date": "2025-09-12",
+    "director": "Brandon Kramer",
+    "director_jp": "Brandon Kramer",
+    "director_en": "Brandon Kramer",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 97,
+    "vote_average": 6.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1418569": {
+    "tmdb_id": 1418569,
+    "tmdb_title_jp": "Holding Liat",
+    "tmdb_title_en": "Holding Liat",
+    "tmdb_title_original": "Holding Liat",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Liat Atzili was kidnapped from her kibbutz on October 7. What begins as a chronicle of her parents, sister, and children's efforts to secure her return, becomes a portrait of conflicting impulses towards anger, indifference, and compassion straining the bonds of one grieving family.",
+    "poster_path": "/eqLXeHTCCepLaYSMwOcBpex5FJI.jpg",
+    "backdrop_path": "/nKrb2Bfh1Wl77ZE1XQwXdhXBgv3.jpg",
+    "release_date": "2025-09-12",
+    "director": "Brandon Kramer",
+    "director_jp": "Brandon Kramer",
+    "director_en": "Brandon Kramer",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 97,
+    "vote_average": 6.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "〈特別上映〉3/8国際女性デー ワンダ」「冬の旅」「女性の休日」トークショー付き上映": null,
+  "藍反射": {
+    "tmdb_id": 1379475,
+    "tmdb_title_jp": "藍反射",
+    "tmdb_title_en": "About Me",
+    "tmdb_title_original": "藍反射",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Ovulation disorder disrupts her assumed future. Not understanding what's happening, she gradually feels distant from those close to her.",
+    "poster_path": "/c7k1Gb7xQzI4XvVlkHBHYe2jlQq.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-02",
+    "director": "Kozue Nomoto",
+    "director_jp": "Kozue Nomoto",
+    "director_en": "Kozue Nomoto",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "夜鶯[0308しゃべれば]": {
+    "tmdb_id": 895435,
+    "tmdb_title_jp": "扬名立万",
+    "tmdb_title_en": "Be Somebody",
+    "tmdb_title_original": "扬名立万",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "During the Republican era, a group of frustrated people from the movie industry is invited in a luxurious mansion to make a movie out of a gruesome case that has recently rattled the city of Shanghai, in the hopes that it would turn into a huge sensation and make them famous. However, they never expected that the murderer would be in their midst and that the truth behind the case would be far more bizarre than their fictional movie plot.",
+    "poster_path": "/8z7IptdlKjox7BIiwNwSdSV68HP.jpg",
+    "backdrop_path": "/56RNLigrw1qPtxiohkFkXPRKrJO.jpg",
+    "release_date": "2021-11-11",
+    "director": "劉循子墨",
+    "director_jp": "劉循子墨",
+    "director_en": "Xunzimo Liu",
+    "genres": [
+      "コメディ",
+      "謎",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Mystery",
+      "Drama"
+    ],
+    "runtime": 123,
+    "vote_average": 7.414,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "オーケストラコンサート開催記念『劇場版 シドニアの騎士』トークイベント付き劇場上映": {
+    "tmdb_id": 427593,
+    "tmdb_title_jp": "劇場版 シドニアの騎士",
+    "tmdb_title_en": "Knights of Sidonia: The Movie",
+    "tmdb_title_original": "劇場版 シドニアの騎士",
+    "tmdb_original_language": "ja",
+    "overview": "1,000年前に対話が一切できない異生物・奇居子によって太陽系が壊滅して以来、人類の一部は巨大な宇宙船シドニアで繁殖しつつ宇宙をさまよっていた。シドニアの地下で生活してきた少年の谷風長道は、衛人と呼ばれる大型兵器の訓練生となり、やがて歴史的名機・継衛の操縦士となる。あるとき、再び奇居子が出現し……。",
+    "overview_en": "The year is 3394. The solar system has been long destroyed by a strange alien race called Gauna. Now humans are barely maintaining population in their seed ships - the ones they also used to escape a thousand years ago. After several years of drifting though space, Sidonia, a seed ship with a population of over 500,000 people, is once again threatened by Gauna. Follow Tanikaze Nagate, a mysterious young man from the deep corners of the ship, and his friends as they try to strike back against these gigantic creatures and at the same time learn what they really are for the sake of humanity's survival. -MAL",
+    "poster_path": "/2hQJkW2NFGRY89b5UIzxwCuew3h.jpg",
+    "backdrop_path": "/bnYOFbsHzyLFA5Vkui0TP5quHPj.jpg",
+    "release_date": "2015-03-06",
+    "director": "静野孔文",
+    "director_jp": "静野孔文",
+    "director_en": "Kobun Shizuno",
+    "genres": [
+      "アクション",
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Action",
+      "Animation",
+      "Science Fiction"
+    ],
+    "runtime": 134,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "災じろう×監督[0310ｲﾍﾞﾝﾄ]": {
+    "tmdb_id": 1521352,
+    "tmdb_title_jp": "災 劇場版",
+    "tmdb_title_en": "Sai: Disaster",
+    "tmdb_title_original": "災 劇場版",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Four people lead ordinary lives in different places, their paths never crossing. A mysterious man appears in each story, always as someone else. One moment, a cram school instructor; the next, a truck driver, a barber - his identity constantly shifting. Then, death strikes. A detective pursues the truth, closing in on a revelation...",
+    "poster_path": "/pKzKYSNhjDvf2C0AsYhco8nCVtw.jpg",
+    "backdrop_path": "/kq2Lym2qKZcbTAt4KjJYeYwVxGH.jpg",
+    "release_date": "2026-02-20",
+    "director": "関友太朗",
+    "director_jp": "関友太朗",
+    "director_en": "Yutaro Seki",
+    "genres": [
+      "ドラマ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 128,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ショート・パルス 5つの鼓動≪Ver.2≫": null,
+  "ショート・パルス 5つの鼓動≪Ver.3≫": null,
+  "宣誓": {
+    "tmdb_id": 1624755,
+    "tmdb_title_jp": "宣誓",
+    "tmdb_title_en": "Oath",
+    "tmdb_title_original": "宣誓",
+    "tmdb_original_language": "ja",
+    "overview": "震災の被災地に派遣された自衛隊員の春日三尉は、自身も津波で妻と幼い娘を亡くしていたが、それを隠し、任務に身を捧げていた。そんな彼が、被災地の避難所で、同じく家族を失い、心を閉ざした少年・吉村和樹と出会う。やがて和樹は、自衛隊の活動を静かに見つめながら、自らも人々を助けようと行動を起こし始める。絶望の底で出会った2人は、希望を信じて歩みを進めていく。",
+    "overview_en": "",
+    "poster_path": "/60PDRNJkoDtY43CT5hUUDFAB1ft.jpg",
+    "backdrop_path": "/kB4qfVvbErPCNHH3RLHwGR7SbYO.jpg",
+    "release_date": "2026-03-06",
+    "director": "柿崎ゆうじ",
+    "director_jp": "柿崎ゆうじ",
+    "director_en": "Yuji Kakizaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 121,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1624755": {
+    "tmdb_id": 1624755,
+    "tmdb_title_jp": "宣誓",
+    "tmdb_title_en": "Oath",
+    "tmdb_title_original": "宣誓",
+    "tmdb_original_language": "ja",
+    "overview": "震災の被災地に派遣された自衛隊員の春日三尉は、自身も津波で妻と幼い娘を亡くしていたが、それを隠し、任務に身を捧げていた。そんな彼が、被災地の避難所で、同じく家族を失い、心を閉ざした少年・吉村和樹と出会う。やがて和樹は、自衛隊の活動を静かに見つめながら、自らも人々を助けようと行動を起こし始める。絶望の底で出会った2人は、希望を信じて歩みを進めていく。",
+    "overview_en": "",
+    "poster_path": "/60PDRNJkoDtY43CT5hUUDFAB1ft.jpg",
+    "backdrop_path": "/kB4qfVvbErPCNHH3RLHwGR7SbYO.jpg",
+    "release_date": "2026-03-06",
+    "director": "柿崎ゆうじ",
+    "director_jp": "柿崎ゆうじ",
+    "director_en": "Yuji Kakizaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 121,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "宣誓 上映後舞台挨拶": null,
+  "エリス＆トム　ボサノヴァ名盤誕生秘話": {
+    "tmdb_id": 1030653,
+    "tmdb_title_jp": "Elis & Tom: Só Tinha de Ser com Você",
+    "tmdb_title_en": "Elis & Tom: It Had to be You",
+    "tmdb_title_original": "Elis & Tom: Só Tinha de Ser com Você",
+    "tmdb_original_language": "pt",
+    "overview": "",
+    "overview_en": "Elis & Tom is considered one of the most important albums in the history of Brazilian music. Recorded in Los Angeles, in 1974, it was all captured by a team of filmmakers led by director Roberto de Oliveira, who arranged for the duo to meet. The original footage was kept for 45 years until restored and remastered in 2018. The film is also an exciting reunion of the director with the artists and the material he filmed nearly five decades ago.",
+    "poster_path": "/uhrT7TXMOERTP20o7j1LvVStN73.jpg",
+    "backdrop_path": "/b05ELcoV278Jvp7AMVnXKX408my.jpg",
+    "release_date": "2023-09-21",
+    "director": "Jom Tob Azulay",
+    "director_jp": "Jom Tob Azulay",
+    "director_en": "Jom Tob Azulay",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 101,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BR",
+        "name": "Brazil"
+      }
+    ]
+  },
+  "平田雄己監督特集上映Lost in Images": null,
+  "ザ・クロウ": {
+    "tmdb_id": 957452,
+    "tmdb_title_jp": "ザ・クロウ",
+    "tmdb_title_en": "The Crow",
+    "tmdb_title_original": "The Crow",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Soulmates Eric and Shelly are brutally murdered when the demons of her dark past catch up with them. Given the chance to save his true love by sacrificing himself, Eric sets out to seek merciless revenge on their killers, traversing the worlds of the living and the dead to put the wrong things right.",
+    "poster_path": "/g8TbOXrNMuqq7AaKqdvqS2oG4ob.jpg",
+    "backdrop_path": "/503LUrI9juBk1rktOPzxyMUTDEu.jpg",
+    "release_date": "2024-08-21",
+    "director": "Rupert Sanders",
+    "director_jp": "Rupert Sanders",
+    "director_en": "Rupert Sanders",
+    "genres": [
+      "アクション",
+      "ファンタジー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 111,
+    "vote_average": 5.803,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:957452": {
+    "tmdb_id": 957452,
+    "tmdb_title_jp": "ザ・クロウ",
+    "tmdb_title_en": "The Crow",
+    "tmdb_title_original": "The Crow",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Soulmates Eric and Shelly are brutally murdered when the demons of her dark past catch up with them. Given the chance to save his true love by sacrificing himself, Eric sets out to seek merciless revenge on their killers, traversing the worlds of the living and the dead to put the wrong things right.",
+    "poster_path": "/g8TbOXrNMuqq7AaKqdvqS2oG4ob.jpg",
+    "backdrop_path": "/503LUrI9juBk1rktOPzxyMUTDEu.jpg",
+    "release_date": "2024-08-21",
+    "director": "Rupert Sanders",
+    "director_jp": "Rupert Sanders",
+    "director_en": "Rupert Sanders",
+    "genres": [
+      "アクション",
+      "ファンタジー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 111,
+    "vote_average": 5.803,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "361 – White and Black –": null,
+  "めぐる／エイン": null,
+  "エリス＆トム ―ボサノヴァ名盤誕生秘話―": null,
+  "ボストン市庁舎【追悼フレデリック・ワイズマン】": {
+    "tmdb_id": 726041,
+    "tmdb_title_jp": "ボストン市庁舎",
+    "tmdb_title_en": "City Hall",
+    "tmdb_title_original": "City Hall",
+    "tmdb_original_language": "en",
+    "overview": "ボストン市政府を壮大なスケールで描き、人種的正義、住宅問題、気候変動対策などを網羅した作品。",
+    "overview_en": "An epic look at Boston’s city government, covering racial justice, housing, climate action, and more.",
+    "poster_path": "/2tVjql9HmDw7ZP1nIqfT7RpoT3E.jpg",
+    "backdrop_path": "/ipuUQtjAEFjJhUCePc7MbRe6BGN.jpg",
+    "release_date": "2020-10-21",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 272,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ローマの休日【オードリー・ヘップバーン～映画史に刻まれた永遠の輝き～】": {
+    "tmdb_id": 804,
+    "tmdb_title_jp": "ローマの休日",
+    "tmdb_title_en": "Roman Holiday",
+    "tmdb_title_original": "Roman Holiday",
+    "tmdb_original_language": "en",
+    "overview": "ローマを訪問した某国の王女は儀礼的な行事にうんざり。大使館を飛び出し、一人でローマの街をうろうろしていた彼女は、アメリカ人の新聞記者に出会う。特ダネを狙っていた彼は、彼女が王女だと知りながらも知らない振りをするが、その計画は失敗に終わってしまう。二人が恋に落ちてしまったからだ……。",
+    "overview_en": "Overwhelmed by her suffocating schedule, touring European princess Ann takes off for a night while in Rome. When a sedative she took from her doctor kicks in, however, she falls asleep on a park bench and is found by an American reporter, Joe Bradley, who takes her back to his apartment for safety. At work the next morning, Joe finds out Ann's regal identity and bets his editor he can get exclusive interview with her, but romance soon gets in the way.",
+    "poster_path": "/1vBiXZqTgRPiGahzkFfy2vdhEYJ.jpg",
+    "backdrop_path": "/n0MyuZW9WJBGCYhzhfCI3d4zlRo.jpg",
+    "release_date": "1953-08-26",
+    "director": "William Wyler",
+    "director_jp": "William Wyler",
+    "director_en": "William Wyler",
+    "genres": [
+      "ロマンス",
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 7.89,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:804": {
+    "tmdb_id": 804,
+    "tmdb_title_jp": "ローマの休日",
+    "tmdb_title_en": "Roman Holiday",
+    "tmdb_title_original": "Roman Holiday",
+    "tmdb_original_language": "en",
+    "overview": "ローマを訪問した某国の王女は儀礼的な行事にうんざり。大使館を飛び出し、一人でローマの街をうろうろしていた彼女は、アメリカ人の新聞記者に出会う。特ダネを狙っていた彼は、彼女が王女だと知りながらも知らない振りをするが、その計画は失敗に終わってしまう。二人が恋に落ちてしまったからだ……。",
+    "overview_en": "Overwhelmed by her suffocating schedule, touring European princess Ann takes off for a night while in Rome. When a sedative she took from her doctor kicks in, however, she falls asleep on a park bench and is found by an American reporter, Joe Bradley, who takes her back to his apartment for safety. At work the next morning, Joe finds out Ann's regal identity and bets his editor he can get exclusive interview with her, but romance soon gets in the way.",
+    "poster_path": "/1vBiXZqTgRPiGahzkFfy2vdhEYJ.jpg",
+    "backdrop_path": "/n0MyuZW9WJBGCYhzhfCI3d4zlRo.jpg",
+    "release_date": "1953-08-26",
+    "director": "William Wyler",
+    "director_jp": "William Wyler",
+    "director_en": "William Wyler",
+    "genres": [
+      "ロマンス",
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 7.89,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "花緑青が明ける日に": {
+    "tmdb_id": 1279865,
+    "tmdb_title_jp": "花緑青が明ける日に",
+    "tmdb_title_en": "A New Dawn",
+    "tmdb_title_original": "花緑青が明ける日に",
+    "tmdb_original_language": "ja",
+    "overview": "「その花火は、宇宙を切り取ったんだ―」  緑豊かな森の中にある花火工場・帯刀煙火店は、町の再開発により立ち退きを迫られている。  帯刀敬太郎は、４年間そこに立てこもり、蒸発した父に代わって幻の花火と呼ばれる＜シュハリ＞を完成させるため花火作りに没頭していた。  一方、東京で暮らす幼馴染のカオル。  過去に起きたある事件をきっかけに地元を離れていたが、立ち退きがいよいよ明日に迫る中、帯刀家を訪れる。  ２人は再び出会い、失われた花火の秘密に迫るため驚きの計画を企てる。  その鍵を握るのは美しい青色の顔料「花緑青」だったー。",
+    "overview_en": "Keitaro lives in a fireworks factory that is about to be shut down. He is determined to unravel the mystery of the Shuhari, a mythical firework created by his father before he disappeared without a trace – and launch it before the factory closes.",
+    "poster_path": "/wIXWBILvfweBOPfnOsaK71AFtXm.jpg",
+    "backdrop_path": "/uuVLGMIIGwz9QbBlvDvGlfU5HkI.jpg",
+    "release_date": "2026-03-06",
+    "director": "四宮義俊",
+    "director_jp": "四宮義俊",
+    "director_en": "Yoshitoshi Shinomiya",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 75,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1279865": {
+    "tmdb_id": 1279865,
+    "tmdb_title_jp": "花緑青が明ける日に",
+    "tmdb_title_en": "A New Dawn",
+    "tmdb_title_original": "花緑青が明ける日に",
+    "tmdb_original_language": "ja",
+    "overview": "「その花火は、宇宙を切り取ったんだ―」  緑豊かな森の中にある花火工場・帯刀煙火店は、町の再開発により立ち退きを迫られている。  帯刀敬太郎は、４年間そこに立てこもり、蒸発した父に代わって幻の花火と呼ばれる＜シュハリ＞を完成させるため花火作りに没頭していた。  一方、東京で暮らす幼馴染のカオル。  過去に起きたある事件をきっかけに地元を離れていたが、立ち退きがいよいよ明日に迫る中、帯刀家を訪れる。  ２人は再び出会い、失われた花火の秘密に迫るため驚きの計画を企てる。  その鍵を握るのは美しい青色の顔料「花緑青」だったー。",
+    "overview_en": "Keitaro lives in a fireworks factory that is about to be shut down. He is determined to unravel the mystery of the Shuhari, a mythical firework created by his father before he disappeared without a trace – and launch it before the factory closes.",
+    "poster_path": "/wIXWBILvfweBOPfnOsaK71AFtXm.jpg",
+    "backdrop_path": "/uuVLGMIIGwz9QbBlvDvGlfU5HkI.jpg",
+    "release_date": "2026-03-06",
+    "director": "四宮義俊",
+    "director_jp": "四宮義俊",
+    "director_en": "Yoshitoshi Shinomiya",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 75,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ティファニーで朝食を【オードリー・ヘップバーン～映画史に刻まれた永遠の輝き～】": {
+    "tmdb_id": 164,
+    "tmdb_title_jp": "ティファニーで朝食を",
+    "tmdb_title_en": "Breakfast at Tiffany's",
+    "tmdb_title_original": "Breakfast at Tiffany's",
+    "tmdb_original_language": "en",
+    "overview": "朝の宝石店ティファニーの前でデニッシュを食べる娼婦のホリーは、引っ越してきたばかりの駆け出し作家ポールと出会う。酔っぱらいから逃げて部屋へ来て、 眠り込んでしまった彼女にポールは興味を抱く。",
+    "overview_en": "Holly Golightly is an eccentric New York City playgirl determined to marry a Brazilian millionaire. But when young writer Paul Varjak moves into her apartment building, her past threatens to get in their way.",
+    "poster_path": "/oPxNMAsXKcTJC7BNHw2ltB3Crba.jpg",
+    "backdrop_path": "/jXZ2tyJl44yKvh22I6ooQwU5rFM.jpg",
+    "release_date": "1961-10-06",
+    "director": "Blake Edwards",
+    "director_jp": "Blake Edwards",
+    "director_en": "Blake Edwards",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 7.626,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:164": {
+    "tmdb_id": 164,
+    "tmdb_title_jp": "ティファニーで朝食を",
+    "tmdb_title_en": "Breakfast at Tiffany's",
+    "tmdb_title_original": "Breakfast at Tiffany's",
+    "tmdb_original_language": "en",
+    "overview": "朝の宝石店ティファニーの前でデニッシュを食べる娼婦のホリーは、引っ越してきたばかりの駆け出し作家ポールと出会う。酔っぱらいから逃げて部屋へ来て、 眠り込んでしまった彼女にポールは興味を抱く。",
+    "overview_en": "Holly Golightly is an eccentric New York City playgirl determined to marry a Brazilian millionaire. But when young writer Paul Varjak moves into her apartment building, her past threatens to get in their way.",
+    "poster_path": "/oPxNMAsXKcTJC7BNHw2ltB3Crba.jpg",
+    "backdrop_path": "/jXZ2tyJl44yKvh22I6ooQwU5rFM.jpg",
+    "release_date": "1961-10-06",
+    "director": "Blake Edwards",
+    "director_jp": "Blake Edwards",
+    "director_en": "Blake Edwards",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 7.626,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "至福のレストラン／三つ星トロワグロ【追悼フレデリック・ワイズマン】": {
+    "tmdb_id": 1077050,
+    "tmdb_title_jp": "Menus-Plaisirs, les Troisgros",
+    "tmdb_title_en": "Menus-Plaisirs, les Troisgros",
+    "tmdb_title_original": "Menus-Plaisirs, les Troisgros",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Founded in 1930, Troisgros has held three Michelin stars for 55 years. The children of the fourth generation, Marie-Pierre and Michel's sons are continuing the family business: César runs the Michelin-starred restaurant, \"Le Bois sans feuilles\" (\"The Leafless Wood\"), and Léo is in charge of one of the other two Troisgros restaurants, \"La Colline du colombier\" (\"The Dovecote Hill\"). From the daily market to the cheese maturing cellars, via the vineyard, the cattle farm and the vegetable garden adjacent to the restaurant, Menus-Plaisirs is an intimate, sensory journey through the kitchens of one of the world's most prestigious restaurants.",
+    "poster_path": "/z2JNXDbNNOaJdSLA4lJ3eLYXFPr.jpg",
+    "backdrop_path": "/5ELDLGm5CewuuoZmJFU1hZBqfI7.jpg",
+    "release_date": "2023-11-22",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 240,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ニューヨーク公共図書館 エクス・リブリス【追悼フレデリック・ワイズマン】": {
+    "tmdb_id": 446173,
+    "tmdb_title_jp": "Ex Libris: The New York Public Library",
+    "tmdb_title_en": "Ex Libris – The New York Public Library",
+    "tmdb_title_original": "Ex Libris: The New York Public Library",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A documentary about how a dominant cultural and demographic institution both sustains their traditional activities and adapts to the digital revolution.",
+    "poster_path": "/5UAtolZFuOFYqUpHcDYamsVKWvb.jpg",
+    "backdrop_path": "/fNefgkrnYuXkKVq2bCYnZLBbHS0.jpg",
+    "release_date": "2017-09-13",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 205,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:446173": {
+    "tmdb_id": 446173,
+    "tmdb_title_jp": "Ex Libris: The New York Public Library",
+    "tmdb_title_en": "Ex Libris – The New York Public Library",
+    "tmdb_title_original": "Ex Libris: The New York Public Library",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A documentary about how a dominant cultural and demographic institution both sustains their traditional activities and adapts to the digital revolution.",
+    "poster_path": "/5UAtolZFuOFYqUpHcDYamsVKWvb.jpg",
+    "backdrop_path": "/fNefgkrnYuXkKVq2bCYnZLBbHS0.jpg",
+    "release_date": "2017-09-13",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 205,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "マイ・フェア・レディ【オードリー・ヘップバーン～映画史に刻まれた永遠の輝き～】": {
+    "tmdb_id": 11113,
+    "tmdb_title_jp": "マイ・フェア・レディ",
+    "tmdb_title_en": "My Fair Lady",
+    "tmdb_title_original": "My Fair Lady",
+    "tmdb_original_language": "en",
+    "overview": "言語学が専門のヒギンズ教授は、同好の士であるピカリング大佐と言葉遣いについて議論した末に、ロンドンのきつい下町なまりで花を売り歩く娘イライザを、自分なら上品なレディに仕立て直してみせると豪語。かくしてその成否をめぐって大佐と賭けをしたヒギンズ教授は、早速イライザを相手に、なまりの矯正や礼儀作法のレッスンを開始。特訓の成果が実り、やがて見事一流のレディに変身した彼女は、社交界の花形となる。",
+    "overview_en": "A snobbish phonetics professor agrees to a wager that he can take a flower girl and make her presentable in high society.",
+    "poster_path": "/qip9Mh9OLJlgdoedTketGRRehMP.jpg",
+    "backdrop_path": "/d1mciHTH1Pcb3KDYNoaNKuOSDOC.jpg",
+    "release_date": "1964-12-01",
+    "director": "George Cukor",
+    "director_jp": "George Cukor",
+    "director_en": "George Cukor",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 172,
+    "vote_average": 7.507,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:11113": {
+    "tmdb_id": 11113,
+    "tmdb_title_jp": "マイ・フェア・レディ",
+    "tmdb_title_en": "My Fair Lady",
+    "tmdb_title_original": "My Fair Lady",
+    "tmdb_original_language": "en",
+    "overview": "言語学が専門のヒギンズ教授は、同好の士であるピカリング大佐と言葉遣いについて議論した末に、ロンドンのきつい下町なまりで花を売り歩く娘イライザを、自分なら上品なレディに仕立て直してみせると豪語。かくしてその成否をめぐって大佐と賭けをしたヒギンズ教授は、早速イライザを相手に、なまりの矯正や礼儀作法のレッスンを開始。特訓の成果が実り、やがて見事一流のレディに変身した彼女は、社交界の花形となる。",
+    "overview_en": "A snobbish phonetics professor agrees to a wager that he can take a flower girl and make her presentable in high society.",
+    "poster_path": "/qip9Mh9OLJlgdoedTketGRRehMP.jpg",
+    "backdrop_path": "/d1mciHTH1Pcb3KDYNoaNKuOSDOC.jpg",
+    "release_date": "1964-12-01",
+    "director": "George Cukor",
+    "director_jp": "George Cukor",
+    "director_en": "George Cukor",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 172,
+    "vote_average": 7.507,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ギョンアの娘": {
+    "tmdb_id": 956733,
+    "tmdb_title_jp": "경아의 딸",
+    "tmdb_title_en": "Gyeong-ah's Daughter",
+    "tmdb_title_original": "경아의 딸",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Kyung-ah works as a caregiver and lives alone. The only one she can rely on is her daughter, Yeonsu, but it's hard to see her after her independence. Meanwhile, Yeonsu, who was suffering from his ex-boyfriend, argues with him again and heads home. After Yeonsu left, Kyung-ah receives a shocking message.",
+    "poster_path": "/4hD4ZvUH6MH7uA19Xs63E4X1man.jpg",
+    "backdrop_path": "/56wMqXu8OqacBuSaaoOO0b7Ca6u.jpg",
+    "release_date": "2022-06-16",
+    "director": "김정은",
+    "director_jp": "김정은",
+    "director_en": "Kim Jung-eun",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:1066298": {
+    "tmdb_id": 1066298,
+    "tmdb_title_jp": "满江红",
+    "tmdb_title_en": "Full River Red",
+    "tmdb_title_original": "满江红",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "During China's Song Dynasty, a mysterious murder occurs at Chancellor Quin Hui's palace after meeting delegates from the neighboring Jin Dynasty. The members become embroiled not just in a murder mystery, but a larger conspiracy concerning the fate of the empire.",
+    "poster_path": "/4eFNcvct2xB7XuxSWhQKW1aTAz4.jpg",
+    "backdrop_path": "/cMoi6ljDVZbfbaivpARi4vIagTI.jpg",
+    "release_date": "2023-01-22",
+    "director": "チャン・イーモウ",
+    "director_jp": "チャン・イーモウ",
+    "director_en": "Zhang Yimou",
+    "genres": [
+      "謎",
+      "コメディ",
+      "スリラー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Mystery",
+      "Comedy",
+      "Thriller",
+      "History"
+    ],
+    "runtime": 157,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:427593": {
+    "tmdb_id": 427593,
+    "tmdb_title_jp": "劇場版 シドニアの騎士",
+    "tmdb_title_en": "Knights of Sidonia: The Movie",
+    "tmdb_title_original": "劇場版 シドニアの騎士",
+    "tmdb_original_language": "ja",
+    "overview": "1,000年前に対話が一切できない異生物・奇居子によって太陽系が壊滅して以来、人類の一部は巨大な宇宙船シドニアで繁殖しつつ宇宙をさまよっていた。シドニアの地下で生活してきた少年の谷風長道は、衛人と呼ばれる大型兵器の訓練生となり、やがて歴史的名機・継衛の操縦士となる。あるとき、再び奇居子が出現し……。",
+    "overview_en": "The year is 3394. The solar system has been long destroyed by a strange alien race called Gauna. Now humans are barely maintaining population in their seed ships - the ones they also used to escape a thousand years ago. After several years of drifting though space, Sidonia, a seed ship with a population of over 500,000 people, is once again threatened by Gauna. Follow Tanikaze Nagate, a mysterious young man from the deep corners of the ship, and his friends as they try to strike back against these gigantic creatures and at the same time learn what they really are for the sake of humanity's survival. -MAL",
+    "poster_path": "/2hQJkW2NFGRY89b5UIzxwCuew3h.jpg",
+    "backdrop_path": "/bnYOFbsHzyLFA5Vkui0TP5quHPj.jpg",
+    "release_date": "2015-03-06",
+    "director": "静野孔文",
+    "director_jp": "静野孔文",
+    "director_en": "Kobun Shizuno",
+    "genres": [
+      "アクション",
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Action",
+      "Animation",
+      "Science Fiction"
+    ],
+    "runtime": 134,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:956733": {
+    "tmdb_id": 956733,
+    "tmdb_title_jp": "경아의 딸",
+    "tmdb_title_en": "Gyeong-ah's Daughter",
+    "tmdb_title_original": "경아의 딸",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Kyung-ah works as a caregiver and lives alone. The only one she can rely on is her daughter, Yeonsu, but it's hard to see her after her independence. Meanwhile, Yeonsu, who was suffering from his ex-boyfriend, argues with him again and heads home. After Yeonsu left, Kyung-ah receives a shocking message.",
+    "poster_path": "/4hD4ZvUH6MH7uA19Xs63E4X1man.jpg",
+    "backdrop_path": "/56wMqXu8OqacBuSaaoOO0b7Ca6u.jpg",
+    "release_date": "2022-06-16",
+    "director": "김정은",
+    "director_jp": "김정은",
+    "director_en": "Kim Jung-eun",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 118,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
       }
     ]
   }

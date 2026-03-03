@@ -6987,5 +6987,129 @@
     "director": "Takeshi Koike",
     "country": "Japan",
     "failed": true
+  },
+  "満江紅　マンジャンホン": {
+    "english_title": "Full River Red",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "满江红",
+    "director": "Zhang Yimou",
+    "country": "China"
+  },
+  "『鶏・The Chicken』＋『アメガラス』": {
+    "english_title": "The Chicken / Sugar Glass Bottle",
+    "release_year": 2022,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "『鶏・The Chicken』＋『アメガラス』",
+    "director": "Neo Sora",
+    "country": "Japan",
+    "failed": true
+  },
+  "夜鶯[0308しゃべれば]": {
+    "english_title": "Be Somebody",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "扬名立万",
+    "director": "Liu Xunzi Mo",
+    "country": "China"
+  },
+  "オーケストラコンサート開催記念『劇場版 シドニアの騎士』トークイベント付き劇場上映": {
+    "english_title": "Knights of Sidonia: The Movie",
+    "release_year": 2015,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "劇場版 シドニアの騎士",
+    "director": "Kobun Shizuno",
+    "country": "Japan"
+  },
+  "災じろう×監督[0310ｲﾍﾞﾝﾄ]": {
+    "english_title": "SAI: disaster",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "災 劇場版",
+    "director": "Yutaro Seki, Kentaro Hirase",
+    "country": "Japan"
+  },
+  "ショート・パルス 5つの鼓動≪Ver.2≫": {
+    "english_title": "Short Pulse Five Beats",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ショート・パルス 5つの鼓動≪Ver.2≫",
+    "director": "Neo Sora, Yorgos Lanthimos, Jonathan Glazer, Alice Rohrwacher, JR",
+    "country": "Japan",
+    "failed": true
+  },
+  "ショート・パルス 5つの鼓動≪Ver.3≫": {
+    "english_title": "Short Pulse: 5 Beats (Ver. 3)",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ショート・パルス 5つの鼓動≪Ver.3≫",
+    "director": "Neo Sora, Yorgos Lanthimos, Jonathan Glazer, Alice Rohrwacher, JR",
+    "country": "Japan",
+    "failed": true
+  },
+  "宣誓 上映後舞台挨拶": {
+    "english_title": "The Oath",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "宣誓",
+    "director": "Yuji Kakizaki",
+    "country": "Japan",
+    "failed": true
+  },
+  "エリス＆トム　ボサノヴァ名盤誕生秘話": {
+    "english_title": "Elis & Tom: It Had to Be You",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Elis & Tom, Só Tinha de Ser com Você",
+    "director": "Roberto de Oliveira, Jom Tob Azulay",
+    "country": "Brazil"
+  },
+  "平田雄己監督特集上映Lost in Images": {
+    "english_title": "Lost in Images",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "平田雄己監督特集上映Lost in Images",
+    "director": "Yuki Hirata",
+    "country": "Japan",
+    "failed": true
+  },
+  "361 – White and Black –": {
+    "english_title": "361 – White and Black –",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "361 – White and Black –",
+    "director": "Koichiro Oyama",
+    "country": "Japan",
+    "failed": true
+  },
+  "めぐる／エイン": {
+    "english_title": "Meguru / Ein",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "めぐる／エイン",
+    "director": "Thein Dan",
+    "country": "Japan",
+    "failed": true
+  },
+  "ギョンアの娘": {
+    "english_title": "Gyeong-ah's Daughter",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "경아의 딸",
+    "director": "Kim Jung-eun",
+    "country": "South Korea"
   }
 }
