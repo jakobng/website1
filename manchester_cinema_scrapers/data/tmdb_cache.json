@@ -1293,23 +1293,6 @@
     ],
     "vote_average": 9.7
   },
-  "The Bride!": {
-    "tmdb_id": 359427,
-    "tmdb_title": "The Bride",
-    "tmdb_original_title": "屍憶",
-    "overview": "Han and Hao are about to get married soon when Hao picks up a strange red envelope on the street and then all hell breaks loose with a vengeful supernatural bride wreaking havoc on his life.",
-    "poster_path": "/c9ur7kcf0AwyWz0kE62vM0MCa2f.jpg",
-    "backdrop_path": "/xSUCG1onLkvTbdr8Hw4xHZFoXr8.jpg",
-    "release_date": "2015-08-20",
-    "director": "Lingo Hsieh",
-    "runtime": 89,
-    "genres": [
-      "Horror",
-      "Mystery",
-      "Thriller"
-    ],
-    "vote_average": 6.0
-  },
   "If I Had Legs I'd Kick You": {
     "tmdb_id": 1160360,
     "tmdb_title": "If I Had Legs I'd Kick You",
@@ -2108,7 +2091,6 @@
     ],
     "vote_average": 0.0
   },
-  "Monthly World Cinema Screening": null,
   "If You're Lost I'll Come Find You": null,
   "Global Justice Now Youth MCR: Women at War": {
     "tmdb_id": 982440,
@@ -2142,9 +2124,41 @@
       "Action",
       "Fantasy"
     ],
-    "vote_average": 6.9
+    "vote_average": 6.859
   },
-  "NT Live/ The Audience": null,
+  "The Oscars Live at CULTPLEX": null,
+  "Sound of Falling": {
+    "tmdb_id": 1221061,
+    "tmdb_title": "Sound of Falling",
+    "tmdb_original_title": "In die Sonne schauen",
+    "overview": "Four adolescent girls each spend their youth in the same farmhouse over the last century. Though separated by decades, resonances between their lives emerge: their desires and distress, secrets and truths, encounters with another’s gaze and defiant gaze in return.",
+    "poster_path": "/mv2edAI0vmheVVcv4mIVW5X8GNP.jpg",
+    "backdrop_path": "/cXr5YOMJKZBkokgNogHjEyFZLc6.jpg",
+    "release_date": "2025-08-28",
+    "director": "Mascha Schilinski",
+    "runtime": 148,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.789
+  },
+  "The Bride!": {
+    "tmdb_id": 1159831,
+    "tmdb_title": "The Bride!",
+    "tmdb_original_title": "The Bride!",
+    "overview": "A lonely Frankenstein travels to 1930s Chicago to ask groundbreaking scientist Dr. Euphronious to create a companion for him. The two revive a murdered young woman and The Bride is born. But what ensues is beyond what either of them imagined.",
+    "poster_path": "/lV8YHwGkYZsm6EfIqnhaSz2avKt.jpg",
+    "backdrop_path": "/8XeUEIXiZiRNqz0EcKC65vje8Th.jpg",
+    "release_date": "2026-03-04",
+    "director": "Maggie Gyllenhaal",
+    "runtime": 126,
+    "genres": [
+      "Science Fiction",
+      "Horror",
+      "Comedy"
+    ],
+    "vote_average": 8.4
+  },
   "Royal Ballet/ Giselle (PG)": null,
   "We Are Parable presents: Set It Off": {
     "tmdb_id": 9400,
@@ -2163,7 +2177,21 @@
     ],
     "vote_average": 7.188
   },
-  "Weekly Arthouse Screening": null,
+  "Teki Cometh": {
+    "tmdb_id": 1361934,
+    "tmdb_title": "Teki Cometh",
+    "tmdb_original_title": "敵",
+    "overview": "Retired university professor Gisuke Watanabe lives a comfortable but secluded life of affluence in the traditional Japanese house built by his grandfather. One day, an anonymous email threatens his peaceful lifestyle.",
+    "poster_path": "/jF0r585MwSvqgyUx1S2hV7AqQnS.jpg",
+    "backdrop_path": "/73CYl5fzAk5B8oXfjn5TQdn17mC.jpg",
+    "release_date": "2025-01-17",
+    "director": "Daihachi Yoshida",
+    "runtime": 108,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.8
+  },
   "Throwback: The Fifth Element": {
     "tmdb_id": 18,
     "tmdb_title": "The Fifth Element",
@@ -2190,16 +2218,36 @@
     "poster_path": "/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
     "backdrop_path": "/6qOyw4yfzbzTp5YsCX26C28Do0S.jpg",
     "release_date": "1952-04-10",
-    "director": "Gene Kelly",
+    "director": "Stanley Donen",
     "runtime": 103,
     "genres": [
       "Comedy",
       "Romance"
     ],
-    "vote_average": 8.138
+    "vote_average": 8.137
   },
   "Throwback: Master and Commander": null,
+  "Beyond: The Secret Agent": {
+    "tmdb_id": 1220564,
+    "tmdb_title": "The Secret Agent",
+    "tmdb_original_title": "O Agente Secreto",
+    "overview": "Brazil, 1977. Marcelo, a technology expert in his early 40s, is on the run. Hoping to reunite with his son, he travels to Recife during Carnival but soon realizes that the city is not the safe haven he was expecting.",
+    "poster_path": "/iLE2YOmeboeTDC7GlOp1dzh1VFo.jpg",
+    "backdrop_path": "/eeGRpU64sIrRApjWXvTpK5Lep2K.jpg",
+    "release_date": "2025-07-23",
+    "director": "Kleber Mendonça Filho",
+    "runtime": 161,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 7.404
+  },
+  "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
+  "The Royal Ballet: Giselle": null,
+  "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
     "tmdb_title": "First Steps",
@@ -2215,10 +2263,8 @@
     ],
     "vote_average": 6.1
   },
-  "The Royal Ballet: Giselle": null,
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
-  "The Royal Opera: The Magic Flute": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
     "tmdb_title": "Romeo Juliet",
