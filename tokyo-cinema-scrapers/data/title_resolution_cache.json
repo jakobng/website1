@@ -7111,5 +7111,41 @@
     "original_title": "경아의 딸",
     "director": "Kim Jung-eun",
     "country": "South Korea"
+  },
+  "RIP SLYME THE MOVIE 25th ANNIVERSARY GREATEST MEMORY": {
+    "english_title": "RIP SLYME THE MOVIE -25th ANNIVERSARY GREATEST MEMORY-",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "RIP SLYME THE MOVIE -25th ANNIVERSARY GREATEST MEMORY-",
+    "director": "Hiro Kanai",
+    "country": "Japan",
+    "failed": true
+  },
+  "ブレインウォッシュ　セックス-カメラ-パワー": {
+    "english_title": "Brainwashed: Sex-Camera-Power",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Brainwashed: Sex-Camera-Power",
+    "director": "Nina Menkes",
+    "country": "USA"
+  },
+  "METライブビューイング2025-26 ジョルダーノ《アンドレア・シェニエ》": {
+    "english_title": "The Met: Live in HD: Andrea Chénier",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Andrea Chénier",
+    "director": "Nicolas Joël",
+    "country": "United States",
+    "failed": true
+  },
+  "フレデリック・ワイズマン監督 緊急追悼上映ニューヨーク公共図書館 エクス・リブリスボストン市庁舎オールナイト上映": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
