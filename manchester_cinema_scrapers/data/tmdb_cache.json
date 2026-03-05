@@ -1146,21 +1146,6 @@
     ],
     "vote_average": 0.0
   },
-  "Othello": {
-    "tmdb_id": 47697,
-    "tmdb_title": "Othello",
-    "tmdb_original_title": "Othello",
-    "overview": "Manipulated by his jealous ensign Iago, the Moorish general Othello is driven to believe that his new wife Desdemona is unfaithful, setting in motion a chain of deception, jealousy, and violence that leads to tragedy.",
-    "poster_path": "/61A7EJqfMsrQO0YWsUWq8gbgbu0.jpg",
-    "backdrop_path": "/kHbwWLE4mFVoC4wFCXsZ2HioRuf.jpg",
-    "release_date": "1951-11-28",
-    "director": "Orson Welles",
-    "runtime": 93,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.351
-  },
   "Members' Preview: Wasteman": {
     "tmdb_id": 1307373,
     "tmdb_title": "Wasteman",
@@ -2091,6 +2076,87 @@
     ],
     "vote_average": 0.0
   },
+  "Sound of Falling": {
+    "tmdb_id": 1221061,
+    "tmdb_title": "Sound of Falling",
+    "tmdb_original_title": "In die Sonne schauen",
+    "overview": "Four adolescent girls each spend their youth in the same farmhouse over the last century. Though separated by decades, resonances between their lives emerge: their desires and distress, secrets and truths, encounters with another’s gaze and defiant gaze in return.",
+    "poster_path": "/mv2edAI0vmheVVcv4mIVW5X8GNP.jpg",
+    "backdrop_path": "/cXr5YOMJKZBkokgNogHjEyFZLc6.jpg",
+    "release_date": "2025-08-28",
+    "director": "Mascha Schilinski",
+    "runtime": 148,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.789
+  },
+  "The Bride!": {
+    "tmdb_id": 1159831,
+    "tmdb_title": "The Bride!",
+    "tmdb_original_title": "The Bride!",
+    "overview": "A lonely Frankenstein travels to 1930s Chicago to ask groundbreaking scientist Dr. Euphronious to create a companion for him. The two revive a murdered young woman and The Bride is born. But what ensues is beyond what either of them imagined.",
+    "poster_path": "/lV8YHwGkYZsm6EfIqnhaSz2avKt.jpg",
+    "backdrop_path": "/8XeUEIXiZiRNqz0EcKC65vje8Th.jpg",
+    "release_date": "2026-03-04",
+    "director": "Maggie Gyllenhaal",
+    "runtime": 126,
+    "genres": [
+      "Science Fiction",
+      "Horror",
+      "Comedy"
+    ],
+    "vote_average": 8.4
+  },
+  "Teki Cometh": {
+    "tmdb_id": 1361934,
+    "tmdb_title": "Teki Cometh",
+    "tmdb_original_title": "敵",
+    "overview": "Retired university professor Gisuke Watanabe lives a comfortable but secluded life of affluence in the traditional Japanese house built by his grandfather. One day, an anonymous email threatens his peaceful lifestyle.",
+    "poster_path": "/jF0r585MwSvqgyUx1S2hV7AqQnS.jpg",
+    "backdrop_path": "/73CYl5fzAk5B8oXfjn5TQdn17mC.jpg",
+    "release_date": "2025-01-17",
+    "director": "Daihachi Yoshida",
+    "runtime": 108,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.8
+  },
+  "Throwback: The Fifth Element": {
+    "tmdb_id": 18,
+    "tmdb_title": "The Fifth Element",
+    "tmdb_original_title": "Le Cinquième Élément",
+    "overview": "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.",
+    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
+    "backdrop_path": "/bx1W729hyWQqNQoiq9LsX30FBf.jpg",
+    "release_date": "1997-05-02",
+    "director": "Luc Besson",
+    "runtime": 126,
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "vote_average": 7.563
+  },
+  "Beyond: The Secret Agent": {
+    "tmdb_id": 1220564,
+    "tmdb_title": "The Secret Agent",
+    "tmdb_original_title": "O Agente Secreto",
+    "overview": "Brazil, 1977. Marcelo, a technology expert in his early 40s, is on the run. Hoping to reunite with his son, he travels to Recife during Carnival but soon realizes that the city is not the safe haven he was expecting.",
+    "poster_path": "/iLE2YOmeboeTDC7GlOp1dzh1VFo.jpg",
+    "backdrop_path": "/eeGRpU64sIrRApjWXvTpK5Lep2K.jpg",
+    "release_date": "2025-07-23",
+    "director": "Kleber Mendonça Filho",
+    "runtime": 161,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 7.404
+  },
   "If You're Lost I'll Come Find You": null,
   "Global Justice Now Youth MCR: Women at War": {
     "tmdb_id": 982440,
@@ -2127,37 +2193,21 @@
     "vote_average": 6.859
   },
   "The Oscars Live at CULTPLEX": null,
-  "Sound of Falling": {
-    "tmdb_id": 1221061,
-    "tmdb_title": "Sound of Falling",
-    "tmdb_original_title": "In die Sonne schauen",
-    "overview": "Four adolescent girls each spend their youth in the same farmhouse over the last century. Though separated by decades, resonances between their lives emerge: their desires and distress, secrets and truths, encounters with another’s gaze and defiant gaze in return.",
-    "poster_path": "/mv2edAI0vmheVVcv4mIVW5X8GNP.jpg",
-    "backdrop_path": "/cXr5YOMJKZBkokgNogHjEyFZLc6.jpg",
-    "release_date": "2025-08-28",
-    "director": "Mascha Schilinski",
-    "runtime": 148,
+  "The Elephant Man": {
+    "tmdb_id": 1955,
+    "tmdb_title": "The Elephant Man",
+    "tmdb_original_title": "The Elephant Man",
+    "overview": "A Victorian surgeon rescues a heavily disfigured man being mistreated by his \"owner\" as a side-show freak. Behind his monstrous façade, there is revealed a person of great intelligence and sensitivity. Based on the true story of Joseph Merrick (called John Merrick in the film), a severely deformed man in 19th century London.",
+    "poster_path": "/u0wpPYjuSt8DIe1Y3Vapnh8jcKE.jpg",
+    "backdrop_path": "/6huSptAsqYg3wbsi1jbMognSgmp.jpg",
+    "release_date": "1980-10-09",
+    "director": "David Lynch",
+    "runtime": 124,
     "genres": [
-      "Drama"
+      "Drama",
+      "History"
     ],
-    "vote_average": 6.789
-  },
-  "The Bride!": {
-    "tmdb_id": 1159831,
-    "tmdb_title": "The Bride!",
-    "tmdb_original_title": "The Bride!",
-    "overview": "A lonely Frankenstein travels to 1930s Chicago to ask groundbreaking scientist Dr. Euphronious to create a companion for him. The two revive a murdered young woman and The Bride is born. But what ensues is beyond what either of them imagined.",
-    "poster_path": "/lV8YHwGkYZsm6EfIqnhaSz2avKt.jpg",
-    "backdrop_path": "/8XeUEIXiZiRNqz0EcKC65vje8Th.jpg",
-    "release_date": "2026-03-04",
-    "director": "Maggie Gyllenhaal",
-    "runtime": 126,
-    "genres": [
-      "Science Fiction",
-      "Horror",
-      "Comedy"
-    ],
-    "vote_average": 8.4
+    "vote_average": 8.049
   },
   "Royal Ballet/ Giselle (PG)": null,
   "We Are Parable presents: Set It Off": {
@@ -2177,38 +2227,7 @@
     ],
     "vote_average": 7.188
   },
-  "Teki Cometh": {
-    "tmdb_id": 1361934,
-    "tmdb_title": "Teki Cometh",
-    "tmdb_original_title": "敵",
-    "overview": "Retired university professor Gisuke Watanabe lives a comfortable but secluded life of affluence in the traditional Japanese house built by his grandfather. One day, an anonymous email threatens his peaceful lifestyle.",
-    "poster_path": "/jF0r585MwSvqgyUx1S2hV7AqQnS.jpg",
-    "backdrop_path": "/73CYl5fzAk5B8oXfjn5TQdn17mC.jpg",
-    "release_date": "2025-01-17",
-    "director": "Daihachi Yoshida",
-    "runtime": 108,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.8
-  },
-  "Throwback: The Fifth Element": {
-    "tmdb_id": 18,
-    "tmdb_title": "The Fifth Element",
-    "tmdb_original_title": "Le Cinquième Élément",
-    "overview": "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.",
-    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
-    "backdrop_path": "/bx1W729hyWQqNQoiq9LsX30FBf.jpg",
-    "release_date": "1997-05-02",
-    "director": "Luc Besson",
-    "runtime": 126,
-    "genres": [
-      "Science Fiction",
-      "Action",
-      "Adventure"
-    ],
-    "vote_average": 7.563
-  },
+  "Othello": null,
   "National Theatre Live: The Audience": null,
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
@@ -2227,25 +2246,24 @@
     "vote_average": 8.137
   },
   "Throwback: Master and Commander": null,
-  "Beyond: The Secret Agent": {
-    "tmdb_id": 1220564,
-    "tmdb_title": "The Secret Agent",
-    "tmdb_original_title": "O Agente Secreto",
-    "overview": "Brazil, 1977. Marcelo, a technology expert in his early 40s, is on the run. Hoping to reunite with his son, he travels to Recife during Carnival but soon realizes that the city is not the safe haven he was expecting.",
-    "poster_path": "/iLE2YOmeboeTDC7GlOp1dzh1VFo.jpg",
-    "backdrop_path": "/eeGRpU64sIrRApjWXvTpK5Lep2K.jpg",
-    "release_date": "2025-07-23",
-    "director": "Kleber Mendonça Filho",
-    "runtime": 161,
-    "genres": [
-      "Crime",
-      "Drama",
-      "Thriller"
-    ],
-    "vote_average": 7.404
-  },
   "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
+  "Mamma Mia!": {
+    "tmdb_id": 11631,
+    "tmdb_title": "Mamma Mia!",
+    "tmdb_original_title": "Mamma Mia!",
+    "overview": "A spirited young bride-to-be living with her single mother on a small Greek island secretly invites three of her mother's ex-boyfriends in hope of finding her biological father to walk her down the aisle.",
+    "poster_path": "/zdUA4FNHbXPadzVOJiU0Rgn6cHR.jpg",
+    "backdrop_path": "/8IGO8rF5asa7tnO0aEtx3e5R4Z5.jpg",
+    "release_date": "2008-07-03",
+    "director": "Phyllida Lloyd",
+    "runtime": 108,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 6.976
+  },
   "The Royal Ballet: Giselle": null,
   "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
