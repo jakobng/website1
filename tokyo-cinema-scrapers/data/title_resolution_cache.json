@@ -7147,5 +7147,245 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "簪（かんざし）": {
+    "english_title": "Ornamental Hairpin",
+    "release_year": 1941,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "簪",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan"
+  },
+  "母の旅路（1958）": {
+    "english_title": "A Mother's Journey",
+    "release_year": 1958,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "母の旅路",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan"
+  },
+  "劇場先行版「NEEDY GIRL OVERDOSE OVERTURE」": {
+    "english_title": "NEEDY GIRL OVERDOSE -OVERTURE-",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "劇場先行版「NEEDY GIRL OVERDOSE OVERTURE」",
+    "director": "Masaoki Nakashima",
+    "country": "Japan"
+  },
+  "ジェイコブス・ラダー（1990）": {
+    "english_title": "Jacob's Ladder",
+    "release_year": 1990,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Jacob's Ladder",
+    "director": "Adrian Lyne",
+    "country": "United States"
+  },
+  "スタントマン（1980）": {
+    "english_title": "The Stunt Man",
+    "release_year": 1980,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Stunt Man",
+    "director": "Richard Rush",
+    "country": "United States"
+  },
+  "スヌーピーとチャーリー": {
+    "english_title": "A Boy Named Charlie Brown",
+    "release_year": 1969,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "A Boy Named Charlie Brown",
+    "director": "Bill Melendez",
+    "country": "USA"
+  },
+  "ゆかいな風船旅行": {
+    "english_title": "Olly Olly Oxen Free",
+    "release_year": 1978,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Olly Olly Oxen Free",
+    "director": "Richard A. Colla",
+    "country": "United States"
+  },
+  "キャリー（1976）": {
+    "english_title": "Carrie",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Carrie",
+    "director": "Brian De Palma",
+    "country": "United States"
+  },
+  "レベッカ（1940）": {
+    "english_title": "Rebecca",
+    "release_year": 1940,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Rebecca",
+    "director": "Alfred Hitchcock",
+    "country": "USA"
+  },
+  "ニューヨーク公共図書館　エクス・リブリス": {
+    "english_title": "Ex Libris: The New York Public Library",
+    "release_year": 2017,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Ex Libris: The New York Public Library",
+    "director": "Frederick Wiseman",
+    "country": "USA"
+  },
+  "朝霧（1971）": {
+    "english_title": "Morning Fog",
+    "release_year": 1971,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "朝霧",
+    "director": "Kenji Yoshida",
+    "country": "Japan"
+  },
+  "絶唱（1966）": {
+    "english_title": "The Last Song",
+    "release_year": 1966,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "絶唱",
+    "director": "Katsumi Nishikawa",
+    "country": "Japan"
+  },
+  "陽なたのファーマーズ　フクシマと希望": {
+    "english_title": "Farmers in the Sun: Fukushima and Hope",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "陽なたのファーマーズ　フクシマと希望",
+    "director": "Hiroyasu Obara",
+    "country": "Japan",
+    "failed": true
+  },
+  "日本と原発": {
+    "english_title": "Nuclear Japan: Has Nuclear Power Brought Us Happiness?",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "日本と原発",
+    "director": "Hiroyuki Kawai",
+    "country": "Japan"
+  },
+  "白い魔魚": {
+    "english_title": "The Lady Was Pawn",
+    "release_year": 1956,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "白い魔魚",
+    "director": "Noboru Nakamura",
+    "country": "Japan",
+    "failed": true
+  },
+  "水溜り": {
+    "english_title": "Pebbles in the Puddle",
+    "release_year": 1961,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "水溜り",
+    "director": "Kazuo Inoue",
+    "country": "Japan",
+    "failed": true
+  },
+  "ろまん化粧": {
+    "english_title": "Roman Makeup",
+    "release_year": 1958,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "ろまん化粧",
+    "director": "Toshimasa Hozumi",
+    "country": "Japan",
+    "failed": true
+  },
+  "センス・オブ・ワンダー　レイチェル・カーソンの贈りもの": {
+    "english_title": "Sense of Wonder: Rachel Carson's Gift",
+    "release_year": 2001,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "センス・オブ・ワンダー　レイチェル・カーソンの贈りもの",
+    "director": "Shukichi Koizumi",
+    "country": "Japan",
+    "failed": true
+  },
+  "アニタ　反逆の女神": {
+    "english_title": "Catching Fire: The Story of Anita Pallenberg",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Catching Fire: The Story of Anita Pallenberg",
+    "director": "Alexis Bloom, Svetlana Zill",
+    "country": "USA"
+  },
+  "リアム・ギャラガー　ライブ・アット・ネブワース2022": {
+    "english_title": "Liam Gallagher - Live at Knebworth 22",
+    "release_year": 2022,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "リアム・ギャラガー　ライブ・アット・ネブワース2022",
+    "director": "Toby L",
+    "country": "United Kingdom",
+    "failed": true
+  },
+  "レッツ・ゲット・ロスト": {
+    "english_title": "Let's Get Lost",
+    "release_year": 1988,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Let's Get Lost",
+    "director": "Bruce Weber",
+    "country": "United States"
+  },
+  "道草キッチン": {
+    "english_title": "Lotus Kitchen",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "道草キッチン",
+    "director": "Mitsuhito Shiraha",
+    "country": "Japan",
+    "failed": true
+  },
+  "amirisu Movie & Knit『恋する惑星』": {
+    "english_title": "Chungking Express",
+    "release_year": 1994,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "重慶森林",
+    "director": "Wong Kar-wai",
+    "country": "Hong Kong"
+  },
+  "〔月刊ホン・サンス Vol.3〕水の中で": {
+    "english_title": "In Water",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "물안에서",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "ユーリー・ノルシュテイン作品集 ひとりじゃないんだよ": {
+    "english_title": "You're not alone-The Works of Yuri Norstein",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ユーリー・ノルシュテイン作品集 ひとりじゃないんだよ",
+    "director": "Yuri Norstein",
+    "country": "Russia",
+    "failed": true
+  },
+  "劇場版　ロッキンミュージカル　シン・シャドウブラウン＆ブラックパイレーツの冒険": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
