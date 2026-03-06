@@ -2157,7 +2157,72 @@
     ],
     "vote_average": 7.404
   },
-  "If You're Lost I'll Come Find You": null,
+  "The Elephant Man": {
+    "tmdb_id": 1955,
+    "tmdb_title": "The Elephant Man",
+    "tmdb_original_title": "The Elephant Man",
+    "overview": "A Victorian surgeon rescues a heavily disfigured man being mistreated by his \"owner\" as a side-show freak. Behind his monstrous façade, there is revealed a person of great intelligence and sensitivity. Based on the true story of Joseph Merrick (called John Merrick in the film), a severely deformed man in 19th century London.",
+    "poster_path": "/u0wpPYjuSt8DIe1Y3Vapnh8jcKE.jpg",
+    "backdrop_path": "/6huSptAsqYg3wbsi1jbMognSgmp.jpg",
+    "release_date": "1980-10-09",
+    "director": "David Lynch",
+    "runtime": 124,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "vote_average": 8.049
+  },
+  "Mamma Mia!": {
+    "tmdb_id": 11631,
+    "tmdb_title": "Mamma Mia!",
+    "tmdb_original_title": "Mamma Mia!",
+    "overview": "A spirited young bride-to-be living with her single mother on a small Greek island secretly invites three of her mother's ex-boyfriends in hope of finding her biological father to walk her down the aisle.",
+    "poster_path": "/zdUA4FNHbXPadzVOJiU0Rgn6cHR.jpg",
+    "backdrop_path": "/8IGO8rF5asa7tnO0aEtx3e5R4Z5.jpg",
+    "release_date": "2008-07-03",
+    "director": "Phyllida Lloyd",
+    "runtime": 108,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 6.976
+  },
+  "Royal Ballet/ Giselle (PG)": null,
+  "We Are Parable presents: Set It Off": {
+    "tmdb_id": 9400,
+    "tmdb_title": "Set It Off",
+    "tmdb_original_title": "Set It Off",
+    "overview": "Four inner-city Black women, determined to end their constant struggle, decide to live by one rule — get what you want or die trying. So the four women take back their lives and take out some banks in the process.",
+    "poster_path": "/wpiARyUqTfabzakAXHMIUY6Tl1A.jpg",
+    "backdrop_path": "/8ebAtpx6YVfRGrxPrs4nTTWSbT9.jpg",
+    "release_date": "1996-11-06",
+    "director": "F. Gary Gray",
+    "runtime": 123,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 7.188
+  },
+  "Othello": null,
+  "The Marbles": {
+    "tmdb_id": 1534189,
+    "tmdb_title": "The Marbles",
+    "tmdb_original_title": "The Marbles",
+    "overview": "The Marbles started filming on the 25th of March 2021 the day Greece celebrated its 200th year of freedom, and outlines the case for the Parthenon Marbles to be returned to Athens. Documenting the ups and downs that have occurred since.",
+    "poster_path": "/jQarZGsh3vJ3Yj1SyK4BPNrED4h.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-07",
+    "director": "David Wilkinson",
+    "runtime": 113,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
   "Global Justice Now Youth MCR: Women at War": {
     "tmdb_id": 982440,
     "tmdb_title": "Women at War",
@@ -2190,45 +2255,26 @@
       "Action",
       "Fantasy"
     ],
-    "vote_average": 6.859
+    "vote_average": 6.858
   },
   "The Oscars Live at CULTPLEX": null,
-  "The Elephant Man": {
-    "tmdb_id": 1955,
-    "tmdb_title": "The Elephant Man",
-    "tmdb_original_title": "The Elephant Man",
-    "overview": "A Victorian surgeon rescues a heavily disfigured man being mistreated by his \"owner\" as a side-show freak. Behind his monstrous façade, there is revealed a person of great intelligence and sensitivity. Based on the true story of Joseph Merrick (called John Merrick in the film), a severely deformed man in 19th century London.",
-    "poster_path": "/u0wpPYjuSt8DIe1Y3Vapnh8jcKE.jpg",
-    "backdrop_path": "/6huSptAsqYg3wbsi1jbMognSgmp.jpg",
-    "release_date": "1980-10-09",
-    "director": "David Lynch",
-    "runtime": 124,
-    "genres": [
-      "Drama",
-      "History"
-    ],
-    "vote_average": 8.049
-  },
-  "Royal Ballet/ Giselle (PG)": null,
-  "We Are Parable presents: Set It Off": {
-    "tmdb_id": 9400,
-    "tmdb_title": "Set It Off",
-    "tmdb_original_title": "Set It Off",
-    "overview": "Four inner-city Black women, determined to end their constant struggle, decide to live by one rule — get what you want or die trying. So the four women take back their lives and take out some banks in the process.",
-    "poster_path": "/wpiARyUqTfabzakAXHMIUY6Tl1A.jpg",
-    "backdrop_path": "/8ebAtpx6YVfRGrxPrs4nTTWSbT9.jpg",
-    "release_date": "1996-11-06",
-    "director": "F. Gary Gray",
-    "runtime": 123,
+  "To Live and Die in L.A.": {
+    "tmdb_id": 9846,
+    "tmdb_title": "To Live and Die in L.A.",
+    "tmdb_original_title": "To Live and Die in L.A.",
+    "overview": "When his longtime partner on the force is killed, reckless U.S. Secret Service agent Richard Chance vows revenge, setting out to nab dangerous counterfeit artist Eric Masters.",
+    "poster_path": "/2iW3pSihBIhXjnBQmUJ0mAiZbB5.jpg",
+    "backdrop_path": "/1asVOmgViSEn4yi0EylEdtlL5H9.jpg",
+    "release_date": "1985-11-01",
+    "director": "William Friedkin",
+    "runtime": 116,
     "genres": [
       "Crime",
-      "Drama",
-      "Thriller"
+      "Thriller",
+      "Action"
     ],
-    "vote_average": 7.188
+    "vote_average": 7.132
   },
-  "Othello": null,
-  "National Theatre Live: The Audience": null,
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
     "tmdb_title": "Singin' in the Rain",
@@ -2243,27 +2289,11 @@
       "Comedy",
       "Romance"
     ],
-    "vote_average": 8.137
+    "vote_average": 8.138
   },
   "Throwback: Master and Commander": null,
   "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
-  "Mamma Mia!": {
-    "tmdb_id": 11631,
-    "tmdb_title": "Mamma Mia!",
-    "tmdb_original_title": "Mamma Mia!",
-    "overview": "A spirited young bride-to-be living with her single mother on a small Greek island secretly invites three of her mother's ex-boyfriends in hope of finding her biological father to walk her down the aisle.",
-    "poster_path": "/zdUA4FNHbXPadzVOJiU0Rgn6cHR.jpg",
-    "backdrop_path": "/8IGO8rF5asa7tnO0aEtx3e5R4Z5.jpg",
-    "release_date": "2008-07-03",
-    "director": "Phyllida Lloyd",
-    "runtime": 108,
-    "genres": [
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 6.976
-  },
   "The Royal Ballet: Giselle": null,
   "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
