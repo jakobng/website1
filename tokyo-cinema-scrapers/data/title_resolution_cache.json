@@ -7387,5 +7387,36 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "《東和薬品 presents 羽生結弦 notte stellata 2026 ライブ・ビューイング》": {
+    "english_title": "Towa Pharmaceutical presents Yuzuru Hanyu notte stellata 2026 Live Viewing",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "東和薬品 presents 羽生結弦 notte stellata 2026 ライブ・ビューイング",
+    "director": "Yuzuru Hanyu",
+    "country": "Japan",
+    "failed": true
+  },
+  "【映画】今は昔、栄養映画館の旅": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "幻想と幻惑のナイトメア・ナイト": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "『オールド・ボーイ 4K』『お嬢さん』オールナイト上映（字幕）": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }

@@ -74394,5 +74394,79 @@
         "name": "Hong Kong"
       }
     ]
-  }
+  },
+  "【映画】今は昔、栄養映画館の旅": null,
+  "迷宮物語": {
+    "tmdb_id": 37433,
+    "tmdb_title_jp": "迷宮物語",
+    "tmdb_title_en": "Neo Tokyo",
+    "tmdb_title_original": "迷宮物語",
+    "tmdb_original_language": "ja",
+    "overview": "眉村卓の原作を、アニメ界の巨匠、りんたろう、大友克洋、川尻善昭が描くオムニバスアニメーション。幼いサチがピエロによって迷宮に迷い込む「ラビリンス・ラビリンス」、レーサーの悲劇を描いた「走る男」、密林の奥地で続く大工事の中止を告げるべく出張した会社員を描く「工事中止命令」全3編で構成。1987年9月25日「東京国際ファンタスティック映画祭'87」で初上映。",
+    "overview_en": "A trilogy of separate stories. In \"Labyrinth labyrinthos\", a girl and her cat enter a strange world. In \"Running Man\", a racer takes on the ultimate opponent. In \"Construction Cancellation Order\", a man must shut down worker robots.",
+    "poster_path": "/k3sTiIFinCqtAuS82XVLeeUETwX.jpg",
+    "backdrop_path": "/bOlXLkgFb01lPkdwYWUqWKrfXLH.jpg",
+    "release_date": "1989-04-15",
+    "director": "りんたろう",
+    "director_jp": "りんたろう",
+    "director_en": "Rintaro",
+    "genres": [
+      "サイエンスフィクション",
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Animation",
+      "Adventure",
+      "Fantasy"
+    ],
+    "runtime": 50,
+    "vote_average": 6.748,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:37433": {
+    "tmdb_id": 37433,
+    "tmdb_title_jp": "迷宮物語",
+    "tmdb_title_en": "Neo Tokyo",
+    "tmdb_title_original": "迷宮物語",
+    "tmdb_original_language": "ja",
+    "overview": "眉村卓の原作を、アニメ界の巨匠、りんたろう、大友克洋、川尻善昭が描くオムニバスアニメーション。幼いサチがピエロによって迷宮に迷い込む「ラビリンス・ラビリンス」、レーサーの悲劇を描いた「走る男」、密林の奥地で続く大工事の中止を告げるべく出張した会社員を描く「工事中止命令」全3編で構成。1987年9月25日「東京国際ファンタスティック映画祭'87」で初上映。",
+    "overview_en": "A trilogy of separate stories. In \"Labyrinth labyrinthos\", a girl and her cat enter a strange world. In \"Running Man\", a racer takes on the ultimate opponent. In \"Construction Cancellation Order\", a man must shut down worker robots.",
+    "poster_path": "/k3sTiIFinCqtAuS82XVLeeUETwX.jpg",
+    "backdrop_path": "/bOlXLkgFb01lPkdwYWUqWKrfXLH.jpg",
+    "release_date": "1989-04-15",
+    "director": "りんたろう",
+    "director_jp": "りんたろう",
+    "director_en": "Rintaro",
+    "genres": [
+      "サイエンスフィクション",
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Animation",
+      "Adventure",
+      "Fantasy"
+    ],
+    "runtime": 50,
+    "vote_average": 6.748,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "幻想と幻惑のナイトメア・ナイト": null,
+  "『オールド・ボーイ 4K』『お嬢さん』オールナイト上映（字幕）": null,
+  "《東和薬品 presents 羽生結弦 notte stellata 2026 ライブ・ビューイング》": null
 }
