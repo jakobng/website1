@@ -2189,25 +2189,6 @@
     ],
     "vote_average": 6.976
   },
-  "Royal Ballet/ Giselle (PG)": null,
-  "We Are Parable presents: Set It Off": {
-    "tmdb_id": 9400,
-    "tmdb_title": "Set It Off",
-    "tmdb_original_title": "Set It Off",
-    "overview": "Four inner-city Black women, determined to end their constant struggle, decide to live by one rule — get what you want or die trying. So the four women take back their lives and take out some banks in the process.",
-    "poster_path": "/wpiARyUqTfabzakAXHMIUY6Tl1A.jpg",
-    "backdrop_path": "/8ebAtpx6YVfRGrxPrs4nTTWSbT9.jpg",
-    "release_date": "1996-11-06",
-    "director": "F. Gary Gray",
-    "runtime": 123,
-    "genres": [
-      "Crime",
-      "Drama",
-      "Thriller"
-    ],
-    "vote_average": 7.188
-  },
-  "Othello": null,
   "The Marbles": {
     "tmdb_id": 1534189,
     "tmdb_title": "The Marbles",
@@ -2222,6 +2203,23 @@
       "Documentary"
     ],
     "vote_average": 0.0
+  },
+  "To Live and Die in L.A.": {
+    "tmdb_id": 9846,
+    "tmdb_title": "To Live and Die in L.A.",
+    "tmdb_original_title": "To Live and Die in L.A.",
+    "overview": "When his longtime partner on the force is killed, reckless U.S. Secret Service agent Richard Chance vows revenge, setting out to nab dangerous counterfeit artist Eric Masters.",
+    "poster_path": "/2iW3pSihBIhXjnBQmUJ0mAiZbB5.jpg",
+    "backdrop_path": "/1asVOmgViSEn4yi0EylEdtlL5H9.jpg",
+    "release_date": "1985-11-01",
+    "director": "William Friedkin",
+    "runtime": 116,
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Action"
+    ],
+    "vote_average": 7.132
   },
   "Global Justice Now Youth MCR: Women at War": {
     "tmdb_id": 982440,
@@ -2255,26 +2253,33 @@
       "Action",
       "Fantasy"
     ],
-    "vote_average": 6.858
+    "vote_average": 6.859
   },
   "The Oscars Live at CULTPLEX": null,
-  "To Live and Die in L.A.": {
-    "tmdb_id": 9846,
-    "tmdb_title": "To Live and Die in L.A.",
-    "tmdb_original_title": "To Live and Die in L.A.",
-    "overview": "When his longtime partner on the force is killed, reckless U.S. Secret Service agent Richard Chance vows revenge, setting out to nab dangerous counterfeit artist Eric Masters.",
-    "poster_path": "/2iW3pSihBIhXjnBQmUJ0mAiZbB5.jpg",
-    "backdrop_path": "/1asVOmgViSEn4yi0EylEdtlL5H9.jpg",
-    "release_date": "1985-11-01",
-    "director": "William Friedkin",
-    "runtime": 116,
+  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
+  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
+  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
+  "Royal Ballet/ Giselle (PG)": null,
+  "We Are Parable presents: Set It Off": {
+    "tmdb_id": 9400,
+    "tmdb_title": "Set It Off",
+    "tmdb_original_title": "Set It Off",
+    "overview": "Four inner-city Black women, determined to end their constant struggle, decide to live by one rule — get what you want or die trying. So the four women take back their lives and take out some banks in the process.",
+    "poster_path": "/wpiARyUqTfabzakAXHMIUY6Tl1A.jpg",
+    "backdrop_path": "/8ebAtpx6YVfRGrxPrs4nTTWSbT9.jpg",
+    "release_date": "1996-11-06",
+    "director": "F. Gary Gray",
+    "runtime": 123,
     "genres": [
       "Crime",
+      "Drama",
       "Thriller",
-      "Action"
+      "Action",
+      "Romance"
     ],
-    "vote_average": 7.132
+    "vote_average": 7.2
   },
+  "Othello": null,
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
     "tmdb_title": "Singin' in the Rain",
@@ -2291,8 +2296,23 @@
     ],
     "vote_average": 8.138
   },
+  "How to Make a Killing": {
+    "tmdb_id": 467905,
+    "tmdb_title": "How to Make a Killing",
+    "tmdb_original_title": "How to Make a Killing",
+    "overview": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
+    "poster_path": "/kw7x5mSmHhoeeqwXLwXTBsofD1N.jpg",
+    "backdrop_path": "/aRR90kdGuJiEOqzhBZ5UML463CF.jpg",
+    "release_date": "2026-02-19",
+    "director": "John Patton Ford",
+    "runtime": 105,
+    "genres": [
+      "Comedy",
+      "Thriller"
+    ],
+    "vote_average": 6.88
+  },
   "Throwback: Master and Commander": null,
-  "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Ballet: Giselle": null,
   "The Royal Opera: The Magic Flute": null,
@@ -2329,5 +2349,6 @@
       "Romance"
     ],
     "vote_average": 5.974
-  }
+  },
+  "Weekly Arthouse Screening": null
 }
