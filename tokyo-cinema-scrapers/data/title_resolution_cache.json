@@ -7418,5 +7418,34 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "蘇鈺淳（スー・ユチュン）監督特集": {
+    "english_title": "Su Yuchun Special Feature",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "蘇鈺淳（スー・ユチュン）監督特集",
+    "director": "Su Yuchun",
+    "country": "Japan",
+    "failed": true
+  },
+  "父と家族とわたしのこと G": {
+    "english_title": "My Father, My Family, and Me",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "父と家族とわたしのこと",
+    "director": "Yoma Shimada",
+    "country": "Japan",
+    "failed": true
+  },
+  "怪談": {
+    "english_title": "Kwaidan",
+    "release_year": 1964,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "怪談",
+    "director": "Masaki Kobayashi",
+    "country": "Japan"
   }
 }

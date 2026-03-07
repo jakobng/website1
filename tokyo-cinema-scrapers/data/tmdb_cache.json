@@ -9023,7 +9023,7 @@
       "Action"
     ],
     "runtime": 95,
-    "vote_average": 7.091,
+    "vote_average": 7.072,
     "tmdb_countries": [
       {
         "iso_3166_1": "GB",
@@ -9590,8 +9590,8 @@
     "poster_path": "/kt2Ngq7GkyNL0PBu6cxFgm1q034.jpg",
     "backdrop_path": "/4TvipgMIlm0Pvk3mCICAodsKP6m.jpg",
     "release_date": "1990-12-15",
-    "director": "王家衛",
-    "director_jp": "王家衛",
+    "director": "ウォン・カーウァイ",
+    "director_jp": "ウォン・カーウァイ",
     "director_en": "Wong Kar-Wai",
     "genres": [
       "犯罪",
@@ -9604,7 +9604,7 @@
       "Romance"
     ],
     "runtime": 95,
-    "vote_average": 7.255,
+    "vote_average": 7.256,
     "tmdb_countries": [
       {
         "iso_3166_1": "HK",
@@ -9839,7 +9839,7 @@
       "Drama"
     ],
     "runtime": 183,
-    "vote_average": 7.725,
+    "vote_average": 7.729,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -23019,7 +23019,7 @@
       "Horror"
     ],
     "runtime": 99,
-    "vote_average": 7.4,
+    "vote_average": 7.381,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -74468,5 +74468,389 @@
   },
   "幻想と幻惑のナイトメア・ナイト": null,
   "『オールド・ボーイ 4K』『お嬢さん』オールナイト上映（字幕）": null,
-  "《東和薬品 presents 羽生結弦 notte stellata 2026 ライブ・ビューイング》": null
+  "《東和薬品 presents 羽生結弦 notte stellata 2026 ライブ・ビューイング》": null,
+  "放送禁止　ぼくの3人の妻": {
+    "tmdb_id": 1601727,
+    "tmdb_title_jp": "放送禁止 ぼくの3人の妻",
+    "tmdb_title_en": "Banned from Broadcast: My Three Wives",
+    "tmdb_title_original": "放送禁止 ぼくの3人の妻",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The third theatrical film in the \"Banned from Broadcast\" series focuses on the theme of polygamy and follows four people. Web designer Hagiwara Koji, company owner Nakase Yuko who is the financial backbone of the family, former model Inui Marina, and nurse Uchino Kaede - as they are shown footage of the murder of their husbands.",
+    "poster_path": "/kXAKuvSkkpFNVBPEuXJxPTxVLdr.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-16",
+    "director": "長江俊和",
+    "director_jp": "長江俊和",
+    "director_en": "Toshikazu Nagae",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1601727": {
+    "tmdb_id": 1601727,
+    "tmdb_title_jp": "放送禁止 ぼくの3人の妻",
+    "tmdb_title_en": "Banned from Broadcast: My Three Wives",
+    "tmdb_title_original": "放送禁止 ぼくの3人の妻",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The third theatrical film in the \"Banned from Broadcast\" series focuses on the theme of polygamy and follows four people. Web designer Hagiwara Koji, company owner Nakase Yuko who is the financial backbone of the family, former model Inui Marina, and nurse Uchino Kaede - as they are shown footage of the murder of their husbands.",
+    "poster_path": "/kXAKuvSkkpFNVBPEuXJxPTxVLdr.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-16",
+    "director": "長江俊和",
+    "director_jp": "長江俊和",
+    "director_en": "Toshikazu Nagae",
+    "genres": [
+      "ホラー"
+    ],
+    "genres_en": [
+      "Horror"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "いますぐ抱きしめたい 4K": {
+    "tmdb_id": 24163,
+    "tmdb_title_jp": "いますぐ抱きしめたい",
+    "tmdb_title_en": "As Tears Go By",
+    "tmdb_title_original": "旺角卡門",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Mid-level gangster Wah falls in love with his beautiful cousin, but must also continue to protect his volatile partner-in-crime and friend, Fly.",
+    "poster_path": "/l3rZRtdKXsXC8Ml1sC4pgMQYtA1.jpg",
+    "backdrop_path": "/tEqeyPPBJfyDJl0lO08YiqefYqd.jpg",
+    "release_date": "1988-06-09",
+    "director": "ウォン・カーウァイ",
+    "director_jp": "ウォン・カーウァイ",
+    "director_en": "Wong Kar-Wai",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Romance"
+    ],
+    "runtime": 98,
+    "vote_average": 6.936,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:24163": {
+    "tmdb_id": 24163,
+    "tmdb_title_jp": "いますぐ抱きしめたい",
+    "tmdb_title_en": "As Tears Go By",
+    "tmdb_title_original": "旺角卡門",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Mid-level gangster Wah falls in love with his beautiful cousin, but must also continue to protect his volatile partner-in-crime and friend, Fly.",
+    "poster_path": "/l3rZRtdKXsXC8Ml1sC4pgMQYtA1.jpg",
+    "backdrop_path": "/tEqeyPPBJfyDJl0lO08YiqefYqd.jpg",
+    "release_date": "1988-06-09",
+    "director": "ウォン・カーウァイ",
+    "director_jp": "ウォン・カーウァイ",
+    "director_en": "Wong Kar-Wai",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Romance"
+    ],
+    "runtime": 98,
+    "vote_average": 6.936,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "欲望の翼 4K": {
+    "tmdb_id": 18311,
+    "tmdb_title_jp": "欲望の翼",
+    "tmdb_title_en": "Days of Being Wild",
+    "tmdb_title_original": "阿飛正傳",
+    "tmdb_original_language": "cn",
+    "overview": "L・チャンを主軸に、M・チャン、C・ラウ、A・ラウ、J・チュン、T・レオンと、当時人気絶頂の香港のトップスターたちがきら星のごとく顔をそろえて各自の魅力を存分に発揮。彼らが繰り広げる甘く切ない男女の擦れ違いの恋愛劇を、ウォン監督がスタイリッシュな映像と話法でムード満点に描いて評判を呼び、第10回香港電影金像奨で、作品賞、監督賞など主要5部門を制覇。これが2作目だったウォン監督の異才ぶりをより広く知らしめ、世界中でそれにしびれる熱狂的ファンが続出することとなった。\r 1960年の香港。競技場の売店の販売員スーは、プレーボーイのヨディからきざなセリフで口説かれ、彼を愛するようになるが、ヨディはやがて、クラブのダンサーのミミに心が移ってしまう。彼に捨てられて心傷つき、夜の街をひとりさまようスーを巡回中の若い警官タイドは慰め、彼女に恋心を抱くが、それは片想いに終わる。“お前の実の母親は外国にいる”と養母から告げられたヨディは、実母に会いにフィリピンへと旅立つが……。",
+    "overview_en": "Yuddy, a Hong Kong playboy known for breaking girls' hearts, tries to find solace and truth after discovering the woman who raised him isn't his mother.",
+    "poster_path": "/kt2Ngq7GkyNL0PBu6cxFgm1q034.jpg",
+    "backdrop_path": "/4TvipgMIlm0Pvk3mCICAodsKP6m.jpg",
+    "release_date": "1990-12-15",
+    "director": "ウォン・カーウァイ",
+    "director_jp": "ウォン・カーウァイ",
+    "director_en": "Wong Kar-Wai",
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 95,
+    "vote_average": 7.256,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "蘇鈺淳（スー・ユチュン）監督特集": null,
+  "父と家族とわたしのこと G": null,
+  "ウォーフェア 戦地最前線 PG12": {
+    "tmdb_id": 1241436,
+    "tmdb_title_jp": "ウォーフェア 戦地最前線",
+    "tmdb_title_en": "Warfare",
+    "tmdb_title_original": "Warfare",
+    "tmdb_original_language": "en",
+    "overview": "＜極限の95分、映画史上最もリアルな戦場に、あなたを閉じ込める＞\r 2006年、イラク。監督を務めたメンドーサが所属していたアメリカ特殊部隊の小隊８名は、危険地帯ラマディで、アルカイダ幹部の監視と狙撃の任務についていた。ところが事態を察知した敵兵から先制攻撃を受け、全面衝突が始まる。反乱勢力に完全包囲され、負傷者は続出。救助を要請するが、さらなる攻撃を受け現場は地獄と化す。本部との通信を閉ざした通信兵・メンドーサ、指揮官のジョーは部隊への指示を完全に放棄し、皆から信頼される狙撃手のエリオット（愛称:ブージャー･ブー(鼻くそブーの意)）は爆撃により意識を失ってしまう。痛みに耐えきれず叫び声を上げる者、鎮痛剤のモルヒネを打ち間違える者、持ち場を守らずパニックに陥る者。彼らは逃げ場のない、轟音鳴り響くウォーフェア（戦闘）から、いかにして脱出するのか。",
+    "overview_en": "A platoon of Navy SEALs embarks on a dangerous mission in Ramadi, Iraq, with the chaos and brotherhood of war retold through their memories of the event.",
+    "poster_path": "/ikdVFWer1HWuRcpSVE9EIhoQVPV.jpg",
+    "backdrop_path": "/cJvUJEEQ86LSjl4gFLkYpdCJC96.jpg",
+    "release_date": "2025-04-09",
+    "director": "Ray Mendoza",
+    "director_jp": "Ray Mendoza",
+    "director_en": "Ray Mendoza",
+    "genres": [
+      "戦争",
+      "アクション"
+    ],
+    "genres_en": [
+      "War",
+      "Action"
+    ],
+    "runtime": 95,
+    "vote_average": 7.072,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "処刑の丘": {
+    "tmdb_id": 50183,
+    "tmdb_title_jp": "Восхождение",
+    "tmdb_title_en": "The Ascent",
+    "tmdb_title_original": "Восхождение",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "During a freezing WWII winter, two Soviet partisans on a mission to gather food contend with the temperature, the occupying Germans, and their own psyches.",
+    "poster_path": "/lWioTDPDhz0KHlm83FJnv0MIrok.jpg",
+    "backdrop_path": "/u8jAkrMAH2EwzYS3rrhGSIaiCIE.jpg",
+    "release_date": "1977-04-02",
+    "director": "Лариса Шепитько",
+    "director_jp": "Лариса Шепитько",
+    "director_en": "Larisa Shepitko",
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "War"
+    ],
+    "runtime": 109,
+    "vote_average": 7.835,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SU",
+        "name": "Soviet Union"
+      }
+    ]
+  },
+  "tmdb:50183": {
+    "tmdb_id": 50183,
+    "tmdb_title_jp": "Восхождение",
+    "tmdb_title_en": "The Ascent",
+    "tmdb_title_original": "Восхождение",
+    "tmdb_original_language": "ru",
+    "overview": "",
+    "overview_en": "During a freezing WWII winter, two Soviet partisans on a mission to gather food contend with the temperature, the occupying Germans, and their own psyches.",
+    "poster_path": "/lWioTDPDhz0KHlm83FJnv0MIrok.jpg",
+    "backdrop_path": "/u8jAkrMAH2EwzYS3rrhGSIaiCIE.jpg",
+    "release_date": "1977-04-02",
+    "director": "Лариса Шепитько",
+    "director_jp": "Лариса Шепитько",
+    "director_en": "Larisa Shepitko",
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "War"
+    ],
+    "runtime": 109,
+    "vote_average": 7.835,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SU",
+        "name": "Soviet Union"
+      }
+    ]
+  },
+  "炎628": {
+    "tmdb_id": 25237,
+    "tmdb_title_jp": "炎628",
+    "tmdb_title_en": "Come and See",
+    "tmdb_title_original": "Иди и смотри",
+    "tmdb_original_language": "ru",
+    "overview": "1943年、ドイツ占領下のベラルーシの村。少年のフリョーラは、土の下に埋もれた銃を掘り出したことから、母親の反対も聞かずパルチザン部隊に参加。しかし、部隊は彼を置き去りにして行軍に出発し、フリョーラは金髪の少女グラーシャと2人、あとに取り残されてしまう。そこへ敵の落下傘部隊が上空から飛来して攻撃を始め、フリョーラはグラーシャを連れて自分の家へ逃げ帰るが、そこで思いも寄らぬ光景を目の当たりにする。",
+    "overview_en": "The invasion of a village in Belarus by German forces sends young Florya into the forest to join the weary Resistance fighters, against his family's wishes. There he meets a girl, Glasha, who accompanies him back to his village. On returning home, Florya finds his family and fellow peasants massacred. His continued survival amidst the brutal debris of war becomes increasingly nightmarish, a battle between despair and hope.",
+    "poster_path": "/baK79h2An0J8mzTue13KThAeYC5.jpg",
+    "backdrop_path": "/3Na31ta8vDuKOgQuPLdSZLs8bCB.jpg",
+    "release_date": "1985-10-17",
+    "director": "エレム・クリモフ",
+    "director_jp": "エレム・クリモフ",
+    "director_en": "Elem Klimov",
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "War"
+    ],
+    "runtime": 142,
+    "vote_average": 8.217,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SU",
+        "name": "Soviet Union"
+      }
+    ]
+  },
+  "tmdb:25237": {
+    "tmdb_id": 25237,
+    "tmdb_title_jp": "炎628",
+    "tmdb_title_en": "Come and See",
+    "tmdb_title_original": "Иди и смотри",
+    "tmdb_original_language": "ru",
+    "overview": "1943年、ドイツ占領下のベラルーシの村。少年のフリョーラは、土の下に埋もれた銃を掘り出したことから、母親の反対も聞かずパルチザン部隊に参加。しかし、部隊は彼を置き去りにして行軍に出発し、フリョーラは金髪の少女グラーシャと2人、あとに取り残されてしまう。そこへ敵の落下傘部隊が上空から飛来して攻撃を始め、フリョーラはグラーシャを連れて自分の家へ逃げ帰るが、そこで思いも寄らぬ光景を目の当たりにする。",
+    "overview_en": "The invasion of a village in Belarus by German forces sends young Florya into the forest to join the weary Resistance fighters, against his family's wishes. There he meets a girl, Glasha, who accompanies him back to his village. On returning home, Florya finds his family and fellow peasants massacred. His continued survival amidst the brutal debris of war becomes increasingly nightmarish, a battle between despair and hope.",
+    "poster_path": "/baK79h2An0J8mzTue13KThAeYC5.jpg",
+    "backdrop_path": "/3Na31ta8vDuKOgQuPLdSZLs8bCB.jpg",
+    "release_date": "1985-10-17",
+    "director": "エレム・クリモフ",
+    "director_jp": "エレム・クリモフ",
+    "director_en": "Elem Klimov",
+    "genres": [
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Drama",
+      "War"
+    ],
+    "runtime": 142,
+    "vote_average": 8.217,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "SU",
+        "name": "Soviet Union"
+      }
+    ]
+  },
+  "怪談": {
+    "tmdb_id": 30959,
+    "tmdb_title_jp": "怪談",
+    "tmdb_title_en": "Kwaidan",
+    "tmdb_title_original": "怪談",
+    "tmdb_original_language": "ja",
+    "overview": "「黒髪」：妻を捨て、京都から遠い任地へと赴いた武士。そこで彼は、良い家柄の娘と結婚するが、彼女は冷酷な女で、男は今さら、別れた妻のことを思い出すのだった。やがて任期を終え、京都に戻った彼は最初の妻と再会するが…。「雪女」：きこりの巳之吉は、森へ薪を採りに入ったところで吹雪に遭い、山小屋に閉じ込められるはめに。その晩彼は、雪女の姿を目の当たりにし…。ほかに「耳無し抱一の話」「茶碗の中」の計4編。",
+    "overview_en": "Taking its title from an archaic Japanese word meaning \"ghost story,\" this anthology adapts four folk tales. A penniless samurai marries for money with tragic results. A man stranded in a blizzard is saved by Yuki the Snow Maiden, but his rescue comes at a cost. Blind musician Hoichi is forced to perform for an audience of ghosts. An author relates the story of a samurai who sees another warrior's reflection in his teacup.",
+    "poster_path": "/lxOxZVhGkmnz7jFJDS8EfkhxmmN.jpg",
+    "backdrop_path": "/9GAU0z2wVA8M2D2w36CaloWYYgv.jpg",
+    "release_date": "1965-01-06",
+    "director": "小林正樹",
+    "director_jp": "小林正樹",
+    "director_en": "Masaki Kobayashi",
+    "genres": [
+      "ホラー",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Horror",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 183,
+    "vote_average": 7.729,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "薮の中の黒猫": {
+    "tmdb_id": 40149,
+    "tmdb_title_jp": "藪の中の黒猫",
+    "tmdb_title_en": "Kuroneko",
+    "tmdb_title_original": "藪の中の黒猫",
+    "tmdb_original_language": "ja",
+    "overview": "平安時代の京都では、羅城門の外で相次いで侍殺害事件が相次いで発生しました。 夜に侍がこの門を通ると、必ず一人で歩く美しい女性(太地きわ子が演じる)を見かけ、その女性は怪物に変身し、美しく誘惑され、侍の準備不足に乗じて彼を殺すという噂が広まっています。\r 銀時(演:中村義衛門)は、庶民出身の侍で、将軍頼光(佐藤慶演)から怪物たちを鎮めるよう命じられました。 余羅成は城門の外でバンシーに会い、それが実は故郷の妻であることを知った。 銀時は妻と共に山に登り、長年不在だった母親(音葉信子が演じる)に会いました。 銀時は噂を信じてしまったことに苛立ち、毎晩妻に会いに来ていた。 8日目には妻の痕跡はなく、山には母親だけが残っていた。 この時点で銀時は、母と妻がもはや人間ではなく、妻が自分の人間的な思考のために魔界に送り返されたことを悟り、母は恨みと復讐に満ちた怪物となってしまった......",
+    "overview_en": "In the Sengoku period, a woman and her daughter are raped and murdered by soldiers during a time of civil war. Afterwards, a series of samurai returning from the war through that area are found mysteriously dead with their throats torn out. The governor calls in a wild and fierce young hero to quell what is evidently an Onryō ghost. He encounters the two beautiful women in an eerie, beautiful scene. After spiritual purification, he meets the demon in a thrilling fight.",
+    "poster_path": "/t98DjYwe15NY4bCAKUZgg1bHb6G.jpg",
+    "backdrop_path": "/oLui5hnc8HnkVDXruisqu3LZb6H.jpg",
+    "release_date": "1968-02-24",
+    "director": "新藤兼人",
+    "director_jp": "新藤兼人",
+    "director_en": "Kaneto Shindō",
+    "genres": [
+      "ドラマ",
+      "ファンタジー",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 99,
+    "vote_average": 7.381,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  }
 }
