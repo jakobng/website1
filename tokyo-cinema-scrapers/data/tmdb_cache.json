@@ -4886,7 +4886,7 @@
       "Drama"
     ],
     "runtime": 93,
-    "vote_average": 7.112,
+    "vote_average": 7.1,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -74850,6 +74850,158 @@
       {
         "iso_3166_1": "JP",
         "name": "Japan"
+      }
+    ]
+  },
+  "「Cinema As Runway」平岡香純シネマコレクション 特集上映": null,
+  "悪魔祓い株式会社": {
+    "tmdb_id": 793387,
+    "tmdb_title_jp": "悪魔祓い株式会社",
+    "tmdb_title_en": "Holy Night: Demon Hunters",
+    "tmdb_title_original": "거룩한 밤: 데몬 헌터스",
+    "tmdb_original_language": "ko",
+    "overview": "本作の舞台は、悪魔崇拝のカルト集団の台頭によって混乱に陥る韓国。その混乱に立ち向かおうとした警察や神父が、バウ、シャロン、キムからなる悪魔祓いを専門で請け負う会社に駆け込む事態となっていた。そんな中、医師のジョンウォンから愛する妹ウンソを助けてほしいという切なる依頼が舞い込んでくる。",
+    "overview_en": "When a devil-worshipping criminal network plunges Seoul into chaos, the police turn to Holy Night—a trio of supernatural demon hunters—to restore order and defeat the rising evil.",
+    "poster_path": "/7MGnHpfhF8savUsrUJoI8Q7dTk9.jpg",
+    "backdrop_path": "/5A01YSCPYoCOZOhh9tU7F3Htxkf.jpg",
+    "release_date": "2025-04-30",
+    "director": "Lim Dae-hee",
+    "director_jp": "Lim Dae-hee",
+    "director_en": "Lim Dae-hee",
+    "genres": [
+      "アクション",
+      "ファンタジー",
+      "ホラー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Fantasy",
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 92,
+    "vote_average": 6.791,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:793387": {
+    "tmdb_id": 793387,
+    "tmdb_title_jp": "悪魔祓い株式会社",
+    "tmdb_title_en": "Holy Night: Demon Hunters",
+    "tmdb_title_original": "거룩한 밤: 데몬 헌터스",
+    "tmdb_original_language": "ko",
+    "overview": "本作の舞台は、悪魔崇拝のカルト集団の台頭によって混乱に陥る韓国。その混乱に立ち向かおうとした警察や神父が、バウ、シャロン、キムからなる悪魔祓いを専門で請け負う会社に駆け込む事態となっていた。そんな中、医師のジョンウォンから愛する妹ウンソを助けてほしいという切なる依頼が舞い込んでくる。",
+    "overview_en": "When a devil-worshipping criminal network plunges Seoul into chaos, the police turn to Holy Night—a trio of supernatural demon hunters—to restore order and defeat the rising evil.",
+    "poster_path": "/7MGnHpfhF8savUsrUJoI8Q7dTk9.jpg",
+    "backdrop_path": "/5A01YSCPYoCOZOhh9tU7F3Htxkf.jpg",
+    "release_date": "2025-04-30",
+    "director": "Lim Dae-hee",
+    "director_jp": "Lim Dae-hee",
+    "director_en": "Lim Dae-hee",
+    "genres": [
+      "アクション",
+      "ファンタジー",
+      "ホラー",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Fantasy",
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 92,
+    "vote_average": 6.791,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "第四世界 4ever 春期": null,
+  "肉屋〈1970年・デジタルリマスター版〉": {
+    "tmdb_id": 2912,
+    "tmdb_title_jp": "Le Boucher",
+    "tmdb_title_en": "The Butcher",
+    "tmdb_title_original": "Le Boucher",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "An unlikely friendship between a dour, working class butcher and a repressed schoolteacher coincides with a grisly series of Ripper-type murders in a provincial French town.",
+    "poster_path": "/gvnGtHBgwnQkewajNDA0VMYkbCi.jpg",
+    "backdrop_path": "/8cyxP51631Pfi2yMfYafkcg7y7u.jpg",
+    "release_date": "1970-02-27",
+    "director": "克洛德·夏布洛尔",
+    "director_jp": "克洛德·夏布洛尔",
+    "director_en": "Claude Chabrol",
+    "genres": [
+      "スリラー",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "ポーラＸ": {
+    "tmdb_id": 35717,
+    "tmdb_title_jp": "ポーラX",
+    "tmdb_title_en": "Pola X",
+    "tmdb_title_original": "Pola X",
+    "tmdb_original_language": "fr",
+    "overview": "『ポンヌフの恋人』の鬼才レオス・カラックスが、発表当時“狂気の書”と評されたハーマン・メルヴィルの『ピエール』を映画化。森に囲まれたノルマンディの城館で母と暮らす、仮面小説家のピエール。婚約者リュシーとの結婚も間近に控えたある日、彼は自分の姉だと名乗る黒髪の女と出会う……。",
+    "overview_en": "A writer leaves his upper-class life and journeys with a woman claiming to be his sister, and her two friends.",
+    "poster_path": "/7sTR8jWXd1PTfjRWHd5gKmNdYKC.jpg",
+    "backdrop_path": "/1GLqS5pRl3xpgrPjrIkFpQZH1IZ.jpg",
+    "release_date": "1999-05-12",
+    "director": "レオス・カラックス",
+    "director_jp": "レオス・カラックス",
+    "director_en": "Leos Carax",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 134,
+    "vote_average": 5.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
       }
     ]
   }
