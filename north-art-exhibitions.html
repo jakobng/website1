@@ -114,6 +114,13 @@
             background: #fff;
             min-width: 160px;
         }
+        .filter-row-view-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-row-view-toggle label { margin: 0; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
         .region-filters {
             border: var(--border-width) solid var(--border);
@@ -230,6 +237,83 @@
             padding-bottom: 6px;
             border-bottom: 1px solid var(--border-soft);
         }
+        .exhibition-detail-list { display: flex; flex-direction: column; gap: 20px; }
+        .exhibition-detail-card {
+            border: var(--border-width) solid var(--border);
+            background: #fff;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: minmax(180px, 280px) 1fr;
+            gap: 0;
+        }
+        @media (max-width: 560px) {
+            .exhibition-detail-card { grid-template-columns: 1fr; }
+        }
+        .exhibition-detail-card {
+            color: inherit;
+            text-decoration: none;
+        }
+        .exhibition-detail-card:hover .exhibition-detail-title { text-decoration: underline; }
+        .exhibition-detail-image-wrap {
+            background: var(--grid);
+            min-height: 160px;
+            position: relative;
+        }
+        .exhibition-detail-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 180px;
+        }
+        .exhibition-detail-image-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .exhibition-detail-body {
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .exhibition-detail-badge {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+        .exhibition-detail-badge.on-now { color: var(--accent-strong); }
+        .exhibition-detail-badge.coming-soon { color: var(--muted); }
+        .exhibition-detail-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+        .exhibition-detail-venue {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        .exhibition-detail-dates {
+            font-size: 0.8rem;
+            color: var(--accent-strong);
+        }
+        .exhibition-detail-description {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--ink);
+            margin-top: 4px;
+        }
+        .exhibition-detail-card.is-upcoming .exhibition-detail-title,
+        .exhibition-detail-card.is-ended .exhibition-detail-title { color: var(--muted); }
+
         .loading { color: var(--muted); }
         .empty-state { color: var(--muted); padding: 24px 0; }
         .is-hidden { display: none; }
@@ -269,6 +353,11 @@
                         <option value="title">A–Z by title</option>
                         <option value="venue">By venue</option>
                     </select>
+                </div>
+                <div class="filter-row-view-toggle">
+                    <label for="detail-view-toggle">Detail view</label>
+                    <input type="checkbox" id="detail-view-toggle" aria-describedby="detail-view-desc">
+                    <span id="detail-view-desc" class="visually-hidden">Show each exhibition with description and image where available</span>
                 </div>
             </div>
         </section>
@@ -422,6 +511,7 @@
 
             function render() {
                 const list = getFiltered();
+                const detailView = document.getElementById("detail-view-toggle") && document.getElementById("detail-view-toggle").checked;
                 countEl.textContent = list.length + " exhibition" + (list.length !== 1 ? "s" : "");
 
                 if (list.length === 0) {
@@ -429,7 +519,7 @@
                     emptyEl.classList.remove("is-hidden");
                     return;
                 }
-                emptyEl.classList.add("is-hidden");
+                emptyEl.classList.remove("is-hidden");
                 listEl.classList.remove("is-hidden");
                 listEl.innerHTML = "";
 
@@ -450,41 +540,99 @@
                     heading.className = "region-heading";
                     heading.textContent = region;
                     section.appendChild(heading);
-                    const grid = document.createElement("div");
-                    grid.className = "exhibition-grid";
-                    byRegion[region].forEach(function (item) {
-                        const st = status(item);
-                        const card = document.createElement("div");
-                        card.className = "exhibition-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
-                        const link = document.createElement("a");
-                        link.href = item.detail_page_url || "#";
-                        link.target = "_blank";
-                        link.rel = "noopener";
 
-                        const badge = document.createElement("div");
-                        badge.className = "exhibition-card-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
-                        badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
+                    if (detailView) {
+                        const detailList = document.createElement("div");
+                        detailList.className = "exhibition-detail-list";
+                        byRegion[region].forEach(function (item) {
+                            const st = status(item);
+                            const link = document.createElement("a");
+                            link.href = item.detail_page_url || "#";
+                            link.target = "_blank";
+                            link.rel = "noopener";
+                            link.className = "exhibition-detail-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
 
-                        const title = document.createElement("div");
-                        title.className = "exhibition-card-title";
-                        title.textContent = item.exhibition_title || "Untitled";
+                            const imageWrap = document.createElement("div");
+                            imageWrap.className = "exhibition-detail-image-wrap";
+                            if (item.image_url) {
+                                const img = document.createElement("img");
+                                img.src = item.image_url;
+                                img.alt = "";
+                                imageWrap.appendChild(img);
+                            } else {
+                                const placeholder = document.createElement("div");
+                                placeholder.className = "exhibition-detail-image-placeholder";
+                                placeholder.textContent = "No image";
+                                imageWrap.appendChild(placeholder);
+                            }
 
-                        const venue = document.createElement("div");
-                        venue.className = "exhibition-card-venue";
-                        venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
+                            const body = document.createElement("div");
+                            body.className = "exhibition-detail-body";
+                            const badge = document.createElement("div");
+                            badge.className = "exhibition-detail-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
+                            badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
+                            const title = document.createElement("div");
+                            title.className = "exhibition-detail-title";
+                            title.textContent = item.exhibition_title || "Untitled";
+                            const venue = document.createElement("div");
+                            venue.className = "exhibition-detail-venue";
+                            venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
+                            const dates = document.createElement("div");
+                            dates.className = "exhibition-detail-dates";
+                            dates.textContent = dateRange(item);
+                            body.appendChild(badge);
+                            body.appendChild(title);
+                            body.appendChild(venue);
+                            body.appendChild(dates);
+                            if (item.description && (item.description + "").trim()) {
+                                const desc = document.createElement("p");
+                                desc.className = "exhibition-detail-description";
+                                desc.textContent = (item.description + "").trim();
+                                body.appendChild(desc);
+                            }
 
-                        const dates = document.createElement("div");
-                        dates.className = "exhibition-card-dates";
-                        dates.textContent = dateRange(item);
+                            link.appendChild(imageWrap);
+                            link.appendChild(body);
+                            detailList.appendChild(link);
+                        });
+                        section.appendChild(detailList);
+                    } else {
+                        const grid = document.createElement("div");
+                        grid.className = "exhibition-grid";
+                        byRegion[region].forEach(function (item) {
+                            const st = status(item);
+                            const card = document.createElement("div");
+                            card.className = "exhibition-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
+                            const link = document.createElement("a");
+                            link.href = item.detail_page_url || "#";
+                            link.target = "_blank";
+                            link.rel = "noopener";
 
-                        link.appendChild(badge);
-                        link.appendChild(title);
-                        link.appendChild(venue);
-                        link.appendChild(dates);
-                        card.appendChild(link);
-                        grid.appendChild(card);
-                    });
-                    section.appendChild(grid);
+                            const badge = document.createElement("div");
+                            badge.className = "exhibition-card-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
+                            badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
+
+                            const title = document.createElement("div");
+                            title.className = "exhibition-card-title";
+                            title.textContent = item.exhibition_title || "Untitled";
+
+                            const venue = document.createElement("div");
+                            venue.className = "exhibition-card-venue";
+                            venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
+
+                            const dates = document.createElement("div");
+                            dates.className = "exhibition-card-dates";
+                            dates.textContent = dateRange(item);
+
+                            link.appendChild(badge);
+                            link.appendChild(title);
+                            link.appendChild(venue);
+                            link.appendChild(dates);
+                            card.appendChild(link);
+                            grid.appendChild(card);
+                        });
+                        section.appendChild(grid);
+                    }
                     listEl.appendChild(section);
                 });
             }
@@ -521,6 +669,8 @@
 
             citySelect.addEventListener("change", render);
             sortSelect.addEventListener("change", render);
+            var detailViewToggle = document.getElementById("detail-view-toggle");
+            if (detailViewToggle) detailViewToggle.addEventListener("change", render);
 
             fetch(jsonUrl + "?t=" + Date.now(), { cache: "no-store" })
                 .then(function (res) { return res.json(); })
