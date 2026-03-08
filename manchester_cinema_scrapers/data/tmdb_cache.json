@@ -2234,6 +2234,23 @@
     "genres": [],
     "vote_average": 0.0
   },
+  "How to Make a Killing": {
+    "tmdb_id": 467905,
+    "tmdb_title": "How to Make a Killing",
+    "tmdb_original_title": "How to Make a Killing",
+    "overview": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
+    "poster_path": "/kw7x5mSmHhoeeqwXLwXTBsofD1N.jpg",
+    "backdrop_path": "/aRR90kdGuJiEOqzhBZ5UML463CF.jpg",
+    "release_date": "2026-02-19",
+    "director": "John Patton Ford",
+    "runtime": 105,
+    "genres": [
+      "Comedy",
+      "Thriller"
+    ],
+    "vote_average": 6.88
+  },
+  "Weekly Arthouse Screening": null,
   "Northern Exposure Short Film Showcase": null,
   "Arrow Video Club: Fulci Double Bill": null,
   "Bottomless School of Rock": null,
@@ -2259,6 +2276,56 @@
   "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
   "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
   "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
+  "Princess Mononoke": {
+    "tmdb_id": 128,
+    "tmdb_title": "Princess Mononoke",
+    "tmdb_original_title": "もののけ姫",
+    "overview": "Ashitaka, a prince of the disappearing Emishi people, is cursed by a demonized boar god and must journey to the west to find a cure. Along the way, he encounters San, a young human woman fighting to protect the forest, and Lady Eboshi, who is trying to destroy it. Ashitaka must find a way to bring balance to this conflict.",
+    "poster_path": "/cMYCDADoLKLbB83g4WnJegaZimC.jpg",
+    "backdrop_path": "/gl0jzn4BupSbL2qMVeqrjKkF9Js.jpg",
+    "release_date": "1997-07-12",
+    "director": "Hayao Miyazaki",
+    "runtime": 134,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Animation"
+    ],
+    "vote_average": 8.324
+  },
+  "Dog Day Afternoon": {
+    "tmdb_id": 968,
+    "tmdb_title": "Dog Day Afternoon",
+    "tmdb_original_title": "Dog Day Afternoon",
+    "overview": "Based on the true story of would-be Brooklyn bank robbers John Wojtowicz and Salvatore Naturile. Sonny and Sal attempt a bank heist which quickly turns sour and escalates into a hostage situation and stand-off with the police. As Sonny's motives for the robbery are slowly revealed and things become more complicated, the heist turns into a media circus.",
+    "poster_path": "/mavrhr0ig2aCRR8d48yaxtD5aMQ.jpg",
+    "backdrop_path": "/m10uqk0HI5JcITAbxNJIIiGA8HP.jpg",
+    "release_date": "1975-09-21",
+    "director": "Sidney Lumet",
+    "runtime": 124,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 7.844
+  },
+  "Repo Man": {
+    "tmdb_id": 13820,
+    "tmdb_title": "Repo Man",
+    "tmdb_original_title": "Repo Man",
+    "overview": "A down and out young punk gets a job working with a seasoned repo man, but what awaits him in his new career is a series of outlandish adventures revolving around aliens, the CIA, and a most wanted '64 Chevy.",
+    "poster_path": "/bjuu5UceuVUNUjnOC2fBzL3hZKC.jpg",
+    "backdrop_path": "/5K5oPo1NJrAVUeaPzcXFH13Xplo.jpg",
+    "release_date": "1984-03-02",
+    "director": "Alex Cox",
+    "runtime": 92,
+    "genres": [
+      "Comedy",
+      "Science Fiction"
+    ],
+    "vote_average": 6.662
+  },
   "Royal Ballet/ Giselle (PG)": null,
   "We Are Parable presents: Set It Off": {
     "tmdb_id": 9400,
@@ -2280,6 +2347,23 @@
     "vote_average": 7.2
   },
   "Othello": null,
+  "Resurrection": {
+    "tmdb_id": 878608,
+    "tmdb_title": "Resurrection",
+    "tmdb_original_title": "狂野时代",
+    "overview": "In a future where humanity has surrendered its ability to dream in exchange for immortality, an outcast finds illusion, nightmarish visions, and beauty in an intoxicating world of his own making.",
+    "poster_path": "/wBXvXc7CoE1TCEL96VzMkMQKYG9.jpg",
+    "backdrop_path": "/jt2CY2fZeeGAMnc2iQgutBfudS.jpg",
+    "release_date": "2025-11-22",
+    "director": "Bi Gan",
+    "runtime": 159,
+    "genres": [
+      "Drama",
+      "Science Fiction",
+      "Fantasy"
+    ],
+    "vote_average": 6.7
+  },
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
     "tmdb_title": "Singin' in the Rain",
@@ -2294,23 +2378,7 @@
       "Comedy",
       "Romance"
     ],
-    "vote_average": 8.138
-  },
-  "How to Make a Killing": {
-    "tmdb_id": 467905,
-    "tmdb_title": "How to Make a Killing",
-    "tmdb_original_title": "How to Make a Killing",
-    "overview": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
-    "poster_path": "/kw7x5mSmHhoeeqwXLwXTBsofD1N.jpg",
-    "backdrop_path": "/aRR90kdGuJiEOqzhBZ5UML463CF.jpg",
-    "release_date": "2026-02-19",
-    "director": "John Patton Ford",
-    "runtime": 105,
-    "genres": [
-      "Comedy",
-      "Thriller"
-    ],
-    "vote_average": 6.88
+    "vote_average": 8.137
   },
   "Throwback: Master and Commander": null,
   "Exhibition On Screen: Turner & Constable": null,
@@ -2349,6 +2417,5 @@
       "Romance"
     ],
     "vote_average": 5.974
-  },
-  "Weekly Arthouse Screening": null
+  }
 }
