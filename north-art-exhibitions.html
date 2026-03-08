@@ -115,63 +115,42 @@
             min-width: 160px;
         }
 
-        .region-map-section {
+        .region-filters {
             border: var(--border-width) solid var(--border);
             background: var(--card);
-            padding: 18px 20px;
+            padding: 14px 18px;
             box-shadow: var(--shadow-soft);
         }
-        .region-map-section h2 {
+        .region-filters h2 {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--muted);
             font-weight: 600;
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
         }
-        .region-map-wrap {
-            max-width: 560px;
-            margin: 0 auto;
-        }
-        .region-map-wrap svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .region-map-region {
-            cursor: pointer;
-            transition: fill 0.2s, stroke-width 0.2s;
-        }
-        .region-map-region:hover {
-            filter: brightness(0.97);
-        }
-        .region-map-region.selected {
-            stroke: var(--border);
-            stroke-width: 2;
-        }
-        .region-map-region.selected {
-            fill: var(--accent);
-            stroke: var(--accent-strong);
-            stroke-width: 2;
-        }
-        .region-map-legend {
+        .region-dropdowns {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px 16px;
-            margin-top: 12px;
-            font-size: 0.8rem;
+            align-items: center;
+            gap: 10px 20px;
+        }
+        .region-dropdowns .region-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .region-dropdowns .region-item label {
+            font-size: 0.75rem;
             color: var(--muted);
+            white-space: nowrap;
         }
-        .region-map-legend span {
-            cursor: pointer;
-            padding: 2px 6px;
-            border-radius: 2px;
-        }
-        .region-map-legend span:hover { color: var(--ink); }
-        .region-map-legend span.selected {
-            background: var(--accent);
-            color: var(--ink);
-            font-weight: 600;
+        .region-dropdowns .region-item select {
+            padding: 6px 8px;
+            border: var(--border-width) solid var(--border);
+            background: #fff;
+            min-width: 0;
+            font-size: 0.8rem;
         }
 
         .view-section {
@@ -270,33 +249,9 @@
             <h1>North of England Art Exhibitions</h1>
         </header>
 
-        <section class="region-map-section">
-            <h2 id="region-map-heading">Filter by region</h2>
-            <div class="region-map-wrap" role="application" aria-labelledby="region-map-heading">
-                <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" aria-label="North of England regions">
-                    <g class="region-map-region" data-region="North East" id="region-north-east" aria-pressed="false" tabindex="0" role="button" title="North East (Newcastle, Gateshead)">
-                        <path d="M 260 0 L 400 0 L 400 110 L 260 130 L 220 100 Z" fill="var(--grid)" stroke="var(--border-soft)" stroke-width="1"/>
-                        <text x="320" y="55" font-size="14" fill="var(--muted)" text-anchor="middle">North East</text>
-                    </g>
-                    <g class="region-map-region" data-region="Yorkshire" id="region-yorkshire" aria-pressed="false" tabindex="0" role="button" title="Yorkshire (Leeds, Sheffield, York, Hull, Wakefield, Bradford, West Bretton)">
-                        <path d="M 120 70 L 400 70 L 400 320 L 120 320 L 120 200 L 220 100 L 260 130 Z" fill="var(--grid)" stroke="var(--border-soft)" stroke-width="1"/>
-                        <text x="260" y="200" font-size="14" fill="var(--muted)" text-anchor="middle">Yorkshire</text>
-                    </g>
-                    <g class="region-map-region" data-region="Lancashire" id="region-lancashire" aria-pressed="false" tabindex="0" role="button" title="Lancashire (Preston)">
-                        <path d="M 0 0 L 120 0 L 120 85 L 0 85 Z" fill="var(--grid)" stroke="var(--border-soft)" stroke-width="1"/>
-                        <text x="60" y="45" font-size="12" fill="var(--muted)" text-anchor="middle">Lancashire</text>
-                    </g>
-                    <g class="region-map-region" data-region="Greater Manchester" id="region-greater-manchester" aria-pressed="false" tabindex="0" role="button" title="Greater Manchester">
-                        <path d="M 0 85 L 120 85 L 120 195 L 0 195 Z" fill="var(--grid)" stroke="var(--border-soft)" stroke-width="1"/>
-                        <text x="60" y="138" font-size="11" fill="var(--muted)" text-anchor="middle">Manchester</text>
-                    </g>
-                    <g class="region-map-region" data-region="Merseyside" id="region-merseyside" aria-pressed="false" tabindex="0" role="button" title="Merseyside (Liverpool)">
-                        <path d="M 0 195 L 120 195 L 120 320 L 0 320 Z" fill="var(--grid)" stroke="var(--border-soft)" stroke-width="1"/>
-                        <text x="60" y="260" font-size="14" fill="var(--muted)" text-anchor="middle">Merseyside</text>
-                    </g>
-                </svg>
-            </div>
-            <div class="region-map-legend" id="region-legend" aria-hidden="true"></div>
+        <section class="region-filters">
+            <h2 id="region-heading">Filter by region</h2>
+            <div class="region-dropdowns" id="region-dropdowns" role="group" aria-labelledby="region-heading"></div>
         </section>
 
         <section class="filters">
@@ -534,52 +489,34 @@
                 });
             }
 
-            function updateMapSelection() {
+            function syncSelectedRegionsFromDropdowns() {
+                selectedMapRegions.clear();
                 MAP_REGIONS.forEach(function (name) {
-                    const g = document.getElementById("region-" + name.toLowerCase().replace(/\s+/g, "-"));
-                    const legendSpan = document.querySelector(".region-map-legend [data-region=\"" + name + "\"]");
-                    if (g) {
-                        g.classList.toggle("selected", selectedMapRegions.has(name));
-                        g.setAttribute("aria-pressed", selectedMapRegions.has(name) ? "true" : "false");
-                    }
-                    if (legendSpan) legendSpan.classList.toggle("selected", selectedMapRegions.has(name));
+                    const sel = document.getElementById("region-dd-" + name.replace(/\s+/g, "-"));
+                    if (sel && sel.value === "show") selectedMapRegions.add(name);
                 });
             }
 
-            function toggleRegion(regionName) {
-                if (selectedMapRegions.has(regionName)) {
-                    selectedMapRegions.delete(regionName);
-                } else {
-                    selectedMapRegions.add(regionName);
-                }
-                updateMapSelection();
-                render();
-            }
-
+            var regionDropdownsEl = document.getElementById("region-dropdowns");
             MAP_REGIONS.forEach(function (name) {
-                const g = document.getElementById("region-" + name.toLowerCase().replace(/\s+/g, "-"));
-                if (g) {
-                    g.addEventListener("click", function () { toggleRegion(name); });
-                    g.addEventListener("keydown", function (e) {
-                        if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            toggleRegion(name);
-                        }
-                    });
-                }
-                const span = document.createElement("span");
-                span.setAttribute("data-region", name);
-                span.setAttribute("tabindex", "0");
-                span.setAttribute("role", "button");
-                span.textContent = name;
-                span.addEventListener("click", function () { toggleRegion(name); });
-                span.addEventListener("keydown", function (e) {
-                    if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        toggleRegion(name);
-                    }
+                var id = "region-dd-" + name.replace(/\s+/g, "-");
+                var wrap = document.createElement("div");
+                wrap.className = "region-item";
+                var label = document.createElement("label");
+                label.setAttribute("for", id);
+                label.textContent = name;
+                var select = document.createElement("select");
+                select.id = id;
+                select.setAttribute("data-region", name);
+                select.appendChild(new Option("—", ""));
+                select.appendChild(new Option("Show", "show"));
+                select.addEventListener("change", function () {
+                    syncSelectedRegionsFromDropdowns();
+                    render();
                 });
-                document.getElementById("region-legend").appendChild(span);
+                wrap.appendChild(label);
+                wrap.appendChild(select);
+                regionDropdownsEl.appendChild(wrap);
             });
 
             citySelect.addEventListener("change", render);
