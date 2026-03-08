@@ -89,13 +89,6 @@
             letter-spacing: 0.12em;
             text-align: center;
         }
-        .page-subtitle {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--muted);
-            margin-top: 4px;
-        }
-
         .filters {
             border: var(--border-width) solid var(--border);
             background: var(--card);
@@ -167,6 +160,38 @@
             color: var(--accent-strong);
             margin-top: auto;
         }
+        .exhibition-card.is-upcoming,
+        .exhibition-card.is-ended {
+            opacity: 0.72;
+        }
+        .exhibition-card.is-upcoming .exhibition-card-title,
+        .exhibition-card.is-ended .exhibition-card-title {
+            color: var(--muted);
+        }
+        .exhibition-card-badge {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .exhibition-card-badge.on-now { color: var(--accent-strong); }
+        .exhibition-card-badge.coming-soon { color: var(--muted); }
+        .exhibition-card-badge.ended { color: var(--muted); }
+        .region-section {
+            margin-bottom: 28px;
+        }
+        .region-section:last-child { margin-bottom: 0; }
+        .region-heading {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-soft);
+        }
         .loading { color: var(--muted); }
         .empty-state { color: var(--muted); padding: 24px 0; }
         .is-hidden { display: none; }
@@ -183,10 +208,7 @@
 <body>
     <main class="page">
         <header class="page-header">
-            <div>
-                <h1>North of England Art Exhibitions</h1>
-                <p class="page-subtitle">Worth a visit from Manchester</p>
-            </div>
+            <h1>North of England Art Exhibitions</h1>
         </header>
 
         <section class="filters">
@@ -240,12 +262,52 @@
                 return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
             }
 
+            const CITY_TO_REGION = {
+                "Manchester": "Greater Manchester",
+                "Liverpool": "Merseyside",
+                "Sheffield": "South Yorkshire",
+                "Leeds": "West Yorkshire",
+                "Wakefield": "West Yorkshire",
+                "Bradford": "West Yorkshire",
+                "Saltaire": "West Yorkshire",
+                "York": "North Yorkshire",
+                "Hull": "East Yorkshire",
+                "Newcastle": "North East",
+                "Gateshead": "North East",
+                "Preston": "Lancashire"
+            };
+            const REGION_ORDER = ["North East", "North Yorkshire", "East Yorkshire", "South Yorkshire", "West Yorkshire", "Greater Manchester", "Merseyside", "Lancashire"];
+
+            function getRegion(item) {
+                return CITY_TO_REGION[item.venue_city] || item.venue_city || "Other";
+            }
+
             function dateRange(item) {
                 const start = formatDate(item.start_date);
                 const end = formatDate(item.end_date);
                 if (start === "—" && end === "—") return "Ongoing";
                 if (start === end) return start;
                 return start + " – " + end;
+            }
+
+            function status(item) {
+                const today = new Date().toISOString().slice(0, 10);
+                const start = item.start_date || "";
+                const end = item.end_date || "";
+                if (start && end) {
+                    if (today < start) return "coming-soon";
+                    if (today > end) return "ended";
+                    return "on-now";
+                }
+                if (start) {
+                    if (today < start) return "coming-soon";
+                    return "on-now";
+                }
+                if (end) {
+                    if (today > end) return "ended";
+                    return "on-now";
+                }
+                return "on-now";
             }
 
             function sortKeyEnd(item) {
@@ -293,37 +355,60 @@
                 listEl.classList.remove("is-hidden");
                 listEl.innerHTML = "";
 
-                const grid = document.createElement("div");
-                grid.className = "exhibition-grid";
-
+                const byRegion = {};
                 list.forEach(function (item) {
-                    const card = document.createElement("div");
-                    card.className = "exhibition-card";
-                    const link = document.createElement("a");
-                    link.href = item.detail_page_url || "#";
-                    link.target = "_blank";
-                    link.rel = "noopener";
-
-                    const title = document.createElement("div");
-                    title.className = "exhibition-card-title";
-                    title.textContent = item.exhibition_title || "Untitled";
-
-                    const venue = document.createElement("div");
-                    venue.className = "exhibition-card-venue";
-                    venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
-
-                    const dates = document.createElement("div");
-                    dates.className = "exhibition-card-dates";
-                    dates.textContent = dateRange(item);
-
-                    link.appendChild(title);
-                    link.appendChild(venue);
-                    link.appendChild(dates);
-                    card.appendChild(link);
-                    grid.appendChild(card);
+                    const r = getRegion(item);
+                    if (!byRegion[r]) byRegion[r] = [];
+                    byRegion[r].push(item);
                 });
+                const orderedRegions = REGION_ORDER.filter(function (r) { return byRegion[r]; });
+                const otherRegions = Object.keys(byRegion).filter(function (r) { return REGION_ORDER.indexOf(r) === -1; }).sort();
+                orderedRegions.push.apply(orderedRegions, otherRegions);
 
-                listEl.appendChild(grid);
+                orderedRegions.forEach(function (region) {
+                    const section = document.createElement("div");
+                    section.className = "region-section";
+                    const heading = document.createElement("h2");
+                    heading.className = "region-heading";
+                    heading.textContent = region;
+                    section.appendChild(heading);
+                    const grid = document.createElement("div");
+                    grid.className = "exhibition-grid";
+                    byRegion[region].forEach(function (item) {
+                        const st = status(item);
+                        const card = document.createElement("div");
+                        card.className = "exhibition-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
+                        const link = document.createElement("a");
+                        link.href = item.detail_page_url || "#";
+                        link.target = "_blank";
+                        link.rel = "noopener";
+
+                        const badge = document.createElement("div");
+                        badge.className = "exhibition-card-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
+                        badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
+
+                        const title = document.createElement("div");
+                        title.className = "exhibition-card-title";
+                        title.textContent = item.exhibition_title || "Untitled";
+
+                        const venue = document.createElement("div");
+                        venue.className = "exhibition-card-venue";
+                        venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
+
+                        const dates = document.createElement("div");
+                        dates.className = "exhibition-card-dates";
+                        dates.textContent = dateRange(item);
+
+                        link.appendChild(badge);
+                        link.appendChild(title);
+                        link.appendChild(venue);
+                        link.appendChild(dates);
+                        card.appendChild(link);
+                        grid.appendChild(card);
+                    });
+                    section.appendChild(grid);
+                    listEl.appendChild(section);
+                });
             }
 
             citySelect.addEventListener("change", render);

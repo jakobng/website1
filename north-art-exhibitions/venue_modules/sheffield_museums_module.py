@@ -1,4 +1,5 @@
 # Sheffield Museums (Millennium Gallery, Graves Gallery) - exhibitions
+import re
 from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
@@ -9,6 +10,22 @@ VENUE_NAME = "Sheffield Museums"
 VENUE_CITY = "Sheffield"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; NorthArtExhibitions/1.0)", "Accept-Language": "en-GB,en;q=0.9"}
 TIMEOUT = 25
+
+SKIP_TITLES = {"read more", "see more", "what's on", "book now", "find out more", "view all"}
+THINGS_TO_DO_RE = re.compile(r"^Things to See and Do\s+", re.IGNORECASE)
+EVENT_PREFIX_RE = re.compile(r"^Event\s+", re.IGNORECASE)
+
+
+def _clean_title(title):
+    if not title:
+        return ""
+    t = norm(title)
+    if t.lower() in SKIP_TITLES:
+        return ""
+    t = THINGS_TO_DO_RE.sub("", t)
+    t = EVENT_PREFIX_RE.sub("", t)
+    return norm(t)
+
 
 def scrape_sheffield_museums():
     out = []
@@ -25,10 +42,8 @@ def scrape_sheffield_museums():
             if "/whats-on/" not in href and "/event/" not in href:
                 continue
             full_url = urljoin(BASE_URL, href)
-            title = norm(a.get_text())
+            title = _clean_title(a.get_text())
             if not title or len(title) < 3:
-                continue
-            if title.lower() in ("read more", "see more", "what's on", "book now"):
                 continue
             date_text = ""
             parent = a.parent
