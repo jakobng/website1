@@ -37,6 +37,13 @@ def _parse_until_date(text):
     return None
 
 
+def _slug_to_title(slug):
+    """Convert URL slug to exhibition title (e.g. 'kramer-portrait-award' -> 'Kramer Portrait Award')."""
+    if not slug:
+        return ""
+    return " ".join(w.capitalize() for w in slug.split("-"))
+
+
 def scrape_laing():
     """Return list of exhibition/display dicts for Laing Art Gallery."""
     out = []
@@ -55,10 +62,12 @@ def scrape_laing():
         full_url = urljoin("https://www.northeastmuseums.org.uk", href)
         if full_url.rstrip("/") == LAING_WHATS_ON.rstrip("/"):
             continue
-        title = norm(a.get_text())
-        if not title or len(title) < 3:
+        path = href.split("?")[0].rstrip("/")
+        slug = path.split("/laing/whats-on/")[-1].strip("/") if "/laing/whats-on/" in path else ""
+        if not slug:
             continue
-        if title.lower() in ("learn more", "book", "read more", "what's on"):
+        title = _slug_to_title(slug)
+        if not title or len(title) < 3:
             continue
         date_text = ""
         parent = a.parent

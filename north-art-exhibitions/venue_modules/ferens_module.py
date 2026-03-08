@@ -9,15 +9,46 @@ VENUE_NAME = "Ferens Art Gallery"
 VENUE_CITY = "Hull"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; NorthArtExhibitions/1.0)", "Accept-Language": "en-GB,en;q=0.9"}
 TIMEOUT = 25
+
+# Link text that is navigation/CTA, not exhibition titles - exclude these
+FERENS_NAV_BLOCKLIST = frozenset([
+    "read more", "what's on", "what to see", "plan your visit", "learn with us",
+    "ferens art gallery",
+    "families and under 5s", "young people", "adults and communities", "find out more",
+    "visit us", "get involved", "discover our latest events and exhibitions",
+    "find out more about our galleries and collections",
+    "visitor info and access guides to help you plan your visit",
+    "explore what we offer for local schools and learners",
+    "from museum trails to mini masterpieces, we have lots of fun family activities for you to enjoy",
+    "discover ways to get creative, meet new friends and flex your art skills with ferens",
+    "find out more about our opportunities for local artists and creatives",
+    "the history of ferens art gallery", "join the team", "find out how you can support us",
+    "donate now", "friends of the ferens", "general enquiry form", "directions via google maps",
+    "access info and guides", "venue hire", "café", "close search", "search", "view menu", "close menu",
+])
+
 FALLBACK = [
     {"title": "Sirens: Women and the Sea", "start_date": "2025-02-14"},
     {"title": "Ferens Unpacked", "start_date": "2026-02-13"},
     {"title": "The Wonders of Moominvalley", "start_date": "2026-06-01", "end_date": "2026-09-30"},
 ]
 
+
+def _is_nav_or_cta(title):
+    if not title or len(title) < 10:
+        return True
+    low = title.lower().strip()
+    if low in FERENS_NAV_BLOCKLIST:
+        return True
+    for phrase in ("plan your", "what to see", "find out more", "learn more", "read more", "what's on", "visit us", "get involved", "join the", "support us", "donate now", "guided tour"):
+        if phrase in low and len(low) < 100:
+            return True
+    return False
+
+
 def scrape_ferens():
     out = []
-    for path in ["/whats-on", "/ferens-art-gallery", "/museum-events"]:
+    for path in ["/museum-events", "/whats-on", "/ferens-art-gallery"]:
         try:
             r = requests.get(BASE_URL + path, headers=HEADERS, timeout=TIMEOUT)
             if r.status_code == 403:
@@ -33,7 +64,9 @@ def scrape_ferens():
                 continue
             full_url = urljoin(BASE_URL, href)
             title = norm(a.get_text())
-            if not title or len(title) < 3 or title.lower() in ("read more", "what's on"):
+            if not title or len(title) < 3:
+                continue
+            if _is_nav_or_cta(title):
                 continue
             date_text = ""
             parent = a.parent
