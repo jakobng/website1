@@ -1,4 +1,5 @@
 # Baltic Centre for Contemporary Art, Gateshead (whats-on is JS-heavy; we try scrape then fallback)
+import re
 from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
@@ -10,6 +11,15 @@ VENUE_NAME = "Baltic Centre for Contemporary Art"
 VENUE_CITY = "Gateshead"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; NorthArtExhibitions/1.0)", "Accept-Language": "en-GB,en;q=0.9"}
 TIMEOUT = 25
+
+# Strip venue name and trailing date/cruft from link text (no space before "Baltic" in some markup)
+BALTIC_VENUE_RE = re.compile(r"Baltic Centre for Contemporary Art.*$", re.I)
+
+def _slug_to_title(slug):
+    if not slug:
+        return ""
+    return " ".join(w.capitalize() for w in slug.split("-"))
+
 
 FALLBACK = [
     {"title": "For All At Last Return", "slug": "for-all-at-last-return", "end_date": "2026-06-07"},
@@ -30,11 +40,20 @@ def scrape_baltic():
         if "/whats-on/" not in href or href == "/whats-on" or href == "/whats-on/":
             continue
         full_url = urljoin(BASE_URL, href)
-        title = norm(a.get_text())
-        if not title or len(title) < 3:
+        path = href.split("?")[0].rstrip("/")
+        slug = path.split("/whats-on/")[-1].strip("/") if "/whats-on/" in path else ""
+        link_text = norm(a.get_text())
+        if not link_text or len(link_text) < 3:
             continue
-        if title.lower() in ("see more", "what's on", "discover what's on"):
+        if link_text.lower() in ("see more", "what's on", "discover what's on"):
             continue
+        title = norm(BALTIC_VENUE_RE.sub("", link_text))
+        if not title and slug:
+            title = _slug_to_title(slug)
+        elif not title:
+            title = link_text
+        if len(title) > 120 and slug:
+            title = _slug_to_title(slug)
         date_text = ""
         parent = a.parent
         for _ in range(5):

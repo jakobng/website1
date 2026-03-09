@@ -37,23 +37,60 @@ def scrape_sheffield_museums():
         except Exception:
             continue
         soup = BeautifulSoup(r.text, "html.parser")
-        for a in soup.find_all("a", href=True):
+        # Find all exhibition cards - usually they have an image and a title inside a container
+        # On Sheffield Museums site, items often have a specific structure or classes
+        for card in soup.find_all(["div", "article"], class_=re.compile(r"card|item|event", re.I)):
+            a = card.find("a", href=True)
+            if not a:
+                continue
             href = (a.get("href") or "").strip()
             if "/whats-on/" not in href and "/event/" not in href:
                 continue
+            
             full_url = urljoin(BASE_URL, href)
             title = _clean_title(a.get_text())
             if not title or len(title) < 3:
                 continue
-            date_text = ""
-            parent = a.parent
-            for _ in range(5):
-                if not parent:
-                    break
-                date_text = parent.get_text(separator=" ")
-                parent = parent.parent
+            
+            # Attempt to find image in this card
+            img_url = None
+            img = card.find("img")
+            if img and img.get("src"):
+                img_url = urljoin(BASE_URL, img.get("src"))
+            
+            date_text = card.get_text(separator=" ")
             start_str, end_str = parse_date_range(date_text)
-            out.append({"venue_name": VENUE_NAME, "venue_city": VENUE_CITY, "exhibition_title": title[:500], "start_date": start_str, "end_date": end_str, "detail_page_url": full_url, "description": None, "image_url": None})
+            
+            out.append({
+                "venue_name": VENUE_NAME, 
+                "venue_city": VENUE_CITY, 
+                "exhibition_title": title[:500], 
+                "start_date": start_str, 
+                "end_date": end_str, 
+                "detail_page_url": full_url, 
+                "description": None, 
+                "image_url": img_url
+            })
+        
+        # Fallback to old link-based search if no cards found (for simpler pages)
+        if not out:
+            for a in soup.find_all("a", href=True):
+                href = (a.get("href") or "").strip()
+                if "/whats-on/" not in href and "/event/" not in href:
+                    continue
+                full_url = urljoin(BASE_URL, href)
+                title = _clean_title(a.get_text())
+                if not title or len(title) < 3:
+                    continue
+                date_text = ""
+                parent = a.parent
+                for _ in range(5):
+                    if not parent:
+                        break
+                    date_text = parent.get_text(separator=" ")
+                    parent = parent.parent
+                start_str, end_str = parse_date_range(date_text)
+                out.append({"venue_name": VENUE_NAME, "venue_city": VENUE_CITY, "exhibition_title": title[:500], "start_date": start_str, "end_date": end_str, "detail_page_url": full_url, "description": None, "image_url": None})
     seen = set()
     unique = []
     for item in out:
