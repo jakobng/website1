@@ -44,6 +44,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+          cd ..
           git add north-art-exhibitions/data/*.json
           git commit -m "Auto-Update: north art exhibitions scrape data" || echo "No changes to commit"
           git pull --rebase -X theirs origin main
