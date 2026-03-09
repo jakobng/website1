@@ -80,7 +80,13 @@ def scrape_laing():
         if not end_str and date_text:
             end_str = _parse_until_date(date_text)
         meta = get_page_meta(full_url, headers=HEADERS, timeout=TIMEOUT)
-        exhibition_title = (meta.get("title") or title)[:500]
+        meta_title = meta.get("title") or ""
+        if meta_title and " | " in meta_title:
+            meta_title = meta_title.split(" | ")[0].strip()
+        if meta_title and len(meta_title) <= 120 and "Laing Art Gallery" not in meta_title:
+            exhibition_title = meta_title[:500]
+        else:
+            exhibition_title = title[:500]
         out.append({
             "venue_name": VENUE_NAME,
             "venue_city": VENUE_CITY,

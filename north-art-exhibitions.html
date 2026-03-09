@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North of England Art Exhibitions</title>
+    <title>Art North</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,9 @@
             --shadow-soft: 0 6px 14px rgba(0, 0, 0, 0.06);
             --border-width: 1px;
         }
+
         * { box-sizing: border-box; }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -33,499 +35,712 @@
             background-image:
                 linear-gradient(var(--grid) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-            background-size: 140px 140px;
-            padding: 24px 18px 60px;
+            background-size: 80px 80px;
+            padding: 0;
             position: relative;
             overflow-x: hidden;
         }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 40vmax;
-            height: 40vmax;
-            transform: translate(-50%, -50%) scale(0.05);
-            background: radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.95) 0%,
-                rgba(var(--accent-rgb), 0.9) 10%,
-                rgba(var(--accent-rgb), 0) 70%
-            );
-            border-radius: 50%;
-            animation: pulseGlow 15s infinite ease-in-out;
-            pointer-events: none;
-            z-index: -1;
-        }
-        @keyframes pulseGlow {
-            0% { transform: translate(-50%, -50%) scale(0.05); opacity: 1; }
-            60% { opacity: 0.85; }
-            100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
-        }
-        a { color: inherit; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        button, input, select { font-family: inherit; }
 
-        .page {
+        .page-header {
+            padding: 40px 20px 20px;
+            text-align: center;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .header-sub {
+            font-size: 0.9rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .controls-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: var(--border-width) solid var(--border);
+            padding: 10px 0;
+            margin-bottom: 40px;
+        }
+
+        .controls {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 12px;
         }
-        .page-header {
+
+        .filter-row {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 18px 20px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .region-toggles {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            background: #fff;
             border: var(--border-width) solid var(--border);
-            background: var(--card);
-            box-shadow: var(--shadow);
-        }
-        .page-header h1 {
-            margin: 0;
-            font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            text-align: center;
-        }
-        .region-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 18px;
-        }
-        .region-card {
-            border: var(--border-width) solid var(--border);
-            background: var(--card);
-            box-shadow: var(--shadow-soft);
-            overflow: hidden;
-        }
-        .region-card-header {
-            padding: 18px 20px;
+            padding: 8px 12px;
+            font-size: 0.7rem;
             font-weight: 600;
-            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             cursor: pointer;
-            user-select: none;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toggle-btn:hover { background: var(--bg); }
+        .toggle-btn.is-active {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .toggle-btn .checkbox {
+            width: 12px;
+            height: 12px;
+            border: 1px solid currentColor;
+            display: inline-block;
+            position: relative;
+        }
+
+        .toggle-btn.is-active .checkbox::after {
+            content: "✓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+        }
+
+        .search-input-wrap {
+            flex: 1;
+            min-width: 160px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: var(--border-width) solid var(--border);
+            font-family: inherit;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .dropdown-wrap {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            padding: 10px 14px;
+            border: var(--border-width) solid var(--border);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #fff;
+            border: var(--border-width) solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 200;
+            min-width: 240px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .dropdown-wrap:hover .dropdown-content {
+            display: block;
+        }
+
+        .venue-filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .venue-filter-item:hover { background: var(--bg); }
+
+        .venue-filter-item input { cursor: pointer; }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .section-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 10px;
-            background: #fff;
-            border-bottom: var(--border-width) solid transparent;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
         }
-        .region-card-header:hover { background: var(--bg); }
-        .region-card.is-open .region-card-header { border-bottom-color: var(--border-soft); }
-        .region-card-header .region-chevron {
-            font-size: 0.75rem;
-            color: var(--muted);
-            transition: transform 0.2s ease;
-        }
-        .region-card.is-open .region-chevron { transform: rotate(180deg); }
-        .region-card-list {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .region-card.is-open .region-card-list { max-height: 1200px; }
-        .region-card-list-inner {
-            padding: 12px 16px 16px;
-            background: var(--bg);
-        }
-        .region-exhibition-item {
-            display: block;
-            padding: 10px 12px;
-            margin-bottom: 6px;
-            background: #fff;
-            border: var(--border-width) solid var(--border-soft);
-            font-size: 0.9rem;
-            color: inherit;
-            text-decoration: none;
-        }
-        .region-exhibition-item:hover { text-decoration: underline; border-color: var(--accent-strong); }
-        .region-exhibition-item:last-child { margin-bottom: 0; }
-        .region-exhibition-title { font-weight: 500; }
-        .region-exhibition-meta { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
-        .region-view-all {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 8px 14px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-            background: var(--accent);
-            color: var(--ink);
-            border: var(--border-width) solid var(--border);
-        }
-        .region-view-all:hover { background: var(--accent-strong); text-decoration: none; }
 
-        .view-section {
-            border: var(--border-width) solid var(--border);
-            background: var(--card);
-            padding: 18px 20px;
-            box-shadow: var(--shadow-soft);
-        }
-        .region-detail-view { display: none; }
-        .region-detail-view.is-active { display: block; }
-        .region-detail-back {
-            display: inline-block;
-            margin-bottom: 18px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--accent-strong);
-        }
-        .region-detail-back:hover { text-decoration: underline; }
-        .region-detail-heading {
-            font-size: 0.75rem;
+        .section-title {
+            margin: 0;
+            font-size: 1.2rem;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-            font-weight: 600;
-            margin: 0 0 16px 0;
+            letter-spacing: 0.1em;
+            font-weight: 700;
         }
-        .detail-exhibition-list { display: flex; flex-direction: column; gap: 20px; }
-        .detail-exhibition-card {
-            border: var(--border-width) solid var(--border);
-            background: #fff;
-            box-shadow: var(--shadow-soft);
-            overflow: hidden;
+
+        .exhibition-grid {
             display: grid;
-            grid-template-columns: minmax(180px, 280px) 1fr;
-            gap: 0;
-            color: inherit;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .exhibition-card {
+            background: var(--card);
+            border: var(--border-width) solid var(--border);
+            display: flex;
+            flex-direction: column;
             text-decoration: none;
-        }
-        @media (max-width: 560px) {
-            .detail-exhibition-card { grid-template-columns: 1fr; }
-        }
-        .detail-exhibition-card:hover .detail-exhibition-title { text-decoration: underline; }
-        .detail-exhibition-image-wrap {
-            background: var(--grid);
-            min-height: 160px;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             position: relative;
+            height: 100%;
         }
-        .detail-exhibition-image-wrap img {
+
+        .exhibition-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .exhibition-image-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--grid);
+            position: relative;
+            overflow: hidden;
+            border-bottom: var(--border-width) solid var(--border);
+        }
+
+        .exhibition-image-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
-            min-height: 180px;
+            transition: transform 0.5s ease;
         }
-        .detail-exhibition-image-placeholder {
+
+        .image-placeholder {
             position: absolute;
             inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.75rem;
-            color: var(--muted);
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 20px;
+            text-align: center;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 8px;
+            font-size: 0.65rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            z-index: 10;
+            background: #fff;
+            border: 1px solid var(--border);
         }
-        .detail-exhibition-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
-        .detail-exhibition-badge { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
-        .detail-exhibition-badge.on-now { color: var(--accent-strong); }
-        .detail-exhibition-badge.coming-soon { color: var(--muted); }
-        .detail-exhibition-title { font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
-        .detail-exhibition-venue { font-size: 0.85rem; color: var(--muted); }
-        .detail-exhibition-dates { font-size: 0.8rem; color: var(--accent-strong); }
-        .detail-exhibition-description { font-size: 0.9rem; line-height: 1.5; margin-top: 4px; }
-        .detail-exhibition-card.is-upcoming .detail-exhibition-title,
-        .detail-exhibition-card.is-ended .detail-exhibition-title { color: var(--muted); }
-        .home-view { display: none; }
-        .home-view.is-active { display: block; }
 
-        .loading { color: var(--muted); }
-        .empty-state { color: var(--muted); padding: 24px 0; }
-        .is-hidden { display: none; }
+        .status-badge.ending-soon { background: var(--accent); color: var(--ink); }
+        .status-badge.coming-soon { background: var(--ink); color: #fff; }
 
-        .page-footer {
-            font-size: 0.75rem;
+        .hide-venue-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.8);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 15;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .exhibition-card:hover .hide-venue-btn { opacity: 1; }
+        .hide-venue-btn:hover { background: var(--ink); color: #fff; }
+
+        .exhibition-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .exhibition-title {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .exhibition-venue {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .exhibition-location {
+            font-size: 0.8rem;
             color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .exhibition-footer {
+            margin-top: auto;
             padding-top: 12px;
             border-top: 1px solid var(--border-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
         }
-        .page-footer a { color: var(--accent-strong); }
+
+        .exhibition-dates {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-strong);
+        }
+
+        .region-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            border: 1px solid var(--border-soft);
+            padding: 2px 6px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            border: 2px dashed var(--border-soft);
+            color: var(--muted);
+            grid-column: 1 / -1;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .hidden-venues-bar {
+            background: var(--ink);
+            color: #fff;
+            padding: 8px 20px;
+            font-size: 0.75rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hidden-venues-bar.is-active { display: flex; }
+
+        .reset-btn {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .reset-btn:hover { background: #fff; color: var(--ink); }
+
+        .page-footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            border-top: var(--border-width) solid var(--border);
+            font-size: 0.8rem;
+            color: var(--muted);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .page-footer a { color: var(--accent-strong); text-decoration: underline; }
+
+        @media (max-width: 800px) {
+            .controls-wrapper { position: static; }
+            .filter-row { flex-direction: column; align-items: stretch; }
+        }
     </style>
 </head>
 <body>
-    <main class="page">
-        <header class="page-header">
-            <h1>North of England Art Exhibitions</h1>
-        </header>
+    <div id="hidden-venues-bar" class="hidden-venues-bar">
+        <span>Some venues are hidden because they weren't your "vibe".</span>
+        <button id="reset-hidden-btn" class="reset-btn">Reset All</button>
+    </div>
 
-        <section class="view-section">
-            <div id="home-view" class="home-view is-active">
-                <div class="loading" id="home-loading">Loading exhibitions…</div>
-                <div id="region-grid" class="region-grid is-hidden"></div>
+    <header class="page-header">
+        <h1>Art North</h1>
+        <div class="header-sub">Exhibition Directory · Northern England</div>
+    </header>
+
+    <div class="controls-wrapper">
+        <div class="controls">
+            <div class="filter-row">
+                <div class="region-toggles" id="region-toggles">
+                    <button class="toggle-btn is-active" data-region="Greater Manchester"><span class="checkbox"></span>Manchester</button>
+                    <button class="toggle-btn is-active" data-region="Merseyside"><span class="checkbox"></span>Merseyside</button>
+                    <button class="toggle-btn is-active" data-region="West Yorkshire"><span class="checkbox"></span>West Yorks</button>
+                    <button class="toggle-btn is-active" data-region="South & East Yorkshire"><span class="checkbox"></span>South & East Yorks</button>
+                    <button class="toggle-btn is-active" data-region="North East"><span class="checkbox"></span>North East</button>
+                </div>
+                <div class="search-input-wrap">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search title, venue, city...">
+                </div>
+                <div class="dropdown-wrap">
+                    <button class="dropdown-btn">Venues ▼</button>
+                    <div id="venue-dropdown" class="dropdown-content">
+                        <!-- Venues injected here -->
+                    </div>
+                </div>
+                <select id="sort-select" class="sort-select">
+                    <option value="closing">Closing Soon</option>
+                    <option value="newest">Newest</option>
+                    <option value="alphabetical">A-Z</option>
+                </select>
             </div>
-            <div id="region-detail-view" class="region-detail-view">
-                <a href="#" id="region-detail-back" class="region-detail-back">← All regions</a>
-                <h2 id="region-detail-heading" class="region-detail-heading"></h2>
-                <div id="region-detail-list" class="detail-exhibition-list"></div>
+        </div>
+    </div>
+
+    <main class="content">
+        <section id="exhibitions-section">
+            <div class="section-header">
+                <h2 class="section-title">Directory</h2>
+                <div id="result-count" class="header-sub"></div>
+            </div>
+            <div id="main-loading" class="loading">Loading Directory...</div>
+            <div id="exhibition-grid" class="exhibition-grid"></div>
+            <div id="empty-state" class="empty-state is-hidden">
+                No exhibitions found matching your filters.
             </div>
         </section>
-
-        <footer class="page-footer">
-            <p>Listings are scraped from gallery and museum websites. Check the venue site for opening times and booking.</p>
-            <p><a href="north-art-exhibitions/data/exhibitions.json">Download raw exhibitions JSON</a>.</p>
-        </footer>
     </main>
 
+    <footer class="page-footer">
+        <p>Information is aggregated from gallery and museum websites across the North. Please check official venue websites for up-to-date opening times and booking requirements.</p>
+        <p>Built by Gemini CLI. <a href="north-art-exhibitions/data/exhibitions.json">Download JSON</a>.</p>
+    </footer>
+
     <script>
-        (function () {
+        (function() {
             const jsonUrl = "north-art-exhibitions/data/exhibitions.json";
-            const CITY_TO_MAP_REGION = {
+            
+            const CITY_TO_REGION = {
                 "Manchester": "Greater Manchester",
+                "Salford": "Greater Manchester",
                 "Liverpool": "Merseyside",
-                "Sheffield": "Yorkshire",
-                "Leeds": "Yorkshire",
-                "Wakefield": "Yorkshire",
-                "Bradford": "Yorkshire",
-                "Saltaire": "Yorkshire",
-                "West Bretton": "Yorkshire",
-                "York": "Yorkshire",
-                "Hull": "Yorkshire",
+                "Preston": "Greater Manchester",
                 "Newcastle": "North East",
                 "Gateshead": "North East",
-                "Preston": "Lancashire"
+                "Sunderland": "North East",
+                "Leeds": "West Yorkshire",
+                "Wakefield": "West Yorkshire",
+                "Bradford": "West Yorkshire",
+                "Saltaire": "West Yorkshire",
+                "West Bretton": "West Yorkshire",
+                "Sheffield": "South & East Yorkshire",
+                "York": "South & East Yorkshire",
+                "Hull": "South & East Yorkshire"
             };
-            const MAP_REGIONS = ["North East", "Yorkshire", "Greater Manchester", "Merseyside", "Lancashire"];
 
-            let rawData = [];
-            const homeView = document.getElementById("home-view");
-            const homeLoading = document.getElementById("home-loading");
-            const regionGrid = document.getElementById("region-grid");
-            const regionDetailView = document.getElementById("region-detail-view");
-            const regionDetailBack = document.getElementById("region-detail-back");
-            const regionDetailHeading = document.getElementById("region-detail-heading");
-            const regionDetailList = document.getElementById("region-detail-list");
+            const IGNORE_TITLES = [
+                "Plan your visit", "Learn with us", "Families and under 5s", 
+                "Young people", "Adults and communities", "What to see",
+                "Ferens Art Gallery", "Usher Gallery", "The Collection",
+                "Cafe", "Shop", "Restaurant", "Hire", "Support us", "About us",
+                "Visit", "Membership", "Newsletter"
+            ];
 
-            function formatDate(iso) {
-                if (!iso) return "—";
-                const d = new Date(iso + "T12:00:00");
-                if (isNaN(d.getTime())) return iso;
-                return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
-            }
+            let allExhibitions = [];
+            let activeRegions = new Set(["Greater Manchester", "Merseyside", "West Yorkshire", "South & East Yorkshire", "North East"]);
+            let hiddenVenues = new Set(JSON.parse(localStorage.getItem('artNorth_hiddenVenues') || '[]'));
+            let searchQuery = '';
+            let currentSort = 'closing';
 
-            function getMapRegion(item) {
-                return CITY_TO_MAP_REGION[item.venue_city] || null;
-            }
+            const exhibitionGrid = document.getElementById('exhibition-grid');
+            const mainLoading = document.getElementById('main-loading');
+            const emptyState = document.getElementById('empty-state');
+            const resultCount = document.getElementById('result-count');
+            const searchInput = document.getElementById('search-input');
+            const sortSelect = document.getElementById('sort-select');
+            const regionToggles = document.getElementById('region-toggles');
+            const venueDropdown = document.getElementById('venue-dropdown');
+            const hiddenVenuesBar = document.getElementById('hidden-venues-bar');
+            const resetHiddenBtn = document.getElementById('reset-hidden-btn');
 
-            function dateRange(item) {
-                const start = formatDate(item.start_date);
-                const end = formatDate(item.end_date);
-                if (start === "—" && end === "—") return "Ongoing";
-                if (start === end) return start;
-                return start + " – " + end;
-            }
-
-            function status(item) {
-                const today = new Date().toISOString().slice(0, 10);
-                const start = item.start_date || "";
-                const end = item.end_date || "";
-                if (start && end) {
-                    if (today < start) return "coming-soon";
-                    if (today > end) return "ended";
-                    return "on-now";
-                }
-                if (start) { if (today < start) return "coming-soon"; return "on-now"; }
-                if (end) { if (today > end) return "ended"; return "on-now"; }
-                return "on-now";
-            }
-
-            function sortKeyEnd(item) {
-                if (item.end_date) return item.end_date;
-                return "9999-12-31";
-            }
-
-            function getActiveExhibitions() {
-                return rawData.filter(function (item) { return status(item) !== "ended"; });
-            }
-
-            function getByMapRegion() {
-                const list = getActiveExhibitions();
-                const byRegion = {};
-                list.forEach(function (item) {
-                    const r = getMapRegion(item);
-                    if (!r) return;
-                    if (!byRegion[r]) byRegion[r] = [];
-                    byRegion[r].push(item);
-                });
-                MAP_REGIONS.forEach(function (r) {
-                    if (byRegion[r]) {
-                        byRegion[r].sort(function (a, b) {
-                            return sortKeyEnd(a).localeCompare(sortKeyEnd(b));
+            async function loadData() {
+                try {
+                    const response = await fetch(jsonUrl + '?t=' + Date.now());
+                    const data = await response.json();
+                    
+                    const seen = new Set();
+                    allExhibitions = data
+                        .filter(item => {
+                            const title = item.exhibition_title || '';
+                            const venue = item.venue_name || '';
+                            if (IGNORE_TITLES.some(ignore => title.toLowerCase().includes(ignore.toLowerCase()))) return false;
+                            if (title.length < 3) return false;
+                            const key = `${title}|${venue}`.toLowerCase();
+                            if (seen.has(key)) return false;
+                            seen.add(key);
+                            return true;
+                        })
+                        .map(item => {
+                            item.region = CITY_TO_REGION[item.venue_city] || 'North East';
+                            item.startDateObj = item.start_date ? new Date(item.start_date) : null;
+                            item.endDateObj = item.end_date ? new Date(item.end_date) : null;
+                            return item;
                         });
-                    }
+
+                    mainLoading.classList.add('is-hidden');
+                    updateVenueDropdown();
+                    render();
+                } catch (err) {
+                    mainLoading.textContent = "Error loading directory.";
+                }
+            }
+
+            function updateVenueDropdown() {
+                const venues = [...new Set(allExhibitions.map(item => item.venue_name))].sort();
+                venueDropdown.innerHTML = '';
+                venues.forEach(venue => {
+                    const label = document.createElement('label');
+                    label.className = 'venue-filter-item';
+                    const isChecked = !hiddenVenues.has(venue);
+                    label.innerHTML = `<input type="checkbox" ${isChecked ? 'checked' : ''} data-venue="${venue}"> <span>${venue}</span>`;
+                    label.querySelector('input').addEventListener('change', (e) => {
+                        toggleVenue(venue, !e.target.checked);
+                    });
+                    venueDropdown.appendChild(label);
                 });
-                return byRegion;
             }
 
-            function slug(name) {
-                return name.replace(/\s+/g, "-").toLowerCase();
+            function toggleVenue(venue, hide) {
+                if (hide) hiddenVenues.add(venue);
+                else hiddenVenues.delete(venue);
+                localStorage.setItem('artNorth_hiddenVenues', JSON.stringify([...hiddenVenues]));
+                updateVenueDropdown();
+                render();
             }
 
-            function showHome() {
-                homeView.classList.add("is-active");
-                regionDetailView.classList.remove("is-active");
-                window.location.hash = "";
+            function getStatus(item) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                if (item.endDateObj && item.endDateObj < today) return 'ended';
+                if (item.startDateObj && item.startDateObj > today) return 'coming-soon';
+                if (item.endDateObj) {
+                    const diffTime = item.endDateObj - today;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    if (diffDays <= 14 && diffDays >= 0) return 'ending-soon';
+                }
+                return 'on-now';
             }
 
-            function showRegionDetail(regionName) {
-                homeView.classList.remove("is-active");
-                regionDetailView.classList.add("is-active");
-                regionDetailHeading.textContent = regionName;
-                const byRegion = getByMapRegion();
-                const list = byRegion[regionName] || [];
-                regionDetailList.innerHTML = "";
+            function formatDate(date) {
+                if (!date) return 'Ongoing';
+                return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+            }
 
-                list.forEach(function (item) {
-                    const st = status(item);
-                    const link = document.createElement("a");
-                    link.href = item.detail_page_url || "#";
-                    link.target = "_blank";
-                    link.rel = "noopener";
-                    link.className = "detail-exhibition-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
+            function cleanTitle(raw) {
+                if (!raw) return "Untitled";
+                let t = raw.trim();
+                t = t.replace(/^(?:Now showing|Upcoming|Exhibition)\s+/i, "");
+                t = t.replace(/\s+\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec).*$/i, "");
+                return t.split(' | ')[0].split(' · ')[0];
+            }
 
-                    const imageWrap = document.createElement("div");
-                    imageWrap.className = "detail-exhibition-image-wrap";
-                    if (item.image_url) {
-                        const img = document.createElement("img");
-                        img.src = item.image_url;
-                        img.alt = "";
-                        imageWrap.appendChild(img);
+            function getVenueColor(venue) {
+                let hash = 0;
+                for (let i = 0; i < venue.length; i++) {
+                    hash = venue.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                const h = Math.abs(hash) % 360;
+                return `linear-gradient(135deg, hsl(${h}, 40%, 40%), hsl(${(h + 40) % 360}, 50%, 50%))`;
+            }
+
+            function render() {
+                hiddenVenuesBar.classList.toggle('is-active', hiddenVenues.size > 0);
+
+                let filtered = allExhibitions.filter(item => {
+                    if (getStatus(item) === 'ended') return false;
+                    if (hiddenVenues.has(item.venue_name)) return false;
+                    const matchesRegion = activeRegions.has(item.region);
+                    const matchesSearch = !searchQuery || 
+                        (item.exhibition_title || '').toLowerCase().includes(searchQuery) ||
+                        (item.venue_name || '').toLowerCase().includes(searchQuery) ||
+                        (item.venue_city || '').toLowerCase().includes(searchQuery);
+                    return matchesRegion && matchesSearch;
+                });
+
+                filtered.sort((a, b) => {
+                    if (currentSort === 'closing') {
+                        const aEnd = a.endDateObj ? a.endDateObj.getTime() : 9999999999999;
+                        const bEnd = b.endDateObj ? b.endDateObj.getTime() : 9999999999999;
+                        return aEnd - bEnd;
+                    } else if (currentSort === 'newest') {
+                        const aStart = a.startDateObj ? a.startDateObj.getTime() : 0;
+                        const bStart = b.startDateObj ? b.startDateObj.getTime() : 0;
+                        return bStart - aStart;
                     } else {
-                        const placeholder = document.createElement("div");
-                        placeholder.className = "detail-exhibition-image-placeholder";
-                        placeholder.textContent = "No image";
-                        imageWrap.appendChild(placeholder);
+                        return (a.exhibition_title || '').localeCompare(b.exhibition_title || '');
                     }
-
-                    const body = document.createElement("div");
-                    body.className = "detail-exhibition-body";
-                    const badge = document.createElement("div");
-                    badge.className = "detail-exhibition-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
-                    badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
-                    const title = document.createElement("div");
-                    title.className = "detail-exhibition-title";
-                    title.textContent = item.exhibition_title || "Untitled";
-                    const venue = document.createElement("div");
-                    venue.className = "detail-exhibition-venue";
-                    venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
-                    const dates = document.createElement("div");
-                    dates.className = "detail-exhibition-dates";
-                    dates.textContent = dateRange(item);
-                    body.appendChild(badge);
-                    body.appendChild(title);
-                    body.appendChild(venue);
-                    body.appendChild(dates);
-                    if (item.description && (item.description + "").trim()) {
-                        const desc = document.createElement("p");
-                        desc.className = "detail-exhibition-description";
-                        desc.textContent = (item.description + "").trim();
-                        body.appendChild(desc);
-                    }
-                    link.appendChild(imageWrap);
-                    link.appendChild(body);
-                    regionDetailList.appendChild(link);
                 });
-            }
 
-            function applyRoute() {
-                const hash = (window.location.hash || "").replace(/^#/, "").trim();
-                if (hash) {
-                    const region = MAP_REGIONS.find(function (r) { return slug(r) === slug(hash); });
-                    if (region) {
-                        showRegionDetail(region);
-                        return;
-                    }
-                }
-                showHome();
-            }
+                exhibitionGrid.innerHTML = '';
+                if (filtered.length === 0) {
+                    emptyState.classList.remove('is-hidden');
+                    resultCount.textContent = '0 results';
+                } else {
+                    emptyState.classList.add('is-hidden');
+                    resultCount.textContent = `${filtered.length} exhibition${filtered.length === 1 ? '' : 's'}`;
+                    filtered.forEach(item => {
+                        const card = document.createElement('a');
+                        card.className = 'exhibition-card';
+                        card.href = item.detail_page_url || '#';
+                        card.target = '_blank';
+                        card.rel = 'noopener';
 
-            function renderHome() {
-                const byRegion = getByMapRegion();
-                regionGrid.innerHTML = "";
-                MAP_REGIONS.forEach(function (regionName) {
-                    const list = byRegion[regionName] || [];
-                    const card = document.createElement("div");
-                    card.className = "region-card";
-                    card.setAttribute("data-region", regionName);
-
-                    const header = document.createElement("div");
-                    header.className = "region-card-header";
-                    header.setAttribute("role", "button");
-                    header.setAttribute("tabindex", "0");
-                    header.setAttribute("aria-expanded", "false");
-                    header.innerHTML = "<span>" + regionName + "</span><span class=\"region-chevron\" aria-hidden=\"true\">▼</span>";
-                    header.addEventListener("click", function () {
-                        card.classList.toggle("is-open");
-                        header.setAttribute("aria-expanded", card.classList.contains("is-open"));
-                    });
-                    header.addEventListener("keydown", function (e) {
-                        if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            card.classList.toggle("is-open");
-                            header.setAttribute("aria-expanded", card.classList.contains("is-open"));
+                        const status = getStatus(item);
+                        let badgeHtml = '';
+                        if (status === 'ending-soon') {
+                            const diff = Math.ceil((item.endDateObj - new Date()) / (1000 * 60 * 60 * 24));
+                            badgeHtml = `<div class="status-badge ending-soon">Ending in ${diff} days</div>`;
+                        } else if (status === 'coming-soon') {
+                            badgeHtml = `<div class="status-badge coming-soon">Starts ${formatDate(item.startDateObj)}</div>`;
                         }
-                    });
 
-                    const listWrap = document.createElement("div");
-                    listWrap.className = "region-card-list";
-                    const listInner = document.createElement("div");
-                    listInner.className = "region-card-list-inner";
-
-                    list.slice(0, 12).forEach(function (item) {
-                        const a = document.createElement("a");
-                        a.href = item.detail_page_url || "#";
-                        a.target = "_blank";
-                        a.rel = "noopener";
-                        a.className = "region-exhibition-item";
-                        a.innerHTML = "<span class=\"region-exhibition-title\">" + (item.exhibition_title || "Untitled").replace(/</g, "&lt;") + "</span><span class=\"region-exhibition-meta\">" + (item.venue_name || "").replace(/</g, "&lt;") + (item.venue_city ? ", " + item.venue_city : "") + " · " + dateRange(item) + "</span>";
-                        listInner.appendChild(a);
-                    });
-
-                    if (list.length > 0) {
-                        const viewAll = document.createElement("a");
-                        viewAll.href = "#" + slug(regionName);
-                        viewAll.className = "region-view-all";
-                        viewAll.textContent = "View all exhibitions (" + list.length + ")";
-                        viewAll.addEventListener("click", function (e) {
+                        const hideBtn = document.createElement('button');
+                        hideBtn.className = 'hide-venue-btn';
+                        hideBtn.title = "Not my vibe - hide this gallery";
+                        hideBtn.innerHTML = '×';
+                        hideBtn.addEventListener('click', (e) => {
                             e.preventDefault();
-                            window.location.hash = slug(regionName);
-                            applyRoute();
+                            e.stopPropagation();
+                            toggleVenue(item.venue_name, true);
                         });
-                        listInner.appendChild(viewAll);
-                    }
-                    listWrap.appendChild(listInner);
-                    card.appendChild(header);
-                    card.appendChild(listWrap);
-                    regionGrid.appendChild(card);
-                });
 
-                homeLoading.classList.add("is-hidden");
-                regionGrid.classList.remove("is-hidden");
+                        const imageHtml = item.image_url 
+                            ? `<img src="${item.image_url}" alt="" loading="lazy">`
+                            : `<div class="image-placeholder" style="background: ${getVenueColor(item.venue_name)}"><span>${item.venue_name}</span></div>`;
+
+                        card.innerHTML = `
+                            ${badgeHtml}
+                            <div class="exhibition-image-wrap">${imageHtml}</div>
+                            <div class="exhibition-body">
+                                <h3 class="exhibition-title">${cleanTitle(item.exhibition_title)}</h3>
+                                <div class="exhibition-venue">${item.venue_name}</div>
+                                <div class="exhibition-location">${item.venue_city}</div>
+                                <div class="exhibition-footer">
+                                    <div class="exhibition-dates">${item.end_date ? 'Until ' + formatDate(item.endDateObj) : 'Ongoing'}</div>
+                                    <div class="region-tag">${item.region}</div>
+                                </div>
+                            </div>
+                        `;
+                        card.appendChild(hideBtn);
+                        exhibitionGrid.appendChild(card);
+                    });
+                }
             }
 
-            regionDetailBack.addEventListener("click", function (e) {
-                e.preventDefault();
-                showHome();
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                render();
             });
-            window.addEventListener("hashchange", applyRoute);
 
-            fetch(jsonUrl + "?t=" + Date.now(), { cache: "no-store" })
-                .then(function (res) { return res.json(); })
-                .then(function (data) {
-                    rawData = Array.isArray(data) ? data : [];
-                    renderHome();
-                    applyRoute();
-                })
-                .catch(function (err) {
-                    homeLoading.textContent = "Could not load exhibitions. " + (err.message || "Network error") + ".";
-                });
+            sortSelect.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                render();
+            });
+
+            regionToggles.addEventListener('click', (e) => {
+                const btn = e.target.closest('.toggle-btn');
+                if (btn) {
+                    const region = btn.getAttribute('data-region');
+                    if (activeRegions.has(region)) {
+                        activeRegions.delete(region);
+                        btn.classList.remove('is-active');
+                    } else {
+                        activeRegions.add(region);
+                        btn.classList.add('is-active');
+                    }
+                    render();
+                }
+            });
+
+            resetHiddenBtn.addEventListener('click', () => {
+                hiddenVenues.clear();
+                localStorage.setItem('artNorth_hiddenVenues', '[]');
+                updateVenueDropdown();
+                render();
+            });
+
+            loadData();
         })();
     </script>
 </body>
