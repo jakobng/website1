@@ -7447,5 +7447,31 @@
     "original_title": "怪談",
     "director": "Masaki Kobayashi",
     "country": "Japan"
+  },
+  "「Cinema As Runway」平岡香純シネマコレクション 特集上映": {
+    "english_title": "Cinema As Runway",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "「Cinema As Runway」平岡香純シネマコレクション 特集上映",
+    "director": "Kasumi Hiraoka",
+    "country": "Japan",
+    "failed": true
+  },
+  "肉屋〈1970年・デジタルリマスター版〉": {
+    "english_title": "The Butcher",
+    "release_year": 1970,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Le Boucher",
+    "director": "Claude Chabrol",
+    "country": "France"
+  },
+  "第四世界 4ever 春期": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
