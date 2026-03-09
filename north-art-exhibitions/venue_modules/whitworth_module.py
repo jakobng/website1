@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-from ._utils import parse_date_range, norm
+from ._utils import parse_date_range, norm, get_page_meta
 
 BASE_URL = "https://www.whitworth.manchester.ac.uk"
 EXHIBITIONS_URL = f"{BASE_URL}/whats-on/exhibitions/"
@@ -63,15 +63,17 @@ def scrape_whitworth():
         if not start_str and not end_str:
             start_str, end_str = parse_date_range(date_text or a.get_text())
 
+        meta = get_page_meta(full_url, headers=HEADERS, timeout=TIMEOUT)
+        exhibition_title = (meta.get("title") or title)[:500]
         out.append({
             "venue_name": VENUE_NAME,
             "venue_city": VENUE_CITY,
-            "exhibition_title": title[:500],
+            "exhibition_title": exhibition_title,
             "start_date": start_str,
             "end_date": end_str,
             "detail_page_url": full_url,
-            "description": None,
-            "image_url": None,
+            "description": meta.get("description"),
+            "image_url": meta.get("image_url"),
         })
 
     seen = set()

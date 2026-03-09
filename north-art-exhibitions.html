@@ -89,76 +89,77 @@
             letter-spacing: 0.12em;
             text-align: center;
         }
-        .filters {
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .region-card {
             border: var(--border-width) solid var(--border);
             background: var(--card);
-            padding: 14px 18px;
             box-shadow: var(--shadow-soft);
+            overflow: hidden;
         }
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 16px;
-        }
-        .filter-row label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
+        .region-card-header {
+            padding: 18px 20px;
             font-weight: 600;
-        }
-        .filter-row select {
-            padding: 8px 10px;
-            border: var(--border-width) solid var(--border);
-            background: #fff;
-            min-width: 160px;
-        }
-        .filter-row-view-toggle {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .filter-row-view-toggle label { margin: 0; }
-        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-        .region-filters {
-            border: var(--border-width) solid var(--border);
-            background: var(--card);
-            padding: 14px 18px;
-            box-shadow: var(--shadow-soft);
-        }
-        .region-filters h2 {
-            font-size: 0.75rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-            font-weight: 600;
-            margin: 0 0 10px 0;
-        }
-        .region-dropdowns {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px 20px;
-        }
-        .region-dropdowns .region-item {
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            user-select: none;
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: space-between;
+            gap: 10px;
+            background: #fff;
+            border-bottom: var(--border-width) solid transparent;
         }
-        .region-dropdowns .region-item label {
+        .region-card-header:hover { background: var(--bg); }
+        .region-card.is-open .region-card-header { border-bottom-color: var(--border-soft); }
+        .region-card-header .region-chevron {
             font-size: 0.75rem;
             color: var(--muted);
-            white-space: nowrap;
+            transition: transform 0.2s ease;
         }
-        .region-dropdowns .region-item select {
-            padding: 6px 8px;
-            border: var(--border-width) solid var(--border);
+        .region-card.is-open .region-chevron { transform: rotate(180deg); }
+        .region-card-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .region-card.is-open .region-card-list { max-height: 1200px; }
+        .region-card-list-inner {
+            padding: 12px 16px 16px;
+            background: var(--bg);
+        }
+        .region-exhibition-item {
+            display: block;
+            padding: 10px 12px;
+            margin-bottom: 6px;
             background: #fff;
-            min-width: 0;
+            border: var(--border-width) solid var(--border-soft);
+            font-size: 0.9rem;
+            color: inherit;
+            text-decoration: none;
+        }
+        .region-exhibition-item:hover { text-decoration: underline; border-color: var(--accent-strong); }
+        .region-exhibition-item:last-child { margin-bottom: 0; }
+        .region-exhibition-title { font-weight: 500; }
+        .region-exhibition-meta { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+        .region-view-all {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 14px;
             font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            background: var(--accent);
+            color: var(--ink);
+            border: var(--border-width) solid var(--border);
         }
+        .region-view-all:hover { background: var(--accent-strong); text-decoration: none; }
 
         .view-section {
             border: var(--border-width) solid var(--border);
@@ -166,79 +167,26 @@
             padding: 18px 20px;
             box-shadow: var(--shadow-soft);
         }
-        .results-count {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 12px;
-        }
-        .exhibition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 14px;
-        }
-        .exhibition-card {
-            border: var(--border-width) solid var(--border);
-            background: #fff;
-            padding: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            box-shadow: var(--shadow-soft);
-        }
-        .exhibition-card > a {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            flex: 1;
-        }
-        .exhibition-card-title {
-            font-weight: 600;
-            font-size: 1rem;
-            line-height: 1.3;
-        }
-        .exhibition-card-venue {
+        .region-detail-view { display: none; }
+        .region-detail-view.is-active { display: block; }
+        .region-detail-back {
+            display: inline-block;
+            margin-bottom: 18px;
             font-size: 0.85rem;
-            color: var(--muted);
-        }
-        .exhibition-card-dates {
-            font-size: 0.8rem;
+            font-weight: 500;
             color: var(--accent-strong);
-            margin-top: auto;
         }
-        .exhibition-card.is-upcoming,
-        .exhibition-card.is-ended {
-            opacity: 0.72;
-        }
-        .exhibition-card.is-upcoming .exhibition-card-title,
-        .exhibition-card.is-ended .exhibition-card-title {
-            color: var(--muted);
-        }
-        .exhibition-card-badge {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .exhibition-card-badge.on-now { color: var(--accent-strong); }
-        .exhibition-card-badge.coming-soon { color: var(--muted); }
-        .exhibition-card-badge.ended { color: var(--muted); }
-        .region-section {
-            margin-bottom: 28px;
-        }
-        .region-section:last-child { margin-bottom: 0; }
-        .region-heading {
+        .region-detail-back:hover { text-decoration: underline; }
+        .region-detail-heading {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--muted);
             font-weight: 600;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid var(--border-soft);
+            margin: 0 0 16px 0;
         }
-        .exhibition-detail-list { display: flex; flex-direction: column; gap: 20px; }
-        .exhibition-detail-card {
+        .detail-exhibition-list { display: flex; flex-direction: column; gap: 20px; }
+        .detail-exhibition-card {
             border: var(--border-width) solid var(--border);
             background: #fff;
             box-shadow: var(--shadow-soft);
@@ -246,28 +194,26 @@
             display: grid;
             grid-template-columns: minmax(180px, 280px) 1fr;
             gap: 0;
-        }
-        @media (max-width: 560px) {
-            .exhibition-detail-card { grid-template-columns: 1fr; }
-        }
-        .exhibition-detail-card {
             color: inherit;
             text-decoration: none;
         }
-        .exhibition-detail-card:hover .exhibition-detail-title { text-decoration: underline; }
-        .exhibition-detail-image-wrap {
+        @media (max-width: 560px) {
+            .detail-exhibition-card { grid-template-columns: 1fr; }
+        }
+        .detail-exhibition-card:hover .detail-exhibition-title { text-decoration: underline; }
+        .detail-exhibition-image-wrap {
             background: var(--grid);
             min-height: 160px;
             position: relative;
         }
-        .exhibition-detail-image-wrap img {
+        .detail-exhibition-image-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
             min-height: 180px;
         }
-        .exhibition-detail-image-placeholder {
+        .detail-exhibition-image-placeholder {
             position: absolute;
             inset: 0;
             display: flex;
@@ -278,41 +224,18 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
-        .exhibition-detail-body {
-            padding: 16px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .exhibition-detail-badge {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-        }
-        .exhibition-detail-badge.on-now { color: var(--accent-strong); }
-        .exhibition-detail-badge.coming-soon { color: var(--muted); }
-        .exhibition-detail-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            line-height: 1.3;
-        }
-        .exhibition-detail-venue {
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-        .exhibition-detail-dates {
-            font-size: 0.8rem;
-            color: var(--accent-strong);
-        }
-        .exhibition-detail-description {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: var(--ink);
-            margin-top: 4px;
-        }
-        .exhibition-detail-card.is-upcoming .exhibition-detail-title,
-        .exhibition-detail-card.is-ended .exhibition-detail-title { color: var(--muted); }
+        .detail-exhibition-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+        .detail-exhibition-badge { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+        .detail-exhibition-badge.on-now { color: var(--accent-strong); }
+        .detail-exhibition-badge.coming-soon { color: var(--muted); }
+        .detail-exhibition-title { font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
+        .detail-exhibition-venue { font-size: 0.85rem; color: var(--muted); }
+        .detail-exhibition-dates { font-size: 0.8rem; color: var(--accent-strong); }
+        .detail-exhibition-description { font-size: 0.9rem; line-height: 1.5; margin-top: 4px; }
+        .detail-exhibition-card.is-upcoming .detail-exhibition-title,
+        .detail-exhibition-card.is-ended .detail-exhibition-title { color: var(--muted); }
+        .home-view { display: none; }
+        .home-view.is-active { display: block; }
 
         .loading { color: var(--muted); }
         .empty-state { color: var(--muted); padding: 24px 0; }
@@ -333,41 +256,16 @@
             <h1>North of England Art Exhibitions</h1>
         </header>
 
-        <section class="region-filters">
-            <h2 id="region-heading">Filter by region</h2>
-            <div class="region-dropdowns" id="region-dropdowns" role="group" aria-labelledby="region-heading"></div>
-        </section>
-
-        <section class="filters">
-            <div class="filter-row">
-                <div>
-                    <label for="city-select">City</label>
-                    <select id="city-select">
-                        <option value="">All cities</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="sort-select">Sort</label>
-                    <select id="sort-select">
-                        <option value="ending-soon">Ending soon</option>
-                        <option value="title">A–Z by title</option>
-                        <option value="venue">By venue</option>
-                    </select>
-                </div>
-                <div class="filter-row-view-toggle">
-                    <label for="detail-view-toggle">Detail view</label>
-                    <input type="checkbox" id="detail-view-toggle" aria-describedby="detail-view-desc">
-                    <span id="detail-view-desc" class="visually-hidden">Show each exhibition with description and image where available</span>
-                </div>
-            </div>
-        </section>
-
         <section class="view-section">
-            <div class="results-count" id="results-count"></div>
-            <div id="exhibition-list">
-                <div class="loading">Loading exhibitions…</div>
+            <div id="home-view" class="home-view is-active">
+                <div class="loading" id="home-loading">Loading exhibitions…</div>
+                <div id="region-grid" class="region-grid is-hidden"></div>
             </div>
-            <div class="empty-state is-hidden" id="empty-state">No exhibitions match the selected filters.</div>
+            <div id="region-detail-view" class="region-detail-view">
+                <a href="#" id="region-detail-back" class="region-detail-back">← All regions</a>
+                <h2 id="region-detail-heading" class="region-detail-heading"></h2>
+                <div id="region-detail-list" class="detail-exhibition-list"></div>
+            </div>
         </section>
 
         <footer class="page-footer">
@@ -379,36 +277,6 @@
     <script>
         (function () {
             const jsonUrl = "north-art-exhibitions/data/exhibitions.json";
-            const citySelect = document.getElementById("city-select");
-            const sortSelect = document.getElementById("sort-select");
-            const listEl = document.getElementById("exhibition-list");
-            const countEl = document.getElementById("results-count");
-            const emptyEl = document.getElementById("empty-state");
-
-            let rawData = [];
-
-            function formatDate(iso) {
-                if (!iso) return "—";
-                const d = new Date(iso + "T12:00:00");
-                if (isNaN(d.getTime())) return iso;
-                return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
-            }
-
-            const CITY_TO_REGION = {
-                "Manchester": "Greater Manchester",
-                "Liverpool": "Merseyside",
-                "Sheffield": "South Yorkshire",
-                "Leeds": "West Yorkshire",
-                "Wakefield": "West Yorkshire",
-                "Bradford": "West Yorkshire",
-                "Saltaire": "West Yorkshire",
-                "West Bretton": "West Yorkshire",
-                "York": "North Yorkshire",
-                "Hull": "East Yorkshire",
-                "Newcastle": "North East",
-                "Gateshead": "North East",
-                "Preston": "Lancashire"
-            };
             const CITY_TO_MAP_REGION = {
                 "Manchester": "Greater Manchester",
                 "Liverpool": "Merseyside",
@@ -425,16 +293,25 @@
                 "Preston": "Lancashire"
             };
             const MAP_REGIONS = ["North East", "Yorkshire", "Greater Manchester", "Merseyside", "Lancashire"];
-            const REGION_ORDER = ["North East", "North Yorkshire", "East Yorkshire", "South Yorkshire", "West Yorkshire", "Greater Manchester", "Merseyside", "Lancashire"];
 
-            let selectedMapRegions = new Set();
+            let rawData = [];
+            const homeView = document.getElementById("home-view");
+            const homeLoading = document.getElementById("home-loading");
+            const regionGrid = document.getElementById("region-grid");
+            const regionDetailView = document.getElementById("region-detail-view");
+            const regionDetailBack = document.getElementById("region-detail-back");
+            const regionDetailHeading = document.getElementById("region-detail-heading");
+            const regionDetailList = document.getElementById("region-detail-list");
+
+            function formatDate(iso) {
+                if (!iso) return "—";
+                const d = new Date(iso + "T12:00:00");
+                if (isNaN(d.getTime())) return iso;
+                return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+            }
 
             function getMapRegion(item) {
                 return CITY_TO_MAP_REGION[item.venue_city] || null;
-            }
-
-            function getRegion(item) {
-                return CITY_TO_REGION[item.venue_city] || item.venue_city || "Other";
             }
 
             function dateRange(item) {
@@ -454,14 +331,8 @@
                     if (today > end) return "ended";
                     return "on-now";
                 }
-                if (start) {
-                    if (today < start) return "coming-soon";
-                    return "on-now";
-                }
-                if (end) {
-                    if (today > end) return "ended";
-                    return "on-now";
-                }
+                if (start) { if (today < start) return "coming-soon"; return "on-now"; }
+                if (end) { if (today > end) return "ended"; return "on-now"; }
                 return "on-now";
             }
 
@@ -470,234 +341,190 @@
                 return "9999-12-31";
             }
 
-            function getFiltered() {
-                const city = (citySelect.value || "").trim().toLowerCase();
-                let list = rawData.slice();
-
-                list = list.filter(function (item) {
-                    if (status(item) === "ended") return false;
-                    return true;
-                });
-
-                if (selectedMapRegions.size > 0) {
-                    list = list.filter(function (item) {
-                        const r = getMapRegion(item);
-                        return r && selectedMapRegions.has(r);
-                    });
-                }
-                if (city) {
-                    list = list.filter(function (item) {
-                        return (item.venue_city || "").toLowerCase() === city;
-                    });
-                }
-                const sort = sortSelect.value;
-                if (sort === "ending-soon") {
-                    list.sort(function (a, b) {
-                        return sortKeyEnd(a).localeCompare(sortKeyEnd(b));
-                    });
-                } else if (sort === "title") {
-                    list.sort(function (a, b) {
-                        return (a.exhibition_title || "").localeCompare(b.exhibition_title || "");
-                    });
-                } else if (sort === "venue") {
-                    list.sort(function (a, b) {
-                        const v = (a.venue_name || "").localeCompare(b.venue_name || "");
-                        if (v !== 0) return v;
-                        return (a.exhibition_title || "").localeCompare(b.exhibition_title || "");
-                    });
-                }
-                return list;
+            function getActiveExhibitions() {
+                return rawData.filter(function (item) { return status(item) !== "ended"; });
             }
 
-            function render() {
-                const list = getFiltered();
-                const detailView = document.getElementById("detail-view-toggle") && document.getElementById("detail-view-toggle").checked;
-                countEl.textContent = list.length + " exhibition" + (list.length !== 1 ? "s" : "");
-
-                if (list.length === 0) {
-                    listEl.classList.add("is-hidden");
-                    emptyEl.classList.remove("is-hidden");
-                    return;
-                }
-                emptyEl.classList.remove("is-hidden");
-                listEl.classList.remove("is-hidden");
-                listEl.innerHTML = "";
-
+            function getByMapRegion() {
+                const list = getActiveExhibitions();
                 const byRegion = {};
                 list.forEach(function (item) {
-                    const r = getRegion(item);
+                    const r = getMapRegion(item);
+                    if (!r) return;
                     if (!byRegion[r]) byRegion[r] = [];
                     byRegion[r].push(item);
                 });
-                const orderedRegions = REGION_ORDER.filter(function (r) { return byRegion[r]; });
-                const otherRegions = Object.keys(byRegion).filter(function (r) { return REGION_ORDER.indexOf(r) === -1; }).sort();
-                orderedRegions.push.apply(orderedRegions, otherRegions);
-
-                orderedRegions.forEach(function (region) {
-                    const section = document.createElement("div");
-                    section.className = "region-section";
-                    const heading = document.createElement("h2");
-                    heading.className = "region-heading";
-                    heading.textContent = region;
-                    section.appendChild(heading);
-
-                    if (detailView) {
-                        const detailList = document.createElement("div");
-                        detailList.className = "exhibition-detail-list";
-                        byRegion[region].forEach(function (item) {
-                            const st = status(item);
-                            const link = document.createElement("a");
-                            link.href = item.detail_page_url || "#";
-                            link.target = "_blank";
-                            link.rel = "noopener";
-                            link.className = "exhibition-detail-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
-
-                            const imageWrap = document.createElement("div");
-                            imageWrap.className = "exhibition-detail-image-wrap";
-                            if (item.image_url) {
-                                const img = document.createElement("img");
-                                img.src = item.image_url;
-                                img.alt = "";
-                                imageWrap.appendChild(img);
-                            } else {
-                                const placeholder = document.createElement("div");
-                                placeholder.className = "exhibition-detail-image-placeholder";
-                                placeholder.textContent = "No image";
-                                imageWrap.appendChild(placeholder);
-                            }
-
-                            const body = document.createElement("div");
-                            body.className = "exhibition-detail-body";
-                            const badge = document.createElement("div");
-                            badge.className = "exhibition-detail-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
-                            badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
-                            const title = document.createElement("div");
-                            title.className = "exhibition-detail-title";
-                            title.textContent = item.exhibition_title || "Untitled";
-                            const venue = document.createElement("div");
-                            venue.className = "exhibition-detail-venue";
-                            venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
-                            const dates = document.createElement("div");
-                            dates.className = "exhibition-detail-dates";
-                            dates.textContent = dateRange(item);
-                            body.appendChild(badge);
-                            body.appendChild(title);
-                            body.appendChild(venue);
-                            body.appendChild(dates);
-                            if (item.description && (item.description + "").trim()) {
-                                const desc = document.createElement("p");
-                                desc.className = "exhibition-detail-description";
-                                desc.textContent = (item.description + "").trim();
-                                body.appendChild(desc);
-                            }
-
-                            link.appendChild(imageWrap);
-                            link.appendChild(body);
-                            detailList.appendChild(link);
+                MAP_REGIONS.forEach(function (r) {
+                    if (byRegion[r]) {
+                        byRegion[r].sort(function (a, b) {
+                            return sortKeyEnd(a).localeCompare(sortKeyEnd(b));
                         });
-                        section.appendChild(detailList);
-                    } else {
-                        const grid = document.createElement("div");
-                        grid.className = "exhibition-grid";
-                        byRegion[region].forEach(function (item) {
-                            const st = status(item);
-                            const card = document.createElement("div");
-                            card.className = "exhibition-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
-                            const link = document.createElement("a");
-                            link.href = item.detail_page_url || "#";
-                            link.target = "_blank";
-                            link.rel = "noopener";
-
-                            const badge = document.createElement("div");
-                            badge.className = "exhibition-card-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
-                            badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
-
-                            const title = document.createElement("div");
-                            title.className = "exhibition-card-title";
-                            title.textContent = item.exhibition_title || "Untitled";
-
-                            const venue = document.createElement("div");
-                            venue.className = "exhibition-card-venue";
-                            venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
-
-                            const dates = document.createElement("div");
-                            dates.className = "exhibition-card-dates";
-                            dates.textContent = dateRange(item);
-
-                            link.appendChild(badge);
-                            link.appendChild(title);
-                            link.appendChild(venue);
-                            link.appendChild(dates);
-                            card.appendChild(link);
-                            grid.appendChild(card);
-                        });
-                        section.appendChild(grid);
                     }
-                    listEl.appendChild(section);
+                });
+                return byRegion;
+            }
+
+            function slug(name) {
+                return name.replace(/\s+/g, "-").toLowerCase();
+            }
+
+            function showHome() {
+                homeView.classList.add("is-active");
+                regionDetailView.classList.remove("is-active");
+                window.location.hash = "";
+            }
+
+            function showRegionDetail(regionName) {
+                homeView.classList.remove("is-active");
+                regionDetailView.classList.add("is-active");
+                regionDetailHeading.textContent = regionName;
+                const byRegion = getByMapRegion();
+                const list = byRegion[regionName] || [];
+                regionDetailList.innerHTML = "";
+
+                list.forEach(function (item) {
+                    const st = status(item);
+                    const link = document.createElement("a");
+                    link.href = item.detail_page_url || "#";
+                    link.target = "_blank";
+                    link.rel = "noopener";
+                    link.className = "detail-exhibition-card" + (st === "on-now" ? "" : " is-" + (st === "coming-soon" ? "upcoming" : "ended"));
+
+                    const imageWrap = document.createElement("div");
+                    imageWrap.className = "detail-exhibition-image-wrap";
+                    if (item.image_url) {
+                        const img = document.createElement("img");
+                        img.src = item.image_url;
+                        img.alt = "";
+                        imageWrap.appendChild(img);
+                    } else {
+                        const placeholder = document.createElement("div");
+                        placeholder.className = "detail-exhibition-image-placeholder";
+                        placeholder.textContent = "No image";
+                        imageWrap.appendChild(placeholder);
+                    }
+
+                    const body = document.createElement("div");
+                    body.className = "detail-exhibition-body";
+                    const badge = document.createElement("div");
+                    badge.className = "detail-exhibition-badge " + (st === "on-now" ? "on-now" : st === "coming-soon" ? "coming-soon" : "ended");
+                    badge.textContent = st === "on-now" ? "On now" : st === "coming-soon" ? "Coming soon" : "Ended";
+                    const title = document.createElement("div");
+                    title.className = "detail-exhibition-title";
+                    title.textContent = item.exhibition_title || "Untitled";
+                    const venue = document.createElement("div");
+                    venue.className = "detail-exhibition-venue";
+                    venue.textContent = (item.venue_name || "") + (item.venue_city ? ", " + item.venue_city : "");
+                    const dates = document.createElement("div");
+                    dates.className = "detail-exhibition-dates";
+                    dates.textContent = dateRange(item);
+                    body.appendChild(badge);
+                    body.appendChild(title);
+                    body.appendChild(venue);
+                    body.appendChild(dates);
+                    if (item.description && (item.description + "").trim()) {
+                        const desc = document.createElement("p");
+                        desc.className = "detail-exhibition-description";
+                        desc.textContent = (item.description + "").trim();
+                        body.appendChild(desc);
+                    }
+                    link.appendChild(imageWrap);
+                    link.appendChild(body);
+                    regionDetailList.appendChild(link);
                 });
             }
 
-            function syncSelectedRegionsFromDropdowns() {
-                selectedMapRegions.clear();
-                MAP_REGIONS.forEach(function (name) {
-                    const sel = document.getElementById("region-dd-" + name.replace(/\s+/g, "-"));
-                    if (sel && sel.value === "show") selectedMapRegions.add(name);
-                });
+            function applyRoute() {
+                const hash = (window.location.hash || "").replace(/^#/, "").trim();
+                if (hash) {
+                    const region = MAP_REGIONS.find(function (r) { return slug(r) === slug(hash); });
+                    if (region) {
+                        showRegionDetail(region);
+                        return;
+                    }
+                }
+                showHome();
             }
 
-            var regionDropdownsEl = document.getElementById("region-dropdowns");
-            MAP_REGIONS.forEach(function (name) {
-                var id = "region-dd-" + name.replace(/\s+/g, "-");
-                var wrap = document.createElement("div");
-                wrap.className = "region-item";
-                var label = document.createElement("label");
-                label.setAttribute("for", id);
-                label.textContent = name;
-                var select = document.createElement("select");
-                select.id = id;
-                select.setAttribute("data-region", name);
-                select.appendChild(new Option("—", ""));
-                select.appendChild(new Option("Show", "show"));
-                select.addEventListener("change", function () {
-                    syncSelectedRegionsFromDropdowns();
-                    render();
+            function renderHome() {
+                const byRegion = getByMapRegion();
+                regionGrid.innerHTML = "";
+                MAP_REGIONS.forEach(function (regionName) {
+                    const list = byRegion[regionName] || [];
+                    const card = document.createElement("div");
+                    card.className = "region-card";
+                    card.setAttribute("data-region", regionName);
+
+                    const header = document.createElement("div");
+                    header.className = "region-card-header";
+                    header.setAttribute("role", "button");
+                    header.setAttribute("tabindex", "0");
+                    header.setAttribute("aria-expanded", "false");
+                    header.innerHTML = "<span>" + regionName + "</span><span class=\"region-chevron\" aria-hidden=\"true\">▼</span>";
+                    header.addEventListener("click", function () {
+                        card.classList.toggle("is-open");
+                        header.setAttribute("aria-expanded", card.classList.contains("is-open"));
+                    });
+                    header.addEventListener("keydown", function (e) {
+                        if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            card.classList.toggle("is-open");
+                            header.setAttribute("aria-expanded", card.classList.contains("is-open"));
+                        }
+                    });
+
+                    const listWrap = document.createElement("div");
+                    listWrap.className = "region-card-list";
+                    const listInner = document.createElement("div");
+                    listInner.className = "region-card-list-inner";
+
+                    list.slice(0, 12).forEach(function (item) {
+                        const a = document.createElement("a");
+                        a.href = item.detail_page_url || "#";
+                        a.target = "_blank";
+                        a.rel = "noopener";
+                        a.className = "region-exhibition-item";
+                        a.innerHTML = "<span class=\"region-exhibition-title\">" + (item.exhibition_title || "Untitled").replace(/</g, "&lt;") + "</span><span class=\"region-exhibition-meta\">" + (item.venue_name || "").replace(/</g, "&lt;") + (item.venue_city ? ", " + item.venue_city : "") + " · " + dateRange(item) + "</span>";
+                        listInner.appendChild(a);
+                    });
+
+                    if (list.length > 0) {
+                        const viewAll = document.createElement("a");
+                        viewAll.href = "#" + slug(regionName);
+                        viewAll.className = "region-view-all";
+                        viewAll.textContent = "View all exhibitions (" + list.length + ")";
+                        viewAll.addEventListener("click", function (e) {
+                            e.preventDefault();
+                            window.location.hash = slug(regionName);
+                            applyRoute();
+                        });
+                        listInner.appendChild(viewAll);
+                    }
+                    listWrap.appendChild(listInner);
+                    card.appendChild(header);
+                    card.appendChild(listWrap);
+                    regionGrid.appendChild(card);
                 });
-                wrap.appendChild(label);
-                wrap.appendChild(select);
-                regionDropdownsEl.appendChild(wrap);
+
+                homeLoading.classList.add("is-hidden");
+                regionGrid.classList.remove("is-hidden");
+            }
+
+            regionDetailBack.addEventListener("click", function (e) {
+                e.preventDefault();
+                showHome();
             });
-
-            citySelect.addEventListener("change", render);
-            sortSelect.addEventListener("change", render);
-            var detailViewToggle = document.getElementById("detail-view-toggle");
-            if (detailViewToggle) detailViewToggle.addEventListener("change", render);
+            window.addEventListener("hashchange", applyRoute);
 
             fetch(jsonUrl + "?t=" + Date.now(), { cache: "no-store" })
                 .then(function (res) { return res.json(); })
                 .then(function (data) {
                     rawData = Array.isArray(data) ? data : [];
-                    const cities = [];
-                    const seen = new Set();
-                    rawData.forEach(function (item) {
-                        const c = (item.venue_city || "").trim();
-                        if (c && !seen.has(c)) {
-                            seen.add(c);
-                            cities.push(c);
-                        }
-                    });
-                    cities.sort();
-                    cities.forEach(function (c) {
-                        const opt = document.createElement("option");
-                        opt.value = c;
-                        opt.textContent = c;
-                        citySelect.appendChild(opt);
-                    });
-                    render();
+                    renderHome();
+                    applyRoute();
                 })
                 .catch(function (err) {
-                    listEl.innerHTML = "<p class=\"empty-state\">Could not load exhibitions. " + (err.message || "Network error") + ".</p>";
-                    listEl.classList.remove("is-hidden");
-                    emptyEl.classList.add("is-hidden");
+                    homeLoading.textContent = "Could not load exhibitions. " + (err.message || "Network error") + ".";
                 });
         })();
     </script>

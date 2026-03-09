@@ -1,6 +1,7 @@
 # Shared helpers for venue scrapers
 import re
 from datetime import date
+from urllib.parse import urljoin
 
 MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
 MONTH_MAP = {m: i for i, m in enumerate(MONTHS.split("|"), 1)}
@@ -70,3 +71,37 @@ def norm(text):
     if not text:
         return ""
     return " ".join(str(text).split()).strip()
+
+
+def get_page_meta(url, headers=None, timeout=15):
+    """
+    Fetch a page and return og:title, og:image, og:description (or fallbacks).
+    Returns dict with keys: title, image_url, description (values may be None).
+    """
+    try:
+        import requests
+        from bs4 import BeautifulSoup
+        h = headers or {}
+        r = requests.get(url, headers=h, timeout=timeout)
+        r.raise_for_status()
+        r.encoding = r.apparent_encoding or "utf-8"
+        soup = BeautifulSoup(r.text, "html.parser")
+        out = {"title": None, "image_url": None, "description": None}
+        # og: tags
+        for meta in soup.find_all("meta", property=True):
+            p = (meta.get("property") or "").lower()
+            c = (meta.get("content") or "").strip()
+            if p == "og:title" and c:
+                out["title"] = norm(c)
+            elif p == "og:image" and c:
+                out["image_url"] = c if c.startswith("http") else urljoin(url, c)
+            elif p == "og:description" and c:
+                out["description"] = norm(c)[:1000]
+        # Fallback: h1 for title
+        if not out["title"]:
+            h1 = soup.find("h1")
+            if h1:
+                out["title"] = norm(h1.get_text())
+        return out
+    except Exception:
+        return {"title": None, "image_url": None, "description": None}

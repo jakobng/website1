@@ -1,12 +1,26 @@
 #!/usr/bin/env python3
 # Yorkshire Sculpture Park - exhibitions scraper
 
+import re
 from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
 
 from ._utils import parse_date_range, norm
+
+# Strip "Now showing"/"Upcoming" and leading date block to get exhibition title
+YSP_TITLE_CLEAN_RE = re.compile(
+    r"^(?:Now showing|Upcoming)\s+"
+    r"(?:"
+    r"(?:Sat|Sun|Mon|Tue|Wed|Thu|Fri)\s+\d{1,2}\s+"
+    r"(?:(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(?:\s+\d{4})?)?\s*[–\-]\s*"
+    r"(?:(?:Sat|Sun|Mon|Tue|Wed|Thu|Fri)\s+)?\d{1,2}\s+"
+    r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}"
+    r"|(?:From|Summer)\s+\d{1,4}(?:\s+(?:January|February|March|April|May|June|July|August|September|October|November|December))?\s*\d{4}"
+    r")\s*",
+    re.IGNORECASE,
+)
 
 BASE_URL = "https://ysp.org.uk"
 EXHIBITIONS_URL = f"{BASE_URL}/exhibitions"
@@ -43,11 +57,23 @@ def scrape_ysp():
             continue
         if "/past-exhibitions" in href or href.rstrip("/").endswith("/past-exhibitions"):
             continue
-        title = norm(a.get_text())
-        if not title or len(title) < 3:
+        raw_title = norm(a.get_text())
+        if not raw_title or len(raw_title) < 3:
             continue
-        if title.lower() in ("read more", "exhibitions", "view all"):
+        if raw_title.lower() in ("read more", "exhibitions", "view all"):
             continue
+        # Strip "Now showing"/"Upcoming" and date block; take first sentence or 120 chars
+        title = YSP_TITLE_CLEAN_RE.sub("", raw_title).strip()
+        if not title:
+            title = raw_title
+        # Trim to first sentence or reasonable length
+        for sep in (". ", " will ", " is ", " features ", " brings ", " showcases "):
+            if sep in title:
+                title = title.split(sep)[0].strip()
+                break
+        if len(title) > 120:
+            title = title[:117].rsplit(" ", 1)[0] + "..." if " " in title[:117] else title[:120]
+        title = title or raw_title[:500]
 
         date_text = ""
         start_str, end_str = None, None
@@ -67,7 +93,7 @@ def scrape_ysp():
         out.append({
             "venue_name": VENUE_NAME,
             "venue_city": VENUE_CITY,
-            "exhibition_title": title[:500],
+            "exhibition_title": title[:500] if len(title) > 500 else title,
             "start_date": start_str,
             "end_date": end_str,
             "detail_page_url": full_url,
