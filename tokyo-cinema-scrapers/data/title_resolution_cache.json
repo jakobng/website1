@@ -7473,5 +7473,434 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "THE LAST PIECE Glow of Stars": {
+    "english_title": "THE LAST PIECE -Glow of Stars-",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "THE LAST PIECE -Glow of Stars-",
+    "director": "Taiyo Kitamura, Hiroshi Kawaguchi",
+    "country": "Japan",
+    "failed": true
+  },
+  "サイレント・シティ・ドライバー": {
+    "english_title": "Silent City Driver",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Чимээгүй хотын жолооч",
+    "director": "Janchivdorj Sengedorj",
+    "country": "Mongolia"
+  },
+  "Bedridden 〜寝たきりを選んだ男": {
+    "english_title": "Bedridden",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Хэвтрийн хүн",
+    "director": "Byamba Sakhya",
+    "country": "Mongolia"
+  },
+  "SHUVUULAKHUI 〜ハヤブサと男": {
+    "english_title": "Shuvuulakhui",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Шувуулахуй",
+    "director": "Enkhbayar Baatar",
+    "country": "Mongolia"
+  },
+  "リモート・コントロール": {
+    "english_title": "Remote Control",
+    "release_year": 2013,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Alsyn udirdlaga",
+    "director": "Byamba Sakhya",
+    "country": "Mongolia",
+    "failed": true
+  },
+  "狼は夜やってくる": {
+    "english_title": "The Wolves Always Come at Night",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Чоно үүр шөнөөр ирдэг",
+    "director": "Gabrielle Brady",
+    "country": "Australia"
+  },
+  "MONGOL": {
+    "english_title": "Mongol",
+    "release_year": 2007,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Монгол",
+    "director": "Sergei Bodrov",
+    "country": "Kazakhstan, Russia, Germany, Mongolia",
+    "failed": true
+  },
+  "インファナル・フィクサー": {
+    "english_title": "I Did It My Way",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "潛行",
+    "director": "Jason Kwan",
+    "country": "Hong Kong"
+  },
+  "〈特集上映〉追悼・大木裕之 撮ることと生きること": {
+    "english_title": "In Memory of Hiroyuki Oki— Filming and Living",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "〈特集上映〉追悼・大木裕之 撮ることと生きること",
+    "director": "Hiroyuki Oki",
+    "country": "Japan",
+    "failed": true
+  },
+  "[odessa vol＋]ﾏｰﾃｨ･ｼｭﾌﾟﾘｰﾑ": {
+    "english_title": "Marty Supreme",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Marty Supreme",
+    "director": "Josh Safdie",
+    "country": "USA"
+  },
+  "【TBS】ある日、家族[0313ｲﾍﾞﾝﾄ]": {
+    "english_title": "One Day, My Family Became Death Row Inmates",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ある日、家族が死刑囚になって―",
+    "director": "Masafumi Nishimura",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】やまない症動[0313ｲﾍﾞﾝﾄ]": {
+    "english_title": "The Unstoppable Impulse",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "やまない症動",
+    "director": "Ken Masuyama",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】THE LAST PIECE[0313]": {
+    "english_title": "THE LAST PIECE -Glow of Stars-",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "THE LAST PIECE -Glow of Stars-",
+    "director": "Taiyo Kitamura, Hisashi Kawaguchi",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】受忍の国[0314ｲﾍﾞﾝﾄ]": {
+    "english_title": "The Land of Endurance",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "受忍の国 報道1930劇場版",
+    "director": "Mizuki Ishikawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】強制沈黙[0314ｲﾍﾞﾝﾄ]": {
+    "english_title": "Forced Silence: Murdered Journalists",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "強制沈黙～殺される記者たち～",
+    "director": "Yutaka Hagiwara",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】War Bride2[0315/1400]": {
+    "english_title": "War Bride 2: Nao and Four War Brides",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "War Bride 2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】War Bride2[0315ｲﾍﾞﾝﾄ]": {
+    "english_title": "War Bride 2: Nao and the 4 War Brides",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "War Bride2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】War Bride2[0322ｲﾍﾞﾝﾄ]": {
+    "english_title": "War Bride 2",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "War Bride 2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】ブルーインパルスの空へ": {
+    "english_title": "Blue Impulse: Into the Sky",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ブルーインパルスの空へ",
+    "director": "Shogo Watanabe",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】THE LAST PIECE": {
+    "english_title": "THE LAST PIECE",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "THE LAST PIECE",
+    "director": "Hideto Fukushima",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】強制沈黙 ～殺される記者たち～": {
+    "english_title": "Forced Silence: Murdered Journalists",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "強制沈黙 ～殺される記者たち～",
+    "director": "Yutaka Hagiwara",
+    "country": "Japan",
+    "failed": true
+  },
+  "正義廻廊＜上映後ﾄｰｸｲﾍﾞﾝﾄ＞": {
+    "english_title": "The Sparring Partner",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "正義迴廊",
+    "director": "Ho Cheuk-tin",
+    "country": "Hong Kong"
+  },
+  "女の足あと": {
+    "english_title": "Footprints of a Woman",
+    "release_year": 1956,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "女の足あと",
+    "director": "Minoru Shibuya",
+    "country": "Japan",
+    "failed": true
+  },
+  "明日への盛装": {
+    "english_title": "Marry a Millionaire",
+    "release_year": 1959,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "明日への盛装",
+    "director": "Noboru Nakamura",
+    "country": "Japan",
+    "failed": true
+  },
+  "96分": {
+    "english_title": "96 Minutes",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "96分鐘",
+    "director": "Hung Tzu-hsuan",
+    "country": "Taiwan"
+  },
+  "ソドムの市【コケティッシュゾーンVol.3】": {
+    "english_title": "Salò, or the 120 Days of Sodom",
+    "release_year": 1975,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Salò o le 120 giornate di Sodoma",
+    "director": "Pier Paolo Pasolini",
+    "country": "Italy"
+  },
+  "『SSSS.DYNAZENON』全話一挙上映会＋トークショー": {
+    "english_title": "SSSS.DYNAZENON",
+    "release_year": 2021,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "『SSSS.DYNAZENON』全話一挙上映会＋トークショー",
+    "director": "Akira Amemiya",
+    "country": "Japan"
+  },
+  "アフター・オール・ディーズ・イヤーズデジタル・リマスター版 \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "After All These Years",
+    "release_year": 2010,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "アフター・オール・ディーズ・イヤーズ",
+    "director": "Lim Kah Wai",
+    "country": "Malaysia, Japan"
+  },
+  "マジック＆ロス \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Magic & Loss",
+    "release_year": 2010,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "マジック＆ロス",
+    "director": "Lim Kah Wai",
+    "country": "Japan, Malaysia, South Korea, Hong Kong, France"
+  },
+  "新世界の夜明け \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "New World",
+    "release_year": 2011,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "新世界の夜明け",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "COME & GO カム・アンド・ゴー \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Come and Go",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "COME & GO カム・アンド・ゴー",
+    "director": "Lim Kah Wai",
+    "country": "Japan, Malaysia"
+  },
+  "【2026】大きな家": {
+    "english_title": "A Big Home",
+    "release_year": 2024,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "大きな家",
+    "director": "Ryo Takebayashi",
+    "country": "Japan",
+    "failed": true
+  },
+  "ムー×ベルジネピクチャーズ 未確認アニメ夜話": {
+    "english_title": "MU x Vergine Pictures Unidentified Anime Night Talk",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ムー×ベルジネピクチャーズ 未確認アニメ夜話",
+    "director": "Masashi Obara",
+    "country": "Japan",
+    "failed": true
+  },
+  "TOTO&MIMI": {
+    "english_title": "TOTO&MIMI",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "TOTO&MIMI",
+    "director": "Yoon Taekyung",
+    "country": "Japan",
+    "failed": true
+  },
+  "オートフィクション": {
+    "english_title": "Autofiction",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "オートフィクション",
+    "director": "Koki Maeda",
+    "country": "Japan"
+  },
+  "SUPER LUCKY GIRL": {
+    "english_title": "Super Lucky Girl",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Super Lucky Girl",
+    "director": "Kaijing Yang",
+    "country": "Japan",
+    "failed": true
+  },
+  "みつかるまで": {
+    "english_title": "Mitsukarumade",
+    "release_year": 2002,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "みつかるまで",
+    "director": "Takumasa Tsunemoto",
+    "country": "Japan",
+    "failed": true
+  },
+  "シネクラブ『ソルフェリーノの戦い』": {
+    "english_title": "Age of Panic",
+    "release_year": 2013,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Bataille de Solférino",
+    "director": "Justine Triet",
+    "country": "France"
+  },
+  "シネクラブ『ジムの物語』": {
+    "english_title": "Jim's Story",
+    "release_year": 2024,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Le Roman de Jim",
+    "director": "Arnaud Larrieu, Jean-Marie Larrieu",
+    "country": "France"
+  },
+  "ある日、家族が死刑囚になって―": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "やまない症動　死ねない難病に挑むテレビマンの記録": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "TATAR": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】野島伸司[0314ｲﾍﾞﾝﾄ]": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】\"死刑宣告\"の女性弁護士 アフガンか": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】野島伸司 いぬ派だけど ねこを飼う": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "わたしが裁判官をやめた後でも 原発をとめる活動をしている理由": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【セボのアトリエ】2026年上半期のフランス映画": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }

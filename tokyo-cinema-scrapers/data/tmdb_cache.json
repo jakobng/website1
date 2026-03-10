@@ -18491,18 +18491,18 @@
   },
   "tmdb:1102938": {
     "tmdb_id": 1102938,
-    "tmdb_title_jp": "Le roman de Jim",
+    "tmdb_title_jp": "Le Roman de Jim",
     "tmdb_title_en": "Jim's Story",
-    "tmdb_title_original": "Le roman de Jim",
+    "tmdb_title_original": "Le Roman de Jim",
     "tmdb_original_language": "fr",
     "overview": "",
     "overview_en": "Aymeric runs into Florence, a former coworker, one evening in Saint-Claude in the Haut-Jura. She is six months pregnant and single. When she gives birth to Jim, Aymeric is there. They spend happy years together until Christophe, Jim's biological father, shows up... It could be the start of a melodrama, it's also the start of an odyssey into fatherhood.",
     "poster_path": "/4KKoLrfblH2AydjwI2vJS8tE3P2.jpg",
     "backdrop_path": "/1umiZBQ6oUbyKATwyxAVRlDELnd.jpg",
     "release_date": "2024-08-14",
-    "director": "Arnaud Larrieu",
-    "director_jp": "Arnaud Larrieu",
-    "director_en": "Arnaud Larrieu",
+    "director": "Jean-Marie Larrieu",
+    "director_jp": "Jean-Marie Larrieu",
+    "director_en": "Jean-Marie Larrieu",
     "genres": [
       "コメディ",
       "ドラマ"
@@ -18512,7 +18512,7 @@
       "Drama"
     ],
     "runtime": 101,
-    "vote_average": 6.848,
+    "vote_average": 6.863,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -64080,13 +64080,13 @@
   },
   "tmdb:1005251": {
     "tmdb_id": 1005251,
-    "tmdb_title_jp": "正義迴廊",
+    "tmdb_title_jp": "正義廻廊",
     "tmdb_title_en": "The Sparring Partner",
     "tmdb_title_original": "正義迴廊",
     "tmdb_original_language": "cn",
-    "overview": "",
+    "overview": "両親との間にわだかまりを抱えていた青年ヘンリー・チョンは、友人アンガス・トンと共謀し両親を殺害。その遺体を切断して遺棄した。やがて2人は逮捕され、犯行は決定的と思われたが、裁判が始まるとアンガスは殺害を否認。ヘンリーが両親を殺し、自分は脅されて遺体を解体したと供述する。一方、ヘンリーはアンガスと2人で殺害したと主張し、アンガスの証言は正反対だった。すべてが揺らぎ始め、迷宮の中に入り込んだような裁判で、弁護人と検察官の攻防が続き、陪審員たちの倫理観や感情も揺れ惑うが、やがて判決の時を迎える。",
     "overview_en": "Adapted from a sensational real-life case in 2013, the intricate story begins when a young man partners with his friend to murder and dismember his parents. Pleading not guilty, the defense attorneys soon turn on each other, as the defendants play the devil and idiot game. Meanwhile, heated debates emerge inside the jury room, where nine jurors grapple with the truth.",
-    "poster_path": "/cBy4IDWT20mT9f2OFUwDwUxhRXe.jpg",
+    "poster_path": "/pa2qknRRUpSh9tNTlCMTvSy5lAj.jpg",
     "backdrop_path": "/uRbzr3dYlWa6NK1ya8fEPqDOUyK.jpg",
     "release_date": "2022-10-27",
     "director": "何爵天",
@@ -75002,6 +75002,2466 @@
       {
         "iso_3166_1": "CH",
         "name": "Switzerland"
+      }
+    ]
+  },
+  "マーティ・シュプリーム　世界をつかめ": {
+    "tmdb_id": 1317288,
+    "tmdb_title_jp": "マーティ・シュプリーム 世界をつかめ",
+    "tmdb_title_en": "Marty Supreme",
+    "tmdb_title_original": "Marty Supreme",
+    "tmdb_original_language": "en",
+    "overview": "物語は1950年代のNYを舞台に、実在の卓球選手　マーティ・リーズマンの人生に着想を得た物語。\r 卓球人気の低いアメリカで世界を夢見る天才卓球プレイヤー、マーティ・マウザーは、親戚の靴屋で働きながら世界選手権に参加するための資金を稼ぐ。ロンドンで行われた世界選手権で日本の選手に敗れたマーティは、次回日本で行われる世界選手権へ参加し、彼を破って世界一になるために、ありとあらゆる方法で資金を稼ごうとする・・・・。",
+    "overview_en": "Marty Mauser, a young man with a dream no one respects, goes to hell and back in pursuit of greatness.",
+    "poster_path": "/hVhPgJ6FZL0AJbd86bEhWESYwYw.jpg",
+    "backdrop_path": "/3iMoYSbI72Nwsvi7uSpqReLJVa6.jpg",
+    "release_date": "2025-12-19",
+    "director": "ジョシュ・サフディ",
+    "director_jp": "ジョシュ・サフディ",
+    "director_en": "Josh Safdie",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 150,
+    "vote_average": 7.501,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1317288": {
+    "tmdb_id": 1317288,
+    "tmdb_title_jp": "マーティ・シュプリーム 世界をつかめ",
+    "tmdb_title_en": "Marty Supreme",
+    "tmdb_title_original": "Marty Supreme",
+    "tmdb_original_language": "en",
+    "overview": "物語は1950年代のNYを舞台に、実在の卓球選手　マーティ・リーズマンの人生に着想を得た物語。\r 卓球人気の低いアメリカで世界を夢見る天才卓球プレイヤー、マーティ・マウザーは、親戚の靴屋で働きながら世界選手権に参加するための資金を稼ぐ。ロンドンで行われた世界選手権で日本の選手に敗れたマーティは、次回日本で行われる世界選手権へ参加し、彼を破って世界一になるために、ありとあらゆる方法で資金を稼ごうとする・・・・。",
+    "overview_en": "Marty Mauser, a young man with a dream no one respects, goes to hell and back in pursuit of greatness.",
+    "poster_path": "/hVhPgJ6FZL0AJbd86bEhWESYwYw.jpg",
+    "backdrop_path": "/3iMoYSbI72Nwsvi7uSpqReLJVa6.jpg",
+    "release_date": "2025-12-19",
+    "director": "ジョシュ・サフディ",
+    "director_jp": "ジョシュ・サフディ",
+    "director_en": "Josh Safdie",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 150,
+    "vote_average": 7.501,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ある日、家族が死刑囚になって―": null,
+  "THE LAST PIECE Glow of Stars": null,
+  "やまない症動　死ねない難病に挑むテレビマンの記録": null,
+  "ジョン・クランコ　バレエの革命児": {
+    "tmdb_id": 1182881,
+    "tmdb_title_jp": "Cranko",
+    "tmdb_title_en": "John Cranko",
+    "tmdb_title_original": "Cranko",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "The gifted, charismatic artist John Cranko moves to the Swabian province from London, where he is attacked for his homosexuality, and after many crises becomes the great sensation as the new pop star of the arts: the Stuttgart Ballet Miracle.",
+    "poster_path": "/cru4ROm3U71JAuAH9LqwpAcZPIE.jpg",
+    "backdrop_path": "/sSlELSgUzngMwt8JF2z4Gw1znBZ.jpg",
+    "release_date": "2024-10-03",
+    "director": "Joachim A. Lang",
+    "director_jp": "Joachim A. Lang",
+    "director_en": "Joachim Lang",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 128,
+    "vote_average": 8.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "tmdb:1182881": {
+    "tmdb_id": 1182881,
+    "tmdb_title_jp": "Cranko",
+    "tmdb_title_en": "John Cranko",
+    "tmdb_title_original": "Cranko",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "The gifted, charismatic artist John Cranko moves to the Swabian province from London, where he is attacked for his homosexuality, and after many crises becomes the great sensation as the new pop star of the arts: the Stuttgart Ballet Miracle.",
+    "poster_path": "/cru4ROm3U71JAuAH9LqwpAcZPIE.jpg",
+    "backdrop_path": "/sSlELSgUzngMwt8JF2z4Gw1znBZ.jpg",
+    "release_date": "2024-10-03",
+    "director": "Joachim A. Lang",
+    "director_jp": "Joachim A. Lang",
+    "director_en": "Joachim Lang",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 128,
+    "vote_average": 8.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "パリに咲くエトワール": {
+    "tmdb_id": 1526874,
+    "tmdb_title_jp": "パリに咲くエトワール",
+    "tmdb_title_en": "Paris ni Saku Étoile",
+    "tmdb_title_original": "パリに咲くエトワール",
+    "tmdb_original_language": "ja",
+    "overview": "画家を夢見るフジコとバレエに心惹かれる千鶴。横浜で偶然出会ったふたりは、運命に導かれるようにパリで再会を果たします。20世紀初頭のパリで、夢を追い求め奮闘するふたりの姿は、誰の心にもある“明日への希望”を呼び覚ましていきます。",
+    "overview_en": "Set in the early 1900s, the story follows two Japanese girls chasing their dreams: Fujiko, an aspiring artist, and Chizuru, an aspiring ballerina. They first cross paths in Yokohama, then, following a fateful reunion, pursue their dreams together in Paris.",
+    "poster_path": "/rrNrjrqDatwXJdDdYqZDUbHJKfw.jpg",
+    "backdrop_path": "/y92YEUxG8QxqJrGNpOxOQbagaot.jpg",
+    "release_date": "2026-03-13",
+    "director": "谷口悟朗",
+    "director_jp": "谷口悟朗",
+    "director_en": "Goro Taniguchi",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1526874": {
+    "tmdb_id": 1526874,
+    "tmdb_title_jp": "パリに咲くエトワール",
+    "tmdb_title_en": "Paris ni Saku Étoile",
+    "tmdb_title_original": "パリに咲くエトワール",
+    "tmdb_original_language": "ja",
+    "overview": "画家を夢見るフジコとバレエに心惹かれる千鶴。横浜で偶然出会ったふたりは、運命に導かれるようにパリで再会を果たします。20世紀初頭のパリで、夢を追い求め奮闘するふたりの姿は、誰の心にもある“明日への希望”を呼び覚ましていきます。",
+    "overview_en": "Set in the early 1900s, the story follows two Japanese girls chasing their dreams: Fujiko, an aspiring artist, and Chizuru, an aspiring ballerina. They first cross paths in Yokohama, then, following a fateful reunion, pursue their dreams together in Paris.",
+    "poster_path": "/rrNrjrqDatwXJdDdYqZDUbHJKfw.jpg",
+    "backdrop_path": "/y92YEUxG8QxqJrGNpOxOQbagaot.jpg",
+    "release_date": "2026-03-13",
+    "director": "谷口悟朗",
+    "director_jp": "谷口悟朗",
+    "director_en": "Goro Taniguchi",
+    "genres": [
+      "アニメーション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ゴールデンカムイ　網走監獄襲撃編": {
+    "tmdb_id": 1397201,
+    "tmdb_title_jp": "ゴールデンカムイ 網走監獄襲撃編",
+    "tmdb_title_en": "Golden Kamuy: Assault on Abashiri Prison",
+    "tmdb_title_original": "ゴールデンカムイ 網走監獄襲撃編",
+    "tmdb_original_language": "ja",
+    "overview": "2024年12月1日、前作である『ゴールデンカムイ -北海道刺青囚人争奪編-』の最終話放送後に制作が発表された。  同月23日、タイトルを『ゴールデンカムイ 劇場版2（仮）』とし、前作からのキャスト18名が続投する事が発表された。  2025年9月2日、特報映像が公開されるとともに正式なタイトルや公開日が判明した。また、新たなティザービジュアルも公開された。",
+    "overview_en": "As each group pursues their mission, a fierce battle unfolds over the tattooed prisoners. Who is friend, and who is foe?  The fight leads them all to Abashiri Prison, where Noppera-bo, the man who holds all the answers, is locked away...",
+    "poster_path": "/kFIs85TGQrrUqOvyYuC1ezkRO8x.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-13",
+    "director": "片桐健滋",
+    "director_jp": "片桐健滋",
+    "director_en": "Kenji Katagiri",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "History"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1397201": {
+    "tmdb_id": 1397201,
+    "tmdb_title_jp": "ゴールデンカムイ 網走監獄襲撃編",
+    "tmdb_title_en": "Golden Kamuy: Assault on Abashiri Prison",
+    "tmdb_title_original": "ゴールデンカムイ 網走監獄襲撃編",
+    "tmdb_original_language": "ja",
+    "overview": "2024年12月1日、前作である『ゴールデンカムイ -北海道刺青囚人争奪編-』の最終話放送後に制作が発表された。  同月23日、タイトルを『ゴールデンカムイ 劇場版2（仮）』とし、前作からのキャスト18名が続投する事が発表された。  2025年9月2日、特報映像が公開されるとともに正式なタイトルや公開日が判明した。また、新たなティザービジュアルも公開された。",
+    "overview_en": "As each group pursues their mission, a fierce battle unfolds over the tattooed prisoners. Who is friend, and who is foe?  The fight leads them all to Abashiri Prison, where Noppera-bo, the man who holds all the answers, is locked away...",
+    "poster_path": "/kFIs85TGQrrUqOvyYuC1ezkRO8x.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-13",
+    "director": "片桐健滋",
+    "director_jp": "片桐健滋",
+    "director_en": "Kenji Katagiri",
+    "genres": [
+      "アクション",
+      "アドベンチャー",
+      "履歴"
+    ],
+    "genres_en": [
+      "Action",
+      "Adventure",
+      "History"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "私がビーバーになる時": {
+    "tmdb_id": 1327819,
+    "tmdb_title_jp": "私がビーバーになる時",
+    "tmdb_title_en": "Hoppers",
+    "tmdb_title_original": "Hoppers",
+    "tmdb_original_language": "en",
+    "overview": "ディズニー＆ピクサー最新作！ もしもビーバーになって、＜動物の世界＞に潜入できたら？\r ある目的のため、ビーバー型ロボットに意識を“ホップ”させたメイベルは夢見ていた動物との会話に大喜びするが、人間の世界を揺るがす動物たちのとんでもない計画を知ってしまう。ビーバーになった彼女が巻き起こす奇跡とは―？",
+    "overview_en": "Scientists have discovered how to 'hop' human consciousness into lifelike robotic animals, allowing people to communicate with animals as animals. Animal lover Mabel seizes an opportunity to use the technology, uncovering mysteries within the animal world beyond anything she could have imagined.",
+    "poster_path": "/8phh1PuZZ9gFagI2hcpJTT6lEKm.jpg",
+    "backdrop_path": "/2RrLuIfIzGWWIH8IAEo6o0IYHmx.jpg",
+    "release_date": "2026-03-04",
+    "director": "Daniel Chong",
+    "director_jp": "Daniel Chong",
+    "director_en": "Daniel Chong",
+    "genres": [
+      "アニメーション",
+      "ファミリー",
+      "サイエンスフィクション",
+      "アドベンチャー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family",
+      "Science Fiction",
+      "Adventure",
+      "Comedy"
+    ],
+    "runtime": 105,
+    "vote_average": 7.657,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1327819": {
+    "tmdb_id": 1327819,
+    "tmdb_title_jp": "私がビーバーになる時",
+    "tmdb_title_en": "Hoppers",
+    "tmdb_title_original": "Hoppers",
+    "tmdb_original_language": "en",
+    "overview": "ディズニー＆ピクサー最新作！ もしもビーバーになって、＜動物の世界＞に潜入できたら？\r ある目的のため、ビーバー型ロボットに意識を“ホップ”させたメイベルは夢見ていた動物との会話に大喜びするが、人間の世界を揺るがす動物たちのとんでもない計画を知ってしまう。ビーバーになった彼女が巻き起こす奇跡とは―？",
+    "overview_en": "Scientists have discovered how to 'hop' human consciousness into lifelike robotic animals, allowing people to communicate with animals as animals. Animal lover Mabel seizes an opportunity to use the technology, uncovering mysteries within the animal world beyond anything she could have imagined.",
+    "poster_path": "/8phh1PuZZ9gFagI2hcpJTT6lEKm.jpg",
+    "backdrop_path": "/2RrLuIfIzGWWIH8IAEo6o0IYHmx.jpg",
+    "release_date": "2026-03-04",
+    "director": "Daniel Chong",
+    "director_jp": "Daniel Chong",
+    "director_en": "Daniel Chong",
+    "genres": [
+      "アニメーション",
+      "ファミリー",
+      "サイエンスフィクション",
+      "アドベンチャー",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family",
+      "Science Fiction",
+      "Adventure",
+      "Comedy"
+    ],
+    "runtime": 105,
+    "vote_average": 7.657,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "映画ひみつのアイプリ　まんかいバズリウムライブ！": {
+    "tmdb_id": 1589925,
+    "tmdb_title_jp": "映画ひみつのアイプリ まんかいバズリウムライブ！",
+    "tmdb_title_en": "Himitsu no AiPri Movie: Mankai Buzzlume Live!",
+    "tmdb_title_original": "映画ひみつのアイプリ まんかいバズリウムライブ！",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The first Himitsu no AiPri movie. The Ring Princess invites everyone to participate in a \"Spring Float Race,\" but an incident occurs during the contest.",
+    "poster_path": "/xEq6Ynybk8fjWNHW0N9f19cHtZd.jpg",
+    "backdrop_path": "/zRfgSQNvid0iK80xtlxH0EfwSz5.jpg",
+    "release_date": "2026-03-13",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Animation"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1589925": {
+    "tmdb_id": 1589925,
+    "tmdb_title_jp": "映画ひみつのアイプリ まんかいバズリウムライブ！",
+    "tmdb_title_en": "Himitsu no AiPri Movie: Mankai Buzzlume Live!",
+    "tmdb_title_original": "映画ひみつのアイプリ まんかいバズリウムライブ！",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The first Himitsu no AiPri movie. The Ring Princess invites everyone to participate in a \"Spring Float Race,\" but an incident occurs during the contest.",
+    "poster_path": "/xEq6Ynybk8fjWNHW0N9f19cHtZd.jpg",
+    "backdrop_path": "/zRfgSQNvid0iK80xtlxH0EfwSz5.jpg",
+    "release_date": "2026-03-13",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Animation"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ギャビーのドールハウス　ザ・ムービー": {
+    "tmdb_id": 1280282,
+    "tmdb_title_jp": "ギャビーのドールハウス ザ・ムービー",
+    "tmdb_title_en": "Gabby's Dollhouse: The Movie",
+    "tmdb_title_original": "Gabby's Dollhouse: The Movie",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Gabby heads out on a road trip with her Grandma Gigi to the urban wonderland of Cat Francisco. But when Gabby's dollhouse, her most prized possession, ends up in the hands of an eccentric cat lady named Vera, Gabby sets off on an adventure through the real world to get the Gabby Cats back together and save the dollhouse before it's too late.",
+    "poster_path": "/sM1CDaFdb4WNjtxsbV1Rw78km0A.jpg",
+    "backdrop_path": "/MrcSSzWGsXf2IUJpjPPFLlNbjX.jpg",
+    "release_date": "2025-09-13",
+    "director": "Ryan Crego",
+    "director_jp": "Ryan Crego",
+    "director_en": "Ryan Crego",
+    "genres": [
+      "ファミリー",
+      "コメディ",
+      "アドベンチャー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Family",
+      "Comedy",
+      "Adventure",
+      "Animation"
+    ],
+    "runtime": 98,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1280282": {
+    "tmdb_id": 1280282,
+    "tmdb_title_jp": "ギャビーのドールハウス ザ・ムービー",
+    "tmdb_title_en": "Gabby's Dollhouse: The Movie",
+    "tmdb_title_original": "Gabby's Dollhouse: The Movie",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Gabby heads out on a road trip with her Grandma Gigi to the urban wonderland of Cat Francisco. But when Gabby's dollhouse, her most prized possession, ends up in the hands of an eccentric cat lady named Vera, Gabby sets off on an adventure through the real world to get the Gabby Cats back together and save the dollhouse before it's too late.",
+    "poster_path": "/sM1CDaFdb4WNjtxsbV1Rw78km0A.jpg",
+    "backdrop_path": "/MrcSSzWGsXf2IUJpjPPFLlNbjX.jpg",
+    "release_date": "2025-09-13",
+    "director": "Ryan Crego",
+    "director_jp": "Ryan Crego",
+    "director_en": "Ryan Crego",
+    "genres": [
+      "ファミリー",
+      "コメディ",
+      "アドベンチャー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Family",
+      "Comedy",
+      "Adventure",
+      "Animation"
+    ],
+    "runtime": 98,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "碁盤斬り": {
+    "tmdb_id": 1264349,
+    "tmdb_title_jp": "碁盤斬り",
+    "tmdb_title_en": "Bushido",
+    "tmdb_title_original": "碁盤斬り",
+    "tmdb_original_language": "ja",
+    "overview": "浪人・柳田格之進（草なぎ剛）は、身に覚えのない罪を着せられ、妻も喪った上、故郷の彦根藩を追われて娘の絹（清原果耶）とふたり、江戸の貧乏長屋暮らしを送っていた。そんな暮らしにもかかわらず、かねてから嗜む囲碁にもその実直な人柄が表れ、嘘偽りない勝負を心掛けていた。だがある日、旧知の藩士によって悲劇の冤罪事件の真相を知らされた格之進と絹は、復讐を決意。そして絹は、仇討ち決行のため、自らが犠牲になる道を選び……。父と娘の誇りをかけた闘いが始まる！",
+    "overview_en": "Kakunoshin, renowned for his skills with a sword and in the game of go, embodies the samurai code. Falsely accused of a theft, he is forced to become a lowly ronin. Years later, when a case of missing gold pulls him into a new web of intrigue, Kakunoshin uncovers the truth behind his downfall. With the real culprit exposed, the go board flips, and a hellstorm of righteous vengeance follows.",
+    "poster_path": "/yUk0gxAMwdMFCHk5w9XICt1olKj.jpg",
+    "backdrop_path": "/fzfxWt7H9fUfBmrWJ6T6pwTBPzQ.jpg",
+    "release_date": "2024-05-17",
+    "director": "白石和彌",
+    "director_jp": "白石和彌",
+    "director_en": "Kazuya Shiraishi",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 129,
+    "vote_average": 7.438,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1264349": {
+    "tmdb_id": 1264349,
+    "tmdb_title_jp": "碁盤斬り",
+    "tmdb_title_en": "Bushido",
+    "tmdb_title_original": "碁盤斬り",
+    "tmdb_original_language": "ja",
+    "overview": "浪人・柳田格之進（草なぎ剛）は、身に覚えのない罪を着せられ、妻も喪った上、故郷の彦根藩を追われて娘の絹（清原果耶）とふたり、江戸の貧乏長屋暮らしを送っていた。そんな暮らしにもかかわらず、かねてから嗜む囲碁にもその実直な人柄が表れ、嘘偽りない勝負を心掛けていた。だがある日、旧知の藩士によって悲劇の冤罪事件の真相を知らされた格之進と絹は、復讐を決意。そして絹は、仇討ち決行のため、自らが犠牲になる道を選び……。父と娘の誇りをかけた闘いが始まる！",
+    "overview_en": "Kakunoshin, renowned for his skills with a sword and in the game of go, embodies the samurai code. Falsely accused of a theft, he is forced to become a lowly ronin. Years later, when a case of missing gold pulls him into a new web of intrigue, Kakunoshin uncovers the truth behind his downfall. With the real culprit exposed, the go board flips, and a hellstorm of righteous vengeance follows.",
+    "poster_path": "/yUk0gxAMwdMFCHk5w9XICt1olKj.jpg",
+    "backdrop_path": "/fzfxWt7H9fUfBmrWJ6T6pwTBPzQ.jpg",
+    "release_date": "2024-05-17",
+    "director": "白石和彌",
+    "director_jp": "白石和彌",
+    "director_en": "Kazuya Shiraishi",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 129,
+    "vote_average": 7.438,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "カンフーハッスル": {
+    "tmdb_id": 9470,
+    "tmdb_title_jp": "カンフーハッスル",
+    "tmdb_title_en": "Kung Fu Hustle",
+    "tmdb_title_original": "功夫",
+    "tmdb_original_language": "cn",
+    "overview": "1930年代の上海は、新興の暴力組織、斧頭会が牛耳っていた。猪籠城寨（豚小屋砦）と呼ばれる貧困者アパートにチンピラのシンとその相棒が斧頭会を名乗り恐喝に来た。住人を舐めていたが逆にボコボコにされ、苦し紛れに投げた爆竹で偶然通りかかった斧頭会幹部に怪我をさせてしまう。",
+    "overview_en": "It's the 1940s, and the notorious Axe Gang terrorizes Shanghai. Small-time criminals Sing and Bone hope to join, but they only manage to make lots of very dangerous enemies. Fortunately for them, kung fu masters and hidden strength can be found in unlikely places. Now they just have to take on the entire Axe Gang.",
+    "poster_path": "/6PaDkxDzHH13m7IIqP63nsHIqnX.jpg",
+    "backdrop_path": "/9XhZhoSnFJ3AjpfzdIiZVHLQIS4.jpg",
+    "release_date": "2004-02-10",
+    "director": "チャウ・シンチー",
+    "director_jp": "チャウ・シンチー",
+    "director_en": "Stephen Chow",
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy",
+      "Crime",
+      "Fantasy"
+    ],
+    "runtime": 99,
+    "vote_average": 7.482,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:9470": {
+    "tmdb_id": 9470,
+    "tmdb_title_jp": "カンフーハッスル",
+    "tmdb_title_en": "Kung Fu Hustle",
+    "tmdb_title_original": "功夫",
+    "tmdb_original_language": "cn",
+    "overview": "1930年代の上海は、新興の暴力組織、斧頭会が牛耳っていた。猪籠城寨（豚小屋砦）と呼ばれる貧困者アパートにチンピラのシンとその相棒が斧頭会を名乗り恐喝に来た。住人を舐めていたが逆にボコボコにされ、苦し紛れに投げた爆竹で偶然通りかかった斧頭会幹部に怪我をさせてしまう。",
+    "overview_en": "It's the 1940s, and the notorious Axe Gang terrorizes Shanghai. Small-time criminals Sing and Bone hope to join, but they only manage to make lots of very dangerous enemies. Fortunately for them, kung fu masters and hidden strength can be found in unlikely places. Now they just have to take on the entire Axe Gang.",
+    "poster_path": "/6PaDkxDzHH13m7IIqP63nsHIqnX.jpg",
+    "backdrop_path": "/9XhZhoSnFJ3AjpfzdIiZVHLQIS4.jpg",
+    "release_date": "2004-02-10",
+    "director": "チャウ・シンチー",
+    "director_jp": "チャウ・シンチー",
+    "director_en": "Stephen Chow",
+    "genres": [
+      "アクション",
+      "コメディ",
+      "犯罪",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Action",
+      "Comedy",
+      "Crime",
+      "Fantasy"
+    ],
+    "runtime": 99,
+    "vote_average": 7.482,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "長浜": {
+    "tmdb_id": 1406829,
+    "tmdb_title_jp": "長浜",
+    "tmdb_title_en": "Nagahama",
+    "tmdb_title_original": "長浜",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/tmGzIGlywJr0piGoMtbdgSbGsDr.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-01-18",
+    "director": "谷口未央",
+    "director_jp": "谷口未央",
+    "director_en": "Mio Taniguchi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1406829": {
+    "tmdb_id": 1406829,
+    "tmdb_title_jp": "長浜",
+    "tmdb_title_en": "Nagahama",
+    "tmdb_title_original": "長浜",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/tmGzIGlywJr0piGoMtbdgSbGsDr.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-01-18",
+    "director": "谷口未央",
+    "director_jp": "谷口未央",
+    "director_en": "Mio Taniguchi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "ハローマイフレンド": {
+    "tmdb_id": 1634021,
+    "tmdb_title_jp": "ハローマイフレンド",
+    "tmdb_title_en": "Hello, My Friend",
+    "tmdb_title_original": "ハローマイフレンド",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/f1CZHT25xeVx7I2xw3P3L8fLKS7.jpg",
+    "backdrop_path": "/hRuDhRqvKaWuknHhGw6cfnw1wuL.jpg",
+    "release_date": "2026-02-20",
+    "director": "市井昌秀",
+    "director_jp": "市井昌秀",
+    "director_en": "Masahide Ichii",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1634021": {
+    "tmdb_id": 1634021,
+    "tmdb_title_jp": "ハローマイフレンド",
+    "tmdb_title_en": "Hello, My Friend",
+    "tmdb_title_original": "ハローマイフレンド",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/f1CZHT25xeVx7I2xw3P3L8fLKS7.jpg",
+    "backdrop_path": "/hRuDhRqvKaWuknHhGw6cfnw1wuL.jpg",
+    "release_date": "2026-02-20",
+    "director": "市井昌秀",
+    "director_jp": "市井昌秀",
+    "director_en": "Masahide Ichii",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "サイレント・シティ・ドライバー": {
+    "tmdb_id": 1374685,
+    "tmdb_title_jp": "Чимээгүй хотын жолооч",
+    "tmdb_title_en": "Silent City Driver",
+    "tmdb_title_original": "Чимээгүй хотын жолооч",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "In a city rife with corruption and scandals, surrounded by indifference, the solitary and enigmatic Myagmar lives in isolation after enduring 14 brutal years in prison. Scarred both physically and emotionally, his only companions are the stray dogs he has rescued over time.",
+    "poster_path": "/4l5UK4XZYd1xf9DD4bHYln7EClP.jpg",
+    "backdrop_path": "/wpf4SD4ea1KB1pYafxO2SeMokVa.jpg",
+    "release_date": "2024-11-21",
+    "director": "Sengedorj Janchivdorj",
+    "director_jp": "Sengedorj Janchivdorj",
+    "director_en": "Sengedorj Janchivdorj",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 138,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MN",
+        "name": "Mongolia"
+      }
+    ]
+  },
+  "Bedridden 〜寝たきりを選んだ男": {
+    "tmdb_id": 771033,
+    "tmdb_title_jp": " Хэвтрийн хүн",
+    "tmdb_title_en": "Bedridden",
+    "tmdb_title_original": " Хэвтрийн хүн",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "A multi-generational story of love and loss centered around a young writer who must face the consequences of his egocentric decision to become bedridden.",
+    "poster_path": "/4h0OmFWXty6yKNLpcemmwbecEub.jpg",
+    "backdrop_path": "/2NXMF5Os5IJKAfoC5kKFa6Le71O.jpg",
+    "release_date": "2020-10-20",
+    "director": "Byamba Sakhya",
+    "director_jp": "Byamba Sakhya",
+    "director_en": "Byamba Sakhya",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MN",
+        "name": "Mongolia"
+      }
+    ]
+  },
+  "SHUVUULAKHUI 〜ハヤブサと男": {
+    "tmdb_id": 1558952,
+    "tmdb_title_jp": "Шувуулахуй",
+    "tmdb_title_en": "Falconry",
+    "tmdb_title_original": "Шувуулахуй",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "Batbileg lives in a ger district of Ulaanbaatar with his wife and two children, making a living by training falcons for hunting and showing them to tourists. Every year, at the beginning of summer, he captures and trains the hawks, and at the start of winter, he releases them back into the wild. One of his recurring endeavors begins with training a hawk named “Andgai.”(Oath). However, laws and regulations on bird training are lacking, and the densely populated urban environment, crowded with people and buildings, is far from suitable.  Batbileg aims to revive Mongolia’s ancient falconry culture, raise public awareness of the value of falcons, and pass on conservation ideals to the younger generation. Yet, in the face of the many challenges before him, he is forced to confront a dilemma: should he comply with the law, or remain faithful to his ancestral tradition?",
+    "poster_path": "/4MbJndVy3jTjD8Bam9dYlv6PbKE.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-09",
+    "director": "Enkhbayar Bataa",
+    "director_jp": "Enkhbayar Bataa",
+    "director_en": "Enkhbayar Bataa",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 60,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "リモート・コントロール": null,
+  "狼は夜やってくる": {
+    "tmdb_id": 1320329,
+    "tmdb_title_jp": "Чоно үүр шөнөөр ирдэг",
+    "tmdb_title_en": "The Wolves Always Come at Night",
+    "tmdb_title_original": "Чоно үүр шөнөөр ирдэг",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "Davaa and Zaya are a young nomadic couple in the vast Bayanhongor region of Mongolia who are in the throes of animal birthing season when a seismic event suddenly changes their lives. They are forced to migrate afar but are haunted by their past lives.",
+    "poster_path": "/3WmhSLBCyg47uedMsBSrI2KMz0E.jpg",
+    "backdrop_path": "/zuDN69wnVUO8AbJWrWUufscwom.jpg",
+    "release_date": "2025-07-03",
+    "director": "Gabrielle Brady",
+    "director_jp": "Gabrielle Brady",
+    "director_en": "Gabrielle Brady",
+    "genres": [
+      "ドキュメンタリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 9.25,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "MN",
+        "name": "Mongolia"
+      }
+    ]
+  },
+  "TATAR": null,
+  "MONGOL": null,
+  "インファナル・フィクサー": {
+    "tmdb_id": 999056,
+    "tmdb_title_jp": "潛行",
+    "tmdb_title_en": "I Did It My Way",
+    "tmdb_title_original": "潛行",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Ho Sau, an undercover agent, has been working with Yau, a drug lord, for years, but his job and family are in trouble.",
+    "poster_path": "/dtWMtCy0nuFN3QsmWDphFpK34wL.jpg",
+    "backdrop_path": "/oIAR486U0QGyMp3dkQXdI4J9RIk.jpg",
+    "release_date": "2023-12-29",
+    "director": "關智耀",
+    "director_jp": "關智耀",
+    "director_en": "Jason Kwan",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 5.056,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "マッドゴッド": null,
+  "ひなぎく": {
+    "tmdb_id": 46919,
+    "tmdb_title_jp": "ひなぎく",
+    "tmdb_title_en": "Daisies",
+    "tmdb_title_original": "Sedmikrásky",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "Two teenage girls embark on a series of destructive pranks in which they consume and destroy the world around them.",
+    "poster_path": "/aVwT1YSKndicXC96z9PLoPAuHS9.jpg",
+    "backdrop_path": "/A1Ajyl9qdUvK94ABteqEelk6M1Q.jpg",
+    "release_date": "1966-12-30",
+    "director": "维拉·希蒂洛娃",
+    "director_jp": "维拉·希蒂洛娃",
+    "director_en": "Věra Chytilová",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 76,
+    "vote_average": 7.294,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "XC",
+        "name": "Czechoslovakia"
+      }
+    ]
+  },
+  "tmdb:46919": {
+    "tmdb_id": 46919,
+    "tmdb_title_jp": "ひなぎく",
+    "tmdb_title_en": "Daisies",
+    "tmdb_title_original": "Sedmikrásky",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "Two teenage girls embark on a series of destructive pranks in which they consume and destroy the world around them.",
+    "poster_path": "/aVwT1YSKndicXC96z9PLoPAuHS9.jpg",
+    "backdrop_path": "/A1Ajyl9qdUvK94ABteqEelk6M1Q.jpg",
+    "release_date": "1966-12-30",
+    "director": "维拉·希蒂洛娃",
+    "director_jp": "维拉·希蒂洛娃",
+    "director_en": "Věra Chytilová",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 76,
+    "vote_average": 7.294,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "XC",
+        "name": "Czechoslovakia"
+      }
+    ]
+  },
+  "〈特集上映〉追悼・大木裕之 撮ることと生きること": null,
+  "[odessa vol＋]ﾏｰﾃｨ･ｼｭﾌﾟﾘｰﾑ": {
+    "tmdb_id": 1317288,
+    "tmdb_title_jp": "マーティ・シュプリーム 世界をつかめ",
+    "tmdb_title_en": "Marty Supreme",
+    "tmdb_title_original": "Marty Supreme",
+    "tmdb_original_language": "en",
+    "overview": "物語は1950年代のNYを舞台に、実在の卓球選手　マーティ・リーズマンの人生に着想を得た物語。\r 卓球人気の低いアメリカで世界を夢見る天才卓球プレイヤー、マーティ・マウザーは、親戚の靴屋で働きながら世界選手権に参加するための資金を稼ぐ。ロンドンで行われた世界選手権で日本の選手に敗れたマーティは、次回日本で行われる世界選手権へ参加し、彼を破って世界一になるために、ありとあらゆる方法で資金を稼ごうとする・・・・。",
+    "overview_en": "Marty Mauser, a young man with a dream no one respects, goes to hell and back in pursuit of greatness.",
+    "poster_path": "/hVhPgJ6FZL0AJbd86bEhWESYwYw.jpg",
+    "backdrop_path": "/3iMoYSbI72Nwsvi7uSpqReLJVa6.jpg",
+    "release_date": "2025-12-19",
+    "director": "ジョシュ・サフディ",
+    "director_jp": "ジョシュ・サフディ",
+    "director_en": "Josh Safdie",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 150,
+    "vote_average": 7.501,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【TBS】ある日、家族[0313ｲﾍﾞﾝﾄ]": null,
+  "【TBS】やまない症動[0313ｲﾍﾞﾝﾄ]": null,
+  "【TBS】THE LAST PIECE[0313]": null,
+  "【TBS】受忍の国[0314ｲﾍﾞﾝﾄ]": null,
+  "【TBS】強制沈黙[0314ｲﾍﾞﾝﾄ]": null,
+  "【TBS】野島伸司[0314ｲﾍﾞﾝﾄ]": null,
+  "【TBS】War Bride2[0315/1400]": null,
+  "【TBS】War Bride2[0315ｲﾍﾞﾝﾄ]": null,
+  "【TBS】War Bride2[0322ｲﾍﾞﾝﾄ]": null,
+  "【TBS】\"死刑宣告\"の女性弁護士 アフガンか": null,
+  "【TBS】ブルーインパルスの空へ": null,
+  "【TBS】THE LAST PIECE": null,
+  "【TBS】強制沈黙 ～殺される記者たち～": null,
+  "【TBS】野島伸司 いぬ派だけど ねこを飼う": null,
+  "正義廻廊＜上映後ﾄｰｸｲﾍﾞﾝﾄ＞": {
+    "tmdb_id": 1005251,
+    "tmdb_title_jp": "正義廻廊",
+    "tmdb_title_en": "The Sparring Partner",
+    "tmdb_title_original": "正義迴廊",
+    "tmdb_original_language": "cn",
+    "overview": "両親との間にわだかまりを抱えていた青年ヘンリー・チョンは、友人アンガス・トンと共謀し両親を殺害。その遺体を切断して遺棄した。やがて2人は逮捕され、犯行は決定的と思われたが、裁判が始まるとアンガスは殺害を否認。ヘンリーが両親を殺し、自分は脅されて遺体を解体したと供述する。一方、ヘンリーはアンガスと2人で殺害したと主張し、アンガスの証言は正反対だった。すべてが揺らぎ始め、迷宮の中に入り込んだような裁判で、弁護人と検察官の攻防が続き、陪審員たちの倫理観や感情も揺れ惑うが、やがて判決の時を迎える。",
+    "overview_en": "Adapted from a sensational real-life case in 2013, the intricate story begins when a young man partners with his friend to murder and dismember his parents. Pleading not guilty, the defense attorneys soon turn on each other, as the defendants play the devil and idiot game. Meanwhile, heated debates emerge inside the jury room, where nine jurors grapple with the truth.",
+    "poster_path": "/pa2qknRRUpSh9tNTlCMTvSy5lAj.jpg",
+    "backdrop_path": "/uRbzr3dYlWa6NK1ya8fEPqDOUyK.jpg",
+    "release_date": "2022-10-27",
+    "director": "何爵天",
+    "director_jp": "何爵天",
+    "director_en": "Ho Cheuk-Tin",
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 135,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "ザ・カラテ3電光石火": {
+    "tmdb_id": 287664,
+    "tmdb_title_jp": "ザ・カラテ3 電光石火",
+    "tmdb_title_en": "The Karate 3",
+    "tmdb_title_original": "ザ・カラテ3 電光石火",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is the third and final film of the ZA KARATE trilogy. Tadashi Yamashita reprises his role as the Karate World Champion. Local Japanese karate schools are not happy that a Chinese master will take over the Japanese karate organization and will do everything they can to prevent it.",
+    "poster_path": "/p8aLzjuTHrqMmz7PrRIohaR5bsZ.jpg",
+    "backdrop_path": "/1cCIkjiprk4Edq7z4hMBmwGVxqe.jpg",
+    "release_date": "1975-01-15",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 81,
+    "vote_average": 3.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:287664": {
+    "tmdb_id": 287664,
+    "tmdb_title_jp": "ザ・カラテ3 電光石火",
+    "tmdb_title_en": "The Karate 3",
+    "tmdb_title_original": "ザ・カラテ3 電光石火",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is the third and final film of the ZA KARATE trilogy. Tadashi Yamashita reprises his role as the Karate World Champion. Local Japanese karate schools are not happy that a Chinese master will take over the Japanese karate organization and will do everything they can to prevent it.",
+    "poster_path": "/p8aLzjuTHrqMmz7PrRIohaR5bsZ.jpg",
+    "backdrop_path": "/1cCIkjiprk4Edq7z4hMBmwGVxqe.jpg",
+    "release_date": "1975-01-15",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [
+      "アクション"
+    ],
+    "genres_en": [
+      "Action"
+    ],
+    "runtime": 81,
+    "vote_average": 3.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ベビーギャングとお姐ちゃん": {
+    "tmdb_id": 525013,
+    "tmdb_title_jp": "ベビーギャングとお姐ちゃん",
+    "tmdb_title_en": "3 Dolls and Baby Gang",
+    "tmdb_title_original": "ベビーギャングとお姐ちゃん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Based on the comic by Fuyahiko Okabe.",
+    "poster_path": "/nRgUhf1bv3f1AG7kE4iCRShMbkF.jpg",
+    "backdrop_path": null,
+    "release_date": "1961-12-09",
+    "director": "杉江敏男",
+    "director_jp": "杉江敏男",
+    "director_en": "Toshio Sugie",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:525013": {
+    "tmdb_id": 525013,
+    "tmdb_title_jp": "ベビーギャングとお姐ちゃん",
+    "tmdb_title_en": "3 Dolls and Baby Gang",
+    "tmdb_title_original": "ベビーギャングとお姐ちゃん",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Based on the comic by Fuyahiko Okabe.",
+    "poster_path": "/nRgUhf1bv3f1AG7kE4iCRShMbkF.jpg",
+    "backdrop_path": null,
+    "release_date": "1961-12-09",
+    "director": "杉江敏男",
+    "director_jp": "杉江敏男",
+    "director_en": "Toshio Sugie",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "女の足あと": null,
+  "明日への盛装": null,
+  "猟銃": {
+    "tmdb_id": 262630,
+    "tmdb_title_jp": "猟銃",
+    "tmdb_title_en": "Hunting Rifle",
+    "tmdb_title_original": "猟銃",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Story of a woman, Saiko, who divorces her doctor husband when she is given a baby by a stranger who claims it is the husband's child. Saiko embarks on an affair with her cousin's husband, but a crisis threatens when she discovers that her ex-husband is about to remarry.",
+    "poster_path": "/tmJjBKCfLoqEYATnYsM3Fklv93Y.jpg",
+    "backdrop_path": "/lUKYwqgIxMuywkHXa3CJ74dnGxy.jpg",
+    "release_date": "1961-01-03",
+    "director": "五所平之助",
+    "director_jp": "五所平之助",
+    "director_en": "Heinosuke Gosho",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 98,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:262630": {
+    "tmdb_id": 262630,
+    "tmdb_title_jp": "猟銃",
+    "tmdb_title_en": "Hunting Rifle",
+    "tmdb_title_original": "猟銃",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Story of a woman, Saiko, who divorces her doctor husband when she is given a baby by a stranger who claims it is the husband's child. Saiko embarks on an affair with her cousin's husband, but a crisis threatens when she discovers that her ex-husband is about to remarry.",
+    "poster_path": "/tmJjBKCfLoqEYATnYsM3Fklv93Y.jpg",
+    "backdrop_path": "/lUKYwqgIxMuywkHXa3CJ74dnGxy.jpg",
+    "release_date": "1961-01-03",
+    "director": "五所平之助",
+    "director_jp": "五所平之助",
+    "director_en": "Heinosuke Gosho",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 98,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "悪女の季節": {
+    "tmdb_id": 535789,
+    "tmdb_title_jp": "悪女の季節",
+    "tmdb_title_en": "The Days of Evil Women",
+    "tmdb_title_original": "悪女の季節",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The common-law wife and daughter of a wealthy old man plot to murder him and steal his fortune, with the help of their male acquaintances.",
+    "poster_path": "/7ndF6aiIqwIEZ2scg9PfoE5gq0X.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-11-30",
+    "director": "渋谷実",
+    "director_jp": "渋谷実",
+    "director_en": "Minoru Shibuya",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 110,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:535789": {
+    "tmdb_id": 535789,
+    "tmdb_title_jp": "悪女の季節",
+    "tmdb_title_en": "The Days of Evil Women",
+    "tmdb_title_original": "悪女の季節",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The common-law wife and daughter of a wealthy old man plot to murder him and steal his fortune, with the help of their male acquaintances.",
+    "poster_path": "/7ndF6aiIqwIEZ2scg9PfoE5gq0X.jpg",
+    "backdrop_path": null,
+    "release_date": "1958-11-30",
+    "director": "渋谷実",
+    "director_jp": "渋谷実",
+    "director_en": "Minoru Shibuya",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 110,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "鑑賞用男性": {
+    "tmdb_id": 1524873,
+    "tmdb_title_jp": "鑑賞用男性",
+    "tmdb_title_en": "The Ornamental Man",
+    "tmdb_title_original": "鑑賞用男性",
+    "tmdb_original_language": "ja",
+    "overview": "奇抜な鑑賞用男性論をひっさげて、デザイナー芦谷理麻はパリから帰って来た。反響は大きく、注文は殺到した。岸田国務大臣、革新党の北尾稲太郎、前衛書道家の桑村麻朱麿、それに義兄の原雅太郎が、まず鑑賞用服を着用した。理麻には、新しいデザインが閃くと空腹を感じるという習性があった。次に生まれたデザインは、母の経営する広告会社、広報堂の社員のユニホームになった。この珍妙なユニホームのおかげで、悲喜劇が続出することに…。",
+    "overview_en": "",
+    "poster_path": "/zbsERmQyQEgN3ODA1komRXwsEKz.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-08-09",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1524873": {
+    "tmdb_id": 1524873,
+    "tmdb_title_jp": "鑑賞用男性",
+    "tmdb_title_en": "The Ornamental Man",
+    "tmdb_title_original": "鑑賞用男性",
+    "tmdb_original_language": "ja",
+    "overview": "奇抜な鑑賞用男性論をひっさげて、デザイナー芦谷理麻はパリから帰って来た。反響は大きく、注文は殺到した。岸田国務大臣、革新党の北尾稲太郎、前衛書道家の桑村麻朱麿、それに義兄の原雅太郎が、まず鑑賞用服を着用した。理麻には、新しいデザインが閃くと空腹を感じるという習性があった。次に生まれたデザインは、母の経営する広告会社、広報堂の社員のユニホームになった。この珍妙なユニホームのおかげで、悲喜劇が続出することに…。",
+    "overview_en": "",
+    "poster_path": "/zbsERmQyQEgN3ODA1komRXwsEKz.jpg",
+    "backdrop_path": null,
+    "release_date": "1960-08-09",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "砂丘": {
+    "tmdb_id": 2998,
+    "tmdb_title_jp": "砂丘",
+    "tmdb_title_en": "Zabriskie Point",
+    "tmdb_title_original": "Zabriskie Point",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Anthropology student Daria, who's helping a property developer build a village in the Los Angeles desert, and dropout Mark, who's wanted by the authorities for allegedly killing a policeman during a student riot, accidentally encounter each other in Death Valley and soon begin an unrestrained romance.",
+    "poster_path": "/uelo2oMg4fM51LAm4eEArEwOHXZ.jpg",
+    "backdrop_path": "/nLb3TOTjgvvjmHnUmlkg4Rwq9jG.jpg",
+    "release_date": "1970-03-26",
+    "director": "米开朗基罗·安东尼奥尼",
+    "director_jp": "米开朗基罗·安东尼奥尼",
+    "director_en": "Michelangelo Antonioni",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.019,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:2998": {
+    "tmdb_id": 2998,
+    "tmdb_title_jp": "砂丘",
+    "tmdb_title_en": "Zabriskie Point",
+    "tmdb_title_original": "Zabriskie Point",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Anthropology student Daria, who's helping a property developer build a village in the Los Angeles desert, and dropout Mark, who's wanted by the authorities for allegedly killing a policeman during a student riot, accidentally encounter each other in Death Valley and soon begin an unrestrained romance.",
+    "poster_path": "/uelo2oMg4fM51LAm4eEArEwOHXZ.jpg",
+    "backdrop_path": "/nLb3TOTjgvvjmHnUmlkg4Rwq9jG.jpg",
+    "release_date": "1970-03-26",
+    "director": "米开朗基罗·安东尼奥尼",
+    "director_jp": "米开朗基罗·安东尼奥尼",
+    "director_en": "Michelangelo Antonioni",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 7.019,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "96分": {
+    "tmdb_id": 89326,
+    "tmdb_title_jp": "96 Minutes",
+    "tmdb_title_en": "96 Minutes",
+    "tmdb_title_original": "96 Minutes",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "The story of 4 lives slammed together in a shocking moment. Intercutting between a carjacking and the separate stories of the 4 kids, we watch as they hurtle toward a life-changing end.",
+    "poster_path": "/39FwN8IVp8y46KJ6VjA8oFY8e1o.jpg",
+    "backdrop_path": "/uiW42lmewHmbtgnjVmMyABNdoAL.jpg",
+    "release_date": "2011-10-14",
+    "director": "Aimee Lagos",
+    "director_jp": "Aimee Lagos",
+    "director_en": "Aimee Lagos",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 93,
+    "vote_average": 5.685,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ソドムの市【コケティッシュゾーンVol.3】": {
+    "tmdb_id": 5336,
+    "tmdb_title_jp": "ソドムの市",
+    "tmdb_title_en": "Salò, or the 120 Days of Sodom",
+    "tmdb_title_original": "Salò o le 120 giornate di Sodoma",
+    "tmdb_original_language": "it",
+    "overview": "1944年、第2次大戦下の北イタリア。ナチズムに加担する公爵、大司教、最高判事、大統領の4人の権力者は町中から美少年美少女達を狩り集め、レイプ・スカトロ・ホモ・ソドミー・オナニー・そして虐殺と、ありとあらゆる想像を絶した地獄のパノラマを繰り広げる。",
+    "overview_en": "Four corrupted fascist libertines round up 9 teenage boys and girls and subject them to 120 days of sadistic physical, mental and sexual torture.",
+    "poster_path": "/AfYDkfOfhMh3mUTgHf74YEPQL8c.jpg",
+    "backdrop_path": "/j88mvEqaL9i9VTcmDgNZ1rTn3g0.jpg",
+    "release_date": "1976-01-10",
+    "director": "ピエル・パオロ・パゾリーニ",
+    "director_jp": "ピエル・パオロ・パゾリーニ",
+    "director_en": "Pier Paolo Pasolini",
+    "genres": [
+      "ドラマ",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Horror"
+    ],
+    "runtime": 117,
+    "vote_average": 6.342,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "『SSSS.DYNAZENON』全話一挙上映会＋トークショー": {
+    "tmdb_id": 1068607,
+    "tmdb_title_jp": "劇場総集編「SSSS.DYNAZENON」",
+    "tmdb_title_en": "SSSS.DYNAZENON Grand Episode",
+    "tmdb_title_original": "劇場総集編「SSSS.DYNAZENON」",
+    "tmdb_original_language": "ja",
+    "overview": "フジヨキ台の平凡な高校生・麻中蓬は、ある日の帰り道、「怪獣使い」を名乗る怪しい男・ガウマと出会う。そんな彼らの前に出現する巨大怪獣、そして巨大ロボット〈ダイナゼノン〉！",
+    "overview_en": "High schooler Yomogi comes across Gauma, a strange drifter claiming to be a Kaiju User. Soon after, a Kaiju attacks, and Gauma summons the giant robot Dynazenon to fight it. Yomogi, his classmate Yume, and local NEET Koyomi are caught in the chaos and join as copilots. Together, they form the Gauma Team. But Kaiju Eugenicists, a secret society of teens with special powers, stand in their way.",
+    "poster_path": "/mLD1XxCcaZUMXWgnx2b36ABWVsf.jpg",
+    "backdrop_path": "/gCkSjWRG9ebP89Ha20Lm8BRuZTN.jpg",
+    "release_date": "2023-03-10",
+    "director": "宮島善博",
+    "director_jp": "宮島善博",
+    "director_en": "Yoshihiro Miyajima",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Science Fiction"
+    ],
+    "runtime": 120,
+    "vote_average": 4.955,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ブータン　山の教室": {
+    "tmdb_id": 627087,
+    "tmdb_title_jp": "ブータン 山の教室",
+    "tmdb_title_en": "Lunana: A Yak in the Classroom",
+    "tmdb_title_original": "ལུང་ནག་ན",
+    "tmdb_original_language": "dz",
+    "overview": "ヒマラヤ山脈の標高4800メートル、8日間のトレッキングでしかたどり着けない実在の村を舞台に、都会から来た教師と子どもたちの交流を描く。ブータン山間部の素朴な暮らしぶりを、圧倒的な映像美で映し出す。",
+    "overview_en": "A teacher, in search of inspiration, travels to the most remote school in the world, where he ends up realizing how important his job is and appreciating the value of yak dung.",
+    "poster_path": "/mL1OQc1cxGsOIVHgjDvyvmPSmad.jpg",
+    "backdrop_path": "/boGRStbspjqtNtDVpqvj28sI5V3.jpg",
+    "release_date": "2019-11-16",
+    "director": "巴沃邱寧多傑",
+    "director_jp": "巴沃邱寧多傑",
+    "director_en": "Pawo Choyning Dorji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 7.427,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BT",
+        "name": "Bhutan"
+      },
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "tmdb:627087": {
+    "tmdb_id": 627087,
+    "tmdb_title_jp": "ブータン 山の教室",
+    "tmdb_title_en": "Lunana: A Yak in the Classroom",
+    "tmdb_title_original": "ལུང་ནག་ན",
+    "tmdb_original_language": "dz",
+    "overview": "ヒマラヤ山脈の標高4800メートル、8日間のトレッキングでしかたどり着けない実在の村を舞台に、都会から来た教師と子どもたちの交流を描く。ブータン山間部の素朴な暮らしぶりを、圧倒的な映像美で映し出す。",
+    "overview_en": "A teacher, in search of inspiration, travels to the most remote school in the world, where he ends up realizing how important his job is and appreciating the value of yak dung.",
+    "poster_path": "/mL1OQc1cxGsOIVHgjDvyvmPSmad.jpg",
+    "backdrop_path": "/boGRStbspjqtNtDVpqvj28sI5V3.jpg",
+    "release_date": "2019-11-16",
+    "director": "巴沃邱寧多傑",
+    "director_jp": "巴沃邱寧多傑",
+    "director_en": "Pawo Choyning Dorji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 7.427,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BT",
+        "name": "Bhutan"
+      },
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "アフター・オール・ディーズ・イヤーズデジタル・リマスター版 \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "tmdb_id": 870767,
+    "tmdb_title_jp": "アフター・オール・ディーズ・イヤーズ",
+    "tmdb_title_en": "After All These Years",
+    "tmdb_title_original": "其後",
+    "tmdb_original_language": "zh",
+    "overview": "10年ぶりに故郷に帰ってきたア・ジェは、家族にすら忘れ去られていた上に、無実の罪を着せられ処刑されてしまう。しかし、そのア・ジェが再び人々の前に現れ……。過去と現在が複雑に交錯し、物語はやがて不穏な様相を呈していく。",
+    "overview_en": "Ah Jie returns to his hometown after several years and soon realizes that no one remembers him. Even his family denies his relationship to them. Depressed, Ah Jie meets Lao Huang, who tells Ah Jie that he can help uncover the truth to why no one recognizes him.",
+    "poster_path": "/wxiCztCZHrNUlm5eWOi3ytsOKFw.jpg",
+    "backdrop_path": "/fgFk1g029mIdmuaZns70dkRtHTN.jpg",
+    "release_date": "2012-10-13",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 98,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "マジック＆ロス \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "tmdb_id": 794101,
+    "tmdb_title_jp": "マジック＆ロス",
+    "tmdb_title_en": "Magic and Loss",
+    "tmdb_title_original": "향기의 상실",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A dreamlike drama produced by and starring Sugino Kiki, a rising star in the independent film world. Two women who meet on a mysterious resort island become captivated by its allure and venture into an ethereal realm. It is the second feature directed by Malaysian filmmaker Lim Kah Wai. Japanese Kiki (Sugino) and South Korean Kkobbi (Kim Kkobbi) arrive on Hong Kong's Lantau Island. They have both rented rooms at a hotel near the Mui Wo forest, but when they enter the lobby, the only other person around is a bellboy.",
+    "poster_path": "/hMd6V2ei7rOBXfE5S44780eXzJP.jpg",
+    "backdrop_path": "/hGyR5yOLCceQKskS526sW7BfDvE.jpg",
+    "release_date": "2010-10-01",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 80,
+    "vote_average": 4.0,
+    "tmdb_countries": []
+  },
+  "新世界の夜明け \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "tmdb_id": 258884,
+    "tmdb_title_jp": "新世界の夜明け",
+    "tmdb_title_en": "New World",
+    "tmdb_title_original": "新世界の夜明け",
+    "tmdb_original_language": "en",
+    "overview": "北京に暮らす若い女性ココは、日本の洗練された都会的なクリスマスにあこがれて大阪にやってくる。しかし、たどりついたのは、想像していたメトロポリタンな日本とは遠くかけはなれた、雑多な繁華街の大阪・新世界。言葉の通じない異国の地で、ココはてんやわんやの騒動に巻き込まれていく。",
+    "overview_en": "Coco, a Beijing modern girl wants to spend a romantic and fancy Christmas vacation in Osaka. However the place where she gets in is Shinsekai ( \"New World\" in English, is an old neighbourhood located next to south Osaka city's downtown \"Minami \" area, as known as one of the most poorest and dangerous area in Osaka.)When she arrives there, she starts feeling regret and frustrated by the encounters and the landscapes which are far beyond her expectation. Suddenly she is involved in an incident surrounds a Chinese family there, meanwhile she starts fascinated by Shinsekai through her wondering. In this short and unusual Christmas vacation, Coco discovers a \"Japan \" she never knows and a \"China\" that she is not familiar with.",
+    "poster_path": "/4dvuArouSdIaSsL1rWmpf0oWz9e.jpg",
+    "backdrop_path": "/kJjC1YNZKCaKnYREVTa42bD1Naa.jpg",
+    "release_date": "2011-10-29",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "COME & GO カム・アンド・ゴー \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "tmdb_id": 756800,
+    "tmdb_title_jp": "COME & GO カム・アンド・ゴー",
+    "tmdb_title_en": "Come and Go",
+    "tmdb_title_original": "COME & GO カム・アンド・ゴー",
+    "tmdb_original_language": "ja",
+    "overview": "大阪を舞台に描いた群像劇。通称「キタ」と呼ばれる大阪の繁華街で生きるアジア人たちの人生を描く。春のある日、大阪のキタにある古びたアパートの一室で白骨化した老女の死体が発見された。警察は捜査を開始し、アパート周辺で聞き込みを続けるが、孤独死なのか、あるいは財産がらみの謀殺なのか、さまざまな噂が飛び交っていた。同じころ、中国・台湾・韓国の観光客、マレーシアのビジネスマン、ネパールの難民、ミャンマー人留学生、ベトナム人技能実習生など、キタにやってきた外国人たちと、彼らと日常を共有する日本人たちの間に、さまざまな出来事が起こっている。やがて事件の捜査が終わるとき、人びとは新たな人生の岐路を迎える。",
+    "overview_en": "Tourists, foreigners and outcasts converge on the streets of Osaka in this sprawling ensemble drama by Japan-based, Malaysia-born filmmaker Lim Kah Wai. His eighth feature explores the lesser-known aspects of the Asian melting pot city through the eyes and experiences of a dozen characters who struggle to find their place in society: among them a Nepali refugee with dreams of opening a restaurant, a Burmese student struggling to make ends meet while working two jobs, and a Taiwanese sex tourist who travels to meet his favorite adult video actress.",
+    "poster_path": "/o6qKF1Q3ogCcFMFaRNEaGRv5mgk.jpg",
+    "backdrop_path": "/l4xdxwl50cfFUVHoJhUAhYQREgo.jpg",
+    "release_date": "2021-11-19",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 158,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "MY",
+        "name": "Malaysia"
+      }
+    ]
+  },
+  "【2026】大きな家": null,
+  "ブータン 山の教室【日本ブータン外交関係樹立40周年記念上映】": {
+    "tmdb_id": 627087,
+    "tmdb_title_jp": "ブータン 山の教室",
+    "tmdb_title_en": "Lunana: A Yak in the Classroom",
+    "tmdb_title_original": "ལུང་ནག་ན",
+    "tmdb_original_language": "dz",
+    "overview": "ヒマラヤ山脈の標高4800メートル、8日間のトレッキングでしかたどり着けない実在の村を舞台に、都会から来た教師と子どもたちの交流を描く。ブータン山間部の素朴な暮らしぶりを、圧倒的な映像美で映し出す。",
+    "overview_en": "A teacher, in search of inspiration, travels to the most remote school in the world, where he ends up realizing how important his job is and appreciating the value of yak dung.",
+    "poster_path": "/mL1OQc1cxGsOIVHgjDvyvmPSmad.jpg",
+    "backdrop_path": "/boGRStbspjqtNtDVpqvj28sI5V3.jpg",
+    "release_date": "2019-11-16",
+    "director": "巴沃邱寧多傑",
+    "director_jp": "巴沃邱寧多傑",
+    "director_en": "Pawo Choyning Dorji",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 7.427,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BT",
+        "name": "Bhutan"
+      },
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "ムー×ベルジネピクチャーズ 未確認アニメ夜話": null,
+  "ナショナル・ギャラリー 英国の至宝【追悼フレデリック・ワイズマン】": {
+    "tmdb_id": 266080,
+    "tmdb_title_jp": "National Gallery",
+    "tmdb_title_en": "National Gallery",
+    "tmdb_title_original": "National Gallery",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A portrait of the day-to-day operations of the National Gallery of London, that reveals the role of the employees and the experiences of the Gallery's visitors. The film portrays the role of the curators and conservators; the education, scientific, and conservation departments; and the audience of all kinds of people who come to experience it.",
+    "poster_path": "/7j8tD2Gt72aSPxekNcd8tS6Q2M5.jpg",
+    "backdrop_path": "/yIMBmCDSRjnPTuCuvmqmamdcQxK.jpg",
+    "release_date": "2014-10-08",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 174,
+    "vote_average": 7.283,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:266080": {
+    "tmdb_id": 266080,
+    "tmdb_title_jp": "National Gallery",
+    "tmdb_title_en": "National Gallery",
+    "tmdb_title_original": "National Gallery",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A portrait of the day-to-day operations of the National Gallery of London, that reveals the role of the employees and the experiences of the Gallery's visitors. The film portrays the role of the curators and conservators; the education, scientific, and conservation departments; and the audience of all kinds of people who come to experience it.",
+    "poster_path": "/7j8tD2Gt72aSPxekNcd8tS6Q2M5.jpg",
+    "backdrop_path": "/yIMBmCDSRjnPTuCuvmqmamdcQxK.jpg",
+    "release_date": "2014-10-08",
+    "director": "Frederick Wiseman",
+    "director_jp": "Frederick Wiseman",
+    "director_en": "Frederick Wiseman",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 174,
+    "vote_average": 7.283,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "『コードギアス 亡国のアキト 第3章』【コードギアス20周年記念復刻上映会 Road to CODE GEASS 20th Year】": {
+    "tmdb_id": 347200,
+    "tmdb_title_jp": "コードギアス 亡国のアキト 第3章 輝くもの天より堕つ",
+    "tmdb_title_en": "Code Geass: Akito the Exiled 3: The Brightness Falls",
+    "tmdb_title_original": "コードギアス 亡国のアキト 第3章「輝くもの天より堕つ」",
+    "tmdb_original_language": "ja",
+    "overview": "任務を遂行して帰還するアギトたちワイバァン隊だったが、ある者の策略でID登録を抹消されたために駐屯地に入ることができなくなってしまう。当てもなくさまよう彼らは、旅の生活を続けている老婆の集団と過ごすことになる。つかの間の休息を取りながら、アキトやレイラらは、お互いの過去や素性について知っていくように。一方、ユーロ・ブリタニアに謎多き軍師ジュリアス・キングスレイが着任。シン・ヒュウガ・シャイングは、対ユーロピア戦線を指揮する彼の姿を静観しつつ、自身の野望を達成すべく動き始めようとしていた。",
+    "overview_en": "After discovering the face of their true enemy, someone who is related to Akito and responsible for the Geass placed upon him, W-0 attempts to return to their base at Castle Weisswolf. However, stranded in Warsaw due to a complication involving their military identification, they are forced to accept the help of local gypsies, allowing the squad to take some time to deepen their bonds. Meanwhile, Britannian advisor Julius Kingsley and his guard Suzaku Kururugi begin working together with the Knights of St. Michael in order to crush the European resistance once and for all, armed with the destructive power of a giant weapon known as the Ark Fleet.",
+    "poster_path": "/f2Mrd2Prv6gViwMTYvwLwFBsfD1.jpg",
+    "backdrop_path": "/8fGYIoxjKS2IfiniLaTHt1ebLv6.jpg",
+    "release_date": "2015-05-02",
+    "director": "赤根和樹",
+    "director_jp": "赤根和樹",
+    "director_en": "Kazuki Akane",
+    "genres": [
+      "アクション",
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Action",
+      "Animation",
+      "Science Fiction"
+    ],
+    "runtime": 60,
+    "vote_average": 6.391,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:347200": {
+    "tmdb_id": 347200,
+    "tmdb_title_jp": "コードギアス 亡国のアキト 第3章 輝くもの天より堕つ",
+    "tmdb_title_en": "Code Geass: Akito the Exiled 3: The Brightness Falls",
+    "tmdb_title_original": "コードギアス 亡国のアキト 第3章「輝くもの天より堕つ」",
+    "tmdb_original_language": "ja",
+    "overview": "任務を遂行して帰還するアギトたちワイバァン隊だったが、ある者の策略でID登録を抹消されたために駐屯地に入ることができなくなってしまう。当てもなくさまよう彼らは、旅の生活を続けている老婆の集団と過ごすことになる。つかの間の休息を取りながら、アキトやレイラらは、お互いの過去や素性について知っていくように。一方、ユーロ・ブリタニアに謎多き軍師ジュリアス・キングスレイが着任。シン・ヒュウガ・シャイングは、対ユーロピア戦線を指揮する彼の姿を静観しつつ、自身の野望を達成すべく動き始めようとしていた。",
+    "overview_en": "After discovering the face of their true enemy, someone who is related to Akito and responsible for the Geass placed upon him, W-0 attempts to return to their base at Castle Weisswolf. However, stranded in Warsaw due to a complication involving their military identification, they are forced to accept the help of local gypsies, allowing the squad to take some time to deepen their bonds. Meanwhile, Britannian advisor Julius Kingsley and his guard Suzaku Kururugi begin working together with the Knights of St. Michael in order to crush the European resistance once and for all, armed with the destructive power of a giant weapon known as the Ark Fleet.",
+    "poster_path": "/f2Mrd2Prv6gViwMTYvwLwFBsfD1.jpg",
+    "backdrop_path": "/8fGYIoxjKS2IfiniLaTHt1ebLv6.jpg",
+    "release_date": "2015-05-02",
+    "director": "赤根和樹",
+    "director_jp": "赤根和樹",
+    "director_en": "Kazuki Akane",
+    "genres": [
+      "アクション",
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Action",
+      "Animation",
+      "Science Fiction"
+    ],
+    "runtime": 60,
+    "vote_average": 6.391,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "わたしが裁判官をやめた後でも 原発をとめる活動をしている理由": null,
+  "TOTO&MIMI": null,
+  "蒸発": {
+    "tmdb_id": 1249236,
+    "tmdb_title_jp": "蒸発",
+    "tmdb_title_en": "Johatsu - Into Thin Air",
+    "tmdb_title_original": "Johatsu - Die sich in Luft auflösen",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "In Japan, thousands of people disappear voluntarily every year. And there are companies ready to help those who want to disappear without a trace and start a new life somewhere else. Meet some of them in a film that soberly examines a modern phenomenon.",
+    "poster_path": "/6RQEJnm563rZsE3Zxdm0CbVV9Xd.jpg",
+    "backdrop_path": "/8DSNpmLej632QTmVHrnQNKrwVQY.jpg",
+    "release_date": "2024-09-19",
+    "director": "森あらた",
+    "director_jp": "森あらた",
+    "director_en": "Arata Mori",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 86,
+    "vote_average": 6.962,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "tmdb:1249236": {
+    "tmdb_id": 1249236,
+    "tmdb_title_jp": "蒸発",
+    "tmdb_title_en": "Johatsu - Into Thin Air",
+    "tmdb_title_original": "Johatsu - Die sich in Luft auflösen",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "In Japan, thousands of people disappear voluntarily every year. And there are companies ready to help those who want to disappear without a trace and start a new life somewhere else. Meet some of them in a film that soberly examines a modern phenomenon.",
+    "poster_path": "/6RQEJnm563rZsE3Zxdm0CbVV9Xd.jpg",
+    "backdrop_path": "/8DSNpmLej632QTmVHrnQNKrwVQY.jpg",
+    "release_date": "2024-09-19",
+    "director": "森あらた",
+    "director_jp": "森あらた",
+    "director_en": "Arata Mori",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 86,
+    "vote_average": 6.962,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "オートフィクション": {
+    "tmdb_id": 642686,
+    "tmdb_title_jp": "Autoficción",
+    "tmdb_title_en": "Autofiction",
+    "tmdb_title_original": "Autoficción",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "Borrowing its title from a literary genre, the film acknowledges the indeterminacy of both fiction and the self. Noir elements are reduced to deadpan gestures under bright California sunlight. Field recordings made in New Zealand are heard as women speak with each other about motherhood, abortion, breakups and anxiety. A civil rights parade moves slowly down a street. Bodies appear in states of weariness, injured or at rest, while songs by Irma Thomas and Goldberg evoke the passing of time and an uncertain future.",
+    "poster_path": "/AtzVpUo8bCGXcJHFeIMhc31B5xd.jpg",
+    "backdrop_path": null,
+    "release_date": "2020-09-20",
+    "director": "Laida Lertxundi",
+    "director_jp": "Laida Lertxundi",
+    "director_en": "Laida Lertxundi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 13,
+    "vote_average": 4.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NZ",
+        "name": "New Zealand"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "SUPER LUCKY GIRL": null,
+  "凪待ち": {
+    "tmdb_id": 537752,
+    "tmdb_title_jp": "凪待ち",
+    "tmdb_title_en": "Sea of Revival",
+    "tmdb_title_original": "凪待ち",
+    "tmdb_original_language": "ja",
+    "overview": "木野本郁男(香取慎吾)はギャンブルをやめ、恋人の亜弓(西田尚美)と亜弓の娘の美波(恒松祐里)と共に亜弓の故郷である宮城県の石巻に移住し、印刷会社で働き始める。ある日、亜弓とけんかした美波が家に帰らず、亜弓はパニックになる。亜弓を落ち着かせようとした郁男は亜弓に激しく非難され、彼女を突き放してしまう。その夜、亜弓が殺される。",
+    "overview_en": "After a man gets fired from his work at a printing plant, he moves with his couple to her hometown in Ishinomaki, Miyagi Prefecture. There, the woman opens up a beauty salon. They enjoy peaceful days, but small problems occur which leads to an irrevocable situation.",
+    "poster_path": "/lrCeOklJZfnZdn54pwfHzQyRQgO.jpg",
+    "backdrop_path": "/bUTA5zX10ZaN6nMNhmTMU9jKdlG.jpg",
+    "release_date": "2019-06-28",
+    "director": "白石和彌",
+    "director_jp": "白石和彌",
+    "director_en": "Kazuya Shiraishi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 124,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:537752": {
+    "tmdb_id": 537752,
+    "tmdb_title_jp": "凪待ち",
+    "tmdb_title_en": "Sea of Revival",
+    "tmdb_title_original": "凪待ち",
+    "tmdb_original_language": "ja",
+    "overview": "木野本郁男(香取慎吾)はギャンブルをやめ、恋人の亜弓(西田尚美)と亜弓の娘の美波(恒松祐里)と共に亜弓の故郷である宮城県の石巻に移住し、印刷会社で働き始める。ある日、亜弓とけんかした美波が家に帰らず、亜弓はパニックになる。亜弓を落ち着かせようとした郁男は亜弓に激しく非難され、彼女を突き放してしまう。その夜、亜弓が殺される。",
+    "overview_en": "After a man gets fired from his work at a printing plant, he moves with his couple to her hometown in Ishinomaki, Miyagi Prefecture. There, the woman opens up a beauty salon. They enjoy peaceful days, but small problems occur which leads to an irrevocable situation.",
+    "poster_path": "/lrCeOklJZfnZdn54pwfHzQyRQgO.jpg",
+    "backdrop_path": "/bUTA5zX10ZaN6nMNhmTMU9jKdlG.jpg",
+    "release_date": "2019-06-28",
+    "director": "白石和彌",
+    "director_jp": "白石和彌",
+    "director_en": "Kazuya Shiraishi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 124,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "みつかるまで": null,
+  "シネクラブ『ソルフェリーノの戦い』": {
+    "tmdb_id": 195173,
+    "tmdb_title_jp": "La Bataille de Solférino",
+    "tmdb_title_en": "Age of Panic",
+    "tmdb_title_original": "La Bataille de Solférino",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "May 6, 2012. Cable news reporter Laetitia is covering the French presidential elections, while Vincent, her ex-husband, demands to see their two young daughters. It's a manic Sunday in Paris: two agitated girls, a frazzled babysitter, a needy new boyfriend, a grumpy lawyer and France cut in half!",
+    "poster_path": "/ga63T8UvWRgtyk9oUzTU9ZEizks.jpg",
+    "backdrop_path": "/h2qMyqJh5WsYLf8Ex876voDVEFa.jpg",
+    "release_date": "2013-09-18",
+    "director": "ジュスティーヌ・トリエ",
+    "director_jp": "ジュスティーヌ・トリエ",
+    "director_en": "Justine Triet",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 94,
+    "vote_average": 6.006,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "【セボのアトリエ】2026年上半期のフランス映画": null,
+  "シネクラブ『ジムの物語』": {
+    "tmdb_id": 1102938,
+    "tmdb_title_jp": "Le Roman de Jim",
+    "tmdb_title_en": "Jim's Story",
+    "tmdb_title_original": "Le Roman de Jim",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Aymeric runs into Florence, a former coworker, one evening in Saint-Claude in the Haut-Jura. She is six months pregnant and single. When she gives birth to Jim, Aymeric is there. They spend happy years together until Christophe, Jim's biological father, shows up... It could be the start of a melodrama, it's also the start of an odyssey into fatherhood.",
+    "poster_path": "/4KKoLrfblH2AydjwI2vJS8tE3P2.jpg",
+    "backdrop_path": "/1umiZBQ6oUbyKATwyxAVRlDELnd.jpg",
+    "release_date": "2024-08-14",
+    "director": "Jean-Marie Larrieu",
+    "director_jp": "Jean-Marie Larrieu",
+    "director_en": "Jean-Marie Larrieu",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 101,
+    "vote_average": 6.863,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1374685": {
+    "tmdb_id": 1374685,
+    "tmdb_title_jp": "Чимээгүй хотын жолооч",
+    "tmdb_title_en": "Silent City Driver",
+    "tmdb_title_original": "Чимээгүй хотын жолооч",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "In a city rife with corruption and scandals, surrounded by indifference, the solitary and enigmatic Myagmar lives in isolation after enduring 14 brutal years in prison. Scarred both physically and emotionally, his only companions are the stray dogs he has rescued over time.",
+    "poster_path": "/4l5UK4XZYd1xf9DD4bHYln7EClP.jpg",
+    "backdrop_path": "/wpf4SD4ea1KB1pYafxO2SeMokVa.jpg",
+    "release_date": "2024-11-21",
+    "director": "Sengedorj Janchivdorj",
+    "director_jp": "Sengedorj Janchivdorj",
+    "director_en": "Sengedorj Janchivdorj",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 138,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MN",
+        "name": "Mongolia"
+      }
+    ]
+  },
+  "tmdb:771033": {
+    "tmdb_id": 771033,
+    "tmdb_title_jp": " Хэвтрийн хүн",
+    "tmdb_title_en": "Bedridden",
+    "tmdb_title_original": " Хэвтрийн хүн",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "A multi-generational story of love and loss centered around a young writer who must face the consequences of his egocentric decision to become bedridden.",
+    "poster_path": "/4h0OmFWXty6yKNLpcemmwbecEub.jpg",
+    "backdrop_path": "/2NXMF5Os5IJKAfoC5kKFa6Le71O.jpg",
+    "release_date": "2020-10-20",
+    "director": "Byamba Sakhya",
+    "director_jp": "Byamba Sakhya",
+    "director_en": "Byamba Sakhya",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "MN",
+        "name": "Mongolia"
+      }
+    ]
+  },
+  "tmdb:1558952": {
+    "tmdb_id": 1558952,
+    "tmdb_title_jp": "Шувуулахуй",
+    "tmdb_title_en": "Falconry",
+    "tmdb_title_original": "Шувуулахуй",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "Batbileg lives in a ger district of Ulaanbaatar with his wife and two children, making a living by training falcons for hunting and showing them to tourists. Every year, at the beginning of summer, he captures and trains the hawks, and at the start of winter, he releases them back into the wild. One of his recurring endeavors begins with training a hawk named “Andgai.”(Oath). However, laws and regulations on bird training are lacking, and the densely populated urban environment, crowded with people and buildings, is far from suitable.  Batbileg aims to revive Mongolia’s ancient falconry culture, raise public awareness of the value of falcons, and pass on conservation ideals to the younger generation. Yet, in the face of the many challenges before him, he is forced to confront a dilemma: should he comply with the law, or remain faithful to his ancestral tradition?",
+    "poster_path": "/4MbJndVy3jTjD8Bam9dYlv6PbKE.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-09",
+    "director": "Enkhbayar Bataa",
+    "director_jp": "Enkhbayar Bataa",
+    "director_en": "Enkhbayar Bataa",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 60,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1320329": {
+    "tmdb_id": 1320329,
+    "tmdb_title_jp": "Чоно үүр шөнөөр ирдэг",
+    "tmdb_title_en": "The Wolves Always Come at Night",
+    "tmdb_title_original": "Чоно үүр шөнөөр ирдэг",
+    "tmdb_original_language": "mn",
+    "overview": "",
+    "overview_en": "Davaa and Zaya are a young nomadic couple in the vast Bayanhongor region of Mongolia who are in the throes of animal birthing season when a seismic event suddenly changes their lives. They are forced to migrate afar but are haunted by their past lives.",
+    "poster_path": "/3WmhSLBCyg47uedMsBSrI2KMz0E.jpg",
+    "backdrop_path": "/zuDN69wnVUO8AbJWrWUufscwom.jpg",
+    "release_date": "2025-07-03",
+    "director": "Gabrielle Brady",
+    "director_jp": "Gabrielle Brady",
+    "director_en": "Gabrielle Brady",
+    "genres": [
+      "ドキュメンタリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 9.25,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "MN",
+        "name": "Mongolia"
+      }
+    ]
+  },
+  "tmdb:999056": {
+    "tmdb_id": 999056,
+    "tmdb_title_jp": "潛行",
+    "tmdb_title_en": "I Did It My Way",
+    "tmdb_title_original": "潛行",
+    "tmdb_original_language": "cn",
+    "overview": "",
+    "overview_en": "Ho Sau, an undercover agent, has been working with Yau, a drug lord, for years, but his job and family are in trouble.",
+    "poster_path": "/dtWMtCy0nuFN3QsmWDphFpK34wL.jpg",
+    "backdrop_path": "/oIAR486U0QGyMp3dkQXdI4J9RIk.jpg",
+    "release_date": "2023-12-29",
+    "director": "關智耀",
+    "director_jp": "關智耀",
+    "director_en": "Jason Kwan",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 115,
+    "vote_average": 5.056,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:89326": {
+    "tmdb_id": 89326,
+    "tmdb_title_jp": "96 Minutes",
+    "tmdb_title_en": "96 Minutes",
+    "tmdb_title_original": "96 Minutes",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "The story of 4 lives slammed together in a shocking moment. Intercutting between a carjacking and the separate stories of the 4 kids, we watch as they hurtle toward a life-changing end.",
+    "poster_path": "/39FwN8IVp8y46KJ6VjA8oFY8e1o.jpg",
+    "backdrop_path": "/uiW42lmewHmbtgnjVmMyABNdoAL.jpg",
+    "release_date": "2011-10-14",
+    "director": "Aimee Lagos",
+    "director_jp": "Aimee Lagos",
+    "director_en": "Aimee Lagos",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 93,
+    "vote_average": 5.685,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:5336": {
+    "tmdb_id": 5336,
+    "tmdb_title_jp": "ソドムの市",
+    "tmdb_title_en": "Salò, or the 120 Days of Sodom",
+    "tmdb_title_original": "Salò o le 120 giornate di Sodoma",
+    "tmdb_original_language": "it",
+    "overview": "1944年、第2次大戦下の北イタリア。ナチズムに加担する公爵、大司教、最高判事、大統領の4人の権力者は町中から美少年美少女達を狩り集め、レイプ・スカトロ・ホモ・ソドミー・オナニー・そして虐殺と、ありとあらゆる想像を絶した地獄のパノラマを繰り広げる。",
+    "overview_en": "Four corrupted fascist libertines round up 9 teenage boys and girls and subject them to 120 days of sadistic physical, mental and sexual torture.",
+    "poster_path": "/AfYDkfOfhMh3mUTgHf74YEPQL8c.jpg",
+    "backdrop_path": "/j88mvEqaL9i9VTcmDgNZ1rTn3g0.jpg",
+    "release_date": "1976-01-10",
+    "director": "ピエル・パオロ・パゾリーニ",
+    "director_jp": "ピエル・パオロ・パゾリーニ",
+    "director_en": "Pier Paolo Pasolini",
+    "genres": [
+      "ドラマ",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Horror"
+    ],
+    "runtime": 117,
+    "vote_average": 6.342,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1068607": {
+    "tmdb_id": 1068607,
+    "tmdb_title_jp": "劇場総集編「SSSS.DYNAZENON」",
+    "tmdb_title_en": "SSSS.DYNAZENON Grand Episode",
+    "tmdb_title_original": "劇場総集編「SSSS.DYNAZENON」",
+    "tmdb_original_language": "ja",
+    "overview": "フジヨキ台の平凡な高校生・麻中蓬は、ある日の帰り道、「怪獣使い」を名乗る怪しい男・ガウマと出会う。そんな彼らの前に出現する巨大怪獣、そして巨大ロボット〈ダイナゼノン〉！",
+    "overview_en": "High schooler Yomogi comes across Gauma, a strange drifter claiming to be a Kaiju User. Soon after, a Kaiju attacks, and Gauma summons the giant robot Dynazenon to fight it. Yomogi, his classmate Yume, and local NEET Koyomi are caught in the chaos and join as copilots. Together, they form the Gauma Team. But Kaiju Eugenicists, a secret society of teens with special powers, stand in their way.",
+    "poster_path": "/mLD1XxCcaZUMXWgnx2b36ABWVsf.jpg",
+    "backdrop_path": "/gCkSjWRG9ebP89Ha20Lm8BRuZTN.jpg",
+    "release_date": "2023-03-10",
+    "director": "宮島善博",
+    "director_jp": "宮島善博",
+    "director_en": "Yoshihiro Miyajima",
+    "genres": [
+      "アニメーション",
+      "アクション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Action",
+      "Science Fiction"
+    ],
+    "runtime": 120,
+    "vote_average": 4.955,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:794101": {
+    "tmdb_id": 794101,
+    "tmdb_title_jp": "マジック＆ロス",
+    "tmdb_title_en": "Magic and Loss",
+    "tmdb_title_original": "향기의 상실",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A dreamlike drama produced by and starring Sugino Kiki, a rising star in the independent film world. Two women who meet on a mysterious resort island become captivated by its allure and venture into an ethereal realm. It is the second feature directed by Malaysian filmmaker Lim Kah Wai. Japanese Kiki (Sugino) and South Korean Kkobbi (Kim Kkobbi) arrive on Hong Kong's Lantau Island. They have both rented rooms at a hotel near the Mui Wo forest, but when they enter the lobby, the only other person around is a bellboy.",
+    "poster_path": "/hMd6V2ei7rOBXfE5S44780eXzJP.jpg",
+    "backdrop_path": "/hGyR5yOLCceQKskS526sW7BfDvE.jpg",
+    "release_date": "2010-10-01",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 80,
+    "vote_average": 4.0,
+    "tmdb_countries": []
+  },
+  "tmdb:258884": {
+    "tmdb_id": 258884,
+    "tmdb_title_jp": "新世界の夜明け",
+    "tmdb_title_en": "New World",
+    "tmdb_title_original": "新世界の夜明け",
+    "tmdb_original_language": "en",
+    "overview": "北京に暮らす若い女性ココは、日本の洗練された都会的なクリスマスにあこがれて大阪にやってくる。しかし、たどりついたのは、想像していたメトロポリタンな日本とは遠くかけはなれた、雑多な繁華街の大阪・新世界。言葉の通じない異国の地で、ココはてんやわんやの騒動に巻き込まれていく。",
+    "overview_en": "Coco, a Beijing modern girl wants to spend a romantic and fancy Christmas vacation in Osaka. However the place where she gets in is Shinsekai ( \"New World\" in English, is an old neighbourhood located next to south Osaka city's downtown \"Minami \" area, as known as one of the most poorest and dangerous area in Osaka.)When she arrives there, she starts feeling regret and frustrated by the encounters and the landscapes which are far beyond her expectation. Suddenly she is involved in an incident surrounds a Chinese family there, meanwhile she starts fascinated by Shinsekai through her wondering. In this short and unusual Christmas vacation, Coco discovers a \"Japan \" she never knows and a \"China\" that she is not familiar with.",
+    "poster_path": "/4dvuArouSdIaSsL1rWmpf0oWz9e.jpg",
+    "backdrop_path": "/kJjC1YNZKCaKnYREVTa42bD1Naa.jpg",
+    "release_date": "2011-10-29",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:756800": {
+    "tmdb_id": 756800,
+    "tmdb_title_jp": "COME & GO カム・アンド・ゴー",
+    "tmdb_title_en": "Come and Go",
+    "tmdb_title_original": "COME & GO カム・アンド・ゴー",
+    "tmdb_original_language": "ja",
+    "overview": "大阪を舞台に描いた群像劇。通称「キタ」と呼ばれる大阪の繁華街で生きるアジア人たちの人生を描く。春のある日、大阪のキタにある古びたアパートの一室で白骨化した老女の死体が発見された。警察は捜査を開始し、アパート周辺で聞き込みを続けるが、孤独死なのか、あるいは財産がらみの謀殺なのか、さまざまな噂が飛び交っていた。同じころ、中国・台湾・韓国の観光客、マレーシアのビジネスマン、ネパールの難民、ミャンマー人留学生、ベトナム人技能実習生など、キタにやってきた外国人たちと、彼らと日常を共有する日本人たちの間に、さまざまな出来事が起こっている。やがて事件の捜査が終わるとき、人びとは新たな人生の岐路を迎える。",
+    "overview_en": "Tourists, foreigners and outcasts converge on the streets of Osaka in this sprawling ensemble drama by Japan-based, Malaysia-born filmmaker Lim Kah Wai. His eighth feature explores the lesser-known aspects of the Asian melting pot city through the eyes and experiences of a dozen characters who struggle to find their place in society: among them a Nepali refugee with dreams of opening a restaurant, a Burmese student struggling to make ends meet while working two jobs, and a Taiwanese sex tourist who travels to meet his favorite adult video actress.",
+    "poster_path": "/o6qKF1Q3ogCcFMFaRNEaGRv5mgk.jpg",
+    "backdrop_path": "/l4xdxwl50cfFUVHoJhUAhYQREgo.jpg",
+    "release_date": "2021-11-19",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 158,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "MY",
+        "name": "Malaysia"
+      }
+    ]
+  },
+  "tmdb:642686": {
+    "tmdb_id": 642686,
+    "tmdb_title_jp": "Autoficción",
+    "tmdb_title_en": "Autofiction",
+    "tmdb_title_original": "Autoficción",
+    "tmdb_original_language": "es",
+    "overview": "",
+    "overview_en": "Borrowing its title from a literary genre, the film acknowledges the indeterminacy of both fiction and the self. Noir elements are reduced to deadpan gestures under bright California sunlight. Field recordings made in New Zealand are heard as women speak with each other about motherhood, abortion, breakups and anxiety. A civil rights parade moves slowly down a street. Bodies appear in states of weariness, injured or at rest, while songs by Irma Thomas and Goldberg evoke the passing of time and an uncertain future.",
+    "poster_path": "/AtzVpUo8bCGXcJHFeIMhc31B5xd.jpg",
+    "backdrop_path": null,
+    "release_date": "2020-09-20",
+    "director": "Laida Lertxundi",
+    "director_jp": "Laida Lertxundi",
+    "director_en": "Laida Lertxundi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 13,
+    "vote_average": 4.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NZ",
+        "name": "New Zealand"
+      },
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:195173": {
+    "tmdb_id": 195173,
+    "tmdb_title_jp": "La Bataille de Solférino",
+    "tmdb_title_en": "Age of Panic",
+    "tmdb_title_original": "La Bataille de Solférino",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "May 6, 2012. Cable news reporter Laetitia is covering the French presidential elections, while Vincent, her ex-husband, demands to see their two young daughters. It's a manic Sunday in Paris: two agitated girls, a frazzled babysitter, a needy new boyfriend, a grumpy lawyer and France cut in half!",
+    "poster_path": "/ga63T8UvWRgtyk9oUzTU9ZEizks.jpg",
+    "backdrop_path": "/h2qMyqJh5WsYLf8Ex876voDVEFa.jpg",
+    "release_date": "2013-09-18",
+    "director": "ジュスティーヌ・トリエ",
+    "director_jp": "ジュスティーヌ・トリエ",
+    "director_en": "Justine Triet",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 94,
+    "vote_average": 6.006,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
       }
     ]
   }
