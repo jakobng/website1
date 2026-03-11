@@ -2317,32 +2317,6 @@
     ],
     "vote_average": 6.7
   },
-  "Weekly Arthouse Screening": null,
-  "Northern Exposure Short Film Showcase": null,
-  "Arrow Video Club: Fulci Double Bill": null,
-  "Bottomless School of Rock": null,
-  "Hard Boiled (4K)": null,
-  "Highlander 40th Anniversary": {
-    "tmdb_id": 8009,
-    "tmdb_title": "Highlander",
-    "tmdb_original_title": "Highlander",
-    "overview": "He fought his first battle on the Scottish Highlands in 1536. He will fight his greatest battle on the streets of New York City in 1986. His name is Connor MacLeod. He is immortal.",
-    "poster_path": "/8Z8dptJEypuLoOQro1WugD855YE.jpg",
-    "backdrop_path": "/2EfbAWLq8s2f1LxTAIuLGYpKETV.jpg",
-    "release_date": "1986-03-07",
-    "director": "Russell Mulcahy",
-    "runtime": 116,
-    "genres": [
-      "Adventure",
-      "Action",
-      "Fantasy"
-    ],
-    "vote_average": 6.859
-  },
-  "The Oscars Live at CULTPLEX": null,
-  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
-  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
-  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
   "Jurassic Park": {
     "tmdb_id": 329,
     "tmdb_title": "Jurassic Park",
@@ -2378,7 +2352,80 @@
     ],
     "vote_average": 7.19
   },
+  "Weekly Arthouse Screening": null,
+  "Northern Exposure Short Film Showcase": null,
+  "Arrow Video Club: Fulci Double Bill": null,
+  "Bottomless School of Rock": null,
+  "Hard Boiled (4K)": null,
+  "Highlander 40th Anniversary": {
+    "tmdb_id": 8009,
+    "tmdb_title": "Highlander",
+    "tmdb_original_title": "Highlander",
+    "overview": "He fought his first battle on the Scottish Highlands in 1536. He will fight his greatest battle on the streets of New York City in 1986. His name is Connor MacLeod. He is immortal.",
+    "poster_path": "/8Z8dptJEypuLoOQro1WugD855YE.jpg",
+    "backdrop_path": "/2EfbAWLq8s2f1LxTAIuLGYpKETV.jpg",
+    "release_date": "1986-03-07",
+    "director": "Russell Mulcahy",
+    "runtime": 116,
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "vote_average": 6.859
+  },
+  "The Oscars Live at CULTPLEX": null,
+  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
+  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
+  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
   "Othello": null,
+  "The Love That Remains": {
+    "tmdb_id": 1258509,
+    "tmdb_title": "The Love That Remains",
+    "tmdb_original_title": "Ástin sem eftir er",
+    "overview": "Tenderly captures a year in the life of a family as the parents navigate their separation. Through both playful and heartfelt moments, the film portrays the bittersweet essence of faded love and shared memories amidst the changing seasons.",
+    "poster_path": "/cW1T0oQcyVfcRR0e4cevno9Zc2h.jpg",
+    "backdrop_path": "/1H8LyqAhkHgQPaDNaTZGAdRpSg.jpg",
+    "release_date": "2025-08-14",
+    "director": "Hlynur Pálmason",
+    "runtime": 109,
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 6.4
+  },
+  "A Pale View of Hills": {
+    "tmdb_id": 1337985,
+    "tmdb_title": "A Pale View of Hills",
+    "tmdb_original_title": "遠い山なみの光",
+    "overview": "Dual timelines explore a Japanese widow's memories spanning post-war Nagasaki in 1950s and England during 1980s Cold War era, unraveling secrets that intertwine her past and present experiences across borders.",
+    "poster_path": "/9A9FOqFH4UX9EGPxg9SFxO9gnag.jpg",
+    "backdrop_path": "/w94lnreSjvNWBu7zEEWo9yW7iqk.jpg",
+    "release_date": "2025-09-05",
+    "director": "Kei Ishikawa",
+    "runtime": 123,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "vote_average": 7.8
+  },
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.738
+  },
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
     "tmdb_title": "Singin' in the Rain",
