@@ -7902,5 +7902,424 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "モンテ・クリスト伯": {
+    "english_title": "The Count of Monte Cristo",
+    "release_year": 2002,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "The Count of Monte Cristo",
+    "director": "Kevin Reynolds",
+    "country": "USA",
+    "failed": true
+  },
+  "次郎物語（1955）": {
+    "english_title": "The Tale of Jiro",
+    "release_year": 1955,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "次郎物語",
+    "director": "Hiroshi Shimizu",
+    "country": "Japan"
+  },
+  "強制沈黙　殺される記者たち": {
+    "english_title": "Forced Silence: Murdered Journalists",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "強制沈黙　殺される記者たち",
+    "director": "Yutaka Hagiwara",
+    "country": "Japan",
+    "failed": true
+  },
+  "War Bride2 奈緒と4人の戦争花嫁": {
+    "english_title": "War Bride 2: Nao and the Four War Brides",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "War Bride2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "田村真子　のと鉄道　明日へ向かう旅": {
+    "english_title": "Tamura Mako: Noto Railway Journey Towards Tomorrow",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "田村真子　のと鉄道　明日へ向かう旅",
+    "director": "Kiminori Yajima, Hiroshi Koike",
+    "country": "Japan",
+    "failed": true
+  },
+  "左ききのエレン（3話先行上映）": {
+    "english_title": "Eren the Southpaw",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "左ききのエレン（3話先行上映）",
+    "director": "Toshimasa Suzuki",
+    "country": "Japan",
+    "failed": true
+  },
+  "Bedridden 寝たきりを選んだ男": {
+    "english_title": "Bedridden",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Bedridden",
+    "director": "Byamba Sakhya",
+    "country": "Mongolia"
+  },
+  "SHUVUULAKHUI ハヤブサと男": {
+    "english_title": "Falconry",
+    "release_year": 2025,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Шувуулахуй",
+    "director": "Enkhbayar Bataa",
+    "country": "Mongolia"
+  },
+  "ソドムの市（1975）": {
+    "english_title": "Salò, or the 120 Days of Sodom",
+    "release_year": 1975,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Salò o le 120 giornate di Sodoma",
+    "director": "Pier Paolo Pasolini",
+    "country": "Italy"
+  },
+  "映画　冬のソナタ　日本特別版": {
+    "english_title": "Winter Sonata Japan Special Edition",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "映画 冬のソナタ 日本特別版",
+    "director": "Yoon Seok-ho",
+    "country": "South Korea",
+    "failed": true
+  },
+  "ナショナル・ギャラリー　英国の至宝": {
+    "english_title": "National Gallery",
+    "release_year": 2014,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "National Gallery",
+    "director": "Frederick Wiseman",
+    "country": "France, USA"
+  },
+  "ストリートダンサー": {
+    "english_title": "Street Dancer 3D",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Street Dancer 3D",
+    "director": "Remo D'Souza",
+    "country": "India"
+  },
+  "マッドゴッド": {
+    "english_title": "Mad God",
+    "release_year": 2021,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mad God",
+    "director": "Phil Tippett",
+    "country": "USA"
+  },
+  "父と家族とわたしのこと": {
+    "english_title": "My Father, My Family, And Me",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "父と家族とわたしのこと",
+    "director": "Yoma Shimada",
+    "country": "Japan",
+    "failed": true
+  },
+  "ウィッカーマン final cut": {
+    "english_title": "The Wicker Man: The Final Cut",
+    "release_year": 2013,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Wicker Man",
+    "director": "Robin Hardy",
+    "country": "United Kingdom"
+  },
+  "笑む窓のある家": {
+    "english_title": "The House with Laughing Windows",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La casa dalle finestre che ridono",
+    "director": "Pupi Avati",
+    "country": "Italy"
+  },
+  "アルチバルド・デラクルスの犯罪的人生": {
+    "english_title": "The Criminal Life of Archibaldo de la Cruz",
+    "release_year": 1955,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Ensayo de un crimen",
+    "director": "Luis Buñuel",
+    "country": "Mexico"
+  },
+  "ヘビー・メタル": {
+    "english_title": "Heavy Metal",
+    "release_year": 1981,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Heavy Metal",
+    "director": "Gerald Potterton",
+    "country": "Canada"
+  },
+  "リキッド・スカイ": {
+    "english_title": "Liquid Sky",
+    "release_year": 1982,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Liquid Sky",
+    "director": "Slava Tsukerman",
+    "country": "USA"
+  },
+  "ロードゲーム": {
+    "english_title": "Road Game",
+    "release_year": 2024,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ロードゲーム",
+    "director": "Satoru Watanabe",
+    "country": "Japan"
+  },
+  "ZEDER 死霊の復活祭": {
+    "english_title": "Zeder",
+    "release_year": 1983,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Zeder",
+    "director": "Pupi Avati",
+    "country": "Italy"
+  },
+  "櫻の園（1990）": {
+    "english_title": "The Cherry Orchard",
+    "release_year": 1990,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "櫻の園",
+    "director": "Shun Nakahara",
+    "country": "Japan"
+  },
+  "WAR バトル・オブ・フェイト": {
+    "english_title": "War 2",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "War 2",
+    "director": "Ayan Mukerji",
+    "country": "India"
+  },
+  "ルーズ・ソックス": {
+    "english_title": "Loose Socks",
+    "release_year": 1997,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ルーズ・ソックス",
+    "director": "Akiyoshi Imazeki",
+    "country": "Japan",
+    "failed": true
+  },
+  "十七歳（2002）": {
+    "english_title": "Seventeen",
+    "release_year": 2002,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "十七歳",
+    "director": "Akiyoshi Imazeki",
+    "country": "Japan"
+  },
+  "笑む窓のある家 4K修復版": {
+    "english_title": "The House with Laughing Windows",
+    "release_year": 1976,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La casa dalle finestre che ridono",
+    "director": "Pupi Avati",
+    "country": "Italy"
+  },
+  "リキッド・スカイ 4Kデジタル修復版": {
+    "english_title": "Liquid Sky",
+    "release_year": 1982,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Liquid Sky",
+    "director": "Slava Tsukerman",
+    "country": "USA"
+  },
+  "ワザリング・ハイツ 〜嵐が丘〜": {
+    "english_title": "Wuthering Heights",
+    "release_year": 2011,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Wuthering Heights",
+    "director": "Andrea Arnold",
+    "country": "United Kingdom"
+  },
+  "【TBS】田村真子 のと鉄道 明日へ向かう旅": {
+    "english_title": "Tamura Mako: Noto Railway Journey Towards Tomorrow",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "田村真子 のと鉄道 明日へ向かう旅",
+    "director": "Kiminori Yajima, Hiroshi Koike",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】ある日、家族が死刑囚になってー": {
+    "english_title": "One Day, My Family Became a Death Row Inmate",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ある日、家族が死刑囚になってー",
+    "director": "Masashi Nishimura",
+    "country": "Japan",
+    "failed": true
+  },
+  "どこでもない、ここしかない \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "No Where, Now Here",
+    "release_year": 2018,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "どこでもない、ここしかない",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "いつか、どこかで \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Somewhen, Somewhere",
+    "release_year": 2019,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "いつか、どこかで",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "あなたの微笑み \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Your Lovely Smile",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "あなたの微笑み",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "すべて、至るところにある \"境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Everything, Everywhere",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "すべて、至るところにある",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "あんさんぶるスターズ！！DREAM LIVE Tour 10th 𝄪ALL STARS!! ライブ・ビューイング": {
+    "english_title": "Ensemble Stars!! DREAM LIVE Tour 10th 𝄪ALL STARS!! Live Viewing",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "あんさんぶるスターズ！！DREAM LIVE Tour 10th 𝄪ALL STARS!! ライブ・ビューイング",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "【再上映】ドマーニ！愛のことづて": {
+    "english_title": "There's Still Tomorrow",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "C'è ancora domani",
+    "director": "Paola Cortellesi",
+    "country": "Italy"
+  },
+  "受忍の国　報道1930劇場版": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "野島伸司　いぬ派だけど ねこを飼う": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ブルーインパルスの空へ": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "死刑宣告の女性弁護士　アフガンからの脱出": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "バース・デイ劇場版　余命1年のシングルマザー　天才相撲少年への遺言": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ムー×ベルジネピクチャーズ　未確認アニメ夜話": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "あかねの一週間": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "アニメを観る・アニメを語る『THE八犬伝』『迷宮物語』": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】受忍の国 報道1930劇場版": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】やまない症動 ー死ねない難病に挑む": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】バース・ディ劇場版 余命1年のシン": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "黙る顔": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
