@@ -2352,33 +2352,6 @@
     ],
     "vote_average": 7.19
   },
-  "Weekly Arthouse Screening": null,
-  "Northern Exposure Short Film Showcase": null,
-  "Arrow Video Club: Fulci Double Bill": null,
-  "Bottomless School of Rock": null,
-  "Hard Boiled (4K)": null,
-  "Highlander 40th Anniversary": {
-    "tmdb_id": 8009,
-    "tmdb_title": "Highlander",
-    "tmdb_original_title": "Highlander",
-    "overview": "He fought his first battle on the Scottish Highlands in 1536. He will fight his greatest battle on the streets of New York City in 1986. His name is Connor MacLeod. He is immortal.",
-    "poster_path": "/8Z8dptJEypuLoOQro1WugD855YE.jpg",
-    "backdrop_path": "/2EfbAWLq8s2f1LxTAIuLGYpKETV.jpg",
-    "release_date": "1986-03-07",
-    "director": "Russell Mulcahy",
-    "runtime": 116,
-    "genres": [
-      "Adventure",
-      "Action",
-      "Fantasy"
-    ],
-    "vote_average": 6.859
-  },
-  "The Oscars Live at CULTPLEX": null,
-  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
-  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
-  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
-  "Othello": null,
   "The Love That Remains": {
     "tmdb_id": 1258509,
     "tmdb_title": "The Love That Remains",
@@ -2411,21 +2384,6 @@
     ],
     "vote_average": 7.8
   },
-  "The Straight Story - 4K Restoration (PG)": {
-    "tmdb_id": 404,
-    "tmdb_title": "The Straight Story",
-    "tmdb_original_title": "The Straight Story",
-    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
-    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
-    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
-    "release_date": "1999-10-15",
-    "director": "David Lynch",
-    "runtime": 112,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.738
-  },
   "Throwback: Singin' in the Rain": {
     "tmdb_id": 872,
     "tmdb_title": "Singin' in the Rain",
@@ -2441,6 +2399,127 @@
       "Romance"
     ],
     "vote_average": 8.136
+  },
+  "Arrow Video Club: Fulci Double Bill": null,
+  "Bottomless School of Rock": null,
+  "Hard Boiled (4K)": null,
+  "Highlander 40th Anniversary": {
+    "tmdb_id": 8009,
+    "tmdb_title": "Highlander",
+    "tmdb_original_title": "Highlander",
+    "overview": "He fought his first battle on the Scottish Highlands in 1536. He will fight his greatest battle on the streets of New York City in 1986. His name is Connor MacLeod. He is immortal.",
+    "poster_path": "/8Z8dptJEypuLoOQro1WugD855YE.jpg",
+    "backdrop_path": "/2EfbAWLq8s2f1LxTAIuLGYpKETV.jpg",
+    "release_date": "1986-03-07",
+    "director": "Russell Mulcahy",
+    "runtime": 116,
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "vote_average": 6.859
+  },
+  "The Oscars Live at CULTPLEX": null,
+  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
+  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
+  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
+  "Make A Scene Presents: Victor/Victoria": {
+    "tmdb_id": 12614,
+    "tmdb_title": "Victor/Victoria",
+    "tmdb_original_title": "Victor/Victoria",
+    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
+    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
+    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
+    "release_date": "1982-04-25",
+    "director": "Blake Edwards",
+    "runtime": 134,
+    "genres": [
+      "Music",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 7.269
+  },
+  "Reel Gems present: Fallen": {
+    "tmdb_id": 9411,
+    "tmdb_title": "Fallen",
+    "tmdb_original_title": "Fallen",
+    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
+    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
+    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
+    "release_date": "1998-01-16",
+    "director": "Gregory Hoblit",
+    "runtime": 124,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 6.8
+  },
+  "Midwinter Break": {
+    "tmdb_id": 1125701,
+    "tmdb_title": "Midwinter Break",
+    "tmdb_original_title": "Midwinter Break",
+    "overview": "Longtime retired couple Stella and Gerry realise that their relationship has reached a crossroads while on holiday in Amsterdam. After so much time and so many memories, long-held promises and deeply concealed wounds threaten to come to light and force them to confront their future.",
+    "poster_path": "/vkMOruokVnD05xSiwI2hWBzG7UD.jpg",
+    "backdrop_path": "/rLEDPOSZkmeBy47wzNTEXTj5ABj.jpg",
+    "release_date": "2026-02-20",
+    "director": "Polly Findlay",
+    "runtime": 90,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 6.8
+  },
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.7
+  },
+  "Othello": null,
+  "Another World": {
+    "tmdb_id": 120172,
+    "tmdb_title": "Another World",
+    "tmdb_original_title": "Another World",
+    "overview": "The movie is a post-apocalyptic horror/science fiction film. the setting is in a near post apocalyptic future where a biological warfare program goes wrong, and turns most of humanity to mindless, murderous creatures.",
+    "poster_path": "/hxeawqEzahKB5qLgM7ZkpwSjI8F.jpg",
+    "backdrop_path": "/eeuqW6YNOzhpjSMiSeAA0nkqFYp.jpg",
+    "release_date": "2014-09-14",
+    "director": "Eitan Reuven",
+    "runtime": 100,
+    "genres": [
+      "Action",
+      "Drama",
+      "Science Fiction"
+    ],
+    "vote_average": 3.746
+  },
+  "Soul To Soul (U)": {
+    "tmdb_id": 306644,
+    "tmdb_title": "Soul to Soul",
+    "tmdb_original_title": "Soul to Soul",
+    "overview": "Footage of an American soul music concert held in Ghana to celebrate the 14th anniversary of the independence of that country in 1971. Features live performances by Ike &amp; Tina Turner, Roberta Flack, Carlos Santana, Wilson Pickett and Willie Bobo.",
+    "poster_path": "/s1QISHkkooyqpgGigzYQy1zHtiw.jpg",
+    "backdrop_path": "/uvNw9KSh4xS82zBz8Mz8aaTLE0x.jpg",
+    "release_date": "1971-08-18",
+    "director": "Denis Sanders",
+    "runtime": 96,
+    "genres": [
+      "Music"
+    ],
+    "vote_average": 7.0
   },
   "Throwback: Master and Commander": null,
   "Throwback: Moulin Rouge (25th Anniversary)": {
@@ -2458,10 +2537,41 @@
       "Romance",
       "Music"
     ],
-    "vote_average": 7.533
+    "vote_average": 7.534
   },
+  "Bring Me The Horizon - L.I.V.E. in São Paulo (Live Immersive Virtual Experiment)": {
+    "tmdb_id": 1621113,
+    "tmdb_title": "Bring Me the Horizon: L.I.V.E. in São Paulo (Live Immersive Virtual Experiment)",
+    "tmdb_original_title": "Bring Me the Horizon: L.I.V.E. in São Paulo (Live Immersive Virtual Experiment)",
+    "overview": "The band's biggest headline show to date at São Paulo’s Allianz Parque Stadium, performing to a sold-out crowd of 50,000.  Hailed by the band as their best show yet, the film expands the visual universe of POST HUMAN, blending cinematic production, fan perspectives and character cameos such as E.V.E, Selene & M8.  Featuring multi-camera footage, drone shots and fan-submitted footage, it delivers an immersive, multi-angle experience that mirrors the energy of the night. The performance spans the full evolution of BMTH’s catalogue, from Sempiternal and That’s the Spirit to amo and the POST HUMAN series.  One of the world’s biggest acts, the BRIT-winning and Grammy-nominated band have sold over 6.6 million albums and garnered 9.4+ billion streams. L.I.V.E. in São Paulo captures not just a performance, but a moment in music history.",
+    "poster_path": "/dHnCH7HoVE7MBwc2lvgbSM3jXg7.jpg",
+    "backdrop_path": "/DNbBOXZX78rCTHyAJaILCSkKgk.jpg",
+    "release_date": "2026-03-25",
+    "director": "Oliver Sykes",
+    "runtime": 114,
+    "genres": [
+      "Music",
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
+  "Past Life": {
+    "tmdb_id": 1533222,
+    "tmdb_title": "Past Life",
+    "tmdb_original_title": "Past Life",
+    "overview": "When an unemployed reporter is hypnotized as part of a past life regression event, he wakes not with memories of life as royalty or some other glamorous person, but instead finds himself haunted by the memories of a serial killer.",
+    "poster_path": "/iqCDDco2gUey2xDmhWqZ6O6smJc.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-20",
+    "director": "Simeon Halligan",
+    "runtime": 100,
+    "genres": [
+      "Thriller"
+    ],
+    "vote_average": 0.0
+  },
+  "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
-  "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
     "tmdb_title": "First Steps",
@@ -2479,6 +2589,7 @@
   },
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
+  "The Royal Opera: The Magic Flute": null,
   "National Theatre Live: All My Sons": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
