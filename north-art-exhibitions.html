@@ -377,6 +377,10 @@
             grid-column: 1 / -1;
         }
 
+        .is-hidden {
+            display: none !important;
+        }
+
         .loading {
             text-align: center;
             padding: 100px 20px;
@@ -449,6 +453,8 @@
                     <button class="toggle-btn is-active" data-region="West Yorkshire"><span class="checkbox"></span>West Yorks</button>
                     <button class="toggle-btn is-active" data-region="South & East Yorkshire"><span class="checkbox"></span>South & East Yorks</button>
                     <button class="toggle-btn is-active" data-region="North East"><span class="checkbox"></span>North East</button>
+                    <button class="toggle-btn is-active" data-region="Lancashire"><span class="checkbox"></span>Lancashire</button>
+                    <button class="toggle-btn is-active" data-region="Cumbria"><span class="checkbox"></span>Cumbria</button>
                 </div>
                 <div class="search-input-wrap">
                     <input type="text" id="search-input" class="search-input" placeholder="Search title, venue, city...">
@@ -459,7 +465,7 @@
                         <!-- Venues injected here -->
                     </div>
                 </div>
-                <select id="sort-select" class="sort-select">
+                <select id="sort-select" class="dropdown-btn sort-select">
                     <option value="closing">Closing Soon</option>
                     <option value="newest">Newest</option>
                     <option value="alphabetical">A-Z</option>
@@ -499,6 +505,7 @@
                 "Newcastle": "North East",
                 "Gateshead": "North East",
                 "Sunderland": "North East",
+                "Middlesbrough": "North East",
                 "Leeds": "West Yorkshire",
                 "Wakefield": "West Yorkshire",
                 "Bradford": "West Yorkshire",
@@ -506,7 +513,12 @@
                 "West Bretton": "West Yorkshire",
                 "Sheffield": "South & East Yorkshire",
                 "York": "South & East Yorkshire",
-                "Hull": "South & East Yorkshire"
+                "Hull": "South & East Yorkshire",
+                "Barnsley": "South & East Yorkshire",
+                "Doncaster": "South & East Yorkshire",
+                "Blackpool": "Lancashire",
+                "Kendal": "Cumbria",
+                "Carlisle": "Cumbria"
             };
 
             const IGNORE_TITLES = [
@@ -518,7 +530,7 @@
             ];
 
             let allExhibitions = [];
-            let activeRegions = new Set(["Greater Manchester", "Merseyside", "West Yorkshire", "South & East Yorkshire", "North East"]);
+            let activeRegions = new Set(["Greater Manchester", "Merseyside", "West Yorkshire", "South & East Yorkshire", "North East", "Lancashire", "Cumbria"]);
             let hiddenVenues = new Set(JSON.parse(localStorage.getItem('artNorth_hiddenVenues') || '[]'));
             let searchQuery = '';
             let currentSort = 'closing';

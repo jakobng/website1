@@ -77,6 +77,25 @@ def scrape_hepworth():
     # Fallback to old link-based search if no cards found
     if not out:
         for a in soup.find_all("a", href=True):
+            href = a.get("href", "").strip()
+            if not href or "/whats-on/" not in href or "/categories/" in href or "/page/" in href:
+                continue
+            full_url = urljoin(BASE_URL, href)
+            title = norm(a.get_text())
+            if not title or len(title) < 3 or title.lower() in ("more info", "read more", "exhibitions"):
+                continue
+            date_text = a.parent.get_text(separator=" ") if a.parent else ""
+            start_str, end_str = parse_date_range(date_text)
+            out.append({
+                "venue_name": VENUE_NAME,
+                "venue_city": VENUE_CITY,
+                "exhibition_title": title[:500],
+                "start_date": start_str,
+                "end_date": end_str,
+                "detail_page_url": full_url,
+                "description": None,
+                "image_url": None,
+            })
 
     seen = set()
     unique = []
