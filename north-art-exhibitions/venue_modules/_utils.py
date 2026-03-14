@@ -21,6 +21,13 @@ MONTH_FIRST_RE = re.compile(
 MONTH_FIRST_SINGLE_RE = re.compile(r"(" + MONTHS + r")\s+(\d{1,2}),?\s+(\d{4})", re.IGNORECASE)
 
 
+# Text that suggests a single date is an event (e.g. "Every Tuesday"), not an exhibition run
+_EVENT_HINT_RE = re.compile(
+    r"every\s+(tuesday|wednesday|thursday|friday|saturday|sunday)|book your|guided tour|lecture|performance|workshop|teacher cpd|family-friendly|artist in conversation|part of .+ part of|starts? at \d|tours? start",
+    re.IGNORECASE
+)
+
+
 def parse_date_range(text):
     """Parse date range from text. Returns (start_date_str, end_date_str) or (None, None)."""
     if not text:
@@ -37,6 +44,8 @@ def parse_date_range(text):
             pass
     m = SINGLE_DATE_RE.search(text)
     if m:
+        if _EVENT_HINT_RE.search(text):
+            return None, None
         d, mo, y = m.groups()
         try:
             single = date(int(y), MONTH_MAP[mo.capitalize()], int(d))
@@ -54,6 +63,8 @@ def parse_date_range(text):
             pass
     m = MONTH_FIRST_SINGLE_RE.search(text)
     if m:
+        if _EVENT_HINT_RE.search(text):
+            return None, None
         mo, d, y = m.groups()
         try:
             single = date(int(y), MONTH_MAP[mo.capitalize()], int(d))

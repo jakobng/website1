@@ -201,6 +201,10 @@
 
         .venue-filter-item input { cursor: pointer; }
 
+        .filter-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); white-space: nowrap; }
+        .include-upcoming-wrap { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .include-upcoming-wrap input { cursor: pointer; }
+
         .content {
             max-width: 1200px;
             margin: 0 auto;
@@ -459,12 +463,15 @@
                 <div class="search-input-wrap">
                     <input type="text" id="search-input" class="search-input" placeholder="Search title, venue, city...">
                 </div>
-                <div class="dropdown-wrap">
-                    <button class="dropdown-btn">Venues ▼</button>
-                    <div id="venue-dropdown" class="dropdown-content">
-                        <!-- Venues injected here -->
-                    </div>
-                </div>
+                <label for="venue-select" class="filter-label">Venue</label>
+                <select id="venue-select" class="dropdown-btn">
+                    <option value="">All venues</option>
+                    <!-- Venue options injected here -->
+                </select>
+                <label class="filter-label include-upcoming-wrap">
+                    <input type="checkbox" id="include-upcoming-cb">
+                    <span>Include upcoming</span>
+                </label>
                 <select id="sort-select" class="dropdown-btn sort-select">
                     <option value="closing">Closing Soon</option>
                     <option value="newest">Newest</option>
@@ -532,6 +539,8 @@
             let allExhibitions = [];
             let activeRegions = new Set(["Greater Manchester", "Merseyside", "West Yorkshire", "South & East Yorkshire", "North East", "Lancashire", "Cumbria"]);
             let hiddenVenues = new Set(JSON.parse(localStorage.getItem('artNorth_hiddenVenues') || '[]'));
+            let selectedVenue = '';
+            let includeUpcoming = false;
             let searchQuery = '';
             let currentSort = 'closing';
 
@@ -542,7 +551,8 @@
             const searchInput = document.getElementById('search-input');
             const sortSelect = document.getElementById('sort-select');
             const regionToggles = document.getElementById('region-toggles');
-            const venueDropdown = document.getElementById('venue-dropdown');
+            const venueSelect = document.getElementById('venue-select');
+            const includeUpcomingCb = document.getElementById('include-upcoming-cb');
             const hiddenVenuesBar = document.getElementById('hidden-venues-bar');
             const resetHiddenBtn = document.getElementById('reset-hidden-btn');
 
@@ -571,33 +581,30 @@
                         });
 
                     mainLoading.classList.add('is-hidden');
-                    updateVenueDropdown();
+                    populateVenueSelect();
                     render();
                 } catch (err) {
                     mainLoading.textContent = "Error loading directory.";
                 }
             }
 
-            function updateVenueDropdown() {
+            function populateVenueSelect() {
                 const venues = [...new Set(allExhibitions.map(item => item.venue_name))].sort();
-                venueDropdown.innerHTML = '';
+                const current = venueSelect.value;
+                venueSelect.innerHTML = '<option value="">All venues</option>';
                 venues.forEach(venue => {
-                    const label = document.createElement('label');
-                    label.className = 'venue-filter-item';
-                    const isChecked = !hiddenVenues.has(venue);
-                    label.innerHTML = `<input type="checkbox" ${isChecked ? 'checked' : ''} data-venue="${venue}"> <span>${venue}</span>`;
-                    label.querySelector('input').addEventListener('change', (e) => {
-                        toggleVenue(venue, !e.target.checked);
-                    });
-                    venueDropdown.appendChild(label);
+                    const opt = document.createElement('option');
+                    opt.value = venue;
+                    opt.textContent = venue;
+                    venueSelect.appendChild(opt);
                 });
+                if (current && venues.includes(current)) venueSelect.value = current;
             }
 
             function toggleVenue(venue, hide) {
                 if (hide) hiddenVenues.add(venue);
                 else hiddenVenues.delete(venue);
                 localStorage.setItem('artNorth_hiddenVenues', JSON.stringify([...hiddenVenues]));
-                updateVenueDropdown();
                 render();
             }
 
@@ -641,7 +648,9 @@
 
                 let filtered = allExhibitions.filter(item => {
                     if (getStatus(item) === 'ended') return false;
-                    if (hiddenVenues.has(item.venue_name)) return false;
+                    if (!includeUpcoming && getStatus(item) === 'coming-soon') return false;
+                    if (selectedVenue && item.venue_name !== selectedVenue) return false;
+                    if (!selectedVenue && hiddenVenues.has(item.venue_name)) return false;
                     const matchesRegion = activeRegions.has(item.region);
                     const matchesSearch = !searchQuery || 
                         (item.exhibition_title || '').toLowerCase().includes(searchQuery) ||
@@ -745,10 +754,19 @@
                 }
             });
 
+            venueSelect.addEventListener('change', (e) => {
+                selectedVenue = (e.target.value || '').trim();
+                render();
+            });
+
+            includeUpcomingCb.addEventListener('change', (e) => {
+                includeUpcoming = e.target.checked;
+                render();
+            });
+
             resetHiddenBtn.addEventListener('click', () => {
                 hiddenVenues.clear();
                 localStorage.setItem('artNorth_hiddenVenues', '[]');
-                updateVenueDropdown();
                 render();
             });
 

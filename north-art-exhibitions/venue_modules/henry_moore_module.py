@@ -41,6 +41,10 @@ def scrape_henry_moore():
                 break
             date_text = parent.get_text(separator=" ")
             parent = parent.parent
+        # Skip event-type entries: single-date events get wrong end date
+        dt_lower = date_text.lower()
+        if any(x in dt_lower for x in ("every tuesday", "every thursday", "book your", "guided tour", "lecture", "performance", "family-friendly workshop", "artist in conversation", "teacher cpd")):
+            continue
         start_str, end_str = parse_date_range(date_text)
         if "Permanent" in date_text or "permanent" in date_text:
             end_str = None

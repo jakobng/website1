@@ -204,6 +204,21 @@ def main():
                 report.add(name, "FAILURE", 0, error=error)
 
     print(f"\nTotal exhibitions: {len(listings)}")
+    # Optional: fetch og:image for items missing image_url (improves cards)
+    need_image = [item for item in listings if not item.get("image_url") and item.get("detail_page_url")]
+    if need_image:
+        from venue_modules._utils import get_page_meta
+        HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; NorthArtExhibitions/1.0)", "Accept-Language": "en-GB,en;q=0.9"}
+        max_fetch = 80
+        for i, item in enumerate(need_image[:max_fetch]):
+            try:
+                meta = get_page_meta(item["detail_page_url"], headers=HEADERS, timeout=6)
+                if meta.get("image_url"):
+                    item["image_url"] = meta["image_url"]
+            except Exception:
+                pass
+        if need_image[:max_fetch]:
+            print(f"  Fetched og:image for up to {min(len(need_image), max_fetch)} listings missing images.")
     print(f"Writing {OUTPUT_JSON}...")
     try:
         with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
