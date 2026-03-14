@@ -8321,5 +8321,189 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "メーサーロシュ・マールタ監督特集": {
+    "english_title": "Márta Mészáros Retrospective",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "メーサーロシュ・マールタ監督特集",
+    "director": "Márta Mészáros",
+    "country": "Hungary",
+    "failed": true
+  },
+  "東京逃避行[0320舞台挨拶]": {
+    "english_title": "Tokyo Strayers",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "東京逃避行",
+    "director": "Ren Akiba",
+    "country": "Japan",
+    "failed": true
+  },
+  "『Riceboy ライスボーイ』トーク付き最速先": {
+    "english_title": "Riceboy Sleeps",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Riceboy Sleeps",
+    "director": "Anthony Shim",
+    "country": "Canada"
+  },
+  "こつまなんきん": {
+    "english_title": "Some Pumpkin",
+    "release_year": 1960,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "こつまなんきん",
+    "director": "Tatsuo Sakai",
+    "country": "Japan",
+    "failed": true
+  },
+  "鏡の中の裸像": {
+    "english_title": "Naked Image in the Mirror",
+    "release_year": 1963,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "鏡の中の裸像",
+    "director": "Noboru Nakamura",
+    "country": "Japan",
+    "failed": true
+  },
+  "アフター・オール・ディーズ・イヤーズデジタル・リマスター版 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "After All These Years",
+    "release_year": 2010,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "アフター・オール・ディーズ・イヤーズ",
+    "director": "Lim Kah Wai",
+    "country": "Malaysia, China, Japan"
+  },
+  "マジック＆ロス 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Magic and Loss",
+    "release_year": 2010,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "マジック＆ロス 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "新世界の夜明け 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "New World",
+    "release_year": 2011,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "新世界の夜明け",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "COME & GO カム・アンド・ゴー 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Come and Go",
+    "release_year": 2020,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "COME & GO カム・アンド・ゴー",
+    "director": "Lim Kah Wai",
+    "country": "Japan, Malaysia"
+  },
+  "どこでもない、ここしかない 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "No Where, Now Here",
+    "release_year": 2018,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "どこでもない、ここしかない",
+    "director": "Lim Kah Wai",
+    "country": "Slovenia, North Macedonia, Malaysia, Japan"
+  },
+  "いつか、どこかで 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Somewhen, Somewhere",
+    "release_year": 2019,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "いつか、どこかで",
+    "director": "Lim Kah Wai",
+    "country": "Japan, Malaysia, Serbia, Croatia, Montenegro, Macau"
+  },
+  "あなたの微笑み 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Your Lovely Smile",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "あなたの微笑み",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "すべて、至るところにある 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Everything, Everywhere",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "すべて、至るところにある",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "Fly Me to Minami 恋するミナミ 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "Fly Me to Minami",
+    "release_year": 2013,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "恋するミナミ",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "ディス・マジック・モーメント 境界を超える無国籍映画\"シネマドリフター\"リム・カーワイー新世界の夜明けー": {
+    "english_title": "This Magic Moment",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ディス・マジック・モーメント",
+    "director": "Lim Kah Wai",
+    "country": "Japan"
+  },
+  "『雑居家族』 ＊デジタル上映": {
+    "english_title": "This is Home",
+    "release_year": 1956,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "雑居家族",
+    "director": "Seiji Hisamatsu",
+    "country": "Japan",
+    "failed": true
+  },
+  "『夜の河』 ＊デジタル上映": {
+    "english_title": "Night River",
+    "release_year": 1956,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "夜の河",
+    "director": "Kōzaburō Yoshimura",
+    "country": "Japan"
+  },
+  "『安寿と厨子王丸』 ＊デジタル上映 《アニメーション作品》": {
+    "english_title": "The Orphan Brother",
+    "release_year": 1961,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "安寿と厨子王丸",
+    "director": "Taiji Yabushita, Yugo Serikawa",
+    "country": "Japan"
+  },
+  "『にっぽんのお婆ぁちゃん』": {
+    "english_title": "Japanese Grandmas",
+    "release_year": 1962,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "にっぽんのお婆ぁちゃん",
+    "director": "Tadashi Imai",
+    "country": "Japan",
+    "failed": true
+  },
+  "『夜の 鴎 』": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
