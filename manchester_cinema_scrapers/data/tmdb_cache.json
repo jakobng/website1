@@ -2400,64 +2400,6 @@
     ],
     "vote_average": 8.136
   },
-  "Arrow Video Club: Fulci Double Bill": null,
-  "Bottomless School of Rock": null,
-  "Hard Boiled (4K)": null,
-  "Highlander 40th Anniversary": {
-    "tmdb_id": 8009,
-    "tmdb_title": "Highlander",
-    "tmdb_original_title": "Highlander",
-    "overview": "He fought his first battle on the Scottish Highlands in 1536. He will fight his greatest battle on the streets of New York City in 1986. His name is Connor MacLeod. He is immortal.",
-    "poster_path": "/8Z8dptJEypuLoOQro1WugD855YE.jpg",
-    "backdrop_path": "/2EfbAWLq8s2f1LxTAIuLGYpKETV.jpg",
-    "release_date": "1986-03-07",
-    "director": "Russell Mulcahy",
-    "runtime": 116,
-    "genres": [
-      "Adventure",
-      "Action",
-      "Fantasy"
-    ],
-    "vote_average": 6.859
-  },
-  "The Oscars Live at CULTPLEX": null,
-  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
-  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
-  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
-  "Make A Scene Presents: Victor/Victoria": {
-    "tmdb_id": 12614,
-    "tmdb_title": "Victor/Victoria",
-    "tmdb_original_title": "Victor/Victoria",
-    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
-    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
-    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
-    "release_date": "1982-04-25",
-    "director": "Blake Edwards",
-    "runtime": 134,
-    "genres": [
-      "Music",
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 7.269
-  },
-  "Reel Gems present: Fallen": {
-    "tmdb_id": 9411,
-    "tmdb_title": "Fallen",
-    "tmdb_original_title": "Fallen",
-    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
-    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
-    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
-    "release_date": "1998-01-16",
-    "director": "Gregory Hoblit",
-    "runtime": 124,
-    "genres": [
-      "Crime",
-      "Drama",
-      "Thriller"
-    ],
-    "vote_average": 6.8
-  },
   "Midwinter Break": {
     "tmdb_id": 1125701,
     "tmdb_title": "Midwinter Break",
@@ -2473,22 +2415,6 @@
     ],
     "vote_average": 6.8
   },
-  "The Straight Story - 4K Restoration (PG)": {
-    "tmdb_id": 404,
-    "tmdb_title": "The Straight Story",
-    "tmdb_original_title": "The Straight Story",
-    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
-    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
-    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
-    "release_date": "1999-10-15",
-    "director": "David Lynch",
-    "runtime": 112,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.7
-  },
-  "Othello": null,
   "Another World": {
     "tmdb_id": 120172,
     "tmdb_title": "Another World",
@@ -2521,7 +2447,6 @@
     ],
     "vote_average": 7.0
   },
-  "Throwback: Master and Commander": null,
   "Throwback: Moulin Rouge (25th Anniversary)": {
     "tmdb_id": 824,
     "tmdb_title": "Moulin Rouge!",
@@ -2571,7 +2496,148 @@
     "vote_average": 0.0
   },
   "Weekly Arthouse Screening": null,
+  "Highlander 40th Anniversary": {
+    "tmdb_id": 8009,
+    "tmdb_title": "Highlander",
+    "tmdb_original_title": "Highlander",
+    "overview": "He fought his first battle on the Scottish Highlands in 1536. He will fight his greatest battle on the streets of New York City in 1986. His name is Connor MacLeod. He is immortal.",
+    "poster_path": "/8Z8dptJEypuLoOQro1WugD855YE.jpg",
+    "backdrop_path": "/2EfbAWLq8s2f1LxTAIuLGYpKETV.jpg",
+    "release_date": "1986-03-07",
+    "director": "Russell Mulcahy",
+    "runtime": 116,
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "vote_average": 6.861
+  },
+  "The Oscars Live at CULTPLEX": null,
+  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
+  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
+  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
+  "Make A Scene Presents: Victor/Victoria": {
+    "tmdb_id": 12614,
+    "tmdb_title": "Victor/Victoria",
+    "tmdb_original_title": "Victor/Victoria",
+    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
+    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
+    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
+    "release_date": "1982-04-25",
+    "director": "Blake Edwards",
+    "runtime": 134,
+    "genres": [
+      "Music",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 7.273
+  },
+  "Reel Gems present: Fallen": {
+    "tmdb_id": 9411,
+    "tmdb_title": "Fallen",
+    "tmdb_original_title": "Fallen",
+    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
+    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
+    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
+    "release_date": "1998-01-16",
+    "director": "Gregory Hoblit",
+    "runtime": 124,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 6.792
+  },
+  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
+  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
+  "Spring Breakers": {
+    "tmdb_id": 122081,
+    "tmdb_title": "Spring Breakers",
+    "tmdb_original_title": "Spring Breakers",
+    "overview": "After four college girls rob a restaurant to fund their spring break in Florida, they get entangled with a weird dude with his own criminal agenda.",
+    "poster_path": "/9tyPnyEkL44qbAliM9jMRWc6bjg.jpg",
+    "backdrop_path": "/3eMxTkvHM6G1lHugBvFGVpcJFUa.jpg",
+    "release_date": "2013-03-06",
+    "director": "Harmony Korine",
+    "runtime": 94,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "vote_average": 5.2
+  },
+  "Videodrome": {
+    "tmdb_id": 837,
+    "tmdb_title": "Videodrome",
+    "tmdb_original_title": "Videodrome",
+    "overview": "As the president of a trashy TV channel, Max Renn is desperate for new programming to attract viewers. When he happens upon \"Videodrome,\" a TV show dedicated to gratuitous torture and punishment, Max sees a potential hit and broadcasts the show on his channel. However, after his girlfriend auditions for the show and never returns, Max investigates the truth behind Videodrome and discovers that the graphic violence may not be as fake as he thought.",
+    "poster_path": "/qqqkiZSU9EBGZ1KiDmfn07S7qvv.jpg",
+    "backdrop_path": "/eBS1nvaQ7BMdsSlkoLyKapf0FEY.jpg",
+    "release_date": "1983-02-04",
+    "director": "David Cronenberg",
+    "runtime": 88,
+    "genres": [
+      "Horror",
+      "Science Fiction",
+      "Mystery"
+    ],
+    "vote_average": 7.252
+  },
+  "Othello": null,
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.739
+  },
+  "Throwback: Master and Commander": null,
+  "Ready or Not 2: Here I Come": {
+    "tmdb_id": 1266127,
+    "tmdb_title": "Ready or Not 2: Here I Come",
+    "tmdb_original_title": "Ready or Not 2: Here I Come",
+    "overview": "Moments after surviving an all-out attack from the Le Domas family, Grace discovers she’s reached the next level of the nightmarish game — and this time with her estranged sister Faith at her side. Grace has one chance to survive, keep her sister alive, and claim the High Seat of the Council that controls the world. Four rival families are hunting her for the throne, and whoever wins rules it all.",
+    "poster_path": "/13ZcJzSGEqVgDSqsS9U5EkQwPkV.jpg",
+    "backdrop_path": "/34edT0SIrmUqH59J5OAQqYxp11D.jpg",
+    "release_date": "2026-03-19",
+    "director": "Matt Bettinelli-Olpin",
+    "runtime": 108,
+    "genres": [
+      "Thriller",
+      "Comedy"
+    ],
+    "vote_average": 7.0
+  },
+  "Throwback: Moulin Rouge! (25th Anniversary)": {
+    "tmdb_id": 824,
+    "tmdb_title": "Moulin Rouge!",
+    "tmdb_original_title": "Moulin Rouge!",
+    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
+    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
+    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
+    "release_date": "2001-05-18",
+    "director": "Baz Luhrmann",
+    "runtime": 128,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 7.5
+  },
   "Exhibition On Screen: Turner & Constable": null,
+  "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
     "tmdb_title": "First Steps",
@@ -2589,7 +2655,6 @@
   },
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
-  "The Royal Opera: The Magic Flute": null,
   "National Theatre Live: All My Sons": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
