@@ -3,8 +3,8 @@ name: North Art Exhibitions - Scrape
 on:
   workflow_dispatch:
   schedule:
-    # Run daily at 7 AM UK (6 or 7 UTC depending on BST)
-    - cron: '0 7 * * *'
+    # Run every 3 days at 7 AM UK
+    - cron: '0 7 */3 * *'
 
 permissions:
   contents: write

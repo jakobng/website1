@@ -8,3 +8,6 @@ html5lib>=1.1
 selenium>=4.8.0
 webdriver-manager>=3.8.0
 playwright>=1.30.0
+
+# Optional: browser TLS impersonation (Manchester Art Gallery behind Cloudflare)
+curl_cffi>=0.5.0
