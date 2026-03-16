@@ -11968,7 +11968,7 @@
       "War"
     ],
     "runtime": 106,
-    "vote_average": 0.0,
+    "vote_average": 8.5,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -58867,8 +58867,8 @@
     "tmdb_original_language": "ja",
     "overview": "命が尽きるその瞬間まで音楽への情熱を貫き、創作し続けた坂本龍一。本人が綴った「日記」を軸に、遺族全面協力のもと提供された貴重なプライベート映像やポートレート、未発表の音楽を交え、稀代の音楽家の最後の3年半の軌跡を辿る。今なお国も世代も超えて我々の心を掴み続ける坂本龍一は、命の終わりとどう向き合い、何を残そうとしたのか──。",
     "overview_en": "",
-    "poster_path": "/17a8v5COxpovwgZ9GZ9RdvczDmV.jpg",
-    "backdrop_path": null,
+    "poster_path": "/btXkHsBrpA2xKnKcF2RotDdQgT4.jpg",
+    "backdrop_path": "/99gyBCAQ3WsXzYcaBXc7m1zCaWk.jpg",
     "release_date": "2025-11-28",
     "director": "Kensho Omori",
     "director_jp": "Kensho Omori",
@@ -82417,6 +82417,680 @@
       {
         "iso_3166_1": "JP",
         "name": "Japan"
+      }
+    ]
+  },
+  "君が最後に遺した歌": {
+    "tmdb_id": 1559185,
+    "tmdb_title_jp": "君が最後に遺した歌",
+    "tmdb_title_en": "The Last Song You Left Behind",
+    "tmdb_title_original": "君が最後に遺した歌",
+    "tmdb_original_language": "ja",
+    "overview": "ある日、クラスメイトの遠坂綾音に詩を書いていることを知られた。  文字の読み書きをすることが難しい“発達性ディスレクシア”の症状を抱える彼女に代わり、僕が詞を書き、彼女が歌う。  それは僕にしかできないこと、そして彼女にしかできないことだった。  二人だけの歌、二人だけの居場所、二人だけのサイン。  それは、僕と彼女のたった10年の“はじまり”だった――。",
+    "overview_en": "",
+    "poster_path": "/r1tTESoJfvGZxM4xXSBtN6P5KvM.jpg",
+    "backdrop_path": "/2D5Sd28wIcovIWNFnKYoLrcDiq7.jpg",
+    "release_date": "2026-03-20",
+    "director": "三木孝浩",
+    "director_jp": "三木孝浩",
+    "director_en": "Takahiro Miki",
+    "genres": [
+      "ロマンス",
+      "音楽"
+    ],
+    "genres_en": [
+      "Romance",
+      "Music"
+    ],
+    "runtime": 117,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1559185": {
+    "tmdb_id": 1559185,
+    "tmdb_title_jp": "君が最後に遺した歌",
+    "tmdb_title_en": "The Last Song You Left Behind",
+    "tmdb_title_original": "君が最後に遺した歌",
+    "tmdb_original_language": "ja",
+    "overview": "ある日、クラスメイトの遠坂綾音に詩を書いていることを知られた。  文字の読み書きをすることが難しい“発達性ディスレクシア”の症状を抱える彼女に代わり、僕が詞を書き、彼女が歌う。  それは僕にしかできないこと、そして彼女にしかできないことだった。  二人だけの歌、二人だけの居場所、二人だけのサイン。  それは、僕と彼女のたった10年の“はじまり”だった――。",
+    "overview_en": "",
+    "poster_path": "/r1tTESoJfvGZxM4xXSBtN6P5KvM.jpg",
+    "backdrop_path": "/2D5Sd28wIcovIWNFnKYoLrcDiq7.jpg",
+    "release_date": "2026-03-20",
+    "director": "三木孝浩",
+    "director_jp": "三木孝浩",
+    "director_en": "Takahiro Miki",
+    "genres": [
+      "ロマンス",
+      "音楽"
+    ],
+    "genres_en": [
+      "Romance",
+      "Music"
+    ],
+    "runtime": 117,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "プロジェクト・ヘイル・メアリー": {
+    "tmdb_id": 687163,
+    "tmdb_title_jp": "プロジェクト・ヘイル・メアリー",
+    "tmdb_title_en": "Project Hail Mary",
+    "tmdb_title_original": "Project Hail Mary",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction… but an unexpected friendship means he may not have to do it alone.",
+    "poster_path": "/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
+    "backdrop_path": "/ckgitpsGKUFVO8yHinQdKSSyrFC.jpg",
+    "release_date": "2026-03-18",
+    "director": "フィル・ロード",
+    "director_jp": "フィル・ロード",
+    "director_en": "Phil Lord",
+    "genres": [
+      "サイエンスフィクション",
+      "アドベンチャー",
+      "謎"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Adventure",
+      "Mystery"
+    ],
+    "runtime": 157,
+    "vote_average": 8.671,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:687163": {
+    "tmdb_id": 687163,
+    "tmdb_title_jp": "プロジェクト・ヘイル・メアリー",
+    "tmdb_title_en": "Project Hail Mary",
+    "tmdb_title_original": "Project Hail Mary",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction… but an unexpected friendship means he may not have to do it alone.",
+    "poster_path": "/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
+    "backdrop_path": "/ckgitpsGKUFVO8yHinQdKSSyrFC.jpg",
+    "release_date": "2026-03-18",
+    "director": "フィル・ロード",
+    "director_jp": "フィル・ロード",
+    "director_en": "Phil Lord",
+    "genres": [
+      "サイエンスフィクション",
+      "アドベンチャー",
+      "謎"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Adventure",
+      "Mystery"
+    ],
+    "runtime": 157,
+    "vote_average": 8.671,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "アメリと雨の物語": {
+    "tmdb_id": 682012,
+    "tmdb_title_jp": "アメリと雨の物語",
+    "tmdb_title_en": "Little Amélie or the Character of Rain",
+    "tmdb_title_original": "Amélie et la métaphysique des tubes",
+    "tmdb_original_language": "fr",
+    "overview": "1960年代神戸—日本で生まれたベルギー人の小さな女の子アメリ。彼女の成長を描く物語。外交官の家庭に生まれ、2歳半までは無反応状態だったアメリ。その後、子ども時代に突入した彼女は自らを「神」だと信じ、魔法のような世界を生きている。家政婦のニシオさんや家族との日々の生活は、彼女にとって冒険であり、新たな発見の連続。少しずつ変化していくアメリ。しかし、3歳の誕生日に人生を変える出来事が起こり、彼女の世界は大きく変わっていく…。誰もが子供時代に夢見た世界を描く感動のアニメーション作品",
+    "overview_en": "The world is a perplexing, peaceful mystery to Amélie until a miraculous encounter with chocolate ignites her wild sense of curiosity. As she develops a deep attachment to her family's housekeeper, Nishio-san, Amélie discovers the wonders of nature as well as the emotional truths hidden beneath the surface of her family's idyllic life as foreigners in post-war Japan.",
+    "poster_path": "/t44gdeEDqhZk4erujgcxdypUhBq.jpg",
+    "backdrop_path": "/2WCpiFmRqXyu5y7WoZjEa3CJbiI.jpg",
+    "release_date": "2025-06-25",
+    "director": "Maïlys Vallade",
+    "director_jp": "Maïlys Vallade",
+    "director_en": "Maïlys Vallade",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Family"
+    ],
+    "runtime": 77,
+    "vote_average": 7.988,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:682012": {
+    "tmdb_id": 682012,
+    "tmdb_title_jp": "アメリと雨の物語",
+    "tmdb_title_en": "Little Amélie or the Character of Rain",
+    "tmdb_title_original": "Amélie et la métaphysique des tubes",
+    "tmdb_original_language": "fr",
+    "overview": "1960年代神戸—日本で生まれたベルギー人の小さな女の子アメリ。彼女の成長を描く物語。外交官の家庭に生まれ、2歳半までは無反応状態だったアメリ。その後、子ども時代に突入した彼女は自らを「神」だと信じ、魔法のような世界を生きている。家政婦のニシオさんや家族との日々の生活は、彼女にとって冒険であり、新たな発見の連続。少しずつ変化していくアメリ。しかし、3歳の誕生日に人生を変える出来事が起こり、彼女の世界は大きく変わっていく…。誰もが子供時代に夢見た世界を描く感動のアニメーション作品",
+    "overview_en": "The world is a perplexing, peaceful mystery to Amélie until a miraculous encounter with chocolate ignites her wild sense of curiosity. As she develops a deep attachment to her family's housekeeper, Nishio-san, Amélie discovers the wonders of nature as well as the emotional truths hidden beneath the surface of her family's idyllic life as foreigners in post-war Japan.",
+    "poster_path": "/t44gdeEDqhZk4erujgcxdypUhBq.jpg",
+    "backdrop_path": "/2WCpiFmRqXyu5y7WoZjEa3CJbiI.jpg",
+    "release_date": "2025-06-25",
+    "director": "Maïlys Vallade",
+    "director_jp": "Maïlys Vallade",
+    "director_en": "Maïlys Vallade",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "Family"
+    ],
+    "runtime": 77,
+    "vote_average": 7.988,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "たぶん悪魔が": {
+    "tmdb_id": 32097,
+    "tmdb_title_jp": "たぶん悪魔が",
+    "tmdb_title_en": "The Devil, Probably",
+    "tmdb_title_original": "Le Diable probablement",
+    "tmdb_original_language": "fr",
+    "overview": "ドロップアウトした上流階級の青年シャルルは、いかなる政治的主張にも懐疑的。友人が環境破壊について訴え始める中、彼は自殺願望を強めていき……。鬼才ロベール・ブレッソンが、虚無的個人の危機を描いた異色作。",
+    "overview_en": "Charles drifts through politics, religion and psychoanalysis, rejecting them all. Once he realises the depth of his disgust with the moral and physical decline of the society he lives in, he decides that suicide is the only option...",
+    "poster_path": "/lYHF3iOQjjfcYqQhK06tmHGTIT.jpg",
+    "backdrop_path": "/mAtCjCDYN3c5Bjm6P4wOmDMlJLv.jpg",
+    "release_date": "1977-06-15",
+    "director": "ロベール・ブレッソン",
+    "director_jp": "ロベール・ブレッソン",
+    "director_en": "Robert Bresson",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:32097": {
+    "tmdb_id": 32097,
+    "tmdb_title_jp": "たぶん悪魔が",
+    "tmdb_title_en": "The Devil, Probably",
+    "tmdb_title_original": "Le Diable probablement",
+    "tmdb_original_language": "fr",
+    "overview": "ドロップアウトした上流階級の青年シャルルは、いかなる政治的主張にも懐疑的。友人が環境破壊について訴え始める中、彼は自殺願望を強めていき……。鬼才ロベール・ブレッソンが、虚無的個人の危機を描いた異色作。",
+    "overview_en": "Charles drifts through politics, religion and psychoanalysis, rejecting them all. Once he realises the depth of his disgust with the moral and physical decline of the society he lives in, he decides that suicide is the only option...",
+    "poster_path": "/lYHF3iOQjjfcYqQhK06tmHGTIT.jpg",
+    "backdrop_path": "/mAtCjCDYN3c5Bjm6P4wOmDMlJLv.jpg",
+    "release_date": "1977-06-15",
+    "director": "ロベール・ブレッソン",
+    "director_jp": "ロベール・ブレッソン",
+    "director_en": "Robert Bresson",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "クリーン": {
+    "tmdb_id": 39851,
+    "tmdb_title_jp": "クリーン",
+    "tmdb_title_en": "Clean",
+    "tmdb_title_original": "Clean",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After she ends up in prison and loses custody of her son, a woman struggles to assimilate outside her former life and remain clean long enough to regain custody of her son.",
+    "poster_path": "/bBUPaAxh3V5O3M3O5uIGnYhK9WX.jpg",
+    "backdrop_path": "/dwSdmuui68qmSCalGWsDZEgkgOg.jpg",
+    "release_date": "2004-09-01",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:39851": {
+    "tmdb_id": 39851,
+    "tmdb_title_jp": "クリーン",
+    "tmdb_title_en": "Clean",
+    "tmdb_title_original": "Clean",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After she ends up in prison and loses custody of her son, a woman struggles to assimilate outside her former life and remain clean long enough to regain custody of her son.",
+    "poster_path": "/bBUPaAxh3V5O3M3O5uIGnYhK9WX.jpg",
+    "backdrop_path": "/dwSdmuui68qmSCalGWsDZEgkgOg.jpg",
+    "release_date": "2004-09-01",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 111,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "8月の終わり、9月の初め": {
+    "tmdb_id": 78568,
+    "tmdb_title_jp": "Fin août, début septembre",
+    "tmdb_title_en": "Late August, Early September",
+    "tmdb_title_original": "Fin août, début septembre",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A book editor juggles relationships with two women while coping with his best friend's terminal illness.",
+    "poster_path": "/iese3eeQxlD1x1Q4B8vK35c9FXX.jpg",
+    "backdrop_path": "/iM1yVDHn22U1DZ45SVjhKPLrCBW.jpg",
+    "release_date": "1999-02-10",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 112,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "鬼龍院花子の生涯 4Kデジタルリマスター版": {
+    "tmdb_id": 107641,
+    "tmdb_title_jp": "鬼龍院花子の生涯",
+    "tmdb_title_en": "Onimasa: A Japanese Godfather",
+    "tmdb_title_original": "鬼龍院花子の生涯",
+    "tmdb_original_language": "ja",
+    "overview": "土佐の侠客である鬼龍院政五郎は、大正10年に松恵という養女を取った。松恵は政五郎の身の回りの世話をしながら成長する。政五郎は末長という男と対立していたが、末長の妻が経営する料亭からさらった娘つるを妾にした。つるは翌年、政五郎の娘を出産。娘は花子と名付けられた。花子が女学生になったころ、政五郎は高校教師の田辺と知り合い意気投合、十六歳になった花子の婿にしようとする。しかし田辺は松恵と愛し合うようになっていた。",
+    "overview_en": "Onimasa is the egocentric boss of a small yakuza clan on Shikoku Island, whose criminal duties conflict with his self-image as a chivalrous samurai. His struggles with his boss, the Shikoku Godfather, and the tumultuous life of his adopted daughter, Matsue, form the backdrop of this epic tale of justice, obedience, and bloody vengeance.",
+    "poster_path": "/2Z5y8NXN3EJN9bQKqFSNu8l3fzr.jpg",
+    "backdrop_path": "/h9GiZd8EbYDOWNFEQHyglsMXRsT.jpg",
+    "release_date": "1982-06-05",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 146,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:107641": {
+    "tmdb_id": 107641,
+    "tmdb_title_jp": "鬼龍院花子の生涯",
+    "tmdb_title_en": "Onimasa: A Japanese Godfather",
+    "tmdb_title_original": "鬼龍院花子の生涯",
+    "tmdb_original_language": "ja",
+    "overview": "土佐の侠客である鬼龍院政五郎は、大正10年に松恵という養女を取った。松恵は政五郎の身の回りの世話をしながら成長する。政五郎は末長という男と対立していたが、末長の妻が経営する料亭からさらった娘つるを妾にした。つるは翌年、政五郎の娘を出産。娘は花子と名付けられた。花子が女学生になったころ、政五郎は高校教師の田辺と知り合い意気投合、十六歳になった花子の婿にしようとする。しかし田辺は松恵と愛し合うようになっていた。",
+    "overview_en": "Onimasa is the egocentric boss of a small yakuza clan on Shikoku Island, whose criminal duties conflict with his self-image as a chivalrous samurai. His struggles with his boss, the Shikoku Godfather, and the tumultuous life of his adopted daughter, Matsue, form the backdrop of this epic tale of justice, obedience, and bloody vengeance.",
+    "poster_path": "/2Z5y8NXN3EJN9bQKqFSNu8l3fzr.jpg",
+    "backdrop_path": "/h9GiZd8EbYDOWNFEQHyglsMXRsT.jpg",
+    "release_date": "1982-06-05",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 146,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "人斬り": {
+    "tmdb_id": 37053,
+    "tmdb_title_jp": "人斬り",
+    "tmdb_title_en": "Tenchu!",
+    "tmdb_title_original": "人斬り",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A ronin desperately seeks a way out of financial straits; he allies with the Tosa clan under the ruthless leader Takechi, who quickly takes advantage.",
+    "poster_path": "/1ZB1hlGvtgRCU8b26S0YdeJJKU6.jpg",
+    "backdrop_path": "/o3Ao7DNwz9IXxdXEGz384doWPec.jpg",
+    "release_date": "1969-08-09",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "履歴",
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "History",
+      "Action",
+      "Drama"
+    ],
+    "runtime": 140,
+    "vote_average": 6.913,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "Ryuichi Sakamoto:Diaries": {
+    "tmdb_id": 1536538,
+    "tmdb_title_jp": "Ryuichi Sakamoto: Diaries",
+    "tmdb_title_en": "Ryuichi Sakamoto: Diaries",
+    "tmdb_title_original": "Ryuichi Sakamoto: Diaries",
+    "tmdb_original_language": "ja",
+    "overview": "命が尽きるその瞬間まで音楽への情熱を貫き、創作し続けた坂本龍一。本人が綴った「日記」を軸に、遺族全面協力のもと提供された貴重なプライベート映像やポートレート、未発表の音楽を交え、稀代の音楽家の最後の3年半の軌跡を辿る。今なお国も世代も超えて我々の心を掴み続ける坂本龍一は、命の終わりとどう向き合い、何を残そうとしたのか──。",
+    "overview_en": "",
+    "poster_path": "/btXkHsBrpA2xKnKcF2RotDdQgT4.jpg",
+    "backdrop_path": "/99gyBCAQ3WsXzYcaBXc7m1zCaWk.jpg",
+    "release_date": "2025-11-28",
+    "director": "Kensho Omori",
+    "director_jp": "Kensho Omori",
+    "director_en": "Kensho Omori",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 96,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "【TBS】War Bride2[0322/1400]": null,
+  "【TBS】War Bride2[0322/1620]": null,
+  "Riceboy ライスボーイ【トーク付き最速先行上映会】": {
+    "tmdb_id": 1008038,
+    "tmdb_title_jp": "Riceboy ライスボーイ",
+    "tmdb_title_en": "Riceboy Sleeps",
+    "tmdb_title_original": "Riceboy Sleeps",
+    "tmdb_original_language": "en",
+    "overview": "若くして恋人を亡くし未婚の母となったソヨンは、赤ん坊の息子ドンヒョンを連れてカナダのバンクーバー郊外へと移住する。ソヨンは工場で働きながら、言葉や文化の壁、人種差別に直面する日々の中、懸命に息子を育てていく。やがて16歳となったドンヒョンは英語名“デービッド”を名乗り、すっかりカナダでの生活になじんでいた。しかし、彼の心の奥底では自身のルーツ、特に一度も会ったことのない父親の存在への思いが次第に募っていく。そんなある日、二人に届いた衝撃的な知らせをきっかけに母と息子は初めて韓国へ帰郷し、悲しみの過去と対峙することになる ─ 。",
+    "overview_en": "In the 1990s, an immigrant single mother raises her teenage son in the Canadian suburbs, determined to provide a better life for him than the one she left behind in South Korea.",
+    "poster_path": "/344oy01RDIpTQd6Pw43iOYP3bjT.jpg",
+    "backdrop_path": "/2fckvNvcgAQiD5IbkVdfh3i6cR9.jpg",
+    "release_date": "2023-03-17",
+    "director": "沈明辅",
+    "director_jp": "沈明辅",
+    "director_en": "Anthony Shim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 117,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "ペリリュー －楽園のゲルニカ－": {
+    "tmdb_id": 1418666,
+    "tmdb_title_jp": "ペリリュー －楽園のゲルニカ－",
+    "tmdb_title_en": "Peleliu: Guernica of Paradise",
+    "tmdb_title_original": "ペリリュー －楽園のゲルニカ－",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The Battle of Peleliu was fought on the lovely Pacific island of that name by Japanese and American forces toward the end of the Pacific War. A work of fiction based on historical fact, this movie views the battle through the eyes of Tamaru, a 22-year-old soldier and aspiring cartoonist seeing his first combat. A chronicle of the “truth” as seen by a young man struggling to come to terms with war in an era when war was the norm.",
+    "poster_path": "/a7c9bttpcxjkG9UH20rbUIfY3ru.jpg",
+    "backdrop_path": "/jKHlGoME9vAnvY8war2aWABSktR.jpg",
+    "release_date": "2025-12-05",
+    "director": "久慈悟郎",
+    "director_jp": "久慈悟郎",
+    "director_en": "Goro Kuji",
+    "genres": [
+      "アニメーション",
+      "ドラマ",
+      "戦争"
+    ],
+    "genres_en": [
+      "Animation",
+      "Drama",
+      "War"
+    ],
+    "runtime": 106,
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "〈月刊ホン・サンス〉vol.5 自然は君に何を語るのか": {
+    "tmdb_id": 1418849,
+    "tmdb_title_jp": "그 자연이 네게 뭐라고 하니",
+    "tmdb_title_en": "What Does That Nature Say to You",
+    "tmdb_title_original": "그 자연이 네게 뭐라고 하니",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "A young poet drops his girlfriend off at her parents' house and is amazed by its size. He bumps into her father, meets her mother and sister, and they all end up spending a long day together; fueled by conversation, food and libations.",
+    "poster_path": "/ajneL70wrATLhrXaYEuXHz9aep9.jpg",
+    "backdrop_path": "/fZ6cXVESqUp2mq9NkYykrjz3EEG.jpg",
+    "release_date": "2025-05-14",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "365DAYs+2 彷徨う大人たち": null,
+  "tmdb:78568": {
+    "tmdb_id": 78568,
+    "tmdb_title_jp": "Fin août, début septembre",
+    "tmdb_title_en": "Late August, Early September",
+    "tmdb_title_original": "Fin août, début septembre",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A book editor juggles relationships with two women while coping with his best friend's terminal illness.",
+    "poster_path": "/iese3eeQxlD1x1Q4B8vK35c9FXX.jpg",
+    "backdrop_path": "/iM1yVDHn22U1DZ45SVjhKPLrCBW.jpg",
+    "release_date": "1999-02-10",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 112,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:37053": {
+    "tmdb_id": 37053,
+    "tmdb_title_jp": "人斬り",
+    "tmdb_title_en": "Tenchu!",
+    "tmdb_title_original": "人斬り",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A ronin desperately seeks a way out of financial straits; he allies with the Tosa clan under the ruthless leader Takechi, who quickly takes advantage.",
+    "poster_path": "/1ZB1hlGvtgRCU8b26S0YdeJJKU6.jpg",
+    "backdrop_path": "/o3Ao7DNwz9IXxdXEGz384doWPec.jpg",
+    "release_date": "1969-08-09",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "履歴",
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "History",
+      "Action",
+      "Drama"
+    ],
+    "runtime": 140,
+    "vote_average": 6.913,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1418849": {
+    "tmdb_id": 1418849,
+    "tmdb_title_jp": "그 자연이 네게 뭐라고 하니",
+    "tmdb_title_en": "What Does That Nature Say to You",
+    "tmdb_title_original": "그 자연이 네게 뭐라고 하니",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "A young poet drops his girlfriend off at her parents' house and is amazed by its size. He bumps into her father, meets her mother and sister, and they all end up spending a long day together; fueled by conversation, food and libations.",
+    "poster_path": "/ajneL70wrATLhrXaYEuXHz9aep9.jpg",
+    "backdrop_path": "/fZ6cXVESqUp2mq9NkYykrjz3EEG.jpg",
+    "release_date": "2025-05-14",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
       }
     ]
   }

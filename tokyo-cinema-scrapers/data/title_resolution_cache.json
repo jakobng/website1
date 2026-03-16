@@ -8505,5 +8505,68 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "8月の終わり、9月の初め": {
+    "english_title": "Late August, Early September",
+    "release_year": 1998,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "8月の終わり、9月の初め",
+    "director": "Olivier Assayas",
+    "country": "France"
+  },
+  "人斬り": {
+    "english_title": "Hitokiri",
+    "release_year": 1969,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "人斬り",
+    "director": "Hideo Gosha",
+    "country": "Japan"
+  },
+  "Ryuichi Sakamoto:Diaries": {
+    "english_title": "Ryuichi Sakamoto: Diaries",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Ryuichi Sakamoto: Diaries",
+    "director": "Kensho Omori",
+    "country": "Japan"
+  },
+  "【TBS】War Bride2[0322/1400]": {
+    "english_title": "War Bride 2: Nao and Four War Brides",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "War Bride2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】War Bride2[0322/1620]": {
+    "english_title": "War Bride 2",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "War Bride2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "〈月刊ホン・サンス〉vol.5 自然は君に何を語るのか": {
+    "english_title": "What Does That Nature Say to You",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "그 자연이 네게 뭐라고 하니",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "365DAYs+2 彷徨う大人たち": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
