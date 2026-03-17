@@ -2495,7 +2495,6 @@
     ],
     "vote_average": 0.0
   },
-  "Weekly Arthouse Screening": null,
   "Highlander 40th Anniversary": {
     "tmdb_id": 8009,
     "tmdb_title": "Highlander",
@@ -2513,7 +2512,55 @@
     ],
     "vote_average": 6.861
   },
-  "The Oscars Live at CULTPLEX": null,
+  "Spring Breakers": {
+    "tmdb_id": 122081,
+    "tmdb_title": "Spring Breakers",
+    "tmdb_original_title": "Spring Breakers",
+    "overview": "After four college girls rob a restaurant to fund their spring break in Florida, they get entangled with a weird dude with his own criminal agenda.",
+    "poster_path": "/9tyPnyEkL44qbAliM9jMRWc6bjg.jpg",
+    "backdrop_path": "/3eMxTkvHM6G1lHugBvFGVpcJFUa.jpg",
+    "release_date": "2013-03-06",
+    "director": "Harmony Korine",
+    "runtime": 94,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "vote_average": 5.2
+  },
+  "Videodrome": {
+    "tmdb_id": 837,
+    "tmdb_title": "Videodrome",
+    "tmdb_original_title": "Videodrome",
+    "overview": "As the president of a trashy TV channel, Max Renn is desperate for new programming to attract viewers. When he happens upon \"Videodrome,\" a TV show dedicated to gratuitous torture and punishment, Max sees a potential hit and broadcasts the show on his channel. However, after his girlfriend auditions for the show and never returns, Max investigates the truth behind Videodrome and discovers that the graphic violence may not be as fake as he thought.",
+    "poster_path": "/qqqkiZSU9EBGZ1KiDmfn07S7qvv.jpg",
+    "backdrop_path": "/eBS1nvaQ7BMdsSlkoLyKapf0FEY.jpg",
+    "release_date": "1983-02-04",
+    "director": "David Cronenberg",
+    "runtime": 88,
+    "genres": [
+      "Horror",
+      "Science Fiction",
+      "Mystery"
+    ],
+    "vote_average": 7.252
+  },
+  "Ready or Not 2: Here I Come": {
+    "tmdb_id": 1266127,
+    "tmdb_title": "Ready or Not 2: Here I Come",
+    "tmdb_original_title": "Ready or Not 2: Here I Come",
+    "overview": "Moments after surviving an all-out attack from the Le Domas family, Grace discovers she’s reached the next level of the nightmarish game — and this time with her estranged sister Faith at her side. Grace has one chance to survive, keep her sister alive, and claim the High Seat of the Council that controls the world. Four rival families are hunting her for the throne, and whoever wins rules it all.",
+    "poster_path": "/13ZcJzSGEqVgDSqsS9U5EkQwPkV.jpg",
+    "backdrop_path": "/34edT0SIrmUqH59J5OAQqYxp11D.jpg",
+    "release_date": "2026-03-19",
+    "director": "Matt Bettinelli-Olpin",
+    "runtime": 108,
+    "genres": [
+      "Thriller",
+      "Comedy"
+    ],
+    "vote_average": 7.0
+  },
   "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
   "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
   "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
@@ -2553,40 +2600,53 @@
   },
   "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
   "Jeanne Dielman, 23 Commerce Quay, 1080": null,
-  "Spring Breakers": {
-    "tmdb_id": 122081,
-    "tmdb_title": "Spring Breakers",
-    "tmdb_original_title": "Spring Breakers",
-    "overview": "After four college girls rob a restaurant to fund their spring break in Florida, they get entangled with a weird dude with his own criminal agenda.",
-    "poster_path": "/9tyPnyEkL44qbAliM9jMRWc6bjg.jpg",
-    "backdrop_path": "/3eMxTkvHM6G1lHugBvFGVpcJFUa.jpg",
-    "release_date": "2013-03-06",
-    "director": "Harmony Korine",
-    "runtime": 94,
+  "Ghost in the Shell": {
+    "tmdb_id": 9323,
+    "tmdb_title": "Ghost in the Shell",
+    "tmdb_original_title": "GHOST IN THE SHELL",
+    "overview": "In the year 2029, the barriers of our world have been broken down by the net and by cybernetics, but this brings new vulnerability to humans in the form of brain-hacking. When a highly-wanted hacker known as 'The Puppetmaster' begins involving them in politics, Section 9, a group of cybernetically enhanced cops, are called in to investigate and stop the Puppetmaster.",
+    "poster_path": "/9gC88zYUBARRSThcG93MvW14sqx.jpg",
+    "backdrop_path": "/jIpagj2Dud9g3ZVJFvaWikEWsYz.jpg",
+    "release_date": "1995-11-18",
+    "director": "Mamoru Oshii",
+    "runtime": 83,
     "genres": [
-      "Drama",
-      "Crime"
+      "Action",
+      "Animation",
+      "Science Fiction"
     ],
-    "vote_average": 5.2
+    "vote_average": 7.9
   },
-  "Videodrome": {
-    "tmdb_id": 837,
-    "tmdb_title": "Videodrome",
-    "tmdb_original_title": "Videodrome",
-    "overview": "As the president of a trashy TV channel, Max Renn is desperate for new programming to attract viewers. When he happens upon \"Videodrome,\" a TV show dedicated to gratuitous torture and punishment, Max sees a potential hit and broadcasts the show on his channel. However, after his girlfriend auditions for the show and never returns, Max investigates the truth behind Videodrome and discovers that the graphic violence may not be as fake as he thought.",
-    "poster_path": "/qqqkiZSU9EBGZ1KiDmfn07S7qvv.jpg",
-    "backdrop_path": "/eBS1nvaQ7BMdsSlkoLyKapf0FEY.jpg",
-    "release_date": "1983-02-04",
-    "director": "David Cronenberg",
-    "runtime": 88,
+  "#RIPVINE": {
+    "tmdb_id": 581646,
+    "tmdb_title": "#RIPVine",
+    "tmdb_original_title": "#RIPVine",
+    "overview": "A curated collection of 450 Vines, to commemorate the short-form video sharing platform's passing.",
+    "poster_path": "/nq97TjIwLXSuENf1LXNlD2zf5GC.jpg",
+    "backdrop_path": null,
+    "release_date": "2018-11-23",
+    "director": "",
+    "runtime": 90,
+    "genres": [],
+    "vote_average": 5.0
+  },
+  "One Battle After Another  (2025)": {
+    "tmdb_id": 1054867,
+    "tmdb_title": "One Battle After Another",
+    "tmdb_original_title": "One Battle After Another",
+    "overview": "Washed-up revolutionary Bob exists in a state of stoned paranoia, surviving off-grid with his spirited, self-reliant daughter, Willa. When his evil nemesis resurfaces after 16 years and she goes missing, the former radical scrambles to find her, father and daughter both battling the consequences of his past.",
+    "poster_path": "/lbBWwxBht4JFP5PsuJ5onpMqugW.jpg",
+    "backdrop_path": "/zpEWFNqoN8Qg1SzMMHmaGyOBTdW.jpg",
+    "release_date": "2025-09-23",
+    "director": "Paul Thomas Anderson",
+    "runtime": 162,
     "genres": [
-      "Horror",
-      "Science Fiction",
-      "Mystery"
+      "Thriller",
+      "Crime",
+      "Comedy"
     ],
-    "vote_average": 7.252
+    "vote_average": 7.398
   },
-  "Othello": null,
   "The Straight Story - 4K Restoration (PG)": {
     "tmdb_id": 404,
     "tmdb_title": "The Straight Story",
@@ -2600,25 +2660,25 @@
     "genres": [
       "Drama"
     ],
-    "vote_average": 7.739
+    "vote_average": 7.7
+  },
+  "Long Day’s Journey Into Night": {
+    "tmdb_id": 486898,
+    "tmdb_title": "Long Day's Journey Into Night",
+    "tmdb_original_title": "地球最后的夜晚",
+    "overview": "Luo Hongwu returns to Kaili, the hometown from which he fled many years ago. He begins the search for the woman he loved and whom he has never been able to forget.",
+    "poster_path": "/8wUxYW7v2sahnFwipwzjRo8Z3sP.jpg",
+    "backdrop_path": "/zJDaoc3HIHIgIOiY60NxqZUdXcp.jpg",
+    "release_date": "2018-12-31",
+    "director": "Bi Gan",
+    "runtime": 138,
+    "genres": [
+      "Drama",
+      "Mystery"
+    ],
+    "vote_average": 6.969
   },
   "Throwback: Master and Commander": null,
-  "Ready or Not 2: Here I Come": {
-    "tmdb_id": 1266127,
-    "tmdb_title": "Ready or Not 2: Here I Come",
-    "tmdb_original_title": "Ready or Not 2: Here I Come",
-    "overview": "Moments after surviving an all-out attack from the Le Domas family, Grace discovers she’s reached the next level of the nightmarish game — and this time with her estranged sister Faith at her side. Grace has one chance to survive, keep her sister alive, and claim the High Seat of the Council that controls the world. Four rival families are hunting her for the throne, and whoever wins rules it all.",
-    "poster_path": "/13ZcJzSGEqVgDSqsS9U5EkQwPkV.jpg",
-    "backdrop_path": "/34edT0SIrmUqH59J5OAQqYxp11D.jpg",
-    "release_date": "2026-03-19",
-    "director": "Matt Bettinelli-Olpin",
-    "runtime": 108,
-    "genres": [
-      "Thriller",
-      "Comedy"
-    ],
-    "vote_average": 7.0
-  },
   "Throwback: Moulin Rouge! (25th Anniversary)": {
     "tmdb_id": 824,
     "tmdb_title": "Moulin Rouge!",
@@ -2634,7 +2694,23 @@
       "Romance",
       "Music"
     ],
-    "vote_average": 7.5
+    "vote_average": 7.534
+  },
+  "Throwback: Romeo + Juliet (30th Anniversary)": {
+    "tmdb_id": 454,
+    "tmdb_title": "Romeo + Juliet",
+    "tmdb_original_title": "Romeo + Juliet",
+    "overview": "In director Baz Luhrmann's contemporary take on William Shakespeare's classic tragedy, the Montagues and Capulets have moved their ongoing feud to the sweltering suburb of Verona Beach, where Romeo and Juliet fall in love and secretly wed. Though the film is visually modern, the bard's dialogue remains.",
+    "poster_path": "/eLf4jclPijOqfEp6bDAmezRFxk5.jpg",
+    "backdrop_path": "/m0miV65ZZIp13TNHJSRUF6vmCos.jpg",
+    "release_date": "1996-11-01",
+    "director": "Baz Luhrmann",
+    "runtime": 120,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 6.783
   },
   "Exhibition On Screen: Turner & Constable": null,
   "The Royal Opera: The Magic Flute": null,
@@ -2672,5 +2748,6 @@
       "Romance"
     ],
     "vote_average": 5.974
-  }
+  },
+  "Weekly Arthouse Screening": null
 }
