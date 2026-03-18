@@ -8568,5 +8568,245 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "韓国ミュージカル ON SCREEN「モーツァルト！」": {
+    "english_title": "Korean Musical ON SCREEN: Mozart!",
+    "release_year": 2020,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "韓国ミュージカル ON SCREEN「モーツァルト！」",
+    "director": "Adrian Osmond",
+    "country": "South Korea",
+    "failed": true
+  },
+  "おしり前マン　復活のおしり前帝国": {
+    "english_title": "Oshiri-Front Man: Return of the Oshiri-Front Empire",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "おしり前マン 復活のおしり前帝国",
+    "director": "Takashi Taniguchi",
+    "country": "Japan",
+    "failed": true
+  },
+  "秒速5センチメートル（2007）": {
+    "english_title": "5 Centimeters per Second",
+    "release_year": 2007,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "秒速5センチメートル",
+    "director": "Makoto Shinkai",
+    "country": "Japan"
+  },
+  "ショート・パルス ５つの鼓動 バージョン１": {
+    "english_title": "Short Pulse: 5 Beats",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ショート・パルス ５つの鼓動 バージョン１",
+    "director": "Neo Sora, Yorgos Lanthimos, Jonathan Glazer, Alice Rohrwacher, JR",
+    "country": "Japan",
+    "failed": true
+  },
+  "秘密の丘": {
+    "english_title": "The Hill of Secrets",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "비밀의 언덕",
+    "director": "Lee Ji-eun",
+    "country": "South Korea"
+  },
+  "ショート・パルス ５つの鼓動 バージョン２": {
+    "english_title": "Short Pulse: 5 Beats - Version 2",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ショート・パルス ５つの鼓動 バージョン２",
+    "director": "Neo Sora, Yorgos Lanthimos, Jonathan Glazer, Alice Rohrwacher, JR",
+    "country": "Japan",
+    "failed": true
+  },
+  "ショート・パルス ５つの鼓動 バージョン３": {
+    "english_title": "Short Pulse: 5 Beats (Version 3)",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ショート・パルス ５つの鼓動 バージョン３",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "素晴らしい風船旅行 4K": {
+    "english_title": "Stowaway in the Sky",
+    "release_year": 1960,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Le Voyage en ballon",
+    "director": "Albert Lamorisse",
+    "country": "France"
+  },
+  "赤い風船 4K＋白い馬 4K": {
+    "english_title": "The Red Balloon / White Mane",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Le Ballon rouge / Crin-Blanc",
+    "director": "Albert Lamorisse",
+    "country": "France",
+    "failed": true
+  },
+  "オテサーネク": {
+    "english_title": "Little Otik",
+    "release_year": 2000,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Otesánek",
+    "director": "Jan Švankmajer",
+    "country": "Czech Republic"
+  },
+  "フィフィ大空をゆく 4K": {
+    "english_title": "Circus Angel",
+    "release_year": 1965,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Fifi la plume",
+    "director": "Albert Lamorisse",
+    "country": "France"
+  },
+  "小さなロバ、ビム 4K": {
+    "english_title": "Bim, the Little Donkey",
+    "release_year": 1951,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Bim, le petit âne",
+    "director": "Albert Lamorisse",
+    "country": "France"
+  },
+  "【TBS】ｱﾌｶﾞﾝからの脱出[0320]": {
+    "english_title": "Escape from Afghanistan",
+    "release_year": 2022,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "アフガンからの脱出",
+    "director": "Wataru Nakamura",
+    "country": "Japan"
+  },
+  "【TBS】野島伸司[0320ｲﾍﾞﾝﾄ]": {
+    "english_title": "Nojima Shinji: I'm a Dog Lover, But I Keep a Cat",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "野島伸司 いぬ派だけど ねこを飼う",
+    "director": "Yuki Tsumura",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】ﾌﾞﾙｰｲﾝﾊﾟﾙｽ[0321/1400]": {
+    "english_title": "Blue Impulse: Into the Sky",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ブルーインパルスの空へ",
+    "director": "Masago Watanabe",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】ﾌﾞﾙｰｲﾝﾊﾟﾙｽ[0321/1630]": {
+    "english_title": "Blue Impulse: Into the Sky",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ブルーインパルスの空へ",
+    "director": "Shogo Watanabe",
+    "country": "Japan",
+    "failed": true
+  },
+  "【TBS】War Bride2[0322/1845]": {
+    "english_title": "War Bride 2: Nao and the 4 War Brides",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "War Bride2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "＜上映後ｲﾍﾞﾝﾄ＞みんな、おしゃ": {
+    "english_title": "The Chatterboxes",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "みんな、おしゃべり！",
+    "director": "Ken Kawai",
+    "country": "Japan"
+  },
+  "ユージュアル・サスぺクツ": {
+    "english_title": "The Usual Suspects",
+    "release_year": 1995,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Usual Suspects",
+    "director": "Bryan Singer",
+    "country": "USA"
+  },
+  "デヴィッド・リンチの夜": {
+    "english_title": "David Lynch's Night",
+    "release_year": 2026,
+    "confidence": 0.7,
+    "notes": "",
+    "original_title": "デヴィッド・リンチの夜",
+    "director": "David Lynch",
+    "country": "Japan",
+    "failed": true
+  },
+  "鯨が消えた入り江 上映後トークショー": {
+    "english_title": "A Balloon's Landing",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "我在這裡等你",
+    "director": "Angel Teng",
+    "country": "Taiwan"
+  },
+  "あのとき": {
+    "english_title": "At That Time",
+    "release_year": 2020,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "あのとき",
+    "director": "Yu Araki",
+    "country": "Japan",
+    "failed": true
+  },
+  "自然は君に何を語るのか": {
+    "english_title": "What Does That Nature Say to You",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "그 자연이 네게 뭐라고 하니",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
+  },
+  "【TBS】田村真子[0320ｲﾍﾞﾝﾄ]": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】ﾊﾞｰｽﾃﾞｲ[0321ｲﾍﾞﾝﾄ]": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ジーンシアタースタジアム": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }

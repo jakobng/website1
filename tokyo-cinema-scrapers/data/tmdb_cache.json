@@ -11479,7 +11479,7 @@
       "Drama"
     ],
     "runtime": 100,
-    "vote_average": 7.3,
+    "vote_average": 7.4,
     "tmdb_countries": [
       {
         "iso_3166_1": "TW",
@@ -37094,7 +37094,7 @@
       "Fantasy"
     ],
     "runtime": 97,
-    "vote_average": 7.4,
+    "vote_average": 7.442,
     "tmdb_countries": [
       {
         "iso_3166_1": "CZ",
@@ -45348,7 +45348,7 @@
       "Family"
     ],
     "runtime": 45,
-    "vote_average": 8.0,
+    "vote_average": 7.0,
     "tmdb_countries": [
       {
         "iso_3166_1": "FR",
@@ -59558,7 +59558,7 @@
     "tmdb_title_original": "Něco z Alenky",
     "tmdb_original_language": "cs",
     "overview": "散らかった部屋の中で、あまりの退屈さにうんざりしたアリス（クリスティーナ・コホトヴァー）は、人形で「アリス」ごっこを始める。とその時、ガラスケースの中の白ウサギが突然動きだし、懐中時計を手に慌てて駆け出す姿に驚きながらもアリスは後を追うことにし、いつしか不思議の国にたどり着く。面白半分にインクを飲み、あっという間に小さくなったアリスが、タルトを食べると今度は大きくなってしまう。",
-    "overview_en": "A quiet young English girl named Alice finds herself in an alternate version of her own reality after chasing a white rabbit. She becomes surrounded by living inanimate objects and stuffed dead animals, and must find a way out of this nightmare - no matter how twisted or odd that way must be. A memorably bizarre screen version of Lewis Carroll’s novel \"Alice’s Adventures in Wonderland\".",
+    "overview_en": "A quiet young English girl named Alice finds herself in an alternate version of her own reality after chasing a white rabbit. She becomes surrounded by living inanimate objects and stuffed dead animals, and must find a way out of this nightmare - no matter how twisted or odd that way must be.",
     "poster_path": "/iX1EbFU2QrlANv4HNwd5OCMwvKm.jpg",
     "backdrop_path": "/ztUsikFoLgUx4Uce6EqF3l5LEUZ.jpg",
     "release_date": "1988-08-03",
@@ -59576,7 +59576,7 @@
       "Adventure"
     ],
     "runtime": 85,
-    "vote_average": 7.437,
+    "vote_average": 7.4,
     "tmdb_countries": [
       {
         "iso_3166_1": "CH",
@@ -83091,6 +83091,1405 @@
       {
         "iso_3166_1": "KR",
         "name": "South Korea"
+      }
+    ]
+  },
+  "劇場版「暗殺教室」みんなの時間": {
+    "tmdb_id": 1542877,
+    "tmdb_title_jp": "劇場版「暗殺教室」みんなの時間",
+    "tmdb_title_en": "Assassination Classroom the Movie: Everyone's Time",
+    "tmdb_title_original": "劇場版「暗殺教室」みんなの時間",
+    "tmdb_original_language": "ja",
+    "overview": "クラスの生徒全員暗殺者！ターゲットは担任の先生⁉暗殺学園青春エンターテインメントが劇場アニメで帰ってくる‼  原作連載完結＆TVアニメ放送終了から10年皆さん立派な大人になりましたね  みなさん、それぞれの今を一生懸命生きていることでしょう  どうです？久しぶりに3年E組に会いに来ませんか？  友だちを誘っても良いですし、もちろん一人でも大丈夫  Ｅ組との同窓会だと思って、気楽に遊びに来てください  きっと素晴らしい時間になりますよ",
+    "overview_en": "United by a common mission to eliminate their teacher, Koro-sensei, an alien creature with phenomenal strength, join Nagisa and his Class 3-E classmates in brand-new adventures.",
+    "poster_path": "/jPCJ3drhhxcfJrLIZv3vucUGRBS.jpg",
+    "backdrop_path": "/oP3Gj7nihYsu9i4JyPVMRLR7xBP.jpg",
+    "release_date": "2026-03-20",
+    "director": "北村真咲",
+    "director_jp": "北村真咲",
+    "director_en": "Masaki Kitamura",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "アクション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Action",
+      "Science Fiction"
+    ],
+    "runtime": 87,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1542877": {
+    "tmdb_id": 1542877,
+    "tmdb_title_jp": "劇場版「暗殺教室」みんなの時間",
+    "tmdb_title_en": "Assassination Classroom the Movie: Everyone's Time",
+    "tmdb_title_original": "劇場版「暗殺教室」みんなの時間",
+    "tmdb_original_language": "ja",
+    "overview": "クラスの生徒全員暗殺者！ターゲットは担任の先生⁉暗殺学園青春エンターテインメントが劇場アニメで帰ってくる‼  原作連載完結＆TVアニメ放送終了から10年皆さん立派な大人になりましたね  みなさん、それぞれの今を一生懸命生きていることでしょう  どうです？久しぶりに3年E組に会いに来ませんか？  友だちを誘っても良いですし、もちろん一人でも大丈夫  Ｅ組との同窓会だと思って、気楽に遊びに来てください  きっと素晴らしい時間になりますよ",
+    "overview_en": "United by a common mission to eliminate their teacher, Koro-sensei, an alien creature with phenomenal strength, join Nagisa and his Class 3-E classmates in brand-new adventures.",
+    "poster_path": "/jPCJ3drhhxcfJrLIZv3vucUGRBS.jpg",
+    "backdrop_path": "/oP3Gj7nihYsu9i4JyPVMRLR7xBP.jpg",
+    "release_date": "2026-03-20",
+    "director": "北村真咲",
+    "director_jp": "北村真咲",
+    "director_en": "Masaki Kitamura",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "アクション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Action",
+      "Science Fiction"
+    ],
+    "runtime": 87,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "東京逃避行": {
+    "tmdb_id": 1653724,
+    "tmdb_title_jp": "東京逃避行",
+    "tmdb_title_en": "東京逃避行",
+    "tmdb_title_original": "東京逃避行",
+    "tmdb_original_language": "ja",
+    "overview": "家にも学校にも居場所がない女子高生・飛鳥は、トー横で暮らす少女の自伝的ネット小説「東京逃避行」に憧れて歌舞伎町を訪れ、偶然にも作者の日和と出会い意気投合する。トー横に流れついた人々を保護して面倒をみるエドや、トー横の若者たちのリーダー的存在であるメリオを紹介された飛鳥は、メリオが仕切る集会に参加するが、そこで衝撃的な現実を目撃。日和の手を取って逃げ出したものの、2人は半グレ組織の怒りを買い、追われる身となってしまう。一方、若者たちの居場所を守ろうと戦うエドと、危うい選択を重ねて飛鳥たちを追うメリオ。やがて警察をも巻き込み、事態は急展開を迎える。",
+    "overview_en": "",
+    "poster_path": "/5CxHN0DVDoLtXZPRSn3mBIWwkWI.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1653724": {
+    "tmdb_id": 1653724,
+    "tmdb_title_jp": "東京逃避行",
+    "tmdb_title_en": "東京逃避行",
+    "tmdb_title_original": "東京逃避行",
+    "tmdb_original_language": "ja",
+    "overview": "家にも学校にも居場所がない女子高生・飛鳥は、トー横で暮らす少女の自伝的ネット小説「東京逃避行」に憧れて歌舞伎町を訪れ、偶然にも作者の日和と出会い意気投合する。トー横に流れついた人々を保護して面倒をみるエドや、トー横の若者たちのリーダー的存在であるメリオを紹介された飛鳥は、メリオが仕切る集会に参加するが、そこで衝撃的な現実を目撃。日和の手を取って逃げ出したものの、2人は半グレ組織の怒りを買い、追われる身となってしまう。一方、若者たちの居場所を守ろうと戦うエドと、危うい選択を重ねて飛鳥たちを追うメリオ。やがて警察をも巻き込み、事態は急展開を迎える。",
+    "overview_en": "",
+    "poster_path": "/5CxHN0DVDoLtXZPRSn3mBIWwkWI.jpg",
+    "backdrop_path": null,
+    "release_date": "",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "韓国ミュージカル ON SCREEN「モーツァルト！」": null,
+  "カミング・ホーム": {
+    "tmdb_id": 1072371,
+    "tmdb_title_jp": "カミング・ホーム",
+    "tmdb_title_en": "Jules",
+    "tmdb_title_original": "Jules",
+    "tmdb_original_language": "en",
+    "overview": "ペンシルベニア州西部の小さな町で暮らす79歳のミルトンは認知症の初期症状を娘に心配されながらも、受け入れられずに一人暮らしを続けていた。そんなある夜、庭に突如、空から正体不明の飛行物体が墜落し、彼の静かな日常は大きく揺らぎ始める。\r 周囲に訴えても相手にされない中、同年代の隣人サンディーとジョイスだけが共に飛行物体を目撃し3人は秘密を共有することに。それぞれの孤独を抱えていた3人は忘れかけていた人生の喜びを取り戻し、やがて自らの“これからの人生”と向き合っていく——。",
+    "overview_en": "A flying saucer lands in the backyard of an elderly suburbanite with memory problems, who forms a bond with the scared alien inside.",
+    "poster_path": "/bBYFSd0O8wFw5GlfbMidSmNO2bT.jpg",
+    "backdrop_path": "/xCXMHUMQJess3GACbR2PQI7sjeH.jpg",
+    "release_date": "2023-08-10",
+    "director": "Marc Turtletaub",
+    "director_jp": "Marc Turtletaub",
+    "director_en": "Marc Turtletaub",
+    "genres": [
+      "コメディ",
+      "サイエンスフィクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Science Fiction",
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:1072371": {
+    "tmdb_id": 1072371,
+    "tmdb_title_jp": "カミング・ホーム",
+    "tmdb_title_en": "Jules",
+    "tmdb_title_original": "Jules",
+    "tmdb_original_language": "en",
+    "overview": "ペンシルベニア州西部の小さな町で暮らす79歳のミルトンは認知症の初期症状を娘に心配されながらも、受け入れられずに一人暮らしを続けていた。そんなある夜、庭に突如、空から正体不明の飛行物体が墜落し、彼の静かな日常は大きく揺らぎ始める。\r 周囲に訴えても相手にされない中、同年代の隣人サンディーとジョイスだけが共に飛行物体を目撃し3人は秘密を共有することに。それぞれの孤独を抱えていた3人は忘れかけていた人生の喜びを取り戻し、やがて自らの“これからの人生”と向き合っていく——。",
+    "overview_en": "A flying saucer lands in the backyard of an elderly suburbanite with memory problems, who forms a bond with the scared alien inside.",
+    "poster_path": "/bBYFSd0O8wFw5GlfbMidSmNO2bT.jpg",
+    "backdrop_path": "/xCXMHUMQJess3GACbR2PQI7sjeH.jpg",
+    "release_date": "2023-08-10",
+    "director": "Marc Turtletaub",
+    "director_jp": "Marc Turtletaub",
+    "director_en": "Marc Turtletaub",
+    "genres": [
+      "コメディ",
+      "サイエンスフィクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Science Fiction",
+      "Drama"
+    ],
+    "runtime": 87,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "おしり前マン　復活のおしり前帝国": null,
+  "小学校　それは小さな社会": {
+    "tmdb_id": 1186850,
+    "tmdb_title_jp": "小学校～それは小さな社会～",
+    "tmdb_title_en": "The Making of a Japanese",
+    "tmdb_title_original": "小学校～それは小さな社会～",
+    "tmdb_original_language": "ja",
+    "overview": "4月、入学したばかりの1年生は挙手のしかたや廊下の歩きかた、掃除や給食当番など、集団生活の一員としての規律と秩序について初めて学ぶ。そんな1年生の手助けをするのは6年生で、子どもたちはわずか6年の間に自分が何者であるかという自覚を持ち、6年生にふさわしい行動をとるようになる。コロナ禍で学校行事実施の有無に悩み議論を重ねる教師たち、社会生活のマナーを学ぶ1年生、経験を重ねて次章への準備を始める6年生。3学期になると、もうすぐ2年生になる1年生は新入生のために音楽演奏をすることになる。",
+    "overview_en": "Intimately following 1st and 6th graders at a public elementary school in Tokyo, we observe kids learning the traits necessary to become part of Japanese society.",
+    "poster_path": "/dD2RAFC13CS77WYduIpQrgy7t4V.jpg",
+    "backdrop_path": "/9h4edpFApG5Wpfjbd9hhaVsG7bG.jpg",
+    "release_date": "2024-04-05",
+    "director": "山崎エマ",
+    "director_jp": "山崎エマ",
+    "director_en": "Ema Ryan Yamazaki",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 99,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1186850": {
+    "tmdb_id": 1186850,
+    "tmdb_title_jp": "小学校～それは小さな社会～",
+    "tmdb_title_en": "The Making of a Japanese",
+    "tmdb_title_original": "小学校～それは小さな社会～",
+    "tmdb_original_language": "ja",
+    "overview": "4月、入学したばかりの1年生は挙手のしかたや廊下の歩きかた、掃除や給食当番など、集団生活の一員としての規律と秩序について初めて学ぶ。そんな1年生の手助けをするのは6年生で、子どもたちはわずか6年の間に自分が何者であるかという自覚を持ち、6年生にふさわしい行動をとるようになる。コロナ禍で学校行事実施の有無に悩み議論を重ねる教師たち、社会生活のマナーを学ぶ1年生、経験を重ねて次章への準備を始める6年生。3学期になると、もうすぐ2年生になる1年生は新入生のために音楽演奏をすることになる。",
+    "overview_en": "Intimately following 1st and 6th graders at a public elementary school in Tokyo, we observe kids learning the traits necessary to become part of Japanese society.",
+    "poster_path": "/dD2RAFC13CS77WYduIpQrgy7t4V.jpg",
+    "backdrop_path": "/9h4edpFApG5Wpfjbd9hhaVsG7bG.jpg",
+    "release_date": "2024-04-05",
+    "director": "山崎エマ",
+    "director_jp": "山崎エマ",
+    "director_en": "Ema Ryan Yamazaki",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 99,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "秒速5センチメートル（2007）": {
+    "tmdb_id": 38142,
+    "tmdb_title_jp": "秒速5センチメートル",
+    "tmdb_title_en": "5 Centimeters per Second",
+    "tmdb_title_original": "秒速5センチメートル",
+    "tmdb_original_language": "ja",
+    "overview": "東京の小学生・遠野貴樹と篠原明里はお互いに対する「他人には分らない特別な想い」を抱えていた。しかし小学校卒業と同時に明里は栃木へ転校してしまい、それきり会うことが無くなってしまう。貴樹が中学に入学して半年が経過した夏のある日、栃木の明里から手紙が届く。それをきっかけに、文通を重ねるようになる2人。しかしその年の冬に、今度は貴樹が鹿児島へ転校することが決まった。鹿児島と栃木では絶望的に遠い。「もう二度と会えなくなるかもしれない…」そう思った貴樹は、明里に会いに行く決意をする。しかしその約束の日、関東では大雪となった。当初の予定は列車の遅延で大幅に狂い、時間だけがただ残酷に流れていく…。貴樹と明里の、再会と別れの1日を時間経過と共に描く。",
+    "overview_en": "Three moments in Takaki's life: his relationship with Akari and their forced separation; his friendship with Kanae, who is secretly in love with him; the demands and disappointments of adulthood, an unhappy life in a cold city.",
+    "poster_path": "/muJareEZLzCI33T3MyHJ1Q15Cbp.jpg",
+    "backdrop_path": "/n7dz2NHNuEvoreUM4qXFR0Yh0pw.jpg",
+    "release_date": "2007-03-03",
+    "director": "新海誠",
+    "director_jp": "新海誠",
+    "director_en": "Makoto Shinkai",
+    "genres": [
+      "アニメーション",
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 63,
+    "vote_average": 7.295,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "青春の蹉跌": {
+    "tmdb_id": 125228,
+    "tmdb_title_jp": "青春の蹉跌",
+    "tmdb_title_en": "Bitterness of Youth",
+    "tmdb_title_original": "青春の蹉跌",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A footballing law student tutors an undergraduate, developing into a romance that soon enough goes awry.",
+    "poster_path": "/r79QnpoMn3SXt3r5FSlSUV3O8HR.jpg",
+    "backdrop_path": "/c9ozZe8BmGL5HvmyDoh6qDKxTeI.jpg",
+    "release_date": "1974-06-29",
+    "director": "神代辰巳",
+    "director_jp": "神代辰巳",
+    "director_en": "Tatsumi Kumashiro",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 85,
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:125228": {
+    "tmdb_id": 125228,
+    "tmdb_title_jp": "青春の蹉跌",
+    "tmdb_title_en": "Bitterness of Youth",
+    "tmdb_title_original": "青春の蹉跌",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A footballing law student tutors an undergraduate, developing into a romance that soon enough goes awry.",
+    "poster_path": "/r79QnpoMn3SXt3r5FSlSUV3O8HR.jpg",
+    "backdrop_path": "/c9ozZe8BmGL5HvmyDoh6qDKxTeI.jpg",
+    "release_date": "1974-06-29",
+    "director": "神代辰巳",
+    "director_jp": "神代辰巳",
+    "director_en": "Tatsumi Kumashiro",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 85,
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "宵待草": {
+    "tmdb_id": 234485,
+    "tmdb_title_jp": "宵待草",
+    "tmdb_title_en": "Evening Primrose",
+    "tmdb_title_original": "宵待草",
+    "tmdb_original_language": "ja",
+    "overview": "アナーキストの谷川国彦は、黒木大次郎率いる無政府主義者のグループ「ダムダム団」に仲間入りする。副団長格は平田玄二、その他10名以上の団員で構成されていた。彼らは右翼の大物の孫娘を誘拐するが、国彦はその令嬢が以前に温泉で出会った北条寺しのだと知る。しのは誘拐とは思わず、国彦が自分を愛するための行動だと勘違いし…。",
+    "overview_en": "The Taisho era was a time of turbulence in Japan. From new marks of modernity to full-blown riots, a sense of revolution filled the air. The Dam Dam Group is a small anarchist organization lead by Daijiro, a silver tongued \"Benshi\", a performer who provides narratives for silent films, playing multiple roles. In other words, he was a master at the art of deception, a handy talent when it came to 'doing jobs' for his group. His revolutionary ideals attracted many to his squadron, but among them was a young girl who was oblivious to his group's activities. Her name was Shino.",
+    "poster_path": "/gQOGskwjtd1BdNgLCqZjUT0FXBe.jpg",
+    "backdrop_path": null,
+    "release_date": "1974-12-28",
+    "director": "神代辰巳",
+    "director_jp": "神代辰巳",
+    "director_en": "Tatsumi Kumashiro",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:234485": {
+    "tmdb_id": 234485,
+    "tmdb_title_jp": "宵待草",
+    "tmdb_title_en": "Evening Primrose",
+    "tmdb_title_original": "宵待草",
+    "tmdb_original_language": "ja",
+    "overview": "アナーキストの谷川国彦は、黒木大次郎率いる無政府主義者のグループ「ダムダム団」に仲間入りする。副団長格は平田玄二、その他10名以上の団員で構成されていた。彼らは右翼の大物の孫娘を誘拐するが、国彦はその令嬢が以前に温泉で出会った北条寺しのだと知る。しのは誘拐とは思わず、国彦が自分を愛するための行動だと勘違いし…。",
+    "overview_en": "The Taisho era was a time of turbulence in Japan. From new marks of modernity to full-blown riots, a sense of revolution filled the air. The Dam Dam Group is a small anarchist organization lead by Daijiro, a silver tongued \"Benshi\", a performer who provides narratives for silent films, playing multiple roles. In other words, he was a master at the art of deception, a handy talent when it came to 'doing jobs' for his group. His revolutionary ideals attracted many to his squadron, but among them was a young girl who was oblivious to his group's activities. Her name was Shino.",
+    "poster_path": "/gQOGskwjtd1BdNgLCqZjUT0FXBe.jpg",
+    "backdrop_path": null,
+    "release_date": "1974-12-28",
+    "director": "神代辰巳",
+    "director_jp": "神代辰巳",
+    "director_en": "Tatsumi Kumashiro",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 96,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ショート・パルス ５つの鼓動 バージョン１": null,
+  "秘密の丘": {
+    "tmdb_id": 927035,
+    "tmdb_title_jp": "비밀의 언덕",
+    "tmdb_title_en": "The Hill of Secrets",
+    "tmdb_title_original": "비밀의 언덕",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Myung-eun can't comprehend the word \"family\". She wishes to keep it a secret because she is so different from what she would like to be. When it comes to writing, on the other hand, she does not allow herself to be restricted by reality.",
+    "poster_path": "/cIKKT6L5VcShADUUzybUC5T4ou8.jpg",
+    "backdrop_path": "/5ZhJ4zuew5sbMHy1nkY8GzKOQm5.jpg",
+    "release_date": "2023-07-12",
+    "director": "Lee Ji-eun",
+    "director_jp": "Lee Ji-eun",
+    "director_en": "Lee Ji-eun",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "ショート・パルス ５つの鼓動 バージョン２": null,
+  "ショート・パルス ５つの鼓動 バージョン３": null,
+  "素晴らしい風船旅行 4K": {
+    "tmdb_id": 204199,
+    "tmdb_title_jp": "Le Voyage en ballon",
+    "tmdb_title_en": "Stowaway in the Sky",
+    "tmdb_title_original": "Le Voyage en ballon",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A small child, fascinated by a lighter-than-air balloon, clambers aboard. The balloon takes flight, lifting the child upward to an amazing adventure. The land-bound adults have conniptions as the balloon wafts by; the child has nothing more than a great time.",
+    "poster_path": "/hEg2GbBBd9ljGxmA4Nbs2ywJ9jp.jpg",
+    "backdrop_path": "/hp83oXgz2ZGqlCPEbjmWRhBJ1RD.jpg",
+    "release_date": "1960-09-14",
+    "director": "Albert Lamorisse",
+    "director_jp": "Albert Lamorisse",
+    "director_en": "Albert Lamorisse",
+    "genres": [
+      "アドベンチャー",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Adventure",
+      "Family"
+    ],
+    "runtime": 85,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "赤い風船 4K＋白い馬 4K": null,
+  "アリス": {
+    "tmdb_id": 18917,
+    "tmdb_title_jp": "アリス",
+    "tmdb_title_en": "Alice",
+    "tmdb_title_original": "Něco z Alenky",
+    "tmdb_original_language": "cs",
+    "overview": "散らかった部屋の中で、あまりの退屈さにうんざりしたアリス（クリスティーナ・コホトヴァー）は、人形で「アリス」ごっこを始める。とその時、ガラスケースの中の白ウサギが突然動きだし、懐中時計を手に慌てて駆け出す姿に驚きながらもアリスは後を追うことにし、いつしか不思議の国にたどり着く。面白半分にインクを飲み、あっという間に小さくなったアリスが、タルトを食べると今度は大きくなってしまう。",
+    "overview_en": "A quiet young English girl named Alice finds herself in an alternate version of her own reality after chasing a white rabbit. She becomes surrounded by living inanimate objects and stuffed dead animals, and must find a way out of this nightmare - no matter how twisted or odd that way must be.",
+    "poster_path": "/iX1EbFU2QrlANv4HNwd5OCMwvKm.jpg",
+    "backdrop_path": "/ztUsikFoLgUx4Uce6EqF3l5LEUZ.jpg",
+    "release_date": "1988-08-03",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Adventure"
+    ],
+    "runtime": 85,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "XC",
+        "name": "Czechoslovakia"
+      }
+    ]
+  },
+  "オテサーネク": {
+    "tmdb_id": 18939,
+    "tmdb_title_jp": "オテサーネク　妄想の子供",
+    "tmdb_title_en": "Little Otik",
+    "tmdb_title_original": "Otesánek",
+    "tmdb_original_language": "cs",
+    "overview": "実写とアニメを組み合わせて、シュールでグロテスク、なおかつどこかユーモラスな独自の映像世界を探求し続けるアート・アニメ界の奇才ヤン・シュヴァンクマイエル監督がチェコの民話を下敷きに描いた異色長編ダークファンタジー作。  なかなか子宝に恵まれず、寂しい思いをしていたホラーク夫妻。ある日ホラークが、偶然地面から掘り出した、どこか人間の形によく似た木の切り株を夫人にプレゼントすると、夫人は早速それをわが子に見たててオティークと名付け、周囲の人々の奇異なまなざしをよそに、溺愛して養育するようになる。みるみるうちに成長したオティークは、食欲を異常に発達させて、飼い猫から人間まであらゆるものをむさぼり食うようになり…。",
+    "overview_en": "When a childless couple learn that they cannot have children, it causes great distress. To ease his wife's pain, the man finds a piece of root in the backyard and chops it and varnishes it into the shape of a child. However the woman takes the root as her baby and starts to pretend that it is real.",
+    "poster_path": "/i2tHooKzDBjHLvHeiUjuqDMf6e4.jpg",
+    "backdrop_path": "/4iThHj4wK5A5Rfbe66y3KpyhD3Z.jpg",
+    "release_date": "2001-01-25",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "コメディ",
+      "ファンタジー",
+      "ホラー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Fantasy",
+      "Horror",
+      "Animation"
+    ],
+    "runtime": 132,
+    "vote_average": 7.007,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "フィフィ大空をゆく 4K": {
+    "tmdb_id": 198815,
+    "tmdb_title_jp": "Fifi la plume",
+    "tmdb_title_en": "Circus Angel",
+    "tmdb_title_original": "Fifi la plume",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A burglar joins the circus to escape the police. Yet, he continues his thefts during his off-hours and gets involved in the problems of people around him, while also romancing one of the other circus performers.",
+    "poster_path": "/5C0w8EG3gh0pZZQ19ObAHS5OcuC.jpg",
+    "backdrop_path": "/rpnPn8MR1DBQmSZUXVAu8E2N0E9.jpg",
+    "release_date": "1965-06-08",
+    "director": "Albert Lamorisse",
+    "director_jp": "Albert Lamorisse",
+    "director_en": "Albert Lamorisse",
+    "genres": [
+      "コメディ",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "runtime": 75,
+    "vote_average": 5.714,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "小さなロバ、ビム 4K": {
+    "tmdb_id": 273086,
+    "tmdb_title_jp": "Bim",
+    "tmdb_title_en": "Bim, the Little Donkey",
+    "tmdb_title_original": "Bim",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "An Arab boy, Abdullah, loves his donkey, Bim, but another boy, Massoud, who also happens to be a prince, is jealous of Abdullah and his relationship with Bim, so Massoud steals the donkey and plays mean tricks on him, such as painting him and trying to cut his ears off. Abdullah tries to rescue Bim but is caught by palace guards and is imprisoned. Realizing Abdullah's love for his donkey, Massoud becomes ashamed of his meanness and frees Bim and Abdullah. However, the donkey eats Massoud's father's lunch and is taken to a butcher. Abdullah and Massoud try to rescue Bim from the butcher, but robbers get there first and steal the donkey along with the butcher's goods. The robbers escape to the sea, and Abdullah and Massoud stage one last rescue attempt with all of their friends to try to save Bim.",
+    "poster_path": "/2DAYYJki6Zn1KGY4agEB89wXysa.jpg",
+    "backdrop_path": "/yLYE0ssJQ17BuitgftHgtAa1PG.jpg",
+    "release_date": "1951-04-01",
+    "director": "Albert Lamorisse",
+    "director_jp": "Albert Lamorisse",
+    "director_en": "Albert Lamorisse",
+    "genres": [
+      "ドラマ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Family"
+    ],
+    "runtime": 45,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ファウスト": {
+    "tmdb_id": 18919,
+    "tmdb_title_jp": "ファウスト",
+    "tmdb_title_en": "Faust",
+    "tmdb_title_original": "Lekce Faust",
+    "tmdb_original_language": "cs",
+    "overview": "ゲーテの戯曲「ファウスト」をシュヴァンクマイエルが自ら翻案し映画化した「アリス」に続く長編2作目。実在したとされる魔術師の伝説が独自の解釈によってつづられ、奇妙な生物たちの姿や独特な食事描写などが実写・粘土細工・ストップモーションアニメーションなどを駆使して描かれていく。",
+    "overview_en": "A very free adaptation of Marlowe's \"Doctor Faustus\", Goethe's \"Faust\" and various other treatments of the old legend of the man who sold his soul to the devil. A nondescript man is lured by a strange map into a sinister puppet theatre, where he finds himself immersed in an indescribably weird version of the play, blending live actors, clay animation and giant puppets.",
+    "poster_path": "/A5SqoalLi3Agu5qdZykJhpGePkH.jpg",
+    "backdrop_path": "/qiGF1b2vH38WRWQooLp3q9LS7m2.jpg",
+    "release_date": "1994-09-10",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "アニメーション",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy"
+    ],
+    "runtime": 97,
+    "vote_average": 7.442,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "サヴァイヴィング ライフ−夢は第二の人生−": {
+    "tmdb_id": 76638,
+    "tmdb_title_jp": "サヴァイヴィング ライフ -夢は第二の人生-",
+    "tmdb_title_en": "Surviving Life (Theory and Practice)",
+    "tmdb_title_original": "Přežít svůj život",
+    "tmdb_original_language": "cs",
+    "overview": "",
+    "overview_en": "Eugene, an aging man, leads a double life - one real, the other in his dreams. He goes to see a psychoanalyst, who tries to interpret the meaning of his dreams. Eugene finds a way of entering his dream-world at will and finds out about his childhood and what really happened to his parents.",
+    "poster_path": "/7XRx7Pf5P4y2AwXKaltDFykjQw1.jpg",
+    "backdrop_path": "/uPTMnetNKoDk66GNwvI4aIOyeri.jpg",
+    "release_date": "2010-09-16",
+    "director": "ヤン・シュヴァンクマイエル",
+    "director_jp": "ヤン・シュヴァンクマイエル",
+    "director_en": "Jan Švankmajer",
+    "genres": [
+      "アニメーション",
+      "コメディ",
+      "ファンタジー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Comedy",
+      "Fantasy",
+      "Drama"
+    ],
+    "runtime": 105,
+    "vote_average": 6.956,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CZ",
+        "name": "Czech Republic"
+      },
+      {
+        "iso_3166_1": "SK",
+        "name": "Slovakia"
+      }
+    ]
+  },
+  "粒子のダンス": {
+    "tmdb_id": 1537174,
+    "tmdb_title_jp": "粒子のダンス",
+    "tmdb_title_en": "particle dance",
+    "tmdb_title_original": "粒子のダンス",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kengo Kuma, one of Japan’s greatest contemporary architects, is globally recognized for his innovative designs that harmonize nature and material. His work is a dance between structure, environment, and people, incorporating the unique properties of a building’s place and purpose into his approach. Director Hiromoto Oka is a former student of Kuma, and particle dance documents Kuma’s projects and processes across 15 years and 17 countries.",
+    "poster_path": "/z9g0rc13iYmG7eyJKjtnKKkgFJp.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-09-25",
+    "director": "Hiromoto Oka",
+    "director_jp": "Hiromoto Oka",
+    "director_en": "Hiromoto Oka",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 145,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1537174": {
+    "tmdb_id": 1537174,
+    "tmdb_title_jp": "粒子のダンス",
+    "tmdb_title_en": "particle dance",
+    "tmdb_title_original": "粒子のダンス",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kengo Kuma, one of Japan’s greatest contemporary architects, is globally recognized for his innovative designs that harmonize nature and material. His work is a dance between structure, environment, and people, incorporating the unique properties of a building’s place and purpose into his approach. Director Hiromoto Oka is a former student of Kuma, and particle dance documents Kuma’s projects and processes across 15 years and 17 countries.",
+    "poster_path": "/z9g0rc13iYmG7eyJKjtnKKkgFJp.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-09-25",
+    "director": "Hiromoto Oka",
+    "director_jp": "Hiromoto Oka",
+    "director_en": "Hiromoto Oka",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 145,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "息子のまなざし": {
+    "tmdb_id": 35172,
+    "tmdb_title_jp": "息子のまなざし",
+    "tmdb_title_en": "The Son",
+    "tmdb_title_original": "Le Fils",
+    "tmdb_original_language": "fr",
+    "overview": "「ロゼッタ」「イゴールの約束」のダルデンヌ兄弟が、文明社会における人類の永遠の課題とも言える深遠なモチーフに真摯かつ意欲的に取り組んだ人間ドラマ。複雑な感情を抱える主人公の極限の心の葛藤を、無駄を限界までそぎ落とし、淡々としたタッチで綴っていく。オリヴィエ・グルメは2003年のカンヌ国際映画祭で主演男優賞を受賞。\r 　ある日、フランシスという少年が職業訓練所に入所してくる。彼は木工のクラスを希望したが、クラスを担当するオリヴィエは手一杯だという理由で断ってしまう。ところが、オリヴィエはなぜかフランシスが気になる様子。結局オリヴィエは後日フランシスを自分のクラスに受け入れるのだったが…。",
+    "overview_en": "A joinery instructor at a rehab center refuses to take a new teen as his apprentice, but then begins to follow the boy through the hallways and streets.",
+    "poster_path": "/72HSB2FDfvbOMTjRfiWJ8XAgA6g.jpg",
+    "backdrop_path": "/qAo57W8YEn519sjys7FUT3seaOA.jpg",
+    "release_date": "2002-10-04",
+    "director": "尚-皮耶·達頓",
+    "director_jp": "尚-皮耶·達頓",
+    "director_en": "Jean-Pierre Dardenne",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:35172": {
+    "tmdb_id": 35172,
+    "tmdb_title_jp": "息子のまなざし",
+    "tmdb_title_en": "The Son",
+    "tmdb_title_original": "Le Fils",
+    "tmdb_original_language": "fr",
+    "overview": "「ロゼッタ」「イゴールの約束」のダルデンヌ兄弟が、文明社会における人類の永遠の課題とも言える深遠なモチーフに真摯かつ意欲的に取り組んだ人間ドラマ。複雑な感情を抱える主人公の極限の心の葛藤を、無駄を限界までそぎ落とし、淡々としたタッチで綴っていく。オリヴィエ・グルメは2003年のカンヌ国際映画祭で主演男優賞を受賞。\r 　ある日、フランシスという少年が職業訓練所に入所してくる。彼は木工のクラスを希望したが、クラスを担当するオリヴィエは手一杯だという理由で断ってしまう。ところが、オリヴィエはなぜかフランシスが気になる様子。結局オリヴィエは後日フランシスを自分のクラスに受け入れるのだったが…。",
+    "overview_en": "A joinery instructor at a rehab center refuses to take a new teen as his apprentice, but then begins to follow the boy through the hallways and streets.",
+    "poster_path": "/72HSB2FDfvbOMTjRfiWJ8XAgA6g.jpg",
+    "backdrop_path": "/qAo57W8YEn519sjys7FUT3seaOA.jpg",
+    "release_date": "2002-10-04",
+    "director": "尚-皮耶·達頓",
+    "director_jp": "尚-皮耶·達頓",
+    "director_en": "Jean-Pierre Dardenne",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "【TBS】田村真子[0320ｲﾍﾞﾝﾄ]": null,
+  "【TBS】ｱﾌｶﾞﾝからの脱出[0320]": {
+    "tmdb_id": 1556035,
+    "tmdb_title_jp": "Escape From Afghanistan",
+    "tmdb_title_en": "Escape From Afghanistan",
+    "tmdb_title_original": "Escape From Afghanistan",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In August 2021, U.S. forces withdrew from Afghanistan and the Taliban were back in power. One group answered the call of duty and volunteered to save our allies. Their effort to rescue one interpreter turned into an evacuation saving thousands of lives.",
+    "poster_path": "/5W4J3NlfKHaBYJYR6caBWLmVrMt.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-08-29",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 56,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "【TBS】野島伸司[0320ｲﾍﾞﾝﾄ]": null,
+  "【TBS】ﾌﾞﾙｰｲﾝﾊﾟﾙｽ[0321/1400]": null,
+  "【TBS】ﾌﾞﾙｰｲﾝﾊﾟﾙｽ[0321/1630]": null,
+  "【TBS】ﾊﾞｰｽﾃﾞｲ[0321ｲﾍﾞﾝﾄ]": null,
+  "【TBS】War Bride2[0322/1845]": null,
+  "＜上映後ｲﾍﾞﾝﾄ＞みんな、おしゃ": {
+    "tmdb_id": 1555231,
+    "tmdb_title_jp": "みんな、おしゃべり！",
+    "tmdb_title_en": "The Chatterboxes",
+    "tmdb_title_original": "みんな、おしゃべり！",
+    "tmdb_original_language": "ja",
+    "overview": "ろう者vsクルド人！　CODA（コーダ）の監督による日本手話とクルド語を題材にしたオリジナル脚本。ろう者・聴者双方に向けた字幕付き作品。",
+    "overview_en": "Deaf Japanese vs. Hearing Kurds! A film by the director of  CODA  (Child of Deaf Adults), in Japanese Sign Language and Kurdish. Subtitled for both Deaf and Hearing audiences.",
+    "poster_path": "/uPfMinf5D17miHtitM5U7MnTtfS.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-30",
+    "director": "Ken Kawai",
+    "director_jp": "Ken Kawai",
+    "director_en": "Ken Kawai",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 143,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "永遠の人": {
+    "tmdb_id": 105470,
+    "tmdb_title_jp": "永遠の人",
+    "tmdb_title_en": "Immortal Love",
+    "tmdb_title_original": "永遠の人",
+    "tmdb_original_language": "ja",
+    "overview": "大地主の息子である黒北は悪役として描かれ、アーロンの婚約者である小田子を強姦し、力で奪った。 村長になった後、彼はアロン(トモコと結婚)を再び軍に送り、コタコのかつての愛に復讐するため、メイドとして家に来たトモコをレイプしました。 アーロンは戦後重い病気で故郷に戻り、息子と小田子の娘に恋人がいるのを見て、ついに結婚して静かに家を出ました。 黒北はついに良心を取り戻し、杖をついてアーロンの死を見に行きました。",
+    "overview_en": "A young woman is forced by circumstance into a loveless marriage while still in love with another. This episodic tale follows their story through three decades of bitter conflict which engulfs their children and those around them.",
+    "poster_path": "/gBTJQdiMYtLrUd65IgFy3Jk9X5k.jpg",
+    "backdrop_path": "/93HAE9MAZWU9ea7DXVinidf2ZBk.jpg",
+    "release_date": "1961-09-16",
+    "director": "木下惠介",
+    "director_jp": "木下惠介",
+    "director_en": "Keisuke Kinoshita",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 103,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:105470": {
+    "tmdb_id": 105470,
+    "tmdb_title_jp": "永遠の人",
+    "tmdb_title_en": "Immortal Love",
+    "tmdb_title_original": "永遠の人",
+    "tmdb_original_language": "ja",
+    "overview": "大地主の息子である黒北は悪役として描かれ、アーロンの婚約者である小田子を強姦し、力で奪った。 村長になった後、彼はアロン(トモコと結婚)を再び軍に送り、コタコのかつての愛に復讐するため、メイドとして家に来たトモコをレイプしました。 アーロンは戦後重い病気で故郷に戻り、息子と小田子の娘に恋人がいるのを見て、ついに結婚して静かに家を出ました。 黒北はついに良心を取り戻し、杖をついてアーロンの死を見に行きました。",
+    "overview_en": "A young woman is forced by circumstance into a loveless marriage while still in love with another. This episodic tale follows their story through three decades of bitter conflict which engulfs their children and those around them.",
+    "poster_path": "/gBTJQdiMYtLrUd65IgFy3Jk9X5k.jpg",
+    "backdrop_path": "/93HAE9MAZWU9ea7DXVinidf2ZBk.jpg",
+    "release_date": "1961-09-16",
+    "director": "木下惠介",
+    "director_jp": "木下惠介",
+    "director_en": "Keisuke Kinoshita",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 103,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "わかれ": {
+    "tmdb_id": 894785,
+    "tmdb_title_jp": "わかれ",
+    "tmdb_title_en": "Love in the Mountains",
+    "tmdb_title_original": "わかれ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A mother and her daughter who run a quiet mountain hotel, and guests who visit the hotel. A girl who does not know what a broken heart is, the attractive joy of first love, and separation is like parting with life. The mother-daughter duet with Isuzu Yamada attracted a lot of attention at that time. Haruko Wanibuchi, demonstrated rare attractiveness and pure charm by playing a heroine living in a beautiful and pure first love.",
+    "poster_path": "/1wZEQgupGZ7jXRgzpnP5dEx9ekg.jpg",
+    "backdrop_path": "/bJDcq6WnDCP0C3N6tMKTmSxVykF.jpg",
+    "release_date": "1959-10-23",
+    "director": "Masao Nozaki",
+    "director_jp": "Masao Nozaki",
+    "director_en": "Masao Nozaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 82,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:894785": {
+    "tmdb_id": 894785,
+    "tmdb_title_jp": "わかれ",
+    "tmdb_title_en": "Love in the Mountains",
+    "tmdb_title_original": "わかれ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A mother and her daughter who run a quiet mountain hotel, and guests who visit the hotel. A girl who does not know what a broken heart is, the attractive joy of first love, and separation is like parting with life. The mother-daughter duet with Isuzu Yamada attracted a lot of attention at that time. Haruko Wanibuchi, demonstrated rare attractiveness and pure charm by playing a heroine living in a beautiful and pure first love.",
+    "poster_path": "/1wZEQgupGZ7jXRgzpnP5dEx9ekg.jpg",
+    "backdrop_path": "/bJDcq6WnDCP0C3N6tMKTmSxVykF.jpg",
+    "release_date": "1959-10-23",
+    "director": "Masao Nozaki",
+    "director_jp": "Masao Nozaki",
+    "director_en": "Masao Nozaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 82,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ユージュアル・サスぺクツ": {
+    "tmdb_id": 990589,
+    "tmdb_title_jp": "FIP The Usual Suspects",
+    "tmdb_title_en": "FIP The Usual Suspects",
+    "tmdb_title_original": "FIP The Usual Suspects",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "April 22, 2005 in Brandon, Florida",
+    "poster_path": "/4pVoNtMyWJWuKUiVNuv1ISzseGG.jpg",
+    "backdrop_path": null,
+    "release_date": "2005-04-22",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 130,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "デヴィッド・リンチの夜": null,
+  "鯨が消えた入り江 上映後トークショー": {
+    "tmdb_id": 1214266,
+    "tmdb_title_jp": "我在這裡等你",
+    "tmdb_title_en": "A Balloon's Landing",
+    "tmdb_title_original": "我在這裡等你",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "A frustrated Hong Kong writer, Tian-Yu, meets a Taipei street gangster, Xiang, and the two of them embark on a journey to find the Bay of Whales, a place that leads to paradise.",
+    "poster_path": "/j1x9RdHVaD4NYbev77SgilKuWrw.jpg",
+    "backdrop_path": "/70ueoLF3JzRqfy2IcTheaisNWQ9.jpg",
+    "release_date": "2024-05-10",
+    "director": "鄧依涵",
+    "director_jp": "鄧依涵",
+    "director_en": "Teng I-Han",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 100,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "A Missing Part また君に会えるまで": {
+    "tmdb_id": 1021643,
+    "tmdb_title_jp": "Une part manquante また君に会えるまで",
+    "tmdb_title_en": "A Missing Part",
+    "tmdb_title_original": "Une part manquante",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Every day, Jay travels the length and breadth of Tokyo in his taxi, looking for his daughter Lily. In the 9 years since he has separated from his wife, he has never been able to get custody of his daughter. Having given up hope of ever seeing her again, he is about to move back to France when Lily hops in his cab. But she doesn't recognize him.",
+    "poster_path": "/9Uuyzox6HIzUSUCERL0qeKurjSk.jpg",
+    "backdrop_path": "/bNhC28PmU1kzApE4B3vzTT2qSz1.jpg",
+    "release_date": "2024-11-13",
+    "director": "Guillaume Senez",
+    "director_jp": "Guillaume Senez",
+    "director_en": "Guillaume Senez",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 98,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1021643": {
+    "tmdb_id": 1021643,
+    "tmdb_title_jp": "Une part manquante また君に会えるまで",
+    "tmdb_title_en": "A Missing Part",
+    "tmdb_title_original": "Une part manquante",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Every day, Jay travels the length and breadth of Tokyo in his taxi, looking for his daughter Lily. In the 9 years since he has separated from his wife, he has never been able to get custody of his daughter. Having given up hope of ever seeing her again, he is about to move back to France when Lily hops in his cab. But she doesn't recognize him.",
+    "poster_path": "/9Uuyzox6HIzUSUCERL0qeKurjSk.jpg",
+    "backdrop_path": "/bNhC28PmU1kzApE4B3vzTT2qSz1.jpg",
+    "release_date": "2024-11-13",
+    "director": "Guillaume Senez",
+    "director_jp": "Guillaume Senez",
+    "director_en": "Guillaume Senez",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 98,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "あのとき": null,
+  "ジーンシアタースタジアム": null,
+  "小学校～それは小さな社会～【アンコール上映】": {
+    "tmdb_id": 1186850,
+    "tmdb_title_jp": "小学校～それは小さな社会～",
+    "tmdb_title_en": "The Making of a Japanese",
+    "tmdb_title_original": "小学校～それは小さな社会～",
+    "tmdb_original_language": "ja",
+    "overview": "4月、入学したばかりの1年生は挙手のしかたや廊下の歩きかた、掃除や給食当番など、集団生活の一員としての規律と秩序について初めて学ぶ。そんな1年生の手助けをするのは6年生で、子どもたちはわずか6年の間に自分が何者であるかという自覚を持ち、6年生にふさわしい行動をとるようになる。コロナ禍で学校行事実施の有無に悩み議論を重ねる教師たち、社会生活のマナーを学ぶ1年生、経験を重ねて次章への準備を始める6年生。3学期になると、もうすぐ2年生になる1年生は新入生のために音楽演奏をすることになる。",
+    "overview_en": "Intimately following 1st and 6th graders at a public elementary school in Tokyo, we observe kids learning the traits necessary to become part of Japanese society.",
+    "poster_path": "/dD2RAFC13CS77WYduIpQrgy7t4V.jpg",
+    "backdrop_path": "/9h4edpFApG5Wpfjbd9hhaVsG7bG.jpg",
+    "release_date": "2024-04-05",
+    "director": "山崎エマ",
+    "director_jp": "山崎エマ",
+    "director_en": "Ema Ryan Yamazaki",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 99,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FI",
+        "name": "Finland"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "100,000年後の安全": null,
+  "自然は君に何を語るのか": {
+    "tmdb_id": 1418849,
+    "tmdb_title_jp": "그 자연이 네게 뭐라고 하니",
+    "tmdb_title_en": "What Does That Nature Say to You",
+    "tmdb_title_original": "그 자연이 네게 뭐라고 하니",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "A young poet drops his girlfriend off at her parents' house and is amazed by its size. He bumps into her father, meets her mother and sister, and they all end up spending a long day together; fueled by conversation, food and libations.",
+    "poster_path": "/ajneL70wrATLhrXaYEuXHz9aep9.jpg",
+    "backdrop_path": "/fZ6cXVESqUp2mq9NkYykrjz3EEG.jpg",
+    "release_date": "2025-05-14",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 109,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "正しい日 間違えた日": {
+    "tmdb_id": 354275,
+    "tmdb_title_jp": "지금은맞고그때는틀리다",
+    "tmdb_title_en": "Right Now, Wrong Then",
+    "tmdb_title_original": "지금은맞고그때는틀리다",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "By mistake, film director Ham Chunsu arrives in Suwon a day early. With time to kill before his lecture the next day, Chunsu stops by a restored, old palace and meets an artist named Yoon Heejung. Together, they go to Heejung's workshop to look at her paintings, have Sushi with Soju for dinner, and get close. Later, they go to another café and have more drinks with Heejung's acquaintances. When asked if he is married, Chunsu is forced to reveal the fact that he is, and Heejung gets deeply disappointed...",
+    "poster_path": "/rWk5GaMmgtNQkOI50CpW4QDb0Om.jpg",
+    "backdrop_path": "/vOPqsZ8DFfbeuwqjFh5hGW47nTD.jpg",
+    "release_date": "2015-09-24",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 121,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:354275": {
+    "tmdb_id": 354275,
+    "tmdb_title_jp": "지금은맞고그때는틀리다",
+    "tmdb_title_en": "Right Now, Wrong Then",
+    "tmdb_title_original": "지금은맞고그때는틀리다",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "By mistake, film director Ham Chunsu arrives in Suwon a day early. With time to kill before his lecture the next day, Chunsu stops by a restored, old palace and meets an artist named Yoon Heejung. Together, they go to Heejung's workshop to look at her paintings, have Sushi with Soju for dinner, and get close. Later, they go to another café and have more drinks with Heejung's acquaintances. When asked if he is married, Chunsu is forced to reveal the fact that he is, and Heejung gets deeply disappointed...",
+    "poster_path": "/rWk5GaMmgtNQkOI50CpW4QDb0Om.jpg",
+    "backdrop_path": "/vOPqsZ8DFfbeuwqjFh5hGW47nTD.jpg",
+    "release_date": "2015-09-24",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 121,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:38142": {
+    "tmdb_id": 38142,
+    "tmdb_title_jp": "秒速5センチメートル",
+    "tmdb_title_en": "5 Centimeters per Second",
+    "tmdb_title_original": "秒速5センチメートル",
+    "tmdb_original_language": "ja",
+    "overview": "東京の小学生・遠野貴樹と篠原明里はお互いに対する「他人には分らない特別な想い」を抱えていた。しかし小学校卒業と同時に明里は栃木へ転校してしまい、それきり会うことが無くなってしまう。貴樹が中学に入学して半年が経過した夏のある日、栃木の明里から手紙が届く。それをきっかけに、文通を重ねるようになる2人。しかしその年の冬に、今度は貴樹が鹿児島へ転校することが決まった。鹿児島と栃木では絶望的に遠い。「もう二度と会えなくなるかもしれない…」そう思った貴樹は、明里に会いに行く決意をする。しかしその約束の日、関東では大雪となった。当初の予定は列車の遅延で大幅に狂い、時間だけがただ残酷に流れていく…。貴樹と明里の、再会と別れの1日を時間経過と共に描く。",
+    "overview_en": "Three moments in Takaki's life: his relationship with Akari and their forced separation; his friendship with Kanae, who is secretly in love with him; the demands and disappointments of adulthood, an unhappy life in a cold city.",
+    "poster_path": "/muJareEZLzCI33T3MyHJ1Q15Cbp.jpg",
+    "backdrop_path": "/n7dz2NHNuEvoreUM4qXFR0Yh0pw.jpg",
+    "release_date": "2007-03-03",
+    "director": "新海誠",
+    "director_jp": "新海誠",
+    "director_en": "Makoto Shinkai",
+    "genres": [
+      "アニメーション",
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 63,
+    "vote_average": 7.295,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:927035": {
+    "tmdb_id": 927035,
+    "tmdb_title_jp": "비밀의 언덕",
+    "tmdb_title_en": "The Hill of Secrets",
+    "tmdb_title_original": "비밀의 언덕",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "Myung-eun can't comprehend the word \"family\". She wishes to keep it a secret because she is so different from what she would like to be. When it comes to writing, on the other hand, she does not allow herself to be restricted by reality.",
+    "poster_path": "/cIKKT6L5VcShADUUzybUC5T4ou8.jpg",
+    "backdrop_path": "/5ZhJ4zuew5sbMHy1nkY8GzKOQm5.jpg",
+    "release_date": "2023-07-12",
+    "director": "Lee Ji-eun",
+    "director_jp": "Lee Ji-eun",
+    "director_en": "Lee Ji-eun",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:1556035": {
+    "tmdb_id": 1556035,
+    "tmdb_title_jp": "Escape From Afghanistan",
+    "tmdb_title_en": "Escape From Afghanistan",
+    "tmdb_title_original": "Escape From Afghanistan",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In August 2021, U.S. forces withdrew from Afghanistan and the Taliban were back in power. One group answered the call of duty and volunteered to save our allies. Their effort to rescue one interpreter turned into an evacuation saving thousands of lives.",
+    "poster_path": "/5W4J3NlfKHaBYJYR6caBWLmVrMt.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-08-29",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 56,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:990589": {
+    "tmdb_id": 990589,
+    "tmdb_title_jp": "FIP The Usual Suspects",
+    "tmdb_title_en": "FIP The Usual Suspects",
+    "tmdb_title_original": "FIP The Usual Suspects",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "April 22, 2005 in Brandon, Florida",
+    "poster_path": "/4pVoNtMyWJWuKUiVNuv1ISzseGG.jpg",
+    "backdrop_path": null,
+    "release_date": "2005-04-22",
+    "director": "",
+    "director_jp": "",
+    "director_en": "",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 130,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
       }
     ]
   }
