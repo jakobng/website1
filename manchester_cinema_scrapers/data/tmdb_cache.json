@@ -2561,45 +2561,6 @@
     ],
     "vote_average": 7.0
   },
-  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
-  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
-  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
-  "Make A Scene Presents: Victor/Victoria": {
-    "tmdb_id": 12614,
-    "tmdb_title": "Victor/Victoria",
-    "tmdb_original_title": "Victor/Victoria",
-    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
-    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
-    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
-    "release_date": "1982-04-25",
-    "director": "Blake Edwards",
-    "runtime": 134,
-    "genres": [
-      "Music",
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 7.273
-  },
-  "Reel Gems present: Fallen": {
-    "tmdb_id": 9411,
-    "tmdb_title": "Fallen",
-    "tmdb_original_title": "Fallen",
-    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
-    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
-    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
-    "release_date": "1998-01-16",
-    "director": "Gregory Hoblit",
-    "runtime": 124,
-    "genres": [
-      "Crime",
-      "Drama",
-      "Thriller"
-    ],
-    "vote_average": 6.792
-  },
-  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
-  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
   "Ghost in the Shell": {
     "tmdb_id": 9323,
     "tmdb_title": "Ghost in the Shell",
@@ -2647,21 +2608,6 @@
     ],
     "vote_average": 7.398
   },
-  "The Straight Story - 4K Restoration (PG)": {
-    "tmdb_id": 404,
-    "tmdb_title": "The Straight Story",
-    "tmdb_original_title": "The Straight Story",
-    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
-    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
-    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
-    "release_date": "1999-10-15",
-    "director": "David Lynch",
-    "runtime": 112,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.7
-  },
   "Long Day’s Journey Into Night": {
     "tmdb_id": 486898,
     "tmdb_title": "Long Day's Journey Into Night",
@@ -2678,7 +2624,163 @@
     ],
     "vote_average": 6.969
   },
-  "Throwback: Master and Commander": null,
+  "EPiC: Elvis Presley in Concert (2026)": {
+    "tmdb_id": 1445363,
+    "tmdb_title": "EPiC: Elvis Presley in Concert",
+    "tmdb_original_title": "EPiC: Elvis Presley in Concert",
+    "overview": "Long-lost footage from Elvis Presely's legendary Las Vegas residency in the 1970s woven together with rare 16mm footage from Elvis on Tour, and 8mm from the Graceland archive, plus recordings of Elvis telling \"his side of the story\" rediscovered during Baz Luhrmann's research for his 2022 film, Elvis.",
+    "poster_path": "/nor2u3bC7xn2L4PhAMi7RRg04n9.jpg",
+    "backdrop_path": "/8x3xDTjVS2hlMmpZeMJEnqFbGDH.jpg",
+    "release_date": "2026-02-18",
+    "director": "Baz Luhrmann",
+    "runtime": 98,
+    "genres": [
+      "Music",
+      "Documentary"
+    ],
+    "vote_average": 8.2
+  },
+  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
+  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
+  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
+  "Make A Scene Presents: Victor/Victoria": {
+    "tmdb_id": 12614,
+    "tmdb_title": "Victor/Victoria",
+    "tmdb_original_title": "Victor/Victoria",
+    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
+    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
+    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
+    "release_date": "1982-04-25",
+    "director": "Blake Edwards",
+    "runtime": 134,
+    "genres": [
+      "Music",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 7.273
+  },
+  "Reel Gems present: Fallen": {
+    "tmdb_id": 9411,
+    "tmdb_title": "Fallen",
+    "tmdb_original_title": "Fallen",
+    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
+    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
+    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
+    "release_date": "1998-01-16",
+    "director": "Gregory Hoblit",
+    "runtime": 124,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 6.792
+  },
+  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
+  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
+  "The People's Joker": {
+    "tmdb_id": 808482,
+    "tmdb_title": "The People's Joker",
+    "tmdb_original_title": "The People's Joker",
+    "overview": "An aspiring clown grappling with her gender identity combats a fascistic caped crusader.",
+    "poster_path": "/80yak1h7YcNpMOsfSbThfwKYKK4.jpg",
+    "backdrop_path": "/4kOCUpStJiTqd9QvdYwgqVrvpBh.jpg",
+    "release_date": "2024-04-05",
+    "director": "Vera Drew",
+    "runtime": 92,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "vote_average": 6.6
+  },
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.7
+  },
+  "Arco (PG) [Dubbed]": {
+    "tmdb_id": 804370,
+    "tmdb_title": "Arco",
+    "tmdb_original_title": "Arco",
+    "overview": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
+    "poster_path": "/mWlvHFxTDhq9O5WSOHywa32QIez.jpg",
+    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
+    "release_date": "2025-10-22",
+    "director": "Ugo Bienvenu",
+    "runtime": 89,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Family",
+      "Science Fiction"
+    ],
+    "vote_average": 7.467
+  },
+  "Dead Man’s Wire": {
+    "tmdb_id": 1263012,
+    "tmdb_title": "Dead Man's Wire",
+    "tmdb_original_title": "Dead Man's Wire",
+    "overview": "In 1977, former real estate developer Tony Kiritsis puts a dead man's switch on himself and the mortgage banker who did him wrong, demanding $5 million and a personal apology.",
+    "poster_path": "/hjre9SuECdBsuZ6KtKdFsnK2iRm.jpg",
+    "backdrop_path": "/ulw8SrKbDeDrsSVNKPb5211AseI.jpg",
+    "release_date": "2026-01-09",
+    "director": "Gus Van Sant",
+    "runtime": 105,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 6.522
+  },
+  "La Grazia": {
+    "tmdb_id": 1397364,
+    "tmdb_title": "La Grazia",
+    "tmdb_original_title": "La grazia",
+    "overview": "As his tenure as President of Italy nears its end, Mariano De Santis faces wrenching decisions-both political and deeply personal. Amid these moral quandaries, he must confront his own conscience and seek guidance from those closest to him, including his confidante and daughter, Dorotea.",
+    "poster_path": "/u5RgunQiA4hvDfTeWO9pS0lm4K4.jpg",
+    "backdrop_path": "/baIjN7xPyw2In1CuHACTgzcsF20.jpg",
+    "release_date": "2025-12-05",
+    "director": "Paolo Sorrentino",
+    "runtime": 133,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.4
+  },
+  "Arco (PG) [Subtitled]": {
+    "tmdb_id": 804370,
+    "tmdb_title": "Arco",
+    "tmdb_original_title": "Arco",
+    "overview": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
+    "poster_path": "/mWlvHFxTDhq9O5WSOHywa32QIez.jpg",
+    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
+    "release_date": "2025-10-22",
+    "director": "Ugo Bienvenu",
+    "runtime": 89,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Family",
+      "Science Fiction"
+    ],
+    "vote_average": 7.467
+  },
+  "Guardian Documentaries present: Legacies of Enslavement": null,
   "Throwback: Moulin Rouge! (25th Anniversary)": {
     "tmdb_id": 824,
     "tmdb_title": "Moulin Rouge!",
@@ -2710,10 +2812,10 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 6.783
+    "vote_average": 6.8
   },
+  "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
-  "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
     "tmdb_title": "First Steps",
@@ -2731,6 +2833,7 @@
   },
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
+  "The Royal Opera: The Magic Flute": null,
   "National Theatre Live: All My Sons": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
@@ -2748,6 +2851,5 @@
       "Romance"
     ],
     "vote_average": 5.974
-  },
-  "Weekly Arthouse Screening": null
+  }
 }
