@@ -9284,13 +9284,13 @@
   },
   "tmdb:1511417": {
     "tmdb_id": 1511417,
-    "tmdb_title_jp": "Baahubali: The Epic",
+    "tmdb_title_jp": "Bāhubali: The Epic",
     "tmdb_title_en": "Bāhubali: The Epic",
-    "tmdb_title_original": "Baahubali: The Epic",
+    "tmdb_title_original": "Bāhubali: The Epic",
     "tmdb_original_language": "te",
     "overview": "",
     "overview_en": "When a mysterious child is found by a tribal couple near a roaring waterfall, they raise him as their own. As he grows, Sivudu is drawn to the world beyond the cliffs, where he discovers the ancient kingdom of Mahishmati, ruled by a cruel tyrant, haunted by rebellion, and bound to his past. What begins as a quest for love soon unravels a legacy of betrayal, sacrifice, and a forgotten prince.",
-    "poster_path": "/z9YIo2qscyaXYgRqIdRJtND3bw8.jpg",
+    "poster_path": "/4sLSorDKKDN944kWngxgQlpdDeg.jpg",
     "backdrop_path": "/wCwZ4ljSsWyZyTiyk1tGQtBHTDx.jpg",
     "release_date": "2025-10-29",
     "director": "S. S. Rajamouli",
@@ -9305,7 +9305,7 @@
       "Drama"
     ],
     "runtime": 224,
-    "vote_average": 6.135,
+    "vote_average": 6.0,
     "tmdb_countries": [
       {
         "iso_3166_1": "IN",
@@ -77846,7 +77846,7 @@
       "Music"
     ],
     "runtime": 88,
-    "vote_average": 8.317,
+    "vote_average": 8.313,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -80976,7 +80976,7 @@
       "Mystery"
     ],
     "runtime": 101,
-    "vote_average": 7.799,
+    "vote_average": 7.802,
     "tmdb_countries": [
       {
         "iso_3166_1": "HK",
@@ -81036,9 +81036,9 @@
     "poster_path": "/r96ADrF9T2hlEb2GtrRf2mgH8bH.jpg",
     "backdrop_path": "/j0bK5l5Wo4XvUUrKp1FckLvbse9.jpg",
     "release_date": "2003-10-01",
-    "director": "劉偉強",
-    "director_jp": "劉偉強",
-    "director_en": "Andrew Lau Wai-Keung",
+    "director": "麥兆輝",
+    "director_jp": "麥兆輝",
+    "director_en": "Alan Mak Siu-Fai",
     "genres": [
       "アクション",
       "スリラー",
@@ -81050,7 +81050,7 @@
       "Crime"
     ],
     "runtime": 119,
-    "vote_average": 7.305,
+    "vote_average": 7.304,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -81132,7 +81132,7 @@
       "Action"
     ],
     "runtime": 118,
-    "vote_average": 7.0,
+    "vote_average": 6.951,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -82280,7 +82280,7 @@
       "Drama"
     ],
     "runtime": 117,
-    "vote_average": 7.1,
+    "vote_average": 7.111,
     "tmdb_countries": [
       {
         "iso_3166_1": "CA",
@@ -84490,6 +84490,3351 @@
       {
         "iso_3166_1": "US",
         "name": "United States of America"
+      }
+    ]
+  },
+  "あなたがすきです、だいすきです": {
+    "tmdb_id": 274323,
+    "tmdb_title_jp": "あなたが好きです、大好きです。",
+    "tmdb_title_en": "I Like You, I Like You Very Much",
+    "tmdb_title_original": "あなたが好きです、大好きです。",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A tense love triangle unfolds as You struggles with his affair, questioning his identity and desires while caught between two men who change his life forever.",
+    "poster_path": "/wU4D9sHjgm0V1PssQrSLIrLL9pO.jpg",
+    "backdrop_path": "/brQhPVq2V7LcOsGP54RrL3lUUl6.jpg",
+    "release_date": "1994-04-19",
+    "director": "大木裕之",
+    "director_jp": "大木裕之",
+    "director_en": "Hiroyuki Oki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 58,
+    "vote_average": 3.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "心の中 Inside Mind": {
+    "tmdb_id": 580696,
+    "tmdb_title_jp": "心の中",
+    "tmdb_title_en": "Inside the Mind",
+    "tmdb_title_original": "心の中",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Oki fuses documentary elements with narrative filmmaking to such a point that it's difficult to distinguish one from the other. The film is both the story of two men falling in love with each other on a beach, and a faithful document to the filmmaking process.  In the film within a film titled \"Gay Couple Trying to Connect on the Beach\", the documentary footage of director Hiroyuki Oki will be double and triple transcribed.  The documentary film explores the relationship between the director and the world, as well as interviews with friends.  Soon the director realizes that \"kokoro\" is not what is inside of him, but the feeling that arises when confronted with something.",
+    "poster_path": "/5d5jELZy2OCAwqc2pvEtDwJgvu.jpg",
+    "backdrop_path": "/8leu0QwcrujXChZQwcEC4pN087M.jpg",
+    "release_date": "1999-12-01",
+    "director": "大木裕之",
+    "director_jp": "大木裕之",
+    "director_en": "Hiroyuki Oki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:580696": {
+    "tmdb_id": 580696,
+    "tmdb_title_jp": "心の中",
+    "tmdb_title_en": "Inside the Mind",
+    "tmdb_title_original": "心の中",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Oki fuses documentary elements with narrative filmmaking to such a point that it's difficult to distinguish one from the other. The film is both the story of two men falling in love with each other on a beach, and a faithful document to the filmmaking process.  In the film within a film titled \"Gay Couple Trying to Connect on the Beach\", the documentary footage of director Hiroyuki Oki will be double and triple transcribed.  The documentary film explores the relationship between the director and the world, as well as interviews with friends.  Soon the director realizes that \"kokoro\" is not what is inside of him, but the feeling that arises when confronted with something.",
+    "poster_path": "/5d5jELZy2OCAwqc2pvEtDwJgvu.jpg",
+    "backdrop_path": "/8leu0QwcrujXChZQwcEC4pN087M.jpg",
+    "release_date": "1999-12-01",
+    "director": "大木裕之",
+    "director_jp": "大木裕之",
+    "director_en": "Hiroyuki Oki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 5.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "3＋1": {
+    "tmdb_id": 1089106,
+    "tmdb_title_jp": "3+1",
+    "tmdb_title_en": "3+1",
+    "tmdb_title_original": "3+1",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1997-03-22",
+    "director": "大木裕之",
+    "director_jp": "大木裕之",
+    "director_en": "Hiroyuki Oki",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 82,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1089106": {
+    "tmdb_id": 1089106,
+    "tmdb_title_jp": "3+1",
+    "tmdb_title_en": "3+1",
+    "tmdb_title_original": "3+1",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "1997-03-22",
+    "director": "大木裕之",
+    "director_jp": "大木裕之",
+    "director_en": "Hiroyuki Oki",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 82,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "快楽": {
+    "tmdb_id": 43360,
+    "tmdb_title_jp": "快楽",
+    "tmdb_title_en": "Le Plaisir",
+    "tmdb_title_original": "Le Plaisir",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Three stories about the pleasure. The first one is about a man hiding his age behind a mask to keep going to balls and fancying women - pleasure and youth. Then comes the long tale of Mme Tellier taking her girls (whores) to the country for attending her niece's communion - pleasure and purity. And lastly, Jean the painter falling in love with his model - pleasure and death.",
+    "poster_path": "/mIjm3ITT3gSy9cDnqR8OsN1UfOu.jpg",
+    "backdrop_path": "/ceVcrZeak4gfbtGUnAUpWIzeiFR.jpg",
+    "release_date": "1952-02-29",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 97,
+    "vote_average": 7.496,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:43360": {
+    "tmdb_id": 43360,
+    "tmdb_title_jp": "快楽",
+    "tmdb_title_en": "Le Plaisir",
+    "tmdb_title_original": "Le Plaisir",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Three stories about the pleasure. The first one is about a man hiding his age behind a mask to keep going to balls and fancying women - pleasure and youth. Then comes the long tale of Mme Tellier taking her girls (whores) to the country for attending her niece's communion - pleasure and purity. And lastly, Jean the painter falling in love with his model - pleasure and death.",
+    "poster_path": "/mIjm3ITT3gSy9cDnqR8OsN1UfOu.jpg",
+    "backdrop_path": "/ceVcrZeak4gfbtGUnAUpWIzeiFR.jpg",
+    "release_date": "1952-02-29",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 97,
+    "vote_average": 7.496,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "歴史は女で作られる": null,
+  "忘れじの面影（1948）": {
+    "tmdb_id": 380438,
+    "tmdb_title_jp": "Lettre d'une inconnue",
+    "tmdb_title_en": "Letter from an Unknown Woman",
+    "tmdb_title_original": "Lettre d'une inconnue",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Vienna, in the 1930s. The attractive and famous writer Albert Rank receives the letter from a stranger. He discovers that she devoted her entire life to her boundless love. In her letter, Rose looks back on a variety of meetings with Albert: Since childhood, she is slavishly in love with him and she never got away from her throughout her life. In many encounters Rank could not recognize them, even if the shared moments had been wonderful. As an adult woman, Rose's love is too painful to go on, and she has dire consequences.",
+    "poster_path": "/cvMVIxjOzP4S0uTVR9StuY1jbYH.jpg",
+    "backdrop_path": "/36KxlQcaHZ0FiAa4a1S1xoF0CHF.jpg",
+    "release_date": "2002-12-31",
+    "director": "ジャック・ドレー",
+    "director_jp": "ジャック・ドレー",
+    "director_en": "Jacques Deray",
+    "genres": [
+      "ドラマ",
+      "テレビ映画"
+    ],
+    "genres_en": [
+      "Drama",
+      "TV Movie"
+    ],
+    "runtime": 92,
+    "vote_average": 4.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "AT",
+        "name": "Austria"
+      }
+    ]
+  },
+  "明日はない": null,
+  "たそがれの女心": {
+    "tmdb_id": 27030,
+    "tmdb_title_jp": "たそがれの女心",
+    "tmdb_title_en": "The Earrings of Madame de...",
+    "tmdb_title_original": "Madame de…",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In late 19th century France, the Countess Louise, wife of a wealthy general, sells the earrings her husband gave her on their wedding day to pay off her secret debts, then claims to have lost them. Her husband quickly learns of the deceit, which is the beginning of many tragic misunderstandings, all involving the earrings, the general, the countess, and her new lover, the Italian Baron Donati.",
+    "poster_path": "/6UVf308FkcjT4XKczH1rTOCMuvy.jpg",
+    "backdrop_path": "/msQMXYEBHQ7zPVu0TPEm7wUSGHQ.jpg",
+    "release_date": "1953-04-16",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 105,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "tmdb:27030": {
+    "tmdb_id": 27030,
+    "tmdb_title_jp": "たそがれの女心",
+    "tmdb_title_en": "The Earrings of Madame de...",
+    "tmdb_title_original": "Madame de…",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In late 19th century France, the Countess Louise, wife of a wealthy general, sells the earrings her husband gave her on their wedding day to pay off her secret debts, then claims to have lost them. Her husband quickly learns of the deceit, which is the beginning of many tragic misunderstandings, all involving the earrings, the general, the countess, and her new lover, the Italian Baron Donati.",
+    "poster_path": "/6UVf308FkcjT4XKczH1rTOCMuvy.jpg",
+    "backdrop_path": "/msQMXYEBHQ7zPVu0TPEm7wUSGHQ.jpg",
+    "release_date": "1953-04-16",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 105,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "風雲児（1947）": {
+    "tmdb_id": 208691,
+    "tmdb_title_jp": "The Exile",
+    "tmdb_title_en": "The Exile",
+    "tmdb_title_original": "The Exile",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "An idealistic young man is torn between a sultry Chicago nightclub owner and a Scottish South Dakotan farmgirl.",
+    "poster_path": "/edq7xxmNpar6KiYzg0PPNjCnk9u.jpg",
+    "backdrop_path": "/khfqk7oIsGwXKYfIoNrqvoApMvh.jpg",
+    "release_date": "1931-05-15",
+    "director": "Oscar Micheaux",
+    "director_jp": "Oscar Micheaux",
+    "director_en": "Oscar Micheaux",
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music"
+    ],
+    "runtime": 74,
+    "vote_average": 4.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "魅せられて（1949）": {
+    "tmdb_id": 47260,
+    "tmdb_title_jp": "Caught",
+    "tmdb_title_en": "Caught",
+    "tmdb_title_original": "Caught",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A middle-aged couple has a drifter enter their lives. The fish-store owners find that the mysterious young man awakens the couple in ways they didn't expect. Things get tense when the drifter begins an affair with the woman of the house.",
+    "poster_path": "/33sUPXPUqIe9YnZ80d8xzkiL2gb.jpg",
+    "backdrop_path": "/1pZJXiLnfg5rjhCErUCAXBCkhC1.jpg",
+    "release_date": "1996-01-24",
+    "director": "Robert M. Young",
+    "director_jp": "Robert M. Young",
+    "director_en": "Robert M. Young",
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 110,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ヨシワラ": null,
+  "輪舞（1950）": null,
+  "新凱旋門物語": {
+    "tmdb_id": 1290424,
+    "tmdb_title_jp": "L'Inconnu de la Grande Arche",
+    "tmdb_title_en": "The Great Arch",
+    "tmdb_title_original": "L'Inconnu de la Grande Arche",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "France, 1983. The biggest architectural competition in history is launched by the new socialist president, François Mitterrand. Coveted by all the biggest international architectural firms, the open-call competition is surprisingly won by an unknown: Johan Otto von Spreckelsen, an architecture teacher from Copenhagen. Until then, the fifty-year-old Dane had built only four buildings: his home, and three small chapels.",
+    "poster_path": "/54uFg7nfNYoN81dixlwRcNk9KGS.jpg",
+    "backdrop_path": "/jCrMCnpQvCJOgEW4stUtbSBm17B.jpg",
+    "release_date": "2025-11-05",
+    "director": "Stéphane Demoustier",
+    "director_jp": "Stéphane Demoustier",
+    "director_en": "Stéphane Demoustier",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 104,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      }
+    ]
+  },
+  "ママと神さまとシルヴィ・バルタン": {
+    "tmdb_id": 1107215,
+    "tmdb_title_jp": "Ma mère, Dieu et Sylvie Vartan",
+    "tmdb_title_en": "Once Upon My Mother",
+    "tmdb_title_original": "Ma mère, Dieu et Sylvie Vartan",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In 1963, Esther gives birth to Roland, the youngest of a large family. Roland is born with a club foot that prevents him from standing. Against everyone's advice, she promises her son that he will walk like the others and that he will have a fabulous life. From then on, Esther will do everything in her power to keep this promise. Through decades of trials and miracles of life, this film is the story of a true, funny and moving story, that of an incredible destiny and the greatest love there is: that of a mother for her child.",
+    "poster_path": "/sIYUhbkjgedkYuiQ9MW3fzyc7Gf.jpg",
+    "backdrop_path": "/qMYb0pTEnsYsYPVD1uJIpOMumYB.jpg",
+    "release_date": "2025-03-19",
+    "director": "Ken Scott",
+    "director_jp": "Ken Scott",
+    "director_en": "Ken Scott",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 102,
+    "vote_average": 6.966,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "そして彼女たちは": {
+    "tmdb_id": 1242015,
+    "tmdb_title_jp": "そして彼女たちは",
+    "tmdb_title_en": "Young Mothers",
+    "tmdb_title_original": "Jeunes mères",
+    "tmdb_original_language": "fr",
+    "overview": "若くして妊娠した女性を支援する施設で共に暮らす５人の少女。彼女たちは頼る人を持たず、貧困や暴力などさまざまな問題を抱えている。「ひとりじゃ育てられない」「嬉しいと思いたいのに」――戸惑い、悩み、なるべき家族像を見いだせないまま、母になる少女たち。押し寄せる孤独感に飲み込まれそうになっても、時に誰かに寄り添われながら、それぞれが歩むべき道を選び取っていく……",
+    "overview_en": "Housed in a shelter for young mothers, Jessica, Perla, Julia, Ariane, and Naïma, all of whom have grown up in difficult circumstances, struggle to obtain a better life for themselves and their children.",
+    "poster_path": "/8sawP0EY2BxbnizxxcJSrdKLtJO.jpg",
+    "backdrop_path": "/7UsW6pKkCdCmceBmdQ0MvV6zKhL.jpg",
+    "release_date": "2025-05-23",
+    "director": "リュック・ダルデンヌ",
+    "director_jp": "リュック・ダルデンヌ",
+    "director_en": "Luc Dardenne",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 104,
+    "vote_average": 6.652,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1242015": {
+    "tmdb_id": 1242015,
+    "tmdb_title_jp": "そして彼女たちは",
+    "tmdb_title_en": "Young Mothers",
+    "tmdb_title_original": "Jeunes mères",
+    "tmdb_original_language": "fr",
+    "overview": "若くして妊娠した女性を支援する施設で共に暮らす５人の少女。彼女たちは頼る人を持たず、貧困や暴力などさまざまな問題を抱えている。「ひとりじゃ育てられない」「嬉しいと思いたいのに」――戸惑い、悩み、なるべき家族像を見いだせないまま、母になる少女たち。押し寄せる孤独感に飲み込まれそうになっても、時に誰かに寄り添われながら、それぞれが歩むべき道を選び取っていく……",
+    "overview_en": "Housed in a shelter for young mothers, Jessica, Perla, Julia, Ariane, and Naïma, all of whom have grown up in difficult circumstances, struggle to obtain a better life for themselves and their children.",
+    "poster_path": "/8sawP0EY2BxbnizxxcJSrdKLtJO.jpg",
+    "backdrop_path": "/7UsW6pKkCdCmceBmdQ0MvV6zKhL.jpg",
+    "release_date": "2025-05-23",
+    "director": "リュック・ダルデンヌ",
+    "director_jp": "リュック・ダルデンヌ",
+    "director_en": "Luc Dardenne",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 104,
+    "vote_average": 6.652,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "Marcel et Monsieur Pagnol（原題）": {
+    "tmdb_id": 840873,
+    "tmdb_title_jp": "Marcel et monsieur Pagnol",
+    "tmdb_title_en": "A Magnificent Life",
+    "tmdb_title_original": "Marcel et monsieur Pagnol",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In 1955, 60-year-old Marcel Pagnol is a well-known and acclaimed playwright and filmmaker. When the editor-in-chief of ELLE magazine commissions a weekly column about Pagnol's childhood, he sees this as a great opportunity to go back to his artistic roots: writing. Realizing his memory is failing him and deeply affected by the disappointing results of his last two plays, Pagnol starts doubting his ability to pursue his work. That is until Little Marcel - the young boy he used to be - appears to him as if by magic. Together, they will explore Marcel Pagnol's incredible life and bring back to life his most cherished encounters and memories...",
+    "poster_path": "/jKYHuENFUXYDAkOQOlN7RRzMowO.jpg",
+    "backdrop_path": "/xPquMr2qgZcpV31dZl5T2Td1nBN.jpg",
+    "release_date": "2025-10-15",
+    "director": "シルヴァン・ショメ",
+    "director_jp": "シルヴァン・ショメ",
+    "director_en": "Sylvain Chomet",
+    "genres": [
+      "アニメーション",
+      "履歴",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "History",
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "正しい日　間違えた日": {
+    "tmdb_id": 354275,
+    "tmdb_title_jp": "지금은맞고그때는틀리다",
+    "tmdb_title_en": "Right Now, Wrong Then",
+    "tmdb_title_original": "지금은맞고그때는틀리다",
+    "tmdb_original_language": "ko",
+    "overview": "",
+    "overview_en": "By mistake, film director Ham Chunsu arrives in Suwon a day early. With time to kill before his lecture the next day, Chunsu stops by a restored, old palace and meets an artist named Yoon Heejung. Together, they go to Heejung's workshop to look at her paintings, have Sushi with Soju for dinner, and get close. Later, they go to another café and have more drinks with Heejung's acquaintances. When asked if he is married, Chunsu is forced to reveal the fact that he is, and Heejung gets deeply disappointed...",
+    "poster_path": "/rWk5GaMmgtNQkOI50CpW4QDb0Om.jpg",
+    "backdrop_path": "/vOPqsZ8DFfbeuwqjFh5hGW47nTD.jpg",
+    "release_date": "2015-09-24",
+    "director": "ホン・サンス",
+    "director_jp": "ホン・サンス",
+    "director_en": "Hong Sang-soo",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 121,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "GEMNIBUS vol.2": null,
+  "レオ　ブラッディ・スウィート": null,
+  "インファナル・アフェア": {
+    "tmdb_id": 10775,
+    "tmdb_title_jp": "インファナル・アフェア",
+    "tmdb_title_en": "Infernal Affairs",
+    "tmdb_title_original": "無間道",
+    "tmdb_original_language": "cn",
+    "overview": "1991年、ストリート育ちの青年ラウは香港マフィアに入ってすぐ、その優秀さに目を付けたボスによって警察学校に送り込まれる。一方、警察学校で優秀な成績を収めていた青年ヤンは突然退学となる。彼は、警視に能力を見込まれマフィアへの潜入を命じられたのだった。やがて2人の青年は、それぞれの組織で台頭していく。そして10年後、警察はヤンから大きな麻薬取引の情報を受け取る。しかし警察の包囲網はラウによってマフィア側に筒抜けとなっていた。検挙も取引も失敗に終わったことで、警察、マフィア双方がスパイの存在に気づいてしまうのだった…。",
+    "overview_en": "Chan Wing Yan, a young police officer, has been sent undercover as a mole in the local mafia. Lau Kin Ming, a young mafia member, infiltrates the police force. Years later, their older counterparts, Chen Wing Yan and Inspector Lau Kin Ming, respectively, race against time to expose the mole within their midst.",
+    "poster_path": "/55Tz62eAV0G3xEAXAG9UjSUwVpN.jpg",
+    "backdrop_path": "/iiDGA97Kqt2dVU1deXQF06USBRu.jpg",
+    "release_date": "2002-12-12",
+    "director": "麥兆輝",
+    "director_jp": "麥兆輝",
+    "director_en": "Alan Mak Siu-Fai",
+    "genres": [
+      "ドラマ",
+      "アクション",
+      "スリラー",
+      "犯罪",
+      "謎"
+    ],
+    "genres_en": [
+      "Drama",
+      "Action",
+      "Thriller",
+      "Crime",
+      "Mystery"
+    ],
+    "runtime": 101,
+    "vote_average": 7.802,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "インファナル・アフェアIII 終極無間": {
+    "tmdb_id": 14310,
+    "tmdb_title_jp": "インファナル・アフェアIII 終極無間",
+    "tmdb_title_en": "Infernal Affairs III",
+    "tmdb_title_original": "無間道III: 終極無間",
+    "tmdb_original_language": "cn",
+    "overview": "警官として生きること選んだラウは、警察内に残る潜入マフィアたちを始末してきた。だが、大物密輸商人シェンとエリート警官ヨンがラウの前に立ちはだかる。",
+    "overview_en": "While Yeung Kam Wing is trying to remove all connections between the mob and him, his actions are being carefully observed by Lau Kin Ming, who bears a personal grudge against him.",
+    "poster_path": "/arqGksXOmaCemY3FFvpT8rFMkE8.jpg",
+    "backdrop_path": "/vsTHSW1j3FDx3JTsiIfPcuu9C6h.jpg",
+    "release_date": "2003-12-12",
+    "director": "劉偉強",
+    "director_jp": "劉偉強",
+    "director_en": "Andrew Lau Wai-Keung",
+    "genres": [
+      "犯罪",
+      "ドラマ",
+      "アクション"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama",
+      "Action"
+    ],
+    "runtime": 118,
+    "vote_average": 6.951,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "TW",
+        "name": "Taiwan"
+      }
+    ]
+  },
+  "インファナル・アフェアII 無間序曲": {
+    "tmdb_id": 11647,
+    "tmdb_title_jp": "インファナル・アフェアII 無間序曲",
+    "tmdb_title_en": "Infernal Affairs II",
+    "tmdb_title_original": "無間道II",
+    "tmdb_original_language": "cn",
+    "overview": "1991年、香港マフィアのドンが暗殺される。ウォン警部は次のボスに扱いやすいサムがなることを望むが、結局ドンの次男ハウが権力を握る。",
+    "overview_en": "In this prequel to the original, a bloody power struggle among the Triads coincides with the 1997 handover of Hong Kong, setting up the events of the first film.",
+    "poster_path": "/r96ADrF9T2hlEb2GtrRf2mgH8bH.jpg",
+    "backdrop_path": "/j0bK5l5Wo4XvUUrKp1FckLvbse9.jpg",
+    "release_date": "2003-10-01",
+    "director": "麥兆輝",
+    "director_jp": "麥兆輝",
+    "director_en": "Alan Mak Siu-Fai",
+    "genres": [
+      "アクション",
+      "スリラー",
+      "犯罪"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "runtime": 119,
+    "vote_average": 7.304,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "SG",
+        "name": "Singapore"
+      }
+    ]
+  },
+  "鬼龍院花子の生涯": {
+    "tmdb_id": 107641,
+    "tmdb_title_jp": "鬼龍院花子の生涯",
+    "tmdb_title_en": "Onimasa: A Japanese Godfather",
+    "tmdb_title_original": "鬼龍院花子の生涯",
+    "tmdb_original_language": "ja",
+    "overview": "土佐の侠客である鬼龍院政五郎は、大正10年に松恵という養女を取った。松恵は政五郎の身の回りの世話をしながら成長する。政五郎は末長という男と対立していたが、末長の妻が経営する料亭からさらった娘つるを妾にした。つるは翌年、政五郎の娘を出産。娘は花子と名付けられた。花子が女学生になったころ、政五郎は高校教師の田辺と知り合い意気投合、十六歳になった花子の婿にしようとする。しかし田辺は松恵と愛し合うようになっていた。",
+    "overview_en": "Onimasa is the egocentric boss of a small yakuza clan on Shikoku Island, whose criminal duties conflict with his self-image as a chivalrous samurai. His struggles with his boss, the Shikoku Godfather, and the tumultuous life of his adopted daughter, Matsue, form the backdrop of this epic tale of justice, obedience, and bloody vengeance.",
+    "poster_path": "/2Z5y8NXN3EJN9bQKqFSNu8l3fzr.jpg",
+    "backdrop_path": "/h9GiZd8EbYDOWNFEQHyglsMXRsT.jpg",
+    "release_date": "1982-06-05",
+    "director": "五社英雄",
+    "director_jp": "五社英雄",
+    "director_en": "Hideo Gosha",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 146,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "氷の微笑": {
+    "tmdb_id": 402,
+    "tmdb_title_jp": "氷の微笑",
+    "tmdb_title_en": "Basic Instinct",
+    "tmdb_title_original": "Basic Instinct",
+    "tmdb_original_language": "en",
+    "overview": "アイスピック殺人事件の捜査線上に浮び上がった女性作家。事件を捜査する刑事は次第に、容疑者の妖しい魅力のとりこになっていく。やがて彼自身に殺人容疑がかかってしまうが……。シャロン・ストーンの大胆な演技が話題を呼んだエロティック・サスペンス。",
+    "overview_en": "Catherine, a novelist with an insatiable sexual appetite, becomes a prime suspect when her boyfriend is brutally murdered -- a crime she had described in her latest story.",
+    "poster_path": "/nKnKyy1lLYtVZJINSJwZm6f4pp8.jpg",
+    "backdrop_path": "/7FRraud59N3s10bbf9bfYjvwx3v.jpg",
+    "release_date": "1992-03-20",
+    "director": "ポール・ヴァーホーヴェン",
+    "director_jp": "ポール・ヴァーホーヴェン",
+    "director_en": "Paul Verhoeven",
+    "genres": [
+      "スリラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Mystery"
+    ],
+    "runtime": 128,
+    "vote_average": 6.935,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:402": {
+    "tmdb_id": 402,
+    "tmdb_title_jp": "氷の微笑",
+    "tmdb_title_en": "Basic Instinct",
+    "tmdb_title_original": "Basic Instinct",
+    "tmdb_original_language": "en",
+    "overview": "アイスピック殺人事件の捜査線上に浮び上がった女性作家。事件を捜査する刑事は次第に、容疑者の妖しい魅力のとりこになっていく。やがて彼自身に殺人容疑がかかってしまうが……。シャロン・ストーンの大胆な演技が話題を呼んだエロティック・サスペンス。",
+    "overview_en": "Catherine, a novelist with an insatiable sexual appetite, becomes a prime suspect when her boyfriend is brutally murdered -- a crime she had described in her latest story.",
+    "poster_path": "/nKnKyy1lLYtVZJINSJwZm6f4pp8.jpg",
+    "backdrop_path": "/7FRraud59N3s10bbf9bfYjvwx3v.jpg",
+    "release_date": "1992-03-20",
+    "director": "ポール・ヴァーホーヴェン",
+    "director_jp": "ポール・ヴァーホーヴェン",
+    "director_en": "Paul Verhoeven",
+    "genres": [
+      "スリラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Mystery"
+    ],
+    "runtime": 128,
+    "vote_average": 6.935,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "Riceboy ライスボーイ": {
+    "tmdb_id": 1008038,
+    "tmdb_title_jp": "Riceboy ライスボーイ",
+    "tmdb_title_en": "Riceboy Sleeps",
+    "tmdb_title_original": "Riceboy Sleeps",
+    "tmdb_original_language": "en",
+    "overview": "若くして恋人を亡くし未婚の母となったソヨンは、赤ん坊の息子ドンヒョンを連れてカナダのバンクーバー郊外へと移住する。ソヨンは工場で働きながら、言葉や文化の壁、人種差別に直面する日々の中、懸命に息子を育てていく。やがて16歳となったドンヒョンは英語名“デービッド”を名乗り、すっかりカナダでの生活になじんでいた。しかし、彼の心の奥底では自身のルーツ、特に一度も会ったことのない父親の存在への思いが次第に募っていく。そんなある日、二人に届いた衝撃的な知らせをきっかけに母と息子は初めて韓国へ帰郷し、悲しみの過去と対峙することになる ─ 。",
+    "overview_en": "In the 1990s, an immigrant single mother raises her teenage son in the Canadian suburbs, determined to provide a better life for him than the one she left behind in South Korea.",
+    "poster_path": "/344oy01RDIpTQd6Pw43iOYP3bjT.jpg",
+    "backdrop_path": "/2fckvNvcgAQiD5IbkVdfh3i6cR9.jpg",
+    "release_date": "2023-03-17",
+    "director": "沈明辅",
+    "director_jp": "沈明辅",
+    "director_en": "Anthony Shim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 117,
+    "vote_average": 7.111,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "ゲキ×シネ「紅鬼物語」": null,
+  "マジック＆ロス": {
+    "tmdb_id": 794101,
+    "tmdb_title_jp": "マジック＆ロス",
+    "tmdb_title_en": "Magic and Loss",
+    "tmdb_title_original": "향기의 상실",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A dreamlike drama produced by and starring Sugino Kiki, a rising star in the independent film world. Two women who meet on a mysterious resort island become captivated by its allure and venture into an ethereal realm. It is the second feature directed by Malaysian filmmaker Lim Kah Wai. Japanese Kiki (Sugino) and South Korean Kkobbi (Kim Kkobbi) arrive on Hong Kong's Lantau Island. They have both rented rooms at a hotel near the Mui Wo forest, but when they enter the lobby, the only other person around is a bellboy.",
+    "poster_path": "/hMd6V2ei7rOBXfE5S44780eXzJP.jpg",
+    "backdrop_path": "/hGyR5yOLCceQKskS526sW7BfDvE.jpg",
+    "release_date": "2010-10-01",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 80,
+    "vote_average": 4.0,
+    "tmdb_countries": []
+  },
+  "新世界の夜明け": {
+    "tmdb_id": 258884,
+    "tmdb_title_jp": "新世界の夜明け",
+    "tmdb_title_en": "New World",
+    "tmdb_title_original": "新世界の夜明け",
+    "tmdb_original_language": "en",
+    "overview": "北京に暮らす若い女性ココは、日本の洗練された都会的なクリスマスにあこがれて大阪にやってくる。しかし、たどりついたのは、想像していたメトロポリタンな日本とは遠くかけはなれた、雑多な繁華街の大阪・新世界。言葉の通じない異国の地で、ココはてんやわんやの騒動に巻き込まれていく。",
+    "overview_en": "Coco, a Beijing modern girl wants to spend a romantic and fancy Christmas vacation in Osaka. However the place where she gets in is Shinsekai ( \"New World\" in English, is an old neighbourhood located next to south Osaka city's downtown \"Minami \" area, as known as one of the most poorest and dangerous area in Osaka.)When she arrives there, she starts feeling regret and frustrated by the encounters and the landscapes which are far beyond her expectation. Suddenly she is involved in an incident surrounds a Chinese family there, meanwhile she starts fascinated by Shinsekai through her wondering. In this short and unusual Christmas vacation, Coco discovers a \"Japan \" she never knows and a \"China\" that she is not familiar with.",
+    "poster_path": "/4dvuArouSdIaSsL1rWmpf0oWz9e.jpg",
+    "backdrop_path": "/kJjC1YNZKCaKnYREVTa42bD1Naa.jpg",
+    "release_date": "2011-10-29",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "COME & GO カム・アンド・ゴー": {
+    "tmdb_id": 756800,
+    "tmdb_title_jp": "COME & GO カム・アンド・ゴー",
+    "tmdb_title_en": "Come and Go",
+    "tmdb_title_original": "COME & GO カム・アンド・ゴー",
+    "tmdb_original_language": "ja",
+    "overview": "大阪を舞台に描いた群像劇。通称「キタ」と呼ばれる大阪の繁華街で生きるアジア人たちの人生を描く。春のある日、大阪のキタにある古びたアパートの一室で白骨化した老女の死体が発見された。警察は捜査を開始し、アパート周辺で聞き込みを続けるが、孤独死なのか、あるいは財産がらみの謀殺なのか、さまざまな噂が飛び交っていた。同じころ、中国・台湾・韓国の観光客、マレーシアのビジネスマン、ネパールの難民、ミャンマー人留学生、ベトナム人技能実習生など、キタにやってきた外国人たちと、彼らと日常を共有する日本人たちの間に、さまざまな出来事が起こっている。やがて事件の捜査が終わるとき、人びとは新たな人生の岐路を迎える。",
+    "overview_en": "Tourists, foreigners and outcasts converge on the streets of Osaka in this sprawling ensemble drama by Japan-based, Malaysia-born filmmaker Lim Kah Wai. His eighth feature explores the lesser-known aspects of the Asian melting pot city through the eyes and experiences of a dozen characters who struggle to find their place in society: among them a Nepali refugee with dreams of opening a restaurant, a Burmese student struggling to make ends meet while working two jobs, and a Taiwanese sex tourist who travels to meet his favorite adult video actress.",
+    "poster_path": "/o6qKF1Q3ogCcFMFaRNEaGRv5mgk.jpg",
+    "backdrop_path": "/l4xdxwl50cfFUVHoJhUAhYQREgo.jpg",
+    "release_date": "2021-11-19",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 158,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "MY",
+        "name": "Malaysia"
+      }
+    ]
+  },
+  "どこでもない、ここしかない": {
+    "tmdb_id": 516963,
+    "tmdb_title_jp": "No Where, Now Here",
+    "tmdb_title_en": "No Where, Now Here",
+    "tmdb_title_original": "No Where, Now Here",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Ferdi is an ethnic Turk who runs guest houses and apartments in Ljubljana, the capital of Slovenia. He has earned money from the tourism and real estate boom over the past few years and has had the help of his wife Nurdan but despite her faithfulness and his adherence to Islam, he always chases single women who stay at his properties. Nurdan cannot endure Ferdi’s callous treatment of her and after a confrontation, she leaves. Ferdi gradually becomes aware of how much her existence is important to him and decides to go back to her home-town in Macedonia. Will he be able to win back her love or has Nurdan checked out of their marriage for good?",
+    "poster_path": "/g9gIaGkvgLtZaGy6ynVufCK0Biq.jpg",
+    "backdrop_path": "/b04T1fjbrXPGNPwoGxx1OXHAReq.jpg",
+    "release_date": "2018-11-13",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "MK",
+        "name": "Macedonia"
+      },
+      {
+        "iso_3166_1": "SI",
+        "name": "Slovenia"
+      }
+    ]
+  },
+  "あなたの微笑み": {
+    "tmdb_id": 1025517,
+    "tmdb_title_jp": "あなたの微笑み",
+    "tmdb_title_en": "Your Lovely Smile",
+    "tmdb_title_original": "あなたの微笑み",
+    "tmdb_original_language": "ja",
+    "overview": "何もない栃木の田舎町で、くすぶり続ける映画監督の渡辺紘文。地元・栃木を拠点に映画製作団体「大田原愚豚舎」を旗揚げし、東京国際映画祭で数々の受賞歴を持つ渡辺は、自他ともに認める“世界の渡辺”である。しかし“世界の渡辺”もいまは脚本も書けず、大手映画会社から依頼がくることもなく、地元の仲間たちと悪態をつきながら日々を過ごしていた。  ある日、旧知のプロデューサーから、世界的映画監督“KOREEDA”の代打で沖縄での映画制作の話が舞い込む。久々の映画制作に浮足立つ渡辺が沖縄に向かうと「いますぐ俺を主人公にして映画を作れ」と“社長”に高級ホテルに缶詰めにされる。しかし脚本は1ページも書けず、結局、“社長”にも見限られ、ホテルを追い出された渡辺はひとり映画館へ足を運ぶ。  「すみません。映画監督の渡辺紘文という者なんですが、自分の映画を上映してもらえる劇場を探しています」  コロナ禍にひとりミニシアターを訪ね歩く渡辺は、その道中でいつも正体の異なる不思議な少女に出会い、導かれていく。ようやく兵庫・豊岡劇場で上映が決まるも、誰も“世界の渡辺”を知らず、チケットはまったく売れない。渡辺は、ついに日本最北端の映画館・大黒座に行きつく。",
+    "overview_en": "A bittersweet, hilarious, enlightening and inspirational road trip through Japanese arthouse cinemas with a heartily independent filmmaker, who also struggles to release his own movies in real life.",
+    "poster_path": "/A3yGvlriiGYhBqg9QExyDwWIgtP.jpg",
+    "backdrop_path": "/13DX6bVZ6oKKzUWPCrkHW4VP6MY.jpg",
+    "release_date": "2022-11-12",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 103,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "すべて、至るところにある": {
+    "tmdb_id": 1198722,
+    "tmdb_title_jp": "すべて、至るところにある",
+    "tmdb_title_en": "Everything, Everywhere",
+    "tmdb_title_original": "すべて、至るところにある",
+    "tmdb_original_language": "ja",
+    "overview": "エヴァは旅先のバルカン半島で、映画監督のジェイと出会う。その後、パンデミックと戦争が世界を襲う。ジェイはエヴァにメッセージを残し、姿を消してしまう。エヴァはジェイを探しに再びバルカン半島を訪れ、かつてエヴァが出演した映画が『いつか、どこかに』というタイトルで完成していたことを知る。セルビア、マケドニア、ボスニアでジェイを探す中で、エヴァはジェイの過去と秘密を知ることになり…。",
+    "overview_en": "Director Jay mysteriously disappears in 2019 and leaves behind a hard disc with the film “No Where, Now Here”. Actress Eva follows his steps to find him after she met Jay at the film shoot in 2018 film.",
+    "poster_path": "/uBo6E7nbpwoEM8H7FSJPta6aGYB.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-11-12",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 88,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ディス・マジック・モーメント": {
+    "tmdb_id": 1198716,
+    "tmdb_title_jp": "ディス・マジック・モーメント",
+    "tmdb_title_en": "This Magic Moment",
+    "tmdb_title_original": "ディス・マジック・モーメント",
+    "tmdb_original_language": "ja",
+    "overview": "「あなたの微笑み」のリム・カーワイが、日本各地の多種多様なミニシアターの実情を記録したドキュメンタリー。大阪を拠点に活動する映画監督のカーワイは、2022年、コロナ禍で苦境に陥ったミニシアターを訪ね、劇場を支える人々の思いに耳を傾ける。作中には全国22館のミニシアターが登場。解体が決まった沖縄に現存する最古の映画館、首里劇場の最後の姿や、一度は火災で全焼しながらも、再開が決まった小倉昭和館の再建前の跡地など、貴重な映像も収められている。",
+    "overview_en": "Lim Kah Wai, director of Your Lovely Smile, embarks on a similar journey as the protagonist in his film, visiting dozens of mini theatres from Okinawa to Hokkaido. Lim is not pitching his new film, but meeting the staff and owners of the theatres to make a documentary about how they struggle in the shrinking market. In empty cinema houses, the people speak of the common and personal challenges they encounter. Although they might have made different decisions – whether to hang on or move on, they share a pure love for and a genuine belief in cinema that they wish to pass on to the next generation.",
+    "poster_path": "/iwS70Ao2J9NApCbVrk0nwd2ylq3.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-11-25",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "Fly Me To Minami 恋するミナミ": {
+    "tmdb_id": 320054,
+    "tmdb_title_jp": "恋するミナミ",
+    "tmdb_title_en": "Fly Me to Minami",
+    "tmdb_title_original": "恋するミナミ",
+    "tmdb_original_language": "ja",
+    "overview": "大阪ミナミを舞台に国籍も言葉も異なる男女の恋を描いたラブストーリー。香港でファッション誌の編集者として働くセリーンは、取材のため年末にミナミを訪れる。しかしカメラマンが急きょ同行できなくなり、現地通訳ナオミの弟である大学生タツヤを雇うことに。一方、キャビンアテンダントの仕事をしながら洋服を仕入れ、ソウルでセレクトショップを経営するソルアには、シンスケという日本人の恋人がいたが……。",
+    "overview_en": "In Fly Me to Minami, Lim’s fourth feature film and follow-up to his Stateless Trilogy, two transnational love stories intersect. The first of these stories is between Sherine, a fashion magazine editor from Hong Kong, and Tatsuya, an amateur photographer in Osaka. The second is between Seol-a, a Korean flight attendant, and Shinsuke, a married Korean-Japanese shopkeeper in Osaka’s Korea Town.",
+    "poster_path": "/c4cfVIbfrRIa88ffVa3mY2gBmUO.jpg",
+    "backdrop_path": "/3GewjpIP1jZCLrHc607I9agszA4.jpg",
+    "release_date": "2013-12-14",
+    "director": "リム・カーワイ",
+    "director_jp": "リム・カーワイ",
+    "director_en": "Kah-Wai Lim",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 106,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "SG",
+        "name": "Singapore"
+      }
+    ]
+  },
+  "蜘蛛の国の女王": {
+    "tmdb_id": 944284,
+    "tmdb_title_jp": "蜘蛛の国の女王",
+    "tmdb_title_en": "蜘蛛の国の女王",
+    "tmdb_title_original": "蜘蛛の国の女王",
+    "tmdb_original_language": "ja",
+    "overview": "蜘蛛の国の女王蜘蛛の国の女王",
+    "overview_en": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2009-01-01",
+    "director": "常本琢招",
+    "director_jp": "常本琢招",
+    "director_en": "Takuaki Tsunemoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 54,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:944284": {
+    "tmdb_id": 944284,
+    "tmdb_title_jp": "蜘蛛の国の女王",
+    "tmdb_title_en": "蜘蛛の国の女王",
+    "tmdb_title_original": "蜘蛛の国の女王",
+    "tmdb_original_language": "ja",
+    "overview": "蜘蛛の国の女王蜘蛛の国の女王",
+    "overview_en": "",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2009-01-01",
+    "director": "常本琢招",
+    "director_jp": "常本琢招",
+    "director_en": "Takuaki Tsunemoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 54,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "蒼白者 A Pale Woman": {
+    "tmdb_id": 335880,
+    "tmdb_title_jp": "蒼白者 A Pale Woman",
+    "tmdb_title_en": "A Pale Woman",
+    "tmdb_title_original": "蒼白者 A Pale Woman",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In order to be with the man she loves, Kim goes back to Japan from Korea. The man saved Kim from darkness, when she was little. But he was raised by Kim's mother under the dark world. Now, he is involved in the criminal world. To protect her love, Kim makes a dangerous plan to get the man from her mother.",
+    "poster_path": "/7YMzenWyYSxZFeeMNW6TNemoeob.jpg",
+    "backdrop_path": null,
+    "release_date": "2012-03-10",
+    "director": "常本琢招",
+    "director_jp": "常本琢招",
+    "director_en": "Takuaki Tsunemoto",
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:335880": {
+    "tmdb_id": 335880,
+    "tmdb_title_jp": "蒼白者 A Pale Woman",
+    "tmdb_title_en": "A Pale Woman",
+    "tmdb_title_original": "蒼白者 A Pale Woman",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "In order to be with the man she loves, Kim goes back to Japan from Korea. The man saved Kim from darkness, when she was little. But he was raised by Kim's mother under the dark world. Now, he is involved in the criminal world. To protect her love, Kim makes a dangerous plan to get the man from her mother.",
+    "poster_path": "/7YMzenWyYSxZFeeMNW6TNemoeob.jpg",
+    "backdrop_path": null,
+    "release_date": "2012-03-10",
+    "director": "常本琢招",
+    "director_jp": "常本琢招",
+    "director_en": "Takuaki Tsunemoto",
+    "genres": [
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "男はつらいよ 寅次郎サラダ記念日": {
+    "tmdb_id": 417861,
+    "tmdb_title_jp": "男はつらいよ 寅次郎サラダ記念日",
+    "tmdb_title_en": "Tora-san's Salad-Day Memorial",
+    "tmdb_title_original": "男はつらいよ 寅次郎サラダ記念日",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第40作。信州小諸、駅前で知り合ったお婆さん（鈴木光枝）の家に泊まり、昔語りを聞く寅さん。翌朝、医師・原田真知子（三田佳子）が、お婆さんを病院に入院させるためにやってくる。重病のお婆さんは、寅さんの説得でなんとか入院し、真知子は寅さんを御礼にと家に招待する。くるまやに帰った寅さんは、満男の大学受験の下見ということで、真知子の姪・由紀（三田寛子）を早稲田大学に訪ねる。さらに真知子も息子に会うために東京へ。寅さんにとって幸福な日々となる。",
+    "overview_en": "In his travels through Japan, Tora-san meets and falls in love with a female doctor, however he is afraid of committing to a relationship.",
+    "poster_path": "/p80o38i4O23uh10WPGMBZUopHO4.jpg",
+    "backdrop_path": "/sTFEgI3QwP2jsBRaNHXpqQNAyDC.jpg",
+    "release_date": "1988-12-24",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 100,
+    "vote_average": 8.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "喜劇 男は愛嬌": {
+    "tmdb_id": 1281114,
+    "tmdb_title_jp": "喜劇 男は愛嬌",
+    "tmdb_title_en": "Charming Men",
+    "tmdb_title_original": "喜劇 男は愛嬌",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "One day, when Goro (Kiyoshi Atsumi) returns to his poor tenement house from a trip on a deep-sea tuna boat, his neighbor's daughter Haruko (Mitsuko Baisho) also returns from the juvenile classification center on the same day. However, at a welcome party held by Goro for Haruko, a drunk friend crashes into Haruko's house with a dump truck and is forced to leave. Goro plans to marry Haruko to a rich man and force her to pay dowry, but...",
+    "poster_path": "/wKvAaXmuSccnewccKY9QjeHfZNk.jpg",
+    "backdrop_path": null,
+    "release_date": "1970-06-13",
+    "director": "森崎東",
+    "director_jp": "森崎東",
+    "director_en": "Azuma Morisaki",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 87,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "父子草": {
+    "tmdb_id": 422125,
+    "tmdb_title_jp": "父子草",
+    "tmdb_title_en": "Green Light to Joy",
+    "tmdb_title_original": "父子草",
+    "tmdb_original_language": "ja",
+    "overview": "ガード下におでん屋を出している竹子は、初老に近い土工風の男平井義太郎の、どこか淋し気でいて、鼻ッぱしらの強い、気ップのよさに興味を持っていた。或る日、常連の若い客、西村茂と義太郎は、些細なことから喧嘩になったが、若い西村に敵うはずはなかった。それから、毎晩、西村に相撲で挑戦する義太郎だったが、それというのも、波がシベリヤで捕虜生活を終え、故郷に帰還したのだが、彼がすでに戦死してしまっていると思った彼の妻は、弟と再婚してしまっていた。",
+    "overview_en": "Drama about the friendship between a lonely laborer (Atsumi) and a young woman (Hoshi) unable to enter college.",
+    "poster_path": "/soXQz4PyHYy7C1MTCnCNPtVaFqL.jpg",
+    "backdrop_path": null,
+    "release_date": "1967-12-06",
+    "director": "丸山誠治",
+    "director_jp": "丸山誠治",
+    "director_en": "Seiji Maruyama",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 85,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "僕はボデイガード": {
+    "tmdb_id": 1325990,
+    "tmdb_title_jp": "僕はボディガード",
+    "tmdb_title_en": "I'm a Bodyguard",
+    "tmdb_title_original": "僕はボディガード",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kita Ippei (Atsumi Kiyoshi) became a security officer in the Metropolitan Police Department's Security Division after catching a thug who attacked a writer living in the area while working at a police box. His dream is to become a bodyguard (BG) for the Prime Minister, just like his senior, Detective Inspector Takagi (Ryu Chishu). Kita Ippei is very successful in both work and love, getting attacked while guarding a female minister, getting some perks as a BG for a foreign princess, and becoming friends with a woman at his favorite bar.",
+    "poster_path": "/i4LhbNu8v5NXloOuWJBU9BS3ODz.jpg",
+    "backdrop_path": null,
+    "release_date": "1964-05-16",
+    "director": "久松静児",
+    "director_jp": "久松静児",
+    "director_en": "Seiji Hisamatsu",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 92,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "青春トルコ日記 処女すべり": {
+    "tmdb_id": 1641814,
+    "tmdb_title_jp": "青春トルコ日記 処女すべり",
+    "tmdb_title_en": "青春トルコ日記 処女すべり",
+    "tmdb_title_original": "青春トルコ日記 処女すべり",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "1975 Toei movie.",
+    "poster_path": "/sBgOLGj1ljxhsyxHwTIkYrSEJJh.jpg",
+    "backdrop_path": null,
+    "release_date": "1975-04-19",
+    "director": "野田幸男",
+    "director_jp": "野田幸男",
+    "director_en": "Yukio Noda",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 83,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "わかれ（1959）": {
+    "tmdb_id": 894785,
+    "tmdb_title_jp": "わかれ",
+    "tmdb_title_en": "Love in the Mountains",
+    "tmdb_title_original": "わかれ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A mother and her daughter who run a quiet mountain hotel, and guests who visit the hotel. A girl who does not know what a broken heart is, the attractive joy of first love, and separation is like parting with life. The mother-daughter duet with Isuzu Yamada attracted a lot of attention at that time. Haruko Wanibuchi, demonstrated rare attractiveness and pure charm by playing a heroine living in a beautiful and pure first love.",
+    "poster_path": "/1wZEQgupGZ7jXRgzpnP5dEx9ekg.jpg",
+    "backdrop_path": "/bJDcq6WnDCP0C3N6tMKTmSxVykF.jpg",
+    "release_date": "1959-10-23",
+    "director": "Masao Nozaki",
+    "director_jp": "Masao Nozaki",
+    "director_en": "Masao Nozaki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 82,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "イルマ・ヴェップ": {
+    "tmdb_id": 25355,
+    "tmdb_title_jp": "イルマ・ヴェップ",
+    "tmdb_title_en": "Irma Vep",
+    "tmdb_title_original": "Irma Vep",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Hong Kong action diva Maggie Cheung comes to France when a past-his-prime director casts her in a remake of the silent classic Les Vampires. Clad in a rubber catsuit and unable to speak a word of French, Cheung finds herself adrift in the insanity of the film industry…",
+    "poster_path": "/lAS2egLUnQnDKZ5fSnE7jr7Jinw.jpg",
+    "backdrop_path": "/iK3JJvaWg67dQQyob3SqDsnQpHo.jpg",
+    "release_date": "1996-10-01",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 99,
+    "vote_average": 6.665,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:25355": {
+    "tmdb_id": 25355,
+    "tmdb_title_jp": "イルマ・ヴェップ",
+    "tmdb_title_en": "Irma Vep",
+    "tmdb_title_original": "Irma Vep",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Hong Kong action diva Maggie Cheung comes to France when a past-his-prime director casts her in a remake of the silent classic Les Vampires. Clad in a rubber catsuit and unable to speak a word of French, Cheung finds herself adrift in the insanity of the film industry…",
+    "poster_path": "/lAS2egLUnQnDKZ5fSnE7jr7Jinw.jpg",
+    "backdrop_path": "/iK3JJvaWg67dQQyob3SqDsnQpHo.jpg",
+    "release_date": "1996-10-01",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 99,
+    "vote_average": 6.665,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "デーモンラヴァー": {
+    "tmdb_id": 24488,
+    "tmdb_title_jp": "Demonlover",
+    "tmdb_title_en": "Demonlover",
+    "tmdb_title_original": "Demonlover",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A French corporation goes head-to-head with an American web media company for the rights to a 3-D manga pornography studio, resulting in a power struggle that culminates in violence and espionage.",
+    "poster_path": "/k93vY0Gl67e3N8O14xCWz1a9Bfs.jpg",
+    "backdrop_path": "/iv5ZHMglzn8I9qn1phdP8xSoHKs.jpg",
+    "release_date": "2002-11-06",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ",
+      "謎",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "runtime": 121,
+    "vote_average": 5.763,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "アクトレス　女たちの舞台": {
+    "tmdb_id": 246860,
+    "tmdb_title_jp": "アクトレス 女たちの舞台",
+    "tmdb_title_en": "Clouds of Sils Maria",
+    "tmdb_title_original": "Clouds of Sils Maria",
+    "tmdb_original_language": "en",
+    "overview": "大女優として知られるマリア（ジュリエット・ビノシュ）は、忠実なマネージャーのヴァレンティーヌ（クリステン・スチュワート）とともに、二人三脚で日々の仕事に挑んでいた。そんななか、マリアはかつて自身が世間に認められるきっかけとなった作品のリメイクをオファーされる。しかし、その役柄は彼女が演じた若き美女シグリッド役ではなく、彼女に翻弄される中年の上司、ヘレナ役。若い主人公の配役は、すでにハリウッドの大作映画で活躍する若手女優のジョアン（クロエ・グレース・モレッツ）に決定していた…",
+    "overview_en": "A veteran actress comes face-to-face with an uncomfortable reflection of herself when she agrees to take part in a revival of the play that launched her career 20 years earlier.",
+    "poster_path": "/dtCZ31RlokpkAaKMr9jFCJjBngi.jpg",
+    "backdrop_path": "/yb0hXYnuXp91iFeZGmpWqzfIYsd.jpg",
+    "release_date": "2014-08-20",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 124,
+    "vote_average": 6.581,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:246860": {
+    "tmdb_id": 246860,
+    "tmdb_title_jp": "アクトレス 女たちの舞台",
+    "tmdb_title_en": "Clouds of Sils Maria",
+    "tmdb_title_original": "Clouds of Sils Maria",
+    "tmdb_original_language": "en",
+    "overview": "大女優として知られるマリア（ジュリエット・ビノシュ）は、忠実なマネージャーのヴァレンティーヌ（クリステン・スチュワート）とともに、二人三脚で日々の仕事に挑んでいた。そんななか、マリアはかつて自身が世間に認められるきっかけとなった作品のリメイクをオファーされる。しかし、その役柄は彼女が演じた若き美女シグリッド役ではなく、彼女に翻弄される中年の上司、ヘレナ役。若い主人公の配役は、すでにハリウッドの大作映画で活躍する若手女優のジョアン（クロエ・グレース・モレッツ）に決定していた…",
+    "overview_en": "A veteran actress comes face-to-face with an uncomfortable reflection of herself when she agrees to take part in a revival of the play that launched her career 20 years earlier.",
+    "poster_path": "/dtCZ31RlokpkAaKMr9jFCJjBngi.jpg",
+    "backdrop_path": "/yb0hXYnuXp91iFeZGmpWqzfIYsd.jpg",
+    "release_date": "2014-08-20",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 124,
+    "vote_average": 6.581,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "夏時間の庭": {
+    "tmdb_id": 8282,
+    "tmdb_title_jp": "L'Heure d'été",
+    "tmdb_title_en": "Summer Hours",
+    "tmdb_title_original": "L'Heure d'été",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "After the death of a septuagenarian woman, her three children deliberate over what to do with her estate.",
+    "poster_path": "/7U3PdKa6qiMSzMVZ5SnZSPSYtna.jpg",
+    "backdrop_path": "/dQoQYlnbbI08gotToAO5ZyS1v63.jpg",
+    "release_date": "2008-03-05",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ゾンビ 1/2 Right Side of the Living Dead": null,
+  "誘惑エンジェル危機一発": {
+    "tmdb_id": 1572053,
+    "tmdb_title_jp": "淫欲のコード 誘惑エンジェル危機一発",
+    "tmdb_title_en": "Inyoku no kōdo yuwaku enjeru kiki ippatsu",
+    "tmdb_title_original": "淫欲のコード 誘惑エンジェル危機一発",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The story takes place in the near future. Bun, who works in the sex industry, brings home a stray sex doll named Fran, who seems to have a secret. Fran is being chased by Anna, so Bun and his fellow sex workers Minato and Hana try to protect Fran, but...",
+    "poster_path": "/bsF0LZMO2T4LnDV2XI2cPMDABfc.jpg",
+    "backdrop_path": "/tbjoe60V4A0lRd0uW6YqEJQUXgn.jpg",
+    "release_date": "2025-10-31",
+    "director": "山本淳一",
+    "director_jp": "山本淳一",
+    "director_en": "Jun'ichi Yamamoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1572053": {
+    "tmdb_id": 1572053,
+    "tmdb_title_jp": "淫欲のコード 誘惑エンジェル危機一発",
+    "tmdb_title_en": "Inyoku no kōdo yuwaku enjeru kiki ippatsu",
+    "tmdb_title_original": "淫欲のコード 誘惑エンジェル危機一発",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The story takes place in the near future. Bun, who works in the sex industry, brings home a stray sex doll named Fran, who seems to have a secret. Fran is being chased by Anna, so Bun and his fellow sex workers Minato and Hana try to protect Fran, but...",
+    "poster_path": "/bsF0LZMO2T4LnDV2XI2cPMDABfc.jpg",
+    "backdrop_path": "/tbjoe60V4A0lRd0uW6YqEJQUXgn.jpg",
+    "release_date": "2025-10-31",
+    "director": "山本淳一",
+    "director_jp": "山本淳一",
+    "director_en": "Jun'ichi Yamamoto",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ラストナイト・セックス": {
+    "tmdb_id": 1573032,
+    "tmdb_title_jp": "ラストナイト・セックス",
+    "tmdb_title_en": "Last Night Sex",
+    "tmdb_title_original": "ラストナイト・セックス",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "1990, a time before cell phones. Yusaku, an office worker, is living a peaceful and happy life with his girlfriend, Yukiko. One day, he receives an invitation to a class reunion from an old friend. Yusaku is reluctant, but the words \"Minami's back in town\" stir a memory deep within his heart. Yusaku and Minami once shared a secret that they couldn't tell anyone about. When the day of the reunion arrives, the lives of Yusaku, Yukiko, and Minami begin to change dramatically.  (R18+ and R15+ versions will have different endings). (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/eyfzt9HV2yuqIKcL6UwXyxBKJch.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-29",
+    "director": "戸巻のぞみ",
+    "director_jp": "戸巻のぞみ",
+    "director_en": "Nozomi Tomaki",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1573032": {
+    "tmdb_id": 1573032,
+    "tmdb_title_jp": "ラストナイト・セックス",
+    "tmdb_title_en": "Last Night Sex",
+    "tmdb_title_original": "ラストナイト・セックス",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "1990, a time before cell phones. Yusaku, an office worker, is living a peaceful and happy life with his girlfriend, Yukiko. One day, he receives an invitation to a class reunion from an old friend. Yusaku is reluctant, but the words \"Minami's back in town\" stir a memory deep within his heart. Yusaku and Minami once shared a secret that they couldn't tell anyone about. When the day of the reunion arrives, the lives of Yusaku, Yukiko, and Minami begin to change dramatically.  (R18+ and R15+ versions will have different endings). (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/eyfzt9HV2yuqIKcL6UwXyxBKJch.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-11-29",
+    "director": "戸巻のぞみ",
+    "director_jp": "戸巻のぞみ",
+    "director_en": "Nozomi Tomaki",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "日記箱の恋": {
+    "tmdb_id": 1572763,
+    "tmdb_title_jp": "日記箱の恋",
+    "tmdb_title_en": "Nikki hako no koi",
+    "tmdb_title_original": "日記箱の恋",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After her grandfather, who ran an antiques shop, passes away, Nanami decides to take over the business. As she prepares to reopen the shop, she buys a small box from a friend who runs a recycle shop. Inside is a diary in which a woman candidly describes her relationship with her partner... (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/t6WK4FojEB1vvpZ0R9WgqXSS0nq.jpg",
+    "backdrop_path": "/ckTKp3Svy6d01cIvhUDuQGUA4yC.jpg",
+    "release_date": "2026-02-06",
+    "director": "Masanori Kudo",
+    "director_jp": "Masanori Kudo",
+    "director_en": "Masanori Kudo",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1572763": {
+    "tmdb_id": 1572763,
+    "tmdb_title_jp": "日記箱の恋",
+    "tmdb_title_en": "Nikki hako no koi",
+    "tmdb_title_original": "日記箱の恋",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After her grandfather, who ran an antiques shop, passes away, Nanami decides to take over the business. As she prepares to reopen the shop, she buys a small box from a friend who runs a recycle shop. Inside is a diary in which a woman candidly describes her relationship with her partner... (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/t6WK4FojEB1vvpZ0R9WgqXSS0nq.jpg",
+    "backdrop_path": "/ckTKp3Svy6d01cIvhUDuQGUA4yC.jpg",
+    "release_date": "2026-02-06",
+    "director": "Masanori Kudo",
+    "director_jp": "Masanori Kudo",
+    "director_en": "Masanori Kudo",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "艶罪の家": {
+    "tmdb_id": 1572493,
+    "tmdb_title_jp": "艶罪の家",
+    "tmdb_title_en": "Enzai no ie",
+    "tmdb_title_original": "艶罪の家",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After divorcing her husband after he murdered the woman he was having an affair with, Reimi returns to her hometown and her family home. Her younger sister Mitsuki is missing, her father has passed away, and she lives alone in the house, with only her aunt as her only relative. Her former boyfriend, Tatsuo, is dating Kanna, a hostess, but he persistently pressures Reimi to get back together with him. Meanwhile, her estranged father's twin brother, Kazuo, appears in town. Reimi suspects that there may be some connection between her sister's disappearance and Kazuo's appearance... (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/8bG7FftMpQ5gChXVjj33QSdecdI.jpg",
+    "backdrop_path": "/qT8oYiZsiHg2GI87MF3mMHQqn9.jpg",
+    "release_date": "2025-11-26",
+    "director": "山内大輔",
+    "director_jp": "山内大輔",
+    "director_en": "Daisuke Yamanouchi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1572493": {
+    "tmdb_id": 1572493,
+    "tmdb_title_jp": "艶罪の家",
+    "tmdb_title_en": "Enzai no ie",
+    "tmdb_title_original": "艶罪の家",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After divorcing her husband after he murdered the woman he was having an affair with, Reimi returns to her hometown and her family home. Her younger sister Mitsuki is missing, her father has passed away, and she lives alone in the house, with only her aunt as her only relative. Her former boyfriend, Tatsuo, is dating Kanna, a hostess, but he persistently pressures Reimi to get back together with him. Meanwhile, her estranged father's twin brother, Kazuo, appears in town. Reimi suspects that there may be some connection between her sister's disappearance and Kazuo's appearance... (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/8bG7FftMpQ5gChXVjj33QSdecdI.jpg",
+    "backdrop_path": "/qT8oYiZsiHg2GI87MF3mMHQqn9.jpg",
+    "release_date": "2025-11-26",
+    "director": "山内大輔",
+    "director_jp": "山内大輔",
+    "director_en": "Daisuke Yamanouchi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "妄想ファンファーレ": {
+    "tmdb_id": 1572846,
+    "tmdb_title_jp": "妄想ファンファーレ",
+    "tmdb_title_en": "Mōsō fanfare",
+    "tmdb_title_original": "妄想ファンファーレ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After graduating from high school, reclusive Matsuri spends her days fantasizing, venting her sexual desires. Her father, Toshiaki, and mother, Reiko, worry about their daughter, but enjoy their lovey-dovey days. Every time Matsuri sees her parents enjoying their harmonious life, her delusions intensify. One day, Hiroki, who happens to be passing by, picks up her laundry. The two become close, and Matsuri begins to develop feelings for him. Her world of delusions continues to expand. (R15+ version premiered at the OP PICTURES+ 2025).",
+    "poster_path": "/egNxRW3xGGaV35Fg8JR9TOGTPmm.jpg",
+    "backdrop_path": "/qD6XQb7AqspxTQii4iQxbnl0UGG.jpg",
+    "release_date": "2026-02-20",
+    "director": "高原秀和",
+    "director_jp": "高原秀和",
+    "director_en": "Hidekazu Takahara",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1572846": {
+    "tmdb_id": 1572846,
+    "tmdb_title_jp": "妄想ファンファーレ",
+    "tmdb_title_en": "Mōsō fanfare",
+    "tmdb_title_original": "妄想ファンファーレ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "After graduating from high school, reclusive Matsuri spends her days fantasizing, venting her sexual desires. Her father, Toshiaki, and mother, Reiko, worry about their daughter, but enjoy their lovey-dovey days. Every time Matsuri sees her parents enjoying their harmonious life, her delusions intensify. One day, Hiroki, who happens to be passing by, picks up her laundry. The two become close, and Matsuri begins to develop feelings for him. Her world of delusions continues to expand. (R15+ version premiered at the OP PICTURES+ 2025).",
+    "poster_path": "/egNxRW3xGGaV35Fg8JR9TOGTPmm.jpg",
+    "backdrop_path": "/qD6XQb7AqspxTQii4iQxbnl0UGG.jpg",
+    "release_date": "2026-02-20",
+    "director": "高原秀和",
+    "director_jp": "高原秀和",
+    "director_en": "Hidekazu Takahara",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "名も知らぬ逢瀬の旅路": {
+    "tmdb_id": 1572697,
+    "tmdb_title_jp": "名も知らぬ逢瀬の旅路 ",
+    "tmdb_title_en": "The Path of a Nameless Love",
+    "tmdb_title_original": "名も知らぬ逢瀬の旅路 ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kento, a love hotel employee, gets caught up in a lovers' quarrel between two guests. After managing to defuse the situation, he ends up having what appears to be a one-night stand with Mika, the woman whose lover has been stolen from her. One day, Kento returns home from work to find Mika standing at his front door, carrying a bag full of cash... (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/z4A6bhkXex1k1rv5dZ6FybZB8jT.jpg",
+    "backdrop_path": "/8GXsPj066RBwT4OEzQaeCqn606e.jpg",
+    "release_date": "2026-01-09",
+    "director": "発智新太郎",
+    "director_jp": "発智新太郎",
+    "director_en": "Shintarō Hocchi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 74,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1572697": {
+    "tmdb_id": 1572697,
+    "tmdb_title_jp": "名も知らぬ逢瀬の旅路 ",
+    "tmdb_title_en": "The Path of a Nameless Love",
+    "tmdb_title_original": "名も知らぬ逢瀬の旅路 ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Kento, a love hotel employee, gets caught up in a lovers' quarrel between two guests. After managing to defuse the situation, he ends up having what appears to be a one-night stand with Mika, the woman whose lover has been stolen from her. One day, Kento returns home from work to find Mika standing at his front door, carrying a bag full of cash... (R15+ version premiered at the OP PICTURES+ Festival 2025).",
+    "poster_path": "/z4A6bhkXex1k1rv5dZ6FybZB8jT.jpg",
+    "backdrop_path": "/8GXsPj066RBwT4OEzQaeCqn606e.jpg",
+    "release_date": "2026-01-09",
+    "director": "発智新太郎",
+    "director_jp": "発智新太郎",
+    "director_en": "Shintarō Hocchi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 74,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "365DAYs＋2彷徨う大人たち": null,
+  "氷の微笑 4K 30周年記念レストア版": {
+    "tmdb_id": 402,
+    "tmdb_title_jp": "氷の微笑",
+    "tmdb_title_en": "Basic Instinct",
+    "tmdb_title_original": "Basic Instinct",
+    "tmdb_original_language": "en",
+    "overview": "アイスピック殺人事件の捜査線上に浮び上がった女性作家。事件を捜査する刑事は次第に、容疑者の妖しい魅力のとりこになっていく。やがて彼自身に殺人容疑がかかってしまうが……。シャロン・ストーンの大胆な演技が話題を呼んだエロティック・サスペンス。",
+    "overview_en": "Catherine, a novelist with an insatiable sexual appetite, becomes a prime suspect when her boyfriend is brutally murdered -- a crime she had described in her latest story.",
+    "poster_path": "/nKnKyy1lLYtVZJINSJwZm6f4pp8.jpg",
+    "backdrop_path": "/7FRraud59N3s10bbf9bfYjvwx3v.jpg",
+    "release_date": "1992-03-20",
+    "director": "ポール・ヴァーホーヴェン",
+    "director_jp": "ポール・ヴァーホーヴェン",
+    "director_en": "Paul Verhoeven",
+    "genres": [
+      "スリラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Mystery"
+    ],
+    "runtime": 128,
+    "vote_average": 6.935,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "聖なる酔っぱらいの伝説": {
+    "tmdb_id": 54990,
+    "tmdb_title_jp": "La leggenda del santo bevitore",
+    "tmdb_title_en": "The Legend of the Holy Drinker",
+    "tmdb_title_original": "La leggenda del santo bevitore",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "Andreas Kartak, a homeless man living under the bridges of Paris, is lent 200 francs by a stranger as long as he promises to repay it to a local church when he can afford to. Kartak is determined to pay back his debt but circumstances, and his alcoholism, forever intervene.",
+    "poster_path": "/m9ypxPu19raCyAtk3JlhncKc03.jpg",
+    "backdrop_path": "/cMDGYZVrx7CPvFmkkMFIPBLAM49.jpg",
+    "release_date": "1988-09-02",
+    "director": "Ermanno Olmi",
+    "director_jp": "Ermanno Olmi",
+    "director_en": "Ermanno Olmi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 128,
+    "vote_average": 6.543,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "ストップ・メイキング・センス 4Kレストア": {
+    "tmdb_id": 24128,
+    "tmdb_title_jp": "ストップ・メイキング・センス",
+    "tmdb_title_en": "Stop Making Sense",
+    "tmdb_title_original": "Stop Making Sense",
+    "tmdb_original_language": "en",
+    "overview": "ロックバンド、トーキング・ヘッズのライブドキュメンタリー。1983年にバンデージ・シアターで行ったステージを様々なカメラワークで捉え、生の熱気をストレートに伝える。",
+    "overview_en": "A concert film documenting Talking Heads at the height of their popularity, on tour for their 1983 album \"Speaking in Tongues.\" The band takes the stage one by one and is joined by a cadre of guest musicians for a career-spanning and cinematic performance that features creative choreography and visuals.",
+    "poster_path": "/vnQUglflaMu3WqUjOgi62hzXWdj.jpg",
+    "backdrop_path": "/kdDQn3Oi7iy1VK7GWhMRyPXUf9K.jpg",
+    "release_date": "1984-10-19",
+    "director": "ジョナサン・デミ",
+    "director_jp": "ジョナサン・デミ",
+    "director_en": "Jonathan Demme",
+    "genres": [
+      "ドキュメンタリー",
+      "音楽"
+    ],
+    "genres_en": [
+      "Documentary",
+      "Music"
+    ],
+    "runtime": 88,
+    "vote_average": 8.313,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ソフィア・コッポラ 儚く失われゆく永遠の夜": null,
+  "バーフバリ エピック4K 前半": {
+    "tmdb_id": 1511417,
+    "tmdb_title_jp": "Bāhubali: The Epic",
+    "tmdb_title_en": "Bāhubali: The Epic",
+    "tmdb_title_original": "Bāhubali: The Epic",
+    "tmdb_original_language": "te",
+    "overview": "",
+    "overview_en": "When a mysterious child is found by a tribal couple near a roaring waterfall, they raise him as their own. As he grows, Sivudu is drawn to the world beyond the cliffs, where he discovers the ancient kingdom of Mahishmati, ruled by a cruel tyrant, haunted by rebellion, and bound to his past. What begins as a quest for love soon unravels a legacy of betrayal, sacrifice, and a forgotten prince.",
+    "poster_path": "/4sLSorDKKDN944kWngxgQlpdDeg.jpg",
+    "backdrop_path": "/wCwZ4ljSsWyZyTiyk1tGQtBHTDx.jpg",
+    "release_date": "2025-10-29",
+    "director": "S. S. Rajamouli",
+    "director_jp": "S. S. Rajamouli",
+    "director_en": "S. S. Rajamouli",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 224,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "バーフバリ エピック4K 後半": {
+    "tmdb_id": 1511417,
+    "tmdb_title_jp": "Bāhubali: The Epic",
+    "tmdb_title_en": "Bāhubali: The Epic",
+    "tmdb_title_original": "Bāhubali: The Epic",
+    "tmdb_original_language": "te",
+    "overview": "",
+    "overview_en": "When a mysterious child is found by a tribal couple near a roaring waterfall, they raise him as their own. As he grows, Sivudu is drawn to the world beyond the cliffs, where he discovers the ancient kingdom of Mahishmati, ruled by a cruel tyrant, haunted by rebellion, and bound to his past. What begins as a quest for love soon unravels a legacy of betrayal, sacrifice, and a forgotten prince.",
+    "poster_path": "/4sLSorDKKDN944kWngxgQlpdDeg.jpg",
+    "backdrop_path": "/wCwZ4ljSsWyZyTiyk1tGQtBHTDx.jpg",
+    "release_date": "2025-10-29",
+    "director": "S. S. Rajamouli",
+    "director_jp": "S. S. Rajamouli",
+    "director_en": "S. S. Rajamouli",
+    "genres": [
+      "アクション",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama"
+    ],
+    "runtime": 224,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "【TBS】War Bride2": null,
+  "《2026 NCT DREAM TOUR FINALE LIVE VIEWING》": null,
+  "《GEMNIBUS vol.2》": null,
+  "韓国ミュージカル ON SCREEN／モーツァルト！（字幕）": null,
+  "ANIMAL（字幕）": {
+    "tmdb_id": 781732,
+    "tmdb_title_jp": "Animal",
+    "tmdb_title_en": "Animal",
+    "tmdb_title_original": "Animal",
+    "tmdb_original_language": "hi",
+    "overview": "",
+    "overview_en": "The hardened son of a powerful industrialist returns home after years abroad and vows to take bloody revenge on those threatening his father's life.",
+    "poster_path": "/hqaJrihfOCJyytIiuh1MKecM4BB.jpg",
+    "backdrop_path": "/lprsAHkwMxk2iC6VZxNmV0H7g1t.jpg",
+    "release_date": "2023-12-01",
+    "director": "Sandeep Reddy Vanga",
+    "director_jp": "Sandeep Reddy Vanga",
+    "director_en": "Sandeep Reddy Vanga",
+    "genres": [
+      "アクション",
+      "犯罪",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "runtime": 201,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "女性の休日（字幕）": {
+    "tmdb_id": 1181125,
+    "tmdb_title_jp": "The Day Iceland Stood Still",
+    "tmdb_title_en": "The Day Iceland Stood Still",
+    "tmdb_title_original": "The Day Iceland Stood Still",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "When 90% of Iceland’s women walked off the job and out of their homes one morning in 1975, they brought their country to its knees and catapulted Iceland to the forefront of today's global fight for gender equality. Unexpectedly funny, laced with evocative animation and powerfully told by the women who lived it – this is the true story of 12 hours that launched a revolution.",
+    "poster_path": "/2335e2qPPBzsYAbjc8rWut0ad9R.jpg",
+    "backdrop_path": "/2rcFEp1DL6wcLdeKRgtxBcgNR2Y.jpg",
+    "release_date": "2025-01-25",
+    "director": "Pamela Hogan",
+    "director_jp": "Pamela Hogan",
+    "director_en": "Pamela Hogan",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 70,
+    "vote_average": 8.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IS",
+        "name": "Iceland"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "おしり前マン～復活のおしり前帝国～": null,
+  "《山田広野 活弁リサイタル》": null,
+  "私たちの話し方": {
+    "tmdb_id": 1239041,
+    "tmdb_title_jp": "私たちの話し方",
+    "tmdb_title_en": "The Way We Talk",
+    "tmdb_title_original": "看我今天怎麼說",
+    "tmdb_original_language": "cn",
+    "overview": "手話のみを使用しスクーバダイビングのインストラクターを目指すジーソン、ジーソンの幼馴染で親友、口語と手話の両方を使う広告クリエイターのアラン。そんな2人が、大学を卒業後、大企業に就職し人工内耳（※）のアンバサダーに就任したソフィーと出会う。新たな出会いが、３人それぞれの生き方を変えていくーー\r ※人工内耳とは、聴覚障がいがあり、補聴器では十分な効果が得られない人がつける医療器具。受信コイルを皮下に挿入するため、手術が必要。外部に送信コイルなどの器具を付けることで使用できる。",
+    "overview_en": "Wolf, born into a deaf family, embraces sign language with confidence despite obstacles in life; Sophie, having received a cochlear implant at a young age, continuously strives to be seen as \"normal\" despite having a \"deaf accent.\" Alan, with a cochlear implant like Sophie, is capable of both spoken language and sign language; he advocates for diverse modes of communication within the deaf community. Bound by love and friendship, the three embark on a self-discovering journey that is not without its moments of pain.",
+    "poster_path": "/barKgptDYek9bbxs6zGK0PA506b.jpg",
+    "backdrop_path": "/sLN3jFngme3cIGYYvHZLR1voo6l.jpg",
+    "release_date": "2025-01-18",
+    "director": " 黃修平 ",
+    "director_jp": " 黃修平 ",
+    "director_en": "Adam Wong",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 132,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "tmdb:1239041": {
+    "tmdb_id": 1239041,
+    "tmdb_title_jp": "私たちの話し方",
+    "tmdb_title_en": "The Way We Talk",
+    "tmdb_title_original": "看我今天怎麼說",
+    "tmdb_original_language": "cn",
+    "overview": "手話のみを使用しスクーバダイビングのインストラクターを目指すジーソン、ジーソンの幼馴染で親友、口語と手話の両方を使う広告クリエイターのアラン。そんな2人が、大学を卒業後、大企業に就職し人工内耳（※）のアンバサダーに就任したソフィーと出会う。新たな出会いが、３人それぞれの生き方を変えていくーー\r ※人工内耳とは、聴覚障がいがあり、補聴器では十分な効果が得られない人がつける医療器具。受信コイルを皮下に挿入するため、手術が必要。外部に送信コイルなどの器具を付けることで使用できる。",
+    "overview_en": "Wolf, born into a deaf family, embraces sign language with confidence despite obstacles in life; Sophie, having received a cochlear implant at a young age, continuously strives to be seen as \"normal\" despite having a \"deaf accent.\" Alan, with a cochlear implant like Sophie, is capable of both spoken language and sign language; he advocates for diverse modes of communication within the deaf community. Bound by love and friendship, the three embark on a self-discovering journey that is not without its moments of pain.",
+    "poster_path": "/barKgptDYek9bbxs6zGK0PA506b.jpg",
+    "backdrop_path": "/sLN3jFngme3cIGYYvHZLR1voo6l.jpg",
+    "release_date": "2025-01-18",
+    "director": " 黃修平 ",
+    "director_jp": " 黃修平 ",
+    "director_en": "Adam Wong",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 132,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "忘れじの面影": {
+    "tmdb_id": 946,
+    "tmdb_title_jp": "忘れじの面影",
+    "tmdb_title_en": "Letter from an Unknown Woman",
+    "tmdb_title_original": "Letter from an Unknown Woman",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A pianist about to flee from a duel receives a letter from a woman he cannot remember. As she tells the story of her lifelong love for him, he is forced to reinterpret his own past.",
+    "poster_path": "/gRGRW7DKyK8qBtKJTWguULMGbHG.jpg",
+    "backdrop_path": "/7amSQSipxgiQnEejWX6iQonFrZI.jpg",
+    "release_date": "1948-04-28",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 87,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:946": {
+    "tmdb_id": 946,
+    "tmdb_title_jp": "忘れじの面影",
+    "tmdb_title_en": "Letter from an Unknown Woman",
+    "tmdb_title_original": "Letter from an Unknown Woman",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A pianist about to flee from a duel receives a letter from a woman he cannot remember. As she tells the story of her lifelong love for him, he is forced to reinterpret his own past.",
+    "poster_path": "/gRGRW7DKyK8qBtKJTWguULMGbHG.jpg",
+    "backdrop_path": "/7amSQSipxgiQnEejWX6iQonFrZI.jpg",
+    "release_date": "1948-04-28",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 87,
+    "vote_average": 7.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ディヴィーヌ": {
+    "tmdb_id": 1076706,
+    "tmdb_title_jp": "神回",
+    "tmdb_title_en": "Divine",
+    "tmdb_title_original": "神回",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is Kamikai",
+    "poster_path": "/rFR36KbvrTp8UZ3DDWb9PPI9vwW.jpg",
+    "backdrop_path": "/dtJ9cJGrM6iFSHlsUtqnZxF1IKu.jpg",
+    "release_date": "2023-07-21",
+    "director": "中村貴一朗",
+    "director_jp": "中村貴一朗",
+    "director_en": "Kiichiro Nakamura",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 88,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "優しい敵": {
+    "tmdb_id": 266961,
+    "tmdb_title_jp": "La Tendre Ennemie",
+    "tmdb_title_en": "The Tender Enemy",
+    "tmdb_title_original": "La Tendre Ennemie",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Line, Annette's daughter, is about to marry a man she's not in love with. At the engagement party three ghosts revisit their disastrous relationships with Annette and decide to take action to help Line.",
+    "poster_path": "/e5waAY7tOGkwyF3sIJH9AIVHE6l.jpg",
+    "backdrop_path": "/q4yHH6M2BcnUwE8DosuZCblP2a6.jpg",
+    "release_date": "1936-10-24",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 69,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "マイエルリンクからサラエヴォへ": {
+    "tmdb_id": 251305,
+    "tmdb_title_jp": "De Mayerling à Sarajevo",
+    "tmdb_title_en": "From Mayerling to Sarajevo",
+    "tmdb_title_original": "De Mayerling à Sarajevo",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Franz Ferdinand, heir to the throne of Austria-Hungary, is kept absent from the royal court due to his dangerous political ideas. Sent on a tour of inspections and inaugurations, he falls in love with Countess Sophie Chotek.",
+    "poster_path": "/1XHKxbnH5A04i6TXNFtOiwGVqvj.jpg",
+    "backdrop_path": "/2RNsqOFceV5fAvcZj0ondojFDM.jpg",
+    "release_date": "1940-01-27",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ロマンス",
+      "履歴",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "History",
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "永遠のガビー": {
+    "tmdb_id": 120972,
+    "tmdb_title_jp": "La signora di tutti",
+    "tmdb_title_en": "Everybody's Woman",
+    "tmdb_title_original": "La signora di tutti",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "Gaby is expelled from school after a married teacher commits suicide after telling her he can't live without her. Though she has done nothing, she is punished for his act.",
+    "poster_path": "/fUPXmxDKPoE0TcRRjTanA6XucLN.jpg",
+    "backdrop_path": "/5Vx3nFVnJLUnaZ4QZfS0POSZm44.jpg",
+    "release_date": "1934-11-29",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "恋愛三昧": {
+    "tmdb_id": 43596,
+    "tmdb_title_jp": "Liebelei",
+    "tmdb_title_en": "Flirtation",
+    "tmdb_title_original": "Liebelei",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "Vienna in the beginning of the twentieth century. Cavalry Lieutenant Fritz Lobheimer is about to end his affair with Baroness Eggerdorff when he meets the young Christine, the daughter of an opera violinist. Baron Eggerdorff however soon hears of his past misfortune...",
+    "poster_path": "/yQyvKKKotBSnKk3ZFyhCzDzhnsy.jpg",
+    "backdrop_path": "/iKW4lNjtPuZWzLn1Q8VabiIjVkl.jpg",
+    "release_date": "1933-03-10",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 88,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "風雲児(95分）": {
+    "tmdb_id": 415789,
+    "tmdb_title_jp": "風雲児 織田信長",
+    "tmdb_title_en": "Lucky Adventurer Nobunaga Oda",
+    "tmdb_title_original": "風雲児　織田信長",
+    "tmdb_original_language": "ja",
+    "overview": "山岡荘八の長編小説『織田信長』を「百万両五十三次」の結束信二が脚色し「いろは若衆 花駕籠峠」の河野寿一が監督した時代劇巨編。父の死から桶狭間の戦まで、織田信長の半生を描く。\r 父の葬儀に荒縄を腰に巻いた姿で現れた十六歳の織田信長は、抹香を位牌に投げつけた。世間からは狂人とののしられたが、妻の濃姫だけは信長の頬を伝う涙を見逃さなかった。濃姫の父である美濃の斉藤道三は信長に面会を要求してきたが、信長はこれを拒否し「うつけもの」の仮面をかぶり続けた。しかし最愛の家臣だった平手政秀が自害したことから、信長は一転して面会を受諾、礼装し千人の軍を率いて道三を圧倒した。しかし突然、今川義元が四万もの大軍を率いて尾張領に攻め込んできた。それに対して信長軍はわずか五千。今川軍はすでに桶狭間まで迫ってきていた。",
+    "overview_en": "Oda Nobunaga (1534–1582) was a major daimyo during the Warring State period of Japanese history. He was the second son of Oda Nobuhide, a deputy military governor with land holdings in Owari province. Nobunaga lived a life of continuous military conquest, eventually conquering a third of Japanese daimyo before his death in 1582. Telling the story of his rise to prominence as he leads an army of 4,000 men against the 40,000 troops of Lord Imagawa Yoshimoto to prevent the arrogant daimyo from crushing the Oda clan and taking control of the entire nation. From a newly restored anamorpic widescreen print, this is the ultimate warlord movie.",
+    "poster_path": "/tMW3tc80dp8xcLYwDPzKmOuJIeZ.jpg",
+    "backdrop_path": null,
+    "release_date": "1959-10-25",
+    "director": "河野寿一",
+    "director_jp": "河野寿一",
+    "director_en": "Toshikazu Kono",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Adventure"
+    ],
+    "runtime": 95,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "無謀な瞬間": {
+    "tmdb_id": 28007,
+    "tmdb_title_jp": "無謀な瞬間",
+    "tmdb_title_en": "The Reckless Moment",
+    "tmdb_title_original": "The Reckless Moment",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After discovering the dead body of her teenage daughter's lover, a housewife takes desperate measures to protect her family from scandal.",
+    "poster_path": "/qvGt1gbQt7g5vUzJrZU2qWQNEqR.jpg",
+    "backdrop_path": "/c0gCHnvEqurJAbmp4Pk2kuUH2a6.jpg",
+    "release_date": "1949-12-09",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 82,
+    "vote_average": 6.746,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:28007": {
+    "tmdb_id": 28007,
+    "tmdb_title_jp": "無謀な瞬間",
+    "tmdb_title_en": "The Reckless Moment",
+    "tmdb_title_original": "The Reckless Moment",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After discovering the dead body of her teenage daughter's lover, a housewife takes desperate measures to protect her family from scandal.",
+    "poster_path": "/qvGt1gbQt7g5vUzJrZU2qWQNEqR.jpg",
+    "backdrop_path": "/c0gCHnvEqurJAbmp4Pk2kuUH2a6.jpg",
+    "release_date": "1949-12-09",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 82,
+    "vote_average": 6.746,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "魅せられて": {
+    "tmdb_id": 14553,
+    "tmdb_title_jp": "魅せられて",
+    "tmdb_title_en": "Stealing Beauty",
+    "tmdb_title_original": "Stealing Beauty",
+    "tmdb_original_language": "en",
+    "overview": "ニューヨークに住む19歳のルーシーは、自殺した母親が残した一編の詩をきっかけに、イタリアのトスカーナ地方を訪れる。母親が青春を送ったというその地で、本当の父親を捜すために。そんな彼女の可憐で無邪気な振る舞いに、男たちは次々と魅せられていく。",
+    "overview_en": "Lucy Harmon, an American teenager is arriving in the lush Tuscan countryside to be sculpted by a family friend who lives in a beautiful villa. Lucy visited there four years earlier and exchanged a kiss with an Italian boy with whom she hopes to become reacquainted.",
+    "poster_path": "/bt0TWmhjDA2VFY89HbwgkW0lA3e.jpg",
+    "backdrop_path": "/bJFapHYlJIhXpfqH8uaNLtUxHwD.jpg",
+    "release_date": "1996-03-29",
+    "director": "ベルナルド・ベルトルッチ",
+    "director_jp": "ベルナルド・ベルトルッチ",
+    "director_en": "Bernardo Bertolucci",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 116,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "輪舞": {
+    "tmdb_id": 945166,
+    "tmdb_title_jp": "輪舞",
+    "tmdb_title_en": "Rinbu",
+    "tmdb_title_original": "輪舞",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Inspired by Arthur Schnitzler's novel, \"La Ronde\", many people are having sex in a variety of ways. A girl and her boyfriend go to a pool bar where she is served a free cocktail drink courtesy of a man who wants to date her. Another guy challenges her boyfriend to a game with the girlfriend being the prize. Three men are fighting over the young woman and a winner takes the girl. It ends up as four guys and the woman in a hotel room.",
+    "poster_path": "/bkFWX7HfQfUTslik6kirxDPw65e.jpg",
+    "backdrop_path": null,
+    "release_date": "1988-01-09",
+    "director": "小沼勝",
+    "director_jp": "小沼勝",
+    "director_en": "Masaru Konuma",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:945166": {
+    "tmdb_id": 945166,
+    "tmdb_title_jp": "輪舞",
+    "tmdb_title_en": "Rinbu",
+    "tmdb_title_original": "輪舞",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Inspired by Arthur Schnitzler's novel, \"La Ronde\", many people are having sex in a variety of ways. A girl and her boyfriend go to a pool bar where she is served a free cocktail drink courtesy of a man who wants to date her. Another guy challenges her boyfriend to a game with the girlfriend being the prize. Three men are fighting over the young woman and a winner takes the girl. It ends up as four guys and the woman in a hotel room.",
+    "poster_path": "/bkFWX7HfQfUTslik6kirxDPw65e.jpg",
+    "backdrop_path": null,
+    "release_date": "1988-01-09",
+    "director": "小沼勝",
+    "director_jp": "小沼勝",
+    "director_en": "Masaru Konuma",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "金去りぬ": {
+    "tmdb_id": 171927,
+    "tmdb_title_jp": "Komedie om Geld",
+    "tmdb_title_en": "The Trouble with Money",
+    "tmdb_title_original": "Komedie om Geld",
+    "tmdb_original_language": "nl",
+    "overview": "",
+    "overview_en": "Respected banker Karel Brand is seen as a marketable emblem of probity. When he loses 350,000 guilders, his reputation is tarnished – without the respect attached to it, he loses his job. Brand becomes unemployable, and his creditors suddenly start calling in their debts. His young daughter Willy suffers the same fate.",
+    "poster_path": "/ulrW4fwtMsnVX9w17JqSJ9MPFZk.jpg",
+    "backdrop_path": "/nQgUwb56FCc9m5UwVtT5BKbinpA.jpg",
+    "release_date": "1936-10-29",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "笑う相続人": {
+    "tmdb_id": 166977,
+    "tmdb_title_jp": "Lachende Erben",
+    "tmdb_title_en": "Laughing Heirs",
+    "tmdb_title_original": "Lachende Erben",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "After the death of his uncle, the owner of the Rhine based Bockelmann Sparkling Wine, Peter turns up for the reading of the will. Justus Bockelmann, a producer of mineral water, is confident he will inherit the business, but ‘for reasons of moral rectitude’ he has no intention of running an ‘alcoholic business’. The opening of the will comes as a surprise to all the potential heirs.",
+    "poster_path": "/phiKGjZCjAIVJTD9xDpjJBlhBXV.jpg",
+    "backdrop_path": "/81ZqsUyF5I4e4bYXNZbpt9PTrfO.jpg",
+    "release_date": "1933-03-06",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 76,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "劇場版 仮面ライダー剣 MISSING ACE": {
+    "tmdb_id": 38969,
+    "tmdb_title_jp": "劇場版 仮面ライダー剣 MISSING ACE",
+    "tmdb_title_en": "Kamen Rider Blade: Missing Ace",
+    "tmdb_title_original": "劇場版 仮面ライダー剣 MISSING ACE",
+    "tmdb_original_language": "ja",
+    "overview": "生物の始祖的存在である不死の生命体・アンデッドは人類を巻き込んだ戦いを繰り広げていた。それを食い止めるため、人類基盤史研究所（以下“ BOARD ”）が作り出した戦士・仮面ライダーはアンデッドを封印し続けていた。  やがて大半のアンデッドは封印され、最後に残ったのは相川始と名乗る人間に化けていたジョーカー、またの名を仮面ライダーカリス。剣崎一真 / 仮面ライダーブレイドは始 / ジョーカーとの死闘の果てに彼を封印し、長き戦いは幕を下ろしたはずであった。  その4年後（西暦2008年）。清掃員として働いていた剣崎の元に、仮面ライダーとアンデッドの戦いを記した本の出版で財を成した、かつての仲間である白井虎太郎が現れる。虎太郎の姪である栗原天音の14歳の誕生日を、昔の仲間で祝おうと言うのだ。虎太郎と共に仲間たちに会いに行く剣崎だが、就職活動で忙しい上城睦月 / 仮面ライダーレンゲルや、結婚を控えた広瀬栞の反応は冷たい。4年間の空白で生じた溝にショックを受ける剣崎たちの前に、封印したはずのアンデッドが多数出現する。生身で応戦する剣崎だが、当然敵わない。そんな時、3人の仮面ライダーが突然現れ、瞬く間にアンデッドを封印していった。声をかける剣崎だったが、生身で戦ったことで夏美に平手打ちされ、聞こうとするも志村に止められ、3人は剣崎を無視してその場を後にした。",
+    "overview_en": "Four years after an alternate ending to the series, in which Blade seals the Joker, the characters have moved on with their lives: Kenzaki is a garbage man, Mutsuki has graduated high school, and Kotarō has published a book about the Kamen Riders to great success. The Undead have been re-released, and a new trio of Kamen Riders—Glaive, Larc and Lance—have emerged from BOARD, now led by Tachibana. After recapturing two of the Category Aces, Kenzaki and Mutsuki join with the new Riders. When all the Undead are sealed once more, Glaive reveals himself to be the Albino Joker, a white version of the original Joker, and captures Kotarō's niece to obtain the ultimate power, sealing her in the Vanity Card. In order to free Amane from the card, Hajime is unsealed from the Joker Card and the four Riders are again united, intent on saving Amane and stopping the Albino Joker.",
+    "poster_path": "/tdQLPHz6CLUYd0PydTSju2nkpfN.jpg",
+    "backdrop_path": "/78GfqqO9fDHx30FtTbVZgVzgyvB.jpg",
+    "release_date": "2004-09-11",
+    "director": "石田秀範",
+    "director_jp": "石田秀範",
+    "director_en": "Hidenori Ishida",
+    "genres": [
+      "サイエンスフィクション",
+      "アクション",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "runtime": 75,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:38969": {
+    "tmdb_id": 38969,
+    "tmdb_title_jp": "劇場版 仮面ライダー剣 MISSING ACE",
+    "tmdb_title_en": "Kamen Rider Blade: Missing Ace",
+    "tmdb_title_original": "劇場版 仮面ライダー剣 MISSING ACE",
+    "tmdb_original_language": "ja",
+    "overview": "生物の始祖的存在である不死の生命体・アンデッドは人類を巻き込んだ戦いを繰り広げていた。それを食い止めるため、人類基盤史研究所（以下“ BOARD ”）が作り出した戦士・仮面ライダーはアンデッドを封印し続けていた。  やがて大半のアンデッドは封印され、最後に残ったのは相川始と名乗る人間に化けていたジョーカー、またの名を仮面ライダーカリス。剣崎一真 / 仮面ライダーブレイドは始 / ジョーカーとの死闘の果てに彼を封印し、長き戦いは幕を下ろしたはずであった。  その4年後（西暦2008年）。清掃員として働いていた剣崎の元に、仮面ライダーとアンデッドの戦いを記した本の出版で財を成した、かつての仲間である白井虎太郎が現れる。虎太郎の姪である栗原天音の14歳の誕生日を、昔の仲間で祝おうと言うのだ。虎太郎と共に仲間たちに会いに行く剣崎だが、就職活動で忙しい上城睦月 / 仮面ライダーレンゲルや、結婚を控えた広瀬栞の反応は冷たい。4年間の空白で生じた溝にショックを受ける剣崎たちの前に、封印したはずのアンデッドが多数出現する。生身で応戦する剣崎だが、当然敵わない。そんな時、3人の仮面ライダーが突然現れ、瞬く間にアンデッドを封印していった。声をかける剣崎だったが、生身で戦ったことで夏美に平手打ちされ、聞こうとするも志村に止められ、3人は剣崎を無視してその場を後にした。",
+    "overview_en": "Four years after an alternate ending to the series, in which Blade seals the Joker, the characters have moved on with their lives: Kenzaki is a garbage man, Mutsuki has graduated high school, and Kotarō has published a book about the Kamen Riders to great success. The Undead have been re-released, and a new trio of Kamen Riders—Glaive, Larc and Lance—have emerged from BOARD, now led by Tachibana. After recapturing two of the Category Aces, Kenzaki and Mutsuki join with the new Riders. When all the Undead are sealed once more, Glaive reveals himself to be the Albino Joker, a white version of the original Joker, and captures Kotarō's niece to obtain the ultimate power, sealing her in the Vanity Card. In order to free Amane from the card, Hajime is unsealed from the Joker Card and the four Riders are again united, intent on saving Amane and stopping the Albino Joker.",
+    "poster_path": "/tdQLPHz6CLUYd0PydTSju2nkpfN.jpg",
+    "backdrop_path": "/78GfqqO9fDHx30FtTbVZgVzgyvB.jpg",
+    "release_date": "2004-09-11",
+    "director": "石田秀範",
+    "director_jp": "石田秀範",
+    "director_en": "Hidenori Ishida",
+    "genres": [
+      "サイエンスフィクション",
+      "アクション",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "runtime": 75,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:274323": {
+    "tmdb_id": 274323,
+    "tmdb_title_jp": "あなたが好きです、大好きです。",
+    "tmdb_title_en": "I Like You, I Like You Very Much",
+    "tmdb_title_original": "あなたが好きです、大好きです。",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A tense love triangle unfolds as You struggles with his affair, questioning his identity and desires while caught between two men who change his life forever.",
+    "poster_path": "/wU4D9sHjgm0V1PssQrSLIrLL9pO.jpg",
+    "backdrop_path": "/brQhPVq2V7LcOsGP54RrL3lUUl6.jpg",
+    "release_date": "1994-04-19",
+    "director": "大木裕之",
+    "director_jp": "大木裕之",
+    "director_en": "Hiroyuki Oki",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 58,
+    "vote_average": 3.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:380438": {
+    "tmdb_id": 380438,
+    "tmdb_title_jp": "Lettre d'une inconnue",
+    "tmdb_title_en": "Letter from an Unknown Woman",
+    "tmdb_title_original": "Lettre d'une inconnue",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Vienna, in the 1930s. The attractive and famous writer Albert Rank receives the letter from a stranger. He discovers that she devoted her entire life to her boundless love. In her letter, Rose looks back on a variety of meetings with Albert: Since childhood, she is slavishly in love with him and she never got away from her throughout her life. In many encounters Rank could not recognize them, even if the shared moments had been wonderful. As an adult woman, Rose's love is too painful to go on, and she has dire consequences.",
+    "poster_path": "/cvMVIxjOzP4S0uTVR9StuY1jbYH.jpg",
+    "backdrop_path": "/36KxlQcaHZ0FiAa4a1S1xoF0CHF.jpg",
+    "release_date": "2002-12-31",
+    "director": "ジャック・ドレー",
+    "director_jp": "ジャック・ドレー",
+    "director_en": "Jacques Deray",
+    "genres": [
+      "ドラマ",
+      "テレビ映画"
+    ],
+    "genres_en": [
+      "Drama",
+      "TV Movie"
+    ],
+    "runtime": 92,
+    "vote_average": 4.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "AT",
+        "name": "Austria"
+      }
+    ]
+  },
+  "tmdb:208691": {
+    "tmdb_id": 208691,
+    "tmdb_title_jp": "The Exile",
+    "tmdb_title_en": "The Exile",
+    "tmdb_title_original": "The Exile",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "An idealistic young man is torn between a sultry Chicago nightclub owner and a Scottish South Dakotan farmgirl.",
+    "poster_path": "/edq7xxmNpar6KiYzg0PPNjCnk9u.jpg",
+    "backdrop_path": "/khfqk7oIsGwXKYfIoNrqvoApMvh.jpg",
+    "release_date": "1931-05-15",
+    "director": "Oscar Micheaux",
+    "director_jp": "Oscar Micheaux",
+    "director_en": "Oscar Micheaux",
+    "genres": [
+      "ドラマ",
+      "音楽"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music"
+    ],
+    "runtime": 74,
+    "vote_average": 4.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:47260": {
+    "tmdb_id": 47260,
+    "tmdb_title_jp": "Caught",
+    "tmdb_title_en": "Caught",
+    "tmdb_title_original": "Caught",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A middle-aged couple has a drifter enter their lives. The fish-store owners find that the mysterious young man awakens the couple in ways they didn't expect. Things get tense when the drifter begins an affair with the woman of the house.",
+    "poster_path": "/33sUPXPUqIe9YnZ80d8xzkiL2gb.jpg",
+    "backdrop_path": "/1pZJXiLnfg5rjhCErUCAXBCkhC1.jpg",
+    "release_date": "1996-01-24",
+    "director": "Robert M. Young",
+    "director_jp": "Robert M. Young",
+    "director_en": "Robert M. Young",
+    "genres": [
+      "アクション",
+      "ドラマ",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 110,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1290424": {
+    "tmdb_id": 1290424,
+    "tmdb_title_jp": "L'Inconnu de la Grande Arche",
+    "tmdb_title_en": "The Great Arch",
+    "tmdb_title_original": "L'Inconnu de la Grande Arche",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "France, 1983. The biggest architectural competition in history is launched by the new socialist president, François Mitterrand. Coveted by all the biggest international architectural firms, the open-call competition is surprisingly won by an unknown: Johan Otto von Spreckelsen, an architecture teacher from Copenhagen. Until then, the fifty-year-old Dane had built only four buildings: his home, and three small chapels.",
+    "poster_path": "/54uFg7nfNYoN81dixlwRcNk9KGS.jpg",
+    "backdrop_path": "/jCrMCnpQvCJOgEW4stUtbSBm17B.jpg",
+    "release_date": "2025-11-05",
+    "director": "Stéphane Demoustier",
+    "director_jp": "Stéphane Demoustier",
+    "director_en": "Stéphane Demoustier",
+    "genres": [
+      "ドラマ",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "History"
+    ],
+    "runtime": 104,
+    "vote_average": 7.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "DK",
+        "name": "Denmark"
+      }
+    ]
+  },
+  "tmdb:1107215": {
+    "tmdb_id": 1107215,
+    "tmdb_title_jp": "Ma mère, Dieu et Sylvie Vartan",
+    "tmdb_title_en": "Once Upon My Mother",
+    "tmdb_title_original": "Ma mère, Dieu et Sylvie Vartan",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In 1963, Esther gives birth to Roland, the youngest of a large family. Roland is born with a club foot that prevents him from standing. Against everyone's advice, she promises her son that he will walk like the others and that he will have a fabulous life. From then on, Esther will do everything in her power to keep this promise. Through decades of trials and miracles of life, this film is the story of a true, funny and moving story, that of an incredible destiny and the greatest love there is: that of a mother for her child.",
+    "poster_path": "/sIYUhbkjgedkYuiQ9MW3fzyc7Gf.jpg",
+    "backdrop_path": "/qMYb0pTEnsYsYPVD1uJIpOMumYB.jpg",
+    "release_date": "2025-03-19",
+    "director": "Ken Scott",
+    "director_jp": "Ken Scott",
+    "director_en": "Ken Scott",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 102,
+    "vote_average": 6.966,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:840873": {
+    "tmdb_id": 840873,
+    "tmdb_title_jp": "Marcel et monsieur Pagnol",
+    "tmdb_title_en": "A Magnificent Life",
+    "tmdb_title_original": "Marcel et monsieur Pagnol",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In 1955, 60-year-old Marcel Pagnol is a well-known and acclaimed playwright and filmmaker. When the editor-in-chief of ELLE magazine commissions a weekly column about Pagnol's childhood, he sees this as a great opportunity to go back to his artistic roots: writing. Realizing his memory is failing him and deeply affected by the disappointing results of his last two plays, Pagnol starts doubting his ability to pursue his work. That is until Little Marcel - the young boy he used to be - appears to him as if by magic. Together, they will explore Marcel Pagnol's incredible life and bring back to life his most cherished encounters and memories...",
+    "poster_path": "/jKYHuENFUXYDAkOQOlN7RRzMowO.jpg",
+    "backdrop_path": "/xPquMr2qgZcpV31dZl5T2Td1nBN.jpg",
+    "release_date": "2025-10-15",
+    "director": "シルヴァン・ショメ",
+    "director_jp": "シルヴァン・ショメ",
+    "director_en": "Sylvain Chomet",
+    "genres": [
+      "アニメーション",
+      "履歴",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Animation",
+      "History",
+      "Drama"
+    ],
+    "runtime": 90,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "BE",
+        "name": "Belgium"
+      },
+      {
+        "iso_3166_1": "LU",
+        "name": "Luxembourg"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:24488": {
+    "tmdb_id": 24488,
+    "tmdb_title_jp": "Demonlover",
+    "tmdb_title_en": "Demonlover",
+    "tmdb_title_original": "Demonlover",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "A French corporation goes head-to-head with an American web media company for the rights to a 3-D manga pornography studio, resulting in a power struggle that culminates in violence and espionage.",
+    "poster_path": "/k93vY0Gl67e3N8O14xCWz1a9Bfs.jpg",
+    "backdrop_path": "/iv5ZHMglzn8I9qn1phdP8xSoHKs.jpg",
+    "release_date": "2002-11-06",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ",
+      "謎",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "runtime": 121,
+    "vote_average": 5.763,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:8282": {
+    "tmdb_id": 8282,
+    "tmdb_title_jp": "L'Heure d'été",
+    "tmdb_title_en": "Summer Hours",
+    "tmdb_title_original": "L'Heure d'été",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "After the death of a septuagenarian woman, her three children deliberate over what to do with her estate.",
+    "poster_path": "/7U3PdKa6qiMSzMVZ5SnZSPSYtna.jpg",
+    "backdrop_path": "/dQoQYlnbbI08gotToAO5ZyS1v63.jpg",
+    "release_date": "2008-03-05",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 103,
+    "vote_average": 6.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:54990": {
+    "tmdb_id": 54990,
+    "tmdb_title_jp": "La leggenda del santo bevitore",
+    "tmdb_title_en": "The Legend of the Holy Drinker",
+    "tmdb_title_original": "La leggenda del santo bevitore",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "Andreas Kartak, a homeless man living under the bridges of Paris, is lent 200 francs by a stranger as long as he promises to repay it to a local church when he can afford to. Kartak is determined to pay back his debt but circumstances, and his alcoholism, forever intervene.",
+    "poster_path": "/m9ypxPu19raCyAtk3JlhncKc03.jpg",
+    "backdrop_path": "/cMDGYZVrx7CPvFmkkMFIPBLAM49.jpg",
+    "release_date": "1988-09-02",
+    "director": "Ermanno Olmi",
+    "director_jp": "Ermanno Olmi",
+    "director_en": "Ermanno Olmi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 128,
+    "vote_average": 6.543,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "tmdb:1076706": {
+    "tmdb_id": 1076706,
+    "tmdb_title_jp": "神回",
+    "tmdb_title_en": "Divine",
+    "tmdb_title_original": "神回",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This is Kamikai",
+    "poster_path": "/rFR36KbvrTp8UZ3DDWb9PPI9vwW.jpg",
+    "backdrop_path": "/dtJ9cJGrM6iFSHlsUtqnZxF1IKu.jpg",
+    "release_date": "2023-07-21",
+    "director": "中村貴一朗",
+    "director_jp": "中村貴一朗",
+    "director_en": "Kiichiro Nakamura",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 88,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:266961": {
+    "tmdb_id": 266961,
+    "tmdb_title_jp": "La Tendre Ennemie",
+    "tmdb_title_en": "The Tender Enemy",
+    "tmdb_title_original": "La Tendre Ennemie",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Line, Annette's daughter, is about to marry a man she's not in love with. At the engagement party three ghosts revisit their disastrous relationships with Annette and decide to take action to help Line.",
+    "poster_path": "/e5waAY7tOGkwyF3sIJH9AIVHE6l.jpg",
+    "backdrop_path": "/q4yHH6M2BcnUwE8DosuZCblP2a6.jpg",
+    "release_date": "1936-10-24",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "コメディ",
+      "ロマンス",
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance",
+      "Fantasy"
+    ],
+    "runtime": 69,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:251305": {
+    "tmdb_id": 251305,
+    "tmdb_title_jp": "De Mayerling à Sarajevo",
+    "tmdb_title_en": "From Mayerling to Sarajevo",
+    "tmdb_title_original": "De Mayerling à Sarajevo",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "Franz Ferdinand, heir to the throne of Austria-Hungary, is kept absent from the royal court due to his dangerous political ideas. Sent on a tour of inspections and inaugurations, he falls in love with Countess Sophie Chotek.",
+    "poster_path": "/1XHKxbnH5A04i6TXNFtOiwGVqvj.jpg",
+    "backdrop_path": "/2RNsqOFceV5fAvcZj0ondojFDM.jpg",
+    "release_date": "1940-01-27",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ロマンス",
+      "履歴",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "History",
+      "Drama"
+    ],
+    "runtime": 95,
+    "vote_average": 7.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:120972": {
+    "tmdb_id": 120972,
+    "tmdb_title_jp": "La signora di tutti",
+    "tmdb_title_en": "Everybody's Woman",
+    "tmdb_title_original": "La signora di tutti",
+    "tmdb_original_language": "it",
+    "overview": "",
+    "overview_en": "Gaby is expelled from school after a married teacher commits suicide after telling her he can't live without her. Though she has done nothing, she is punished for his act.",
+    "poster_path": "/fUPXmxDKPoE0TcRRjTanA6XucLN.jpg",
+    "backdrop_path": "/5Vx3nFVnJLUnaZ4QZfS0POSZm44.jpg",
+    "release_date": "1934-11-29",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 97,
+    "vote_average": 6.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      }
+    ]
+  },
+  "tmdb:43596": {
+    "tmdb_id": 43596,
+    "tmdb_title_jp": "Liebelei",
+    "tmdb_title_en": "Flirtation",
+    "tmdb_title_original": "Liebelei",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "Vienna in the beginning of the twentieth century. Cavalry Lieutenant Fritz Lobheimer is about to end his affair with Baroness Eggerdorff when he meets the young Christine, the daughter of an opera violinist. Baron Eggerdorff however soon hears of his past misfortune...",
+    "poster_path": "/yQyvKKKotBSnKk3ZFyhCzDzhnsy.jpg",
+    "backdrop_path": "/iKW4lNjtPuZWzLn1Q8VabiIjVkl.jpg",
+    "release_date": "1933-03-10",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 88,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      }
+    ]
+  },
+  "tmdb:415789": {
+    "tmdb_id": 415789,
+    "tmdb_title_jp": "風雲児 織田信長",
+    "tmdb_title_en": "Lucky Adventurer Nobunaga Oda",
+    "tmdb_title_original": "風雲児　織田信長",
+    "tmdb_original_language": "ja",
+    "overview": "山岡荘八の長編小説『織田信長』を「百万両五十三次」の結束信二が脚色し「いろは若衆 花駕籠峠」の河野寿一が監督した時代劇巨編。父の死から桶狭間の戦まで、織田信長の半生を描く。\r 父の葬儀に荒縄を腰に巻いた姿で現れた十六歳の織田信長は、抹香を位牌に投げつけた。世間からは狂人とののしられたが、妻の濃姫だけは信長の頬を伝う涙を見逃さなかった。濃姫の父である美濃の斉藤道三は信長に面会を要求してきたが、信長はこれを拒否し「うつけもの」の仮面をかぶり続けた。しかし最愛の家臣だった平手政秀が自害したことから、信長は一転して面会を受諾、礼装し千人の軍を率いて道三を圧倒した。しかし突然、今川義元が四万もの大軍を率いて尾張領に攻め込んできた。それに対して信長軍はわずか五千。今川軍はすでに桶狭間まで迫ってきていた。",
+    "overview_en": "Oda Nobunaga (1534–1582) was a major daimyo during the Warring State period of Japanese history. He was the second son of Oda Nobuhide, a deputy military governor with land holdings in Owari province. Nobunaga lived a life of continuous military conquest, eventually conquering a third of Japanese daimyo before his death in 1582. Telling the story of his rise to prominence as he leads an army of 4,000 men against the 40,000 troops of Lord Imagawa Yoshimoto to prevent the arrogant daimyo from crushing the Oda clan and taking control of the entire nation. From a newly restored anamorpic widescreen print, this is the ultimate warlord movie.",
+    "poster_path": "/tMW3tc80dp8xcLYwDPzKmOuJIeZ.jpg",
+    "backdrop_path": null,
+    "release_date": "1959-10-25",
+    "director": "河野寿一",
+    "director_jp": "河野寿一",
+    "director_en": "Toshikazu Kono",
+    "genres": [
+      "ドラマ",
+      "履歴",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Drama",
+      "History",
+      "Adventure"
+    ],
+    "runtime": 95,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:14553": {
+    "tmdb_id": 14553,
+    "tmdb_title_jp": "魅せられて",
+    "tmdb_title_en": "Stealing Beauty",
+    "tmdb_title_original": "Stealing Beauty",
+    "tmdb_original_language": "en",
+    "overview": "ニューヨークに住む19歳のルーシーは、自殺した母親が残した一編の詩をきっかけに、イタリアのトスカーナ地方を訪れる。母親が青春を送ったというその地で、本当の父親を捜すために。そんな彼女の可憐で無邪気な振る舞いに、男たちは次々と魅せられていく。",
+    "overview_en": "Lucy Harmon, an American teenager is arriving in the lush Tuscan countryside to be sculpted by a family friend who lives in a beautiful villa. Lucy visited there four years earlier and exchanged a kiss with an Italian boy with whom she hopes to become reacquainted.",
+    "poster_path": "/bt0TWmhjDA2VFY89HbwgkW0lA3e.jpg",
+    "backdrop_path": "/bJFapHYlJIhXpfqH8uaNLtUxHwD.jpg",
+    "release_date": "1996-03-29",
+    "director": "ベルナルド・ベルトルッチ",
+    "director_jp": "ベルナルド・ベルトルッチ",
+    "director_en": "Bernardo Bertolucci",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 116,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IT",
+        "name": "Italy"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:171927": {
+    "tmdb_id": 171927,
+    "tmdb_title_jp": "Komedie om Geld",
+    "tmdb_title_en": "The Trouble with Money",
+    "tmdb_title_original": "Komedie om Geld",
+    "tmdb_original_language": "nl",
+    "overview": "",
+    "overview_en": "Respected banker Karel Brand is seen as a marketable emblem of probity. When he loses 350,000 guilders, his reputation is tarnished – without the respect attached to it, he loses his job. Brand becomes unemployable, and his creditors suddenly start calling in their debts. His young daughter Willy suffers the same fate.",
+    "poster_path": "/ulrW4fwtMsnVX9w17JqSJ9MPFZk.jpg",
+    "backdrop_path": "/nQgUwb56FCc9m5UwVtT5BKbinpA.jpg",
+    "release_date": "1936-10-29",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 89,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "NL",
+        "name": "Netherlands"
+      }
+    ]
+  },
+  "tmdb:166977": {
+    "tmdb_id": 166977,
+    "tmdb_title_jp": "Lachende Erben",
+    "tmdb_title_en": "Laughing Heirs",
+    "tmdb_title_original": "Lachende Erben",
+    "tmdb_original_language": "de",
+    "overview": "",
+    "overview_en": "After the death of his uncle, the owner of the Rhine based Bockelmann Sparkling Wine, Peter turns up for the reading of the will. Justus Bockelmann, a producer of mineral water, is confident he will inherit the business, but ‘for reasons of moral rectitude’ he has no intention of running an ‘alcoholic business’. The opening of the will comes as a surprise to all the potential heirs.",
+    "poster_path": "/phiKGjZCjAIVJTD9xDpjJBlhBXV.jpg",
+    "backdrop_path": "/81ZqsUyF5I4e4bYXNZbpt9PTrfO.jpg",
+    "release_date": "1933-03-06",
+    "director": "Max Ophüls",
+    "director_jp": "Max Ophüls",
+    "director_en": "Max Ophüls",
+    "genres": [
+      "コメディ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 76,
+    "vote_average": 5.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
       }
     ]
   }

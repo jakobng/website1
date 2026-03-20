@@ -8808,5 +8808,394 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "あなたがすきです、だいすきです": {
+    "english_title": "I Like You, I Like You Very Much",
+    "release_year": 1994,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "あなたがすきです、だいすきです",
+    "director": "Hiroyuki Oki",
+    "country": "Japan"
+  },
+  "歴史は女で作られる": {
+    "english_title": "Lola Montès",
+    "release_year": 1955,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Lola Montès",
+    "director": "Max Ophüls",
+    "country": "France, West Germany",
+    "failed": true
+  },
+  "忘れじの面影（1948）": {
+    "english_title": "Letter from an Unknown Woman",
+    "release_year": 1948,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Letter from an Unknown Woman",
+    "director": "Max Ophüls",
+    "country": "USA"
+  },
+  "明日はない": {
+    "english_title": "No Tomorrow",
+    "release_year": 1953,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "明日はない",
+    "director": "Kenji Misumi",
+    "country": "Japan",
+    "failed": true
+  },
+  "風雲児（1947）": {
+    "english_title": "The Exile",
+    "release_year": 1947,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "The Exile",
+    "director": "Max Ophüls",
+    "country": "USA"
+  },
+  "魅せられて（1949）": {
+    "english_title": "Caught",
+    "release_year": 1949,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Caught",
+    "director": "Max Ophüls",
+    "country": "USA"
+  },
+  "ヨシワラ": {
+    "english_title": "Yoshiwara",
+    "release_year": 1937,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Yoshiwara",
+    "director": "Max Ophüls",
+    "country": "France",
+    "failed": true
+  },
+  "輪舞（1950）": {
+    "english_title": "Rinbu",
+    "release_year": 1950,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "輪舞",
+    "director": "Kiyoshi Saeki",
+    "country": "Japan",
+    "failed": true
+  },
+  "新凱旋門物語": {
+    "english_title": "The Great Arch",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "L'Inconnu de la Grande Arche",
+    "director": "Stéphane Demoustier",
+    "country": "France"
+  },
+  "ママと神さまとシルヴィ・バルタン": {
+    "english_title": "Once Upon My Mother",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Ma mère, Dieu et Sylvie Vartan",
+    "director": "Ken Scott",
+    "country": "France, Canada"
+  },
+  "Marcel et Monsieur Pagnol（原題）": {
+    "english_title": "A Magnificent Life",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Marcel et Monsieur Pagnol",
+    "director": "Sylvain Chomet",
+    "country": "France"
+  },
+  "GEMNIBUS vol.2": {
+    "english_title": "GEMNIBUS vol.2",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "GEMNIBUS vol.2",
+    "director": "Sara Masuda, Satsuki Okawa, Riko Murakami, Masaki Nishiyama, Shunta Seki, Asuka Dokai",
+    "country": "Japan",
+    "failed": true
+  },
+  "レオ　ブラッディ・スウィート": {
+    "english_title": "Leo",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Leo",
+    "director": "Lokesh Kanagaraj",
+    "country": "India",
+    "failed": true
+  },
+  "ゲキ×シネ「紅鬼物語」": {
+    "english_title": "Akaoni Monogatari",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "ゲキ×シネ「紅鬼物語」",
+    "director": "Hidenori Inoue",
+    "country": "Japan",
+    "failed": true
+  },
+  "100,000年後の安全": {
+    "english_title": "Into Eternity",
+    "release_year": 2010,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Into Eternity",
+    "director": "Michael Madsen",
+    "country": "Denmark",
+    "failed": true
+  },
+  "僕はボデイガード": {
+    "english_title": "I'm a Bodyguard",
+    "release_year": 1964,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "僕はボデイガード",
+    "director": "Seiji Hisamatsu",
+    "country": "Japan"
+  },
+  "わかれ（1959）": {
+    "english_title": "Farewell",
+    "release_year": 1959,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "わかれ",
+    "director": "Masao Nozaki",
+    "country": "Japan"
+  },
+  "デーモンラヴァー": {
+    "english_title": "Demonlover",
+    "release_year": 2002,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Demonlover",
+    "director": "Olivier Assayas",
+    "country": "France"
+  },
+  "夏時間の庭": {
+    "english_title": "Summer Hours",
+    "release_year": 2008,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "L'Heure d'été",
+    "director": "Olivier Assayas",
+    "country": "France"
+  },
+  "ゾンビ 1/2 Right Side of the Living Dead": {
+    "english_title": "Zombie 1/2: Right Side of the Living Dead",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "ゾンビ 1/2 〜Right Side of the Living Dead〜",
+    "director": "Erika Ota",
+    "country": "Japan",
+    "failed": true
+  },
+  "氷の微笑 4K 30周年記念レストア版": {
+    "english_title": "Basic Instinct",
+    "release_year": 1992,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Basic Instinct",
+    "director": "Paul Verhoeven",
+    "country": "United States"
+  },
+  "聖なる酔っぱらいの伝説": {
+    "english_title": "The Legend of the Holy Drinker",
+    "release_year": 1988,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La leggenda del santo bevitore",
+    "director": "Ermanno Olmi",
+    "country": "Italy"
+  },
+  "バーフバリ エピック4K 前半": {
+    "english_title": "Baahubali: The Epic",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Baahubali: The Epic",
+    "director": "S. S. Rajamouli",
+    "country": "India"
+  },
+  "バーフバリ エピック4K 後半": {
+    "english_title": "Baahubali: The Epic",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Baahubali: The Epic",
+    "director": "S.S. Rajamouli",
+    "country": "India"
+  },
+  "【TBS】War Bride2": {
+    "english_title": "War Bride 2: Nao and the 4 War Brides",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "War Bride 2 奈緒と4人の戦争花嫁",
+    "director": "Ryutaro Kawashima",
+    "country": "Japan",
+    "failed": true
+  },
+  "《2026 NCT DREAM TOUR FINALE LIVE VIEWING》": {
+    "english_title": "2026 NCT DREAM TOUR 'THE DREAM SHOW 4 : FUTURE THE DREAM' FINALE in CINEMAS",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "2026 NCT DREAM TOUR FINALE LIVE VIEWING",
+    "director": "Kyung Chan Kim, Myeong Seok Kim, So Young Park",
+    "country": "South Korea",
+    "failed": true
+  },
+  "《GEMNIBUS vol.2》": {
+    "english_title": "GEMNIBUS vol.2",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "GEMNIBUS vol.2",
+    "director": "Sara Masuda, Satsuki Okawa, Riko Murakami, Masaki Nishiyama, Shunta Seki, Asuka Dokai",
+    "country": "Japan",
+    "failed": true
+  },
+  "韓国ミュージカル ON SCREEN／モーツァルト！（字幕）": {
+    "english_title": "Korean Musical ON SCREEN: Mozart!",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "뮤지컬 모차르트!",
+    "director": "Adrian Osmond",
+    "country": "South Korea",
+    "failed": true
+  },
+  "ANIMAL（字幕）": {
+    "english_title": "Animal",
+    "release_year": 2023,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Animal",
+    "director": "Sandeep Reddy Vanga",
+    "country": "India"
+  },
+  "おしり前マン～復活のおしり前帝国～": {
+    "english_title": "Oshiri-Front Man -The Movie",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "おしり前マン～復活のおしり前帝国～",
+    "director": "Takashi Taniguchi",
+    "country": "Japan",
+    "failed": true
+  },
+  "《山田広野 活弁リサイタル》": {
+    "english_title": "Hirono Yamada's Benshi Recital",
+    "release_year": 1999,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "山田広野 活弁リサイタル",
+    "director": "Hirono Yamada",
+    "country": "Japan",
+    "failed": true
+  },
+  "ディヴィーヌ": {
+    "english_title": "Divine",
+    "release_year": 2023,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "神回",
+    "director": "Kiichiro Nakamura",
+    "country": "Japan"
+  },
+  "優しい敵": {
+    "english_title": "The Tender Enemy",
+    "release_year": 1936,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La Tendre Ennemie",
+    "director": "Max Ophüls",
+    "country": "France"
+  },
+  "マイエルリンクからサラエヴォへ": {
+    "english_title": "From Mayerling to Sarajevo",
+    "release_year": 1940,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "De Mayerling à Sarajevo",
+    "director": "Max Ophüls",
+    "country": "France"
+  },
+  "永遠のガビー": {
+    "english_title": "Everybody's Woman",
+    "release_year": 1934,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "La signora di tutti",
+    "director": "Max Ophüls",
+    "country": "Italy"
+  },
+  "恋愛三昧": {
+    "english_title": "Liebelei",
+    "release_year": 1933,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Liebelei",
+    "director": "Max Ophüls",
+    "country": "Germany"
+  },
+  "風雲児(95分）": {
+    "english_title": "Fūunji Oda Nobunaga",
+    "release_year": 1959,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "風雲児 織田信長",
+    "director": "Toshikazu Kono",
+    "country": "Japan"
+  },
+  "魅せられて": {
+    "english_title": "Stealing Beauty",
+    "release_year": 1996,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Stealing Beauty",
+    "director": "Bernardo Bertolucci",
+    "country": "Italy, France, United Kingdom"
+  },
+  "金去りぬ": {
+    "english_title": "The Trouble with Money",
+    "release_year": 1936,
+    "confidence": 0.98,
+    "notes": "",
+    "original_title": "Komedie om geld",
+    "director": "Max Ophüls",
+    "country": "Netherlands"
+  },
+  "笑う相続人": {
+    "english_title": "Laughing Heirs",
+    "release_year": 1933,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Lachende Erben",
+    "director": "Max Ophüls",
+    "country": "Germany"
+  },
+  "365DAYs＋2彷徨う大人たち": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ソフィア・コッポラ 儚く失われゆく永遠の夜": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
