@@ -2640,9 +2640,54 @@
     ],
     "vote_average": 8.2
   },
-  "OBSCURE FILM PRESENTS: A SURPRISE FILM FROM LIZZIE BORDEN": null,
-  "INTERFERENCE FILMS PRESENTS: THE EXTERMINATOR &amp; COMBAT SHOCK": null,
-  "Solve-Along-A-Murder-She-Wrote: “The Sins of Castle Cove”": null,
+  "The People's Joker": {
+    "tmdb_id": 808482,
+    "tmdb_title": "The People's Joker",
+    "tmdb_original_title": "The People's Joker",
+    "overview": "An aspiring clown grappling with her gender identity combats a fascistic caped crusader.",
+    "poster_path": "/80yak1h7YcNpMOsfSbThfwKYKK4.jpg",
+    "backdrop_path": "/4kOCUpStJiTqd9QvdYwgqVrvpBh.jpg",
+    "release_date": "2024-04-05",
+    "director": "Vera Drew",
+    "runtime": 92,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "vote_average": 6.6
+  },
+  "Dead Man’s Wire": {
+    "tmdb_id": 1263012,
+    "tmdb_title": "Dead Man's Wire",
+    "tmdb_original_title": "Dead Man's Wire",
+    "overview": "In 1977, former real estate developer Tony Kiritsis puts a dead man's switch on himself and the mortgage banker who did him wrong, demanding $5 million and a personal apology.",
+    "poster_path": "/hjre9SuECdBsuZ6KtKdFsnK2iRm.jpg",
+    "backdrop_path": "/ulw8SrKbDeDrsSVNKPb5211AseI.jpg",
+    "release_date": "2026-01-09",
+    "director": "Gus Van Sant",
+    "runtime": 105,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "vote_average": 6.522
+  },
+  "La Grazia": {
+    "tmdb_id": 1397364,
+    "tmdb_title": "La Grazia",
+    "tmdb_original_title": "La grazia",
+    "overview": "As his tenure as President of Italy nears its end, Mariano De Santis faces wrenching decisions-both political and deeply personal. Amid these moral quandaries, he must confront his own conscience and seek guidance from those closest to him, including his confidante and daughter, Dorotea.",
+    "poster_path": "/u5RgunQiA4hvDfTeWO9pS0lm4K4.jpg",
+    "backdrop_path": "/baIjN7xPyw2In1CuHACTgzcsF20.jpg",
+    "release_date": "2025-12-05",
+    "director": "Paolo Sorrentino",
+    "runtime": 133,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.4
+  },
   "Make A Scene Presents: Victor/Victoria": {
     "tmdb_id": 12614,
     "tmdb_title": "Victor/Victoria",
@@ -2679,34 +2724,103 @@
   },
   "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
   "Jeanne Dielman, 23 Commerce Quay, 1080": null,
-  "The People's Joker": {
-    "tmdb_id": 808482,
-    "tmdb_title": "The People's Joker",
-    "tmdb_original_title": "The People's Joker",
-    "overview": "An aspiring clown grappling with her gender identity combats a fascistic caped crusader.",
-    "poster_path": "/80yak1h7YcNpMOsfSbThfwKYKK4.jpg",
-    "backdrop_path": "/4kOCUpStJiTqd9QvdYwgqVrvpBh.jpg",
-    "release_date": "2024-04-05",
-    "director": "Vera Drew",
-    "runtime": 92,
+  "CURSE: Häxan With Live Score By Nick Carlisle": null,
+  "The Magic Faraway Tree (2026)": {
+    "tmdb_id": 1140521,
+    "tmdb_title": "The Magic Faraway Tree",
+    "tmdb_original_title": "The Magic Faraway Tree",
+    "overview": "Soon after the Thompson family’s arrival in the countryside, the three children – Joe, Beth, and Fran – discover a magical tree and its extraordinary and eccentric residents, including Moonface, Silky, Dame Washalot, and Saucepan Man. At the top of the tree, they're transported to spectacular and fantastical lands and, through the joys and challenges of their adventures, the Thompsons learn to reconnect and value each other for the first time in years.",
+    "poster_path": "/mtS8mW6aLuartATut8TrD39zTIG.jpg",
+    "backdrop_path": "/x4g6y3KPbX0goeI4d3AyoQkjN3R.jpg",
+    "release_date": "2026-03-26",
+    "director": "Ben Gregor",
+    "runtime": 110,
+    "genres": [
+      "Family",
+      "Fantasy",
+      "Adventure"
+    ],
+    "vote_average": 0.0
+  },
+  "Throwback: Moulin Rouge! (25th Anniversary)": {
+    "tmdb_id": 824,
+    "tmdb_title": "Moulin Rouge!",
+    "tmdb_original_title": "Moulin Rouge!",
+    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
+    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
+    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
+    "release_date": "2001-05-18",
+    "director": "Baz Luhrmann",
+    "runtime": 128,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 7.534
+  },
+  "The Magic Faraway Tree": {
+    "tmdb_id": 1140521,
+    "tmdb_title": "The Magic Faraway Tree",
+    "tmdb_original_title": "The Magic Faraway Tree",
+    "overview": "Soon after the Thompson family’s arrival in the countryside, the three children – Joe, Beth, and Fran – discover a magical tree and its extraordinary and eccentric residents, including Moonface, Silky, Dame Washalot, and Saucepan Man. At the top of the tree, they're transported to spectacular and fantastical lands and, through the joys and challenges of their adventures, the Thompsons learn to reconnect and value each other for the first time in years.",
+    "poster_path": "/mtS8mW6aLuartATut8TrD39zTIG.jpg",
+    "backdrop_path": "/x4g6y3KPbX0goeI4d3AyoQkjN3R.jpg",
+    "release_date": "2026-03-26",
+    "director": "Ben Gregor",
+    "runtime": 110,
+    "genres": [
+      "Family",
+      "Fantasy",
+      "Adventure"
+    ],
+    "vote_average": 0.0
+  },
+  "Splitsville": {
+    "tmdb_id": 1337562,
+    "tmdb_title": "Splitsville",
+    "tmdb_original_title": "Splitsville",
+    "overview": "After Ashley asks for a divorce, good-natured Carey runs to his friends, Julie and Paul, for support. He’s shocked to discover that the secret to their happiness is an open marriage, that is until Carey crosses the line and throws all of their relationships into chaos.",
+    "poster_path": "/gxCv6kUdywxYzIXX6xYcmX5APUV.jpg",
+    "backdrop_path": "/AbaRJXNmyLjG4tY48k2fhNNmuW4.jpg",
+    "release_date": "2025-08-21",
+    "director": "Michael Angelo Covino",
+    "runtime": 105,
     "genres": [
       "Comedy",
-      "Drama",
-      "Fantasy"
+      "Romance"
     ],
-    "vote_average": 6.6
+    "vote_average": 6.308
   },
-  "The Straight Story - 4K Restoration (PG)": {
-    "tmdb_id": 404,
-    "tmdb_title": "The Straight Story",
-    "tmdb_original_title": "The Straight Story",
-    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
-    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
-    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
-    "release_date": "1999-10-15",
-    "director": "David Lynch",
-    "runtime": 112,
+  "Throwback: Romeo + Juliet (30th Anniversary)": {
+    "tmdb_id": 454,
+    "tmdb_title": "Romeo + Juliet",
+    "tmdb_original_title": "Romeo + Juliet",
+    "overview": "In director Baz Luhrmann's contemporary take on William Shakespeare's classic tragedy, the Montagues and Capulets have moved their ongoing feud to the sweltering suburb of Verona Beach, where Romeo and Juliet fall in love and secretly wed. Though the film is visually modern, the bard's dialogue remains.",
+    "poster_path": "/eLf4jclPijOqfEp6bDAmezRFxk5.jpg",
+    "backdrop_path": "/m0miV65ZZIp13TNHJSRUF6vmCos.jpg",
+    "release_date": "1996-11-01",
+    "director": "Baz Luhrmann",
+    "runtime": 120,
     "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 6.783
+  },
+  "Beyond: Wasteman": {
+    "tmdb_id": 1307373,
+    "tmdb_title": "Wasteman",
+    "tmdb_original_title": "Wasteman",
+    "overview": "Taylor's hopes for a fresh start post-parole are jeopardised by cellmate Dee's arrival. As Dee takes Taylor under his wing, a vicious attack tests their bond, forcing Taylor to choose between protecting Dee and his own chances at freedom.",
+    "poster_path": "/zWnh25eaz68JEfHim07dmgb2IJL.jpg",
+    "backdrop_path": "/hQyZn7t4z3PeW161xKLj4u5lHa3.jpg",
+    "release_date": "2026-02-20",
+    "director": "Cal McMau",
+    "runtime": 90,
+    "genres": [
+      "Thriller",
+      "Crime",
       "Drama"
     ],
     "vote_average": 7.7
@@ -2728,38 +2842,22 @@
       "Family",
       "Science Fiction"
     ],
-    "vote_average": 7.467
+    "vote_average": 7.5
   },
-  "Dead Man’s Wire": {
-    "tmdb_id": 1263012,
-    "tmdb_title": "Dead Man's Wire",
-    "tmdb_original_title": "Dead Man's Wire",
-    "overview": "In 1977, former real estate developer Tony Kiritsis puts a dead man's switch on himself and the mortgage banker who did him wrong, demanding $5 million and a personal apology.",
-    "poster_path": "/hjre9SuECdBsuZ6KtKdFsnK2iRm.jpg",
-    "backdrop_path": "/ulw8SrKbDeDrsSVNKPb5211AseI.jpg",
-    "release_date": "2026-01-09",
-    "director": "Gus Van Sant",
-    "runtime": 105,
-    "genres": [
-      "Crime",
-      "Drama"
-    ],
-    "vote_average": 6.522
-  },
-  "La Grazia": {
-    "tmdb_id": 1397364,
-    "tmdb_title": "La Grazia",
-    "tmdb_original_title": "La grazia",
-    "overview": "As his tenure as President of Italy nears its end, Mariano De Santis faces wrenching decisions-both political and deeply personal. Amid these moral quandaries, he must confront his own conscience and seek guidance from those closest to him, including his confidante and daughter, Dorotea.",
-    "poster_path": "/u5RgunQiA4hvDfTeWO9pS0lm4K4.jpg",
-    "backdrop_path": "/baIjN7xPyw2In1CuHACTgzcsF20.jpg",
-    "release_date": "2025-12-05",
-    "director": "Paolo Sorrentino",
-    "runtime": 133,
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
     "genres": [
       "Drama"
     ],
-    "vote_average": 7.4
+    "vote_average": 7.74
   },
   "Arco (PG) [Subtitled]": {
     "tmdb_id": 804370,
@@ -2778,44 +2876,43 @@
       "Family",
       "Science Fiction"
     ],
-    "vote_average": 7.467
+    "vote_average": 7.5
   },
   "Guardian Documentaries present: Legacies of Enslavement": null,
-  "Throwback: Moulin Rouge! (25th Anniversary)": {
-    "tmdb_id": 824,
-    "tmdb_title": "Moulin Rouge!",
-    "tmdb_original_title": "Moulin Rouge!",
-    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
-    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
-    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
-    "release_date": "2001-05-18",
-    "director": "Baz Luhrmann",
-    "runtime": 128,
+  "Baby & Carer/ The Straight Story – 4K Restoration (PG)": {
+    "tmdb_id": 751496,
+    "tmdb_title": "Baby",
+    "tmdb_original_title": "Baby",
+    "overview": "A young drug addict who has lost touch with her rich family hits rock bottom when she sells her new-born baby to child traffickers. She soon regrets her decision and finds the courage and strength to get him back. To do so, she must follow a trail into the woods and find an eerie house where the old lady she met, her albino servant and a girl with a strange gait, all live together. Nothing could have prepared her for the horror she is about to discover.",
+    "poster_path": "/ala49VxcJmyDdNOCNg9PWfrxTWu.jpg",
+    "backdrop_path": "/yx045ADkPwsYEmW4cB7G7r84SVQ.jpg",
+    "release_date": "2020-12-18",
+    "director": "Juanma Bajo Ulloa",
+    "runtime": 106,
     "genres": [
-      "Drama",
-      "Romance",
-      "Music"
+      "Thriller",
+      "Horror"
     ],
-    "vote_average": 7.534
+    "vote_average": 5.266
   },
-  "Throwback: Romeo + Juliet (30th Anniversary)": {
-    "tmdb_id": 454,
-    "tmdb_title": "Romeo + Juliet",
-    "tmdb_original_title": "Romeo + Juliet",
-    "overview": "In director Baz Luhrmann's contemporary take on William Shakespeare's classic tragedy, the Montagues and Capulets have moved their ongoing feud to the sweltering suburb of Verona Beach, where Romeo and Juliet fall in love and secretly wed. Though the film is visually modern, the bard's dialogue remains.",
-    "poster_path": "/eLf4jclPijOqfEp6bDAmezRFxk5.jpg",
-    "backdrop_path": "/m0miV65ZZIp13TNHJSRUF6vmCos.jpg",
-    "release_date": "1996-11-01",
-    "director": "Baz Luhrmann",
-    "runtime": 120,
+  "BFI Flare presents: Pink Narcissus": {
+    "tmdb_id": 42497,
+    "tmdb_title": "Pink Narcissus",
+    "tmdb_original_title": "Pink Narcissus",
+    "overview": "An outrageous erotic poem focusing on the daydreams of a beautiful boy prostitute who, from the seclusion of his ultra-kitsch apartment, conceives a series of interlinked narcissistic fantasies populated by matadors, dancing boys, slaves, and leather-clad bikers.",
+    "poster_path": "/kaZiiGE6820KyFF9XkzPB9Rx9qn.jpg",
+    "backdrop_path": "/jDgaKZG5KfEMKYmxt6G3mpKBfo6.jpg",
+    "release_date": "1971-05-24",
+    "director": "James Bidgood",
+    "runtime": 69,
     "genres": [
-      "Drama",
-      "Romance"
+      "Fantasy"
     ],
-    "vote_average": 6.8
+    "vote_average": 6.147
   },
   "Weekly Arthouse Screening": null,
   "Exhibition On Screen: Turner & Constable": null,
+  "The Royal Opera: The Magic Flute": null,
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
     "tmdb_title": "First Steps",
@@ -2833,7 +2930,6 @@
   },
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
-  "The Royal Opera: The Magic Flute": null,
   "National Theatre Live: All My Sons": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
