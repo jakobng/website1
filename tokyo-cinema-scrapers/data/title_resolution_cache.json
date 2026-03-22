@@ -9197,5 +9197,109 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "辛抱 ノーカット完全版": {
+    "english_title": "A Normal Life: Chronicle of a Sumo Wrestler",
+    "release_year": 2009,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Une vie normale. Chronique d'un jeune sumo.",
+    "director": "Jill Coulon",
+    "country": "France"
+  },
+  "3/28(土)、29(日)【特別興行】映画『TRUE KYOHEI SAKAGUCHI SHOW 坂口恭平生活』": {
+    "english_title": "TRUE KYOHEI SAKAGUCHI SHOW",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "TRUE KYOHEI SAKAGUCHI SHOW 坂口恭平生活",
+    "director": "Yuki Komiya",
+    "country": "Japan",
+    "failed": true
+  },
+  "鍵から抜け出した女": {
+    "english_title": "The Woman Who Escaped from the Key",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "鍵から抜け出した女",
+    "director": "Takumi Takashina",
+    "country": "Japan",
+    "failed": true
+  },
+  "さらば、わが愛／覇王別姫（特別企画）": {
+    "english_title": "Farewell My Concubine",
+    "release_year": 1993,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "覇王別姫",
+    "director": "Chen Kaige",
+    "country": "China"
+  },
+  "Double Role ダブルロール": {
+    "english_title": "Double Role",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Double Role ダブルロール",
+    "director": "Kaoru Kawanishi",
+    "country": "Japan"
+  },
+  "ナタ 魔童の大暴れ【日本語吹替え版】": {
+    "english_title": "Ne Zha 2",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "哪吒之魔童闹海",
+    "director": "Jiaozi",
+    "country": "China"
+  },
+  "『めぐる』×『エイン』※2作品同時上映": {
+    "english_title": "Meguru / Ein",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "『めぐる』×『エイン』",
+    "director": "Maung Thein Dan",
+    "country": "Japan",
+    "failed": true
+  },
+  "SHUVUULAKHUI ～ハヤブサと男": {
+    "english_title": "SHUVUULAKHUI",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "SHUVUULAKHUI ～ハヤブサと男",
+    "director": "Enkhbayar Baatar",
+    "country": "Mongolia",
+    "failed": true
+  },
+  "トニー滝谷 ４Ｋリマスター版": {
+    "english_title": "Tony Takitani",
+    "release_year": 2004,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "トニー滝谷",
+    "director": "Jun Ichikawa",
+    "country": "Japan"
+  },
+  "Ryuichi Sakamoto | Trio Tour 2012": {
+    "english_title": "Ryuichi Sakamoto | Trio Tour 2012",
+    "release_year": 2015,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Ryuichi Sakamoto | Trio Tour 2012",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "『トニー滝谷 ４Ｋリマスター版』トークイベント付き上映": {
+    "english_title": "Tony Takitani",
+    "release_year": 2004,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "トニー滝谷",
+    "director": "Jun Ichikawa",
+    "country": "Japan"
   }
 }

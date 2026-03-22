@@ -9431,7 +9431,7 @@
       "Drama"
     ],
     "runtime": 172,
-    "vote_average": 7.92,
+    "vote_average": 7.898,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -87835,6 +87835,564 @@
       {
         "iso_3166_1": "DE",
         "name": "Germany"
+      }
+    ]
+  },
+  "やがて海になる": {
+    "tmdb_id": 1546082,
+    "tmdb_title_jp": "やがて海になる",
+    "tmdb_title_en": "Becoming the Sea",
+    "tmdb_title_original": "やがて海になる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Shuji was born on Etajima, an island in the Seto Inland Sea in the western part of Hiroshima Prefecture, and has never left the island. He has always felt responsible for his father's sudden death in the family farm, and has spent his days living at home with his mother, feeling depressed. One day, he learns on TV that his childhood friend Kazuya, who is working as a film director in Tokyo, is making a film set in his hometown of Etajima.  Meanwhile, Yukie, whom they had liked in high school, is having an affair with a man who has a wife and child.  Amidst the three people's mixed feelings, the shooting of the movie Kazuya is directing begins.",
+    "poster_path": "/yltezW9Uu7YASbNoc9S7nanteMP.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-29",
+    "director": "沖正人",
+    "director_jp": "沖正人",
+    "director_en": "沖正人",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1546082": {
+    "tmdb_id": 1546082,
+    "tmdb_title_jp": "やがて海になる",
+    "tmdb_title_en": "Becoming the Sea",
+    "tmdb_title_original": "やがて海になる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Shuji was born on Etajima, an island in the Seto Inland Sea in the western part of Hiroshima Prefecture, and has never left the island. He has always felt responsible for his father's sudden death in the family farm, and has spent his days living at home with his mother, feeling depressed. One day, he learns on TV that his childhood friend Kazuya, who is working as a film director in Tokyo, is making a film set in his hometown of Etajima.  Meanwhile, Yukie, whom they had liked in high school, is having an affair with a man who has a wife and child.  Amidst the three people's mixed feelings, the shooting of the movie Kazuya is directing begins.",
+    "poster_path": "/yltezW9Uu7YASbNoc9S7nanteMP.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-29",
+    "director": "沖正人",
+    "director_jp": "沖正人",
+    "director_en": "沖正人",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 90,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "青春の殺人者": {
+    "tmdb_id": 96754,
+    "tmdb_title_jp": "青春の殺人者",
+    "tmdb_title_en": "The Youth Killer",
+    "tmdb_title_original": "青春の殺人者",
+    "tmdb_original_language": "ja",
+    "overview": "厳格な両親のもと、溺愛されて育った22歳の青年、斉木順。親に与えられたスナックの経営を始めるが、ある日、両親にスナックで手伝いをしている幼なじみのケイ子と別れるよう迫られる。口論の末、父親を殺してしまい、さらには行き違いから母親までも刺し殺してしまう…。",
+    "overview_en": "Though his parents help him run the family business, Jun still feels persecuted by their love; when they bar him from meeting with his girlfriend, tensions increase.",
+    "poster_path": "/s4EHzVF0rpoVotpmzLpTNp8Hh3g.jpg",
+    "backdrop_path": "/gY8L3mdhUTvygAlFJRnPTt9EPUT.jpg",
+    "release_date": "1976-10-23",
+    "director": "長谷川和彦",
+    "director_jp": "長谷川和彦",
+    "director_en": "Kazuhiko Hasegawa",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 121,
+    "vote_average": 6.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:96754": {
+    "tmdb_id": 96754,
+    "tmdb_title_jp": "青春の殺人者",
+    "tmdb_title_en": "The Youth Killer",
+    "tmdb_title_original": "青春の殺人者",
+    "tmdb_original_language": "ja",
+    "overview": "厳格な両親のもと、溺愛されて育った22歳の青年、斉木順。親に与えられたスナックの経営を始めるが、ある日、両親にスナックで手伝いをしている幼なじみのケイ子と別れるよう迫られる。口論の末、父親を殺してしまい、さらには行き違いから母親までも刺し殺してしまう…。",
+    "overview_en": "Though his parents help him run the family business, Jun still feels persecuted by their love; when they bar him from meeting with his girlfriend, tensions increase.",
+    "poster_path": "/s4EHzVF0rpoVotpmzLpTNp8Hh3g.jpg",
+    "backdrop_path": "/gY8L3mdhUTvygAlFJRnPTt9EPUT.jpg",
+    "release_date": "1976-10-23",
+    "director": "長谷川和彦",
+    "director_jp": "長谷川和彦",
+    "director_en": "Kazuhiko Hasegawa",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 121,
+    "vote_average": 6.333,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "辛抱 ノーカット完全版": {
+    "tmdb_id": 176402,
+    "tmdb_title_jp": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_title_en": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_title_original": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "The diary of Takuya Ogushi, a 18 years old Japanese, who begins his new life as a sumo wrestler.",
+    "poster_path": "/Ap51UYs5eNvqKjVIR6GnRohKtu7.jpg",
+    "backdrop_path": null,
+    "release_date": "2013-03-13",
+    "director": "Jill Coulon",
+    "director_jp": "Jill Coulon",
+    "director_en": "Jill Coulon",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "3/28(土)、29(日)【特別興行】映画『TRUE KYOHEI SAKAGUCHI SHOW 坂口恭平生活』": null,
+  "お姐ちゃん三代記": {
+    "tmdb_id": 1639508,
+    "tmdb_title_jp": "お姐ちゃん三代記",
+    "tmdb_title_en": "Three Dolls, Three Generations",
+    "tmdb_title_original": "お姐ちゃん三代記",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Punch, Pinch, and Sentchi share a dorm room while working as caddies at a country club. Their easygoing routine is disrupted by clashes with wealthy patrons and a late-night misunderstanding that draws them into a rivalry with another trio of women, just as new ambitions and a promising young man enter the picture.",
+    "poster_path": "/sFWdsfPHEHhh3rCKaDlXQWcvto2.jpg",
+    "backdrop_path": null,
+    "release_date": "1963-12-08",
+    "director": "筧正典",
+    "director_jp": "筧正典",
+    "director_en": "Masanori Kakei",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1639508": {
+    "tmdb_id": 1639508,
+    "tmdb_title_jp": "お姐ちゃん三代記",
+    "tmdb_title_en": "Three Dolls, Three Generations",
+    "tmdb_title_original": "お姐ちゃん三代記",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Punch, Pinch, and Sentchi share a dorm room while working as caddies at a country club. Their easygoing routine is disrupted by clashes with wealthy patrons and a late-night misunderstanding that draws them into a rivalry with another trio of women, just as new ambitions and a promising young man enter the picture.",
+    "poster_path": "/sFWdsfPHEHhh3rCKaDlXQWcvto2.jpg",
+    "backdrop_path": null,
+    "release_date": "1963-12-08",
+    "director": "筧正典",
+    "director_jp": "筧正典",
+    "director_en": "Masanori Kakei",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "からたち日記": {
+    "tmdb_id": 572677,
+    "tmdb_title_jp": "からたち日記",
+    "tmdb_title_en": "Diary of Forsaken Love",
+    "tmdb_title_original": "からたち日記",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Follows the life of Tsuru, the poor daughter of farmers in Shinshu, Japan.",
+    "poster_path": "/hZYs0mSzepk4tcsvPUdRe8Ah2g5.jpg",
+    "backdrop_path": null,
+    "release_date": "1959-04-14",
+    "director": "五所平之助",
+    "director_jp": "五所平之助",
+    "director_en": "Heinosuke Gosho",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 119,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:572677": {
+    "tmdb_id": 572677,
+    "tmdb_title_jp": "からたち日記",
+    "tmdb_title_en": "Diary of Forsaken Love",
+    "tmdb_title_original": "からたち日記",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Follows the life of Tsuru, the poor daughter of farmers in Shinshu, Japan.",
+    "poster_path": "/hZYs0mSzepk4tcsvPUdRe8Ah2g5.jpg",
+    "backdrop_path": null,
+    "release_date": "1959-04-14",
+    "director": "五所平之助",
+    "director_jp": "五所平之助",
+    "director_en": "Heinosuke Gosho",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 119,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "斑女": {
+    "tmdb_id": 1004054,
+    "tmdb_title_jp": "斑女",
+    "tmdb_title_en": "Women of Tokyo",
+    "tmdb_title_original": "斑女",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/8lrQmT6ClAAaUxbipZWj8Ul9rlu.jpg",
+    "backdrop_path": null,
+    "release_date": "1961-03-01",
+    "director": "中村登",
+    "director_jp": "中村登",
+    "director_en": "Noboru Nakamura",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 87,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1004054": {
+    "tmdb_id": 1004054,
+    "tmdb_title_jp": "斑女",
+    "tmdb_title_en": "Women of Tokyo",
+    "tmdb_title_original": "斑女",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/8lrQmT6ClAAaUxbipZWj8Ul9rlu.jpg",
+    "backdrop_path": null,
+    "release_date": "1961-03-01",
+    "director": "中村登",
+    "director_jp": "中村登",
+    "director_en": "Noboru Nakamura",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 87,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "鍵から抜け出した女": null,
+  "さらば、わが愛／覇王別姫（特別企画）": {
+    "tmdb_id": 10997,
+    "tmdb_title_jp": "さらば、わが愛／覇王別姫",
+    "tmdb_title_en": "Farewell My Concubine",
+    "tmdb_title_original": "霸王别姬",
+    "tmdb_original_language": "zh",
+    "overview": "1925年、9歳の少年・小豆子は、娼婦の母親に連れられ京劇養成所“喜福成”にやって来た。そこで彼は少年・小石頭と仲良くなる。やがてふたりは成長し、小豆子は女形に、小石頭は男役に決められ、それぞれ程蝶衣、段小樓と名乗り有名スターになっていく。1937年、中国と日本との戦いが深まる中で、段小樓は娼婦の菊仙と出会い結婚する。段小樓に思いを寄せていた程蝶衣は、2度と共演しないと言い放ち、彼のもとを去る。",
+    "overview_en": "In an epic tale of theater, gender, love and class, two Beijing opera actors navigate political turmoil as their friendship evolves over decades.",
+    "poster_path": "/AnDERsriBgUSD0MTtzh4bASUmkA.jpg",
+    "backdrop_path": "/bBiZN1epQTu3F8iFLBuMhc4TRzr.jpg",
+    "release_date": "1993-01-01",
+    "director": "陈凯歌",
+    "director_jp": "陈凯歌",
+    "director_en": "Chen Kaige",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 172,
+    "vote_average": 7.898,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      },
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      }
+    ]
+  },
+  "Double Role ダブルロール": {
+    "tmdb_id": 1278475,
+    "tmdb_title_jp": "Double Role",
+    "tmdb_title_en": "Double Role",
+    "tmdb_title_original": "Double Role",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Deaf curler Sayuri Matsuhashi has a one-year-old hearing daughter with her deaf husband. She and her older brother, who is also deaf, won a regional tournament and became the first deaf people to qualify for the national competition, so she is busy training all over the country while raising her child.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2024-04-22",
+    "director": "Kaoru Kawanishi",
+    "director_jp": "Kaoru Kawanishi",
+    "director_en": "Kaoru Kawanishi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 40,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "ナタ 魔童の大暴れ【日本語吹替え版】": {
+    "tmdb_id": 980477,
+    "tmdb_title_jp": "ナタ 魔童の大暴れ",
+    "tmdb_title_en": "Ne Zha 2",
+    "tmdb_title_original": "哪吒之魔童闹海",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "After a catastrophic event leaves their bodies destroyed, Ne Zha and Ao Bing are granted a fragile second chance at life. As tensions rise between the dragon clans and celestial forces, the two must undergo a series of perilous trials that will test their bond, challenge their identities, and decide the fate of both mortals and immortals.",
+    "poster_path": "/bTMf8M7rZ21fChGdtsZtJj4Dfqh.jpg",
+    "backdrop_path": "/8btfz81bOJ2lC7cujYBTw03wzg3.jpg",
+    "release_date": "2025-01-29",
+    "director": "饺子",
+    "director_jp": "饺子",
+    "director_en": "Jiao Zi",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アドベンチャー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Adventure",
+      "Action"
+    ],
+    "runtime": 144,
+    "vote_average": 8.117,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "『めぐる』×『エイン』※2作品同時上映": null,
+  "SHUVUULAKHUI ～ハヤブサと男": null,
+  "トニー滝谷 ４Ｋリマスター版": {
+    "tmdb_id": 29269,
+    "tmdb_title_jp": "トニー滝谷",
+    "tmdb_title_en": "Tony Takitani",
+    "tmdb_title_original": "トニー滝谷",
+    "tmdb_original_language": "ja",
+    "overview": "美大で芸術を学んだトニー（イッセー尾形）は、デザイン会社へ就職、その後独立してイラストレーターになり、自宅のアトリエで仕事をこなすようになる。そんなトニーが一人の女性、出版社編集部員・小沼英子（宮沢りえ）に恋をする。",
+    "overview_en": "A reclusive illustrator falls in love with a young woman who addictively shops for clothing.",
+    "poster_path": "/nyOEwFGFzVu9Smv67fjCrEcpC86.jpg",
+    "backdrop_path": "/b1sHfJEgP2ac8Df9UVqyJEXPex6.jpg",
+    "release_date": "2004-08-11",
+    "director": "市川準",
+    "director_jp": "市川準",
+    "director_en": "Jun Ichikawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 77,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "Ryuichi Sakamoto | Trio Tour 2012": null,
+  "『トニー滝谷 ４Ｋリマスター版』トークイベント付き上映": {
+    "tmdb_id": 29269,
+    "tmdb_title_jp": "トニー滝谷",
+    "tmdb_title_en": "Tony Takitani",
+    "tmdb_title_original": "トニー滝谷",
+    "tmdb_original_language": "ja",
+    "overview": "美大で芸術を学んだトニー（イッセー尾形）は、デザイン会社へ就職、その後独立してイラストレーターになり、自宅のアトリエで仕事をこなすようになる。そんなトニーが一人の女性、出版社編集部員・小沼英子（宮沢りえ）に恋をする。",
+    "overview_en": "A reclusive illustrator falls in love with a young woman who addictively shops for clothing.",
+    "poster_path": "/nyOEwFGFzVu9Smv67fjCrEcpC86.jpg",
+    "backdrop_path": "/b1sHfJEgP2ac8Df9UVqyJEXPex6.jpg",
+    "release_date": "2004-08-11",
+    "director": "市川準",
+    "director_jp": "市川準",
+    "director_en": "Jun Ichikawa",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 77,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:176402": {
+    "tmdb_id": 176402,
+    "tmdb_title_jp": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_title_en": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_title_original": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "The diary of Takuya Ogushi, a 18 years old Japanese, who begins his new life as a sumo wrestler.",
+    "poster_path": "/Ap51UYs5eNvqKjVIR6GnRohKtu7.jpg",
+    "backdrop_path": null,
+    "release_date": "2013-03-13",
+    "director": "Jill Coulon",
+    "director_jp": "Jill Coulon",
+    "director_en": "Jill Coulon",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1278475": {
+    "tmdb_id": 1278475,
+    "tmdb_title_jp": "Double Role",
+    "tmdb_title_en": "Double Role",
+    "tmdb_title_original": "Double Role",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Deaf curler Sayuri Matsuhashi has a one-year-old hearing daughter with her deaf husband. She and her older brother, who is also deaf, won a regional tournament and became the first deaf people to qualify for the national competition, so she is busy training all over the country while raising her child.",
+    "poster_path": null,
+    "backdrop_path": null,
+    "release_date": "2024-04-22",
+    "director": "Kaoru Kawanishi",
+    "director_jp": "Kaoru Kawanishi",
+    "director_en": "Kaoru Kawanishi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 40,
+    "vote_average": 0.0,
+    "tmdb_countries": []
+  },
+  "tmdb:980477": {
+    "tmdb_id": 980477,
+    "tmdb_title_jp": "ナタ 魔童の大暴れ",
+    "tmdb_title_en": "Ne Zha 2",
+    "tmdb_title_original": "哪吒之魔童闹海",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "After a catastrophic event leaves their bodies destroyed, Ne Zha and Ao Bing are granted a fragile second chance at life. As tensions rise between the dragon clans and celestial forces, the two must undergo a series of perilous trials that will test their bond, challenge their identities, and decide the fate of both mortals and immortals.",
+    "poster_path": "/bTMf8M7rZ21fChGdtsZtJj4Dfqh.jpg",
+    "backdrop_path": "/8btfz81bOJ2lC7cujYBTw03wzg3.jpg",
+    "release_date": "2025-01-29",
+    "director": "饺子",
+    "director_jp": "饺子",
+    "director_en": "Jiao Zi",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アドベンチャー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Adventure",
+      "Action"
+    ],
+    "runtime": 144,
+    "vote_average": 8.117,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
       }
     ]
   }
