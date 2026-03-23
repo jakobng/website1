@@ -2688,43 +2688,6 @@
     ],
     "vote_average": 7.4
   },
-  "Make A Scene Presents: Victor/Victoria": {
-    "tmdb_id": 12614,
-    "tmdb_title": "Victor/Victoria",
-    "tmdb_original_title": "Victor/Victoria",
-    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
-    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
-    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
-    "release_date": "1982-04-25",
-    "director": "Blake Edwards",
-    "runtime": 134,
-    "genres": [
-      "Music",
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 7.273
-  },
-  "Reel Gems present: Fallen": {
-    "tmdb_id": 9411,
-    "tmdb_title": "Fallen",
-    "tmdb_original_title": "Fallen",
-    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
-    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
-    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
-    "release_date": "1998-01-16",
-    "director": "Gregory Hoblit",
-    "runtime": 124,
-    "genres": [
-      "Crime",
-      "Drama",
-      "Thriller"
-    ],
-    "vote_average": 6.792
-  },
-  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
-  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
-  "CURSE: Häxan With Live Score By Nick Carlisle": null,
   "The Magic Faraway Tree (2026)": {
     "tmdb_id": 1140521,
     "tmdb_title": "The Magic Faraway Tree",
@@ -2741,23 +2704,6 @@
       "Adventure"
     ],
     "vote_average": 0.0
-  },
-  "Throwback: Moulin Rouge! (25th Anniversary)": {
-    "tmdb_id": 824,
-    "tmdb_title": "Moulin Rouge!",
-    "tmdb_original_title": "Moulin Rouge!",
-    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
-    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
-    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
-    "release_date": "2001-05-18",
-    "director": "Baz Luhrmann",
-    "runtime": 128,
-    "genres": [
-      "Drama",
-      "Romance",
-      "Music"
-    ],
-    "vote_average": 7.534
   },
   "The Magic Faraway Tree": {
     "tmdb_id": 1140521,
@@ -2792,22 +2738,6 @@
     ],
     "vote_average": 6.308
   },
-  "Throwback: Romeo + Juliet (30th Anniversary)": {
-    "tmdb_id": 454,
-    "tmdb_title": "Romeo + Juliet",
-    "tmdb_original_title": "Romeo + Juliet",
-    "overview": "In director Baz Luhrmann's contemporary take on William Shakespeare's classic tragedy, the Montagues and Capulets have moved their ongoing feud to the sweltering suburb of Verona Beach, where Romeo and Juliet fall in love and secretly wed. Though the film is visually modern, the bard's dialogue remains.",
-    "poster_path": "/eLf4jclPijOqfEp6bDAmezRFxk5.jpg",
-    "backdrop_path": "/m0miV65ZZIp13TNHJSRUF6vmCos.jpg",
-    "release_date": "1996-11-01",
-    "director": "Baz Luhrmann",
-    "runtime": 120,
-    "genres": [
-      "Drama",
-      "Romance"
-    ],
-    "vote_average": 6.783
-  },
   "Beyond: Wasteman": {
     "tmdb_id": 1307373,
     "tmdb_title": "Wasteman",
@@ -2824,6 +2754,142 @@
       "Drama"
     ],
     "vote_average": 7.7
+  },
+  "Make A Scene Presents: Victor/Victoria": {
+    "tmdb_id": 12614,
+    "tmdb_title": "Victor/Victoria",
+    "tmdb_original_title": "Victor/Victoria",
+    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
+    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
+    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
+    "release_date": "1982-04-25",
+    "director": "Blake Edwards",
+    "runtime": 134,
+    "genres": [
+      "Music",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 7.3
+  },
+  "Reel Gems present: Fallen": {
+    "tmdb_id": 9411,
+    "tmdb_title": "Fallen",
+    "tmdb_original_title": "Fallen",
+    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
+    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
+    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
+    "release_date": "1998-01-16",
+    "director": "Gregory Hoblit",
+    "runtime": 124,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 6.793
+  },
+  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
+  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
+  "Mystery Shit Film Club": null,
+  "CURSE: Häxan With Live Score By Nick Carlisle": null,
+  "CURSE: Wolfwalkers (Family Friendly)": null,
+  "CURSE: The Green Knight": {
+    "tmdb_id": 559907,
+    "tmdb_title": "The Green Knight",
+    "tmdb_original_title": "The Green Knight",
+    "overview": "An epic fantasy adventure based on the timeless Arthurian legend, The Green Knight tells the story of Sir Gawain, King Arthur's reckless and headstrong nephew, who embarks on a daring quest to confront the eponymous Green Knight, a gigantic emerald-skinned stranger and tester of men.",
+    "poster_path": "/if4hw3Ou5Sav9Em7WWHj66mnywp.jpg",
+    "backdrop_path": "/kIQc0kkqIYTo65x5XjlKgqdDQ6a.jpg",
+    "release_date": "2021-07-29",
+    "director": "David Lowery",
+    "runtime": 130,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "vote_average": 6.6
+  },
+  "CURSE: The Wailing": {
+    "tmdb_id": 293670,
+    "tmdb_title": "The Wailing",
+    "tmdb_original_title": "곡성",
+    "overview": "A stranger arrives in a little village and soon after a mysterious sickness starts spreading. A policeman is drawn into the incident and is forced to solve the mystery in order to save his daughter.",
+    "poster_path": "/aXlL7yYwpXInhltamtzKQFBG08G.jpg",
+    "backdrop_path": "/9qxBNfI1QFbiZS62fsgaUd563t2.jpg",
+    "release_date": "2016-05-12",
+    "director": "Na Hong-jin",
+    "runtime": 156,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "vote_average": 7.372
+  },
+  "CURSE: Kill List": {
+    "tmdb_id": 74725,
+    "tmdb_title": "Kill List",
+    "tmdb_original_title": "Kill List",
+    "overview": "Nearly a year after a botched job, a hitman takes a new assignment with the promise of a big payoff for three killings. What starts off as an easy task soon unravels, sending the killer into the heart of darkness.",
+    "poster_path": "/qwT2I3ons0oD58jIppKmd4qLtvB.jpg",
+    "backdrop_path": "/ptZypdOBofmADX9JCtgi5E38cnC.jpg",
+    "release_date": "2011-09-02",
+    "director": "Ben Wheatley",
+    "runtime": 95,
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Crime"
+    ],
+    "vote_average": 6.203
+  },
+  "Northern Folklore Archive Presents: The Ritual": {
+    "tmdb_id": 433808,
+    "tmdb_title": "The Ritual",
+    "tmdb_original_title": "The Ritual",
+    "overview": "A group of college friends reunite for a trip to the forest, but encounter a menacing presence in the woods that's stalking them.",
+    "poster_path": "/9022CYEGqYETCeXN1oE3uwYJWub.jpg",
+    "backdrop_path": "/vaArQHq1lHFNppoJlMlv30Gs2fQ.jpg",
+    "release_date": "2017-10-11",
+    "director": "David Bruckner",
+    "runtime": 94,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "vote_average": 6.267
+  },
+  "CURSE: The Blood On Satan's Claw": {
+    "tmdb_id": 26774,
+    "tmdb_title": "The Blood on Satan's Claw",
+    "tmdb_original_title": "The Blood on Satan's Claw",
+    "overview": "After a landsman in 18th century England discovers a corpse covered in fur buried in a field, the town becomes infected by \"the devil's skin,\" leading the local children to engage in demonic rituals and criminal behavior.",
+    "poster_path": "/shUG4L8iKu9g4bhZVI3SNsIOvD3.jpg",
+    "backdrop_path": "/lVgJzjtd97Aznpbp4KkSM0Oxj7J.jpg",
+    "release_date": "1971-01-28",
+    "director": "Piers Haggard",
+    "runtime": 96,
+    "genres": [
+      "Horror"
+    ],
+    "vote_average": 6.166
+  },
+  "CURSE: Woodlands Dark and Days Bewitched: A History of Folk Horror": {
+    "tmdb_id": 614637,
+    "tmdb_title": "Woodlands Dark and Days Bewitched: A History of Folk Horror",
+    "tmdb_original_title": "Woodlands Dark and Days Bewitched: A History of Folk Horror",
+    "overview": "An exploration of the cinematic history of the folk horror, from its beginnings in the UK in the late sixties; through its proliferation on British television in the seventies and its many manifestations, culturally specific, in other countries; to its resurgence in the last decade.",
+    "poster_path": "/hW1TFe8Q6W4p6hxFbWOTWvwoySg.jpg",
+    "backdrop_path": "/tEyWHYvNh60MsQbPIuZf46rsWo5.jpg",
+    "release_date": "2021-09-09",
+    "director": "Kier-La Janisse",
+    "runtime": 193,
+    "genres": [
+      "Documentary",
+      "History"
+    ],
+    "vote_average": 7.517
   },
   "Arco (PG) [Dubbed]": {
     "tmdb_id": 804370,
@@ -2842,22 +2908,7 @@
       "Family",
       "Science Fiction"
     ],
-    "vote_average": 7.5
-  },
-  "The Straight Story - 4K Restoration (PG)": {
-    "tmdb_id": 404,
-    "tmdb_title": "The Straight Story",
-    "tmdb_original_title": "The Straight Story",
-    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
-    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
-    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
-    "release_date": "1999-10-15",
-    "director": "David Lynch",
-    "runtime": 112,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.74
+    "vote_average": 7.489
   },
   "Arco (PG) [Subtitled]": {
     "tmdb_id": 804370,
@@ -2876,7 +2927,22 @@
       "Family",
       "Science Fiction"
     ],
-    "vote_average": 7.5
+    "vote_average": 7.489
+  },
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.741
   },
   "Guardian Documentaries present: Legacies of Enslavement": null,
   "Baby & Carer/ The Straight Story – 4K Restoration (PG)": {
@@ -2908,11 +2974,60 @@
     "genres": [
       "Fantasy"
     ],
-    "vote_average": 6.147
+    "vote_average": 6.1
   },
+  "Oska Bright 2026: Best of the Fest": null,
   "Weekly Arthouse Screening": null,
-  "Exhibition On Screen: Turner & Constable": null,
-  "The Royal Opera: The Magic Flute": null,
+  "Throwback: Moulin Rouge! (25th Anniversary)": {
+    "tmdb_id": 824,
+    "tmdb_title": "Moulin Rouge!",
+    "tmdb_original_title": "Moulin Rouge!",
+    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
+    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
+    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
+    "release_date": "2001-05-18",
+    "director": "Baz Luhrmann",
+    "runtime": 128,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 7.533
+  },
+  "Throwback: Romeo + Juliet (30th Anniversary)": {
+    "tmdb_id": 454,
+    "tmdb_title": "Romeo + Juliet",
+    "tmdb_original_title": "Romeo + Juliet",
+    "overview": "In director Baz Luhrmann's contemporary take on William Shakespeare's classic tragedy, the Montagues and Capulets have moved their ongoing feud to the sweltering suburb of Verona Beach, where Romeo and Juliet fall in love and secretly wed. Though the film is visually modern, the bard's dialogue remains.",
+    "poster_path": "/eLf4jclPijOqfEp6bDAmezRFxk5.jpg",
+    "backdrop_path": "/m0miV65ZZIp13TNHJSRUF6vmCos.jpg",
+    "release_date": "1996-11-01",
+    "director": "Baz Luhrmann",
+    "runtime": 120,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 6.781
+  },
+  "Throwback: The Wolf of Wall Street": {
+    "tmdb_id": 106646,
+    "tmdb_title": "The Wolf of Wall Street",
+    "tmdb_original_title": "The Wolf of Wall Street",
+    "overview": "A New York stockbroker refuses to cooperate in a large securities fraud case involving corruption on Wall Street, corporate banking world and mob infiltration. Based on Jordan Belfort's autobiography.",
+    "poster_path": "/kW9LmvYHAaS9iA0tHmZVq8hQYoq.jpg",
+    "backdrop_path": "/7Nwnmyzrtd0FkcRyPqmdzTPppQa.jpg",
+    "release_date": "2013-12-25",
+    "director": "Martin Scorsese",
+    "runtime": 180,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 8.027
+  },
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
     "tmdb_title": "First Steps",
@@ -2928,8 +3043,6 @@
     ],
     "vote_average": 6.1
   },
-  "The Royal Opera: La Traviata": null,
-  "The Royal Opera: Siegfried": null,
   "National Theatre Live: All My Sons": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
@@ -2947,5 +3060,8 @@
       "Romance"
     ],
     "vote_average": 5.974
-  }
+  },
+  "The Royal Opera: La Traviata": null,
+  "The Royal Opera: Siegfried": null,
+  "The Royal Opera: The Magic Flute": null
 }
