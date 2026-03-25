@@ -133,7 +133,7 @@
     "venue_name": "The Hepworth Wakefield",
     "venue_city": "Wakefield",
     "exhibition_title": "The Hepworth Family Gift / Hepworth At Work",
-    "start_date": "2026-03-22",
+    "start_date": "2026-03-25",
     "end_date": null,
     "detail_page_url": "https://hepworthwakefield.org/whats-on/the-hepworth-family-gift-hepworth-at-work/",
     "description": null,
@@ -182,7 +182,7 @@
   {
     "venue_name": "The Hepworth Wakefield",
     "venue_city": "Wakefield",
-    "exhibition_title": "Mrinalini Mukherjee",
+    "exhibition_title": "Mrinalini Mukherjee: Unbound Forms - Women sculptors of India and Bangladesh",
     "start_date": "2026-10-25",
     "end_date": "2026-10-25",
     "detail_page_url": "https://hepworthwakefield.org/whats-on/mrinalini-mukherjee/",
@@ -420,96 +420,6 @@
     "image_url": null
   },
   {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "Uma Breakdown: Earth AD: Low Estate",
-    "start_date": "2026-01-19",
-    "end_date": "2026-03-22",
-    "detail_page_url": "https://www.fact.co.uk/event/uma-breakdown-earth-ad-low-estate",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/Screenshot-2023-11-30-at-10.15.38.png?v=1721756552"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "Double Agents: Play and Performance in Digital Worlds",
-    "start_date": "2026-01-29",
-    "end_date": "2026-04-30",
-    "detail_page_url": "https://www.fact.co.uk/event/double-agents",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/SODA_DoubleAgent_Hero_Wide.jpg?v=1768904323"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "Can Meeple Escape the Neurophoria?",
-    "start_date": "2026-02-06",
-    "end_date": "2026-04-26",
-    "detail_page_url": "https://www.fact.co.uk/event/can-meeple-escape-the-neurophoria",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/WEB-1500px-72dpi-FACT-Can-Meeple-Escape-the-Neurophoria-FEB-2025-cRob-Battersby.jpg?v=1770397589"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "Rachel Maclean: They've Got Your Eyes",
-    "start_date": "2026-03-20",
-    "end_date": "2026-08-16",
-    "detail_page_url": "https://www.fact.co.uk/event/rachel-maclean",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/2000px-cropped-O-they-serve-you-get-2026-Rachel-Maclean-digital-image.jpg?v=1768236640"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "ONLY SLIME: AFTERLIFE",
-    "start_date": "2026-03-20",
-    "end_date": "2026-08-16",
-    "detail_page_url": "https://www.fact.co.uk/event/only-slime",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/Copy-of-AFTERLIFE_event_16x9_01.jpg?v=1770912875"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "Daily Tours",
-    "start_date": "2026-03-22",
-    "end_date": "2026-09-22",
-    "detail_page_url": "https://www.fact.co.uk/event/daily-tours",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/2439606/FACT_KIERANI_07_24-91.jpg?v=1721744429"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "CripShip Gaming Sessions",
-    "start_date": "2026-03-28",
-    "end_date": "2026-03-28",
-    "detail_page_url": "https://www.fact.co.uk/event/cripship",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/2-Joseph-Wilk-CripShip-2024.-Courtesy-the-artist.jpg?v=1768468264"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "Curator Tour: Can Meeple Escape the Neurophoria?",
-    "start_date": "2026-04-11",
-    "end_date": "2026-04-11",
-    "detail_page_url": "https://www.fact.co.uk/event/curator-tour-can-meeple-escape-the-neurophoria",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/Jan-Zuiderveld-Life-on___-2024.-Courtesy-the-artist.png?v=1768469551"
-  },
-  {
-    "venue_name": "FACT",
-    "venue_city": "Liverpool",
-    "exhibition_title": "Do Something Saturdays",
-    "start_date": "2026-04-11",
-    "end_date": "2026-04-11",
-    "detail_page_url": "https://www.fact.co.uk/event/do-something-saturdays",
-    "description": null,
-    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/WEBSITE-72dpi-Liverpool-Biennial-FACT-Workshop-AUGUST-2023-©Rob-Battersby-51-without-cup.jpg?v=1750261093"
-  },
-  {
     "venue_name": "Cartwright Hall Art Gallery",
     "venue_city": "Bradford",
     "exhibition_title": "Cartwright Hall Changeover",
@@ -620,6 +530,86 @@
     "image_url": "https://bradfordmuseums.org/wp-content/uploads/2025/04/Cartwright-Hall-courtesy.-of-Medium.jpg"
   },
   {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "Double Agents: Play and Performance in Digital Worlds",
+    "start_date": "2026-01-29",
+    "end_date": "2026-04-30",
+    "detail_page_url": "https://www.fact.co.uk/event/double-agents",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/SODA_DoubleAgent_Hero_Wide.jpg?v=1768904323"
+  },
+  {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "Can Meeple Escape the Neurophoria?",
+    "start_date": "2026-02-06",
+    "end_date": "2026-04-26",
+    "detail_page_url": "https://www.fact.co.uk/event/can-meeple-escape-the-neurophoria",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/WEB-1500px-72dpi-FACT-Can-Meeple-Escape-the-Neurophoria-FEB-2025-cRob-Battersby.jpg?v=1770397589"
+  },
+  {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "Rachel Maclean: They've Got Your Eyes",
+    "start_date": "2026-03-20",
+    "end_date": "2026-08-16",
+    "detail_page_url": "https://www.fact.co.uk/event/rachel-maclean",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/WEB-1500px-72dpi-FACT-Only-Slime-Rachael-Maclean-MARCH-2025-cRob-Battersby-49.jpg?v=1774348610"
+  },
+  {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "ONLY SLIME: AFTERLIFE",
+    "start_date": "2026-03-20",
+    "end_date": "2026-08-16",
+    "detail_page_url": "https://www.fact.co.uk/event/only-slime",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/WEB-1500px-72dpi-FACT-Only-Slime-Rachael-Maclean-MARCH-2025-cRob-Battersby-1.jpg?v=1774348656"
+  },
+  {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "Daily Tours",
+    "start_date": "2026-03-25",
+    "end_date": "2026-09-25",
+    "detail_page_url": "https://www.fact.co.uk/event/daily-tours",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/2439606/FACT_KIERANI_07_24-91.jpg?v=1721744429"
+  },
+  {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "CripShip Gaming Sessions",
+    "start_date": "2026-03-28",
+    "end_date": "2026-03-28",
+    "detail_page_url": "https://www.fact.co.uk/event/cripship",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/2-Joseph-Wilk-CripShip-2024.-Courtesy-the-artist.jpg?v=1768468264"
+  },
+  {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "Curator Tour: Can Meeple Escape the Neurophoria?",
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-11",
+    "detail_page_url": "https://www.fact.co.uk/event/curator-tour-can-meeple-escape-the-neurophoria",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/Jan-Zuiderveld-Life-on___-2024.-Courtesy-the-artist.png?v=1768469551"
+  },
+  {
+    "venue_name": "FACT",
+    "venue_city": "Liverpool",
+    "exhibition_title": "Do Something Saturdays",
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-11",
+    "detail_page_url": "https://www.fact.co.uk/event/do-something-saturdays",
+    "description": null,
+    "image_url": "https://cdn.fact.co.uk/uploads/images/_1200x630_crop_center-center_82_none/WEBSITE-72dpi-Liverpool-Biennial-FACT-Workshop-AUGUST-2023-©Rob-Battersby-51-without-cup.jpg?v=1750261093"
+  },
+  {
     "venue_name": "Bradford Industrial Museum",
     "venue_city": "Bradford",
     "exhibition_title": "Portraits of our Time",
@@ -690,26 +680,6 @@
     "image_url": "https://bradfordmuseums.org/wp-content/uploads/2025/08/Untitled-design-1.png"
   },
   {
-    "venue_name": "Bolling Hall Museum",
-    "venue_city": "Bradford",
-    "exhibition_title": "110 Years of Bolling Hall Museum",
-    "start_date": "2025-09-03",
-    "end_date": "2026-09-06",
-    "detail_page_url": "https://bradfordmuseums.org/event/110-years-of-bolling-hall-museum/",
-    "description": null,
-    "image_url": "https://bradfordmuseums.org/wp-content/uploads/2025/09/Housebody-Tankards.jpeg"
-  },
-  {
-    "venue_name": "Bolling Hall Museum",
-    "venue_city": "Bradford",
-    "exhibition_title": "‘Lucky Charms and Fortune-Tellers’ Display",
-    "start_date": "2025-03-05",
-    "end_date": "2025-06-29",
-    "detail_page_url": "https://bradfordmuseums.org/event/lucky-charms-and-fortune-tellers-display/",
-    "description": null,
-    "image_url": "https://bradfordmuseums.org/wp-content/uploads/2025/03/parson-and-doll-e1741268485231.jpg"
-  },
-  {
     "venue_name": "Cliffe Castle Museum",
     "venue_city": "Bradford",
     "exhibition_title": "Lady’s Slipper and Bees – Pressed Orchids and their collectors",
@@ -748,6 +718,26 @@
     "detail_page_url": "https://bradfordmuseums.org/event/ice-age-art-now/",
     "description": null,
     "image_url": "https://bradfordmuseums.org/wp-content/uploads/2024/10/Engraved-reindeer-metatarsal-©-2024-The-Trustees-of-the-British-Museum-1024x699.jpg"
+  },
+  {
+    "venue_name": "Bolling Hall Museum",
+    "venue_city": "Bradford",
+    "exhibition_title": "110 Years of Bolling Hall Museum",
+    "start_date": "2025-09-03",
+    "end_date": "2026-09-06",
+    "detail_page_url": "https://bradfordmuseums.org/event/110-years-of-bolling-hall-museum/",
+    "description": null,
+    "image_url": "https://bradfordmuseums.org/wp-content/uploads/2025/09/Housebody-Tankards.jpeg"
+  },
+  {
+    "venue_name": "Bolling Hall Museum",
+    "venue_city": "Bradford",
+    "exhibition_title": "‘Lucky Charms and Fortune-Tellers’ Display",
+    "start_date": "2025-03-05",
+    "end_date": "2025-06-29",
+    "detail_page_url": "https://bradfordmuseums.org/event/lucky-charms-and-fortune-tellers-display/",
+    "description": null,
+    "image_url": "https://bradfordmuseums.org/wp-content/uploads/2025/03/parson-and-doll-e1741268485231.jpg"
   },
   {
     "venue_name": "Baltic Centre for Contemporary Art",
@@ -862,6 +852,16 @@
   {
     "venue_name": "Ferens Art Gallery",
     "venue_city": "Hull",
+    "exhibition_title": "Hull Marina Tours",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.hullmuseums.co.uk/museum-events/hull-marina-tours",
+    "description": null,
+    "image_url": "https://d15xc01mphksob.cloudfront.net/eyJidWNrZXQiOiJoY2MtYXNzZXQtc3RvcmFnZSIsImtleSI6Ik11c2V1bXNfTWFyaXRpbWVUb3Vyc18zLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6IjgyNCIsImhlaWdodCI6IjU1MSIsImZpdCI6ImNvdmVyIn19fQ=="
+  },
+  {
+    "venue_name": "Ferens Art Gallery",
+    "venue_city": "Hull",
     "exhibition_title": "Pietro Lorenzetti's Christ between Saints Paul and Peter; A Restoration in Context",
     "start_date": null,
     "end_date": null,
@@ -888,26 +888,6 @@
     "detail_page_url": "https://www.hullmuseums.co.uk/museum-events/dress-to-impress-family-craft-activity",
     "description": null,
     "image_url": "https://d15xc01mphksob.cloudfront.net/eyJidWNrZXQiOiJoY2MtYXNzZXQtc3RvcmFnZSIsImtleSI6Ik11c2V1bnNfZHJlc3N0b2ltcHJlc3NfMS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOiI4MjQiLCJoZWlnaHQiOiI1NTEiLCJmaXQiOiJjb3ZlciJ9fX0="
-  },
-  {
-    "venue_name": "Salts Mill & 1853 Gallery",
-    "venue_city": "Saltaire",
-    "exhibition_title": "1853 Gallery – David Hockney",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.saltsmill.org.uk",
-    "description": "Permanent display of David Hockney works",
-    "image_url": null
-  },
-  {
-    "venue_name": "Salts Mill & 1853 Gallery",
-    "venue_city": "Saltaire",
-    "exhibition_title": "Weaving the Future",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.saltsmill.org.uk",
-    "description": "Exhibitions in the Roof Space",
-    "image_url": null
   },
   {
     "venue_name": "Sheffield Museums",
@@ -982,20 +962,10 @@
   {
     "venue_name": "Sheffield Museums",
     "venue_city": "Sheffield",
-    "exhibition_title": "Life Drawing Millennium Gallery Fri 20 - Fri 27 March 2026",
+    "exhibition_title": "Life Drawing Millennium Gallery Fri 27 March 2026",
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://www.sheffieldmuseums.org.uk/whats-on/life-drawing-jan-march-2026/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Sheffield Museums",
-    "venue_city": "Sheffield",
-    "exhibition_title": "National Saturday Club Millennium Gallery Sat 21 March - Sat 25 April 2026",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sheffieldmuseums.org.uk/whats-on/national-saturday-club/",
     "description": null,
     "image_url": null
   },
@@ -1066,6 +1036,16 @@
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://www.sheffieldmuseums.org.uk/whats-on/art-at-the-start-15-apr/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Sheffield Museums",
+    "venue_city": "Sheffield",
+    "exhibition_title": "National Saturday Club Millennium Gallery Sat 18 - Sat 25 April 2026",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sheffieldmuseums.org.uk/whats-on/national-saturday-club/",
     "description": null,
     "image_url": null
   },
@@ -1210,6 +1190,26 @@
     "image_url": null
   },
   {
+    "venue_name": "Salts Mill & 1853 Gallery",
+    "venue_city": "Saltaire",
+    "exhibition_title": "1853 Gallery – David Hockney",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.saltsmill.org.uk",
+    "description": "Permanent display of David Hockney works",
+    "image_url": null
+  },
+  {
+    "venue_name": "Salts Mill & 1853 Gallery",
+    "venue_city": "Saltaire",
+    "exhibition_title": "Weaving the Future",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.saltsmill.org.uk",
+    "description": "Exhibitions in the Roof Space",
+    "image_url": null
+  },
+  {
     "venue_name": "esea contemporary",
     "venue_city": "Manchester",
     "exhibition_title": "Voicing the Archive",
@@ -1226,66 +1226,6 @@
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://www.eseacontemporary.org/exhibitions/30-years-of-cfcca",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Hatton Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "HAPPY! Hatton Gallery Until 9 May An exhibition curated from the Jerwood Collection by the Hatton Gallery’s young people’s group, L-INK.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/happy",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Hatton Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Children’s Art Workshops Hatton Gallery 8 Apr, 15 Apr Free art workshops for 4-11 years.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/children-s-art-workshop",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Hatton Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Young People's Art Workshops Hatton Gallery 9 Apr, 16 Apr Free art workshops for 12-18 years.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/young-peoples-art-workshop-ages-11-18",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Hatton Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Art Cart Hatton Gallery 3 Apr - 11 Apr Help yourself to some art activities! Everyone welcome.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/art-cart",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Hatton Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Kurt Schwitters' Merz Barn Wall Hatton Gallery Permanent One of the UK’s international art treasures is on permanent display at the Hatton Gallery.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/kurt-schwitters-merz-barn-wall",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Hatton Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Archive & Study Space Hatton Gallery Permanent",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/archive-and-study-space",
     "description": null,
     "image_url": null
   },
@@ -1400,6 +1340,386 @@
     "image_url": null
   },
   {
+    "venue_name": "Hatton Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "HAPPY! Hatton Gallery Until 9 May An exhibition curated from the Jerwood Collection by the Hatton Gallery’s young people’s group, L-INK.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/happy",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Hatton Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Children’s Art Workshops Hatton Gallery 8 Apr, 15 Apr Free art workshops for 4-11 years.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/children-s-art-workshop",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Hatton Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Young People's Art Workshops Hatton Gallery 9 Apr, 16 Apr Free art workshops for 12-18 years.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/young-peoples-art-workshop-ages-11-18",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Hatton Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Art Cart Hatton Gallery 3 Apr - 11 Apr Help yourself to some art activities! Everyone welcome.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/art-cart",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Hatton Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Kurt Schwitters' Merz Barn Wall Hatton Gallery Permanent One of the UK’s international art treasures is on permanent display at the Hatton Gallery.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/kurt-schwitters-merz-barn-wall",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Hatton Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Archive & Study Space Hatton Gallery Permanent",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/hatton/whats-on/archive-and-study-space",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Needle Felting Workshop: Spring Bunny Shipley Art Gallery 27 Mar Join us for a workshop where you'll make your own needle felted bunny.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/needle-felting-workshop-spring-bunny",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Acrylic Pouring Course: decorative homewares Shipley Art Gallery 28 Mar, 9 May Make a beautiful, functional set of artworks for your home.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/acrylic-pouring-course",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Beginner Watercolour Class: Daisies Shipley Art Gallery 28 Mar Discover the quiet joy of painting watercolour daisies in this gentle, hands-on workshop.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/beginner-watercolour-class-daisies",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Crafty Kids Shipley Art Gallery 31 Mar, 21 Apr, 28 Apr, 5 May, 12 May, 19 May Best suited to 2-5 year olds, but younger children also welcome.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/crafty-kids",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Creative Conversations Shipley Art Gallery 1 Apr, 15 Apr, 29 Apr, 13 May Practice your English and learn new skills",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/creative-conversations",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Family Crafting: Easter holidays Shipley Art Gallery 7 Apr, 14 Apr Join us on Tuesdays in the Easter holidays to create springtime crafts.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/family-arts-festival-easter-holidays",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Lego Coding Workshop with the Kids-Hub Shipley Art Gallery 8 Apr, 15 Apr Have a go at Lego coding in this fun and accessible family workshop.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/lego-coding-workshop-with-the-kids-hub",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Holiday Art Class Shipley Art Gallery 9 Apr, 16 Apr A fun art class for 7-12 year olds and their grown ups during the school holidays.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/holiday-art-class",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Saltwell Park history and blossom walk Shipley Art Gallery 17 Apr",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/saltwell-park-history-and-blossom-walk",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Family Art Class Shipley Art Gallery 18 Apr, 16 May Join us for a monthly Saturday art class for 7-12 year olds and their grown ups.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/family-art-class",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Fused Glass Lightcatcher with Kimoci Glass Shipley Art Gallery 25 Apr Try your hand at fused glass and create a beautiful light catcher with Kimoci Glass",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/fused-glass-lightcatcher-with-kimoci-glass",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Drawing and Painting Activities Shipley Art Gallery 25 Apr Enjoy a free drop-in drawing and painting activity as part of our Craft Market.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/drawing-and-painting-activities",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Spring Craft Market Shipley Art Gallery 25 Apr Browse products from local makers, have a go at crafting activities, and enjoy with refreshments from Urban Bakery",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/spring-craft-market",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "The Late Shows Shipley Art Gallery 9 May A night of crafting and creativity led by Gateshead based makers, creators and organisations.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/the-late-shows",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Watercolours for Wellbeing: The Flower of Life Shipley Art Gallery 16 May Join us for a gentle, reflective workshop exploring wellbeing through painting.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/watercolours-for-wellbeing-the-flower-of-life",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Designs for Life Shipley Art Gallery Permanent Over 300 objects made across the world in the last 2000 years",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/designs-for-life",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Henry Rothschild Study Centre Shipley Art Gallery Permanent Nationally significant display of 20th century ceramics.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/henry-rothschild-study-centre",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Saltwell Park Museum Shipley Art Gallery Permanent Fascinating collections from Saltwell Towers are brought together at the Shipley",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/saltwell-park-museum",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "The Blaydon Races Shipley Art Gallery Permanent William C. Irving's painting captures the lively atmosphere of the Blaydon Races and fair.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/the-blaydon-races",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Tintoretto's Christ Washing the Disciples' Feet Shipley Art Gallery Permanent An outstanding painting by the Venetian artist Jacopo Robusti Tintoretto (1518-1594).",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/tintorettos-christ-washing-the-disciples-feet",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Angel of the North maquette Shipley Art Gallery Permanent Created by Antony Gormley at a twentieth of the size of the Angel of the North",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/angel-of-the-north-maquette",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Shipley Community Garden Shipley Art Gallery Permanent Visit our new community garden in the grounds of the Gallery.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/shipley-community-garden",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Treasures from the Shipley Art Gallery Collection Shipley Art Gallery Permanent A new display of works from our collection",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/treasures-from-the-shipley-art-gallery-collection",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Download now: Autumn Art Shipley Art Gallery Permanent Activities to de-stress and realise your creative potential from the Shipley",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/autumn-art",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Refracted Commentary Shipley Art Gallery Permanent A virtual exhibition of new ceramics from Fine Art Students at Newcastle University",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/refracted-commentary",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Online exhibition: Winter Wellness Postcard Project Shipley Art Gallery Permanent",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/online-exhibition-winter-wellness-postcard-project",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Makers in Clay: British Studio Pottery Shipley Art Gallery Permanent Highlights from the John Christian Studio Ceramics Collection",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/makers-in-clay-british-studio-pottery",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Shipley Art Gallery",
+    "venue_city": "Gateshead",
+    "exhibition_title": "Sensory Space Shipley Art Gallery Permanent A quiet room to relax, play and explore.",
+    "start_date": "2026-03-25",
+    "end_date": null,
+    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/sensory-space",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Northern Gallery for Contemporary Art",
+    "venue_city": "Sunderland",
+    "exhibition_title": "See & Do",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sunderlandculture.org.uk/northern-gallery-for-contemporary-art/whats-on/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Northern Gallery for Contemporary Art",
+    "venue_city": "Sunderland",
+    "exhibition_title": "About Us",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sunderlandculture.org.uk/northern-gallery-for-contemporary-art/about-us/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Northern Gallery for Contemporary Art",
+    "venue_city": "Sunderland",
+    "exhibition_title": "Collection",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sunderlandculture.org.uk/northern-gallery-for-contemporary-art/collection/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Northern Gallery for Contemporary Art",
+    "venue_city": "Sunderland",
+    "exhibition_title": "Instagram",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.instagram.com/ngcasunderland1/",
+    "description": null,
+    "image_url": null
+  },
+  {
     "venue_name": "The Lowry",
     "venue_city": "Salford",
     "exhibition_title": "Your Visit",
@@ -1456,326 +1776,6 @@
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://thelowry.com/whats-on/british-sign-language-tour-of-the-ls-lowry-collection-1t5r",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Crafty Kids Shipley Art Gallery 24 Mar, 31 Mar, 21 Apr, 28 Apr, 5 May, 12 May, 19 May Best suited to 2-5 year olds, but younger children also welcome.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/crafty-kids",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Needle Felting Workshop: Spring Bunny Shipley Art Gallery 27 Mar Join us for a workshop where you'll make your own needle felted bunny.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/needle-felting-workshop-spring-bunny",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Acrylic Pouring Course: decorative homewares Shipley Art Gallery 28 Mar, 9 May Make a beautiful, functional set of artworks for your home.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/acrylic-pouring-course",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Beginner Watercolour Class: Daisies Shipley Art Gallery 28 Mar Discover the quiet joy of painting watercolour daisies in this gentle, hands-on workshop.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/beginner-watercolour-class-daisies",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Creative Conversations Shipley Art Gallery 1 Apr, 15 Apr, 29 Apr, 13 May Practice your English and learn new skills",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/creative-conversations",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Family Crafting: Easter holidays Shipley Art Gallery 7 Apr, 14 Apr Join us on Tuesdays in the Easter holidays to create springtime crafts.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/family-arts-festival-easter-holidays",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Lego Coding Workshop with the Kids-Hub Shipley Art Gallery 8 Apr, 15 Apr Have a go at Lego coding in this fun and accessible family workshop.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/lego-coding-workshop-with-the-kids-hub",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Holiday Art Class Shipley Art Gallery 9 Apr, 16 Apr A fun art class for 7-12 year olds and their grown ups during the school holidays.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/holiday-art-class",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Saltwell Park history and blossom walk Shipley Art Gallery 17 Apr",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/saltwell-park-history-and-blossom-walk",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Family Art Class Shipley Art Gallery 18 Apr, 16 May Join us for a monthly Saturday art class for 7-12 year olds and their grown ups.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/family-art-class",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Fused Glass Lightcatcher with Kimoci Glass Shipley Art Gallery 25 Apr Try your hand at fused glass and create a beautiful light catcher with Kimoci Glass",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/fused-glass-lightcatcher-with-kimoci-glass",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Drawing and Painting Activities Shipley Art Gallery 25 Apr Enjoy a free drop-in drawing and painting activity as part of our Craft Market.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/drawing-and-painting-activities",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Spring Craft Market Shipley Art Gallery 25 Apr Browse products from local makers, have a go at crafting activities, and enjoy with refreshments from Urban Bakery",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/spring-craft-market",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "The Late Shows Shipley Art Gallery 9 May A night of crafting and creativity led by Gateshead based makers, creators and organisations.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/the-late-shows",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Watercolours for Wellbeing: The Flower of Life Shipley Art Gallery 16 May Join us for a gentle, reflective workshop exploring wellbeing through painting.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/watercolours-for-wellbeing-the-flower-of-life",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Designs for Life Shipley Art Gallery Permanent Over 300 objects made across the world in the last 2000 years",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/designs-for-life",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Henry Rothschild Study Centre Shipley Art Gallery Permanent Nationally significant display of 20th century ceramics.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/henry-rothschild-study-centre",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Saltwell Park Museum Shipley Art Gallery Permanent Fascinating collections from Saltwell Towers are brought together at the Shipley",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/saltwell-park-museum",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "The Blaydon Races Shipley Art Gallery Permanent William C. Irving's painting captures the lively atmosphere of the Blaydon Races and fair.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/the-blaydon-races",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Tintoretto's Christ Washing the Disciples' Feet Shipley Art Gallery Permanent An outstanding painting by the Venetian artist Jacopo Robusti Tintoretto (1518-1594).",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/tintorettos-christ-washing-the-disciples-feet",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Angel of the North maquette Shipley Art Gallery Permanent Created by Antony Gormley at a twentieth of the size of the Angel of the North",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/angel-of-the-north-maquette",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Shipley Community Garden Shipley Art Gallery Permanent Visit our new community garden in the grounds of the Gallery.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/shipley-community-garden",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Treasures from the Shipley Art Gallery Collection Shipley Art Gallery Permanent A new display of works from our collection",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/treasures-from-the-shipley-art-gallery-collection",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Download now: Autumn Art Shipley Art Gallery Permanent Activities to de-stress and realise your creative potential from the Shipley",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/autumn-art",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Refracted Commentary Shipley Art Gallery Permanent A virtual exhibition of new ceramics from Fine Art Students at Newcastle University",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/refracted-commentary",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Online exhibition: Winter Wellness Postcard Project Shipley Art Gallery Permanent",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/online-exhibition-winter-wellness-postcard-project",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Makers in Clay: British Studio Pottery Shipley Art Gallery Permanent Highlights from the John Christian Studio Ceramics Collection",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/makers-in-clay-british-studio-pottery",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Shipley Art Gallery",
-    "venue_city": "Gateshead",
-    "exhibition_title": "Sensory Space Shipley Art Gallery Permanent A quiet room to relax, play and explore.",
-    "start_date": "2026-03-22",
-    "end_date": null,
-    "detail_page_url": "https://www.northeastmuseums.org.uk/shipley/whats-on/sensory-space",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Northern Gallery for Contemporary Art",
-    "venue_city": "Sunderland",
-    "exhibition_title": "See & Do",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sunderlandculture.org.uk/northern-gallery-for-contemporary-art/whats-on/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Northern Gallery for Contemporary Art",
-    "venue_city": "Sunderland",
-    "exhibition_title": "About Us",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sunderlandculture.org.uk/northern-gallery-for-contemporary-art/about-us/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Northern Gallery for Contemporary Art",
-    "venue_city": "Sunderland",
-    "exhibition_title": "Collection",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sunderlandculture.org.uk/northern-gallery-for-contemporary-art/collection/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Northern Gallery for Contemporary Art",
-    "venue_city": "Sunderland",
-    "exhibition_title": "Instagram",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.instagram.com/ngcasunderland1/",
     "description": null,
     "image_url": null
   },
@@ -1842,6 +1842,16 @@
   {
     "venue_name": "Sunderland Museum & Winter Gardens",
     "venue_city": "Sunderland",
+    "exhibition_title": "Creative Age",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sunderlandculture.org.uk/whats-on/creative-age/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Sunderland Museum & Winter Gardens",
+    "venue_city": "Sunderland",
     "exhibition_title": "Amazing Art Trail",
     "start_date": null,
     "end_date": null,
@@ -1856,16 +1866,6 @@
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://www.sunderlandculture.org.uk/whats-on/rebel-women-of-sunderland/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Sunderland Museum & Winter Gardens",
-    "venue_city": "Sunderland",
-    "exhibition_title": "Creative Age",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sunderlandculture.org.uk/whats-on/creative-age/",
     "description": null,
     "image_url": null
   },
@@ -1916,6 +1916,36 @@
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://www.sunderlandculture.org.uk/sunderland-museum-winter-gardens/learn-create/adults/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Site Gallery",
+    "venue_city": "Sheffield",
+    "exhibition_title": "exhibition When The Sky Gets Bright When The Sky Gets Bright is a new exhibition by Babeworld in collaboration with Society of Explorers and Creative Producers. 12 Jun 2026 – 27 Sep 2026",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sitegallery.org/exhibition/when-the-sky-gets-bright/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Site Gallery",
+    "venue_city": "Sheffield",
+    "exhibition_title": "exhibition Plantation Plantation by Rehana Zaman explores land use, labour and environmental collapse through experiences of agricultural workers. 20 Feb 2026 – 17 May 2026",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sitegallery.org/exhibition/rehana-zaman/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Site Gallery",
+    "venue_city": "Sheffield",
+    "exhibition_title": "exhibition The Goal of Our Health A new solo exhibition by New York and Glasgow-based artist and filmmaker Alexis Kyle Mitchell. 16 Oct 2026 – 28 Feb 2027",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.sitegallery.org/exhibition/the-goal-of-our-health/",
     "description": null,
     "image_url": null
   },
@@ -2010,176 +2040,6 @@
     "image_url": null
   },
   {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Little Artists",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/little-artists",
-    "description": "Interactive art sessions for 1-5 year olds with a different theme each week.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/38fdgBZb2gcgW5HzVsrKgdrP8HI=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-02/607213.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Herbert Smith Freehills Kramer Portrait Award 2025 and Exploring Identity",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/herbert-smith-freehills-kramer-portrait-award-2025-and-exploring-identity",
-    "description": "Explore the history of portraiture from the 16th century to the present day.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/Lbz8FfRo9h69BRMhMSuLMZdi3-w=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2026-02/696814.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Sublime Landscapes",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/sublime-landscapes",
-    "description": "Landscape watercolours and prints from the Laing Art Gallery’s collection.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/acknUknQbBKjBcR7OWS14Mdy0_c=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-11/675157.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Picture of the month",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/picture-of-the-month",
-    "description": "Join us for a talk from the Friends of the Laing",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/q721MVdq970siNrXS-Uj4pepV0w=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-12/675502.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Afternoon Tea: Pre-book",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/afternoon-tea-pre-book",
-    "description": "Treat yourself to a delightful afternoon tea experience at the stunning Laing Art Gallery.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/N_caNVTL5MEwpCT5fSTyl8rrw20=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-02/607268.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Saturday Art Classes for 10-15 year olds",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/saturday-art-classes-for-10-15-year-olds",
-    "description": "An inclusive art class every month",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/_CbS8DABNatWwxZA_rTty9ukl7M=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2018-12/232459.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Art Camp: 7-10 year olds",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/art-camp-7-10-year-olds",
-    "description": "Young people are welcome to explore the galleries, talk about art, and create their own work.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/EPz_2N16MSJ1gjin4dVvCxgSkH8=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2023-09/513602.png"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Make and Muse: Family Crafting Tour (7-12 year olds)",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/make-and-muse-family-crafting-tour-7-12-year-olds",
-    "description": "Families will take a tour of the collections and do some hands-on crafting.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/ZXakHsoWuF1NTaJSSf11BTVsHVs=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-06/638735.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Curator's Talk - ‘I Contain Multitudes’: An exploration of identity in portraiture",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/curators-talk-i-contain-multitudes-an-exploration-of-identity-in-portraiture",
-    "description": "A behind the scenes look into Exploring Identity and HSFKramer Portrait Award 2025 exhibitions.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/kVjTDblnxqpok81E9H5M4SgBRao=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2026-03/700237.png"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "The Late Shows 2026",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/the-late-shows-2026",
-    "description": "Create your own 18th and 19th century clothing embellishments.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/QVm5RGBPCwhwC2joa3EpEWIVmXE=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2024-03/537669.png"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Exclusive Tours: Herbert Smith Freehills Kramer Portrait Award 2025 & Exploring Identity exhibition",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/exclusive-tours-herbert-smith-freehills-kramer-portrait-award-2025-and-exploring-identity-exhibition",
-    "description": "Amy Pargeter, Exhibition Officer at the Laing, will give an exclusive tour of our new temporary exhibition.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/VHVixE-2FJ8EWp6pxRLcc-udHUw=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2026-03/701362.png"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Northern Spirit",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/northern-spirit",
-    "description": "Celebrating artists, manufacturers and makers from North East England.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/RaTm9emWsE7_H4XfDIZVLXeqhn0=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2015-07/6472.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "100 Years of Collecting",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/100-years-collecting",
-    "description": "A long-term display of paintings and objects from the Laing's collection, from the 15th century to the present day.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/yFDIvWseh0BqEe7ZzsONQn9SDjc=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2022-09/451903.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "The Pursuit of Beauty",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/the-pursuit-of-beauty",
-    "description": "A new display highlighting key pieces from the decorative arts collections.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/D4_Fw-cHWmSkebGL70HWQCZlc6U=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2023-08/511437.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Tactile artworks and alternative interpretation",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/tactile-artworks-and-alternative-interpretation",
-    "description": "The gallery has a number of tactile artworks and a painting which is brought to life in a sound and light display.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/vPOkFXjZdyNRv0ErS7qrW6xXTdM=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2015-07/7822.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Playspace",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/under-5s-area",
-    "description": "Our free circus-themed Playspace is especially for our youngest visitors, where they can play and explore our den.",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/LOHhLEqHaVIM_T-N2iUxvW8ZLnk=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2019-07/324907.jpg"
-  },
-  {
-    "venue_name": "Laing Art Gallery",
-    "venue_city": "Newcastle",
-    "exhibition_title": "Chris Killip: The Last Ships",
-    "start_date": "2026-03-22",
-    "end_date": "2026-12-05",
-    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/chris-killip-the-last-ships",
-    "description": "Photography exhibition documenting the rise and fall of the shipbuilding trade in the North East of England in the 1970s",
-    "image_url": "https://d279tnhy9skgzk.cloudfront.net/NCEmAMk1o2iedKLhH9tldE2HNkw=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2018-08/217389.jpg"
-  },
-  {
     "venue_name": "Humber Street Gallery",
     "venue_city": "Hull",
     "exhibition_title": "Visit us",
@@ -2252,16 +2112,6 @@
   {
     "venue_name": "Humber Street Gallery",
     "venue_city": "Hull",
-    "exhibition_title": "Exhibition tour: Sightseers by Luke Routledge – 20/3/26 12:00 pm-12:30 am Friday 20 March 2026 Exhibition tour For everyone Read more",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://humberstreetgallery.co.uk/events/exhibition-tour-sightseers-by-luke-routledge-20-2-26-2-2/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Humber Street Gallery",
-    "venue_city": "Hull",
     "exhibition_title": "Cultural Conversations – Women changing the game 6:00 pm-8:30 pm Wednesday 25 March 2026 Talk For adults Read more",
     "start_date": null,
     "end_date": null,
@@ -2316,6 +2166,16 @@
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://humberstreetgallery.co.uk/events/exhibition-tour-sightseers-by-luke-routledge-20-2-26-2/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Humber Street Gallery",
+    "venue_city": "Hull",
+    "exhibition_title": "Sound bath 11:00 am-12:00 pm Saturday 25 April 2026 Workshop For adults Read more",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://humberstreetgallery.co.uk/events/sound-bath-4/",
     "description": null,
     "image_url": null
   },
@@ -2450,6 +2310,176 @@
     "image_url": null
   },
   {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Little Artists",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/little-artists",
+    "description": "Interactive art sessions for 1-5 year olds with a different theme each week.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/38fdgBZb2gcgW5HzVsrKgdrP8HI=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-02/607213.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Herbert Smith Freehills Kramer Portrait Award 2025 and Exploring Identity",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/herbert-smith-freehills-kramer-portrait-award-2025-and-exploring-identity",
+    "description": "Explore the history of portraiture from the 16th century to the present day.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/Lbz8FfRo9h69BRMhMSuLMZdi3-w=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2026-02/696814.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Sublime Landscapes",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/sublime-landscapes",
+    "description": "Landscape watercolours and prints from the Laing Art Gallery’s collection.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/acknUknQbBKjBcR7OWS14Mdy0_c=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-11/675157.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Picture of the month",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/picture-of-the-month",
+    "description": "Join us for a talk from the Friends of the Laing",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/q721MVdq970siNrXS-Uj4pepV0w=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-12/675502.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Afternoon Tea: Pre-book",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/afternoon-tea-pre-book",
+    "description": "Treat yourself to a delightful afternoon tea experience at the stunning Laing Art Gallery.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/N_caNVTL5MEwpCT5fSTyl8rrw20=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-02/607268.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Saturday Art Classes for 10-15 year olds",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/saturday-art-classes-for-10-15-year-olds",
+    "description": "An inclusive art class every month",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/_CbS8DABNatWwxZA_rTty9ukl7M=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2018-12/232459.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Art Camp: 7-10 year olds",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/art-camp-7-10-year-olds",
+    "description": "Young people are welcome to explore the galleries, talk about art, and create their own work.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/EPz_2N16MSJ1gjin4dVvCxgSkH8=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2023-09/513602.png"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Make and Muse: Family Crafting Tour (7-12 year olds)",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/make-and-muse-family-crafting-tour-7-12-year-olds",
+    "description": "Families will take a tour of the collections and do some hands-on crafting.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/ZXakHsoWuF1NTaJSSf11BTVsHVs=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2025-06/638735.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Curator's Talk - ‘I Contain Multitudes’: An exploration of identity in portraiture",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/curators-talk-i-contain-multitudes-an-exploration-of-identity-in-portraiture",
+    "description": "A behind the scenes look into Exploring Identity and HSFKramer Portrait Award 2025 exhibitions.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/kVjTDblnxqpok81E9H5M4SgBRao=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2026-03/700237.png"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Exclusive Tours: Herbert Smith Freehills Kramer Portrait Award 2025 & Exploring Identity exhibition",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/exclusive-tours-herbert-smith-freehills-kramer-portrait-award-2025-and-exploring-identity-exhibition",
+    "description": "Amy Pargeter, Exhibition Officer at the Laing, will give an exclusive tour of our new temporary exhibition.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/VHVixE-2FJ8EWp6pxRLcc-udHUw=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2026-03/701362.png"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "The Late Shows 2026",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/the-late-shows-2026",
+    "description": "Create your own 18th and 19th century clothing embellishments.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/QVm5RGBPCwhwC2joa3EpEWIVmXE=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2024-03/537669.png"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Northern Spirit",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/northern-spirit",
+    "description": "Celebrating artists, manufacturers and makers from North East England.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/RaTm9emWsE7_H4XfDIZVLXeqhn0=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2015-07/6472.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "100 Years of Collecting",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/100-years-collecting",
+    "description": "A long-term display of paintings and objects from the Laing's collection, from the 15th century to the present day.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/yFDIvWseh0BqEe7ZzsONQn9SDjc=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2022-09/451903.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "The Pursuit of Beauty",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/the-pursuit-of-beauty",
+    "description": "A new display highlighting key pieces from the decorative arts collections.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/D4_Fw-cHWmSkebGL70HWQCZlc6U=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2023-08/511437.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Tactile artworks and alternative interpretation",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/tactile-artworks-and-alternative-interpretation",
+    "description": "The gallery has a number of tactile artworks and a painting which is brought to life in a sound and light display.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/vPOkFXjZdyNRv0ErS7qrW6xXTdM=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2015-07/7822.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Playspace",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/under-5s-area",
+    "description": "Our free circus-themed Playspace is especially for our youngest visitors, where they can play and explore our den.",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/LOHhLEqHaVIM_T-N2iUxvW8ZLnk=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2019-07/324907.jpg"
+  },
+  {
+    "venue_name": "Laing Art Gallery",
+    "venue_city": "Newcastle",
+    "exhibition_title": "Chris Killip: The Last Ships",
+    "start_date": "2026-03-25",
+    "end_date": "2026-12-05",
+    "detail_page_url": "https://www.northeastmuseums.org.uk/laing/whats-on/chris-killip-the-last-ships",
+    "description": "Photography exhibition documenting the rise and fall of the shipbuilding trade in the North East of England in the 1970s",
+    "image_url": "https://d279tnhy9skgzk.cloudfront.net/NCEmAMk1o2iedKLhH9tldE2HNkw=/647x685/https://s3-eu-west-1.amazonaws.com/atwam-images-files/production/images/content/laingartgallery/2018-08/217389.jpg"
+  },
+  {
     "venue_name": "Cooper Gallery",
     "venue_city": "Barnsley",
     "exhibition_title": "Exhibition: Four Seasons In One Day",
@@ -2520,6 +2550,66 @@
     "image_url": null
   },
   {
+    "venue_name": "Grundy Art Gallery",
+    "venue_city": "Blackpool",
+    "exhibition_title": "Exhibitions",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.thegrundy.org/whats-on/exhibitions/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Grundy Art Gallery",
+    "venue_city": "Blackpool",
+    "exhibition_title": "Events",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.thegrundy.org/whats-on/events/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Grundy Art Gallery",
+    "venue_city": "Blackpool",
+    "exhibition_title": "Projects",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://www.thegrundy.org/whats-on/projects/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Grundy Art Gallery",
+    "venue_city": "Blackpool",
+    "exhibition_title": "Monet x The Magic Club",
+    "start_date": "2026-03-25",
+    "end_date": "2026-03-25",
+    "detail_page_url": "https://www.thegrundy.org/whats-on/single/monet-x-the-magic-club/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Grundy Art Gallery",
+    "venue_city": "Blackpool",
+    "exhibition_title": "LOUISE GIOVANELLI: FROM HERE TO HERE TO HERE",
+    "start_date": "2026-03-25",
+    "end_date": "2026-03-25",
+    "detail_page_url": "https://www.thegrundy.org/whats-on/single/louise-giovanelli-from-here-to-here-to-here/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Grundy Art Gallery",
+    "venue_city": "Blackpool",
+    "exhibition_title": "APOLLO PAINTING SCHOOL",
+    "start_date": "2026-03-25",
+    "end_date": "2026-03-25",
+    "detail_page_url": "https://www.thegrundy.org/whats-on/single/apollo-painting-school/",
+    "description": null,
+    "image_url": null
+  },
+  {
     "venue_name": "Bluecoat",
     "venue_city": "Liverpool",
     "exhibition_title": "ExhibitionLou Miller: We Dream of Our Freedom Sat 25 October 2025 - Sun 12 April 2026",
@@ -2552,7 +2642,7 @@
   {
     "venue_name": "Bluecoat",
     "venue_city": "Liverpool",
-    "exhibition_title": "ExhibitionPlotting the Course Daily from Sun 22 March 2026, 11:00am - 5:00pm",
+    "exhibition_title": "ExhibitionPlotting the Course Daily from Wed 25 March 2026, 11:00am - 5:00pm",
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://www.thebluecoat.org.uk/whatson/plotting-the-course-2",
@@ -2570,72 +2660,12 @@
     "image_url": null
   },
   {
-    "venue_name": "Site Gallery",
-    "venue_city": "Sheffield",
-    "exhibition_title": "exhibition When The Sky Gets Bright When The Sky Gets Bright is a new exhibition by Babeworld in collaboration with Society of Explorers and Creative Producers. 12 Jun 2026 – 27 Sep 2026",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sitegallery.org/exhibition/when-the-sky-gets-bright/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Site Gallery",
-    "venue_city": "Sheffield",
-    "exhibition_title": "exhibition Plantation Plantation by Rehana Zaman explores land use, labour and environmental collapse through experiences of agricultural workers. 20 Feb 2026 – 17 May 2026",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sitegallery.org/exhibition/rehana-zaman/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Site Gallery",
-    "venue_city": "Sheffield",
-    "exhibition_title": "exhibition The Goal of Our Health A new solo exhibition by New York and Glasgow-based artist and filmmaker Alexis Kyle Mitchell. 16 Oct 2026 – 28 Feb 2027",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://www.sitegallery.org/exhibition/the-goal-of-our-health/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Abbot Hall Art Gallery",
-    "venue_city": "Kendal",
-    "exhibition_title": "What’s on",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/whats-on/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Abbot Hall Art Gallery",
-    "venue_city": "Kendal",
-    "exhibition_title": "Our story",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/our-story/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Abbot Hall Art Gallery",
-    "venue_city": "Kendal",
-    "exhibition_title": "Coffee bar & Gift shop",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/coffee-bar-gift-shop/",
-    "description": null,
-    "image_url": null
-  },
-  {
-    "venue_name": "Abbot Hall Art Gallery",
-    "venue_city": "Kendal",
-    "exhibition_title": "Facilities and access",
-    "start_date": null,
-    "end_date": null,
-    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/facilities-access/",
+    "venue_name": "Bluecoat",
+    "venue_city": "Liverpool",
+    "exhibition_title": "FamilyBaby Book Club Wed 13 May - Wed 24 June 2026, 10:30am - 11:30am",
+    "start_date": "2026-06-24",
+    "end_date": "2026-06-24",
+    "detail_page_url": "https://www.thebluecoat.org.uk/whatson/baby-book-club",
     "description": null,
     "image_url": null
   },
@@ -2756,6 +2786,46 @@
     "start_date": null,
     "end_date": null,
     "detail_page_url": "https://www.whitworth.manchester.ac.uk/whats-on/exhibitions/reflections-sangat-and-the-self/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Abbot Hall Art Gallery",
+    "venue_city": "Kendal",
+    "exhibition_title": "What’s on",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/whats-on/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Abbot Hall Art Gallery",
+    "venue_city": "Kendal",
+    "exhibition_title": "Our story",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/our-story/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Abbot Hall Art Gallery",
+    "venue_city": "Kendal",
+    "exhibition_title": "Coffee bar & Gift shop",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/coffee-bar-gift-shop/",
+    "description": null,
+    "image_url": null
+  },
+  {
+    "venue_name": "Abbot Hall Art Gallery",
+    "venue_city": "Kendal",
+    "exhibition_title": "Facilities and access",
+    "start_date": null,
+    "end_date": null,
+    "detail_page_url": "https://lakelandarts.org.uk/abbot-hall/facilities-access/",
     "description": null,
     "image_url": null
   }
