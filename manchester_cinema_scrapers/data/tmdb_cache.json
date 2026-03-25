@@ -2755,45 +2755,6 @@
     ],
     "vote_average": 7.7
   },
-  "Make A Scene Presents: Victor/Victoria": {
-    "tmdb_id": 12614,
-    "tmdb_title": "Victor/Victoria",
-    "tmdb_original_title": "Victor/Victoria",
-    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
-    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
-    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
-    "release_date": "1982-04-25",
-    "director": "Blake Edwards",
-    "runtime": 134,
-    "genres": [
-      "Music",
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 7.3
-  },
-  "Reel Gems present: Fallen": {
-    "tmdb_id": 9411,
-    "tmdb_title": "Fallen",
-    "tmdb_original_title": "Fallen",
-    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
-    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
-    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
-    "release_date": "1998-01-16",
-    "director": "Gregory Hoblit",
-    "runtime": 124,
-    "genres": [
-      "Crime",
-      "Drama",
-      "Thriller"
-    ],
-    "vote_average": 6.793
-  },
-  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
-  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
-  "Mystery Shit Film Club": null,
-  "CURSE: Häxan With Live Score By Nick Carlisle": null,
-  "CURSE: Wolfwalkers (Family Friendly)": null,
   "CURSE: The Green Knight": {
     "tmdb_id": 559907,
     "tmdb_title": "The Green Knight",
@@ -2844,22 +2805,6 @@
     ],
     "vote_average": 6.203
   },
-  "Northern Folklore Archive Presents: The Ritual": {
-    "tmdb_id": 433808,
-    "tmdb_title": "The Ritual",
-    "tmdb_original_title": "The Ritual",
-    "overview": "A group of college friends reunite for a trip to the forest, but encounter a menacing presence in the woods that's stalking them.",
-    "poster_path": "/9022CYEGqYETCeXN1oE3uwYJWub.jpg",
-    "backdrop_path": "/vaArQHq1lHFNppoJlMlv30Gs2fQ.jpg",
-    "release_date": "2017-10-11",
-    "director": "David Bruckner",
-    "runtime": 94,
-    "genres": [
-      "Horror",
-      "Mystery"
-    ],
-    "vote_average": 6.267
-  },
   "CURSE: The Blood On Satan's Claw": {
     "tmdb_id": 26774,
     "tmdb_title": "The Blood on Satan's Claw",
@@ -2891,6 +2836,80 @@
     ],
     "vote_average": 7.517
   },
+  "Throwback: The Wolf of Wall Street": {
+    "tmdb_id": 106646,
+    "tmdb_title": "The Wolf of Wall Street",
+    "tmdb_original_title": "The Wolf of Wall Street",
+    "overview": "A New York stockbroker refuses to cooperate in a large securities fraud case involving corruption on Wall Street, corporate banking world and mob infiltration. Based on Jordan Belfort's autobiography.",
+    "poster_path": "/kW9LmvYHAaS9iA0tHmZVq8hQYoq.jpg",
+    "backdrop_path": "/7Nwnmyzrtd0FkcRyPqmdzTPppQa.jpg",
+    "release_date": "2013-12-25",
+    "director": "Martin Scorsese",
+    "runtime": 180,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Comedy"
+    ],
+    "vote_average": 8.027
+  },
+  "Monthly World Cinema Screening": null,
+  "Weekly Arthouse Screening": null,
+  "Make A Scene Presents: Victor/Victoria": {
+    "tmdb_id": 12614,
+    "tmdb_title": "Victor/Victoria",
+    "tmdb_original_title": "Victor/Victoria",
+    "overview": "A struggling female soprano finds work playing a male female impersonator, but it complicates her personal life.",
+    "poster_path": "/mCjXcPRM3Rc7gOCGeVrBdPvF2bk.jpg",
+    "backdrop_path": "/tcMG8GQ0m61PWIWkdJfOERrl1sJ.jpg",
+    "release_date": "1982-04-25",
+    "director": "Blake Edwards",
+    "runtime": 134,
+    "genres": [
+      "Music",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 7.3
+  },
+  "Reel Gems present: Fallen": {
+    "tmdb_id": 9411,
+    "tmdb_title": "Fallen",
+    "tmdb_original_title": "Fallen",
+    "overview": "Homicide detective John Hobbes witnesses the execution of serial killer Edgar Reese. Soon after the execution the killings start again, and they are very similar to Reese's style.",
+    "poster_path": "/nEDvTB9cP2oIKY0M1ZdDvuUEJ8d.jpg",
+    "backdrop_path": "/3UNd9jAE2CaGLAr5MGtzlh178SD.jpg",
+    "release_date": "1998-01-16",
+    "director": "Gregory Hoblit",
+    "runtime": 124,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 6.792
+  },
+  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
+  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
+  "Mystery Shit Film Club": null,
+  "CURSE: Häxan With Live Score By Nick Carlisle": null,
+  "CURSE: Wolfwalkers (Family Friendly)": null,
+  "Northern Folklore Archive Presents: The Ritual": {
+    "tmdb_id": 433808,
+    "tmdb_title": "The Ritual",
+    "tmdb_original_title": "The Ritual",
+    "overview": "A group of college friends reunite for a trip to the forest, but encounter a menacing presence in the woods that's stalking them.",
+    "poster_path": "/9022CYEGqYETCeXN1oE3uwYJWub.jpg",
+    "backdrop_path": "/vaArQHq1lHFNppoJlMlv30Gs2fQ.jpg",
+    "release_date": "2017-10-11",
+    "director": "David Bruckner",
+    "runtime": 94,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "vote_average": 6.267
+  },
   "Arco (PG) [Dubbed]": {
     "tmdb_id": 804370,
     "tmdb_title": "Arco",
@@ -2908,7 +2927,7 @@
       "Family",
       "Science Fiction"
     ],
-    "vote_average": 7.489
+    "vote_average": 7.462
   },
   "Arco (PG) [Subtitled]": {
     "tmdb_id": 804370,
@@ -2927,22 +2946,7 @@
       "Family",
       "Science Fiction"
     ],
-    "vote_average": 7.489
-  },
-  "The Straight Story - 4K Restoration (PG)": {
-    "tmdb_id": 404,
-    "tmdb_title": "The Straight Story",
-    "tmdb_original_title": "The Straight Story",
-    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
-    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
-    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
-    "release_date": "1999-10-15",
-    "director": "David Lynch",
-    "runtime": 112,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.741
+    "vote_average": 7.462
   },
   "Guardian Documentaries present: Legacies of Enslavement": null,
   "Baby & Carer/ The Straight Story – 4K Restoration (PG)": {
@@ -2961,6 +2965,88 @@
     ],
     "vote_average": 5.266
   },
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.742
+  },
+  "Redoubt (CTBA)": null,
+  "DJ Ahmet (PG)": {
+    "tmdb_id": 1400743,
+    "tmdb_title": "DJ Ahmet",
+    "tmdb_original_title": "Диџеј Ахмет",
+    "overview": "15-year-old Ahmet, from a remote Yuruk village in North Macedonia, finds refuge in music while navigating his father’s expectations, a conservative community, and his first experience with love — a girl already promised to someone else.",
+    "poster_path": "/1qQq52OGWBLG8RUqcrphzI6DZKp.jpg",
+    "backdrop_path": "/nJuvjdbdCOwosvnOyPrcNmJr97h.jpg",
+    "release_date": "2025-08-28",
+    "director": "Georgi M. Unkovski",
+    "runtime": 97,
+    "genres": [
+      "Drama",
+      "Music",
+      "Comedy"
+    ],
+    "vote_average": 7.0
+  },
+  "Two Prosecutors": {
+    "tmdb_id": 1257406,
+    "tmdb_title": "Two Prosecutors",
+    "tmdb_original_title": "Zwei Staatsanwälte",
+    "overview": "In 1937, amidst Stalin's Great Terror, a newly appointed prosecutor for the USSR is made aware of alleged corruption in the Secret Police, and takes it upon himself to investigate.",
+    "poster_path": "/k2jGfmN4T8Q5EMDpsUUgSwyhnSX.jpg",
+    "backdrop_path": "/3bFyBL1gFghrWH3FG0wNwZc1BGp.jpg",
+    "release_date": "2025-10-03",
+    "director": "Sergei Loznitsa",
+    "runtime": 118,
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "vote_average": 6.7
+  },
+  "Orwell: 2+2=5": {
+    "tmdb_id": 1098534,
+    "tmdb_title": "Orwell: 2+2=5",
+    "tmdb_original_title": "Orwell: 2+2=5",
+    "overview": "George Orwell was one of the most visionary authors of the 20th century, whose novels 1984 and Animal Farm foretold a chilling, authoritarian future. Acclaimed director Raoul Peck interweaves clips, readings from Orwell's diary, cinematic references, and modern-day footage to craft not only a portrait of the writer, but a fresh take on how prophetic his work has become.",
+    "poster_path": "/qG1LjcK8ohi4mSJ9j8KHUs5svbe.jpg",
+    "backdrop_path": "/iVqXcSZs4ye2HTROwUYQgy3Dx7c.jpg",
+    "release_date": "2025-10-03",
+    "director": "Raoul Peck",
+    "runtime": 119,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 7.167
+  },
+  "Apnas": {
+    "tmdb_id": 1638411,
+    "tmdb_title": "Apnas",
+    "tmdb_original_title": "Apnas",
+    "overview": "A British Asian Mancunian is drawn in to the criminal underworld by his notorious uncle. Everything is at stake as his competition with his cousin reaches a deadly level.",
+    "poster_path": "/9GzallO6gl14TFafP1Y5KDV2uzG.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-20",
+    "director": "Ashley Chin",
+    "runtime": 118,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 0.0
+  },
   "BFI Flare presents: Pink Narcissus": {
     "tmdb_id": 42497,
     "tmdb_title": "Pink Narcissus",
@@ -2977,7 +3063,39 @@
     "vote_average": 6.1
   },
   "Oska Bright 2026: Best of the Fest": null,
-  "Weekly Arthouse Screening": null,
+  "We Are Parable presents: The Watermelon Woman": {
+    "tmdb_id": 44479,
+    "tmdb_title": "The Watermelon Woman",
+    "tmdb_original_title": "The Watermelon Woman",
+    "overview": "A young black lesbian filmmaker probes into the life of The Watermelon Woman, a 1930s black actress who played 'mammy' archetypes.",
+    "poster_path": "/mBBqKfkvzSk6Rk7bfRXU9kR916N.jpg",
+    "backdrop_path": "/l0YhkeRNks3mPdjxd2VgAFtKplB.jpg",
+    "release_date": "1997-03-05",
+    "director": "Cheryl Dunye",
+    "runtime": 85,
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 6.8
+  },
+  "Filmed Up Mar 2026": null,
+  "Underland": {
+    "tmdb_id": 1465717,
+    "tmdb_title": "Underland",
+    "tmdb_original_title": "Underland",
+    "overview": "Based on Robert Macfarlane’s bestseller, UNDERLAND is a cinematic voyage beneath the surface of the earth.",
+    "poster_path": "/lbzzMee5gVt3yPdL9qExyuZtxGe.jpg",
+    "backdrop_path": "/9qGYEEHsKz4pOqUXlVX0koNF6re.jpg",
+    "release_date": "2026-03-27",
+    "director": "Rob Petit",
+    "runtime": 79,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 0.0
+  },
   "Throwback: Moulin Rouge! (25th Anniversary)": {
     "tmdb_id": 824,
     "tmdb_title": "Moulin Rouge!",
@@ -2993,7 +3111,23 @@
       "Romance",
       "Music"
     ],
-    "vote_average": 7.533
+    "vote_average": 7.534
+  },
+  "Reminders of Him": {
+    "tmdb_id": 1367642,
+    "tmdb_title": "Reminders of Him",
+    "tmdb_original_title": "Reminders of Him",
+    "overview": "When Diem's custodial grandparents adamantly refuse Kenna's attempts to see her daughter, Kenna discovers unexpected compassion, and then something truer and deeper, with former NFL player and local bar owner Ledger. As their secret romance develops, so do the dangers for both of them, leading Kenna toward heartbreak and, ultimately, the hope for a second chance.",
+    "poster_path": "/7L6rceYgzQ0NeHD7PRDNrRoQ291.jpg",
+    "backdrop_path": "/5rxEnsgriw8z065q51lrvPKYmCL.jpg",
+    "release_date": "2026-03-11",
+    "director": "Vanessa Caswill",
+    "runtime": 114,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "vote_average": 7.1
   },
   "Throwback: Romeo + Juliet (30th Anniversary)": {
     "tmdb_id": 454,
@@ -3009,24 +3143,106 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 6.781
+    "vote_average": 6.8
   },
-  "Throwback: The Wolf of Wall Street": {
-    "tmdb_id": 106646,
-    "tmdb_title": "The Wolf of Wall Street",
-    "tmdb_original_title": "The Wolf of Wall Street",
-    "overview": "A New York stockbroker refuses to cooperate in a large securities fraud case involving corruption on Wall Street, corporate banking world and mob infiltration. Based on Jordan Belfort's autobiography.",
-    "poster_path": "/kW9LmvYHAaS9iA0tHmZVq8hQYoq.jpg",
-    "backdrop_path": "/7Nwnmyzrtd0FkcRyPqmdzTPppQa.jpg",
-    "release_date": "2013-12-25",
-    "director": "Martin Scorsese",
-    "runtime": 180,
+  "The Super Mario Galaxy Movie": {
+    "tmdb_id": 1226863,
+    "tmdb_title": "The Super Mario Galaxy Movie",
+    "tmdb_original_title": "The Super Mario Galaxy Movie",
+    "overview": "Having thwarted Bowser's previous plot to marry Princess Peach, Mario and Luigi now face a fresh threat in Bowser Jr., who is determined to liberate his father from captivity and restore the family legacy. Alongside companions new and old, the brothers travel across the stars to stop the young heir's crusade.",
+    "poster_path": "/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
+    "backdrop_path": "/9Z2uDYXqJrlmePznQQJhL6d92Rq.jpg",
+    "release_date": "2026-04-01",
+    "director": "Aaron Horvath",
+    "runtime": 98,
     "genres": [
-      "Crime",
+      "Family",
+      "Fantasy",
+      "Comedy",
+      "Adventure",
+      "Animation"
+    ],
+    "vote_average": 0.0
+  },
+  "The Devil Wears Prada 2": {
+    "tmdb_id": 1314481,
+    "tmdb_title": "The Devil Wears Prada 2",
+    "tmdb_original_title": "The Devil Wears Prada 2",
+    "overview": "Miranda Priestly navigates her career amid the decline of traditional magazine publishing. She faces off against Emily Charlton, her one-time assistant, now a high-powered executive for a luxury group, with advertising dollars that Priestly desperately needs.",
+    "poster_path": "/sRTYF65JvbHLoC3LoBj4UKYqIlA.jpg",
+    "backdrop_path": "/kWVRd8yhB4SGdjSqVI2c6DwHInS.jpg",
+    "release_date": "2026-04-29",
+    "director": "David Frankel",
+    "runtime": 120,
+    "genres": [
       "Drama",
       "Comedy"
     ],
-    "vote_average": 8.027
+    "vote_average": 0.0
+  },
+  "The Royal Opera: The Magic Flute": null,
+  "Glenrothan": {
+    "tmdb_id": 1335666,
+    "tmdb_title": "Glenrothan",
+    "tmdb_original_title": "Glenrothan",
+    "overview": "After 35 years in Chicago, Donal reluctantly returns to the Scottish Highlands to reconcile with his estranged older brother Sandy. Sandy needs Donal to take over the family's whisky distillery or he'll be forced to sell and give up on the family's legacy. But their reunion forces the brothers to confront the past and the real reason Donal left Glenrothan.",
+    "poster_path": "/gNKQETNDN9sVxpiayzF9bTw5a5q.jpg",
+    "backdrop_path": "/dAU3mJzDLWWZyndByhV7hSIfBiK.jpg",
+    "release_date": "2026-04-17",
+    "director": "Brian Cox",
+    "runtime": 99,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "The Drama": {
+    "tmdb_id": 1325734,
+    "tmdb_title": "The Drama",
+    "tmdb_original_title": "The Drama",
+    "overview": "A happily engaged couple is put to the test when an unexpected turn sends their wedding week off the rails.",
+    "poster_path": "/ikcNOWB6Qo1ER1H1BJL6Vf0W22s.jpg",
+    "backdrop_path": "/bZJSYYVrfhM3upw38KXv7SUz7Kz.jpg",
+    "release_date": "2026-04-01",
+    "director": "Kristoffer Borgli",
+    "runtime": 105,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "vote_average": 0.0
+  },
+  "My Father's Shadow": {
+    "tmdb_id": 1432605,
+    "tmdb_title": "My Father's Shadow",
+    "tmdb_original_title": "My Father's Shadow",
+    "overview": "Two young brothers explore Lagos with their estranged father during the 1993 Nigerian election crisis, witnessing both the city's magnitude and their father's daily struggles as political unrest threatens their journey home.",
+    "poster_path": "/aLQYyqWlIBBU3L8L84txbh0x1nq.jpg",
+    "backdrop_path": "/4eo6xojA8OPoGlN72PfNwHf8f7i.jpg",
+    "release_date": "2025-09-19",
+    "director": "Akinola Davies Jr.",
+    "runtime": 93,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 8.5
+  },
+  "California Schemin'": {
+    "tmdb_id": 1193550,
+    "tmdb_title": "California Schemin'",
+    "tmdb_original_title": "California Schemin'",
+    "overview": "In the late 1990s, Gavin Bain and Billy Boyd had their musical ambitions consistently ridiculed for having the 'wrong' accents, so they went for broke and reinvented themselves as Californian rappers. The duo re-recorded their own tracks with fake accents and turned up in London claiming to be an established duo on the Cali scene as well as childhood friends with Eminem. They quickly bagged themselves a record deal, a hefty sum in advances, and an appearance on MTV... until it all came crashing down.",
+    "poster_path": "/2tYRbCPZVQD1AjZ6YGMRx71lbDU.jpg",
+    "backdrop_path": "/lsNYBdtXxmCjm9zZ4jrJtKmMNJZ.jpg",
+    "release_date": "2026-04-10",
+    "director": "James McAvoy",
+    "runtime": 107,
+    "genres": [
+      "Music",
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 0.0
   },
   "Fantastic Four: First Steps": {
     "tmdb_id": 240435,
@@ -3043,6 +3259,58 @@
     ],
     "vote_average": 6.1
   },
+  "Michael": {
+    "tmdb_id": 2928,
+    "tmdb_title": "Michael",
+    "tmdb_original_title": "Michael",
+    "overview": "Tabloid reporters are sent by their editor to investigate after the paper recieves a letter from a woman claiming an angel is living with her.",
+    "poster_path": "/oprNZ2BvJG9ZV2g3JYeWQgsOZHe.jpg",
+    "backdrop_path": "/z5SNckbpdKEdx8N3FFOB93l9kp1.jpg",
+    "release_date": "1996-12-25",
+    "director": "Nora Ephron",
+    "runtime": 105,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "vote_average": 5.712
+  },
+  "Moulin Rouge! 25th Anniversary": {
+    "tmdb_id": 824,
+    "tmdb_title": "Moulin Rouge!",
+    "tmdb_original_title": "Moulin Rouge!",
+    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
+    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
+    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
+    "release_date": "2001-05-18",
+    "director": "Baz Luhrmann",
+    "runtime": 128,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 7.534
+  },
+  "Sirāt": {
+    "tmdb_id": 1151272,
+    "tmdb_title": "Sirāt",
+    "tmdb_original_title": "Sirāt",
+    "overview": "A man and his son arrive at a rave lost in the mountains of Morocco. They are looking for Marina, their daughter and sister, who disappeared months ago at another rave. Driven by fate, they decide to follow a group of ravers in search of one last party, in hopes Marina will be there.",
+    "poster_path": "/bzBtsLi17rK4G6kDvOXfUZfAhca.jpg",
+    "backdrop_path": "/kOUV5WbisWMg56d8eB45ZHEVxYq.jpg",
+    "release_date": "2025-06-06",
+    "director": "Oliver Laxe",
+    "runtime": 115,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "vote_average": 6.851
+  },
+  "The Royal Opera: La Traviata": null,
+  "The Royal Opera: Siegfried": null,
   "National Theatre Live: All My Sons": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
@@ -3060,8 +3328,5 @@
       "Romance"
     ],
     "vote_average": 5.974
-  },
-  "The Royal Opera: La Traviata": null,
-  "The Royal Opera: Siegfried": null,
-  "The Royal Opera: The Magic Flute": null
+  }
 }
