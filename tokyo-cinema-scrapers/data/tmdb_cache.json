@@ -9571,7 +9571,7 @@
       "Mystery"
     ],
     "runtime": 71,
-    "vote_average": 7.728,
+    "vote_average": 7.7,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -11817,7 +11817,7 @@
       "Drama"
     ],
     "runtime": 174,
-    "vote_average": 8.158,
+    "vote_average": 7.9,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -88388,7 +88388,7 @@
       "Action"
     ],
     "runtime": 144,
-    "vote_average": 8.117,
+    "vote_average": 8.1,
     "tmdb_countries": [
       {
         "iso_3166_1": "CN",
@@ -89730,7 +89730,7 @@
       "Science Fiction"
     ],
     "runtime": 60,
-    "vote_average": 6.067,
+    "vote_average": 6.1,
     "tmdb_countries": [
       {
         "iso_3166_1": "JP",
@@ -89893,8 +89893,2138 @@
       "Mystery"
     ],
     "runtime": 95,
-    "vote_average": 6.274,
+    "vote_average": 6.3,
     "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ティーンエイジ・スーパースターズ": {
+    "tmdb_id": 462784,
+    "tmdb_title_jp": "Teenage Superstars",
+    "tmdb_title_en": "Teenage Superstars",
+    "tmdb_title_original": "Teenage Superstars",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Grant McPhee's sequel to Big Gold Dream picks up where the previous film left off, and continues its thrilling tour of the pre-Britpop, Scottish music scene. It features bands, such as The Bluebells, The Pastels, The Soup Dragons and an early incarnation of Teenage Fanclub; plenty of rich archive footage; and fascinating interviews with some of the key people of the time, including Edwyn Collins, Bobby Gillespie, Jim Reid, Sean Dickson, Eugene Kelly and Alan McGee.",
+    "poster_path": "/AoLimBMt9vigpyCn7j1Jmn0iV7J.jpg",
+    "backdrop_path": "/BVTyfPCFt0ILD4UrINcPVhC19J.jpg",
+    "release_date": "2017-06-22",
+    "director": "Grant McPhee",
+    "director_jp": "Grant McPhee",
+    "director_en": "Grant McPhee",
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Music",
+      "Documentary"
+    ],
+    "runtime": 109,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "レディ・ノワール": null,
+  "特攻の海 3Dが語る80年目の真実": null,
+  "矛盾に抱かれて　音楽　建築　哲学　悲哀　循環": null,
+  "鈴木順子「私は生きる」　脱線事故20年、記憶の軌跡": null,
+  "共に、世界一へ　デフサッカー日本代表の軌跡": null,
+  "キング・オブ・キングス": {
+    "tmdb_id": 1181107,
+    "tmdb_title_jp": "キング・オブ・キングス",
+    "tmdb_title_en": "The King of Kings",
+    "tmdb_title_original": "The King of Kings",
+    "tmdb_original_language": "en",
+    "overview": "イギリスの人気作家チャールズ・ディケンズは、自作の朗読劇「クリスマス・キャロル」の舞台を5歳の末息子ウォルターのいたずらで台なしにされ、親子の関係がこじれてしまう。妻キャサリンのアドバイスを受けたディケンズは、我が子のために執筆した特別な物語「王の中の王」をウォルターに読み聞かせることにした。それは二千年前、ベツレヘムで生まれたイエス・キリストの壮大な人生を描いたものだった。12歳で〝神の子〟としての使命を自覚し、30歳で洗礼を受け、弟子たちの目の前で多くの奇跡を起こし、人々に愛と赦しを説き続けるイエス。信仰が広まる一方、「神への冒涜だ」と敵意を募らせる者たちもいた。",
+    "overview_en": "Charles Dickens tells his young son Walter the greatest story ever told, and what begins as a bedtime tale becomes a life-changing journey. Through vivid imagination, the boy walks alongside Jesus, witnessing His miracles, facing His trials, and understanding His ultimate sacrifice.",
+    "poster_path": "/ccw7CCIAvcZV431CP7NhHAHuiHR.jpg",
+    "backdrop_path": "/mr2LvZydvor6CDZhrpJLRYMCcBc.jpg",
+    "release_date": "2025-04-07",
+    "director": "장성호",
+    "director_jp": "장성호",
+    "director_en": "Jang Seong-ho",
+    "genres": [
+      "アニメーション",
+      "ファミリー",
+      "ファンタジー",
+      "ドラマ",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family",
+      "Fantasy",
+      "Drama",
+      "Adventure"
+    ],
+    "runtime": 102,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1181107": {
+    "tmdb_id": 1181107,
+    "tmdb_title_jp": "キング・オブ・キングス",
+    "tmdb_title_en": "The King of Kings",
+    "tmdb_title_original": "The King of Kings",
+    "tmdb_original_language": "en",
+    "overview": "イギリスの人気作家チャールズ・ディケンズは、自作の朗読劇「クリスマス・キャロル」の舞台を5歳の末息子ウォルターのいたずらで台なしにされ、親子の関係がこじれてしまう。妻キャサリンのアドバイスを受けたディケンズは、我が子のために執筆した特別な物語「王の中の王」をウォルターに読み聞かせることにした。それは二千年前、ベツレヘムで生まれたイエス・キリストの壮大な人生を描いたものだった。12歳で〝神の子〟としての使命を自覚し、30歳で洗礼を受け、弟子たちの目の前で多くの奇跡を起こし、人々に愛と赦しを説き続けるイエス。信仰が広まる一方、「神への冒涜だ」と敵意を募らせる者たちもいた。",
+    "overview_en": "Charles Dickens tells his young son Walter the greatest story ever told, and what begins as a bedtime tale becomes a life-changing journey. Through vivid imagination, the boy walks alongside Jesus, witnessing His miracles, facing His trials, and understanding His ultimate sacrifice.",
+    "poster_path": "/ccw7CCIAvcZV431CP7NhHAHuiHR.jpg",
+    "backdrop_path": "/mr2LvZydvor6CDZhrpJLRYMCcBc.jpg",
+    "release_date": "2025-04-07",
+    "director": "장성호",
+    "director_jp": "장성호",
+    "director_en": "Jang Seong-ho",
+    "genres": [
+      "アニメーション",
+      "ファミリー",
+      "ファンタジー",
+      "ドラマ",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family",
+      "Fantasy",
+      "Drama",
+      "Adventure"
+    ],
+    "runtime": 102,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "山人（やまんど）　縄文の響きが木霊する": null,
+  "流星(1999・香港)": {
+    "tmdb_id": 4244,
+    "tmdb_title_jp": "キッド",
+    "tmdb_title_en": "The Kid",
+    "tmdb_title_original": "The Kid",
+    "tmdb_original_language": "en",
+    "overview": "独身のラスは優秀なイメージ・コンサルタントで、著名人にイメージ・アップのためのアドバイスをしている。ある夜、ラスは自宅で小さな男の子を目撃する。その時は見失ってしまうが、翌日、もう一度その少年に出会ったラスは、少年が昔のラス＝ラスティであると知る。二人で話をしているうちに、ラスは今の自分が子供の頃の夢をひとつも叶えていないことにがく然とする。そして、ラスティにもうすぐ訪れる8歳の誕生日が最悪なものであったことを思い出す。",
+    "overview_en": "Powerful businessman Russ Duritz is self-absorbed and immersed in his work. But by the magic of the moon, he meets Rusty, a chubby, charming 8-year-old version of himself who can't believe he could turn out so badly – with no life and no dog. With Rusty's help, Russ is able to reconcile the person he used to dream of being with the man he's actually become.",
+    "poster_path": "/kH9Z5cuY48afpmtTeWcZNyWRWkc.jpg",
+    "backdrop_path": "/jEMYEoQw7jF0aoKRgaa1TbHojUT.jpg",
+    "release_date": "2000-07-07",
+    "director": "Jon Turteltaub",
+    "director_jp": "Jon Turteltaub",
+    "director_en": "Jon Turteltaub",
+    "genres": [
+      "ファンタジー",
+      "コメディ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 104,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ヴァージン・スーサイズ": {
+    "tmdb_id": 1443,
+    "tmdb_title_jp": "ヴァージン・スーサイズ",
+    "tmdb_title_en": "The Virgin Suicides",
+    "tmdb_title_original": "The Virgin Suicides",
+    "tmdb_original_language": "en",
+    "overview": "美しくてかわいく、それでいてどこか謎めいたところのあるリズボン家の5人姉妹。ヘビトンボが、美しい郊外の街を覆いつくす6月、そんな5人姉妹の末妹セシリアが聖母マリアの写真を胸に抱きながら、剃刀で腕を切った。一命はとりとめたものの、彼女は数日後、自宅で開かれたパーティーの最中、窓から身を投げて命を落とす。繊細でかつ危うさを秘めた思春期の少女達の揺れ動く心情を、巨匠F・F・コッポラの娘にしてこれが監督デビュー作のソフィア・コッポラが瑞々しいタッチで描いたドラマ。",
+    "overview_en": "A group of male friends become obsessed with five mysterious sisters who are sheltered by their strict, religious parents.",
+    "poster_path": "/2SHeo3gM9WJmNQZ1adNvCt2bf4O.jpg",
+    "backdrop_path": "/6b6UpsOXmjO8mJKYsGTG9HW49CN.jpg",
+    "release_date": "2000-04-21",
+    "director": "ソフィア・コッポラ",
+    "director_jp": "ソフィア・コッポラ",
+    "director_en": "Sofia Coppola",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 98,
+    "vote_average": 7.131,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:1443": {
+    "tmdb_id": 1443,
+    "tmdb_title_jp": "ヴァージン・スーサイズ",
+    "tmdb_title_en": "The Virgin Suicides",
+    "tmdb_title_original": "The Virgin Suicides",
+    "tmdb_original_language": "en",
+    "overview": "美しくてかわいく、それでいてどこか謎めいたところのあるリズボン家の5人姉妹。ヘビトンボが、美しい郊外の街を覆いつくす6月、そんな5人姉妹の末妹セシリアが聖母マリアの写真を胸に抱きながら、剃刀で腕を切った。一命はとりとめたものの、彼女は数日後、自宅で開かれたパーティーの最中、窓から身を投げて命を落とす。繊細でかつ危うさを秘めた思春期の少女達の揺れ動く心情を、巨匠F・F・コッポラの娘にしてこれが監督デビュー作のソフィア・コッポラが瑞々しいタッチで描いたドラマ。",
+    "overview_en": "A group of male friends become obsessed with five mysterious sisters who are sheltered by their strict, religious parents.",
+    "poster_path": "/2SHeo3gM9WJmNQZ1adNvCt2bf4O.jpg",
+    "backdrop_path": "/6b6UpsOXmjO8mJKYsGTG9HW49CN.jpg",
+    "release_date": "2000-04-21",
+    "director": "ソフィア・コッポラ",
+    "director_jp": "ソフィア・コッポラ",
+    "director_en": "Sofia Coppola",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 98,
+    "vote_average": 7.131,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ラブライブ！The School Idol Movie": {
+    "tmdb_id": 333623,
+    "tmdb_title_jp": "ラブライブ！The School Idol Movie",
+    "tmdb_title_en": "Love Live! The School Idol Movie",
+    "tmdb_title_original": "ラブライブ！The School Idol Movie",
+    "tmdb_original_language": "ja",
+    "overview": "スクールアイドルたちがパフォーマンスを競う大会「ラブライブ！」。前回優勝者のμ’ｓは、3年生の卒業をもって活動をおしまいにすると決めていたが、卒業式の直後、μ’ｓのもとに飛び込んで来たひとつの知らせを受けて、新たなライブをすることに！見たことのない世界とふれあい、また少しずつまた成長していく9人。スクールアイドルとして、最後に何ができるのか——。限られた時間のなかで、μ'ｓが見つけた最高に楽しいライブとは——！？",
+    "overview_en": "Although μ's, the defending champions of the school idol tournament, plans to dissolve their group after the graduation of their senior members, they receive news that leads them to holding a concert event! The 9 girls continue to learn and grow in this new and unfamiliar world. What is the last thing that these girls can do as school idols? With the clock ticking, what kind of meaning will the μ's members find in performing the most exciting live performance?",
+    "poster_path": "/1Akj1uxq3sEhozd5oUzvd9fAcJq.jpg",
+    "backdrop_path": "/e2ng9SVuRJqeH3zPX2XWqdY4Zz2.jpg",
+    "release_date": "2015-06-13",
+    "director": "京極尚彦",
+    "director_jp": "京極尚彦",
+    "director_en": "Takahiko Kyougoku",
+    "genres": [
+      "アニメーション",
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 99,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:333623": {
+    "tmdb_id": 333623,
+    "tmdb_title_jp": "ラブライブ！The School Idol Movie",
+    "tmdb_title_en": "Love Live! The School Idol Movie",
+    "tmdb_title_original": "ラブライブ！The School Idol Movie",
+    "tmdb_original_language": "ja",
+    "overview": "スクールアイドルたちがパフォーマンスを競う大会「ラブライブ！」。前回優勝者のμ’ｓは、3年生の卒業をもって活動をおしまいにすると決めていたが、卒業式の直後、μ’ｓのもとに飛び込んで来たひとつの知らせを受けて、新たなライブをすることに！見たことのない世界とふれあい、また少しずつまた成長していく9人。スクールアイドルとして、最後に何ができるのか——。限られた時間のなかで、μ'ｓが見つけた最高に楽しいライブとは——！？",
+    "overview_en": "Although μ's, the defending champions of the school idol tournament, plans to dissolve their group after the graduation of their senior members, they receive news that leads them to holding a concert event! The 9 girls continue to learn and grow in this new and unfamiliar world. What is the last thing that these girls can do as school idols? With the clock ticking, what kind of meaning will the μ's members find in performing the most exciting live performance?",
+    "poster_path": "/1Akj1uxq3sEhozd5oUzvd9fAcJq.jpg",
+    "backdrop_path": "/e2ng9SVuRJqeH3zPX2XWqdY4Zz2.jpg",
+    "release_date": "2015-06-13",
+    "director": "京極尚彦",
+    "director_jp": "京極尚彦",
+    "director_en": "Takahiko Kyougoku",
+    "genres": [
+      "アニメーション",
+      "音楽",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Animation",
+      "Music",
+      "Comedy"
+    ],
+    "runtime": 99,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "コードギアス　亡国のアキト　第4章「憎しみの記憶から」": {
+    "tmdb_id": 347187,
+    "tmdb_title_jp": "コードギアス 亡国のアキト 第4章 憎しみの記憶から",
+    "tmdb_title_en": "Code Geass: Akito the Exiled 4: Memories of Hatred",
+    "tmdb_title_original": "コードギアス　亡国のアキト 第4章「憎しみの記憶から」",
+    "tmdb_original_language": "ja",
+    "overview": "ユーロピア共和国連合の特殊部隊“wZERO”のパイロットである日向アキトらは、「方舟の船団」によるテロが敵であるユーロ・ブリタニアの計略だと気付く。アキトたちはユーロ・ブリタニアの本拠・大型飛行艇ガリア・グランデを攻撃、激しい戦闘を繰り広げる。そんな中、司令官レイラ・マルカルがいるwZERO部隊の拠点・ヴァイスボルフ城をユーロ・ブリタニアが襲撃。さらに首都パリでは、ジィーン・スマイラス将軍によるクーデターが決起され……。",
+    "overview_en": "While W-0 is away, Leila and the remaining crew at base find themselves surrounded by Britannian Knightmares. Piloting the Vercingetorix, Shin Hyuuga leads the enemy charge, having usurped the position of Grand Master in the Knights of St. Michael. With her core members unavailable, it's up to Leila to protect her comrades, but this may be much tougher than she realizes: a spy lurking among them is finally ready to reveal himself.  Left with no choice but to surrender, Leila arranges a meeting with Shin in order to ensure the safety of her squad. But as negotiations begin to fall apart, Akito and an unexpected ally return in the nick of time to turn things around.",
+    "poster_path": "/dMtmsOEyPC4KgyRDM7ROl3MwvEo.jpg",
+    "backdrop_path": "/nooftRGmR8HTdMYXGBQi5pUQNqR.jpg",
+    "release_date": "2015-07-04",
+    "director": "赤根和樹",
+    "director_jp": "赤根和樹",
+    "director_en": "Kazuki Akane",
+    "genres": [
+      "アクション",
+      "アニメーション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Action",
+      "Animation",
+      "Science Fiction"
+    ],
+    "runtime": 60,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "METライブビューイング2025-26 ベッリーニ《清教徒》": null,
+  "あいつばかりが何故もてる": {
+    "tmdb_id": 1105806,
+    "tmdb_title_jp": "あいつばかりが何故もてる",
+    "tmdb_title_en": "Aitsu bakari ga naze moteru",
+    "tmdb_title_original": "あいつばかりが何故もてる",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "1962 Japanese movie",
+    "poster_path": "/dqiVHlCsNFkIfbl1fUkvEvcSQW.jpg",
+    "backdrop_path": null,
+    "release_date": "1962-11-18",
+    "director": "酒井欣也",
+    "director_jp": "酒井欣也",
+    "director_en": "Kinya Sakai",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 84,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "男はつらいよ 旅と女と寅次郎": {
+    "tmdb_id": 417851,
+    "tmdb_title_jp": "男はつらいよ 旅と女と寅次郎",
+    "tmdb_title_en": "Tora-san's Song of Love",
+    "tmdb_title_original": "男はつらいよ 旅と女と寅次郎",
+    "tmdb_original_language": "ja",
+    "overview": "「男はつらいよ」シリーズ第31作。寅さんが、満男の小学校生活最後の運動会に行くか行かないで、大げんか。そして旅先の佐渡島への港で出会ったのが、私生活と仕事の板挟みで何もかも投げ出したくなって、失踪中の演歌歌手・京はるみ（都はるみ）。そうとは知らず寅さんは、彼女と佐渡への二人旅。楽しい時を過ごし、やがて別れの時が。彼女の正体にいつしか気づいた寅さんは、優しい言葉をかける。そして柴又、「佐渡島の休日」に想いを馳せ、はるみの歌に聞き惚れていると、なんとはるみがとらやへやってくる・・・",
+    "overview_en": "Tora-san returns to his family home to learn that his brother-in-law cannot go to Mitsuo's (Tora-san's nephew) athletic event. Tora-san volunteers to take his place, but gets into an argument with his brother-in-law's boss and returns to the road. He meets a young woman in Niigata who, unbeknownst to him, is a popular enka singer.",
+    "poster_path": "/aPSe8525Ltawf9H6k9yOIxDorIX.jpg",
+    "backdrop_path": "/hYT7gsKzDOq0dQiw0hB0RcnrxkL.jpg",
+    "release_date": "1983-08-06",
+    "director": "山田洋次",
+    "director_jp": "山田洋次",
+    "director_en": "Yoji Yamada",
+    "genres": [
+      "コメディ"
+    ],
+    "genres_en": [
+      "Comedy"
+    ],
+    "runtime": 101,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "東海一の若親分": {
+    "tmdb_id": 1203548,
+    "tmdb_title_jp": "若き日の次郎長東海一の若親分",
+    "tmdb_title_en": "Jirocho’s Days of Youth: The Youngest Boss in the Tokai Region",
+    "tmdb_title_original": "若き日の次郎長東海一の若親分",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "He was married to his lover's butterfly and started a new residence. But good things do not last. In his uncle, Uzaemon in Kawashima, Yoshiji Akaji, Yoshimoto's lender, and Kanehira Akagi, the older brother of the former loan of Mishima, played a challenge. It is said to open the ladies' room to the settlement of Wada island. Although Jiro headed to Shigetsugu for arbitration, he was forced to surrender. In such a case, Jiro became chased by Kinpei and others.",
+    "poster_path": "/wWixIwLYrkVPdTBhRAY9pRFaNk1.jpg",
+    "backdrop_path": "/gvKyLp1nEdsElTZf3qi1kWm07wL.jpg",
+    "release_date": "1961-06-21",
+    "director": "マキノ雅弘",
+    "director_jp": "マキノ雅弘",
+    "director_en": "Masahiro Makino",
+    "genres": [
+      "ドラマ",
+      "犯罪",
+      "履歴"
+    ],
+    "genres_en": [
+      "Drama",
+      "Crime",
+      "History"
+    ],
+    "runtime": 93,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "八つ墓村（1977）": {
+    "tmdb_id": 119947,
+    "tmdb_title_jp": "八つ墓村",
+    "tmdb_title_en": "Village of Eight Gravestones",
+    "tmdb_title_original": "八つ墓村",
+    "tmdb_original_language": "ja",
+    "overview": "東京で暮らしている青年・寺田辰弥は、自分を探していた母方の祖父・井川丑松が目の前で変死したことを機に、生まれ故郷の八つ墓村を訪れる。そこは戦国時代、村人たちによって8人の落ち武者が惨殺されたという忌まわしい歴史をもつ土地だった。帰郷した辰弥の周りでは次々と奇怪な殺人事件が起こり…。  横溝正史の同名ミステリー小説を、巨匠・野村芳太郎監督が映画化。渥美清演じる名探偵・金田一耕助が事件の謎を解き明かす。",
+    "overview_en": "The heir to a family fortune discovers that a curse has been placed on it, put there centuries before by a band of samurai warriors. Adaptation of novel by Seishi Yokomizo",
+    "poster_path": "/6n39yJMm57iQmBgLv575shJFk2Q.jpg",
+    "backdrop_path": "/3uDaCbtMhFKKJ7zmj6hFiIdk2ZM.jpg",
+    "release_date": "1977-10-29",
+    "director": "野村芳太郎",
+    "director_jp": "野村芳太郎",
+    "director_en": "Yoshitarō Nomura",
+    "genres": [
+      "スリラー",
+      "ホラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Thriller",
+      "Horror",
+      "Mystery"
+    ],
+    "runtime": 151,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "もず（1961）": {
+    "tmdb_id": 593128,
+    "tmdb_title_jp": "もず",
+    "tmdb_title_en": "The Shrikes",
+    "tmdb_title_original": "もず",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "",
+    "poster_path": "/u8pPDbvJNS0DBjnjl43D6JbCiQv.jpg",
+    "backdrop_path": null,
+    "release_date": "1961-03-01",
+    "director": "渋谷実",
+    "director_jp": "渋谷実",
+    "director_en": "Minoru Shibuya",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 94,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "感傷的な運命": {
+    "tmdb_id": 64310,
+    "tmdb_title_jp": "Les Destinées sentimentales",
+    "tmdb_title_en": "Sentimental Destinies",
+    "tmdb_title_original": "Les Destinées sentimentales",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In late nineteenth century Charante, Protestant minister Jean Barnery causes local disquiet when he arranges a separation from his obsessive wife. He and his lover keep their love strong as the world changes around them.",
+    "poster_path": "/8a3EiJPpPCsmtBUhNVGBf5pPHSx.jpg",
+    "backdrop_path": "/rz1TKlEBiJwAiXFdT4BJDSlElP7.jpg",
+    "release_date": "2000-07-12",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 180,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "5月の後": {
+    "tmdb_id": 122089,
+    "tmdb_title_jp": "5月の後",
+    "tmdb_title_en": "Something in the Air",
+    "tmdb_title_original": "Après Mai",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "During the 1970s a student named Gilles gets entangled in contemporary political turmoils although he would rather just be a creative artist. While torn between his solidarity to his friends and his personal ambitions he falls in love with Christine.",
+    "poster_path": "/ziGZ6sPFGIuFaBuJwLqSWKNL8s3.jpg",
+    "backdrop_path": "/tDbWiJNqQHBqyaAs4vaAlEYwujQ.jpg",
+    "release_date": "2012-11-14",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:122089": {
+    "tmdb_id": 122089,
+    "tmdb_title_jp": "5月の後",
+    "tmdb_title_en": "Something in the Air",
+    "tmdb_title_original": "Après Mai",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "During the 1970s a student named Gilles gets entangled in contemporary political turmoils although he would rather just be a creative artist. While torn between his solidarity to his friends and his personal ambitions he falls in love with Christine.",
+    "poster_path": "/ziGZ6sPFGIuFaBuJwLqSWKNL8s3.jpg",
+    "backdrop_path": "/tDbWiJNqQHBqyaAs4vaAlEYwujQ.jpg",
+    "release_date": "2012-11-14",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 122,
+    "vote_average": 5.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "恋愛裁判": {
+    "tmdb_id": 1433087,
+    "tmdb_title_jp": "恋愛裁判",
+    "tmdb_title_en": "Love on Trial",
+    "tmdb_title_original": "恋愛裁判",
+    "tmdb_original_language": "ja",
+    "overview": "人気急上昇中のアイドルグループ「ハッピー☆ファンファーレ」でセンターを務める山岡真衣 (齊藤京子) は、中学時代の同級生・間山敬 (倉悠貴) と偶然再会し、恋に落ちる。アイドルとして背負う「恋愛禁止」ルールと、抑えきれない自身の感情との間で葛藤する真衣。しかし、ある事件をきっかけに、彼女は衝動的に敬のもとへと駆け寄る。その8カ月後、事態は一変。所属事務所から「恋愛禁止条項違反」で訴えられた真衣は、事務所社長の吉田光一 (津田健次郎)、チーフマネージャーの矢吹早耶 (唐田えりか) らによって、法廷で厳しく追及されることとなる。アイドルが「恋」をすることは「罪」なのか？彼女の選択が今、裁かれる――",
+    "overview_en": "A rising J-Pop idol named Mai finds her career in jeopardy when she falls in love, violating the \"no dating\" clause in her contract.",
+    "poster_path": "/6mnHE3hu8HbMS43R5tlIXrAN5w1.jpg",
+    "backdrop_path": "/pN6sTnFXUuiDqR019WBFhCnQ2KX.jpg",
+    "release_date": "2026-01-23",
+    "director": "深田晃司",
+    "director_jp": "深田晃司",
+    "director_en": "Koji Fukada",
+    "genres": [
+      "ドラマ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 124,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "tmdb:1433087": {
+    "tmdb_id": 1433087,
+    "tmdb_title_jp": "恋愛裁判",
+    "tmdb_title_en": "Love on Trial",
+    "tmdb_title_original": "恋愛裁判",
+    "tmdb_original_language": "ja",
+    "overview": "人気急上昇中のアイドルグループ「ハッピー☆ファンファーレ」でセンターを務める山岡真衣 (齊藤京子) は、中学時代の同級生・間山敬 (倉悠貴) と偶然再会し、恋に落ちる。アイドルとして背負う「恋愛禁止」ルールと、抑えきれない自身の感情との間で葛藤する真衣。しかし、ある事件をきっかけに、彼女は衝動的に敬のもとへと駆け寄る。その8カ月後、事態は一変。所属事務所から「恋愛禁止条項違反」で訴えられた真衣は、事務所社長の吉田光一 (津田健次郎)、チーフマネージャーの矢吹早耶 (唐田えりか) らによって、法廷で厳しく追及されることとなる。アイドルが「恋」をすることは「罪」なのか？彼女の選択が今、裁かれる――",
+    "overview_en": "A rising J-Pop idol named Mai finds her career in jeopardy when she falls in love, violating the \"no dating\" clause in her contract.",
+    "poster_path": "/6mnHE3hu8HbMS43R5tlIXrAN5w1.jpg",
+    "backdrop_path": "/pN6sTnFXUuiDqR019WBFhCnQ2KX.jpg",
+    "release_date": "2026-01-23",
+    "director": "深田晃司",
+    "director_jp": "深田晃司",
+    "director_en": "Koji Fukada",
+    "genres": [
+      "ドラマ",
+      "音楽",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 124,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      }
+    ]
+  },
+  "ソーゾク": {
+    "tmdb_id": 1508322,
+    "tmdb_title_jp": "ソーゾク",
+    "tmdb_title_en": "Inheritence",
+    "tmdb_title_original": "ソーゾク",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The Suzuki family faced the problem of inheritence division when their mother died. Different views on rights, obligations and affection for the mother have divided key family members. Will mother's love, filial piety and family ties heal the separation between them?",
+    "poster_path": "/6gfy75AUWUlaKfGhwN109OW0Km9.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-17",
+    "director": "藤村磨実也",
+    "director_jp": "藤村磨実也",
+    "director_en": "Mamiya Fujimura",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1508322": {
+    "tmdb_id": 1508322,
+    "tmdb_title_jp": "ソーゾク",
+    "tmdb_title_en": "Inheritence",
+    "tmdb_title_original": "ソーゾク",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "The Suzuki family faced the problem of inheritence division when their mother died. Different views on rights, obligations and affection for the mother have divided key family members. Will mother's love, filial piety and family ties heal the separation between them?",
+    "poster_path": "/6gfy75AUWUlaKfGhwN109OW0Km9.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-17",
+    "director": "藤村磨実也",
+    "director_jp": "藤村磨実也",
+    "director_en": "Mamiya Fujimura",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 101,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "山谷 やられたらやりかえせ": {
+    "tmdb_id": 501050,
+    "tmdb_title_jp": "山谷─やられたらやりかえせ",
+    "tmdb_title_en": "Yama – Attack to Attack",
+    "tmdb_title_original": "山谷─やられたらやりかえせ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This extraordinary documentary is an unflinching record of the workers’ struggle during Japan’s economic rebirth in the 1980s, centered on Tokyo’s Sanya “yoseba”—a slum community dating from the 19th century where day laborers lived in terrible conditions while they sought work.",
+    "poster_path": "/wBu2W3IeLKFKGh0YcUZAExRxzb6.jpg",
+    "backdrop_path": "/p8OWU91a6Eywdeyob9DqUfil9QG.jpg",
+    "release_date": "1985-01-25",
+    "director": "佐藤満夫",
+    "director_jp": "佐藤満夫",
+    "director_en": "Mitsuo Sato",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 110,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:501050": {
+    "tmdb_id": 501050,
+    "tmdb_title_jp": "山谷─やられたらやりかえせ",
+    "tmdb_title_en": "Yama – Attack to Attack",
+    "tmdb_title_original": "山谷─やられたらやりかえせ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "This extraordinary documentary is an unflinching record of the workers’ struggle during Japan’s economic rebirth in the 1980s, centered on Tokyo’s Sanya “yoseba”—a slum community dating from the 19th century where day laborers lived in terrible conditions while they sought work.",
+    "poster_path": "/wBu2W3IeLKFKGh0YcUZAExRxzb6.jpg",
+    "backdrop_path": "/p8OWU91a6Eywdeyob9DqUfil9QG.jpg",
+    "release_date": "1985-01-25",
+    "director": "佐藤満夫",
+    "director_jp": "佐藤満夫",
+    "director_en": "Mitsuo Sato",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 110,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "日記　愛する人たちへ": {
+    "tmdb_id": 131339,
+    "tmdb_title_jp": "Napló szerelmeimnek",
+    "tmdb_title_en": "Diary for My Loves",
+    "tmdb_title_original": "Napló szerelmeimnek",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "A continuation of \"Diary for My Children,\" the film picks up in 1950, when Juli, the diarist, is 18 and determined to become a movie director.",
+    "poster_path": "/40aBut049LWHhpUzq9eiJk0pYeI.jpg",
+    "backdrop_path": "/24alCo9hYwb6iqvRgmcHyVJP5Mp.jpg",
+    "release_date": "1987-10-01",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 135,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "日記　子供たちへ": {
+    "tmdb_id": 84946,
+    "tmdb_title_jp": "Napló gyermekeimnek",
+    "tmdb_title_en": "Diary for My Children",
+    "tmdb_title_original": "Napló gyermekeimnek",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "After having lost her parents, young Juli returns from the Soviet Union to her native Budapest. Scarred by the wounds of the past, the ghost of Stalin’s oppression haunts her as she reunites with her aunt and adoptive mother Magda.",
+    "poster_path": "/cZHjEIYrhU7ctt1eagcX7n0YoDp.jpg",
+    "backdrop_path": "/4poVDneChHbxPKTJAxAPKzsxiUw.jpg",
+    "release_date": "1984-05-03",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 106,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "エルジ": {
+    "tmdb_id": 133557,
+    "tmdb_title_jp": "The Girl",
+    "tmdb_title_en": "The Girl",
+    "tmdb_title_original": "The Girl",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Director Alfred Hitchcock is revered as one of the greatest creative minds in the history of cinema. Known for his psychological thrillers, Hitchcock’s leading ladies were cool, beautiful and preferably blonde. One such actress was Tippi Hedren, an unknown fashion model given her big break when Hitchcock’s wife saw her on a TV commercial. Brought to Universal Studios, Hedren was shocked when the director, at the peak of his career, quickly cast her to star in his next feature, 1963’s The Birds. Little did Hedren know that as ambitious and terrifying as the production would be to shoot, the most daunting aspect of the film ended up coming from behind the camera.",
+    "poster_path": "/3LKSvrDqOWGvbE3JPleBrQeo0jO.jpg",
+    "backdrop_path": "/hA9PSz23iaYt0ZtPC45UnROT6SA.jpg",
+    "release_date": "2012-10-22",
+    "director": "Julian Jarrold",
+    "director_jp": "Julian Jarrold",
+    "director_en": "Julian Jarrold",
+    "genres": [
+      "ドラマ",
+      "テレビ映画"
+    ],
+    "genres_en": [
+      "Drama",
+      "TV Movie"
+    ],
+    "runtime": 91,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "ZA",
+        "name": "South Africa"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "日記　父と母へ": {
+    "tmdb_id": 283185,
+    "tmdb_title_jp": "Napló apámnak, anyámnak",
+    "tmdb_title_en": "Diary for My Father and My Mother",
+    "tmdb_title_original": "Napló apámnak, anyámnak",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "This story follows a young student, who is orphaned as she grows to adulthood in the shadow of the 1956 Hungarian uprising. Coming from the Communist intelligentsia, she sees her friends and family react differently. Her lover, a married factory manager, supports the patriots and later assists fellow workers in staging a strike. Meanwhile her sister and others express anger at being forced from their homes during the revolution and continue to express a hatred for the rebels afterwards. But in the end they realize that for all people, real life is not possible after the revolt and its brutal suppression by the Soviets and their collaborators.",
+    "poster_path": "/7USEGuVvgC4yZTBukK6roS9rZgN.jpg",
+    "backdrop_path": "/s1Uu8fvJphgIVX1FhDWtERVLWPp.jpg",
+    "release_date": "1990-01-02",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 119,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "月が沈むとき": {
+    "tmdb_id": 343450,
+    "tmdb_title_jp": "Holdudvar",
+    "tmdb_title_en": "Binding Sentiments",
+    "tmdb_title_original": "Holdudvar",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "Edit, who became the wife of a politician out of a simple peasant girl, suddenly becomes a widow as a result of an accident. She never loved her husband. She lives a wealthy and lonely life amidst false friends, facing one of the last alternatives of her life, i.e. having to face her past in the hope of an independent new beginning.",
+    "poster_path": "/rSLG3RwBCI6ar36ROhjNAts0iET.jpg",
+    "backdrop_path": "/sESihFuxmXfz7pB6F6vP4btyYP5.jpg",
+    "release_date": "1969-01-09",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "リダンス": {
+    "tmdb_id": 257531,
+    "tmdb_title_jp": "Szabad lélegzet",
+    "tmdb_title_en": "Riddance",
+    "tmdb_title_original": "Szabad lélegzet",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "Jutka, a young woman who works in a factory, falls in love with Andras, a university student. She pretends to be a student, to him and to his parents, and begins to live a lie. Finally she rebels against Andras and his demands and the social conventions that forced her to live a lie.",
+    "poster_path": "/z7XuPUHz2JDnckf4B7ulgBOMJhK.jpg",
+    "backdrop_path": "/dFou4wP2pfAsoqCWoi3xECbD0rh.jpg",
+    "release_date": "1973-05-30",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "ジャスト・ライク・アット・ホーム": {
+    "tmdb_id": 122518,
+    "tmdb_title_jp": "Olyan mint otthon",
+    "tmdb_title_en": "Just Like at Home",
+    "tmdb_title_original": "Olyan mint otthon",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "On his return from America, András simply cannot find his place: he has lost his wife, friends and job, and he cannot even find his way back to his former great love. Eventually, as a surrogate father, he takes in a wild young girl (Zsuzsa Czinkóczi) and a particularly strong bond is formed between these two rootless people. Márta Mészáros’s remarkable movie starring Jan Nowicki and Anna Karina is about displacement, loneliness and attachment.",
+    "poster_path": "/opyfrZ0hwvIsZfCZa4X7M3Ou9mw.jpg",
+    "backdrop_path": "/qRBn2oVI9yQlUDZ8mnCGEqByXCG.jpg",
+    "release_date": "1978-10-26",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 108,
+    "vote_average": 3.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "大長編　タローマン　万博大爆発": {
+    "tmdb_id": 1469864,
+    "tmdb_title_jp": "大長編タローマン 万博大爆発",
+    "tmdb_title_en": "Taroman Expo Explosion",
+    "tmdb_title_original": "大長編　タローマン　万博大爆発",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Osaka was the the site of Expo ’70, and among the most memorable elements of the event, standing to this day, is the \"Tower of the Sun\", a 70-metre-tall sculpture/building envisioned and designed by renowned artist Taro Okamoto, who some call “the Japanese Picasso”. This film is a theatrical adaptation of \"TAROMAN\", a tokusatsu series re-envisioning Okamoto's most famous pieces as surrealist superheroes and villains, with Ultraman-like TAROMAN, based on the Tower itself, at the forefront of it all.",
+    "poster_path": "/cswaw9ORUrqKDw4Lg0Z3WoeULAP.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-08-22",
+    "director": "藤井亮",
+    "director_jp": "藤井亮",
+    "director_en": "Ryo Fujii",
+    "genres": [
+      "アクション",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Action",
+      "Science Fiction"
+    ],
+    "runtime": 120,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "TRUE KYOHEI SAKAGUCHI SHOW 坂口恭平生活": null,
+  "ナタ　魔童の大暴れ": {
+    "tmdb_id": 980477,
+    "tmdb_title_jp": "ナタ 魔童の大暴れ",
+    "tmdb_title_en": "Ne Zha 2",
+    "tmdb_title_original": "哪吒之魔童闹海",
+    "tmdb_original_language": "zh",
+    "overview": "",
+    "overview_en": "After a catastrophic event leaves their bodies destroyed, Ne Zha and Ao Bing are granted a fragile second chance at life. As tensions rise between the dragon clans and celestial forces, the two must undergo a series of perilous trials that will test their bond, challenge their identities, and decide the fate of both mortals and immortals.",
+    "poster_path": "/bTMf8M7rZ21fChGdtsZtJj4Dfqh.jpg",
+    "backdrop_path": "/8btfz81bOJ2lC7cujYBTw03wzg3.jpg",
+    "release_date": "2025-01-29",
+    "director": "饺子",
+    "director_jp": "饺子",
+    "director_en": "Jiao Zi",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "アドベンチャー",
+      "アクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Adventure",
+      "Action"
+    ],
+    "runtime": 144,
+    "vote_average": 8.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ]
+  },
+  "虎の洞窟": {
+    "tmdb_id": 1063825,
+    "tmdb_title_jp": "虎の洞窟",
+    "tmdb_title_en": "Tiger Cave",
+    "tmdb_title_original": "虎の洞窟",
+    "tmdb_original_language": "ja",
+    "overview": "アクターズ・ショート・フィルム3  野村萬斎 監督作『虎の洞窟』",
+    "overview_en": "A story of a lonely man with motifs from Hamlet and Sangetsuki. One day, The man hears a mysterious voice.",
+    "poster_path": "/vtRBSnhmp4L8pLTfeWwYtWvAWM5.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-02-11",
+    "director": "二世野村萬斎",
+    "director_jp": "二世野村萬斎",
+    "director_en": "Mansai Nomura",
+    "genres": [
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Fantasy"
+    ],
+    "runtime": 24,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1063825": {
+    "tmdb_id": 1063825,
+    "tmdb_title_jp": "虎の洞窟",
+    "tmdb_title_en": "Tiger Cave",
+    "tmdb_title_original": "虎の洞窟",
+    "tmdb_original_language": "ja",
+    "overview": "アクターズ・ショート・フィルム3  野村萬斎 監督作『虎の洞窟』",
+    "overview_en": "A story of a lonely man with motifs from Hamlet and Sangetsuki. One day, The man hears a mysterious voice.",
+    "poster_path": "/vtRBSnhmp4L8pLTfeWwYtWvAWM5.jpg",
+    "backdrop_path": null,
+    "release_date": "2023-02-11",
+    "director": "二世野村萬斎",
+    "director_jp": "二世野村萬斎",
+    "director_en": "Mansai Nomura",
+    "genres": [
+      "ファンタジー"
+    ],
+    "genres_en": [
+      "Fantasy"
+    ],
+    "runtime": 24,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "のぼうの城": {
+    "tmdb_id": 209032,
+    "tmdb_title_jp": "のぼうの城",
+    "tmdb_title_en": "The Floating Castle",
+    "tmdb_title_original": "のぼうの城",
+    "tmdb_original_language": "ja",
+    "overview": "天下統一を目指す豊臣秀吉は関東の雄・北条家に大軍を投じるも、その中には最後まで落ちなかった武州・忍城（おしじょう）と呼ばれる支城があった。その城には領民からでくのぼうをやゆした“のぼう様”と呼ばれ、誰も及ばぬ人気で人心を掌握する成田長親（野村萬斎）という城代がいた。秀吉は20,000の軍勢で攻撃を開始するが、将に求められる智も仁も勇もない、文字通りのでくのぼうのような男の長親は、その40分の1の軍勢で迎え討とうとする。",
+    "overview_en": "In the year 1590, the mighty warlord Toyotomi Hideyoshi is close to fulfilling his ambition of unifying all of Japan under his banner when he comes across unexpected resistance in the form of a floating fortress known as Oshi Castle. Narita Nagachika, a frivolous hedonistic fellow and unlikely candidate for the position of rebel general, finds himself in charge of defending the castle. His odds? An army of 500 men to combat Toyotomi Hideyoshi's army of 20,000.",
+    "poster_path": "/meAp8iX1yjq0pKaOOCMmbUwIfSi.jpg",
+    "backdrop_path": "/beb6Ai7Gww2z71a7a6Mn9hm5LDo.jpg",
+    "release_date": "2012-11-02",
+    "director": "樋口真嗣",
+    "director_jp": "樋口真嗣",
+    "director_en": "Shinji Higuchi",
+    "genres": [
+      "履歴",
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "History",
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 144,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:209032": {
+    "tmdb_id": 209032,
+    "tmdb_title_jp": "のぼうの城",
+    "tmdb_title_en": "The Floating Castle",
+    "tmdb_title_original": "のぼうの城",
+    "tmdb_original_language": "ja",
+    "overview": "天下統一を目指す豊臣秀吉は関東の雄・北条家に大軍を投じるも、その中には最後まで落ちなかった武州・忍城（おしじょう）と呼ばれる支城があった。その城には領民からでくのぼうをやゆした“のぼう様”と呼ばれ、誰も及ばぬ人気で人心を掌握する成田長親（野村萬斎）という城代がいた。秀吉は20,000の軍勢で攻撃を開始するが、将に求められる智も仁も勇もない、文字通りのでくのぼうのような男の長親は、その40分の1の軍勢で迎え討とうとする。",
+    "overview_en": "In the year 1590, the mighty warlord Toyotomi Hideyoshi is close to fulfilling his ambition of unifying all of Japan under his banner when he comes across unexpected resistance in the form of a floating fortress known as Oshi Castle. Narita Nagachika, a frivolous hedonistic fellow and unlikely candidate for the position of rebel general, finds himself in charge of defending the castle. His odds? An army of 500 men to combat Toyotomi Hideyoshi's army of 20,000.",
+    "poster_path": "/meAp8iX1yjq0pKaOOCMmbUwIfSi.jpg",
+    "backdrop_path": "/beb6Ai7Gww2z71a7a6Mn9hm5LDo.jpg",
+    "release_date": "2012-11-02",
+    "director": "樋口真嗣",
+    "director_jp": "樋口真嗣",
+    "director_en": "Shinji Higuchi",
+    "genres": [
+      "履歴",
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "History",
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 144,
+    "vote_average": 7.4,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "シン・ゴジラ": {
+    "tmdb_id": 315011,
+    "tmdb_title_jp": "シン・ゴジラ",
+    "tmdb_title_en": "Shin Godzilla",
+    "tmdb_title_original": "シン・ゴジラ",
+    "tmdb_original_language": "ja",
+    "overview": "ゴジラシリーズ第29作。総監督・脚本に庵野秀明、監督・特技監督に樋口真嗣を迎え製作された完全新作。  東京湾アクアトンネルが崩落する事故が発生。首相官邸での緊急会議で内閣官房副長官・矢口蘭堂（長谷川博己）が、海中に潜む謎の生物が事故を起こした可能性を指摘する。その後、海上に巨大不明生物が出現。さらには蒲田に上陸し、街を破壊しながら突進していく。政府の緊急対策本部は自衛隊に対し防衛出動命令を下し、“ゴジラ”と名付けられた巨大不明生物に立ち向かうが……。",
+    "overview_en": "When a massive, gilled monster emerges from the deep and tears through the city, the government scrambles to save its citizens.  A rag-tag team of volunteers cuts through a web of red tape to uncover the monster's weakness and its mysterious ties to a foreign superpower.  But time is not on their side - the greatest catastrophe to ever befall the world is about to evolve right before their very eyes.",
+    "poster_path": "/8ulwqKiHxz5uH0g0I1BVeNDTWlo.jpg",
+    "backdrop_path": "/tb0uo01w2kDHiQwTszsLlSusAm4.jpg",
+    "release_date": "2016-07-29",
+    "director": "樋口真嗣",
+    "director_jp": "樋口真嗣",
+    "director_en": "Shinji Higuchi",
+    "genres": [
+      "アクション",
+      "サイエンスフィクション",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Science Fiction",
+      "Horror"
+    ],
+    "runtime": 119,
+    "vote_average": 7.211,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:315011": {
+    "tmdb_id": 315011,
+    "tmdb_title_jp": "シン・ゴジラ",
+    "tmdb_title_en": "Shin Godzilla",
+    "tmdb_title_original": "シン・ゴジラ",
+    "tmdb_original_language": "ja",
+    "overview": "ゴジラシリーズ第29作。総監督・脚本に庵野秀明、監督・特技監督に樋口真嗣を迎え製作された完全新作。  東京湾アクアトンネルが崩落する事故が発生。首相官邸での緊急会議で内閣官房副長官・矢口蘭堂（長谷川博己）が、海中に潜む謎の生物が事故を起こした可能性を指摘する。その後、海上に巨大不明生物が出現。さらには蒲田に上陸し、街を破壊しながら突進していく。政府の緊急対策本部は自衛隊に対し防衛出動命令を下し、“ゴジラ”と名付けられた巨大不明生物に立ち向かうが……。",
+    "overview_en": "When a massive, gilled monster emerges from the deep and tears through the city, the government scrambles to save its citizens.  A rag-tag team of volunteers cuts through a web of red tape to uncover the monster's weakness and its mysterious ties to a foreign superpower.  But time is not on their side - the greatest catastrophe to ever befall the world is about to evolve right before their very eyes.",
+    "poster_path": "/8ulwqKiHxz5uH0g0I1BVeNDTWlo.jpg",
+    "backdrop_path": "/tb0uo01w2kDHiQwTszsLlSusAm4.jpg",
+    "release_date": "2016-07-29",
+    "director": "樋口真嗣",
+    "director_jp": "樋口真嗣",
+    "director_en": "Shinji Higuchi",
+    "genres": [
+      "アクション",
+      "サイエンスフィクション",
+      "ホラー"
+    ],
+    "genres_en": [
+      "Action",
+      "Science Fiction",
+      "Horror"
+    ],
+    "runtime": 119,
+    "vote_average": 7.211,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "スキャナー 記憶のカケラをよむ男": {
+    "tmdb_id": 441660,
+    "tmdb_title_jp": "スキャナー 記憶のカケラをよむ男",
+    "tmdb_title_en": "Scanner",
+    "tmdb_title_original": "スキャナー 記憶のカケラをよむ男",
+    "tmdb_original_language": "ja",
+    "overview": "残留思念を読み取る能力を使ったネタで世間を沸かせたものの、その結果として神経をすり減らした仙石は芸能界を引退し、静かな生活を送っていた。そんな折、女子高生ピアニストの亜美から、行方不明になった音楽教師の雪絵を「マイティーズ」に探してほしいという依頼が舞い込む。当初は渋った仙石だったが、元相方のマイティ丸山とともに事件の謎を追い始める。",
+    "overview_en": "",
+    "poster_path": "/gmTXZcyt1k1b2vDrIA0Z2JYQKWF.jpg",
+    "backdrop_path": "/1mUKkAiBrbDEySHbPsALKNnNNuB.jpg",
+    "release_date": "2016-04-29",
+    "director": "金子修介",
+    "director_jp": "金子修介",
+    "director_en": "Shusuke Kaneko",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:441660": {
+    "tmdb_id": 441660,
+    "tmdb_title_jp": "スキャナー 記憶のカケラをよむ男",
+    "tmdb_title_en": "Scanner",
+    "tmdb_title_original": "スキャナー 記憶のカケラをよむ男",
+    "tmdb_original_language": "ja",
+    "overview": "残留思念を読み取る能力を使ったネタで世間を沸かせたものの、その結果として神経をすり減らした仙石は芸能界を引退し、静かな生活を送っていた。そんな折、女子高生ピアニストの亜美から、行方不明になった音楽教師の雪絵を「マイティーズ」に探してほしいという依頼が舞い込む。当初は渋った仙石だったが、元相方のマイティ丸山とともに事件の謎を追い始める。",
+    "overview_en": "",
+    "poster_path": "/gmTXZcyt1k1b2vDrIA0Z2JYQKWF.jpg",
+    "backdrop_path": "/1mUKkAiBrbDEySHbPsALKNnNNuB.jpg",
+    "release_date": "2016-04-29",
+    "director": "金子修介",
+    "director_jp": "金子修介",
+    "director_en": "Shusuke Kaneko",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 109,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "七つの会議": {
+    "tmdb_id": 552686,
+    "tmdb_title_jp": "七つの会議",
+    "tmdb_title_en": "Whistleblower",
+    "tmdb_title_original": "七つの会議",
+    "tmdb_original_language": "ja",
+    "overview": "都内の中堅メーカー、東京建電の営業一課で係長を務めている八角民夫(野村萬斎)。最低限のノルマしかこなさず、会議も出席するだけという姿勢をトップセールスマンの課長・坂戸宣彦(片岡愛之助)から責められるが、意に介することなく気ままに過ごしていた。営業部長・北川誠(香川照之)による厳格な結果主義のもとで部員たちが疲弊する中、突如として八角がパワハラで坂戸を訴え、彼に異動処分が下される。そして常に2番手だった原島万二(及川光博)が新課長に着任する。",
+    "overview_en": "A seemingly lazy salaryman is tasked with managing a company secret.",
+    "poster_path": "/59iAbjWqf44Q9PAOWktnekJXE4W.jpg",
+    "backdrop_path": "/mHTKZzD5cWR1qqRwjFCGLJcErfw.jpg",
+    "release_date": "2019-02-01",
+    "director": "福澤克雄",
+    "director_jp": "福澤克雄",
+    "director_en": "Katsuo Fukuzawa",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 119,
+    "vote_average": 8.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:552686": {
+    "tmdb_id": 552686,
+    "tmdb_title_jp": "七つの会議",
+    "tmdb_title_en": "Whistleblower",
+    "tmdb_title_original": "七つの会議",
+    "tmdb_original_language": "ja",
+    "overview": "都内の中堅メーカー、東京建電の営業一課で係長を務めている八角民夫(野村萬斎)。最低限のノルマしかこなさず、会議も出席するだけという姿勢をトップセールスマンの課長・坂戸宣彦(片岡愛之助)から責められるが、意に介することなく気ままに過ごしていた。営業部長・北川誠(香川照之)による厳格な結果主義のもとで部員たちが疲弊する中、突如として八角がパワハラで坂戸を訴え、彼に異動処分が下される。そして常に2番手だった原島万二(及川光博)が新課長に着任する。",
+    "overview_en": "A seemingly lazy salaryman is tasked with managing a company secret.",
+    "poster_path": "/59iAbjWqf44Q9PAOWktnekJXE4W.jpg",
+    "backdrop_path": "/mHTKZzD5cWR1qqRwjFCGLJcErfw.jpg",
+    "release_date": "2019-02-01",
+    "director": "福澤克雄",
+    "director_jp": "福澤克雄",
+    "director_en": "Katsuo Fukuzawa",
+    "genres": [
+      "謎"
+    ],
+    "genres_en": [
+      "Mystery"
+    ],
+    "runtime": 119,
+    "vote_average": 8.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "乱 4Kデジタル修復版": null,
+  "花戦さ": {
+    "tmdb_id": 448513,
+    "tmdb_title_jp": "花戦さ",
+    "tmdb_title_en": "Flower and Sword",
+    "tmdb_title_original": "花戦さ",
+    "tmdb_original_language": "ja",
+    "overview": "戦国時代の京都。花を生けることで世の平穏を祈る「池坊」と呼ばれる僧侶の中でも、専好は名手とうたわれていた。そのころ、織田信長亡きあと天下を手中に収めた豊臣秀吉の圧政が人々を苦しめ、専好の友であった千利休が自害に追い込まれる。専好は秀吉に対して、力ではなく花の美しさで戦おうと立ち上がる。",
+    "overview_en": "In the late 16th century, after the death of Nobunaga Oda, Hideyoshi Toyotomi takes power. The age of war is about to end, but Hideyoshi Toyotomi's rule makes life difficult for the people. Monk Senko Ikenobo is a master of flower arrangement. He prays for peace in the world and tries to give hope to the people with flower arrangement. He becomes good friends with Rikyu. Rikyu is a monk and a politician. He has the most profound influence on chanoyu. Rikyu is forced to commit hara-kiri by Hideyoshi Toyotomi’s order. Monk Senko Ikenobo challenges Hideyoshi Toyotomi.",
+    "poster_path": "/6vUL74JoBrj2axu8gAxT4t1uDyp.jpg",
+    "backdrop_path": "/qWD3Ejn7Vh4Nw882FsB3FiO69pv.jpg",
+    "release_date": "2017-06-03",
+    "director": "篠原哲雄",
+    "director_jp": "篠原哲雄",
+    "director_en": "Tetsuo Shinohara",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 127,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:448513": {
+    "tmdb_id": 448513,
+    "tmdb_title_jp": "花戦さ",
+    "tmdb_title_en": "Flower and Sword",
+    "tmdb_title_original": "花戦さ",
+    "tmdb_original_language": "ja",
+    "overview": "戦国時代の京都。花を生けることで世の平穏を祈る「池坊」と呼ばれる僧侶の中でも、専好は名手とうたわれていた。そのころ、織田信長亡きあと天下を手中に収めた豊臣秀吉の圧政が人々を苦しめ、専好の友であった千利休が自害に追い込まれる。専好は秀吉に対して、力ではなく花の美しさで戦おうと立ち上がる。",
+    "overview_en": "In the late 16th century, after the death of Nobunaga Oda, Hideyoshi Toyotomi takes power. The age of war is about to end, but Hideyoshi Toyotomi's rule makes life difficult for the people. Monk Senko Ikenobo is a master of flower arrangement. He prays for peace in the world and tries to give hope to the people with flower arrangement. He becomes good friends with Rikyu. Rikyu is a monk and a politician. He has the most profound influence on chanoyu. Rikyu is forced to commit hara-kiri by Hideyoshi Toyotomi’s order. Monk Senko Ikenobo challenges Hideyoshi Toyotomi.",
+    "poster_path": "/6vUL74JoBrj2axu8gAxT4t1uDyp.jpg",
+    "backdrop_path": "/qWD3Ejn7Vh4Nw882FsB3FiO69pv.jpg",
+    "release_date": "2017-06-03",
+    "director": "篠原哲雄",
+    "director_jp": "篠原哲雄",
+    "director_en": "Tetsuo Shinohara",
+    "genres": [
+      "コメディ",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 127,
+    "vote_average": 8.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "〈特別上映〉『ティーンエイジ・スーパースターズ』": {
+    "tmdb_id": 462784,
+    "tmdb_title_jp": "Teenage Superstars",
+    "tmdb_title_en": "Teenage Superstars",
+    "tmdb_title_original": "Teenage Superstars",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Grant McPhee's sequel to Big Gold Dream picks up where the previous film left off, and continues its thrilling tour of the pre-Britpop, Scottish music scene. It features bands, such as The Bluebells, The Pastels, The Soup Dragons and an early incarnation of Teenage Fanclub; plenty of rich archive footage; and fascinating interviews with some of the key people of the time, including Edwyn Collins, Bobby Gillespie, Jim Reid, Sean Dickson, Eugene Kelly and Alan McGee.",
+    "poster_path": "/AoLimBMt9vigpyCn7j1Jmn0iV7J.jpg",
+    "backdrop_path": "/BVTyfPCFt0ILD4UrINcPVhC19J.jpg",
+    "release_date": "2017-06-22",
+    "director": "Grant McPhee",
+    "director_jp": "Grant McPhee",
+    "director_en": "Grant McPhee",
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Music",
+      "Documentary"
+    ],
+    "runtime": 109,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "【TBS】鈴木順子「私は生きる」ー脱線事故2": null,
+  "【TBS】デフリンピック サッカー代表密着": null,
+  "国宝 (英語字幕版)（字幕）": {
+    "tmdb_id": 1379266,
+    "tmdb_title_jp": "国宝",
+    "tmdb_title_en": "Kokuho",
+    "tmdb_title_original": "国宝",
+    "tmdb_original_language": "ja",
+    "overview": "後に国の宝となる男は、任侠の一門に生まれた。抗争で父を亡くした喜久雄（吉沢亮）は、上方歌舞伎の名門の当主・花井半二郎（渡辺謙）に引き取られ、歌舞伎の世界へ飛び込む。そこで、半二郎の実の息子として、生まれながらに将来を約束された御曹司・俊介（横浜流星）と出会う。正反対の血筋を受け継ぎ、生い立ちも才能も異なる2人は、ライバルとして互いに高め合い、芸に青春を捧げるが、多くの出会いと別れが運命の歯車を狂わせていく……。",
+    "overview_en": "Nagasaki, 1964: Following the death of his yakuza father, 15-year-old Kikuo is taken under the wing of a famous kabuki actor. Alongside Shunsuke, the actor’s only son, he decides to dedicate himself to this traditional form of theatre. For decades, the two young men grow and evolve together – and one will become the greatest Japanese master of the art of kabuki.",
+    "poster_path": "/bPuH9nB995PE3P9j4sTanWsxfUW.jpg",
+    "backdrop_path": "/3C8yAIuXlH4BGCpTwEetIv0VBt8.jpg",
+    "release_date": "2025-06-06",
+    "director": "李相日",
+    "director_jp": "李相日",
+    "director_en": "Sang-il Lee",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 174,
+    "vote_average": 7.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "キング・オブ・キングス (字幕版)（字幕）": {
+    "tmdb_id": 1181107,
+    "tmdb_title_jp": "キング・オブ・キングス",
+    "tmdb_title_en": "The King of Kings",
+    "tmdb_title_original": "The King of Kings",
+    "tmdb_original_language": "en",
+    "overview": "イギリスの人気作家チャールズ・ディケンズは、自作の朗読劇「クリスマス・キャロル」の舞台を5歳の末息子ウォルターのいたずらで台なしにされ、親子の関係がこじれてしまう。妻キャサリンのアドバイスを受けたディケンズは、我が子のために執筆した特別な物語「王の中の王」をウォルターに読み聞かせることにした。それは二千年前、ベツレヘムで生まれたイエス・キリストの壮大な人生を描いたものだった。12歳で〝神の子〟としての使命を自覚し、30歳で洗礼を受け、弟子たちの目の前で多くの奇跡を起こし、人々に愛と赦しを説き続けるイエス。信仰が広まる一方、「神への冒涜だ」と敵意を募らせる者たちもいた。",
+    "overview_en": "Charles Dickens tells his young son Walter the greatest story ever told, and what begins as a bedtime tale becomes a life-changing journey. Through vivid imagination, the boy walks alongside Jesus, witnessing His miracles, facing His trials, and understanding His ultimate sacrifice.",
+    "poster_path": "/ccw7CCIAvcZV431CP7NhHAHuiHR.jpg",
+    "backdrop_path": "/mr2LvZydvor6CDZhrpJLRYMCcBc.jpg",
+    "release_date": "2025-04-07",
+    "director": "장성호",
+    "director_jp": "장성호",
+    "director_en": "Jang Seong-ho",
+    "genres": [
+      "アニメーション",
+      "ファミリー",
+      "ファンタジー",
+      "ドラマ",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family",
+      "Fantasy",
+      "Drama",
+      "Adventure"
+    ],
+    "runtime": 102,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "左ききのエレン": null,
+  "ストリート・キングダム ⾃分の⾳を鳴らせ。": {
+    "tmdb_id": 1607600,
+    "tmdb_title_jp": "ストリート・キングダム 自分の音を鳴らせ。",
+    "tmdb_title_en": "Street Kingdom: Make your own sound.",
+    "tmdb_title_original": "ストリート・キングダム 自分の音を鳴らせ。",
+    "tmdb_original_language": "ja",
+    "overview": "偶然ラジオから流れたセックス・ピストルズに衝き動かされたカメラマンのユーイチは、ロックミニコミ雑誌「ロッキンドール」に出会い、とあるライブハウスへと足を運ぶ。そこで出会ったボーカルのモモ率いるバンド「TOKAGE」のライブに衝撃を受け、無我夢中でシャッターを押した。そこは音楽もバンドも観客たちも何にも縛られない生のエネルギーに溢れた異空間だった。カメラマンとしてライブの撮影を依頼されたユーイチはモモたちと交流を重ねる。やがて彼らの音楽は瞬く間に若者たちを熱狂させ、日本のロック史を塗り替えていくのだがーー。",
+    "overview_en": "",
+    "poster_path": "/4mi1xmVxfwSnNVerEUPeWLsYpgv.jpg",
+    "backdrop_path": "/auuAbLDTWKCJCphJ9SNwm7ZNzfO.jpg",
+    "release_date": "2026-03-27",
+    "director": "田口トモロヲ",
+    "director_jp": "田口トモロヲ",
+    "director_en": "Tomorowo Taguchi",
+    "genres": [],
+    "genres_en": [],
+    "runtime": 130,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "キング・オブ・キングス (吹替版)（吹替）": {
+    "tmdb_id": 1181107,
+    "tmdb_title_jp": "キング・オブ・キングス",
+    "tmdb_title_en": "The King of Kings",
+    "tmdb_title_original": "The King of Kings",
+    "tmdb_original_language": "en",
+    "overview": "イギリスの人気作家チャールズ・ディケンズは、自作の朗読劇「クリスマス・キャロル」の舞台を5歳の末息子ウォルターのいたずらで台なしにされ、親子の関係がこじれてしまう。妻キャサリンのアドバイスを受けたディケンズは、我が子のために執筆した特別な物語「王の中の王」をウォルターに読み聞かせることにした。それは二千年前、ベツレヘムで生まれたイエス・キリストの壮大な人生を描いたものだった。12歳で〝神の子〟としての使命を自覚し、30歳で洗礼を受け、弟子たちの目の前で多くの奇跡を起こし、人々に愛と赦しを説き続けるイエス。信仰が広まる一方、「神への冒涜だ」と敵意を募らせる者たちもいた。",
+    "overview_en": "Charles Dickens tells his young son Walter the greatest story ever told, and what begins as a bedtime tale becomes a life-changing journey. Through vivid imagination, the boy walks alongside Jesus, witnessing His miracles, facing His trials, and understanding His ultimate sacrifice.",
+    "poster_path": "/ccw7CCIAvcZV431CP7NhHAHuiHR.jpg",
+    "backdrop_path": "/mr2LvZydvor6CDZhrpJLRYMCcBc.jpg",
+    "release_date": "2025-04-07",
+    "director": "장성호",
+    "director_jp": "장성호",
+    "director_en": "Jang Seong-ho",
+    "genres": [
+      "アニメーション",
+      "ファミリー",
+      "ファンタジー",
+      "ドラマ",
+      "アドベンチャー"
+    ],
+    "genres_en": [
+      "Animation",
+      "Family",
+      "Fantasy",
+      "Drama",
+      "Adventure"
+    ],
+    "runtime": 102,
+    "vote_average": 8.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "ハウス・オブ・ザ・デビル（字幕）": {
+    "tmdb_id": 25983,
+    "tmdb_title_jp": "The House of the Devil",
+    "tmdb_title_en": "The House of the Devil",
+    "tmdb_title_original": "The House of the Devil",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A young college student who’s struggling financially takes a strange babysitting job which coincides with a full lunar eclipse. She slowly realizes her clients harbor a terrifying secret, putting her life in mortal danger.",
+    "poster_path": "/4abKUbc9IbsndbaY1hacN1iPM0Y.jpg",
+    "backdrop_path": "/7ruEP348zJuAPfR02D7lsJM3JKI.jpg",
+    "release_date": "2009-10-30",
+    "director": "タイ・ウェスト",
+    "director_jp": "タイ・ウェスト",
+    "director_en": "Ti West",
+    "genres": [
+      "ホラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery"
+    ],
+    "runtime": 95,
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "フェザーズ その家に巣食うもの（字幕）": {
+    "tmdb_id": 1127628,
+    "tmdb_title_jp": "The Thing with Feathers",
+    "tmdb_title_en": "The Thing with Feathers",
+    "tmdb_title_original": "The Thing with Feathers",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After a tragic loss, a grieving father tries to raise his young sons whilst dealing with an unlikely, unpredictable, and uninvited houseguest.",
+    "poster_path": "/j3kM0tMW7EQaOrit0JW9NvoPPrp.jpg",
+    "backdrop_path": "/A7yTpiCFMWMZVf5kPXuga3WvfCH.jpg",
+    "release_date": "2025-10-17",
+    "director": "Dylan Southern",
+    "director_jp": "Dylan Southern",
+    "director_en": "Dylan Southern",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 99,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:1127628": {
+    "tmdb_id": 1127628,
+    "tmdb_title_jp": "The Thing with Feathers",
+    "tmdb_title_en": "The Thing with Feathers",
+    "tmdb_title_original": "The Thing with Feathers",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "After a tragic loss, a grieving father tries to raise his young sons whilst dealing with an unlikely, unpredictable, and uninvited houseguest.",
+    "poster_path": "/j3kM0tMW7EQaOrit0JW9NvoPPrp.jpg",
+    "backdrop_path": "/A7yTpiCFMWMZVf5kPXuga3WvfCH.jpg",
+    "release_date": "2025-10-17",
+    "director": "Dylan Southern",
+    "director_jp": "Dylan Southern",
+    "director_en": "Dylan Southern",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 99,
+    "vote_average": 6.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "キング・オブ・キングス（吹替版）（吹替）": null,
+  "私たちの話し方（字幕）": null,
+  "そして彼女たちは（字幕）": null,
+  "国宝（字幕）": {
+    "tmdb_id": 1379266,
+    "tmdb_title_jp": "国宝",
+    "tmdb_title_en": "Kokuho",
+    "tmdb_title_original": "国宝",
+    "tmdb_original_language": "ja",
+    "overview": "後に国の宝となる男は、任侠の一門に生まれた。抗争で父を亡くした喜久雄（吉沢亮）は、上方歌舞伎の名門の当主・花井半二郎（渡辺謙）に引き取られ、歌舞伎の世界へ飛び込む。そこで、半二郎の実の息子として、生まれながらに将来を約束された御曹司・俊介（横浜流星）と出会う。正反対の血筋を受け継ぎ、生い立ちも才能も異なる2人は、ライバルとして互いに高め合い、芸に青春を捧げるが、多くの出会いと別れが運命の歯車を狂わせていく……。",
+    "overview_en": "Nagasaki, 1964: Following the death of his yakuza father, 15-year-old Kikuo is taken under the wing of a famous kabuki actor. Alongside Shunsuke, the actor’s only son, he decides to dedicate himself to this traditional form of theatre. For decades, the two young men grow and evolve together – and one will become the greatest Japanese master of the art of kabuki.",
+    "poster_path": "/bPuH9nB995PE3P9j4sTanWsxfUW.jpg",
+    "backdrop_path": "/3C8yAIuXlH4BGCpTwEetIv0VBt8.jpg",
+    "release_date": "2025-06-06",
+    "director": "李相日",
+    "director_jp": "李相日",
+    "director_en": "Sang-il Lee",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 174,
+    "vote_average": 7.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "キング・オブ・キングス（字幕版）（字幕）": null,
+  "天使のたまご ４Kリマスター": {
+    "tmdb_id": 15916,
+    "tmdb_title_jp": "天使のたまご",
+    "tmdb_title_en": "Angel's Egg",
+    "tmdb_title_original": "天使のたまご",
+    "tmdb_original_language": "ja",
+    "overview": "ノアの方舟が陸地を見つけられなかったもう1つの世界。巨大な眼球を模し、中に複数の人型の彫像が鎮座する宗教の象徴のような機械仕掛けの太陽が海に沈み、世界は夜を迎える。  方舟の中の動物がすべて化石になった頃、忘れ去られた街で一人の少年と一人の少女が出会う。",
+    "overview_en": "In the ruins of a strange city, a young girl takes care of a large egg she holds carefully in her arms. She bonds with a boy who is searching for a bird he saw in a dream.",
+    "poster_path": "/nCjPdzIqynTp7jwOMEzYpF4IcZS.jpg",
+    "backdrop_path": "/nZn384qWYugXu6U1N8Ya0Iv0NXE.jpg",
+    "release_date": "1985-12-22",
+    "director": "押井守",
+    "director_jp": "押井守",
+    "director_en": "Mamoru Oshii",
+    "genres": [
+      "アニメーション",
+      "ファンタジー",
+      "謎"
+    ],
+    "genres_en": [
+      "Animation",
+      "Fantasy",
+      "Mystery"
+    ],
+    "runtime": 71,
+    "vote_average": 7.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『ARCO／アルコ』先行上映会＆トークショー": {
+    "tmdb_id": 804370,
+    "tmdb_title_jp": "ARCO／アルコ",
+    "tmdb_title_en": "Arco",
+    "tmdb_title_original": "Arco",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
+    "poster_path": "/rWvbMnqLTpyTHmNii4TrnmgzpcS.jpg",
+    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
+    "release_date": "2025-10-22",
+    "director": "Ugo Bienvenu",
+    "director_jp": "Ugo Bienvenu",
+    "director_en": "Ugo Bienvenu",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "ファミリー",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Family",
+      "Science Fiction"
+    ],
+    "runtime": 89,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:462784": {
+    "tmdb_id": 462784,
+    "tmdb_title_jp": "Teenage Superstars",
+    "tmdb_title_en": "Teenage Superstars",
+    "tmdb_title_original": "Teenage Superstars",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Grant McPhee's sequel to Big Gold Dream picks up where the previous film left off, and continues its thrilling tour of the pre-Britpop, Scottish music scene. It features bands, such as The Bluebells, The Pastels, The Soup Dragons and an early incarnation of Teenage Fanclub; plenty of rich archive footage; and fascinating interviews with some of the key people of the time, including Edwyn Collins, Bobby Gillespie, Jim Reid, Sean Dickson, Eugene Kelly and Alan McGee.",
+    "poster_path": "/AoLimBMt9vigpyCn7j1Jmn0iV7J.jpg",
+    "backdrop_path": "/BVTyfPCFt0ILD4UrINcPVhC19J.jpg",
+    "release_date": "2017-06-22",
+    "director": "Grant McPhee",
+    "director_jp": "Grant McPhee",
+    "director_en": "Grant McPhee",
+    "genres": [
+      "音楽",
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Music",
+      "Documentary"
+    ],
+    "runtime": 109,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ]
+  },
+  "tmdb:4244": {
+    "tmdb_id": 4244,
+    "tmdb_title_jp": "キッド",
+    "tmdb_title_en": "The Kid",
+    "tmdb_title_original": "The Kid",
+    "tmdb_original_language": "en",
+    "overview": "独身のラスは優秀なイメージ・コンサルタントで、著名人にイメージ・アップのためのアドバイスをしている。ある夜、ラスは自宅で小さな男の子を目撃する。その時は見失ってしまうが、翌日、もう一度その少年に出会ったラスは、少年が昔のラス＝ラスティであると知る。二人で話をしているうちに、ラスは今の自分が子供の頃の夢をひとつも叶えていないことにがく然とする。そして、ラスティにもうすぐ訪れる8歳の誕生日が最悪なものであったことを思い出す。",
+    "overview_en": "Powerful businessman Russ Duritz is self-absorbed and immersed in his work. But by the magic of the moon, he meets Rusty, a chubby, charming 8-year-old version of himself who can't believe he could turn out so badly – with no life and no dog. With Rusty's help, Russ is able to reconcile the person he used to dream of being with the man he's actually become.",
+    "poster_path": "/kH9Z5cuY48afpmtTeWcZNyWRWkc.jpg",
+    "backdrop_path": "/jEMYEoQw7jF0aoKRgaa1TbHojUT.jpg",
+    "release_date": "2000-07-07",
+    "director": "Jon Turteltaub",
+    "director_jp": "Jon Turteltaub",
+    "director_en": "Jon Turteltaub",
+    "genres": [
+      "ファンタジー",
+      "コメディ",
+      "ファミリー"
+    ],
+    "genres_en": [
+      "Fantasy",
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 104,
+    "vote_average": 6.7,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:64310": {
+    "tmdb_id": 64310,
+    "tmdb_title_jp": "Les Destinées sentimentales",
+    "tmdb_title_en": "Sentimental Destinies",
+    "tmdb_title_original": "Les Destinées sentimentales",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "In late nineteenth century Charante, Protestant minister Jean Barnery causes local disquiet when he arranges a separation from his obsessive wife. He and his lover keep their love strong as the world changes around them.",
+    "poster_path": "/8a3EiJPpPCsmtBUhNVGBf5pPHSx.jpg",
+    "backdrop_path": "/rz1TKlEBiJwAiXFdT4BJDSlElP7.jpg",
+    "release_date": "2000-07-12",
+    "director": "Olivier Assayas",
+    "director_jp": "Olivier Assayas",
+    "director_en": "Olivier Assayas",
+    "genres": [
+      "ドラマ",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Drama",
+      "Romance"
+    ],
+    "runtime": 180,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "CH",
+        "name": "Switzerland"
+      }
+    ]
+  },
+  "tmdb:131339": {
+    "tmdb_id": 131339,
+    "tmdb_title_jp": "Napló szerelmeimnek",
+    "tmdb_title_en": "Diary for My Loves",
+    "tmdb_title_original": "Napló szerelmeimnek",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "A continuation of \"Diary for My Children,\" the film picks up in 1950, when Juli, the diarist, is 18 and determined to become a movie director.",
+    "poster_path": "/40aBut049LWHhpUzq9eiJk0pYeI.jpg",
+    "backdrop_path": "/24alCo9hYwb6iqvRgmcHyVJP5Mp.jpg",
+    "release_date": "1987-10-01",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 135,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "tmdb:84946": {
+    "tmdb_id": 84946,
+    "tmdb_title_jp": "Napló gyermekeimnek",
+    "tmdb_title_en": "Diary for My Children",
+    "tmdb_title_original": "Napló gyermekeimnek",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "After having lost her parents, young Juli returns from the Soviet Union to her native Budapest. Scarred by the wounds of the past, the ghost of Stalin’s oppression haunts her as she reunites with her aunt and adoptive mother Magda.",
+    "poster_path": "/cZHjEIYrhU7ctt1eagcX7n0YoDp.jpg",
+    "backdrop_path": "/4poVDneChHbxPKTJAxAPKzsxiUw.jpg",
+    "release_date": "1984-05-03",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 106,
+    "vote_average": 6.9,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "tmdb:133557": {
+    "tmdb_id": 133557,
+    "tmdb_title_jp": "The Girl",
+    "tmdb_title_en": "The Girl",
+    "tmdb_title_original": "The Girl",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Director Alfred Hitchcock is revered as one of the greatest creative minds in the history of cinema. Known for his psychological thrillers, Hitchcock’s leading ladies were cool, beautiful and preferably blonde. One such actress was Tippi Hedren, an unknown fashion model given her big break when Hitchcock’s wife saw her on a TV commercial. Brought to Universal Studios, Hedren was shocked when the director, at the peak of his career, quickly cast her to star in his next feature, 1963’s The Birds. Little did Hedren know that as ambitious and terrifying as the production would be to shoot, the most daunting aspect of the film ended up coming from behind the camera.",
+    "poster_path": "/3LKSvrDqOWGvbE3JPleBrQeo0jO.jpg",
+    "backdrop_path": "/hA9PSz23iaYt0ZtPC45UnROT6SA.jpg",
+    "release_date": "2012-10-22",
+    "director": "Julian Jarrold",
+    "director_jp": "Julian Jarrold",
+    "director_en": "Julian Jarrold",
+    "genres": [
+      "ドラマ",
+      "テレビ映画"
+    ],
+    "genres_en": [
+      "Drama",
+      "TV Movie"
+    ],
+    "runtime": 91,
+    "vote_average": 6.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "DE",
+        "name": "Germany"
+      },
+      {
+        "iso_3166_1": "ZA",
+        "name": "South Africa"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "tmdb:283185": {
+    "tmdb_id": 283185,
+    "tmdb_title_jp": "Napló apámnak, anyámnak",
+    "tmdb_title_en": "Diary for My Father and My Mother",
+    "tmdb_title_original": "Napló apámnak, anyámnak",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "This story follows a young student, who is orphaned as she grows to adulthood in the shadow of the 1956 Hungarian uprising. Coming from the Communist intelligentsia, she sees her friends and family react differently. Her lover, a married factory manager, supports the patriots and later assists fellow workers in staging a strike. Meanwhile her sister and others express anger at being forced from their homes during the revolution and continue to express a hatred for the rebels afterwards. But in the end they realize that for all people, real life is not possible after the revolt and its brutal suppression by the Soviets and their collaborators.",
+    "poster_path": "/7USEGuVvgC4yZTBukK6roS9rZgN.jpg",
+    "backdrop_path": "/s1Uu8fvJphgIVX1FhDWtERVLWPp.jpg",
+    "release_date": "1990-01-02",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 119,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "tmdb:343450": {
+    "tmdb_id": 343450,
+    "tmdb_title_jp": "Holdudvar",
+    "tmdb_title_en": "Binding Sentiments",
+    "tmdb_title_original": "Holdudvar",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "Edit, who became the wife of a politician out of a simple peasant girl, suddenly becomes a widow as a result of an accident. She never loved her husband. She lives a wealthy and lonely life amidst false friends, facing one of the last alternatives of her life, i.e. having to face her past in the hope of an independent new beginning.",
+    "poster_path": "/rSLG3RwBCI6ar36ROhjNAts0iET.jpg",
+    "backdrop_path": "/sESihFuxmXfz7pB6F6vP4btyYP5.jpg",
+    "release_date": "1969-01-09",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "tmdb:257531": {
+    "tmdb_id": 257531,
+    "tmdb_title_jp": "Szabad lélegzet",
+    "tmdb_title_en": "Riddance",
+    "tmdb_title_original": "Szabad lélegzet",
+    "tmdb_original_language": "hu",
+    "overview": "",
+    "overview_en": "Jutka, a young woman who works in a factory, falls in love with Andras, a university student. She pretends to be a student, to him and to his parents, and begins to live a lie. Finally she rebels against Andras and his demands and the social conventions that forced her to live a lie.",
+    "poster_path": "/z7XuPUHz2JDnckf4B7ulgBOMJhK.jpg",
+    "backdrop_path": "/dFou4wP2pfAsoqCWoi3xECbD0rh.jpg",
+    "release_date": "1973-05-30",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 81,
+    "vote_average": 6.2,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "tmdb:122518": {
+    "tmdb_id": 122518,
+    "tmdb_title_jp": "Olyan mint otthon",
+    "tmdb_title_en": "Just Like at Home",
+    "tmdb_title_original": "Olyan mint otthon",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "On his return from America, András simply cannot find his place: he has lost his wife, friends and job, and he cannot even find his way back to his former great love. Eventually, as a surrogate father, he takes in a wild young girl (Zsuzsa Czinkóczi) and a particularly strong bond is formed between these two rootless people. Márta Mészáros’s remarkable movie starring Jan Nowicki and Anna Karina is about displacement, loneliness and attachment.",
+    "poster_path": "/opyfrZ0hwvIsZfCZa4X7M3Ou9mw.jpg",
+    "backdrop_path": "/qRBn2oVI9yQlUDZ8mnCGEqByXCG.jpg",
+    "release_date": "1978-10-26",
+    "director": "Márta Mészáros",
+    "director_jp": "Márta Mészáros",
+    "director_en": "Márta Mészáros",
+    "genres": [
+      "ドラマ",
+      "コメディ"
+    ],
+    "genres_en": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 108,
+    "vote_average": 3.8,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "HU",
+        "name": "Hungary"
+      }
+    ]
+  },
+  "tmdb:804370": {
+    "tmdb_id": 804370,
+    "tmdb_title_jp": "ARCO／アルコ",
+    "tmdb_title_en": "Arco",
+    "tmdb_title_original": "Arco",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
+    "poster_path": "/rWvbMnqLTpyTHmNii4TrnmgzpcS.jpg",
+    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
+    "release_date": "2025-10-22",
+    "director": "Ugo Bienvenu",
+    "director_jp": "Ugo Bienvenu",
+    "director_en": "Ugo Bienvenu",
+    "genres": [
+      "アニメーション",
+      "アドベンチャー",
+      "ファンタジー",
+      "ファミリー",
+      "サイエンスフィクション"
+    ],
+    "genres_en": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Family",
+      "Science Fiction"
+    ],
+    "runtime": 89,
+    "vote_average": 7.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
       {
         "iso_3166_1": "US",
         "name": "United States of America"

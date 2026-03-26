@@ -9486,5 +9486,284 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "ティーンエイジ・スーパースターズ": {
+    "english_title": "Teenage Superstars",
+    "release_year": 2017,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Teenage Superstars",
+    "director": "Grant McPhee",
+    "country": "United Kingdom"
+  },
+  "レディ・ノワール": {
+    "english_title": "Lady Noir",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "レディ・ノワール",
+    "director": "Atsushi Muroga",
+    "country": "Japan",
+    "failed": true
+  },
+  "矛盾に抱かれて　音楽　建築　哲学　悲哀　循環": {
+    "english_title": "Embraced by Contradiction: Music, Architecture, Philosophy, Sorrow, and Cycles",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "矛盾に抱かれて　音楽　建築　哲学　悲哀　循環",
+    "director": "Ayu Tokizaki",
+    "country": "Japan",
+    "failed": true
+  },
+  "鈴木順子「私は生きる」　脱線事故20年、記憶の軌跡": {
+    "english_title": "Junko Suzuki: 'I Live' - 20 Years After the Derailment, a Trace of Memories",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "鈴木順子「私は生きる」　脱線事故20年、記憶の軌跡",
+    "director": "Sayoko Hashimoto",
+    "country": "Japan",
+    "failed": true
+  },
+  "流星(1999・香港)": {
+    "english_title": "The Kid",
+    "release_year": 1999,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "流星語",
+    "director": "Jacob Cheung",
+    "country": "Hong Kong"
+  },
+  "フェザーズ　その家に巣食うもの": {
+    "english_title": "The Thing with Feathers",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The Thing with Feathers",
+    "director": "Dylan Southern",
+    "country": "United Kingdom",
+    "failed": true
+  },
+  "METライブビューイング2025-26 ベッリーニ《清教徒》": {
+    "english_title": "The Met: Live in HD - I Puritani",
+    "release_year": 2026,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "METライブビューイング2025-26 ベッリーニ《清教徒》",
+    "director": "Charles Edwards",
+    "country": "USA",
+    "failed": true
+  },
+  "八つ墓村（1977）": {
+    "english_title": "Village of Eight Gravestones",
+    "release_year": 1977,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "八つ墓村",
+    "director": "Yoshitaro Nomura",
+    "country": "Japan"
+  },
+  "もず（1961）": {
+    "english_title": "The Shrikes",
+    "release_year": 1961,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "もず",
+    "director": "Minoru Shibuya",
+    "country": "Japan"
+  },
+  "感傷的な運命": {
+    "english_title": "Sentimental Destinies",
+    "release_year": 2000,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Les Destinées sentimentales",
+    "director": "Olivier Assayas",
+    "country": "France"
+  },
+  "日記　愛する人たちへ": {
+    "english_title": "Diary for My Loves",
+    "release_year": 1987,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Napló szerelmeimnek",
+    "director": "Márta Mészáros",
+    "country": "Hungary"
+  },
+  "日記　子供たちへ": {
+    "english_title": "Diary for My Children",
+    "release_year": 1984,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Napló gyermekeimnek",
+    "director": "Márta Mészáros",
+    "country": "Hungary"
+  },
+  "エルジ": {
+    "english_title": "The Girl",
+    "release_year": 1968,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Eltávozott nap",
+    "director": "Márta Mészáros",
+    "country": "Hungary"
+  },
+  "日記　父と母へ": {
+    "english_title": "Diary for My Father and Mother",
+    "release_year": 1990,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Napló apámnak, anyámnak",
+    "director": "Márta Mészáros",
+    "country": "Hungary"
+  },
+  "月が沈むとき": {
+    "english_title": "Binding Sentiments",
+    "release_year": 1968,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Holdudvar",
+    "director": "Márta Mészáros",
+    "country": "Hungary"
+  },
+  "リダンス": {
+    "english_title": "Riddance",
+    "release_year": 1973,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Szabad lélegzet",
+    "director": "Márta Mészáros",
+    "country": "Hungary"
+  },
+  "ジャスト・ライク・アット・ホーム": {
+    "english_title": "Just Like at Home",
+    "release_year": 1978,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Olyan, mint otthon",
+    "director": "Márta Mészáros",
+    "country": "Hungary"
+  },
+  "TRUE KYOHEI SAKAGUCHI SHOW 坂口恭平生活": {
+    "english_title": "TRUE KYOHEI SAKAGUCHI SHOW: Kyohei Sakaguchi's Life",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "TRUE KYOHEI SAKAGUCHI SHOW 坂口恭平生活",
+    "director": "Yuki Komiya",
+    "country": "Japan",
+    "failed": true
+  },
+  "乱 4Kデジタル修復版": {
+    "english_title": "Ran",
+    "release_year": 1985,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "乱",
+    "director": "Akira Kurosawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "〈特別上映〉『ティーンエイジ・スーパースターズ』": {
+    "english_title": "Teenage Superstars",
+    "release_year": 2017,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Teenage Superstars",
+    "director": "Grant McPhee",
+    "country": "United Kingdom"
+  },
+  "【TBS】デフリンピック サッカー代表密着": {
+    "english_title": "Together, Towards World No. 1: The Journey of the Japanese National Deaf Soccer Team",
+    "release_year": 2026,
+    "confidence": 0.8,
+    "notes": "",
+    "original_title": "共に、世界一へ デフサッカー日本代表の軌跡",
+    "director": "Yoshihiko Kogami",
+    "country": "Japan",
+    "failed": true
+  },
+  "国宝 (英語字幕版)（字幕）": {
+    "english_title": "Kokuho",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "国宝",
+    "director": "Lee Sang-il",
+    "country": "Japan"
+  },
+  "キング・オブ・キングス (字幕版)（字幕）": {
+    "english_title": "The King of Kings",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "The King of Kings",
+    "director": "Seong-ho Jang",
+    "country": "South Korea, USA"
+  },
+  "ストリート・キングダム ⾃分の⾳を鳴らせ。": {
+    "english_title": "Street Kingdom: Make Your Own Sound",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "ストリート・キングダム 自分の音を鳴らせ。",
+    "director": "Tomorowo Taguchi",
+    "country": "Japan"
+  },
+  "国宝（字幕）": {
+    "english_title": "Kokuho",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "国宝",
+    "director": "Lee Sang-il",
+    "country": "Japan"
+  },
+  "天使のたまご ４Kリマスター": {
+    "english_title": "Angel's Egg",
+    "release_year": 1985,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "天使のたまご",
+    "director": "Mamoru Oshii",
+    "country": "Japan"
+  },
+  "『ARCO／アルコ』先行上映会＆トークショー": {
+    "english_title": "Arco",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Arco",
+    "director": "Ugo Bienvenu",
+    "country": "France"
+  },
+  "特攻の海 3Dが語る80年目の真実": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "共に、世界一へ　デフサッカー日本代表の軌跡": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "山人（やまんど）　縄文の響きが木霊する": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "【TBS】鈴木順子「私は生きる」ー脱線事故2": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
