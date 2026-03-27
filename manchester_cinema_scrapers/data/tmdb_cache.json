@@ -2853,8 +2853,6 @@
     ],
     "vote_average": 8.027
   },
-  "Monthly World Cinema Screening": null,
-  "Weekly Arthouse Screening": null,
   "Make A Scene Presents: Victor/Victoria": {
     "tmdb_id": 12614,
     "tmdb_title": "Victor/Victoria",
@@ -2889,66 +2887,6 @@
     ],
     "vote_average": 6.792
   },
-  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
-  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
-  "Mystery Shit Film Club": null,
-  "CURSE: Häxan With Live Score By Nick Carlisle": null,
-  "CURSE: Wolfwalkers (Family Friendly)": null,
-  "Northern Folklore Archive Presents: The Ritual": {
-    "tmdb_id": 433808,
-    "tmdb_title": "The Ritual",
-    "tmdb_original_title": "The Ritual",
-    "overview": "A group of college friends reunite for a trip to the forest, but encounter a menacing presence in the woods that's stalking them.",
-    "poster_path": "/9022CYEGqYETCeXN1oE3uwYJWub.jpg",
-    "backdrop_path": "/vaArQHq1lHFNppoJlMlv30Gs2fQ.jpg",
-    "release_date": "2017-10-11",
-    "director": "David Bruckner",
-    "runtime": 94,
-    "genres": [
-      "Horror",
-      "Mystery"
-    ],
-    "vote_average": 6.267
-  },
-  "Arco (PG) [Dubbed]": {
-    "tmdb_id": 804370,
-    "tmdb_title": "Arco",
-    "tmdb_original_title": "Arco",
-    "overview": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
-    "poster_path": "/mWlvHFxTDhq9O5WSOHywa32QIez.jpg",
-    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
-    "release_date": "2025-10-22",
-    "director": "Ugo Bienvenu",
-    "runtime": 89,
-    "genres": [
-      "Animation",
-      "Adventure",
-      "Fantasy",
-      "Family",
-      "Science Fiction"
-    ],
-    "vote_average": 7.462
-  },
-  "Arco (PG) [Subtitled]": {
-    "tmdb_id": 804370,
-    "tmdb_title": "Arco",
-    "tmdb_original_title": "Arco",
-    "overview": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
-    "poster_path": "/mWlvHFxTDhq9O5WSOHywa32QIez.jpg",
-    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
-    "release_date": "2025-10-22",
-    "director": "Ugo Bienvenu",
-    "runtime": 89,
-    "genres": [
-      "Animation",
-      "Adventure",
-      "Fantasy",
-      "Family",
-      "Science Fiction"
-    ],
-    "vote_average": 7.462
-  },
-  "Guardian Documentaries present: Legacies of Enslavement": null,
   "Baby & Carer/ The Straight Story – 4K Restoration (PG)": {
     "tmdb_id": 751496,
     "tmdb_title": "Baby",
@@ -2965,22 +2903,6 @@
     ],
     "vote_average": 5.266
   },
-  "The Straight Story - 4K Restoration (PG)": {
-    "tmdb_id": 404,
-    "tmdb_title": "The Straight Story",
-    "tmdb_original_title": "The Straight Story",
-    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
-    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
-    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
-    "release_date": "1999-10-15",
-    "director": "David Lynch",
-    "runtime": 112,
-    "genres": [
-      "Drama"
-    ],
-    "vote_average": 7.742
-  },
-  "Redoubt (CTBA)": null,
   "DJ Ahmet (PG)": {
     "tmdb_id": 1400743,
     "tmdb_title": "DJ Ahmet",
@@ -3047,40 +2969,6 @@
     ],
     "vote_average": 0.0
   },
-  "BFI Flare presents: Pink Narcissus": {
-    "tmdb_id": 42497,
-    "tmdb_title": "Pink Narcissus",
-    "tmdb_original_title": "Pink Narcissus",
-    "overview": "An outrageous erotic poem focusing on the daydreams of a beautiful boy prostitute who, from the seclusion of his ultra-kitsch apartment, conceives a series of interlinked narcissistic fantasies populated by matadors, dancing boys, slaves, and leather-clad bikers.",
-    "poster_path": "/kaZiiGE6820KyFF9XkzPB9Rx9qn.jpg",
-    "backdrop_path": "/jDgaKZG5KfEMKYmxt6G3mpKBfo6.jpg",
-    "release_date": "1971-05-24",
-    "director": "James Bidgood",
-    "runtime": 69,
-    "genres": [
-      "Fantasy"
-    ],
-    "vote_average": 6.1
-  },
-  "Oska Bright 2026: Best of the Fest": null,
-  "We Are Parable presents: The Watermelon Woman": {
-    "tmdb_id": 44479,
-    "tmdb_title": "The Watermelon Woman",
-    "tmdb_original_title": "The Watermelon Woman",
-    "overview": "A young black lesbian filmmaker probes into the life of The Watermelon Woman, a 1930s black actress who played 'mammy' archetypes.",
-    "poster_path": "/mBBqKfkvzSk6Rk7bfRXU9kR916N.jpg",
-    "backdrop_path": "/l0YhkeRNks3mPdjxd2VgAFtKplB.jpg",
-    "release_date": "1997-03-05",
-    "director": "Cheryl Dunye",
-    "runtime": 85,
-    "genres": [
-      "Drama",
-      "Comedy",
-      "Romance"
-    ],
-    "vote_average": 6.8
-  },
-  "Filmed Up Mar 2026": null,
   "Underland": {
     "tmdb_id": 1465717,
     "tmdb_title": "Underland",
@@ -3129,22 +3017,6 @@
     ],
     "vote_average": 7.1
   },
-  "Throwback: Romeo + Juliet (30th Anniversary)": {
-    "tmdb_id": 454,
-    "tmdb_title": "Romeo + Juliet",
-    "tmdb_original_title": "Romeo + Juliet",
-    "overview": "In director Baz Luhrmann's contemporary take on William Shakespeare's classic tragedy, the Montagues and Capulets have moved their ongoing feud to the sweltering suburb of Verona Beach, where Romeo and Juliet fall in love and secretly wed. Though the film is visually modern, the bard's dialogue remains.",
-    "poster_path": "/eLf4jclPijOqfEp6bDAmezRFxk5.jpg",
-    "backdrop_path": "/m0miV65ZZIp13TNHJSRUF6vmCos.jpg",
-    "release_date": "1996-11-01",
-    "director": "Baz Luhrmann",
-    "runtime": 120,
-    "genres": [
-      "Drama",
-      "Romance"
-    ],
-    "vote_average": 6.8
-  },
   "The Super Mario Galaxy Movie": {
     "tmdb_id": 1226863,
     "tmdb_title": "The Super Mario Galaxy Movie",
@@ -3180,7 +3052,6 @@
     ],
     "vote_average": 0.0
   },
-  "The Royal Opera: The Magic Flute": null,
   "Glenrothan": {
     "tmdb_id": 1335666,
     "tmdb_title": "Glenrothan",
@@ -3244,21 +3115,6 @@
     ],
     "vote_average": 0.0
   },
-  "Fantastic Four: First Steps": {
-    "tmdb_id": 240435,
-    "tmdb_title": "First Steps",
-    "tmdb_original_title": "First Steps",
-    "overview": "United Nations, 1947 - In this film one crippled child learns to walk: first to move, then to stand, and finally to take his first steps. The film deals with modern techniques of physiotherapy, and the need to develop the whole child - his emotions and his mind as well as his muscles - is stressed. Skilled adult workers offer not only massage and therapy, but also love and understanding, and occupational therapy for children and takes the form of both play and work. Movements learned become part of the daily jobs of feeding and dressing. Early attempts to walk are made with the help of apparatus. Finally the initially hesitant steps on his own are taken. As the film ends the boy walks.  Preserved by the Academy Film Archive in 2005.",
-    "poster_path": "/rK6KCxCBmG5AtzE8IWdTDazoK3S.jpg",
-    "backdrop_path": null,
-    "release_date": "1947-01-01",
-    "director": "Leo Seltzer",
-    "runtime": 10,
-    "genres": [
-      "Documentary"
-    ],
-    "vote_average": 6.1
-  },
   "Michael": {
     "tmdb_id": 2928,
     "tmdb_title": "Michael",
@@ -3276,23 +3132,6 @@
     ],
     "vote_average": 5.712
   },
-  "Moulin Rouge! 25th Anniversary": {
-    "tmdb_id": 824,
-    "tmdb_title": "Moulin Rouge!",
-    "tmdb_original_title": "Moulin Rouge!",
-    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
-    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
-    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
-    "release_date": "2001-05-18",
-    "director": "Baz Luhrmann",
-    "runtime": 128,
-    "genres": [
-      "Drama",
-      "Romance",
-      "Music"
-    ],
-    "vote_average": 7.534
-  },
   "Sirāt": {
     "tmdb_id": 1151272,
     "tmdb_title": "Sirāt",
@@ -3309,8 +3148,249 @@
     ],
     "vote_average": 6.851
   },
+  "Monthly World Cinema Screening": null,
+  "UrbanArtistry Presents: Blue Light &amp; Blurred Memories": null,
+  "Jeanne Dielman, 23 Commerce Quay, 1080": null,
+  "Mystery Shit Film Club": null,
+  "CURSE: Häxan With Live Score By Nick Carlisle": null,
+  "CURSE: Wolfwalkers (Family Friendly)": null,
+  "Northern Folklore Archive Presents: The Ritual": {
+    "tmdb_id": 433808,
+    "tmdb_title": "The Ritual",
+    "tmdb_original_title": "The Ritual",
+    "overview": "A group of college friends reunite for a trip to the forest, but encounter a menacing presence in the woods that's stalking them.",
+    "poster_path": "/9022CYEGqYETCeXN1oE3uwYJWub.jpg",
+    "backdrop_path": "/vaArQHq1lHFNppoJlMlv30Gs2fQ.jpg",
+    "release_date": "2017-10-11",
+    "director": "David Bruckner",
+    "runtime": 94,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "vote_average": 6.267
+  },
+  "Arrow Video Club: El Topo": {
+    "tmdb_id": 13041,
+    "tmdb_title": "El Topo",
+    "tmdb_original_title": "El Topo",
+    "overview": "El Topo decides to confront warrior Masters on a trans-formative desert journey he begins with his 6 year old son, who must bury his childhood totems to become a man.",
+    "poster_path": "/fKoNBTATc94rUYLq8VyypS24LUw.jpg",
+    "backdrop_path": "/xkfXO0Zswvvlbs0FlxH3TA4qji3.jpg",
+    "release_date": "1970-12-18",
+    "director": "Alejandro Jodorowsky",
+    "runtime": 125,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Western"
+    ],
+    "vote_average": 7.1
+  },
+  "Redoubt": {
+    "tmdb_id": 1141491,
+    "tmdb_title": "Redoubt",
+    "tmdb_original_title": "VÄRN",
+    "overview": "Affected by the powerful images in the pamphlet Om kriget kommer (If war comes), farmhand Karl-Göran Persson begins fortifying his house. Through years of harvesting scrap-metal, he transforms the house into a fortress, meant to protect him and his neighbors when the enemy attacks. As the task progresses, reality and the threat of future destruction become intertwined, and construction becomes an obsession for the lonely Karl-Göran.",
+    "poster_path": "/jSREnLzAfq51mpmxRXDbk8dJ72u.jpg",
+    "backdrop_path": "/q0ff2gr4TZrBZ9aMfpCmHSyf1iq.jpg",
+    "release_date": "2026-03-27",
+    "director": "John Skoog",
+    "runtime": 85,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "vote_average": 0.0
+  },
+  "Arco (PG) [Subtitled]": {
+    "tmdb_id": 804370,
+    "tmdb_title": "Arco",
+    "tmdb_original_title": "Arco",
+    "overview": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
+    "poster_path": "/mWlvHFxTDhq9O5WSOHywa32QIez.jpg",
+    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
+    "release_date": "2025-10-22",
+    "director": "Ugo Bienvenu",
+    "runtime": 89,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Family",
+      "Science Fiction"
+    ],
+    "vote_average": 7.4
+  },
+  "BFI Flare presents: Pink Narcissus": {
+    "tmdb_id": 42497,
+    "tmdb_title": "Pink Narcissus",
+    "tmdb_original_title": "Pink Narcissus",
+    "overview": "An outrageous erotic poem focusing on the daydreams of a beautiful boy prostitute who, from the seclusion of his ultra-kitsch apartment, conceives a series of interlinked narcissistic fantasies populated by matadors, dancing boys, slaves, and leather-clad bikers.",
+    "poster_path": "/kaZiiGE6820KyFF9XkzPB9Rx9qn.jpg",
+    "backdrop_path": "/jDgaKZG5KfEMKYmxt6G3mpKBfo6.jpg",
+    "release_date": "1971-05-24",
+    "director": "James Bidgood",
+    "runtime": 69,
+    "genres": [
+      "Fantasy"
+    ],
+    "vote_average": 6.1
+  },
+  "Arco (PG) [Dubbed]": {
+    "tmdb_id": 804370,
+    "tmdb_title": "Arco",
+    "tmdb_original_title": "Arco",
+    "overview": "10-year-old Arco lives in a far future. During his first flight in his rainbow suit, he loses control and falls into the past. Iris, a girl his age from 2075, comes to his rescue and tries by all means to help send him back to his era.",
+    "poster_path": "/mWlvHFxTDhq9O5WSOHywa32QIez.jpg",
+    "backdrop_path": "/reQELo8rDiLIOoYIA7M6q7KGRW0.jpg",
+    "release_date": "2025-10-22",
+    "director": "Ugo Bienvenu",
+    "runtime": 89,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Fantasy",
+      "Family",
+      "Science Fiction"
+    ],
+    "vote_average": 7.4
+  },
+  "The Straight Story - 4K Restoration (PG)": {
+    "tmdb_id": 404,
+    "tmdb_title": "The Straight Story",
+    "tmdb_original_title": "The Straight Story",
+    "overview": "Retired farmer and widower Alvin Straight learns one day that his distant brother Lyle has suffered a stroke and may not recover. Alvin is determined to make things right with Lyle while he still can, but his brother lives in Wisconsin, while Alvin is stuck in Iowa with no car and no driver's license. He then has the idea of making the trip on his old lawnmower, thus beginning a picturesque and at times deeply spiritual odyssey.",
+    "poster_path": "/tT9cMiVDdtlcdZxOoFy3VRmEoKk.jpg",
+    "backdrop_path": "/1S81PpyGwS8eVx4W75uSKzMw4B0.jpg",
+    "release_date": "1999-10-15",
+    "director": "David Lynch",
+    "runtime": 112,
+    "genres": [
+      "Drama"
+    ],
+    "vote_average": 7.7
+  },
+  "Oska Bright 2026: Best of the Fest": null,
+  "We Are Parable presents: The Watermelon Woman": {
+    "tmdb_id": 44479,
+    "tmdb_title": "The Watermelon Woman",
+    "tmdb_original_title": "The Watermelon Woman",
+    "overview": "A young black lesbian filmmaker probes into the life of The Watermelon Woman, a 1930s black actress who played 'mammy' archetypes.",
+    "poster_path": "/mBBqKfkvzSk6Rk7bfRXU9kR916N.jpg",
+    "backdrop_path": "/l0YhkeRNks3mPdjxd2VgAFtKplB.jpg",
+    "release_date": "1997-03-05",
+    "director": "Cheryl Dunye",
+    "runtime": 85,
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "vote_average": 6.8
+  },
+  "Filmed Up Mar 2026": null,
+  "Twinless": {
+    "tmdb_id": 1245347,
+    "tmdb_title": "Twinless",
+    "tmdb_original_title": "Twinless",
+    "overview": "Two men who lost their respective twin brothers develop a growing friendship after meeting in a support group. However, both harbor long-hidden secrets that threaten to tear them apart.",
+    "poster_path": "/9vaw9Az5tPLMjNLj426KgKsp0k8.jpg",
+    "backdrop_path": "/fnvTC96lA7pf8ZlMKI2FgBZ86AP.jpg",
+    "release_date": "2025-09-04",
+    "director": "James Sweeney",
+    "runtime": 100,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 7.3
+  },
+  "Throwback: Romeo + Juliet (30th Anniversary)": {
+    "tmdb_id": 454,
+    "tmdb_title": "Romeo + Juliet",
+    "tmdb_original_title": "Romeo + Juliet",
+    "overview": "In director Baz Luhrmann's contemporary take on William Shakespeare's classic tragedy, the Montagues and Capulets have moved their ongoing feud to the sweltering suburb of Verona Beach, where Romeo and Juliet fall in love and secretly wed. Though the film is visually modern, the bard's dialogue remains.",
+    "poster_path": "/eLf4jclPijOqfEp6bDAmezRFxk5.jpg",
+    "backdrop_path": "/m0miV65ZZIp13TNHJSRUF6vmCos.jpg",
+    "release_date": "1996-11-01",
+    "director": "Baz Luhrmann",
+    "runtime": 120,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "vote_average": 6.8
+  },
+  "Members’ Preview: California Schemin’": {
+    "tmdb_id": 1193550,
+    "tmdb_title": "California Schemin'",
+    "tmdb_original_title": "California Schemin'",
+    "overview": "In the late 1990s, Gavin Bain and Billy Boyd had their musical ambitions consistently ridiculed for having the 'wrong' accents, so they went for broke and reinvented themselves as Californian rappers. The duo re-recorded their own tracks with fake accents and turned up in London claiming to be an established duo on the Cali scene as well as childhood friends with Eminem. They quickly bagged themselves a record deal, a hefty sum in advances, and an appearance on MTV... until it all came crashing down.",
+    "poster_path": "/2tYRbCPZVQD1AjZ6YGMRx71lbDU.jpg",
+    "backdrop_path": "/lsNYBdtXxmCjm9zZ4jrJtKmMNJZ.jpg",
+    "release_date": "2026-04-10",
+    "director": "James McAvoy",
+    "runtime": 107,
+    "genres": [
+      "Music",
+      "Comedy",
+      "Drama"
+    ],
+    "vote_average": 0.0
+  },
+  "Weekly Arthouse Screening": null,
+  "Bluey At The Cinema: Let’s Play Chef Collection": {
+    "tmdb_id": 1453418,
+    "tmdb_title": "Bluey at the Cinema: Let's Play Chef Collection",
+    "tmdb_original_title": "Bluey at the Cinema: Let's Play Chef Collection",
+    "overview": "Bluey at the Cinema: Let’s Play Chef Collection is an hour-long treat for fans of Bluey to enjoy, made up of eight episodes from the TV show’s three series, all based around the fun of food! The compilation will showcase memorable moments such as Takeaway, Fancy Restaurant, and highlight the Heelers' skills in the kitchen with episodes such as Omelette and Duck Cake – cooking has never been so fun!",
+    "poster_path": "/e1kjHMksWPQrWtV5Yo8bEsU7dsU.jpg",
+    "backdrop_path": "/hPjL9w0ALwr6O6BokS34CyoXsZX.jpg",
+    "release_date": "2025-05-01",
+    "director": "Joe Brumm",
+    "runtime": 54,
+    "genres": [
+      "Animation",
+      "Family"
+    ],
+    "vote_average": 9.7
+  },
+  "Fantastic Four: First Steps": {
+    "tmdb_id": 240435,
+    "tmdb_title": "First Steps",
+    "tmdb_original_title": "First Steps",
+    "overview": "United Nations, 1947 - In this film one crippled child learns to walk: first to move, then to stand, and finally to take his first steps. The film deals with modern techniques of physiotherapy, and the need to develop the whole child - his emotions and his mind as well as his muscles - is stressed. Skilled adult workers offer not only massage and therapy, but also love and understanding, and occupational therapy for children and takes the form of both play and work. Movements learned become part of the daily jobs of feeding and dressing. Early attempts to walk are made with the help of apparatus. Finally the initially hesitant steps on his own are taken. As the film ends the boy walks.  Preserved by the Academy Film Archive in 2005.",
+    "poster_path": "/rK6KCxCBmG5AtzE8IWdTDazoK3S.jpg",
+    "backdrop_path": null,
+    "release_date": "1947-01-01",
+    "director": "Leo Seltzer",
+    "runtime": 10,
+    "genres": [
+      "Documentary"
+    ],
+    "vote_average": 6.1
+  },
+  "Moulin Rouge! 25th Anniversary": {
+    "tmdb_id": 824,
+    "tmdb_title": "Moulin Rouge!",
+    "tmdb_original_title": "Moulin Rouge!",
+    "overview": "A celebration of love and creative inspiration takes place in the infamous, gaudy and glamorous Parisian nightclub, at the cusp of the 20th century. A young poet, who is plunged into the heady world of Moulin Rouge, begins a passionate affair with the club's most notorious and beautiful star.",
+    "poster_path": "/2kjM5CUZRIU5yOANUowrbJcRL9L.jpg",
+    "backdrop_path": "/vvcLSgiviCIU0J0UcwLqWdU8Iup.jpg",
+    "release_date": "2001-05-18",
+    "director": "Baz Luhrmann",
+    "runtime": 128,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "vote_average": 7.533
+  },
   "The Royal Opera: La Traviata": null,
   "The Royal Opera: Siegfried": null,
+  "The Royal Opera: The Magic Flute": null,
   "National Theatre Live: All My Sons": null,
   "Romeo + Juliet 30th Anniversary": {
     "tmdb_id": 280942,
@@ -3327,6 +3407,6 @@
       "Drama",
       "Romance"
     ],
-    "vote_average": 5.974
+    "vote_average": 6.0
   }
 }
