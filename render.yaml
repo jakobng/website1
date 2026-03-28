@@ -11,17 +11,13 @@ services:
       - key: DATABASE_URL
         value: sqlite:///backend/coproduction.db
       - key: FRONTEND_URL
-        fromService:
-          type: web
-          name: copro-frontend
-          property: url
+        value: "*" # Use wildcard for now to avoid blueprint circular dependency errors
 
   # The Frontend (Static Site)
   - type: web
     name: copro-frontend
     env: static
     plan: free
-    # No region for static sites
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
     envVars:
@@ -29,4 +25,4 @@ services:
         fromService:
           type: web
           name: copro-backend
-          property: url
+          envVar: RENDER_EXTERNAL_URL
