@@ -3,29 +3,27 @@ services:
   - type: web
     name: copro-backend
     env: python
+    plan: free # Explicitly setting to free
     region: ohio
     buildCommand: cd backend && pip install -r requirements.txt
     startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
-        value: sqlite:////data/coproduction.db
+        value: sqlite:///backend/coproduction.db # Relative to project root
       - key: FRONTEND_URL
         fromService:
           type: web
           name: copro-frontend
           envVar: RENDER_EXTERNAL_URL
-      # User must add these securely in the Render dashboard:
+      # Add API keys in the Render Dashboard
       # - ANTHROPIC_API_KEY
       # - GEMINI_API_KEY
-    disk:
-      name: sqlite-data
-      mountPath: /data
-      sizeGB: 1
 
   # The Frontend
   - type: web
     name: copro-frontend
     env: static
+    plan: free # Explicitly setting to free
     region: ohio
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
