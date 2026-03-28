@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { API_BASE_URL } from '../config'
 import type { Scenario, ProjectInput } from '../types'
 import { CheckCircle2, AlertCircle, MessageSquare, RotateCcw } from 'lucide-react'
 
@@ -50,7 +51,7 @@ function extractCulturalTestCountries(scenarios: Scenario[]): CulturalTestCountr
   return result
 }
 
-export function CulturalTestPanel({ scenarios, project, sessionId, onProjectUpdate, onReanalyze }: Props) {
+export function CulturalTestPanel({ scenarios, project, sessionId, onProjectUpdate, onReanalyze }: Props) {     
   const countries = extractCulturalTestCountries(scenarios)
 
   if (countries.length === 0) return null
@@ -154,7 +155,7 @@ function CulturalTestRow({
       setMessages([{
         role: 'assistant',
         text: data.reply,
-        score: { current: data.current_score, required: data.required_score, total: data.total_possible },
+        score: { current: data.current_score, required: data.required_score, total: data.total_possible },      
       }])
     } finally {
       setLoading(false)
@@ -176,7 +177,7 @@ function CulturalTestRow({
       setMessages(prev => [...prev, {
         role: 'assistant',
         text: data.reply,
-        score: { current: data.current_score, required: data.required_score, total: data.total_possible },
+        score: { current: data.current_score, required: data.required_score, total: data.total_possible },      
       }])
       if (data.is_complete && data.verdict) {
         setVerdict(data.verdict)
@@ -205,20 +206,20 @@ function CulturalTestRow({
 
         {status === 'unknown' && !reviewing && (
           <div className="flex items-center gap-4">
-            <button 
-              onClick={() => markStatus('pass')} 
+            <button
+              onClick={() => markStatus('pass')}
               className="text-[10px] font-black tracking-widest px-3 py-1.5 border border-neutral-200 hover:border-emerald-500 hover:text-emerald-600 transition-all uppercase"
             >
               [Pass]
             </button>
-            <button 
-              onClick={() => markStatus('fail')} 
+            <button
+              onClick={() => markStatus('fail')}
               className="text-[10px] font-black tracking-widest px-3 py-1.5 border border-neutral-200 hover:border-red-500 hover:text-red-600 transition-all uppercase"
             >
               [Fail]
             </button>
-            <button 
-              onClick={startReview} 
+            <button
+              onClick={startReview}
               className="text-[10px] font-black tracking-widest px-4 py-1.5 bg-gallery-text text-white hover:bg-gallery-accent transition-all uppercase flex items-center gap-2"
             >
               <MessageSquare className="h-3 w-3" />
@@ -232,7 +233,7 @@ function CulturalTestRow({
             <div className={`flex items-center gap-2 px-3 py-1 border font-black text-[9px] uppercase tracking-widest ${
               status === 'pass' ? 'border-emerald-500 text-emerald-600 bg-emerald-50' : 'border-red-500 text-red-600 bg-red-50'
             }`}>
-              {status === 'pass' ? <CheckCircle2 className="h-3 w-3" /> : <AlertCircle className="h-3 w-3" />}
+              {status === 'pass' ? <CheckCircle2 className="h-3 w-3" /> : <AlertCircle className="h-3 w-3" />}  
               {status === 'pass' ? 'Validated' : 'Rejected'}
             </div>
             <button
@@ -295,14 +296,10 @@ function CulturalTestRow({
         <div className={`mt-6 p-4 border flex items-center gap-3 text-xs font-black uppercase tracking-widest animate-in zoom-in-95 ${
           verdict === 'pass' ? 'border-emerald-500 text-emerald-600 bg-emerald-50' : 'border-red-500 text-red-600 bg-red-50'
         }`}>
-          {verdict === 'pass' ? <CheckCircle2 className="h-4 w-4" /> : <AlertCircle className="h-4 w-4" />}
+          {verdict === 'pass' ? <CheckCircle2 className="h-4 w-4" /> : <AlertCircle className="h-4 w-4" />}     
           Verdict: {country.country_name} test {verdict === 'pass' ? 'Passed' : 'Failed'}
         </div>
       )}
-    </div>
-  )
-}
- )}
     </div>
   )
 }

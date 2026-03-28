@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { API_BASE_URL } from '../config'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
@@ -31,7 +32,7 @@ export function DocumentPanel({ documentId, annotationId, onClose }: DocumentPan
 
   // Fetch document metadata
   useEffect(() => {
-    fetch(`/api/documents/${documentId}`)
+    fetch(`${API_BASE_URL}/api/documents/${documentId}`)
       .then(r => {
         if (!r.ok) throw new Error('Document not found')
         return r.json()
@@ -79,7 +80,7 @@ export function DocumentPanel({ documentId, annotationId, onClose }: DocumentPan
     return (
       <div className="fixed inset-y-0 right-0 z-50 flex w-full max-w-2xl flex-col border-l border-cinema-gray bg-cinema-black shadow-2xl font-mono">
         <div className="flex items-center justify-between border-b border-cinema-gray px-4 py-3">
-          <span className="text-xs font-bold text-red-500 uppercase tracking-widest">[ERR]: {error}</span>
+          <span className="text-xs font-bold text-red-500 uppercase tracking-widest">[ERR]: {error}</span>      
           <button onClick={onClose} className="border border-cinema-gray p-1 text-cinema-gray hover:text-white">
             <CloseIcon />
           </button>
@@ -97,7 +98,7 @@ export function DocumentPanel({ documentId, annotationId, onClose }: DocumentPan
             {doc?.title ?? 'LOADING_DOCUMENT...'}
           </h3>
           {doc && (
-            <div className="mt-1.5 flex items-center gap-3 text-[10px] font-bold text-cinema-gray uppercase">
+            <div className="mt-1.5 flex items-center gap-3 text-[10px] font-bold text-cinema-gray uppercase">   
               {doc.publisher && <span className="truncate max-w-[200px]">{doc.publisher}</span>}
               {doc.language !== 'en' && (
                 <span className="border border-cinema-amber/40 bg-cinema-amber/5 px-1.5 py-0.5 text-cinema-amber">
@@ -124,7 +125,7 @@ export function DocumentPanel({ documentId, annotationId, onClose }: DocumentPan
              <div className="flex-1">
                 <p className="text-[11px] font-bold text-cinema-amber uppercase tracking-tight">
                   {activeAnnotation.clause_reference && (
-                    <span className="mr-2 border border-cinema-amber px-1.5 py-0.5 text-[9px] font-bold">
+                    <span className="mr-2 border border-cinema-amber px-1.5 py-0.5 text-[9px] font-bold">       
                       {activeAnnotation.clause_reference}
                     </span>
                   )}
@@ -143,7 +144,7 @@ export function DocumentPanel({ documentId, annotationId, onClose }: DocumentPan
       {/* Annotation chips */}
       {doc && doc.annotations.length > 1 && (
         <div className="flex flex-wrap gap-2 border-b border-cinema-gray px-5 py-3 bg-cinema-black/40">
-          <span className="text-[9px] font-bold text-cinema-gray uppercase mr-1 mt-1">Ref_Points:</span>
+          <span className="text-[9px] font-bold text-cinema-gray uppercase mr-1 mt-1">Ref_Points:</span>        
           {doc.annotations.map(ann => (
             <button
               key={ann.id}
@@ -167,7 +168,7 @@ export function DocumentPanel({ documentId, annotationId, onClose }: DocumentPan
           onLoadSuccess={onDocumentLoadSuccess}
           loading={
             <div className="flex h-full items-center justify-center py-20">
-              <div className="h-10 w-10 animate-spin border-2 border-cinema-gray border-t-cinema-amber" />
+              <div className="h-10 w-10 animate-spin border-2 border-cinema-gray border-t-cinema-amber" />      
             </div>
           }
           error={
@@ -204,7 +205,7 @@ export function DocumentPanel({ documentId, annotationId, onClose }: DocumentPan
           >
             [PREV]
           </button>
-          <span className="text-[10px] font-bold text-cinema-amber uppercase tracking-widest tabular-nums">
+          <span className="text-[10px] font-bold text-cinema-amber uppercase tracking-widest tabular-nums">     
             PAGE {currentPage} // {numPages}
           </span>
           <button
@@ -224,10 +225,6 @@ function CloseIcon() {
   return (
     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  )
-}
-2 12" />
     </svg>
   )
 }

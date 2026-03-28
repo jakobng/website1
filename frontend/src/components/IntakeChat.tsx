@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { API_BASE_URL } from '../config'
 import type { ProjectInput, IntakeResponse } from '../types'
 import { Send, FileUp, Sparkles } from 'lucide-react'
 
@@ -132,7 +133,7 @@ export function IntakeChat({ onProjectReady, onAnalyze, onSessionStart }: Props)
         </div>
         <h3 className="text-xl font-bold font-serif">Chat with us</h3>
         <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
-          Describe your project or upload a treatment PDF. We'll help find the best co-production pathways.
+          Describe your project or upload a treatment PDF. We'll help find the best co-production pathways.     
         </p>
         <button
           onClick={startIntake}
@@ -157,20 +158,20 @@ export function IntakeChat({ onProjectReady, onAnalyze, onSessionStart }: Props)
           <div className="h-1 w-16 bg-neutral-100 rounded-full overflow-hidden">
             <div className="h-full bg-gallery-text transition-all duration-1000" style={{ width: `${Math.round(completeness * 100)}%` }} />
           </div>
-          <span className="text-[10px] font-bold text-neutral-300">{Math.round(completeness * 100)}%</span>
+          <span className="text-[10px] font-bold text-neutral-300">{Math.round(completeness * 100)}%</span>     
         </div>
       </header>
 
       {/* Message Stream */}
       <div className="flex-1 overflow-y-auto space-y-6 pr-2 custom-scrollbar">
         {messages.map((msg, i) => (
-          <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+          <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>        
             <span className="text-[8px] font-black uppercase tracking-[0.2em] mb-1.5 text-neutral-300">
               {msg.role === 'user' ? 'Producer' : 'Assistant'}
             </span>
             <div className={`max-w-[90%] px-4 py-3 text-xs leading-relaxed border shadow-sm ${
-              msg.role === 'user' 
-                ? 'bg-gallery-text text-white border-gallery-text' 
+              msg.role === 'user'
+                ? 'bg-gallery-text text-white border-gallery-text'
                 : 'bg-white text-gallery-text border-neutral-100'
             }`}>
               {msg.text}
@@ -195,7 +196,7 @@ export function IntakeChat({ onProjectReady, onAnalyze, onSessionStart }: Props)
             <button onClick={onAnalyze} className="text-[9px] font-black uppercase tracking-widest underline decoration-2 underline-offset-4 hover:text-gallery-accent">Run Calculation</button>
           </div>
         )}
-        
+
         <div className="flex items-end gap-2">
           <button
             onClick={() => fileInputRef.current?.click()}
@@ -204,8 +205,8 @@ export function IntakeChat({ onProjectReady, onAnalyze, onSessionStart }: Props)
           >
             <FileUp className="h-5 w-5" />
           </button>
-          <input ref={fileInputRef} type="file" accept=".pdf" onChange={handleFileUpload} className="hidden" />
-          
+          <input ref={fileInputRef} type="file" accept=".pdf" onChange={handleFileUpload} className="hidden" /> 
+
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -214,7 +215,7 @@ export function IntakeChat({ onProjectReady, onAnalyze, onSessionStart }: Props)
             rows={1}
             className="flex-1 resize-none py-2 text-xs focus:outline-none placeholder:text-neutral-200 border-b border-neutral-100 focus:border-gallery-accent transition-colors"
           />
-          
+
           <button
             onClick={sendMessage}
             disabled={loading || uploading || !input.trim()}
@@ -224,10 +225,6 @@ export function IntakeChat({ onProjectReady, onAnalyze, onSessionStart }: Props)
           </button>
         </div>
       </footer>
-    </div>
-  )
-}
-/footer>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { API_BASE_URL } from '../config'
 
 interface Proposal {
   id: number
@@ -205,10 +206,6 @@ export function AdminUpdateProposalQueue({ initialStatus = 'pending' }: Props) {
             </div>
           ))}
         </div>
-      )}
-    </div>
-  )
-}
       )}
     </div>
   )

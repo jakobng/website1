@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { API_BASE_URL } from '../config'
 import type { ProjectInput, ShootLocation, CountryOption } from '../types'
 import { Plus, X, ChevronDown } from 'lucide-react'
 
@@ -108,8 +109,8 @@ export function ProjectForm({ project, onChange, onAnalyze, loading, error }: Pr
         />
       </div>
       <div className="w-24">
-        <select 
-          value={project.budget_currency} 
+        <select
+          value={project.budget_currency}
           onChange={(e) => update('budget_currency', e.target.value)}
           className="input bg-white font-bold"
         >
@@ -144,7 +145,7 @@ export function ProjectForm({ project, onChange, onAnalyze, loading, error }: Pr
             {totalShootPct}% ALLOCATED
           </span>
         </div>
-        
+
         <div className="space-y-3">
           {project.shoot_locations.map((loc, i) => (
             <div key={i} className="flex items-center gap-2 group">
@@ -221,14 +222,14 @@ export function ProjectForm({ project, onChange, onAnalyze, loading, error }: Pr
           <span className="text-[10px] font-black uppercase tracking-widest text-neutral-400">Cultural Test Status</span>
         </div>
         <p className="text-[10px] text-neutral-400 leading-relaxed italic">
-          Many incentives require passing a points-based cultural test. 
+          Many incentives require passing a points-based cultural test.
           If you know your status for a specific region, mark it here.
         </p>
         <div className="space-y-4">
-          <CulturalTestSection 
-            project={project} 
-            countries={countries} 
-            onChange={onChange} 
+          <CulturalTestSection
+            project={project}
+            countries={countries}
+            onChange={onChange}
           />
         </div>
       </section>
@@ -257,9 +258,9 @@ export function ProjectForm({ project, onChange, onAnalyze, loading, error }: Pr
         >
           {loading ? 'PROCESSING...' : 'FIND CO-PRODUCTION OPTIONS'}
         </button>
-        
+
         {error && (
-          <p className="mt-4 text-xs font-bold text-red-500 text-center uppercase tracking-widest">{error}</p>
+          <p className="mt-4 text-xs font-bold text-red-500 text-center uppercase tracking-widest">{error}</p>  
         )}
       </div>
     </div>
@@ -271,7 +272,7 @@ function BudgetBreakdown({ project, onChange }: {
   onChange: (project: ProjectInput) => void
 }) {
   const [open, setOpen] = useState(false)
-  
+
   const updateFrac = (key: keyof ProjectInput, val: number) => {
     onChange({ ...project, [key]: val / 100 })
   }
@@ -288,14 +289,14 @@ function BudgetBreakdown({ project, onChange }: {
 
   return (
     <div className="space-y-4">
-      <button 
+      <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 text-[10px] font-bold text-neutral-400 uppercase tracking-widest hover:text-gallery-accent transition-colors"
       >
         <ChevronDown className={`h-3 w-3 transition-transform ${open ? 'rotate-180' : ''}`} />
         Detailed Budget Allocation
       </button>
-      
+
       {open && (
         <div className="space-y-5 p-4 bg-neutral-50 rounded-sm border border-neutral-100 animate-in slide-in-from-top-2">
           <div className="grid grid-cols-2 gap-x-4 gap-y-3">
@@ -323,7 +324,7 @@ function BudgetBreakdown({ project, onChange }: {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1.5">
-      <label className="text-[10px] font-black uppercase tracking-widest text-neutral-400">{label}</label>
+      <label className="text-[10px] font-black uppercase tracking-widest text-neutral-400">{label}</label>      
       {children}
     </div>
   )
@@ -367,7 +368,7 @@ function CulturalTestSection({ project, countries, onChange }: {
     if (!code) return
     const key = type === 'passed' ? 'cultural_test_passed' : 'cultural_test_failed'
     const other = type === 'passed' ? 'cultural_test_failed' : 'cultural_test_passed'
-    
+
     onChange({
       ...project,
       [key]: Array.from(new Set([...project[key], code])),
@@ -394,26 +395,26 @@ function CulturalTestSection({ project, countries, onChange }: {
       </div>
 
       {!adding ? (
-        <button 
+        <button
           onClick={() => setAdding(true)}
           className="text-[10px] font-bold text-gallery-accent border-b border-gallery-accent border-dotted hover:text-gallery-accent-dark"
         >
           + ADD MANUAL STATUS
         </button>
       ) : (
-        <div className="flex items-center gap-2 p-3 bg-neutral-50 border border-neutral-100 rounded-sm">
+        <div className="flex items-center gap-2 p-3 bg-neutral-50 border border-neutral-100 rounded-sm">        
           <div className="flex-1">
-            <CountryInput 
-              value="" 
-              onChange={(v) => {}} 
+            <CountryInput
+              value=""
+              onChange={(v) => {}}
               onSelect={(v) => {
                 // We'll show a small sub-menu or just default to pass?
                 // Let's do a simple prompt-like choice
-                const type = window.confirm(`Mark ${v} as PASS? (Cancel for FAIL)`) ? 'passed' : 'failed'
+                const type = window.confirm(`Mark ${v} as PASS? (Cancel for FAIL)`) ? 'passed' : 'failed'       
                 add(v, type)
               }}
-              countries={countries} 
-              placeholder="Search region..." 
+              countries={countries}
+              placeholder="Search region..."
             />
           </div>
           <button onClick={() => setAdding(false)} className="text-xs text-neutral-400">Cancel</button>
@@ -566,10 +567,6 @@ function MultiCountryInput({
         onSelect={handleSelect}
         countries={countries}
         placeholder={values.length === 0 ? placeholder : ""}
-      />
-    </div>
-  )
-}
       />
     </div>
   )

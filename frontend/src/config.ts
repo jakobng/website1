@@ -1,1 +1,1 @@
-export const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+export const API_BASE_URL = 'https://copro-backend-56z5.onrender.com';

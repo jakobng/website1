@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { API_BASE_URL } from './config'
 import type { ProjectInput, AnalyzeResponse } from './types'
 import { ProjectForm } from './components/ProjectForm'
 import { ScenarioList } from './components/ScenarioList'
@@ -19,11 +20,13 @@ const DEFAULT_PROJECT: ProjectInput = {
   open_to_copro_countries: [],
   director_nationalities: [],
   producer_nationalities: [],
-  production_company_country: undefined,
   production_company_countries: [],
   languages: [],
-  shooting_spend_fraction: 0.40,
-  post_production_spend_fraction: 0.35,
+  development_fraction: 0.05,
+  above_the_line_fraction: 0.20,
+  production_btl_fraction: 0.40,
+  post_production_btl_fraction: 0.25,
+  other_fraction: 0.10,
   post_production_country: undefined,
   shoot_locations: [{ country: '', percent: 0 }],
   spend_allocations: [],
@@ -47,7 +50,7 @@ function App() {
   const [stats, setStats] = useState({ countries: 0, incentives: 0, treaties: 0 })
   const [inputMode, setInputMode] = useState<InputMode>('interview')
   const [sessionId, setSessionId] = useState<string | null>(null)
-  const [docViewer, setDocViewer] = useState<{ documentId: number; annotationId?: number | null } | null>(null)
+  const [docViewer, setDocViewer] = useState<{ documentId: number; annotationId?: number | null } | null>(null) 
 
   const handleDocumentOpen = useCallback((documentId: number, annotationId?: number | null) => {
     setDocViewer({ documentId, annotationId })
@@ -108,9 +111,9 @@ function App() {
         {/* Simple Introduction */}
         <section className="mb-12 pb-8 border-b border-neutral-100">
           <p className="text-lg text-neutral-600 leading-relaxed max-w-5xl">
-            Input your project details to find the international film funds and tax credits you qualify for today. 
-            The calculator also identifies additional financing you could unlock through minor logistical changes or by adding a co-production partner. 
-            Every scenario is transparent: click any result to inspect the underlying math and cited treaty texts. 
+            Input your project details to find the international film funds and tax credits you qualify for today.
+            The calculator also identifies additional financing you could unlock through minor logistical changes or by adding a co-production partner.
+            Every scenario is transparent: click any result to inspect the underlying math and cited treaty texts.
             Start a <strong>Chat</strong> to walk through your project details (or upload a treatment), or use <strong>Manual</strong> mode to input all your data directly.
           </p>
         </section>
@@ -190,7 +193,7 @@ function App() {
               <div className="space-y-12 animate-in fade-in duration-700">
                 <header className="space-y-4">
                   <div className="flex items-end justify-between border-b border-gallery-text pb-6">
-                    <h2 className="text-3xl font-bold font-serif tracking-tight">Financing Scenarios</h2>
+                    <h2 className="text-3xl font-bold font-serif tracking-tight">Financing Scenarios</h2>       
                     <div className="text-[11px] font-black uppercase tracking-widest text-gallery-accent bg-gallery-accent/5 px-3 py-1 border border-gallery-accent/20">
                       {scenarioCount} OPTIONS FOUND
                     </div>
@@ -241,10 +244,6 @@ function App() {
       )}
     </div>
   )
-}
-
-export default App
- )
 }
 
 export default App
