@@ -12,15 +12,3 @@ services:
         value: sqlite:///backend/coproduction.db
       - key: FRONTEND_URL
         value: "https://www.leonelki.com"
-
-  # The Frontend (Static Site)
-  - type: static_site
-    name: copro-frontend
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: copro-backend
-          property: host
