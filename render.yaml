@@ -1,5 +1,5 @@
 services:
-  # The Backend (Python/FastAPI Web Service)
+  # The Backend (Python Web Service)
   - type: web
     name: copro-backend
     env: python
@@ -12,16 +12,16 @@ services:
         value: sqlite:///backend/coproduction.db
       - key: FRONTEND_URL
         fromService:
-          type: static
+          type: web
           name: copro-frontend
           property: url
-      # Add API keys in the Render Dashboard securely
-      # - ANTHROPIC_API_KEY
-      # - GEMINI_API_KEY
 
-  # The Frontend (React/Vite Static Site)
-  - type: static
+  # The Frontend (Static Site)
+  - type: web
     name: copro-frontend
+    env: static
+    plan: free
+    # No region for static sites
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
     envVars:
