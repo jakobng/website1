@@ -25898,8 +25898,8 @@
     "overview": "",
     "overview_en": "In the near future, a detective stands on trial accused of murdering his wife. He has ninety minutes to prove his innocence to the advanced AI Judge he once championed, before it determines his fate.",
     "poster_path": "/p9rCuCVl2y78IbbRC5XbNJLiYsN.jpg",
-    "backdrop_path": "/mHC8tSRYfAKGh2jaSNQMSzGdbOW.jpg",
-    "release_date": "2026-01-19",
+    "backdrop_path": "/7HKpc11uQfxnw0Y8tRUYn1fsKqE.jpg",
+    "release_date": "2026-01-20",
     "director": "Тимур Бекмамбетов",
     "director_jp": "Тимур Бекмамбетов",
     "director_en": "Timur Bekmambetov",
@@ -25913,8 +25913,8 @@
       "Action",
       "Thriller"
     ],
-    "runtime": 100,
-    "vote_average": 6.8,
+    "runtime": 99,
+    "vote_average": 7.04,
     "tmdb_countries": [
       {
         "iso_3166_1": "US",
@@ -82280,7 +82280,7 @@
       "Drama"
     ],
     "runtime": 117,
-    "vote_average": 7.111,
+    "vote_average": 7.1,
     "tmdb_countries": [
       {
         "iso_3166_1": "CA",
@@ -92028,6 +92028,561 @@
       {
         "iso_3166_1": "US",
         "name": "United States of America"
+      }
+    ]
+  },
+  "辛抱": {
+    "tmdb_id": 176402,
+    "tmdb_title_jp": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_title_en": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_title_original": "A Normal Life. Chronicle of a Sumo Wrestler",
+    "tmdb_original_language": "fr",
+    "overview": "",
+    "overview_en": "The diary of Takuya Ogushi, a 18 years old Japanese, who begins his new life as a sumo wrestler.",
+    "poster_path": "/Ap51UYs5eNvqKjVIR6GnRohKtu7.jpg",
+    "backdrop_path": null,
+    "release_date": "2013-03-13",
+    "director": "Jill Coulon",
+    "director_jp": "Jill Coulon",
+    "director_en": "Jill Coulon",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 0,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "テレビショッピングの女王　青池春香の事件チャンネル": null,
+  "遠くへいきたいわ": {
+    "tmdb_id": 1111282,
+    "tmdb_title_jp": "遠くへいきたいわ",
+    "tmdb_title_en": "Far, Far Away",
+    "tmdb_title_original": "遠くへいきたいわ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Sara is 21 years old and works at a family restaurant.  She wasn't able to hide her upset at first sight when Takeuchi came to the family restaurant to have an interview. Going back home by bicycle, Yuto, Sara's boyfriend and also her colleague, told her a shocking story. He saw Takeuchi standing on the middle of a road with keeping her eyes closed. Sara expressed  her anger and left Yuto there. On the first working day of Takeuchi, after preparing for the opening, Sara and Takeuchi were just waiting for the restauraunt opening, but...........",
+    "poster_path": "/zUNQsF7Qw9iAzgST97WDENUUUcR.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-03-02",
+    "director": "団塚唯我",
+    "director_jp": "団塚唯我",
+    "director_en": "Yuiga Danzuka",
+    "genres": [
+      "ファミリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Family",
+      "Drama"
+    ],
+    "runtime": 30,
+    "vote_average": 7.0,
+    "tmdb_countries": []
+  },
+  "tmdb:1111282": {
+    "tmdb_id": 1111282,
+    "tmdb_title_jp": "遠くへいきたいわ",
+    "tmdb_title_en": "Far, Far Away",
+    "tmdb_title_original": "遠くへいきたいわ",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Sara is 21 years old and works at a family restaurant.  She wasn't able to hide her upset at first sight when Takeuchi came to the family restaurant to have an interview. Going back home by bicycle, Yuto, Sara's boyfriend and also her colleague, told her a shocking story. He saw Takeuchi standing on the middle of a road with keeping her eyes closed. Sara expressed  her anger and left Yuto there. On the first working day of Takeuchi, after preparing for the opening, Sara and Takeuchi were just waiting for the restauraunt opening, but...........",
+    "poster_path": "/zUNQsF7Qw9iAzgST97WDENUUUcR.jpg",
+    "backdrop_path": null,
+    "release_date": "2022-03-02",
+    "director": "団塚唯我",
+    "director_jp": "団塚唯我",
+    "director_en": "Yuiga Danzuka",
+    "genres": [
+      "ファミリー",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Family",
+      "Drama"
+    ],
+    "runtime": 30,
+    "vote_average": 7.0,
+    "tmdb_countries": []
+  },
+  "ムガリッツ": {
+    "tmdb_id": 1284034,
+    "tmdb_title_jp": "Mugaritz. Sin pan ni postre",
+    "tmdb_title_en": "Mugaritz: No Bread, No Dessert.",
+    "tmdb_title_original": "Mugaritz. Sin pan ni postre",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Now with Mugaritz, the Valencian will document what happens behind closed doors in this restaurant and record the creation process, conceptualisation and commentary of the dishes, but not the making of the dishes themselves. Because the creation of Mugaritz is more to do with expressing ideas through food than with the cuisine itself, according to its creators.",
+    "poster_path": "/sLkn1xpm9Tc8DsAxlvmP7axWj4x.jpg",
+    "backdrop_path": "/iM4ukbL5903EuxBfIiukNwzwNca.jpg",
+    "release_date": "2024-09-23",
+    "director": "Paco Plaza",
+    "director_jp": "Paco Plaza",
+    "director_en": "Paco Plaza",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 95,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "MERCY／マーシー AI裁判": {
+    "tmdb_id": 1236153,
+    "tmdb_title_jp": "MERCY／マーシー　AI裁判",
+    "tmdb_title_en": "Mercy",
+    "tmdb_title_original": "Mercy",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "In the near future, a detective stands on trial accused of murdering his wife. He has ninety minutes to prove his innocence to the advanced AI Judge he once championed, before it determines his fate.",
+    "poster_path": "/p9rCuCVl2y78IbbRC5XbNJLiYsN.jpg",
+    "backdrop_path": "/7HKpc11uQfxnw0Y8tRUYn1fsKqE.jpg",
+    "release_date": "2026-01-20",
+    "director": "Тимур Бекмамбетов",
+    "director_jp": "Тимур Бекмамбетов",
+    "director_en": "Timur Bekmambetov",
+    "genres": [
+      "サイエンスフィクション",
+      "アクション",
+      "スリラー"
+    ],
+    "genres_en": [
+      "Science Fiction",
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 99,
+    "vote_average": 7.04,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "揺さぶられる正義": null,
+  "アンダーグラウンド・シネマ・フェスティバル Ⅳ": null,
+  "済州島四・三事件 ハラン": {
+    "tmdb_id": 1315477,
+    "tmdb_title_jp": "済州島四・三事件 ハラン",
+    "tmdb_title_en": "Hallan",
+    "tmdb_title_original": "한란",
+    "tmdb_original_language": "ko",
+    "overview": "1948年4月3日、外国勢力による干渉に反発した済州島の一部島民が武装蜂起したことに端を発した「済州島四・三事件」。同年10月より、政府は海岸線から5キロ以上離れた地域を「敵性区域」とみなし、「出入りする者は無条件に射殺する」という布告文を発令した。村人たちは難を逃れるため、済州島の中央にそびえる漢拏山（ハルラサン）を目指す。一時的に村を出ることになった女性アジンは、村に残してきた6歳の娘ヘセンのことが心配でたまらない。その頃、村では韓国軍が老人たちを容赦なく射殺していた。生き残ったヘセンは、母を捜すためたったひとりで山へ向かう。奇跡的に再会を果たした母娘は、生き延びるため命がけの逃避行に出る。",
+    "overview_en": "Set against the backdrop of the Jeju Uprising in 1948, which was sparked by an armed revolt of islanders fearing the division of Korea into North and South, the film portrays the tragic consequences of an indiscriminate punitive expedition by the South Korean government. Under the guise of an anti-communist campaign, more than 25,000 civilians were slaughtered. Through the story of a mother fiercely protecting her young daughter, the film highlights the resilience and strength of Jeju women amidst the chaos.",
+    "poster_path": "/kUwIlxR831ennlsuY79TR2tUOH2.jpg",
+    "backdrop_path": "/rjLqfoc10D9usS3Q0gvorjCp1pS.jpg",
+    "release_date": "2025-11-26",
+    "director": "하명미",
+    "director_jp": "하명미",
+    "director_en": "Ha Myung-mi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 119,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "tmdb:1315477": {
+    "tmdb_id": 1315477,
+    "tmdb_title_jp": "済州島四・三事件 ハラン",
+    "tmdb_title_en": "Hallan",
+    "tmdb_title_original": "한란",
+    "tmdb_original_language": "ko",
+    "overview": "1948年4月3日、外国勢力による干渉に反発した済州島の一部島民が武装蜂起したことに端を発した「済州島四・三事件」。同年10月より、政府は海岸線から5キロ以上離れた地域を「敵性区域」とみなし、「出入りする者は無条件に射殺する」という布告文を発令した。村人たちは難を逃れるため、済州島の中央にそびえる漢拏山（ハルラサン）を目指す。一時的に村を出ることになった女性アジンは、村に残してきた6歳の娘ヘセンのことが心配でたまらない。その頃、村では韓国軍が老人たちを容赦なく射殺していた。生き残ったヘセンは、母を捜すためたったひとりで山へ向かう。奇跡的に再会を果たした母娘は、生き延びるため命がけの逃避行に出る。",
+    "overview_en": "Set against the backdrop of the Jeju Uprising in 1948, which was sparked by an armed revolt of islanders fearing the division of Korea into North and South, the film portrays the tragic consequences of an indiscriminate punitive expedition by the South Korean government. Under the guise of an anti-communist campaign, more than 25,000 civilians were slaughtered. Through the story of a mother fiercely protecting her young daughter, the film highlights the resilience and strength of Jeju women amidst the chaos.",
+    "poster_path": "/kUwIlxR831ennlsuY79TR2tUOH2.jpg",
+    "backdrop_path": "/rjLqfoc10D9usS3Q0gvorjCp1pS.jpg",
+    "release_date": "2025-11-26",
+    "director": "하명미",
+    "director_jp": "하명미",
+    "director_en": "Ha Myung-mi",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 119,
+    "vote_average": 6.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "KR",
+        "name": "South Korea"
+      }
+    ]
+  },
+  "マダム・ソワ・セヴェンヌ": null,
+  "三角屋の交差点で": {
+    "tmdb_id": 1548366,
+    "tmdb_title_jp": "三角屋の交差点で",
+    "tmdb_title_en": "At the Triangle Intersection",
+    "tmdb_title_original": "三角屋の交差点で",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A couple and the husband’s mother have been living away from the town of Namie in Fukushima Prefecture since they were evacuated after the nuclear accident. As they make the decision to build a new house, their feelings as husband and wife, parent and child, and daughter-in-law and mother-in-law intersect. The film depicts their emotional struggle to live as their true selves, amidst elderly caregiving of the elderly and complex family relationships—issues brought to the surface by the disaster.",
+    "poster_path": "/9O6pwYgkXPwWCVOcbBPGl8sgvGc.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-11",
+    "director": "Toru Yamada",
+    "director_jp": "Toru Yamada",
+    "director_en": "Toru Yamada",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 94,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:1548366": {
+    "tmdb_id": 1548366,
+    "tmdb_title_jp": "三角屋の交差点で",
+    "tmdb_title_en": "At the Triangle Intersection",
+    "tmdb_title_original": "三角屋の交差点で",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "A couple and the husband’s mother have been living away from the town of Namie in Fukushima Prefecture since they were evacuated after the nuclear accident. As they make the decision to build a new house, their feelings as husband and wife, parent and child, and daughter-in-law and mother-in-law intersect. The film depicts their emotional struggle to live as their true selves, amidst elderly caregiving of the elderly and complex family relationships—issues brought to the surface by the disaster.",
+    "poster_path": "/9O6pwYgkXPwWCVOcbBPGl8sgvGc.jpg",
+    "backdrop_path": null,
+    "release_date": "2025-10-11",
+    "director": "Toru Yamada",
+    "director_jp": "Toru Yamada",
+    "director_en": "Toru Yamada",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 94,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "『Riceboy　ﾗｲｽﾎﾞｰｲ』ｲﾍﾞﾝﾄ付": {
+    "tmdb_id": 1008038,
+    "tmdb_title_jp": "Riceboy ライスボーイ",
+    "tmdb_title_en": "Riceboy Sleeps",
+    "tmdb_title_original": "Riceboy Sleeps",
+    "tmdb_original_language": "en",
+    "overview": "若くして恋人を亡くし未婚の母となったソヨンは、赤ん坊の息子ドンヒョンを連れてカナダのバンクーバー郊外へと移住する。ソヨンは工場で働きながら、言葉や文化の壁、人種差別に直面する日々の中、懸命に息子を育てていく。やがて16歳となったドンヒョンは英語名“デービッド”を名乗り、すっかりカナダでの生活になじんでいた。しかし、彼の心の奥底では自身のルーツ、特に一度も会ったことのない父親の存在への思いが次第に募っていく。そんなある日、二人に届いた衝撃的な知らせをきっかけに母と息子は初めて韓国へ帰郷し、悲しみの過去と対峙することになる ─ 。",
+    "overview_en": "In the 1990s, an immigrant single mother raises her teenage son in the Canadian suburbs, determined to provide a better life for him than the one she left behind in South Korea.",
+    "poster_path": "/344oy01RDIpTQd6Pw43iOYP3bjT.jpg",
+    "backdrop_path": "/2fckvNvcgAQiD5IbkVdfh3i6cR9.jpg",
+    "release_date": "2023-03-17",
+    "director": "沈明辅",
+    "director_jp": "沈明辅",
+    "director_en": "Anthony Shim",
+    "genres": [
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Drama"
+    ],
+    "runtime": 117,
+    "vote_average": 7.1,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      }
+    ]
+  },
+  "フジコ・ヘミング 永遠の音色【三回忌追悼上映】": null,
+  "秋津温泉": {
+    "tmdb_id": 33342,
+    "tmdb_title_jp": "秋津温泉",
+    "tmdb_title_en": "Akitsu Hot Springs",
+    "tmdb_title_original": "秋津温泉",
+    "tmdb_original_language": "ja",
+    "overview": "戦時中生きる気力を無くした青年は、死に場所を求めて秋津温泉にやって来た。しかし彼は結核に冒され、自殺する事もままならずに温泉宿で倒れてしまう。そんな彼を看病したのは宿の若い娘だった。終戦の玉音放送に涙を流す娘の純粋さに青年は心まで癒され、そして生きる気力を取り戻した青年の姿に、やがて娘の心も惹かれていく。そして回復した青年は都会へと戻っていくが…。",
+    "overview_en": "Just after WW2, a romance between an innkeeper and a man with tuberculosis unravels near a thermal spring.",
+    "poster_path": "/hpw8cocGVne6ONcOMcSZAv5E06y.jpg",
+    "backdrop_path": "/nYo5UtbRRjePL2s9kIMkFVL5IpR.jpg",
+    "release_date": "1962-06-15",
+    "director": "吉田喜重",
+    "director_jp": "吉田喜重",
+    "director_en": "Yoshishige Yoshida",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:33342": {
+    "tmdb_id": 33342,
+    "tmdb_title_jp": "秋津温泉",
+    "tmdb_title_en": "Akitsu Hot Springs",
+    "tmdb_title_original": "秋津温泉",
+    "tmdb_original_language": "ja",
+    "overview": "戦時中生きる気力を無くした青年は、死に場所を求めて秋津温泉にやって来た。しかし彼は結核に冒され、自殺する事もままならずに温泉宿で倒れてしまう。そんな彼を看病したのは宿の若い娘だった。終戦の玉音放送に涙を流す娘の純粋さに青年は心まで癒され、そして生きる気力を取り戻した青年の姿に、やがて娘の心も惹かれていく。そして回復した青年は都会へと戻っていくが…。",
+    "overview_en": "Just after WW2, a romance between an innkeeper and a man with tuberculosis unravels near a thermal spring.",
+    "poster_path": "/hpw8cocGVne6ONcOMcSZAv5E06y.jpg",
+    "backdrop_path": "/nYo5UtbRRjePL2s9kIMkFVL5IpR.jpg",
+    "release_date": "1962-06-15",
+    "director": "吉田喜重",
+    "director_jp": "吉田喜重",
+    "director_en": "Yoshishige Yoshida",
+    "genres": [
+      "ロマンス",
+      "ドラマ"
+    ],
+    "genres_en": [
+      "Romance",
+      "Drama"
+    ],
+    "runtime": 113,
+    "vote_average": 6.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "禁猟区": {
+    "tmdb_id": 44370,
+    "tmdb_title_jp": "天使禁猟区",
+    "tmdb_title_en": "Angel Sanctuary",
+    "tmdb_title_original": "天使禁猟区",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Setsuna, a High School student, not only has to deal with bullies and more then appropiate feelings for his own sister, but also must come to terms with the fact that he is the reincarnation of the Organic Angel Alexiel who rebelled against God. Being thrust into a world he never knew existed he must believe that angels and demons exist for the sake of Heaven, Earth and even Hell.",
+    "poster_path": "/erouXeD5hTzlr9SgsvLeiElMmO7.jpg",
+    "backdrop_path": "/pFSTmErAfxptAploI7GhaKLc0ET.jpg",
+    "release_date": "2001-01-01",
+    "director": "佐山聖子",
+    "director_jp": "佐山聖子",
+    "director_en": "Kiyoko Sayama",
+    "genres": [
+      "ロマンス",
+      "ファンタジー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Romance",
+      "Fantasy",
+      "Animation"
+    ],
+    "runtime": 90,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "tmdb:44370": {
+    "tmdb_id": 44370,
+    "tmdb_title_jp": "天使禁猟区",
+    "tmdb_title_en": "Angel Sanctuary",
+    "tmdb_title_original": "天使禁猟区",
+    "tmdb_original_language": "ja",
+    "overview": "",
+    "overview_en": "Setsuna, a High School student, not only has to deal with bullies and more then appropiate feelings for his own sister, but also must come to terms with the fact that he is the reincarnation of the Organic Angel Alexiel who rebelled against God. Being thrust into a world he never knew existed he must believe that angels and demons exist for the sake of Heaven, Earth and even Hell.",
+    "poster_path": "/erouXeD5hTzlr9SgsvLeiElMmO7.jpg",
+    "backdrop_path": "/pFSTmErAfxptAploI7GhaKLc0ET.jpg",
+    "release_date": "2001-01-01",
+    "director": "佐山聖子",
+    "director_jp": "佐山聖子",
+    "director_en": "Kiyoko Sayama",
+    "genres": [
+      "ロマンス",
+      "ファンタジー",
+      "アニメーション"
+    ],
+    "genres_en": [
+      "Romance",
+      "Fantasy",
+      "Animation"
+    ],
+    "runtime": 90,
+    "vote_average": 5.6,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      }
+    ]
+  },
+  "ハウス・オブ・ザ・デビル（R15+）": {
+    "tmdb_id": 25983,
+    "tmdb_title_jp": "The House of the Devil",
+    "tmdb_title_en": "The House of the Devil",
+    "tmdb_title_original": "The House of the Devil",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "A young college student who’s struggling financially takes a strange babysitting job which coincides with a full lunar eclipse. She slowly realizes her clients harbor a terrifying secret, putting her life in mortal danger.",
+    "poster_path": "/4abKUbc9IbsndbaY1hacN1iPM0Y.jpg",
+    "backdrop_path": "/7ruEP348zJuAPfR02D7lsJM3JKI.jpg",
+    "release_date": "2009-10-30",
+    "director": "タイ・ウェスト",
+    "director_jp": "タイ・ウェスト",
+    "director_en": "Ti West",
+    "genres": [
+      "ホラー",
+      "謎"
+    ],
+    "genres_en": [
+      "Horror",
+      "Mystery"
+    ],
+    "runtime": 95,
+    "vote_average": 6.3,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ]
+  },
+  "BEGIN「さにしゃんサンゴSHOW!!」～35年目の音楽旅団ツアー～ ライブ・ビューイング": null,
+  "インド映画同好会支援募金�─屮譽癲彗綢慊名鐓絮如屮ぅ譽屮鵝�": null,
+  "スルターン": {
+    "tmdb_id": 792334,
+    "tmdb_title_jp": "சுல்தான்",
+    "tmdb_title_en": "Sulthan",
+    "tmdb_title_original": "சுல்தான்",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "A man raised by gangsters tries to reform them, and a hired job to protect a village presents him with the perfect opportunity.",
+    "poster_path": "/z9TqB7GcyM0tMOFlI5mZuqNq351.jpg",
+    "backdrop_path": "/vLanw88oSsTJCFDyLxacuQG8INa.jpg",
+    "release_date": "2021-04-02",
+    "director": "Bhagyaraj Kannan",
+    "director_jp": "Bhagyaraj Kannan",
+    "director_en": "Bhagyaraj Kannan",
+    "genres": [
+      "アクション",
+      "スリラー",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller",
+      "Romance"
+    ],
+    "runtime": 122,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
+      }
+    ]
+  },
+  "ガイダンス開始": null,
+  "ガイダンス終了": null,
+  "tmdb:1284034": {
+    "tmdb_id": 1284034,
+    "tmdb_title_jp": "Mugaritz. Sin pan ni postre",
+    "tmdb_title_en": "Mugaritz: No Bread, No Dessert.",
+    "tmdb_title_original": "Mugaritz. Sin pan ni postre",
+    "tmdb_original_language": "en",
+    "overview": "",
+    "overview_en": "Now with Mugaritz, the Valencian will document what happens behind closed doors in this restaurant and record the creation process, conceptualisation and commentary of the dishes, but not the making of the dishes themselves. Because the creation of Mugaritz is more to do with expressing ideas through food than with the cuisine itself, according to its creators.",
+    "poster_path": "/sLkn1xpm9Tc8DsAxlvmP7axWj4x.jpg",
+    "backdrop_path": "/iM4ukbL5903EuxBfIiukNwzwNca.jpg",
+    "release_date": "2024-09-23",
+    "director": "Paco Plaza",
+    "director_jp": "Paco Plaza",
+    "director_en": "Paco Plaza",
+    "genres": [
+      "ドキュメンタリー"
+    ],
+    "genres_en": [
+      "Documentary"
+    ],
+    "runtime": 95,
+    "vote_average": 0.0,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ]
+  },
+  "tmdb:792334": {
+    "tmdb_id": 792334,
+    "tmdb_title_jp": "சுல்தான்",
+    "tmdb_title_en": "Sulthan",
+    "tmdb_title_original": "சுல்தான்",
+    "tmdb_original_language": "ta",
+    "overview": "",
+    "overview_en": "A man raised by gangsters tries to reform them, and a hired job to protect a village presents him with the perfect opportunity.",
+    "poster_path": "/z9TqB7GcyM0tMOFlI5mZuqNq351.jpg",
+    "backdrop_path": "/vLanw88oSsTJCFDyLxacuQG8INa.jpg",
+    "release_date": "2021-04-02",
+    "director": "Bhagyaraj Kannan",
+    "director_jp": "Bhagyaraj Kannan",
+    "director_en": "Bhagyaraj Kannan",
+    "genres": [
+      "アクション",
+      "スリラー",
+      "ロマンス"
+    ],
+    "genres_en": [
+      "Action",
+      "Thriller",
+      "Romance"
+    ],
+    "runtime": 122,
+    "vote_average": 5.5,
+    "tmdb_countries": [
+      {
+        "iso_3166_1": "IN",
+        "name": "India"
       }
     ]
   }

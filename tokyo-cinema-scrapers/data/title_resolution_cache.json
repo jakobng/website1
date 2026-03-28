@@ -9765,5 +9765,134 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "辛抱": {
+    "english_title": "A Normal Life: Chronicle of a Sumo Wrestler",
+    "release_year": 2009,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "辛抱",
+    "director": "Jill Coulon",
+    "country": "France, Japan"
+  },
+  "テレビショッピングの女王　青池春香の事件チャンネル": {
+    "english_title": "The Queen of TV Shopping: Haruka Aoike's Incident Channel",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "テレビショッピングの女王　青池春香の事件チャンネル",
+    "director": "Tsukasa Shirakawa",
+    "country": "Japan",
+    "failed": true
+  },
+  "ムガリッツ": {
+    "english_title": "Mugaritz: No Bread, No Dessert",
+    "release_year": 2024,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Mugaritz. Sin pan ni postre",
+    "director": "Paco Plaza",
+    "country": "Spain"
+  },
+  "揺さぶられる正義": {
+    "english_title": "Shaking Justice",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "揺さぶられる正義",
+    "director": "Daisuke Ueda",
+    "country": "Japan",
+    "failed": true
+  },
+  "アンダーグラウンド・シネマ・フェスティバル Ⅳ": {
+    "english_title": "Underground Cinema Festival IV",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "アンダーグラウンド・シネマ・フェスティバル Ⅳ",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "マダム・ソワ・セヴェンヌ": {
+    "english_title": "Madame Soie Cévennes",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "マダム・ソワ・セヴェンヌ",
+    "director": "Koichi Sato",
+    "country": "Japan",
+    "failed": true
+  },
+  "『Riceboy　ﾗｲｽﾎﾞｰｲ』ｲﾍﾞﾝﾄ付": {
+    "english_title": "Riceboy Sleeps",
+    "release_year": 2022,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Riceboy Sleeps",
+    "director": "Anthony Shim",
+    "country": "Canada"
+  },
+  "フジコ・ヘミング 永遠の音色【三回忌追悼上映】": {
+    "english_title": "Fuzjko: Everlasting Melody",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "フジコ・ヘミング 永遠の音色",
+    "director": "Soichiro Komatsu",
+    "country": "Japan",
+    "failed": true
+  },
+  "ハウス・オブ・ザ・デビル（R15+）": {
+    "english_title": "The House of the Devil",
+    "release_year": 2009,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "The House of the Devil",
+    "director": "Ti West",
+    "country": "USA"
+  },
+  "BEGIN「さにしゃんサンゴSHOW!!」～35年目の音楽旅団ツアー～ ライブ・ビューイング": {
+    "english_title": "BEGIN \"Sanishan Sango SHOW!!\" -35th Year Music Brigade Tour- Live Viewing",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "BEGIN「さにしゃんサンゴSHOW!!」～35年目の音楽旅団ツアー～ ライブ・ビューイング",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "インド映画同好会支援募金�─屮譽癲彗綢慊名鐓絮如屮ぅ譽屮鵝�": {
+    "english_title": "Eleven",
+    "release_year": 2025,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "Eleven",
+    "director": "Lokkesh Ajls",
+    "country": "India",
+    "failed": true
+  },
+  "スルターン": {
+    "english_title": "Sulthan",
+    "release_year": 2021,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "Sulthan",
+    "director": "Bakkiyaraj Kannan",
+    "country": "India"
+  },
+  "ガイダンス開始": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
+  },
+  "ガイダンス終了": {
+    "english_title": null,
+    "release_year": null,
+    "confidence": 0.0,
+    "notes": "gemini_failed",
+    "failed": true
   }
 }
