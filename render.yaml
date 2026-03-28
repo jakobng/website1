@@ -5,10 +5,12 @@ services:
     env: python
     plan: free
     region: ohio
-    buildCommand: cd backend && pip install -r requirements.txt && python seed_data.py && python seed_documents.py
-    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    buildCommand: pip install -r backend/requirements.txt && python backend/seed_data.py && python backend/seed_documents.py
+    startCommand: gunicorn -w 4 -k uvicorn.workers.UvicornWorker backend.app.main:app --bind 0.0.0.0:$PORT
     envVars:
       - key: DATABASE_URL
         value: sqlite:///backend/coproduction.db
       - key: FRONTEND_URL
         value: "https://www.leonelki.com"
+      - key: PYTHONPATH
+        value: "backend"
