@@ -5,17 +5,17 @@ services:
     env: python
     plan: free
     region: ohio
-    buildCommand: cd backend && pip install -r requirements.txt
+    buildCommand: cd backend && pip install -r requirements.txt && python seed_data.py && python seed_documents.py
     startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
         value: sqlite:///backend/coproduction.db
       - key: FRONTEND_URL
-        value: "*"
+        value: "https://www.leonelki.com"
 
-staticSites:
   # The Frontend (Static Site)
-  - name: copro-frontend
+  - type: static_site
+    name: copro-frontend
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
     envVars:
