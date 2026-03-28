@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "batch_id": "phase1_treaty_to_incentive",
+    "generated_on": "2026-03-26",
+    "status": "placeholder_unverified",
+    "notes": "Scaffold records only. Do not seed into production until values are verified from primary sources."
+  },
+  "incentive_records": [
+    {
+      "record_id": "INC-JP-01",
+      "country_code": "JP",
+      "name": "Japan Film Incentive Program (Scaffold Placeholder)",
+      "region": null,
+      "incentive_type": "cash_rebate",
+      "rebate_percent": null,
+      "rebate_applies_to": "qualifying_spend",
+      "max_cap_amount": null,
+      "max_cap_currency": "JPY",
+      "min_total_budget": null,
+      "min_qualifying_spend": null,
+      "min_spend_currency": "JPY",
+      "min_spend_percent": null,
+      "min_shoot_percent": null,
+      "min_shoot_days": null,
+      "eligible_formats": ["feature_fiction", "documentary", "series", "animation"],
+      "eligible_stages": ["production"],
+      "local_producer_required": true,
+      "cultural_test_required": false,
+      "cultural_test_min_score": null,
+      "cultural_test_total_score": null,
+      "source_url": "https://www.meti.go.jp/english/",
+      "source_description": "Japan METI / relevant film incentive authority (to verify exact program source)",
+      "clause_reference": null,
+      "notes": "TODO: replace with verified national/regional incentive terms, rates, and thresholds.",
+      "last_verified": "2026-03"
+    },
+    {
+      "record_id": "INC-IN-01",
+      "country_code": "IN",
+      "name": "India International Film Incentive (Scaffold Placeholder)",
+      "region": null,
+      "incentive_type": "cash_rebate",
+      "rebate_percent": null,
+      "rebate_applies_to": "qualifying_spend",
+      "max_cap_amount": null,
+      "max_cap_currency": "INR",
+      "min_total_budget": null,
+      "min_qualifying_spend": null,
+      "min_spend_currency": "INR",
+      "min_spend_percent": null,
+      "min_shoot_percent": null,
+      "min_shoot_days": null,
+      "eligible_formats": ["feature_fiction", "documentary", "series", "animation"],
+      "eligible_stages": ["production"],
+      "local_producer_required": true,
+      "cultural_test_required": false,
+      "cultural_test_min_score": null,
+      "cultural_test_total_score": null,
+      "source_url": "https://ffo.gov.in/en/incentives",
+      "source_description": "Film Facilitation Office India - incentives page",
+      "clause_reference": null,
+      "notes": "TODO: verify current incentive rate, cap, and qualifying spend conditions.",
+      "last_verified": "2026-03"
+    },
+    {
+      "record_id": "INC-CN-01",
+      "country_code": "CN",
+      "name": "China Co-Production Incentive Pathway (Scaffold Placeholder)",
+      "region": null,
+      "incentive_type": "grant",
+      "rebate_percent": null,
+      "rebate_applies_to": "qualifying_spend",
+      "max_cap_amount": null,
+      "max_cap_currency": "CNY",
+      "min_total_budget": null,
+      "min_qualifying_spend": null,
+      "min_spend_currency": "CNY",
+      "min_spend_percent": null,
+      "min_shoot_percent": null,
+      "min_shoot_days": null,
+      "eligible_formats": ["feature_fiction", "documentary", "series", "animation"],
+      "eligible_stages": ["production"],
+      "local_producer_required": true,
+      "cultural_test_required": false,
+      "cultural_test_min_score": null,
+      "cultural_test_total_score": null,
+      "source_url": "https://www.chinafilmadministration.gov.cn/",
+      "source_description": "China Film Administration official portal",
+      "clause_reference": null,
+      "notes": "TODO: determine whether national incentive or only regional programs should be modeled first.",
+      "last_verified": "2026-03"
+    },
+    {
+      "record_id": "INC-MX-01",
+      "country_code": "MX",
+      "name": "Mexico Film Incentive Program (Scaffold Placeholder)",
+      "region": null,
+      "incentive_type": "tax_credit",
+      "rebate_percent": null,
+      "rebate_applies_to": "qualifying_spend",
+      "max_cap_amount": null,
+      "max_cap_currency": "MXN",
+      "min_total_budget": null,
+      "min_qualifying_spend": null,
+      "min_spend_currency": "MXN",
+      "min_spend_percent": null,
+      "min_shoot_percent": null,
+      "min_shoot_days": null,
+      "eligible_formats": ["feature_fiction", "documentary", "series", "animation"],
+      "eligible_stages": ["production"],
+      "local_producer_required": true,
+      "cultural_test_required": false,
+      "cultural_test_min_score": null,
+      "cultural_test_total_score": null,
+      "source_url": "https://www.imcine.gob.mx/",
+      "source_description": "IMCINE official portal (EFICINE and related programs)",
+      "clause_reference": null,
+      "notes": "TODO: confirm current tax-credit mechanics, caps, and access conditions.",
+      "last_verified": "2026-03"
+    }
+  ],
+  "document_records": [
+    {
+      "record_id": "DOC-INC-JP-01",
+      "country_code": "JP",
+      "title": "Japan incentive primary legal/guideline source (placeholder)",
+      "document_type": "incentive_guidelines",
+      "language": "ja",
+      "original_url": "https://www.meti.go.jp/english/",
+      "publisher": "Government of Japan / relevant agency",
+      "status": "todo_download"
+    },
+    {
+      "record_id": "DOC-INC-IN-01",
+      "country_code": "IN",
+      "title": "India incentive guideline source (placeholder)",
+      "document_type": "incentive_guidelines",
+      "language": "en",
+      "original_url": "https://ffo.gov.in/en/incentives",
+      "publisher": "Film Facilitation Office India",
+      "status": "todo_download"
+    },
+    {
+      "record_id": "DOC-INC-CN-01",
+      "country_code": "CN",
+      "title": "China incentive/co-production source (placeholder)",
+      "document_type": "incentive_guidelines",
+      "language": "zh",
+      "original_url": "https://www.chinafilmadministration.gov.cn/",
+      "publisher": "China Film Administration",
+      "status": "todo_download"
+    },
+    {
+      "record_id": "DOC-INC-MX-01",
+      "country_code": "MX",
+      "title": "Mexico incentive source (placeholder)",
+      "document_type": "incentive_guidelines",
+      "language": "es",
+      "original_url": "https://www.imcine.gob.mx/",
+      "publisher": "IMCINE",
+      "status": "todo_download"
+    }
+  ],
+  "annotation_scaffolds": [
+    {
+      "record_id": "ANN-INC-JP-01",
+      "country_code": "JP",
+      "topic": "rebate_rate",
+      "clause_reference": "TODO",
+      "english_summary": "TODO: add verified rebate or grant rate clause."
+    },
+    {
+      "record_id": "ANN-INC-IN-01",
+      "country_code": "IN",
+      "topic": "qualifying_spend",
+      "clause_reference": "TODO",
+      "english_summary": "TODO: add qualifying spend and cap clause."
+    },
+    {
+      "record_id": "ANN-INC-CN-01",
+      "country_code": "CN",
+      "topic": "eligibility",
+      "clause_reference": "TODO",
+      "english_summary": "TODO: add co-production eligibility clause."
+    },
+    {
+      "record_id": "ANN-INC-MX-01",
+      "country_code": "MX",
+      "topic": "tax_credit_formula",
+      "clause_reference": "TODO",
+      "english_summary": "TODO: add formula and cap clause."
+    }
+  ],
+  "treaty_verification_tasks": [
+    {
+      "task_id": "TRY-JP-VERIFY-01",
+      "country_code": "JP",
+      "task": "Verify all bilateral treaty rows touching JP: min/max share, authority names, active status, and source recency."
+    },
+    {
+      "task_id": "TRY-IN-VERIFY-01",
+      "country_code": "IN",
+      "task": "Verify all bilateral treaty rows touching IN and ensure dates and authorities are normalized."
+    },
+    {
+      "task_id": "TRY-CN-VERIFY-01",
+      "country_code": "CN",
+      "task": "Verify treaty coverage against current Chinese co-production rules and approval process."
+    },
+    {
+      "task_id": "TRY-MX-VERIFY-01",
+      "country_code": "MX",
+      "task": "Verify Mexico treaty rows and source references; flag inactive or superseded treaties."
+    }
+  ],
+  "cultural_test_tasks": [
+    {
+      "task_id": "CT-JP-01",
+      "country_code": "JP",
+      "required": "unknown",
+      "task": "Determine whether cultural test scoring exists or if qualification is administrative only."
+    },
+    {
+      "task_id": "CT-IN-01",
+      "country_code": "IN",
+      "required": "unknown",
+      "task": "Determine if cultural test or equivalent content criteria apply for international incentive claims."
+    },
+    {
+      "task_id": "CT-CN-01",
+      "country_code": "CN",
+      "required": "unknown",
+      "task": "Determine whether cultural/approval criteria should be modeled as hard requirement."
+    },
+    {
+      "task_id": "CT-MX-01",
+      "country_code": "MX",
+      "required": "unknown",
+      "task": "Determine whether EFICINE pathway needs cultural scoring criteria in model."
+    }
+  ]
+}

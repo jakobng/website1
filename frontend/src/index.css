@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gallery-base text-gallery-text antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-sm border border-neutral-200 bg-white px-3 py-2 text-sm text-gallery-text
+           transition-all duration-200
+           placeholder:text-neutral-300
+           focus:border-gallery-accent focus:outline-none focus:ring-4 focus:ring-gallery-accent/5;
+  }
+
+  .btn-primary {
+    @apply w-full rounded-sm bg-gallery-text px-4 py-3.5 text-[11px] font-bold text-white
+           transition-all duration-200 uppercase tracking-widest
+           hover:bg-gallery-accent hover:shadow-xl hover:shadow-gallery-accent/10
+           disabled:cursor-not-allowed disabled:opacity-20;
+  }
+
+  .card {
+    @apply rounded-sm border border-neutral-100 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)];
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-sm px-2 py-0.5 text-[9px] font-black uppercase tracking-wider border border-gallery-text;
+  }
+}
+
+/* Precise Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-200 rounded-full;
+}

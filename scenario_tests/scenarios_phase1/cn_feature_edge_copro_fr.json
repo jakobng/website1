@@ -1,0 +1,16 @@
+{
+  "title": "Phase1 CN Edge CoPro FR",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 3000000,
+  "budget_currency": "EUR",
+  "shoot_locations": [
+    { "country": "China", "percent": 65 },
+    { "country": "France", "percent": 35 }
+  ],
+  "director_nationalities": ["China"],
+  "producer_nationalities": ["France"],
+  "production_company_countries": ["China"],
+  "has_coproducer": ["France"],
+  "willing_add_coproducer": true
+}

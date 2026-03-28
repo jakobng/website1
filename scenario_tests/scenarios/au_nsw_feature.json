@@ -1,0 +1,15 @@
+{
+  "title": "Australia NSW High-Spend Feature",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 20000000,
+  "budget_currency": "AUD",
+  "shooting_spend_fraction": 0.8,
+  "shoot_locations": [
+    { "country": "Australia", "percent": 100 }
+  ],
+  "director_nationalities": ["Australia"],
+  "producer_nationalities": ["Australia"],
+  "production_company_countries": ["Australia"],
+  "willing_add_coproducer": true
+}

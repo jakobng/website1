@@ -1,0 +1,197 @@
+Country Code,Country Name,Num Incentives,Avg Completeness %
+AM,Armenia,0,0.0
+AZ,Azerbaijan,0,0.0
+BY,Belarus,0,0.0
+LI,Liechtenstein,0,0.0
+MC,Monaco,0,0.0
+SM,San Marino,0,0.0
+VA,Vatican City,0,0.0
+NI,Nicaragua,0,0.0
+AF,Afghanistan,0,0.0
+IR,Iran,0,0.0
+KG,Kyrgyzstan,0,0.0
+KP,North Korea,0,0.0
+PS,Palestine,0,0.0
+SY,Syria,0,0.0
+TJ,Tajikistan,0,0.0
+TL,Timor-Leste,0,0.0
+TM,Turkmenistan,0,0.0
+YE,Yemen,0,0.0
+KI,Kiribati,0,0.0
+MH,Marshall Islands,0,0.0
+FM,Micronesia,0,0.0
+NR,Nauru,0,0.0
+PW,Palau,0,0.0
+WS,Samoa,0,0.0
+TO,Tonga,0,0.0
+AO,Angola,0,0.0
+BJ,Benin,0,0.0
+BW,Botswana,0,0.0
+BF,Burkina Faso,0,0.0
+BI,Burundi,0,0.0
+CV,Cabo Verde,0,0.0
+CM,Cameroon,0,0.0
+CF,Central African Republic,0,0.0
+CD,DR Congo,0,0.0
+CG,Republic of the Congo,0,0.0
+CI,Ivory Coast,0,0.0
+DJ,Djibouti,0,0.0
+ER,Eritrea,0,0.0
+ET,Ethiopia,0,0.0
+GA,Gabon,0,0.0
+GH,Ghana,0,0.0
+ML,Mali,0,0.0
+BA,Bosnia and Herzegovina,1,50.0
+MD,Moldova,1,50.0
+AG,Antigua and Barbuda,1,50.0
+AR,Argentina,1,50.0
+BS,Bahamas,1,50.0
+BB,Barbados,1,50.0
+BZ,Belize,1,50.0
+BO,Bolivia,1,50.0
+DM,Dominica,1,50.0
+GD,Grenada,1,50.0
+GT,Guatemala,1,50.0
+GY,Guyana,1,50.0
+HT,Haiti,1,50.0
+HN,Honduras,1,50.0
+PE,Peru,1,50.0
+KN,Saint Kitts and Nevis,1,50.0
+LC,Saint Lucia,1,50.0
+VC,Saint Vincent and the Grenadines,1,50.0
+UY,Uruguay,1,50.0
+VE,Venezuela,1,50.0
+BT,Bhutan,1,50.0
+KH,Cambodia,1,50.0
+IQ,Iraq,1,50.0
+KW,Kuwait,1,50.0
+LA,Laos,1,50.0
+MM,Myanmar,1,50.0
+NP,Nepal,1,50.0
+OM,Oman,1,50.0
+LK,Sri Lanka,1,50.0
+VN,Vietnam,1,50.0
+PG,Papua New Guinea,1,50.0
+TV,Tuvalu,1,50.0
+VU,Vanuatu,1,50.0
+DZ,Algeria,1,50.0
+GQ,Equatorial Guinea,1,50.0
+SZ,Eswatini,1,50.0
+KE,Kenya,1,50.0
+LS,Lesotho,1,50.0
+MG,Madagascar,1,50.0
+MW,Malawi,1,50.0
+MZ,Mozambique,1,50.0
+NA,Namibia,1,50.0
+SC,Seychelles,1,50.0
+SO,Somalia,1,50.0
+SS,South Sudan,1,50.0
+ZW,Zimbabwe,1,50.0
+AD,Andorra,1,62.5
+DK,Denmark,1,62.5
+XK,Kosovo,1,62.5
+LU,Luxembourg,1,62.5
+CU,Cuba,1,62.5
+EC,Ecuador,1,62.5
+SV,El Salvador,1,62.5
+JM,Jamaica,1,62.5
+SR,Suriname,1,62.5
+BH,Bahrain,1,62.5
+BD,Bangladesh,1,62.5
+BN,Brunei,1,62.5
+IN,India,1,62.5
+IL,Israel,1,62.5
+JO,Jordan,1,62.5
+KZ,Kazakhstan,1,62.5
+MY,Malaysia,1,62.5
+MV,Maldives,1,62.5
+MN,Mongolia,1,62.5
+UZ,Uzbekistan,1,62.5
+SB,Solomon Islands,1,62.5
+TD,Chad,1,62.5
+KM,Comoros,1,62.5
+EG,Egypt,1,62.5
+GM,Gambia,1,62.5
+GN,Guinea,1,62.5
+GW,Guinea-Bissau,1,62.5
+LR,Liberia,1,62.5
+LY,Libya,1,62.5
+MR,Mauritania,1,62.5
+NE,Niger,1,62.5
+NG,Nigeria,1,62.5
+RW,Rwanda,1,62.5
+ST,Sao Tome and Principe,1,62.5
+SN,Senegal,1,62.5
+SL,Sierra Leone,1,62.5
+SD,Sudan,1,62.5
+TZ,Tanzania,1,62.5
+TG,Togo,1,62.5
+TN,Tunisia,1,62.5
+UG,Uganda,1,62.5
+ZM,Zambia,1,62.5
+AE,United Arab Emirates,1,62.5
+HU,Hungary,1,75.0
+IS,Iceland,1,75.0
+CO,Colombia,1,75.0
+CR,Costa Rica,1,75.0
+DO,Dominican Republic,1,75.0
+PA,Panama,1,75.0
+PY,Paraguay,1,75.0
+TT,Trinidad and Tobago,1,75.0
+SG,Singapore,1,75.0
+TW,Taiwan,1,75.0
+TH,Thailand,1,75.0
+FJ,Fiji,1,75.0
+MU,Mauritius,1,75.0
+MA,Morocco,1,75.0
+AL,Albania,1,87.5
+BG,Bulgaria,1,87.5
+HR,Croatia,1,87.5
+CY,Cyprus,1,87.5
+EE,Estonia,1,87.5
+GE,Georgia,1,87.5
+GR,Greece,1,87.5
+LV,Latvia,1,87.5
+LT,Lithuania,1,87.5
+MT,Malta,1,87.5
+ME,Montenegro,1,87.5
+MK,North Macedonia,1,87.5
+PT,Portugal,1,87.5
+RO,Romania,1,87.5
+RS,Serbia,1,87.5
+SK,Slovakia,1,87.5
+SI,Slovenia,1,87.5
+CH,Switzerland,1,87.5
+TR,Turkey,1,87.5
+UA,Ukraine,1,87.5
+JP,Japan,1,87.5
+KR,South Korea,1,87.5
+NZ,New Zealand,1,87.5
+ZA,South Africa,1,87.5
+PK,Pakistan,2,50.0
+LB,Lebanon,2,56.2
+ID,Indonesia,2,62.5
+QA,Qatar,2,62.5
+SA,Saudi Arabia,2,62.5
+CZ,Czech Republic,2,68.8
+CL,Chile,2,68.8
+PH,Philippines,2,68.8
+FI,Finland,2,75.0
+IE,Ireland,2,75.0
+NL,Netherlands,2,81.2
+AU,Australia,2,81.2
+MX,Mexico,3,54.2
+SE,Sweden,3,66.7
+BR,Brazil,3,66.7
+PL,Poland,3,70.8
+NO,Norway,3,75.0
+CN,China,4,53.1
+GB,United Kingdom,4,65.6
+AT,Austria,4,68.8
+BE,Belgium,4,68.8
+US,United States,5,70.0
+CA,Canada,7,67.9
+DE,Germany,10,67.5
+ES,Spain,11,69.3
+FR,France,12,65.6
+IT,Italy,14,64.3
