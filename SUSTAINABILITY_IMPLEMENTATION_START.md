@@ -107,6 +107,7 @@ def freshness_status(db: Session = Depends(get_db)):
 ```
 
 4. **Frontend** `frontend/src/components/FreshnessIndicator.tsx` (new):
+{% raw %}
 ```tsx
 import { useState, useEffect } from 'react'
 
@@ -155,6 +156,7 @@ export function FreshnessIndicator() {
   )
 }
 ```
+{% endraw %}
 
 5. **Cron job** (add to `backend/.env` or GitHub Actions):
 ```bash
