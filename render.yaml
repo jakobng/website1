@@ -1,30 +1,27 @@
 services:
-  # The Backend
+  # The Backend (Python/FastAPI Web Service)
   - type: web
     name: copro-backend
     env: python
-    plan: free # Explicitly setting to free
+    plan: free
     region: ohio
     buildCommand: cd backend && pip install -r requirements.txt
     startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
-        value: sqlite:///backend/coproduction.db # Relative to project root
+        value: sqlite:///backend/coproduction.db
       - key: FRONTEND_URL
         fromService:
-          type: web
+          type: static
           name: copro-frontend
-          envVar: RENDER_EXTERNAL_URL
-      # Add API keys in the Render Dashboard
+          property: url
+      # Add API keys in the Render Dashboard securely
       # - ANTHROPIC_API_KEY
       # - GEMINI_API_KEY
 
-  # The Frontend
-  - type: web
+  # The Frontend (React/Vite Static Site)
+  - type: static
     name: copro-frontend
-    env: static
-    plan: free # Explicitly setting to free
-    region: ohio
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
     envVars:
@@ -32,4 +29,4 @@ services:
         fromService:
           type: web
           name: copro-backend
-          envVar: RENDER_EXTERNAL_URL
+          property: url
