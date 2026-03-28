@@ -1,0 +1,14 @@
+{
+  "title": "Phase1 MX Baseline Feature",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 90000000,
+  "budget_currency": "MXN",
+  "shoot_locations": [
+    { "country": "Mexico", "percent": 100 }
+  ],
+  "director_nationalities": ["Mexico"],
+  "producer_nationalities": ["Mexico"],
+  "production_company_countries": ["Mexico"],
+  "willing_add_coproducer": true
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Basic French Feature",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 2000000,
+  "budget_currency": "EUR",
+  "shoot_locations": [
+    { "country": "France", "percent": 100 }
+  ],
+  "director_nationalities": ["France"]
+}

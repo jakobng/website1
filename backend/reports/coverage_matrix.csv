@@ -1,0 +1,197 @@
+code,name,macro_region,coverage_status,incentives_count,regional_program_count,has_cultural_test_program,bilateral_treaty_count,multilateral_member,last_verified_latest,freshness_flag,priority_score,priority_reason
+AD,Andorra,Europe,incentive_covered,1,0,no,0,yes,2026-03,fresh_2025,0,already_has_incentives
+AE,United Arab Emirates,Other,incentive_covered,1,1,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+AF,Afghanistan,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+AG,Antigua and Barbuda,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+AL,Albania,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+AM,Armenia,Europe,no_coverage,0,0,no,0,no,,unknown,0,lower_priority_gap
+AO,Angola,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+AR,Argentina,Americas,incentive_covered,1,0,no,8,no,2026-03,fresh_2025,0,already_has_incentives
+AT,Austria,Europe,incentive_covered,4,3,yes,2,yes,2025-03,fresh_2025,0,already_has_incentives
+AU,Australia,Oceania,incentive_covered,2,0,yes,17,no,2025-03,fresh_2025,0,already_has_incentives
+AZ,Azerbaijan,Europe,no_coverage,0,0,no,0,no,,unknown,0,lower_priority_gap
+BA,Bosnia and Herzegovina,Europe,incentive_covered,1,0,no,0,yes,2026-03,fresh_2025,0,already_has_incentives
+BB,Barbados,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+BD,Bangladesh,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+BE,Belgium,Europe,incentive_covered,4,3,no,5,yes,2025-03,fresh_2025,0,already_has_incentives
+BF,Burkina Faso,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+BG,Bulgaria,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+BH,Bahrain,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+BI,Burundi,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+BJ,Benin,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+BN,Brunei,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+BO,Bolivia,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+BR,Brazil,Americas,incentive_covered,1,0,no,9,no,2026-03,fresh_2025,0,already_has_incentives
+BS,Bahamas,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+BT,Bhutan,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+BW,Botswana,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+BY,Belarus,Europe,no_coverage,0,0,no,0,no,,unknown,0,lower_priority_gap
+BZ,Belize,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+CA,Canada,Americas,incentive_covered,7,5,no,32,no,2026-03,fresh_2025,0,already_has_incentives
+CD,DR Congo,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+CF,Central African Republic,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+CG,Republic of the Congo,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+CH,Switzerland,Europe,incentive_covered,1,0,no,7,yes,2025-03,fresh_2025,0,already_has_incentives
+CI,Ivory Coast,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+CL,Chile,Americas,incentive_covered,2,0,no,4,no,2026-03,fresh_2025,0,already_has_incentives
+CM,Cameroon,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+CN,China,Asia,incentive_covered,2,1,no,5,no,2026-03,fresh_2025,0,already_has_incentives
+CO,Colombia,Americas,incentive_covered,1,0,no,3,no,2025-03,fresh_2025,0,already_has_incentives
+CR,Costa Rica,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+CU,Cuba,Americas,incentive_covered,1,0,no,2,no,2026-03,fresh_2025,0,already_has_incentives
+CV,Cabo Verde,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+CY,Cyprus,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+CZ,Czech Republic,Europe,incentive_covered,2,1,no,2,yes,2025-03,fresh_2025,0,already_has_incentives
+DE,Germany,Europe,incentive_covered,10,8,no,22,yes,2025-03,fresh_2025,0,already_has_incentives
+DJ,Djibouti,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+DK,Denmark,Europe,incentive_covered,1,1,no,5,yes,2025-03,fresh_2025,0,already_has_incentives
+DM,Dominica,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+DO,Dominican Republic,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+DZ,Algeria,Africa,incentive_covered,1,0,no,1,no,2026-03,fresh_2025,0,already_has_incentives
+EC,Ecuador,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+EE,Estonia,Europe,incentive_covered,1,0,yes,0,yes,2025-03,fresh_2025,0,already_has_incentives
+EG,Egypt,Africa,incentive_covered,1,1,no,1,no,2026-03,fresh_2025,0,already_has_incentives
+ER,Eritrea,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+ES,Spain,Europe,incentive_covered,11,10,no,11,yes,2025-03,fresh_2025,0,already_has_incentives
+ET,Ethiopia,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+FI,Finland,Europe,incentive_covered,2,1,no,4,yes,2025-03,fresh_2025,0,already_has_incentives
+FJ,Fiji,Oceania,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+FM,Micronesia,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+FR,France,Europe,incentive_covered,12,10,no,46,yes,2025-03,fresh_2025,0,already_has_incentives
+GA,Gabon,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+GB,United Kingdom,Europe,incentive_covered,4,3,yes,13,yes,2025-03,fresh_2025,0,already_has_incentives
+GD,Grenada,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+GE,Georgia,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+GH,Ghana,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+GM,Gambia,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+GN,Guinea,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+GQ,Equatorial Guinea,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+GR,Greece,Europe,incentive_covered,1,0,no,2,yes,2025-03,fresh_2025,0,already_has_incentives
+GT,Guatemala,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+GW,Guinea-Bissau,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+GY,Guyana,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+HN,Honduras,Americas,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+HR,Croatia,Europe,incentive_covered,1,0,no,2,yes,2025-03,fresh_2025,0,already_has_incentives
+HT,Haiti,Americas,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+HU,Hungary,Europe,incentive_covered,1,0,yes,1,yes,2025-03,fresh_2025,0,already_has_incentives
+ID,Indonesia,Asia,incentive_covered,1,0,no,1,no,2026-03,fresh_2025,0,already_has_incentives
+IE,Ireland,Europe,incentive_covered,2,1,yes,7,yes,2025-03,fresh_2025,0,already_has_incentives
+IL,Israel,Asia,incentive_covered,1,0,no,6,no,2026-03,fresh_2025,0,already_has_incentives
+IN,India,Asia,incentive_covered,1,0,no,11,no,2026-03,fresh_2025,0,already_has_incentives
+IQ,Iraq,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+IR,Iran,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+IS,Iceland,Europe,incentive_covered,1,0,no,2,yes,2025-03,fresh_2025,0,already_has_incentives
+IT,Italy,Europe,incentive_covered,14,13,no,16,yes,2025-03,fresh_2025,0,already_has_incentives
+JM,Jamaica,Americas,incentive_covered,1,0,no,1,no,2026-03,fresh_2025,0,already_has_incentives
+JO,Jordan,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+JP,Japan,Asia,incentive_covered,1,0,no,2,no,2026-03,fresh_2025,0,already_has_incentives
+KE,Kenya,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+KG,Kyrgyzstan,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+KH,Cambodia,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+KI,Kiribati,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+KM,Comoros,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+KN,Saint Kitts and Nevis,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+KP,North Korea,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+KR,South Korea,Asia,incentive_covered,1,0,no,6,no,2025-03,fresh_2025,0,already_has_incentives
+KW,Kuwait,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+KZ,Kazakhstan,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+LA,Laos,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+LB,Lebanon,Other,incentive_covered,2,0,no,1,no,2026-03,fresh_2025,0,already_has_incentives
+LC,Saint Lucia,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+LI,Liechtenstein,Europe,no_coverage,0,0,no,0,no,,unknown,0,lower_priority_gap
+LK,Sri Lanka,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+LR,Liberia,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+LS,Lesotho,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+LT,Lithuania,Europe,incentive_covered,1,0,yes,0,yes,2025-03,fresh_2025,0,already_has_incentives
+LU,Luxembourg,Europe,incentive_covered,1,0,no,6,yes,2025-03,fresh_2025,0,already_has_incentives
+LV,Latvia,Europe,incentive_covered,1,0,yes,0,yes,2025-03,fresh_2025,0,already_has_incentives
+LY,Libya,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MA,Morocco,Africa,incentive_covered,1,0,no,4,no,2025-03,fresh_2025,0,already_has_incentives
+MC,Monaco,Europe,no_coverage,0,0,no,0,no,,unknown,0,lower_priority_gap
+MD,Moldova,Europe,incentive_covered,1,0,no,0,yes,2026-03,fresh_2025,0,already_has_incentives
+ME,Montenegro,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+MG,Madagascar,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+MH,Marshall Islands,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+MK,North Macedonia,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+ML,Mali,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+MM,Myanmar,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MN,Mongolia,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MR,Mauritania,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MT,Malta,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+MU,Mauritius,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MV,Maldives,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MW,Malawi,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MX,Mexico,Americas,incentive_covered,3,0,no,4,no,2026-03,fresh_2025,0,already_has_incentives
+MY,Malaysia,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+MZ,Mozambique,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+NA,Namibia,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+NE,Niger,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+NG,Nigeria,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+NI,Nicaragua,Americas,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+NL,Netherlands,Europe,incentive_covered,2,1,no,6,yes,2025-03,fresh_2025,0,already_has_incentives
+NO,Norway,Europe,incentive_covered,3,2,yes,5,yes,2025-03,fresh_2025,0,already_has_incentives
+NP,Nepal,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+NR,Nauru,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+NZ,New Zealand,Oceania,incentive_covered,1,0,no,7,no,2025-03,fresh_2025,0,already_has_incentives
+OM,Oman,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+PA,Panama,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+PE,Peru,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+PG,Papua New Guinea,Oceania,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+PH,Philippines,Asia,incentive_covered,2,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+PK,Pakistan,Asia,incentive_covered,2,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+PL,Poland,Europe,incentive_covered,3,2,yes,3,yes,2025-03,fresh_2025,0,already_has_incentives
+PS,Palestine,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+PT,Portugal,Europe,incentive_covered,1,0,no,4,yes,2025-03,fresh_2025,0,already_has_incentives
+PW,Palau,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+PY,Paraguay,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+QA,Qatar,Asia,incentive_covered,2,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+RO,Romania,Europe,incentive_covered,1,0,no,3,yes,2025-03,fresh_2025,0,already_has_incentives
+RS,Serbia,Europe,incentive_covered,1,0,no,3,yes,2025-03,fresh_2025,0,already_has_incentives
+RW,Rwanda,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SA,Saudi Arabia,Other,incentive_covered,2,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SB,Solomon Islands,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+SC,Seychelles,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SD,Sudan,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SE,Sweden,Europe,incentive_covered,3,2,no,3,yes,2025-03,fresh_2025,0,already_has_incentives
+SG,Singapore,Asia,incentive_covered,1,0,no,3,no,2026-03,fresh_2025,0,already_has_incentives
+SI,Slovenia,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+SK,Slovakia,Europe,incentive_covered,1,0,yes,0,yes,2025-03,fresh_2025,0,already_has_incentives
+SL,Sierra Leone,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SM,San Marino,Europe,no_coverage,0,0,no,0,no,,unknown,0,lower_priority_gap
+SN,Senegal,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SO,Somalia,Africa,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+SR,Suriname,Americas,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+SS,South Sudan,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+ST,Sao Tome and Principe,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SV,El Salvador,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+SY,Syria,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+SZ,Eswatini,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+TD,Chad,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+TG,Togo,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+TH,Thailand,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+TJ,Tajikistan,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+TL,Timor-Leste,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+TM,Turkmenistan,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+TN,Tunisia,Africa,incentive_covered,1,0,no,2,no,2026-03,fresh_2025,0,already_has_incentives
+TO,Tonga,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+TR,Turkey,Europe,incentive_covered,1,0,yes,1,yes,2025-03,fresh_2025,0,already_has_incentives
+TT,Trinidad and Tobago,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+TV,Tuvalu,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+TW,Taiwan,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+TZ,Tanzania,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+UA,Ukraine,Europe,incentive_covered,1,0,no,0,yes,2025-03,fresh_2025,0,already_has_incentives
+UG,Uganda,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+US,United States,Americas,incentive_covered,5,5,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+UY,Uruguay,Americas,incentive_covered,1,0,no,2,no,2026-03,fresh_2025,0,already_has_incentives
+UZ,Uzbekistan,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+VA,Vatican City,Europe,no_coverage,0,0,no,0,no,,unknown,0,lower_priority_gap
+VC,Saint Vincent and the Grenadines,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+VE,Venezuela,Americas,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+VN,Vietnam,Asia,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+VU,Vanuatu,Oceania,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+WS,Samoa,Oceania,no_coverage,0,0,no,0,no,,unknown,1,region_gap
+XK,Kosovo,Europe,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+YE,Yemen,Asia,no_coverage,0,0,no,0,no,,unknown,2,undercovered_region
+ZA,South Africa,Africa,incentive_covered,1,0,no,11,no,2025-03,fresh_2025,0,already_has_incentives
+ZM,Zambia,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives
+ZW,Zimbabwe,Africa,incentive_covered,1,0,no,0,no,2026-03,fresh_2025,0,already_has_incentives

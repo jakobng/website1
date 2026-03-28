@@ -1,0 +1,16 @@
+{
+  "title": "Phase1 IN Edge CoPro FR",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 2500000,
+  "budget_currency": "EUR",
+  "shoot_locations": [
+    { "country": "India", "percent": 60 },
+    { "country": "France", "percent": 40 }
+  ],
+  "director_nationalities": ["India"],
+  "producer_nationalities": ["France"],
+  "production_company_countries": ["India"],
+  "has_coproducer": ["France"],
+  "willing_add_coproducer": true
+}

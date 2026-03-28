@@ -1,0 +1,12 @@
+{
+  "title": "Multi-Stage Project",
+  "format": "feature_fiction",
+  "stage": "development",
+  "stages": ["production"],
+  "budget": 3000000,
+  "budget_currency": "EUR",
+  "shoot_locations": [
+    { "country": "France", "percent": 100 }
+  ],
+  "director_nationalities": ["France"]
+}

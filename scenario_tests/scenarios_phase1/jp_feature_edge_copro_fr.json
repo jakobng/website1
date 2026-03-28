@@ -1,0 +1,16 @@
+{
+  "title": "Phase1 JP Edge CoPro FR",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 1800000,
+  "budget_currency": "EUR",
+  "shoot_locations": [
+    { "country": "Japan", "percent": 55 },
+    { "country": "France", "percent": 45 }
+  ],
+  "director_nationalities": ["Japan"],
+  "producer_nationalities": ["France"],
+  "production_company_countries": ["Japan"],
+  "has_coproducer": ["France"],
+  "willing_add_coproducer": true
+}

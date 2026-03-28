@@ -1,0 +1,11 @@
+{
+  "title": "UK AVEC Test",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 5000000,
+  "budget_currency": "GBP",
+  "shoot_locations": [
+    { "country": "United Kingdom", "percent": 100 }
+  ],
+  "director_nationalities": ["United Kingdom"]
+}

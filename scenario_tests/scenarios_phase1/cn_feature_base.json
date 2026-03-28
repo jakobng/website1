@@ -1,0 +1,14 @@
+{
+  "title": "Phase1 CN Baseline Feature",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 12000000,
+  "budget_currency": "CNY",
+  "shoot_locations": [
+    { "country": "China", "percent": 100 }
+  ],
+  "director_nationalities": ["China"],
+  "producer_nationalities": ["China"],
+  "production_company_countries": ["China"],
+  "willing_add_coproducer": true
+}

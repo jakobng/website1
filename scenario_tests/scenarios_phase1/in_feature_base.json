@@ -1,0 +1,14 @@
+{
+  "title": "Phase1 IN Baseline Feature",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 60000000,
+  "budget_currency": "INR",
+  "shoot_locations": [
+    { "country": "India", "percent": 100 }
+  ],
+  "director_nationalities": ["India"],
+  "producer_nationalities": ["India"],
+  "production_company_countries": ["India"],
+  "willing_add_coproducer": true
+}

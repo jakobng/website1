@@ -1,0 +1,16 @@
+{
+  "title": "Phase1 MX Edge CoPro FR",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 2800000,
+  "budget_currency": "EUR",
+  "shoot_locations": [
+    { "country": "Mexico", "percent": 55 },
+    { "country": "France", "percent": 45 }
+  ],
+  "director_nationalities": ["Mexico"],
+  "producer_nationalities": ["France"],
+  "production_company_countries": ["Mexico"],
+  "has_coproducer": ["France"],
+  "willing_add_coproducer": true
+}

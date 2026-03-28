@@ -1,0 +1,16 @@
+{
+  "title": "Eurimages France-Germany Co-production",
+  "format": "feature_fiction",
+  "stage": "production",
+  "budget": 3500000,
+  "budget_currency": "EUR",
+  "shoot_locations": [
+    { "country": "France", "percent": 60 },
+    { "country": "Germany", "percent": 40 }
+  ],
+  "director_nationalities": ["France"],
+  "producer_nationalities": ["France", "Germany"],
+  "production_company_countries": ["France", "Germany"],
+  "willing_add_coproducer": true,
+  "has_coproducer": ["France", "Germany"]
+}
