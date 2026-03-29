@@ -445,7 +445,7 @@ function CountryInput({
   const suggestions = query.length >= 1
     ? countries.filter((c) =>
         c.name.toLowerCase().includes(query) || c.code.toLowerCase() === query
-      ).slice(0, 8)
+      )
     : []
 
   useEffect(() => {
@@ -457,10 +457,18 @@ function CountryInput({
 
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      setSelectedIndex((i) => (i + 1) % suggestions.length)
+      setSelectedIndex((i) => {
+        const nextIndex = (i + 1) % suggestions.length
+        document.getElementById(`suggestion-${nextIndex}`)?.scrollIntoView({ block: 'nearest' })
+        return nextIndex
+      })
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
-      setSelectedIndex((i) => (i - 1 + suggestions.length) % suggestions.length)
+      setSelectedIndex((i) => {
+        const nextIndex = (i - 1 + suggestions.length) % suggestions.length
+        document.getElementById(`suggestion-${nextIndex}`)?.scrollIntoView({ block: 'nearest' })
+        return nextIndex
+      })
     } else if (e.key === 'Enter') {
       e.preventDefault()
       selectOption(suggestions[selectedIndex])
@@ -504,9 +512,9 @@ function CountryInput({
         autoComplete="off"
       />
       {showSuggestions && focused && suggestions.length > 0 && (
-        <ul className="absolute left-0 right-0 top-full z-20 mt-1 bg-white border border-neutral-100 shadow-xl rounded-sm py-1">
+        <ul className="absolute left-0 right-0 top-full z-20 mt-1 bg-white border border-neutral-100 shadow-xl rounded-sm py-1 max-h-60 overflow-y-auto">
           {suggestions.map((c, i) => (
-            <li key={c.code}>
+            <li key={c.code} id={`suggestion-${i}`}>
               <button
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}

@@ -249,7 +249,7 @@ def _count_changes_needed(
     for cc in project.production_company_countries or []:
         if cc and cc.strip():
             nat_codes.add(countries.resolve_or_keep(cc).upper())
-    if project.production_company_country:
+    if getattr(project, 'production_company_country', None):
         nat_codes.add(countries.resolve_or_keep(project.production_company_country).upper())
 
     known_codes = shoot_codes | nat_codes
@@ -545,7 +545,7 @@ def generate_scenarios(project: ProjectInput, db: Session) -> list[Scenario]:
             code = countries.resolve_or_keep(cc).upper()
             if code not in shoot_codes:
                 _try_scenario([code] + shoot_codes[:3])
-    if project.production_company_country:
+    if getattr(project, 'production_company_country', None):
         code = countries.resolve_or_keep(project.production_company_country).upper()
         if code not in shoot_codes:
             _try_scenario([code] + shoot_codes[:3])

@@ -52,7 +52,7 @@ function ScenarioCard({ scenario, index, currency, onDocumentOpen }: { scenario:
               {scenario.partners.map(p => p.country_name).join(' + ')}
             </h3>
             <p className="text-sm text-neutral-500 font-medium">
-              Recovery: <span className="text-black font-bold">{fmt(confirmedTotal, currency)}</span> ({confirmedPct}% of budget)
+              Estimated incentive recovery: <span className="text-black font-bold">{fmt(confirmedTotal, currency)}</span> ({confirmedPct}% of budget)
             </p>
           </div>
         </div>

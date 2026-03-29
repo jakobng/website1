@@ -200,10 +200,10 @@ def _has_nationality(project: ProjectInput, country_code: str) -> bool:
     for cc in project.production_company_countries or []:
         if cc and countries.resolve_or_keep(cc).upper() == country_code.upper():
             return True
-    if project.production_company_country:
+    if getattr(project, 'production_company_country', None):
         if countries.resolve_or_keep(project.production_company_country).upper() == country_code.upper():
             return True
-    if project.editor_nationality:
+    if getattr(project, 'editor_nationality', None):
         if countries.resolve_or_keep(project.editor_nationality).upper() == country_code.upper():
             return True
     return False
@@ -368,9 +368,9 @@ def check_incentive_eligibility(
 
     # --- Soft requirements (warnings/conditions) ---
 
-    if incentive.local_producer_required:
+    if incentive.local_producer_required and not has_local:
         requirements.append(Requirement(
-            description=f"Partner with a {country_name} producer (or maintain an active {country_name} production company)",
+            description=f"Partner with a {country_name} coproducer (or maintain an active {country_name} production company)",
             category="producer", source=source,
         ))
 
@@ -479,8 +479,7 @@ def check_incentive_eligibility(
 
         # Step 1: qualifying spend
         if explicit_spend is None:
-            total_shoot = sum(loc.percent for loc in project.shoot_locations) or 100.0
-            formula_parts = [f"budget × {project.shooting_spend_fraction*100:.0f}% shooting × {shoot_pct/total_shoot*100:.0f}% country share"]
+            formula_parts = [f"budget × {project.shooting_spend_fraction*100:.0f}% shooting × {shoot_pct:.0f}% country share"]
             post_cc = countries.resolve_or_keep(project.post_production_country) if project.post_production_country else None
             if post_cc and post_cc.upper() == cc.upper():
                 formula_parts.append(f"+ budget × {project.post_production_spend_fraction*100:.0f}% post-production")
@@ -753,5 +752,7 @@ def check_near_miss(
                 potential_benefit_currency=project.budget_currency,
                 source=source,
             )
+
+    return None
 
     return None

@@ -127,7 +127,7 @@ def _call_gemini(messages: list[dict], system_prompt: str = BASE_SYSTEM_PROMPT) 
             contents.append(types.Content(role=role, parts=[types.Part.from_text(text=m["content"])]))
 
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-3.0-flash",
             contents=contents,
             config=types.GenerateContentConfig(
                 system_instruction=system_prompt,
