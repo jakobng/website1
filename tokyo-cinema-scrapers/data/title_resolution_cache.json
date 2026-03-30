@@ -9894,5 +9894,43 @@
     "confidence": 0.0,
     "notes": "gemini_failed",
     "failed": true
+  },
+  "きかんしゃﾄｰﾏｽ[0403ﾄｰﾏｽﾅｲﾄ]": {
+    "english_title": "Thomas & Friends: Sodor Sings Together",
+    "release_year": 2025,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "Thomas & Friends: Sodor Sings Together",
+    "director": "Campbell Bryer",
+    "country": "United Kingdom, United States, Canada"
+  },
+  "【先行上映】長篠": {
+    "english_title": "Nagashino, 1575–The Last Council of the Samurai",
+    "release_year": 2026,
+    "confidence": 0.95,
+    "notes": "",
+    "original_title": "長篠",
+    "director": "Genpa Miyashita",
+    "country": "Japan",
+    "failed": true
+  },
+  "上映＆トーク：世界を席巻する短編アニメーションの「届け方」 Miyu Distribution": {
+    "english_title": "Screening & Talk: How to 'Deliver' Short Animations Sweeping the World - Miyu Distribution",
+    "release_year": 2026,
+    "confidence": 0.9,
+    "notes": "",
+    "original_title": "上映＆トーク：世界を席巻する短編アニメーションの「届け方」 Miyu Distribution",
+    "director": null,
+    "country": "Japan",
+    "failed": true
+  },
+  "〈別冊ホン・サンス〉正しい日 間違えた日": {
+    "english_title": "Right Now, Wrong Then",
+    "release_year": 2015,
+    "confidence": 1.0,
+    "notes": "",
+    "original_title": "지금은맞고그때는틀리다",
+    "director": "Hong Sang-soo",
+    "country": "South Korea"
   }
 }
