@@ -121,15 +121,27 @@ incentives = [
         rebate_percent=32.0,
         max_cap_amount=125_000_000,
         min_qualifying_spend=125_000,
+        min_spend_currency="EUR",
         cultural_test_required=True,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
-        source_url="https://www.revenue.ie/en/companies-and-charities/reliefs-and-exemptions/section-481-film-corporation-tax-credit/index.aspx",
-        source_description="Revenue.ie — Section 481 Film Corporation Tax Credit",
-        clause_reference="s.481, Taxes Consolidation Act 1997",
+        conditional_rates=[
+            {"condition": "budget_gte", "threshold": 0, "rate": 40.0,
+             "note": "Scéal Uplift: 40% enhanced rate for qualifying lower-budget feature/animation "
+                     "films with eligible expenditure under €20M (effective 20 May 2025). "
+                     "Key creative must be EEA national/resident."},
+            {"condition": "vfx_spend_gt", "threshold": 1_000_000, "rate": 40.0,
+             "note": "VFX uplift: 40% rate on qualifying VFX expenditure ≥€1M "
+                     "(capped at €10M VFX spend per project, remainder at 32%)."},
+        ],
+        source_url="https://www.revenue.ie/en/companies-and-charities/reliefs-and-exemptions/film-relief/index.aspx",
+        source_description="Revenue.ie — Film Relief (Section 481)",
+        clause_reference="s.481, Taxes Consolidation Act 1997; S.I. No. 197/2025",
         notes="32% of eligible Irish expenditure; min €125k qualifying spend; max credit €125M/project. "
               "Qualification via cultural test, industry development test, or official coproduction status. "
-              "Rate increases to 40% for lower-budget productions (from May 2025 budget announcement).",
-        last_verified="2025-03",
+              "Scéal Uplift: 40% enhanced rate for lower-budget feature/animation films (expenditure <€20M, "
+              "key creative from EEA, effective 20 May 2025). "
+              "VFX uplift: 40% on ≥€1M qualifying VFX spend (max €10M VFX per project).",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -161,17 +173,17 @@ incentives = [
         name="Germany GMPF (German Motion Picture Fund)",
         country_code="DE",
         incentive_type="grant",
-        rebate_percent=25.0,
+        rebate_percent=30.0,
         max_cap_amount=10_000_000,
         min_total_budget=5_000_000,
         eligible_formats=["feature_fiction", "series"],
         source_url="https://www.ffa.de/gmpf-en.html",
-        source_description="FFA — GMPF guidelines",
+        source_description="FFA — GMPF guidelines (updated Feb 2025)",
         clause_reference="Filmförderungsgesetz (FFG) 2025 / BKM-Richtlinie GMPF",
-        notes="Up to 25% of German production costs for high-budget productions (min €5M total budget, "
-              "or €1.25M per episode for series). Max €10M/project. Aimed at international productions "
-              "with significant German spend.",
-        last_verified="2025-03",
+        notes="30% of approved German production costs (raised from 25% on 1 Feb 2025, uniform with DFFF). "
+              "For high-budget productions: min €5M total budget, or €1.25M per episode for series. "
+              "Max €10M/project. Part of €250M annual federal film funding from 2026.",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -182,7 +194,7 @@ incentives = [
         country_code="NL",
         incentive_type="cash_rebate",
         rebate_percent=35.0,
-        max_cap_amount=3_000_000,
+        max_cap_amount=30_000_000,
         min_total_budget=1_000_000,
         min_total_budget_documentary=250_000,
         min_qualifying_spend=150_000,
@@ -190,10 +202,10 @@ incentives = [
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.filmfonds.nl/en/funding/fund/netherlands-film-production-incentive",
         source_description="Netherlands Film Fund — Production Incentive regulations",
-        notes="35% cash rebate on eligible Dutch costs; max €3M/film or per season of series. "
+        notes="35% cash rebate on qualifying Dutch production costs; max €30M per audiovisual work. "
               "Min budget: €1M (feature), €250k (documentary). Min eligible spend: €150k (feature), €100k (documentary). "
-              "Cultural test applies.",
-        last_verified="2025-03",
+              "2026 annual budget: €20M for film (4 rounds), €9.5M for high-end series (3 rounds). Cultural test applies.",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -280,18 +292,21 @@ incentives = [
         name="Czech Republic Film Incentive Programme",
         country_code="CZ",
         incentive_type="cash_rebate",
-        rebate_percent=30.0,
-        max_cap_amount=None,  # No fixed cap per project (annual programme budget applies)
-        min_qualifying_spend=None,
+        rebate_percent=25.0,
+        max_cap_amount=450_000_000,
+        max_cap_currency="CZK",
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
-        source_url="https://fondkinematografie.cz/production-incentives",
-        source_description="Czech Film Fund — Film Incentives programme",
+        conditional_rates=[
+            {"condition": "format_eq", "format": "animation", "rate": 35.0,
+             "note": "35% rebate for animation/digitally produced projects with no live-action shooting in CZ."}
+        ],
+        source_url="https://www.filmcommission.cz/en/production-incentives/",
+        source_description="Czech Film Commission — Production Incentives (updated Jan 2025)",
         clause_reference="Czech Audiovisual Act (amended 13 Dec 2024, effective 1 Jan 2025)",
-        notes="30% cash rebate on qualifying Czech spend (cast and crew). "
-              "Additional 10% on qualifying spend with Czech cast/crew (i.e., up to 35% effective on Czech labour). "
-              "No per-project cap, but programme has annual budget. "
-              "Requires registration before principal photography.",
-        last_verified="2025-03",
+        notes="25% cash rebate on qualifying Czech spend (raised from 20% on 1 Jan 2025). "
+              "35% for animation/digital projects (no live-action). Cap CZK 450M per project (tripled from CZK 150M). "
+              "Phase 2 (1 Jan 2026): streamlined admin, recalibrated min spend limits, documentary series added.",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -389,15 +404,15 @@ incentives = [
         rebate_percent=25.0,
         max_cap_amount=50_000_000,
         max_cap_currency="NOK",
-        min_qualifying_spend=2_000_000,
-        min_qualifying_spend_documentary=1_000_000,
+        min_qualifying_spend=4_000_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.nfi.no/en/funding-schemes/insentiv/the-norwegian-film-production-incentive",
-        source_description="Norwegian Film Institute — Incentive Scheme",
+        source_description="Norwegian Film Institute — Norwegian Film Production Incentive",
         min_total_budget=25_000_000,
         min_total_budget_documentary=10_000_000,
         notes="25% cash rebate on qualifying Norwegian expenditure. Max NOK 50M/project. "
-              "Min NOK 2M qualifying spend. Min total budget NOK 25M (NOK 10M for documentaries). "
+              "Min NOK 4M spend in Norway. Min total budget NOK 25M (features), NOK 10M (docs/per episode drama). "
+              "Min 30% non-Norwegian financing required. "
               "Cultural test: 20/51 points (min 4 from Part 1 — cultural content).",
         cultural_test_required=True,
         cultural_test_min_score=20,
@@ -408,6 +423,24 @@ incentives = [
     # -------------------------------------------------------------------------
     # DENMARK
     # -------------------------------------------------------------------------
+    inc(
+        name="Denmark Production Rebate",
+        country_code="DK",
+        incentive_type="cash_rebate",
+        rebate_percent=25.0,
+        max_cap_amount=20_000_000,
+        max_cap_currency="DKK",
+        eligible_formats=["feature_fiction", "documentary", "series", "animation"],
+        source_url="https://www.dfi.dk/en/english/news/political-agreement-has-been-reached-danish-production-rebate-films-and-series",
+        source_description="Danish Film Institute — Political agreement on Danish Production Rebate; administered by Slots- og Kulturstyrelsen",
+        notes="25% rebate on qualifying Danish production expenditure. "
+              "Annual fund DKK 125M (DKK 100M live-action/docs, DKK 25M animation). Cap DKK 20M per production. "
+              "Effective 1 January 2026. Two application rounds per year. "
+              "Production and culture test applies (rewards shooting days in Denmark, use of Danish talent). "
+              "Administered by Slots- og Kulturstyrelsen; promoted internationally by DFI.",
+        local_producer_required=False,
+        last_verified="2026-03",
+    ),
     inc(
         name="Denmark West Danish Film Fund",
         country_code="DK",
@@ -420,8 +453,7 @@ incentives = [
         source_url="https://www.filmpuljen.dk",  # West Danish Film Fund
         source_description="West Danish Film Fund — production support",
         notes="Regional grant for productions shooting in Western Denmark. "
-              "Max DKK 7.5M per project. Competitive application. "
-              "Denmark does not have a national cash rebate; support is via DFI grants and regional funds.",
+              "Max DKK 7.5M per project. Competitive application.",
         last_verified="2025-03",
     ),
 
@@ -659,7 +691,7 @@ incentives = [
     # PORTUGAL
     # -------------------------------------------------------------------------
     inc(
-        name="Portugal Cash Rebate for Film and TV",
+        name="Portugal SCRI.PT Film Production Incentive",
         country_code="PT",
         incentive_type="cash_rebate",
         rebate_percent=30.0,
@@ -668,10 +700,12 @@ incentives = [
         min_qualifying_spend_documentary=250_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.ica-ip.pt/en/1-4-5/cash-rebate/",
-        source_description="ICA — Portugal Cash Rebate programme",
-        notes="25-30% cash rebate on qualifying Portuguese expenditure (30% for productions over €10M spend). "
-              "Max €4M per project. Min €500k qualifying spend (€250k for documentaries).",
-        last_verified="2025-03",
+        source_description="ICA — Portugal SCRI.PT programme (Decree-Law 57/2026, replacing former Cash Rebate & Cash Refund)",
+        notes="25-30% cash rebate on qualifying Portuguese expenditure (rate depends on cultural test score). "
+              "Max €4M per project. Min €500k qualifying spend (€250k for documentaries). "
+              "From Feb 2026, SCRI.PT replaces the former Cash Rebate and Cash Refund as a single scheme. "
+              "Managed by ICA (Portuguese Film and Audiovisual Institute).",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -699,17 +733,21 @@ incentives = [
         name="Austria FISA+ (Film Location Austria Incentive)",
         country_code="AT",
         incentive_type="grant",
-        rebate_percent=35.0,
-        max_cap_amount=7_500_000,
+        rebate_percent=30.0,
+        max_cap_amount=5_000_000,
         min_qualifying_spend=150_000,
         min_qualifying_spend_documentary=100_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
-        source_url="https://filminstitut.at/en/funding/fisa-film-location-austria/",
-        source_description="Austrian Film Institute — FISA+ programme",
-        notes="Up to 35% of qualifying Austrian production expenditure as automatic grant (FISA+). "
-              "Max €7.5M per project. Min €150k qualifying spend (€100k for documentaries). "
-              "Cultural test applies (33/66 points for international co-productions; 43/86 for Austrian productions, "
-              "32/86 for Austrian documentaries). Also stackable with Vienna Film Fund, regional funds.",
+        conditional_rates=[
+            {"condition": "green_production", "rate": 35.0,
+             "note": "Additional 5% green bonus (total 35%) for productions meeting environmental sustainability requirements."}
+        ],
+        source_url="https://www.filminaustria.com/en/funding/fisaplus/",
+        source_description="Film in Austria — FISA+ programme",
+        notes="30% automatic grant on qualifying Austrian production expenditure, plus 5% green bonus (total 35%). "
+              "Max €5M per film, €7.5M per series. Min €150k qualifying spend (€100k for docs). "
+              "2026 annual budget: €55M (reduced from €80M in 2025). "
+              "Cultural test applies (33/66 points for international co-productions). Stackable with regional funds.",
         cultural_test_required=True,
         cultural_test_min_score=33,
         cultural_test_total_score=66,
@@ -723,17 +761,17 @@ incentives = [
         name="Romania Cash Rebate Programme",
         country_code="RO",
         incentive_type="cash_rebate",
-        rebate_percent=35.0,
+        rebate_percent=30.0,
         max_cap_amount=None,
         min_qualifying_spend=100_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.cnc.gov.ro/en/cash-rebate/",
-        source_description="CNC Romania — Cash Rebate for Film Production",
-        notes="35% cash rebate on qualifying Romanian expenditure. "
-              "Min €100k qualifying spend. Additional 10% bonus available for productions "
-              "promoting Romanian culture or using Romanian locations extensively. "
+        source_description="CNC Romania — Revamped Cash Rebate Programme (2024)",
+        notes="30% cash rebate on qualifying Romanian expenditure (revamped 2024, relaunched after "
+              "two-year pause). Min €100k qualifying spend. Annual programme budget up to €55M. "
+              "Plans to increase to 40% in 2026 to match regional competitors. "
               "Administered by CNC Romania.",
-        last_verified="2025-03",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -744,15 +782,16 @@ incentives = [
         country_code="BG",
         incentive_type="cash_rebate",
         rebate_percent=25.0,
+        max_cap_amount=5_000_000,
         min_qualifying_spend=250_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.nfc.bg/en/cash-rebate/",
         source_description="Bulgarian National Film Center — Cash Rebate",
         notes="25% cash rebate on qualifying Bulgarian expenditure. "
-              "Min €250k qualifying spend. Bonus of up to 10% (total 35%) for "
-              "productions using Bulgarian creative talent or promoting Bulgarian culture. "
+              "Max €5M per project (raised from €1M). Min €250k qualifying spend. "
+              "Annual programme budget €10.3M. "
               "Administered by Bulgarian National Film Center.",
-        last_verified="2025-03",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -762,18 +801,18 @@ incentives = [
         name="Estonia Cash Rebate for Film Production",
         country_code="EE",
         incentive_type="cash_rebate",
-        rebate_percent=30.0,
+        rebate_percent=40.0,
         max_cap_amount=2_000_000,
         min_qualifying_spend=200_000,
         min_qualifying_spend_documentary=80_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
-        source_url="https://www.filmi.ee/en/funding/cash-rebate",
-        source_description="Estonian Film Institute — Cash Rebate programme",
-        notes="30% cash rebate on qualifying Estonian expenditure. "
+        source_url="https://filmestonia.eu/film-estonia-funding/guidelines-and-how-to-apply/",
+        source_description="Film Estonia — Cash Rebate programme (raised to 40% in March 2026)",
+        notes="40% cash rebate on qualifying Estonian expenditure (raised from 30% in March 2026). "
               "Max €2M per project. Min €200k qualifying spend (€80k for documentaries). "
-              "Eligibility based on Estonian crew involvement and spend criteria (no formal points-based cultural test).",
+              "Eligibility based on Estonian crew involvement and spend criteria.",
         cultural_test_required=False,
-        last_verified="2025-03",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -829,6 +868,7 @@ incentives = [
         max_cap_amount=10_000_000,
         min_qualifying_spend=150_000,
         min_qualifying_spend_documentary=50_000,
+        min_spend_currency="EUR",
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.sfu.sk/en/cash-rebate",
         source_description="Slovak Audiovisual Fund — Cash Rebate programme",
@@ -872,13 +912,17 @@ incentives = [
         max_cap_amount=None,
         min_qualifying_spend=300_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
+        conditional_rates=[
+            {"condition": "budget_gte", "threshold": 5_000_000, "rate": 30.0,
+             "note": "Enhanced 30% rebate for productions spending ≥€5M locally in Serbia."},
+        ],
         source_url="https://www.fcs.rs/en/incentives/cash-rebate/",
         source_description="Film Center Serbia — Cash Rebate Programme",
-        notes="25% cash rebate on qualifying Serbian expenditure. "
-              "Min €300k qualifying spend. Additional 5% bonus for productions "
-              "employing Serbian creative talent. No per-project cap.",
+        notes="25% cash rebate on qualifying Serbian expenditure (30% for ≥€5M local spend). "
+              "Min €300k qualifying spend. No per-project cap. "
+              "20% for special-purpose films.",
         local_producer_required=False,
-        last_verified="2025-03",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -1011,16 +1055,16 @@ incentives = [
         min_qualifying_spend=500_000,
         max_cap_currency="TRY",
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
-        source_url="https://www.sinema.gov.tr/en/incentive",
-        source_description="Turkish Ministry of Culture — Film Production Support",
-        notes="Up to 30% cash support on qualifying Turkish expenditure. "
-              "Min spend threshold varies by production type. "
-              "Administered by Turkish Ministry of Culture and Tourism. "
-              "Cultural test applies (50/100 points: cultural content, Turkish crew involvement, local infrastructure).",
+        source_url="https://www.filminginturkiye.com.tr/en/incentives/",
+        source_description="Filming in Türkiye — Cash Rebate Incentive (Law 5224)",
+        clause_reference="Law 5224 on Evaluation, Classification, and Support of Cinema Films",
+        notes="Up to 30% cash rebate on all eligible expenses incurred in Turkey. "
+              "Approved by Ministry of Culture and Tourism. "
+              "Cultural test applies (content, Turkish crew, local infrastructure).",
         cultural_test_required=True,
         cultural_test_min_score=50,
         cultural_test_total_score=100,
-        last_verified="2025-03",
+        last_verified="2026-03",
     ),
 
     # -------------------------------------------------------------------------
@@ -1049,17 +1093,17 @@ incentives = [
         name="Ukraine Cash Rebate for Audiovisual Production",
         country_code="UA",
         incentive_type="cash_rebate",
-        rebate_percent=30.0,
+        rebate_percent=25.0,
         max_cap_currency="USD",
         min_qualifying_spend=250_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
-        source_url="https://usfa.gov.ua/en/cash-rebate/",
-        source_description="Ukrainian State Film Agency — Cash Rebate Programme",
-        notes="30% cash rebate on qualifying Ukrainian expenditure. "
-              "Min $250k qualifying spend. Programme established under Law on State Support "
-              "of Cinematography. Note: programme status subject to wartime conditions.",
+        source_url="https://usfa.gov.ua/en/subsidies",
+        source_description="Ukrainian State Film Agency — Subsidies & Cash Rebate",
+        notes="25% base cash rebate on qualifying Ukrainian expenditure, +5% uplift for projects "
+              "foregrounding Ukrainian culture (up to 30% total). Min $250k qualifying spend. "
+              "€50M cultural fund announced. Note: programme availability subject to wartime conditions.",
         local_producer_required=False,
-        last_verified="2025-03",
+        last_verified="2026-03",
     ),
 
     # =========================================================================
@@ -1074,22 +1118,24 @@ incentives = [
         country_code="DE",
         region="Berlin-Brandenburg",
         incentive_type="grant",
-        rebate_percent=None,
-        max_cap_amount=None,
+        rebate_percent=30.0,
+        max_cap_amount=1_500_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.medienboard.de/en/funding/film",
         source_description="Medienboard Berlin-Brandenburg — Film Funding",
-        notes="Selective grant (conditionally repayable loan). Up to 50% of eligible costs. "
-              "Requires 150% regional spend effect in Berlin-Brandenburg. "
-              "One of Germany's largest regional film funds. Annual budget ~€30M.",
-        last_verified="2025-03",
+        notes="Selective grant (conditionally repayable loan). Up to 50% of eligible costs "
+              "(typical awards ~30%). Requires 150% regional spend effect in Berlin-Brandenburg. "
+              "One of Germany's largest regional film funds. Annual budget ~€30M. "
+              "Stackable with DFFF/GMPF.",
+        stacking_allowed=True,
+        last_verified="2026-03",
     ),
     inc(
         name="FFF Bayern (FilmFernsehFonds Bayern)",
         country_code="DE",
         region="Bavaria",
         incentive_type="grant",
-        rebate_percent=None,
+        rebate_percent=30.0,
         max_cap_amount=3_000_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.fff-bayern.de/en/funded-areas/production-feature-films/",
@@ -1097,24 +1143,28 @@ incentives = [
         notes="Conditionally repayable loan up to 30% of eligible costs, max €3M for features "
               "(€2M for international co-productions, €1M for series). "
               "Requires 150% regional spend effect in Bavaria. "
-              "Germany's largest regional fund (~€40M annual budget).",
-        last_verified="2025-03",
+              "Germany's largest regional fund (~€40M annual budget). "
+              "Stackable with DFFF/GMPF.",
+        stacking_allowed=True,
+        last_verified="2026-03",
     ),
     inc(
         name="Film- und Medienstiftung NRW",
         country_code="DE",
         region="North Rhine-Westphalia",
         incentive_type="grant",
-        rebate_percent=None,
-        max_cap_amount=None,
+        rebate_percent=30.0,
+        max_cap_amount=2_000_000,
         eligible_formats=["feature_fiction", "documentary", "series", "animation"],
         source_url="https://www.filmstiftung.de/en/funding/feature_film/production/",
         source_description="Film- und Medienstiftung NRW — Feature Film Production",
-        notes="Conditionally repayable loan, up to 50% of eligible costs. "
+        notes="Conditionally repayable loan, up to 50% of eligible costs (typical ~30%). "
               "At least 150% of the grant must be spent in NRW. "
               "Recent awards up to €2M for high-end series, ~€1M for features. "
-              "One of Germany's top three regional funds.",
-        last_verified="2025-03",
+              "One of Germany's top three regional funds. "
+              "Stackable with DFFF/GMPF.",
+        stacking_allowed=True,
+        last_verified="2026-03",
     ),
     inc(
         name="MOIN Film Fund Hamburg Schleswig-Holstein",
@@ -2156,6 +2206,109 @@ incentives = [
         source_url="https://www.tax.newmexico.gov/tax-professionals/wp-content/uploads/sites/6/2022/12/FYI-370.pdf",
         source_description="New Mexico Taxation and Revenue Department - FYI-370 Film Production Tax Credit",
         notes="Refundable film production tax credit with a 25% base rate and statutory uplifts for qualifying production circumstances.",
+        local_producer_required=False,
+        last_verified="2026-03",
+    ),
+    inc(
+        name="US Texas Moving Image Industry Incentive Program (TMIIIP)",
+        country_code="US",
+        region="Texas",
+        incentive_type="grant",
+        rebate_percent=5.0,
+        max_cap_currency="USD",
+        conditional_rates=[
+            {
+                "condition": "uplifts_apply",
+                "rate": 27.5,
+                "note": "Film/TV projects range 5-25% based on project category; additional 1-2.5% uplift. Max combined rate 27.5% for film/TV. Commercials/reality: 5-10% + uplift."
+            }
+        ],
+        source_url="https://gov.texas.gov/film/page/tmiiip",
+        source_description="Texas Film Commission — Texas Moving Image Industry Incentive Program",
+        notes="Cash grant (not tax credit). Film/TV rate ranges 5-25% of qualifying Texas spend, "
+              "plus 1-2.5% additional uplift (max 27.5%). Commercials/reality: 5-10% + uplift. "
+              "Min USD 250,000 in-state spend. At least 60% of production in Texas. "
+              "At least 35% Texas-resident cast and 35% Texas-resident crew required. "
+              "Funded USD 300M per biennium for 10 years (overhauled 2025).",
+        min_qualifying_spend=250_000,
+        min_spend_percent=60.0,
+        local_producer_required=False,
+        last_verified="2026-03",
+    ),
+    inc(
+        name="US Illinois Film Production Tax Credit",
+        country_code="US",
+        region="Illinois",
+        incentive_type="tax_credit",
+        rebate_percent=35.0,
+        max_cap_currency="USD",
+        min_qualifying_spend=100_000,
+        source_url="https://dceo.illinois.gov/whyillinois/film/filmtaxcredit.html",
+        source_description="Illinois DCEO — Film Production Services Tax Credit (SB 1911, signed Dec 2025)",
+        notes="35% transferable tax credit on qualifying Illinois production spending (increased from 30% via SB 1911, Dec 2025). "
+              "Applies to both IL-resident labor and in-state vendor spending. 30% on non-resident crew (up to 13 positions). "
+              "Min USD 100,000 for features/TV, USD 50,000 for commercials. "
+              "Stackable bonuses up to 20% additional (15% economically disadvantaged area labor, 5% outside Chicago metro). "
+              "Program extended to 2039.",
+        local_producer_required=False,
+        last_verified="2026-03",
+    ),
+    inc(
+        name="US Connecticut Digital Media & Motion Picture Tax Credit",
+        country_code="US",
+        region="Connecticut",
+        incentive_type="tax_credit",
+        rebate_percent=30.0,
+        max_cap_currency="USD",
+        min_qualifying_spend=1_000_000,
+        conditional_rates=[
+            {
+                "condition": "budget_gte",
+                "threshold": 1_000_000,
+                "rate": 30.0,
+                "note": "30% credit for qualifying expenses over $1M. Lower tiers: 10% ($100K-$500K), 15% ($500K-$1M)."
+            }
+        ],
+        source_url="https://portal.ct.gov/decd/content/film-tv-digital-media/02_learn_about_tax_incentives/02-digital-media-motion-picture-tax-credit",
+        source_description="Connecticut DECD — Digital Media & Motion Picture Tax Credit",
+        notes="Tiered non-refundable tax credit: 10% ($100K-$500K spend), 15% ($500K-$1M), 30% (over $1M). "
+              "50% of principal photography days in CT, or 50% of post budget in CT, or $1M+ post spend in CT. "
+              "Star salary cap $20M aggregate. Credits carry forward up to 5 years.",
+        local_producer_required=False,
+        last_verified="2026-03",
+    ),
+    inc(
+        name="US Massachusetts Film Production Tax Credit",
+        country_code="US",
+        region="Massachusetts",
+        incentive_type="tax_credit",
+        rebate_percent=25.0,
+        max_cap_currency="USD",
+        min_qualifying_spend=50_000,
+        source_url="https://www.mass.gov/info-details/massachusetts-film-tax-credit",
+        source_description="Massachusetts Department of Revenue — Film Tax Credit",
+        notes="25% payroll credit + 25% production expense credit on qualifying Massachusetts spend. "
+              "Minimum spend of USD 50,000. At least 75% of principal photography days must be in MA "
+              "AND at least 75% of total production expenses must be incurred in MA. "
+              "Payroll for individuals earning $1M+ is excluded. 90% of excess credit is refundable.",
+        min_spend_percent=75.0,
+        local_producer_required=False,
+        last_verified="2026-03",
+    ),
+    inc(
+        name="US Pennsylvania Film Production Tax Credit",
+        country_code="US",
+        region="Pennsylvania",
+        incentive_type="tax_credit",
+        rebate_percent=25.0,
+        max_cap_currency="USD",
+        source_url="https://dced.pa.gov/programs/film-tax-credit-program/",
+        source_description="PA Department of Community & Economic Development — Film Tax Credit Program",
+        notes="25% transferable tax credit on qualifying Pennsylvania production expenses. "
+              "Separate 30% credit available on qualified post-production expenses at qualified PA facilities. "
+              "60% of total production expenses must be incurred in PA. "
+              "Applications reviewed in quarterly cycles.",
+        min_spend_percent=60.0,
         local_producer_required=False,
         last_verified="2026-03",
     ),
@@ -3956,6 +4109,114 @@ incentives = [
         source_description="Hong Kong Film Development Council (FDC) guidelines",
         notes="Grant up to HKD 9 million for co-productions. Requires at least 30% of below-the-line expenditure in Hong Kong and qualified film practitioners from both HK and partner region.",
         local_producer_required=True,
+        last_verified="2026-03",
+    ),
+    inc(
+        name="Hong Kong Production Financing Scheme 2.0",
+        country_code="HK",
+        incentive_type="fund",
+        rebate_percent=40.0,
+        max_cap_amount=25_000_000,
+        max_cap_currency="HKD",
+        eligible_formats=["feature_fiction", "animation"],
+        source_url="https://www.fdc.gov.hk/en/services/services2.htm",
+        source_description="Hong Kong FDC — Film Production Financing Scheme 2.0",
+        notes="Launched 15 January 2025 (not time-limited). Government contributes 40% of approved "
+              "budget for qualifying productions (budget ≤HKD 25M). Applicants must be HK-incorporated. "
+              "All applications with passing scores receive funding. Replaces the previous scheme.",
+        local_producer_required=True,
+        last_verified="2026-03",
+    ),
+
+    # -------------------------------------------------------------------------
+    # INDIA — State-Level Film Incentives
+    # -------------------------------------------------------------------------
+    inc(
+        name="India Maharashtra Film Subsidy Scheme",
+        country_code="IN",
+        region="Maharashtra",
+        incentive_type="grant",
+        rebate_percent=None,
+        max_cap_amount=4_000_000,
+        max_cap_currency="INR",
+        source_url="https://filminformation.com/featured/maharashtra-govt-s-film-subsidy-available-to-all-22-october-2024/",
+        source_description="Maharashtra Government film subsidy scheme (revised Oct 2024)",
+        notes="Fixed-amount grants (not percentage rebate): Rs 15-20 lakh production start subsidy, "
+              "plus Rs 10-40 lakh based on screening committee score (A/B/C categories). "
+              "Primarily targets Marathi-language productions. Producer must be member of recognised association. "
+              "Separate tax exemptions and location fee concessions for Marathi films.",
+        local_producer_required=True,
+        last_verified="2026-03",
+    ),
+    inc(
+        name="India Rajasthan Film Tourism Promotion Policy Subsidy",
+        country_code="IN",
+        region="Rajasthan",
+        incentive_type="cash_rebate",
+        rebate_percent=30.0,
+        max_cap_amount=30_000_000,
+        max_cap_currency="INR",
+        source_url="https://traveltradejournal.com/rajasthan-launches-film-tourism-promotion-policy-2025-with-subsidies-up-to-%E2%82%B93-crore/",
+        source_description="Rajasthan Film Tourism Promotion Policy 2025 (released Dec 24, 2025)",
+        notes="Up to 30% subsidy on qualifying Rajasthan production expenditure (increased from 15% in 2022 policy). "
+              "Caps: Rs 3 crore features, Rs 2 crore web series/documentaries, Rs 1.5 crore TV serials. "
+              "30%+ screen time for Rajasthan locations or 50%+ shooting days in state for full eligibility. "
+              "100% location fee reimbursement at government sites for up to 5 days.",
+        local_producer_required=False,
+        last_verified="2026-03",
+    ),
+
+    # -------------------------------------------------------------------------
+    # SOUTH AFRICA — Domestic Production Incentive
+    # -------------------------------------------------------------------------
+    inc(
+        name="South Africa Domestic Film and Television Production Incentive",
+        country_code="ZA",
+        incentive_type="cash_rebate",
+        rebate_percent=35.0,
+        max_cap_amount=50_000_000,
+        max_cap_currency="ZAR",
+        min_qualifying_spend=1_500_000,
+        min_shoot_days=14,
+        conditional_rates=[
+            {
+                "condition": "bee_compliant",
+                "rate": 40.0,
+                "note": "Additional 5% (total 40%) for 30%+ black SA HODs and 30%+ QSAPE from 51% black-owned entities."
+            }
+        ],
+        source_url="https://www.thedtic.gov.za/financial-and-non-financial-support/incentives/film-incentive/sa-film-tv-production-and-co-production-sa-film/",
+        source_description="DTIC — SA Film & TV Production and Co-Production Incentive",
+        notes="35% rebate on QSAPE for domestic or official co-productions. "
+              "+5% B-BBEE bonus (total 40%). Cap ZAR 50M. Min QSAPE ZAR 1.5M (ZAR 500K for docs). "
+              "Min 14 calendar days and 60% of principal photography in SA. "
+              "75% of total budget must be QSAPE. Majority IP must be SA-owned. "
+              "Separate from the Foreign Film incentive (25%).",
+        min_spend_percent=75.0,
+        local_producer_required=True,
+        last_verified="2026-03",
+    ),
+
+    # -------------------------------------------------------------------------
+    # SOUTH KOREA — Seoul Film Commission
+    # -------------------------------------------------------------------------
+    inc(
+        name="Seoul Film Commission Location Incentive",
+        country_code="KR",
+        region="Seoul",
+        incentive_type="cash_rebate",
+        rebate_percent=30.0,
+        max_cap_amount=300_000_000,
+        max_cap_currency="KRW",
+        min_shoot_days=4,
+        eligible_formats=["feature_fiction", "series", "documentary"],
+        source_url="http://english.seoulfc.or.kr/ict/pcs/",
+        source_description="Seoul Film Commission — Production Cost Support for international productions",
+        notes="Up to 30% reimbursement on Seoul production budget (10-30% based on marketing/economic impact assessment). "
+              "Max KRW 300M per project. Min 4 shooting days in Seoul, min 60 min running time. "
+              "KRW 300M cap waived if: >KRW 3B spent in Seoul, >50% shot in Seoul, or distribution in 5+ countries. "
+              "Reimbursement for shooting-related expenses only. Separate from national KOFIC incentive.",
+        local_producer_required=False,
         last_verified="2026-03",
     ),
 

@@ -6,8 +6,16 @@ Key fixes over previous version:
 - No hardcoded 20% post-production assumption
 - Transparent calculation notes showing the math
 - Source references attached to every requirement and benefit
+- Live exchange rates with 24h cache (frankfurter.app / ECB)
 """
 from __future__ import annotations
+
+import json
+import logging
+import os
+import time
+import urllib.request
+import urllib.error
 
 from app.schemas import (
     ProjectInput,
@@ -22,13 +30,14 @@ from app.schemas import (
 from app.models import Incentive
 from app import countries
 
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Indicative exchange rates to EUR (used only for threshold comparisons).
-# These are approximate — the calculator warns users that amounts are estimates.
-# Update periodically or replace with a live API in Phase 5 (multi-currency).
+# Exchange rates to EUR — live rates from frankfurter.app (ECB data).
+# Cached for 24 hours. Falls back to static rates if API is unreachable.
 # ---------------------------------------------------------------------------
-_RATES_TO_EUR: dict[str, float] = {
+
+_STATIC_RATES_TO_EUR: dict[str, float] = {
     "EUR": 1.0,
     "USD": 0.92,
     "GBP": 1.17,
@@ -86,19 +95,111 @@ _RATES_TO_EUR: dict[str, float] = {
     "UAH": 0.023,
 }
 
+# In-memory cache for live rates
+_live_rates: dict[str, float] | None = None
+_live_rates_fetched_at: float = 0.0
+_CACHE_TTL_SECONDS = 86400  # 24 hours
+_CACHE_FILE = os.path.join(os.path.dirname(__file__), "..", "exchange_rates_cache.json")
+
+
+def _fetch_live_rates() -> dict[str, float] | None:
+    """Fetch latest EUR-base rates from frankfurter.app (ECB data). Returns None on failure."""
+    try:
+        req = urllib.request.Request(
+            "https://api.frankfurter.app/latest?base=EUR",
+            headers={"User-Agent": "CoPro-Calculator/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode())
+        rates = data.get("rates", {})
+        if not rates:
+            return None
+        # frankfurter returns rates FROM EUR (e.g. EUR→USD = 1.08)
+        # We need rates TO EUR (e.g. USD→EUR = 1/1.08 ≈ 0.926)
+        to_eur: dict[str, float] = {"EUR": 1.0}
+        for ccy, rate in rates.items():
+            if rate and rate > 0:
+                to_eur[ccy.upper()] = 1.0 / rate
+        return to_eur
+    except (urllib.error.URLError, json.JSONDecodeError, KeyError, OSError) as e:
+        logger.warning("Failed to fetch live exchange rates: %s", e)
+        return None
+
+
+def _load_cached_rates() -> tuple[dict[str, float] | None, float]:
+    """Load rates from disk cache. Returns (rates, timestamp) or (None, 0)."""
+    try:
+        with open(_CACHE_FILE, "r") as f:
+            cached = json.load(f)
+        return cached.get("rates"), cached.get("fetched_at", 0.0)
+    except (OSError, json.JSONDecodeError):
+        return None, 0.0
+
+
+def _save_cached_rates(rates: dict[str, float], fetched_at: float) -> None:
+    """Persist rates to disk cache."""
+    try:
+        with open(_CACHE_FILE, "w") as f:
+            json.dump({"rates": rates, "fetched_at": fetched_at}, f)
+    except OSError as e:
+        logger.warning("Failed to save exchange rate cache: %s", e)
+
+
+def _get_rates() -> dict[str, float]:
+    """Return current exchange rates (to EUR), using cache + live fetch + static fallback."""
+    global _live_rates, _live_rates_fetched_at
+
+    now = time.time()
+
+    # 1. In-memory cache is fresh
+    if _live_rates and (now - _live_rates_fetched_at) < _CACHE_TTL_SECONDS:
+        return _live_rates
+
+    # 2. Try disk cache
+    disk_rates, disk_ts = _load_cached_rates()
+    if disk_rates and (now - disk_ts) < _CACHE_TTL_SECONDS:
+        _live_rates = disk_rates
+        _live_rates_fetched_at = disk_ts
+        logger.info("Loaded exchange rates from disk cache (age: %.0fh)", (now - disk_ts) / 3600)
+        return _live_rates
+
+    # 3. Fetch fresh rates
+    fresh = _fetch_live_rates()
+    if fresh:
+        # Merge with static rates so currencies not covered by ECB still work
+        merged = {**_STATIC_RATES_TO_EUR, **fresh}
+        _live_rates = merged
+        _live_rates_fetched_at = now
+        _save_cached_rates(merged, now)
+        logger.info("Fetched fresh exchange rates (%d currencies)", len(fresh))
+        return _live_rates
+
+    # 4. Stale disk cache is better than nothing
+    if disk_rates:
+        _live_rates = disk_rates
+        _live_rates_fetched_at = disk_ts
+        logger.warning("Using stale disk cache (age: %.0fh)", (now - disk_ts) / 3600)
+        return _live_rates
+
+    # 5. Final fallback: static rates
+    logger.warning("Using static fallback exchange rates — live rates unavailable")
+    _live_rates = _STATIC_RATES_TO_EUR
+    _live_rates_fetched_at = now
+    return _live_rates
+
 
 def _to_eur(amount: float | None, currency: str) -> float | None:
-    """Convert an amount to EUR using indicative rates. Returns None if input is None."""
+    """Convert an amount to EUR using live rates (with fallback). Returns None if input is None."""
     if amount is None:
         return None
     currency = currency.upper()
     if currency == "EUR":
         return amount
-    rate = _RATES_TO_EUR.get(currency)
+    rates = _get_rates()
+    rate = rates.get(currency)
     if rate is None:
-        # Fallback for unknown currencies: assume 1:1 but print a warning for logs
-        # In a real production app, this would trigger a lookup or validation error
-        return amount 
+        logger.warning("Unknown currency '%s' — using 1:1 fallback to EUR. Amount: %.2f", currency, amount)
+        return amount
     return amount * rate
 
 
@@ -113,8 +214,10 @@ def _convert(amount: float | None, from_ccy: str, to_ccy: str) -> float | None:
     eur_amount = _to_eur(amount, from_ccy)
     if to_ccy == "EUR":
         return eur_amount
-    rate = _RATES_TO_EUR.get(to_ccy)
+    rates = _get_rates()
+    rate = rates.get(to_ccy)
     if rate is None:
+        logger.warning("Unknown target currency '%s' — returning EUR amount", to_ccy)
         return eur_amount
     return eur_amount / rate
 
@@ -360,11 +463,13 @@ def check_incentive_eligibility(
             category="production", source=source,
         )], 0.0, None
 
-    if incentive.min_shoot_days and shoot_pct < 5:  # simplified shoot days check
-        return False, [Requirement(
+    if incentive.min_shoot_days:
+        # min_shoot_days is a soft requirement — we can't verify actual days from
+        # shoot percentage alone, so we surface it as a requirement instead of blocking.
+        requirements.append(Requirement(
             description=f"Minimum {incentive.min_shoot_days} shooting days in {country_name} required.",
             category="production", source=source,
-        )], 0.0, None
+        ))
 
     # --- Soft requirements (warnings/conditions) ---
 
@@ -457,7 +562,11 @@ def check_incentive_eligibility(
                     threshold = cond.get("threshold", 0)
                     threshold_proj = _convert(threshold, native_ccy, project.budget_currency)
                     new_rate = cond.get("rate", effective_rebate)
-                    vfx_est = estimated_qualifying_spend * 0.3
+                    # Estimate VFX spend based on format (not a flat 30%)
+                    vfx_fraction = {"animation": 0.50, "series": 0.20,
+                                    "feature_fiction": 0.15, "documentary": 0.05
+                                    }.get(proj_format, 0.15)
+                    vfx_est = estimated_qualifying_spend * vfx_fraction
                     if project.vfx_flexible and vfx_est >= threshold_proj * 0.5:
                         effective_rebate = new_rate
                         conditional_note = cond.get("note", f"Enhanced rate {new_rate}% applied (VFX condition)")
