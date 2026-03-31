@@ -5,7 +5,7 @@ services:
     env: python
     plan: free
     region: ohio
-    buildCommand: pip install -r backend/requirements.txt
+    buildCommand: pip install -r backend/requirements.txt && python backend/seed_data.py && python backend/seed_documents.py
     startCommand: gunicorn -w 4 -k uvicorn.workers.UvicornWorker backend.app.main:app --bind 0.0.0.0:$PORT
     envVars:
       - key: DATABASE_URL
