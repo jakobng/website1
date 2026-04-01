@@ -106,6 +106,27 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_RESOLVE_TITLES: "1"
 
+      # --- STEP 1b: VALIDATE SCRAPED DATA ---
+      - name: Validate Showtime Data
+        if: steps.mode.outputs.run_scraper == 'true'
+        run: |
+          python -c "
+          import json, sys
+          from datetime import date, timedelta
+          with open('data/showtimes.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          if len(data) < 20:
+              print(f'❌ Only {len(data)} showings found (expected 20+). Scrape may have failed.')
+              sys.exit(1)
+          today = date.today().isoformat()
+          tomorrow = (date.today() + timedelta(days=1)).isoformat()
+          dates = {d.get('date_text') for d in data}
+          if today not in dates and tomorrow not in dates:
+              print(f'⚠️ Warning: No showings found for today ({today}) or tomorrow ({tomorrow})')
+              print(f'   Available dates: {sorted(dates)[:5]}...')
+          print(f'✅ Validated: {len(data)} showings across {len(dates)} dates')
+          "
+
       # --- STEP 2: GENERATE CONTENT (SPLIT) ---
 
       # If CINEMA mode -> Use generate_post.py
@@ -136,12 +157,8 @@ jobs:
           # Commit locally
           git commit -m "Auto-Update: ${{ steps.mode.outputs.post_type }} content" || echo "No changes to commit"
 
-          # Stash any unstaged changes to prevent rebase failure
-          git stash --include-untracked || true
-
-          # FIX: Rebase to handle race conditions (if repo updated while running)
-          git pull --rebase -X theirs origin main
-          git stash drop || true
+          # Rebase to handle race conditions (if repo updated while running)
+          git pull --rebase origin main
 
           # Push
           git push
@@ -149,9 +166,31 @@ jobs:
       # --- STEP 4: WAIT FOR GITHUB PAGES TO DEPLOY ---
       - name: Wait for GitHub Pages deployment
         run: |
-          echo "⏳ Waiting 90 seconds for GitHub Pages to deploy new images..."
-          sleep 90
-          echo "✅ Wait complete. Proceeding with upload."
+          echo "⏳ Polling GitHub Pages for image availability..."
+          TEST_FILE=$(ls ig_posts/post_image_01.png ig_posts/post_v2_image_01.png 2>/dev/null | head -1)
+          if [ -z "$TEST_FILE" ]; then
+            echo "No post images found, skipping poll. Waiting 90s as fallback."
+            sleep 90
+          else
+            BASENAME=$(basename "$TEST_FILE")
+            URL="https://jakobng.github.io/website1/tokyo-cinema-scrapers/ig_posts/${BASENAME}?t=$(date +%s)"
+            TIMEOUT=180
+            INTERVAL=10
+            ELAPSED=0
+            while [ $ELAPSED -lt $TIMEOUT ]; do
+              STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
+              if [ "$STATUS" == "200" ]; then
+                echo "✅ GitHub Pages is live (HTTP 200 after ${ELAPSED}s)"
+                break
+              fi
+              echo "  Waiting... (${ELAPSED}s elapsed, HTTP $STATUS)"
+              sleep $INTERVAL
+              ELAPSED=$((ELAPSED + INTERVAL))
+            done
+            if [ $ELAPSED -ge $TIMEOUT ]; then
+              echo "⚠️ Timeout after ${TIMEOUT}s. Proceeding anyway."
+            fi
+          fi
 
       # --- STEP 5: UPLOAD TO INSTAGRAM ---
       - name: Upload to Instagram

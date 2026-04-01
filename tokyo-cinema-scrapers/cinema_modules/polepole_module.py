@@ -107,7 +107,7 @@ def _scrape_from_official_site(max_days: int = 7) -> List[Dict]:
             schedule_el = driver.find_element(By.ID, "schedule")
             driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", schedule_el)
             time.sleep(2)
-        except:
+        except Exception:
             pass
 
         # Get Date Tabs
@@ -165,7 +165,7 @@ def _scrape_from_official_site(max_days: int = 7) -> List[Dict]:
                     try:
                         link_el = title_el.find_element(By.TAG_NAME, "a")
                         detail_url = link_el.get_attribute("href")
-                    except:
+                    except Exception:
                         pass
 
                     # Times

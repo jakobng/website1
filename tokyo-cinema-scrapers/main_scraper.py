@@ -253,7 +253,7 @@ def load_tmdb_cache():
         try:
             with open(TMDB_CACHE_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
-        except:
+        except (json.JSONDecodeError, IOError, OSError):
             return {}
     return {}
 
@@ -266,7 +266,7 @@ def load_synopsis_translation_cache():
         try:
             with open(SYNOPSIS_TRANSLATION_CACHE_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
-        except:
+        except (json.JSONDecodeError, IOError, OSError):
             return {}
     return {}
 
@@ -281,7 +281,7 @@ def load_title_resolution_cache():
             try:
                 with open(path, "r", encoding="utf-8") as f:
                     return json.load(f)
-            except:
+            except (json.JSONDecodeError, IOError, OSError):
                 return {}
     return {}
 
@@ -396,7 +396,7 @@ def _title_similarity(a: str, b: str) -> float:
 def _parse_year(value):
     if not value:
         return None
-    if m := re.search(r"(19|20)\\d{2}", str(value)):
+    if m := re.search(r"(19|20)\d{2}", str(value)):
         return int(m.group(0))
     return None
 
@@ -1002,24 +1002,24 @@ def _parse_gemini_fallback(text, input_title):
         return None
     text = text.strip()
     text_unescaped = text.replace('\\"', '"')
-    if re.search(r"\"english_title\"\\s*:\\s*null", text_unescaped, flags=re.IGNORECASE):
+    if re.search(r"\"english_title\"\s*:\s*null", text_unescaped, flags=re.IGNORECASE):
         return {"english_title": None, "release_year": None, "confidence": None, "notes": ""}
-    english_match = re.search(r"\"english_title\"\\s*:\\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
+    english_match = re.search(r"\"english_title\"\s*:\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
     if not english_match:
-        english_match = re.search(r"\"en_title\"\\s*:\\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
+        english_match = re.search(r"\"en_title\"\s*:\s*\"([^\"]+)\"", text_unescaped, flags=re.IGNORECASE)
     if not english_match:
-        english_match = re.search(r"\"english_title\"\\s*:\\s*\"?([^\"\\n\\r\\}]+)", text_unescaped, flags=re.IGNORECASE)
+        english_match = re.search(r"\"english_title\"\s*:\s*\"?([^\"\n\r\}]+)", text_unescaped, flags=re.IGNORECASE)
     if not english_match:
-        english_match = re.search(r"\"en_title\"\\s*:\\s*\"?([^\"\\n\\r\\}]+)", text_unescaped, flags=re.IGNORECASE)
+        english_match = re.search(r"\"en_title\"\s*:\s*\"?([^\"\n\r\}]+)", text_unescaped, flags=re.IGNORECASE)
     english_title = ""
     if english_match:
         english_title = english_match.group(1).strip().strip('"').strip()
     if not english_title:
         return None
-    year_match = re.search(r"\"release_year\"\\s*:\\s*(\\d{4})", text_unescaped, flags=re.IGNORECASE)
+    year_match = re.search(r"\"release_year\"\s*:\s*(\d{4})", text_unescaped, flags=re.IGNORECASE)
     if not year_match:
-        year_match = re.search(r"\"year\"\\s*:\\s*(\\d{4})", text_unescaped, flags=re.IGNORECASE)
-    confidence_match = re.search(r"\"confidence\"\\s*:\\s*([0-9]*\\.?[0-9]+)", text_unescaped, flags=re.IGNORECASE)
+        year_match = re.search(r"\"year\"\s*:\s*(\d{4})", text_unescaped, flags=re.IGNORECASE)
+    confidence_match = re.search(r"\"confidence\"\s*:\s*([0-9]*\.?[0-9]+)", text_unescaped, flags=re.IGNORECASE)
     release_year = int(year_match.group(1)) if year_match else None
     confidence = float(confidence_match.group(1)) if confidence_match else None
     return {
