@@ -1,45 +1,20 @@
 # Environments
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
-backend/.env
-backend/.env.template
 
 # Logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Python / Dependencies
 node_modules/
-backend/venv/
-backend/.venv/
-frontend/node_modules/
-mvp-engine/frontend/node_modules/
 venv/
 .venv/
-env/
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-.Python
-*.so
 *.pyc
 
 # Databases
 *.db
-backend/coproduction.db
-coproduction.db
-copro.db
-
-# Build outputs
-frontend/dist/
-dist/
-build/
 
 # IDEs
 .vscode/
@@ -51,6 +26,3 @@ build/
 # OS
 .DS_Store
 Thumbs.db
-
-# Test outputs
-*_TEST.json

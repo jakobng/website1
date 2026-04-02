@@ -1,57 +1,20 @@
-# CoPro Calculator
+# leonelki.com
 
-Decision-support tool for filmmakers to explore coproduction structures, financing incentives, and treaty pathways with source-backed outputs.
+Personal portfolio and cinema project site for Leo Nelki — documentary filmmaker and producer.
 
-## Stack
-- Backend: FastAPI, SQLAlchemy, Alembic, SQLite
-- Frontend: React + TypeScript + Vite + Tailwind
+Served via GitHub Pages at [www.leonelki.com](https://www.leonelki.com).
 
-## Backend Setup
-```bash
-cd backend
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
+## What's here
 
-pip install -r requirements.txt
-# Optional (recommended for managed schema migrations)
-pip install -r requirements-migrations.txt
-python scripts/backup_and_reseed.py
-uvicorn app.main:app --reload
-```
+- **Portfolio** — films, CV, writing (`index.html`, `films.html`, `cv.html`)
+- **Cinema scrapers** — automated showtimes + Instagram posting for Tokyo, London, and Manchester (`tokyo-cinema-scrapers/`, `london-cinema-scrapers/`, `manchester_cinema_scrapers/`)
+- **Cinema pages** — generated listings (`tokyo-cinemas.html`, `london-cinemas.html`, `manchester-cinemas.html`)
+- **CoPro Calculator** — static frontend build (`copro/`)
+- **Blog** — articles and essays (`blog/`)
+- **Film microsites** — open-source documentary pages
 
-Backend runs at `http://localhost:8000` and docs at `http://localhost:8000/docs`.
+## Related repos
 
-## Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend runs at `http://localhost:5173` and proxies `/api` to `http://localhost:8000`.
-
-## Database Configuration
-- Canonical DB defaults to `backend/coproduction.db`.
-- Override with `DATABASE_URL` if needed (for local/CI/hosted databases).
-- DB readiness can be checked via `GET /api/health/db`.
-- `backup_and_reseed.py` uses Alembic when available; in restricted environments without Alembic it falls back to SQLAlchemy metadata bootstrap.
-
-## Scenario Test Runners
-```bash
-cd scenario_tests
-python test_runner.py --scenario basic_feature_fr.json
-python comprehensive_test_runner.py --category A
-```
-
-If runners report an empty database, run:
-```bash
-cd backend
-python scripts/backup_and_reseed.py
-```
-
-## Notes
-- Intake PDF extraction requires `PyPDF2` (included in `requirements.txt`).
-- In some restricted environments, frontend production build may fail with an `esbuild spawn EPERM` permission error; local dev server is usually unaffected.
+- [copro-calculator](https://github.com/jakobng/copro-calculator) — CoPro Calculator source (backend + frontend)
+- [codex-live-translator](https://github.com/jakobng/codex-live-translator) — Live field translation tool
+- [film-funding-assistant](https://github.com/jakobng/film-funding-assistant) — Automated funding discovery pipeline

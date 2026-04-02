@@ -1,1 +1,0 @@
-"""Film funding assistant package."""
