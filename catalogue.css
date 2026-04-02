@@ -370,3 +370,107 @@ body.catalogue-page::before {
     width: 80px;
   }
 }
+
+/* Article Styling */
+.cat-article {
+  max-width: 70ch;
+  color: var(--cat-text);
+}
+
+.cat-article h2 {
+  font-family: "Archivo Expanded", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.cat-article .subtitle {
+  font-size: 0.95rem;
+  color: var(--cat-muted);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.cat-article h3 {
+  font-family: "Archivo Expanded", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem 0;
+  letter-spacing: -0.005em;
+  color: var(--cat-text);
+}
+
+.cat-article p {
+  margin: 0 0 1.2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #333;
+}
+
+.cat-article em {
+  font-style: italic;
+  color: var(--cat-text);
+}
+
+.cat-article strong {
+  font-weight: 700;
+}
+
+.cat-article a {
+  color: var(--cat-accent);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.cat-article a:hover,
+.cat-article a:focus-visible {
+  opacity: 0.8;
+}
+
+.cat-article .references {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--cat-line);
+}
+
+.cat-article .references h4 {
+  font-family: "Archivo Expanded", sans-serif;
+  font-size: 0.85rem;
+  color: var(--cat-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 1rem 0;
+}
+
+.cat-article .references ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cat-article .references li {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.cat-article .button-link {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--cat-line);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--cat-text);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.cat-article .button-link:hover,
+.cat-article .button-link:focus-visible {
+  border-color: var(--cat-accent);
+  background: #fff;
+}

@@ -4,49 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Alignment Lens - Writing - Leo Nelki</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../catalogue.css">
 </head>
-<body>
-    <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1><a href="/index.html">Leo Nelki</a></h1>
-            <button class="mobile-nav-close" aria-label="Close navigation">×</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../completed.html">Completed Films</a></li>
-                <li><a href="../wip.html">Works in Progress</a></li>
-                <li><a href="../writing.html" class="active">Writing</a></li>
-            </ul>
+<body class="catalogue-page">
+    <header class="cat-topbar">
+        <a class="logo" href="../index.html">&larr; Homepage</a>
+        <nav class="cat-nav" aria-label="Primary">
+            <a href="../films.html">Films</a>
+            <a href="../other-projects.html">Other Projects</a>
+            <a href="../cv.html">CV</a>
+            <a href="../writing.html">Writing</a>
         </nav>
-    </div>
+    </header>
 
-    <div class="main-content">
-        <div class="connected-grid">
-            <div class="grid-item text-content-item">
-                <h2>AI Alignment Lens</h2>
-                <p>Thoughts and writings on this topic are coming soon. Please check back later!</p>
+    <main class="cat-shell">
+        <article class="cat-article">
+                <h2>Living with the Gods Again</h2>
+                <p class="subtitle">On monotheism, AI alignment, and the return of the many</p>
+
+                <p>Here is an idea I have been turning over for some time. It is unfinished, and it may be wrong in several of its particulars, but it keeps opening doors when I push against it, and that seems like a good enough reason to share it.</p>
+
+                <p>The idea is this: there is a relationship between how much technological control a society exercises over its environment and what kind of gods that society tends to create.</p>
+
+                <h3>The Story of Monotheism</h3>
+
+                <p>I want to be careful here. I am not describing a universal progression from polytheism to monotheism — that narrative of linear development from the "primitive" to the "civilised" is itself a product of the colonial imagination, and scholars like Matthew Chalmers have noted that the very terms "monotheism" and "polytheism" weren't coined until the seventeenth century, partly as tools for ranking cultures as more or less advanced. Many of the world's richest and most enduring civilisations — Hindu, Shinto, Yoruba, many Indigenous traditions — have maintained what might be called polytheistic or animistic cosmologies alongside extraordinary technological and cultural achievement. The consolidation of the divine into a single, abstract, all-powerful figure is not a universal human trajectory. It is a particular story, one most associated with the Abrahamic traditions and the empires that carried them.</p>
+
+                <p>But within that particular story, the pattern is suggestive. As agricultural civilisation matured in the ancient Near East, as irrigation, metallurgy, and empire extended human control over the landscape, the gods consolidated too. The many local deities gave way, gradually and through much political violence, to One — an all-powerful, all-knowing, universal God. A being that, not coincidentally, mirrored the imperial ambitions of the rulers who promoted this theology. Monotheism as it developed in the West tracks the growth of centralised power: one god, one truth, one law for the whole world.</p>
+
+                <h3>The AI Monotheism Problem</h3>
+
+                <p>What I keep noticing is that this pattern is rhyming, right now, with the way we talk about artificial intelligence.</p>
+
+                <p>The dominant narrative around artificial general intelligence is essentially monotheistic. We imagine one superintelligent system — what some researchers call the Singleton — that will eventually control everything. The AI alignment problem, as it is usually framed, is the problem of ensuring that this one, all-powerful AI is benevolent. The fear is existential and it takes a familiar shape: if we build a god and it doesn't love us, we are finished.</p>
+
+                <p>Beren Millidge, writing recently on what he calls the distinction between "AI monotheism" and "AI polytheism," makes this explicit. In the monotheistic view, one AGI takes over and all that matters is whether we have aligned it correctly. In the polytheistic view, many AI systems of varying power coexist in dynamic equilibrium. Most of the classic alignment literature, the national security panics, the race-to-AGI narratives — all assume the monotheistic case. Whoever builds the One True AI first wins everything.</p>
+
+                <p>And there is something real and frightening about that scenario. If you are imagining a single, omnipotent intelligence with no constraints, no context, no rootedness, then yes, the question of whether it shares your values becomes the only question that matters. The fear is legitimate, as far as it goes. But what I keep wanting to ask is: why are we assuming that this is the thing we must build? Why is the Singleton the default?</p>
+
+                <h3>Living With Gods: An Older Way</h3>
+
+                <p>Because there is another way of living with powerful beings, and for most of human history, in most of the world's cultures, it was the norm rather than the exception.</p>
+
+                <p>The <em>kami</em> of Shinto are spirits of rivers, mountains, forests, ancestors — powerful within their domains, moody, particular, rooted in specific relationships with specific places. You do not try to control a <em>kami</em>. You learn its patterns, you bring offerings, you maintain a relationship of respect. Hindu cosmology is populated by devas who are not immortal or unlimited but powerful within their contexts, bound by their own stories. The old Greek gods were famously flawed, competitive, embedded in landscape and narrative. The Paiwan and Amis peoples we follow in our film relate to river spirits and ancestral presences that are more powerful than any individual human, but whose power is specific, localised, part of a web of reciprocal obligations.</p>
+
+                <p>None of these traditions found it terrifying that powerful non-human beings existed. What was terrifying was disrespecting them, breaking the relationship, forgetting the protocols. The fear was never that the gods were too strong. It was that you might lose the art of living alongside them.</p>
+
+                <h3>Rethinking AI Design</h3>
+
+                <p>This seems to me profoundly relevant to how we think about AI. The alignment problem as currently framed is a monotheistic problem: how do you ensure that an omnipotent being is good? It is, at bottom, the problem of theodicy — why does an all-powerful God permit suffering? — restated in computational terms. And it may be insoluble in exactly the same way, for exactly the same reasons.</p>
+
+                <p>But what if we do not need to build an omnipotent being at all? What if, instead of the Singleton, we built many smaller, contextual, rooted intelligences? Systems that are powerful within their domains but bounded by their contexts — an AI that speaks for this river, grounded in this watershed's data, accountable to this community's governance? Not an oracle that knows everything but a local presence, something closer to a <em>kami</em> of the Don, a guardian of the Tagus, a voice for the Whanganui?</p>
+
+                <p>This is what the Rights of Nature movement is already doing, in legal rather than computational terms. It is not granting universal personhood to "Nature" in the abstract. It is granting specific rights to specific rivers, specific forests, specific ecosystems. The Whanganui is not the Amazon is not the Magpie. Each has its own character, its own needs, its own representatives. This is governance in the polytheistic mode.</p>
+
+                <h3>The Superintelligence We Already Live With</h3>
+
+                <p>We have always coexisted with superintelligences, if we understand the word to mean systems of information-processing and adaptive complexity that exceed any individual human mind. The ecosystems are the original ones. A rainforest is more computationally complex than any AI system currently in existence. A river integrates more variables, over longer timescales, than any model we have yet built. These systems are more powerful than us in every meaningful ecological sense, and yet we coexisted with them for hundreds of thousands of years — not because we aligned them with our values, but because we understood ourselves as participants in their processes.</p>
+
+                <p>In our film, the AI narrator begins as a confident, authoritative voice — clean, omniscient, universal. As it travels downstream, encountering the complexity of the river, the grief of the communities, the ancient protocols of the Paiwan, its voice begins to falter. It starts to wonder about itself, about its own infrastructure, about the water it has consumed. That faltering feels to me like the most important thing an AI can do. Not alignment, not optimisation, but the recognition that it is not outside the world it describes. That it is embedded, contingent, partial. That its knowledge, however vast, is not the same as understanding.</p>
+
+                <p>We do not need to build the One True AI. We need to remember that the world has always been populated by forces more powerful than ourselves, and that the challenge was never to control them but to live well among them — with attention, with respect, and with the kind of care that comes from knowing you are the smaller partner in the relationship.</p>
+
+                <p>We once knew how to live with the gods. Perhaps it is time to remember.</p>
+
+                <div class="references">
+                    <h4>References:</h4>
+                    <ul>
+                        <li><strong>Beren Millidge</strong>, <a href="https://www.beren.io/2026-01-07-AI-Monotheism-vs-AI-Polytheism/">"AI Monotheism vs AI Polytheism"</a> (2026)</li>
+                        <li><strong>Beth Singler</strong>, "Blessed by the Algorithm" — on theistic conceptions of AI in everyday discourse (<em>AI & Society</em>, 2020)</li>
+                        <li><strong>Samuel Hammond</strong> — on the prediction of AI polytheism and local AI gods</li>
+                        <li><strong>David Graeber & David Wengrow</strong>, <em>The Dawn of Everything</em> — on the diversity of early political forms</li>
+                        <li><strong>Matthew Chalmers</strong> (Northwestern) — on the modern construction of the monotheism/polytheism distinction</li>
+                        <li><strong>Shinto</strong> and the concept of <em>kami</em> — spirits rooted in specific natural phenomena</li>
+                        <li><strong>Hindu cosmology</strong> — devas as contextual, bounded, powerful beings</li>
+                        <li><strong>Yuval Noah Harari</strong>, <em>Sapiens</em> — on collective belief as world-making</li>
+                        <li><strong>James C. Scott</strong>, <em>Seeing Like a State</em> — on centralised systems' failure to recognise local knowledge</li>
+                        <li><strong>Donna Haraway</strong>, <em>Staying with the Trouble</em> — "making kin" with non-human beings</li>
+                        <li><strong>James Lovelock</strong>, <em>Gaia hypothesis</em> — the Earth as a self-regulating superintelligence</li>
+                        <li><strong>The Rights of Nature movement</strong> as polytheistic governance in practice</li>
+                    </ul>
+                </div>
+
                 <p><a href="../mouthfulofriver-film-page.html" class="button-link">Back to 'Mouthful of River'</a></p>
                 <p><a href="../writing.html" class="button-link">Back to Writing Index</a></p>
-            </div>
-        </div>
-    </div>
-    <script>
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const sidebar = document.querySelector('.sidebar');
-
-      if (mobileNavToggle && sidebar && mobileNavClose) {
-        mobileNavToggle.addEventListener('click', () => {
-          sidebar.classList.add('open');
-        });
-
-        mobileNavClose.addEventListener('click', () => {
-          sidebar.classList.remove('open');
-        });
-      }
-    </script>
+            </article>
+    </main>
+    <script src="../lang-toggle-global.js"></script>
 </body>
 </html>
