@@ -991,17 +991,10 @@
 
                 updateSortOptions();
 
-                if (view === "film" && state.filters.date === "all" && state.todayDate) {
-                    state.filters.date = state.todayDate;
-                    elements.dateSelect.value = state.todayDate;
-                }
                 render();
             }
 
             function getDefaultDateForView() {
-                if (state.view === "film" && state.todayDate) {
-                    return state.todayDate;
-                }
                 return "all";
             }
 
@@ -1201,9 +1194,6 @@
                     option.textContent = formatDate(dateText, true);
                     elements.dateSelect.appendChild(option);
                 });
-                if (state.view === "film" && state.todayDate) {
-                    state.filters.date = state.todayDate;
-                }
                 elements.dateSelect.value = state.filters.date || "all";
 
                 const regions = Array.from(new Set(showings.map(function (showing) {

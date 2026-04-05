@@ -1227,12 +1227,6 @@
                     button.classList.toggle("is-active", isActive);
                 });
                 updateSortOptions();
-                /* 
-                if (view === "film" && state.filters.date === "all" && state.todayDate) {
-                    state.filters.date = state.todayDate;
-                    elements.dateSelect.value = state.todayDate;
-                }
-                */
                 render();
             }
             function setLang(lang) {
@@ -1324,9 +1318,6 @@
                 elements.dateSelect.value = currentValue;
             }
             function getDefaultDateForView() {
-                if (state.todayDate) {
-                    return state.todayDate;
-                }
                 return "all";
             }
             function updateSortOptions() {
