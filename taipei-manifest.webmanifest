@@ -1,0 +1,10 @@
+{
+  "name": "Taipei Independent Cinema Showtimes",
+  "short_name": "Taipei Showtimes",
+  "start_url": "/taipei-cinemas.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f3ef",
+  "theme_color": "#f5f3ef",
+  "icons": []
+}
