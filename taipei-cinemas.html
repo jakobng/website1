@@ -1486,10 +1486,10 @@
             }
             function getCinemaWebsite(cinemaName, showings) {
                 if (cinemaWebsiteOverrides[cinemaName]) return cinemaWebsiteOverrides[cinemaName];
-                const counts = new Map();
-                const origins = new Map();
-                showings.forEach(function (showing) {
-                    [showing.bookingUrl, showing.detailUrl].forEach(function (url) {
+                function collectOrigins(urls) {
+                    const counts = new Map();
+                    const origins = new Map();
+                    urls.forEach(function (url) {
                         if (!url) return;
                         let parsed;
                         try {
@@ -1501,9 +1501,9 @@
                         counts.set(host, (counts.get(host) || 0) + 1);
                         if (!origins.has(host)) origins.set(host, parsed.origin);
                     });
-                });
-                if (!counts.size) return "";
-                function pickHost(skipBlocked) {
+                    return { counts: counts, origins: origins };
+                }
+                function pickHost(counts, skipBlocked) {
                     let bestHost = "";
                     let bestCount = -1;
                     counts.forEach(function (count, host) {
@@ -1515,9 +1515,23 @@
                     });
                     return bestHost;
                 }
-                const preferredHost = pickHost(true) || pickHost(false);
+                const detailOrigins = collectOrigins(showings.map(function (showing) {
+                    return showing.detailUrl;
+                }));
+                const bookingOrigins = collectOrigins(showings.map(function (showing) {
+                    return showing.bookingUrl;
+                }));
+                const preferredHost =
+                    pickHost(detailOrigins.counts, true) ||
+                    pickHost(detailOrigins.counts, false) ||
+                    pickHost(bookingOrigins.counts, true) ||
+                    pickHost(bookingOrigins.counts, false);
                 if (!preferredHost) return "";
-                return origins.get(preferredHost) || ("https://" + preferredHost);
+                return (
+                    detailOrigins.origins.get(preferredHost) ||
+                    bookingOrigins.origins.get(preferredHost) ||
+                    ("https://" + preferredHost)
+                );
             }
             function getImageUrl(path, size) {
                 if (!path) return "";
@@ -1901,14 +1915,12 @@
                         const timeRow = createElement("div", "time-row");
                         film.showings.forEach(function (showing) {
                             const label = showing.showtime || t("tbd");
-                            if (showing.bookingUrl || showing.detailUrl) {
+                            if (showing.bookingUrl) {
                                 const link = createElement("a", "time-chip", label);
-                                link.href = showing.bookingUrl || showing.detailUrl;
+                                link.href = showing.bookingUrl;
                                 link.target = "_blank";
                                 link.rel = "noopener";
-                                if (showing.bookingUrl) {
-                                    link.classList.add("is-bookable");
-                                }
+                                link.classList.add("is-bookable");
                                 timeRow.appendChild(link);
                             } else {
                                 timeRow.appendChild(createElement("span", "time-chip", label));
@@ -2003,14 +2015,12 @@
                                 const label = includeDate && showing.dateText
                                     ? formatDate(showing.dateText, false) + " " + (showing.showtime || t("tbd"))
                                     : (showing.showtime || t("tbd"));
-                                if (showing.bookingUrl || showing.detailUrl) {
+                                if (showing.bookingUrl) {
                                     const link = createElement("a", "time-chip", label);
-                                    link.href = showing.bookingUrl || showing.detailUrl;
+                                    link.href = showing.bookingUrl;
                                     link.target = "_blank";
                                     link.rel = "noopener";
-                                    if (showing.bookingUrl) {
-                                        link.classList.add("is-bookable");
-                                    }
+                                    link.classList.add("is-bookable");
                                     timeRow.appendChild(link);
                                 } else {
                                     timeRow.appendChild(createElement("span", "time-chip", label));
