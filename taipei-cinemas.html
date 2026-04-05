@@ -811,11 +811,16 @@
             const jsonUrl = "taipei-cinema-scrapers/data/showtimes.json";
             const tmdbBase = "https://image.tmdb.org/t/p/";
             const cinemaCategories = [
-                { name: "中山", cinemas: ["SPOT台北之家"] },
-                { name: "中正・華山", cinemas: ["光點華山電影館"] },
+                { name: "中山", cinemas: ["SPOT台北之家", "臺北市立美術館"] },
+                { name: "中正・華山", cinemas: ["光點華山電影館", "牯嶺街小劇場", "臺灣當代文化實驗場 C-LAB"] },
                 { name: "松山", cinemas: ["誠品電影院（松菸）"] },
-                { name: "萬華・西門", cinemas: ["真善美劇院"] },
-                { name: "板橋", cinemas: ["府中15放映院"] }
+                { name: "萬華・西門", cinemas: ["真善美劇院", "Taipei Ximen in89 Cinema", "臺北市電影主題公園"] },
+                { name: "板橋", cinemas: ["府中15放映院"] },
+                { name: "新北・新莊", cinemas: ["國家電影及視聽文化中心"] },
+                { name: "公館・城南", cinemas: ["Lightbox 攝影圖書室", "寶藏巖國際藝術村"] },
+                { name: "流動放映", cinemas: ["Skyline Film", "Taipei Film Festival", "Women Make Waves", "Taiwan International Queer Film Festival"] },
+                { name: "桃園", cinemas: ["Taoyuan Station in89 Cinema", "桃園光影文化館"] },
+                { name: "中壢", cinemas: ["中壢光影電影館"] }
             ];
             const cinemaRegions = {};
             cinemaCategories.forEach(function (category) {
@@ -828,21 +833,57 @@
                 "光點華山電影館": "光點華山電影館",
                 "誠品電影院（松菸）": "誠品電影院（松菸）",
                 "真善美劇院": "真善美劇院",
-                "府中15放映院": "府中15放映院"
+                "府中15放映院": "府中15放映院",
+                "國家電影及視聽文化中心": "國家電影及視聽文化中心",
+                "牯嶺街小劇場": "牯嶺街小劇場",
+                "臺灣當代文化實驗場 C-LAB": "臺灣當代文化實驗場 C-LAB",
+                "臺北市立美術館": "臺北市立美術館",
+                "Lightbox 攝影圖書室": "Lightbox 攝影圖書室",
+                "寶藏巖國際藝術村": "寶藏巖國際藝術村",
+                "臺北市電影主題公園": "臺北市電影主題公園",
+                "桃園光影文化館": "桃園光影文化館",
+                "中壢光影電影館": "中壢光影電影館",
+                "Skyline Film": "Skyline Film",
+                "Taipei Film Festival": "Taipei Film Festival",
+                "Women Make Waves": "Women Make Waves",
+                "Taiwan International Queer Film Festival": "Taiwan International Queer Film Festival",
+                "Taipei Ximen in89 Cinema": "Taipei Ximen in89 Cinema",
+                "Taoyuan Station in89 Cinema": "Taoyuan Station in89 Cinema"
             };
             const cinemaEnglishNames = {
                 "SPOT台北之家": "SPOT Taipei Film House",
                 "光點華山電影館": "SPOT-Huashan",
                 "誠品電影院（松菸）": "Eslite Art House Songyan",
                 "真善美劇院": "Wonderful Theatre",
-                "府中15放映院": "Fuzhong 15"
+                "府中15放映院": "Fuzhong 15",
+                "國家電影及視聽文化中心": "Taiwan Film and Audiovisual Institute",
+                "牯嶺街小劇場": "Guling Street Avant-garde Theatre",
+                "臺灣當代文化實驗場 C-LAB": "Taiwan Contemporary Culture Lab (C-LAB)",
+                "臺北市立美術館": "Taipei Fine Arts Museum",
+                "Lightbox 攝影圖書室": "Lightbox Photo Library",
+                "寶藏巖國際藝術村": "Treasure Hill Artist Village",
+                "臺北市電影主題公園": "Taipei Cinema Park",
+                "桃園光影文化館": "Taoyuan Arts Cinema II",
+                "中壢光影電影館": "Zhongli Arts Cinema",
+                "Skyline Film": "Skyline Film",
+                "Taipei Film Festival": "Taipei Film Festival",
+                "Women Make Waves": "Women Make Waves",
+                "Taiwan International Queer Film Festival": "Taiwan International Queer Film Festival",
+                "Taipei Ximen in89 Cinema": "Taipei Ximen in89 Cinema",
+                "Taoyuan Station in89 Cinema": "Taoyuan Station in89 Cinema"
             };
             const regionNames = {
                 "中山": { "zh-TW": "中山", en: "Zhongshan" },
                 "中正・華山": { "zh-TW": "中正・華山", en: "Zhongzheng / Huashan" },
                 "松山": { "zh-TW": "松山", en: "Songshan" },
                 "萬華・西門": { "zh-TW": "萬華・西門", en: "Wanhua / Ximen" },
-                "板橋": { "zh-TW": "板橋", en: "Banqiao" }
+                "板橋": { "zh-TW": "板橋", en: "Banqiao" },
+                "新北・新莊": { "zh-TW": "新北・新莊", en: "New Taipei / Xinzhuang" },
+                "公館・城南": { "zh-TW": "公館・城南", en: "Gongguan / South-Central" },
+                "流動放映": { "zh-TW": "流動放映", en: "Pop-up / Touring" },
+                "桃園": { "zh-TW": "桃園", en: "Taoyuan" },
+                "中壢": { "zh-TW": "中壢", en: "Zhongli" },
+                "其他": { "zh-TW": "其他", en: "Other" }
             };
             const i18n = {
                 "zh-TW": {
@@ -893,6 +934,7 @@
                     untitled: "片名未定",
                     footerDisclaimer: "放映資訊取自各場館公開頁面，臨時異動請以官方頁面為準。",
                     downloadJson: "下載 Taipei 放映 JSON",
+                    englishSynopsisUnavailable: "暫無英文簡介",
                     mapReset: "顯示全部區域",
                     mapShow: "顯示地圖",
                     mapHide: "隱藏地圖",
@@ -947,6 +989,7 @@
                     untitled: "Untitled",
                     footerDisclaimer: "Listings are scraped from venue pages. Always double-check the venue page for last-minute changes.",
                     downloadJson: "Download raw Taipei showtimes JSON",
+                    englishSynopsisUnavailable: "English synopsis unavailable",
                     mapReset: "Show all areas",
                     mapShow: "Show map",
                     mapHide: "Hide map",
@@ -1069,7 +1112,7 @@
                 return new Intl.DateTimeFormat(locale, { weekday: "long", day: "numeric", month: "long", timeZone: "Asia/Taipei" });
             }
             function getRegionForCinema(cinemaName) {
-                return cinemaRegions[cinemaName] || t("other");
+                return cinemaRegions[cinemaName] || "其他";
             }
             elements.searchInput.addEventListener("input", function (event) {
                 state.filters.search = event.target.value.trim().toLowerCase();
@@ -1420,7 +1463,7 @@
                 return cinemaJapaneseNames[cinemaName] || cinemaName;
             }
             function buildMapsUrl(cinemaName) {
-                const query = encodeURIComponent(getCinemaJapaneseName(cinemaName) + " 台北");
+                const query = encodeURIComponent(getCinemaJapaneseName(cinemaName));
                 return "https://www.google.com/maps/search/?api=1&query=" + query;
             }
             const cinemaWebsiteOverrides = {
@@ -1734,20 +1777,40 @@
                     elements.cinemaIndex.appendChild(createElement("div", "empty-state", t("noCinemas")));
                     return;
                 }
-                let renderedBlocks = 0;
-                cinemaCategories.forEach(function (category) {
-                    const cinemas = category.cinemas.map(function (cinemaName) {
-                        const cinema = cinemasMap.get(cinemaName);
-                        return cinema ? { name: cinemaName, count: cinema.showings.length } : { name: cinemaName, count: 0 };
-                    }).filter(function (cinema) {
-                        return cinema.count > 0;
-                    });
-                    if (!cinemas.length) {
-                        return;
+                const regionsMap = new Map();
+                cinemasMap.forEach(function (cinema) {
+                    const region = getRegionForCinema(cinema.name);
+                    if (!regionsMap.has(region)) {
+                        regionsMap.set(region, []);
                     }
+                    regionsMap.get(region).push({
+                        name: cinema.name,
+                        count: cinema.showings.length
+                    });
+                });
+                const orderedRegions = cinemaCategories.map(function (category) {
+                    return category.name;
+                }).filter(function (region) {
+                    return regionsMap.has(region);
+                });
+                Array.from(regionsMap.keys()).sort(function (a, b) {
+                    if (a === "其他") return 1;
+                    if (b === "其他") return -1;
+                    return getRegionName(a).localeCompare(getRegionName(b));
+                }).forEach(function (region) {
+                    if (!orderedRegions.includes(region)) {
+                        orderedRegions.push(region);
+                    }
+                });
+                let renderedBlocks = 0;
+                orderedRegions.forEach(function (region) {
+                    const cinemas = (regionsMap.get(region) || []).slice().sort(function (a, b) {
+                        return getCinemaDisplayName(a.name).localeCompare(getCinemaDisplayName(b.name));
+                    });
+                    if (!cinemas.length) return;
                     renderedBlocks += 1;
                     const block = createElement("div", "region-block");
-                    block.appendChild(createElement("h2", "region-title", getRegionName(category.name)));
+                    block.appendChild(createElement("h2", "region-title", getRegionName(region)));
                     const grid = createElement("div", "cinema-grid");
                     cinemas.forEach(function (cinema) {
                         const card = createElement("button", "cinema-card");
@@ -1915,9 +1978,11 @@
                         if (metaParts.length) {
                             body.appendChild(createElement("div", "film-meta", metaParts.join(" | ")));
                         }
-                        var displayOverview = state.lang === "en" ? (film.overviewEn || film.overview) : film.overview;
+                        var displayOverview = state.lang === "en" ? film.overviewEn : film.overview;
                         if (displayOverview) {
                             body.appendChild(createElement("p", "film-blurb", displayOverview));
+                        } else if (state.lang === "en" && film.overview) {
+                            body.appendChild(createElement("p", "film-blurb", t("englishSynopsisUnavailable")));
                         }
                         if (film.formatTags.length) {
                             const tagRow = createElement("div", "tag-row");
