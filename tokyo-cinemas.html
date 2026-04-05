@@ -1470,8 +1470,7 @@
                 if (tmdbId) {
                     return "https://letterboxd.com/tmdb/" + tmdbId + "/";
                 }
-                const slug = normalizeTitle(title);
-                return slug ? "https://letterboxd.com/film/" + slug + "/" : "";
+                return "";
             }
             function getCinemaJapaneseName(cinemaName) {
                 return cinemaJapaneseNames[cinemaName] || cinemaName;
