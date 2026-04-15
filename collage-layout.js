@@ -13,7 +13,7 @@ window.COLLAGE_LAYOUT = {
   "projects": [
     {
       "id": "mouthful",
-      "title": "Mouthful of River",
+      "title": "Beneath A Hundred Streams",
       "year": "2027",
       "status": "Development",
       "role": "Director",
