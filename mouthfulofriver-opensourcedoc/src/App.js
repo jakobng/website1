@@ -216,7 +216,7 @@ export default function App() {
       <header style={styles.header}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ cursor: 'pointer' }} onClick={() => setView('about')}>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>Mouthful of River</h1>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>Beneath A Hundred Streams</h1>
             <p style={{ fontSize: '0.75rem', color: colors.textLight, margin: '0.1rem 0 0 0' }}>Open-source documentary</p>
           </div>
           <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -247,7 +247,7 @@ export default function App() {
               AI gives rivers a voice—but the data centers powering that voice threaten to drain them dry.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              <em>Mouthful of River</em> is a mosaic documentary following scientists, indigenous communities, and activists searching for ways to understand: what does the river truly want?
+              <em>Beneath A Hundred Streams</em> is a mosaic documentary following scientists, indigenous communities, and activists searching for ways to understand: what does the river truly want?
             </p>
 
             <div style={{ marginBottom: '2rem' }}>
