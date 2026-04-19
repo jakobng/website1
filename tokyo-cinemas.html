@@ -1887,12 +1887,12 @@
                         const timeRow = createElement("div", "time-row");
                         film.showings.forEach(function (showing) {
                             const label = showing.showtime || t("tbd");
-                            if (showing.bookingUrl || showing.detailUrl) {
+                            if (showing.detailUrl || showing.bookingUrl) {
                                 const link = createElement("a", "time-chip", label);
-                                link.href = showing.bookingUrl || showing.detailUrl;
+                                link.href = showing.detailUrl || showing.bookingUrl;
                                 link.target = "_blank";
                                 link.rel = "noopener";
-                                if (showing.bookingUrl) {
+                                if (!showing.detailUrl && showing.bookingUrl) {
                                     link.classList.add("is-bookable");
                                 }
                                 timeRow.appendChild(link);
@@ -1987,12 +1987,12 @@
                                 const label = includeDate && showing.dateText
                                     ? formatDate(showing.dateText, false) + " " + (showing.showtime || t("tbd"))
                                     : (showing.showtime || t("tbd"));
-                                if (showing.bookingUrl || showing.detailUrl) {
+                                if (showing.detailUrl || showing.bookingUrl) {
                                     const link = createElement("a", "time-chip", label);
-                                    link.href = showing.bookingUrl || showing.detailUrl;
+                                    link.href = showing.detailUrl || showing.bookingUrl;
                                     link.target = "_blank";
                                     link.rel = "noopener";
-                                    if (showing.bookingUrl) {
+                                    if (!showing.detailUrl && showing.bookingUrl) {
                                         link.classList.add("is-bookable");
                                     }
                                     timeRow.appendChild(link);
