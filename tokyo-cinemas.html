@@ -824,7 +824,9 @@
                 { name: "池袋 (Ikebukuro)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "シネ・リーブル池袋", "シネマハウス大塚" ] },
                 { name: "田端・北千住 (Tabata & Kita Senju)", cinemas: [ "CINEMA Chupki TABATA", "シネマブルースタジオ" ] },
                 { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "吉祥寺オデヲン", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "シネマシティ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
-                { name: "横浜 (Yokohama)", cinemas: [ "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン" ] }
+                { name: "神奈川 (Kanagawa)", cinemas: [ "kino cinéma横浜みなとみらい", "横浜シネマ・ジャック＆ベティ", "シネマ・ノヴェチェント", "横浜シネマリン", "川崎市アートセンター アルテリオ映像館", "あつぎのえいがかんkiki", "小田原シネマ館", "シネコヤ", "CINEMA AMIGO" ] },
+                { name: "埼玉・千葉 (Saitama & Chiba)", cinemas: [ "川越スカラ座", "深谷シネマ", "キネマ旬報シアター", "千葉劇場" ] },
+                { name: "上映会・映画クラブ (Screening Clubs)", cinemas: [ "高円寺シアターバッカス", "Koenji Cinema Club" ] }
             ];
             const cinemaRegions = {};
             cinemaCategories.forEach(function (category) {
@@ -840,7 +842,9 @@
                 "CINEMA Chupki TABATA": "チュプキ・タバタ",
                 "Cinema Neko (シネマネコ)": "シネマネコ",
                 "YEBISU GARDEN CINEMA": "恵比寿ガーデンシネマ",
-                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "角川シネマ有楽町"
+                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "角川シネマ有楽町",
+                "Koenji Cinema Club": "高円寺シネマクラブ",
+                "CINEMA AMIGO": "シネマアミーゴ"
             };
             const cinemaEnglishNames = {
                 "K's Cinema (ケイズシネマ)": "K's Cinema",
@@ -890,7 +894,19 @@
                 "シネマハウス大塚": "Cinema House Otsuka",
                 "シネ・リーブル池袋": "Cine Libre Ikebukuro",
                 "吉祥寺オデヲン": "Kichijoji Odeon",
-                "東劇": "Togeki"
+                "東劇": "Togeki",
+                "kino cinéma横浜みなとみらい": "Kino Cinema Yokohama Minatomirai",
+                "川崎市アートセンター アルテリオ映像館": "Kawasaki Art Center Alterio Cinema",
+                "あつぎのえいがかんkiki": "Atsugi no Eigakan kiki",
+                "小田原シネマ館": "Odawara Cinema-kan",
+                "シネコヤ": "Cinekoya",
+                "CINEMA AMIGO": "Cinema Amigo",
+                "川越スカラ座": "Kawagoe Scalaza",
+                "深谷シネマ": "Fukaya Cinema",
+                "キネマ旬報シアター": "Kinema Junpo Theater",
+                "千葉劇場": "Chiba Theater",
+                "高円寺シアターバッカス": "Koenji Theater Bacchus",
+                "Koenji Cinema Club": "Koenji Cinema Club"
             };
             const regionNames = {
                 "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)": { ja: "渋谷・恵比寿・目黒", en: "Shibuya, Ebisu & Meguro" },
@@ -899,7 +915,9 @@
                 "池袋 (Ikebukuro)": { ja: "池袋", en: "Ikebukuro" },
                 "田端・北千住 (Tabata & Kita Senju)": { ja: "田端・北千住", en: "Tabata & Kita Senju" },
                 "西部 (West - Chuo/Keio Lines & Setagaya)": { ja: "西部（中央線・京王線沿線、世田谷）", en: "West (Chuo/Keio Lines & Setagaya)" },
-                "横浜 (Yokohama)": { ja: "横浜", en: "Yokohama" }
+                "神奈川 (Kanagawa)": { ja: "神奈川", en: "Kanagawa" },
+                "埼玉・千葉 (Saitama & Chiba)": { ja: "埼玉・千葉", en: "Saitama & Chiba" },
+                "上映会・映画クラブ (Screening Clubs)": { ja: "上映会・映画クラブ", en: "Screening Clubs" }
             };
             const i18n = {
                 ja: {
