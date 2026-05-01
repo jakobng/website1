@@ -1638,6 +1638,14 @@
                         item.tmdb_overview,
                         item.tmdb_overview_en
                     ].filter(Boolean).join(" ");
+                    const sourceLanguageText = [
+                        item.source_language_note,
+                        item.language_note,
+                        item.source_audio_language,
+                        item.source_subtitle_language,
+                        item.audio_language,
+                        item.subtitle_language
+                    ].filter(Boolean).join(" ");
                     return {
                         id: index,
                         cinema: rawCinemaName,
@@ -1660,7 +1668,7 @@
                         genresEn: genresEn,
                         formatTags: tags,
                         originalLanguage: originalLanguage,
-                        isEnglishFriendly: isEnglishFriendlyShowing(originalLanguage, subtitleText, formatText),
+                        isEnglishFriendly: isEnglishFriendlyShowing(originalLanguage, subtitleText, formatText, sourceLanguageText),
                         rating: item.vote_average ? Number(item.vote_average) : 0,
                         posterPath: item.tmdb_poster_path || item.image_url || "",
                         backdropPath: item.tmdb_backdrop_path || "",
@@ -1702,14 +1710,26 @@
             function hasExplicitEnglishSubtitleMarker(text) {
                 return /\benglish[-\s]?subtitles?\b|\benglish[-\s]?subtitled\b|英語字幕|英文字幕|英字幕/i.test(text || "");
             }
+            function hasEnglishAudioMarker(text) {
+                return /\benglish[-\s]?audio\b|\benglish[-\s]?language\b|英語發音|英文發音|英語音聲|英語版/i.test(text || "");
+            }
+            function hasEnglishUnfriendlySourceMarker(text) {
+                const value = String(text || "");
+                if (!value) return false;
+                if (/without english subtitles|no english subtitles|無英文字幕|無英字幕|非英語發音且無英文字幕/i.test(value)) return true;
+                if (hasExplicitEnglishSubtitleMarker(value) || hasEnglishAudioMarker(value)) return false;
+                return /(中文字幕|字幕[:：]?\s*(中文|中字)|語言\s*(國語|華語|中文|日語|韓語|印尼語|泰語|法語|德語|西班牙語|粵語)\s*字幕\s*(中文|中字)|發音\/字幕[:：]?\s*(中文|國語|華語)發音\/(中文|中字)字幕)/i.test(value);
+            }
             function hasDubMarker(text) {
                 return /吹替|吹き替え|日本語吹替|\bdubbed\b|\bdub version\b|配音|配音版|中文配音|國語配音/i.test(text || "");
             }
             function hasOriginalAudioOrSubtitleMarker(text) {
                 return /字幕|\bsubtitles?\b|\bsubtitled\b|原音|原聲|原語|\boriginal audio\b|\boriginal language\b/i.test(text || "");
             }
-            function isEnglishFriendlyShowing(originalLanguage, subtitleText, formatText) {
-                if (hasExplicitEnglishSubtitleMarker(subtitleText)) return true;
+            function isEnglishFriendlyShowing(originalLanguage, subtitleText, formatText, sourceLanguageText) {
+                const combinedText = [subtitleText, sourceLanguageText].filter(Boolean).join(" ");
+                if (hasEnglishUnfriendlySourceMarker(sourceLanguageText)) return false;
+                if (hasExplicitEnglishSubtitleMarker(combinedText)) return true;
                 if (normalizeLanguageCode(originalLanguage) !== "en") return false;
                 return !(hasDubMarker(formatText) && !hasOriginalAudioOrSubtitleMarker(formatText));
             }
