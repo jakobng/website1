@@ -277,7 +277,7 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             cursor: pointer;
-            display: inline-flex;
+            display: none;
             align-items: center;
             gap: 8px;
             white-space: nowrap;
@@ -291,11 +291,11 @@
             border-color: var(--border);
         }
         .advanced-filters {
-            display: none;
+            display: block;
             margin-top: 16px;
             padding-top: 16px;
             border-top: 1px solid var(--border-soft);
-            animation: slideDown 0.2s ease-out;
+            animation: none;
         }
         .advanced-filters.is-expanded {
             display: block;
@@ -648,6 +648,16 @@
             h1 {
                 letter-spacing: 0.1em;
             }
+            .filter-toggle-btn {
+                display: inline-flex;
+            }
+            .advanced-filters {
+                display: none;
+                animation: slideDown 0.2s ease-out;
+            }
+            .advanced-filters.is-expanded {
+                display: block;
+            }
             .filters-header {
                 display: flex;
                 justify-content: space-between;
@@ -761,6 +771,10 @@
                     <div class="control-group" id="sort-filter-container">
                         <label for="sort-select" id="sort-label"></label>
                         <select id="sort-select"></select>
+                    </div>
+                    <div class="control-group checkbox-group">
+                        <input id="english-friendly" type="checkbox">
+                        <label for="english-friendly" id="english-friendly-label" style="margin-left: 6px; cursor: pointer;"></label>
                     </div>
                     <div class="control-group checkbox-group">
                         <input id="doc-only" type="checkbox">
@@ -907,6 +921,7 @@
                     sortReleaseNew: "上映年（新到舊）",
                     sortReleaseOld: "上映年（舊到新）",
                     sortRating: "評分",
+                    englishFriendly: "英語友善",
                     docOnly: "只看紀錄片",
                     clearFilters: "清除篩選",
                     loading: "載入放映資訊中...",
@@ -962,6 +977,7 @@
                     sortReleaseNew: "Release year (newest)",
                     sortReleaseOld: "Release year (oldest)",
                     sortRating: "By rating",
+                    englishFriendly: "English-friendly",
                     docOnly: "Documentary only",
                     clearFilters: "Clear filters",
                     loading: "Loading showtimes...",
@@ -1044,6 +1060,8 @@
                 sortLabel: document.getElementById("sort-label"),
                 sortSelect: document.getElementById("sort-select"),
                 sortFilterContainer: document.getElementById("sort-filter-container"),
+                englishFriendlyLabel: document.getElementById("english-friendly-label"),
+                englishFriendlyCheckbox: document.getElementById("english-friendly"),
                 docOnlyLabel: document.getElementById("doc-only-label"),
                 docOnlyCheckbox: document.getElementById("doc-only"),
                 clearFilters: document.getElementById("clear-filters"),
@@ -1086,6 +1104,7 @@
                     date: "all",
                     time: "any",
                     region: "all",
+                    englishFriendly: false,
                     docOnly: false
                 }
             };
@@ -1126,6 +1145,10 @@
                 state.filters.region = event.target.value;
                 render();
             });
+            elements.englishFriendlyCheckbox.addEventListener("change", function (event) {
+                state.filters.englishFriendly = event.target.checked;
+                render();
+            });
             elements.docOnlyCheckbox.addEventListener("change", function (event) {
                 state.filters.docOnly = event.target.checked;
                 render();
@@ -1154,11 +1177,13 @@
                 state.filters.date = getDefaultDateForView();
                 state.filters.time = "any";
                 state.filters.region = "all";
+                state.filters.englishFriendly = false;
                 state.filters.docOnly = false;
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
                 elements.timeSelect.value = "any";
                 elements.regionSelect.value = "all";
+                elements.englishFriendlyCheckbox.checked = false;
                 elements.docOnlyCheckbox.checked = false;
                 render();
             });
@@ -1256,8 +1281,10 @@
                 elements.timeLabel.textContent = t("time");
                 elements.regionLabel.textContent = t("region");
                 elements.sortLabel.textContent = t("sort");
+                elements.englishFriendlyLabel.textContent = t("englishFriendly");
                 elements.docOnlyLabel.textContent = t("docOnly");
                 elements.clearFilters.textContent = t("clearFilters");
+                elements.englishFriendlyCheckbox.checked = state.filters.englishFriendly;
                 elements.docOnlyCheckbox.checked = state.filters.docOnly;
                 // Cinema view
                 elements.cinemaLoading.textContent = t("loading");
@@ -1594,6 +1621,23 @@
                     const genres = Array.isArray(item.genres) ? item.genres : [];
                     const genresEn = Array.isArray(item.genres_en) ? item.genres_en : [];
                     const tags = Array.isArray(item.tags) ? item.tags : [];
+                    const originalLanguage = normalizeLanguageCode(item.original_language || item.tmdb_original_language);
+                    const formatText = [
+                        item.movie_title,
+                        item.movie_title_en,
+                        item.movie_title_jp,
+                        item.movie_title_original,
+                        item.tmdb_original_title,
+                        item.program_title,
+                        tags.join(" ")
+                    ].filter(Boolean).join(" ");
+                    const subtitleText = [
+                        formatText,
+                        item.synopsis,
+                        item.synopsis_en,
+                        item.tmdb_overview,
+                        item.tmdb_overview_en
+                    ].filter(Boolean).join(" ");
                     return {
                         id: index,
                         cinema: rawCinemaName,
@@ -1615,6 +1659,8 @@
                         genres: genres,
                         genresEn: genresEn,
                         formatTags: tags,
+                        originalLanguage: originalLanguage,
+                        isEnglishFriendly: isEnglishFriendlyShowing(originalLanguage, subtitleText, formatText),
                         rating: item.vote_average ? Number(item.vote_average) : 0,
                         posterPath: item.tmdb_poster_path || item.image_url || "",
                         backdropPath: item.tmdb_backdrop_path || "",
@@ -1649,6 +1695,23 @@
                     const value = String(genre || "").toLowerCase();
                     return value.includes("documentary") || value.includes("ドキュメンタリー");
                 });
+            }
+            function normalizeLanguageCode(value) {
+                return String(value || "").trim().toLowerCase().replace("_", "-").split("-")[0];
+            }
+            function hasExplicitEnglishSubtitleMarker(text) {
+                return /\benglish[-\s]?subtitles?\b|\benglish[-\s]?subtitled\b|英語字幕|英文字幕|英字幕/i.test(text || "");
+            }
+            function hasDubMarker(text) {
+                return /吹替|吹き替え|日本語吹替|\bdubbed\b|\bdub version\b|配音|配音版|中文配音|國語配音/i.test(text || "");
+            }
+            function hasOriginalAudioOrSubtitleMarker(text) {
+                return /字幕|\bsubtitles?\b|\bsubtitled\b|原音|原聲|原語|\boriginal audio\b|\boriginal language\b/i.test(text || "");
+            }
+            function isEnglishFriendlyShowing(originalLanguage, subtitleText, formatText) {
+                if (hasExplicitEnglishSubtitleMarker(subtitleText)) return true;
+                if (normalizeLanguageCode(originalLanguage) !== "en") return false;
+                return !(hasDubMarker(formatText) && !hasOriginalAudioOrSubtitleMarker(formatText));
             }
             function applyFilters(showings) {
                 const now = new Date();
@@ -1685,6 +1748,9 @@
                     }
                     
                     if (state.filters.region !== "all" && showing.region !== state.filters.region) {
+                        return false;
+                    }
+                    if (state.filters.englishFriendly && !showing.isEnglishFriendly) {
                         return false;
                     }
                     if (state.filters.docOnly && !isDocumentary(showing)) {
@@ -1760,6 +1826,7 @@
                     parts.push(labels.time + ": " + t(timeKey));
                 }
                 if (state.filters.region !== "all") parts.push(labels.area + ": " + getRegionName(state.filters.region));
+                if (state.filters.englishFriendly) parts.push(t("englishFriendly"));
                 if (state.filters.docOnly) parts.push(t("docOnly"));
                 if (!parts.length) parts.push(labels.none);
                 return parts.join(" | ");
@@ -2107,6 +2174,3 @@
     </script>
 </body>
 </html>
-
-
-
