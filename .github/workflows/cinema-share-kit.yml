@@ -1,0 +1,35 @@
+name: Cinema Share Kit
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Monday 07:30 JST / Sunday 22:30 UTC.
+    - cron: "30 22 * * 0"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-share-kit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate cinema share kit
+        run: python scripts/generate_cinema_share_kit.py
+
+      - name: Commit share kit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add cinemas/share-kit/weekly-share-kit.json cinemas/share-kit/weekly-share-kit.md
+          git commit -m "Auto: update weekly cinema share kit" || echo "No share kit changes"
+          git pull --rebase -X theirs origin main
+          git push

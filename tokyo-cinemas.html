@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tokyo Mini-Theater Showtimes</title>
+    <meta name="description" content="A bilingual guide to independent and mini-theater film showtimes across Tokyo, updated from cinema listings.">
+    <link rel="canonical" href="https://www.leonelki.com/tokyo-cinemas.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tokyo Mini-Theater Showtimes">
+    <meta property="og:description" content="A bilingual guide to independent and mini-theater film showtimes across Tokyo, updated from cinema listings.">
+    <meta property="og:url" content="https://www.leonelki.com/tokyo-cinemas.html">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary">
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#f5f3ef">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -358,6 +366,49 @@
             color: var(--accent-strong);
             padding: 8px 0;
         }
+        .location-status {
+            font-size: 0.72rem;
+            color: var(--muted);
+            min-height: 1em;
+            margin-top: 4px;
+        }
+        .near-btn {
+            border: var(--border-width) solid var(--border);
+            background: #fff;
+            min-height: 42px;
+            padding: 8px 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+        }
+        .near-btn.is-active {
+            background: var(--accent);
+            color: var(--ink);
+        }
+        .distance-label {
+            color: var(--muted);
+            font-size: 0.78em;
+            font-weight: 500;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+        .showtime-details {
+            width: 100%;
+        }
+        .showtime-details summary {
+            cursor: pointer;
+            color: var(--accent-strong);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .showtime-details-row {
+            margin-top: 6px;
+        }
+
         .view-section {
             border: var(--border-width) solid var(--border);
             background: var(--card);
@@ -649,10 +700,10 @@
                 letter-spacing: 0.1em;
             }
             .filter-toggle-btn {
-                display: inline-flex;
+                display: none;
             }
             .advanced-filters {
-                display: none;
+                display: block;
                 animation: slideDown 0.2s ease-out;
             }
             .advanced-filters.is-expanded {
@@ -720,7 +771,7 @@
         /* Inactive Regions */
         /* Active Regions */
         /* Map Labels */
-        /* Reset transform origin for each group is hard in CSS without individual IDs. 
+        /* Reset transform origin for each group is hard in CSS without individual IDs.
            Let's just use color change. */
 </style>
 </head>
@@ -747,8 +798,8 @@
             </div>
         </header>
         <nav class="view-tabs">
-            <button class="tab-btn is-active" data-view="cinema" type="button" id="view-cinema-btn"></button>
-            <button class="tab-btn" data-view="film" type="button" id="view-film-btn"></button>
+            <button class="tab-btn" data-view="cinema" type="button" id="view-cinema-btn"></button>
+            <button class="tab-btn is-active" data-view="film" type="button" id="view-film-btn"></button>
         </nav>
         <section class="controls-section">
             <div class="primary-controls">
@@ -760,11 +811,7 @@
                     <label for="date-select" id="date-label"></label>
                     <select id="date-select"></select>
                 </div>
-                <button class="filter-toggle-btn" type="button" id="filters-toggle">
-                    <span id="filters-toggle-text"></span>
-                    <span>+</span>
-                </button>
-            </div>
+                </div>
             <div class="advanced-filters" id="filters-content">
                 <div class="advanced-grid">
                     <div class="control-group">
@@ -774,6 +821,11 @@
                     <div class="control-group">
                         <label for="region-select" id="region-label"></label>
                         <select id="region-select"></select>
+                    </div>
+                    <div class="control-group">
+                        <label for="near-me" id="near-me-label"></label>
+                        <button class="near-btn" type="button" id="near-me"></button>
+                        <div class="location-status" id="location-status" aria-live="polite"></div>
                     </div>
                     <div class="control-group" id="sort-filter-container">
                         <label for="sort-select" id="sort-label"></label>
@@ -793,7 +845,7 @@
                 </div>
             </div>
         </section>
-        <section class="view-section" id="cinema-view">
+        <section class="view-section is-hidden" id="cinema-view">
             <div id="cinema-index">
                 <div class="loading" id="cinema-loading"></div>
             </div>
@@ -812,7 +864,7 @@
                 <div id="cinema-showtimes-list"></div>
             </div>
         </section>
-        <section class="view-section is-hidden" id="film-view">
+        <section class="view-section" id="film-view">
             <div class="film-view-header">
                 <div class="results-count" id="film-results-count"></div>
                 <div class="results-meta" id="film-results-meta"></div>
@@ -987,7 +1039,13 @@
                     mapShow: "地図を表示",
                     mapHide: "地図を隠す",
                     mapCinemaCount: "館",
-                    installApp: "Add to homescreen"
+                    installApp: "Add to homescreen",
+                    nearMe: "近い順",
+                    locating: "現在地を確認中...",
+                    locationReady: "現在地から近い順で表示中",
+                    locationDenied: "位置情報を利用できません",
+                    locationUnsupported: "このブラウザでは位置情報を利用できません",
+                    showAllShowtimes: "すべての{count}件を表示"
                 },
                 en: {
                     siteTitle: "Tokyo Mini-Theater Showtimes",
@@ -1042,7 +1100,13 @@
                     mapShow: "Show map",
                     mapHide: "Hide map",
                     mapCinemaCount: "cinemas",
-                    installApp: "Add to homescreen"
+                    installApp: "Add to homescreen",
+                    nearMe: "Near me",
+                    locating: "Finding location...",
+                    locationReady: "Sorted near you",
+                    locationDenied: "Location unavailable",
+                    locationUnsupported: "Location is not supported",
+                    showAllShowtimes: "Show all {count} showtimes"
                 }
             };
             function t(key) {
@@ -1084,6 +1148,9 @@
                 // Filters
                 filtersToggle: document.getElementById("filters-toggle"),
                 filtersToggleText: document.getElementById("filters-toggle-text"),
+                nearButton: document.getElementById("near-me"),
+                nearMeLabel: document.getElementById("near-me-label"),
+                locationStatus: document.getElementById("location-status"),
                 filtersContent: document.getElementById("filters-content"),
                 searchLabel: document.getElementById("search-label"),
                 searchInput: document.getElementById("search-input"),
@@ -1129,11 +1196,12 @@
 
             const state = {
                 data: [],
-                view: "cinema",
-                sort: "soonest",
+                view: "film",
+                sort: "release-new",
                 todayDate: "",
                 selectedCinema: "",
                 filtersExpanded: false,
+                location: { active: false, coords: null },
                 lang: localStorage.getItem("cinemas-lang") || "ja",
                 filters: {
                     search: "",
@@ -1148,7 +1216,6 @@
             function getSortOptions() {
                 return {
                     film: [
-                        { value: "soonest", label: t("sortSoonest") },
                         { value: "release-new", label: t("sortReleaseNew") },
                         { value: "release-old", label: t("sortReleaseOld") }
                     ]
@@ -1196,18 +1263,24 @@
             function closeFilters() {
                 state.filtersExpanded = false;
                 elements.filtersContent.classList.remove("is-expanded");
+                if (!elements.filtersToggle) return;
                 elements.filtersToggle.classList.remove("is-active");
                 const icon = elements.filtersToggle.querySelector("span:last-child");
                 if (icon) icon.textContent = "+";
             }
 
-            elements.filtersToggle.addEventListener("click", function () {
-                state.filtersExpanded = !state.filtersExpanded;
-                elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
-                elements.filtersToggle.classList.toggle("is-active", state.filtersExpanded);
-                const icon = elements.filtersToggle.querySelector("span:last-child");
-                if (icon) icon.textContent = state.filtersExpanded ? "−" : "+";
-            });
+            if (elements.filtersToggle) {
+                elements.filtersToggle.addEventListener("click", function () {
+                    state.filtersExpanded = !state.filtersExpanded;
+                    elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
+                    elements.filtersToggle.classList.toggle("is-active", state.filtersExpanded);
+                    const icon = elements.filtersToggle.querySelector("span:last-child");
+                    if (icon) icon.textContent = state.filtersExpanded ? "−" : "+";
+                });
+            }
+            if (elements.nearButton) {
+                elements.nearButton.addEventListener("click", requestLocationSort);
+            }
             elements.clearFilters.addEventListener("click", function () {
                 state.filters.search = "";
                 state.filters.date = getDefaultDateForView();
@@ -1223,7 +1296,7 @@
                 elements.docOnlyCheckbox.checked = false;
                 render();
             });
-            
+
             elements.viewButtons.forEach(function (button) {
                 button.addEventListener("click", function () {
                     const view = button.getAttribute("data-view");
@@ -1310,7 +1383,9 @@
                     elements.installButton.textContent = t("installApp");
                 }
                 // Filters
-                elements.filtersToggleText.textContent = t("filters");
+                if (elements.filtersToggleText) elements.filtersToggleText.textContent = t("filters");
+                if (elements.nearMeLabel) elements.nearMeLabel.textContent = t("nearMe");
+                if (elements.nearButton) elements.nearButton.textContent = t("nearMe");
                 elements.searchLabel.textContent = t("search");
                 elements.searchInput.placeholder = t("searchPlaceholder");
                 elements.dateLabel.textContent = t("date");
@@ -1578,6 +1653,311 @@
                 if (path.startsWith("http")) return path;
                 return tmdbBase + size + path;
             }
+
+            const cinemaCoordinates = {
+          "シアター・イメージフォーラム": {
+                    "lat": 35.6628,
+                    "lng": 139.7084
+          },
+          "ユーロスペース": {
+                    "lat": 35.6581,
+                    "lng": 139.6954
+          },
+          "ヒューマントラストシネマ渋谷": {
+                    "lat": 35.6616,
+                    "lng": 139.7028
+          },
+          "Bunkamura ル・シネマ 渋谷宮下": {
+                    "lat": 35.6617,
+                    "lng": 139.7018
+          },
+          "シネクイント": {
+                    "lat": 35.6614,
+                    "lng": 139.7006
+          },
+          "ホワイト シネクイント": {
+                    "lat": 35.6613,
+                    "lng": 139.7006
+          },
+          "シネマヴェーラ渋谷": {
+                    "lat": 35.6605,
+                    "lng": 139.6967
+          },
+          "YEBISU GARDEN CINEMA": {
+                    "lat": 35.6423,
+                    "lng": 139.7133
+          },
+          "目黒シネマ": {
+                    "lat": 35.6334,
+                    "lng": 139.7155
+          },
+          "新宿武蔵野館": {
+                    "lat": 35.6912,
+                    "lng": 139.7025
+          },
+          "テアトル新宿": {
+                    "lat": 35.6916,
+                    "lng": 139.706
+          },
+          "シネマート新宿": {
+                    "lat": 35.692,
+                    "lng": 139.7064
+          },
+          "K's Cinema (ケイズシネマ)": {
+                    "lat": 35.6889,
+                    "lng": 139.7047
+          },
+          "kino cinéma新宿": {
+                    "lat": 35.6886,
+                    "lng": 139.704
+          },
+          "早稲田松竹": {
+                    "lat": 35.7126,
+                    "lng": 139.7047
+          },
+          "ヒューマントラストシネマ有楽町": {
+                    "lat": 35.6751,
+                    "lng": 139.763
+          },
+          "シネスイッチ銀座": {
+                    "lat": 35.6722,
+                    "lng": 139.7685
+          },
+          "国立映画アーカイブ": {
+                    "lat": 35.6764,
+                    "lng": 139.77
+          },
+          "角川シネマ有楽町": {
+                    "lat": 35.6751,
+                    "lng": 139.763
+          },
+          "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": {
+                    "lat": 35.6751,
+                    "lng": 139.763
+          },
+          "シネマリス": {
+                    "lat": 35.6922,
+                    "lng": 139.7821
+          },
+          "神保町シアター": {
+                    "lat": 35.6958,
+                    "lng": 139.7597
+          },
+          "アテネ・フランセ文化センター": {
+                    "lat": 35.7,
+                    "lng": 139.7622
+          },
+          "アンスティチュ・フランセ東京": {
+                    "lat": 35.7015,
+                    "lng": 139.7417
+          },
+          "Stranger (ストレンジャー)": {
+                    "lat": 35.695,
+                    "lng": 139.8106
+          },
+          "新文芸坐": {
+                    "lat": 35.7291,
+                    "lng": 139.7143
+          },
+          "池袋シネマ・ロサ": {
+                    "lat": 35.7337,
+                    "lng": 139.7085
+          },
+          "CINEMA Chupki TABATA": {
+                    "lat": 35.7373,
+                    "lng": 139.7618
+          },
+          "シネマブルースタジオ": {
+                    "lat": 35.748,
+                    "lng": 139.7544
+          },
+          "ポレポレ東中野": {
+                    "lat": 35.7063,
+                    "lng": 139.6849
+          },
+          "ラピュタ阿佐ヶ谷": {
+                    "lat": 35.7045,
+                    "lng": 139.6357
+          },
+          "Morc阿佐ヶ谷": {
+                    "lat": 35.7043,
+                    "lng": 139.6358
+          },
+          "アップリンク吉祥寺": {
+                    "lat": 35.7042,
+                    "lng": 139.5795
+          },
+          "K2 Cinema": {
+                    "lat": 35.6611,
+                    "lng": 139.6676
+          },
+          "下北沢トリウッド": {
+                    "lat": 35.6617,
+                    "lng": 139.6674
+          },
+          "下高井戸シネマ": {
+                    "lat": 35.6663,
+                    "lng": 139.6429
+          },
+          "Cinema Neko (シネマネコ)": {
+                    "lat": 35.786,
+                    "lng": 139.326
+          },
+          "kino cinéma横浜みなとみらい": {
+                    "lat": 35.4573,
+                    "lng": 139.6328
+          },
+          "横浜シネマ・ジャック＆ベティ": {
+                    "lat": 35.4404,
+                    "lng": 139.628
+          },
+          "シネマ・ノヴェチェント": {
+                    "lat": 35.4495,
+                    "lng": 139.6172
+          },
+          "横浜シネマリン": {
+                    "lat": 35.4436,
+                    "lng": 139.642
+          },
+          "CINEMA AMIGO": {
+                    "lat": 35.2953,
+                    "lng": 139.5731
+          },
+          "川越スカラ座": {
+                    "lat": 35.9235,
+                    "lng": 139.4853
+          },
+          "深谷シネマ": {
+                    "lat": 36.1912,
+                    "lng": 139.2814
+          },
+          "キネマ旬報シアター": {
+                    "lat": 35.8624,
+                    "lng": 139.9705
+          },
+          "千葉劇場": {
+                    "lat": 35.6087,
+                    "lng": 140.1178
+          },
+          "高円寺シアターバッカス": {
+                    "lat": 35.7049,
+                    "lng": 139.6491
+          },
+          "Koenji Cinema Club": {
+                    "lat": 35.7049,
+                    "lng": 139.6491
+          }
+};
+
+            function getCinemaCoordinates(cinemaName) {
+                return cinemaCoordinates[cinemaName] || null;
+            }
+            function toRadians(value) {
+                return value * Math.PI / 180;
+            }
+            function distanceKm(from, to) {
+                if (!from || !to) return Number.POSITIVE_INFINITY;
+                const earthKm = 6371;
+                const dLat = toRadians(to.lat - from.lat);
+                const dLng = toRadians(to.lng - from.lng);
+                const lat1 = toRadians(from.lat);
+                const lat2 = toRadians(to.lat);
+                const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+                return earthKm * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            }
+            function getCinemaDistance(cinemaName) {
+                if (!state.location.active || !state.location.coords) return Number.POSITIVE_INFINITY;
+                return distanceKm(state.location.coords, getCinemaCoordinates(cinemaName));
+            }
+            function getFilmDistance(film) {
+                if (!film || !film.showings) return Number.POSITIVE_INFINITY;
+                return film.showings.reduce(function (best, showing) {
+                    return Math.min(best, getCinemaDistance(showing.cinema));
+                }, Number.POSITIVE_INFINITY);
+            }
+            function formatDistance(km) {
+                if (!Number.isFinite(km)) return "";
+                return km < 10 ? km.toFixed(1) + " km" : Math.round(km) + " km";
+            }
+            function getDistanceLabel(cinemaName) {
+                const label = formatDistance(getCinemaDistance(cinemaName));
+                return label ? " (" + label + ")" : "";
+            }
+            function getCinemaDisplayWithDistance(cinemaName) {
+                return getCinemaDisplayName(cinemaName) + getDistanceLabel(cinemaName);
+            }
+            function compareCinemaNamesByDistance(a, b) {
+                if (!state.location.active) return 0;
+                const distanceDiff = getCinemaDistance(a) - getCinemaDistance(b);
+                if (distanceDiff !== 0 && Number.isFinite(distanceDiff)) return distanceDiff;
+                return 0;
+            }
+            function updateLocationStatus(message) {
+                if (elements.locationStatus) elements.locationStatus.textContent = message || "";
+            }
+            function requestLocationSort() {
+                if (!navigator.geolocation) {
+                    updateLocationStatus(t("locationUnsupported"));
+                    return;
+                }
+                updateLocationStatus(t("locating"));
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    state.location.active = true;
+                    state.location.coords = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    if (elements.nearButton) elements.nearButton.classList.add("is-active");
+                    updateLocationStatus(t("locationReady"));
+                    render();
+                }, function () {
+                    state.location.active = false;
+                    state.location.coords = null;
+                    if (elements.nearButton) elements.nearButton.classList.remove("is-active");
+                    updateLocationStatus(t("locationDenied"));
+                    render();
+                }, {
+                    enableHighAccuracy: false,
+                    maximumAge: 300000,
+                    timeout: 8000
+                });
+            }
+            function appendShowingChip(container, showing, label, fallbackUrl) {
+                const bestLink = fallbackUrl || showing.bookingUrl || showing.detailUrl || "";
+                if (bestLink) {
+                    const link = createElement("a", "time-chip", label);
+                    link.href = bestLink;
+                    link.target = "_blank";
+                    link.rel = "noopener";
+                    if (showing.bookingUrl && bestLink === showing.bookingUrl) {
+                        link.classList.add("is-bookable");
+                    }
+                    container.appendChild(link);
+                } else {
+                    container.appendChild(createElement("span", "time-chip", label));
+                }
+            }
+            function appendShowtimeChips(container, showings, labelBuilder, linkBuilder) {
+                const visibleLimit = 6;
+                const initialCount = 4;
+                const sortedShowings = showings.slice().sort(compareShowings);
+                const visible = sortedShowings.length > visibleLimit ? sortedShowings.slice(0, initialCount) : sortedShowings;
+                const hidden = sortedShowings.length > visibleLimit ? sortedShowings.slice(initialCount) : [];
+                visible.forEach(function (showing) {
+                    appendShowingChip(container, showing, labelBuilder(showing), linkBuilder ? linkBuilder(showing) : "");
+                });
+                if (hidden.length) {
+                    const details = createElement("details", "showtime-details");
+                    details.appendChild(createElement("summary", null, t("showAllShowtimes").replace("{count}", String(showings.length))));
+                    const detailsRow = createElement("div", "time-row showtime-details-row");
+                    hidden.forEach(function (showing) {
+                        appendShowingChip(detailsRow, showing, labelBuilder(showing), linkBuilder ? linkBuilder(showing) : "");
+                    });
+                    details.appendChild(detailsRow);
+                    container.appendChild(details);
+                }
+            }
+
             function buildFilterOptions(showings) {
                 const todayText = getJstDateText();
                 // Only include dates from today onwards
@@ -1768,27 +2148,27 @@
                     if (state.filters.search && !showing.searchText.includes(state.filters.search)) {
                         return false;
                     }
-                    
+
                     if (state.filters.date !== "all" && showing.dateText !== state.filters.date) {
                         return false;
                     }
-                    
+
                     // Time filter
                     if (filterTime !== "any") {
                         const mins = showing.timeMinutes;
-                        if (mins === null) return false; 
-                        
+                        if (mins === null) return false;
+
                         const isMorning = mins < 12 * 60;
                         const isAfternoon = mins >= 12 * 60 && mins < 17 * 60;
                         const isEvening = mins >= 17 * 60 && mins < 21 * 60;
                         const isLate = mins >= 21 * 60;
-                        
+
                         if (filterTime === "morning" && !isMorning) return false;
                         if (filterTime === "afternoon" && !isAfternoon) return false;
                         if (filterTime === "evening" && !isEvening) return false;
                         if (filterTime === "late" && !isLate) return false;
                     }
-                    
+
                     if (state.filters.region !== "all" && showing.region !== state.filters.region) {
                         return false;
                     }
@@ -1901,7 +2281,7 @@
                     cinemas.forEach(function (cinema) {
                         const card = createElement("button", "cinema-card");
                         card.type = "button";
-                        card.appendChild(createElement("div", "cinema-card-title", getCinemaDisplayName(cinema.name)));
+                        card.appendChild(createElement("div", "cinema-card-title", getCinemaDisplayWithDistance(cinema.name)));
                         card.addEventListener("click", function () {
                             state.selectedCinema = cinema.name;
                             render();
@@ -1990,20 +2370,10 @@
                         }
                         row.appendChild(info);
                         const timeRow = createElement("div", "time-row");
-                        film.showings.forEach(function (showing) {
-                            const label = showing.showtime || t("tbd");
-                            if (showing.detailUrl || showing.bookingUrl) {
-                                const link = createElement("a", "time-chip", label);
-                                link.href = showing.detailUrl || showing.bookingUrl;
-                                link.target = "_blank";
-                                link.rel = "noopener";
-                                if (!showing.detailUrl && showing.bookingUrl) {
-                                    link.classList.add("is-bookable");
-                                }
-                                timeRow.appendChild(link);
-                            } else {
-                                timeRow.appendChild(createElement("span", "time-chip", label));
-                            }
+                        appendShowtimeChips(timeRow, film.showings, function (showing) {
+                            return showing.showtime || t("tbd");
+                        }, function (showing) {
+                            return showing.detailUrl || showing.bookingUrl || "";
                         });
                         row.appendChild(timeRow);
                         group.appendChild(row);
@@ -2082,28 +2452,21 @@
                             }
                             showingsByCinema.get(showing.cinema).push(showing);
                         });
-                        showingsByCinema.forEach(function (showings, cinema) {
-                            showings.sort(compareShowings);
+                        Array.from(showingsByCinema.entries()).sort(function (a, b) {
+                            return compareCinemaNamesByDistance(a[0], b[0]) || a[0].localeCompare(b[0]);
+                        }).forEach(function (entry) {
+                            const cinema = entry[0];
+                            const showings = entry[1].slice().sort(compareShowings);
                             const row = createElement("div", "showing-row");
-                            row.appendChild(createElement("div", "cinema-name", getCinemaDisplayName(cinema)));
+                            row.appendChild(createElement("div", "cinema-name", getCinemaDisplayWithDistance(cinema)));
                             const timeRow = createElement("div", "time-row");
-                            showings.forEach(function (showing) {
+                            appendShowtimeChips(timeRow, showings, function (showing) {
                                 const includeDate = state.filters.date === "all";
-                                const label = includeDate && showing.dateText
+                                return includeDate && showing.dateText
                                     ? formatDate(showing.dateText, false) + " " + (showing.showtime || t("tbd"))
                                     : (showing.showtime || t("tbd"));
-                                if (showing.detailUrl || showing.bookingUrl) {
-                                    const link = createElement("a", "time-chip", label);
-                                    link.href = showing.detailUrl || showing.bookingUrl;
-                                    link.target = "_blank";
-                                    link.rel = "noopener";
-                                    if (!showing.detailUrl && showing.bookingUrl) {
-                                        link.classList.add("is-bookable");
-                                    }
-                                    timeRow.appendChild(link);
-                                } else {
-                                    timeRow.appendChild(createElement("span", "time-chip", label));
-                                }
+                            }, function (showing) {
+                                return showing.detailUrl || showing.bookingUrl || "";
                             });
                             row.appendChild(timeRow);
                             body.appendChild(row);
@@ -2128,8 +2491,8 @@
                     return;
                 }
                 const films = groupByFilm(showings);
-                if (state.sort === "soonest") {
-                    films.sort(function (a, b) { return a.nextTime - b.nextTime; });
+                if (state.location.active) {
+                    films.sort(function (a, b) { return getFilmDistance(a) - getFilmDistance(b) || a.nextTime - b.nextTime; });
                 } else if (state.sort === "release-new") {
                     films.sort(function (a, b) {
                         const yearA = parseInt(a.year, 10) || 0;

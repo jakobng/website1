@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>London Cinema Showtimes</title>
+    <meta name="description" content="A searchable guide to independent and repertory cinema showtimes across London.">
+    <link rel="canonical" href="https://www.leonelki.com/london-cinemas.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="London Independent Cinema Showtimes">
+    <meta property="og:description" content="A searchable guide to independent and repertory cinema showtimes across London.">
+    <meta property="og:url" content="https://www.leonelki.com/london-cinemas.html">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -309,6 +317,49 @@
             font-weight: 500;
             color: var(--ink);
         }
+        .location-status {
+            font-size: 0.72rem;
+            color: var(--muted);
+            min-height: 1em;
+            margin-top: 4px;
+        }
+        .near-btn {
+            border: var(--border-width) solid var(--border);
+            background: #fff;
+            min-height: 42px;
+            padding: 8px 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+        }
+        .near-btn.is-active {
+            background: var(--accent);
+            color: var(--ink);
+        }
+        .distance-label {
+            color: var(--muted);
+            font-size: 0.78em;
+            font-weight: 500;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+        .showtime-details {
+            width: 100%;
+        }
+        .showtime-details summary {
+            cursor: pointer;
+            color: var(--accent-strong);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .showtime-details-row {
+            margin-top: 6px;
+        }
+
 
         .view-section {
             border: var(--border-width) solid var(--border);
@@ -651,7 +702,7 @@
             }
 
             .filters-header {
-                display: flex;
+                display: none;
                 justify-content: space-between;
                 align-items: center;
             }
@@ -688,7 +739,7 @@
             }
 
             .filters-content {
-                display: none;
+                display: flex;
             }
 
             .filters-content.is-expanded {
@@ -726,20 +777,13 @@
                     </svg>
                 </a>
                 <div class="toggle" role="group" aria-label="View toggles">
-                    <button class="toggle-btn is-active" data-view="cinema" type="button">Cinema view</button>
-                    <button class="toggle-btn" data-view="film" type="button">Film view</button>
+                    <button class="toggle-btn" data-view="cinema" type="button">Cinema view</button>
+                    <button class="toggle-btn is-active" data-view="film" type="button">Film view</button>
                 </div>
             </div>
         </header>
 
         <section class="filters">
-            <div class="filters-header">
-                <span class="filters-header-label">Filters</span>
-                <button class="filters-toggle" type="button" id="filters-toggle">
-                    <span>Show</span>
-                    <span class="filters-toggle-icon">▼</span>
-                </button>
-            </div>
             <div class="filters-content" id="filters-content">
                 <div class="filter-grid">
                     <div class="filter">
@@ -764,6 +808,11 @@
                         <label for="region-select">Region</label>
                         <select id="region-select"></select>
                     </div>
+                    <div class="filter">
+                        <label for="near-me">Location</label>
+                        <button class="near-btn" type="button" id="near-me">Near me</button>
+                        <div class="location-status" id="location-status" aria-live="polite"></div>
+                    </div>
                     <div class="filter" id="sort-filter-container">
                         <label for="sort-select">Sort</label>
                         <select id="sort-select"></select>
@@ -787,7 +836,7 @@
                 </div>
             </div>
         </section>
-        <section class="view-section" id="cinema-view">
+        <section class="view-section is-hidden" id="cinema-view">
             <div id="cinema-index">
                 <div class="loading">Loading showtimes...</div>
             </div>
@@ -807,7 +856,7 @@
             </div>
         </section>
 
-        <section class="view-section is-hidden" id="film-view">
+        <section class="view-section" id="film-view">
             <div class="film-view-header">
                 <div class="results-count" id="film-results-count"></div>
                 <div class="results-meta" id="film-results-meta"></div>
@@ -949,6 +998,8 @@
                 documentaryOnly: document.getElementById("documentary-only"),
                 filtersToggle: document.getElementById("filters-toggle"),
                 filtersContent: document.getElementById("filters-content"),
+                nearButton: document.getElementById("near-me"),
+                locationStatus: document.getElementById("location-status"),
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
                 cinemaView: document.getElementById("cinema-view"),
                 cinemaIndex: document.getElementById("cinema-index"),
@@ -967,11 +1018,12 @@
             };
             const state = {
                 data: [],
-                view: "cinema",
-                sort: "soonest",
+                view: "film",
+                sort: "title",
                 todayDate: "",
                 selectedCinema: "",
                 filtersExpanded: false,
+                location: { active: false, coords: null },
                 filters: {
                     search: "",
                     date: "all",
@@ -984,7 +1036,6 @@
 
             const sortOptions = {
                 film: [
-                    { value: "soonest", label: "Soonest" },
                     { value: "title", label: "A-Z" }
                 ]
             };
@@ -997,6 +1048,230 @@
                 evening: "Evening (17-21)",
                 late: "Late (after 21)"
             };
+
+
+            const cinemaCoordinates = {
+          "BFI Southbank": {
+                    "lat": 51.5069,
+                    "lng": -0.115
+          },
+          "BFI IMAX": {
+                    "lat": 51.5051,
+                    "lng": -0.113
+          },
+          "Prince Charles Cinema": {
+                    "lat": 51.5109,
+                    "lng": -0.1302
+          },
+          "ICA": {
+                    "lat": 51.5063,
+                    "lng": -0.1316
+          },
+          "Barbican Cinema": {
+                    "lat": 51.5202,
+                    "lng": -0.0938
+          },
+          "Regent Street Cinema": {
+                    "lat": 51.5162,
+                    "lng": -0.1422
+          },
+          "The Garden Cinema": {
+                    "lat": 51.5173,
+                    "lng": -0.1238
+          },
+          "Curzon Soho": {
+                    "lat": 51.5132,
+                    "lng": -0.1305
+          },
+          "Close-Up Film Centre": {
+                    "lat": 51.5212,
+                    "lng": -0.0716
+          },
+          "Genesis Cinema": {
+                    "lat": 51.5211,
+                    "lng": -0.0524
+          },
+          "Rio Cinema": {
+                    "lat": 51.5509,
+                    "lng": -0.0754
+          },
+          "Rich Mix": {
+                    "lat": 51.5245,
+                    "lng": -0.0734
+          },
+          "Castle Cinema": {
+                    "lat": 51.5452,
+                    "lng": -0.0554
+          },
+          "Phoenix Cinema": {
+                    "lat": 51.5876,
+                    "lng": -0.1648
+          },
+          "ArtHouse Crouch End": {
+                    "lat": 51.5796,
+                    "lng": -0.1234
+          },
+          "Lexi Cinema": {
+                    "lat": 51.5367,
+                    "lng": -0.2161
+          },
+          "Electric Cinema Portobello": {
+                    "lat": 51.515,
+                    "lng": -0.2057
+          },
+          "The Gate": {
+                    "lat": 51.5096,
+                    "lng": -0.196
+          },
+          "Ritzy Cinema": {
+                    "lat": 51.4613,
+                    "lng": -0.1157
+          },
+          "Peckhamplex": {
+                    "lat": 51.471,
+                    "lng": -0.0684
+          },
+          "David Lean Cinema": {
+                    "lat": 51.3714,
+                    "lng": -0.0983
+          },
+          "ActOne Cinema": {
+                    "lat": 51.508,
+                    "lng": -0.2727
+          },
+          "Ciné Lumière": {
+                    "lat": 51.4966,
+                    "lng": -0.1767
+          },
+          "JW3 Cinema": {
+                    "lat": 51.5553,
+                    "lng": -0.1782
+          },
+          "Riverside Studios": {
+                    "lat": 51.4904,
+                    "lng": -0.2306
+          },
+          "Olympic Studios": {
+                    "lat": 51.474,
+                    "lng": -0.2381
+          },
+          "The Cinema Museum": {
+                    "lat": 51.4937,
+                    "lng": -0.1053
+          }
+};
+
+            function getCinemaDisplayName(cinemaName) {
+                return cinemaName;
+            }
+            function getCinemaCoordinates(cinemaName) {
+                return cinemaCoordinates[cinemaName] || null;
+            }
+            function toRadians(value) {
+                return value * Math.PI / 180;
+            }
+            function distanceKm(from, to) {
+                if (!from || !to) return Number.POSITIVE_INFINITY;
+                const earthKm = 6371;
+                const dLat = toRadians(to.lat - from.lat);
+                const dLng = toRadians(to.lng - from.lng);
+                const lat1 = toRadians(from.lat);
+                const lat2 = toRadians(to.lat);
+                const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+                return earthKm * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            }
+            function getCinemaDistance(cinemaName) {
+                if (!state.location.active || !state.location.coords) return Number.POSITIVE_INFINITY;
+                return distanceKm(state.location.coords, getCinemaCoordinates(cinemaName));
+            }
+            function getFilmDistance(film) {
+                if (!film || !film.showings) return Number.POSITIVE_INFINITY;
+                return film.showings.reduce(function (best, showing) {
+                    return Math.min(best, getCinemaDistance(showing.cinema));
+                }, Number.POSITIVE_INFINITY);
+            }
+            function formatDistance(km) {
+                if (!Number.isFinite(km)) return "";
+                return km < 10 ? km.toFixed(1) + " km" : Math.round(km) + " km";
+            }
+            function getDistanceLabel(cinemaName) {
+                const label = formatDistance(getCinemaDistance(cinemaName));
+                return label ? " (" + label + ")" : "";
+            }
+            function getCinemaDisplayWithDistance(cinemaName) {
+                return getCinemaDisplayName(cinemaName) + getDistanceLabel(cinemaName);
+            }
+            function compareCinemaNamesByDistance(a, b) {
+                if (!state.location.active) return 0;
+                const distanceDiff = getCinemaDistance(a) - getCinemaDistance(b);
+                if (distanceDiff !== 0 && Number.isFinite(distanceDiff)) return distanceDiff;
+                return 0;
+            }
+            function updateLocationStatus(message) {
+                if (elements.locationStatus) elements.locationStatus.textContent = message || "";
+            }
+            function requestLocationSort() {
+                if (!navigator.geolocation) {
+                    updateLocationStatus("Location is not supported by this browser");
+                    return;
+                }
+                updateLocationStatus("Finding location...");
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    state.location.active = true;
+                    state.location.coords = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    if (elements.nearButton) elements.nearButton.classList.add("is-active");
+                    updateLocationStatus("Sorted near you");
+                    render();
+                }, function () {
+                    state.location.active = false;
+                    state.location.coords = null;
+                    if (elements.nearButton) elements.nearButton.classList.remove("is-active");
+                    updateLocationStatus("Location unavailable");
+                    render();
+                }, {
+                    enableHighAccuracy: false,
+                    maximumAge: 300000,
+                    timeout: 8000
+                });
+            }
+            function appendShowingChip(container, showing, label, fallbackUrl) {
+                const bestLink = fallbackUrl || showing.bookingUrl || showing.detailUrl || "";
+                if (bestLink) {
+                    const link = createElement("a", "time-chip", label);
+                    link.href = bestLink;
+                    link.target = "_blank";
+                    link.rel = "noopener";
+                    if (showing.bookingUrl && bestLink === showing.bookingUrl) {
+                        link.classList.add("is-bookable");
+                    }
+                    container.appendChild(link);
+                } else {
+                    container.appendChild(createElement("span", "time-chip", label));
+                }
+            }
+            function appendShowtimeChips(container, showings, labelBuilder, linkBuilder) {
+                const visibleLimit = 6;
+                const initialCount = 4;
+                const sortedShowings = showings.slice().sort(compareShowings);
+                const visible = sortedShowings.length > visibleLimit ? sortedShowings.slice(0, initialCount) : sortedShowings;
+                const hidden = sortedShowings.length > visibleLimit ? sortedShowings.slice(initialCount) : [];
+                visible.forEach(function (showing) {
+                    appendShowingChip(container, showing, labelBuilder(showing), linkBuilder ? linkBuilder(showing) : "");
+                });
+                if (hidden.length) {
+                    const details = createElement("details", "showtime-details");
+                    details.appendChild(createElement("summary", null, "Show all " + showings.length + " showtimes"));
+                    const detailsRow = createElement("div", "time-row showtime-details-row");
+                    hidden.forEach(function (showing) {
+                        appendShowingChip(detailsRow, showing, labelBuilder(showing), linkBuilder ? linkBuilder(showing) : "");
+                    });
+                    details.appendChild(detailsRow);
+                    container.appendChild(details);
+                }
+            }
 
             function getRegionForCinema(cinemaName) {
                 return cinemaRegions[cinemaName] || "Central";
@@ -1037,12 +1312,17 @@
                 render();
             });
 
-            elements.filtersToggle.addEventListener("click", function () {
-                state.filtersExpanded = !state.filtersExpanded;
-                elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
-                elements.filtersToggle.classList.toggle("is-collapsed", !state.filtersExpanded);
-                elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? "Hide" : "Show";
-            });
+            if (elements.filtersToggle) {
+                elements.filtersToggle.addEventListener("click", function () {
+                    state.filtersExpanded = !state.filtersExpanded;
+                    elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
+                    elements.filtersToggle.classList.toggle("is-collapsed", !state.filtersExpanded);
+                    elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? "Hide" : "Show";
+                });
+            }
+            if (elements.nearButton) {
+                elements.nearButton.addEventListener("click", requestLocationSort);
+            }
 
             elements.clearFilters.addEventListener("click", function () {
                 state.filters.search = "";
@@ -1088,9 +1368,9 @@
                     const isActive = button.getAttribute("data-view") === view;
                     button.classList.toggle("is-active", isActive);
                 });
-                
+
                 updateSortOptions();
-                
+
                 if (view === "film" && state.filters.date === "all" && state.todayDate) {
                     state.filters.date = state.todayDate;
                     elements.dateSelect.value = state.todayDate;
@@ -1112,7 +1392,7 @@
                     return;
                 }
                 elements.sortFilterContainer.classList.remove("is-hidden");
-                
+
                 const currentValue = state.sort;
                 elements.sortSelect.innerHTML = "";
                 options.forEach(function (option) {
@@ -1327,7 +1607,7 @@
                     elements.regionSelect.appendChild(option);
                 });
                 elements.regionSelect.value = state.filters.region || "all";
-                
+
                 updateSortOptions();
             }
 
@@ -1521,7 +1801,7 @@
                     cinemas.forEach(function (cinema) {
                         const card = createElement("button", "cinema-card");
                         card.type = "button";
-                        card.appendChild(createElement("div", "cinema-card-title", cinema.name));
+                        card.appendChild(createElement("div", "cinema-card-title", getCinemaDisplayWithDistance(cinema.name)));
                         card.appendChild(createElement("div", "cinema-card-meta", cinema.showings.length + " showings"));
                         card.addEventListener("click", function () {
                             state.selectedCinema = cinema.name;
@@ -1619,22 +1899,10 @@
                         row.appendChild(info);
 
                         const timeRow = createElement("div", "time-row");
-                        film.showings.forEach(function (showing) {
-                            const label = showing.showtime || "TBD";
-                            const bestLink = showing.bookingUrl || showing.detailUrl || cinemaWebsite;
-                            
-                            if (bestLink) {
-                                const link = createElement("a", "time-chip", label);
-                                link.href = bestLink;
-                                link.target = "_blank";
-                                link.rel = "noopener";
-                                if (showing.bookingUrl) {
-                                    link.classList.add("is-bookable");
-                                }
-                                timeRow.appendChild(link);
-                            } else {
-                                timeRow.appendChild(createElement("span", "time-chip", label));
-                            }
+                        appendShowtimeChips(timeRow, film.showings, function (showing) {
+                            return showing.showtime || "TBD";
+                        }, function (showing) {
+                            return showing.bookingUrl || showing.detailUrl || "";
                         });
                         row.appendChild(timeRow);
                         group.appendChild(row);
@@ -1727,7 +1995,7 @@
                                 const details = createElement("details", "region-details");
                                 const summary = createElement("summary", "region-summary", region);
                                 details.appendChild(summary);
-                                
+
                                 const content = createElement("div", "region-content");
                                 cinemasInRegion.sort().forEach(function (cinema) {
                                     renderCinemaRow(content, cinema, showingsByCinema.get(cinema));
@@ -1737,8 +2005,10 @@
                             }
                         });
                     } else {
-                        showingsByCinema.forEach(function (showings, cinema) {
-                            renderCinemaRow(body, cinema, showings);
+                        Array.from(showingsByCinema.entries()).sort(function (a, b) {
+                            return compareCinemaNamesByDistance(a[0], b[0]) || a[0].localeCompare(b[0]);
+                        }).forEach(function (entry) {
+                            renderCinemaRow(body, entry[0], entry[1]);
                         });
                     }
 
@@ -1752,30 +2022,17 @@
             function renderCinemaRow(container, cinema, showings) {
                 showings.sort(compareShowings);
                 const row = createElement("div", "showing-row");
-                row.appendChild(createElement("div", "cinema-name", cinema));
+                row.appendChild(createElement("div", "cinema-name", getCinemaDisplayWithDistance(cinema)));
 
                 const cinemaWebsite = getCinemaWebsite(cinema, showings);
                 const timeRow = createElement("div", "time-row");
-                showings.forEach(function (showing) {
+                appendShowtimeChips(timeRow, showings, function (showing) {
                     const includeDate = state.filters.date === "all";
-                    const label = includeDate && showing.dateText
+                    return includeDate && showing.dateText
                         ? formatDate(showing.dateText, false) + " " + (showing.showtime || "TBD")
                         : (showing.showtime || "TBD");
-                    
-                    const bestLink = showing.bookingUrl || showing.detailUrl || cinemaWebsite;
-
-                    if (bestLink) {
-                        const link = createElement("a", "time-chip", label);
-                        link.href = bestLink;
-                        link.target = "_blank";
-                        link.rel = "noopener";
-                        if (showing.bookingUrl) {
-                            link.classList.add("is-bookable");
-                        }
-                        timeRow.appendChild(link);
-                    } else {
-                        timeRow.appendChild(createElement("span", "time-chip", label));
-                    }
+                }, function (showing) {
+                    return showing.bookingUrl || showing.detailUrl || cinemaWebsite;
                 });
                 row.appendChild(timeRow);
                 container.appendChild(row);
@@ -1795,8 +2052,8 @@
                 }
 
                 const films = groupByFilm(showings);
-                if (state.sort === "soonest") {
-                    films.sort(function (a, b) { return a.nextTime - b.nextTime; });
+                if (state.location.active) {
+                    films.sort(function (a, b) { return getFilmDistance(a) - getFilmDistance(b) || a.nextTime - b.nextTime; });
                 } else {
                     films.sort(function (a, b) { return a.title.localeCompare(b.title); });
                 }

@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-05-07T10:19:19+00:00",
+  "packs": [
+    {
+      "city": "tokyo",
+      "name": "Tokyo Mini-Theater",
+      "page": "https://www.leonelki.com/tokyo-cinemas.html",
+      "upcoming_showtimes": 3341,
+      "cinemas": 55,
+      "date_range": "2026-05-07 to 2026-06-11",
+      "top_films": [
+        "The Old Oak",
+        "Detective Conan: Fallen Angel of the Highway",
+        "Rhapsody, Rhapsody",
+        "The Super Mario Galaxy Movie",
+        "IT WAS JUST AN ACCIDENT"
+      ],
+      "copy": {
+        "en": "Tokyo Mini-Theater now has 3341 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
+        "ja": "東京ミニシアター上映情報を更新しました。現在 55 館、3341 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
+      }
+    },
+    {
+      "city": "london",
+      "name": "London Independent Cinema",
+      "page": "https://www.leonelki.com/london-cinemas.html",
+      "upcoming_showtimes": 585,
+      "cinemas": 13,
+      "date_range": "2026-05-07 to 2026-12-30",
+      "top_films": [
+        "The Devil Wears Prada 2",
+        "National Theatre Live: Les Liaisons Dangereuses",
+        "National Theatre Live: The Playboy of the Western World",
+        "EXHIBITION ON SCREEN: Frida Kahlo 2026 Encore",
+        "The King of Comedy"
+      ],
+      "copy": {
+        "en": "London Independent Cinema now has 585 upcoming showtimes across 13 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
+        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 13 館、585 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
+      }
+    },
+    {
+      "city": "manchester",
+      "name": "Manchester Cinema",
+      "page": "https://www.leonelki.com/manchester-cinemas.html",
+      "upcoming_showtimes": 0,
+      "cinemas": 0,
+      "date_range": "",
+      "top_films": [],
+      "copy": {
+        "en": "Manchester Cinema now has 0 upcoming showtimes across 0 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html",
+        "ja": "マンチェスター映画館上映情報を更新しました。現在 0 館、0 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html"
+      }
+    },
+    {
+      "city": "taipei",
+      "name": "Taipei Independent Cinema",
+      "page": "https://www.leonelki.com/taipei-cinemas.html",
+      "upcoming_showtimes": 387,
+      "cinemas": 11,
+      "date_range": "2026-05-07 to 2026-06-14",
+      "top_films": [
+        "影城介紹",
+        "OASIS",
+        "The Devil Wears Prada 2",
+        "Pillion",
+        "Silent Friend"
+      ],
+      "copy": {
+        "en": "Taipei Independent Cinema now has 387 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
+        "ja": "台北インディペンデント映画上映情報を更新しました。現在 11 館、387 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
+      }
+    }
+  ]
+}
