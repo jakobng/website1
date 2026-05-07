@@ -242,7 +242,7 @@
 
         .filter-grid {
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 12px;
         }
 
@@ -322,20 +322,6 @@
             color: var(--muted);
             min-height: 1em;
             margin-top: 4px;
-        }
-        .near-btn {
-            border: var(--border-width) solid var(--border);
-            background: #fff;
-            min-height: 42px;
-            padding: 8px 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-        }
-        .near-btn.is-active {
-            background: var(--accent);
-            color: var(--ink);
         }
         .distance-label {
             color: var(--muted);
@@ -701,42 +687,6 @@
                 letter-spacing: 0.1em;
             }
 
-            .filters-header {
-                display: none;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .filters-header-label {
-                font-size: 0.85rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                color: var(--muted);
-            }
-
-            .filters-toggle {
-                display: flex;
-                align-items: center;
-                gap: 6px;
-                border: none;
-                background: transparent;
-                font-size: 0.75rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                color: var(--accent-strong);
-                cursor: pointer;
-                padding: 4px 0;
-            }
-
-            .filters-toggle-icon {
-                transition: transform 0.2s ease;
-            }
-
-            .filters-toggle.is-collapsed .filters-toggle-icon {
-                transform: rotate(-90deg);
-            }
 
             .filters-content {
                 display: flex;
@@ -808,14 +758,10 @@
                         <label for="region-select">Region</label>
                         <select id="region-select"></select>
                     </div>
-                    <div class="filter">
-                        <label for="near-me">Location</label>
-                        <button class="near-btn" type="button" id="near-me">Near me</button>
-                        <div class="location-status" id="location-status" aria-live="polite"></div>
-                    </div>
                     <div class="filter" id="sort-filter-container">
                         <label for="sort-select">Sort</label>
                         <select id="sort-select"></select>
+                        <div class="location-status" id="location-status" aria-live="polite"></div>
                     </div>
 
                 </div>
@@ -996,9 +942,7 @@
                 clearFilters: document.getElementById("clear-filters"),
                 includeChains: document.getElementById("include-chains"),
                 documentaryOnly: document.getElementById("documentary-only"),
-                filtersToggle: document.getElementById("filters-toggle"),
                 filtersContent: document.getElementById("filters-content"),
-                nearButton: document.getElementById("near-me"),
                 locationStatus: document.getElementById("location-status"),
                 viewButtons: Array.from(document.querySelectorAll("[data-view]")),
                 cinemaView: document.getElementById("cinema-view"),
@@ -1036,9 +980,22 @@
 
             const sortOptions = {
                 film: [
-                    { value: "title", label: "A-Z" }
+                    { value: "title", label: "A-Z" },
+                    { value: "release-new", label: "Release year (newest)" },
+                    { value: "release-old", label: "Release year (oldest)" },
+                    { value: "nearest", label: "Nearest" }
+                ],
+                cinema: [
+                    { value: "title", label: "A-Z" },
+                    { value: "release-new", label: "Release year (newest)" },
+                    { value: "release-old", label: "Release year (oldest)" },
+                    { value: "nearest", label: "Nearest" }
                 ]
             };
+            function getDefaultSortValue() {
+                const options = sortOptions[state.view] || sortOptions.film;
+                return options[0].value;
+            }
 
             const dateFormatter = new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short" });
             const longDateFormatter = new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long" });
@@ -1198,11 +1155,30 @@
                 const label = formatDistance(getCinemaDistance(cinemaName));
                 return label ? " (" + label + ")" : "";
             }
+            function getCinemaReleaseYear(cinema) {
+                const showings = cinema && cinema.showings ? cinema.showings : [];
+                return showings.reduce(function (best, showing) {
+                    const year = parseInt(showing.year, 10);
+                    return Number.isFinite(year) ? Math.max(best, year) : best;
+                }, 0);
+            }
+            function compareCinemasForCurrentSort(a, b) {
+                if (state.sort === "nearest" && state.location.active) {
+                    const distanceDiff = getCinemaDistance(a.name) - getCinemaDistance(b.name);
+                    if (distanceDiff !== 0 && Number.isFinite(distanceDiff)) return distanceDiff;
+                }
+                if (state.sort === "release-new" || state.sort === "release-old") {
+                    const yearA = getCinemaReleaseYear(a);
+                    const yearB = getCinemaReleaseYear(b);
+                    if (yearA !== yearB) return state.sort === "release-new" ? yearB - yearA : yearA - yearB;
+                }
+                return a.name.localeCompare(b.name);
+            }
             function getCinemaDisplayWithDistance(cinemaName) {
                 return getCinemaDisplayName(cinemaName) + getDistanceLabel(cinemaName);
             }
             function compareCinemaNamesByDistance(a, b) {
-                if (!state.location.active) return 0;
+                if (state.sort !== "nearest" || !state.location.active) return 0;
                 const distanceDiff = getCinemaDistance(a) - getCinemaDistance(b);
                 if (distanceDiff !== 0 && Number.isFinite(distanceDiff)) return distanceDiff;
                 return 0;
@@ -1212,23 +1188,28 @@
             }
             function requestLocationSort() {
                 if (!navigator.geolocation) {
-                    updateLocationStatus("Location is not supported by this browser");
+                    state.sort = getDefaultSortValue();
+                    updateSortOptions();
+                    updateLocationStatus("Location is not supported by this browser.");
+                    render();
                     return;
                 }
                 updateLocationStatus("Finding location...");
                 navigator.geolocation.getCurrentPosition(function (position) {
+                    state.sort = "nearest";
                     state.location.active = true;
                     state.location.coords = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    if (elements.nearButton) elements.nearButton.classList.add("is-active");
+                    elements.sortSelect.value = "nearest";
                     updateLocationStatus("Sorted near you");
                     render();
                 }, function () {
                     state.location.active = false;
                     state.location.coords = null;
-                    if (elements.nearButton) elements.nearButton.classList.remove("is-active");
+                    state.sort = getDefaultSortValue();
+                    updateSortOptions();
                     updateLocationStatus("Location unavailable");
                     render();
                 }, {
@@ -1299,6 +1280,13 @@
 
             elements.sortSelect.addEventListener("change", function (event) {
                 state.sort = event.target.value;
+                if (state.sort === "nearest") {
+                    requestLocationSort();
+                    return;
+                }
+                state.location.active = false;
+                state.location.coords = null;
+                updateLocationStatus("");
                 render();
             });
 
@@ -1312,17 +1300,6 @@
                 render();
             });
 
-            if (elements.filtersToggle) {
-                elements.filtersToggle.addEventListener("click", function () {
-                    state.filtersExpanded = !state.filtersExpanded;
-                    elements.filtersContent.classList.toggle("is-expanded", state.filtersExpanded);
-                    elements.filtersToggle.classList.toggle("is-collapsed", !state.filtersExpanded);
-                    elements.filtersToggle.querySelector("span:first-child").textContent = state.filtersExpanded ? "Hide" : "Show";
-                });
-            }
-            if (elements.nearButton) {
-                elements.nearButton.addEventListener("click", requestLocationSort);
-            }
 
             elements.clearFilters.addEventListener("click", function () {
                 state.filters.search = "";
@@ -1331,6 +1308,11 @@
                 state.filters.region = "all";
                 state.filters.includeChains = true;
                 state.filters.documentaryOnly = false;
+                state.sort = getDefaultSortValue();
+                state.location.active = false;
+                state.location.coords = null;
+                updateLocationStatus("");
+                updateSortOptions();
 
                 elements.searchInput.value = "";
                 elements.dateSelect.value = state.filters.date;
@@ -1790,9 +1772,7 @@
 
                 orderedRegions.forEach(function (region) {
                     const cinemas = regions.get(region) || [];
-                    cinemas.sort(function (a, b) {
-                        return a.name.localeCompare(b.name);
-                    });
+                    cinemas.sort(compareCinemasForCurrentSort);
 
                     const block = createElement("div", "region-block");
                     block.appendChild(createElement("h2", "region-title", region));
@@ -2052,8 +2032,22 @@
                 }
 
                 const films = groupByFilm(showings);
-                if (state.location.active) {
+                if (state.sort === "nearest" && state.location.active) {
                     films.sort(function (a, b) { return getFilmDistance(a) - getFilmDistance(b) || a.nextTime - b.nextTime; });
+                } else if (state.sort === "release-new") {
+                    films.sort(function (a, b) {
+                        const yearA = parseInt(a.year, 10) || 0;
+                        const yearB = parseInt(b.year, 10) || 0;
+                        if (yearA !== yearB) return yearB - yearA;
+                        return a.title.localeCompare(b.title);
+                    });
+                } else if (state.sort === "release-old") {
+                    films.sort(function (a, b) {
+                        const yearA = parseInt(a.year, 10) || 9999;
+                        const yearB = parseInt(b.year, 10) || 9999;
+                        if (yearA !== yearB) return yearA - yearB;
+                        return a.title.localeCompare(b.title);
+                    });
                 } else {
                     films.sort(function (a, b) { return a.title.localeCompare(b.title); });
                 }
