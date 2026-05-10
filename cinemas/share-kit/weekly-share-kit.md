@@ -1,34 +1,34 @@
 # Weekly Cinema Share Kit
 
-Generated: 2026-05-07T10:19:19+00:00
+Generated: 2026-05-10T23:26:35+00:00
 
 ## Tokyo Mini-Theater
 
 - Page: https://www.leonelki.com/tokyo-cinemas.html
-- Upcoming showtimes: 3341
-- Cinemas/venues: 55
-- Date range: 2026-05-07 to 2026-06-11
-- Top films: The Old Oak, Detective Conan: Fallen Angel of the Highway, Rhapsody, Rhapsody, The Super Mario Galaxy Movie, IT WAS JUST AN ACCIDENT
+- Upcoming showtimes: 3139
+- Cinemas/venues: 56
+- Date range: 2026-05-10 to 2026-07-10
+- Top films: Rhapsody, Rhapsody, Lost Land, IT WAS JUST AN ACCIDENT, It Was Just an Accident, Detective Conan: Fallen Angel of the Highway
 
 English:
-Tokyo Mini-Theater now has 3341 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html
+Tokyo Mini-Theater now has 3139 upcoming showtimes across 56 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html
 
 Japanese:
-東京ミニシアター上映情報を更新しました。現在 55 館、3341 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html
+東京ミニシアター上映情報を更新しました。現在 56 館、3139 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html
 
 ## London Independent Cinema
 
 - Page: https://www.leonelki.com/london-cinemas.html
-- Upcoming showtimes: 585
-- Cinemas/venues: 13
-- Date range: 2026-05-07 to 2026-12-30
-- Top films: The Devil Wears Prada 2, National Theatre Live: Les Liaisons Dangereuses, National Theatre Live: The Playboy of the Western World, EXHIBITION ON SCREEN: Frida Kahlo 2026 Encore, The King of Comedy
+- Upcoming showtimes: 5931
+- Cinemas/venues: 66
+- Date range: 2026-05-10 to 2026-12-30
+- Top films: The Devil Wears Prada 2, Michael, Star Wars: The Mandalorian and Grogu, THE DEVIL WEARS PRADA 2, The Sheep Detectives
 
 English:
-London Independent Cinema now has 585 upcoming showtimes across 13 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
+London Independent Cinema now has 5931 upcoming showtimes across 66 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
 
 Japanese:
-ロンドンのインディペンデント映画館上映情報を更新しました。現在 13 館、585 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
+ロンドンのインディペンデント映画館上映情報を更新しました。現在 66 館、5931 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
 
 ## Manchester Cinema
 
@@ -47,13 +47,13 @@ Japanese:
 ## Taipei Independent Cinema
 
 - Page: https://www.leonelki.com/taipei-cinemas.html
-- Upcoming showtimes: 387
+- Upcoming showtimes: 304
 - Cinemas/venues: 11
-- Date range: 2026-05-07 to 2026-06-14
+- Date range: 2026-05-10 to 2026-07-20
 - Top films: 影城介紹, OASIS, The Devil Wears Prada 2, Pillion, Silent Friend
 
 English:
-Taipei Independent Cinema now has 387 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
+Taipei Independent Cinema now has 304 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
 
 Japanese:
-台北インディペンデント映画上映情報を更新しました。現在 11 館、387 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
+台北インディペンデント映画上映情報を更新しました。現在 11 館、304 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
