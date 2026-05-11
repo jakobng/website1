@@ -919,7 +919,7 @@
                     sort: "並び替え",
                     sortReleaseNew: "公開年（新しい順）",
                     sortReleaseOld: "公開年（古い順）",
-                    sortNearest: "近い順",
+                    sortNearest: "現在地に近い順",
                     sortRating: "評価順",
                     englishFriendly: "英語で観やすい作品",
                     docOnly: "ドキュメンタリーのみ",
@@ -980,7 +980,7 @@
                     sort: "Sort",
                     sortReleaseNew: "Release year (newest)",
                     sortReleaseOld: "Release year (oldest)",
-                    sortNearest: "Nearest",
+                    sortNearest: "Nearest to me",
                     sortRating: "By rating",
                     englishFriendly: "English-friendly",
                     docOnly: "Documentary only",
@@ -1511,6 +1511,14 @@
                     return host.endsWith(suffix);
                 });
             }
+            function isBlockedUrl(url) {
+                if (!url) return false;
+                try {
+                    return isBlockedHost(new URL(url).hostname.toLowerCase());
+                } catch (error) {
+                    return false;
+                }
+            }
             function getCinemaWebsite(cinemaName, showings) {
                 if (cinemaWebsiteOverrides[cinemaName]) return cinemaWebsiteOverrides[cinemaName];
                 const counts = new Map();
@@ -1545,6 +1553,11 @@
                 const preferredHost = pickHost(true) || pickHost(false);
                 if (!preferredHost) return "";
                 return origins.get(preferredHost) || ("https://" + preferredHost);
+            }
+            function getShowtimeTargetUrl(showing, cinemaWebsite) {
+                if (showing.bookingUrl) return showing.bookingUrl;
+                if (showing.detailUrl && !isBlockedUrl(showing.detailUrl)) return showing.detailUrl;
+                return cinemaWebsite || showing.detailUrl || "";
             }
             function getImageUrl(path, size) {
                 if (!path) return "";
@@ -2295,7 +2308,7 @@
                         appendShowtimeChips(timeRow, film.showings, function (showing) {
                             return showing.showtime || t("tbd");
                         }, function (showing) {
-                            return showing.detailUrl || showing.bookingUrl || "";
+                            return getShowtimeTargetUrl(showing, cinemaWebsite);
                         });
                         row.appendChild(timeRow);
                         group.appendChild(row);
@@ -2379,8 +2392,17 @@
                         }).forEach(function (entry) {
                             const cinema = entry[0];
                             const showings = entry[1].slice().sort(compareShowings);
+                            const cinemaWebsite = getCinemaWebsite(cinema, showings);
                             const row = createElement("div", "showing-row");
-                            row.appendChild(createElement("div", "cinema-name", getCinemaDisplayWithDistance(cinema)));
+                            const cinemaNameCell = createElement("div", "cinema-name", getCinemaDisplayWithDistance(cinema) + " ");
+                            if (cinemaWebsite) {
+                                const websiteLink = createElement("a", "film-link", t("site"));
+                                websiteLink.href = cinemaWebsite;
+                                websiteLink.target = "_blank";
+                                websiteLink.rel = "noopener";
+                                cinemaNameCell.appendChild(websiteLink);
+                            }
+                            row.appendChild(cinemaNameCell);
                             const timeRow = createElement("div", "time-row");
                             appendShowtimeChips(timeRow, showings, function (showing) {
                                 const includeDate = state.filters.date === "all";
@@ -2388,7 +2410,7 @@
                                     ? formatDate(showing.dateText, false) + " " + (showing.showtime || t("tbd"))
                                     : (showing.showtime || t("tbd"));
                             }, function (showing) {
-                                return showing.detailUrl || showing.bookingUrl || "";
+                                return getShowtimeTargetUrl(showing, cinemaWebsite);
                             });
                             row.appendChild(timeRow);
                             body.appendChild(row);
