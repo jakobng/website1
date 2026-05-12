@@ -247,37 +247,54 @@
         .tab-btn.is-active::after {
             opacity: 1;
         }
-        /* --- NEW CONTROLS BAR --- */
         .controls-section {
             background: var(--card);
             border: var(--border-width) solid var(--border);
             box-shadow: var(--shadow-soft);
-            padding: 14px 16px;
+            padding: 12px;
             margin-bottom: 18px;
         }
         .primary-controls {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: minmax(240px, 1fr) minmax(150px, 0.34fr) minmax(280px, 0.62fr);
+            gap: 10px;
+            align-items: end;
         }
-        .search-wrapper {
-            flex: 1;
-            min-width: 200px;
+        .search-wrapper,
+        .date-wrapper,
+        .sort-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
         }
-        .date-wrapper {
-            flex: 0 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        .sort-controls {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 8px;
+            align-items: stretch;
+        }
+        .near-me-btn {
+            height: 42px;
+            border: var(--border-width) solid var(--border);
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            line-height: 1;
+            padding: 0 12px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .near-me-btn:hover,
+        .near-me-btn.is-active {
+            background: var(--accent);
         }
         .advanced-filters {
             display: block;
-            margin-top: 16px;
-            padding-top: 16px;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1px solid var(--border-soft);
             animation: none;
         }
@@ -286,8 +303,8 @@
         }
         .advanced-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
+            grid-template-columns: minmax(130px, 0.8fr) minmax(180px, 1fr) minmax(170px, 0.9fr) minmax(160px, 0.8fr) auto;
+            gap: 10px;
             align-items: end;
         }
         .control-group {
@@ -299,11 +316,22 @@
             flex-direction: row;
             align-items: center;
             min-height: 42px;
-            padding-left: 4px;
+            gap: 8px;
+            padding: 0 10px;
+            background: #fff;
+            border: var(--border-width) solid var(--border-soft);
+        }
+        .checkbox-group input {
+            accent-color: var(--accent-strong);
+            margin: 0;
+        }
+        .checkbox-group label {
+            cursor: pointer;
+            line-height: 1.2;
         }
         .clear-btn-wrapper {
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-end;
             align-items: center;
             min-height: 42px;
         }
@@ -318,7 +346,7 @@
         select {
             height: 42px;
             padding: 0 12px;
-            border: var(--border-width) solid var(--border);
+            border: var(--border-width) solid var(--border-soft);
             background: #fff;
             width: 100%;
             font-size: 0.9rem;
@@ -329,15 +357,19 @@
             border-color: var(--accent);
         }
         .link-btn {
-            border: none;
-            background: transparent;
+            min-height: 42px;
+            border: var(--border-width) solid var(--border);
+            background: #fff;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-size: 0.7rem;
             cursor: pointer;
-            color: var(--accent-strong);
-            padding: 8px 0;
+            color: var(--ink);
+            padding: 8px 12px;
+        }
+        .link-btn:hover {
+            background: var(--bg);
         }
         .location-status {
             font-size: 0.72rem;
@@ -627,6 +659,18 @@
             .header-left {
                 align-items: center;
             }
+            .primary-controls {
+                grid-template-columns: minmax(0, 1fr) minmax(140px, 0.5fr);
+            }
+            .search-wrapper {
+                grid-column: 1 / -1;
+            }
+            .sort-wrapper {
+                grid-column: 1 / -1;
+            }
+            .advanced-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
             .filter-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -652,6 +696,25 @@
             }
         }
         @media (max-width: 640px) {
+            body {
+                padding: 18px 12px 44px;
+            }
+            .controls-section {
+                padding: 10px;
+            }
+            .primary-controls,
+            .advanced-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .search-wrapper {
+                grid-column: auto;
+            }
+            .sort-controls {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .near-me-btn {
+                width: 100%;
+            }
             .filter-grid {
                 grid-template-columns: minmax(0, 1fr);
             }
@@ -725,7 +788,15 @@
                     <label for="date-select" id="date-label"></label>
                     <select id="date-select"></select>
                 </div>
+                <div class="sort-wrapper" id="sort-filter-container">
+                    <label for="sort-select" id="sort-label"></label>
+                    <div class="sort-controls">
+                        <select id="sort-select"></select>
+                        <button class="near-me-btn" type="button" id="near-me-btn"></button>
+                    </div>
+                    <div class="location-status" id="location-status" aria-live="polite"></div>
                 </div>
+            </div>
             <div class="advanced-filters" id="filters-content">
                 <div class="advanced-grid">
                     <div class="control-group">
@@ -736,18 +807,13 @@
                         <label for="region-select" id="region-label"></label>
                         <select id="region-select"></select>
                     </div>
-                    <div class="control-group" id="sort-filter-container">
-                        <label for="sort-select" id="sort-label"></label>
-                        <select id="sort-select"></select>
-                        <div class="location-status" id="location-status" aria-live="polite"></div>
-                    </div>
                     <div class="control-group checkbox-group">
                         <input id="english-friendly" type="checkbox">
-                        <label for="english-friendly" id="english-friendly-label" style="margin-left: 6px; cursor: pointer;"></label>
+                        <label for="english-friendly" id="english-friendly-label"></label>
                     </div>
                     <div class="control-group checkbox-group">
                         <input id="doc-only" type="checkbox">
-                        <label for="doc-only" id="doc-only-label" style="margin-left: 6px; cursor: pointer;"></label>
+                        <label for="doc-only" id="doc-only-label"></label>
                     </div>
                     <div class="clear-btn-wrapper">
                         <button class="link-btn" type="button" id="clear-filters"></button>
@@ -794,7 +860,7 @@
             const jsonUrl = "tokyo-cinema-scrapers/data/showtimes.json";
             const tmdbBase = "https://image.tmdb.org/t/p/";
             const cinemaCategories = [
-                { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "シアターギルド代官山", "キネカ大森", "目黒シネマ" ] },
+                { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "東京都写真美術館", "シアターギルド代官山", "キネカ大森", "目黒シネマ" ] },
                 { name: "新宿・早稲田 (Shinjuku & Waseda)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "早稲田松竹" ] },
                 { name: "都心・東部 (Central & East - Ginza to Sumida)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "角川シネマ有楽町", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "シネマリス", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京", "東劇", "Stranger (ストレンジャー)" ] },
                 { name: "池袋 (Ikebukuro)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "シネ・リーブル池袋", "シネマハウス大塚" ] },
@@ -850,6 +916,7 @@
                 "シネクイント": "Cine Quinto Shibuya",
                 "ホワイト シネクイント": "White Cine Quinto",
                 "アップリンク吉祥寺": "Uplink Kichijoji",
+                "東京都写真美術館": "Tokyo Photographic Art Museum",
                 "シネマリス": "CineMalice",
                 "Morc阿佐ヶ谷": "Morc Asagaya",
                 "下北沢トリウッド": "Shimokitazawa Tollywood",
@@ -955,6 +1022,8 @@
                     locationReady: "現在地から近い順で表示中",
                     locationDenied: "位置情報を利用できません",
                     locationUnsupported: "このブラウザでは位置情報を利用できません",
+                    nearestButton: "現在地順",
+                    nearestCinemas: "現在地に近いシネマ",
                     showAllShowtimes: "すべての{count}件を表示"
                 },
                 en: {
@@ -1016,6 +1085,8 @@
                     locationReady: "Sorted near you",
                     locationDenied: "Location unavailable",
                     locationUnsupported: "Location is not supported",
+                    nearestButton: "Near me",
+                    nearestCinemas: "Nearest cinemas",
                     showAllShowtimes: "Show all {count} showtimes"
                 }
             };
@@ -1068,6 +1139,7 @@
                 regionSelect: document.getElementById("region-select"),
                 sortLabel: document.getElementById("sort-label"),
                 sortSelect: document.getElementById("sort-select"),
+                nearMeButton: document.getElementById("near-me-btn"),
                 sortFilterContainer: document.getElementById("sort-filter-container"),
                 englishFriendlyLabel: document.getElementById("english-friendly-label"),
                 englishFriendlyCheckbox: document.getElementById("english-friendly"),
@@ -1122,8 +1194,7 @@
             function getSortOptions() {
                 const options = [
                     { value: "release-new", label: t("sortReleaseNew") },
-                    { value: "release-old", label: t("sortReleaseOld") },
-                    { value: "nearest", label: t("sortNearest") }
+                    { value: "release-old", label: t("sortReleaseOld") }
                 ];
                 return { film: options, cinema: options };
             }
@@ -1168,14 +1239,14 @@
             });
             elements.sortSelect.addEventListener("change", function (event) {
                 state.sort = event.target.value;
-                if (state.sort === "nearest") {
-                    requestLocationSort();
-                    return;
-                }
                 state.location.active = false;
                 state.location.coords = null;
                 updateLocationStatus("");
+                updateSortUI();
                 render();
+            });
+            elements.nearMeButton.addEventListener("click", function () {
+                requestLocationSort();
             });
             elements.clearFilters.addEventListener("click", function () {
                 state.filters.search = "";
@@ -1195,6 +1266,7 @@
                 elements.regionSelect.value = "all";
                 elements.englishFriendlyCheckbox.checked = false;
                 elements.docOnlyCheckbox.checked = false;
+                updateSortUI();
                 render();
             });
 
@@ -1290,11 +1362,13 @@
                 elements.timeLabel.textContent = t("time");
                 elements.regionLabel.textContent = t("region");
                 elements.sortLabel.textContent = t("sort");
+                elements.nearMeButton.textContent = t("nearestButton");
                 elements.englishFriendlyLabel.textContent = t("englishFriendly");
                 elements.docOnlyLabel.textContent = t("docOnly");
                 elements.clearFilters.textContent = t("clearFilters");
                 elements.englishFriendlyCheckbox.checked = state.filters.englishFriendly;
                 elements.docOnlyCheckbox.checked = state.filters.docOnly;
+                updateSortUI();
                 // Cinema view
                 elements.cinemaLoading.textContent = t("loading");
                 elements.backToCinemas.textContent = t("backToCinemas");
@@ -1371,8 +1445,21 @@
                 const stillValid = options.some(function (option) {
                     return option.value === currentValue;
                 });
-                state.sort = stillValid ? currentValue : options[0].value;
-                elements.sortSelect.value = state.sort;
+                if (!stillValid && state.sort !== "nearest") {
+                    state.sort = options[0].value;
+                }
+                elements.sortSelect.value = state.sort === "nearest" ? options[0].value : state.sort;
+                updateSortUI();
+            }
+            function updateSortUI() {
+                const nearestActive = state.sort === "nearest" && state.location.active;
+                if (elements.nearMeButton) {
+                    elements.nearMeButton.classList.toggle("is-active", nearestActive);
+                    elements.nearMeButton.setAttribute("aria-pressed", nearestActive ? "true" : "false");
+                }
+                if (elements.locationStatus) {
+                    elements.locationStatus.textContent = nearestActive ? t("locationReady") : elements.locationStatus.textContent;
+                }
             }
             function createElement(tag, className, text) {
                 const element = document.createElement(tag);
@@ -1598,6 +1685,18 @@
                     "lat": 35.6423,
                     "lng": 139.7133
           },
+          "東京都写真美術館": {
+                    "lat": 35.6419,
+                    "lng": 139.7136
+          },
+          "シアターギルド代官山": {
+                    "lat": 35.6487,
+                    "lng": 139.7032
+          },
+          "キネカ大森": {
+                    "lat": 35.588,
+                    "lng": 139.7294
+          },
           "目黒シネマ": {
                     "lat": 35.6334,
                     "lng": 139.7155
@@ -1646,6 +1745,10 @@
                     "lat": 35.6751,
                     "lng": 139.763
           },
+          "東劇": {
+                    "lat": 35.667,
+                    "lng": 139.7707
+          },
           "シネマリス": {
                     "lat": 35.6922,
                     "lng": 139.7821
@@ -1674,6 +1777,14 @@
                     "lat": 35.7337,
                     "lng": 139.7085
           },
+          "シネ・リーブル池袋": {
+                    "lat": 35.7295,
+                    "lng": 139.711
+          },
+          "シネマハウス大塚": {
+                    "lat": 35.7313,
+                    "lng": 139.7288
+          },
           "CINEMA Chupki TABATA": {
                     "lat": 35.7373,
                     "lng": 139.7618
@@ -1698,6 +1809,10 @@
                     "lat": 35.7042,
                     "lng": 139.5795
           },
+          "吉祥寺オデヲン": {
+                    "lat": 35.7045,
+                    "lng": 139.5809
+          },
           "K2 Cinema": {
                     "lat": 35.6611,
                     "lng": 139.6676
@@ -1709,6 +1824,14 @@
           "下高井戸シネマ": {
                     "lat": 35.6663,
                     "lng": 139.6429
+          },
+          "シネマシティ": {
+                    "lat": 35.6997,
+                    "lng": 139.4137
+          },
+          "kino cinéma立川髙島屋S.C.館": {
+                    "lat": 35.7003,
+                    "lng": 139.4135
           },
           "Cinema Neko (シネマネコ)": {
                     "lat": 35.786,
@@ -1729,6 +1852,22 @@
           "横浜シネマリン": {
                     "lat": 35.4436,
                     "lng": 139.642
+          },
+          "川崎市アートセンター アルテリオ映像館": {
+                    "lat": 35.6035,
+                    "lng": 139.5083
+          },
+          "あつぎのえいがかんkiki": {
+                    "lat": 35.4396,
+                    "lng": 139.3647
+          },
+          "小田原シネマ館": {
+                    "lat": 35.2545,
+                    "lng": 139.1565
+          },
+          "シネコヤ": {
+                    "lat": 35.3339,
+                    "lng": 139.4777
           },
           "CINEMA AMIGO": {
                     "lat": 35.2953,
@@ -1801,10 +1940,18 @@
                     return Number.isFinite(year) ? Math.max(best, year) : best;
                 }, 0);
             }
+            function compareDistances(aDistance, bDistance) {
+                const aFinite = Number.isFinite(aDistance);
+                const bFinite = Number.isFinite(bDistance);
+                if (aFinite && bFinite && aDistance !== bDistance) return aDistance - bDistance;
+                if (aFinite && !bFinite) return -1;
+                if (!aFinite && bFinite) return 1;
+                return 0;
+            }
             function compareCinemasForCurrentSort(a, b) {
                 if (state.sort === "nearest" && state.location.active) {
-                    const distanceDiff = getCinemaDistance(a.name) - getCinemaDistance(b.name);
-                    if (distanceDiff !== 0 && Number.isFinite(distanceDiff)) return distanceDiff;
+                    const distanceDiff = compareDistances(getCinemaDistance(a.name), getCinemaDistance(b.name));
+                    if (distanceDiff !== 0) return distanceDiff;
                 }
                 if (state.sort === "release-new" || state.sort === "release-old") {
                     const yearA = getCinemaReleaseYear(a);
@@ -1818,9 +1965,7 @@
             }
             function compareCinemaNamesByDistance(a, b) {
                 if (state.sort !== "nearest" || !state.location.active) return 0;
-                const distanceDiff = getCinemaDistance(a) - getCinemaDistance(b);
-                if (distanceDiff !== 0 && Number.isFinite(distanceDiff)) return distanceDiff;
-                return 0;
+                return compareDistances(getCinemaDistance(a), getCinemaDistance(b));
             }
             function updateLocationStatus(message) {
                 if (elements.locationStatus) elements.locationStatus.textContent = message || "";
@@ -1841,8 +1986,9 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    elements.sortSelect.value = "nearest";
+                    elements.sortSelect.value = getDefaultSortValue();
                     updateLocationStatus(t("locationReady"));
+                    updateSortUI();
                     render();
                 }, function () {
                     state.location.active = false;
@@ -2198,7 +2344,33 @@
                     elements.cinemaIndex.appendChild(createElement("div", "empty-state", t("noCinemas")));
                     return;
                 }
+                function createCinemaCard(cinema) {
+                    const card = createElement("button", "cinema-card");
+                    card.type = "button";
+                    card.appendChild(createElement("div", "cinema-card-title", getCinemaDisplayWithDistance(cinema.name)));
+                    card.addEventListener("click", function () {
+                        state.selectedCinema = cinema.name;
+                        render();
+                        elements.cinemaShowtimes.scrollIntoView({ behavior: "smooth" });
+                    });
+                    return card;
+                }
+                function renderCinemaBlock(title, cinemas) {
+                    const block = createElement("div", "region-block");
+                    block.appendChild(createElement("h2", "region-title", title));
+                    const grid = createElement("div", "cinema-grid");
+                    cinemas.forEach(function (cinema) {
+                        grid.appendChild(createCinemaCard(cinema));
+                    });
+                    block.appendChild(grid);
+                    elements.cinemaIndex.appendChild(block);
+                }
+                if (state.sort === "nearest" && state.location.active) {
+                    renderCinemaBlock(t("nearestCinemas"), Array.from(cinemasMap.values()).sort(compareCinemasForCurrentSort));
+                    return;
+                }
                 let renderedBlocks = 0;
+                const renderedCinemaNames = new Set();
                 cinemaCategories.forEach(function (category) {
                     const cinemas = category.cinemas.map(function (cinemaName) {
                         const cinema = cinemasMap.get(cinemaName);
@@ -2210,23 +2382,18 @@
                         return;
                     }
                     renderedBlocks += 1;
-                    const block = createElement("div", "region-block");
-                    block.appendChild(createElement("h2", "region-title", getRegionName(category.name)));
-                    const grid = createElement("div", "cinema-grid");
                     cinemas.forEach(function (cinema) {
-                        const card = createElement("button", "cinema-card");
-                        card.type = "button";
-                        card.appendChild(createElement("div", "cinema-card-title", getCinemaDisplayWithDistance(cinema.name)));
-                        card.addEventListener("click", function () {
-                            state.selectedCinema = cinema.name;
-                            render();
-                            elements.cinemaShowtimes.scrollIntoView({ behavior: "smooth" });
-                        });
-                        grid.appendChild(card);
+                        renderedCinemaNames.add(cinema.name);
                     });
-                    block.appendChild(grid);
-                    elements.cinemaIndex.appendChild(block);
+                    renderCinemaBlock(getRegionName(category.name), cinemas);
                 });
+                const otherCinemas = Array.from(cinemasMap.values()).filter(function (cinema) {
+                    return !renderedCinemaNames.has(cinema.name);
+                }).sort(compareCinemasForCurrentSort);
+                if (otherCinemas.length) {
+                    renderedBlocks += 1;
+                    renderCinemaBlock(t("other"), otherCinemas);
+                }
                 if (!renderedBlocks) {
                     elements.cinemaIndex.appendChild(createElement("div", "empty-state", t("noCinemas")));
                 }
@@ -2436,7 +2603,9 @@
                 }
                 const films = groupByFilm(showings);
                 if (state.sort === "nearest" && state.location.active) {
-                    films.sort(function (a, b) { return getFilmDistance(a) - getFilmDistance(b) || a.nextTime - b.nextTime; });
+                    films.sort(function (a, b) {
+                        return compareDistances(getFilmDistance(a), getFilmDistance(b)) || a.nextTime - b.nextTime;
+                    });
                 } else if (state.sort === "release-new") {
                     films.sort(function (a, b) {
                         const yearA = parseInt(a.year, 10) || 0;
