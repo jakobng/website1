@@ -1,42 +1,42 @@
 {
-  "generated_at": "2026-05-10T23:26:35+00:00",
+  "generated_at": "2026-05-17T23:29:47+00:00",
   "packs": [
     {
       "city": "tokyo",
       "name": "Tokyo Mini-Theater",
       "page": "https://www.leonelki.com/tokyo-cinemas.html",
-      "upcoming_showtimes": 3139,
+      "upcoming_showtimes": 3170,
       "cinemas": 56,
-      "date_range": "2026-05-10 to 2026-07-10",
+      "date_range": "2026-05-17 to 2026-07-12",
       "top_films": [
-        "Rhapsody, Rhapsody",
-        "Lost Land",
         "IT WAS JUST AN ACCIDENT",
         "It Was Just an Accident",
-        "Detective Conan: Fallen Angel of the Highway"
+        "Rhapsody, Rhapsody",
+        "The Smashing Machine",
+        "Erica"
       ],
       "copy": {
-        "en": "Tokyo Mini-Theater now has 3139 upcoming showtimes across 56 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
-        "ja": "東京ミニシアター上映情報を更新しました。現在 56 館、3139 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
+        "en": "Tokyo Mini-Theater now has 3170 upcoming showtimes across 56 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
+        "ja": "東京ミニシアター上映情報を更新しました。現在 56 館、3170 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
       }
     },
     {
       "city": "london",
       "name": "London Independent Cinema",
       "page": "https://www.leonelki.com/london-cinemas.html",
-      "upcoming_showtimes": 5931,
-      "cinemas": 66,
-      "date_range": "2026-05-10 to 2026-12-30",
+      "upcoming_showtimes": 6215,
+      "cinemas": 68,
+      "date_range": "2026-05-17 to 2026-12-30",
       "top_films": [
         "The Devil Wears Prada 2",
-        "Michael",
+        "The Christophers",
         "Star Wars: The Mandalorian and Grogu",
-        "THE DEVIL WEARS PRADA 2",
+        "Michael",
         "The Sheep Detectives"
       ],
       "copy": {
-        "en": "London Independent Cinema now has 5931 upcoming showtimes across 66 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
-        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 66 館、5931 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
+        "en": "London Independent Cinema now has 6215 upcoming showtimes across 68 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
+        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 68 館、6215 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
       }
     },
     {
@@ -56,19 +56,19 @@
       "city": "taipei",
       "name": "Taipei Independent Cinema",
       "page": "https://www.leonelki.com/taipei-cinemas.html",
-      "upcoming_showtimes": 304,
+      "upcoming_showtimes": 284,
       "cinemas": 11,
-      "date_range": "2026-05-10 to 2026-07-20",
+      "date_range": "2026-05-17 to 2026-07-20",
       "top_films": [
         "影城介紹",
+        "Father Mother Sister Brother",
         "OASIS",
-        "The Devil Wears Prada 2",
-        "Pillion",
-        "Silent Friend"
+        "Peppermint Candy",
+        "Daughter of Nectar"
       ],
       "copy": {
-        "en": "Taipei Independent Cinema now has 304 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
-        "ja": "台北インディペンデント映画上映情報を更新しました。現在 11 館、304 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
+        "en": "Taipei Independent Cinema now has 284 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
+        "ja": "台北インディペンデント映画上映情報を更新しました。現在 11 館、284 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
       }
     }
   ]
