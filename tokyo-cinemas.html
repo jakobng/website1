@@ -291,6 +291,32 @@
         .near-me-btn.is-active {
             background: var(--accent);
         }
+        .filters-toggle {
+            display: none;
+            width: 100%;
+            margin-top: 12px;
+            min-height: 40px;
+            border: var(--border-width) solid var(--border);
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            line-height: 1;
+            padding: 10px 12px;
+            text-transform: uppercase;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .filters-toggle::after {
+            content: "+";
+            font-size: 1rem;
+        }
+        .filters-toggle.is-active::after {
+            content: "–";
+        }
         .advanced-filters {
             display: block;
             margin-top: 12px;
@@ -724,9 +750,20 @@
             .controls-section {
                 padding: 10px;
             }
+            .filters-toggle {
+                display: flex;
+            }
             .primary-controls,
             .advanced-grid {
                 grid-template-columns: minmax(0, 1fr);
+            }
+            .advanced-filters {
+                display: none;
+                margin-top: 10px;
+                padding-top: 10px;
+            }
+            .advanced-filters.is-expanded {
+                display: block;
             }
             .search-wrapper {
                 grid-column: auto;
@@ -741,13 +778,10 @@
                 grid-template-columns: minmax(0, 1fr);
             }
             .content-checkboxes {
-                grid-template-columns: minmax(0, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
             h1 {
                 letter-spacing: 0.1em;
-            }
-            .advanced-filters {
-                display: block;
             }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -822,6 +856,7 @@
                     <div class="location-status" id="location-status" aria-live="polite"></div>
                 </div>
             </div>
+            <button class="filters-toggle" type="button" id="filters-toggle" aria-controls="filters-content" aria-expanded="false"></button>
             <div class="advanced-filters" id="filters-content">
                 <div class="advanced-grid">
                     <div class="control-group">
@@ -999,8 +1034,8 @@
                     viewCinema: "シネマ別",
                     viewFilm: "作品別",
                     filters: "フィルター",
-                    filtersShow: "表示",
-                    filtersHide: "非表示",
+                    filtersShow: "フィルターを表示",
+                    filtersHide: "フィルターを隠す",
                     search: "検索",
                     searchPlaceholder: "作品・劇場・監督・ジャンル",
                     date: "日付",
@@ -1062,8 +1097,8 @@
                     viewCinema: "By Cinema",
                     viewFilm: "By Film",
                     filters: "Filters",
-                    filtersShow: "Show",
-                    filtersHide: "Hide",
+                    filtersShow: "Show filters",
+                    filtersHide: "Hide filters",
                     search: "Search",
                     searchPlaceholder: "Film, cinema, director, genre",
                     date: "Date",
@@ -1170,6 +1205,7 @@
                 docOnlyLabel: document.getElementById("doc-only-label"),
                 animationOnlyCheckbox: document.getElementById("animation-only"),
                 animationOnlyLabel: document.getElementById("animation-only-label"),
+                filtersToggle: document.getElementById("filters-toggle"),
                 regionLabel: document.getElementById("region-label"),
                 regionSelect: document.getElementById("region-select"),
                 sortLabel: document.getElementById("sort-label"),
@@ -1262,6 +1298,10 @@
             elements.animationOnlyCheckbox.addEventListener("change", function (event) {
                 state.filters.animationOnly = event.target.checked;
                 render();
+            });
+            elements.filtersToggle.addEventListener("click", function () {
+                state.filtersExpanded = !state.filtersExpanded;
+                updateFiltersToggle();
             });
             elements.regionSelect.addEventListener("change", function (event) {
                 state.filters.region = event.target.value;
@@ -1395,6 +1435,7 @@
                 elements.nearMeButton.textContent = t("nearestButton");
                 elements.clearFilters.textContent = t("clearFilters");
                 syncContentCheckboxes();
+                updateFiltersToggle();
                 updateSortUI();
                 // Cinema view
                 elements.cinemaLoading.textContent = t("loading");
@@ -1431,6 +1472,14 @@
                 elements.englishFriendlyCheckbox.checked = state.filters.englishFriendly;
                 elements.docOnlyCheckbox.checked = state.filters.docOnly;
                 elements.animationOnlyCheckbox.checked = state.filters.animationOnly;
+            }
+            function updateFiltersToggle() {
+                if (!elements.filtersToggle || !elements.filtersContent) return;
+                const expanded = !!state.filtersExpanded;
+                elements.filtersToggle.textContent = expanded ? t("filtersHide") : t("filtersShow");
+                elements.filtersToggle.classList.toggle("is-active", expanded);
+                elements.filtersToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+                elements.filtersContent.classList.toggle("is-expanded", expanded);
             }
             function updateDateSelect() {
                 const currentValue = elements.dateSelect.value || state.filters.date || getDefaultDateForView();
