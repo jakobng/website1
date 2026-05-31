@@ -1,42 +1,42 @@
 {
-  "generated_at": "2026-05-24T23:33:05+00:00",
+  "generated_at": "2026-05-31T23:37:47+00:00",
   "packs": [
     {
       "city": "tokyo",
       "name": "Tokyo Mini-Theater",
       "page": "https://www.leonelki.com/tokyo-cinemas.html",
-      "upcoming_showtimes": 3238,
-      "cinemas": 56,
-      "date_range": "2026-05-24 to 2026-07-19",
+      "upcoming_showtimes": 3322,
+      "cinemas": 57,
+      "date_range": "2026-05-31 to 2026-07-19",
       "top_films": [
-        "EPiC: Elvis Presley in Concert",
-        "Primavera",
-        "Star Wars: The Mandalorian and Grogu",
-        "Rhapsody, Rhapsody",
-        "It Was Just an Accident"
+        "Keeper",
+        "Nameless",
+        "Materialists",
+        "It Was Just an Accident",
+        "IT WAS JUST AN ACCIDENT"
       ],
       "copy": {
-        "en": "Tokyo Mini-Theater now has 3238 upcoming showtimes across 56 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
-        "ja": "東京ミニシアター上映情報を更新しました。現在 56 館、3238 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
+        "en": "Tokyo Mini-Theater now has 3322 upcoming showtimes across 57 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
+        "ja": "東京ミニシアター上映情報を更新しました。現在 57 館、3322 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
       }
     },
     {
       "city": "london",
       "name": "London Independent Cinema",
       "page": "https://www.leonelki.com/london-cinemas.html",
-      "upcoming_showtimes": 5934,
-      "cinemas": 68,
-      "date_range": "2026-05-24 to 2027-04-30",
+      "upcoming_showtimes": 5522,
+      "cinemas": 66,
+      "date_range": "2026-05-31 to 2027-06-05",
       "top_films": [
         "Star Wars: The Mandalorian and Grogu",
+        "Tuner",
         "The Devil Wears Prada 2",
-        "The Christophers",
-        "THE DEVIL WEARS PRADA 2",
-        "STAR WARS: THE MANDALORIAN AND GROGU"
+        "Backrooms",
+        "Toy Story 5"
       ],
       "copy": {
-        "en": "London Independent Cinema now has 5934 upcoming showtimes across 68 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
-        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 68 館、5934 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
+        "en": "London Independent Cinema now has 5522 upcoming showtimes across 66 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
+        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 66 館、5522 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
       }
     },
     {
@@ -56,19 +56,19 @@
       "city": "taipei",
       "name": "Taipei Independent Cinema",
       "page": "https://www.leonelki.com/taipei-cinemas.html",
-      "upcoming_showtimes": 306,
+      "upcoming_showtimes": 296,
       "cinemas": 11,
-      "date_range": "2026-05-24 to 2026-07-20",
+      "date_range": "2026-05-31 to 2026-07-20",
       "top_films": [
         "影城介紹",
-        "Father Mother Sister Brother",
+        "I Swear",
         "THE LOBSTER",
-        "Daughter of Nectar",
-        "The Lobster"
+        "A New Dawn",
+        "Backrooms"
       ],
       "copy": {
-        "en": "Taipei Independent Cinema now has 306 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
-        "ja": "台北インディペンデント映画上映情報を更新しました。現在 11 館、306 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
+        "en": "Taipei Independent Cinema now has 296 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
+        "ja": "台北インディペンデント映画上映情報を更新しました。現在 11 館、296 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
       }
     }
   ]
