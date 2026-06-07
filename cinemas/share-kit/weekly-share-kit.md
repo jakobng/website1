@@ -1,34 +1,34 @@
 # Weekly Cinema Share Kit
 
-Generated: 2026-05-31T23:37:47+00:00
+Generated: 2026-06-07T23:36:24+00:00
 
 ## Tokyo Mini-Theater
 
 - Page: https://www.leonelki.com/tokyo-cinemas.html
-- Upcoming showtimes: 3322
-- Cinemas/venues: 57
-- Date range: 2026-05-31 to 2026-07-19
-- Top films: Keeper, Nameless, Materialists, It Was Just an Accident, IT WAS JUST AN ACCIDENT
+- Upcoming showtimes: 2971
+- Cinemas/venues: 56
+- Date range: 2026-06-07 to 2026-08-16
+- Top films: 404 Still Remain, Adam's Sake, Nameless, THE A-CARE -Disusebody-, Sirāt
 
 English:
-Tokyo Mini-Theater now has 3322 upcoming showtimes across 57 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html
+Tokyo Mini-Theater now has 2971 upcoming showtimes across 56 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html
 
 Japanese:
-東京ミニシアター上映情報を更新しました。現在 57 館、3322 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html
+東京ミニシアター上映情報を更新しました。現在 56 館、2971 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html
 
 ## London Independent Cinema
 
 - Page: https://www.leonelki.com/london-cinemas.html
-- Upcoming showtimes: 5522
-- Cinemas/venues: 66
-- Date range: 2026-05-31 to 2027-06-05
-- Top films: Star Wars: The Mandalorian and Grogu, Tuner, The Devil Wears Prada 2, Backrooms, Toy Story 5
+- Upcoming showtimes: 1723
+- Cinemas/venues: 48
+- Date range: 2026-06-07 to 2027-06-05
+- Top films: Toy Story 5, Disclosure Day, National Theatre Live: Les Liaisons Dangereuses, Enzo, Erupcja
 
 English:
-London Independent Cinema now has 5522 upcoming showtimes across 66 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
+London Independent Cinema now has 1723 upcoming showtimes across 48 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
 
 Japanese:
-ロンドンのインディペンデント映画館上映情報を更新しました。現在 66 館、5522 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
+ロンドンのインディペンデント映画館上映情報を更新しました。現在 48 館、1723 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
 
 ## Manchester Cinema
 
@@ -47,13 +47,13 @@ Japanese:
 ## Taipei Independent Cinema
 
 - Page: https://www.leonelki.com/taipei-cinemas.html
-- Upcoming showtimes: 296
+- Upcoming showtimes: 302
 - Cinemas/venues: 11
-- Date range: 2026-05-31 to 2026-07-20
-- Top films: 影城介紹, I Swear, THE LOBSTER, A New Dawn, Backrooms
+- Date range: 2026-06-07 to 2026-07-20
+- Top films: 影城介紹, Sorry, Baby, The Lobster, tuner, The Last song You Left Behind
 
 English:
-Taipei Independent Cinema now has 296 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
+Taipei Independent Cinema now has 302 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
 
 Japanese:
-台北インディペンデント映画上映情報を更新しました。現在 11 館、296 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
+台北インディペンデント映画上映情報を更新しました。現在 11 館、302 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
