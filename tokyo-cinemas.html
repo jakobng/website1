@@ -923,11 +923,12 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const jsonUrl = "tokyo-cinema-scrapers/data/showtimes.json";
+            const slimJsonUrl = "tokyo-cinema-scrapers/data/showtimes_slim.json";
             const tmdbBase = "https://image.tmdb.org/t/p/";
             const cinemaCategories = [
                 { name: "渋谷・恵比寿・目黒 (Shibuya, Ebisu & Meguro)", cinemas: [ "シアター・イメージフォーラム", "ユーロスペース", "ヒューマントラストシネマ渋谷", "Bunkamura ル・シネマ 渋谷宮下", "シネクイント", "ホワイト シネクイント", "シネマヴェーラ渋谷", "YEBISU GARDEN CINEMA", "東京都写真美術館", "シアターギルド代官山", "キネカ大森", "目黒シネマ" ] },
                 { name: "新宿・早稲田 (Shinjuku & Waseda)", cinemas: [ "新宿武蔵野館", "テアトル新宿", "シネマート新宿", "K's Cinema (ケイズシネマ)", "kino cinéma新宿", "早稲田松竹" ] },
-                { name: "都心・東部 (Central & East - Ginza to Sumida)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "角川シネマ有楽町", "Kadokawa Cinema Yurakucho (角川シネマ有楽町)", "シネマリス", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京", "東劇", "Stranger (ストレンジャー)" ] },
+                { name: "都心・東部 (Central & East - Ginza to Sumida)", cinemas: [ "ヒューマントラストシネマ有楽町", "シネスイッチ銀座", "国立映画アーカイブ", "角川シネマ有楽町", "シネマリス", "神保町シアター", "アテネ・フランセ文化センター", "アンスティチュ・フランセ東京", "東劇", "Stranger (ストレンジャー)" ] },
                 { name: "池袋 (Ikebukuro)", cinemas: [ "新文芸坐", "池袋シネマ・ロサ", "シネ・リーブル池袋", "シネマハウス大塚" ] },
                 { name: "田端・北千住 (Tabata & Kita Senju)", cinemas: [ "CINEMA Chupki TABATA", "シネマブルースタジオ" ] },
                 { name: "西部 (West - Chuo/Keio Lines & Setagaya)", cinemas: [ "ポレポレ東中野", "ラピュタ阿佐ヶ谷", "Morc阿佐ヶ谷", "アップリンク吉祥寺", "吉祥寺オデヲン", "K2 Cinema", "下北沢トリウッド", "下高井戸シネマ", "シネマシティ", "kino cinéma立川髙島屋S.C.館", "Cinema Neko (シネマネコ)" ] },
@@ -941,6 +942,11 @@
                     cinemaRegions[cinemaName] = category.name;
                 });
             });
+            // Older scraped data published this cinema under a second name;
+            // fold it into the canonical one so cached data renders as one cinema.
+            const cinemaNameAliases = {
+                "Kadokawa Cinema Yurakucho (角川シネマ有楽町)": "角川シネマ有楽町"
+            };
             const cinemaJapaneseNames = {
                 "K's Cinema (ケイズシネマ)": "ケイズシネマ",
                 "Stranger (ストレンジャー)": "ストレンジャー",
@@ -2177,7 +2183,7 @@
                     const titleEn = item.movie_title_en || "";
                     const titleDisplay = formatBilingual(titleJp, titleEn);
                     const tmdbId = item.tmdb_id ? String(item.tmdb_id) : "";
-                    const rawCinemaName = item.cinema_name || t("unknownCinema");
+                    const rawCinemaName = cinemaNameAliases[item.cinema_name] || item.cinema_name || t("unknownCinema");
                     const cinemaJp = getCinemaJapaneseName(rawCinemaName);
                     const region = getRegionForCinema(rawCinemaName);
                     const cinemaEn = cinemaEnglishNames[rawCinemaName] || "";
@@ -2727,15 +2733,34 @@
                     renderCinemaView(filtered);
                 }
             }
+            function inflateSlim(payload) {
+                return payload.showings.map(function (showing) {
+                    return Object.assign({}, payload.films[showing.f], showing);
+                });
+            }
+            function fetchJson(url) {
+                return fetch(url).then(function (response) {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.json();
+                });
+            }
             function fetchShowtimes() {
-                fetch(jsonUrl + "?t=" + Date.now(), { cache: "no-store" })
-                    .then(function (response) {
-                        if (!response.ok) {
-                            throw new Error("HTTP error " + response.status);
+                fetchJson(slimJsonUrl)
+                    .then(function (payload) {
+                        if (!payload || !payload.films || !Array.isArray(payload.showings)) {
+                            throw new Error("Unexpected slim payload");
                         }
-                        return response.json();
+                        return inflateSlim(payload);
+                    })
+                    .catch(function () {
+                        return fetchJson(jsonUrl);
                     })
                     .then(function (data) {
+                        if (!Array.isArray(data)) {
+                            throw new Error("Unexpected showtimes payload");
+                        }
                         const todayText = getJstDateText();
                         state.data = normalizeShowings(data).filter(function (showing) {
                             return showing.dateText >= todayText;

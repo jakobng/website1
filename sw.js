@@ -1,4 +1,5 @@
-const CACHE_NAME = "tokyo-cinema-scrapers-v2";
+const CACHE_NAME = "tokyo-cinema-scrapers-v3";
+const DATA_PATH_PREFIX = "/tokyo-cinema-scrapers/data/";
 const CORE_ASSETS = [
   "/tokyo-cinemas.html",
   "/cinemas.html",
@@ -35,7 +36,27 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // Showtimes data: network-first, cached under the bare path so repeated
+  // fetches overwrite a single entry, with cache fallback for offline use.
+  if (url.pathname.startsWith(DATA_PATH_PREFIX)) {
+    const cacheKey = url.origin + url.pathname;
+    event.respondWith(
+      fetch(event.request, { cache: "no-store" })
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(cacheKey, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(cacheKey))
+    );
+    return;
+  }
+
+  // Pages: network-first so users never get frozen on a stale copy.
   const isHtml =
+    event.request.mode === "navigate" ||
     url.pathname === "/tokyo-cinemas" ||
     url.pathname === "/tokyo-cinemas/" ||
     url.pathname === "/tokyo-cinemas.html" ||
@@ -47,8 +68,10 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
           return response;
         })
         .catch(() => caches.match(event.request))
@@ -57,13 +80,16 @@ self.addEventListener("fetch", (event) => {
   }
 
   event.respondWith(
-    caches.match(event.request).then((cached) =>
-      cached ||
-      fetch(event.request).then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        return response;
-      })
+    caches.match(event.request).then(
+      (cached) =>
+        cached ||
+        fetch(event.request).then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
+          return response;
+        })
     )
   );
 });
