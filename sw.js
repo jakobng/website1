@@ -1,5 +1,8 @@
 const CACHE_NAME = "tokyo-cinema-scrapers-v3";
-const DATA_PATH_PREFIX = "/tokyo-cinema-scrapers/data/";
+// Matches the showtimes data folders of every city page (tokyo-cinema-scrapers,
+// london-cinema-scrapers, manchester_cinema_scrapers...). The SW's scope is "/",
+// so it also controls those pages for anyone who has visited the Tokyo page.
+const DATA_PATH_PATTERN = /cinema[-_]scrapers\/data\//;
 const CORE_ASSETS = [
   "/tokyo-cinemas.html",
   "/cinemas.html",
@@ -38,7 +41,7 @@ self.addEventListener("fetch", (event) => {
 
   // Showtimes data: network-first, cached under the bare path so repeated
   // fetches overwrite a single entry, with cache fallback for offline use.
-  if (url.pathname.startsWith(DATA_PATH_PREFIX)) {
+  if (DATA_PATH_PATTERN.test(url.pathname)) {
     const cacheKey = url.origin + url.pathname;
     event.respondWith(
       fetch(event.request, { cache: "no-store" })
