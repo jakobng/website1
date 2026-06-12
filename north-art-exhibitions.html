@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art North</title>
+    <title>Art North — Exhibitions within a day trip</title>
+    <meta name="description" content="Every art exhibition on now across the North of England, sorted by how far it is from you. Pick your home base, set your drive limit, see what's on.">
+    <meta property="og:title" content="Art North — Exhibitions within a day trip">
+    <meta property="og:description" content="Every art exhibition on now across the North of England, sorted by how far it is from you.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -42,20 +46,19 @@
         }
 
         .page-header {
-            padding: 40px 20px 20px;
+            padding: 36px 20px 16px;
             text-align: center;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         h1 {
-            margin: 0;
+            margin: 0 0 8px;
             font-size: clamp(1.8rem, 5vw, 3rem);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             font-weight: 700;
             line-height: 1;
-            margin-bottom: 8px;
         }
 
         .header-sub {
@@ -65,6 +68,7 @@
             text-transform: uppercase;
         }
 
+        /* ---------- Controls ---------- */
         .controls-wrapper {
             position: sticky;
             top: 0;
@@ -72,7 +76,7 @@
             background: var(--bg);
             border-bottom: var(--border-width) solid var(--border);
             padding: 10px 0;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         .controls {
@@ -81,17 +85,26 @@
             padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .filter-row {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        .region-toggles {
+        .filter-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .chip-row {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
@@ -101,22 +114,20 @@
             background: #fff;
             border: var(--border-width) solid var(--border);
             padding: 8px 12px;
+            font-family: inherit;
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.15s;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
         .toggle-btn:hover { background: var(--bg); }
-        .toggle-btn.is-active {
-            background: var(--ink);
-            color: #fff;
-        }
+        .toggle-btn.is-active { background: var(--ink); color: #fff; }
 
         .toggle-btn .checkbox {
             width: 12px;
@@ -124,6 +135,7 @@
             border: 1px solid currentColor;
             display: inline-block;
             position: relative;
+            flex-shrink: 0;
         }
 
         .toggle-btn.is-active .checkbox::after {
@@ -135,76 +147,32 @@
             font-size: 10px;
         }
 
-        .search-input-wrap {
-            flex: 1;
-            min-width: 160px;
-            position: relative;
+        .drive-btn.is-active { background: var(--accent); color: var(--ink); border-color: var(--border); }
+
+        .select-ctl {
+            padding: 9px 10px;
+            border: var(--border-width) solid var(--border);
+            font-family: inherit;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: #fff;
+            cursor: pointer;
+            max-width: 230px;
         }
+
+        .search-input-wrap { flex: 1; min-width: 150px; }
 
         .search-input {
             width: 100%;
-            padding: 10px 14px;
+            padding: 9px 12px;
             border: var(--border-width) solid var(--border);
             font-family: inherit;
             font-size: 0.9rem;
             background: #fff;
         }
 
-        .dropdown-wrap {
-            position: relative;
-        }
-
-        .dropdown-btn {
-            padding: 10px 14px;
-            border: var(--border-width) solid var(--border);
-            font-family: inherit;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            background: #fff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #fff;
-            border: var(--border-width) solid var(--border);
-            box-shadow: var(--shadow);
-            z-index: 200;
-            min-width: 240px;
-            max-height: 400px;
-            overflow-y: auto;
-            padding: 10px;
-        }
-
-        .dropdown-wrap:hover .dropdown-content {
-            display: block;
-        }
-
-        .venue-filter-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 8px;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
-        .venue-filter-item:hover { background: var(--bg); }
-
-        .venue-filter-item input { cursor: pointer; }
-
-        .filter-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); white-space: nowrap; }
-        .include-upcoming-wrap { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-        .include-upcoming-wrap input { cursor: pointer; }
-
+        /* ---------- Content ---------- */
         .content {
             max-width: 1200px;
             margin: 0 auto;
@@ -213,9 +181,10 @@
 
         .section-header {
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: space-between;
-            margin-bottom: 24px;
+            gap: 12px;
+            margin-bottom: 20px;
             padding-bottom: 8px;
             border-bottom: 2px solid var(--border);
         }
@@ -230,9 +199,9 @@
 
         .exhibition-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 22px;
+            margin-bottom: 56px;
         }
 
         .exhibition-card {
@@ -242,7 +211,7 @@
             flex-direction: column;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
             position: relative;
             height: 100%;
         }
@@ -254,7 +223,7 @@
 
         .exhibition-image-wrap {
             width: 100%;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 3 / 2;
             background: var(--grid);
             position: relative;
             overflow: hidden;
@@ -265,7 +234,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            display: block;
         }
 
         .image-placeholder {
@@ -274,20 +243,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             padding: 20px;
             text-align: center;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.35);
         }
 
         .status-badge {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            top: 10px;
+            left: 10px;
             padding: 4px 8px;
             font-size: 0.65rem;
             font-weight: 700;
@@ -301,13 +270,26 @@
         .status-badge.ending-soon { background: var(--accent); color: var(--ink); }
         .status-badge.coming-soon { background: var(--ink); color: #fff; }
 
+        .drive-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--border);
+        }
+
         .hide-venue-btn {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
             width: 24px;
             height: 24px;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.85);
             border: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -323,39 +305,35 @@
         .hide-venue-btn:hover { background: var(--ink); color: #fff; }
 
         .exhibition-body {
-            padding: 20px;
+            padding: 16px 18px 18px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             flex-grow: 1;
         }
 
         .exhibition-title {
             margin: 0;
-            font-size: 1.15rem;
+            font-size: 1.08rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
         .exhibition-venue {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: var(--ink);
         }
 
-        .exhibition-location {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 4px;
-        }
+        .exhibition-venue .city { color: var(--muted); font-weight: 400; }
 
         .exhibition-footer {
             margin-top: auto;
-            padding-top: 12px;
+            padding-top: 10px;
             border-top: 1px solid var(--border-soft);
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: baseline;
+            gap: 8px;
         }
 
         .exhibition-dates {
@@ -365,12 +343,13 @@
         }
 
         .region-tag {
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--muted);
             border: 1px solid var(--border-soft);
             padding: 2px 6px;
+            white-space: nowrap;
         }
 
         .empty-state {
@@ -381,9 +360,7 @@
             grid-column: 1 / -1;
         }
 
-        .is-hidden {
-            display: none !important;
-        }
+        .is-hidden { display: none !important; }
 
         .loading {
             text-align: center;
@@ -401,6 +378,7 @@
             display: none;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
         }
 
         .hidden-venues-bar.is-active { display: flex; }
@@ -410,9 +388,11 @@
             border: 1px solid #fff;
             color: #fff;
             padding: 2px 8px;
+            font-family: inherit;
             font-size: 0.7rem;
             cursor: pointer;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .reset-btn:hover { background: #fff; color: var(--ink); }
@@ -433,148 +413,227 @@
 
         @media (max-width: 800px) {
             .controls-wrapper { position: static; }
-            .filter-row { flex-direction: column; align-items: stretch; }
+            .filter-row { align-items: stretch; }
+            .filter-row.row-base { flex-direction: row; flex-wrap: wrap; }
+            .chip-row {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 4px;
+            }
+            .toggle-btn { white-space: nowrap; flex-shrink: 0; }
+            .select-ctl { max-width: none; flex: 1; }
         }
     </style>
 </head>
 <body>
     <div id="hidden-venues-bar" class="hidden-venues-bar">
-        <span>Some venues are hidden because they weren't your "vibe".</span>
+        <span id="hidden-venues-msg">Some venues are hidden.</span>
         <button id="reset-hidden-btn" class="reset-btn">Reset All</button>
     </div>
 
     <header class="page-header">
         <h1>Art North</h1>
-        <div class="header-sub">Exhibition Directory · Northern England</div>
+        <div class="header-sub">What's on within a day trip · Northern England</div>
     </header>
 
     <div class="controls-wrapper">
         <div class="controls">
-            <div class="filter-row">
-                <div class="region-toggles" id="region-toggles">
-                    <button class="toggle-btn is-active" data-region="Greater Manchester"><span class="checkbox"></span>Manchester</button>
-                    <button class="toggle-btn is-active" data-region="Merseyside"><span class="checkbox"></span>Merseyside</button>
-                    <button class="toggle-btn is-active" data-region="West Yorkshire"><span class="checkbox"></span>West Yorks</button>
-                    <button class="toggle-btn is-active" data-region="South & East Yorkshire"><span class="checkbox"></span>South & East Yorks</button>
-                    <button class="toggle-btn is-active" data-region="North East"><span class="checkbox"></span>North East</button>
-                    <button class="toggle-btn is-active" data-region="Lancashire"><span class="checkbox"></span>Lancashire</button>
-                    <button class="toggle-btn is-active" data-region="Cumbria"><span class="checkbox"></span>Cumbria</button>
+            <div class="filter-row row-base">
+                <label class="filter-label" for="base-select">From</label>
+                <select id="base-select" class="select-ctl"></select>
+                <span class="filter-label">Drive</span>
+                <div class="chip-row" id="drive-toggles">
+                    <button class="toggle-btn drive-btn" data-mins="60">&le; 1 hr</button>
+                    <button class="toggle-btn drive-btn" data-mins="120">&le; 2 hrs</button>
+                    <button class="toggle-btn drive-btn" data-mins="180">&le; 3 hrs</button>
+                    <button class="toggle-btn drive-btn is-active" data-mins="9999">Anywhere</button>
                 </div>
                 <div class="search-input-wrap">
                     <input type="text" id="search-input" class="search-input" placeholder="Search title, venue, city...">
                 </div>
-                <label for="venue-select" class="filter-label">Venue</label>
-                <select id="venue-select" class="dropdown-btn">
+            </div>
+            <div class="filter-row">
+                <span class="filter-label">Regions</span>
+                <div class="chip-row" id="region-toggles"></div>
+                <select id="venue-select" class="select-ctl">
                     <option value="">All venues</option>
-                    <!-- Venue options injected here -->
                 </select>
-                <label class="filter-label include-upcoming-wrap">
-                    <input type="checkbox" id="include-upcoming-cb">
-                    <span>Include upcoming</span>
-                </label>
-                <select id="sort-select" class="dropdown-btn sort-select">
-                    <option value="closing">Closing Soon</option>
-                    <option value="newest">Newest</option>
-                    <option value="alphabetical">A-Z</option>
+                <select id="sort-select" class="select-ctl">
+                    <option value="closing">Closing soon</option>
+                    <option value="distance">Nearest first</option>
+                    <option value="newest">Recently opened</option>
+                    <option value="alphabetical">A–Z</option>
                 </select>
             </div>
         </div>
     </div>
 
     <main class="content">
-        <section id="exhibitions-section">
+        <div id="main-loading" class="loading">Loading Directory...</div>
+
+        <section id="on-now-section" class="is-hidden">
             <div class="section-header">
-                <h2 class="section-title">Directory</h2>
-                <div id="result-count" class="header-sub"></div>
+                <h2 class="section-title">On Now</h2>
+                <div id="on-now-count" class="header-sub"></div>
             </div>
-            <div id="main-loading" class="loading">Loading Directory...</div>
-            <div id="exhibition-grid" class="exhibition-grid"></div>
-            <div id="empty-state" class="empty-state is-hidden">
-                No exhibitions found matching your filters.
-            </div>
+            <div id="on-now-grid" class="exhibition-grid"></div>
         </section>
+
+        <section id="upcoming-section" class="is-hidden">
+            <div class="section-header">
+                <h2 class="section-title">Opening Soon</h2>
+                <div id="upcoming-count" class="header-sub"></div>
+            </div>
+            <div id="upcoming-grid" class="exhibition-grid"></div>
+        </section>
+
+        <div id="empty-state" class="empty-state is-hidden">
+            No exhibitions found. Try widening the drive limit or switching regions back on.
+        </div>
     </main>
 
     <footer class="page-footer">
-        <p>Information is aggregated from gallery and museum websites across the North. Please check official venue websites for up-to-date opening times and booking requirements.</p>
-        <p>Built by Gemini CLI. <a href="north-art-exhibitions/data/exhibitions.json">Download JSON</a>.</p>
+        <p>Listings are aggregated automatically from gallery and museum websites across the North. Drive times are rough estimates for planning a day out — check official venue sites for opening hours and booking before you travel.</p>
+        <p id="updated-line"></p>
+        <p><a href="north-art-exhibitions/data/exhibitions.json">Download the data (JSON)</a></p>
     </footer>
 
     <script>
         (function() {
             const jsonUrl = "north-art-exhibitions/data/exhibitions.json";
-            
-            const CITY_TO_REGION = {
-                "Manchester": "Greater Manchester",
-                "Salford": "Greater Manchester",
-                "Liverpool": "Merseyside",
-                "Preston": "Greater Manchester",
-                "Newcastle": "North East",
-                "Gateshead": "North East",
-                "Sunderland": "North East",
-                "Middlesbrough": "North East",
-                "Leeds": "West Yorkshire",
-                "Wakefield": "West Yorkshire",
-                "Bradford": "West Yorkshire",
-                "Saltaire": "West Yorkshire",
-                "West Bretton": "West Yorkshire",
-                "Sheffield": "South & East Yorkshire",
-                "York": "South & East Yorkshire",
-                "Hull": "South & East Yorkshire",
-                "Barnsley": "South & East Yorkshire",
-                "Doncaster": "South & East Yorkshire",
-                "Blackpool": "Lancashire",
-                "Kendal": "Cumbria",
-                "Carlisle": "Cumbria"
+
+            // City geo + region registry. Drive times are estimated from
+            // straight-line distance with a road wiggle factor — good enough
+            // to band venues into "under 1/2/3 hours" rings.
+            const CITY_INFO = {
+                "Sheffield":      { region: "South & East Yorkshire", lat: 53.3811, lon: -1.4701 },
+                "Barnsley":       { region: "South & East Yorkshire", lat: 53.5526, lon: -1.4797 },
+                "Doncaster":      { region: "South & East Yorkshire", lat: 53.5228, lon: -1.1288 },
+                "York":           { region: "South & East Yorkshire", lat: 53.9600, lon: -1.0873 },
+                "Hull":           { region: "South & East Yorkshire", lat: 53.7457, lon: -0.3367 },
+                "Leeds":          { region: "West Yorkshire", lat: 53.8008, lon: -1.5491 },
+                "Wakefield":      { region: "West Yorkshire", lat: 53.6833, lon: -1.4977 },
+                "West Bretton":   { region: "West Yorkshire", lat: 53.6126, lon: -1.5640 },
+                "Bradford":       { region: "West Yorkshire", lat: 53.7960, lon: -1.7594 },
+                "Saltaire":       { region: "West Yorkshire", lat: 53.8381, lon: -1.7896 },
+                "Manchester":     { region: "Greater Manchester", lat: 53.4808, lon: -2.2426 },
+                "Salford":        { region: "Greater Manchester", lat: 53.4875, lon: -2.2901 },
+                "Liverpool":      { region: "Merseyside", lat: 53.4084, lon: -2.9916 },
+                "Port Sunlight":  { region: "Merseyside", lat: 53.3478, lon: -3.0029 },
+                "Preston":        { region: "Lancashire", lat: 53.7632, lon: -2.7031 },
+                "Blackpool":      { region: "Lancashire", lat: 53.8175, lon: -3.0357 },
+                "Newcastle":      { region: "North East", lat: 54.9783, lon: -1.6178 },
+                "Gateshead":      { region: "North East", lat: 54.9526, lon: -1.6033 },
+                "Sunderland":     { region: "North East", lat: 54.9061, lon: -1.3811 },
+                "Middlesbrough":  { region: "North East", lat: 54.5742, lon: -1.2350 },
+                "Barnard Castle": { region: "North East", lat: 54.5440, lon: -1.9210 },
+                "Kendal":         { region: "Cumbria", lat: 54.3280, lon: -2.7463 },
+                "Carlisle":       { region: "Cumbria", lat: 54.8925, lon: -2.9329 },
+                "Nottingham":     { region: "East Midlands", lat: 52.9548, lon: -1.1581 }
             };
 
+            const REGIONS = [
+                { id: "Greater Manchester", label: "Manchester" },
+                { id: "Merseyside", label: "Merseyside" },
+                { id: "West Yorkshire", label: "West Yorks" },
+                { id: "South & East Yorkshire", label: "South & East Yorks" },
+                { id: "North East", label: "North East" },
+                { id: "Lancashire", label: "Lancashire" },
+                { id: "Cumbria", label: "Cumbria" },
+                { id: "East Midlands", label: "East Midlands" }
+            ];
+
+            const BASES = ["Sheffield", "Leeds", "Manchester", "Liverpool", "York", "Hull", "Newcastle", "Carlisle", "Nottingham"];
+
             const IGNORE_TITLES = [
-                "Plan your visit", "Learn with us", "Families and under 5s", 
+                "Plan your visit", "Learn with us", "Families and under 5s",
                 "Young people", "Adults and communities", "What to see",
                 "Ferens Art Gallery", "Usher Gallery", "The Collection",
                 "Cafe", "Shop", "Restaurant", "Hire", "Support us", "About us",
                 "Visit", "Membership", "Newsletter"
             ];
 
+            // ---------- State ----------
             let allExhibitions = [];
-            let activeRegions = new Set(["Greater Manchester", "Merseyside", "West Yorkshire", "South & East Yorkshire", "North East", "Lancashire", "Cumbria"]);
+            let generatedAt = null;
+            let activeRegions = new Set(JSON.parse(localStorage.getItem('artNorth_regions') || 'null') || REGIONS.map(r => r.id));
             let hiddenVenues = new Set(JSON.parse(localStorage.getItem('artNorth_hiddenVenues') || '[]'));
+            let baseCity = localStorage.getItem('artNorth_base') || 'Sheffield';
+            if (!CITY_INFO[baseCity]) baseCity = 'Sheffield';
+            let maxDriveMins = parseInt(localStorage.getItem('artNorth_maxDrive') || '9999', 10);
             let selectedVenue = '';
-            let includeUpcoming = false;
             let searchQuery = '';
             let currentSort = 'closing';
 
-            const exhibitionGrid = document.getElementById('exhibition-grid');
+            // ---------- Elements ----------
+            const onNowSection = document.getElementById('on-now-section');
+            const upcomingSection = document.getElementById('upcoming-section');
+            const onNowGrid = document.getElementById('on-now-grid');
+            const upcomingGrid = document.getElementById('upcoming-grid');
+            const onNowCount = document.getElementById('on-now-count');
+            const upcomingCount = document.getElementById('upcoming-count');
             const mainLoading = document.getElementById('main-loading');
             const emptyState = document.getElementById('empty-state');
-            const resultCount = document.getElementById('result-count');
             const searchInput = document.getElementById('search-input');
             const sortSelect = document.getElementById('sort-select');
             const regionToggles = document.getElementById('region-toggles');
+            const driveToggles = document.getElementById('drive-toggles');
+            const baseSelect = document.getElementById('base-select');
             const venueSelect = document.getElementById('venue-select');
-            const includeUpcomingCb = document.getElementById('include-upcoming-cb');
             const hiddenVenuesBar = document.getElementById('hidden-venues-bar');
+            const hiddenVenuesMsg = document.getElementById('hidden-venues-msg');
             const resetHiddenBtn = document.getElementById('reset-hidden-btn');
+            const updatedLine = document.getElementById('updated-line');
 
+            // ---------- Drive time estimate ----------
+            function haversineKm(a, b) {
+                const R = 6371, toRad = d => d * Math.PI / 180;
+                const dLat = toRad(b.lat - a.lat), dLon = toRad(b.lon - a.lon);
+                const s = Math.sin(dLat / 2) ** 2 +
+                    Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLon / 2) ** 2;
+                return 2 * R * Math.asin(Math.sqrt(s));
+            }
+
+            function driveMinutes(fromCity, toCity) {
+                if (fromCity === toCity) return 0;
+                const a = CITY_INFO[fromCity], b = CITY_INFO[toCity];
+                if (!a || !b) return null;
+                const roadKm = haversineKm(a, b) * 1.3;   // road wiggle factor
+                const mins = (roadKm / 75) * 60 + 10;     // ~75 km/h average + getting out of town
+                return Math.round(mins / 5) * 5;
+            }
+
+            function formatDrive(mins) {
+                if (mins === null) return '';
+                if (mins === 0) return 'Home turf';
+                if (mins < 60) return `~${mins} min drive`;
+                const h = Math.floor(mins / 60), m = mins % 60;
+                return m === 0 ? `~${h} hr drive` : `~${h} h ${String(m).padStart(2, '0')} drive`;
+            }
+
+            // ---------- Data ----------
             async function loadData() {
                 try {
                     const response = await fetch(jsonUrl + '?t=' + Date.now());
-                    const data = await response.json();
-                    
+                    const payload = await response.json();
+                    const data = Array.isArray(payload) ? payload : (payload.exhibitions || []);
+                    generatedAt = Array.isArray(payload) ? null : (payload.generated_at || null);
+
                     const seen = new Set();
                     allExhibitions = data
                         .filter(item => {
                             const title = item.exhibition_title || '';
-                            const venue = item.venue_name || '';
-                            if (IGNORE_TITLES.some(ignore => title.toLowerCase().includes(ignore.toLowerCase()))) return false;
+                            if (IGNORE_TITLES.some(ig => title.toLowerCase().includes(ig.toLowerCase()))) return false;
                             if (title.length < 3) return false;
-                            const key = `${title}|${venue}`.toLowerCase();
+                            const key = `${title}|${item.venue_name || ''}`.toLowerCase();
                             if (seen.has(key)) return false;
                             seen.add(key);
                             return true;
                         })
                         .map(item => {
-                            item.region = CITY_TO_REGION[item.venue_city] || 'North East';
+                            const cityInfo = CITY_INFO[item.venue_city];
+                            item.region = cityInfo ? cityInfo.region : null;
                             item.startDateObj = item.start_date ? new Date(item.start_date) : null;
                             item.endDateObj = item.end_date ? new Date(item.end_date) : null;
                             return item;
@@ -582,6 +641,11 @@
 
                     mainLoading.classList.add('is-hidden');
                     populateVenueSelect();
+                    if (generatedAt) {
+                        const d = new Date(generatedAt);
+                        updatedLine.textContent = 'Listings last updated ' +
+                            d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) + '.';
+                    }
                     render();
                 } catch (err) {
                     mainLoading.textContent = "Error loading directory.";
@@ -589,33 +653,26 @@
             }
 
             function populateVenueSelect() {
-                const venues = [...new Set(allExhibitions.map(item => item.venue_name))].sort();
+                const venues = [...new Set(allExhibitions.map(i => i.venue_name))].sort();
                 const current = venueSelect.value;
                 venueSelect.innerHTML = '<option value="">All venues</option>';
-                venues.forEach(venue => {
+                venues.forEach(v => {
                     const opt = document.createElement('option');
-                    opt.value = venue;
-                    opt.textContent = venue;
+                    opt.value = v;
+                    opt.textContent = v;
                     venueSelect.appendChild(opt);
                 });
                 if (current && venues.includes(current)) venueSelect.value = current;
             }
 
-            function toggleVenue(venue, hide) {
-                if (hide) hiddenVenues.add(venue);
-                else hiddenVenues.delete(venue);
-                localStorage.setItem('artNorth_hiddenVenues', JSON.stringify([...hiddenVenues]));
-                render();
-            }
-
+            // ---------- Status helpers ----------
             function getStatus(item) {
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
                 if (item.endDateObj && item.endDateObj < today) return 'ended';
                 if (item.startDateObj && item.startDateObj > today) return 'coming-soon';
                 if (item.endDateObj) {
-                    const diffTime = item.endDateObj - today;
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    const diffDays = Math.ceil((item.endDateObj - today) / 86400000);
                     if (diffDays <= 14 && diffDays >= 0) return 'ending-soon';
                 }
                 return 'on-now';
@@ -643,92 +700,141 @@
                 return `linear-gradient(135deg, hsl(${h}, 40%, 40%), hsl(${(h + 40) % 360}, 50%, 50%))`;
             }
 
-            function render() {
-                hiddenVenuesBar.classList.toggle('is-active', hiddenVenues.size > 0);
+            // ---------- Controls ----------
+            function buildControls() {
+                BASES.forEach(city => {
+                    const opt = document.createElement('option');
+                    opt.value = city;
+                    opt.textContent = city;
+                    baseSelect.appendChild(opt);
+                });
+                baseSelect.value = baseCity;
 
-                let filtered = allExhibitions.filter(item => {
-                    if (getStatus(item) === 'ended') return false;
-                    if (!includeUpcoming && getStatus(item) === 'coming-soon') return false;
-                    if (selectedVenue && item.venue_name !== selectedVenue) return false;
-                    if (!selectedVenue && hiddenVenues.has(item.venue_name)) return false;
-                    const matchesRegion = activeRegions.has(item.region);
-                    const matchesSearch = !searchQuery || 
-                        (item.exhibition_title || '').toLowerCase().includes(searchQuery) ||
-                        (item.venue_name || '').toLowerCase().includes(searchQuery) ||
-                        (item.venue_city || '').toLowerCase().includes(searchQuery);
-                    return matchesRegion && matchesSearch;
+                REGIONS.forEach(r => {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn' + (activeRegions.has(r.id) ? ' is-active' : '');
+                    btn.setAttribute('data-region', r.id);
+                    btn.innerHTML = '<span class="checkbox"></span>' + r.label;
+                    regionToggles.appendChild(btn);
                 });
 
-                filtered.sort((a, b) => {
-                    if (currentSort === 'closing') {
-                        const aEnd = a.endDateObj ? a.endDateObj.getTime() : 9999999999999;
-                        const bEnd = b.endDateObj ? b.endDateObj.getTime() : 9999999999999;
-                        return aEnd - bEnd;
-                    } else if (currentSort === 'newest') {
-                        const aStart = a.startDateObj ? a.startDateObj.getTime() : 0;
-                        const bStart = b.startDateObj ? b.startDateObj.getTime() : 0;
-                        return bStart - aStart;
-                    } else {
-                        return (a.exhibition_title || '').localeCompare(b.exhibition_title || '');
-                    }
+                [...driveToggles.querySelectorAll('.drive-btn')].forEach(btn => {
+                    btn.classList.toggle('is-active', parseInt(btn.dataset.mins, 10) === maxDriveMins);
                 });
-
-                exhibitionGrid.innerHTML = '';
-                if (filtered.length === 0) {
-                    emptyState.classList.remove('is-hidden');
-                    resultCount.textContent = '0 results';
-                } else {
-                    emptyState.classList.add('is-hidden');
-                    resultCount.textContent = `${filtered.length} exhibition${filtered.length === 1 ? '' : 's'}`;
-                    filtered.forEach(item => {
-                        const card = document.createElement('a');
-                        card.className = 'exhibition-card';
-                        card.href = item.detail_page_url || '#';
-                        card.target = '_blank';
-                        card.rel = 'noopener';
-
-                        const status = getStatus(item);
-                        let badgeHtml = '';
-                        if (status === 'ending-soon') {
-                            const diff = Math.ceil((item.endDateObj - new Date()) / (1000 * 60 * 60 * 24));
-                            badgeHtml = `<div class="status-badge ending-soon">Ending in ${diff} days</div>`;
-                        } else if (status === 'coming-soon') {
-                            badgeHtml = `<div class="status-badge coming-soon">Starts ${formatDate(item.startDateObj)}</div>`;
-                        }
-
-                        const hideBtn = document.createElement('button');
-                        hideBtn.className = 'hide-venue-btn';
-                        hideBtn.title = "Not my vibe - hide this gallery";
-                        hideBtn.innerHTML = '×';
-                        hideBtn.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            toggleVenue(item.venue_name, true);
-                        });
-
-                        const imageHtml = item.image_url 
-                            ? `<img src="${item.image_url}" alt="" loading="lazy">`
-                            : `<div class="image-placeholder" style="background: ${getVenueColor(item.venue_name)}"><span>${item.venue_name}</span></div>`;
-
-                        card.innerHTML = `
-                            ${badgeHtml}
-                            <div class="exhibition-image-wrap">${imageHtml}</div>
-                            <div class="exhibition-body">
-                                <h3 class="exhibition-title">${cleanTitle(item.exhibition_title)}</h3>
-                                <div class="exhibition-venue">${item.venue_name}</div>
-                                <div class="exhibition-location">${item.venue_city}</div>
-                                <div class="exhibition-footer">
-                                    <div class="exhibition-dates">${item.end_date ? 'Until ' + formatDate(item.endDateObj) : 'Ongoing'}</div>
-                                    <div class="region-tag">${item.region}</div>
-                                </div>
-                            </div>
-                        `;
-                        card.appendChild(hideBtn);
-                        exhibitionGrid.appendChild(card);
-                    });
-                }
             }
 
+            // ---------- Render ----------
+            function makeCard(item, status) {
+                const card = document.createElement('a');
+                card.className = 'exhibition-card';
+                card.href = item.detail_page_url || '#';
+                card.target = '_blank';
+                card.rel = 'noopener';
+
+                let badgeHtml = '';
+                if (status === 'ending-soon') {
+                    const diff = Math.ceil((item.endDateObj - new Date()) / 86400000);
+                    badgeHtml = `<div class="status-badge ending-soon">${diff <= 7 ? 'Final days' : 'Ending soon'}</div>`;
+                } else if (status === 'coming-soon') {
+                    badgeHtml = `<div class="status-badge coming-soon">Opens ${formatDate(item.startDateObj)}</div>`;
+                }
+
+                const mins = driveMinutes(baseCity, item.venue_city);
+                const driveHtml = mins !== null ? `<div class="drive-badge">${formatDrive(mins)}</div>` : '';
+
+                const imageHtml = item.image_url
+                    ? `<img src="${item.image_url}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'image-placeholder',style:'background:${getVenueColor(item.venue_name)}',textContent:'${(item.venue_name || '').replace(/'/g, "\\'")}'}))">`
+                    : `<div class="image-placeholder" style="background: ${getVenueColor(item.venue_name)}"><span>${item.venue_name}</span></div>`;
+
+                const datesText = status === 'coming-soon'
+                    ? `${formatDate(item.startDateObj)}${item.endDateObj ? ' – ' + formatDate(item.endDateObj) : ''}`
+                    : (item.end_date ? 'Until ' + formatDate(item.endDateObj) : 'Ongoing');
+
+                card.innerHTML = `
+                    <div class="exhibition-image-wrap">${badgeHtml}${imageHtml}${driveHtml}</div>
+                    <div class="exhibition-body">
+                        <h3 class="exhibition-title">${cleanTitle(item.exhibition_title)}</h3>
+                        <div class="exhibition-venue">${item.venue_name} <span class="city">· ${item.venue_city}</span></div>
+                        <div class="exhibition-footer">
+                            <div class="exhibition-dates">${datesText}</div>
+                            <div class="region-tag">${item.region || ''}</div>
+                        </div>
+                    </div>
+                `;
+
+                const hideBtn = document.createElement('button');
+                hideBtn.className = 'hide-venue-btn';
+                hideBtn.title = "Not my vibe — hide this venue";
+                hideBtn.innerHTML = '×';
+                hideBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hiddenVenues.add(item.venue_name);
+                    localStorage.setItem('artNorth_hiddenVenues', JSON.stringify([...hiddenVenues]));
+                    render();
+                });
+                card.querySelector('.exhibition-image-wrap').appendChild(hideBtn);
+                return card;
+            }
+
+            function sortItems(arr) {
+                const farFuture = 9999999999999;
+                arr.sort((a, b) => {
+                    if (currentSort === 'distance') {
+                        const da = driveMinutes(baseCity, a.venue_city) ?? 99999;
+                        const db = driveMinutes(baseCity, b.venue_city) ?? 99999;
+                        if (da !== db) return da - db;
+                        return (a.endDateObj?.getTime() || farFuture) - (b.endDateObj?.getTime() || farFuture);
+                    } else if (currentSort === 'newest') {
+                        return (b.startDateObj?.getTime() || 0) - (a.startDateObj?.getTime() || 0);
+                    } else if (currentSort === 'alphabetical') {
+                        return (a.exhibition_title || '').localeCompare(b.exhibition_title || '');
+                    }
+                    return (a.endDateObj?.getTime() || farFuture) - (b.endDateObj?.getTime() || farFuture);
+                });
+                return arr;
+            }
+
+            function render() {
+                if (hiddenVenues.size > 0) {
+                    hiddenVenuesMsg.textContent = `${hiddenVenues.size} venue${hiddenVenues.size === 1 ? ' is' : 's are'} hidden (not your vibe).`;
+                }
+                hiddenVenuesBar.classList.toggle('is-active', hiddenVenues.size > 0);
+
+                const matching = allExhibitions.filter(item => {
+                    const status = getStatus(item);
+                    if (status === 'ended') return false;
+                    if (selectedVenue && item.venue_name !== selectedVenue) return false;
+                    if (!selectedVenue && hiddenVenues.has(item.venue_name)) return false;
+                    if (item.region && !activeRegions.has(item.region)) return false;
+                    const mins = driveMinutes(baseCity, item.venue_city);
+                    if (mins !== null && mins > maxDriveMins) return false;
+                    if (searchQuery) {
+                        const hay = `${item.exhibition_title || ''} ${item.venue_name || ''} ${item.venue_city || ''}`.toLowerCase();
+                        if (!hay.includes(searchQuery)) return false;
+                    }
+                    return true;
+                });
+
+                const onNow = sortItems(matching.filter(i => getStatus(i) !== 'coming-soon'));
+                const upcoming = matching.filter(i => getStatus(i) === 'coming-soon')
+                    .sort((a, b) => (a.startDateObj?.getTime() || 0) - (b.startDateObj?.getTime() || 0));
+
+                onNowGrid.innerHTML = '';
+                upcomingGrid.innerHTML = '';
+                onNow.forEach(item => onNowGrid.appendChild(makeCard(item, getStatus(item))));
+                upcoming.forEach(item => upcomingGrid.appendChild(makeCard(item, 'coming-soon')));
+
+                const venueCount = new Set(onNow.map(i => i.venue_name)).size;
+                onNowCount.textContent = `${onNow.length} exhibition${onNow.length === 1 ? '' : 's'} · ${venueCount} venue${venueCount === 1 ? '' : 's'}`;
+                upcomingCount.textContent = `${upcoming.length} exhibition${upcoming.length === 1 ? '' : 's'}`;
+
+                onNowSection.classList.toggle('is-hidden', onNow.length === 0);
+                upcomingSection.classList.toggle('is-hidden', upcoming.length === 0);
+                emptyState.classList.toggle('is-hidden', onNow.length > 0 || upcoming.length > 0);
+            }
+
+            // ---------- Events ----------
             searchInput.addEventListener('input', (e) => {
                 searchQuery = e.target.value.toLowerCase();
                 render();
@@ -739,28 +845,38 @@
                 render();
             });
 
+            baseSelect.addEventListener('change', (e) => {
+                baseCity = e.target.value;
+                localStorage.setItem('artNorth_base', baseCity);
+                render();
+            });
+
+            driveToggles.addEventListener('click', (e) => {
+                const btn = e.target.closest('.drive-btn');
+                if (!btn) return;
+                maxDriveMins = parseInt(btn.dataset.mins, 10);
+                localStorage.setItem('artNorth_maxDrive', String(maxDriveMins));
+                [...driveToggles.querySelectorAll('.drive-btn')].forEach(b => b.classList.toggle('is-active', b === btn));
+                render();
+            });
+
             regionToggles.addEventListener('click', (e) => {
                 const btn = e.target.closest('.toggle-btn');
-                if (btn) {
-                    const region = btn.getAttribute('data-region');
-                    if (activeRegions.has(region)) {
-                        activeRegions.delete(region);
-                        btn.classList.remove('is-active');
-                    } else {
-                        activeRegions.add(region);
-                        btn.classList.add('is-active');
-                    }
-                    render();
+                if (!btn) return;
+                const region = btn.getAttribute('data-region');
+                if (activeRegions.has(region)) {
+                    activeRegions.delete(region);
+                    btn.classList.remove('is-active');
+                } else {
+                    activeRegions.add(region);
+                    btn.classList.add('is-active');
                 }
+                localStorage.setItem('artNorth_regions', JSON.stringify([...activeRegions]));
+                render();
             });
 
             venueSelect.addEventListener('change', (e) => {
                 selectedVenue = (e.target.value || '').trim();
-                render();
-            });
-
-            includeUpcomingCb.addEventListener('change', (e) => {
-                includeUpcoming = e.target.checked;
                 render();
             });
 
@@ -770,6 +886,7 @@
                 render();
             });
 
+            buildControls();
             loadData();
         })();
     </script>

@@ -16,4 +16,8 @@
     <loc>https://www.leonelki.com/taipei-cinemas.html</loc>
     <changefreq>daily</changefreq>
   </url>
+  <url>
+    <loc>https://www.leonelki.com/north-art-exhibitions.html</loc>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>

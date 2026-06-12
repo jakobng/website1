@@ -12,7 +12,6 @@ on:
         - london
         - tokyo
         - manchester
-        - north-exhibitions
 
 permissions:
   contents: write
@@ -22,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      WORKDIR: ${{ inputs.city == 'london' && 'london-cinema-scrapers' || inputs.city == 'tokyo' && 'tokyo-cinema-scrapers' || inputs.city == 'manchester' && 'manchester_cinema_scrapers' || 'north-art-exhibitions' }}
+      WORKDIR: ${{ inputs.city == 'london' && 'london-cinema-scrapers' || inputs.city == 'tokyo' && 'tokyo-cinema-scrapers' || 'manchester_cinema_scrapers' }}
       TIMEZONE: ${{ inputs.city == 'tokyo' && 'Asia/Tokyo' || 'Europe/London' }}
       GEMINI_RESOLVE_TITLES: ${{ inputs.city == 'tokyo' && '1' || '' }}
 
@@ -42,10 +41,8 @@ jobs:
         working-directory: ./${{ env.WORKDIR }}
         run: |
           pip install -r requirements.txt
-          if [ "${{ env.WORKDIR }}" != "north-art-exhibitions" ]; then
-            playwright install chromium
-            sudo apt-get install -y fonts-noto-cjk
-          fi
+          playwright install chromium
+          sudo apt-get install -y fonts-noto-cjk
 
       - name: Run Scraper
         working-directory: ./${{ env.WORKDIR }}
