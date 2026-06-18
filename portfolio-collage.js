@@ -47,6 +47,7 @@
   var armedId = "";
   var activeHotspot = null;
   var clearActiveTimer = 0;
+  var lastPointer = { x: null, y: null };
 
   // Create single Desat Mask
   var desatMask = document.createElement("div");
@@ -90,11 +91,47 @@
     }
   }
 
-  function queueClearActive() {
-    clearActiveTimer = setTimeout(function () {
-      setActive(null);
-    }, 50);
+  function isProjectTarget(target, hotspot) {
+    return !!(
+      target &&
+      hotspot &&
+      (hotspot.contains(target) || (hotspot._callout && hotspot._callout.contains(target)))
+    );
   }
+
+  function pointerIsStillOnActiveProject() {
+    if (!activeHotspot || lastPointer.x === null || lastPointer.y === null) return false;
+
+    var target = document.elementFromPoint(lastPointer.x, lastPointer.y);
+    return isProjectTarget(target, activeHotspot);
+  }
+
+  function queueClearActive(hotspot, event) {
+    if (event && isProjectTarget(event.relatedTarget, hotspot || activeHotspot)) return;
+    if (clearActiveTimer) clearTimeout(clearActiveTimer);
+
+    clearActiveTimer = setTimeout(function () {
+      if (pointerIsStillOnActiveProject()) return;
+      setActive(null);
+    }, 140);
+  }
+
+  function bindDesktopHover(target, hotspot) {
+    target.addEventListener("pointerenter", function () { if (!isSmall) setActive(hotspot); });
+    target.addEventListener("pointerleave", function (event) { if (!isSmall) queueClearActive(hotspot, event); });
+    target.addEventListener("mouseenter", function () { if (!isSmall) setActive(hotspot); });
+    target.addEventListener("mouseleave", function (event) { if (!isSmall) queueClearActive(hotspot, event); });
+  }
+
+  document.addEventListener("pointermove", function (event) {
+    lastPointer.x = event.clientX;
+    lastPointer.y = event.clientY;
+  }, true);
+
+  document.addEventListener("mousemove", function (event) {
+    lastPointer.x = event.clientX;
+    lastPointer.y = event.clientY;
+  }, true);
 
   if (image && data.world_image) image.src = data.world_image;
 
@@ -116,7 +153,7 @@
 
     var meta = document.createElement("span");
     meta.className = "hotspot-meta";
-    meta.textContent = project.year + " / " + project.role + " / " + project.runtime;
+    meta.textContent = [project.year, project.status, project.role, project.runtime].filter(Boolean).join(" / ");
 
     var summary = document.createElement("span");
     summary.className = "hotspot-summary";
@@ -128,10 +165,9 @@
     hotspot.appendChild(label);
 
     // Interaction handlers
-    hotspot.addEventListener("mouseenter", function () { if (!isSmall) setActive(hotspot); });
-    hotspot.addEventListener("mouseleave", function () { if (!isSmall) queueClearActive(); });
+    bindDesktopHover(hotspot, hotspot);
     hotspot.addEventListener("focus", function () { if (!isSmall) setActive(hotspot); });
-    hotspot.addEventListener("blur", function () { if (!isSmall) queueClearActive(); });
+    hotspot.addEventListener("blur", function (event) { if (!isSmall) queueClearActive(hotspot, event); });
 
     // Single click/tap navigation for all devices
     hotspot.addEventListener("click", function (event) {
@@ -149,24 +185,38 @@
     var centerY = project.y_pct + (project.height_pct / 2);
     callout.style.top = pct(centerY);
     
+    var content = document.createElement("a");
+    content.className = "callout-content";
+    content.href = project.url;
+    content.setAttribute("aria-label", projectTitle(project));
+
     var text = document.createElement("span");
     text.className = "callout-text";
     text.textContent = projectTitle(project);
+
+    var calloutMeta = document.createElement("span");
+    calloutMeta.className = "callout-meta";
+    calloutMeta.textContent = [project.year, project.status, project.role, project.runtime].filter(Boolean).join(" / ");
+
+    var calloutSummary = document.createElement("span");
+    calloutSummary.className = "callout-summary";
+    calloutSummary.textContent = project.summary || "";
     
     var line = document.createElement("span");
     line.className = "callout-line";
-    
-    callout.appendChild(text);
+
+    content.appendChild(text);
+    content.appendChild(calloutMeta);
+    content.appendChild(calloutSummary);
+    callout.appendChild(content);
     callout.appendChild(line);
     calloutWrapper.appendChild(callout);
     
     hotspot._callout = callout;
 
-    text.addEventListener("mouseenter", function() { if (!isSmall) setActive(hotspot); });
-    text.addEventListener("mouseleave", function() { if (!isSmall) queueClearActive(); });
-    text.addEventListener("click", function(event) { 
-        window.location.href = project.url; 
-    });
+    bindDesktopHover(callout, hotspot);
+    content.addEventListener("focus", function() { if (!isSmall) setActive(hotspot); });
+    content.addEventListener("blur", function(event) { if (!isSmall) queueClearActive(hotspot, event); });
   });
 
   document.addEventListener("click", function (event) {
