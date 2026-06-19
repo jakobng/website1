@@ -201,13 +201,17 @@
     var calloutSummary = document.createElement("span");
     calloutSummary.className = "callout-summary";
     calloutSummary.textContent = project.summary || "";
+
+    var calloutDetails = document.createElement("span");
+    calloutDetails.className = "callout-details";
     
     var line = document.createElement("span");
     line.className = "callout-line";
 
     content.appendChild(text);
-    content.appendChild(calloutMeta);
-    content.appendChild(calloutSummary);
+    calloutDetails.appendChild(calloutMeta);
+    calloutDetails.appendChild(calloutSummary);
+    content.appendChild(calloutDetails);
     callout.appendChild(content);
     callout.appendChild(line);
     calloutWrapper.appendChild(callout);
