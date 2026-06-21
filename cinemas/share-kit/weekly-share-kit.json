@@ -1,42 +1,42 @@
 {
-  "generated_at": "2026-06-14T23:46:30+00:00",
+  "generated_at": "2026-06-21T23:51:25+00:00",
   "packs": [
     {
       "city": "tokyo",
       "name": "Tokyo Mini-Theater",
       "page": "https://www.leonelki.com/tokyo-cinemas.html",
-      "upcoming_showtimes": 3073,
-      "cinemas": 54,
-      "date_range": "2026-06-14 to 2026-08-16",
+      "upcoming_showtimes": 3016,
+      "cinemas": 55,
+      "date_range": "2026-06-21 to 2026-09-03",
       "top_films": [
         "Michael",
-        "404 Still Remain",
-        "Memorizu",
+        "All of a Sudden",
+        "Magical Secret Tour",
         "GO",
-        "Sirāt"
+        "Memorizu"
       ],
       "copy": {
-        "en": "Tokyo Mini-Theater now has 3073 upcoming showtimes across 54 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
-        "ja": "東京ミニシアター上映情報を更新しました。現在 54 館、3073 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
+        "en": "Tokyo Mini-Theater now has 3016 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
+        "ja": "東京ミニシアター上映情報を更新しました。現在 55 館、3016 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
       }
     },
     {
       "city": "london",
       "name": "London Independent Cinema",
       "page": "https://www.leonelki.com/london-cinemas.html",
-      "upcoming_showtimes": 1147,
-      "cinemas": 20,
-      "date_range": "2026-06-14 to 2027-06-05",
+      "upcoming_showtimes": 6837,
+      "cinemas": 66,
+      "date_range": "2026-06-21 to 2027-06-11",
       "top_films": [
         "Toy Story 5",
+        "The Odyssey",
         "Disclosure Day",
-        "National Theatre Live: Les Liaisons Dangereuses",
-        "The Furious",
-        "The Last Viking"
+        "Spider-Man: Brand New Day",
+        "DISCLOSURE DAY"
       ],
       "copy": {
-        "en": "London Independent Cinema now has 1147 upcoming showtimes across 20 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
-        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 20 館、1147 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
+        "en": "London Independent Cinema now has 6837 upcoming showtimes across 66 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
+        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 66 館、6837 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
       }
     },
     {
@@ -56,19 +56,19 @@
       "city": "taipei",
       "name": "Taipei Independent Cinema",
       "page": "https://www.leonelki.com/taipei-cinemas.html",
-      "upcoming_showtimes": 293,
-      "cinemas": 11,
-      "date_range": "2026-06-14 to 2026-07-20",
+      "upcoming_showtimes": 320,
+      "cinemas": 10,
+      "date_range": "2026-06-21 to 2026-07-26",
       "top_films": [
-        "影城介紹",
-        "Sorry, Baby",
-        "Dreams",
-        "The Voice of Hind Rajab",
-        "Agatha's Almanac"
+        "The Blue Trail",
+        "Air Doll",
+        "In the Realm of the Senses",
+        "Detective Conan: Fallen Angel of the Highway",
+        "Sorry, Baby"
       ],
       "copy": {
-        "en": "Taipei Independent Cinema now has 293 upcoming showtimes across 11 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
-        "ja": "台北インディペンデント映画上映情報を更新しました。現在 11 館、293 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
+        "en": "Taipei Independent Cinema now has 320 upcoming showtimes across 10 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
+        "ja": "台北インディペンデント映画上映情報を更新しました。現在 10 館、320 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
       }
     }
   ]
