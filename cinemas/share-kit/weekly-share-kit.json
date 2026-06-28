@@ -1,42 +1,42 @@
 {
-  "generated_at": "2026-06-21T23:51:25+00:00",
+  "generated_at": "2026-06-28T23:38:20+00:00",
   "packs": [
     {
       "city": "tokyo",
       "name": "Tokyo Mini-Theater",
       "page": "https://www.leonelki.com/tokyo-cinemas.html",
-      "upcoming_showtimes": 3016,
+      "upcoming_showtimes": 3145,
       "cinemas": 55,
-      "date_range": "2026-06-21 to 2026-09-03",
+      "date_range": "2026-06-28 to 2026-09-03",
       "top_films": [
         "Michael",
+        "Sinsin and the Mouse",
+        "それいけ！アンパンマン　パンタンと約束の星",
         "All of a Sudden",
-        "Magical Secret Tour",
-        "GO",
-        "Memorizu"
+        "Sgt. Frog"
       ],
       "copy": {
-        "en": "Tokyo Mini-Theater now has 3016 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
-        "ja": "東京ミニシアター上映情報を更新しました。現在 55 館、3016 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
+        "en": "Tokyo Mini-Theater now has 3145 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/tokyo-cinemas.html",
+        "ja": "東京ミニシアター上映情報を更新しました。現在 55 館、3145 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/tokyo-cinemas.html"
       }
     },
     {
       "city": "london",
       "name": "London Independent Cinema",
       "page": "https://www.leonelki.com/london-cinemas.html",
-      "upcoming_showtimes": 6837,
-      "cinemas": 66,
-      "date_range": "2026-06-21 to 2027-06-11",
+      "upcoming_showtimes": 6410,
+      "cinemas": 67,
+      "date_range": "2026-06-28 to 2027-06-11",
       "top_films": [
         "Toy Story 5",
         "The Odyssey",
-        "Disclosure Day",
         "Spider-Man: Brand New Day",
-        "DISCLOSURE DAY"
+        "Disclosure Day",
+        "Minions & Monsters"
       ],
       "copy": {
-        "en": "London Independent Cinema now has 6837 upcoming showtimes across 66 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
-        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 66 館、6837 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
+        "en": "London Independent Cinema now has 6410 upcoming showtimes across 67 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
+        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 67 館、6410 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
       }
     },
     {
@@ -56,19 +56,19 @@
       "city": "taipei",
       "name": "Taipei Independent Cinema",
       "page": "https://www.leonelki.com/taipei-cinemas.html",
-      "upcoming_showtimes": 320,
-      "cinemas": 10,
-      "date_range": "2026-06-21 to 2026-07-26",
+      "upcoming_showtimes": 143,
+      "cinemas": 9,
+      "date_range": "2026-06-28 to 2026-07-31",
       "top_films": [
-        "The Blue Trail",
         "Air Doll",
-        "In the Realm of the Senses",
         "Detective Conan: Fallen Angel of the Highway",
-        "Sorry, Baby"
+        "Agatha's Almanac",
+        "The Voice of Hind Rajab",
+        "In the Realm of the Senses"
       ],
       "copy": {
-        "en": "Taipei Independent Cinema now has 320 upcoming showtimes across 10 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
-        "ja": "台北インディペンデント映画上映情報を更新しました。現在 10 館、320 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
+        "en": "Taipei Independent Cinema now has 143 upcoming showtimes across 9 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
+        "ja": "台北インディペンデント映画上映情報を更新しました。現在 9 館、143 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
       }
     }
   ]
