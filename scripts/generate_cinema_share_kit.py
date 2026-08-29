@@ -16,7 +16,7 @@ OUTPUT_MD = OUTPUT_DIR / "weekly-share-kit.md"
 CITIES = {
     "tokyo": {
         "name": "Tokyo Mini-Theater",
-        "page": "https://www.leonelki.com/tokyo-cinemas.html",
+        "page": "https://cinematokyo.com/",
         "data": ROOT / "tokyo-cinema-scrapers" / "data" / "showtimes.json",
         "jp": "東京ミニシアター上映情報",
     },
