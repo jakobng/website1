@@ -1,74 +1,80 @@
 {
-  "generated_at": "2026-09-07T00:11:38+00:00",
+  "generated_at": "2026-09-14T00:20:23+00:00",
   "packs": [
     {
       "city": "tokyo",
       "name": "Tokyo Mini-Theater",
       "page": "https://cinematokyo.com/",
-      "upcoming_showtimes": 2810,
-      "cinemas": 52,
-      "date_range": "2026-09-07 to 2026-10-17",
+      "upcoming_showtimes": 2620,
+      "cinemas": 53,
+      "date_range": "2026-09-14 to 2026-11-13",
       "top_films": [
         "The Voice of Hind Rajab",
-        "Chiikawa the Movie: The Secret of the Mermaid Island",
+        "Bob Trevino Likes It",
+        "Mr. Nelson, Did You Kill People?",
         "All of a Sudden",
-        "ホーム スイート ホーム",
-        "The Drama"
+        "Look Back"
       ],
       "copy": {
-        "en": "Tokyo Mini-Theater now has 2810 upcoming showtimes across 52 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/",
-        "ja": "東京ミニシアター上映情報を更新しました。現在 52 館、2810 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/"
+        "en": "Tokyo Mini-Theater now has 2620 upcoming showtimes across 53 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/",
+        "ja": "東京ミニシアター上映情報を更新しました。現在 53 館、2620 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/"
       }
     },
     {
       "city": "london",
       "name": "London Independent Cinema",
       "page": "https://www.leonelki.com/london-cinemas.html",
-      "upcoming_showtimes": 3996,
-      "cinemas": 54,
-      "date_range": "2026-09-07 to 2027-06-11",
+      "upcoming_showtimes": 4849,
+      "cinemas": 66,
+      "date_range": "2026-09-14 to 2027-06-11",
       "top_films": [
         "Pressure",
-        "Spider-Man: Brand New Day",
         "Practical Magic 2",
-        "Tony",
-        "The Odyssey"
+        "Sense and Sensibility (2026)",
+        "Resident Evil",
+        "Tony"
       ],
       "copy": {
-        "en": "London Independent Cinema now has 3996 upcoming showtimes across 54 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
-        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 54 館、3996 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
+        "en": "London Independent Cinema now has 4849 upcoming showtimes across 66 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
+        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 66 館、4849 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
       }
     },
     {
       "city": "manchester",
       "name": "Manchester Cinema",
       "page": "https://www.leonelki.com/manchester-cinemas.html",
-      "upcoming_showtimes": 0,
-      "cinemas": 0,
-      "date_range": "",
-      "top_films": [],
+      "upcoming_showtimes": 192,
+      "cinemas": 6,
+      "date_range": "2026-09-14 to 2026-09-27",
+      "top_films": [
+        "Pressure",
+        "Practical Magic 2",
+        "Pressure (2026)",
+        "Late Fame",
+        "Bitter Christmas"
+      ],
       "copy": {
-        "en": "Manchester Cinema now has 0 upcoming showtimes across 0 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html",
-        "ja": "マンチェスター映画館上映情報を更新しました。現在 0 館、0 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html"
+        "en": "Manchester Cinema now has 192 upcoming showtimes across 6 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html",
+        "ja": "マンチェスター映画館上映情報を更新しました。現在 6 館、192 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html"
       }
     },
     {
       "city": "taipei",
       "name": "Taipei Independent Cinema",
       "page": "https://www.leonelki.com/taipei-cinemas.html",
-      "upcoming_showtimes": 207,
+      "upcoming_showtimes": 156,
       "cinemas": 7,
-      "date_range": "2026-09-07 to 2026-09-30",
+      "date_range": "2026-09-14 to 2026-10-03",
       "top_films": [
-        "The Invite",
-        "A Fading Man",
-        "The Origin Of Ultraman",
-        "Hope",
-        "Me and My Condemned Father"
+        "Typhoon Club",
+        "Look Back",
+        "Power Ballad",
+        "The Journey to Gyeong-ju",
+        "Kusama: Infinity"
       ],
       "copy": {
-        "en": "Taipei Independent Cinema now has 207 upcoming showtimes across 7 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
-        "ja": "台北インディペンデント映画上映情報を更新しました。現在 7 館、207 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
+        "en": "Taipei Independent Cinema now has 156 upcoming showtimes across 7 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
+        "ja": "台北インディペンデント映画上映情報を更新しました。現在 7 館、156 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
       }
     }
   ]
