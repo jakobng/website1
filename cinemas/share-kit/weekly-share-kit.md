@@ -1,59 +1,59 @@
 # Weekly Cinema Share Kit
 
-Generated: 2026-09-21T00:24:37+00:00
+Generated: 2026-09-28T01:01:49+00:00
 
 ## Tokyo Mini-Theater
 
 - Page: https://cinematokyo.com/
-- Upcoming showtimes: 2607
-- Cinemas/venues: 55
-- Date range: 2026-09-21 to 2026-11-13
-- Top films: Colours of Time, The Voice of Hind Rajab, All of a Sudden, Bayside Shakedown N.E.W., Mr. Nelson, Did You Kill People?
+- Upcoming showtimes: 1028
+- Cinemas/venues: 34
+- Date range: 2026-09-28 to 2026-11-13
+- Top films: しびれ, The Voice of Hind Rajab, Colours of Time, Faust, ブロークン・ヴォイス
 
 English:
-Tokyo Mini-Theater now has 2607 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/
+Tokyo Mini-Theater now has 1028 upcoming showtimes across 34 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/
 
 Japanese:
-東京ミニシアター上映情報を更新しました。現在 55 館、2607 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/
+東京ミニシアター上映情報を更新しました。現在 34 館、1028 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/
 
 ## London Independent Cinema
 
 - Page: https://www.leonelki.com/london-cinemas.html
-- Upcoming showtimes: 4947
-- Cinemas/venues: 67
-- Date range: 2026-09-21 to 2027-06-11
-- Top films: Pressure, Resident Evil, Practical Magic 2, Sense and Sensibility, Bad Apples
+- Upcoming showtimes: 4329
+- Cinemas/venues: 57
+- Date range: 2026-09-28 to 2027-06-11
+- Top films: Sense and Sensibility, Resident Evil, Pressure, Digger, Practical Magic 2
 
 English:
-London Independent Cinema now has 4947 upcoming showtimes across 67 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
+London Independent Cinema now has 4329 upcoming showtimes across 57 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
 
 Japanese:
-ロンドンのインディペンデント映画館上映情報を更新しました。現在 67 館、4947 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
+ロンドンのインディペンデント映画館上映情報を更新しました。現在 57 館、4329 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
 
 ## Manchester Cinema
 
 - Page: https://www.leonelki.com/manchester-cinemas.html
-- Upcoming showtimes: 203
+- Upcoming showtimes: 181
 - Cinemas/venues: 6
-- Date range: 2026-09-21 to 2026-10-04
-- Top films: Pressure, Practical Magic 2, Resident Evil, Bad Apples, Sense and Sensibility (2026)
+- Date range: 2026-09-28 to 2026-10-11
+- Top films: Sense and Sensibility, Sense And Sensibility, Pressure, Practical Magic 2, Sense and Sensibility (U)
 
 English:
-Manchester Cinema now has 203 upcoming showtimes across 6 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html
+Manchester Cinema now has 181 upcoming showtimes across 6 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html
 
 Japanese:
-マンチェスター映画館上映情報を更新しました。現在 6 館、203 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html
+マンチェスター映画館上映情報を更新しました。現在 6 館、181 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html
 
 ## Taipei Independent Cinema
 
 - Page: https://www.leonelki.com/taipei-cinemas.html
 - Upcoming showtimes: 221
-- Cinemas/venues: 8
-- Date range: 2026-09-21 to 2026-11-28
-- Top films: The Brightest Sun, Heart of the Beast, Typhoon Club, Look Back, Plainclothes
+- Cinemas/venues: 7
+- Date range: 2026-09-28 to 2026-11-28
+- Top films: The Brightest Sun, The Samurai And The Prisoner, Ride Away, Primetime, Heart of the Beast
 
 English:
-Taipei Independent Cinema now has 221 upcoming showtimes across 8 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
+Taipei Independent Cinema now has 221 upcoming showtimes across 7 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
 
 Japanese:
-台北インディペンデント映画上映情報を更新しました。現在 8 館、221 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
+台北インディペンデント映画上映情報を更新しました。現在 7 館、221 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
