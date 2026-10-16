@@ -4,6 +4,12 @@ Personal portfolio and cinema project site for Leo Nelki — documentary filmmak
 
 Served via GitHub Pages at [www.leonelki.com](https://www.leonelki.com).
 
+Portfolio pages in English and Japanese load `/analytics.js?v=1`, which sends
+page views to the existing GA4 property (`G-7FMXD7RCJZ`) only after a visitor
+accepts analytics. The privacy page lets visitors change that choice. Keep
+the script on new portfolio pages; cinema listings and separately built apps
+have their own publishing pipelines.
+
 ## What's here
 
 - **Portfolio** — films, CV, writing (`index.html`, `films.html`, `cv.html`)
