@@ -1,80 +1,80 @@
 {
-  "generated_at": "2026-10-12T01:33:25+00:00",
+  "generated_at": "2026-10-19T00:21:40+00:00",
   "packs": [
     {
       "city": "tokyo",
       "name": "Tokyo Mini-Theater",
       "page": "https://cinematokyo.com/",
-      "upcoming_showtimes": 191,
-      "cinemas": 8,
-      "date_range": "2026-10-12 to 2026-11-13",
+      "upcoming_showtimes": 2476,
+      "cinemas": 53,
+      "date_range": "2026-10-19 to 2026-11-27",
       "top_films": [
-        "Nouvelle Vague",
-        "The Past is Always New, the Future is Always Nostalgic: Photographer Daido Moriyama",
-        "Disciples of Hippocrates",
-        "『 トロピカルミステリー 青春共和国』",
-        "A Homance"
+        "影を売る女",
+        "Chiikawa the Movie: The Secret of the Mermaid Island",
+        "Colours of Time",
+        "Mr. Nelson, Did You Kill People?",
+        "遥かな町へ"
       ],
       "copy": {
-        "en": "Tokyo Mini-Theater now has 191 upcoming showtimes across 8 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/",
-        "ja": "東京ミニシアター上映情報を更新しました。現在 8 館、191 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/"
+        "en": "Tokyo Mini-Theater now has 2476 upcoming showtimes across 53 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/",
+        "ja": "東京ミニシアター上映情報を更新しました。現在 53 館、2476 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/"
       }
     },
     {
       "city": "london",
       "name": "London Independent Cinema",
       "page": "https://www.leonelki.com/london-cinemas.html",
-      "upcoming_showtimes": 4939,
+      "upcoming_showtimes": 5142,
       "cinemas": 55,
-      "date_range": "2026-10-12 to 2027-06-11",
+      "date_range": "2026-10-19 to 2027-10-27",
       "top_films": [
-        "The Social Reckoning",
         "Avengers: Doomsday",
-        "Verity",
-        "Digger",
-        "Wicker"
+        "The Social Reckoning",
+        "Forgotten Island",
+        "Wicker",
+        "Verity"
       ],
       "copy": {
-        "en": "London Independent Cinema now has 4939 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
-        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 55 館、4939 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
+        "en": "London Independent Cinema now has 5142 upcoming showtimes across 55 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html",
+        "ja": "ロンドンのインディペンデント映画館上映情報を更新しました。現在 55 館、5142 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html"
       }
     },
     {
       "city": "manchester",
       "name": "Manchester Cinema",
       "page": "https://www.leonelki.com/manchester-cinemas.html",
-      "upcoming_showtimes": 205,
-      "cinemas": 5,
-      "date_range": "2026-10-12 to 2026-10-25",
+      "upcoming_showtimes": 209,
+      "cinemas": 6,
+      "date_range": "2026-10-19 to 2026-11-01",
       "top_films": [
-        "Digger",
-        "Verity",
         "The Social Reckoning",
-        "Resident Evil",
+        "Verity",
+        "Forgotten Island",
+        "Ghosts: The Possession of Button House (2026)",
         "Other Mommy"
       ],
       "copy": {
-        "en": "Manchester Cinema now has 205 upcoming showtimes across 5 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html",
-        "ja": "マンチェスター映画館上映情報を更新しました。現在 5 館、205 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html"
+        "en": "Manchester Cinema now has 209 upcoming showtimes across 6 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html",
+        "ja": "マンチェスター映画館上映情報を更新しました。現在 6 館、209 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html"
       }
     },
     {
       "city": "taipei",
       "name": "Taipei Independent Cinema",
       "page": "https://www.leonelki.com/taipei-cinemas.html",
-      "upcoming_showtimes": 227,
-      "cinemas": 8,
-      "date_range": "2026-10-12 to 2026-11-28",
+      "upcoming_showtimes": 84,
+      "cinemas": 5,
+      "date_range": "2026-10-20 to 2026-11-28",
       "top_films": [
-        "Drunken Noodles",
-        "Digger",
-        "Eagles of the Republic",
-        "Verity",
-        "Cafe de Flore"
+        "Tropical Fish (Restored)",
+        "The Company of Strangers",
+        "Alice in the Cities",
+        "Dounia and the Princess of Aleppo",
+        "Hola Frida!"
       ],
       "copy": {
-        "en": "Taipei Independent Cinema now has 227 upcoming showtimes across 8 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
-        "ja": "台北インディペンデント映画上映情報を更新しました。現在 8 館、227 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
+        "en": "Taipei Independent Cinema now has 84 upcoming showtimes across 5 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html",
+        "ja": "台北インディペンデント映画上映情報を更新しました。現在 5 館、84 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html"
       }
     }
   ]
