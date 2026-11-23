@@ -1,59 +1,59 @@
 # Weekly Cinema Share Kit
 
-Generated: 2026-11-16T02:19:27+00:00
+Generated: 2026-11-23T02:57:47+00:00
 
 ## Tokyo Mini-Theater
 
 - Page: https://cinematokyo.com/
-- Upcoming showtimes: 2651
-- Cinemas/venues: 51
-- Date range: 2026-11-16 to 2026-12-18
-- Top films: Godzilla Minus Zero, All the Lovers in the Night, How to Make a Killing, Three Goodbyes, NAZA
+- Upcoming showtimes: 2769
+- Cinemas/venues: 52
+- Date range: 2026-11-23 to 2026-12-30
+- Top films: Mother Father Sister Brother Frank, Godzilla Minus Zero, あなたが母親の手料理を食べられる回数は、あとどれくらい残ってますか？, The Chef of South Polar, Three Goodbyes
 
 English:
-Tokyo Mini-Theater now has 2651 upcoming showtimes across 51 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/
+Tokyo Mini-Theater now has 2769 upcoming showtimes across 52 venues. Search by film, date, cinema, region, or what is closest to you: https://cinematokyo.com/
 
 Japanese:
-東京ミニシアター上映情報を更新しました。現在 51 館、2651 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/
+東京ミニシアター上映情報を更新しました。現在 52 館、2769 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://cinematokyo.com/
 
 ## London Independent Cinema
 
 - Page: https://www.leonelki.com/london-cinemas.html
-- Upcoming showtimes: 5356
-- Cinemas/venues: 53
-- Date range: 2026-11-16 to 2027-11-10
-- Top films: You Can See Everything, Avengers: Doomsday, The Hunger Games: Sunrise on the Reaping, Dune: Part Three, Wild Horse Nine
+- Upcoming showtimes: 4553
+- Cinemas/venues: 52
+- Date range: 2026-11-23 to 2027-11-10
+- Top films: You Can See Everything, Avengers: Doomsday, Dune: Part Three, The Hunger Games: Sunrise on the Reaping, Wild Horse Nine
 
 English:
-London Independent Cinema now has 5356 upcoming showtimes across 53 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
+London Independent Cinema now has 4553 upcoming showtimes across 52 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/london-cinemas.html
 
 Japanese:
-ロンドンのインディペンデント映画館上映情報を更新しました。現在 53 館、5356 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
+ロンドンのインディペンデント映画館上映情報を更新しました。現在 52 館、4553 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/london-cinemas.html
 
 ## Manchester Cinema
 
 - Page: https://www.leonelki.com/manchester-cinemas.html
-- Upcoming showtimes: 179
-- Cinemas/venues: 5
-- Date range: 2026-11-16 to 2026-11-29
-- Top films: I Play Rocky, Wild Horse Nine, The Hunger Games: Sunrise on the Reaping, Ebenezer, La Bola Negra
+- Upcoming showtimes: 163
+- Cinemas/venues: 4
+- Date range: 2026-11-23 to 2026-12-06
+- Top films: The Hunger Games: Sunrise on the Reaping, You Can See Everything, Wild Horse Nine, La Bola Negra, Ebenezer
 
 English:
-Manchester Cinema now has 179 upcoming showtimes across 5 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html
+Manchester Cinema now has 163 upcoming showtimes across 4 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/manchester-cinemas.html
 
 Japanese:
-マンチェスター映画館上映情報を更新しました。現在 5 館、179 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html
+マンチェスター映画館上映情報を更新しました。現在 4 館、163 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/manchester-cinemas.html
 
 ## Taipei Independent Cinema
 
 - Page: https://www.leonelki.com/taipei-cinemas.html
-- Upcoming showtimes: 186
-- Cinemas/venues: 8
-- Date range: 2026-11-16 to 2026-11-29
-- Top films: To Be Ordinary, Wisdom of Happiness, Emperor On Stage, New Group, Wisdom of Happiness: A Heart-to-Heart with the Dalai Lama
+- Upcoming showtimes: 176
+- Cinemas/venues: 7
+- Date range: 2026-11-23 to 2026-12-27
+- Top films: Wisdom of Happiness, Back on North Face, We Are Born Good, Paper Tiger, To Be Ordinary
 
 English:
-Taipei Independent Cinema now has 186 upcoming showtimes across 8 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
+Taipei Independent Cinema now has 176 upcoming showtimes across 7 venues. Search by film, date, cinema, region, or what is closest to you: https://www.leonelki.com/taipei-cinemas.html
 
 Japanese:
-台北インディペンデント映画上映情報を更新しました。現在 8 館、186 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
+台北インディペンデント映画上映情報を更新しました。現在 7 館、176 件の上映を検索できます。作品名・日付・地域・現在地から探せます: https://www.leonelki.com/taipei-cinemas.html
